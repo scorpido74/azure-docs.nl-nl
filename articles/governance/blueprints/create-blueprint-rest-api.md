@@ -1,23 +1,23 @@
 ---
-title: 'Quick Start: een blauw druk maken met REST API'
-description: In deze Quick Start gebruikt u Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de REST API.
+title: 'Snelstart: een blauwdruk maken met REST API'
+description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren met behulp van de REST API.
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241540"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstart: een Azure Blueprint definiëren en toewijzen met REST-API
 
 Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
-- Registreer de `Microsoft.Blueprint` resource provider. Zie [resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md)voor instructies.
+- Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
+- Registreer `Microsoft.Blueprint` de resourceprovider. Zie [Resourceproviders en -typen](../../azure-resource-manager/management/resource-providers-and-types.md)voor een routebeschrijving.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -52,7 +52,7 @@ Vervang `{subscriptionId}` in de bovenstaande variabele **$restUri** om informat
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u de REST API gebruikt, wordt het object _blauwdruk_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -63,7 +63,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
 > [!NOTE]
-> Blauw drukken kan ook worden gemaakt op abonnements niveau. Zie [voor beeld Blue maken bij abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)voor meer informatie.
+> Blauwdrukken kunnen ook worden gemaakt op abonnementsniveau. Zie blauwdruk maken [bij het voorbeeld van een abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)als u een voorbeeld wilt zien.
 
 1. Maak het eerste _blauwdruk_object. De **Aanvraagbody** bevat eigenschappen van de blauwdruk, te maken resourcegroepen en alle parameters op blauwdrukniveau. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
 
@@ -329,7 +329,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{YourMG}` door de ID van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de ID van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
+1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`statisch ( ), maar de service principal ID varieert per tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
 
    - REST API-URI
 
@@ -412,7 +412,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 
 ### <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
 
-U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Als u de toewijzing van een blauwdruk ongedaan wilt maken, gebruikt u de volgende REST API-bewerking:
+U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, blijven de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achter. Als u de toewijzing van een blauwdruk ongedaan wilt maken, gebruikt u de volgende REST API-bewerking:
 
 - REST API-URI
 
@@ -432,7 +432,7 @@ Als u de blauwdruk zelf wilt verwijderen, gebruikt u de volgende REST API-bewerk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een blauw druk gemaakt, toegewezen en verwijderd met REST API. Voor meer informatie over Azure-blauw drukken gaat u verder met het artikel van de blauw druk-levens duur.
+In deze quickstart hebt u een blauwdruk met REST API gemaakt, toegewezen en verwijderd. Ga voor meer informatie over Azure Blueprints verder naar het artikel over de levenscyclus van de blauwdruk.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de levens duur van de blauw druk](./concepts/lifecycle.md)
+> [Meer informatie over de levenscyclus van de blauwdruk](./concepts/lifecycle.md)

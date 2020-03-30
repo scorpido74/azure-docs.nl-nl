@@ -1,6 +1,6 @@
 ---
-title: 'Use case: klantprofilering'
-description: Meer informatie over hoe Azure Data Factory wordt gebruikt voor het maken van een gegevensgestuurde werk stroom (pijp lijn) om klanten van games te profileren.
+title: Use Case - Klantprofilering
+description: Ontdek hoe Azure Data Factory wordt gebruikt om een datagestuurde werkstroom (pijplijn) te maken voor klanten van het profiel van gaming.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,57 +12,57 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969293"
 ---
-# <a name="use-case---customer-profiling"></a>Use case: klantprofilering
-Azure Data Factory is een van de vele services die worden gebruikt voor het implementeren van de Cortana Intelligence Suite oplossings versnellers.  Ga voor meer informatie over Cortana Intelligence naar [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In dit document beschrijven we een eenvoudige use-case om u te helpen aan de slag te gaan met informatie over hoe Azure Data Factory veelvoorkomende analyse problemen kunt oplossen.
+# <a name="use-case---customer-profiling"></a>Use Case - Klantprofilering
+Azure Data Factory is een van de vele services die worden gebruikt om de Cortana Intelligence Suite van oplossingsversnellers te implementeren.  Ga voor meer informatie over Cortana Intelligence naar [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In dit document beschrijven we een eenvoudige use case om u op weg te helpen met het begrijpen hoe Azure Data Factory veelvoorkomende analyseproblemen kan oplossen.
 
 ## <a name="scenario"></a>Scenario
-Contoso is een gaming bedrijf dat games maakt voor meerdere platformen: spel consoles, hand apparaten en personal computers (Pc's). Als spelers deze games spelen, worden er grote hoeveel heden logboek gegevens geproduceerd waarmee de gebruiks patronen, de spel stijl en de voor keuren van de gebruiker worden bijgehouden.  In combi natie met demografische, regionale en product gegevens kan contoso Analytics uitvoeren om ze te begeleiden bij het verbeteren van de ervaring van spelers en deze te richten op upgrades en in-game aankopen. 
+Contoso is een gamebedrijf dat games maakt voor meerdere platforms: gameconsoles, handbediende apparaten en pc's . Terwijl spelers deze spellen spelen, wordt een groot volume aan loggegevens geproduceerd die de gebruikspatronen, speelstijl en voorkeuren van de gebruiker bijhouden.  In combinatie met demografische, regionale en productgegevens kan Contoso analyses uitvoeren om hen te begeleiden hoe ze de ervaring van spelers kunnen verbeteren en erop kunnen richten voor upgrades en in-game aankopen. 
 
-Het doel van Contoso is het identificeren van verkoop-en cross-sell-mogelijkheden op basis van de game geschiedenis van de spelers en het toevoegen van fascinerende functies om de groei van het bedrijf te stimuleren en klanten een betere ervaring te bieden. Voor deze use-case gebruiken we een gaming bedrijf als voor beeld van een bedrijf. Het bedrijf wil de games optimaliseren op basis van het gedrag van spelers. Deze principes zijn van toepassing op elk bedrijf dat haar klanten wil betrekken over zijn goederen en services en de ervaring van hun klanten kan verbeteren.
+Contoso's doel is om up-sell/cross-sell mogelijkheden te identificeren op basis van de gaminggeschiedenis van zijn spelers en aantrekkelijke functies toe te voegen om de bedrijfsgroei te stimuleren en klanten een betere ervaring te bieden. Voor deze use case gebruiken we een gaming bedrijf als voorbeeld van een bedrijf. Het bedrijf wil zijn games optimaliseren op basis van het gedrag van spelers. Deze principes zijn van toepassing op elk bedrijf dat zijn klanten wil betrekken bij zijn goederen en diensten en de ervaring van hun klanten wil verbeteren.
 
-In deze oplossing wil Contoso de effectiviteit evalueren van een marketing campagne die onlangs is gestart. We beginnen met de onbewerkte gaming logboeken, verwerken en verrijken deze met geolocatiegegevens, nemen samen met de advertentie referentie gegevens en kopiëren ze in een Azure SQL Database om de impact van de campagne te analyseren.
+In deze oplossing wil Contoso de effectiviteit evalueren van een marketingcampagne die het onlangs heeft gelanceerd. We beginnen met de raw gaming logs, verwerken en verrijken ze met geolocatiegegevens, voegen deze samen met advertentiereferentiegegevens en kopiëren ze ten slotte naar een Azure SQL-database om de impact van de campagne te analyseren.
 
 ## <a name="deploy-solution"></a>Oplossing implementeren
-Alles wat u nodig hebt om toegang te krijgen tot deze eenvoudige use-case is een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/), een [Azure Blob-opslag account](../../storage/common/storage-account-create.md)en een [Azure SQL database](../../sql-database/sql-database-get-started.md). U implementeert de klant profilerings pijplijn vanuit de tegel **voorbeeld pijplijnen** op de start pagina van uw Data Factory.
+Het enige wat u nodig hebt om toegang te krijgen tot deze eenvoudige use case is een [Azure-abonnement,](https://azure.microsoft.com/pricing/free-trial/)een [Azure Blob-opslagaccount](../../storage/common/storage-account-create.md)en een [Azure SQL-database.](../../sql-database/sql-database-get-started.md) U implementeert de pijplijn voor klantprofilering vanuit de tegel **Voorbeeldpijplijnen** op de startpagina van uw gegevensfabriek.
 
-1. Maak een data factory of open een bestaande data factory. Zie [gegevens kopiëren van Blob Storage naar SQL database met behulp van Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stappen om een Data Factory te maken.
-2. Klik in de Blade **Data Factory** voor de Data Factory op de tegel **voorbeeld pijplijnen** .
+1. Maak een gegevensfabriek of open een bestaande gegevensfabriek. Zie [Gegevens kopiëren van Blob-opslag naar SQL-database met Gegevensfabriek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stappen om een gegevensfabriek te maken.
+2. Klik in het **DATA FACTORY-blad** voor de gegevensfabriek op de tegel **Voorbeeldpijplijnen.**
 
-    ![Tegel voor voorbeeld pijplijnen](./media/data-factory-samples/SamplePipelinesTile.png)
-3. Klik op de Blade **voorbeeld pijplijnen** op de **klant profilering** die u wilt implementeren.
+    ![Betegel voorbeeldpijplijnen](./media/data-factory-samples/SamplePipelinesTile.png)
+3. Klik in het blade **van voorbeeldpijplijnen** op de **klantprofilering** die u wilt implementeren.
 
-    ![Blade voorbeeld pijplijnen](./media/data-factory-samples/SampleTile.png)
-4. Geef de configuratie-instellingen voor het voor beeld op. Bijvoorbeeld uw Azure Storage-account naam en-sleutel, naam van Azure SQL-Server, Data Base, gebruikers-ID en wacht woord.
+    ![Voorbeeldvan pijpleidingenblad](./media/data-factory-samples/SampleTile.png)
+4. Geef configuratie-instellingen op voor het voorbeeld. Bijvoorbeeld de naam en sleutel van uw Azure-opslagaccount, de naam van Azure SQL-server, de database, de gebruikersnaam en het wachtwoord.
 
-    ![Voorbeeld Blade](./media/data-factory-samples/SampleBlade.png)
-5. Nadat u klaar bent met het opgeven van de configuratie-instellingen, klikt u op **maken** om de voorbeeld pijplijnen en gekoppelde services/tabellen die door de pijp lijnen worden gebruikt, te maken/te implementeren.
-6. U ziet de status van de implementatie op de voorbeeld tegel waarop u eerder hebt geklikt op de Blade **voorbeeld pijplijnen** .
+    ![Monsterblad](./media/data-factory-samples/SampleBlade.png)
+5. Nadat u klaar bent met het opgeven van de configuratie-instellingen, klikt u op **Maken** om de voorbeeldpijplijnen en gekoppelde services/tabellen die door de pijplijnen worden gebruikt, te maken/implementeren.
+6. U ziet de status van implementatie op de voorbeeldtegel waarop u eerder hebt geklikt op het blade van de **voorbeeldpijplijnen.**
 
     ![Implementatiestatus](./media/data-factory-samples/DeploymentStatus.png)
-7. Wanneer het bericht **implementatie voltooid** wordt weer gegeven op de tegel voor het voor beeld, sluit u de Blade **voorbeeld pijplijnen** .  
-8. Op de Blade **Data Factory** ziet u dat gekoppelde services, gegevens sets en pijp lijnen aan uw Data Factory worden toegevoegd.  
+7. Wanneer u het bericht **Implementatie op de** tegel voor het voorbeeld ziet, sluit u het blade van de **voorbeeldpijplijnen.**  
+8. Op **DATA FACTORY blade** ziet u dat gekoppelde services, gegevenssets en pijplijnen worden toegevoegd aan uw gegevensfabriek.  
 
     ![Blade Gegevensfactory](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="solution-overview"></a>Overzicht van de oplossing
-Deze eenvoudige use-case kan worden gebruikt als voor beeld van hoe u Azure Data Factory kunt gebruiken om gegevens op te nemen, voor te bereiden, te transformeren, te analyseren en te publiceren.
+Deze eenvoudige use case kan worden gebruikt als een voorbeeld van hoe u Azure Data Factory gebruiken om gegevens in te nemen, voor te bereiden, te transformeren, te analyseren en te publiceren.
 
 ![End-to-end werkstroom](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
 
-In deze afbeelding ziet u hoe de gegevens pijplijnen worden weer gegeven in de Azure Portal nadat ze zijn geïmplementeerd.
+In dit cijfer wordt weergegeven hoe de gegevenspijplijnen worden weergegeven in de Azure-portal nadat ze zijn geïmplementeerd.
 
-1. De **PartitionGameLogsPipeline** leest de onbewerkte Game gebeurtenissen uit Blob Storage en maakt partities op basis van jaar, maand en dag.
-2. De **EnrichGameLogsPipeline** neemt deel aan gepartitioneerde Game gebeurtenissen met geo-code referentie gegevens en verrijkt de gegevens door IP-adressen toe te wijzen aan de overeenkomstige geografische locaties.
-3. De **AnalyzeMarketingCampaignPipeline** -pijp lijn maakt gebruik van de verrijkte gegevens en verwerkt deze met de advertentie gegevens om de uiteindelijke uitvoer te maken die de effectiviteit van de marketing campagne bevat.
+1. De **PartitionGameLogsPipeline** leest de onbewerkte gamegebeurtenissen uit blob-opslag en maakt partities op basis van jaar, maand en dag.
+2. De **EnrichGameLogsPipeline** voegt partitiegamegebeurtenissen samen met geocodereferentiegegevens en verrijkt de gegevens door IP-adressen toe te geven aan de overeenkomstige geolocaties.
+3. De **Pipeline AnalyzeMarketingCampaignPipeline** gebruikt de verrijkte gegevens en verwerkt deze met de advertentiegegevens om de uiteindelijke uitvoer te maken die de effectiviteit van marketingcampagnes bevat.
 
-In dit voor beeld wordt Data Factory gebruikt voor het indelen van activiteiten die invoer gegevens kopiëren, transformeren en verwerken van de gegevens, en het uitvoeren van de laatste gegevens naar een Azure SQL Database.  U kunt ook het netwerk van gegevens pijplijnen visualiseren, beheren en hun status controleren vanuit de gebruikers interface.
+In dit voorbeeld wordt Data Factory gebruikt om activiteiten te orkestreren die invoergegevens kopiëren, transformeren en verwerken en de uiteindelijke gegevens uitvoeren naar een Azure SQL-database.  U ook het netwerk van gegevenspijplijnen visualiseren, deze beheren en hun status controleren vanuit de gebruikersinterface.
 
 ## <a name="benefits"></a>Voordelen
-Door hun gebruikers profiel analyse te optimaliseren en deze uit te lijnen met zakelijke doel stellingen, kan gaming bedrijf snel gebruiks patronen verzamelen en de effectiviteit van de marketing campagnes analyseren.
+Door hun gebruikersprofielanalyses te optimaliseren en deze af te stemmen op zakelijke doelen, is het gamebedrijf in staat om snel gebruikspatronen te verzamelen en de effectiviteit van zijn marketingcampagnes te analyseren.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een CI/CD-pijplijn voor .NET maken met Azure DevOps Projects'
+title: 'Quickstart: een CI/CD-pijplijn voor .NET maken met Azure DevOps Projects'
 description: Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. Hiermee kunt u een .NET-app voor een Azure-service van uw keuze starten in slechts enkele stappen.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7d2ccdfa1fe553d0795a82856dd255f4a54138bf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70898026"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor .NET maken met Azure DevOps Projects
@@ -33,7 +33,7 @@ Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studi
 
 DevOps Projects maakt een CI/CD-pijplijn in Azure DevOps. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 
 1. Kies in het linkerdeelvenster het pictogram **Een resource maken** in de linkernavigatiebalk en zoek naar **DevOps Projects**.  
 
@@ -47,21 +47,21 @@ DevOps Projects maakt een CI/CD-pijplijn in Azure DevOps. U kunt een nieuwe Azur
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
-2. Dit voorbeeld gebruikt een ASP.NET Core MVC-toepassing. Selecteer het **.net core** -toepassings raamwerk en selecteer vervolgens **volgende**.    
+2. Dit voorbeeld gebruikt een ASP.NET Core MVC-toepassing. Selecteer het **toepassingskader .NET Core** en selecteer **Volgende**.    
     
-3. Selecteer **Windows Web app** als een implementatie doel en selecteer **volgende**. U kunt desgewenst andere Azure-Services voor uw implementatie kiezen. Het toepassings raamwerk, dat u eerder hebt gekozen, bepaalt het type Azure service-implementatie doel dat u hier kunt vinden.
+3. Selecteer **Windows Web App** als implementatiedoel en selecteer **Volgende**. Optioneel u andere Azure-services voor uw implementatie kiezen. Het toepassingskader, dat u eerder hebt gekozen, bepaalt het type Azure-serviceimplementatiedoel dat hier beschikbaar is.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren 
 
-1. Voer een **project naam**in.
+1. Voer een **projectnaam**in .
 
-2. Maak een nieuwe gratis **Azure DevOps-organisatie** of kies een bestaande organisatie in de vervolg keuzelijst.
+2. Maak een nieuwe gratis **Azure DevOps-organisatie** of kies een bestaande organisatie in de vervolgkeuzelijst.
 
-3. Selecteer uw **Azure-abonnement**, voer een naam in voor uw **Web-app** of neem de standaard waarden op en selecteer vervolgens **gereed**. Na een paar minuten wordt het DevOps Projects implementatie overzicht weer gegeven in de Azure Portal. 
+3. Selecteer uw **Azure-abonnement,** voer een naam in voor uw **web-app** of voer de standaardversie uit en selecteer **Gereed**. Na enkele minuten wordt het implementatieoverzicht van DevOps-projecten weergegeven in de Azure-portal. 
 
-4. Selecteer **naar resource gaan** om het DevOps-Project dashboard weer te geven. In de rechter bovenhoek kunt u het **project** vastmaken aan uw dash board voor snelle toegang. Een voor beeld-app is ingesteld in een opslag plaats in uw **Azure DevOps-organisatie**. Er wordt een build uitgevoerd en uw app is geïmplementeerd in Azure.
+4. Selecteer **Ga naar resource om** het dashboard Van DevOps Project weer te geven. In de rechterbovenhoek moet u het **project** vastmaken aan uw dashboard voor snelle toegang. Er wordt een voorbeeld-app ingesteld in een repo in uw **Azure DevOps-organisatie.** Een build wordt uitgevoerd en uw app wordt geïmplementeerd in Azure.
 
-5. Het dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en app in Azure. Klik aan de rechter kant onder Azure-resources op **Bladeren** om de actieve app weer te geven.
+5. Het dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en app in Azure. Selecteer rechts onder Azure-resources de optie **Bladeren** om uw hardloopapp weer te geven.
 
    ![Dashboardweergave](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
 
@@ -69,17 +69,17 @@ DevOps Projects maakt een CI/CD-pijplijn in Azure DevOps. U kunt een nieuwe Azur
 
 Met DevOps Projects is een Git-opslagplaats gemaakt in Azure Repos of in GitHub. Ga als volgt te werk om de opslagplaats weer te geven en codewijzigingen aan de brengen in de toepassing:
 
-1. Selecteer aan de linkerkant van het DevOps Projects-dashboard de koppeling voor uw **master** branch. Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
+1. Selecteer links van het dashboard DevOps Projects de koppeling voor uw **masterbranch.** Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
 
-2. In de volgende stappen kunt u de webbrowser gebruiken om code wijzigingen rechtstreeks aan de **hoofd** vertakking door te voeren. U kunt ook uw Git-opslag plaats in uw favoriete IDE klonen door **klonen** te selecteren in de rechter bovenhoek van de pagina met de opslag plaats. 
+2. In de volgende stappen u de webbrowser gebruiken om codewijzigingen rechtstreeks aan te brengen en te vastleggen in de **hoofdbranch.** Je je Git-repository ook klonen in je favoriete IDE door **Clone** te selecteren rechtsboven op de repository-pagina. 
 
-3. Ga aan de linkerkant naar de structuur van het toepassings bestand naar **Application/ASPNET-core-DotNet-core/pages/index. cshtml**.
+3. Navigeer aan de linkerkant door de toepassingsbestandsstructuur naar **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 
 4. Selecteer **Bewerken** en breng vervolgens een wijziging aan in de h2-kop. Typ bijvoorbeeld **Meteen aan de slag met Azure DevOps Projects** of maak een andere wijziging.
 
       ![Code-bewerkingen](_img/azure-devops-project-aspnet-core/codechange.png)
 
-5. Selecteer **door voeren**, behoud een opmerking en selecteer opnieuw **door voeren** .
+5. Selecteer **Commit,** laat een reactie achter en selecteer **Opnieuw vastleggen.**
 
 6. Ga in uw browser naar het Azure DevOps-projectdashboard.  Als het goed is, ziet u nu dat er een build wordt gemaakt. De aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
 
@@ -90,7 +90,7 @@ In de vorige stap werd in Azure DevOps Projects automatisch een volledige CI/CD-
 1. Selecteer boven in het DevOps Projects-dashboard de optie **Build-pijplijnen**.  
 Met deze koppeling worden een browsertabblad en de Azure DevOps build-pijplijn van Azure DevOps voor het nieuwe project geopend.
 
-1. Selecteer het beletselteken (...).  Met deze actie wordt een menu geopend waarin u diverse acties kunt starten, zoals een nieuwe build in de wachtrij plaatsen, een build onderbreken en de build-pijplijn bewerken.
+1. Selecteer de ellips (...).  Met deze actie wordt een menu geopend waarin u verschillende activiteiten starten, zoals het in de rij zetten van een nieuwe build, het onderbreken van een build en het bewerken van de buildpijplijn.
 
 1. Selecteer **Bewerken**.
 
@@ -101,10 +101,10 @@ Met deze koppeling worden een browsertabblad en de Azure DevOps build-pijplijn v
 
 1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
-1. Wijzig de naam van de build-pijplijn in een gebruiksvriendelijkere naam. Selecteer **Opslaan en wachtrij** en selecteer **Opslaan**.
+1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
 
-1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**.   
-In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build.  Azure Pipelines houdt alle wijzigingen in de build-pijplijn bij en biedt de mogelijkheid om versies te vergelijken.
+1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**.   
+In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build.  Azure Pipelines houdt alle wijzigingen in de build-pipeline bij en biedt de mogelijkheid om versies te vergelijken.
 
 1. Selecteer **Triggers**.  
 In DevOps Projects is automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart.  U kunt desgewenst kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
@@ -129,7 +129,7 @@ De taken zijn de acties die tijdens het implementatieproces worden uitgevoerd. I
 1. Selecteer aan de rechterkant **Releases weergeven**. In deze weergave wordt een versiesgeschiedenis weergegeven.
 
 1. Selecteer het beletselteken (...) naast een van de releases en selecteer vervolgens **Openen**.  
-U kunt verschillende menu's verkennen, zoals een releaseoverzicht, gekoppelde werkitems en tests.
+Er zijn verschillende menu's die u kunt verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
 
 
 1. Selecteer **Doorvoeringen**.   

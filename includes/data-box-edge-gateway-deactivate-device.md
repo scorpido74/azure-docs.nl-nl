@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129232"
 ---
-Om uw apparaat te herstellen naar de fabrieksinstellingen, moet u alle gegevens op de gegevensschijf en de opstartschijf veilig wissen. 
+Als u uw apparaat opnieuw wilt instellen, moet u alle gegevens op de gegevensschijf en de opstartschijf van uw apparaat veilig wissen. 
 
-Gebruik de cmdlet `Reset-HcsAppliance` om zowel de gegevensschijven als de opstartschijf of alleen de gegevensschijven te wissen. Met de schakelopties `ClearData` en `BootDisk` kunt u kiezen om alleen de gegevensschijven of de opstartschijf te wissen.
+Gebruik `Reset-HcsAppliance` de cmdlet om zowel de gegevensschijven als de opstartschijf of alleen de gegevensschijven uit te roeien. Met `ClearData` `BootDisk` de schakelaars u respectievelijk de gegevensschijven en de opstartschijf wissen.
 
-Met de schakeloptie `BootDisk` wordt de opstartschijf gewist en wordt het apparaat onbruikbaar. Deze optie dient alleen te worden gebruikt wanneer het apparaat moet worden geretourneerd naar Microsoft. Raadpleeg voor meer informatie [Het apparaat terugsturen naar Microsoft](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+De `BootDisk` schakelaar veegt de opstartschijf en maakt het apparaat onbruikbaar. Het mag alleen worden gebruikt wanneer het apparaat moet worden teruggestuurd naar Microsoft. Zie [Het apparaat retourneren naar Microsoft voor](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device)meer informatie.
 
-Als u het apparaat opnieuw instelt in de lokale webinterface, worden alleen de gegevensschijven veilig gewist, maar wordt de opstartschijf intact gehouden. De opstartschijf bevat de apparaatconfiguratie.
+Als u de apparaatreset gebruikt in de lokale webgebruikersinterface, worden alleen de gegevensschijven veilig gewist, maar blijft de opstartschijf intact. De opstartschijf bevat de apparaatconfiguratie.
 
 1. [Maak verbinding met de PowerShell-interface](#connect-to-the-powershell-interface).
-2. Typ in de opdrachtprompt:
+2. Typ het volgende na de opdrachtprompt:
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 

@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2783c828f96eeb3539e2266eaf1d6d590a6af4c4
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117021"
 ---
-Een nieuwe functie van de Windows 10 VPN-client, altijd aan, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always on kan het actieve VPN-profiel automatisch verbinding maken en blijven verbonden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
+Een nieuwe functie van de Windows 10 VPN-client, Always On, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always On kan het actieve VPN-profiel automatisch verbinding maken en verbonden blijven op basis van triggers, zoals aanmelding door de gebruiker, wijziging van de netwerkstatus of apparaatscherm actief.
 
-U kunt virtuele Azure-netwerk gateways met Windows 10 altijd on gebruiken om permanente gebruikers tunnels en tunnels voor apparaten te maken met Azure. Dit artikel helpt u bij het configureren van een always on-VPN-gebruikers tunnel.
+U gateways met Windows 10 Always On gebruiken om permanente gebruikerstunnels en apparaattunnels naar Azure vast te stellen. In dit artikel u een Always On VPN-gebruikerstunnel configureren.
 
-Altijd op VPN-verbindingen zijn twee typen tunnels:
+Always On VPN-verbindingen omvatten een van de twee soorten tunnels:
 
-* **Tunnel van apparaat**: Hiermee maakt u verbinding met opgegeven VPN-servers voordat gebruikers zich aanmelden bij het apparaat. Bij connectiviteits scenario's voor aanmelding en Apparaatbeheer wordt een tunnel gebruikt.
+* **Apparaattunnel**: maakt verbinding met opgegeven VPN-servers voordat gebruikers zich bij het apparaat aanmelden. Vooraf aanmelden connectiviteitsscenario's en apparaatbeheer maken gebruik van een apparaattunnel.
 
-* **Gebruikers tunnel**: maakt alleen verbinding nadat gebruikers zich aanmelden op het apparaat. Door gebruikers tunnels te gebruiken, hebt u toegang tot bedrijfs bronnen via VPN-servers.
+* **Gebruikerstunnel**: maakt alleen verbinding nadat gebruikers zich bij het apparaat hebben aangemeld. Door gebruik te maken van gebruikerstunnels hebt u toegang tot organisatiebronnen via VPN-servers.
 
-Tunnels en gebruikers tunnels van apparaten worden onafhankelijk van hun VPN-profielen gebruikt. Ze kunnen tegelijkertijd worden verbonden en ze kunnen, indien van toepassing, verschillende verificatie methoden en andere VPN-configuratie-instellingen gebruiken.
+Apparaattunnels en gebruikerstunnels werken onafhankelijk van hun VPN-profielen. Ze kunnen tegelijkertijd worden verbonden en ze kunnen verschillende verificatiemethoden en andere VPN-configuratie-instellingen gebruiken, indien van toepassing.

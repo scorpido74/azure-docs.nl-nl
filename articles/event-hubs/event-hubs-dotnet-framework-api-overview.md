@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de Azure Event Hubs .NET Framework-Api's | Microsoft Docs
-description: Dit artikel bevat een overzicht van een aantal van de belangrijkste Event Hubs .NET Framework client-Api's (beheer en runtime).
+title: Overzicht van de Azure Event Hubs .NET Framework API's | Microsoft Documenten
+description: In dit artikel vindt u een overzicht van enkele van de belangrijkste Gebeurtenishubs .NET Framework client API's (beheer en runtime).
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
 ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137608"
 ---
-# <a name="event-hubs-net-framework-api-overview"></a>Overzicht van Event Hubs .NET Framework-API
+# <a name="event-hubs-net-framework-api-overview"></a>Overzicht van Event Hubs .NET Framework API
 
-In dit artikel vindt u een overzicht van een aantal van de belangrijkste Azure-Event Hubs [.NET Framework-client-api's](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Er zijn twee categorieën: beheer en runtime-Api's. Run-time-Api's bestaan uit alle bewerkingen die nodig zijn om een bericht te verzenden en te ontvangen. Met beheer bewerkingen kunt u een Event Hubs entiteits status beheren door entiteiten te maken, bij te werken en te verwijderen.
+In dit artikel worden enkele van de belangrijkste Azure Event Hubs [.NET Framework-client-API's](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)samengevat. Er zijn twee categorieën: beheer- en runtime API's. Run-time API's bestaan uit alle bewerkingen die nodig zijn om een bericht te verzenden en te ontvangen. Met beheerbewerkingen u een entiteitsstatus van Gebeurtenishubs beheren door entiteiten te maken, bij te werken en te verwijderen.
 
-[Bewakings scenario's](event-hubs-metrics-azure-monitor.md) omvatten zowel het beheer als de uitvoerings tijd. Zie de API-naslag informatie over [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)en [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) voor gedetailleerde Naslag informatie over de .net-api's.
+[Monitoringscenario's](event-hubs-metrics-azure-monitor.md) omvatten zowel beheer als run-time. Zie de API's .NET Framework , [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)en [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor) voor gedetailleerde referentiedocumentatie op de API's [.NET.](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)
 
 ## <a name="management-apis"></a>Beheer API’s
 
-Als u de volgende beheer bewerkingen wilt uitvoeren, moet **u machtigingen voor beheer hebben** voor de Event hubs naam ruimte:
+Als u de volgende beheerbewerkingen wilt uitvoeren, moet u machtigingen **voor beheren** hebben op de naamruimte van gebeurtenishubs:
 
 ### <a name="create"></a>Maken
 
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>Bijwerken
+### <a name="update"></a>Update
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
@@ -54,7 +54,7 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
-## <a name="run-time-apis"></a>Run-time-Api's
+## <a name="run-time-apis"></a>Runtime API's
 ### <a name="create-publisher"></a>Uitgever maken
 
 ```csharp
@@ -81,7 +81,7 @@ data.Properties.Add("Type", "Telemetry_" + DateTime.Now.ToLongTimeString());
 await client.SendAsync(data);
 ```
 
-### <a name="create-consumer"></a>Consument maken
+### <a name="create-consumer"></a>Maak de consument
 
 ```csharp
 // Create the Event Hubs client
@@ -113,9 +113,9 @@ var info = message.GetBytes();
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
-## <a name="event-processor-host-apis"></a>Api's voor Event processor host
+## <a name="event-processor-host-apis"></a>Api's voor hosthost van gebeurtenisprocessor
 
-Deze Api's bieden tolerantie voor werk processen die niet meer beschikbaar zijn, door het distribueren van partities over beschik bare werk rollen.
+Deze API's bieden tolerantie voor werkprocessen die mogelijk niet meer beschikbaar zijn, door partities over beschikbare werknemers te verdelen.
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -132,7 +132,7 @@ await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await host.UnregisterEventProcessorAsync();
 ```
 
-De [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) -interface wordt als volgt gedefinieerd:
+De [Interface iEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) wordt als volgt gedefinieerd:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -179,9 +179,9 @@ public class SimpleEventProcessor : IEventProcessor
 Volg deze koppelingen voor meer informatie over Event Hubs-scenario‘s:
 
 * [Wat is Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
-* [Programmeerhandleiding voor Event Hubs](event-hubs-programming-guide.md)
+* [Programmeerhandleiding voor gebeurtenishubs](event-hubs-programming-guide.md)
 
-De .NET API-verwijzingen zijn als volgt:
+De .NET API-verwijzingen zijn hier:
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-* [Micro soft. Azure. Event hubs. EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)
+* [Microsoft.azure.eventhubs.eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

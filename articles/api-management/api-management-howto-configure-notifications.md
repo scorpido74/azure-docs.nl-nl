@@ -1,7 +1,7 @@
 ---
-title: Meldingen en e-mail sjablonen configureren
+title: Meldingen en e-mailsjablonen configureren
 titleSuffix: Azure API Management
-description: Meer informatie over het configureren van meldingen en e-mail sjablonen in azure API Management.
+description: Meer informatie over het configureren van meldingen en e-mailsjablonen in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,81 +14,81 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244067"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Meldingen en e-mailsjablonen configureren in Azure API Management
 
-API Management biedt de mogelijkheid om meldingen te configureren voor specifieke gebeurtenissen en om de e-mail sjablonen te configureren die worden gebruikt om te communiceren met de beheerders en ontwikkel aars van een API Management-exemplaar. In dit artikel wordt beschreven hoe u meldingen kunt configureren voor de beschik bare gebeurtenissen en vindt u een overzicht van het configureren van de e-mail sjablonen die worden gebruikt voor deze gebeurtenissen.
+API-beheer biedt de mogelijkheid om meldingen voor specifieke gebeurtenissen te configureren en de e-mailsjablonen te configureren die worden gebruikt om te communiceren met de beheerders en ontwikkelaars van een API-beheerexemplaar. In dit artikel ziet u hoe u meldingen voor de beschikbare gebeurtenissen configureert en een overzicht van het configureren van de e-mailsjablonen die voor deze gebeurtenissen worden gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u geen API Management service-exemplaar hebt, voltooit u de volgende Snelstartgids: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+Als u geen API Management-serviceinstantie hebt, voert u de volgende quickstart uit: [Een instantie voor Azure API Management maken.](get-started-create-service-instance.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"> </a>Meldingen configureren
+## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>Meldingen configureren
 
-1.  Selecteer uw exemplaar van **API Management** .
-2.  Klik op **meldingen** om de beschik bare meldingen weer te geven.
+1.  Selecteer uw **api-beheerexemplaar.**
+2.  Klik **op Meldingen** om de beschikbare meldingen weer te geven.
 
-    ![Meldingen van de uitgever][api-management-publisher-notifications]
+    ![Publisher-meldingen][api-management-publisher-notifications]
 
     De volgende lijst met gebeurtenissen kan worden geconfigureerd voor meldingen.
 
-    -   **Abonnements aanvragen (goed keuring vereist)** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over abonnements aanvragen voor API-producten waarvoor goed keuring is vereist.
-    -   **Nieuwe abonnementen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over nieuwe API-product abonnementen.
-    -   **Application Gallery-aanvragen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer er nieuwe toepassingen worden verzonden naar de toepassings galerie.
-    -   **BCC** -de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail blind carbon kopieën van alle e-mails die naar ontwikkel aars worden verzonden.
-    -   **Nieuw probleem of opmerking** : de ontvangers van het e-mail bericht en gebruikers ontvangen e-mail meldingen wanneer een nieuw probleem of een opmerking wordt verzonden op de ontwikkelaars Portal.
-    -   **Account bericht sluiten** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer een account wordt gesloten.
-    -   **Quota limiet voor abonnementen nadert** : de volgende e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer het abonnements gebruik bijna de gebruiks quota wordt bereikt.
+    -   **Abonnementsaanvragen (waarvoor goedkeuring vereist is)** - De opgegeven e-mailontvangers en -gebruikers ontvangen e-mailmeldingen over abonnementsaanvragen voor API-producten waarvoor goedkeuring vereist is.
+    -   **Nieuwe abonnementen** - De opgegeven e-mailontvangers en -gebruikers ontvangen e-mailmeldingen over nieuwe API-productabonnementen.
+    -   **Aanvragen voor toepassingsgalerie** - De opgegeven e-mailontvangers en -gebruikers ontvangen e-mailmeldingen wanneer nieuwe aanvragen worden ingediend bij de toepassingsgalerie.
+    -   **BCC** - De opgegeven e-mailontvangers en -gebruikers ontvangen blinde carbon kopieën van e-mail van alle e-mails die naar ontwikkelaars worden verzonden.
+    -   **Nieuw probleem of opmerking** - De opgegeven e-mailontvangers en -gebruikers ontvangen e-mailmeldingen wanneer een nieuw probleem of opmerking wordt ingediend op de ontwikkelaarsportal.
+    -   **Accountbericht sluiten** : de opgegeven e-mailontvangers en -gebruikers ontvangen e-mailmeldingen wanneer een account wordt gesloten.
+    -   **Limiet voor abonnementsquota naderen** : de volgende e-mailontvangers en -gebruikers ontvangen e-mailmeldingen wanneer het gebruik van een abonnement in de buurt komt van het gebruiksquotum.
 
         > [!NOTE]
-        > Meldingen worden alleen geactiveerd door het [quotum beleid voor abonnementen](api-management-access-restriction-policies.md#SetUsageQuota) . [Quota per sleutel](api-management-access-restriction-policies.md#SetUsageQuotaByKey) beleid genereert geen meldingen.
+        > Meldingen worden alleen geactiveerd door het [quotum door abonnementsbeleid.](api-management-access-restriction-policies.md#SetUsageQuota) [Quota op sleutelbeleid](api-management-access-restriction-policies.md#SetUsageQuotaByKey) genereert geen meldingen.
 
-    Voor elke gebeurtenis kunt u e-mail ontvangers opgeven met behulp van het tekstvak e-mail adres of u kunt gebruikers selecteren in een lijst.
+    Voor elk evenement u e-mailontvangers opgeven via het tekstvak e-mailadres of gebruikers selecteren uit een lijst.
 
-3.  Geef de e-mail adressen op die moeten worden gewaarschuwd in het tekstvak e-mail adres. Als u meerdere e-mail adressen hebt, kunt u deze scheiden met komma's.
+3.  Als u de e-mailadressen wilt opgeven die moeten worden aangemeld, voert u deze in het tekstvak e-mailadres in. Als u meerdere e-mailadressen hebt, scheidt u deze met komma's.
 
     ![Ontvangers van meldingen][api-management-email-addresses]
 
 4.  Klik op **Toevoegen**.
 
-## <a name="email-templates"> </a>Meldings sjablonen configureren
+## <a name="configure-notification-templates"></a><a name="email-templates"> </a>Meldingssjablonen configureren
 
-API Management biedt meldings sjablonen voor de e-mail berichten die worden verzonden in de cursus van het beheer en het gebruik van de service. De volgende e-mail sjablonen worden gegeven.
+API Management biedt meldingssjablonen voor de e-mailberichten die worden verzonden tijdens het beheren en gebruiken van de service. De volgende e-mailsjablonen worden verstrekt.
 
--   Inzending van de toepassings galerie goedgekeurd
--   Farewell-brief voor ontwikkel aars
--   Melding voor de quota limiet voor ontwikkel aars
+-   Aanvraag galerij indiening goedgekeurd
+-   De afscheidsbrief van de ontwikkelaar
+-   Quotumlimiet voor ontwikkelaars nadert melding
 -   Gebruiker uitnodigen
 -   Nieuwe opmerking toegevoegd aan een probleem
--   Nieuw probleem ontvangen
+-   Nieuw nummer ontvangen
 -   Nieuw abonnement geactiveerd
--   Bevestiging van verlenging van abonnement
--   Afwijzingen abonnements aanvraag
--   Ontvangen abonnements aanvraag
+-   Vernieuwde bevestiging van abonnement
+-   Abonnementaanvraag wordt afgenomen
+-   Inschrijvingsaanvraag ontvangen
 
 Deze sjablonen kunnen naar wens worden gewijzigd.
 
-Klik op **meldingen sjablonen**om de e-mail sjablonen voor uw API Management-exemplaar weer te geven en te configureren.
+Als u de e-mailsjablonen voor uw API-beheerexemplaar wilt weergeven en configureren, klikt u op **Meldingensjablonen**.
 
 ![E-mailsjablonen][api-management-email-templates]
 
-Elke e-mail sjabloon heeft een onderwerp in tekst zonder opmaak en een definitie van een hoofd tekst in HTML-indeling. Elk item kan naar wens worden aangepast.
+Elke e-mailsjabloon heeft een onderwerp in platte tekst en een hoofddefinitie in HTML-indeling. Elk item kan naar wens worden aangepast.
 
-![E-mail sjabloon editor][api-management-email-template]
+![E-mailsjablooneditor][api-management-email-template]
 
-De lijst met **para meters** bevat een lijst met para meters die worden ingevoegd in het onderwerp of de hoofd tekst. de opgegeven waarde wordt vervangen wanneer het e-mail bericht wordt verzonden. Als u een para meter wilt invoegen, plaatst u de cursor op de locatie waar u de para meter wilt plaatsen en klikt u op de pijl links van de parameter naam.
+De lijst **Parameters** bevat een lijst met parameters, die bij invoegen in het onderwerp of de behuizing, de aangewezen waarde wordt vervangen wanneer de e-mail wordt verzonden. Als u een parameter wilt invoegen, plaatst u de cursor op de plaats waar u de parameter wilt laten gaan en klikt u op de pijl links van de parameternaam.
 
 > [!NOTE]
-> De para meters worden niet vervangen door werkelijke waarden bij het weer geven of verzenden van een test.
+> De parameters worden niet vervangen door werkelijke waarden bij het bekijken of verzenden van een test.
 
-Als u de wijzigingen in de e-mail sjabloon wilt opslaan, klikt u op **Opslaan**of annuleert u de wijzigingen door op **negeren**te klikken.
+Als u de wijzigingen in de e-mailsjabloon wilt opslaan, klikt u op **Opslaan**of annuleert u de wijzigingen op **Verwijderen**.
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

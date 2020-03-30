@@ -1,24 +1,24 @@
 ---
-title: Meerdere exemplaren van een uitvoer waarde definiëren
-description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloon om meerdere keren te herhalen wanneer een waarde uit een implementatie wordt geretourneerd.
+title: Meerdere exemplaren van een uitvoerwaarde definiëren
+description: Gebruik de kopieerbewerking in een Azure Resource Manager-sjabloon om meerdere keren te herhalen wanneer u een waarde van een implementatie retourt.
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: db5c548c7bd4c60357d3656b1273b0192c497459
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624772"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153383"
 ---
-# <a name="output-iteration-in-azure-resource-manager-templates"></a>Uitvoer herhaling in Azure Resource Manager sjablonen
+# <a name="output-iteration-in-arm-templates"></a>Uitvoeriteratie in ARM-sjablonen
 
-In dit artikel wordt beschreven hoe u meer dan één waarde voor een uitvoer in uw Azure Resource Manager-sjabloon maakt. Door het element **copy** toe te voegen aan de sectie outputs van uw sjabloon, kunt u tijdens de implementatie dynamisch een aantal items retour neren.
+In dit artikel ziet u hoe u meer dan één waarde maakt voor een uitvoer in uw Azure Resource Manager-sjabloon (ARM). Door het **kopieerelement** toe te voegen aan het gedeelte uitvoer van uw sjabloon, u een aantal items dynamisch retourneren tijdens de implementatie.
 
-U kunt ook kopiëren met [resources](copy-resources.md), [Eigenschappen in een resource](copy-properties.md)en [variabelen](copy-variables.md)gebruiken.
+U ook kopiëren met [resources,](copy-resources.md) [eigenschappen in een resource](copy-properties.md)en [variabelen](copy-variables.md)gebruiken.
 
-## <a name="outputs-iteration"></a>Herhalingen van uitvoer
+## <a name="outputs-iteration"></a>Uitvoeriteratie
 
-Het element Copy heeft de volgende algemene indeling:
+Het kopieerelement heeft de volgende algemene indeling:
 
 ```json
 "copy": [
@@ -29,11 +29,11 @@ Het element Copy heeft de volgende algemene indeling:
 ]
 ```
 
-De eigenschap **Count** geeft het aantal iteraties op dat u voor de uitvoer waarde wilt.
+De eigenschap **aantal** geeft het gewenste aantal iteraties op voor de uitvoerwaarde.
 
-De eigenschap **input** geeft de eigenschappen aan die u wilt herhalen. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap **input** . Dit kan één eigenschap zijn (zoals een teken reeks) of een object met verschillende eigenschappen.
+De **eigenschap invoer** geeft de eigenschappen op die u wilt herhalen. U maakt een array met elementen die zijn opgebouwd uit de waarde in de **eigenschap invoer.** Het kan een enkele eigenschap zijn (zoals een tekenreeks) of een object met meerdere eigenschappen.
 
-In het volgende voor beeld wordt een variabele aantal opslag accounts gemaakt en wordt een eind punt voor elk opslag account geretourneerd:
+In het volgende voorbeeld wordt een variabel aantal opslagaccounts gemaakt en wordt een eindpunt geretourneerd voor elk opslagaccount:
 
 ```json
 {
@@ -77,7 +77,7 @@ In het volgende voor beeld wordt een variabele aantal opslag accounts gemaakt en
 }
 ```
 
-De vorige sjabloon retourneert een matrix met de volgende waarden:
+De voorgaande sjabloon retourneert een array met de volgende waarden:
 
 ```json
 [
@@ -86,7 +86,7 @@ De vorige sjabloon retourneert een matrix met de volgende waarden:
 ]
 ```
 
-In het volgende voor beeld worden drie eigenschappen van de nieuwe opslag accounts geretourneerd.
+In het volgende voorbeeld worden drie eigenschappen van de nieuwe opslagaccounts geretourneerd.
 
 ```json
 {
@@ -134,7 +134,7 @@ In het volgende voor beeld worden drie eigenschappen van de nieuwe opslag accoun
 }
 ```
 
-In het voor gaande voor beeld wordt een matrix met de volgende waarden geretourneerd:
+In het voorgaande voorbeeld wordt een array met de volgende waarden geretourneerd:
 
 ```json
 [
@@ -153,11 +153,11 @@ In het voor gaande voor beeld wordt een matrix met de volgende waarden geretourn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie: meerdere resource-instanties maken met behulp van Resource Manager-sjablonen](template-tutorial-create-multiple-instances.md)als u een zelf studie wilt door lopen.
-* Zie voor andere toepassingen van het element copy:
-  * [Resource iteratie in Azure Resource Manager sjablonen](copy-resources.md)
-  * [Eigenschaps herhaling in Azure Resource Manager sjablonen](copy-properties.md)
-  * [Variabele herhaling in Azure Resource Manager sjablonen](copy-variables.md)
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor meer informatie over de secties van een sjabloon.
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
+* Zie [Zelfstudie: meerdere resource-exemplaren maken met ARM-sjablonen](template-tutorial-create-multiple-instances.md)voor het doorlopen van een zelfstudie.
+* Zie voor andere toepassingen van het kopieerelement:
+  * [Resourceiteratie in ARM-sjablonen](copy-resources.md)
+  * [Eigenschapiteratie in ARM-sjablonen](copy-properties.md)
+  * [Variabele iteratie in ARM-sjablonen](copy-variables.md)
+* Zie [ARM-sjablonen ontwerpen](template-syntax.md)als u meer wilt weten over de secties van een sjabloon.
+* Zie [Een toepassing implementeren met ARM-sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
 

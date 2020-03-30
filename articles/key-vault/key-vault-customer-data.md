@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault functies voor klant gegevens-Azure Key Vault | Microsoft Docs
-description: Meer informatie over klant gegevens in Key Vault
+title: Functies voor klantgegevens van Azure Key Vault - Azure Key Vault | Microsoft Documenten
+description: Meer informatie over klantgegevens in Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,56 +10,56 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 67e1aeab4211249075b51bd0138d7875756a3483
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883318"
 ---
-# <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault klant gegevens functies
+# <a name="azure-key-vault-customer-data-features"></a>Functies voor klantgegevens van Azure Key Vault
 
-Azure Key Vault ontvangt klant gegevens tijdens het maken of bijwerken van kluizen, sleutels, geheimen, certificaten en beheerde opslag accounts. Deze klant gegevens zijn direct zichtbaar in de Azure Portal en via de REST API. Klant gegevens kunnen worden bewerkt of verwijderd door het object dat de gegevens bevat, bij te werken of te verwijderen.
+Azure Key Vault ontvangt klantgegevens tijdens het maken of bijwerken van kluizen, sleutels, geheimen, certificaten en beheerde opslagaccounts. Deze klantgegevens zijn direct zichtbaar in de Azure-portal en via de REST API. Klantgegevens kunnen worden bewerkt of verwijderd door het object dat de gegevens bevat bij te werken of te verwijderen.
 
-Systeem toegangs logboeken worden gegenereerd wanneer een gebruiker of toepassing toegang heeft tot Key Vault. Gedetailleerde toegangs logboeken zijn beschikbaar voor klanten die Azure Insights gebruiken.
+Systeemtoegangslogboeken worden gegenereerd wanneer een gebruiker of toepassing toegang heeft tot Key Vault. Gedetailleerde toegangslogboeken zijn beschikbaar voor klanten met Azure Insights.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Klant gegevens identificeren
+## <a name="identifying-customer-data"></a>Klantgegevens identificeren
 
-Met de volgende informatie worden klant gegevens binnen Azure Key Vault geïdentificeerd:
+De volgende informatie identificeert klantgegevens in Azure Key Vault:
 
-- Toegangs beleid voor Azure Key Vault bevat object-Id's die gebruikers, groepen of toepassingen vertegenwoordigen
-- Certificaat houders kunnen e-mail adressen of andere gebruikers-of organisatie-id's bevatten
-- Certificaat contactpersonen kunnen e-mail adressen, namen of telefoon nummers van gebruikers bevatten
-- Certificaat verleners kunnen e-mail adressen, namen, telefoon nummers, account referenties en organisatie gegevens bevatten
-- Wille keurige Tags kunnen worden toegepast op objecten in Azure Key Vault. Tot deze objecten behoren kluizen, sleutels, geheimen, certificaten en opslag accounts. De gebruikte labels bevatten mogelijk persoons gegevens
-- Azure Key Vault Access-logboeken bevatten object-Id's, [upn's](../active-directory/hybrid/plan-connect-userprincipalname.md)en IP-adressen voor elke rest API-aanroep
-- Azure Key Vault Diagnostische logboeken kunnen object-Id's en IP-adressen voor REST API-aanroepen bevatten
+- Toegangsbeleid voor Azure Key Vault bevat object--iD's die gebruikers, groepen of toepassingen vertegenwoordigen
+- Certificaatonderwerpen kunnen e-mailadressen of andere gebruikers- of organisatie-id's zijn
+- Certificaatcontactpersonen kunnen e-mailadressen, namen of telefoonnummers van gebruikers bevatten
+- Certificaatverstrekkers kunnen e-mailadressen, namen, telefoonnummers, accountgegevens en organisatiegegevens bevatten
+- Willekeurige tags kunnen worden toegepast op objecten in Azure Key Vault. Deze objecten omvatten kluizen, sleutels, geheimen, certificaten en opslagaccounts. De gebruikte tags kunnen persoonsgegevens bevatten
+- Azure Key Vault-toegangslogboeken bevatten object---iD's, [UPN's](../active-directory/hybrid/plan-connect-userprincipalname.md)en IP-adressen voor elke REST API-aanroep
+- Diagnostische logboeken van Azure Key Vault kunnen object--iD's en IP-adressen bevatten voor REST API-aanroepen
 
-## <a name="deleting-customer-data"></a>Verwijderen van klantgegevens
+## <a name="deleting-customer-data"></a>Klantgegevens verwijderen
 
-Dezelfde REST Api's, portal-ervaring en Sdk's die worden gebruikt voor het maken van kluizen, sleutels, geheimen, certificaten en beheerde opslag accounts, kunnen ook deze objecten bijwerken en verwijderen.
+Dezelfde REST-API's, Portal-ervaring en SDK's die worden gebruikt om kluizen, sleutels, geheimen, certificaten en beheerde opslagaccounts te maken, kunnen deze objecten ook bijwerken en verwijderen.
 
-Met de functie voor voorlopig verwijderen kunt u na het verwijderen van 90 dagen verwijderde gegevens herstellen. Bij het gebruik van zacht verwijderen, kunnen de gegevens permanent worden verwijderd voordat de Bewaar periode van 90 dagen is verlopen door een opschoon bewerking uit te voeren. Als de kluis of het abonnement is geconfigureerd voor het blok keren van leegmaak bewerkingen, is het niet mogelijk om gegevens definitief te verwijderen totdat de geplande Bewaar periode is verstreken.
+Met Soft delete u verwijderde gegevens 90 dagen na verwijdering herstellen. Bij het gebruik van soft delete kunnen de gegevens permanent worden verwijderd voordat de bewaartermijn van 90 dagen verstrijkt door een zuiveringsbewerking uit te voeren. Als de kluis of het abonnement is geconfigureerd om zuiveringsbewerkingen te blokkeren, is het niet mogelijk om gegevens permanent te verwijderen totdat de geplande bewaartermijn is verstreken.
 
-## <a name="exporting-customer-data"></a>Exporteren van gegevens van de klant
+## <a name="exporting-customer-data"></a>Klantgegevens exporteren
 
-Met dezelfde REST Api's, portal-ervaring en Sdk's die worden gebruikt voor het maken van kluizen, sleutels, geheimen, certificaten en beheerde opslag accounts kunt u ook deze objecten weer geven en exporteren.
+Met dezelfde REST-API's, portalervaring en SDK's die worden gebruikt om kluizen, sleutels, geheimen, certificaten en beheerde opslagaccounts te maken, u deze objecten ook bekijken en exporteren.
 
-Azure Key Vault Access-logboek registratie is een optionele functie die kan worden ingeschakeld om logboeken voor elke REST API-aanroep te genereren. Deze logboeken worden overgebracht naar een opslag account in uw abonnement waar u het Bewaar beleid toepast dat voldoet aan de vereisten van uw organisatie.
+Azure Key Vault access logging is een optionele functie die kan worden ingeschakeld om logboeken te genereren voor elke REST API-aanroep. Deze logboeken worden overgezet naar een opslagaccount in uw abonnement waar u het bewaarbeleid toepast dat voldoet aan de vereisten van uw organisatie.
 
-Azure Key Vault Diagnostische logboeken die persoonlijke gegevens bevatten, kunnen worden opgehaald door een export aanvraag te maken in de gebruikers-privacy-Portal. Deze aanvraag moet worden ingediend door de Tenant beheerder.
+Diagnostische logboeken van Azure Key Vault die persoonlijke gegevens bevatten, kunnen worden opgehaald door een exportverzoek in te dienen in de portal Voor gebruikersprivacy. Deze aanvraag moet worden gedaan door de tenantbeheerder.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Logboekregistratie van Azure Key Vault](key-vault-logging.md)
 
-- [Overzicht van Azure Key Vault voorlopig verwijderen](key-vault-soft-delete-cli.md)
+- [Azure Key Vault: overzicht van voorlopig verwijderen](key-vault-soft-delete-cli.md)
 
-- [Sleutel bewerkingen Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault-sleutelbewerkingen](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
-- [Azure Key Vaulte geheime bewerkingen](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault-geheime bewerkingen](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
-- [Certificaten en beleids regels Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Azure Key Vault-certificaten en -beleid](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
 
-- [Bewerkingen voor opslag accounts Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault-opslagaccountbewerkingen](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

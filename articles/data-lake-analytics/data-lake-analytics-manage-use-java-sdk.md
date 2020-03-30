@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics beheren met Azure Java SDK
-description: In dit artikel wordt beschreven hoe u de Azure Java SDK gebruikt om apps te schrijven die Data Lake Analytics taken, gegevens bronnen & gebruikers beheren.
+description: In dit artikel wordt beschreven hoe u de Azure Java SDK gebruiken om apps te schrijven die gegevenslake analytics-taken, gegevensbronnen, & gebruikers beheren.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,30 +10,30 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813634"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics beheren met een Java-app
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken beheert met behulp van een app die is geschreven met behulp van de Azure Java-SDK. 
+In dit artikel wordt beschreven hoe u Azure Data Lake Analytics-accounts, gegevensbronnen, gebruikers en taken beheert met behulp van een app die is geschreven met de Azure Java SDK. 
 
 ## <a name="prerequisites"></a>Vereisten
-* **Java Development Kit (JDK) 8** (met behulp van Java versie 1,8).
-* **IntelliJ** of een andere geschikte Java-ontwikkel omgeving. De instructies in dit document gebruiken IntelliJ.
-* Maak een Azure Active Directory (AAD)-toepassing en haal de **Client-ID**, **Tenant-ID**, en **sleutel** ervan op. Zie [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Een Active Directory-toepassing en service-principal maken met de portal) voor meer informatie over AAD-toepassingen en instructies voor het verkrijgen van een client-ID. De antwoord-URI en-sleutel zijn beschikbaar via de portal nadat u de toepassing hebt gemaakt en de sleutel hebt gegenereerd.
+* **Java Development Kit (JDK) 8** (met Java versie 1.8).
+* **IntelliJ** of een andere geschikte de ontwikkelingsmilieu van Java. De instructies in dit document gebruiken IntelliJ.
+* Maak een Azure Active Directory (AAD)-toepassing en haal de **Client-ID**, **Tenant-ID**, en **sleutel** ervan op. Zie [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Een Active Directory-toepassing en service-principal maken met de portal) voor meer informatie over AAD-toepassingen en instructies voor het verkrijgen van een client-ID. De Reply URI en Key is beschikbaar via de portal zodra u de toepassing hebt gemaakt en de sleutel hebt gegenereerd.
 
-## <a name="authenticating-using-azure-active-directory"></a>Verifiëren met behulp van Azure Active Directory
+## <a name="authenticating-using-azure-active-directory"></a>Authenticeren met Azure Active Directory
 
-De code na het fragment bevat code voor **niet-interactieve** verificatie, waarbij de toepassing zijn eigen referenties verstrekt.
+Het volgende codefragment bevat code voor **niet-interactieve** verificatie, waarbij de toepassing zijn eigen referenties verstrekt.
 
 ## <a name="create-a-java-application"></a>Een Java-toepassing maken
-1. Open IntelliJ en maak een Java-project met behulp van de sjabloon voor de **opdracht regel toepassing** .
+1. Open IntelliJ en maak een Java-project met de sjabloon **Command-Line App.**
 2. Klik met de rechtermuisknop op het project aan de linkerkant van het scherm en klik op **Add Framework Support** (Framework-ondersteuning toevoegen). Kies **Maven** en klik op **OK**.
-3. Open het zojuist gemaakte bestand **pom.xml** en voeg het volgende tekstfragment toe tussen de tag **\</version>** en de tag **\</project>** :
+3. Open het zojuist gemaakte bestand **pom.xml** en voeg het volgende tekstfragment toe tussen de tag **\</version>** en de tag **\</project>**:
 
 ```
 <dependencies>
@@ -76,9 +76,9 @@ De code na het fragment bevat code voor **niet-interactieve** verificatie, waarb
 </dependencies>
 ```
 
-Ga naar **instellingen voor bestand > > > uitvoering > implementatie te bouwen**. Selecteer **Build Tools > Maven > importeren**. Schakel vervolgens **Maven-projecten automatisch importeren**in.
+Ga naar **>-instellingen voor bestand > Build > Execution > Deployment**. Selecteer **Hulpmiddelen voor bouwen > Maven > importeren**. Controleer vervolgens **Maven-projecten importeren automatisch**.
 
-Open `Main.java` het bestaande code blok en vervang dit door de volgende code:
+Open `Main.java` en vervang het bestaande codeblok door de volgende code:
 
 ```java
 import com.microsoft.azure.CloudException;
@@ -307,7 +307,7 @@ public class Main {
 }
 ```
 
-Geef de waarden op voor para meters die worden genoemd in het code fragment:
+Geef de waarden op voor parameters die in het codefragment worden genoemd:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
@@ -320,5 +320,5 @@ Geef de waarden op voor para meters die worden genoemd in het code fragment:
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](https://docs.microsoft.com/u-sql/) om U-SQL te leren.
-* Zie [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md) voor informatie over beheertaken.
+* Zie [Azure Data Lake Analytics beheren met Azure-portal](data-lake-analytics-manage-use-portal.md)voor beheertaken.
 * Zie [Overzicht van Azure Data Lake Analytics](data-lake-analytics-overview.md) voor een overzicht van Data Lake Analytics.

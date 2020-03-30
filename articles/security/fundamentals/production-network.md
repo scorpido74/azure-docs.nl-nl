@@ -1,6 +1,6 @@
 ---
-title: Productie netwerk van Azure
-description: Dit artikel bevat een algemene beschrijving van het productie netwerk van Azure.
+title: Azure-productienetwerk
+description: In dit artikel vindt u een algemene beschrijving van het Azure-productienetwerk.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,77 +16,77 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726695"
 ---
-# <a name="the-azure-production-network"></a>Het Azure-productie netwerk
-De gebruikers van het productie netwerk van Azure bevatten zowel externe klanten die toegang hebben tot hun eigen Azure-toepassingen als interne ondersteunings medewerkers van Azure die het productie netwerk beheren. In dit artikel worden de methoden voor beveiligings toegang en beveiligings mechanismen beschreven voor het tot stand brengen van verbindingen met het productie netwerk van Azure.
+# <a name="the-azure-production-network"></a>Het Azure-productienetwerk
+De gebruikers van het Azure-productienetwerk omvatten zowel externe klanten die toegang hebben tot hun eigen Azure-toepassingen als intern Azure-ondersteuningspersoneel dat het productienetwerk beheert. In dit artikel worden de beveiligingstoegangsmethoden en beveiligingsmechanismen voor het tot stand brengen van verbindingen met het Azure-productienetwerk besproken.
 
-## <a name="internet-routing-and-fault-tolerance"></a>Internet Routering en fout tolerantie
-Een wereld wijd redundante interne en externe Azure-Domain Name Service (DNS)-infra structuur, gecombineerd met meerdere primaire en secundaire DNS-server clusters, biedt fout tolerantie. Op hetzelfde moment worden extra Azure-netwerk beveiligings mechanismen, zoals NetScaler, gebruikt om DDoS-aanvallen (Distributed Denial of service) te voor komen en de integriteit van Azure DNS services te beveiligen.
+## <a name="internet-routing-and-fault-tolerance"></a>Internetroutering en fouttolerantie
+Een wereldwijd redundante interne en externe AZURE Domain Name Service (DNS)-infrastructuur, gecombineerd met meerdere primaire en secundaire DNS-serverclusters, biedt fouttolerantie. Tegelijkertijd worden extra Azure-netwerkbeveiligingsbesturingselementen, zoals NetScaler, gebruikt om DDoS-aanvallen (distributed denial of service) te voorkomen en de integriteit van Azure DNS-services te beschermen.
 
-De Azure DNS-servers bevinden zich in meerdere datacenter faciliteiten. De Azure DNS-implementatie bevat een hiërarchie van secundaire en primaire DNS-servers voor het openbaar oplossen van domein namen van Azure-klanten. De domein namen worden meestal omgezet in een CloudApp.net-adres, dat het VIP-adres (virtuele IP) voor de service van de klant inpakt. De VIP die overeenkomt met het interne toegewezen IP-adres (DIP) van de Tenant omzetting, wordt door de micro soft load balancers die verantwoordelijk zijn voor die VIP, uitgevoerd voor Azure.
+De Azure DNS-servers bevinden zich in meerdere datacenterfaciliteiten. De Azure DNS-implementatie bevat een hiërarchie van secundaire en primaire DNS-servers om azure-klantdomeinnamen openbaar op te lossen. De domeinnamen meestal op te lossen om een CloudApp.net adres, die het virtuele IP (VIP) adres voor de service van de klant wraps. Uniek voor Azure, de VIP die overeenkomt met intern dedicated IP (DIP) adres van de tenant vertaling wordt gedaan door de Microsoft load balancers die verantwoordelijk zijn voor die VIP.
 
-Azure wordt gehost in geografisch gedistribueerde Azure-data centers binnen de VS en is gebouwd op basis van geavanceerde routerings platforms die robuuste, schaal bare architectuur standaarden implementeren. De belangrijkste functies zijn:
+Azure wordt gehost in geografisch gedistribueerde Azure-datacenters binnen de VS en is gebouwd op state-of-the-art routeringsplatforms die robuuste, schaalbare architecturale standaarden implementeren. Onder de opmerkelijke kenmerken zijn:
 
-- Multi protocol label switching (MPLS) is gebaseerd op verkeers techniek, die een efficiënt koppelings gebruik en een ongeschikte degradatie van de service biedt als er sprake is van een storing.
-- Netwerken worden geïmplementeerd met ' behoefte plus één ' (N + 1) redundantie architecturen of beter.
-- Extern worden data centers bediend door speciale netwerk circuits met een hoge band breedte die redundante verbinding met de eigenschappen met meer dan 1.200 Internet serviceproviders op meerdere peering punten. Deze verbinding is groter dan 2.000 gigabytes per seconde (GBps) aan de capaciteit van de rand.
+- Multiprotocol Label Switching (MPLS)-gebaseerde verkeersengineering, die een efficiënt gebruik van de verbinding en sierlijke degradatie van de service biedt als er een storing is.
+- Netwerken worden geïmplementeerd met "need plus one" (N+1) redundantiearchitecturen of beter.
+- Extern worden datacenters bediend door speciale netwerkcircuits met hoge bandbreedte die redundant eigenschappen verbinden met meer dan 1.200 internetserviceproviders wereldwijd op meerdere peeringpunten. Deze verbinding biedt meer dan 2.000 gigabyte per seconde (GBps) edge capaciteit.
 
-Omdat micro soft eigenaar is van zijn eigen netwerk circuits tussen data centers, kunnen ze met deze kenmerken het Azure-aanbod 99,9 + procent Beschik baarheid behalen zonder dat er traditionele Internet serviceproviders van derden nodig zijn.
+Omdat Microsoft eigenaar is van eigen netwerkcircuits tussen datacenters, helpen deze kenmerken het Azure-aanbod om 99,9+ procent netwerkbeschikbaarheid te bereiken zonder dat traditionele externe internetproviders nodig zijn.
 
-## <a name="connection-to-production-network-and-associated-firewalls"></a>Verbinding met productie netwerk en gekoppelde firewalls
-Het beleid voor Internet verkeer van Azure Network stuurt verkeer naar het Azure-productie netwerk dat zich in het dichtstbijzijnde regionale Data Center binnen de Verenigde Staten bevindt. Omdat Azure-productie centra consistente netwerk architectuur en-hardware onderhouden, wordt de beschrijving van de verkeers stroom op consistente wijze toegepast op alle data centers.
+## <a name="connection-to-production-network-and-associated-firewalls"></a>Verbinding met productienetwerk en bijbehorende firewalls
+Het azure-netwerkverkeerverkeerleidt verkeer naar het Azure-productienetwerk dat zich in het dichtstbijzijnde regionale datacenter in de VS bevindt. Omdat de Azure-productiedatacenters consistente netwerkarchitectuur en -hardware behouden, is de beschrijving van de verkeersstroom die volgt consistent van toepassing op alle datacenters.
 
-Wanneer het Internet verkeer voor Azure wordt doorgestuurd naar het dichtstbijzijnde Data Center, wordt er verbinding gemaakt met de toegangs routers. Deze toegangs routers fungeren voor het isoleren van verkeer tussen Azure-knoop punten en door de klant gemaakte Vm's. Netwerk infrastructuur apparaten op de locaties voor toegang en rand zijn de grens punten waar ingangs-en uitgangs filters worden toegepast. Deze routers worden geconfigureerd via een trapsgewijs gelaagde toegangs beheer lijst (ACL) voor het filteren van het ongewenste netwerk verkeer en het Toep assen van verkeers limieten, indien nodig. Verkeer dat door ACL wordt toegestaan, wordt doorgestuurd naar de load balancers. Distributie routers zijn ontworpen om alleen door micro soft goedgekeurde IP-adressen toe te staan, anti-spoofing te bieden en TCP-verbindingen tot stand te brengen die gebruikmaken van Acl's.
+Nadat internetverkeer voor Azure is doorgestuurd naar het dichtstbijzijnde datacenter, wordt een verbinding tot stand gebracht met de toegangsrouters. Deze toegangsrouters dienen om verkeer tussen Azure-knooppunten en geinstantiated VM's met klantproblemen te isoleren. Netwerkinfrastructuurapparaten op de toegangs- en randlocaties zijn de grenspunten waar invallen- en uitgangsfilters worden toegepast. Deze routers zijn geconfigureerd via een tiered access-control list (ACL) om ongewenst netwerkverkeer te filteren en indien nodig verkeerstarieflimieten toe te passen. Verkeer dat is toegestaan door ACL wordt doorgestuurd naar de load balancers. Distributierouters zijn ontworpen om alleen door Microsoft goedgekeurde IP-adressen toe te staan, anti-spoofing te bieden en TCP-verbindingen tot stand te brengen die ACL's gebruiken.
 
-Externe apparaten voor taak verdeling bevinden zich achter de toegangs routers om Network Address Translation (NAT) uit te voeren van Internet Routeer bare IP-adressen naar interne Ip's van Azure. De apparaten routeren ook pakketten naar geldige productie-interne Ip's en poorten, en ze fungeren als een beveiligings mechanisme om het weer geven van de adres ruimte van het interne productie netwerk te beperken.
+Externe load-balancing-apparaten bevinden zich achter de toegangsrouters om de vertaling van netwerkadres (NAT) uit te voeren, van internet-routable IP's naar interne IP-gebruikers van Azure. De apparaten leiden ook pakketten naar geldige interne IP's en poorten voor productie, en ze fungeren als een beschermingsmechanisme om het blootstellen van de interne productienetwerkadresruimte te beperken.
 
-Standaard dwingt micro soft Hypertext Transfer Protocol Secure (HTTPS) af voor al het verkeer dat wordt verzonden naar webbrowsers van klanten, inclusief aanmelding en alle verkeer daarna. Door het gebruik van TLS v 1.2 kan een beveiligde tunnel voor verkeer worden door lopen. Acl's op toegangs-en kern routers zorgen ervoor dat de bron van het verkeer consistent is met wat er wordt verwacht.
+Standaard dwingt Microsoft Hypertext Transfer Protocol Secure (HTTPS) af voor al het verkeer dat wordt verzonden naar webbrowsers van klanten, inclusief aanmelding en alle verkeer daarna. Het gebruik van TLS v1.2 maakt een veilige tunnel mogelijk waar het verkeer doorheen kan stromen. ACL's op toegang en core routers zorgen ervoor dat de bron van het verkeer consistent is met wat wordt verwacht.
 
-Een belang rijk verschil in deze architectuur, wanneer deze is vergeleken met de traditionele beveiligings architectuur, is dat er geen speciale hardwarefirewalls, gespecialiseerde apparaten voor inbraak detectie of voor komen of andere beveiligings apparaten die normaal gesp roken zijn verwacht voordat verbindingen worden gemaakt met de Azure-productie omgeving. Klanten verwachten doorgaans deze hardwarematige firewall apparaten in het Azure-netwerk. Er worden echter geen werkzaamheden in azure toegepast. Bijna uitsluitend, deze beveiligings functies zijn ingebouwd in de software die de Azure-omgeving uitvoert om robuuste beveiligings mechanismen met meerdere lagen te bieden, inclusief firewall mogelijkheden. Daarnaast is het bereik van de grens en de bijbehorende komen van kritieke beveiligings apparaten eenvoudiger te beheren en te inventariseren, zoals wordt weer gegeven in de vorige afbeelding, omdat deze wordt beheerd door de software waarop Azure wordt uitgevoerd.
+Een belangrijk onderscheid in deze architectuur, wanneer het wordt vergeleken met de traditionele beveiligingsarchitectuur, is dat er geen speciale hardwarefirewalls, gespecialiseerde inbraakdetectie- of preventieapparaten zijn die normaal gesproken verwacht voordat verbindingen worden gemaakt met de Azure-productieomgeving. Klanten verwachten meestal deze hardwarefirewallapparaten in het Azure-netwerk; er wordt echter geen gebruikt in Azure. Bijna uitsluitend zijn deze beveiligingsfuncties ingebouwd in de software waarop de Azure-omgeving wordt uitgevoerd om robuuste, gelaagde beveiligingsmechanismen te bieden, waaronder firewallmogelijkheden. Bovendien is het bereik van de grens en de bijbehorende uitbreiding van kritieke beveiligingsapparaten eenvoudiger te beheren en te inventariseren, zoals in de vorige afbeelding wordt weergegeven, omdat deze wordt beheerd door de software waarop Azure wordt uitgevoerd.
 
-## <a name="core-security-and-firewall-features"></a>Kern beveiliging en Firewall functies
-Azure implementeert robuuste functies voor software beveiliging en firewall op verschillende niveaus voor het afdwingen van beveiligings functies die doorgaans worden verwacht in een traditionele omgeving om de grens van de beveiligings autorisatie van de kern te beveiligen.
+## <a name="core-security-and-firewall-features"></a>Kernbeveiligings- en firewallfuncties
+Azure implementeert robuuste softwarebeveiliging en firewallfuncties op verschillende niveaus om beveiligingsfuncties af te dwingen die meestal worden verwacht in een traditionele omgeving om de belangrijkste beveiligingsautorisatiegrens te beschermen.
 
-### <a name="azure-security-features"></a>Azure-beveiligings functies
-Azure implementeert op de host gebaseerde software firewalls binnen het productie netwerk. Een aantal kern beveiliging en Firewall functies bevinden zich in de Azure-basis omgeving. Deze beveiligings functies zijn gebaseerd op een ingrijpende strategie binnen de Azure-omgeving. Klant gegevens in Azure worden beveiligd door de volgende firewalls:
+### <a name="azure-security-features"></a>Azure-beveiligingsfuncties
+Azure implementeert hostgebaseerde softwarefirewalls binnen het productienetwerk. Verschillende kernbeveiligings- en firewallfuncties bevinden zich binnen de kernazure-omgeving. Deze beveiligingsfuncties weerspiegelen een diepgaande strategie binnen de Azure-omgeving. Klantgegevens in Azure worden beschermd door de volgende firewalls:
 
-**Hyper Visor-firewall (pakket filter)** : Deze firewall wordt geïmplementeerd in de Hyper Visor en geconfigureerd door de FC-agent (Fabric controller). Deze firewall beveiligt de Tenant die in de virtuele machine wordt uitgevoerd tegen onbevoegde toegang. Wanneer een virtuele machine wordt gemaakt, wordt standaard al het verkeer geblokkeerd en vervolgens voegt de FC-agent regels en uitzonde ringen in het filter toe om geautoriseerd verkeer toe te staan.
+**Hypervisor firewall (packet filter)**: Deze firewall wordt geïmplementeerd in de hypervisor en geconfigureerd door de fabric controller (FC) agent. Deze firewall beschermt de tenant die binnen de VM wordt uitgevoerd tegen ongeautoriseerde toegang. Wanneer een VM wordt gemaakt, wordt al het verkeer standaard geblokkeerd en voegt de FC-agent regels en uitzonderingen toe in het filter om geautoriseerd verkeer toe te staan.
 
-Er zijn twee soorten regels geprogrammeerd:
+Hier worden twee categorieën regels geprogrammeerd:
 
-- **Machine config-of infrastructuur regels**: Standaard wordt alle communicatie geblokkeerd. Er zijn uitzonde ringen die een VM toestaan om Dynamic Host Configuration Protocol (DHCP)-communicatie en DNS-informatie te verzenden en ontvangen en verkeer naar het ' open bare ' Internet te verzenden naar andere Vm's binnen het FC-cluster en de activerings server van het besturings systeem. Omdat de lijst met toegestane uitgaande doelen van de virtuele machines geen Azure router-subnetten en andere micro soft-eigenschappen bevat, fungeren de regels als een beveiligingslaag.
-- **Regels voor het configuratie bestand**voor de functie: Hiermee worden de binnenkomende Acl's gedefinieerd op basis van het service model van de tenants. Als een Tenant bijvoorbeeld een web-front-end heeft op poort 80 op een bepaalde VM, wordt poort 80 geopend voor alle IP-adressen. Als op de virtuele machine een werk rollen wordt uitgevoerd, wordt de rol werk nemer alleen geopend voor de virtuele machine binnen dezelfde Tenant.
+- **Machineconfig of infrastructuurregels**: Standaard wordt alle communicatie geblokkeerd. Er bestaan uitzonderingen waarmee een VM DHCP-communicatie- en DNS-informatie (Dynamic Host Configuration Protocol) kan verzenden en ontvangen en verkeer naar de 'openbare' uitgaande internet naar andere VM's binnen de FC-cluster- en OS-activeringsserver kan verzenden. Omdat de lijst met uitgaande bestemmingen van de VM's geen Azure-router-subnetten en andere Microsoft-eigenschappen bevat, fungeren de regels als een verdedigingslaag voor hen.
+- **Regels voor rolconfiguratiebestand:** definieert de binnenkomende ACL's op basis van het servicemodel van de tenants. Als een tenant bijvoorbeeld een webfrontend heeft op poort 80 op een bepaalde VM, wordt poort 80 geopend voor alle IP-adressen. Als de VM een werkrol heeft, wordt de werkrol alleen geopend voor de vm binnen dezelfde tenant.
 
-**Systeem eigen host firewall**: Azure Service Fabric en Azure Storage worden uitgevoerd op een systeem eigen besturings systeem, dat geen Hyper Visor heeft en daarom Windows Firewall is geconfigureerd met de voor gaande twee sets met regels.
+**Native host firewall**: Azure Service Fabric en Azure Storage draaien op een native OS, dat geen hypervisor heeft en daarom is Windows Firewall geconfigureerd met de voorgaande twee sets regels.
 
-**Host-firewall**: De host-firewall beveiligt de host-partitie, waarmee de Hyper Visor wordt uitgevoerd. De regels zijn geprogrammeerd zodat alleen de vakken FC en Jump kunnen communiceren met de host-partitie op een specifieke poort. De andere uitzonde ringen zijn het toestaan van DHCP-reacties en DNS-antwoorden. Azure maakt gebruik van een computer configuratie bestand, dat een sjabloon bevat met de firewall regels voor de host-partitie. Er bestaat ook een uitzonde ring voor de firewall van de host, waarmee Vm's kunnen communiceren met host-onderdelen, Wire-server en meta gegevens server via specifieke protocol/poorten.
+**Hostfirewall**: De hostfirewall beschermt de hostpartitie, waarop de hypervisor wordt uitgevoerd. De regels zijn zo geprogrammeerd dat alleen de FC en de springboxen met de hostpartitie op een specifieke poort kunnen praten. De andere uitzonderingen zijn het toestaan van DHCP-antwoord- en DNS-antwoorden. Azure maakt gebruik van een machineconfiguratiebestand, dat een sjabloon met firewallregels voor de hostpartitie bevat. Er bestaat ook een uitzondering voor hostfirewall waarmee VM's kunnen communiceren met hostcomponenten, draadserver en metadataserver, via specifieke protocol/poorten.
 
-**Gast firewall**: Het Windows Firewall-gedeelte van het gast besturingssysteem, dat door klanten kan worden geconfigureerd op Vm's en opslag van klanten.
+**Gastfirewall**: Het Windows Firewall-stuk van het gastbesturingssysteem, dat door klanten kan worden geconfigureerd op vm's en opslag van klanten.
 
-Aanvullende beveiligings functies die zijn ingebouwd in de Azure-mogelijkheden zijn onder andere:
+Aanvullende beveiligingsfuncties die zijn ingebouwd in de Azure-mogelijkheden zijn:
 
-- Infrastructuur onderdelen die zijn toegewezen aan IP-adressen van spannings dips. Een aanvaller op internet kan geen verkeer naar deze adressen door lopen omdat micro soft dit niet zou bereiken. Internet Gateway-routers filteren pakketten die alleen worden geadresseerd aan interne adressen, zodat ze het productie netwerk niet invoeren. De enige onderdelen die verkeer accepteren dat is omgeleid naar Vip's, zijn load balancers.
-- Firewalls die op alle interne knoop punten zijn geïmplementeerd, hebben drie belang rijke beveiligings architectuur voor elk scenario:
+- Infrastructuurcomponenten die IP-adressen toegewezen krijgen die afkomstig zijn van DIP's. Een aanvaller op het internet kan geen verkeer naar die adressen richten omdat het Microsoft niet zou bereiken. Internetgatewayrouters filteren pakketten die uitsluitend zijn geadresseerd aan interne adressen, zodat ze niet in het productienetwerk terechtkomen. De enige onderdelen die verkeer accepteren dat naar VIP's is gericht, zijn load balancers.
+- Firewalls die op alle interne knooppunten worden geïmplementeerd, hebben drie overwegingen voor primaire beveiligingsarchitectuur voor een bepaald scenario:
 
-   - Firewalls worden achter de load balancer geplaatst en accepteren pakketten vanaf elke locatie. Deze pakketten zijn bedoeld om extern te worden blootgesteld en komen overeen met de open poorten in een traditionele perimeter firewall.
-   - Firewalls accepteren pakketten alleen uit een beperkt aantal adressen. Deze overweging maakt deel uit van de strategie voor verdediging in de diepte tegen DDoS-aanvallen. Dergelijke verbindingen zijn cryptografisch geverifieerd.
-   - Firewalls zijn alleen toegankelijk via interne knoop punten selecteren. Ze accepteren alleen pakketten van een geïnventariseerde lijst met IP-adressen van de bron, die allemaal zijn spannings dips in het Azure-netwerk. Een aanval op het bedrijfs netwerk kan bijvoorbeeld aanvragen sturen naar deze adressen, maar de aanvallen zouden worden geblokkeerd, tenzij het bron adres van het pakket in de genummerde lijst in het Azure-netwerk is opgenomen.
-     - De toegangs router op het perimeter netwerk blokkeert uitgaande pakketten die zijn geadresseerd aan een adres dat zich in het Azure Network bevindt vanwege de geconfigureerde statische routes.
+   - Firewalls worden achter de load balancer geplaatst en accepteren pakketten vanaf elke locatie. Deze pakketten zijn bedoeld om extern worden blootgesteld en zou overeenkomen met de open poorten in een traditionele perimeter firewall.
+   - Firewalls accepteren pakketten alleen vanaf een beperkt aantal adressen. Deze overweging maakt deel uit van de defensieve diepgaande strategie tegen DDoS-aanvallen. Dergelijke verbindingen zijn cryptografisch geverifieerd.
+   - Firewalls zijn alleen toegankelijk via geselecteerde interne knooppunten. Ze accepteren pakketten alleen van een opgesomde lijst met bron-IP-adressen, die allemaal DIP's binnen het Azure-netwerk zijn. Een aanval op het bedrijfsnetwerk kan bijvoorbeeld aanvragen naar deze adressen sturen, maar de aanvallen worden geblokkeerd, tenzij het bronadres van het pakket één is in de opgesomde lijst binnen het Azure-netwerk.
+     - De toegangsrouter in de perimeter blokkeert uitgaande pakketten die zijn geadresseerd aan een adres dat zich in het Azure-netwerk bevindt vanwege de geconfigureerde statische routes.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de mogelijkheden van micro soft voor het beveiligen van de Azure-infra structuur:
+Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
 
-- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
-- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
-- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
-- [Azure-netwerk architectuur](infrastructure-network.md)
-- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
-- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
-- [Bewaking van Azure-infra structuur](infrastructure-monitoring.md)
-- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
-- [Azure-klant gegevens beveiliging](protection-customer-data.md)
+- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
+- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
+- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
+- [Azure-netwerkarchitectuur](infrastructure-network.md)
+- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
+- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
+- [Azure-infrastructuurbewaking](infrastructure-monitoring.md)
+- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
+- [Azure-klantgegevensbeveiliging](protection-customer-data.md)

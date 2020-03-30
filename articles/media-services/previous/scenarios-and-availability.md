@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250983"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Met Microsoft Azure Media Services (AMS) kunt u veilig video- of audio-inhoud uploaden, opslaan, coderen en verpakken, zowel voor levering on-demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
 Azure Media Services werkt vanuit diverse datacentra, op locaties overal ter wereld. Deze datacenters worden gegroepeerd in geografische regio's, waardoor u flexibiliteit heeft bij het kiezen waar u uw toepassingen ontwikkelt. U kunt zelf de [lijst met regio's en bijbehorende locaties](https://azure.microsoft.com/regions/) bekijken. 
 
-Dit onderwerp bevat algemene scenario's voor het [live](#live_scenarios) of on-demand leveren van uw inhoud. Het onderwerp bevat ook informatie over de beschikbaarheid van mediafuncties en -services in datacenters.
+In dit onderwerp worden veelvoorkomende scenario's weergegeven voor het [live](#live_scenarios) of on-demand leveren van uw inhoud. Het onderwerp bevat ook informatie over de beschikbaarheid van mediafuncties en -services in datacenters.
 
 ## <a name="overview"></a>Overzicht
 
@@ -37,11 +37,11 @@ Dit onderwerp bevat algemene scenario's voor het [live](#live_scenarios) of on-d
 
 Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
-* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
+* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
 * Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
 
-    Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt de status **Wordt uitgevoerd** hebben.
+    Wanneer uw AMS-account wordt gemaakt, wordt een **standaard** streamingeindpunt toegevoegd aan uw account in de **status Gestopt.** Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt de status **Wordt uitgevoerd** hebben.
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Veelgebruikte objecten bij ontwikkelen op basis van het AMS OData-model
 
@@ -104,7 +104,7 @@ Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarh
     Als SAS-locator wordt gebruikt, wordt de inhoud gedownload vanaf Azure Blob Storage. In dit geval hebt u geen gereserveerde streaming-eindpunten in de status Gestart nodig.
 4. Download de inhoud op progressieve wijze.
 
-## <a id="live_scenarios"></a>Evenementen live streamen 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Evenementen live streamen 
 
 1. Live-inhoud met verschillende protocollen voor live streamen opnemen (bijvoorbeeld RTMP of Smooth Streaming).
 2. (Optioneel) Uw stream coderen in een stream met een adaptieve bitsnelheid.
@@ -143,25 +143,25 @@ Azure Media Services biedt de hulpprogramma's die u nodig hebt om geavanceerde, 
 
 Media Services ondersteunt de integratie met Azure CDN. Zie [Streaming-eindpunten in een Media Services-account beheren](media-services-portal-manage-streaming-endpoints.md) voor meer informatie over het inschakelen van Azure CDN.
 
-## <a id="scaling"></a>Een Media Services-account schalen
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Een Media Services-account schalen
 
 AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun AMS-accounts schalen.
 
 * Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium-**streaming**-eindpunt kiezen. **Standard**-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium**-streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
 
-    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp **Streaming-eindpunten schalen** voor meer informatie over het schalen van [Premium](media-services-portal-scale-streaming-endpoints.md)-streaming-eindpunten.
+    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium**-streaming-eindpunten.
 
 * Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**).
 
-    Naast het opgeven van het gereserveerde-eenheidstype kunt u opgeven dat uw account moet worden ingericht met **gereserveerde eenheden** (RUs). Op basis van het aantal ingerichte RU's wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account.
+    Naast het opgeven van het type gereserveerde eenheid, u opgeven om uw account in te richten bij **Gereserveerde eenheden** (RU's). Op basis van het aantal ingerichte RU's wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account.
 
     >[!NOTE]
     >RU's werken voor het parallel verwerken van alle media, waaronder indexeringstaken via Azure Media Indexer. Indexeringstaken worden echter niet sneller verwerkt met snellere gereserveerde eenheden, terwijl dit bij coderen wel het geval is.
 
-    Zie [Mediaverwerking schalen](media-services-portal-scale-media-processing.md) voor meer informatie.
+    Voor meer informatie zie, [Schaal media verwerking](media-services-portal-scale-media-processing.md).
 * U kunt uw Media Services-account schalen door opslagaccounts toe te voegen. Elk opslagaccount is beperkt tot 500 TB. Als u uw opslag wilt uitbreiden buiten de standaardbeperkingen, kunt u meerdere opslagaccounts aan een enkel Media Services-account koppelen. Zie [Opslagaccounts beheren](meda-services-managing-multiple-storage-accounts.md) voor meer informatie.
 
-## <a id="availability"></a> De beschikbaarheid van Media Services-functies in datacenters
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> De beschikbaarheid van Media Services-functies in datacenters
 
 Deze sectie bevat informatie over de beschikbaarheid van Media Services-functies in datacenters.
 
@@ -177,7 +177,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Naam|Status|Datacenters
+|Name|Status|Datacenters
 |---|---|---|
 |Standard|Algemene beschikbaarheid|Alle|
 |Premium|Algemene beschikbaarheid|Alle|
@@ -204,7 +204,7 @@ AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebr
 Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten kunnen verkrijgen op basis van hun video's, waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md) voor meer informatie.
 
 > [!NOTE]
-> Sommige analyse media-processors worden buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de pensioen datums.
+> Sommige analysemediaprocessors worden buiten gebruik gesteld. Zie voor de pensioendatums het onderwerp [oudere onderdelen.](legacy-components.md)
 
 #### <a name="availability"></a>Beschikbaarheid
 
@@ -225,7 +225,7 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Opslag|Algemene beschikbaarheid|Alle|
+|Storage|Algemene beschikbaarheid|Alle|
 |AES-128-sleutels|Algemene beschikbaarheid|Alle|
 |FairPlay|Algemene beschikbaarheid|Alle|
 |PlayReady|Algemene beschikbaarheid|Alle|
@@ -257,7 +257,7 @@ Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

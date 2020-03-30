@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een CI/CD-pijp lijn maken voor de programmeer taal Go met behulp van Azure DevOps Projects'
+title: 'Quickstart: Een CI/CD-pijplijn maken voor de programmeertaal Go met behulp van Azure DevOps Projects'
 description: Met DevOps Projects kunt u eenvoudig aan de slag met Azure. Hiermee kunt u in slechts enkele stappen een web-app in de programmeertaal Go starten voor een Azure-service.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: f7429a6de05a301b579354d722ad354b78ce6cbf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899677"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Een CI/CD-pijplijn voor Go maken met Azure DevOps Projects
@@ -54,12 +54,12 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 
 1. Maak gratis een nieuwe Azure DevOps-organisatie of kies een bestaande organisatie. 
 
-1. Voer een naam in voor uw Azure DevOps-project. 
+1. Voer een naam in voor het Azure DevOps-project. 
 
 1. Selecteer uw Azure-abonnement en locatie, voer een naam in voor de app en selecteer **Gereed**.  
     Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeld-app ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de app wordt geïmplementeerd in Azure. 
     
-    Het dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en app in Azure. Selecteer aan de rechterkant **Bladeren** om de actieve app weer te geven.
+    Het dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en app in Azure. Selecteer aan de rechterkant **Bladeren** om uw actieve app weer te geven.
 
     ![Dashboardweergave](_img/azure-devops-project-go/dashboardnopreview.png) 
 
@@ -77,7 +77,7 @@ Met DevOps Projects wordt een Git-opslagplaats gemaakt in Azure Repos of in GitH
 
 1. Breng een wijziging aan in het bestand. Wijzig bijvoorbeeld wat tekst binnen een van de div-tags.
 
-1. Selecteer **Doorvoeren** en sla de wijzigingen op.
+1. Selecteer **Doorvoeren** en sla vervolgens de wijzigingen op.
 
 1. Ga in de browser naar het DevOps Projects-dashboard.  
     Er wordt nu een build uitgevoerd. De aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
@@ -99,15 +99,15 @@ In DevOps Projects wordt automatisch een volledige CI/CD-pijplijn geconfigureerd
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken.  
     In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 
-1. Selecteer boven aan de build-pijplijn de naam van de build-pijplijn.
+1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
-1. Wijzig de naam van de build-pijplijn in een gebruiksvriendelijkere naam. Selecteer **Opslaan en wachtrij** en selecteer **Opslaan**.
+1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
 
-1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**.  
+1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**.  
     In dit deelvenster ziet u een audittrail van recente wijzigingen voor de build. In Azure DevOps worden alle wijzigingen in de build-pijplijn bijgehouden en krijgt u de mogelijkheid om versies te vergelijken.
 
 1. Selecteer **Triggers**.  
-    In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. U kunt eventueel kiezen of u branches van het CI-proces wilt opnemen of uitsluiten.
+    In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. Desgewenst kunt u kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
 
 1. Selecteer **Retentie**.  
     Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
@@ -115,7 +115,7 @@ In DevOps Projects wordt automatisch een volledige CI/CD-pijplijn geconfigureerd
 1. Selecteer **Build en release** en selecteer vervolgens **Releases**.  
     In DevOps Projects wordt een release-pijplijn gemaakt om implementaties in Azure te beheren.
 
-1. Selecteer het beletselteken (...) naast uw release-pijplijn en selecteer **Bewerken**.  
+1. Selecteer het beletselteken (...) naast de release-pijplijn en selecteer **Bewerken**.  
     De release-pijplijn bevat een *pijplijn* die het releaseproces definieert.
 
 1. Onder **Artefacten** selecteert u **Neerzetten**.  
@@ -140,7 +140,7 @@ In DevOps Projects wordt automatisch een volledige CI/CD-pijplijn geconfigureerd
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt het Azure App Service-exemplaar en de gerelateerde resources die u in deze quickstart hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Gebruik hiervoor de functionaliteit **Verwijderen** op het DevOps Projects-dashboard.
+U kunt het Azure App Service-exemplaar en de gerelateerde resources die u in deze quickstart hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Hiertoe gebruikt u de functionaliteit **Verwijderen** op het dashboard van DevOps Projects.
 
 ## <a name="next-steps"></a>Volgende stappen
 

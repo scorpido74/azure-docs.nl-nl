@@ -9,18 +9,18 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69520831"
 ---
-De volgende configuratie is gebruikt voor de volgende stappen:
+De volgende configuratie is gebruikt voor de onderstaande stappen:
 
   | | |
   |---|---|
-  |Computer| Ubuntu-Server 18.04|
-  |Afhankelijkheden| strongSwan |
+  |Computer| Ubuntu Server 18.04|
+  |Afhankelijkheden| Strongswan |
 
 
 Gebruik de volgende opdrachten om de vereiste strongSwan-configuratie te installeren:
@@ -37,7 +37,7 @@ sudo apt install strongswan-pki
 sudo apt install libstrongswan-extra-plugins
 ```
 
-Gebruik de volgende opdracht om de Azure-opdracht regel interface te installeren:
+Gebruik de volgende opdracht om de Azure-opdrachtregelinterface te installeren:
 
 ```
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

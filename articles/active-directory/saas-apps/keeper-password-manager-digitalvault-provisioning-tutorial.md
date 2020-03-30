@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: keeper Password Manager & Digital kluis configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts voor wachtwoord beheer & digitale kluis.
+title: 'Zelfstudie: Keeper Password Manager & Digitale kluis configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Keeper Password Manager & Digital Vault.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,75 +16,75 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057512"
 ---
-# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Zelf studie: keeper Password Manager & Digital kluis configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Zelfstudie: Keeper Password Manager & Digitale Kluis configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in keeper Password Manager & Digital-kluis en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen voor wachtwoord beheer & digitale kluis.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Keeper Password Manager & Digital Vault en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen naar Keeper Password Manager & Digital Vault.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een keeper-wachtwoord beheerder & Digital kluis-Tenant](https://keepersecurity.com/pricing.html?t=e)
-* Een gebruikers account in keeper Password Manager & Digital kluis met beheerders machtigingen.
+* Een Azure AD-tenant
+* [Een Keeper Password Manager & Digital Vault-tenant](https://keepersecurity.com/pricing.html?t=e)
+* Een gebruikersaccount in Keeper Password Manager & Digital Vault met beheerdersmachtigingen.
 
-## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Bewaar wachtwoord beheer & digitale kluis toevoegen vanuit de galerie
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Keeper Password Manager & Digitale Kluis toevoegen vanuit de galerie
 
-Voordat u keeper-wachtwoord beheer configureert & digitale kluis voor automatische gebruikers inrichting met Azure AD, moet u keeper Password Manager & Digital kluis van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Keeper Password Manager & Digital Vault configureert voor automatische gebruikersvoorziening met Azure AD, moet u Keeper Password Manager & Digital Vault vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om keeper Password Manager & Digital kluis toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om Keeper Password Manager & Digital Vault toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **keeper password manager & Digital kluis**in, selecteer **wachtwoord beheer & digitale kluis** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **Keeper Password Manager & Digital Vault,** selecteer Keeper Password Manager & Digital **Vault** in het deelvenster Resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Keeper Password Manager & Digital Vault toevoegen vanuit de galerie](common/search-new-app.png)
 
-## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Gebruikers toewijzen aan keeper Password Manager & Digital-kluis
+## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Gebruikers toewijzen aan Keeper Password Manager & Digital Vault
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot wacht woord beheer & digitale kluis. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan keeper Password Manager & Digital kluis door de volgende instructies te volgen:
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang nodig hebben tot Keeper Password Manager & Digital Vault. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Keeper Password Manager & Digital Vault door de instructies hier te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Belang rijke tips voor het toewijzen van gebruikers aan keeper Password Manager & Digital kluis
+### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Belangrijke tips voor het toewijzen van gebruikers aan Keeper Password Manager & Digital Vault
 
-* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan keeper Password Manager & Digital-kluis om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker wordt toegewezen aan Keeper Password Manager & Digital Vault om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst voor wachtwoord beheer & digitale kluis, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Keeper Password Manager & Digital Vault, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Automatische gebruikers inrichting configureren voor wachtwoord beheer & digitale kluis 
+## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Automatische gebruikersvoorziening configureren voor Keeper Password Manager & Digital Vault 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service voor het maken, bijwerken en uitschakelen van gebruikers en/of groepen in keeper Password Manager & Digital-kluis op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen te maken, bij te werken en uit te schakelen in Keeper Password Manager & Digital Vault op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor wachtwoord beheer & Digital-kluis, gevolgd door de instructies in de [hand leiding voor de wachtwoord beheerder voor eenmalige aanmelding van de keeper password manager &](keeperpasswordmanager-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Keeper Password Manager & Digital Vault, volgens de instructies in de [Keeper Password Manager & Digital Vault single sign-on tutorial.](keeperpasswordmanager-tutorial.md) Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Automatisch inrichten van gebruikers configureren voor wacht woord beheer & digitale kluis in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor Keeper Password Manager & Digital Vault in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -92,87 +92,87 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling naar Keeper Password Manager & Digital Vault in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL** en het **geheime token** van uw wacht woord beheerder in & Digital kluis account zoals beschreven in stap 6.
+5. Voer onder de sectie **Beheerdersreferenties** de **URL van de tenant** en het geheime **token** van uw Keeper Password Manager in & het account van Digital Vault zoals beschreven in stap 6.
 
-6. Meld u aan bij uw [keeper-beheer console](https://keepersecurity.com/console/#login). Klik op **beheerder** en selecteer een bestaand knoop punt of maak een nieuwe. Navigeer naar het tabblad **inrichten** en selecteer **methode toevoegen**.
+6. Meld u aan bij [uw beheerdersconsole](https://keepersecurity.com/console/#login)voor beheerders . Klik op **Beheerder** en selecteer een bestaand knooppunt of maak een nieuw knooppunt. Navigeer naar het tabblad **Inrichten** en selecteer **Methode toevoegen**.
 
-    ![Keeper-beheer console](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Keeper Admin Console](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    Selecteer **scim (systeem voor Cross-Domain Identity Management**.
+    Selecteer **SCIM (Systeem voor identiteitsbeheer tussen domeinen**.
 
-    ![Keeper SCIM toevoegen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Keeper Add SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
-    Klik op **inrichtings token maken**.
+    Klik **op Inrichtingstoken maken**.
 
-    ![Eind punt voor het maken van een keeper](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Eindpunt keeper maken](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
-    Kopieer de waarden voor **URL** en **token** en plak ze in de **Tenant-URL** en het **geheime token** in azure AD. Klik op **Opslaan** om de inrichtings configuratie voor de keeper te volt ooien.
+    Kopieer de waarden voor **URL** en **Token** en plak ze in **Tenant URL** en Secret **Token** in Azure AD. Klik **op Opslaan** om de inrichtingsinstelling op Keeper te voltooien.
 
-    ![Token voor het maken van keeper](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Token keeper maken](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met keeper-wachtwoord beheer & digitale kluis. Als de verbinding mislukt, zorgt u ervoor dat uw wacht woord voor wachtwoord beheer & account voor de digitale kluis beheerders machtigingen heeft en probeer het opnieuw.
+7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Keeper Password Manager & Digital Vault. Als de verbinding mislukt, moet u ervoor zorgen dat uw Keeper Password Manager & Digital Vault-account beheerdersmachtigingen heeft en het opnieuw probeert.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met wachtwoord beheer & digitale kluis**.
+10. Selecteer onder de sectie **Toewijzingen** de optie **Azure Active Directory-gebruikers synchroniseren met Keeper Password Manager & Digital Vault.**
 
-    ![Gebruikers toewijzingen voor keeper](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Gebruikerstoewijzingen keeper](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar keeper Password Manager & Digital kluis in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in keeper Password Manager & Digital kluis voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Keeper Password Manager & Digital Vault in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Keeper Password Manager & Digital Vault te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Kenmerken van keeper-gebruikers](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Gebruikerskenmerken keeper](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met wachtwoord beheer & digitale kluis**.
+12. Selecteer onder de sectie **Toewijzingen** de optie **Azure Active Directory-groepen synchroniseren met Keeper Password Manager & Digital Vault.**
 
-    ![Toewijzing van keeper-groepen](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Keeper Group Mappings](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
-13. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar keeper Password Manager & Digital kluis in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groepen in keeper Password Manager & Digital kluis voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+13. Controleer de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Keeper Password Manager & Digital Vault in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de groepen in Keeper Password Manager & Digital Vault te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Kenmerken van keeper-groep](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Kenmerken van keepergroep](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+14. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-15. Als u de Azure AD-inrichtings service wilt inschakelen voor wachtwoord beheer & digitale kluis, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+15. Als u de Azure AD-inrichtingsservice voor Keeper Password Manager & Digitale kluis wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-16. Definieer de gebruikers en/of groepen die u wilt inrichten voor wachtwoord beheer & digitale kluis door de gewenste waarden in het **bereik** te kiezen in het gedeelte **instellingen** .
+16. Definieer de gebruikers en/of groepen die u wilt inrichten aan Keeper Password Manager & Digital Vault door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-17. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+17. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op wachtwoord beheer & digitale kluis.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiegegevens** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Keeper Password Manager & Digital Vault.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Beperkingen voor connectoren
 
-* Wacht woord beheer & Digital-kluis vereist dat **e-mail berichten** en **gebruikers naam** dezelfde bron waarde hebben, omdat alle wijzigingen in beide kenmerken de andere waarde wijzigen.
-* Wachtwoord beheer van keeper & digitale kluis biedt geen ondersteuning voor het verwijderen van gebruikers, alleen uitschakelen. Uitgeschakelde gebruikers worden weer gegeven als vergrendeld in de gebruikers interface van de keeper-beheer console.
+* Keeper Password Manager & Digital Vault vereist **dat e-mails** en **userName** dezelfde bronwaarde hebben, omdat updates van beide kenmerken de andere waarde wijzigen.
+* Keeper Password Manager & Digital Vault ondersteunt geen verwijderingen van gebruikers, alleen uitschakelen. Uitgeschakelde gebruikers worden weergegeven als vergrendeld in de gebruikersinterface van de Keeper Admin Console.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 

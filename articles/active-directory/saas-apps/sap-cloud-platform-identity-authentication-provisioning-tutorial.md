@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: SAP Cloud platform identiteits verificatie configureren voor automatische gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts tot SAP Cloud platform identiteits verificatie.
+title: 'Zelfstudie: Identiteitsverificatie van SAP Cloud Platform configureren voor automatische gebruikersinrichting met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor SAP Cloud Platform Identity Authentication.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,90 +16,90 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060417"
 ---
-# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Zelf studie: verificatie van de SAP-Cloud platform identiteit configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Zelfstudie: Identiteitsverificatie van SAP Cloud Platform configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in SAP Cloud platform identiteits verificatie en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen voor SAP Cloud platform identiteits verificatie.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in SAP Cloud Platform Identity Authentication en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor SAP Cloud Platform Identity Authentication.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een SAP Cloud platform identiteits verificatie Tenant](https://cloudplatform.sap.com/pricing.html)
-* Een gebruikers account in SAP Cloud platform identiteits verificatie met beheerders machtigingen.
+* Een Azure AD-tenant
+* [Een SAP Cloud Platform Identity Authentication-tenant](https://cloudplatform.sap.com/pricing.html)
+* Een gebruikersaccount in SAP Cloud Platform Identity Authentication met beheerdersmachtigingen.
 
-## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Gebruikers toewijzen aan SAP Cloud platform identiteits verificatie
+## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Gebruikers toewijzen aan SAP Cloud Platform Identity Authentication
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot de identiteits verificatie van SAP-Cloud platform. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan SAP Cloud platform identiteits verificatie door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang nodig hebben tot identiteitsverificatie van SAP Cloud Platform. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan SAP Cloud Platform Identity Authentication door de instructies hier te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-sap-cloud-platform-identity-authentication"></a>Belang rijke tips voor het toewijzen van gebruikers aan SAP Cloud platform identiteits verificatie
+## <a name="important-tips-for-assigning-users-to-sap-cloud-platform-identity-authentication"></a>Belangrijke tips voor het toewijzen van gebruikers aan SAP Cloud Platform Identity Authentication
 
-* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan SAP Cloud platform Identity-verificatie om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker wordt toegewezen aan SAP Cloud Platform Identity Authentication om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan SAP Cloud platform identiteits verificatie, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan SAP Cloud Platform Identity Authentication, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>SAP-Cloud platform identiteits verificatie instellen voor inrichting
+## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>Sap Cloud Platform Identity Authentication instellen voor inrichten
 
-1. Meld u aan bij de [beheer console voor identiteits verificatie van uw SAP-Cloud platform](https://sapmsftintegration.accounts.ondemand.com/admin). Navigeer naar **gebruikers & autorisaties > beheerders**.
+1. Meld u aan bij uw [SAP Cloud Platform Identity Authentication Admin Console](https://sapmsftintegration.accounts.ondemand.com/admin). Navigeer naar **gebruikers & autorisaties > beheerders**.
 
-    ![Beheer console voor SAP-Cloud platform identiteits verificatie](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
+    ![Beheerconsole voor identiteitsverificatie van SAP-cloudplatform](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Maak een gebruiker met beheerders rechten en selecteer de gebruiker.  
+2.  Maak een beheerdergebruiker en selecteer de gebruiker.  
 
-3.  Onder autorisatie configureren selecteert u de wissel knop voor het **beheren van gebruikers** en **groepen beheren**.
+3.  Schakel onder Autorisaties configureren de knop schakelen in tegen **Gebruikers beheren** en **Groepen beheren**.
 
-    ![SCIM voor SAP-Cloud platform-identiteits verificatie toevoegen](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
+    ![SAP Cloud Platform Identity Authentication Add SCIM](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
 
-4. U ontvangt een e-mail om uw account te activeren en een wacht woord in te stellen voor **SAP Cloud platform Identity Authentication Service**.
+4. U ontvangt een e-mail om uw account te activeren en een wachtwoord in te stellen voor **SAP Cloud Platform Identity Authentication Service.**
 
-4.  Kopieer de **gebruikers-id** en het **wacht woord**. Deze waarden worden ingevoerd in de velden gebruikers naam en Administrator-wacht woord, respectievelijk op het tabblad inrichten van uw SAP Cloud platform identiteits verificatie toepassing in de Azure Portal.
+4.  Kopieer de **gebruikersnaam** en **het wachtwoord**. Deze waarden worden respectievelijk ingevoerd in de velden Gebruikersnaam en Beheerderswachtwoord voor beheerders op het tabblad Inrichting van uw SAP Cloud Platform Identity Authentication-toepassing in de Azure-portal.
 
-## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>SAP Cloud platform identiteits verificatie toevoegen vanuit de galerie
+## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>Sap Cloud Platform Identity Authentication toevoegen vanuit de galerie
 
-Voordat u SAP Cloud platform identiteits verificatie configureert voor automatische gebruikers toewijzing met Azure AD, moet u SAP Cloud platform identiteits verificatie toevoegen vanuit de Azure AD-toepassings galerie aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u SAP Cloud Platform Identity Authentication configureert voor automatische gebruikersvoorziening met Azure AD, moet u SAP Cloud Platform Identity Authentication vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om de SAP Cloud platform identiteits verificatie toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om SAP Cloud Platform Identity Authentication toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak SAP- **Cloud platform identiteits verificatie**in, selecteer **SAP Cloud platform identiteits verificatie** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **SAP Cloud Platform Identity Authentication,** selecteer SAP Cloud Platform Identity **Authentication** in het deelvenster Resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![SAP Cloud Platform-identiteitsverificatie in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-sap-cloud-platform-identity-authentication"></a>Automatische gebruikers inrichting configureren voor identiteits verificatie van SAP-Cloud platform 
+## <a name="configuring-automatic-user-provisioning-to-sap-cloud-platform-identity-authentication"></a>Automatische gebruikersinrichting configureren voor SAP Cloud Platform Identity Authentication 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen te maken, bij te werken en uit te scha kelen in SAP Cloud platform identiteits verificatie op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen te maken, bij te werken en uit te schakelen in sap-cloudplatformidentiteitsverificatie op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor SAP Cloud platform identiteits verificatie in te scha kelen, gevolgd door de instructies in de [zelf studie voor het ondertekenen van de SAP-Cloud platform identiteits verificatie](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor SAP Cloud Platform Identity Authentication, volgens de instructies in de [SAP Cloud Platform Identity Authentication Single sign-on tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren
 
-### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor identiteits verificatie van SAP-Cloud platform in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor SAP Cloud Platform Identity Authentication in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -107,60 +107,60 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling SAP Cloud Platform-identiteitsverificatie in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de invoer `https://<tenantID>.accounts.ondemand.com/service/scim ` in de **Tenant-URL**. Geef de waarden voor de **gebruikers-id** en het **wacht woord** op die u eerder hebt opgehaald in respectievelijk de gebruikers **naam** en het **beheerders wachtwoord** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de SAP Cloud platform identiteits verificatie. Als de verbinding mislukt, zorgt u ervoor dat uw SAP Cloud platform identiteits verificatie account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer onder de sectie `https://<tenantID>.accounts.ondemand.com/service/scim ` **Beheerdersreferenties** invoer in **Tenant-URL**in . Voer **de** gebruikersnaam- en **wachtwoordwaarden** in die eerder zijn opgehaald in respectievelijk het gebruikersnaam- en **beheerderswachtwoord van** **de beheerder.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met SAP Cloud Platform Identity Authentication. Als de verbinding mislukt, moet u ervoor zorgen dat uw SAP Cloud Platform Identity Authentication-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Tenant-URL + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
+    ![Tenant URL + Token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met SAP Cloud platform identiteits verificatie**.
+8. Selecteer azure **Active Directory-gebruikers synchroniseren met SAP Cloud Platform Identity Authentication**in de sectie **Toewijzingen.**
 
-    ![Gebruikers toewijzingen voor SAP-Cloud platform identiteits verificatie](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
+    ![Gebruikerstoewijzingen voor gebruikersvan SAP Cloud Platform Identity Authentication](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar SAP Cloud platform identiteits verificatie in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in SAP Cloud platform identiteits verificatie voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar SAP Cloud Platform Identity Authentication in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in SAP Cloud Platform Identity Authentication voor updatebewerkingen te matchen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Gebruikers kenmerken van SAP-Cloud platform identiteits verificatie](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
+    ![Gebruikerskenmerken van SAP Cloud Platform Identity Authentication](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-11. Als u de Azure AD-inrichtings service voor SAP Cloud platform identiteits verificatie wilt inschakelen, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtingsservice voor SAP Cloud Platform Identity Authentication wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor de verificatie van de SAP-Cloud platform identiteit door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
+12. Definieer de gebruikers en/of groepen die u wilt inrichten voor SAP Cloud Platform Identity Authentication door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op SAP Cloud platform identiteits verificatie.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op SAP Cloud Platform Identity Authentication.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Verbindingsbeperkingen
 
-* Het SCIM-eind punt van de SAP-Cloud platform identiteits verificatie vereist dat bepaalde kenmerken een specifieke indeling hebben. [Hier](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#)vindt u meer informatie over deze kenmerken en hun specifieke indeling.
+* Het SCIM-eindpunt van SAP Cloud Platform Identity Authentication vereist dat bepaalde kenmerken van specifieke indeling zijn. U meer weten over deze kenmerken en hun specifieke formaat [hier](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 

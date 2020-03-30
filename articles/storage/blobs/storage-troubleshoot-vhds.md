@@ -1,34 +1,35 @@
 ---
-title: Schijven zijn gekoppeld aan Azure-VM's oplossen | Microsoft Docs
-description: Vindt u koppelingen naar bronnen voor probleemoplossing voor de virtuele machine van Azure virtuele harde schijven (VHD's).
+title: Problemen met schijven oplossen die zijn gekoppeld aan Azure VM's | Microsoft Documenten
+description: Biedt koppelingen naar probleemoplossingsbronnen voor virtuele harde schijven (Virtual Machine Virtual Machine, HdS) van Azure.
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rogarana
 ms.reviewer: wmgries
-ms.openlocfilehash: c00fdf3ad02edc1faf0d3257d3836a1c2f44d682
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b81c0947327dc8e84c5d3fbbecde3aa31313cc70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061185"
 ---
-# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Schijven zijn gekoppeld aan Azure-VM's oplossen 
+# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Problemen met schijven die zijn gekoppeld aan Azure VM's oplossen 
 
-Virtuele Azure-Machines (VM's), is afhankelijk van virtuele Hardeschijven (VHD's) voor de schijf van het besturingssysteem en eventuele gegevensschijven. VHD's worden opgeslagen als pagina-blobs in een of meer Azure Storage-accounts. In dit artikel verwijst naar de inhoud voor veelvoorkomende problemen die met VHD's optreden kunnen van de probleemoplossing. 
+Azure Virtual Machines (VM's) vertrouwen op Virtual Hard Disks (VHD's) voor de OS-schijf en alle aangesloten gegevensschijven. VHD's worden opgeslagen als paginablobs in een of meer Azure Storage-accounts. In dit artikel wordt gesproken over het oplossen van problemen met veelvoorkomende problemen die zich kunnen voordoen bij VHD's. 
 
-## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Fouten bij het verwijderen van de opslag voor een virtuele machine oplossen
+## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Fouten in het verwijderen van opslag voor een virtuele machine oplossen
 
-In bepaalde gevallen kan u een fout optreden tijdens het verwijderen van een opslagresource wanneer een virtuele machine in een Resource Manager-implementatie bevat VHD's die zijn gekoppeld. Zie voor hulp bij het oplossen van dit probleem, een van de volgende artikelen: 
+In bepaalde gevallen u een fout tegenkomen tijdens het verwijderen van een opslagbron wanneer een VM in een Resource Manager-implementatie gekoppelde VHD's bevat. Zie een van de volgende artikelen voor hulp bij het oplossen van dit probleem: 
 
-  * Op Linux-VM's: [Fouten bij het verwijderen van opslag in Resource Manager-implementatie](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * Op Windows-VM's: [Fouten bij het verwijderen van opslag in Resource Manager-implementatie](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Op Linux VM's: [Fouten bij het verwijderen van opslag in de implementatie van Resource Manager](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Op Windows VM's: [fouten bij het verwijderen van opslag in de implementatie van Resource Manager](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
-## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Onverwacht opnieuw opstarten van virtuele machines met gekoppelde VHD's oplossen
+## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Onverwachte reboots van VM's met gekoppelde VHD's oplossen
 
-Als er onverwacht opnieuw opstarten van een virtuele machine met een groot aantal gekoppelde VHD's, ziet u een van de volgende artikelen:
+Als u onverwachte reboots tegenkomt van een VM met een groot aantal gekoppelde VHD's, raadpleegt u een van de volgende artikelen:
 
-  * Op Linux-VM's: [Onverwacht opnieuw opstarten van VM's met gekoppelde VHD's](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * Op Windows-VM's: [Onverwacht opnieuw opstarten van VM's met gekoppelde VHD's](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Op Linux VM's: [Onverwachte reboots van VM's met bijgevoegde VHD's](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Op Windows VM's: [Onverwachte reboots van VM's met bijgevoegde VHD's](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

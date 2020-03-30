@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Proxyclick configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Proxyclick.
+title: 'Zelfstudie: Proxyclick configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen naar Proxyclick.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,93 +16,93 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063353"
 ---
-# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Zelf studie: Proxyclick configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Zelfstudie: Proxyclick configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Proxyclick en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Proxyclick.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Proxyclick en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen naar Proxyclick.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een Proxyclick-Tenant](https://www.proxyclick.com/pricing)
-* Een gebruikers account in Proxyclick met beheerders machtigingen.
+* Een Azure AD-tenant
+* [Een proxyclick-tenant](https://www.proxyclick.com/pricing)
+* Een gebruikersaccount in Proxyclick met beheerdersmachtigingen.
 
 ## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick toevoegen vanuit de galerie
 
-Voordat u Proxyclick configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u Proxyclick van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Proxyclick configureert voor automatische gebruikersvoorziening met Azure AD, moet u Proxyclick vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om Proxyclick toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om Proxyclick toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Proxyclick**in het zoekvak, selecteer **Proxyclick** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Proxyclick**in het zoekvak, selecteer **Proxyclick** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Proxyclick in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="assigning-users-to-proxyclick"></a>Gebruikers toewijzen aan Proxyclick
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Proxyclick. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Proxyclick door de volgende instructies te volgen:
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Proxyclick nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Proxyclick door de instructies hier te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-proxyclick"></a>Belang rijke tips voor het toewijzen van gebruikers aan Proxyclick
+### <a name="important-tips-for-assigning-users-to-proxyclick"></a>Belangrijke tips voor het toewijzen van gebruikers aan Proxyclick
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Proxyclick om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan Proxyclick wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Proxyclick, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan Proxyclick toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-proxyclick"></a>Automatische gebruikers inrichting configureren voor Proxyclick 
+## <a name="configuring-automatic-user-provisioning-to-proxyclick"></a>Automatische gebruikersvoorziening configureren voor Proxyclick 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Proxyclick te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Proxyclick te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Proxyclick, gevolgd door de instructies in de [Proxyclick-zelf studie voor eenmalige aanmelding](proxyclick-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Proxyclick, volgens de instructies in de [zelfstudie proxyclick single sign-on](proxyclick-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Proxyclick in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor Proxyclick in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Proxyclick**.
+2. Selecteer **Proxyclick**in de lijst met toepassingen .
 
-    ![De koppeling Proxyclick in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Proxyclick in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Als u de **Tenant-URL** en het **geheime token** van uw Proxyclick-account wilt ophalen, volgt u de procedure zoals beschreven in stap 6.
+5. Als u de **URL van de tenant** en het geheime **token** van uw Proxyclick-account wilt ophalen, volgt u de walkthrough zoals beschreven in stap 6.
 
-6. Meld u aan bij de [Proxyclick-beheer console](https://app.proxyclick.com/login//?destination=%2Fdefault). Navigeer naar **instellingen** > **integraties** > **Bladeren**in de Marketplace.
+6. Meld u aan bij uw [proxyclick-beheerconsole](https://app.proxyclick.com/login//?destination=%2Fdefault). Navigeer naar > **Instellingen-integraties** > **bladeren door Marketplace**. **Settings**
 
     ![Proxyclick-instellingen](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -110,71 +110,71 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Proxyclick Marketplace](media/proxyclick-provisioning-tutorial/proxyclick02.png)
 
-    Selecteer **Azure AD**. Klik op **nu installeren**.
+    Selecteer **Azure AD**. Klik **op Nu installeren**.
 
-    ![Azure AD Proxyclick](media/proxyclick-provisioning-tutorial/proxyclick03.png)
+    ![Proxyclick Azure AD](media/proxyclick-provisioning-tutorial/proxyclick03.png)
 
-    ![Proxyclick-installatie](media/proxyclick-provisioning-tutorial/proxyclick04.png)
+    ![Proxyclick Installeren](media/proxyclick-provisioning-tutorial/proxyclick04.png)
 
-    Selecteer **Gebruikers inrichten** en klik op **integratie starten**. 
+    Selecteer **Gebruikersinrichting** en klik op **Integratie starten**. 
 
-    ![Proxyclick gebruikers inrichten](media/proxyclick-provisioning-tutorial/proxyclick05.png)
+    ![Proxyclick User Provisioning](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    De juiste instellingen voor de configuratie van de gebruikers interface moeten nu worden weer gegeven onder **instellingen** > **integraties**. Selecteer **instellingen** onder **Azure AD (gebruikers inrichten)** .
+    De juiste configuratie-gebruikersinterface voor instellingen moet nu worden weergegeven onder > **Instellingen-integraties**. **Settings** Selecteer **Instellingen** onder **Azure AD (User Provisioning)**.
 
-    ![Proxyclick maken](media/proxyclick-provisioning-tutorial/proxyclick06.png)
+    ![Proxyclick Maken](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
-    U vindt hier de **Tenant-URL** en het **geheime token** .
+    U vindt de **URL van de tenant** en secret **token** hier.
 
-    ![Proxyclick-token maken](media/proxyclick-provisioning-tutorial/proxyclick07.png)
+    ![Proxyclick Token maken](media/proxyclick-provisioning-tutorial/proxyclick07.png)
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Proxyclick. Als de verbinding mislukt, zorg er dan voor dat uw Proxyclick-account beheerders machtigingen heeft en probeer het opnieuw.
+7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Proxyclick wanneer u de velden in stap 5 bevolken. Als de verbinding mislukt, moet u ervoor zorgen dat uw Proxyclick-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Proxyclick**.
+10. Selecteer onder de sectie **Toewijzingen** de optie **Azure Active Directory Users synchroniseren met Proxyclick**.
 
-    ![Proxyclick-gebruikers toewijzingen](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
+    ![Proxyclick Gebruikerstoewijzingen](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Proxyclick in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Proxyclick voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Proxyclick in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Proxyclick te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Proxyclick-gebruikers kenmerken](media/proxyclick-provisioning-tutorial/Proxyclick-user-attribute.png)
+    ![Proxyclick Gebruikerskenmerken](media/proxyclick-provisioning-tutorial/Proxyclick-user-attribute.png)
 
-13. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+13. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-14. Als u de Azure AD-inrichtings service voor **Proxyclick wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+14. Als u de Azure AD-inrichtingsservice voor Proxyclick wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-15. Definieer de gebruikers en/of groepen die u wilt inrichten voor Proxyclick door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+15. Definieer de gebruikers en/of groepen die u wilt inrichten aan Proxyclick door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-16. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+16. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Proxyclick.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het inrichten van activiteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Proxyclick.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Beperkingen voor connectoren
 
-* Proxyclick vereist dat **e-mail berichten** en **gebruikers naam** dezelfde bron waarde hebben. Eventuele updates van beide kenmerken wijzigen de andere waarde.
-* Proxyclick biedt geen ondersteuning voor het inrichten van groepen.
+* Proxyclick vereist **dat e-mails** en **userName** dezelfde bronwaarde hebben. Updates voor beide kenmerken wijzigen de andere waarde.
+* Proxyclick biedt geen ondersteuning voor het inrichten voor groepen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 

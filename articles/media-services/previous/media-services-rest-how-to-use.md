@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Media Services bewerkingen REST API | Microsoft Docs
-description: De API ' Media Services Operations REST ' wordt gebruikt voor het maken van taken, assets, Live kanalen en andere resources in een Media Services-account. In dit artikel vindt u een overzicht van Azure Media Services v2 REST API.
+title: Overzicht van restapi-activiteiten van Media Services | Microsoft Documenten
+description: De API 'Media Services Operations REST' wordt gebruikt voor het maken van taken, assets, livekanalen en andere bronnen in een Media Services-account. Dit artikel bevat een overzicht van de Azure Media Services v2 REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,29 +16,29 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773664"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API 
+# <a name="media-services-operations-rest-api-overview"></a>Overzicht van REST API-beheer van Media Services 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-De REST-API van **Media Services bewerkingen** wordt gebruikt voor het maken van taken, assets, Live kanalen en andere resources in een Media Services-account. Zie [Media Services Operations rest API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)(Engelstalig) voor meer informatie.
+De **Media Services Operations REST** API wordt gebruikt voor het maken van taken, assets, live kanalen en andere bronnen in een Media Services-account. Zie [Media Services Operations Rest API-referentie](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)voor meer informatie .
 
-Media Services biedt een REST API die zowel JSON als Atom + pub XML-indeling accepteert. Media Services REST API vereist specifieke HTTP-headers die elke client moet verzenden wanneer er verbinding wordt gemaakt met Media Services, evenals een set optionele headers. In de volgende secties worden de kopteksten en HTTP-termen beschreven die u kunt gebruiken bij het maken van aanvragen en het ontvangen van antwoorden van Media Services.
+Media Services biedt een REST API die zowel JSON- als atom+pub XML-indeling accepteert. Media Services REST API vereist specifieke HTTP-headers die elke client moet verzenden wanneer hij verbinding maakt met Media Services, evenals een set optionele kopteksten. In de volgende secties worden de kopteksten en HTTP-werkwoorden beschreven die u gebruiken bij het maken van aanvragen en het ontvangen van reacties van Media Services.
 
-Verificatie voor de Media Services REST API wordt uitgevoerd via Azure Active Directory verificatie. dit wordt beschreven in het artikel [Azure AD-verificatie gebruiken om toegang te krijgen tot de API van Azure Media Services met rest](media-services-rest-connect-with-aad.md)
+Verificatie naar de Media Services REST-API wordt uitgevoerd via Azure Active Directory-verificatie die wordt beschreven in het artikel [Azure AD-verificatie gebruiken om toegang te krijgen tot de Azure Media Services API met REST](media-services-rest-connect-with-aad.md)
 
 ## <a name="considerations"></a>Overwegingen
 
-De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
+De volgende overwegingen zijn van toepassing bij het gebruik van REST.
 
-* Bij het uitvoeren van een query op entiteiten is er een limiet van 1000 entiteiten die tegelijk worden geretourneerd, omdat open bare REST v2 de query resultaten beperkt tot 1000 resultaten. U moet **overs Laan** en **nemen** (.net)/ **Top** (rest) gebruiken, zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API-voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
-* Wanneer u JSON gebruikt en opgeeft dat het sleutel woord **__metadata** wordt gebruikt in de aanvraag (bijvoorbeeld om te verwijzen naar een gekoppeld object), moet u de **Accept** -header instellen op [JSON-indeling](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Zie het volgende voor beeld). Odata begrijpt de eigenschap **__metadata** niet in de aanvraag, tenzij u deze instelt op uitgebreid.  
+* Bij het opvragen van entiteiten is er een limiet van 1000 entiteiten die tegelijk worden geretourneerd omdat openbare REST v2 queryresultaten beperkt tot 1000 resultaten. U moet **Overslaan** en **nemen** (.NET)/ **top** (REST) gebruiken zoals beschreven in [dit .NET-voorbeeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [dit VOORBEELD van de REST API.](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) 
+* Wanneer u JSON gebruikt en opgeeft het **__metadata** trefwoord in de aanvraag te gebruiken (bijvoorbeeld om naar een gekoppeld object te verwijzen), moet u de **koptekst Accepteren** instellen op [de indeling JSON Verbose](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (zie het volgende voorbeeld). Odata begrijpt de **__metadata** eigenschap in het verzoek niet, tenzij u deze instelt op verbose.  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -55,73 +55,73 @@ De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
                 [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
         . . . 
 
-## <a name="standard-http-request-headers-supported-by-media-services"></a>Standaard-HTTP-aanvraag headers die worden ondersteund door Media Services
-Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteksten opnemen in uw aanvraag en ook een set optionele kopteksten die u mogelijk wilt opnemen. De volgende tabel bevat de vereiste headers:
+## <a name="standard-http-request-headers-supported-by-media-services"></a>Standaard HTTP-aanvraagkoppen die worden ondersteund door Media Services
+Voor elk gesprek dat u in Media Services voert, is er een reeks vereiste kopteksten die u in uw aanvraag moet opnemen en ook een reeks optionele kopteksten die u wilt opnemen. De onderstaande tabel bevat de vereiste kopteksten:
 
 | Header | Type | Waarde |
 | --- | --- | --- |
-| Autorisatie |Bearer |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
-| x-MS-version |Decimal |2,17 (of meest recente versie)|
-| DataServiceVersion |Decimal |3.0 |
-| MaxDataServiceVersion |Decimal |3.0 |
+| Autorisatie |Drager |Drager is het enige geaccepteerde autorisatiemechanisme. De waarde moet ook het toegangstoken bevatten dat wordt geleverd door Azure Active Directory. |
+| x-ms-versie |Decimal |2.17 (of meest recente versie)|
+| DataServiceVersie |Decimal |3.0 |
+| MaxDataServiceVersie |Decimal |3.0 |
 
 > [!NOTE]
-> Omdat Media Services OData gebruikt om de REST-Api's weer te geven, moeten de DataServiceVersion-en MaxDataServiceVersion-headers worden opgenomen in alle aanvragen; Als dat niet het geval is, 3,0 wordt de DataServiceVersion-waarde Media Services die in gebruik is, echter gebruikt.
+> Omdat Media Services OData gebruikt om de REST API's bloot te leggen, moeten de DataServiceVersion- en MaxDataServiceVersion-headers in alle aanvragen worden opgenomen; als dit echter niet het geval is, gaat Media Services er momenteel van uit dat de in gebruik zijnde Waarde Van DataServiceVersion 3.0 is.
 > 
 > 
 
-Hier volgt een aantal optionele kopteksten:
+Het volgende is een set optionele kopteksten:
 
 | Header | Type | Waarde |
 | --- | --- | --- |
-| Datum |RFC 1123-datum |Tijds tempel van de aanvraag |
-| Zodat |Inhouds type |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
-| Accepteren-coderen |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
-| Accept-Language |"en", "ES", enzovoort. |Hiermee geeft u de voorkeurs taal op voor het antwoord. |
-| Accept-Charset |Charset-type like "UTF-8" |De standaard waarde is UTF-8. |
-| X-HTTP-methode |HTTP-methode |Biedt clients of firewalls die geen ondersteuning bieden voor HTTP-methoden zoals PUT of DELETE om deze methoden te gebruiken, via een GET-aanroep. |
-| Content-Type |Inhouds type |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
-| client-aanvraag-id |Tekenreeks |Een door een aanroeper gedefinieerde waarde die de opgegeven aanvraag aanduidt. Indien opgegeven, wordt deze waarde opgenomen in het antwoord bericht als een manier om de aanvraag toe te wijzen. <p><p>**Belangrijk**<p>De waarden moeten worden afgetopt op 2096b (2 KB). |
+| Date |RFC 1123 datum |Tijdstempel van het verzoek |
+| Accepteren |Inhoudstype |Het gevraagde inhoudstype voor het antwoord, zoals:<p> -applicatie/json;odata=verbose<p> - toepassing/atoom+xml<p> Reacties kunnen een ander inhoudstype hebben, zoals een blob ophalen, waarbij een succesvol antwoord de blobstream als payload bevat. |
+| Accepteren-codering |Gzip, leeglopen |GZIP en DEFLATE codering, indien van toepassing. Opmerking: Voor grote bronnen kan Media Services deze koptekst negeren en niet-gecomprimeerde gegevens retourneren. |
+| Accept-Language |"nl", "es", enzovoort. |Hiermee geeft u de gewenste taal voor het antwoord op. |
+| Accepteren-Charset |Charset type als "UTF-8" |Standaard is UTF-8. |
+| X-HTTP-methode |HTTP-methode |Hiermee kunnen clients of firewalls die HTTP-methoden zoals PUT of DELETE ondersteunen, deze methoden gebruiken, getunneld via een GET-oproep. |
+| Content-Type |Inhoudstype |Inhoudstype van de aanvraaginstantie in PUT- of POST-verzoeken. |
+| client-request-id |Tekenreeks |Een door de beller gedefinieerde waarde die de opgegeven aanvraag identificeert. Indien opgegeven, wordt deze waarde opgenomen in het antwoordbericht als een manier om de aanvraag in kaart te brengen. <p><p>**Belangrijk**<p>Waarden moeten worden afgetopt op 2096b (2k). |
 
-## <a name="standard-http-response-headers-supported-by-media-services"></a>Standaard-HTTP-antwoord headers die worden ondersteund door Media Services
-Hier volgt een reeks kopteksten die kunnen worden geretourneerd, afhankelijk van de resource die u hebt aangevraagd en de actie die u wilt uitvoeren.
+## <a name="standard-http-response-headers-supported-by-media-services"></a>Standaard HTTP-antwoordkoppen die worden ondersteund door Media Services
+Het volgende is een set kopteksten die aan u kunnen worden geretourneerd, afhankelijk van de resource die u hebt aangevraagd en de actie die u wilt uitvoeren.
 
 | Header | Type | Waarde |
 | --- | --- | --- |
-| aanvraag-id |Tekenreeks |Een unieke id voor de huidige bewerking, gegenereerde service. |
-| client-aanvraag-id |Tekenreeks |Een id die is opgegeven door de aanroeper in de oorspronkelijke aanvraag, indien aanwezig. |
-| Datum |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
-| Content-Type |Varieert |Het inhouds type van de antwoord tekst. |
-| Content-Encoding |Varieert |Gzip of verkleinen, indien van toepassing. |
+| request-id |Tekenreeks |Een unieke id voor de huidige bewerking, gegenereerde service. |
+| client-request-id |Tekenreeks |Een id die door de beller in het oorspronkelijke verzoek is opgegeven, indien aanwezig. |
+| Date |RFC 1123 datum |De datum/tijd waarop de aanvraag is verwerkt. |
+| Content-Type |Varieert |Het inhoudstype van de reactiebody. |
+| Content-Encoding |Varieert |Gzip of leeglopen, indien van toepassing. |
 
-## <a name="standard-http-verbs-supported-by-media-services"></a>Standaard HTTP-termen die worden ondersteund door Media Services
-Hier volgt een volledige lijst met HTTP-termen die kunnen worden gebruikt bij het maken van HTTP-aanvragen:
+## <a name="standard-http-verbs-supported-by-media-services"></a>Standaard HTTP-werkwoorden ondersteund door Media Services
+Het volgende is een volledige lijst met HTTP-werkwoorden die kunnen worden gebruikt bij het indienen van HTTP-verzoeken:
 
-| term | Beschrijving |
+| Verb | Beschrijving |
 | --- | --- |
-| GET |Retourneert de huidige waarde van een object. |
-| POST |Hiermee wordt een object gemaakt op basis van de verstrekte gegevens of wordt een opdracht verzonden. |
-| PUT |Hiermee wordt een object vervangen of een benoemd object gemaakt (indien van toepassing). |
+| GET |Geeft als resultaat de huidige waarde van een object. |
+| POST |Hiermee maakt u een object op basis van de verstrekte gegevens of verzendt u een opdracht. |
+| PUT |Hiermee wordt een object vervangen of wordt een benoemd object gemaakt (indien van toepassing). |
 | DELETE |Hiermee verwijdert u een object. |
-| SAMEN |Hiermee wordt een bestaand object bijgewerkt met de benoemde eigenschaps wijzigingen. |
-| HOREN |Retourneert meta gegevens van een object voor een GET-antwoord. |
+| Samenvoegen |Hiermee wordt een bestaand object met benoemde eigenschapswijzigingen bijgewerkt. |
+| HEAD |Retourneert metagegevens van een object voor een GET-antwoord. |
 
-## <a name="discover-and-browse-the-media-services-entity-model"></a>Het Media Services-entiteits model ontdekken en doorzoeken
-Als u wilt dat Media Services entiteiten beter kunnen worden gedetecteerd, kan de $metadata bewerking worden gebruikt. U kunt alle geldige entiteits typen, entiteits eigenschappen, koppelingen, functies, acties, enzovoort ophalen. Door de $metadata bewerking toe te voegen aan het einde van uw Media Services REST API-eind punt, kunt u toegang krijgen tot deze detectie service.
+## <a name="discover-and-browse-the-media-services-entity-model"></a>Het entiteitsmodel Media Services ontdekken en doorbladeren
+Om mediaservices-entiteiten beter vindbaar te maken, kan de $metadata-bewerking worden gebruikt. Hiermee u alle geldige entiteitstypen, entiteitseigenschappen, associaties, functies, acties, enzovoort ophalen. Door de $metadata bewerking toe te voegen aan het einde van uw API-eindpunt voor Media Services, hebt u toegang tot deze detectieservice.
 
  /api/$metadata.
 
-Voeg '? API-Version = 2. x ' aan het einde van de URI toe als u de meta gegevens in een browser wilt weer geven of als u de header x-MS-version niet in uw aanvraag wilt gebruiken.
+U moet "?api-version=2.x" toevoegen aan het einde van de URI als u de metagegevens in een browser wilt bekijken of de x-ms-versieheader niet in uw aanvraag wilt opnemen.
 
-## <a name="authenticate-with-media-services-rest-using-azure-active-directory"></a>Verifiëren met Media Services REST met behulp van Azure Active Directory
+## <a name="authenticate-with-media-services-rest-using-azure-active-directory"></a>Verifiëren met Media Services REST met Azure Active Directory
 
-Verificatie op de REST API geschiedt via Azure Active Directory (AAD).
-Zie [toegang tot de Azure Media Services API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het verkrijgen van de vereiste verificatie gegevens voor uw Media Services-account in azure Portal.
+Verificatie op de REST-API gebeurt via Azure Active Directory(AAD).
+Zie Toegang tot de Azure Media Services API met Azure [AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het ophalen van vereiste verificatiegegevens voor uw Media Services-account via de Azure Portal.
 
-Zie voor meer informatie over het schrijven van code die verbinding maakt met de REST API met behulp van Azure AD-verificatie het artikel [Azure AD-verificatie gebruiken voor toegang tot de Azure Media Services API met rest](media-services-rest-connect-with-aad.md).
+Zie het artikel [Azure AD-verificatie gebruiken om toegang te krijgen tot de Azure Media Services API met REST](media-services-rest-connect-with-aad.md)voor meer informatie over het schrijven van code die verbinding maakt met de REST API met Azure AD-verificatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de API van Azure Media Services met rest](media-services-rest-connect-with-aad.md)voor meer informatie over het gebruik van Azure AD-verificatie met Media Services rest API.
+Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de Azure Media Services API met REST.](media-services-rest-connect-with-aad.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

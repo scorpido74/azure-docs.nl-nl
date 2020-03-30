@@ -1,7 +1,7 @@
 ---
-title: Model voorbereiden voor implementatie
+title: Model voorbereiden op implementatie
 titleSuffix: ML Studio (classic) - Azure
-description: Het voorbereiden van uw getrainde model voor implementatie als een webservice door uw Machine Learning Studio-trainings experiment (klassiek) te converteren naar een voorspellend experiment.
+description: Hoe u uw getrainde model voorbereidt op implementatie als webservice door uw Machine Learning Studio (klassieke) trainingsexperiment om te zetten in een voorspellend experiment.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,112 +10,112 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/28/2017
 ms.openlocfilehash: 061c340f8c4952d5a0f2a3873f7475e4f733c290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204508"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Uw model voorbereiden voor implementatie in Azure Machine Learning Studio (klassiek)
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Uw model voorbereiden op implementatie in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (klassiek) biedt u de hulp middelen die u nodig hebt om een predictive analytics model te ontwikkelen en vervolgens te operationeel maken door het te implementeren als een Azure-webservice.
+Azure Machine Learning Studio (klassiek) biedt u de tools die u nodig hebt om een voorspellend analysemodel te ontwikkelen en vervolgens te operationaliseren door het te implementeren als een Azure-webservice.
 
-U kunt dit doen door Studio (klassiek) te gebruiken voor het maken van een experiment, een *trainings experiment* , waarin u uw model traint, scoreeert en bewerkt. Zodra u tevreden bent, kunt u uw model implementeren door uw trainings experiment te converteren naar een *voorspellend experiment* dat is geconfigureerd voor de Score gebruikers gegevens.
+Hiervoor gebruik je Studio (klassiek) om een experiment te maken - een *trainingsexperiment* genoemd - waarbij je je model traint, scoort en bewerkt. Zodra u tevreden bent, krijgt u uw model klaar om te implementeren door uw trainingsexperiment om te zetten in een *voorspellend experiment* dat is geconfigureerd om gebruikersgegevens te scoren.
 
-U kunt een voor beeld van dit proces bekijken in [zelf studie 1: krediet risico voors pellen](tutorial-part1-credit-risk.md).
+U een voorbeeld van dit proces zien in [Zelfstudie 1: Kredietrisico voorspellen](tutorial-part1-credit-risk.md).
 
-In dit artikel wordt een dieper ingaan op de details van hoe een opleidingsexperiment wordt geconverteerd naar een Voorspellend experiment en hoe die Voorspellend experiment is geïmplementeerd. Door de volgende details, kunt u informatie over het configureren van uw geïmplementeerd model zodat het efficiëntere.
+Dit artikel neemt een diepe duik in de details van hoe een trainingsexperiment wordt omgezet in een voorspellend experiment en hoe dat voorspellende experiment wordt geïmplementeerd. Door deze details te begrijpen, u leren hoe u uw geïmplementeerde model configureren om het effectiever te maken.
 
 
 
 ## <a name="overview"></a>Overzicht 
 
-Het proces van het een opleidingsexperiment converteren naar een Voorspellend experiment bestaat uit drie stappen:
+Het proces van het converteren van een trainingsexperiment naar een voorspellend experiment omvat drie stappen:
 
-1. Vervang de machine learning-algoritme voor modules met het getrainde model.
-2. Verwijder het experiment alleen de modules die nodig zijn voor het scoren. Een opleidingsexperiment omvat een aantal modules die nodig zijn voor de training, maar niet nodig zijn wanneer het model wordt getraind.
-3. Definiëren hoe het model van uw gegevens van de gebruiker van de web-service worden geaccepteerd en welke gegevens worden geretourneerd.
+1. Vervang de machine learning algoritme modules door uw getrainde model.
+2. Trim het experiment alleen door die modules die nodig zijn om te scoren. Een trainingsexperiment omvat een aantal modules die nodig zijn voor de opleiding, maar die niet nodig zijn zodra het model is opgeleid.
+3. Definieer hoe uw model gegevens van de webservicegebruiker accepteert en welke gegevens worden geretourneerd.
 
 > [!TIP]
-> U hebt met training en scoren van uw model met behulp van uw eigen gegevens betrokken zijn in uw trainingsexperiment. Maar zodra geïmplementeerd, gebruikers nieuwe gegevens wordt verzonden aan uw model en voorspellingsresultaten wordt geretourneerd. Dus als u uw trainingsexperiment naar een Voorspellend experiment converteren zodat deze klaar is voor implementatie, houd er rekening mee hoe het model wordt gebruikt door anderen.
+> In uw trainingsexperiment houdt u zich bezig met het trainen en scoren van uw model met behulp van uw eigen gegevens. Maar eenmaal geïmplementeerd, zullen gebruikers nieuwe gegevens naar uw model sturen en het zal voorspellingsresultaten retourneren. Dus, als u uw trainingsexperiment omte zetten in een voorspellend experiment om het klaar te maken voor implementatie, houd er dan rekening mee hoe het model door anderen zal worden gebruikt.
 > 
 > 
 
-## <a name="set-up-web-service-button"></a>Knop Web Service instellen
-Nadat u uw experiment hebt uitgevoerd (Klik onder aan het canvas op **uitvoeren** ), klikt u op de knop **webservice instellen** (Selecteer de optie **voorspellende webservice** ). Het instellen van de **webservice** voert de volgende drie stappen uit om uw trainings experiment te converteren naar een voorspellend experiment:
+## <a name="set-up-web-service-button"></a>Knop Webservice instellen
+Nadat u het experiment hebt uitgevoerd (klik op **UITVOEREN** onder aan het experimentcanvas) klikt u op de knop **Webservice instellen** (selecteer de optie **Voorspellende webservice).** **Webservice instellen** voert de drie stappen uit om uw trainingsexperiment om te zetten in een voorspellend experiment:
 
-1. U kunt uw getrainde model opslaan in de sectie **getrainde modellen** van het module palet (links van het canvas op het experiment). Vervolgens wordt het algoritme voor machine learning en [Train model][train-model] modules vervangen door het opgeslagen getrainde model.
-2. Deze analyseert uw experiment en verwijdert u modules die zijn duidelijk wordt alleen gebruikt voor training en niet langer nodig zijn.
-3. Hiermee worden de modules _Web Service input_ en _output_ ingevoegd op de standaard locaties in uw experiment (deze modules accepteren en retour neren gebruikers gegevens).
+1. Het slaat uw getrainde model op in het gedeelte **Getrainde modellen** van het modulepalet (links van het experimentcanvas). Het vervangt dan de machine learning algoritme en [Train Model][train-model] modules met de opgeslagen getrainde model.
+2. Het analyseert uw experiment en verwijdert modules die duidelijk alleen voor training zijn gebruikt en niet meer nodig zijn.
+3. Hiermee worden invoer- en _uitvoermodules van_ _webservices_ ingevoegd in standaardlocaties in uw experiment (deze modules accepteren en retourneren gebruikersgegevens).
 
-Het volgende experiment traint bijvoorbeeld een tweeklasse boosted decision tree model met voorbeeldgegevens telling:
+Het volgende experiment leidt bijvoorbeeld een tweeklassenmodel met een gebooste beslissingsstructuur op met behulp van gegevens over de telling van monsters:
 
 ![Trainingsexperiment](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
-De modules in dit experiment uitvoeren in feite vier verschillende functies:
+De modules in dit experiment voeren in principe vier verschillende functies uit:
 
-![Module-functies](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
+![Modulefuncties](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
-Wanneer u deze trainingsexperiment naar een Voorspellend experiment converteren, sommige van deze modules zijn niet meer nodig hebt of ze nu een ander doel dienen:
+Wanneer u dit trainingsexperiment omzet in een voorspellend experiment, zijn sommige van deze modules niet meer nodig of dienen ze nu een ander doel:
 
-* **Gegevens** -de gegevens in deze voorbeeld gegevensset worden niet gebruikt tijdens de score-de gebruiker van de webservice levert de gegevens die moeten worden beoordeeld. Echter, de metagegevens van deze gegevensset, zoals gegevenstypen, wordt gebruikt door het getrainde model. Daarom moet u de gegevensset in de Voorspellend experiment houden, zodat deze metagegevens kan bieden.
+* **Gegevens** - De gegevens in deze voorbeeldgegevensset worden niet gebruikt tijdens het scoren - de gebruiker van de webservice verstrekt de te scoren gegevens. De metagegevens uit deze gegevensset, zoals gegevenstypen, worden echter gebruikt door het getrainde model. U moet de gegevensset dus in het voorspellende experiment bewaren, zodat deze metagegevens kan leveren.
 
-* **Prep** : afhankelijk van de gebruikers gegevens die worden verzonden voor de score, zijn deze modules mogelijk niet nodig om de binnenkomende gegevens te verwerken. Met de knop **webservice instellen** kunt u deze niet aanraken. u moet bepalen hoe u deze wilt verwerken.
+* **Prep** - Afhankelijk van de gebruikersgegevens die worden ingediend om te scoren, kunnen deze modules al dan niet nodig zijn om de binnenkomende gegevens te verwerken. De knop **Webservice instellen** raakt deze niet aan - u moet beslissen hoe u ze wilt hanteren.
   
-    In dit voor beeld kan de gegevensset van de voor beelden bijvoorbeeld ontbrekende waarden bevatten, zodat er een [schone ontbrekende gegevens][clean-missing-data] module werd opgenomen om deze te verwerken. Daarnaast bevat de voorbeeldgegevensset van kolommen die niet nodig zijn voor het model te trainen. Daarom is een [select columns in dataset][select-columns] -module opgenomen om deze extra kolommen uit te sluiten van de gegevens stroom. Als u weet dat de gegevens die via de webservice worden verzonden, geen ontbrekende waarden bevatten, kunt u de module [clean Missing Data][clean-missing-data] verwijderen. Omdat in de module [select columns in dataset][select-columns] de kolommen met gegevens worden gedefinieerd die het getrainde model verwacht, moet die module echter behouden blijven.
+    In dit voorbeeld kan de voorbeeldgegevensset bijvoorbeeld ontbrekende waarden hebben, dus er is een clean [missing data-module][clean-missing-data] opgenomen om ze te behandelen. De voorbeeldgegevensset bevat ook kolommen die niet nodig zijn om het model te trainen. Er is dus een [module Kolommen selecteren in gegevensset][select-columns] opgenomen om die extra kolommen uit te sluiten van de gegevensstroom. Als u weet dat de gegevens die worden ingediend om te scoren via de webservice geen ontbrekende waarden hebben, u de module [Ontbrekende gegevens opschonen.][clean-missing-data] Aangezien de module [Kolommen selecteren in gegevensset][select-columns] echter helpt bij het definiëren van de kolommen met gegevens die het getrainde model verwacht, moet die module blijven.
 
-* **Train** : deze modules worden gebruikt om het model te trainen. Wanneer u op **webservice instellen**klikt, worden deze modules vervangen door één module die het model bevat dat u hebt getraind. Deze nieuwe module wordt opgeslagen in de sectie **getrainde modellen** van het module palet.
+* **Trein** - Deze modules worden gebruikt om het model te trainen. Wanneer u op **Webservice instellen**klikt, worden deze modules vervangen door één module met het model dat u hebt getraind. Deze nieuwe module wordt opgeslagen in het gedeelte **Getrainde modellen** van het modulepalet.
 
-* **Score** : in dit voor beeld wordt de module [Split data][split] gebruikt om de gegevens stroom te verdelen in test gegevens en trainings gegevens. In het voorspellende experiment worden we niet meer getraind, zodat [gesplitste gegevens][split] kunnen worden verwijderd. Op dezelfde manier worden de module voor het tweede [score model][score-model] en de [model module evalueren][evaluate-model] gebruikt voor het vergelijken van de resultaten van de test gegevens. deze modules zijn dus niet nodig in het voorspellende experiment. De resterende [score model][score-model] module is echter nodig om een score resultaat te retour neren via de webservice.
+* **Score** - In dit voorbeeld wordt de module [Gesplitste gegevens][split] gebruikt om de gegevensstroom te verdelen in testgegevens en trainingsgegevens. In het voorspellende experiment trainen we niet meer, zodat [Split Data][split] kan worden verwijderd. Op dezelfde manier worden de tweede [scoremodelmodule][score-model] en de module [Model evalueren][evaluate-model] gebruikt om de resultaten van de testgegevens te vergelijken, zodat deze modules niet nodig zijn in het voorspellende experiment. De resterende [scoremodelmodule][score-model] is echter nodig om een scoreresultaat via de webservice terug te geven.
 
-Hier ziet u hoe het voor beeld eruitziet nadat **u op webservice instellen**hebt geklikt:
+Zo ziet ons voorbeeld eruit nadat we op **WebService instellen**hebben geklikt:
 
-![Geconverteerde Voorspellend experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
+![Geconverteerd voorspellend experiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
-Het werk dat is gedaan door de webservice in te **stellen** kan voldoende zijn om uw experiment voor te bereiden om te worden geïmplementeerd als een webservice. U wilt echter enkele extra werk die specifiek zijn voor uw experiment doet.
+Het werk dat door **Set Up Web Service** wordt uitgevoerd, kan voldoende zijn om uw experiment voor te bereiden om als webservice te worden geïmplementeerd. U echter wat extra werk doen dat specifiek is voor uw experiment.
 
-### <a name="adjust-input-and-output-modules"></a>Invoer- en -modules aanpassen
-In uw trainingsexperiment gebruikt van een set trainingsgegevens en vervolgens heeft enkele verwerking om de gegevens in een formulier dat de machine learning-algoritme die nodig zijn. Als de gegevens die u verwacht via de webservice, deze verwerking niet nodig hebt, kunt u deze omzeilen: Verbind de uitvoer van de **module Web Service-invoer** naar een andere module in uw experiment. U ontvangt nu gegevens van de gebruiker in het model op deze locatie.
+### <a name="adjust-input-and-output-modules"></a>Invoer- en uitvoermodules aanpassen
+In uw trainingsexperiment hebt u een set trainingsgegevens gebruikt en vervolgens wat verwerking en verwerking gedaan om de gegevens te krijgen in een vorm die het machine learning-algoritme nodig had. Als de gegevens die u verwacht te ontvangen via de webservice deze verwerking niet nodig hebben, u deze omzeilen: sluit de uitvoer van de invoermodule van de **webservice** aan een andere module in uw experiment. De gegevens van de gebruiker komen nu in het model op deze locatie.
 
-Zo wordt bijvoorbeeld standaard de webservice- **invoer** module aan de bovenkant van de gegevens stroom **ingesteld** , zoals wordt weer gegeven in de bovenstaande afbeelding. Maar we kunnen de webservice- **invoer** na de modules voor gegevens verwerking hand matig plaatsen:
+Als u bijvoorbeeld standaard **Webservice instellen instellen,** wordt de **invoermodule webservice** boven aan uw gegevensstroom geplaatst, zoals in de bovenstaande afbeelding wordt weergegeven. Maar we kunnen de **webserviceinvoer** handmatig voorbij de gegevensverwerkingsmodules plaatsen:
 
-![Het verplaatsen van de web service-invoer](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
+![De webservice-invoer verplaatsen](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
-De ingevoerde gegevens opgegeven via de webservice geeft nu rechtstreeks in de module Score Model zonder eventuele voorverwerking.
+De invoergegevens die via de webservice worden verstrekt, worden nu rechtstreeks naar de module Scoremodel overgegaan zonder enige voorbewerking.
 
-Op dezelfde manier wordt de webservice-uitvoer module aan de onderkant van de gegevens stroom standaard **ingesteld** . In dit voor beeld keert de webservice terug naar de gebruiker de uitvoer van de module [score model][score-model] , die de volledige invoer gegevens vector bevat plus de resultaten van de score.
-Als u echter liever iets anders retourneert, kunt u aanvullende modules toevoegen vóór de module **webservice-uitvoer** . 
+Op dezelfde manier plaatst **Webservice instellen** standaard de webserviceuitvoermodule onder aan uw gegevensstroom. In dit voorbeeld geeft de webservice de uitvoer van de module [Scoremodel][score-model] aan de gebruiker terug, inclusief de volledige invoergegevensvector plus de scoreresultaten.
+Als u echter liever iets anders wilt retourneren, u extra modules toevoegen voordat de **webserviceuitvoermodule wordt** uitgevoerd. 
 
-Als u bijvoorbeeld alleen de Score resultaten en niet de volledige vector van invoer gegevens wilt retour neren, voegt u een [select columns in dataset][select-columns] -module toe om alle kolommen uit te sluiten, met uitzonde ring van de Score resultaten. Verplaats vervolgens de module **webservice-uitvoer** naar de uitvoer van de module [select columns in dataset][select-columns] . Het experiment ziet er als volgt:
+Als u bijvoorbeeld alleen de scoreresultaten wilt retourneren en niet de hele vector van invoergegevens, voegt u een module [Kolommen selecteren in gegevensset][select-columns] toe om alle kolommen uit te sluiten, behalve de scoreresultaten. Verplaats de module **Webservice-uitvoer** vervolgens naar de uitvoer van de module Kolommen selecteren in de module [Gegevensset.][select-columns] Het experiment ziet er als volgt uit:
 
-![Het verplaatsen van de web service-uitvoer](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
+![De uitvoer van de webservice verplaatsen](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
-### <a name="add-or-remove-additional-data-processing-modules"></a>Toevoegen of verwijderen van extra gegevensverwerkende modules
-Als er meer modules in uw experiment waarvan u weet niet meer nodig dat tijdens de score, kunnen deze worden verwijderd. Omdat we de module **webservice-invoer** bijvoorbeeld hebben verplaatst naar een punt na de modules voor gegevens verwerking, kunnen we de module [clean Missing Data][clean-missing-data] uit het voorspellende experiment verwijderen.
+### <a name="add-or-remove-additional-data-processing-modules"></a>Extra gegevensverwerkingsmodules toevoegen of verwijderen
+Als er meer modules in uw experiment zijn waarvan u weet dat ze niet nodig zijn tijdens het scoren, kunnen deze worden verwijderd. Omdat we bijvoorbeeld de **invoermodule voor webservice** hebben verplaatst naar een punt na de gegevensverwerkingsmodules, kunnen we de module [Schone ontbrekende gegevens][clean-missing-data] uit het voorspellende experiment verwijderen.
 
-Onze Voorspellend experiment ziet er nu als volgt uit:
+Ons voorspellend experiment ziet er nu als volgt uit:
 
-![Aanvullende module verwijderen](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
+![Extra module verwijderen](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
-### <a name="add-optional-web-service-parameters"></a>Toevoegen van optionele Parameters van de Web Service
-In sommige gevallen kunt u toestaan dat de gebruiker van uw web-service het gedrag van modules wijzigen wanneer de service wordt geopend. U kunt dit doen met de *para meters* van de webservice.
+### <a name="add-optional-web-service-parameters"></a>Optionele webserviceparameters toevoegen
+In sommige gevallen u de gebruiker van uw webservice toestaan het gedrag van modules te wijzigen wanneer de service wordt geopend. *Met WebService Parameters* u dit doen.
 
-Een voor beeld hiervan is het instellen van een [import gegevens][import-data] module, zodat de gebruiker van de geïmplementeerde webservice een andere gegevens bron kan opgeven wanneer de webservice wordt geopend. Of configureer een module voor het [exporteren van gegevens][export-data] , zodat er een andere bestemming kan worden opgegeven.
+Een veelvoorkomend voorbeeld is het instellen van een [module Gegevens importeren,][import-data] zodat de gebruiker van de geïmplementeerde webservice een andere gegevensbron kan opgeven wanneer de webservice wordt geopend. Of het configureren van een [exportgegevensmodule][export-data] zodat een andere bestemming kan worden opgegeven.
 
-U kunt Web Service Parameters definiëren en deze koppelen aan een of meer moduleparameters en kunt u opgeven of ze verplicht of optioneel zijn. De gebruiker van de webservice bevat waarden voor deze parameters wanneer de service kan worden geopend en de acties van de module worden gewijzigd.
+U Webserviceparameters definiëren en deze koppelen aan een of meer moduleparameters en u opgeven of deze vereist of optioneel zijn. De gebruiker van de webservice geeft waarden voor deze parameters wanneer de service wordt geopend en de moduleacties dienovereenkomstig worden gewijzigd.
 
-Zie [Using Azure machine learning web service para meters][webserviceparameters]voor meer informatie over de para meters van de web-service en hoe u deze kunt gebruiken.
+Zie [Azure Machine Learning Web Service Parameters gebruiken][webserviceparameters]voor meer informatie over wat webserviceparameters zijn en hoe u deze gebruiken.
 
 [webserviceparameters]: web-service-parameters.md
 
 
 ## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Het voorspellende experiment implementeren als webservice
-Nu dat de Voorspellend experiment voldoende is voorbereid, kunt u deze kunt implementeren als een Azure-web-service. Met behulp van de webservice, kunnen gebruikers gegevens verzenden naar uw model en het model de voorspellingen wordt geretourneerd.
+Nu het voorspellende experiment voldoende is voorbereid, u het implementeren als een Azure-webservice. Met behulp van de webservice kunnen gebruikers gegevens naar uw model verzenden en het model geeft zijn voorspellingen terug.
 
-Zie [een Azure machine learning-webservice implementeren][deploy] voor meer informatie over het volledige implementatie proces
+Zie [Een Webservice azure Machine Learning implementeren][deploy] voor meer informatie over het volledige implementatieproces
 
 [deploy]: deploy-a-machine-learning-web-service.md
 

@@ -1,53 +1,69 @@
 ---
-title: Resources implementeren met Power shell en sjabloon
+title: Resources implementeren met PowerShell en sjabloon
 description: Gebruik Azure Resource Manager en Azure PowerShell om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: c31cde9d3023c49a03f4a7a6c434c16405c88bea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273876"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153264"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resources implementeren met Resource Manager-sjablonen en Azure PowerShell
+# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Resources implementeren met ARM-sjablonen en Azure PowerShell
 
-Meer informatie over het gebruik van Azure PowerShell met Resource Manager-sjablonen voor het implementeren van uw resources in Azure. Zie voor meer informatie over de concepten van het implementeren en beheren van uw Azure-oplossingen [overzicht van sjabloon implementatie](overview.md).
+Meer informatie over het gebruik van Azure PowerShell met ARM-sjablonen (Azure Resource Manager) om uw resources te implementeren in Azure. Zie overzicht van de implementatie van sjablonen voor meer informatie over de concepten voor het implementeren en beheren van uw [Azure-oplossingen.](overview.md)
 
-## <a name="deployment-scope"></a>Implementatie bereik
+## <a name="deployment-scope"></a>Implementatiebereik
 
-U kunt uw implementatie richten op een Azure-abonnement of een resource groep binnen een abonnement. In de meeste gevallen moet u de implementatie richten op een resource groep. Gebruik abonnements implementaties om beleids regels en roltoewijzingen toe te passen op het abonnement. U kunt ook abonnements implementaties gebruiken voor het maken van een resource groep en het implementeren van resources. Afhankelijk van het bereik van de implementatie, gebruikt u verschillende opdrachten.
+U uw implementatie targeten op een resourcegroep, abonnement, beheergroep of tenant. In de meeste gevallen targetu de implementatie op een resourcegroep. Als u beleids- en roltoewijzingen wilt toepassen in een groter bereik, gebruikt u abonnements-, beheergroep- of tenantimplementaties. Wanneer u een abonnement implementeert, u een resourcegroep maken en er resources op implementeren.
 
-Als u wilt implementeren in een **resource groep**, gebruikt u [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+Afhankelijk van het bereik van de implementatie gebruikt u verschillende opdrachten.
+
+Als u wilt implementeren in een **resourcegroep,** gebruikt u [Nieuw-AzResourceGroupDeployment:](/powershell/module/az.resources/new-azresourcegroupdeployment)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
 
-Als u wilt implementeren in een **abonnement**, gebruikt u [New-AzDeployment](/powershell/module/az.resources/new-azdeployment):
+Als u wilt implementeren op een **abonnement,** gebruikt u Nieuwe-AzSubscriptionDeployment:
 
 ```azurepowershell
-New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Zie [resource groepen en-resources op abonnements niveau maken](deploy-to-subscription.md)voor meer informatie over implementaties op abonnements niveau.
+Zie [Resourcegroepen en resources maken op abonnementsniveau](deploy-to-subscription.md)voor meer informatie over implementaties op abonnementsniveau.
 
-Op dit moment worden implementaties van beheer groepen alleen ondersteund via de REST API. Zie [resources maken op het niveau van de beheer groep](deploy-to-management-group.md)voor meer informatie over implementaties op het niveau van beheer groepen.
+Als u wilt implementeren in een **beheergroep,** gebruikt u [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
-In de voor beelden in dit artikel worden de implementaties van resource groepen gebruikt.
+```azurepowershell
+New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+Zie [Resources maken op het niveau van de beheergroep voor](deploy-to-management-group.md)meer informatie over implementaties op managementgroepenniveau.
+
+Als u wilt implementeren in een **tenant,** gebruikt u [Nieuw-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
+
+```azurepowershell
+New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+Zie Resources maken op tenantniveau voor meer informatie over implementaties op [tenantniveau.](deploy-to-tenant.md)
+
+De voorbeelden in dit artikel gebruiken implementaties van resourcegroepen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een sjabloon nodig om te implementeren. Als u er nog geen hebt, kunt u een [voorbeeld sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) downloaden en opslaan vanuit de Azure Quick Start-sjablonen opslag plaats. De lokale bestands naam die in dit artikel wordt gebruikt, is **c:\MyTemplates\azuredeploy.json**.
+U hebt een sjabloon nodig om te implementeren. Als u er nog geen hebt, downloadt en slaat u een [voorbeeldsjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) op van de repo Azure Quickstart-sjablonen. De lokale bestandsnaam die in dit artikel wordt gebruikt, is **c:\MyTemplates\azuredeploy.json**.
 
-Tenzij u de Azure Cloud shell gebruikt om sjablonen te implementeren, moet u Azure PowerShell installeren en verbinding maken met Azure:
+Tenzij u de Azure Cloud Shell gebruikt om sjablonen te implementeren, moet u Azure PowerShell installeren en verbinding maken met Azure:
 
-- **Installeer Azure PowerShell-cmdlets op de lokale computer.** Zie [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie.
-- **Maak verbinding met Azure via [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Als u meerdere Azure-abonnementen hebt, moet u mogelijk ook [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)uitvoeren. Zie [meerdere Azure-abonnementen gebruiken](/powershell/azure/manage-subscriptions-azureps)voor meer informatie.
+- **Installeer Azure PowerShell-cmdlets op uw lokale computer.** Zie [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie.
+- **Maak verbinding met Azure via [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Als u meerdere Azure-abonnementen hebt, moet u mogelijk ook [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)uitvoeren. Zie [Meerdere Azure-abonnementen gebruiken](/powershell/azure/manage-subscriptions-azureps)voor meer informatie.
 
 ## <a name="deploy-local-template"></a>Lokale sjabloon implementeren
 
-In het volgende voor beeld wordt een resource groep gemaakt en een sjabloon van uw lokale computer geïmplementeerd. De naam van de resource groep mag alleen alfanumerieke tekens, punten, onderstrepings teken, afbreek streepjes en haakjes bevatten. Het kan Maxi maal 90 tekens lang zijn. Deze kan niet eindigen op een punt.
+In het volgende voorbeeld wordt een resourcegroep gemaakt en wordt een sjabloon van uw lokale machine geïmplementeerd. De naam van de resourcegroep kan alleen alfanumerieke tekens, perioden, underscores, koppeltekens en haakjes bevatten. Het kan maximaal 90 tekens zijn. Het kan niet eindigen in een periode.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -62,9 +78,9 @@ De implementatie kan enkele minuten duren.
 
 ## <a name="deploy-remote-template"></a>Externe sjabloon implementeren
 
-In plaats van het opslaan van Resource Manager-sjablonen op de lokale computer, kunt u ze beter opslaan op een externe locatie. U kunt sjablonen opslaan in een broncode beheer bibliotheek (zoals GitHub). U kunt ze ook opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie.
+In plaats van ARM-sjablonen op uw lokale machine op te slaan, u deze liever opslaan op een externe locatie. U sjablonen opslaan in een bronbeheeropslagplaats (zoals GitHub). U ze ook opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie.
 
-Als u een externe sjabloon wilt implementeren, gebruikt u de para meter **TemplateUri** . Gebruik de URI in het voor beeld om de voorbeeld sjabloon te implementeren vanuit GitHub.
+Als u een externe sjabloon wilt implementeren, gebruikt u de parameter **TemplateUri.** Gebruik de URI in het voorbeeld om de voorbeeldsjabloon van GitHub te implementeren.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -75,13 +91,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de sjabloon, die voor de meeste scenario's werkt, omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens (zoals een beheerders wachtwoord) moet opgeven, geeft u die waarde als een beveiligde para meter door. Als u niet wilt dat uw sjabloon openbaar toegankelijk is, kunt u deze beveiligen door deze op te slaan in een persoonlijke opslag container. Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md). Als u een zelf studie wilt door lopen, raadpleegt u [zelf studie: Azure Key Vault integreren in Resource Manager Sjabloonimlementatie](template-tutorial-use-key-vault.md).
+Het voorgaande voorbeeld vereist een openbaar toegankelijke URI voor de sjabloon, die werkt voor de meeste scenario's omdat uw sjabloon geen gevoelige gegevens mag bevatten. Als u gevoelige gegevens moet opgeven (zoals een beheerderswachtwoord), geeft u die waarde door als een veilige parameter. Als u echter niet wilt dat uw sjabloon openbaar toegankelijk is, u deze beveiligen door deze op te slaan in een privéopslagcontainer. Zie [Privésjabloon implementeren met SAS-token voor](secure-template-with-sas-token.md)informatie over het implementeren van een sjabloon waarvoor een SAS-token (Shared Access Signature) vereist is. Zie [Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie](template-tutorial-use-key-vault.md)voor het doorlopen van een zelfstudie.
 
-## <a name="deploy-from-azure-cloud-shell"></a>Implementeren vanuit Azure Cloud shell
+## <a name="deploy-from-azure-cloud-shell"></a>Implementeren vanuit Azure Cloud Shell
 
-U kunt de [Azure Cloud shell](https://shell.azure.com) gebruiken om uw sjabloon te implementeren. Als u een externe sjabloon wilt implementeren, geeft u de URI van de sjabloon op. Als u een lokale sjabloon wilt implementeren, moet u uw sjabloon eerst laden in het opslag account voor uw Cloud Shell. Als u bestanden naar de shell wilt uploaden, selecteert u het menu pictogram **bestanden uploaden/downloaden** in het shell-venster.
+U de [Azure Cloud Shell](https://shell.azure.com) gebruiken om uw sjabloon te implementeren. Als u een externe sjabloon wilt implementeren, geeft u de URI van de sjabloon op. Als u een lokale sjabloon wilt implementeren, moet u uw sjabloon eerst laden in het opslagaccount voor uw Cloud Shell. Als u bestanden naar de shell wilt uploaden, selecteert u het **menupictogram Bestanden uploaden/downloaden** in het shell-venster.
 
-Als u de Cloud shell wilt openen, bladert u naar [https://shell.azure.com](https://shell.azure.com)of selecteert u **try-it** in de volgende code sectie:
+Als u de cloudshell [https://shell.azure.com](https://shell.azure.com)wilt openen, bladert u naar of selecteert u **Try-It** in de volgende codesectie:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -92,15 +108,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Als u de code in de shell wilt plakken, klikt u met de rechter muisknop in de shell en selecteert u **Plakken**.
+Als u de code in de shell wilt plakken, klikt u met de rechtermuisknop in de schaal en selecteert u **Plakken**.
 
-## <a name="pass-parameter-values"></a>Parameter waarden door geven
+## <a name="pass-parameter-values"></a>Parameterwaarden doorgeven
 
-Als u parameter waarden wilt door geven, kunt u inline-para meters of een parameter bestand gebruiken.
+Als u parameterwaarden wilt doorgeven, u inlineparameters of een parameterbestand gebruiken.
 
-### <a name="inline-parameters"></a>Inline-para meters
+### <a name="inline-parameters"></a>Inlineparameters
 
-Als u inline-para meters wilt door geven, geeft u de namen van de para meter op met de opdracht `New-AzResourceGroupDeployment`. Als u bijvoorbeeld een teken reeks en een matrix wilt door geven aan een sjabloon, gebruikt u:
+Als u inlineparameters wilt doorgeven, geeft `New-AzResourceGroupDeployment` u de namen van de parameter op met de opdracht. Als u bijvoorbeeld een tekenreeks en array wilt doorgeven aan een sjabloon, gebruikt u:
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -110,7 +126,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-U kunt ook de inhoud van het bestand ophalen en deze inhoud als een inline-para meter opgeven.
+U ook de inhoud van het bestand krijgen en die inhoud als inlineparameter opgeven.
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -120,9 +136,9 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Het ophalen van een parameter waarde uit een bestand is handig wanneer u configuratie waarden moet opgeven. U kunt bijvoorbeeld [Cloud-init-waarden opgeven voor een virtuele Linux-machine](../../virtual-machines/linux/using-cloud-init.md).
+Het ophalen van een parameterwaarde uit een bestand is handig wanneer u configuratiewaarden moet opgeven. U bijvoorbeeld [cloud-init-waarden opgeven voor een virtuele Linux-machine.](../../virtual-machines/linux/using-cloud-init.md)
 
-Als u een matrix met objecten wilt door geven, maakt u hash-tabellen in Power shell en voegt u deze toe aan een matrix. Geef deze matrix als een para meter door tijdens de implementatie.
+Als u een array met objecten wilt doorgeven, maakt u hashtabellen in PowerShell en voegt u deze toe aan een array. Geef die array als parameter tijdens de implementatie.
 
 ```powershell
 $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
@@ -133,13 +149,13 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $subnetArray
 ```
 
-### <a name="parameter-files"></a>Parameter bestanden
+### <a name="parameter-files"></a>Parameterbestanden
 
-In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. Het parameter bestand kan een lokaal bestand of een extern bestand met een toegankelijke URI zijn.
+In plaats van parameters door te geven als inlinewaarden in uw script, u het gemakkelijker vinden om een JSON-bestand te gebruiken dat de parameterwaarden bevat. Het parameterbestand kan een lokaal bestand zijn of een extern bestand met een toegankelijke URI.
 
-Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](parameter-files.md).
+Zie [Resourcebeheer-parameterbestand maken](parameter-files.md)voor meer informatie over het parameterbestand .
 
-Als u een lokaal parameter bestand wilt door geven, gebruikt u de para meter **TemplateParameterFile** :
+Als u een lokaal parameterbestand wilt doorgeven, gebruikt u de parameter **TemplateParameterFile:**
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -147,7 +163,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Als u een extern parameter bestand wilt door geven, gebruikt u de para meter **TemplateParameterUri** :
+Als u een extern parameterbestand wilt doorgeven, gebruikt u de parameter **TemplateParameterUri:**
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -155,16 +171,16 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-## <a name="test-template-deployments"></a>Sjabloon implementaties testen
+## <a name="test-template-deployments"></a>Sjabloonimplementaties testen
 
-Als u uw sjabloon en parameter waarden wilt testen zonder daad werkelijk resources te implementeren, gebruikt u [test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
+Als u uw sjabloon- en parameterwaarden wilt testen zonder resources daadwerkelijk te implementeren, gebruikt u [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
 ```
 
-Als er geen fouten worden gedetecteerd, wordt de opdracht zonder antwoord voltooid. Als er een fout wordt gedetecteerd, retourneert de opdracht een fout bericht. Als er bijvoorbeeld een onjuiste waarde voor de SKU van het opslag account wordt door gegeven, wordt de volgende fout geretourneerd:
+Als er geen fouten worden gedetecteerd, wordt de opdracht zonder antwoord voltooid. Als er een fout wordt gedetecteerd, retourneert de opdracht een foutbericht. Als u bijvoorbeeld een onjuiste waarde doorgeeft voor de SKU van het opslagaccount, wordt de volgende fout geretourneerd:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
@@ -177,7 +193,7 @@ Message : Deployment template validation failed: 'The provided value 'badSku' fo
 Details :
 ```
 
-Als uw sjabloon een syntaxis fout bevat, retourneert de opdracht een fout melding die aangeeft dat de sjabloon niet kan worden geparseerd. Het bericht geeft het regel nummer en de positie van de Parseerfout aan.
+Als er een syntaxisfout in uw sjabloon is, wordt met de opdracht een fout geretourneerd die aangeeft dat de sjabloon niet kan worden ontwenoft. Het bericht geeft het regelnummer en de positie van de parsingfout aan.
 
 ```powershell
 Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -186,7 +202,7 @@ Test-AzResourceGroupDeployment : After parsing a value an unexpected character w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt terugkeren naar een geslaagde implementatie wanneer u een fout krijgt, raadpleegt u [herstellen bij fout naar geslaagde implementatie](rollback-on-error.md).
-- Zie [Azure Resource Manager implementatie modi](deployment-modes.md)om op te geven hoe u resources wilt afhandelen die in de resource groep aanwezig zijn, maar die niet zijn gedefinieerd in de sjabloon.
-- Zie [inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](template-syntax.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
-- Zie voor meer informatie over het implementeren van een sjabloon waarvoor een SAS-token is vereist een [persoonlijke sjabloon implementeren met SAS-token](secure-template-with-sas-token.md).
+- Als u wilt terugdraaien naar een geslaagde implementatie wanneer er een fout optreedt, raadpleegt u [Rollback-on error naar succesvolle implementatie](rollback-on-error.md).
+- Zie [Azure Resource Manager-implementatiemodi](deployment-modes.md)als u wilt opgeven hoe u resources in de resourcegroep verwerken, maar niet in de sjabloon bent gedefinieerd.
+- Zie [De structuur en syntaxis van ARM-sjablonen](template-syntax.md)begrijpen als u wilt begrijpen hoe u parameters in uw sjabloon definiëren.
+- Zie [Privésjabloon implementeren met SAS-token voor](secure-template-with-sas-token.md)informatie over het implementeren van een sjabloon waarvoor een SAS-token vereist is.

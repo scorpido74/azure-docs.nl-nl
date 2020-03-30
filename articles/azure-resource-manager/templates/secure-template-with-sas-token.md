@@ -1,24 +1,24 @@
 ---
 title: Sjabloon veilig implementeren met SAS-token
-description: Resources implementeren in azure met een Azure Resource Manager sjabloon die wordt beveiligd met een SAS-token. Toont Azure PowerShell en Azure CLI.
+description: Resources implementeren in Azure met een Azure Resource Manager-sjabloon die wordt beschermd door een SAS-token. Toont Azure PowerShell en Azure CLI.
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273707"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156392"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>Persoonlijke Resource Manager-sjablonen met SAS-token implementeren
+# <a name="deploy-private-arm-template-with-sas-token"></a>Private ARM-sjabloon implementeren met SAS-token
 
-Als uw sjabloon zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken om te voor komen dat deze openbaar wordt weer gegeven. U opent een beveiligde sjabloon door een SAS-token (Shared Access Signature) te maken voor de sjabloon en dat token tijdens de implementatie op te geven. In dit artikel wordt uitgelegd hoe u Azure PowerShell of Azure CLI gebruikt voor het implementeren van een sjabloon met een SAS-token.
+Wanneer uw Arm-sjabloon (Azure Resource Manager) zich in een opslagaccount bevindt, u de toegang tot de sjabloon beperken om te voorkomen dat deze openbaar wordt gemaakt. U krijgt toegang tot een beveiligde sjabloon door een SAS-token (Shared Access Signature) voor de sjabloon te maken en dat token tijdens de implementatie te verstrekken. In dit artikel wordt uitgelegd hoe u Azure PowerShell of Azure CLI gebruiken om een sjabloon met een SAS-token te implementeren.
 
-## <a name="create-storage-account-with-secured-container"></a>Een opslag account maken met een beveiligde container
+## <a name="create-storage-account-with-secured-container"></a>Opslagaccount maken met beveiligde container
 
-Met het volgende script maakt u een opslag account en een container waarvoor open bare toegang is uitgeschakeld.
+Met het volgende script wordt een opslagaccount en een container gemaakt waarbij de openbare toegang is uitgeschakeld.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -37,7 +37,7 @@ New-AzStorageContainer `
   -Permission Off
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create \
@@ -61,11 +61,11 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>Sjabloon uploaden naar het opslag account
+## <a name="upload-template-to-storage-account"></a>Sjabloon uploaden naar opslagaccount
 
-U bent nu klaar om uw sjabloon te uploaden naar het opslag account. Geef het pad op naar de sjabloon die u wilt gebruiken.
+Nu u uw sjabloon uploaden naar het opslagaccount. Geef het pad op naar de sjabloon die u wilt gebruiken.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -73,7 +73,7 @@ Set-AzStorageBlobContent `
   -File c:\Templates\azuredeploy.json
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az storage blob upload \
@@ -85,15 +85,15 @@ az storage blob upload \
 
 ---
 
-## <a name="provide-sas-token-during-deployment"></a>SAS-token opgeven tijdens de implementatie
+## <a name="provide-sas-token-during-deployment"></a>SAS-token verstrekken tijdens implementatie
 
-Als u een persoonlijke sjabloon in een opslag account wilt implementeren, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de verloop tijd zo in dat er voldoende tijd is om de implementatie te volt ooien.
+Als u een privésjabloon wilt implementeren in een opslagaccount, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de vervaldatum in om voldoende tijd te hebben om de implementatie te voltooien.
 
 > [!IMPORTANT]
-> De blob die de sjabloon bevat, is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de BLOB maakt, is de BLOB toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, kan die gebruiker toegang krijgen tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u mag geen gevoelige gegevens zoals wacht woorden rechtstreeks in de sjabloon toevoegen.
+> De blob met de sjabloon is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de blob maakt, is de blob toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, heeft die gebruiker toegang tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u moet gevoelige gegevens zoals wachtwoorden niet rechtstreeks in de sjabloon opnemen.
 >
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri $templateuri
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -129,16 +129,16 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
 
 ---
 
-Zie voor een voor beeld van het gebruik van een SAS-token met gekoppelde sjablonen [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md).
+Zie [Gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)voor een voorbeeld van het gebruik van een SAS-token met gekoppelde sjablonen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](deploy-powershell.md)voor een inleiding tot het implementeren van sjablonen.
-* Zie [ontwerp sjablonen](template-syntax.md#parameters)voor het definiëren van para meters in de sjabloon.
+* Zie [Resources implementeren met ARM-sjablonen en Azure PowerShell](deploy-powershell.md)voor een inleiding tot het implementeren van sjablonen.
+* Zie [Sjablonen ontwerpen](template-syntax.md#parameters)als u parameters in sjabloon wilt definiëren.

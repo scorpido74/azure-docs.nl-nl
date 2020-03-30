@@ -1,69 +1,69 @@
 ---
-title: Hoe een toepassings gateway werkt
-description: Dit artikel bevat informatie over hoe een toepassings gateway binnenkomende aanvragen accepteert en naar de back-end stuurt.
+title: Hoe een toepassingsgateway werkt
+description: In dit artikel vindt u informatie over hoe een toepassingsgateway binnenkomende aanvragen accepteert en deze naar de backend leidt.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d9d7ae3bc321f1f000fac1a875589df352077f33
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132972"
 ---
-# <a name="how-an-application-gateway-works"></a>Hoe een toepassings gateway werkt
+# <a name="how-an-application-gateway-works"></a>Hoe een toepassingsgateway werkt
 
-In dit artikel wordt uitgelegd hoe een toepassings gateway binnenkomende aanvragen accepteert en naar de back-end stuurt.
+In dit artikel wordt uitgelegd hoe een toepassingsgateway binnenkomende aanvragen accepteert en deze naar de backend leidt.
 
-![Hoe een toepassings gateway een aanvraag accepteert](./media/how-application-gateway-works/how-application-gateway-works.png)
+![Hoe een toepassingsgateway een aanvraag accepteert](./media/how-application-gateway-works/how-application-gateway-works.png)
 
-## <a name="how-an-application-gateway-accepts-a-request"></a>Hoe een toepassings gateway een aanvraag accepteert
+## <a name="how-an-application-gateway-accepts-a-request"></a>Hoe een toepassingsgateway een aanvraag accepteert
 
-1. Voordat een client een aanvraag naar een toepassings Gateway verzendt, wordt de domein naam van de toepassings gateway omgezet met behulp van een Domain Name System (DNS)-server. Azure beheert de DNS-vermelding omdat alle toepassings gateways zich in het azure.com-domein bevinden.
+1. Voordat een client een aanvraag naar een toepassingsgateway verzendt, wordt de domeinnaam van de toepassingsgateway opgelost met behulp van een DNS-server (Domain Name System). Azure beheert de DNS-invoer omdat alle toepassingsgateways zich in het azure.com-domein bevinden.
 
-2. De Azure DNS retourneert het IP-adres naar de client. Dit is het front-end-IP-adres van de toepassings gateway.
+2. De Azure DNS retourneert het IP-adres naar de client, het ip-adres van de clientgateway.
 
-3. De toepassings gateway accepteert binnenkomend verkeer op een of meer listeners. Een listener is een logische entiteit die controleert op verbindings aanvragen. Het is geconfigureerd met een frontend-IP-adres,-protocol en-poort nummer voor verbindingen van clients naar de toepassings gateway.
+3. De toepassingsgateway accepteert binnenkomend verkeer op een of meer listeners. Een listener is een logische entiteit die controleert op verbindingsaanvragen. Het is geconfigureerd met een frontend IP-adres, protocol en poortnummer voor verbindingen van clients naar de toepassingsgateway.
 
-4. Als een Web Application Firewall (WAF) wordt gebruikt, controleert de toepassings gateway de aanvraag headers en de hoofd tekst, indien aanwezig, tegen WAF-regels. Met deze actie wordt bepaald of de aanvraag een geldige aanvraag of een beveiligings risico is. Als de aanvraag geldig is, wordt deze doorgestuurd naar de back-end. Als de aanvraag niet geldig is en WAF zich in preventie modus bevindt, wordt deze als een beveiligings risico geblokkeerd. Als het zich in de detectie modus bevindt, wordt de aanvraag geëvalueerd en geregistreerd, maar wordt deze wel doorgestuurd naar de back-endserver.
+4. Als er een webtoepassingsfirewall (WAF) in gebruik is, controleert de toepassingsgateway de aanvraagkoppen en de instantie, indien aanwezig, aan de WAF-regels. Deze actie bepaalt of de aanvraag een geldig verzoek of een beveiligingsbedreiging is. Als het verzoek geldig is, wordt het doorgestuurd naar de backend. Als het verzoek niet geldig is en WAF in de preventiemodus staat, wordt het geblokkeerd als een beveiligingsbedreiging. Als het in de detectiemodus staat, wordt het verzoek geëvalueerd en geregistreerd, maar nog steeds doorgestuurd naar de backendserver.
 
-Azure-toepassing gateway kan worden gebruikt als een interne toepassings load balancer of als een load balancer voor Internet gerichte toepassingen. Een Internet gerichte toepassings gateway maakt gebruik van open bare IP-adressen. De DNS-naam van een Internet gerichte toepassings gateway kan openbaar worden omgezet naar het open bare IP-adres. Als gevolg hiervan kunnen Internet gerichte toepassings gateways client aanvragen sturen naar het internet.
+Azure Application Gateway kan worden gebruikt als interne load balancer voor toepassingen of als een op internet gerichte toepassingslastenbalans. Een toepassinggateway met internetgerichte toepassing maakt gebruik van openbare IP-adressen. De DNS-naam van een internet-facing application gateway is openbaar oplosbaar naar zijn openbare IP-adres. Als gevolg hiervan kunnen internetgerichte toepassingsgateways clientverzoeken naar het internet leiden.
 
-Interne toepassings gateways gebruiken alleen particuliere IP-adressen. Als u een aangepaste of [privé-DNS zone](https://docs.microsoft.com/azure/dns/private-dns-overview)gebruikt, moet de domein naam intern worden omgezet naar het privé-IP-adres van de Application Gateway. Daarom kunnen interne load balancers alleen aanvragen van clients met toegang tot een virtueel netwerk voor de toepassings gateway routeren.
+Interne toepassingsgateways gebruiken alleen privé-IP-adressen. Als u een aangepaste of [privé DNS-zone gebruikt,](https://docs.microsoft.com/azure/dns/private-dns-overview)moet de domeinnaam intern oplosbaar zijn naar het privé-IP-adres van de Application Gateway. Daarom kunnen interne load-balancers alleen aanvragen van clients met toegang tot een virtueel netwerk voor de toepassingsgateway routeren.
 
-## <a name="how-an-application-gateway-routes-a-request"></a>Hoe een toepassings gateway een aanvraag routert
+## <a name="how-an-application-gateway-routes-a-request"></a>Hoe een toepassingsgateway een aanvraag leidt
 
-Als een aanvraag geldig is en niet wordt geblokkeerd door WAF, evalueert de toepassings gateway de routerings regel voor aanvragen die is gekoppeld aan de listener. Met deze actie wordt bepaald aan welke back-end-groep de aanvraag moet worden door gestuurd.
+Als een aanvraag geldig is en niet wordt geblokkeerd door WAF, evalueert de toepassingsgateway de regel voor het routeren van aanvragen die aan de listener is gekoppeld. Met deze actie bepaalt u naar welke backendpool de aanvraag moet worden doorgestuurd.
 
-Op basis van de regel voor aanvraag routering, bepaalt de toepassings gateway of alle aanvragen op de listener naar een specifieke back-end-groep moeten worden gerouteerd, worden aanvragen naar verschillende back-Pools gerouteerd op basis van het URL-pad of aanvragen omleiden naar een andere poort of externe site.
+Op basis van de regel voor het routeren van aanvragen bepaalt de toepassingsgateway of alle aanvragen voor de listener moeten worden doorgestuurd naar een specifieke backendpool, aanvragen naar verschillende backendpools op basis van het URL-pad of aanvragen moeten doorverwijzen naar een andere poort of externe site.
 >[!NOTE]
->Regels worden verwerkt in de volg orde waarin ze worden weer gegeven in de portal voor v1-SKU. 
+>Regels worden verwerkt in de volgorde waarin ze worden vermeld in de portal voor v1 SKU. 
 
-Wanneer de toepassings gateway de back-end-pool selecteert, wordt de aanvraag verzonden naar een van de gezonde back-endservers in de pool (y. y. y. y). De status van de server wordt bepaald door een status test. Als de back-endadresgroep meerdere servers bevat, gebruikt de toepassings gateway een Round Robin-algoritme om de aanvragen tussen servers in orde te routeren. Met deze taak worden de aanvragen op de servers gebalanceerd.
+Wanneer de toepassingsgateway de backendpool selecteert, wordt het verzoek naar een van de gezonde backendservers in de groep (y.y.y.y) geleid. De status van de server wordt bepaald door een statussonde. Als de backendpool meerdere servers bevat, gebruikt de toepassingsgateway een round-robin-algoritme om de aanvragen tussen gezonde servers te routeren. Deze belasting balanceert de aanvragen op de servers.
 
-Nadat de toepassings gateway de back-endserver heeft vastgesteld, opent deze een nieuwe TCP-sessie met de back-endserver op basis van HTTP-instellingen. HTTP-instellingen geven het Protocol, de poort en andere routerings instellingen op die nodig zijn om een nieuwe sessie met de back-endserver tot stand te brengen.
+Nadat de toepassingsgateway de backendserver heeft bepaald, wordt een nieuwe TCP-sessie geopend met de backendserver op basis van HTTP-instellingen. HTTP-instellingen geven het protocol, de poort en andere routeringsgerelateerde instellingen op die nodig zijn om een nieuwe sessie met de backendserver vast te stellen.
 
-De poort en het protocol dat wordt gebruikt in HTTP-instellingen bepalen of het verkeer tussen de toepassings gateway en de back-endservers is versleuteld (waardoor end-to-end SSL wordt uitgevoerd) of niet versleuteld is.
+De poort en het protocol die in HTTP-instellingen worden gebruikt, bepalen of het verkeer tussen de toepassingsgateway en backendservers is versleuteld (waardoor end-to-end TLS wordt uitgevoerd) of niet is versleuteld.
 
-Wanneer een toepassings gateway de oorspronkelijke aanvraag naar de back-endserver verzendt, wordt er een aangepaste configuratie in de HTTP-instellingen met betrekking tot het overschrijven van de hostnaam, het pad en het Protocol, in rekening gebracht. Deze actie houdt sessie affiniteit op basis van cookies, verwerkings verwerkings stop, het selecteren van een host-naam van de back-end, enzovoort.
+Wanneer een toepassingsgateway het oorspronkelijke verzoek naar de backendserver verzendt, wordt elke aangepaste configuratie in de HTTP-instellingen die zijn gemaakt met betrekking tot het overschrijven van de hostnaam, het pad en het protocol eer. Deze actie behoudt sessieaffiniteit op basis van cookies, het aftappen van verbindingen, selectie van hostnamen vanaf de backend, enzovoort.
 
  >[!NOTE]
->Als de back-end-groep:
-> - **Is een openbaar eind punt**, de toepassings gateway maakt gebruik van het front-end open bare IP-adres van de server. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
-> - **Bevat een intern omgezette FQDN of een privé-IP-adres**. de toepassings gateway stuurt de aanvraag naar de back-endserver door de privé-IP-adressen van het exemplaar te gebruiken.
-> - **Bevat een extern eind punt of een extern omgezette FQDN**-naam, de toepassings gateway stuurt de aanvraag naar de back-endserver via het open bare frontend-IP-adres. De DNS-omzetting is gebaseerd op een privé-DNS-zone of een aangepaste DNS-server, als deze is geconfigureerd of gebruikmaakt van de standaard-DNS van Azure. Als er geen openbaar frontend-IP-adres is, wordt er een toegewezen voor de uitgaande externe verbinding.
+>Als de backend pool:
+> - **Is een openbaar eindpunt**, de toepassingsgateway gebruikt zijn frontend openbare IP om de server te bereiken. Als er geen openbaar IP-adres aan de voorzijde is, wordt er een toegewezen voor de uitgaande externe connectiviteit.
+> - **Bevat een intern oplosbare FQDN of een privé-IP-adres,** de toepassingsgateway leidt het verzoek naar de backendserver met behulp van de instantie privé IP-adressen.
+> - **Bevat een extern eindpunt of een extern oplosbare FQDN,** de toepassingsgateway leidt het verzoek naar de backendserver met behulp van het openbare IP-adres aan de voorkant. De DNS-resolutie is gebaseerd op een privé-DNS-zone of aangepaste DNS-server, indien geconfigureerd, of gebruikt de standaard dns-infrastructuur die is voorzien in Azure. Als er geen openbaar IP-adres aan de voorzijde is, wordt er een toegewezen voor de uitgaande externe connectiviteit.
 
-### <a name="modifications-to-the-request"></a>Wijzigingen in de aanvraag
+### <a name="modifications-to-the-request"></a>Wijzigingen in het verzoek
 
-Een toepassings Gateway voegt vier extra headers toe aan alle aanvragen voordat de aanvragen worden doorgestuurd naar de back-end. Deze headers worden x-doorgestuurd: voor x-doorgestuurde proto, x-doorgestuurde poorten en x-original-host. De notatie voor x-doorgestuurde header is een door komma's gescheiden lijst met IP-adressen: poort.
+Een toepassingsgateway voegt vier extra kopteksten toe aan alle aanvragen voordat de aanvragen naar de backend worden doorgestuurd. Deze headers zijn x-forwarded-for, x-forwarded-proto, x-forwarded-port en x-original-host. De indeling voor x-forwarded-for header is een door komma's gescheiden lijst met IP:port.
 
-De geldige waarden voor x-doorgestuurde-proto zijn HTTP of HTTPS. X-doorgestuurd: poort Hiermee geeft u de poort op waarop de aanvraag de toepassings gateway heeft bereikt. X-oorspronkelijke host-header bevat de oorspronkelijke hostheader waarmee de aanvraag is aangekomen. Deze header is handig in de integratie van Azure-websites, waarbij de inkomende host-header wordt gewijzigd voordat het verkeer naar de back-end wordt doorgestuurd. Als sessie affiniteit als een optie is ingeschakeld, wordt er een door gateway beheerde affiniteits cookie toegevoegd.
+De geldige waarden voor x-forwarded-proto zijn HTTP of HTTPS. X-forwarded-port geeft de poort aan waar de aanvraag de toepassingsgateway heeft bereikt. X-original-host header bevat de originele host header waarmee de aanvraag is aangekomen. Deze header is handig in azure-website-integratie, waarbij de inkomende hostheader wordt gewijzigd voordat het verkeer naar de backend wordt doorgestuurd. Als sessieaffiniteit als optie is ingeschakeld, wordt een door de gateway beheerde affiniteitscookie toegevoegd.
 
-U kunt de toepassings gateway configureren om headers te wijzigen met behulp van [HTTP-headers herschrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) of door het pad naar de URI te wijzigen met behulp van een instelling voor het overschrijven van een pad. Tenzij geconfigureerd om dit te doen, worden alle binnenkomende aanvragen echter doorgestuurd naar de back-end.
+U de toepassingsgateway configureren om kopteksten te wijzigen met [HTTP-headers opnieuw schrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) of het URI-pad te wijzigen met behulp van een instelling voor padoverschrijven. Tenzij geconfigureerd, worden alle binnenkomende aanvragen echter naar de backend geproxieerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Application Gateway-onderdelen](application-gateway-components.md)
+[Meer informatie over toepassingsgatewaycomponenten](application-gateway-components.md)

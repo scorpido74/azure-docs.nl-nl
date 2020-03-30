@@ -1,6 +1,6 @@
 ---
-title: Azure File Sync bewaken | Microsoft Docs
-description: Azure File Sync bewaken.
+title: Azure-bestandssynchronisatie controleren | Microsoft Documenten
+description: Azure File Sync controleren.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,146 +8,146 @@ ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699294"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
-Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Azure File Sync transformeert Windows Server in een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
+Gebruik Azure File Sync om de bestandsshares van uw organisatie in Azure-bestanden te centraliseren, terwijl de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver behouden blijven. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U elk protocol dat beschikbaar is op Windows Server gebruiken om lokaal toegang te krijgen tot uw gegevens, waaronder SMB, NFS en FTPS. Je zoveel caches hebben als je nodig hebt over de hele wereld.
 
-In dit artikel wordt beschreven hoe u uw Azure File Sync-implementatie bewaakt met behulp van Azure Monitor, de opslag synchronisatie service en Windows Server.
+In dit artikel wordt beschreven hoe u de implementatie van Azure File Sync controleren met Azure Monitor, Storage Sync Service en Windows Server.
 
-De volgende bewakings opties zijn momenteel beschikbaar.
+De volgende bewakingsopties zijn momenteel beschikbaar.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Gebruik [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor het weer geven van metrische gegevens en voor het configureren van waarschuwingen voor synchronisatie, Cloud lagen en server verbindingen.  
+Gebruik [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) om statistieken weer te geven en waarschuwingen te configureren voor synchronisatie, cloudgelaagdheid en serverconnectiviteit.  
 
 ### <a name="metrics"></a>Metrische gegevens
 
-De metrische gegevens voor Azure File Sync zijn standaard ingeschakeld en worden verzonden naar Azure Monitor om de 15 minuten.
+Metrische gegevens voor Azure File Sync zijn standaard ingeschakeld en worden elke 15 minuten naar Azure Monitor verzonden.
 
-Als u Azure File Sync metrische gegevens in Azure Monitor wilt weer geven, selecteert u het resource type **Storage Sync Services** .
+Als u Azure File Sync-statistieken wilt weergeven in Azure Monitor, selecteert u het brontype **Storage Sync Services.**
 
-De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Monitor:
+De volgende statistieken voor Azure File Sync zijn beschikbaar in Azure Monitor:
 
-| Naam van de meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 |-|-|
-| Gesynchroniseerde bytes | Grootte van de overgedragen gegevens (uploaden en downloaden).<br><br>Teleenheid Bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensies: Naam van server eindpunt, synchronisatie richting, naam synchronisatie groep |
-| Cloud lagen intrekken | De grootte van de gegevens die worden ingetrokken.<br><br>**Opmerking**: Deze metrische gegevens worden in de toekomst verwijderd. Gebruik de grootte van de Cloud-laag voor het intrekken van de grootte van gegevens die zijn ingetrokken.<br><br>Teleenheid Bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: De naam van server |
-| Grootte van intrekken Cloud lagen | De grootte van de gegevens die worden ingetrokken.<br><br>Teleenheid Bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: Server naam, naam van synchronisatie groep |
-| Grootte van intrekken van Cloud lagen op toepassing | De grootte van de gegevens die worden ingetrokken door de toepassing.<br><br>Teleenheid Bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: Toepassings naam, Server naam, naam synchronisatie groep |
-| Door Voer van Cloud lagen intrekken | Grootte van gegevens intrekken doorvoer snelheid.<br><br>Teleenheid Bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: Server naam, naam van synchronisatie groep |
-| Bestanden die niet worden gesynchroniseerd | Het aantal bestanden dat niet kan worden gesynchroniseerd.<br><br>Teleenheid Count<br>Aggregatie type: Sum<br>Toepasselijke dimensies: Naam van server eindpunt, synchronisatie richting, naam synchronisatie groep |
-| Gesynchroniseerde bestanden | Aantal overgebrachte bestanden (uploaden en downloaden).<br><br>Teleenheid Count<br>Aggregatie type: Sum<br>Toepasselijke dimensies: Naam van server eindpunt, synchronisatie richting, naam synchronisatie groep |
-| Online status van de server | Aantal heartbeats dat is ontvangen van de server.<br><br>Teleenheid Count<br>Aggregatie type: Maximum<br>Toepasselijke dimensie: De naam van server |
-| Resultaat van synchronisatie sessie | Resultaat van synchronisatie sessie (1 = synchronisatie sessie geslaagd; 0 = synchronisatie sessie mislukt)<br><br>Teleenheid Count<br>Aggregatie typen: Maximum<br>Toepasselijke dimensies: Naam van server eindpunt, synchronisatie richting, naam synchronisatie groep |
+| Bytes gesynchroniseerd | Grootte van de overgedragen gegevens (uploaden en downloaden).<br><br>Eenheid: Bytes<br>Aggregatietype: som<br>Toepasselijke afmetingen: servereindpuntnaam, synchronisatierichting, groepsnaam synchroniseren |
+| Terugroepactie voor cloudtiering | Omvang van de gegevens teruggeroepen.<br><br>**Opmerking:** deze statistiek wordt in de toekomst verwijderd. Gebruik de statistiek Cloud tiering recall size om de grootte van de teruggeroepen gegevens te controleren.<br><br>Eenheid: Bytes<br>Aggregatietype: som<br>Toepasselijke dimensie: Servernaam |
+| Cloud tiering recall grootte | Omvang van de gegevens teruggeroepen.<br><br>Eenheid: Bytes<br>Aggregatietype: som<br>Toepasselijke dimensie: Servernaam, Groepsnaam synchroniseren |
+| Cloud tiering recall grootte per toepassing | Grootte van de gegevens die door toepassing worden teruggeroepen.<br><br>Eenheid: Bytes<br>Aggregatietype: som<br>Toepasselijke dimensie: toepassingsnaam, servernaam, naam van de synchronisatiegroep |
+| Cloud tiering recall throughput Cloud tiering recall throughput Cloud tiering recall throughput Cloud tier | Grootte van de doorvoer van gegevensterugroepen.<br><br>Eenheid: Bytes<br>Aggregatietype: som<br>Toepasselijke dimensie: Servernaam, Groepsnaam synchroniseren |
+| Bestanden die niet worden gesynchroniseerd | Aantal bestanden die niet worden gesynchroniseerd.<br><br>Eenheid: Aantal<br>Aggregatietype: som<br>Toepasselijke afmetingen: servereindpuntnaam, synchronisatierichting, groepsnaam synchroniseren |
+| Bestanden gesynchroniseerd | Aantal overgedragen bestanden (uploaden en downloaden).<br><br>Eenheid: Aantal<br>Aggregatietype: som<br>Toepasselijke afmetingen: servereindpuntnaam, synchronisatierichting, groepsnaam synchroniseren |
+| Server online status | Aantal hartslagen die van de server zijn ontvangen.<br><br>Eenheid: Aantal<br>Aggregatietype: maximum<br>Toepasselijke dimensie: Servernaam |
+| Sessieresultaat synchroniseren | Sessieresultaat synchroniseren (1=geslaagde synchronisatiesessie; 0=mislukte synchronisatiesessie)<br><br>Eenheid: Aantal<br>Aggregatietypen: Maximum<br>Toepasselijke afmetingen: servereindpuntnaam, synchronisatierichting, groepsnaam synchroniseren |
 
 ### <a name="alerts"></a>Waarschuwingen
 
-Als u waarschuwingen in Azure Monitor wilt configureren, selecteert u de opslag synchronisatie service en selecteert u vervolgens de [Azure file sync metriek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) die voor de waarschuwing moet worden gebruikt.  
+Als u waarschuwingen wilt configureren in Azure Monitor, selecteert u de opslagsynchronisatieservice en selecteert u vervolgens de [azure-bestandssynchronisatiestatistiek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) die u voor de waarschuwing wilt gebruiken.  
 
-De volgende tabel bevat enkele voor beelden van scenario's om te controleren en de juiste meet waarde voor de waarschuwing:
+In de volgende tabel worden enkele voorbeeldscenario's weergegeven die moeten worden gecontroleerd en de juiste statistiek die u voor de waarschuwing moet gebruiken:
 
-| Scenario | De metrische waarde die voor de waarschuwing moet worden gebruikt |
+| Scenario | Statistiek die u wilt gebruiken voor waarschuwing |
 |-|-|
-| Status van server eindpunt in de portal = fout | Resultaat van synchronisatie sessie |
-| Bestanden kunnen niet worden gesynchroniseerd met een server of een eind punt in de Cloud | Bestanden die niet worden gesynchroniseerd |
-| De geregistreerde server kan niet communiceren met de opslag synchronisatie service | Online status van de server |
-| De grootte van het intrekken van Cloud lagen is 500GiB op een dag overschreden  | Grootte van intrekken Cloud lagen |
+| Servereindpuntstatus in de portal = Fout | Sessieresultaat synchroniseren |
+| Bestanden worden niet gesynchroniseerd met een server of eindpunt in de cloud | Bestanden die niet worden gesynchroniseerd |
+| Geregistreerde server communiceert niet met de Storage Sync Service | Server online status |
+| Cloud tiering recall grootte heeft overschreden 500GiB in een dag  | Cloud tiering recall grootte |
 
-Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.
+Zie [Overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in Azure Monitor.
 
 ## <a name="storage-sync-service"></a>Opslagsynchronisatieservice
 
-Als u de status van de geregistreerde server, de status van de server eindpunt en de metrische gegevens wilt bekijken, gaat u naar de opslag synchronisatie service in de Azure Portal. U kunt de geregistreerde server status weer geven op de Blade **geregistreerde servers** en server eindpunt status op de Blade **synchronisatie groepen** .
+Als u de status van de geregistreerde server, de status van het servereindpunt en de statistieken wilt weergeven, gaat u naar de opslagsynchronisatieservice in de Azure-portal. U de status van de geregistreerde server weergeven in het blade **van Geregistreerde servers** en de status van het eindpunt van de server in het blade van **synchronisatiegroepen.**
 
-### <a name="registered-server-health"></a>Status van geregistreerde server
+### <a name="registered-server-health"></a>Geregistreerde serverstatus
 
-- Als de status van de **geregistreerde server** **online**is, communiceert de server met succes met de service.
-- Als de status van de **geregistreerde server** **offline wordt weer gegeven**, controleert u of het proces voor opslag synchronisatie (AzureStorageSyncMonitor. exe) op de server wordt uitgevoerd. Als de-server zich achter een firewall of proxy bevindt, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) voor het configureren van de firewall en proxy.
+- Als de **status van de geregistreerde server** **online**is, communiceert de server met de service.
+- Als de **status van de geregistreerde server** offline wordt **weergegeven,** controleert u of het proces voor opslagsynchronisatiemonitor (AzureStorageSyncMonitor.exe) op de server wordt uitgevoerd. Als de server zich achter een firewall of proxy bevindt, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) om de firewall en proxy te configureren.
 
-### <a name="server-endpoint-health"></a>Status van server eindpunt
+### <a name="server-endpoint-health"></a>Servereindpuntstatus
 
-- De eindpunt status van de server in de portal is gebaseerd op de synchronisatie gebeurtenissen die worden vastgelegd in het logboek voor telemetrie op de server (ID 9102 en 9302). Als een synchronisatie sessie mislukt als gevolg van een tijdelijke fout, zoals het annuleren van de fout, wordt de synchronisatie mogelijk nog steeds in orde weer gegeven in de portal zolang de huidige synchronisatie sessie de voortgang wordt gemaakt. Gebeurtenis-ID 9302 wordt gebruikt om te bepalen of er bestanden worden toegepast. Zie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [voortgang van synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
-- Raadpleeg de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor hulp bij het maken van een synchronisatie fout, omdat de synchronisatie niet wordt uitgevoerd.
+- De status van het servereindpunt in de portal is gebaseerd op de synchronisatiegebeurtenissen die zijn aangemeld bij het gebeurtenislogboek Telemetrie op de server (ID 9102 en 9302). Als een synchronisatiesessie mislukt vanwege een tijdelijke fout, zoals fout geannuleerd, kan synchronisatie nog steeds in orde worden weergegeven in de portal zolang de huidige synchronisatiesessie vooruitgang boekt. Gebeurtenis-id 9302 wordt gebruikt om te bepalen of bestanden worden toegepast. Zie [synchronisatiestatus](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [synchronisatievoortgang](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie .
+- Als de portal een synchronisatiefout vertoont omdat synchronisatie geen vooruitgang boekt, [raadpleegt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) u de documentatie voor het oplossen van problemen voor richtlijnen.
 
 ### <a name="metric-charts"></a>Metrische grafieken
 
-- De volgende metrische grafieken kunnen worden weer gegeven in de portal van de opslag synchronisatie service:
+- De volgende metrische grafieken zijn zichtbaar in de portal Storage Sync Service:
 
-  | Naam van de meetwaarde | Description | Naam Blade |
+  | Naam van meetwaarde | Beschrijving | Bladnaam |
   |-|-|-|
-  | Gesynchroniseerde bytes | Grootte van overgedragen gegevens (uploaden en downloaden) | Synchronisatie groep, Server eindpunt |
-  | Cloud lagen intrekken | Grootte van gegevens die zijn ingetrokken | Geregistreerde servers |
-  | Bestanden die niet worden gesynchroniseerd | Aantal bestanden dat niet kan worden gesynchroniseerd | Server eindpunt |
-  | Gesynchroniseerde bestanden | Aantal overgebrachte bestanden (uploaden en downloaden) | Synchronisatie groep, Server eindpunt |
-  | Online status van de server | Aantal heartbeats dat is ontvangen van de server | Geregistreerde servers |
+  | Bytes gesynchroniseerd | Grootte van overgedragen gegevens (uploaden en downloaden) | Groep synchroniseren, Servereindpunt |
+  | Terugroepactie voor cloudtiering | Omvang van de aangeroepen gegevens | Geregistreerde servers |
+  | Bestanden die niet worden gesynchroniseerd | Aantal bestanden dat niet wordt gesynchroniseerd | Servereindpunt |
+  | Bestanden gesynchroniseerd | Aantal overgedragen bestanden (uploaden en downloaden) | Groep synchroniseren, Servereindpunt |
+  | Server online status | Aantal hartslagen ontvangen van de server | Geregistreerde servers |
 
-- Zie [Azure monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor)voor meer informatie.
+- Zie [Azure Monitor voor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor)meer informatie.
 
   > [!Note]  
-  > De grafieken in de opslag synchronisatie Service Portal hebben een tijds bereik van 24 uur. Gebruik Azure Monitor om verschillende Peri Oden of dimensies weer te geven.
+  > De grafieken in de portal Storage Sync Service hebben een tijdsbereik van 24 uur. Als u verschillende tijdbereiken of dimensies wilt weergeven, gebruikt u Azure Monitor.
 
 ## <a name="windows-server"></a>Windows Server
 
-Op Windows Server kunt u Cloud lagen, geregistreerde servers en synchronisatie status weer geven.
+Op Windows Server u de status cloudtiering, geregistreerde server en synchronisatie weergeven.
 
 ### <a name="event-logs"></a>Gebeurtenislogboeken
 
-Gebruik het telemetrie-gebeurtenis logboek op de server om de geregistreerde server-, synchronisatie-en Cloud-laag status te bewaken. Het logboek voor telemetrie bevindt zich in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*.
+Gebruik het gebeurtenislogboek Telemetrie op de server om de status van geregistreerde server-, synchronisatie- en cloudgelaagdheid te controleren. Het gebeurtenislogboek Telemetrie bevindt zich in Logboeken onder *Toepassingen en Services\Microsoft\FileSync\Agent*.
 
-Synchronisatie status:
+Synchronisatiestatus:
 
-- Gebeurtenis-ID 9102 wordt vastgelegd nadat een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn. Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
+- Gebeurtenis-id 9102 wordt geregistreerd nadat een synchronisatiesessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatiesessies zijn geslaagd **(HResult = 0)** en of er synchronisatiefouten per item zijn. Zie de documentatie [synchronisatiestatus](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per item](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
 
   > [!Note]  
-  > Soms mislukken synchronisatie sessies volledig of hebben ze een niet-nul-PerItemErrorCount. Ze maken echter nog steeds een voortgang en sommige bestanden zijn gesynchroniseerd. U kunt dit zien in de velden toegepast zoals AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes. In deze velden kunt u zien hoeveel van de sessie is geslaagd. Als er meerdere synchronisatie sessies mislukken in een rij en deze een toenemend aantal toegewezen aantallen hebben, geeft u de synchronisatie tijd om het opnieuw te proberen voordat u een ondersteunings ticket opent.
+  > Soms mislukken synchronisatiesessies over het algemeen of hebben een niet-nul PerItemErrorCount. Ze boeken echter nog steeds vooruitgang en sommige bestanden worden gesynchroniseerd. U dit zien in de velden AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes. Deze velden vertellen u hoeveel van de sessie is geslaagd. Als u meerdere synchronisatiesessies op een rij ziet mislukken en het aantal toegepaste weergaven toeneemt, geeft u synchronisatietijd om het opnieuw te proberen voordat u een ondersteuningsticket opent.
 
-- Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatie sessie is. Gebruik deze gebeurtenis om te bepalen of de huidige synchronisatie sessie voortgang maakt (**AppliedItemCount > 0**). Als de synchronisatie niet wordt uitgevoerd, wordt de synchronisatie sessie uiteindelijk mislukt en wordt er een gebeurtenis-ID 9102 in het logboek geregistreerd met de fout. Zie de [voortgangs documentatie over synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
+- Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatiesessie is. Gebruik deze gebeurtenis om te bepalen of de huidige synchronisatiesessie vooruitgang boekt **(AppliedItemCount > 0**). Als de synchronisatie geen vooruitgang boekt, moet de synchronisatiesessie uiteindelijk mislukken en wordt een gebeurtenis-id 9102 met de fout geregistreerd. Zie de documentatie [voor synchronisatievoortgang voor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)meer informatie .
 
-Status van geregistreerde server:
+Geregistreerde serverstatus:
 
-- Gebeurtenis-ID 9301 wordt elke 30 seconden geregistreerd wanneer een server de service voor taken opvraagt. Als GetNextJob eindigt met **status = 0**, kan de server met de service communiceren. Als GetNextJob met een fout is voltooid, raadpleegt u de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor hulp.
+- Gebeurtenis-id 9301 wordt elke 30 seconden geregistreerd wanneer een server de service voor taken opvraagt. Als GetNextJob klaar is met **status = 0,** kan de server communiceren met de service. Als GetNextJob met een fout is voltooid, controleert u de [probleemoplossingsdocumentatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor richtlijnen.
 
-Status van Cloud lagen:
+Status van cloudlaagniveau:
 
-- Als u de activiteit voor het bijhouden van lagen op een server wilt bewaken, gebruikt u gebeurtenis-ID 9003, 9016 en 9029 in het logboek voor telemetrie, dat zich bevindt in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*.
+- Als u de gelaagdheidsactiviteit op een server wilt controleren, gebruikt u gebeurtenis-id 9003, 9016 en 9029 in het gebeurtenislogboek Telemetrie, dat zich in Logboeken bevindt onder *Toepassingen en Services\Microsoft\FileSync\Agent*.
 
-  - Gebeurtenis-ID 9003 biedt fout distributie voor een server eindpunt. Bijvoorbeeld: Totaal aantal fouten en fout code. Er wordt één gebeurtenis per fout code in het logboek geregistreerd.
-  - Gebeurtenis-ID 9016 bevat spook resultaten voor een volume. Bijvoorbeeld: Percentage vrije ruimte is het aantal bestanden dat in de sessie is gedupliceerd en het aantal bestanden dat niet kan worden Ghost.
-  - Gebeurtenis-ID 9029 bevat informatie over ghost-sessies voor een server eindpunt. Bijvoorbeeld: Het aantal bestanden dat is geprobeerd in de sessie, het aantal bestanden dat in de sessie is gelaagd en het aantal bestanden dat al is gelaagd.
+  - Gebeurtenis-id 9003 biedt foutdistributie voor een servereindpunt. Bijvoorbeeld: Total Error Count en ErrorCode. Eén gebeurtenis wordt per foutcode geregistreerd.
+  - Gebeurtenis-ID 9016 biedt ghosting resultaten voor een volume. Bijvoorbeeld: Vrije ruimte procent is, Aantal bestanden ghosted in sessie, en Het aantal bestanden niet ghost.
+  - Gebeurtenis-ID 9029 biedt informatie over ghosting-sessies voor een servereindpunt. Bijvoorbeeld: aantal bestanden die in de sessie zijn geprobeerd, het aantal bestanden dat in de sessie is gelaagd en het aantal bestanden dat al is gelaagd.
   
-- Gebruik gebeurtenis-ID 9005, 9006, 9009 en 9059 in het logboek voor telemetrie, dat zich bevindt in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*om de intrek activiteit op een server te controleren.
+- Als u de terugroepactiviteit op een server wilt controleren, gebruikt u gebeurtenis-id 9005, 9006, 9009 en 9059 in het gebeurtenislogboek Telemetrie, dat zich in Logboeken bevindt onder *Toepassingen en Services\Microsoft\FileSync\Agent*.
 
-  - Gebeurtenis-ID 9005 biedt betrouw baarheid van een server eindpunt. Bijvoorbeeld: Het totale aantal geopende unieke bestanden en het totale aantal unieke bestanden met mislukte toegang.
-  - Gebeurtenis-ID 9006 biedt fout bij het intrekken van fouten voor een server eindpunt. Bijvoorbeeld: Totaal aantal mislukte aanvragen en error code. Er wordt één gebeurtenis per fout code in het logboek geregistreerd.
-  - Gebeurtenis-ID 9009 biedt informatie over het intrekken van sessies voor een server eindpunt. Bijvoorbeeld: DurationSeconds, CountFilesRecallSucceeded en CountFilesRecallFailed.
-  - Met gebeurtenis-ID 9059 kan de toepassing worden gedistribueerd voor een server eindpunt. Bijvoorbeeld: ShareId, toepassings naam en TotalEgressNetworkBytes.
+  - Gebeurtenis-ID 9005 biedt de betrouwbaarheid van een server voor een servereindpunt. Bijvoorbeeld: Totaal aantal geopende unieke bestanden en Totaal unieke bestanden met mislukte toegang.
+  - Gebeurtenis-id 9006 biedt de distributie van terugroepfouten voor een servereindpunt. Bijvoorbeeld: Total Failed Requests en ErrorCode. Eén gebeurtenis wordt per foutcode geregistreerd.
+  - Gebeurtenis-ID 9009 biedt informatie over terugroepsessies voor een servereindpunt. Bijvoorbeeld: DurationSeconds, CountFilesRecallGeslaagd en CountFilesRecallFailed.
+  - Gebeurtenis-id 9059 biedt de distributie van toepassingsterugroepinformatie voor een servereindpunt. Bijvoorbeeld: ShareId, Application Name en TotalEgressNetworkBytes.
 
 ### <a name="performance-counters"></a>Prestatiemeteritems
 
-Gebruik de prestatie meter items Azure File Sync op de server om de synchronisatie activiteit te controleren.
+Gebruik de prestatiemeteritems azure bestandssynchronisatie op de server om synchronisatieactiviteiten te controleren.
 
-Open prestatie meter (Perfmon. exe) om de prestatie meter items van Azure File Sync op de server weer te geven. U vindt de prestatie meter items onder de overgebrachte **AFS-bytes** en de objecten voor **AFS-synchronisatie bewerkingen** .
+Als u de prestatiemeteritems voor Azure File Sync op de server wilt weergeven, opent u Prestatiemonitor (Perfmon.exe). U de tellers vinden onder de objecten **AFS Bytes Transferred** en **AFS Sync Operations.**
 
-De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prestatie meter:
+De volgende prestatiemeteritems voor Azure File Sync zijn beschikbaar in prestatiemeter:
 
-| Object\Counter naam van prestaties | Description |
+| Prestatieobject\Voornaam | Beschrijving |
 |-|-|
-| AFS bytes Transferred\Downloaded bytes per seconde | Aantal gedownloade bytes per seconde. |
-| AFS bytes Transferred\Uploaded bytes per seconde | Aantal geüploade bytes per seconde. |
-| AFS bytes Transferred\Total bytes per seconde | Totaal aantal bytes per seconde (uploaden en downloaden). |
-| Operations\Downloaded-synchronisatie bestanden voor AFS-synchronisatie per seconde | Het aantal bestanden dat per seconde wordt gedownload. |
-| Operations\Uploaded-synchronisatie bestanden voor AFS-synchronisatie per seconde | Het aantal bestanden dat per seconde is geüpload. |
-| Bewerking van Operations\Total voor AFS-synchronisatie bestanden per seconde | Totaal aantal gesynchroniseerde bestanden (uploaden en downloaden). |
+| AFS Bytes overgedragen\Gedownloade bytes per seconde | Aantal bytes dat per seconde wordt gedownload. |
+| AFS Bytes overgedragen\Geüploade bytes per seconde | Aantal geüploade bytes per seconde. |
+| AFS-bytes overgedragen\Totale aantal bytes per seconde | Totaal aantal bytes per seconde (uploaden en downloaden). |
+| AFS-synchronisatiebewerkingen\Gedownloade synchronisatiebestanden per seconde | Aantal gedownloade bestanden per seconde. |
+| AFS-synchronisatiebewerkingen\Geüploade synchronisatiebestanden per seconde | Aantal bestanden dat per seconde wordt geüpload. |
+| AFS-synchronisatiebewerkingen\Total Sync File Operations/sec | Totaal aantal gesynchroniseerde bestanden (uploaden en downloaden). |
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Planning voor de implementatie van een Azure File Sync](storage-sync-files-planning.md)
-- [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Firewall- en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
 - [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 - [Problemen met Azure Files Sync oplossen](storage-sync-files-troubleshoot.md)
-- [Veelgestelde vragen over Azure Files](storage-files-faq.md)
+- [Veelgestelde vragen in Azure Files](storage-files-faq.md)

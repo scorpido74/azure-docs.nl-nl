@@ -1,6 +1,6 @@
 ---
 title: Controlelijst voor Azure AD-implementatie
-description: Controle lijst voor implementatie van Azure Active Directory-onderdelen
+description: Checklist voor het implementeren van Azure Active Directory-functies
 services: active-directory
 ms.service: active-directory
 ms.subservice: ''
@@ -12,94 +12,94 @@ manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063642"
 ---
-# <a name="azure-active-directory-feature-deployment-guide"></a>Implementatie handleiding voor Azure Active Directory feature
+# <a name="azure-active-directory-feature-deployment-guide"></a>Handleiding voor azure Active Directory-functieimplementatie
 
-Het kan voor komen dat u Azure Active Directory (Azure AD) implementeert voor uw organisatie en deze veilig kunt houden. In dit artikel worden algemene taken geïdentificeerd die klanten nuttig vinden om in fasen te worden voltooid, in de loop van 30, 60, 90 dagen of meer om hun beveiligings postuur te verbeteren. Zelfs organisaties die Azure AD al hebben geïmplementeerd, kunnen deze hand leiding gebruiken om ervoor te zorgen dat ze het meest uit hun investering halen.
+Het kan ontmoedigend lijken om Azure Active Directory (Azure AD) voor uw organisatie te implementeren en veilig te houden. In dit artikel worden veelvoorkomende taken geïdentificeerd die klanten nuttig vinden om gefaseerd te voltooien, in de loop van 30, 60, 90 dagen of meer, om hun beveiligingshouding te verbeteren. Zelfs organisaties die Azure AD al hebben geïmplementeerd, kunnen deze handleiding gebruiken om ervoor te zorgen dat ze het meeste uit hun investering halen.
 
-Een goed geplande en uitgevoerde identiteits infrastructuur wordt de manier om de toegang tot uw productiviteits werkbelastingen en gegevens te beveiligen door alleen bekende gebruikers en apparaten.
+Een goed geplande en uitgevoerde identiteitsinfrastructuur maakt de weg vrij voor veilige toegang tot uw productiviteitsworkloads en gegevens alleen door bekende gebruikers en apparaten.
 
-Daarnaast kunnen klanten hun [identiteits veilige Score](identity-secure-score.md) controleren om te zien hoe ze zijn uitgelijnd op best practices van micro soft. Controleer uw beveiligde score voor en na de implementatie van deze aanbevelingen om te zien hoe goed u presteert in vergelijking met anderen in uw branche en tot andere organisaties van uw omvang.
+Daarnaast kunnen klanten hun [identiteitsveilige score](identity-secure-score.md) controleren om te zien hoe uitgelijnd ze zijn op de best practices van Microsoft. Controleer uw veilige score voor en na de uitvoering van deze aanbevelingen om te zien hoe goed u het doet in vergelijking met anderen in uw branche en met andere organisaties van uw omvang.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Veel van de aanbevelingen in deze hand leiding kunnen worden geïmplementeerd met Azure AD Free of helemaal geen licentie. Als u licenties nodig hebt, moet u de licentie voor het uitvoeren van de taak aangeven.
+Veel van de aanbevelingen in deze handleiding kunnen worden geïmplementeerd met Azure AD Free of helemaal geen licentie. Wanneer licenties vereist zijn, geven we aan welke licentie minimaal vereist is om de taak te volbrengen.
 
-Meer informatie over licentie verlening vindt u op de volgende pagina's:
+Aanvullende informatie over licenties is te vinden op de volgende pagina's:
 
 * [Azure AD-licenties](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Microsoft 365 Zakelijk](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B-licentie richtlijnen](../b2b/licensing-guidance.md)
+* [Richtlijnen voor Azure AD B2B-licenties](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-build-a-foundation-of-security"></a>Fase 1: bouw een basis van beveiliging
+## <a name="phase-1-build-a-foundation-of-security"></a>Fase 1: Bouw een fundament van veiligheid
 
-In deze fase scha kelen beheerders basis beveiligings functies in om een beter beveiligde en gebruiks vriendelijke basis te maken in azure AD voordat we normale gebruikers accounts importeren of maken. Deze kern fase zorgt ervoor dat u een veiligere status hebt van het begin en dat uw eind gebruikers alleen maar één keer aan nieuwe concepten moeten worden toegevoegd.
+In deze fase stellen beheerders basislijnbeveiligingsfuncties in om een veiligere en gebruiksvriendelijkebasis in Azure AD te maken voordat we normale gebruikersaccounts importeren of maken. Deze fundamentele fase zorgt ervoor dat u vanaf het begin in een veiligere staat verkeert en dat uw eindgebruikers slechts één keer aan nieuwe concepten hoeven te worden voorgesteld.
 
-| Taak | Details | Vereiste licentie |
+| Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| [Meer dan één globale beheerder aanwijzen](../users-groups-roles/directory-emergency-access.md) | Wijs ten minste twee permanente globale beheerders accounts toe die u kunt gebruiken als er sprake is van een nood geval. Deze accounts worden niet dagelijks gebruikt en moeten lange en complexe wacht woorden bevatten. | Azure AD Free |
-| [Indien mogelijk niet-globale beheerders rollen gebruiken](../users-groups-roles/directory-assign-admin-roles.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot de gebieden waartoe ze toegang moeten hebben. Niet alle beheerders moeten globale beheerders zijn. | Azure AD Free |
-| [Gebruik van Privileged Identity Management voor het bijhouden van rol van beheerdersrol inschakelen](../privileged-identity-management/pim-getting-started.md) | Schakel Privileged Identity Management in om het gebruik van de beheerdersrol te volgen. | Azure AD Premium P2 |
-| [Selfservice voor wachtwoordherstel implementeren](../authentication/howto-sspr-deployment.md) | Verminder de helpdesk oproepen voor wacht woord opnieuw instellen door personeel toe te staan hun eigen wacht woord opnieuw in te stellen met behulp van beleids regels die u als beheerder beheert. | |
-| [Een specifieke aangepaste lijst met geblokkeerde wacht woorden maken](../authentication/howto-password-ban-bad-configure.md) | Voor komen dat gebruikers wacht woorden maken die algemene woorden of zinsdelen bevatten van uw organisatie of gebied. | |
-| [On-premises integratie met Azure AD-wachtwoord beveiliging inschakelen](../authentication/concept-password-ban-bad-on-premises.md) | Breid de lijst met geblokkeerde wacht woorden uit naar uw on-premises Directory om ervoor te zorgen dat wacht woorden die on-premises zijn ingesteld ook voldoen aan de algemene en Tenant-specifieke lijst met verboden wacht woorden. | Azure AD Premium P1 |
-| [De richt lijnen voor het micro soft-wacht woord inschakelen](https://www.microsoft.com/research/publication/password-guidance/) | Stop het vereisen van gebruikers om hun wacht woord te wijzigen voor een set-schema, om complexiteits vereisten uit te scha kelen en uw gebruikers zijn meer apt om hun wacht woorden te onthouden en ze iets veilig te houden. | Azure AD Free |
-| [Periodiek wacht woord opnieuw instellen uitschakelen voor gebruikers accounts op basis van de Cloud](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodiek wacht woord opnieuw instellen moedig uw gebruikers aan om hun bestaande wacht woord te verhogen. Gebruik de richt lijnen in het document met wachtwoord richtlijnen van micro soft om uw on-premises beleid te spie gelen aan alleen-Cloud gebruikers. | Azure AD Free |
-| [Azure Active Directory slim vergren delen aanpassen](../authentication/howto-password-smart-lockout.md) | Voor komen dat de vergren delingen van Cloud gebruikers worden gerepliceerd naar on-premises Active Directory gebruikers | |
-| [Extranet smartcard vergrendeling inschakelen voor AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS extranet vergrendeling beschermt tegen beveiligings aanvallen met een felle wacht woord, terwijl geldige AD FS gebruikers hun accounts blijven gebruiken. | |
-| [Azure AD-Multi-Factor Authentication implementeren met behulp van beleid voor voorwaardelijke toegang](../authentication/howto-mfa-getstarted.md) | Gebruikers verplichten verificatie in twee stappen uit te voeren bij het openen van gevoelige toepassingen die gebruikmaken van het beleid voor voorwaardelijke toegang. | Azure AD Premium P1 |
-| [Azure Active Directory Identity Protection inschakelen](../identity-protection/overview-identity-protection.md) | Tracering inschakelen van Risk ante aanmeldingen en aangetaste referenties voor gebruikers in uw organisatie. | Azure AD Premium P2 |
-| [Risico detecties gebruiken om multi-factor Authentication-en wachtwoord wijzigingen te activeren](../authentication/tutorial-risk-based-sspr-mfa.md) | Schakel automatisering in die gebeurtenissen zoals multi-factor Authentication, het opnieuw instellen van wacht woorden en het blok keren van aanmeldingen kan activeren op basis van risico. | Azure AD Premium P2 |
-| [Geconvergeerde registratie voor selfservice voor wachtwoord herstel en Azure AD-Multi-Factor Authentication inschakelen (preview)](../authentication/concept-registration-mfa-sspr-converged.md) | Sta uw gebruikers toe om zich te registreren bij een algemene ervaring voor zowel Azure Multi-Factor Authentication als selfservice voor wachtwoord herstel. | Azure AD Premium P1 |
+| [Meer dan één globale beheerder aanwijzen](../users-groups-roles/directory-emergency-access.md) | Wijs ten minste twee permanente globale beheerdersaccounts toe voor gebruik in de cloud voor gebruik als er een noodsituatie is. Deze accounts worden niet dagelijks gebruikt en moeten lange en complexe wachtwoorden hebben. | Azure AD Free |
+| [Gebruik waar mogelijk niet-globale administratieve rollen](../users-groups-roles/directory-assign-admin-roles.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot alleen de gebieden waartoe ze toegang nodig hebben. Niet alle beheerders hoeven globale beheerders te zijn. | Azure AD Free |
+| [Privileged Identity Management inschakelen voor het gebruik van beheerderstaken](../privileged-identity-management/pim-getting-started.md) | Privileged Identity Management inschakelen om het beheervan de rol gebruik te volgen. | Azure AD Premium P2 |
+| [Selfservice voor wachtwoordherstel implementeren](../authentication/howto-sspr-deployment.md) | Verminder helpdeskoproepen voor wachtwoordresets door medewerkers in staat te stellen hun eigen wachtwoorden opnieuw in te stellen met behulp van beleid dat u als beheerder beheert. | |
+| [Een lijst met aangepaste aangepaste geblokkeerde wachtwoorden maken](../authentication/howto-password-ban-bad-configure.md) | Voorkomen dat gebruikers wachtwoorden maken die veelvoorkomende woorden of zinnen uit uw organisatie of gebied bevatten. | |
+| [On-premises integratie inschakelen met Azure AD-wachtwoordbeveiliging](../authentication/concept-password-ban-bad-on-premises.md) | Breid de lijst met verboden wachtwoorden uit naar uw on-premises directory, om ervoor te zorgen dat wachtwoorden die on-premises zijn ingesteld, ook voldoen aan de algemene en tenantspecifieke lijst met verboden wachtwoorden. | Azure AD Premium P1 |
+| [Wachtwoordrichtlijnen van Microsoft inschakelen](https://www.microsoft.com/research/publication/password-guidance/) | Stel ervoor dat gebruikers hun wachtwoord niet in een vast schema hoeven te wijzigen, schakel complexiteitsvereisten uit en uw gebruikers zijn meer geneigd om hun wachtwoorden te onthouden en ze iets te bewaren dat veilig is. | Azure AD Free |
+| [Periodieke wachtwoordresets voor gebruikersaccounts in de cloud uitschakelen](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodieke wachtwoordresets moedigen uw gebruikers aan om hun bestaande wachtwoorden te verhogen. Gebruik de richtlijnen in het document voor wachtwoordrichtlijnen van Microsoft en spiegel uw on-premises beleid voor alleen in de cloud. | Azure AD Free |
+| [Azure Active Directory smart lockout aanpassen](../authentication/howto-password-smart-lockout.md) | Voorkomen dat uitsluitingen van cloudgebruikers worden gerepliceerd naar on-premises Active Directory-gebruikers | |
+| [Extranet Smart Lockout inschakelen voor AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS extranet lockout beschermt tegen brute force wachtwoord raden aanvallen, terwijl geldige AD FS-gebruikers blijven hun accounts te gebruiken. | |
+| [Azure AD-verificatie met meerdere factor implementeren met beleid voor voorwaardelijke toegang](../authentication/howto-mfa-getstarted.md) | Gebruikers vereisen dat gebruikers tweestapsverificatie uitvoeren wanneer ze toegang krijgen tot gevoelige toepassingen met behulp van beleid voor voorwaardelijke toegang. | Azure AD Premium P1 |
+| [Azure Active Directory Identity Protection inschakelen](../identity-protection/overview-identity-protection.md) | Schakel het bijhouden van risicovolle aanmeldingen en gecompromitteerde referenties voor gebruikers in uw organisatie in. | Azure AD Premium P2 |
+| [Gebruik risicodetecties om meervoudige verificatie en wachtwoordwijzigingen te activeren](../authentication/tutorial-risk-based-sspr-mfa.md) | Inschakelen van automatisering die gebeurtenissen kan activeren, zoals multi-factor authenticatie, wachtwoord reset, en het blokkeren van aanmeldingen op basis van risico.Enable automation that can trigger events such as multi-factor authentication, password reset, and blocking of sign-ins based on risk. | Azure AD Premium P2 |
+| [Geconvergeerde registratie inschakelen voor het opnieuw instellen van selfservicewachtwoorden en Azure AD Multi-Factor Authentication (voorbeeld)](../authentication/concept-registration-mfa-sspr-converged.md) | Laat uw gebruikers zich registreren vanuit één gemeenschappelijke ervaring voor zowel Azure Multi-Factor Authentication als selfservice wachtwoordreset. | Azure AD Premium P1 |
 
-## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fase 2: gebruikers importeren, synchronisatie inschakelen en apparaten beheren
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fase 2: Gebruikers importeren, synchronisatie inschakelen en apparaten beheren
 
-We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebruikers te importeren en synchronisatie in te scha kelen, te plannen voor gast toegang en de ondersteuning van aanvullende functionaliteit voor te bereiden.
+Vervolgens voegen we toe aan de basis die in fase 1 is gelegd door onze gebruikers te importeren en synchronisatie mogelijk te maken, gasttoegang te plannen en ons voor te bereiden op extra functionaliteit.
 
-| Taak | Details | Vereiste licentie |
+| Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| [Azure AD Connect installeren](../connect/active-directory-aadconnect-select-installation.md) | Bereid u voor op het synchroniseren van gebruikers van uw bestaande on-premises Directory naar de Cloud. | Azure AD Free |
-| [Wachtwoord-hash-synchronisatie implementeren](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchroniseer wachtwoord hashes zodat wachtwoord wijzigingen kunnen worden gerepliceerd, ongeldige wachtwoord detectie en herstel en gelekte referentie rapportage. | Azure AD Free |
-| [Wacht woord terugschrijven implementeren](../authentication/howto-sspr-writeback.md) | Toestaan dat wacht woorden worden gewijzigd in de cloud om terug te schrijven naar een on-premises Windows Server-Active Directory omgeving. | Azure AD Premium P1 |
-| [Azure AD Connect Health implementeren](../connect-health/active-directory-aadconnect-health.md) | Schakel de bewaking in van de belangrijkste status statistieken voor uw Azure AD Connect servers, AD FS servers en domein controllers. | Azure AD Premium P1 |
-| [Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Bespaar tijd en moeite door licentie groepen te maken die functies in-of uitschakelen in plaats van per gebruiker in te stellen. | |
-| [Een plan maken voor toegang tot gast gebruikers](../b2b/what-is-b2b.md) | Samen werken met gast gebruikers door hen aan te melden bij uw apps en services met hun eigen werk, school of sociale identiteiten. | [Azure AD B2B-licentie richtlijnen](../b2b/licensing-guidance.md) |
-| [Bepaal de strategie voor het beheer van apparaten](../devices/overview.md) | Bepaal wat uw organisatie in staat is met betrekking tot apparaten. Registreren versus samen voegen, uw eigen apparaat en bedrijf meenemen. | |
-| [Windows hello voor bedrijven in uw organisatie implementeren](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Voor bereiding voor verificatie met een wacht woord met behulp van Windows hello | |
-| [Authenticatie methoden met een wacht woord implementeren voor uw gebruikers](../authentication/concept-authentication-passwordless.md) | Geef uw gebruikers handige verificatie methoden met een wacht woord | Azure AD Premium P1 |
+| [Azure AD Connect installeren](../connect/active-directory-aadconnect-select-installation.md) | Bereid u voor om gebruikers van uw bestaande on-premises directory te synchroniseren met de cloud. | Azure AD Free |
+| [Wachtwoordhashsynchronisatie implementeren](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Wachtwoordhashes synchroniseren om wachtwoordwijzigingen te repliceren, slechte wachtwoorddetectie en -herstel te accepteren en gelekte referentierapportage. | Azure AD Free |
+| [Terugschrijven van wachtwoorden implementeren](../authentication/howto-sspr-writeback.md) | Toestaan dat wachtwoordwijzigingen in de cloud worden teruggeschreven naar een on-premises Windows Server Active Directory-omgeving. | Azure AD Premium P1 |
+| [Azure AD Connect-status implementeren](../connect-health/active-directory-aadconnect-health.md) | Schakel bewaking van belangrijke statusstatistieken in voor uw Azure AD Connect-servers, AD FS-servers en domeincontrollers. | Azure AD Premium P1 |
+| [Licenties toewijzen aan gebruikers per groepslidmaatschap in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Bespaar tijd en moeite door licentiegroepen te maken die functies per groep in- of uitschakelen in plaats van per gebruiker in te stellen. | |
+| [Een abonnement maken voor de toegang van gastgebruikers](../b2b/what-is-b2b.md) | Werk samen met gastgebruikers door ze zich te laten aanmelden bij uw apps en services met hun eigen werk, school of sociale identiteit. | [Richtlijnen voor Azure AD B2B-licenties](../b2b/licensing-guidance.md) |
+| [Bepaal de strategie voor apparaatbeheer](../devices/overview.md) | Bepaal wat uw organisatie toestaat met betrekking tot apparaten. Registreren vs deelnemen, Bring Your Own Device vs bedrijf verstrekt. | |
+| [Windows Hello voor Bedrijven implementeren in uw organisatie](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Voorbereiden op verificatie zonder wachtwoord met Windows Hello | |
+| [Wachtwoordloze verificatiemethoden implementeren voor uw gebruikers](../authentication/concept-authentication-passwordless.md) | Uw gebruikers voorzien van handige wachtwoordloze verificatiemethoden | Azure AD Premium P1 |
 
-## <a name="phase-3-manage-applications"></a>Fase 3: toepassingen beheren
+## <a name="phase-3-manage-applications"></a>Fase 3: Toepassingen beheren
 
-Omdat we de vorige fasen blijven ontwikkelen, identificeren we kandidaat-toepassingen voor migratie en integratie met Azure AD en volt ooien we de installatie van deze toepassingen.
+Terwijl we doorgaan met het voortbouwen op de vorige fasen, identificeren we kandidaat-toepassingen voor migratie en integratie met Azure AD en voltooien we de installatie van die toepassingen.
 
-| Taak | Details | Vereiste licentie |
+| Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| Uw toepassingen identificeren | Bepaal welke toepassingen in uw organisatie worden gebruikt: on-premises, SaaS-toepassingen in de Cloud en andere line-of-business-toepassingen. Bepaal of deze toepassingen kunnen en moeten worden beheerd met Azure AD. | Geen licentie vereist |
-| [Ondersteunde SaaS-toepassingen integreren in de galerie](../manage-apps/add-application-portal.md) | Azure AD bevat een galerie met duizenden vooraf geïntegreerde toepassingen. Sommige van de toepassingen die door uw organisatie worden gebruikt, zijn waarschijnlijk rechtstreeks vanuit de Azure Portal toegankelijk in de galerie. | Azure AD Free |
-| [Toepassings proxy gebruiken voor het integreren van on-premises toepassingen](../manage-apps/application-proxy-add-on-premises-application.md) | Met toepassings proxy kunnen gebruikers toegang krijgen tot on-premises toepassingen door zich aan te melden met hun Azure AD-account. | |
+| Uw toepassingen identificeren | Identificeer toepassingen die in uw organisatie worden gebruikt: on-premises, SaaS-toepassingen in de cloud en andere bedrijfstoepassingen. Bepaal of deze toepassingen kunnen en moeten worden beheerd met Azure AD. | Geen licentie vereist |
+| [Ondersteunde SaaS-toepassingen integreren in de galerie](../manage-apps/add-application-portal.md) | Azure AD heeft een galerie met duizenden vooraf geïntegreerde toepassingen. Sommige toepassingen die uw organisatie gebruikt, bevinden zich waarschijnlijk in de galerie die rechtstreeks vanuit de Azure-portal toegankelijk is. | Azure AD Free |
+| [Application Proxy gebruiken om on-premises toepassingen te integreren](../manage-apps/application-proxy-add-on-premises-application.md) | Met Application Proxy kunnen gebruikers on-premises toepassingen openen door zich aan te melden met hun Azure AD-account. | |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Fase 4: bevoegde identiteiten controleren, een toegangs beoordeling volt ooien en de gebruikers levenscyclus beheren
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Fase 4: Bevoorrechte identiteiten controleren, een toegangscontrole voltooien en de levenscyclus van gebruikers beheren
 
-Fase 4 ziet beheerders de mogelijkheid om minimale bevoegdheids principes voor beheer af te dwingen, hun eerste toegangs beoordelingen te volt ooien en automatisering van algemene gebruikers levenscyclus taken in te scha kelen.
+In fase 4 worden beheerders de minste bevoegdhedenbeginselen voor beheer gehandhaafd, hun eerste toegangsbeoordelingen voltooid en wordt de algemene levenscyclustaken van gebruikers mogelijk gemaakt.
 
-| Taak | Details | Vereiste licentie |
+| Taak | Detail | Vereiste licentie |
 | ---- | ------ | ---------------- |
-| [Het gebruik van Privileged Identity Management afdwingen](../privileged-identity-management/pim-security-wizard.md) | Beheer rollen verwijderen van normale dag-naar-dag-gebruikers accounts. Zorg ervoor dat gebruikers met beheerders rechten hun rol kunnen gebruiken nadat ze een multi-factor Authentication-controle hebben uitgevoerd, een zakelijke reden bieden of goed keuring aanvragen van aangewezen goed keurders. | Azure AD Premium P2 |
-| [Een toegangs beoordeling voor Azure AD-Directory functies in PIM volt ooien](../privileged-identity-management/pim-how-to-start-security-review.md) | Werk samen met uw beveiligings-en leiderschaps teams om een toegangs beoordelings beleid te maken om beheerders toegang te controleren op basis van het beleid van uw organisatie. | Azure AD Premium P2 |
-| [Beleid voor dynamische groepslid maatschappen implementeren](../users-groups-roles/groups-dynamic-membership.md) | Gebruik dynamische groepen om automatisch gebruikers toe te wijzen aan groepen op basis van hun kenmerken van HR (of uw bron van waarheid), zoals afdeling, titel, regio en andere kenmerken. |  |
-| [Implementatie op basis van groepen implementeren](../manage-apps/what-is-access-management.md) | Gebruik het inrichten van toegangs beheer op basis van groepen om automatisch gebruikers in te richten voor SaaS-toepassingen. |  |
-| [Gebruikers inrichting en het ongedaan maken van de inrichting automatiseren](../app-provisioning/user-provisioning.md) | Verwijder hand matige stappen uit de levens duur van uw werknemers account om onbevoegde toegang te voor komen. Identiteiten van de bron van de waarheid (HR-systeem) naar Azure AD synchroniseren. |  |
+| [Het gebruik van privileged identity management afdwingen](../privileged-identity-management/pim-security-wizard.md) | Verwijder beheerdersrollen van normale dagelijkse gebruikersaccounts. Maak administratieve gebruikers in aanmerking om hun rol te gebruiken na het slagen voor een multi-factor authenticatie controle, het verstrekken van een zakelijke rechtvaardiging, of het aanvragen van goedkeuring van aangewezen fiatteurs. | Azure AD Premium P2 |
+| [Een toegangscontrole voor Azure AD-maprollen in PIM voltooien](../privileged-identity-management/pim-how-to-start-security-review.md) | Werk samen met uw beveiligings- en leiderschapsteams om een toegangsbeoordelingsbeleid te maken om de beheerderstoegang te controleren op basis van het beleid van uw organisatie. | Azure AD Premium P2 |
+| [Dynamisch groepslidmaatschapsbeleid implementeren](../users-groups-roles/groups-dynamic-membership.md) | Gebruik dynamische groepen om gebruikers automatisch aan groepen toe te wijzen op basis van hun kenmerken van HR (of uw bron van waarheid), zoals afdeling, titel, regio en andere kenmerken. |  |
+| [Groepsgebaseerde toepassingsinrichting implementeren](../manage-apps/what-is-access-management.md) | Gebruik groepsgebaseerde toegangsbeheerinrichting om gebruikers automatisch in te richten op SaaS-toepassingen. |  |
+| [Gebruikersinrichting en deprovisioning automatiseren](../app-provisioning/user-provisioning.md) | Verwijder handmatige stappen uit de levenscyclus van uw werknemersaccount om onbevoegde toegang te voorkomen. Identiteiten synchroniseren van uw bron van waarheid (HR-systeem) naar Azure AD. |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure AD-licentie verlening en prijs informatie](https://azure.microsoft.com/pricing/details/active-directory/)
+[Azure AD-licentie- en prijsgegevens](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
-[Algemeen aanbevolen identiteits-en toegangs beleid voor apparaten](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
+[Gemeenschappelijk aanbevolen beleid voor identiteits- en apparaattoegangs](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)

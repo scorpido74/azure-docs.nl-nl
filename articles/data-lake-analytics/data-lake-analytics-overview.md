@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
 ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70164514"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Wat is Azure Data Lake Analytics?
@@ -42,10 +42,10 @@ Data Lake Analytics is een rendabele oplossing voor het uitvoeren van big data-w
     
 ### <a name="works-with-all-your-azure-data"></a>Werkt met alle Azure-gegevens
   
-Data Lake Analytics werkt met Azure Data Lake Storage voor de hoogste prestaties, door Voer en parallel Lise ring en werkt met Azure Storage-blobs, Azure SQL Database, Azure Warehouse.
+Data Lake Analytics werkt met Azure Data Lake Storage voor de hoogste prestaties, doorvoer en parallelisatie en werkt met Azure Storage blobs, Azure SQL Database, Azure Warehouse.
 
 ### <a name="next-steps"></a>Volgende stappen
  
-  * Aan de slag met Data Lake Analytics met behulp van [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md)
-  * Azure Data Lake Analytics beheren met behulp van [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)
+  * Aan de slag met Data Lake Analytics met [Azure-portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md)
+  * Azure Data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)
   * [Kosten beheersen en geld besparen met Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

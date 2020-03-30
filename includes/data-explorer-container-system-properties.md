@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: orspodek
 ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79129266"
 ---
-### <a name="event-system-properties-mapping"></a>Toewijzing gebeurtenis systeem eigenschappen
+### <a name="event-system-properties-mapping"></a>Toewijzing van eigenschappen van gebeurtenissysteem
 
 > [!Note]
-> * Systeem eigenschappen worden ondersteund voor gebeurtenissen met één record.
-> * Voor `csv` toewijzing worden eigenschappen toegevoegd aan het begin van de record. Voor `json` toewijzing worden eigenschappen toegevoegd op basis van de naam die wordt weer gegeven in de vervolg keuzelijst.
+> * Systeemeigenschappen worden ondersteund voor gebeurtenissen met één record.
+> * Voor `csv` toewijzing worden eigenschappen toegevoegd aan het begin van de record. Voor `json` toewijzing worden eigenschappen toegevoegd op basis van de naam die wordt weergegeven in de vervolgkeuzelijst.
 
-Als u **gebeurtenis systeem eigenschappen** hebt geselecteerd in de sectie **gegevens bron** van de tabel, moet u de volgende eigenschappen in het tabel schema en de toewijzing toevoegen.
+Als u **de eigenschappen van het gebeurtenissysteem** hebt geselecteerd in de sectie **Gegevensbron** van de tabel, moet u de volgende eigenschappen opnemen in het tabelschema en de toewijzing.
 
-**Voor beeld tabel schema**
+**Voorbeeld van tabelschema**
 
-Als uw gegevens drie kolommen bevatten (`Timespan`, `Metric`en `Value`) en de eigenschappen die u toevoegt, zijn `x-opt-enqueued-time` en `x-opt-offset`, maakt of wijzigt u het tabel schema met behulp van de volgende opdracht:
+Als uw gegevens drie`Timespan` `Metric`kolommen `Value`( , en ) `x-opt-enqueued-time` `x-opt-offset`en de eigenschappen bevatten die u opneemt, zijn en, maken of wijzigen van het tabelschema met behulp van deze opdracht:
 
 ```kusto
     .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
 ```
 
-**Voor beeld van CSV-toewijzing**
+**Voorbeeld van CSV-toewijzing**
 
-Voer de volgende opdrachten uit om gegevens toe te voegen aan het begin van de record. Noteer de rang waarden.
+Voer de volgende opdrachten uit om gegevens toe te voegen aan het begin van de record. Let op ordinale waarden.
 
 ```kusto
     .create table TestTable ingestion csv mapping "CsvMapping1"
@@ -42,9 +42,9 @@ Voer de volgende opdrachten uit om gegevens toe te voegen aan het begin van de r
     ']'
 ```
  
-**Voor beeld van JSON-toewijzing**
+**VOORBEELD VAN JSON-toewijzing**
 
-Gegevens worden toegevoegd met behulp van de systeem eigenschappen namen zoals ze worden weer gegeven in de lijst met eigenschappen van de Blade **gegevens verbinding** van het **gebeurtenis systeem** . Voer deze opdrachten uit:
+Gegevens worden toegevoegd met behulp van de namen van systeemeigenschappen zoals deze worden weergegeven in de lijst Eigenschappen van het **gegevensverbindingsbladgebeurtenissysteem.** **Data connection** Voer deze opdrachten uit:
 
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"

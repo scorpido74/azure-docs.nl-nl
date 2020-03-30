@@ -1,6 +1,6 @@
 ---
-title: Een afzonderlijke data base configureren
-description: Meer informatie over het configureren en beheren van Azure SQL Database-één data base
+title: Eén database configureren
+description: Meer informatie over het configureren en beheren van Azure SQL Database - één database
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,65 +12,65 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
 ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76027715"
 ---
-# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Een enkele data base gebruiken in Azure SQL Database
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Eén database gebruiken in Azure SQL Database
 
-In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kunnen helpen bij het beheren en configureren van uw afzonderlijke data base in Azure SQL Database
+In deze sectie vindt u verschillende hulplijnen, scripts en uitleg waarmee u uw enkele database beheren en configureren in Azure SQL Database
 
 ## <a name="migrate"></a>Migreren
 
-- [Migreren naar SQL database](sql-database-single-database-migrate.md) : meer informatie over het aanbevolen migratie proces en hulpprogram ma's voor migratie naar een beheerd exemplaar.
-- Meer informatie over het [beheren van SQL database na de migratie](sql-database-manage-after-migration.md).
+- [Migratie naar SQL Database](sql-database-single-database-migrate.md) : meer informatie over het aanbevolen migratieproces en de hulpprogramma's voor migratie naar een beheerde instantie.
+- Meer informatie over het [beheren van SQL-database na migratie](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Functies configureren
 
-- [Transactionele replicatie configureren](replication-to-sql-database.md) om de datum te repliceren tussen data bases.
-- [Configureer detectie van bedreigingen](sql-database-threat-detection.md) zodat Azure SQL database verdachte activiteiten zoals SQL-injectie of toegang vanaf verdachte locaties kunt identificeren.
-- [Configureer dynamische gegevens maskering](sql-database-dynamic-data-masking-get-started-portal.md) om uw gevoelige gegevens te beveiligen.
-- Configureer het bewaren van [back-ups](sql-database-long-term-backup-retention-configure.md) voor een Data Base om uw back-ups op Azure Blob Storage te bewaren. Als alternatief kunt u de [retentie van de back-up configureren met behulp van de methode van Azure-kluis (afgeschaft)](sql-database-long-term-backup-retention-configure-vault.md) .
-- [Configureer geo-replicatie](sql-database-geo-replication-portal.md) om een replica van uw data base in een andere regio te blijven gebruiken.
-- [Configureer beveiliging voor geo-replica's](sql-database-geo-replication-security-config.md).
+- [Transactionele replicatie configureren](replication-to-sql-database.md) om uw datum tussen databases te repliceren.
+- [Configureer bedreigingsdetectie](sql-database-threat-detection.md) om Azure SQL Database verdachte activiteiten zoals SQL Injection of toegang vanaf verdachte locaties te laten identificeren.
+- [Configureer dynamische gegevensmaskering](sql-database-dynamic-data-masking-get-started-portal.md) om uw gevoelige gegevens te beschermen.
+- [Configureer back-upretentie](sql-database-long-term-backup-retention-configure.md) voor een database om uw back-ups in Azure Blob Storage te bewaren. Als alternatief is er [Back-upbehoud configureren met azure vault (afgeschaft)](sql-database-long-term-backup-retention-configure-vault.md) benadering.
+- [Configureer georeplicatie](sql-database-geo-replication-portal.md) om een replica van uw database in een andere regio te bewaren.
+- [Beveiligingsconfigureren voor georeplica's](sql-database-geo-replication-security-config.md).
 
-## <a name="monitor-and-tune-your-database"></a>Uw data base bewaken en afstemmen
+## <a name="monitor-and-tune-your-database"></a>Uw database controleren en afstemmen
 
-- [Schakel automatisch afstemmen](sql-database-automatic-tuning-enable.md) in om de prestaties van uw werk belasting Azure SQL database optimaliseren.
-- [Schakel e-mail meldingen voor automatisch afstemmen](sql-database-automatic-tuning-email-notifications.md) in om informatie te krijgen over de aanbevelingen voor het afstemmen.
-- [Aanbevelingen voor prestaties Toep assen](sql-database-advisor-portal.md) en uw data base optimaliseren.
-- [Waarschuwingen maken](sql-database-insights-alerts-portal.md) voor het ontvangen van meldingen van Azure SQL database.
-- [Los problemen met de verbinding](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) op als u enkele verbindings problemen tussen de toepassingen en de data base ziet. U kunt ook [resource Health gebruiken om verbindings problemen op te lossen](sql-database-resource-health.md).
-- [Bestands ruimte beheren](sql-database-file-space-management.md) om het gebruik van opslag in uw data base te controleren.
+- [Automatische afstemming inschakelen](sql-database-automatic-tuning-enable.md) zodat Azure SQL Database de prestaties van uw werkbelasting optimaliseren.
+- [Schakel e-mailmeldingen in voor automatisch afstemmen](sql-database-automatic-tuning-email-notifications.md) om informatie te krijgen over tuningaanbevelingen.
+- [Pas prestatieaanbevelingen toe](sql-database-advisor-portal.md) en optimaliseer uw database.
+- [Maak meldingen](sql-database-insights-alerts-portal.md) aan om meldingen van Azure SQL Database te ontvangen.
+- [Problemen met de verbinding oplossen](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) als u bepaalde verbindingsproblemen tussen de toepassingen en de database opmerkt. U resourcestatus ook gebruiken [voor verbindingsproblemen.](sql-database-resource-health.md)
+- [Beheer bestandsruimte](sql-database-file-space-management.md) om het opslaggebruik in uw database te controleren.
 
 ## <a name="query-distributed-data"></a>Een query uitvoeren op gedistribueerde gegevens
 
-- [Query's verticaal gepartitioneerde gegevens](sql-database-elastic-query-getting-started-vertical.md) over meerdere data bases.
-- [Rapport over een uitgeschaalde gegevenslaag](sql-database-elastic-query-horizontal-partitioning.md).
-- [Query's uitvoeren voor meerdere tabellen met verschillende schema's](sql-database-elastic-query-vertical-partitioning.md).
+- [Query verticaal gepartitioneerde gegevens](sql-database-elastic-query-getting-started-vertical.md) in meerdere databases.
+- [Rapport over de geschaalde gegevenslaag](sql-database-elastic-query-horizontal-partitioning.md).
+- [Query's in tabellen met verschillende schema's](sql-database-elastic-query-vertical-partitioning.md).
 
 ## <a name="elastic-database-jobs"></a>Taken voor Elastic Database
 
-- [Maken en beheren](elastic-jobs-powershell.md) Elastic Database taken met behulp van Power shell.
-- [Maken en beheren](elastic-jobs-tsql.md) Elastic Database taken met behulp van Transact-SQL.
-- [Migreren vanaf een oude elastische taak](elastic-jobs-migrate.md).
+- [Maken en beheren](elastic-jobs-powershell.md) Elastische databasetaken met PowerShell.
+- [Maken en beheren](elastic-jobs-tsql.md) Elastische databasetaken met Transact-SQL.
+- [Migreren van oude elastische taak](elastic-jobs-migrate.md).
 
 ## <a name="database-sharding"></a>Database-sharding
 
-- [Upgrade van client bibliotheek voor Elastic data base](sql-database-elastic-scale-upgrade-client-library.md).
-- [Shard-app maken](sql-database-elastic-scale-get-started.md).
-- Een [query uitvoeren op horizontale Shard-gegevens](sql-database-elastic-query-getting-started.md).
-- [Query's voor meerdere Shard](sql-database-elastic-scale-multishard-querying.md)uitvoeren.
-- [Shard-gegevens verplaatsen](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-- [Configureer beveiliging](sql-database-elastic-scale-split-merge-security-configuration.md) in data base Shards.
-- [Voeg een Shard](sql-database-elastic-scale-add-a-shard.md) toe aan de huidige set data base-Shards.
-- [Problemen met de Shard-kaart oplossen](sql-database-elastic-database-recovery-manager.md).
-- [SHARD DB migreren](sql-database-elastic-convert-to-use-elastic-tools.md).
+- [Upgrade de elastische databaseclientbibliotheek](sql-database-elastic-scale-upgrade-client-library.md).
+- [Sharded app maken](sql-database-elastic-scale-get-started.md).
+- [Query horizontaal geshard gegevens](sql-database-elastic-query-getting-started.md).
+- [Multishardquery's](sql-database-elastic-scale-multishard-querying.md)uitvoeren.
+- [Geshard gegevens verplaatsen](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+- [Configureer beveiliging](sql-database-elastic-scale-split-merge-security-configuration.md) in databaseshards.
+- [Voeg een scherf toe](sql-database-elastic-scale-add-a-shard.md) aan de huidige set databasescherven.
+- [Fix shard map problems](sql-database-elastic-database-recovery-manager.md).
+- [Geshard DB migreren](sql-database-elastic-convert-to-use-elastic-tools.md).
 - [Tellers maken](sql-database-elastic-database-perf-counters.md).
-- [Gebruik Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) om Shard-gegevens op te vragen.
-- [Gebruik dapper Framework](sql-database-elastic-scale-working-with-dapper.md) om Shard-gegevens op te vragen.
+- [Gebruik entiteitskader](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) om geshardgegevens op te vragen.
+- [Gebruik Dapper framework](sql-database-elastic-scale-working-with-dapper.md) om geshard gegevens op te vragen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [hand leidingen voor een beheerd exemplaar](sql-database-howto-managed-instance.md)
+- Meer informatie over [handleidingen voor beheerde bijvoorbeeld](sql-database-howto-managed-instance.md)

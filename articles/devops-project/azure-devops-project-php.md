@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7c097c2a7247c9cad6cdce8a89059ee8d90d159e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899579"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor PHP maken met Azure DevOps Projects
@@ -33,7 +33,7 @@ Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studi
 
  In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt gratis een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 
 1. Selecteer in het linkerdeelvenster het pictogram **Een resource maken**. Zoek vervolgens naar **DevOps Projects**.  
 
@@ -80,7 +80,7 @@ Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studi
 
 1. Selecteer **Bewerken** en breng een wijziging aan in de tekst.  Wijzig bijvoorbeeld een stuk tekst voor een van de div-tags.
 
-1. Selecteer **Doorvoeren** en sla de wijzigingen op.
+1. Selecteer **Doorvoeren** en sla vervolgens de wijzigingen op.
 
 1. Ga in de browser naar het DevOps Projects-dashboard.  
 Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
@@ -92,7 +92,7 @@ Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrach
 1. Selecteer boven in het DevOps Projects-dashboard de optie **Build-pijplijnen**.  
     Met deze koppeling worden een browsertabblad en de build-pipeline voor het nieuwe project geopend.
 
-1. Wijs het veld **Status** aan en selecteer het **beletselteken** (...).  
+1. Wijs het veld **Status** aan en selecteer de **ellips** (...).  
     Er wordt een menu met verschillende opties weergegeven, bijvoorbeeld om een nieuwe build in de wachtrij te plaatsen, een build te onderbreken of de build-pipeline te bewerken.
 
 1. Selecteer **Bewerken**.
@@ -100,12 +100,12 @@ Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrach
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken.  
     In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 
-1. Selecteer boven aan de build-pijplijn de naam van de build-pijplijn.
+1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
-1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
+1. Wijzig de naam van de opbouwpijplijn in iets beschrijvender, selecteer, **Sla & wachtrij op**en selecteer **Opslaan**.
 
-1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**.   
-    In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build. Azure Pipelines houdt alle wijzigingen in de build-pijplijn bij en biedt de mogelijkheid om versies te vergelijken.
+1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**.   
+    In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build. Azure Pipelines houdt alle wijzigingen in de build-pipeline bij en biedt de mogelijkheid om versies te vergelijken.
 
 1. Selecteer **Triggers**.  
       In DevOps Projects is automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. U kunt desgewenst kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
@@ -130,7 +130,7 @@ Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrach
 
 1. Selecteer aan de rechterkant **Releases weergeven** om een releasegeschiedenis weer te geven.
 
-1. Selecteer het beletselteken naast een van de releases en selecteer vervolgens **Openen**.  
+1. Selecteer de ellips (...) naast een van uw releases en selecteer **Open**.  
         Er zijn verschillende menu's die u in deze weergave kunt verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
 
 1. Selecteer **Doorvoeringen**.  

@@ -1,7 +1,7 @@
 ---
-title: Een Schaalset voor virtuele machines implementeren met behulp van Visual Studio
-description: Virtual Machine Scale Sets implementeren met behulp van Visual Studio en een resource manager-sjabloon
-ms.custom: H1Hack27Feb2017
+title: Virtuele machineschaalset implementeren met Visual Studio
+description: Virtuele machineschaalsets implementeren met Visual Studio en een resourcemanagersjabloon
+ms.custom: vs-azure, H1Hack27Feb2017
 ms.workload: azure-vs
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,89 +10,89 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c49b4f42bc726c68880bdd4d6f58956936e83177
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066965"
 ---
-# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Een Schaalset voor virtuele machines maken met Visual Studio
+# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Een virtuele machineschaalset maken met Visual Studio
 
-In dit artikel wordt beschreven hoe u een Schaalset voor virtuele machines van Azure implementeert met behulp van de implementatie van een Visual Studio-resource groep.
+In dit artikel ziet u hoe u een Azure Virtual Machine Scale Set implementeert met behulp van een implementatie van Visual Studio Resource Group.
 
-[Azure virtual machine Scale sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) is een Azure Compute-resource voor het implementeren en beheren van een verzameling vergelijk bare virtuele machines met automatisch schalen en taak verdeling. U kunt Virtual Machine Scale Sets inrichten en implementeren met behulp van [Azure Resource Manager sjablonen](https://github.com/Azure/azure-quickstart-templates). Azure Resource Manager sjablonen kunnen worden geïmplementeerd met behulp van Azure CLI, Power shell, REST en direct vanuit Visual Studio. Visual Studio biedt een aantal voorbeeld sjablonen die u kunt implementeren als onderdeel van een implementatie project van een Azure-resource groep.
+[Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) is een Azure Compute-bron voor het implementeren en beheren van een verzameling vergelijkbare virtuele machines met automatische schaal en taakverdeling. U virtuele machineschaalsets inrichten en implementeren met [Azure Resource Manager-sjablonen](https://github.com/Azure/azure-quickstart-templates). Azure Resource Manager-sjablonen kunnen worden geïmplementeerd met Azure CLI, PowerShell, REST en ook rechtstreeks vanuit Visual Studio. Visual Studio biedt een reeks voorbeeldsjablonen die u implementeren als onderdeel van een azure resourcegroepimplementatieproject.
 
-Implementaties van Azure-resource groepen vormen een manier om een set verwante Azure-resources te groeperen en te publiceren in één implementatie bewerking. Zie voor meer informatie [Azure-resource groepen maken en implementeren via Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Azure Resource Group-implementaties zijn een manier om een set gerelateerde Azure-resources te groeperen en te publiceren in één implementatiebewerking. Zie [Azure-brongroepen maken en implementeren via Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende vereisten nodig om aan de slag te gaan met de implementatie van Virtual Machine Scale Sets in Visual Studio:
+Als u aan de slag wilt met het implementeren van virtuele machineschaalsets in Visual Studio, hebt u de volgende vereisten nodig:
 
 * Visual Studio 2013 of hoger
-* Azure SDK 2,7, 2,8 of 2,9
+* Azure SDK 2.7, 2.8 of 2.9
 
 >[!NOTE]
->In dit artikel wordt gebruikgemaakt van Visual Studio 2019 met [Azure SDK 2,8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
+>Dit artikel maakt gebruik van Visual Studio 2019 met [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
 
-## Een project maken<a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>Een project maken<a name="creating-a-project"></a> 
 
-1. Open Visual Studio en selecteer **een nieuw project maken**.
+1. Open Visual Studio en selecteer **Een nieuw project maken**.
 
-1. Kies in **een nieuw project maken de**optie **Azure-resource groep** voor C# en selecteer vervolgens **volgende**.
+1. Kies in **Een nieuw project maken**de optie Azure Resource **Group** voor C# en selecteer **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een naam in en selecteer **maken**.
+1. Voer in **Uw nieuwe project configureren**een naam in en selecteer **Maken**.
 
-    ![Een naam en een project maken](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
+    ![Uw project een naam geven en maken](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
-1. Kies in de lijst met sjablonen ofwel de Windows-schaalset voor **virtuele machines** of virtuele- **machine schaal sets voor Linux** . Selecteer **OK**.
+1. Kies in de lijst met sjablonen de sjabloon **Windows Virtual Machine Scale Set** of Linux Virtual Machine Scale **Set.** Selecteer **OK**.
 
-   ![Een virtuele-machine sjabloon selecteren](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
+   ![Een sjabloon voor virtuele machines selecteren](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
-Nadat u het project hebt gemaakt, bevat **Solution Explorer** een Power shell-implementatie script, een Azure Resource Manager sjabloon en een parameter bestand voor de schaalset van de virtuele machine.
+Nadat u uw project hebt gemaakt, bevat **Solution Explorer** een PowerShell-implementatiescript, een Azure Resource Manager-sjabloon en een parameterbestand voor de virtuele machineschaalset.
 
 ## <a name="customize-your-project"></a>Uw project aanpassen
 
-Nu kunt u de sjabloon bewerken om deze aan te passen aan de behoeften van uw toepassing. U kunt eigenschappen van virtuele-machine uitbreiding toevoegen of regels voor taak verdeling bewerken. Standaard zijn de sjablonen voor de Schaalset voor virtuele machines geconfigureerd voor het implementeren van de **AzureDiagnostics** -extensie, waardoor het gemakkelijk is om regels voor automatisch schalen toe te voegen. De sjablonen implementeren ook een load balancer met een openbaar IP-adres, geconfigureerd met binnenkomende NAT-regels.
+Nu u de sjabloon bewerken om deze aan te passen aan de behoeften van uw toepassing. U eigenschappen voor virtuele machine-extensie toevoegen of regels voor het balanceren van de lastenbewerken bewerken. Standaard zijn de sjablonen voor virtuele machineschaalset geconfigureerd om de **AzureDiagnostics-extensie** te implementeren, waardoor het eenvoudig is om regels voor automatische waarden toe te voegen. De sjablonen implementeren ook een load balancer met een openbaar IP-adres, geconfigureerd met binnenkomende NAT-regels.
 
-Met de load balancer kunt u verbinding maken met de virtuele-machine-instanties met SSH (Linux) of RDP (Windows). Het poort bereik van de front-end begint bij 50000. Als u voor Linux SSH naar poort 50000, stuurt taak verdeling u naar poort 22 van de eerste virtuele machine in de Schaalset. Verbinding maken met poort 50001 wordt doorgestuurd naar poort 22 van de tweede virtuele machine, enzovoort.
+Met de load balancer u verbinding maken met de virtuele machine-exemplaren met SSH (Linux) of RDP (Windows). Het front-end poortbereik begint bij 50000. Voor Linux, als u SSH naar poort 50000, load balancing routes u naar poort 22 van de eerste virtuele machine in de Scale Set. Aansluiten op poort 50001 wordt doorgestuurd naar poort 22 van de tweede virtuele machine, enzovoort.
 
- Een goede manier om uw sjablonen te bewerken met Visual Studio is door de **JSON-overzicht**te gebruiken. U kunt de para meters, variabelen en resources ordenen. Met een goed idee van het schema kan Visual Studio fouten in uw sjabloon verwijzen voordat u deze implementeert.
+ Een goede manier om uw sjablonen te bewerken met Visual Studio is door de **JSON Outline**te gebruiken. U de parameters, variabelen en resources ordenen. Met inzicht in het schema kan Visual Studio fouten in uw sjabloon aanwijzen voordat u het implementeert.
 
-![JSON-Verkenner](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
+![JSON Explorer](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
 ## <a name="deploy-the-project"></a>Het project implementeren
 
-Implementeer de Azure Resource Manager sjabloon om de resource voor de Schaalset voor virtuele machines te maken:
+Implementeer de sjabloon Azure Resource Manager om de bron van de virtuele machineschaalset te maken:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project en kies > **nieuwe** **implementeren** .
+1. Klik in **Solution Explorer**met de rechtermuisknop op het project en kies**Nieuw** **implementeren** > .
 
     ![Uw project implementeren](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-1. Kies in de **resource groep implementeren**de optie welk abonnement u wilt gebruiken en selecteer een resource groep. U kunt, indien nodig, een resource groep maken.
+1. Kies **in Deploy naar Resource Group**welk abonnement u wilt gebruiken en selecteer een resourcegroep. U indien nodig een resourcegroep maken.
 
-1. Selecteer vervolgens **para meters bewerken** om para meters in te voeren die worden door gegeven aan uw sjabloon.
+1. Selecteer vervolgens **Parameters bewerken** om parameters in te voeren die aan uw sjabloon worden doorgegeven.
 
-   ![Abonnement en resource groep invoeren](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
+   ![Abonnement- en resourcegroep invoeren](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
 
-1. Geef de gebruikers naam en het wacht woord voor het besturings systeem op. Deze waarden zijn vereist om de implementatie te maken. Als u geen Power shell-Hulpprogram Ma's voor Visual Studio hebt geïnstalleerd, selecteert u **wacht woorden opslaan** om te voor komen dat een Power shell-opdracht prompt wordt verborgen of [Key Vault ondersteuning](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)te gebruiken. Selecteer **Opslaan** om door te gaan.
+1. Geef de gebruikersnaam en het wachtwoord voor het besturingssysteem op. Deze waarden zijn vereist om de implementatie te maken. Als PowerShell-hulpprogramma's voor Visual Studio niet zijn geïnstalleerd, selecteert u **Wachtwoorden opslaan** om een verborgen PowerShell-opdrachtprompt te voorkomen of gebruikt u [Key Vault-ondersteuning.](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/) Selecteer **Opslaan** om door te gaan.
 
-    ![Implementatie parameters bewerken](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
+    ![Implementatieparameters bewerken](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. Selecteer **implementeren**in **resource groep implementeren**. De actie voert het script **Deploy-AzureResourceGroup. ps1** uit. In het **uitvoer** venster wordt de voortgang van de implementatie weer gegeven.
+1. Selecteer Implementeren **in Deploy naar Resource Group** **.** Met de actie wordt het script **Deploy-AzureResourceGroup.ps1** uitgevoerd. In het venster **Uitvoer** wordt de voortgang van de implementatie weergegeven.
 
    ![Uitvoer toont resultaten](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## Uw Schaalset voor virtuele machines verkennen<a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>Ontdek uw virtuele machineschaalset<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Selecteer > **Cloud Verkenner** **weer geven** om de nieuwe schaalset voor virtuele machines weer te geven. Gebruik **Alles vernieuwen**, indien nodig.
+Selecteer Cloud Explorer **weergeven** > **Cloud Explorer** om de nieuwe virtuele machineschaalset weer te geven. Gebruik **Alles vernieuwen,** indien nodig.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 
-Met **Cloud Explorer** kunt u Azure-resources beheren in Visual Studio tijdens het ontwikkelen van toepassingen. U kunt de Schaalset voor virtuele machines ook weer geven in de [Azure Portal](https://portal.azure.com) en [Azure resource Explorer](https://resources.azure.com/).
+**Met Cloud Explorer** u Azure-resources beheren in Visual Studio tijdens het ontwikkelen van toepassingen. U uw virtuele machineschaalset ook bekijken in de [Azure-portal](https://portal.azure.com) en [Azure Resource Explorer.](https://resources.azure.com/)
 
- De portal biedt de beste manier om uw Azure-infra structuur te beheren met een webbrowser. Azure Resource Explorer biedt een eenvoudige manier om Azure-resources te verkennen en fouten op te sporen. Azure Resource Explorer biedt de instantie weergave en toont ook Power shell-opdrachten voor de resources die u bekijkt.
+ De portal biedt de beste manier om uw Azure-infrastructuur te beheren met een webbrowser. Azure Resource Explorer biedt een eenvoudige manier om Azure-bronnen te verkennen en te debuggen. Azure Resource Explorer biedt de instantieweergave en toont ook PowerShell-opdrachten voor de resources die u bekijkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra u Virtual Machine Scale Sets met Visual Studio hebt geïmplementeerd, kunt u uw project verder aanpassen aan de vereisten van uw toepassing. Configureer bijvoorbeeld automatisch schalen door een **Insights** -resource toe te voegen. U kunt een infra structuur toevoegen aan uw sjabloon, zoals zelfstandige virtuele machines, of toepassingen implementeren met behulp van de aangepaste script extensie. Goede voorbeeld sjablonen vindt u in de GitHub-opslag plaats van de [Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen. Zoeken naar `vmss`.
+Zodra u virtuele machineschaalsets met succes hebt geïmplementeerd via Visual Studio, u uw project verder aanpassen aan uw toepassingsvereisten. Configureer bijvoorbeeld automatisch schalen door een **Insights-bron** toe te voegen. U infrastructuur toevoegen aan uw sjabloon, zoals zelfstandige virtuele machines, of toepassingen implementeren met behulp van de aangepaste scriptextensie. Goede voorbeeldsjablonen zijn te vinden in de GitHub-opslagplaats [Azure Quickstart Templates.](https://github.com/Azure/azure-quickstart-templates) Zoeken naar `vmss`.

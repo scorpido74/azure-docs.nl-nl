@@ -1,6 +1,6 @@
 ---
-title: Gedelegeerde toegang in het virtuele bureau blad van Windows-Azure
-description: Beheer mogelijkheden delegeren voor een implementatie van Windows virtueel bureau blad, met inbegrip van voor beelden.
+title: Gedelegeerde toegang in Windows Virtual Desktop - Azure
+description: Beheerdersmogelijkheden delegeren op een Windows Virtual Desktop-implementatie, inclusief voorbeelden.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,62 +9,62 @@ ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128031"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Gedelegeerde toegang in Windows Virtual Desktop
 
-Het virtuele bureau blad van Windows beschikt over een gedelegeerd toegangs model waarmee u de hoeveelheid toegang kunt definiëren die een bepaalde gebruiker mag hebben door hen een rol toe te wijzen. Een roltoewijzing heeft drie onderdelen: beveiligingsprincipal, roldefinitie en bereik. Het Windows-model voor gedelegeerde toegang voor virtueel bureau blad is gebaseerd op het Azure RBAC-model. Voor meer informatie over specifieke roltoewijzingen en de bijbehorende onderdelen raadpleegt u [het overzicht van toegangs beheer op basis van rollen in azure](../role-based-access-control/built-in-roles.md).
+Windows Virtual Desktop heeft een gedelegeerd toegangsmodel waarmee u de hoeveelheid toegang definiëren die een bepaalde gebruiker mag hebben door deze een rol toe te kent. Een roltoewijzing bestaat uit drie componenten: beveiligingsprincipal, roldefinitie en bereik. Het gedelegeerde toegangsmodel voor Windows Virtual Desktop is gebaseerd op het Azure RBAC-model. Zie [het overzicht van azure-functiegebaseerde toegangscontrole](../role-based-access-control/built-in-roles.md)voor meer informatie over specifieke roltoewijzingen en hun componenten.
 
-Het Windows-bureau blad gedelegeerde toegang ondersteunt de volgende waarden voor elk element van de roltoewijzing:
+De gedelegeerde toegang voor Windows Virtual Desktop ondersteunt de volgende waarden voor elk element van de roltoewijzing:
 
 * Beveiligings-principal
     * Gebruikers
     * Service-principals
-* Roldefinitie
+* Roldefinitie ophalen
     * Ingebouwde rollen
 * Bereik
-    * Tenant groepen
+    * Tenantgroepen
     * Tenants
-    * Hostgroepen
+    * Zwembaden hosten
     * App-groepen
 
 ## <a name="built-in-roles"></a>Ingebouwde rollen
 
-Gedelegeerde toegang in het virtuele bureau blad van Windows heeft verschillende ingebouwde roldefinities die u kunt toewijzen aan gebruikers en service-principals.
+Gedelegeerde toegang in Windows Virtual Desktop heeft verschillende ingebouwde roldefinities die u aan gebruikers en serviceprincipals toewijzen.
 
-* Een RDS-eigenaar kan alles beheren, inclusief toegang tot resources.
-* Een RDS-Inzender kan alles beheren, maar ook toegang tot resources.
-* Een RDS-lezer kan alles weer geven, maar kan geen wijzigingen aanbrengen.
-* Een RDS-operator kan diagnostische activiteiten weer geven.
+* Een RDS-eigenaar kan alles beheren, inclusief toegang tot bronnen.
+* Een RDS-bijdrager kan alles beheren behalve toegang tot bronnen.
+* Een RDS Reader kan alles bekijken, maar kan geen wijzigingen aanbrengen.
+* Een RDS-operator kan diagnostische activiteiten bekijken.
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>Power shell-cmdlets voor roltoewijzingen
+## <a name="powershell-cmdlets-for-role-assignments"></a>PowerShell-cmdlets voor roltoewijzingen
 
-U kunt de volgende cmdlets uitvoeren om roltoewijzingen te maken, weer te geven en te verwijderen:
+U de volgende cmdlets uitvoeren om roltoewijzingen te maken, weer te geven en te verwijderen:
 
-* **Get-RdsRoleAssignment** toont een lijst met roltoewijzingen.
+* **Get-RdsRoleAssignment** geeft een lijst met roltoewijzingen weer.
 * **New-RdsRoleAssignment** maakt een nieuwe roltoewijzing.
-* **Met Remove-RdsRoleAssignment** worden roltoewijzingen verwijderd.
+* **Remove-RdsRoleAssignment** verwijdert roltoewijzingen.
 
-### <a name="accepted-parameters"></a>Geaccepteerde para meters
+### <a name="accepted-parameters"></a>Geaccepteerde parameters
 
-U kunt de Basic drie cmdlets met de volgende para meters wijzigen:
+U de drie basiscmdlets wijzigen met de volgende parameters:
 
-* **AadTenantId**: Hiermee geeft u de Azure Active Directory Tenant-id op waarvan de service-principal lid is.
-* **AppGroupName**: naam van de app-groep voor extern bureaublad.
-* **Diagnostische gegevens**: Hiermee wordt het bereik voor diagnostische gegevens aangegeven. (Moet worden gekoppeld aan ofwel de **infra structuur** -of **Tenant** parameters zijn.)
-* **HostPoolName**: de naam van de hostgroep extern bureaublad.
-* **Infra structuur**: geeft het bereik van de infra structuur aan.
-* **RoleDefinitionName**: extern bureaublad-services de naam van de op rollen gebaseerde toegangs beheer functie die is toegewezen aan de gebruiker, groep of app. (Bijvoorbeeld Extern bureaublad-services eigenaar, Extern bureaublad-services lezer, enzovoort.)
-* **ServerPrincipleName**: naam van de toepassing Azure Active Directory.
-* **SignInName**: het e-mail adres of de User Principal name van de gebruiker.
-* **Tenantnaam**: naam van de Extern bureaublad Tenant.
+* **AadTenantId:** geeft de Azure Active Directory-tenant-id op waarvan de serviceprincipal lid is.
+* **AppGroupName**: naam van de app-groep Extern bureaublad.
+* **Diagnostiek**: geeft de diagnostische scope aan. (Moet worden gekoppeld aan de **parameters Infrastructuur** of **Tenant.)**
+* **HostPoolName:** naam van de extern bureaublad-hostgroep.
+* **Infrastructuur**: geeft de infrastructuuromvang aan.
+* **RoleDefinitionName:** naam van de functiegebaseerde toegangscontrolerol op basis van extern bureaublad-services die is toegewezen aan de gebruiker, groep of app. (Bijvoorbeeld de eigenaar van Extern bureaublad-services, extern bureaublad-serviceslezer, enzovoort.)
+* **ServerPrincipleName:** naam van de Azure Active Directory-toepassing.
+* **SignInName:** het e-mailadres of de gebruikersnaam van de gebruiker.
+* **TenantName**: naam van de extern bureaublad-tenant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Power shell-referentie](/powershell/windows-virtual-desktop/overview)voor een volledige lijst met Power shell-cmdlets die elke rol kan gebruiken.
+Zie de [PowerShell-referentie](/powershell/windows-virtual-desktop/overview)voor een completere lijst met PowerShell-cmdlets die elke rol kan gebruiken.
 
-Zie voor richt lijnen voor het instellen van een virtuele Windows-desktop omgeving [Windows Virtual Desktop Environment](environment-setup.md)(Engelstalig).
+Zie [Windows Virtual Desktop-omgeving](environment-setup.md)voor richtlijnen voor het instellen van een Windows Virtual Desktop-omgeving.

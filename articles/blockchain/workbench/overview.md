@@ -1,19 +1,19 @@
 ---
-title: Overzicht van Azure Block Chain Workbench preview
-description: Overzicht van de preview-versie van Azure Block Chain Workbench en de mogelijkheden ervan.
+title: Overzicht van Azure Blockchain Workbench Preview
+description: Overzicht van Azure Blockchain Workbench Preview en de mogelijkheden.
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79203641"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Wat is Azure Blockchain Workbench?
 
-Azure Block Chain Workbench preview is een verzameling Azure-Services en-functies die zijn ontworpen om u te helpen bij het maken en implementeren van Block Chain-toepassingen voor het delen van bedrijfs processen en-gegevens met andere organisaties. Azure Blockchain Workbench biedt de infrastructuur-scaffolding voor het bouwen van blockchain-toepassingen, zodat ontwikkelaars zich kunnen richten op het maken van bedrijfslogica en slimme contracten. Met Blockchain Workbench wordt het ook eenvoudiger om blockchain-toepassingen te maken door verschillende Azure-services en -functies te integreren om zo algemene ontwikkeltaken te automatiseren.
+Azure Blockchain Workbench Preview is een verzameling Azure-services en -mogelijkheden die zijn ontworpen om u te helpen blockchain-toepassingen te maken en te implementeren om bedrijfsprocessen en gegevens te delen met andere organisaties. Azure Blockchain Workbench biedt de infrastructuur-scaffolding voor het bouwen van blockchain-toepassingen, zodat ontwikkelaars zich kunnen richten op het maken van bedrijfslogica en slimme contracten. Met Blockchain Workbench wordt het ook eenvoudiger om blockchain-toepassingen te maken door verschillende Azure-services en -functies te integreren om zo algemene ontwikkeltaken te automatiseren.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench biedt een webtoepassing en REST-API's voor het behere
 
 U kunt de REST-API's van Blockchain Workbench en API's op berichtbasis integreren met bestaande systemen. De API's bieden een interface die het mogelijk maakt om meerdere technologieën voor een gedistribueerd grootboek, opslag en databaseaanbiedingen te vervangen of gebruiken.
 
-Block Chain Workbench kan berichten die zijn verzonden naar de op berichten gebaseerde API transformeren om trans acties te bouwen in een indeling die wordt verwacht door de systeem eigen API van die Block chain.  Workbench kan transacties ondertekenen en naar de juiste blockchain routeren. 
+Blockchain Workbench kan berichten die naar de op berichten gebaseerde API worden verzonden transformeren om transacties te bouwen in een indeling die wordt verwacht door de native API van die blockchain.  Workbench kan transacties ondertekenen en naar de juiste blockchain routeren. 
 
 Gebeurtenissen worden door Workbench automatisch afgeleverd aan Service Bus en Event Grid om berichten te verzenden naar downstream-consumenten. Ontwikkelaars kunnen hun code integreren met een van deze berichtsystemen om transacties te faciliteren en de resultaten te bekijken.
 
@@ -43,19 +43,19 @@ Bij bestaande blockchain-protocollen worden blockchain-identiteiten voorgesteld 
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Gegevens in de blockchain synchroniseren met opslag buiten de blockchain
 
-Met Azure Blockchain Workbench is het eenvoudiger om blockchain-gebeurtenissen en -gegevens te analyseren doordat gegevens in de blockchain automatisch worden gesynchroniseerd naar opslag buiten de blockchain. In plaats van de gegevens rechtstreeks uit de blockchain te extraheren, kunt u query's uitvoeren op databasesystemen buiten de blockchain, zoals SQL Server. Block Chain-expertise is niet vereist voor eind gebruikers die taken voor gegevens analyse uitvoeren.
+Met Azure Blockchain Workbench is het eenvoudiger om blockchain-gebeurtenissen en -gegevens te analyseren doordat gegevens in de blockchain automatisch worden gesynchroniseerd naar opslag buiten de blockchain. In plaats van de gegevens rechtstreeks uit de blockchain te extraheren, kunt u query's uitvoeren op databasesystemen buiten de blockchain, zoals SQL Server. Blockchain-expertise is niet vereist voor eindgebruikers die data-analysetaken uitvoeren.
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 
-Voor Azure Block Chain News gaat u naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van Block Chain service aanbiedingen en informatie van het technische team van Azure Block chain.
+Ga voor Azure Blockchain-nieuws naar het [Azure Blockchain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van blockchain-serviceaanbiedingen en -informatie van het Azure Blockchain-engineeringteam.
 
-Als u productfeedback wilt geven of als u nieuwe functies wilt aanvragen, kunt u het beste stemmen voor een idee via het [Azure feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+Om productfeedback te geven of om nieuwe functies aan te vragen, u stemmen voor een idee via het [Azure-feedbackforum voor blockchain.](https://aka.ms/blockchainuservoice)
 
 ### <a name="community-support"></a>Ondersteuning voor community
 
-Neem contact op met micro soft-technici en Azure Block Chain community-experts.
+Neem contact op met Microsoft-technici en Azure Blockchain-community-experts.
 
-* [MSDN-forum voor Azure Block Chain](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

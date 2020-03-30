@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center voor IoT-vereisten | Microsoft Docs
-description: Meer informatie over alles wat u nodig hebt om aan de slag te gaan met Azure Security Center voor IoT-service vereisten.
+title: Azure Security Center voor IoT-vereisten| Microsoft Documenten
+description: Details van alles wat nodig is om aan de slag te gaan met azure security center voor IoT-servicevereisten.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,39 +16,39 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 4440fec98d1f561da6375bcaadba4282076cc53b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71299466"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center voor IoT-vereisten
 
-Dit artikel bevat een uitleg van de verschillende bouw stenen van de Azure Security Center voor IoT-service, wat u moet beginnen en legt de basis concepten uit om inzicht te krijgen in de service. 
+In dit artikel wordt uitgelegd wat de verschillende bouwstenen van de Azure Security Center for IoT-service, wat u moet beginnen, en worden de basisconcepten uitgelegd om de service te begrijpen. 
 
 ## <a name="minimum-requirements"></a>Minimale vereisten
 
-- IoT Hub Standard-laag
-    - Bevoegdheden van het niveau van de RBAC-rol **eigenaar** 
-- [Log Analytics Workspace](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
+- Standaardvoor IoT-hub
+    - RBAC-bevoegdheden op het niveau **van de eigenaar** 
+- [Werkruimte logboekanalyse](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 
 - Azure Security Center (aanbevolen)
-    - Het gebruik van Azure Security Center is een aanbeveling en geen vereiste. Zonder Azure Security Center kunt u uw andere Azure-resources niet weer geven binnen IoT Hub. 
+    - Het gebruik van Azure Security Center is een aanbeveling en geen vereiste. Zonder Azure Security Center u uw andere Azure-bronnen niet bekijken in IoT Hub. 
  
 ## <a name="working-with-azure-security-center-for-iot-service"></a>Werken met Azure Security Center voor IoT-service
 
-Azure Security Center voor IoT Insights en rapportage zijn beschikbaar via Azure IoT Hub en Azure Security Center. Om Azure Security Center voor IoT in te scha kelen op uw Azure IoT Hub, is een account met bevoegdheden op **eigenaars** niveau vereist. Nadat u ASC voor IoT hebt ingeschakeld in uw IoT Hub, worden Azure Security Center voor IoT Insights weer gegeven als de **beveiligings** functie in azure IOT hub en als **IOT** in azure Security Center. 
+Azure Security Center voor IoT-inzichten en -rapportage zijn beschikbaar met Azure IoT Hub en Azure Security Center. Om Azure Security Center for IoT in te schakelen op uw Azure IoT Hub, is een account met **eigenarenniveaubevoegdheden** vereist. Nadat ASC voor IoT is inschakelt in uw IoT-hub, wordt Azure Security Center for IoT-inzichten weergegeven als de **beveiligingsfunctie** in Azure IoT Hub en als **IoT** in Azure Security Center. 
 
-## <a name="supported-service-regions"></a>Ondersteunde service regio's 
+## <a name="supported-service-regions"></a>Ondersteunde serviceregio's 
 
-Azure Security Center voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regio's:
-  - US - centraal  
-  - East US 
-  - US - oost 2
-  - US - west-centraal
-  - US - west
+Azure Security Center for IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure-regio's:
+  - VS - centraal  
+  - VS - oost 
+  - VS - oost 2
+  - VS - west-centraal
+  - VS - west
   - VS - west 2
-  - VS Zuid-Centraal
-  - US - noord-centraal
+  - Centraal Vs-Zuid
+  - VS - noord-centraal
   - Canada - midden
   - Canada - oost 
   - Europa - noord    
@@ -69,23 +69,23 @@ Azure Security Center voor IoT wordt momenteel ondersteund voor IoT-hubs in de v
   - India - centraal
   - India - zuid
 
-Azure Security Center voor IoT routert al het verkeer van alle Europese regio's naar het Europa-west regionale Data Center en alle overige regio's naar het centrale regionale Data Center van de Verenigde Staten.  
+Azure Security Center for IoT leidt al het verkeer van alle Europese regio's naar het regionale datacenter in West-Europa en alle resterende regio's naar het regionale datacenter van de Centrale VS.  
   
 ## <a name="wheres-my-iot-hub"></a>Waar is mijn IoT Hub?
 
-Controleer de locatie van uw IoT Hub om de beschik baarheid van de service te controleren voordat u begint. 
+Controleer de locatie van uw IoT-hub om de beschikbaarheid van de service te verifiëren voordat u begint. 
 
-1. Open uw IoT Hub. 
+1. Open je IoT Hub. 
 2. Klik op **Overzicht**. 
-3. Controleer of de weer gegeven locatie overeenkomt met een van de [ondersteunde service regio's](#supported-service-regions). 
+3. Controleer of de vermelde locatie overeenkomt met een van de [ondersteunde serviceregio's](#supported-service-regions). 
 
 
-## <a name="supported-platforms-for-agents"></a>Ondersteunde platforms voor agents 
+## <a name="supported-platforms-for-agents"></a>Ondersteunde platforms voor agenten 
 
-Azure Security Center voor IoT-agents biedt ondersteuning voor een groeiende lijst met apparaten en platformen. Zie de [lijst met ondersteunde platforms](how-to-deploy-agent.md) om uw bestaande of geplande Apparaatbeheer te controleren.  
+Azure Security Center voor IoT-agents ondersteunt een groeiende lijst met apparaten en platforms. Bekijk de [lijst met ondersteunde platforms](how-to-deploy-agent.md) om uw bestaande of geplande apparaatbibliotheek te controleren.  
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees het [overzicht](overview.md) van Azure IOT Security
-- Meer informatie over [het inschakelen van de service](quickstart-onboard-iot-hub.md)
-- Lees de [Veelgestelde vragen over Azure Security Center voor IOT](resources-frequently-asked-questions.md)
-- Ontdek hoe u [Azure Security Center begrijpt voor IOT-waarschuwingen](concept-security-alerts.md)
+- Lees het [Azure](overview.md) IoT-beveiligingsoverzicht
+- Meer informatie over het [inschakelen van de service](quickstart-onboard-iot-hub.md)
+- Lees de [veelgestelde vragen over azure security center voor IoT](resources-frequently-asked-questions.md)
+- Ontdek hoe u [Azure Security Center voor IoT-waarschuwingen begrijpen](concept-security-alerts.md)

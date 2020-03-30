@@ -1,67 +1,67 @@
 ---
-title: Advanced Threat Protection-Azure Portal-Azure Database for MySQL
-description: Meer informatie over het configureren van geavanceerde beveiliging tegen bedreigingen voor het detecteren van afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
+title: Geavanceerde bedreigingsbeveiliging - Azure-portal - Azure-database voor MySQL
+description: Meer informatie over het configureren van Advanced Threat Protection om afwijkende databaseactiviteiten te detecteren die potentiële beveiligingsbedreigingen voor de database aangeven.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 11ac05c710f7daf709ffbc29aebff706aea704d5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8eec40006a280b69387e14a5841360da65616ca5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062343"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
+# <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Geavanceerde bedreigingsbeveiliging voor Azure-database voor MySQL
 
 Advanced Threat Protection for Azure Database for MySQL detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot databases of om deze aan te vallen.
 
-Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbieding, een uniform pakket voor geavanceerde beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de [Azure Portal](https://portal.azure.com) en is momenteel beschikbaar als preview-versie.
+Advanced Threat Protection maakt deel uit van het Advanced Data Security-aanbod, een uniform pakket voor geavanceerde beveiligingsmogelijkheden. Advanced Threat Protection kan worden benaderd en beheerd via de [Azure-portal](https://portal.azure.com) en is momenteel in preview.
 
 > [!NOTE]
-> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US gov-Iowa, VS, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-Oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
+> De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure-overheids- en soevereine cloudregio's: US Gov Texas, US Gov Arizona, US Gov Iowa, US, Gov Virginia, US DoD East, US DoD Central, Germany Central, Germany North, China East, China East 2. Ga naar [producten die per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/) voor algemene beschikbaarheid van producten.
 >
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for MySQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
+> Deze functie is beschikbaar in alle regio's van Azure waar Azure Database voor MySQL is geïmplementeerd voor servers voor algemeen gebruik en geheugengeoptimaliseerd.
 
-## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
-2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)** .
-3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
+## <a name="set-up-threat-detection"></a>Bedreigingsdetectie instellen
+1. Start de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
+2. Navigeer naar de configuratiepagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer **geavanceerde bedreigingsbeveiliging (voorbeeld) in**de beveiligingsinstellingen .
+3. Ga als een voorbeeld van de configuratie van **Advanced Threat Protection (Preview):**
 
-   - Geavanceerde beveiliging tegen bedreigingen inschakelen op de-server.
-   - Geef in het tekstvak **waarschuwingen verzenden naar** een lijst met e-mail berichten op voor het ontvangen van beveiligings waarschuwingen bij de detectie van afwijkende database activiteiten in de **instellingen voor geavanceerde beveiliging tegen bedreigingen**.
+   - Geavanceerde bedreigingsbeveiliging inschakelen op de server.
+   - Geef in **Geavanceerde instellingen voor bedreigingsbeveiliging**in het vak **Waarschuwingen verzenden naar** tekst de lijst met e-mails om beveiligingswaarschuwingen te ontvangen bij detectie van afwijkende databaseactiviteiten.
   
-   ![Detectie van bedreigingen instellen](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   ![Bedreigingsdetectie instellen](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Afwijkende database activiteiten verkennen
+## <a name="explore-anomalous-database-activities"></a>Ontdek afwijkende databaseactiviteiten
 
-U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden gedetecteerd. Het e-mail bericht bevat informatie over de verdachte beveiligings gebeurtenis, inclusief de aard van de afwijkende activiteiten, de database naam, de server naam, de toepassings naam en de tijd van de gebeurtenis. Daarnaast bevat het e-mail bericht informatie over mogelijke oorzaken en aanbevolen acties voor het onderzoeken en oplossen van de mogelijke bedreiging voor de data base.
+U ontvangt een e-mailmelding bij detectie van afwijkende databaseactiviteiten. De e-mail bevat informatie over de verdachte beveiligingsgebeurtenis, inclusief de aard van de afwijkende activiteiten, de naam van de database, de naam van de server, de naam van de toepassing en de gebeurtenistijd. Bovendien biedt de e-mail informatie over mogelijke oorzaken en aanbevolen acties om de potentiële bedreiging voor de database te onderzoeken en te beperken.
  
-1. Klik op de koppeling **recente waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
+1. Klik op de koppeling **Recente waarschuwingen weergeven** in de e-mail om de Azure-portal te starten en de pagina Waarschuwingen van azure Security Center weer te geven, die een overzicht biedt van actieve bedreigingen die zijn gedetecteerd in de SQL-database.
     
-    ![Rapport afwijkende activiteiten](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    ![Afwijkend activiteitenrapport](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
-    Actieve bedreigingen weer geven:
+    Actieve bedreigingen weergeven:
 
     ![Actieve bedreigingen](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
+2. Klik op een specifieke waarschuwing om aanvullende details en acties te krijgen voor het onderzoeken van deze bedreiging en het herstellen van toekomstige bedreigingen.
     
     ![Specifieke waarschuwing](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor detectie van dreigingen verkennen
+## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor bedreigingsdetectie verkennen
 
-SQL Database detectie van bedreigingen integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). Een live SQL Threat-detectie tegel houdt de status van actieve bedreigingen bij op de data base en de SQL-ATP-pagina's in de Azure Portal.
+SQL Database Threat Detection integreert de waarschuwingen met [Azure Security Center.](https://azure.microsoft.com/services/security-center/) Een live SQL-detectietegel volgt de status van actieve bedreigingen op de database en SQL ATP-pagina's in de Azure-portal.
 
-Klik op **waarschuwing bedreigingen detectie** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
+Klik **op Waarschuwing voor bedreigingsdetectie** om de pagina Waarschuwingen van azure security center te starten en een overzicht te krijgen van actieve SQL-bedreigingen die in de database worden gedetecteerd.
 
-   ![Waarschuwing voor detectie van bedreigingen](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+   ![Waarschuwing voor bedreigingsdetectie](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Zie de [pagina met prijzen voor Azure database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) voor meer informatie over prijzen.  
+* Zie de pagina Azure [Database for MySQL-prijzen voor](https://azure.microsoft.com/pricing/details/mysql/) meer informatie over prijzen  

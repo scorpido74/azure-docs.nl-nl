@@ -1,59 +1,59 @@
 ---
-title: PowerShell gebruiken om te maken en configureren van een Log Analytics-werkruimte | Microsoft Docs
-description: Log Analytics werk ruimten in Azure Monitor gegevens opslaan van servers in uw on-premises of Cloud infrastructuur. U kunt gegevens van de machine verzamelen uit Azure storage wanneer die worden gegenereerd door Azure diagnostics.
+title: Logboekanalyses & configureren met PowerShell
+description: Log Analytics-werkruimten in Azure Monitor slaan gegevens op van servers in uw on-premises of cloudinfrastructuur. U machinegegevens uit Azure-opslag verzamelen wanneer u wordt gegenereerd door Azure-diagnose.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054698"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics werk ruimte beheren in Azure Monitor met behulp van Power shell
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Logboekanalysewerkruimte beheren in Azure Monitor met PowerShell
 
-U kunt de [log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) gebruiken om verschillende functies uit te voeren op een log Analytics werk ruimte in azure monitor vanaf een opdracht regel of als onderdeel van een script.  Voorbeelden van de taken die u met PowerShell uitvoeren kunt zijn:
+U de [PowerShell-cmdlets log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) gebruiken om verschillende functies uit te voeren op een Log Analytics-werkruimte in Azure Monitor vanuit een opdrachtregel of als onderdeel van een script.  Voorbeelden van de taken die u met PowerShell uitvoeren, zijn:
 
 * Een werkruimte maken
-* Toevoegen of verwijderen van een oplossing
-* Importeren en exporteren van opgeslagen zoekopdrachten
+* Een oplossing toevoegen of verwijderen
+* Opgeslagen zoekopdrachten importeren en exporteren
 * Een computergroep maken
-* Verzamelen van IIS-logboeken van computers met de Windows-agent is geïnstalleerd
-* Verzamelen van prestatiemeteritems van Linux en Windows-computers
+* Verzameling van IIS-logboeken inschakelen vanaf computers waarop de Windows-agent is geïnstalleerd
+* Prestatiemeteritems verzamelen van Linux- en Windows-computers
 * Gebeurtenissen verzamelen van syslog op Linux-computers
-* Gebeurtenissen verzamelen van Windows-gebeurtenislogboeken
-* Aangepaste logboeken verzamelen
-* De log analytics-agent toevoegen aan een virtuele machine van Azure
-* Log analytics om gegevens te indexeren die zijn verzameld met behulp van Azure diagnostics configureren
+* Gebeurtenissen verzamelen uit Logboeken van Windows-gebeurtenissen
+* Aangepaste gebeurtenislogboeken verzamelen
+* De logboekanalyseagent toevoegen aan een virtuele Azure-machine
+* Logboekanalyses configureren om gegevens te indexeren die zijn verzameld met Azure-diagnose
 
-In dit artikel bevat twee codevoorbeelden van die illustratie van enkele van de functies die u vanuit PowerShell uitvoeren kunt.  U kunt verwijzen naar de [log Analytics Power shell-cmdlet-verwijzing](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
+In dit artikel worden twee codevoorbeelden gegeven die een aantal functies illustreren die u vanuit PowerShell uitvoeren.  U verwijzen naar de [cmdlet-verwijzing log analytics PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
 
 > [!NOTE]
-> Log Analytics werd voorheen Operational Insights, die daarom is het de naam die wordt gebruikt in de cmdlets genoemd.
+> Log Analytics heette voorheen Operational Insights, daarom is het de naam die in de cmdlets wordt gebruikt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Deze voor beelden werken met versie 1.0.0 of hoger van de module AZ. OperationalInsights.
+Deze voorbeelden werken met versie 1.0.0 of hoger van de az.operationalinsights module.
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Maken en configureren van een Log Analytics-werkruimte
-Het volgende voorbeeldscript laat zien hoe u:
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Een logboekanalysewerkruimte maken en configureren
+In het volgende scriptvoorbeeld wordt uitgelegd hoe u:
 
 1. Een werkruimte maken
-2. Lijst van de beschikbare oplossingen
+2. De beschikbare oplossingen weergeven
 3. Oplossingen toevoegen aan de werkruimte
-4. Importeren opgeslagen zoekopdrachten
-5. Export opgeslagen zoekopdrachten
+4. Opgeslagen zoekopdrachten importeren
+5. Opgeslagen zoekopdrachten exporteren
 6. Een computergroep maken
-7. Verzamelen van IIS-logboeken van computers met de Windows-agent is geïnstalleerd
-8. Verzamelen van prestatiemeteritems voor logische schijf van Linux-computers (% gebruikte Inodes Beschikbare Megabytes; Percentage gebruikte ruimte; Schijfoverdrachten per seconde; Schijf lezen per seconde; Schijf schrijven per seconde)
-9. Syslog-gebeurtenissen verzamelen van Linux-computers
-10. Fout- en waarschuwingsberichten gebeurtenissen verzamelen van het logboek voor toepassingsgebeurtenissen van Windows-computers
-11. Beschikbaar geheugen in megabytes-prestatiemeteritem verzamelen van Windows-computers
+7. Verzameling van IIS-logboeken inschakelen vanaf computers waarop de Windows-agent is geïnstalleerd
+8. Logische schijfperftellers verzamelen van Linux-computers (% Gebruikte Inodes; Gratis Megabytes; % gebruikte ruimte; Schijfoverdrachten per seconde; Schijfleest/sec; Schijfschrijft/sec)
+9. Syslog-gebeurtenissen verzamelen vanaf Linux-computers
+10. Fout- en waarschuwingsgebeurtenissen verzamelen in het logboek van toepassingsgebeurtenis van Windows-computers
+11. Beschikbare Mbytes-prestatiemeter items verzamelen vanaf Windows-computers
 12. Een aangepast logboek verzamelen
 
 ```powershell
@@ -158,7 +158,7 @@ New-AzOperationalInsightsComputerGroup -ResourceGroupName $ResourceGroup -Worksp
 Enable-AzOperationalInsightsIISLogCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Perf
-New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -ObjectName "Logical Disk" -InstanceName "*"  -CounterNames @("% Used Inodes", "Free Megabytes", "% Used Space", "Disk Transfers/sec", "Disk Reads/sec", "Disk Writes/sec") -IntervalSeconds 20  -Name "Example Linux Disk Performance Counters"
 Enable-AzOperationalInsightsLinuxPerformanceCollection -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName
 
 # Linux Syslog
@@ -178,11 +178,11 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> De notatie voor de **CustomLogRawJson** -para meter waarmee de configuratie voor een aangepast logboek wordt gedefinieerd, kan ingewikkeld zijn. Gebruik [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) om de configuratie van een bestaand aangepast logboek op te halen. De eigenschap **Properties** is de configuratie die vereist is voor de para meter **CustomLogRawJson** .
+> De indeling voor de parameter **CustomLogRawJson** die de configuratie voor een aangepast logboek definieert, kan complex zijn. Gebruik [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) om de configuratie voor een bestaand aangepast logboek op te halen. De eigenschap **Eigenschappen** is de configuratie die nodig is voor de parameter **CustomLogRawJson.**
 
-In het bovenstaande voor beeld is regexDelimiter gedefinieerd als '\\n ' voor een nieuwe regel. Het logboek scheidings teken kan ook een tijds tempel zijn.  Dit zijn de ondersteunde indelingen:
+In het bovenstaande voorbeeld regexDelimiter\\werd gedefinieerd als " n" voor newline. De logscheidingsscheiding kan ook een tijdstempel zijn.  Dit zijn de ondersteunde indelingen:
 
-| Indeling | JSON RegEx-indeling gebruikt twee \\ voor elke \ in een standaard-RegEx, zodat de test in een RegEx-app \\ naar \ reduceert. | | |
+| Indeling | Json RegEx formaat \\ maakt gebruik van twee voor elke \ in \\ een standaard RegEx dus als het testen in een RegEx app te verminderen tot \ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -193,20 +193,20 @@ In het bovenstaande voor beeld is regexDelimiter gedefinieerd als '\\n ' voor ee
 | `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s?([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0-1]?[0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])` | | |
 | `MMM  d HH:mm:ss` <br> twee spaties na MMM | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
 | `MMM d HH:mm:ss` | `(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s([0]?[1-9]|[1-2][0-9]|[3][0-1])\\s([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])` | | |
-| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> waar + + of a- <br> zzzz tijd verschuiving | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> waar + + of a - <br> waar zzzz tijd offset | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> De T is een letterlijke letter T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Log Analytics configureren voor het verzenden van Azure Diagnostics
-Voor bewaking zonder agent van Azure-resources, moeten de resources hebben van Azure diagnostics ingeschakeld en geconfigureerd voor het schrijven naar Log Analytics-werkruimte. Deze benadering verzendt gegevens rechtstreeks naar de werk ruimte en vereist niet dat gegevens naar een opslag account worden geschreven. Ondersteunde resources zijn onder andere:
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Logboekanalyse configureren om Azure-diagnose te verzenden
+Voor agentless monitoring van Azure-resources moeten de resources Azure-diagnose hebben ingeschakeld en geconfigureerd om naar een Log Analytics-werkruimte te schrijven. Deze aanpak stuurt gegevens rechtstreeks naar de werkruimte en vereist niet dat gegevens naar een opslagaccount worden geschreven. Ondersteunde bronnen zijn onder andere:
 
 | Resourcetype | Logboeken | Metrische gegevens |
 | --- | --- | --- |
 | Toepassingsgateways    | Ja | Ja |
 | Automation-accounts     | Ja | |
 | Batch-accounts          | Ja | Ja |
-| Data Lake analytics     | Ja | |
-| Data Lake store         | Ja | |
-| Elastische SQL-groep        |     | Ja |
+| Data Lake-analyses     | Ja | |
+| Data Lake-winkel         | Ja | |
+| Elastische SQL-pool        |     | Ja |
 | Event hub-naamruimte     |     | Ja |
 | IoT Hubs                |     | Ja |
 | Key Vault               | Ja | |
@@ -214,15 +214,15 @@ Voor bewaking zonder agent van Azure-resources, moeten de resources hebben van A
 | Logic Apps              | Ja | Ja |
 | Netwerkbeveiligingsgroepen | Ja | |
 | Azure Cache voor Redis             |     | Ja |
-| Services zoeken         | Ja | Ja |
-| Service Bus-naamruimte   |     | Ja |
+| Zoekservices         | Ja | Ja |
+| Naamruimte servicebus   |     | Ja |
 | SQL (v12)               |     | Ja |
 | Websites               |     | Ja |
-| Web Server-farms        |     | Ja |
+| Webserverfarms        |     | Ja |
 
-Raadpleeg voor meer informatie over de beschik bare metrische gegevens de [ondersteunde metrische gegevens met Azure monitor](../../azure-monitor/platform/metrics-supported.md).
+Raadpleeg voor de details van de beschikbare statistieken [ondersteunde statistieken met Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
-Raadpleeg voor meer informatie over de beschik bare logboeken [ondersteunde services en schema's voor bron logboeken](../../azure-monitor/platform/diagnostic-logs-schema.md).
+Raadpleeg voor de details van de beschikbare logboeken [ondersteunde services en schema voor bronlogboeken](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -232,21 +232,21 @@ $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/D
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-U kunt ook de voorgaande cmdlet gebruiken om Logboeken te verzamelen uit resources die zich in verschillende abonnementen. De cmdlet kan worden gebruikt voor verschillende abonnementen, omdat u de ID opgeeft van zowel de resource waarmee logboeken worden gemaakt als de werk ruimte waarnaar de logboeken worden verzonden.
+U de vorige cmdlet ook gebruiken om logboeken te verzamelen van bronnen die zich in verschillende abonnementen bevinden. De cmdlet kan werken tussen abonnementen, omdat u de id van zowel de bronlogboeken als de werkruimte waarnaar de logboeken worden verzonden, verstrekt.
 
 
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Log Analytics werkruimte configureren voor het verzamelen van Azure-diagnose van opslag
-Voor het verzamelen van logboekgegevens van binnen een actief exemplaar van een klassieke cloudservice of een service fabric-cluster, moet u eerst de gegevens schrijven naar Azure storage. Er wordt dan een Log Analytics-werk ruimte geconfigureerd voor het verzamelen van de logboeken van het opslag account. Ondersteunde resources zijn onder andere:
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Logboekanalysewerkruimte configureren om Azure-diagnoses uit de opslag te verzamelen
+Als u logboekgegevens wilt verzamelen vanuit een lopende instantie van een klassieke cloudservice of een cluster van servicefabric, moet u de gegevens eerst naar Azure-opslag schrijven. Een werkruimte loganalytics wordt vervolgens geconfigureerd om de logboeken van het opslagaccount te verzamelen. Ondersteunde bronnen zijn onder andere:
 
-* Klassieke cloudservices (web- en werkrollen rollen)
-* Service fabric-clusters
+* Klassieke cloudservices (web- en werknemersrollen)
+* Clusters van servicefabric
 
-Het volgende voorbeeld wordt getoond hoe u:
+In het volgende voorbeeld ziet u hoe u:
 
-1. Geef een lijst van de bestaande opslag accounts en locaties waarvan de werk ruimte index gegevens bevat
-2. Een configuratie lezen van een storage-account maken
-3. Werk de zojuist gemaakte configuratie om gegevens te indexeren vanaf meer locaties
-4. De zojuist gemaakte configuratie verwijderen
+1. De bestaande opslagaccounts en -locaties weergeven waarvan de werkruimte gegevens indexeert
+2. Een configuratie maken om te lezen vanuit een opslagaccount
+3. De nieuw gemaakte configuratie bijwerken om gegevens van extra locaties te indexeren
+4. De nieuw gemaakte configuratie verwijderen
 
 ```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
@@ -270,9 +270,9 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 ```
 
-U kunt dit script ook gebruiken voor het verzamelen van Logboeken van de storage-accounts in verschillende abonnementen. Het script kan worden gebruikt voor verschillende abonnementen sinds u de resource-ID van het opslag account en een bijbehorende toegangs sleutel opgeeft. Wanneer u de toegangssleutel wijzigt, moet u het opslaginzicht als u de nieuwe sleutel wilt bijwerken.
+U het vorige script ook gebruiken om logboeken van opslagaccounts in verschillende abonnementen te verzamelen. Het script kan werken tussen abonnementen, omdat u de bron-id voor opslagaccount en een bijbehorende toegangssleutel verstrekt. Wanneer u de toegangssleutel wijzigt, moet u het opslaginzicht bijwerken om de nieuwe sleutel te hebben.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Raadpleeg log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van Power shell voor configuratie van log Analytics.
+* [Bekijk de PowerShell-cmdlets van Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van PowerShell voor de configuratie van Log Analytics.
 

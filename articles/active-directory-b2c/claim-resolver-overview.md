@@ -1,30 +1,30 @@
 ---
-title: Claim resolvers in aangepast beleid
+title: Claimresolvers in aangepast beleid
 titleSuffix: Azure AD B2C
-description: Meer informatie over het gebruik van claim resolvers in een aangepast beleid in Azure Active Directory B2C.
+description: Meer informatie over het gebruik van claimresolvers in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051412"
 ---
-# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
+# <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informatie over claimresolvers in het aangepaste Azure Directory B2C-beleid
 
-Claim resolvers in Azure Active Directory B2C (Azure AD B2C) [aangepaste beleids regels](custom-policy-overview.md) bieden context informatie over een autorisatie aanvraag, zoals de beleids naam, de correlatie-id van de aanvraag, de taal van de gebruikers interface en nog veel meer.
+Aangepaste oplossingen voor claimresolvers in azure Active Directory [custom policies](custom-policy-overview.md) B2C (Azure AD B2C) bieden contextinformatie over een autorisatieaanvraag, zoals de beleidsnaam, de correlatie-id van de aanvraag, de taal van de gebruikersinterface en meer.
 
-Als u een claim resolver wilt gebruiken in een invoer-of uitvoer claim, definieert u een teken reeks **claim**type onder het element [ClaimsSchema](claimsschema.md) en stelt u de **DefaultValue** in op de claim resolver in het element input of output claim. Azure AD B2C leest de waarde van de claim resolver en gebruikt de waarde in het technische profiel.
+Als u een claimresolver wilt gebruiken in een invoer- of uitvoerclaim, definieert u een tekenreeks **ClaimType**onder het element [ClaimSchema](claimsschema.md) en stelt u de **standaardwaarde** in op de claimresolver in het element invoer- of uitvoerclaim. Azure AD B2C leest de waarde van de claimresolver en gebruikt de waarde in het technische profiel.
 
-In het volgende voor beeld wordt een claim type met de naam `correlationId` gedefinieerd met het **gegevens type** `string`.
+In het volgende voorbeeld wordt `correlationId` een claimtype met `string`de naam gedefinieerd met een **DataType** van .
 
 ```XML
 <ClaimType Id="correlationId">
@@ -34,118 +34,120 @@ In het volgende voor beeld wordt een claim type met de naam `correlationId` gede
 </ClaimType>
 ```
 
-Wijs in het technische profiel de claim resolver toe aan het claim type. Azure AD B2C vult de waarde van de claim resolver `{Context:CorrelationId}` in de claim `correlationId` en verzendt de claim naar het technische profiel.
+Breng in het technische profiel de claimresolver in kaart met het claimtype. Azure AD B2C vult de waarde `{Context:CorrelationId}` van de `correlationId` claimresolver in de claim en stuurt de claim naar het technische profiel.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
-## <a name="claim-resolver-types"></a>Typen claim conflicten
+## <a name="claim-resolver-types"></a>Typen claimresolver
 
-De volgende secties bevatten een lijst met beschik bare claim resolvers.
+In de volgende secties worden beschikbare claimresolvers vermeld.
 
-### <a name="culture"></a>Culture
+### <a name="culture"></a>Cultuur
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | nl |
-| {Culture: LCID}   | De LCID van de taal code. | 1033 |
-| {Culture: regionaam} | De ISO-code van twee tekens voor de regio. | VS |
-| {Culture: RFC5646} | De RFC5646-taal code. | nl-NL |
+| {Cultuur:LanguageName} | De twee letter ISO-code voor de taal. | nl |
+| {Cultuur:LCID}   | De LCID van taalcode. | 1043 |
+| {Cultuur:RegioNaam} | De tweeletterig ISO-code voor de regio. | VS |
+| {Cultuur:RFC5646} | De RFC5646 taalcode. | nl-NL |
 
 ### <a name="policy"></a>Beleid
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Beleid: PolicyId} | De naam van het Relying Party-beleid. | B2C_1A_signup_signin |
-| {Policy:RelyingPartyTenantId} | De Tenant-ID van het Relying Party-beleid. | your-tenant.onmicrosoft.com |
-| {Policy:TenantObjectId} | De Tenant-object-ID van het Relying Party-beleid. | 00000000-0000-0000-0000-000000000000 |
-| {Policy:TrustFrameworkTenantId} | De Tenant-ID van het vertrouwens raamwerk. | your-tenant.onmicrosoft.com |
+| {Beleid:PolicyId} | De naam van het relying party-beleid. | B2C_1A_signup_signin |
+| {Beleid:RelyingPartyTenantId} | De tenant-ID van het beleid van de relying party. | your-tenant.onmicrosoft.com |
+| {Beleid:TenantObjectId} | De tenantobject-id van het beleid van de relying party. | 00000000-0000-0000-0000-000000000000 |
+| {Beleid:TrustFrameworkTenantId} | De tenant-id van het vertrouwenskader. | your-tenant.onmicrosoft.com |
 
 ### <a name="openid-connect"></a>OpenID Connect
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |De query reeks parameter `acr_values`. | N.v.t. |
-| {OIDC: ClientId} |De query reeks parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |De query reeks parameter `domain_hint`. | facebook.com |
-| {OIDC: LoginHint} |  De query reeks parameter `login_hint`. | someone@contoso.com |
-| {OIDC: MaxAge} | Het `max_age`. | N.v.t. |
-| {OIDC: nonce} |De query reeks parameter `Nonce`. | defaultNonce |
-| {OIDC: prompt} | De query reeks parameter `prompt`. | aanmelding |
-| {OIDC: resource} |De query reeks parameter `resource`. | N.v.t. |
-| {OIDC: bereik} |De query reeks parameter `scope`. | OpenID Connect |
-| {OIDC: RedirectUri} |De query reeks parameter `redirect_uri`. | https://jwt.ms |
+| {OIDC:AuthenticationContextReferences} |De `acr_values` parameter querytekenreeks. | N.v.t. |
+| {OIDC:ClientId} |De `client_id` parameter querytekenreeks. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC:DomainHint} |De `domain_hint` parameter querytekenreeks. | facebook.com |
+| {OIDC:LoginHint} |  De `login_hint` parameter querytekenreeks. | someone@contoso.com |
+| {OIDC:MaxAge} | De `max_age`. | N.v.t. |
+| {OIDC:Nonce} |De `Nonce` parameter querytekenreeks. | standaardNonce |
+| {OIDC:Wachtwoord}| Het wachtwoordreferenties van de [broneigenaar stromen door](ropc-custom.md) het wachtwoord van de gebruiker.| wachtwoord1| 
+| {OIDC:Prompt} | De `prompt` parameter querytekenreeks. | aanmelding |
+| {OIDC:RedirectUri} |De `redirect_uri` parameter querytekenreeks. | https://jwt.ms |
+| {OIDC:Resource} |De `resource` parameter querytekenreeks. | N.v.t. |
+| {OIDC:scope} |De `scope` parameter querytekenreeks. | Openid |
+| {OIDC:Gebruikersnaam}| De wachtwoordreferenties van de [broneigenaar stromen door](ropc-custom.md) de gebruikersnaam van de gebruiker.| emily@contoso.com| 
 
 ### <a name="context"></a>Context
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Context: BuildNumber} | De Framework-versie van de identiteits ervaring (build-nummer).  | 1.0.507.0 |
+| {Context:BuildNumber} | De Identity Experience Framework-versie (buildnummer).  | 1.0.507.0 |
 | {Context:CorrelationId} | De correlatie-ID.  | 00000000-0000-0000-0000-000000000000 |
-| {Context:DateTimeInUtc} |De datum en tijd in UTC.  | 10/10/2018 12:00:00 UUR |
-| {Context:DeploymentMode} |De implementatie modus voor beleid.  | Productie |
+| {Context:DateTimeinutc} |De datumtijd in UTC.  | 10-10-2018 12:00:00 uur |
+| {Context:DeploymentMode} |De beleidsimplementatiemodus.  | Productie |
 | {Context:IPAddress} | Het IP-adres van de gebruiker. | 11.111.111.11 |
-| {Context: KMSI} | Hiermee wordt aangegeven of het selectie vakje [aangemeld blijven](custom-policy-keep-me-signed-in.md) is geselecteerd. |  true |
+| {Context:KMSI} | Hiermee geeft u aan [of Houd me aangemeld,](custom-policy-keep-me-signed-in.md) is ingeschakeld. |  waar |
 
-### <a name="non-protocol-parameters"></a>Niet-protocol parameters
+### <a name="non-protocol-parameters"></a>Niet-protocolparameters
 
-Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikers traject. De aanvraag van de toepassing kan bijvoorbeeld een query teken reeks parameter bevatten met de naam `app_session`, `loyalty_number`of een aangepaste query teken reeks.
+Elke parameternaam die is opgenomen als onderdeel van een OIDC- of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikersreis. De aanvraag van de toepassing kan bijvoorbeeld een querytekenreeksparameter bevatten met een naam van `app_session`, `loyalty_number`of een aangepaste querytekenreeks.
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Een query reeks parameter. | Hawaï |
-| {OAUTH-KV: app_session} | Een query reeks parameter. | A3C5R |
-| {OAUTH-KV: loyalty_number} | Een query reeks parameter. | 1234 |
-| {OAUTH-KV: elke aangepaste query reeks} | Een query reeks parameter. | N.v.t. |
+| {OAUTH-KV:campaignId} | Een parameter querytekenreeks. | Hawaii |
+| {OAUTH-KV:app_session} | Een parameter querytekenreeks. | A3C5R |
+| {OAUTH-KV:loyalty_number} | Een parameter querytekenreeks. | 1234 |
+| {OAUTH-KV:elke aangepaste querytekenreeks} | Een parameter querytekenreeks. | N.v.t. |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Het toegangs token. | N.v.t. |
+| {oauth2:access_token} | Het toegangstoken. | N.v.t. |
 
 
 ### <a name="saml"></a>SAML
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {SAML: AuthnContextClassReferences} | De waarde van het `AuthnContextClassRef` element, van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 2.0: AC: klassen: PasswordProtectedTransport |
-| {SAML: NameIdPolicyFormat} | Het kenmerk `Format` van het `NameIDPolicy` element van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress |
-| {SAML: verlener} |  De waarde van het SAML-`Issuer` element van de SAML-aanvraag.| https://contoso.com |
-| {SAML: AllowCreate} | De waarde van het `AllowCreate` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | True |
-| {SAML: ForceAuthn} | De waarde van het `ForceAuthN` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag. | True |
-| {SAML: ProviderName} | De waarde van het `ProviderName` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
+| {SAML:AuthnContextClassReferences} | De `AuthnContextClassRef` elementwaarde, van de SAML-aanvraag. | urn:oase:namen:tc:SAML:2.0:ac:klassen:PasswordProtectedTransport |
+| {SAML:NameIdPolicyFormat} | Het `Format` kenmerk, `NameIDPolicy` van het element van de SAML-aanvraag. | urn:oase:namen:tc:SAML:1.1:nameid-formaat:emailAddress |
+| {SAML:Uitgever} |  De SAML-elementwaarde `Issuer` van de SAML-aanvraag.| `https://contoso.com` |
+| {SAML:Create toestaan} | De `AllowCreate` kenmerkwaarde, `NameIDPolicy` van het element van de SAML-aanvraag. | True |
+| {SAML:ForceAuthn} | De `ForceAuthN` kenmerkwaarde, `AuthnRequest` van het element van de SAML-aanvraag. | True |
+| {SAML:ProviderName} | De `ProviderName` kenmerkwaarde, `AuthnRequest` van het element van de SAML-aanvraag.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken
+## <a name="using-claim-resolvers"></a>Claimresolvers gebruiken
 
-U kunt claim resolvers gebruiken met de volgende elementen:
+U claimresolvers gebruiken met de volgende elementen:
 
 | Item | Element | Instellingen |
 | ----- | ----------------------- | --------|
 |Technisch profiel Application Insights |`InputClaim` | |
-|Technisch profiel [Azure Active Directory](active-directory-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
-|Technisch profiel voor [OAuth2](oauth2-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
-|[OpenID Connect Connect](openid-connect-technical-profile.md) technische profiel| `InputClaim`, `OutputClaim`| 1, 2|
-|Technisch profiel voor [trans formatie van claims](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
-|Technisch profiel van de [Rest-provider](restful-technical-profile.md)| `InputClaim`| 1, 2|
-|Technisch profiel voor [SAML2](saml-technical-profile.md)| `OutputClaim`| 1, 2|
-|Een [zelf-bevestigd](self-asserted-technical-profile.md) technisch profiel| `InputClaim`, `OutputClaim`| 1, 2|
-|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[Technisch azure Directory](active-directory-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) technisch profiel| `InputClaim`, `OutputClaim`| 1, 2|
+|Technisch profiel [van OpenID Connect](openid-connect-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[Technische profiel van claimtransformatie](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful provider](restful-technical-profile.md) technisch profiel| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md) technisch profiel| `OutputClaim`| 1, 2|
+|[Zelf-beweerde](self-asserted-technical-profile.md) technisch profiel| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinitie](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
-|Technisch profiel voor [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
+|Het technische profiel [van RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
 Instellingen:
-1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true`.
-1. Het kenmerk voor de invoer-of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true`.
+1. De `IncludeClaimResolvingInClaimsHandling` metagegevens `true`moeten worden ingesteld op .
+1. Het kenmerk `AlwaysUseDefaultValue` invoer- of uitvoerclaims moet worden ingesteld op `true`.
 
-## <a name="claim-resolvers-samples"></a>Voor beelden van claim oplossingen
+## <a name="claim-resolvers-samples"></a>Voorbeelden van claimresolvers
 
-### <a name="restful-technical-profile"></a>Onderliggend technisch profiel
+### <a name="restful-technical-profile"></a>RESTful technisch profiel
 
-In een [](restful-technical-profile.md) onderliggend technisch profiel wilt u mogelijk de gebruikers taal, de beleids naam, het bereik en de client-id verzenden. Op basis van deze claims kan de REST API aangepaste bedrijfs logica uitvoeren en zo nodig een gelokaliseerd fout bericht genereren.
+In een technisch profiel [van RESTful](restful-technical-profile.md) u de gebruikerstaal, de beleidsnaam, het bereik en de client-id verzenden. Op basis van de claims kan de REST API aangepaste bedrijfslogica uitvoeren en zo nodig een gelokaliseerd foutbericht verhogen.
 
-In het volgende voor beeld ziet u een onderliggend technisch profiel met dit scenario:
+In het volgende voorbeeld wordt een RESTful technisch profiel met dit scenario weergegeven:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -169,13 +171,13 @@ In het volgende voor beeld ziet u een onderliggend technisch profiel met dit sce
 
 ### <a name="direct-sign-in"></a>Direct aanmelden
 
-Met behulp van claim resolvers kunt u de aanmeldings naam of de directe aanmelding vooraf invullen bij een specifieke ID-provider voor sociale netwerken, zoals Facebook, LinkedIn of een Microsoft-account. Zie voor meer informatie [instellen van direct aanmelden met Azure Active Directory B2C](direct-signin.md).
+Met behulp van claimresolvers u de aanmeldingsnaam of directe aanmelding vooraf invullen bij een specifieke aanbieder van sociale identiteit, zoals Facebook, LinkedIn of een Microsoft-account. Zie [Directe aanmelding instellen met Azure Active Directory B2C](direct-signin.md)voor meer informatie.
 
-### <a name="dynamic-ui-customization"></a>Dynamische gebruikers interface aanpassen
+### <a name="dynamic-ui-customization"></a>Dynamische aanpassing van de gebruikersinterface
 
-Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten om de pagina-inhoud dynamisch weer te geven. Hiermee kan bijvoorbeeld de achtergrond afbeelding op de Azure AD B2C registratie-of aanmeldings pagina worden gewijzigd op basis van een aangepaste para meter die u van uw web-of mobiele toepassing doorgeeft. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
+Met Azure AD B2C u querytekenreeksparameters doorgeven aan uw eindpunten voor html-inhoudsdefinitie om de pagina-inhoud dynamisch weer te geven. Hiermee u bijvoorbeeld de achtergrondafbeelding op de aanmeldings- of aanmeldingspagina van Azure AD B2C wijzigen op basis van een aangepaste parameter die u vanaf uw web- of mobiele toepassing passeert. Zie [De gebruikersinterface dynamisch configureren met behulp van aangepaste beleidsregels in Azure Active Directory B2C](custom-policy-ui-customization.md)voor meer informatie. U uw HTML-pagina ook lokaliseren op basis van een taalparameter of u de inhoud wijzigen op basis van de client-id.
 
-In het volgende voor beeld wordt de query teken reeks parameter **campaignId** met de waarde `hawaii`, een **taal** code van `en-US`en **app** die de client-id vertegenwoordigt:
+In het volgende voorbeeld wordt de parameter querytekenreeks `Hawaii`met de naam **campaignId** doorgegeven met een waarde van , een **taalcode** van `en-US`en **app** die de client-id vertegenwoordigt:
 
 ```XML
 <UserJourneyBehaviors>
@@ -187,15 +189,15 @@ In het volgende voor beeld wordt de query teken reeks parameter **campaignId** m
 </UserJourneyBehaviors>
 ```
 
-Als gevolg hiervan worden Azure AD B2C de bovenstaande para meters naar de pagina HTML-inhoud verzonden:
+Als gevolg hiervan stuurt Azure AD B2C de bovenstaande parameters naar de HTML-inhoudspagina:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
 ```
 
-### <a name="content-definition"></a>Inhouds definitie
+### <a name="content-definition"></a>Inhoudsdefinitie
 
-In een [ContentDefinition](contentdefinitions.md) -`LoadUri`kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters.
+In een [ContentDefinition](contentdefinitions.md) `LoadUri`u claimresolvers verzenden om inhoud van verschillende plaatsen te halen, op basis van de gebruikte parameters.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -206,7 +208,7 @@ In een [ContentDefinition](contentdefinitions.md) -`LoadUri`kunt u claim resolve
 
 ### <a name="application-insights-technical-profile"></a>Technisch profiel Application Insights
 
-Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het gedrag van gebruikers. In het Application Insights technische profiel verzendt u invoer claims die persistent zijn voor Azure-toepassing inzichten. Zie voor meer informatie [gebruikers gedrag bijhouden in azure AD B2C trajecten met behulp van Application Insights](analytics-with-application-insights.md). In het volgende voor beeld worden de beleids-ID, de correlatie-ID, de taal en de client-ID naar Azure-toepassing inzichten verzonden.
+Met Azure Application Insights en claimresolvers u inzicht krijgen in het gedrag van gebruikers. In het technische profiel Application Insights verzendt u invoerclaims die blijven bestaan naar Azure Application Insights. Zie [Gebruikersgedrag in Azure AD B2C-ritten bijhouden met Behulp van Toepassingsinzichten](analytics-with-application-insights.md)voor meer informatie. In het volgende voorbeeld worden de beleids-id, correlatie-id, taal en de client-id naar Azure Application Insights verstuurt.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">
@@ -222,9 +224,9 @@ Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het 
 </TechnicalProfile>
 ```
 
-### <a name="relying-party-policy"></a>Beleid voor Relying Party
+### <a name="relying-party-policy"></a>Vertrouwenpartijbeleid
 
-In het technische profiel van een [Relying Party](relyingparty.md) beleid wilt u mogelijk de Tenant-id of correlatie-id verzenden naar de Relying Party toepassing binnen de JWT.
+In een technisch profiel [van relying party-beleid](relyingparty.md) u de tenant-id of correlatie-ID naar de toepassing van de relying party binnen de JWT sturen.
 
 ```XML
 <RelyingParty>

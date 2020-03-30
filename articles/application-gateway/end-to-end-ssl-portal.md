@@ -1,7 +1,7 @@
 ---
-title: End-to-end SSL-versleuteling configureren met behulp van de portal
+title: End-to-end TLS-versleuteling configureren met behulp van de portal
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het gebruik van de Azure Portal om een toepassings gateway te maken met end-to-end SSL-versleuteling.
+description: Meer informatie over het gebruik van de Azure-portal om een toepassingsgateway met end-to-end TLS-versleuteling te maken.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,115 +9,115 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133013"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>End-to-end SSL configureren met behulp van Application Gateway met de portal
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>End-to-end TLS configureren met behulp van Application Gateway met de portal
 
-In dit artikel wordt beschreven hoe u met behulp van de Azure Portal end-to-end-Secure Sockets Layer (SSL)-versleuteling configureert via Azure-toepassing gateway v1 SKU.
+In dit artikel wordt beschreven hoe u de Azure-portal gebruiken om TLS-versleuteling (End-to-End Transport Layer Security), voorheen bekend als Ssl-versleuteling (Secure Sockets Layer) te configureren, via Azure Application Gateway v1 SKU.
 
 > [!NOTE]
-> Voor de SKU van Application Gateway v2 zijn vertrouwde basis certificaten vereist om end-to-end-configuratie in te scha kelen.
+> Application Gateway v2 SKU vereist vertrouwde rootcertificaten voor het inschakelen van end-to-end configuratie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u end-to-end SSL wilt configureren met een toepassings gateway, hebt u een certificaat nodig voor de gateway. Certificaten zijn ook vereist voor de back-endservers. Het gateway certificaat wordt gebruikt voor het afleiden van een symmetrische sleutel in overeenstemming met de SSL-protocol specificatie. De symmetrische sleutel wordt vervolgens gebruikt voor het versleutelen en ontsleutelen van het verkeer dat naar de gateway wordt verzonden. 
+Als u end-to-end TLS wilt configureren met een toepassingsgateway, hebt u een certificaat voor de gateway nodig. Certificaten zijn ook vereist voor de back-endservers. Het gatewaycertificaat wordt gebruikt om een symmetrische sleutel af te leiden in overeenstemming met de TLS-protocolspecificatie. De symmetrische sleutel wordt vervolgens gebruikt om het verkeer dat naar de gateway wordt verzonden te versleutelen en te decoderen. 
 
-Voor end-to-end SSL-versleuteling moeten de juiste back-endservers zijn toegestaan in de toepassings gateway. Als u deze toegang wilt toestaan, uploadt u het open bare certificaat van de back-endservers, ook wel bekend als verificatie certificaten (v1) of vertrouwde basis certificaten (v2), naar de toepassings gateway. Door het certificaat toe te voegen, zorgt u ervoor dat de Application Gateway alleen communiceert met bekende back-end-exemplaren. Deze configuratie beveiligt end-to-end-communicatie.
+Voor end-to-end TLS-versleuteling moeten de back-endservers van rechts worden toegestaan in de toepassingsgateway. Upload het openbare certificaat van de back-endservers, ook wel authenticatiecertificaten (v1) of Trusted Root Certificates (v2) genoemd, naar de toepassingsgateway om deze toegang toe te staan. Het toevoegen van het certificaat zorgt ervoor dat de toepassingsgateway alleen communiceert met bekende back-end-exemplaren. Deze configuratie zorgt verder voor end-to-end communicatie.
 
-Zie voor meer informatie [SSL-beëindiging en end-to-end SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
+Zie [Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview)voor meer informatie.
 
-## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Een nieuwe toepassings gateway maken met end-to-end SSL
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Een nieuwe toepassingsgateway maken met end-to-end TLS
 
-Als u een nieuwe toepassings gateway met end-to-end SSL-versleuteling wilt maken, moet u eerst SSL-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway. Met deze actie wordt SSL-versleuteling ingeschakeld voor communicatie tussen de client en de toepassings gateway. Vervolgens moet u in de lijst met veilige ontvangers de certificaten voor de back-endservers in de HTTP-instellingen opnemen. Deze configuratie maakt SSL-versleuteling mogelijk voor communicatie tussen de toepassings gateway en de back-endservers. Dit verloopt end-to-end SSL-versleuteling.
+Als u een nieuwe toepassingsgateway wilt maken met end-to-end TLS-versleuteling, moet u eerst TLS-beëindiging inschakelen terwijl u een nieuwe toepassingsgateway maakt. Met deze actie kan TLS-versleuteling worden toegepast voor communicatie tussen de client en de toepassingsgateway. Vervolgens moet u de certificaten voor de back-endservers in de HTTP-instellingen op de lijst Veilige geadresseerden plaatsen. Met deze configuratie kan TLS-versleuteling worden toegepast voor communicatie tussen de toepassingsgateway en de back-endservers. Dat bereikt end-to-end TLS-encryptie.
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>SSL-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>TLS-beëindiging inschakelen tijdens het maken van een nieuwe toepassingsgateway
 
-Zie [SSL-beëindiging inschakelen tijdens het maken van een nieuwe toepassings gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)voor meer informatie.
+Zie TLS-beëindiging inschakelen voor meer informatie [terwijl u een nieuwe toepassingsgateway maakt.](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
 
-### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Verificatie/basis certificaten van back-endservers toevoegen
+### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Verificatie-/hoofdcertificaten van back-endservers toevoegen
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
-2. Selecteer **http-instellingen** in het menu aan de linkerkant. Azure heeft automatisch een standaard HTTP-instelling, **appGatewayBackendHttpSettings**, gemaakt wanneer u de toepassings gateway hebt gemaakt. 
+2. Selecteer **HTTP-instellingen** in het menu aan de linkerkant. Azure heeft automatisch een standaard HTTP-instelling gemaakt, **appGatewayBackendHttpSettings**, wanneer u de toepassingsgateway hebt gemaakt. 
 
 3. Selecteer **appGatewayBackendHttpSettings**.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven.
+4. Selecteer onder **Protocol** **HTTPS**. Er verschijnt een deelvenster voor **backendverificatiecertificaten of vertrouwde rootcertificaten.**
 
 5. Selecteer **Nieuw maken**.
 
-6. Voer in het veld **naam** een geschikte naam in.
+6. Voer in het veld **Naam** een geschikte naam in.
 
-7. Selecteer het certificaat bestand in het vak **CER-certificaat uploaden** .
+7. Selecteer het certificaatbestand in het vak **CER-certificaat uploaden.**
 
-   Voor Standard-en WAF (v1)-toepassings gateways moet u de open bare sleutel van uw back-endserver certificaat uploaden in. CER-indeling.
+   Voor standaard- en WAF-toepassingsgateways (v1) moet u de openbare sleutel van uw back-endservercertificaat uploaden in .cer-indeling.
 
    ![Certificaat toevoegen](./media/end-to-end-ssl-portal/addcert.png)
 
-   Voor Standard_v2 en WAF_v2 toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat is uitgegeven door een bekende certificerings instantie (CA), kunt u het selectie vakje **goed bekend CA-certificaat gebruiken** selecteren en vervolgens geen certificaat uploaden.
+   Voor Standard_v2- en WAF_v2 toepassingsgateways moet u het hoofdcertificaat van het back-endservercertificaat uploaden in de .cer-indeling. Als het back-endcertificaat is uitgegeven door een bekende certificaatautoriteit (CA), u het selectievakje **Bekende CA-certificaat gebruiken** inschakelen en hoeft u geen certificaat te uploaden.
 
-   ![Vertrouwd basis certificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Vertrouwd basiscertificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-   ![Basis certificaat](./media/end-to-end-ssl-portal/trustedrootcert.png)
+   ![Basiscertificaat](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
 8. Selecteer **Opslaan**.
 
-## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>End-to-end SSL inschakelen voor een bestaande toepassings gateway
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>End-to-end TLS inschakelen voor een bestaande toepassingsgateway
 
-Als u een bestaande toepassings gateway met end-to-end SSL-versleuteling wilt configureren, moet u eerst SSL-beëindiging inschakelen in de listener. Met deze actie wordt SSL-versleuteling ingeschakeld voor communicatie tussen de client en de toepassings gateway. Vervolgens plaatst u deze certificaten voor back-endservers in de HTTP-instellingen in de lijst met veilige geadresseerden. Deze configuratie maakt SSL-versleuteling mogelijk voor communicatie tussen de toepassings gateway en de back-endservers. Dit verloopt end-to-end SSL-versleuteling.
+Als u een bestaande toepassingsgateway wilt configureren met end-to-end TLS-versleuteling, moet u eerst TLS-beëindiging inschakelen in de listener. Met deze actie kan TLS-versleuteling worden toegepast voor communicatie tussen de client en de toepassingsgateway. Plaats deze certificaten voor back-endservers vervolgens in de HTTP-instellingen in de lijst Veilige geadresseerden. Met deze configuratie kan TLS-versleuteling worden toegepast voor communicatie tussen de toepassingsgateway en de back-endservers. Dat bereikt end-to-end TLS-encryptie.
 
-U moet een listener gebruiken met het HTTPS-protocol en een certificaat voor het inschakelen van SSL-beëindiging. U kunt een bestaande listener gebruiken die aan deze voor waarden voldoet of een nieuwe listener maken. Als u de optie voormalig selecteert, kunt u de volgende para graaf ' SSL-beëindiging inschakelen in een bestaande toepassings gateway ' negeren en rechtstreeks naar de sectie ' verificatie/vertrouwde basis certificaten voor back-endservers toevoegen ' gaan.
+U moet een listener gebruiken met het HTTPS-protocol en een certificaat voor het inschakelen van TLS-beëindiging. U een bestaande listener gebruiken die aan deze voorwaarden voldoet of een nieuwe listener maken. Als u de vorige optie kiest, u de volgende sectie 'TLS-beëindiging inschakelen in een bestaande toepassingsgateway' negeren en rechtstreeks naar de sectie 'Verificatie/vertrouwde rootcertificaten voor backendservers toevoegen' gaan.
 
-Als u de laatste optie kiest, moet u de stappen in de volgende procedure Toep assen.
-### <a name="enable-ssl-termination-in-an-existing-application-gateway"></a>SSL-beëindiging inschakelen in een bestaande toepassings gateway
+Als u de laatste optie kiest, past u de stappen in de volgende procedure toe.
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>TLS-beëindiging inschakelen in een bestaande toepassingsgateway
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
-2. Selecteer **listeners** in het menu aan de linkerkant.
+2. Selecteer **Listeners** in het menu aan de linkerkant.
 
-3. Selecteer een **Basic** -of **multi-site** -listener, afhankelijk van uw vereisten.
+3. Selecteer **Basis-** of **Multi-site** listener, afhankelijk van uw vereisten.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor het **certificaat** weer gegeven.
+4. Selecteer onder **Protocol** **HTTPS**. Er verschijnt een deelvenster voor **certificaat.**
 
-5. Upload het PFX-certificaat dat u wilt gebruiken voor de SSL-beëindiging tussen de client en de toepassings gateway.
+5. Upload het PFX-certificaat dat u wilt gebruiken voor TLS-beëindiging tussen de client en de toepassingsgateway.
 
    > [!NOTE]
-   > Voor test doeleinden kunt u een zelfondertekend certificaat gebruiken. Dit wordt echter niet aanbevolen voor productie werkbelastingen, omdat ze moeilijker te beheren zijn en niet volledig zijn beveiligd. Zie [een zelfondertekend certificaat maken](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)voor meer informatie.
+   > Voor testdoeleinden u een zelfondertekend certificaat gebruiken. Dit wordt echter niet aangeraden voor productieworkloads, omdat ze moeilijker te beheren zijn en niet volledig veilig zijn. Zie [Een zelfondertekend certificaat maken voor](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)meer informatie.
 
 6. Voeg andere vereiste instellingen voor de **listener**toe, afhankelijk van uw vereisten.
 
 7. Selecteer **OK** om op te slaan.
 
-### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Verificatie/vertrouwde basis certificaten van back-endservers toevoegen
+### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>Verificatie/vertrouwde hoofdcertificaten van back-endservers toevoegen
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
-2. Selecteer **http-instellingen** in het menu aan de linkerkant. U kunt certificaten in een bestaande back-end-HTTP-instelling in de lijst met veilige geadresseerden plaatsen of een nieuwe HTTP-instelling maken. (In de volgende stap wordt het certificaat voor de standaard-HTTP-instelling **appGatewayBackendHttpSettings**toegevoegd aan de lijst met veilige geadresseerden.)
+2. Selecteer **HTTP-instellingen** in het menu aan de linkerkant. U certificaten in een bestaande back-end HTTP-instelling in de lijst Veilige geadresseerden plaatsen of een nieuwe HTTP-instelling maken. (In de volgende stap wordt het certificaat voor de standaard HTTP-instelling, **appGatewayBackendHttpSettings**, toegevoegd aan de lijst Veilige geadresseerden.)
 
 3. Selecteer **appGatewayBackendHttpSettings**.
 
-4. Onder **protocol**selecteert u **https**. Er wordt een deel venster voor **back-end-verificatie certificaten of vertrouwde basis certificaten** weer gegeven. 
+4. Selecteer onder **Protocol** **HTTPS**. Er verschijnt een deelvenster voor **backendverificatiecertificaten of vertrouwde rootcertificaten.** 
 
 5. Selecteer **Nieuw maken**.
 
-6. Voer in het veld **naam** een geschikte naam in.
+6. Voer in het veld **Naam** een geschikte naam in.
 
-7. Selecteer het certificaat bestand in het vak **CER-certificaat uploaden** .
+7. Selecteer het certificaatbestand in het vak **CER-certificaat uploaden.**
 
-   Voor Standard-en WAF (v1)-toepassings gateways moet u de open bare sleutel van uw back-endserver certificaat uploaden in. CER-indeling.
+   Voor standaard- en WAF-toepassingsgateways (v1) moet u de openbare sleutel van uw back-endservercertificaat uploaden in .cer-indeling.
 
    ![Certificaat toevoegen](./media/end-to-end-ssl-portal/addcert.png)
 
-   Voor Standard_v2 en WAF_v2 toepassings gateways moet u het basis certificaat van het back-endserver certificaat uploaden in. CER-indeling. Als het back-end-certificaat wordt uitgegeven door een bekende certificerings instantie, kunt u het selectie vakje **goed bekende CA-certificaat gebruiken** selecteren en vervolgens een certificaat niet uploaden.
+   Voor Standard_v2- en WAF_v2 toepassingsgateways moet u het hoofdcertificaat van het back-endservercertificaat uploaden in de .cer-indeling. Als het back-endcertificaat is uitgegeven door een bekende CA, u het selectievakje **Bekende CA-certificaat** gebruiken inschakelen en hoeft u geen certificaat te uploaden.
 
-   ![Vertrouwd basis certificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+   ![Vertrouwd basiscertificaat toevoegen](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
 8. Selecteer **Opslaan**.
 

@@ -1,5 +1,5 @@
 ---
-title: Problemen met RDP-verbindings problemen van Azure VM oplossen per gebeurtenis-ID | Microsoft Docs
+title: Problemen met Azure VM RDP-verbindingsproblemen oplossen door gebeurtenis-id | Microsoft Documenten
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,111 +15,111 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71154196"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Problemen met Azure VM RDP-verbinding oplossen op basis van gebeurtenis-id 
 
-In dit artikel wordt uitgelegd hoe u gebeurtenis-Id's gebruikt om problemen op te lossen die verhinderen dat een RDP-verbinding (Extern bureaublad Protocol) met een virtuele machine (VM) van Azure wordt voor komen.
+In dit artikel wordt uitgelegd hoe u gebeurtenis--identiteits-in-het-bed-installatie gebruiken om problemen op te lossen die een RDP-verbinding (Remote Desktop Protocol) met een VM (Azure Virtual Machine) voorkomen.
 
 ## <a name="symptoms"></a>Symptomen
 
-U probeert een Extern bureaublad protocol-sessie (RDP) te gebruiken om verbinding te maken met een virtuele machine van Azure. Nadat u uw referenties hebt ingevoerd, mislukt de verbinding en wordt het volgende fout bericht weer gegeven:
+U probeert een RDP-sessie (Remote Desktop Protocol) te gebruiken om verbinding te maken met een Azure VM. Nadat u uw referenties hebt ingevoerd, mislukt de verbinding en ontvangt u het volgende foutbericht:
 
-**Deze computer kan geen verbinding maken met de externe computer. Probeer opnieuw verbinding te maken. als het probleem zich blijft voordoen, neemt u contact op met de eigenaar van de externe computer of uw netwerk beheerder.**
+**Deze computer kan geen verbinding maken met de externe computer. Probeer opnieuw verbinding te maken, als het probleem zich voortzet, neem dan contact op met de eigenaar van de externe computer of uw netwerkbeheerder.**
 
-Als u dit probleem wilt oplossen, controleert u de gebeurtenis logboeken op de virtuele machine en raadpleegt u de volgende scenario's.
+Als u dit probleem wilt oplossen, raadpleegt u de gebeurtenislogboeken op de vm en raadpleegt u de volgende scenario's.
 
-## <a name="before-you-troubleshoot"></a>Voordat u problemen oplossen
+## <a name="before-you-troubleshoot"></a>Voordat u problemen oplost
 
 ### <a name="create-a-backup-snapshot"></a>Een back-upmomentopname maken
 
-Als u een back-upmomentopname wilt maken, volgt u de stappen in [een moment opname van een schijf](../windows/snapshot-copy-managed-disk.md).
+Als u een back-upmomentopname wilt maken, volgt u de stappen in [Momentopname een schijf](../windows/snapshot-copy-managed-disk.md).
 
-### <a name="connect-to-the-vm-remotely"></a>Extern verbinding maken met de virtuele machine
+### <a name="connect-to-the-vm-remotely"></a>Op afstand verbinding maken met de VIRTUELE V.T.V.
 
-Als u extern verbinding wilt maken met de virtuele machine, gebruikt u een van de methoden in [het gebruik van externe hulpprogram ma's voor het oplossen van problemen met Azure-vm's](remote-tools-troubleshoot-azure-vm-issues.md).
+Als u op afstand verbinding wilt maken met de virtuele machine, gebruikt u een van de methoden in [Hulpmiddelen op afstand gebruiken om Azure VM-problemen op te lossen.](remote-tools-troubleshoot-azure-vm-issues.md)
 
 ## <a name="scenario-1"></a>Scenario 1
 
 ### <a name="event-logs"></a>Gebeurtenislogboeken
 
-Voer in een CMD-exemplaar de volgende opdrachten uit om te controleren of gebeurtenis 1058 of gebeurtenis 1057 wordt geregistreerd in het systeem logboek in de afgelopen 24 uur:
+Voer in een CMD-instantie de volgende opdrachten uit om te controleren of gebeurtenis 1058 of gebeurtenis 1057 in de afgelopen 24 uur is aangemeld bij het systeemlogboek:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1058 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Logboek naam:**      Systeem <br />
-**Bron**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *tijd* <br />
-**Gebeurtenis-ID:**      1058 <br />
-**Taak categorie:** Geen <br />
-**Afvlakking**         Fout <br />
-**Woord**      Klassiek <br />
-**Gebruiker:**          N/A <br />
-**Computer:** *computer* <br />
-**Beschrijving:** De RD Session Host-server heeft het verlopen zelfondertekende certificaat dat wordt gebruikt voor de verificatie van de RD Session Host-server, niet vervangen door SSL-verbindingen. De relevante status code is toegang geweigerd.
+**Logboeknaam:**      Systeem <br />
+**Bron:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:**          *tijd* <br />
+**Gebeurtenis-id:** 1058 <br />
+**Taakcategorie:** Geen <br />
+**Niveau:**         Fout <br />
+**Trefwoorden:**      Klassieke <br />
+**Gebruiker:**          N/a <br />
+**Computer:**      *computer* <br />
+**Beschrijving:** De Extern bureaublad-sessiehostserver kan het verlopen zelfondertekende certificaat dat wordt gebruikt voor verificatie van extern bureaublad-sessiehostserver op SSL-verbindingen niet vervangen. De relevante statuscode is Access wordt geweigerd.
 
-**Logboek naam:**      Systeem <br />
-**Bron**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *tijd* <br />
-**Gebeurtenis-ID:**      1058 <br />
-**Taak categorie:** Geen <br />
-**Afvlakking**         Fout <br />
-**Woord**      Klassiek <br />
-**Gebruiker:**          N/A <br />
-**Computer:** *computer* <br />
-**Beschrijving:** Extern bureau blad-sessiehostserver kan geen nieuw zelfondertekend certificaat maken om te worden gebruikt voor de verificatie van RD Session Host-servers voor SSL-verbindingen. de relevante status code is al-object.
+**Logboeknaam:**      Systeem <br />
+**Bron:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:**          *tijd* <br />
+**Gebeurtenis-id:** 1058 <br />
+**Taakcategorie:** Geen <br />
+**Niveau:**         Fout <br />
+**Trefwoorden:**      Klassieke <br />
+**Gebruiker:**          N/a <br />
+**Computer:**      *computer* <br />
+**Beschrijving:** Extern bureaublad-sessiehostserver heeft geen nieuw zelfondertekend certificaat gemaakt dat moet worden gebruikt voor verificatie van extern bureaublad-sessiehostserver op SSL-verbindingen, de relevante statuscode was al bestaat.
 
-**Logboek naam:**      Systeem <br />
-**Bron**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Datum:** *tijd* <br />
-**Gebeurtenis-ID:**      1057 <br />
-**Taak categorie:** Geen <br />
-**Afvlakking**         Fout <br />
-**Woord**      Klassiek <br />
-**Gebruiker:**          N/A <br />
-**Computer:** *computer* <br />
-**Beschrijving:** De extern bureau blad-sessiehostserver kan geen nieuw ondertekend certificaat maken dat kan worden gebruikt voor de verificatie van RD Session Host-servers op SSL-verbindingen. De relevante status code bevindt zich niet in het sleutel paar
+**Logboeknaam:**      Systeem <br />
+**Bron:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Datum:**          *tijd* <br />
+**Gebeurtenis-id:** 1057 <br />
+**Taakcategorie:** Geen <br />
+**Niveau:**         Fout <br />
+**Trefwoorden:**      Klassieke <br />
+**Gebruiker:**          N/a <br />
+**Computer:**      *computer* <br />
+**Beschrijving:** De Extern bureaublad-sessiehostserver kan geen nieuw zelfondertekend certificaat maken dat kan worden gebruikt voor verificatie van Extern bureaublad-sessiehostserver op SSL-verbindingen. De relevante statuscode is Keyset bestaat niet
 
-U kunt ook controleren op SCHANNEL-fout gebeurtenissen 36872 en 36870 door de volgende opdrachten uit te voeren:
+U ook controleren op Foutgebeurtenissen 36872 en 36870 van SCHANNEL door de volgende opdrachten uit te voeren:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36870 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Logboek naam:**      Systeem <br />
-**Bron**        Veilige <br />
+**Logboeknaam:**      Systeem <br />
+**Bron:**        Schannel <br />
 **Datum:** — <br />
-**Gebeurtenis-ID:**      36870 <br />
-**Taak categorie:** Geen <br />
-**Afvlakking**         Fout <br />
-**Woord**       <br />
-**Gebruiker:**          OPGEHAALD <br />
-**Computer:** *computer* <br />
-**Beschrijving:** Er is een onherstelbare fout opgetreden bij het openen van de persoonlijke sleutel van de SSL-server referentie. De fout code die is geretourneerd door de cryptografische module, is 0x8009030D.  <br />
-De interne fout status is 10001.
+**Gebeurtenis-id:** 36870 <br />
+**Taakcategorie:** Geen <br />
+**Niveau:**         Fout <br />
+**Zoekwoorden:**       <br />
+**Gebruiker:**          Systeem <br />
+**Computer:**      *computer* <br />
+**Beschrijving:** Er is een fatale fout opgetreden bij een poging om toegang te krijgen tot de privésleutel van de SSL-serverreferenties. De foutcode die is geretourneerd van de cryptografische module is 0x8009030D.  <br />
+De interne foutstatus is 10001.
 
 ### <a name="cause"></a>Oorzaak
-Dit probleem doet zich voor omdat de lokale RSA-versleutelings sleutels in de map MachineKeys op de virtuele machine niet kunnen worden geopend. Dit probleem kan een van de volgende oorzaken hebben:
+Dit probleem treedt op omdat de lokale RSA-coderingssleutels in de map MachineKeys op de VM niet toegankelijk zijn. Dit probleem kan zich voordoen om een van de volgende redenen:
 
-1. Onjuiste configuratie van machtigingen voor de map Machinekeys of de RSA-bestanden.
+1. Foute machtigingenconfiguratie op de map Machinekeys of de RSA-bestanden.
 
-2. Beschadigde of ontbrekende RSA-sleutel.
+2. Beschadigde of ontbrekende RSA-toets.
 
 ### <a name="resolution"></a>Oplossing
 
-U moet de juiste machtigingen voor het RDP-certificaat instellen met behulp van de volgende stappen om dit probleem op te lossen.
+Als u dit probleem wilt oplossen, moet u met deze stappen de juiste machtigingen voor het RDP-certificaat instellen.
 
-#### <a name="grant-permission-to-the-machinekeys-folder"></a>Toestemming geven voor de map MachineKeys
+#### <a name="grant-permission-to-the-machinekeys-folder"></a>Toestemming verlenen aan de map MachineKeys
 
-1. Maak een script met behulp van de volgende inhoud:
+1. Maak een script met de volgende inhoud:
 
    ```powershell
    remove-module psreadline 
@@ -132,18 +132,18 @@ U moet de juiste machtigingen voor het RDP-certificaat instellen met behulp van 
    Restart-Service TermService -Force
    ```
 
-2.  Voer dit script uit om de machtigingen van de map MachineKey opnieuw in te stellen en de RSA-bestanden opnieuw in te stellen op de standaard waarden.
+2.  Voer dit script uit om de machtigingen van de map MachineKey opnieuw in te stellen en de RSA-bestanden opnieuw in te stellen op de standaardwaarden.
 
 3.  Probeer opnieuw toegang te krijgen tot de virtuele machine.
 
-Nadat u het script hebt uitgevoerd, kunt u de volgende bestanden controleren die problemen met de machtigingen ondervinden:
+Nadat u het script hebt uitgevoerd, u de volgende bestanden controleren die problemen ondervinden met machtigingen:
 
 * c:\temp\BeforeScript_permissions.txt
 * c:\temp\AfterScript_permissions.txt
 
-#### <a name="renew-rdp-self-signed-certificate"></a>Zelf-ondertekend RDP-certificaat vernieuwen
+#### <a name="renew-rdp-self-signed-certificate"></a>Rdp-certificaat verlengen
 
-Als het probleem zich blijft voordoen, voert u het volgende script uit om ervoor te zorgen dat het zelf-ondertekende RDP-certificaat wordt vernieuwd:
+Als het probleem blijft bestaan, voert u het volgende script uit om ervoor te zorgen dat het zelfondertekende RDP-certificaat wordt verlengd:
 
 ```powershell
 Import-Module PKI
@@ -154,27 +154,27 @@ Stop-Service -Name "SessionEnv"
 Start-Service -Name "SessionEnv"
 ```
 
-Als u het certificaat niet kunt vernieuwen, voert u de volgende stappen uit om het certificaat te verwijderen:
+Als u het certificaat niet verlengen, voert u de volgende stappen uit om te proberen het certificaat te verwijderen:
 
-1. Open het vak **uitvoeren** op een andere virtuele machine in hetzelfde VNET, typ **MMC**en druk op **OK**. 
+1. Open op een andere VM in dezelfde VNET het vak **Uitvoeren,** typ **mmc**en druk op **OK.** 
 
-2. Selecteer in het menu **bestand** de optie **module toevoegen/verwijderen**.
+2. Selecteer **Inmaak toevoegen/verwijderen in**het menu **Bestand** .
 
-3. Selecteer in de lijst **beschik bare** modules de optie **certificaten**en selecteer vervolgens **toevoegen**.
+3. Selecteer **certificaten**in de lijst **Beschikbare snap-ins** en selecteer **Vervolgens Toevoegen**.
 
-4. Selecteer **computer account**en selecteer **volgende**.
+4. Selecteer **Computeraccount**en selecteer **Volgende**.
 
-5. Selecteer **een andere computer**en voeg vervolgens het IP-adres van de virtuele machine toe die problemen ondervindt.
+5. Selecteer **Een andere computer**en voeg vervolgens het IP-adres van de VM toe dat problemen heeft.
    >[!Note]
-   >Probeer het interne netwerk te gebruiken om te voor komen dat u een virtueel IP-adres gebruikt.
+   >Probeer het interne netwerk te gebruiken om te voorkomen dat u een virtueel IP-adres gebruikt.
 
-6. Selecteer **volt ooien**en selecteer vervolgens **OK**.
+6. Selecteer **Voltooien**en selecteer **OK**.
 
    ![Computer selecteren](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. Vouw de certificaten uit, ga naar de map externe Desktop\Certificates, klik met de rechter muisknop op het certificaat en selecteer vervolgens **verwijderen**.
+7. Vouw de certificaten uit, ga naar de map Extern bureaublad\Certificaten, klik met de rechtermuisknop op het certificaat en selecteer **Verwijderen**.
 
-8. Start de Extern bureaublad Configuration-service opnieuw:
+8. Start de service Extern bureaublad-configuratie opnieuw:
 
    ```cmd
    net stop SessionEnv
@@ -182,25 +182,25 @@ Als u het certificaat niet kunt vernieuwen, voert u de volgende stappen uit om h
    ```
 
    >[!Note]
-   >Als u de opslag van MMC vernieuwt, wordt het certificaat op dit moment opnieuw weer gegeven. 
+   >Als u de winkel op dit moment vernieuwt vanuit mmc, wordt het certificaat opnieuw weergegeven. 
 
-Probeer opnieuw toegang te krijgen tot de virtuele machine met behulp van RDP.
+Probeer de VM te openen door opnieuw RDP te gebruiken.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Secure Sockets Layer-certificaat (SSL) bijwerken
+#### <a name="update-secure-sockets-layer-ssl-certificate"></a>SSL-certificaat (Secure Sockets Layer) bijwerken
 
-Als u de VM zo instelt dat een SSL-certificaat wordt gebruikt, voert u de volgende opdracht uit om de vinger afdruk op te halen. Controleer vervolgens of dit hetzelfde is als de vinger afdruk van het certificaat:
+Als u de VM instelt om een SSL-certificaat te gebruiken, voert u de volgende opdracht uit om de duimafdruk op te halen. Controleer vervolgens of het hetzelfde is als de duimafdruk van het certificaat:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
 ```
 
-Als dat niet het geval is, wijzigt u de vinger afdruk:
+Als dit niet het is, wijzigt u de duimafdruk:
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash /t REG_BINARY /d <CERTIFICATE THUMBPRINT>
 ```
 
-U kunt ook proberen om de sleutel te verwijderen, zodat de RDP het zelfondertekende certificaat voor RDP gebruikt:
+U ook proberen de sleutel te verwijderen, zodat de RDP het zelfondertekende certificaat voor RDP gebruikt:
 
 ```cmd
 reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -208,95 +208,95 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RD
 
 ## <a name="scenario-2"></a>Scenario 2
 
-### <a name="event-log"></a>Gebeurtenis logboek
+### <a name="event-log"></a>Gebeurtenislogboek
 
-Voer in een CMD-exemplaar de volgende opdrachten uit om te controleren of SCHANNEL-fout gebeurtenis 36871 in de afgelopen 24 uur is geregistreerd in het systeem logboek:
+Voer in een CMD-instantie de volgende opdrachten uit om te controleren of SCHANNEL-foutgebeurtenis 36871 in de afgelopen 24 uur is aangemeld in het systeemlogboek:
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Logboek naam:**      Systeem <br />
-**Bron**        Veilige <br />
+**Logboeknaam:**      Systeem <br />
+**Bron:**        Schannel <br />
 **Datum:** — <br />
-**Gebeurtenis-ID:**      36871 <br />
-**Taak categorie:** Geen <br />
-**Afvlakking**         Fout <br />
-**Woord**       <br />
-**Gebruiker:**          OPGEHAALD <br />
-**Computer:** *computer* <br />
-**Beschrijving:** Er is een onherstelbare fout opgetreden tijdens het maken van een TLS-server referentie. De interne fout status is 10013.
+**Gebeurtenis-id:** 36871 <br />
+**Taakcategorie:** Geen <br />
+**Niveau:**         Fout <br />
+**Zoekwoorden:**       <br />
+**Gebruiker:**          Systeem <br />
+**Computer:**      *computer* <br />
+**Beschrijving:** Er is een fatale fout opgetreden tijdens het maken van een TLS-serverreferentie. De interne foutstatus is 10013.
  
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem wordt veroorzaakt door beveiligings beleid. Wanneer oudere versies van TLS (zoals 1,0) zijn uitgeschakeld, mislukt de RDP-toegang.
+Dit probleem wordt veroorzaakt door beveiligingsbeleid. Wanneer oudere versies van TLS (zoals 1.0) zijn uitgeschakeld, mislukt de RDP-toegang.
 
 ### <a name="resolution"></a>Oplossing
 
-RDP gebruikt TLS 1,0 als het standaard protocol. Het protocol kan echter worden gewijzigd in TLS 1,1, wat de nieuwe standaard is.
+RDP gebruikt TLS 1.0 als standaardprotocol. Het protocol kan echter worden gewijzigd in TLS 1.1, de nieuwe standaard.
 
-Zie [problemen met verificatie fouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM](troubleshoot-authentication-error-rdp-vm.md#tls-version)om dit probleem op te lossen.
+Zie [Verificatiefouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM](troubleshoot-authentication-error-rdp-vm.md#tls-version)als u dit probleem wilt oplossen.
 
 ## <a name="scenario-3"></a>Scenario 3
 
-Als u de functie **extern bureaublad Connection Broker** op de VM hebt geïnstalleerd, controleert u of er in de afgelopen 24 uur sprake is van gebeurtenis 2056 of gebeurtenis 1296. Voer de volgende opdrachten uit in een CMD-exemplaar: 
+Als u de rol **Extern bureaublad Connection Broker** op de VM hebt geïnstalleerd, controleert u of er in de afgelopen 24 uur gebeurtenis 2056 of gebeurtenis 1296 is. Voer in een CMD-instantie de volgende opdrachten uit: 
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker '] and EventID=2056 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Logboek naam:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**Bron**        Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Datum:** *tijd* <br />
-**Gebeurtenis-ID:**      2056 <br />
-**Taak categorie:** (109) <br />
-**Afvlakking**         Fout <br />
-**Woord**       <br />
-**Gebruiker:**          NETWERK SERVICE <br />
-**Computer:** *FQDN van computer* <br />
-**Beschrijving:** De beschrijving voor gebeurtenis-ID 2056 van de bron micro soft-Windows-TerminalServices-SessionBroker is niet gevonden. Het onderdeel dat deze gebeurtenis activeert, is niet geïnstalleerd op de lokale computer of de installatie is beschadigd. U kunt het onderdeel op de lokale computer installeren of herstellen. <br />
-Als de gebeurtenis afkomstig is van een andere computer, moest de weer gave-informatie worden opgeslagen met de gebeurtenis. <br />
-De volgende informatie is opgenomen in de gebeurtenis: <br />
+**Logboeknaam:**      Microsoft-Windows-TerminalServices-SessionBroker/Operationeel <br />
+**Bron:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
+**Datum:**          *tijd* <br />
+**Gebeurtenis-id:** 2056 <br />
+**Taakcategorie:** (109) <br />
+**Niveau:**         Fout <br />
+**Zoekwoorden:**       <br />
+**Gebruiker:**          NETWERKSERVICE <br />
+**Computer:**      *computer fqdn* <br />
+**Beschrijving:** De beschrijving voor gebeurtenis-id 2056 van de bron Microsoft-Windows-TerminalServices-SessionBroker kan niet worden gevonden. Het onderdeel dat deze gebeurtenis oproept, is niet geïnstalleerd op uw lokale computer of de installatie is beschadigd. U het onderdeel installeren of repareren op de lokale computer. <br />
+Als de gebeurtenis op een andere computer is ontstaan, moest de weergave-informatie met de gebeurtenis worden opgeslagen. <br />
+De volgende informatie werd bij het evenement opgenomen: <br />
 NULL <br />
 NULL <br />
-Aanmelden bij de data base is mislukt.
+Aanmelding bij de database is mislukt.
 
-**Logboek naam:**      Micro soft-Windows-TerminalServices-SessionBroker-client/operationeel <br />
-**Bron**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**Datum:** *tijd* <br />
-**Gebeurtenis-ID:**      1296 <br />
-**Taak categorie:** (104) <br />
-**Afvlakking**         Fout <br />
-**Woord**       <br />
-**Gebruiker:**          NETWERK SERVICE <br />
-**Computer:** *FQDN van computer* <br />
-**Beschrijving:** De beschrijving voor gebeurtenis-ID 1296 van de bron micro soft-Windows-TerminalServices-SessionBroker-client is niet gevonden. Het onderdeel dat deze gebeurtenis activeert, is niet geïnstalleerd op de lokale computer of de installatie is beschadigd. U kunt het onderdeel op de lokale computer installeren of herstellen.
-Als de gebeurtenis afkomstig is van een andere computer, moest de weer gave-informatie worden opgeslagen met de gebeurtenis.
-De volgende informatie is opgenomen in de gebeurtenis:  <br />
-*SMS* <br />
-*SMS* <br />
-Extern bureaublad Connection Broker is niet gereed voor RPC-communicatie.
+**Logboeknaam:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operationeel <br />
+**Bron:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**Datum:**          *tijd* <br />
+**Gebeurtenis-id:** 1296 <br />
+**Taakcategorie:** (104) <br />
+**Niveau:**         Fout <br />
+**Zoekwoorden:**       <br />
+**Gebruiker:**          NETWERKSERVICE <br />
+**Computer:**      *computer fqdn* <br />
+**Beschrijving:** De beschrijving voor gebeurtenis-id 1296 van de bron Microsoft-Windows-TerminalServices-SessionBroker-Client kan niet worden gevonden. Het onderdeel dat deze gebeurtenis oproept, is niet geïnstalleerd op uw lokale computer of de installatie is beschadigd. U het onderdeel installeren of repareren op de lokale computer.
+Als de gebeurtenis op een andere computer is ontstaan, moest de weergave-informatie met de gebeurtenis worden opgeslagen.
+De volgende informatie werd bij het evenement opgenomen:  <br />
+*Tekst* <br />
+*Tekst* <br />
+Remote Desktop Connection Broker is nog niet klaar voor RPC-communicatie.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem treedt op omdat de hostnaam van de Extern bureaublad Connection Broker-server wordt gewijzigd, wat geen ondersteunde wijziging is. 
+Dit probleem treedt op omdat de hostnaam van de Extern bureaublad Connection Broker-server is gewijzigd, wat geen ondersteunde wijziging is. 
 
-De hostnaam bevat vermeldingen en afhankelijkheden voor de interne data base van Windows, die wordt vereist door Extern bureaublad service farm om te kunnen werken. Als u de hostnaam wijzigt nadat de farm al is gebouwd, worden er veel fouten gegenereerd waardoor de Broker-server niet meer werkt.
+De hostnaam bevat vermeldingen en afhankelijkheden van de Windows Internal Database, die vereist is door de farm Extern bureaublad-service om te kunnen werken. Het wijzigen van de hostnaam nadat de farm al is gebouwd, veroorzaakt veel fouten en kan ertoe leiden dat de brokerserver niet meer werkt.
 
 ### <a name="resolution"></a>Oplossing 
 
-Om dit probleem op te lossen, moet de Extern bureaublad Connection Broker-rol en de interne data base van Windows opnieuw worden geïnstalleerd.
+Om dit probleem op te lossen, moeten de rol Extern bureaublad Connection Broker en de interne windowsdatabase opnieuw worden geïnstalleerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Schannel-gebeurtenissen](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Schannel-evenementen](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
 
 [Technisch overzicht van Schannel-SSP](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
 
-[RDP mislukt met gebeurtenis-ID 1058 & gebeurtenis 36870 met Extern bureaublad Session Host-certificaat & SSL-communicatie](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[RDP mislukt met gebeurtenis-id 1058 & gebeurtenis 36870 met Extern bureaublad-sessiehostcertificaat & SSL-communicatie](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
 
-[Schannel 36872 of Schannel 36870 op een domein controller](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[Schannel 36872 of Schannel 36870 op een domeincontroller](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
 
-[Gebeurtenis-ID 1058 — Extern bureaublad-services verificatie en versleuteling](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
+[Gebeurtenis-id 1058 — Verificatie en versleuteling van Extern bureaublad-services](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
 

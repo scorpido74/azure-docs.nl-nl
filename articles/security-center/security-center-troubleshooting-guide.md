@@ -1,6 +1,6 @@
 ---
 title: Handleiding voor het oplossen van problemen met Azure Security Center | Microsoft Docs
-description: Deze hand leiding is voor IT-professionals, beveiligings analisten en Cloud beheerders die Azure Security Center gerelateerde problemen moeten oplossen.
+description: Deze handleiding is voor IT-professionals, beveiligingsanalisten en cloudbeheerders die problemen met azure security center moeten oplossen.
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,24 +8,24 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062893"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Security Center
 
 Deze handleiding is bedoeld voor IT-specialisten, informatiebeveiligingsanalisten en cloudbeheerders van organisaties die Azure Security Center gebruiken en biedt procedures voor het oplossen van problemen met Azure Security Center.
 
-Security Center gebruikt de micro soft Monitoring Agent voor het verzamelen en opslaan van gegevens. Zie [Migratie van Azure Security Center-platform](security-center-platform-migration.md) voor meer informatie. De informatie in dit artikel beschrijft functionaliteit van Security Center na de overstap naar de Microsoft Monitoring Agent.
+Security Center gebruikt de Microsoft Monitoring Agent om gegevens te verzamelen en op te slaan. Zie [Migratie van Azure Security Center-platform](security-center-platform-migration.md) voor meer informatie. De informatie in dit artikel beschrijft functionaliteit van Security Center na de overstap naar de Microsoft Monitoring Agent.
 
 ## <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
 
 In deze handleiding wordt uitgelegd hoe u problemen oplost die betrekking hebben op Security Center.
 
-Waarschuwings typen:
+Waarschuwingstypen:
 
 * VMBA (Virtual Machine Behavioral Analysis)
 * Netwerkanalyse
@@ -36,13 +36,11 @@ Afhankelijk van de soorten waarschuwingen, kunnen klanten met behulp van de volg
 
 * Beveiligingslogboeken in de functie Logboeken van de virtuele machine (VM) in Windows
 * AuditD in Linux
-* De activiteiten logboeken van Azure en de diagnostische logboeken inschakelen op de bron van de aanval.
-
-Voor sommige waarschuwingen hebben we ook een betrouwbaarheids Score. De betrouwbaarheidsscore in **Security Center** kan uw team helpen bij het sorteren en rangschikken van waarschuwingen. **Security Center** past automatisch de best practices van de branche, intelligente algoritmen en processen toe die door analisten worden gebruikt om te bepalen of een bedreiging echt is en duidelijk inzicht biedt in de vorm van een betrouw bare Score.
+* De Azure-activiteitenlogboeken en de logboeken over het inschakelen van diagnostische gegevens voor de aangevallen resource.
 
 Klanten kunnen feedback delen voor waarschuwingsbeschrijving en relevantie. Navigeer naar de waarschuwing zelf, selecteer de knop **Was dit nuttig**, selecteer de reden en voer een opmerking in om de feedback uit te leggen. We houden dit feedbackkanaal constant in de gaten om onze waarschuwingen te verbeteren.
 
-## <a name="audit-log"></a>Audit logboek
+## <a name="audit-log"></a>Controlelogboek
 
 In de meeste gevallen vindt probleemoplossing in Security Center plaats door eerst de records in het [Controlelogboek](../azure-monitor/platform/platform-logs-overview.md) van het onderdeel met de fout te raadplegen. Met auditlogboeken kunt u het volgende bepalen:
 
@@ -56,7 +54,7 @@ In het controlelogboek staan alle schrijfbewerkingen (PUT, POST, DELETE) die op 
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
 
-Security Center maakt gebruik van micro soft monitoring agent. Dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service: om beveiligings gegevens van uw Azure virtual machines te verzamelen. Nadat het verzamelen van gegevens is ingeschakeld en de agent juist is geïnstalleerd op de doelcomputer, wordt als het goed is dit proces uitgevoerd:
+Security Center gebruikt de Microsoft Monitoring Agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service – om beveiligingsgegevens van uw virtuele Azure-machines te verzamelen. Nadat het verzamelen van gegevens is ingeschakeld en de agent juist is geïnstalleerd op de doelcomputer, wordt als het goed is dit proces uitgevoerd:
 
 * HealthService.exe
 
@@ -64,7 +62,7 @@ Als u de console voor servicebeheer (services.msc) opent, ziet u ook dat de serv
 
 ![Services](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Als u wilt zien welke versie van de agent u hebt, opent u **Taakbeheer**, zoekt u op het tabblad **Processen** **Microsoft Monitoring Agent-Service**, klikt u er met de rechtermuisknop op en klikt u ten slotte op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
+Als u wilt zien welke versie van de agent u hebt, opent u **Taakbeheer**, zoekt u op het tabblad **Processen****Microsoft Monitoring Agent-Service**, klikt u er met de rechtermuisknop op en klikt u ten slotte op **Eigenschappen**. Op het tabblad **Details** kunt u de bestandsversie vinden, zoals hieronder wordt weergegeven:
 
 ![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
@@ -72,14 +70,14 @@ Als u wilt zien welke versie van de agent u hebt, opent u **Taakbeheer**, zoekt 
 
 Er zijn twee installatiescenario's die verschillende resultaten kunnen opleveren bij het installeren van Microsoft Monitoring Agent op uw computer. Dit zijn de ondersteunde scenario's:
 
-* **Agent automatisch geïnstalleerd door Security Center**: in dit scenario kunt u de waarschuwingen op beide locaties bekijken, in Security Center en door te zoeken in logboeken. U ontvangt e-mail meldingen voor het e-mail adres dat is geconfigureerd in het beveiligings beleid voor het abonnement waartoe de resource behoort.
+* **Agent automatisch geïnstalleerd door Security Center**: in dit scenario kunt u de waarschuwingen op beide locaties bekijken, in Security Center en door te zoeken in logboeken. U ontvangt e-mailmeldingen naar het e-mailadres dat is geconfigureerd in het beveiligingsbeleid voor het abonnement waartoe de bron behoort.
 
-* **Agent hand matig geïnstalleerd op een virtuele machine die zich in azure bevindt**: in dit scenario kunt u de waarschuwingen in de portal van Security Center alleen bekijken als u agents hebt gedownload en 2017 geïnstalleerd, alleen als u filtert op het abonnement waartoe de werk ruimte behoort. Als u filtert op het abonnement waartoe de resource behoort, worden er geen waarschuwingen weer geven. U ontvangt e-mail meldingen voor het e-mail adres dat is geconfigureerd in het beveiligings beleid voor het abonnement waarvan de werk ruimte deel uitmaakt.
+* **Agent handmatig geïnstalleerd op een VM in Azure:** in dit scenario, als u gebruikte agenten die vóór februari 2017 handmatig zijn gedownload en geïnstalleerd, u de waarschuwingen alleen in de Portal van het Beveiligingscentrum bekijken als u filtert op het abonnement waartoe de werkruimte behoort. Als u filtert op het abonnement waartoe de bron behoort, ziet u geen waarschuwingen. U ontvangt e-mailmeldingen naar het e-mailadres dat is geconfigureerd in het beveiligingsbeleid voor het abonnement waartoe de werkruimte behoort.
 
 > [!NOTE]
 > U kunt het gedrag uit het tweede scenario voorkomen door de nieuwste versie van de agent te downloaden.
 
-## Problemen met de agentstatus controleren <a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Problemen met de agentstatus controleren <a name="mon-agent"></a>
 
 **Bewakingsstatus** toont de reden waarom Security Center VM's en computers die zijn geïnitialiseerd voor automatische inrichting niet afdoende kan bewaken. In de volgende tabel ziet u de waarden, beschrijvingen en oplossingen voor **Bewakingsstatus**.
 
@@ -90,13 +88,13 @@ Er zijn twee installatiescenario's die verschillende resultaten kunnen opleveren
 | Azure VM-agent ontbreekt of is ongeldig | De MMA is nog niet geïnstalleerd.  Security Center installeert de extensie pas als er een geldige Azure VM-agent is. | Installeer de Azure VM-agent (opnieuw) op de virtuele machine of voer een upgrade uit. |
 | VM-status niet gereed voor installatie  | De MMA is nog niet geïnstalleerd omdat de virtuele machine niet gereed is voor installatie. De virtuele machine is niet gereed voor installatie vanwege een probleem met de VM-agent of de VM-inrichting. | Controleer de status van uw virtuele machine. Ga terug naar **Virtuele machines** in de portal en selecteer de virtuele machine voor statusinformatie. |
 |Installatie is mislukt: algemene fout | De MMA is geïnstalleerd, maar werkt niet vanwege een fout. | [Installeer de extensie handmatig](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) of verwijder de extensie zodat Security Center deze opnieuw probeert te installeren. |
-| Installatie is mislukt: lokale agent is al geïnstalleerd | De installatie van MMA is mislukt. Security Center heeft vastgesteld dat er al een lokale agent (Log Analytics of System Center Operations Manager) is geïnstalleerd op de VM. De installatie van MMA is gestopt om een multihoming-configuratie - de virtuele machine rapporteert aan twee afzonderlijke werkruimten - te voorkomen. | U kunt dit op twee manieren oplossen: [de extensie handmatig installeren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) en verbinden met de gewenste werkruimte. Of, de gewenste werkruimte instellen als uw standaardwerkruimte en automatische inrichting van de agent inschakelen.  Zie [Automatische inrichting inschakelen](security-center-enable-data-collection.md). |
-| Kan geen verbinding maken tussen agent en werkruimte | De MMA is geïnstalleerd, maar werkt niet vanwege een netwerkverbinding.  Controleer of er internettoegang is. En anders moet er een geldige HTTP-proxy voor de agent zijn geconfigureerd. | Zie netwerk vereisten voor de bewakings agent. |
-| Agent verbonden met ontbrekende of onbekende werkruimte | Security Center heeft gedetecteerd dat MMA die is geïnstalleerd op de VM, verbonden is met een werkruimte waartoe deze geen toegang heeft. | Dit kan gebeuren in twee gevallen. De werkruimte is verwijderd en bestaat niet meer. Installeer de agent opnieuw met de juiste werkruimte of verwijder de agent en laat Security Center de automatische inrichtingsinstallatie voltooien. In het tweede geval behoort de werkruimte tot een abonnement waarvoor Security Center geen machtigingen heeft. Security Center verleent de Microsoft Security Resource Provider toegang op basis van een abonnement. Als u toegang wilt inschakelen, registreert u het abonnement op Microsoft Security Resource Provider. U kunt dit doen via API, PowerShell, portal of gewoon door in het dashboard **Overzicht** van het Security Center te filteren op abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie. |
-| Agent reageert niet of ID ontbreekt | Security Center kan de beveiligingsgegevens die zijn gescand van de virtuele machine niet ophalen, zelfs niet als de agent is geïnstalleerd. | De agent rapporteert geen gegevens, ook de heartbeat niet. De agent is mogelijk beschadigd of het verkeer wordt geblokkeerd. Of de agent rapporteert gegevens, maar beschikt niet over de Azure-resource-id, waardoor de juiste Azure VM voor de gegevens niet kan worden gevonden. Zie [probleemoplossings handleiding voor log Analytics-agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)voor meer informatie over het oplossen van problemen met Linux. Zie [Troubleshooting Windows Virtual Machines](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines) (Problemen met virtuele Windows-machines oplossen) voor het oplossen van problemen in Windows. |
+| Installatie is mislukt: lokale agent is al geïnstalleerd | De installatie van MMA is mislukt. Security Center heeft een lokale agent (Log Analytics of System Center Operations Manager) geïdentificeerd die al op de VM is geïnstalleerd. De installatie van MMA is gestopt om een multihoming-configuratie - de virtuele machine rapporteert aan twee afzonderlijke werkruimten - te voorkomen. | U kunt dit op twee manieren oplossen: [de extensie handmatig installeren](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) en verbinden met de gewenste werkruimte. Of, de gewenste werkruimte instellen als uw standaardwerkruimte en automatische inrichting van de agent inschakelen.  Zie [Automatische inrichting inschakelen](security-center-enable-data-collection.md). |
+| Kan geen verbinding maken tussen agent en werkruimte | De MMA is geïnstalleerd, maar werkt niet vanwege een netwerkverbinding.  Controleer of er internettoegang is. En anders moet er een geldige HTTP-proxy voor de agent zijn geconfigureerd. | Zie Netwerkvereisten voor Monitoring Agent. |
+| Agent verbonden met ontbrekende of onbekende werkruimte | Security Center heeft vastgesteld dat de Microsoft Monitoring Agent die op de VM is geïnstalleerd, is verbonden met een werkruimte waartoe het geen toegang heeft. | Dit kan gebeuren in twee gevallen. De werkruimte is verwijderd en bestaat niet meer. Installeer de agent opnieuw met de juiste werkruimte of verwijder de agent en laat Security Center de automatische inrichtingsinstallatie voltooien. In het tweede geval behoort de werkruimte tot een abonnement waarvoor Security Center geen machtigingen heeft. Security Center verleent de Microsoft Security Resource Provider toegang op basis van een abonnement. Als u toegang wilt inschakelen, registreert u het abonnement op Microsoft Security Resource Provider. U kunt dit doen via API, PowerShell, portal of gewoon door in het dashboard **Overzicht** van het Security Center te filteren op abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie. |
+| Agent reageert niet of ID ontbreekt | Security Center kan de beveiligingsgegevens die zijn gescand van de virtuele machine niet ophalen, zelfs niet als de agent is geïnstalleerd. | De agent rapporteert geen gegevens, ook de heartbeat niet. De agent is mogelijk beschadigd of het verkeer wordt geblokkeerd. De agent rapporteert ook gegevens, maar mist een Azure-bron-id, zodat de gegevens niet kunnen worden gekoppeld aan de Azure VM. Zie [Troubleshooting Guide for Log Analytics Agent for Linux voor](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)problemen met Linux. Zie [Troubleshooting Windows Virtual Machines](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines) (Problemen met virtuele Windows-machines oplossen) voor het oplossen van problemen in Windows. |
 | Agent niet geïnstalleerd | Gegevensverzameling is uitgeschakeld. | Schakel gegevensverzameling in het beveiligingsbeleid in of installeer de MMA handmatig. |
 
-## Problemen oplossen met de netwerkvereisten voor de Monitoring Agent <a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Problemen oplossen met de netwerkvereisten voor de Monitoring Agent <a name="mon-network-req"></a>
 
 Agents kunnen alleen verbinding maken met Security Center en zich daarbij registreren als ze toegang hebben tot netwerkbronnen, inclusief de poortnummers en domein-URL's.
 
@@ -134,25 +132,24 @@ Als u problemen ondervindt met het laden van het dashboard van Security Center, 
 
 ## <a name="contacting-microsoft-support"></a>Contact opnemen met Microsoft-ondersteuning
 
-Bepaalde problemen kunnen worden geïdentificeerd aan de hand van de richtlijnen in dit artikel. Andere problemen vindt u ook beschreven in het openbare [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) van Security Center. Als u aanvullende hulp nodig hebt om bepaalde problemen op te lossen, kunt u via **Azure Portal** een nieuwe ondersteuningsaanvraag openen. Dit doet u als volgt:
+Bepaalde problemen kunnen worden geïdentificeerd aan de hand van de richtlijnen in dit artikel. Andere problemen vindt u ook beschreven in het openbare [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) van Security Center. Als u echter verdere probleemoplossing nodig hebt, u een nieuwe ondersteuningsaanvraag openen via **azure-portal** zoals hieronder wordt weergegeven:
 
 ![Microsoft-ondersteuning](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>Zie ook
 
-In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid configureert in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
-* [Plannings- en bedieningsgids voor het Azure Beveiligingscentrum](security-center-planning-and-operations-guide.md): leer de ontwerpoverwegingen kennen en plan hiervoor bij de overstap naar Azure Security Center.
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md) (Beveiligingsstatus controleren in Azure Security Center): meer informatie over het controleren van de status van uw Azure-resources
-* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): leer hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
+* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Meer informatie over het plannen en begrijpen van de ontwerpoverwegingen om Azure Security Center te implementeren en te begrijpen.
+* [Bewaking van de beveiligingsstatus in Azure Security Center](security-center-monitoring.md) — Meer informatie over het bewaken van de status van uw Azure-resources
+* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center](security-center-managing-and-responding-alerts.md) — Meer informatie over het beheren en reageren op beveiligingswaarschuwingen
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-type.md)
 * [Zelfstudie: reageren op beveiligingsincidenten](tutorial-security-incident.md)
 * [Validatie van waarschuwingen in Azure Security Center](security-center-alert-validation.md)
 * [E-mailmeldingen in Azure Security Center](security-center-provide-security-contact-details.md)
 * [Beveiligingsincidenten afhandelen in Azure Security Center](security-center-incident.md)
-* [Betrouwbaarheidsscore waarschuwing](security-center-secure-score.md)
 * [Incidenten en waarschuwingen onderzoeken in Azure Security Center](security-center-investigation.md)
 * [Detectiemogelijkheden van Azure Security Center](security-center-detection-capabilities.md)
-* [Partneroplossingen controleren met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt controleren.
-* [Veelgestelde vragen over Azure Security Center](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure
+* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
+* [Veelgestelde vragen over Azure Security Center](faq-general.md) : veelgestelde vragen vinden over het gebruik van de service
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) — Blogberichten over Azure-beveiliging en -naleving zoeken

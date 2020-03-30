@@ -1,48 +1,48 @@
 ---
-title: De Azure IoT Central-apparaats brug bouwen | Microsoft Docs
-description: Bouw de IoT Central-apparaats brug om andere IoT-Clouds (Sigfox, partikel, het netwerk van zaken, enzovoort) te verbinden met uw IoT Central-app.
+title: De Azure IoT Central-apparaatbrug bouwen | Microsoft Documenten
+description: Bouw de IoT Central-apparaatbrug om andere IoT-clouds (Sigfox, Particle, The Things Network, enz.) aan te sluiten op uw IoT Central-app.
 services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 07/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: b79020b4da08eeade0af885b4a6ca9f01c81c526
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158415"
 ---
-# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>De IoT Central Device Bridge bouwen om andere IoT-Clouds te verbinden met IoT Central
+# <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Bouw de IoT Central-apparaatbrug om andere IoT-clouds aan te sluiten op IoT Central
 
 *Dit onderwerp is van toepassing op beheerders.*
 
-De IoT Central Device Bridge is een open-source oplossing die uw Sigfox, partikel, het netwerk van de zaken en andere Clouds verbindt met uw IoT Central-app. Of u nu gebruikmaakt van apparaten voor het bijhouden van items die zijn verbonden met het lage-energie netwerk van Sigfox of met behulp van apparaten voor lucht kwaliteit op de partikel van de apparaat-Cloud, of met behulp van bodem vocht bewakings apparaten op TTN, kunt u rechtstreeks gebruikmaken van de kracht van IoT Centraal met behulp van de IoT Central Device Bridge. De apparaats brug verbindt andere IoT-Clouds met IoT Central door de gegevens die uw apparaten verzenden naar de andere Clouds, door te sturen naar uw IoT Central-app. In uw IoT Central-app kunt u regels maken en analyses uitvoeren op die gegevens, werk stromen maken in Microsoft Flow en Azure Logic apps, die gegevens exporteren, en nog veel meer. De [IOT Central Device Bridge](https://aka.ms/iotcentralgithubdevicebridge) ophalen van github
+De IoT Central-apparaatbrug is een open-source oplossing die uw Sigfox, Particle, The Things Network en andere clouds verbindt met uw IoT Central-app. Of u nu assettrackingapparaten gebruikt die zijn aangesloten op sigfox's Low-Power-Wide Area Network, of met behulp van luchtkwaliteitsbewakingsapparatuur op de Particle Device Cloud, of met behulp van apparatuur voor het monitoren van bodemvocht op TTN, u direct gebruikmaken van de kracht van IoT Centraal met behulp van de IoT Central-apparaatbrug. De apparaatbrug verbindt andere IoT-clouds met IoT Central door de gegevens die uw apparaten naar de andere clouds verzenden door te sturen naar uw IoT Central-app. In uw IoT Central-app u regels bouwen en analyses uitvoeren op die gegevens, werkstromen maken in Microsoft Flow- en Azure Logic-apps, die gegevens exporteren en nog veel meer. Haal de [IoT Central-apparaatbrug](https://aka.ms/iotcentralgithubdevicebridge) van GitHub
 
 ## <a name="what-is-it-and-how-does-it-work"></a>Wat is het en hoe werkt het?
-De IoT Central Device Bridge is een open-source oplossing in GitHub. U kunt nu de knop ' implementeren naar Azure ' gebruiken waarmee u een aangepaste Azure Resource Manager sjabloon met verschillende Azure-resources in uw Azure-abonnement implementeert. De resources zijn onder andere:
--   Azure-functie-app
--   Azure Storage-account
--   Verbruiksabonnement
--   Azure Key Vault
+De IoT Central device bridge is een open-source oplossing in GitHub. Het is klaar om te gaan met een knop 'Implementeren naar Azure' waarmee een aangepaste Azure Resource Manager-sjabloon met verschillende Azure-bronnen wordt geïmplementeerd in uw Azure-abonnement. De middelen omvatten:
+-    Azure-functie-app
+-    Azure Storage-account
+-    Verbruiksabonnement
+-    Azure Key Vault
 
-De functie-app is het essentiële onderdeel van de apparaats brug. Het ontvangt HTTP POST-aanvragen van andere IoT-platforms of aangepaste platforms via een eenvoudige integratie van webhooks. Er zijn voor beelden gegeven die laten zien hoe u verbinding maakt met Sigfox-, partikel-en TTN-Clouds. U kunt deze oplossing eenvoudig uitbreiden om verbinding te maken met uw aangepaste IoT-Cloud als uw platform HTTP POST-aanvragen kan verzenden naar uw functie-app.
-Met de functie-app worden de gegevens getransformeerd in een indeling die wordt geaccepteerd door IoT Central en doorgestuurd via DPS-Api's.
+De functie-app is het kritieke stuk van de apparaatbrug. Het ontvangt HTTP POST verzoeken van andere IoT-platforms of aangepaste platforms via een eenvoudige webhook integratie. We hebben voorbeelden gegeven die laten zien hoe je verbinding maken met Sigfox- En Particle- en TTN-wolken. U deze oplossing eenvoudig uitbreiden om verbinding te maken met uw aangepaste IoT-cloud als uw platform HTTP POST-verzoeken naar uw functie-app kan verzenden.
+De functie-app transformeert de gegevens in een formaat dat door IoT Central wordt geaccepteerd en stuurt deze door via DPS API's.
 
-![Scherm opname van Azure functions](media/howto-build-iotc-device-bridge/azfunctions.png)
+![Schermafbeelding van Azure-functies](media/howto-build-iotc-device-bridge/azfunctions.png)
 
-Als uw IoT Central-app het apparaat herkent op apparaat-ID in het doorgestuurde bericht, wordt er een nieuwe meting voor dat apparaat weer gegeven. Als de apparaat-ID nog nooit is gezien door uw IoT Central-app, probeert uw functie-app een nieuw apparaat met die apparaat-ID te registreren en wordt het weer gegeven als een ' niet-gekoppeld apparaat ' in uw IoT Central-app. 
+Als uw IoT Central-app het apparaat herkent op apparaat-id in het doorgestuurde bericht, verschijnt er een nieuwe meting voor dat apparaat. Als de apparaat-id nog nooit is gezien door uw IoT Central-app, probeert uw functie-app een nieuw apparaat te registreren met die apparaat-id en wordt deze weergegeven als een 'Niet-gekoppeld apparaat' in uw IoT Central-app. 
 
-## <a name="how-do-i-set-it-up"></a>Hoe kan ik instellen?
-De instructies worden gedetailleerd weer gegeven in het Leesmij-bestand in de GitHub opslag plaats. 
+## <a name="how-do-i-set-it-up"></a>Hoe stel ik het in?
+De instructies worden in detail vermeld in het README-bestand in de GitHub repo. 
 
 ## <a name="pricing"></a>Prijzen
-De Azure-resources worden gehost in uw Azure-abonnement. Meer informatie over prijzen vindt u in het [Leesmij-bestand](https://aka.ms/iotcentralgithubdevicebridge).
+De Azure-resources worden gehost in uw Azure-abonnement. Meer informatie over prijzen vindt u in het [README-bestand.](https://aka.ms/iotcentralgithubdevicebridge)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u hebt geleerd hoe u de IoT Central Device Bridge bouwt, is dit de voorgestelde volgende stap:
+Nu je hebt geleerd hoe je de IoT Central-apparaatbrug bouwen, is hier de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
 > [Uw apparaten beheren](howto-manage-devices.md)

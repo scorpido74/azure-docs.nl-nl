@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Queue Storage met behulp van Visual Studio (ASP.NET Core)
-description: Aan de slag met Azure Queue Storage in een ASP.NET Core-project in Visual Studio
+title: Aan de slag met wachtrijopslag met Visual Studio (ASP.NET Core)
+description: Aan de slag met Azure-wachtrijopslag in een ASP.NET Core-project in Visual Studio
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,29 +14,29 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300022"
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Aan de slag met Queue Storage en Visual Studio Connected Services (ASP.NET Core)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Aan de slag met wachtrijopslag en Visual Studio connected services (ASP.NET Core)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Queue Storage in Visual Studio nadat u een Azure-opslag account in een ASP.NET Core-project hebt gemaakt of ernaar hebt verwezen met behulp van de Visual Studio **Connected Services** -functie. **Met de verbinding Connected Services** worden de juiste NuGet-pakketten geïnstalleerd voor toegang tot Azure Storage in uw project en wordt de Connection String voor het opslag account toegevoegd aan uw project configuratie bestanden. (Zie [opslag documentatie](https://azure.microsoft.com/documentation/services/storage/) voor algemene informatie over Azure Storage.)
+In dit artikel wordt beschreven hoe u aan de slag met Azure Queue-opslag in Visual Studio nadat u een Azure-opslagaccount hebt gemaakt of verwezen in een ASP.NET Core-project met behulp van de functie Visual Studio **Connected Services.** De **bewerking Verbonden Services** installeert de juiste NuGet-pakketten om toegang te krijgen tot Azure-opslag in uw project en voegt de verbindingstekenreeks voor het opslagaccount toe aan uw projectconfiguratiebestanden. (Zie [Opslagdocumentatie](https://azure.microsoft.com/documentation/services/storage/) voor algemene informatie over Azure Storage.)
 
-Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten die overal ter wereld toegankelijk zijn via geverifieerde oproepen met HTTP of HTTPS. Eén wachtrij bericht kan Maxi maal 64 kB groot zijn en een wachtrij kan miljoenen berichten bevatten, tot de totale capaciteits limiet van een opslag account. Zie ook [aan de slag met Azure Queue Storage met behulp van .net](../storage/queues/storage-dotnet-how-to-use-queues.md) voor meer informatie over het programmatisch bewerken van wacht rijen.
+Azure-wachtrijopslag is een service voor het opslaan van grote aantallen berichten die overal ter wereld toegankelijk zijn via geverifieerde oproepen via HTTP of HTTPS. Een bericht met één wachtrij kan maximaal 64 kilobytes (KB) groot zijn en een wachtrij kan miljoenen berichten bevatten, tot de totale capaciteitslimiet van een opslagaccount. Zie Ook [Aan de slag met Azure Queue-opslag met .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) voor meer informatie over het programmatisch manipuleren van wachtrijen.
 
-Maak eerst een Azure-wachtrij in uw opslag account om aan de slag te gaan. In C# dit artikel wordt uitgelegd hoe u een wachtrij maakt en hoe u eenvoudige wachtrij bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en verwijderen van wachtrij berichten.  De code maakt gebruik van de Azure Storage-client bibliotheek voor .NET. Zie [ASP.net](https://www.asp.net)voor meer informatie over ASP.net.
+Maak eerst een Azure-wachtrij in uw opslagaccount om aan de slag te gaan. In dit artikel wordt vervolgens uitgelegd hoe u een wachtrij in C# maakt en hoe u basiswachtrijbewerkingen uitvoeren, zoals het toevoegen, wijzigen, lezen en verwijderen van wachtrijberichten.  De code maakt gebruik van de Azure Storage Client Library voor .NET. Zie [ASP.NET](https://www.asp.net)voor meer informatie over ASP.NET.
 
-Sommige van de Azure Storage Api's zijn asynchroon en de code in dit artikel gaat ervan uit dat er asynchrone methoden worden gebruikt. Zie [asynchrone programmering](https://docs.microsoft.com/dotnet/csharp/async) voor meer informatie.
+Sommige Azure Storage API's zijn asynchroon en de code in dit artikel gaat ervan uit dat async-methoden worden gebruikt. Zie [Asynchrone programmering](https://docs.microsoft.com/dotnet/csharp/async) voor meer informatie.
 
-## <a name="access-queues-in-code"></a>Toegang tot wacht rijen in code
+## <a name="access-queues-in-code"></a>Wachtrijen in code openen
 
-Als u toegang wilt krijgen tot wacht rijen in ASP.NET Core projecten, neemt C# u de volgende items op in een bron bestand dat toegang heeft tot de Azure-wachtrij opslag. Gebruik al deze code vóór de code in de volgende secties.
+Als u wachtrijen wilt openen in ASP.NET Core-projecten, neemt u de volgende items op in een C#-bronbestand dat toegang heeft tot Azure-wachtrijopslag. Gebruik al deze code voor de code in de volgende secties.
 
-1. Voeg de vereiste `using`-instructies toe:
+1. Voeg de `using` nodige instructies toe:
     ```cs
     using Microsoft.Framework.Configuration;
     using Microsoft.WindowsAzure.Storage;
@@ -45,38 +45,38 @@ Als u toegang wilt krijgen tot wacht rijen in ASP.NET Core projecten, neemt C# u
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. Een `CloudStorageAccount`-object ophalen dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van de opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service:
+1. Download `CloudStorageAccount` een object dat uw opslagaccountgegevens vertegenwoordigt. Gebruik de volgende code om de gegevens van de opslagverbinding en opslagaccount op te halen uit de Azure-serviceconfiguratie:
 
     ```cs
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Een `CloudQueueClient`-object ophalen om te verwijzen naar de wachtrij objecten in uw opslag account:
+1. Zorg `CloudQueueClient` ervoor dat een object verwijst naar de wachtrijobjecten in uw opslagaccount:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Een `CloudQueue`-object ophalen om te verwijzen naar een specifieke wachtrij:
+1. Een `CloudQueue` object naar een specifieke wachtrij verwijzen:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
     CloudQueue messageQueue = queueClient.GetQueueReference("messagequeue");
     ```
 
-### <a name="create-a-queue-in-code"></a>Een wachtrij maken in code
+### <a name="create-a-queue-in-code"></a>Een wachtrij in code maken
 
-Als u de Azure-wachtrij in code wilt maken, roept u `CreateIfNotExistsAsync` aan:
+Als u de Azure-wachtrij `CreateIfNotExistsAsync`in code wilt maken, belt u:
 
 ```cs
 // Create the CloudQueue if it does not exist.
 await messageQueue.CreateIfNotExistsAsync();
 ```
 
-## <a name="add-a-message-to-a-queue"></a>Een bericht aan een wachtrij toevoegen
+## <a name="add-a-message-to-a-queue"></a>Een bericht toevoegen aan een wachtrij
 
-Als u een bericht wilt invoegen in een bestaande wachtrij, maakt u een nieuw `CloudQueueMessage`-object en roept u vervolgens de `AddMessageAsync`-methode aan. Een `CloudQueueMessage`-object kan worden gemaakt op basis van een teken reeks (in UTF-8-indeling) of een byte matrix.
+Als u een bericht wilt invoegen `CloudQueueMessage` in een `AddMessageAsync` bestaande wachtrij, maakt u een nieuw object en roept u de methode aan. Een `CloudQueueMessage` object kan worden gemaakt op basis van een tekenreeks (in utf-8-indeling) of een bytearray.
 
 ```cs
 // Create a message and add it to the queue.
@@ -86,7 +86,7 @@ await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Een bericht in een wachtrij lezen
 
-U kunt het bericht aan de voor kant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door de `PeekMessageAsync`-methode aan te roepen:
+U het bericht voor in een wachtrij bekijken zonder het `PeekMessageAsync` uit de wachtrij te verwijderen door de methode aan te roepen:
 
 ```cs
 // Peek the next message in the queue.
@@ -95,12 +95,12 @@ CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Een bericht in een wachtrij lezen en verwijderen
 
-Met uw code kunt u een bericht uit een wachtrij in twee stappen verwijderen (dewachtrij).
+Uw code kan een bericht in twee stappen uit een wachtrij verwijderen (de queue) verwijderen (de queue).
 
-1. Roep `GetMessageAsync` aan om het volgende bericht in een wachtrij op te halen. Een bericht dat wordt geretourneerd door `GetMessageAsync` wordt onzichtbaar voor andere code die berichten uit deze wachtrij leest. Standaard blijft het bericht onzichtbaar gedurende 30 seconden.
-1. Roep `DeleteMessageAsync` aan om het verwijderen van het bericht uit de wachtrij te volt ooien.
+1. Bel `GetMessageAsync` om het volgende bericht in een wachtrij te krijgen. Een bericht `GetMessageAsync` dat wordt geretourneerd, wordt onzichtbaar voor andere codeleesberichten uit deze wachtrij. Standaard blijft het bericht onzichtbaar gedurende 30 seconden.
+1. Als u wilt eindigen met `DeleteMessageAsync`het verwijderen van het bericht uit de wachtrij, belt u .
 
-Dit proces in twee stappen voor het verwijderen van een bericht zorgt ervoor dat als de code er niet in slaagt een bericht te verwerken vanwege hardware- of softwareproblemen, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw kan proberen. Met de volgende code wordt `DeleteMessageAsync` direct nadat het bericht is verwerkt:
+Dit proces in twee stappen voor het verwijderen van een bericht zorgt ervoor dat als de code er niet in slaagt een bericht te verwerken vanwege hardware- of softwareproblemen, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw kan proberen. De volgende `DeleteMessageAsync` codeoproepen direct nadat het bericht is verwerkt:
 
 ```cs
 // Get the next message in the queue.
@@ -112,9 +112,9 @@ CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 await messageQueue.DeleteMessageAsync(retrievedMessage);
 ```
 
-## <a name="additional-options-for-dequeuing-messages"></a>Aanvullende opties voor het dequeuing van berichten
+## <a name="additional-options-for-dequeuing-messages"></a>Extra opties voor het dequeueren van berichten
 
-Er zijn twee manieren om het ophalen van berichten aan te passen vanuit een wachtrij. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende code voorbeeld wordt de methode `GetMessages` gebruikt om 20 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met een `foreach`-lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht. Houd er rekening mee dat de timer van vijf minuten voor alle berichten tegelijk wordt gestart, dus nadat de vijf minuten zijn verstreken, worden alle berichten die niet zijn verwijderd, weer zichtbaar.
+Er zijn twee manieren om het ophalen van berichten uit een wachtrij aan te passen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende `GetMessages` codevoorbeeld wordt de methode gebruikt om 20 berichten in één gesprek te ontvangen. Vervolgens verwerkt het elk `foreach` bericht met behulp van een lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht. Houd er rekening mee dat de timer van vijf minuten voor alle berichten tegelijkertijd wordt gestart, dus na vijf minuten worden berichten die niet zijn verwijderd weer zichtbaar.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -129,7 +129,7 @@ foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.From
 
 ## <a name="get-the-queue-length"></a>Lengte van de wachtrij ophalen
 
-U kunt een schatting ophalen van het aantal berichten in de wachtrij. De `FetchAttributes`-methode vraagt de Queue-service om de wachtrij kenmerken op te halen, inclusief het aantal berichten. De eigenschap `ApproximateMethodCount` retourneert de laatste waarde die is opgehaald door de `FetchAttributes`-methode, zonder de Queue-service aan te roepen.
+U kunt een schatting ophalen van het aantal berichten in de wachtrij. De `FetchAttributes` methode vraagt de wachtrijservice om de wachtrijkenmerken op te halen, inclusief het aantal berichten. De `ApproximateMethodCount` eigenschap retourneert de `FetchAttributes` laatste waarde die door de methode is opgehaald, zonder de wachtrijservice aan te roepen.
 
 ```cs
 // Fetch the queue attributes.
@@ -142,9 +142,9 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Het async-await-patroon gebruiken met algemene wachtrij-Api's
+## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Het Async-Wacht-patroon gebruiken met algemene wachtrij-API's
 
-In dit voor beeld ziet u hoe u het async-await-patroon gebruikt met algemene wachtrij-Api's die eindigen op `Async`. Wanneer een asynchrone methode wordt gebruikt, wordt het async-await-patroon onderbroken totdat de aanroep is voltooid. Dit gedrag zorgt ervoor dat de huidige thread andere werkzaamheden kan uitvoeren, waardoor prestatie knelpunten worden voor komen en de algehele reactie snelheid van uw toepassing wordt verbeterd.
+In dit voorbeeld ziet u hoe u het async-wachtpatroon gebruikt met algemene wachtrij-API's die eindigen met `Async`. Wanneer een async-methode wordt gebruikt, wordt de lokale uitvoering van de async-wacht opgeschort totdat de aanroep is voltooid. Met dit gedrag kan de huidige thread ander werk doen dat prestatieknelpunten helpt voorkomen en de algehele responsiviteit van uw toepassing verbetert.
 
 ```cs
 // Create a message to add to the queue.
@@ -165,7 +165,7 @@ Console.WriteLine("Deleted message");
 
 ## <a name="delete-a-queue"></a>Een wachtrij verwijderen
 
-Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de `Delete`-methode aan in het wachtrij object:
+Als u een wachtrij en alle berichten in `Delete` deze wachtrij wilt verwijderen, roept u de methode op het wachtrijobject aan:
 
 ```cs
 // Delete the queue.

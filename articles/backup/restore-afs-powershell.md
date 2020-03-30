@@ -1,34 +1,34 @@
 ---
-title: Azure Files herstellen met Power shell
-description: In dit artikel leert u hoe u Azure Files kunt herstellen met behulp van de Azure Backup-service en Power shell.
+title: Azure-bestanden herstellen met PowerShell
+description: In dit artikel leest u hoe u Azure-bestanden herstellen met de Azure Backup-service en PowerShell.
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086820"
 ---
-# <a name="restore-azure-files-with-powershell"></a>Azure Files herstellen met Power shell
+# <a name="restore-azure-files-with-powershell"></a>Azure-bestanden herstellen met PowerShell
 
-In dit artikel wordt uitgelegd hoe u een volledige bestands share of specifieke bestanden herstelt vanaf een herstel punt dat is gemaakt door de [Azure backup](backup-overview.md) -service met behulp van Azure Power shell.
+In dit artikel wordt uitgelegd hoe u een volledige bestandsshare of specifieke bestanden herstellen vanuit een herstelpunt dat is gemaakt door de [Azure Backup-service](backup-overview.md) met Azure Powershell.
 
-U kunt een volledige bestands share of specifieke bestanden op de share herstellen. U kunt herstellen naar de oorspronkelijke locatie of naar een andere locatie.
+U een volledige bestandsshare of specifieke bestanden op het aandeel herstellen. U herstellen naar de oorspronkelijke locatie of naar een alternatieve locatie.
 
 > [!WARNING]
-> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Raadpleeg de [sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) overzicht van de vereiste voor deze wijziging voor meer informatie.
+> Zorg ervoor dat de PS-versie is geüpgraded naar de minimale versie voor 'Az.RecoveryServices 2.6.0' voor AFS-back-ups. Voor meer informatie, verwijzen wij u naar [de sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) waarin de vereiste voor deze wijziging.
 
-## <a name="fetch-recovery-points"></a>Herstel punten ophalen
+## <a name="fetch-recovery-points"></a>Herstelpunten ophalen
 
-Gebruik [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) om alle herstel punten voor het back-upitem weer te geven.
+Gebruik [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) om alle herstelpunten voor het back-upitem weer te geven.
 
 In het volgende script:
 
-* De variabele **$RP** is een matrix met herstel punten voor het geselecteerde back-upitem van de afgelopen zeven dagen.
-* De matrix wordt in omgekeerde volg orde gesorteerd met het laatste herstel punt bij index **0**.
-* Gebruik standaard-Power shell-matrix indexie om het herstel punt te kiezen.
-* In het voor beeld selecteert **$RP [0]** het meest recente herstel punt.
+* De variabele **$rp** is een reeks herstelpunten voor het geselecteerde back-upitem van de afgelopen zeven dagen.
+* De array wordt gesorteerd in omgekeerde volgorde van tijd met het laatste herstelpunt op index **0**.
+* Gebruik standaard PowerShell-arrayindexering om het herstelpunt te kiezen.
+* In het voorbeeld selecteert **$rp[0]** het laatste herstelpunt.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -38,7 +38,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-De uitvoer ziet er ongeveer als volgt uit.
+De uitvoer is vergelijkbaar met de volgende.
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -54,24 +54,24 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Nadat het relevante herstel punt is geselecteerd, herstelt u de bestands share of het bestand naar de oorspronkelijke locatie of naar een andere locatie.
+Nadat het desbetreffende herstelpunt is geselecteerd, herstelt u de bestandsshare of -bestand naar de oorspronkelijke locatie of naar een alternatieve locatie.
 
-## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Een Azure-bestands share herstellen naar een alternatieve locatie
+## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Een Azure-bestandsshare herstellen naar een alternatieve locatie
 
-Gebruik [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om het geselecteerde herstel punt te herstellen. Geef deze para meters op om de alternatieve locatie te identificeren:
+Gebruik het [Herstel-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om te herstellen naar het geselecteerde herstelpunt. Geef deze parameters op om de alternatieve locatie te identificeren:
 
-* **TargetStorageAccountName**: het opslag account waarnaar de inhoud van de back-up wordt teruggezet. Het doel-opslag account moet zich op dezelfde locatie berichten als de kluis.
-* **TargetFileShareName**: de bestands shares binnen het doel Storage-account waarnaar de inhoud van de back-up wordt teruggezet.
-* **TargetFolder**: de map onder de bestands share waarop de gegevens worden teruggezet. Als de inhoud waarvan een back-up is gemaakt, moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap op als een lege teken reeks.
-* **ResolveConflict**: instructie als er een conflict is met de herstelde gegevens. Accepteert **overschrijven** of **overs Laan**.
+* **TargetStorageAccountName:** het opslagaccount waarop de back-upinhoud wordt hersteld. Het doelopslagaccount moet zich op dezelfde locatie bevinden als de kluis.
+* **TargetFileShareName:** Het bestand wordt gedeeld in het doelopslagaccount waarop de back-upinhoud is hersteld.
+* **TargetFolder:** de map onder de bestandsshare waaraan gegevens worden hersteld. Als de back-upinhoud moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap als een lege tekenreeks.
+* **ResolveConflict:** Instructie als er een conflict is met de herstelde gegevens. Accepteert **Overschrijven** of **Overslaan**.
 
-Voer de cmdlet als volgt uit met de para meters:
+Voer de cmdlet als volgt uit met de parameters:
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ```
 
-De opdracht retourneert een taak met een ID die moet worden bijgehouden, zoals wordt weer gegeven in het volgende voor beeld.
+De opdracht retourneert een taak met een id die moet worden bijgehouden, zoals in het volgende voorbeeld wordt weergegeven.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -79,30 +79,30 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
 ```
 
-## <a name="restore-an-azure-file-to-an-alternate-location"></a>Een Azure-bestand terugzetten op een andere locatie
+## <a name="restore-an-azure-file-to-an-alternate-location"></a>Een Azure-bestand herstellen naar een alternatieve locatie
 
-Gebruik [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om het geselecteerde herstel punt te herstellen. Geef deze para meters op om de alternatieve locatie aan te duiden en het bestand dat u wilt herstellen, uniek te identificeren.
+Gebruik het [Herstel-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om te herstellen naar het geselecteerde herstelpunt. Geef deze parameters op om de alternatieve locatie te identificeren en om op unieke wijze het bestand te identificeren dat u wilt herstellen.
 
-* **TargetStorageAccountName**: het opslag account waarnaar de inhoud van de back-up wordt teruggezet. Het doel-opslag account moet zich op dezelfde locatie berichten als de kluis.
-* **TargetFileShareName**: de bestands shares binnen het doel Storage-account waarnaar de inhoud van de back-up wordt teruggezet.
-* **TargetFolder**: de map onder de bestands share waarop de gegevens worden teruggezet. Als de inhoud waarvan een back-up is gemaakt, moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap op als een lege teken reeks.
-* **SourceFilePath**: het absolute pad van het bestand dat in de bestands share moet worden hersteld, als een teken reeks. Dit pad is hetzelfde pad dat wordt gebruikt in de Power shell **-cmdlet Get-AzStorageFile** .
-* **SourceFileType**: Hiermee wordt aangegeven of een map of een bestand is geselecteerd. De **map** of het **bestand**wordt geaccepteerd.
-* **ResolveConflict**: instructie als er een conflict is met de herstelde gegevens. Accepteert **overschrijven** of **overs Laan**.
+* **TargetStorageAccountName:** het opslagaccount waarop de back-upinhoud wordt hersteld. Het doelopslagaccount moet zich op dezelfde locatie bevinden als de kluis.
+* **TargetFileShareName:** Het bestand wordt gedeeld in het doelopslagaccount waarop de back-upinhoud is hersteld.
+* **TargetFolder:** de map onder de bestandsshare waaraan gegevens worden hersteld. Als de back-upinhoud moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap als een lege tekenreeks.
+* **SourceFilePath:** het absolute pad van het bestand, dat moet worden hersteld binnen de bestandsshare, als een tekenreeks. Dit pad is hetzelfde pad dat wordt gebruikt in de **cmdlet Get-AzStorageFile** PowerShell.
+* **SourceFileType:** of een map of een bestand is geselecteerd. Accepteert **directory** of **bestand**.
+* **ResolveConflict:** Instructie als er een conflict is met de herstelde gegevens. Accepteert **Overschrijven** of **Overslaan**.
 
-De aanvullende para meters (SourceFilePath en SourceFileType) zijn alleen gerelateerd aan het afzonderlijke bestand dat u wilt herstellen.
+De extra parameters (SourceFilePath en SourceFileType) zijn alleen gerelateerd aan het afzonderlijke bestand dat u wilt herstellen.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Met deze opdracht wordt een taak geretourneerd met een ID die moet worden bijgehouden, zoals wordt weer gegeven in de vorige sectie.
+Met deze opdracht wordt een taak geretourneerd met een id die moet worden bijgehouden, zoals in de vorige sectie wordt weergegeven.
 
-## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Azure-bestands shares en-bestanden naar de oorspronkelijke locatie herstellen
+## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Azure-bestandsshares en -bestanden herstellen naar de oorspronkelijke locatie
 
-Wanneer u naar een oorspronkelijke locatie herstelt, hoeft u geen doel-en doel-gerelateerde para meters op te geven. Alleen **ResolveConflict** moet worden gegeven.
+Wanneer u herstelt naar een oorspronkelijke locatie, hoeft u geen doel- en doelgerelateerde parameters op te geven. Alleen **ResolveConflict** moet worden verstrekt.
 
-#### <a name="overwrite-an-azure-file-share"></a>Een Azure-bestands share overschrijven
+#### <a name="overwrite-an-azure-file-share"></a>Een Azure-bestandsshare overschrijven
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
@@ -116,4 +116,4 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over](restore-afs.md) het herstellen van Azure files in de Azure Portal.
+[Meer informatie over](restore-afs.md) het herstellen van Azure-bestanden in de Azure-portal.
