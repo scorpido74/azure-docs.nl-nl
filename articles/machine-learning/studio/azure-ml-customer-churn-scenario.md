@@ -1,7 +1,7 @@
 ---
-title: Klant verloop analyseren
+title: Klantverloop analyseren
 titleSuffix: ML Studio (classic) - Azure
-description: Casestudy voor het ontwikkelen van een geïntegreerd model voor het analyseren en evalueren van klant verloop met behulp van Azure Machine Learning Studio (klassiek).
+description: Case study van het ontwikkelen van een geïntegreerd model voor het analyseren en scoren van klantverloop met Azure Machine Learning Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,221 +11,221 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204525"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Klant verloop analyseren met behulp van Azure Machine Learning Studio (klassiek)
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Klantverloop analyseren met Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit artikel vindt u een referentie-implementatie van een project met klant verloop analyse dat is gebouwd met behulp van Azure Machine Learning Studio (klassiek). In dit artikel wordt besproken hoe gekoppelde algemene modellen voor het oplossen van het probleem van het verloop van industriële klanten zuinigste. We ook meet de nauwkeurigheid van modellen die zijn gebouwd met behulp van Machine Learning en richtlijnen voor de verdere ontwikkeling beoordelen.  
+In dit artikel wordt een referentie-implementatie gepresenteerd van een klantchurn-analyseproject dat is gebouwd met Azure Machine Learning Studio (klassiek). In dit artikel bespreken we bijbehorende generieke modellen voor het holistisch oplossen van het probleem van industriële klantverloop. We meten ook de nauwkeurigheid van modellen die zijn gebouwd met behulp van Machine Learning en beoordelen de richtingen voor verdere ontwikkeling.  
 
-### <a name="acknowledgements"></a>Dankbetuigingen
-Dit experiment werd ontwikkeld en getest door Serge Berger, Principal data wetenschapper bij micro soft en Roger Barga, voorheen product manager voor Microsoft Azure Machine Learning Studio (klassiek). De Azure-documentatieteam dank erkent hun ervaring en ze Bedankt voor het delen van deze whitepaper.
+### <a name="acknowledgements"></a>Erkenningen
+Dit experiment is ontwikkeld en getest door Serge Berger, Principal Data Scientist bij Microsoft, en Roger Barga, voorheen Product Manager voor Microsoft Azure Machine Learning Studio (klassiek). Het Azure-documentatieteam erkent dankbaar hun expertise en bedankt hen voor het delen van deze whitepaper.
 
 > [!NOTE]
-> De gegevens die worden gebruikt voor dit experiment is niet openbaar beschikbaar. Voor een voor beeld van het bouwen van een machine learning model voor de verloop analyse raadpleegt u: [sjabloon detail verloop model](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) in [Azure AI Gallery](https://gallery.azure.ai/)
+> De gegevens die voor dit experiment worden gebruikt, zijn niet openbaar beschikbaar. Zie: Sjabloon voor het model model voor het [verloop](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) van de detailhandel in [Azure AI Gallery](https://gallery.azure.ai/) voor een voorbeeld van het bouwen van een machine learning-model voor churn-analyse
 > 
 > 
 
 
 
 ## <a name="the-problem-of-customer-churn"></a>Het probleem van klantverloop
-Bedrijven in de markt consumenten en in alle enterprise-sectoren hebben om op te lossen verloop. Soms verloop uitzonderlijk veel en is van invloed op beleidsbeslissingen. De traditionele oplossing is te hoog-neiging zullen zijn churners voorspellen en hun behoeften via een service concierge marketingcampagnes, of door het toepassen van speciale dispensaties. Deze methoden kunnen variëren branche branche. Ze kunnen zelfs binnen één bedrijfstak (bijvoorbeeld telecommunicatie) uit een cluster van bepaalde consumenten verschillen.
+Bedrijven in de consumentenmarkt en in alle bedrijfssectoren hebben te maken met churn. Soms is churn buitensporig en beïnvloedt het beleid beslissingen. De traditionele oplossing is om churners met hoge neiging te voorspellen en hun behoeften aan te pakken via een conciërgeservice, marketingcampagnes of door speciale dispensaties toe te passen. Deze benaderingen kunnen variëren van industrie tot industrie. Ze kunnen zelfs variëren van een bepaald consumentencluster tot de andere binnen de ene bedrijfstak (bijvoorbeeld telecommunicatie).
 
-De algemene factor is dat ondernemingen nodig om deze bewaarduur van een speciale klant. Zo zou een natuurlijke methodologie score van elke klant met de kans van verloop en de bovenste N die verhelpen. De belangrijkste klanten mogelijk het meest winstgevend zijn. Bijvoorbeeld, meer geavanceerde scenario's een functie winst in dienst is bij de selectie van kandidaten voor speciale dispensatie. Deze overwegingen zijn echter slechts een deel van de complete strategie voor het omgaan met verloop. Bedrijven hebben ook rekening account risico's (en bijbehorende risicotolerantie), wordt het niveau en de kosten van de tussenkomst van de en aannemelijke klantsegmentatie.  
+De gemeenschappelijke factor is dat bedrijven deze speciale inspanningen voor klantenbinding moeten minimaliseren. Dus, een natuurlijke methodologie zou zijn om elke klant te scoren met de kans op churn en het adres van de top N ones. De top klanten misschien wel de meest winstgevende. In meer geavanceerde scenario's wordt bijvoorbeeld een winstfunctie ingezet bij de selectie van kandidaten voor speciale dispensatie. Deze overwegingen maken echter slechts deel uit van de volledige strategie voor het omgaan met churn. Bedrijven moeten ook rekening houden met risico's (en bijbehorende risicotolerantie), het niveau en de kosten van de interventie en plausibele segmentatie van klanten.  
 
-## <a name="industry-outlook-and-approaches"></a>De bedrijfstak van outlook en benaderingen
-Geavanceerde verwerking van het verloop is een teken van een goed ontwikkelde bedrijfstak. Het klassieke voorbeeld is de branche telecommunicatie waar abonnees bekend is dat ze vaak overschakelen van één provider naar de andere. Dit verloop niet verplicht is een primair probleem. Daarnaast hebben providers belang rijke kennis verzameld over *verloop Stuur Programma's*. Dit zijn de factoren die klanten stimuleren om over te scha kelen.
+## <a name="industry-outlook-and-approaches"></a>Vooruitzichten en benaderingen van de industrie
+Verfijnde behandeling van churn is een teken van een volwassen industrie. Het klassieke voorbeeld is de telecommunicatie-industrie waar abonnees vaak van de ene provider naar de andere overstappen. Deze vrijwillige churn is een eerste zorg. Bovendien hebben providers veel kennis opgebouwd over *churn drivers*, wat de factoren zijn die klanten ertoe aanzetten om over te stappen.
 
-Telefoon of het apparaat keuze is bijvoorbeeld een bekende stuurprogramma van het verloop in het bedrijf mobiele telefoon. Als gevolg hiervan is een populaire beleid voor de prijs van een toestel subsidize voor nieuwe abonnees en een volledige prijs voor bestaande klanten voor een upgrade. In het verleden heeft dit beleid geleid tot klanten hopping van één provider naar een andere nieuwe korting te krijgen. Deze heeft providers om hun strategieën te verfijnen op zijn beurt gevraagd.
+Bijvoorbeeld, handset of apparaat keuze is een bekende driver van churn in de mobiele telefoon bedrijf. Dientengevolge, is een populair beleid om de prijs van een zaktelefoon voor nieuwe abonnees te subsidiëren en een volledige prijs aan bestaande klanten voor een verbetering in rekening te brengen. Historisch gezien heeft dit beleid ertoe geleid dat klanten van de ene provider naar de andere hoppen om een nieuwe korting te krijgen. Dit, op zijn beurt, heeft gevraagd aanbieders om hun strategieën te verfijnen.
 
-Hoge volatiliteit in aanbiedingen die telefoon is een factor die snel worden ongeldig modellen van het verloop die zijn gebaseerd op de huidige telefoon modellen. Bovendien mobiele telefoons zijn niet alleen apparaten die telecommunicatie, ze zijn ook mode-instructies (Houd rekening met de iPhone). Deze sociale voorspellingsfactoren vallen buiten het bereik van reguliere telecommunicatie-gegevenssets.
+Hoge volatiliteit in handset aanbod is een factor die snel ongeldig modellen van churn die zijn gebaseerd op de huidige handset modellen. Bovendien, mobiele telefoons zijn niet alleen telecommunicatie-apparaten, ze zijn ook mode-verklaringen (overweeg de iPhone). Deze sociale voorspellers vallen buiten het bereik van reguliere telecommunicatiegegevenssets.
 
-Het resultaat voor het maken van modellering is dat u een geluid beleid kan niet devise gewoon door het elimineren van bekende redenen voor het verloop. Een continue model strategie, met inbegrip van klassieke modellen waarmee Categorische variabelen (zoals beslissings structuren) worden gekwantificeerd, is in feite **verplicht**.
+Het netto resultaat voor modellering is dat je niet bedenken een goed beleid gewoon door het elimineren van bekende redenen voor churn. In feite is een continue modelleringsstrategie, inclusief klassieke modellen die categorische variabelen (zoals beslissingsbomen) kwantificeren, **verplicht**.
 
-Met behulp van big data-sets op hun klanten, uitvoert organisaties big data-analyses (met name, verloop detectie op basis van big data) als een effectieve benadering voor het probleem. U vindt meer informatie over de big data-benadering tot het probleem van het verloop in de aanbevelingen van ETL-sectie.  
+Met behulp van big data sets op hun klanten, organisaties zijn het uitvoeren van big data analytics (met name churn detectie op basis van big data) als een effectieve aanpak van het probleem. Meer informatie over de big data-aanpak van het probleem van churn vindt u in de sectie Aanbevelingen over ETL.  
 
-## <a name="methodology-to-model-customer-churn"></a>Methodologie aan klantverloop model
-Een algemene proces oplossen van problemen op te lossen klantverloop wordt weergegeven in afbeelding 1-3:  
+## <a name="methodology-to-model-customer-churn"></a>Methodologie om klantverloop te modelleren
+Een veelvoorkomend probleemoplossend proces om klantverloop op te lossen wordt weergegeven in cijfers 1-3:  
 
-1. Een model risico's kunt u rekening houden met de invloed van acties op waarschijnlijkheid en risico's.
-2. Een model tussenkomst van de kunt u overwegen hoe het niveau van de tussenkomst van invloed kan zijn op de kans van verloop en het bedrag van de klant levensduurwaarde (CLV).
-3. Deze analyse gepaard met een kwalitatieve analyse die een proactieve marketingcampagne die gericht is op klantsegmenten voor het leveren van de optimale aanbieding is geëscaleerd.  
+1. Met een risicomodel u overwegen hoe acties waarschijnlijkheid en risico beïnvloeden.
+2. Met een interventiemodel u nagaan hoe het interventieniveau de kans op verloop van churn en de hoeveelheid customer lifetime value (CLV) kan beïnvloeden.
+3. Deze analyse leent zich voor een kwalitatieve analyse die wordt geëscaleerd naar een proactieve marketingcampagne die zich richt op klantsegmenten om het optimale aanbod te leveren.  
 
-![Diagram waarin wordt getoond hoe een risico tolerantie en besluit modellen resulteren in inzichten die actie kan ondernemen](./media/azure-ml-customer-churn-scenario/churn-1.png)
+![Diagram met de manier waarop risicotolerantie plus beslissingsmodellen bruikbare inzichten opleveren](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
-Deze vooruit uitziende aanpak is de beste manier om het verloop behandelen, maar wordt geleverd met complexiteit: we hebben een multi-modeldatabase archetype en tracering afhankelijkheden tussen de modellen te ontwikkelen. De interactie tussen modellen kan worden ingekapseld, zoals wordt weergegeven in het volgende diagram:  
+Deze toekomstgerichte aanpak is de beste manier om churn te behandelen, maar het komt met complexiteit: we moeten een multi-model archetype ontwikkelen en afhankelijkheden tussen de modellen traceren. De interactie tussen modellen kan worden ingekapseld zoals weergegeven in het volgende diagram:  
 
-![Interactie diagram van het verloop model](./media/azure-ml-customer-churn-scenario/churn-2.png)
+![Interactiediagram churn-model](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Afbeelding 4: Unified multi-model archetype*  
+*Figuur 4: Verenigd archetype met meerdere modellen*  
 
-Interactie tussen de modellen is essentieel als we een holistische benadering om aan te leveren klantretentie. Elk model hoeft niet meer in de loop van de tijd te worden gedegradeerd. Daarom is de architectuur een impliciete lus (vergelijkbaar met de archetype die is ingesteld door de scherp-DM-gegevens analyse standaard, [***3***]).  
+Interactie tussen de modellen is essentieel als we een holistische benadering van klantenbinding willen leveren. Elk model degradeert noodzakelijkerwijs in de loop van de tijd; daarom is de architectuur een impliciete lus (vergelijkbaar met het archetype dat is ingesteld door de CRISP-DM data mining-standaard, [***3***]).  
 
-De algehele cyclus van risico-besluit-marketing segmentering/ontleding is nog steeds een gegeneraliseerde structuur, van toepassing op tal van zakelijke problemen is. Verloop analyse is gewoon een sterke vertegenwoordiger van deze groep van problemen, omdat deze de kenmerken van een complexe zakelijke probleem dat is niet toegestaan een vereenvoudigd voorspellende oplossing vertoont. De sociale aspecten van de moderne aanpak van verloop zijn met name niet gemarkeerd in de benadering, maar de sociale aspecten worden ingekapseld in de archetype modelleren als ze op een model zou zijn.  
+De algemene cyclus van risico-beslissing-marketing segmentatie /ontbinding is nog steeds een algemene structuur, die van toepassing is op veel zakelijke problemen. Churn analyse is gewoon een sterke vertegenwoordiger van deze groep van problemen, omdat het vertoont alle eigenschappen van een complex zakelijk probleem dat niet mogelijk is een vereenvoudigde voorspellende oplossing. De sociale aspecten van de moderne benadering van churn worden niet bijzonder benadrukt in de benadering, maar de sociale aspecten zijn ingekapseld in het modellerenarchetype, aangezien zij in om het even welk model zouden zijn.  
 
-Hier een interessante toevoeging is analyse van big data. Vandaag telecommunicatie en detailhandelaren uitgebreide gegevens verzamelen over hun klanten en we kunnen eenvoudig voorzien de noodzaak voor meerdere modellen connectiviteit wordt een algemene trend, bepaalde opkomende trends, zoals het Internet of Things en alomtegenwoordige apparaten, waardoor business-to-intelligente oplossingen op meerdere lagen gebruiken.  
+Een interessante toevoeging hier is big data analytics. De telecommunicatie- en retailbedrijven van vandaag verzamelen uitgebreide gegevens over hun klanten, en we kunnen gemakkelijk voorzien dat de behoefte aan connectiviteit met meerdere modellen een gemeenschappelijke trend zal worden, gezien opkomende trends zoals het Internet of Things en alomtegenwoordige apparaten, waarmee bedrijven slimme oplossingen in meerdere lagen kunnen gebruiken.  
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>De Modeling archetype implementeren in Machine Learning Studio (klassiek)
-Wat is het probleem dat wordt beschreven: wat is de beste manier om een geïntegreerde model-en Score benadering te implementeren? In deze sectie wordt gedemonstreerd hoe dit wordt gedaan met behulp van Azure Machine Learning Studio (klassiek).  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Het modelleren van archetype implementeren in Machine Learning Studio (klassiek)
+Gezien het beschreven probleem, wat is de beste manier om een geïntegreerde modellering en scoring aanpak te implementeren? In deze sectie laten we zien hoe we dit hebben bereikt met Azure Machine Learning Studio (klassiek).  
 
-De multi-modeldatabase aanpak is een moet bij het ontwerpen van een globale archetype voor verloop. Ook de scoring (voorspellende) deel van de aanpak moet meerdere modellen.  
+De multi-model benadering is een must bij het ontwerpen van een wereldwijd archetype voor churn. Zelfs het scoren (voorspellende) deel van de aanpak moet multi-model zijn.  
 
-In het volgende diagram ziet u het prototype dat is gemaakt. Dit maakt gebruik van vier Score algoritmen in Machine Learning Studio (klassiek) om verloop te voors pellen. De reden voor het gebruik van een multi-modeldatabase benadering is niet alleen voor het maken van een classificatie ensembles voor betere nauwkeurigheid, maar ook om te beveiligen tegen sprake van redundante aanpassing van labels en prescriptieve Functieselectie verbeteren.  
+Het volgende diagram toont het prototype dat we hebben gemaakt, dat vier scorealgoritmen in Machine Learning Studio (klassiek) gebruikt om churn te voorspellen. De reden voor het gebruik van een multi-model benadering is niet alleen het creëren van een ensemble classifier om de nauwkeurigheid te verhogen, maar ook om te beschermen tegen over-fitting en prescriptieve functie selectie te verbeteren.  
 
-![Scherm afbeelding waarin een complexe studio-werk ruimte (klassieke) wordt weer gegeven met een groot aantal onderling verbonden modules](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![Schermafbeelding van een complexe Studio (klassieke) werkruimte met veel onderling verbonden modules](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Afbeelding 5: prototype van een verloop model benadering*  
+*Figuur 5: Prototype van een churn modellering aanpak*  
 
-In de volgende secties vindt u meer informatie over het prototype-beoordelings model dat we hebben geïmplementeerd met behulp van Machine Learning Studio (klassiek).  
+De volgende secties geven meer details over het prototype scoremodel dat we geïmplementeerd met behulp van Machine Learning Studio (klassiek).  
 
-### <a name="data-selection-and-preparation"></a>Gegevens selecteren en voorbereiden
-De gegevens die worden gebruikt om de modellen te bouwen en klanten van de score is verkregen van een verticale CRM-oplossing met de gegevens die zijn verborgen voor het beveiligen van de privacy van klanten. De gegevens bevat informatie over de 8000-abonnementen in de Verenigde Staten en drie bronnen worden gecombineerd: inrichten van gegevens (metagegevens van het abonnement), gegevens over gebruikersactiviteiten (gebruik van het systeem) en gegevens van de klant ondersteuning. De gegevens bevatten geen bedrijfsgerelateerde informatie over de klanten; het bevat bijvoorbeeld geen loyale meta gegevens of credit scores.  
+### <a name="data-selection-and-preparation"></a>Gegevensselectie en -voorbereiding
+De gegevens die worden gebruikt om de modellen en scoreklanten te bouwen, werden verkregen uit een verticale CRM-oplossing, waarbij de gegevens werden versluierd om de privacy van klanten te beschermen. De gegevens bevatten informatie over 8.000 abonnementen in de VS en het combineert drie bronnen: het inrichten van gegevens (metagegevens van abonnementen), activiteitsgegevens (gebruik van het systeem) en klantgegevens. De gegevens bevatten geen bedrijfsgerelateerde informatie over de klanten; het bevat bijvoorbeeld geen loyaliteitsmetadata of creditscores.  
 
-Voor het gemak bent ETL en processen voor opschonen van gegevens buiten het bereik omdat we ervan uitgaan dat het voorbereiden van gegevens is al is klaar ergens anders.
+Voor de eenvoud zijn ETL- en datareinigingsprocessen buiten bereik omdat we ervan uitgaan dat de gegevensvoorbereiding al elders is gedaan.
 
-Functies selecteren voor het maken van modellering is gebaseerd op het voorlopige significante scoren van de set voorspellingsfactoren, opgenomen in het proces dat gebruikmaakt van de module willekeurige forest. Voor de implementatie in Machine Learning Studio (klassiek) hebben we het gemiddelde, de mediaan en de bereiken voor representatieve functies berekend. We hebben toegevoegd bijvoorbeeld statistische functies voor de kwalitatieve gegevens, zoals de minimale en maximale waarden voor gebruikersactiviteit.
+Functieselectie voor modellering is gebaseerd op voorlopige significantiescore van de set voorspellers, opgenomen in het proces dat de willekeurige forestmodule gebruikt. Voor de implementatie in Machine Learning Studio (klassiek) hebben we het gemiddelde, de mediaan en de bereiken voor representatieve functies berekend. We hebben bijvoorbeeld aggregaten toegevoegd voor de kwalitatieve gegevens, zoals minimum- en maximumwaarden voor gebruikersactiviteit.
 
-We hebben ook vastgelegd tijdelijke gegevens voor de meest recente zes maanden. Gegevens geanalyseerd voor één jaar en wij tot stand gebracht, zelfs als er statistisch significant trends waren, wordt de gevolgen zijn voor verloop aanzienlijk verminderd na zes maanden.  
+We hebben ook tijdelijke informatie vastgelegd voor de laatste zes maanden. We analyseerden gegevens voor een jaar en we vastgesteld dat zelfs als er statistisch significante trends, het effect op churn is sterk verminderd na zes maanden.  
 
-Het belangrijkste punt is dat het hele proces, inclusief ETL, het selecteren van functies en het model leren, is geïmplementeerd in Machine Learning Studio (klassiek) met behulp van gegevens bronnen in Microsoft Azure.   
+Het belangrijkste punt is dat het hele proces, inclusief ETL, functieselectie en modellering is geïmplementeerd in Machine Learning Studio (klassiek), met behulp van gegevensbronnen in Microsoft Azure.   
 
-De volgende diagrammen ziet u de gegevens die is gebruikt.  
+De volgende diagrammen illustreren de gegevens die zijn gebruikt.  
 
-![Scherm afbeelding met een voor beeld van de gegevens die worden gebruikt met ruwe waarden](./media/azure-ml-customer-churn-scenario/churn-4.png)
+![Schermafbeelding van een voorbeeld van de gegevens die worden gebruikt met ruwe waarden](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Afbeelding 6: fragment van de gegevens bron (verborgen)*  
+*Figuur 6: Fragment van gegevensbron (versluierd)*  
 
-![Scherm afbeelding met statistische functies die zijn geëxtraheerd uit de gegevens bron](./media/azure-ml-customer-churn-scenario/churn-5.png)
+![Schermafbeelding van statistische functies die zijn geëxtraheerd uit gegevensbron](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Afbeelding 7: functies die zijn geëxtraheerd uit de gegevens bron*
+*Figuur 7: Functies uit gegevensbron*
  
 
-> Houd er rekening mee dat deze gegevens privé is; daarom het model en de gegevens kunnen niet worden gedeeld.
-> Voor een vergelijkbaar model met openbaar beschik bare gegevens raadpleegt u dit voorbeeld experiment in het [Azure AI Gallery](https://gallery.azure.ai/): [telecommunicatie klant verloop](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Houd er rekening mee dat deze gegevens privé zijn en daarom kunnen het model en de gegevens niet worden gedeeld.
+> Zie dit voorbeeldexperiment voor een vergelijkbaar model met openbaar beschikbare gegevens in de [Azure AI Gallery:](https://gallery.azure.ai/) [Telco Customer Churn](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
-> Voor meer informatie over hoe u een verloop analyse model kunt implementeren met behulp van Cortana Intelligence Suite, wordt [deze video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) ook aanbevolen door Senior Program Manager wee Hyong Tok. 
+> Voor meer informatie over hoe u een churn-analysemodel implementeren met Cortana Intelligence Suite, raden we [deze video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) ook aan van Senior Program Manager Wee Hyong Tok. 
 > 
 > 
 
-### <a name="algorithms-used-in-the-prototype"></a>Die worden gebruikt in het model
-We de volgende vier machine learning-algoritmen gebruikt voor het bouwen van het model (geen aanpassing):  
+### <a name="algorithms-used-in-the-prototype"></a>Algoritmen die in het prototype worden gebruikt
+We gebruikten de volgende vier machine learning-algoritmen om het prototype te bouwen (geen aanpassing):  
 
 1. Logistieke regressie (LR)
-2. Boosted-beslisboom (BT)
+2. Verhoogde beslisboom (BT)
 3. Gemiddelde perceptron (AP)
-4. Voor ondersteuningsvectormachines (SVM)  
+4. Ondersteuningsvectormachine (SVM)  
 
-Het volgende diagram illustreert een deel van het ontwerpvenster experiment, waarmee wordt aangegeven van de volgorde waarin de modellen zijn gemaakt:  
+Het volgende diagram illustreert een gedeelte van het ontwerpoppervlak van het experiment, dat de volgorde aangeeft waarin de modellen zijn gemaakt:  
 
-![Scherm afbeelding van een kleine sectie van het canvas van Studio experimenten](./media/azure-ml-customer-churn-scenario/churn-6.png)  
+![Schermafbeelding van een klein gedeelte van het canvas voor studio-experimenten](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*Afbeelding 8: modellen maken in Machine Learning Studio (klassiek)*  
+*Figuur 8: Modellen maken in Machine Learning Studio (klassiek)*  
 
-### <a name="scoring-methods"></a>Scoring-methoden
-We vier modellen hebt beoordeeld met behulp van een gegevensset met gelabelde training.  
+### <a name="scoring-methods"></a>Scoremethoden
+We scoorden de vier modellen met behulp van een gelabelde trainingsdataset.  
 
-We ook verzonden de scoring gegevensset met een vergelijkbare model gebouwd met behulp van de desktop-editie van SAS Enterprise hierop 12. We hebben de nauw keurigheid van het SAS-model en alle vier Machine Learning Studio (klassieke) modellen gemeten.  
+We hebben ook de scoredataset voorgelegd aan een vergelijkbaar model dat is gebouwd met behulp van de desktopeditie van SAS Enterprise Miner 12. We hebben de nauwkeurigheid van het SAS-model en alle vier de Machine Learning Studio (klassieke) modellen gemeten.  
 
 ## <a name="results"></a>Resultaten
-In deze sectie geven we onze bevindingen over de nauwkeurigheid van de modellen, op basis van de scoring-gegevensset.  
+In deze sectie presenteren we onze bevindingen over de nauwkeurigheid van de modellen, gebaseerd op de scoredataset.  
 
-### <a name="accuracy-and-precision-of-scoring"></a>Nauwkeurigheid en precisie van score
-Over het algemeen ligt de implementatie in Azure Machine Learning Studio (klassiek) achter SAS nauw keurig met ongeveer 10-15% (gebied onder curve of AUC).  
+### <a name="accuracy-and-precision-of-scoring"></a>Nauwkeurigheid en nauwkeurigheid van het scoren
+Over het algemeen is de implementatie in Azure Machine Learning Studio (klassiek) achter SAS in nauwkeurigheid met ongeveer 10-15% (Area Under Curve of AUC).  
 
-De belangrijkste metrische gegevens in het verloop zijn echter het onjuist classificatie tempo: dat wil zeggen, van de bovenste N-bussen als voor speld door de classificatie, waarvan het eigenlijk **geen** verloop heeft ondervonden, en die nog een speciale behandeling hebben ontvangen? Het volgende diagram worden deze snelheid misclassification voor alle modellen vergeleken:  
+Echter, de belangrijkste metrische in churn is de verkeerde classificatie tarief: dat wil zeggen, van de top N churners zoals voorspeld door de classificatie, die van hen eigenlijk **niet** churn, en toch kreeg speciale behandeling? In het volgende diagram wordt deze misclassificatiesnelheid voor alle modellen vergeleken:  
 
-![Gebied onder het curve diagram waarmee de prestaties van 4 algoritmen worden vergeleken](./media/azure-ml-customer-churn-scenario/churn-7.png)
+![Gebied onder de curvegrafiek waarin de prestaties van 4 algoritmen worden vergeleken](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Afbeelding 9: Passau-prototype gebied onder bocht*
+*Figuur 9: Passau prototype gebied onder curve*
 
-### <a name="using-auc-to-compare-results"></a>Met behulp van AUC om resultaten te vergelijken
-Opper vlak onder curve (AUC) is een metriek die een globale *separability* vertegenwoordigt tussen de distributies van scores voor positieve en negatieve populaties. Het is vergelijkbaar met de traditionele ontvanger Operator kenmerk (ROC)-grafiek, maar één belangrijk verschil is dat de metriek AUC vereist niet dat u een waarde voor drempel kiezen. In plaats daarvan wordt een overzicht gegeven van de resultaten voor **alle** mogelijke keuzes. Daarentegen de traditionele ROC-grafiek toont de-positief-ratio op de verticale as en de fout-positief-ratio op de horizontale as en is afhankelijk van de drempelwaarde voor classificatie.   
+### <a name="using-auc-to-compare-results"></a>AUC gebruiken om resultaten te vergelijken
+Area Under Curve (AUC) is een statistiek die een globale maatstaf voor *separabiliteit* vertegenwoordigt tussen de verdelingvan scores voor positieve en negatieve populaties. Het is vergelijkbaar met de traditionele Receiver Operator Characteristic (ROC) grafiek, maar een belangrijk verschil is dat de AUC-statistiek niet vereist dat u een drempelwaarde kiest. In plaats daarvan, het vat de resultaten over **alle** mogelijke keuzes. De traditionele ROC-grafiek toont daarentegen de positieve snelheid op de verticale as en het fout-positieve percentage op de horizontale as en de classificatiedrempel varieert.   
 
-AUC wordt gebruikt als een meet waarde voor verschillende algoritmen (of verschillende systemen), omdat het mogelijk is dat modellen worden vergeleken met hun AUC-waarden. Dit is een populaire benadering in branches zoals meteorologie en biosciences. Dus vertegenwoordigt AUC een populair hulpprogramma voor het beoordelen van de prestaties van de classificatie.  
+AUC wordt gebruikt als een maat voor de waarde voor verschillende algoritmen (of verschillende systemen) omdat het het mogelijk maakt modellen te vergelijken door middel van hun AUC waarden. Dit is een populaire aanpak in industrieën zoals meteorologie en biowetenschappen. AUC is dus een populair instrument voor het beoordelen van stijlvollere prestaties.  
 
-### <a name="comparing-misclassification-rates"></a>Vergelijking van de tarieven voor misclassification
-We vergeleken de misclassification tarieven op de gegevensset in kwestie met behulp van de CRM-gegevens van ongeveer 8.000 abonnementen.  
+### <a name="comparing-misclassification-rates"></a>Verkeerd classificatiepercentages vergelijken
+We vergeleken de verkeerde classificatiepercentages op de betreffende dataset met behulp van de CRM-gegevens van ongeveer 8.000 abonnementen.  
 
-* De snelheid van de misclassification SAS is 10-15%.
-* De Machine Learning Studio (klassiek) heeft een niet-geclassificeerd classificatie percentage van 15-20% voor de top 200-300-bussen.  
+* De SAS misclassificatie tarief was 10-15%.
+* De Machine Learning Studio (klassieke) misclassificatie tarief was 15-20% voor de top 200-300 churners.  
 
-In de branche telecommunicatie is het belangrijk om alleen die klanten met het hoogste risico voor het verloop door aan te bieden ze een concierge-service of andere speciale behandeling. In dit opzicht behaalt de Machine Learning Studio (klassieke) implementatie resultaten op pari met het SAS-model.  
+In de telecommunicatie-industrie is het belangrijk om alleen die klanten aan te spreken die het hoogste risico lopen om te churn door hen een conciërgeservice of een andere speciale behandeling aan te bieden. In dat opzicht behaalt de (klassieke) implementatie van Machine Learning Studio resultaten op gelijke voet met het SAS-model.  
 
-Evenzo, is nauwkeurigheid belangrijker dan de precisie omdat we voornamelijk geïnteresseerd bent in goed mogelijke churners classificeren.  
+Tegelijkertijd is nauwkeurigheid belangrijker dan precisie, omdat we vooral geïnteresseerd zijn in het correct classificeren van potentiële churners.  
 
-Het volgende diagram van Wikipedia ziet u de relatie in een afbeelding levendige, eenvoudig te begrijpen:  
+Het volgende diagram van Wikipedia toont de relatie in een levendige, gemakkelijk te begrijpen afbeelding:  
 
-![Twee doelen. Eén doel toont de zoek markeringen die los van elkaar zijn gegroepeerd, maar in de buurt van de stieren-ogen als "lage nauw keurigheid: goede betrouw baarheid, slechte precisie. Een ander doel is nauw keurig gegroepeerd, maar ver van de stieren-ogen gemarkeerd met lage nauw keurigheid, goede nauw keurigheid.](./media/azure-ml-customer-churn-scenario/churn-8.png)
+![Twee doelwitten. Een doel toont hit merken losjes gegroepeerd, maar in de buurt van de bulls-eye gemarkeerd "Lage nauwkeurigheid: goede waarheid, slechte precisie. Een ander doel strak gegroepeerd, maar ver van de bulls-eye gemarkeerd "Lage nauwkeurigheid: slechte waarheid, goede precisie"](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Afbeelding 10: verhouding tussen nauw keurigheid en precisie*
+*Figuur 10: Afweging tussen nauwkeurigheid en precisie*
 
-### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Resultaten nauwkeurigheid en precisie voor boosted decision tree model
-Het volgende diagram wordt de onbewerkte resultaten van het scoring-met behulp van de Machine Learning-model voor de boosted decision tree-model, wat gebeurt er met de meest nauwkeurige tussen de vier modellen worden weergegeven:  
+### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Nauwkeurigheid en precisieresultaten voor een boost-beslissingsboommodel
+In de volgende grafiek worden de ruwe resultaten van het scoren weergegeven met het Machine Learning-prototype voor het gepromote beslissingsstructuurmodel, dat toevallig de meest nauwkeurige van de vier modellen is:  
 
-![Tabel fragment met nauw keurigheid, precisie, intrekken, F-Score, AUC, gemiddeld logboek verlies en verlies van het trainings logboek voor vier algoritmen](./media/azure-ml-customer-churn-scenario/churn-9.png)
+![Tabelfragment met nauwkeurigheid, precisie, terugroepen, F-Score, AUC, Gemiddeld logboekverlies en trainingslogboekverlies voor vier algoritmen](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Afbeelding 11: kenmerken van het versterkte model van de beslissings structuur*
+*Figuur 11: Gepromote kenmerken van het model van de beslissingsboom*
 
-## <a name="performance-comparison"></a>Vergelijking van de prestaties
-We hebben de snelheid vergeleken waarmee gegevens zijn gescoord met behulp van de Machine Learning Studio klassieke modellen en een vergelijkbaar model dat is gemaakt met behulp van de Desktop Edition van SAS Enter prise Miner 12,1.  
+## <a name="performance-comparison"></a>Prestatievergelijking
+We vergeleken de snelheid waarmee gegevens werden gescoord met behulp van de Machine Learning Studio (klassieke) modellen en een vergelijkbaar model gemaakt met behulp van de desktop editie van SAS Enterprise Miner 12.1.  
 
-De volgende tabel geeft een overzicht van de prestaties van de algoritmen:  
+In de volgende tabel worden de prestaties van de algoritmen samengevat:  
 
-*Tabel 1. Algemene prestaties (nauw keurigheid) van de algoritmen*
+*Tabel 1. Algemene prestaties (nauwkeurigheid) van de algoritmen*
 
-| LR | BT | AP | SVM |
+| LR | BT | AP | Svm |
 | --- | --- | --- | --- |
-| Gemiddelde Model |Het beste Model |Attenderen |Gemiddelde Model |
+| Gemiddeld model |Het beste model |Slecht presterend |Gemiddeld model |
 
-De modellen die worden gehost in Machine Learning Studio (klassiek) uitvoerde SAS met 15-25% voor de snelheid van de uitvoering, maar de nauw keurigheid is grotendeels op pari.  
+De modellen gehost in Machine Learning Studio (klassieke) beter dan SAS met 15-25% voor de snelheid van uitvoering, maar de nauwkeurigheid was grotendeels op gelijke voet.  
 
-## <a name="discussion-and-recommendations"></a>Bespreking en aanbevelingen
-In de branche telecommunicatie verschillende procedures voor het analyseren van verloop, is ontstaan met inbegrip van:  
+## <a name="discussion-and-recommendations"></a>Discussie en aanbevelingen
+In de telecommunicatie-industrie zijn verschillende praktijken ontstaan om churn te analyseren, waaronder:  
 
-* Metrische gegevens voor vier fundamentele categorieën worden afgeleid:
-  * **Entiteit (bijvoorbeeld een abonnement)** . Algemene informatie over het abonnement en/of de klant die het onderwerp van het verloop inrichten.
-  * **Activiteit**. Alle informatie over het gebruik mogelijk die is gerelateerd aan de entiteit, bijvoorbeeld het aantal aanmeldingen verkrijgen.
-  * **Klanten ondersteuning**. Verzamelt gegevens uit logboeken van de klant ondersteuning om aan te geven of het abonnement problemen of interactie met de klantondersteuning heeft.
-  * **Concurrerende en zakelijke gegevens**. Verkrijgen van mogelijk informatie over de klant (bijvoorbeeld kunnen zijn niet beschikbaar of moeilijk zijn om bij te houden).
-* Gebruik van belang voor het station functies selecteren. Dit betekent dat het boosted decision tree model altijd een veelbelovende benadering is.  
+* Statistieken afleiden voor vier fundamentele categorieën:
+  * **Entiteit (bijvoorbeeld een abonnement)**. Basisinformatie verstrekken over het abonnement en/of de klant die het onderwerp is van churn.
+  * **Activiteit**. Verkrijg alle mogelijke gebruiksinformatie die gerelateerd is aan de entiteit, bijvoorbeeld het aantal aanmeldingen.
+  * **Klantenservice**. Oogst informatie uit logboeken voor klantenondersteuning om aan te geven of het abonnement problemen of interacties met de klantenservice had.
+  * **Concurrerende en zakelijke gegevens**. Verkrijg alle informatie mogelijk over de klant (bijvoorbeeld, kan niet beschikbaar zijn of moeilijk te volgen).
+* Gebruik het belang om de selectie van functies te stimuleren. Dit impliceert dat het gebooste beslisboommodel altijd een veelbelovende aanpak is.  
 
-Het gebruik van deze vier categorieën maakt de illusie die een eenvoudige *deterministische* benadering heeft, op basis van de indices die op redelijke factoren per categorie zijn gevormd, moet voldoende zijn om klanten te identificeren die risico lopen op het verloop. Helaas, hoewel dit begrip plausibele lijkt, is een false begrip. De reden is dat verloop een tijdelijke effect is en de factoren die bijdragen aan het verloop meestal in tijdelijke Staten zijn. Wat kunt u vandaag nog klanten potentiële klanten kan afwijken morgen en het zeker worden verschillende zes maanden vanaf nu. Daarom is een *Probabilistic* -model nood zakelijk.  
+Het gebruik van deze vier categorieën creëert de illusie dat een eenvoudige *deterministische* benadering, gebaseerd op indexen gevormd op redelijke factoren per categorie, voldoende moet zijn om klanten te identificeren die risico lopen op churn. Helaas, hoewel dit begrip lijkt plausibel, het is een vals begrip. De reden is dat churn is een tijdelijk effect en de factoren die bijdragen aan churn zijn meestal in voorbijgaande toestanden. Wat leidt een klant te overwegen verlaten vandaag misschien anders morgen, en het zal zeker anders zes maanden vanaf nu. Daarom is een *probabilistisch* model een noodzaak.  
 
-Observatie van dit belangrijk is vaak over het hoofd gezien in het bedrijfsleven, die in het algemeen de voorkeur geeft aan een business intelligence-georiënteerde benadering met analytics, meestal omdat het een eenvoudiger verkopen en admits eenvoudig automatiseren.  
+Deze belangrijke observatie wordt vaak over het hoofd gezien in het bedrijfsleven, die over het algemeen de voorkeur geeft aan een business intelligence-georiënteerde benadering van analytics, vooral omdat het een gemakkelijker te verkopen en geeft eenvoudige automatisering.  
 
-De belofte van self-service analyses met behulp van Machine Learning Studio (klassiek) is echter dat de vier categorieën informatie, gesorteerd op divisie of afdeling, een waardevolle bron worden voor machine learning over het verloop.  
+Echter, de belofte van self-service analytics met behulp van Machine Learning Studio (klassiek) is dat de vier categorieën van informatie, beoordeeld per divisie of afdeling, uitgegroeid tot een waardevolle bron voor machine learning over churn.  
 
-Een andere fantastische mogelijkheid in Azure Machine Learning Studio (klassiek) is de mogelijkheid om een aangepaste module toe te voegen aan de opslag plaats van vooraf gedefinieerde modules die al beschikbaar zijn. Deze mogelijkheid maakt in feite een mogelijkheid voor het selecteren van bibliotheken en sjablonen maken voor verticale markten. Het is een belang rijke onderscheid van Azure Machine Learning Studio (klassiek) op de markt plaats.  
+Een andere spannende mogelijkheid die in Azure Machine Learning Studio (klassiek) komt, is de mogelijkheid om een aangepaste module toe te voegen aan de opslagplaats van vooraf gedefinieerde modules die al beschikbaar zijn. Deze mogelijkheid biedt in wezen de mogelijkheid om bibliotheken te selecteren en sjablonen voor verticale markten te maken. Het is een belangrijke differentiator van Azure Machine Learning Studio (klassiek) in de markt.  
 
-We hopen dat om door te gaan in dit onderwerp in de toekomst, met name met betrekking tot de analyse van big data.
+We hopen dit onderwerp in de toekomst voort te zetten, vooral met betrekking tot big data analytics.
   
 
 ## <a name="conclusion"></a>Conclusie
-Dit document beschrijft een functionele aanpak voor het aanpakken van het algemene probleem van klantverloop met behulp van een algemene framework. We beschouwen als een prototype voor het scoren van modellen en zijn geïmplementeerd met behulp van Azure Machine Learning Studio (klassiek). Ten slotte wordt de nauwkeurigheid en de prestaties van de oplossing prototype met betrekking tot vergelijkbare algoritmen in SAS beoordeeld.  
+Dit document beschrijft een verstandige aanpak van het gemeenschappelijke probleem van klantverloop met behulp van een generiek kader. We hebben een prototype voor het scoren van modellen overwogen en geïmplementeerd met Azure Machine Learning Studio (klassiek). Tot slot hebben we de nauwkeurigheid en prestaties van de prototypeoplossing beoordeeld met betrekking tot vergelijkbare algoritmen in SAS.  
 
  
 
 ## <a name="references"></a>Verwijzingen
-[1] voorspellende analyses: buiten de voor spelling, W. McKnight, Information Management, juli/augustus 2011, p. 18-20.  
+[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, July/August 2011, p.18-20.  
 
-[2] Wikipedia-artikel: [nauw keurigheid en precisie](https://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia artikel: [Nauwkeurigheid en precisie](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [helder-DM 1,0: stapsgewijze hand leiding voor gegevens analyse](https://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Stapsgewijze datamininggids](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Big data marketing: uw klanten effectiever benaderen en de waarde ervan verlagen](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Big Data Marketing: Betrek uw klanten effectiever en stimuleer waarde](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [telecommunicatie verloop model sjabloon](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) in [Azure AI Gallery](https://gallery.azure.ai/) 
+[5] [Modelsjabloon voor telcochurn](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) in [Azure AI-galerie](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Bijlage
-![Moment opname van een presentatie in het verloop prototype](./media/azure-ml-customer-churn-scenario/churn-10.png)
+![Momentopname van een presentatie over churn prototype](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Afbeelding 12: moment opname van een presentatie in het verloop prototype*
+*Figuur 12: Momentopname van een presentatie over churn prototype*

@@ -1,6 +1,6 @@
 ---
-title: Metrische gegevens gebruiken voor het bewaken van Azure IoT Hub | Microsoft Docs
-description: Hoe u Azure IoT Hub metrische gegevens kunt gebruiken om de algehele status van uw IoT-hubs te beoordelen en te controleren.
+title: Met metrische gegevens gebruiken om Azure IoT Hub te controleren | Microsoft Documenten
+description: Azure IoT Hub-statistieken gebruiken om de algehele status van uw IoT-hubs te beoordelen en te controleren.
 author: jlian
 ms.service: iot-hub
 services: iot-hub
@@ -8,117 +8,117 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284432"
 ---
-# <a name="understand-iot-hub-metrics"></a>IoT Hub metrische gegevens begrijpen
+# <a name="understand-iot-hub-metrics"></a>Informatie over IoT Hub-statistieken
 
-IoT Hub metrische gegevens geven u meer informatie over de status van de Azure IoT-resources in uw Azure-abonnement. Met IoT Hub metrische gegevens kunt u de algemene status van de IoT Hub-service en de aangesloten apparaten beoordelen. Gebruikers gerichte statistieken zijn belang rijk omdat ze u helpen te zien wat er gebeurt met uw IoT-hub en problemen met de hoofdmap kunnen veroorzaken zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
+IoT Hub-statistieken geven u betere gegevens over de status van de Azure IoT-resources in uw Azure-abonnement. Met IoT Hub-statistieken u de algehele status van de IoT Hub-service en de apparaten die erop zijn aangesloten, beoordelen. Gebruikersgerichte statistieken zijn belangrijk omdat ze u helpen te zien wat er aan de hand is met uw IoT-hub en problemen met het veroorzaken van problemen veroorzaken zonder dat u contact hoeft op te nemen met Azure-ondersteuning.
 
-Metrische gegevens zijn standaard ingeschakeld. U kunt IoT Hub metrische gegevens van de Azure Portal weer geven.
+Statistieken zijn standaard ingeschakeld. U IoT Hub-statistieken bekijken vanuit de Azure-portal.
 
 > [!NOTE]
-> U kunt IoT Hub metrische gegevens gebruiken om informatie weer te geven over IoT Plug en Play-apparaten die zijn verbonden met uw IoT Hub. IoT Plug en Play-apparaten maken deel uit van de [IOT-Plug en Play open bare preview](../iot-pnp/overview-iot-plug-and-play.md).
+> U IoT Hub-statistieken gebruiken om informatie weer te geven over IoT Plug and Play-apparaten die zijn verbonden met uw IoT-hub. IoT Plug and Play-apparaten maken deel uit van de openbare preview van [IoT Plug and Play.](../iot-pnp/overview-iot-plug-and-play.md)
 
-## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub metrische gegevens weer geven
+## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub-statistieken weergeven
 
-1. Maak een IoT-hub. U vindt instructies over het maken van een IoT-hub in de [telemetrie van een apparaat verzenden naar IOT hub](quickstart-send-telemetry-dotnet.md) Guide.
+1. Maak een IoT-hub. U instructies vinden voor het maken van een IoT-hub in de [telemetrie verzenden van een apparaat naar IoT Hub-handleiding.](quickstart-send-telemetry-dotnet.md)
 
-2. Open de Blade van uw IoT-hub. Klik vervolgens op **metrische gegevens**.
+2. Open het blad van uw IoT-hub. Klik van daaruit op **Statistieken**.
    
-    ![Scherm afbeelding waarin de optie metrische gegevens zich op IoT Hub resource pagina bevindt](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Schermafbeelding van de optie metrische gegevens op de pagina IoT Hub-bron](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. Op de Blade metrische gegevens kunt u de metrische gegevens voor uw IoT-hub bekijken en aangepaste weer gaven van uw metrische gegevens maken. 
+3. Vanuit het metrische blad u de statistieken voor uw IoT-hub bekijken en aangepaste weergaven van uw statistieken maken. 
    
-    ![Scherm afbeelding met de pagina metrische gegevens voor IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Schermafbeelding van de pagina met statistieken voor IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. U kunt ervoor kiezen om uw metrische gegevens te verzenden naar een Event Hubs-eind punt of een Azure Storage-account door te klikken op **Diagnostische instellingen**en vervolgens **Diagnostische instelling toevoegen**
+4. U ervoor kiezen om uw metrische gegevens naar een eindpunt van gebeurtenishubs of een Azure Storage-account te verzenden door op **Diagnostische instellingen**te klikken en vervolgens diagnostische instelling toe **te voegen**
 
-   ![Scherm opname van de knop met Diagnostische instellingen](./media/iot-hub-metrics/enable-metrics-3.png)
+   ![Schermafbeelding van de knop Diagnostische instellingen](./media/iot-hub-metrics/enable-metrics-3.png)
 
-## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub metrische gegevens en hoe u deze kunt gebruiken
+## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub-statistieken en hoe deze te gebruiken
 
-IoT Hub biedt diverse metrische gegevens om u een overzicht te geven van de status van uw hub en het totale aantal verbonden apparaten. U kunt informatie uit meerdere metrische gegevens combi neren om een grotere afbeelding van de status van de IoT-hub te tekenen. In de volgende tabel worden de metrische gegevens voor elke IoT-hub beschreven en wordt uitgelegd hoe elke metriek de algehele status van de IoT-hub heeft.
+IoT Hub biedt verschillende statistieken om u een overzicht te geven van de status van uw hub en het totale aantal verbonden apparaten. U informatie uit meerdere statistieken combineren om een groter beeld te geven van de status van de IoT-hub. In de volgende tabel worden de statistieken beschreven die elke IoT-hub bijhoudt en hoe elke statistiek zich verhoudt tot de algemene status van de IoT-hub.
 
-|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Metrische weergavenaam|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|Verzend pogingen voor telemetrie-berichten|Count|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|None|
-|d2c.telemetry.ingress.success|Verzonden telemetriegegevens|Count|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|None|
-|C2D. commands. OUTuitgang. complete. geslaagd|C2D-bericht leveringen voltooid|Count|Totaal|Aantal bezorgingen van Cloud-naar-apparaat-berichten voltooid door het apparaat|None|
-|c2d.commands.egress.abandon.success|C2D-berichten zijn afgebroken|Count|Totaal|Aantal Cloud-naar-apparaat-berichten die zijn afgebroken door het apparaat|None|
-|c2d.commands.egress.reject.success|Geweigerde C2D-berichten|Count|Totaal|Aantal Cloud-naar-apparaat-berichten dat door het apparaat is geweigerd|None|
-|C2DMessagesExpired|C2D-berichten verlopen (preview-versie)|Count|Totaal|Aantal verlopen Cloud-naar-apparaat-berichten|None|
-|devices.totalDevices|Totaal aantal apparaten (afgeschaft)|Count|Totaal|Aantal apparaten dat is geregistreerd bij uw IoT-hub|None|
-|devices.connectedDevices.allProtocol|Verbonden apparaten (afgeschaft) |Count|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|None|
-|d2c.telemetry.egress.success|Route ring: telemetrie-berichten|Count|Totaal|Het aantal keren dat berichten zijn bezorgd bij alle eind punten met behulp van IoT Hub route ring. Als een bericht wordt doorgestuurd naar meerdere eind punten, wordt deze waarde met één verhoogd voor elke geslaagde levering. Als een bericht meerdere keren op hetzelfde eind punt wordt bezorgd, wordt deze waarde met één verhoogd voor elke geslaagde levering.|None|
-|d2c.telemetry.egress.dropped|Route ring: telemetrie-berichten verwijderd |Count|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring vanwege Dead-eind punten. Deze waarde telt geen berichten die worden bezorgd als terugval route als berichten die worden verzonden, niet worden bezorgd.|None|
-|d2c.telemetry.egress.orphaned|Route ring: telemetriegegevens van zwevende berichten |Count|Totaal|Het aantal keren dat berichten zijn zwevend door IoT Hub route ring, omdat ze niet overeenkomen met de regels voor door sturen (inclusief de terugval regel). |None|
-|d2c.telemetry.egress.invalid|Route ring: telemetrie-berichten incompatibel|Count|Totaal|Het aantal keren dat IoT Hub route ring geen berichten kan leveren als gevolg van incompatibiliteit met het eind punt. Deze waarde omvat geen nieuwe pogingen.|None|
-|d2c.telemetry.egress.fallback|Route ring: berichten worden bezorgd bij terugval|Count|Totaal|Het aantal keren dat de route ring van berichten IoT Hub verzonden naar het eind punt dat is gekoppeld aan de terugval route.|None|
-|d2c.endpoints.egress.eventHubs|Route ring: berichten worden bezorgd bij Event hub|Count|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Event hub-eind punten.|None|
-|d2c.endpoints.latency.eventHubs|Route ring: bericht latentie voor Event hub|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een event hub-eind punt.|None|
-|d2c.endpoints.egress.serviceBusQueues|Route ring: berichten worden bezorgd bij Service Bus wachtrij|Count|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus-wachtrij-eind punten.|None|
-|d2c.endpoints.latency.serviceBusQueues|Route ring: bericht latentie voor Service Bus wachtrij|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in een Service Bus wachtrij-eind punt.|None|
-|d2c.endpoints.egress.serviceBusTopics|Route ring: berichten die worden bezorgd bij Service Bus onderwerp|Count|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus onderwerp-eind punten.|None|
-|d2c.endpoints.latency.serviceBusTopics|Route ring: bericht latentie voor Service Bus onderwerp|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in het eind punt van een Service Bus onderwerp.|None|
-|D2C. endpoints. uitgangs punt. builtIn. Events|Route ring: berichten worden bezorgd bij berichten/gebeurtenissen|Count|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan het ingebouwde eind punt (berichten/gebeurtenissen).|None|
-|d2c.endpoints.latency.builtIn.events|Route ring: bericht latentie voor berichten/gebeurtenissen|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en het inkomend telemetrie-bericht in het ingebouwde eind punt (berichten/gebeurtenissen).|None|
-|d2c.endpoints.egress.storage|Route ring: berichten worden bezorgd bij de opslag|Count|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan de opslag eindpunten.|None|
-|d2c.endpoints.latency.storage|Route ring: bericht latentie voor opslag|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in een opslag eindpunt.|None|
-|D2C. endpoints. out. storage. bytes|Route ring: gegevens worden geleverd aan de opslag|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub route ring die aan de opslag eindpunten wordt geleverd.|None|
-|d2c.endpoints.egress.storage.blobs|Route ring: blobs die aan de opslag worden geleverd|Count|Totaal|Het aantal keren dat IoT Hub route ring blobs naar opslag eindpunten heeft geleverd.|None|
-|EventGridDeliveries|Event Grid leveringen (preview-versie)|Count|Totaal|Het aantal IoT Hub gebeurtenissen dat is gepubliceerd op Event Grid. Gebruik de dimensie resultaat voor het aantal geslaagde en mislukte aanvragen. De dimensie type-tekst geeft het soort gebeurtenis weer (https://aka.ms/ioteventgrid).|ResourceID<br/>Daardoor<br/>EventType|
-|EventGridLatency|Event Grid latentie (preview-versie)|Milliseconden|Average|De gemiddelde latentie (in milliseconden) vanaf het moment waarop de IOT hub-gebeurtenis werd gegenereerd toen de gebeurtenis werd gepubliceerd in Event Grid. Dit getal is een gemiddelde tussen alle gebeurtenis typen. Gebruik de dimensie type type om de latentie van een specifiek soort gebeurtenis weer te geven.|ResourceID<br/>EventType|
-|d2c.twin.read.success|Geslaagde dubbele Lees bewerkingen van apparaten|Count|Totaal|De telling van alle geslaagde apparaten met dubbele Lees bewerkingen.|None|
-|D2C. dubbele. Read. failure|Mislukte dubbele Lees bewerkingen van apparaten|Count|Totaal|Het aantal apparaten dat niet kan worden gestart, dubbele Lees bewerkingen.|None|
-|d2c.twin.read.size|Reactie grootte van dubbele Lees bewerkingen van apparaten|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde apparaten-geïnitieerde dubbele Lees bewerkingen.|None|
-|d2c.twin.update.success|Geslaagde dubbele updates van apparaten|Count|Totaal|De telling van alle geslaagde, door het apparaat geïnitieerde dubbele updates.|None|
-|D2C. dubbele. update. failure|Mislukte dubbele updates van apparaten|Count|Totaal|Het aantal apparaten dat door een apparaat is gestart en dubbele updates heeft uitgevoerd.|None|
-|D2C. dubbele. update. grootte|Grootte van dubbele updates van apparaten|Bytes|Average|Het gemiddelde, het minimum en de maximale grootte van alle geslaagde, door het apparaat geïnitieerde dubbele updates.|None|
-|C2D. methods. geslaagd|Geslaagde directe aanroepen van de methode|Count|Totaal|Het aantal voltooide direct-methode aanroepen.|None|
-|C2D. methods. failure|Mislukte directe aanroepen van methode|Count|Totaal|Het aantal mislukte direct-methode aanroepen.|None|
-|C2D. methods. requestSize|Aanvraag grootte van directe-methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde direct-methode aanvragen.|None|
-|C2D. methods. responseSize|Antwoord grootte van directe methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde reacties van de methode direct.|None|
-|c2d.twin.read.success|Geslaagde dubbele Lees bewerkingen van back-end|Count|Totaal|Het aantal geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|None|
-|c2d.twin.read.failure|Mislukte dubbele Lees bewerkingen van back-end|Count|Totaal|Het aantal mislukte back-end-geïnitieerde dubbele Lees bewerkingen.|None|
-|c2d.twin.read.size|Reactie grootte van dubbele Lees bewerkingen van de back-end|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|None|
-|c2d.twin.update.success|Geslaagde dubbele updates van back-end|Count|Totaal|Het aantal geslaagde, door de back-end gestarte dubbele updates.|None|
-|C2D. dubbele. update. failure|Mislukte dubbele updates van back-end|Count|Totaal|Het aantal niet-geslaagde, door de back-end geïnitieerde dubbele updates.|None|
-|C2D. dubbele. update. grootte|Grootte van dubbele updates van back-end|Bytes|Average|Het gemiddelde, het minimum en de maximale grootte van alle geslaagde back-end-geïnitieerde dubbele updates.|None|
-|twinQueries.success|Geslaagde dubbele query's|Count|Totaal|Het aantal geslaagde dubbele query's.|None|
-|twinQueries.failure|Mislukte dubbele query's|Count|Totaal|Het aantal mislukte dubbele query's.|None|
-|twinQueries.resultSize|Resultaat grootte van dubbele query's|Bytes|Average|Het gemiddelde, het minimum en het maximum van de resultaat grootte van alle geslaagde dubbele query's.|None|
-|jobs.createTwinUpdateJob.success|Geslaagde creatie van dubbele update taken|Count|Totaal|Het aantal van alle geslaagde taken voor het maken van dubbele updates.|None|
-|jobs.createTwinUpdateJob.failure|Kan geen dubbele update taken uitvoeren|Count|Totaal|Het aantal mislukte het maken van dubbele update taken.|None|
-|jobs.createDirectMethodJob.success|Geslaagde creatie van methode aanroep taken|Count|Totaal|Het aantal van alle geslaagde aanroepen van directe methode aanroep taken.|None|
-|jobs.createDirectMethodJob.failure|Kan geen aanroepen van methode aanroep taken uitvoeren|Count|Totaal|Het aantal van alle mislukte aanroepen van directe methode aanroep taken.|None|
-|jobs.listJobs.success|Geslaagde aanroepen naar lijst taken|Count|Totaal|Het aantal geslaagde aanroepen naar lijst taken.|None|
-|jobs.listJobs.failure|Mislukte aanroepen naar lijst taken|Count|Totaal|Het aantal mislukte aanroepen naar lijst taken.|None|
-|jobs.cancelJob.success|Voltooide taak annuleringen|Count|Totaal|Het aantal geslaagde aanroepen om een taak te annuleren.|None|
-|jobs.cancelJob.failure|Mislukte taak annuleringen|Count|Totaal|Het aantal mislukte aanroepen om een taak te annuleren.|None|
-|jobs.queryJobs.success|Geslaagde taak query's|Count|Totaal|Het aantal geslaagde aanroepen naar query taken.|None|
-|jobs.queryJobs.failure|Mislukte taak query's|Count|Totaal|Het aantal mislukte aanroepen naar query taken.|None|
-|Jobs. voltooid|Voltooide taken|Count|Totaal|Het aantal voltooide taken.|None|
-|Jobs. mislukt|Mislukte taken|Count|Totaal|Het aantal mislukte taken.|None|
-|d2c.telemetry.ingress.sendThrottle|Aantal beperkings fouten|Count|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|None|
-|dailyMessageQuotaUsed|Totaal aantal gebruikte berichten|Count|Average|Het totale aantal berichten dat momenteel wordt gebruikt. Dit is een cumulatieve waarde die elke dag opnieuw wordt ingesteld op nul om 00:00 UTC.|None|
-|deviceDataUsage|Totale hoeveelheid gegevens gebruik van apparaat|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|None|
-|deviceDataUsageV2|Totaal gebruik van apparaatgegevens (preview-versie)|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|None|
-|totalDeviceCount|Totaal aantal apparaten (preview-versie)|Count|Average|Aantal apparaten dat is geregistreerd bij uw IoT-hub|None|
-|connectedDeviceCount|Verbonden apparaten (preview-versie)|Count|Average|Aantal apparaten dat is verbonden met uw IoT-hub|None|
-|configuraties|Metrische configuratie gegevens|Count|Totaal|Metrische gegevens voor configuratie bewerkingen|None|
+|d2c.telemetrie.ingress.allProtocol|Telemetriebericht verzendt pogingen|Count|Totaal|Aantal telemetrieberichten van apparaat tot cloud die naar uw IoT-hub zijn verzonden|Geen|
+|d2c.telemetrie.ingress.succes|Verzonden telemetrieberichten|Count|Totaal|Aantal telemetrieberichten van apparaat tot cloud die naar uw IoT-hub zijn verzonden|Geen|
+|c2d.commands.egress.complete.success|C2D-berichtleveringen voltooid|Count|Totaal|Aantal leveringen van berichten in de cloud naar het apparaat die door het apparaat zijn voltooid|Geen|
+|c2d.commands.egress.abandon.success|C2D-berichten verlaten|Count|Totaal|Aantal cloud-to-device-berichten dat door het apparaat wordt opgegeven|Geen|
+|c2d.commands.egress.reject.success|C2D-berichten afgewezen|Count|Totaal|Aantal cloud-to-device-berichten dat door het apparaat wordt geweigerd|Geen|
+|C2D-berichten verlopen|Verlopen C2D-berichten (voorbeeld)|Count|Totaal|Aantal verlopen cloud-to-device-berichten|Geen|
+|devices.totalDevices|Totaal aantal apparaten (afgeschaft)|Count|Totaal|Aantal apparaten dat is geregistreerd op uw IoT-hub|Geen|
+|devices.connectedDevices.allProtocol|Verbonden apparaten (afgeschaft) |Count|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
+|d2c.telemetry.egress.success|Routering: telemetrieberichten geleverd|Count|Totaal|Het aantal keren dat berichten met succes naar alle eindpunten zijn geleverd met behulp van IoT Hub-routering. Als een bericht naar meerdere eindpunten wordt doorgestuurd, neemt deze waarde met één toe voor elke succesvolle levering. Als een bericht meerdere keren op hetzelfde eindpunt wordt bezorgd, wordt deze waarde voor elke succesvolle levering met één verhoogd.|Geen|
+|d2c.telemetry.egress.dropped|Routering: telemetrieberichten verwijderd |Count|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub-routering vanwege doodlopende eindpunten. Deze waarde telt geen berichten die worden afgeleverd op fallback-route, omdat gedropte berichten daar niet worden bezorgd.|Geen|
+|d2c.telemetry.egress.orphaned|Routering: telemetrieberichten verweesd |Count|Totaal|Het aantal keren dat berichten zijn verweesd door de routering van IoT-hub omdat ze niet overeenkomen met routeringsregels (inclusief de terugvalregel). |Geen|
+|d2c.telemetry.egress.invalid|Routering: telemetrieberichten onverenigbaar|Count|Totaal|Het aantal keren dat IoT Hub-routering geen berichten kan verzenden vanwege een onverenigbaarheid met het eindpunt. Deze waarde omvat geen nieuwe pogingen.|Geen|
+|d2c.telemetry.egress.fallback|Routering: berichten geleverd aan fallback|Count|Totaal|Het aantal keren dat IoT Hub-routering berichten heeft afgeleverd naar het eindpunt dat is gekoppeld aan de terugvalroute.|Geen|
+|d2c.endpoints.egress.eventHubs|Routering: berichten geleverd aan Event Hub|Count|Totaal|Het aantal keren dat IoT Hub-routering met succes berichten heeft afgeleverd aan eindpunten van Event Hub.|Geen|
+|d2c.endpoints.latency.eventHubs|Routering: berichtlatentie voor gebeurtenishub|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen het binnendringen van berichten naar IoT Hub en het binnendringen van berichten in een eindpunt van Event Hub.|Geen|
+|d2c.endpoints.egress.serviceBusQueues|Routering: berichten die worden bezorgd in de wachtrij voor servicebussen|Count|Totaal|Het aantal keren dat IoT Hub-routering met succes berichten heeft afgeleverd bij eindpunten van wachtrijeindpunten van servicebus.|Geen|
+|d2c.endpoints.latency.serviceBusQueues|Routering: berichtlatentie voor servicebuswachtrij|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen het binnendringen van berichten naar IoT Hub en telemetriebericht is in een eindpunt van de servicebuswachtrij.|Geen|
+|d2c.endpoints.egress.serviceBusTopics|Routering: berichten geleverd aan Service Bus Topic|Count|Totaal|Het aantal keren dat IoT Hub-routering met succes berichten heeft afgeleverd bij eindpunten van onderwerpen in het onderwerp ServiceBus.|Geen|
+|d2c.endpoints.latency.serviceBusTopics|Routering: berichtlatentie voor servicebusonderwerp|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen berichtbinnendringen naar IoT Hub en telemetriebericht binnenvallen in een eindpunt van een servicebusonderwerp.|Geen|
+|d2c.endpoints.egress.builtIn.events|Routering: berichten die worden bezorgd aan berichten/gebeurtenissen|Count|Totaal|Het aantal keren dat IoT Hub-routering met succes berichten heeft afgeleverd bij het ingebouwde eindpunt (berichten/gebeurtenissen).|Geen|
+|d2c.endpoints.latency.builtIn.events|Routering: berichtlatentie voor berichten/gebeurtenissen|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen berichtbinnendringen naar IoT Hub en telemetriebericht binnenvallen in het ingebouwde eindpunt (berichten/gebeurtenissen).|Geen|
+|d2c.endpoints.egress.storage|Routering: berichten die in de opslag worden bezorgd|Count|Totaal|Het aantal keren dat IoT Hub-routering met succes berichten naar opslageindpunten heeft geleverd.|Geen|
+|d2c.endpoints.latency.storage|Routering: berichtlatentie voor opslag|Milliseconden|Average|De gemiddelde latentie (milliseconden) tussen berichtbinnendringen naar IoT Hub en telemetrie bericht binnendringen in een opslag eindpunt.|Geen|
+|d2c.endpoints.egress.storage.bytes|Routering: gegevens die aan opslag worden geleverd|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub-routering die wordt geleverd aan opslageindpunten.|Geen|
+|d2c.endpoints.egress.storage.blobs|Routering: blobs geleverd aan opslag|Count|Totaal|Het aantal keren dat IoT Hub-routering blobs naar opslageindpunten heeft geleverd.|Geen|
+|EventGridDeliveries EventGridDeliveries EventGridDeliveries EventGrid|Gebeurtenisgridleveringen(preview)|Count|Totaal|Het aantal IoT Hub-gebeurtenissen dat is gepubliceerd in Event Grid. Gebruik de dimensie Resultaat voor het aantal geslaagde en mislukte aanvragen. Met de dimensie EventTypehttps://aka.ms/ioteventgrid)wordt het type gebeurtenis weergegeven ( .|Resourceid<br/>Resultaat<br/>EventType (EventType)|
+|EventGridLatentie|Latentie van gebeurtenisraster (voorbeeld)|Milliseconden|Average|De gemiddelde latentie (milliseconden) vanaf het moment dat de gebeurtenis Iot Hub werd gegenereerd tot het moment waarop de gebeurtenis werd gepubliceerd in Gebeurtenisraster. Dit getal is een gemiddelde tussen alle gebeurtenistypen. Gebruik de dimensie EventType om de latentie van een specifiek type gebeurtenis te zien.|Resourceid<br/>EventType (EventType)|
+|d2c.twin.read.success|Succesvolle tweeling leest van apparaten|Count|Totaal|De telling van alle succesvolle apparaat-geïnitieerde tweeling leest.|Geen|
+|d2c.twin.read.failure|Mislukte tweeling leest van apparaten|Count|Totaal|De telling van alle mislukte apparaat-geïnitieerde tweeling leest.|Geen|
+|d2c.twin.read.size|Reactiegrootte van dubbele leest van apparaten|Bytes|Average|Het gemiddelde, min, en max van alle succesvolle apparaat geïnitieerde tweeling leest.|Geen|
+|d2c.twin.update.success|Succesvolle dubbele updates van apparaten|Count|Totaal|De telling van alle succesvolle apparaat-geïnitieerde dubbele updates.|Geen|
+|d2c.twin.update.failure|Mislukte dubbele updates van apparaten|Count|Totaal|De telling van alle mislukte apparaat-geïnitieerde dubbele updates.|Geen|
+|d2c.twin.update.size|Grootte van dubbele updates van apparaten|Bytes|Average|De gemiddelde, min, en maximale grootte van alle succesvolle apparaat geïnitieerde dubbele updates.|Geen|
+|c2d.methods.success|Succesvolle directe methode aanroepingen|Count|Totaal|De telling van alle succesvolle directe methodevraag.|Geen|
+|c2d.methods.failure|Mislukte directe aanroepen van methoden|Count|Totaal|De telling van alle mislukte directe methodeaanroepen.|Geen|
+|c2d.methods.requestSize|Aanvraaggrootte van directe methode-aanroepingen|Bytes|Average|Het gemiddelde, min en max van alle succesvolle directe methodeaanvragen.|Geen|
+|c2d.methods.responseSize|Reactiegrootte van directe aanroepingen van methoden|Bytes|Average|Het gemiddelde, min, en max van alle succesvolle directe methode reacties.|Geen|
+|c2d.twin.read.success|Succesvolle tweeling leest van back-end|Count|Totaal|De telling van alle succesvolle back-end-geïnitieerde tweeling leest.|Geen|
+|c2d.twin.read.failure|Mislukte tweeling leest van back-end|Count|Totaal|De telling van alle ontbroken back-end-geïnitieerde tweeling leest.|Geen|
+|c2d.twin.read.size|Reactiegrootte van tweeling leest van back-end|Bytes|Average|De gemiddelde, min, en max van alle succesvolle back-end-geïnitieerde tweeling leest.|Geen|
+|c2d.twin.update.success|Succesvolle dubbele updates van back-end|Count|Totaal|De telling van alle succesvolle back-end-geïnitieerde dubbele updates.|Geen|
+|c2d.twin.update.failure|Mislukte dubbele updates van back-end|Count|Totaal|De telling van alle mislukte back-end-geïnitieerde dubbele updates.|Geen|
+|c2d.twin.update.size|Grootte van dubbele updates van back-end|Bytes|Average|De gemiddelde, min, en maximale grootte van alle succesvolle back-end-geïnitieerde dubbele updates.|Geen|
+|twinQueries.success|Succesvolle dubbele query's|Count|Totaal|De telling van alle succesvolle dubbele query's.|Geen|
+|twinQueries.failure|Mislukte dubbele query's|Count|Totaal|De telling van alle mislukte dubbele query's.|Geen|
+|twinQueries.resultSize|De resultaatgrootte van twee query's|Bytes|Average|De gemiddelde, min, en max van het resultaat grootte van alle succesvolle dubbele query's.|Geen|
+|jobs.createTwinUpdateJob.success|Succesvolle creaties van twin update jobs|Count|Totaal|De telling van alle succesvolle creatie van twin update banen.|Geen|
+|jobs.createTwinUpdateJob.failure|Mislukte creaties van twin update-taken|Count|Totaal|De telling van alle mislukte creatie van dubbele update taken.|Geen|
+|jobs.createDirectMethodJob.success|Succesvolle creaties van methode aanroepbanen|Count|Totaal|De telling van alle succesvolle creatie van directe methode aanroepbanen.|Geen|
+|jobs.createDirectMethodJob.failure|Mislukte creaties van aanroeptaken voor methoden|Count|Totaal|De telling van alle mislukte creatie van directe methode aanroeptaken.|Geen|
+|jobs.listJobs.success|Succesvolle oproepen om vacatures op te noemen|Count|Totaal|De telling van alle succesvolle oproepen om taken op te sommen.|Geen|
+|jobs.listJobs.failure|Mislukte oproepen om taken weer te geven|Count|Totaal|De telling van alle mislukte oproepen om taken op te sommen.|Geen|
+|jobs.cancelJob.success|Succesvolle annuleringen van vacatures|Count|Totaal|De telling van alle succesvolle oproepen om een taak te annuleren.|Geen|
+|jobs.cancelJob.failure|Mislukte annuleringen van werk|Count|Totaal|De telling van alle mislukte oproepen om een taak te annuleren.|Geen|
+|jobs.queryJobs.success|Succesvolle zoekopdrachten|Count|Totaal|De telling van alle geslaagde oproepen naar querytaken.|Geen|
+|jobs.queryJobs.failure|Mislukte query's|Count|Totaal|Het aantal mislukte oproepen naar querytaken.|Geen|
+|vacatures.voltooid|Voltooide taken|Count|Totaal|De telling van alle voltooide taken.|Geen|
+|jobs.failed|Mislukte taken|Count|Totaal|De telling van alle mislukte taken.|Geen|
+|d2c.telemetry.ingress.sendThrottle|Aantal beperkingsfouten|Count|Totaal|Aantal beperkingsfouten als gevolg van gashendels voor de doorvoer van het apparaat|Geen|
+|dailyMessageQuotaGebruikt|Totaal aantal gebruikte berichten|Count|Average|Aantal totale berichten dat vandaag wordt gebruikt. Dit is een cumulatieve waarde die elke dag om 00:00 UTC wordt gereset naar nul.|Geen|
+|deviceDataUsage deviceDataUsage|Totaal gebruik van apparaatgegevens|Bytes|Totaal|Bytes die worden overgedragen van en naar alle apparaten die zijn aangesloten op IotHub|Geen|
+|deviceDataUsageV2|Totaal apparaatgegevensgebruik (voorbeeld)|Bytes|Totaal|Bytes die worden overgedragen van en naar alle apparaten die zijn aangesloten op IotHub|Geen|
+|totalDeviceCount totalDeviceCount|Totaal aantal apparaten (voorbeeld)|Count|Average|Aantal apparaten dat is geregistreerd op uw IoT-hub|Geen|
+|connectedDeviceCount|Verbonden apparaten (voorbeeld)|Count|Average|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
+|Configuraties|Configuratiestatistieken|Count|Totaal|Statistieken voor configuratiebewerkingen|Geen|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een overzicht van IoT Hub metrische gegevens hebt weer gegeven, volgt u deze koppeling voor meer informatie over het beheren van Azure IoT Hub:
+Nu u een overzicht van IoT Hub-statistieken hebt gezien, volgt u deze koppeling voor meer informatie over het beheer van Azure IoT Hub:
 
 * [Diagnostische logboeken instellen](iot-hub-monitor-resource-health.md)
 
-Zie voor meer informatie over de mogelijkheden van IoT Hub:
+Zie:
 
-* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
+* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)
 
-* [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

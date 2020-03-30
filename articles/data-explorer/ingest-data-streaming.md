@@ -1,6 +1,6 @@
 ---
-title: Stroom opname gebruiken om gegevens op te nemen in azure Data Explorer
-description: Meer informatie over het opnemen (laden) van gegevens in azure Data Explorer met behulp van streaming-opname.
+title: Streaming gebruiken om gegevens in te nemen in Azure Data Explorer
+description: Meer informatie over het innemen van (laden) gegevens in Azure Data Explorer met behulp van streaming.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,77 +8,77 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297081"
 ---
-# <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
+# <a name="streaming-ingestion-preview"></a>Streaming opname (Preview)
 
-Gebruik Streaming-opname wanneer u een lage latentie nodig hebt met een opname tijd van minder dan 10 seconden voor variërende volume gegevens. Het wordt gebruikt om de operationele verwerking van veel tabellen in een of meer data bases te optimaliseren, waarbij de gegevens stroom in elke tabel relatief klein is (weinig records per seconde), maar het totale gegevens opname volume hoog is (duizenden records per seconde). 
+Gebruik streaming opname wanneer u een lage latentie met een innametijd van minder dan 10 seconden voor gevarieerde volumegegevens. Het wordt gebruikt om de operationele verwerking van veel tabellen te optimaliseren, in een of meer databases, waar de stroom van gegevens in elke tabel relatief klein is (weinig records per seconde), maar het totale gegevensopnamevolume hoog is (duizenden records per seconde). 
 
-Gebruik bulk opname in plaats van het opnemen van opname wanneer de hoeveelheid gegevens groter wordt dan 1 MB per seconde per tabel. Lees [overzicht van gegevens opname](/azure/data-explorer/ingest-data-overview) voor meer informatie over de verschillende methoden voor opname.
+Gebruik bulkopname in plaats van streaming opname wanneer de hoeveelheid gegevens groeit tot meer dan 1 MB per seconde per tabel. Lees [het overzicht gegevensopname](/azure/data-explorer/ingest-data-overview) voor meer informatie over de verschillende innamemethoden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 * Meld u aan bij de [webgebruikersinterface](https://dataexplorer.azure.com/).
-* [Een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md) maken
+* Een [Azure Data Explorer-cluster en -database maken](create-cluster-database-portal.md)
 
-## <a name="enable-streaming-ingestion-on-your-cluster"></a>Opname van streaming op uw cluster inschakelen
+## <a name="enable-streaming-ingestion-on-your-cluster"></a>Streaming opname op uw cluster inschakelen
 
 > [!WARNING]
-> Controleer de [beperkingen](#limitations) voordat u het opnemen van de opname van stoom inschakelt.
+> Bekijk de [beperkingen](#limitations) voordat u stomen inschakelt.
 
-1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster. Selecteer **configuraties**in **instellingen**. 
-1. Selecteer in het deel venster **configuraties** om opnemen **van** **streaming**in te scha kelen.
+1. Ga in de Azure-portal naar uw Azure Data Explorer-cluster. Selecteer **Configuraties**in **Instellingen**. 
+1. Selecteer **in** het deelvenster Configuraties de optie **Aan** om **Streaming in te**schakelen.
 1. Selecteer **Opslaan**.
  
-    ![opname van streaming op](media/ingest-data-streaming/streaming-ingestion-on.png)
+    ![streaming opname op](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het [beleid](/azure/kusto/management/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
+1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het beleid voor [streamingopname](/azure/kusto/management/streamingingestionpolicy) op tafel(en) of database(s) die streaminggegevens ontvangt. 
 
     > [!NOTE]
-    > * Als het beleid is gedefinieerd op database niveau, worden alle tabellen in de data base ingeschakeld voor streaming-opname.
-    > * Het toegepaste beleid kan verwijzen naar alleen nieuwe opgenomen gegevens en niet naar andere tabellen in de data base.
+    > * Als het beleid is gedefinieerd op databaseniveau, zijn alle tabellen in de database ingeschakeld voor streaming.
+    > * Het toegepaste beleid kan alleen verwijzen naar nieuw ingenomen gegevens en niet op andere tabellen in de database.
 
-## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Stroom opname gebruiken om gegevens op te nemen in uw cluster
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Gebruik streaming ingestion om gegevens in uw cluster in te nemen
 
-Er zijn twee ondersteunde typen streaming-opname:
+Er zijn twee ondersteunde typen streaming:
 
 
-* [**Event hub**](/azure/data-explorer/ingest-data-event-hub), die wordt gebruikt als gegevens bron
-* **Aangepaste opname** vereist dat u een toepassing schrijft die gebruikmaakt van een van de Azure Data Explorer-client bibliotheken. Zie voor [beeld van streaming opname](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) voor een voorbeeld toepassing.
+* [**Gebeurtenishub**](/azure/data-explorer/ingest-data-event-hub), die wordt gebruikt als gegevensbron
+* **Voor aangepaste opname** moet u een toepassing schrijven die een van de Azure Data Explorer-clientbibliotheken gebruikt. Zie [voorbeeld van streaminginname](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) voor een voorbeeldtoepassing.
 
-### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Kies het juiste type stroom opname
+### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Kies het juiste type streamingopname
 
 |   |Event Hub  |Aangepaste opname  |
 |---------|---------|---------|
-|Gegevens vertraging tussen het initiëren van de opname en de beschik bare gegevens voor de query   |    langere vertraging     |   kortere vertraging      |
-|Ontwikkelings overhead    |   snelle en eenvoudige installatie, geen ontwikkelings overhead    |   hoge ontwikkelings overhead voor toepassingen voor het afhandelen van fouten en het garanderen van gegevens consistentie     |
+|Gegevensvertraging tussen opname-initiatie en de beschikbare gegevens voor query   |    Langere vertraging     |   Kortere vertraging      |
+|Overhead voor ontwikkeling    |   Snelle en eenvoudige installatie, geen ontwikkeling overhead    |   Hoge ontwikkelingsoverhead voor toepassing om fouten te verwerken en de consistentie van gegevens te waarborgen     |
 
-## <a name="disable-streaming-ingestion-on-your-cluster"></a>Opname van streaming op uw cluster uitschakelen
+## <a name="disable-streaming-ingestion-on-your-cluster"></a>Streaming opnemen op uw cluster uitschakelen
 
 > [!WARNING]
-> Het uitschakelen van streaming-opname kan enkele uren duren.
+> Het uitschakelen van streaming opname kan een paar uur duren.
 
-1. Verwijder het beleid voor het opnemen van [streaming](/azure/kusto/management/streamingingestionpolicy) van alle relevante tabellen en data bases. Bij het verwijderen van het beleid voor het opnemen van inslikken wordt de gegevens verplaatsing van de eerste opslag gestreamd naar de permanente opslag in het kolom archief (afmetingen of Shards). De verplaatsing van gegevens kan een paar seconden tot enkele uren duren, afhankelijk van de hoeveelheid gegevens in de eerste opslag en hoe de CPU en het geheugen door het cluster wordt gebruikt.
-1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster. Selecteer **configuraties**in **instellingen**. 
-1. Selecteer in het deel venster configuraties **uit** om het opnemen van **streaming**uit te scha kelen.
+1. Drop [streaming ingestion policy](/azure/kusto/management/streamingingestionpolicy) from all relevant tables and databases. De verwijdering van het streamingbeleid leidt tot het streamen van gegevensverkeer van de initiële opslag naar de permanente opslag in het kolomarchief (omvang of shards). De gegevensverplaatsing kan enkele seconden tot een paar uur duren, afhankelijk van de hoeveelheid gegevens in de oorspronkelijke opslag en hoe de CPU en het geheugen door het cluster worden gebruikt.
+1. Ga in de Azure-portal naar uw Azure Data Explorer-cluster. Selecteer **Configuraties**in **Instellingen**. 
+1. Selecteer **in** het deelvenster Configuraties de optie **Uit** om **Streaming in te**schakelen.
 1. Selecteer **Opslaan**.
 
-    ![Stroom inslikken uit](media/ingest-data-streaming/streaming-ingestion-off.png)
+    ![Streaming opname uit](media/ingest-data-streaming/streaming-ingestion-off.png)
 
 ## <a name="limitations"></a>Beperkingen
 
-* Streaming-opname ondersteunt geen [database cursors](/azure/kusto/management/databasecursor) of [gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/create-ingestion-mapping-command) gegevens toewijzing wordt ondersteund. 
-* Het streamen van opname prestaties en capaciteits schaal met verhoogde VM-en cluster groottes. Gelijktijdige opname is beperkt tot zes opname per kern. Bijvoorbeeld: voor 16 kern Sku's, zoals D14 en L16, is de Maxi maal ondersteunde belasting 96 gelijktijdige opname. Voor twee kern-Sku's, zoals D11, is de Maxi maal ondersteunde belasting 12 gelijktijdige opname.
-* De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
-* Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
-* Het inschakelen van streaming-opname in een cluster, zelfs wanneer er geen gegevens worden opgenomen via streaming, maakt gebruik van de lokale SSD-schijf van de cluster machines voor het streamen van opname gegevens en vermindert de opslag ruimte die beschikbaar is voor warme cache.
-* Er kunnen geen [gebieds Tags](/azure/kusto/management/extents-overview#extent-tagging) worden ingesteld voor de gegevens van de streaming-opname.
+* Streaming opname biedt geen ondersteuning [voor Databasecursors](/azure/kusto/management/databasecursor) of [Data mapping](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/create-ingestion-mapping-command) gegevenstoewijzing wordt ondersteund. 
+* Streaming opnameprestaties en capaciteitsschalen met verhoogde VM- en clustergroottes. Gelijktijdige inname is beperkt tot zes inname per kern. Voor 16 core SKU's, zoals D14 en L16, is de maximale ondersteunde belasting bijvoorbeeld 96 gelijktijdige inname. Voor twee kernSKU's, zoals D11, is de maximale ondersteunde belasting 12 gelijktijdige inname.
+* De beperking van de gegevensgrootte per opnameverzoek is 4 MB.
+* Het kan tot vijf minuten duren voordat schema-updates, zoals het maken en wijzigen van tabellen en innametoewijzingen, tot vijf minuten duren voordat de streamingservice is opgenomen.
+* Als u streaming ineenschakelt op een cluster, zelfs wanneer gegevens niet via streaming worden ingenomen, wordt een deel van de lokale SSD-schijf van de clustermachines gebruikt voor het streamen van opnamegegevens en wordt de beschikbare opslag voor hot cache verminderd.
+* [Extent tags](/azure/kusto/management/extents-overview#extent-tagging) kunnen niet worden ingesteld op de streaming opnamegegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Query's uitvoeren op gegevens in azure Data Explorer](web-query-data.md)
+* [Query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Hand leiding voor instantie groepen (preview-versie)
-description: In dit artikel wordt beschreven hoe u Azure SQL Database-instantie groepen maakt en beheert (preview).
+title: Handleiding en handleiding van instantiegroepen (voorbeeld)
+description: In dit artikel wordt beschreven hoe u Azure SQL Database-instantiegroepen (voorbeeld) maken en beheren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,99 +12,99 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
 ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299359"
 ---
-# <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Instructies voor Azure SQL Database-instantie groepen (preview)
+# <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>How-to-guide voor Azure SQL Database-instantiegroepen (voorbeeld)
 
-In dit artikel vindt u informatie over het maken en beheren van [instantie groepen](sql-database-instance-pools.md).
+In dit artikel vindt u informatie over het maken en beheren van [instantiegroepen.](sql-database-instance-pools.md)
 
-## <a name="instance-pool-operations"></a>Bewerkingen voor exemplaar groepen
+## <a name="instance-pool-operations"></a>Instantiegroepbewerkingen
 
-In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemplaar groepen en hun Beschik baarheid in de Azure Portal en Power shell.
+In de volgende tabel worden de beschikbare bewerkingen weergegeven met betrekking tot instantiegroepen en de beschikbaarheid ervan in de Azure-portal en PowerShell.
 
-|Opdracht|Azure-portal|PowerShell|
+|Opdracht|Azure Portal|PowerShell|
 |:---|:---|:---|
 |Instantie-pool maken|Nee|Ja|
-|Exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
-|Gebruik en eigenschappen van exemplaar groep controleren|Nee|Ja |
-|Exemplaar groep verwijderen|Nee|Ja|
-|Een beheerd exemplaar in een exemplaar groep maken|Nee|Ja|
-|Resource gebruik van beheerd exemplaar bijwerken|Ja |Ja|
-|Gebruik en eigenschappen van beheerd exemplaar controleren|Ja|Ja|
-|Een beheerd exemplaar uit de groep verwijderen|Ja|Ja|
-|Een Data Base maken in een beheerd exemplaar dat in de groep is geplaatst|Ja|Ja|
-|Een Data Base verwijderen uit een beheerd exemplaar|Ja|Ja|
+|Instantiegroep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
+|Gebruik en eigenschappen van instantiesgroep controleren|Nee|Ja |
+|Instantiegroep verwijderen|Nee|Ja|
+|Beheerde instantie maken in instantiegroep|Nee|Ja|
+|Beheerde instantieresourcegebruik bijwerken|Ja |Ja|
+|Beheerde instantiegebruik en eigenschappen controleren|Ja|Ja|
+|Beheerde instantie uit de groep verwijderen|Ja|Ja|
+|Een database maken in beheerde instantie die in de groep is geplaatst|Ja|Ja|
+|Een database verwijderen uit beheerde instantie|Ja|Ja|
 
-Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/)
+Beschikbare [PowerShell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/)
 
 |Cmdlet |Beschrijving |
 |:---|:---|
-|[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een Azure SQL Database exemplaar groep. |
-|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over de Azure SQL-exemplaar groep. |
-|[Set-AzSqlInstancePool](/powershell/module/az.sql/set-azsqlinstancepool/) | Hiermee stelt u eigenschappen in voor een Azure SQL Database exemplaar groep. |
-|[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | Hiermee verwijdert u een Azure SQL Database exemplaar groep. |
-|[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Retourneert informatie over het gebruik van Azure SQL-exemplaar groepen. |
+|[Nieuw-AzsqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een instantiegroep azure SQL Database. |
+|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over Azure SQL-instantiegroep. |
+|[Set-azsqlinstancepool](/powershell/module/az.sql/set-azsqlinstancepool/) | Hiermee stelt u eigenschappen in voor een Azure SQL Database-instantiegroep. |
+|[Groep azsqlinstanceverwijderen](/powershell/module/az.sql/remove-azsqlinstancepool/) | Hiermee verwijdert u een azure SQL Database-instantiegroep. |
+|[Get-azsqlinstancepoolusage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Retourneert informatie over het gebruik van Azure SQL-instantiegroep. |
 
 
-Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)en volgt u de instructies om [de Azure PowerShell-module te installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Als u PowerShell wilt gebruiken, [installeert u de nieuwste versie van PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)en volgt u instructies om [de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/install-az-ps)te installeren.
 
-Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instanties gebruikt u de standaard [Managed instance-opdrachten](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), maar de eigenschap name van de *instantie groep* moet worden ingevuld wanneer u deze opdrachten gebruikt voor een instantie in een groep.
+Voor bewerkingen met betrekking tot instanties, zowel binnen pools als in afzonderlijke instanties, gebruikt u de [standaardbeheerde instantieopdrachten,](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)maar de eigenschap *instantiegroepnaam* moet worden ingevuld wanneer deze opdrachten worden gebruikt voor een instantie in een groep.
 
-## <a name="how-to-deploy-managed-instances-into-pools"></a>Beheerde instanties in Pools implementeren
+## <a name="how-to-deploy-managed-instances-into-pools"></a>Beheerde exemplaren implementeren in pools
 
-Het proces voor het implementeren van een exemplaar in een groep bestaat uit de volgende twee stappen:
+Het proces waarbij een instantie in een groep wordt geïmplementeerd, bestaat uit de volgende twee stappen:
 
-1. Eenmalige implementatie van exemplaar groep. Dit is een langlopende bewerking waarbij de duur hetzelfde is als de implementatie [van één exemplaar dat is gemaakt in een leeg subnet](sql-database-managed-instance.md#managed-instance-management-operations).
+1. Eenmalige instantiepoolimplementatie. Dit is een langlopende bewerking, waarbij de duur gelijk is aan het implementeren van [één instantie die is gemaakt in een leeg subnet.](sql-database-managed-instance.md#managed-instance-management-operations)
 
-2. Herhaalde implementatie van een exemplaar in een exemplaar groep. De para meter voor de exemplaar groep moet expliciet worden opgegeven als onderdeel van deze bewerking. Dit is een relatief snelle bewerking die doorgaans vijf minuten in beslag neemt.
+2. Herhaalde instantie-implementatie in een instantiegroep. De parameter instantiegroep moet expliciet worden opgegeven als onderdeel van deze bewerking. Dit is een relatief snelle bewerking die meestal tot 5 minuten duurt.
 
-In de open bare preview worden beide stappen alleen ondersteund met Power shell en Resource Manager-sjablonen. De Azure Portal-ervaring is momenteel niet beschikbaar.
+In openbare preview worden beide stappen alleen ondersteund met PowerShell- en Resource Manager-sjablonen. De Azure-portalervaring is momenteel niet beschikbaar.
 
-Nadat een beheerd exemplaar is geïmplementeerd in een pool, *kunt* u de Azure Portal gebruiken om de eigenschappen ervan te wijzigen op de pagina prijs categorie.
-
-
-## <a name="create-an-instance-pool"></a>Een exemplaar groep maken
-
-Een exemplaar groep maken:
-
-1. [Maak een virtueel netwerk met een subnet](#create-a-virtual-network-with-a-subnet).
-2. [Maak een exemplaar groep](#create-an-instance-pool).
+Nadat een beheerde instantie is geïmplementeerd in een groep, *kunt* u de Azure-portal gebruiken om de eigenschappen ervan op de pagina met de prijslaag te wijzigen.
 
 
-### <a name="create-a-virtual-network-with-a-subnet"></a>Een virtueel netwerk met een subnet maken 
+## <a name="create-an-instance-pool"></a>Een instantiegroep maken
 
-Als u meerdere instantie groepen binnen hetzelfde virtuele netwerk wilt plaatsen, raadpleegt u de volgende artikelen:
+Ga als u een instantiegroep wilt maken:
 
-- [De grootte van het VNet-subnet bepalen voor een beheerde Azure SQL database-instantie](sql-database-managed-instance-determine-size-vnet-subnet.md).
-- Maak een nieuw virtueel netwerk en subnet met behulp van de [Azure Portal sjabloon](sql-database-managed-instance-create-vnet-subnet.md) of volg de instructies voor [het voorbereiden van een bestaand virtueel netwerk](sql-database-managed-instance-configure-vnet-subnet.md).
+1. [Maak een virtueel netwerk met een subnet.](#create-a-virtual-network-with-a-subnet)
+2. [Een instantiegroep maken](#create-an-instance-pool).
+
+
+### <a name="create-a-virtual-network-with-a-subnet"></a>Een virtueel netwerk maken met een subnet 
+
+Zie de volgende artikelen om meerdere instantiepools binnen hetzelfde virtuele netwerk te plaatsen:
+
+- [Bepaal de subnetgrootte van VNet voor een azure SQL Database-beheerde instantie](sql-database-managed-instance-determine-size-vnet-subnet.md).
+- Maak een nieuw virtueel netwerk en subnet met behulp van de [Azure-portalsjabloon](sql-database-managed-instance-create-vnet-subnet.md) of volg de instructies voor [het voorbereiden van een bestaand virtueel netwerk.](sql-database-managed-instance-configure-vnet-subnet.md)
  
 
 
-### <a name="create-an-instance-pool"></a>Een exemplaar groep maken 
+### <a name="create-an-instance-pool"></a>Een instantiegroep maken 
 
-Nadat u de voor gaande stappen hebt voltooid, bent u klaar om een exemplaar groep te maken.
+Nadat u de vorige stappen hebt voltooid, bent u klaar om een instantiegroep te maken.
 
-De volgende beperkingen zijn van toepassing op exemplaar groepen:
+De volgende beperkingen zijn van toepassing op instantiegroepen:
 
-- Alleen Algemeen en GEN5 zijn beschikbaar als open bare preview.
-- De groeps naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten en mag niet beginnen met een koppel teken.
-- Als u AHB (Azure Hybrid Benefit) wilt gebruiken, wordt dit toegepast op het niveau van de instantie groep. U kunt het licentie type instellen tijdens het maken van een groep of deze op elk gewenst moment bijwerken na het maken.
+- Alleen Algemeen Doel en Gen5 zijn beschikbaar in openbare preview.
+- De naam van de groep kan alleen kleine letters, getallen en koppeltekens bevatten en kan niet beginnen met een koppelteken.
+- Als u AHB (Azure Hybrid Benefit) wilt gebruiken, wordt dit toegepast op instantiepoolniveau. U het licentietype instellen tijdens het maken van een groep of het op elk gewenst moment bijwerken na het maken.
 
 > [!IMPORTANT]
-> Het implementeren van een exemplaar groep is een langlopende bewerking die ongeveer 4,5 uur in beslag neemt.
+> Het implementeren van een instantiegroep is een langdurige bewerking die ongeveer 4,5 uur duurt.
 
-Netwerk parameters ophalen:
+Ga als u op zoek gaat naar netwerkparameters:
 
 ```powershell
 $virtualNetwork = Get-AzVirtualNetwork -Name "miPoolVirtualNetwork" -ResourceGroupName "myResourceGroup"
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork
 ```
 
-Een exemplaar groep maken:
+Ga als u een instantiegroep wilt maken:
 
 ```powershell
 $instancePool = New-AzSqlInstancePool `
@@ -119,58 +119,58 @@ $instancePool = New-AzSqlInstancePool `
 ```
 
 > [!IMPORTANT]
-> Omdat het implementeren van een exemplaar groep een langlopende bewerking is, moet u wachten totdat deze is voltooid voordat u een van de volgende stappen in dit artikel uitvoert.
+> Omdat het implementeren van een instantiegroep een langdurige bewerking is, moet u wachten tot deze is voltooid voordat een van de volgende stappen in dit artikel wordt uitgevoerd.
 
-## <a name="create-a-managed-instance-inside-the-pool"></a>Een beheerd exemplaar maken in de groep 
+## <a name="create-a-managed-instance-inside-the-pool"></a>Een beheerde instantie in het zwembad maken 
 
-Na de geslaagde implementatie van de exemplaar groep is het tijd om een instantie te maken.
+Na de succesvolle implementatie van de instantiegroep is het tijd om een instantie erin te maken.
 
-Als u een beheerd exemplaar wilt maken, voert u de volgende opdracht uit:
+Als u een beheerde instantie wilt maken, voert u de volgende opdracht uit:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
 ```
 
-Het implementeren van een exemplaar binnen een groep duurt enkele minuten. Nadat de eerste instantie is gemaakt, kunnen er extra instanties worden gemaakt:
+Het implementeren van een instantie in een pool duurt een paar minuten. Nadat de eerste instantie is gemaakt, kunnen extra exemplaren worden gemaakt:
 
 ```powershell
 $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
 ```
 
-## <a name="create-a-database-inside-an-instance"></a>Een Data Base binnen een exemplaar maken 
+## <a name="create-a-database-inside-an-instance"></a>Een database maken in een instantie 
 
-Voor het maken en beheren van data bases in een beheerd exemplaar dat zich in een groep bevindt, gebruikt u de opdrachten voor één exemplaar.
+Als u databases wilt maken en beheren in een beheerde instantie die zich in een groep bevindt, gebruikt u de opdrachten voor één instantie.
 
-Een Data Base maken in een beheerd exemplaar:
+Ga als lid van het werk om een database in een beheerde instantie te maken:
 
 ```powershell
 $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poolmi-001" -ResourceGroupName "myResourceGroup"
 ```
 
 
-## <a name="get-instance-pool-usage"></a>Gebruik van exemplaar groep ophalen 
+## <a name="get-instance-pool-usage"></a>Gebruik van instantiepool 
  
-Een lijst met exemplaren in een groep ophalen:
+Ga als lid van het nieuwe bedrijf naar een lijst met instanties in een groep:
 
 ```powershell
 $instancePool | Get-AzSqlInstance
 ```
 
 
-Resource gebruik van de groep ophalen:
+Ga als een opgaalse brongebruik van de groep:
 
 ```powershell
 $instancePool | Get-AzSqlInstancePoolUsage
 ```
 
 
-Voor een gedetailleerd gebruiks overzicht van de groep en instanties hierin:
+Ga als u op de website naar een gedetailleerd gebruiksoverzicht van de groep en instanties:
 
 ```powershell
 $instancePool | Get-AzSqlInstancePoolUsage –ExpandChildren
 ```
 
-Een lijst met de data bases in een exemplaar:
+Ga als bedoeld als u de databases in een instantie wilt weergeven:
 
 ```powershell
 $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGroupName "resource-group-name"
@@ -178,23 +178,23 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 
 
 > [!NOTE]
-> Er geldt een limiet van 100 data bases per pool (niet per instantie).
+> Er is een limiet van 100 databases per groep (niet per exemplaar).
 
 
-## <a name="scale-a-managed-instance-inside-a-pool"></a>Een beheerd exemplaar binnen een groep schalen 
+## <a name="scale-a-managed-instance-inside-a-pool"></a>Een beheerde instantie in een pool schalen 
 
 
-Nadat u een beheerd exemplaar hebt gevuld met data bases, kunt u de instantie limieten voor opslag of prestaties aanraken. Als het gebruik van de groep niet is overschreden, kunt u in dat geval uw exemplaar schalen.
-Het schalen van een beheerd exemplaar binnen een pool is een bewerking die een paar minuten in beslag neemt. De vereiste voor schalen is beschikbaar vCores en opslag op het niveau van de instantie groep.
+Nadat u een beheerde instantie hebt bevolken met databases, u instantielimieten voor opslag of prestaties bereiken. Als het gebruik van de groep niet is overschreden, u uw instantie schalen.
+Het schalen van een beheerde instantie in een groep is een bewerking die een paar minuten duurt. De voorwaarde voor schalen is beschikbaar vCores en opslag op instantiepoolniveau.
 
-Het aantal vCores en de opslag grootte bijwerken:
+Ga als het gaat om het aantal vCores en de opslaggrootte:
 
 ```powershell
 $instanceOne | Set-AzSqlInstance -VCore 8 -StorageSizeInGB 512 -InstancePoolName "mi-pool-name"
 ```
 
 
-Alleen opslag grootte bijwerken:
+Ga als u alleen de opslaggrootte bijwerkt:
 
 ```powershell
 $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-name"
@@ -202,46 +202,46 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 
 
-## <a name="connect-to-a-managed-instance-inside-a-pool"></a>Verbinding maken met een beheerd exemplaar binnen een groep
+## <a name="connect-to-a-managed-instance-inside-a-pool"></a>Verbinding maken met een beheerde instantie in een pool
 
-De volgende twee stappen zijn vereist om verbinding te maken met een beheerd exemplaar in een groep:
+Als u verbinding wilt maken met een beheerde instantie in een groep, zijn de volgende twee stappen vereist:
 
-1. [Schakel het open bare eind punt in voor het exemplaar](#enable-the-public-endpoint-for-the-instance).
-2. [Voeg een regel voor binnenkomende verbindingen toe aan de netwerk beveiligings groep (NSG)](#add-an-inbound-rule-to-the-network-security-group).
+1. [Schakel het openbare eindpunt voor de instantie in](#enable-the-public-endpoint-for-the-instance).
+2. [Voeg een binnenkomende regel toe aan de netwerkbeveiligingsgroep (NSG).](#add-an-inbound-rule-to-the-network-security-group)
 
-Nadat beide stappen zijn voltooid, kunt u verbinding maken met het exemplaar met behulp van een openbaar eindpunt adres, poort en referenties die zijn gegeven tijdens het maken van het exemplaar. 
+Nadat beide stappen zijn voltooid, u verbinding maken met de instantie met behulp van een openbaar eindpuntadres, poort en referenties die zijn verstrekt tijdens het maken van instanties. 
 
-### <a name="enable-the-public-endpoint-for-the-instance"></a>Het open bare eind punt inschakelen voor het exemplaar
+### <a name="enable-the-public-endpoint-for-the-instance"></a>Het openbare eindpunt voor de instantie inschakelen
 
-Het inschakelen van het open bare eind punt voor een exemplaar kan worden uitgevoerd via de Azure Portal of met behulp van de volgende Power shell-opdracht:
+Het inschakelen van het openbare eindpunt voor een instantie kan via de Azure-portal of via de volgende PowerShell-opdracht:
 
 
 ```powershell
 $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndpointEnabled $true
 ```
 
-Deze para meter kan ook worden ingesteld tijdens het maken van een exemplaar.
+Deze parameter kan ook worden ingesteld tijdens het maken van bijvoorbeelden.
 
-### <a name="add-an-inbound-rule-to-the-network-security-group"></a>Een regel voor binnenkomende verbindingen toevoegen aan de netwerk beveiligings groep 
+### <a name="add-an-inbound-rule-to-the-network-security-group"></a>Een binnenkomende regel toevoegen aan de netwerkbeveiligingsgroep 
 
-Deze stap kan worden uitgevoerd met behulp van de Azure Portal of met Power shell-opdrachten en kan op elk gewenst moment worden uitgevoerd nadat het subnet voor het beheerde exemplaar is voor bereid.
+Deze stap kan worden uitgevoerd via de Azure-portal of met PowerShell-opdrachten en kan op elk gewenst moment worden uitgevoerd nadat het subnet is voorbereid op de beheerde instantie.
 
-Zie [verkeer van open bare eind punten toestaan voor de netwerk beveiligings groep](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)voor meer informatie.
+Zie Openbaar [eindpuntverkeer toestaan in de netwerkbeveiligingsgroep](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)voor meer informatie .
 
 
-## <a name="move-an-existing-single-instance-inside-an-instance-pool"></a>Een bestaande enkele instantie binnen een exemplaar groep verplaatsen 
+## <a name="move-an-existing-single-instance-inside-an-instance-pool"></a>Een bestaande afzonderlijke instantie verplaatsen in een instantiegroep 
  
-Het verplaatsen van exemplaren in en uit een pool is een van de beperkingen voor de open bare preview. Een tijdelijke oplossing die kan worden gebruikt, is afhankelijk van het tijdstip van het herstellen van data bases van een exemplaar buiten een groep naar een exemplaar dat zich al in een groep bevindt. 
+Het verplaatsen van instanties in en uit een groep is een van de beperkingen voor openbare preview. Een tijdelijke oplossing die kan worden gebruikt, is afhankelijk van point-in-time herstel van databases van een instantie buiten een groep naar een instantie die al in een groep is. 
 
-Beide exemplaren moeten zich in hetzelfde abonnement en dezelfde regio bevinden. Het terugzetten van meerdere regio's en meerdere abonnementen wordt momenteel niet ondersteund.
+Beide exemplaren moeten zich in hetzelfde abonnement en dezelfde regio bevinden. Herstel van verschillende regio's en kruisabonnementen wordt momenteel niet ondersteund.
 
-Voor dit proces geldt een periode van uitval tijd.
+Dit proces heeft een periode van downtime.
 
-Bestaande data bases verplaatsen:
+Ga als u bestaande databases verplaatsen:
 
-1. Werk belastingen voor het beheerde exemplaar dat u migreert, te onderbreken.
-2. Genereer scripts om systeem databases te maken en voer deze uit op het exemplaar dat zich in de exemplaar groep bevindt.
-3. Een herstel bewerking van elke Data Base naar het exemplaar in de groep uitvoeren.
+1. Werkbelastingen onderbreken op het beheerde exemplaar waaruit u migreert.
+2. Scripts genereren om systeemdatabases te maken en deze uit te voeren op de instantie die zich in de instantiegroep bevindt.
+3. Doe een point-in-time-herstel van elke database van de afzonderlijke instantie naar de instantie in de groep.
 
     ```powershell
     $resourceGroupName = "my resource group name"
@@ -262,16 +262,16 @@ Bestaande data bases verplaatsen:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Ga naar het nieuwe exemplaar van uw toepassing en hervat de workloads.
+4. Wijs uw toepassing naar het nieuwe exemplaar en hervat de werkbelasting.
 
-Als er meerdere data bases zijn, herhaalt u het proces voor elke Data Base.
+Als er meerdere databases zijn, herhaalt u het proces voor elke database.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [algemene SQL-functies](sql-database-features.md)voor een lijst met functies en vergelijkingen.
-- Zie [vnet-configuratie voor beheerde exemplaren](sql-database-managed-instance-connectivity-architecture.md)voor meer informatie over vnet-configuratie.
-- Zie [een beheerd exemplaar maken](sql-database-managed-instance-get-started.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Zie [migratie van beheerde exemplaren met](../dms/tutorial-sql-server-to-managed-instance.md)behulp van DMS voor een zelf studie met behulp van de Azure database MIGRATION service (DMS) voor migratie.
-- Zie [Azure SQL database bewaken met behulp van Azure SQL-analyse](../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van beheerde exemplaar database prestaties met ingebouwde probleemoplossings informatie.
-- Zie [prijzen van beheerde exemplaren SQL database](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijs informatie.
+- Zie [ALGEMENE SQL-functies voor](sql-database-features.md)een lijst met functies en vergelijkingsfuncties .
+- Zie [VNet-configuratie beheerde instantie voor](sql-database-managed-instance-connectivity-architecture.md)meer informatie over vNet-configuratie.
+- Zie [een beheerde instantie maken](sql-database-managed-instance-get-started.md)voor een snellestart waarmee een beheerde instantie wordt gemaakt en een database wordt hersteld uit een back-upbestand.
+- Zie [Beheerde instantiemigratie met DMS](../dms/tutorial-sql-server-to-managed-instance.md)voor een zelfstudie met de Azure Database Migration Service (DMS) voor migratie.
+- Zie Azure SQL Database met [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)controleren voor geavanceerde bewaking van beheerde instantiedatabaseprestaties met ingebouwde informatie over probleemoplossing.
+- Zie [SQL Database managed instance pricing](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijsinformatie voor prijsinformatie .

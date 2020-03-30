@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Java API, SDK en resources'
-description: Meer informatie over de SQL Java API en SDK, inclusief release datums, buiten gebruik stellen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB SQL Java SDK.
+title: 'Azure Cosmos DB: SQL Java API, SDK & resources'
+description: Leer alles over de SQL Java API en SDK, inclusief releasedatums, pensioendatums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB SQL Java SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,273 +9,273 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
 ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77558925"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL-API: releaseopmerkingen en resources
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: notities en bronnen vrijgeven
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigingsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [Rest](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchrone ondersteuning gebruikt u de [SQL API async Java SDK](sql-api-sdk-async-java.md). 
+De SQL API Java SDK ondersteunt synchrone bewerkingen. Gebruik de [SQL API Async Java SDK](sql-api-sdk-async-java.md)voor asynchrone ondersteuning. 
 
 | |  |
 |---|---|
 |**SDK downloaden**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
-|**API-documentatie**|[Naslag documentatie voor Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Aan de slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
-|**Zelf studie voor web-apps**|[Ontwikkeling van webtoepassingen met Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
+|**API-documentatie**|[Java API-referentiedocumentatie](/java/api/com.microsoft.azure.documentdb)|
+|**Bijdragen aan SDK**|[GitHub GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
+|**Zelfstudie voor web-apps**|[Webtoepassingsontwikkeling met Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
-* Oplossen van problemen met time-out van verbindings groep.
-* Hiermee wordt het vernieuwen van het auth-token bij interne nieuwe pogingen opgelost.
+### <a name="247"></a><a name="2.4.7"/>2.4.7
+* Hiermee wordt een time-out probleem voor de koppelingspool opgelost.
+* Hiermee worden de vernieuwing van de auth-token op interne nieuwe pogingen verholpen.
 
-### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
-* De juiste replica beleids label aan client zijde is bijgewerkt op databaseAccount en er zijn databaseAccount configuratie Lees bewerkingen van de cache gemaakt.
+### <a name="246"></a><a name="2.4.6"/>2.4.6
+* Bijgewerkte juiste client side replica policy tag op databaseAccount en maakte databaseAccount configuratie leest uit cache.
 
-### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
-* Nieuwe poging op ongeldige partitie sleutel bereik fout voor komen als de gebruiker pkRangeId levert.
+### <a name="245"></a><a name="2.4.5"/>2.4.5
+* Als de gebruiker pkRangeId levert, opnieuw proberen op ongeldige fout in het partitiesleutelbereik, wordt opnieuw geprobeerd.
 
-### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
-* Versleutelde cache sleutels voor het bereik van geoptimaliseerde partities.
-* Hiermee wordt het scenario opgelost waarbij de SDK geen problemen met de splitsing van de partitie van de server oplevert en resulteert in onjuiste routerings caches voor client zijde vernieuwen.
+### <a name="244"></a><a name="2.4.4"/>2.4.4
+* Geoptimaliseerde cachecache van de partitiesleutel wordt vernieuwd.
+* Hiermee wordt het scenario verhelpt waarin de SDK de gesplitste hint van de partitie van de server niet vermaakt en resulteert in een onjuiste clientroutingcaches die worden vernieuwd.
 
-### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
-* Geoptimaliseerde verzamelings cache vernieuwt.
+### <a name="242"></a><a name="2.4.2"/>2.4.2
+* Geoptimaliseerde collectiecache wordt vernieuwd.
 
-### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
-* Er is ondersteuning toegevoegd om een uitzonderings bericht op te halen uit de teken reeks voor aanvraag diagnose.
+### <a name="241"></a><a name="2.4.1"/>2.4.1
+* Ondersteuning toegevoegd om het bericht met een binnenste uitzondering op te halen uit de diagnostische tekenreeks van de aanvraag.
 
-### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* Versie-API is geïntroduceerd op PartitionKeyDefinition.
+### <a name="240"></a><a name="2.4.0"/>2.4.0
+* Geïntroduceerde versie-api op PartitionKeyDefinition.
 
-### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
-* Er is afzonderlijke time-outondersteuning toegevoegd voor de directe modus.
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Aparte time-out ondersteuning toegevoegd voor de directe modus.
 
-### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
-* Er wordt een null-fout bericht verbruikt van de service en de document-client uitzondering wordt geproduceerd.
+### <a name="223"></a><a name="2.2.3"/>2.2.3
+* Het consumeren van null foutbericht van service en het produceren van documentclient uitzondering.
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* Verbetering van socket verbinding, toevoegen SoKeepAlive standaard ingesteld op True.
+### <a name="222"></a><a name="2.2.2"/>2.2.2
+* Socket verbinding verbetering, het toevoegen van SoKeepAlive standaard true true.
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
-* Ondersteuning voor diagnostische teken reeksen voor aanvragen is toegevoegd.
+### <a name="220"></a><a name="2.2.0"/>2.2.0
+* Ondersteuning voor de tekenreeks voor het aanvragen van aanvragen toegevoegd.
 
-### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
-* Opgeloste fout in PartitionKey voor hash v2.
+### <a name="213"></a><a name="2.1.3"/>2.1.3
+* Fixed bug in PartitionKey for Hash V2.
 
-### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
-* Er is ondersteuning toegevoegd voor samengestelde indexen.
-* Er is een probleem opgelost in Global Endpoint Manager om het vernieuwen af te dwingen.
-* Er is een fout opgelost voor upsert met voor waarden in de directe modus.
+### <a name="212"></a><a name="2.1.2"/>2.1.2
+* Ondersteuning toegevoegd voor samengestelde indexen.
+* Fixed bug in global endpoint manager to force refresh.
+* Fixed bug for upserts with pre-conditions in direct mode.
 
-### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
-* Er is een fout opgelost in de cache van de gateway.
+### <a name="211"></a><a name="2.1.1"/>2.1.1
+* Fixed bug in gateway address cache.
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Ondersteuning voor meerdere regio's schrijven toegevoegd voor de directe modus.
-* Er is ondersteuning toegevoegd voor het verwerken van IOExceptions gegenereerd als ServiceUnavailable uitzonderingen, van een proxy.
-* Beleid voor opnieuw proberen van eindpunt detectie, een bug vast.
-* Een opgelost om ervoor te zorgen null-aanwijzer uitzonderingen worden niet in BaseDatabaseAccountConfigurationProvider veroorzaakt.
-* Er is een fout opgelost om ervoor te zorgen dat QueryIterator geen Null-waarden retourneert.
-* Een probleem opgelost om ervoor te zorgen dat grote PartitionKey is toegestaan
+### <a name="210"></a><a name="2.1.0"/>2.1.0
+* Schrijfondersteuning met meerdere regio's toegevoegd voor de directe modus.
+* Added support for handling IOExceptions thrown as ServiceUnavailable exceptions, from a proxy.
+* Fixed a bug in endpoint discovery retry policy.
+* Fixed a bug to ensure null pointer exceptions are not thrown in BaseDatabaseAccountConfigurationProvider.
+* Fixed a bug to ensure QueryIterator does not return nulls.
+* Fixed a bug to ensure large PartitionKey is allowed
 
-### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Ondersteuning voor meerdere regio's schrijven toegevoegd voor de gateway-modus.
+### <a name="200"></a><a name="2.0.0"/>2.0.0
+* Schrijfondersteuning met meerdere regio's toegevoegd voor de gatewaymodus.
 
-### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
-* Vaste een bug in lezen partitie sleutel bereiken voor een query.
+### <a name="1164"></a><a name="1.16.4"/>1.16.4
+* Fixed a bug in Read partition Key ranges for a query.
 
-### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
-* Een opgelost bij het instellen van voortzetting van token header-grootte in de modus DirectHttps.
+### <a name="1163"></a><a name="1.16.3"/>1.16.3
+* Fixed a bug in setting continuation token header size in DirectHttps mode.
 
-### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
-* Toegevoegde streaming failover-ondersteuning.
+### <a name="1162"></a><a name="1.16.2"/>1.16.2
+* Toegevoegde streaming mislukken over ondersteuning.
 * Ondersteuning toegevoegd voor aangepaste metagegevens.
-* Verbeterde sessie logische verwerken.
-* Partitie sleutelbereik cache, een bug vast.
-* Een NFE opgelost in de directe modus.
+* Verbeterde logica voor sessieafhandeling.
+* Fixed a bug in partition key range cache.
+* Fixed a NPE bug in direct mode.
 
-### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
-* Ondersteuning toegevoegd voor unieke Index.
-* Ondersteuning toegevoegd voor het beperken van de voortzetting van token grootte in de feed-opties.
-* Een bug opgelost in Json-serialisatie (tijdstempel).
-* Een bug opgelost in Json-serialisatie (enum).
-* Afhankelijkheid van een upgrade uitgevoerd naar 2.9.5 com.fasterxml.jackson.core:jackson-DataBind oproept.
+### <a name="1161"></a><a name="1.16.1"/>1.16.1
+* Ondersteuning toegevoegd voor unieke index.
+* Added support for limiting continuation token size in feed-options.
+* Fixed a bug in Json Serialization (timestamp).
+* Fixed a bug in Json Serialization (enum).
+* Afhankelijkheid van com.fasterxml.jackson.core:jackson-databind opgewaardeerd naar 2.9.5.
 
-### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
-* Verbeterde groepsgewijze verbindingen voor de directe modus.
-* Prefetch verbetering voor orderby cross-partitiequery verbeterd.
-* Verbeterde UUID genereren.
-* Verbeterde sessie consistentie logica.
-* Ondersteuning toegevoegd voor multipolygon.
-* Ondersteuning toegevoegd voor partitie sleutel bereik statistieken voor de verzameling.
-* Ondersteuning voor meerdere regio's, een bug vast.
+### <a name="1160"></a><a name="1.16.0"/>1.16.0
+* Verbeterde verbindingspooling voor de directe modus.
+* Verbeterde Prefetch-verbetering voor niet-ordererende kruispartitiequery.
+* Verbeterde UUID-generatie.
+* Verbeterde consistentielogica voor de sessie.
+* Ondersteuning toegevoegd voor multipolygoon.
+* Ondersteuning toegevoegd voor partition key range statistics voor verzameling.
+* Fixed a bug in Multi-region support.
 
-### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
-* Verbeterde prestaties van de Json-serialisatie.
-* Voor deze SDK-versie is de nieuwste versie van Azure Cosmos DB emulator beschikbaar om te worden gedownload van https://aka.ms/cosmosdb-emulator.
+### <a name="1150"></a><a name="1.15.0"/>1.15.0
+* Verbeterde Json Serialization prestaties.
+* Deze SDK-versie vereist de nieuwste versie van https://aka.ms/cosmosdb-emulatorAzure Cosmos DB Emulator beschikbaar voor download van .
 
-### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-* Interne wijzigingen voor Microsoft vrienden bibliotheken.
+### <a name="1140"></a><a name="1.14.0"/>1.14.0
+* Interne wijzigingen voor Microsoft-vriendenbibliotheken.
 
-### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
-* Er is een probleem bij het lezen van één partitie sleutelbereiken opgelost.
-* Er is een probleem opgelost in ResourceID parseren die van invloed is op de database met korte namen.
-* Er is een probleem veroorzaakt door het partitie sleutels coderen opgelost.
+### <a name="1130"></a><a name="1.13.0"/>1.13.0
+* Probleem opgelost bij het lezen van afzonderlijke partitiesleutelbereiken.
+* Fixed an issue in ResourceID parsing that s ontgaat database with short names.
+* Fixed an issue cause by partition key encoding.
 
-### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Kritieke problemen opgelost voor aanvraagverwerking tijdens partitie worden opgesplitst.
-* Een probleem opgelost met de sterke en BoundedStaleness consistentieniveaus.
+### <a name="1120"></a><a name="1.12.0"/>1.12.0
+* Kritieke bugfixes voor het aanvragen van verwerking tijdens partitiesplitsingen.
+* Fixed an issue with the Strong and BoundedStaleness consistency levels.
 
-### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0
-* Er is ondersteuning toegevoegd voor een nieuwe consistentieniveau ConsistentPrefix genoemd.
-* Een opgelost bij het lezen van de verzameling in de modus voor sessies.
+### <a name="1110"></a><a name="1.11.0"/>1.11.0
+* Ondersteuning toegevoegd voor een nieuw consistentieniveau genaamd ConsistentPrefix.
+* Fixed a bug in reading collection in session mode.
 
-### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
-* Ingeschakelde ondersteuning voor gepartitioneerde verzameling met als laag als 2.500 RU/sec. en schalen in stappen van 100 RU/sec.
-* Een bug opgelost in de systeemeigen assembly die leiden NullRef uitzondering in sommige query's tot kan.
+### <a name="1100"></a><a name="1.10.0"/>1.10.0
+* Ingeschakelde ondersteuning voor gepartitioneerde verzameling met maar liefst 2.500 RU/sec en schaal in stappen van 100 RU/sec.
+* Fixed a bug in the native assembly which can cause NullRef exception in some queries.
 
-### <a name="a-name196196"></a><a name="1.9.6"/>1.9.6
-* Een bug opgelost in de configuratie van de query-engine die uitzonderingen voor query's in de modus van de Gateway kan veroorzaken.
-* Enkele fouten in de sessie-container die ertoe leiden een 'Eigenaar resource is niet gevonden'-uitzondering voor aanvragen onmiddellijk na het verzamelen van dat kan opgelost.
+### <a name="196"></a><a name="1.9.6"/>1.9.6
+* Een bug in de configuratie van de queryengine opgelost die uitzonderingen kan veroorzaken voor query's in de gatewaymodus.
+* Fixed a few bugs in the session container that may cause an "Owner resource not found" exception for requests immediately after collection creation.
 
-### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Er is ondersteuning toegevoegd voor aggregatie-query's (aantal, MIN, MAX, som en gemiddelde). Zie [ondersteuning voor aggregatie](sql-query-aggregates.md).
-* Ondersteuning toegevoegd voor feed wijzigen.
-* Ondersteuning toegevoegd voor verzameling quotumgegevens via RequestOptions.setPopulateQuotaInfo.
-* Er is ondersteuning toegevoegd voor de opgeslagen procedure script logboekregistratie via RequestOptions.setScriptLoggingEnabled.
-* Er is een fout opgelost waarbij de query in de DirectHttps-modus niet meer reageert wanneer er vertragings fouten optreden.
-* Een bug opgelost in sessiemodus consistentie.
-* Een opgelost waardoor NullReferenceException in HttpContext wanneer aanvraagsnelheid hoog is.
-* Verbeterde prestaties van DirectHttps modus.
+### <a name="195"></a><a name="1.9.5"/>1.9.5
+* Ondersteuning toegevoegd voor aggregatiequery's (COUNT, MIN, MAX, SOM en AVG). Zie [Ondersteuning voor aggregatie](sql-query-aggregates.md).
+* Ondersteuning toegevoegd voor change feed.
+* Ondersteuning toegevoegd voor het verzamelen van quota-informatie via RequestOptions.setPopulateQuotaInfo.
+* Ondersteuning toegevoegd voor opgeslagen procedurescriptlogboekregistratie via RequestOptions.setScriptLoggingIngeschakeld.
+* Fixed a bug where query in DirectHttps mode may stop responding when encountering throttle failures.
+* Fixed a bug in session consistency mode.
+* Fixed a bug which may cause NullReferenceException in HttpContext when request rate is high.
+* Verbeterde prestaties van de DirectHttps-modus.
 
-### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
-* Toegevoegde eenvoudige client exemplaar op basis van proxy-ondersteuning met ConnectionPolicy.setProxy()-API.
-* Toegevoegde DocumentClient.close() API correct DocumentClient-exemplaar afsluiten.
-* Verbeterde prestaties van query's in de modus voor directe verbinding met het queryplan die is afgeleid van de systeemeigen assembly in plaats van de Gateway.
-* Stel FAIL_ON_UNKNOWN_PROPERTIES = false, zodat gebruikers niet hoeft te JsonIgnoreProperties in hun POJO definiëren.
-* Geherstructureerd logboekregistratie voor het gebruik van SLF4J.
-* Enkele andere fouten opgelost in de lezer van de consistentie.
+### <a name="194"></a><a name="1.9.4"/>1.9.4
+* Eenvoudige clientinstantiegebaseerde proxy-ondersteuning toegevoegd met ConnectionPolicy.setProxy() API.
+* De API DocumentClient.close() toegevoegd om de instantie DocumentClient correct af te sluiten.
+* Verbeterde queryprestaties in de modus directe connectiviteit door het queryplan af te leiden van de native assemblage in plaats van de Gateway.
+* Stel FAIL_ON_UNKNOWN_PROPERTIES = false in, zodat gebruikers JsonIgnoreProperties niet hoeven te definiëren in hun POJO.
+* Refactored logging om SLF4J te gebruiken.
+* Fixed a few other bugs in consistency reader.
 
-### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Een bug opgelost bij het Verbindingsbeheer om te voorkomen dat het lekken van de verbinding in de modus voor directe connectiviteit.
-* Er is een fout opgelost in de bovenste query waar deze NullReference-uitzonde ring kan genereren.
-* Verbeterde prestaties doordat er minder van netwerkaanroep voor de interne caches.
-* Toegevoegde statuscode, ActivityID en aanvraag-URI in DocumentClientException voor het oplossen van betere.
+### <a name="193"></a><a name="1.9.3"/>1.9.3
+* Fixed a bug in the connection management to prevent connection leaks in direct connectivity mode.
+* Fixed a bug in the TOP query where it may throw NullReference exception.
+* Verbeterde prestaties door het aantal netwerkoproepen voor de interne caches te verminderen.
+* Toegevoegd statuscode, ActivityID en Vraag URI aan in DocumentClientException voor een betere probleemoplossing.
 
-### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
-* Een probleem opgelost bij het Verbindingsbeheer voor de stabiliteit.
+### <a name="192"></a><a name="1.9.2"/>1.9.2
+* Fixed an issue in the connection management for stability.
 
-### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
-* Ondersteuning toegevoegd voor BoundedStaleness consistentieniveau.
-* Ondersteuning toegevoegd voor directe connectiviteit voor CRUD-bewerkingen voor gepartitioneerde verzamelingen.
-* Een opgelost bij het zoeken van een database met SQL.
-* Er is een bug opgelost in de sessiecache waar sessietoken niet goed kan worden ingesteld.
+### <a name="191"></a><a name="1.9.1"/>1.9.1
+* Added support for BoundedStaleness consistency level.
+* Added support for direct connectivity for CRUD operations for partitioned collections.
+* Fixed a bug in querying a database with SQL.
+* Fixed a bug in the session cache where session token may be fixed incorrectly.
 
-### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-* Ondersteuning toegevoegd voor cross-partitie parallelle query's.
-* Ondersteuning toegevoegd voor bovenste/ORDER BY-query's voor gepartitioneerde verzamelingen.
-* Ondersteuning toegevoegd voor sterke consistentie.
-* Er is ondersteuning toegevoegd voor de naam op basis van aanvragen bij het gebruik van directe connectiviteit.
-* Vaste waarmee ActivityId blijven consistent op alle nieuwe aanvraagpogingen.
-* Een opgelost met betrekking tot de sessiecache bij het opnieuw genereren van een verzameling met dezelfde naam.
-* Toegevoegde veelhoek en LineString DataTypes tijdens het instellen van de verzameling indexeringsbeleid voor geofencing ruimtelijke query's.
-* Opgeloste problemen met Java-documentatie voor Java 1.8.
+### <a name="190"></a><a name="1.9.0"/>1.9.0
+* Ondersteuning toegevoegd voor parallelle kruispartitiequery's.
+* Ondersteuning toegevoegd voor TOP/ORDER BY-query's voor partitieverzamelingen.
+* Extra ondersteuning voor een sterke consistentie.
+* Ondersteuning toegevoegd voor op naam gebaseerde aanvragen bij het gebruik van directe connectiviteit.
+* Opgelost om ActivityId consistent te maken voor alle aanvragen.
+* Fixed a bug related to the session cache when recreating a collection with the same name.
+* Veelhoek- en linestringgegevenstypen toegevoegd terwijl het indexeringsbeleid voor geo-fencing wordt opgegeven.
+* Problemen met Java Doc voor Java 1.8 opgelost.
 
-### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
-* Een bug opgelost in PartitionKeyDefinitionMap verzamelingen met één partitie in de cache en geen extra ophalen voor het partitioneren van sleutels aanvragen.
-* Een opgelost om opnieuw te proberen niet als een waarde voor de onjuiste partitiesleutel is opgegeven.
+### <a name="181"></a><a name="1.8.1"/>1.8.1
+* Fixed a bug in PartitionKeyDefinitionMap to cache single partition collections and not make extra fetch partition key requests.
+* Fixed a bug to not retry when an incorrect partition key value is provided.
 
-### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* De ondersteuning voor databaseaccounts voor meerdere regio's toegevoegd.
-* Ondersteuning toegevoegd voor automatische nieuwe pogingen op beperkte aanvragen met opties voor het aanpassen van de maximale nieuwe pogingen en de maximale wachttijd.  Zie RetryOptions en ConnectionPolicy.getRetryOptions().
-* Afgeschafte IPartitionResolver op basis van aangepaste code voor partitionering. Gebruik gepartitioneerde verzamelingen voor hogere opslag en doorvoer.
+### <a name="180"></a><a name="1.8.0"/>1.8.0
+* De ondersteuning voor databaseaccounts met meerdere regio's toegevoegd.
+* Added support for automatic retry on throttled requests with options to customize the max retry attempts and max retry wait time.  Zie RetryOptions en ConnectionPolicy.getRetryOptions().
+* Afgeschafte ipartitionresolver gebaseerde aangepaste partitioneringcode. Gebruik partitieverzamelingen voor hogere opslag en doorvoer.
 
-### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
-* Beleid-ondersteuning voor het toegevoegde nieuwe pogingen voor gelden enkele beperkingen.  
+### <a name="171"></a><a name="1.7.1"/>1.7.1
+* Toegevoegd opnieuw proberen beleidsondersteuning voor tariefbeperking.  
 
-### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Toegevoegde tijd naar live (TTL) ondersteuning voor documenten.
+### <a name="170"></a><a name="1.7.0"/>1.7.0
+* Toegevoegd time to live (TTL) ondersteuning voor documenten.
 
-### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md).
+### <a name="160"></a><a name="1.6.0"/>1.6.0
+* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en [door de gebruiker gedefinieerde prestatieniveaus](performance-levels.md).
 
-### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
-* Een bug opgelost in HashPartitionResolver voor het genereren van hash-waarden in weinig endian zodat deze overeenkomt met andere SDK's.
+### <a name="151"></a><a name="1.5.1"/>1.5.1
+* Fixed a bug in HashPartitionResolver to generate hash values in little-endian to be consistent with other SDKs.
 
-### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
-* Toevoegen van hash- & bereik partitie-resolvers om te helpen met sharding-toepassingen voor meerdere partities.
+### <a name="150"></a><a name="1.5.0"/>1.5.0
+* Voeg Hash & Range-partitieresolvers toe om te helpen bij het sharden van toepassingen in meerdere partities.
 
-### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
-* Upsert implementeren. Nieuwe upsertXXX methoden toegevoegd ter ondersteuning van Upsert-functie.
-* Implementatie-ID op basis van routering. Er zijn geen openbare API-wijzigingen, worden alle interne wijzigingen.
+### <a name="140"></a><a name="1.4.0"/>1.4.0
+* Implementeer Upsert. Nieuwe upsertXXX-methoden die zijn toegevoegd om de Upsert-functie te ondersteunen.
+* Id-gebaseerde routering implementeren. Geen openbare API wijzigingen, alle wijzigingen intern.
 
-### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
-* Release overgeslagen zodat het versienummer in overeenstemming met andere SDK 's
+### <a name="130"></a><a name="1.3.0"/>1.3.0
+* Release overgeslagen om versienummer in lijn te brengen met andere SDK's
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Ondersteunt georuimtelijke Index
-* Valideert de eigenschap ID voor alle resources. Id's voor resources mogen geen?-,/, # \, tekens bevatten of eindigen met een spatie.
-* Nieuwe header 'index transformatie uitgevoerd' toevoegen aan ResourceResponse.
+### <a name="120"></a><a name="1.2.0"/>1.2.0
+* Ondersteunt georuimtelijke index
+* Valideert id-eigenschap voor alle resources. Id's voor resources kunnen geen \, tekens bevatten ?, /, #, tekens of eindigen met een spatie.
+* Hiermee voegt u nieuwe koptekst "indextransformatievoortgang" toe aan ResourceResponse.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Indexeringsbeleid V2 implementeert
+### <a name="110"></a><a name="1.1.0"/>1.1.0
+* Implementeert V2-indexeringsbeleid
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA-SDK
+### <a name="100"></a><a name="1.0.0"/>1.0.0
+* GA SDK
 
-## <a name="release-and-retirement-dates"></a>Release-en buiten gebruik stellen
-Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
+## <a name="release-and-retirement-dates"></a>Release- en pensioendata
+Microsoft zal ten minste **12 maanden** van tevoren een SDK melden om de overgang naar een nieuwere/ondersteunde versie soepel te laten verlopen.
 
-Nieuwe functies en functionaliteit en -optimalisatie worden alleen toegevoegd aan de huidige SDK, daarom wordt aanbevolen dat u altijd een upgrade uitvoert naar de nieuwste SDK versie zo vroeg mogelijk.
+Nieuwe functies en functionaliteit en optimalisaties worden alleen toegevoegd aan de huidige SDK, als zodanig is het raadzaam dat u altijd upgraden naar de nieuwste SDK-versie zo vroeg mogelijk.
 
-Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
+Elk verzoek aan Cosmos DB met behulp van een gepensioneerde SDK wordt door de service afgewezen.
 
 > [!WARNING]
-> Alle versies **1. x** van de SQL-SDK voor Java zullen op **30 mei 2020**worden ingetrokken.
+> Alle versies **1.x** van de SQL SDK voor Java worden op **30 mei 2020**van de band teruggetrokken.
 > 
 >
 
 > [!WARNING]
-> Alle versies van de SQL-SDK voor Java vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**.
+> Alle versies van de SQL SDK voor Java voorafgaand aan versie **1.0.0** werden op **29 februari 2016**met pensioen gegaan.
 > 
 > 
 
 <br/>
 
-| Version | Releasedatum | Vervaldatum |
+| Versie | Releasedatum | Pensioendatum |
 | --- | --- | --- |
 | [2.4.7](#2.4.7) |20 februari 2020 |--- |
 | [2.4.6](#2.4.6) |24 januari 2020 |--- |
 | [2.4.5](#2.4.5) |10 november 2019 |--- |
-| [2.4.4](#2.4.4) |24 oktober 2019 |--- |
-| [2.4.2](#2.4.2) |26 sep, 2019 |--- |
-| [2.4.1](#2.4.1) |Jul 18, 2019 |--- |
-| [2.4.0](#2.4.0) |Mei 04, 2019 |--- |
-| [2.3.0](#2.3.0) |Apr 24, 2019 |--- |
-| [2.2.3](#2.2.3) |Apr 16, 2019 |--- |
-| [2.2.2](#2.2.2) |Apr 05, 2019 |--- |
-| [2.2.0](#2.2.0) |27 mrt, 2019 |--- |
+| [2.4.4](#2.4.4) |24 okt 2019 |--- |
+| [2.4.2](#2.4.2) |26 sep 2019 |--- |
+| [2.4.1](#2.4.1) |18 juli 2019 |--- |
+| [2.4.0](#2.4.0) |04 mei 2019 |--- |
+| [2.3.0](#2.3.0) |24 april 2019 |--- |
+| [2.2.3](#2.2.3) |16 april 2019 |--- |
+| [2.2.2](#2.2.2) |05.05 uur 2019 |--- |
+| [2.2.0](#2.2.0) |27 maart 2019 |--- |
 | [2.1.3](#2.1.3) |13 maart 2019 |--- |
-| [omschreven](#2.1.2) |9 maart 2019 |--- |
+| [2.1.2](#2.1.2) |09 maart 2019 |--- |
 | [2.1.1](#2.1.1) |13 december 2018 |--- |
 | [2.1.0](#2.1.0) |20 november 2018 |--- |
 | [2.0.0](#2.0.0) |21 september 2018 |--- |
@@ -285,24 +285,24 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 | [1.16.1](#1.16.1) |16 mei 2018 |30 mei 2020 |
 | [1.16.0](#1.16.0) |15 maart 2018 |30 mei 2020 |
 | [1.15.0](#1.15.0) |14 november 2017 |30 mei 2020 |
-| [1.14.0](#1.14.0) |28 oktober 2017 |30 mei 2020 |
+| [1.14.0](#1.14.0) |28 okt 2017 |30 mei 2020 |
 | [1.13.0](#1.13.0) |25 augustus 2017 |30 mei 2020 |
-| [1.12.0](#1.12.0) |Op 11 juli 2017 |30 mei 2020 |
+| [1.12.0](#1.12.0) |11 juli 2017 |30 mei 2020 |
 | [1.11.0](#1.11.0) |10 mei 2017 |30 mei 2020 |
 | [1.10.0](#1.10.0) |11 maart 2017 |30 mei 2020 |
 | [1.9.6](#1.9.6) |21 februari 2017 |30 mei 2020 |
-| [1.9.5](#1.9.5) |En met 31 januari 2017 |30 mei 2020 |
+| [1.9.5](#1.9.5) |31 januari 2017 |30 mei 2020 |
 | [1.9.4](#1.9.4) |24 november 2016 |30 mei 2020 |
 | [1.9.3](#1.9.3) |30 oktober 2016 |30 mei 2020 |
 | [1.9.2](#1.9.2) |28 oktober 2016 |30 mei 2020 |
 | [1.9.1](#1.9.1) |26 oktober 2016 |30 mei 2020 |
 | [1.9.0](#1.9.0) |03 oktober 2016 |30 mei 2020 |
-| [1.8.1](#1.8.1) |Tot 30 juni 2016 |30 mei 2020 |
+| [1.8.1](#1.8.1) |30 juni 2016 |30 mei 2020 |
 | [1.8.0](#1.8.0) |14 juni 2016 |30 mei 2020 |
 | [1.7.1](#1.7.1) |30 april 2016 |30 mei 2020 |
 | [1.7.0](#1.7.0) |27 april 2016 |30 mei 2020 |
 | [1.6.0](#1.6.0) |29 maart 2016 |30 mei 2020 |
-| [1.5.1](#1.5.1) |En met 31 december 2015 |30 mei 2020 |
+| [1.5.1](#1.5.1) |31 december 2015 |30 mei 2020 |
 | [1.5.0](#1.5.0) |04 december 2015 |30 mei 2020 |
 | [1.4.0](#1.4.0) |05 oktober 2015 |30 mei 2020 |
 | [1.3.0](#1.3.0) |05 oktober 2015 |30 mei 2020 |
@@ -310,16 +310,16 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 | [1.1.0](#1.1.0) |09 juli 2015 |30 mei 2020 |
 | 1.0.1 |12 mei 2015 |30 mei 2020 |
 | [1.0.0](#1.0.0) |07 april 2015 |30 mei 2020 |
-| 0.9.5-prelease |09 maart 2015 |En met 29 februari 2016 |
-| 0.9.4-prelease |17 februari 2015 |En met 29 februari 2016 |
-| 0.9.3-prelease |13 januari 2015 |En met 29 februari 2016 |
-| 0.9.2-prelease |19 december 2014 |En met 29 februari 2016 |
-| 0.9.1-prelease |19 december 2014 |En met 29 februari 2016 |
-| 0.9.0-prelease |10 december 2014 |En met 29 februari 2016 |
+| 0.9.5-prelease |09 maart 2015 |29 februari 2016 |
+| 0.9.4-prelease |17 februari 2015 |29 februari 2016 |
+| 0.9.3-prelease |13 januari 2015 |29 februari 2016 |
+| 0.9.2-prelease |19 december 2014 |29 februari 2016 |
+| 0.9.1-prelease |19 december 2014 |29 februari 2016 |
+| 0.9.0-prelease |10 december 2014 |29 februari 2016 |
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
+Zie Microsoft Azure Cosmos [DB-servicepagina](https://azure.microsoft.com/services/cosmos-db/) voor meer informatie over Cosmos DB.
 

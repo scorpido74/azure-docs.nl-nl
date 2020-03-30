@@ -14,17 +14,17 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240364"
 ---
 # <a name="about-api-management"></a>Meer informatie over API Management
 
 API Management (APIM) is een manier om consistente en moderne API-gateways voor bestaande back-endservices te maken.
 
-API Management helpt organisaties bij het publiceren van Api's naar externe, partner-en interne ontwikkel aars om het potentieel van hun gegevens en services te ontgrendelen. Veel bedrijven willen hun activiteiten uitbreiden als een digitaal platform, waarbij nieuwe kanalen worden gemaakt, nieuwe klanten worden gevonden en grotere betrokkenheid met bestaande klanten wordt bereikt. API Management beschikt over de competenties die belangrijk zijn voor een geslaagd API-programma via ontwikkelaarsbetrokkenheid, zakelijke inzichten, analytische gegevens, beveiliging en bescherming. U kunt Azure API Management gebruiken om elke back-end te nemen en een volwaardig API-programma te starten dat hierop is gebaseerd.
+API Management helpt organisaties API's te publiceren naar externe, partner- en interne ontwikkelaars om het potentieel van hun gegevens en services te ontsluiten. Veel bedrijven willen hun activiteiten uitbreiden als een digitaal platform, waarbij nieuwe kanalen worden gemaakt, nieuwe klanten worden gevonden en grotere betrokkenheid met bestaande klanten wordt bereikt. API Management biedt de kerncompetenties voor een geslaagd API-programma via ontwikkelaarsbetrokkenheid, zakelijke inzichten, analytische gegevens, beveiliging en bescherming. U kunt Azure API Management gebruiken om elke back-end te nemen en een volwaardig API-programma te starten dat hierop is gebaseerd.
 
 Dit artikel bevat een overzicht van veelvoorkomende scenario's met APIM.  Het bevat ook een kort overzicht van de belangrijkste onderdelen van het APIM-systeem. Het artikel biedt vervolgens een meer gedetailleerd overzicht van elk onderdeel.
 
@@ -71,17 +71,17 @@ Zie voor meer informatie het technische PDF-document [Cloud-based API Management
  * Cloud- versus on-premises oplossingen gebruiken
  * Azure API Management
  
-## <a name="apis"> </a>Api's en bewerkingen
+## <a name="apis-and-operations"></a><a name="apis"> </a>API's en bewerkingen
 API's vormen de basis van een service-exemplaar van API Management. Elke API vertegenwoordigt een reeks bewerkingen die beschikbaar zijn voor ontwikkelaars. Elke API bevat een verwijzing naar de back-endservice waarmee de API wordt geïmplementeerd, en de bewerkingen zijn toegewezen aan de bewerkingen die zijn geïmplementeerd door de back-endservice. Bewerkingen in API Management zijn zeer goed te configureren, met controle over URL-toewijzing, query- en padparameters, aanvraag- en antwoordinhoud en het in de cache opslaan van bewerkingsantwoorden. Beleidsregels voor frequentielimiet, quota en IP-restrictie kunnen ook op API-niveau of op het niveau van de afzonderlijke bewerking worden geïmplementeerd.
 
 Zie voor meer informatie [API's maken][How to create APIs] en [Bewerkingen toevoegen aan een API][How to add operations to an API].
 
-## <a name="products"></a> Producten
+## <a name="products"></a><a name="products"> </a> Producten
 Producten zijn de manier waarop de API's worden opgehaald voor ontwikkelaars. Producten in API Management hebben een of meer API's en worden geconfigureerd met een titel, beschrijving en gebruiksvoorwaarden. Producten kunnen **open** of **beveiligd** zijn. Voor beveiligde producten is een abonnement nodig voordat ze kunnen worden gebruikt, terwijl open producten zonder abonnement kunnen worden gebruikt. Wanneer een product gereed is voor gebruik door ontwikkelaars, kan het worden gepubliceerd. Zodra het is gepubliceerd, kan het worden bekeken (en in het geval van beveiligde producten kan er een abonnement op worden genomen) door ontwikkelaars. Goedkeuring van abonnementen wordt geconfigureerd op productniveau en er kan beheerdersgoedkeuring voor vereist zijn of abonnementen kunnen automatisch worden goedgekeurd.
 
-Groepen worden gebruikt voor het beheren van de zichtbaarheid van producten voor ontwikkelaars. Voor producten wordt zichtbaarheid aan groepen verleend en ontwikkelaars kunnen de producten bekijken en zich abonneren op de producten die zichtbaar zijn voor de groepen waartoe de ontwikkelaars behoren. 
+Groepen worden gebruikt voor het beheren van de zichtbaarheid van producten voor ontwikkelaars. Voor producten wordt zichtbaarheid aan groepen verleend en ontwikkelaars kunnen de producten bekijken en zich abonneren voor de producten die zichtbaar zijn voor de groepen waartoe de ontwikkelaars behoren. 
 
-## <a name="groups"></a> Groepen
+## <a name="groups"></a><a name="groups"> </a> Groepen
 Groepen worden gebruikt voor het beheren van de zichtbaarheid van producten voor ontwikkelaars. API Management heeft de volgende onveranderbare systeemgroepen:
 
 * **Beheerders** - Azure-abonnementbeheerders zijn lid van deze groep. Beheerders beheren service-exemplaren van API Management, door het maken van de API's, bewerkingen en producten die door ontwikkelaars worden gebruikt.
@@ -92,14 +92,14 @@ Naast deze systeemgroepen kunnen beheerders aangepaste groepen maken of [gebruik
 
 Zie voor meer informatie [Groepen maken en gebruiken][How to create and use groups].
 
-## <a name="developers"></a> Ontwikkel aars
-Ontwikkelaars vertegenwoordigen de gebruikersaccounts in een service-exemplaar van API Management. Ontwikkelaars kunnen worden gemaakt of worden uitgenodigd voor deelname door beheerders, of ze kunnen zich registreren vanuit de [ontwikkelaarsportal][Developer portal]. Elke ontwikkelaar is lid van een of meer groepen en mag zich abonneren op de producten die zichtbaarheid aan deze groepen verlenen.
+## <a name="developers"></a><a name="developers"> </a> Ontwikkelaars
+Ontwikkelaars vertegenwoordigen de gebruikersaccounts in een service-exemplaar van API Management. Ontwikkelaars kunnen worden gemaakt of worden uitgenodigd voor deelname door beheerders, maar ze kunnen zich ook registreren in de [Ontwikkelaarsportal][Developer portal]. Elke ontwikkelaar is lid van een of meer groepen en mag zich abonneren op de producten die zichtbaarheid aan deze groepen verlenen.
 
 Als ontwikkelaars zich op een product abonneren, krijgen ze de primaire en secundaire sleutel voor het product. Deze sleutel wordt gebruikt bij het aanroepen van de API's van het product.
 
 Zie voor meer informatie [Ontwikkelaars maken of uitnodigen][How to create or invite developers] en [Groepen koppelen aan ontwikkelaars][How to associate groups with developers].
 
-## <a name="policies"></a> Beleids regels
+## <a name="policies"></a><a name="policies"> </a> Beleid
 Beleidsregels zijn een krachtige mogelijkheid van API Management waarmee het gedrag van de API via configuratie in Azure Portal kan worden gewijzigd. Beleidsregels zijn een verzameling instructies die sequentieel worden uitgevoerd op de aanvraag of het antwoord van een API. Populaire instructies omvatten indelingsconversie van XML in JSON en beperking van de aanroepfrequentie om het aantal inkomende aanroepen van een ontwikkelaar te beperken. Er zijn nog vele andere beleidsregels beschikbaar.
 
 Beleidsexpressies kunnen worden gebruikt als kenmerkwaarden of tekstwaarden in API Management-beleidsregels, tenzij het beleid iets anders aangeeft. Sommige beleidsregels, zoals de beleidsregels [Stroom controleren](/azure/api-management/api-management-advanced-policies#choose) en [Variabele instellen](/azure/api-management/api-management-advanced-policies#set-variable), zijn gebaseerd op beleidsexpressies. Zie [Geavanceerde beleidsregels](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) en [Beleidsexpressies](/azure/api-management/api-management-policy-expressions) voor meer informatie.
@@ -108,7 +108,7 @@ Beleidsexpressies kunnen worden gebruikt als kenmerkwaarden of tekstwaarden in A
 Zie [Naslaginformatie over beleid][Policy reference] voor een volledige lijst met API Management-beleidsregels. Zie [API Management-beleidsregels][API Management policies]voor meer informatie over het gebruiken en configureren van beleidsregels. Zie [Geavanceerde productinstellingen maken en configureren][How create and configure advanced product settings] voor een zelfstudie over het maken van een product met beleidsregels voor frequentielimiet en quotum.
 
 
-## <a name="developer-portal"></a> Ontwikkelaars Portal
+## <a name="developer-portal"></a><a name="developer-portal"> </a> Ontwikkelaarsportal
 De ontwikkelaarsportal is de plek waar ontwikkelaars meer informatie kunnen vinden over uw API's, bewerkingen kunnen bekijken en aanroepen en zich op producten kunnen abonneren. Potentiële klanten kunnen de ontwikkelaarsportal bezoeken, API's en bewerkingen bekijken en zich registreren. De URL voor uw ontwikkelaarsportal bevindt zich in het dashboard in Azure Portal voor uw service-exemplaar van API Management.
 
 U kunt het uiterlijk van uw ontwikkelaarsportal aanpassen door aangepaste inhoud toe te voegen, stijlen aan te passen en uw huisstijl toe te voegen.

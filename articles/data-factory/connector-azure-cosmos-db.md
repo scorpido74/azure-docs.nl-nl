@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren en transformeren in Azure Cosmos DB (SQL-API)
-description: Informatie over het kopiëren van gegevens van en naar Azure Cosmos DB (SQL-API) en het transformeren van gegevens in Azure Cosmos DB (SQL API) met behulp van Data Factory.
+title: Gegevens kopiëren en transformeren in Azure Cosmos DB (SQL API)
+description: Meer informatie over het kopiëren van gegevens van en naar Azure Cosmos DB (SQL API) en het transformeren van gegevens in Azure Cosmos DB (SQL API) met behulp van Data Factory.
 services: data-factory, cosmosdb
 ms.author: jingwang
 author: linda33wj
@@ -12,57 +12,57 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243612"
 ---
-# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens in Azure Cosmos DB (SQL API) kopiëren en transformeren met behulp van Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in Azure Cosmos DB (SQL API) met Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Huidige versie](connector-azure-cosmos-db.md)
 
-In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Cosmos DB (SQL API), en een gegevensstroom kunt gebruiken om gegevens in Azure Cosmos DB (SQL API) te transformeren. Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
+In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Cosmos DB (SQL API), en een gegevensstroom kunt gebruiken om gegevens in Azure Cosmos DB (SQL API) te transformeren. Lees het [inleidende artikel](introduction.md)voor meer informatie over Azure Data Factory.
 
 >[!NOTE]
->Deze connector ondersteunt alleen Cosmos DB SQL-API. Raadpleeg voor MongoDB-API [de connector voor de API van Azure Cosmos DB voor MongoDb](connector-azure-cosmos-db-mongodb-api.md). Andere API-typen worden momenteel niet ondersteund.
+>Deze connector ondersteunt alleen Cosmos DB SQL API. Raadpleeg voor MongoDB API de [api voor Azure Cosmos DB voor MongoDB.](connector-azure-cosmos-db-mongodb-api.md) Andere API-typen worden nu niet ondersteund.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze Azure Cosmos DB-connector (SQL API) wordt ondersteund voor de volgende activiteiten:
+Deze SQL API-connector (Azure Cosmos DB) wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Gegevensstroom toewijzen](concepts-data-flow-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-Voor kopieer activiteit ondersteunt deze Azure Cosmos DB-connector (SQL API):
+Voor Kopieeractiviteit ondersteunt deze SQL API-connector (Azure Cosmos DB) het als volgt:
 
-- Gegevens kopiëren van en naar de Azure Cosmos DB [SQL-API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
-- Schrijf naar Azure Cosmos DB als **Insert** of **upsert**.
-- Importeren en exporteren van JSON-documenten als-is, of gegevens te kopiëren van of naar een gegevensset in tabelvorm. Voorbeelden zijn een SQL-database en een CSV-bestand. Zie [JSON-documenten importeren en exporteren](#import-and-export-json-documents)als u documenten wilt kopiëren naar of van json-bestanden of naar of van een andere Azure Cosmos DB verzameling.
+- Kopieer gegevens van en naar de Azure Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Schrijf naar Azure Cosmos DB als **insert** of **upsert**.
+- Json-documenten importeren en exporteren als is of gegevens kopiëren van of naar een tabelgegevensset. Voorbeelden hiervan zijn een SQL-database en een CSV-bestand. Zie [JSON-documenten importeren en exporteren](#import-and-export-json-documents)als u documenten wilt kopiëren naar of van JSON-bestanden of van of naar of van een andere Azure Cosmos DB-verzameling.
 
-Data Factory integreert met de [bibliotheek van de Azure Cosmos DB bulk](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) -uitvoerder voor de beste prestaties wanneer u naar Azure Cosmos DB schrijft.
+Data Factory integreert met de [Azure Cosmos DB bulk executor library](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) om de beste prestaties te leveren wanneer u naar Azure Cosmos DB schrijft.
 
 > [!TIP]
-> De [video over gegevens migratie](https://youtu.be/5-SRNiC_qOU) leidt u door de stappen voor het kopiëren van gegevens uit Azure Blob-opslag naar Azure Cosmos db. Prestaties afstemmen overwegingen voor het ophalen van gegevens met Azure Cosmos DB in het algemeen wordt ook beschreven in de video.
+> De [video Gegevensmigratie](https://youtu.be/5-SRNiC_qOU) leidt u door de stappen van het kopiëren van gegevens uit Azure Blob-opslag naar Azure Cosmos DB. De video beschrijft ook prestatieafstemmingoverwegingen voor het innemen van gegevens naar Azure Cosmos DB in het algemeen.
 
 ## <a name="get-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Cosmos DB (SQL API).
+In de volgende secties vindt u informatie over eigenschappen die u gebruiken om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor Azure Cosmos DB (SQL API).
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde service Azure Cosmos DB (SQL API):
+De volgende eigenschappen worden ondersteund voor de gekoppelde sql API-service (Azure Cosmos DB):
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **CosmosDb**. | Ja |
-| connectionString |Geef informatie op die nodig is om verbinding met de Azure Cosmos DB-database.<br />**Opmerking**: u moet database gegevens opgeven in de Connection String, zoals wordt weer gegeven in de volgende voor beelden. <br/> U kunt ook account sleutel in Azure Key Vault plaatsen en de `accountKey` configuratie uit de connection string halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. |Ja |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration Runtime of een zelf-hostende integratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
+| type | De **eigenschap type** moet worden ingesteld op **CosmosDb**. | Ja |
+| Connectionstring |Geef informatie op die nodig is om verbinding te maken met de Azure Cosmos DB-database.<br />**Opmerking:** U moet databasegegevens opgeven in de verbindingstekenreeks zoals weergegeven in de volgende voorbeelden. <br/> U accountsleutel ook in Azure `accountKey` Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen. Raadpleeg de volgende voorbeelden en [store-referenties in het Azure Key Vault-artikel](store-credentials-in-key-vault.md) met meer details. |Ja |
+| connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. U de runtime azure-integratie of een zelfgehoste nawerking van de integratie gebruiken (als uw gegevensarchief zich in een privénetwerk bevindt). Als deze eigenschap niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld**
 
@@ -82,7 +82,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Azure Co
 }
 ```
 
-**Voor beeld: account sleutel opslaan in Azure Key Vault**
+**Voorbeeld: accountsleutel opslaan in Azure Key Vault**
 
 ```json
 {
@@ -110,16 +110,16 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Azure Co
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets.
+Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets.
 
-De volgende eigenschappen worden ondersteund voor de gegevensset Azure Cosmos DB (SQL API): 
+De volgende eigenschappen worden ondersteund voor de SQL API-gegevensset (Azure Cosmos DB): 
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **CosmosDbSqlApiCollection**. |Ja |
-| collectionName |De naam van de Azure Cosmos DB-documentverzameling. |Ja |
+| type | De **eigenschap type** van de gegevensset moet worden ingesteld op **CosmosDbSqlApiCollection**. |Ja |
+| collectionNaam |De naam van de Azure Cosmos DB-documentverzameling. |Ja |
 
-Als u een gegevensset van het type ' DocumentDbCollection ' gebruikt, wordt deze nog steeds ondersteund als-is voor achterwaartse compatibiliteit voor de activiteit Copy en lookup. dit wordt niet ondersteund voor de gegevens stroom. U wordt aangeraden het nieuwe model verder te gebruiken.
+Als u de gegevensset 'DocumentDbCollection' gebruikt, wordt deze nog steeds ondersteund voor achterwaartse compatibiliteit voor kopieer- en opzoekactiviteit, deze wordt niet ondersteund voor gegevensstroom. U wordt voorgesteld om het nieuwe model in de toekomst te gebruiken.
 
 **Voorbeeld**
 
@@ -140,24 +140,24 @@ Als u een gegevensset van het type ' DocumentDbCollection ' gebruikt, wordt deze
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
 
-In deze sectie vindt u een lijst met eigenschappen die door de Azure Cosmos DB (SQL-API) voor bron-en Sink-ondersteuning worden ondersteund. Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten.
+In deze sectie vindt u een lijst met eigenschappen die de SQL API-bron- en sinkondersteuning (Azure Cosmos DB) heeft. Zie [Pijplijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten.
 
-### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (SQL-API) als bron
+### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (SQL API) als bron
 
-Als u gegevens wilt kopiëren van Azure Cosmos DB (SQL-API), stelt u het **bron** type in de Kopieer activiteit in op **DocumentDbCollectionSource**. 
+Als u gegevens uit Azure Cosmos DB (SQL API) wilt kopiëren, stelt u het **brontype** in Activiteit kopiëren in **DocumentDbCollectionSource**. 
 
-De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+De volgende eigenschappen worden ondersteund in de sectie Activiteit **kopiëren:**
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **CosmosDbSqlApiSource**. |Ja |
-| query |Geef de Azure Cosmos DB-query voor het lezen van gegevens.<br/><br/>Voorbeeld:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Als deze SQL-instructie niet wordt opgegeven, wordt deze uitgevoerd: `select <columns defined in structure> from mycollection` |
-| preferredRegions | De voorkeurs lijst met regio's waarmee verbinding moet worden gemaakt bij het ophalen van gegevens uit Cosmos DB. | Nee |
-| pageSize | Het aantal documenten per pagina van het query resultaat. De standaard waarde is '-1 ', wat betekent dat de dynamische pagina grootte aan de kant van de service wordt gebruikt tot 1000. | Nee |
+| type | De **eigenschap type** van de bron van kopieeractiviteit moet zijn ingesteld op **CosmosDbSqlApiSource**. |Ja |
+| query |Geef de Azure Cosmos DB-query op om gegevens te lezen.<br/><br/>Voorbeeld:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Als deze SQL-instructie niet is opgegeven, wordt deze SQL-instructie uitgevoerd:`select <columns defined in structure> from mycollection` |
+| voorkeurRegio's | De voorkeurslijst met regio's waarmee u verbinding wilt maken bij het ophalen van gegevens uit Cosmos DB. | Nee |
+| Pagesize | Het aantal documenten per pagina van het queryresultaat. Standaard is "-1", wat betekent dat de dynamische paginagrootte aan de servicezijde tot 1000 wordt gebruikt. | Nee |
 
-Als u een bron van het type ' DocumentDbCollectionSource ' gebruikt, wordt deze nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat naar uitgebreidere mogelijkheden biedt om gegevens van Cosmos DB te kopiëren.
+Als u de typebron "DocumentDbCollectionSource" gebruikt, wordt deze nog steeds ondersteund voor achterwaartse compatibiliteit. U wordt voorgesteld om het nieuwe model te gebruiken in de toekomst die rijkere mogelijkheden bieden om gegevens van Cosmos DB te kopiëren.
 
 **Voorbeeld**
 
@@ -194,28 +194,28 @@ Als u een bron van het type ' DocumentDbCollectionSource ' gebruikt, wordt deze 
 ]
 ```
 
-Als u gegevens uit Cosmos DB kopieert, tenzij u [JSON-documenten wilt exporteren](#import-and-export-json-documents), moet u in de best practice de toewijzing opgeven in de Kopieer activiteit. Data Factory voldoet aan de toewijzing die u hebt opgegeven voor de activiteit: als een rij geen waarde voor een kolom bevat, wordt er een null-waarde opgegeven voor de kolom waarde. Als u geen toewijzing opgeeft, wordt door Data Factory het schema afleiden door de eerste rij in de gegevens te gebruiken. Als de eerste rij niet het volledige schema bevat, ontbreken sommige kolommen in het resultaat van de activiteit bewerking.
+Wanneer gegevens van Cosmos DB worden gekopieerd, tenzij u [JSON-documenten wilt exporteren zoals deze is,](#import-and-export-json-documents)u de toewijzing in kopieeractiviteit opgeven. Data Factory eert de toewijzing die u op de activiteit hebt opgegeven - als een rij geen waarde voor een kolom bevat, wordt een null-waarde opgegeven voor de kolomwaarde. Als u geen toewijzing opgeeft, leidt Data Factory het schema af met behulp van de eerste rij in de gegevens. Als de eerste rij niet het volledige schema bevat, ontbreken er enkele kolommen in het resultaat van de activiteitsbewerking.
 
-### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (SQL-API) als Sink
+### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (SQL API) als gootsteen
 
-Als u gegevens wilt kopiëren naar Azure Cosmos DB (SQL-API), stelt u het **sink** -type in de Kopieer activiteit in op **DocumentDbCollectionSink**. 
+Als u gegevens wilt kopiëren naar Azure Cosmos DB (SQL API), stelt u het **sinktype** in Activiteit kopiëren in **DocumentDbCollectionSink**. 
 
-De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+De volgende eigenschappen worden ondersteund in de sectie Activiteit **kopiëren:**
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **CosmosDbSqlApiSink**. |Ja |
-| writeBehavior |Beschrijft hoe u gegevens naar Azure Cosmos DB te schrijven. Toegestane waarden: **Insert** en **upsert**.<br/><br/>Het gedrag van **upsert** is om het document te vervangen als er al een document met dezelfde id bestaat. Als dat niet het geval is, voegt u het document in.<br /><br />**Opmerking**: de Data Factory genereert automatisch een id voor een document als er geen id is opgegeven in het oorspronkelijke document of op kolom toewijzing. Dit betekent dat u ervoor moet zorgen dat uw document een ID heeft om **upsert** te laten werken zoals verwacht. |Nee<br />(de standaard waarde is **Invoegen**) |
-| writeBatchSize | Data Factory maakt gebruik van de [Azure Cosmos DB bulk](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) -uitvoerder bibliotheek om gegevens naar Azure Cosmos DB te schrijven. De eigenschap **writeBatchSize** bepaalt de grootte van documenten die door ADF aan de bibliotheek worden verstrekt. U kunt proberen de waarde voor **writeBatchSize** te verhogen om de prestaties te verbeteren en de waarde te verlagen als uw document groot is. Zie de onderstaande tips voor meer informatie. |Nee<br />(de standaard waarde is **10.000**) |
-| disableMetricsCollection | Data Factory verzamelt metrische gegevens zoals Cosmos DB RUs voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op om het uit te scha kelen. | Nee (standaard is `false`) |
+| type | De **eigenschap type** van de groep Kopieeractiviteit moet worden ingesteld op **CosmosDbSqlApiSink**. |Ja |
+| writeBehavior |Beschrijft hoe u gegevens schrijven naar Azure Cosmos DB. Toegestane waarden: **invoegen** en **upsert**.<br/><br/>Het gedrag van **upsert** is om het document te vervangen als er al een document met dezelfde ID bestaat; anders voegt u het document in.<br /><br />**Opmerking:** Data Factory genereert automatisch een ID voor een document als een id niet is opgegeven in het oorspronkelijke document of door kolomtoewijzing. Dit betekent dat u ervoor moet zorgen dat uw document een id heeft om ervoor te zorgen dat **upsert** werkt zoals verwacht. |Nee<br />(de standaardinstelling is **invoegen)** |
+| writeBatchSize | Data Factory gebruikt de [Azure Cosmos DB-bulkexecutorbibliotheek](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) om gegevens naar Azure Cosmos DB te schrijven. De eigenschap **writeBatchSize** bepaalt de grootte van documenten die ADF aan de bibliotheek verstrekt. U proberen de waarde voor **writeBatchSize** te verhogen om de prestaties te verbeteren en de waarde te verlagen als de grootte van uw document groot is - zie onderstaande tips. |Nee<br />(de standaardinstelling is **10.000**) |
+| disableMetricsCollection disableMetricsCollection disableMetricsCollection disableMetrics | Data Factory verzamelt statistieken zoals Cosmos DB RUs voor optimalisatie van kopieerprestaties en aanbevelingen. Als u zich met dit `true` gedrag bezighoudt, geeft u op om het uit te schakelen. | Nee (standaard `false`is) |
 
 >[!TIP]
->Als u JSON-documenten wilt importeren als-is, raadpleegt u de sectie [JSON-documenten importeren of exporteren](#import-and-export-json-documents) . Als u wilt kopiëren van gegevens in tabel vorm, raadpleegt u [migreren van relationele data base naar Cosmos DB](#migrate-from-relational-database-to-cosmos-db).
+>Als u JSON-documenten wilt importeren als is, verwijst u naar de sectie [JSON-documenten importeren of exporteren;](#import-and-export-json-documents) om te kopiëren van tabelvormige gegevens, verwijzen naar [Migreren van relationele database naar Cosmos DB](#migrate-from-relational-database-to-cosmos-db).
 
 >[!TIP]
->Cosmos DB beperkt de grootte van één aanvraag tot 2MB. De formule is grootte aanvragen één documentgrootte = * batchgrootte schrijven. Als u een fout bericht krijgt met de melding dat de grootte van de **aanvraag te groot is**, **vermindert u de `writeBatchSize` waarde** in Sink kopiëren.
+>Cosmos DB beperkt de grootte van één aanvraag tot 2 MB. De formule is Aanvraaggrootte = Enkele documentgrootte * Schrijf batchgrootte. Als u op fout staat met de tekst **'Grootte aanvragen is te groot',** **vermindert u de waarde `writeBatchSize` ** in de configuratie van de kopieergootsteen.
 
-Als u een bron van het type ' DocumentDbCollectionSink ' gebruikt, wordt deze nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat naar uitgebreidere mogelijkheden biedt om gegevens van Cosmos DB te kopiëren.
+Als u de typebron "DocumentDbCollectionSink" gebruikt, wordt deze nog steeds ondersteund voor achterwaartse compatibiliteit. U wordt voorgesteld om het nieuwe model te gebruiken in de toekomst die rijkere mogelijkheden bieden om gegevens van Cosmos DB te kopiëren.
 
 **Voorbeeld**
 
@@ -249,77 +249,77 @@ Als u een bron van het type ' DocumentDbCollectionSink ' gebruikt, wordt deze no
 ]
 ```
 
-### <a name="schema-mapping"></a>Schema toewijzing
+### <a name="schema-mapping"></a>Schematoewijzing
 
-Als u gegevens wilt kopiëren van Azure Cosmos DB naar tabellaire sink of omgekeerd, raadpleegt u [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Als u gegevens van Azure Cosmos DB wilt kopiëren naar tabelgoot of omgekeerd, raadpleegt u [schematoewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
+## <a name="mapping-data-flow-properties"></a>Gegevensstroomeigenschappen toewijzen
 
-Wanneer gegevens worden getransformeerd in de toewijzing van gegevens stromen, kunt u lezen en schrijven naar verzamelingen in Cosmos DB. Zie voor meer informatie de [bron transformatie](data-flow-source.md) en [sink-trans](data-flow-sink.md) formatie in gegevens stromen toewijzen.
+Wanneer u gegevens in kaartgegevensstroom transformeert, u in Cosmos DB lezen en schrijven naar verzamelingen. Zie voor meer informatie de [brontransformatie](data-flow-source.md) en [sinktransformatie](data-flow-sink.md) in kaartgegevensstromen.
 
-### <a name="source-transformation"></a>Bron transformatie
+### <a name="source-transformation"></a>Brontransformatie
 
-Instellingen die specifiek zijn voor Azure Cosmos DB, zijn beschikbaar op het tabblad **bron opties** van de bron transformatie. 
+Instellingen die specifiek zijn voor Azure Cosmos DB zijn beschikbaar op het tabblad **Bronopties** van de brontransformatie. 
 
-**Systeem kolommen insluiten:** Als True, ```id```, ```_ts```en andere systeem kolommen worden opgenomen in de meta gegevens van de gegevensstroom vanuit CosmosDB. Wanneer u verzamelingen bijwerkt, is het belang rijk om dit op te halen, zodat u de bestaande rij-id kunt ophalen.
+**Systeemkolommen opnemen:** Als dit ```id``` ```_ts```waar is, worden en andere systeemkolommen opgenomen in de metagegevens van CosmosDB. Bij het bijwerken van verzamelingen is het belangrijk om dit op te nemen, zodat u de bestaande rij-id grijpen.
 
-**Pagina formaat:** Het aantal documenten per pagina van het query resultaat. De standaard waarde is '-1 ' die gebruikmaakt van de dynamische pagina van de service tot 1000.
+**Paginaformaat:** Het aantal documenten per pagina van het queryresultaat. Standaard is "-1" die de dynamische pagina van de service tot 1000 gebruikt.
 
-**Door Voer:** Stel een optionele waarde in voor het aantal RUs dat u wilt Toep assen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevens stroom tijdens de Lees bewerking. Minimum is 400.
+**Doorvoer:** Stel een optionele waarde in voor het aantal R's dat u wilt toepassen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevensstroom tijdens de leesbewerking. Minimum is 400.
 
-**Voorkeurs regio's:** Kies de gewenste Lees regio's voor dit proces.
+**Voorkeursregio's:** Kies de voorkeursleesgebieden voor dit proces.
 
 #### <a name="json-settings"></a>JSON-instellingen
 
-**Eén document:** Selecteer deze optie als ADF het hele bestand moet behandelen als één JSON-document.
+**Eén document:** Selecteer deze optie als ADF het hele bestand als één JSON-document moet behandelen.
 
-Niet- **geciteerde kolom namen:** Selecteer deze optie als kolom namen in de JSON niet in een aanhalings teken staan.
+**Niet-geciteerde kolomnamen:** Selecteer deze optie als kolomnamen in de JSON niet worden geciteerd.
 
-**Bevat opmerkingen:** Gebruik deze selectie als uw JSON-documenten opmerkingen hebben in de gegevens.
+**Heeft opmerkingen:** Gebruik deze selectie als uw JSON-documenten opmerkingen in de gegevens bevatten.
 
-**Enkel aanhalings teken:** Dit moet worden geselecteerd als de kolommen en waarden in uw document worden genoteerd met enkele aanhalings tekens.
+**Single geciteerd:** Dit moet worden geselecteerd als de kolommen en waarden in uw document worden geciteerd met enkele aanhalingstekens.
 
-**Back slash-Escape:** Als u backslashes gebruikt om tekens in uw JSON te escapen, kiest u deze optie.
+**Backslash ontsnapte:** Als u backslashes gebruikt om aan tekens in uw JSON te ontsnappen, kiest u deze optie.
 
-### <a name="sink-transformation"></a>Sink-trans formatie
+### <a name="sink-transformation"></a>Gootsteentransformatie
 
-Instellingen die specifiek zijn voor Azure Cosmos DB, zijn beschikbaar op het tabblad **instellingen** van de Sink-trans formatie.
+Instellingen die specifiek zijn voor Azure Cosmos DB zijn beschikbaar op het tabblad **Instellingen** van de sinktransformatie.
 
-**Update methode:** Hiermee wordt bepaald welke bewerkingen zijn toegestaan voor uw database bestemming. De standaard instelling is alleen invoegen toestaan. Als u rijen wilt bijwerken, upsert of verwijderen, moet u een alter-Row trans formatie voor deze acties labelen. Voor updates, upsert en verwijderen moet een sleutel kolom of-kolommen worden ingesteld om te bepalen welke rij moet worden gewijzigd.
+**Updatemethode:** Hiermee bepaalt u welke bewerkingen zijn toegestaan op uw databasebestemming. De standaardinstelling is om alleen inserts toe te staan. Als u rijen wilt bijwerken, upsert of verwijdert, is een transformatie met een wijzigingsrij vereist om rijen voor die acties te taggen. Voor updates, upserts en deletes moet een sleutelkolom of kolommen worden ingesteld om te bepalen welke rij moet worden gewijzigd.
 
-**Verzamelings actie:** Hiermee wordt bepaald of de doel verzameling opnieuw moet worden gemaakt voordat deze wordt geschreven.
-* Geen: er wordt geen actie uitgevoerd voor de verzameling.
-* Opnieuw maken: de verzameling wordt verwijderd en opnieuw gemaakt
+**Inzamelingsactie:** Hiermee bepaalt u of u de bestemmingsverzameling opnieuw wilt maken voordat u gaat schrijven.
+* Geen: Er wordt geen actie ondernomen om de collectie.
+* Opnieuw maken: de collectie wordt gedropt en opnieuw gemaakt
 
-**Batch grootte**: bepaalt hoeveel rijen er worden geschreven in elke Bucket. Grotere batch grootten verbeteren de compressie en Optima Lise ring van het geheugen, maar er zijn geen uitzonde ringen in het geheugen bij het opslaan van gegevens.
+**Batchgrootte:** hiermee bepaalt u hoeveel rijen er in elke bucket worden geschreven. Grotere batchformaten verbeteren compressie en geheugenoptimalisatie, maar lopen risico op uitzonderingen met het geheugen bij het incacheren van gegevens.
 
-**Partitie sleutel:** Voer een teken reeks in die de partitie sleutel voor uw verzameling vertegenwoordigt. Voorbeeld: ```/movies/title```
+**Partitiesleutel:** Voer een tekenreeks in die de partitiesleutel voor uw verzameling vertegenwoordigt. Voorbeeld: ```/movies/title```
 
-**Door Voer:** Stel een optionele waarde in voor het aantal RUs dat u wilt Toep assen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevens stroom. Minimum is 400.
+**Doorvoer:** Stel een optionele waarde in voor het aantal R's dat u wilt toepassen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevensstroom. Minimum is 400.
 
-**Budget voor schrijf doorvoer:** Een geheel getal dat het aantal RUs vertegenwoordigt dat u wilt toewijzen aan de Spark-taak voor bulk opname. Dit aantal ligt buiten de totale door Voer die is toegewezen aan de verzameling.
+**Schrijf doorvoerbudget:** Een geheel getal dat het aantal RU's vertegenwoordigt dat u wilt toewijzen aan de bulk-inname spark-taak. Dit aantal is van de totale doorvoer toegewezen aan de collectie.
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
-## <a name="import-and-export-json-documents"></a>JSON-documenten importeren en exporteren
+## <a name="import-and-export-json-documents"></a>Json-documenten importeren en exporteren
 
-U kunt deze Azure Cosmos DB-connector (SQL API) eenvoudig gebruiken om het volgende te doen:
+U deze SQL API-connector (Azure Cosmos DB) eenvoudig gebruiken:
 
-* Documenten tussen twee Azure Cosmos DB-verzamelingen als kopiëren-is.
-* JSON-documenten uit verschillende bronnen met Azure Cosmos DB, met inbegrip van Azure Blob storage, Azure Data Lake Store en andere bestandsgebaseerde winkels die ondersteuning biedt voor Azure Data Factory importeren.
-* JSON-documenten uit een Azure Cosmos DB-verzameling exporteren naar verschillende winkels op basis van bestanden.
+* Kopieer documenten tussen twee Azure Cosmos DB-verzamelingen as-is.
+* Json-documenten uit verschillende bronnen importeren in Azure Cosmos DB, waaronder vanuit Azure Blob-opslag, Azure Data Lake Store en andere bestanden die Azure Data Factory ondersteunt.
+* Exporteer JSON-documenten uit een Azure Cosmos DB-verzameling naar verschillende bestandswinkels.
 
-Voor een schema-agnostische kopiëren:
+Ga als lid van het schema over een kopie van het schema:
 
-* Wanneer u het hulp programma Gegevens kopiëren gebruikt, selecteert u de optie **exporteren naar json-bestanden of Cosmos DB verzameling** .
-* Wanneer u de functie voor het ontwerpen van activiteiten gebruikt, kiest u JSON-indeling met de bijbehorende bestands opslag voor de bron of sink.
+* Wanneer u het gereedschap Gegevens kopiëren gebruikt, selecteert u de optie **Exporteren naar JSON-bestanden of Cosmos DB-verzameling.**
+* Wanneer u activiteitsontwerpen gebruikt, kiest u JSON-indeling met het bijbehorende bestandsarchief voor bron of gootsteen.
 
-## <a name="migrate-from-relational-database-to-cosmos-db"></a>Migreren van relationele data base naar Cosmos DB
+## <a name="migrate-from-relational-database-to-cosmos-db"></a>Migreren van relationele database naar Cosmos DB
 
-Bij het migreren van een relationele data base, zoals SQL Server naar Azure Cosmos DB, kan met de Kopieer activiteit gegevens in tabel vorm eenvoudig worden toegewezen aan het samen voegen van JSON-documenten in Cosmos DB. In sommige gevallen wilt u het gegevens model wellicht opnieuw ontwerpen om het te optimaliseren voor de NoSQL-cases op basis van [gegevens modellering in azure Cosmos DB](../cosmos-db/modeling-data.md), bijvoorbeeld om de gegevens te denormaliseren door alle gerelateerde subitems in één JSON-document in te sluiten. Raadpleeg [dit artikel](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) voor een overzicht van hoe u het kunt bedenken met behulp van Azure Data Factory Kopieer activiteit.
+Wanneer u migreert van een relationele database, bijvoorbeeld SQL Server naar Azure Cosmos DB, kunnen kopieeractiviteiten eenvoudig tabelgegevens van de bron toewijzen om JSON-documenten in Cosmos DB af te vlakken. In sommige gevallen u het gegevensmodel opnieuw ontwerpen om het te optimaliseren voor de NoSQL-use-cases volgens [Gegevensmodellering in Azure Cosmos DB,](../cosmos-db/modeling-data.md)bijvoorbeeld om de gegevens te denormaliseren door alle gerelateerde subitems in één JSON-document in te sluiten. Raadpleeg in dat geval [dit artikel](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) met een walkthrough over hoe u dit bereiken met behulp van azure data factory-kopieeractiviteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en sinks in azure Data Factory.
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensopslag die Activiteit kopiëren ondersteunt als bronnen en sinks in Azure Data Factory.

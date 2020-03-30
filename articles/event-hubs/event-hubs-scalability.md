@@ -1,6 +1,6 @@
 ---
-title: Schaal baarheid-Azure Event Hubs | Microsoft Docs
-description: Dit artikel bevat informatie over het schalen van Azure Event Hubs met behulp van partities en doorvoer eenheden.
+title: Schaalbaarheid - Azure Event Hubs | Microsoft Documenten
+description: In dit artikel vindt u informatie over het schalen van Azure Event Hubs met behulp van partities en doorvoereenheden.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,44 +15,44 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280948"
 ---
-# <a name="scaling-with-event-hubs"></a>Schalen met Event Hubs
+# <a name="scaling-with-event-hubs"></a>Schalen met gebeurtenishubs
 
-Er zijn twee factoren die van invloed zijn op schalen met Event Hubs.
+Er zijn twee factoren die van invloed zijn op het schalen met Event Hubs.
 *   Doorvoereenheden
 *   Partities
 
 ## <a name="throughput-units"></a>Doorvoereenheden
 
-De doorvoercapaciteit van Event Hubs wordt bepaald door het aantal beschikbare *doorvoereenheden*. Doorvoereenheden zijn vooraf aangeschafte capaciteitseenheden. Met één door Voer kunt u:
+De doorvoercapaciteit van Event Hubs wordt aangestuurd door *doorvoereenheden.* Doorvoereenheden zijn vooraf aangeschafte capaciteitseenheden. Met één doorvoerdoorvoer u:
 
-* Inkomende gegevens: Maximaal 1 MB per seconde of 1000 gebeurtenissen per seconde (afhankelijk van wat het eerste komt).
-* Uitgaande gegevens: Maximaal 2 MB per seconde of 4096 gebeurtenissen per seconde.
+* Ingress: Tot 1 MB per seconde of 1000 gebeurtenissen per seconde (wat het eerst komt).
+* Uitgang: tot 2 MB per seconde of 4096 gebeurtenissen per seconde.
 
-Wanneer de capaciteit van de aangekochte doorvoereenheden wordt overschreven, wordt de invoer vertraagd en een [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) afgegeven. De uitvoer geeft geen vertragingsuitzonderingen af, maar is nog steeds beperkt tot de capaciteit van de aangekochte doorvoereenheden. Als zich uitzonderingen met betrekking tot de publicatiesnelheid voordoen of als u meer uitgaande gegevens verwacht, controleert u hoeveel doorvoereenheden u hebt aangeschaft voor de naamruimte. U kunt doorvoer eenheden beheren op de Blade **schaal aanpassen** van de naam ruimten in de [Azure Portal](https://portal.azure.com). U kunt doorvoer eenheden ook programmatisch beheren met behulp van de [Event hubs-api's](event-hubs-api-overview.md).
+Wanneer de capaciteit van de aangekochte doorvoereenheden wordt overschreven, wordt de invoer vertraagd en een [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) afgegeven. De uitvoer geeft geen vertragingsuitzonderingen af, maar is nog steeds beperkt tot de capaciteit van de aangekochte doorvoereenheden. Als zich uitzonderingen met betrekking tot de publicatiesnelheid voordoen of als u meer uitgaande gegevens verwacht, controleert u hoeveel doorvoereenheden u hebt aangeschaft voor de naamruimte. U kunt doorvoereenheden beheren op de blade **Schaal** van de naamruimten in [Azure Portal](https://portal.azure.com). U doorvoereenheden ook programmatisch beheren met behulp van de [API's voor gebeurtenishubs.](event-hubs-api-overview.md)
 
-Doorvoereenheden zijn vooraf aangeschafte en worden gefactureerd per uur. Nadat u doorvoereenheden hebt aangeschaft, worden deze voor minimaal één uur in rekening gebracht. Maximaal 20 doorvoereenheden eenheden kunnen worden aangeschaft voor een Event Hubs-naamruimte en worden gedeeld door alle eventhubs in die naamruimte.
+Doorvoereenheden worden vooraf gekocht en worden per uur gefactureerd. Nadat u doorvoereenheden hebt aangeschaft, worden deze voor minimaal één uur in rekening gebracht. Er kunnen maximaal 20 doorvoereenheden worden aangeschaft voor een naamruimte voor gebeurtenishubs en worden gedeeld over alle gebeurtenishubs in die naamruimte.
 
-De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Verhoging van doorvoereenheden wordt voorkomen dat beperkingsscenario's, waarbij:
+De **functie Automatisch opblazen** van gebeurtenishubs wordt automatisch opschalen door het aantal doorvoereenheden te verhogen om aan de gebruiksbehoeften te voldoen. Het verhogen van doorvoereenheden voorkomt beperkingsscenario's, waarbij:
 
-- Inkomend verkeer gegevenstarieven groter zijn dan set-doorvoereenheden.
-- Gegevens uitgaande aanvraag snelheid groter zijn dan de set-doorvoereenheden.
+- Gegevensinvallen overschrijden de ingestelde doorvoereenheden.
+- Gegevensuitgangsaanvraagsnelheden overschrijden de ingestelde doorvoereenheden.
 
-De Event Hubs-service verhoogt de doorvoer wanneer de belasting toeneemt dan de minimale drempelwaarde, zonder dat alle aanvragen waarbij ServerBusy-fouten. 
+De service Gebeurtenishubs verhoogt de doorvoer wanneer de belasting toeneemt boven de minimumdrempel, zonder dat aanvragen mislukken met serverdrukkefouten. 
 
-Zie [automatisch schalen door Voer eenheden](event-hubs-auto-inflate.md)voor meer informatie over de functie voor automatisch verg Roten.
+Zie [Doorvoereenheden automatisch schalen](event-hubs-auto-inflate.md)voor meer informatie over de functie automatisch opblazen.
 
 ## <a name="partitions"></a>Partities
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 ### <a name="partition-key"></a>Partitiesleutel
 
-U kunt een [partitiesleutel](event-hubs-programming-guide.md#partition-key) gebruiken om inkomende gebeurtenisgegevens toe te wijzen aan specifieke partities, zodat de gegevens kunnen worden geordend. De partitiesleutel is een door de afzender opgegeven waarde die aan een Event Hub wordt doorgegeven. De partitiesleutel wordt verwerkt door een statische hash-functie, die zorgt voor de partitietoewijzing. Als u bij het publiceren van een gebeurtenis geen partitiesleutel opgeeft, wordt er gebruikgemaakt van round robin-toewijzing.
+U een [partitiesleutel](event-hubs-programming-guide.md#partition-key) gebruiken om binnenkomende gebeurtenisgegevens in specifieke partities toe te passen ten behoeve van gegevensorganisatie. De partitiesleutel is een door de afzender opgegeven waarde die aan een Event Hub wordt doorgegeven. De partitiesleutel wordt verwerkt door een statische hash-functie, die zorgt voor de partitietoewijzing. Als u bij het publiceren van een gebeurtenis geen partitiesleutel opgeeft, wordt er gebruikgemaakt van round robin-toewijzing.
 
 De gebeurtenisuitgever is alleen op de hoogte van de partitiesleutel en niet van de partitie waarop de gebeurtenissen worden gepubliceerd. Deze ontkoppeling van sleutel en partitie schermt de afzender af, zodat deze niet te veel te weten hoeft te komen over de downstreamverwerking. Goede partitiesleutels zijn bijvoorbeeld een apparaatspecifieke of een gebruikersspecifieke identiteit, maar voor het groeperen van gerelateerde gebeurtenissen in dezelfde partitie kunnen ook andere kenmerken, zoals geografie, worden gebruikt.
 
@@ -61,4 +61,4 @@ De gebeurtenisuitgever is alleen op de hoogte van de partitiesleutel en niet van
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
 - [Doorvoereenheden automatisch schalen](event-hubs-auto-inflate.md)
-- [Overzicht van Event Hubs-service](event-hubs-what-is-event-hubs.md)
+- [Overzicht van de service event hubs](event-hubs-what-is-event-hubs.md)

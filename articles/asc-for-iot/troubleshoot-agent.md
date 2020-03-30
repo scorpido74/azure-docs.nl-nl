@@ -1,6 +1,6 @@
 ---
-title: Gids voor het oplossen van problemen met Azure Security Center voor IoT Linux-beveiligings agent | Microsoft Docs
-description: Problemen met het werken met Azure Security Center voor IoT-beveiligings agenten voor Linux oplossen.
+title: Azure Security Center for IoT Linux security agent troubleshooting guide| Microsoft Documenten
+description: Problemen oplossen met het werken met Azure Security Center voor IoT-beveiligingsagents voor Linux.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,97 +16,97 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 7f3bd4be3ef927f73643146a457bc551ef86a450
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600564"
 ---
-# <a name="security-agent-troubleshoot-guide-linux"></a>Probleemoplossings gids voor beveiligings agenten (Linux)
+# <a name="security-agent-troubleshoot-guide-linux"></a>Handleiding voor probleemoplossing voor beveiligingsagenten (Linux)
 
-In dit artikel wordt uitgelegd hoe u mogelijke problemen oplost in het opstart proces van de beveiligings agent.
+In dit artikel wordt uitgelegd hoe u potentiële problemen in het opstartproces van beveiligingsagenten oplossen.
 
-Azure Security Center voor IoT-agent zelf wordt direct na de installatie gestart. Het opstart proces van de agent omvat het lezen van de lokale configuratie, het verbinden met Azure IoT Hub en het ophalen van de externe dubbele configuratie. Als een van deze stappen mislukt, kan dit ertoe leiden dat de beveiligings agent mislukt.
+Azure Security Center voor IoT-agent start direct na de installatie. Het opstartproces van de agent omvat het lezen van lokale configuratie, het verbinden met Azure IoT Hub en het ophalen van de externe dubbele configuratie. Als u in een van deze stappen niet optreedt, kan de beveiligingsagent uitvallen.
 
-In deze hand leiding voor probleem oplossing leert u het volgende:
+In deze handleiding voor probleemoplossing leert u hoe u:
 > [!div class="checklist"]
-> * Controleren of de beveiligings agent wordt uitgevoerd
-> * Fouten in de beveiligings agent ophalen
-> * Fouten in de beveiligings agent begrijpen en oplossen 
+> * Valideren of de beveiligingsagent actief is
+> * Fouten in beveiligingsagent's opvragen
+> * Fouten in beveiligingsagent begrijpen en herstellen 
 
-## <a name="validate-if-the-security-agent-is-running"></a>Controleren of de beveiligings agent wordt uitgevoerd
+## <a name="validate-if-the-security-agent-is-running"></a>Valideren of de beveiligingsagent actief is
 
-1. Als u wilt valideren, wordt de beveiligings agent uitgevoerd, wacht u enkele minuten na de installatie van de agent en voert u de volgende opdracht uit. 
+1. Als u wilt valideren is dat de beveiligingsagent wordt uitgevoerd, wacht u enkele minuten na het installeren van de agent en voert u de volgende opdracht uit. 
      <br>
 
     **C-agent**
     ```bash
     grep "ASC for IoT Agent initialized" /var/log/syslog
     ```
-    **C#tussen**
+    **C# agent**
     ```bash
     grep "Agent is initialized!" /var/log/syslog
     ```
-2. Als de opdracht een lege regel retourneert, kan de beveiligings agent niet worden gestart.    
+2. Als de opdracht een lege regel retourneert, kan de beveiligingsagent niet meer starten.    
 
-## <a name="force-stop-the-security-agent"></a>De beveiligings agent geforceerd stoppen 
-In gevallen waarin de beveiligings agent niet kan worden gestart, stopt u de agent met de volgende opdracht en gaat u verder met de onderstaande fout tabel:
+## <a name="force-stop-the-security-agent"></a>Force stop de beveiligingsagent 
+In gevallen waarin de beveiligingsagent niet kan starten, stopt u de agent met de volgende opdracht en gaat u verder naar de onderstaande fouttabel:
 
 ```bash
 systemctl stop ASCIoTAgent.service
 ```
-## <a name="get-security-agent-errors"></a>Fouten in de beveiligings agent ophalen
-1. Haal de fout (en) van de beveiligings agent op door de volgende opdracht uit te voeren:
+## <a name="get-security-agent-errors"></a>Fouten in beveiligingsagent's opvragen
+1. Haal de fout(en) van beveiligingsagent op door de volgende opdracht uit te voeren:
     ```bash
     grep ASCIoTAgent /var/log/syslog
     ```
-2. De fout opdracht beveiligings agent ophalen haalt alle logboeken op die zijn gemaakt door de Azure Security Center voor IoT-agent. Gebruik de volgende tabel om de fouten te begrijpen en de juiste stappen te nemen voor herstel. 
+2. Met de foutopdracht 'Beveiligingsagent ophalen worden alle logboeken opgehaald die zijn gemaakt door de Azure Security Center for IoT-agent. Gebruik de volgende tabel om de fouten te begrijpen en de juiste stappen voor herstel te nemen. 
 
 > [!Note]
-> Fouten logboeken worden in chronologische volg orde weer gegeven. Noteer de tijds tempel van elke fout om uw herstel te kunnen uitvoeren. 
+> Foutlogboeken worden in chronologische volgorde weergegeven. Let op de tijdstempel van elke fout om uw herstel te helpen. 
 
 ## <a name="restart-the-agent"></a>De agent opnieuw starten
 
-1. Nadat u een beveiligings agent fout hebt gevonden en gecorrigeerd, probeert u de agent opnieuw te starten door de volgende opdracht uit te voeren. 
+1. Probeer de agent opnieuw te starten nadat u een fout van een beveiligingsagent hebt gevonden en opgelost door de volgende opdracht uit te voeren. 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-1. Herhaal het vorige proces om stoppen op te halen en de fouten op te halen als de agent het opstart proces blijft mislukken. 
+1. Herhaal het vorige proces om stop op te halen en de fouten op te halen als de agent het opstartproces blijft mislukken. 
 
-## <a name="understand-security-agent-errors"></a>Beveiligings agent fouten begrijpen
+## <a name="understand-security-agent-errors"></a>Fouten in beveiligingsagent begrijpen
 
-De meeste fouten van de beveiligings agent worden weer gegeven in de volgende indeling: 
+De meeste fouten van de beveiligingsagent worden weergegeven in de volgende indeling: 
 ```
 Azure Security Center for IoT agent encountered an error! Error in: {Error Code}, reason: {Error sub code}, extra details: {error specific details}
 ```
-| Foutcode | Fout subcode | Details van fout | Herstellen C | HerstellenC# |
+| Foutcode | Subcode voor fout | Foutdetails | Saneren C | Saneren C # |
 |:-----------|:---------------|:--------|:------------|:------------|
-| Lokale configuratie | Ontbrekende configuratie | Er ontbreekt een configuratie in het lokale configuratie bestand. In het fout bericht moet worden vermeld welke sleutel ontbreekt. | Voeg de ontbrekende sleutel toe aan het/var/LocalConfiguration.json-bestand, Raadpleeg de [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) voor meer informatie.| Voeg de ontbrekende sleutel toe aan het bestand algemeen. config. Raadpleeg [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |
-| Lokale configuratie | Configuratie kan niet worden geparseerd | Een configuratie waarde kan niet worden geparseerd. In het fout bericht moet worden vermeld welke sleutel niet kan worden geparseerd. Een configuratie waarde kan niet worden geparseerd omdat de waarde zich niet in het verwachte type bevindt of omdat de waarde buiten het bereik valt. | Herstel de waarde van de sleutel in het bestand/var/LocalConfiguration.json zodat deze overeenkomt met het LocalConfiguration-schema, Raadpleeg de [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |  Corrigeer de waarde van de sleutel in het bestand algemeen. config zodat deze overeenkomt met het schema, zie de [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) voor meer informatie.|
-| Lokale configuratie | Bestandsindeling | Het parseren van het configuratie bestand is mislukt. | Het configuratie bestand is beschadigd, down load de agent en installeer deze opnieuw. | |
-| Externe configuratie | Time-out | De agent kan de azureiotsecurity-module niet ophalen, dubbele binnen de time-outperiode. | Controleer of de verificatie configuratie juist is en probeer het opnieuw. | De agent kan de azureiotsecurity-module niet ophalen tijdens een time-outperiode. | Controleer of de verificatie configuratie juist is en probeer het opnieuw. |
-| Authentication | Het bestand bestaat niet | Het bestand in het opgegeven pad bestaat niet. | Controleer of het bestand bestaat in het opgegeven pad of ga naar het bestand **LocalConfiguration. json** en wijzig de **filepath** -configuratie. | Controleer of het bestand bestaat in het opgegeven pad of ga naar het bestand **Authentication. config** en wijzig de **filepath** -configuratie.|
-| Authentication | Bestands machtiging | De agent heeft onvoldoende machtigingen om het bestand te openen. | Geef de **asciotagent** -gebruiker lees machtigingen voor het bestand in het opgegeven pad. | Controleer of het bestand toegankelijk is. |
-| Authentication | Bestandsindeling | Het opgegeven bestand heeft niet de juiste indeling. | Controleer of het bestand de juiste indeling heeft. De ondersteunde bestands typen zijn. pfx en. pem. | Controleer of het bestand een geldig certificaat bestand is. |
-| Authentication | Niet geautoriseerd | De agent kan niet worden geverifieerd tegen IoT Hub met de opgegeven referenties. | Valideer de verificatie configuratie in het LocalConfiguration-bestand, ga door de verificatie configuratie en zorg ervoor dat alle details juist zijn. Controleer of het geheim in het bestand overeenkomt met de geverifieerde identiteit. | Valideer verificatie configuratie in Authentication. config, door loop de verificatie configuratie en zorg ervoor dat alle details juist zijn en controleer vervolgens of het geheim in het bestand overeenkomt met de geverifieerde identiteit.
-| Authentication | Niet gevonden | Het apparaat/de module is gevonden. | Verificatie configuratie valideren: Controleer of de hostnaam juist is en of het apparaat bestaat in IoT Hub en een azureiotsecurity-dubbele module heeft. |  Verificatie configuratie valideren: Controleer of de hostnaam juist is en of het apparaat bestaat in IoT Hub en een azureiotsecurity-dubbele module heeft. |
-| Authentication | Ontbrekende configuratie | Er ontbreekt een configuratie in het bestand *Authentication. config* . In het fout bericht moet worden vermeld welke sleutel ontbreekt. | Voeg de ontbrekende sleutel toe aan het bestand *LocalConfiguration. json* .| Voeg de ontbrekende sleutel toe aan het bestand *Authentication. config.* Raadpleeg [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |
-| Authentication | Configuratie kan niet worden geparseerd | Een configuratie waarde kan niet worden geparseerd. In het fout bericht moet worden vermeld welke sleutel niet kan worden geparseerd. Een configuratie waarde kan niet worden geparseerd omdat de waarde niet van het verwachte type is of omdat de waarde buiten het bereik valt. |Corrigeer de waarde van de sleutel in het bestand **LocalConfiguration. json** . |Herstel de waarde van de sleutel in het bestand **Authentication. config** zodat deze overeenkomt met het schema, zie de [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) voor meer informatie.|
+| Lokale configuratie | Ontbrekende configuratie | Er ontbreekt een configuratie in het lokale configuratiebestand. In de foutmelding moet worden vermeld welke sleutel ontbreekt. | Voeg de ontbrekende sleutel toe aan het bestand /var/LocalConfiguration.json, zie de [cs-localconfig-referentie](azure-iot-security-local-configuration-c.md) voor meer informatie.| Voeg de ontbrekende sleutel toe aan het bestand General.config, zie de [c#-localconfig-referentie](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |
+| Lokale configuratie | Cant Parse-configuratie | Een configuratiewaarde kan niet worden ontleed. In het foutbericht moet worden vermeld welke sleutel niet kan worden ontleed. Een configuratiewaarde kan niet worden geparseerd omdat de waarde niet in het verwachte type zit of omdat de waarde buiten bereik is. | Fix the value of the key in /var/LocalConfiguration.json file so that it match the LocalConfiguration schema, zie de [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |  Fix the value of the key in General.config file so that it match the schema, see the [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) for details.|
+| Lokale configuratie | Bestandsindeling | Kan configuratiebestand niet ontsmetten. | Het configuratiebestand is beschadigd, download de agent en installeer opnieuw. | |
+| Externe configuratie | Time-out | De agent kon de azureiotsecurity module twin niet binnen de time-outperiode ophalen. | Zorg ervoor dat de verificatieconfiguratie correct is en probeer het opnieuw. | De agent kon de azureiotsecurity module twin niet ophalen binnen time-outperiode. | Zorg ervoor dat de verificatieconfiguratie correct is en probeer het opnieuw. |
+| Authentication | Bestand bestaat niet | Het bestand in het opgegeven pad bestaat niet. | Controleer of het bestand in het opgegeven pad bestaat of ga naar het bestand **LocalConfiguration.json** en wijzig de **FilePath-configuratie.** | Controleer of het bestand in het opgegeven pad bestaat of ga naar het bestand **Authentication.config** en wijzig de **filePath-configuratie.**|
+| Authentication | Bestandsmachtigingen | De agent beschikt niet over voldoende machtigingen om het bestand te openen. | Geef de **asciotagent** gebruiker lees machtigingen op het bestand in het gegeven pad. | Controleer of het bestand toegankelijk is. |
+| Authentication | Bestandsindeling | Het opgegeven bestand is niet in de juiste indeling. | Controleer of het bestand in de juiste indeling is. De ondersteunde bestandstypen zijn .pfx en .pem. | Controleer of het bestand een geldig certificaatbestand is. |
+| Authentication | Niet geautoriseerd | De agent kon zich niet verifiëren tegen IoT Hub met de opgegeven referenties. | Valideer de verificatieconfiguratie in het bestand LocalConfiguration, doorga de verificatieconfiguratie en zorg ervoor dat alle details correct zijn, valideer dat het geheim in het bestand overeenkomt met de geverifieerde identiteit. | Valideer de verificatieconfiguratie in Authentication.config, doorloop de verificatieconfiguratie en zorg ervoor dat alle details correct zijn en valideer vervolgens dat het geheim in het bestand overeenkomt met de geverifieerde identiteit.
+| Authentication | Niet gevonden | Het apparaat / module werd gevonden. | Verificatieconfiguratie valideren - zorg ervoor dat de hostnaam correct is, het apparaat bestaat in IoT Hub en heeft een azureiotsecurity twin-module. |  Verificatieconfiguratie valideren - zorg ervoor dat de hostnaam correct is, het apparaat bestaat in IoT Hub en heeft een azureiotsecurity twin-module. |
+| Authentication | Ontbrekende configuratie | Er ontbreekt een configuratie in het bestand *Authentication.config.* In de foutmelding moet worden vermeld welke sleutel ontbreekt. | Voeg de ontbrekende sleutel toe aan het bestand *LocalConfiguration.json.*| Voeg de ontbrekende sleutel toe aan het *bestand Authentication.config,* zie de [c#-localconfig-referentie](azure-iot-security-local-configuration-csharp.md) voor meer informatie. |
+| Authentication | Cant Parse-configuratie | Een configuratiewaarde kan niet worden ontleed. In het foutbericht moet worden vermeld welke sleutel niet kan worden ontleed. Een configuratiewaarde kan niet worden ontleed omdat de waarde niet van het verwachte type is of omdat de waarde buiten bereik is. |De waarde van de sleutel in het bestand **LocalConfiguration.json** herstellen. |Fix the value of the key in **Authentication.config** file to match the schema, see the [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) for details.|
 |
 
 ## <a name="restart-the-agent"></a>De agent opnieuw starten
-1. Nadat u een beveiligings agent fout hebt gevonden en opgelost, start u de agent opnieuw door de volgende opdracht uit te voeren:
+1. Nadat u een fout van een beveiligingsagent hebt opgelost, start u de agent opnieuw door de volgende opdracht uit te voeren:
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
-2. Herhaal indien nodig de vorige processen om de agent geforceerd te stoppen en de fouten op te halen als de agent het opstart proces blijft mislukken. 
+2. Indien nodig herhaalt u de vorige processen om de agent te stoppen en de fouten op te halen als de agent het opstartproces blijft mislukken. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees het [overzicht](overview.md) van de Azure Security Center voor IOT-service
-- Meer informatie over Azure Security Center voor IoT- [architectuur](architecture.md)
-- De Azure Security Center inschakelen voor IoT- [service](quickstart-onboard-iot-hub.md)
-- Lees de [Veelgestelde vragen over](resources-frequently-asked-questions.md) de Azure Security Center voor IOT-service
-- Meer informatie over het openen van onbewerkte [beveiligings gegevens](how-to-security-data-access.md)
-- Meer informatie over [aanbevelingen](concept-recommendations.md)
-- Beveiligings [waarschuwingen](concept-security-alerts.md) begrijpen
+- Lees het [overzicht](overview.md) van de Azure Security Center for IoT-service
+- Meer informatie over Azure Security Center voor [IoT-architectuur](architecture.md)
+- De Azure Security Center for IoT-service [inschakelen](quickstart-onboard-iot-hub.md)
+- Lees de veelgestelde vragen over azure security center voor [IoT-service](resources-frequently-asked-questions.md)
+- Meer informatie over hoe u toegang krijgt tot [ruwe beveiligingsgegevens](how-to-security-data-access.md)
+- Aanbevelingen [begrijpen](concept-recommendations.md)
+- [Beveiligingswaarschuwingen begrijpen](concept-security-alerts.md)

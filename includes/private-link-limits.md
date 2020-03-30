@@ -9,21 +9,21 @@ ms.date: 09/10/2019
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 5acb6456cc45a6b0ce9ea535c064a6544a5dcc8b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73476954"
 ---
- De volgende limieten gelden voor persoonlijke Azure-koppelingen:
+ De volgende limieten zijn van toepassing op azure-privékoppeling:
 
 |Resource |Limiet |
 |---------|---------|
-|Aantal privé-eind punten per virtueel netwerk     |  1000       |
-|Aantal privé-eind punten per abonnement       |   64000       |
-|Aantal privé koppelings services per abonnement         |   800      |
-|Aantal IP-configuraties op een privé koppelings service     |  8 (dit nummer is voor de NAT IP-adressen die worden gebruikt per gebruik)       |
-|Aantal privé-eind punten op dezelfde persoonlijke koppelings service   |  1000       |
+|Aantal privéeindpunten per virtueel netwerk     |  1000       |
+|Aantal privéeindpunten per abonnement       |   64000       |
+|Aantal private link-service per abonnement         |   800      |
+|Aantal IP-configuraties op een privékoppelingsservice     |  8 (Dit nummer is voor de NAT IP-adressen die per PLS worden gebruikt)       |
+|Aantal privéeindpunten op dezelfde privélinkservice   |  1000       |
 
 
 

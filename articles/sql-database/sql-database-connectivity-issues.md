@@ -1,7 +1,7 @@
 ---
 title: Werken met tijdelijke fouten
-description: Informatie over het oplossen van problemen met een SQL-verbindings fout of een tijdelijke fout in Azure SQL Database.
-keywords: SQL-verbinding, connection string, verbindings problemen, tijdelijke fout, verbindings fout
+description: Meer informatie over het oplossen, diagnosticeren en voorkomen van een SQL-verbindingsfout of tijdelijke fout in Azure SQL Database.
+keywords: sql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -14,157 +14,157 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269079"
 ---
-# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Problemen met tijdelijke verbindings fouten naar SQL Database oplossen
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Tijdelijke verbindingsfouten oplossen in SQL-database
 
-In dit artikel wordt beschreven hoe u verbindings fouten en tijdelijke fouten voor komt, oplost en verhelpt die uw client toepassing tegen komt wanneer deze communiceert met Azure SQL Database. Meer informatie over het configureren van de logica voor opnieuw proberen, het bouwen van de connection string en het aanpassen van andere Verbindings instellingen.
+In dit artikel wordt beschreven hoe u verbindingsfouten en tijdelijke fouten die uw clienttoepassing tegenkomt wanneer deze samenwerkt met Azure SQL Database, voorkomen, oplossen, diagnosticeren en beperken. Meer informatie over het configureren van logica voor het opnieuw proberen, het samenstellen van de verbindingstekenreeks en het aanpassen van andere verbindingsinstellingen.
 
 <a id="i-transient-faults" name="i-transient-faults"></a>
 
-## <a name="transient-errors-transient-faults"></a>Tijdelijke fouten (tijdelijke storingen)
+## <a name="transient-errors-transient-faults"></a>Tijdelijke fouten (tijdelijke fouten)
 
-Een tijdelijke fout, ook wel bekend als een tijdelijke fout, heeft een onderliggende oorzaak die binnenkort wordt opgelost. Een incidentele oorzaak van tijdelijke fouten is wanneer het Azure-systeem snel hardwarebronnen verschuift voor een betere taak verdeling van verschillende werk belastingen. De meeste van deze herconfiguratie gebeurtenissen eindigen in minder dan 60 seconden. Tijdens deze herconfiguraties periode hebt u mogelijk verbindings problemen met SQL Database. Toepassingen die verbinding maken met SQL Database moeten worden gebouwd om deze tijdelijke fouten te verwachten. Als u deze wilt afhandelen, implementeert u de logica voor opnieuw proberen in hun code in plaats van deze te halen aan gebruikers als toepassings fouten.
+Een tijdelijke fout, ook wel een tijdelijke fout genoemd, heeft een onderliggende oorzaak die zichzelf snel oplost. Een incidentele oorzaak van tijdelijke fouten is wanneer het Azure-systeem snel hardwarebronnen verschuift naar een betere load-balance verschillende workloads. De meeste van deze herconfiguratiegebeurtenissen eindigen in minder dan 60 seconden. Tijdens deze tijdspanne voor de configuratie u verbindingsproblemen hebben met SQL Database. Toepassingen die verbinding maken met SQL Database moeten worden gebouwd om deze tijdelijke fouten te verwachten. Om ze te behandelen, implementeert u logica opnieuw proberen in hun code in plaats van ze aan gebruikers te laten zien als toepassingsfouten.
 
-Als uw client programma ADO.NET gebruikt, wordt het programma op de tijdelijke fout gemeld door het genereren van **SQLException**. 
+Als uw clientprogramma ADO.NET gebruikt, wordt uw programma verteld over de tijdelijke fout door het gooien van **SqlException.** 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
 ### <a name="connection-vs-command"></a>Verbinding versus opdracht
 
-Probeer de SQL-verbinding opnieuw of breng deze opnieuw tot stand, afhankelijk van het volgende:
+Probeer de SQL-verbinding opnieuw of maak deze opnieuw tot stand, afhankelijk van het volgende:
 
-- **Er is een tijdelijke fout opgetreden tijdens een verbinding probeer**
+- **Er treedt een tijdelijke fout op tijdens een verbindingspoging**
 
-Probeer de verbinding na een vertraging van enkele seconden opnieuw.
+Na een vertraging van enkele seconden probeert u de verbinding opnieuw.
 
-- **Er is een tijdelijke fout opgetreden tijdens een SQL-query opdracht**
+- **Er treedt een tijdelijke fout op tijdens een SQL-queryopdracht**
 
-Voer de opdracht niet onmiddellijk opnieuw uit. In plaats daarvan kunt u na een vertraging de verbinding tot stand brengen. Voer de opdracht vervolgens opnieuw uit.
+Probeer de opdracht niet onmiddellijk opnieuw. In plaats daarvan, na een vertraging, vers vast te stellen van de verbinding. Probeer vervolgens het commando opnieuw.
 
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
 ## <a name="retry-logic-for-transient-errors"></a>Pogingslogica voor tijdelijke problemen
 
-Client Programma's die af en toe een tijdelijke fout ondervinden, zijn robuuster wanneer ze logica voor nieuwe pogingen bevatten. Wanneer uw programma communiceert met SQL Database via middleware van een derde partij, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
+Clientprogramma's die af en toe een tijdelijke fout tegenkomen, zijn robuuster wanneer ze logica voor nieuwe oplossingen bevatten. Wanneer uw programma communiceert met SQL Database via middleware van derden, vraagt u de leverancier of de middleware logica opnieuw probeert voor tijdelijke fouten.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
-### <a name="principles-for-retry"></a>Principes voor opnieuw proberen
+### <a name="principles-for-retry"></a>Principes voor het opnieuw proberen
 
-- Als de fout tijdelijk is, probeert u opnieuw een verbinding te openen.
-- Probeer niet rechtstreeks een SQL `SELECT`-instructie opnieuw uit te voeren die is mislukt met een tijdelijke fout. Maak in plaats daarvan een nieuwe verbinding tot stand en probeer de `SELECT`opnieuw uit te voeren.
-- Wanneer een SQL `UPDATE`-instructie mislukt met een tijdelijke fout, moet u een nieuwe verbinding maken voordat u de UPDATE opnieuw probeert. De logica voor opnieuw proberen moet ervoor zorgen dat de hele database transactie is voltooid of dat de hele trans actie wordt teruggedraaid.
+- Als de fout van voorbijgaande aard is, probeert u opnieuw een verbinding te openen.
+- Probeer niet direct een `SELECT` SQL-instructie opnieuw die is mislukt met een tijdelijke fout. In plaats daarvan, maak een nieuwe `SELECT`verbinding, en probeer vervolgens de .
+- Wanneer een `UPDATE` SQL-instructie mislukt met een tijdelijke fout, maakt u een nieuwe verbinding voordat u de update opnieuw probeert. De logica voor opnieuw proberen moet ervoor zorgen dat de volledige databasetransactie is voltooid of dat de hele transactie wordt teruggedraaid.
 
-### <a name="other-considerations-for-retry"></a>Andere overwegingen voor nieuwe pogingen
+### <a name="other-considerations-for-retry"></a>Andere overwegingen voor het opnieuw proberen
 
-- Een batch-programma dat automatisch wordt gestart na het werk uren en eindigt vóór morgen, kan een zeer lange tijds intervallen hebben tussen de nieuwe pogingen.
-- Een gebruikers interface programma moet er rekening mee maken dat de menselijke tendens na te lange tijd een ogen blik geduld. De oplossing mag niet om de paar seconden opnieuw worden geprobeerd, omdat dit beleid het systeem kan overlopen met aanvragen.
+- Een batch programma dat automatisch begint na de werkuren en eindigt voor de ochtend kan veroorloven om zeer geduldig met lange tijdintervallen tussen de pogingen om opnieuw te proberen.
+- Een user interface programma moet rekening houden met de menselijke neiging om op te geven na te lang wachten. De oplossing mag niet om de paar seconden opnieuw worden geprobeerd, omdat dat beleid het systeem kan overspoelen met verzoeken.
 
-### <a name="interval-increase-between-retries"></a>Interval toename tussen nieuwe pogingen
+### <a name="interval-increase-between-retries"></a>Intervalverhoging tussen nieuwe pogingen
 
-U wordt aangeraden vijf seconden te wachten voordat u voor het eerst een nieuwe poging voert. Opnieuw proberen na een vertraging die korter is dan 5 seconden Risico's voor de Cloud service. Voor elke volgende poging moet de vertraging exponentieel toenemen, tot een maximum van 60 seconden.
+We raden u aan 5 seconden te wachten voordat u het voor het eerst opnieuw probeert. Opnieuw proberen na een vertraging korter dan 5 seconden dreigt de cloudservice te overweldigen. Voor elke volgende poging, moet de vertraging exponentieel groeien, tot een maximum van 60 seconden.
 
-Zie [SQL Server Connection Pooling (ADO.net)](https://msdn.microsoft.com/library/8xx3tyca.aspx)voor een bespreking van de blokkerings periode voor clients die gebruikmaken van ADO.net.
+Zie [SQL Server connection pooling (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx)voor een discussie over de blokkeringsperiode voor clients die ADO.NET gebruiken.
 
-Het is ook mogelijk dat u een maximum aantal nieuwe pogingen wilt instellen voordat het programma zelf wordt beëindigd.
+U ook een maximum aantal nieuwe pogingen instellen voordat het programma zichzelf beëindigt.
 
-### <a name="code-samples-with-retry-logic"></a>Code voorbeelden met pogings logica
+### <a name="code-samples-with-retry-logic"></a>Codevoorbeelden met logica voor nieuwe try
 
-Code voorbeelden met de logica voor nieuwe pogingen zijn beschikbaar op:
+Codevoorbeelden met logica voor nieuwe try zijn beschikbaar op:
 
-- [Maak robuuste verbinding met SQL met ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Maak robuuste verbinding met SQL met PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Flexibel verbinding maken met SQL via ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Flexibel verbinding maken met SQL via PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-### <a name="test-your-retry-logic"></a>De logica voor opnieuw proberen testen
+### <a name="test-your-retry-logic"></a>Uw logica voor nieuwe try testen
 
-Als u de logica voor opnieuw proberen wilt testen, moet u een fout simuleren of veroorzaken die kan worden gecorrigeerd terwijl het programma nog actief is.
+Als u uw logica voor nieuwe try wilt testen, moet u een fout simuleren of veroorzaken die kan worden gecorrigeerd terwijl uw programma nog steeds wordt uitgevoerd.
 
 #### <a name="test-by-disconnecting-from-the-network"></a>Testen door de verbinding met het netwerk te verbreken
 
-U kunt de logica voor opnieuw proberen testen door de verbinding tussen de client computer en het netwerk te verbreken terwijl het programma wordt uitgevoerd. De fout is:
+Een manier waarop u uw logica voor nieuwe apparaten testen, is door uw clientcomputer los te koppelen van het netwerk terwijl het programma wordt uitgevoerd. De fout is:
 
-- **SQLException. Number** = 11001
-- Bericht: "er is geen host bekend"
+- **SqlException.Number** = 11001
+- Bericht: "Zo'n host is niet bekend"
 
-Als onderdeel van de eerste nieuwe poging kunt u de client computer opnieuw verbinding laten maken met het netwerk en vervolgens proberen verbinding te maken.
+Als onderdeel van de eerste poging opnieuw proberen, u uw clientcomputer opnieuw verbinden met het netwerk en vervolgens proberen verbinding te maken.
 
-Als u deze test praktisch wilt uitvoeren, koppelt u uw computer los van het netwerk voordat u het programma start. Vervolgens herkent het programma een runtime-para meter waarmee het programma:
+Als u deze test praktisch wilt maken, trekt u de stekker uit uw computer van het netwerk voordat u uw programma start. Vervolgens herkent uw programma een runtime-parameter die ervoor zorgt dat het programma:
 
-- Voeg 11001 tijdelijk toe aan de lijst met fouten die als tijdelijk moeten worden beschouwd.
-- Probeer de eerste verbinding zoals gebruikelijk.
-- Nadat de fout is opgetreden, verwijdert u 11001 in de lijst.
-- Hiermee wordt een bericht weer gegeven waarin de gebruiker wordt gevraagd om de computer op het netwerk te koppelen.
-- Onderbreek verdere uitvoering met behulp van de methode **console. readline** of een dialoog venster met een knop OK. De gebruiker drukt op ENTER wanneer de computer is aangesloten op het netwerk.
-- Probeer het opnieuw om verbinding te maken. dit wordt verwacht.
+- Voeg tijdelijk 11001 toe aan de lijst met fouten die als tijdelijk moeten worden beschouwd.
+- Probeer de eerste verbinding zoals gewoonlijk.
+- Nadat de fout is gevangen, verwijdert u 11001 uit de lijst.
+- Geef een bericht weer waarin de gebruiker wordt opgestuurd om de computer op het netwerk aan te sluiten.
+- Pauzeer verdere uitvoering met de methode **Console.ReadLine** of een dialoogvenster met een OK-knop. De gebruiker drukt op de Enter-toets nadat de computer is aangesloten op het netwerk.
+- Probeer opnieuw verbinding te maken, verwacht succes.
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen door de naam van de data base tijdens het verbinden te controleren
+#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen door de databasenaam verkeerd te spellen bij het verbinden
 
-Het programma kan de gebruikers naam voor de eerste verbindings poging het meest misbruiken. De fout is:
+Uw programma kan de gebruikersnaam opzettelijk verkeerd spellen vóór de eerste verbindingspoging. De fout is:
 
-- **SQLException. Number** = 18456
-- Bericht: de aanmelding is mislukt voor de gebruiker WRONG_MyUserName.
+- **SqlException.Number** = 18456
+- Bericht: 'Inloggen is mislukt voor gebruiker 'WRONG_MyUserName'."
 
-Als onderdeel van de eerste poging, kan uw programma de spel fouten corrigeren en vervolgens proberen verbinding te maken.
+Als onderdeel van de eerste poging tot het opnieuw proberen kan uw programma de spelfout corrigeren en vervolgens proberen verbinding te maken.
 
-Als u deze test praktisch wilt uitvoeren, herkent het programma een runtime-para meter waarmee het programma:
+Om deze test praktisch te maken, herkent uw programma een runtime-parameter die ervoor zorgt dat het programma:
 
-- Voeg 18456 tijdelijk toe aan de lijst met fouten die als tijdelijk moeten worden beschouwd.
-- Voeg ' WRONG_ ' toe aan de gebruikers naam.
-- Nadat de fout is opgetreden, verwijdert u 18456 in de lijst.
-- Verwijder ' WRONG_ ' uit de gebruikers naam.
-- Probeer het opnieuw om verbinding te maken. dit wordt verwacht.
+- Voeg tijdelijk 18456 toe aan de lijst met fouten die als tijdelijk moeten worden beschouwd.
+- Voeg met opzet 'WRONG_' toe aan de gebruikersnaam.
+- Nadat de fout is gevangen, verwijdert u 18456 uit de lijst.
+- Verwijder 'WRONG_' van de gebruikersnaam.
+- Probeer opnieuw verbinding te maken, verwacht succes.
 
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
-## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection-para meters voor nieuwe verbinding
+## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection-parameters voor het opnieuw proberen van verbindingen
 
-Als uw client programma verbinding maakt met SQL Database met behulp van de .NET Framework-klasse **System. data. SqlClient. SqlConnection**, gebruikt u .net 4.6.1 of hoger (of .net core), zodat u de nieuwe functie verbinding opnieuw kunt gebruiken. Zie [deze webpagina](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)voor meer informatie over de functie.
+Als uw clientprogramma verbinding maakt met SQL Database met behulp van de .NET Framework class **System.Data.SqlClient.SqlConnection,** gebruikt u .NET 4.6.1 of hoger (of .NET Core) zodat u de functie voor het opnieuw proberen van de verbinding gebruiken. Zie [deze webpagina](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)voor meer informatie over de functie.
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-Wanneer u de [Connection String](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) voor uw **SqlConnection** -object bouwt, coördineert u de waarden uit de volgende para meters:
+Wanneer u de [verbindingstekenreeks](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) voor uw **SqlConnection-object** maakt, coördineert u de waarden onder de volgende parameters:
 
-- **ConnectRetryCount**:&nbsp;&nbsp;standaard waarde is 1. Het bereik is 0 tot en met 255.
-- **ConnectRetryInterval**: de standaard waarde voor&nbsp;&nbsp;is 10 seconden. Het bereik is 1 tot en met 60.
-- Verbindingstime **-out**:&nbsp;&nbsp;standaard waarde is 15 seconden. Het bereik is 0 tot en met 2147483647.
+- **ConnectRetryCount**&nbsp;&nbsp;: Standaard is 1. Bereik is 0 tot en met 255.
+- **ConnectRetryInterval**&nbsp;&nbsp;: Standaard is 10 seconden. Bereik is 1 tot en met 60.
+- **Verbindingstime-out**:&nbsp;&nbsp;Standaard is 15 seconden. Bereik is 0 tot en met 2147483647.
 
-Met name de gekozen waarden moeten de volgende gelijkheid doen: time-out voor verbinding = ConnectRetryCount * ConnectionRetryInterval
+In het bijzonder moeten de door u gekozen waarden de volgende gelijkheid waar maken: Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
-Als de telling bijvoorbeeld gelijk is aan 3 en het interval 10 seconden is, geeft een time-out van slechts 29 seconden het systeem niet voldoende tijd voor het derde en de laatste poging om verbinding te maken: 29 < 3 * 10.
+Als de telling bijvoorbeeld gelijk is aan 3 en het interval gelijk is aan 10 seconden, geeft een time-out van slechts 29 seconden het systeem niet genoeg tijd voor de derde en laatste poging om verbinding te maken: 29 < 3 * 10.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
 ## <a name="connection-vs-command"></a>Verbinding versus opdracht
 
-Met de **ConnectRetryCount** -en **ConnectRetryInterval** -para meters kan uw **SqlConnection** -object de verbindings bewerking opnieuw proberen zonder dat uw programma wordt weer gegeven, zoals het retour neren van uw programma. De nieuwe pogingen kunnen in de volgende situaties optreden:
+Met de parameters **ConnectRetryCount** en **ConnectRetryInterval** kunnen uw **SqlConnection-object** de connect-bewerking opnieuw proberen zonder uw programma te vertellen of lastig te vallen, zoals het retourneren van de besturing naar uw programma. De nieuwe pogingen kunnen in de volgende situaties voorkomen:
 
-- aanroep van de methode mySqlConnection. Open
-- aanroep van de methode mySqlConnection. Execute
+- mySqlConnection.Open-methodeaanroep
+- mySqlConnection.Execute-methodeaanroep
 
-Er is een subtlety. Als er een tijdelijke fout optreedt tijdens het uitvoeren van uw *query* , probeert uw **SqlConnection** -object de verbindings bewerking niet opnieuw uit te voeren. De query wordt zeker niet opnieuw uitgevoerd. De verbinding wordt echter door **SqlConnection** zeer snel gecontroleerd voordat de query wordt verzonden voor uitvoering. Als de snelle controle een verbindings probleem detecteert, probeert **SqlConnection** de verbindings bewerking opnieuw. Als de nieuwe poging slaagt, wordt uw query verzonden voor uitvoering.
+Er is een subtiliteit. Als er een tijdelijke fout optreedt tijdens het uitvoeren van uw *query,* probeert het **sqlconnection-object** de verbindingsbewerking niet opnieuw. Het is zeker niet opnieuw proberen uw zoekopdracht. **SqlConnection** controleert echter zeer snel de verbinding voordat u uw query verzendt voor uitvoering. Als bij de snelle controle een verbindingsprobleem wordt **gedetecteerd,** wordt de verbindingsbewerking opnieuw geprobeerd. Als de nieuwe poging slaagt, wordt uw query verzonden voor uitvoering.
 
-### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Moet ConnectRetryCount worden gecombineerd met de logica voor opnieuw proberen van de toepassing
+### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Moet ConnectRetryCount worden gecombineerd met logica voor het opnieuw proberen van toepassingen
 
-Stel dat uw toepassing een robuuste, aangepaste logica voor opnieuw proberen heeft. De verbindings bewerking kan vier keer opnieuw worden uitgevoerd. Als u **ConnectRetryInterval** en **ConnectRetryCount** = 3 aan uw Connection String toevoegt, wordt het aantal nieuwe pogingen verhoogd tot 4 * 3 = 12 pogingen. Misschien bent u niet een groot aantal nieuwe pogingen.
+Stel dat uw toepassing robuuste aangepaste logica voor het opnieuw proberen heeft. Het kan de connect-bewerking vier keer opnieuw proberen. Als u **ConnectRetryInterval** en **ConnectRetryCount** =3 aan uw verbindingstekenreeks toevoegt, verhoogt u het aantal nieuwe pogingen tot 4 * 3 = 12 nieuwe pogingen. Je zou niet van plan zo'n hoog aantal nieuwe pogingen.
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
-## <a name="connections-to-sql-database"></a>Verbindingen met SQL Database
+## <a name="connections-to-sql-database"></a>Verbindingen met SQL-database
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>Verbinding: verbindings reeks
+### <a name="connection-connection-string"></a>Verbinding: verbindingstekenreeks
 
-De connection string die nodig is om verbinding te maken met SQL Database, wijkt enigszins af van de teken reeks die wordt gebruikt om verbinding te maken met SQL Server. U kunt de connection string voor uw data base kopiëren vanuit de [Azure Portal](https://portal.azure.com/).
+De verbindingstekenreeks die nodig is om verbinding te maken met SQL Database verschilt iets van de tekenreeks die wordt gebruikt om verbinding te maken met SQL Server. U de verbindingstekenreeks voor uw database kopiëren vanuit de [Azure-portal.](https://portal.azure.com/)
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -172,46 +172,46 @@ De connection string die nodig is om verbinding te maken met SQL Database, wijkt
 
 ### <a name="connection-ip-address"></a>Verbinding: IP-adres
 
-U moet de SQL Database-Server configureren om communicatie te accepteren van het IP-adres van de computer die als host fungeert voor uw client programma. Als u deze configuratie wilt instellen, bewerkt u de firewall instellingen via de [Azure Portal](https://portal.azure.com/).
+U moet de SQL Database-server configureren om communicatie te accepteren vanaf het IP-adres van de computer die uw clientprogramma host. Als u deze configuratie wilt instellen, bewerkt u de firewall-instellingen via de [Azure-portal.](https://portal.azure.com/)
 
-Als u het IP-adres vergeet te configureren, mislukt het programma met een handig fout bericht dat het benodigde IP-adres vermeldt.
+Als u vergeet het IP-adres te configureren, mislukt uw programma met een handig foutbericht waarin het benodigde IP-adres staat.
 
 [!INCLUDE [sql-database-include-ip-address-22-portal](../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
-Zie [firewall instellingen configureren op SQL database](sql-database-configure-firewall-settings.md)voor meer informatie.
+Zie [Firewall-instellingen configureren in SQL Database voor](sql-database-configure-firewall-settings.md)meer informatie.
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
 ### <a name="connection-ports"></a>Verbinding: poorten
 
-Normaal gesp roken moet u ervoor zorgen dat alleen poort 1433 is geopend voor uitgaande communicatie op de computer die als host fungeert voor uw client programma.
+Doorgaans moet u ervoor zorgen dat alleen poort 1433 open staat voor uitgaande communicatie op de computer die uw clientprogramma host.
 
-Als uw client programma bijvoorbeeld wordt gehost op een Windows-computer, kunt u Windows Firewall op de host gebruiken om poort 1433 te openen.
+Wanneer uw clientprogramma bijvoorbeeld wordt gehost op een Windows-computer, u Windows Firewall op de host gebruiken om poort 1433 te openen.
 
-1. Open het configuratie scherm.
-2. Selecteer **alle configuratie scherm-Items** > **Windows Firewall** > **geavanceerde instellingen** > **Uitgaande regels** > **acties** > **nieuwe regel**.
+1. Open het Configuratiescherm.
+2. Selecteer **Alle Onderdelen van het Configuratiescherm** > Windows**Firewall** > **Advanced Settings** > **Uitgaande regels** > **Acties** > **Nieuwe regel**.
 
-Als uw client programma wordt gehost op een virtuele machine (VM) van Azure, Lees [dan de poorten na 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md).
+Als uw clientprogramma wordt gehost op een virtuele Azure-machine (VM), leest u [Poorten na 1433 voor ADO.NET 4.5 en SQL Database.](sql-database-develop-direct-route-ports-adonet-v12.md)
 
-Zie [Azure SQL database firewall](sql-database-firewall-configure.md)voor achtergrond informatie over de configuratie van poorten en IP-adressen.
+Zie [Azure SQL Database firewall](sql-database-firewall-configure.md)voor achtergrondinformatie over de configuratie van poorten en IP-adressen.
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-462-or-later"></a>Verbinding: ADO.NET 4.6.2 of hoger
+### <a name="connection-adonet-462-or-later"></a>Aansluiting: ADO.NET 4.6.2 of hoger
 
-Als uw programma gebruikmaakt van ADO.NET-klassen als **System. data. SqlClient. SqlConnection** om verbinding te maken met SQL database, raden we u aan .NET Framework versie 4.6.2 of hoger te gebruiken.
+Als uw programma ADO.NET klassen zoals **System.Data.SqlClient.SqlConnection** gebruikt om verbinding te maken met SQL Database, raden we u aan .NET Framework-versie 4.6.2 of hoger te gebruiken.
 
-#### <a name="starting-with-adonet-462"></a>Beginnen met ADO.NET 4.6.2
+#### <a name="starting-with-adonet-462"></a>Te beginnen met ADO.NET 4.6.2
 
-- Er wordt een poging gedaan om de verbinding te verbreken direct voor Azure SQL-data bases, waardoor de prestaties van apps die in de Cloud zijn ingeschakeld, worden verbeterd.
+- De open verbinding probeert onmiddellijk opnieuw te worden geprobeerd voor Azure SQL-databases, waardoor de prestaties van cloud-apps worden verbeterd.
 
-#### <a name="starting-with-adonet-461"></a>Beginnen met ADO.NET 4.6.1
+#### <a name="starting-with-adonet-461"></a>Te beginnen met ADO.NET 4.6.1
 
-- Voor SQL Database is de betrouw baarheid verbeterd wanneer u een verbinding opent met behulp van de methode **SqlConnection. Open** . De methode **Open** bevat nu de methoden voor het opnieuw proberen van beste pogingen als reactie op tijdelijke fouten voor bepaalde fouten binnen de time-outperiode van de verbinding.
-- Groepsgewijze verbindingen wordt ondersteund. Dit omvat een efficiënte verificatie dat het verbindings object dat het programma geeft, werkt.
+- Voor SQL Database wordt de betrouwbaarheid verbeterd wanneer u een verbinding opent met de **sqlconnection.open-methode.** De **open-methode** bevat nu mechanismen voor het proberen van de beste inspanning als reactie op tijdelijke fouten voor bepaalde fouten binnen de time-outperiode van de verbinding.
+- Verbinding pooling wordt ondersteund, die een efficiënte verificatie dat de verbinding object geeft uw programma werkt omvat.
 
-Wanneer u een verbindings object van een verbindings groep gebruikt, wordt u aangeraden de verbinding tijdelijk te sluiten wanneer deze niet direct in gebruik is. Het is niet kostbaar om een verbinding opnieuw te openen, maar het maken van een nieuwe verbinding.
+Wanneer u een verbindingsobject uit een verbindingsgroep gebruikt, raden we u aan de verbinding tijdelijk te sluiten wanneer het niet onmiddellijk in gebruik is. Het is niet duur om een verbinding te heropenen, maar het is om een nieuwe verbinding te maken.
 
-Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voeren naar de meest recente versie van ADO.NET. Vanaf 2018 augustus kunt u [ADO.net 4.6.2 downloaden](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
+Als u ADO.NET 4.0 of eerder gebruikt, raden we u aan te upgraden naar de nieuwste ADO.NET. Vanaf augustus 2018 u [ADO.NET 4.6.2 downloaden.](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/)
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
@@ -219,29 +219,29 @@ Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voere
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
-### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnostische gegevens: testen of hulpprogram ma's verbinding kunnen maken
+### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnostiek: test of nutsbedrijven verbinding kunnen maken
 
-Als uw programma geen verbinding kan maken met SQL Database, moet u een diagnostische optie proberen om verbinding te maken met een hulp programma. In het ideale geval maakt het hulp programma verbinding met behulp van de bibliotheek die uw programma gebruikt.
+Als uw programma geen verbinding maakt met SQL Database, is één diagnostische optie om te proberen verbinding te maken met een hulpprogrammaprogramma. Idealiter maakt het hulpprogramma verbinding met dezelfde bibliotheek die uw programma gebruikt.
 
-Op elke Windows-computer kunt u deze hulpprogram ma's proberen:
+Op elke Windows-computer u deze hulpprogramma's uitproberen:
 
-- SQL Server Management Studio (SSMS. exe), die verbinding maakt met behulp van ADO.NET
-- `sqlcmd.exe`, die verbinding maakt met behulp van [ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
+- SQL Server Management Studio (ssms.exe), die verbinding maakt met behulp van ADO.NET
+- `sqlcmd.exe`, die verbindt met [odbc](https://msdn.microsoft.com/library/jj730308.aspx)
 
-Wanneer het programma is verbonden, test u of een korte SQL SELECT-query werkt.
+Nadat uw programma is verbonden, controleert u of een korte SQL SELECT-query werkt.
 
 <a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
 
-### <a name="diagnostics-check-the-open-ports"></a>Diagnostische gegevens: Controleer de open poorten
+### <a name="diagnostics-check-the-open-ports"></a>Diagnostiek: Controleer de geopende poorten
 
-Als u vermoedt dat verbindings pogingen mislukken vanwege poort problemen, kunt u een hulp programma uitvoeren op uw computer die rapporteert over de poort configuraties.
+Als u vermoedt dat verbindingspogingen mislukken als gevolg van poortproblemen, u een hulpprogramma op uw computer uitvoeren dat rapporteert over de poortconfiguraties.
 
-In Linux kunnen de volgende hulpprogram ma's handig zijn:
+Op Linux kunnen de volgende hulpprogramma's nuttig zijn:
 
 - `netstat -nap`
-- `nmap -sS -O 127.0.0.1`: Wijzig de voorbeeld waarde in uw IP-adres.
+- `nmap -sS -O 127.0.0.1`: Wijzig de voorbeeldwaarde als uw IP-adres.
 
-In Windows kan het hulp programma [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) handig zijn. Hier volgt een voor beeld van de uitvoering van een query naar de poort situatie op een SQL Database-Server en die werd uitgevoerd op een laptop computer:
+Op Windows kan het hulpprogramma [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nuttig zijn. Hier is een voorbeelduitvoering die de poortsituatie op een SQL Database-server opvroeg en die werd uitgevoerd op een laptop:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -261,30 +261,30 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>Diagnostische gegevens: uw fouten vastleggen
+### <a name="diagnostics-log-your-errors"></a>Diagnose: Uw fouten registreren
 
-Een onregelmatig probleem wordt soms het beste vastgesteld door de detectie van een algemeen patroon gedurende dagen of weken.
+Een intermitterend probleem wordt soms het best gediagnosticeerd door detectie van een algemeen patroon over dagen of weken.
 
-Uw client kan helpen bij een diagnose door alle fouten te registreren die worden aangetroffen. Mogelijk kunt u de logboek vermeldingen correleren met fout gegevens die intern door SQL Database geregistreerd.
+Uw klant kan helpen bij een diagnose door het registreren van alle fouten die het tegenkomt. Mogelijk u de logboekvermeldingen correleren met foutgegevens die SQL Database zichzelf intern registreert.
 
-Enter prise Library 6 (EntLib60) biedt .NET-beheerde klassen om te helpen bij het vastleggen van Logboeken. Zie [5-net zo eenvoudig als een logboek voor meer informatie: gebruik het toepassings blok voor logboek registratie](https://msdn.microsoft.com/library/dn440731.aspx).
+Enterprise Library 6 (EntLib60) biedt .NET managed classes om te helpen bij het loggen. Zie [5 - Zo eenvoudig als vallen van een logboek: Gebruik het logging-toepassingsblok](https://msdn.microsoft.com/library/dn440731.aspx).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnostische gegevens: systeem logboeken controleren op fouten
+### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnostiek: Systeemlogboeken onderzoeken op fouten
 
-Hier volgen enkele Transact-SQL-instructies voor het uitvoeren van query's op fout logboeken en andere informatie.
+Hier volgen enkele Transact-SQL SELECT-instructies die foutlogboeken en andere informatie opvragen.
 
-| Query op logboek | Beschrijving |
+| Query van logboek | Beschrijving |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |De weer gave [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) biedt informatie over afzonderlijke gebeurtenissen, waaronder een aantal dat kan leiden tot tijdelijke fouten of verbindings fouten.<br/><br/>In het ideale geval kunt u de **start_time** -of **end_time** waarden correleren met informatie over wanneer het client programma problemen heeft ondervonden.<br/><br/>U moet verbinding maken met de *hoofd* database om deze query uit te voeren. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |De weer gave [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) biedt geaggregeerde aantallen gebeurtenis typen voor aanvullende diagnostische gegevens.<br/><br/>U moet verbinding maken met de *hoofd* database om deze query uit te voeren. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |De [sys.event_log-weergave](https://msdn.microsoft.com/library/dn270018.aspx) biedt informatie over afzonderlijke gebeurtenissen, waaronder enkele die tijdelijke fouten of verbindingsfouten kunnen veroorzaken.<br/><br/>Idealiter u de **start_time** of **end_time** waarden correleren met informatie over wanneer uw klantprogramma problemen ondervond.<br/><br/>U moet verbinding maken met de *hoofddatabase* om deze query uit te voeren. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |De [sys.database_connection_stats-weergave](https://msdn.microsoft.com/library/dn269986.aspx) biedt geaggregeerde tellingen van gebeurtenistypen voor aanvullende diagnostiek.<br/><br/>U moet verbinding maken met de *hoofddatabase* om deze query uit te voeren. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
-### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Diagnostische gegevens: zoeken naar probleem gebeurtenissen in het SQL Database-logboek
+### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Diagnostische gegevens: zoeken naar probleemgebeurtenissen in het SQL-databaselogboek
 
-U kunt zoeken naar vermeldingen over probleem gebeurtenissen in het SQL Database logboek. Probeer de volgende Transact-SQL-instructie SELECT in de *hoofd* database:
+U zoeken naar items over probleemgebeurtenissen in het SQL-databaselogboek. Probeer de volgende transact-SQL SELECT-instructie in de *hoofddatabase:*
 
 ```sql
 SELECT
@@ -311,9 +311,9 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Een paar geretourneerde rijen uit sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Een paar teruggekeerde rijen van sys.fn_xe_telemetry_blob_target_read_file
 
-In het volgende voor beeld ziet u hoe een geretourneerde rij eruit kan zien. De Null-waarden die worden weer gegeven, zijn vaak niet null in andere rijen.
+In het volgende voorbeeld ziet u hoe een geretourneerde rij eruit kan zien. De weergegeven null-waarden zijn vaak niet null in andere rijen.
 
 ```
 object_name                   timestamp                    error  state  is_success  database_name
@@ -323,58 +323,58 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 <a id="l-enterprise-library-6" name="l-enterprise-library-6"></a>
 
-## <a name="enterprise-library-6"></a>Enter prise-bibliotheek 6
+## <a name="enterprise-library-6"></a>Bedrijfsbibliotheek 6
 
-Enter prise Library 6 (EntLib60) is een framework van .NET-klassen waarmee u krachtige clients van Cloud Services kunt implementeren, een van de SQL Database-Service. Zie [Enter prise Library 6-April 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)om onderwerpen te vinden die zijn gericht op elk gebied waarin EntLib60 kan worden geholpen.
+Enterprise Library 6 (EntLib60) is een framework van .NET-klassen waarmee u robuuste clients van cloudservices implementeren, waaronder de SQL Database-service. Zie [Enterprise Library 6 - april 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)voor het vinden van onderwerpen die zijn gewijd aan elk gebied waarop EntLib60 kan helpen.
 
-Pogings logica voor het afhandelen van tijdelijke fouten is één gebied waarin EntLib60 kan helpen. Zie voor meer informatie [4-Perseverance, geheim van alle Triumphs: gebruik het toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+Logica opnieuw proberen voor het verwerken van tijdelijke fouten is een gebied waarop EntLib60 kan helpen. Voor meer informatie, zie [4 - Doorzettingsvermogen, geheim van alle triomfen: Gebruik de Transient Fault Handling Application Block](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
-> De bron code voor EntLib60 is beschikbaar als open bare down load van het [Download centrum](https://go.microsoft.com/fwlink/p/?LinkID=290898). Micro soft heeft geen plannen om verdere onderdelen updates of onderhouds updates te maken voor EntLib.
+> De broncode voor EntLib60 is beschikbaar voor openbare download van het [Downloadcenter.](https://go.microsoft.com/fwlink/p/?LinkID=290898) Microsoft heeft geen plannen om verdere functie-updates of onderhoudsupdates voor EntLib uit te voeren.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
-### <a name="entlib60-classes-for-transient-errors-and-retry"></a>EntLib60-klassen voor tijdelijke fouten en nieuwe poging
+### <a name="entlib60-classes-for-transient-errors-and-retry"></a>EntLib60-klassen voor tijdelijke fouten en nieuwe try
 
-De volgende EntLib60-klassen zijn vooral handig voor de logica voor opnieuw proberen. Al deze klassen vindt u in of onder de naam ruimte **micro soft. practices. EnterpriseLibrary. TransientFaultHandling**.
+De volgende EntLib60-klassen zijn bijzonder nuttig voor het opnieuw proberen van logica. Al deze klassen zijn te vinden in of onder de naamruimte **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**.
 
-In de naam ruimte **micro soft. practices. EnterpriseLibrary. TransientFaultHandling**:
+In de naamruimte **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling:**
 
-- Klasse **RetryPolicy**
-  - **ExecuteAction** -methode
-- Klasse **ExponentialBackoff**
-- Klasse **SqlDatabaseTransientErrorDetectionStrategy**
-- Klasse **ReliableSqlConnection**
-  - Methode **ExecuteCommand**
+- **Opnieuw proberenDe** klasse Beleid
+  - **UitvoerActiemethode**
+- **ExponentieelBackoff-klasse**
+- **SqlDatabaseTransientErrorDetectionStrategy,** klasse
+- **ReliableSqlConnection,** klasse
+  - **Opdracht uitvoeren**
 
-In de naam ruimte **Microsoft. practices. EnterpriseLibrary. TransientFaultHandling. TestSupport**:
+In de naamruimte **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport:**
 
-- Klasse **AlwaysTransientErrorDetectionStrategy**
-- Klasse **NeverTransientErrorDetectionStrategy**
+- **AlwaysTransientErrorDetectionStrategy,** klasse
+- **NeverTransientErrorDetectionStrategy,** klasse
 
-Hier vindt u enkele koppelingen naar informatie over EntLib60:
+Hier zijn enkele links naar informatie over EntLib60:
 
-- Gratis boek downloaden: [ontwikkelaars handleiding voor micro soft Enter prise Library, 2e editie](https://www.microsoft.com/download/details.aspx?id=41145).
-- Best practices: [algemene richt lijnen voor opnieuw proberen](../best-practices-retry-general.md) hebben een uitstekende uitgebreide beschrijving van de logica voor opnieuw proberen.
-- NuGet downloaden: [Enter prise Library-Application Block 6,0 voor tijdelijke fout afhandeling](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
+- Gratis boek downloaden: [Developer's Guide to Microsoft Enterprise Library, 2e editie](https://www.microsoft.com/download/details.aspx?id=41145).
+- Best practices: [Retry algemene begeleiding](../best-practices-retry-general.md) heeft een uitstekende diepgaande discussie over het opnieuw proberen logica.
+- NuGet download: [Enterprise Library - Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60: de logboek registratie blok keren
+### <a name="entlib60-the-logging-block"></a>EntLib60: Het logboekblok
 
-- Het logboek registratie blok is een zeer flexibele en configureer bare oplossing die u kunt gebruiken voor het volgende:
-  - Maak logboek berichten en sla deze op in een groot aantal verschillende locaties.
+- Het logboekblok is een zeer flexibele en configureerbare oplossing die u gebruiken om:
+  - Logberichten maken en opslaan op verschillende locaties.
   - Berichten categoriseren en filteren.
-  - Verzamel contextuele informatie die nuttig is voor fout opsporing en tracering, en voor controle-en algemene logboek registratie vereisten.
-- In het logboek registratie wordt de functionaliteit van logboek registratie van de logboek bestemming abstract, zodat de toepassings code consistent is, onafhankelijk van de locatie en het type van de doel logboek registratie.
+  - Verzamel contextuele informatie die nuttig is voor het opsporen en traceren, evenals voor controle en algemene logboekregistratievereisten.
+- Het logboekblok abstraheert de logboekfunctionaliteit van de logboekbestemming, zodat de toepassingscode consistent is, ongeacht de locatie en het type van het doellogboekarchief.
 
-Zie [5-net zo eenvoudig als een logboek voor meer informatie: gebruik het toepassings blok voor logboek registratie](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
+Zie [5 - Zo eenvoudig als vallen van een logboek: Gebruik het logging-toepassingsblok](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
-### <a name="entlib60-istransient-method-source-code"></a>Bron code van methode EntLib60 IsTransient
+### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient methode broncode
 
-Vervolgens is de C# bron code voor de methode **IsTransient** van de **SqlDatabaseTransientErrorDetectionStrategy** -klasse. De bron code verduidelijkt welke fouten werden beschouwd als tijdelijk en betrouw bare na een nieuwe poging, vanaf april 2013.
+Vervolgens is vanuit de klasse **SqlDatabaseTransientErrorDetectionStrategy** de C#-broncode voor de **methode IsTransient.** De broncode verduidelijkt welke fouten werden beschouwd als tijdelijk en waardig om opnieuw te proberen, met 1april 2013.
 
 ```csharp
 public bool IsTransient(Exception ex)
@@ -444,9 +444,9 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verbindings bibliotheken voor SQL Database en SQL Server](sql-database-libraries.md)
-- [SQL Server Groepsgewijze verbinding (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [ *Nieuwe poging* is een Apache 2,0-gelicentieerde, algemeen nieuwe bibliotheek voor het opnieuw proberen, geschreven in Python,](https://pypi.python.org/pypi/retrying) om de taak voor het toevoegen van het gedrag voor opnieuw proberen toe te voegen aan vrijwel alles.
+- [Verbindingsbibliotheken voor SQL Database en SQL Server](sql-database-libraries.md)
+- [SQL Server-verbinding pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [ *Opnieuw proberen* is een Apache 2.0 licentie algemeen doel opnieuw proberen bibliotheek, geschreven in Python,](https://pypi.python.org/pypi/retrying) om de taak van het toevoegen van opnieuw proberen gedrag te vereenvoudigen om zowat alles.
 
 <!-- Link references. -->
 

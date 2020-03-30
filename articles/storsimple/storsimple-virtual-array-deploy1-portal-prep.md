@@ -1,6 +1,6 @@
 ---
-title: Portal prep voor StorSimple Virtual array
-description: De eerste zelf studie voor het implementeren van StorSimple Virtual array omvat het voorbereiden van de Azure Portal
+title: Portal prep voor StorSimple Virtual Array
+description: De eerste zelfstudie voor het implementeren van de virtuele array van StorSimple omvat het voorbereiden van de Azure-portal
 author: alkohli
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -9,13 +9,13 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254532"
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual array implementeren: de Azure Portal voorbereiden
+# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array implementeren - De Azure-portal voorbereiden
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
@@ -24,37 +24,37 @@ ms.locfileid: "79254532"
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Dit is het eerste artikel in de reeks implementatie zelfstudies die vereist zijn om uw virtuele array volledig te implementeren als een bestands server of een iSCSI-server met behulp van het Resource Manager-model. In dit artikel wordt de voor bereiding beschreven voor het maken en configureren van uw StorSimple Apparaatbeheer-service vóór het inrichten van een virtuele matrix. In dit artikel vindt u ook koppelingen naar een configuratie controlelijst en configuratie vereisten.
+Dit is het eerste artikel in de reeks implementatiezelfstudies die nodig zijn om uw virtuele array volledig te implementeren als bestandsserver of een iSCSI-server met behulp van het Resource Manager-model. In dit artikel wordt de voorbereiding beschreven die nodig is om uw StorSimple Device Manager-service te maken en te configureren voordat u een virtuele array indient. In dit artikel wordt ook links naar een checklist voor implementatieconfiguratie en configuratievereisten gekoppeld.
 
-U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. U wordt aangeraden de controle lijst voor implementatie configuratie te bekijken voordat u begint. Het voorbereiden van de portal duurt minder dan 10 minuten.
+U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. We raden u aan de checklist voor implementatieconfiguratie te bekijken voordat u begint. Het voorbereiden van de portal duurt minder dan 10 minuten.
 
-De informatie die in dit artikel wordt gepubliceerd, is van toepassing op de implementatie van StorSimple virtuele arrays in de Azure Portal en Microsoft Azure Government Cloud.
+De informatie die in dit artikel wordt gepubliceerd, is van toepassing op de implementatie van StorSimple Virtual Arrays in de Azure-portal en Microsoft Azure Government Cloud.
 
 ### <a name="get-started"></a>Aan de slag
-De implementatie werk stroom bestaat uit het voorbereiden van de portal, het inrichten van een virtuele matrix in uw gevirtualiseerde omgeving en het volt ooien van de installatie. Om aan de slag te gaan met de implementatie van de StorSimple-virtuele matrix als een bestands server of een iSCSI-server, moet u de volgende tabellen in tabel vorm raadplegen.
+De implementatieworkflow bestaat uit het voorbereiden van de portal, het inrichten van een virtuele array in uw gevirtualiseerde omgeving en het voltooien van de installatie. Als u aan de slag wilt met de implementatie van StorSimple Virtual Array als bestandsserver of iSCSI-server, moet u verwijzen naar de volgende getabuleerde bronnen.
 
-#### <a name="deployment-articles"></a>Implementatie artikelen
+#### <a name="deployment-articles"></a>Implementatieartikelen
 
-Raadpleeg de volgende artikelen in de voorgeschreven volg orde om uw virtuele StorSimple-matrix te implementeren.
+Als u uw StorSimple Virtual Array wilt implementeren, raadpleegt u de volgende artikelen in de voorgeschreven reeks.
 
-| **#** | **In deze stap** | **U doet dit...** | **En deze documenten gebruiken.** |
+| **#** | **In deze stap** | **Je doet dit ...** | **En gebruik deze documenten.** |
 | --- | --- | --- | --- |
-| 1. |**De Azure Portal instellen** |Maak en configureer uw StorSimple Apparaatbeheer-service voordat u een virtuele StorSimple-matrix inricht. |[De portal voorbereiden](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**De virtuele matrix inrichten** |Voor Hyper-V, inrichten en verbinding maken met een virtuele StorSimple-matrix op een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2012 R2, Windows Server 2012 of Windows Server 2008 R2. <br></br> <br></br> Voor VMware kunt u een virtuele StorSimple-matrix inrichten en er verbinding mee maken op een hostsysteem met VMware ESXi 5,0, 5,5, 6,0 of 6,5.<br></br> |[Een virtuele matrix inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Een virtuele matrix inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**De virtuele matrix instellen** |Voor uw bestands server voert u de eerste installatie uit, registreert u de StorSimple-Bestands server en voltooit u de installatie van het apparaat. Vervolgens kunt u SMB-shares inrichten. <br></br> <br></br> Voor uw iSCSI-server voert u de eerste installatie uit, registreert u uw StorSimple iSCSI-server en voltooit u de installatie van het apparaat. U kunt vervolgens iSCSI-volumes inrichten. |[Virtuele array instellen als bestands server](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Virtuele array instellen als iSCSI-server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 1. |**De Azure-portal instellen** |Maak en configureer uw StorSimple Device Manager-service voordat u een StorSimple Virtual Array indient. |[De portal voorbereiden](storsimple-virtual-array-deploy1-portal-prep.md) |
+| 2. |**De virtuele array inrichten** |Voor Hyper-V u een StorSimple Virtual Array inrichten en verbinden op een hostsysteem met Hyper-V op Windows Server 2012 R2, Windows Server 2012 of Windows Server 2008 R2. <br></br> <br></br> Voor VMware u een StorSimple Virtual Array inrichten en verbinden op een hostsysteem met VMware ESXi 5.0, 5.5, 6.0 of 6.5.<br></br> |[Een virtuele array inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Een virtuele array invmware inrichten](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 3. |**De virtuele array instellen** |Voer voor uw bestandsserver de eerste installatie uit, registreer uw StorSimple-bestandsserver en voltooide de apparaatinstelling. Vervolgens kunt u SMB-shares inrichten. <br></br> <br></br> Voer voor uw iSCSI-server de eerste installatie uit, registreer uw StorSimple iSCSI-server en voltooi de apparaatinstelling. U vervolgens iSCSI-volumes inrichten. |[Virtuele array instellen als bestandsserver](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Virtuele array instellen als iSCSI-server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 U kunt nu Azure Portal gaan instellen.
 
-## <a name="configuration-checklist"></a>Configuratie Controlelijst
+## <a name="configuration-checklist"></a>Configuratiechecklist
 
-In de controle lijst voor configuratie wordt beschreven welke gegevens u moet verzamelen voordat u de software op uw virtuele StorSimple-matrix configureert. Als u deze informatie van tevoren voorbereidt, kunt u het implementatie proces van het StorSimple-apparaat in uw omgeving stroom lijnen. Afhankelijk van of de virtuele StorSimple-matrix is geïmplementeerd als een bestands server of een iSCSI-server, hebt u een van de volgende controle lijsten nodig.
+De configuratiechecklist beschrijft de informatie die u moet verzamelen voordat u de software configureert op uw StorSimple Virtual Array. Door deze informatie van tevoren voor te bereiden, wordt het implementatieproces van het StorSimple-apparaat in uw omgeving gestroomlijnd. Afhankelijk van of uw StorSimple Virtual Array wordt geïmplementeerd als bestandsserver of iSCSI-server, hebt u een van de volgende checklists nodig.
 
-* Down load de StorSimple-controle lijst voor de configuratie van de [Bestands server van de virtuele matrix](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Down load de [controle lijst voor iSCSI-server configuratie van StorSimple Virtual array](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Download de [checklist voor configuratie van de StorSimple Virtual Array File Server.](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)
+* Download de [storSimple Virtual Array iSCSI-serverconfiguratiechecklist.](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Hier vindt u de configuratie vereisten voor uw StorSimple Apparaatbeheer-service, uw virtuele StorSimple-matrix en het datacenter netwerk.
+Hier vindt u de configuratievereisten voor uw StorSimple Device Manager-service, uw StorSimple Virtual Array en het datacenternetwerk.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Voor de StorSimple-apparaatbeheerfunctie
 
@@ -62,34 +62,34 @@ Zorg voordat u begint voor het volgende:
 
 * U hebt een Microsoft-account met toegangsreferenties.
 * U hebt een Microsoft Azure Storage-account met toegangsreferenties.
-* Uw Microsoft Azure-abonnement moet zijn ingeschakeld voor de StorSimple Apparaatbeheer-service.
+* Uw Microsoft Azure-abonnement moet zijn ingeschakeld voor de StorSimple Device Manager-service.
 
-### <a name="for-the-storsimple-virtual-array"></a>Voor de virtuele StorSimple-matrix
+### <a name="for-the-storsimple-virtual-array"></a>Voor de StorSimple Virtual Array
 
-Voordat u een virtuele matrix implementeert, moet u het volgende doen:
+Voordat u een virtuele array implementeert, moet u ervoor zorgen dat:
 
-* U hebt toegang tot een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2008 R2 of hoger of VMware (ESXi 5,0, 5,5, 6,0 of 6,5) dat kan worden gebruikt om een apparaat in te richten.
-* Het hostsysteem kan de volgende resources voor het inrichten van uw virtuele matrix toewijzen:
+* U hebt toegang tot een hostsysteem met Hyper-V op Windows Server 2008 R2 of hoger of VMware (ESXi 5.0, 5.5, 6.0 of 6.5) dat kan worden gebruikt voor een inrichting van een apparaat.
+* Het hostsysteem kan de volgende resources besteden aan het inrichten van uw virtuele array:
   
-  * Minimaal 4 processorkernen.
-  * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele matrix als bestands server te configureren, ondersteunt 8 GB 2.000.000-bestanden. U hebt 16 GB RAM nodig om 2-4 miljoen bestanden te ondersteunen.
+  * Minimaal 4 kerngeheugens.
+  * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele array als bestandsserver te configureren, ondersteunt 8 GB 2 miljoen bestanden. Je hebt 16 GB RAM nodig om 2 - 4 miljoen bestanden te ondersteunen.
   * Eén netwerkinterface.
-  * Een virtuele schijf van 500 GB voor systeem gegevens.
+  * Een virtuele schijf van 500 GB voor systeemgegevens.
 
 ### <a name="for-the-datacenter-network"></a>Voor datacenternetwerk
 
 Zorg voordat u begint voor het volgende:
 
-* Het netwerk in uw Data Center wordt geconfigureerd volgens de netwerk vereisten voor uw StorSimple-apparaat. Zie de systeem vereisten voor de [virtuele matrix van StorSimple](storsimple-ova-system-requirements.md)voor meer informatie.
-* Uw virtuele StorSimple-matrix heeft altijd een specifieke 5 Mbps internet bandbreedte (of meer) beschikbaar. Deze bandbreedte mag niet worden gedeeld met andere toepassingen.
+* Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw StorSimple-apparaat. Zie voor meer informatie de [StorSimple Virtual Array System Requirements](storsimple-ova-system-requirements.md).
+* Uw StorSimple Virtual Array heeft een speciale 5 Mbps internetbandbreedte (of meer) beschikbaar te allen tijde. Deze bandbreedte mag niet worden gedeeld met andere toepassingen.
 
-## <a name="step-by-step-preparation"></a>Stapsgewijze voor bereiding
+## <a name="step-by-step-preparation"></a>Stapsgewijze voorbereiding
 
-Gebruik de volgende stapsgewijze instructies om uw portal voor te bereiden op de StorSimple-Apparaatbeheer service.
+Gebruik de volgende stapsgewijze instructies om uw portal voor te bereiden op de StorSimple Device Manager-service.
 
 ## <a name="step-1-create-a-new-service"></a>Stap 1: een nieuwe service maken
 
-Eén exemplaar van de StorSimple-Apparaatbeheer service kan meerdere virtuele StorSimple-matrices beheren. Voer de volgende stappen uit om een exemplaar van de StorSimple-apparaatbeheerfunctie uit te voeren. Als u een bestaande StorSimple-Apparaatbeheer service hebt voor het beheren van uw virtuele matrices, slaat u deze stap over en gaat u naar [stap 2: de service registratie sleutel ophalen](#step-2-get-the-service-registration-key).
+Een enkele instantie van de StorSimple Device Manager-service kan meerdere StorSimple Virtual Arrays beheren. Voer de volgende stappen uit om een exemplaar van de StorSimple-apparaatbeheerfunctie uit te voeren. Als u een bestaande StorSimple Device Manager-service hebt om uw virtuele arrays te beheren, slaat u deze stap over en gaat u naar [Stap 2: Download de serviceregistratiesleutel](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -110,62 +110,62 @@ Voer de volgende stappen uit in [Azure Portal](https://portal.azure.com/).
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
 > [!NOTE]
-> De service registratie sleutel wordt gebruikt voor het registreren van alle StorSimple-apparaten Apparaatbeheer die moeten worden geregistreerd bij uw StorSimple Apparaatbeheer-service.
+> De serviceregistratiesleutel wordt gebruikt om alle StorSimple Device Manager-apparaten te registreren die moeten worden geregistreerd bij uw StorSimple Device Manager-service.
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>Stap 3: de installatie kopie van de virtuele matrix downloaden
+## <a name="step-3-download-the-virtual-array-image"></a>Stap 3: Download de virtuele arrayafbeelding
 
-Nadat u de service registratie sleutel hebt, moet u de juiste installatie kopie van de virtuele matrix downloaden om een virtuele matrix op uw hostsysteem in te richten. De installatie kopieën van de virtuele array zijn specifiek voor het besturings systeem en kunnen worden gedownload van de Quick Start pagina in de Azure Portal.
+Nadat u de serviceregistratiesleutel hebt, moet u de juiste virtuele arrayafbeelding downloaden om een virtuele array op uw hostsysteem in te richten. De virtuele arrayafbeeldingen zijn specifiek voor het besturingssysteem en kunnen worden gedownload van de pagina Snel starten in de Azure-portal.
 
 > [!IMPORTANT]
-> De software die wordt uitgevoerd op de virtuele StorSimple-matrix mag alleen worden gebruikt met de StorSimple-Apparaatbeheer service.
+> De software die op de StorSimple Virtual Array wordt uitgevoerd, mag alleen worden gebruikt met de StorSimple Device Manager-service.
 > 
 > 
 
 Voer de volgende stappen uit in [Azure Portal](https://portal.azure.com/).
 
-#### <a name="to-get-the-virtual-array-image"></a>De installatie kopie van de virtuele matrix ophalen
+#### <a name="to-get-the-virtual-array-image"></a>De virtuele arrayafbeelding krijgen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). 
-2. Klik in het Azure Portal op **bladeren > StorSimple Device Managers**.
-3. Selecteer een bestaande StorSimple-Apparaatbeheer service. Klik in de Blade **StorSimple Apparaatbeheer** op **Quick Start**. 
-4. Klik op de koppeling die overeenkomt met de afbeelding die u wilt downloaden van het micro soft Download centrum. De installatiekopieën zijn ongeveer 4,8 GB.
+2. Klik in de Azure-portal op **Bladeren > StorSimple-apparaatbeheerders**.
+3. Selecteer een bestaande StorSimple Device Manager-service. Klik in het **storsimple-apparaatbeheer** op **Snel starten**. 
+4. Klik op de koppeling die overeenkomt met de afbeelding die u wilt downloaden vanuit het Microsoft Downloadcentrum. De installatiekopieën zijn ongeveer 4,8 GB.
    
    * VHDX voor Hyper-V op Windows Server 2012 en hoger
    * VHD voor Hyper-V op Windows Server 2008 R2 en hoger
-   * VMDK voor VMWare ESXi 5,0, 5,5, 6,0 of 6,5
+   * VMDK voor VMWare ESXi 5.0, 5.5, 6.0 of 6.5
 5. Download het bestand en pak het uit op een lokale schijf, en onthoud waar het zipbestand is uitgepakt.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionele stap: een nieuw opslag account voor de service configureren
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionele stap: een nieuw opslagaccount voor de service configureren
 
-Deze stap is optioneel en moet alleen worden uitgevoerd als u het automatisch maken van een opslag account bij uw service niet hebt ingeschakeld.
+Deze stap is optioneel en mag alleen worden uitgevoerd als u het automatisch aanmaken van een opslagaccount bij uw service niet hebt ingeschakeld.
 
-Als u een Azure-opslag account in een andere regio wilt maken, raadpleegt u [een opslag account maken](../storage/common/storage-account-create.md) voor stapsgewijze instructies.
+Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) voor stapsgewijze instructies als u een Azure-opslagaccount in een andere regio wilt maken.
 
-Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) op de pagina StorSimple Apparaatbeheer-service om een bestaand Microsoft Azure Storage-account toe te voegen.
+Voer de volgende stappen uit in de [Azure-portal](https://ms.portal.azure.com/) op de servicepagina van StorSimple Device Manager om een bestaand Microsoft Azure-opslagaccount toe te voegen.
 
-#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Een opslag account referentie toevoegen die hetzelfde Azure-abonnement als de Apparaatbeheer-service heeft
+#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Een opslagaccountreferentie toevoegen met hetzelfde Azure-abonnement als de Service Apparaatbeheer
 
-1. Navigeer naar uw Apparaatbeheer-service, selecteer en dubbel klik erop. Hiermee opent u de Blade **overzicht** .
-2. Selecteer **referenties voor het opslag account** in de **configuratie** sectie.
-3. Klik op **Toevoegen**.
-4. Ga als volgt te werk op de Blade **een opslag account toevoegen** :
+1. Navigeer naar de service Apparaatbeheer en dubbelklik erop. Hiermee wordt het **overzichtsblad** geopend.
+2. Selecteer **Accountreferenties opslaan** in de sectie **Configuratie.**
+3. Klik op**toevoegen**.
+4. Ga als volgt te werk in het blad **Een opslagaccount toevoegen:**
    
-   1. Selecteer bij **abonnement**de optie **actueel**.
+   1. Selecteer **Huidig** **voor Abonnement**.
    
-   2. Geef de naam van uw Azure Storage-account op.
+   2. Geef de naam op van uw Azure-opslagaccount.
    
-   3. Selecteer **inschakelen** om een beveiligd kanaal te maken voor de netwerk communicatie tussen uw StorSimple-apparaat en de Cloud. Selecteer alleen **uitschakelen** als u binnen een privécloud werkt.
+   3. Selecteer **Inschakelen** om een beveiligd kanaal te maken voor netwerkcommunicatie tussen uw StorSimple-apparaat en de cloud. Selecteer **Alleen uitschakelen** als u binnen een privécloud werkt.
    
-   4. Klik op **Toevoegen**. U wordt gewaarschuwd nadat het opslag account is gemaakt.<br></br>
+   4. Klik op**toevoegen**. U wordt hiervan op de hoogte gesteld nadat het opslagaccount is gemaakt.<br></br>
    
-      ![Een bestaande opslag account referentie toevoegen](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Een bestaand opslagaccountreferentie toevoegen](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Volgende stap
 
-De volgende stap is het inrichten van een virtuele machine voor uw virtuele StorSimple-matrix. Raadpleeg hier de specifieke instructies voor het besturingssysteem van uw host:
+De volgende stap is het inrichten van een virtuele machine voor uw StorSimple Virtual Array. Raadpleeg hier de specifieke instructies voor het besturingssysteem van uw host:
 
-* [Een virtuele StorSimple-matrix inrichten in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
-* [Een virtuele StorSimple-matrix inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
+* [Een StorSimple Virtual Array inhyper-V inrichten](storsimple-virtual-array-deploy2-provision-hyperv.md)
+* [Een StorSimple Virtual Array inrichten in VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
 
