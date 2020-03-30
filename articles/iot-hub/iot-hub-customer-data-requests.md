@@ -1,52 +1,52 @@
 ---
-title: Aanvragen voor klant gegevens voor Azure IoT Hub-apparaten
-description: De meeste apparaten die worden beheerd in azure IoT Hub zijn niet persoonlijk, maar sommige zijn. Dit artikel spreekt over beheerders die persoonlijke gegevens kunnen exporteren of verwijderen van een apparaat.
+title: Verzoeken om klantgegevens voor Azure IoT Hub-apparaten
+description: De meeste apparaten die worden beheerd in Azure IoT Hub zijn niet persoonlijk, maar sommige wel. In dit artikel wordt gesproken over beheerders die persoonlijke gegevens van een apparaat kunnen exporteren of verwijderen.
 author: robinsh
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499315"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Samen vatting van functies voor klant gegevens aanvragen
+# <a name="summary-of-customer-data-request-features"></a>Overzicht van de functies voor het aanvragen van klantgegevens
 
-De Azure-IoT Hub is een op REST API gebaseerde Cloud service die is gericht op zakelijke klanten en die beveiligde, bidirectionele communicatie mogelijk maakt tussen miljoenen apparaten en een gepartitioneerde Azure-service.
+De Azure IoT Hub is een REST API-gebaseerde cloudservice gericht op zakelijke klanten die veilige, bidirectionele communicatie tussen miljoenen apparaten en een gepartitioneerde Azure-service mogelijk maakt.
 
 [!INCLUDE [gdpr-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Aan afzonderlijke apparaten wordt een apparaat-id (apparaat-ID) toegewezen door een Tenant beheerder. Apparaatgegevens zijn gebaseerd op de toegewezen apparaat-ID. Micro soft onderhoudt geen informatie en heeft geen toegang tot gegevens die apparaat-ID aan gebruikers correlatie toestaan.
+Afzonderlijke apparaten krijgen een apparaat-id (apparaat-id) toegewezen door een tenantbeheerder. Apparaatgegevens zijn gebaseerd op de toegewezen apparaat-id. Microsoft houdt geen informatie bij en heeft geen toegang tot gegevens waarmee apparaat-id's kunnen worden gesommeerd aan de correlatie van de gebruiker.
 
-Veel van de apparaten die worden beheerd in azure IoT Hub zijn geen persoonlijke apparaten, bijvoorbeeld een Office-Thermo staat of een Factory-robot. Klanten kunnen er echter voor zorgen dat sommige apparaten persoonlijk worden geïdentificeerd en kunnen hun eigen activa of inventaris tracking methoden voor het koppelen van apparaten aan individuen beschouwen. Met Azure IoT Hub worden alle gegevens die zijn gekoppeld aan apparaten, beheerd en opgeslagen alsof deze persoons gegevens zijn.
+Veel van de apparaten die in Azure IoT Hub worden beheerd, zijn geen persoonlijke apparaten, bijvoorbeeld een kantoorthermostaat of fabrieksrobot. Klanten kunnen sommige apparaten echter persoonlijk identificeerbaar achten en naar eigen inzicht hun eigen methoden voor het bijhouden van activa of inventarishouden die apparaten aan individuen koppelen. Azure IoT Hub beheert en bewaart alle gegevens die aan apparaten zijn gekoppeld alsof het persoonlijke gegevens zijn.
 
-Tenant beheerders kunnen de Azure Portal of de REST Api's van de service gebruiken om informatie aanvragen uit te voeren door gegevens te exporteren of te verwijderen die zijn gekoppeld aan een apparaat-ID.
+Tenantbeheerders kunnen de Azure-portal of de REST-API's van de service gebruiken om informatieaanvragen te vervullen door gegevens te exporteren of te verwijderen die zijn gekoppeld aan een apparaat-id.
 
-Als u de routerings functie van de Azure IoT Hub-service gebruikt om berichten van een apparaat door te sturen naar andere services, moeten gegevens aanvragen door de Tenant beheerder voor elk routerings eindpunt worden uitgevoerd om een volledige aanvraag voor een bepaald apparaat te volt ooien. Zie de referentie documentatie voor elk eind punt voor meer informatie. Zie [referentie-IOT hub-eind punten](iot-hub-devguide-endpoints.md)voor meer informatie over ondersteunde eind punten.
+Als u de routeringsfunctie van de Azure IoT Hub-service gebruikt om apparaatberichten door te sturen naar andere services, moeten gegevensaanvragen worden uitgevoerd door de tenantbeheerder voor elk routeringseindpunt om een volledige aanvraag voor een bepaald apparaat te voltooien. Zie voor meer informatie de referentiedocumentatie voor elk eindpunt. Zie [Referentie - IoT Hub-eindpunten](iot-hub-devguide-endpoints.md)voor meer informatie over ondersteunde eindpunten.
 
-Als u de functie integratie Azure Event Grid van de Azure IoT Hub-service gebruikt, moeten gegevens aanvragen door de Tenant beheerder worden uitgevoerd voor elke abonnee van deze gebeurtenissen. Zie [reageren op IOT hub gebeurtenissen met behulp van Event grid](iot-hub-event-grid.md)voor meer informatie.
+Als u de integratiefunctie Azure Event Grid van de Azure IoT Hub-service gebruikt, moeten gegevensaanvragen worden uitgevoerd door de tenantbeheerder voor elke abonnee van deze gebeurtenissen. Zie [Reageren op IoT Hub-gebeurtenissen met gebeurtenisraster voor](iot-hub-event-grid.md)meer informatie .
 
-Als u de functie voor integratie van Azure Monitor van de Azure IoT Hub-service gebruikt om Diagnostische logboeken te maken, moeten gegevens aanvragen door de Tenant beheerder worden uitgevoerd op basis van de opgeslagen logboeken. Zie [de status van Azure IOT hub controleren](iot-hub-monitor-resource-health.md)voor meer informatie.
+Als u de Azure Monitor-integratiefunctie van de Azure IoT Hub-service gebruikt om diagnostische logboeken te maken, moeten gegevensaanvragen door de tenantbeheerder worden uitgevoerd tegen de opgeslagen logboeken. Zie [De status van Azure IoT Hub controleren](iot-hub-monitor-resource-health.md)voor meer informatie.
 
-## <a name="deleting-customer-data"></a>Klant gegevens verwijderen
+## <a name="deleting-customer-data"></a>Klantgegevens verwijderen
 
-Tenant beheerders kunnen de Blade IoT-apparaten van de extensie Azure IoT Hub in de Azure Portal gebruiken om een apparaat te verwijderen, waarmee de gegevens die aan dat apparaat zijn gekoppeld, worden verwijderd.
+Beheerders van tenant's kunnen het IE-apparatenblad van de Azure IoT Hub-extensie in de Azure-portal gebruiken om een apparaat te verwijderen, waarmee de gegevens die aan dat apparaat zijn gekoppeld, worden verwijderd.
 
-Het is ook mogelijk om delete-bewerkingen uit te voeren voor apparaten met behulp van REST Api's. Zie voor meer informatie [service-apparaat verwijderen](/rest/api/iothub/service/deletedevice).
+Het is ook mogelijk om verwijderbewerkingen uit te voeren voor apparaten met REST API's. Zie [Service - Apparaat verwijderen voor](/rest/api/iothub/service/registrymanager/deletedevice)meer informatie.
 
-## <a name="exporting-customer-data"></a>Klant gegevens exporteren
+## <a name="exporting-customer-data"></a>Klantgegevens exporteren
 
-Tenant beheerders kunnen kopiëren en plakken in het deel venster IoT-apparaten van de Azure IoT Hub-extensie in de Azure Portal voor het exporteren van gegevens die zijn gekoppeld aan een apparaat.
+Tenantbeheerders kunnen kopiëren en plakken gebruiken in het deelvenster IoT-apparaten van de Azure IoT Hub-extensie in de Azure-portal om gegevens die aan een apparaat zijn gekoppeld, te exporteren.
 
-Het is ook mogelijk om export bewerkingen uit te voeren voor apparaten met behulp van REST-Api's. Zie [service-apparaat ophalen](/rest/api/iothub/service/getdevice)voor meer informatie.
+Het is ook mogelijk om exportbewerkingen uit te voeren voor apparaten met REST API's. Zie [Service - Apparaat opvragen](/rest/api/iothub/service/registrymanager/getdevice)voor meer informatie.
 
 > [!NOTE]
-> Wanneer u de Enter prise-services van micro soft gebruikt, genereert micro soft bepaalde informatie, ook wel door het systeem gegenereerde logboeken. Sommige door Azure IoT Hub door het systeem gegenereerde logboeken zijn niet toegankelijk of kunnen niet worden geëxporteerd door Tenant beheerders. Deze logboeken vormen feitelijke acties die zijn uitgevoerd in de service en diagnostische gegevens met betrekking tot afzonderlijke apparaten.
+> Wanneer u de bedrijfsservices van Microsoft gebruikt, genereert Microsoft bepaalde informatie, bekend als door het systeem gegenereerde logboeken. Sommige azure IoT Hub-systeemlogboeken zijn niet toegankelijk of exporteerbaar door tenantbeheerders. Deze logboeken vormen feitelijke acties die binnen de service worden uitgevoerd en diagnostische gegevens met betrekking tot individuele apparaten.
 
 ## <a name="links-to-additional-documentation"></a>Koppelingen naar aanvullende documentatie
 
-Volledige documentatie voor Azure IoT Hub service-Api's bevindt zich op [IOT hub service-api's](https://docs.microsoft.com/rest/api/iothub/service).
+Volledige documentatie voor Azure IoT Hub Service API's bevindt zich op [IoT Hub Service API's.](https://docs.microsoft.com/rest/api/iothub/service/configuration)

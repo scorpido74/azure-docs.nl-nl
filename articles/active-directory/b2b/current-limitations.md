@@ -1,6 +1,6 @@
 ---
-title: Beperkingen van B2B-samen werking-Azure Active Directory | Microsoft Docs
-description: Huidige beperkingen voor Azure Active Directory B2B-samen werking
+title: Beperkingen van B2B-samenwerking - Azure Active Directory | Microsoft Documenten
+description: Huidige beperkingen voor Azure Active Directory B2B-samenwerking
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,46 +12,46 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263359"
 ---
-# <a name="limitations-of-azure-ad-b2b-collaboration"></a>Beperkingen van Azure AD B2B-samen werking
-Azure Active Directory (Azure AD) B2B-samen werking is momenteel onderhevig aan de beperkingen die in dit artikel worden beschreven.
+# <a name="limitations-of-azure-ad-b2b-collaboration"></a>Beperkingen van Azure AD B2B-samenwerking
+B2B-samenwerking (Azure Active Directory ( Azure AD) is momenteel onderworpen aan de beperkingen die in dit artikel worden beschreven.
 
-## <a name="possible-double-multi-factor-authentication"></a>Mogelijke dubbele multi-factor Authentication
-Met Azure AD B2B kunt u multi-factor Authentication afdwingen voor de resource organisatie (de uitnodigende organisatie). De redenen voor deze benadering worden beschreven in [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md). Als een partner al multi-factor Authentication heeft ingesteld en afgedwongen, moeten hun gebruikers de verificatie mogelijk één keer uitvoeren in hun eigen organisatie en vervolgens opnieuw in uw bedrijf.
+## <a name="possible-double-multi-factor-authentication"></a>Mogelijke dubbele multi-factor authenticatie
+Met Azure AD B2B u multi-factor authenticatie afdwingen bij de resourceorganisatie (de uitnodigende organisatie). De redenen voor deze aanpak zijn beschreven in [Voorwaardelijke toegang voor B2B-samenwerkingsgebruikers.](conditional-access.md) Als een partner al multi-factor authenticatie heeft ingesteld en afgedwongen, moeten hun gebruikers de verificatie mogelijk eenmaal uitvoeren in hun thuisorganisatie en vervolgens opnieuw in de jouwe.
 
-## <a name="instant-on"></a>Direct aan
-In de B2B-samenwerkings stromen voegen we gebruikers toe aan de Directory en kunnen ze deze dynamisch bijwerken tijdens de inwisseling van de uitnodiging, de toewijzing van apps, enzovoort. De updates en schrijf bewerkingen worden gewoonlijk uitgevoerd in één directory-exemplaar en moeten worden gerepliceerd voor alle exemplaren. De replicatie is voltooid zodra alle exemplaren zijn bijgewerkt. Soms kunnen replicatie latenties optreden wanneer het object wordt geschreven of bijgewerkt in één exemplaar en de aanroep voor het ophalen van dit object naar een ander exemplaar. Als dat gebeurt, moet u vernieuwen of opnieuw proberen om te helpen. Als u een app met behulp van onze API schrijft, probeert u een goede, verdedigings praktijk om dit probleem op te lossen.
+## <a name="instant-on"></a>Direct-aan
+In de B2B-samenwerkingsstromen voegen we gebruikers toe aan de directory en werken we deze dynamisch bij tijdens het inwisselen van uitnodigingen, app-toewijzing, enzovoort. De updates en schrijfbewerkingen vinden gewoonlijk plaats in één mapinstantie en moeten in alle instanties worden gerepliceerd. Replicatie wordt voltooid zodra alle instanties zijn bijgewerkt. Soms wanneer het object in één instantie wordt geschreven of bijgewerkt en de aanroep om dit object op te halen naar een andere instantie is, kunnen replicatielatencies optreden. Als dat gebeurt, vernieuwen of opnieuw proberen om te helpen. Als u het schrijven van een app met behulp van onze API, dan retries met een aantal back-off is een goede, defensieve praktijk om dit probleem te verlichten.
 
-## <a name="azure-ad-directories"></a>Azure AD-directory's
-Azure AD B2B is onderhevig aan Azure AD-service Directory limieten. Zie [Azure AD-service limieten en-beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)voor meer informatie over het aantal directory's dat een gebruiker kan maken en het aantal directory's waarmee een gebruiker of gast gebruiker kan behoren.
+## <a name="azure-ad-directories"></a>Azure AD-mappen
+Azure AD B2B is onderworpen aan azure AD-servicemaplimieten. Zie [Azure AD-servicelimieten en -beperkingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)voor meer informatie over het aantal mappen dat een gebruiker of gastgebruiker kan maken en het aantal mappen waartoe een gebruiker of gastgebruiker kan behoren.
 
-## <a name="national-clouds"></a>Nationale Clouds
-[Nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) zijn fysiek geïsoleerde exemplaren van Azure. B2B-samen werking wordt niet ondersteund in nationale Cloud grenzen. Als uw Azure-Tenant zich bijvoorbeeld in de open bare, globale Cloud bevindt, kunt u geen gebruiker uitnodigen waarvan het account zich in een nationale Cloud bevindt. Als u wilt samen werken met de gebruiker, vraagt u deze voor een ander e-mail adres of maakt u een gebruikers account voor de gebruiker in uw Directory.
+## <a name="national-clouds"></a>Nationale wolken
+[Nationale clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) zijn fysiek geïsoleerde exemplaren van Azure. B2B-samenwerking wordt niet ondersteund over de landsgrenzen heen. Als uw Azure-tenant zich bijvoorbeeld in de openbare, globale cloud bevindt, u een gebruiker wiens account zich in een nationale cloud bevindt, niet uitnodigen. Als u met de gebruiker wilt samenwerken, vraagt u deze aan u om een ander e-mailadres of maakt u een gebruikersaccount voor leden in uw directory.
 
-## <a name="azure-us-government-clouds"></a>Azure Amerikaanse overheids Clouds
-Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, mislukt de uitnodiging of kan de gebruiker de uitnodiging niet inwisselen. Zie [Azure Active Directory Premium P1-en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie over andere beperkingen.
+## <a name="azure-us-government-clouds"></a>Azure Us Government clouds
+Binnen de Azure US Government-cloud wordt B2B-samenwerking momenteel alleen ondersteund tussen tenants die zich zowel in de Azure US Government-cloud bevinden als die beide B2B-samenwerking ondersteunen. Als u een gebruiker uitnodigt in een tenant die geen deel uitmaakt van de Azure US Government-cloud of die nog geen B2B-samenwerking ondersteunt, mislukt de uitnodiging of kan de gebruiker de uitnodiging niet inwisselen. Zie [Azure Active Directory Premium P1- en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie over andere beperkingen.
 
-### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Hoe kan ik zien of B2B-samen werking beschikbaar is in mijn Azure US Government-Tenant?
-Ga als volgt te werk om erachter te komen of uw Azure VS government Cloud Tenant ondersteuning biedt voor B2B-samen werking:
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Hoe weet ik of B2B-samenwerking beschikbaar is in mijn Azure US Government-tenant?
+Ga als volgt te werk om erachter te komen of uw Azure US Government-cloudtenant B2B-samenwerking ondersteunt:
 
-1. Ga in een browser naar de volgende URL en vervang uw Tenant naam voor *&lt;tenant&gt;* :
+1. Ga in een browser naar de volgende URL en vervang uw tenantnaam voor * &lt;tenantname:&gt;*
 
    `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
 
-2. Zoek `"tenant_region_scope"` in het JSON-antwoord:
+2. Vind `"tenant_region_scope"` in de JSON reactie:
 
-   - Als `"tenant_region_scope":"USGOV”` wordt weer gegeven, wordt B2B ondersteund.
-   - Als `"tenant_region_scope":"USG"` wordt weer gegeven, wordt B2B niet ondersteund.
+   - Indien `"tenant_region_scope":"USGOV”` verschijnt, wordt B2B ondersteund.
+   - Indien `"tenant_region_scope":"USG"` verschijnt, wordt B2B niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
+Zie de volgende artikelen over Azure AD B2B-samenwerking:
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [Uitnodigingen voor B2B-samen werking overdragen](delegate-invitations.md)
+- [B2B-uitnodigingen voor samenwerking delegeren](delegate-invitations.md)
 

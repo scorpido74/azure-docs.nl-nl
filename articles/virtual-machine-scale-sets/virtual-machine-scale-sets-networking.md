@@ -1,6 +1,6 @@
 ---
 title: Netwerken voor virtuele-machineschaalsets in Azure
-description: Configuratie van een aantal van de meer geavanceerde netwerk eigenschappen voor schaal sets van virtuele Azure-machines.
+description: Een aantal van de meer geavanceerde netwerkeigenschappen voor Azure-seten voor virtuele machineschalen configureren.
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 070e2108afb22539501c0e1808593c95a26b4576
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d0b7288d5232e296a36708a08ea2ad9f8df5ee1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254103"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531053"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -23,6 +23,7 @@ U kunt alle functies die in dit artikel configureren met behulp van Azure Resour
 
 ## <a name="accelerated-networking"></a>Versneld netwerken
 Versneld netwerken in Azure verbetert de prestaties van het netwerk door het inschakelen van I/O-virtualisatie met één hoofdmap (SR-IOV) bij een virtuele machine. Zie Versneld netwerken voor virtuele machines met [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) of [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) voor meer informatie over het gebruik van Versneld netwerken. Als u versneld netwerken wilt gebruiken met schaalsets, stelt u enableAcceleratedNetworking in op **true** in de instelling networkInterfaceConfigurations van uw schaalset. Bijvoorbeeld:
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -42,7 +43,8 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Een schaalset maken die verwijst naar een bestaande Azure Load Balancer
 Wanneer een schaalset is gemaakt met Azure Portal, wordt er voor de meeste configuratieopties een nieuwe load balancer gemaakt. Als u een schaalset maakt die moet verwijzen naar een bestaande load balancer, kunt u dit doen met de CLI. Het volgende voorbeeldscript maakt een load balancer en maakt vervolgens een schaalset die ernaar verwijst:
-```bash
+
+```azurecli
 az network lb create \
     -g lbtest \
     -n mylb \
@@ -64,11 +66,13 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
+
 >[!NOTE]
-> Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren. 
+> Nadat de schaalset is gemaakt, kan de backendpoort niet worden gewijzigd voor een regel voor het balanceren van de last die wordt gebruikt door een statussonde van de load balancer. Als u de poort wilt wijzigen, u de statussonde verwijderen door de azure-virtuele machineschaalset bij te werken, de poort bij te werken en vervolgens de statussonde opnieuw te configureren. 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:
+
 ```json
 "ipConfigurations": [{
   "name": "{config-name}",
@@ -91,10 +95,13 @@ Standaard nemen schaalsets de specifieke DNS-instellingen van het VNET en het su
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Een schaal met configureerbare DNS-servers maken
 Als u een schaalset met een aangepaste DNS-configuratie met de Azure CLI wilt maken, voegt u het argument **--dns-servers** toe aan de opdracht **vmss create** gevolgd door met spaties gescheiden IP-adressen. Bijvoorbeeld:
+
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
+
 Als u aangepaste DNS-servers wilt configureren in een Azure-sjabloon, voegt u de eigenschap dnsSettings toe aan het gedeelte networkInterfaceConfigurations van de schaalset. Bijvoorbeeld:
+
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -104,7 +111,7 @@ Als u aangepaste DNS-servers wilt configureren in een Azure-sjabloon, voegt u de
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Een schaalset maken met de configureerbare domeinnamen van virtuele machines
 Als u een schaalset wilt maken met een aangepaste DNS-naam voor virtuele machines met de CLI, voegt u het argument **--vm-domain-name** toe aan de opdracht **virtual machine scale set create**, gevolgd door een tekenreeks met de domeinnaam.
 
-Als u de domeinnaam wilt instellen in een Azure-sjabloon, voegt u de eigenschap **dnsSettings** toe aan het gedeelte **networkInterfaceConfigurations** van de schaalset. Bijvoorbeeld:
+Als u de domeinnaam wilt instellen in een Azure-sjabloon, voegt u een eigenschap **dnsSettings** toe aan de sectie **netwerkinterfaceconfiguraties** van de schaalset. Bijvoorbeeld:
 
 ```json
 "networkProfile": {
@@ -136,8 +143,9 @@ Als u de domeinnaam wilt instellen in een Azure-sjabloon, voegt u de eigenschap 
 }
 ```
 
-De uitvoer voor de DNS-naam van een afzonderlijke virtuele machine heeft de volgende notatie: 
-```
+De uitvoer voor de DNS-naam van een afzonderlijke virtuele machine heeft de volgende notatie:
+
+```output
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
@@ -149,7 +157,7 @@ In sommige gevallen hebben virtuele machines van een schaalset echter hun eigen 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Een schaalset met een openbaar IP-adres per virtuele machine maken
 Als u een schaalset wilt maken waarmee een openbaar IP-adres wordt toegewezen aan elke virtuele machine met de CLI, voegt u de parameter **--public-ip-per-vm** toe aan de opdracht **vmss create**. 
 
-Als u een schaalset maakt met een Azure-sjabloon, zorg er dan voor dat de API-versie van de resource Microsoft.Compute/virtualMachineScaleSets ten minste **2017-03-30** is en voeg de JSON-eigenschap **publicIpAddressConfiguration** toe aan het gedeelte ipConfigurations van de schaalset. Bijvoorbeeld:
+Als u een schaalset wilt maken met een Azure-sjabloon, controleert u of de API-versie van de bron Microsoft.Compute/virtualMachineScaleSets ten minste **2017-03-30**is en voegt u een JSON-eigenschap **publicIpIpAddressConfiguration** toe aan de sectie schaalsetipConfigurations. Bijvoorbeeld:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -159,17 +167,20 @@ Als u een schaalset maakt met een Azure-sjabloon, zorg er dan voor dat de API-ve
     }
 }
 ```
+
 Voorbeeldsjabloon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Query’s uitvoeren op de openbare IP-adressen van de virtuele machines in een schaalset
 U kunt de openbare IP-adressen die zijn toegewezen aan de virtuele machines van de schaalset met de CLI in een lijst weergeven met de opdracht **az vmss list-instance-public-ips**.
 
 Gebruik de opdracht _Get-AzPublicIpAddress_ om openbare IP-adressen voor schaalsets weer te geven met behulp van PowerShell. Bijvoorbeeld:
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 U kunt ook query's uitvoeren op de openbare IP-adressen door rechtstreeks naar de resource-id van de openbare IP-adresconfiguratie te verwijzen. Bijvoorbeeld:
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -195,6 +206,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 Voorbeeld van uitvoer van de [Azure Resource Explorer](https://resources.azure.com) en Azure REST API:
+
 ```json
 {
   "value": [
@@ -318,7 +330,8 @@ Netwerkbeveiligingsgroepen kunnen rechtstreeks op een schaalset worden toegepast
 
 Toepassingsbeveiligingsgroepen kunnen ook rechtstreeks worden opgegeven voor een schaalset door een verwijzing toe te voegen naar de sectie IP-configuraties van de netwerkinterface in de eigenschappen van de virtuele machine van de schaalset.
 
-Bijvoorbeeld: 
+Bijvoorbeeld:
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -362,7 +375,7 @@ Bijvoorbeeld:
 
 Als u wilt controleren of uw netwerkbeveiligingsgroep is gekoppeld aan uw schaalset, gebruikt u de opdracht `az vmss show`. Het onderstaande voorbeeld gebruikt `--query` om de resultaten te filteren en alleen de relevante sectie van de uitvoer weer te geven.
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \
@@ -378,7 +391,7 @@ az vmss show \
 
 Als u wilt controleren of uw toepassingsbeveiligingsgroep is gekoppeld aan uw schaalset, gebruikt u de opdracht `az vmss show`. Het onderstaande voorbeeld gebruikt `--query` om de resultaten te filteren en alleen de relevante sectie van de uitvoer weer te geven.
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \

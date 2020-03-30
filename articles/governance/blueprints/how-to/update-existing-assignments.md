@@ -1,22 +1,22 @@
 ---
-title: Een bestaande toewijzing bijwerken vanuit de portal
-description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauw druk-toewijzing vanuit de portal in azure-blauw drukken.
+title: Een bestaande toewijzing vanuit de portal bijwerken
+description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauwdruktoewijzing vanuit de portal in Azure Blueprints.
 ms.date: 11/21/2019
 ms.topic: how-to
 ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264659"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauwdruktoewijzing bijwerken
 
-Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zijn verschillende redenen voor het bijwerken van een bestaande toewijzing, waaronder:
+Wanneer een blauwdruk is toegewezen, kan de toewijzing worden bijgewerkt. Er zijn verschillende redenen om een bestaande opdracht bij te werken, waaronder:
 
-- [Resource vergrendeling](../concepts/resource-locking.md) toevoegen of verwijderen
-- De waarde van [dynamische para meters](../concepts/parameters.md#dynamic-parameters) wijzigen
-- De toewijzing upgraden naar een nieuwere, **gepubliceerde** versie van de blauw druk
+- Bronvergrendeling [resource locking](../concepts/resource-locking.md) toevoegen of verwijderen
+- De waarde van [dynamische parameters wijzigen](../concepts/parameters.md#dynamic-parameters)
+- De toewijzing upgraden naar een nieuwere **gepubliceerde** versie van de blauwdruk
 
 ## <a name="updating-assignments"></a>Toewijzingen bijwerken
 
@@ -24,49 +24,49 @@ Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zi
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. Klik in de lijst met blauw drukken met de rechter muisknop op de blauw druk-toewijzing. Klik vervolgens op de knop **toewijzing bijwerken** of klik met de rechter muisknop op de blauw druk toewijzing en selecteer **Update toewijzing**.
+1. Klik in de lijst met blauwdrukken met de linkerzijde op de blauwdruktoewijzing. Klik vervolgens op de knop **Toewijzing bijwerken** OF klik met de rechtermuisknop op de blauwdruktoewijzing en selecteer **Toewijzing bijwerken**.
 
-   ![Een bestaande blauw druk-toewijzing bijwerken](../media/update-existing-assignments/update-assignment.png)
+   ![Een bestaande blauwdruktoewijzing bijwerken](../media/update-existing-assignments/update-assignment.png)
 
-1. De pagina **blauw** drukken wordt geladen, waarbij alle waarden van de oorspronkelijke toewijzing vooraf zijn ingevuld.
-   U kunt de definitie van de **blauw druk**, de **vergrendelings toewijzings** status en de dynamische para meters van de definitie van de blauw druk wijzigen. Klik op **toewijzen** wanneer u klaar bent met het maken van wijzigingen.
+1. Op **de blauwdrukpagina toewijzen** wordt vooraf gevuld met alle waarden uit de oorspronkelijke toewijzing geladen.
+   U de versie van de **blauwdrukdefinitie,** de status **Toewijzing vergrendelen** en een van de dynamische parameters die op de blauwdrukdefinitie bestaan, wijzigen. Klik **op Toewijzen** wanneer u klaar bent met het aanbrengen van wijzigingen.
 
-1. Bekijk op de pagina bijgewerkte toewijzings Details de nieuwe status. In dit voor beeld hebben we **vergren deling** toegevoegd aan de toewijzing.
+1. Zie op de pagina bijgewerkte toewijzingsdetails de nieuwe status. In dit voorbeeld hebben we **Vergrendeling** aan de toewijzing toegevoegd.
 
-   ![Er is een bestaande blauw druk-toewijzing bijgewerkt-vergrendelings modus gewijzigd](../media/update-existing-assignments/updated-assignment.png)
+   ![Een bestaande blauwdruktoewijzing bijgewerkt - de vergrendelingsmodus is gewijzigd](../media/update-existing-assignments/updated-assignment.png)
 
-1. Bekijk details over andere **toewijzings bewerkingen** met behulp van de vervolg keuzelijst. De tabel met **beheerde resources** die worden bijgewerkt op basis van de geselecteerde toewijzings bewerking.
+1. Meer informatie over andere **toewijzingsbewerkingen** vindt u in de vervolgkeuzelijst. De tabel **met beheerde resources** wordt bijgewerkt op geselecteerde toewijzingsbewerking.
 
-   ![Toewijzings bewerkingen van een blauw druk toewijzen](../media/update-existing-assignments/assignment-operations.png)
+   ![Toewijzingsbewerkingen van een blauwdruktoewijzing](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>Regels voor het bijwerken van toewijzingen
 
-De implementatie van de bijgewerkte toewijzingen volgt enkele belang rijke regels. Deze regels bepalen wat er gebeurt met resources die al zijn geïmplementeerd. De aangevraagde wijziging en het type artefact bron dat wordt geïmplementeerd of bijgewerkt, bepalen welke acties worden uitgevoerd.
+De implementatie van de bijgewerkte toewijzingen volgt een aantal belangrijke regels. Deze regels bepalen wat er gebeurt met reeds geïmplementeerde resources. De gevraagde wijziging en het type artefact-bron dat wordt geïmplementeerd of bijgewerkt, bepalen welke acties worden uitgevoerd.
 
 - Roltoewijzingen
-  - Als de rol of de toegewezen rol (gebruiker, groep of app) wordt gewijzigd, wordt een nieuwe roltoewijzing gemaakt. Roltoewijzingen die eerder zijn geïmplementeerd, blijven aanwezig.
+  - Als de rol of de functie-toegewezene (gebruiker, groep of app) verandert, wordt een nieuwe roltoewijzing gemaakt. Roltoewijzingen die eerder zijn geïmplementeerd, blijven op hun plaats.
 - Beleidstoewijzingen
-  - Als de para meters van de beleids toewijzing zijn gewijzigd, wordt de bestaande toewijzing bijgewerkt.
-  - Als de definitie van de beleids toewijzing is gewijzigd, wordt er een nieuwe beleids toewijzing gemaakt.
-    De eerder geïmplementeerde beleids toewijzingen blijven aanwezig.
-  - Als het artefact voor beleids toewijzing van de blauw druk wordt verwijderd, blijven geïmplementeerde beleids toewijzingen aanwezig.
+  - Als de parameters van de beleidstoewijzing worden gewijzigd, wordt de bestaande toewijzing bijgewerkt.
+  - Als de definitie van de beleidstoewijzing wordt gewijzigd, wordt een nieuwe beleidstoewijzing gemaakt.
+    Beleidstoewijzingen die eerder zijn geïmplementeerd, blijven op hun plaats.
+  - Als het artefact voor beleidstoewijzing uit de blauwdruk wordt verwijderd, blijven geïmplementeerde beleidstoewijzingen op hun plaats.
 - Azure Resource Manager-sjablonen
-  - De sjabloon wordt als een **put**verwerkt door Resource Manager. Raadpleeg de documentatie voor elke opgenomen resource als elk resource type deze actie anders verwerkt, om de impact van deze actie te bepalen wanneer deze wordt uitgevoerd door blauw drukken.
+  - De sjabloon wordt verwerkt via Resource Manager als **put**. Terwijl elk resourcetype deze actie anders verwerkt, controleert u de documentatie voor elke opgenomen resource om de impact van deze actie te bepalen wanneer deze wordt uitgevoerd door Blauwdrukken.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Mogelijke fouten bij het bijwerken van toewijzingen
 
-Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) worden ondersteund, kunnen worden aangebracht, maar elke wijziging die zou leiden tot een fout via Azure Resource Manager, resulteert ook in het mislukken van de toewijzing.
+Bij het bijwerken van toewijzingen is het mogelijk om wijzigingen aan te brengen die breken wanneer deze worden uitgevoerd. Een voorbeeld is het wijzigen van de locatie van een resourcegroep nadat deze al is geïmplementeerd. Elke wijziging die wordt ondersteund door [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) kan worden aangebracht, maar elke wijziging die zou resulteren in een fout via Azure Resource Manager zal ook resulteren in het mislukken van de toewijzing.
 
-Er is geen limiet voor het aantal keren dat een toewijzing kan worden bijgewerkt. Als er een fout optreedt, controleert u de fout en maakt u een andere update voor de toewijzing.  Voor beelden van fout scenario's:
+Er is geen limiet aan het aantal keren dat een toewijzing kan worden bijgewerkt. Als er een fout optreedt, bepaalt u de fout en maakt u een nieuwe update voor de toewijzing.  Voorbeeld van foutscenario's:
 
-- Een ongeldige para meter
-- Een al bestaand object
+- Een slechte parameter
+- Een reeds bestaand object
 - Een wijziging die niet wordt ondersteund door Azure Resource Manager
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](../concepts/lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md).
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).
+- Meer informatie over de [levenscyclus van de blauwdruk](../concepts/lifecycle.md).
+- Begrijpen hoe [statische en dynamische parameters](../concepts/parameters.md)te gebruiken.
+- Leer de volgorde van de [blauwdrukvolgorde](../concepts/sequencing-order.md)aan te passen.
+- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../concepts/resource-locking.md)
+- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)

@@ -1,168 +1,168 @@
 ---
-title: Terugkerende taken en werk stromen plannen in Azure Logic Apps
-description: Een overzicht van het plannen van terugkerende geautomatiseerde taken, processen en werk stromen met Azure Logic Apps
+title: Terugkerende taken en werkstromen plannen in Azure Logic Apps
+description: Een overzicht over het plannen van terugkerende geautomatiseerde taken, processen en werkstromen met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270561"
 ---
-# <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic Apps
+# <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps
 
-Logic Apps helpt u bij het maken en uitvoeren van geautomatiseerde terugkerende taken en processen volgens een planning. Door een werk stroom voor een logische app te maken die begint met een ingebouwde terugkeer patroon of een verschuivende venster trigger. Dit zijn planning-type triggers, u kunt taken direct uitvoeren, op een later tijdstip of op basis van een terugkerend interval. U kunt services aanroepen binnen en buiten Azure, zoals HTTP-of HTTPS-eind punten, berichten posten naar Azure-Services, zoals Azure Storage en Azure Service Bus, of bestanden ophalen die zijn geüpload naar een bestands share. Met de trigger voor terugkeer patroon kunt u ook complexe schema's en geavanceerde terugkeer patronen instellen voor het uitvoeren van taken. Zie [schema triggers](#schedule-triggers) en [plannings acties](#schedule-actions)voor meer informatie over de ingebouwde plannings triggers en-acties. 
+Logic Apps helpt u bij het maken en uitvoeren van geautomatiseerde terugkerende taken en processen volgens een planning. Door een logische app-werkstroom te maken die begint met een ingebouwde recidieftrigger of schuifvenstertrigger, die triggers van het type Planning zijn, u taken onmiddellijk, op een later tijdstip of op een terugkerend interval uitvoeren. U services binnen en buiten Azure bellen, zoals HTTP- of HTTPS-eindpunten, berichten plaatsen naar Azure-services zoals Azure Storage en Azure Service Bus of bestanden laten uploaden naar een bestandsshare. Met de recidief-trigger u ook complexe schema's en geavanceerde herhalingen instellen voor het uitvoeren van taken. Zie [Triggers plannen](#schedule-triggers) en [Acties plannen](#schedule-actions)voor meer informatie over de ingebouwde triggers en acties voor het plannen. 
 
 > [!TIP]
-> U kunt terugkerende werk belastingen plannen en uitvoeren zonder een afzonderlijke logische app voor elke geplande taak te maken en uit te voeren in de [limiet voor werk stromen per regio en abonnement](../logic-apps/logic-apps-limits-and-config.md#definition-limits). In plaats daarvan kunt u het logische app-patroon gebruiken dat is gemaakt door de [Azure Quick Start-sjabloon: Logic apps job scheduler](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/).
+> U terugkerende workloads plannen en uitvoeren zonder een aparte logische app te maken voor elke geplande taak en de [limiet voor werkstromen per regio en abonnement](../logic-apps/logic-apps-limits-and-config.md#definition-limits)in te lopen. In plaats daarvan u het logische app-patroon gebruiken dat is gemaakt door de [Azure QuickStart-sjabloon: Logische apps-taakplanner](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/).
 >
-> De Logic Apps job scheduler-sjabloon maakt een CreateTimerJob Logic-app die een TimerJob Logic-app aanroept. U kunt vervolgens de CreateTimerJob Logic-app aanroepen als een API door een HTTP-aanvraag te maken en een schema als invoer voor de aanvraag door te geven. Elke aanroep van de CreateTimerJob Logic app roept ook de logische app van TimerJob aan, die een nieuw TimerJob-exemplaar maakt dat continu wordt uitgevoerd op basis van het opgegeven schema of totdat een opgegeven limiet wordt bereikt. Op die manier kunt u net zoveel TimerJob-instanties als u wilt uitvoeren zonder dat u zich zorgen hoeft te maken over werk stroom limieten, omdat exemplaren geen afzonderlijke logische app-werk stroom definities of-resources zijn.
+> Met de sjabloon Logische Apps maakt de taakplanner-sjabloon Een CreateTimerJob-logica-app die een timerjoblogische-logica-app aanroept. U vervolgens de CreateTimerJob-logica-app als API aanroepen door een HTTP-aanvraag in te dienen en een planning door te geven als invoer voor de aanvraag. Elke aanroep naar de createtimerjob-logica-app roept ook de timerjoblogische-logica-app aan, die een nieuwe TimerJob-instantie maakt die continu wordt uitgevoerd op basis van het opgegeven schema of tot het voldoen aan een opgegeven limiet. Op die manier u zoveel TimerJob-exemplaren uitvoeren als u wilt zonder u zorgen te maken over werkstroomlimieten, omdat instanties geen definities of bronnen van afzonderlijke logische app-werkstroom zijn.
 
-In deze lijst ziet u enkele voorbeeld taken die u kunt uitvoeren met de ingebouwde triggers plannen:
+In deze lijst worden enkele voorbeeldtaken weergegeven die u uitvoeren met de ingebouwde triggers plannen:
 
-* Ontvang interne gegevens, bijvoorbeeld elke dag een SQL-opgeslagen procedure uitvoeren.
+* Ontvang interne gegevens, zoals elke dag een SQL-opgeslagen procedure uitvoeren.
 
-* Ontvang externe gegevens, zoals pull-weer Meldingen van NOAA om de 15 minuten.
+* Ontvang externe gegevens, zoals elke 15 minuten weerberichten ophalen bij NOAA.
 
-* Verzend rapport gegevens, zoals e-mail, een samen vatting voor alle orders die groter zijn dan een specifieke hoeveelheid in de afgelopen week.
+* Stuur rapportgegevens, zoals een overzicht e-mail voor alle bestellingen die groter zijn dan een specifiek bedrag in de afgelopen week.
 
-* Gegevens verwerken, zoals het uploaden van de geüploade installatie kopieën van vandaag elke weekdag tijdens daluren.
+* Procesgegevens, zoals het comprimeren van de geüploade afbeeldingen van vandaag elke weekdag tijdens daluren.
 
-* Gegevens opschonen, zoals het verwijderen van alle tweets ouder dan drie maanden.
+* Gegevens opschonen, zoals alle tweets verwijderen die ouder zijn dan drie maanden.
 
-* Archief gegevens, zoals Push facturen voor een back-upservice op 1:00 uur elke dag voor de volgende negen maanden.
+* Archiveer gegevens, zoals het de komende negen maanden elke dag om 01:00 uur naar een back-upservice pushen.
 
-U kunt ook de ingebouwde acties plannen gebruiken om uw werk stroom te onderbreken voordat de volgende actie wordt uitgevoerd, bijvoorbeeld:
+U de ingebouwde acties plannen ook gebruiken om uw werkstroom te pauzeren voordat de volgende actie wordt uitgevoerd, bijvoorbeeld:
 
-* Wacht tot een weekdag een status update via e-mail heeft verzonden.
+* Wacht tot een doordeweekse dag om een statusupdate via e-mail te verzenden.
 
-* De werk stroom vertragen totdat een HTTP-aanroep tijdig is voltooid voordat het resultaat wordt hervat en opgehaald.
+* Stel de werkstroom uit totdat een HTTP-gesprek tijd heeft om te voltooien voordat u het resultaat hervat en ophaalt.
 
-In dit artikel worden de mogelijkheden beschreven voor het plannen van ingebouwde triggers en acties.
+In dit artikel worden de mogelijkheden beschreven voor de ingebouwde triggers en acties plannen.
 
 <a name="schedule-triggers"></a>
 
 ## <a name="schedule-triggers"></a>Triggers plannen
 
-U kunt de werk stroom van de logische app starten met behulp van de trigger voor terugkeer patroon of schuif venster, die niet is gekoppeld aan een specifieke service of systeem, bijvoorbeeld Office 365 Outlook of SQL Server. Met deze triggers wordt uw werk stroom gestart en uitgevoerd op basis van uw opgegeven terugkeer patroon, waar u het interval en de frequentie selecteert, zoals het aantal seconden, minuten en uren voor beide triggers, of het aantal dagen, weken of maanden voor de terugkeer patroon trigger. U kunt ook de start datum en-tijd instellen, evenals de tijd zone. Telkens wanneer een trigger wordt geactiveerd, wordt door Logic Apps een nieuw werk stroom exemplaar gemaakt en uitgevoerd voor uw logische app.
+U de werkstroom van uw logische app starten met de trigger voor herhaling of schuifvenster, die niet is gekoppeld aan een specifieke service of systeem, bijvoorbeeld Office 365 Outlook of SQL Server. Deze triggers starten en voeren uw werkstroom uit op basis van de opgegeven herhaling waarbij u het interval en de frequentie selecteert, zoals het aantal seconden, minuten en uren voor beide triggers of het aantal dagen, weken of maanden voor de recidieftrigger. U ook de begindatum en -tijd en de tijdzone instellen. Elke keer dat een trigger wordt geactiveerd, maakt en voert Logic Apps een nieuwe werkstroominstantie voor uw logische app uit.
 
-Dit zijn de verschillen tussen deze triggers:
+Hier zijn de verschillen tussen deze triggers:
 
-* **Terugkeer patroon**: voert uw werk stroom met regel matige tijds intervallen uit op basis van de opgegeven planning. Als er herhalingen worden gemist, worden de gemiste terugkeer patronen niet door de trigger geactiveerd, maar worden herhalingen opnieuw gestart met het volgende geplande interval. U kunt ook een start datum en-tijd en de tijd zone opgeven. Als u dag selecteert, kunt u uren van de dag en minuten van het uur opgeven, bijvoorbeeld elke dag om 2:30. Als u week selecteert, kunt u ook dagen van de week selecteren, bijvoorbeeld woensdag en zaterdag. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md).
+* **Herhaling:** Voert uw werkstroom op regelmatige tijdstippen uit op basis van uw opgegeven schema. Als herhalingen worden gemist, verwerkt de recidief-trigger de gemiste herhalingen niet, maar worden herhalingen opnieuw gestart met het volgende geplande interval. U een begindatum en -tijd en de tijdzone opgeven. Als u 'Dag' selecteert, u bijvoorbeeld elke dag om 14.30 uur uren van de dag en minuten van het uur opgeven. Als u 'Week' selecteert, u ook dagen van de week selecteren, zoals woensdag en zaterdag. Zie [Terugkerende taken en werkstromen maken, plannen en uitvoeren met de recidieftrigger](../connectors/connectors-native-recurrence.md)voor meer informatie.
 
-* **Schuif venster**: voert uw werk stroom uit met regel matige tijds intervallen die gegevens verwerken in doorlopende segmenten. Als er geen terugkerende items worden weer gegeven, wordt het schuif venster geactiveerd en worden de gemiste terugkeer patronen verwerkt. U kunt een start datum en-tijd, een tijd zone en een duur opgeven om elk terugkeer patroon in uw werk stroom te vertragen. Deze trigger heeft geen opties om dagen, weken en maanden, uren van de dag, minuten van het uur en dagen van de week op te geven. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md).
+* **Schuifvenster:** voert uw werkstroom op regelmatige tijdstippen uit die gegevens in continue segmenten verwerken. Als herhalingen worden gemist, gaat de trigger schuifvenster terug en verwerkt de gemiste herhalingen. U een begindatum en -tijd, tijdzone en een duur opgeven om elke herhaling in uw werkstroom uit te stellen. Deze trigger heeft geen opties om dagen, weken en maanden, uren van de dag, minuten van het uur en dagen van de week op te geven. Zie [Terugkerende taken en werkstromen maken, plannen en uitvoeren met de trigger Schuifvenster](../connectors/connectors-native-sliding-window.md)voor meer informatie.
 
 <a name="schedule-actions"></a>
 
 ## <a name="schedule-actions"></a>Acties plannen
 
-Na elke actie in de werk stroom van de logische app, kunt u de vertraging en vertraging totdat de acties worden uitgevoerd om de werk stroom te laten wachten voordat de volgende actie wordt gestart.
+Na enige actie in uw logica-app-werkstroom u de acties Vertragen en vertragen tot uitvoeren om uw werkstroom te laten wachten voordat de volgende actie wordt uitgevoerd.
 
-* **Vertraging**: wacht op het uitvoeren van de volgende actie voor het opgegeven aantal tijds eenheden, zoals seconden, minuten, uren, dagen, weken of maanden. Zie [de volgende actie in werk stromen vertragen](../connectors/connectors-native-delay.md)voor meer informatie.
+* **Vertraging:** wacht op de volgende actie voor het opgegeven aantal tijdeenheden, zoals seconden, minuten, uren, dagen, weken of maanden. Zie [De volgende actie in werkstromen uitstellen](../connectors/connectors-native-delay.md)voor meer informatie .
 
-* **Vertraging tot**: wachten op het uitvoeren van de volgende actie tot de opgegeven datum en tijd. Zie [de volgende actie in werk stromen vertragen](../connectors/connectors-native-delay.md)voor meer informatie.
+* **Vertraging tot**: Wacht met het uitvoeren van de volgende actie tot de opgegeven datum en tijd. Zie [De volgende actie in werkstromen uitstellen](../connectors/connectors-native-delay.md)voor meer informatie .
 
-## <a name="patterns-for-start-date-and-time"></a>Patronen voor de begin datum en-tijd
+## <a name="patterns-for-start-date-and-time"></a>Patronen voor begindatum en -tijd
 
 <a name="start-time"></a>
 
-Hier volgen enkele patronen die laten zien hoe u het terugkeer patroon kunt beheren met de begin datum en-tijd en hoe de Logic Apps-service deze herhalingen uitvoert:
+Hier volgen enkele patronen die laten zien hoe u herhaling beheren met de begindatum en -tijd en hoe de Logic Apps-service deze herhalingen uitvoert:
 
-| Begintijd | Recurrence zonder schedule | Terugkeer patroon met schema (alleen terugkeer patroon trigger) |
+| Begintijd | Recurrence zonder schedule | Herhaling met schema (alleen herhalingstrigger) |
 |------------|-----------------------------|----------------------------------------------------|
-| geen | Voert de eerste werk belasting direct uit. <p>Voert toekomstige workloads uit op basis van de laatste uitvoerings tijd. | Voert de eerste werk belasting direct uit. <p>Voert toekomstige workloads uit op basis van de opgegeven planning. |
-| Begin tijd in het verleden | Trigger voor **terugkeer patroon** : Hiermee worden uitvoerings tijden berekend op basis van de opgegeven begin tijd en eerdere uitvoerings tijden. De eerste werk belasting wordt uitgevoerd tijdens de volgende toekomstige uitvoerings tijd. <p>Voert toekomstige werk belastingen uit op basis van berekeningen van de laatste uitvoerings tijd. <p><p>**Verschuivings venster** trigger: berekent uitvoerings tijden op basis van de opgegeven begin tijd en voldoet aan de vorige uitvoerings tijden. <p>Voert toekomstige werk belastingen uit op basis van berekeningen vanaf de opgegeven begin tijd. <p><p>Zie het voor beeld na deze tabel voor meer informatie. | Voert de eerste workload uit die *niet eerder* is dan de begin tijd, op basis van de planning die wordt berekend vanaf de begin tijd. <p>Voert toekomstige workloads uit op basis van de opgegeven planning. <p>**Opmerking:** Als u een terugkeer patroon opgeeft met een schema, maar u geen uren of minuten opgeeft voor de planning, worden toekomstige uitvoerings tijden berekend met respectievelijk de uren of minuten van de eerste uitvoering. |
-| Begin tijd op dit moment of in de toekomst | De eerste werk belasting wordt uitgevoerd op de opgegeven begin tijd. <p>Voert toekomstige werk belastingen uit op basis van berekeningen van de laatste uitvoerings tijd. | Voert de eerste workload uit die *niet eerder* is dan de begin tijd, op basis van de planning die wordt berekend vanaf de begin tijd. <p>Voert toekomstige workloads uit op basis van de opgegeven planning. <p>**Opmerking:** Als u een terugkeer patroon opgeeft met een schema, maar u geen uren of minuten opgeeft voor de planning, worden toekomstige uitvoerings tijden berekend met respectievelijk de uren of minuten van de eerste uitvoering. |
+| {none} | Draait de eerste werkbelasting direct uit. <p>Met toekomstige workloads wordt toekomstige workloads uitgevoerd op basis van de laatste runtime. | Draait de eerste werkbelasting direct uit. <p>Voert toekomstige workloads uit op basis van het opgegeven schema. |
+| Begintijd in het verleden | **Recidieftrigger:** berekent de looptijden op basis van de opgegeven begintijd en verwijdert eerdere looptijden. Met de eerste werkbelasting wordt de volgende volgende runtime uitgevoerd. <p>Voert toekomstige workloads uit op basis van berekeningen van de laatste runtime. <p><p>**Schuifvenstertrigger:** berekent de looptijden op basis van de opgegeven starttijd en eer aan eerdere looptijden. <p>Voert toekomstige workloads uit op basis van berekeningen vanaf de opgegeven begintijd. <p><p>Zie het voorbeeld na deze tabel voor meer uitleg. | Voert de eerste werkbelasting *niet eerder* uit dan de begintijd, op basis van het schema dat is berekend vanaf de begintijd. <p>Voert toekomstige workloads uit op basis van het opgegeven schema. <p>**Let op:** Als u een herhaling opgeeft met een schema, maar geen uren of minuten opgeeft voor het schema, worden toekomstige looptijden berekend met respectievelijk de uren of minuten vanaf de eerste runtime. |
+| Begintijd op dit moment of in de toekomst | Met de eerste werkbelasting op de opgegeven begintijd wordt de eerste werkbelasting uitgevoerd. <p>Voert toekomstige workloads uit op basis van berekeningen van de laatste runtime. | Voert de eerste werkbelasting *niet eerder* uit dan de begintijd, op basis van het schema dat is berekend vanaf de begintijd. <p>Voert toekomstige workloads uit op basis van het opgegeven schema. <p>**Let op:** Als u een herhaling opgeeft met een schema, maar geen uren of minuten opgeeft voor het schema, worden toekomstige looptijden berekend met respectievelijk de uren of minuten vanaf de eerste runtime. |
 ||||
 
 > [!IMPORTANT]
-> Wanneer herhalingen geen geavanceerde plannings opties opgeven, worden toekomstige terugkeer patronen gebaseerd op de laatste uitvoerings tijd.
-> De begin tijden voor deze terugkeer patronen kunnen ontstaan door factoren als latentie tijdens opslag aanroepen. Gebruik een van de volgende opties om ervoor te zorgen dat uw logische app geen herhaling mist, met name wanneer de frequentie in dagen of langer is.
+> Wanneer herhalingen geen geavanceerde planningsopties opgeven, zijn toekomstige herhalingen gebaseerd op de laatste uitvoeringstijd.
+> De begintijden voor deze herhalingen kunnen afdwalen als gevolg van factoren zoals latentie tijdens opslagoproepen. Gebruik een van de volgende opties om ervoor te zorgen dat uw logica-app geen herhaling mist, vooral wanneer de frequentie binnen dagen of langer is:
 > 
-> * Geef een begin tijd op voor het terugkeer patroon.
+> * Geef een begintijd op voor de herhaling.
 > 
-> * Geef op na hoeveel uur en minuten het terugkeer patroon moet worden uitgevoerd met behulp van de eigenschappen **voor deze uren** en met **deze minuten** .
+> * Geef de uren en minuten op voor wanneer u de herhaling moet uitvoeren met de eigenschappen **Op deze uren** en Bij deze **minuten.**
 > 
-> * Gebruik de [verschuivings venster trigger](../connectors/connectors-native-sliding-window.md)in plaats van de terugkeer patroon trigger.
+> * Gebruik de [trigger schuifvenster](../connectors/connectors-native-sliding-window.md)in plaats van de recidieftrigger.
 
-*Voor beeld voor eerdere begin tijd en terugkeer patroon, maar geen planning*
+*Voorbeeld voor eerdere begintijd en herhaling, maar geen schema*
 
-Stel dat de huidige datum en tijd 8 september 2017 om 1:00 uur is. U geeft de begin datum en-tijd op als 7 september 2017 om 2:00 uur, die in het verleden ligt en een terugkeer patroon dat elke twee dagen wordt uitgevoerd.
+Stel dat de huidige datum en tijd 8 september 2017 om 13:00 uur is. U geeft de begindatum en -tijd op als 7 september 2017 om 14:00 uur, wat in het verleden is, en een herhaling die elke twee dagen wordt uitgevoerd.
 
 | Begintijd | Huidige tijd | Terugkeerpatroon | Planning |
 |------------|--------------|------------|----------|
-| 2017-09-**07**T14:00:00Z <br>(2017-09-**07** om 2:00 uur) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** om 1:00 uur) | Elke twee dagen | geen |
+| 2017-09-**07**T14:00:00Z <br>(2017-09-**07** om 14:00 uur) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** om 13:00 uur) | Elke twee dagen | {none} |
 |||||
 
-Voor de terugkeer patroon berekent de Logic Apps-Engine uitvoerings tijden op basis van de begin tijd, de eerdere uitvoerings tijden, waarna de volgende begin tijd voor de eerste uitvoering wordt gebruikt en de toekomstige uitvoeringen worden berekend op basis van de tijd van de laatste uitvoering.
+Voor de recidieftrigger berekent de Logic Apps-engine de looptijden op basis van de begintijd, verwijdert u eerdere runtijden, gebruikt de volgende toekomstige begintijd voor de eerste run en berekent u toekomstige uitvoeringen op basis van de laatste runtime.
 
-Dit terugkeer patroon ziet er als volgt uit:
+Zo ziet deze herhaling eruit:
 
-| Begintijd | Eerste uitvoerings tijd | Toekomstige uitvoerings tijden |
+| Begintijd | Eerste looptijd | Toekomstige looptijden |
 |------------|----------------|------------------|
-| 2017-09-**07** om 2:00 uur | 2017-09-**09** om 2:00 uur | 2017-09-**11** om 2:00 uur </br>2017-09-**13** om 2:00 uur </br>2017-09-**15** om 2:00 uur </br>Enzovoort... |
+| 2017-09-**07** om 14:00 | 2017-09-**09** om 14:00 | 2017-09-**11** om 14:00 </br>2017-09-**13** om 14:00 </br>2017-09-**15** om 14:00 </br>en ga zo maar door ... |
 ||||
 
-Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05** om 2:00 uur of 2017-09-**01** om 2:00 uur, wordt voor de eerste keer altijd de volgende start tijd gebruikt.
+Dus hoe ver in het verleden u de begintijd ook opgeeft, bijvoorbeeld 2017-09-**05** om 14:00 uur of 2017-09-**01** om 14:00 uur, uw eerste run gebruikt altijd de volgende toekomstige begintijd.
 
-Voor de activerings venster-trigger berekent de Logic Apps-Engine uitvoerings tijden op basis van de start tijd, voldoet aan de vorige uitvoerings tijden, gebruikt de begin tijd voor de eerste uitvoering en berekent de toekomstige uitvoeringen op basis van de begin tijd.
+Voor de trigger schuifvenster berekent de Logic Apps-engine de looptijden op basis van de begintijd, eert de afgelopen looptijden, gebruikt de begintijd voor de eerste run en berekent de toekomstige uitvoeringen op basis van de begintijd.
 
-Dit terugkeer patroon ziet er als volgt uit:
+Zo ziet deze herhaling eruit:
 
-| Begintijd | Eerste uitvoerings tijd | Toekomstige uitvoerings tijden |
+| Begintijd | Eerste looptijd | Toekomstige looptijden |
 |------------|----------------|------------------|
-| 2017-09-**07** om 2:00 uur | 2017-09-**07** om 2:00 uur | 2017-09-**09** om 2:00 uur </br>2017-09-**11** om 2:00 uur </br>2017-09-**13** om 2:00 uur </br>2017-09-**15** om 2:00 uur </br>Enzovoort... |
+| 2017-09-**07** om 14:00 | 2017-09-**07** om 14:00 | 2017-09-**09** om 14:00 </br>2017-09-**11** om 14:00 </br>2017-09-**13** om 14:00 </br>2017-09-**15** om 14:00 </br>en ga zo maar door ... |
 ||||
 
-Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05** om 2:00 uur of 2017-09-**01** om 2:00 uur, gebruikt uw eerste run altijd de opgegeven begin tijd.
+Dus hoe ver u in het verleden ook de begintijd hebt opgegeven, bijvoorbeeld 2017-09-**05** om 14:00 of 2017-09-**01** om 14:00 uur, uw eerste run gebruikt altijd de opgegeven begintijd.
 
 <a name="example-recurrences"></a>
 
-## <a name="example-recurrences"></a>Voor beelden van herhalingen
+## <a name="example-recurrences"></a>Voorbeeld herhalingen
 
-Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de triggers die ondersteuning bieden voor de opties:
+Hier volgen verschillende voorbeeldherhalingen die u instellen voor de triggers die de opties ondersteunen:
 
-| Trigger | Terugkeerpatroon | Interval | Frequency | Begintijd | Op deze dagen | Op deze uren | Op deze minuten | Opmerking |
+| Trigger | Terugkeerpatroon | Interval | Frequency | Begintijd | Deze dagen | Deze uren | Deze minuten | Opmerking |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
-| Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (geen begin datum en-tijd) | 15 | Minuut | geen | {unavailable} | geen | geen | Dit schema wordt onmiddellijk gestart, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
-| Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (met begin datum en-tijd) | 15 | Minuut | *start date* T*Start*tijd Z | {unavailable} | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
-| Optreden <br>Sliding window | Elk uur uitgevoerd, op het uur (met begin datum en-tijd) | 1 | Uur | *start date* Thh: 00:00Z | {unavailable} | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd. Toekomstige herhalingen worden elk uur uitgevoerd op het ' 00 ' minuut teken, dat wordt berekend op basis van de begin tijd. <p>Als de frequentie ' week ' of ' maand ' is, wordt in deze planning slechts één dag per week of één dag per maand uitgevoerd. |
-| Optreden <br>Sliding window | Elk uur wordt elke dag uitgevoerd (geen begin datum en-tijd) | 1 | Uur | geen | {unavailable} | geen | geen | Dit schema wordt onmiddellijk gestart en berekent toekomstige terugkeer patronen op basis van de tijd van de laatste uitvoering. <p>Als de frequentie ' week ' of ' maand ' is, wordt in deze planning slechts één dag per week of één dag per maand uitgevoerd. |
-| Optreden <br>Sliding window | Elk uur wordt elke dag uitgevoerd (met begin datum en-tijd) | 1 | Uur | *start date* T*Start*tijd Z | {unavailable} | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. <p>Als de frequentie ' week ' of ' maand ' is, wordt in deze planning slechts één dag per week of één dag per maand uitgevoerd. |
-| Optreden <br>Sliding window | Wordt elke 15 minuten na het hele uur uitgevoerd, elk uur (met de begin datum en-tijd) | 1 | Uur | *start date* T00:15:00Z | {unavailable} | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd. Toekomstige herhalingen worden uitgevoerd met de ' 15 ' minuut markering, die wordt berekend op basis van de begin tijd, dus om 00:15 uur, 1:15 uur, 2:15 uur, enzovoort. |
-| Terugkeerpatroon | Wordt elke 15 minuten na het hele uur uitgevoerd, elk uur (geen begin datum en-tijd) | 1 | Day | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Deze planning wordt uitgevoerd om 00:15 uur, 1:15 uur, 2:15 uur, enzovoort. Dit schema is ook gelijk aan de frequentie ' hour ' en een begin tijd met ' 15 ' minuten. |
-| Terugkeerpatroon | Wordt elke 15 minuten uitgevoerd bij de opgegeven minuut tekens (geen begin datum en-tijd). | 1 | Day | geen | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dit schema wordt pas gestart als de volgende opgegeven markering van 15 minuten. |
-| Terugkeerpatroon | Voer dagelijks uit om 8 uur *plus* de minuut na het opslaan van de logische app | 1 | Day | geen | {unavailable} | 8 | geen | Zonder een begin datum en-tijd wordt deze planning uitgevoerd op basis van de tijd dat u de logische app opslaat (PUT-bewerking). |
-| Terugkeerpatroon | Dagelijks uitgevoerd om 8:00 uur (met de begin datum en-tijd) | 1 | Day | *start date* T08:00:00Z | {unavailable} | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd. Toekomstige instanties worden dagelijks om 8:00 uur uitgevoerd. | 
-| Terugkeerpatroon | Dagelijks uitgevoerd om 8:30 uur (geen begin datum en-tijd) | 1 | Day | geen | {unavailable} | 8 | 30 | Deze planning wordt elke dag om 8:30 uur uitgevoerd. |
-| Terugkeerpatroon | Voer dagelijks uit om 8:30 uur en 4:30 uur | 1 | Day | geen | {unavailable} | 8, 16 | 30 | |
-| Terugkeerpatroon | Voer dagelijks uit om 8:30 uur, 8:45 uur, 4:30 uur en 4:45 uur | 1 | Day | geen | {unavailable} | 8, 16 | 30, 45 | |
-| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (geen begin datum en-tijd) | 1 | Wekelijks | geen | Zaterdag | 17 | 00 | Deze planning wordt elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elke zaterdag wordt uitgevoerd om 5 uur (met begin datum en-tijd) | 1 | Wekelijks | *start date* T17:00:00Z | Zaterdag | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd, in dit geval 9 september 2017 om 5:00 uur. Toekomstige herhalingen worden elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elke dinsdag, donderdag om 5 uur en de minuut na het opslaan *van de logische* app wordt uitgevoerd| 1 | Wekelijks | geen | "Dinsdag", "donderdag" | 17 | geen | |
-| Terugkeerpatroon | Elk uur uitvoeren tijdens werk uren | 1 | Wekelijks | geen | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de dag die u wilt. | Selecteer een wille keurig aantal minuten van het gewenste uur. | Als uw werk uren bijvoorbeeld 8:00 AM tot 5:00 uur zijn, selecteert u "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" als uren van de dag. <p>Als uw werk uren 8:30 uur tot 5:30 uur zijn, selecteert u de vorige uren van de dag plus "30" als minuten van het uur. |
-| Terugkeerpatroon | Eenmaal per dag uitvoeren in weekends | 1 | Wekelijks | geen | ' Zaterdag ', ' zondag ' | Selecteer de uren van de dag die u wilt. | Selecteer eventueel een wille keurig aantal minuten van het uur. | Deze planning wordt elke zaterdag en zondag op het opgegeven schema uitgevoerd. |
-| Terugkeerpatroon | Elke 15 minuten twee wekelijks alleen op elke maandag uitvoeren | 2 | Wekelijks | geen | Bedraagt | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Deze planning wordt elke maandag om de 15 minuten uitgevoerd. |
-| Terugkeerpatroon | Elke maand uitvoeren | 1 | Maand | *start date* T*Start*tijd Z | {unavailable} | {unavailable} | {unavailable} | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd en berekent toekomstige terugkeer patronen op de begin datum en-tijd. Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. |
-| Terugkeerpatroon | Elk uur uitvoeren voor één dag per maand | 1 | Maand | {Zie opmerking} | {unavailable} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Zie opmerking} | Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. Als u de minuten voor de terugkeer planning wilt beheren, geeft u het aantal minuten van het uur, een begin tijd op of gebruikt u de aanmaak tijd. Als de begin tijd of aanmaak tijd 8:25 uur is, wordt deze planning bijvoorbeeld uitgevoerd om 8:25 uur, 9:25 uur, 10:25 uur, enzovoort. |
+| Herhaling <br>Sliding window | Elke 15 minuten uitvoeren (geen begindatum en -tijd) | 15 | Minuut | {none} | {niet beschikbaar} | {none} | {none} | Dit schema begint onmiddellijk en berekent vervolgens toekomstige herhalingen op basis van de laatste runtime. |
+| Herhaling <br>Sliding window | Elke 15 minuten uitvoeren (met begindatum en -tijd) | 15 | Minuut | *startDatum* T*startTime*Z | {niet beschikbaar} | {none} | {none} | Dit schema start niet *eerder* dan de opgegeven begindatum en -tijd en berekent toekomstige herhalingen op basis van de laatste runtime. |
+| Herhaling <br>Sliding window | Elk uur uitvoeren, op het uur (met begindatum en -tijd) | 1 | Uur | *startDatum* Thh:00:00Z | {niet beschikbaar} | {none} | {none} | Dit schema start niet *eerder* dan de opgegeven begindatum en -tijd. Toekomstige herhalingen worden elk uur uitgevoerd op de "00"-minutenmarkering, die wordt berekend vanaf de begintijd. <p>Als de frequentie "Week" of "Maand" is, wordt dit schema respectievelijk slechts één dag per week of één dag per maand uitgevoerd. |
+| Herhaling <br>Sliding window | Run elk uur, elke dag (geen startdatum en tijd) | 1 | Uur | {none} | {niet beschikbaar} | {none} | {none} | Dit schema begint onmiddellijk en berekent toekomstige herhalingen op basis van de laatste run time. <p>Als de frequentie "Week" of "Maand" is, wordt dit schema respectievelijk slechts één dag per week of één dag per maand uitgevoerd. |
+| Herhaling <br>Sliding window | Run elk uur, elke dag (met startdatum en tijd) | 1 | Uur | *startDatum* T*startTime*Z | {niet beschikbaar} | {none} | {none} | Dit schema start niet *eerder* dan de opgegeven begindatum en -tijd en berekent toekomstige herhalingen op basis van de laatste runtime. <p>Als de frequentie "Week" of "Maand" is, wordt dit schema respectievelijk slechts één dag per week of één dag per maand uitgevoerd. |
+| Herhaling <br>Sliding window | Run elke 15 minuten na het uur, elk uur (met startdatum en tijd) | 1 | Uur | *startDatum* T00:15:00Z | {niet beschikbaar} | {none} | {none} | Dit schema start niet *eerder* dan de opgegeven begindatum en -tijd. Toekomstige herhalingen worden uitgevoerd op de "15" minuten markering, die wordt berekend vanaf de begintijd, dus om 00:15 uur, 1:15 am, 2:15 am, enzovoort. |
+| Terugkeerpatroon | Run elke 15 minuten na het uur, elk uur (geen startdatum en tijd) | 1 | Dag | {none} | {niet beschikbaar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Dit schema loopt om 00:15 uur, 1:15 uur, 02:15 uur, enzovoort. Ook is dit schema gelijk aan een frequentie van "Uur" en een begintijd met "15" minuten. |
+| Terugkeerpatroon | Voer elke 15 minuten uit op de opgegeven minutenmarkeringen (geen begindatum en -tijd). | 1 | Dag | {none} | {niet beschikbaar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dit schema begint pas bij de volgende opgegeven markering van 15 minuten. |
+| Terugkeerpatroon | Dagelijks om 8 uur ' *s 8* uur ' s avonds en minuten maken vanaf het moment dat u uw logica-app opslaat | 1 | Dag | {none} | {niet beschikbaar} | 8 | {none} | Zonder begindatum en -tijd wordt dit schema uitgevoerd op basis van het tijdstip waarop u de logische app (PUT-bewerking) opslaat. |
+| Terugkeerpatroon | Dagelijks om 8:00 uur (met startdatum en tijd) | 1 | Dag | *startDatum* T08:00:00Z | {niet beschikbaar} | {none} | {none} | Dit schema start niet *eerder* dan de opgegeven begindatum en -tijd. Toekomstige gebeurtenissen lopen dagelijks om 8:00 uur. | 
+| Terugkeerpatroon | Dagelijks om 8:30 uur (geen startdatum en tijd) | 1 | Dag | {none} | {niet beschikbaar} | 8 | 30 | Dit schema rijdt elke dag om 8:30 uur. |
+| Terugkeerpatroon | Dagelijks om 8:30 en 16:30 uur | 1 | Dag | {none} | {niet beschikbaar} | 8, 16 | 30 | |
+| Terugkeerpatroon | Dagelijks om 8:30, 8:45 uur, 16:30 en 16:45 uur | 1 | Dag | {none} | {niet beschikbaar} | 8, 16 | 30, 45 | |
+| Terugkeerpatroon | Run elke zaterdag om 17.00 uur (geen startdatum en tijd) | 1 | Wekelijks | {none} | "Zaterdag" | 17 | 00 | Dit schema loopt elke zaterdag om 17:00 uur. |
+| Terugkeerpatroon | Run elke zaterdag om 17.00 uur (met startdatum en tijd) | 1 | Wekelijks | *startDatum* T17:00:00Z | "Zaterdag" | {none} | {none} | Dit schema begint niet *eerder* dan de opgegeven begindatum en -tijd, in dit geval 9 september 2017 om 17:00 uur. Toekomstige herhalingen lopen elke zaterdag om 17:00. |
+| Terugkeerpatroon | Elke dinsdag, donderdag om 17.00 uur *en* de minutenmarkering van wanneer u uw logica-app opslaat| 1 | Wekelijks | {none} | "Dinsdag", "donderdag" | 17 | {none} | |
+| Terugkeerpatroon | Elk uur draaien tijdens de werkuren | 1 | Wekelijks | {none} | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de gewenste dag. | Selecteer alle minuten van het gewenste uur. | Als uw werkuren bijvoorbeeld van 8:00 tot 17:00 uur zijn, selecteert u '8, 9, 10, 11, 12, 13, 14, 15, 16, 17' als de uren van de dag. <p>Als uw werkuren van 08:30 tot 17:30 uur zijn, selecteert u de vorige uren van de dag plus "30" als minuten van het uur. |
+| Terugkeerpatroon | Eén keer per dag in het weekend | 1 | Wekelijks | {none} | "Zaterdag", "Zondag" | Selecteer de uren van de gewenste dag. | Selecteer alle minuten van het uur naar gelang van het geval. | Dit schema loopt elke zaterdag en zondag volgens het opgegeven schema. |
+| Terugkeerpatroon | Run elke 15 minuten tweewekelijks op alleen maandag | 2 | Wekelijks | {none} | "Maandag" | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dit schema loopt om de andere maandag op elke 15 minuten merk. |
+| Terugkeerpatroon | Elke maand hardlopen | 1 | Month | *startDatum* T*startTime*Z | {niet beschikbaar} | {niet beschikbaar} | {niet beschikbaar} | Deze planning start niet *eerder* dan de opgegeven begindatum en -tijd en berekent toekomstige herhalingen op de begindatum en -tijd. Als u geen begindatum en -tijd opgeeft, gebruikt deze planning de aanmaakdatum en -tijd. |
+| Terugkeerpatroon | Voer elk uur uit gedurende één dag per maand | 1 | Month | {zie noot} | {niet beschikbaar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {zie noot} | Als u geen begindatum en -tijd opgeeft, gebruikt deze planning de aanmaakdatum en -tijd. Als u de minuten voor het herhalingsschema wilt beheren, geeft u de minuten van het uur, een begintijd of de aanmaaktijd in. Als de begin- of aanmaaktijd bijvoorbeeld 8:25 uur is, wordt dit schema uitgevoerd om 8:25 uur, 9:25 uur, 10:25 uur, enzovoort. |
 |||||||||
 
 <a name="run-once"></a>
 
-## <a name="run-one-time-only"></a>Eén keer uitvoeren
+## <a name="run-one-time-only"></a>Slechts één keer uitvoeren
 
-Als u uw logische app in de toekomst alleen in één keer wilt uitvoeren, kunt u de **scheduler-sjabloon Run Once-taken** gebruiken. Nadat u een nieuwe logische app hebt gemaakt, maar voordat u de ontwerp functie van Logic Apps hebt geopend, selecteert u in de lijst **categorie** van het gedeelte met **sjablonen** de optie **planning**en selecteert u vervolgens deze sjabloon:
+Als u uw logische app in de toekomst slechts in één keer wilt uitvoeren, u de **sjabloon Scheduler: Run once jobs** gebruiken. Nadat u een nieuwe logische app hebt gemaakt, maar voordat u de Logic Apps Designer opent, selecteert u in de sectie **Sjablonen** in de lijst **Categorie** de optie **Planning**en selecteert u deze sjabloon:
 
-![Selecteer de sjabloon scheduler: Once-taken uitvoeren](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
+![De sjabloon 'Scheduler: Run once jobs' selecteren](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
 
-Of, als u uw logische app kunt starten met de **aanvraag trigger wanneer een HTTP-aanvraag is ontvangen** , en de start tijd door geven als een para meter voor de trigger. Voor de eerste actie gebruikt u de actie **vertraging tot-schema** en geeft u de tijd op waarop de volgende actie wordt uitgevoerd.
+Of als u uw logische app starten met de **HTTP-aanvraag wanneer deze wordt ontvangen - Trigger aanvragen** en de begintijd doorgeven als parameter voor de trigger. Gebruik voor de eerste actie de **actie Vertraging tot - Plannen** en geef de tijd op voor het moment waarop de volgende actie wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md)
-* [Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md)
-* [Werk stromen onderbreken met vertragings acties](../connectors/connectors-native-delay.md)
+* [Terugkerende taken en werkstromen maken, plannen en uitvoeren met de recidieftrigger](../connectors/connectors-native-recurrence.md)
+* [Terugkerende taken en werkstromen maken, plannen en uitvoeren met de trigger Schuifvenster](../connectors/connectors-native-sliding-window.md)
+* [Werkstromen onderbreken met vertragingsacties](../connectors/connectors-native-delay.md)

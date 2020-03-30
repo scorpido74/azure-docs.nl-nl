@@ -1,36 +1,35 @@
 ---
-title: Bewerkings-API annuleren | Azure Marketplace
-description: Annulerings bewerkingen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Operation API annuleren | Azure Marketplace
+description: Bewerkingen annuleren .
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280538"
 ---
 # <a name="cancel-operation"></a>Bewerking annuleren 
 
-Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding. Gebruik de [API retrieve Operations](./cloud-partner-portal-api-retrieve-operations.md) om een `operationId` op te halen die u wilt door geven aan deze API. Annulering is doorgaans een synchrone bewerking, maar in sommige complexe scenario's is het mogelijk dat er een nieuwe bewerking moet worden uitgevoerd om een bestaand item te annuleren. In dit geval bevat de HTTP-antwoord tekst de locatie van de bewerking die moet worden gebruikt voor het opvragen van de status.
+Deze API annuleert een bewerking die momenteel in uitvoering is op de aanbieding. Gebruik de [API Operations](./cloud-partner-portal-api-retrieve-operations.md) `operationId` ophalen om een informatie-informatie over te brengen aan deze API. Annulering is meestal een synchrone bewerking, maar in sommige complexe scenario's kan een nieuwe bewerking nodig zijn om een bestaande bewerking te annuleren. In dit geval bevat de HTTP-antwoordinstantie de locatie van de bewerking die moet worden gebruikt om de status op te vragen.
 
-U kunt een door komma's gescheiden lijst met e-mail adressen opgeven met de aanvraag, en de API meldt deze adressen over de voortgang van de bewerking.
+U een door komma's gescheiden lijst met e-mailadressen bij de aanvraag opnemen en de API zal deze adressen op de hoogte brengen van de voortgang van de bewerking.
 
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-para meters
+<a name="uri-parameters"></a>URI-parameters
 --------------
 
 |  **Naam**    |      **Beschrijving**                                  |    **Gegevenstype**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Uitgevers-id, bijvoorbeeld `contoso`         |   Tekenreeks          |
-| OfferId      |  Aanbiedings-id                                     |   Tekenreeks          |
-| API-versie  |  Huidige versie van API                               |    Date           |
+| uitgeverId  |  Publisher identifier, bijvoorbeeld,`contoso`         |   Tekenreeks          |
+| aanbiedingId      |  Aanbiedings-id                                     |   Tekenreeks          |
+| api-versie  |  Huidige versie van API                               |    Date           |
 |  |  |  |
 
 
@@ -40,11 +39,11 @@ U kunt een door komma's gescheiden lijst met e-mail adressen opgeven met de aanv
 |  **Naam**              |  **Waarde**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
-|  Autorisatie         |  Draagt uw TOKEN |
+|  Autorisatie         |  Toon UW TOKEN |
 |  |  |
 
 
-<a name="body-example"></a>Voor beeld van tekst
+<a name="body-example"></a>Voorbeeld van het lichaam
 ------------
 
 ### <a name="request"></a>Aanvraag
@@ -57,11 +56,11 @@ U kunt een door komma's gescheiden lijst met e-mail adressen opgeven met de aanv
 }     
 ```
 
-### <a name="request-body-properties"></a>Eigenschappen van aanvraag hoofdtekst
+### <a name="request-body-properties"></a>Eigenschappen van hoofdtekst aanvragen
 
 |  **Naam**                |  **Beschrijving**                                               |
 |  --------                |  ---------------                                               |
-|  melding-e-mail berichten     | Door komma's gescheiden lijst met e-mail-Id's die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
+|  melding-e-mails     | Komma gescheiden lijst van e-id's op de hoogte te worden gesteld van de voortgang van de publicatiebewerking. |
 |  |  |
 
 
@@ -70,21 +69,21 @@ U kunt een door komma's gescheiden lijst met e-mail adressen opgeven met de aanv
   `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
 
 
-### <a name="response-header"></a>Antwoordkoptekst
+### <a name="response-header"></a>Reactieheader
 
 |  **Naam**             |    **Waarde**                       |
 |  ---------            |    ----------                      |
-| Bewerkings locatie    | URL: er kan een query worden uitgevoerd om de huidige status van de bewerking te bepalen. |
+| Operatielocatie    | URL, die kan worden opgevraagd om de huidige status van de bewerking te bepalen. |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Antwoord status codes
+### <a name="response-status-codes"></a>Statuscodes voor antwoord
 
-| **Gecodeerd**  |  **Beschrijving**                                                                       |
+| **Code**  |  **Beschrijving**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
-|  200      | OK. De aanvraag is verwerkt en de bewerking is synchroon geannuleerd. |
-|  202      | Afgewezen. De aanvraag is verwerkt en de bewerking wordt momenteel geannuleerd. De locatie van de annulerings bewerking wordt geretourneerd in de reactie header. |
-|  400      | Ongeldige/onjuiste aanvraag. De hoofd tekst van het fout bericht kan meer informatie geven.  |
-|  403      | Toegang verboden. De client heeft geen toegang tot de naam ruimte die in de aanvraag is opgegeven. |
+|  200      | OK. De aanvraag is verwerkt en de bewerking wordt synchroon geannuleerd. |
+|  202      | Aanvaard. De aanvraag is verwerkt en de bewerking wordt momenteel geannuleerd. De locatie van de annuleringsbewerking wordt geretourneerd in de reactiekop. |
+|  400      | Slecht/Misvormd verzoek. De instantie voor foutrespons kan meer informatie geven.  |
+|  403      | Toegang verboden. De client heeft geen toegang tot de naamruimte die in de aanvraag is opgegeven. |
 |  404      | Niet gevonden. De opgegeven entiteit bestaat niet. |
 |  |  |

@@ -1,37 +1,37 @@
 ---
-title: HTTP-trigger Azure Functions
+title: HTTP-trigger voor Azure-functies
 description: Meer informatie over het aanroepen van een Azure-functie via HTTP.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277594"
 ---
-# <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
+# <a name="azure-functions-http-trigger"></a>HTTP-trigger voor Azure-functies
 
-Met de HTTP-trigger kunt u een functie aanroepen met een HTTP-aanvraag. U kunt een HTTP-trigger gebruiken om serverloze Api's te maken en te reageren op webhooks.
+Met de HTTP-trigger u een functie aanroepen met een HTTP-aanvraag. U een HTTP-trigger gebruiken om serverloze API's te bouwen en te reageren op webhooks.
 
-De standaard retour waarde voor een door HTTP geactiveerde functie is:
+De standaardretourwaarde voor een http-geactiveerde functie is:
 
-- `HTTP 204 No Content` met een lege hoofd tekst in de functies 2. x en hoger
-- `HTTP 200 OK` met een lege hoofd tekst in functions 1. x
+- `HTTP 204 No Content`met een leeg lichaam in functies 2.x en hoger
+- `HTTP 200 OK`met een lege behuizing in functies 1.x
 
-Als u het HTTP-antwoord wilt wijzigen, configureert u een [uitvoer binding](./functions-bindings-http-webhook-output.md).
+Als u het HTTP-antwoord wilt wijzigen, configureert u een [uitvoerbinding](./functions-bindings-http-webhook-output.md).
 
-Zie [overzicht](./functions-bindings-http-webhook.md) en [uitvoer binding referentie](./functions-bindings-http-webhook-output.md)voor meer informatie over http-bindingen.
+Zie het [overzicht](./functions-bindings-http-webhook.md) en de [uitvoerbinding](./functions-bindings-http-webhook-output.md)voor meer informatie over HTTP-bindingen .
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag. U ziet dat de retour waarde wordt gebruikt voor de uitvoer binding, maar een retour waarde-kenmerk is niet vereist.
+In het volgende voorbeeld wordt een `name` [C#-functie](functions-dotnet-class-library.md) weergegeven die zoekt naar een parameter in de querytekenreeks of de hoofdtekst van de HTTP-aanvraag. De retourwaarde wordt gebruikt voor de uitvoerbinding, maar een toekenmerk retourwaarde is niet vereist.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -53,11 +53,11 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voorbeeld wordt een triggerbinding weergegeven in een *function.json-bestand* en een [C#-scriptfunctie](functions-reference-csharp.md) die de binding gebruikt. De functie zoekt `name` naar een parameter in de querytekenreeks of de hoofdtekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -82,9 +82,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#configuration) worden deze eigenschappen uitgelegd.
 
-Dit is C# de script code die wordt gekoppeld aan `HttpRequest`:
+Hier is C# scriptcode die `HttpRequest`zich bindt aan:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -110,7 +110,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-U kunt een verbinding maken met een aangepast object in plaats van `HttpRequest`. Dit object wordt gemaakt op basis van de hoofd tekst van de aanvraag en geparseerd als JSON. Op dezelfde manier kan een type worden door gegeven aan de HTTP-antwoord uitvoer binding en geretourneerd als de antwoord tekst, samen met een `200` status code.
+U binden aan een `HttpRequest`aangepast object in plaats van. Dit object wordt gemaakt van de hoofdtekst van de aanvraag en ontleed als JSON. Op dezelfde manier kan een type worden doorgegeven aan de HTTP-antwoorduitvoerbinding en worden geretourneerd als de antwoordinstantie, samen met een `200` statuscode.
 
 ```csharp
 using System.Net;
@@ -129,11 +129,11 @@ public class Person {
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voorbeeld wordt een triggerbinding weergegeven in een *function.json-bestand* en een [JavaScript-functie](functions-reference-node.md) die de binding gebruikt. De functie zoekt `name` naar een parameter in de querytekenreeks of de hoofdtekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -154,9 +154,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#configuration) worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = function(context, req) {
@@ -180,9 +180,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voorbeeld wordt een triggerbinding weergegeven in een *function.json-bestand* en een [Python-functie](functions-reference-python.md) die de binding gebruikt. De functie zoekt `name` naar een parameter in de querytekenreeks of de hoofdtekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -204,9 +204,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#configuration) worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 import logging
@@ -236,16 +236,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-* [De para meter lezen uit de query reeks](#read-parameter-from-the-query-string)
-* [Hoofd tekst van een POST-aanvraag lezen](#read-body-from-a-post-request)
-* [Para meter lezen vanuit een route](#read-parameter-from-a-route)
-* [POJO hoofd tekst van een POST-aanvraag lezen](#read-pojo-body-from-a-post-request)
+* [Parameter lezen uit de querytekenreeks](#read-parameter-from-the-query-string)
+* [Lees de body van een POST-verzoek](#read-body-from-a-post-request)
+* [Parameter van een route lezen](#read-parameter-from-a-route)
+* [Lees POJO body van een POST verzoek](#read-pojo-body-from-a-post-request)
 
-In de volgende voor beelden ziet u de binding HTTP-trigger.
+In de volgende voorbeelden wordt de HTTP-triggerbinding weergegeven.
 
-#### <a name="read-parameter-from-the-query-string"></a>De para meter lezen uit de query reeks
+#### <a name="read-parameter-from-the-query-string"></a>Parameter lezen uit de querytekenreeks
 
-In dit voor beeld wordt een para meter met de naam `id`van de query teken reeks gelezen en gebruikt om een JSON-document te maken dat naar de client wordt geretourneerd, met het inhouds type `application/json`.
+In dit voorbeeld wordt `id`een parameter met de naam van de querytekenreeks gelezen en wordt `application/json`deze gebruikt om een JSON-document te maken dat naar de client is geretourneerd, met inhoudstype .
 
 ```java
 @FunctionName("TriggerStringGet")
@@ -282,9 +282,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-body-from-a-post-request"></a>Hoofd tekst van een POST-aanvraag lezen
+#### <a name="read-body-from-a-post-request"></a>Lees de body van een POST-verzoek
 
-In dit voor beeld wordt de hoofd tekst van een POST-aanvraag gelezen als `String`, en gebruikt deze om een JSON-document te maken dat naar de client wordt geretourneerd, met het inhouds type `application/json`.
+In dit voorbeeld wordt de hoofdtekst `String`van een POST-aanvraag als een , wordt gelezen `application/json`en wordt gebruikt om een JSON-document te bouwen dat naar de client is geretourneerd, met inhoudstype .
 
 ```java
     @FunctionName("TriggerStringPost")
@@ -318,9 +318,9 @@ In dit voor beeld wordt de hoofd tekst van een POST-aanvraag gelezen als `String
     }
 ```
 
-#### <a name="read-parameter-from-a-route"></a>Para meter lezen vanuit een route
+#### <a name="read-parameter-from-a-route"></a>Parameter van een route lezen
 
-In dit voor beeld leest u een verplichte para meter, met de naam `id`, en een optionele para meter `name` van het traject, en gebruikt u deze om een JSON-document te maken dat naar de client wordt geretourneerd, met het inhouds type `application/json`. T
+In dit voorbeeld wordt `id`een verplichte parameter `name` met de naam en een optionele parameter uit het routepad `application/json`gelezen en wordt deze gebruikt om een JSON-document te maken dat naar de client is geretourneerd, met inhoudstype . T
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -356,9 +356,9 @@ public HttpResponseMessage run(
 }
 ```
 
-#### <a name="read-pojo-body-from-a-post-request"></a>POJO hoofd tekst van een POST-aanvraag lezen
+#### <a name="read-pojo-body-from-a-post-request"></a>Lees POJO body van een POST verzoek
 
-Dit is de code voor de klasse `ToDoItem`, waarnaar wordt verwezen in dit voor beeld:
+Hier is de `ToDoItem` code voor de klasse, waarnaar in dit voorbeeld wordt verwezen:
 
 ```java
 
@@ -388,7 +388,7 @@ public class ToDoItem {
 
 ```
 
-In dit voor beeld wordt de hoofd tekst van een POST-aanvraag gelezen. De aanvraag tekst wordt automatisch gedeserialiseerd in een `ToDoItem`-object en wordt geretourneerd naar de client met het inhouds type `application/json`. De para meter `ToDoItem` wordt geserialiseerd door de functions-runtime, omdat deze is toegewezen aan de eigenschap `body` van de `HttpMessageResponse.Builder`-klasse.
+Dit voorbeeld leest de inhoud van een POST-verzoek. De aanvraaginstantie wordt automatisch gedeserialiseerd in een `ToDoItem` object en wordt `application/json`teruggestuurd naar de client, met inhoudstype . De `ToDoItem` parameter wordt geserialiseerd door de runtime `body` van `HttpMessageResponse.Builder` functies, omdat deze is toegewezen aan de eigenschap van de klasse.
 
 ```java
 @FunctionName("TriggerPojoPost")
@@ -422,15 +422,15 @@ public HttpResponseMessage run(
 
 ---
 
-## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
+## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-In [ C# klasse-bibliotheken](functions-dotnet-class-library.md) en Java is het kenmerk `HttpTrigger` beschikbaar voor het configureren van de functie.
+In [c#-klassebibliotheken](functions-dotnet-class-library.md) en `HttpTrigger` Java is het kenmerk beschikbaar om de functie te configureren.
 
-U kunt het autorisatie niveau en toegestane HTTP-methoden instellen in de para meters van de kenmerk-constructor, het type webhook en een route sjabloon. Zie [configuratie](#configuration)voor meer informatie over deze instellingen.
+U het autorisatieniveau en de toegestane HTTP-methoden instellen in kenmerkconstructorparameters, webhooktype en een routesjabloon. Zie [Configuratie](#configuration)voor meer informatie over deze instellingen.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In dit voor beeld ziet u hoe u het kenmerk [http trigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) gebruikt.
+In dit voorbeeld wordt uitgelegd hoe u het kenmerk [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) gebruikt.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -441,23 +441,23 @@ public static Task<IActionResult> Run(
 }
 ```
 
-Zie voor een volledig voor beeld het [voor beeld](#example)van de trigger.
+Zie het [voorbeeld van](#example)de trigger voor een volledig voorbeeld .
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# het script.
+Kenmerken worden niet ondersteund door C# Script.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-In dit voor beeld ziet u hoe u het kenmerk [http trigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) gebruikt.
+In dit voorbeeld wordt uitgelegd hoe u het kenmerk [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) gebruikt.
 
 ```java
 @FunctionName("HttpTriggerJava")
@@ -471,35 +471,35 @@ public HttpResponseMessage<String> HttpTrigger(
 }
 ```
 
-Zie voor een volledig voor beeld het [voor beeld](#example)van de trigger.
+Zie het [voorbeeld van](#example)de trigger voor een volledig voorbeeld .
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `HttpTrigger`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `HttpTrigger` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type** | N.v.t.| Vereist: moet worden ingesteld op `httpTrigger`. |
-| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in`. |
-| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. |
-| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Bepaalt welke sleutels, indien aanwezig, moeten aanwezig zijn in de aanvraag om de functie te kunnen aanroepen. Het autorisatie niveau kan een van de volgende waarden hebben: <ul><li><code>anonymous</code>&mdash;er is geen API-sleutel vereist.</li><li><code>function</code>&mdash;een functie-specifieke API-sleutel is vereist. Dit is de standaard waarde als er geen is ingesteld.</li><li><code>admin</code>&mdash;de hoofd sleutel is vereist.</li></ul> Zie de sectie over [autorisatie sleutels](#authorization-keys)voor meer informatie. |
-| **technieken** |**Technieken** | Een matrix van de HTTP-methoden waarop de functie reageert. Als deze niet wordt opgegeven, reageert de functie op alle HTTP-methoden. Zie [het HTTP-eind punt aanpassen](#customize-the-http-endpoint). |
-| **rond** | **Rond** | Hiermee wordt de route sjabloon gedefinieerd, waarmee wordt bepaald welke Url's van aanvragen uw functie reageert. De standaard waarde als er geen wordt gegeven, is `<functionname>`. Zie [het HTTP-eind punt aanpassen](#customize-the-http-endpoint)voor meer informatie. |
-| **webHookType** | **WebHookType** | _Alleen ondersteund voor de runtime van versie 1. x._<br/><br/>Hiermee wordt de HTTP-trigger geconfigureerd om te fungeren als een [webhook](https://en.wikipedia.org/wiki/Webhook) -ontvanger voor de opgegeven provider. Stel de eigenschap `methods` niet in als u deze eigenschap instelt. Het type webhook kan een van de volgende waarden hebben:<ul><li><code>genericJson</code>&mdash;een eind punt voor een webhook voor algemene doel einden zonder logica voor een specifieke provider. Met deze instelling worden aanvragen beperkt tot gebruikers met behulp van HTTP POST en met het inhouds type `application/json`.</li><li><code>github</code>&mdash;de functie reageert op [github-webhooks](https://developer.github.com/webhooks/). Gebruik niet de eigenschap _authLevel_ met github-webhooks. Zie de sectie GitHub-webhooks verderop in dit artikel voor meer informatie.</li><li><code>slack</code>&mdash;de functie reageert op [toegestane webhooks](https://api.slack.com/outgoing-webhooks). Gebruik niet de eigenschap _authLevel_ met toegestane webhooks. Zie de sectie over toegestane webhooks verderop in dit artikel voor meer informatie.</li></ul>|
+| **Type** | N.v.t.| Vereist - moet `httpTrigger`worden ingesteld op . |
+| **direction** | N.v.t.| Vereist - moet `in`worden ingesteld op . |
+| **Naam** | N.v.t.| Vereist - de variabele naam die wordt gebruikt in de functiecode voor de aanvraag- of aanvraaginstantie. |
+| <a name="http-auth"></a>**authLevel authLevel** |  **AuthLevel (AuthLevel)** |Hiermee bepaalt u welke toetsen mogelijk aanwezig moeten zijn op de aanvraag om de functie aan te roepen. Het autorisatieniveau kan een van de volgende waarden zijn: <ul><li><code>anonymous</code>&mdash;Er is geen API-sleutel vereist.</li><li><code>function</code>&mdash;Er is een functiespecifieke API-sleutel vereist. Dit is de standaardwaarde als er geen wordt opgegeven.</li><li><code>admin</code>&mdash;De hoofdsleutel is vereist.</li></ul> Zie de sectie over [autorisatiesleutels](#authorization-keys)voor meer informatie. |
+| **Methoden** |**Methoden** | Een array van de HTTP-methoden waarop de functie reageert. Als dit niet is opgegeven, reageert de functie op alle HTTP-methoden. Zie [het HTTP-eindpunt aanpassen](#customize-the-http-endpoint). |
+| **Route** | **Route** | Hiermee definieert u de routesjabloon en bepaalt u op welke aanvraag-URL's uw functie reageert. De standaardwaarde als er `<functionname>`geen wordt opgegeven, is . Zie [het HTTP-eindpunt aanpassen](#customize-the-http-endpoint)voor meer informatie. |
+| **webHookType** | **WebHookType** | _Alleen ondersteund voor de uitvoering 1.x runtime._<br/><br/>Hiermee configureert u de HTTP-trigger om te fungeren als [een webhook-ontvanger](https://en.wikipedia.org/wiki/Webhook) voor de opgegeven provider. Stel de `methods` accommodatie niet in als u deze accommodatie instelt. Het webhooktype kan een van de volgende waarden zijn:<ul><li><code>genericJson</code>&mdash;Een webhook-eindpunt voor algemene doeleinden zonder logica voor een specifieke provider. Met deze instelling worden aanvragen beperkt tot `application/json` alleen aanvragen die HTTP POST gebruiken en met het inhoudstype.</li><li><code>github</code>&mdash;De functie reageert op [GitHub webhooks](https://developer.github.com/webhooks/). Gebruik de eigenschap _authLevel_ niet met GitHub webhooks. Zie de sectie GitHub webhooks later in dit artikel voor meer informatie.</li><li><code>slack</code>&mdash;De functie reageert op [Slack webhooks](https://api.slack.com/outgoing-webhooks). Gebruik de eigenschap _authLevel_ niet met Slack-webhooks. Zie de sectie Slack webhooks later in dit artikel voor meer informatie.</li></ul>|
 
 ## <a name="payload"></a>Nettolading
 
-Het invoer type van de trigger wordt als `HttpRequest` of een aangepast type gedeclareerd. Als u `HttpRequest`selecteert, krijgt u volledige toegang tot het aanvraag object. Voor een aangepast type probeert de runtime de JSON-aanvraag tekst te parseren om de object eigenschappen in te stellen.
+Het invoertype trigger wordt `HttpRequest` gedeclareerd als een of een aangepast type. Als u `HttpRequest`kiest, krijgt u volledige toegang tot het aanvraagobject. Voor een aangepast type probeert de runtime de JSON-aanvraaginstantie te ontleden om de objecteigenschappen in te stellen.
 
-## <a name="customize-the-http-endpoint"></a>Het HTTP-eind punt aanpassen
+## <a name="customize-the-http-endpoint"></a>Het HTTP-eindpunt aanpassen
 
-Wanneer u een functie voor een HTTP-trigger maakt, is de functie standaard adresseerbaar met een route van het formulier:
+Wanneer u standaard een functie voor een HTTP-trigger maakt, is de functie adresseerbaar met een route van het formulier:
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-U kunt deze route aanpassen met behulp van de optionele eigenschap `route` van de invoer binding van de HTTP-trigger. Als voor beeld wordt met het volgende *Function. json* -bestand een `route` eigenschap gedefinieerd voor een http-trigger:
+U deze route `route` aanpassen met de optionele eigenschap op de invoerbinding van de HTTP-trigger. Als voorbeeld definieert het volgende *functie.json-bestand* een `route` eigenschap voor een HTTP-trigger:
 
 ```json
 {
@@ -526,11 +526,11 @@ Met deze configuratie is de functie nu adresseerbaar met de volgende route in pl
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Met deze configuratie kan de functie code twee para meters ondersteunen in het adres, de _categorie_ en de _id_.
+Met deze configuratie kan de functiecode twee parameters in het adres, de _categorie_ en de _id_ondersteunen.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-U kunt elke [Web-API-route beperking](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) gebruiken met de para meters. De volgende C# functie code maakt gebruik van beide para meters.
+U elke [web-API-routebeperking](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) gebruiken met uw parameters. De volgende C#-functiecode maakt gebruik van beide parameters.
 
 ```csharp
 using System.Net;
@@ -544,9 +544,9 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-U kunt elke [Web-API-route beperking](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) gebruiken met de para meters. De volgende C# functie code maakt gebruik van beide para meters.
+U elke [web-API-routebeperking](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) gebruiken met uw parameters. De volgende C#-functiecode maakt gebruik van beide parameters.
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -562,11 +562,11 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het knoop punt biedt de functions-runtime de hoofd tekst van de aanvraag van het `context`-object. Zie voor meer informatie het [voor beeld van Java script-trigger](#example).
+In Node biedt de runtime Functies `context` de aanvraaginstantie van het object. Zie het voorbeeld van de [JavaScript-trigger voor](#example)meer informatie .
 
-In het volgende voor beeld ziet u hoe u route parameters van `context.bindingData`kunt lezen.
+In het volgende voorbeeld ziet `context.bindingData`u hoe u routeparameters lezen van.
 
 ```javascript
 module.exports = function (context, req) {
@@ -585,9 +585,9 @@ module.exports = function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-De context van de functie-uitvoering wordt weer gegeven via een para meter die is gedeclareerd als `func.HttpRequest`. Met dit exemplaar kunt u een functie gebruiken om toegang te krijgen tot gegevens route parameters, waarden van query reeksen en methoden waarmee u HTTP-antwoorden kunt ophalen.
+De functieuitvoeringscontext wordt weergegeven via `func.HttpRequest`een parameter die is gedeclareerd als . Met deze instantie heeft een functie toegang tot parameters voor gegevensroute, querytekenreekswaarden en methoden waarmee u HTTP-antwoorden retourneren.
 
-Eenmaal gedefinieerd, zijn de route parameters beschikbaar voor de functie door de `route_params` methode aan te roepen.
+Eenmaal gedefinieerd, zijn de routeparameters beschikbaar voor `route_params` de functie door de methode aan te roepen.
 
 ```python
 import logging
@@ -605,9 +605,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-De context van de functie-uitvoering is de eigenschappen die zijn gedeclareerd in het kenmerk `HttpTrigger`. Met het kenmerk kunt u route parameters, autorisatie niveaus, HTTP-woorden en het exemplaar van de inkomende aanvraag definiëren.
+De functieuitvoeringscontext is eigenschappen `HttpTrigger` zoals aangegeven in het kenmerk. Met het kenmerk u routeparameters, autorisatieniveaus, HTTP-werkwoorden en de inkomende aanvraaginstantie definiëren.
 
-Route parameters worden gedefinieerd via het kenmerk `HttpTrigger`.
+Routeparameters worden gedefinieerd `HttpTrigger` via het kenmerk.
 
 ```java
 package com.function;
@@ -634,7 +634,7 @@ public class HttpTriggerJava {
 
 ---
 
-Standaard worden alle functie routes voorafgegaan door *API*. U kunt het voor voegsel ook aanpassen of verwijderen met behulp van de eigenschap `http.routePrefix` in het JSON-bestand van de [host](functions-host-json.md) . In het volgende voor beeld wordt het voor voegsel *API* -route verwijderd met behulp van een lege teken reeks voor het voor voegsel in het bestand *host. json* .
+Standaard zijn alle functieroutes vooraf gekoppeld aan *api.* U het voorvoegsel ook `http.routePrefix` aanpassen of verwijderen met behulp van de eigenschap in uw [host.json-bestand.](functions-host-json.md) In het volgende voorbeeld wordt het voorvoegsel van de *api-route* verwijderd met behulp van een lege tekenreeks voor het voorvoegsel in het *bestand host.json.*
 
 ```json
 {
@@ -644,11 +644,11 @@ Standaard worden alle functie routes voorafgegaan door *API*. U kunt het voor vo
 }
 ```
 
-## <a name="using-route-parameters"></a>Route parameters gebruiken
+## <a name="using-route-parameters"></a>Routeparameters gebruiken
 
-Route parameters die het `route` patroon van een functie hebben gedefinieerd, zijn beschikbaar voor elke binding. Als u bijvoorbeeld een route hebt gedefinieerd als `"route": "products/{id}"`, kan een tabel opslag binding de waarde van de para meter `{id}` in de bindings configuratie gebruiken.
+Routeparameters die het patroon `route` van een functie hebben gedefinieerd, zijn beschikbaar voor elke binding. Als u bijvoorbeeld een route hebt `"route": "products/{id}"` gedefinieerd als vervolgens kan een `{id}` tabelopslagbinding de waarde van de parameter in de bindingsconfiguratie gebruiken.
 
-De volgende configuratie laat zien hoe de `{id}` para meter wordt door gegeven aan de `rowKey`van de binding.
+In de volgende `{id}` configuratie ziet u hoe `rowKey`de parameter wordt doorgegeven aan de binding.
 
 ```json
 {
@@ -661,15 +661,15 @@ De volgende configuratie laat zien hoe de `{id}` para meter wordt door gegeven a
 }
 ```
 
-## <a name="working-with-client-identities"></a>Werken met client identiteiten
+## <a name="working-with-client-identities"></a>Werken met klantidentiteiten
 
-Als uw functie-app gebruikmaakt van [app service verificatie/autorisatie](../app-service/overview-authentication-authorization.md), kunt u informatie weer geven over geverifieerde clients vanuit uw code. Deze informatie is beschikbaar als [aanvraag headers die zijn geïnjecteerd door het platform](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+Als uw functie-app verificatie / autorisatie van [appservice](../app-service/overview-authentication-authorization.md)gebruikt, u informatie over geverifieerde clients bekijken vanuit uw code. Deze informatie is beschikbaar als [verzoek headers geïnjecteerd door het platform](../app-service/app-service-authentication-how-to.md#access-user-claims). 
 
-U kunt deze informatie ook lezen van bindings gegevens. Deze functie is alleen beschikbaar voor de functions-runtime in 2. x en hoger. Het is momenteel alleen beschikbaar voor .NET-talen.
+U deze informatie ook lezen op uit bindende gegevens. Deze mogelijkheid is alleen beschikbaar voor de runtime van de functies in 2.x en hoger. Het is momenteel ook alleen beschikbaar voor .NET-talen.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Informatie over geverifieerde clients is beschikbaar als een [claimsprincipal is](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). De Claimsprincipal is is beschikbaar als onderdeel van de context van de aanvraag, zoals wordt weer gegeven in het volgende voor beeld:
+Informatie over geverifieerde clients is beschikbaar als [claimprincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). De Claimprincipal is beschikbaar als onderdeel van de aanvraagcontext zoals weergegeven in het volgende voorbeeld:
 
 ```csharp
 using System.Net;
@@ -684,7 +684,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 }
 ```
 
-U kunt de Claimsprincipal is ook gewoon opnemen als een extra para meter in de functie handtekening:
+Als alternatief kan de ClaimPrincipal eenvoudig worden opgenomen als een extra parameter in de functiehandtekening:
 
 ```csharp
 using System.Net;
@@ -699,9 +699,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Informatie over geverifieerde clients is beschikbaar als een [claimsprincipal is](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). De Claimsprincipal is is beschikbaar als onderdeel van de context van de aanvraag, zoals wordt weer gegeven in het volgende voor beeld:
+Informatie over geverifieerde clients is beschikbaar als [claimprincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). De Claimprincipal is beschikbaar als onderdeel van de aanvraagcontext zoals weergegeven in het volgende voorbeeld:
 
 ```csharp
 using System.Net;
@@ -716,7 +716,7 @@ public static IActionResult Run(HttpRequest req, ILogger log)
 }
 ```
 
-U kunt de Claimsprincipal is ook gewoon opnemen als een extra para meter in de functie handtekening:
+Als alternatief kan de ClaimPrincipal eenvoudig worden opgenomen als een extra parameter in de functiehandtekening:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -733,112 +733,112 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-De geverifieerde gebruiker is beschikbaar via [http-headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+De geverifieerde gebruiker is beschikbaar via [HTTP-headers.](../app-service/app-service-authentication-how-to.md#access-user-claims)
 
 # <a name="python"></a>[Python](#tab/python)
 
-De geverifieerde gebruiker is beschikbaar via [http-headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+De geverifieerde gebruiker is beschikbaar via [HTTP-headers.](../app-service/app-service-authentication-how-to.md#access-user-claims)
 
 # <a name="java"></a>[Java](#tab/java)
 
-De geverifieerde gebruiker is beschikbaar via [http-headers](../app-service/app-service-authentication-how-to.md#access-user-claims).
+De geverifieerde gebruiker is beschikbaar via [HTTP-headers.](../app-service/app-service-authentication-how-to.md#access-user-claims)
 
 ---
 
-## <a name="authorization-keys"></a>Autorisatie sleutels
+## <a name="authorization-keys"></a>Autorisatiesleutels
 
-Met functies kunt u sleutels gebruiken om het moeilijker te maken om toegang te krijgen tot de eind punten van uw HTTP-functies tijdens het ontwikkelen.  Tenzij het HTTP-autorisatie niveau van een door HTTP geactiveerde functie is ingesteld op `anonymous`, moeten aanvragen een API-sleutel in de aanvraag bevatten. 
+Met functies u toetsen gebruiken om het moeilijker te maken om tijdens de ontwikkeling toegang te krijgen tot de eindpunten van uw HTTP-functie.  Tenzij het HTTP-autorisatieniveau op een `anonymous`HTTP-geactiveerde functie is ingesteld op , moeten aanvragen een API-sleutel in de aanvraag bevatten. 
 
 > [!IMPORTANT]
-> Hoewel sleutels uw HTTP-eind punten kunnen afleiden tijdens de ontwikkeling, zijn ze niet bedoeld als een manier om een HTTP-trigger in de productie te beveiligen. Zie [een HTTP-eind punt in productie beveiligen](#secure-an-http-endpoint-in-production)voor meer informatie.
+> Hoewel toetsen tijdens de ontwikkeling kunnen helpen bij het verdoezelen van uw HTTP-eindpunten, zijn ze niet bedoeld als een manier om een HTTP-trigger in productie te beveiligen. Zie [Een HTTP-eindpunt in productie beveiligen](#secure-an-http-endpoint-in-production)voor meer informatie.
 
 > [!NOTE]
-> In de functies 1. x runtime kunnen webhook-providers gebruikmaken van sleutels om aanvragen op verschillende manieren te autoriseren, afhankelijk van wat de provider ondersteunt. Dit wordt behandeld in [webhooks en sleutels](#webhooks-and-keys). De functions-runtime in versie 2. x en hoger bevat geen ingebouwde ondersteuning voor webhook-providers.
+> In de functies 1.x runtime kunnen webhook-providers toetsen gebruiken om aanvragen op verschillende manieren te autoriseren, afhankelijk van wat de provider ondersteunt. Dit is bedekt met [Webhooks en toetsen.](#webhooks-and-keys) De functies runtime in versie 2.x en hoger bevat geen ingebouwde ondersteuning voor webhook providers.
 
-#### <a name="authorization-scopes-function-level"></a>Autorisatie bereiken (functie niveau)
+#### <a name="authorization-scopes-function-level"></a>Autorisatiescopes (functieniveau)
 
-Er zijn twee autorisatie bereiken voor sleutels op functie niveau:
+Er zijn twee autorisatiescopes voor toetsen op functieniveau:
 
-* **Functie**: deze sleutels zijn alleen van toepassing op de specifieke functies waaronder ze zijn gedefinieerd. Wanneer u als een API-sleutel wordt gebruikt, is deze alleen toegankelijk voor deze functie.
+* **Functie**: Deze toetsen zijn alleen van toepassing op de specifieke functies waaronder ze zijn gedefinieerd. Bij gebruik als API-sleutel bieden deze alleen toegang tot die functie.
 
-* **Host**: sleutels met een bereik van een host kunnen worden gebruikt voor toegang tot alle functies in de functie-app. Wanneer deze als een API-sleutel wordt gebruikt, is toegang tot alle functies in de functie-app toegestaan. 
+* **Host:** Toetsen met een hostbereik kunnen worden gebruikt om toegang te krijgen tot alle functies binnen de functie-app. Bij gebruik als API-sleutel bieden deze toegang tot elke functie binnen de functie-app. 
 
-Elke sleutel krijgt de naam van de verwijzing en er is een standaard sleutel (met de naam ' default ') op het niveau van de functie en de host. Functie sleutels hebben voor rang op de sleutels van de host. Wanneer twee sleutels met dezelfde naam zijn gedefinieerd, wordt de functie toets altijd gebruikt.
+Elke sleutel wordt genoemd naar referentie en er is een standaardsleutel (met de naam 'standaard') op functie- en hostniveau. Functietoetsen hebben voorrang op hosttoetsen. Wanneer twee toetsen met dezelfde naam worden gedefinieerd, wordt de functiesleutel altijd gebruikt.
 
-#### <a name="master-key-admin-level"></a>Hoofd sleutel (beheer niveau) 
+#### <a name="master-key-admin-level"></a>Hoofdsleutel (beheerdersniveau) 
 
-Elke functie-app heeft ook een host-sleutel op beheer niveau met de naam `_master`. Naast het verschaffen van toegang op hostniveau voor alle functies in de app, biedt de hoofd sleutel ook beheerders toegang tot de runtime REST Api's. Deze sleutel kan niet worden ingetrokken. Wanneer u een autorisatie niveau van `admin`instelt, moeten aanvragen gebruikmaken van de hoofd sleutel. een andere sleutel resulteert in een autorisatie fout.
+Elke functie-app heeft ook een `_master`hostsleutel op beheerdersniveau met de naam . Naast het bieden van toegang op hostniveau tot alle functies in de app, biedt de hoofdsleutel ook administratieve toegang tot de RUNTime REST API's. Deze sleutel kan niet worden ingetrokken. Wanneer u een autorisatieniveau van `admin`, moeten aanvragen de hoofdsleutel gebruiken. andere belangrijke resultaten in autorisatie mislukking.
 
 > [!CAUTION]  
-> Als gevolg van de verhoogde machtigingen in uw functie-app die is verleend door de hoofd sleutel, moet u deze sleutel niet delen met derden of deze distribueren in native client toepassingen. Wees voorzichtig bij het kiezen van het autorisatie niveau beheerder.
+> Vanwege de verhoogde machtigingen in uw functie-app die door de hoofdsleutel wordt verleend, moet u deze sleutel niet delen met derden of distribueren in native clienttoepassingen. Wees voorzichtig bij het kiezen van het beheerdersautorisatieniveau.
 
 ## <a name="obtaining-keys"></a>Sleutels verkrijgen
 
-Sleutels worden opgeslagen als onderdeel van de functie-app in Azure en worden op rest versleuteld. Als u de sleutels wilt weer geven, nieuwe wilt maken of sleutels naar nieuwe waarden wilt versleutelen, gaat u naar een van de functies die via HTTP worden geactiveerd in de [Azure Portal](https://portal.azure.com) en selecteert u **beheren**.
+Sleutels worden opgeslagen als onderdeel van uw functie-app in Azure en worden in rust versleuteld. Als u uw sleutels wilt bekijken, nieuwe toetsen wilt maken of toetsen wilt rollen naar nieuwe waarden, navigeert u naar een van uw HTTP-geactiveerde functies in de [Azure-portal](https://portal.azure.com) en selecteert **u Beheren**.
 
-![Functie sleutels in de portal beheren.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+![Functiesleutels beheren in de portal.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-U kunt functie sleutels programmatisch verkrijgen met behulp van [Key Management-api's](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
+U functietoetsen programmatisch verkrijgen met behulp van [Key management API's](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
 
-## <a name="api-key-authorization"></a>Verificatie van API-sleutels
+## <a name="api-key-authorization"></a>API-sleutelautorisatie
 
-Voor de meeste HTTP-trigger sjablonen is een API-sleutel in de aanvraag vereist. Uw HTTP-aanvraag lijkt daarom normaal te lijken op de volgende URL:
+Voor de meeste HTTP-triggersjablonen is een API-sleutel in de aanvraag vereist. Uw HTTP-aanvraag ziet er dus normaal gesproken uit als de volgende URL:
 
     https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
-De sleutel kan worden opgenomen in een query reeks variabele met de naam `code`, zoals hierboven is beschreven. Het kan ook worden opgenomen in een `x-functions-key` HTTP-header. De waarde van de sleutel kan een functie sleutel zijn die is gedefinieerd voor de functie of een wille keurige host-sleutel.
+De sleutel kan worden opgenomen in `code`een variabele voor querytekenreeksen met de naam , zoals hierboven. Het kan ook worden `x-functions-key` opgenomen in een HTTP-header. De waarde van de sleutel kan elke functiesleutel zijn die is gedefinieerd voor de functie of een hostsleutel.
 
-U kunt anonieme aanvragen toestaan waarvoor geen sleutels zijn vereist. U kunt ook vereisen dat de hoofd sleutel wordt gebruikt. U wijzigt het standaard autorisatie niveau met behulp van de eigenschap `authLevel` in de JSON van de binding. Zie [trigger-configuratie](#configuration)voor meer informatie.
+U anonieme verzoeken toestaan, waarvoor geen sleutels nodig zijn. U ook eisen dat de hoofdsleutel wordt gebruikt. U wijzigt het standaardautorisatieniveau door de `authLevel` eigenschap in de bindende JSON te gebruiken. Zie [Trigger - configuratie](#configuration)voor meer informatie.
 
 > [!NOTE]
-> Bij het lokaal uitvoeren van functies wordt de autorisatie uitgeschakeld, ongeacht de opgegeven instelling voor het autorisatie niveau. Na het publiceren naar Azure wordt de instelling van `authLevel` in uw trigger afgedwongen. Sleutels zijn nog steeds vereist [voor het lokaal uitvoeren in een container](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally).
+> Wanneer de functie lokaal wordt uitgevoerd, wordt de autorisatie uitgeschakeld, ongeacht de opgegeven instelling voor autorisatieniveau. Na publicatie in `authLevel` Azure wordt de instelling in de trigger afgedwongen. Sleutels zijn nog steeds vereist wanneer u [lokaal in een container wordt](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)uitgevoerd.
 
 
-## <a name="secure-an-http-endpoint-in-production"></a>Een HTTP-eind punt in de productie omgeving beveiligen
+## <a name="secure-an-http-endpoint-in-production"></a>Een HTTP-eindpunt in productie beveiligen
 
-Als u uw functie-eind punten in productie volledig wilt beveiligen, kunt u overwegen om een van de volgende functie-beveiligings opties op app-niveau te implementeren:
+Als u uw functieeindpunten in productie volledig wilt beveiligen, u overwegen een van de volgende beveiligingsopties op functie-app-niveau te implementeren:
 
-* Schakel App Service verificatie/autorisatie in voor uw functie-app. Met het App Service-platform kunt u Azure Active Directory (AAD) en verschillende id-providers van derden gebruiken om clients te verifiëren. U kunt deze strategie gebruiken om aangepaste autorisatie regels voor uw functies te implementeren en u kunt met gebruikers gegevens uit uw functie code werken. Zie [verificatie en autorisatie in azure app service](../app-service/overview-authentication-authorization.md) en [werken met client identiteiten](#working-with-client-identities)voor meer informatie.
+* Schakel Verificatie van appservice / autorisatie voor uw functie-app in. Met het App Service-platform u Azure Active Directory (AAD) en verschillende identiteitsproviders van derden gebruiken om clients te verifiëren. U deze strategie gebruiken om aangepaste autorisatieregels voor uw functies te implementeren en u werken met gebruikersgegevens uit uw functiecode. Zie [Verificatie en autorisatie in Azure App Service en](../app-service/overview-authentication-authorization.md) Werken met [clientidentiteiten](#working-with-client-identities)voor meer informatie.
 
-* Gebruik Azure API Management (APIM) om aanvragen te verifiëren. APIM biedt diverse API-beveiligings opties voor inkomende aanvragen. Zie [API Management Authentication policies](../api-management/api-management-authentication-policies.md)(Engelstalig) voor meer informatie. Als APIM is geïmplementeerd, kunt u uw functie-app zodanig configureren dat aanvragen alleen worden geaccepteerd van het IP-adres van uw APIM-exemplaar. Zie [IP-adres beperkingen](ip-addresses.md#ip-address-restrictions)voor meer informatie.
+* Gebruik Azure API Management (APIM) om aanvragen te verifiëren. APIM biedt verschillende API-beveiligingsopties voor binnenkomende aanvragen. Zie [Verificatiebeleid API-beheer](../api-management/api-management-authentication-policies.md)voor meer informatie. Met APIM op zijn plaats u uw functie-app configureren om alleen aanvragen te accepteren vanaf het IP-adres van uw APIM-exemplaar. Zie [IP-adresbeperkingen](ip-addresses.md#ip-address-restrictions)voor meer informatie.
 
-* Implementeer uw functie-app in een Azure App Service Environment (ASE). ASE biedt een specifieke hosting omgeving waarin u uw functies kunt uitvoeren. Met ASE kunt u één front-end-gateway configureren die u kunt gebruiken om alle inkomende aanvragen te verifiëren. Zie [Configuring a Web Application firewall (WAF) (Engelstalig) voor app service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)voor meer informatie.
+* Implementeer uw functie-app in een Azure App Service Environment (ASE). ASE biedt een speciale hostingomgeving waarin u uw functies uitvoeren. Met ASE u één front-end gateway configureren die u gebruiken om alle binnenkomende aanvragen te verifiëren. Zie [Een Web Application Firewall (WAF) configureren voor app-serviceomgeving voor](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)meer informatie.
 
-Wanneer u een van deze beveiligings methoden op app-niveau gebruikt, moet u het door HTTP geactiveerde functie autorisatie niveau instellen op `anonymous`.
+Wanneer u een van deze beveiligingsmethoden op functie-app-niveau gebruikt, `anonymous`moet u het http-geactiveerde functieautorisatieniveau instellen op .
 
 ## <a name="webhooks"></a>Webhooks
 
 > [!NOTE]
-> De webhook-modus is alleen beschikbaar voor versie 1. x van de functions-runtime. Deze wijziging is doorgevoerd om de prestaties van HTTP-triggers in versie 2. x en hoger te verbeteren.
+> De Webhook-modus is alleen beschikbaar voor versie 1.x van de runtime Functies. Deze wijziging is aangebracht om de prestaties van HTTP-triggers in versie 2.x en hoger te verbeteren.
 
-In versie 1. x, webhook-sjablonen bieden extra validatie voor webhook-payloads. In versie 2. x en hoger werkt de HTTP-basis trigger nog steeds en is de aanbevolen benadering voor webhooks. 
+In versie 1.x bieden webhook-sjablonen extra validatie voor webhook-payloads. In versie 2.x en hoger werkt de http-trigger nog steeds en is het de aanbevolen aanpak voor webhooks. 
 
-### <a name="github-webhooks"></a>GitHub-webhooks
+### <a name="github-webhooks"></a>GitHub webhooks
 
-Als u wilt reageren op GitHub-webhooks, maakt u eerst uw functie met een HTTP-trigger en stelt u de eigenschap **webHookType** in op `github`. Kopieer vervolgens de URL en API-sleutel naar de pagina **webhook toevoegen** van uw github-opslag plaats. 
+Als u wilt reageren op GitHub-webhooks, maakt u eerst uw `github`functie met een HTTP-trigger en stelt u de eigenschap **webHookType** in op . Kopieer vervolgens de URL- en API-sleutel naar de **webpagina Toevoegen** van uw GitHub-opslagplaats. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-### <a name="slack-webhooks"></a>Toegestane webhooks
+### <a name="slack-webhooks"></a>Slack webhooks
 
-De toegestane webhook genereert een token voor u in plaats van door u in te stellen. u moet dus een functie-specifieke sleutel met het token configureren van toegestane vertraging. Zie [autorisatie sleutels](#authorization-keys).
+De Slack-webhook genereert een token voor u in plaats van u dit te laten opgeven, dus u moet een functiespecifieke sleutel configureren met het token van Slack. Zie [Autorisatiesleutels](#authorization-keys).
 
-## <a name="webhooks-and-keys"></a>Webhooks en sleutels
+## <a name="webhooks-and-keys"></a>Webhooks en toetsen
 
-Webhook-autorisatie wordt verwerkt door het onderdeel webhook-ontvanger, onderdeel van de HTTP-trigger en het mechanisme varieert op basis van het type webhook. Elk mechanisme is afhankelijk van een sleutel. Standaard wordt de functie sleutel met de naam ' default ' gebruikt. Als u een andere sleutel wilt gebruiken, configureert u de webhook-provider om de sleutel naam met de aanvraag te verzenden op een van de volgende manieren:
+Webhook autorisatie wordt behandeld door de webhook ontvanger component, onderdeel van de HTTP trigger, en het mechanisme varieert op basis van de webhook type. Elk mechanisme is gebaseerd op een sleutel. Standaard wordt de functiesleutel met de naam 'standaard' gebruikt. Als u een andere sleutel wilt gebruiken, configureert u de webhookprovider om de sleutelnaam met het verzoek op een van de volgende manieren te verzenden:
 
-* **Query reeks**: de provider geeft de sleutel naam door in de query teken reeks parameter `clientid`, zoals `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`.
-* **Aanvraag header**: de provider geeft de sleutel naam in de `x-functions-clientid`-header door.
+* **Querytekenreeks:** de provider geeft de `clientid` sleutelnaam door `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`in de parameter querytekenreeks, zoals .
+* **Koptekst aanvragen**: De provider `x-functions-clientid` geeft de sleutelnaam in de koptekst door.
 
 ## <a name="limits"></a>Limieten
 
-De lengte van de HTTP-aanvraag is beperkt tot 100 MB (104.857.600 bytes) en de URL-lengte is beperkt tot 4 KB (4.096 bytes). Deze limieten worden opgegeven door het `httpRuntime`-element van het [bestand Web. config](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)van de runtime.
+De http-aanvraaglengte is beperkt tot 100 MB (104.857.600 bytes) en de URL-lengte is beperkt tot 4 KB (4.096 bytes). Deze limieten worden `httpRuntime` opgegeven door het element van het [Web.config-bestand](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)van de runtime.
 
-Als een functie die de HTTP-trigger gebruikt, niet binnen 230 seconden wordt voltooid, wordt een time-out opgetreden in de [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) en wordt een HTTP 502-fout geretourneerd. De functie wordt nog steeds uitgevoerd, maar kan geen HTTP-antwoord retour neren. Voor langlopende functies wordt u aangeraden async-patronen te volgen en een locatie te retour neren waar u de status van de aanvraag kunt pingen. Zie voor meer informatie over hoe lang een functie kan worden uitgevoerd het [plan voor schalen en hosten](functions-scale.md#timeout).
+Als een functie die de HTTP-trigger gebruikt niet binnen 230 seconden wordt voltooid, geeft de [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) een time-out en retourneert u een HTTP 502-fout. De functie blijft actief, maar kan geen HTTP-antwoord retourneren. Voor langlopende functies raden we u aan asyncpatronen te volgen en een locatie terug te sturen waar u de status van de aanvraag pingen. Zie [Schalen en hosten](functions-scale.md#timeout)voor informatie over hoe lang een functie kan worden uitgevoerd.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een HTTP-antwoord retour neren van een functie](./functions-bindings-http-webhook-output.md)
+- [Een HTTP-antwoord van een functie retourneren](./functions-bindings-http-webhook-output.md)

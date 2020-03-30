@@ -1,6 +1,6 @@
 ---
-title: Overzicht van micro soft Identity platform (v 2.0)-Azure
-description: Meer informatie over het micro soft Identity platform (v 2.0)-eind punt en-platform.
+title: Overzicht van Microsoft Identity Platform (v2.0) - Azure
+description: Meer informatie over het Microsoft-identiteitsplatform (v2.0) eindpunt en platform.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,70 +17,70 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240826"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van micro soft Identity platform (v 2.0)
+# <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van Microsoft Identity Platform (v2.0)
 
-Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Het stelt ontwikkel aars in staat om toepassingen te bouwen die zich aanmelden bij alle micro soft-identiteiten en om tokens op te halen voor het aanroepen van micro soft-Api's, zoals Microsoft Graph, of Api's die ontwikkel aars hebben gebouwd. Het micro soft Identity-platform bestaat uit:
+Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Hiermee kunnen ontwikkelaars toepassingen bouwen die alle Microsoft-identiteiten ondertekenen en tokens ertoe brengen Microsoft API's te bellen, zoals Microsoft Graph, of API's die ontwikkelaars hebben gebouwd. Het Microsoft-identiteitsplatform bestaat uit:
 
-- **OAuth 2,0 en OpenID Connect maken verbinding met Standard-compatibele verificatie service** waarmee ontwikkel aars een micro soft-identiteit kunnen verifiëren, waaronder:
-  - Werk-of school accounts (ingericht via Azure AD)
-  - Persoonlijke micro soft-accounts (zoals Skype, Xbox en Outlook.com)
+- **OAuth 2.0 en OpenID Connect standaardverificatieservice** waarmee ontwikkelaars elke Microsoft-identiteit kunnen verifiëren, waaronder:
+  - Werk- of schoolaccounts (ingericht via Azure AD)
+  - Persoonlijke Microsoft-accounts (zoals Skype, Xbox en Outlook.com)
   - Sociale of lokale accounts (via Azure AD B2C)
-- **Open-source-bibliotheken**: micro soft-verificatie bibliotheken (MSAL) en ondersteuning voor andere normen-compatibele bibliotheken
-- **Portal voor toepassings beheer**: een in de Azure Portal ingebouwde registratie-en configuratie-ervaring, samen met al uw andere Azure-beheer mogelijkheden.
-- **API voor toepassings configuratie en Power shell**: Hiermee kunt u programmatische configuratie van uw toepassingen via de Microsoft Graph-API en Power shell, zodat u uw DevOps-taken automatisch kan uitvoeren.
-- **Inhoud voor ontwikkel aars**: conceptuele en naslag documentatie, voor beelden van Snelstartgids, voor beelden van code, zelf studies en hand leidingen.
+- **Open-source bibliotheken**: Microsoft Authentication Libraries (MSAL) en ondersteuning voor andere bibliotheken die voldoen aan standaarden
+- **Toepassingsbeheerportal:** een registratie- en configuratie-ervaring die is ingebouwd in de Azure-portal, samen met al uw andere Azure-beheermogelijkheden.
+- **Application configuration API en PowerShell:** waarmee uw toepassingen programmatisch kunnen worden geconfigureerd via de Microsoft Graph API en PowerShell, zodat u uw DevOps-taken automatiseren.
+- **Ontwikkelaarsinhoud:** conceptuele en referentiedocumentatie, quickstartvoorbeelden, codevoorbeelden, zelfstudies en handleidingen.
 
-Voor ontwikkel aars biedt het micro soft Identity-platform naadloze integratie in de identiteits-en beveiligings ruimte, zoals verificatie zonder wacht woord, authenticatie van de stap en voorwaardelijke toegang.  U hoeft deze functionaliteit niet zelf te implementeren: toepassingen die zijn geïntegreerd met het micro soft-identiteits platform, profiteren van dergelijke innovaties.
+Voor ontwikkelaars biedt het Microsoft-identiteitsplatform naadloze integratie in innovaties in de identiteits- en beveiligingsruimte, zoals wachtwoordloze verificatie, step-upauthenticatie en voorwaardelijke toegang.  U hoeft dergelijke functionaliteit niet zelf te implementeren: toepassingen die zijn geïntegreerd met het Microsoft-identiteitsplatform profiteren van dergelijke innovaties.
 
-Met micro soft Identity platform kunt u eenmaal code schrijven en elke gebruiker bereiken. U kunt een app één keer bouwen en op verschillende platforms werken, of een app bouwen die fungeert als een client en een resource toepassing (API).
+Met het Microsoft-identiteitsplatform u één keer code schrijven en elke gebruiker bereiken. U een app één keer bouwen en deze op veel platforms laten werken, of een app bouwen die fungeert als client en als een API (Resource Application).
 
 ## <a name="getting-started"></a>Aan de slag
 
 Werken met identiteiten hoeft niet moeilijk te zijn. 
 
-Bekijk een [video over micro soft Identity platform](identity-videos.md) voor meer informatie over de basis principes. 
+Bekijk een [video van het Microsoft-identiteitsplatform](identity-videos.md) om de basisprincipes te leren. 
 
-Kies een [scenario](authentication-flows-app-scenarios.md) dat voor u van toepassing is: elk scenario pad heeft een Snelstartgids en een overzichts pagina waarmee u binnen enkele minuten aan de slag kunt.
+Kies een [scenario](authentication-flows-app-scenarios.md) dat op u van toepassing is: elk scenariopad heeft een snelle start en een overzichtspagina om u binnen enkele minuten aan de slag te krijgen:
 
-- [Een app met één pagina bouwen](scenario-spa-overview.md)
-- [Een web-app bouwen die gebruikers aanmeldt](scenario-web-app-sign-user-overview.md)
-- [Een web-app bouwen die web-Api's aanroept](scenario-web-app-call-api-overview.md)
+- [Een app met één pagina maken](scenario-spa-overview.md)
+- [Een web-app bouwen waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md)
+- [Een web-app bouwen waarmee web-API's worden aangeroepen](scenario-web-app-call-api-overview.md)
 - [Een beveiligde web-API bouwen](scenario-protected-web-api-overview.md)
-- [Een web-API bouwen die web-Api's aanroept](scenario-web-api-call-api-overview.md)
-- [Een bureau blad-app bouwen](scenario-desktop-overview.md)
+- [Een web-API bouwen die web-API's aanroept](scenario-web-api-call-api-overview.md)
+- [Een bureaublad-app maken](scenario-desktop-overview.md)
 - [Een daemon-app bouwen](scenario-daemon-overview.md)
 - [Een mobiele app bouwen](scenario-mobile-overview.md)
 
-In het volgende diagram worden de scenario's voor algemene verificatie-apps beschreven. Gebruik dit als referentie bij het integreren van het micro soft Identity-platform met uw app.
+In de volgende grafiek worden veelvoorkomende verificatie-app-scenario's beschreven: gebruik het als referentie bij het integreren van het Microsoft-identiteitsplatform met uw app.
 
-[Toepassings scenario's in het micro soft Identity-platform ![](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[![Toepassingsscenario's in het Microsoft-identiteitsplatform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer wilt weten over basis verificatie concepten, raden we u aan om te beginnen met de volgende onderwerpen:
+Als u meer wilt weten over kernverificatieconcepten, raden we u aan om met deze onderwerpen te beginnen:
 
-- [Verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)
-- [De basisbeginselen van verificatie](authentication-scenarios.md)
-- [Toepassings-en service-principals](app-objects-and-service-principals.md)
-- [Doel groepen](v2-supported-account-types.md)
+- [Verificatiestromen en toepassingsscenario's](authentication-flows-app-scenarios.md)
+- [Basisbeginselen van verificatie](authentication-scenarios.md)
+- [Aan- en aangevers van toepassingen](app-objects-and-service-principals.md)
+- [Publiek](v2-supported-account-types.md)
 - [Machtigingen en toestemming](v2-permissions-and-consent.md)
-- [Id-tokens](id-tokens.md) en [toegangs tokens](access-tokens.md)
+- [ID-tokens](id-tokens.md) en [toegangstokens](access-tokens.md)
 
-Bouw een toepassing met uitgebreide gegevens die [Microsoft Graph](https://docs.microsoft.com/graph/overview)aanroept.
+Bouw een gegevensrijke toepassing die [Microsoft Graph](https://docs.microsoft.com/graph/overview)aanroept.
 
-Wanneer u klaar bent om uw app te starten in een **productie omgeving**, raadpleegt u deze aanbevolen procedures:
+Wanneer u klaar bent om uw app in een **productieomgeving**te starten, bekijkt u de volgende aanbevolen procedures:
 
-- [Schakel logboek registratie](msal-logging.md) in uw toepassing in.
+- [Schakel het inloggen](msal-logging.md) op uw toepassing in.
 - Schakel telemetrie in uw toepassing in.
-- Schakel [proxy's in en pas HTTP-clients](msal-net-provide-httpclient.md)aan.
-- Test uw integratie door de [controle lijst voor de integratie van micro soft Identity platform](identity-platform-integration-checklist.md)te volgen.
+- Schakel [proxy's in en pas HTTP-clients aan.](msal-net-provide-httpclient.md)
+- Test uw integratie door de checklist voor integratie [van het Microsoft-identiteitsplatform te volgen.](identity-platform-integration-checklist.md)
 
 ## <a name="learn-more"></a>Meer informatie
 
-Als u van plan bent een klant gerichte toepassing te bouwen die zich aanmeldt bij sociale en lokale identiteiten, raadpleegt u het [Azure AD B2C-overzicht](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Als u van plan bent een klantgerichte toepassing te bouwen die in sociale en lokale identiteiten wordt tekent, raadpleegt u het [Overzicht van Azure AD B2C.](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)

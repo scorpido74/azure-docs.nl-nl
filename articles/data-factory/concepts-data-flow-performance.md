@@ -1,158 +1,158 @@
 ---
-title: Prestaties en afstemmings handleiding voor gegevens stromen toewijzen
-description: Meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het toewijzen van gegevens stromen in Azure Data Factory.
+title: Prestaties en afstemmingshandleiding voor gegevensstromen in kaart brengen
+description: Meer informatie over belangrijke factoren die van invloed zijn op de prestaties van kaartgegevensstromen in Azure Data Factory.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246290"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246990"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestaties en tuninggids voor gegevensstromen in kaart brengen
 
-Het toewijzen van gegevens stromen in Azure Data Factory bieden een code-Free interface voor het ontwerpen, implementeren en organiseren van gegevens transformaties op schaal. Als u niet bekend bent met het toewijzen van gegevens stromen, raadpleegt u het [overzicht gegevens stroom toewijzen](concepts-data-flow-overview.md).
+Gegevensstromen toewijzen in Azure Data Factory bieden een codevrije interface voor het ontwerpen, implementeren en orkestreren van gegevenstransformaties op schaal. Zie het [overzicht van gegevensstroom toewijzen](concepts-data-flow-overview.md)als u niet bekend bent met het toewijzen van gegevensstromen.
 
-Bij het ontwerpen en testen van gegevens stromen van de ADF UX, zorgt u ervoor dat u overschakelt naar de foutopsporingsmodus om uw gegevens stromen in realtime uit te voeren zonder te hoeven wachten tot een cluster is opgewarmd. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
+Wanneer u gegevensstromen uit de ADF-UX ontwerpt en test, moet u de foutopsporingsmodus inschakelen om uw gegevensstromen in realtime uit te voeren zonder te wachten tot een cluster is opgewarmd. Zie [Foutopsporingsmodus](concepts-data-flow-debug-mode.md)voor meer informatie .
 
-In deze video ziet u enkele voor beelden van tijd notaties waarmee gegevens worden getransformeerd met gegevens stromen:
-> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
+In deze video ziet u een aantal voorbeeldtijden waarin gegevens worden getransformeerd met gegevensstromen:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
 
-## <a name="monitoring-data-flow-performance"></a>Prestaties van de gegevens stroom bewaken
+## <a name="monitoring-data-flow-performance"></a>Prestaties van de gegevensstroom bewaken
 
-Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid testen door te klikken op het tabblad voor beeld van gegevens in het configuratie venster. Wanneer u uw logica hebt gecontroleerd, test u uw gegevens stroom end-to-end als een activiteit in een pijp lijn. Voeg een activiteit gegevens stroom uitvoeren toe en gebruik de knop fout opsporing om de prestaties van uw gegevens stroom te testen. Als u het uitvoerings plan en prestatie profiel van uw gegevens stroom wilt openen, klikt u op het bril pictogram onder acties op het tabblad uitvoer van de pijp lijn.
+Tijdens het ontwerpen van toewijzingsgegevensstromen u elke transformatie testen door op het tabblad gegevensvoorbeeld in het configuratiedeelvenster te klikken. Zodra u uw logica hebt geverifieerd, test u uw gegevensstroom end-to-end als een activiteit in een pijplijn. Voeg een activiteit Gegevensstroom uitvoeren toe en gebruik de foutopsporingsknop om de prestaties van uw gegevensstroom te testen. Als u het uitvoeringsplan en het prestatieprofiel van uw gegevensstroom wilt openen, klikt u op het pictogram met de bril onder 'acties' in het uitvoertabblad van uw pijplijn.
 
-![Monitor voor gegevens stroom](media/data-flow/mon002.png "Monitor voor gegevens stroom 2")
+![Gegevensstroommonitor](media/data-flow/mon002.png "Gegevensstroommonitor 2")
 
- U kunt deze informatie gebruiken om de prestaties van uw gegevens stroom te schatten voor gegevens bronnen met verschillende grootte. Zie [toewijzing van gegevens stromen controleren](concepts-data-flow-monitoring.md)voor meer informatie.
+ U deze informatie gebruiken om de prestaties van uw gegevensstroom te schatten aan de hand van gegevensbronnen van verschillende grootte. Zie [Gegevensstromen voor](concepts-data-flow-monitoring.md)meer informatie controleren.
 
-![Gegevensstroom controleren](media/data-flow/mon003.png "Monitor voor gegevens stroom 3")
+![Gegevensstroombewaking](media/data-flow/mon003.png "Gegevensstroommonitor 3")
 
- Voor het uitvoeren van de fout opsporing voor de pijp lijn is ongeveer één minuut van het instellen van de cluster tijd in uw algemene prestatie berekeningen vereist voor een warm cluster. Als u de standaard Azure Integration Runtime initialiseert, kan het aantal tijd van het draaien ongeveer 5 minuten duren.
+ Voor pijplijnfoutfouten is ongeveer één minuut clusterconfiguratietijd vereist in uw algemene prestatieberekeningen voor een warm cluster. Als u de standaard-Azure Integration Runtime initialiseert, kan de spin-uptijd ongeveer 5 minuten duren.
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>De reken grootte verg Roten in Azure Integration Runtime
+## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Compute-grootte vergroten in Azure Integration Runtime
 
-Een Integration Runtime met meer kernen verhoogt het aantal knoop punten in de Spark-reken omgevingen en biedt meer verwerkings kracht voor het lezen, schrijven en transformeren van uw gegevens.
-* Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat de verwerkings snelheid hoger is dan uw invoer snelheid.
-* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden.
+Een Integratieruntijd met meer kernen verhoogt het aantal knooppunten in de Spark-compute-omgevingen en biedt meer verwerkingskracht om uw gegevens te lezen, schrijven en transformeren.
+* Probeer een **compute optimized** cluster als u wilt dat de verwerkingssnelheid hoger is dan de invoersnelheid.
+* Probeer een **cluster met geheugengeoptimaliseerde** cluster als u meer gegevens in het geheugen wilt opslaan. Geheugen geoptimaliseerd heeft een hogere prijs-punt per core dan Compute Optimized, maar zal waarschijnlijk resulteren in hogere transformatie snelheden.
 
 ![Nieuwe IR](media/data-flow/ir-new.png "Nieuwe IR")
 
-Zie [Integration runtime in azure Data Factory](concepts-integration-runtime.md)voor meer informatie over het maken van een Integration runtime.
+Zie [Runtime integratie in Azure Data Factory](concepts-integration-runtime.md)voor meer informatie over het maken van een runtime voor integratie.
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>De grootte van het cluster voor fout opsporing verg Roten
+### <a name="increase-the-size-of-your-debug-cluster"></a>De grootte van uw foutopsporingscluster vergroten
 
-Het inschakelen van debug maakt standaard gebruik van de standaard Azure Integration runtime die automatisch voor elke data factory wordt gemaakt. Deze standaard Azure IR is ingesteld op acht kernen, vier voor een driver knooppunt en vier voor een werk knooppunt, met behulp van algemene Compute-eigenschappen. Wanneer u met grotere gegevens test, kunt u de grootte van het cluster voor fout opsporing verg Roten door een Azure IR met grotere configuraties te maken en dit nieuwe Azure IR te kiezen wanneer u overschakelt op fout opsporing. Hiermee wordt ADF geadviseerd om deze Azure IR te gebruiken voor het voor beeld van gegevens en het opsporen van pijp lijnen met gegevens stromen.
+Als u foutopsporing inschakelt, wordt standaard de runtime van Azure Integration gebruikt die automatisch wordt gemaakt voor elke gegevensfabriek. Deze standaard Azure IR is ingesteld voor acht cores, vier voor een stuurprogrammaknooppunt en vier voor een werknemersknooppunt, met behulp van algemene compute-eigenschappen. Terwijl u test met grotere gegevens, u de grootte van uw foutopsporingscluster vergroten door een Azure IR met grotere configuraties te maken en deze nieuwe Azure IR te kiezen wanneer u foutopsporingsinschakelt. Hierdoor wordt ADF geïnstrueerd om deze Azure IR te gebruiken voor gegevensvoorbeeld en pijplijnfoutbug met gegevensstromen.
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimaliseren voor Azure SQL Database en Azure SQL Data Warehouse
 
-### <a name="partitioning-on-source"></a>Partitioneren op Bron
+### <a name="partitioning-on-source"></a>Partitioneren op bron
 
-1. Ga naar het tabblad **optimaliseren** en selecteer **partitioneren instellen**
-1. Selecteer **bron**.
-1. Stel bij **aantal partities**het maximum aantal verbindingen in voor uw Azure SQL-data base. U kunt een hogere instelling proberen om parallelle verbindingen met uw data base te krijgen. Sommige gevallen kunnen echter leiden tot snellere prestaties met een beperkt aantal verbindingen.
-1. Selecteer of u wilt partitioneren op een specifieke tabel kolom of een query.
-1. Als u **kolom**hebt geselecteerd, kiest u de kolom partitie.
-1. Als u **query**hebt geselecteerd, voert u een query in die overeenkomt met het partitie schema van de database tabel. Met deze query kan de bron database-engine gebruikmaken van partitie-eliminatie. De tabellen van de bron database hoeven niet te worden gepartitioneerd. Als uw bron nog niet is gepartitioneerd, maakt ADF nog steeds gebruik van gegevenspartitionering in de Spark-transformatie omgeving op basis van de sleutel die u in de bron transformatie selecteert.
+1. Ga naar het tabblad **Optimaliseren** en selecteer **Partitionering instellen**
+1. Selecteer **Bron**.
+1. Stel **onder Aantal partities**het maximumaantal verbindingen met uw Azure SQL DB in. U een hogere instelling proberen om parallelle verbindingen met uw database te krijgen. In sommige gevallen kunnen echter snellere prestaties met een beperkt aantal verbindingen worden uitgevoerd.
+1. Selecteer of u wilt partitioneren op basis van een specifieke tabelkolom of een query.
+1. Als u **Kolom**hebt geselecteerd, kiest u de partitiekolom.
+1. Als u **Query**hebt geselecteerd, voert u een query in die overeenkomt met het partitieschema van de databasetabel. Met deze query kan de brondatabase-engine gebruikmaken van partitieverwijdering. Uw brondatabasetabellen hoeven niet te worden verdeeld. Als uw bron nog niet is verdeeld, gebruikt ADF nog steeds gegevenspartitionering in de Spark-transformatieomgeving op basis van de sleutel die u selecteert in de brontransformatie.
 
-![Bron onderdeel](media/data-flow/sourcepart3.png "Bron onderdeel")
+![Brononderdeel](media/data-flow/sourcepart3.png "Brononderdeel")
 
 > [!NOTE]
-> Een goede hand leiding om u te helpen bij het kiezen van het aantal partities voor uw bron is gebaseerd op het aantal kernen dat u voor uw Azure Integration Runtime hebt ingesteld en vermenigvuldigt dat getal met vijf. Als u bijvoorbeeld een reeks bestanden in uw ADLS-mappen transformeert en u een 32-core-Azure IR wilt gebruiken, is het aantal partities dat u zou richten, 32 x 5 = 160 partities.
+> Een goede handleiding om u te helpen kiezen aantal partities voor uw bron is gebaseerd op het aantal cores dat u hebt ingesteld voor uw Azure Integration Runtime en vermenigvuldig dat aantal met vijf. Dus, bijvoorbeeld, als u een reeks bestanden in uw ADLS-mappen transformeert en u een 32-core Azure IR gaat gebruiken, is het aantal partities dat u zou targeten 32 x 5 = 160 partities.
 
-### <a name="source-batch-size-input-and-isolation-level"></a>Grootte, invoer en isolatie niveau van de bron batch
+### <a name="source-batch-size-input-and-isolation-level"></a>Grootte van de bronbatch, invoer en isolatieniveau
 
-Onder **bron opties** in de bron transformatie kunnen de volgende instellingen invloed hebben op de prestaties:
+Onder **Bronopties** in de brontransformatie kunnen de volgende instellingen de prestaties beïnvloeden:
 
-* Batch grootte geeft ADF om gegevens op te slaan in sets in het geheugen in plaats van rijen per rij. Batch grootte is een optionele instelling en er zijn mogelijk onvoldoende resources op de reken knooppunten als ze niet op de juiste wijze zijn gewijzigd.
-* Door een query in te stellen, kunt u rijen op de bron filteren voordat ze in de gegevens stroom voor verwerking arriveren. Zo kunt u de initiële gegevens sneller aanschaffen. Als u een query gebruikt, kunt u optionele query hints toevoegen voor uw Azure SQL-data base, zoals lezen niet-vastgelegd.
-* Lezen niet-doorgevoerd levert snellere query resultaten voor de bron transformatie
+* Batchgrootte instrueert ADF om gegevens in sets in het geheugen op te slaan in plaats van rij voor rij. Batchgrootte is een optionele instelling en u geen resources meer hebben op de compute nodes als ze niet goed zijn groot.
+* Als u een query instelt, u rijen bij de bron filteren voordat ze in Gegevensstroom aankomen voor verwerking. Dit kan de eerste gegevensverzameling sneller maken. Als u een query gebruikt, u optionele queryhints toevoegen voor uw Azure SQL DB, zoals LEZEN NIET-VASTGELEGD.
+* Lees niet-vastgelegd biedt snellere queryresultaten over brontransformatie
 
 ![Bron](media/data-flow/source4.png "Bron")
 
-### <a name="sink-batch-size"></a>Grootte van Sink-batch
+### <a name="sink-batch-size"></a>Batchgrootte gootsteen
 
-Stel **Batch grootte** in op het tabblad Instellingen voor Azure SQL DB-en Azure SQL DW-sinks om te voor komen dat de gegevens stromen worden verwerkt door rijen. Als Batch grootte is ingesteld, verwerkt ADF database schrijf bewerkingen in batches op basis van de opgegeven grootte.
+Als u verwerking van uw gegevensstromen rij voor rij wilt voorkomen, stelt u **batchgrootte** in op het tabblad Instellingen voor Azure SQL DB en Azure SQL DW-sinks. Als batchgrootte is ingesteld, verwerkt ADF databaseschrijft in batches op basis van de opgegeven grootte.
 
-![Tenen](media/data-flow/sink4.png "Sink")
+![Sink](media/data-flow/sink4.png "Sink")
 
-### <a name="partitioning-on-sink"></a>Partitioneren op Sink
+### <a name="partitioning-on-sink"></a>Het verdelen op gootsteen
 
-Zelfs als uw gegevens niet in uw doel tabellen zijn gepartitioneerd, wordt het aanbevolen om uw gegevens in de Sink-trans formatie te partitioneren. Gepartitioneerde gegevens leiden vaak tot veel sneller laden via het afdwingen van alle verbindingen om één knoop punt/partitie te gebruiken. Ga naar het tabblad Optimize van uw Sink en selecteer *Round Robin* partitioneren om het ideale aantal partities te selecteren dat u naar uw Sink wilt schrijven.
+Zelfs als u uw gegevens niet hebt verdeeld in uw doeltabellen, wordt aanbevolen om uw gegevens te laten verdelen in de sinktransformatie. Partitiegegevens resulteren vaak in een veel sneller laden over het dwingen van alle verbindingen om een enkele node / partitie te gebruiken. Ga naar het tabblad Optimaliseren van uw gootsteen en selecteer *Round Robin* partitioning om het ideale aantal partities te selecteren om naar uw gootsteen te schrijven.
 
-### <a name="disable-indexes-on-write"></a>Indexen bij schrijven uitschakelen
+### <a name="disable-indexes-on-write"></a>Indexen uitschakelen op schrijven
 
-Voeg in uw pijp lijn een [opgeslagen procedure activiteit](transform-data-using-stored-procedure.md) toe vóór de activiteit gegevens stroom, waardoor de indexen van uw doel tabellen die vanuit uw Sink zijn geschreven, worden uitgeschakeld. Voeg na de activiteit van de gegevens stroom een andere opgeslagen procedure activiteit toe waarmee deze indexen worden ingeschakeld. Of gebruik de pre-processing en verwerkings scripts in een Data Base-sink.
+Voeg in uw pijplijn een [activiteit Opgeslagen procedure](transform-data-using-stored-procedure.md) toe voordat uw activiteit Gegevensstroom wordt uitgeschakeld die indexen uitschakelt op uw doeltabellen die vanuit uw gootsteen zijn geschreven. Voeg na uw activiteit Gegevensstroom een andere activiteit Opgeslagen procedure toe waarmee deze indexen worden opgeslagen. Of gebruik maken van de pre-processing en post-processing scripts in een database gootsteen.
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Verg root de grootte van uw Azure SQL-data base en DW
+### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>De grootte van uw Azure SQL DB en DW vergroten
 
-Plan een grootte van uw bron en Sink Azure SQL DB en DW vóór de uitvoering van de pijp lijn om de door voer te verhogen en Azure-beperking te minimaliseren zodra u DTU-limieten bereikt. Nadat de uitvoering van de pijp lijn is voltooid, kunt u het formaat van uw data bases herstellen naar hun normale uitvoerings frequentie.
+Plan een herformaat van uw bron en sink Azure SQL DB en DW voordat uw pijplijn wordt uitgevoerd om de doorvoer te verhogen en Azure throttling te minimaliseren zodra u DTU-limieten hebt bereikt. Nadat de pijplijnuitvoering is voltooid, wijzigt u het formaat van uw databases weer op de normale uitvoeringssnelheid.
 
-* SQL DB-bron tabel met 887k-rijen en 74-kolommen naar een SQL DB-tabel met één afgeleide kolom transformatie neemt ongeveer 3 minuten end-to-end op met behulp van geheugen geoptimaliseerd 80-kern fout opsporing Azure IRs.
+* SQL DB-brontabel met 887k-rijen en 74 kolommen naar een SQL DB-tabel met een enkele afgeleide kolomtransformatie duurt ongeveer 3 minuten end-to-end met geheugengeoptimaliseerde Azure-iR's met geheugen.
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Alleen Azure Synapse SQL DW] Gebruik fase ring om gegevens bulksgewijs te laden via Poly base
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Alleen Azure Synapse SQL DW] Staging gebruiken om gegevens in bulk te laden via Polybase
 
-Als u wilt voor komen dat rijen worden ingevoegd in uw DW, schakelt u **fase ring inschakelen** in uw Sink-instellingen in, zodat ADF [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)kan gebruiken. Met poly Base kan de gegevens bulksgewijs worden geladen met ADF.
-* Wanneer u de gegevens stroom activiteit vanuit een pijp lijn uitvoert, moet u een BLOB of ADLS Gen2 opslag locatie selecteren om uw gegevens tijdens het bulksgewijs laden te zetten.
+Als u wilt voorkomen dat rij voor rij wordt ingevoegd in uw DW, schakelt u **Fasering in** uw sink-instellingen inschakelen in, zodat ADF [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)kan gebruiken. Met PolyBase kan ADF de gegevens in bulk laden.
+* Wanneer u uw gegevensstroomactiviteit uitvoert vanuit een pijplijn, moet u een Blob- of ADLS Gen2-opslaglocatie selecteren om uw gegevens tijdens het laden van bulkteplaatsen te fasen.
 
-* Bestands bron van 421Mb-bestand met 74 kolommen naar een Synapse-tabel en één afgeleide kolom transformatie duurt ongeveer 4 minuten end-to-end met behulp van geheugen geoptimaliseerd 80-kern fout opsporing Azure IRs.
+* Bestandsbron van 421 Mb-bestand met 74 kolommen naar een Synapse-tabel en een enkele afgeleide kolomtransformatie duurt ongeveer 4 minuten end-to-end met behulp van geheugengeoptimaliseerde Azure-iR's met een kern van 80 cores.
 
 ## <a name="optimizing-for-files"></a>Optimaliseren voor bestanden
 
-U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize. Het is een goed idee om eerst op bestanden gebaseerde sinks te testen waarbij de standaard partitionering en optimalisaties behouden blijven.
+Bij elke transformatie u het partitieschema instellen dat u wilt dat de gegevensfabriek gebruikt op het tabblad Optimaliseren. Het is een goede gewoonte om eerst te testen file-based sinks houden van de standaard partitionering en optimalisaties.
 
-* Voor kleinere bestanden kan het kiezen van minder partities soms beter en sneller zijn dan Spark om uw kleine bestanden te partitioneren.
-* Als u niet voldoende informatie over de bron gegevens hebt, kiest u *Round Robin* partitioneren en stelt u het aantal partities in.
-* Als uw gegevens kolommen bevatten die goede hash-sleutels kunnen zijn, kiest u *hash-partitionering*.
+* Voor kleinere bestanden u merken dat het kiezen van minder partities soms beter en sneller kan werken dan spark vragen om uw kleine bestanden te partitioneren.
+* Als u niet genoeg informatie hebt over uw brongegevens, kiest u *Afronding van Robin-partities* en stelt u het aantal partities in.
+* Als uw gegevens kolommen bevatten die goede hashsleutels kunnen zijn, kiest u *Hash partitioneren*.
 
-* Een bestands bron met een bestands-Sink van een 421Mb-bestand met 74 kolommen en één afgeleide kolom transformatie duurt ongeveer 2 minuten end-to-end met behulp van geheugen geoptimaliseerd 80-kern debug Azure IRs.
+* Bestandsbron met bestandssink van een 421Mb-bestand met 74 kolommen en een enkele afgeleide kolomtransformatie duurt ongeveer 2 minuten end-to-end met behulp van geheugengeoptimaliseerde Azure IRs met geheugen.
 
-Als u fouten opspoort in de voorbeeld weergave van gegevens en de fout opsporing voor de pijp lijn, zijn de limiet-en sampling groottes voor bron gegevens sets op basis van bestanden alleen van toepassing op het aantal geretourneerde rijen, niet het aantal rijen dat wordt gelezen. Dit kan invloed hebben op de prestaties van de uitvoeringen van de fout opsporing en kan ertoe leiden dat de stroom mislukt.
-* Fout opsporing voor clusters is standaard kleine clusters met één knoop punt. het wordt aangeraden om voor beelden van kleine bestanden te gebruiken voor fout opsporing. Ga naar instellingen voor fout opsporing en wijs een kleine subset van uw gegevens aan met behulp van een tijdelijk bestand.
+Bij foutopsporing in gegevensvoorbeeld en pijplijnfoutbug zijn de limiet- en bemonsteringsgroottes voor bestandsgebaseerde brongegevenssets alleen van toepassing op het aantal geretourneerde rijen, niet op het aantal gelezen rijen. Dit kan van invloed zijn op de prestaties van uw foutopsporingsuitvoeringen en kan er mogelijk voor zorgen dat de stroom mislukt.
+* Foutopsporingsclusters zijn standaard kleine clusters met één knooppunt en we raden u aan om voorbeeldkleine bestanden te gebruiken voor foutopsporing. Ga naar Foutopsporingsinstellingen en wijs een kleine subset van uw gegevens aan met een tijdelijk bestand.
 
-    ![Instellingen voor fout opsporing](media/data-flow/debugsettings3.png "Instellingen voor fout opsporing")
+    ![Foutopsporingsinstellingen](media/data-flow/debugsettings3.png "Foutopsporingsinstellingen")
 
-### <a name="file-naming-options"></a>Opties voor bestands naamgeving
+### <a name="file-naming-options"></a>Opties voor bestandsnaamgeving
 
-De meest voorkomende manier om getransformeerde gegevens te schrijven in de toewijzing van gegevens stromen het schrijven van BLOB-of ADLS-bestands opslag. In uw Sink moet u een gegevensset selecteren die verwijst naar een container of map, niet een benoemd bestand. Als toewijzings gegevens stroom gebruikt Spark voor uitvoering, wordt uw uitvoer gesplitst over meerdere bestanden op basis van het partitie schema.
+De meest voorkomende manier om getransformeerde gegevens te schrijven in het toewijzen van gegevensstromen die Blob- of ADLS-bestandsarchief schrijven. In uw gootsteen moet u een gegevensset selecteren die naar een container of map verwijst, niet naar een benoemd bestand. Aangezien de toewijzingsgegevensstroom Spark gebruikt voor uitvoering, wordt uw uitvoer verdeeld over meerdere bestanden op basis van uw partitieschema.
 
-Een gemeen schappelijk schema voor partitionering is het kiezen van _uitvoer naar één bestand_, waarbij alle uitvoer onderdeel bestanden worden samengevoegd tot één bestand in uw Sink. Voor deze bewerking moet de uitvoer worden beperkt tot één partitie op één cluster knooppunt. U kunt geen cluster knooppunt bronnen meer gebruiken als u veel grote bron bestanden in één uitvoer bestand combineert.
+Een gemeenschappelijk partitieschema is om _Uitvoer naar één bestand te_kiezen, waarbij alle uitvoer-PART-bestanden worden samengevoegd tot één bestand in uw gootsteen. Deze bewerking vereist dat de uitvoer wordt verminderd tot één partitie op één clusterknooppunt. U geen clusterknooppuntbronnen meer hebben als u veel grote bronbestanden combineert in één uitvoerbestand.
 
-Als u wilt voor komen dat bronnen met reken knooppunten uitgeput blijven, behoud dan het standaard geoptimaliseerde schema in de gegevens stroom en voeg een Kopieer activiteit toe aan de pijp lijn waarmee alle deel bestanden uit de uitvoermap worden samengevoegd naar een nieuw bestand. Deze techniek scheidt de actie van trans formatie van het samen voegen van bestanden en verkrijgt hetzelfde resultaat als het instellen van _uitvoer naar één bestand_.
+Als u wilt voorkomen dat resources voor het berekenen van knooppuntresources worden uitgeput, houdt u het standaard, geoptimaliseerde schema in de gegevensstroom en voegt u een kopieeractiviteit toe in uw pijplijn waarin alle ONDERDEEL-bestanden uit de uitvoermap worden samengevoegd tot een nieuw afzonderlijk bestand. Deze techniek scheidt de actie van transformatie van het samenvoegen van bestanden en bereikt hetzelfde resultaat als het instellen _van Uitvoer op één bestand_.
 
-### <a name="looping-through-file-lists"></a>Lijst met bestanden door lopen
+### <a name="looping-through-file-lists"></a>Bestandenlijsten doorlussen
 
-Een toewijzings gegevens stroom wordt verbeterd wanneer de bron transformatie meer dan één bestand doorloopt in plaats van met behulp van de voor elke activiteit. Het is raadzaam om joker tekens of lijst met bestanden in de bron transformatie te gebruiken. Het proces voor gegevens stroom wordt sneller uitgevoerd, omdat de herhaling in het Spark-cluster kan worden uitgevoerd. Zie [joker tekens gebruiken in bron transformatie](connector-azure-data-lake-storage.md#mapping-data-flow-properties)voor meer informatie.
+Een mapping data flow zal beter worden uitgevoerd wanneer de brontransformatie iterates over meerdere bestanden in plaats van looping via de Voor elke activiteit. We raden u aan wildcards of bestandslijsten te gebruiken in uw brontransformatie. Het datastroomproces wordt sneller uitgevoerd doordat de lussen binnen het Spark-cluster kunnen plaatsvinden. Zie [Wildcarding in Brontransformatie](connector-azure-data-lake-storage.md#mapping-data-flow-properties)voor meer informatie.
 
-Als u bijvoorbeeld een lijst met gegevens bestanden van juli 2019 hebt die u wilt verwerken in een map in Blob Storage, volgt een Joker teken dat u in de bron transformatie kunt gebruiken.
+Als u bijvoorbeeld een lijst met gegevensbestanden van juli 2019 hebt die u wilt verwerken in een map in Blob Storage, hieronder is een wildcard die u gebruiken in uw brontransformatie.
 
 ```DateFiles/*_201907*.txt```
 
-Als u Joker tekens gebruikt, bevat uw pijp lijn slechts één gegevens stroom activiteit. Dit zal beter zijn dan een zoek actie voor de BLOB-Store die vervolgens doorloopt over alle overeenkomende bestanden met behulp van een ForEach met de activiteit gegevens stroom uitvoeren in.
+Door wildcarding te gebruiken, bevat uw pijplijn slechts één activiteit gegevensstroom. Dit zal beter presteren dan een lookup ten opzichte van de Blob Store die vervolgens iterates over alle overeenkomende bestanden met behulp van een ForEach met een Activiteit Gegevensstroom uitvoeren binnen.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimaliseren voor CosmosDB
 
-Het instellen van de door Voer en batch-eigenschappen op CosmosDB-sinks worden alleen van kracht tijdens de uitvoering van de gegevens stroom van een pijplijn activiteit. De oorspronkelijke verzamelings instellingen worden tijdens de uitvoering van de gegevens stroom gehonoreerd door CosmosDB.
+Het instellen van doorvoer- en batch-eigenschappen op CosmosDB-putten wordt alleen van kracht tijdens de uitvoering van die gegevensstroom van een activiteit in de gegevensstroom van pijplijnen. De oorspronkelijke verzamelingsinstellingen worden door CosmosDB gehonoreerd na de uitvoering van uw gegevensstroom.
 
-* Batch grootte: Bereken de omvang van de ruwe rijen van uw gegevens en zorg ervoor dat rowSize * Batch grootte kleiner is dan 2.000.000. Als dat het geval is, verg root u de Batch grootte om een betere door voer te krijgen
-* Door Voer: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
-*   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partities, is het instellen van een budget doorvoer meer evenwicht over die partities.
+* Batchgrootte: bereken de ruwe rijgrootte van uw gegevens en zorg ervoor dat de grootte van de batch van rowSize * kleiner is dan twee miljoen. Als dit het is, verhoog dan de batchgrootte om een betere doorvoer te krijgen
+* Doorvoer: Stel hier een hogere doorvoerinstelling in, zodat documenten sneller naar CosmosDB kunnen schrijven. Houd rekening met de hogere RU-kosten op basis van een hoge doorvoerinstelling.
+*   Budget voor schrijfdoorvoer: gebruik een waarde die kleiner is dan de totale RU's per minuut. Als u een gegevensstroom hebt met een hoog aantal Spark-partities, u een budgetdoorvoer instellen voor meer balans tussen deze partities.
 
-## <a name="join-performance"></a>Prestaties samen voegen
+## <a name="join-performance"></a>Deelnemen aan prestaties
 
-Het beheren van de prestaties van samen voegingen in uw gegevens stroom is een zeer veelvoorkomende bewerking die u tijdens de levens cyclus van uw gegevens transformaties kunt uitvoeren. In ADF moeten voor gegevens stromen geen gegevens worden gesorteerd voordat ze worden toegevoegd omdat deze bewerkingen worden uitgevoerd als hash-samen voegingen in Spark. U kunt echter profiteren van verbeterde prestaties met de ' Broadcast '-deelname aan optimalisatie. Zo voor komt u een wille keurige volg orde door de inhoud van beide zijden van de samenvoegings relatie te verduwen in het Spark-knoop punt. Dit werkt goed voor kleinere tabellen die worden gebruikt voor het opzoeken van verwijzingen. Grotere tabellen die mogelijk niet in het geheugen van het knoop punt passen, zijn geen goede kandidaten voor de optimalisatie van broadcast berichten.
+Het beheren van de prestaties van joins in uw gegevensstroom is een veel voorkomende bewerking die u gedurende de levenscyclus van uw gegevenstransformaties zult uitvoeren. In ADF vereisen gegevensstromen niet dat gegevens worden gesorteerd voordat ze worden verbonden, omdat deze bewerkingen worden uitgevoerd als hash-joins in Spark. U echter profiteren van verbeterde prestaties met de optimalisatie Broadcast Join. Dit voorkomt shuffles door het indrukken van de inhoud van beide zijden van uw join relatie in de Spark knooppunt. Dit werkt goed voor kleinere tabellen die worden gebruikt voor referentie-lookups. Grotere tabellen die mogelijk niet in het geheugen van het knooppunt passen, zijn geen goede kandidaten voor broadcast-optimalisatie.
 
-Een andere mogelijkheid voor samen voegen is om uw deelname zo te bouwen dat de tendens van Spark voor het implementeren van cross-join's wordt voor komen. Wanneer u bijvoorbeeld letterlijke waarden in uw join-voor waarden opneemt, ziet Spark dat er eerst een volledig Cartesisch product moet worden uitgevoerd. vervolgens worden de gekoppelde waarden gefilterd. Als u echter zeker weet dat u kolom waarden aan beide zijden van uw samenvoegings voorwaarde hebt, kunt u dit met Spark veroorzaakte Cartesisch product voor komen en de prestaties van uw samen voegingen en gegevens stromen verbeteren.
+Een andere Join optimalisatie is om je joins te bouwen op een zodanige wijze dat het vermijdt Spark's neiging om cross joins te implementeren. Wanneer u bijvoorbeeld letterlijke waarden opneemt in uw join-voorwaarden, kan Spark dat zien als een vereiste om eerst een volledig cartesiaans product uit te voeren en vervolgens de samengevoegde waarden uitfilteren. Maar als u ervoor zorgt dat u kolomwaarden aan beide zijden van uw joinconditie hebt, u dit door spark-geïnduceerde cartesiaans product vermijden en de prestaties van uw joins en gegevensstromen verbeteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie andere artikelen over gegevens stromen met betrekking tot prestaties:
+Zie andere gegevensstroomartikelen met betrekking tot prestaties:
 
-- [Tabblad gegevens stroom optimaliseren](concepts-data-flow-overview.md#optimize)
-- [Activiteit gegevens stroom](control-flow-execute-data-flow-activity.md)
-- [Prestaties van de gegevens stroom bewaken](concepts-data-flow-monitoring.md)
+- [Tabblad Gegevensstroom optimaliseren](concepts-data-flow-overview.md#optimize)
+- [Activiteit gegevensstroom](control-flow-execute-data-flow-activity.md)
+- [Prestaties gegevensstroom bewaken](concepts-data-flow-monitoring.md)

@@ -1,6 +1,6 @@
 ---
-title: Gebruikers machtigingen verlenen aan een specifiek Lab-beleid | Microsoft Docs
-description: Meer informatie over het verlenen van gebruikers machtigingen voor specifieke Lab-beleids regels in DevTest Labs op basis van de behoeften van elke gebruiker
+title: Gebruikersmachtigingen verlenen voor specifiek labbeleid | Microsoft Documenten
+description: Meer informatie over het verlenen van gebruikersmachtigingen voor specifiek labbeleid in DevTest Labs op basis van de behoeften van elke gebruiker
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284211"
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Gebruikers machtigingen verlenen aan specifieke Lab-beleids regels
+# <a name="grant-user-permissions-to-specific-lab-policies"></a>Gebruikersmachtigingen verlenen aan specifiek labbeleid
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt beschreven hoe u Power shell gebruikt om gebruikers machtigingen te verlenen aan een bepaald Lab-beleid. Op die manier kunnen machtigingen worden toegepast op basis van de behoeften van elke gebruiker. Stel dat u een bepaalde gebruiker de mogelijkheid wilt geven om de instellingen van het VM-beleid te wijzigen, maar niet de kosten beleidsregels.
+In dit artikel wordt uitgelegd hoe u PowerShell gebruiken om gebruikers machtigingen te verlenen voor een bepaald labbeleid. Op die manier kunnen machtigingen worden toegepast op basis van de behoeften van elke gebruiker. U een bepaalde gebruiker bijvoorbeeld de mogelijkheid bieden om de VM-beleidsinstellingen te wijzigen, maar niet het kostenbeleid.
 
-## <a name="policies-as-resources"></a>Beleid als bronnen
-Zoals beschreven in het artikel over [Access Control op basis van rollen](../role-based-access-control/role-assignments-portal.md) , biedt RBAC nauw keurig toegangs beheer van resources voor Azure. Met RBAC kunt u taken in uw DevOps-team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers die ze nodig hebben om hun taken uit te voeren.
+## <a name="policies-as-resources"></a>Beleid als resources
+Zoals besproken in het op [Azure Role-gebaseerde toegangscontroleartikel,](../role-based-access-control/role-assignments-portal.md) maakt RBAC fijnkorrelig toegangsbeheer van resources voor Azure mogelijk. Met RBAC u taken binnen uw DevOps-team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers die ze nodig hebben om hun taken uit te voeren.
 
-In DevTest Labs is een beleid een resource type waarmee de RBAC-actie **micro soft. DevTestLab/Labs/policySets/policies**/kan worden ingeschakeld. Elk lab-beleid is een bron in het beleids bron type en kan worden toegewezen als een bereik aan een RBAC-rol.
+In DevTest Labs is een beleid een resourcetype waarmee de **RBAC-actie Microsoft.DevTestLab/labs/policySets/policies/**. Elk labbeleid is een resource in het resourcetype Beleid en kan worden toegewezen als een bereik aan een RBAC-rol.
 
-Als u bijvoorbeeld gebruikers lees-en schrijf machtigingen wilt verlenen voor het beleid **toegestane VM-grootten** , maakt u een aangepaste rol die werkt met het beleid voor **micro soft. DevTestLab/Labs/policySets/policies.** vervolgens wijst u de juiste gebruikers toe aan deze aangepaste rol in het bereik van **micro soft. DevTestLab/Labs/PolicySets/policies/AllowedVmSizesInLab**.
+Als u gebruikers bijvoorbeeld lees-/schrijftoestemming wilt geven aan het beleid **voor toegestane VM-formaten,** maakt u een aangepaste rol die werkt met het **Microsoft.DevTestLab/labs/policySets/policies/action,** en wijst u vervolgens de juiste gebruikers toe aan deze aangepaste rol in het bereik van **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Zie voor meer informatie over aangepaste rollen in RBAC het [toegangs beheer voor aangepaste rollen](../role-based-access-control/custom-roles.md).
+Zie het [toegangscontrolebeheer aangepaste rollen](../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen in RBAC.
 
-## <a name="creating-a-lab-custom-role-using-powershell"></a>Een aangepaste rol voor een lab maken met Power shell
-Als u aan de slag wilt gaan, moet u [Azure PowerShell installeren](/powershell/azure/install-az-ps). 
+## <a name="creating-a-lab-custom-role-using-powershell"></a>Een aangepaste labrol maken met PowerShell
+Om aan de slag te gaan, moet u [Azure PowerShell installeren.](/powershell/azure/install-az-ps) 
 
-Wanneer u de cmdlets voor Azure PowerShell hebt ingesteld, kunt u de volgende taken uitvoeren:
+Zodra u de Azure PowerShell-cmdlets hebt ingesteld, u de volgende taken uitvoeren:
 
-* Alle bewerkingen/acties voor een resource provider weer geven
-* Acties in een bepaalde rol weer geven:
+* Alle bewerkingen/acties voor een resourceprovider weergeven
+* Acties in een bepaalde rol vermelden:
 * Een aangepaste rol maken
 
-In het volgende Power shell-script ziet u voor beelden van hoe u deze taken uitvoert:
+In het volgende PowerShell-script worden voorbeelden geïllustreerd van het uitvoeren van deze taken:
 
     # List all the operations/actions for a resource provider.
     Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
@@ -61,10 +61,10 @@ In het volgende Power shell-script ziet u voor beelden van hoe u deze taken uitv
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Machtigingen toewijzen aan een gebruiker voor een specifiek beleid met behulp van aangepaste rollen
-Zodra u uw aangepaste rollen hebt gedefinieerd, kunt u deze toewijzen aan gebruikers. Als u een aangepaste rol aan een gebruiker wilt toewijzen, moet u eerst de **ObjectId** verkrijgen die de gebruiker vertegenwoordigt. Hiervoor gebruikt u de cmdlet **Get-AzADUser** .
+## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Machtigingen toewijzen aan een gebruiker voor een specifiek beleid met aangepaste rollen
+Zodra u uw aangepaste rollen hebt gedefinieerd, u deze toewijzen aan gebruikers. Als u een aangepaste rol aan een gebruiker wilt toewijzen, moet u eerst de **ObjectId** verkrijgen die die gebruiker vertegenwoordigt. Gebruik daarvoor de **get-azaduser-cmdlet.**
 
-In het volgende voor beeld is de **ObjectId** van de *SomeUser* -gebruiker 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
+In het volgende voorbeeld is de **ObjectId** van de *SomeUser-gebruiker* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
 
     PS C:\>Get-AzADUser -SearchString "SomeUser"
 
@@ -72,11 +72,11 @@ In het volgende voor beeld is de **ObjectId** van de *SomeUser* -gebruiker 05DEF
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Zodra u de **ObjectId** voor de gebruiker en een aangepaste rolnaam hebt, kunt u die rol toewijzen aan de gebruiker met de cmdlet **New-AzRoleAssignment** :
+Zodra u de **ObjectId** voor de gebruiker en een aangepaste rolnaam hebt, u die rol aan de gebruiker toewijzen met de cmdlet **Nieuw-AzRoleAssignment:**
 
     PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
-In het vorige voor beeld wordt het **AllowedVmSizesInLab** -beleid gebruikt. U kunt elk van de volgende beleids regels gebruiken:
+In het vorige voorbeeld wordt het **beleid AllowedVmSizesInLab** gebruikt. U een van de volgende polities gebruiken:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -86,11 +86,11 @@ In het vorige voor beeld wordt het **AllowedVmSizesInLab** -beleid gebruikt. U k
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Wanneer u gebruikers machtigingen hebt verleend aan een specifiek Lab-beleid, kunt u het volgende doen:
+Zodra u gebruikersmachtigingen hebt verleend voor specifiek labbeleid, volgen hier enkele volgende stappen om rekening mee te houden:
 
 * [Toegang tot een lab beveiligen](devtest-lab-add-devtest-user.md)
-* [Labbeleidsregels instellen](devtest-lab-set-lab-policy.md)
+* [Labbeleid instellen](devtest-lab-set-lab-policy.md)
 * [Een labsjabloon maken](devtest-lab-create-template.md)
-* [Aangepaste artefacten maken voor uw virtuele machines](devtest-lab-artifact-author.md)
+* [Aangepaste artefacten maken voor uw VM's](devtest-lab-artifact-author.md)
 * [Een virtuele machine aan een lab toevoegen](devtest-lab-add-vm.md)
 

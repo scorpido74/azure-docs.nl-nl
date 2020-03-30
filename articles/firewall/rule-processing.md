@@ -1,6 +1,6 @@
 ---
 title: Regels voor de logicaverwerking in Azure Firewall
-description: Azure Firewall heeft NAT-regels, netwerk regels en toepassings regels. De regels worden verwerkt volgens het regel type.
+description: Azure Firewall heeft NAT-regels, netwerkregels en toepassingenregels. De regels worden verwerkt op basis van het regeltype.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,93 +8,93 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264776"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Regels voor de logicaverwerking in Azure Firewall
-U kunt NAT-regels, netwerk regels en toepassings regels configureren op Azure Firewall. De regels worden verwerkt volgens het regel type. 
+U NAT-regels, netwerkregels en toepassingenregels configureren op Azure Firewall. De regels worden verwerkt op basis van het regeltype. 
 
 > [!NOTE]
-> Als u filtering op basis van bedreigings informatie inschakelt, zijn deze regels de hoogste prioriteit en worden ze altijd eerst verwerkt. Threat-Intelligence-filtering kan verkeer weigeren voordat er geconfigureerde regels worden verwerkt. Zie [Azure firewall op Threat Intelligence gebaseerde filtering](threat-intel.md)voor meer informatie.
+> Als u filtering op basis van bedreigingsinformatie inschakelt, hebben deze regels de hoogste prioriteit en worden ze altijd eerst verwerkt. Filtering op bedreigingsinformatie kan verkeer weigeren voordat geconfigureerde regels worden verwerkt. Zie [Azure Firewall threat intelligence-gebaseerde filtering](threat-intel.md)voor meer informatie.
 
 ## <a name="outbound"></a>Uitgaand
 
-### <a name="network-rules-and-applications-rules"></a>Netwerk regels en toepassings regels
+### <a name="network-rules-and-applications-rules"></a>Regels voor netwerkregels en toepassingen
 
-Als u netwerk regels en toepassings regels configureert, worden netwerk regels in volg orde van prioriteit toegepast vóór toepassings regels. De regels worden afgesloten. Dus als er een overeenkomst wordt gevonden in een netwerk regel, worden er geen andere regels verwerkt.  Als er geen overeenkomst met de netwerk regel is en als het Protocol HTTP, HTTPS of MSSQL is, wordt het pakket vervolgens geëvalueerd op basis van de toepassings regels in volg orde van prioriteit. Als er nog geen overeenkomst wordt gevonden, wordt het pakket vergeleken met de [verzameling van de infrastructuur regel](infrastructure-fqdns.md). Als er dan nog steeds geen overeenkomende regel is, wordt het pakket standaard afgewezen.
+Als u netwerkregels en toepassingsregels configureert, worden netwerkregels toegepast in prioriteitsvolgorde vóór toepassingsregels. De regels lopen af. Dus als een overeenkomst wordt gevonden in een netwerkregel, worden er geen andere regels verwerkt.  Als er geen netwerkregelovereenkomst is en als het protocol HTTP, HTTPS of MSSQL is, wordt het pakket vervolgens geëvalueerd door de toepassingsregels in prioriteitsvolgorde. Als er nog steeds geen overeenkomst wordt gevonden, wordt het pakket geëvalueerd aan de hand van de [verzameling infrastructuurregels.](infrastructure-fqdns.md) Als er dan nog steeds geen overeenkomende regel is, wordt het pakket standaard afgewezen.
 
 ## <a name="inbound"></a>Inkomend
 
 ### <a name="nat-rules"></a>NAT-regels
 
-Inkomende Internet connectiviteit kan worden ingeschakeld door DNAT (Destination Network Address Translation) te configureren, zoals beschreven in [zelf studie: inkomend verkeer filteren met Azure firewall DNAT met behulp van de Azure Portal](tutorial-firewall-dnat.md). NAT-regels worden vóór netwerk regels op prioriteit toegepast. Als er een overeenkomst wordt gevonden, wordt er een impliciet overeenkomende netwerk regel toegevoegd om het vertaalde verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer.
+Inkomende internetverbinding kan worden ingeschakeld door de vertaling van het doelnetwerkadres (DNAT) te configureren zoals beschreven in [Zelfstudie: Filter binnenkomend verkeer met Azure Firewall DNAT met behulp van de Azure-portal.](tutorial-firewall-dnat.md) NAT-regels worden toegepast in prioriteit vóór netwerkregels. Als er een overeenkomst wordt gevonden, wordt een impliciete bijbehorende netwerkregel toegevoegd om het vertaalde verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer.
 
-Toepassings regels worden niet toegepast voor binnenkomende verbindingen. Als u echter het binnenkomende HTTP/S-verkeer wilt filteren, gebruikt u Web Application firewall (WAF). Zie [Wat is Azure Web Application firewall?](../web-application-firewall/overview.md) voor meer informatie.
+Toepassingsregels worden niet toegepast voor binnenkomende verbindingen. Dus als u binnenkomend HTTP/S-verkeer wilt filteren, moet u Web Application Firewall (WAF) gebruiken. Zie Wat is Azure Web Application Firewall voor meer [informatie?](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>Voorbeelden
 
-In de volgende voor beelden ziet u de resultaten van sommige van deze regel combinaties.
+In de volgende voorbeelden worden de resultaten van sommige van deze regelcombinaties weergegeven.
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-De verbinding met google.com is toegestaan vanwege een overeenkomende netwerk regel.
+Verbinding met google.com is toegestaan vanwege een overeenkomende netwerkregel.
 
-**Netwerk regel**
+**Netwerkregel**
 
-- Actie: toestaan
+- Actie: Toestaan
 
 
-|naam  |Protocol  |Bron type  |Bron  |Doel type  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Bestemmingsadres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Toestaan-Web     |TCP|IP-adres|*|IP-adres|*|80,443
+|Toestaan-web     |TCP|IP-adres|*|IP-adres|*|80.443
 
-**Toepassings regel**
+**Toepassingsregel**
 
-- Actie: weigeren
+- Actie: Weigeren
 
-|naam  |Bron type  |Bron  |Protocol: poort|Doel-FQDN-naam|
+|name  |Brontype  |Bron  |Protocol:Poort|FQDN's targeten|
 |---------|---------|---------|---------|----------|----------|
-|Weigeren: Google     |IP-adres|*|http: 80, https: 443|google.com
+|Deny-google     |IP-adres|*|http:80,https:443|google.com
 
-**Daardoor**
+**Resultaat**
 
-De verbinding met google.com is toegestaan omdat het pakket overeenkomt met de regel voor het *toestaan* van webnetwerk. Regel verwerking stopt op dit moment.
+De verbinding met google.com is toegestaan omdat het pakket overeenkomt met de regel *Allow-web* network. Regelverwerking stopt op dit punt.
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-SSH-verkeer wordt geweigerd omdat de verzameling netwerk regels voor *weigeren* van een hogere prioriteit de waarde blokkeert.
+SSH-verkeer wordt geweigerd *Deny* omdat een hogere prioriteit Deny-netwerkregelverzameling dit blokkeert.
 
-**Verzameling van netwerk regels 1**
+**Verzameling van netwerkregels 1**
 
-- Naam: toestaan-verzameling
+- Naam: Verzameling toestaan
 - Prioriteit: 200
-- Actie: toestaan
+- Actie: Toestaan
 
-|naam  |Protocol  |Bron type  |Bron  |Doel type  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Bestemmingsadres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Toestaan-SSH     |TCP|IP-adres|*|IP-adres|*|22
+|Allow-SSH     |TCP|IP-adres|*|IP-adres|*|22
 
-**Verzameling van netwerk regels 2**
+**Verzameling van netwerkregels 2**
 
-- Naam: weigeren-verzameling
+- Naam: Deny-collectie
 - Prioriteit: 100
-- Actie: weigeren
+- Actie: Weigeren
 
-|naam  |Protocol  |Bron type  |Bron  |Doel type  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Bestemmingsadres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Weigeren-SSH     |TCP|IP-adres|*|IP-adres|*|22
+|Deny-SSH Deny-SSH     |TCP|IP-adres|*|IP-adres|*|22
 
-**Daardoor**
+**Resultaat**
 
-SSH-verbindingen worden geweigerd omdat een netwerk regel verzameling met een hogere prioriteit deze blokkeert. Regel verwerking stopt op dit moment.
+SSH-verbindingen worden geweigerd omdat een netwerkregelverzameling met een hogere prioriteit deze blokkeert. Regelverwerking stopt op dit punt.
 
-## <a name="rule-changes"></a>Regel wijzigingen
+## <a name="rule-changes"></a>Regelwijzigingen
 
 Als u een regel wijzigt om eerder toegestaan verkeer te weigeren, worden alle relevante bestaande sessies verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [implementeren en configureren van een Azure firewall](tutorial-firewall-deploy-portal.md).
+- Meer informatie over het [implementeren en configureren van een Azure Firewall](tutorial-firewall-deploy-portal.md).

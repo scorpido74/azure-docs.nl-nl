@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver | Microsoft Docs
-description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op Azure Virtual Machines
+title: Azure Virtual Machines hoge beschikbaarheid voor SAP NetWeaver | Microsoft Documenten
+description: Handleiding voor hoge beschikbaarheid voor SAP NetWeaver op Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,13 +16,13 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246121"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's
+# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge beschikbaarheid voor SAP NetWeaver op Azure VM's
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -53,21 +53,21 @@ ms.locfileid: "79246121"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -291,7 +291,7 @@ ms.locfileid: "79246121"
 [sap-ha-guide-10.2]:high-availability-guide.md#5e959fa9-8fcd-49e5-a12c-37f6ba07b916
 [sap-ha-guide-10.3]:high-availability-guide.md#755a6b93-0099-4533-9f6d-5c9a613878b5
 
-[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (Multi-SID-configuratie met hoge Beschik baarheid van SAP)
+[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (SAP multi-SID configuratie met hoge beschikbaarheid)
 
 
 [sap-ha-guide-figure-1000]:media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -364,7 +364,7 @@ ms.locfileid: "79246121"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]: https://support.sap.com/pam (SAP-product beschikbaarheids matrix)
+[sap-pam]:https://support.sap.com/pam (SAP-productbeschikbaarheidsmatrix)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -435,309 +435,309 @@ ms.locfileid: "79246121"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Azure Virtual Machines is de oplossing voor organisaties die behoefte hebben aan reken-, opslag-en netwerk bronnen, op minimale tijd en zonder langdurige inkoop cycli. U kunt Azure Virtual Machines gebruiken om klassieke toepassingen te implementeren, zoals op SAP NetWeaver gebaseerde ABAP, Java en een ABAP + Java-stack. Betrouw baarheid en beschik baarheid uitbreiden zonder extra on-premises resources. Azure Virtual Machines ondersteunt cross-premises-connectiviteit, zodat u Azure Virtual Machines kunt integreren in de on-premises domeinen, persoonlijke Clouds en het SAP-systeem van uw organisatie.
+Azure Virtual Machines is de oplossing voor organisaties die reken-, opslag- en netwerkbronnen nodig hebben, in een minimale tijd en zonder lange inkoopcycli. U Azure Virtual Machines gebruiken om klassieke toepassingen te implementeren, zoals OP SAP NetWeaver gebaseerde ABAP, Java en een ABAP+Java-stack. Breid de betrouwbaarheid en beschikbaarheid uit zonder extra on-premises resources. Azure Virtual Machines ondersteunt cross-premises connectiviteit, zodat u Azure Virtual Machines integreren in de on-premises domeinen, private clouds en SAP-systeemlandschap van uw organisatie.
 
-In dit artikel worden de stappen beschreven die u kunt nemen om SAP-systemen met hoge Beschik baarheid in azure te implementeren met behulp van het Azure Resource Manager-implementatie model. We helpen u bij het uitvoeren van deze grote taken:
+In dit artikel behandelen we de stappen die u nemen om SAP-systemen met hoge beschikbaarheid in Azure te implementeren met behulp van het Azure Resource Manager-implementatiemodel. Wij nemen u mee door deze belangrijke taken:
 
-* Zoek de juiste SAP-opmerkingen en installatie handleidingen die worden weer gegeven in de sectie [resources][sap-ha-guide-2] . Dit artikel vormt een aanvulling op de SAP-installatie documentatie en SAP-notities, die de primaire bronnen zijn die u kunnen helpen bij het installeren en implementeren van SAP-software op specifieke platforms.
-* Meer informatie over de verschillen tussen het Azure Resource Manager-implementatie model en het klassieke Azure-implementatie model.
-* Meer informatie over de Windows Server failover clustering-quorum modi, zodat u het model kunt selecteren dat geschikt is voor uw Azure-implementatie.
-* Meer informatie over de gedeelde opslag in Azure-Services in Windows Server Failover Clustering.
-* Meer informatie over het beveiligen van single-point-of-failure-onderdelen, zoals Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) en database beheersystemen (DBMS) en redundante onderdelen als SAP-toepassings server, in Azure.
-* Volg een stapsgewijze voor beeld van een installatie en configuratie van een SAP-systeem met hoge Beschik baarheid in een Windows Server failover clustering-cluster in azure met behulp van Azure Resource Manager.
-* Meer informatie over extra stappen die vereist zijn voor het gebruik van Windows Server Failover Clustering in azure, maar die niet nodig zijn in een on-premises implementatie.
+* Zoek de juiste SAP-notities en installatiehandleidingen, die worden vermeld in de sectie [Resources.][sap-ha-guide-2] Dit artikel vormt een aanvulling op sap-installatiedocumentatie en SAP Notes, de belangrijkste bronnen die u kunnen helpen bij het installeren en implementeren van SAP-software op specifieke platforms.
+* Meer informatie over de verschillen tussen het Azure Resource Manager-implementatiemodel en het klassieke azure-implementatiemodel.
+* Meer informatie over quorummodi voor failoverclustering van Windows Server, zodat u het model selecteren dat geschikt is voor uw Azure-implementatie.
+* Meer informatie over gedeelde opslag voor Windows Server Failover Clustering in Azure-services.
+* Meer informatie over het beschermen van single-point-of-failure componenten zoals Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) en database management systems (DBMS) en redundante componenten zoals SAP Application Server, in Azure.
+* Volg een stapsgewijs voorbeeld van een installatie en configuratie van een SAP-systeem met hoge beschikbaarheid in een Windows Server Failover clusteringcluster in Azure met Azure Resource Manager.
+* Meer informatie over aanvullende stappen die nodig zijn om Windows Server Failover Clustering in Azure te gebruiken, maar die niet nodig zijn in een on-premises implementatie.
 
-Ter vereenvoudiging van de implementatie en configuratie gebruiken we in dit artikel de SAP-sjablonen met een hoge Beschik baarheid van de 3-tier met drie lagen. Met de sjablonen wordt de implementatie van de volledige infra structuur geautomatiseerd die u nodig hebt voor een SAP-systeem met hoge Beschik baarheid. De infra structuur biedt ook ondersteuning voor de SAP'S-grootte (SAP Application Performance Standard) van uw SAP-systeem.
+Om de implementatie en configuratie te vereenvoudigen, gebruiken we in dit artikel de RESOURCE Manager-sjablonen met hoge beschikbaarheid met hoge beschikbaarheid met hoge beschikbaarheid met hoge niveaus. De sjablonen automatiseren de implementatie van de volledige infrastructuur die u nodig hebt voor een SAP-systeem met hoge beschikbaarheid. De infrastructuur ondersteunt ook SAP Application Performance Standard (SAPS) grootte van uw SAP-systeem.
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Vereisten
-Voordat u begint, moet u ervoor zorgen dat u voldoet aan de vereisten die worden beschreven in de volgende secties. Zorg er ook voor dat alle resources die worden vermeld in de sectie [resources][sap-ha-guide-2] , worden gecontroleerd.
+## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Voorwaarden
+Zorg ervoor dat u voldoet aan de vereisten die in de volgende secties worden beschreven voordat u begint. Controleer ook alle bronnen die in de sectie [Resources][sap-ha-guide-2] worden vermeld.
 
-In dit artikel gebruiken we Azure Resource Manager sjablonen voor een [SAP NetWeaver met drie lagen](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Zie [SAP Azure Resource Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een nuttige overzicht van sjablonen.
+In dit artikel gebruiken we Azure Resource [Manager-sjablonen voor SAP NetWeaver met drie lagen.](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) Zie SAP Azure Resource [Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een handig overzicht van sjablonen.
 
-## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Resources
-Deze artikelen behandelen SAP-implementaties in Azure:
+## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Middelen
+Deze artikelen hebben betrekking op SAP-implementaties in Azure:
 
-* [Azure Virtual Machines planning en implementatie voor SAP net-Weaver][planning-guide]
+* [Azure Virtual Machines planning en implementatie voor SAP NetWeaver][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP NetWeaver][deployment-guide]
-* [Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver][dbms-guide]
-* [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver (deze hand leiding)][sap-ha-guide]
+* [Azure Virtual Machines DBMS-implementatie voor SAP NetWeaver][dbms-guide]
+* [Azure Virtual Machines hoge beschikbaarheid voor SAP NetWeaver (deze handleiding)][sap-ha-guide]
 
 > [!NOTE]
-> Als dat mogelijk is, geeft u een koppeling naar de verwijzende SAP-installatie handleiding (Zie [SAP-installatie][sap-installation-guides]handleidingen). Voor vereisten en informatie over het installatie proces is het een goed idee om de SAP NetWeaver-installatie handleidingen zorgvuldig te lezen. In dit artikel worden alleen specifieke taken behandeld voor SAP NetWeaver-systemen die u kunt gebruiken met Azure Virtual Machines.
+> Waar mogelijk geven wij u een link naar de verwijzende SAP installatiegids (zie de [SAP installatiegidsen).][sap-installation-guides] Voor vereisten en informatie over het installatieproces is het een goed idee om de installatiehandleidingen van SAP NetWeaver zorgvuldig te lezen. In dit artikel worden alleen specifieke taken voor SAP NetWeaver-systemen behandeld die u gebruiken met Azure Virtual Machines.
 >
 >
 
-Deze SAP-opmerkingen zijn gerelateerd aan het onderwerp van SAP in Azure:
+Deze SAP Notes zijn gerelateerd aan het onderwerp SAP in Azure:
 
-| Nummer van notitie | Titel |
+| Notitienummer | Titel |
 | --- | --- |
 | [1928533] |SAP-toepassingen op Azure: ondersteunde producten en grootte |
 | [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
-| [1999351] |Verbeterde Azure-bewaking voor SAP |
-| [2178632] |Belangrijkste meet waarden voor SAP op Microsoft Azure |
-| [1999351] |Virtualisatie op Windows: uitgebreide bewaking |
-| [2243692] |Gebruik van Azure Premium-SSD Storage voor SAP DBMS-exemplaar |
+| [1999351] |Verbeterde Azure-controle voor SAP |
+| [2178632] |Belangrijkste monitoringstatistieken voor SAP op Microsoft Azure |
+| [1999351] |Virtualisatie op Windows: verbeterde controle |
+| [2243692] |Gebruik van Azure Premium SSD-opslag voor SAP DBMS-instantie |
 
-Meer informatie over de [beperkingen van Azure-abonnementen][azure-resource-manager/management/azure-subscription-service-limits-subscription], met inbegrip van algemene standaard beperkingen en maximum beperkingen.
+Meer informatie over de [beperkingen van Azure-abonnementen,][azure-resource-manager/management/azure-subscription-service-limits-subscription]inclusief algemene standaardbeperkingen en maximale beperkingen.
 
-## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>SAP met hoge Beschik baarheid met Azure Resource Manager versus het klassieke Azure-implementatie model
-De Azure Resource Manager-en klassieke implementatie modellen van Azure verschillen op de volgende gebieden:
+## <a name="high-availability-sap-with-azure-resource-manager-vs-the-azure-classic-deployment-model"></a><a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Sap met hoge beschikbaarheid met Azure Resource Manager versus het klassieke Azure-implementatiemodel
+De klassieke implementatiemodellen Azure Resource Manager en Azure zijn verschillend in de volgende gebieden:
 
 - Resourcegroepen
-- Azure interne load balancer afhankelijkheid van de Azure-resource groep
+- Azure internal load balancer afhankelijkheid van de Azure-resourcegroep
 - Ondersteuning voor SAP multi-SID-scenario's
 
-### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Resource groepen
-In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Een geïntegreerde benadering, in een resource groep, hebben alle resources dezelfde levens cyclus. Zo worden bijvoorbeeld alle resources tegelijk gemaakt en worden deze tegelijkertijd verwijderd op hetzelfde moment. Lees meer over [resourcegroepen](../../../azure-resource-manager/management/overview.md#resource-groups).
+### <a name="resource-groups"></a><a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Brongroepen
+In Azure Resource Manager u resourcegroepen gebruiken om alle toepassingsbronnen in uw Azure-abonnement te beheren. Een geïntegreerde aanpak, in een resourcegroep, alle middelen hebben dezelfde levenscyclus. Alle bronnen worden bijvoorbeeld tegelijkertijd gemaakt en tegelijkertijd verwijderd. Meer informatie over [resourcegroepen](../../../azure-resource-manager/management/overview.md#resource-groups).
 
-### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure interne load balancer afhankelijkheid van de Azure-resource groep
+### <a name="azure-internal-load-balancer-dependency-on-the-azure-resource-group"></a><a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure internal load balancer afhankelijkheid van de Azure-resourcegroep
 
-In het klassieke Azure-implementatie model bevindt zich een afhankelijkheid tussen de Azure Internal load balancer (Azure Load Balancer-service) en de Cloud service groep. Elke interne load balancer vereist één Cloud service groep.
+In het klassieke implementatiemodel azure is er een afhankelijkheid tussen de azure internal load balancer (Azure Load Balancer service) en de cloudservicegroep. Elke interne load balancer heeft één cloudservicegroep nodig.
 
-In Azure Resource Manager hebt u geen Azure-resource groep nodig om Azure Load Balancer te gebruiken. De omgeving is eenvoudiger en flexibeler.
+In Azure Resource Manager hebt u geen Azure-brongroep nodig om Azure Load Balancer te gebruiken. Het milieu is eenvoudiger en flexibeler.
 
 ### <a name="support-for-sap-multi-sid-scenarios"></a>Ondersteuning voor SAP multi-SID-scenario's
 
-In Azure Resource Manager kunt u meerdere SAP System Identifier (SID) ASCS/SCS-exemplaren in één cluster installeren. Multi-SID-exemplaren zijn mogelijk vanwege ondersteuning voor meerdere IP-adressen voor elke interne Azure-load balancer.
+In Azure Resource Manager u meerdere SID-systeem-id-instanties (SID) ASCS/SCS-exemplaren in één cluster installeren. Multi-SID-exemplaren zijn mogelijk vanwege ondersteuning voor meerdere IP-adressen voor elke interne laadbakvan Azure.
 
-Als u het klassieke Azure-implementatie model wilt gebruiken, volgt u de procedures in [SAP Netweave in Azure: Clustering SAP ASCS/SCS instances met behulp van Windows Server Failover Clustering in azure met SIOS data keeper](https://go.microsoft.com/fwlink/?LinkId=613056).
+Als u het klassieke implementatiemodel azure wilt gebruiken, volgt u de procedures die zijn beschreven in [SAP NetWeaver in Azure: SAP ASCS/SCS-exemplaren clusteren met Windows Server Failover Clustering in Azure met SIOS DataKeeper](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
-> We raden u ten zeerste aan het Azure Resource Manager-implementatie model voor uw SAP-installaties te gebruiken. Het biedt veel voor delen die niet beschikbaar zijn in het klassieke implementatie model. Lees hier meer over [implementatiemodellen][virtual-machines-azure-resource-manager-architecture-benefits-arm] van Azure.   
+> We raden u ten zeerste aan het Azure Resource Manager-implementatiemodel te gebruiken voor uw SAP-installaties. Het biedt veel voordelen die niet beschikbaar zijn in het klassieke implementatiemodel. Meer informatie over [Azure-implementatiemodellen][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
 >
 >
 
-## <a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server Failover Clustering
-Windows Server Failover Clustering is de basis van een High-Availability SAP-ASCS/SCS-installatie en DBMS in Windows.
+## <a name="windows-server-failover-clustering"></a><a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Windows Server Failover Clustering
+Windows Server Failover Clustering is de basis van een SAP ASCS/SCS-installatie met hoge beschikbaarheid en DBMS in Windows.
 
-Een failovercluster is een groep van 1 + n onafhankelijke servers (knoop punten) die samen werken om de beschik baarheid van toepassingen en services te verg Roten. Als er een storing optreedt in een knoop punt, berekent Windows Server failover clustering het aantal fouten dat kan optreden tijdens het behoud van een goed cluster voor het leveren van toepassingen en services. U kunt kiezen uit verschillende quorum modi om failover clustering te bezorgen.
+Een failovercluster is een groep van 1+n onafhankelijke servers (knooppunten) die samenwerken om de beschikbaarheid van toepassingen en services te vergroten. Als er een knooppuntfout optreedt, berekent Windows Server Failover Clustering het aantal fouten dat kan optreden met behoud van een gezond cluster om toepassingen en services te leveren. U kiezen uit verschillende quorummodi om failoverclustering te bereiken.
 
-### <a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Quorum modi
-U kunt kiezen uit vier quorum modi wanneer u Windows Server Failover Clustering gebruikt:
+### <a name="quorum-modes"></a><a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Quorummodi
+U kiezen uit vier quorummodi wanneer u Windows Server Failover Clustering gebruikt:
 
-* **Knooppunt meerderheid**. Elk knoop punt van het cluster kan stemmen. Het cluster functioneert alleen met een meerderheid van stemmen, dat wil zeggen, met meer dan de helft van de stemmen. We raden u aan deze optie te kiezen voor clusters met een oneven aantal knoop punten. Bijvoorbeeld: drie knoop punten in een cluster met zeven knoop punten kunnen mislukken en het cluster is nog steeds een meerderheid en blijft actief.  
-* **Knoop punt-en schijf meerderheid**. Elk knoop punt en een toegewezen schijf (een schijfwitness) in de cluster opslag kan stemmen wanneer deze beschikbaar zijn en in communicatie. Het cluster functioneert alleen met een meerderheid van stemmen, dat wil zeggen, met meer dan de helft van de stemmen. Deze modus is handig in een cluster omgeving met een even aantal knoop punten. Als de helft van de knoop punten en de schijf online zijn, behoudt het cluster de status in orde.
-* **Knoop punt-en bestands share meerderheid**. Elk knoop punt plus een aangewezen bestands share (een bestandssharewitness) die de beheerder maakt kan stemmen, ongeacht of de knoop punten en de bestands share beschikbaar en in communicatie zijn. Het cluster functioneert alleen met een meerderheid van stemmen, dat wil zeggen, met meer dan de helft van de stemmen. Deze modus is handig in een cluster omgeving met een even aantal knoop punten. Het is vergelijkbaar met de modus voor het knoop punt en de schijf meerderheid, maar maakt gebruik van een bestandssharewitness in plaats van een witness-schijf. Deze modus is eenvoudig te implementeren, maar als de bestands share zelf niet Maxi maal beschikbaar is, kan het een Single Point of Failure worden.
-* **Geen meerderheid: alleen schijf**. Het cluster heeft een quorum als één knoop punt beschikbaar is en in communicatie met een specifieke schijf in de cluster opslag. Alleen de knoop punten die zich ook in de communicatie met die schijf bevinden, kunnen lid worden van het cluster. U wordt aangeraden deze modus niet te gebruiken.
+* **Knooppunt Meerderheid**. Elk knooppunt van het cluster kan stemmen. Het cluster functioneert alleen met een meerderheid van de stemmen, dat wil zeggen met meer dan de helft van de stemmen. We raden deze optie aan voor clusters met een ongelijk aantal knooppunten. Drie knooppunten in een cluster met zeven knooppunten kunnen bijvoorbeeld mislukken en de clusterfoto's bereiken een meerderheid en blijven worden uitgevoerd.  
+* **Knooppunt en schijfmeerderheid**. Elk knooppunt en een aangewezen schijf (een schijfgetuige) in de clusteropslag kunnen stemmen wanneer ze beschikbaar zijn en in communicatie. Het cluster functioneert alleen met een meerderheid van de stemmen, dat wil zeggen met meer dan de helft van de stemmen. Deze modus is zinvol in een clusteromgeving met een even aantal knooppunten. Als de helft van de knooppunten en de schijf online zijn, blijft het cluster in een gezonde staat.
+* **Meerderheid voor knooppunt en bestandsaandeel**. Elk knooppunt plus een aangewezen bestandsshare (een getuige voor bestandsshare) die de beheerder maakt, kan stemmen, ongeacht of de knooppunten en bestandsshare beschikbaar zijn en in communicatie. Het cluster functioneert alleen met een meerderheid van de stemmen, dat wil zeggen met meer dan de helft van de stemmen. Deze modus is zinvol in een clusteromgeving met een even aantal knooppunten. Het is vergelijkbaar met de node en Disk Majority-modus, maar het maakt gebruik van een getuigenbestand aandeel in plaats van een getuige schijf. Deze modus is eenvoudig te implementeren, maar als het bestandsaandeel zelf niet beschikbaar is, kan het een single point of failure worden.
+* **Geen meerderheid: alleen schijf**. Het cluster heeft een quorum als er één knooppunt beschikbaar is en in communicatie met een specifieke schijf in de clusteropslag. Alleen de knooppunten die ook met die schijf communiceren, kunnen lid worden van het cluster. We raden u aan deze modus niet te gebruiken.
 
-## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Windows Server failover clustering on-premises
-In afbeelding 1 ziet u een cluster met twee knoop punten. Als de netwerk verbinding tussen de knoop punten uitvalt en beide knoop punten weer actief blijven, bepaalt een quorum schijf of bestands share welk knoop punt de toepassingen en services van het cluster blijft leveren. Het knoop punt dat toegang heeft tot de quorum schijf of de bestands share is het knoop punt dat ervoor zorgt dat de services worden voortgezet.
+## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>On-premises clustering van Windows Server-failoverclustering
+Figuur 1 toont een cluster van twee knooppunten. Als de netwerkverbinding tussen de knooppunten mislukt en beide knooppunten operationeel blijven, bepaalt een quorumschijf of bestandsshare welk knooppunt de toepassingen en services van het cluster blijft leveren. Het knooppunt dat toegang heeft tot de quorumschijf of bestandsshare is het knooppunt dat ervoor zorgt dat services worden voortgezet.
 
-Omdat in dit voor beeld een cluster met twee knoop punten wordt gebruikt, gebruiken we de quorum modus knoop punt-en bestands share meerderheid. Het knoop punt en de schijf meerderheid is ook een geldige optie. In een productie omgeving wordt u aangeraden een quorum schijf te gebruiken. U kunt de technologie voor netwerk-en opslag systemen gebruiken om deze Maxi maal beschikbaar te maken.
+Omdat in dit voorbeeld een cluster met twee delen wordt gebruikt, gebruiken we de quorummodus Knooppunt en Bestandsmeerderheidsmeerderheid. De Node en Disk Majority is ook een geldige optie. In een productieomgeving raden we u aan een quorumschijf te gebruiken. U netwerk- en opslagsysteemtechnologie gebruiken om deze zeer beschikbaar te maken.
 
-![Afbeelding 1: voor beeld van een Windows Server failover clustering-configuratie voor SAP ASCS/SCS in azure][sap-ha-guide-figure-1000]
+![Figuur 1: Voorbeeld van een Windows Server Failover clustering-configuratie voor SAP ASCS/SCS in Azure][sap-ha-guide-figure-1000]
 
-_**Afbeelding 1:** Voor beeld van een configuratie van Windows Server Failover Clustering voor SAP ASCS/SCS in azure_
+_**Figuur 1:** Voorbeeld van een Windows Server Failover clustering-configuratie voor SAP ASCS/SCS in Azure_
 
-### <a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>Gedeelde opslag
-In afbeelding 1 ziet u ook een gedeeld opslag cluster met twee knoop punten. In een on-premises gedeeld opslag cluster detecteren alle knoop punten in het cluster gedeelde opslag. Een vergrendelings mechanisme beveiligt de gegevens tegen beschadiging. Alle knoop punten kunnen detecteren of een ander knoop punt uitvalt. Als één knoop punt mislukt, wordt het resterende knoop punt eigenaar van de opslag bronnen en wordt de beschik baarheid van services gegarandeerd.
+### <a name="shared-storage"></a><a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>Gedeelde opslag
+Figuur 1 toont ook een gedeeld opslagcluster met twee nodes. In een on-premises gedeeld opslagcluster detecteren alle knooppunten in het cluster gedeelde opslag. Een vergrendelingsmechanisme beschermt de gegevens tegen corruptie. Alle knooppunten kunnen detecteren of een ander knooppunt uitvalt. Als één knooppunt mislukt, wordt het resterende knooppunt eigenaar van de opslagresources en wordt de beschikbaarheid van services bepaald.
 
 > [!NOTE]
-> U hebt geen gedeelde schijven nodig voor hoge Beschik baarheid met bepaalde DBMS-toepassingen, zoals bij SQL Server. SQL Server altijd DBMS-gegevens en logboek bestanden van de lokale schijf van een cluster knooppunt repliceren naar de lokale schijf van een ander cluster knooppunt. In dat geval heeft de configuratie van het Windows-cluster geen gedeelde schijf nodig.
+> U hebt geen gedeelde schijven nodig voor hoge beschikbaarheid met sommige DBMS-toepassingen, zoals bij SQL Server. SQL Server Always On repliceert DBMS-gegevens en logboekbestanden van de lokale schijf van een clusterknooppunt naar de lokale schijf van een ander clusterknooppunt. In dat geval heeft de Windows-clusterconfiguratie geen gedeelde schijf nodig.
 >
 >
 
-### <a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>Netwerken en naam omzetting
-Client computers bereiken het cluster via een virtueel IP-adres en de naam van een virtuele host die door de DNS-server wordt verstrekt. De on-premises knoop punten en de DNS-server kunnen meerdere IP-adressen verwerken.
+### <a name="networking-and-name-resolution"></a><a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>Netwerk- en naamomzetting
+Clientcomputers bereiken het cluster via een virtueel IP-adres en een virtuele hostnaam die de DNS-server biedt. De on-premises knooppunten en de DNS-server kunnen meerdere IP-adressen verwerken.
 
-In een typische installatie gebruikt u twee of meer netwerk verbindingen:
+In een typische installatie gebruikt u twee of meer netwerkverbindingen:
 
 * Een speciale verbinding met de opslag
-* Een interne netwerk verbinding voor de heartbeat
+* Een cluster-interne netwerkverbinding voor de hartslag
 * Een openbaar netwerk dat clients gebruiken om verbinding te maken met het cluster
 
-## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Windows Server Failover Clustering in azure
-Vergeleken met bare metal of particuliere Cloud implementaties, vereist Azure Virtual Machines extra stappen voor het configureren van Windows Server Failover Clustering. Wanneer u een gedeelde cluster schijf bouwt, moet u verschillende IP-adressen en namen van virtuele hosts instellen voor het SAP-exemplaar ASCS/SCS.
+## <a name="windows-server-failover-clustering-in-azure"></a><a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Windows Server Failoverclustering in Azure
+In vergelijking met bare metal- of private cloudimplementaties vereist Azure Virtual Machines extra stappen om Windows Server Failover Clustering te configureren. Wanneer u een gedeelde clusterschijf bouwt, moet u verschillende IP-adressen en virtuele hostnamen instellen voor het exemplaar SAP ASCS/SCS.
 
-In dit artikel bespreken we belang rijke concepten en de aanvullende stappen die nodig zijn om een SAP-cluster met hoge Beschik baarheid te bouwen in Azure. We laten u zien hoe u het hulp programma van derden data keeper kunt instellen en hoe u de interne Azure-load balancer kunt configureren. U kunt deze hulpprogram ma's gebruiken om een Windows-failovercluster te maken met een bestands share-Witness in Azure.
+In dit artikel bespreken we de belangrijkste concepten en de extra stappen die nodig zijn om een centraal cluster voor centrale services met hoge beschikbaarheid van SAP in Azure te bouwen. We laten u zien hoe u de tool SIOS DataKeeper van derden instelt en hoe u de interne loadbalancer van Azure configureert. U deze hulpprogramma's gebruiken om een Windows-failovercluster te maken met een getuige voor bestandsshare in Azure.
 
-![Afbeelding 2: configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
+![Figuur 2: Configuratie van failoverclustering van Windows Server in Azure zonder gedeelde schijf][sap-ha-guide-figure-1001]
 
-_**Afbeelding 2:** Configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf_
+_**Figuur 2:** Configuratie van Windows Server Failoverclustering in Azure zonder gedeelde schijf_
 
-### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Gedeelde schijf in azure met SIOS data keeper
-U hebt gedeelde cluster opslag nodig voor een High-Availability SAP-ASCS/SCS-exemplaar. Vanaf september 2016 biedt Azure geen gedeelde opslag die u kunt gebruiken om een gedeeld opslag cluster te maken. U kunt software van derden SIOS data keeper cluster Edition gebruiken om een gespiegelde opslag te maken die gedeelde cluster opslag simuleert. De SIOS-oplossing biedt synchrone gegevens replicatie in realtime. Zo kunt u een gedeelde schijf bron voor een cluster maken:
+### <a name="shared-disk-in-azure-with-sios-datakeeper"></a><a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Gedeelde schijf in Azure met SIOS DataKeeper
+U hebt gedeelde clusteropslag nodig voor een SAP ASCS/SCS-exemplaar met hoge beschikbaarheid. Vanaf september 2016 biedt Azure geen gedeelde opslag die u gebruiken om een gedeeld opslagcluster te maken. U software SIOS DataKeeper Cluster Edition van derden gebruiken om een gespiegelde opslag te maken die gedeelde clusteropslag simuleert. De SIOS-oplossing biedt real-time synchrone gegevensreplicatie. Zo u een gedeelde schijfbron voor een cluster maken:
 
-1. Koppel een extra virtuele harde schijf (VHD) van Azure aan elk van de virtuele machines (Vm's) in een configuratie van een Windows-cluster.
-2. Voer SIOS data keeper cluster Edition uit op beide VM-knoop punten.
-3. Configureer de data keeper-cluster versie van SIOS zodat deze de inhoud van het extra VHD-gekoppelde volume van de virtuele bron machine spiegelt naar het extra VHD-volume van de virtuele doel machine. SIOS data keeper maakt samen vatting van de bron-en doel volumes en geeft deze vervolgens weer als één gedeelde schijf aan Windows Server Failover Clustering.
+1. Voeg een extra Azure virtual hard disk (VHD) toe aan elk van de virtuele machines (VM's) in een Windows-clusterconfiguratie.
+2. Voer SIOS DataKeeper Cluster Edition uit op beide virtuele machineknooppunten.
+3. Configureer SIOS DataKeeper Cluster Edition zodat deze de inhoud van het extra VHD-gekoppelde volume van de bronvirtuele machine weerspiegelt op het extra VHD-gekoppelde volume van de beoogde virtuele machine. SIOS DataKeeper abstraheert de bron en target lokale volumes en presenteert deze vervolgens aan Windows Server Failover Clustering als één gedeelde schijf.
 
-Meer informatie over [SIOS data keeper](https://us.sios.com/products/datakeeper-cluster/).
+Meer informatie over [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![Afbeelding 3: configuratie van Windows Server Failover Clustering in azure met SIOS data keeper][sap-ha-guide-figure-1002]
+![Figuur 3: Configuratie van windows server-failoverclustering in Azure met SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**Afbeelding 3:** Configuratie van Windows Server Failover Clustering in azure met SIOS data keeper_
+_**Figuur 3:** Configuratie van Windows Server Failoverclustering in Azure met SIOS DataKeeper_
 
 > [!NOTE]
-> U hebt geen gedeelde schijven nodig voor hoge Beschik baarheid met enkele DBMS-producten, zoals SQL Server. SQL Server altijd DBMS-gegevens en logboek bestanden van de lokale schijf van een cluster knooppunt repliceren naar de lokale schijf van een ander cluster knooppunt. In dit geval heeft de configuratie van het Windows-cluster geen gedeelde schijf nodig.
+> U hebt geen gedeelde schijven nodig voor hoge beschikbaarheid met sommige DBMS-producten, zoals SQL Server. SQL Server Always On repliceert DBMS-gegevens en logboekbestanden van de lokale schijf van een clusterknooppunt naar de lokale schijf van een ander clusterknooppunt. In dit geval heeft de Windows-clusterconfiguratie geen gedeelde schijf nodig.
 >
 >
 
-### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Naam omzetting in azure
-Het Azure-Cloud platform biedt geen optie voor het configureren van virtuele IP-adressen, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de cluster bron in de cloud te bereiken.
+### <a name="name-resolution-in-azure"></a><a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Naamomzetting in Azure
+Het Azure-cloudplatform biedt niet de optie om virtuele IP-adressen te configureren, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de clusterbron in de cloud te bereiken.
 Azure heeft een interne load balancer in de Azure Load Balancer-service. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster.
-U moet de interne load balancer implementeren in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met de test poorten van de interne load balancer.
-De clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server zet het IP-adres van het cluster op en de interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
+U moet de interne load balancer implementeren in de resourcegroep die de clusterknooppunten bevat. Configureer vervolgens alle benodigde poortdoorstuurregels met de sondepoortenpoorten van de interne load balancer.
+De clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server lost het IP-adres van het cluster op en de interne load balancer verwerkt poortdoorsturen naar het actieve knooppunt van het cluster.
 
-## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>SAP NetWeaver hoge Beschik baarheid in azure Infrastructure-as-a-Service (IaaS)
-Voor een hoge Beschik baarheid van SAP-toepassingen, zoals voor SAP-software onderdelen, moet u de volgende onderdelen beveiligen:
+## <a name="sap-netweaver-high-availability-in-azure-infrastructure-as-a-service-iaas"></a><a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>SAP NetWeaver hoge beschikbaarheid in Azure Infrastructure-as-a-Service (IaaS)
+Om de hoge beschikbaarheid van SAP-toepassingen te bereiken, zoals voor SAP-softwarecomponenten, moet u de volgende componenten beschermen:
 
 * SAP Application Server-exemplaar
-* SAP ASCS/SCS-instantie
+* SAP ASCS/SCS-exemplaar
 * DBMS-server
 
-Meer informatie over het beveiligen van SAP-onderdelen in scenario's met hoge Beschik baarheid vindt u in [Azure virtual machines planning en implementatie van SAP NetWeaver](planning-guide.md).
+Zie Azure Virtual Machines planning en implementatie voor [SAP NetWeaver voor](planning-guide.md)meer informatie over het beveiligen van SAP-componenten in scenario's met hoge beschikbaarheid.
 
-### <a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>SAP-toepassings server met hoge Beschik baarheid
-Normaal gesp roken hebt u geen specifieke oplossing voor hoge Beschik baarheid nodig voor de SAP-toepassings server en dialoogvenster exemplaren. U behaalt hoge Beschik baarheid door redundantie en configureert meerdere dialoog exemplaren in verschillende exemplaren van Azure Virtual Machines. Er moeten ten minste twee SAP-toepassings exemplaren zijn geïnstalleerd in twee exemplaren van Azure Virtual Machines.
+### <a name="high-availability-sap-application-server"></a><a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>Sap-toepassingsserver met hoge beschikbaarheid
+U hebt meestal geen specifieke oplossing met hoge beschikbaarheid nodig voor de SAP Application Server en dialoogvensters. U bereikt een hoge beschikbaarheid door redundantie en u configureert meerdere dialoogvensters in verschillende exemplaren van Azure Virtual Machines. U moet ten minste twee SAP-toepassingsexemplaren hebben geïnstalleerd in twee exemplaren van Azure Virtual Machines.
 
-![Afbeelding 4: een SAP-toepassings server met hoge Beschik baarheid][sap-ha-guide-figure-2000]
+![Figuur 4: SAP-toepassingsserver met hoge beschikbaarheid][sap-ha-guide-figure-2000]
 
-_**Afbeelding 4:** SAP-toepassings server met hoge Beschik baarheid_
+_**Figuur 4:** Sap-toepassingsserver met hoge beschikbaarheid_
 
-U moet alle virtuele machines die SAP Application Server-exemplaren hosten in dezelfde Azure-beschikbaarheidsset plaatsen. Een beschikbaarheidsset van Azure zorgt ervoor dat:
+U moet alle virtuele machines die SAP Application Server-exemplaren hosten, in dezelfde Azure-beschikbaarheidsset plaatsen. Een Azure-beschikbaarheidsset zorgt ervoor dat:
 
-* Alle virtuele machines maken deel uit van hetzelfde upgrade domein. Een upgrade domein zorgt er bijvoorbeeld voor dat de virtuele machines niet tegelijkertijd worden bijgewerkt tijdens de uitval tijd voor gepland onderhoud.
-* Alle virtuele machines maken deel uit van hetzelfde fout domein. Een fout domein zorgt er bijvoorbeeld voor dat virtuele machines worden geïmplementeerd, zodat er geen Single Point of Failure invloed heeft op de beschik baarheid van alle virtuele machines.
+* Alle virtuele machines maken deel uit van hetzelfde upgradedomein. Een upgradedomein zorgt er bijvoorbeeld voor dat de virtuele machines niet tegelijkertijd worden bijgewerkt tijdens geplande onderhoudsdowntime.
+* Alle virtuele machines maken deel uit van hetzelfde storingsdomein. Een foutdomein zorgt er bijvoorbeeld voor dat virtuele machines worden geïmplementeerd, zodat geen enkel storingspunt van invloed is op de beschikbaarheid van alle virtuele machines.
 
-Meer informatie over [het beheren van de beschik baarheid van virtuele machines][virtual-machines-manage-availability].
+Meer informatie over het [beheren van de beschikbaarheid van virtuele machines][virtual-machines-manage-availability].
 
-Omdat het Azure-opslag account een mogelijke Single Point of Failure is, is het belang rijk dat u ten minste twee Azure-opslag accounts hebt, waarin ten minste twee virtuele machines worden gedistribueerd. In een ideale configuratie worden de schijven van elke virtuele machine waarop een SAP-dialoog exemplaar wordt uitgevoerd, geïmplementeerd in een ander opslag account.
+Omdat het Azure-opslagaccount een mogelijk single point of failure is, is het belangrijk om ten minste twee Azure-opslagaccounts te hebben, waarin ten minste twee virtuele machines worden gedistribueerd. In een ideale installatie worden de schijven van elke virtuele machine waarop een SAP-dialoogvenster wordt uitgevoerd, geïmplementeerd in een ander opslagaccount.
 
-### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>SAP ASCS/SCS-instantie met hoge Beschik baarheid
-Afbeelding 5 is een voor beeld van een SAP ASCS/SCS-exemplaar met hoge Beschik baarheid.
+### <a name="high-availability-sap-ascsscs-instance"></a><a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>SAP ASCS/SCS-exemplaar met hoge beschikbaarheid
+Figuur 5 is een voorbeeld van een SAP ASCS/SCS-exemplaar met hoge beschikbaarheid.
 
-![Afbeelding 5: High-Availability SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-2001]
+![Figuur 5: SAP ASCS/SCS-exemplaar met hoge beschikbaarheid][sap-ha-guide-figure-2001]
 
-_**Afbeelding 5:** SAP ASCS/SCS-instantie met hoge Beschik baarheid_
+_**Figuur 5:** SAP ASCS/SCS-exemplaar met hoge beschikbaarheid_
 
-#### <a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>SAP ASCS/SCS-instantie hoge Beschik baarheid met Windows Server Failover Clustering in azure
-Vergeleken met bare metal of particuliere Cloud implementaties, vereist Azure Virtual Machines extra stappen voor het configureren van Windows Server Failover Clustering. Als u een Windows-failovercluster wilt bouwen, hebt u een gedeelde cluster schijf, meerdere IP-adressen, verschillende namen van virtuele hosts en een interne Azure-load balancer nodig voor het clusteren van een SAP ASCS/SCS-exemplaar. Verderop in dit artikel vindt u meer informatie over dit onderwerp.
+#### <a name="sap-ascsscs-instance-high-availability-with-windows-server-failover-clustering-in-azure"></a><a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>SAP ASCS/SCS-instantie hoge beschikbaarheid met Windows Server Failover Clustering in Azure
+In vergelijking met bare metal- of private cloudimplementaties vereist Azure Virtual Machines extra stappen om Windows Server Failover Clustering te configureren. Als u een Windows-failovercluster wilt bouwen, hebt u een gedeelde clusterschijf, verschillende IP-adressen, verschillende virtuele hostnamen en een interne laadbalansr van Azure nodig voor het clusteren van een SAP ASCS/SCS-exemplaar. We bespreken dit in meer detail later in het artikel.
 
-![Afbeelding 6: Windows Server Failover Clustering voor een SAP ASCS/SCS-configuratie in azure met behulp van SIOS data keeper][sap-ha-guide-figure-1002]
+![Figuur 6: Windows Server Failoverclustering voor een SAP ASCS/SCS-configuratie in Azure met Behulp van SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**Afbeelding 6:** Windows Server Failover Clustering voor een SAP ASCS/SCS-configuratie in azure met SIOS data keeper_
+_**Figuur 6:** Windows Server Failoverclustering voor een SAP ASCS/SCS-configuratie in Azure met SIOS DataKeeper_
 
-### <a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>DBMS-exemplaar met hoge Beschik baarheid
-Het DBMS is ook een enkel contact punt in een SAP-systeem. U moet deze beveiligen met behulp van een oplossing met hoge Beschik baarheid. Afbeelding 7 toont een SQL Server altijd een oplossing met hoge Beschik baarheid in azure, met Windows Server Failover Clustering en de interne load balancer van Azure. SQL Server altijd DBMS-gegevens en logboek bestanden repliceert met behulp van de eigen DBMS-replicatie. In dit geval hebt u geen gedeelde cluster schijven nodig, waardoor de volledige installatie wordt vereenvoudigd.
+### <a name="high-availability-dbms-instance"></a><a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>DbMS-exemplaar met hoge beschikbaarheid
+De DBMS is ook een enkel aanspreekpunt in een SAP-systeem. U moet het beschermen door een oplossing met hoge beschikbaarheid te gebruiken. Figuur 7 toont een SQL Server Always On high-availability solution in Azure, met Windows Server Failover Clustering en de interne load balancer van Azure. SQL Server Always On repliceert DBMS-gegevens en logbestanden met behulp van een eigen DBMS-replicatie. In dit geval hebt u geen gedeelde clusterschijven nodig, wat de hele installatie vereenvoudigt.
 
-![Afbeelding 7: voor beeld van een hoge Beschik baarheid SAP DBMS, met SQL Server always on][sap-ha-guide-figure-2003]
+![Figuur 7: Voorbeeld van een SAP DBMS met hoge beschikbaarheid, met SQL Server Always On][sap-ha-guide-figure-2003]
 
-_**Afbeelding 7:** Voor beeld van een SAP-DBMS met hoge Beschik baarheid, met SQL Server always on_
+_**Figuur 7:** Voorbeeld van een SAP DBMS met hoge beschikbaarheid, met SQL Server Always On_
 
-Zie de volgende artikelen voor meer informatie over het clusteren SQL Server in azure met behulp van het Azure Resource Manager-implementatie model:
+Zie de volgende artikelen voor meer informatie over het clusteren van SQL Server in Azure met behulp van het Azure Resource Manager-implementatiemodel:
 
-* [Always on-beschikbaarheids groep in azure Virtual Machines hand matig configureren met Resource Manager][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
-* [Een interne Azure-load balancer configureren voor een AlwaysOn-beschikbaarheids groep in azure][virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [Beschikbaarheidsgroep Always On configureren in Azure Virtual Machines handmatig met Resource Beheer][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
+* [Een Azure internal load balancer configureren voor een groep Always On beschikbaarheid in Azure][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
-## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>End-to-end implementatie scenario's met hoge Beschik baarheid
+## <a name="end-to-end-high-availability-deployment-scenarios"></a><a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>End-to-end implementatiescenario's met hoge beschikbaarheid
 
-### <a name="deployment-scenario-using-architectural-template-1"></a>Implementatie scenario met de architectuur sjabloon 1
+### <a name="deployment-scenario-using-architectural-template-1"></a>Implementatiescenario met architecturale sjabloon 1
 
-In afbeelding 8 ziet u een voor beeld van een architectuur met een hoge Beschik baarheid van de SAP-Weaver in azure voor **één** SAP-systeem. Dit scenario wordt als volgt ingesteld:
+Figuur 8 toont een voorbeeld van een SAP NetWeaver-architectuur met hoge beschikbaarheid in Azure voor **één** SAP-systeem. Dit scenario is als volgt ingesteld:
 
-- Er wordt één toegewezen cluster gebruikt voor het SAP ASCS/SCS-exemplaar.
-- Er wordt één toegewezen cluster gebruikt voor het DBMS-exemplaar.
-- SAP Application Server-exemplaren worden geïmplementeerd in hun eigen toegewezen Vm's.
+- Voor het exemplaar SAP ASCS/SCS wordt één speciaal cluster gebruikt.
+- Voor het DBMS-exemplaar wordt één speciaal cluster gebruikt.
+- SAP Application Server-exemplaren worden geïmplementeerd in hun eigen speciale VM's.
 
-![Afbeelding 8: architectuur sjabloon met hoge Beschik baarheid van SAP 1, met toegewezen cluster voor ASCS/SCS en DBMS][sap-ha-guide-figure-2004]
+![Figuur 8: SAP architecturale sjabloon 1 met hoge beschikbaarheid, met speciaal cluster voor ASCS/SCS en DBMS][sap-ha-guide-figure-2004]
 
-_**Afbeelding 8:** SAP-architectuur sjabloon met hoge Beschik baarheid 1, toegewezen clusters voor ASCS/SCS en DBMS_
+_**Figuur 8:** SAP architecturale sjabloon 1 met hoge beschikbaarheid, speciale clusters voor ASCS/SCS en DBMS_
 
-### <a name="deployment-scenario-using-architectural-template-2"></a>Implementatie scenario met architectuur sjabloon 2
+### <a name="deployment-scenario-using-architectural-template-2"></a>Implementatiescenario met architecturale sjabloon 2
 
-In afbeelding 9 ziet u een voor beeld van een architectuur met een hoge Beschik baarheid van de SAP-Weaver in azure voor **één** SAP-systeem. Dit scenario wordt als volgt ingesteld:
+Figuur 9 toont een voorbeeld van een SAP NetWeaver-architectuur met hoge beschikbaarheid in Azure voor **één** SAP-systeem. Dit scenario is als volgt ingesteld:
 
-- Er wordt één toegewezen cluster gebruikt voor **zowel** het SAP ASCS/SCS-exemplaar als het DBMS.
-- SAP Application Server-exemplaren worden geïmplementeerd op eigen vaste Vm's.
+- Voor zowel de SAP ASCS/SCS-instantie als het DBMS wordt **één** speciaal cluster gebruikt.
+- SAP Application Server-exemplaren worden geïmplementeerd in eigen speciale VM's.
 
-![Afbeelding 9: architectuur sjabloon met hoge Beschik baarheid van SAP 2, met een toegewezen cluster voor ASCS/SCS en een toegewezen cluster voor DBMS][sap-ha-guide-figure-2005]
+![Figuur 9: SAP architecturale sjabloon 2 met hoge beschikbaarheid, met een speciaal cluster voor ASCS/SCS en een speciaal cluster voor DBMS][sap-ha-guide-figure-2005]
 
-_**Afbeelding 9:** SAP-architectuur sjabloon voor hoge Beschik baarheid 2, met een toegewezen cluster voor ASCS/SCS en een toegewezen cluster voor DBMS_
+_**Figuur 9:** SAP architecturale sjabloon 2 met hoge beschikbaarheid, met een speciaal cluster voor ASCS/SCS en een speciaal cluster voor DBMS_
 
-### <a name="deployment-scenario-using-architectural-template-3"></a>Implementatie scenario met architectuur sjabloon 3
+### <a name="deployment-scenario-using-architectural-template-3"></a>Implementatiescenario met architecturale sjabloon 3
 
-In afbeelding 10 ziet u een voor beeld van een architectuur met hoge Beschik baarheid voor SAP NetWeaver in azure voor **twee** SAP-systemen, met &lt;SID1&gt; en &lt;SID2&gt;. Dit scenario wordt als volgt ingesteld:
+Figuur 10 toont een voorbeeld van een SAP NetWeaver-architectuur met hoge&gt; beschikbaarheid &lt;in&gt;Azure voor **twee** SAP-systemen, met &lt;SID1 en SID2. Dit scenario is als volgt ingesteld:
 
-- Eén toegewezen cluster wordt gebruikt voor **zowel** het SAP ASCS/SCS SID1-exemplaar *als* het SAP ASCS/SCS SID2-exemplaar (één cluster).
-- Er wordt één toegewezen cluster gebruikt voor DBMS-SID1 en een ander toegewijd cluster wordt gebruikt voor DBMS SID2 (twee clusters).
-- SAP-toepassings server exemplaren voor het SAP-systeem SID1 hebben hun eigen toegewezen Vm's.
-- SAP-toepassings server exemplaren voor het SAP-systeem SID2 hebben hun eigen toegewezen Vm's.
+- Voor **zowel** de SAP ASCS/SCS SID1-instantie *als* de SAP ASCS/SCS SID2-instantie (één cluster) wordt één speciaal cluster gebruikt.
+- Een speciaal cluster wordt gebruikt voor DBMS SID1 en een ander speciaal cluster wordt gebruikt voor DBMS SID2 (twee clusters).
+- SAP Application Server-exemplaren voor het SAP-systeem SID1 hebben hun eigen speciale VM's.
+- SAP Application Server-exemplaren voor het SAP-systeem SID2 hebben hun eigen speciale VM's.
 
-![Afbeelding 10: architectuur sjabloon met hoge Beschik baarheid van SAP 3, met een toegewezen cluster voor verschillende ASCS/SCS-instanties][sap-ha-guide-figure-6003]
+![Figuur 10: SAP architecturale sjabloon 3 met hoge beschikbaarheid, met een speciaal cluster voor verschillende ASCS/SCS-exemplaren][sap-ha-guide-figure-6003]
 
-_**Afbeelding 10:** SAP-architectuur sjabloon met hoge Beschik baarheid 3, met een toegewezen cluster voor verschillende ASCS/SCS-instanties_
+_**Figuur 10:** SAP architecturale sjabloon 3 met hoge beschikbaarheid, met een speciaal cluster voor verschillende ASCS/SCS-exemplaren_
 
-## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>De infra structuur voorbereiden
+## <a name="prepare-the-infrastructure"></a><a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>De infrastructuur voorbereiden
 
-### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>De infra structuur voorbereiden voor de architectuur sjabloon 1
-Met Azure Resource Manager sjablonen voor SAP kunt u de implementatie van vereiste resources vereenvoudigen.
+### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>De infrastructuur voorbereiden op architectuursjabloon 1
+Azure Resource Manager-sjablonen voor SAP helpen de implementatie van vereiste resources te vereenvoudigen.
 
-De sjablonen met drie lagen in Azure Resource Manager bieden ook ondersteuning voor scenario's met hoge Beschik baarheid, zoals in de architectuur sjabloon 1, die twee clusters heeft. Elk cluster is een SAP-Single Point of Failure voor SAP ASCS/SCS en DBMS.
+De drielaagse sjablonen in Azure Resource Manager ondersteunen ook scenario's met hoge beschikbaarheid, zoals in Architectural Template 1, dat twee clusters heeft. Elk cluster is een SAP single point of failure voor SAP ASCS/SCS en DBMS.
 
-Hier kunt u Azure Resource Manager sjablonen ophalen voor het voorbeeld scenario dat in dit artikel wordt beschreven:
+Hier u Azure Resource Manager-sjablonen krijgen voor het voorbeeldscenario dat we in dit artikel beschrijven:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Marketplace-afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Aangepaste afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 
-De infra structuur voorbereiden voor de architectuur sjabloon 1:
+De infrastructuur voorbereiden op architecturale sjabloon 1:
 
-- Selecteer in de Azure Portal op de Blade **para meters** in het vak **SYSTEMAVAILABILITY** de optie **ha**.
+- Selecteer **HA**in de Azure-portal op het blad **Parameters** in het vak **SYSTEEMBESCHIKBAARHEID.**
 
-  ![Afbeelding 11: SAP-Azure Resource Manager-para meters met hoge Beschik baarheid instellen][sap-ha-guide-figure-3000]
+  ![Figuur 11: Azure Resource Manager-parameters met hoge beschikbaarheid instellen][sap-ha-guide-figure-3000]
 
-_**Afbeelding 11:** SAP-Azure Resource Manager-para meters met hoge Beschik baarheid instellen_
+_**Figuur 11:** Azure Resource Manager-parameters met hoge beschikbaarheid instellen_
 
 
   De sjablonen maken:
 
   * **Virtuele machines**:
-    * SAP-toepassings server virtuele machines: <*SAPSystemSID*>-di-<*nummer*>
-    * ASCS/SCS cluster virtual machines: <*SAPSystemSID*>-ASCS-<*nummer*>
-    * DBMS-cluster: <*SAPSystemSID*>-db-<*nummer*>
+    * VIRTUELE MACHINES VAN SAP Application Server: <*SAPSystemSID*>-di-<-nummer *Number*>
+    * VIRTUELE MACHINES van ASCS/SCS-cluster: <*SAPSystemSID*>-ascs-<-nummer *Number*>
+    * DBMS-cluster: <*SAPSystemSID*>-db-<-nummer *Number*>
 
-  * **Netwerk kaarten voor alle virtuele machines, met de bijbehorende IP-adressen**:
-    * <*SAPSystemSID*>-NIC-di-<*nummer*>
-    * <*SAPSystemSID*>-NIC-ascs-<*nummer*>
-    * <*SAPSystemSID*>-NIC-db-<*nummer*>
+  * **Netwerkkaarten voor alle virtuele machines, met bijbehorende IP-adressen:**
+    * <*SAPSystemSID*>-nic-di-<-nummer *Number*>
+    * <*SAPSystemSID*>-nic-ascs-<*Nummer*>
+    * <*SAPSystemSID*>-nic-db-<-nummer *Number*>
 
-  * **Azure-opslag accounts**
+  * **Azure-opslagaccounts**
 
-  * **Beschikbaarheids groepen** voor:
-    * SAP-toepassings server virtuele machines: <*SAPSystemSID*>-avset-di
-    * SAP ASCS/SCS cluster virtual machines: <*SAPSystemSID*>-avset-ASCS
-    * Virtuele machines in DBMS-cluster: <*SAPSystemSID*>-avset-db
+  * **Beschikbaarheidsgroepen** voor:
+    * SAP Application Server virtuele machines: <*SAPSystemSID*>-avset-di
+    * SAP ASCS/SCS cluster virtuele machines: <*SAPSystemSID*>-avset-ascs
+    * DBMS cluster virtuele machines: <*SAPSystemSID*>-avset-db
 
-  * **Interne Load Balancer van Azure**:
-    * Met alle poorten voor het ASCS/SCS-exemplaar en IP-adres <*SAPSystemSID*>-lb-ASCS
-    * Met alle poorten voor de SQL Server DBMS en het IP-adres <*SAPSystemSID*>-lb-db
+  * **Azure interne load balancer:**
+    * Met alle poorten voor het ASCS/SCS-exemplaar en het IP-adres <*SAPSystemSID*>-lb-ascs
+    * Met alle poorten voor de SQL Server DBMS en IP-adres <*SAPSystemSID*>-lb-db
 
-  * **Netwerk beveiligings groep**: <*SAPSystemSID*>-NSG-ascs-0  
-    * Met een open externe Remote Desktop Protocol (RDP)-poort aan de <*SAPSystemSID*>-ascs-0-virtuele machine
-
-> [!NOTE]
-> Alle IP-adressen van de netwerk kaarten en interne load balancers van Azure zijn standaard **dynamisch** . Wijzig deze in **vaste** IP-adressen. Verderop in dit artikel wordt beschreven hoe u dit doet.
->
->
-
-### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Implementeer virtuele machines met de connectiviteit van een bedrijfs netwerk (cross-premises) voor gebruik in productie
-Voor productie-SAP-systemen implementeert u virtuele Azure-machines met connectiviteit van het bedrijfs netwerk met behulp van Azure site-naar-site VPN of Azure ExpressRoute.
+  * **Netwerkbeveiligingsgroep**: <*SAPSystemSID*>-nsg-ascs-0  
+    * Met een open externe RDP-poort (Remote Desktop Protocol) naar de <*SAPSystemSID*>-ascs-0 virtuele machine
 
 > [!NOTE]
-> U kunt uw Azure Virtual Network-exemplaar gebruiken. Het virtuele netwerk en het subnet zijn al gemaakt en voor bereid.
+> Alle IP-adressen van de netwerkkaarten en Azure internal load balancers zijn standaard **dynamisch.** Wijzig ze in **statische** IP-adressen. We beschrijven hoe dit later in het artikel te doen.
 >
 >
 
-1. Selecteer in het Azure Portal op de Blade **para meters** in het vak **NEWOREXISTINGSUBNET** de optie **bestaande**.
-2. Voeg in het vak **SUBNETID** de volledige teken reeks toe van uw voor bereide Azure-netwerk SUBNETID waar u uw virtuele Azure-machines wilt implementeren.
-3. Voer deze Power shell-opdracht uit om een lijst met alle subnetten van Azure Network op te halen:
+### <a name="deploy-virtual-machines-with-corporate-network-connectivity-cross-premises-to-use-in-production"></a><a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Implementeer virtuele machines met bedrijfsnetwerkconnectiviteit (cross-premises) om te gebruiken in de productie
+Voor de productie van SAP-systemen implementeert u virtuele Azure-machines met bedrijfsnetwerkconnectiviteit met behulp van Azure Site-to-Site VPN of Azure ExpressRoute.
+
+> [!NOTE]
+> U uw Azure Virtual Network-exemplaar gebruiken. Het virtuele netwerk en subnet zijn al gemaakt en voorbereid.
+>
+>
+
+1. Selecteer in de Azure-portal op het blad **Parameters** in het vak **NEWOREXISTINGSUBNET** **bestaande**.
+2. Voeg in het vak **SUBNETID** de volledige tekenreeks van uw voorbereide Azure-netwerkSubnetID toe waar u van plan bent uw virtuele Azure-machines te implementeren.
+3. Voer de opdracht PowerShell uit om een lijst met alle Azure-netwerksubnetten te krijgen:
 
    ```PowerShell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
-   In het veld **id** wordt de **SUBNETID**weer gegeven.
-4. Voer de volgende Power shell-opdracht uit om een lijst met alle **SUBNETID** -waarden weer te geven:
+   In het veld **ID** wordt de **SUBNETID**weergegeven.
+4. Voer de opdracht PowerShell uit om een lijst met alle **SUBNETID-waarden** te krijgen:
 
    ```PowerShell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
@@ -749,728 +749,728 @@ Voor productie-SAP-systemen implementeert u virtuele Azure-machines met connecti
    /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
    ```
 
-### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Alleen Cloud SAP-instanties implementeren voor test en demo
-U kunt uw SAP-systeem met hoge Beschik baarheid implementeren in een alleen-Cloud implementatie model. Dit soort implementatie is vooral nuttig voor demonstratie-en test voorbeelden. Het is niet geschikt voor productie-use cases.
+### <a name="deploy-cloud-only-sap-instances-for-test-and-demo"></a><a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Cloud-only SAP-exemplaren implementeren voor test en demo
+U uw SAP-systeem met hoge beschikbaarheid implementeren in een implementatiemodel voor alleen de cloud. Dit soort implementatie is vooral handig voor demo- en testusecases. Het is niet geschikt voor productie use cases.
 
-- Selecteer in het Azure Portal op de Blade **para meters** in het vak **NEWOREXISTINGSUBNET** de optie **Nieuw**. Laat het veld **SUBNETID** leeg.
+- Selecteer in de Azure-portal op het blad **Parameters** in het vak **NEWOREXISTINGSUBNET** de optie **nieuw**. Laat het **SUBNETID-veld** leeg.
 
-  De SAP-Azure Resource Manager sjabloon maakt automatisch het virtuele netwerk van Azure en het subnet.
+  Met de sjabloon SAP Azure Resource Manager wordt automatisch het virtuele Azure-netwerk en subnet gemaakt.
 
 > [!NOTE]
-> U moet ook ten minste één toegewezen virtuele machine implementeren voor Active Directory en DNS in hetzelfde exemplaar van Azure Virtual Network. Deze virtuele machines worden niet gemaakt met de sjabloon.
+> U moet ook ten minste één speciale virtuele machine implementeren voor Active Directory en DNS in hetzelfde Azure Virtual Network-exemplaar. De sjabloon maakt deze virtuele machines niet.
 >
 >
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>De infra structuur voorbereiden voor de architectuur sjabloon 2
+### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>De infrastructuur voorbereiden op architecturale sjabloon 2
 
-U kunt deze Azure Resource Manager sjabloon voor SAP gebruiken om de implementatie van vereiste infrastructuur resources voor SAP-architectuur sjabloon 2 te vereenvoudigen.
+U deze Azure Resource Manager-sjabloon voor SAP gebruiken om de implementatie van vereiste infrastructuurbronnen voor SAP-architecturale sjabloon 2 te vereenvoudigen.
 
-Hier kunt u Azure Resource Manager sjablonen voor dit implementatie scenario ophalen:
+Hier u Azure Resource Manager-sjablonen voor dit implementatiescenario krijgen:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Marketplace-afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Aangepaste afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>De infra structuur voorbereiden voor de architectuur sjabloon 3
+### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>De infrastructuur voorbereiden op architectuursjabloon 3
 
-U kunt de infra structuur voorbereiden en SAP configureren voor **multi-sid**. U kunt bijvoorbeeld een extra SAP ASCS/SCS-exemplaar toevoegen aan een *bestaande* cluster configuratie. Zie [een extra SAP ASCS/SCS-instantie configureren in een bestaande cluster configuratie voor het maken van een SAP-multi-sid-configuratie in azure Resource Manager][sap-ha-multi-sid-guide]voor meer informatie.
+U de infrastructuur voorbereiden en SAP configureren voor **multi-SID.** U bijvoorbeeld een extra SAP ASCS/SCS-exemplaar toevoegen aan een *bestaande* clusterconfiguratie. Zie [Een extra SAP ASCS/SCS-exemplaar configureren in een bestaande clusterconfiguratie om een SAP multi-SID-configuratie te maken in Azure Resource Manager][sap-ha-multi-sid-guide]voor meer informatie.
 
-Als u een nieuw cluster met meerdere SID'S wilt maken, kunt u gebruikmaken van de Quick Start- [sjablonen voor](https://github.com/Azure/azure-quickstart-templates)multi-sid op github.
-Als u een nieuw cluster met meerdere SID'S wilt maken, moet u de volgende drie sjablonen implementeren:
+Als u een nieuw multi-SID-cluster wilt maken, u de multi-SID [quickstart-sjablonen op GitHub](https://github.com/Azure/azure-quickstart-templates)gebruiken.
+Als u een nieuw multi-SID-cluster wilt maken, moet u de volgende drie sjablonen implementeren:
 
 * [ASCS/SCS-sjabloon](#ASCS-SCS-template)
-* [Database sjabloon](#database-template)
-* [Sjabloon toepassings servers](#application-servers-template)
+* [Databasesjabloon](#database-template)
+* [Sjabloon toepassingsservers](#application-servers-template)
 
-De volgende secties bevatten meer informatie over de sjablonen en de para meters die u moet opgeven in de sjablonen.
+In de volgende secties vindt u meer informatie over de sjablonen en de parameters die u in de sjablonen moet opgeven.
 
-#### <a name="ASCS-SCS-template"></a>ASCS/SCS-sjabloon
+#### <a name="ascsscs-template"></a><a name="ASCS-SCS-template"></a>ASCS/SCS-sjabloon
 
-De ASCS/SCS-sjabloon implementeert twee virtuele machines die u kunt gebruiken om een Windows Server-failovercluster te maken dat meerdere ASCS/SCS-instanties host.
+De ASCS/SCS-sjabloon implementeert twee virtuele machines die u gebruiken om een failovercluster van Windows Server te maken dat meerdere ASCS/SCS-exemplaren host.
 
-Als u de sjabloon ASCS/SCS multi-SID wilt instellen, voert u in de [sjabloon ASCS/SCS multi-sid][sap-templates-3-tier-multisid-xscs-marketplace-image]waarden in voor de volgende para meters:
+Als u de sjabloon ASCS/SCS multi-SID wilt instellen, voert u in de [ASCS/SCS multi-SID-sjabloon][sap-templates-3-tier-multisid-xscs-marketplace-image]waarden in voor de volgende parameters:
 
-  - **Resource voorvoegsel**.  Stel het resource voorvoegsel in, dat wordt gebruikt voor het voor voegsel van alle resources die tijdens de implementatie zijn gemaakt. Omdat de resources niet deel uitmaken van één SAP-systeem, is het voor voegsel van de resource niet de SID van een SAP-systeem.  Het voor voegsel moet tussen de **drie en zes tekens lang**zijn.
-  - **Stack-type**. Selecteer het stack type van het SAP-systeem. Afhankelijk van het type stack heeft Azure Load Balancer één (alleen ABAP of Java) of twee (ABAP + Java) privé-IP-adressen per SAP-systeem.
-  -  **Type besturings systeem**. Selecteer het besturings systeem van de virtuele machines.
-  -  **Aantal SAP-systemen**. Selecteer het aantal SAP-systemen dat u wilt installeren in dit cluster.
-  -  **Systeem beschikbaarheid**. Selecteer **ha**.
-  -  **Gebruikers naam en beheerders wachtwoord**voor de beheerder. Maak een nieuwe gebruiker die kan worden gebruikt om u aan te melden bij de computer.
+  - **Bronvoorvoegsel**.  Stel het bronvoorvoegsel in, dat wordt gebruikt om alle resources die tijdens de implementatie zijn gemaakt, vooraf aan te maken. Omdat de resources niet tot slechts één SAP-systeem behoren, is het voorvoegsel van de bron niet de sid van één SAP-systeem.  Het voorvoegsel moet tussen **de drie en zes tekens bevatten.**
+  - **Stapeltype**. Selecteer het stacktype van het SAP-systeem. Afhankelijk van het stacktype heeft Azure Load Balancer één (alleen ABAP- of Java- of Java-) of twee (ABAP+Java) privé-IP-adressen per SAP-systeem.
+  -  **OS-type**. Selecteer het besturingssysteem van de virtuele machines.
+  -  **SAP-systeem tellen**. Selecteer het aantal SAP-systemen dat u in dit cluster wilt installeren.
+  -  **Beschikbaarheid van het systeem**. Selecteer **HA**.
+  -  **Gebruikersnaam en beheerderswachtwoord voor beheerders**. Maak een nieuwe gebruiker die kan worden gebruikt om zich aan te melden bij de machine.
   -  **Nieuw of bestaand subnet**. Stel in of een nieuw virtueel netwerk en subnet moet worden gemaakt of dat een bestaand subnet moet worden gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-  -  **Subnet-id**. Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/<*abonnements-ID*>/resourceGroups/< naam van de*resource groep*>/providers/Microsoft.Network/virtualNetworks/< naam van het*virtuele netwerk*>/subnets/< naam van het*subnet*>
+  -  **Subnet-id**. Als u de VM wilt implementeren in een bestaand VNet waarbij een subnet is gedefinieerd waaraan de VM moet worden toegewezen, geeft u de id van dat specifieke subnet een naam. De ID ziet er meestal als volgt uit: /subscriptions/<*subscription id*>/resourceGroups/<resource *group name*>/providers/Microsoft.Network/virtualNetworks/<virtuele *netwerknaam*>/subnets/<*subnetnaam*>
 
-De sjabloon implementeert een Azure Load Balancer-exemplaar dat meerdere SAP-systemen ondersteunt.
+De sjabloon implementeert één Azure Load Balancer-instantie, die meerdere SAP-systemen ondersteunt.
 
-- De ASCS-exemplaren worden geconfigureerd voor instantie nummer 00, 10, 20...
-- De SCS-exemplaren zijn geconfigureerd voor instantie nummer 01, 11, 21...
-- De exemplaren van de ASCS-replicatie server (ERS) (alleen voor Linux) worden geconfigureerd voor instantie nummer 02, 12, 22...
-- De exemplaren van de SCS ERS (alleen Linux) worden geconfigureerd voor instantie nummer 03, 13, 23...
+- De ASCS-exemplaren zijn geconfigureerd voor bijvoorbeeld nummer 00, 10, 20...
+- De SCS-exemplaren zijn geconfigureerd voor bijvoorbeeld nummer 01, 11, 21...
+- De exemplaren VAN DE ASCS Enqueue Replication Server (ERS) (alleen Linux) zijn geconfigureerd voor bijvoorbeeld nummer 02, 12, 22...
+- De SCS ERS (alleen Linux) exemplaren zijn geconfigureerd voor bijvoorbeeld nummer 03, 13, 23...
 
-De load balancer bevat 1 (2 voor Linux) VIP (s), 1x VIP voor ASCS/SCS en 1x VIP voor ERS (alleen voor Linux).
+De load balancer bevat 1 (2 voor Linux) VIP(s), 1x VIP voor ASCS/SCS en 1x VIP voor ERS (alleen Linux).
 
-De volgende lijst bevat alle regels voor taak verdeling (waarbij x het nummer van het SAP-systeem is, bijvoorbeeld 1, 2, 3...):
+De volgende lijst bevat alle regels voor het balanceren van de lasten (waarbij x het nummer van het SAP-systeem is, bijvoorbeeld 1, 2, 3...):
 - Windows-specifieke poorten voor elk SAP-systeem: 445, 5985
-- ASCS-poorten (instantie nummer x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
-- SCS-poorten (exemplaar nummer x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
-- ASCS ERS-poorten op Linux (exemplaar nummer x2): 33x2, 5x213, 5x214, 5x216
-- SCS ERS-poorten op Linux (exemplaar nummer x3): 33x3, 5x313, 5x314, 5x316
+- ASCS-poorten (instantienummer x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
+- SCS-poorten (instantienummer x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
+- ASCS ERS poorten op Linux (instantie nummer x2): 33x2, 5x213, 5x214, 5x216
+- SCS ERS poorten op Linux (instantie nummer x3): 33x3, 5x313, 5x314, 5x316
 
-De load balancer is geconfigureerd voor het gebruik van de volgende test poorten (waarbij x het nummer van het SAP-systeem is, bijvoorbeeld 1, 2, 3...):
-- ASCS/SCS interne load balancer test poort: 620x0
-- ERS interne load balancer test poort (alleen Linux): 621x2
+De load balancer is geconfigureerd om de volgende sondepoortenpoorten te gebruiken (waarbij x het nummer is van het SAP-systeem, bijvoorbeeld 1, 2, 3...):
+- ASCS/SCS interne load balancer sonde poort: 620x0
+- ERS interne load balancer probe port (alleen Linux): 621x2
 
-#### <a name="database-template"></a>Database sjabloon
+#### <a name="database-template"></a><a name="database-template"></a>Databasesjabloon
 
-De database sjabloon implementeert een of twee virtuele machines die u kunt gebruiken om de relationele Database Management System (RDBMS) voor één SAP-systeem te installeren. Als u bijvoorbeeld een ASCS/SCS-sjabloon voor vijf SAP-systemen implementeert, moet u deze sjabloon vijf keer implementeren.
+De databasesjabloon implementeert een of twee virtuele machines die u gebruiken om het relationele databasebeheersysteem (RDBMS) voor één SAP-systeem te installeren. Als u bijvoorbeeld een ASCS/SCS-sjabloon implementeert voor vijf SAP-systemen, moet u deze sjabloon vijf keer implementeren.
 
-Als u de sjabloon multi-SID voor de Data Base wilt instellen, voert u in de [sjabloon multi-sid-data base][sap-templates-3-tier-multisid-db-marketplace-image]waarden in voor de volgende para meters:
+Voer waarden in voor [de][sap-templates-3-tier-multisid-db-marketplace-image]volgende parameters als u de sjabloon voor multi-SID van de database wilt instellen, voer waarden in voor de volgende parameters:
 
-- **SAP-systeem-id**. Voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als voor voegsel voor de resources die worden geïmplementeerd.
-- **Type besturings systeem**. Selecteer het besturings systeem van de virtuele machines.
-- **DBTYPE**. Selecteer het type Data Base dat u op het cluster wilt installeren. Selecteer **SQL** als u Microsoft SQL Server wilt installeren. Selecteer **Hana** als u SAP Hana wilt installeren op de virtuele machines. Zorg ervoor dat u het juiste type besturings systeem selecteert: Selecteer **Windows** voor SQL en selecteer een Linux-distributie voor Hana. De Azure Load Balancer die is verbonden met de virtuele machines, wordt geconfigureerd voor de ondersteuning van het geselecteerde database type:
-  * **SQL**. De load balancer-balans poort 1433 wordt geladen. Zorg ervoor dat u deze poort gebruikt voor de installatie van SQL Server altijd.
-  * **Hana**. De load balancer worden taakverdelings poorten 35015 en 35017. Zorg ervoor dat u SAP HANA installeert met instantie nummer **50**.
-  In het load balancer wordt test poort 62550 gebruikt.
-- **SAP-systeem grootte**. Stel het aantal SAP'S in dat door het nieuwe systeem moet worden geboden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
-- **Systeem beschikbaarheid**. Selecteer **ha**.
-- **Gebruikers naam en beheerders wachtwoord**voor de beheerder. Maak een nieuwe gebruiker die kan worden gebruikt om u aan te melden bij de computer.
-- **Subnet-id**. Voer de ID in van het subnet dat u hebt gebruikt tijdens de implementatie van de ASCS/SCS-sjabloon of de ID van het subnet dat is gemaakt als onderdeel van de implementatie van de ASCS/SCS-sjabloon.
+- **Sap-systeem-id**. Voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als voorvoegsel voor de resources die worden geïmplementeerd.
+- **Os Type**. Selecteer het besturingssysteem van de virtuele machines.
+- **Dbtype**. Selecteer het type database dat u op het cluster wilt installeren. Selecteer **SQL** als u Microsoft SQL Server wilt installeren. Selecteer **HANA** als u SAP HANA op de virtuele machines wilt installeren. Selecteer het juiste type besturingssysteem: selecteer **Windows** voor SQL en selecteer een Linux-distributie voor HANA. De Azure Load Balancer die is verbonden met de virtuele machines, wordt geconfigureerd om het geselecteerde databasetype te ondersteunen:
+  * **SQL**. De load balancer zal load-balance poort 1433. Zorg ervoor dat u deze poort gebruikt voor uw SQL Server Always On setup.
+  * **HANA**. De load balancer zal load-balance poorten 35015 en 35017. Zorg ervoor dat sap HANA met instantienummer **50**wordt geïnstalleerd.
+  De load balancer zal sondepoort 62550 gebruiken.
+- **Sap-systeemgrootte**. Stel het aantal SAPS in dat het nieuwe systeem zal bieden. Als u niet zeker weet hoeveel SAPS het systeem nodig heeft, vraag het dan aan uw SAP Technology Partner of System Integrator.
+- **Beschikbaarheid van het systeem**. Selecteer **HA**.
+- **Gebruikersnaam en beheerderswachtwoord voor beheerders**. Maak een nieuwe gebruiker die kan worden gebruikt om zich aan te melden bij de machine.
+- **Subnet-id**. Voer de id in van het subnet dat u hebt gebruikt tijdens de implementatie van de ASCS/SCS-sjabloon of de ID van het subnet dat is gemaakt als onderdeel van de implementatie van de ASCS/SCS-sjabloon.
 
-#### <a name="application-servers-template"></a>Sjabloon toepassings servers
+#### <a name="application-servers-template"></a><a name="application-servers-template"></a>Sjabloon toepassingsservers
 
-Met de sjabloon toepassings servers worden twee of meer virtuele machines geïmplementeerd die kunnen worden gebruikt als SAP-toepassings server instanties voor één SAP-systeem. Als u bijvoorbeeld een ASCS/SCS-sjabloon voor vijf SAP-systemen implementeert, moet u deze sjabloon vijf keer implementeren.
+De sjabloon toepassingsservers implementeert twee of meer virtuele machines die kunnen worden gebruikt als SAP Application Server-exemplaren voor één SAP-systeem. Als u bijvoorbeeld een ASCS/SCS-sjabloon implementeert voor vijf SAP-systemen, moet u deze sjabloon vijf keer implementeren.
 
-Als u de sjabloon toepassings servers multi-SID wilt instellen, voert u in de [sjabloon toepassings servers multi-sid][sap-templates-3-tier-multisid-apps-marketplace-image]waarden in voor de volgende para meters:
+Als u de multi-SID-sjabloon voor toepassingsservers wilt instellen, voert u in de [multi-SID-sjabloon voor toepassingsservers][sap-templates-3-tier-multisid-apps-marketplace-image]waarden in voor de volgende parameters:
 
-  -  **SAP-systeem-id**. Voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als voor voegsel voor de resources die worden geïmplementeerd.
-  -  **Type besturings systeem**. Selecteer het besturings systeem van de virtuele machines.
-  -  **SAP-systeem grootte**. Het aantal SAP'S dat het nieuwe systeem zal bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
-  -  **Systeem beschikbaarheid**. Selecteer **ha**.
-  -  **Gebruikers naam en beheerders wachtwoord**voor de beheerder. Maak een nieuwe gebruiker die kan worden gebruikt om u aan te melden bij de computer.
-  -  **Subnet-id**. Voer de ID in van het subnet dat u hebt gebruikt tijdens de implementatie van de ASCS/SCS-sjabloon of de ID van het subnet dat is gemaakt als onderdeel van de implementatie van de ASCS/SCS-sjabloon.
+  -  **Sap-systeem-id**. Voer de SAP-systeem-ID in van het SAP-systeem dat u wilt installeren. De ID wordt gebruikt als voorvoegsel voor de resources die worden geïmplementeerd.
+  -  **Os Type**. Selecteer het besturingssysteem van de virtuele machines.
+  -  **Sap-systeemgrootte**. Het aantal SAPS dat het nieuwe systeem zal leveren. Als u niet zeker weet hoeveel SAPS het systeem nodig heeft, vraag het dan aan uw SAP Technology Partner of System Integrator.
+  -  **Beschikbaarheid van het systeem**. Selecteer **HA**.
+  -  **Gebruikersnaam en beheerderswachtwoord voor beheerders**. Maak een nieuwe gebruiker die kan worden gebruikt om zich aan te melden bij de machine.
+  -  **Subnet-id**. Voer de id in van het subnet dat u hebt gebruikt tijdens de implementatie van de ASCS/SCS-sjabloon of de ID van het subnet dat is gemaakt als onderdeel van de implementatie van de ASCS/SCS-sjabloon.
 
 
-### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Virtueel Azure-netwerk
-In ons voor beeld is de adres ruimte van het virtuele netwerk van Azure 10.0.0.0/16. Er bevindt zich één subnet met de naam **subnet**, met het adres bereik 10.0.0.0/24. Alle virtuele machines en interne load balancers worden geïmplementeerd in dit virtuele netwerk.
+### <a name="azure-virtual-network"></a><a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Virtueel Azure-netwerk
+In ons voorbeeld is de adresruimte van het virtuele Azure-netwerk 10.0.0.0/16. Er is een subnet genaamd **Subnet**, met een adresbereik van 10.0.0.0/24. Alle virtuele machines en interne load balancers worden ingezet in dit virtuele netwerk.
 
 > [!IMPORTANT]
-> Breng geen wijzigingen aan in de netwerk instellingen binnen het gast besturingssysteem. Dit geldt ook voor IP-adressen, DNS-servers en subnet. Configureer al uw netwerk instellingen in Azure. De Dynamic Host Configuration Protocol (DHCP)-service geeft uw instellingen door.
+> Breng geen wijzigingen aan in de netwerkinstellingen in het gastbesturingssysteem. Dit omvat IP-adressen, DNS-servers en subnet. Configureer al uw netwerkinstellingen in Azure. De DHCP-service (Dynamic Host Configuration Protocol) geeft uw instellingen door.
 >
 >
 
-### <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>IP-adressen van DNS
+### <a name="dns-ip-addresses"></a><a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>DNS-IP-adressen
 
-Voer de volgende stappen uit om de vereiste DNS-IP-adressen in te stellen.
+Als u de vereiste DNS-IP-adressen wilt instellen, neemt u de volgende stappen uit.
 
-1. Controleer in de Azure Portal op de Blade **DNS-servers** of de optie **DNS-servers** voor het virtuele netwerk is ingesteld op **aangepaste DNS**.
+1. Controleer in de Azure-portal op het **DNS-serversblad** of de optie **dns-servers** van uw virtuele netwerk is ingesteld op **Aangepaste DNS.**
 2. Selecteer uw instellingen op basis van het type netwerk dat u hebt. Zie de volgende bronnen voor meer informatie:
    * Voeg de IP-adressen van de on-premises DNS-servers toe.  
-   U kunt on-premises DNS-servers uitbreiden naar de virtuele machines die worden uitgevoerd in Azure. In dat scenario kunt u de IP-adressen toevoegen van de virtuele machines van Azure waarop u de DNS-service uitvoert.
-   * Voor implementaties die zijn geïsoleerd in Azure: Implementeer een extra virtuele machine in hetzelfde Virtual Network exemplaar dat fungeert als een DNS-server. Voeg de IP-adressen van de virtuele Azure-machines die u hebt ingesteld voor het uitvoeren van de DNS-service toe.
+   U on-premises DNS-servers uitbreiden naar de virtuele machines die in Azure worden uitgevoerd. In dat scenario u de IP-adressen toevoegen van de virtuele Azure-machines waarop u de DNS-service uitvoert.
+   * Voor implementaties geïsoleerd in Azure: implementeer een extra virtuele machine in dezelfde instantie van het virtuele netwerk die als DNS-server fungeert. Voeg de IP-adressen toe van de virtuele Azure-machines die u hebt ingesteld om de DNS-service uit te voeren.
 
-   ![Afbeelding 12: DNS-servers configureren voor Azure Virtual Network][sap-ha-guide-figure-3001]
+   ![Figuur 12: DNS-servers configureren voor Azure Virtual Network][sap-ha-guide-figure-3001]
 
-   _**Afbeelding 12:** DNS-servers configureren voor Azure Virtual Network_
+   _**Figuur 12:** DNS-servers configureren voor Azure Virtual Network_
 
    > [!NOTE]
-   > Als u de IP-adressen van de DNS-servers wijzigt, moet u de virtuele machines van Azure opnieuw opstarten om de wijziging toe te passen en de nieuwe DNS-servers door te geven.
+   > Als u de IP-adressen van de DNS-servers wijzigt, moet u de virtuele Azure-machines opnieuw starten om de wijziging toe te passen en de nieuwe DNS-servers te verspreiden.
    >
    >
 
-In ons voor beeld is de DNS-service geïnstalleerd en geconfigureerd op deze virtuele Windows-machines:
+In ons voorbeeld wordt de DNS-service geïnstalleerd en geconfigureerd op deze virtuele Windows-machines:
 
-| Virtuele-machine functie | Hostnaam van virtuele machine | Naam van netwerk kaart | Statisch IP-adres |
+| Rol virtuele machine | Naam virtuele machinehost | Naam van netwerkkaart | Statisch IP-adres |
 | --- | --- | --- | --- |
 | Eerste DNS-server |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | Tweede DNS-server |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Hostnamen en statische IP-adressen voor het geclusterde exemplaar van SAP ASCS/SCS geclusterde instantie en DBMS
+### <a name="host-names-and-static-ip-addresses-for-the-sap-ascsscs-clustered-instance-and-dbms-clustered-instance"></a><a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Hostnamen en statische IP-adressen voor de geclusterde SAP ASCS/SCS-instantie en de geclusterde DBMS-instantie
 
 Voor on-premises implementatie hebt u deze gereserveerde hostnamen en IP-adressen nodig:
 
-| Rol van virtuele hostnaam | Naam van virtuele host | Virtueel statisch IP-adres |
+| Rol virtuele hostnaam | Virtuele hostnaam | Virtueel statisch IP-adres |
 | --- | --- | --- |
-| SAP ASCS/SCS First virtual host name (voor cluster beheer) |PR1-ascs-vir |10.0.0.42 |
-| Naam van de virtuele host van het SAP ASCS/SCS-exemplaar |PR1-ascs-SAP |10.0.0.43 |
-| SAP DBMS tweede cluster naam virtuele host (Cluster beheer) |pr1-dbms-vir |10.0.0.32 |
+| SAP ASCS/SCS eerste cluster virtuele hostnaam (voor clusterbeheer) |pr1-ascs-vir |10.0.0.42 |
+| Virtuele hostnaam SAP ASCS/SCS-instantie |pr1-ascs-sap |10.0.0.43 |
+| SAP DBMS tweede cluster virtuele hostnaam (clusterbeheer) |pr1-dbms-vir |10.0.0.32 |
 
-Wanneer u het cluster maakt, maakt u de namen van de virtuele hosts **PR1-ascs-vir** en **PR1-DBMS-vir** en de bijbehorende IP-adressen die het cluster zelf beheren. Zie [cluster knooppunten verzamelen in een cluster configuratie][sap-ha-guide-8.12.1]voor meer informatie over hoe u dit doet.
+Wanneer u het cluster maakt, maakt u de virtuele hostnamen **pr1-ascs-vir** en **pr1-dbms-vir** en de bijbehorende IP-adressen die het cluster zelf beheren. Zie [Clusterknooppunten verzamelen in een clusterconfiguratie][sap-ha-guide-8.12.1]voor informatie over hoe u dit doen.
 
-U kunt hand matig de andere twee namen van virtuele hosts maken, **PR1-ascs-SAP** en **PR1-DBMS-SAP**, en de bijbehorende IP-adressen op de DNS-server. Het geclusterde SAP ASCS/SCS-exemplaar en het geclusterde DBMS-exemplaar gebruiken deze bronnen. Zie [een virtuele-hostnaam maken voor een geclusterde SAP ASCS/SCS-instantie][sap-ha-guide-9.1.1]voor meer informatie over hoe u dit doet.
+U handmatig de andere twee virtuele hostnamen, **pr1-ascs-sap** en **pr1-dbms-sap,** en de bijbehorende IP-adressen, op de DNS-server maken. De geclusterde SAP ASCS/SCS-instantie en de geclusterde DBMS-instantie gebruiken deze bronnen. Zie [Een virtuele hostnaam maken voor een geclusterd SAP ASCS/SCS-exemplaar voor][sap-ha-guide-9.1.1]informatie over hoe u dit doen.
 
-### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statische IP-adressen voor de virtuele machines van SAP instellen
-Nadat u de virtuele machines hebt geïmplementeerd voor gebruik in uw cluster, moet u vaste IP-adressen instellen voor alle virtuele machines. Doe dit in de Azure Virtual Network-configuratie en niet in het gast besturingssysteem.
+### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statische IP-adressen instellen voor de virtuele SAP-machines
+Nadat u de virtuele machines hebt geïmplementeerd om in uw cluster te gebruiken, moet u statische IP-adressen instellen voor alle virtuele machines. Doe dit in de Azure Virtual Network-configuratie en niet in het gastbesturingssysteem.
 
-1. Selecteer in de Azure Portal **resource groep** > **netwerk kaart** > **instellingen** > **IP-adres**.
-2. Selecteer op de Blade **IP-adressen** onder **toewijzing**de optie **statisch**. Geef in het vak **IP-adres** het IP-adres op dat u wilt gebruiken.
+1. Selecteer in de Azure-portal > **IP-adres** **brongroepnetwerkkaartinstellingen** > **Network Card** > **Settings**.
+2. Selecteer **Statisch**op het **blad IP-adressen** onder **Toewijzing**. Voer in het vak **IP-adres** het IP-adres in dat u wilt gebruiken.
 
    > [!NOTE]
-   > Als u het IP-adres van de netwerk kaart wijzigt, moet u de virtuele machines van Azure opnieuw opstarten om de wijziging toe te passen.  
+   > Als u het IP-adres van de netwerkkaart wijzigt, moet u de virtuele Azure-machines opnieuw starten om de wijziging toe te passen.  
    >
    >
 
-   ![Afbeelding 13: Stel statische IP-adressen in voor de netwerk kaart van elke virtuele machine][sap-ha-guide-figure-3002]
+   ![Figuur 13: Statische IP-adressen instellen voor de netwerkkaart van elke virtuele machine][sap-ha-guide-figure-3002]
 
-   _**Afbeelding 13:** Statische IP-adressen voor de netwerk kaart van elke virtuele machine instellen_
+   _**Figuur 13:** Statische IP-adressen instellen voor de netwerkkaart van elke virtuele machine_
 
-   Herhaal deze stap voor alle netwerk interfaces, dat wil zeggen, voor alle virtuele machines, met inbegrip van virtuele machines die u wilt gebruiken voor uw Active Directory/DNS-service.
+   Herhaal deze stap voor alle netwerkinterfaces, dat wil zeggen voor alle virtuele machines, inclusief virtuele machines die u wilt gebruiken voor uw Active Directory/DNS-service.
 
-In ons voor beeld hebben we deze virtuele machines en vaste IP-adressen:
+In ons voorbeeld hebben we deze virtuele machines en statische IP-adressen:
 
-| Virtuele-machine functie | Hostnaam van virtuele machine | Naam van netwerk kaart | Statisch IP-adres |
+| Rol virtuele machine | Naam virtuele machinehost | Naam van netwerkkaart | Statisch IP-adres |
 | --- | --- | --- | --- |
-| Eerste SAP-toepassings Server exemplaar |pr1-di-0 |PR1-NIC-di-0 |10.0.0.50 |
-| Tweede SAP-toepassings Server exemplaar |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
+| Eerste SAP Application Server-instantie |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
+| Tweede EXEMPLAAR SAP Application Server |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
 | ... |... |... |... |
-| Laatste SAP-toepassings Server exemplaar |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Eerste cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Tweede cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
-| Eerste cluster knooppunt voor het DBMS-exemplaar |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
-| Tweede cluster knooppunt voor DBMS-exemplaar |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
+| Laatste EXEMPLAAR SAP Application Server |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
+| Eerste clusterknooppunt voor ASCS/SCS-exemplaar |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Tweede clusterknooppunt voor ASCS/SCS-exemplaar |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
+| Eerste clusterknooppunt voor DBMS-exemplaar |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
+| Tweede clusterknooppunt voor DBMS-exemplaar |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
-### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Stel een statisch IP-adres in voor de interne load balancer van Azure
+### <a name="set-a-static-ip-address-for-the-azure-internal-load-balancer"></a><a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Een statisch IP-adres instellen voor de interne loadbalancer van Azure
 
-Met de SAP-Azure Resource Manager sjabloon maakt u een interne Azure-load balancer die wordt gebruikt voor het SAP-ASCS/SCS-exemplaar cluster en het DBMS-cluster.
+Met de sjabloon SAP Azure Resource Manager wordt een azure internal load balancer gemaakt die wordt gebruikt voor het SAP ASCS/SCS-instantiecluster en het DBMS-cluster.
 
 > [!IMPORTANT]
-> Het IP-adres van de virtuele hostnaam van de SAP ASCS/SCS is hetzelfde als het IP-adres van de SAP ASCS/SCS Internal load balancer: **PR1-lb-ASCS**.
-> Het IP-adres van de virtuele naam van het DBMS is hetzelfde als het IP-adres van de interne DBMS-load balancer: **PR1-lb-DBMS**.
+> Het IP-adres van de virtuele hostnaam van de SAP ASCS/SCS is hetzelfde als het IP-adres van de interne load balancer van SAP ASCS/SCS: **pr1-lb-ascs**.
+> Het IP-adres van de virtuele naam van de DBMS is hetzelfde als het IP-adres van de interne load balancer van DBMS: **pr1-lb-dbms**.
 >
 >
 
-Een statisch IP-adres voor de interne Azure-load balancer instellen:
+Ga als lid van het nieuwe IP-adres van de interne lastenbalans van Azure:
 
-1. De eerste implementatie stelt het interne load balancer IP-adres in op **dynamisch**. Selecteer in de Azure Portal op de Blade **IP-adressen** onder **toewijzing**de optie **statisch**.
-2. Stel het IP-adres van de interne load balancer **PR1-lb-ascs** in op het IP-adres van de naam van de virtuele host van het SAP ASCS/SCS-exemplaar.
-3. Stel het IP-adres van de interne load balancer **PR1-lb-DBMS** in op het IP-adres van de naam van de virtuele host van het DBMS-exemplaar.
+1. Bij de eerste implementatie wordt het IP-adres van de interne load balancer ingesteld op **Dynamic**. Selecteer **Statisch**in de Azure-portal op het **ip-adresblad** onder **Toewijzing**.
+2. Stel het IP-adres van de interne load balancer **pr1-lb-ascs** in op het IP-adres van de virtuele hostnaam van het exemplaar SAP ASCS/SCS.
+3. Stel het IP-adres van de interne load balancer **pr1-lb-dbms** in op het IP-adres van de virtuele hostnaam van de DBMS-instantie.
 
-   ![Afbeelding 14: vaste IP-adressen voor de interne load balancer instellen voor het SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-3003]
+   ![Figuur 14: Statische IP-adressen instellen voor de interne load balancer voor de instantie SAP ASCS/SCS][sap-ha-guide-figure-3003]
 
-   _**Afbeelding 14:** Statische IP-adressen voor de interne load balancer instellen voor het SAP ASCS/SCS-exemplaar_
+   _**Figuur 14:** Statische IP-adressen instellen voor de interne load balancer voor de instantie SAP ASCS/SCS_
 
-In ons voor beeld hebben we twee interne load balancers van Azure met deze statische IP-adressen:
+In ons voorbeeld hebben we twee azure interne load balancers die deze statische IP-adressen hebben:
 
-| Rol van interne Azure-load balancer | Naam van de interne load balancer van Azure | Statisch IP-adres |
+| Azure interne load balancer-rol | Naam van Azure-interne lastenbalans | Statisch IP-adres |
 | --- | --- | --- |
-| Load balancer van SAP ASCS/SCS-instantie intern |pr1-lb-ascs |10.0.0.43 |
+| Interne load balancer van SAP ASCS/SCS-instantie |pr1-lb-ascs |10.0.0.43 |
 | SAP DBMS interne load balancer |pr1-lb-dbms |10.0.0.33 |
 
 
-### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Standaard regels voor ASCS/SCS-taak verdeling voor de interne load balancer van Azure
+### <a name="default-ascsscs-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Standaardregels voor ASCS/SCS-taakverdeling voor de interne loadbalancer van Azure
 
-De SAP-Azure Resource Manager sjabloon maakt de poorten die u nodig hebt:
-* Een ABAP ASCS-exemplaar met het standaard instantie nummer **00**
-* Een Java SCS-exemplaar met het standaard instantie nummer **01**
+Met de sjabloon SAP Azure Resource Manager worden de poorten gemaakt die u nodig hebt:
+* Een ABAP ASCS-instantie, met het standaardinstantienummer **00**
+* Een Java SCS-exemplaar, met het standaardinstantienummer **01**
 
-Wanneer u uw SAP ASCS/SCS-exemplaar installeert, moet u het standaard instantie nummer **00** voor uw ABAP ASCS-exemplaar en het standaard instantie nummer **01** voor uw Java SCS-exemplaar gebruiken.
+Wanneer u uw SAP ASCS/SCS-exemplaar installeert, moet u het standaardinstantienummer **00** gebruiken voor uw ABAP ASCS-exemplaar en het standaardexemplaarnummer **01** voor uw Java SCS-exemplaar.
 
-Maak vervolgens de vereiste interne taakverdelings eindpunten voor de SAP NetWeaver-poorten.
+Maak vervolgens de vereiste interne taakverdelingseindpunten voor de SAP NetWeaver-poorten.
 
-Als u vereiste interne taakverdelings eindpunten wilt maken, moet u eerst deze taakverdelings eindpunten maken voor de SAP NetWeaver ABAP ASCS-poorten:
+Als u vereiste interne taakverdelingseindpunten wilt maken, maakt u eerst deze eindpunten voor het balanceren van de lasten voor de SAP NetWeaver ABAP ASCS-poorten:
 
-| Service-en taakverdelings regel naam | Standaard poort nummers | Concrete poorten voor (ASCS-exemplaar met exemplaar nummer 00) (ERS met 10) |
+| Regelnaam service/taakverdeling | Standaardpoortnummers | Betonpoorten voor (ASCS-instantie met instantienummer 00) (ERS met 10) |
 | --- | --- | --- |
-| Server- *lbrule3200* in wachtrij plaatsen |32 <*InstanceNumber*> |3200 |
-| ABAP-bericht server/ *lbrule3600* |36 <*InstanceNumber*> |3600 |
-| Intern ABAP-bericht/ *lbrule3900* |39 <*InstanceNumber*> |3900 |
-| HTTP- *Lbrule8100* van bericht server |81 <*InstanceNumber*> |8100 |
-| ASCS HTTP/ *Lbrule50013* voor SAP-start service |5 <*InstanceNumber*> 13 |50013 |
-| ASCS HTTPS/ *Lbrule50014* voor SAP-start service |5 <*InstanceNumber*> 14 |50014 |
-| Replicatie- *Lbrule50016* in wachtrij plaatsen |5 <*InstanceNumber*> 16 |50016 |
-| ERS HTTP- *Lbrule51013* voor SAP-start service |5 <*InstanceNumber*> 13 |51013 |
-| ERS HTTP- *Lbrule51014* voor SAP-start service |5 <*InstanceNumber*> 14 |51014 |
-| Win RM- *Lbrule5985* | |5985 |
-| Bestands share *Lbrule445* | |445 |
+| Server in enqueue / *lbrule3200* |32<*InstanceNumber*> |3200 |
+| ABAP Message Server / *lbrule3600* |36<*InstanceNumber*> |3600 |
+| Intern ABAP-bericht / *lbrule3900* |39<*InstanceNumber*> |3900 |
+| Message Server HTTP / *Lbrule8100* |81<*instancenumber*> |8100 |
+| SAP Start Service ASCS HTTP / *Lbrule50013* |5<*InstanceNumber*>13 |50013 |
+| SAP Start Service ASCS HTTPS / *Lbrule50014* |5<*InstanceNumber*>14 |50014 |
+| Replicatie indewachtrij / *Lbrule50016* |5<*InstanceNumber*>16 |50016 |
+| SAP Start Service ERS HTTP *Lbrule51013* |5<*InstanceNumber*>13 |51013 |
+| SAP Start Service ERS HTTP *Lbrule51014* |5<*InstanceNumber*>14 |51014 |
+| Win RM *Lbrule5985* | |5985 |
+| File Share *Lbrule445* | |445 |
 
-_**Tabel 1:** Poort nummers van de SAP NetWeaver ABAP ASCS-instanties_
+_**Tabel 1:** Poortnummers van de SAP NetWeaver ABAP ASCS-exemplaren_
 
-Vervolgens maakt u deze eind punten voor taak verdeling voor de SAP NetWeaver Java SCS-poorten:
+Maak vervolgens deze eindpunten voor het balanceren van de lastenvoor de SAP NetWeaver Java SCS-poorten:
 
-| Service-en taakverdelings regel naam | Standaard poort nummers | Concrete poorten voor (SCS-exemplaar met exemplaar nummer 01) (ERS met 11) |
+| Regelnaam service/taakverdeling | Standaardpoortnummers | Betonpoorten voor (SCS-exemplaar met instantienummer 01) (ERS met 11) |
 | --- | --- | --- |
-| Server- *lbrule3201* in wachtrij plaatsen |32 <*InstanceNumber*> |3201 |
-| Gateway server- *lbrule3301* |33 <*InstanceNumber*> |3301 |
-| Java-bericht server- *lbrule3900* |39 <*InstanceNumber*> |3901 |
-| HTTP- *Lbrule8101* van bericht server |81 <*InstanceNumber*> |8101 |
-| SCS HTTP/ *Lbrule50113* voor SAP-start service |5 <*InstanceNumber*> 13 |50113 |
-| SCS HTTPS/ *Lbrule50114* voor SAP-start service |5 <*InstanceNumber*> 14 |50114 |
-| Replicatie- *Lbrule50116* in wachtrij plaatsen |5 <*InstanceNumber*> 16 |50116 |
-| ERS HTTP- *Lbrule51113* voor SAP-start service |5 <*InstanceNumber*> 13 |51113 |
-| ERS HTTP- *Lbrule51114* voor SAP-start service |5 <*InstanceNumber*> 14 |51114 |
-| Win RM- *Lbrule5985* | |5985 |
-| Bestands share *Lbrule445* | |445 |
+| Server in enqueue / *lbrule3201* |32<*InstanceNumber*> |3201 |
+| Gateway Server / *lbrule3301* |33<*InstanceNumber*> |3301 |
+| Java Message Server / *lbrule3900* |39<*InstanceNumber*> |3901 |
+| Message Server HTTP / *Lbrule8101* |81<*instancenumber*> |8101 |
+| SAP Start Service SCS HTTP / *Lbrule50113* |5<*InstanceNumber*>13 |50113 |
+| SAP Start Service SCS HTTPS / *Lbrule50114* |5<*InstanceNumber*>14 |50114 |
+| Replicatie indewachtrij / *Lbrule50116* |5<*InstanceNumber*>16 |50116 |
+| SAP Start Service ERS HTTP *Lbrule51113* |5<*InstanceNumber*>13 |51113 |
+| SAP Start Service ERS HTTP *Lbrule51114* |5<*InstanceNumber*>14 |51114 |
+| Win RM *Lbrule5985* | |5985 |
+| File Share *Lbrule445* | |445 |
 
-_**Tabel 2:** Poort nummers van de SAP NetWeaver Java SCS-instanties_
+_**Tabel 2:** Poortnummers van de SAP NetWeaver Java SCS-exemplaren_
 
-![Afbeelding 15: standaard regels voor ASCS/SCS-taak verdeling voor de interne load balancer van Azure][sap-ha-guide-figure-3004]
+![Figuur 15: Standaardregels voor ascs/SCS-taakverdeling voor de interne loadbalancer van Azure][sap-ha-guide-figure-3004]
 
-_**Afbeelding 15:** Standaard regels voor ASCS/SCS-taak verdeling voor de interne load balancer van Azure_
+_**Figuur 15:** Standaardregels voor ASCS/SCS-taakverdeling voor de interne loadbalancer van Azure_
 
-Stel het IP-adres van de load balancer **PR1-lb-DBMS** in op het IP-adres van de naam van de virtuele host van het DBMS-exemplaar.
+Stel het IP-adres van de load balancer **pr1-lb-dbms** in op het IP-adres van de virtuele hostnaam van het DBMS-exemplaar.
 
-### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Wijzig de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-load balancer
+### <a name="change-the-ascsscs-default-load-balancing-rules-for-the-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>De standaardregels voor taakverdeling van ASCS/SCS wijzigen voor de interne loadbalancer van Azure
 
-Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u de namen en waarden van de poorten van de standaard waarden wijzigen.
+Als u verschillende nummers wilt gebruiken voor de SAP ASCS- of SCS-exemplaren, moet u de namen en waarden van hun poorten wijzigen van standaardwaarden.
 
-1. Selecteer in de Azure Portal **<*sid*>-lb-ascs Load Balancer** > taakverdelings **regels**.
-2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
+1. Selecteer SID ** < *SID*>-lb-ascs load balancer** > **Load Balancing Rules**in de Azure-portal.
+2. Wijzig de volgende waarden voor alle regels voor het balanceren van de taak die deel uitmaken van de SAP ASCS- of SCS-instantie:
 
-   * Naam
+   * Name
    * Poort
-   * Poort van back-end
+   * Back-endpoort
 
-   Als u bijvoorbeeld het standaard ASCS-instantie nummer wilt wijzigen van 00 in 31, moet u de wijzigingen aanbrengen voor alle poorten die worden vermeld in tabel 1.
+   Als u bijvoorbeeld het standaard ASCS-instantienummer wilt wijzigen van 00 naar 31, moet u de wijzigingen aanbrengen voor alle poorten die in tabel 1 worden vermeld.
 
-   Hier volgt een voor beeld van een update voor poort *lbrule3200*.
+   Hier is een voorbeeld van een update voor *poortlbrule3200*.
 
-   ![Afbeelding 16: Wijzig de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-load balancer][sap-ha-guide-figure-3005]
+   ![Figuur 16: De standaardregels voor taakverdeling van ASCS/SCS wijzigen voor de interne loadbalancer van Azure][sap-ha-guide-figure-3005]
 
-   _**Afbeelding 16:** Wijzig de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-load balancer_
+   _**Figuur 16:** De standaardregels voor taakverdeling van ASCS/SCS wijzigen voor de interne loadbalancer van Azure_
 
-### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Virtuele Windows-machines toevoegen aan het domein
+### <a name="add-windows-virtual-machines-to-the-domain"></a><a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Virtuele Windows-machines toevoegen aan het domein
 
 Nadat u een statisch IP-adres aan de virtuele machines hebt toegewezen, voegt u de virtuele machines toe aan het domein.
 
-![Afbeelding 17: een virtuele machine toevoegen aan een domein][sap-ha-guide-figure-3006]
+![Figuur 17: Een virtuele machine toevoegen aan een domein][sap-ha-guide-figure-3006]
 
-_**Afbeelding 17:** Een virtuele machine toevoegen aan een domein_
+_**Figuur 17:** Een virtuele machine toevoegen aan een domein_
 
-### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar
+### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Registervermeldingen toevoegen op beide clusterknooppunten van de instantie SAP ASCS/SCS
 
-Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen gedurende een bepaalde periode inactief zijn (een time-out voor inactiviteit). SAP-werk processen in dialoogvenster exemplaren openen verbindingen met het SAP-bewerkings proces zodra de eerste aanvraag voor het plaatsen/verwijderen van de wachtrij moet worden verzonden. Deze verbindingen blijven doorgaans tot stand worden gebracht tot het werk proces of het proces voor het in de wachtrij plaatsen opnieuw wordt gestart. Als de verbinding echter gedurende een bepaalde periode inactief is, worden de verbindingen met de interne Azure-load balancer gesloten. Dit is geen probleem omdat het SAP werk proces de verbinding met het bewerkings proces moet herstellen als het niet meer bestaat. Deze activiteiten zijn gedocumenteerd in de ontwikkel aars van SAP-processen, maar ze maken een grote hoeveelheid extra inhoud in deze traceringen. Het is een goed idee om de TCP/IP-`KeepAliveTime` en `KeepAliveInterval` op beide cluster knooppunten te wijzigen. Combi neer deze wijzigingen in de TCP/IP-para meters met SAP-profiel parameters, verderop in het artikel beschreven.
+Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen niet actief zijn voor een bepaalde periode (een niet-actieve time-out). SAP-werkprocessen in dialoogvensters openen verbindingen met het SAP-wachtrijproces zodra de eerste aanvraag voor wachtrij/wachtrij moet worden verzonden. Deze verbindingen blijven meestal tot stand totdat het werkproces of het wachtrijproces opnieuw wordt opgestart. Als de verbinding echter gedurende een bepaalde periode niet actief is, worden de verbindingen met de interne lastenbalancer van Azure gesloten. Dit is geen probleem omdat het SAP-werkproces de verbinding met het wachtrijproces opnieuw vaststelt als deze niet meer bestaat. Deze activiteiten worden gedocumenteerd in de ontwikkelaarssporen van SAP-processen, maar ze creëren een grote hoeveelheid extra inhoud in die traces. Het is een goed idee om `KeepAliveTime` de `KeepAliveInterval` TCP/IP en op beide clusterknooppunten te wijzigen. Combineer deze wijzigingen in de TCP/IP-parameters met SAP-profielparameters, die later in het artikel worden beschreven.
 
-Als u Register vermeldingen wilt toevoegen aan cluster knooppunten van het SAP ASCS/SCS-exemplaar, voegt u eerst deze Windows-register vermeldingen toe op beide Windows-cluster knooppunten voor SAP ASCS/SCS:
+Als u registervermeldingen wilt toevoegen op beide clusterknooppunten van de instantie SAP ASCS/SCS, voegt u eerst deze Windows-registervermeldingen toe op beide Windows-clusterknooppunten voor SAP ASCS/SCS:
 
 | Pad | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Naam van de variabele |`KeepAliveTime` |
-| Type variabele |REG_DWORD (decimaal) |
-| Waarde |120.000 |
+| Variabel type |REG_DWORD (Decimaal) |
+| Waarde |120000 |
 | Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
-_**Tabel 3:** De eerste TCP/IP-para meter wijzigen_
+_**Tabel 3:** De eerste PARAMETER TCP/IP wijzigen_
 
-Voeg deze Windows-register vermeldingen vervolgens toe aan de Windows-cluster knooppunten voor SAP ASCS/SCS:
+Voeg vervolgens deze Windows-registervermeldingen toe aan beide Windows-clusterknooppunten voor SAP ASCS/SCS:
 
 | Pad | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Naam van de variabele |`KeepAliveInterval` |
-| Type variabele |REG_DWORD (decimaal) |
-| Waarde |120.000 |
+| Variabel type |REG_DWORD (Decimaal) |
+| Waarde |120000 |
 | Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
-_**Tabel 4:** De tweede TCP/IP-para meter wijzigen_
+_**Tabel 4:** De tweede PARAMETER TCP/IP wijzigen_
 
-**Start beide cluster knooppunten opnieuw op om de wijzigingen toe te passen**.
+**Als u de wijzigingen wilt toepassen, start u beide clusterknooppunten opnieuw**.
 
-### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Een Windows Server failover clustering-cluster instellen voor een SAP ASCS/SCS-exemplaar
+### <a name="set-up-a-windows-server-failover-clustering-cluster-for-an-sap-ascsscs-instance"></a><a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Een Clusteringcluster voor Failover van Windows Server instellen voor een SAP ASCS/SCS-exemplaar
 
-Het instellen van een Windows Server failover clustering-cluster voor een SAP ASCS/SCS-instantie omvat de volgende taken:
+Het instellen van een Windows Server Failover clustering cluster voor een SAP ASCS/SCS-exemplaar omvat de volgende taken:
 
-- De cluster knooppunten in een cluster configuratie verzamelen
-- Een cluster bestands share-Witness configureren
+- De clusterknooppunten verzamelen in een clusterconfiguratie
+- Een clusterbestandsshare-getuige configureren
 
-#### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>De cluster knooppunten in een cluster configuratie verzamelen
+#### <a name="collect-the-cluster-nodes-in-a-cluster-configuration"></a><a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>De clusterknooppunten verzamelen in een clusterconfiguratie
 
-1. Voeg in de wizard functies en onderdelen toevoegen Failover Clustering toe aan beide cluster knooppunten.
-2. Stel het failovercluster in met behulp van Failoverclusterbeheer. Selecteer in Failoverclusterbeheer de optie **cluster maken**en voeg alleen de naam van het eerste cluster, knoop punt A, toe. Voeg het tweede knoop punt nog niet toe. u voegt het tweede knoop punt in een latere stap toe.
+1. Voeg in de wizard Rol en onderdelen toevoegen failoverclustering toe aan beide clusterknooppunten.
+2. Stel het failovercluster in met Failoverclusterbeheer. Selecteer in Failoverclusterbeheer **clusterbeheer**en voeg vervolgens alleen de naam van het eerste cluster, knooppunt A, toe. Voeg het tweede knooppunt nog niet toe; u voegt het tweede knooppunt in een latere stap toe.
 
-   ![Afbeelding 18: de naam van de server of de virtuele machine van het eerste cluster knooppunt toevoegen][sap-ha-guide-figure-3007]
+   ![Figuur 18: De naam van de server of virtuele machine van het eerste clusterknooppunt toevoegen][sap-ha-guide-figure-3007]
 
-   _**Afbeelding 18:** De naam van de server of de virtuele machine van het eerste cluster knooppunt toevoegen_
+   _**Figuur 18:** De naam van de server of virtuele machine van het eerste clusterknooppunt toevoegen_
 
-3. Voer de netwerk naam (naam van de virtuele host) van het cluster in.
+3. Voer de netwerknaam (virtuele hostnaam) van het cluster in.
 
-   ![Afbeelding 19: Voer de naam van het cluster in][sap-ha-guide-figure-3008]
+   ![Figuur 19: Voer de clusternaam in][sap-ha-guide-figure-3008]
 
-   _**Afbeelding 19:** Voer de naam van het cluster in_
+   _**Figuur 19:** Voer de clusternaam in_
 
-4. Nadat u het cluster hebt gemaakt, voert u een cluster validatie test uit.
+4. Nadat u het cluster hebt gemaakt, voert u een clustervalidatietest uit.
 
-   ![Afbeelding 20: de cluster validatie controle uitvoeren][sap-ha-guide-figure-3009]
+   ![Figuur 20: De clustervalidatiecontrole uitvoeren][sap-ha-guide-figure-3009]
 
-   _**Afbeelding 20:** De cluster validatie controle uitvoeren_
+   _**Figuur 20:** De clustervalidatiecontrole uitvoeren_
 
-   U kunt op dit moment in het proces waarschuwingen over schijven negeren. U voegt later een bestands share-Witness en de SIOS gedeelde schijven toe. In deze fase hoeft u zich geen zorgen te maken over een quorum.
+   U waarschuwingen over schijven op dit punt in het proces negeren. U voegt later een getuige voor bestandsshare toe en de gedeelde SIOS-schijven. In dit stadium hoeft u zich geen zorgen te maken over het hebben van een quorum.
 
-   ![Afbeelding 21: er is geen quorum schijf gevonden][sap-ha-guide-figure-3010]
+   ![Figuur 21: Er wordt geen quorumschijf gevonden][sap-ha-guide-figure-3010]
 
-   _**Afbeelding 21:** Er is geen quorum schijf gevonden_
+   _**Figuur 21:** Er wordt geen quorumschijf gevonden_
 
-   ![Afbeelding 22: voor de kern cluster bron is een nieuw IP-adres vereist][sap-ha-guide-figure-3011]
+   ![Figuur 22: Kernclusterbron heeft een nieuw IP-adres nodig][sap-ha-guide-figure-3011]
 
-   _**Afbeelding 22:** Voor de kern cluster bron is een nieuw IP-adres vereist_
+   _**Figuur 22:** Kernclusterbron heeft een nieuw IP-adres nodig_
 
-5. Wijzig het IP-adres van de kern Cluster service. Het cluster kan pas worden gestart als u het IP-adres van de kern Cluster service wijzigt, omdat het IP-adres van de server verwijst naar een van de knoop punten van de virtuele machine. Doe dit op de pagina **Eigenschappen** van de IP-bron van de kern Cluster service.
+5. Wijzig het IP-adres van de kernclusterservice. Het cluster kan pas worden gestart als u het IP-adres van de kernclusterservice wijzigt, omdat het IP-adres van de server naar een van de knooppunten voor virtuele machines verwijst. Doe dit op de pagina **Eigenschappen** van de IP-bron van de kernclusterservice.
 
-   We moeten bijvoorbeeld een IP-adres (in ons voor beeld **10.0.0.42**) toewijzen voor de virtuele cluster naam **PR1-ascs-vir**.
+   We moeten bijvoorbeeld een IP-adres (in ons voorbeeld **10.0.0.42)** toewijzen voor de virtuele hostnaam van het cluster **pr1-ascs-vir.**
 
-   ![Afbeelding 23: Wijzig in het dialoog venster Eigenschappen het IP-adres][sap-ha-guide-figure-3012]
+   ![Figuur 23: Wijzig in het dialoogvenster Eigenschappen het IP-adres][sap-ha-guide-figure-3012]
 
-   _**Afbeelding 23:** Wijzig in het dialoog venster **Eigenschappen** het IP-adres_
+   _**Figuur 23:** Wijzig het IP-adres in het dialoogvenster **Eigenschappen**_
 
-   ![Afbeelding 24: wijs het IP-adres toe dat is gereserveerd voor het cluster][sap-ha-guide-figure-3013]
+   ![Figuur 24: Het IP-adres toewijzen dat is gereserveerd voor het cluster][sap-ha-guide-figure-3013]
 
-   _**Afbeelding 24:** Wijs het IP-adres toe dat is gereserveerd voor het cluster_
+   _**Figuur 24:** Het IP-adres toewijzen dat is gereserveerd voor het cluster_
 
-6. Haal de naam van de virtuele cluster-host online.
+6. Breng de naam van de virtuele host van het cluster online.
 
-   ![Afbeelding 25: de cluster kern service is actief en met het juiste IP-adres][sap-ha-guide-figure-3014]
+   ![Figuur 25: Clustercore-service is operationeel en met het juiste IP-adres][sap-ha-guide-figure-3014]
 
-   _**Afbeelding 25:** De cluster kern service is actief en met het juiste IP-adres_
+   _**Figuur 25:** Clustercore-service is operationeel en met het juiste IP-adres_
 
-7. Voeg het tweede cluster knooppunt toe.
+7. Voeg het tweede clusterknooppunt toe.
 
-   Nu de kern Cluster service actief is, kunt u het tweede cluster knooppunt toevoegen.
+   Nu de kernclusterservice operationeel is, u het tweede clusterknooppunt toevoegen.
 
-   ![Afbeelding 26: het tweede cluster knooppunt toevoegen][sap-ha-guide-figure-3015]
+   ![Figuur 26: Het tweede clusterknooppunt toevoegen][sap-ha-guide-figure-3015]
 
-   _**Afbeelding 26:** Het tweede cluster knooppunt toevoegen_
+   _**Figuur 26:** Het tweede clusterknooppunt toevoegen_
 
-8. Voer een naam in voor de tweede host van het cluster knooppunt.
+8. Voer een naam in voor de status van het tweede clusterknooppunt.
 
-   ![Afbeelding 27: Voer de tweede hostnaam van het cluster knooppunt in][sap-ha-guide-figure-3016]
+   ![Figuur 27: Voer de hostnaam van het tweede clusterknooppunt in][sap-ha-guide-figure-3016]
 
-   _**Afbeelding 27:** Voer de tweede hostnaam van het cluster knooppunt in_
+   _**Figuur 27:** De naam van de hostnaam van het tweede clusterknooppunt invoeren_
 
    > [!IMPORTANT]
-   > Zorg ervoor dat het selectie vakje **Voeg alle in aanmerking komende opslag aan het cluster toe** is **niet** is ingeschakeld.  
+   > Zorg ervoor dat het selectievakje **Alle in aanmerking komende opslag toevoegen aan het cluster** **NIET** is ingeschakeld.  
    >
    >
 
-   ![Afbeelding 28: Schakel het selectie vakje niet in][sap-ha-guide-figure-3017]
+   ![Figuur 28: Schakel het selectievakje niet in][sap-ha-guide-figure-3017]
 
-   _**Afbeelding 28:** Schakel het selectie vakje **niet** in_
+   _**Figuur 28:** Schakel het selectievakje **niet** in_
 
-   U kunt waarschuwingen over quorum en schijven negeren. U moet het quorum instellen en de schijf later delen, zoals wordt beschreven in de [installatie van Sios data keeper cluster Edition voor SAP ASCS/SCS cluster share Disk][sap-ha-guide-8.12.3].
+   U waarschuwingen over quorum en schijven negeren. U stelt het quorum in en deelt de schijf later, zoals beschreven [in het installeren van SIOS DataKeeper Cluster Edition voor SAP ASCS/SCS-clustershareschijf.][sap-ha-guide-8.12.3]
 
-   ![Afbeelding 29: waarschuwingen over het schijf quorum negeren][sap-ha-guide-figure-3018]
+   ![Figuur 29: Waarschuwingen over het schijfquorum negeren][sap-ha-guide-figure-3018]
 
-   _**Afbeelding 29:** Waarschuwingen over het schijf quorum negeren_
+   _**Figuur 29:** Waarschuwingen over het schijfquorum negeren_
 
 
-#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Een cluster bestands share-Witness configureren
+#### <a name="configure-a-cluster-file-share-witness"></a><a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Een clusterbestandsshare-getuige configureren
 
-Het configureren van een cluster bestands share-Witness omvat de volgende taken:
+Het configureren van een clusterbestandssharegetuige omvat de volgende taken:
 
-- Een bestands share maken
-- Het quorum van de bestands share-Witness instellen in Failoverclusterbeheer
+- Een bestandsshare maken
+- Het quorum van de bestandsshare-getuige instellen in Failoverclusterbeheer
 
-##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Een bestands share maken
+##### <a name="create-a-file-share"></a><a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Een bestandsshare maken
 
-1. Selecteer een bestands share-Witness in plaats van een quorum schijf. SIOS data keeper ondersteunt deze optie.
+1. Selecteer een getuige voor bestandsshare in plaats van een quorumschijf. SIOS DataKeeper ondersteunt deze optie.
 
-   In de voor beelden in dit artikel bevindt de bestandssharewitness zich op de Active Directory/DNS-server die wordt uitgevoerd in Azure. De bestandssharewitness van de bestands share heet **domcontr-0**. Omdat u een VPN-verbinding met Azure hebt geconfigureerd (via site-naar-site VPN of Azure ExpressRoute), is uw Active Directory/DNS-service on-premises en is niet geschikt voor het uitvoeren van een bestandssharewitness.
+   In de voorbeelden in dit artikel bevindt de getuige voor bestandsshare zich op de Active Directory/DNS-server die in Azure wordt uitgevoerd. Het dossier aandeel getuige heet **domcontr-0**. Omdat u een VPN-verbinding met Azure zou hebben geconfigureerd (via Site-to-Site VPN of Azure ExpressRoute), is uw Active Directory/DNS-service on-premises en is het niet geschikt om een getuige voor bestandsshare uit te voeren.
 
    > [!NOTE]
-   > Als uw Active Directory/DNS-service alleen on-premises wordt uitgevoerd, configureert u de bestandssharewitness niet op het Windows-besturings systeem Active Directory/DNS dat on-premises wordt uitgevoerd. Netwerk latentie tussen cluster knooppunten die worden uitgevoerd in Azure en on-premises Active Directory/DNS zijn mogelijk te groot en veroorzaken verbindings problemen. Zorg ervoor dat u de bestands share-Witness hebt geconfigureerd op een virtuele machine van Azure die dicht bij het cluster knooppunt wordt uitgevoerd.  
+   > Als uw Active Directory/DNS-service alleen on-premises wordt uitgevoerd, configureert u de getuige voor bestandsshare niet op het Active Directory/DNS Windows-besturingssysteem dat on-premises wordt uitgevoerd. De netwerklatentie tussen clusterknooppunten die in Azure worden uitgevoerd en Active Directory/DNS on-premises zijn mogelijk te groot en veroorzaken verbindingsproblemen. Zorg ervoor dat u de getuige voor bestandsshare configureert op een virtuele Azure-machine die dicht bij het clusterknooppunt wordt uitgevoerd.  
    >
    >
 
-   Het quorum station heeft ten minste 1.024 MB beschik bare ruimte nodig. U kunt 2.048 MB beschik bare ruimte voor het quorum station aanraden.
+   Het quorumstation heeft minstens 1.024 MB vrije ruimte nodig. We raden 2.048 MB vrije ruimte aan voor het quorumstation.
 
-2. Voeg het cluster naam object toe.
+2. Voeg het object clusternaam toe.
 
-   ![Afbeelding 30: de machtigingen voor de share voor het cluster naam object toewijzen][sap-ha-guide-figure-3019]
+   ![Figuur 30: De machtigingen voor het aandeel toewijzen voor het clusternaamobject][sap-ha-guide-figure-3019]
 
-   _**Afbeelding 30:** Wijs de machtigingen voor de share voor het cluster naam object toe_
+   _**Figuur 30:** De machtigingen voor de share toewijzen voor het clusternaamobject_
 
-   Zorg ervoor dat de machtigingen de bevoegdheid voor het wijzigen van gegevens in de share voor het cluster naam object bevatten (in het voor beeld **PR1-ascs-vir $** ).
+   Zorg ervoor dat de machtigingen de bevoegdheid bevatten om gegevens in het aandeel voor het clusternaamobject te wijzigen (in ons voorbeeld **pr1-ascs-vir$**).
 
-3. Selecteer **toevoegen**om het cluster naam object toe te voegen aan de lijst. Wijzig het filter om op computer objecten te controleren, naast de weer gegeven in afbeelding 31.
+3. Als u het object clusternaam aan de lijst wilt toevoegen, selecteert u **Toevoegen**. Wijzig het filter om te controleren op computerobjecten, naast de objecten in figuur 31.
 
-   ![Afbeelding 31: de object typen wijzigen zodat computers worden inge sloten][sap-ha-guide-figure-3020]
+   ![Figuur 31: De objecttypen wijzigen om computers op te nemen][sap-ha-guide-figure-3020]
 
-   _**Afbeelding 31:** De object typen voor het toevoegen van computers wijzigen_
+   _**Figuur 31:** De objecttypen wijzigen om computers op te nemen_
 
-   ![Afbeelding 32: Schakel het selectie vakje computers in][sap-ha-guide-figure-3021]
+   ![Figuur 32: Schakel het selectievakje Computers in][sap-ha-guide-figure-3021]
 
-   _**Afbeelding 32:** Selectie vakje **computers** selecteren_
+   _**Figuur 32:** Schakel het selectievakje **Computers** in_
 
-4. Voer het object cluster naam in zoals weer gegeven in afbeelding 31. Omdat de record al is gemaakt, kunt u de machtigingen wijzigen, zoals wordt weer gegeven in afbeelding 30.
+4. Voer het clusternaamobject in zoals weergegeven in figuur 31. Omdat de record al is gemaakt, u de machtigingen wijzigen, zoals weergegeven in figuur 30.
 
-5. Selecteer het tabblad **beveiliging** van de share en stel vervolgens gedetailleerde machtigingen in voor het cluster naam object.
+5. Selecteer het tabblad **Beveiliging** van het aandeel en stel vervolgens meer gedetailleerde machtigingen in voor het clusternaamobject.
 
-   ![Afbeelding 33: Stel de beveiligings kenmerken in voor het cluster naam object op het bestands share quorum][sap-ha-guide-figure-3022]
+   ![Figuur 33: De beveiligingskenmerken instellen voor het clusternaamobject in het quorum voor bestandsdelen][sap-ha-guide-figure-3022]
 
-   _**Afbeelding 33:** De beveiligings kenmerken voor het cluster naam object op het bestands share quorum instellen_
+   _**Figuur 33:** De beveiligingskenmerken instellen voor het clusternaamobject in het quorum voor bestandsshare_
 
-##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>Het bestands share-Witness-quorum instellen in Failoverclusterbeheer
+##### <a name="set-the-file-share-witness-quorum-in-failover-cluster-manager"></a><a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>Het quorum van de bestandsshare-getuige instellen in Failoverclusterbeheer
 
-1. Open de wizard quorum instelling configureren.
+1. Open de wizard Quoruminstelling configureren.
 
-   ![Afbeelding 34: de wizard cluster quorum instelling configureren starten][sap-ha-guide-figure-3023]
+   ![Figuur 34: De wizard Clusterquoruminstelling configureren starten][sap-ha-guide-figure-3023]
 
-   _**Afbeelding 34:** De wizard cluster quorum instelling configureren starten_
+   _**Figuur 34:** De wizard Clusterquoruminstelling configureren starten_
 
-2. Selecteer op de pagina **quorum configuratie selecteren** **de optie de quorumwitness**.
+2. Selecteer op de pagina **Quorumconfiguratie selecteren** de optie **De quorumgetuige selecteren**.
 
-   ![Afbeelding 35: quorum configuraties waaruit u kunt kiezen][sap-ha-guide-figure-3024]
+   ![Figuur 35: Quorumconfiguraties waaruit u kiezen][sap-ha-guide-figure-3024]
 
-   _**Afbeelding 35:** Quorum configuraties waaruit u kunt kiezen_
+   _**Figuur 35:** Quorumconfiguraties waaruit u kiezen_
 
-3. Selecteer op de pagina **Quorumwitness selecteren** de optie **een bestandssharewitness configureren**.
+3. Selecteer op de pagina **Quorumgetuige selecteren** de optie **Een getuige voor bestandsshare configureren**.
 
-   ![Afbeelding 36: de bestands share-Witness selecteren][sap-ha-guide-figure-3025]
+   ![Figuur 36: Selecteer de getuige van het bestandsdelen][sap-ha-guide-figure-3025]
 
-   _**Afbeelding 36:** De bestandssharewitness selecteren_
+   _**Figuur 36:** De getuige voor bestandsshare selecteren_
 
-4. Voer het UNC-pad naar de bestands share in (in dit voor beeld \\domcontr-0\FSW). Selecteer **volgende**om een lijst weer te geven met de wijzigingen die u kunt aanbrengen.
+4. Voer het UNC-pad naar de bestandsshare in (in ons voorbeeld \\domcontr-0\FSW). Als u een lijst wilt zien met de wijzigingen die u aanbrengen, selecteert u **Volgende**.
 
-   ![Afbeelding 37: de locatie van de bestands share voor de witness-share definiëren][sap-ha-guide-figure-3026]
+   ![Figuur 37: De locatie van de bestandsshare voor het getuigenaandeel definiëren][sap-ha-guide-figure-3026]
 
-   _**Afbeelding 37:** Definieer de locatie van de bestands share voor de witness-share_
+   _**Figuur 37:** De locatie voor bestandsshare voor het getuigenaandeel definiëren_
 
-5. Selecteer de gewenste wijzigingen en selecteer vervolgens **volgende**. U moet de cluster configuratie opnieuw configureren, zoals wordt weer gegeven in afbeelding 38.  
+5. Selecteer de gewenste wijzigingen en selecteer **Volgende**. U moet de clusterconfiguratie opnieuw configureren zoals weergegeven in figuur 38.  
 
-   ![Afbeelding 38: bevestiging dat u het cluster opnieuw hebt geconfigureerd][sap-ha-guide-figure-3027]
+   ![Figuur 38: Bevestiging dat u het cluster opnieuw hebt geconfigureerd][sap-ha-guide-figure-3027]
 
-   _**Afbeelding 38:** Bevestiging dat u het cluster opnieuw hebt geconfigureerd_
+   _**Figuur 38:** Bevestiging dat u het cluster opnieuw hebt geconfigureerd_
 
-Nadat het Windows-failovercluster is geïnstalleerd, moeten de wijzigingen worden aangebracht in een aantal drempel waarden om de detectie van failover aan de voor waarden in azure aan te passen. De para meters die moeten worden gewijzigd, worden beschreven in deze blog: [https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834). Ervan uitgaande dat uw twee virtuele machines die de configuratie van het Windows-cluster voor ASCS/SCS maken, zich in hetzelfde SubNet bevinden, moeten de volgende para meters worden gewijzigd in deze waarden:  
-- SameSubNetDelay = 2000  
+Nadat het Windows Failovercluster is geïnstalleerd, moeten er wijzigingen worden aangebracht in een aantal drempelwaarden om failoverdetectie aan te passen aan de omstandigheden in Azure. De te wijzigen parameters zijn gedocumenteerd [https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834)in deze blog: . Ervan uitgaande dat uw twee VM's die de Windows-clusterconfiguratie voor ASCS/SCS bouwen, zich in hetzelfde subnet bevinden, moeten de volgende parameters in deze waarden worden gewijzigd:  
+- SamesubnetDelay = 2000  
 - SameSubNetThreshold = 15  
 - RoutingHistoryLength = 30  
 
-Deze instellingen zijn getest met klanten en hebben een goede inbreuk op de ene kant, waardoor ze nog flexibel genoeg zijn. Op de andere kant waren deze instellingen snel genoeg failover in echte fout situaties op SAP-software of node/VM-fout. 
+Deze instellingen werden getest met klanten en op voorwaarde dat een goed compromis veerkrachtig genoeg aan de ene kant. Aan de andere kant die instellingen waren het verstrekken van snel genoeg failover in echte fout omstandigheden op SAP-software of node / VM-storing. 
 
-### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>De data keeper-cluster versie van SIOS installeren voor de SAP ASCS/SCS-cluster share schijf
+### <a name="install-sios-datakeeper-cluster-edition-for-the-sap-ascsscs-cluster-share-disk"></a><a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>SIOS DataKeeper Cluster Edition installeren voor de SCHIJF VOOR het delen van SAP ASCS/SCS-clusterdelen
 
-U hebt nu een werkende Windows Server failover clustering-configuratie in Azure. Maar als u een SAP ASCS/SCS-exemplaar wilt installeren, hebt u een gedeelde schijf resource nodig. U kunt de gedeelde schijf bronnen die u nodig hebt, niet maken in Azure. SIOS data keeper cluster Edition is een oplossing van derden die u kunt gebruiken om gedeelde schijf bronnen te maken.
+U hebt nu een werkende Windows Server Failover Clustering-configuratie in Azure. Maar om een SAP ASCS/SCS-exemplaar te installeren, hebt u een gedeelde schijfbron nodig. U de gedeelde schijfbronnen die u nodig hebt in Azure niet maken. SIOS DataKeeper Cluster Edition is een oplossing van derden die u gebruiken om bronnen voor gedeelde schijven te maken.
 
-U moet de volgende taken uitvoeren om de data keeper-cluster versie van SIOS te installeren voor de SAP ASCS/SCS-cluster share disk:
+Het installeren van SIOS DataKeeper Cluster Edition voor de SAP ASCS/SCS-clustershareschijf omvat de volgende taken:
 
-- De .NET Framework 3,5 toevoegen
-- Data keeper SIOS installeren
-- SIOS data keeper instellen
+- Het .NET Framework 3.5 toevoegen
+- SIOS DataKeeper installeren
+- SIOS DataKeeper instellen
 
-#### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>De .NET Framework 3,5 toevoegen
-Het Microsoft .NET Framework 3,5 wordt niet automatisch geactiveerd of geïnstalleerd op Windows Server 2012 R2. Omdat voor SIOS data keeper de .NET Framework nodig is voor alle knoop punten waarop u data keeper installeert, moet u de .NET Framework 3,5 installeren op het gast besturingssysteem van alle virtuele machines in het cluster.
+#### <a name="add-the-net-framework-35"></a><a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>Voeg het .NET Framework 3.5 toe
+Het Microsoft .NET Framework 3.5 wordt niet automatisch geactiveerd of geïnstalleerd op Windows Server 2012 R2. Omdat SIOS DataKeeper vereist dat het .NET Framework zich op alle knooppunten bevindt waarop u DataKeeper installeert, moet u het .NET Framework 3.5 installeren op het gastbesturingssysteem van alle virtuele machines in het cluster.
 
-Er zijn twee manieren om de .NET Framework 3,5 toe te voegen:
+Er zijn twee manieren om het .NET Framework 3.5 toe te voegen:
 
-- Gebruik de wizard functies en onderdelen toevoegen in Windows, zoals weer gegeven in afbeelding 39.
+- Gebruik de wizard Rollen en onderdelen toevoegen in Windows zoals weergegeven in figuur 39.
 
-  ![Afbeelding 39: de .NET Framework 3,5 installeren met behulp van de wizard functies en onderdelen toevoegen][sap-ha-guide-figure-3028]
+  ![Figuur 39: Installeer het .NET Framework 3.5 met de wizard Rollen en functies toevoegen][sap-ha-guide-figure-3028]
 
-  _**Afbeelding 39:** De .NET Framework 3,5 installeren met behulp van de wizard functies en onderdelen toevoegen_
+  _**Figuur 39:** De .NET Framework 3.5 installeren met de wizard Rollen en functies toevoegen_
 
-  ![Afbeelding 40: voortgangs balk voor de installatie wanneer u de .NET Framework 3,5 installeert met behulp van de wizard functies en onderdelen toevoegen][sap-ha-guide-figure-3029]
+  ![Figuur 40: Voortgangsbalk installeren wanneer u de .NET Framework 3.5 installeert met de wizard Rollen en functies toevoegen][sap-ha-guide-figure-3029]
 
-  _**Afbeelding 40:** Voortgangs balk voor installatie wanneer u de .NET Framework 3,5 installeert met behulp van de wizard functies en onderdelen toevoegen_
+  _**Figuur 40:** Voortgangsbalk voor installatie wanneer u de .NET Framework 3.5 installeert met de wizard Rollen en functies toevoegen_
 
-- Gebruik het opdracht regel programma DISM. exe. Voor dit type installatie moet u toegang hebben tot de map SxS op het Windows-installatie medium. Typ het volgende bij een opdracht prompt met verhoogde bevoegdheid:
+- Gebruik het opdrachtregelgereedschap dism.exe. Voor dit type installatie moet u toegang krijgen tot de SxS-map op de Windows-installatiemedia. Typ bij een opdrachtprompt met verhoogde bevoegdheid:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-#### <a name="dd41d5a2-8083-415b-9878-839652812102"></a>SIOS data keeper installeren
+#### <a name="install-sios-datakeeper"></a><a name="dd41d5a2-8083-415b-9878-839652812102"></a>SIOS DataKeeper installeren
 
-Installeer de data keeper-cluster versie van SIOS op elk knoop punt in het cluster. Als u virtuele gedeelde opslag met SIOS data keeper wilt maken, maakt u een gesynchroniseerde mirror en simuleert u vervolgens gedeelde cluster opslag.
+Installeer SIOS DataKeeper Cluster Edition op elk knooppunt in het cluster. Als u virtuele gedeelde opslag wilt maken met SIOS DataKeeper, maakt u een gesynchroniseerde spiegel en simuleert u gedeelde clusteropslag.
 
-Voordat u de SIOS-software installeert, maakt u de domein gebruiker **DataKeeperSvc**.
+Voordat u de SIOS-software installeert, maakt u de domeingebruiker **DataKeeperSvc.**
 
 > [!NOTE]
-> Voeg de **DataKeeperSvc** -gebruiker toe aan de **lokale groep Administrators** op beide cluster knooppunten.
+> Voeg de **DataKeeperSvc-gebruiker** toe aan de groep **Lokale beheerder** op beide clusterknooppunten.
 >
 >
 
-U kunt SIOS data keeper als volgt installeren:
+SIOS DataKeeper installeren:
 
-1. Installeer de SIOS-software op beide cluster knooppunten.
+1. Installeer de SIOS-software op beide clusterknooppunten.
 
-   ![SIOS-installatie programma][sap-ha-guide-figure-3030]
+   ![SIOS-installateur][sap-ha-guide-figure-3030]
 
-   ![Afbeelding 41: eerste pagina van de data keeper-installatie van SIOS][sap-ha-guide-figure-3031]
+   ![Figuur 41: Eerste pagina van de Installatie van SIOS DataKeeper][sap-ha-guide-figure-3031]
 
-   _**Afbeelding 41:** Eerste pagina van de data keeper-installatie van SIOS_
+   _**Figuur 41:** Eerste pagina van de Installatie van SIOS DataKeeper_
 
-2. Selecteer **Ja**in het dialoog venster dat wordt weer gegeven in afbeelding 42.
+2. Selecteer **ja**in het dialoogvenster in figuur 42.
 
-   ![Afbeelding 42: data keeper informeert dat een service wordt uitgeschakeld][sap-ha-guide-figure-3032]
+   ![Figuur 42: DataKeeper informeert u dat een service wordt uitgeschakeld][sap-ha-guide-figure-3032]
 
-   _**Afbeelding 42:** Data keeper informeert u dat een service wordt uitgeschakeld_
+   _**Figuur 42:** DataKeeper informeert u dat een service wordt uitgeschakeld_
 
-3. In het dialoog venster dat wordt weer gegeven in afbeelding 43, raden we u aan om een **domein-of Server account te**selecteren.
+3. In het dialoogvenster in figuur 43 raden we u aan **domein- of serveraccount te**selecteren.
 
-   ![Afbeelding 43: selectie van de gebruiker voor SIOS data keeper][sap-ha-guide-figure-3033]
+   ![Figuur 43: Gebruikersselectie voor SIOS DataKeeper][sap-ha-guide-figure-3033]
 
-   _**Afbeelding 43:** Gebruikers selectie voor SIOS data keeper_
+   _**Figuur 43:** Gebruikersselectie voor SIOS DataKeeper_
 
-4. Voer de gebruikers naam en het wacht woord voor het domein account in die u hebt gemaakt voor SIOS data keeper.
+4. Voer de gebruikersnaam en wachtwoorden van het domeinaccount in die u hebt gemaakt voor SIOS DataKeeper.
 
-   ![Afbeelding 44: Voer de gebruikers naam en het wacht woord van het domein in voor de data keeper-installatie van SIOS][sap-ha-guide-figure-3034]
+   ![Figuur 44: Voer de domeinnaam en het wachtwoord voor de Installatie van SIOS DataKeeper in][sap-ha-guide-figure-3034]
 
-   _**Afbeelding 44:** Voer de gebruikers naam en het wacht woord van het domein in voor de data keeper-installatie van SIOS_
+   _**Figuur 44:** Voer de domeinnaam en het wachtwoord van het domein in voor de installatie Van SIOS DataKeeper_
 
-5. Installeer de licentie sleutel voor uw data keeper-exemplaar van SIOS, zoals wordt weer gegeven in afbeelding 45.
+5. Installeer de licentiesleutel voor uw SIOS DataKeeper-exemplaar zoals weergegeven in figuur 45.
 
-   ![Afbeelding 45: Voer uw data keeper-licentie sleutel voor SIOS in][sap-ha-guide-figure-3035]
+   ![Figuur 45: Voer uw SIOS DataKeeper-licentiesleutel in][sap-ha-guide-figure-3035]
 
-   _**Afbeelding 45:** Voer uw data keeper-licentie sleutel voor SIOS in_
+   _**Figuur 45:** Voer uw SIOS DataKeeper-licentiesleutel in_
 
-6. Start de virtuele machine opnieuw op wanneer dit wordt gevraagd.
+6. Start de virtuele machine opnieuw op wanneer u daarom wordt gevraagd.
 
-#### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>SIOS data keeper instellen
+#### <a name="set-up-sios-datakeeper"></a><a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>SIOS DataKeeper instellen
 
-Nadat u SIOS data keeper op beide knoop punten hebt geïnstalleerd, moet u de configuratie starten. Het doel van de configuratie is het synchroon repliceren van gegevens tussen de extra Vhd's die zijn gekoppeld aan elke virtuele machine.
+Nadat u SIOS DataKeeper op beide knooppunten hebt geïnstalleerd, moet u de configuratie starten. Het doel van de configuratie is om synchrone gegevensreplicatie te hebben tussen de extra VHD's die aan elk van de virtuele machines zijn gekoppeld.
 
-1. Start het hulp programma data keeper beheer en configuratie en selecteer vervolgens **verbinding maken met server**. (In afbeelding 46 wordt deze optie omcirkeld in het rood.)
+1. Start het gereedschap Beheer en configuratie van DataKeeper en selecteer **Vervolgens Server verbinden**. (In figuur 46 is deze optie rood omcirkeld.)
 
-   ![Afbeelding 46: data keeper-beheer en configuratie hulpprogramma voor SIOS][sap-ha-guide-figure-3036]
+   ![Figuur 46: SIOS DataKeeper-beheer- en configuratietool][sap-ha-guide-figure-3036]
 
-   _**Afbeelding 46:** Data keeper-beheer en configuratie hulpprogramma voor SIOS_
+   _**Figuur 46:** SIOS DataKeeper-beheer- en configuratietool_
 
-2. Voer de naam of het TCP/IP-adres in van het eerste knoop punt waarvan het beheer-en configuratie hulpprogramma verbinding moet maken en, in een tweede stap, het tweede knoop punt.
+2. Voer de naam of het TCP/IP-adres van het eerste knooppunt in waarmee het gereedschap Beheer en configuratie verbinding moet maken en in een tweede stap het tweede knooppunt.
 
-   ![Afbeelding 47: Voer de naam of het TCP/IP-adres in van het eerste knoop punt waarvan het beheer-en configuratie hulpprogramma verbinding moet maken, en in een tweede stap is het tweede knoop punt][sap-ha-guide-figure-3037]
+   ![Figuur 47: De naam of het TCP/IP-adres van het eerste knooppunt invoegen waarmee het gereedschap Beheer en configuratie verbinding moet maken en in een tweede stap het tweede knooppunt][sap-ha-guide-figure-3037]
 
-   _**Afbeelding 47:** Voeg de naam of het TCP/IP-adres in van het eerste knoop punt waarmee het beheer-en configuratie hulpprogramma verbinding moet maken, en in een tweede stap het tweede knoop punt_
+   _**Figuur 47:** De naam of het TCP/IP-adres van het eerste knooppunt invoegen, het gereedschap Beheer en configuratie moet verbinding maken met en in een tweede stap het tweede knooppunt_
 
-3. Maak de replicatie taak tussen de twee knoop punten.
+3. Maak de replicatietaak tussen de twee knooppunten.
 
-   ![Afbeelding 48: een replicatie taak maken][sap-ha-guide-figure-3038]
+   ![Figuur 48: Een replicatietaak maken][sap-ha-guide-figure-3038]
 
-   _**Afbeelding 48:** Een replicatie taak maken_
+   _**Figuur 48:** Een replicatietaak maken_
 
-   Een wizard leidt u door het proces van het maken van een replicatie taak.
-4. Definieer de naam, het TCP/IP-adres en het schijf volume van het bron knooppunt.
+   Een wizard begeleidt u bij het maken van een replicatietaak.
+4. Definieer de naam, het TCP/IP-adres en het schijfvolume van het bronknooppunt.
 
-   ![Afbeelding 49: de naam van de replicatie taak definiëren][sap-ha-guide-figure-3039]
+   ![Figuur 49: De naam van de replicatietaak definiëren][sap-ha-guide-figure-3039]
 
-   _**Afbeelding 49:** De naam van de replicatie taak definiëren_
+   _**Figuur 49:** De naam van de replicatietaak definiëren_
 
-   ![Afbeelding 50: de basis gegevens definiëren voor het knoop punt, dat het huidige bron knooppunt moet zijn][sap-ha-guide-figure-3040]
+   ![Figuur 50: Definieer de basisgegevens voor het knooppunt, dat het huidige bronknooppunt moet zijn][sap-ha-guide-figure-3040]
 
-   _**Afbeelding 50:** Definieer de basis gegevens voor het knoop punt. dit moet het huidige bron knooppunt zijn_
+   _**Figuur 50:** Definieer de basisgegevens voor het knooppunt, dat het huidige bronknooppunt moet zijn_
 
-5. Definieer de naam, het TCP/IP-adres en het schijf volume van het doel knooppunt.
+5. Definieer de naam, het TCP/IP-adres en het schijfvolume van het doelknooppunt.
 
-   ![Afbeelding 51: de basis gegevens voor het knoop punt definiëren. dit moet het huidige doel knooppunt zijn][sap-ha-guide-figure-3041]
+   ![Figuur 51: Definieer de basisgegevens voor het knooppunt, dat het huidige doelknooppunt moet zijn][sap-ha-guide-figure-3041]
 
-   _**Afbeelding 51:** Definieer de basis gegevens voor het knoop punt. dit moet het huidige doel knooppunt zijn_
+   _**Figuur 51:** Definieer de basisgegevens voor het knooppunt, dat het huidige doelknooppunt moet zijn_
 
-6. Definieer de compressie algoritmen. In ons voor beeld raden we u aan de replicatie stroom te comprimeren. Met name bij hersynchronisaties situaties vermindert de compressie van de replicatie stroom aanzienlijk minder hersynchronisaties tijd. Houd er rekening mee dat compressie gebruikmaakt van de CPU-en RAM-bronnen van een virtuele machine. Naarmate de compressie frequentie toeneemt, wordt het volume CPU-bronnen gebruikt. U kunt deze instelling ook later aanpassen.
+6. Definieer de compressiealgoritmen. In ons voorbeeld raden we u aan de replicatiestream te comprimeren. Vooral in resynchronisatiesituaties vermindert de compressie van de replicatiestroom de synchronisatietijd aanzienlijk. Houd er rekening mee dat compressie gebruik maakt van de CPU- en RAM-bronnen van een virtuele machine. Naarmate de compressiesnelheid toeneemt, neemt ook het volume van de gebruikte CPU-bronnen toe. U deze instelling ook later aanpassen.
 
-7. Een andere instelling die u moet controleren, is of de replicatie asynchroon of synchroon plaatsvindt. *Wanneer u SAP ASCS/SCS-configuraties beveiligt, moet u synchrone replicatie gebruiken*.  
+7. Een andere instelling die u moet controleren, is of de replicatie asynchroon of synchroon plaatsvindt. *Wanneer u SAP ASCS/SCS-configuraties beschermt, moet u synchrone replicatie gebruiken.*  
 
-   ![Afbeelding 52: replicatie Details definiëren][sap-ha-guide-figure-3042]
+   ![Figuur 52: replicatiedetails definiëren][sap-ha-guide-figure-3042]
 
-   _**Afbeelding 52:** Replicatie Details definiëren_
+   _**Figuur 52:** Replicatiedetails definiëren_
 
-8. Definiëren of het volume dat door de replicatie taak wordt gerepliceerd, moet worden weer gegeven als een cluster configuratie voor Windows Server failover clustering als een gedeelde schijf. Voor de SAP-ASCS/SCS-configuratie selecteert u **Ja** zodat het gerepliceerde volume door het Windows-cluster wordt gezien als een gedeelde schijf die als een cluster volume kan worden gebruikt.
+8. Definieer of het volume dat door de replicatietaak wordt gerepliceerd, moet worden weergegeven in een clusterconfiguratie van Windows Server Failover clustering als een gedeelde schijf. Selecteer Voor de SAP ASCS/SCS-configuratie **Ja,** zodat het Windows-cluster het gerepliceerde volume ziet als een gedeelde schijf die het als clustervolume kan gebruiken.
 
-   ![Afbeelding 53: Selecteer Ja om het gerepliceerde volume als cluster volume in te stellen][sap-ha-guide-figure-3043]
+   ![Figuur 53: Ja selecteren om het gerepliceerde volume in te stellen als clustervolume][sap-ha-guide-figure-3043]
 
-   _**Afbeelding 53:** Selecteer **Ja** om het gerepliceerde volume als cluster volume in te stellen_
+   _**Figuur 53:** Ja **Yes** selecteren om het gerepliceerde volume in te stellen als clustervolume_
 
-   Nadat het volume is gemaakt, wordt in het data keeper-beheer en configuratie programma weer gegeven dat de replicatie taak actief is.
+   Nadat het volume is gemaakt, geeft het hulpprogramma Gegevenskeeperbeheer en -configuratie aan dat de replicatietaak actief is.
 
-   ![Afbeelding 54: data keeper synchrone mirroring voor de SAP ASCS/SCS-share schijf is actief][sap-ha-guide-figure-3044]
+   ![Figuur 54: DataKeeper synchrone spiegeling voor de SAP ASCS/SCS-sharedisk is actief][sap-ha-guide-figure-3044]
 
-   _**Afbeelding 54:** Data keeper synchrone mirroring voor de SAP ASCS/SCS-share schijf is actief_
+   _**Figuur 54:** DataKeeper synchrone mirroring voor de SAP ASCS/SCS share disk is actief_
 
-   Failoverclusterbeheer wordt nu de schijf weer gegeven als een Data keeper-schijf, zoals wordt weer gegeven in afbeelding 55.
+   Failoverclusterbeheer toont de schijf nu als een DataKeeper-schijf, zoals weergegeven in figuur 55.
 
-   ![Afbeelding 55: Failoverclusterbeheer toont de schijf die data keeper is gerepliceerd][sap-ha-guide-figure-3045]
+   ![Figuur 55: Failoverclusterbeheer toont de schijf die DataKeeper heeft gerepliceerd][sap-ha-guide-figure-3045]
 
-   _**Afbeelding 55:** Failoverclusterbeheer toont de schijf die data keeper gerepliceerd_
+   _**Figuur 55:** Failoverclusterbeheer toont de schijf die DataKeeper heeft gerepliceerd_
 
-## <a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>Het SAP NetWeaver-systeem installeren
+## <a name="install-the-sap-netweaver-system"></a><a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>Het SAP NetWeaver-systeem installeren
 
-De DBMS-instellingen worden niet beschreven, omdat de instellingen variëren afhankelijk van het DBMS-systeem dat u gebruikt. We gaan er echter van uit dat hoge Beschik baarheid met betrekking tot het DBMS is gericht op de functionaliteit van de verschillende DBMS-leveranciers ondersteuning voor Azure. Bijvoorbeeld altijd ingeschakeld of database spiegeling voor SQL Server, en Oracle Data Guard voor Oracle-data bases. In het scenario dat we in dit artikel gebruiken, hebben we niet meer beveiliging aan het DBMS toegevoegd.
+We beschrijven de DBMS-setup niet omdat de instellingen variëren afhankelijk van het DBMS-systeem dat u gebruikt. We gaan er echter van uit dat problemen met hoge beschikbaarheid bij de DBMS worden aangepakt met de functionaliteiten die de verschillende DBMS-leveranciers voor Azure ondersteunen. Bijvoorbeeld Always On of database mirroring voor SQL Server en Oracle Data Guard voor Oracle-databases. In het scenario dat we in dit artikel gebruiken, hebben we niet meer bescherming toegevoegd aan de DBMS.
 
 Er zijn geen speciale overwegingen wanneer verschillende DBMS-services communiceren met dit soort geclusterde SAP ASCS/SCS-configuratie in Azure.
 
 > [!NOTE]
-> De installatie procedures van SAP NetWeaver ABAP-systemen, Java-systemen en ABAP en Java-systemen zijn bijna identiek. Het belangrijkste verschil is dat een SAP ABAP-systeem één ASCS-exemplaar heeft. Het SAP Java-systeem heeft één SCS-exemplaar. Het SAP ABAP + Java-systeem heeft een ASCS-exemplaar en een SCS-exemplaar dat wordt uitgevoerd in dezelfde micro soft failover cluster-groep. Eventuele verschillen in de installatie van elke SAP NetWeaver-installatie stack worden expliciet genoemd. U kunt ervan uitgaan dat alle andere delen hetzelfde zijn.  
+> De installatieprocedures van SAP NetWeaver ABAP-systemen, Java-systemen en ABAP+Java-systemen zijn vrijwel identiek. Het belangrijkste verschil is dat een SAP ABAP-systeem één ASCS-instantie heeft. Het SAP Java-systeem heeft één SCS-exemplaar. Het SAP ABAP+Java-systeem heeft één ASCS-instantie en één SCS-exemplaar dat wordt uitgevoerd in dezelfde Microsoft-failoverclustergroep. Eventuele installatieverschillen voor elke SAP NetWeaver-installatiestack worden expliciet vermeld. U ervan uitgaan dat alle andere onderdelen hetzelfde zijn.  
 >
 >
 
-### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>SAP installeren met een ASCS/SCS-exemplaar met hoge Beschik baarheid
+### <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>SAP installeren met een ASCS/SCS-exemplaar met hoge beschikbaarheid
 
 > [!IMPORTANT]
-> Zorg ervoor dat u het wissel bestand niet op Data keeper mirrored volumes plaatst. Data keeper biedt geen ondersteuning voor gespiegelde volumes. U kunt uw wissel bestand op het tijdelijke station D van een virtuele machine van Azure laten staan. Dit is de standaard instelling. Als dit nog niet het geval is, verplaatst u het Windows-pagina bestand naar station D van uw virtuele Azure-machine.
+> Zorg ervoor dat u uw paginabestand niet op gespiegelde volumes van DataKeeper plaatst. DataKeeper ondersteunt geen gespiegelde volumes. U uw paginabestand achterlaten op het tijdelijke station D van een virtuele Azure-machine, wat de standaardoptie is. Als het er nog niet is, verplaatst u het Windows-paginabestand naar station D van uw virtuele Azure-machine.
 >
 >
 
-Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omvat de volgende taken:
+Het installeren van SAP met een ASCS/SCS-exemplaar met hoge beschikbaarheid omvat de volgende taken:
 
-- De naam van een virtuele host voor het geclusterde SAP ASCS/SCS-exemplaar maken
-- Het SAP eerste cluster knooppunt installeren
-- Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen
-- Een test poort toevoegen
-- De Windows Firewall-Test poort openen
+- Een virtuele hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar
+- Het eerste clusterknooppunt van SAP installeren
+- Het SAP-profiel van het instantieASCS/SCS wijzigen
+- Een sondepoort toevoegen
+- De sondepoort van de Windows-firewall openen
 
-#### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Een virtuele-hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar
+#### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Een virtuele hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar
 
-1. Maak een DNS-vermelding voor de naam van de virtuele host van het ASCS/SCS-exemplaar in Windows DNS-beheer.
+1. Maak in Windows DNS-beheer een DNS-vermelding voor de virtuele hostnaam van het ascs/SCS-exemplaar.
 
    > [!IMPORTANT]
-   > Het IP-adres dat u toewijst aan de naam van de virtuele host van het ASCS/SCS-exemplaar moet hetzelfde zijn als het IP-adres dat u hebt toegewezen aan Azure Load Balancer ( **<*sid*>-lb-ASCS**).  
+   > Het IP-adres dat u aan de virtuele hostnaam van het ASCS/SCS-exemplaar toewijst, moet hetzelfde zijn als het IP-adres dat u hebt toegewezen aan Azure Load Balancer**<*(SID*>-lb-ascs).**  
    >
    >
 
-   Het IP-adres van de virtuele SAP-ASCS/SCS-hostnaam (**PR1-ASCS-SAP**) is hetzelfde als het IP-adres van Azure Load Balancer (**PR1-lb-ASCS**).
+   Het IP-adres van de virtuele SAP ASCS/SCS-hostnaam **(pr1-ascs-sap)** is hetzelfde als het IP-adres van Azure Load Balancer **(pr1-lb-ascs).**
 
-   ![Afbeelding 56: Definieer de DNS-vermelding voor de virtuele naam van het SAP ASCS/SCS-cluster en het TCP/IP-adres][sap-ha-guide-figure-3046]
+   ![Figuur 56: De DNS-vermelding definiëren voor de virtuele naam en tcp/IP-adres van het SAP ASCS/SCS-cluster][sap-ha-guide-figure-3046]
 
-   _**Afbeelding 56:** Definieer de DNS-vermelding voor de virtuele naam en het TCP/IP-adres van het SAP ASCS/SCS-cluster_
+   _**Figuur 56:** De DNS-vermelding definiëren voor de virtuele naam en TCP/IP-adres van het SAP ASCS/SCS-cluster_
 
-2. Als u het IP-adres wilt definiëren dat is toegewezen aan de naam van de virtuele host, selecteert u **DNS-beheer** > **domein**.
+2. Als u het IP-adres wilt definiëren dat is toegewezen aan de naam van de virtuele host, selecteert u **DNS-beheerdomein** > **Domain**.
 
-   ![Afbeelding 57: nieuwe virtuele naam en TCP/IP-adres voor SAP ASCS/SCS-cluster configuratie][sap-ha-guide-figure-3047]
+   ![Figuur 57: Nieuwe virtuele naam en TCP/IP-adres voor SAP ASCS/SCS-clusterconfiguratie][sap-ha-guide-figure-3047]
 
-   _**Afbeelding 57:** Nieuwe virtuele naam en TCP/IP-adres voor de SAP-ASCS/SCS-cluster configuratie_
+   _**Figuur 57:** Nieuwe virtuele naam en TCP/IP-adres voor SAP ASCS/SCS-clusterconfiguratie_
 
-#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>Het SAP eerste cluster knooppunt installeren
+#### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>Het eerste clusterknooppunt van SAP installeren
 
-1. Voer de eerste cluster knooppunt optie uit op cluster knooppunt A. Bijvoorbeeld op de host **PR1-ascs-0** .
-2. Als u de standaard poorten voor de interne Azure-load balancer wilt gebruiken, selecteert u:
+1. Voer de eerste clusterknooppuntoptie uit op clusterknooppunt A. Bijvoorbeeld op de **pr1-ascs-0 host.**
+2. Als u de standaardpoorten voor de interne lastenbalancer van Azure wilt behouden, selecteert u:
 
-   * **ABAP systeem**: **ASCS** -exemplaar nummer **00**
-   * **Java-systeem**: **SCS** -exemplaar nummer **01**
-   * **ABAP + Java-systeem**: **ASCS** -exemplaar nummer **00** en **SCS** -exemplaar nummer **01**
+   * **ABAP-systeem**: **ASCS-instantienummer** **00**
+   * **Java-systeem**: **SCS-instantienummer** **01**
+   * **ABAP+Java-systeem**: **ASCS-instantienummer** **00** en **SCS-instantienummer** **01**
 
-   Als u andere exemplaar nummers dan 00 wilt gebruiken voor het ABAP ASCS-exemplaar en 01 voor het Java SCS-exemplaar, moet u eerst de standaard regels voor de taakverdelings regel van Azure load balancer wijzigen, zoals beschreven in [de regels voor de standaard taakverdelings regel ASCS/SCS voor de interne Azure-Load Balancer wijzigen][sap-ha-guide-8.9].
+   Als u andere instantienummers dan 00 wilt gebruiken voor de ABAP ASCS-instantie en 01 voor de Java SCS-instantie, moet u eerst de standaardregels voor de standaardtaakverdeling van azure load balancer wijzigen, beschreven in [De standaardtaakregels voor de taakverdeling van ASCS/SCS voor de interne load balancer van Azure][sap-ha-guide-8.9]wijzigen.
 
-De volgende taken worden niet beschreven in de standaard-SAP-installatie documentatie.
+De volgende taken worden niet beschreven in de standaard SAP-installatiedocumentatie.
 
 > [!NOTE]
-> In de SAP-installatie documentatie wordt beschreven hoe u het eerste ASCS/SCS-cluster knooppunt installeert.
+> De SAP-installatiedocumentatie beschrijft hoe u het eerste ASCS/SCS-clusterknooppunt installeert.
 >
 >
 
-#### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen
+#### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Het SAP-profiel van het instantieASCS/SCS wijzigen
 
-U moet een nieuwe profiel parameter toevoegen. De profiel parameter voor komt dat verbindingen tussen SAP-werk processen en de bewerkings server worden afgesloten wanneer ze te lang niet actief zijn. We hebben het probleem scenario vermeld in [Register vermeldingen toevoegen op cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-ha-guide-8.11]. In deze sectie hebben we ook twee wijzigingen in de para meters van een eenvoudige TCP/IP-verbinding geïntroduceerd. In een tweede stap moet u de server voor plaatsen instellen om een `keep_alive` signaal te verzenden, zodat de verbindingen niet de inactieve drempel waarde van de interne load balancer van Azure bereiken.
+U moet een nieuwe profielparameter toevoegen. De profielparameter voorkomt dat verbindingen tussen SAP-werkprocessen en de wachtrijserver worden gesloten wanneer deze te lang inactief zijn. We noemden het probleemscenario in [Registervermeldingen toevoegen op beide clusterknooppunten van de SAP ASCS/SCS-instantie.][sap-ha-guide-8.11] In die sectie hebben we ook twee wijzigingen aangebracht in een aantal basisparameters voor TCP/IP-verbindingen. In een tweede stap moet u de wachtrijserver `keep_alive` zo instellen dat een signaal wordt verzonden, zodat de verbindingen de niet-actieve drempeldrempel van de interne lastenbalancer van Azure niet raken.
 
-Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
+Ga als lid van het SAP-profiel van het exemplaar ASCS/SCS:
 
-1. Voeg deze profiel parameter toe aan het SAP-exemplaar profiel voor ASCS/SCS:
+1. Voeg deze profielparameter toe aan het SAP ASCS/SCS-instantieprofiel:
 
    ```
    enque/encni/set_so_keepalive = true
    ```
-   In ons voor beeld is het pad:
+   In ons voorbeeld is het pad:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-   Bijvoorbeeld naar het SAP SCS-exemplaar profiel en het bijbehorende pad:
+   Bijvoorbeeld naar het SAP SCS-instantieprofiel en het bijbehorende pad:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2. Start de SAP ASCS/SCS-instantie opnieuw op om de wijzigingen toe te passen.
+2. Als u de wijzigingen wilt toepassen, start u de instantie SAP ASCS /SCS opnieuw.
 
-#### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Een test poort toevoegen
+#### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Een sondepoort toevoegen
 
-Gebruik de test functionaliteit van de interne load balancer om ervoor te zorgen dat de volledige cluster configuratie werkt met Azure Load Balancer. De interne load balancer van Azure distribueert doorgaans de inkomende werk belasting gelijkmatig tussen de deelnemende virtuele machines. Dit werkt echter niet in sommige cluster configuraties, omdat er slechts één exemplaar actief is. De andere instantie is passief en kan geen enkele werk belasting accepteren. Een test functionaliteit helpt wanneer de interne load balancer van Azure alleen werk toewijst aan een actief exemplaar. Met de test functionaliteit kan de interne load balancer detecteren welke exemplaren actief zijn en vervolgens alleen het exemplaar met de werk belasting richten.
+Gebruik de sondefunctionaliteit van de interne load balancer om de volledige clusterconfiguratie te laten werken met Azure Load Balancer. De interne load balancer van Azure verdeelt de binnenkomende werkbelasting meestal gelijk tussen deelnemende virtuele machines. Dit werkt echter niet in sommige clusterconfiguraties omdat slechts één exemplaar actief is. De andere instantie is passief en kan geen van de werkbelasting accepteren. Een sondefunctionaliteit helpt wanneer de interne load balancer van Azure alleen werk toewijst aan een actieve instantie. Met de sondefunctionaliteit kan de interne load balancer detecteren welke exemplaren actief zijn en vervolgens alleen de instantie met de werkbelasting targeten.
 
-Een test poort toevoegen:
+Ga als lid van het werk om een sondepoort toe te voegen:
 
-1. Controleer de huidige **ProbePort** -instelling door de volgende Power shell-opdracht uit te voeren. Voer deze uit vanuit een van de virtuele machines in de cluster configuratie.
+1. Controleer de huidige **ProbePort-instelling** door de volgende PowerShell-opdracht uit te voeren. Voer het uit vanuit een van de virtuele machines in de clusterconfiguratie.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1479,15 +1479,15 @@ Een test poort toevoegen:
    Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
    ```
 
-2. Definieer een test poort. Het standaard poort nummer voor de test is **0**. In ons voor beeld gebruiken we test poort **62000**.
+2. Definieer een sondepoort. Het standaardsondepoortnummer is **0**. In ons voorbeeld gebruiken we sondepoort **62000.**
 
-   ![Afbeelding 58: de test poort van de cluster configuratie is standaard 0][sap-ha-guide-figure-3048]
+   ![Figuur 58: De sondepoort van de clusterconfiguratie is standaard 0][sap-ha-guide-figure-3048]
 
-   _**Afbeelding 58:** De standaard poort voor de cluster configuratie test is 0_
+   _**Figuur 58:** De standaardpoort voor clusterconfiguratiessonde is 0_
 
-   Het poort nummer wordt gedefinieerd in SAP Azure Resource Manager-sjablonen. U kunt het poort nummer toewijzen in Power shell.
+   Het poortnummer wordt gedefinieerd in SAP Azure Resource Manager-sjablonen. U het poortnummer toewijzen in PowerShell.
 
-   Voer het volgende Power shell-script uit om een nieuwe ProbePort-waarde in te stellen voor de **SAP-<*sid*> IP-** cluster bron. Werk de Power shell-variabelen voor uw omgeving bij. Nadat het script is uitgevoerd, wordt u gevraagd om de SAP-cluster groep opnieuw op te starten om de wijzigingen te activeren.
+   Voer het volgende PowerShell-script uit als u een nieuwe ProbePort-waarde wilt instellen voor de **SAP-<*SID->* IP-clusterbron.** Werk de PowerShell-variabelen voor uw omgeving bij. Nadat het script is uitgevoerd, wordt u gevraagd de SAP-clustergroep opnieuw te starten om de wijzigingen te activeren.
 
    ```PowerShell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1545,7 +1545,7 @@ Een test poort toevoegen:
    }
    ```
 
-   Nadat u de **SAP-<*sid*>** cluster functie online hebt gebracht, controleert u of **ProbePort** is ingesteld op de nieuwe waarde.
+   Nadat u de **SAP-<*SID-clusterrol* > ** online hebt geplaatst, controleert u of **ProbePort** is ingesteld op de nieuwe waarde.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1555,13 +1555,13 @@ Een test poort toevoegen:
 
    ```
 
-   ![Afbeelding 59: de cluster poort testen nadat u de nieuwe waarde hebt ingesteld][sap-ha-guide-figure-3049]
+   ![Figuur 59: De clusterpoort onderzoeken nadat u de nieuwe waarde hebt ingesteld][sap-ha-guide-figure-3049]
 
-   _**Afbeelding 59:** De cluster poort testen nadat u de nieuwe waarde hebt ingesteld_
+   _**Figuur 59:** Sonde de clusterpoort nadat u de nieuwe waarde hebt ingesteld_
 
-#### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>Open de Windows Firewall-Test poort
+#### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>De sondepoort van de Windows-firewall openen
 
-U moet een Windows Firewall-Test poort openen op beide cluster knooppunten. Gebruik het volgende script om een Windows Firewall-Test poort te openen. Werk de Power shell-variabelen voor uw omgeving bij.
+U moet een Windows-firewallsondepoort openen op beide clusterknooppunten. Gebruik het volgende script om een Windows-firewallsondepoort te openen. Werk de PowerShell-variabelen voor uw omgeving bij.
 
   ```PowerShell
   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
@@ -1569,59 +1569,59 @@ U moet een Windows Firewall-Test poort openen op beide cluster knooppunten. Gebr
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-De **ProbePort** is ingesteld op **62000**. U hebt nu toegang tot de bestands share **\\\ascsha-clsap\sapmnt** vanaf andere hosts, zoals van **ascsha-dba's**.
+De **ProbePort** is ingesteld op **62000**. Nu u toegang krijgen tot de bestandsshare ** \\\ascsha-clsap\sapmnt** van andere hosts, zoals van **ascsha-dbas**.
 
-### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Het data base-exemplaar installeren
+### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>De database-instantie installeren
 
-Volg de procedure die wordt beschreven in de SAP-installatie documentatie om het data base-exemplaar te installeren.
+Als u de database-instantie wilt installeren, volgt u het proces dat wordt beschreven in de SAP-installatiedocumentatie.
 
-### <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>Het tweede cluster knooppunt installeren
+### <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>Het tweede clusterknooppunt installeren
 
-Volg de stappen in de SAP-installatie handleiding om het tweede cluster te installeren.
+Als u het tweede cluster wilt installeren, voert u de stappen in de SAP-installatiehandleiding uit.
 
-### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>Het start type van het SAP ERS Windows-service-exemplaar wijzigen
+### <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>Het starttype van het Windows-serviceexemplaar SAP ERS wijzigen
 
-Wijzig het start type van de SAP ERS Windows-service in **automatisch (vertraagd starten)** op beide cluster knooppunten.
+Wijzig het starttype van de SAP ERS Windows-service in **Automatisch (Vertraagde start)** op beide clusterknooppunten.
 
-![Afbeelding 60: Wijzig het Service type voor het SAP ERS-exemplaar in delayed Automatic][sap-ha-guide-figure-3050]
+![Figuur 60: Het servicetype voor de SAP ERS-instantie wijzigen in vertraagde automatische][sap-ha-guide-figure-3050]
 
-_**Afbeelding 60:** Wijzig het Service type voor het SAP ERS-exemplaar in delayed Automatic_
+_**Figuur 60:** Het servicetype voor de SAP ERS-instantie wijzigen in vertraagde automatische_
 
-### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>De SAP-primaire toepassings server installeren
+### <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>De SAP Primary Application Server installeren
 
-Installeer het exemplaar van de primaire toepassings server (PAS) <*SID*>-di-0 op de virtuele machine die u hebt ingesteld voor het hosten van de pas. Er zijn geen afhankelijkheden voor Azure-of Data keeper-instellingen.
+Installeer de instantie Primary Application Server (PAS) <*SID*>-di-0 op de virtuele machine die u hebt aangewezen om het PAS te hosten. Er zijn geen afhankelijkheden van Azure- of DataKeeper-specifieke instellingen.
 
-### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>De SAP-aanvullende toepassings server installeren
+### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>De SAP Extra Application Server installeren
 
-Installeer een extra SAP-toepassings server (AAS) op alle virtuele machines die u hebt aangewezen voor het hosten van een SAP-toepassings Server exemplaar. Bijvoorbeeld op <*sid*>-di-1 om*sid*te < >-di-&lt;n&gt;.
+Installeer een SAP Additional Application Server (AAS) op alle virtuele machines die u hebt aangewezen om een SAP Application Server-exemplaar te hosten. Bijvoorbeeld op <*SID*>-di-1 naar <&lt; *SID*>-di- n&gt;.
 
 > [!NOTE]
-> Hiermee voltooit u de installatie van een SAP NetWeaver-systeem met een hoge Beschik baarheid. Ga vervolgens verder met het testen van de failover.
+> Hiermee wordt de installatie van een SAP NetWeaver-systeem met hoge beschikbaarheid voltooid. Ga vervolgens verder met failovertesten.
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>De SAP-ASCS/SCS-instantie-failover en SIOS-replicatie testen
-Het is eenvoudig om een SAP-ASCS/SCS-exemplaar-failover en SIOS-schijf replicatie te testen en te bewaken met behulp van Failoverclusterbeheer en het hulp programma SIOS data keeper Management and Configuration.
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>De failover- en SIOS-replicatie van SAP ASCS/SCS-instantie testen
+Het is eenvoudig om een SAP ASCS/SCS-instantiefailover en SIOS-schijfreplicatie te testen en te controleren met behulp van Failover Cluster Manager en het sios DataKeeper-beheer- en configuratiehulpprogramma.
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>Het SAP ASCS/SCS-exemplaar wordt uitgevoerd op het cluster knooppunt A
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS-exemplaar wordt uitgevoerd op clusterknooppunt A
 
-De **SAP PR1** -cluster groep wordt uitgevoerd op cluster knooppunt A. Bijvoorbeeld op **PR1-ascs-0**. Wijs de gedeelde schijf stations, die deel uitmaakt van de **SAP PR1** -cluster groep en die het ASCS/SCS-exemplaar gebruikt, toe aan cluster knooppunt A.
+De **SAP PR1-clustergroep** wordt uitgevoerd op clusterknooppunt A. Bijvoorbeeld op **pr1-ascs-0**. Wijs de gedeelde schijfsdrive S, die deel uitmaakt van de **SAP PR1-clustergroep** en die de instantie ASCS/SCS gebruikt, toe aan clusterknooppunt A.
 
-![Afbeelding 61: Failoverclusterbeheer: de SAP < SID > cluster groep wordt uitgevoerd op het cluster knooppunt A][sap-ha-guide-figure-5000]
+![Figuur 61: Failoverclusterbeheer: de SAP-<SID->-clustergroep wordt uitgevoerd op clusterknooppunt A][sap-ha-guide-figure-5000]
 
-_**Afbeelding 61:** Failoverclusterbeheer: de SAP <-*SID*> cluster groep wordt uitgevoerd op het cluster knooppunt A_
+_**Figuur 61:** Failoverclusterbeheer: de CLUSTERgroep SAP-<*SID*> wordt uitgevoerd op clusterknooppunt A_
 
-In het hulp programma z-data keeper beheer en configuratie kunt u zien dat de gegevens van de gedeelde schijf synchroon worden gerepliceerd van de bron volume stations op cluster knooppunt A naar het doel volume station S op cluster knooppunt B. Het wordt bijvoorbeeld gerepliceerd van **PR1-ascs-0 [10.0.0.40]** naar **PR1-ascs-1 [10.0.0.41]** .
+In het hulpprogramma Beheer en configuratie van SIOS DataKeeper u zien dat de gedeelde schijfgegevens synchroon worden gerepliceerd van de bronvolumedrive S op clusterknooppunt A naar de doelvolumedrive S op clusterknooppunt B. Het wordt bijvoorbeeld gerepliceerd van **pr1-ascs-0 [10.0.0.40]** naar **pr1-ascs-1 [10.0.0.41]**.
 
-![Afbeelding 62: het lokale volume van cluster knooppunt A naar cluster knooppunt B repliceren in data keeper SIOS][sap-ha-guide-figure-5001]
+![Figuur 62: In SIOS DataKeeper het lokale volume repliceren van clusterknooppunt A naar clusterknooppunt B][sap-ha-guide-figure-5001]
 
-_**Afbeelding 62:** Repliceer in SIOS data keeper het lokale volume van cluster knooppunt A naar cluster knooppunt B_
+_**Figuur 62:** In SIOS DataKeeper het lokale volume repliceren van clusterknooppunt A naar clusterknooppunt B_
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Failover van knoop punt A naar knoop punt B
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Failover van knooppunt A naar knooppunt B
 
-1. Kies een van deze opties om een failover van de SAP <-*sid*te initiëren > cluster groep van cluster knooppunt a naar cluster knooppunt B:
+1. Kies een van deze opties om een failover van de SAP-<*SID*>-clustergroep van clusterknooppunt A naar clusterknooppunt B te starten:
    - Failoverclusterbeheer gebruiken  
-   - Failover cluster Power shell gebruiken
+   - Failovercluster PowerShell gebruiken
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1630,18 +1630,18 @@ _**Afbeelding 62:** Repliceer in SIOS data keeper het lokale volume van cluster 
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Cluster knooppunt A opnieuw starten in het Windows-gast besturingssysteem (dit initieert een automatische failover van de SAP <*SID*> cluster groep van knoop punt A naar knoop punt B).  
-3. Start het cluster knooppunt A opnieuw vanaf de Azure Portal (dit initieert een automatische failover van de SAP <*SID*> cluster groep van knoop punt A naar knoop punt B).  
-4. Start cluster knooppunt A opnieuw met behulp van Azure PowerShell (Hiermee initieert u een automatische failover van de SAP <*SID*> cluster groep van knoop punt A naar knoop punt B).
+2. Start clusterknooppunt A opnieuw op in het Windows-gastbesturingssysteem (hiermee wordt een automatische failover van de SAP-<*SID*>-clustergroep van knooppunt A naar knooppunt B) gestart.  
+3. Start clusterknooppunt A opnieuw op vanuit de Azure-portal (hiermee *SID* wordt een automatische failover van de SAP-<SID->-clustergroep van knooppunt A naar knooppunt B) gestart.  
+4. Start clusterknooppunt A opnieuw op met Azure PowerShell (hiermee wordt een automatische failover van de SAP-<*SID*>-clustergroep van knooppunt A naar knooppunt B) gestart.
 
-   Na de failover wordt de SAP <-*SID*> cluster groep uitgevoerd op cluster knooppunt B. Het wordt bijvoorbeeld uitgevoerd op **PR1-ascs-1**.
+   Na failover wordt de SAP-<*SID*>-clustergroep uitgevoerd op clusterknooppunt B. Het draait bijvoorbeeld op **pr1-ascs-1.**
 
-   ![Afbeelding 63: in Failoverclusterbeheer wordt de SAP-< SID > cluster groep uitgevoerd op cluster knooppunt B][sap-ha-guide-figure-5002]
+   ![Figuur 63: In Failoverclusterbeheer wordt de SAP-<SID->-clustergroep uitgevoerd op clusterknooppunt B][sap-ha-guide-figure-5002]
 
-   _**Afbeelding 63**: in Failoverclusterbeheer wordt de SAP-<*sid*> cluster groep uitgevoerd op cluster knooppunt B_
+   _**Figuur 63**: In Failoverclusterbeheer wordt de *>-clustergroep* SAP <uitgevoerd op clusterknooppunt B_
 
-   De gedeelde schijf is nu gekoppeld op cluster knooppunt B. SIOS data keeper is bezig met het repliceren van gegevens van het bron volume station S op cluster knooppunt B naar het doel volume station S op cluster knooppunt A. Het is bijvoorbeeld repliceren van **PR1-ascs-1 [10.0.0.41]** naar **PR1-ascs-0 [10.0.0.40]** .
+   De gedeelde schijf is nu gemonteerd op clusterknooppunt B. SIOS DataKeeper repliceert gegevens van bronvolumestation S op clusterknooppunt B om volumestation S op clusterknooppunt A te targeten. Het repliceert bijvoorbeeld van **pr1-ascs-1 [10.0.0.41]** naar **pr1-ascs-0 [10.0.0.40]**.
 
-   ![Afbeelding 64: SIOS data keeper repliceert het lokale volume van cluster knooppunt B naar cluster knooppunt A][sap-ha-guide-figure-5003]
+   ![Figuur 64: SIOS DataKeeper repliceert het lokale volume van clusterknooppunt B naar clusterknooppunt A][sap-ha-guide-figure-5003]
 
-   _**Afbeelding 64:** SIOS data keeper kopieert het lokale volume van cluster knooppunt B naar cluster knooppunt A_
+   _**Figuur 64:** SIOS DataKeeper repliceert het lokale volume van clusterknooppunt B naar clusterknooppunt A_

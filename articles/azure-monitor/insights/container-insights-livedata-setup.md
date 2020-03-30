@@ -1,70 +1,70 @@
 ---
-title: Azure Monitor instellen voor containers live data (preview) | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de real-time-weer gave van container Logboeken (stdout/stderr) en gebeurtenissen kunt instellen zonder kubectl te gebruiken met Azure Monitor voor containers.
+title: Azure-monitor instellen voor containers Live Data (voorbeeld) | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u de realtime weergave van containerlogboeken (stdout/stderr) en gebeurtenissen instellen zonder kubectl met Azure Monitor voor containers te gebruiken.
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275371"
 ---
-# <a name="how-to-set-up-the-live-data-preview-feature"></a>De functie voor live data (preview) instellen
+# <a name="how-to-set-up-the-live-data-preview-feature"></a>De functie Live Data (voorbeeld) instellen
 
-Als u live data (preview) wilt weer geven met Azure Monitor voor containers uit Azure Kubernetes service (AKS)-clusters, moet u verificatie configureren om toegang te verlenen tot uw Kubernetes-gegevens. Met deze beveiligings configuratie kunt u in realtime toegang krijgen tot uw gegevens via de Kubernetes-API rechtstreeks in het Azure Portal.
+Als u Live Data (preview) wilt bekijken met Azure Monitor voor containers van AKS-clusters (Azure Kubernetes Service), moet u verificatie configureren om toestemming te verlenen voor toegang tot uw Kubernetes-gegevens. Deze beveiligingsconfiguratie biedt realtime toegang tot uw gegevens via de Kubernetes API rechtstreeks in de Azure-portal.
 
-Deze functie biedt ondersteuning voor de volgende methoden voor het beheren van de toegang tot de logboeken, gebeurtenissen en metrische gegevens:
+Deze functie ondersteunt de volgende methoden om de toegang tot de logboeken, gebeurtenissen en statistieken te beheren:
 
-- AKS zonder Kubernetes RBAC-autorisatie ingeschakeld
+- AKS zonder Kubernetes RBAC autorisatie ingeschakeld
 - AKS ingeschakeld met Kubernetes RBAC-autorisatie
-    - AKS geconfigureerd met de cluster functie binding  **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
-- AKS ingeschakeld met Azure Active Directory (AD) op SAML gebaseerde eenmalige aanmelding
+    - AKS geconfigureerd met ** [clusterrolbindingclusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
+- AKS ingeschakeld met Azure Active Directory (AD) SAML-gebaseerde single-sign op
 
-Deze instructies vereisen zowel beheerders toegang tot uw Kubernetes-cluster als het configureren om Azure Active Directory (AD) te gebruiken voor gebruikers verificatie, beheerders toegang tot Azure AD.  
+Deze instructies vereisen zowel beheerderstoegang tot uw Kubernetes-cluster als het configureren om Azure Active Directory (AD) te gebruiken voor gebruikersverificatie, beheerderstoegang tot Azure AD.  
 
-In dit artikel wordt uitgelegd hoe u verificatie configureert om de toegang tot de functie Live data (preview) te beheren vanuit het cluster:
+In dit artikel wordt uitgelegd hoe u verificatie configureert om de toegang tot de functie Live Data (preview) vanuit het cluster te beheren:
 
-- Op rollen gebaseerd toegangs beheer (RBAC) ingeschakeld AKS-cluster
-- Azure Active Directory geïntegreerde AKS-cluster. 
-
->[!NOTE]
->AKS-clusters die zijn ingeschakeld als [persoonlijke clusters](https://azure.microsoft.com/updates/aks-private-cluster/) , worden niet ondersteund met deze functie. Deze functie is afhankelijk van het rechtstreeks openen van de Kubernetes-API via een proxy server vanuit uw browser. Door netwerk beveiliging in te scha kelen, wordt dit verkeer geblokkeerd door de Kubernetes-API van deze proxy te blok keren. 
+- RBAC-cluster (Role-based access control)
+- Azure Active Directory-geïntegreerd AKS-cluster. 
 
 >[!NOTE]
->Deze functie is beschikbaar in alle Azure-regio's, inclusief Azure China. Het is momenteel niet beschikbaar in de Amerikaanse overheid van Azure.
-
-## <a name="authentication-model"></a>Verificatie model
-
-De functies van live data (preview) maken gebruik van de Kubernetes-API, identiek aan het opdracht regel programma `kubectl`. In de Kubernetes API-eind punten wordt gebruikgemaakt van een zelfondertekend certificaat, dat niet kan worden gevalideerd door de browser. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
-
-De Azure Portal vraagt u uw aanmeldings referenties voor een Azure Active Directory cluster te valideren en u te omleiden naar de installatie van de client registratie tijdens het maken van het cluster (en opnieuw geconfigureerd in dit artikel). Dit gedrag is vergelijkbaar met het verificatie proces dat `kubectl`vereist. 
+>AKS-clusters die zijn ingeschakeld als [privéclusters,](https://azure.microsoft.com/updates/aks-private-cluster/) worden niet ondersteund met deze functie. Deze functie is afhankelijk van directe toegang tot de Kubernetes API via een proxyserver vanuit uw browser. Als u netwerkbeveiliging inschakelt om de Kubernetes API van deze proxy te blokkeren, wordt dit verkeer geblokkeerd. 
 
 >[!NOTE]
->Autorisatie voor uw cluster wordt beheerd door Kubernetes en het beveiligings model waarin het is geconfigureerd. Gebruikers die deze functie gebruiken, hebben toestemming nodig om de Kubernetes-configuratie (*kubeconfig*) te downloaden, vergelijkbaar met het uitvoeren van `az aks get-credentials -n {your cluster name} -g {your resource group}`. Dit configuratie bestand bevat het autorisatie-en verificatie token voor de **Azure Kubernetes-service cluster**gebruikersrol, in het geval van Azure RBAC-ingeschakelde en AKS-clusters waarvoor geen RBAC-autorisatie is ingeschakeld. Het bevat informatie over Azure AD en client registratiegegevens wanneer AKS is ingeschakeld met Azure Active Directory (AD) op SAML gebaseerde eenmalige aanmelding.
+>Deze functie is beschikbaar in alle Azure-regio's, waaronder Azure China. Het is momenteel niet beschikbaar in Azure US Government.
+
+## <a name="authentication-model"></a>Verificatiemodel
+
+De functies Live Data (preview) maken gebruik `kubectl` van de Kubernetes API, identiek aan het command-line tool. De Kubernetes API-eindpunten maken gebruik van een zelfondertekend certificaat, dat uw browser niet kan valideren. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
+
+De Azure-portal vraagt u uw inloggegevens voor een Azure Active Directory-cluster te valideren en u om te leiden naar de instelling voor clientregistratie tijdens het maken van het cluster (en opnieuw geconfigureerd in dit artikel). Dit gedrag is vergelijkbaar met `kubectl`het verificatieproces dat vereist is door . 
+
+>[!NOTE]
+>Autorisatie voor uw cluster wordt beheerd door Kubernetes en het beveiligingsmodel waarmee het is geconfigureerd. Gebruikers die toegang hebben tot deze functie hebben toestemming nodig om `az aks get-credentials -n {your cluster name} -g {your resource group}`de Kubernetes-configuratie *(kubeconfig)* te downloaden, vergelijkbaar met het uitvoeren van . Dit configuratiebestand bevat het autorisatie- en verificatietoken voor **Azure Kubernetes Service Cluster User Role**, in het geval van Azure RBAC-enabled en AKS-clusters zonder rbac-autorisatie ingeschakeld. Het bevat informatie over Azure AD en clientregistratiegegevens wanneer AKS is ingeschakeld met Azure Active Directory (AD) SAML-gebaseerde single-sign.It contains information about Azure AD and client registration details when AKS is enabled with Azure Active Directory (AD) SAML-based single-sign on.
 
 >[!IMPORTANT]
->Gebruikers van deze functies hebben [Azure Kubernetes-cluster](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) gebruikersrol voor het cluster nodig om de `kubeconfig` te kunnen downloaden en deze functie te kunnen gebruiken. Gebruikers hebben **geen** Inzender toegang tot het cluster nodig om deze functie te gebruiken. 
+>Gebruikers van deze functies vereisen [Azure Kubernetes Cluster User](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) `kubeconfig` Role naar het cluster om de functie te downloaden en te gebruiken. Gebruikers hebben **geen** toegang tot het cluster nodig om deze functie te gebruiken. 
 
-## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser gebruiken met clusters met RBAC-functionaliteit
+## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser gebruiken met RBAC-clusters
 
-Als u wilt voor komen dat er extra configuratie wijzigingen worden toegepast om de Kubernetes- **clusterUser** toegang te geven tot de functie Live data (preview) nadat RBAC-autorisatie is [ingeschakeld](#configure-kubernetes-rbac-authorization) , heeft aks een nieuwe Kubernetes-clusterhost met de naam **clusterMonitoringUser**toegevoegd. Deze binding van de cluster functie heeft alle machtigingen die nodig zijn om toegang te krijgen tot de Kubernetes-API en de eind punten voor het gebruik van de functie Live data (preview).
+Om te voorkomen dat aanvullende configuratiewijzigingen moeten worden toegepast om de Kubernetes-gebruikersrolbinding **samereteigenschap** toe te staanGebruikerstoegang tot de functie Live Data (preview) na [het inschakelen van RBAC-autorisatie,](#configure-kubernetes-rbac-authorization) heeft AKS een nieuwe Kubernetes-clusterrolbinding toegevoegd, genaamd **clusterMonitoringUser.** Deze clusterrolbinding heeft alle benodigde machtigingen out-of-the-box om toegang te krijgen tot de Kubernetes API en de eindpunten voor het gebruik van de functie Live Data (preview).
 
-Als u de functie Live data (preview) wilt gebruiken met deze nieuwe gebruiker, moet u lid zijn van de rol [Inzender](../../role-based-access-control/built-in-roles.md#contributor) op de AKS-cluster bron. Azure Monitor voor containers, wanneer ingeschakeld, is geconfigureerd voor verificatie met behulp van deze gebruiker. Als de clusterMonitoringUser-functie binding niet bestaat in een cluster, wordt in plaats daarvan **clusterUser** gebruikt voor verificatie.
+Als u de functie Live Data (preview) met deze nieuwe gebruiker wilt gebruiken, moet u lid zijn van de [rol inzender op](../../role-based-access-control/built-in-roles.md#contributor) de AKS-clusterbron. Azure Monitor voor containers, wanneer ingeschakeld, is geconfigureerd om te verifiëren met behulp van deze gebruiker standaard. Als de clusterMonitoringUser-rolbinding niet op een cluster bestaat, wordt **clusterGebruiker** in plaats daarvan gebruikt voor verificatie.
 
-AKS heeft deze nieuwe functie binding in januari 2020 vrijgegeven, zodat de clusters die zijn gemaakt voor de januari 2020 niet. Als u een cluster hebt dat is gemaakt vóór 2020 januari, kunnen de nieuwe **clusterMonitoringUser** worden toegevoegd aan een bestaand cluster door een put-bewerking uit te voeren op het cluster, of door een andere bewerking op het cluster uit te voeren, waarbij een put-bewerking wordt uitgevoerd op het cluster, zoals het bijwerken van de Cluster versie.
+AKS heeft deze nieuwe rolbinding in januari 2020 uitgebracht, zodat clusters die voor januari 2020 zijn gemaakt, deze niet hebben. Als u een cluster hebt dat vóór januari 2020 is gemaakt, kan de nieuwe **clustermonitoringgebruiker** aan een bestaand cluster worden toegevoegd door een PUT-bewerking op het cluster uit te voeren of een andere bewerking op het cluster uit te voeren, waarbij een PUT-bewerking op het cluster wordt uitgevoerd, zoals het bijwerken van de clusterversie.
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-cluster zonder RBAC ingeschakeld
 
-Als u een Kubernetes-cluster dat niet is geconfigureerd met Kubernetes RBAC-autorisatie of geïntegreerd met Azure AD eenmalige aanmelding hebt, hoeft u niet aan de volgende stappen. Dit komt omdat u standaard beheerders machtigingen hebt in een niet-RBAC-configuratie.
+Als u een Kubernetes-cluster hebt dat niet is geconfigureerd met Kubernetes RBAC-autorisatie of is geïntegreerd met Azure AD- Dit komt omdat u standaard beheerdersmachtigingen hebt in een niet-RBAC-configuratie.
 
-## <a name="configure-kubernetes-rbac-authorization"></a>RBAC-autorisatie Kubernetes configureren
+## <a name="configure-kubernetes-rbac-authorization"></a>Kubernetes RBAC-autorisatie configureren
 
-Wanneer u de RBAC-autorisatie Kubernetes inschakelt, worden er twee gebruikers gebruikt: **clusterUser** en **clusterAdmin** om toegang te krijgen tot de Kubernetes-API. Dit is vergelijkbaar met het uitvoeren van `az aks get-credentials -n {cluster_name} -g {rg_name}` zonder de optie beheer. Dit betekent dat aan de **clusterUser** toegang moet worden verleend tot de eind punten in de KUBERNETES-API.
+Wanneer u Kubernetes RBAC-autorisatie inschakelt, worden twee gebruikers gebruikt: **clusterUser** en **clusterAdmin** om toegang te krijgen tot de Kubernetes API. Dit is vergelijkbaar `az aks get-credentials -n {cluster_name} -g {rg_name}` met hardlopen zonder de administratieve optie. Dit betekent dat de **clusterGebruiker** toegang moet krijgen tot de eindpunten in kubernetes API.
 
-Het volgende voorbeeld wordt laten zien hoe het configureren van cluster rol binding met deze sjabloon yaml-configuratie.
+In de volgende voorbeeldstappen wordt uitgelegd hoe u clusterrolbinding configureert vanuit deze yaml-configuratiesjabloon.
 
-1. Kopieer en plak het yaml-bestand en sla deze op als LogReaderRBAC.yaml.  
+1. Kopieer en plak het yaml-bestand en sla het op als LogReaderRBAC.yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -96,50 +96,50 @@ Het volgende voorbeeld wordt laten zien hoe het configureren van cluster rol bin
       apiGroup: rbac.authorization.k8s.io 
     ```
 
-2. Voer de volgende opdracht uit om uw configuratie bij te werken: `kubectl apply -f LogReaderRBAC.yaml`.
+2. Voer de volgende opdracht uit `kubectl apply -f LogReaderRBAC.yaml`om uw configuratie bij te werken: .
 
 >[!NOTE] 
-> Als u een eerdere versie van het `LogReaderRBAC.yaml`-bestand hebt toegepast op het cluster, werkt u het bij door de nieuwe code te kopiëren en plakken die in stap 1 hierboven wordt weer gegeven, en voert u de opdracht uit stap 2 uit om deze toe te passen op uw cluster.
+> Als u een vorige versie `LogReaderRBAC.yaml` van het bestand op uw cluster hebt toegepast, werkt u het bij door de nieuwe code in stap 1 hierboven te kopiëren en te plakken en voert u de opdracht uit die in stap 2 wordt weergegeven om het toe te passen op uw cluster.
 
-## <a name="configure-ad-integrated-authentication"></a>Geïntegreerde AD-verificatie configureren 
+## <a name="configure-ad-integrated-authentication"></a>Ad-geïntegreerde verificatie configureren 
 
-Een AKS-cluster dat is geconfigureerd voor het gebruik van Azure Active Directory (AD) voor gebruikers verificatie, maakt gebruik van de aanmeldings referenties van de persoon die toegang heeft tot deze functie. In deze configuratie kunt u zich aanmelden bij een AKS-cluster met behulp van uw Azure AD-verificatie token.
+Een AKS-cluster dat is geconfigureerd om Azure Active Directory (AD) te gebruiken voor gebruikersverificatie, maakt gebruik van de inloggegevens van de persoon die toegang heeft tot deze functie. In deze configuratie u zich aanmelden bij een AKS-cluster met behulp van uw Azure AD-verificatietoken.
 
-De registratie van de Azure AD-client moet opnieuw worden geconfigureerd zodat de Azure Portal autorisatie pagina's omleiden als een vertrouwde omleidings-URL. Gebruikers uit Azure AD worden vervolgens rechtstreeks toegang verleend tot dezelfde Kubernetes API-eind punten via **ClusterRoles** en **ClusterRoleBindings**. 
+Azure AD-clientregistratie moet opnieuw worden geconfigureerd om de Azure-portal toe te staan autorisatiepagina's om te leiden als een vertrouwde omleidings-URL. Gebruikers van Azure AD krijgen vervolgens rechtstreeks toegang tot dezelfde Kubernetes API-eindpunten via **ClusterRollen** en **ClusterRoleBindings.** 
 
-Raadpleeg de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)voor meer informatie over geavanceerde beveiligings instellingen in Kubernetes. 
+Voor meer informatie over geavanceerde beveiligingsinstellingen in Kubernetes, bekijk de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
 >[!NOTE]
->Als u een nieuw cluster met RBAC-functionaliteit wilt maken, raadpleegt u [Azure Active Directory integreren met de Azure Kubernetes-service](../../aks/azure-ad-integration.md) en volgt u de stappen voor het configureren van Azure AD-verificatie. Tijdens de stappen voor het maken van de client toepassing, worden in deze sectie de twee omleidings-Url's beschreven die u moet maken voor Azure Monitor voor containers die overeenkomen met die in stap 3 hieronder.
+>Zie Azure Active Directory integreren met Azure [Kubernetes Service](../../aks/azure-ad-integration.md) en volg de stappen om Azure AD-verificatie te configureren als u een nieuw cluster met RBAC maakt. Tijdens de stappen om de clienttoepassing te maken, markeert een notitie in die sectie de twee omleidings-URL's die u moet maken voor Azure Monitor voor containers die overeenkomen met die welke zijn opgegeven in stap 3 hieronder.
 
-### <a name="client-registration-reconfiguration"></a>Client registratie opnieuw configureren
+### <a name="client-registration-reconfiguration"></a>Herconfiguratie clientregistratie
 
-1. Zoek de client registratie voor uw Kubernetes-cluster in azure AD onder **Azure Active Directory > app-registraties** in de Azure Portal.
+1. Zoek de clientregistratie voor uw Kubernetes-cluster in Azure AD onder **Azure Active Directory > App-registraties** in de Azure-portal.
 
-2. Selecteer **verificatie** in het linkerdeel venster. 
+2. Selecteer **Verificatie** in het linkerdeelvenster. 
 
-3. Voeg twee omleidings-Url's toe aan deze lijst als typen **webtoepassingen** . De eerste basis-URL-waarde moet `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` zijn en de tweede basis-URL-waarde moet `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn.
+3. Voeg twee omleidings-URL's toe aan deze lijst als **webtoepassingstypen.** De URL-waarde van `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de eerste basis moet `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn en de URL-waarde van de tweede basis moet zijn .
 
     >[!NOTE]
-    >Als u deze functie in azure China gebruikt, moet de eerste basis-URL-waarde `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` zijn en moet de tweede basis-URL-waarde `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn. 
+    >Als u deze functie in Azure China gebruikt, moet `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` de URL-waarde van `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`de eerste basis zijn en moet de URL-waarde van het tweede basisbasis zijn . 
     
-4. Nadat u de omleidings-Url's hebt geregistreerd, selecteert u onder **impliciete toekenning**de opties **toegangs tokens** en **id-tokens** en slaat u de wijzigingen op.
+4. Nadat u de omleidings-URL's hebt geregistreerd, selecteert u onder **Impliciete toekenning**de opties **Access-tokens** en **ID-tokens** en slaat u vervolgens uw wijzigingen op.
 
 >[!NOTE]
->Het configureren van verificatie met Azure Active Directory voor eenmalige aanmelding kan alleen worden uitgevoerd tijdens de eerste implementatie van een nieuw AKS-cluster. U kunt eenmalige aanmelding niet configureren op voor een AKS-cluster die al zijn geïmplementeerd.
+>Het configureren van verificatie met Azure Active Directory voor één aanmelding kan alleen worden uitgevoerd tijdens de eerste implementatie van een nieuw AKS-cluster. U geen aanmelding met één melding configureren voor een AKS-cluster dat al is geïmplementeerd.
   
 >[!IMPORTANT]
->Als u Azure AD voor gebruikers verificatie opnieuw hebt geconfigureerd met behulp van de bijgewerkte URI, wist u de cache van uw browser om te controleren of het bijgewerkte verificatie token is gedownload en toegepast.
+>Als u Azure AD opnieuw hebt geconfigureerd voor gebruikersverificatie met behulp van de bijgewerkte URI, moet u de cache van uw browser wissen om ervoor te zorgen dat het bijgewerkte verificatietoken wordt gedownload en toegepast.
 
-## <a name="grant-permission"></a>Machtiging verlenen
+## <a name="grant-permission"></a>Toestemming
 
-Aan elk Azure AD-account moet machtigingen worden verleend voor de juiste Api's in Kubernetes om toegang te krijgen tot de functie Live data (preview). De stappen voor het verlenen van het Azure Active Directory account zijn vergelijkbaar met de stappen die worden beschreven in de sectie [KUBERNETES RBAC-verificatie](#configure-kubernetes-rbac-authorization) . Voordat u de yaml-configuratie sjabloon toepast op uw cluster, vervangt u **clusterUser** onder **ClusterRoleBinding** door de gewenste gebruiker. 
+Elk Azure AD-account moet toestemming krijgen voor de juiste API's in Kubernetes om toegang te krijgen tot de functie Live Data (preview). De stappen om het Azure Active Directory-account toe te kennen zijn vergelijkbaar met de stappen die worden beschreven in de sectie [Kubernetes RBAC-verificatie.](#configure-kubernetes-rbac-authorization) Voordat u de yaml-configuratiesjabloon op uw cluster toepast, vervangt **u clusterGebruiker** onder **ClusterRoleBinding** door de gewenste gebruiker. 
 
 >[!IMPORTANT]
->Als de gebruiker aan wie u de RBAC-binding hebt verleend, zich in dezelfde Azure AD-Tenant bevindt, wijst u machtigingen toe op basis van de userPrincipalName. Als de gebruiker zich in een andere Azure AD-Tenant bevindt, wordt er een query voor en gebruikt de objectId-eigenschap.
+>Als de gebruiker waarvoor u de RBAC-binding verleent zich in dezelfde Azure AD-tenant bevindt, wijst u machtigingen toe op basis van de userPrincipalName. Als de gebruiker zich in een andere Azure AD-tenant bevindt, u de eigenschap objectId opvragen en gebruiken.
 
-Zie [RBAC-binding maken](../../aks/azure-ad-integration-cli.md#create-rbac-binding)voor meer informatie over het configureren van uw AKS-cluster **ClusterRoleBinding**.
+Zie [RBAC-binding maken](../../aks/azure-ad-integration-cli.md#create-rbac-binding)voor extra hulp bij het configureren van uw AKS-clusterclusterrolbinding. **ClusterRoleBinding**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u verificatie hebt ingesteld, kunt u [metrische gegevens](container-insights-livedata-metrics.md), [implementaties](container-insights-livedata-deployments.md)en [gebeurtenissen en logboeken](container-insights-livedata-overview.md) in realtime weer geven vanuit uw cluster.
+Nu u setup-verificatie hebt ingesteld, u [statistieken,](container-insights-livedata-metrics.md) [implementaties](container-insights-livedata-deployments.md)en [gebeurtenissen en logboeken](container-insights-livedata-overview.md) in realtime bekijken vanuit uw cluster.

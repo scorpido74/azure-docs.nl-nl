@@ -1,6 +1,6 @@
 ---
-title: Prijzen van Azure IoT Hub | Microsoft Docs
-description: Handleiding voor ontwikkelaars - informatie over hoe metingen en prijzen werkt met IoT Hub, met inbegrip van voorbeelden gewerkt.
+title: Inzicht in azure IoT Hub-prijzen | Microsoft Documenten
+description: Ontwikkelaarshandleiding - informatie over hoe meting en prijzen werken met IoT Hub, inclusief uitgewerkte voorbeelden.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271224"
 ---
-# <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub-prijsinformatie
+# <a name="azure-iot-hub-pricing-information"></a>Prijsinformatie over Azure IoT Hub
 
-[Prijzen voor Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub) biedt algemene informatie over de verschillende sku's en prijzen voor IOT hub. In dit artikel bevat meer informatie over hoe de verschillende functies van de IoT Hub als berichten worden gemeten door IoT Hub.
+[Azure IoT Hub-prijzen](https://azure.microsoft.com/pricing/details/iot-hub) bieden algemene informatie over verschillende SKU's en prijzen voor IoT Hub. Dit artikel bevat aanvullende details over hoe de verschillende IoT Hub-functionaliteiten worden gemeten als berichten door IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -25,43 +25,43 @@ ms.locfileid: "79271224"
 
 | Bewerking | Factureringsgegevens | 
 | --------- | ------------------- |
-| Registerbewerkingen voor identiteit <br/> (maken, ophalen, weergeven, bijwerken en verwijderen) | Niet in rekening gebracht. |
-| Apparaat-naar-cloud-berichten | Verzonden berichten worden gefactureerd in chunks van 4 KB voor inkomend verkeer naar IoT Hub. Een bericht van 6-KB wordt bijvoorbeeld in rekening gebracht 2 berichten. |
-| Cloud-naar-apparaat-berichten | Verzonden berichten worden gefactureerd in chunks van 4 KB, bijvoorbeeld een 6-KB-bericht 2 berichten in rekening wordt gebracht. |
-| Uploaden van bestanden | Bestandsoverdracht naar Azure Storage wordt geen datalimiet door IoT Hub. Bestand overdracht initialisatie- en -voltooiing berichten worden in rekening gebracht zoals mailberichten gemeten in intervallen van 4 KB. Een voor beeld: het overdragen van een bestand van 10 MB wordt in rekening gebracht als twee berichten naast de Azure Storage kosten. |
-| Directe methoden | Aanvragen voor een geslaagde methode worden in rekening gebracht in segmenten van 4 KB en de antwoorden worden in segmenten van 4 KB in rekening gebracht als extra berichten. Aanvragen voor niet-verbonden apparaten worden in rekening gebracht als berichten in chunks van 4 KB. Een methode met een hoofd tekst van 4 KB die resulteert in een reactie zonder hoofd code van het apparaat, wordt bijvoorbeeld in rekening gebracht als twee berichten. Een methode met een 6-KB-instantie die in een 1 KB-reactie van het apparaat resulteert wordt in rekening gebracht als twee berichten voor de aanvraag een ander bericht voor het antwoord. |
-| Apparaat- en -module dubbele leesbewerkingen | Dubbele leesbewerkingen van het apparaat of de module en de oplossing back end worden in rekening gebracht als berichten in 512-byte-segmenten. Bijvoorbeeld, een dubbel 6-KB lezen wordt in rekening gebracht als 12-berichten. |
-| Dubbel apparaat en de module-updates (tags en eigenschappen) | Apparaatdubbel werkt bij van het apparaat of de module en de back-end van de oplossing worden in rekening gebracht als berichten in 512-byte-segmenten. Bijvoorbeeld, een dubbel 6-KB lezen wordt in rekening gebracht als 12-berichten. |
-| Apparaat- en -module apparaatdubbel-query 's | Query's worden in rekening gebracht als berichten, afhankelijk van de grootte van het resultaat in 512-byte-segmenten. |
+| Registerbewerkingen voor identiteit <br/> (maken, ophalen, aanbieden, bijwerken, verwijderen) | Niet in rekening gebracht. |
+| Apparaat-naar-cloud-berichten | Verzonden berichten worden in 4-KB-segmenten opgeladen bij binnendringen in IoT-hub. Er wordt bijvoorbeeld een 6-KB-bericht in rekening gebracht met 2 berichten. |
+| Cloud-to-device berichten | Met succes verzonden berichten worden in 4-KB-segmenten in rekening gebracht, bijvoorbeeld een 6-KB-bericht wordt 2 berichten in rekening gebracht. |
+| Bestandsuploads | Bestandsoverdracht naar Azure Storage wordt niet gemeten door IoT Hub. Bestandsoverdracht initiatie en voltooiing berichten worden in rekening gebracht als messaged gemeten in 4-KB stappen. Het overbrengen van een bestand van 10 MB wordt bijvoorbeeld in rekening gebracht als twee berichten naast de Azure Storage-kosten. |
+| Directe methoden | Succesvolle methodeaanvragen worden in 4-KB-segmenten in rekening gebracht en antwoorden worden in stukken van 4 KB in rekening gebracht als extra berichten. Aanvragen voor losgekoppelde apparaten worden in rekening gebracht als berichten in stukken van 4 KB. Een methode met een 4-KB-behuizing die resulteert in een reactie zonder lichaam van het apparaat, wordt bijvoorbeeld als twee berichten in rekening gebracht. Een methode met een 6-KB-behuizing die resulteert in een reactie van 1 KB van het apparaat, wordt in rekening gebracht als twee berichten voor het verzoek plus een ander bericht voor het antwoord. |
+| Apparaat en module twin leest | Twin leest van het apparaat of module en van de oplossing back-end worden opgeladen als berichten in 512-byte brokken. Het lezen van een 6-KB twin wordt bijvoorbeeld in rekening gebracht als 12 berichten. |
+| Dubbele updates van apparaten en modules (tags en eigenschappen) | Dubbele updates van het apparaat of de module en van de back-end van de oplossing worden opgeladen als berichten in stukjes met 512 byte. Het lezen van een 6-KB twin wordt bijvoorbeeld in rekening gebracht als 12 berichten. |
+| Dubbele query's voor apparaten en modules | Query's worden in rekening gebracht als berichten, afhankelijk van de resultaatgrootte in segmenten van 512 byte. |
 | Taakbewerkingen <br/> (maken, bijwerken, weergeven, verwijderen) | Niet in rekening gebracht. |
-| Taken per apparaat bewerkingen | Taakbewerkingen (zoals apparaatdubbel werkt, en methoden) worden in rekening gebracht als normale. Een taak die leidt tot 1000 methodeaanroepen met 1 KB aanvragen en antwoorden van de lege-instantie wordt bijvoorbeeld in rekening gebracht 1000 berichten. |
-| Keepalive-berichten | Wanneer u AMQP of MQTT-protocol gebruikt, worden de berichten uitgewisseld verbinding te maken en berichten die in de onderhandeling wordt uitgewisseld worden niet gefactureerd. |
+| Bewerkingen per apparaat | Taken (zoals dubbele updates en methoden) worden als normaal in rekening gebracht. Een taak die resulteert in 1000 methodeaanroepen met 1-KB-aanvragen en antwoorden met lege tekst en wordt bijvoorbeeld 1000 berichten in rekening gebracht. |
+| In leven houdende berichten | Bij het gebruik van AMQP- of MQTT-protocollen worden berichten die worden uitgewisseld om de verbinding en berichten die in de onderhandeling worden uitgewisseld, niet in rekening gebracht. |
 
 > [!NOTE]
-> Alle grootten worden berekend overweegt de payload-grootte in bytes (protocol framing wordt genegeerd). Voor berichten die eigenschappen en de hoofdtekst hebben, wordt de grootte in een protocol platformonafhankelijk berekend. Zie [IOT hub-bericht indeling](iot-hub-devguide-messages-construct.md)voor meer informatie.
+> Alle formaten worden berekend gezien de laadgrootte in bytes (protocolframing wordt genegeerd). Voor berichten, die eigenschappen en lichaam hebben, wordt de grootte berekend op een protocol-agnostische manier. Zie [De berichtindeling van IoT Hub](iot-hub-devguide-messages-construct.md)voor meer informatie .
 
-## <a name="example-1"></a># 1
+## <a name="example-1"></a>Voorbeeld #1
 
-Een apparaat verzendt een 1 KB apparaat-naar-cloud bericht per minuut naar IoT Hub, die vervolgens kan worden gelezen door Azure Stream Analytics. De back-end van de oplossing roept elke 10 minuten een methode (met een nettolading van 512 bytes) op het apparaat aan om een specifieke actie te activeren. Het apparaat reageert op de methode met een resultaat van 200 bytes.
+Een apparaat stuurt één apparaat van 1 KB naar de cloud per minuut naar IoT Hub, dat vervolgens wordt gelezen door Azure Stream Analytics. De oplossing back-end roept een methode (met een 512-byte payload) op het apparaat om de 10 minuten om een specifieke actie te activeren. Het apparaat reageert op de methode met een resultaat van 200 bytes.
 
-Het apparaat is verbruikt:
+Het apparaat verbruikt:
 
-* Een bericht * 60 minuten * 24 uur = 1440 berichten per dag voor de apparaat-naar-cloud-berichten.
-* Twee aanvragen plus reactie * 6 keer per uur * 24 uur = 288 berichten voor de methoden.
+* Eén bericht * 60 minuten * 24 uur = 1440 berichten per dag voor de device-to-cloud berichten.
+* Twee aanvraag plus reactie * 6 keer per uur * 24 uur = 288 berichten voor de methoden.
 
-Deze berekening biedt een totaal van 1728 berichten per dag.
+Deze berekening geeft in totaal 1728 berichten per dag.
 
-## <a name="example-2"></a># 2
+## <a name="example-2"></a>Voorbeeld #2
 
-Een apparaat verzendt één 100 KB apparaat-naar-cloud bericht per uur. Werkt het ook de apparaatdubbel met 1 KB payloads elke vier uur. De oplossing terug beëindigen, één keer per dag, leest het dubbele apparaat 14-KB en wordt deze bijgewerkt met 512-byte-nettoladingen configuraties wijzigen.
+Een apparaat stuurt elk uur één 100-KB-apparaat-naar-cloud-bericht. Het werkt ook zijn apparaat tweeling met 1-KB payloads om de vier uur. De oplossing back-end, eenmaal per dag, leest de 14-KB apparaat twin en werkt het met 512-byte payloads om configuraties te veranderen.
 
-Het apparaat is verbruikt:
+Het apparaat verbruikt:
 
-* Berichten van 25 (100 KB/4 KB) * 24 uur voor apparaat-naar-cloud-berichten.
-* Twee berichten (1 KB/0,5 KB) * zes keer per dag voor apparaatdubbel werkt.
+* 25 (100 KB / 4 KB) berichten * 24 uur voor device-to-cloud berichten.
+* Twee berichten (1 KB / 0,5 KB) * zes keer per dag voor apparaat twin updates.
 
-Deze berekening biedt een totaal van 612 berichten per dag.
+Deze berekening geeft in totaal 612 berichten per dag.
 
-De back-end oplossing verbruikt 28 berichten (14 KB/0,5 KB) te lezen van het dubbele apparaat, plus een bericht bij te werken, voor een totaal van 29 berichten.
+De back-end van de oplossing verbruikt 28 berichten (14 KB / 0,5 KB) om de apparaattweeling te lezen, plus één bericht om het bij te werken, voor een totaal van 29 berichten.
 
-Verbruiken 641 berichten per dag in totaal, het apparaat en de back-end van de oplossing.
+In totaal verbruiken het apparaat en de back-end van de oplossing 641 berichten per dag.

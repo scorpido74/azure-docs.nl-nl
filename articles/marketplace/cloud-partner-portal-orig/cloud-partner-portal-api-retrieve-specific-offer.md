@@ -1,29 +1,28 @@
 ---
 title: Een specifieke aanbiedings-API ophalen | Azure Marketplace
-description: API haalt de opgegeven aanbieding binnen de naam ruimte van de uitgever op.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: API haalt de opgegeven aanbieding op in de naamruimte van de uitgever.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280453"
 ---
 <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
 =========================
 
-Hiermee wordt de opgegeven aanbieding binnen de naam ruimte van de uitgever opgehaald.  
+Hiermee haalt u de opgegeven aanbieding op in de naamruimte van de uitgever.  
 
-U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in concept-, weer gave-of productie sleuven ophalen. Als er geen sleuf is opgegeven, wordt de standaard waarde `draft`. Als u probeert een aanbieding op te halen die niet is voor bereid of gepubliceerd, resulteert dit in een `404 Not Found` fout.
+U ook een bepaalde versie van de aanbieding ophalen of de aanbieding ophalen in concept-, weergave- of productieruimten. Als een sleuf niet is `draft`opgegeven, is de standaardinstelling . Als u een aanbieding probeert op te halen die `404 Not Found` niet is bekeken of gepubliceerd, wordt er een fout opgetreden.
 
 > [!WARNING]
-> De geheime waarden voor velden van het type geheim worden niet opgehaald door deze API.
+> De geheime waarden voor geheime tekstvelden worden niet opgehaald door deze API.
 
 ``` http
     GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
@@ -35,17 +34,17 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 ```
 
 
-<a name="uri-parameters"></a>URI-para meters
+<a name="uri-parameters"></a>URI-parameters
 --------------
 
 
 | **Naam**    | **Beschrijving**                                                                          | **Gegevenstype** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Bijvoorbeeld contoso                                                        | Tekenreeks        |
-| OfferId     | De GUID die de aanbieding uniek identificeert.                                                 | Tekenreeks        |
-| versie     | De versie van de aanbieding die wordt opgehaald. Standaard wordt de meest recente versie van de aanbieding opgehaald. | Geheel getal       |
-| SlotId      | De sleuf van waaruit de aanbieding wordt opgehaald, kan een van de volgende zijn:      <br/>  - `Draft` (standaard) haalt de aanbiedings versie op die momenteel in concept is.  <br/>  -  `Preview` haalt de aanbiedings versie op die momenteel in preview is.     <br/>  -  `Production` haalt de aanbiedings versie op die momenteel in productie is.          |      vaste |
-| API-versie | Nieuwste versie van API                                                                    | Date          |
+| uitgeverId | uitgeverId. Contoso bijvoorbeeld                                                        | Tekenreeks        |
+| aanbiedingId     | Guid dat uniek identificeert het aanbod.                                                 | Tekenreeks        |
+| versie     | Versie van het aanbod dat wordt opgehaald. Standaard wordt de nieuwste aanbiedingsversie opgehaald. | Geheel getal       |
+| slotId      | De sleuf waaruit het aanbod moet worden opgehaald, kan een van:      <br/>  - `Draft`(standaard) haalt de aanbiedingsversie op die momenteel in concept is.  <br/>  -  `Preview`haalt de aanbiedingsversie op die momenteel in preview wordt.     <br/>  -  `Production`haalt de aanbiedingsversie op die momenteel in productie is.          |      Enum |
+| api-versie | Nieuwste versie van API                                                                    | Date          |
 |  |  |  |
 
 
@@ -59,7 +58,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  |  |
 
 
-<a name="body-example"></a>Voor beeld van tekst
+<a name="body-example"></a>Voorbeeld van het lichaam
 ------------
 
 ### <a name="response"></a>Antwoord
@@ -167,40 +166,40 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 ```
 
 
-### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
+### <a name="response-body-properties"></a>Eigenschappen van antwoordlichaam
 
 |  **Naam**       |   **Beschrijving**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | Hiermee wordt het type aanbieding aangegeven                                                                                                    |
-|  publisherId    | De unieke id van de uitgever                                                                                              |
-|  status         | De status van de aanbieding. Voor een lijst met mogelijke waarden, zie de status van de [aanbieding](#offer-status) hieronder.                                  |
-|  Id             | GUID die de aanbieding uniek identificeert                                                                                         |
-|  versie        | Huidige versie van de aanbieding. De versie-eigenschap kan niet worden gewijzigd door de client. Deze wordt na elke publicatie verhoogd.    |
-|  Inhoudsindexdefinitie     | Werkelijke definitie van de werk belasting                                                                                               |
-|  changedTime    | UTC-datum/tijd waarop de aanbieding voor het laatst is gewijzigd                                                                                   |
+|  offerTypeId    | Identificeert het type aanbieding                                                                                                    |
+|  uitgeverId    | Unieke id van de uitgever                                                                                              |
+|  status         | Status van het aanbod. Zie [Aanbiedingsstatus](#offer-status) hieronder voor de lijst met mogelijke waarden.                                  |
+|  Id             | GUID die het aanbod op unieke wijze identificeert                                                                                         |
+|  versie        | Huidige versie van het aanbod. De eigenschap versie kan niet door de client worden gewijzigd. Het wordt verhoogd na elke publicatie.    |
+|  definitie     | Werkelijke definitie van de werklast                                                                                               |
+|  changedTime    | UTC-datum toen de aanbieding voor het laatst is gewijzigd                                                                                   |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Antwoord status codes
+### <a name="response-status-codes"></a>Statuscodes voor antwoord
 
-| **Gecodeerd**  | **Beschrijving**                                                                                                                 |
+| **Code**  | **Beschrijving**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-de aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.               |
-|  400      | `Bad/Malformed request`: de hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                 |
-|  403      | `Forbidden`-de client heeft geen toegang tot de opgegeven naam ruimte.                                                        |
-|  404      | `Not found`-de opgegeven entiteit bestaat niet. De client moet de publisherId, offerId en versie controleren (indien opgegeven).      |
+|  200      | `OK`- Het verzoek is verwerkt en alle aanbiedingen onder de uitgever zijn teruggegeven aan de klant.               |
+|  400      | `Bad/Malformed request`- De foutreactieinstantie kan meer informatie bevatten.                                                 |
+|  403      | `Forbidden`- De client heeft geen toegang tot de opgegeven naamruimte.                                                        |
+|  404      | `Not found`- De opgegeven entiteit bestaat niet. Client moet de publisherId, offerId en versie controleren (indien opgegeven).      |
 |  |  |
 
 
-### <a name="offer-status"></a>Status van aanbieding
+### <a name="offer-status"></a>Aanbiedingsstatus
 
 |  **Naam**                   |   **Beschrijving**                             |
 | --------------------------- |  -------------------------------------------- |
-|  NeverPublished             | De aanbieding is nooit gepubliceerd.               |
-|  NotStarted                 | De aanbieding is nieuw, maar is niet gestart.              |
-|  WaitingForPublisherReview  | Aanbieding wacht op goed keuring van de uitgever.      |
-|  In uitvoering                    | Verzen ding van aanbieding wordt verwerkt.          |
-|  Geslaagd                  | Het verzenden van aanbiedingen is voltooid.    |
-|  Geannuleerd                   | Het verzenden van het aanbod is geannuleerd.                |
-|  Mislukt                     | Kan de aanbieding niet verzenden.                      |
+|  Nooit gepubliceerd             | Aanbieding is nooit gepubliceerd.               |
+|  Niet gestart                 | Aanbieding is nieuw, maar is niet gestart.              |
+|  WaitingForPublisherReview  | Aanbieding wacht op goedkeuring van de uitgever.      |
+|  In uitvoering                    | Indiening van de aanbieding wordt verwerkt.          |
+|  Geslaagd                  | Indiening van de aanbieding heeft de verwerking voltooid.    |
+|  Geannuleerd                   | Indiening van de aanbieding is geannuleerd.                |
+|  Mislukt                     | Indiening van aanbiedingen is mislukt.                      |
 |  |  |

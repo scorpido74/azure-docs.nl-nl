@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect synchronisatie: filteren configureren | Microsoft Docs'
-description: Hierin wordt uitgelegd hoe u filters configureert in Azure AD Connect synchronisatie.
+title: 'Azure AD Connect-synchronisatie: filtering configureren | Microsoft Documenten'
+description: Hier wordt uitgelegd hoe u filtering configureert in Azure AD Connect-synchronisatie.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,317 +17,317 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261097"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
-Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Office 365-workloads gebruiken, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
+Met behulp van filtering u bepalen welke objecten worden weergegeven in Azure Active Directory (Azure AD) in uw on-premises directory. Met de standaardconfiguratie worden alle objecten in alle domeinen in de geconfigureerde forests uitgevoerd. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Office 365-workloads gebruiken, zoals Exchange Online en Skype voor Bedrijven, profiteren van een volledige algemene adreslijst, zodat ze e-mail kunnen verzenden en iedereen kunnen bellen. Met de standaardconfiguratie zouden ze dezelfde ervaring hebben als met een on-premises implementatie van Exchange of Lync.
 
-In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Hier volgen enkele voorbeelden:
+In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaardconfiguratie. Hier volgen enkele voorbeelden:
 
-* U wilt de [multi-Azure AD-adreslijst topologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)gebruiken. Vervolgens moet u een filter Toep assen om te bepalen welke objecten worden gesynchroniseerd met een bepaalde Azure AD-adres lijst.
-* U voert een pilot uit voor Azure of Office 365 en u wilt alleen een subset van gebruikers in azure AD. In de kleine pilot is het niet belang rijk dat u beschikt over een volledige algemene adres lijst om de functionaliteit te demonstreren.
-* U hebt veel service accounts en andere niet-persoonlijke accounts die u niet wilt in azure AD.
-* Om redenen van naleving verwijdert u geen gebruikers accounts on-premises. U schakelt ze alleen uit. In azure AD wilt u echter alleen actieve accounts weer geven.
+* U bent van plan de topologie van de [MULTI-Azure AD-map te](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)gebruiken. Vervolgens moet u een filter toepassen om te bepalen welke objecten zijn gesynchroniseerd met een bepaalde Azure AD-map.
+* U voert een pilot uit voor Azure of Office 365 en u wilt alleen een subset van gebruikers in Azure AD. In de kleine pilot is het niet belangrijk om een volledige globale adreslijst te hebben om de functionaliteit aan te tonen.
+* U hebt veel serviceaccounts en andere niet-persoonlijke accounts die u niet wilt in Azure AD.
+* Om nalevingsredenen verwijdert u geen on-premises gebruikersaccounts. Je schakelt ze alleen maar uit. Maar in Azure AD wilt u alleen actieve accounts aanwezig zijn.
 
-In dit artikel wordt beschreven hoe u de verschillende filter methoden kunt configureren.
+In dit artikel wordt uitgelegd hoe u de verschillende filtermethoden configureert.
 
 > [!IMPORTANT]
-> Microsoft biedt geen ondersteuning voor het wijzigen of uitvoeren van Azure AD Connect-synchronisatie anders dan op de manier die officieel is gedocumenteerd. Een van deze acties kan leiden tot een inconsistente of niet-ondersteunde status van Azure AD Connect synchronisatie. Als gevolg hiervan kan micro soft geen technische ondersteuning bieden voor dergelijke implementaties.
+> Microsoft biedt geen ondersteuning voor het wijzigen of uitvoeren van Azure AD Connect-synchronisatie anders dan op de manier die officieel is gedocumenteerd. Een van deze acties kan resulteren in een inconsistente of niet-ondersteunde status van Azure AD Connect-synchronisatie. Als gevolg hiervan kan Microsoft geen technische ondersteuning bieden voor dergelijke implementaties.
 
-## <a name="basics-and-important-notes"></a>Basis beginselen en belang rijke opmerkingen
-In Azure AD Connect synchronisatie kunt u op elk gewenst moment filteren inschakelen. Als u begint met een standaard configuratie van Directory synchronisatie en vervolgens filteren configureert, worden de gefilterde objecten niet meer gesynchroniseerd met Azure AD. Als gevolg van deze wijziging, worden alle objecten in azure AD die eerder zijn gesynchroniseerd, maar vervolgens gefilterd, verwijderd in azure AD.
+## <a name="basics-and-important-notes"></a>Basisbeginselen en belangrijke notities
+In Azure AD Connect-synchronisatie u filteren op elk gewenst moment inschakelen. Als u begint met een standaardconfiguratie van adreslijstsynchronisatie en vervolgens het filteren configureert, worden de objecten die worden uitgefilterd niet langer gesynchroniseerd met Azure AD. Vanwege deze wijziging worden alle objecten in Azure AD die eerder zijn gesynchroniseerd maar vervolgens zijn gefilterd, verwijderd in Azure AD.
 
-Voordat u begint met het maken van wijzigingen in filters, moet u ervoor zorgen dat u [de geplande taak uitschakelt](#disable-the-scheduled-task) , zodat u niet per ongeluk de wijzigingen exporteert die u nog niet hebt gecontroleerd.
+Voordat u wijzigingen in het filteren aanbrengt, moet u ervoor zorgen dat u [de geplande taak uitschakelt,](#disable-the-scheduled-task) zodat u niet per ongeluk wijzigingen exporteert waarvan u nog niet hebt geverifieerd dat deze correct zijn.
 
-Omdat met filteren veel objecten tegelijk kan worden verwijderd, moet u ervoor zorgen dat de nieuwe filters juist zijn voordat u wijzigingen in azure AD gaat exporteren. Nadat u de configuratie stappen hebt voltooid, raden we u ten zeerste aan de [verificaties tappen](#apply-and-verify-changes) te volgen voordat u Azure AD exporteert en wijzigt.
+Omdat filteren veel objecten tegelijk kan verwijderen, wilt u ervoor zorgen dat uw nieuwe filters correct zijn voordat u wijzigingen naar Azure AD gaat exporteren. Nadat u de configuratiestappen hebt voltooid, raden we u ten zeerste aan de [verificatiestappen](#apply-and-verify-changes) te volgen voordat u Azure AD exporteert en wijzigt.
 
-Om te voor komen dat u per ongeluk veel objecten verwijdert, is de functie '[onopzettelijke verwijderingen voor komen](how-to-connect-sync-feature-prevent-accidental-deletes.md)' standaard ingeschakeld. Als u veel objecten als gevolg van filtering (standaard 500) wilt verwijderen, moet u de stappen in dit artikel volgen om de verwijderingen door te laten gaan naar Azure AD.
+Om te voorkomen dat u per ongeluk veel objecten verwijdert, is de functie "[prevent accidental deletes](how-to-connect-sync-feature-prevent-accidental-deletes.md)" standaard ingeschakeld. Als u veel objecten verwijdert vanwege filtering (standaard 500), moet u de stappen in dit artikel volgen om de verwijderingen door te laten gaan naar Azure AD.
 
-Als u een build vóór november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) gebruikt, een wijziging aanbrengt in een filter configuratie en wachtwoord-hash-synchronisatie gebruikt, moet u een volledige synchronisatie van alle wacht woorden activeren nadat u de configuratie hebt voltooid. Zie [een volledige synchronisatie van alle wacht woorden activeren](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)voor de stappen voor het activeren van een volledige synchronisatie met een wacht woord. Als u werkt met build 1.0.9125 of hoger, wordt in de normale **volledige synchronisatie** ook berekend of wacht woorden moeten worden gesynchroniseerd en als deze extra stap niet meer nodig is.
+Als u een build vóór november 2015 gebruikt ([1.0.9125](reference-connect-version-history.md#1091250)), een wijziging aanbrengen in een filterconfiguratie en wachtwoordhashsynchronisatie gebruiken, moet u een volledige synchronisatie van alle wachtwoorden activeren nadat u de configuratie hebt voltooid. Zie Een volledige synchronisatie van alle [wachtwoorden](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)activeren voor stappen over het activeren van een wachtwoord volledige synchronisatie. Als u op build 1.0.9125 of hoger bent, berekent de reguliere **volledige synchronisatieactie** ook of wachtwoorden moeten worden gesynchroniseerd en of deze extra stap niet meer nodig is.
 
-Als **gebruikers** objecten per ongeluk in azure AD zijn verwijderd vanwege een filter fout, kunt u de gebruikers objecten in azure AD opnieuw maken door uw filter configuraties te verwijderen. Vervolgens kunt u uw directory's opnieuw synchroniseren. Met deze actie worden de gebruikers teruggezet vanuit de Prullenbak in azure AD. U kunt echter geen andere object typen verwijderen. Als u bijvoorbeeld per ongeluk een beveiligings groep verwijdert en deze hebt gebruikt om een resource te ACL, kunnen de groep en de bijbehorende Acl's niet worden hersteld.
+Als **gebruikersobjecten** per ongeluk zijn verwijderd in Azure AD vanwege een filterfout, u de gebruikersobjecten in Azure AD opnieuw maken door uw filterconfiguraties te verwijderen. Dan u uw mappen opnieuw synchroniseren. Met deze actie worden de gebruikers uit de prullenbak in Azure AD hersteld. U echter andere objecttypen niet verwijderen. Als u bijvoorbeeld per ongeluk een beveiligingsgroep verwijdert en deze is gebruikt om een resource te aclen, kunnen de groep en de ACL's niet worden hersteld.
 
-Met Azure AD Connect worden alleen objecten verwijderd die in het bereik zijn opgenomen. Als er objecten in azure AD zijn die zijn gemaakt door een andere synchronisatie-engine en deze objecten zich niet in het bereik bevinden, worden ze niet verwijderd door filters toe te voegen. Bijvoorbeeld, als u begint met een DirSync-server die een volledige kopie van uw hele directory in azure AD heeft gemaakt en u een nieuwe Azure AD Connect-synchronisatie Server Parallel installeert met filters die vanaf het begin zijn ingeschakeld, worden de extra objecten niet verwijderd door Azure AD Connect. die door DirSync worden gemaakt.
+Azure AD Connect verwijdert alleen objecten waarvan het ooit als in het bereik is beschouwd. Als er objecten in Azure AD zijn gemaakt door een andere synchronisatieengine en deze objecten niet in het bereik zijn, worden deze niet verwijderd door filtering toe te voegen. Als u bijvoorbeeld begint met een DirSync-server die een volledige kopie van uw volledige directory in Azure AD heeft gemaakt en u een nieuwe Azure AD Connect-synchronisatieserver installeert, parallel met het filteren dat vanaf het begin is ingeschakeld, verwijdert Azure AD Connect de extra objecten niet die zijn gemaakt door DirSync.
 
-De filter configuratie blijft behouden wanneer u een nieuwere versie van Azure AD Connect installeert of bijwerkt. Het is altijd een best practice om te controleren of de configuratie niet per ongeluk is gewijzigd na een upgrade naar een nieuwere versie voordat u de eerste synchronisatie cyclus uitvoert.
+De filterconfiguratie blijft behouden wanneer u een nieuwere versie van Azure AD Connect installeert of upgradet. Het is altijd een aanbevolen manier om te controleren of de configuratie niet per ongeluk is gewijzigd na een upgrade naar een nieuwere versie voordat de eerste synchronisatiecyclus wordt uitgevoerd.
 
-Als u meer dan één forest hebt, moet u de filter configuraties die in dit onderwerp worden beschreven, Toep assen op elk forest (ervan uitgaande dat u dezelfde configuratie voor al hen wilt).
+Als u meer dan één forest hebt, moet u de filterconfiguraties die in dit onderwerp worden beschreven, toepassen op elk forest (ervan uitgaande dat u voor alle foresten dezelfde configuratie wilt).
 
 ### <a name="disable-the-scheduled-task"></a>De geplande taak uitschakelen
-Voer de volgende stappen uit om de ingebouwde scheduler die elke 30 minuten een synchronisatie cyclus activeert, uit te scha kelen:
+Voer de volgende stappen uit om de ingebouwde planner uit te schakelen die elke 30 minuten een synchronisatiecyclus activeert:
 
-1. Ga naar een Power shell-prompt.
-2. Voer `Set-ADSyncScheduler -SyncCycleEnabled $False` uit om de scheduler uit te scha kelen.
-3. Breng de wijzigingen aan die in dit artikel worden beschreven.
-4. Voer `Set-ADSyncScheduler -SyncCycleEnabled $True` uit om de Scheduler opnieuw in te scha kelen.
+1. Ga naar een PowerShell-prompt.
+2. Uitvoeren `Set-ADSyncScheduler -SyncCycleEnabled $False` om de planner uit te schakelen.
+3. Breng de wijzigingen aan die in dit artikel zijn gedocumenteerd.
+4. Uitvoeren `Set-ADSyncScheduler -SyncCycleEnabled $True` om de planner opnieuw in te schakelen.
 
 **Als u een Azure AD Connect-build gebruikt vóór 1.1.105.0**  
-Voer de volgende stappen uit om de geplande taak uit te scha kelen die elke drie uur een synchronisatie cyclus activeert:
+Voer de volgende stappen uit om de geplande taak uit te schakelen die elke drie uur een synchronisatiecyclus activeert:
 
-1. **Taak planner** starten vanuit het menu **Start** .
-2. Zoek direct onder de **taak planner-bibliotheek**de taak met de naam **Azure AD Sync scheduler**, klik met de rechter muisknop en selecteer **uitschakelen**.  
-   Taak planner](./media/how-to-connect-sync-configure-filtering/taskscheduler.png) ![  
-3. U kunt nu configuratie wijzigingen aanbrengen en de synchronisatie-engine hand matig uitvoeren vanuit de **Synchronization Service Manager** -console.
+1. Taakplanner **starten** in het menu **Start.**
+2. Zoek **Task Scheduler Library**de taak met de naam **Azure AD Sync Scheduler**met de rechtermuisknop en selecteer **Uitschakelen.**  
+   ![Task Scheduler](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+3. U nu configuratiewijzigingen aanbrengen en de synchronisatieengine handmatig uitvoeren vanaf de console **Synchronisatieservicebeheer.**
 
-Wanneer u alle filter wijzigingen hebt voltooid, vergeet dan niet om terug te gaan en de taak opnieuw **in te scha kelen** .
+Nadat u al uw filterwijzigingen hebt voltooid, vergeet dan niet om terug te komen en de taak opnieuw **in te schakelen.**
 
-## <a name="filtering-options"></a>Filter opties
-U kunt de volgende filter configuratie typen Toep assen op het hulp programma Directory-synchronisatie:
+## <a name="filtering-options"></a>Filteropties
+U de volgende filterconfiguratietypen toepassen op het hulpprogramma voor adreslijstsynchronisatie:
 
-* Op [**groep gebaseerd**](#group-based-filtering): filteren op basis van één groep kan alleen worden geconfigureerd tijdens de eerste installatie met behulp van de installatie wizard.
-* [**Op domein gebaseerd**](#domain-based-filtering): met deze optie kunt u selecteren welke domeinen moeten worden gesynchroniseerd met Azure AD. U kunt ook domeinen toevoegen aan en verwijderen uit de configuratie van de synchronisatie-engine wanneer u wijzigingen aanbrengt in uw on-premises infra structuur nadat u Azure AD Connect synchronisatie hebt geïnstalleerd.
-* [**Organisatie-eenheid (OE) – gebaseerd**](#organizational-unitbased-filtering): met deze optie kunt u selecteren welke organisatie-eenheden worden gesynchroniseerd met Azure AD. Deze optie is voor alle object typen in geselecteerde organisatie-eenheden.
-* [**Op basis van kenmerken**](#attribute-based-filtering): met deze optie kunt u objecten filteren op basis van kenmerk waarden voor de objecten. U kunt ook verschillende filters hebben voor verschillende object typen.
+* [**Groepsgebaseerd**](#group-based-filtering): Filteren op basis van één groep kan alleen worden geconfigureerd bij de eerste installatie met behulp van de wizard installatie.
+* [**Domeingebaseerd:**](#domain-based-filtering)Met deze optie u selecteren welke domeinen worden gesynchroniseerd met Azure AD. U ook domeinen toevoegen en verwijderen uit de configuratie van de synchronisatieengine wanneer u wijzigingen aanbrengt in uw on-premises infrastructuur nadat u Azure AD Connect-synchronisatie hebt geïnstalleerd.
+* [**Organisatie-eenheid (OU)-gebaseerd:**](#organizational-unitbased-filtering)Met deze optie u selecteren welke OK's synchroniseren met Azure AD. Deze optie is bedoeld voor alle objecttypen in geselecteerde Ok's.
+* [**Op basis van kenmerken:**](#attribute-based-filtering)Met deze optie u objecten filteren op basis van kenmerkwaarden op de objecten. U ook verschillende filters voor verschillende objecttypen hebben.
 
-U kunt op hetzelfde moment meerdere filter opties gebruiken. U kunt bijvoorbeeld filteren op basis van een organisatie-eenheid gebruiken om alleen objecten in één OE op te laten voegen. Op hetzelfde moment kunt u op kenmerken gebaseerde filtering gebruiken om de objecten verder te filteren. Wanneer u meerdere filter methoden gebruikt, gebruiken de filters een logische ' en ' tussen de filters.
+U meerdere filteropties tegelijk gebruiken. U bijvoorbeeld op OU gebaseerde filtering gebruiken om alleen objecten in één organisatieorganisatie op te nemen. Tegelijkertijd u filtering op basis van kenmerken gebruiken om de objecten verder te filteren. Wanneer u meerdere filtermethoden gebruikt, gebruiken de filters een logische "AND" tussen de filters.
 
-## <a name="domain-based-filtering"></a>Filteren op basis van een domein
-In deze sectie vindt u de stappen voor het configureren van uw domein filter. Als u domeinen in uw forest hebt toegevoegd of verwijderd nadat u Azure AD Connect hebt geïnstalleerd, moet u ook de filter configuratie bijwerken.
+## <a name="domain-based-filtering"></a>Filteren op basis van domeinen
+In deze sectie vindt u de stappen om uw domeinfilter te configureren. Als u domeinen in uw forest hebt toegevoegd of verwijderd nadat u Azure AD Connect hebt geïnstalleerd, moet u ook de filterconfiguratie bijwerken.
 
-De aanbevolen manier om op domein gebaseerde filtering te wijzigen, is door de installatie wizard uit te voeren en het [filteren van domeinen en OE te](how-to-connect-install-custom.md#domain-and-ou-filtering)wijzigen. De installatie wizard automatiseert alle taken die in dit onderwerp worden beschreven.
+De voorkeursmanier om domeingebaseerde filtering te wijzigen is door de installatiewizard uit te voeren en [domein- en organisatie-eenheidfiltering te](how-to-connect-install-custom.md#domain-and-ou-filtering)wijzigen. De wizard installatie automatiseert alle taken die in dit onderwerp zijn gedocumenteerd.
 
-Volg deze stappen alleen als u de installatie wizard om een of andere reden niet kunt uitvoeren.
+U moet deze stappen alleen volgen als u de installatiewizard om de een of andere reden niet uitvoeren.
 
-Op domein gebaseerde filter configuratie bestaat uit de volgende stappen:
+Domeingebaseerde filterconfiguratie bestaat uit de volgende stappen:
 
-1. Selecteer de domeinen die u wilt toevoegen aan de synchronisatie.
-2. Voor elk toegevoegd en verwijderd domein past u de uitvoerings profielen aan.
-3. [Wijzigingen Toep assen en controleren](#apply-and-verify-changes).
+1. Selecteer de domeinen die u in de synchronisatie wilt opnemen.
+2. Pas voor elk toegevoegd en verwijderd domein de run-profielen aan.
+3. [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-### <a name="select-the-domains-to-be-synchronized"></a>De domeinen selecteren die moeten worden gesynchroniseerd
+### <a name="select-the-domains-to-be-synchronized"></a>Selecteer de domeinen die moeten worden gesynchroniseerd
 Er zijn twee manieren om de domeinen te selecteren die moeten worden gesynchroniseerd:
-    - De synchronisatie service gebruiken
-    - Met de wizard Azure AD Connect.
+    - De synchronisatieservice gebruiken
+    - De wizard Azure AD Connect gebruiken.
 
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>De domeinen selecteren die moeten worden gesynchroniseerd met de synchronisatie service
-Voer de volgende stappen uit om het domein filter in te stellen:
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Selecteer de domeinen die moeten worden gesynchroniseerd met de synchronisatieservice
+Ga als volgt te werk om het domeinfilter in te stellen:
 
-1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
-2. Start de **synchronisatie service** vanuit het menu **Start** .
-3. Selecteer **connectors**en selecteer in de lijst **connectors** de Connector met het type **Active Directory Domain Services**. In **acties**, selecteert u **Eigenschappen**.  
-   eigenschappen van ![-connector](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Klik op **mappartities configureren**.
-5. Selecteer in de lijst **Directory partities selecteren** de optie en selecteer de selectie van de domeinen als dat nodig is. Controleer of alleen de partities die u wilt synchroniseren zijn geselecteerd.  
+1. Meld u aan bij de server waarop Azure AD Connect wordt gesynchroniseerd met een account dat lid is van de beveiligingsgroep **ADSyncAdmins.**
+2. Synchronisatieservice **starten** via het menu **Start.**
+3. Selecteer **Connectors**en selecteer in de lijst **Connectors** de connector met het type Active Directory **Domain Services**. Selecteer **Eigenschappen**in **Acties**.  
+   ![Eigenschappen van connector](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
+4. Klik **op Mappartities configureren**.
+5. Selecteer en selecteer de selectie van domeinen indien nodig in de lijst **Mappartities** selecteren. Controleer of alleen de partities zijn geselecteerd die u wilt synchroniseren.  
    ![Partities](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
-   Als u uw on-premises Active Directory-infra structuur hebt gewijzigd en domeinen uit het forest hebt toegevoegd of verwijderd, klikt u op de knop **vernieuwen** om een bijgewerkte lijst op te halen. Wanneer u vernieuwt, wordt u gevraagd om referenties. Geef alle referenties met lees toegang tot Windows Server Active Directory op. Het hoeft niet de gebruiker te zijn die vooraf ingevuld is in het dialoog venster.  
-   ![vernieuwen is vereist](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
-6. Wanneer u klaar bent, sluit u het dialoog venster **Eigenschappen** door op **OK**te klikken. Als u domeinen uit het forest hebt verwijderd, ziet u een bericht pop-up met de melding dat een domein is verwijderd en dat de configuratie wordt opgeruimd.
-7. Ga verder met het aanpassen van de uitvoerings profielen.
+   Als u uw on-premises Active Directory-infrastructuur hebt gewijzigd en domeinen uit het forest hebt toegevoegd of verwijderd, klikt u op de knop **Vernieuwen** om een bijgewerkte lijst te krijgen. Wanneer u vernieuwt, wordt u om referenties gevraagd. Geef alle referenties met leestoegang tot Windows Server Active Directory. Het hoeft niet de gebruiker te zijn die vooraf is ingevuld in het dialoogvenster.  
+   ![Vernieuwen nodig](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
+6. Wanneer u klaar bent, sluit u het dialoogvenster **Eigenschappen** door op **OK**te klikken. Als u domeinen uit het forest hebt verwijderd, wordt in een pop-up van een bericht vermeld dat een domein is verwijderd en dat die configuratie wordt opgeschoond.
+7. Ga door met het aanpassen van de runprofielen.
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>De domeinen selecteren die moeten worden gesynchroniseerd met de wizard Azure AD Connect
-Voer de volgende stappen uit om het domein filter in te stellen:
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Selecteer de domeinen die moeten worden gesynchroniseerd met de wizard Azure AD Connect
+Ga als volgt te werk om het domeinfilter in te stellen:
 
 1.  De wizard Azure AD Connect starten
-2.  Klik op **Configureren**
-3.  Selecteer **synchronisatie opties aanpassen** en klik op **volgende**.
+2.  Klik **op Configureren**.
+3.  Selecteer **Synchronisatieopties aanpassen** en klik op **Volgende**.
 4.  Voer uw Azure AD-referenties in
-5.  Klik in het scherm **verbonden directory's** op **volgende**.
-6.  Klik op de **pagina domein en OE filteren** op **vernieuwen**.  Nieuwe domeinen worden nu weer gegeven en verwijderde domeinen verdwijnen.
+5.  Klik op het scherm **Verbonden mappen** op **Volgende**.
+6.  Klik op de **filterpagina Domein en ORGANISATIE** op **Vernieuwen**.  Nieuwe domeinen ziek verschijnen nu en verwijderde domeinen zullen verdwijnen.
    ![Partities](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
-### <a name="update-the-run-profiles"></a>De uitvoerings profielen bijwerken
-Als u uw domein filter hebt bijgewerkt, moet u ook de uitvoerings profielen bijwerken.
+### <a name="update-the-run-profiles"></a>De runprofielen bijwerken
+Als u uw domeinfilter hebt bijgewerkt, moet u ook de runprofielen bijwerken.
 
-1. Controleer in de lijst **Connect oren** of de connector die u in de vorige stap hebt gewijzigd, is geselecteerd. Selecteer in **acties** **Run-profielen configureren**.  
-   ![connector profielen uitvoeren 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
-2. De volgende profielen zoeken en identificeren:
-    * Volledige import bewerking
+1. Controleer in de lijst **Connectors** of de connector die u in de vorige stap hebt gewijzigd, is geselecteerd. Selecteer In **Acties**de optie **Run-profielen configureren**.  
+   ![Connectorrunprofielen 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
+2. Zoek en identificeer de volgende profielen:
+    * Volledig importbewerking
     * Volledige synchronisatie
-    * Delta-import
-    * Delta synchronisatie
+    * Delta-Import
+    * Deltasynchronisatie
     * Exporteren
-3. Voor elk profiel past u de **toegevoegde** en **Verwijderde** domeinen aan.
-    1. Voor elk van de vijf profielen voert u de volgende stappen uit voor elk domein **toegevoegd** :
-        1. Selecteer het uitvoerings profiel en klik op **nieuwe stap**.
-        2. Selecteer op de pagina **stap configureren** in de vervolg keuzelijst **type** het stap type met de naam van het profiel dat u wilt configureren. Klik op **Volgende**.  
-        ![connector profielen uitvoeren 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
-        3. Selecteer op de pagina **connector configuratie** in de vervolg keuzelijst **partitie** de naam van het domein dat u aan uw domein filter hebt toegevoegd.  
-        ![-connector profielen uitvoeren 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
-        4. Klik op **volt ooien**om het dialoog venster **uitvoerings profiel configureren** te sluiten.
-    2. Voor elk van de vijf profielen voert u de volgende stappen uit voor elk **verwijderd** domein:
-        1. Selecteer het uitvoerings profiel.
-        2. Als de **waarde** van het **partitie** kenmerk een GUID is, selecteert u de stap uitvoeren en klikt u op **stap verwijderen**.  
-        ![-connector profielen uitvoeren 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
-    3. Controleer de wijziging. Elk domein dat u wilt synchroniseren, moet worden vermeld als een stap in elk uitvoerings profiel.
-4. Klik op **OK**om het dialoog venster **uitvoerings profielen configureren** te sluiten.
-5.  Als u de configuratie wilt volt ooien, moet u een **volledige import** en een **Delta synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
+3. Pas voor elk profiel de **toegevoegde** en **verwijderde** domeinen aan.
+    1. Ga voor elk van de vijf profielen de volgende stappen uit voor elk **toegevoegd** domein:
+        1. Selecteer het runprofiel en klik op **Nieuwe stap**.
+        2. Selecteer op de pagina **Stap configureren** in de vervolgkeuzelijst **Type** het staptype met dezelfde naam als het profiel dat u configureert. Klik vervolgens op **Volgende**.  
+        ![Connectorrunprofielen 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
+        3. Selecteer op de pagina **Connectorconfiguratie** in de vervolgkeuzelijst **Partitie** de naam van het domein dat u aan uw domeinfilter hebt toegevoegd.  
+        ![Connectorrunprofielen 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
+        4. Als u het dialoogvenster **Run-profiel configureren** wilt sluiten, klikt u op **Voltooien**.
+    2. Ga voor elk van de vijf profielen de volgende stappen uit voor elk **verwijderd** domein:
+        1. Selecteer het runprofiel.
+        2. Als de **waarde** van het kenmerk **Partitie** een GUID is, selecteert u de uitvoerenstap en klikt u op **Stap verwijderen**.  
+        ![Connectorrunprofielen 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
+    3. Controleer uw wijziging. Elk domein dat u wilt synchroniseren, moet worden weergegeven als een stap in elk runprofiel.
+4. Als u het dialoogvenster **Run-profielen configureren** wilt sluiten, klikt u op **OK**.
+5.  Als u de configuratie wilt voltooien, moet u een **volledige import** en een **Delta-synchronisatie**uitvoeren. Lees verder in de sectie [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-## <a name="organizational-unitbased-filtering"></a>Filteren op basis van een organisatie-eenheid
-De voorkeurs manier om filteren op basis van een organisatie-eenheid te wijzigen, is door de installatie wizard uit te voeren en het [filteren van domeinen en OE te](how-to-connect-install-custom.md#domain-and-ou-filtering)wijzigen. De installatie wizard automatiseert alle taken die in dit onderwerp worden beschreven.
+## <a name="organizational-unitbased-filtering"></a>Filteren op organisatie-eenheid
+De voorkeursmanier om op ou's gebaseerde filtering te wijzigen, is door de installatiewizard uit te voeren en [domein- en organisatie-eenheidfiltering te](how-to-connect-install-custom.md#domain-and-ou-filtering)wijzigen. De wizard installatie automatiseert alle taken die in dit onderwerp zijn gedocumenteerd.
 
-Volg deze stappen alleen als u de installatie wizard om een of andere reden niet kunt uitvoeren.
+U moet deze stappen alleen volgen als u de installatiewizard om de een of andere reden niet uitvoeren.
 
-Voer de volgende stappen uit om filtering op basis van een organisatie-eenheid te configureren:
+Ga als volgt te werk om filteren op basis van organisatie-eenheden te configureren:
 
-1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
-2. Start de **synchronisatie service** vanuit het menu **Start** .
-3. Selecteer **connectors**en selecteer in de lijst **connectors** de Connector met het type **Active Directory Domain Services**. In **acties**, selecteert u **Eigenschappen**.  
-   eigenschappen van ![-connector](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Klik op **mappartities configureren**, selecteer het domein dat u wilt configureren en klik vervolgens op **containers**.
-5. Wanneer u hierom wordt gevraagd, geeft u de referenties met lees toegang tot uw on-premises Active Directory op. Het hoeft niet de gebruiker te zijn die vooraf ingevuld is in het dialoog venster.
-6. Wis in het dialoog venster **containers selecteren** de organisatie-eenheden die u niet wilt synchroniseren met de Cloud Directory en klik vervolgens op **OK**.  
-   ![Ou's in het dialoog venster containers selecteren](./media/how-to-connect-sync-configure-filtering/ou.png)  
-   * De container **computers** moet worden geselecteerd om uw Windows 10-computers te synchroniseren met Azure AD. Als de computers die lid zijn van het domein zich in andere organisatie-eenheden bevinden, moet u ervoor zorgen dat deze zijn geselecteerd.
+1. Meld u aan bij de server waarop Azure AD Connect wordt gesynchroniseerd met een account dat lid is van de beveiligingsgroep **ADSyncAdmins.**
+2. Synchronisatieservice **starten** via het menu **Start.**
+3. Selecteer **Connectors**en selecteer in de lijst **Connectors** de connector met het type Active Directory **Domain Services**. Selecteer **Eigenschappen**in **Acties**.  
+   ![Eigenschappen van connector](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
+4. Klik **op Mappartities configureren,** selecteer het domein dat u wilt configureren en klik vervolgens op **Containers**.
+5. Wanneer u wordt gevraagd, geeft u alle referenties met leestoegang tot uw on-premises Active Directory. Het hoeft niet de gebruiker te zijn die vooraf is ingevuld in het dialoogvenster.
+6. Schakel **in** het dialoogvenster Containers selecteren de ok's uit die u niet wilt synchroniseren met de cloudmap en klik op **OK**.  
+   ![Ok's in het dialoogvenster Containers selecteren](./media/how-to-connect-sync-configure-filtering/ou.png)  
+   * De container **Computers** moet worden geselecteerd om uw Windows 10-computers te synchroniseren met Azure AD. Als uw computers met domeinverbonden computers zich in andere ok's bevinden, controleert u of deze zijn geselecteerd.
    * De container **ForeignSecurityPrincipals** moet zijn geselecteerd als er meerdere forests met vertrouwensrelaties zijn. Dankzij deze container kan het lidmaatschap van de beveiligingsgroep van verschillende forests worden omgezet.
-   * Als u de functie voor het terugschrijven van apparaten hebt ingeschakeld, moet u de **RegisteredDevices** -OE selecteren. Als u een andere terugschrijf functie gebruikt, zoals de groep terugschrijven, moet u ervoor zorgen dat deze locaties zijn geselecteerd.
-   * Selecteer een andere organisatie-eenheid waar gebruikers, iNetOrgPersons, groepen, contact personen en computers zich bevinden. In de afbeelding bevinden al deze organisatie-eenheden zich in de ManagedObjects-OE.
-   * Als u filtering op basis van groepen gebruikt, moet de organisatie-eenheid waar de groep zich bevindt, worden opgenomen.
-   * Houd er rekening mee dat u kunt configureren of nieuwe organisatie-eenheden die worden toegevoegd nadat de filter configuratie is voltooid, worden gesynchroniseerd of niet zijn gesynchroniseerd. Zie de volgende sectie voor meer informatie.
-7. Wanneer u klaar bent, sluit u het dialoog venster **Eigenschappen** door op **OK**te klikken.
-8. Als u de configuratie wilt volt ooien, moet u een **volledige import** en een **Delta synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
+   * De **organisatie-eenheid RegisteredDevices** moet worden geselecteerd als u de terugschrijffunctie van het apparaat hebt ingeschakeld. Als u een andere terugschrijffunctie gebruikt, zoals groepsterugschrijftekst, controleert u of deze locaties zijn geselecteerd.
+   * Selecteer een andere organisatiewaar gebruikers, iNetOrgPersons, Groepen, Contactpersonen en Computers zich bevinden. Op de foto bevinden al deze OU's zich in de ou ManagedObjects.
+   * Als u groepsfiltering gebruikt, moet de organisatie-eenheid waarin de groep zich bevindt, worden opgenomen.
+   * Houd er rekening mee dat u configureren of nieuwe OE's die worden toegevoegd nadat de filterconfiguratie is voltooid, zijn gesynchroniseerd of niet worden gesynchroniseerd. Zie de volgende sectie voor details.
+7. Wanneer u klaar bent, sluit u het dialoogvenster **Eigenschappen** door op **OK**te klikken.
+8. Als u de configuratie wilt voltooien, moet u een **volledige import** en een **Delta-synchronisatie**uitvoeren. Lees verder in de sectie [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-### <a name="synchronize-new-ous"></a>Nieuwe organisatie-eenheden synchroniseren
-Nieuwe Ou's die zijn gemaakt nadat het filter is geconfigureerd, worden standaard gesynchroniseerd. Deze status wordt aangegeven door een ingeschakeld selectie vakje. U kunt de selectie van sommige onderliggende organisatie-eenheden ook opheffen. Als u dit gedrag wilt weer geven, klikt u op het vak totdat het wit wordt met een blauw vinkje (de standaard status). Vervolgens schakelt u de selectie van de onderliggende organisatie-eenheden die u niet wilt synchroniseren.
+### <a name="synchronize-new-ous"></a>Nieuwe oE's synchroniseren
+Nieuwe O's die zijn gemaakt nadat het filteren is geconfigureerd, worden standaard gesynchroniseerd. Deze status wordt aangegeven door een geselecteerd selectievakje. U ook de selectie van bepaalde sub-OE's ongedaan maken. Als u dit gedrag wilt gebruiken, klikt u op het vakje totdat het wit wordt met een blauw vinkje (de standaardstatus). Schakel vervolgens de selectie uit van sub-OU's die u niet wilt synchroniseren.
 
-Als alle onderliggende organisatie-eenheden zijn gesynchroniseerd, is het vak wit met een blauw vinkje.  
-![OE met alle selectie vakjes](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
+Als alle sub-OU's zijn gesynchroniseerd, is het vakje wit met een blauw vinkje.  
+![OU met alle geselecteerde vakken](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
 
-Als sommige suborganisatie-eenheden niet zijn geselecteerd, is het vak grijs met een wit vinkje.  
-![OE met een of meer suborganisatie-eenheden niet geselecteerd](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
+Als sommige sub-OU's niet zijn geselecteerd, is het vakje grijs met een wit vinkje.  
+![Ou met een aantal sub-OU's niet geselecteerd](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
 
 Met deze configuratie wordt een nieuwe organisatie-eenheid die is gemaakt onder ManagedObjects gesynchroniseerd.
 
-Deze configuratie wordt altijd door de installatie wizard van Azure AD Connect gemaakt.
+Met de wizard Installatie van Azure AD Connect wordt deze configuratie altijd gemaakt.
 
-### <a name="dont-synchronize-new-ous"></a>Nieuwe organisatie-eenheden niet synchroniseren
-U kunt de synchronisatie-engine zo configureren dat nieuwe organisatie-eenheden niet worden gesynchroniseerd nadat de filter configuratie is voltooid. Deze status wordt aangegeven in de gebruikers interface, omdat het vak effen grijs wordt weer gegeven zonder vinkje. Als u dit gedrag wilt weer geven, klikt u op het vak totdat het wit wordt zonder vinkje. Selecteer vervolgens de onderliggende organisatie-eenheden die u wilt synchroniseren.
+### <a name="dont-synchronize-new-ous"></a>Nieuwe OK's niet synchroniseren
+U de synchronisatieengine configureren om geen nieuwe U's te synchroniseren nadat de filterconfiguratie is voltooid. Deze status wordt in de gebruikersinterface aangegeven door het vakdat effen grijs wordt weergegeven zonder vinkje. Als u dit gedrag wilt volgen, klikt u op het vakje totdat het wit wordt zonder vinkje. Selecteer vervolgens de sub-OU's die u wilt synchroniseren.
 
-![OE met de hoofdmap niet geselecteerd](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
+![Ou met de hoofdmap niet geselecteerd](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
 
-Met deze configuratie is een nieuwe organisatie-eenheid die is gemaakt onder ManagedObjects niet gesynchroniseerd.
+Met deze configuratie wordt een nieuwe organisatie-eenheid die is gemaakt onder ManagedObjects niet gesynchroniseerd.
 
-## <a name="attribute-based-filtering"></a>Filteren op basis van kenmerken
-Zorg ervoor dat u de[1.0.9125](reference-connect-version-history.md#1091250)(november 2015) of hoger gebruikt voor het werken met deze stappen.
+## <a name="attribute-based-filtering"></a>Filtering op basis van kenmerken
+Zorg ervoor dat u de bouw van november 2015[(1.0.9125)](reference-connect-version-history.md#1091250)of later gebruikt om deze stappen te laten werken.
 
 > [!IMPORTANT]
->U wordt aangeraden de standaard regels die door **Azure AD Connect**zijn gemaakt, niet te wijzigen. Als u de regel wilt wijzigen, moet u deze klonen en de oorspronkelijke regel uitschakelen. Breng de gewenste wijzigingen aan in de gekloonde regel. Als u dit doet (door de oorspronkelijke regel uit te scha kelen), zult u eventuele oplossingen voor fouten of functies die via die regel zijn ingeschakeld, missen.
+>Microsoft raadt aan om de standaardregels van **Azure AD Connect**niet te wijzigen. Als u de regel wilt wijzigen, kloont u deze en schakelt u de oorspronkelijke regel uit. Breng wijzigingen aan in de gekloonde regel. Houd er rekening mee dat door dit te doen (het uitschakelen van de oorspronkelijke regel) u mist eventuele bug fixes of functies ingeschakeld via die regel.
 
-Op kenmerken gebaseerde filtering is de meest flexibele manier om objecten te filteren. U kunt de kracht van [declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md) gebruiken om bijna elk aspect te beheren wanneer een object wordt gesynchroniseerd met Azure AD.
+Filtering op basis van kenmerken is de meest flexibele manier om objecten te filteren. U de kracht van [declaratieve inrichting](concept-azure-ad-connect-sync-declarative-provisioning.md) gebruiken om bijna elk aspect van wanneer een object is gesynchroniseerd met Azure AD te beheren.
 
-U kunt [Inkomend](#inbound-filtering) filteren van Active Directory Toep assen op de tekst en [uitgaande](#outbound-filtering) filters van het omgekeerde naar Azure AD. U wordt aangeraden inkomende filtering toe te passen, omdat dat de eenvoudigste is om te onderhouden. Gebruik alleen uitgaande filtering als het nodig is om objecten van meer dan één forest samen te voegen voordat de evaluatie kan worden uitgevoerd.
+U [binnenkomende](#inbound-filtering) filters van Active Directory toepassen op de metaverse en [uitgaande](#outbound-filtering) filtering van de metaverse naar Azure AD. We raden u aan inkomende filters toe te passen, omdat dit het gemakkelijkst te onderhouden is. U mag alleen uitgaande filters gebruiken als het nodig is om objecten uit meer dan één forest aan te sluiten voordat de evaluatie kan plaatsvinden.
 
-### <a name="inbound-filtering"></a>Inkomende filtering
-Bij inkomend filteren wordt de standaard configuratie gebruikt, waarbij objecten naar Azure AD moeten beschikken over het cloudFiltered-kenmerk niet zijn ingesteld op een waarde die moet worden gesynchroniseerd. Als de waarde van dit kenmerk is ingesteld op **True**, is het object niet gesynchroniseerd. Het mag niet worden ingesteld op **Onwaar**. Om ervoor te zorgen dat andere regels een waarde kunnen bijdragen, mag dit kenmerk alleen de waarden **True** of **Null** (afwezig) hebben.
+### <a name="inbound-filtering"></a>Binnenkomende filtering
+Inkomende filtering maakt gebruik van de standaardconfiguratie, waarbij objecten die naar Azure AD gaan, de metaverse kenmerkcloud moeten hebbendie niet is ingesteld op een te synchroniseren waarde. Als de waarde van dit kenmerk is ingesteld op **True,** wordt het object niet gesynchroniseerd. Het moet niet worden ingesteld op **False,** door het ontwerp. Om ervoor te zorgen dat andere regels de mogelijkheid hebben om een waarde bij te dragen, wordt dit kenmerk alleen verondersteld de waarden **Waar** of **NULL** (afwezig) te hebben.
 
-Bij inkomend filteren gebruikt u de kracht van **bereik** om te bepalen welke objecten moeten worden gesynchroniseerd of niet moeten worden gesynchroniseerd. Hier maakt u aanpassingen aan de vereisten van uw eigen organisatie. De scope module heeft een **groep** en een **component** om te bepalen wanneer een synchronisatie regel binnen het bereik valt. Een groep bevat een of meer componenten. Er bevindt zich een logische ' AND ' tussen meerdere componenten en een logische ' OR ' of ' tussen meerdere groepen.
+Bij binnenkomende filtering gebruikt u de kracht van **het bereik** om te bepalen welke objecten u wel of niet wilt synchroniseren. Hier maakt u aanpassingen om aan de eisen van uw eigen organisatie te voldoen. De scopemodule heeft een **groep** en een **clausule** om te bepalen wanneer een synchronisatieregel binnen het bereik is. Een groep bevat een of meer clausules. Er is een logische "AND" tussen meerdere clausules, en een logische "OR" tussen meerdere groepen.
 
-Laten we een voor beeld bekijken:  
+Laten we eens kijken naar een voorbeeld:  
 ![Bereik](./media/how-to-connect-sync-configure-filtering/scope.png)  
-Dit moet worden gelezen als **(afdeling = IT) of (afdeling = verkoop en c = US)** .
+Dit moet worden gelezen als **(afdeling = IT) OF (afdeling = Verkoop EN c = US)**.
 
-In de volgende voor beelden en stappen gebruikt u het gebruikers object als voor beeld, maar u kunt dit voor alle object typen gebruiken.
+In de volgende voorbeelden en stappen gebruikt u het gebruikersobject als voorbeeld, maar u dit gebruiken voor alle objecttypen.
 
-In de volgende voor beelden begint de prioriteits waarde met 50. Dit kan een wille keurig getal zijn dat niet wordt gebruikt, maar moet lager zijn dan 100.
+In de volgende monsters begint de prioriteitswaarde met 50. Dit kan een willekeurig aantal niet gebruikt, maar moet lager zijn dan 100.
 
-#### <a name="negative-filtering-do-not-sync-these"></a>Negatief filteren: "deze niet synchroniseren"
-In het volgende voor beeld filtert u (niet synchroniseren) alle gebruikers waarbij **extensionAttribute15** de waarde **NoSync**heeft.
+#### <a name="negative-filtering-do-not-sync-these"></a>Negatieve filtering: "synchroniseer deze niet"
+In het volgende voorbeeld filtert u alle gebruikers uit (niet synchroniseren) waarbij **extensieAttribute15** de waarde **NoSync**heeft.
 
-1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
-2. Start de **Editor voor synchronisatie regels** vanuit het menu **Start** .
-3. Zorg ervoor dat **Inkomend** is geselecteerd en klik op **nieuwe regel toevoegen**.
-4. Geef een beschrijvende naam op voor de regel, zoals '*in AD-User DoNotSyncFilter*'. Selecteer het juiste forest, selecteer **gebruiker** als het **object type CS**en selecteer **persoon** als het **object type MV**. Selecteer in **type koppeling**de optie **samen voegen**. Typ in het veld voor **rang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatie regel (bijvoorbeeld 50) en klik vervolgens op **volgende**.  
-   ![binnenkomende 1 Beschrijving](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. Klik in het **filter bereik**op **groep toevoegen**en klik op **component toevoegen**. Selecteerin het kenmerk **ExtensionAttribute15**. Zorg ervoor dat de **operator** is ingesteld op **gelijk**en typ de waarde **NoSync** in het vak **waarde** . Klik op **Volgende**.  
-   ![inkomend bereik voor 2](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
-6. Laat de regels voor **samen voegen** leeg en klik op **volgende**.
-7. Klik op **trans formatie toevoegen**, selecteer de **FlowType** als **constante**en selecteer **cloudFiltered** als **doel kenmerk**. Typ in het tekstvak **bron** de **waarde waar**. Klik op **toevoegen** om de regel op te slaan.  
-   ![inkomend 3 trans formatie](./media/how-to-connect-sync-configure-filtering/inbound3.png)
-8. Als u de configuratie wilt volt ooien, moet u een **volledige synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
+1. Meld u aan bij de server waarop Azure AD Connect wordt gesynchroniseerd met een account dat lid is van de beveiligingsgroep **ADSyncAdmins.**
+2. De **editor synchronisatieregels starten** in het menu **Start.**
+3. Controleer **of Binnenkomenis** is geselecteerd en klik op **Nieuwe regel toevoegen**.
+4. Geef de regel een beschrijvende naam, zoals "*In van AD – Gebruiker DoNotSyncFilter*". Selecteer het juiste forest, selecteer **Gebruiker** als **objecttype CS**en selecteer **Persoon** als **het OBJECTtype MV**. Selecteer **Join**in **Koppelingstype**. Typ **in Voorrang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatieregel (bijvoorbeeld 50) en klik op **Volgende**.  
+   ![Inkomende 1 beschrijving](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
+5. Klik **in het filter Scoping**op Groep **toevoegen**en klik op **Clausule toevoegen**. Selecteer **Extensieattribuut15**in **Attribuut**15 . Controleer of **Operator** is ingesteld op **EQUAL**en typ de waarde **NoSync** in het vak **Waarde.** Klik op **Volgende**.  
+   ![Binnenkomend 2 bereik](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
+6. Laat de **regels voor deelnemen** leeg en klik op **Volgende**.
+7. Klik **op Transformatie toevoegen,** selecteer **flowtype** als **constant**en selecteer **cloudFiltered** als **doelkenmerk**. Typ **True**in het tekstvak **Bron** . Klik **op Toevoegen** om de regel op te slaan.  
+   ![Inkomende 3 transformatie](./media/how-to-connect-sync-configure-filtering/inbound3.png)
+8. Als u de configuratie wilt voltooien, moet u een **volledige synchronisatie**uitvoeren. Lees verder in de sectie [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-#### <a name="positive-filtering-only-sync-these"></a>Positieve filtering: alleen deze synchroniseren
-Het uitdrukken van positieve filtering kan lastiger zijn omdat u ook objecten moet overwegen die niet duidelijk zijn om te worden gesynchroniseerd, zoals Vergader zalen. U gaat ook het standaard filter in de out-of-Box-regel negeren **in van de AD-User-koppeling**. Wanneer u een aangepast filter maakt, moet u ervoor zorgen dat u geen essentiële systeem objecten, replicatie conflict objecten, speciale post vakken en de service accounts voor Azure AD Connect opneemt.
+#### <a name="positive-filtering-only-sync-these"></a>Positieve filtering: "alleen deze synchroniseren"
+Het uitdrukken van positieve filtering kan uitdagender zijn omdat u ook objecten moet overwegen die niet voor de hand liggen om te worden gesynchroniseerd, zoals vergaderruimtes. U gaat ook het standaardfilter overschrijven in de regel Out-of-Box **In van AD - Gebruiker Join**. Wanneer u uw aangepaste filter maakt, moet u kritieke systeemobjecten, replicatieconflictobjecten, speciale postvakken en de serviceaccounts voor Azure AD Connect niet opnemen.
 
-Voor de optie voor positieve filtering zijn twee synchronisatie regels vereist. U hebt één regel (of meerdere) nodig met het juiste bereik van objecten om te synchroniseren. U hebt ook een tweede catch-all Sync-regel nodig waarmee alle objecten worden gefilterd die nog niet zijn geïdentificeerd als een object dat moet worden gesynchroniseerd.
+De optie voor positieve filtering vereist twee synchronisatieregels. U hebt één regel (of meerdere) nodig met het juiste bereik van objecten om te synchroniseren. U hebt ook een tweede catch-all synchronisatieregel nodig die alle objecten filtert die nog niet zijn geïdentificeerd als een object dat moet worden gesynchroniseerd.
 
-In het volgende voor beeld synchroniseert u alleen gebruikers objecten waarbij het kenmerk afdeling de waarde **Sales**heeft.
+In het volgende voorbeeld synchroniseert u alleen gebruikersobjecten waarbij het eigenschapkenmerk de waarde **Verkoop**heeft.
 
-1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
-2. Start de **Editor voor synchronisatie regels** vanuit het menu **Start** .
-3. Zorg ervoor dat **Inkomend** is geselecteerd en klik op **nieuwe regel toevoegen**.
-4. Geef een beschrijvende naam op voor de regel, zoals '*in van AD-gebruikers verkoop synchroniseren*'. Selecteer het juiste forest, selecteer **gebruiker** als het **object type CS**en selecteer **persoon** als het **object type MV**. Selecteer in **type koppeling**de optie **samen voegen**. Typ in het veld voor **rang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatie regel (bijvoorbeeld 51) en klik vervolgens op **volgende**.  
-   ![inkomend 4 Beschrijving](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. Klik in het **filter bereik**op **groep toevoegen**en klik op **component toevoegen**. Selecteer in **kenmerk** **afdeling**. Zorg ervoor dat operator is ingesteld op **gelijk**en typ de waarde **Sales** in het vak **waarde** . Klik op **Volgende**.  
-   ![inkomend 5 bereik](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
-6. Laat de regels voor **samen voegen** leeg en klik op **volgende**.
-7. Klik op **trans formatie toevoegen**, selecteer **constante** als de **FlowType**en selecteer de **cloudFiltered** als **doel kenmerk**. Typ **Onwaar**in het vak **bron** . Klik op **toevoegen** om de regel op te slaan.  
-   ![binnenkomende 6 trans formatie](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
-   Dit is een speciaal geval waarin u cloudFiltered expliciet instelt op **False**.
-8. We moeten nu de regel voor het synchroniseren van de catch-out maken. Geef een beschrijvende naam op voor de regel, zoals '*in van AD: gebruiker catch all filter*'. Selecteer het juiste forest, selecteer **gebruiker** als het **object type CS**en selecteer **persoon** als het **object type MV**. Selecteer in **type koppeling**de optie **samen voegen**. Typ in het veld voor **rang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatie regel (bijvoorbeeld 99). U hebt een prioriteits waarde geselecteerd die hoger is (lagere prioriteit) dan de vorige synchronisatie regel. Maar u hebt ook enige ruimte gelaten, zodat u later meer filter synchronisatie regels kunt toevoegen wanneer u wilt beginnen met het synchroniseren van aanvullende afdelingen. Klik op **Volgende**.  
-   ![binnenkomende 7 Beschrijving](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
-9. Laat het **bereik filter** leeg en klik op **volgende**. Een leeg filter geeft aan dat de regel op alle objecten moet worden toegepast.
-10. Laat de regels voor **samen voegen** leeg en klik op **volgende**.
-11. Klik op **trans formatie toevoegen**, selecteer **constante** als de **FlowType**en selecteer **cloudFiltered** als **doel kenmerk**. Typ in het vak **bron** de **waarde waar**. Klik op **toevoegen** om de regel op te slaan.  
-    ![inkomend 3 trans formatie](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
-12. Als u de configuratie wilt volt ooien, moet u een **volledige synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
+1. Meld u aan bij de server waarop Azure AD Connect wordt gesynchroniseerd met een account dat lid is van de beveiligingsgroep **ADSyncAdmins.**
+2. De **editor synchronisatieregels starten** in het menu **Start.**
+3. Controleer **of Binnenkomenis** is geselecteerd en klik op **Nieuwe regel toevoegen**.
+4. Geef de regel een beschrijvende naam, zoals "*In van AD – User Sales sync*". Selecteer het juiste forest, selecteer **Gebruiker** als **objecttype CS**en selecteer **Persoon** als **het OBJECTtype MV**. Selecteer **Join**in **Koppelingstype**. Typ **in Voorrang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatieregel (bijvoorbeeld 51) en klik op **Volgende**.  
+   ![Inkomende 4 beschrijving](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
+5. Klik **in het filter Scoping**op Groep **toevoegen**en klik op **Clausule toevoegen**. Selecteer **in Kenmerk**de **afdeling**. Controleer of Operator is ingesteld op **EQUAL**en typ de waarde **Verkoop** in het vak **Waarde.** Klik op **Volgende**.  
+   ![Binnenkomend 5 toepassingsgebied](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
+6. Laat de **regels voor deelnemen** leeg en klik op **Volgende**.
+7. Klik **op Transformatie toevoegen,** selecteer **Constant** als **flowtype**en selecteer de **cloudGefilterd** als **doelkenmerk**. Typ **False**in het vak **Bron** . Klik **op Toevoegen** om de regel op te slaan.  
+   ![Inkomende 6 transformatie](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
+   Dit is een speciaal geval waarbij u cloudFiltered expliciet instelt op **False.**
+8. We moeten nu de catch-all sync regel maken. Geef de regel een beschrijvende naam, zoals "*In van AD – User Catch-all filter*". Selecteer het juiste forest, selecteer **Gebruiker** als **objecttype CS**en selecteer **Persoon** als **het OBJECTtype MV**. Selecteer **Join**in **Koppelingstype**. Typ **in Voorrang**een waarde die momenteel niet wordt gebruikt door een andere synchronisatieregel (bijvoorbeeld 99). U hebt een voorrangswaarde geselecteerd die hoger is (lagere prioriteit) dan de vorige synchronisatieregel. Maar je hebt ook wat ruimte gelaten, zodat je later meer filtersynchronisatieregels toevoegen wanneer je wilt beginnen met het synchroniseren van extra afdelingen. Klik op **Volgende**.  
+   ![Inkomende 7 beschrijving](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
+9. Laat **het scopingfilter** leeg en klik op **Volgende**. Een leeg filter geeft aan dat de regel op alle objecten moet worden toegepast.
+10. Laat de **regels voor deelnemen** leeg en klik op **Volgende**.
+11. Klik **op Transformatie toevoegen,** selecteer **Constant** als **flowtype**en selecteer **cloudFiltered** als **doelkenmerk**. Typ **True**in het vak **Bron** . Klik **op Toevoegen** om de regel op te slaan.  
+    ![Inkomende 3 transformatie](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
+12. Als u de configuratie wilt voltooien, moet u een **volledige synchronisatie**uitvoeren. Lees verder in de sectie [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-Als dat het geval is, kunt u meer regels van het eerste type maken waarbij u meer objecten in de synchronisatie opneemt.
+Als dat nodig is, u meer regels van het eerste type maken waarin u meer objecten in de synchronisatie opneemt.
 
-### <a name="outbound-filtering"></a>Uitgaande filters
-In sommige gevallen is het alleen nodig om de filtering uit te voeren nadat de objecten zijn toegevoegd aan de tekst. Het kan bijvoorbeeld nodig zijn om te kijken naar het kenmerk mail van het bron-forest en het kenmerk userPrincipalName van het account-forest om te bepalen of een object moet worden gesynchroniseerd. In deze gevallen maakt u het filter op de uitgaande regel.
+### <a name="outbound-filtering"></a>Uitgaand filteren
+In sommige gevallen is het noodzakelijk om het filteren alleen te doen nadat de objecten zijn samengevoegd in de metaverse. Het kan bijvoorbeeld nodig zijn om het e-mailkenmerk uit het resourceforest en het kenmerk userPrincipalName uit het accountforest te bekijken om te bepalen of een object moet worden gesynchroniseerd. In deze gevallen maakt u de filtering op de uitgaande regel.
 
-In dit voor beeld wijzigt u de filtering zodat alleen gebruikers met hun e-mail en userPrincipalName eindigen op @contoso.com worden gesynchroniseerd:
+In dit voorbeeld wijzigt u de filtering zodat alleen gebruikers die @contoso.com zowel hun e-mail als de userPrincipalName hebben eindigend, worden gesynchroniseerd:
 
-1. Meld u aan bij de server waarop Azure AD Connect synchronisatie wordt uitgevoerd met behulp van een account dat lid is van de beveiligings groep **ADSyncAdmins** .
-2. Start de **Editor voor synchronisatie regels** vanuit het menu **Start** .
-3. Klik onder **regel type**op **uitgaand**.
-4. Afhankelijk van de versie van de verbinding die u gebruikt, zoekt u de regel **met de naam uit naar Aad: gebruiker toevoegen** aan of **uit voor Aad-gebruiker lid**worden van SOAInAD en klikt u op **bewerken**.
-5. Beantwoord in het pop-upvenster **Ja** om een kopie van de regel te maken.
-6. Op de pagina **Beschrijving** wijzigt u de **prioriteit** in een ongebruikte waarde, zoals 50.
-7. Klik op het **filter bereik** op de navigatie balk aan de linkerkant en klik vervolgens op **component toevoegen**. Selecteerin het kenmerk **mail**. Selecteer in **operator** **ENDSWITH**. Typ **\@contoso.com**in **waarde**en klik vervolgens op **component toevoegen**. Selecteerin het kenmerk **userPrincipalName**. Selecteer in **operator** **ENDSWITH**. Typ **\@contoso.com**in **waarde**.
+1. Meld u aan bij de server waarop Azure AD Connect wordt gesynchroniseerd met een account dat lid is van de beveiligingsgroep **ADSyncAdmins.**
+2. De **editor synchronisatieregels starten** in het menu **Start.**
+3. Klik **onder Regelstype**op **Uitgaand**.
+4. Afhankelijk van de versie van Connect die u gebruikt, zoekt u de regel met de naam **Out to AAD - User Join** or Out to AAD - User Join **SOAInAD**en klikt u op **Bewerken**.
+5. Antwoord in de pop-up **Ja** om een kopie van de regel te maken.
+6. Wijzig op de pagina **Beschrijving** **Voorrang** in een ongebruikte waarde, zoals 50.
+7. Klik op **Het filter Scoping** op de linkernavigatie en klik vervolgens op **Clausule toevoegen**. Selecteer **in Kenmerk** **e-mail**. Selecteer **IN Operator** **ENDSMET**. Typ **in Waarde** ** \@contoso.com**en klik op Clausule **toevoegen**. Selecteer **in Kenmerk**de optie **userPrincipalName**. Selecteer **IN Operator** **ENDSMET**. Typ ** \@contoso.com**in **waarde**.
 8. Klik op **Opslaan**.
-9. Als u de configuratie wilt volt ooien, moet u een **volledige synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
+9. Als u de configuratie wilt voltooien, moet u een **volledige synchronisatie**uitvoeren. Lees verder in de sectie [Wijzigingen toepassen en verifiëren](#apply-and-verify-changes).
 
-## <a name="apply-and-verify-changes"></a>Wijzigingen Toep assen en controleren
-Nadat u de configuratie wijzigingen hebt aangebracht, moet u deze Toep assen op de objecten die al in het systeem aanwezig zijn. Het kan ook zijn dat de objecten die zich momenteel niet in de synchronisatie-engine bevinden, moeten worden verwerkt (en de synchronisatie-engine moet het bron systeem opnieuw lezen om de inhoud ervan te controleren).
+## <a name="apply-and-verify-changes"></a>Wijzigingen toepassen en verifiëren
+Nadat u uw configuratiewijzigingen hebt aangebracht, moet u deze toepassen op de objecten die al in het systeem aanwezig zijn. Het kan ook zijn dat de objecten die zich momenteel niet in de synchronisatieengine bevindt, moeten worden verwerkt (en de synchronisatieengine moet het bronsysteem opnieuw lezen om de inhoud ervan te verifiëren).
 
-Als u de configuratie hebt gewijzigd door gebruik te maken van **domein** **-of organisatie-eenheid** filtering, moet u een **volledige import bewerking**uitvoeren, gevolgd door **Delta synchronisatie**.
+Als u de configuratie hebt gewijzigd met behulp van **domein-** of **organisatie-eenheidfiltering,** moet u een **volledige import**doen, gevolgd door **Delta-synchronisatie**.
 
-Als u de configuratie hebt gewijzigd met **kenmerk** filtering, moet u een **volledige synchronisatie**uitvoeren.
+Als u de configuratie hebt gewijzigd met **behulp** van kenmerkfiltering, moet u een **volledige synchronisatie**doen.
 
-Voer de volgende stappen uit:
+Ga als volgt te werk:
 
-1. Start de **synchronisatie service** vanuit het menu **Start** .
-2. Selecteer **connectors**. Selecteer in de lijst **connectors** de connector waar u eerder een configuratie wijziging hebt aangebracht. In **acties**, selecteer **uitvoeren**.  
-   ![connector uitvoeren](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
-3. Selecteer in **profielen uitvoeren**de bewerking die is vermeld in de vorige sectie. Als u twee acties wilt uitvoeren, voert u de tweede actie uit nadat de eerste is voltooid. (De **status** kolom is **niet actief** voor de geselecteerde connector.)
+1. Synchronisatieservice **starten** via het menu **Start.**
+2. Selecteer **Connectors**. Selecteer **in** de lijst Connectors de connector waar u eerder een configuratiewijziging hebt aangebracht. Selecteer **Uitvoeren**in **Acties**.  
+   ![Connectorrun](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
+3. Selecteer **in Run-profielen**de bewerking die in de vorige sectie is vermeld. Als u twee acties moet uitvoeren, voert u de tweede uit nadat de eerste is voltooid. (De kolom **Status** is **Nietactief** voor de geselecteerde connector.)
 
-Na de synchronisatie worden alle wijzigingen klaargezet om te worden geëxporteerd. Voordat u de wijzigingen in azure AD daad werkelijk aanbrengt, moet u controleren of al deze wijzigingen juist zijn.
+Na de synchronisatie worden alle wijzigingen gefaseerd uitgevoerd om te worden geëxporteerd. Voordat u de wijzigingen in Azure AD daadwerkelijk aanbrengt, wilt u controleren of al deze wijzigingen juist zijn.
 
-1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+1. Start een opdrachtprompt en `%ProgramFiles%\Microsoft Azure AD Sync\bin`ga naar .
 2. Voer `csexport "Name of Connector" %temp%\export.xml /f:x` uit.  
-   De naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
+   De naam van de connector staat in de synchronisatieservice. Het heeft een naam die lijkt op 'contoso.com – AAD' voor Azure AD.
 3. Voer `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` uit.
-4. U hebt nu een bestand in% Temp% met de naam export. csv dat kan worden onderzocht in micro soft Excel. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
-5. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (importeren, synchroniseren en verifiëren) totdat de wijzigingen die worden geëxporteerd, zijn wat u verwacht.
+4. U hebt nu een bestand met de naam export.csv met de naam export.csv dat kan worden onderzocht in Microsoft Excel. Dit bestand bevat alle wijzigingen die op het punt staan te worden geëxporteerd.
+5. Breng de nodige wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (Importeren, synchroniseren en verifiëren) totdat de wijzigingen die op het punt staan te worden geëxporteerd, zijn wat u verwacht.
 
 Als u tevreden bent, exporteert u de wijzigingen naar Azure AD.
 
-1. Selecteer **connectors**. Selecteer in de lijst **Connect oren** de Azure AD-connector. In **acties**, selecteer **uitvoeren**.
-2. Selecteer in **Run Profiles**de optie **export**.
-3. Als uw configuratie wijzigingen veel objecten verwijderen, ziet u een fout in de export wanneer het aantal groter is dan de geconfigureerde drempel waarde (standaard 500). Als u deze fout ziet, moet u de functie '[onopzettelijke verwijderingen voor komen](how-to-connect-sync-feature-prevent-accidental-deletes.md)' tijdelijk uitschakelen.
+1. Selecteer **Connectors**. Selecteer in de lijst **Connectors** de Azure AD Connector. Selecteer **Uitvoeren**in **Acties**.
+2. Selecteer **Exporteren**in **Run-profielen**.
+3. Als uw configuratiewijzigingen veel objecten verwijderen, ziet u een fout in de export wanneer het getal meer is dan de geconfigureerde drempelwaarde (standaard 500). Als u deze fout ziet, moet u de functie "[per ongeluk verwijderen](how-to-connect-sync-feature-prevent-accidental-deletes.md)" tijdelijk uitschakelen.
 
-Nu is het tijd om de Scheduler opnieuw in te scha kelen.
+Nu is het tijd om de planner weer in te schakelen.
 
-1. **Taak planner** starten vanuit het menu **Start** .
-2. Zoek direct onder de **taak planner-bibliotheek**de taak met de naam **Azure AD Sync scheduler**, klik met de rechter muisknop en selecteer **inschakelen**.
+1. Taakplanner **starten** in het menu **Start.**
+2. Zoek direct onder **taakplannerbibliotheek**de taak met de naam **Azure AD Sync Scheduler**, klik met de rechtermuisknop en selecteer **Inschakelen**.
 
-## <a name="group-based-filtering"></a>Filteren op basis van een groep
-U kunt filteren op basis van een groep configureren de eerste keer dat u Azure AD Connect installeert met behulp van [aangepaste installatie](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Het is bedoeld voor een pilot implementatie waarbij u slechts een klein aantal objecten wilt synchroniseren. Wanneer u filteren op basis van groepen uitschakelt, kan het niet meer worden ingeschakeld. Het wordt *niet ondersteund* voor het gebruik van filteren op basis van groepen in een aangepaste configuratie. Het wordt alleen ondersteund voor het configureren van deze functie met behulp van de installatie wizard. Wanneer u de pilot hebt voltooid, gebruikt u een van de andere filter opties in dit onderwerp. Wanneer u filtering op basis van een organisatie-eenheid gebruikt in combi natie met filteren op basis van een groep, moeten de OE (s) waar de groep en de leden ervan zich bevinden, worden opgenomen.
+## <a name="group-based-filtering"></a>Filteren op basis van groepen
+U groepsfiltering configureren de eerste keer dat u Azure AD Connect installeert met behulp van [aangepaste installatie](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Het is bedoeld voor een pilot-implementatie waarbij u slechts een kleine set objecten wilt synchroniseren. Wanneer u groepsfiltering uitschakelt, kan deze niet opnieuw worden ingeschakeld. Het wordt *niet ondersteund* voor het gebruik van groepsfiltering in een aangepaste configuratie. Deze functie wordt alleen ondersteund om deze functie te configureren met behulp van de wizard Installatie. Wanneer u uw pilot hebt voltooid, gebruikt u een van de andere filteropties in dit onderwerp. Bij het gebruik van OU-gebaseerde filtering in combinatie met groepsfiltering, moet de OU(s) waar de groep en haar leden zich bevinden, worden opgenomen.
 
-Bij het synchroniseren van meerdere AD-forests kunt u filteren op basis van een groep configureren door voor elke AD-connector een andere groep op te geven. Als u een gebruiker wilt synchroniseren in één AD-forest en dezelfde gebruiker een of meer overeenkomende objecten in andere AD-forests heeft, moet u ervoor zorgen dat het gebruikers object en alle bijbehorende objecten zich in groeps filter bereik bevinden. Voor voor beelden:
+Wanneer u meerdere AD-forests synchroniseert, u groepsfiltering configureren door voor elke AD-connector een andere groep op te geven. Als u een gebruiker in een AD-forest wilt synchroniseren en dezelfde gebruiker een of meer overeenkomstige objecten in andere AD-forests heeft, moet u ervoor zorgen dat het gebruikersobject en alle bijbehorende objecten zich binnen het filterbereik van de groep bevinden. Voor voorbeelden:
 
-* U hebt een gebruiker in een forest met een bijbehorend FSP-object (Foreign Security Principal) in een ander forest. Beide objecten moeten zich in een groeps filter bereik bevinden. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
+* U hebt een gebruiker in een forest met een corresponderend FSP-object (Foreign Security Principal) in een ander forest. Beide objecten moeten zich binnen het filterbereik van groepen begeven. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
 
-* U hebt een gebruiker in een forest met een bijbehorend resource account (bijvoorbeeld een gekoppeld postvak) in een ander forest. Verder hebt u Azure AD Connect geconfigureerd om de gebruiker te koppelen aan het resource-account. Beide objecten moeten zich in een groeps filter bereik bevinden. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
+* U hebt een gebruiker in een forest met een bijbehorend resourceaccount (bijvoorbeeld gekoppeld postvak) in een ander forest. Verder hebt u Azure AD Connect geconfigureerd om de gebruiker te koppelen aan het bronaccount. Beide objecten moeten zich binnen het filterbereik van groepen begeven. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
 
-* U hebt een gebruiker in het ene forest met een bijbehorend e-mail adres in een ander forest. Verder hebt u Azure AD Connect geconfigureerd om de gebruiker te koppelen aan de contact persoon van de e-mail. Beide objecten moeten zich in een groeps filter bereik bevinden. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
+* U hebt een gebruiker in een forest met een bijbehorende e-mailcontactpersoon in een ander forest. Verder hebt u Azure AD Connect geconfigureerd om de gebruiker te koppelen aan de e-mailcontactpersoon. Beide objecten moeten zich binnen het filterbereik van groepen begeven. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md) configuratie.
+- Meer informatie over [azure AD Connect-synchronisatieconfiguratie.](how-to-connect-sync-whatis.md)
 - Meer informatie over [het integreren van uw on-premises identiteiten met Azure AD](whatis-hybrid-identity.md).

@@ -1,6 +1,6 @@
 ---
-title: Gegevens naar zoek index pushen met behulp van Data Factory
-description: Meer informatie over het pushen van gegevens naar Azure Cognitive Search index met behulp van Azure Data Factory.
+title: Gegevens naar zoekindex pushen met Gegevensfabriek
+description: Meer informatie over het pushen van gegevens naar Azure Cognitive Search Index met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,116 +13,116 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281559"
 ---
-# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Gegevens pushen naar een Azure Cognitive Search-index met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+# <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Gegevens naar een Azure Cognitive Search-index pushen met Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-azure-search-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-search.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure Cognitive Search-connector in v2](../connector-azure-search.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Azure Cognitive Search-connector in V2](../connector-azure-search.md)als u de huidige versie van de gegevensfabriekservice gebruikt.
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit gebruikt om gegevens uit een ondersteund brongegevens archief te pushen naar een Azure Cognitive Search-index. Ondersteunde brongegevens archieven worden weer gegeven in de kolom Bron van de tabel [ondersteunde bronnen en sinks](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemene beschrijving biedt van gegevens verplaatsing met Kopieer activiteiten en ondersteunde combi Naties van gegevens archieven.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren gebruikt om gegevens van een ondersteund brongegevensarchief naar een Azure Cognitive Search-index te pushen. Ondersteunde brongegevensopslag worden vermeld in de kolom Bron van de [tabel ondersteunde bronnen en putten.](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Dit artikel bouwt voort op het artikel [over gegevensverplaatsingsactiviteiten,](data-factory-data-movement-activities.md) dat een algemeen overzicht van gegevensverplaatsing met Kopieeractiviteit en ondersteunde combinaties van gegevensopslagpresenteert.
 
 ## <a name="enabling-connectivity"></a>Connectiviteit inschakelen
-Als u wilt toestaan dat Data Factory-service verbinding maakt met een on-premises gegevens archief, installeert u Data Management Gateway in uw on-premises omgeving. U kunt de gateway installeren op dezelfde computer die als host fungeert voor het brongegevens archief of op een afzonderlijke machine om te voor komen dat bronnen worden geconcurrerend met het gegevens archief.
+Als u de service Data Factory verbinding wilt maken met een on-premises gegevensopslag, installeert u Data Management Gateway in uw on-premises omgeving. U gateway installeren op dezelfde machine die het brongegevensarchief of op een aparte machine host om te voorkomen dat u concurreert om resources met het gegevensarchief.
 
-Data Management Gateway maakt on-premises gegevens bronnen op een veilige en beheerde manier verbinding met Cloud Services. Zie [gegevens verplaatsen tussen on-premises en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway.
+Data Management Gateway verbindt on-premises gegevensbronnen op een veilige en beheerde manier met cloudservices. Zie [Gegevens verplaatsen tussen on-premises en cloudartikel](data-factory-move-data-between-onprem-and-cloud.md) voor meer informatie over Data Management Gateway.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit waarmee gegevens uit een brongegevens archief naar een zoek index worden gepusht met behulp van verschillende hulpprogram ma's/Api's.
+U een pijplijn maken met een kopieeractiviteit waarmee gegevens van een brongegevensarchief naar een zoekindex worden gepusht met behulp van verschillende hulpprogramma's/API's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
+De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
+1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven.
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt.
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beeld: gegevens kopiëren van on-premises SQL Server naar een index van Azure Cognitive Search](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens naar de zoek index.
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie [JSON-voorbeeld: Gegevens kopiëren van on-premises SQL Server naar een azure cognitive search-indexsectie](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) voor een voorbeeld van JSON voor entiteiten in gegevensfabriek die worden gebruikt om gegevens naar zoekindex te kopiëren.
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een zoek index:
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor een zoekindex:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de gekoppelde Azure Cognitive Search-service.
+In de volgende tabel vindt u beschrijvingen voor JSON-elementen die specifiek zijn voor de azure cognitive search-gekoppelde service.
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| type | De eigenschap type moet worden ingesteld op: **AzureSearch**. | Ja |
-| url | URL voor de zoek service. | Ja |
-| sleutel | De beheerders sleutel voor de zoek service. | Ja |
+| type | De eigenschap type moet zijn ingesteld op: **AzureSearch**. | Ja |
+| url | URL voor de zoekservice. | Ja |
+| sleutel | Beheerderssleutel voor de zoekservice. | Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevensset. De sectie **typeProperties** verschilt voor elk type gegevensset. De sectie typeProperties voor een gegevensset van het type **AzureSearchIndex** heeft de volgende eigenschappen:
+Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen. De sectie **typeEigenschappen** is verschillend voor elk type gegevensset. De sectie typeEigenschappen voor een gegevensset van het type **AzureSearchIndex** heeft de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| type | De eigenschap type moet worden ingesteld op **AzureSearchIndex**.| Ja |
-| indexName | De naam van de zoek index. Data Factory maakt de index niet. De index moet bestaan in azure Cognitive Search. | Ja |
+| type | De eigenschap type moet zijn ingesteld op **AzureSearchIndex**.| Ja |
+| indexNaam | Naam van de zoekindex. Data Factory maakt de index niet. De index moet bestaan in Azure Cognitive Search. | Ja |
 
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en verschillende beleids regels zijn beschikbaar voor alle typen activiteiten. Overwegende dat eigenschappen die beschikbaar zijn in de sectie typeProperties, afhankelijk zijn van elk type activiteit. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
+Zie het artikel [Pijplijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en verschillende beleidsregels zijn beschikbaar voor alle soorten activiteiten. Terwijl de eigenschappen die beschikbaar zijn in de sectie typeEigenschappen per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-Als de Sink van het type **AzureSearchIndexSink**is, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
+Voor Kopieeractiviteit zijn de volgende eigenschappen beschikbaar in de sectie TypeEigenschappen wanneer de gootsteen van het type **AzureSearchIndexSink**is:
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. Zie de [eigenschap WriteBehavior](#writebehavior-property).| samen voegen (standaard)<br/>Uploaden| Nee |
-| WriteBatchSize | Uploadt gegevens in de zoek index wanneer de buffer grootte writeBatchSize bereikt. Zie de [eigenschap WriteBatchSize](#writebatchsize-property) voor meer informatie. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
+| Schrijfgedrag | Hiermee geeft u op of een document al in de index moet worden samengevoegd of vervangen. Zie de [eigenschap Schrijfgedrag](#writebehavior-property).| Samenvoegen (standaard)<br/>Uploaden| Nee |
+| Schrijfbatchgrootte | Uploadt gegevens in de zoekindex wanneer de buffergrootte writeBatchSize bereikt. Zie de [eigenschap WriteBatchSize](#writebatchsize-property) voor meer informatie. | 1 tot 1000. De standaardwaarde is 1000. | Nee |
 
-### <a name="writebehavior-property"></a>Eigenschap WriteBehavior
-AzureSearchSink upsert bij het schrijven van gegevens. Met andere woorden, wanneer u een document schrijft en de document sleutel al in de zoek index bestaat, werkt Azure Cognitive Search het bestaande document bij in plaats van een conflict uitzondering uit te voeren.
+### <a name="writebehavior-property"></a>Schrijfgedrag, eigenschap
+AzureSearchSink upserts bij het schrijven van gegevens. Met andere woorden, wanneer u een document schrijft, als de documentsleutel al bestaat in de zoekindex, werkt Azure Cognitive Search het bestaande document bij in plaats van een conflictuitzondering te plaatsen.
 
-De AzureSearchSink biedt de volgende twee upsert-gedragingen (met behulp van AzureSearch SDK):
+De AzureSearchSink biedt de volgende twee upsert gedragingen (met behulp van AzureSearch SDK):
 
-- **Samen voegen**: alle kolommen in het nieuwe document combi neren met de bestaande. Voor kolommen met een null-waarde in het nieuwe document, blijft de waarde in de bestaande.
-- **Uploaden**: het nieuwe document vervangt de bestaande. Voor kolommen die niet in het nieuwe document zijn opgegeven, wordt de waarde ingesteld op NULL, ongeacht of er een andere waarde dan Null is in het bestaande document of niet.
+- **Samenvoegen:** combineer alle kolommen in het nieuwe document met het bestaande document. Voor kolommen met null-waarde in het nieuwe document blijft de waarde in het bestaande document behouden.
+- **Uploaden:** het nieuwe document vervangt het bestaande document. Voor kolommen die niet in het nieuwe document zijn opgegeven, wordt de waarde ingesteld op null of er een niet-null-waarde in het bestaande document is of niet.
 
-Het standaard gedrag is **samen voegen**.
+Het standaardgedrag is **Samenvoegen**.
 
-### <a name="writebatchsize-property"></a>Eigenschap WriteBatchSize
-Azure Cognitive Search service ondersteunt het schrijven van documenten als een batch. Een batch kan 1 tot 1.000 acties bevatten. Een actie behandelt één document om de upload/samenvoeg bewerking uit te voeren.
+### <a name="writebatchsize-property"></a>WriteBatchSize , eigenschap
+Azure Cognitive Search-service ondersteunt het schrijven van documenten als een batch. Een batch kan 1 tot 1.000 acties bevatten. Een actie verwerkt één document om de upload-/samenvoegbewerking uit te voeren.
 
-### <a name="data-type-support"></a>Ondersteuning voor gegevens typen
-In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens type wordt ondersteund.
+### <a name="data-type-support"></a>Ondersteuning voor gegevenstype
+In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevenstype al dan niet wordt ondersteund.
 
-| Azure Cognitive Search-gegevens type | Ondersteund in azure Cognitive Search Sink |
+| Gegevenstype Azure Cognitive Search | Ondersteund in Azure Cognitive Search Sink |
 | ---------------------- | ------------------------------ |
 | Tekenreeks | J |
 | Int32 | J |
 | Int64 | J |
-| Double-waarde | J |
+| Double | J |
 | Booleaans | J |
 | DataTimeOffset | J |
-| String Array | N |
-| GeographyPoint | N |
+| Tekenreeksarray | N |
+| AardrijkskundePoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON-voor beeld: gegevens kopiëren van on-premises SQL Server naar Azure Cognitive Search index
+## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON-voorbeeld: gegevens kopiëren van on-premises SQL Server naar Azure Cognitive Search-index
 
-In het volgende voor beeld ziet u:
+In het volgende voorbeeld wordt het volgende voorbeeld weergegeven:
 
 1. Een gekoppelde service van het type [AzureSearch](#linked-service-properties).
 2. Een gekoppelde service van het type [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties).
-3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties).
-4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureSearchIndex](#dataset-properties).
-4. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) en [AzureSearchIndexSink](#copy-activity-properties).
+3. Een [invoergegevensset](data-factory-create-datasets.md) van het type [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties).
+4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureSearchIndex](#dataset-properties).
+4. Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) en [AzureSearchIndexSink](#copy-activity-properties)gebruikt.
 
-In het voor beeld worden gegevens van de tijd reeks gekopieerd van een on-premises SQL Server-Data Base om de index per uur te doorzoeken. De JSON-eigenschappen die in dit voor beeld worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
+Het voorbeeld kopieert tijdreeksgegevens uit een on-premises SQL Server-database naar de zoekindex per uur. De JSON-eigenschappen die in dit monster worden gebruikt, worden beschreven in secties die de monsters volgen.
 
-De eerste stap is het instellen van de Data Management Gateway op uw on-premises computer. De instructies bevinden zich in het [verplaatsen van gegevens tussen on-premises locaties en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikelen.
+Als eerste stap u de datamanagementgateway instellen op uw on-premises machine. De instructies bevinden zich in de [verhuisgegevens tussen on-premises locaties en cloudartikelen.](data-factory-move-data-between-onprem-and-cloud.md)
 
-**Gekoppelde Azure Cognitive Search-service:**
+**Gekoppelde azure cognitive search-service:**
 
 ```JSON
 {
@@ -137,7 +137,7 @@ De eerste stap is het instellen van de Data Management Gateway op uw on-premises
 }
 ```
 
-**SQL Server gekoppelde service**
+**SQL Server-gekoppelde service**
 
 ```JSON
 {
@@ -152,11 +152,11 @@ De eerste stap is het instellen van de Data Management Gateway op uw on-premises
 }
 ```
 
-**Invoer gegevensset SQL Server**
+**SQL Server-invoergegevensset**
 
-In het voor beeld wordt ervan uitgegaan dat u in SQL Server een tabel ' MyTable ' hebt gemaakt en een kolom bevat met de naam ' timestampcolumn ' voor tijdreeks gegevens. U kunt een query uitvoeren op meerdere tabellen binnen dezelfde data base met één gegevensset, maar er moet één tabel worden gebruikt voor de tabel naam van de gegevensset typeProperty.
+In het voorbeeld wordt ervan uitgegaan dat u een tabel "MyTable" in SQL Server hebt gemaakt en dat deze kolom "tijdstempelkolom" bevat voor tijdreeksgegevens. U meerdere tabellen in dezelfde database doorzoeken met één gegevensset, maar één tabel moet worden gebruikt voor het type TableName van de gegevensset.
 
-Als u ' Extern ' instelt, informeert Data Factory service dat de gegevensset zich buiten het data factory bevindt en wordt deze niet geproduceerd door een activiteit in de data factory.
+Als u "extern" instelt: "true" informeert de dienst Data Factory dat de gegevensset buiten de gegevensfabriek staat en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```JSON
 {
@@ -183,9 +183,9 @@ Als u ' Extern ' instelt, informeert Data Factory service dat de gegevensset zic
 }
 ```
 
-**Uitvoer gegevensset Azure Cognitive Search:**
+**Uitvoergegevensset Azure Cognitive Search:**
 
-In het voor beeld worden gegevens gekopieerd naar een Azure Cognitive Search index met de naam **producten**. Data Factory maakt de index niet. Als u het voor beeld wilt testen, maakt u een index met deze naam. Maak de zoek index met hetzelfde aantal kolommen als in de invoer-gegevensset. Nieuwe vermeldingen worden elk uur toegevoegd aan de zoek index.
+Het voorbeeld kopieert gegevens naar een Azure Cognitive Search-index met de naam **producten**. Data Factory maakt de index niet. Als u het voorbeeld wilt testen, maakt u een index met deze naam. Maak de zoekindex met hetzelfde aantal kolommen als in de invoergegevensset. Elk uur worden er nieuwe items toegevoegd aan de zoekindex.
 
 ```JSON
 {
@@ -204,9 +204,9 @@ In het voor beeld worden gegevens gekopieerd naar een Azure Cognitive Search ind
 }
 ```
 
-**Kopieer activiteit in een pijp lijn met SQL-bron en Azure Cognitive Search index Sink:**
+**Kopieer activiteit in een pijplijn met SQL-bron en Azure Cognitive Search Index-sink:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **SqlSource** en het **sink** -type is ingesteld op **AzureSearchIndexSink**. Met de SQL-query die is opgegeven voor de eigenschap **SqlReaderQuery** selecteert u de gegevens in het afgelopen uur om te kopiëren.
+De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken en die elk uur moet worden uitgevoerd. In de JSON-definitie van pijplijn is het **brontype** ingesteld op **SqlSource** en **is het sinktype** ingesteld op **AzureSearchIndexSink**. De SQL-query die is opgegeven voor de eigenschap **SqlReaderQuery** selecteert de gegevens in het afgelopen uur die u wilt kopiëren.
 
 ```JSON
 {
@@ -255,7 +255,7 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 }
 ```
 
-Als u gegevens uit een gegevens archief in de Cloud naar Azure Cognitive Search kopieert, is `executionLocation` eigenschap vereist. In het volgende JSON-fragment ziet u de wijziging die nodig is onder Kopieer activiteit `typeProperties` als voor beeld. Controleer de sectie [gegevens kopiëren tussen Cloud gegevensopslags](data-factory-data-movement-activities.md#global) voor ondersteunde waarden en meer details.
+Als u gegevens uit een cloudgegevensarchief kopieert `executionLocation` naar Azure Cognitive Search, is eigenschap vereist. In het volgende JSON-fragment wordt `typeProperties` de wijziging weergegeven die nodig is onder Activiteit kopiëren als voorbeeld. Schakel Gegevens kopiëren tussen de sectie [cloudgegevensstores](data-factory-data-movement-activities.md#global) in voor ondersteunde waarden en meer details.
 
 ```JSON
 "typeProperties": {
@@ -270,8 +270,8 @@ Als u gegevens uit een gegevens archief in de Cloud naar Azure Cognitive Search 
 ```
 
 
-## <a name="copy-from-a-cloud-source"></a>Kopiëren uit een Cloud bron
-Als u gegevens uit een gegevens archief in de Cloud naar Azure Cognitive Search kopieert, is `executionLocation` eigenschap vereist. In het volgende JSON-fragment ziet u de wijziging die nodig is onder Kopieer activiteit `typeProperties` als voor beeld. Controleer de sectie [gegevens kopiëren tussen Cloud gegevensopslags](data-factory-data-movement-activities.md#global) voor ondersteunde waarden en meer details.
+## <a name="copy-from-a-cloud-source"></a>Kopiëren vanuit een cloudbron
+Als u gegevens uit een cloudgegevensarchief kopieert `executionLocation` naar Azure Cognitive Search, is eigenschap vereist. In het volgende JSON-fragment wordt `typeProperties` de wijziging weergegeven die nodig is onder Activiteit kopiëren als voorbeeld. Schakel Gegevens kopiëren tussen de sectie [cloudgegevensstores](data-factory-data-movement-activities.md#global) in voor ondersteunde waarden en meer details.
 
 ```JSON
 "typeProperties": {
@@ -285,12 +285,12 @@ Als u gegevens uit een gegevens archief in de Cloud naar Azure Cognitive Search 
 }
 ```
 
-U kunt ook kolommen van de bron-gegevensset toewijzen aan kolommen uit Sink-gegevensset in de definitie van de Kopieer activiteit. Zie [gegevensset-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie.
+U kolommen van brongegevensset ook toewijzen aan kolommen uit de sink-gegevensset in de definitie van kopieeractiviteit. Zie Kolommen [met gegevenssetstoewijzen in Azure Data Factory](data-factory-map-columns.md)voor meer informatie.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie de [hand leiding Copy activity Performance and Tuning (Engelstalig](data-factory-copy-activity-performance.md) ) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) en verschillende manieren om deze te optimaliseren.
+Zie de [handleiding voor prestaties en tuning kopiëren](data-factory-copy-activity-performance.md) om meer te weten te komen over belangrijke factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) en verschillende manieren om deze te optimaliseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-* [Zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+* [Zelfstudie Activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.

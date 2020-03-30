@@ -1,150 +1,150 @@
 ---
-title: Azure Functions-netwerk opties
-description: Een overzicht van alle beschik bare netwerk opties in Azure Functions.
+title: Netwerkopties van Azure Functions
+description: Een overzicht van alle netwerkopties die beschikbaar zijn in Azure-functies.
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.openlocfilehash: d8c3357325eadefec7bb97faba5d600e9c6793a9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276710"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
+# <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
-In dit artikel worden de netwerk functies beschreven die beschikbaar zijn via de hosting opties voor Azure Functions. Alle volgende netwerk opties bieden u de mogelijkheid om toegang te krijgen tot bronnen zonder Internet Routeer bare adressen of om Internet toegang te beperken tot een functie-app.
+In dit artikel worden de netwerkfuncties beschreven die beschikbaar zijn voor de hostingopties voor Azure-functies. Alle volgende netwerkopties geven u de mogelijkheid om toegang te krijgen tot bronnen zonder internet-routeerbare adressen te gebruiken of om de toegang tot internet tot een functie-app te beperken.
 
-De hosting modellen hebben verschillende niveaus van netwerk isolatie beschikbaar. Als u de juiste optie kiest, kunt u voldoen aan de vereisten voor netwerk isolatie.
+De hostingmodellen hebben verschillende niveaus van netwerkisolatie beschikbaar. Als u de juiste kiest, u voldoen aan uw netwerkisolatievereisten.
 
-U kunt functie-apps op verschillende manieren hosten:
+U functie-apps op een aantal manieren hosten:
 
-* Er is een set plan opties die worden uitgevoerd op een multi tenant-infra structuur, met verschillende niveaus van connectiviteit voor virtuele netwerken en schaal opties:
-    * Het [verbruiks abonnement](functions-scale.md#consumption-plan), dat dynamisch wordt geschaald in reactie op belasting en biedt minimale opties voor netwerk isolatie.
-    * Het [Premium-abonnement](functions-scale.md#premium-plan), dat ook dynamisch kan worden geschaald, en biedt een uitgebreidere netwerk isolatie.
-    * Het Azure [app service-abonnement](functions-scale.md#app-service-plan), dat op een vaste schaal werkt en een vergelijk bare netwerk isolatie biedt als het Premium-abonnement.
-* U kunt functies uitvoeren in een [app service Environment](../app-service/environment/intro.md). Deze methode implementeert uw functie in uw virtuele netwerk en biedt volledige netwerk controle en-isolatie.
+* Er is een reeks planopties die worden uitgevoerd op een infrastructuur met meerdere tenants, met verschillende niveaus van virtuele netwerkconnectiviteit en schaalopties:
+    * Het [verbruiksplan](functions-scale.md#consumption-plan), dat dynamisch wordt geschaald in reactie op belasting en minimale netwerkisolatieopties biedt.
+    * Het [Premium-abonnement](functions-scale.md#premium-plan), dat ook dynamisch schaalt, biedt een uitgebreidere netwerkisolatie.
+    * Het Azure [App Service-abonnement](functions-scale.md#app-service-plan), dat op een vaste schaal werkt en vergelijkbare netwerkisolatie biedt als het Premium-abonnement.
+* U functies uitvoeren in een [App Service-omgeving.](../app-service/environment/intro.md) Deze methode implementeert uw functie in uw virtuele netwerk en biedt volledige netwerkcontrole en isolatie.
 
-## <a name="matrix-of-networking-features"></a>Matrix van netwerk functies
+## <a name="matrix-of-networking-features"></a>Matrix van netwerkfuncties
 
-|                |[Verbruiks abonnement](functions-scale.md#consumption-plan)|[Premium-abonnement](functions-scale.md#premium-plan)|[App Service-plan](functions-scale.md#app-service-plan)|[App Service-omgeving](../app-service/environment/intro.md)|
+|                |[Consumptieplan](functions-scale.md#consumption-plan)|[Premium-abonnement](functions-scale.md#premium-plan)|[App-serviceplan](functions-scale.md#app-service-plan)|[App-serviceomgeving](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Binnenkomende IP-beperkingen & toegang tot de persoonlijke site](#inbound-ip-restrictions)|✅Ja|✅Ja|✅Ja|✅Ja|
-|[Integratie van virtueel netwerk](#virtual-network-integration)|❌Nee|✅Ja (regionaal)|✅Ja (regionaal en gateway)|✅Ja|
-|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌Nee| ✅Ja |✅Ja|✅Ja|
-|[Hybride verbindingen](#hybrid-connections) (alleen Windows)|❌Nee|✅Ja|✅Ja|✅Ja|
-|[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌Nee| ✅Ja|✅Ja|✅Ja|
+|[Binnenkomende IP-beperkingen & toegang tot privé-site](#inbound-ip-restrictions)|✅Ja|✅Ja|✅Ja|✅Ja|
+|[Integratie van virtueel netwerk](#virtual-network-integration)|❌№|✅Ja (regionaal)|✅Ja (regionaal en gateway)|✅Ja|
+|[Virtuele netwerktriggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌№| ✅Ja |✅Ja|✅Ja|
+|[Hybride verbindingen](#hybrid-connections) (alleen Windows)|❌№|✅Ja|✅Ja|✅Ja|
+|[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌№| ✅Ja|✅Ja|✅Ja|
 
 ## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
 
-U kunt IP-beperkingen gebruiken om een lijst met door prioriteiten geordende IP-adressen te definiëren die geen toegang tot uw app hebben of geweigerd. De lijst kan IPv4-en IPv6-adressen bevatten. Als er sprake is van een of meer vermeldingen, bevindt zich een impliciete ' weigeren ' aan het einde van de lijst. IP-beperkingen werken met alle opties voor het hosten van functies.
+U IP-beperkingen gebruiken om een door prioriteit geordende lijst met IP-adressen te definiëren die toegang tot uw app zijn toegestaan of geweigerd. De lijst kan IPv4- en IPv6-adressen bevatten. Wanneer er een of meer vermeldingen zijn, bestaat er een impliciete "alles ontkennen" aan het einde van de lijst. IP-beperkingen werken met alle functiehostingopties.
 
 > [!NOTE]
-> Als er netwerk beperkingen zijn ingesteld, kunt u de portal Editor alleen gebruiken vanuit uw virtuele netwerk, of wanneer u het IP-adres van de computer die u gebruikt, hebt geplaatst voor toegang tot de Azure Portal in de lijst met veilige geadresseerden. U hebt echter nog steeds toegang tot alle functies op het tabblad **platform functies** vanaf een wille keurige computer.
+> Met netwerkbeperkingen u de portaleditor alleen gebruiken vanuit uw virtuele netwerk of wanneer u het IP-adres van de machine die u gebruikt hebt geplaatst om toegang te krijgen tot de Azure-portal in de lijst Veilige geadresseerden. U echter nog steeds vanaf elke machine toegang krijgen tot alle functies op het tabblad **Platformfuncties.**
 
-Zie [Azure app service beperkingen voor statische toegang](../app-service/app-service-ip-restrictions.md)voor meer informatie.
+Zie [statische toegangsbeperkingen voor Azure App Service](../app-service/app-service-ip-restrictions.md)voor meer informatie.
 
 ## <a name="private-site-access"></a>Toegang tot privésite
 
-Toegang tot de persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals een virtueel Azure-netwerk.
+Toegang tot privé-site verwijst naar het alleen toegankelijk maken van uw app vanuit een privénetwerk, zoals een virtueel Azure-netwerk.
 
-* Toegang tot persoonlijke sites is beschikbaar in de [Premium](./functions-premium-plan.md)-, [verbruiks](functions-scale.md#consumption-plan)-en [app service](functions-scale.md#app-service-plan) plannen wanneer service-eind punten zijn geconfigureerd.
-    * Service-eind punten kunnen per app worden geconfigureerd onder **platform functies** > **netwerk** > **toegangs beperkingen configureren** > **regel toevoegen**. Virtuele netwerken kunnen nu worden geselecteerd als regel type.
-    * Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
-    * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
-* Toegang tot privé-sites is ook beschikbaar in een App Service Environment dat is geconfigureerd met een interne load balancer (ILB). Zie [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md)voor meer informatie.
+* Toegang tot privé-site's is beschikbaar in de abonnementen [Premium,](./functions-premium-plan.md) [Consumption](functions-scale.md#consumption-plan)en [App Service](functions-scale.md#app-service-plan) wanneer serviceeindpunten zijn geconfigureerd.
+    * Serviceeindpunten kunnen per app worden geconfigureerd onder **Platform-functies** > **Netwerkconfiguratietoegangsbeperkingen** > **Networking** > **Regels toevoegen**. Virtuele netwerken kunnen nu als regeltype worden geselecteerd.
+    * Zie [eindpunten voor virtuele netwerkservice](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
+    * Houd er rekening mee dat met serviceeindpunten uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs met geconfigureerde virtuele netwerkintegratie.
+* Toegang tot privé-site's is ook beschikbaar in een App-serviceomgeving die is geconfigureerd met een interne load balancer (ILB). Zie [Een interne load balancer maken en gebruiken met een App Service-omgeving](../app-service/environment/create-ilb-ase.md)voor meer informatie.
 
-Zie voor meer informatie over het instellen van toegang tot persoonlijke sites, [Azure functions toegang tot de persoonlijke site tot stand brengen](functions-create-private-site-access.md).
+Zie Toegang tot [de privésite](functions-create-private-site-access.md)van Azure Functions instellen voor meer informatie over het instellen van toegang tot privé-site's .
 
 ## <a name="virtual-network-integration"></a>Integratie van virtueel netwerk
 
-Met virtuele netwerk integratie kan uw functie-app toegang krijgen tot bronnen in een virtueel netwerk. Azure Functions ondersteunt twee soorten integratie van virtuele netwerken:
+Dankzij de integratie van virtuele netwerken heeft uw functie-app toegang tot bronnen binnen een virtueel netwerk. Azure Functions ondersteunt twee soorten virtuele netwerkintegratie:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
-Virtuele netwerk integratie in Azure Functions gebruikt een gedeelde infra structuur met App Service web-apps. Zie voor meer informatie over de twee typen integratie van virtuele netwerken:
+Virtuele netwerkintegratie in Azure Functions maakt gebruik van gedeelde infrastructuur met App Service-webapps. Zie voor meer informatie over de twee typen virtuele netwerkintegratie:
 
-* [Regionale virtuele netwerk integratie](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
-* [Gateway vereist virtuele netwerk integratie](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+* [Regionale virtuele netwerkintegratie](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
+* [Gateway vereist virtuele netwerkintegratie](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-Zie [een functie-app integreren met een virtueel Azure-netwerk](functions-create-vnet.md)voor meer informatie over het instellen van de integratie van virtuele netwerken.
+Zie [Een functie-app integreren met een virtueel Azure-netwerk](functions-create-vnet.md)voor meer informatie over het instellen van virtuele netwerkintegratie.
 
-## <a name="regional-virtual-network-integration"></a>Integratie van regionale Virtual Network
+## <a name="regional-virtual-network-integration"></a>Regionale virtuele netwerkintegratie
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
-## <a name="connecting-to-service-endpoint-secured-resources"></a>Verbinding maken met beveiligde bronnen van service-eind punten
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Verbinding maken met serviceeindpuntbeveiligde resources
 
-Als u een hoger beveiligings niveau wilt bieden, kunt u een aantal Azure-Services beperken tot een virtueel netwerk met behulp van service-eind punten. Vervolgens moet u uw functie-app met dat virtuele netwerk integreren om toegang te krijgen tot de resource. Deze configuratie wordt ondersteund op alle abonnementen die ondersteuning bieden voor de integratie van virtuele netwerken.
+Als u een hoger beveiligingsniveau wilt bieden, u een aantal Azure-services beperken tot een virtueel netwerk met behulp van serviceeindpunten. U moet vervolgens uw functie-app integreren met dat virtuele netwerk om toegang te krijgen tot de bron. Deze configuratie wordt ondersteund op alle plannen die virtuele netwerkintegratie ondersteunen.
 
-[Meer informatie over service-eind punten voor virtuele netwerken.](../virtual-network/virtual-network-service-endpoints-overview.md)
+[Meer informatie over eindpunten voor virtuele netwerkservice.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-## <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+## <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslagaccount beperken tot een virtueel netwerk
 
-Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. U kunt momenteel geen beperkingen voor virtuele netwerken gebruiken voor dit account. Als u een service-eind punt voor een virtueel netwerk configureert op het opslag account dat u gebruikt voor uw functie-app, waardoor uw app wordt verbroken.
+Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemene doeleinden maken of koppelen dat blob-, wachtrij- en tabelopslag ondersteunt. U momenteel geen virtuele netwerkbeperkingen voor dit account gebruiken. Als u een eindpunt voor de virtuele netwerkservice configureert op het opslagaccount dat u voor uw functie-app gebruikt, wordt uw app afgebroken.
 
-[Meer informatie over vereisten voor opslag accounts.](./functions-create-function-app-portal.md#storage-account-requirements)
+[Meer informatie over vereisten voor opslagaccount.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-## <a name="using-key-vault-references"></a>Key Vault verwijzingen gebruiken 
+## <a name="using-key-vault-references"></a>Key Vault-referenties gebruiken 
 
-Met Key Vault verwijzingen kunt u geheimen van Azure Key Vault gebruiken in uw Azure Functions-toepassing, zonder dat u code wijzigingen hoeft aan te brengen. Azure Key Vault is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
+Met Key Vault-verwijzingen u geheimen van Azure Key Vault gebruiken in uw Azure-functietoepassing zonder dat er codewijzigingen nodig zijn. Azure Key Vault is een service die gecentraliseerd geheimenbeheer biedt, met volledige controle over toegangsbeleid en controlegeschiedenis.
 
-Als uw Key Vault is beveiligd met Service-eind punten, werkt [Key Vault verwijzingen](../app-service/app-service-key-vault-references.md) momenteel niet. Als u verbinding wilt maken met een Key Vault met behulp van virtuele netwerk integratie, moet u de sleutel kluis aanroepen in de code van uw toepassing.
+Momenteel [werken Key Vault-referenties](../app-service/app-service-key-vault-references.md) niet als uw Key Vault is beveiligd met serviceeindpunten. Als u verbinding wilt maken met een Key Vault via virtuele netwerkintegratie, moet u de sleutelkluis in uw toepassingscode aanroepen.
 
-## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
+## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerktriggers (niet-HTTP)
 
-Op dit moment kunt u niet-HTTP-trigger functies vanuit een virtueel netwerk op twee manieren gebruiken: 
-+ Voer uw functie-app uit in een Premium-abonnement en schakel ondersteuning voor virtuele netwerk triggers in.
-+ Voer uw functie-app uit in een App Service plan of App Service Environment.
+Momenteel u niet-HTTP-triggerfuncties vanuit een virtueel netwerk op twee manieren gebruiken: 
++ Voer uw functie-app uit in een Premium-abonnement en schakel ondersteuning voor virtuele netwerktriggerin.
++ Voer uw functie-app uit in een App Service-abonnement of App Service-omgeving.
 
-### <a name="premium-plan-with-virtual-network-triggers"></a>Premium-abonnement met virtuele netwerk triggers
+### <a name="premium-plan-with-virtual-network-triggers"></a>Premium Plan met virtuele netwerktriggers
 
-Wanneer u in een Premium-abonnement wordt uitgevoerd, kunt u niet-HTTP-activerings functies verbinden met services die worden uitgevoerd in een virtueel netwerk. Hiervoor moet u ondersteuning voor virtuele netwerk triggers inschakelen voor uw functie-app. De **ondersteunings** instelling voor het activeren van virtuele netwerken vindt u in de [Azure Portal](https://portal.azure.com) onder **functie-app-instellingen**.
+Wanneer u een Premium-abonnement uitvoert, u niet-HTTP-triggerfuncties verbinden met services die binnen een virtueel netwerk worden uitgevoerd. Hiervoor moet u ondersteuning voor virtuele netwerktriggervoor uw functie-app inschakelen. De **instelling voor ondersteuning voor virtuele netwerktriggeren** wordt gevonden in de [Azure-portal](https://portal.azure.com) onder **Instellingen voor functie-apps**.
 
 ![VNETToggle](media/functions-networking-options/virtual-network-trigger-toggle.png)
 
-U kunt ook virtuele netwerk triggers inschakelen met behulp van de volgende Azure CLI-opdracht:
+U ook virtuele netwerktriggers inschakelen met de volgende opdracht Azure CLI:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
-Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.
+Virtuele netwerktriggers worden ondersteund in versie 2.x en hoger van de runtime functies. De volgende niet-HTTP-triggertypen worden ondersteund.
 
 | Toestelnummer | Minimale versie |
 |-----------|---------| 
-|[Micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 of hoger |
-|[Micro soft. Azure. webjobs. Extensions. Event hubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 of hoger|
-|[Micro soft. Azure. webjobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 of hoger|
-|[Micro soft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 of hoger|
-|[Micro soft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 of hoger|
+|[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 of hoger |
+|[Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 of hoger|
+|[Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 of hoger|
+|[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 of hoger|
+|[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 of hoger|
 
 > [!IMPORTANT]
-> Bij het inschakelen van ondersteuning voor virtuele netwerk triggers worden alleen de bovenstaande typen trigger dynamisch met uw toepassing geschaald. U kunt nog steeds triggers gebruiken die niet hierboven worden weer gegeven, maar ze worden niet groter dan het aantal vooraf gewarmde instanties. Zie [Triggers en bindingen](./functions-triggers-bindings.md#supported-bindings) voor de volledige lijst met triggers.
+> Wanneer u ondersteuning voor virtuele netwerktriggeren inschakelt, worden alleen de triggertypen boven de toepassing dynamisch met uw toepassing geschaald. U nog steeds triggers gebruiken die hierboven niet zijn vermeld, maar ze worden niet geschaald buiten het aantal vooraf verwarmde instanties. Zie [triggers en bindingen](./functions-triggers-bindings.md#supported-bindings) voor de volledige lijst met triggers.
 
-### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service plan en App Service Environment met virtuele netwerk triggers
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service Plan en App Service Omgeving met virtuele netwerk triggers
 
-Wanneer uw functie-app wordt uitgevoerd in een App Service plan of een App Service Environment, kunt u niet-HTTP-trigger functies gebruiken. Als u wilt dat uw functies correct worden geactiveerd, moet u verbinding hebben met een virtueel netwerk met toegang tot de bron die is gedefinieerd in de trigger verbinding. 
+Wanneer uw functie-app wordt uitgevoerd in een App Service Plan of een App Service Environment, u niet-HTTP trigger functies gebruiken. Als u uw functies correct wilt activeren, moet u zijn verbonden met een virtueel netwerk met toegang tot de bron die is gedefinieerd in de triggerverbinding. 
 
-Stel dat u Azure Cosmos DB wilt configureren om alleen verkeer van een virtueel netwerk te accepteren. In dit geval moet u uw functie-app implementeren in een App Service plan dat virtuele netwerk integratie met dat virtuele netwerk biedt. Hiermee kan een functie worden geactiveerd door die Azure Cosmos DB resource. 
+Stel dat u Azure Cosmos DB wilt configureren om alleen verkeer van een virtueel netwerk te accepteren. In dit geval moet u uw functie-app implementeren in een App Service-abonnement dat virtuele netwerkintegratie met dat virtuele netwerk biedt. Hierdoor kan een functie worden geactiveerd door die Azure Cosmos DB-bron. 
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 
-[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure relay die u kunt gebruiken om toegang te krijgen tot toepassings bronnen in andere netwerken. Het biedt toegang vanuit uw app tot een eind punt van de toepassing. U kunt deze niet gebruiken voor toegang tot uw toepassing. Hybride verbindingen is alleen beschikbaar voor functies die worden uitgevoerd in Windows, behalve het verbruiks abonnement.
+[Hybride verbindingen](../service-bus-relay/relay-hybrid-connections-protocol.md) is een functie van Azure Relay die u gebruiken om toegang te krijgen tot toepassingsbronnen in andere netwerken. Het biedt toegang van uw app tot een eindpunt van een toepassing. U het niet gebruiken om toegang te krijgen tot uw toepassing. Hybride verbindingen zijn beschikbaar voor functies die in alle functies op Windows worden uitgevoerd, behalve voor het verbruiksplan.
 
-De hybride verbinding wordt gebruikt in Azure Functions en is afgestemd op één combi natie van TCP-host en poort. Dit betekent dat het eind punt van de hybride verbinding zich op elk besturings systeem en elke toepassing kan bevindt, mits u een TCP-Luister poort opent. Met de functie Hybride verbindingen weet u niet wat het toepassings protocol is of wat u toegang hebt. Het biedt alleen toegang tot het netwerk.
+Zoals gebruikt in Azure Functions, correleert elke hybride verbinding met één TCP-host- en poortcombinatie. Dit betekent dat het eindpunt van de hybride verbinding op elk besturingssysteem en elke toepassing kan worden ingeschakeld, zolang u toegang hebt tot een TCP-luisterpoort. De functie Hybride verbindingen weet niet of geeft om wat het toepassingsprotocol is of wat u opent. Het biedt alleen toegang tot het netwerk.
 
-Zie de [app service-documentatie voor hybride verbindingen voor](../app-service/app-service-hybrid-connections.md)meer informatie. Deze zelfde configuratie stappen ondersteunen Azure Functions.
+Zie de documentatie [van app-service voor hybride verbindingen voor](../app-service/app-service-hybrid-connections.md)meer informatie . Dezelfde configuratiestappen ondersteunen Azure-functies.
 
 >[!IMPORTANT]
-> Hybride verbindingen wordt alleen ondersteund op Windows-abonnementen. Linux wordt niet ondersteund
+> Hybride verbindingen worden alleen ondersteund op Windows-abonnementen. Linux wordt niet ondersteund
 
 ## <a name="outbound-ip-restrictions"></a>Uitgaande IP-beperkingen
 
-Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service plan of App Service Environment. U kunt uitgaande beperkingen configureren voor het virtuele netwerk waar uw App Service Environment wordt geïmplementeerd.
+Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service-abonnement of App Service-omgeving. U uitgaande beperkingen configureren voor het virtuele netwerk waar uw App Service-omgeving is geïmplementeerd.
 
-Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door een toepassings instelling `WEBSITE_VNET_ROUTE_ALL=1`toe te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
+Wanneer u een functie-app integreert in een Premium-abonnement of een App Service-abonnement met een virtueel netwerk, kan de app nog steeds standaard uitgaande gesprekken naar het internet voeren. Door een toepassingsinstelling `WEBSITE_VNET_ROUTE_ALL=1`toe te voegen, dwingt u al het uitgaande verkeer te worden verzonden naar uw virtuele netwerk, waar regels voor netwerkbeveiliging kunnen worden gebruikt om het verkeer te beperken.
 
 ## <a name="troubleshooting"></a>Problemen oplossen 
 
@@ -152,11 +152,11 @@ Wanneer u een functie-app integreert in een Premium-abonnement of een App Servic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over netwerken en Azure Functions:
+Ga als voor meer informatie over netwerken en Azure-functies:
 
-* [Volg de zelf studie over het aan de slag gaan met virtuele netwerk integratie](./functions-create-vnet.md)
-* [Lees de veelgestelde vragen over functies netwerken](./functions-networking-faq.md)
-* [Meer informatie over de integratie van virtuele netwerken met App Service/functions](../app-service/web-sites-integrate-with-vnet.md)
-* [Meer informatie over virtuele netwerken in azure](../virtual-network/virtual-networks-overview.md)
-* [Meer netwerk functies en-beheer inschakelen met App Service omgevingen](../app-service/environment/intro.md)
-* [Verbinding maken met afzonderlijke on-premises bronnen zonder Firewall wijzigingen met behulp van Hybride verbindingen](../app-service/app-service-hybrid-connections.md)
+* [Volg de zelfstudie over aan de slag gaan met virtuele netwerkintegratie](./functions-create-vnet.md)
+* [Lees de veelgestelde vragen over het netwerken van functies](./functions-networking-faq.md)
+* [Meer informatie over virtuele netwerkintegratie met App Service/Functions](../app-service/web-sites-integrate-with-vnet.md)
+* [Meer informatie over virtuele netwerken in Azure](../virtual-network/virtual-networks-overview.md)
+* [Meer netwerkfuncties en -bediening inschakelen met App-serviceomgevingen](../app-service/environment/intro.md)
+* [Verbinding maken met afzonderlijke on-premises bronnen zonder firewallwijzigingen met hybride verbindingen](../app-service/app-service-hybrid-connections.md)

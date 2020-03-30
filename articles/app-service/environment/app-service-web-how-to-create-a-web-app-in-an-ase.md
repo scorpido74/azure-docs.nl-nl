@@ -1,6 +1,6 @@
 ---
 title: Een web-app maken in ASE v1
-description: Meer informatie over het maken van web-apps in een App Service Environment v1. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
+description: Meer informatie over het maken van web-apps in een App Service Environment v1. Dit document is alleen bedoeld voor klanten die de verouderde v1 ASE gebruiken.
 author: ccompy
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.topic: article
@@ -8,88 +8,88 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266193"
 ---
-# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Een web-app maken in een App Service Environment v1
+# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Een web-app maken in een App-serviceomgeving v1
 
 > [!NOTE]
-> Dit artikel heeft betrekking op de App Service Environment v1.  Er is een nieuwere versie van de App Service Environment die eenvoudiger is te gebruiken en wordt uitgevoerd op een krachtigere infra structuur. Begin met de [Inleiding tot de app service Environment](intro.md)voor meer informatie over de nieuwe versie.
+> Dit artikel gaat over de App Service Environment v1.  Er is een nieuwere versie van de App Service-omgeving die gemakkelijker te gebruiken is en draait op een krachtigere infrastructuur. Voor meer informatie over de nieuwe versie start u met de [inleiding tot de app-serviceomgeving.](intro.md)
 > 
 
 ## <a name="overview"></a>Overzicht
-Deze zelf studie laat zien hoe u web-apps en App Service plannen maakt in een [app service Environment v1](app-service-app-service-environment-intro.md) (ASE). 
+In deze zelfstudie ziet u hoe u web-apps en App-serviceplannen maakt in een [App Service Environment v1](app-service-app-service-environment-intro.md) (ASE). 
 
 > [!NOTE]
-> Als u wilt weten hoe u een web-app maakt, maar deze niet hoeft te doen in een App Service Environment, raadpleegt u [een .net-Web-app maken](../app-service-web-get-started-dotnet.md) of een van de bijbehorende zelf studies voor andere talen en frameworks.
+> Zie [Een .NET-webapp](../app-service-web-get-started-dotnet.md) maken of een van de gerelateerde zelfstudies voor andere talen en frameworks als u wilt leren hoe u een web-app maakt, maar dit niet hoeft te doen in een App-serviceomgeving.
 > 
 > 
 
 ## <a name="prerequisites"></a>Vereisten
-In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt gemaakt. Als u dit nog niet hebt gedaan, raadpleegt u [een app service Environment maken](app-service-web-how-to-create-an-app-service-environment.md). 
+In deze zelfstudie wordt ervan uitgegaan dat u een App Service-omgeving hebt gemaakt. Zie [Een app-serviceomgeving maken](app-service-web-how-to-create-an-app-service-environment.md)als u dat nog niet hebt gedaan. 
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
-1. Klik in [Azure Portal](https://portal.azure.com/)op **een resource maken > web en mobiel > web-app**. 
+1. Klik in de [Azure Portal](https://portal.azure.com/)op Een bron maken > Web + Mobile > **Web App**. 
    
     ![][1]
 2. Selecteer uw abonnement.  
    
-    Als u meerdere abonnementen hebt om een app in uw App Service Environment te maken, moet u hetzelfde abonnement gebruiken dat u hebt gebruikt bij het maken van de omgeving. 
+    Als u meerdere abonnementen hebt, moet u hetzelfde abonnement gebruiken als u hebt gebruikt bij het maken van de omgeving om een app in uw app-serviceomgeving te maken. 
 3. Selecteer of maak een resourcegroep.
    
-    Met *resource groepen* kunt u gerelateerde Azure-resources beheren als een eenheid en nuttig zijn bij het instellen van RBAC-regels ( *op rollen gebaseerd toegangs beheer* ) voor uw apps. Zie voor meer informatie [Overzicht van Azure Resource Manager][ResourceGroups]. 
+    *Met resourcegroepen* u gerelateerde Azure-resources beheren als een eenheid en zijn ze handig bij het opstellen van *RBAC-regels (Role-based access control)* voor uw apps. Zie voor meer informatie [Overzicht van Azure Resource Manager][ResourceGroups]. 
 4. Selecteer of maak een App Service-plan.
    
-    *App service-abonnementen* zijn beheerde sets van web-apps.  Normaal gesp roken wanneer u prijzen selecteert, wordt de prijs van de kosten toegepast op het App Service plan in plaats van op de afzonderlijke apps. In een ASE betaalt u voor de reken instanties die zijn toegewezen aan de ASE in plaats van wat u met uw ASP hebt vermeld.  Als u het aantal exemplaren van een web-app wilt verg Roten, kunt u de exemplaren van uw App Service plan omhoog schalen. Dit is van invloed op alle web-apps in dat plan.  Sommige functies, zoals site sleuven of VNET-integratie, hebben ook beperkingen voor de hoeveelheid binnen het abonnement.  Zie [Azure app service plannen Overview](../overview-hosting-plans.md) (Engelstalig) voor meer informatie
+    *App Service-abonnementen* zijn beheerde sets van web-apps.  Normaal gesproken wordt wanneer u prijzen selecteert, de in rekening gebrachte prijs toegepast op het App Service-abonnement in plaats van op de afzonderlijke apps. In een ASE betaalt u voor de compute-exemplaren die aan de ASE zijn toegewezen in plaats van wat u bij uw ASP hebt vermeld.  Als u het aantal exemplaren van een web-app wilt opschalen, schaalt u de exemplaren van uw App Service-abonnement op en heeft dit gevolgen voor alle web-apps in dat abonnement.  Sommige functies, zoals siteslots of VNET-integratie, bevatten ook kwantitatieve beperkingen in het plan.  Zie overzicht van [Azure App Service-abonnementen voor](../overview-hosting-plans.md) meer informatie
    
-    U kunt de App Service plannen in uw ASE identificeren door te kijken naar de locatie die wordt vermeld onder de naam van het abonnement.  
+    U de appserviceplannen in uw ASE identificeren door te kijken naar de locatie die wordt vermeld onder de naam van het abonnement.  
    
     ![][5]
    
-    Als u een App Service plan wilt gebruiken dat al in uw App Service Environment bestaat, selecteert u dat plan. Als u een nieuw App Service plan wilt maken, raadpleegt u de volgende sectie in deze zelf studie, [een app service plan maken in een app service Environment](#createplan).
-5. Voer de naam van uw web-app in en klik vervolgens op **maken**. 
+    Als u een App Service-abonnement wilt gebruiken dat al bestaat in uw App-serviceomgeving, selecteert u dat abonnement. Als u een nieuw App Service-abonnement wilt maken, raadpleegt u het volgende gedeelte van deze zelfstudie, [Een App Service-abonnement maken in een App-serviceomgeving](#createplan).
+5. Voer de naam voor uw web-app in en klik op **Maken**. 
    
-    Als uw ASE een externe VIP gebruikt, is de URL van een app in een ASE: [*site naam*]. [*app service Environment*]. p.azurewebsites.net in plaats van [*site*naam]. azurewebsites.net
+    Als uw ASE een externe VIP gebruikt, is de URL van een app in een ASE: [*sitename*]. [*naam van uw App Service Environment*].p.azurewebsites.net in plaats van [*sitename*].azurewebsites.net
    
-    Als uw ASE een interne VIP gebruikt, is de URL van een app in dat ASE: [*site naam*]. [*subdomein opgegeven tijdens het maken van ASE*]   
-    Nadat u uw ASP hebt geselecteerd tijdens het maken van ASE, ziet u de subdomein update onder **naam**
+    Als uw ASE een interne VIP gebruikt, is de URL van een app in die ASE: [*sitename*]. [*subdomein opgegeven tijdens ASE-creatie*]   
+    Nadat u uw ASP hebt geselecteerd tijdens het maken van ASE, ziet u de subdomeinupdate hieronder **Naam**
 
-## <a name="createplan"></a>Een App Service plan maken
-Wanneer u een App Service plan maakt in een App Service Environment, zijn de keuze mogelijkheden van uw werk nemers verschillend omdat er geen gedeelde werk nemers zijn in een ASE.  De werk rollen die u moet gebruiken, zijn de gebruikers die zijn toegewezen aan de ASE door de beheerder.  Dit betekent dat u voor het maken van een nieuw plan meer werk nemers aan uw ASE-werk groep moet toewijzen dan het totale aantal exemplaren in al uw plannen die al in die werknemers groep zijn.  Als u niet genoeg werk nemers in uw ASE-werk groep hebt om uw plan te maken, moet u samen werken met uw ASE-beheerder om ze toe te voegen.
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a>Een App-serviceplan maken
+Wanneer u een App Service-abonnement maakt in een App-serviceomgeving, zijn de werknemerskeuzes anders omdat er geen gedeelde werknemers in een ASE zijn.  De werknemers die u moet gebruiken zijn degenen die zijn toegewezen aan de ASE door de beheerder.  Dit betekent dat u voor het maken van een nieuw plan meer werknemers aan uw ASE-werknemersgroep moet toegewezen hebben dan het totale aantal exemplaren voor al uw plannen dat al in die werknemersgroep is.  Als u niet genoeg werknemers in uw ASE-werknemersgroep hebt om uw plan te maken, moet u samenwerken met uw ASE-beheerder om ze te laten toevoegen.
 
-Een ander verschil met App Service plannen die worden gehost door een App Service Environment, is het ontbreken van prijs selectie.  Wanneer u een App Service Environment hebt die u betaalt voor reken resources die worden gebruikt door het systeem en geen kosten hebt toegevoegd voor de plannen in die omgeving.  Normaal gesp roken wanneer u een App Service plan maakt, selecteert u een prijs plan om uw facturering te bepalen.  Een App Service Environment is in feite een privé locatie waar u inhoud kunt maken.  U betaalt voor de omgeving en niet om uw inhoud te hosten.
+Een ander verschil met App Service-abonnementen die worden gehost door een App Service-omgeving is het gebrek aan prijsselectie.  Wanneer u een App-serviceomgeving hebt, betaalt u voor rekenresources die door het systeem worden gebruikt en hebt u geen kosten toegevoegd voor de plannen in die omgeving.  Normaal gesproken selecteert u bij het maken van een App Service-abonnement een prijsplan dat uw facturering bepaalt.  Een App Service Omgeving is in wezen een privélocatie waar u inhoud maken.  U betaalt voor het milieu en niet om uw inhoud te hosten.
 
-De volgende instructies laten zien hoe u een App Service plan maakt tijdens het maken van een web-app, zoals wordt beschreven in het vorige gedeelte van de zelf studie.
+In de volgende instructies ziet u hoe u een App Service-abonnement maakt terwijl u een web-app maakt, zoals uitgelegd in het vorige gedeelte van de zelfstudie.
 
-1. Klik op **Nieuw** in de gebruikers interface van het plan selecteren en geef een naam op voor uw plan, net zoals u normaal gesp roken buiten een ASE zou doen.
-2. Selecteer de ASE die u wilt gebruiken vanuit uw locatie kiezer.
+1. Klik **op Nieuw maken** in de gebruikersinterface voor het selecteren van het abonnement en geef een naam op voor uw abonnement, net zoals u dat normaal gesproken buiten een ASE zou doen.
+2. Selecteer de ASE die u wilt gebruiken in uw locatiekiezer.
    
-    Omdat een App Service Environment in feite een locatie van een privé-implementatie is, wordt deze weer gegeven onder locatie. 
+    Omdat een App Service-omgeving in wezen een locatie voor privé-implementatie is, wordt deze weergegeven onder Locatie. 
    
     ![][2]
    
-    Nadat een ASE is geselecteerd in de locatie kiezer, worden de UI-updates voor het App Service plan gemaakt.  Op de locatie ziet u nu de naam van het ASE-systeem en de regio waarin deze zich bevindt, en wordt de prijs plan kiezer vervangen door de kiezer van een werk groep.  
+    Na selectie van een ASE in de locatiekiezer maakt het App Service-abonnement ui-updates.  De locatie toont nu de naam van het ASE-systeem en de regio waarin het zich bevindt en de prijsplankiezer wordt vervangen door een werknemerspoolkiezer.  
    
     ![][3]
 
-### <a name="selecting-a-worker-pool"></a>Een werk groep selecteren
-Normaal gesp roken zijn er drie berekenings grootten die beschikbaar zijn voor de selectie van een speciaal prijs plan in Azure App Service en buiten een App Service Environment.  Op een vergelijk bare manier kunt u voor een ASE Maxi maal drie groepen van werk nemers definiëren en de berekenings grootte opgeven die voor die werk groep wordt gebruikt.  Wat het betekent voor tenants van de ASE is dat u in plaats van een prijs plan met een reken grootte voor uw App Service plan selecteert, wat een *werk groep*wordt genoemd.  
+### <a name="selecting-a-worker-pool"></a>Een werknemersgroep selecteren
+Normaal gesproken zijn er in Azure App Service en buiten een App Service-omgeving 3 rekengroottes beschikbaar met de selectie van een speciaal prijsplan.  Op een vergelijkbare manier u voor een ASE maximaal 3 groepen werknemers definiëren en de rekengrootte opgeven die voor die werknemersgroep wordt gebruikt.  Wat dat betekent voor huurders van de ASE is dat in plaats van het selecteren van een prijsplan met rekengrootte voor uw App Service-abonnement, u een zogenaamde *werknemersgroep*selecteert.  
 
-De gebruikers interface voor de selectie van werk groepen toont de reken grootte die voor de werk groep wordt gebruikt onder de naam.  De beschik bare hoeveelheid verwijst naar hoeveel reken instanties er beschikbaar zijn voor gebruik in die groep.  De totale pool mag in werkelijkheid meer exemplaren hebben dan dit getal, maar deze waarde verwijst naar gewoon het aantal dat niet in gebruik is.  Als u uw App Service Environment moet aanpassen om meer reken bronnen toe te voegen, raadpleegt u [uw app service Environment configureren](app-service-web-configure-an-app-service-environment.md).
+De gebruikersinterface voor de selectie van de groep werknemers toont de rekengrootte die wordt gebruikt voor die groep werknemers onder de naam.  De beschikbare hoeveelheid verwijst naar het aantal rekeninstanties dat beschikbaar is voor gebruik in die groep.  De totale pool kan eigenlijk meer exemplaren dan dit aantal hebben, maar deze waarde verwijst naar eenvoudig hoeveel er niet in gebruik zijn.  Als u uw app-serviceomgeving moet aanpassen om meer rekenbronnen toe te voegen, raadpleegt u [Uw app-serviceomgeving configureren.](app-service-web-configure-an-app-service-environment.md)
 
 ![][4]
 
-In dit voor beeld ziet u slechts twee werk groepen die beschikbaar zijn. Dat komt omdat de ASE-beheerder alleen hosts heeft toegewezen aan deze twee werk groepen.  De derde zou worden weer gegeven wanneer er Vm's aan zijn toegewezen.  
+In dit voorbeeld ziet u slechts twee werknemersgroepen beschikbaar. Dat komt omdat de ASE-beheerder alleen hosts heeft toegewezen aan deze twee werknemerspools.  De derde zou verschijnen wanneer er VM's in zijn toegewezen.  
 
-## <a name="after-web-app-creation"></a>Na het maken van de web-app
-Er zijn enkele overwegingen voor het uitvoeren van web apps en het beheren van App Service-abonnementen in een ASE die moeten worden opgenomen in het account.  
+## <a name="after-web-app-creation"></a>Na het maken van web-apps
+Er zijn een paar overwegingen voor het uitvoeren van web-apps en het beheren van App Service-abonnementen in een ASE waarmee rekening moet worden gehouden.  
 
-Zoals eerder is vermeld, is de eigenaar van de ASE verantwoordelijk voor de grootte van het systeem en is het daarom ook verantwoordelijk om ervoor te zorgen dat er voldoende capaciteit is om de gewenste App Service plannen te hosten. Als er geen beschik bare werk nemers zijn, kunt u uw App Service-abonnement niet maken.  Dit geldt ook voor het omhoog schalen van uw web-app.  Als u meer exemplaren nodig hebt, moet u uw App Service Environment-beheerder vragen om meer werk nemers toe te voegen.
+Zoals eerder opgemerkt, is de eigenaar van de ASE verantwoordelijk voor de grootte van het systeem en als gevolg daarvan zijn zij ook verantwoordelijk voor het waarborgen dat er voldoende capaciteit is om de gewenste App Service-plannen te hosten. Als er geen beschikbare werknemers zijn, u uw App Service-abonnement niet maken.  Dit geldt ook voor het opschalen van uw web-app.  Als u meer exemplaren nodig hebt, moet u uw beheerder van de app-serviceomgeving ertoe brengen meer werknemers toe te voegen.
 
-Nadat u uw web-app hebt gemaakt en App Service plant, kunt u ze het beste schalen.  In een ASE moet u altijd ten minste twee exemplaren van uw App Service-abonnement hebben om fout tolerantie voor uw apps te bieden.  Het schalen van een App Service plan in een ASE is hetzelfde als het normaal via de App Service-gebruikers interface.  Voor meer informatie over schalen, [het schalen van een web-app in een app service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+Na het maken van uw web app en App Service plan is het een goed idee om het op te schalen.  In een ASE moet u altijd ten minste 2 exemplaren van uw App Service-abonnement hebben om fouttolerantie voor uw apps te bieden.  Het schalen van een App Service-abonnement in een ASE is hetzelfde als normaal via de gebruikersinterface van het App-serviceplan.  Informatie over schalen, [Een web-app schalen in een app-serviceomgeving](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

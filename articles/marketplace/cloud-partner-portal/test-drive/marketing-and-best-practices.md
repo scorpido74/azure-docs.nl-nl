@@ -1,41 +1,39 @@
 ---
-title: Best practices voor het testen van de marketing | Azure Marketplace
-description: Best practices voor de marketing testen voor uitgevers
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Best practices voor testdrive marketing | Azure Marketplace
+description: Test Drive marketing best practices voor uitgevers
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 3520e2c16f9a0c891db0d641fa7c9b811cac7b10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824548"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278243"
 ---
-<a name="test-drive-marketing-and-best-practices"></a>Testen van de marketing en best practices
+<a name="test-drive-marketing-and-best-practices"></a>Testdrive marketing en best practices
 =======================================
 
-Het test station van Azure Marketplace is een uitstekend hulp programma voor markt verwerkers en wij raden u aan om te worden opgenomen in uw Go-to-Market-inspanningen wanneer u start. We raden u aan een aantal aanbevolen procedures direct uit te voeren wanneer u publiceert, waardoor het genereren van meer leads van een test station aanzienlijk wordt ondersteund:
+Azure Marketplace Test Drive is een geweldig hulpmiddel voor marketeers en we raden u aan om bij de lancering in uw go-to-market-inspanningen te worden opgenomen. We hebben verschillende best practices die we je onmiddellijk aanraden wanneer je publiceert die het genereren van meer leads vanuit Test Drive enorm zal ondersteunen:
 
-- **Pagina Referral**: een pagina op uw webhost plaatsen die alle informatie over uw Azure-test station vertelt en meerdere referentie koppelingen post die verkeer naar uw test drive omleiden
-- **Sociale media**: Maak een planning waarin u regel matig berichten over uw test drive op uw sociale media kanalen plaatst
-- **Blogs**: Schrijf een blog bericht over uw Azure-test drive. Benadruk de functies en voor delen die de gebruiker gratis en zeer weinig tijd krijgt. Zorg ervoor dat u een koppeling naar uw Azure test drive-pagina op meerdere locaties in het blog-exemplaar. Hier volgt een koppeling naar een voor beeld van een blog bericht over Azure test drive. Nog beter? Post links naar uw blog bericht op uw sociale media kanalen.
-- **E-mail nurturing**: Informeer leads die zijn betrokken bij uw merk via andere kanalen via e-mail om hen te informeren over de test drive en hen te stimuleren deze gratis uit te proberen.
-- **Verkoop training en-hulpprogram ma's**: Stel een trainings sessie met uw verkoop teams in om de test drive ervaring te bekijken en op een paar manieren te komen waarop ze hun leads en klanten kunnen benaderen. Verkoop mensen kunnen een demo met meerdere contact personen in een bedrijf instellen en vervolgens elk daarvan de koppeling naar de test drive daarna verzenden om deze zelf te doen.
-- **Handels beurzen en conferenties**: krijg een stand van een branche die potentiële klanten bijwonen? Stel enkele laptops in op de stand en laat uw test stations actief, zodat klanten de test drive op uw stand kunnen zetten en vervolgens tijdens en na hun ervaring met hen in contact komen met het product.
+- **Verwijzingspagina:** Plaats een pagina op uw webaanwezigheid die alles vertelt over uw Azure-teststation en plaats meerdere verwijzingskoppelingen die verkeer naar uw testrit leiden
+- **Social Media**: Maak een schema waarin je regelmatig op je social media kanalen plaatst over je proefrit
+- **Blogs**: Schrijf een blogbericht over uw Azure-testrit. Benadruk de functies en voordelen die de gebruiker gratis en in zeer weinig tijd zal kunnen ervaren. Zorg ervoor dat u op meerdere plaatsen in de blogkopie een koppeling maakt naar uw Azure-testdrivepagina. Hier is een link naar een voorbeeld blogpost over Azure-teststation. Nog beter? Plaats links naar je blogpost op je sociale mediakanalen.
+- **E-mailverzorging**: Informeer leads die via andere kanalen met uw merk zijn bezig via e-mail om hen te informeren over de testrit en hen aan te moedigen het gratis uit te proberen.
+- **Verkooptraining en -tools:** Stel een trainingssessie in met uw verkoopteams om de testritervaring te demonstreren en een paar manieren te bedenken waarop ze hun leads en klanten ermee kunnen betrekken. Verkopers kunnen het opzetten van een demo met meerdere contacten bij een bedrijf dan stuur elk van hen de link naar de proefrit achteraf om het zelf te nemen.
+- **Beurzen en conferenties**: Heb je een stand op een industrie-evenement dat potentiële klanten zullen bijwonen? Zet een paar laptops op de stand en laat uw testritten draaien, zodat klanten de testrit op uw stand kunnen maken en vervolgens met hen kunnen praten over het product tijdens en na hun ervaring!
 
-<a name="lead-management"></a>Lead beheer
+<a name="lead-management"></a>Leadmanagement
 ---------------
 
-Nu u uiterst gekwalificeerde leads van test drive genereert, wilt u er zeker van zijn dat u deze leads hebt opgenomen in uw verkoop-en marketing kanalen en dat u gebruikmaakt van kandidaten om hen in te scha kelen voor de betaling van klanten. Hier volgen enkele aanbevolen procedures met betrekking tot het leveren van leads via uw verkoop cyclus:
+Nu u hooggekwalificeerde leads genereert vanaf de testrit, wilt u ervoor zorgen dat u deze leads hebt opgenomen in uw verkoop- en marketingkanalen en u werkt met prospects om ze om te zetten in betalende klanten. Hier volgen enkele aanbevolen praktijken met betrekking tot het genereren van leads door uw verkoopcyclus:
 
-- Neem contact met de potentiële klant binnen 24 uur na het nemen van de test drive. U krijgt de lead in uw CRM-keuze onmiddellijk nadat de klant de test drive heeft geïmplementeerd. Zorg er dan voor dat u de eerste 24 uur een e-mail toestuurt terwijl ze nog steeds warm zijn. Vraag om een telefoon gesprek met hen te plannen om beter inzicht te krijgen in de problemen die ze proberen op te lossen en om te zien of uw product kan helpen.
-- Volg een paar keer maar BOMBARD niet meer. We raden u aan deze lead een paar keer te e-mailen voordat u ze sluit, maar pas na de eerste poging niet toe. Onthoud dat deze klanten rechtstreeks samen werken met uw product en tijd hebben besteed aan een gratis proef versie.
-- Dit zijn fantastische kandidaten.
-- Als u een trans actie met een test drive-lead sluit, moet u deze registreren bij partner Sales Connect. En we horen graag over uw klant-WINS waar test drive een rol speelt!
+- Maak binnen 24 uur na het maken van de proefrit contact met de lead. U krijgt de lead in uw CRM naar keuze onmiddellijk nadat de klant de testrit implementeert - zorg ervoor dat u hen binnen de eerste 24 uur een e-mail stuurt terwijl ze nog warm zijn. Vraag het plannen van een telefoongesprek met hen om beter te begrijpen welke problemen ze proberen op te lossen, en om te zien of uw product kan helpen.
+- Volg het een paar keer, maar bombardeer ze niet. We raden u aan deze lead een paar keer te e-mailen voordat u ze afsluit, maar geef niet op na de eerste poging. Vergeet niet - deze klanten direct betrokken bij uw product en tijd doorgebracht in een gratis proefperiode.
+- Ze zijn grote vooruitzichten!
+- Als u een deal sluit met een proefrit lead, moet u deze registreren bij Partner sales connect. Ook -- we horen graag over uw klant wint waar proefrit een rol speelde!
 
-Veelgestelde vragen over test stations vindt u hier: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>
+Veelgestelde vragen over teststations vindt u hier:<https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>

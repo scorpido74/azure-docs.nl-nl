@@ -1,39 +1,39 @@
 ---
-title: Recovery Services kluis configuratie bijwerken met REST API
-description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijwerken met behulp van REST API.
+title: Vault-configuratie van Recovery Services bijwerken met REST API
+description: In dit artikel leest u hoe u de configuratie van Vault bijwerken met behulp van REST API.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252361"
 ---
-# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
+# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Azure Recovery Services Vault-configuraties bijwerken met REST API
 
-In dit artikel wordt beschreven hoe u back-up-gerelateerde configuraties in azure Recovery Services kluis bijwerkt met behulp van REST API.
+In dit artikel wordt beschreven hoe u back-upgerelateerde configuraties in de kluis van Azure Recovery Services bijwerkt met restapi.
 
-## <a name="soft-delete-state"></a>Status voorlopig verwijderen
+## <a name="soft-delete-state"></a>Zachte verwijderstatus
 
-Het verwijderen van back-ups van een beveiligd item is een belang rijke bewerking die moet worden bewaakt. Ter bescherming tegen onbedoelde verwijderingen heeft Azure Recovery Services kluis een mogelijkheid tot tijdelijke verwijdering. Met deze mogelijkheid kunnen klanten verwijderde back-ups, indien nodig, binnen een bepaalde periode na het verwijderen herstellen.
+Het verwijderen van back-ups van een beveiligd item is een belangrijke bewerking die moet worden gecontroleerd. Om te beschermen tegen onbedoelde verwijderingen, heeft de Azure Recovery Services-kluis een soft-delete-mogelijkheid. Met deze mogelijkheid kunnen klanten verwijderde back-ups, indien nodig, binnen een periode na de verwijdering herstellen.
 
-Maar er zijn scenario's waarin deze mogelijkheid niet is vereist. Een Azure Recovery Services kluis kan niet worden verwijderd als er back-upitems in zijn, zelfs als deze worden verwijderd. Dit kan een probleem vormen als de kluis onmiddellijk moet worden verwijderd. Bijvoorbeeld: implementatie bewerkingen schonen vaak de gemaakte resources in dezelfde werk stroom. Een implementatie kan een kluis maken, back-ups voor een item configureren, een test herstellen en vervolgens door gaan met het verwijderen van de back-upitems en de kluis. Als het verwijderen van de kluis mislukt, kan de volledige implementatie mislukken. Het uitschakelen van zacht verwijderen is de enige manier om direct verwijderen te garanderen.
+Maar er zijn scenario's waarin deze mogelijkheid niet nodig is. Een kluis van Azure Recovery Services kan niet worden verwijderd als er back-upitems in zitten, zelfs niet zomaar verwijderd. Dit kan een probleem opleveren als de kluis onmiddellijk moet worden verwijderd. Bijvoorbeeld: implementatiebewerkingen ruimen vaak de gemaakte resources op in dezelfde werkstroom. Een implementatie kan een kluis maken, back-ups configureren voor een item, een testherstel uitvoeren en vervolgens doorgaan met het verwijderen van de back-upitems en de kluis. Als de verwijdering van de kluis mislukt, kan de hele implementatie mislukken. Het uitschakelen van soft-delete is de enige manier om onmiddellijke verwijdering te garanderen.
 
-Daarom moet de klant zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde kluis wilt uitschakelen, afhankelijk van het scenario. Zie het [artikel voorlopig verwijderen](backup-azure-security-feature-cloud.md#soft-delete)voor meer informatie.
+Daarom moet de klant zorgvuldig kiezen of soft-delete voor een bepaalde kluis moet worden uitgeschakeld, afhankelijk van het scenario. Zie het artikel [soft-delete](backup-azure-security-feature-cloud.md#soft-delete)voor meer informatie.
 
-### <a name="fetch-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen ophalen met REST API
+### <a name="fetch-soft-delete-state-using-rest-api"></a>Zachte verwijderstatus ophalen met REST API
 
-De voorlopig verwijderings status wordt standaard ingeschakeld voor een nieuw gemaakte Recovery Services kluis. Als u de status van zacht verwijderen voor een kluis wilt ophalen of bijwerken, gebruikt u het [rest API document](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) met betrekking tot configuratie van de back-upkluis
+Standaard is de status soft-delete ingeschakeld voor elke nieuw gemaakte vault van Recovery Services. Als u de status van soft-delete voor een kluis wilt ophalen/bijwerken, gebruikt u het config-gerelateerde [REST API-document](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) van de back-upkluis
 
-Als u de huidige status van het voorlopig verwijderen van een kluis wilt ophalen, gebruikt u de volgende *Get* -bewerking
+Als u de huidige status van soft-delete voor een kluis wilt ophalen, gebruikt u de volgende *GET-bewerking*
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-De GET-URI heeft `{subscriptionId}`, `{vaultName}``{vaultresourceGroupName}`-para meters. In dit voor beeld is `{vaultName}` ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
+De GET `{subscriptionId}`URI `{vaultName}` `{vaultresourceGroupName}` heeft , , parameters. In dit `{vaultName}` voorbeeld is "testVault" en `{vaultresourceGroupName}` is "testVaultRG". Aangezien alle vereiste parameters in de URI worden gegeven, is er geen behoefte aan een aparte aanvraaginstantie.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -41,15 +41,15 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="responses"></a>Antwoorden
 
-Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
+De succesvolle reactie voor de 'GET'-bewerking wordt hieronder weergegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Voorbeeld van een antwoord
 
-Zodra de GET-aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) geretourneerd.
+Zodra de 'GET'-aanvraag is ingediend, wordt een 200 (geslaagde) reactie geretourneerd.
 
 ```json
 {
@@ -63,36 +63,36 @@ Zodra de GET-aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) gereto
 }
 ```
 
-### <a name="update-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen bijwerken met REST API
+### <a name="update-soft-delete-state-using-rest-api"></a>Zachte verwijderstatus bijwerken met rest-API
 
-Als u de voorlopig verwijderings status van de Recovery Services-kluis wilt bijwerken met behulp van REST API, gebruikt u de volgende *patch* bewerking
+Als u de status soft delete van de kluis van herstelservices wilt bijwerken met REST API, gebruikt u de volgende *PATCH-bewerking*
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-De PATCH-URI heeft `{subscriptionId}`, `{vaultName}``{vaultresourceGroupName}`-para meters. In dit voor beeld is `{vaultName}` ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Als de URI wordt vervangen door de bovenstaande waarden, ziet de URI er als volgt uit.
+De PATCH `{subscriptionId}`URI `{vaultName}` `{vaultresourceGroupName}` heeft , , parameters. In dit `{vaultName}` voorbeeld is "testVault" en `{vaultresourceGroupName}` is "testVaultRG". Als we de URI vervangen door de bovenstaande waarden, dan zal de URI er zo uitzien.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-#### <a name="create-the-request-body"></a>De aanvraag tekst maken
+#### <a name="create-the-request-body"></a>De aanvraaginstantie maken
 
-De volgende algemene definities worden gebruikt voor het maken van een aanvraag tekst
+De volgende gemeenschappelijke definities worden gebruikt om een aanvraaginstantie te maken
 
-Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
+Zie voor meer informatie [de REST API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|Naam  |Vereist  |Type  |Beschrijving  |
+|Name  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|locatie     |  true       |Tekenreeks         |   Resource locatie      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
+|location     |  waar       |Tekenreeks         |   Resourcelocatie      |
+|properties     |         | [VaultEigenschappen](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |tags     |         | Object        |     Resourcetags    |
 
-#### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
+#### <a name="example-request-body"></a>Voorbeeldaanvraaginstantie
 
-Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te werken naar disabled.
+Het volgende voorbeeld wordt gebruikt om de status soft-delete bij te werken naar 'uitgeschakeld'.
 
 ```json
 {
@@ -105,15 +105,15 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 
 #### <a name="responses"></a>Antwoorden
 
-Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
+De succesvolle reactie voor de 'PATCH'-bewerking wordt hieronder weergegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Voorbeeld van een antwoord
 
-Zodra de PATCH aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) geretourneerd.
+Zodra de 'PATCH'-aanvraag is ingediend, wordt een 200 (geslaagde) reactie geretourneerd.
 
 ```json
 {
@@ -129,9 +129,9 @@ Zodra de PATCH aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) gere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Maak een back-upbeleid voor het maken van een back-up van een virtuele Azure-machine in deze kluis](backup-azure-arm-userestapi-createorupdatepolicy.md).
+[Maak een back-upbeleid voor het maken van een back-up van een Azure VM in deze kluis.](backup-azure-arm-userestapi-createorupdatepolicy.md)
 
-Raadpleeg de volgende documenten voor meer informatie over de REST-Api's van Azure:
+Zie de volgende documenten voor meer informatie over de Azure REST API's:
 
-- [REST API Azure Recovery Services provider](/rest/api/recoveryservices/)
+- [REST-API van Azure Recovery Services-provider](/rest/api/recoveryservices/)
 - [Aan de slag gaan met Azure REST API](/rest/api/azure/)

@@ -1,6 +1,6 @@
 ---
-title: Oproepen ontvangen en erop reageren via HTTPS
-description: Binnenkomende HTTPS-aanvragen van externe services verwerken door gebruik te maken van Azure Logic Apps
+title: Oproepen ontvangen en beantwoorden via HTTPS
+description: Binnenkomende HTTPS-aanvragen van externe services verwerken met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
 ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297289"
 ---
-# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Binnenkomende HTTPS-verzoeken ontvangen en beantwoorden in Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-of reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende HTTPS-aanvragen ontvangen en erop reageren. U kunt bijvoorbeeld uw logische app:
+Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en de ingebouwde trigger- of reactieactie Van verzoek u geautomatiseerde taken en werkstromen maken die binnenkomende HTTPS-verzoeken ontvangen en erop reageren. U bijvoorbeeld uw logica-app hebben:
 
-* Ontvangen en reageren op een HTTPS-aanvraag voor gegevens in een on-premises data base.
-* Activeer een werk stroom wanneer een externe webhook-gebeurtenis plaatsvindt.
-* Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
+* Een HTTPS-verzoek om gegevens ontvangen en beantwoorden in een on-premises database.
+* Activeer een werkstroom wanneer een externe webhook-gebeurtenis plaatsvindt.
+* Een HTTPS-oproep ontvangen en beantwoorden vanuit een andere logische app.
 
 > [!NOTE]
-> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen blijven ondersteuning bieden voor TLS 1,0, 1,1 en 1,2. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie.
+> De trigger van De aanvraag ondersteunt *alleen* TLS (Transport Layer Security) 1.2 voor inkomende oproepen. Uitgaande gesprekken blijven TLS 1.0, 1.1 en 1.2 ondersteunen. Zie [Het TLS 1.0-probleem oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie.
 >
-> Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Hier volgen de ondersteunde coderings suites voor inkomende oproepen:
+> Als u SSL-handshakefouten ziet, moet u TLS 1.2 gebruiken. Voor inkomende oproepen, hier zijn de ondersteunde cipher suites:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -38,39 +38,39 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement hebt, kunt u [zich aanmelden voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u geen abonnement hebt, u [zich aanmelden voor een gratis Azure-account.](https://azure.microsoft.com/free/)
 
-* Basis kennis over [Logic apps](../logic-apps/logic-apps-overview.md). Als u geen ervaring hebt met Logic apps, kunt u leren [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Basiskennis over [logische apps.](../logic-apps/logic-apps-overview.md) Als u nieuw bent in logische apps, leest u [hoe u uw eerste logische app maakt.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="add-request"></a>
 
-## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
+## <a name="add-request-trigger"></a>Trigger voor aanvragen toevoegen
 
-Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u het [type trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
+Deze ingebouwde trigger maakt een handmatig aanroepbaar HTTPS-eindpunt dat *alleen* binnenkomende HTTPS-verzoeken kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Zie het [triggertype van de trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en Het activeren van de [triggermeting met HTTP-eindpunten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroepen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
-1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak ' HTTP-aanvraag ' in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
+1. Nadat Logic App Designer is geopend, voert u in het zoekvak 'http-aanvraag' in als filter. Selecteer in de lijst triggers de **trigger Wanneer een HTTP-aanvraag wordt ontvangen,** de eerste stap in de werkstroom van uw logische app.
 
-   ![Aanvraag trigger selecteren](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Trigger van aanvragen selecteren](./media/connectors-native-reqres/select-request-trigger.png)
 
-   Met de aanvraag trigger worden deze eigenschappen weer gegeven:
+   De trigger Van aanvraag geeft de volgende eigenschappen weer:
 
-   ![Trigger voor aanvragen](./media/connectors-native-reqres/request-trigger.png)
+   ![Trigger van aanvragen](./media/connectors-native-reqres/request-trigger.png)
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
+   | Naam van eigenschap | Json-eigendomsnaam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
-   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
+   | **HTTP-BERICHT-URL** | {none} | Ja | De URL van het eindpunt die is gegenereerd nadat u de logische app hebt opgeslagen en wordt gebruikt voor het aanroepen van uw logische app |
+   | **Aanvraag Body JSON Schema** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de binnenkomende aanvraaginstantie beschrijft |
    |||||
 
-1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
+1. Voer in het vak **JSON-schema van aanvraaginstantie** optioneel een JSON-schema in dat de hoofdtekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
 
-   ![Voor beeld van JSON-schema](./media/connectors-native-reqres/provide-json-schema.png)
+   ![Voorbeeld JSON-schema](./media/connectors-native-reqres/provide-json-schema.png)
 
-   De ontwerp functie gebruikt dit schema om tokens te genereren voor de eigenschappen in de aanvraag. Op die manier kan uw logische app de gegevens van de aanvraag parseren, gebruiken en door geven via de trigger in uw werk stroom.
+   De ontwerper gebruikt dit schema om tokens te genereren voor de eigenschappen in de aanvraag. Op die manier kan uw logische app gegevens van de aanvraag ontleeden, consumeren en doorgeven via de trigger in uw werkstroom.
 
-   Dit is het voorbeeld schema:
+   Hier is het voorbeeldschema:
 
    ```json
    {
@@ -114,11 +114,11 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    }
    ```
 
-   Wanneer u een JSON-schema invoert, wordt in de ontwerp functie een herinnering weer gegeven voor het toevoegen van de `Content-Type`-header in uw aanvraag en wordt die header waarde ingesteld op `application/json`. Zie voor meer informatie [inhouds typen verwerken](../logic-apps/logic-apps-content-type.md).
+   Wanneer u een JSON-schema invoert, toont `Content-Type` de ontwerper een herinnering om `application/json`de koptekst in uw aanvraag op te nemen en die kopwaarde in te stellen op . Zie [Inhoudstypen afhandelen](../logic-apps/logic-apps-content-type.md)voor meer informatie .
 
-   ![Herinnering voor het toevoegen van de header content-type](./media/connectors-native-reqres/include-content-type.png)
+   ![Herinnering om de koptekst 'Inhoudstype' op te nemen](./media/connectors-native-reqres/include-content-type.png)
 
-   Deze koptekst ziet er als volgt uit in de JSON-indeling:
+   Zo ziet deze koptekst eruit in JSON-indeling:
 
    ```json
    {
@@ -126,17 +126,17 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
    }
    ```
 
-   Als u een JSON-schema wilt genereren dat is gebaseerd op de verwachte Payload (gegevens), kunt u een hulp programma zoals [JSONSchema.net](https://jsonschema.net)gebruiken, of u kunt de volgende stappen uitvoeren:
+   Als u een JSON-schema wilt genereren dat is gebaseerd op de verwachte payload (gegevens), u een hulpprogramma zoals [JSONSchema.net](https://jsonschema.net)gebruiken of u de volgende stappen volgen:
 
-   1. Selecteer in de trigger voor de aanvraag een **voor beeld-nettolading gebruiken om een schema te genereren**.
+   1. Selecteer in de trigger Van aanvraag de optie **Voorbeeldpayload gebruiken om schema te genereren**.
 
-      ![Schema genereren vanuit nettolading](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![Schema genereren uit payload](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
-   1. Voer de voor beeld-nettolading in en selecteer **gereed**.
+   1. Voer de payload van het monster in en selecteer **Gereed**.
 
-      ![Schema genereren vanuit nettolading](./media/connectors-native-reqres/enter-payload.png)
+      ![Schema genereren uit payload](./media/connectors-native-reqres/enter-payload.png)
 
-      Dit is de nettolading van de steek proef:
+      Hier is het monster payload:
 
       ```json
       {
@@ -155,105 +155,105 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
       }
       ```
 
-1. Als u aanvullende eigenschappen wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
+1. Als u extra eigenschappen wilt opgeven, opent u de lijst **Nieuwe parameter toevoegen** en selecteert u de parameters die u wilt toevoegen.
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
+   | Naam van eigenschap | Json-eigendomsnaam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Methode** | `method` | Nee | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
-   | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
+   | **Methode** | `method` | Nee | De methode die de binnenkomende aanvraag moet gebruiken om de logische app aan te roepen |
+   | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de parameter die de URL van het eindpunt van de logische app kan accepteren |
    |||||
 
-   In dit voor beeld wordt de eigenschap **Method** toegevoegd:
+   In dit voorbeeld wordt de eigenschap **Methode** toegevoegd:
 
-   ![Methode parameter toevoegen](./media/connectors-native-reqres/add-parameters.png)
+   ![Parameter Methode toevoegen](./media/connectors-native-reqres/add-parameters.png)
 
-   De eigenschap **Method** wordt weer gegeven in de trigger zodat u een methode kunt selecteren in de lijst.
+   De eigenschap **Methode** wordt weergegeven in de trigger, zodat u een methode in de lijst selecteren.
 
    ![Methode selecteren](./media/connectors-native-reqres/select-method.png)
 
-1. Voeg nu een andere actie toe als de volgende stap in uw werk stroom. Selecteer de **volgende stap** onder de trigger zodat u de actie kunt vinden die u wilt toevoegen.
+1. Voeg nu een andere actie toe als de volgende stap in uw werkstroom. Selecteer volgende **stap** onder de trigger, zodat u de actie vinden die u wilt toevoegen.
 
-   U kunt bijvoorbeeld reageren op de aanvraag door [een reactie actie toe te voegen](#add-response), die u kunt gebruiken om een aangepast antwoord te retour neren en dit later in dit onderwerp wordt beschreven.
+   U bijvoorbeeld op de aanvraag reageren door [een reactieactie toe](#add-response)te voegen, die u gebruiken om een aangepast antwoord te retourneren en wordt later in dit onderwerp beschreven.
 
-   Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
+   Uw logica-app houdt het binnenkomende verzoek slechts één minuut open. Ervan uitgaande dat uw logische app-werkstroom een reactieactie bevat, als de logische app `504 GATEWAY TIMEOUT` geen antwoord retourneert nadat deze tijd is afgelopen, retourneert uw logische app een naar de beller. Als uw logische app anders geen reactieactie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de beller.
 
-1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie. 
+1. Wanneer u klaar bent, slaat u uw logica-app op. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**. 
 
-   Met deze stap wordt de URL gegenereerd die moet worden gebruikt voor het verzenden van de aanvraag die de logische app activeert. Als u deze URL wilt kopiëren, selecteert u het Kopieer pictogram naast de URL.
+   Met deze stap genereert u de URL die moet worden gebruikt voor het verzenden van het verzoek dat de logische app activeert. Als u deze URL wilt kopiëren, selecteert u het kopieerpictogram naast de URL.
 
-   ![URL die moet worden gebruikt om de logische app te activeren](./media/connectors-native-reqres/generated-url.png)
+   ![URL om uw logische app te activeren](./media/connectors-native-reqres/generated-url.png)
 
-1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL. U kunt bijvoorbeeld een hulp programma gebruiken zoals [postman](https://www.getpostman.com/).
+1. Als u uw logische app wilt activeren, stuurt u een HTTP-bericht naar de gegenereerde URL. U bijvoorbeeld een tool zoals [Postman](https://www.getpostman.com/)gebruiken.
 
-### <a name="trigger-outputs"></a>Trigger uitvoer
+### <a name="trigger-outputs"></a>Triggeruitgangen
 
-Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
+Hier vindt u meer informatie over de uitvoer van de trigger van Request:
 
-| JSON-eigenschaps naam | Gegevenstype | Beschrijving |
+| Json-eigendomsnaam | Gegevenstype | Beschrijving |
 |--------------------|-----------|-------------|
-| `headers` | Object | Een JSON-object dat de headers van de aanvraag beschrijft |
-| `body` | Object | Een JSON-object waarmee de inhoud van de hoofd tekst van de aanvraag wordt beschreven |
+| `headers` | Object | Een JSON-object dat de kopteksten van de aanvraag beschrijft |
+| `body` | Object | Een JSON-object dat de inhoud van de hoeveelheid body van het verzoek beschrijft |
 ||||
 
 <a name="add-response"></a>
 
-## <a name="add-a-response-action"></a>Een reactie actie toevoegen
+## <a name="add-a-response-action"></a>Een reactieactie toevoegen
 
-U kunt de reactie actie gebruiken om te reageren met een Payload (gegevens) naar een binnenkomende HTTPS-aanvraag, maar alleen in een logische app die wordt geactiveerd door een HTTPS-aanvraag. U kunt de reactie actie op elk gewenst moment in uw werk stroom toevoegen. Zie het [actie type reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger.
+U de actie Respons gebruiken om met een payload (gegevens) te reageren op een binnenkomend HTTPS-verzoek, maar alleen in een logische app die wordt geactiveerd door een HTTPS-verzoek. U de actie Respons op elk punt in uw werkstroom toevoegen. Zie het [actietype Reactie](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)voor meer informatie over de onderliggende JSON-definitie voor deze trigger .
 
-Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw logische app een `504 GATEWAY TIMEOUT` naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
+Uw logica-app houdt het binnenkomende verzoek slechts één minuut open. Ervan uitgaande dat uw logische app-werkstroom een reactieactie bevat, als de logische app `504 GATEWAY TIMEOUT` geen antwoord retourneert nadat deze tijd is afgelopen, retourneert uw logische app een naar de beller. Als uw logische app anders geen reactieactie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de beller.
 
 > [!IMPORTANT]
-> Als een antwoord actie deze headers bevat, verwijdert Logic Apps deze headers uit het gegenereerde antwoord bericht zonder dat er een waarschuwing of fout wordt weer gegeven:
+> Als een reactieactie deze kopteksten bevat, verwijdert Logic Apps deze koppen uit het gegenereerde antwoordbericht zonder enige waarschuwing of fout te tonen:
 >
 > * `Allow`
-> * `Content-*` met deze uitzonde ringen: `Content-Disposition`, `Content-Encoding`en `Content-Type`
+> * `Content-*`met deze `Content-Disposition`uitzonderingen: , `Content-Encoding`en`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
 > * `Set-Cookie`
 > * `Transfer-Encoding`
 >
-> Hoewel Logic Apps niet stopt met het opslaan van logische apps met een reactie actie met deze headers, worden deze headers door Logic Apps genegeerd.
+> Hoewel Logic Apps u er niet van weerhoudt logische apps op te slaan die een reactieactie met deze koppen hebben, negeert Logic Apps deze koppen.
 
-1. Selecteer in de ontwerp functie voor logische apps onder de stap waarin u een reactie actie wilt toevoegen de optie **nieuwe stap**.
+1. Selecteer in de Logic App Designer onder de stap waarin u een reactieactie wilt toevoegen, de optie **Nieuwe stap**.
 
-   Bijvoorbeeld met behulp van de trigger voor aanvragen van eerder:
+   Bijvoorbeeld met de trigger Van eerder aanvragen:
 
    ![Nieuwe stap toevoegen](./media/connectors-native-reqres/add-response.png)
 
-   Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen de stappen wilt toevoegen, verplaatst u de aanwijzer over de pijl tussen deze stappen. Selecteer het plusteken (**+**) dat wordt weergegeven en selecteer vervolgens Een actie **toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak het woord "antwoord" in als uw filter en selecteer de **reactie** actie.
+1. Voer **onder Een actie kiezen**in het zoekvak 'antwoord' in als filter en selecteer de actie **Antwoord.**
 
-   ![De reactie actie selecteren](./media/connectors-native-reqres/select-response-action.png)
+   ![De actie Reactie selecteren](./media/connectors-native-reqres/select-response-action.png)
 
-   De trigger voor aanvragen wordt in dit voor beeld samengevouwen voor eenvoud.
+   De trigger van Aanvraag wordt in dit voorbeeld samengevouwen voor eenvoud.
 
-1. Voeg waarden toe die vereist zijn voor het antwoord bericht. 
+1. Voeg alle waarden toe die nodig zijn voor het antwoordbericht. 
 
-   In sommige velden wordt de lijst met dynamische inhoud geopend wanneer u in hun vakken klikt. Vervolgens kunt u tokens selecteren die beschik bare uitvoer van de vorige stappen in de werk stroom vertegenwoordigen. Eigenschappen uit het schema dat in het vorige voor beeld is opgegeven, worden nu weer gegeven in de lijst met dynamische inhoud.
+   Als u in sommige velden in de vakken klikt, wordt de lijst met dynamische inhoud geopend. U vervolgens tokens selecteren die beschikbare uitvoer uit eerdere stappen in de werkstroom vertegenwoordigen. Eigenschappen van het schema dat in het eerdere voorbeeld is opgegeven, worden nu weergegeven in de lijst met dynamische inhoud.
 
-   Neem bijvoorbeeld voor het vak **Headers** `Content-Type` als sleutel naam op en stel de sleutel waarde in op `application/json` zoals eerder in dit onderwerp is genoemd. Voor het vak **hoofd tekst** kunt u de uitvoer van de trigger hoofdtekst selecteren in de lijst met dynamische inhoud.
+   Neem bijvoorbeeld voor het vak **Kopteksten** op `Content-Type` als de sleutelnaam en stel de sleutelwaarde in op `application/json` zoals eerder in dit onderwerp is vermeld. Voor het vak **Hoofdtekst** u de triggerbody-uitvoer selecteren in de lijst met dynamische inhoud.
 
-   ![Details van reactie actie](./media/connectors-native-reqres/response-details.png)
+   ![Details reactieactie](./media/connectors-native-reqres/response-details.png)
 
-   Selecteer **overschakelen naar tekst weergave**om de kopteksten in JSON-indeling weer te geven.
+   Als u de kopteksten in JSON-indeling wilt weergeven, selecteert **u Overschakelen naar tekstweergave**.
 
-   ![Headers: overschakelen naar tekst weergave](./media/connectors-native-reqres/switch-to-text-view.png)
+   ![Kopteksten - Overschakelen naar tekstweergave](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Hier vindt u meer informatie over de eigenschappen die u kunt instellen in de reactie actie. 
+   Hier vindt u meer informatie over de eigenschappen die u instellen in de actie Respons. 
 
-   | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
+   | Naam van eigenschap | Json-eigendomsnaam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Statuscode** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
-   | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
+   | **Statuscode** | `statusCode` | Ja | De statuscode die moet worden teruggegeven in het antwoord |
+   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer kopteksten beschrijft die in het antwoord moeten worden opgenomen |
+   | **Hoofdtekst** | `body` | Nee | Het reactieorgaan |
    |||||
 
-1. Als u aanvullende eigenschappen, zoals een JSON-schema voor de antwoord tekst, wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
+1. Als u extra eigenschappen wilt opgeven, zoals een JSON-schema voor de antwoordtekst, opent u de lijst **Nieuwe parameter toevoegen** en selecteert u de parameters die u wilt toevoegen.
 
-1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie. 
+1. Wanneer u klaar bent, slaat u uw logica-app op. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

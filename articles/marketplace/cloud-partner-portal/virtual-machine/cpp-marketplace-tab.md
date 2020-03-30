@@ -1,69 +1,68 @@
 ---
-title: Het tabblad Marketplace voor virtuele machines in de Cloud Partner-portal voor Azure Marketplace
-description: Hierin wordt het tabblad Marketplace beschreven dat wordt gebruikt voor het maken van een Azure Marketplace-VM-aanbieding.
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+title: Tabblad Marktplaats voor virtuele machines in de Cloud Partner Portal voor Azure Marketplace
+description: Beschrijft het tabblad Marketplace dat wordt gebruikt bij het maken van een Azure Marketplace VM-aanbieding.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: dsindona
+ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762889"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277718"
 ---
-# <a name="virtual-machine-marketplace-tab"></a>Het tabblad Marketplace voor virtuele machines
+# <a name="virtual-machine-marketplace-tab"></a>Tabblad Marktplaats voor virtuele machines
 
-Op het tabblad **Marketplace** van de pagina **nieuwe aanbieding** kunt u uw potentiële klanten voorzien van marketing-, verkoop-en juridische informatie en-overeenkomsten en de leads beheren die zijn gegenereerd op basis van de Marketplace. Deze lange vorm is onderverdeeld in vier secties: **overzicht**, **marketing artefacten**, **beheer van leads**en **juridisch**.
+Op het tabblad **Marketplace** van de pagina **Nieuwe aanbieding** u uw potentiële klanten marketing- en verkoop- en juridische informatie en overeenkomsten bieden en leads beheren die vanuit de markt worden gegenereerd. Deze lange vorm is verdeeld in vier secties: **Overzicht**, **Marketing Artefacten,** **Lead Management**, en **Juridische**.
 
 
 ## <a name="overview-section"></a>Overzichtssectie
-In deze sectie voert u de algemene informatie in over uw Azure Marketplace-aanbieding.  Een toegevoegd sterretje (*) op de veld naam geeft aan dat deze vereist is.
+Voer in deze sectie de algemene informatie over uw Azure Marketplace-aanbieding in.  Een toegevoegd sterretje (*) op de veldnaam geeft aan dat dit vereist is.
 
-![Overzichts sectie van het tabblad Marketplace voor virtuele machines](./media/publishvm_008.png)
+![Overzichtssectie van het tabblad Marketplace voor virtuele machines](./media/publishvm_008.png)
 
-In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden gedicteerd door een asterisk (*).
+In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden aangeklaagd door een sterretje (*).
 
 |  **Veld**                |     **Beschrijving**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Titel\***                 | Titel van de aanbieding, vaak de lange, formele naam. Deze titel wordt prominent weer gegeven in de Marketplace.  Maximale lengte van 50 tekens. |
-| **Samenvatting\***               | Kort doel of functie van de oplossing.  Maximale lengte van 100 tekens. |
-| **\* van lange samen vatting**          | Doel of functie van de oplossing.  Maximale lengte van 256 tekens. |
-| **Beschrijving\***           | Beschrijving van de oplossing.  De maximale lengte van 3000 tekens biedt ondersteuning voor eenvoudige HTML-opmaak. |
-| **Micro soft CSP-reseller Channel\*** | Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het marketing gebruik van uw aanbieding via de micro soft CSP-partner kanalen. |
-| **Marketing-id\***  | Een unieke URL om aan deze aanbieding te koppelen, bevat doorgaans de naam van uw organisatie en de oplossing, maximale lengte van 50 tekens.  Bijvoorbeeld: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Preview-abonnement-Id's\*** | Voeg een id toe aan 100-abonnement-id's van Previewers. Deze op wit vermelde abonnementen hebben toegang tot de aanbieding nadat deze is gepubliceerd, voordat ze live gaan. |
-| **Nuttige koppelingen**          | Voeg Url's toe aan de documenties, opmerkingen bij de release, veelgestelde vragen, enzovoort. |
-| **Aanbevolen categorieën\*** | Selecteer Maxi maal twee (2) categorieën, inclusief een primaire en secundaire categorie (optioneel). Selecteer Maxi maal twee (2) subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken. |
+| **Titel\***                 | Titel van het aanbod, vaak de lange, formele naam. Deze titel zal prominent worden weergegeven in de markt.  Maximale lengte van 50 tekens. |
+| **Samenvatting\***               | Kort doel of functie van oplossing.  Maximale lengte van 100 tekens. |
+| **Lange samenvatting\***          | Doel of functie van oplossing.  Maximale lengte van 256 tekens. |
+| **Beschrijving\***           | Beschrijving van de oplossing.  Maximale lengte van 3000 tekens, ondersteunt eenvoudige HTML-opmaak. |
+| **Microsoft CSP Reseller-kanaal\*** | Cloud Solution Providers (CSP) partnerkanaal opt-in is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het op de markt brengen van uw aanbieding via de Microsoft CSP-partnerkanalen. |
+| **Marketing-id\***  | Een unieke URL om aan deze aanbieding te koppelen, bevat meestal uw organisatie en oplossingsnaam, maximale lengte 50 tekens.  Bijvoorbeeld: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Voorbeeld van abonnements-iD's bekijken\*** | Voeg één tot 100 abonnements-id's van previewers toe. Deze abonnementen op de witte lijst hebben toegang tot de aanbieding zodra deze is gepubliceerd, voordat het live gaat. |
+| **Nuttige links**          | Url's toevoegen aan de documentatie, releasenotes, veelgestelde vragen, enzovoort. |
+| **Voorgestelde rubrieken\*** | Selecteer maximaal twee (2) categorieën, waaronder een primaire en een secundaire categorie (optioneel). Selecteer maximaal twee (2) subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, is het aanbod nog steeds alleen te ontdekken in de geselecteerde categorie. |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>Sectie Marketing artefacten
+## <a name="marketing-artifacts-section"></a>Sectie Marketingartefacten
 
-Deze tweede sectie is onderverdeeld in drie subsecties: **logo's**, **scherm afbeelding**en **Video's**. Logo's zijn de enige vereiste marketing artefacten, maar alles wordt sterk aanbevolen voor het beste bezwaar van de klant. 
+Dit tweede deel is verdeeld in drie subsecties: **Logos**, **Screenshot**, en **Video's**. Logo's zijn de enige vereiste marketing artefacten, maar alle zijn sterk aanbevolen voor de beste oproep van de klant. 
 
-![Het gedeelte Marketing artefacten op het tabblad Marketplace van het formulier nieuwe aanbieding voor virtuele machines](./media/publishvm_009.png)
+![Sectie Marketingartefacten van het tabblad Marketplace op het formulier Nieuwe aanbieding voor virtuele machines](./media/publishvm_009.png)
 
-In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden gedicteerd door een asterisk (*).
+In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden aangeklaagd door een sterretje (*).
 
 |  **Veld**                |     **Beschrijving**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Logo's*  |  |
-| **Kleine\***                 | 40x40 pixel. ico-bitmap                                                      |
-| **Medium\***                | 90x90 pixel. ico-bitmap                                                      |
-| **Grote\***                 | 115x115 pixel. ico-bitmap                                                   |
-| **Brede\***                  | 255x115 pixel. ico-bitmap                                                    |
-| **Hero**                  | 815x290-bitmap.  Optioneel, maar wanneer het held pictogram is geüpload, kan het niet worden verwijderd. |
-| *Opnames*  | Optioneel, maar Maxi maal vijf scherm opnamen per SKU. |
+| *Logos*  |  |
+| **Klein\***                 | 40x40 pixel .ico bitmap                                                      |
+| **Medium\***                | 90x90 pixel .ico bitmap                                                      |
+| **Groot\***                 | 115x115 pixel .ico bitmap                                                   |
+| **Breed\***                  | 255x115 pixel .ico bitmap                                                    |
+| **Held**                  | 815x290 bitmap.  Optioneel, maar eenmaal geüpload kan het heldenpictogram niet worden verwijderd. |
+| *Schermopnamen*  | Optioneel, maar maximaal vijf screenshots per SKU. |
 | **Naam**                  | Naam of titel <!-- TODO - max char length? none specified in UI -->                               |
-| **Installatiekopie**                 | Afbeelding van scherm opname, 533x324 pixel                                         |
+| **Afbeelding**                 | Beeldopname van het scherm, 533x324 pixel                                         |
 | *Video's*  |  |
 | **Naam**                  | Naam of titel  <!-- TODO - max char length? -->                              |
 | **Koppeling**                  | Video-URL, gehost op YouTube of Vimeo                                        |
-| **Voorbeeld**             | 533x324-bitmap                                                               |
+| **Miniatuur**             | 533x324 bitmap                                                               |
 |   |   |
 
 ### <a name="logo-guidelines"></a>Logorichtlijnen
@@ -71,62 +70,62 @@ In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Ve
 <!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-Alle logo's die naar het Cloud Partner-portal worden geüpload, moeten de volgende richt lijnen volgen:
+Alle logo's die naar de Cloud Partner Portal zijn geüpload, moeten de richtlijnen volgen:
 
-*  Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Laat het aantal primaire en secundaire kleuren op uw logo laag.
-*  De thema kleuren van de Azure Portal zijn wit en zwart. Vermijd het gebruik van deze kleuren als de achtergrond kleur van uw logo's. Gebruik een kleur waarmee uw logo's prominent worden gemaakt in de Azure Portal. We adviseren eenvoudige primaire kleuren. Als u transparante achtergrond gebruikt, moet u ervoor zorgen dat de logo's/tekst niet wit of zwart of blauw zijn.
-*  Gebruik geen achtergrond met kleur overgang in uw logo.
-*  Vermijd het plaatsen van tekst, zelfs uw naam van uw bedrijf of merk, op het logo. Het uiterlijk van uw logo moet ' plat ' zijn en moet geen kleur overgangen hebben.
-*  Rekt het logo niet uit.
+*  Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Houd het aantal primaire en secundaire kleuren op uw logo laag.
+*  De themakleuren van de Azure-portal zijn wit en zwart. Vermijd daarom het gebruik van deze kleuren als de achtergrondkleur van uw logo's. Gebruik een kleur die uw logo's prominent zou maken in de Azure-portal. We adviseren eenvoudige primaire kleuren. Als u een transparante achtergrond gebruikt, zorg er dan voor dat de logo's/tekst niet wit, zwart of blauw zijn.
+*  Gebruik geen verloopachtergrond op uw logo.
+*  Plaats geen tekst, zelfs uw bedrijf of merknaam, op het logo. De look en feel van uw logo moet "plat" zijn en hellingen vermijden.
+*  Rek het logo niet uit.
 
 #### <a name="hero-logo"></a>Hero-logo
 
-Het held-logo is optioneel; Als het pictogram van de held eenmaal is geüpload, kan het niet meer worden verwijderd.  Het pictogram van het held logo moet voldoen aan de richt lijnen:
+Het Hero-logo is optioneel; maar eenmaal geüpload, kan het heldenpictogram niet worden verwijderd.  Het pictogram van het Hero-logo moet de richtlijnen volgen:
 
-*  Zwart, wit en transparante achtergronden zijn niet toegestaan voor held-pictogrammen.
-*  Vermijd het gebruik van lichte kleuren als achtergrond van het held-pictogram.  De weergave naam van de uitgever, de titel van de planning en de lange samen vatting van de aanbieding worden weer gegeven in witte tekst kleur en moeten worden opgezocht op de achtergrond.
-*  Vermijd het gebruik van de meeste tekst tijdens het ontwerpen van het held-logo.  De naam van de uitgever, de titel van het abonnement, de lange samen vatting van de aanbieding en een knop maken zijn Inge sloten in een programma binnen het held-pictogram wanneer de aanbiedings lijsten. 
-* Voeg een ongebruikte rechthoek aan de rechter kant van het pictogram van uw held toe, met een grootte van 415x100 pixels en offset 370 PX vanaf links.  
+*  Zwarte, witte en transparante achtergronden zijn niet toegestaan voor heldenpictogrammen.
+*  Vermijd het gebruik van een lichte kleur als achtergrond van de held pictogram.  De weergavenaam publisher, de titel van het abonnement en het lange overzicht van de aanbieding worden weergegeven in witte lettertypekleur en moeten opvallen tegen de achtergrond.
+*  Vermijd het gebruik van de meeste tekst terwijl u het hero-logo ontwerpt.  De naam van de uitgever, de titel van het abonnement, het lang overzicht van de aanbieding en een knop maken zijn programmatisch ingebed in het heldenpictogram wanneer de aanbieding wordt weergegeven. 
+* Voeg een ongebruikte rechthoek toe aan de rechterkant van het heldenpictogram, van 415x100 pixels en een verschuiving van 370 px vanaf links.  
 
-Als voor beeld is het volgende held pictogram voor de Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
+Als voorbeeld is het volgende heldenpictogram voor de Azure Container Service.  <!-- TD: It would be nice to have the raw bitmap, e.g.before and after embedding. -->
 
-![Voor beeld van een held pictogram voor Azure Container Service](./media/publishvm_010.png)
-
-
-### <a name="marketing-information-example"></a>Marketing informatie-voor beeld 
-
-De volgende afbeelding laat zien hoe marketing informatie wordt weer gegeven op de pagina hoofd product van micro soft Windows Server.
-
-![Voorbeeld product pagina voor micro soft Windows Server](./media/publishvm_011.png)
+![Voorbeeldpictogram voor Azure Container Service](./media/publishvm_010.png)
 
 
-## <a name="lead-management-section"></a>Sectie Lead beheer
+### <a name="marketing-information-example"></a>Voorbeeld van marketinginformatie 
 
-Met het derde gedeelte kunt u leads van klanten verzamelen die zijn gegenereerd op basis van uw aanbiedingen in azure Marketplace. Het biedt de volgende opslag opties (uit een vervolg keuzelijst) voor deze lead gegevens.
+In de volgende afbeelding ziet u hoe marketinginformatie wordt weergegeven op de hoofdproductpagina van Microsoft Windows Server.
 
-* **Geen** : de standaard informatie over de lead wordt niet verzameld.
-* Azure-tabel-geschreven naar de Azure-tabel die is opgegeven door een connection string.
-* Dynamics CRM Online: geschreven naar het [micro soft Dynamics 365 online](https://dynamics.microsoft.com/) -exemplaar, opgegeven door een URL en verificatie referenties.
-* HTTPS-eind punt dat is geschreven naar het opgegeven HTTPS-eind punt als JSON-nettolading.
-* Market-geschreven naar het opgegeven [marketo](https://www.marketo.com/) -exemplaar, opgegeven door de server-id, Munchkin-id en formulier-id.
-* Sales Force-geschreven naar een [Sales Force](https://www.salesforce.com/) -data base, opgegeven door een object-id.
+![Voorbeeld productpagina voor Microsoft Windows Server](./media/publishvm_011.png)
 
-Nadat u uw aanbieding hebt gepubliceerd, wordt de verbinding van de lead gevalideerd en wordt er automatisch een test lead verzonden naar de geconfigureerde bestemming. Lead gegevens moeten voortdurend worden beheerd en deze instellingen moeten onmiddellijk worden bijgewerkt wanneer er wijzigingen worden aangebracht in de beheer architectuur van uw klanten.
+
+## <a name="lead-management-section"></a>Sectie Leadbeheer
+
+In het derde gedeelte u klantenleads verzamelen die zijn gegenereerd uit uw Azure Marketplace-aanbiedingen. Het biedt de volgende opslagopties (uit een vervolgkeuzelijst) voor deze leadinformatie.
+
+* **Geen** - de standaard, leadinformatie wordt niet verzameld.
+* Azure Table - geschreven naar de Azure-tabel die is opgegeven door een verbindingstekenreeks.
+* Dynamics CRM Online - geschreven naar de instantie [Microsoft Dynamics 365 Online,](https://dynamics.microsoft.com/) opgegeven op basis van een URL en verificatiereferenties.
+* HTTPS-eindpunt - geschreven naar het opgegeven HTTPS-eindpunt als json-payload.
+* Marketo - geschreven naar de opgegeven [Instantie Marketo,](https://www.marketo.com/) opgegeven door server-ID, munchkin-id en formulier-ID.
+* Salesforce - geschreven naar een [Salesforce-database,](https://www.salesforce.com/) opgegeven door een object-id.
+
+Nadat u uw aanbieding hebt gepubliceerd, wordt de leadverbinding gevalideerd en wordt een testlead automatisch naar de geconfigureerde bestemming verzonden. Leadinformatie moet continu worden beheerd en deze instellingen moeten onmiddellijk worden bijgewerkt wanneer er wijzigingen worden aangebracht in uw architectuur voor klantbeheer.
 
 <!-- TD: For more info, see [Need a topic on lead information and processing that mimics the Appendix of the VM Pub Guide]. -->
 
-## <a name="legal-section"></a>Juridisch gedeelte
+## <a name="legal-section"></a>Juridische sectie
 
-In deze laatste sectie kunt u de vereiste juridische documenten voor elke aanbieding opgeven.  
+In dit laatste gedeelte u de vereiste juridische documenten verstrekken die nodig zijn voor elke aanbieding.  
 
 |  **Veld**                    |     **Beschrijving**                                        |
 |  ---------                    |     ---------------                                        |
-| **URL van privacybeleid\***      | URL naar het geposte privacybeleid                          |
-| **Standaard contract gebruiken?\***  |   |
-| **Gebruiksvoorwaarden\***            | beleid als tekst zonder opmaak of eenvoudige HTML.                       |
+| **URL van het privacybeleid\***      | URL naar uw geplaatste privacybeleid                          |
+| **Standaardcontract gebruiken?\***  |   |
+| **Gebruiksvoorwaarden\***            | beleid als platte tekst of eenvoudige HTML.                       |
 |  |  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Op het tabblad volgende [ondersteuning](./cpp-support-tab.md) geeft u technische en gebruikers ondersteuning voor uw aanbieding.
+Op het volgende [tabblad Ondersteuning](./cpp-support-tab.md) biedt u technische en gebruikersondersteuningsbronnen voor uw aanbieding.

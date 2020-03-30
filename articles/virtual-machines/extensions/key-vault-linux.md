@@ -1,6 +1,6 @@
 ---
-title: VM-extensie Azure Key Vault voor Linux
-description: Implementeer een agent die het automatisch vernieuwen van Key Vault-certificaten op virtuele machines uitvoert met behulp van een extensie van de virtuele machine.
+title: Azure Key Vault VM-extensie voor Linux
+description: Implementeer een agent die automatische vernieuwing van Key Vault-certificaten uitvoert op virtuele machines met behulp van een extensie voor virtuele machines.
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298985"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault virtuele machine extensie voor Linux
 
-De Key Vault VM-extensie biedt automatisch vernieuwen van certificaten die zijn opgeslagen in een Azure-sleutel kluis. De uitbrei ding bewaakt met name een lijst van waargenomen certificaten die zijn opgeslagen in sleutel kluizen.  Bij het detecteren van een wijziging haalt de extensie de bijbehorende certificaten op en installeert deze. De extensie van de Key Vault-VM wordt gepubliceerd en ondersteund door micro soft, momenteel op Linux Vm's. In dit document vindt u informatie over de ondersteunde platforms, configuraties en implementatie opties voor de Key Vault VM-extensie voor Linux. 
+De Key Vault VM-extensie biedt automatische vernieuwing van certificaten die zijn opgeslagen in een Azure-sleutelkluis. In het bijzonder controleert de extensie een lijst met waargenomen certificaten die zijn opgeslagen in belangrijke kluizen.  Bij het detecteren van een wijziging wordt de extensie opgehaald en installeert de bijbehorende certificaten. De Key Vault VM-extensie wordt gepubliceerd en ondersteund door Microsoft, momenteel op Linux VM's. In dit document worden de ondersteunde platforms, configuraties en implementatieopties voor de Key Vault VM-extensie voor Linux beschreven. 
 
 ### <a name="operating-system"></a>Besturingssysteem
 
@@ -25,16 +25,16 @@ De Key Vault VM-extensie ondersteunt deze Linux-distributies:
 
 - Ubuntu-1604
 - Ubuntu-1804
-- Debian-9
-- SuSE-15 
+- Debian-9 Debian-9
+- Suse-15 
 
-### <a name="supported-certificate-content-types"></a>Ondersteunde inhouds typen voor certificaten
+### <a name="supported-certificate-content-types"></a>Ondersteunde certificaatinhoudstypen
 
 - PKCS #12
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Met name:  
+In de volgende JSON wordt het schema voor de VM-extensie Key Vault weergegeven. De extensie vereist geen beveiligde instellingen - alle instellingen worden beschouwd als informatie zonder beveiligingsgevolgen. De extensie vereist een lijst met bewaakte geheimen, pollingfrequentie en het doelcertificaatarchief. Met name:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -64,32 +64,32 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 ```
 
 > [!NOTE]
-> De Url's van uw waargenomen certificaten moeten van het formulier `https://myVaultName.vault.azure.net/secrets/myCertName`zijn.
+> Uw waargenomen certificaten-URL's `https://myVaultName.vault.azure.net/secrets/myCertName`moeten van het formulier zijn.
 > 
-> Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het pad van de `/certificates` niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Dit komt `/secrets` omdat het pad het volledige certificaat retourneert, inclusief de privésleutel, terwijl het `/certificates` pad dat niet doet. Meer informatie over certificaten vindt u hier: [Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
-### <a name="property-values"></a>Waarden van eigenschappen
+### <a name="property-values"></a>Eigenschapswaarden
 
-| Naam | Waarde / voorbeeld | Gegevenstype |
+| Name | Waarde / Voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | tekenreeks |
+| uitgever | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForLinux | tekenreeks |
-| typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | tekenreeks |
-| Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | onwaar | booleaans |
-| certificateStoreLocation  | LocalMachine | tekenreeks |
-| requiredInitialSync | true | booleaans |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Teken reeks matrix
+| typeHandlerVersie | 1.0 | int |
+| pollingIntervalins | 3600 | tekenreeks |
+| certificateStoreName | MY | tekenreeks |
+| linkOnRenewal | false | booleaans |
+| certificateStoreLocatie  | LokaalMachine | tekenreeks |
+| vereistInitialSync | waar | booleaans |
+| waargenomenCertificaten  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | tekenreeksarray
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines die na de implementatie van certificaten moeten worden vernieuwd. De uitbrei ding kan worden geïmplementeerd op afzonderlijke Vm's of virtuele-machine schaal sets. Het schema en de configuratie zijn gebruikelijk voor beide sjabloon typen. 
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor certificaten moeten worden vernieuwd na implementatie. De extensie kan worden geïmplementeerd in afzonderlijke VM's of virtuele machineschaalsets. Het schema en de configuratie zijn gemeenschappelijk voor beide sjabloontypen. 
 
-De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest in het resource fragment van de virtuele machine van de sjabloon, met name `"resources": []` object voor de virtuele-machine sjabloon en in het geval van een virtuele-machine schaalset onder `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`-object.
+De JSON-configuratie voor een extensie van een virtuele machine moet worden `"resources": []` genest in het fragment van de virtuele `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` machinebron van de sjabloon, met name object voor de sjabloon voor virtuele machines en in het geval van een virtuele machineschaal die onder object is ingesteld.
 
 ```json
     {
@@ -120,9 +120,9 @@ De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell-implementatie
 
-De Azure PowerShell kan worden gebruikt om de Key Vault VM-extensie te implementeren op een bestaande virtuele machine of virtuele-machine schaalset. 
+De Azure PowerShell kan worden gebruikt om de Key Vault VM-extensie te implementeren in een bestaande virtuele machine of virtuele machineschaalset. 
 
-* De uitbrei ding implementeren op een virtuele machine:
+* Ga als lid van het nieuwe bedrijf over op een virtuele machine:
     
     ```powershell
         # Build settings
@@ -141,7 +141,7 @@ De Azure PowerShell kan worden gebruikt om de Key Vault VM-extensie te implement
     
     ```
 
-* De uitbrei ding implementeren op een schaalset voor virtuele machines:
+* Ga als lid van het nieuwe gebruik van de extensie op een virtuele machineschaalset:
 
     ```powershell
     
@@ -166,9 +166,9 @@ De Azure PowerShell kan worden gebruikt om de Key Vault VM-extensie te implement
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op een bestaande virtuele machine of virtuele-machine schaalset. 
+De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren in een bestaande virtuele machine of virtuele machineschaalset. 
  
-* De uitbrei ding implementeren op een virtuele machine:
+* Ga als lid van het nieuwe bedrijf over op een virtuele machine:
     
     ```azurecli
        # Start the deployment
@@ -179,7 +179,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-* De uitbrei ding implementeren op een schaalset voor virtuele machines:
+* Ga als lid van het nieuwe gebruik van de extensie op een virtuele machineschaalset:
 
    ```azurecli
         # Start the deployment
@@ -191,27 +191,27 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
     ```
 
 Houd rekening met de volgende beperkingen/vereisten:
-- Key Vault beperkingen:
-  - Deze moet op het moment van de implementatie bestaan 
-  - Key Vault toegangs beleid is ingesteld voor de VM-VMSS-identiteit met behulp van MSI
+- Key Vault-beperkingen:
+  - Het moet bestaan op het moment van de implementatie 
+  - Key Vault Access Policy is ingesteld voor VM/VMSS Identity met MSI
 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal en met behulp van de Azure PowerShell. Als u de implementatie status van extensies voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure PowerShell.
+Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure PowerShell. Als u de implementatiestatus van extensies voor een bepaalde vm wilt bekijken, voert u de volgende opdracht uit met de Azure PowerShell.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.

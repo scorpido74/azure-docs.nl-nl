@@ -1,6 +1,6 @@
 ---
-title: Tokens verkrijgen om een web-API (daemon-app) aan te roepen-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een daemon-app die web-Api's aanroept (tokens ophalen)
+title: Tokens aanschaffen om een web-API aan te roepen (daemon-app) - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het bouwen van een daemon-app die web-API's aanroept (tokens aanschaffen)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,19 +16,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7f1010949a72f95ef2836c43666e6cea9281e04d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262644"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-API's aanroept - een token aanschaffen
 
-Nadat u een vertrouwelijke client toepassing hebt gemaakt, kunt u een token voor de app verkrijgen door `AcquireTokenForClient`aan te roepen, het bereik aan te geven en eventueel een vernieuwing van het token te forceren.
+Nadat u een vertrouwelijke clienttoepassing hebt gemaakt, u een `AcquireTokenForClient`token voor de app aanschaffen door te bellen, het bereik door te geven en optioneel een vernieuwing van het token te forceren.
 
-## <a name="scopes-to-request"></a>Te aanvragen scopes
+## <a name="scopes-to-request"></a>Scopes om aan te vragen
 
-Het bereik dat moet worden aangevraagd voor een client referentie stroom is de naam van de resource, gevolgd door `/.default`. Deze notatie vertelt Azure Active Directory (Azure AD) voor het gebruik van de *machtigingen op toepassings niveau* die statisch zijn gedeclareerd tijdens de registratie van de toepassing. Daarnaast moeten deze API-machtigingen worden verleend door een Tenant beheerder.
+Het bereik dat u moet aanvragen voor een clientreferentiestroom, is de naam van de resource, gevolgd door `/.default`. Met deze notatie wordt azure active directory (Azure AD) gevraagd om de *machtigingen op toepassingsniveau* te gebruiken die statisch zijn gedeclareerd tijdens de registratie van toepassingen. Deze API-machtigingen moeten ook worden verleend door een tenantbeheerder.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -39,7 +39,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="python"></a>[Python](#tab/python)
 
-In MSAL python ziet het configuratie bestand eruit als het volgende code fragment:
+In MSAL Python ziet het configuratiebestand eruit als dit codefragment:
 
 ```Json
 {
@@ -55,17 +55,17 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="azure-ad-v10-resources"></a>Azure AD (v 1.0)-resources
+### <a name="azure-ad-v10-resources"></a>Azure AD-bronnen (v1.0)
 
-Het bereik dat wordt gebruikt voor client referenties moet altijd de resource-ID zijn, gevolgd door `/.default`.
+Het bereik dat wordt gebruikt voor clientreferenties `/.default`moet altijd de resource-id zijn, gevolgd door .
 
 > [!IMPORTANT]
-> Wanneer MSAL een toegangs token aanvraagt voor een resource die een versie 1,0-toegangs token accepteert, parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als resource-id te gebruiken.
-> Als bijvoorbeeld, als Azure SQL Database (**https:\//database.Windows.net**), de resource verwacht dat een doel groep eindigt met een slash (voor Azure SQL Database, `https://database.windows.net/`), moet u een bereik van `https://database.windows.net//.default`aanvragen. (Let op de dubbele slash.) Zie ook MSAL.NET issue [#747: de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Wanneer MSAL een toegangstoken aanvraagt voor een bron die een versie 1.0-toegangstoken accepteert, ontleedt Azure AD het gewenste publiek uit het gevraagde bereik door alles voor de laatste slash te nemen en deze te gebruiken als resource-id.
+> Dus als de bron, net als Azure SQL Database **(https:\//database.windows.net),** een `https://database.windows.net/`doelgroep verwacht die eindigt met `https://database.windows.net//.default`een slash (voor Azure SQL Database), moet u een bereik van . (Let op de dubbele slash.) Zie ook MSAL.NET probleem [#747: De trailing slash van de resourceurl wordt weggelaten, waardoor sql auth-fouten zijn mislukt.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)
 
-## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
+## <a name="acquiretokenforclient-api"></a>OvernameTokenForClient API
 
-Voor het verkrijgen van een token voor de app gebruikt u `AcquireTokenForClient` of het equivalent ervan, afhankelijk van het platform.
+Als u een token voor de `AcquireTokenForClient` app wilt aanschaffen, gebruikt u of het equivalent ervan, afhankelijk van het platform.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -122,7 +122,7 @@ else:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Deze code wordt geëxtraheerd uit de [MSAL java dev](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)-voor beelden.
+Deze code wordt gewonnen uit de [MSAL Java dev monsters.](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)
 
 ```Java
 private static IAuthenticationResult acquireToken() throws Exception {
@@ -173,9 +173,9 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ### <a name="protocol"></a>Protocol
 
-Als u nog geen bibliotheek hebt voor de taal die u hebt gekozen, kunt u het protocol het beste rechtstreeks gebruiken:
+Als u nog geen bibliotheek voor de door u gekozen taal hebt, u het protocol rechtstreeks gebruiken:
 
-#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>Eerste geval: toegang tot de token aanvraag met behulp van een gedeeld geheim
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>Eerste geval: Toegang tot het tokenverzoek met behulp van een gedeeld geheim
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
@@ -188,7 +188,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Tweede geval: toegang tot de token aanvraag met behulp van een certificaat
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Tweede aanvraag: Toegang tot de tokenaanvraag met behulp van een certificaat
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
@@ -202,22 +202,22 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-client referenties stroom](v2-oauth2-client-creds-grant-flow.md)voor meer informatie.
+Zie voor meer informatie de protocoldocumentatie: [Microsoft-identiteitsplatform en de stroom van de gegevens van de OAuth 2.0-clientreferenties](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Toepassings token cache
+## <a name="application-token-cache"></a>Cache voor toepassingstoken
 
-In MSAL.NET gebruikt `AcquireTokenForClient` de token cache van de toepassing. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep `AcquireTokenSilent` niet aan voordat u `AcquireTokenForClient`aanroept, omdat `AcquireTokenSilent` de cache van de *gebruikers* token gebruikt. `AcquireTokenForClient` controleert de cache van het *toepassings* token zelf en werkt deze bij.
+In MSAL.NET `AcquireTokenForClient` gebruikt u de cache van het toepassingstoken. (Alle andere AcquireToken*XX-methoden* gebruiken de cache van het gebruikerstoken.) Bel niet `AcquireTokenSilent` voordat u `AcquireTokenForClient`belt, omdat `AcquireTokenSilent` u de cache van het *gebruikerstoken* gebruikt. `AcquireTokenForClient`controleert de cache van het *toepassingstoken* zelf en werkt deze bij.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>Hebt u het resource/.-standaard bereik gebruikt?
+### <a name="did-you-use-the-resourcedefault-scope"></a>Heeft u de resource/.default scope gebruikt?
 
-Als er een fout bericht wordt weer gegeven met de melding dat u een ongeldig bereik hebt gebruikt, hebt u waarschijnlijk het `resource/.default` bereik niet gebruikt.
+Als u een foutbericht ontvangt waarin staat dat u een ongeldige scope hebt gebruikt, hebt u het `resource/.default` bereik waarschijnlijk niet gebruikt.
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Bent u verg eten om beheerders toestemming te geven? Daemon-apps zijn vereist!
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Bent u vergeten toestemming van de beheerder te geven? Daemon apps hebben het nodig!
 
-Als u een **ontoereikende bevoegdheid krijgt om de bewerkings fout te volt ooien** wanneer u de API aanroept, moet de Tenant beheerder machtigingen verlenen voor de toepassing. Zie stap 6 van de bovenstaande client-app registreren.
-Normaal gesp roken ziet u een fout die er als volgt uitziet:
+Als u onvoldoende bevoegdheden krijgt **om de bewerkingsfout te voltooien** wanneer u de API aanroept, moet de tenantbeheerder machtigingen verlenen aan de toepassing. Zie stap 6 van Registreer de client-app hierboven.
+U ziet meestal een fout die lijkt op deze fout:
 
 ```JSon
 Failed to call the web API: Forbidden
@@ -238,16 +238,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [Daemon-app - een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [Daemon-app - een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon-app: een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [Daemon-app - een web-API aanroepen](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
 
 ---

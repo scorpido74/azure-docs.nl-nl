@@ -1,6 +1,6 @@
 ---
-title: De beschik baarheid van Windows-Vm's in azure beheren
-description: Meer informatie over het gebruik van meerdere virtuele machines om te zorgen voor hoge Beschik baarheid voor uw Windows-toepassing in azure
+title: De beschikbaarheid van Windows VM's in Azure beheren
+description: Meer informatie over het gebruik van meerdere virtuele machines om een hoge beschikbaarheid voor uw Windows-toepassing in Azure te garanderen
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,22 +16,22 @@ ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae5d60f77319a6590807ae0b18a0c07c116e128b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267441"
 ---
-# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>De beschik baarheid van virtuele Windows-machines in azure beheren 
+# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Beschikbaarheid van virtuele Windows-machines beheren in Azure 
 
-Meer informatie over manieren om meerdere virtuele machines in te stellen en te beheren om hoge Beschik baarheid te garanderen voor uw Windows-toepassing in Azure. U kunt ook [de beschik baarheid van virtuele Linux-machines beheren](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Meer informatie over manieren om meerdere virtuele machines in te stellen en te beheren om een hoge beschikbaarheid voor uw Windows-toepassing in Azure te garanderen. U ook [de beschikbaarheid van Linux virtuele machines beheren.](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [virtuele machines met taak verdeling](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over taak verdeling voor uw virtuele machines.
+Zie [Load Balancing virtuele machines voor](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)meer informatie over het balanceren van uw virtuele machines.
 
-Referentie architecturen weer geven voor het uitvoeren van toepassingen met N-tier op SQL Server in IaaS
+Referentiearchitecturen weergeven voor het uitvoeren van N-tier-toepassingen op SQL Server in IaaS
 
-* [Windows N-tier-toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N-tier toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge beschikbaarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

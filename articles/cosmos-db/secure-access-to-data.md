@@ -1,55 +1,55 @@
 ---
 title: Meer informatie over het beveiligen van toegang tot gegevens in Azure Cosmos DB
-description: Meer informatie over toegangs beheer concepten in Azure Cosmos DB, waaronder hoofd sleutels, alleen-lezen sleutels, gebruikers en machtigingen.
+description: Meer informatie over concepten voor toegangscontrole in Azure Cosmos DB, inclusief hoofdsleutels, alleen-lezensleutels, gebruikers en machtigingen.
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251815"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
-Dit artikel bevat een overzicht van het beveiligen van de toegang tot gegevens die zijn opgeslagen in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+In dit artikel vindt u een overzicht van het beveiligen van toegang tot gegevens die zijn opgeslagen in [Microsoft Azure Cosmos DB.](https://azure.microsoft.com/services/cosmos-db/)
 
-Azure Cosmos DB gebruikt twee typen sleutels om gebruikers te verifiëren en toegang te bieden tot de gegevens en bronnen van de gebruiker. 
+Azure Cosmos DB gebruikt twee soorten sleutels om gebruikers te verifiëren en toegang te bieden tot de gegevens en bronnen. 
 
-|Type sleutel|Bronnen|
+|Type sleutel|Resources|
 |---|---|
-|[Hoofd sleutels](#master-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
-|[Bron tokens](#resource-tokens)|Gebruikt voor toepassings resources: containers, documenten, bijlagen, opgeslagen procedures, triggers en Udf's|
+|[Hoofdtoetsen](#master-keys) |Wordt gebruikt voor beheerdersbronnen: databaseaccounts, databases, gebruikers en machtigingen|
+|[Brontokens](#resource-tokens)|Gebruikt voor toepassingsbronnen: containers, documenten, bijlagen, opgeslagen procedures, triggers en UDF's|
 
 <a id="master-keys"></a>
 
-## <a name="master-keys"></a>Hoofd sleutels
+## <a name="master-keys"></a>Hoofdtoetsen
 
-Hoofd sleutels bieden toegang tot alle beheer resources voor het database account. Hoofd sleutels:
+Hoofdsleutels bieden toegang tot alle beheerbronnen voor het databaseaccount. Hoofdtoetsen:
 
-- Toegang bieden tot accounts, data bases, gebruikers en machtigingen. 
-- Kan niet worden gebruikt om nauw keurige toegang tot containers en documenten te bieden.
-- Worden gemaakt tijdens het maken van een account.
-- Kan op elk gewenst moment opnieuw worden gegenereerd.
+- Geef toegang tot accounts, databases, gebruikers en machtigingen. 
+- Kan niet worden gebruikt om gedetailleerde toegang tot containers en documenten te bieden.
+- Worden gemaakt tijdens het aanmaken van een account.
+- Kan op elk gewenst moment worden geregenereerd.
 
-Elk account bestaat uit twee hoofd sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens.
+Elk account bestaat uit twee mastertoetsen: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is, zodat u regenereren, of roll sleutels, het verstrekken van continue toegang tot uw account en gegevens.
 
-Naast de twee hoofd sleutels voor het Cosmos DB-account, zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen lees bewerkingen voor het account toe. Alleen-lezen sleutels bieden geen toegang tot het lezen van machtigings bronnen.
+Naast de twee hoofdtoetsen voor het Cosmos DB-account zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen leesbewerkingen op het account toe. Alleen-lezensleutels bieden geen toegang tot bronnen met leesmachtigingen.
 
-De hoofd sleutels primair, secundair, alleen-lezen en lezen/schrijven kunnen worden opgehaald en opnieuw worden gegenereerd met behulp van de Azure Portal. Zie [toegangs sleutels weer geven, kopiëren en opnieuw genereren](manage-with-cli.md#regenerate-account-key)voor instructies.
+Hoofdteksten voor primaire, secundaire, alleen-lezen en leesschrijfmastersleutels kunnen worden opgehaald en geregenereerd met behulp van de Azure-portal. Zie [Toegangssleutels weergeven, kopiëren en regenereren](manage-with-cli.md#regenerate-account-key)voor instructies.
 
-![Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Toegangsbeheer (IAM) in de Azure-portal - nosql-databasebeveiliging demonstreren](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-Het proces van het draaien van de hoofd sleutel is eenvoudig. Navigeer naar het Azure Portal om uw secundaire sleutel op te halen, vervang uw primaire sleutel door de secundaire sleutel in uw toepassing en draai vervolgens de primaire sleutel in de Azure Portal.
+Het proces van het roteren van uw master key is eenvoudig. Navigeer naar de Azure-portal om uw secundaire sleutel op te halen en vervang vervolgens uw primaire sleutel door uw secundaire sleutel in uw toepassing en draai de primaire sleutel in de Azure-portal.
 
-![Rotatie van hoofd sleutel in de Azure Portal-demonstring NoSQL data base Security](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+![Hoofdsleutelrotatie in de Azure-portal - nosql-databasebeveiliging demonstreren](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
-### <a name="code-sample-to-use-a-master-key"></a>Code voorbeeld voor gebruik van een hoofd sleutel
+### <a name="code-sample-to-use-a-master-key"></a>Codevoorbeeld om een hoofdsleutel te gebruiken
 
-In het volgende code voorbeeld ziet u hoe u een Cosmos DB account-eind punt en hoofd sleutel kunt gebruiken om een DocumentClient te instantiëren en een Data Base te maken.
+In het volgende codevoorbeeld wordt uitgelegd hoe u een eindpunt en hoofdsleutel van een Cosmos DB-account gebruikt om een DocumentClient te instantiëren en een database te maken.
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -62,42 +62,42 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-## Bron tokens<a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>Brontokens<a id="resource-tokens"></a>
 
-Bron tokens bieden toegang tot de toepassings resources binnen een Data Base. Bron tokens:
+Resourcetokens bieden toegang tot de toepassingsbronnen in een database. Resourcetokens:
 
-- Toegang bieden tot specifieke containers, partitie sleutels, documenten, bijlagen, opgeslagen procedures, triggers en Udf's.
-- Worden gemaakt wanneer aan een [gebruiker](#users) [machtigingen](#permissions) worden verleend voor een specifieke resource.
-- Worden opnieuw gemaakt wanneer een machtigings resource wordt toegepast op de aanroep POST, GET of PUT.
-- Gebruik een hash-bron token dat specifiek is gemaakt voor de gebruiker, de resource en de machtiging.
-- Zijn tijd gebonden aan een aanpas bare geldigheids periode. De standaard geldige tijds duur is een uur. De levens duur van het token kan echter expliciet worden opgegeven, Maxi maal vijf uur.
-- Geef een veilig alternatief op voor het geven van de hoofd sleutel.
-- Hiermee kunnen clients resources in het Cosmos DB-account lezen, schrijven en verwijderen op basis van de machtigingen die ze hebben verleend.
+- Geef toegang tot specifieke containers, partitiesleutels, documenten, bijlagen, opgeslagen procedures, triggers en UDF's.
+- Worden gemaakt wanneer een [gebruiker](#users) [machtigingen](#permissions) voor een specifieke resource krijgt.
+- Worden opnieuw gemaakt wanneer een machtigingsbron wordt uitgevoerd door POST, GET of PUT-aanroep.
+- Gebruik een hash resource token dat speciaal is gemaakt voor de gebruiker, resource en toestemming.
+- Zijn tijd gebonden met een aanpasbare geldigheidsperiode. De standaard geldige tijdspanne is één uur. De levensduur van het token kan echter expliciet worden opgegeven, tot een maximum van vijf uur.
+- Bied een veilig alternatief voor het geven van de master key.
+- Klanten in staat stellen bronnen in het Cosmos DB-account te lezen, schrijven en verwijderen op basis van de machtigingen die ze hebben gekregen.
 
-U kunt een bron token gebruiken (door Cosmos DB gebruikers en machtigingen te maken) wanneer u toegang wilt verlenen tot resources in uw Cosmos DB account aan een client die niet kan worden vertrouwd met de hoofd sleutel.  
+U een resourcetoken gebruiken (door Cosmos DB-gebruikers en machtigingen te maken) wanneer u toegang wilt bieden tot bronnen in uw Cosmos DB-account aan een client die niet kan worden vertrouwd met de hoofdsleutel.  
 
-Cosmos DB bron tokens bieden een veilig alternatief waarmee clients resources in uw Cosmos DB account kunnen lezen, schrijven en verwijderen op basis van de machtigingen die u hebt verleend, en zonder dat u een hoofd-of alleen-lezen sleutel hoeft op te geven.
+Cosmos DB resource tokens bieden een veilig alternatief waarmee clients bronnen in uw Cosmos DB-account kunnen lezen, schrijven en verwijderen op basis van de machtigingen die u hebt verleend, en zonder dat een master- of lees-alleen-sleutel nodig is.
 
-Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevraagd, gegenereerd en geleverd aan clients:
+Hier is een typisch ontwerppatroon waarbij resourcetokens kunnen worden aangevraagd, gegenereerd en geleverd aan klanten:
 
-1. Een mid-tier-service is ingesteld voor het gebruik van een mobiele toepassing om gebruikers Foto's te delen.
-2. De mid-tier-service beschikt over de hoofd sleutel van het Cosmos DB-account.
-3. De foto-app is geïnstalleerd op mobiele apparaten van eind gebruikers.
-4. Bij het aanmelden brengt de foto-app de identiteit van de gebruiker met de mid-tier-service tot stand. Dit mechanisme voor identiteits inrichting is uitsluitend voor de toepassing.
-5. Zodra de identiteit tot stand is gebracht, vraagt de mid-tier-service machtigingen aan op basis van de identiteit.
-6. De mid-tier-service stuurt een bron token terug naar de telefoon-app.
-7. De telefoon-app kan het bron token blijven gebruiken voor rechtstreekse toegang tot Cosmos DB resources met de machtigingen die zijn gedefinieerd door het bron token en voor het interval dat is toegestaan door het bron token.
-8. Wanneer het bron token verloopt, ontvangen volgende aanvragen een ongeautoriseerde uitzonde ring van 401.  Op dit moment brengt de telefoon-app de identiteit opnieuw tot stand en wordt er een nieuw bron token aangevraagd.
+1. Een mid-tier service is ingesteld om een mobiele applicatie te serveren om gebruikersfoto's te delen.
+2. De mid-tier service bezit de hoofdsleutel van de Cosmos DB account.
+3. De foto-app is geïnstalleerd op mobiele apparaten van eindgebruikers.
+4. Bij het inloggen bepaalt de foto-app de identiteit van de gebruiker met de mid-tier service. Dit mechanisme van identiteitsvestiging is zuiver tot de toepassing.
+5. Zodra de identiteit is vastgesteld, vraagt de mid-tier service machtigingen aan op basis van de identiteit.
+6. De mid-tier service stuurt een resource token terug naar de telefoon app.
+7. De telefoon-app kan het resourcetoken blijven gebruiken om rechtstreeks toegang te krijgen tot Cosmos DB-bronnen met de machtigingen die zijn gedefinieerd door het resourcetoken en voor het interval dat is toegestaan door het resourcetoken.
+8. Wanneer het resourcetoken verloopt, ontvangen volgende aanvragen een ongeautoriseerde uitzondering van 401.  Op dit punt, de telefoon app herstelt de identiteit en vraagt een nieuwe resource token.
 
-    ![Werk stroom voor Azure Cosmos DB resource tokens](./media/secure-access-to-data/resourcekeyworkflow.png)
+    ![Azure Cosmos DB-brontokenswerkstroom](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) of [node. js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
+Het genereren en beheren van resourcetokenwordt afgehandeld door de native Cosmos DB-clientbibliotheken; Als u echter REST gebruikt, moet u de voor-/verificatiekoppen construeren. Zie [Toegangscontrole op Cosmos DB Resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de broncode van onze [SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatiekoppen voor REST.
 
-Zie de [resource token Broker-app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)voor een voor beeld van een middle-tier service die wordt gebruikt om resource tokens te genereren of Broker.
+Zie de [ResourceTokenBroker-app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)voor een voorbeeld van een service op het middenniveau die wordt gebruikt om brontokens te genereren of te brokeren.
 
-## Bezoekers<a id="users"></a>
+## <a name="users"></a>Gebruikers<a id="users"></a>
 
-Azure Cosmos DB gebruikers zijn gekoppeld aan een Cosmos-data base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten. In het volgende code voorbeeld ziet u hoe u een Cosmos DB gebruiker maakt met behulp van de [Azure Cosmos db .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
+Azure Cosmos DB-gebruikers zijn gekoppeld aan een Cosmos-database.  Elke database kan nul of meer Cosmos DB-gebruikers bevatten. In het volgende codevoorbeeld ziet u hoe u een Cosmos DB-gebruiker maakt met behulp van de [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
 ```csharp
 //Create a user.
@@ -107,21 +107,21 @@ User user = await database.CreateUserAsync("User 1");
 ```
 
 > [!NOTE]
-> Elke Cosmos DB gebruiker heeft een ReadAsync ()-methode die kan worden gebruikt voor het ophalen van de lijst met [machtigingen](#permissions) die aan de gebruiker zijn gekoppeld.
+> Elke Cosmos DB-gebruiker heeft een methode ReadAsync() die kan worden gebruikt om de lijst met [machtigingen](#permissions) op te halen die aan de gebruiker zijn gekoppeld.
 
-## Bevoegdheden<a id="permissions"></a>
+## <a name="permissions"></a>Machtigingen<a id="permissions"></a>
 
-Een machtigings resource is gekoppeld aan een gebruiker en toegewezen aan de container en het niveau van de partitie sleutel. Elke gebruiker kan nul of meer machtigingen bevatten. Een machtigings bron biedt toegang tot een beveiligings token dat de gebruiker nodig heeft om toegang te krijgen tot een specifieke container of gegevens in een specifieke partitie sleutel. Er zijn twee toegangs niveaus beschikbaar die kunnen worden gegeven door een machtigings Bron:
+Een machtigingsbron is gekoppeld aan een gebruiker en toegewezen aan de container en op het niveau van de partitiesleutel. Elke gebruiker kan nul of meer machtigingen bevatten. Een machtigingsbron biedt toegang tot een beveiligingstoken dat de gebruiker nodig heeft wanneer hij toegang probeert te krijgen tot een specifieke container of gegevens in een specifieke partitiesleutel. Er zijn twee beschikbare toegangsniveaus die kunnen worden verstrekt door een machtigingsbron:
 
-- Alle: de gebruiker heeft volledige machtigingen voor de resource.
-- Lezen: de gebruiker kan alleen de inhoud van de resource lezen, maar kan geen schrijf-, bijwerk-of verwijderings bewerkingen uitvoeren op de resource.
+- Alle: De gebruiker heeft volledige toestemming voor de resource.
+- Lees: De gebruiker kan alleen de inhoud van de bron lezen, maar kan geen schrijf-, update- of verwijderingsbewerkingen uitvoeren op de resource.
 
 > [!NOTE]
-> Voor het uitvoeren van opgeslagen procedures moet de gebruiker beschikken over de machtiging all voor de container waarin de opgeslagen procedure wordt uitgevoerd.
+> Om opgeslagen procedures uit te voeren moet de gebruiker de Alle toestemming hebben op de container waarin de opgeslagen procedure wordt uitgevoerd.
 
-### <a name="code-sample-to-create-permission"></a>Code voorbeeld voor het maken van machtigingen
+### <a name="code-sample-to-create-permission"></a>Voorbeeld van code om toestemming te maken
 
-In het volgende code voorbeeld ziet u hoe u een machtigings bron maakt, het bron token van de machtigings resource leest en de machtigingen koppelt aan de [gebruiker](#users) die hierboven is gemaakt.
+In het volgende codevoorbeeld ziet u hoe u een machtigingsbron maakt, het resourcetoken van de machtigingsbron leest en de machtigingen koppelt aan de [gebruiker](#users) die hierboven is gemaakt.
 
 ```csharp
 // Create a permission on a container and specific partition key value
@@ -134,9 +134,9 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Code voorbeeld voor het lezen van de machtiging voor gebruiker
+### <a name="code-sample-to-read-permission-for-user"></a>Voorbeeld van code om de toestemming voor de gebruiker te lezen
 
-In het volgende code fragment ziet u hoe u de machtigingen kunt ophalen die zijn gekoppeld aan de gebruiker die hierboven is gemaakt en een nieuwe CosmosClient namens de gebruiker maakt, binnen het bereik van één partitie sleutel.
+In het volgende codefragment ziet u hoe u de machtiging ophaalt die is gekoppeld aan de gebruiker die hierboven is gemaakt en hoe u namens de gebruiker een nieuwe CosmosClient instantiëren, afgestemd op één partitiesleutel.
 
 ```csharp
 //Read a permission, create user client session.
@@ -147,26 +147,26 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 
 ## <a name="add-users-and-assign-roles"></a>Gebruikers toevoegen en rollen toewijzen
 
-Als u Azure Cosmos DB account lezer-toegang wilt toevoegen aan uw gebruikers account, moet u de eigenaar van een abonnement hebben om de volgende stappen uit te voeren in de Azure Portal.
+Als u Azure Cosmos DB-accountlezertoegang wilt toevoegen aan uw gebruikersaccount, voert u een abonnementseigenaar de volgende stappen uit in de Azure-portal.
 
-1. Open de Azure Portal en selecteer uw Azure Cosmos DB-account.
-2. Klik op het tabblad **toegangs beheer (IAM)** en klik vervolgens op **+ roltoewijzing toevoegen**.
-3. In het deel venster **toewijzing van rol toevoegen** selecteert u **Cosmos DB rol van account lezer**in het vak **rol** .
-4. Selecteer in het **vak toegang toewijzen aan**de optie **Azure AD-gebruiker,-groep of-toepassing**.
-5. Selecteer de gebruiker, groep of toepassing in de map waaraan u toegang wilt verlenen.  U kunt in de map zoeken op de weergave naam, het e-mail adres of de object-id's.
-    De geselecteerde gebruiker, groep of toepassing wordt weer gegeven in de lijst geselecteerde leden.
+1. Open de Azure-portal en selecteer uw Azure Cosmos DB-account.
+2. Klik op het tabblad **Toegangsbesturingselement (IAM)** en klik vervolgens op **+ Roltoewijzing toevoegen**.
+3. Selecteer in het deelvenster **Roltoewijzing toevoegen** in het vak **Rol** de optie **Cosmos DB-accountlezerrol**.
+4. Selecteer **in**het vak Toegang toewijzen tot het vak **Azure AD-gebruiker, -groep of -toepassing**.
+5. Selecteer de gebruiker, groep of toepassing in uw map waartoe u toegang wilt verlenen.  U de map doorzoeken op weergavenaam, e-mailadres of object-id's.
+    De geselecteerde gebruiker, groep of toepassing wordt weergegeven in de lijst met geselecteerde leden.
 6. Klik op **Opslaan**.
 
-De entiteit kan nu Azure Cosmos DB resources lezen.
+De entiteit kan nu Azure Cosmos DB-bronnen lezen.
 
-## <a name="delete-or-export-user-data"></a>Gebruikers gegevens verwijderen of exporteren
+## <a name="delete-or-export-user-data"></a>Gebruikersgegevens verwijderen of exporteren
 
-Azure Cosmos DB kunt u zoeken, selecteren, wijzigen en verwijderen van persoonlijke gegevens die zich in data base of verzamelingen bevinden. Azure Cosmos DB biedt Api's om persoons gegevens te vinden en te verwijderen. het is uw verantwoordelijkheid om de Api's te gebruiken en de logica te definiëren die is vereist om de persoonlijke gegevens te wissen. Elke API voor meerdere modellen (SQL, MongoDB, Gremlin, Cassandra, tabel) biedt verschillende taal-Sdk's die methoden bevatten voor het zoeken en verwijderen van persoonlijke gegevens. U kunt ook de [TTL-functie (time to Live)](time-to-live.md) zo instellen dat gegevens na een bepaalde periode automatisch worden verwijderd, zonder dat er extra kosten in rekening worden gebracht.
+Met Azure Cosmos DB u persoonlijke gegevens in database of verzamelingen zoeken, selecteren, wijzigen en verwijderen. Azure Cosmos DB biedt API's om persoonlijke gegevens te vinden en te verwijderen, maar het is uw verantwoordelijkheid om de API's te gebruiken en logica te definiëren die nodig is om de persoonlijke gegevens te wissen. Elke multi-model API (SQL, MongoDB, Gremlin, Cassandra, Table) biedt verschillende taal SDKs die methoden bevatten om persoonlijke gegevens te zoeken en te verwijderen. U ook de [functie Time to live (TTL)](time-to-live.md) inschakelen om gegevens automatisch na een bepaalde periode te verwijderen, zonder extra kosten te maken.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Cosmos DB Data Base Security](database-security.md)(Engelstalig) voor meer informatie over de beveiliging van Cosmos-data bases.
-- Zie [Access Control op Azure Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB autorisatie tokens.
-- Voor beelden van gebruikers beheer met gebruikers en machtigingen, voor [beelden van .NET SDK v3-gebruikers beheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
+- Zie [Cosmos DB Database-beveiliging](database-security.md)voor meer informatie over de beveiliging van de Cosmos-database.
+- Zie [Toegangsbeheer op Azure Cosmos DB-bronnen](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB-autorisatietokens.
+- Voorbeelden van gebruikersbeheer met gebruikers en machtigingen, [.NET SDK v3-voorbeelden voor gebruikersbeheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

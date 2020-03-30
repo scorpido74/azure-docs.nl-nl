@@ -1,71 +1,70 @@
 ---
-title: Een SaaS-toepassing registreren | Azure Marketplace
-description: Hierin wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de Azure Portal.
-services: Azure, Marketplace, Cloud Partner Portal, Azure portal
-author: v-miclar
+title: Een SaaS-aanvraag registreren | Azure Marketplace
+description: Hier wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de Azure-portal.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: b2e02e42ab63f893574ca5217fd2f36c7481aabd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275710"
 ---
 # <a name="register-a-saas-application"></a>Een SaaS-toepassing registreren
 
-In dit artikel wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de micro soft- [Azure Portal](https://portal.azure.com/).  Nadat de registratie is voltooid, ontvangt u een beveiligings token van Azure Active Directory (Azure AD) dat u kunt gebruiken voor toegang tot de SaaS-fulfillment-Api's.  Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) voor meer informatie over Azure AD.
+In dit artikel wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de Microsoft [Azure-portal.](https://portal.azure.com/)  Na een succesvolle registratie ontvangt u een Azure Active Directory (Azure AD) beveiligingstoken dat u gebruiken om toegang te krijgen tot de SaaS Fulfillment API's.  Zie Wat is verificatie voor meer informatie over Azure [AD?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
 
 
-## <a name="service-to-service-authentication-flow"></a>Service-naar-service-verificatie stroom
+## <a name="service-to-service-authentication-flow"></a>Service-to-service-verificatiestroom
 
-In het volgende diagram ziet u de abonnements stroom van een nieuwe klant en wanneer deze Api's worden gebruikt:
+In het volgende diagram ziet u de abonnementsstroom van een nieuwe klant en wanneer deze API's worden gebruikt:
 
-![API-stroom voor SaaS-aanbiedingen](./media/saas-offer-publish-api-flow-v1.png)
+![SaaS biedt API-flow](./media/saas-offer-publish-api-flow-v1.png)
 
-Azure biedt geen beperkingen voor de verificatie die de SaaS-service voor de eind gebruikers weergeeft. Verificatie met de SaaS-fulfillment-Api's wordt echter uitgevoerd met een Azure AD-beveiligings token, dat meestal wordt verkregen door de SaaS-app te registreren via de Azure Portal. 
+Azure legt geen beperkingen op aan de verificatie die de SaaS-service aan zijn eindgebruikers blootstelt. Verificatie met de SaaS Fulfillment API's wordt echter uitgevoerd met een Azure AD-beveiligingstoken, meestal verkregen door de SaaS-app te registreren via de Azure-portal. 
 
 
-## <a name="register-an-azure-ad-secured-app"></a>Een Azure AD-beveiligde app registreren
+## <a name="register-an-azure-ad-secured-app"></a>Een door Azure AD beveiligde app registreren
 
-Elke toepassing die de mogelijkheden van Azure Active Directory wil gebruiken, moet eerst in een Azure Active Directory-tenant worden geregistreerd. Bij dit registratie proces moet u Azure AD-gegevens over uw toepassing geven, zoals de URL waar deze zich bevindt, de URL voor het verzenden van antwoorden nadat een gebruiker is geverifieerd, de URI waarmee de app wordt geïdentificeerd, enzovoort.  Voer de volgende stappen uit om een nieuwe toepassing te registreren met behulp van de Azure Portal:
+Elke toepassing die de mogelijkheden van Azure Active Directory wil gebruiken, moet eerst in een Azure Active Directory-tenant worden geregistreerd. Dit registratieproces omvat het geven van Azure AD-gegevens over uw toepassing, zoals de URL waar deze zich bevindt, de URL om antwoorden te verzenden nadat een gebruiker is geverifieerd, de URI die de app identificeert, enzovoort.  Voer de volgende stappen uit om een nieuwe toepassing te registreren via de Azure-portal:
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
-2.  Als uw account u toegang geeft tot meer dan één, klikt u in de rechter bovenhoek op uw account en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
-3.  Klik in het navigatie deel venster aan de linkerkant op de **Azure Active Directory** -service, klik op **app-registraties**en klik vervolgens op **nieuwe toepassing registreren**.
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2.  Als uw account u toegang geeft tot meer dan één account, klikt u op uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure AD-tenant.
+3.  Klik in het navigatiedeelvenster aan de linkerkant op de **Azure Active Directory-service,** klik op **App-registraties**en klik op Nieuwe **toepassingsregistratie**.
 
-    ![SaaS AD-App-registraties](./media/saas-offer-app-registration-v1.png)
+    ![SaaS AD-app-registraties](./media/saas-offer-app-registration-v1.png)
 
-4.  Voer op de pagina maken uw\'de registratie gegevens van uw toepassing in:
-    -   **Naam**: Voer een beschrijvende naam voor de toepassing in
-    -   **Toepassings type**: 
+4.  Voer op de pagina\'Maken de registratiegegevens van uw aanvraag in:
+    -   **Naam:** Voer een betekenisvolle toepassingsnaam in
+    -   **Toepassingstype**: 
         - Selecteer **Systeemeigen** voor [clienttoepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) die lokaal op een apparaat zijn geïnstalleerd. Deze instelling wordt gebruikt voor openbare [systeemeigen clients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) met OAuth.
-        - Selecteer **Web-app/API** voor [client toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) en [resource/API-toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) die zijn geïnstalleerd op een beveiligde server. Deze instelling wordt gebruikt voor OAuth vertrouwelijke [webclients](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) en [clients op basis van](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)een open bare gebruiker.
+        - Selecteer **Web-app / API** voor [clienttoepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) en [resource/API-toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) die op een beveiligde server zijn geïnstalleerd. Deze instelling wordt gebruikt voor Vertrouwelijke [Webclients van](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) OAuth en op [openbare gebruikersagenten gebaseerde clients.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)
         Dezelfde toepassing kan zowel een client als resource/API beschikbaar maken.
-    -   **Aanmeldings-URL**: voor web app/API-toepassingen geeft u de basis-URL van uw app op. **http://localhost:31544** kan bijvoorbeeld de URL zijn voor een web-app die wordt uitgevoerd op uw lokale machine. Gebruikers zouden deze URL vervolgens gebruiken om zich aan te melden bij een webclient-toepassing.
-    -   **Omleidings-URI**: voor systeem eigen toepassingen geeft u de URI op die door Azure AD wordt gebruikt om token antwoorden te retour neren. Voer een waarde in die specifiek is voor uw toepassing, bijvoorbeeld **http://MyFirstAADApp** .
+    -   **Aanmeldings-URL:** geef voor web-app-/API-toepassingen de basis-URL van uw app op. Het kan **http://localhost:31544** bijvoorbeeld de URL zijn voor een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers gebruiken deze URL vervolgens om zich aan te melden bij een webclienttoepassing.
+    -   **Omleiding URI:** voor native toepassingen moet u de URI die door Azure AD wordt gebruikt, opbieden om tokenreacties terug te sturen. Voer bijvoorbeeld **http://MyFirstAADApp**een waarde in die specifiek is voor uw toepassing.
 
-        ![SaaS AD-App-registraties](./media/saas-offer-app-registration-v1-2.png)
+        ![SaaS AD-app-registraties](./media/saas-offer-app-registration-v1-2.png)
 
-        Voor specifieke voor beelden voor webtoepassingen of systeem eigen toepassingen raadpleegt u de Quick Start-setups die beschikbaar zijn in de sectie *aan de slag* van de [hand leiding voor ontwikkel AARS van Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+        Bekijk de snelaangeleide instellingen die beschikbaar zijn in het gedeelte Aan *de slag* in de [Azure AD Developers Guide](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)voor specifieke voorbeelden voor webtoepassingen of native toepassingen.
 
-5.  Klik op **Create** als u klaar bent. Azure AD wijst een unieke *toepassings-id* toe aan uw toepassing en u\'opnieuw naar de hoofd registratie pagina van de toepassing\'s. Afhankelijk van of uw toepassing een webtoepassing of systeemeigen toepassing is, worden er verschillende opties geboden om extra mogelijkheden aan uw toepassing toe te voegen.
+5.  Klik op **Create** als u klaar bent. Azure AD wijst een unieke *toepassings-id* \'toe aan uw\'toepassing en u wordt naar de hoofdregistratiepagina van uw toepassing geleid. Afhankelijk van of uw toepassing een webtoepassing of systeemeigen toepassing is, worden er verschillende opties geboden om extra mogelijkheden aan uw toepassing toe te voegen.
 
 >[!Note]
->De zojuist geregistreerde toepassing is standaard zo geconfigureerd dat alleen gebruikers van dezelfde Tenant zich kunnen aanmelden bij uw toepassing.
+>Standaard is de nieuw geregistreerde toepassing zo geconfigureerd dat alleen gebruikers van dezelfde tenant zich bij uw toepassing kunnen aanmelden.
 
 
-## <a name="using-the-azure-ad-security-token"></a>Het Azure AD-beveiligings token gebruiken
+## <a name="using-the-azure-ad-security-token"></a>Het Azure AD-beveiligingstoken gebruiken
 
-Zodra u uw toepassing hebt geregistreerd, kunt u via een programma een Azure AD-beveiligings token aanvragen.  De uitgever wordt verwacht dit token te gebruiken en een aanvraag indienen om deze te kunnen oplossen.  Wanneer u de verschillende fulfillment-Api's gebruikt, bevindt de token query-para meter zich in de URL wanneer de gebruiker wordt omgeleid naar de SaaS-website vanuit Azure.  Dit token is slechts één uur geldig.  Daarnaast moet u de URL decoderen van de token waarde uit de browser voordat u deze gebruikt.
+Zodra u uw toepassing hebt geregistreerd, u programmatisch een Azure AD-beveiligingstoken aanvragen.  Van de uitgever wordt verwacht dat hij dit token gebruikt en een verzoek indient om het op te lossen.  Bij het gebruik van de verschillende Fulfillment API's bevindt de parameter tokenquery zich in de URL wanneer de gebruiker vanuit Azure naar de SaaS-website wordt doorgestuurd.  Dit token is slechts één uur geldig.  Bovendien moet u de tokenwaarde van de browser decoderen voordat u deze gebruikt.
 
-Zie [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)voor meer informatie over deze tokens.
+Zie [Azure Active Directory-toegangstokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)voor meer informatie over deze tokens.
 
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Een Token ophalen op basis van de Azure AD-app
+### <a name="get-a-token-based-on-the-azure-ad-app"></a>Een token downloaden op basis van de Azure AD-app
 
 HTTP-methode
 
@@ -73,45 +72,45 @@ HTTP-methode
 
 *Aanvraag-URL*
 
-**https://login.microsoftonline.com/ *{tenantId}* /oauth2/token**
+**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
 
-*URI-para meter*
+*URI, parameter*
 
 |  **Parameternaam**  | **Vereist**  | **Beschrijving**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True          | Tenant-ID van de geregistreerde AAD-toepassing   |
+| tenantId             | True          | Tenant-id van de geregistreerde AAD-aanvraag   |
 |  |  |  |
 
 
-*Aanvraag header*
+*Koptekst aanvragen*
 
-|  **Header naam**  | **Vereist** |  **Beschrijving**                                   |
+|  **Headernaam**  | **Vereist** |  **Beschrijving**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True         | Het inhouds type dat is gekoppeld aan de aanvraag. De standaard waarde is `application/x-www-form-urlencoded`.  |
+|  Content-Type     | True         | Inhoudstype dat aan het verzoek is gekoppeld. De standaardwaarde is `application/x-www-form-urlencoded`.  |
 |  |  |  |
 
 
-*Aanvraag tekst*
+*Aanvraaginstantie*
 
-| **Eigenschapsnaam**   | **Vereist** |  **Beschrijving**                                                          |
+| **Naam van eigenschap**   | **Vereist** |  **Beschrijving**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | Toekennings type. De standaard waarde is `client_credentials`.                    |
-|  Client_id          | True         |  Client/App-ID die is gekoppeld aan de Azure AD-app.                  |
-|  client_secret      | True         |  Het wacht woord dat is gekoppeld aan de Azure AD-app.                               |
-|  Resource           | True         |  Doel resource waarvoor het token wordt aangevraagd. De standaard waarde is `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Grant_type         | True         | Subsidietype. De standaardwaarde is `client_credentials`.                    |
+|  Client_id          | True         |  Client/app-id die is gekoppeld aan de Azure AD-app.                  |
+|  client_secret      | True         |  Wachtwoord gekoppeld aan de Azure AD-app.                               |
+|  Resource           | True         |  Doelbron waarvoor het token wordt aangevraagd. De standaardwaarde is `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
-*Antwoord*
+*Reactie*
 
 |  **Naam**  | **Type**       |  **Beschrijving**    |
 | ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | Aanvraag is voltooid   |
+| 200 OK    | TokenResponse  | Aanvraag geslaagd   |
 |  |  |  |
 
 *TokenResponse*
 
-Voorbeeld token voor antwoorden:
+Voorbeeldreactietoken:
 
 ``` json
   {
@@ -128,4 +127,4 @@ Voorbeeld token voor antwoorden:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw met Azure AD beveiligde app kan nu gebruikmaken van de [SaaS fulfillment API versie 2](./pc-saas-fulfillment-api-v2.md).
+Uw door Azure AD beveiligde app kan nu de [SaaS Fulfillment API Version 2](./pc-saas-fulfillment-api-v2.md)gebruiken.

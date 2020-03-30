@@ -1,59 +1,59 @@
 ---
-title: Gegevens voor real-time doorvoer aanvragen | Microsoft Azure kaarten
-description: Real-time gegevens aanvragen met behulp van de Microsoft Azure Maps Mobility-service.
-author: farah-alyasari
-ms.author: v-faalya
+title: Real-time transitgegevens aanvragen | Microsoft Azure Maps
+description: Vraag realtime gegevens aan met de Microsoft Azure Maps Mobility Service.
+author: philmea
+ms.author: philmea
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3145181a863bf8188dd0b0bb52cd2efc662ce2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209899"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335489"
 ---
-# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Real-time gegevens aanvragen met behulp van de Azure Maps Mobility-service
+# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Realtime gegevens aanvragen met de Azure Maps Mobility Service
 
-In dit artikel wordt beschreven hoe u Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService) kunt gebruiken om gegevens in realtime-transit te aanvragen.
+In dit artikel ziet u hoe u Azure Maps [Mobility Service kunt](https://aka.ms/AzureMapsMobilityService) gebruiken om realtime transitgegevens op te vragen.
 
-In dit artikel leert u het volgende:
+In dit artikel leer je hoe je:
 
 
- * De volgende realtime aankomsten aanvragen voor alle regels die bij een bepaalde beëindiging arriveren
- * Real-time informatie aanvragen voor een gegeven fiets docking station.
+ * Verzoek volgende real-time aankomsten voor alle lijnen die aankomen bij een bepaalde stop
+ * Vraag real-time informatie op voor een bepaald bike docking station.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet eerst een Azure Maps account en een abonnements sleutel hebben om de Azure Maps open bare doorvoer-Api's te kunnen aanroepen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-account te maken voor meer informatie. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account te verkrijgen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+U moet eerst een Azure Maps-account en een abonnementssleutel hebben om te bellen naar de Azure Maps-API's voor openbaar vervoer. Volg instructies voor informatie in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-account te maken. Volg de stappen in [de primaire sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account te verkrijgen. Zie Verificatie beheren in Azure [Maps voor](./how-to-manage-authentication.md)meer informatie over verificatie in Azure Maps.
 
 
-In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
+In dit artikel wordt de [Postman-app](https://www.getpostman.com/apps) gebruikt om REST-oproepen te maken. U elke API-ontwikkelomgeving gebruiken die u verkiest.
 
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>Dagelijkse aankomsten aanvragen voor een stop
+## <a name="request-real-time-arrivals-for-a-stop"></a>Real-time aankomsten aanvragen voor een stop
 
-Als u gegevens in realtime wilt ontvangen van een bepaalde open bare doorvoer stop, moet u een aanvraag indienen bij de API voor de [real-time-ontvangst](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService). U hebt de **metroID** en **stopID** nodig om de aanvraag te volt ooien. Zie voor meer informatie over het aanvragen van deze para meters onze hand leiding voor het [aanvragen van open bare Transit routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
+Als u realtime aankomstgegevens van een bepaalde ov-stop wilt aanvragen, moet u een verzoek indienen bij de [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility Service.](https://aka.ms/AzureMapsMobilityService) Je hebt de **metroID** en **stopID** nodig om het verzoek te voltooien. Voor meer informatie over het aanvragen van deze parameters, zie onze gids over het [aanvragen van openbaar vervoer routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
 
-We gebruiken ' 522 ' als onze metro-ID. Dit is de metro-ID voor het gebied ' Seattle – Tacoma – Bellevue, WA '. Gebruik "522---2060603" als de stop-ID, deze bus stopt op "ne 24 St & 162nd Ave ne, Bellevue WA". Voer de volgende stappen uit om de volgende vijf gegevens over de dagelijkse duur te aanvragen voor alle volgende Live-aankomsten:
+Laten we "522" gebruiken als onze metro-ID, de metro-ID voor het "Seattle-Tacoma-Bellevue, WA" gebied. Gebruik "522---2060603" als de halte-ID, deze bushalte is op "Ne 24th st & 162nd Ave Ne, Bellevue WA". Voer de volgende stappen uit om de volgende vijf realtime aankomstgegevens op te vragen voor alle volgende live aankomsten bij deze halte:
 
-1. Open de Postman-app, zodat u een verzameling kunt maken om de aanvragen op te slaan. Selecteer in de buurt van de Postman-app de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** .  Geef de verzameling een naam en selecteer de knop **maken** .
+1. Open de Postman-app en maak een verzameling om de aanvragen op te slaan. Selecteer Boven aan de Postman-app de optie **Nieuw**. Selecteer **Verzameling** in het **Collection**venster Nieuw maken .  Geef de verzameling een naam en selecteer de knop **Maken.**
 
-2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie waar u de aanvraag wilt opslaan. Selecteer vervolgens **Opslaan**.
+2. Als u de aanvraag wilt maken, selecteert u Opnieuw **nieuw.** Selecteer **Verzoek in**het venster **Nieuw maken** . Voer een **aanvraagnaam** in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie om de aanvraag op te slaan. Selecteer vervolgens **Opslaan**.
 
-    ![Een aanvraag maken in postman](./media/how-to-request-transit-data/postman-new.png)
+    ![Een aanvraag maken in Postbode](./media/how-to-request-transit-data/postman-new.png)
 
-3. Selecteer de methode http **ophalen** op het tabblad opbouw functie en voer de volgende URL in om een GET-aanvraag te maken. Vervang `{subscription-key}`door uw Azure Maps primaire sleutel.
+3. Selecteer de **METHODE HTTP OPHALEN** op het tabblad Bouwer en voer de volgende URL in om een GET-aanvraag te maken. Vervang `{subscription-key}`, met uw primaire azure maps-sleutel.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Na een geslaagde aanvraag ontvangt u het volgende antwoord.  U ziet dat de para meter ' Schedule Type ' definieert of de geschatte aankomst tijd is gebaseerd op realtime of statische gegevens.
+4. Na een geslaagd verzoek ontvangt u het volgende antwoord.  Merk op dat parameter 'scheduleType' bepaalt of de geschatte aankomsttijd is gebaseerd op realtime of statische gegevens.
 
     ```JSON
     {
@@ -119,26 +119,26 @@ We gebruiken ' 522 ' als onze metro-ID. Dit is de metro-ID voor het gebied ' Sea
     ```
 
 
-## <a name="real-time-data-for-bike-docking-station"></a>Real-time gegevens voor het fietsen docking-station
+## <a name="real-time-data-for-bike-docking-station"></a>Real-time data voor bike docking station
 
-Met de informatie over het ophalen van de [gegevens voor transit docken](https://aka.ms/AzureMapsMobilityTransitDock) kunnen gebruikers statische en real-time informatie opvragen. Gebruikers kunnen bijvoorbeeld Beschik baarheid en vacature gegevens aanvragen voor een fiets of een scooter docking station. De informatie over het ophalen van de [gegevens voor transit Dock](https://aka.ms/AzureMapsMobilityTransitDock) maken maakt ook deel uit van de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService).
+Met [de Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) kunnen gebruikers statische en realtime informatie opvragen. Gebruikers kunnen bijvoorbeeld beschikbaarheids- en vacaturegegevens opvragen voor een fiets of een scooterdockingstation. De [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) maakt ook deel uit van de Azure Maps Mobility [Service.](https://aka.ms/AzureMapsMobilityService)
 
-Als u een aanvraag wilt indienen voor de [gegevens-API Get Transit Dock](https://aka.ms/AzureMapsMobilityTransitDock), hebt u de **dockId** voor dat station nodig. U kunt de Dock-ID ophalen door een zoek aanvraag te maken naar de API voor in gebruik zijnde [tussenliggende Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) met de para meter **object type** toegewezen aan bikeDock. Volg de onderstaande stappen om real-time gegevens van een docking-station voor fietsen te verkrijgen.
+Om een aanvraag in te dienen voor de [Get Transit Dock Info API,](https://aka.ms/AzureMapsMobilityTransitDock)heb je de **dockId** voor dat station nodig. U de dock-id krijgen door een zoekverzoek in te dienen bij de [Transit-API in](https://aka.ms/AzureMapsMobilityNearbyTransit) de buurt komen met de **parameter objectType** die is toegewezen aan bikeDock. Volg de onderstaande stappen om realtime gegevens van een dockingstation voor fietsen te krijgen.
 
 
-### <a name="get-dock-id"></a>Dock-ID ophalen
+### <a name="get-dock-id"></a>Dock-id krijgen
 
-Als u **dockID**wilt ophalen, volgt u de onderstaande stappen om een aanvraag in te stellen voor de API voor het ophalen van de nabije Transit:
+Volg **dockID**de onderstaande stappen om een aanvraag te doen voor de Transit-API in de buurt:
 
-1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en geef deze de naam **Dock-id ophalen**.
+1. Klik in Postman op **Nieuw verzoek** | **GET-aanvraag** en geef de naam **Get dock-id**.
 
-2.  Selecteer op het tabblad opbouw functie de methode http **ophalen** , voer de volgende aanvraag-URL in en klik op **verzenden**.
+2.  Selecteer op het tabblad Bouwer de METHODE **HTTP OPHALEN,** voer de volgende aanvraag-URL in en klik op **Verzenden**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
     ```
 
-3. Na een geslaagde aanvraag ontvangt u het volgende antwoord. U ziet nu dat we de **id** in het antwoord hebben, die later kunnen worden gebruikt als een query parameter in de aanvraag voor de gegevens-API Get Transit Dock ophalen.
+3. Na een geslaagd verzoek ontvangt u het volgende antwoord. Merk op dat we nu de **id** in het antwoord hebben, dat later kan worden gebruikt als queryparameter in de aanvraag voor de API Transit Dock Info krijgen.
 
     ```JSON
     {
@@ -175,19 +175,19 @@ Als u **dockID**wilt ophalen, volgt u de onderstaande stappen om een aanvraag in
     ```
 
 
-### <a name="get-real-time-bike-dock-status"></a>Real-time Bike-Dock status ophalen
+### <a name="get-real-time-bike-dock-status"></a>Krijg real-time fietsdockstatus
 
-Volg de onderstaande stappen om een aanvraag in te stellen voor de API Get Transit Dock info om realtime gegevens voor de geselecteerde Dock te verkrijgen.
+Volg de onderstaande stappen om een aanvraag in te dienen bij de Api Transit Dock Info opvragen om realtime gegevens voor het geselecteerde dock te krijgen.
 
-1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en geef **aan dat de gegevens in realtime worden gedokt**.
+1. Klik in Postman op **Nieuw verzoek** | **GET-aanvraag** en geef deze een naam **Aan realtime dockgegevens**.
 
-2.  Selecteer op het tabblad opbouw functie de methode http **ophalen** , voer de volgende aanvraag-URL in en klik op **verzenden**.
+2.  Selecteer op het tabblad Bouwer de METHODE **HTTP OPHALEN,** voer de volgende aanvraag-URL in en klik op **Verzenden**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
     ```
 
-3. Na een geslaagde aanvraag ontvangt u een reactie van de volgende structuur:
+3. Na een geslaagd verzoek ontvangt u een antwoord van de volgende structuur:
 
     ```JSON
     {
@@ -208,12 +208,12 @@ Volg de onderstaande stappen om een aanvraag in te stellen voor de API Get Trans
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het aanvragen van doorvoer gegevens met de Mobility-service:
+Meer informatie over het aanvragen van transitgegevens met Mobility Service:
 
 > [!div class="nextstepaction"]
-> [Transit gegevens aanvragen](how-to-request-transit-data.md)
+> [Transitgegevens aanvragen](how-to-request-transit-data.md)
 
-Bekijk de documentatie voor de Azure Maps Mobility Service API:
+Bekijk de API-documentatie van Azure Maps Mobility Service:
 
 > [!div class="nextstepaction"]
-> [API-documentatie voor Mobility service](https://aka.ms/AzureMapsMobilityService)
+> [Documentatie van Mobility Service API](https://aka.ms/AzureMapsMobilityService)

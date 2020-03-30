@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 Series-controllers beheren | Microsoft Docs
-description: Meer informatie over het stoppen, opnieuw opstarten, afsluiten of opnieuw instellen van uw StorSimple-apparaat.
+title: Apparaatcontrollers uit de StorSimple 8000-serie beheren | Microsoft Documenten
+description: Meer informatie over het stoppen, opnieuw opstarten, afsluiten of opnieuw instellen van uw StorSimple-apparaatcontrollers.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,150 +15,150 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267766"
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>Uw StorSimple-Apparaatbeheer beheren
+# <a name="manage-your-storsimple-device-controllers"></a>Uw StorSimple-apparaatcontrollers beheren
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie worden de verschillende bewerkingen beschreven die kunnen worden uitgevoerd op uw StorSimple-apparaat. De controllers in uw StorSimple-apparaat zijn redundante (peer) controllers in een actief-passieve configuratie. Op een bepaald moment is slechts één controller actief en worden alle schijf-en netwerk bewerkingen verwerkt. De andere controller bevindt zich in een passieve modus. Als de actieve controller mislukt, wordt de passieve controller automatisch actief.
+In deze zelfstudie worden de verschillende bewerkingen beschreven die kunnen worden uitgevoerd op uw StorSimple-apparaatcontrollers. De controllers in uw StorSimple-apparaat zijn redundante (peer)controllers in een actief-passieve configuratie. Op een gegeven moment is slechts één controller actief en verwerkt alle schijf- en netwerkbewerkingen. De andere controller bevindt zich in een passieve modus. Als de actieve controller uitvalt, wordt de passieve controller automatisch actief.
 
-Deze zelf studie bevat stapsgewijze instructies voor het beheren van de apparaats controllers met behulp van:
+Deze zelfstudie bevat stapsgewijze instructies om de apparaatcontrollers te beheren met behulp van:
 
-* De Blade **controllers** voor uw apparaat in de StorSimple-Apparaatbeheer service.
+* **Controllersblad** voor uw apparaat in de StorSimple Device Manager-service.
 * Windows PowerShell voor StorSimple.
 
-U wordt aangeraden de apparaats controllers te beheren via de StorSimple Apparaatbeheer-service. Als een actie alleen kan worden uitgevoerd met behulp van Windows PowerShell voor StorSimple, maakt de zelf studie hiervan een notitie.
+We raden u aan de apparaatcontrollers te beheren via de StorSimple Device Manager-service. Als een actie alleen kan worden uitgevoerd met Windows PowerShell voor StorSimple, maakt de zelfstudie er een notitie van.
 
-Na het lezen van deze zelf studie kunt u het volgende doen:
+Na het lezen van deze tutorial, zult u in staat zijn om:
 
-* Een StorSimple apparaat-controller opnieuw opstarten of afsluiten
-* Een StorSimple-apparaat afsluiten
-* De fabrieks instellingen van uw StorSimple-apparaat herstellen
+* Een StorSimple-apparaatcontroller opnieuw starten of uitschakelen
+* Een StorSimple-apparaat uitschakelen
+* Uw StorSimple-apparaat opnieuw instellen op fabrieksstandaardinstellingen
 
-## <a name="restart-or-shut-down-a-single-controller"></a>Een enkele controller opnieuw opstarten of afsluiten
-Het opnieuw opstarten of afsluiten van de controller is niet vereist als onderdeel van de normale systeem bewerking. Afsluit bewerkingen voor één apparaat-controller zijn alleen gebruikelijk in gevallen waarin het hardwareapparaat van een defecte apparaat vervanging vereist. Het kan ook zijn dat het opnieuw opstarten van de controller vereist is in een situatie waarin de prestaties worden beïnvloed door overmatig gebruik van het geheugen of een defecte controller. Mogelijk moet u ook een controller opnieuw opstarten nadat de vervanging van de controller is geslaagd, als u de vervangen controller wilt inschakelen en testen.
+## <a name="restart-or-shut-down-a-single-controller"></a>Een enkele controller opnieuw starten of uitschakelen
+Een controller herstart of uitschakeling is niet vereist als onderdeel van de normale werking van het systeem. Shutdown bewerkingen voor een enkele apparaat controller zijn alleen gebruikelijk in gevallen waarin een mislukte apparaat hardware component moet worden vervangen. Een herstart van de controller kan ook nodig zijn in een situatie waarin de prestaties worden beïnvloed door overmatig geheugengebruik of een defecte controller. Het kan ook nodig zijn om een controller opnieuw op te starten na een succesvolle controller vervanging, als u wilt in te schakelen en de vervangen controller te testen.
 
 Het opnieuw starten van een apparaat leidt niet tot uitval voor verbonden initiators, ervan uitgaande dat de passieve controller beschikbaar is. Als een passieve controller niet beschikbaar of uitgeschakeld is, kan het opnieuw opstarten van de actieve controller leiden tot onderbrekingen in de service en tot downtime.
 
 > [!IMPORTANT]
-> * **Een actieve controller mag nooit fysiek worden verwijderd, omdat dit zou leiden tot verlies van redundantie en een verhoogd risico op uitval tijd.**
-> * De volgende procedure is alleen van toepassing op het fysieke StorSimple-apparaat. Zie [werken met het Cloud apparaat](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)voor meer informatie over het starten, stoppen en opnieuw opstarten van de StorSimple Cloud Appliance.
+> * **Een draaiende controller mag nooit fysiek worden verwijderd, omdat dit zou resulteren in een verlies van redundantie en een verhoogd risico op downtime.**
+> * De volgende procedure is alleen van toepassing op het fysieke storsimple-apparaat. Zie [Werken met het cloudtoestel](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)voor informatie over het starten, stoppen en opnieuw starten van het StorSimple Cloud Appliance.
 
-U kunt één apparaat-controller opnieuw opstarten of afsluiten via de Azure Portal van de StorSimple Apparaatbeheer-service of Windows PowerShell voor StorSimple.
+U één apparaatcontroller opnieuw opstarten of afsluiten via de Azure-portal van de StorSimple Device Manager-service of Windows PowerShell voor StorSimple.
 
-Voer de volgende stappen uit om uw Apparaatbeheer te beheren vanuit de Azure Portal.
+Voer de volgende stappen uit om uw apparaatcontrollers vanuit de Azure-portal te beheren.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Een controller in Azure Portal opnieuw opstarten of afsluiten
-1. Ga in de StorSimple-Apparaatbeheer service naar **apparaten**. Selecteer uw apparaat in de lijst met apparaten. 
+#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Een controller opnieuw starten of afsluiten in Azure-portal
+1. Ga in uw StorSimple Device Manager-service naar **Apparaten**. Selecteer uw apparaat in de lijst met apparaten. 
 
     ![Kies een apparaat](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Ga naar **instellingen > controllers**.
+2. Ga naar **Instellingen > Controllers**.
    
-    ![Controleren of StorSimple-apparaten in orde zijn](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. Controleer op de Blade **controllers** of de status van beide controllers op het apparaat in **orde**is. Selecteer een controller, klik met de rechter muisknop en selecteer **opnieuw opstarten** of **Afsluiten**.
+    ![Controleer of StorSimple-apparaatcontrollers gezond zijn](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
+3. Controleer in het blade **controllers** of de status van beide controllers op uw apparaat **in orde**is. Selecteer een controller, klik met de rechtermuisknop en selecteer **Opnieuw starten** of **afsluiten**.
 
-    ![Selecteer opnieuw opstarten of StorSimple-hostcontrollers afsluiten](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
+    ![StorSimple-apparaatcontrollers opnieuw starten of afsluiten selecteren](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Er wordt een taak gemaakt om de controller opnieuw op te starten of af te sluiten en er worden toepasselijke waarschuwingen weer gegeven, indien van toepassing. Als u het opnieuw opstarten of afsluiten wilt controleren, gaat u naar **service logboeken voor activiteiten >** en filtert u op para meters die specifiek zijn voor uw service. Als een controller is afgesloten, moet u de aan/uit-knop pushen om de controller in te scha kelen om deze in te scha kelen.
+4. Er wordt een taak gemaakt om de controller opnieuw te starten of af te sluiten en u krijgt eventueel toepasselijke waarschuwingen te zien. Als u het opnieuw opstarten of afsluiten wilt controleren, gaat u naar **Service > Activiteitslogboeken** en filtert u op parameters die specifiek zijn voor uw service. Als een controller is uitgeschakeld, moet u op de aan/uit-knop drukken om de controller in te schakelen om deze in te schakelen.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Een controller in Windows PowerShell voor StorSimple opnieuw opstarten of afsluiten
-Voer de volgende stappen uit om een enkele controller op uw StorSimple-apparaat af te sluiten of opnieuw op te starten via de Windows PowerShell voor StorSimple.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Een controller opnieuw starten of uitschakelen in Windows PowerShell voor StorSimple
+Voer de volgende stappen uit om één controller op uw StorSimple-apparaat uit te schakelen of opnieuw op te starten vanuit de Windows PowerShell voor StorSimple.
 
-1. Toegang tot het apparaat via de seriële console of een Telnet-sessie vanaf een externe computer. Als u verbinding wilt maken met controller 0 of controller 1, volgt u de stappen in [putty gebruiken om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**.
-3. In het banner bericht noteert u de controller waarmee u verbinding hebt (controller 0 of controller 1) en of dit de actieve of de passieve controller (standby) is.
+1. Toegang tot het apparaat via de seriële console of een telnet-sessie vanaf een externe computer. Als u verbinding wilt maken met Controller 0 of Controller 1, voert u de stappen uit in [PuTTY gebruiken om verbinding te maken met de seriële console van het apparaat.](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)
+2. Kies in het menu van de seriële console optie 1, **Log in met volledige toegang**.
+3. Noteer in het bannerbericht de controller waarmee u bent verbonden (Controller 0 of Controller 1) en of het de actieve of passieve (stand-by) controller is.
    
-   * Als u één controller wilt afsluiten, typt u het volgende bij de prompt:
+   * Typ bij de prompt één controller om één controller uit te schakelen:
      
        `Stop-HcsController`
      
-       Hiermee wordt de controller die u hebt verbonden, afgesloten. Als u de actieve controller stopt, voert het apparaat een failover uit naar de passieve controller.
+       Hiermee wordt de controller uitgeschakeld waarmee u bent verbonden. Als u de actieve controller stopt, mislukt het apparaat niet naar de passieve controller.
 
-   * Als u een controller opnieuw wilt opstarten, typt u het volgende bij de opdracht prompt:
+   * Typ op de prompt het thema:
      
        `Restart-HcsController`
      
-       Hiermee wordt de controller waarmee u verbinding hebt gemaakt, opnieuw opgestart. Als u de actieve controller opnieuw opstart, wordt een failover naar de passieve controller uitgevoerd voordat de computer opnieuw wordt opgestart.
+       Hiermee wordt de controller waarmee u verbinding hebt gemaakt, opnieuw opgestart. Als u de actieve controller opnieuw start, wordt deze niet overnaar de passieve controller voor de herstart.
 
-## <a name="shut-down-a-storsimple-device"></a>Een StorSimple-apparaat afsluiten
+## <a name="shut-down-a-storsimple-device"></a>Een StorSimple-apparaat uitschakelen
 
-In deze sectie wordt uitgelegd hoe u een actief of een mislukt StorSimple-apparaat afsluit vanaf een externe computer. Een apparaat wordt uitgeschakeld nadat beide controllers zijn afgesloten. Een apparaat wordt afgesloten wanneer het apparaat fysiek wordt verplaatst of buiten gebruik wordt gemaakt.
-
-> [!IMPORTANT]
-> Controleer voordat u het apparaat uitschakelt de status van de onderdelen van het apparaat. Navigeer naar uw apparaat en klik vervolgens op **instellingen > hardware-status**. Controleer op de Blade **status en hardware Health** of de LED-status van alle onderdelen groen is. Alleen een goed apparaat heeft een groene status. Als uw apparaat wordt afgesloten om een defect onderdeel te vervangen, ziet u een fout (rood) of een gedegradeerde (gele) status voor de respectievelijke onderdelen.
-
-
-#### <a name="to-shut-down-a-storsimple-device"></a>Een StorSimple-apparaat afsluiten
-
-1. Gebruik de procedure voor het [opnieuw opstarten of afsluiten van een controller](#restart-or-shut-down-a-single-controller) om de passieve controller op het apparaat te identificeren en af te sluiten. U kunt deze bewerking uitvoeren in de Azure Portal of in Windows PowerShell voor StorSimple.
-2. Herhaal de bovenstaande stap om de actieve controller af te sluiten.
-3. U moet nu kijken naar het achtergrond vlak van het apparaat. Nadat de twee controllers volledig zijn afgesloten, moeten de status-Led's op beide controllers rood knip peren. Als u het apparaat op dit moment volledig wilt uitschakelen, spiegelt u de voedings switches van zowel de voeding als de koel modules (PCMs) in de stand-by. Hiermee schakelt u het apparaat uit.
-
-## <a name="reset-the-device-to-factory-default-settings"></a>De standaard fabrieks instellingen van het apparaat herstellen
+In dit gedeelte wordt uitgelegd hoe u een lopend of mislukt StorSimple-apparaat vanaf een externe computer afsluit. Een apparaat wordt uitgeschakeld nadat beide apparaatcontrollers zijn uitgeschakeld. Een apparaat wordt afgesloten wanneer het apparaat fysiek wordt verplaatst of buiten gebruik wordt genomen.
 
 > [!IMPORTANT]
-> Als u de standaard instellingen van uw apparaat wilt herstellen, neemt u contact op met Microsoft Ondersteuning. De hieronder beschreven procedure mag alleen worden gebruikt in combi natie met Microsoft Ondersteuning.
+> Controleer voordat u het apparaat uitschakelt de status van de apparaatonderdelen. Navigeer naar uw apparaat en klik vervolgens op **Instellingen > Hardware-status**. Controleer in het **blad Status en hardwarestatus** of de LED-status van alle onderdelen groen is. Alleen een gezond apparaat heeft een groene status. Als uw apparaat wordt afgesloten om een defect onderdeel te vervangen, ziet u een mislukte (rode) of een gedegradeerde (gele) status voor de betreffende component(en).
 
-In deze procedure wordt beschreven hoe u uw Microsoft Azure StorSimple apparaat opnieuw instelt op de standaard fabrieks instellingen met behulp van Windows PowerShell voor StorSimple.
-Als u een apparaat opnieuw instelt, worden alle gegevens en instellingen van het hele cluster standaard verwijderd.
 
-Voer de volgende stappen uit om de fabrieks instellingen van uw Microsoft Azure StorSimple apparaat opnieuw in te stellen:
+#### <a name="to-shut-down-a-storsimple-device"></a>Een StorSimple-apparaat uitschakelen
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Het apparaat opnieuw instellen op de standaard instellingen in Windows PowerShell voor StorSimple
-1. Toegang tot het apparaat via de seriële console. Controleer het banner bericht om er zeker van te zijn dat u verbonden bent met de **actieve** controller.
-2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**.
-3. Typ bij de prompt de volgende opdracht om het hele cluster opnieuw in te stellen, waarbij alle gegevens, meta data en controller instellingen worden verwijderd:
+1. Gebruik de [procedure voor het opnieuw starten of afsluiten van een controller](#restart-or-shut-down-a-single-controller) om de passieve controller op uw apparaat te identificeren en uit te schakelen. U deze bewerking uitvoeren in de Azure-portal of in Windows PowerShell voor StorSimple.
+2. Herhaal de bovenstaande stap om de actieve controller uit te schakelen.
+3. Je moet nu naar het achtervlak van het apparaat kijken. Nadat de twee controllers volledig zijn uitgeschakeld, moeten de status-LED's op beide controllers rood knipperen. Als u het apparaat op dit moment volledig moet uitschakelen, draait u de aan/uit-schakelaars op zowel power- als koelmodules (PCM's) naar de UIT-positie. Dit moet het apparaat uitschakelen.
+
+## <a name="reset-the-device-to-factory-default-settings"></a>Het apparaat terugzetten naar de fabrieksinstellingen
+
+> [!IMPORTANT]
+> Neem contact op met Microsoft Support als u uw apparaat opnieuw wilt instellen in de standaardinstellingen van de fabriek. De onderstaande procedure mag alleen worden gebruikt in combinatie met Microsoft Support.
+
+In deze procedure wordt beschreven hoe u uw Microsoft Azure StorSimple-apparaat resetten naar standaardinstellingen in de fabriek met Windows PowerShell voor StorSimple.
+Als u een apparaat opnieuw instelt, worden standaard alle gegevens en instellingen uit het hele cluster verwijderd.
+
+Voer de volgende stappen uit om uw Microsoft Azure StorSimple-apparaat opnieuw in te stellen naar de standaardinstellingen in de fabriek:
+
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Het apparaat opnieuw instellen op standaardinstellingen in Windows PowerShell voor StorSimple
+1. Toegang tot het apparaat via de seriële console. Controleer het bannerbericht om ervoor te **Active** zorgen dat u bent verbonden met de Active-controller.
+2. Kies in het menu van de seriële console optie 1, **Log in met volledige toegang**.
+3. Typ bij de prompt de volgende opdracht om het hele cluster opnieuw in te stellen en alle instellingen voor gegevens, metagegevens en controllerte verwijderen:
    
     `Reset-HcsFactoryDefault`
    
-    Als u in plaats daarvan één controller opnieuw wilt instellen, gebruikt u de cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) met de para meter `-scope`.)
+    Als u in plaats daarvan één controller wilt resetten, `-scope` gebruikt u de cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) met de parameter.)
    
-    Het systeem wordt meerdere keren opnieuw opgestart. U ontvangt een melding wanneer de herstel bewerking is voltooid. Afhankelijk van het systeem model kan het 45-60 minuten duren voor een 8100-apparaat en 60-90 minuten voor een 8600 om dit proces te volt ooien.
+    Het systeem wordt meerdere keren opnieuw opgestart. U wordt op de hoogte gesteld wanneer de reset is voltooid. Afhankelijk van het systeemmodel kan het 45-60 minuten duren voor een 8100-apparaat en 60-90 minuten voor een 8600 om dit proces te voltooien.
    
-## <a name="questions-and-answers-about-managing-device-controllers"></a>Vragen en antwoorden over het beheren van Apparaatbeheer
-In deze sectie hebben we enkele van de veelgestelde vragen over het beheer van StorSimple-apparaten samenvatten.
+## <a name="questions-and-answers-about-managing-device-controllers"></a>Vragen en antwoorden over het beheren van apparaatcontrollers
+In deze sectie hebben we een aantal van de veelgestelde vragen over het beheren van StorSimple-apparaatcontrollers samengevat.
 
-**V:** Wat gebeurt er als beide controllers op mijn apparaat in orde zijn en zijn ingeschakeld en de actieve controller opnieuw opstarten of afsluiten?
+**V:** Wat gebeurt er als beide controllers op mijn apparaat gezond zijn en ingeschakeld en ik de actieve controller opnieuw start of afsluit?
 
-**A:** Als beide controllers op het apparaat in orde zijn en zijn ingeschakeld, wordt u gevraagd om bevestiging. U kunt kiezen uit:
+**A.** Als beide controllers op uw apparaat in orde zijn en zijn ingeschakeld, wordt u om bevestiging gevraagd. U ervoor kiezen om:
 
-* **De actieve controller opnieuw starten** : u wordt gewaarschuwd dat het apparaat een failover naar de passieve controller heeft veroorzaakt door het opnieuw opstarten van een actieve controller. De controller wordt opnieuw opgestart.
-* **Een actieve controller afsluiten** : u wordt gewaarschuwd dat het afsluiten van een actieve controller resulteert in uitval tijd. U moet ook de aan/uit-knop op het apparaat pushen om de controller in te scha kelen.
+* **Start de actieve controller opnieuw** op : u krijgt een melding dat het opnieuw opstarten van een actieve controller ervoor heeft gezorgd dat het apparaat niet naar de passieve controller is overgelaten. De controller wordt opnieuw opgestart.
+* **Een actieve controller uitschakelen** – U krijgt een melding dat het afsluiten van een actieve controller leidt tot downtime. U moet ook op de aan/uit-knop op het apparaat drukken om de controller in te schakelen.
 
-**V:** Wat gebeurt er als de passieve controller op mijn apparaat niet beschikbaar is of is uitgeschakeld en de actieve controller opnieuw wordt opgestart of afgesloten?
+**V:** Wat gebeurt er als de passieve controller op mijn apparaat niet beschikbaar is of uitgeschakeld en ik de actieve controller opnieuw start of afsluit?
 
-**A:** Als de passieve controller op het apparaat niet beschikbaar is of is uitgeschakeld, en u ervoor kiest om het volgende te doen:
+**A.** Als de passieve controller op uw apparaat niet beschikbaar is of is uitgeschakeld, kiest u ervoor om:
 
-* **De actieve controller opnieuw starten** : u wordt gewaarschuwd dat het voortzetten van de bewerking resulteert in een tijdelijke onderbreking van de service en u wordt gevraagd om bevestiging.
-* **Een actieve controller afsluiten** : u ontvangt een melding dat de bewerking wordt voortgezet en de uitval tijd wordt teruggebracht. U moet ook de aan/uit-knop op een of beide controllers pushen om het apparaat in te scha kelen. U wordt gevraagd om bevestiging.
+* **Start de actieve controller** opnieuw op : u krijgt een melding dat voortzetting van de bewerking zal leiden tot een tijdelijke onderbreking van de service en dat u om bevestiging wordt gevraagd.
+* **Een actieve controller uitschakelen** – U krijgt een melding dat het voortzetten van de bewerking leidt tot downtime. U moet ook op de aan/uit-knop op een of beide controllers drukken om het apparaat in te schakelen. U wordt om bevestiging gevraagd.
 
-**V:** Wanneer wordt het opnieuw opstarten of afsluiten van de controller niet uitgevoerd?
+**V:** Wanneer wordt de controller opnieuw opgestart of afgesloten?
 
-**A:** Het opnieuw opstarten of afsluiten van een controller kan mislukken als:
+**A.** Het opnieuw opstarten of uitschakelen van een controller kan mislukken als:
 
-* Er wordt een update van het apparaat uitgevoerd.
-* Het opnieuw opstarten van de controller wordt al uitgevoerd.
-* Er wordt al een speld afgesloten.
+* Er wordt een apparaatupdate uitgevoerd.
+* Er is al een herstart van de controller aan de gang.
+* Er is al een controller-uitschakeling aan de gang.
 
-**V:** Hoe kunt u achterhalen of een controller opnieuw is opgestart of afgesloten?
+**V:** Hoe u erachter komen of een controller opnieuw is opgestart of uitgeschakeld?
 
-**A:** U kunt de status van de controller controleren op de Blade Controller. De controller status geeft aan of een controller bezig is met opnieuw opstarten of afsluiten. Daarnaast bevat de Blade **waarschuwingen** een informatieve waarschuwing als de controller opnieuw wordt opgestart of wordt afgesloten. De bewerkingen voor het opnieuw opstarten en afsluiten van de controller worden ook vastgelegd in de activiteiten Logboeken. Ga voor meer informatie over activiteiten logboeken naar [de activiteiten logboeken weer geven](storsimple-8000-service-dashboard.md#view-the-activity-logs).
+**A.** U de status van de controller controleren op het controllerblad. De status van de controller geeft aan of een controller bezig is met het opnieuw opstarten of afsluiten. Bovendien bevat het **zwaard van Waarschuwingen** een informatieve waarschuwing als de controller opnieuw wordt opgestart of wordt afgesloten. De bewerkingen voor het opnieuw opstarten en afsluiten van de controller worden ook geregistreerd in de activiteitslogboeken. Ga voor meer informatie over activiteitslogboeken naar [De activiteitslogboeken weergeven](storsimple-8000-service-dashboard.md#view-the-activity-logs).
 
-**V:** Zijn er gevolgen voor de I/O als gevolg van een failover van een controller?
+**V:** Is er enige impact op de I / O als gevolg van controller failover?
 
-**A:** De TCP-verbindingen tussen initia tors en de actieve controller worden opnieuw ingesteld als gevolg van een failover van de controller, maar worden opnieuw ingesteld wanneer de passieve controller de bewerking afneemt. Er is mogelijk een tijdelijke (minder dan 30 seconden) pauze in de I/O-activiteit tussen initia tors en het apparaat tijdens de uitvoering van deze bewerking.
+**A.** De TCP-verbindingen tussen initiators en actieve controller worden gereset als gevolg van een mislukte controller, maar worden hersteld wanneer de passieve controller de werking ervan aanneemt. Er kan een tijdelijke (minder dan 30 seconden) pauze zijn in I/O-activiteit tussen de initiators en het apparaat tijdens deze bewerking.
 
-**V:** Hoe kan ik retour neren van mijn controller naar service nadat deze is afgesloten en verwijderd?
+**V:** Hoe kan ik mijn controller weer in gebruik nemen nadat deze is afgesloten en verwijderd?
 
-**A:** Als u een controller naar de service wilt retour neren, moet u deze in het chassis invoegen zoals beschreven in [een controller module vervangen op uw StorSimple-apparaat](storsimple-8000-controller-replacement.md).
+**A.** Als u een controller wilt weer in gebruik nemen, moet u deze in het chassis invoegen zoals beschreven in [Een controllermodule vervangen op uw StorSimple-apparaat.](storsimple-8000-controller-replacement.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u problemen ondervindt met de StorSimple-apparaten die u niet kunt oplossen met behulp van de procedures in deze zelf studie, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
-* Ga voor meer informatie over het gebruik van de StorSimple Apparaatbeheer-service naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
+* Als u problemen ondervindt met uw StorSimple-apparaatcontrollers die u niet oplossen met behulp van de procedures in deze zelfstudie, [neemt u contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+* Ga voor meer informatie over het gebruik van de StorSimple Device Manager-service naar [De StorSimple Device Manager-service gebruiken om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
 

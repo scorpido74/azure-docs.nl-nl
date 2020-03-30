@@ -1,6 +1,6 @@
 ---
-title: Voorbeeld scripts Azure Disk Encryption
-description: Dit artikel is de bijlage voor Microsoft Azure schijf versleuteling voor Windows-Vm's.
+title: Voorbeeldscripts voor Azure Disk Encryption
+description: Dit artikel is de bijlage voor Microsoft Azure Disk Encryption voor Windows VM's.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,101 +8,101 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266726"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeld scripts Azure Disk Encryption 
+# <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
 
-Dit artikel bevat voorbeeld scripts voor het voorbereiden van vooraf versleutelde Vhd's en andere taken.
+In dit artikel vindt u voorbeeldscripts voor het voorbereiden van vooraf versleutelde VHD's en andere taken.
 
  
 
-## <a name="list-vms-and-secrets"></a>Vm's en geheimen weer geven
+## <a name="list-vms-and-secrets"></a>Lijst VM's en geheimen
 
-Alle versleutelde virtuele machines in uw abonnement weer geven:
+Alle versleutelde VM's in uw abonnement weergeven:
 
 ```azurepowershell-interactive
 $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
 $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
 Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
 ```
-Alle schijf versleutelings geheimen weer geven die worden gebruikt voor het versleutelen van Vm's in een sleutel kluis:
+Vermeld alle geheimen van schijfversleuteling die worden gebruikt voor het versleutelen van VM's in een sleutelkluis:
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>De Azure Disk Encryption vereisten scripts
-Als u al bekend bent met de vereisten voor Azure Disk Encryption, kunt u het [Power shell-script Azure Disk Encryption vereisten](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )gebruiken. Zie [Quick Start a VM versleutelen](disk-encryption-powershell-quickstart.md)voor een voor beeld van het gebruik van dit Power shell-script. U kunt de opmerkingen verwijderen uit een gedeelte van het script, begint bij regel 211, voor het versleutelen van alle schijven voor bestaande virtuele machines in een bestaande resourcegroep. 
+## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>De vereiste vereisten voor Azure Disk Encryption
+Als u al bekend bent met de vereisten voor Azure Disk Encryption, u het [PowerShell-script voor Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )gebruiken. Zie de [Vm Quickstart versleutelen](disk-encryption-powershell-quickstart.md)voor een voorbeeld van het gebruik van dit PowerShell-script. U de opmerkingen uit een gedeelte van het script verwijderen, te beginnen bij regel 211, om alle schijven voor bestaande VM's in een bestaande brongroep te versleutelen. 
 
-De volgende tabel ziet u welke parameters kunnen worden gebruikt in het PowerShell-script: 
+In de volgende tabel ziet u welke parameters kunnen worden gebruikt in het PowerShell-script: 
 
-|Parameter|Beschrijving|Ingevuld?|
+|Parameter|Beschrijving|Verplicht?|
 |------|------|------|
-|$resourceGroupName| De naam van de resourcegroep waaraan de KeyVault behoort.  Een nieuwe resourcegroep met deze naam wordt gemaakt als deze niet bestaat.| True|
-|$keyVaultName|De naam van de Sleutelkluis waar versleutelingssleutels in sleutels moeten worden geplaatst. Een nieuwe kluis met deze naam wordt gemaakt als deze niet bestaat.| True|
-|$location|Locatie van de Key Vault. Zorg ervoor dat de Key Vault en de virtuele machines moeten worden versleuteld zijn op dezelfde locatie. Haal een locatielijst op met `Get-AzLocation`.|True|
-|$subscriptionId|Id van het Azure-abonnement moet worden gebruikt.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|True|
-|$aadAppName|De naam van de Azure AD-toepassing die wordt gebruikt voor het schrijven van geheimen naar Key Vault. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, moet u aadClientSecret parameter doorgeven aan het script.|False|
+|$resourceGroupName| Naam van de resourcegroep waartoe de KeyVault behoort.  Er wordt een nieuwe resourcegroep met deze naam gemaakt als deze niet bestaat.| True|
+|$keyVaultName|Naam van de KeyVault waarin encryptiesleutels moeten worden geplaatst. Er wordt een nieuwe kluis met deze naam gemaakt als deze niet bestaat.| True|
+|$location|Locatie van de KeyVault. Zorg ervoor dat de KeyVault- en VM's die moeten worden versleuteld, zich op dezelfde locatie bevinden. Haal een locatielijst op met `Get-AzLocation`.|True|
+|$subscriptionId|Id van het Te gebruiken Azure-abonnement.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|True|
+|$aadAppName|Naam van de Azure AD-toepassing die wordt gebruikt om geheimen naar KeyVault te schrijven. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, geeft u de parameter aadClientSecret door aan het script.|False|
 |$aadClientSecret|Clientgeheim van de Azure AD-toepassing die eerder is gemaakt.|False|
-|$keyEncryptionKeyName|De naam van de optionele sleutel van versleutelingssleutel in Key Vault. Een nieuwe sleutel met deze naam wordt gemaakt als deze niet bestaat.|False|
+|$keyEncryptionKeyName|Naam van optionele sleutelversleutelingssleutel in KeyVault. Er wordt een nieuwe sleutel met deze naam gemaakt als deze niet bestaat.|False|
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Versleutelen of ontsleutelen van virtuele machines zonder een Azure AD-app
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>VM's versleutelen of decoderen zonder een Azure AD-app
 
-- [Schijf versleuteling inschakelen op een bestaande of actieve Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
-- [Versleuteling uitschakelen op een actieve Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
+- [Schijfversleuteling inschakelen op een bestaande of met Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
+- [Versleuteling uitschakelen op een draaiende Windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Versleutelen of ontsleutelen van virtuele machines met een Azure AD-app (vorige versie) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>VM's versleutelen of decoderen met een Azure AD-app (vorige release) 
  
-- [Schijf versleuteling inschakelen op een bestaande of actieve Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
-- [Versleuteling uitschakelen op een actieve Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
-- [Een nieuwe versleutelde beheerde schijf maken op basis van een vooraf versleutelde VHD/opslag-BLOB](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Maakt u een nieuwe versleutelde beheerde schijf die een vooraf gecodeerde VHD en de bijbehorende instellingen voor codering
+- [Schijfversleuteling inschakelen op een bestaande of met Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
+- [Versleuteling uitschakelen op een draaiende Windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
+- [Een nieuwe versleutelde beheerde schijf maken vanaf een vooraf versleutelde VHD/storage blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Hiermee maakt u een nieuwe versleutelde beheerde schijf op voorwaarde dat een vooraf versleutelde VHD en de bijbehorende versleutelingsinstellingen
 
-## <a name="prepare-a-pre-encrypted-windows-vhd"></a>Een vooraf versleutelde Windows-VHD voorbereiden
-De volgende secties zijn die nodig zijn voor het vooraf gecodeerde Windows VHD voorbereiden voor implementatie als een versleutelde VHD in Azure IaaS. Gebruik de informatie voor het voorbereiden en start een nieuwe Windows virtuele machine (VHD) voor Azure Site Recovery of Azure. Zie [een gegeneraliseerde VHD uploaden en deze gebruiken om nieuwe virtuele machines in azure te maken](upload-generalized-managed.md)voor meer informatie over het voorbereiden en uploaden van een VHD.
+## <a name="prepare-a-pre-encrypted-windows-vhd"></a>Een vooraf versleutelde Windows VHD voorbereiden
+De secties die volgen zijn nodig om een vooraf versleutelde Windows VHD voor te bereiden op implementatie als een versleutelde VHD in Azure IaaS. Gebruik de informatie om een nieuwe Windows VM (VHD) voor te bereiden en op te starten op Azure Site Recovery of Azure. Zie [Een gegeneraliseerde VHD uploaden en gebruiken om nieuwe VM's in Azure te maken](upload-generalized-managed.md)voor meer informatie over het voorbereiden en uploaden van een VHD.
 
-### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Bijwerken van Groepsbeleid om toe te staan zonder TPM voor OS-beveiliging
-Configureer de instelling van de BitLocker-groepsbeleid **BitLocker-stationsversleuteling**, die u vindt onder **lokaal computer beleid** > **computer configuratie** > **Beheersjablonen** **Windows-onderdelen**. >  Wijzig deze instelling in **stations met het besturings systeem** > **extra authenticatie vereisen bij het opstarten** > **BitLocker zonder een compatibele TPM toestaan**, zoals wordt weer gegeven in de volgende afbeelding:
+### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Groepsbeleid bijwerken om niet-TPM toe te staan voor OS-beveiliging
+Configureer de BitLocker-groepsbeleidsinstelling **BitLocker-stationsversleuteling** > , die u vindt onder**Computerconfiguratiebeheersjablonen** > voor **lokale computerbeleid** > **Computer Configuration****Windows-onderdelen**. Wijzig deze instelling in **Stations voor besturingssystemen** > **Vereisen extra verificatie bij het opstarten** > **Toestaan BitLocker zonder compatibele TPM,** zoals wordt weergegeven in de volgende afbeelding:
 
 ![Microsoft Antimalware in Azure](../media/disk-encryption/disk-encryption-fig8.png)
 
-### <a name="install-bitlocker-feature-components"></a>BitLocker-onderdelen installeren
-Voor Windows Server 2012 en hoger, gebruikt u de volgende opdracht:
+### <a name="install-bitlocker-feature-components"></a>BitLocker-functiecomponenten installeren
+Gebruik voor Windows Server 2012 en hoger de volgende opdracht:
 
     dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
 
-Voor Windows Server 2008 R2, gebruikt u de volgende opdracht uit:
+Voer voor Windows Server 2008 R2 de volgende opdracht in:
 
     ServerManagerCmd -install BitLockers
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Het volume van het besturings systeem voorbereiden voor BitLocker met behulp van `bdehdcfg`
-Als u de besturingssysteem partitie wilt comprimeren en de machine wilt voorbereiden voor BitLocker, voert u de [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) indien nodig uit:
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Het besturingssysteemvolume voorbereiden op BitLocker met behulp van`bdehdcfg`
+Als u de OS-partitie wilt comprimeren en de machine wilt voorbereiden op BitLocker, voert u de [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) indien nodig uit:
 
     bdehdcfg -target c: shrink -quiet 
 
-### <a name="protect-the-os-volume-by-using-bitlocker"></a>Volume met het besturingssysteem beveiligen met behulp van BitLocker
-Gebruik de [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) opdracht om versleuteling op het opstart volume in te scha kelen met behulp van een externe-sleutel beveiliging. Ook de externe sleutel (.bek-bestand) op de externe schijf of volume plaatsen. Versleuteling is ingeschakeld op het volume/opstarten van het systeem na het opnieuw opstarten.
+### <a name="protect-the-os-volume-by-using-bitlocker"></a>Het besturingssysteemvolume beveiligen met BitLocker
+Gebruik [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) de opdracht om versleuteling op het opstartvolume in te schakelen met behulp van een externe sleutelbeschermer. Plaats ook de externe sleutel (.bek-bestand) op de externe schijf of het externe volume. Versleuteling is ingeschakeld op het systeem/opstartvolume na de volgende herstart.
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
 
 > [!NOTE]
-> De virtuele machine met een afzonderlijke gegevens/resource VHD voorbereiden voor het ophalen van de externe sleutel met BitLocker.
+> Bereid de VM voor met een afzonderlijke VHD voor gegevens/bron voor het verkrijgen van de externe sleutel met BitLocker.
 
-## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Versleutelde VHD uploaden naar een Azure Storage-account
-Nadat DM-cryptografie versleuteling is ingeschakeld, moet de lokale versleutelde VHD worden geüpload naar uw opslag account.
+## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Versleutelde VHD uploaden naar een Azure-opslagaccount
+Nadat DM-Crypt-versleuteling is ingeschakeld, moet de lokale versleutelde VHD worden geüpload naar uw opslagaccount.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Upload het geheim voor de vooraf versleutelde virtuele machine naar uw sleutel kluis
-Het geheim voor schijf versleuteling dat u eerder hebt verkregen, moet als geheim worden geüpload in uw sleutel kluis.  Hiervoor moeten de machtigingen set Secret en wrapkey worden verleend aan het account dat de geheimen uploadt.
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Upload het geheim voor de vooraf versleutelde VM naar uw sleutelkluis
+Het schijfversleutelingsgeheim dat u eerder hebt verkregen, moet worden geüpload als een geheim in uw sleutelkluis.  Dit vereist het verlenen van de set geheime toestemming en de wrapkey toestemming voor het account dat de geheimen zal uploaden.
 
 ```powershell 
 # Typically, account Id is the user principal name (in user@domain.com format)
@@ -120,8 +120,8 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
 
 ```
 
-### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is niet versleuteld met een KEK
-Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). De wachtwoordzin wordt gecodeerd als een base64-teken reeks en vervolgens geüpload naar de sleutel kluis. Bovendien moet u ervoor dat de volgende codes zijn ingesteld wanneer u het geheim in de key vault maakt.
+### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Schijfversleutelingsgeheim niet versleuteld met een KEK
+Als u het geheim in uw sleutelkluis wilt instellen, gebruikt u [Set-AzKeyVaultSecret.](/powershell/module/az.keyvault/set-azkeyvaultsecret) De wachtwoordzin wordt gecodeerd als een base64-tekenreeks en vervolgens geüpload naar de sleutelkluis. Zorg er bovendien voor dat de volgende tags worden ingesteld wanneer u het geheim in de sleutelkluis maakt.
 
 ```powershell
 
@@ -138,10 +138,10 @@ Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultS
 ```
 
 
-Gebruik de `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf zonder KEK te gebruiken](#without-using-a-kek).
+Gebruik `$secretUrl` de in de volgende stap voor [het koppelen van de OS-schijf zonder kek te gebruiken.](#without-using-a-kek)
 
-### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is versleuteld met een KEK
-Voordat u het geheim naar de key vault uploaden, kunt u deze desgewenst versleutelen met behulp van een sleutel van versleutelingssleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) -cmdlet.
+### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Schijfversleuteling geheim versleuteld met een KEK
+Voordat u het geheim uploadt naar de sleutelkluis, u het optioneel versleutelen met behulp van een sleutelversleutelingssleutel. Gebruik de wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om eerst het geheim te versleutelen met behulp van de sleutelversleutelingssleutel. De uitvoer van deze wrap-bewerking is een base64 URL gecodeerde tekenreeks, [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) die u vervolgens als geheim uploaden met behulp van de cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -231,12 +231,12 @@ Voordat u het geheim naar de key vault uploaden, kunt u deze desgewenst versleut
     $secretUrl = $response.id
 ```
 
-Gebruik `$KeyEncryptionKey` en `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf met behulp van KEK](#using-a-kek).
+Gebruik `$KeyEncryptionKey` `$secretUrl` en in de volgende stap voor [het koppelen van de OS-schijf met BEHULP van KEK](#using-a-kek).
 
-##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Geef een geheime URL op wanneer u een besturingssysteem schijf koppelt
+##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Een geheime URL opgeven wanneer u een os-schijf koppelt
 
-###  <a name="without-using-a-kek"></a>Zonder gebruik te maken van een KEK
-Wanneer u de besturingssysteem schijf koppelt, moet u `$secretUrl`door geven. De URL is gegenereerd in de sectie 'schijfversleuteling geheim niet versleuteld met een KEK-sleutel'.
+###  <a name="without-using-a-kek"></a>Zonder gebruik van een KEK
+Terwijl u de OS-schijf bevestigt, `$secretUrl`moet u slagen voor . De URL is gegenereerd in de sectie 'Schijfversleutelingsgeheim niet versleuteld met een KEK'-sectie.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -249,7 +249,7 @@ Wanneer u de besturingssysteem schijf koppelt, moet u `$secretUrl`door geven. De
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Een KEK gebruiken
-Wanneer u de besturingssysteem schijf koppelt, geeft u `$KeyEncryptionKey` en `$secretUrl`door. De URL is gegenereerd in de sectie 'Versleutelingsgeheim van schijf versleuteld met een KEK-sleutel'.
+Wanneer u de OS-schijf bevestigt, passeert `$KeyEncryptionKey` en `$secretUrl`. De URL is gegenereerd in de sectie 'Schijfversleuteling geheim versleuteld met een KEK'.The URL is generated in the "Disk encryption secret encrypted with a KEK" sectie.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

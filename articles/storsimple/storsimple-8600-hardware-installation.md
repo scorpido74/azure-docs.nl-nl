@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple 8600-apparaat installeren
-description: Hierin wordt beschreven hoe u het StorSimple 8600-apparaat uitpakt, koppelt en kabelt voordat u de software implementeert en configureert.
+description: Beschrijft hoe u uw StorSimple 8600-apparaat uitpakken, rackmounten en kabelen voordat u de software implementeert en configureert.
 author: alkohli
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
@@ -8,260 +8,260 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254753"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat uitpakken, aan het rek koppelen en bekabelen
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Pak uw StorSimple 8600-apparaat uit, reken en kabel
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Overzicht
-Uw Microsoft Azure StorSimple 8600 is een apparaat met twee behuizingen en bestaat uit een primaire en een EBOD behuizing. In deze zelf studie wordt uitgelegd hoe u de StorSimple 8600-computerhardware uitpakt, koppelt en bekabelt voordat u de StorSimple-software configureert.
+Uw Microsoft Azure StorSimple 8600 is een apparaat met dubbele behuizing en bestaat uit een primaire en een EBOD-behuizing. In deze zelfstudie wordt uitgelegd hoe u de StorSimple 8600-apparaathardware uitpakken, rackmonteren en bekabelen voordat u de StorSimple-software configureert.
 
-## <a name="unpack-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat uitpakken
-De volgende stappen bevatten duidelijke, gedetailleerde instructies voor het uitpakken van uw StorSimple 8600-opslag apparaat. Dit apparaat wordt in twee dozen verzonden, een voor de primaire behuizing en een andere voor de EBOD-behuizing. Deze twee vakken worden vervolgens in één vak geplaatst.
+## <a name="unpack-your-storsimple-8600-device"></a>Pak uw StorSimple 8600-apparaat uit
+De volgende stappen geven duidelijke, gedetailleerde instructies over het uitpakken van uw StorSimple 8600-opslagapparaat. Dit apparaat wordt verzonden in twee dozen, een voor de primaire behuizing en een andere voor de EBOD-behuizing. Deze twee dozen worden vervolgens in één doos geplaatst.
 
-### <a name="prepare-to-unpack-your-device"></a>Voorbereiden op het uitpakken van uw apparaat
-Lees de volgende informatie voordat u uw apparaat uitpakt.
+### <a name="prepare-to-unpack-your-device"></a>Bereid je voor om je apparaat uit te pakken
+Voordat u uw apparaat uitpakt, controleert u de volgende informatie.
 
-![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
+![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png)![pictogram](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) zwaar gewicht **pictogram WAARSCHUWING!**
 
-1. Zorg ervoor dat er twee mensen beschikbaar zijn om het gewicht van het apparaat te beheren als u het hand matig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
+1. Zorg ervoor dat u twee personen beschikbaar hebt om het gewicht van het apparaat te beheren als u het handmatig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg wegen.
 2. Leg de doos op een vlak, horizontaal oppervlak.
 
 Voer vervolgens de volgende stappen uit om uw apparaat uit te pakken.
 
 #### <a name="to-unpack-your-device"></a>Uw apparaat uitpakken
-1. Controleer de doos en het verpakkingsmateriaal op deuken, scheuren, waterschade of andere duidelijk zichtbare schade. Als de doos of het verpakkingsmateriaal ernstig beschadigd is, moet u de doos niet openen. Neem [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om u te helpen bepalen of het apparaat in goede staat werkt.
-2. Open het buitenste vak en voer de twee selectie vakjes uit die overeenkomen met primaire en EBOD behuizingen. U kunt nu de primaire en EBOD-behuizingen uitpakken. In de volgende afbeelding ziet u de uitgepakte weer gave van een van de bijlagen.
+1. Controleer de doos en het verpakkingsmateriaal op deuken, scheuren, waterschade of andere duidelijk zichtbare schade. Als de doos of het verpakkingsmateriaal ernstig beschadigd is, moet u de doos niet openen. Neem [contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) om te beoordelen of het apparaat in goede staat is.
+2. Open de buitendoos en haal de twee vakken die overeenkomen met primaire en EBOD-behuizingen. U nu de primaire en EBOD-behuizingen uitpakken. De volgende afbeelding toont de uitgepakte weergave van een van de behuizingen.
    
-    ![Uw opslag apparaat uitpakken](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
+    ![Uw opslagapparaat uitpakken](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
-    **Uitgepakte weer gave van uw opslag apparaat**
+    **Onverpakte weergave van uw opslagapparaat**
    
    | Label | Beschrijving |
    | --- | --- |
-   |   1 |Vak voor verpakking |
-   |   2 |SAS-kabels (in accessoires en kabels lade) |
-   |   3 |Onderste schuim |
+   |   1 |Verpakkingsdoos |
+   |   2 |SAS-kabels (in accessoires en kabelslade) |
+   |   3 |Bodemschuim |
    |   4 |Apparaat |
-   |   5 |Bovenste schuim |
-   |   6 |Vak voor accessoire |
-3. Nadat u de twee selectie vakjes hebt uitgepakt, moet u het volgende hebben:
+   |   5 |Top schuim |
+   |   6 |Accessoiredoos |
+3. Na het uitpakken van de twee dozen, zorg ervoor dat je:
    
-   * 1 primaire behuizing (de primaire behuizing en EBOD Enclosure bevinden zich in twee afzonderlijke vakken)
+   * 1 primaire behuizing (de primaire behuizing en EBOD-behuizing bevinden zich in twee afzonderlijke vakken)
    * 1 EBOD-behuizing
-   * 4 stroom kabels, 2 in elk vak
-   * 2 SAS-kabels (om de primaire behuizing te verbinden met EBOD Enclosure)
-   * 1 Crossover Ethernet-kabel
-   * 2 kabels van seriële console
-   * 1 serieel USB-conversie programma voor seriële toegang
-   * 4 QSFP-naar-SFP +-adapters voor gebruik met 10 GbE-netwerk interfaces
-   * 2 rack montagekit (4 rails met gekoppelde hardware, 2 voor de primaire behuizing en EBOD behuizing), 1 in elk vak
-   * Documentatie voor aan de slag
+   * 4 netsnoeren, 2 in elke doos
+   * 2 SAS-kabels (om de primaire behuizing aan te sluiten op de EBOD-behuizing)
+   * 1 crossover Ethernet-kabel
+   * 2 seriële consolekabels
+   * 1 seriële USB-converter voor seriële toegang
+   * 4 QSFP-naar-SFP+ adapters voor gebruik met 10 GbE netwerkinterfaces
+   * 2 rack mount kits (4 zijrails met montagehardware, 2 elk voor de primaire behuizing en EBOD behuizing), 1 in elke doos
+   * Documentatie aan de slag
      
-     Als u geen van de hierboven vermelde items hebt ontvangen, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).  
+     Als u geen van de bovenstaande items hebt ontvangen, neemt u [contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
 De volgende stap is het in het rek monteren van uw apparaat.
 
-## <a name="rack-mount-your-storsimple-8600-device"></a>Rack: uw StorSimple 8600-apparaat koppelen
-Volg de volgende stappen om uw StorSimple 8600-opslag apparaat te installeren in een standaard 19-inch rack met front-en post berichten. Dit apparaat wordt geleverd met twee behuizingen: een primaire behuizing en een EBOD-behuizing. Beide moeten zijn gekoppeld aan een rek.
+## <a name="rack-mount-your-storsimple-8600-device"></a>Rack-mount uw StorSimple 8600 apparaat
+Volg de volgende stappen om uw StorSimple 8600-opslagapparaat te installeren in een standaard 19-inch rack met voor- en achterpalen. Dit apparaat wordt geleverd met twee behuizingen: een primaire behuizing en een EBOD-behuizing. Beide moeten worden opeengemonteerd.
 
-De installatie bestaat uit meerdere stappen, die allemaal worden besproken in de volgende procedures.
+De installatie bestaat uit meerdere stappen, die elk in de volgende procedures worden besproken.
 
 > [!IMPORTANT]
-> StorSimple-apparaten moeten zijn gekoppeld aan een rek voor een goede werking.
+> StorSimple-apparaten moeten voor een goede werking worden gemonteerd.
 > 
 > 
 
-### <a name="site-preparation"></a>Site voorbereiding
-De behuizingen moeten worden geïnstalleerd in een standaard 19-inch rack met zowel voor-als achteruitkijk berichten. Gebruik de volgende procedure om de rack installatie voor te bereiden.
+### <a name="site-preparation"></a>Voorbereiding van de site
+De behuizingen moeten worden geïnstalleerd in een standaard 19-inch rack dat zowel voor- als achterpalen heeft. Gebruik de volgende procedure om u voor te bereiden op de installatie van het rack.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>De site voorbereiden voor de installatie van een rek
-1. Zorg ervoor dat de primaire en EBOD-behuizing veilig zijn op een plat, stabiel en niveau werk vlak (of vergelijkbaar).
-2. Controleer of de site waar u wilt instellen, een standaard AC van een onafhankelijke bron of een PDU (netstroom distributie-eenheid) met een nood voeding (UPS) heeft.
-3. Zorg ervoor dat er één 4U (2 X 2U)-sleuf beschikbaar is in het rek waarin u de bijlagen wilt koppelen.
+#### <a name="to-prepare-the-site-for-rack-installation"></a>De site voorbereiden op rackinstallatie
+1. Zorg ervoor dat de primaire en EBOD-behuizingen veilig rusten op een vlak, stabiel en vlak werkoppervlak (of iets dergelijks).
+2. Controleer of de site waar u wilt instellen standaard wisselstroom heeft van een onafhankelijke bron of een rack Power Distribution Unit (PDU) met een niet-onderbreekbare voeding (UPS).
+3. Zorg ervoor dat er één 4U -sleuf (2 X 2U) beschikbaar is op het rek waarin u de behuizingen wilt monteren.
 
-![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
+![Waarschuwingspictogram](./media/storsimple-safety/IC740879.png)![pictogram](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) zwaar gewicht **pictogram WAARSCHUWING!**
 
- Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht als u de apparaat-installatie hand matig uitvoert. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
+ Zorg ervoor dat u twee personen beschikbaar hebt om het gewicht te beheren als u de installatie van het apparaat handmatig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg wegen.
 
-### <a name="rack-prerequisites"></a>Rack vereisten
-De behuizingen zijn ontworpen voor installatie in een standaard 19-inch rack behuizing met:
+### <a name="rack-prerequisites"></a>Vereisten voor rack
+De behuizingen zijn ontworpen voor installatie in een standaard 19-inch rackkast met:
 
-* Minimale diepte van 27,84 cm van het rack post-bericht
-* Maximum gewicht van 32 kg voor het apparaat
-* Maximale druk van 5 Pascal (0,5 mm vocht meter)
+* Minimale diepte van 27,84 inch van rack post tot post
+* Maximaal gewicht van 32 kg voor het apparaat
+* Maximale tegendruk van 5 Pascal (0,5 mm watermeter)
 
-### <a name="rack-mounting-rail-kit"></a>Rail Kit voor rack montage
-Er wordt een reeks montage rails meegeleverd voor gebruik met de 19-inch rack behuizing. De rails zijn getest om het gewicht van de maximale behuizing te verwerken. Deze rails bieden ook de mogelijkheid om meerdere behuizingen te installeren zonder verlies van ruimte binnen het rek. Installeer eerst de EBOD-behuizing.
+### <a name="rack-mounting-rail-kit"></a>Rack-montage railkit
+Een set van montage rails zal worden voorzien voor gebruik met de 19-inch rack kast. De rails zijn getest om het maximale gewicht van de behuizing te verwerken. Deze rails zullen ook de installatie van meerdere behuizingen mogelijk maken zonder ruimteverlies in het rek. Installeer eerst de EBOD-behuizing.
 
-#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>De EBOD Enclosure op de rails installeren
-1. Voer deze stap alleen uit als de interne rails niet op uw apparaat zijn geïnstalleerd. Normaal gesp roken worden de interne rails in de fabriek geïnstalleerd. Als er geen rails zijn geïnstalleerd, installeert u de dia's uit de linker-en rechter rails aan de zijkanten van het behuizing-chassis. Ze worden aan elke zijde gekoppeld met zes metrische schroeven. Om u te helpen bij het bezorgen van de afdruk stand, worden de Rail dia's als **LH-front** en **RH-front**en wordt het uiteinde dat zich op de achterkant van de behuizing bevindt, verzegeld.
+#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>De EBOD-behuizing op de rails installeren
+1. Voer deze stap alleen uit als er geen binnenrails op uw apparaat zijn geïnstalleerd. Typisch, de binnenste rails zijn geïnstalleerd in de fabriek. Als rails niet zijn geïnstalleerd, installeer dan de linkerrail- en rechterrailglijbanen aan de zijkanten van het chassis van de behuizing. Ze bevestigen met behulp van zes metrische schroeven aan elke kant. Om te helpen met oriëntatie, de rail dia's zijn gemarkeerd **LH - Front** en RH - **Front**, en het uiteinde dat is aangebracht aan de achterzijde van de behuizing heeft een taps toelopende einde.
    
-    ![Rail dia's koppelen aan het behuizing-chassis](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Railglijbanen aan behuizingschassis bevestigen](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
-    **Rail dia's koppelen aan de zijkanten van de behuizing**
+    **Railglijbanen aan de zijkanten van de behuizing bevestigen**
    
    | Label | Beschrijving |
    | --- | --- |
-   |  1 |M 3x4 knop-Head schroefs |
-   |  2 |Chassis dia's |
-2. Koppel de rails van de linker-en rechter Rail aan de verticale leden van het rek-Cabinet. De vier Kante haken zijn gemarkeerd **LH**, **RH**en **deze kant** aan de hand van de juiste stand.
-3. Zoek de pennen van de rails aan voor- en achterzijde van de rail. Breid de rails uit voor de rack berichten en plaats de pincodes in de voor-en achterliggende leden van het buiten rack. Zorg ervoor dat de Rail-assembly niveau is.
-4. Beveilig de Rail-assembly met de verticale leden van het rek door gebruik te maken van twee van de gegeven metrische schroeven. Gebruik één schroef aan de voor zijde en een aan de achterzijde.
-5. Herhaal deze stappen voor de andere Rail-assembly.
+   |  1 |M 3x4 knoopschroeven |
+   |  2 |Chassisdia's |
+2. Bevestig de linkerrail- en rechterrailsamenstellingen aan de verticale onderdelen van de rekkast. De beugels zijn gemarkeerd **LH,** **RH**, en **Deze kant omhoog** om u te begeleiden door de juiste oriëntatie.
+3. Zoek de pennen van de rails aan voor- en achterzijde van de rail. Verleng de rail om tussen de rackpalen te passen en steek de pinnen in de voorste en achterste-rack post verticale lid gaten. Zorg ervoor dat de railmontage vlak is.
+4. Zet de railmontage vast aan de verticale rackleden met behulp van twee van de meegeleverde metrische schroeven. Gebruik een schroef aan de voorkant en een aan de achterzijde.
+5. Herhaal deze stappen voor de andere railassemblage.
    
-     ![Rail dia's koppelen aan een rack behuizing](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Railglijbanen aan de rekkast bevestigen](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Rail-assembly's aan het rek koppelen**
-   
-   | Label | Beschrijving |
-   | --- | --- |
-   |   1 |Schroef bout |
-   |   2 |Vier Kante opening voor rack-schroef |
-   |   3 |Locatie pincodes van het voorste spoor |
-   |   4 |Schroef bout |
-   |   5 |Locatie pincodes achterblijvend spoor |
-
-### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>De EBOD behuizing in het rek koppelen
-Voer de volgende stappen uit om de EBOD-behuizing in het rek te koppelen met behulp van de rack rails die zojuist zijn geïnstalleerd.
-
-#### <a name="to-mount-the-ebod-enclosure"></a>De EBOD-behuizing koppelen
-1. Met een assistent, til u de behuizing op en lijnt u deze uit met de Rack Rails.
-2. Plaats de behuizing nauw keurig in de rails en push deze vervolgens volledig naar de rack behuizing.
-   
-    ![Apparaat in het rek invoegen](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
-   
-    **De behuizing in het rek koppelen**
-3. Verwijder de linker-en rechter flens van de uiteinden door de kapitalen vrij te halen. De flens uiteinden worden simpelweg op de flens uitgelijnd.
-4. Beveilig de behuizing in het rek door één van de meegeleverde Phillips via elke flens, links en rechts, te installeren.
-5. Installeer de flens uiteinden door ze naar de gewenste positie te verplaatsen.
-   
-     ![Flens cap's installeren](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
-   
-    **Flens cap's installeren**
+    **Railassemblages aan het rek bevestigen**
    
    | Label | Beschrijving |
    | --- | --- |
-   |   1 |Schroef bout behuizing |
+   |   1 |Klemschroef |
+   |   2 |Vierkante gat voorste rack post schroef |
+   |   3 |Linker voorste spoorplaatsspelden |
+   |   4 |Klemschroef |
+   |   5 |Links achter spoor locatie pinnen |
 
-### <a name="mounting-the-primary-enclosure-in-the-rack"></a>De primaire behuizing in het rek koppelen
-Nadat u klaar bent met het koppelen van de EBOD-behuizing, moet u de primaire behuizing koppelen volgens dezelfde stappen.
+### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>Montage van de EBOD-behuizing in het rek
+Met behulp van de rack rails die net zijn geïnstalleerd, voert u de volgende stappen uit om de EBOD-behuizing in het rek te monteren.
+
+#### <a name="to-mount-the-ebod-enclosure"></a>De EBOD-behuizing monteren
+1. Til met een assistent de behuizing op en lijn deze uit op de rackrails.
+2. Plaats de behuizing voorzichtig in de rails en duw deze vervolgens volledig in de rekkast.
+   
+    ![Invoegen apparaat in het rek](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
+   
+    **Montage van de behuizing in het rek**
+3. Verwijder de linker- en rechterflensdoppen door de doppen vrij te trekken. De flensdoppen klikken gewoon op de flenzen.
+4. Zet de behuizing in het rek door het installeren van een meegeleverde Phillips-head schroef door elke flens, links en rechts.
+5. Installeer de flensdoppen door ze op hun plaats te drukken en op hun plaats te klikken.
+   
+     ![Flensdoppen installeren](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
+   
+    **Het installeren van de flensdoppen**
+   
+   | Label | Beschrijving |
+   | --- | --- |
+   |   1 |Behuizing bevestigingsschroef |
+
+### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Montage van de primaire behuizing in het rek
+Nadat u klaar bent met het monteren van de EBOD-behuizing, moet u de primaire behuizing na dezelfde stappen monteren.
 
 > [!NOTE]
-> * Het kan zijn dat er een paar lege sleuven in het rek zijn tussen de primaire behuizing en de EBOD-behuizing.
-> * Gebruik de meegeleverde SAS-kabel van de 2 min. om de primaire behuizing aan de EBOD-behuizing te koppelen.
-> * Er zijn geen beperkingen voor de relatieve plaatsing van de Head-eenheid naar de EBOD-eenheid. De primaire behuizing kan daarom in de bovenste sleuf en de onderstaande EBOD-behuizing worden geplaatst, of andersom.
+> * Het is mogelijk om een paar lege sleuven in het rek tussen de primaire behuizing en de EBOD behuizing.
+> * Gebruik de meegeleverde 2m SAS-kabel om de primaire behuizing aan te sluiten op de EBOD-behuizing.
+> * Er zijn geen beperkingen op de relatieve plaatsing van de hoofdeenheid naar de EBOD-eenheid. Daarom kan de primaire behuizing in de bovenste sleuf en de EBOD-behuizing hieronder worden geplaatst - of vice versa.
 > 
 > 
 
-De volgende stap is het bekabelen van uw apparaat voor energie, netwerk en seriële toegang.
+De volgende stap is om uw apparaat te bekabelen voor stroom-, netwerk- en seriële toegang.
 
 ## <a name="cable-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat bekabelen
-In de volgende procedures wordt uitgelegd hoe u het StorSimple 8600-apparaat kunt bekabelen voor energie-, netwerk-en seriële verbindingen.
+In de volgende procedures wordt uitgelegd hoe u uw StorSimple 8600-apparaat bekabelen voor stroom-, netwerk- en seriële verbindingen.
 
 ### <a name="prerequisites"></a>Vereisten
-Voordat u aan de slag gaat met de kabel van uw apparaat, hebt u het volgende nodig:
+Voordat u begint met het bekabelen van uw apparaat, moet u het volgende doen:
 
 * Uw primaire behuizing en de EBOD-behuizing, volledig uitgepakt
-* 4 stroom kabels (2 voor de primaire en EBOD behuizing) die bij uw apparaat zijn geleverd
-* 2 SAS-kabels die zijn meegeleverd met het apparaat om de EBOD-behuizing aan de primaire behuizing te koppelen
-* Toegang tot 2 energie distributie-eenheden (Pdu's) (aanbevolen)
-* Netwerk kabels
-* Beschik bare seriële kabels
-* Serieel USB-converter met het juiste stuur programma dat is geïnstalleerd op uw PC (indien nodig)
-* Voorzien in 4 QSFP-naar-SFP +-adapters voor gebruik met 10 GbE-netwerk interfaces
-* [Ondersteunde hardware voor de 10 GbE-netwerk interfaces op uw StorSimple-apparaat](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* 4 stroomkabels (elk 2 voor de primaire en de EBOD-behuizing) die bij uw apparaat zijn geleverd
+* 2 SAS-kabels die bij het apparaat worden geleverd om de EBOD-behuizing aan te sluiten op de primaire behuizing
+* Toegang tot 2 Power Distribution Units (PDU's) (aanbevolen)
+* Netwerkkabels
+* Meegeleverde seriële kabels
+* Seriële USB-converter met het juiste stuurprogramma op uw pc geïnstalleerd (indien nodig)
+* Voorzien van 4 QSFP-naar-SFP+ adapters voor gebruik met 10 GbE netwerkinterfaces
+* [Ondersteunde hardware voor de 10 GbE-netwerkinterfaces op uw StorSimple-apparaat](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### <a name="sas-and-power-cabling"></a>SAS en stroom kabels
-Uw apparaat heeft zowel een primaire behuizing als een EBOD-behuizing. Hiervoor moeten de eenheden worden verbonden met een SAS-verbinding (Serial Attached SCSI) en kracht.
+### <a name="sas-and-power-cabling"></a>SAS- en Power bekabeling
+Uw apparaat heeft zowel een primaire behuizing als een EBOD-behuizing. Dit vereist dat de units worden samengevoegd voor Serial Attached SCSI (SAS) connectiviteit en stroom.
 
-Wanneer u dit apparaat voor de eerste keer instelt, voert u de stappen voor SAS-bekabeling eerst uit en voert u de stappen voor energie bekabeling uit.
+Wanneer u dit apparaat voor de eerste keer instelt, voert u eerst de stappen uit voor SAS-bekabeling en voert u vervolgens de stappen voor de stroombekabeling uit.
 
 [!INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
-### <a name="network-cabling"></a>Netwerk kabels
-Uw apparaat bevindt zich in een configuratie met actief/stand-by: op elk gewenst moment is één controller module actief en verwerkt alle schijf-en netwerk bewerkingen terwijl de andere controller module op stand-by staat. Als er een storing optreedt in de controller, activeert de standby-controller de schijf-en netwerk bewerkingen onmiddellijk en gaat deze verder.
+### <a name="network-cabling"></a>Netwerkbekabeling
+Uw apparaat bevindt zich in een actieve stand-byconfiguratie: op elk moment is één controllermodule actief en verwerkt alle schijf- en netwerkbewerkingen terwijl de andere controllermodule stand-by staat. Als er een controllerfout optreedt, wordt de stand-bycontroller onmiddellijk geactiveerd en wordt alle schijf- en netwerkbewerkingen voortgezet.
 
-Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van het apparaat bekabelen, zoals wordt weer gegeven in de volgende stappen.
+Als u deze redundante controllerfailover wilt ondersteunen, moet u uw apparaatnetwerk kabelen, zoals in de volgende stappen wordt weergegeven.
 
-#### <a name="to-cable-for-network-connection"></a>Naar kabel voor netwerk verbinding
-1. Uw apparaat heeft zes netwerk interfaces op elke controller: vier 1 Gbps-en 2 10 Gbps Ethernet-poorten. Raadpleeg de volgende afbeelding om de gegevens poorten op de backplane van uw apparaat te identificeren.
+#### <a name="to-cable-for-network-connection"></a>Naar kabel voor netwerkverbinding
+1. Uw apparaat heeft zes netwerkinterfaces op elke controller: vier 1 Gbps en twee 10 Gbps Ethernet-poorten. Raadpleeg de volgende illustratie om de gegevenspoorten op de backplane van uw apparaat te identificeren.
    
-     ![Backplane van 8600-apparaat](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+     ![Backplane van 8600 apparaat](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Terug op het apparaat met de gegevens poorten**
+    **Achterkant van uw apparaat met de gegevenspoorten**
    
    | Label | Beschrijving |
    | --- | --- |
-   |   0,1,4,5 |1 GbE-netwerk interfaces |
-   |   2,3 |10 GbE-netwerk interfaces |
+   |   0,1,4,5 |1 GbE-netwerkinterfaces |
+   |   2,3 |10 GbE-netwerkinterfaces |
    |   6 |Seriële poorten |
-2. Zie het volgende diagram voor netwerk kabels. (De minimale netwerk configuratie wordt weer gegeven door middel van ononderbroken blauwe lijnen. Voor hoge Beschik baarheid en prestaties wordt aanvullende configuratie vereist weer gegeven door stippel lijnen.)
+2. Zie het volgende diagram voor netwerkbekabeling. (De minimale netwerkconfiguratie wordt weergegeven door effen blauwe lijnen. Voor hoge beschikbaarheid en prestaties wordt extra configuratie weergegeven door stippellijnen.)
 
-![Uw 4U-apparaat bekabelen voor netwerk](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
+![Kabel uw 4U-apparaat voor netwerk](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
-**Netwerk kabels voor uw apparaat**
+**Netwerkbekabeling voor uw apparaat**
 
 | Label | Beschrijving |
 | --- | --- |
-| A |LAN met Internet toegang |
+| A |LAN met internettoegang |
 | B |Controller 0 |
 | C |PCM 0 |
 | D |Controller 1 |
 | E |PCM 1 |
 | F |EBOD-controller 0 |
-| Kg |EBOD-controller 1 |
-| H,I |Hosts (bijvoorbeeld bestands servers) |
+| G |EBOD-controller 1 |
+| H. |Hosts (bijvoorbeeld bestandsservers) |
 | 0-5 |Netwerkinterfaces |
 | 6 |Primaire behuizing |
 | 7 |EBOD-behuizing |
 
-Bij het bekabelen van het apparaat vereist de minimale configuratie:
+Bij het bezetten van het apparaat vereist de minimale configuratie:
 
-* Ten minste twee netwerk interfaces die zijn verbonden op elke controller met één voor Cloud toegang en één voor iSCSI. De poort DATA 0 wordt automatisch ingeschakeld en geconfigureerd via de seriële console van het apparaat. Naast gegevens 0 moet ook een andere gegevens poort worden geconfigureerd via de klassieke Azure-Portal. In dit geval verbindt u DATA 0-poort met het primaire LAN (netwerk met Internet toegang). De andere gegevens poorten kunnen worden aangesloten op het SAN/iSCSI LAN (VLAN)-segment van het netwerk, afhankelijk van de beoogde rol.
-* Identieke interfaces op elke controller die zijn verbonden met hetzelfde netwerk om te zorgen voor Beschik baarheid als er een failover voor de controller plaatsvindt. Als u bijvoorbeeld gegevens 0 en DATA 3 voor een van de controllers wilt verbinden, moet u de overeenkomende gegevens 0 en DATA 3 op de andere controller verbinden.
+* Ten minste twee netwerkinterfaces die op elke controller zijn verbonden met één voor cloudtoegang en één voor iSCSI. De DATA 0-poort wordt automatisch ingeschakeld en geconfigureerd via de seriële console van het apparaat. Naast DATA 0 moet er ook een andere datapoort worden geconfigureerd via de klassieke Azure-portal. Sluit in dit geval DATA 0-poort aan op het primaire LAN (netwerk met internettoegang). De andere datapoorten kunnen worden aangesloten op het VLAN-segment (SAN)-segment (SAN) van het netwerk, afhankelijk van de beoogde rol.
+* Identieke interfaces op elke controller die op hetzelfde netwerk is aangesloten om de beschikbaarheid te garanderen als er een mislukte controller optreedt. Als u bijvoorbeeld kiest voor het aansluiten van DATA 0 en DATA 3 voor een van de controllers, moet u de bijbehorende DATA 0 en DATA 3 aansluiten op de andere controller.
 
-Denk eraan voor hoge Beschik baarheid en prestaties:
+Houd rekening met hoge beschikbaarheid en prestaties:
 
-* Configureer, indien mogelijk, een paar netwerk interface voor Cloud toegang (1 GbE) en een ander paar voor iSCSI (10 GbE aanbevolen) op elke controller.
-* Als dat mogelijk is, kunt u netwerk interfaces van elke controller verbinden met twee verschillende switches om de beschik baarheid van een switch-fout te garanderen. De afbeelding illustreert de 2 10 GbE-netwerk interfaces, DATA 2 en DATA 3, van elke controller die is verbonden met twee verschillende switches. Raadpleeg de **netwerk interfaces** onder de [vereisten voor hoge Beschik baarheid voor uw StorSimple-apparaat](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)voor meer informatie.
+* Configureer indien mogelijk een netwerkinterface voor cloudtoegang (1 GbE) en een ander paar voor iSCSI (10 GbE aanbevolen) op elke controller.
+* Sluit waar mogelijk netwerkinterfaces van elke controller aan op twee verschillende switches om de beschikbaarheid tegen een storing van een switch te garanderen. De figuur illustreert de twee 10 GbE-netwerkinterfaces, DATA 2 en DATA 3, van elke controller die is aangesloten op twee verschillende switches. Raadpleeg voor meer informatie de **netwerkinterfaces** onder de [vereisten voor hoge beschikbaarheid voor uw StorSimple-apparaat.](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)
 
 > [!NOTE]
-> Als u SFP +-transceivers met uw 10 GbE-netwerk interfaces gebruikt, gebruikt u de meegeleverde QSFP-SFP +-adapters. Voor meer informatie gaat u naar [ondersteunde hardware voor de 10 GbE-netwerk interfaces op uw StorSimple-apparaat](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> Als u SFP+ transceivers gebruikt met uw 10 GbE-netwerkinterfaces, gebruikt u de meegeleverde QSFP-SFP+-adapters. Ga voor meer informatie naar [ondersteunde hardware voor de 10 GbE-netwerkinterfaces op uw StorSimple-apparaat.](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 > 
 > 
 
-### <a name="serial-port-cabling"></a>Bekabeling van seriële poort
+### <a name="serial-port-cabling"></a>Seriële bekabeling
 Voer de volgende stappen uit om uw seriële poort te bekabelen.
 
 #### <a name="to-cable-for-serial-connection"></a>Naar kabel voor seriële verbinding
-1. Uw apparaat heeft een seriële poort op elke controller die wordt geïdentificeerd door een moersleutel-pictogram. Als u de seriële poorten wilt vinden, raadpleegt u de afbeelding waarin de gegevens poorten op de achterkant van het apparaat worden weer gegeven.
-2. Identificeer de actieve controller op de backplane van uw apparaat. Een knipperende blauwe LED geeft aan dat de controller actief is.
-3. Gebruik de meegeleverde seriële kabel (indien nodig, het USB-seriële conversie programma voor uw laptop) en verbind uw console of computer (met terminal emulatie op het apparaat) met de seriële poort van de actieve controller.
-4. Installeer de seriële USB-Stuur programma's (geleverd bij het apparaat) op uw computer.
+1. Uw apparaat heeft een seriële poort op elke controller die wordt geïdentificeerd door een moersleutelpictogram. Als u de seriële poorten wilt vinden, raadpleegt u de afbeelding met de gegevenspoorten op de achterkant van uw apparaat.
+2. Identificeer de actieve controller in de backplane van uw apparaat. Een knipperende blauwe LED geeft aan dat de controller actief is.
+3. Gebruik de meegeleverde seriële kabel (indien nodig de USB-seriële converter voor uw laptop) en sluit uw console of computer (met terminalemulatie aan op het apparaat) aan op de seriële poort van de actieve controller.
+4. Installeer de seriële USB-stuurprogramma's (verzonden met het apparaat) op uw computer.
 5. Stel de seriële verbinding als volgt in:
    
    * 115.200 baud
-   * 8 databits
-   * 1 stopbit
+   * 8 gegevensbits
+   * 1 stop bit
    * Geen pariteit
-   * Datatransport besturing is ingesteld op **geen**
-6. Controleer of de verbinding werkt door op ENTER op de console te drukken. Er moet een seriële console worden weer gegeven.
+   * Stroombesturingselement ingesteld op **Geen**
+6. Controleer of de verbinding werkt door op Enter op de console te drukken. Er moet een seriële consolemenu worden weergegeven.
 
 > [!NOTE]
-> **Licht beheer:** Wanneer het apparaat is geïnstalleerd in een extern Data Center of in een computer ruimte met beperkte toegang, moet u ervoor zorgen dat de seriële verbindingen met beide controllers altijd zijn verbonden met een seriële console-switch of vergelijk bare apparatuur. Dit maakt buiten-band beheer op afstand en ondersteunings bewerkingen mogelijk in het geval van storingen in het netwerk of onverwachte storingen.
+> **Lights-Out Management:** Wanneer het apparaat is geïnstalleerd in een extern datacenter of in een computerruimte met beperkte toegang, moet u ervoor zorgen dat de seriële verbindingen met beide controllers altijd zijn verbonden met een seriële console-switch of vergelijkbare apparatuur. Dit maakt out-of-band afstandsbediening en ondersteuning operaties in geval van netwerkverstoring of onverwachte storingen.
 > 
 > 
 
-U hebt de bekabeling van uw apparaat voltooid voor stroom, netwerk toegang en seriële verbinding. De volgende stap is het configureren van de software op uw apparaat.
+U hebt de bekabeling van uw apparaat voltooid voor stroom, netwerktoegang en seriële verbinding. De volgende stap is het configureren van de software op uw apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
-U bent nu klaar om [uw on-premises StorSimple-apparaat te implementeren en te configureren](storsimple-8000-deployment-walkthrough-u2.md).
+U bent nu klaar om [uw on-premises StorSimple-apparaat](storsimple-8000-deployment-walkthrough-u2.md)te implementeren en te configureren.
 

@@ -1,81 +1,80 @@
 ---
-title: Technische activa maken voor een aanbieding van een virtuele machine voor Azure Marketplace
-description: Hierin wordt uitgelegd hoe u de technische activa voor een aanbieding van een virtuele machine maakt in de Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Technische elementen maken voor een virtuele machineaanbieding voor de Azure Marketplace
+description: Hier wordt uitgelegd hoe u de technische elementen voor een virtuele machineaanbieding in de Azure Marketplace maakt.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: pabutler
-ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278021"
 ---
-# <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technische activa maken voor een aanbieding van een virtuele machine
+# <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technische assets maken voor een virtuele machineaanbieding
 
-In deze sectie vindt u instructies voor het maken en configureren van de technische assets voor een virtuele machine (VM)-aanbieding voor Azure Marketplace.  Een VM bevat twee onderdelen: de oplossing virtuele harde schijf (VHD) en optionele gekoppelde gegevens schijven.  
+In deze sectie u de technische elementen voor een virtuele machine (VM) voor de Azure Marketplace maken en configureren.  Een VM bevat twee componenten: de oplossing virtuele harde schijf (VHD) en optionele gekoppelde gegevensschijven.  
 
-- *Virtuele harde schijven (vhd's)* met het besturings systeem en uw oplossing, die u kunt implementeren met uw Azure Marketplace-aanbieding. Het proces van het voorbereiden van de VHD verschilt, afhankelijk van het feit of het een op Linux gebaseerde, op Windows gebaseerde of een op een maatwerk gebaseerde VM is.
-- *Gegevens schijven* vertegenwoordigen toegewezen, permanente opslag voor een virtuele machine. Gebruik *niet* de oplossings-VHD (bijvoorbeeld het `C:` station) om permanente gegevens op te slaan.
+- *Virtuele harde schijven (VHD's),* die het besturingssysteem en uw oplossing bevatten, die u implementeert met uw Azure Marketplace-aanbieding. Het proces van de voorbereiding van de VHD verschilt afhankelijk van of het een Linux-gebaseerde, Windows-gebaseerde, of een op maat gebaseerde VM.
+- *Gegevensschijven* vertegenwoordigen speciale, permanente opslag voor een virtuele machine. Gebruik *not* de oplossing VHD (bijvoorbeeld `C:` het station) niet om permanente informatie op te slaan.
 
-Een VM-installatie kopie bevat één besturingssysteem schijf en nul of meer gegevens schijven. Per schijf is één VHD vereist. Voor zelfs lege gegevens schijven moet een VHD worden gemaakt.
-U moet het VM-besturings systeem, de VM-grootte, de te openen poorten en Maxi maal 15 gekoppelde gegevens schijven configureren.
+Een VM-afbeelding bevat één besturingssysteemschijf en nul of meer gegevensschijven. Per schijf is één VHD nodig. Zelfs lege gegevensschijven vereisen een VHD worden gemaakt.
+U moet het VM-besturingssysteem, de VM-grootte, poorten die u wilt openen en maximaal 15 gekoppelde gegevensschijven configureren.
 
 > [!TIP] 
-> Ongeacht het te gebruiken besturingssysteem voegt u alleen het minimum aantal gegevensschijven toe dat voor de SKU is vereist. Klanten kunnen geen schijven verwijderen die deel uitmaken van een installatie kopie op het moment van de implementatie, maar ze kunnen altijd schijven toevoegen tijdens of na de implementatie. 
+> Ongeacht welk besturingssysteem u gebruikt, voegt u alleen het minimum aantal gegevensschijven toe dat de SKU nodig heeft. Klanten kunnen geen schijven verwijderen die deel uitmaken van een afbeelding op het moment van implementatie, maar ze kunnen altijd schijven toevoegen tijdens of na implementatie. 
 
 > [!IMPORTANT]
-> *Wijzig het aantal schijven in een nieuwe installatie kopie versie niet.* Als u de gegevens schijven in de installatie kopie opnieuw moet configureren, definieert u een nieuwe SKU. Als u een nieuwe versie van een installatie kopie met verschillende schijf aantallen publiceert, kan de nieuwe implementatie worden verkleind op basis van de nieuwe versie van de installatie kopie in gevallen van automatische schaling, automatische implementatie van oplossingen via Azure Resource Manager sjablonen en andere scenario's.
+> *Wijzig het aantal schijven niet in een nieuwe afbeeldingsversie.* Als u gegevensschijven in de afbeelding opnieuw moet configureren, definieert u een nieuwe SKU. Als u een nieuwe afbeeldingsversie publiceert met verschillende schijftellingen, kan de nieuwe implementatie worden afgebroken op basis van de nieuwe afbeeldingsversie in het geval van automatisch schalen, automatische implementaties van oplossingen via Azure Resource Manager-sjablonen en andere scenario's.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Fundamentele technische kennis
 
-Het ontwerpen, bouwen en testen van deze assets vergt tijd en vereist technische kennis van het Azure-platform en de technologieën die worden gebruikt om de aanbieding te bouwen. Naast uw oplossings domein moet uw technische team kennis hebben van de volgende micro soft-technologieën: 
--   Basis informatie over [Azure-Services](https://azure.microsoft.com/services/) 
--   Azure- [toepassingen ontwerpen en ontwikkelen](https://azure.microsoft.com/solutions/architecture/)
--   Praktische kennis van [Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking)
--   Werk ervaring van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
--   Praktische kennis van [JSON](https://www.json.org/)
+Het ontwerpen, bouwen en testen van deze assets kost tijd en vereist technische kennis van zowel het Azure-platform als de technologieën die worden gebruikt om het aanbod te bouwen. Naast uw oplossingsdomein moet uw engineeringteam kennis hebben van de volgende Microsoft-technologieën: 
+-   Basiskennis van [Azure Services](https://azure.microsoft.com/services/) 
+-   [Azure-toepassingen ontwerpen en ontwerpen](https://azure.microsoft.com/solutions/architecture/)
+-   Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
+-   Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+-   Werkkennis van [JSON](https://www.json.org/)
 
 
-## <a name="suggested-tools"></a>Aanbevolen hulpprogram ma's 
+## <a name="suggested-tools"></a>Voorgestelde hulpprogramma's 
 
-Kies een of beide van de volgende script omgevingen om Vhd's en Vm's te beheren:
+Kies een of beide van de volgende scriptomgevingen om VHD's en VM's te beheren:
 -   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-   [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
-Daarnaast raden wij aan de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving: 
+Daarnaast raden we aan om de volgende tools toe te voegen aan je ontwikkelomgeving: 
 
--   [Azure-opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Extensie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Visual Studio-code](https://code.visualstudio.com/)
+    *   Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-We raden u ook aan om de beschik bare hulpprogram ma's op de [Azure Ontwikkelhulpprogramma's](https://azure.microsoft.com/tools/) -pagina te bekijken en als u Visual Studio, de [Visual Studio Marketplace](https://marketplace.visualstudio.com/), gebruikt.
+We raden ook aan om de beschikbare hulpprogramma's op de pagina [Azure Developer Tools](https://azure.microsoft.com/tools/) te bekijken en, als u Visual Studio gebruikt, de Visual Studio [Marketplace](https://marketplace.visualstudio.com/).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen in deze sectie worden de stappen beschreven voor het maken en registreren van deze VM-assets:
+De volgende artikelen in deze sectie lopen u door de stappen van het maken en registreren van deze VM-elementen:
 
-1. [Een virtuele harde schijf met Azure-compatibel maken](./cpp-create-vhd.md) hierin wordt uitgelegd hoe u een op Linux of Windows gebaseerde VHD maakt die compatibel is met Azure.  Het bevat aanbevolen procedures, zoals het aanpassen van de grootte, het herstellen van patches en het voorbereiden van de virtuele machine voor het uploaden.
+1. [Maak een virtuele harde schijf die compatibel](./cpp-create-vhd.md) is met Azure en geeft aan hoe u een VHD op Basis van Linux of Windows maakt die compatibel is met Azure.  Het bevat best practices, zoals het dimensioneren, patchen en voorbereiden van de VM voor het uploaden.
 
-2. [Verbinding maken met de virtuele machine](./cpp-connect-vm.md) hier wordt uitgelegd hoe u op afstand verbinding maakt met uw ZOJUIST gemaakte VM en zich aanmeldt.  In dit artikel wordt ook uitgelegd hoe u kunt voor komen dat de virtuele machine wordt bespaard op gebruiks kosten.
+2. [Maak verbinding met de virtuele machine](./cpp-connect-vm.md) legt uit hoe u op afstand verbinding maken met uw nieuw gemaakte virtuele machine en zich erop aanmelden.  In dit artikel wordt ook uitgelegd hoe u de VM stoppen om te besparen op gebruikskosten.
 
-3. [Configureer de virtuele machine](./cpp-configure-vm.md) wordt uitgelegd hoe u de juiste VHD-grootte kiest, uw installatie kopie generaliseert, recente updates (patches) toepast en aangepaste configuraties plant.
+3. [Configureer de virtuele machine](./cpp-configure-vm.md) legt uit hoe u de juiste VHD-grootte kiest, uw afbeelding generaliseert, recente updates (patches) toepast en aangepaste configuraties plant.
 
-4. [Een virtuele machine implementeren vanaf een virtuele harde schijf](./cpp-deploy-vm-vhd.md) wordt uitgelegd hoe u een VM kunt registreren vanuit een door Azure geïmplementeerde VHD.  De lijst bevat de vereiste hulpprogram ma's en hoe u deze kunt gebruiken om een VM-installatie kopie van een gebruiker te maken en deze vervolgens te implementeren in azure met behulp van de [Microsoft Azure-Portal](https://ms.portal.azure.com/) -of Power shell-scripts. 
+4. [Implementeer een virtuele machine vanaf een virtuele harde schijf](./cpp-deploy-vm-vhd.md) legt uit hoe u een VM registreert vanaf een Door Azure geïmplementeerde VHD.  Het bevat de benodigde hulpprogramma's en hoe u deze gebruiken om een VM-afbeelding van de gebruiker te maken en deze vervolgens te implementeren in Azure met behulp van de [Microsoft Azure-portal](https://ms.portal.azure.com/) of PowerShell-scripts. 
 
-5. [Een installatie kopie van een virtuele machine certificeren](./cpp-certify-vm.md) hierin wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering. Hierin wordt uitgelegd waar u het *certificerings test hulpprogramma voor het hulp programma voor Azure Certified* kunt ophalen en hoe u dit hulp programma kunt gebruiken om uw VM-installatie kopie te certificeren. 
+5. [In een afbeelding van een virtuele machine certificeren](./cpp-certify-vm.md) wordt uitgelegd hoe u een VM-afbeelding voor Azure Marketplace-certificering testen en verzenden. Hierin wordt uitgelegd waar u het *hulpprogramma voor certificeringstest voor Azure Certified* krijgen en hoe u deze tool gebruiken om uw VM-afbeelding te certificeren. 
 
-6. Met [SAS URI ophalen](./cpp-get-sas-uri.md) wordt uitgelegd hoe u de SAS-URI (Shared Access Signature) voor uw VM-installatie kopie (n) kunt ophalen.
+6. [Download SAS URI](./cpp-get-sas-uri.md) legt uit hoe u de uri voor gedeelde toegangshandtekeningen (SAS) voor uw VM-afbeelding(en) krijgen.
  
-Als ondersteunend artikel worden veelvoorkomende problemen met de [URL van gedeelde Access-hand tekeningen](./cpp-common-sas-url-issues.md) vermeld in een aantal veelvoorkomende fouten die kunnen optreden met SAS uri's en de bijbehorende mogelijke oplossingen.
+Als ondersteunend artikel bevat [url-problemen met algemene gedeelde toegangshandtekeningen](./cpp-common-sas-url-issues.md) een aantal veelvoorkomende problemen die u tegenkomen met Behulp van SAS-URL's en de bijbehorende mogelijke oplossingen.
 
-Nadat u al deze stappen hebt voltooid, kunt u [uw VM-aanbieding publiceren](./cpp-publish-offer.md) op de Azure Marketplace.
+Nadat u al deze stappen hebt voltooid, bent u klaar om [uw VM-aanbieding](./cpp-publish-offer.md) te publiceren naar de Azure Marketplace.
