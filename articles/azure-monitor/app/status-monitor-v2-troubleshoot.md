@@ -1,37 +1,37 @@
 ---
-title: Problemen oplossen met Azure-toepassing Insights-agent en bekende problemen | Microsoft Docs
-description: De bekende problemen met Application Insights agent en voor beelden van probleem oplossing. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Problemen met Azure Application Insights Agent oplossen en bekende problemen | Microsoft Documenten
+description: De bekende problemen van Application Insights Agent en voorbeelden van probleemoplossing. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671151"
 ---
-# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Probleemoplossing Application Insights Agent (voorheen statusmonitor v2 genoemd)
 
-Wanneer u controle inschakelt, kunt u problemen ondervinden die het verzamelen van gegevens verhinderen.
-In dit artikel worden alle bekende problemen beschreven en vindt u voor beelden van problemen oplossen.
-Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+Wanneer u bewaking inschakelt, u problemen ondervinden die het verzamelen van gegevens verhinderen.
+In dit artikel worden alle bekende problemen weergegeven en worden voorbeelden van problemen opgelost.
+Als u een probleem tegenkomt dat hier niet wordt vermeld, u contact met ons opnemen op [GitHub.](https://github.com/Microsoft/ApplicationInsights-Home/issues)
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>Conflicterende dll-bestanden in de bin-map van een app
+### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>Conflicterende DLL's in de opslaglocatiemap van een app
 
-Als een of meer van deze DLL-bestanden aanwezig zijn in de bin-map, kan de bewaking mislukken:
+Als een van deze DLL's aanwezig is in de opslagmap, kan de controle mislukken:
 
 - Microsoft.ApplicationInsights.dll
-- Microsoft.AspNet.TelemetryCorrelation.dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.AspNet.TelemetryCorrelatie.dll
+- System.Diagnostics.DiagnosticSource.dll
 
-Sommige van deze DLL-bestanden zijn opgenomen in de Visual Studio-sjablonen voor standaard-apps, zelfs als deze niet worden gebruikt door uw app.
-U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symptomatic te bekijken:
+Sommige van deze DLL's zijn opgenomen in de standaardappsjablonen van Visual Studio, zelfs als uw app ze niet gebruikt.
+U hulpprogramma's voor probleemoplossing gebruiken om symptomatisch gedrag te zien:
 
-- PerfView
+- PerfView:
     ```
     ThreadID="7,500" 
     ProcessorNumber="0" 
@@ -42,7 +42,7 @@ U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symp
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- IISReset-en app-belasting (zonder telemetrie). Onderzoeken met Sysinternals (handle. exe en ListDLLs. exe):
+- IISReset en app load (zonder telemetrie). Onderzoeken met Sysinternals (Handle.exe en ListDLLs.exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -53,14 +53,14 @@ U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symp
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
-### <a name="conflict-with-iis-shared-configuration"></a>Conflict met gedeelde IIS-configuratie
+### <a name="conflict-with-iis-shared-configuration"></a>Conflict met iIS-gedeelde configuratie
 
-Als u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
-De HTTP module kan niet worden ingevoegd in deze gedeelde configuratie.
-Voer de opdracht inschakelen op elke webserver uit om de DLL te installeren in de GAC van elke server.
+Als u een cluster webservers hebt, gebruikt u mogelijk een [gedeelde configuratie.](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)
+De HttpModule kan niet in deze gedeelde configuratie worden geïnjecteerd.
+Voer de opdracht Inschakelen op elke webserver uit om de DLL in de GAC van elke server te installeren.
 
-Nadat u de opdracht inschakelen hebt uitgevoerd, voert u de volgende stappen uit:
-1. Ga naar de gedeelde configuratiemap en zoek het bestand applicationHost. config.
+Voer de volgende stappen uit nadat u de opdracht Inschakelen hebt uitgevoerd:
+1. Ga naar de gedeelde configuratiemap en zoek het bestand applicationHost.config.
 2. Voeg deze regel toe aan het gedeelte modules van uw configuratie:
     ```
     <modules>
@@ -69,33 +69,33 @@ Nadat u de opdracht inschakelen hebt uitgevoerd, voert u de volgende stappen uit
     </modules>
     ```
 
-### <a name="iis-nested-applications"></a>Geneste IIS-toepassingen
+### <a name="iis-nested-applications"></a>IIS Geneste toepassingen
 
-Geneste toepassingen in IIS in versie 1,0 worden niet geinstrumenteerd.
-Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/369)bijgehouden.
+We instrument erniet geneste toepassingen in IIS in versie 1.0.
+We volgen dit probleem [hier.](https://github.com/microsoft/ApplicationInsights-Home/issues/369)
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Geavanceerde SDK-configuratie is niet beschikbaar.
 
-De SDK-configuratie wordt niet weer gegeven aan de eind gebruiker in versie 1,0.
-Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/375)bijgehouden.
+De SDK-configuratie wordt niet blootgesteld aan de eindgebruiker in versie 1.0.
+We volgen dit probleem [hier.](https://github.com/microsoft/ApplicationInsights-Home/issues/375)
 
     
     
 ## <a name="troubleshooting"></a>Problemen oplossen
     
-### <a name="troubleshooting-powershell"></a>Problemen met Power shell oplossen
+### <a name="troubleshooting-powershell"></a>Problemen met PowerShell oplossen
 
 #### <a name="determine-which-modules-are-available"></a>Bepalen welke modules beschikbaar zijn
-U kunt de `Get-Module -ListAvailable` opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
+U `Get-Module -ListAvailable` de opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
 
-#### <a name="import-a-module-into-the-current-session"></a>Een module in de huidige sessie importeren
-Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden met behulp van de `Import-Module <path to psd1>` opdracht.
+#### <a name="import-a-module-into-the-current-session"></a>Een module importeren in de huidige sessie
+Als een module niet is geladen in een PowerShell-sessie, `Import-Module <path to psd1>` u deze handmatig laden met behulp van de opdracht.
 
 
-### <a name="troubleshooting-the-application-insights-agent-module"></a>Problemen met de module Application Insights agent oplossen
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Problemen oplossen met de module Application Insights Agent
 
-#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>De beschik bare opdrachten in de module Application Insights agent weer geven
-Voer de opdracht `Get-Command -Module Az.ApplicationMonitor` uit om de beschik bare opdrachten op te halen:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>De opdrachten weergeven die beschikbaar zijn in de module Application Insights Agent
+Voer de `Get-Command -Module Az.ApplicationMonitor` opdracht uit om de beschikbare opdrachten op te halen:
 
 ```
 CommandType     Name                                               Version    Source
@@ -110,50 +110,50 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>De huidige versie van de Application Insights Agent-module bepalen
-Voer de `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` opdracht uit om de volgende informatie over de module weer te geven:
-   - Versie van Power shell-module
-   - Application Insights SDK-versie
-   - Bestands paden van de Power shell-module
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>De huidige versie van de module Application Insights Agent bepalen
+Voer `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` de opdracht uit om de volgende informatie over de module weer te geven:
+   - PowerShell-moduleversie
+   - Sdk-versie van Application Insights
+   - Bestandspaden van de PowerShell-module
     
-Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
+Bekijk de [API-referentie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
 
 
-### <a name="troubleshooting-running-processes"></a>Problemen met actieve processen oplossen
+### <a name="troubleshooting-running-processes"></a>Problemen met lopende processen oplossen
 
-U kunt de processen op de geinstrumenteerde computer controleren om te bepalen of alle Dll's zijn geladen.
-Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
+U de processen op de geinstrumenteerde computer inspecteren om te bepalen of alle DLL's worden geladen.
+Als de bewaking werkt, moeten ten minste 12 DLL's worden geladen.
 
-Gebruik de opdracht `Get-ApplicationInsightsMonitoringStatus -InspectProcess` om de Dll's te controleren.
+Gebruik `Get-ApplicationInsightsMonitoringStatus -InspectProcess` de opdracht om de DLL's te controleren.
 
-Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
+Bekijk de [API-referentie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
 
 
-### <a name="collect-etw-logs-by-using-perfview"></a>ETW-logboeken verzamelen met behulp van PerfView
+### <a name="collect-etw-logs-by-using-perfview"></a>ETW-logboeken verzamelen met PerfView
 
 #### <a name="setup"></a>Instellen
 
-1. Down load PerfView. exe en PerfView64. exe van [github](https://github.com/Microsoft/perfview/releases).
+1. Download PerfView.exe en PerfView64.exe van [GitHub](https://github.com/Microsoft/perfview/releases).
 2. Start PerfView64.exe.
-3. Vouw **Geavanceerde opties**uit.
-4. Schakel deze selectie vakjes uit:
+3. **Geavanceerde opties**uitbreiden .
+4. Schakel de volgende selectievakjes uit:
     - **Zip**
-    - **Samen**
-    - **.NET-symbool verzameling**
-5. Deze **extra providers**instellen: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+    - **Samenvoegen**
+    - **.NET-symboolverzameling**
+5. Stel deze **extra providers in:**`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Logboeken verzamelen
 
-1. Voer in een opdracht console met beheerders bevoegdheden de opdracht `iisreset /stop` uit om IIS en alle web-apps uit te scha kelen.
-2. Selecteer in PerfView de optie **verzameling starten**.
-3. Voer in een opdracht console met beheerders bevoegdheden de opdracht `iisreset /start` uit om IIS te starten.
+1. Voer in een opdrachtconsole met `iisreset /stop` beheerdersbevoegdheden de opdracht uit om IIS en alle web-apps uit te schakelen.
+2. Selecteer Verzameling **starten**in PerfView .
+3. Voer in een opdrachtconsole met `iisreset /start` beheerdersbevoegdheden de opdracht uit om IIS te starten.
 4. Probeer naar uw app te bladeren.
-5. Nadat de app is geladen, keert u terug naar PerfView en selecteert u **verzameling stoppen**.
+5. Nadat uw app is geladen, gaat u terug naar PerfView en selecteert u **Verzameling stoppen**.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [API-verwijzing](status-monitor-v2-overview.md#powershell-api-reference) voor meer informatie over de para meters die u mogelijk hebt gemist.
-- Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Bekijk de [API-verwijzing](status-monitor-v2-overview.md#powershell-api-reference) voor meer informatie over parameters die u mogelijk hebt gemist.
+- Als u een probleem tegenkomt dat hier niet wordt vermeld, u contact met ons opnemen op [GitHub.](https://github.com/Microsoft/ApplicationInsights-Home/issues)

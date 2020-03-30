@@ -1,6 +1,6 @@
 ---
-title: azcopy-taken opschonen | Microsoft Docs
-description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy-taken opschonen.
+title: azcopy banen schoon | Microsoft Documenten
+description: In dit artikel vindt u referentiegegevens voor de opdracht azcopy-taken.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7ae14c3606dfe6bffa8481682843f3f2e85c2131
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033725"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy jobs clean
 
-Alle logboek bestanden en abonnementen voor alle taken verwijderen
+Alle logboeken verwijderen en bestanden plannen voor alle taken
 
 ```
 azcopy jobs clean [flags]
@@ -26,9 +26,9 @@ azcopy jobs clean [flags]
 ## <a name="related-conceptual-articles"></a>Gerelateerde conceptuele artikelen
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
-- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overbrengen met AzCopy- en Blob-opslag](storage-use-azcopy-blobs.md)
+- [Gegevens overbrengen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
+- [AzCopy configureren, optimaliseren en oplossen](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -38,16 +38,16 @@ azcopy jobs clean [flags]
 
 ## <a name="options"></a>Opties
 
-**-h,--Help**                Help voor schonen.
+**-h, --help**                Hulp voor schoon.
 
-**--met-status** teken reeks verwijdert alleen de taken met deze status, beschik bare waarden: geannuleerd, voltooid, mislukt, InProgress, alle (standaard ' all ')
+**--met-statustekenreeks** Alleen de taken met deze status verwijderen, beschikbare waarden: Geannuleerd, voltooid, mislukt, InProgress, Alles (standaard 'Alles')
 
-## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
+## <a name="options-inherited-from-parent-commands"></a>Opties die zijn overgenomen van bovenliggende opdrachten
 
-**--Cap-Mbps uint32**      De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
+**--cap-mbps uint32**      Caps de overdrachtssnelheid, in megabits per seconde. De doorvoer van moment tot moment kan enigszins afwijken van de dop. Als deze optie is ingesteld op nul of wordt weggelaten, wordt de doorvoer niet afgetopt.
 
-**--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst)
+**--uitvoer-type** tekenreeks Notatie van de uitvoer van de opdracht. De keuzes zijn: tekst, json. De standaardwaarde is 'tekst'. (standaard "tekst")
 
 ## <a name="see-also"></a>Zie ook
 
-- [azcopy-taken](storage-ref-azcopy-jobs.md)
+- [azcopy jobs](storage-ref-azcopy-jobs.md)

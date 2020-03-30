@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: 15Five configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op 15Five.
+title: 'Zelfstudie: 15Five configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor 15Five.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,94 +16,94 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: f1f66a7b69048180bc41c8f2fa432598f00f7f09
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77059220"
 ---
-# <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Zelf studie: 15Five configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Zelfstudie: 15Five configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in 15Five en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in 15Five.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in 15Five en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen tot 15Five.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
 * Een Azure AD-tenant.
-* [Een 15Five-Tenant](https://www.15five.com/pricing/).
-* Een gebruikers account in 15Five met beheerders machtigingen.
+* [Een 15Five huurder.](https://www.15five.com/pricing/)
+* Een gebruikersaccount in 15Five met beheerdersmachtigingen.
 
 ## <a name="assigning-users-to-15five"></a>Gebruikers toewijzen aan 15Five
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot 15Five. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan 15Five door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot 15Five nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan 15Five door de instructies hier te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-15five"></a>Belang rijke tips voor het toewijzen van gebruikers aan 15Five
+## <a name="important-tips-for-assigning-users-to-15five"></a>Belangrijke tips voor het toewijzen van gebruikers aan 15Five
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan 15Five om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan 15Five wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan 15Five, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan 15Five toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="setup-15five-for-provisioning"></a>15Five instellen voor inrichting
+## <a name="setup-15five-for-provisioning"></a>Setup 15Five voor inrichten
 
-Voordat u 15Five configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op 15Five.
+Voordat u 15Five configureert voor automatische gebruikersvoorziening met Azure AD, moet u SCIM-inrichting op 15Five inschakelen.
 
-1. Meld u aan bij de [15Five-beheer console](https://my.15five.com/). Navigeer naar **functies > integraties**.
+1. Meld u aan bij uw [15Five-beheerconsole](https://my.15five.com/). Navigeer naar **functies > integraties**.
 
-    ![15Five-beheer console](media/15five-provisioning-tutorial/integration.png)
+    ![15Vijf admin console](media/15five-provisioning-tutorial/integration.png)
 
-2.  Klik op **SCIM 2,0**.
+2.  Klik op **SCIM 2.0**.
 
-    ![15Five-beheer console](media/15five-provisioning-tutorial/image00.png)
+    ![15Vijf admin console](media/15five-provisioning-tutorial/image00.png)
 
-3.  Navigeer naar **scim integration > OAuth-token genereren**.
+3.  Navigeer naar **SCIM-integratie > OAuth-token genereren**.
 
-    ![SCIM 15Five toevoegen](media/15five-provisioning-tutorial/image02.png)
+    ![15Five Add SCIM](media/15five-provisioning-tutorial/image02.png)
 
-4.  Kopieer de waarden voor de **SCIM 2,0-basis-URL** en het **toegangs token**. Deze waarde wordt ingevoerd in het veld **Tenant-URL** en **geheim token** op het tabblad inrichten van uw 15Five-toepassing in de Azure Portal.
+4.  Kopieer de waarden voor **SCIM 2.0 base URL** en **Access Token**. Deze waarde wordt ingevoerd in het **veld URL van tenant** en geheim **token** op het tabblad Provisioning van uw 15Five-toepassing in de Azure-portal.
     
-    ![SCIM 15Five toevoegen](media/15five-provisioning-tutorial/image03.png)
+    ![15Five Add SCIM](media/15five-provisioning-tutorial/image03.png)
 
-## <a name="add-15five-from-the-gallery"></a>15Five toevoegen vanuit de galerie
+## <a name="add-15five-from-the-gallery"></a>15Vijf toevoegen vanuit de galerie
 
-Als u 15Five wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u 15Five van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u 15Five wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u 15Five uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om 15Five toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om 15Five toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **15Five**in het zoekvak, selecteer **15Five** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **15Five**in het zoekvak, selecteer **15Five** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![15Five in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-15five"></a>Automatische gebruikers inrichting configureren voor 15Five 
+## <a name="configuring-automatic-user-provisioning-to-15five"></a>Automatische gebruikersvoorziening configureren voor 15Five 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in 15Five te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in 15Five te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor 15Five, gevolgd door de instructies in de [15Five-zelf studie voor eenmalige aanmelding](15five-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor 15Five, volgens de instructies in de [15Five Single sign-on tutorial](15five-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor 15Five in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Ga als een automatisch beheer van de gebruiker voor 15Five in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -111,67 +111,67 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De 15Five-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5.  In het gedeelte beheerders referenties voert u de **SCIM 2,0-basis-URL en toegangs token** waarden in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met 15Five. Als de verbinding mislukt, zorg er dan voor dat uw 15Five-account beheerders machtigingen heeft en probeer het opnieuw.
+5.  Voer onder de sectie Beheerdersreferenties de **URL van de SCIM 2.0-basis en de** waarden van Access Token in die eerder zijn opgehaald in respectievelijk **tenant-URL** en **Secret Token.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met 15Five. Als de verbinding mislukt, zorgt u ervoor dat uw 15Five-account beheerdersmachtigingen heeft en probeert u het opnieuw.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met 15Five**.
+8. Selecteer Azure **Active Directory Users synchroniseren met 15Five**onder de sectie **Toewijzingen** .
 
-    ![15Five-gebruikers toewijzingen](media/15five-provisioning-tutorial/usermapping.png)
+    ![15Vijf gebruikerstoewijzingen](media/15five-provisioning-tutorial/usermapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 15Five in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in 15Five voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar 15Five in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in 15Five te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![15Five-gebruikers kenmerken](media/15five-provisioning-tutorial/userattribute.png)
+    ![15Vijf gebruikerskenmerken](media/15five-provisioning-tutorial/userattribute.png)
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met 15Five**.
+10. Selecteer Azure **Active Directory-groepen synchroniseren tot 15Five**onder de sectie **Toewijzingen** .
 
-    ![15Five-groeps toewijzingen](media/15five-provisioning-tutorial/groupmapping.png)
+    ![15Vijf groepstoewijzingen](media/15five-provisioning-tutorial/groupmapping.png)
 
-11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 15Five in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in 15Five te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de groepskenmerken die zijn gesynchroniseerd van Azure AD naar 15Five in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de groepen in 15Five te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Kenmerken van 15Five-groep](media/15five-provisioning-tutorial/groupattribute.png)
+    ![15Vijf groepskenmerken](media/15five-provisioning-tutorial/groupattribute.png)
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-13. Als u de Azure AD-inrichtings service voor **15Five wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+13. Als u de Azure AD-inrichtingsservice voor 15Five wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten voor 15Five door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u aan 15Five wilt inrichten door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-    Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op 15Five.
+    Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op 15Five.
 
-    Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../app-provisioning/check-status-user-account-provisioning.md)
+    Zie [Rapportage over automatische gebruikersaccountinrichting](../app-provisioning/check-status-user-account-provisioning.md) voor meer informatie over het lezen van de azure AD-inrichtingslogboeken.
     
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Verbindingsbeperkingen
 
-* 15Five biedt geen ondersteuning voor harde verwijderingen voor gebruikers.
+* 15Five ondersteunt geen harde verwijderingen voor gebruikers.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../app-provisioning/check-status-user-account-provisioning.md).
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md).

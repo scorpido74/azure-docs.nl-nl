@@ -1,6 +1,6 @@
 ---
-title: Over klassikale Labs in Azure Lab Services | Microsoft Docs
-description: 'Meer informatie over hoe u snel een leslokaal omgeving kunt instellen in de Cloud: een lab configureren met een sjabloon-VM met de software die is vereist voor de-klasse en een kopie van de virtuele machine beschikbaar maken voor elke student in de klasse.'
+title: Informatie over klaslokalen in Azure Lab Services | Microsoft Documenten
+description: Leer hoe u snel een laboratoriumomgeving in de cloud instelt - configureer een lab met een sjabloon-VM met de software die nodig is voor de klas en maak een kopie van de VM beschikbaar voor elke leerling in de klas.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74561682"
 ---
 # <a name="introduction-to-classroom-labs"></a>Inleiding tot leslokaallabs
@@ -34,8 +34,8 @@ Gebruikers die zijn uitgenodigd voor uw lab krijgen onmiddellijk toegang tot de 
 ## <a name="cost-optimization-and-tracking"></a>Kosten optimaliseren en bijhouden  
 Houd uw budget onder controle door exact te bepalen hoeveel uur uw labgebruikers de virtuele machines kunnen gebruiken. Stel schema’s in het lab in om gebruikers alleen toegang tot virtuele machines te bieden tijdens aangewezen tijdstippen of stel terugkerende tijdstippen voor automatisch afsluiten en starten in. Houd het gebruik van individuele gebruikers bij en stel limieten in.
 
-## <a name="example-class-types"></a>Voor beeld klassen typen
-U kunt Labs instellen voor verschillende typen klassen met Azure Lab Services. Zie de [klassen typen voor beeld in Azure Lab Services](class-types.md) artikel voor een aantal voor beelden van klassen waarvoor u labs met Azure Lab Services kunt instellen. 
+## <a name="example-class-types"></a>Voorbeeldtypen voor klassen
+U labs instellen voor verschillende typen klassen met Azure Lab Services. Zie het [voorbeeldklassetypen in het](class-types.md) azure lab services-artikel voor een paar voorbeeldtypen klassen waarvoor u labs instellen met Azure Lab Services. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Aan de slag met het instellen van een labaccount dat is vereist voor het maken van een leslokaallab met Azure Lab Services:

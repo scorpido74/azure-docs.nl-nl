@@ -1,6 +1,6 @@
 ---
-title: Onderdelen voor hoge Beschik baarheid in azure HDInsight
-description: Overzicht van de verschillende onderdelen voor hoge Beschik baarheid die worden gebruikt door HDInsight-clusters.
+title: Onderdelen met hoge beschikbaarheid in Azure HDInsight
+description: Overzicht van de verschillende high availability componenten die worden gebruikt door HDInsight clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,130 +8,130 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74069632"
 ---
-# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
+# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge beschikbaarheid ondersteund door Azure HDInsight
 
- HDInsight is ontwikkeld met een unieke architectuur voor hoge Beschik baarheid (HA) van essentiële services, zodat u een optimale Beschik baarheid kunt bieden voor uw analyse onderdelen. Sommige onderdelen van deze architectuur zijn ontwikkeld door micro soft om automatische failover te bieden. Andere onderdelen zijn standaard Apache-onderdelen die zijn geïmplementeerd ter ondersteuning van specifieke services. In dit artikel wordt de architectuur van het service model HA in HDInsight beschreven, hoe HDInsight failover ondersteunt voor HA-Services en best practices voor het herstellen van andere service onderbrekingen.
+ Om u een optimale beschikbaarheid te bieden voor uw analytics componenten, is HDInsight ontwikkeld met een unieke architectuur voor het garanderen van een hoge beschikbaarheid (HA) van kritische diensten. Sommige onderdelen van deze architectuur zijn ontwikkeld door Microsoft om automatische failover te bieden. Andere componenten zijn standaard Apache-componenten die worden geïmplementeerd om specifieke services te ondersteunen. In dit artikel wordt de architectuur van het HA-servicemodel in HDInsight uitgelegd, hoe HDInsight failover voor HA-services ondersteunt en best practices om te herstellen van andere serviceonderbrekingen.
 
-## <a name="high-availability-infrastructure"></a>Infra structuur met hoge Beschik baarheid
+## <a name="high-availability-infrastructure"></a>Infrastructuur met hoge beschikbaarheid
 
-HDInsight biedt aangepaste infra structuur om ervoor te zorgen dat vier primaire services hoge Beschik baarheid met automatische failover-mogelijkheden hebben:
+HDInsight biedt aangepaste infrastructuur om ervoor te zorgen dat vier primaire services hoog beschikbaar zijn met automatische failovermogelijkheden:
 
 - Apache Ambari-server
-- Tijdlijn server van de toepassing voor Apache-GARENs
-- Taak geschiedenis server voor Hadoop-MapReduce
-- Apache livy
+- Application Timeline Server voor Apache YARN
+- Job history Server voor Hadoop MapReduce
+- Apache Livy
 
-Deze infra structuur bestaat uit een aantal services en software onderdelen, waarvan sommige zijn ontworpen door micro soft. De volgende onderdelen zijn uniek voor het HDInsight-platform:
+Deze infrastructuur bestaat uit een aantal services en softwarecomponenten, waarvan sommige zijn ontworpen door Microsoft. De volgende componenten zijn uniek voor het HDInsight-platform:
 
-- Failover-controller voor slave
-- Master failover-controller
-- Service voor hoge Beschik baarheid slave
-- Hoofd service voor hoge Beschik baarheid
+- Slave failover controller
+- Master failovercontroller
+- Slave hoge beschikbaarheid service
+- Master high availability service
 
-![Infra structuur met hoge Beschik baarheid](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+![infrastructuur met hoge beschikbaarheid](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-Er zijn ook andere services met hoge Beschik baarheid, die worden ondersteund door open source Apache-betrouw bare onderdelen. Deze onderdelen zijn ook aanwezig in HDInsight-clusters:
+Er zijn ook andere diensten met hoge beschikbaarheid, die worden ondersteund door open source Apache betrouwbaarheidcomponenten. Deze componenten zijn ook aanwezig op HDInsight clusters:
 
 - Hadoop File System (HDFS) NameNode
-- GARENs-Resource Manager
-- HBase Master
+- YARN ResourceManager
+- HBase-master
 
-In de volgende secties vindt u meer informatie over de manier waarop deze services samen werken.
+In de volgende secties vindt u meer informatie over de manier waarop deze services samenwerken.
 
-## <a name="hdinsight-high-availability-services"></a>Services met hoge Beschik baarheid HDInsight
+## <a name="hdinsight-high-availability-services"></a>HDInsight-services met hoge beschikbaarheid
 
-Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel in HDInsight-clusters. Om ze te onderscheiden van services met hoge Beschik baarheid die worden ondersteund door onderdelen van Apache, worden de *Services van HDINSIGHT ha*genoemd.
+Microsoft biedt ondersteuning voor de vier Apache-services in de volgende tabel in HDInsight-clusters. Om hen te onderscheiden van services met een hoge beschikbaarheid die worden ondersteund door componenten van Apache, worden ze *HDInsight HA-services*genoemd.
 
-| Service | Clusterknooppunten | Cluster typen | Doel |
+| Service | Clusterknooppunten | Clustertypen | Doel |
 |---|---|---|---|
-| Apache Ambari-server| Actieve hoofd knooppunt | Alles | Bewaakt en beheert het cluster.|
-| Tijdlijn server van de toepassing voor Apache-GARENs | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt fout opsporingsgegevens over garen taken die op het cluster worden uitgevoerd.|
-| Taak geschiedenis server voor Hadoop-MapReduce | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt gegevens van fout opsporing voor MapReduce-taken.|
-| Apache livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |
+| Apache Ambari-server| Actieve headnode | Alle | Bewaakt en beheert het cluster.|
+| Application Timeline Server voor Apache YARN | Actieve headnode | Alles behalve Kafka | Hiermee behoudt u foutopsporingsgegevens over GAREN-taken die op het cluster worden uitgevoerd.|
+| Job history Server voor Hadoop MapReduce | Actieve headnode | Alles behalve Kafka | Onderhoudt foutopsporingsgegevens voor mapMinder taken.|
+| Apache Livy | Actieve headnode | Spark | Eenvoudige interactie met een Spark-cluster via een REST-interface mogelijk maakt |
 
 >[!Note]
-> HDInsight-clusters (ESP-Enterprise Security Package) bieden momenteel alleen de hoge Beschik baarheid van de Ambari-server.
+> HDInsight Enterprise Security Package (ESP)-clusters bieden momenteel alleen de Ambari-server hoge beschikbaarheid.
 
 ### <a name="architecture"></a>Architectuur
 
-Elk HDInsight-cluster heeft respectievelijk twee hoofd knooppunten in de modi actief en stand-by. De HDInsight HA-services worden alleen op hoofd knooppunten uitgevoerd. Deze services moeten altijd worden uitgevoerd op het actieve hoofd knooppunt en in de onderhouds modus worden gestopt en in de stand-bymodus worden geplaatst hoofd knooppunt.
+Elk HDInsight-cluster heeft respectievelijk twee headnodes in actieve en stand-bymodi. De HDInsight HA-services draaien alleen op headnodes. Deze services moeten altijd op de actieve headnode worden uitgevoerd en worden gestopt en in de onderhoudsmodus op de stand-by headnode geplaatst.
 
-Om de juiste statussen van HA-services te behouden en een snelle failover te bieden, maakt HDInsight gebruik van Apache ZooKeeper, een coördinatie service voor gedistribueerde toepassingen, om actieve hoofd knooppunt-verkiezing uit te voeren. HDInsight is ook van toepassing op een aantal Java-achtergrond processen, waarmee de procedure failover voor HDInsight HA-Services wordt gecoördineerd. Deze services zijn de volgende: de hoofd-failover-controller, de slave-failover-controller, de *Master-ha-service*en de *Slave-ha-service*.
+Om de juiste toestanden van HA-services te behouden en een snelle failover te bieden, maakt HDInsight gebruik van Apache ZooKeeper, een coördinatieservice voor gedistribueerde toepassingen, om actieve headnode-verkiezingen uit te voeren. HDInsight voorziet ook in enkele Java-achtergrondprocessen, die de failoverprocedure voor HDInsight HA-services coördineren. Deze diensten zijn de volgende: de master failover controller, de slave failover controller, de *master-ha-service*, en de *slave-ha-service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
-Apache ZooKeeper is een krachtige coördinatie service voor gedistribueerde toepassingen. In productie wordt ZooKeeper doorgaans uitgevoerd in de gerepliceerde modus waarbij een gerepliceerde groep van ZooKeeper-servers een quorum vormt. Elk HDInsight-cluster heeft drie ZooKeeper-knoop punten waarmee drie ZooKeeper-servers een quorum kunnen vormen. HDInsight heeft twee ZooKeeper-quorums die parallel met elkaar worden uitgevoerd. Met één quorum wordt de actieve hoofd knooppunt bepaald in een cluster waarop de services van HDInsight HA moeten worden uitgevoerd. Een ander quorum wordt gebruikt voor het coördineren van HA-services van Apache, zoals beschreven in latere secties.
+Apache ZooKeeper is een krachtige coördinatieservice voor gedistribueerde toepassingen. In productie draait ZooKeeper meestal in de gerepliceerde modus waarin een gerepliceerde groep ZooKeeper-servers een quorum vormen. Elk HDInsight-cluster heeft drie ZooKeeper-knooppunten waarmee drie ZooKeeper-servers een quorum kunnen vormen. HDInsight heeft twee ZooKeeper quorums die parallel lopen met elkaar. Eén quorum bepaalt de actieve headnode in een cluster waarop HDInsight HA-services moeten worden uitgevoerd. Een ander quorum wordt gebruikt om HA-services van Apache te coördineren, zoals in latere secties wordt beschreven.
 
-### <a name="slave-failover-controller"></a>Failover-controller voor slave
+### <a name="slave-failover-controller"></a>Slave failover controller
 
-De slave-failover-controller wordt uitgevoerd op elk knoop punt in een HDInsight-cluster. Deze controller is verantwoordelijk voor het starten van de Ambari-agent en de *Slave-ha-service* op elk knoop punt. Periodiek wordt een query uitgevoerd op het eerste ZooKeeper-quorum over de actieve hoofd knooppunt. Wanneer de actieve en stand-hoofd knooppunten worden gewijzigd, voert de slave-failover-controller de volgende handelingen uit:
+De slave failover controller draait op elk knooppunt in een HDInsight cluster. Deze controller is verantwoordelijk voor het starten van de Ambari agent en *slave-ha-service* op elk knooppunt. Het vraagt periodiek het eerste ZooKeeper quorum over de actieve headnode. Wanneer de actieve en stand-by headnodes veranderen, voert de slave failover-controller het volgende uit:
 
-1. Hiermee wordt het configuratie bestand van de host bijgewerkt.
-1. Hiermee wordt de Ambari-agent opnieuw gestart.
+1. Hiermee wordt het hostconfiguratiebestand bijgewerkt.
+1. Start Ambari-agent opnieuw.
 
-De *Slave-ha-service* is verantwoordelijk voor het stoppen van de services van HDInsight ha (met uitzonde ring van Ambari-server) in de stand-bymodus hoofd knooppunt.
+De *slave-ha-service* is verantwoordelijk voor het stoppen van de HDInsight HA-services (behalve Ambari-server) op de stand-by headnode.
 
-### <a name="master-failover-controller"></a>Master failover-controller
+### <a name="master-failover-controller"></a>Master failovercontroller
 
-Een hoofd-failover-controller wordt uitgevoerd op beide hoofd knooppunten. Beide Master failover-controllers communiceren met het eerste ZooKeeper-quorum om de hoofd knooppunt te benoemen waarop ze worden uitgevoerd als de actieve hoofd knooppunt.
+Een master failover controller draait op beide headnodes. Beide master failover controllers communiceren met het eerste ZooKeeper quorum om de headnode te nomineren waarop ze draaien als de actieve headnode.
 
-Als de hoofd failover-controller bijvoorbeeld op hoofd knooppunt 0 de verkiezing wint, worden de volgende wijzigingen aangebracht:
+Als bijvoorbeeld de master failovercontroller op headnode 0 de verkiezing wint, vinden de volgende wijzigingen plaats:
 
-1. Hoofd knooppunt 0 wordt actief.
-1. De Master-failover-controller start de Ambari-server en de *Master-ha-service* op hoofd knooppunt 0.
-1. De andere Master failover controller stopt de Ambari-server en de *Master-ha-service* op hoofd knooppunt 1.
+1. Headnode 0 wordt actief.
+1. De master failover controller start Ambari server en de *master-ha-service* op headnode 0.
+1. De andere master failover controller stopt Ambari server en de *master-ha-service* op headnode 1.
 
-De Master-ha-service wordt alleen uitgevoerd op de actieve hoofd knooppunt, de HDInsight HA-Services (met uitzonde ring van Ambari-server) op stand-by hoofd knooppunt worden gestopt en worden gestart op actieve hoofd knooppunt.
+De master-ha-service draait alleen op de actieve headnode, stopt de HDInsight HA-services (behalve Ambari-server) op standby headnode en start ze op actieve headnode.
 
-### <a name="the-failover-process"></a>Het failover-proces
+### <a name="the-failover-process"></a>Het failoverproces
 
-![Failoverproces](./media/hdinsight-high-availability-components/failover-steps.png)
+![failoverproces](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Er wordt een health monitor uitgevoerd op elke hoofd knooppunt samen met de Master-failover-controller om hearbeat-meldingen te verzenden naar het Zookeeper-quorum. De hoofd knooppunt wordt in dit scenario beschouwd als HA-service. De health monitor controleert of elke service voor hoge Beschik baarheid in orde is en of deze klaar is om aan de leiderschaps verkiezing toe te voegen. Zo ja, dan zal deze hoofd knooppunt concurreren met de verkiezing. Als dat niet het geval is, wordt de verkiezing afgesloten totdat deze weer gereed wordt.
+Een gezondheidsmonitor wordt op elke headnode uitgevoerd, samen met de master failover-controller om hearbeat-meldingen naar het Zookeeper-quorum te verzenden. De headnode wordt in dit scenario beschouwd als een HA-service. De gezondheidsmonitor controleert of elke service met hoge beschikbaarheid gezond is en of deze klaar is om deel te nemen aan de leiderschapsverkiezing. Zo ja, dan zal deze headnode deelnemen aan de verkiezingen. Zo niet, dan zal het stoppen met de verkiezingen totdat het weer klaar wordt.
 
-Als de stand-hoofd knooppunt ooit het leiderschap realiseert en actief wordt (zoals in het geval van een storing met het vorige actieve knoop punt), start de Master failover controller alle services van HDInsight HA erop. De Master failover controller stopt deze services ook op de andere hoofd knooppunt.
+Als de stand-by headnode ooit leiderschap behaalt en actief wordt (zoals in het geval van een storing bij het vorige actieve knooppunt), zal de master failover-controller alle HDInsight HA-services erop starten. De master failover controller zal ook stoppen met deze diensten op de andere headnode.
 
-Voor service fouten van HDInsight HA, zoals een service die niet actief is of niet in orde is, moet de hoofd failover-controller de services automatisch opnieuw opstarten of stoppen op basis van de status van de hoofd knooppunt. Gebruikers hoeven geen services van HDInsight HA hand matig te starten op beide hoofd knooppunten. In plaats daarvan staat automatische of hand matige failover toe om de service te herstellen.
+Voor HDInsight HA-servicefouten, zoals een service die is uitgeschakeld of ongezond is, moet de hoofdfailovercontroller de services automatisch opnieuw starten of stoppen op basis van de headnodestatus. Gebruikers moeten hdinsight HA-services niet handmatig starten op beide hoofdknooppunten. In plaats daarvan u automatische of handmatige failover toestaan om de service te helpen herstellen.
 
-### <a name="inadvertent-manual-intervention"></a>Per ongeluk hand matige interventie
+### <a name="inadvertent-manual-intervention"></a>Onbedoelde handmatige interventie
 
-HDInsight HA-services mogen alleen worden uitgevoerd op de actieve hoofd knooppunt en worden automatisch opnieuw gestart wanneer dit nodig is. Aangezien afzonderlijke HA-Services geen eigen gezondheids monitor hebben, kan failover niet worden geactiveerd op het niveau van de afzonderlijke service. Failover wordt gegarandeerd op knooppunt niveau en niet op service niveau.
+HDInsight HA-services mogen alleen op de actieve headnode worden uitgevoerd en worden automatisch opnieuw gestart wanneer dat nodig is. Aangezien individuele HA-services geen eigen statusmonitor hebben, kan failover niet worden geactiveerd op het niveau van de afzonderlijke service. Failover is verzekerd op knooppuntniveau en niet op serviceniveau.
 
 ### <a name="some-known-issues"></a>Enkele bekende problemen
 
-- Wanneer een service van HA hand matig wordt gestart op de stand-by-hoofd knooppunt, stopt deze pas wanneer de volgende failover plaatsvindt. Wanneer HA-services worden uitgevoerd op beide hoofd knooppunten, zijn er enkele mogelijke problemen: de Ambari-gebruikers interface is niet toegankelijk, Ambari genereert fouten, GARENs, vonken en Oozie taken kunnen vastlopen.
+- Wanneer u handmatig een HA-service start op de stand-by headnode, stopt deze niet totdat de volgende failover plaatsvindt. Wanneer HA-services op beide hoofdknooppunten worden uitgevoerd, zijn enkele potentiële problemen: Ambari UI is ontoegankelijk, Ambari gooit fouten, YARN, Spark en Oozie-taken kunnen vast komen te zitten.
 
-- Wanneer een HA-service op de actieve hoofd knooppunt stopt, wordt deze niet opnieuw opgestart totdat de volgende failover wordt uitgevoerd of de hoofd failover-controller/master-ha-service opnieuw wordt gestart. Wanneer een of meer HA-services stoppen met de actieve hoofd knooppunt, met name wanneer Ambari-server stopt, Ambari gebruikers interface niet toegankelijk is, kunnen andere potentiële problemen bestaan uit GARENs van het ene of het Oozie-project.
+- Wanneer een HA-service op de actieve headnode stopt, wordt deze pas opnieuw opgestart als de volgende failover plaatsvindt of de master failovercontroller/master-ha-service opnieuw wordt opgestart. Wanneer een of meer HA-services stoppen op de actieve headnode, vooral wanneer Ambari-server stopt, is ambari-gebruikersinterface ontoegankelijk, andere potentiële problemen zijn YARN, Spark en Oozie-fouten.
 
-## <a name="apache-high-availability-services"></a>Apache-Services met hoge Beschik baarheid
+## <a name="apache-high-availability-services"></a>Apache hoge beschikbaarheid diensten
 
-Apache biedt hoge Beschik baarheid voor HDFS NameNode, garen Resource Manager en HBase Master, die ook beschikbaar zijn in HDInsight-clusters. In tegens telling tot HDInsight HA-services worden ze ondersteund in ESP-clusters. Apache HA-services communiceren met het tweede ZooKeeper-quorum (beschreven in de bovenstaande sectie) om statussen actief/stand-by te kiezen en automatische failover uit te voeren. De volgende secties bevatten informatie over de werking van deze services.
+Apache biedt een hoge beschikbaarheid voor HDFS NameNode, YARN ResourceManager en HBase Master, die ook beschikbaar zijn in HDInsight-clusters. In tegenstelling tot HDInsight HA-services worden ze ondersteund in ESP-clusters. Apache HA-services communiceren met het tweede ZooKeeper-quorum (beschreven in de bovenstaande sectie) om actieve/stand-by-statussen te kiezen en automatische failover uit te voeren. In de volgende secties wordt beschreven hoe deze services werken.
 
-### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop Distributed File System (HDFS) NameNode
+### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Naamnode van hadoop distributed bestandssysteem (HDFS)
 
-HDInsight-clusters op basis van Apache Hadoop 2,0 of hoger bieden NameNode hoge Beschik baarheid. Er worden twee NameNodes uitgevoerd op de hoofd knooppunten, die zijn geconfigureerd voor automatische failover. De NameNodes gebruiken de *ZKFailoverController* om te communiceren met Zookeeper om te kiezen voor de status actief/stand-by. De *ZKFailoverController* wordt uitgevoerd op beide hoofd knooppunten en werkt op dezelfde manier als de bovenstaande Master-failover-controller.
+HDInsight clusters op basis van Apache Hadoop 2.0 of hoger bieden NameNode hoge beschikbaarheid. Er zijn twee NameNodes uitgevoerd op de hoofdnoden, die zijn geconfigureerd voor automatische failover. De NameNodes gebruiken de *ZKFailoverController* om te communiceren met Zookeeper om te kiezen voor actieve/stand-by status. De *ZKFailoverController* draait op beide headnodes en werkt op dezelfde manier als de master failover controller hierboven.
 
-Het tweede Zookeeper-quorum is onafhankelijk van het eerste quorum, zodat de actieve NameNode mogelijk niet wordt uitgevoerd op de actieve hoofd knooppunt. Wanneer de actieve NameNode dood of slecht is, wordt de stand-NameNode van de verkiezing gewonnen en actief.
+Het tweede Zookeeper quorum is onafhankelijk van het eerste quorum, dus de actieve NameNode mag niet op de actieve headnode draaien. Wanneer de actieve NameNode dood of ongezond is, wint de stand-by NameNode de verkiezing en wordt actief.
 
-### <a name="yarn-resourcemanager"></a>GARENs-Resource Manager
+### <a name="yarn-resourcemanager"></a>YARN ResourceManager
 
-HDInsight-clusters op basis van Apache Hadoop 2,4 of hoger ondersteunen ondersteuning voor GARENs met hoge Beschik baarheid. Er zijn twee ResourceManagers, RM1 en RM2, die respectievelijk worden uitgevoerd op hoofd knooppunt 0 en hoofd knooppunt 1. Net als NameNode is garen-Resource Manager ook geconfigureerd voor automatische failover. Er wordt automatisch een andere resource manager gekozen om actief te zijn wanneer de huidige actieve Resource Manager uitvalt of niet meer reageert.
+HDInsight-clusters op basis van Apache Hadoop 2.4 of hoger ondersteunen YARN ResourceManager hoge beschikbaarheid. Er zijn twee ResourceManagers, rm1 en rm2, die respectievelijk op headnode 0 en headnode 1 draaien. Net als NameNode is YARN ResourceManager ook geconfigureerd voor automatische failover. Een andere ResourceManager wordt automatisch gekozen om actief te zijn wanneer de huidige actieve ResourceManager naar beneden gaat of niet reageert.
 
-GARENs van de Resource Manager maakt gebruik van de Inge sloten *ActiveStandbyElector* als fout detector en Leader. In tegens telling tot HDFS NameNode heeft garen-Resource Manager geen afzonderlijke ZKFC-daemon nodig. De actieve Resource Manager schrijft de statussen naar Apache Zookeeper.
+YARN ResourceManager gebruikt zijn ingebouwde *ActiveStandbyElector* als een faaldetector en leiderkiezer. In tegenstelling tot HDFS NameNode heeft YARN ResourceManager geen aparte ZKFC daemon nodig. De actieve ResourceManager schrijft zijn staten in Apache Zookeeper.
 
-De hoge Beschik baarheid van de garen-Resource Manager is onafhankelijk van NameNode en andere HDInsight HA-Services. De actieve Resource Manager kan niet worden uitgevoerd op de actieve hoofd knooppunt of de hoofd knooppunt waarop de actieve NameNode wordt uitgevoerd. Zie [hoge Beschik baarheid in de Resource Manager](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)voor meer informatie over de hoge beschik BAARHEID van garen-Resource Manager.
+De hoge beschikbaarheid van de YARN ResourceManager is onafhankelijk van NameNode en andere HDInsight HA-services. De actieve ResourceManager mag niet worden uitgevoerd op de actieve headnode of de headnode waar de actieve NameNode wordt uitgevoerd. Zie [ResourceManager hoge beschikbaarheid](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)voor meer informatie over yarn resourcemanager met hoge beschikbaarheid.
 
-### <a name="hbase-master"></a>HBase Master
+### <a name="hbase-master"></a>HBase-master
 
-HDInsight HBase-clusters ondersteunen HBase Master hoge Beschik baarheid. In tegens telling tot andere HA-Services, die worden uitgevoerd op hoofd knooppunten, worden HBase-Masters uitgevoerd op de drie Zookeeper-knoop punten, waarbij een van beide de actieve hoofd server is en de andere twee stand-by. Net als NameNode, HBase Master coördinaten met Apache Zookeeper voor Leader verkiezing en voert automatische failover uit wanneer de huidige actieve Master problemen heeft. Er is slechts één actieve HBase Master op elk gewenst moment.
+HDInsight HBase-clusters ondersteunen HBase Master hoge beschikbaarheid. In tegenstelling tot andere HA-services, die op headnodes draaien, draaien HBase Masters op de drie Zookeeper-knooppunten, waar een van hen de actieve meester is en de andere twee stand-by. Net als NameNode coördineert HBase Master met Apache Zookeeper voor de leader verkiezing en doet automatisch failover wanneer de huidige actieve meester problemen heeft. Er is slechts één actieve HBase Master op elk gewenst moment.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)
-- [Azure HDInsight Virtual Network-architectuur](hdinsight-virtual-network-architecture.md)
+- [Beschikbaarheid en betrouwbaarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)
+- [Azure HDInsight virtuele netwerkarchitectuur](hdinsight-virtual-network-architecture.md)

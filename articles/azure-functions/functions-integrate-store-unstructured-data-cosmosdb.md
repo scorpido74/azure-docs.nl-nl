@@ -1,14 +1,14 @@
 ---
-title: Ongestructureerde gegevens opslaan met behulp van Azure Cosmos DB en functies
+title: Ongestructureerde gegevens opslaan met Azure Cosmos DB en -functies
 description: Ongestructureerde gegevens opslaan met behulp van Azure Functions en Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230550"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ongestructureerde gegevens opslaan met behulp van Azure Functions en Azure Cosmos DB
@@ -24,7 +24,7 @@ In Azure Functions bieden invoer- en uitvoerbindingen een verklarende manier om 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -54,7 +54,7 @@ U moet een Azure Cosmos DB-account hebben dat gebruikmaakt van de SQL-API voorda
     | ------------ | ---------------- | ------------------------------------------ |
     | **Parameternaam van document** | taskDocument | Naam die in code verwijst naar het Cosmos DB-object. |
     | **Databasenaam** | taskDatabase | Naam van database waarin documenten worden opgeslagen. |
-    | **Naam van verzameling** | TaskCollection | Naam van de databaseverzameling. |
+    | **Verzamelnaam** | TaskCollection | Naam van de databaseverzameling. |
     | **Indien waar, worden de Cosmos-DB-database en -verzameling gemaakt** | Geselecteerd | De verzameling bestaat nog niet, dus moet u deze maken. |
     | **Verbinding met het Azure Cosmos DB-account** | Nieuwe instelling | Selecteer **Nieuw** en kies vervolgens uw **abonnement**, het **Database-account** dat u eerder hebt gemaakt, en **Selecteren**. Hiermee maakt u een toepassingsinstelling voor uw accountverbinding. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
     | **Doorvoer op niveau van verzameling** |400 RU| U kunt de doorvoer later opschalen als u de latentie wilt beperken. |
@@ -65,7 +65,7 @@ U moet een Azure Cosmos DB-account hebben dat gebruikmaakt van de SQL-API voorda
 
 Vervang de bestaande functiecode door het volgende in de door u gekozen taal:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Vervang de bestaande C#-functie door de volgende code:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Vervang de bestaande JavaScript-functie door de volgende code:
 

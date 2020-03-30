@@ -1,34 +1,34 @@
 ---
-title: Controleer uw Kubernetes-implementaties op Azure voor de implementatie van best practices
-description: Meer informatie over het controleren op de implementatie van best practices in uw implementaties in azure Kubernetes service met uitvoeren-Advisor
+title: Controleer uw Kubernetes-implementaties op Azure op implementatie van best practices
+description: Meer informatie over het controleren op implementatie van aanbevolen procedures in uw implementaties op Azure Kubernetes Service met behulp van kube-advisor
 services: container-service
 author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
 ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595430"
 ---
-# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Best practices voor Kubernetes in uw cluster controleren
+# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Controleren op aanbevolen procedures voor Kubernetes in uw cluster
 
-Er zijn verschillende aanbevolen procedures die u moet volgen op uw Kubernetes-implementaties om de beste prestaties en flexibiliteit voor uw toepassingen te garanderen. U kunt het hulp programma uitvoeren-Advisor gebruiken om te zoeken naar implementaties die niet volgen op deze suggesties.
+Er zijn verschillende best practices die u moet volgen op uw Kubernetes-implementaties om de beste prestaties en veerkracht voor uw toepassingen te garanderen. U de kube-advisor-tool gebruiken om te zoeken naar implementaties die deze suggesties niet volgen.
 
-## <a name="about-kube-advisor"></a>Over uitvoeren-Advisor
+## <a name="about-kube-advisor"></a>Over kube-adviseur
 
-Het [uitvoeren-hulp programma][kube-advisor-github] is een enkele container die is ontworpen om te worden uitgevoerd op uw cluster. Er wordt een query uitgevoerd op de Kubernetes API-server voor informatie over uw implementaties en er wordt een aantal voorgestelde verbeteringen geretourneerd.
+De [kube-advisor tool][kube-advisor-github] is een enkele container ontworpen om te worden uitgevoerd op uw cluster. Het vraagt de Kubernetes API-server voor informatie over uw implementaties en retourneert een reeks voorgestelde verbeteringen.
 
-Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limieten die ontbreken in PodSpecs voor Windows-toepassingen, evenals Linux-toepassingen, maar het hulp programma uitvoeren Advisor zelf moet op een Linux-pod worden gepland. U kunt een pod plannen om uit te voeren op een knooppunt groep met een specifiek besturings systeem met behulp van een [knooppunt kiezer][k8s-node-selector] in de configuratie van de pod.
+De kube-advisor tool kan rapporteren over resource request en beperkingen ontbreken in PodSpecs voor Windows-toepassingen en Linux-toepassingen, maar de kube-advisor tool zelf moet worden gepland op een Linux-pod. U een pod plannen om een knooppuntgroep met een specifiek besturingssysteem uit te voeren met behulp van een [knooppuntkiezer][k8s-node-selector] in de configuratie van de pod.
 
 > [!NOTE]
-> Het hulp programma uitvoeren Advisor wordt op basis van de beste inspanningen ondersteund door micro soft. Problemen en suggesties moeten worden ingediend op GitHub.
+> De kube-advisor tool wordt ondersteund door Microsoft op een best-effort basis. Problemen en suggesties moeten worden ingediend op GitHub.
 
-## <a name="running-kube-advisor"></a>Uitvoeren van uitvoeren-Advisor
+## <a name="running-kube-advisor"></a>Lopend kube-adviseur
 
-Als u het hulp programma wilt uitvoeren op een cluster dat is geconfigureerd voor op [rollen gebaseerd toegangs beheer (RBAC)](azure-ad-integration.md), met behulp van de volgende opdrachten. Met de eerste opdracht maakt u een Kubernetes-service account. Met de tweede opdracht wordt het hulp programma uitgevoerd in een pod met dat Service account en wordt de Pod voor verwijdering geconfigureerd nadat deze is afgesloten. 
+Als u het gereedschap wilt uitvoeren op een cluster dat is geconfigureerd voor [rbac (role-based access control),](azure-ad-integration.md)met behulp van de volgende opdrachten. De eerste opdracht maakt een Kubernetes-serviceaccount. Met de tweede opdracht wordt het gereedschap in een pod uitgevoerd met dat serviceaccount en wordt de pod geconfigureerd voor verwijdering nadat deze is afgesloten. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -36,39 +36,39 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
 
-Als u geen RBAC gebruikt, kunt u de opdracht als volgt uitvoeren:
+Als u RBAC niet gebruikt, u de opdracht als volgt uitvoeren:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
 ```
 
-Binnen een paar seconden ziet u een tabel met mogelijke verbeteringen in uw implementaties.
+Binnen enkele seconden ziet u een tabel met een beschrijving van mogelijke verbeteringen in uw implementaties.
 
-![Uitvoeren-Advisor-uitvoer](media/kube-advisor-tool/kube-advisor-output.png)
+![Kube-adviseur output](media/kube-advisor-tool/kube-advisor-output.png)
 
-## <a name="checks-performed"></a>Controles uitgevoerd
+## <a name="checks-performed"></a>Uitgevoerde controles
 
-Het hulp programma valideert diverse Kubernetes aanbevolen procedures, elk met hun eigen voorgestelde herstel.
+De tool valideert verschillende Kubernetes best practices, elk met hun eigen voorgestelde herstel.
 
-### <a name="resource-requests-and-limits"></a>Resource aanvragen en-limieten
+### <a name="resource-requests-and-limits"></a>Resource-aanvragen en -limieten
 
-Kubernetes biedt ondersteuning [voor het definiëren van resource aanvragen en limieten voor pod-specificaties][kube-cpumem]. De aanvraag definieert de minimale CPU en het geheugen die nodig zijn om de container uit te voeren. De limiet bepaalt de maximale CPU en het geheugen dat moet worden toegestaan.
+Kubernetes ondersteunt het definiëren van [resourceaanvragen en limieten voor podspecificaties.][kube-cpumem] De aanvraag definieert de minimale CPU en geheugen die nodig zijn om de container uit te voeren. De limiet definieert de maximale CPU en geheugen die moeten worden toegestaan.
 
-Standaard zijn er geen aanvragen of limieten ingesteld op pod-specificaties. Dit kan ertoe leiden dat knoop punten worden overbelast en dat containers worden geen. Het uitvoeren-hulp programma markeert een geheel aantal zonder aanvragen en limieten.
+Standaard worden er geen aanvragen of limieten ingesteld op podspecificaties. Dit kan leiden tot knooppunten worden overscheduled en containers worden uitgehongerd. De kube-advisor tool markeert pods zonder aanvragen en limieten ingesteld.
 
 ## <a name="cleaning-up"></a>Opschonen
 
-Als RBAC is ingeschakeld op uw cluster, kunt u de `ClusterRoleBinding` opschonen nadat u het hulp programma hebt uitgevoerd met behulp van de volgende opdracht:
+Als RBAC is ingeschakeld in uw cluster, u het `ClusterRoleBinding` gereedschap opschonen nadat u het gereedschap hebt uitgevoerd met de volgende opdracht:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Als u het hulp programma uitvoert op een cluster dat niet is ingeschakeld voor RBAC, is geen opschoning vereist.
+Als u het hulpprogramma uitvoert tegen een cluster dat niet rbac-ingeschakeld is, is er geen opschoning vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Problemen met de Azure Kubernetes-service oplossen](troubleshooting.md)
+- [Problemen met Azure Kubernetes Service oplossen](troubleshooting.md)
 
 <!-- RESOURCES -->
 

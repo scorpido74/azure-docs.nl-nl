@@ -9,28 +9,28 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471678"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
 
-## <a name="disk-sizes"></a>Schijf grootten
+## <a name="disk-sizes"></a>Schijfformaten
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-an-azure-shared-disk"></a>Een gedeelde Azure-schijf implementeren
 
-Als u een beheerde schijf wilt implementeren waarop de functie gedeelde schijf is ingeschakeld, gebruikt u de nieuwe eigenschap `maxShares` en definieert u een waarde `>1`. Dit maakt de schijf deelbaar op meerdere Vm's.
+Als u een beheerde schijf wilt implementeren waarbij `maxShares` de functie `>1`gedeelde schijf is ingeschakeld, gebruikt u de nieuwe eigenschap en definieert u een waarde. Dit maakt de schijf deelbaar over meerdere VM's.
 
 > [!IMPORTANT]
-> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf is ontkoppeld van alle virtuele machines. Bekijk de [schijf grootten](#disk-sizes) voor de toegestane waarden voor de `maxShares`.
+> De waarde `maxShares` van kan alleen worden ingesteld of gewijzigd wanneer een schijf is losgekoppeld van alle VM's. Zie de [schijfgroottes](#disk-sizes) voor `maxShares`de toegestane waarden voor .
 
-Voordat u de volgende sjabloon gebruikt, vervangt u `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`en `[parameters('maxShares')]` met uw eigen waarden.
+Voordat u de volgende `[parameters('dataDiskName')]` `[resourceGroup().location]`sjabloon `[parameters('dataDiskSizeGB')]`gebruikt, vervangt u , en `[parameters('maxShares')]` met uw eigen waarden.
 
 ```json
 { 
@@ -71,12 +71,12 @@ Voordat u de volgende sjabloon gebruikt, vervangt u `[parameters('dataDiskName')
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw Vm's
+### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw VM's
 
-Wanneer u een gedeelde schijf met `maxShares>1`hebt geïmplementeerd, kunt u de schijf koppelen aan een of meer van uw virtuele machines.
+Zodra u een gedeelde schijf `maxShares>1`hebt geïmplementeerd met, u de schijf op een of meer van uw VM's monteren.
 
 > [!IMPORTANT]
-> Alle Vm's die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsings groep](../articles/virtual-machines/windows/proximity-placement-groups.md).
+> Alle VM's die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsingsgroep voor nabijheid](../articles/virtual-machines/windows/proximity-placement-groups.md).
 
 ```azurepowershell-interactive
 
@@ -100,9 +100,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Ondersteunde SCSI PR-opdrachten
 
-Zodra u de gedeelde schijf hebt gekoppeld aan uw virtuele machines in uw cluster, kunt u quorum en lees-/schrijftoegang tot stand brengen met behulp van SCSI-PR. De volgende PR-opdrachten zijn beschikbaar wanneer u gedeelde Azure-schijven gebruikt:
+Zodra u de gedeelde schijf op uw VM's in uw cluster hebt gemonteerd, u quorum en lezen/schrijven naar de schijf instellen met Behulp van SCSI PR. De volgende PR-opdrachten zijn beschikbaar bij het gebruik van gedeelde Azure-schijven:
 
-Als u wilt communiceren met de schijf, begint u met de lijst met permanente reserve ringen:
+Als u met de schijf wilt communiceren, begint u met de lijst met actie voor permanente reserveringen:
 
 ```
 PR_REGISTER_KEY 
@@ -120,7 +120,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-Wanneer u PR_RESERVE, PR_PREEMPT_RESERVATION of PR_RELEASE_RESERVATION gebruikt, geeft u een van de volgende permanente reserve ring-type op:
+Wanneer u PR_RESERVE, PR_PREEMPT_RESERVATION of PR_RELEASE_RESERVATION gebruikt, een van de volgende persistent-reservation-type:
 
 ```
 PR_NONE 
@@ -138,9 +138,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-U moet ook een permanente reserve ring-sleutel opgeven wanneer u PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION of PR_RELEASE-reserve ring gebruikt.
+U moet ook een permanente reserveringssleutel verstrekken bij het gebruik van PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION of PR_RELEASE-RESERVERING.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor de preview-versie](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Als je geïnteresseerd bent in gedeelde schijven, [meld je dan aan voor onze preview.](https://aka.ms/AzureSharedDiskPreviewSignUp)

@@ -1,32 +1,32 @@
 ---
-title: Ansible-module en versie matrix voor Azure | Microsoft Docs
+title: Ansible-module en versiematrix voor Azure | Microsoft Documenten
 description: Overzicht met Ansible-modules en -versies voor Azure
 keywords: ansible, rollen, matrix, versie, azure, devops
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74155980"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Overzicht met Ansible-modules en -versies
 
-Ansible bevat een suite met modules die u kunt gebruiken bij het inrichten en configureren van Azure-resources. Deze resources omvatten virtuele machines, schaal sets, netwerk services en container Services. In dit artikel vindt u een overzicht van de verschillende Ansible-modules voor Azure en de Ansible-versies waarin ze worden geleverd.
+Ansible bevat een reeks modules voor gebruik bij het inrichten en configureren van Azure-resources. Deze bronnen omvatten virtuele machines, schaalsets, netwerkservices en containerservices. In dit artikel worden de verschillende Ansible-modules voor Azure en de Ansible-versies weergegeven waarin ze worden verzonden.
 
 ## <a name="ansible-modules-for-azure"></a>Ansible-modules voor Azure
 
-De volgende modules kunnen rechtstreeks worden uitgevoerd op externe hosts of via playbooks.  
+De volgende modules kunnen direct worden uitgevoerd op externe hosts of via playbooks.  
 
-Deze modules zijn beschikbaar via de officiële release van Ansible en uit de volgende micro soft Playbook-rollen.
+Deze modules zijn beschikbaar vanaf de Ansible officiële release en van de volgende Microsoft playbook rollen.
 
 > [!NOTE]
-> Vanaf Ansible 2,9 worden de namen van alle * _facts modules gewijzigd in * _info om te voldoen aan de naamgevings Conventie van Ansible. De oude en hernoemde modules worden zodanig gekoppeld dat er een afschaffing waarschuwing wordt weer gegeven. alle modules werken net als voorheen.
+> Vanaf Ansible 2.9 hebben we alle *_facts modules omgedoopt tot *_info om ons te houden aan de Ansible naamgevingsconventie. De oude en omgedoopte modules zijn gekoppeld dus afgezien van het zien van een afschaffing waarschuwing, alle modules werken als voorheen.
 
-| Ansible-module voor Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Ansible-rol | 
+| Ansible-module voor Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2.8 | Ansible 2.9 | Ansible Rol | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
-| **Computing**                    |           |                          |                          |                            |           |           |           |
+| **Compute**                    |           |                          |                          |                            |           |           |           |
 | azure_rm_availabilityset                   | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_availabilityset_info              | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_batchaccount                       | -            | -                           | -            | -            | -            | Ja          | Ja          |
@@ -58,7 +58,7 @@ Deze modules zijn beschikbaar via de officiële release van Ansible en uit de vo
 | azure_rm_virtualmachinescalesetextension_info | -            | -                        | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_virtualmachinescalesetinstance_info | -            | -                         | -            | -            | Ja          | Ja          | Ja          |
-| **Netwerken**                              |              |                             |              |              |              |              |              |
+| **Networking**                              |              |                             |              |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_applicationsecuritygroup_info     | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
@@ -94,7 +94,7 @@ Deze modules zijn beschikbaar via de officiële release van Ansible en uit de vo
 | azure_rm_virtualnetworkgateway              | -            | -                         | -          | -            | Ja          | Ja          | Ja          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Ja          | Ja          | Ja          |
 | azure_rm_virtualnetworkpeering_info         | -            | -                         | -          | -            | -            | Ja          | Ja          |
-| **Storage**                    |           |                          |                          |                            |           |           |         |
+| **Opslag**                    |           |                          |                          |                            |           |           |         |
 | azure_rm_manageddisk                        | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_manageddisk_info                  | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_storageaccount                     | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
@@ -157,10 +157,10 @@ Deze modules zijn beschikbaar via de officiële release van Ansible en uit de vo
 | azure_rm_sqlfirewallrule_info              | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_sqlserver                          | -            | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_sqlserver_info                    | -            | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
-| **Analytische gegevens**                    |           |                          |                          |                             |           |           |          |
+| **Analytics**                    |           |                          |                          |                             |           |           |          |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_hdinsightcluster_info              | -            | -                           | -            | -            | -            | Ja          | Ja          |
-| **Opneming**                    |           |                          |                          |                             |           |           |          |
+| **Integratie**                    |           |                          |                          |                             |           |           |          |
 | azure_rm_servicebus                         | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_servicebus_info                   | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
 | azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Ja          | Ja          | Ja          |
@@ -215,12 +215,12 @@ Deze modules zijn beschikbaar via de officiële release van Ansible en uit de vo
 | azure_rm_iothub_info              | -            | -                         | -          | -          | -          | Ja        | Ja          |
 | azure_rm_iothubconsumergroup      | -            | -                         | -          | -          | -          | Ja        | Ja          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Inleiding tot de Playbook-rol voor Azure
+## <a name="introduction-to-playbook-role-for-azure"></a>Inleiding tot de rol van de draaimap voor Azure
 
-De [azure_preview_module rol Playbook](https://galaxy.ansible.com/Azure/azure_preview_modules/) omvat alle meest recente Azure-modules. De updates en oplossingen voor fouten worden op een meer wijze uitgevoerd dan de officiële Ansible-release. Als u Ansible gebruikt voor het inrichten van Azure-resources, raden we u aan om de `azure_preview_module` Playbook-functie te installeren.
+De [azure_preview_module playbook-rol](https://galaxy.ansible.com/Azure/azure_preview_modules/) bevat de nieuwste Azure-modules. De updates en bug fixes worden gedaan in een meer tijdige wijze dan de officiële Ansible release. Als u Ansible gebruikt voor Azure-resourceprovisioning-doeleinden, `azure_preview_module` wordt u aangemoedigd om de rol van de draaimap te installeren.
 
-De `azure_preview_module` Playbook-rol wordt elke drie weken vrijgegeven.
+De `azure_preview_module` rol van het draaiboek wordt om de drie weken uitgebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [rebruikbare Playbooks maken](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)voor meer informatie over Playbook-rollen. 
+Zie [Herbruikbare playbooks maken](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)voor meer informatie over draaiboekrollen. 

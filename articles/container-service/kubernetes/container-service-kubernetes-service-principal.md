@@ -8,10 +8,10 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371117"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(AFGESCHAFT) Een service-principal voor Azure Active Directory voor een Kubernetes-cluster in Container Service instellen
@@ -21,7 +21,7 @@ ms.locfileid: "79371117"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-In Azure Container Service is voor een Kubernetes-cluster een [service-principal voor Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) vereist voor gebruik met Azure-API's. De service-principal is nodig om resources zoals door [gebruikers gedefinieerde routes](../../virtual-network/virtual-networks-udr-overview.md) en de [Azure Load Balancer uit laag vier](../../load-balancer/load-balancer-overview.md) dynamisch te beheren.
+In Azure Container Service is voor een Kubernetes-cluster een [service-principal voor Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) vereist voor gebruik met Azure-API's. De serviceprincipal is nodig om resources, zoals [door de gebruiker gedefinieerde routes](../../virtual-network/virtual-networks-udr-overview.md) en de Layer 4 Azure Load [Balancer,](../../load-balancer/load-balancer-overview.md)dynamisch te beheren.
 
 
 In dit artikel worden verschillende opties getoond om een service-principal in te stellen voor uw Kubernetes-cluster. Bijvoorbeeld: als u de [Azure CLI](/cli/azure/install-az-cli2) hebt geïnstalleerd en ingesteld, kunt u de opdracht [`az acs create`](/cli/azure/acs) uitvoeren om tegelijkertijd het Kubernetes-cluster en de service-principal te maken.
@@ -33,9 +33,9 @@ U kunt een bestaande Azure AD-service-principal gebruiken die voldoet aan de vol
 
 * **Bereik**: resourcegroep
 
-* **Rol**: Inzender
+* **Functie**: Contribuant
 
-* **Clientgeheim**: moet een wachtwoord zijn. U kunt momenteel geen service-principal gebruiken om verificatie via een certificaat in te stellen.
+* **Client geheim**: Moet een wachtwoord zijn. U kunt momenteel geen service-principal gebruiken om verificatie via een certificaat in te stellen.
 
 > [!IMPORTANT]
 > Als u een service-principal wilt maken, moet u beschikken over machtigingen voor het registreren van een toepassing bij uw Azure AD-tenant. U moet ook machtigingen hebben om de toepassing aan een rol toe te wijzen in uw abonnement. [Open de portal](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) om te controleren of u over de vereiste machtigingen beschikt.
@@ -61,7 +61,7 @@ De uitvoer ziet er ongeveer zo uit (dit voorbeeld is geredigeerd):
 
 ![Een service-principal maken](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Gemarkeerd zijn de **client-id** (`appId`) en het **clientgeheim** (`password`) die u gebruikt als parameters voor de service-principal voor de implementatie van de cluster.
+Gemarkeerd zijn de`appId` **client-ID** (`password`) en het **clientgeheim** ( ) dat u gebruikt als serviceprincipal parameters voor clusterimplementatie.
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Service-principal opgeven bij het maken van het Kubernetes-cluster
@@ -78,7 +78,7 @@ In het volgende voorbeeld wordt één manier getoond om de parameters door te ge
 
 1. [Download](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) het bestand met sjabloonparameters `azuredeploy.parameters.json` van GitHub.
 
-2. Voer de waarden voor `servicePrincipalClientId` en `servicePrincipalClientSecret` in het bestand in om de service-principal op te geven. (U moet ook uw eigen waarden voor `dnsNamePrefix` en `sshRSAPublicKey` opgeven. De laatste is de open bare SSH-sleutel voor toegang tot het cluster.) Sla het bestand op.
+2. Voer de waarden voor `servicePrincipalClientId` en `servicePrincipalClientSecret` in het bestand in om de service-principal op te geven. (U moet ook uw eigen waarden voor `dnsNamePrefix` en `sshRSAPublicKey` opgeven. Dit laatste is de SSH-openbare sleutel om toegang te krijgen tot het cluster.) Sla het bestand op.
 
     ![Parameters voor de service-principal doorgeven](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +97,7 @@ In het volgende voorbeeld wordt één manier getoond om de parameters door te ge
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Optie 2: een service-principal genereren tijdens het maken van het cluster met `az acs create`
 
-Als u de opdracht [`az acs create`](/cli/azure/acs#az-acs-create) hebt uitgevoerd om het Kubernetes-cluster te maken, hebt u de optie om automatisch een service-principal te laten maken.
+Als u [`az acs create`](/cli/azure/acs#az-acs-create) de opdracht uitvoert om het Kubernetes-cluster te maken, hebt u de optie om automatisch een serviceprincipal te genereren.
 
 Net zoals bij andere opties voor het maken van Kubernetes-clusters kunt u parameters voor een bestaande service-principal opgeven tijdens het uitvoeren van `az acs create`. Als u deze parameters echter weglaat, maakt de Azure CLI er automatisch een voor gebruik met Container Service. Dit vindt transparant plaats tijdens de implementatie.
 

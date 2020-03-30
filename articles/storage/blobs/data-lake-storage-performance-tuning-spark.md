@@ -1,6 +1,6 @@
 ---
-title: 'Prestaties afstemmen: Spark, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Richt lijnen voor het afstemmen van de Spark-Azure Data Lake Storage Gen2
+title: 'Prestaties afstemmen: Spark, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Documenten'
+description: Richtlijnen voor azure Data Lake Storage Gen2 Spark-prestaties
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -10,106 +10,106 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327550"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Spark, HDInsight & Azure Data Lake Storage Gen2
 
-Bij het afstemmen van de prestaties van Spark moet u rekening houden met het aantal apps dat op uw cluster wordt uitgevoerd.  Standaard kunt u vier apps gelijktijdig op uw HDI-cluster uitvoeren (Opmerking: de standaard instelling is onderhevig aan wijzigingen).  U kunt ervoor kiezen om minder apps te gebruiken, zodat u de standaard instellingen en het gebruik van het cluster voor deze apps kan onderdrukken.  
+Wanneer u de prestaties op Spark afstemt, moet u rekening houden met het aantal apps dat op uw cluster wordt uitgevoerd.  Standaard u 4 apps tegelijk uitvoeren op uw HDI-cluster (Let op: de standaardinstelling kan worden gewijzigd).  U besluiten om minder apps te gebruiken, zodat u de standaardinstellingen overschrijven en meer van het cluster voor die apps gebruiken.  
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een Azure data Lake Storage Gen2-account**. Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](data-lake-storage-quickstart-create-account.md)voor instructies over het maken van een.
-* **Azure HDInsight-cluster** met toegang tot een Data Lake Storage Gen2-account. Zie [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
-* **Spark-cluster wordt uitgevoerd op Data Lake Storage Gen2**.  Zie [HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store) voor meer informatie
-* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage Gen2**.  Zie [Data Lake Storage Gen2 richt lijnen voor het afstemmen van prestaties](data-lake-storage-performance-tuning-guidance.md) voor algemene concepten. 
+* **Een Azure Data Lake Storage Gen2-account**. Zie [Snelstart: Een Azure Data Lake Storage Gen2-opslagaccount](data-lake-storage-quickstart-create-account.md)maken voor instructies over het maken van een azure data lake storage Gen2.
+* **Azure HDInsight-cluster** met toegang tot een Data Lake Storage Gen2-account. Zie [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Zorg ervoor dat u Extern bureaublad inschakelt voor het cluster.
+* **Spark-cluster uitvoeren op Data Lake Storage Gen2**.  Zie [HDInsight Spark-cluster gebruiken om gegevens te analyseren in Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store) voor meer informatie
+* **Richtlijnen voor prestatieafstemming voor Data Lake Storage Gen2**.  Zie Richtlijnen voor [de prestaties van Data Lake Storage Gen2 Performance Tuning voor](data-lake-storage-performance-tuning-guidance.md) algemene prestatieconcepten 
 
 ## <a name="parameters"></a>Parameters
 
-Wanneer Spark-taken worden uitgevoerd, zijn dit de belangrijkste instellingen die kunnen worden afgestemd op de prestaties van Data Lake Storage Gen2:
+Bij het uitvoeren van Spark-taken zijn hier de belangrijkste instellingen die kunnen worden afgestemd om de prestaties op Data Lake Storage Gen2 te verhogen:
 
-* **Num-uitvoerende** modules: het aantal gelijktijdige taken dat kan worden uitgevoerd.
+* **Num-executors** - Het aantal gelijktijdige taken dat kan worden uitgevoerd.
 
-* Uitvoerder **-geheugen** : de hoeveelheid geheugen die aan elke uitvoerder is toegewezen.
+* **Executor-memory** - De hoeveelheid geheugen die aan elke executeur is toegewezen.
 
-* Uitvoerder- **kernen** : het aantal kernen dat aan elke uitvoerder is toegewezen.                     
+* **Executor-cores** - Het aantal cores toegewezen aan elke executeur.                     
 
-**Num-uitvoerende modules** Num-uitvoerende modules instellen het maximum aantal taken dat parallel kan worden uitgevoerd.  Het werkelijke aantal taken dat parallel kan worden uitgevoerd, wordt begrensd door het geheugen en de CPU-bronnen die beschikbaar zijn in uw cluster.
+**Num-executeors** Num-executeors stellen het maximum aantal taken in dat parallel kan worden uitgevoerd.  Het werkelijke aantal taken dat parallel kan worden uitgevoerd, wordt begrensd door het geheugen en de CPU-bronnen die beschikbaar zijn in uw cluster.
 
-Uitvoerder **-geheugen** Dit is de hoeveelheid geheugen die aan elke uitvoerder wordt toegewezen.  Het geheugen dat nodig is voor elke uitvoerder is afhankelijk van de taak.  Voor complexe bewerkingen moet het geheugen hoger zijn.  Voor eenvoudige bewerkingen, zoals lezen en schrijven, zijn de geheugen vereisten lager.  De hoeveelheid geheugen voor elke uitvoerder kan worden weer gegeven in Ambari.  Navigeer in Ambari naar Spark en Bekijk het tabblad Configuratie.  
+**Executor-geheugen** Dit is de hoeveelheid geheugen die wordt toegewezen aan elke executeur.  Het geheugen dat nodig is voor elke uitvoerder is afhankelijk van de taak.  Voor complexe bewerkingen moet het geheugen hoger zijn.  Voor eenvoudige bewerkingen zoals lezen en schrijven zijn de geheugenvereisten lager.  De hoeveelheid geheugen voor elke executeur kan worden bekeken in Ambari.  Navigeer in Ambari naar Spark en bekijk het tabblad Configs.  
 
-Uitvoerder **-kernen** Hiermee stelt u het aantal kern geheugens in dat per uitvoerder wordt gebruikt. Hiermee wordt het aantal parallelle threads bepaald dat per bewerkings programma kan worden uitgevoerd.  Als de uitvoerder bijvoorbeeld-kernen = 2 is, kan elke uitvoerder twee parallelle taken uitvoeren in de uitvoerder.  De vereiste uitvoerder-cores is afhankelijk van de taak.  Voor I/O-intensieve taken is geen grote hoeveelheid geheugen per taak vereist, dus elke uitvoerder kan meer parallelle taken verwerken.
+**Executor-cores** Hiermee wordt het aantal cores ingesteld dat per executeur wordt gebruikt, dat het aantal parallelle threads bepaalt dat per executeur kan worden uitgevoerd.  Als executor-cores = 2 bijvoorbeeld worden uitgevoerd, kan elke uitvoerder 2 parallelle taken uitvoeren in de executor.  De benodigde executeur-cores zijn afhankelijk van de taak.  Voor zware taken van i/o's is geen grote hoeveelheid geheugen per taak vereist, zodat elke uitvoerder meer parallelle taken kan verwerken.
 
-Standaard worden twee virtuele garen kernen gedefinieerd voor elke fysieke kern bij het uitvoeren van Spark op HDInsight.  Dit aantal biedt een goede balans van gelijktijdigheid en hoeveelheid context wisseling van meerdere threads.  
+Standaard worden twee virtuele YARN-kernen gedefinieerd voor elke fysieke kern wanneer spark op HDInsight wordt uitgevoerd.  Dit getal biedt een goede balans van gelijktijdigheid en de hoeveelheid context die overschakelt van meerdere threads.  
 
 ## <a name="guidance"></a>Richtlijnen
 
-Bij het uitvoeren van Spark analytische werk belastingen voor het werken met gegevens in Data Lake Storage Gen2 raden wij u aan de meest recente HDInsight-versie te gebruiken om de beste prestaties te verkrijgen met Data Lake Storage Gen2. Wanneer uw taak meer I/O-intensief is, kunnen bepaalde para meters worden geconfigureerd om de prestaties te verbeteren.  Data Lake Storage Gen2 is een uiterst schaalbaar opslag platform dat hoge door Voer kan verwerken.  Als de taak voornamelijk uit Lees-of schrijf bewerkingen bestaat, kunnen de prestaties worden verbeterd door de gelijktijdige gelijktijdigheid te verhogen voor I/O van en naar Data Lake Storage Gen2.
+Tijdens het uitvoeren van Spark-analytische workloads om met gegevens te werken in Data Lake Storage Gen2, raden we u aan de meest recente HDInsight-versie te gebruiken om de beste prestaties te leveren met Data Lake Storage Gen2. Wanneer uw taak meer I/O-intensief is, kunnen bepaalde parameters worden geconfigureerd om de prestaties te verbeteren.  Data Lake Storage Gen2 is een zeer schaalbaar opslagplatform dat hoge doorvoer aankan.  Als de taak voornamelijk bestaat uit lezen of schrijven, kan het verhogen van de gelijktijdigheid voor I/O van en naar Data Lake Storage Gen2 de prestaties verhogen.
 
-Er zijn enkele algemene manieren om gelijktijdigheid te verhogen voor I/O-intensieve taken.
+Er zijn een paar algemene manieren om gelijktijdigheid voor I/O-intensieve banen te verhogen.
 
-**Stap 1: Bepaal hoeveel apps worden uitgevoerd in uw cluster** . u moet weten hoeveel apps er op het cluster worden uitgevoerd, met inbegrip van het huidige.  Bij de standaard waarden voor elke Spark-instelling wordt ervan uitgegaan dat er vier apps gelijktijdig worden uitgevoerd.  Daarom is er slechts 25% van het cluster beschikbaar voor elke app.  Als u betere prestaties wilt, kunt u de standaard waarden onderdrukken door het aantal uitvoerender te wijzigen.  
+**Stap 1: Bepaal hoeveel apps er op uw cluster worden uitgevoerd** : u moet weten hoeveel apps er op het cluster worden uitgevoerd, waaronder het huidige.  De standaardwaarden voor elke Spark-instelling gaan ervan uit dat er 4 apps tegelijk worden uitgevoerd.  Daarom hebt u slechts 25% van het cluster beschikbaar voor elke app.  Om betere prestaties te krijgen, u de standaardinstellingen overschrijven door het aantal uitvoerders te wijzigen.  
 
-**Stap 2: uitvoerder instellen-geheugen** : het eerste dat moet worden ingesteld, is de uitvoerder van het geheugen.  Het geheugen is afhankelijk van de taak die u wilt uitvoeren.  U kunt de gelijktijdigheid verhogen door minder geheugen per uitvoerder toe te wijzen.  Als er onvoldoende geheugen-uitzonde ringen worden weer geven wanneer u uw taak uitvoert, moet u de waarde voor deze para meter verhogen.  Het is ook mogelijk om meer geheugen te verkrijgen door gebruik te maken van een cluster met een grotere hoeveelheid geheugen of de grootte van het cluster te verg Roten.  Meer geheugens worden gebruikt om meer uitvoerders te gebruiken, wat betekent dat dit meer gelijktijdig is.
+**Stap 2: Stel executor-geheugen in** – Het eerste wat u moet instellen is het executor-geheugen.  Het geheugen zal afhankelijk zijn van de taak die u gaat uitvoeren.  U de gelijktijdigheid verhogen door minder geheugen per executeur toe te wijzen.  Als u uit het geheugen uitzonderingen ziet wanneer u uw taak uitvoert, moet u de waarde voor deze parameter verhogen.  Een alternatief is om meer geheugen te krijgen met behulp van een cluster dat hogere hoeveelheden geheugen heeft of het vergroten van de grootte van uw cluster.  Meer geheugen zal het mogelijk maken meer uitvoerders te gebruiken, wat betekent meer gelijktijdigheid.
 
-**Stap 3: de uitvoerder-kernen instellen** : voor I/O-intensieve workloads die geen complexe bewerkingen hebben, is het goed om te beginnen met een groot aantal uitvoeres-cores om het aantal parallelle taken per uitvoerder te verhogen.  Het instellen van de uitvoerder-kernen op 4 is een goed begin.   
+**Stap 3: Stel executor-cores in** – Voor I/O-intensieve workloads die geen complexe bewerkingen hebben, is het goed om te beginnen met een groot aantal executor-cores om het aantal parallelle taken per executeur te verhogen.  Het instellen van executor-cores op 4 is een goed begin.   
 
     executor-cores = 4
-Het verhogen van het aantal uitvoeringen-kern geheugens geeft u meer parallellisme zodat u kunt experimenteren met verschillende Voer-cores.  Voor taken met complexere bewerkingen moet u het aantal kernen per uitvoerder verminderen.  Als de uitvoerder is ingesteld op meer dan 4, wordt de garbagecollection mogelijk inefficiënt en wordt de prestaties verslechteren.
+Het verhogen van het aantal executor-cores geeft je meer parallellisme, zodat je experimenteren met verschillende executor-cores.  Voor taken met complexere bewerkingen moet u het aantal cores per uitvoerder verminderen.  Als executor-cores hoger is ingesteld dan 4, kan garbage collection inefficiënt worden en de prestaties verslechteren.
 
-**Stap 4: de hoeveelheid garen geheugen in het cluster bepalen** : deze informatie is beschikbaar in Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  
-Opmerking terwijl u zich in het venster bevindt, ziet u ook de standaard grootte van de garen container.  De grootte van de garen container is hetzelfde als het geheugen per uitvoer parameter.
+**Stap 4: Bepaal de hoeveelheid GAREN-geheugen in het cluster** – Deze informatie is beschikbaar in Ambari.  Navigeer naar YARN en bekijk het tabblad Configs.  Het YARN-geheugen wordt in dit venster weergegeven.  
+Opmerking terwijl u zich in het venster bevindt, u ook de standaardgrootte van de GAREN-container zien.  De grootte van de YARN-container is hetzelfde als de parameter geheugen per executeur.
 
     Total YARN memory = nodes * YARN memory per node
-**Stap 5: berekenen van num-uitvoerende modules**
+**Stap 5: Num-executors berekenen**
 
-**Geheugen beperking berekenen** : de para meter voor de num-uitvoerende modules wordt beperkt door het geheugen of de CPU.  De geheugen beperking wordt bepaald door de hoeveelheid beschikbaar garen geheugen voor uw toepassing.  U moet het totaal aantal GARENs in de hele ruimte halen en deze delen door invoerder-geheugen.  De beperking moet worden geschaald voor het aantal apps, zodat we delen door het aantal apps.
+**Geheugenbeperking berekenen** - De parameter num-executors wordt beperkt door het geheugen of door CPU.  De geheugenbeperking wordt bepaald door de hoeveelheid beschikbaar GAREN-geheugen voor uw toepassing.  U moet nemen totale YARN geheugen en delen dat door executor-geheugen.  De beperking moet worden gedeschaald voor het aantal apps, zodat we delen door het aantal apps.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**CPU-beperking berekenen** : de CPU-beperking wordt berekend als de totale virtuele kernen gedeeld door het aantal kernen per uitvoerder.  Er zijn twee virtuele kernen voor elke fysieke kern.  Net als bij de beperking van het geheugen moeten we delen door het aantal apps.
+**CPU-beperking berekenen** - De CPU-beperking wordt berekend als de totale virtuele kernen gedeeld door het aantal cores per executor.  Er zijn 2 virtuele kernen voor elke fysieke kern.  Net als bij de geheugenbeperking moeten we delen door het aantal apps.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Stel num-uitvoerende modules** in: de para meter num-uitvoerende modules wordt bepaald door de minimale geheugen beperking en de CPU-beperking te nemen. 
+**Num-executors instellen** : de parameter num-executors wordt bepaald door het minimum van de geheugenbeperking en de CPU-beperking te nemen. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Het instellen van een groter aantal num-uitvoerende modules is niet noodzakelijkerwijs de prestaties te verhogen.  Houd er rekening mee dat het toevoegen van meer uitvoerder extra overhead voor elke extra uitvoerder toevoegt, waardoor de prestaties mogelijk kunnen afnemen.  Num-uitvoerende modules worden begrensd door de cluster resources.    
+Het instellen van een hoger aantal num-executors verhoogt niet noodzakelijkerwijs de prestaties.  U moet er rekening mee houden dat het toevoegen van meer uitvoerders extra overhead toevoegt voor elke extra executor, die de prestaties mogelijk kan verslechteren.  Num-executeors wordt begrensd door de clusterbronnen.    
 
-## <a name="example-calculation"></a>Voorbeeld berekening
+## <a name="example-calculation"></a>Voorbeeldberekening
 
-Stel dat u momenteel een cluster hebt dat bestaat uit 8 D4v2-knoop punten met 2 apps, met inbegrip van het abonnement dat u wilt uitvoeren.  
+Stel dat u momenteel een cluster hebt dat bestaat uit 8 D4v2-knooppunten waarop 2 apps worden uitgevoerd, waaronder de cluster die u gaat uitvoeren.  
 
-**Stap 1: bepalen hoeveel apps worden uitgevoerd in uw cluster** : u weet dat u 2 apps op uw cluster hebt, inclusief het abonnement dat u wilt uitvoeren.  
+**Stap 1: Bepaal hoeveel apps er op je cluster worden uitgevoerd:** je weet dat je twee apps op je cluster hebt, waaronder de apps die je gaat uitvoeren.  
 
-**Stap 2: uitvoerder instellen-geheugen** : voor dit voor beeld bepalen we dat 6GB van de uitvoerder-geheugen voldoende is voor de I/O-intensieve taak.  
+**Stap 2: Stel executor-geheugen** in – voor dit voorbeeld bepalen we dat 6 GB executorgeheugen voldoende is voor een I/O-intensieve taak.  
 
     executor-memory = 6GB
-**Stap 3: de uitvoerder instellen-kernen** – omdat dit een I/O-intensieve taak is, kunnen we het aantal kernen voor elke uitvoerder instellen op 4.  Het instellen van kernen per uitvoerder naar groter dan 4 kan leiden tot garbagecollection-problemen.  
+**Stap 3: Stel executor-cores in** – Aangezien dit een I/O-intensieve taak is, kunnen we het aantal cores voor elke executeur instellen op 4.  Het instellen van kernen per uitvoerder op groter dan 4 kan problemen veroorzaken bij het ophalen van afval.  
 
     executor-cores = 4
-**Stap 4: het aantal garens in het cluster bepalen** . Ga naar Ambari om erachter te komen dat elke D4V2 een 25 GB van het garen-geheugen heeft.  Omdat er 8 knoop punten zijn, wordt het beschik bare garen geheugen vermenigvuldigd met 8.
+**Stap 4: Bepaal de hoeveelheid GAREN-geheugen in het cluster** - We navigeren naar Ambari om erachter te komen dat elke D4v2 25 GB GAREN-geheugen heeft.  Aangezien er 8 knooppunten zijn, wordt het beschikbare YARN-geheugen vermenigvuldigd met 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**Stap 5: berekenen van num-uitvoerende modules** : de para meter num-uitvoerende modules wordt bepaald door het minimum van de geheugen beperking en de CPU-beperking te nemen, gedeeld door het aantal apps dat op Spark wordt uitgevoerd.    
+**Stap 5: Num-executors berekenen** : de parameter num-executors wordt bepaald door het minimum van de geheugenbeperking en de CPU-beperking te nemen gedeeld door het aantal apps dat op Spark wordt uitgevoerd.    
 
-**Geheugen beperking berekenen** : de geheugen beperking wordt berekend als het totale aantal garens gedeeld door het geheugen per uitvoerder.
+**Geheugenbeperking berekenen** : de geheugenbeperking wordt berekend als het totale YARN-geheugen gedeeld door het geheugen per uitvoerder.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**CPU-beperking berekenen** : de CPU-beperking wordt berekend als de totale garen kernen gedeeld door het aantal kernen per uitvoerder.
+**CPU-beperking berekenen** - De CPU-beperking wordt berekend als de totale garenkernen gedeeld door het aantal cores per executor.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Num-uitvoerende modules instellen**
+**Num-executors instellen**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

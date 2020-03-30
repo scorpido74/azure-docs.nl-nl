@@ -1,67 +1,67 @@
 ---
 title: Offline synchronisatie inschakelen (Xamarin iOS)
-description: Meer informatie over het gebruik van App Service mobiele app om offline gegevens in de iOS-toepassing in uw Xamarin op te slaan en te synchroniseren.
+description: Meer informatie over het gebruik van App Service Mobile App om offline gegevens in uw Xamarin iOS-toepassing in de cache te bewaren en te synchroniseren.
 ms.assetid: 828a287c-5d58-4540-9527-1309ebb0f32b
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3a5128f6918b22be2ff1ef6adf3e453b1f373ea6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461297"
 ---
-# <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Offline synchronisatie inschakelen voor uw Xamarin. mobiele iOS-app
+# <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Offline synchronisatie inschakelen voor uw mobiele Xamarin.iOS-app
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Overzicht
-In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Xamarin. iOS geïntroduceerd. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app--gegevens weer geven, toevoegen of wijzigen, zelfs wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
+In deze zelfstudie wordt de offline synchronisatiefunctie van Azure Mobile Apps voor Xamarin.iOS geïntroduceerd. Met offline synchronisatie kunnen eindgebruikers communiceren met een mobiele app, gegevens weergeven, toevoegen of wijzigen, zelfs als er geen netwerkverbinding is. Wijzigingen worden opgeslagen in een lokale database. Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
 
-In deze zelf studie werkt u het Xamarin. iOS-app-project bij vanuit [een Xamarin IOS-app maken] ter ondersteuning van de offline functies van Azure Mobile apps. Als u het gedownloade Quick Start Server-project niet gebruikt, moet u de pakketten voor gegevens toegangs uitbreidingen toevoegen aan uw project. Zie [werken met de .net back-end server SDK voor Azure Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)voor meer informatie over server extensie pakketten.
+Werk in deze zelfstudie het xamarin.iOS-appproject bij [vanuit Een Xamarin iOS-app maken] om de offline functies van Azure Mobile Apps te ondersteunen. Als u het gedownloade project voor snelle startserver niet gebruikt, moet u de uitbreidingspakketten voor gegevenstoegang aan uw project toevoegen. Zie [Werken met de .NET backendserver SDK voor Azure Mobile Apps voor](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)meer informatie over serverextensiepakketten.
 
-Zie het onderwerp [Offlinesynchronisatie van gegevens in Azure Mobile Apps]voor meer informatie over de functie voor offline synchronisatie.
+Zie het onderwerp [Offline gegevenssynchroniseren in Azure Mobile Apps]voor meer informatie over de functie offline synchronisatie.
 
-## <a name="update-the-client-app-to-support-offline-features"></a>De client-app bijwerken voor de ondersteuning van offline functies
-Met de offline functies van Azure Mobile App kunt u met een lokale data base werken wanneer u een offline scenario hebt. Als u deze functies in uw app wilt gebruiken, initialiseert u een [SyncContext] naar een lokale opslag. Verwijs naar uw tabel via de interface [IMobileServiceSyncTable]. SQLite wordt gebruikt als het lokale archief op het apparaat.
+## <a name="update-the-client-app-to-support-offline-features"></a>De client-app bijwerken om offlinefuncties te ondersteunen
+Met offlinefuncties van Azure Mobile App u communiceren met een lokale database wanneer u zich in een offlinescenario bevindt. Als u deze functies in uw app wilt gebruiken, initialiseert u een [SyncContext] naar een lokale winkel. Verwijs uw tabel door de interface [IMobileServiceSyncTable]. SQLite wordt gebruikt als de lokale winkel op het apparaat.
 
-1. Open NuGet package manager in het project dat u in de zelf studie [een Xamarin IOS-app maken] hebt uitgevoerd, zoek naar en installeer het pakket **micro soft. Azure. Mobile. client. SQLiteStore** NuGet.
-2. Open het QSTodoService.cs-bestand en verwijder de opmerking over de `#define OFFLINE_SYNC_ENABLED` definitie.
-3. Bouw en voer de client-app opnieuw uit. De app werkt op dezelfde manier als voordat u offline synchronisatie inschakelde. De lokale data base is nu echter gevuld met gegevens die in een offline scenario kunnen worden gebruikt.
+1. Open de NuGet-pakketbeheerder in het project dat u hebt voltooid in de zelfstudie [van de Xamarin iOS-app] maken en zoek en installeer vervolgens het **NuGet-pakket Microsoft.Azure.Mobile.Client.SQLiteStore.**
+2. Open het QSTodoService.cs bestand `#define OFFLINE_SYNC_ENABLED` en maak geen commentaar op de definitie.
+3. De client-app opnieuw opbouwen en uitvoeren. De app werkt hetzelfde als voordat u offline synchronisatie hebt ingeschakeld. De lokale database wordt nu echter gevuld met gegevens die kunnen worden gebruikt in een offline scenario.
 
-## <a name="update-sync"></a>De app bijwerken om de verbinding met de back-end te verbreken
-In deze sectie verbreekt u de verbinding met de back-end van uw mobiele app om een offline situatie te simuleren. Wanneer u gegevens items toevoegt, krijgt u een uitzonderings-handler te zien dat de app zich in de offline modus bevindt. In deze status worden nieuwe items toegevoegd aan het lokale archief en worden ze gesynchroniseerd met de back-end van de mobiele app wanneer push de volgende keer wordt uitgevoerd in een verbonden status.
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>De app bijwerken om de verbinding met de backend te verbreken
+In deze sectie verbreekt u de verbinding met de backend van uw mobiele app om een offline situatie te simuleren. Wanneer u gegevensitems toevoegt, vertelt uw uitzonderingshandler u dat de app in de offlinemodus staat. In deze status worden nieuwe items die in de lokale winkel zijn toegevoegd en worden ze gesynchroniseerd met de backend van de mobiele app wanneer push de volgende keer wordt uitgevoerd in een verbonden status.
 
-1. Bewerk QSToDoService.cs in het gedeelde project. Wijzig de **applicationURL** zodat deze verwijst naar een ongeldige URL:
+1. Bewerk QSToDoService.cs in het gedeelde project. Wijzig de **toepassings-URL** om een ongeldige URL aan te wijzen:
 
          const string applicationURL = @"https://your-service.azurewebsites.fail";
 
-    U kunt ook offline gedrag demonstreren door Wi-Fi-en cellulaire netwerken op het apparaat uit te scha kelen of door de vliegtuig modus te gebruiken.
-2. Bouw de app en voer deze uit. U ziet dat de synchronisatie is mislukt bij het vernieuwen wanneer de app is gestart.
-3. Voer nieuwe items in en Let op dat push mislukt met de status [CancelledByNetworkError] telkens wanneer u op **Opslaan**klikt. De nieuwe TODO-items bestaan echter pas in het lokale archief als ze kunnen worden gepusht naar de back-end van de mobiele app.  Als u in een productie-app deze uitzonde ringen onderdrukt, gedraagt de client-app zich alsof deze nog steeds is verbonden met de back-end van de mobiele app.
-4. Sluit de app en start deze opnieuw om te controleren of de nieuwe items die u hebt gemaakt, zijn opgeslagen in het lokale archief.
-5. Beschrijving Als Visual Studio op een PC is geïnstalleerd, opent u **Server Explorer**. Navigeer naar uw data base in **Azure**-> **SQL-data bases**. Klik met de rechter muisknop op de data base en selecteer **openen in SQL Server-objectverkenner**. U kunt nu naar de SQL database-tabel en de inhoud bladeren. Controleer of de gegevens in de back-end-data base niet zijn gewijzigd.
-6. Beschrijving Gebruik een REST-hulp programma, zoals Fiddler of Postman, om een query op uw mobiele back-end uit te geven met behulp van een GET-query in de vorm `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
+    U ook offline gedrag aantonen door wifi en mobiele netwerken op het apparaat uit te schakelen of de vliegtuigmodus te gebruiken.
+2. Bouw de app en voer deze uit. Merk op dat de synchronisatie is mislukt bij het vernieuwen toen de app werd gestart.
+3. Voer nieuwe items in en merk op dat push mislukt met een status [CancelledByNetworkError] telkens wanneer u op **Opslaan**klikt. De nieuwe todo-items bestaan echter in de lokale winkel totdat ze naar de backend van de mobiele app kunnen worden gepusht.  Als u deze uitzonderingen onderdrukt, gedraagt de clientapp zich in een productie-app alsof deze nog steeds is verbonden met de back-end van de mobiele app.
+4. Sluit de app en start deze opnieuw op om te controleren of de nieuwe items die u hebt gemaakt, blijven bestaan in de lokale winkel.
+5. (Optioneel) Als U Visual Studio op een pc hebt geïnstalleerd, opent u **Server Explorer**. Navigeer naar uw database in **Azure**-> **SQL-databases.** Klik met de rechtermuisknop op uw database en selecteer **Openen in SQL Server Object Explorer**. Nu u bladeren naar uw SQL-databasetabel en de inhoud ervan. Controleer of de gegevens in de backenddatabase niet zijn gewijzigd.
+6. (Optioneel) Gebruik een REST-tool zoals Fiddler of Postman om uw mobiele backend op te vragen met behulp van een GET-query in het formulier `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
-## <a name="update-online-app"></a>De app bijwerken om de back-end van uw mobiele app opnieuw te verbinden
-In deze sectie verbindt u de app opnieuw met de back-end van de mobiele app. Hiermee wordt de app gesimuleerd van een offline status naar een online status met de back-end van de mobiele app.   Als u de netwerk storing hebt gesimuleerd door de netwerk verbinding uit te scha kelen, zijn er geen code wijzigingen nodig.
-Het netwerk opnieuw in te scha kelen.  Wanneer u de toepassing voor het eerst uitvoert, wordt de `RefreshDataAsync` methode aangeroepen. Op deze beurt roepen `SyncAsync` om uw lokale archief te synchroniseren met de back-end-data base.
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>De app bijwerken om de back-end van uw mobiele app opnieuw te verbinden
+Sluit in deze sectie de app opnieuw aan op de backend van de mobiele app. Dit simuleert de app die van een offline status naar een online status gaat met de backend van de mobiele app.   Als u de netwerkbreuk hebt gesimuleerd door de netwerkverbinding uit te schakelen, zijn er geen codewijzigingen nodig.
+Schakel het netwerk weer in.  Wanneer u de toepassing `RefreshDataAsync` voor het eerst uitvoert, wordt de methode aangeroepen. Dit op `SyncAsync` zijn beurt oproepen om uw lokale winkel te synchroniseren met de backend database.
 
-1. Open QSToDoService.cs in het gedeelde project en wijzig de wijziging van de eigenschap **applicationURL** .
-2. Maak de app opnieuw en voer deze uit. De app synchroniseert uw lokale wijzigingen met de back-end van de mobiele app van Azure met push-en pull-bewerkingen wanneer de `OnRefreshItemsSelected` methode wordt uitgevoerd.
-3. Beschrijving Bekijk de bijgewerkte gegevens met behulp van SQL Server-objectverkenner of een REST hulp programma, zoals Fiddler. U ziet dat de gegevens zijn gesynchroniseerd tussen de back-updatabase van de Azure Mobile App en het lokale archief.
-4. Klik in de app op het selectie vakje naast een aantal items om ze in het lokale archief te volt ooien.
+1. Open QSToDoService.cs in het gedeelde project en draai de eigenschap **applicationURL** terug.
+2. De app opnieuw opbouwen en uitvoeren. De app synchroniseert uw lokale wijzigingen met de back-end `OnRefreshItemsSelected` van azure mobile app met push- en pull-bewerkingen wanneer de methode wordt uitgevoerd.
+3. (Optioneel) Bekijk de bijgewerkte gegevens met SQL Server Object Explorer of een REST-tool zoals Fiddler. De gegevens zijn gesynchroniseerd tussen de backend-database van Azure Mobile App en de lokale winkel.
+4. Klik in de app op het selectievakje naast een paar items om ze in de lokale winkel te voltooien.
 
-   `CompleteItemAsync` roept `SyncAsync` op om elk voltooid item te synchroniseren met de back-end van de mobiele app. `SyncAsync` push-en pull-aanroepen.
-   **Wanneer u een pull-bewerking uitvoert op een tabel die door de client is gewijzigd, wordt een push-bewerking op de client synchronisatie context altijd automatisch uitgevoerd**. De impliciete push zorgt ervoor dat alle tabellen in het lokale archief samen met de relaties consistent blijven. Zie [Offlinesynchronisatie van gegevens in Azure Mobile Apps]voor meer informatie over dit gedrag.
+   `CompleteItemAsync`oproepen `SyncAsync` om elk voltooid item te synchroniseren met de back-end van de mobiele app. `SyncAsync`gesprekken zowel duwen als trekken.
+   **Wanneer u een pull uitvoert tegen een tabel waarin de client wijzigingen heeft aangebracht, wordt een push op de clientsynchronisatiecontext altijd eerst automatisch uitgevoerd.** De impliciete push zorgt ervoor dat alle tabellen in de lokale winkel, samen met relaties consistent blijven. Zie [Offline gegevenssynchroniseren in Azure Mobile Apps]voor meer informatie over dit gedrag.
 
-## <a name="review-the-client-sync-code"></a>De client synchronisatie code controleren
-Het Xamarin-client project dat u hebt gedownload tijdens het volt ooien van de zelf studie [een Xamarin IOS-app maken] bevat al code die ondersteuning biedt voor offline synchronisatie met een lokale sqlite-data base. Hier volgt een kort overzicht van wat er al in de zelfstudie code is opgenomen. Zie [Offlinesynchronisatie van gegevens in Azure Mobile Apps]voor een conceptueel overzicht van de functie.
+## <a name="review-the-client-sync-code"></a>De synchronisatiecode van de client controleren
+Het Xamarin-clientproject dat u hebt gedownload toen u de zelfstudie hebt voltooid [Maak een Xamarin iOS-app] bevat al code die offlinesynchronisatie ondersteunt met behulp van een lokale SQLite-database. Hier is een kort overzicht van wat al is opgenomen in de tutorial code. Zie [Offline gegevenssynchroniseren in Azure Mobile Apps]voor een conceptueel overzicht van de functie.
 
-* Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. De lokale store-data base wordt geïnitialiseerd wanneer `QSTodoListViewController.ViewDidLoad()` `QSTodoService.InitializeStoreAsync()`uitvoert. Met deze methode maakt u een nieuwe lokale SQLite-data base met behulp van de `MobileServiceSQLiteStore`-klasse van de Azure Mobile App client SDK.
+* Voordat tabelbewerkingen kunnen worden uitgevoerd, moet de lokale winkel worden geïnitialiseerd. De lokale winkeldatabase wordt `QSTodoListViewController.ViewDidLoad()` geïnitialiseerd wanneer deze wordt `QSTodoService.InitializeStoreAsync()`uitgevoerd. Met deze methode wordt een nieuwe `MobileServiceSQLiteStore` lokale SQLite-database gemaakt met behulp van de klasse die wordt geleverd door de Azure Mobile App-client SDK.
 
-    Met de methode `DefineTable` maakt u een tabel in het lokale archief die overeenkomt met de velden in het geleverde type `ToDoItem` in dit geval. Het type moet niet alle kolommen bevatten die zich in de externe data base bevinden. Het is mogelijk om alleen een subset van kolommen op te slaan.
+    Met `DefineTable` de methode wordt `ToDoItem` in dit geval een tabel gemaakt in de lokale winkel die overeenkomt met de velden in het opgegeven type. Het type hoeft niet alle kolommen in de externe database op te nemen. Het is mogelijk om slechts een subset van kolommen op te slaan.
 
         // QSTodoService.cs
 
@@ -73,13 +73,13 @@ Het Xamarin-client project dat u hebt gedownload tijdens het volt ooien van de z
             // Uses the default conflict handler, which fails on conflict
             await client.SyncContext.InitializeAsync(store);
         }
-* Het `todoTable` lid van `QSTodoService` is van het `IMobileServiceSyncTable` type in plaats van `IMobileServiceTable`. De IMobileServiceSyncTable stuurt alle bewerkingen voor maken, lezen, bijwerken en verwijderen (ruw) naar de lokale store-data base.
+* Het `todoTable` lid `QSTodoService` van `IMobileServiceSyncTable` is van `IMobileServiceTable`het type in plaats van . De IMobileServiceSyncTable stuurt alle bewerkingen van de tabel voor maken, lezen, bijwerken en verwijderen naar de lokale winkeldatabase.
 
-    U bepaalt wanneer deze wijzigingen worden gepusht naar de back-end van de mobiele app van Azure door `IMobileServiceSyncContext.PushAsync()`aan te roepen. De synchronisatie context helpt bij het bewaren van tabel relaties door wijzigingen in alle tabellen bij te houden en te pushen die een client-app heeft gewijzigd wanneer `PushAsync` wordt aangeroepen.
+    U bepaalt zelf wanneer deze wijzigingen worden doorgevoerd `IMobileServiceSyncContext.PushAsync()`naar de back-end van de Azure Mobile App door te bellen. De synchronisatiecontext helpt tabelrelaties te behouden door wijzigingen bij te `PushAsync` houden en te pushen in alle tabellen die een client-app heeft gewijzigd wanneer deze wordt aangeroepen.
 
-    De gegeven code roept `QSTodoService.SyncAsync()` op om te synchroniseren wanneer de todoitem-lijst wordt vernieuwd of een todoitem wordt toegevoegd of voltooid. De app wordt gesynchroniseerd na elke lokale wijziging. Als er een pull-bewerking wordt uitgevoerd voor een tabel die in behandeling zijnde lokale updates die worden bijgehouden door de context, wordt door deze pull-actie automatisch een context push geactiveerd.
+    De meegeleverde `QSTodoService.SyncAsync()` code oproepen om te synchroniseren wanneer de todoitem lijst wordt vernieuwd of een todoitem wordt toegevoegd of voltooid. De app synchroniseert na elke lokale wijziging. Als een pull wordt uitgevoerd tegen een tabel die in behandeling is met lokale updates die door de context worden bijgehouden, wordt automatisch een contextpush geactiveerd.
 
-    In de gegeven code worden alle records in de tabel met externe `TodoItem` opgevraagd, maar het is ook mogelijk om records te filteren door een query-ID en-query door te geven aan `PushAsync`. Zie de sectie *incrementele synchronisatie* in [Offlinesynchronisatie van gegevens in Azure Mobile Apps]voor meer informatie.
+    In de meegeleverde code worden `TodoItem` alle records in de externe tabel opgevraagd, maar het `PushAsync`is ook mogelijk om records te filteren door een query-id en query door te geven aan . Zie de sectie *Incrementele synchronisatie* in [Offline gegevenssynchronisatie in Azure Mobile Apps]voor meer informatie.
 
         // QSTodoService.cs
         public async Task SyncAsync()
@@ -96,9 +96,9 @@ Het Xamarin-client project dat u hebt gedownload tijdens het volt ooien van de z
             }
         }
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 * [Offlinesynchronisatie van gegevens in Azure Mobile Apps]
-* [PROCEDURE voor Azure Mobile Apps .NET SDK][8]
+* [Azure Mobile Apps .NET SDK HOWTO][8]
 
 <!-- Images -->
 

@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77474108"
 ---
-Fouten die zijn opgetreden in een Azure Functions kunnen afkomstig zijn van een van de volgende oorsprongen:
+Fouten die in een Azure-functie worden aangekaart, kunnen afkomstig zijn van een van de volgende oorsprongen:
 
-- Gebruik van ingebouwde Azure Functions [Triggers en bindingen](..\articles\azure-functions\functions-triggers-bindings.md)
-- Aanroepen naar Api's van onderliggende Azure-Services
-- Aanroepen naar REST-eind punten
-- Aanroepen van client Bibliotheken, pakketten of Api's van derden
+- Gebruik van ingebouwde Azure Functions [triggers en bindingen](..\articles\azure-functions\functions-triggers-bindings.md)
+- Oproepen naar API's van onderliggende Azure-services
+- Oproepen naar REST-eindpunten
+- Oproepen naar clientbibliotheken, pakketten of API's van derden
 
-De volgende procedures voor het afhandelen van fouten zijn belang rijk om verlies van gegevens of gemiste berichten te voor komen. De aanbevolen procedures voor het afhandelen van fouten zijn onder andere de volgende acties:
+Het volgen van solide foutenafhandelingspraktijken is belangrijk om verlies van gegevens of gemiste berichten te voorkomen. Aanbevolen foutenafhandelingsprocedures omvatten de volgende acties:
 
 - [Application Insights inschakelen](../articles/azure-functions/functions-monitoring.md)
-- [Gestructureerde fout afhandeling gebruiken](#use-structured-error-handling)
-- [Ontwerpen voor idempotentie](../articles/azure-functions/functions-idempotent.md)
-- [Beleid voor opnieuw proberen implementeren](../articles/azure-functions/functions-reliable-event-processing.md) (indien van toepassing)
+- [Gestructureerde foutafhandeling gebruiken](#use-structured-error-handling)
+- [Ontwerp voor idempotentie](../articles/azure-functions/functions-idempotent.md)
+- [Beleid voor nieuwe try implementeren](../articles/azure-functions/functions-reliable-event-processing.md) (indien van toepassing)
 
-### <a name="use-structured-error-handling"></a>Gestructureerde fout afhandeling gebruiken
+### <a name="use-structured-error-handling"></a>Gestructureerde foutafhandeling gebruiken
 
-Het vastleggen en publiceren van fouten is van cruciaal belang voor het controleren van de status van uw toepassing. Het bovenste niveau van een functie code moet een try/catch-blok bevatten. In het blok catch kunt u fouten vastleggen en publiceren.
+Het vastleggen en publiceren van fouten is essentieel om de status van uw toepassing te controleren. Het bovenste niveau van een functiecode moet een try/catch-blok bevatten. In het catch block u fouten vastleggen en publiceren.
 
-### <a name="retry-support"></a>Ondersteuning voor opnieuw proberen
+### <a name="retry-support"></a>Ondersteuning opnieuw proberen
 
-De volgende triggers hebben ingebouwde ondersteuning voor nieuwe pogingen:
+De volgende triggers hebben ingebouwde ondersteuning voor opnieuw proberen:
 
-* [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure-wachtrij opslag](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Blob-opslag](../articles/azure-functions/functions-bindings-storage-blob.md)
+* [Azure-wachtrijopslag](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (wachtrij/onderwerp)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Deze triggers worden standaard Maxi maal vijf keer aangevraagd. Na de vijfde nieuwe poging is de Azure Queue-opslag en Azure Service Bus triggers een bericht naar een [verontreinigde wachtrij](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)schrijven.
+Standaard proberen deze triggers aanvragen tot vijf keer opnieuw. Na de vijfde poging schrijven zowel de Azure Queue-opslag als de azure-servicebus-triggers een bericht naar een [gifwachtrij.](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)
 
-U moet het beleid voor opnieuw proberen hand matig implementeren voor alle andere triggers of bindingen typen. Hand matige implementaties kunnen informatie over het schrijven van fouten bevatten in een [wachtrij voor verontreinigde berichten](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Als u naar een verontreinigde wachtrij schrijft, hebt u de mogelijkheid om bewerkingen op een later tijdstip uit te voeren. Deze benadering is hetzelfde als de methode die wordt gebruikt door de Blob Storage-trigger.
+U moet handmatig beleid opnieuw proberen voor andere triggers of bindingentypen. Handmatige implementaties kunnen het schrijven van foutinformatie naar een [wachtrij voor gifberichten omvatten.](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs) Door te schrijven naar een gif wachtrij, heb je de mogelijkheid om operaties opnieuw te proberen op een later tijdstip. Deze benadering is dezelfde die wordt gebruikt door de Blob-opslagtrigger.

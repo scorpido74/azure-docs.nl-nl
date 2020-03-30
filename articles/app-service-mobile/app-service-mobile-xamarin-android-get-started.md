@@ -1,16 +1,16 @@
 ---
-title: Aan de slag met Xamarin. Android-apps
-description: Volg deze zelf studie om aan de slag te gaan met Azure Mobile Apps voor Xamarin Android-ontwikkeling.
+title: Aan de slag met Xamarin.Android-apps
+description: Volg deze zelfstudie om aan de slag te gaan met Azure Mobile Apps voor Xamarin Android-ontwikkeling.
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461365"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Een Xamarin.Android-app maken
@@ -19,7 +19,7 @@ ms.locfileid: "77461365"
 ## <a name="overview"></a>Overzicht
 Deze zelfstudie laat zien hoe u een back-endservice toevoegt aan een Xamarin.Android-app in de cloud. Zie [What are Mobile Apps](app-service-mobile-value-prop.md) (Wat zijn Mobile Apps?) voor meer informatie.
 
-Hieronder staat een schermafbeelding van de voltooide app:
+Hieronder ziet u een schermafbeelding van de voltooide app:
 
 ![][0]
 
@@ -29,36 +29,36 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Mobile Apps-z
 Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
 
 * Een actief Azure-account. Als u geen account hebt, meld u zich aan voor een proefversie van Azure en ontvangt u maximaal 10 gratis mobiele apps. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
-* Visual Studio met Xamarin. Zie [Installeren en instellen voor Visual Studio en Xamarin](/visualstudio/cross-platform/setup-and-install) voor instructies.
+* Visual Studio met Xamarin. Zie [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Installeren en instellen voor Visual Studio en Xamarin) voor instructies.
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Een back-end voor mobiele apps van Azure maken
 Volg deze stappen voor het maken van een back-end voor mobiele apps.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-U hebt nu een back-end voor mobiele apps van Azure ingericht, die kan worden gebruikt door uw mobiele-clienttoepassingen. Download vervolgens een serverproject voor een eenvoudige back-end voor takenlijsten en publiceer deze naar Azure.
+U hebt nu een back-end voor Azure Mobile Apps ingericht, die kan worden gebruikt door uw mobiele clienttoepassingen. Download vervolgens een serverproject voor een eenvoudige back-end voor takenlijsten en publiceer deze naar Azure.
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een database verbinding maken en het client-en server project configureren
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een databaseverbinding maken en het client- en serverproject configureren
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinandroid-app"></a>De Xamarin. Android-app uitvoeren
-1. Open het project Xamarin. Android.
+## <a name="run-the-xamarinandroid-app"></a>De Xamarin.Android-app uitvoeren
+1. Open het Xamarin.Android-project.
 
-2. Ga naar de [Azure Portal](https://portal.azure.com/) en navigeer naar de mobiele app die u hebt gemaakt. Zoek op de Blade `Overview` naar de URL die het open bare eind punt is voor uw mobiele app. Voor beeld-de naam van de site van mijn app ' test123 ' wordt https://test123.azurewebsites.net.
+2. Ga naar de [Azure-portal](https://portal.azure.com/) en navigeer naar de mobiele app die u hebt gemaakt. Zoek `Overview` op het blad naar de URL die het openbare eindpunt is voor uw mobiele app. Voorbeeld - de sitenaam voor mijn app-naam https://test123.azurewebsites.net"test123" is .
 
-3. Open het bestand `ToDoActivity.cs` in deze map-xamarin. Android/ZUMOAPPNAME/ToDoActivity. cs. De naam van de toepassing is `ZUMOAPPNAME`.
+3. Open het `ToDoActivity.cs` bestand in deze map - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. De toepassingsnaam `ZUMOAPPNAME`is .
 
-4. Vervang `ZUMOAPPURL` variabele met open bare eind punt in `ToDoActivity`-klasse.
+4. Vervang `ToDoActivity` in `ZUMOAPPURL` de klasse variabele door het bovenstaande openbare eindpunt.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
-    steeds
+    Wordt
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
-5. Druk op de toets F5 om de app te implementeren en uit te voeren.
+5. Druk op de F5-toets om de app te implementeren en uit te voeren.
 
-6. Typ zinvolle tekst in de app, zoals *Voltooi de zelfstudie*, en klik vervolgens op de knop **Toevoegen**.
+6. Typ in de app betekenisvolle tekst, zoals *De zelfstudie voltooien* en klik op de knop **Toevoegen.**
 
     ![][10]
 

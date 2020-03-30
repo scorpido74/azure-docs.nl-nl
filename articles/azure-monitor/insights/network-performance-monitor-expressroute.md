@@ -1,143 +1,143 @@
 ---
-title: Netwerkprestatiemeter oplossing in azure Log Analytics | Microsoft Docs
-description: Gebruik de ExpressRoute-monitor mogelijkheid in Netwerkprestatiemeter om end-to-end connectiviteit en prestaties tussen uw filialen en Azure te bewaken via Azure ExpressRoute.
+title: Oplossing voor netwerkprestatiemonitor in Azure Log Analytics | Microsoft Documenten
+description: Gebruik de ExpressRoute Monitor-mogelijkheid in netwerkprestatiemonitor om de end-to-end-connectiviteit en -prestaties tussen uw filialen en Azure via Azure ExpressRoute te controleren.
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660747"
 ---
-# <a name="expressroute-monitor"></a>Monitor voor ExpressRoute
+# <a name="expressroute-monitor"></a>ExpressRoute-monitor
 
-U kunt de Azure ExpressRoute-monitor mogelijkheid gebruiken in [Netwerkprestatiemeter](network-performance-monitor.md) om end-to-end connectiviteit en prestaties te bewaken tussen uw filialen en Azure, via Azure ExpressRoute. De belangrijkste voor delen zijn: 
+U de Azure ExpressRoute Monitor-mogelijkheid in [netwerkprestatiemonitor](network-performance-monitor.md) gebruiken om end-to-end-connectiviteit en -prestaties tussen uw filialen en Azure via Azure ExpressRoute te controleren. De belangrijkste voordelen zijn: 
 
-- Automatische detectie van ExpressRoute-circuits die zijn gekoppeld aan uw abonnement.
-- Het bijhouden van bandbreedte gebruik, verlies en latentie op het circuit, peering en Azure Virtual Network niveau voor ExpressRoute.
-- Detectie van de netwerk topologie van uw ExpressRoute-circuits.
+- Automatisch detecteren van ExpressRoute-circuits die zijn gekoppeld aan uw abonnement.
+- Het bijhouden van bandbreedtegebruik, verlies en latentie op het circuit,peering en Azure Virtual Network-niveau voor ExpressRoute.
+- Ontdekking van netwerktopologie van uw ExpressRoute-circuits.
 
-![Monitor voor ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
+![ExpressRoute-monitor](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Configuratie 
-Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
+Als u de configuratie voor netwerkprestatiemonitor wilt openen, opent u de [oplossing netwerkprestatiemeter](network-performance-monitor.md) en selecteert **u Configureren**.
 
-### <a name="configure-network-security-group-rules"></a>Regels voor netwerk beveiligings groepen configureren 
-Voor de servers in azure die worden gebruikt voor bewaking via Netwerkprestatiemeter, configureert u NSG-regels (netwerk beveiligings groep) om TCP-verkeer toe te staan op de poort die door Netwerkprestatiemeter wordt gebruikt voor synthetische trans acties. De standaardpoort is 8084. Met deze configuratie kan de Log Analytics-agent die is geïnstalleerd op virtuele machines van Azure, communiceren met een on-premises bewakings agent. 
+### <a name="configure-network-security-group-rules"></a>Groepsregels voor netwerkbeveiliging configureren 
+Voor de servers in Azure die worden gebruikt voor bewaking via Network Performance Monitor, configureert u NSG-regels (Network Security Group) om TCP-verkeer toe te staan op de poort die wordt gebruikt door Network Performance Monitor voor synthetische transacties. De standaardpoort is 8084. Met deze configuratie kan de Log Analytics-agent die is geïnstalleerd op Azure VM's communiceren met een on-premises monitoringagent. 
 
-Zie [netwerk beveiligings groepen](../../virtual-network/manage-network-security-group.md)voor meer informatie over nsg's. 
+Zie [Netwerkbeveiligingsgroepen](../../virtual-network/manage-network-security-group.md)voor meer informatie over NSG's . 
 
 >[!NOTE]
-> Voordat u verdergaat met deze stap, installeert u de on-premises Server Agent en de Azure Server Agent en voert u het Power shell-script EnableRules. ps1 uit. 
+> Voordat u verdergaat met deze stap, installeert u de on-premises serveragent en de Azure-serveragent en voert u het PowerShell-script enablerules.ps1 uit. 
 
  
-### <a name="discover-expressroute-peering-connections"></a>ExpressRoute-peering-verbindingen detecteren 
+### <a name="discover-expressroute-peering-connections"></a>Ontdek ExpressRoute-peeringverbindingen 
  
-1. Selecteer de weer gave **ExpressRoute-peering** .
-2. Selecteer **nu detecteren** om alle persoonlijke ExpressRoute-peerings te detecteren die zijn verbonden met de virtuele netwerken in het Azure-abonnement dat is gekoppeld aan deze Azure log Analytics-werk ruimte.
+1. Selecteer de weergave **ExpressRoute Peerings.**
+2. Selecteer **Nu ontdekken** om alle privé-peeringen van ExpressRoute te ontdekken die zijn verbonden met de virtuele netwerken in het Azure-abonnement dat is gekoppeld aan deze Azure Log Analytics-werkruimte.
 
     >[!NOTE]
-    > De oplossing detecteert momenteel alleen persoonlijke ExpressRoute-peerings. 
+    > De oplossing ontdekt momenteel alleen ExpressRoute private peerings. 
 
     >[!NOTE]
-    > Alleen particuliere peerings die zijn verbonden met de virtuele netwerken die zijn gekoppeld aan het abonnement dat is gekoppeld aan deze Log Analytics-werk ruimte, worden gedetecteerd. Als ExpressRoute is verbonden met virtuele netwerken buiten het abonnement dat is gekoppeld aan deze werk ruimte, maakt u een Log Analytics-werk ruimte in die abonnementen. Gebruik vervolgens Netwerkprestatiemeter om die peerings te bewaken. 
+    > Alleen privé-peerings die zijn gekoppeld aan de virtuele netwerken die zijn gekoppeld aan het abonnement dat is gekoppeld aan deze Log Analytics-werkruimte, worden ontdekt. Als ExpressRoute is verbonden met virtuele netwerken buiten het abonnement dat aan deze werkruimte is gekoppeld, maakt u een werkruimte Log Analytics in die abonnementen. Gebruik vervolgens Network Performance Monitor om die peerings te controleren. 
 
-    ![Configuratie van ExpressRoute-monitor](media/network-performance-monitor-expressroute/expressroute-configure.png)
+    ![ExpressRoute Monitor-configuratie](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
-   Nadat de detectie is voltooid, worden de gedetecteerde privé-peering verbindingen weer gegeven in een tabel. De bewaking voor deze peerings is in eerste instantie een uitgeschakelde status. 
+   Nadat de detectie is voltooid, worden de gedetecteerde privépeerverbindingen in een tabel weergegeven. De controle voor deze peerings is in eerste instantie uitgeschakeld. 
 
-### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Bewaking van de ExpressRoute-peering-verbindingen inschakelen 
+### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Controle van de ExpressRoute-peeringverbindingen inschakelen 
 
-1. Selecteer de particuliere peering-verbinding die u wilt bewaken.
-2. Schakel in het deel venster aan de rechter kant het selectie vakje **Dit peering bewaken** in. 
-3. Als u van plan bent om status gebeurtenissen voor deze verbinding te maken, selecteert u **status controle inschakelen voor deze peering**. 
-4. Kies bewakings voorwaarden. U kunt aangepaste drempel waarden instellen voor het genereren van de status gebeurtenis door drempel waarde in te voeren. Wanneer de waarde van de voor waarde boven de geselecteerde drempelwaarde voor de peering verbinding komt, wordt een status gebeurtenis gegenereerd. 
-5. Selecteer **agents toevoegen** om de bewakings agenten te kiezen die u wilt gebruiken voor het bewaken van deze peering-verbinding. Zorg ervoor dat u agents aan beide uiteinden van de verbinding toevoegt. U hebt ten minste één agent nodig in het virtuele netwerk dat is verbonden met deze peering. U hebt ook ten minste één on-premises agent nodig die is verbonden met deze peering. 
+1. Selecteer de privé-peeringverbinding die u wilt controleren.
+2. Schakel in het deelvenster aan de rechterkant het selectievakje **Monitor dit peering** in. 
+3. Als u van plan bent gezondheidsgebeurtenissen voor deze verbinding te maken, selecteert u **Statuscontrole inschakelen voor deze peering**. 
+4. Kies controlevoorwaarden. U aangepaste drempelwaarden instellen voor het genereren van statusgebeurtenissen door drempelwaarden in te voeren. Wanneer de waarde van de voorwaarde boven de geselecteerde drempelwaarde voor de peeringverbinding komt, wordt een statusgebeurtenis gegenereerd. 
+5. Selecteer **Agents toevoegen** om de bewakingsagents te kiezen die u wilt gebruiken voor het bewaken van deze peeringverbinding. Zorg ervoor dat u agents aan beide uiteinden van de verbinding toevoegt. U hebt ten minste één agent in het virtuele netwerk nodig dat is verbonden met deze peering. U hebt ook ten minste één on-premises agent nodig die is verbonden met deze peering. 
 6. Selecteer **Opslaan** om de configuratie op te slaan. 
 
-   ![Configuratie van ExpressRoute-bewaking](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
+   ![ExpressRoute-bewakingsconfiguratie](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
-Nadat u de regels hebt ingeschakeld en waarden en agents hebt geselecteerd, moet u 30 tot 60 minuten wachten totdat de waarden zijn ingevuld en de **ExpressRoute-bewakings** tegels worden weer gegeven. Wanneer u de tegel bewaking ziet, worden uw ExpressRoute-circuits en verbindings bronnen nu bewaakt door Netwerkprestatiemeter. 
+Nadat u de regels hebt ingeschakeld en waarden en agents hebt geselecteerd, wacht u 30 tot 60 minuten tot de waarden worden ingevuld en de tegels **voor het bewaken van ExpressRoute** worden weergegeven. Wanneer u de bewakingstegels ziet, worden uw ExpressRoute-circuits en verbindingsbronnen nu gecontroleerd door network performance monitor. 
 
 >[!NOTE]
-> Deze functie werkt betrouwbaar op werk ruimten die zijn bijgewerkt naar de nieuwe query taal.
+> Deze mogelijkheid werkt betrouwbaar op werkruimten die zijn geüpgraded naar de nieuwe querytaal.
 
-## <a name="walkthrough"></a>Walkthrough 
+## <a name="walkthrough"></a>Kennismaking 
 
-Het Netwerkprestatiemeter-dash board toont een overzicht van de status van ExpressRoute-circuits en peering-verbindingen. 
+Het dashboard van de Netwerkprestatiemonitor toont een overzicht van de status van ExpressRoute-circuits en peering-verbindingen. 
 
-![Netwerkprestatiemeter dash board](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
+![Dashboard netwerkprestatiemonitor](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
 ### <a name="circuits-list"></a>Lijst met circuits 
 
-Als u een lijst met alle bewaakte ExpressRoute-circuits wilt weer geven, selecteert u de tegel ExpressRoute-circuits. U kunt een circuit selecteren en de status, trendgrafieken voor pakketverlies en bandbreedtegebruik latentie weergeven. De grafieken zijn interactief. U kunt een aangepaste tijdvenster voor het uitzetten van de grafieken selecteren. Sleep de muis over een gebied in het diagram om in te zoomen en Bekijk nauw keurige gegevens punten. 
+Als u een lijst met alle bewaakte ExpressRoute-circuits wilt bekijken, selecteert u de tegel ExpressRoute-circuits. U een circuit selecteren en de status ervan weergeven, trenddiagrammen voor pakketverlies, bandbreedtegebruik en latentie. De grafieken zijn interactief. U een aangepast tijdvenster selecteren voor het plotten van de grafieken. Sleep de muis over een gebied in de grafiek om in te zoomen en zie fijnkorrelige gegevenspunten. 
 
-![Lijst met ExpressRoute-circuits](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
+![ExpressRoute-circuitslijst](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
-### <a name="trends-of-loss-latency-and-throughput"></a>Trends van verlies, latentie en door Voer 
+### <a name="trends-of-loss-latency-and-throughput"></a>Trends van verlies, latentie en doorvoer 
 
-Het bandbreedte gebruik, de latentie en de verlies grafieken zijn interactief. U kunt inzoomen op elke sectie van deze grafieken met behulp van muis besturings elementen. U kunt ook de band breedte, latentie en gegevens verlies bekijken voor andere intervallen. Selecteer in de linkerbovenhoek onder de knop **acties** de optie **datum/tijd**. 
+De bandbreedtegebruiks-, latentie- en verliesgrafieken zijn interactief. U inzoomen op een gedeelte van deze grafieken met muisbesturingselementen. U ook de bandbreedte-, latentie- en verliesgegevens voor andere intervallen bekijken. Selecteer **Datum/tijd**linksboven onder de knop **Acties** . 
 
 ![ExpressRoute-latentie](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
-### <a name="peerings-list"></a>Lijst met peerings 
+### <a name="peerings-list"></a>Peeringslijst 
 
-Als u een lijst wilt weer geven met alle verbindingen met virtuele netwerken via persoonlijke peering, selecteert u de tegel **privé-peerings** op het dash board. Hier kunt u een virtuele netwerkverbinding en de status, trendgrafieken voor pakketverlies en bandbreedtegebruik latentie weergeven. 
+Als u een lijst met alle verbindingen met virtuele netwerken wilt weergeven via privépeering, selecteert u de tegel **Privé-peerings** op het dashboard. Hier u een virtuele netwerkverbinding selecteren en de status ervan bekijken, trenddiagrammen voor pakketverlies, bandbreedtegebruik en latentie. 
 
 ![ExpressRoute-peerings](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
-### <a name="circuit-topology"></a>Circuit topologie 
+### <a name="circuit-topology"></a>Circuittopologie 
 
-Als u de circuit topologie wilt weer geven, selecteert u de tegel **topologie** . Met deze actie gaat u naar de weer gave topologie van het geselecteerde circuit of peering. Het topologie diagram geeft de latentie voor elk segment op het netwerk en elke Layer 3-hop wordt vertegenwoordigd door een knoop punt van het diagram. Als u een hop selecteert, worden er meer details over de hop. Verplaats de schuif regelaar onder **filters**om het zichtbaarheids niveau voor het toevoegen van lokale hops te verg Roten. Als u de schuif regelaar naar links of rechts verplaatst, wordt het aantal hops in de topologie grafiek verg root of verkleind. De latentie voor elk segment is zichtbaar, zodat er een snellere isolatie van segmenten met een hoge latentie in uw netwerk mogelijk is.
+Als u de topologie van het circuit wilt weergeven, selecteert u de tegel **Topologie.** Met deze actie bedraagt u de topologieweergave van het geselecteerde circuit of peering. Het topologiediagram biedt de latentie voor elk segment in het netwerk en elke laag 3-hop wordt weergegeven door een knooppunt van het diagram. Het selecteren van een hop onthult meer details over de hop. Als u het zichtbaarheidsniveau wilt verhogen om on-premises hop op te nemen, verplaatst u de schuifbalk onder **FILTERS**. Als u de schuifbalk naar links of rechts verplaatst, neemt het aantal hop in de topologiegrafiek toe of wordt deze afgenomen. De latentie in elk segment is zichtbaar, waardoor segmenten met hoge latentie op uw netwerk sneller kunnen worden geïsoleerd.
 
 ![ExpressRoute-topologie](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
-### <a name="detailed-topology-view-of-a-circuit"></a>Gedetailleerde topologie weergave van een circuit 
+### <a name="detailed-topology-view-of-a-circuit"></a>Gedetailleerde topologieweergave van een circuit 
 
-In deze weer gave worden virtuele netwerk verbindingen weer gegeven. 
+Deze weergave toont virtuele netwerkverbindingen. 
 
-![ExpressRoute virtuele netwerk verbindingen](media/network-performance-monitor-expressroute/expressroute-vnet.png)
+![Virtuele netwerkverbindingen expressroute](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
 ## <a name="diagnostics"></a>Diagnostiek 
 
-Netwerkprestatiemeter helpt u bij het vaststellen van verschillende verbindings problemen met circuits. Hieronder vindt u enkele van de problemen die u kunt zien.
+Met network performance monitor u verschillende problemen met de circuitconnectiviteit diagnosticeren. Enkele van de problemen die u zien zijn hieronder vermeld.
 
-U kunt de meldings codes bekijken en waarschuwingen instellen via **LogAnalytics**. Op de pagina **Diagnostische gegevens over NPM** ziet u beschrijvingen voor elk geactiveerde diagnostische berichten.
+U de meldingscodes bekijken en waarschuwingen op deze codes instellen via **LogAnalytics.** Op de pagina **NPM Diagnostics** ziet u beschrijvingen voor elk diagnostisch bericht dat wordt geactiveerd.
 
-| Meldings code (Logboeken) | Beschrijving |
+| Meldingscode (logboeken) | Beschrijving |
 | --- | --- |
-| 5501 | Kan niet door de secundaire verbinding van het ExpressRoute-circuit bladeren |
-| 5502 | Kan niet door de primaire verbinding van het ExpressRoute-circuit bladeren |
-| 5503 | Er is geen circuit gevonden voor het abonnement dat is gekoppeld aan de werk ruimte | 
-| 5508 | Kan niet bepalen of het verkeer wordt door gegeven via een of meer circuits voor het pad |
-| 5510 | Het verkeer wordt niet door gegeven via het beoogde circuit | 
-| 5511 | Het verkeer wordt niet door gegeven via het beoogde virtuele netwerk | 
+| 5501 | Kan niet doorkruisen via secundaire verbinding van het ExpressRoute-circuit |
+| 5502 | Kan niet doorkruisen via de primaire verbinding van het ExpressRoute-circuit |
+| 5503 | Er wordt geen circuit gevonden voor een abonnement dat is gekoppeld aan de werkruimte | 
+| 5508 | Niet in staat om te bepalen of het verkeer door een circuit(en) voor pad gaat |
+| 5510 | Het verkeer rijdt niet door het beoogde circuit | 
+| 5511 | Het verkeer gaat niet door het beoogde virtuele netwerk | 
 
-**Het circuit is niet actief.** Netwerkprestatiemeter waarschuwt u zodra de verbinding tussen uw on-premises resources en virtuele netwerken van Azure verloren is gegaan. Met deze melding kunt u proactief actie ondernemen voordat u de escalatie van gebruikers ontvangt en de downtime vermindert.
+**Het circuit is uitgevallen.** Network Performance Monitor waarschuwt u zodra de verbinding tussen uw on-premises resources en Azure virtuele netwerken verloren gaat. Met deze melding u proactief optreden voordat u gebruikersescalaties ontvangt en downtime vermindert.
 
-![Het ExpressRoute-circuit is niet actief](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
+![ExpressRoute circuit is uitgevallen](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
-**Verkeer dat niet loopt via beoogd circuit.** Netwerkprestatiemeter waarschuwt u wanneer het verkeer niet via het beoogde ExpressRoute-circuit loopt. Dit probleem kan zich voordoen als het circuit niet actief is en het verkeer via de back-uproute loopt. Dit kan ook gebeuren als er een probleem met de route ring is. Deze informatie helpt u bij het proactief beheren van configuratie problemen in uw routerings beleid en om ervoor te zorgen dat de meest optimale en veilige route wordt gebruikt. 
+**Verkeer dat niet door het beoogde circuit stroomt.** Network Performance Monitor waarschuwt u wanneer het verkeer niet door het beoogde ExpressRoute-circuit stroomt. Dit probleem kan optreden als het circuit is uitgeschakeld en het verkeer door de back-uproute stroomt. Het kan ook gebeuren als er een routeringsprobleem is. Met deze informatie u proactief configuratieproblemen in uw routeringsbeleid beheren en ervoor zorgen dat de meest optimale en veilige route wordt gebruikt. 
 
  
 
-**Verkeer loopt niet via het primaire circuit.** Netwerkprestatiemeter waarschuwt u wanneer het verkeer via het secundaire ExpressRoute-circuit loopt. Hoewel er in dit geval geen verbindings problemen optreden, kunt u de problemen met het primaire circuit proactief oplossen. 
+**Verkeer dat niet door het primaire circuit stroomt.** De Network Performance Monitor waarschuwt u wanneer het verkeer via het secundaire ExpressRoute-circuit stroomt. Hoewel u in dit geval geen verbindingsproblemen ondervindt, u zich door het proactief oplossen van de problemen met het primaire circuit beter voorbereiden. 
 
  
-![ExpressRoute verkeers stroom](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
+![ExpressRoute verkeersstroom](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
 
 
-**Degradatie vanwege piek gebruik.** U kunt de trend van bandbreedte gebruik correleren met de latentie trend om te bepalen of de uitbraak van de Azure-werk belasting wordt veroorzaakt door een piek in het bandbreedte gebruik of niet. Vervolgens kunt u op basis daarvan actie ondernemen.
+**Degradatie als gevolg van piekgebruik.** U de trend voor bandbreedtegebruik correleren met de latentietrend om te bepalen of de azure-workloaddegradatie te wijten is aan een piek in bandbreedtegebruik of niet. Dan u dienovereenkomstig actie ondernemen.
 
-![Bandbreedte gebruik van ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
+![Gebruik van expressroute-bandbreedte](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
 
  
 
 ## <a name="next-steps"></a>Volgende stappen
-[Zoek logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde gegevens records voor netwerk prestaties weer te geven.
+[Zoeklogboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde netwerkprestatiegegevensrecords weer te geven.

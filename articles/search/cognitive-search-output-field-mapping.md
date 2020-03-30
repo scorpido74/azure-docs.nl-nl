@@ -1,7 +1,7 @@
 ---
-title: Invoer toewijzen aan uitvoer velden
+title: Invoer toewijzen aan uitvoervelden
 titleSuffix: Azure Cognitive Search
-description: Haal en verrijkende brongegevens velden op en wijs deze toe aan uitvoer velden in een Azure Cognitive Search-index.
+description: Brongegevensvelden extraheren en verrijken en toewijzen aan uitvoervelden in een Azure Cognitive Search-index.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74280970"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een doorzoekbare index
 
-In dit artikel leert u hoe u verrijkte invoer velden kunt toewijzen aan uitvoer velden in een Doorzoek bare index. Zodra u [een vaardig heden hebt gedefinieerd](cognitive-search-defining-skillset.md), moet u de uitvoer velden toewijzen van alle vaardig heden waarmee waarden rechtstreeks worden bijgedragen aan een bepaald veld in uw zoek index. 
+In dit artikel leert u hoe u verrijkte invoervelden in een doorzoekbare index in een doorzoekbare index toewijzen. Zodra u [een skillset](cognitive-search-defining-skillset.md)hebt gedefinieerd, moet u de uitvoervelden van elke vaardigheid in kaart brengen die rechtstreeks waarden bijdraagt aan een bepaald veld in uw zoekindex. 
 
-Uitvoer veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.  Het verrijkte document is in feite een structuur van informatie en hoewel er wel sprake is van ondersteuning voor complexe typen in de index, wilt u mogelijk de gegevens van de uitgebreide boom structuur transformeren naar een eenvoudigere type (bijvoorbeeld een matrix met teken reeksen). Met de toewijzingen van het uitvoer veld kunt u gegevens vorm transformaties uitvoeren door gegevens af te vlakken.
+Uitvoerveldtoewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.  Het verrijkte document is echt een boom met informatie, en hoewel er ondersteuning is voor complexe typen in de index, wilt u soms de informatie van de verrijkte boom omzetten in een eenvoudiger type (bijvoorbeeld een array van tekenreeksen). Met veldtoewijzingen voor uitvoerkunt u gegevensvormtransformaties uitvoeren door informatie af te vlakken.
 
-## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
-Als u velden wilt toewijzen, voegt u `outputFieldMappings` toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
+## <a name="use-outputfieldmappings"></a>UitvoerVeldtoewijzingen gebruiken
+Als u velden `outputFieldMappings` wilt toewijzen, voegt u toe aan de definitie van indexer zoals hieronder weergegeven:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -30,7 +30,7 @@ api-key: [admin key]
 Content-Type: application/json
 ```
 
-De hoofd tekst van de aanvraag is als volgt gestructureerd:
+De tekst van het verzoek is als volgt gestructureerd:
 
 ```json
 {
@@ -64,21 +64,21 @@ De hoofd tekst van de aanvraag is als volgt gestructureerd:
 }
 ```
 
-Stel voor elke toewijzing van het uitvoer veld de locatie van de gegevens in de verrijkte document structuur (sourceFieldName) en de naam van het veld in waarnaar wordt verwezen in de index (targetFieldName).
+Stel voor elke toewijzing van uitvoerveldde locatie van de gegevens in de verrijkte documentstructuur (sourceFieldName) en de naam van het veld zoals verwezen in de index (targetFieldName).
 
-## <a name="flattening-information-from-complex-types"></a>Informatie afvlakken van complexe typen 
+## <a name="flattening-information-from-complex-types"></a>Afvlakkenvan informatie uit complexe typen 
 
-Het pad in een sourceFieldName kan bestaan uit één element of meerdere elementen. In het bovenstaande voor beeld vertegenwoordigt ```/document/content/sentiment``` een enkele numerieke waarde, terwijl ```/document/content/organizations/*/description``` verschillende beschrijvingen van de organisatie vertegenwoordigt. 
+Het pad in een sourceFieldName kan één element of meerdere elementen vertegenwoordigen. In het bovenstaande ```/document/content/sentiment``` voorbeeld staat een ```/document/content/organizations/*/description``` enkele numerieke waarde, terwijl deze verschillende organisatiebeschrijvingen vertegenwoordigt. 
 
-Als er meerdere elementen zijn, worden deze ' afgevlakt ' in een matrix die elk van de elementen bevat. 
+In gevallen waarin er verschillende elementen zijn, worden ze "afgevlakt" in een array die elk van de elementen bevat. 
 
-In het ```/document/content/organizations/*/description```e voor beeld worden de gegevens in het veld *beschrijvingen* als een vlakke matrix met beschrijvingen weer gegeven voordat de indexering wordt geïndexeerd:
+Meer concreet, bijvoorbeeld, de ```/document/content/organizations/*/description``` gegevens in het *beschrijvingen* veld zou eruit zien als een platte array van beschrijvingen voordat het wordt geïndexeerd:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 
-Dit is een belang rijk beginsel, dus we bieden een ander voor beeld. Stel dat u een matrix van complexe typen hebt als onderdeel van de verrijkings structuur. Stel dat er een lid met de naam customEntities is dat een matrix met complexe typen bevat zoals hieronder wordt beschreven.
+Dit is een belangrijk beginsel, dus we zullen een ander voorbeeld geven. Stel je voor dat je een scala aan complexe types hebt als onderdeel van de verrijkingsboom. Stel dat er een lid is dat customTities heet en een array met complexe typen heeft, zoals hieronder beschreven.
 
 ```json
 "document/customEntities": 
@@ -109,9 +109,9 @@ Dit is een belang rijk beginsel, dus we bieden een ander voor beeld. Stel dat u 
 ]
 ```
 
-We gaan ervan uit dat uw index een veld bevat met de naam ' ziekten ' van het type verzameling (EDM. String), waar u elk van de namen van de entiteiten wilt opslaan. 
+Laten we aannemen dat uw index een veld heeft dat 'ziekten' van het type Collection (Edm.String) wordt genoemd, waar u elk van de namen van de entiteiten wilt opslaan. 
 
-Dit kan eenvoudig worden gedaan met behulp van het symbool '\*', als volgt:
+Dit kan eenvoudig met behulp\*van het " " symbool, als volgt:
 
 ```json
     "outputFieldMappings": [
@@ -122,13 +122,13 @@ Dit kan eenvoudig worden gedaan met behulp van het symbool '\*', als volgt:
     ]
 ```
 
-Met deze bewerking worden de namen van de customEntities-elementen in één matrix met teken reeksen als volgt afgevlakt:
+Deze bewerking zal eenvoudig elk van de namen van de elementen van de aangepaste entiteiten "platmaken" in één reeks tekenreeksen als deze:
 
 ```json
   "diseases" : ["heart failure","morquio"]
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zodra u uw verrijkte velden aan Doorzoek bare velden hebt toegewezen, kunt u de veld kenmerken voor elk van de Doorzoek bare velden instellen [als onderdeel van de definitie van de index](search-what-is-an-index.md).
+Nadat u uw verrijkte velden hebt toegewezen aan doorzoekbare velden, u de veldkenmerken voor elk van de doorzoekbare velden instellen [als onderdeel van de indexdefinitie](search-what-is-an-index.md).
 
-Zie [veld toewijzingen in Azure Cognitive Search-Indexeer functies](search-indexer-field-mappings.md)voor meer informatie over het toewijzen van velden.
+Zie [Veldtoewijzingen in Azure Cognitive Search-indexeerders](search-indexer-field-mappings.md)voor meer informatie over veldtoewijzingen.

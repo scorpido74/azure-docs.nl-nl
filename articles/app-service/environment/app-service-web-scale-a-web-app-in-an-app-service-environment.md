@@ -1,6 +1,6 @@
 ---
 title: Een app schalen in ASE v1
-description: Een app schalen in een App Service Environment. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
+description: Een app schalen in een app-serviceomgeving. Dit document is alleen bedoeld voor klanten die de verouderde v1 ASE gebruiken.
 author: ccompy
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.topic: article
@@ -8,57 +8,57 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688682"
 ---
-# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Apps schalen in een App Service Environment v1
-In de Azure App Service zijn doorgaans drie dingen die u kunt schalen:
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Apps schalen in een App-serviceomgeving v1
+In de Azure App Service zijn er normaal gesproken drie dingen die u schalen:
 
-* Prijs plan
-* grootte van werk nemer 
+* prijsplan
+* grootte van de werknemer 
 * aantal exemplaren.
 
-In een ASE hoeft u het prijs plan niet te selecteren of te wijzigen.  In termen van mogelijkheden is het een niveau voor premium-prijs capaciteit.  
+In een ASE is het niet nodig om het prijsplan te selecteren of te wijzigen.  In termen van mogelijkheden is het al op een Premium prijsmogelijkheden niveau.  
 
-Met betrekking tot de grootte van werk nemers kan de ASE-beheerder de grootte toewijzen van de reken resource die moet worden gebruikt voor elke werk groep.  Dit betekent dat u werk groep 1 met P4-reken resources en werk groep 2, indien gewenst, kunt voorzien van P1-reken resources.  Ze hoeven zich niet in de juiste volg orde te bevinden.  Zie het document hier [Azure app service prijzen][AppServicePricing]voor meer informatie over de grootten en hun prijzen.  Hiermee blijven de schaal opties voor web-apps en App Service plannen in een App Service Environment:
+Met betrekking tot de grootte van werknemers kan de ASE-beheerder de grootte toewijzen van de rekenbron die voor elke werknemersgroep moet worden gebruikt.  Dat betekent dat u Worker Pool 1 met P4-rekenresources en Worker Pool 2 hebben met P1-rekenresources, indien gewenst.  Ze hoeven niet in grootte orde te zijn.  Zie [het][AppServicePricing]document hier voor meer informatie over de grootte en de prijzen ervan.  Hierdoor blijven de schalingsopties voor web-apps en app-serviceplannen in een App-serviceomgeving:
 
-* selectie van werknemers groep
+* selectie van de werknemersgroep
 * aantal exemplaren
 
-Het wijzigen van een item wordt uitgevoerd via de juiste gebruikers interface die wordt weer gegeven voor uw ASE-gehoste App Service plannen.  
+Het wijzigen van een van beide items gebeurt via de juiste gebruikersinterface die wordt weergegeven voor uw ASE-gehoste app-serviceplannen.  
 
 ![][1]
 
-U kunt uw ASP niet meer schalen dan het aantal beschik bare reken resources in de werk groep waarin uw ASP zich bevindt.  Als u reken resources in die werk groep nodig hebt, moet u uw ASE-beheerder vragen om deze toe te voegen.  Lees de informatie hier voor informatie over het opnieuw configureren van uw ASE: [een app service omgeving configureren][HowtoConfigureASE].  U kunt ook profiteren van de ASE-functies voor automatisch schalen om capaciteit toe te voegen op basis van planning of metrische gegevens.  Zie voor meer informatie over het configureren van automatisch schalen voor de ASE-omgeving zelf [het automatisch schalen configureren voor een app service Environment][ASEAutoscale].
+U uw ASP niet opschalen buiten het aantal beschikbare rekenbronnen in de werknemersgroep waarin uw ASP zich bevindt.  Als u rekenresources in die werknemersgroep nodig hebt, moet u de ASE-beheerder ertoe brengen deze toe te voegen.  Voor informatie over het opnieuw configureren van uw ASE lees de informatie hier: [Hoe configureer je een App Service-omgeving][HowtoConfigureASE].  U ook gebruik maken van de ASE-functies voor automatisch schalen om capaciteit toe te voegen op basis van planning of statistieken.  Zie [Autoscale configureren voor een App-serviceomgeving][ASEAutoscale]voor meer informatie over het configureren van automatisch schalen voor de ASE-omgeving zelf.
 
-U kunt meerdere app service-plannen maken met behulp van reken resources uit verschillende werk groepen of u kunt dezelfde werk groep gebruiken.  Als u bijvoorbeeld (10) beschik bare reken resources in werk groep 1 hebt, kunt u ervoor kiezen om één app service-plan te maken met behulp van (6) reken resources en een tweede app service-plan dat gebruikmaakt van (4) reken resources.
+U meerdere app-serviceplannen maken met behulp van rekenresources uit verschillende werkgroepen of u dezelfde werknemersgroep gebruiken.  Als u bijvoorbeeld (10) beschikbare rekenresources in Worker Pool 1 hebt, u ervoor kiezen om één app-serviceplan te maken met behulp van (6) rekenresources en een tweede app-serviceplan dat (4) rekenresources gebruikt.
 
 ### <a name="scaling-the-number-of-instances"></a>Het aantal exemplaren schalen
-Wanneer u uw web-app voor het eerst in een App Service Environment maakt, begint deze met 1 instantie.  U kunt vervolgens uitschalen naar aanvullende instanties om extra reken resources te bieden voor uw app.   
+Wanneer u uw web-app voor het eerst maakt in een App Service-omgeving, begint deze met 1 exemplaar.  U vervolgens uitschalen naar extra exemplaren om extra rekenbronnen voor uw app te bieden.   
 
-Als uw ASE voldoende capaciteit heeft, is dit tamelijk eenvoudig.  U gaat naar uw App Service-abonnement dat de sites bevat die u omhoog wilt schalen en schalen selecteren.  Hiermee opent u de gebruikers interface waar u de schaal voor uw ASP hand matig kunt instellen of regels voor automatisch schalen voor uw ASP wilt configureren.  Als u uw app hand matig wilt schalen, stelt u de ***schaal in*** op ***een aantal exemplaren dat ik hand matig heb ingevoerd***.  Sleep de schuif regelaar naar het gewenste aantal of typ deze in het vak naast de schuif regelaar.  
+Als uw ASE heeft genoeg capaciteit dan is dit vrij eenvoudig.  U gaat naar uw App Service Plan dat de sites bevat die u wilt opschalen en selecteer Schalen.  Hiermee wordt de gebruikersinterface geopend waar u de schaal voor uw ASP handmatig instellen of automatische schaalregels voor uw ASP configureren.  Als u uw app handmatig wilt schalen, stelt ***u schalen*** in op ***een instantietelling die ik handmatig invul.***  Vanaf hier sleept u de schuifregelaar naar de gewenste hoeveelheid of voert u deze in het vak naast de schuifregelaar in.  
 
 ![][2] 
 
-De regels voor automatisch schalen voor een ASP in een ASE werken op dezelfde manier als normaal.  U kunt een ***CPU-percentage*** selecteren onder ***schalen door*** en regels voor automatisch SCHALEN maken voor uw ASP op basis van het CPU-percentage of u kunt complexere regels maken met behulp van ***schema-en prestatie regels***.  Meer informatie over het configureren van automatisch schalen vindt u in de hand leiding hier [schaalt u een app in azure app service][AppScale]. 
+De autoscale regels voor een ASP in een ASE werken hetzelfde als ze normaal doen.  U ***CPU-percentage*** selecteren onder ***Schalen op*** basis van uw ASP en autoscaleregels maken op basis van CPU-percentage of u complexere regels maken met behulp van ***plannings- en prestatieregels.***  Voor meer volledige details over het configureren van automatisch schalen raadpleegt u hier De handleiding Hier [Een app schalen in Azure App Service][AppScale]. 
 
-### <a name="worker-pool-selection"></a>Selectie van werknemers groep
-Zoals eerder is vermeld, wordt de selectie van de werknemers groep geopend vanuit de ASP-gebruikers interface.  Open de Blade voor de ASP die u wilt schalen en selecteer werknemers groep.  U ziet alle worker-groepen die u in uw App Service Environment hebt geconfigureerd.  Als u slechts één werk groep hebt, ziet u alleen de ene groep die wordt vermeld.  Als u wilt wijzigen in welke werk groep uw ASP zich bevindt, selecteert u alleen de werk groep waaraan u het App Service plan wilt verplaatsen.  
+### <a name="worker-pool-selection"></a>Selectie van werknemerspool
+Zoals eerder vermeld, is de selectie van de werknemersgroep toegankelijk vanuit de ASP-gebruikersinterface.  Open het blad voor de ASP die u wilt schalen en selecteer de groep werknemers.  U ziet alle werknemersgroepen die u hebt geconfigureerd in uw app-serviceomgeving.  Als u slechts één werknemerspool hebt, ziet u alleen de genoemde pool.  Als u wilt wijzigen in welke werknemersgroep uw ASP zich bevindt, selecteert u gewoon de werknemersgroep waarnaar uw App-serviceplan moet worden verplaatst.  
 
 ![][3]
 
-Voordat u uw ASP van de ene werk groep naar het andere verplaatst, is het belang rijk om ervoor te zorgen dat u over voldoende capaciteit beschikt voor uw ASP.  In de lijst met werk groepen is niet alleen de naam van de werk groep vermeld, maar u kunt ook zien hoeveel werk nemers er beschikbaar zijn in die werknemers groep.  Zorg ervoor dat er voldoende instanties beschikbaar zijn om uw App Service-abonnement te bevatten.  Als u meer reken resources nodig hebt in de werk groep waarnaar u wilt verplaatsen, kunt u de ASE-beheerder vragen om deze toe te voegen.  
+Voordat u uw ASP van de ene werknemerspool naar de andere verplaatst, is het belangrijk om ervoor te zorgen dat u voldoende capaciteit hebt voor uw ASP.  In de lijst met werknemersgroepen wordt niet alleen de naam van de werknemersgroep vermeld, maar u ook zien hoeveel werknemers beschikbaar zijn in die werknemersgroep.  Zorg ervoor dat er voldoende exemplaren beschikbaar zijn om uw App Service Plan te bevatten.  Als u meer rekenresources nodig hebt in de werknemersgroep waarnaar u wilt verplaatsen, laat u de ASE-beheerder deze toevoegen.  
 
 > [!NOTE]
-> Als u een ASP-item verplaatst van een werk groep, worden de apps in die ASP koud gestart.  Dit kan ertoe leiden dat aanvragen langzaam worden uitgevoerd als uw app koud wordt gestart op de nieuwe reken resources.  De koude start kan worden vermeden door gebruik te maken van de [toepassing opwarmen][AppWarmup] in azure app service.  De module voor het initialiseren van toepassingen die in het artikel wordt beschreven, werkt ook voor koude start, omdat het initialisatie proces ook wordt aangeroepen wanneer apps koud worden gestart op nieuwe reken resources. 
+> Als u een ASP uit een groep werknemers verplaatst, worden de apps in die ASP koud gestart.  Dit kan ertoe leiden dat aanvragen langzaam worden uitgevoerd omdat uw app koud is gestart op de nieuwe rekenbronnen.  De koude start kan worden vermeden door de [opwarmmogelijkheid][AppWarmup] van de toepassing in Azure App Service te gebruiken.  De module Initialisatie van toepassingen die in het artikel wordt beschreven, werkt ook voor koude starts, omdat het initialisatieproces ook wordt aangeroepen wanneer apps koud worden gestart op nieuwe rekenbronnen. 
 > 
 > 
 
 ## <a name="getting-started"></a>Aan de slag
-Zie [een app service Environment maken][HowtoCreateASE] om aan de slag te gaan met app service omgevingen
+Zie [Een app-serviceomgeving maken][HowtoCreateASE] om aan de slag te gaan met app-serviceomgevingen
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png

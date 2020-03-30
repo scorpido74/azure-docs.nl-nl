@@ -1,7 +1,7 @@
 ---
-title: Multitenancy en isolatie van inhoud
+title: Multitenancy en inhoudsisolatie
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over veelgebruikte ontwerp patronen voor SaaS-toepassingen met meerdere tenants tijdens het gebruik van Azure Cognitive Search.
+description: Meer informatie over algemene ontwerppatronen voor SaaS-toepassingen met meerdere tenants tijdens het gebruik van Azure Cognitive Search.
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
@@ -9,123 +9,123 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113273"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
-Een multi tenant-toepassing biedt dezelfde services en mogelijkheden voor elk aantal tenants dat de gegevens van een andere Tenant niet kan zien of delen. In dit document worden de isolatie strategieën voor tenants besproken voor multi tenant-toepassingen die zijn gebouwd met Azure Cognitive Search.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerppatronen voor Multitenant SaaS-toepassingen en Azure Cognitive Search
+Een multitenant-toepassing is een toepassing die dezelfde services en mogelijkheden biedt aan een willekeurig aantal tenants die de gegevens van een andere tenant niet kunnen zien of delen. In dit document worden tenantisolatiestrategieën voor multitenant-toepassingen besproken die zijn gebouwd met Azure Cognitive Search.
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure Cognitive Search-concepten
-Als een Search-as-a-service-oplossing kunnen ontwikkel aars met Azure Cognitive Search uitgebreidere Zoek ervaringen toevoegen aan toepassingen zonder dat ze een infra structuur hoeven te beheren of een expert te worden in het ophalen van informatie. Gegevens worden naar de service geüpload en vervolgens opgeslagen in de Cloud. Door eenvoudige aanvragen te gebruiken voor de Azure Cognitive Search-API, kunnen de gegevens worden gewijzigd en doorzocht. In [dit artikel](https://aka.ms/whatisazsearch)vindt u een overzicht van de service. Voordat u ontwerp patronen bespreekt, is het belang rijk om enkele concepten in azure Cognitive Search te begrijpen.
+Als zoek-as-a-service-oplossing stelt Azure Cognitive Search ontwikkelaars in staat om uitgebreide zoekervaringen toe te voegen aan toepassingen zonder infrastructuur te beheren of een expert te worden in het ophalen van informatie. Gegevens worden geüpload naar de service en vervolgens opgeslagen in de cloud. Met behulp van eenvoudige aanvragen voor de Azure Cognitive Search API kunnen de gegevens vervolgens worden gewijzigd en doorzocht. Een overzicht van de dienst is te vinden in [dit artikel](https://aka.ms/whatisazsearch). Voordat u ontwerppatronen bespreekt, is het belangrijk om bepaalde concepten in Azure Cognitive Search te begrijpen.
 
-### <a name="search-services-indexes-fields-and-documents"></a>Services, indexen, velden en documenten doorzoeken
-Wanneer u Azure Cognitive Search gebruikt, wordt er één geabonneerd op een *Zoek service*. Wanneer gegevens worden geüpload naar Azure Cognitive Search, wordt deze opgeslagen in een *index* binnen de zoek service. Er kan een aantal indexen binnen één service zijn. Als u de vertrouwde concepten van data bases wilt gebruiken, kan de zoek service worden likened naar een Data Base terwijl de indexen binnen een service kunnen worden likened aan tabellen in een Data Base.
+### <a name="search-services-indexes-fields-and-documents"></a>Zoekservices, indexen, velden en documenten
+Bij het gebruik van Azure Cognitive Search wordt één geabonneerd op een *zoekservice.* Als gegevens worden geüpload naar Azure Cognitive Search, wordt deze opgeslagen in een *index* binnen de zoekservice. Er kunnen een aantal indexen binnen één service zijn. Als u de vertrouwde concepten van databases wilt gebruiken, kan de zoekservice worden vergeleken met een database, terwijl de indexen binnen een service kunnen worden vergeleken met tabellen in een database.
 
-Elke index binnen een zoek service heeft een eigen schema, dat wordt gedefinieerd door een aantal aanpas bare *velden*. Gegevens worden toegevoegd aan een Azure Cognitive Search-index in de vorm van afzonderlijke *documenten*. Elk document moet worden geüpload naar een bepaalde index en moet overeenkomen met het schema van de index. Bij het zoeken naar gegevens met behulp van Azure Cognitive Search worden de Zoek opdrachten in volledige tekst op basis van een bepaalde index uitgegeven.  Om deze concepten te vergelijken met die van een Data Base, kunnen velden worden likened aan kolommen in een tabel en kunnen de documenten worden likened naar rijen.
+Elke index binnen een zoekservice heeft een eigen schema, dat wordt gedefinieerd door een aantal aanpasbare *velden.* Gegevens worden toegevoegd aan een Azure Cognitive Search-index in de vorm van afzonderlijke *documenten.* Elk document moet worden geüpload naar een bepaalde index en moet passen in het schema van die index. Bij het zoeken naar gegevens met Azure Cognitive Search worden de zoekopdrachten met volledige tekst uitgegeven tegen een bepaalde index.  Als u deze concepten wilt vergelijken met die van een database, kunnen velden worden vergeleken met kolommen in een tabel en kunnen documenten worden vergeleken met rijen.
 
 ### <a name="scalability"></a>Schaalbaarheid
-Elke Azure Cognitive Search-service in de [prijs categorie](https://azure.microsoft.com/pricing/details/search/) Standard kan worden geschaald in twee dimensies: opslag en beschik baarheid.
+Elke Azure Cognitive Search-service in de [standaardprijslaag](https://azure.microsoft.com/pricing/details/search/) kan worden geschaald in twee dimensies: opslag en beschikbaarheid.
 
-* Er kunnen *partities* worden toegevoegd om de opslag van een zoek service te verg Roten.
-* *Replica's* kunnen worden toegevoegd aan een service om de door voer te verg Roten van aanvragen die door een zoek service kunnen worden verwerkt.
+* *Partities* kunnen worden toegevoegd om de opslag van een zoekservice te vergroten.
+* *Replica's* kunnen worden toegevoegd aan een service om de doorvoer van aanvragen die een zoekservice kan verwerken te verhogen.
 
-Door partities en replica's toe te voegen en te verwijderen, kan de capaciteit van de zoek service groeien met de hoeveelheid gegevens en het verkeer dat de toepassing vereist. Om een zoek service te kunnen bereiken voor een Lees- [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/), zijn er twee replica's nodig. Om een service een [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/)voor lezen/schrijven te kunnen krijgen, zijn er drie replica's nodig.
+Het toevoegen en verwijderen van partities en replica's op zal de capaciteit van de zoekservice om te groeien met de hoeveelheid gegevens en het verkeer van de toepassing eisen. Om een zoekservice te bereiken om een gelezen [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)te bereiken, vereist dit twee replica's. Om een service te bereiken een read-write [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), het vereist drie replica's.
 
-### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Service-en index limieten in azure Cognitive Search
-Er zijn een aantal verschillende [prijs categorieën](https://azure.microsoft.com/pricing/details/search/) in azure Cognitive Search. elk van de lagen heeft verschillende [limieten en quota's](search-limits-quotas-capacity.md). Sommige van deze limieten bevinden zich op het niveau van de service, sommige zijn op het niveau van de index en sommige zijn op partitie niveau.
+### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Service- en indexlimieten in Azure Cognitive Search
+Er zijn een paar verschillende [prijsniveaus](https://azure.microsoft.com/pricing/details/search/) in Azure Cognitive Search, elk van de lagen heeft verschillende [limieten en quota.](search-limits-quotas-capacity.md) Sommige van deze limieten zijn op serviceniveau, sommige zijn op indexniveau en sommige bevinden zich op partitieniveau.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standaard1 | Standaard2 | Standaard3 | Standaard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximum aantal Replica's per service |3 |12 |12 |12 |12 |
-| Maximum aantal partities per service |1 |12 |12 |12 |3 |
-| Maximum aantal Zoek eenheden (Replica's * partities) per service |3 |36 |36 |36 |36 (Maxi maal 3 partities) |
+| Maximale replica's per service |3 |12 |12 |12 |12 |
+| Maximale partities per service |1 |12 |12 |12 |3 |
+| Maximale zoekeenheden (replica's*partities) per service |3 |36 |36 |36 |36 (maximaal 3 partities) |
 | Maximale opslag per service |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
 | Maximale opslag per partitie |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximum aantal indexen per service |5 |50 |200 |200 |3000 (max. 1000 indexen/partitie) |
+| Maximale indexen per service |5 |50 |200 |200 |3000 (max 1000 indexen/partitie) |
 
-#### <a name="s3-high-density"></a>S3-hoge dichtheid
-In de prijs categorie S3 van Azure Cognitive Search is er een optie voor de high-density modus (HD) die specifiek is ontworpen voor multi tenant scenario's. In veel gevallen is het nood zakelijk om een groot aantal kleinere tenants te ondersteunen onder één service om de voor delen van eenvoud en kosten efficiëntie te verhalen.
+#### <a name="s3-high-density"></a>S3 Hoge Dichtheid'
+In de S3-prijscategorie Van Azure Cognitive Search is er een optie voor de HD-modus (High Density) die speciaal is ontworpen voor multitenant-scenario's. In veel gevallen is het noodzakelijk om een groot aantal kleinere huurders onder één service te ondersteunen om de voordelen van eenvoud en kostenefficiëntie te bereiken.
 
-Met S3 HD kunnen de vele kleine indexen worden ingepakt onder het beheer van één zoek service door de mogelijkheid te bieden om indexen te schalen met behulp van partities voor de mogelijkheid om meer indexen in één service te hosten.
+S3 HD zorgt ervoor dat de vele kleine indexen worden verpakt onder het beheer van een enkele zoekservice door de mogelijkheid te verhandelen om indexen uit te schalen met behulp van partities voor de mogelijkheid om meer indexen in één service te hosten.
 
-Een S3-service kan in concrete tussen 1 en 200 indexen bevatten die samen een tot 1.400.000.000 documenten kunnen hosten. Met een S3 HD daarentegen kunnen afzonderlijke indexen slechts tot 1.000.000 documenten gaan, maar kan er Maxi maal 1000 indexen per partitie worden verwerkt (Maxi maal 3000 per service) met een totaal aantal 200.000.000 documenten per partitie (Maxi maal 600.000.000 per service).
+Concreet kan een S3-service tussen de 1 en 200 indexen hebben die samen tot 1,4 miljard documenten kunnen hosten. Een S3 HD aan de andere kant zou individuele indexen in staat stellen om slechts tot 1 miljoen documenten te gaan, maar het kan tot 1000 indexen per partitie verwerken (tot 3000 per service) met een totaal aantal documenten van 200 miljoen per partitie (tot 600 miljoen per service).
 
-## <a name="considerations-for-multitenant-applications"></a>Overwegingen voor multi tenant-toepassingen
-Multi tenant-toepassingen moeten bronnen efficiënt verdelen over de tenants met behoud van wat privacy niveau tussen de verschillende tenants. Er zijn enkele overwegingen bij het ontwerpen van de architectuur voor een dergelijke toepassing:
+## <a name="considerations-for-multitenant-applications"></a>Overwegingen voor multitenant-toepassingen
+Multitenant-toepassingen moeten effectief middelen verdelen onder de huurders met behoud van een zekere mate van privacy tussen de verschillende tenants. Er zijn een paar overwegingen bij het ontwerpen van de architectuur voor een dergelijke toepassing:
 
-* *Tenant isolatie:* Toepassings ontwikkelaars moeten passende maat regelen nemen om ervoor te zorgen dat tenants geen ongeoorloofde of ongewenste toegang hebben tot de gegevens van andere tenants. Buiten het perspectief van de privacy van gegevens vereisen de isolatie strategieën voor tenants een effectief beheer van gedeelde bronnen en bescherming tegen lawaai van de ruis.
-* *Kosten van Cloud resource:* Net als bij elke andere toepassing moeten software oplossingen kosten concurrerend zijn als onderdeel van een multi tenant-toepassing.
-* *Gemakkelijke bewerkingen:* Bij het ontwikkelen van een architectuur met meerdere tenants is de invloed op de bewerkingen en complexiteit van de toepassing een belang rijke overweging. Azure Cognitive Search heeft een [Sla van 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Algemene footprint:* Multi tenant-toepassingen moeten mogelijk doel treffend zijn voor tenants die over de hele wereld worden gedistribueerd.
-* *Schaal baarheid:* Ontwikkel aars van toepassingen moeten overwegen hoe ze zich afstemmen tussen het onderhouden van een voldoende laag niveau van toepassings complexiteit en het ontwerpen van de toepassing om te schalen met het aantal tenants en de grootte van de gegevens en workload van de tenants.
+* *Huurder isolatie:* Ontwikkelaars van toepassingen moeten passende maatregelen nemen om ervoor te zorgen dat geen enkele huurders ongeautoriseerde of ongewenste toegang hebben tot de gegevens van andere tenants. Afgezien van het perspectief van gegevensprivacy, tenant isolatie strategieën vereisen effectief beheer van gedeelde middelen en bescherming tegen luidruchtige buren.
+* *Kosten voor cloudbronnen:* Zoals bij elke andere toepassing moeten softwareoplossingen kostenconcurrerend blijven als onderdeel van een multitenant-toepassing.
+* *Bedieningsgemak:* Bij het ontwikkelen van een multitenant-architectuur is de impact op de werking en complexiteit van de toepassing een belangrijke overweging. Azure Cognitive Search heeft een [SLA van 99,9%.](https://azure.microsoft.com/support/legal/sla/search/v1_0/)
+* *Wereldwijde voetafdruk:* Multitenant-toepassingen moeten mogelijk huurders die over de hele wereld worden gedistribueerd, effectief bedienen.
+* *Schaalbaarheid:* Toepassingsontwikkelaars moeten overwegen hoe ze in overeenstemming zijn tussen het handhaven van een voldoende laag niveau van toepassingscomplexiteit en het ontwerpen van de toepassing om te schalen met het aantal tenants en de grootte van de gegevens en werkbelasting van tenants.
 
-Azure Cognitive Search biedt een aantal grenzen die kunnen worden gebruikt voor het isoleren van gegevens en werk belasting van tenants.
+Azure Cognitive Search biedt een aantal grenzen die kunnen worden gebruikt om de gegevens en werkbelasting van tenants te isoleren.
 
-## <a name="modeling-multitenancy-with-azure-cognitive-search"></a>Multitenancy model leren met Azure Cognitive Search
-In het geval van een multi tenant scenario gebruikt de ontwikkelaar van de toepassing een of meer zoek services en wordt de tenants verdeeld over services, indices of beide. Azure Cognitive Search heeft enkele algemene patronen bij het model leren van een scenario met meerdere tenants:
+## <a name="modeling-multitenancy-with-azure-cognitive-search"></a>Multitenancy modelleren met Azure Cognitive Search
+In het geval van een multitenant-scenario verbruikt de toepassingsontwikkelaar een of meer zoekservices en verdeelt hij zijn huurders over services, indexen of beide. Azure Cognitive Search heeft een paar veelvoorkomende patronen bij het modelleren van een multitenant-scenario:
 
-1. *Index per Tenant:* Elke Tenant heeft een eigen index binnen een zoek service die wordt gedeeld met andere tenants.
-2. *Service per Tenant:* Elke Tenant heeft een eigen exclusieve Azure Cognitive Search-service, die het hoogste niveau van gegevens en de belasting van de workload biedt.
-3. *Combi natie van:* Grotere, meer actieve tenants krijgen toegewezen services, terwijl bij kleinere tenants afzonderlijke indexen binnen gedeelde services worden toegewezen.
+1. *Index per tenant:* Elke tenant heeft zijn eigen index binnen een zoekservice die wordt gedeeld met andere tenants.
+2. *Service per tenant:* Elke tenant heeft zijn eigen speciale Azure Cognitive Search-service, die het hoogste niveau van gegevens- en werkbelastingscheiding biedt.
+3. *Mix van beide:* Grotere, actievere tenants krijgen toegewezen speciale services, terwijl kleinere tenants afzonderlijke indexen toegewezen krijgen binnen gedeelde services.
 
-## <a name="1-index-per-tenant"></a>1. index per Tenant
-![Een portrayal van het model van de index-per-Tenant](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+## <a name="1-index-per-tenant"></a>1. Index per tenant
+![Een afbeelding van het index-per-tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-In een model voor index-per Tenant nemen meerdere tenants één Azure Cognitive Search-service waarbij elke Tenant een eigen index heeft.
+In een index-per-tenantmodel bezetten meerdere tenants één Azure Cognitive Search-service waarbij elke tenant zijn eigen index heeft.
 
-Tenants bereiken gegevens isolatie, omdat alle Zoek opdrachten en document bewerkingen worden uitgegeven op index niveau in azure Cognitive Search. In de toepassingslaag moet u zich bewust zijn van het directe verkeer van de verschillende tenants naar de juiste indexen, terwijl u ook resources op service niveau voor alle tenants beheert.
+Tenants bereiken gegevensisolatie omdat alle zoekaanvragen en documentbewerkingen worden uitgegeven op indexniveau in Azure Cognitive Search. In de toepassingslaag is er de noodzaak om het verkeer van de verschillende tenants naar de juiste indexen te leiden en tegelijkertijd resources op serviceniveau over alle tenants te beheren.
 
-Een sleutel kenmerk van het model van de index-per-Tenant is de mogelijkheid van de ontwikkelaar van de toepassing om de capaciteit van een zoek service over te nemen op basis van de tenants van de toepassing. Als de tenants een ongelijke verdeling van de werk belasting hebben, kan de optimale combi natie van tenants worden gedistribueerd over de indices van een zoek service voor een aantal uiterst actieve, tijdrovende tenants en tegelijkertijd een lange staart van minder actieve tenants. De afweging is het onvermogen van het model voor het afhandelen van situaties waarbij elke Tenant gelijktijdig Maxi maal actief is.
+Een belangrijk kenmerk van het index-per-tenantmodel is de mogelijkheid voor de toepassingsontwikkelaar om de capaciteit van een zoekservice onder de tenants van de toepassing te overschrijven. Als de tenants een ongelijke verdeling van de werklast hebben, kan de optimale combinatie van tenants worden verdeeld over de indexen van een zoekservice om plaats te bieden aan een aantal zeer actieve, resource-intensieve huurders, terwijl tegelijkertijd een lange staart van minder actieve huurders. De afweging is het onvermogen van het model om situaties te behandelen waarin elke tenant gelijktijdig zeer actief is.
 
-Het model van de index-per-Tenant vormt de basis voor een variabel kosten model, waarbij een volledige Azure Cognitive Search-service vooraf wordt aangeschaft en vervolgens wordt gevuld met tenants. Hierdoor kan ongebruikte capaciteit worden aangegeven voor experimenten en gratis accounts.
+Het index-per-tenant-model biedt de basis voor een variabel kostenmodel, waarbij een volledige Azure Cognitive Search-service vooraf wordt opgekocht en vervolgens wordt gevuld met tenants. Hierdoor kan ongebruikte capaciteit worden aangewezen voor proeven en gratis accounts.
 
-Voor toepassingen met een algemene footprint is het model van de index-per-Tenant mogelijk niet het meest efficiënt. Als de tenants van een toepassing over de hele wereld worden gedistribueerd, kan er een afzonderlijke service nodig zijn voor elke regio, waardoor de kosten voor elk van de verschillende regio's kunnen worden gedupliceerd.
+Voor toepassingen met een globale voetafdruk is het index-per-tenantmodel mogelijk niet het meest efficiënt. Als de tenants van een toepassing over de hele wereld worden verdeeld, kan een afzonderlijke service nodig zijn voor elke regio die de kosten voor elk van deze regio's kan dupliceren.
 
-Azure Cognitive Search maakt het mogelijk de afzonderlijke indexen te schalen en het totale aantal indexen dat moet worden uitgebreid. Als er een geschikte prijs categorie wordt gekozen, kunnen partities en replica's worden toegevoegd aan de gehele zoek service wanneer een afzonderlijke index binnen de service te groot is voor wat betreft opslag of verkeer.
+Azure Cognitive Search zorgt voor de schaal van zowel de afzonderlijke indexen als het totale aantal indexen om te groeien. Als een geschikte prijscategorie wordt gekozen, kunnen partities en replica's aan de gehele zoekservice worden toegevoegd wanneer een afzonderlijke index binnen de service te groot wordt in termen van opslag of verkeer.
 
-Als het totale aantal indexen te groot is voor één service, moet een andere service worden ingericht voor de nieuwe tenants. Als indexen moeten worden verplaatst tussen de zoek services als nieuwe services worden toegevoegd, moeten de gegevens uit de index hand matig worden gekopieerd van de ene index naar de andere als Azure Cognitive Search de index niet mag worden verplaatst.
+Als het totale aantal indexen te groot wordt voor één service, moet er een andere service worden ingericht om de nieuwe tenants te kunnen huisvesten. Als indexen tussen zoekservices moeten worden verplaatst als nieuwe services worden toegevoegd, moeten de gegevens uit de index handmatig van de ene index naar de andere worden gekopieerd, omdat Azure Cognitive Search het niet mogelijk maakt dat een index wordt verplaatst.
 
-## <a name="2-service-per-tenant"></a>2. service per Tenant
-![Een portrayal van het service-per-Tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+## <a name="2-service-per-tenant"></a>2. Service per tenant
+![Een weergave van het service-per-tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
-In een architectuur met een service-per-Tenant heeft elke Tenant een eigen zoek service.
+In een service-per-tenant-architectuur heeft elke tenant zijn eigen zoekservice.
 
-In dit model bereikt de toepassing het maximale isolatie niveau voor de tenants. Elke service heeft specifieke opslag en door Voer voor het verwerken van een zoek opdracht en afzonderlijke API-sleutels.
+In dit model bereikt de toepassing het maximale niveau van isolatie voor zijn huurders. Elke service heeft speciale opslag en doorvoer voor het verwerken van zoekaanvraag en afzonderlijke API-sleutels.
 
-Voor toepassingen waarbij elke Tenant een grote footprint heeft of als de werk belasting weinig variabiliteit heeft van Tenant naar Tenant, is het model van de service-per-Tenant een efficiënte keuze omdat resources niet worden gedeeld tussen de werk belastingen van verschillende tenants.
+Voor toepassingen waarbij elke tenant een grote voetafdruk heeft of de werkbelasting weinig variabiliteit heeft van tenant tot tenant, is het service-per-tenantmodel een effectieve keuze omdat resources niet worden gedeeld over de workloads van verschillende tenants.
 
-Een service per Tenant model biedt ook het voor deel van een voorspelbaar, vast kosten model. Er is geen investering vooraf in een volledige zoek service, totdat er een Tenant is om deze in te vullen. de kosten per Tenant zijn echter hoger dan een model per Tenant.
+Een service per tenant model biedt ook het voordeel van een voorspelbaar, vast kostenmodel. Er is geen investering vooraf in een volledige zoekservice totdat er een tenant is om deze te vullen, maar de kosten per tenant zijn hoger dan een index-per-tenant-model.
 
-Het model service-per-Tenant is een efficiënte keuze voor toepassingen met een algemene footprint. Met geografisch gedistribueerde tenants is het eenvoudig om elke Tenant service in de juiste regio te hebben.
+Het service-per-tenant model is een efficiënte keuze voor toepassingen met een wereldwijde voetafdruk. Met geografisch verdeelde huurders is het eenvoudig om de service van elke huurder in de juiste regio te hebben.
 
-De uitdagingen bij het schalen van dit patroon ontstaan als afzonderlijke tenants hun service uitgroeien. Azure Cognitive Search biedt momenteel geen ondersteuning voor het bijwerken van de prijs categorie van een zoek service, zodat alle gegevens hand matig moeten worden gekopieerd naar een nieuwe service.
+De uitdagingen bij het schalen van dit patroon ontstaan wanneer individuele huurders hun service ontgroeien. Azure Cognitive Search biedt momenteel geen ondersteuning voor het upgraden van de prijscategorie van een zoekservice, dus alle gegevens moeten handmatig worden gekopieerd naar een nieuwe service.
 
-## <a name="3-mixing-both-models"></a>3. beide modellen combi neren
-Een ander patroon voor het model leren van multitenancy is het combi neren van zowel de strategie per Tenant als voor de service per Tenant.
+## <a name="3-mixing-both-models"></a>3. Het mengen van beide modellen
+Een ander patroon voor het modelleren van multitenancy is het mengen van zowel index-per-tenant en service-per-tenant strategieën.
 
-Door de twee patronen te mengen, kunnen de grootste tenants van een toepassing speciale services innemen, terwijl de lange staart van minder actieve, kleinere tenants in een gedeelde service indexen kan innemen. Dit model zorgt ervoor dat de grootste tenants voortdurend hoge prestaties van de service hebben terwijl u de kleinere tenants van alle onrustige neighbors kunt beveiligen.
+Door de twee patronen te mengen, kunnen de grootste tenants van een toepassing speciale services bezetten, terwijl de lange staart van minder actieve, kleinere tenants indexen in een gedeelde service kan bezetten. Dit model zorgt ervoor dat de grootste huurders consequent hoge prestaties van de service hebben, terwijl het helpen om de kleinere huurders te beschermen tegen luidruchtige buren.
 
-Het implementeren van deze strategie is echter afhankelijk van de prognose bij het voors pellen van de tenants die een specifieke service vereisen tegenover een index in een gedeelde service. Toepassings complexiteit neemt toe met de nood zaak om beide multitenancys modellen te beheren.
+De implementatie van deze strategie is echter afhankelijk van de vooruitziende blik bij het voorspellen van welke tenants een specifieke service nodig hebben ten opzichte van een index in een gedeelde service. De complexiteit van toepassingen neemt toe met de noodzaak om beide multitenancy-modellen te beheren.
 
-## <a name="achieving-even-finer-granularity"></a>Nauw keurigere granulariteit bereiken
-De bovenstaande ontwerp patronen voor het model leren van scenario's met meerdere tenants in azure Cognitive Search uitgaan van een uniform bereik waarbij elke Tenant een geheel exemplaar van een toepassing is. Toepassingen kunnen soms veel kleinere bereiken verwerken.
+## <a name="achieving-even-finer-granularity"></a>Het bereiken van nog fijnere granulariteit
+De bovenstaande ontwerppatronen voor het modelleren van multitenant-scenario's in Azure Cognitive Search gaan uit van een uniforme scope waarbij elke tenant een hele instantie van een toepassing is. Toepassingen kunnen echter soms veel kleinere scopes verwerken.
 
-Als service-per-Tenant-en index-per-Tenant modellen niet voldoende kleine bereiken zijn, is het mogelijk om een index te model leren om een nog nauw keurigere mate van granulatie te bereiken.
+Als service-per-tenant- en index-per-tenant-modellen niet voldoende kleine scopes zijn, is het mogelijk om een index te modelleren om een nog fijnere mate van granulariteit te bereiken.
 
-Als u een enkele index anders wilt gebruiken voor verschillende client eindpunten, kan een veld worden toegevoegd aan een index die een bepaalde waarde voor elke mogelijke client aanduidt. Telkens wanneer een client Azure Cognitive Search aanroept om een index op te vragen of te wijzigen, geeft de code van de client toepassing de juiste waarde voor dat veld aan met behulp van de [filter](https://msdn.microsoft.com/library/azure/dn798921.aspx) functie van Azure Cognitive Search op het moment van de query.
+Om een enkele index zich anders te laten gedragen voor verschillende clienteindpunten, kan een veld worden toegevoegd aan een index die een bepaalde waarde aangeeft voor elke mogelijke client. Elke keer dat een client Azure Cognitive Search aanroept om een index op te vragen of te wijzigen, geeft de code van de clienttoepassing de juiste waarde voor dat veld op met behulp van de [filtermogelijkheden](https://msdn.microsoft.com/library/azure/dn798921.aspx) van Azure Cognitive Search tijdens querytijd.
 
-Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van afzonderlijke gebruikers accounts, afzonderlijke machtigings niveaus en zelfs volledig gescheiden toepassingen.
+Deze methode kan worden gebruikt om functionaliteit van afzonderlijke gebruikersaccounts, afzonderlijke machtigingsniveaus en zelfs volledig afzonderlijke toepassingen te bereiken.
 
 > [!NOTE]
-> Met behulp van de hierboven beschreven methode kunt u een enkele index configureren voor meerdere tenants die van invloed is op de relevantie van de zoek resultaten. Zoek relevantie scores worden berekend op het bereik op index niveau, niet op Tenant niveau, zodat alle gegevens van de tenants worden opgenomen in de onderliggende statistieken van de relevantie scores zoals term frequentie.
+> Het gebruik van de hierboven beschreven aanpak om één index te configureren voor meerdere tenants is van invloed op de relevantie van zoekresultaten. Zoekrelevantiescores worden berekend op een bereik op indexniveau, niet op een bereik op tenantniveau, zodat alle gegevens van huurders worden opgenomen in de onderliggende statistieken van de relevantiescores, zoals termfrequentie.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Azure Cognitive Search is een fascinerende keuze voor veel toepassingen. Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) voor het Best passend maken van Azure Cognitive Search voor het aanpassen van werk belastingen en architecturen van elke omvang.
+Azure Cognitive Search is een aantrekkelijke keuze voor veel toepassingen. Houd bij het evalueren van de verschillende ontwerppatronen voor multitenant-toepassingen rekening met de [verschillende prijsniveaus](https://azure.microsoft.com/pricing/details/search/) en de respectieve [servicelimieten](search-limits-quotas-capacity.md) om Azure Cognitive Search het beste aan te passen aan toepassingsworkloads en architecturen van elke omvang.
 
-Vragen over Azure Cognitive Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com.
+Eventuele vragen over Azure Cognitive Search en azuresearch_contact@microsoft.commultitenant-scenario's kunnen worden gericht op .
 

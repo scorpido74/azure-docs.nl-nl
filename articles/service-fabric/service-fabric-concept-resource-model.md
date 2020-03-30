@@ -1,93 +1,105 @@
 ---
-title: Resource model van Azure Service Fabric-toepassing
-description: Dit artikel bevat een overzicht van het beheren van een Azure Service Fabric-toepassing met Azure Resource Manager
+title: Azure Service Fabric-toepassingsbronmodel
+description: In dit artikel vindt u een overzicht van het beheer van een Azure Service Fabric-toepassing met Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 44073967730d95e803f57d504aa9d8c529250a8d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481113"
 ---
-# <a name="service-fabric-application-resource-model"></a>Resource model van Service Fabric toepassing
+# <a name="service-fabric-application-resource-model"></a>Resourcemodel servicefabric-toepassing
 
-Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces van toepassingsregistratie, -inrichting en -implementatie kan in één stap worden uitgevoerd. Dit is de best practice voor het beheren van de levenscyclus van toepassingen in uw cluster. Zie [Aanbevolen procedures: Infrastructure as code](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)(Engelstalig) voor meer informatie.
+U hebt meerdere opties voor het implementeren van Azure Service Fabric-toepassingen in uw Service Fabric-cluster. We raden u aan Azure Resource Manager te gebruiken. Als u Resourcebeheer gebruikt, u toepassingen en services in JSON beschrijven en deze vervolgens implementeren in dezelfde resourcemanagersjabloon als uw cluster. In tegenstelling tot het gebruik van PowerShell of Azure CLI om toepassingen te implementeren en te beheren, hoeft u als u Resource Beheer gebruikt niet te wachten tot het cluster klaar is. toepassingsregistratie, inrichting en implementatie kunnen allemaal in één stap plaatsvinden. Het gebruik van Resource Manager is de beste manier om de levenscyclus van de toepassing in uw cluster te beheren. Zie [Aanbevolen procedures: Infrastructuur als code voor](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)meer informatie.
 
-Als dit van toepassing is, kunt u uw toepassingen beheren als Resource Manager-resources om te verbeteren:
+Als u uw toepassingen beheert als resources in Resource Manager, u verbeteringen op deze gebieden bereiken:
 
-* Audittrail: in Resource Manager wordt elke bewerking gecontroleerd en wordt een gedetailleerd *activiteiten logboek* bijgehouden waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
-* Op rollen gebaseerd toegangs beheer: het beheren van toegang tot clusters en toepassingen die op het cluster zijn geïmplementeerd, kunnen worden uitgevoerd via dezelfde resource manager-sjabloon.
-* Azure Resource Manager (via de Azure Portal) wordt een een-stop-shop voor het beheren van uw cluster en essentiële toepassings implementaties.
+* Audit trail: Resource Manager controleert elke bewerking en houdt een gedetailleerd activiteitenlogboek bij. Met een activiteitenlogboek u eventuele wijzigingen in de toepassingen en in uw cluster traceren.
+* Op rollen gebaseerd toegangsbeheer: u de toegang tot clusters en toepassingen die op het cluster worden geïmplementeerd beheren met dezelfde resourcebeheersjabloon.
+* Beheerefficiëntie: met Resource Manager u één locatie (de Azure-portal) gebruiken voor het beheer van uw cluster- en kritieke toepassingsimplementaties.
 
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Levens cyclus van Service Fabric toepassing met Azure Resource Manager
-
-In dit document leert u het volgende:
+In dit document leert u hoe u:
 
 > [!div class="checklist"]
 >
-> * Toepassings resources implementeren met behulp van Azure Resource Manager
-> * Toepassings resources bijwerken met behulp van Azure Resource Manager
-> * Toepassings bronnen verwijderen
+> * Toepassingsbronnen implementeren met Resourcebeheer.
+> * Upgrade toepassingsbronnen met ResourceBeheer.
+> * Toepassingsbronnen verwijderen.
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Toepassings resources implementeren met behulp van Azure Resource Manager
+## <a name="deploy-application-resources"></a>Toepassingsbronnen implementeren
 
-Als u een toepassing en de bijbehorende services wilt implementeren met behulp van het resource model Azure Resource Manager-toepassing, moet u de toepassings code inpakken, het pakket uploaden en vervolgens naar de locatie van het pakket verwijzen in een Azure Resource Manager-sjabloon als een toepassing resource. Bekijk voor meer informatie [package a Application](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
+De stappen op hoog niveau die u neemt om een toepassing en de bijbehorende services te implementeren met behulp van het resourceresourcemodel resourcemanager, zijn:
+1. Pak de toepassingscode.
+1. Upload het pakket.
+1. Verwijs naar de locatie van het pakket in een resourcemanagersjabloon als toepassingsbron. 
 
-Maak vervolgens een Azure Resource Manager sjabloon, werk het parameter bestand bij met toepassings gegevens en implementeer het op het Service Fabric cluster. Raadpleeg [hier](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)voor beelden.
+Voor meer informatie, bekijk [Pakket een toepassing](service-fabric-package-apps.md#create-an-sfpkg).
 
-### <a name="create-a-storage-account"></a>Een account voor Opslag maken
+Vervolgens maakt u een resourcebeheersjabloon, werkt u het parametersbestand bij met toepassingsgegevens en implementeert u de sjabloon in het cluster Servicefabric. [Ontdek voorbeelden.](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)
 
-Voor het implementeren van een toepassing vanuit een resource manager-sjabloon is een opslag account nodig om de installatie kopie van de toepassing te faseren. U kunt een bestaand opslag account opnieuw gebruiken of een nieuw opslag account maken om uw toepassingen te faseren. Als u een bestaand opslag account wilt gebruiken, kunt u deze stap overs Laan. 
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-![Maak een opslagaccount][CreateStorageAccount]
+Als u een toepassing wilt implementeren vanuit een resourcemanagersjabloon, moet u een opslagaccount hebben. Het opslagaccount wordt gebruikt om de toepassingsafbeelding te fasen. 
 
-### <a name="configure-storage-account"></a>Opslag account configureren
+U een bestaand opslagaccount opnieuw gebruiken of u een nieuw opslagaccount maken voor het fasen van uw toepassingen. Als u een bestaand opslagaccount gebruikt, u deze stap overslaan. 
 
-Zodra het opslag account is gemaakt, moet u een BLOB-container maken waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het opslag account waarin u uw toepassingen wilt opslaan. Selecteer de Blade **blobs** en klik op de knop **container toevoegen** . Resources in uw cluster kunnen worden beveiligd door het open bare toegangs niveau in te stellen op privé. Toegang kan op verschillende manieren worden verleend:
+![Een opslagaccount maken][CreateStorageAccount]
 
-* [Toegang verlenen tot blobs en wacht rijen met Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC in de Azure-portal](../storage/common/storage-auth-aad-rbac-portal.md)
-* [Toegang delegeren met een Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
-)
+### <a name="configure-your-storage-account"></a>Uw opslagaccount configureren
 
- Voor dit voor beeld gaan we anonieme lees toegang voor blobs blijven gebruiken.
+Nadat het opslagaccount is gemaakt, maakt u een blobcontainer waarin de toepassingen kunnen worden gefaseerd. Ga in de Azure-portal naar het Azure Storage-account waar u uw toepassingen wilt opslaan. Selecteer **Blobs** > **Container toevoegen**. 
+
+Bronnen in uw cluster kunnen worden beveiligd door het openbare toegangsniveau in te stellen op **privé.** U op meerdere manieren toegang verlenen:
+
+* De toegang tot blobs en wachtrijen autoriseren met [Azure Active Directory](../storage/common/storage-auth-aad-app.md).
+* Geef toegang tot Azure blob- en wachtrijgegevens met [RBAC in de Azure-portal.](../storage/common/storage-auth-aad-rbac-portal.md)
+* Toegang delegeren met behulp van een [handtekening voor gedeelde toegang](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
+
+In het voorbeeld in de volgende schermafbeelding wordt gebruik gemaakt van anonieme leestoegang voor blobs.
 
 ![Blob maken][CreateBlob]
 
-### <a name="stage-application-in-a-storage-account"></a>Fase toepassing in een opslag account
+### <a name="stage-the-application-in-your-storage-account"></a>De toepassing in uw opslagaccount faseeren
 
-Voordat de toepassing kan worden geïmplementeerd, moet deze worden klaargezet in Blob Storage. In deze zelf studie maakt u het toepassings pakket hand matig. deze stap kan echter worden geautomatiseerd.  Bekijk voor meer informatie [package a Application](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). In de volgende stappen wordt de [voorbeeld toepassing voor stem](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) gebruikt.
+Voordat u een toepassing implementeren, moet u de toepassing in blobopslag fase. In deze zelfstudie maken we het toepassingspakket handmatig. Houd er rekening mee dat deze stap kan worden geautomatiseerd. Zie [Een toepassing verpakken](service-fabric-package-apps.md#create-an-sfpkg)voor meer informatie. 
 
-1. Klik in Visual Studio met de rechter muisknop op het project stem en selecteer pakket.
-![pakket toepassing][PackageApplication]  
-2. Open de **.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug** -map die zojuist is gemaakt en post de inhoud naar een bestand met de naam **stem. zip** , zodat de ApplicationManifest. XML zich in de hoofdmap van het zip-bestand bevindt.  
-![zip-toepassing][ZipApplication]  
-3. Wijzig de extensie van. zip in **. sfpkg**.
-4. Klik in de Azure Portal in de **app** -container van uw opslag account op **uploaden** en upload **stemmen. sfpkg**.  
-App-pakket voor ![uploaden][UploadAppPkg]
+In deze zelfstudie gebruiken we de [toepassing Voorbeeld van stemmen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart).
 
-De toepassing is nu gefaseerd. U kunt nu de Azure Resource Manager-sjabloon maken om de toepassing te implementeren.
+1. Klik in Visual Studio met de rechtermuisknop op het project **Stemmen** en selecteer **Pakket**.
 
-### <a name="create-the-azure-resource-manager-template"></a>De Azure Resource Manager sjabloon maken
+   ![Pakkettoepassing][PackageApplication]  
+1. Ga naar de map *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug.* Rits de inhoud in een bestand genaamd *Voting.zip*. Het bestand *ApplicationManifest.xml* moet zich bij de hoofdmap in het zip-bestand bevindt.
 
-De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) die kunnen worden gebruikt voor het implementeren van de toepassing. De sjabloon bestanden hebben de naam **UserApp. json** en **UserApp. para meters. json**.
+   ![Zip-toepassing][ZipApplication]  
+1. Wijzig de naam van het bestand om de extensie te wijzigen van .zip naar *.sfpkg*.
+
+1. Selecteer in de Azure-portal in de **apps-container** voor uw opslagaccount de optie **Uploaden**en upload **vervolgens Voting.sfpkg**. 
+
+   ![App-pakket uploaden][UploadAppPkg]
+
+Nu is de toepassing gefaseerd en u de sjabloon Resourcemanager maken om de toepassing te implementeren.
+
+### <a name="create-the-resource-manager-template"></a>Het Resource Manager-sjabloon maken
+
+De voorbeeldtoepassing bevat [Azure Resource Manager-sjablonen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) die u gebruiken om de toepassing te implementeren. De namen van sjabloonbestanden zijn *UserApp.json* en *UserApp.Parameters.json*.
 
 > [!NOTE]
-> Het bestand **UserApp. para meters. json** moet worden bijgewerkt met de naam van uw cluster.
+> Het bestand *UserApp.Parameters.json* moet worden bijgewerkt met de naam van uw cluster.
 >
 >
 
 | Parameter              | Beschrijving                                 | Voorbeeld                                                      | Opmerkingen                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clusterName            | De naam van het cluster waarnaar u wilt implementeren | SF-cluster123                                                |                                                              |
-| toepassing            | De naam van de toepassing                 | Hem                                                       |
-| applicationTypeName    | De type naam van de toepassing           | VotingType                                                   | Moeten overeenkomen met wat in ApplicationManifest. XML.                 |
-| applicationTypeVersion | De versie van het toepassings type         | 1.0.0                                                        | Moeten overeenkomen met wat in ApplicationManifest. XML.                 |
-| serviceName            | De naam van de service die de service         | Stemmen ~ VotingWeb                                             | Moet de indeling ApplicationName ~ Service type hebben            |
-| serviceTypeName        | De type naam van de service                | VotingWeb                                                    | Moeten overeenkomen met wat in ServiceManifest. XML                 |
-| appPackageUrl          | De URL van de Blob-opslag van de toepassing     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | De URL van het toepassings pakket in Blob Storage (de procedure die moet worden ingesteld, wordt hieronder beschreven) |
+| clusterName            | De naam van het cluster waarnaar u implementeert | sf-cluster123                                                |                                                              |
+| toepassing            | De naam van de toepassing                 | Stemmen                                                       |
+| applicationTypeName    | De typenaam van de toepassing           | VotingType                                                   | Moet overeenkomen met ApplicationManifest.xml                 |
+| applicationTypeVersion | De versie van het toepassingstype         | 1.0.0                                                        | Moet overeenkomen met ApplicationManifest.xml                 |
+| Servicenaam            | De naam van de dienst         | Voting~VotingWeb                                             | Moet in de indeling ApplicationName~ServiceType staan            |
+| serviceTypeName        | De typenaam van de service                | VotingWeb                                                    | Moet overeenkomen met ServiceManifest.xml                 |
+| appPackageUrl appPackageUrl          | De BLOB-opslag-URL van de toepassing     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | De URL van het toepassingspakket in blob-opslag (de procedure om de URL in te stellen wordt later in het artikel beschreven) |
 
 ```json
 {
@@ -118,17 +130,17 @@ De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.
 
 ### <a name="deploy-the-application"></a>De toepassing implementeren
 
-Als u de toepassing wilt implementeren, voert u de New-AzResourceGroupDeployment uit om te implementeren in de resource groep die het cluster bevat.
+Voer de cmdlet **Nieuw-AzResourceGroupDeployment** uit om de toepassing te implementeren in de brongroep die uw cluster bevat:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Service Fabric toepassing bijwerken met behulp van Azure Resource Manager
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>De servicefabric-toepassing bijwerken met Resource Manager
 
-Toepassingen die al zijn geïmplementeerd op een Service Fabric cluster, worden bijgewerkt om de volgende redenen:
+U een toepassing die al is geïmplementeerd naar een cluster van Servicefabric upgraden om een van de volgende redenen:
 
-1. Er wordt een nieuwe service toegevoegd aan de toepassing. Een service definitie moet worden toegevoegd aan het bestand Service-manifest. XML en Application-manifest. XML. Vervolgens moet de versie van het toepassings type worden bijgewerkt van 1.0.0 naar 1.0.1 [UserApp. para meters. json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)om de nieuwe versie van de toepassing weer te geven.
+* Er wordt een nieuwe service aan de toepassing toegevoegd. Een servicedefinitie moet worden toegevoegd aan *service-manifest.xml-* en *application-manifest.xml-bestanden* wanneer een service aan de toepassing wordt toegevoegd. Als u een nieuwe versie van een toepassing wilt weergeven, moet u ook de versie van het toepassingstype wijzigen van 1.0.0 naar 1.0.1 in [UserApp.Parameters.json:](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)
 
     ```json
     "applicationTypeVersion": {
@@ -142,7 +154,7 @@ Toepassingen die al zijn geïmplementeerd op een Service Fabric cluster, worden 
     }
     ```
 
-2. Er wordt een nieuwe versie van een bestaande service toegevoegd aan de toepassing. Dit omvat toepassings code wijzigingen en updates voor de versie en naam van het app-type.
+* Er wordt een nieuwe versie van een bestaande service aan de toepassing toegevoegd. Voorbeelden hiervan zijn wijzigingen in de toepassingscode en updates voor de versie en naam van het app-type. Update UserApp.Parameters.json als volgt bij voor deze upgrade:
 
     ```json
      "applicationTypeVersion": {
@@ -150,17 +162,17 @@ Toepassingen die al zijn geïmplementeerd op een Service Fabric cluster, worden 
     },
     ```
 
-## <a name="delete-application-resources"></a>Toepassings bronnen verwijderen
+## <a name="delete-application-resources"></a>Toepassingsbronnen verwijderen
 
-Toepassingen die zijn geïmplementeerd met het resource model van de toepassing in Azure Resource Manager kunnen worden verwijderd uit het cluster met behulp van onderstaande stappen
+Ga als u een toepassing verwijderen die is geïmplementeerd met het toepassingsbronmodel in Resourcebeheer:
 
-1) Resource-ID voor toepassing ophalen met [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0):
+1. Gebruik de cmdlet [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) om de resource-id voor de toepassing op te halen:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-2) Verwijder de toepassings resources met [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
+1. Gebruik de cmdlet [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) om de toepassingsbronnen te verwijderen:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -168,15 +180,13 @@ Toepassingen die zijn geïmplementeerd met het resource model van de toepassing 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over het resource model van de toepassing ophalen:
+Informatie over het toepassingsbronmodel:
 
-* [Een toepassing model leren in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Toepassings-en service manifesten Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Een toepassing modelleren in Service Fabric](service-fabric-application-model.md)
+* [Service Fabric-applicatie- en servicemanifesten](service-fabric-application-and-service-manifests.md)
+* [Aanbevolen procedures: Infrastructuur als code](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Toepassingen en services beheren als Azure-bronnen](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>Zie ook
-
-* [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Toepassingen en services beheren als Azure-resources](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

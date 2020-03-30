@@ -1,28 +1,28 @@
 ---
-title: Inkomende aanvraag tracering in Azure-toepassing Insights met opentellingen python | Microsoft Docs
-description: Bewaak aanvraag aanroepen voor uw python-apps via opentellingen python.
+title: Inkomende aanvraagtracking in Azure-toepassingsinzichten met OpenCensus Python | Microsoft Documenten
+description: Controleer aanvragen voor uw Python-apps via OpenCensus Python.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669944"
 ---
-# <a name="track-incoming-requests-with-opencensus-python"></a>Inkomende aanvragen bijhouden met opentellingen python
+# <a name="track-incoming-requests-with-opencensus-python"></a>Binnenkomende aanvragen bijhouden met OpenCensus Python
 
-Gegevens van binnenkomende aanvragen worden verzameld met opentellingen python en de verschillende integraties. Spoor binnenkomende aanvraag gegevens die worden verzonden naar uw webtoepassingen die zich boven op de populaire web Frameworks-`django`, `flask` en `pyramid`bevinden. De gegevens worden vervolgens naar Application Insights onder Azure Monitor verzonden als `requests` telemetrie.
+Inkomende aanvraaggegevens worden verzameld met OpenCensus Python en de verschillende integraties. Volg binnenkomende aanvraaggegevens die naar uw webtoepassingen worden `django` `flask` verzonden en die bovenop de populaire webframeworks zijn gebouwd, en `pyramid`. De gegevens worden vervolgens verzonden naar `requests` Application Insights onder Azure Monitor als telemetrie.
 
-Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md).
+Ten eerste, instrument uw Python applicatie met de nieuwste [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
 
 ## <a name="tracking-django-applications"></a>Django-toepassingen bijhouden
 
-1. Down load en installeer `opencensus-ext-django` van [PyPI](https://pypi.org/project/opencensus-ext-django/) en instrumenteer uw toepassing met de `django` middleware. Binnenkomende aanvragen die naar uw `django`-toepassing worden verzonden, worden bijgehouden.
+1. Download en `opencensus-ext-django` installeer van [PyPI](https://pypi.org/project/opencensus-ext-django/) en `django` instrument uw applicatie met de middleware. Inkomende aanvragen die `django` naar uw aanvraag worden verzonden, worden bijgehouden.
 
-2. Neem `opencensus.ext.django.middleware.OpencensusMiddleware` op in uw `settings.py` bestand onder `MIDDLEWARE`.
+2. Opnemen `opencensus.ext.django.middleware.OpencensusMiddleware` in `settings.py` uw `MIDDLEWARE`bestand onder .
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +32,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     )
     ```
 
-3. Zorg ervoor dat AzureExporter op de juiste wijze is geconfigureerd in uw `settings.py` onder `OPENCENSUS`.
+3. Controleer of AzureExporter correct is `settings.py` `OPENCENSUS`geconfigureerd in uw onder .
 
     ```python
     OPENCENSUS = {
@@ -45,7 +45,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     }
     ```
 
-4. U kunt ook url's toevoegen aan `settings.py` onder `BLACKLIST_PATHS` voor aanvragen die u niet wilt bijhouden.
+4. U ook url's toevoegen aan `settings.py` onder `BLACKLIST_PATHS` voor verzoeken die u niet wilt bijhouden.
 
     ```python
     OPENCENSUS = {
@@ -59,9 +59,9 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     }
     ```
 
-## <a name="tracking-flask-applications"></a>Fles toepassingen bijhouden
+## <a name="tracking-flask-applications"></a>Toepassingen voor het bijhouden van kolf
 
-1. Down load en installeer `opencensus-ext-flask` van [PyPI](https://pypi.org/project/opencensus-ext-flask/) en instrumenteer uw toepassing met de `flask` middleware. Binnenkomende aanvragen die naar uw `flask`-toepassing worden verzonden, worden bijgehouden.
+1. Download en `opencensus-ext-flask` installeer van [PyPI](https://pypi.org/project/opencensus-ext-flask/) en `flask` instrument uw applicatie met de middleware. Inkomende aanvragen die `flask` naar uw aanvraag worden verzonden, worden bijgehouden.
 
     ```python
     
@@ -86,7 +86,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     
     ```
 
-2. U kunt uw `flask` middleware rechtstreeks in de code configureren. Voor aanvragen van url's die u niet wilt bijhouden, voegt u deze toe aan `BLACKLIST_PATHS`.
+2. U `flask` uw middleware rechtstreeks in de code configureren. Voor verzoeken van url's die u niet `BLACKLIST_PATHS`wilt volgen, voegt u deze toe aan .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -100,9 +100,9 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     }
     ```
 
-## <a name="tracking-pyramid-applications"></a>Piramide toepassingen bijhouden
+## <a name="tracking-pyramid-applications"></a>Piramidetoepassingen bijhouden
 
-1. Down load en installeer `opencensus-ext-django` van [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) en instrumenteer uw toepassing met de `pyramid`-tween. Binnenkomende aanvragen die naar uw `pyramid`-toepassing worden verzonden, worden bijgehouden.
+1. Download en `opencensus-ext-django` installeer van [PyPI](https://pypi.org/project/opencensus-ext-pyramid/) en `pyramid` instrument uw applicatie met de tween. Inkomende aanvragen die `pyramid` naar uw aanvraag worden verzonden, worden bijgehouden.
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +112,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. U kunt uw `pyramid`-tween rechtstreeks in de code configureren. Voor aanvragen van url's die u niet wilt bijhouden, voegt u deze toe aan `BLACKLIST_PATHS`.
+2. U `pyramid` uw tween rechtstreeks in de code configureren. Voor verzoeken van url's die u niet `BLACKLIST_PATHS`wilt volgen, voegt u deze toe aan .
 
     ```python
     settings = {
@@ -134,5 +134,5 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
 * [Toepassingskaart](../../azure-monitor/app/app-map.md)
 * [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Zoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Logboek query (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Transactie diagnostiek](../../azure-monitor/app/transaction-diagnostics.md)
+* [Query log (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
+* [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)

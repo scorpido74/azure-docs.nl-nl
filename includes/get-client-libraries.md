@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: 5e3c4622131528fc2c40a1510aeea3092018d182
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77474170"
 ---
-### <a name="install-via-composer"></a>Installeren via Composer
-1. Maak een bestand met de naam **Composer. json** in de hoofdmap van het project en voeg de volgende code toe:
+### <a name="install-via-composer"></a>Installeren via componist
+1. Maak een bestand met de naam **composer.json** in de hoofdmap van uw project en voeg er de volgende code aan toe:
    
     ```json
     {
@@ -21,14 +21,14 @@ ms.locfileid: "77474170"
       }
     }
     ```
-2. Down load **[Composer. Phar][composer-phar]** in de hoofdmap van het project.
-3. Open een opdracht prompt en voer de volgende opdracht uit in de project root
+2. Download **[composer.phar][composer-phar]** in uw projectroot.
+3. Een opdrachtprompt openen en de volgende opdracht uitvoeren in de projecthoofdmap
    
     ```
     php composer.phar install
     ```
 
-Ga ook naar de [Azure Storage php-client bibliotheek][php-sdk-github] op github om de bron code te klonen.
+U ook naar de [Azure Storage PHP-clientbibliotheek][php-sdk-github] op GitHub gaan om de broncode te klonen.
 
 [php-sdk-github]: https://github.com/Azure/azure-storage-php
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

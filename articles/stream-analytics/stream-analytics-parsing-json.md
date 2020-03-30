@@ -1,29 +1,29 @@
 ---
-title: JSON-en AVRO parseren in Azure Stream Analytics
-description: In dit artikel wordt beschreven hoe u complexe gegevens typen gebruikt zoals matrices, JSON-gegevens in CSV-indeling.
+title: Parsing JSON en AVRO in Azure Stream Analytics
+description: In dit artikel wordt beschreven hoe u werken op complexe gegevenstypen zoals arrays, JSON, CSV-geformatteerde gegevens.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484584"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-en Avro-gegevens parseren in Azure Stream Analytics
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Parse JSON- en Avro-gegevens in Azure Stream Analytics
 
-Azure Stream Analytics ondersteuning voor het verwerken van gebeurtenissen in CSV-, JSON-en Avro-gegevens indelingen. JSON-en Avro-gegevens kunnen worden gestructureerd en bevatten complexe typen, zoals geneste objecten (records) en matrices. 
+Azure Stream Analytics ondersteunt verwerkingsgebeurtenissen in CSV-, JSON- en Avro-gegevensindelingen. Zowel JSON- als Avro-gegevens kunnen worden gestructureerd en bevatten enkele complexe typen, zoals geneste objecten (records) en arrays. 
 
 >[!NOTE]
->AVRO-bestanden die zijn gemaakt door Event hub Capture, gebruiken een specifieke indeling waarvoor u de functie voor *aangepaste deserialisatie* moet gebruiken. Zie [invoer lezen in elke indeling met behulp van aangepaste .net-deserialisatie](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)voor meer informatie.
+>AVRO-bestanden die zijn gemaakt door Event Hub Capture, gebruiken een specifieke indeling waarvoor u de *aangepaste deserializer-functie* moet gebruiken. Zie [Invoer lezen in elke indeling met .NET custom deserializers](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)voor meer informatie.
 
 
 
-## <a name="record-data-types"></a>Record gegevens typen
-Record gegevens typen worden gebruikt voor het weer geven van JSON-en Avro-matrices wanneer overeenkomende indelingen worden gebruikt in de gegevens stromen voor invoer. In deze voor beelden ziet u een voor beeld van een sensor, waarmee invoer gebeurtenissen in JSON-indeling worden gelezen. Hier volgt een voor beeld van één gebeurtenis:
+## <a name="record-data-types"></a>Gegevenstypen opnemen
+Recordgegevenstypen worden gebruikt om JSON- en Avro-arrays weer te geven wanneer overeenkomstige indelingen worden gebruikt in de invoergegevensstromen. Deze voorbeelden tonen een voorbeeldsensor aan, die invoergebeurtenissen in JSON-indeling leest. Hier is een voorbeeld van een enkele gebeurtenis:
 
 ```json
 {
@@ -48,8 +48,8 @@ Record gegevens typen worden gebruikt voor het weer geven van JSON-en Avro-matri
 }
 ```
 
-### <a name="access-nested-fields-in-known-schema"></a>Toegang krijgen tot geneste velden in een bekend schema
-Gebruik punt notatie (.) om eenvoudig toegang te krijgen tot geneste velden rechtstreeks vanuit uw query. Met deze query worden bijvoorbeeld de breedte-en lengte coördinaten geselecteerd onder de locatie-eigenschap in de voor gaande JSON-gegevens. De punt notatie kan worden gebruikt om te navigeren op meerdere niveaus, zoals hieronder wordt weer gegeven.
+### <a name="access-nested-fields-in-known-schema"></a>Geneste velden openen in bekend schema
+Gebruik puntnotatie (.) om eenvoudig toegang te krijgen tot geneste velden rechtstreeks vanuit uw query. Deze query selecteert bijvoorbeeld de breedte- en lengtepuntencoördinaten onder de eigenschap Locatie in de voorgaande JSON-gegevens. De puntnotatie kan worden gebruikt om meerdere niveaus te navigeren, zoals hieronder wordt weergegeven.
 
 ```SQL
 SELECT
@@ -63,13 +63,13 @@ FROM input
 
 Het resultaat is:
 
-|DeviceID|lat|Lang|Temperatuur|Version|
+|DeviceID|Lat|Lange|Temperatuur|Versie|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
 
 ### <a name="select-all-properties"></a>Alle eigenschappen selecteren
-U kunt alle eigenschappen van een geneste record selecteren met behulp van het Joker teken ' * '. Kijk een naar het volgende voorbeeld:
+U alle eigenschappen van een geneste record selecteren met een wildcard '*'. Kijk een naar het volgende voorbeeld:
 
 ```SQL
 SELECT
@@ -80,16 +80,16 @@ FROM input
 
 Het resultaat is:
 
-|DeviceID|lat|Lang|
+|DeviceID|Lat|Lange|
 |-|-|-|
 |12345|47|122|
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Toegang krijgen tot geneste velden als eigenschaps naam een variabele is
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Toegang tot geneste velden wanneer de eigenschapsnaam een variabele is
 
-Gebruik de functie [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) als de naam van de eigenschap een variabele is. Zo kunt u dynamische query's maken zonder hardcoding-eigenschaps namen.
+Gebruik de functie [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) als de eigenschapsnaam een variabele is. Dit maakt het mogelijk voor het bouwen van dynamische query's zonder hardcoding eigenschapnamen.
 
-Stel bijvoorbeeld dat de gegevens stroom van de steek proef moet **worden gekoppeld met referentie gegevens** die drempels voor elke sensor van het apparaat bevatten. Hieronder ziet u een fragment van dergelijke referentie gegevens.
+Stel u bijvoorbeeld voor dat de voorbeeldgegevensstroom **moet worden samengevoegd met referentiegegevens** die drempels bevatten voor elke apparaatsensor. Een fragment van dergelijke referentiegegevens wordt hieronder weergegeven.
 
 ```json
 {
@@ -104,7 +104,7 @@ Stel bijvoorbeeld dat de gegevens stroom van de steek proef moet **worden gekopp
 }
 ```
 
-Het doel is hier om de gegevensset van de voor beelden boven aan het artikel te koppelen aan die referentie gegevens en om één gebeurtenis uit te voeren voor elke sensor meting boven de drempel waarde. Dit betekent dat met onze bovenstaande gebeurtenis meer uitvoer gebeurtenissen kunnen worden gegenereerd als meerdere Sens oren boven hun respectieve drempel waarden vallen, dankzij de samen voeging. Zie de sectie hieronder om Vergelijk bare resultaten te krijgen zonder een koppeling te maken.
+Het doel hier is om onze voorbeeldgegevensset vanaf de bovenkant van het artikel toe te voegen aan die referentiegegevens en één gebeurtenis uit te schakelen voor elke sensormeting boven de drempelwaarde. Dat betekent dat onze enkele gebeurtenis hierboven meerdere uitvoergebeurtenissen kan genereren als meerdere sensoren boven hun respectievelijke drempelwaarden zitten, dankzij de join. Zie het onderstaande gedeelte om vergelijkbare resultaten te behalen zonder lid te worden.
 
 ```SQL
 SELECT
@@ -119,19 +119,19 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** selecteert de eigenschap in *SensorReadings*, die overeenkomt met de naam van de eigenschap die afkomstig is van de referentie gegevens. Vervolgens wordt de gekoppelde waarde uit *SensorReadings* geëxtraheerd.
+**GetRecordPropertyValue** selecteert de eigenschap in *SensorReadings*, welke naam overeenkomt met de eigenschapsnaam afkomstig van de referentiegegevens. Vervolgens wordt de bijbehorende waarde van *SensorReadings* geëxtraheerd.
 
 Het resultaat is:
 
-|DeviceID|Sensornaam|Opgegeven alertmessage|
+|DeviceID|SensorNaam|Waarschuwingsbericht|
 |-|-|-|
-|12345|Vochtigheid|Waarschuwing: sensor boven drempel waarde|
+|12345|Vochtigheid|Waarschuwing : Sensor boven drempelwaarde|
 
-### <a name="convert-record-fields-into-separate-events"></a>Record velden omzetten in afzonderlijke gebeurtenissen
+### <a name="convert-record-fields-into-separate-events"></a>Recordvelden omzetten in afzonderlijke gebeurtenissen
 
-Als u record velden wilt omzetten in afzonderlijke gebeurtenissen, gebruikt u de operator [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) samen met de functie [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) .
+Als u recordvelden wilt omzetten in afzonderlijke gebeurtenissen, gebruikt u de operator [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) samen met de functie [GetRecordProperties.](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics)
 
-Met de oorspronkelijke voorbeeld gegevens kan de volgende query worden gebruikt voor het uitpakken van eigenschappen in verschillende gebeurtenissen.
+Met de oorspronkelijke voorbeeldgegevens kan de volgende query worden gebruikt om eigenschappen in verschillende gebeurtenissen te extraheren.
 
 ```SQL
 SELECT
@@ -144,15 +144,15 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 Het resultaat is:
 
-|DeviceID|Sensornaam|Opgegeven alertmessage|
+|DeviceID|SensorNaam|Waarschuwingsbericht|
 |-|-|-|
 |12345|Temperatuur|80|
 |12345|Vochtigheid|70|
-|12345|CustomSensor01|5|
-|12345|CustomSensor02|99|
-|12345|SensorMetadata|[object object]|
+|12345|CustomSensor01 (CustomSensor01)|5|
+|12345|CustomSensor02 (CustomSensor02)|99|
+|12345|SensorMetadata|[objectobject]|
 
-Met [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)kunt u deze gebeurtenissen vervolgens naar verschillende bestemmingen routeren:
+Met [behulp van MET](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)is het dan mogelijk om deze evenementen naar verschillende bestemmingen te leiden:
 
 ```SQL
 WITH Stage0 AS
@@ -169,15 +169,15 @@ SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
 ```
 
-### <a name="parse-json-record-in-sql-reference-data"></a>JSON-record parseren in SQL-referentie gegevens
-Wanneer u Azure SQL Database als referentie gegevens in uw taak gebruikt, is het mogelijk om een kolom met gegevens in JSON-indeling te hebben. Hieronder ziet u een voor beeld.
+### <a name="parse-json-record-in-sql-reference-data"></a>Parse JSON-record in SQL-referentiegegevens
+Wanneer u Azure SQL Database gebruikt als referentiegegevens in uw taak, is het mogelijk om een kolom met gegevens in JSON-indeling te hebben. Hieronder kunt u een voorbeeld bekijken.
 
 |DeviceID|Gegevens|
 |-|-|
-|12345|{"sleutel": "waarde1"}|
-|54321|{"sleutel": "Value2"}|
+|12345|{"sleutel" : "waarde1"}|
+|54321|{"sleutel" : "waarde2"}|
 
-U kunt de JSON-record in de *gegevens* kolom parseren door een door de gebruiker gedefinieerde Java script-functie te schrijven.
+U de JSON-record in de kolom *Gegevens* ontleden door een eenvoudige JavaScript-door de gebruiker gedefinieerde functie te schrijven.
 
 ```javascript
 function parseJson(string) {
@@ -185,7 +185,7 @@ return JSON.parse(string);
 }
 ```
 
-U kunt vervolgens een stap in uw Stream Analytics query maken, zoals hieronder wordt weer gegeven om toegang te krijgen tot de velden van uw JSON-records.
+U vervolgens een stap maken in uw Stream Analytics-query zoals hieronder weergegeven om toegang te krijgen tot de velden van uw JSON-records.
 
  ```SQL
  WITH parseJson as
@@ -201,11 +201,11 @@ U kunt vervolgens een stap in uw Stream Analytics query maken, zoals hieronder w
  ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
-## <a name="array-data-types"></a>Matrix gegevens typen
+## <a name="array-data-types"></a>Arraygegevenstypen
 
-Matrix gegevens typen zijn een geordende verzameling waarden. Enkele typische bewerkingen op matrix waarden worden hieronder beschreven. In deze voor beelden worden de functies [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)en de operator [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) gebruikt.
+Arraygegevenstypen zijn een geordende verzameling waarden. Enkele typische bewerkingen op matrixwaarden worden hieronder beschreven. Deze voorbeelden maken gebruik van de functies [GetArrayElement,](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics) [GetArrayElements,](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)en de [operator APPLY.](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics)
 
-Hier volgt een voor beeld van één gebeurtenis. Zowel `CustomSensor03` als `SensorMetadata` zijn van het type **matrix**:
+Hier is een voorbeeld van één gebeurtenis. Beide `CustomSensor03` `SensorMetadata` en zijn van type **array:**
 
 ```json
 {
@@ -231,9 +231,9 @@ Hier volgt een voor beeld van één gebeurtenis. Zowel `CustomSensor03` als `Sen
 }
 ```
 
-### <a name="working-with-a-specific-array-element"></a>Werken met een specifiek matrix element
+### <a name="working-with-a-specific-array-element"></a>Werken met een specifiek arrayelement
 
-Selecteer een matrix element bij een opgegeven index (selecteren van het eerste matrix element):
+Selecteer arrayelement op een opgegeven index (het eerste matrixelement selecteren):
 
 ```SQL
 SELECT
@@ -247,7 +247,7 @@ Het resultaat is:
 |-|
 |12|
 
-### <a name="select-array-length"></a>Matrix lengte selecteren
+### <a name="select-array-length"></a>Arraylengte selecteren
 
 ```SQL
 SELECT
@@ -257,13 +257,13 @@ FROM input
 
 Het resultaat is:
 
-|arrayLength|
+|arrayLengte|
 |-|
 |3|
 
-### <a name="convert-array-elements-into-separate-events"></a>Matrix elementen omzetten in afzonderlijke gebeurtenissen
+### <a name="convert-array-elements-into-separate-events"></a>Matrixelementen omzetten in afzonderlijke gebeurtenissen
 
-Selecteer alle matrix elementen als afzonderlijke gebeurtenissen. De operator apply in combi natie met de ingebouwde functie [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) haalt alle matrix elementen [op](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) als afzonderlijke gebeurtenissen:
+Selecteer alle array-elementen als afzonderlijke gebeurtenissen. De [operator APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) en de ingebouwde functie [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) extraheert alle arrayelementen als afzonderlijke gebeurtenissen:
 
 ```SQL
 SELECT
@@ -277,10 +277,10 @@ CROSS APPLY GetArrayElements(SensorReadings.CustomSensor03) AS CustomSensor03Rec
 
 Het resultaat is:
 
-|DeviceId|Array index|ArrayValue|
+|DeviceId|ArrayIndex (ArrayIndex)|Arraywaarde|
 |-|-|-|
 |12345|0|12|
-|12345|1|-5|
+|12345|1|5|
 |12345|2|0|
 
 ```SQL
@@ -294,12 +294,12 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
  
 Het resultaat is:
 
-|DeviceId|smKey|smValue|
+|DeviceId|smKey|mmWaarde|
 |-|-|-|
 |12345|Fabrikant|ABC|
-|12345|Version|1.2.45|
+|12345|Versie|1.2.45|
 
-Als de geëxtraheerde velden in kolommen moeten worden weer gegeven, is het mogelijk om de gegevensset te draaien met de syntaxis [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) naast de bewerking [samen voegen](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Voor deze samen voeging is een [tijds grens](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) vereist die duplicatie voor komt:
+Als de geëxtraheerde velden in kolommen moeten worden weergegeven, is het mogelijk om de gegevensset te draaien met de [syntaxis MET](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) naast de [JOIN-bewerking.](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) Die join vereist een [tijdgrens](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) voorwaarde die duplicatie voorkomt:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -323,9 +323,9 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 
 Het resultaat is:
 
-|DeviceId|lat|Lang|smVersion|smManufacturer|
+|DeviceId|Lat|Lange|smVersion|smManufacturer|
 |-|-|-|-|-|
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Zie ook
-[Gegevens typen in Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Gegevenstypen in Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

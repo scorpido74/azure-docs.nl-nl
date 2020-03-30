@@ -1,25 +1,25 @@
 ---
-title: Azure-toepassing Insights-gegevens model telemetrie-gebeurtenis-telemetrie | Microsoft Docs
-description: Application Insights gegevens model voor telemetrie van gebeurtenissen
+title: Telemetriegegevensmodel azure-toepassingsinzichten - telemetrie van gebeurtenissen | Microsoft Documenten
+description: Toepassingsinsights-gegevensmodel voor gebeurtenistelemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671877"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie van gebeurtenissen: Application Insights gegevens model
+# <a name="event-telemetry-application-insights-data-model"></a>Gebeurtenistelemetrie: gegevensmodel Application Insights
 
-U kunt telemetrie-items (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) voor een gebeurtenis maken die een gebeurtenis vertegenwoordigen die in uw toepassing is opgetreden. Normaal gesp roken is het een gebruikers interactie, zoals het klikken op de knop of het afhandelen van de order. Het kan ook een levens cyclus gebeurtenis van een toepassing zijn, zoals initialisatie of configuratie-update. 
+U gebeurtenistelemetrie-items (in [Application Insights)](../../azure-monitor/app/app-insights-overview.md)maken om een gebeurtenis weer te geven die in uw toepassing is opgetreden. Meestal is het een gebruikersinteractie, zoals knopklik of orderafhandeling. Het kan ook een levenscyclusgebeurtenis voor toepassingen zijn, zoals initialisatie of configuratie-update. 
 
-Semantisch, gebeurtenissen kunnen of kunnen niet worden gecorreleerd aan aanvragen. Als er echter goed wordt gebruikt, is de telemetrie van de gebeurtenis belang rijker dan aanvragen of traceringen. Gebeurtenissen vertegenwoordigen bedrijfs-telemetrie en moeten een onderliggend object zijn, waarbij minder agressieve [steek proeven](../../azure-monitor/app/api-filtering-sampling.md)worden genomen.
+Semantisch kunnen gebeurtenissen al dan niet worden gecorreleerd aan aanvragen. Echter, indien correct gebruikt, gebeurtenis telemetrie is belangrijker dan verzoeken of sporen. Gebeurtenissen vertegenwoordigen zakelijke telemetrie en moeten een onderwerp zijn van afzonderlijke, minder agressieve [bemonstering.](../../azure-monitor/app/api-filtering-sampling.md)
 
 ## <a name="name"></a>Name
 
-Gebeurtenis naam. Als u de juiste groepering en bruikbare metrische gegevens wilt toestaan, beperkt u uw toepassing zodat er een klein aantal afzonderlijke gebeurtenis namen wordt gegenereerd. Gebruik bijvoorbeeld geen afzonderlijke naam voor elk gegenereerd exemplaar van een gebeurtenis.
+Naam van het evenement. Als u een goede groepering en nuttige statistieken wilt toestaan, beperkt u uw toepassing zodat deze een klein aantal afzonderlijke gebeurtenisnamen genereert. Gebruik bijvoorbeeld geen aparte naam voor elk gegenereerdexemplaar van een gebeurtenis.
 
 Maximale lengte: 512 tekens
 
@@ -33,6 +33,6 @@ Maximale lengte: 512 tekens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
-- [Telemetrie van aangepaste gebeurtenissen schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.
+- Zie [gegevensmodel](data-model.md) voor toepassingsinzichten en gegevensmodel.
+- [Aangepaste gebeurtenistelemetrie schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+- Bekijk [platforms](../../azure-monitor/app/platforms.md) die worden ondersteund door Application Insights.

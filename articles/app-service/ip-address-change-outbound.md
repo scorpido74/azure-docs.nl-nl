@@ -1,44 +1,44 @@
 ---
-title: De wijziging van het uitgaande IP-adres wordt voor bereid
-description: Als uw uitgaande IP-adres wordt gewijzigd, kunt u lezen wat u moet doen om ervoor te zorgen dat uw app blijft werken na de wijziging.
+title: Voorbereiden op wijziging van het uitgaande IP-adres
+description: Als uw uitgaande IP-adres wordt gewijzigd, leest u wat u moet doen zodat uw app na de wijziging blijft werken.
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671668"
 ---
-# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Voor bereiding voor een wijziging van een uitgaand IP-adres
+# <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Voorbereiden op een uitgaande IP-adreswijziging
 
 Als u een melding hebt ontvangen dat de uitgaande IP-adressen van uw Azure App Service-app worden gewijzigd, volgt u de instructies in dit artikel.
 
-## <a name="determine-if-you-have-to-do-anything"></a>Bepaal of u iets moet doen
+## <a name="determine-if-you-have-to-do-anything"></a>Bepaal of je iets moet doen
 
-* Optie 1: als uw App Service-app geen gebruik maakt van IP-filtering, een expliciete lijst met uitsluitingen of speciale verwerking van uitgaand verkeer, zoals route ring of firewall, is geen actie vereist.
+* Optie 1: Als uw App Service-app geen IP-filtering, een expliciete opnamelijst of speciale afhandeling van uitgaand verkeer zoals routering of firewall gebruikt, is er geen actie vereist.
 
-* Optie 2: als uw app speciaal wordt verwerkt voor de uitgaande IP-adressen (Zie de voor beelden hieronder), voegt u de nieuwe uitgaande IP-adressen toe, waar de bestaande worden weer gegeven. Vervang de bestaande IP-adressen niet. U kunt de nieuwe uitgaande IP-adressen vinden door de instructies in de volgende sectie te volgen.
+* Optie 2: Als uw app wel een speciale afhandeling heeft voor de uitgaande IP-adressen (zie voorbeelden hieronder), voegt u de nieuwe uitgaande IP-adressen toe, waar de bestaande adressen ook worden weergegeven. Vervang de bestaande IP-adressen niet. U de nieuwe uitgaande IP-adressen vinden door de instructies in de volgende sectie te volgen.
 
-  Een uitgaand IP-adres kan bijvoorbeeld expliciet worden opgenomen in een firewall buiten uw app of een externe betaal service heeft mogelijk een lijst met toegestane uitgaande IP-adressen voor uw app. Als uw uitgaande adres in een lijst ergens buiten uw app is geconfigureerd, moet dit worden gewijzigd.
+  Een uitgaand IP-adres kan bijvoorbeeld expliciet worden opgenomen in een firewall buiten uw app of een externe betalingsservice heeft mogelijk een toegestane lijst met het uitgaande IP-adres voor uw app. Als uw uitgaande adres is geconfigureerd in een lijst buiten uw app, moet dat worden gewijzigd.
 
-## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>De uitgaande IP-adressen in de Azure Portal zoeken
+## <a name="find-the-outbound-ip-addresses-in-the-azure-portal"></a>De uitgaande IP-adressen zoeken in de Azure-portal
 
-De nieuwe uitgaande IP-adressen worden in de portal weer gegeven voordat ze van kracht worden. Wanneer Azure begint met het gebruik van de nieuwe, worden de oude bestanden niet meer gebruikt. Er wordt slechts één set tegelijk gebruikt, dus vermeldingen in insluitings lijsten moeten zowel oude als nieuwe IP-adressen bevatten om te voor komen dat er een storing optreedt wanneer de switch plaatsvindt. 
+De nieuwe uitgaande IP-adressen worden weergegeven in de portal voordat ze van kracht worden. Wanneer Azure de nieuwe begint te gebruiken, worden de oude niet meer gebruikt. Er wordt slechts één set tegelijk gebruikt, dus vermeldingen in inclusielijsten moeten zowel oude als nieuwe IP-adressen hebben om een storing te voorkomen wanneer de switch plaatsvindt. 
 
-1.  Open de [Azure-portal](https://portal.azure.com).
+1.  Open de [Azure Portal](https://portal.azure.com).
 
-2.  Selecteer **app Services**in het navigatie menu aan de linkerkant.
+2.  Selecteer **App Services**in het navigatiemenu aan de linkerkant .
 
 3.  Selecteer uw App Service-app in de lijst.
 
-1.  Als de app een functie-app is, raadpleegt u de [uitgaande IP-adressen van de functie-app](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
+1.  Zie [Uitgaande IP-adressen van de functie-app](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)als de app een functie-app is.
 
-4.  Klik onder de kop **instellingen** op **Eigenschappen** in het linkernavigatievenster en zoek de sectie met de naam **uitgaande IP-adressen**.
+4.  Klik **onder** de kop Instellingen op **Eigenschappen** in de linkernavigatie en zoek de sectie met het label **Uitgaande IP-adressen**.
 
-5. Kopieer de IP-adressen en voeg deze toe aan uw speciale verwerking van uitgaand verkeer, zoals een filter of lijst met toegestane berichten. Verwijder de bestaande IP-adressen in de lijst niet.
+5. Kopieer de IP-adressen en voeg ze toe aan uw speciale afhandeling van uitgaand verkeer, zoals een filter of een toegestane lijst. Verwijder de bestaande IP-adressen in de lijst niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt uitgelegd hoe u een wijziging van een IP-adres voorbereidt die is geïnitieerd door Azure. Zie voor meer informatie over IP-adressen in Azure App Service [binnenkomende en uitgaande IP-adressen in azure app service](overview-inbound-outbound-ips.md).
+In dit artikel wordt uitgelegd hoe u zich voorbereiden op een IP-adreswijziging die is geïnitieerd door Azure. Zie [Binnenkomende en uitgaande IP-adressen in Azure App Service](overview-inbound-outbound-ips.md)voor meer informatie over IP-adressen in Azure App Service.

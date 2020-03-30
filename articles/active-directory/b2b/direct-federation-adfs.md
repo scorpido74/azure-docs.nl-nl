@@ -1,6 +1,6 @@
 ---
-title: Directe Federatie instellen met een AD FS voor B2B-Azure AD
-description: Meer informatie over het instellen van AD FS als een id-provider voor directe Federatie zodat gasten zich kunnen aanmelden bij uw Azure AD-apps
+title: Directe federatie instellen met een AD FS voor B2B - Azure AD
+description: Meer informatie over het instellen van AD FS als identiteitsprovider voor directe federatie, zodat gasten zich kunnen aanmelden bij uw Azure AD-apps
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,35 +13,35 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272830"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Voor beeld: directe Federatie met Active Directory Federation Services (AD FS) (preview)
+# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Voorbeeld: Directe federatie met Active Directory Federation Services (AD FS) (voorbeeld)
 |     |
 | --- |
-| Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
+| Directe federatie is een openbare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
 |     |
 
-In dit artikel wordt beschreven hoe u [directe Federatie](direct-federation.md) kunt instellen met behulp van Active Directory Federation Services (AD FS) als id-provider van SAML 2,0 of WS-wordt ingevoerd. Voor de ondersteuning van directe Federatie moeten bepaalde kenmerken en claims worden geconfigureerd bij de ID-provider. Om te laten zien hoe u een id-provider voor directe Federatie kunt configureren, gebruiken we Active Directory Federation Services (AD FS) als voor beeld. We laten u zien hoe u AD FS instelt als een SAML-ID-provider en als een id-provider voor de WS-bewerking.
+In dit artikel wordt beschreven hoe [u directe federatie](direct-federation.md) instelt met Active Directory Federation Services (AD FS) als een SAML 2.0- of WS-Fed-identiteitsprovider. Om directe federatie te ondersteunen, moeten bepaalde kenmerken en claims worden geconfigureerd bij de identiteitsprovider. Als u wilt illustreren hoe u een identiteitsprovider voor directe federatie configureert, gebruiken we Bijvoorbeeld Active Directory Federation Services (AD FS). We laten zien hoe je AD FS instelt, zowel als SAML-identiteitsprovider als als ws-fed-identiteitsprovider.
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u AD FS instelt voor zowel SAML als voor beeld doeleinden. Voor directe Federatie-integraties waarbij de ID-provider is AD FS, kunt u het beste WS-voeder gebruiken als protocol. 
+> In dit artikel wordt beschreven hoe u AD FS instelt voor zowel SAML als WS-Fed voor illustratiedoeleinden. Voor directe federatie-integraties waarbij de identiteitsprovider AD FS is, raden we aan WS-Fed als protocol te gebruiken. 
 
-## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>AD FS voor SAML 2,0 direct-Federatie configureren
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. In deze sectie wordt beschreven hoe u AD FS instelt voor SAML 2,0 voor informatie over de configuratie stappen van SAML. 
+## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>AD FS configureren voor SAML 2.0 directe federatie
+Azure AD B2B kan worden geconfigureerd om te reageren op identiteitsproviders die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden vermeld. Om de SAML-configuratiestappen te illustreren, ziet u in deze sectie hoe u AD FS instelt voor SAML 2.0. 
 
-Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het SAML 2,0-antwoord van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens-URL kunt genereren, bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
+Als u een directe federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het SAML 2.0-antwoord van de identiteitsprovider. Deze kenmerken kunnen worden geconfigureerd door te linken naar het XML-bestand voor online beveiligingstokenservices of door ze handmatig in te voeren. Stap 12 in [Een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`hoe u de AD FS-eindpunten vinden of hoe u de URL van uw metagegevens genereren. 
 
 |Kenmerk  |Waarde  |
 |---------|---------|
-|AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
+|BeweringConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Verlener     |De uitgever-URI van de partner IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgever URI van de partner IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
 
-De volgende claims moeten worden geconfigureerd in het SAML 2,0-token dat is uitgegeven door de ID-provider:
+De volgende claims moeten worden geconfigureerd in het SAML 2.0-token dat is uitgegeven door de identiteitsprovider:
 
 
 |Kenmerk  |Waarde  |
@@ -50,108 +50,108 @@ De volgende claims moeten worden geconfigureerd in het SAML 2,0-token dat is uit
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 
-In de volgende sectie ziet u hoe u de vereiste kenmerken en claims kunt configureren met AD FS als voor beeld van een SAML 2,0-ID-provider.
+In de volgende sectie wordt uitgelegd hoe u de vereiste kenmerken en claims configureert met AD FS als voorbeeld van een SAML 2.0-identiteitsprovider.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u met deze procedure begint, moet u al een AD FS-server instellen en ermee werken. Zie [een test AD FS 3,0-exemplaar maken op een virtuele Azure-machine](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)voor hulp bij het instellen van een AD FS-server.
+Een AD FS-server moet al zijn ingesteld en functioneren voordat u met deze procedure begint. Zie Een voorbeeld van een test [AD FS 3.0 maken op een virtuele Azure-server voor](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)hulp bij het instellen van een AD FS-server.
 
-### <a name="add-the-claim-description"></a>De claim beschrijving toevoegen
+### <a name="add-the-claim-description"></a>De claimbeschrijving toevoegen
 
-1. Selecteer op uw AD FS-server **extra** > **AD FS beheer**.
-2. Selecteer in het navigatie deel venster **Service** > **claim beschrijvingen**.
-3. Onder **acties**, selecteert u **claim beschrijving toevoegen**.
-4. Geef in het venster **een beschrijving van de claim toevoegen** de volgende waarden op:
+1. Selecteer op uw AD FS-server Het**AD FS-beheer**van **gereedschappen** > .
+2. **Selecteer** > **serviceclaimbeschrijvingen**in het navigatiedeelvenster .
+3. Selecteer **onder Acties**de optie **Claimbeschrijving toevoegen**.
+4. Geef in het venster **Een claimbeschrijving toevoegen** de volgende waarden op:
 
-   - **Weergave naam**: permanente id
-   - **Claim-id**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
-   - Schakel het selectie vakje in voor het **publiceren van deze claim beschrijving in federatieve meta gegevens als een claim type dat door deze Federation service kan worden geaccepteerd**.
-   - Schakel het selectie vakje in voor het **publiceren van deze claim beschrijving in federatieve meta gegevens als een claim type dat met deze Federation service kan worden verzonden**.
+   - **Weergavenaam:** permanente id
+   - **Claim-id:**`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
+   - Schakel het selectievakje in voor **Deze claimbeschrijving publiceren in federatiemetagegevens in als claimtype dat deze federatieservice kan accepteren.**
+   - Schakel het selectievakje in voor **Deze claimbeschrijving publiceren in federatiemetagegevens in als claimtype dat deze federatieservice kan verzenden.**
 
-5. Klik op **OK**.
+5. Klik op **Ok**.
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>De regels voor de Relying Party-vertrouwens relatie en de claim toevoegen
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>De vertrouwens- en claimregels van de relying party toevoegen
 
-1. Ga op de AD FS-server naar **Hulpprogram ma's** > **AD FS beheer**.
-2. Selecteer **vertrouwens relaties** > **Relying Party trusts**in het navigatie deel venster.
-3. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**. 
-4. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef de URL voor de federatieve meta gegevens op- https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Andere standaard selecties behouden. Selecteer **Sluiten**.
-5. De wizard **claim regels bewerken** wordt geopend.
-6. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer in **regel type kiezen**de optie **LDAP-kenmerken als claims verzenden**. Selecteer **Volgende**.
-7. Geef in **claim regel configureren**de volgende waarden op: 
+1. Ga op de AD FS-server naar **Ad** > **FS-beheer .**
+2. Selecteer **vertrouwensrelaties vertrouwen** > **in de vertrouwensrelaties**in het navigatiedeelvenster .
+3. Selecteer **Onder Acties**de optie **Vertrouwensrelatie relying party toevoegen**. 
+4. Gebruik in de wizard Vertrouwensrelatie toevoegen voor **Gegevensbron selecteren**de optie **Gegevens importeren over de relying party die online of op een lokaal netwerk is gepubliceerd.** Geef deze url https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xmlvan de federatie-metagegevens op. Laat andere standaardselecties achter. Selecteer **Sluiten**.
+5. De wizard **Claimregels bewerken** wordt geopend.
+6. Selecteer **Regel toevoegen**in de wizard **Claimregels bewerken** . Selecteer **in Regeltype kiezen**de optie **LDAP-kenmerken verzenden als claims**. Selecteer **Volgende**.
+7. Geef in **Claimregel configureren**de volgende waarden op: 
 
-   - **Claim regel naam**: claim regel voor e-mail 
-   - **Kenmerk opslag**: Active Directory 
-   - **LDAP-kenmerk**: e-mail adressen 
-   - **Uitgaand claim type**: e-mail adres
+   - **Naam claimregel**: Regel e-mailclaim 
+   - **Kenmerkarchief:** Active Directory 
+   - **LDAP-kenmerk**: E-mailadressen 
+   - **Type uitgaande claim**: E-mailadres
 
-8. Selecteer **Voltooien**.
-9. In het venster **claim regels bewerken** wordt de nieuwe regel weer gegeven. Klik op **Toepassen**. 
-10. Klik op **OK**.  
+8. Selecteer **Finish**.
+9. In het venster **Claimregels bewerken** wordt de nieuwe regel weergegeven. Klik op **Toepassen**. 
+10. Klik op **Ok**.  
 
-### <a name="create-an-email-transform-rule"></a>Een regel voor een e-mail transformatie maken
-1. Ga naar **claim regels bewerken** en klik op **regel toevoegen**. Selecteer bij **regel type kiezen** **de optie een binnenkomende claim transformeren** en klik op **volgende**. 
-2. Geef in **claim regel configureren**de volgende waarden op: 
+### <a name="create-an-email-transform-rule"></a>Een regel voor e-mailtransformatie maken
+1. Ga naar **Claimregels bewerken** en klik op **Regel toevoegen**. Selecteer **in Regeltype kiezen**de optie Een **binnenkomende claim transformeren** en klik op **Volgende**. 
+2. Geef in **Claimregel configureren**de volgende waarden op: 
 
-   - **Claim regel naam**: regel voor transformeren van e-mail 
-   - **Binnenkomend claim type**: e-mail adres 
-   - **Uitgaand claim type**: naam-id 
-   - **Indeling van uitgaande naam-id**: permanente id 
+   - **Naam van claimregel:** regel voor e-mailtransformatie 
+   - **Binnenkomend claimtype**: E-mailadres 
+   - **Type uitgaande claim**: naam-id 
+   - **Indeling uitgaande naam-id:** permanente id 
    - Selecteer **Alle claimwaarden doorgeven**.
 
 3. Klik op **Voltooien**. 
-4. In het venster **claim regels bewerken** worden de nieuwe regels weer gegeven. Klik op **Toepassen**. 
-5. Klik op **OK**. De AD FS-server is nu geconfigureerd voor directe Federatie met het SAML 2,0-protocol.
+4. In het venster **Claimregels bewerken** worden de nieuwe regels weergegeven. Klik op **Toepassen**. 
+5. Klik op **OK**. De AD FS-server is nu geconfigureerd voor directe federatie met behulp van het SAML 2.0-protocol.
 
-## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS voor WS-inrichtings directe Federatie configureren 
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die gebruikmaken van het WS-invoer protocol met de hieronder vermelde specifieke vereisten. Op dit moment zijn de twee WS-insluitings providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Hier gebruiken we Active Directory Federation Services (AD FS) als voor beeld van de ID-provider van de WS-vorm. Voor meer informatie over het tot stand brengen van een Relying Party-vertrouwens relatie tussen een WS-inform-compatibele provider met Azure AD, moet u de compatibiliteits documenten voor de Azure AD-ID-provider downloaden.
+## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS configureren voor directe federatie van WS-Fed 
+Azure AD B2B kan worden geconfigureerd om te reageren op identiteitsproviders die het WS-Fed-protocol gebruiken met de specifieke vereisten die hieronder worden vermeld. Momenteel zijn de twee WS-Fed-providers getest op compatibiliteit met Azure AD, waaronder AD FS en Shibboleth. Hier gebruiken we Active Directory Federation Services (AD FS) als voorbeeld van de WS-Fed-identiteitsprovider. Download de compatibiliteitsdocumenten van de Azure AD-identiteitsprovider voor meer informatie over het instellen van een vertrouwensrelatie tussen een WS-Fed-compatibele provider met Azure AD.
 
-Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-instel bericht van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens-URL kunt genereren, bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
+Als u een directe federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-Fed-bericht van de identiteitsprovider. Deze kenmerken kunnen worden geconfigureerd door te linken naar het XML-bestand voor online beveiligingstokenservices of door ze handmatig in te voeren. Stap 12 in [Een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`hoe u de AD FS-eindpunten vinden of hoe u de URL van uw metagegevens genereren.
  
 |Kenmerk  |Waarde  |
 |---------|---------|
-|PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
+|PassiefRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Verlener     |De uitgever-URI van de partner IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgever URI van de partner IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Vereiste claims voor het WS-invoeder token dat is uitgegeven door de IdP:
+Vereiste claims voor het WS-Fed-token uitgegeven door de IdP:
 
 |Kenmerk  |Waarde  |
 |---------|---------|
-|ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
+|Onveranderlijke ID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-In het volgende gedeelte ziet u hoe u de vereiste kenmerken en claims kunt configureren met behulp van AD FS als voor beeld van een id-provider voor de WS-vorm.
+In de volgende sectie wordt uitgelegd hoe u de vereiste kenmerken en claims configureert met AD FS als voorbeeld van een WS-Fed-identiteitsprovider.
 
 ### <a name="before-you-begin"></a>Voordat u begint
-Voordat u met deze procedure begint, moet u al een AD FS-server instellen en ermee werken. Zie [een test AD FS 3,0-exemplaar maken op een virtuele Azure-machine](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)voor hulp bij het instellen van een AD FS-server.
+Een AD FS-server moet al zijn ingesteld en functioneren voordat u met deze procedure begint. Zie Een voorbeeld van een test [AD FS 3.0 maken op een virtuele Azure-server voor](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)hulp bij het instellen van een AD FS-server.
 
 
-### <a name="add-the-relying-party-trust-and-claim-rules"></a>De regels voor de Relying Party-vertrouwens relatie en de claim toevoegen 
-1. Ga op de AD FS-server naar **Hulpprogram ma's** > **AD FS beheer**. 
-1. Selecteer **vertrouwens relaties** > **Relying Party trusts**in het navigatie deel venster. 
-1. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**.  
-1. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef de URL voor de federatieve meta gegevens op: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Andere standaard selecties behouden. Selecteer **Sluiten**.
-1. De wizard **claim regels bewerken** wordt geopend. 
-1. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer bij **regel type kiezen** **de optie claims verzenden met een aangepaste regel**. Selecteer *Volgende*. 
-1. Geef in **claim regel configureren**de volgende waarden op:
+### <a name="add-the-relying-party-trust-and-claim-rules"></a>De vertrouwens- en claimregels van de relying party toevoegen 
+1. Ga op de AD FS-server naar **Ad** > **FS-beheer .** 
+1. Selecteer **vertrouwensrelaties vertrouwen** > **in de vertrouwensrelaties**in het navigatiedeelvenster . 
+1. Selecteer **Onder Acties**de optie **Vertrouwensrelatie relying party toevoegen**.  
+1. Gebruik in de wizard Vertrouwensrelatie toevoegen van relying party voor **Gegevensbron selecteren**de optie **Gegevens importeren over de relying party die online of op een lokaal netwerk is gepubliceerd.** Geef deze URL `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`van federatiemetagegevens op: .  Laat andere standaardselecties achter. Selecteer **Sluiten**.
+1. De wizard **Claimregels bewerken** wordt geopend. 
+1. Selecteer **Regel toevoegen**in de wizard **Claimregels bewerken** . Selecteer **In Regeltype kiezen**de optie Claims verzenden met een aangepaste **regel**. Selecteer *Volgende*. 
+1. Geef in **Claimregel configureren**de volgende waarden op:
 
-   - **Claim regel naam**: probleem onveranderbare id  
-   - **Aangepaste regel**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
+   - **Naam claimregel**: Onveranderlijke id afgeven  
+   - **Aangepaste regel:**`c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
-1. Selecteer **Voltooien**. 
-1. In het venster **claim regels bewerken** wordt de nieuwe regel weer gegeven. Klik op **Toepassen**.  
-1. Selecteer in dezelfde wizard **claim regels bewerken** de optie **regel toevoegen**. In het **regel type coslang**selecteert u **LDAP-kenmerken als claims verzenden**. Selecteer **Volgende**.
-1. Geef in **claim regel configureren**de volgende waarden op: 
+1. Selecteer **Finish**. 
+1. In het venster **Claimregels bewerken** wordt de nieuwe regel weergegeven. Klik op **Toepassen**.  
+1. Selecteer **Regel toevoegen**in dezelfde wizard **Claimregels bewerken** . Selecteer **LDAP-kenmerken verzenden als claims**in **Cohose Rule Type**. Selecteer **Volgende**.
+1. Geef in **Claimregel configureren**de volgende waarden op: 
 
-   - **Claim regel naam**: claim regel voor e-mail  
-   - **Kenmerk opslag**: Active Directory  
-   - **LDAP-kenmerk**: e-mail adressen  
-   - **Uitgaand claim type**: e-mail adres 
+   - **Naam claimregel**: Regel e-mailclaim  
+   - **Kenmerkarchief:** Active Directory  
+   - **LDAP-kenmerk**: E-mailadressen  
+   - **Type uitgaande claim**: E-mailadres 
 
-1.  Selecteer **Voltooien**. 
-1.  In het venster **claim regels bewerken** wordt de nieuwe regel weer gegeven. Klik op **Toepassen**.  
-1.  Klik op **OK**. De AD FS-server is nu geconfigureerd voor directe Federatie met behulp van WS-voeder.
+1.  Selecteer **Finish**. 
+1.  In het venster **Claimregels bewerken** wordt de nieuwe regel weergegeven. Klik op **Toepassen**.  
+1.  Klik op **OK**. De AD FS-server is nu geconfigureerd voor directe federatie met Behulp van WS-Fed.
 
 ## <a name="next-steps"></a>Volgende stappen
-Vervolgens [configureert u direct Federation in azure AD](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) in de Azure AD-portal of met behulp van Power shell. 
+Vervolgens [configureert](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) u directe federatie in Azure AD in de Azure AD-portal of met PowerShell. 

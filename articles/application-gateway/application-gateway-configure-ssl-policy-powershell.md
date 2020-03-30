@@ -1,7 +1,7 @@
 ---
-title: SSL-beleid configureren met Power shell
+title: SSL-beleid configureren met PowerShell
 titleSuffix: Azure Application Gateway
-description: Dit artikel bevat instructies voor het configureren van SSL-beleid op Azure-toepassing gateway
+description: In dit artikel vindt u instructies voor het configureren van SSL-beleid op Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075236"
 ---
-# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>SSL-beleids versies en coderings suites op Application Gateway configureren
+# <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>SSL-beleidsversies en cijfersuites configureren op Application Gateway
 
-Meer informatie over het configureren van SSL-beleids versies en coderings suites op Application Gateway. U kunt een keuze maken uit een lijst met vooraf gedefinieerde beleidsinstellingen die verschillende configuraties van SSL-beleidsversies bevatten evenals ingeschakelde suites met coderingsmethoden. U hebt ook de mogelijkheid om een [aangepast SSL-beleid](#configure-a-custom-ssl-policy) te definiëren op basis van uw vereisten.
+Meer informatie over het configureren van SSL-beleidsversies en cijfersuites op Application Gateway. U kunt een keuze maken uit een lijst met vooraf gedefinieerde beleidsinstellingen die verschillende configuraties van SSL-beleidsversies bevatten evenals ingeschakelde suites met coderingsmethoden. U hebt ook de mogelijkheid om een [aangepast SSL-beleid](#configure-a-custom-ssl-policy) te definiëren op basis van uw vereisten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-available-ssl-options"></a>Beschik bare SSL-opties ophalen
+## <a name="get-available-ssl-options"></a>Beschikbare SSL-opties bekijken
 
-De cmdlet `Get-AzApplicationGatewayAvailableSslOptions` biedt een lijst met beschik bare vooraf gedefinieerde beleids regels, beschik bare coderings suites en protocol versies die kunnen worden geconfigureerd. In het volgende voor beeld ziet u een voorbeeld uitvoer van het uitvoeren van de cmdlet.
+De `Get-AzApplicationGatewayAvailableSslOptions` cmdlet biedt een lijst van beschikbare vooraf gedefinieerde beleidsregels, beschikbare ciphersuites en protocolversies die kunnen worden geconfigureerd. In het volgende voorbeeld ziet u een voorbeelduitvoer van het uitvoeren van de cmdlet.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -71,11 +71,11 @@ AvailableProtocols:
     TLSv1_2
 ```
 
-## <a name="list-pre-defined-ssl-policies"></a>Vooraf gedefinieerde SSL-beleids regels weer geven
+## <a name="list-pre-defined-ssl-policies"></a>Vooraf gedefinieerde SSL-beleidsregels weergeven
 
-Application Gateway wordt geleverd met drie vooraf gedefinieerde beleids regels die kunnen worden gebruikt. Met de cmdlet `Get-AzApplicationGatewaySslPredefinedPolicy` worden deze beleids regels opgehaald. Elk beleid heeft verschillende protocol versies en coderings suites ingeschakeld. Deze vooraf gedefinieerde beleids regels kunnen worden gebruikt om snel een SSL-beleid te configureren op uw toepassings gateway. Standaard **AppGwSslPolicy20150501** is geselecteerd als er geen specifiek SSL-beleid is gedefinieerd.
+Toepassingsgateway wordt geleverd met drie vooraf gedefinieerde beleidsregels die kunnen worden gebruikt. De `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet haalt dit beleid op. Elk beleid heeft verschillende protocolversies en ciphersuites ingeschakeld. Deze vooraf gedefinieerde beleidsregels kunnen worden gebruikt om snel een SSL-beleid op uw toepassingsgateway te configureren. Standaard **is AppGwSslPolicy20150501** geselecteerd als er geen specifiek SSL-beleid is gedefinieerd.
 
-De volgende uitvoer is een voor beeld van het uitvoeren van `Get-AzApplicationGatewaySslPredefinedPolicy`.
+De volgende uitvoer is `Get-AzApplicationGatewaySslPredefinedPolicy`een voorbeeld van het uitvoeren van .
 
 ```
 Name: AppGwSslPolicy20150501
@@ -108,15 +108,15 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>Een aangepast SSL-beleid configureren
 
-Wanneer u een aangepast SSL-beleid configureert, geeft u de volgende para meters door: Policy type, MinProtocolVersion, CipherSuite en toepassings gateway. Als u probeert andere para meters door te geven, krijgt u een fout melding bij het maken of bijwerken van de Application Gateway. 
+Wanneer u een aangepast SSL-beleid configureert, geeft u de volgende parameters door: PolicyType, MinProtocolVersion, CipherSuite en ApplicationGateway. Als u andere parameters probeert door te geven, krijgt u een foutmelding bij het maken of bijwerken van de Application Gateway. 
 
-In het volgende voor beeld wordt een aangepast SSL-beleid ingesteld voor een toepassings gateway. Hiermee wordt de minimale Protocol versie ingesteld op `TLSv1_1` en worden de volgende coderings suites ingeschakeld:
+In het volgende voorbeeld wordt een aangepast SSL-beleid ingesteld voor een toepassingsgateway. Het stelt de minimale `TLSv1_1` protocolversie in op en maakt de volgende cijfersuites mogelijk:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> TLS_RSA_WITH_AES_256_CBC_SHA256 moet worden geselecteerd bij het configureren van een aangepast SSL-beleid. Application Gateway gebruikt deze coderings Suite voor back-end-beheer. U kunt dit in combi natie met andere suites gebruiken, maar deze moet ook worden geselecteerd. 
+> TLS_RSA_WITH_AES_256_CBC_SHA256 moet worden geselecteerd bij het configureren van een aangepast SSL-beleid. Application gateway maakt gebruik van deze cipher suite voor backend management. U dit gebruiken in combinatie met andere suites, maar deze moet ook worden geselecteerd. 
 
 ```powershell
 # get an application gateway resource
@@ -132,11 +132,11 @@ Get-AzApplicationGatewaySslPolicy -ApplicationGateway $gw
 Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
-## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Een toepassings gateway maken met een vooraf gedefinieerd SSL-beleid
+## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>Een toepassingsgateway maken met een vooraf gedefinieerd SSL-beleid
 
-Wanneer u een vooraf gedefinieerd SSL-beleid configureert, geeft u de volgende para meters door: Policy type, beleidsregel en toepassings gateway. Als u probeert andere para meters door te geven, krijgt u een fout melding bij het maken of bijwerken van de Application Gateway.
+Wanneer u een vooraf gedefinieerd SSL-beleid configureert, geeft u de volgende parameters door: PolicyType, PolicyName en ApplicationGateway. Als u andere parameters probeert door te geven, krijgt u een foutmelding bij het maken of bijwerken van de Application Gateway.
 
-In het volgende voor beeld wordt een nieuwe toepassings gateway gemaakt met een vooraf gedefinieerd SSL-beleid.
+In het volgende voorbeeld wordt een nieuwe toepassingsgateway gemaakt met een vooraf gedefinieerd SSL-beleid.
 
 ```powershell
 # Create a resource group
@@ -189,11 +189,11 @@ $policy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName A
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
-## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Een bestaande toepassings gateway bijwerken met een vooraf gedefinieerd SSL-beleid
+## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Een bestaande toepassingsgateway bijwerken met een vooraf gedefinieerd SSL-beleid
 
-Als u een aangepast SSL-beleid wilt instellen, geeft u de volgende para meters door: **Policy type**, **MinProtocolVersion**, **CipherSuite**en **toepassings gateway**. Als u een vooraf gedefinieerd SSL-beleid wilt instellen, geeft u de volgende para meters door: **Policy type**, **beleidsregel**en **toepassings gateway**. Als u probeert andere para meters door te geven, krijgt u een fout melding bij het maken of bijwerken van de Application Gateway.
+Als u een aangepast SSL-beleid wilt instellen, geeft u de volgende parameters door: **PolicyType,** **MinProtocolVersion,** **CipherSuite**en **ApplicationGateway**. Als u een vooraf gedefinieerd SSL-beleid wilt instellen, geeft u de volgende parameters door: **PolicyType**, **PolicyName**en **ApplicationGateway**. Als u andere parameters probeert door te geven, krijgt u een foutmelding bij het maken of bijwerken van de Application Gateway.
 
-In het volgende voor beeld zijn er code voorbeelden voor zowel het aangepaste beleid als het vooraf gedefinieerde beleid. Verwijder de opmerking over het beleid dat u wilt gebruiken.
+In het volgende voorbeeld zijn er codevoorbeelden voor zowel Aangepast beleid als vooraf gedefinieerd beleid. Maak geen commentaar op het beleid dat u wilt gebruiken.
 
 ```powershell
 # You have to change these parameters to match your environment.
@@ -217,4 +217,4 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [Application Gateway omleidings overzicht](application-gateway-redirect-overview.md) voor meer informatie over het omleiden van http-verkeer naar een HTTPS-eind punt.
+Ga naar [het overzicht van de omleiding van Application Gateway](application-gateway-redirect-overview.md) voor meer informatie over het omleiden van HTTP-verkeer naar een HTTPS-eindpunt.

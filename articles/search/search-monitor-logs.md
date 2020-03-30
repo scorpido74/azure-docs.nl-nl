@@ -1,7 +1,7 @@
 ---
-title: Logboek gegevens verzamelen
+title: Loggegevens verzamelen
 titleSuffix: Azure Cognitive Search
-description: Verzamelen en analyseren van logboek gegevens door een diagnostische instelling in te scha kelen en vervolgens de Kusto-query taal te gebruiken om de resultaten te verkennen.
+description: Verzamel en analyseer logboekgegevens door een diagnostische instelling in te schakelen en gebruik vervolgens de Kusto Query Language om de resultaten te verkennen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,79 +9,79 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462349"
 ---
-# <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Logboek gegevens voor Azure Cognitive Search verzamelen en analyseren
+# <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Loggegevens verzamelen en analyseren voor Azure Cognitive Search
 
-Diagnostische of operationele logboeken bieden inzicht in de gedetailleerde bewerkingen van Azure Cognitive Search en zijn nuttig voor het bewaken van service-en workload-processen. Intern bestaan er voor een korte periode een logboek op de back-end, voldoende voor onderzoek en analyse als u een ondersteunings ticket hebt. Als u echter zelf richting wilt hebben over operationele gegevens, moet u een diagnostische instelling configureren om op te geven waar logboek gegevens worden verzameld.
+Diagnostische of operationele logboeken bieden inzicht in de gedetailleerde bewerkingen van Azure Cognitive Search en zijn handig voor het bewaken van service- en werkbelastingprocessen. Intern bestaan er voor een korte periode logboeken op de backend, voldoende voor onderzoek en analyse als u een ondersteuningsticket indient. Als u echter zelfregie wilt over operationele gegevens, moet u een diagnostische instelling configureren om aan te geven waar logboekinformatie wordt verzameld.
 
-Het instellen van Logboeken is handig voor diagnostische gegevens en het behouden van de operationele geschiedenis. Nadat u logboek registratie hebt ingeschakeld, kunt u query's uitvoeren of rapporten maken voor gestructureerde analyse.
+Het instellen van logboeken is handig voor diagnostiek en het behoud van de operationele geschiedenis. Nadat u logboekregistratie hebt ingeschakeld, u query's uitvoeren of rapporten maken voor gestructureerde analyse.
 
-In de volgende tabel worden de opties voor het verzamelen en persistent maken van gegevens opgesomd.
+In de volgende tabel worden opties opgesomd voor het verzamelen en voortduren van gegevens.
 
 | Resource | Gebruikt voor |
 |----------|----------|
-| [Verzenden naar Log Analytics werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Gebeurtenissen en metrische gegevens worden verzonden naar een Log Analytics-werk ruimte, die in de portal kan worden opgevraagd om gedetailleerde informatie te retour neren. Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) voor een inleiding |
-| [Archiveren met Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Gebeurtenissen en metrische gegevens worden gearchiveerd naar een BLOB-container en opgeslagen in JSON-bestanden. Logboeken kunnen behoorlijk nauw keurig zijn (per uur per minuut), wat nuttig is voor het opnieuw doorzoeken van een specifiek incident, maar niet voor open-end onderzoek. Gebruik een JSON-editor om een onbewerkte logboek bestand te bekijken of Power BI om logboek gegevens samen te voegen en te visualiseren.|
-| [Streamen naar Event hub](https://docs.microsoft.com/azure/event-hubs/) | Gebeurtenissen en metrische gegevens worden gestreamd naar een Azure Event Hubs-service. Kies deze optie als een alternatieve service voor het verzamelen van gegevens voor zeer grote logboeken. |
+| [Verzenden naar logboekanalysewerkruimte](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Gebeurtenissen en statistieken worden verzonden naar een werkruimte log analytics, die kan worden opgevraagd in de portal om gedetailleerde informatie terug te sturen. Zie [Aan de slag met Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) voor een inleiding |
+| [Archiveren met Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Gebeurtenissen en statistieken worden gearchiveerd naar een Blob-container en opgeslagen in JSON-bestanden. Logs kunnen vrij gedetailleerd zijn (per uur / minuut), handig voor het onderzoeken van een specifiek incident, maar niet voor open-ended onderzoek. Gebruik een JSON-editor om een onbewerkt logboekbestand of Power BI weer te geven om logboekgegevens samen te voegen en te visualiseren.|
+| [Streamen naar gebeurtenishub](https://docs.microsoft.com/azure/event-hubs/) | Gebeurtenissen en statistieken worden gestreamd naar een Azure Event Hubs-service. Kies dit als een alternatieve service voor het verzamelen van gegevens voor zeer grote logboeken. |
 
-Zowel de Azure Monitor-Logboeken als de Blob-opslag zijn beschikbaar als gratis service, zodat u ze gratis kunt uitproberen voor de levens duur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van de toepassings gegevens onder bepaalde limieten ligt (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
+Zowel Azure Monitor-logboeken als Blob-opslag zijn beschikbaar als een gratis service, zodat u deze gratis uitproberen voor de levensduur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van toepassingsgegevens onder bepaalde limieten valt (zie de [prijspagina](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Log Analytics of Azure Storage gebruikt, kunt u vooraf resources maken.
+Als u Log Analytics of Azure Storage gebruikt, u vooraf resources maken.
 
-+ [Een log Analytics-werk ruimte maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
++ [Een werkruimte voor logboekanalyse maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
 + [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 
-Diagnostische instellingen bepalen hoe vastgelegde gebeurtenissen en metrische gegevens worden verzameld.
+Diagnostische instellingen geven aan hoe geregistreerde gebeurtenissen en statistieken worden verzameld.
 
 1. Selecteer **Diagnostische instellingen** onder **Controle**.
 
    ![Diagnostische instellingen](./media/search-monitor-usage/diagnostic-settings.png "Diagnostische instellingen")
 
-1. Selecteer **+ Diagnostische instelling toevoegen**
+1. Selecteren **+ Diagnostische instelling toevoegen**
 
-1. Controleer **log Analytics**, selecteer uw werk ruimte en selecteer **OperationLogs** en **AllMetrics**.
+1. Schakel **Logboekanalyse**in, selecteer uw werkruimte en selecteer **OperationLogs** en **AllMetrics**.
 
-   ![Gegevens verzameling configureren](./media/search-monitor-usage/configure-storage.png "Gegevens verzameling configureren")
+   ![Gegevensverzameling configureren](./media/search-monitor-usage/configure-storage.png "Gegevensverzameling configureren")
 
 1. Sla de instelling op.
 
-1. Nadat logboek registratie is ingeschakeld, gebruikt u uw zoek service om logboeken en metrische gegevens te genereren. Het duurt enige tijd voordat geregistreerde gebeurtenissen en metrische gegevens beschikbaar komen.
+1. Nadat logboekregistratie is ingeschakeld, gebruikt u uw zoekservice om logboeken en statistieken te genereren. Het zal even duren voordat geregistreerde gebeurtenissen en statistieken beschikbaar komen.
 
-Voor Log Analytics kan het enkele minuten duren voordat er gegevens beschikbaar zijn, waarna u Kusto-query's kunt uitvoeren om gegevens te retour neren. Zie [query aanvragen bewaken](search-monitor-logs.md)voor meer informatie.
+Voor Log Analytics duurt het enkele minuten voordat gegevens beschikbaar zijn, waarna u Kusto-query's uitvoeren om gegevens terug te sturen. Zie [Queryaanvragen controleren](search-monitor-logs.md)voor meer informatie .
 
-Voor Blob-opslag duurt het één uur voordat de containers worden weer gegeven in de Blob-opslag. Er is een blob, per uur, per container. Containers worden alleen gemaakt als er een activiteit is die moet worden geregistreerd of gemeten. Wanneer de gegevens naar een opslag account worden gekopieerd, worden de gegevens ingedeeld als JSON en in twee containers geplaatst:
+Voor Blob-opslag duurt het een uur voordat de containers worden weergegeven in blobopslag. Er is één blob, per uur, per container. Containers worden alleen gemaakt wanneer er een activiteit is om in te loggen of te meten. Wanneer de gegevens naar een opslagaccount worden gekopieerd, worden de gegevens opgemaakt als JSON en in twee containers geplaatst:
 
-+ Insights-logs-operationlogs: voor zoeken in logboeken over webverkeer
-+ Insights-metrics-pt1m: voor metrische gegevens
++ insights-logs-operationlogs: voor logboeken voor zoekverkeer
++ insights-metrics-pt1m: voor metrics
 
-## <a name="query-log-information"></a>Informatie over het query logboek
+## <a name="query-log-information"></a>Querylogboekgegevens
 
-In Diagnostische logboeken bevatten twee tabellen logboeken en metrische gegevens voor Azure Cognitive Search: **AzureDiagnostics** en **AzureMetrics**.
+In diagnostische logboeken bevatten twee tabellen logboeken en metrische gegevens voor Azure Cognitive Search: **AzureDiagnostics** en **AzureMetrics**.
 
-1. Onder **bewaking**selecteert u **Logboeken**.
+1. Selecteer **Logboeken** **onder Controle**.
 
-1. Voer **AzureMetrics** in het query venster in. Voer deze eenvoudige query uit om meer te weten te komen over de gegevens die in deze tabel worden verzameld. Schuif over de tabel om de metrische gegevens en waarden weer te geven. U ziet het aantal records bovenaan en als uw service metrische gegevens heeft verzameld, kunt u het tijds interval aanpassen om een beheer bare gegevensset te verkrijgen.
+1. Voer **AzureMetrics** in het queryvenster in. Voer deze eenvoudige query uit om kennis te maken met de gegevens die in deze tabel worden verzameld. Schuif over de tabel om statistieken en waarden weer te geven. Let op het aantal recordgegevens bovenaan en als uw service al een tijdje statistieken verzamelt, u het tijdsinterval aanpassen om een beheerbare gegevensset te krijgen.
 
-   ![AzureMetrics-tabel](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics-tabel")
+   ![Tabel AzureMetrics](./media/search-monitor-usage/azuremetrics-table.png "Tabel AzureMetrics")
 
-1. Voer de volgende query in om een resultatenset in tabel vorm te retour neren.
+1. Voer de volgende query in om een tabelvormige resultaatset terug te sturen.
 
    ```
    AzureMetrics
     | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
-1. Herhaal de vorige stappen, beginnend met **AzureDiagnostics** om alle kolommen voor informatieve doel einden te retour neren, gevolgd door een meer selectieve query waarmee interessante informatie wordt geëxtraheerd.
+1. Herhaal de vorige stappen, te beginnen met **AzureDiagnostics** om alle kolommen terug te sturen voor informatieve doeleinden, gevolgd door een meer selectieve query die interessantere informatie extraheert.
 
    ```
    AzureDiagnostics
@@ -89,76 +89,76 @@ In Diagnostische logboeken bevatten twee tabellen logboeken en metrische gegeven
    | where OperationName == "Query.Search" 
    ```
 
-   ![AzureDiagnostics-tabel](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics-tabel")
+   ![Tabel AzureDiagnostics](./media/search-monitor-usage/azurediagnostics-table.png "Tabel AzureDiagnostics")
 
-## <a name="log-schema"></a>Logboek-schema
+## <a name="log-schema"></a>Logboekschema
 
-Gegevens structuren die Azure Cognitive Search-logboek gegevens bevatten, voldoen aan het onderstaande schema. 
+Gegevensstructuren die azure cognitive search-logboekgegevens bevatten, voldoen aan het onderstaande schema. 
 
-Voor Blob Storage bevat elke BLOB één hoofd object met de naam **records** die een matrix met logboek objecten bevatten. Elke BLOB bevat records voor alle bewerkingen die plaatsvonden tijdens hetzelfde uur.
+Voor Blob-opslag heeft elke blob één hoofdobject dat **records** wordt genoemd met een array van logboekobjecten. Elke blob bevat records voor alle bewerkingen die tijdens hetzelfde uur plaatsvonden.
 
-De volgende tabel bevat een gedeeltelijke lijst met velden die worden gebruikt voor diagnostische logboek registratie.
+De volgende tabel is een gedeeltelijke lijst met velden die vaak voorkomen bij diagnostische logboekregistratie.
 
 | Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| timeGenerated |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |Tijdstempel van de bewerking |
-| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/> MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |Uw ResourceId |
+| timeGenerated timeGenerated timeGenerated timeGenerated |datum/tijd |"2018-12-07T00:00:43.6872559Z" |Tijdstempel van de bewerking |
+| resourceId |tekenreeks |"/ABONNEMENTEN/1111111-1111-1111-1111-1111-11111111111/<br/>RESOURCEGROEPEN/STANDAARD/PROVIDERS/<br/> Microsoft. SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Uw ResourceId |
 | operationName |tekenreeks |"Query.Search" |De naam van de bewerking |
-| operationVersion |tekenreeks |"2019-05-06" |De api-versie die wordt gebruikt |
-| category |tekenreeks |"OperationLogs" |constante |
-| resultType |tekenreeks |"Geslaagd" |Mogelijke waarden: slagen of mislukken |
+| operationVersion |tekenreeks |"2019-05-06" |De gebruikte api-versie |
+| category |tekenreeks |"OperationLogs" |Constante |
+| resultType |tekenreeks |"Succes" |Mogelijke waarden: Succes of Falen |
 | resultSignature |int |200 |HTTP-resultaatcode |
-| durationMS |int |50 |Duur van de bewerking in milliseconden |
-| properties |object |Zie de volgende tabel |Object met de bewerking-specifieke gegevens |
+| duurMS |int |50 |Duur van de bewerking in milliseconden |
+| properties |object |zie de volgende tabel |Object dat bedrijfsspecifieke gegevens bevat |
 
-### <a name="properties-schema"></a>Eigenschappen schema
+### <a name="properties-schema"></a>Eigenschappenschema
 
 De onderstaande eigenschappen zijn specifiek voor Azure Cognitive Search.
 
 | Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| Description_s |tekenreeks |'/Indexes('content')/docs ophalen' |Eindpunt van de bewerking |
+| Description_s |tekenreeks |"GET /indexen('inhoud')/docs" |Eindpunt van de bewerking |
 | Documents_d |int |42 |Aantal verwerkte documenten |
-| IndexName_s |tekenreeks |"test-index" |Naam van de index die is gekoppeld aan de bewerking |
+| IndexName_s |tekenreeks |"test-index" |Naam van de index die aan de bewerking is gekoppeld |
 | Query_s |tekenreeks |"?search=AzureSearch&$count=true&api-version=2019-05-06" |De queryparameters |
 
-## <a name="metrics-schema"></a>Schema van de metrische gegevens
+## <a name="metrics-schema"></a>Schema voor metrische gegevens
 
-Metrische gegevens worden vastgelegd voor query aanvragen en gemeten in een interval van één minuut. Elke metriek wordt de minimale, maximale en gemiddelde waarden per minuut. Zie [query aanvragen bewaken](search-monitor-queries.md)voor meer informatie.
+Statistieken worden vastgelegd voor queryaanvragen en gemeten in intervallen van één minuut. Elke statistiek legt minimum-, maximum- en gemiddelde waarden per minuut bloot. Zie [Queryaanvragen controleren](search-monitor-queries.md)voor meer informatie .
 
 | Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/>MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |de resource-ID |
-| MetricName |tekenreeks |"Latentie" |de naam van de metrische gegevens |
-| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |tijdstempel van de bewerking |
-| gemiddeld |int |64 |De gemiddelde waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens, eenheden in seconden of percentage, afhankelijk van de metriek. |
-| minimum |int |37 |De minimale waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens, eenheden in seconden. |
-| maximum |int |78 |De maximum waarde van de onbewerkte voor beelden in de metrische tijds interval, eenheden in seconden.  |
-| totaal |int |258 |De totale waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens, eenheden in seconden.  |
-| count |int |4 |Het aantal metrische gegevens dat vanaf een knoop punt wordt verzonden naar het logboek binnen het interval van één minuut.  |
-| timegrain |tekenreeks |"PT1M" |De tijd korrel van de metriek in ISO 8601. |
+| resourceId |tekenreeks |"/ABONNEMENTEN/1111111-1111-1111-1111-1111-11111111111/<br/>RESOURCEGROEPEN/STANDAARD/PROVIDERS/<br/>Microsoft. SEARCH/SEARCHSERVICES/SEARCHSERVICE" |uw resource-id |
+| metricName |tekenreeks |"Latentie" |de naam van de statistiek |
+| tijd |datum/tijd |"2018-12-07T00:00:43.6872559Z" |tijdstempel van de bewerking |
+| gemiddeld |int |64 |De gemiddelde waarde van de ruwe monsters in het metrische tijdsinterval, eenheden in seconden of percentage, afhankelijk van de statistiek. |
+| minimum |int |37 |De minimumwaarde van de ruwe monsters in het metrische tijdsinterval, eenheden in seconden. |
+| maximum |int |78 |De maximale waarde van de ruwe monsters in het metrische tijdsinterval, eenheden in seconden.  |
+| totaal |int |258 |De totale waarde van de ruwe monsters in het metrische tijdsinterval, eenheden in seconden.  |
+| count |int |4 |Het aantal metrische gegevens dat binnen een minuut wordt uitgestraald van een knooppunt naar het logboek.  |
+| tijdskorrel |tekenreeks |"PT1M" |De tijdskorrel van de statistiek in ISO 8601. |
 
-Het is gebruikelijk om query's uit te voeren in milliseconden, zodat alleen query's die als seconden worden gemeten, worden weer gegeven in metriek zoals QPS.
+Het is gebruikelijk dat query's in milliseconden worden uitgevoerd, dus alleen query's die als seconden worden gemeten, worden weergegeven in metrische gegevens zoals QPS.
 
-Voor de metrische **Zoek Query's per seconde** is minimum de laagste waarde voor zoek query's per seconde die tijdens die minuut zijn geregistreerd. Dit geldt ook voor de maximale waarde. Gemiddelde, wordt de statistische functie voor de hele minuut. U kunt bijvoorbeeld binnen één minuut een patroon hebben dat er ongeveer als volgt uitziet: één seconde van een hoge belasting die het maximum voor SearchQueriesPerSecond is, gevolgd door 58 seconden gemiddelde belasting, en ten slotte één seconde met slechts één query, wat het minimum is.
+Voor de statistiek **Zoekopdrachten per seconde** is minimaal de laagste waarde voor zoekopdrachten per seconde die in die minuut zijn geregistreerd. Hetzelfde geldt voor de maximale waarde. Gemiddeld, is het aggregaat over de hele minuut. Binnen een minuut hebt u bijvoorbeeld een patroon als dit: een seconde hoge belasting die het maximum is voor SearchQueriesPerSeconde, gevolgd door 58 seconden gemiddelde belasting en ten slotte één seconde met slechts één query, wat het minimum is.
 
-Voor het **beperkende Zoek Query's percentage**, minimum, maximum, gemiddelde en totaal heeft dezelfde waarde: het percentage Zoek query's dat is beperkt tot het totale aantal Zoek query's gedurende één minuut.
+Voor **percentage zoekopdrachten met throttled**, minimum, maximum, gemiddelde en totaal, hebben allemaal dezelfde waarde: het percentage zoekopdrachten dat is beperkt, van het totale aantal zoekopdrachten gedurende één minuut.
 
-## <a name="view-raw-log-files"></a>Onbewerkte logboek bestanden weer geven
+## <a name="view-raw-log-files"></a>Onbewerkte logboekbestanden weergeven
 
-Blob-opslag wordt gebruikt voor het archiveren van logboek bestanden. U kunt een JSON-editor gebruiken om het logboek bestand weer te geven. Als u er geen hebt, raden we u aan [Visual Studio code](https://code.visualstudio.com/download)aan te bevelen.
+Blob-opslag wordt gebruikt voor het archiveren van logboekbestanden. U elke JSON-editor gebruiken om het logboekbestand te bekijken. Als je er geen hebt, raden we [Visual Studio Code](https://code.visualstudio.com/download)aan.
 
-1. Open uw opslag account in Azure Portal. 
+1. Open uw Opslagaccount in Azure-portal. 
 
-2. Klik in het navigatie deel venster aan de linkerkant op **blobs**. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Cognitive Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
+2. Klik in het linkernavigatiedeelvenster op **Blobs**. U ziet **insights-logs-operationlogs** en **insights-metrics-pt1m.** Deze containers worden gemaakt door Azure Cognitive Search wanneer de logboekgegevens worden geëxporteerd naar Blob-opslag.
 
-3. Klik op omlaag in de maphiërarchie totdat het JSON-bestand is bereikt.  Gebruik het context menu om het bestand te downloaden.
+3. Klik op de maphiërarchie totdat u het JSon-bestand hebt bereikt.  Gebruik het contextmenu om het bestand te downloaden.
 
-Zodra het bestand is gedownload, opent u het in een JSON-editor om de inhoud weer te geven.
+Zodra het bestand is gedownload, opent u het in een JSON-editor om de inhoud te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, raadpleegt u de grond beginselen van de controle van de zoek service voor meer informatie over het volledige aanbod van de mogelijkheden voor toezicht.
+Als u dit nog niet hebt gedaan, bekijkt u de basisprincipes van het controleren van de zoekservice om meer te weten te komen over het volledige scala aan toezichtsmogelijkheden.
 
 > [!div class="nextstepaction"]
-> [Bewerkingen en activiteiten bewaken in azure Cognitive Search](search-monitor-usage.md)
+> [Bewerkingen en activiteiten in Azure Cognitive Search controleren](search-monitor-usage.md)

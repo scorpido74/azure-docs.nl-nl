@@ -1,6 +1,6 @@
 ---
-title: Algemene query patronen-Azure Digital Apparaatdubbels | Microsoft Docs
-description: Meer informatie over een aantal algemene API-query patronen voor de Azure Digital Apparaatdubbels Management-Api's.
+title: Algemene querypatronen - Azure Digital Twins | Microsoft Documenten
+description: Lees verschillende veelvoorkomende API-querypatronen voor de Azure Digital Twins-beheer-API's.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,60 +9,60 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: 133c0e0dcc07afb85a0f3af9ae51d2207abac293
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589110"
 ---
-# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Query's uitvoeren op Azure Digital Apparaatdubbels-Api's voor algemene taken
+# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Azure Digital Twins API's opvragen voor veelvoorkomende taken
 
-In dit artikel vindt u query patronen die u helpen bij het uitvoeren van algemene scenario's voor uw Azure Digital Apparaatdubbels-exemplaar. Hierbij wordt ervan uitgegaan dat uw Digital Apparaatdubbels-exemplaar al wordt uitgevoerd. U kunt elke REST-client gebruiken, zoals een postman. 
+In dit artikel worden querypatronen weergegeven waarmee u veelvoorkomende scenario's uitvoeren voor uw Azure Digital Twins-exemplaar. Dit veronderstelt dat uw Digital Twins-exemplaar al wordt uitgevoerd. U elke REST-client gebruiken, zoals Postman. 
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
 
 ## <a name="queries-for-spaces-and-types"></a>Query's voor spaties en typen
 
-In deze sectie worden voorbeeld query's weer gegeven om meer informatie over uw ingerichte ruimten te krijgen. Zorg ervoor dat geverifieerde HTTP-aanvragen worden ontvangen met de voorbeeld query's, waarbij de tijdelijke aanduidingen worden vervangen door waarden van uw instellingen. 
+In deze sectie worden voorbeeldquery's weergegeven om meer informatie te krijgen over uw ingerichte ruimten. Maak geverifieerde HTTP-aanvragen ophalen met de voorbeeldquery's en vervang de tijdelijke aanduidingen door waarden uit uw instelling. 
 
-- Haal ruimten op die hoofd knooppunten zijn.
+- Krijg spaties die rootknooppunten zijn.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
     ```
 
-- Een ruimte op naam ophalen en apparaten, Sens oren, berekende waarden en sensor waarden bevatten. 
+- Krijg een ruimte op naam en omvatten apparaten, sensoren, berekende waarden en sensorwaarden. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Haal ruimten en hun apparaat/sensor gegevens op, waarvan het bovenliggende item de opgegeven ruimte-ID is en die zich op niveau twee tot vijf [relatief ten opzichte van de opgegeven ruimte](how-to-navigate-apis.md#api-navigation)bevinden. 
+- Krijg spaties en hun apparaat / sensor informatie, waarvan de ouder is de gegeven ruimte-ID, en die op niveaus twee tot vijf [ten opzichte van de gegeven ruimte](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
     ```
 
-- De ruimte met de opgegeven ID ophalen en waarden voor berekende en sensors bevatten.
+- Krijg de ruimte met de opgegeven ID en neem berekende en sensorwaarden op.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?ids=YOUR_SPACE_ID&includes=Values,sensors,SensorsValues
     ```
 
-- Eigenschappen sleutels voor een bepaalde ruimte ophalen.
+- Download eigenschapssleutels voor een bepaalde ruimte.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- U kunt spaties ophalen met de eigenschaps sleutel met de naam *AreaInSqMeters* en de bijbehorende waarde is 30. U kunt ook teken reeks bewerkingen uitvoeren, bijvoorbeeld ruimten die de eigenschaps sleutel bevatten met `name = X contains Y`.
+- Krijg spaties met de eigenschapsleutel met de naam *AreaInSqMeters* en de waarde ervan is 30. U ook tekenreeksbewerkingen uitvoeren, bijvoorbeeld spaties `name = X contains Y`met een eigenschapssleutel met.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
     ```
 
-- Alle namen ophalen met naam *temperatuur* en gekoppelde afhankelijkheden en Ontologies.
+- Download alle namen met *naamTemperatuur* en bijbehorende afhankelijkheden en ontologieën.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/types?names=Temperature&includes=space,ontologies,description,fullpath
@@ -71,21 +71,21 @@ In deze sectie worden voorbeeld query's weer gegeven om meer informatie over uw 
 
 ## <a name="queries-for-roles-and-role-assignments"></a>Query's voor rollen en roltoewijzingen
 
-In deze sectie vindt u enkele query's voor meer informatie over rollen en hun toewijzingen. 
+In deze sectie worden enkele query's weergegeven om meer informatie te krijgen over rollen en hun toewijzingen. 
 
-- Alle rollen ophalen die worden ondersteund door Azure Digital Apparaatdubbels.
+- Krijg alle rollen ondersteund door Azure Digital Twins.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
-- Haal alle roltoewijzingen op in uw digitale Apparaatdubbels-exemplaar. 
+- Krijg alle rolopdrachten in je Digital Twins-exemplaar. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=down
     ```
 
-- Haal roltoewijzingen op een bepaald pad op.
+- Krijg roltoewijzingen op een bepaald pad.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
@@ -93,93 +93,93 @@ In deze sectie vindt u enkele query's voor meer informatie over rollen en hun to
 
 ## <a name="queries-for-devices"></a>Query's voor apparaten
 
-In deze sectie vindt u enkele voor beelden van hoe u de beheer-Api's kunt gebruiken om specifieke informatie over uw apparaten te verkrijgen. Alle API-aanroepen moeten geverifieerde HTTP-aanvragen ontvangen.
+In dit gedeelte worden enkele voorbeelden weergegeven van hoe u de beheer-API's gebruiken om specifieke informatie over uw apparaten te krijgen. Alle API-aanroepen moeten worden geverifieerd GET HTTP-aanvragen.
 
-- Alle apparaten ophalen.
+- Haal alle apparaten.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices
     ```
 
-- Alle Apparaatstatus zoeken.
+- Zoek alle apparaatstatussen.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/devices/statuses
     ```
 
-- Een specifiek apparaat ophalen.
+- Neem een specifiek apparaat.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID
     ```
 
-- Alle apparaten ophalen die aan de hoofd ruimte zijn gekoppeld.
+- Zorg ervoor dat alle apparaten aan de hoofdruimte zijn gekoppeld.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?maxLevel=1
     ```
 
-- Alle apparaten die zijn gekoppeld aan ruimten op niveau 2 tot en met 4 ophalen.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan ruimten op niveaus 2 tot en met 4.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4
     ```
 
-- Alle apparaten die rechtstreeks zijn gekoppeld aan een bepaalde ruimte-ID ophalen.
+- Zorg ervoor dat alle apparaten direct zijn gekoppeld aan een bepaalde ruimte-ID.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan een bepaalde ruimte en de onderliggende objecten.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan een bepaalde ruimte en de afstammelingen.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan descendanten van een spatie, met uitzonde ring van die spatie.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan afstammelingen van een ruimte, met uitzondering van die ruimte.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan directe onderliggende elementen van een ruimte.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan directe kinderen van een ruimte.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan een van de bovenliggende elementen van een spatie.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan een van de voorouders van een ruimte.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Up&maxLevel=-1&maxRelative=true
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan descendanten van een ruimte die kleiner is dan of gelijk is aan 5.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan afstammelingen van een ruimte die kleiner is dan of gelijk is aan 5.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- Alle apparaten ophalen die zijn gekoppeld aan ruimten die zich op hetzelfde niveau bevinden als de ruimte met de ID *YOUR_SPACE_ID*.
+- Zorg ervoor dat alle apparaten zijn gekoppeld aan ruimten die op hetzelfde niveau zijn als de ruimte met *ID-YOUR_SPACE_ID.*
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- De IoT Hub apparaat-connection string voor uw apparaat ophalen.
+- Download de verbindingstekenreeks van het IoT Hub-apparaat voor uw apparaat.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString
     ```
 
-- Apparaat met de opgegeven hardware-ID ophalen, inclusief gekoppelde Sens oren.
+- Krijg het apparaat met de opgegeven hardware-ID, inclusief aangesloten sensoren.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=sensors
     ```
 
-- Haal Sens oren op voor bepaalde gegevens typen, in dit geval *beweging* en *Tempe ratuur*.
+- Krijg sensoren voor bepaalde gegevenstypen, in dit geval *Beweging* en *Temperatuur.*
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/sensors?dataTypes=Motion,Temperature
@@ -187,31 +187,31 @@ In deze sectie vindt u enkele voor beelden van hoe u de beheer-Api's kunt gebrui
 
 ## <a name="queries-for-matchers-and-user-defined-functions"></a>Query's voor matchers en door de gebruiker gedefinieerde functies 
 
-- Alle ingerichte vergelijkings en hun id's ophalen.
+- Krijg alle ingerichte matchers en hun id's.
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers
     ```
 
-- Details over een bepaalde Matcher ophalen, inclusief de spaties en de door de gebruiker gedefinieerde functie die eraan is gekoppeld.
+- Informatie over een bepaalde matcher, inclusief de spaties en de door de gebruiker gedefinieerde functie die eraan is gekoppeld.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID?includes=description, conditions, fullpath, userdefinedfunctions, space
     ```
 
-- Evalueer een overeenkomst met een sensor en schakel logboek registratie in voor fout opsporing. Het retour neren van dit HTTP GET-bericht vertelt u of de overeenkomst en de sensor deel uitmaken van het gegevens type. 
+- Evalueer een matcher tegen een sensor en schakel logboekregistratie in voor foutopsporingsdoeleinden. De terugkeer van dit HTTP GET-bericht geeft aan of de matcher en de sensor tot het gegevenstype behoren. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID/evaluate/YOUR_SENSOR_ID?enableLogging=true
     ```
 
-- De ID ophalen van de door de gebruiker gedefinieerde functies. 
+- Krijg de id van de door de gebruiker gedefinieerde functies. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions
     ```
 
-- De inhoud van een bepaalde door de gebruiker gedefinieerde functie ophalen 
+- De inhoud van een bepaalde door de gebruiker gedefinieerde functie krijgen 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions/YOUR_USER_DEFINED_FUNCTION_ID/contents
@@ -220,15 +220,15 @@ In deze sectie vindt u enkele voor beelden van hoe u de beheer-Api's kunt gebrui
 
 ## <a name="queries-for-users"></a>Query's voor gebruikers
 
-In deze sectie vindt u enkele voor beelden van API-query's voor het beheren van gebruikers in azure Digital Apparaatdubbels. Maak een HTTP GET-aanvraag om de tijdelijke aanduidingen te vervangen door waarden van uw instellingen. 
+In deze sectie worden enkele voorbeeld-API-query's weergegeven voor het beheren van gebruikers in Azure Digital Twins. Maak een HTTP GET-aanvraag om de tijdelijke aanduidingen te vervangen door waarden uit uw installatie. 
 
-- Alle gebruikers ophalen. 
+- Krijg alle gebruikers. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users
     ```
 
-- Een specifieke gebruiker ophalen.
+- Haal een specifieke gebruiker.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
@@ -236,6 +236,6 @@ In deze sectie vindt u enkele voor beelden van API-query's voor het beheren van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees [verificatie met api's](./security-authenticating-apis.md)voor meer informatie over het verifiëren met uw beheer-API.
+Lees [Authenticeren met API's](./security-authenticating-apis.md)voor meer informatie over hoe u zich verifiëren met uw Beheer-API.
 
-Lees [hoe u Digital Apparaatdubbels Swagger kunt gebruiken](./how-to-use-swagger.md)voor meer informatie over uw API-eind punten.
+Lees Voor meer informatie over uw API-eindpunten [Hoe u Digital Twins Swagger gebruikt.](./how-to-use-swagger.md)

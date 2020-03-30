@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery controleren met Azure Monitor-logboeken
-description: Meer informatie over het bewaken van Azure Site Recovery met Azure Monitor-Logboeken (Log Analytics)
+title: Azure-siteherstel controleren met Azure-monitorlogboeken
+description: Meer informatie over het bewaken van Azure Site Recovery met Azure Monitor Logs (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,83 +8,83 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133419"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
-In dit artikel wordt beschreven hoe u computers die zijn gerepliceerd door Azure [site Recovery](site-recovery-overview.md)bewaakt met behulp van [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)en [log Analytics](../azure-monitor/log-query/log-query-overview.md).
+In dit artikel wordt beschreven hoe u machines controleren die zijn gerepliceerd door Azure [Site Recovery](site-recovery-overview.md), met behulp van Azure [Monitor Logs](../azure-monitor/platform/data-platform-logs.md)en [Logboekanalyse](../azure-monitor/log-query/log-query-overview.md).
 
-Azure Monitor logboeken bieden een platform voor gegevens over het logboek waarmee activiteiten en Diagnostische logboeken worden verzameld, samen met andere bewakings gegevens. In Azure Monitor-logboeken gebruikt u Log Analytics om logboek query's te schrijven en te testen, en om logboek gegevens interactief te analyseren. U kunt de resultaten van het logboek visualiseren en doorzoeken en waarschuwingen configureren om acties uit te voeren op basis van bewaakte gegevens.
+Azure Monitor Logs bieden een logdataplatform dat activiteits- en diagnostische logboeken verzamelt, samen met andere bewakingsgegevens. Binnen Azure Monitor Logs gebruikt u Log Analytics om logboekquery's te schrijven en te testen en om logboekgegevens interactief te analyseren. U logboekresultaten visualiseren en query's configureren om acties uit te voeren op basis van bewaakte gegevens.
 
-Voor Site Recovery kunt u Logboeken Azure Monitor om u te helpen de volgende handelingen uit te voeren:
+Voor Siteherstel u Azure Monitor-logboeken gebruiken om u te helpen het volgende te doen:
 
-- **Site Recovery status en-status bewaken**. U kunt bijvoorbeeld de replicatie status controleren, de status van de testfailover, Site Recovery gebeurtenissen, herstel punt doelstellingen (Rpo's) voor beveiligde machines en tarieven voor de snelheid van schijven/gegevens wijzigen.
-- **Stel waarschuwingen in voor site Recovery**. U kunt bijvoorbeeld waarschuwingen configureren voor computer status, de status van de testfailover of Site Recovery taak status.
+- **Status en status siteherstel bewaken.** U bijvoorbeeld de replicatiestatus controleren, failoverstatus testen, siteherstelgebeurtenissen, herstelpuntendoelstellingen (RTO's) voor beveiligde machines en schijf-/gegevenswijzigingspercentages.
+- **Waarschuwingen instellen voor siteherstel**. U bijvoorbeeld waarschuwingen configureren voor machinestatus, failoverstatus of taakstatus Siterecovery.
 
-Het gebruik van Azure Monitor-logboeken met Site Recovery wordt ondersteund voor **Azure naar Azure** -replicatie en **virtuele VMware-machines/fysieke servers naar Azure-** replicatie.
+Het gebruik van Azure Monitor Logs with Site Recovery wordt ondersteund voor **Azure naar Azure-replicatie** en **VMware VM/physical server naar** Azure-replicatie.
 
 > [!NOTE]
-> U moet een micro soft Monitoring Agent installeren op de proces server om de gegevens logboeken van het verloop en de upload frequentie logboeken voor VMware en fysieke machines te verkrijgen. Deze agent verzendt de logboeken van de replicerende machines naar de werk ruimte. Deze mogelijkheid is alleen beschikbaar voor de versie van 9,30 Mobility agent.
+> Als u de logboeken voor churn-gegevens en logboeken voor uploadsnelheid voor VMware- en fysieke machines wilt downloaden, moet u een Microsoft-bewakingsagent op de processerver installeren. Deze agent stuurt de logboeken van de replicerende machines naar de werkruimte. Deze mogelijkheid is alleen beschikbaar voor 9,30 mobility agent versie verder.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Dit is wat u nodig hebt:
+U hebt het volgende nodig:
 
-- Ten minste één computer die wordt beveiligd in een Recovery Services kluis.
-- Een Log Analytics-werk ruimte om Site Recovery-logboeken op te slaan. [Meer informatie over](../azure-monitor/learn/quick-create-workspace.md) het instellen van een werk ruimte.
-- Een basis memorandum van het schrijven, uitvoeren en analyseren van logboek query's in Log Analytics. [Meer informatie](../azure-monitor/log-query/get-started-portal.md).
+- Ten minste één machine beschermd in een vault van Recovery Services.
+- Een werkruimte log Analytics om logboeken voor siteherstel op te slaan. [Meer informatie over](../azure-monitor/learn/quick-create-workspace.md) het instellen van een werkruimte.
+- Een basiskennis van het schrijven, uitvoeren en analyseren van logboekquery's in Log Analytics. [Meer informatie](../azure-monitor/log-query/get-started-portal.md).
 
-U wordt aangeraden de [algemene controle vragen](monitoring-common-questions.md) te bekijken voordat u begint.
+We raden u aan [veelvoorkomende bewakingsvragen te](monitoring-common-questions.md) bekijken voordat u begint.
 
-## <a name="configure-site-recovery-to-send-logs"></a>Site Recovery configureren voor het verzenden van Logboeken
+## <a name="configure-site-recovery-to-send-logs"></a>Siteherstel configureren om logboeken te verzenden
 
-1. Klik in de kluis op **Diagnostische instellingen** > **Diagnostische instelling toevoegen**.
+1. Klik in de kluis op **Diagnostische instellingen** > **Diagnostische instellingen toevoegen**.
 
-    ![Diagnostische logboek registratie selecteren](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Diagnostische logboekregistratie selecteren](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. Geef in **Diagnostische instellingen**een naam op en schakel het selectie vakje **verzenden naar log Analytics**in.
-3. Selecteer het abonnement Azure Monitor logboeken en de Log Analytics-werk ruimte.
-4. Selecteer **Azure Diagnostics** in de wissel knop.
-5. Selecteer in de lijst Logboeken alle logboeken met het voor voegsel **AzureSiteRecovery**. Klik vervolgens op **OK**.
+2. Geef **in diagnostische instellingen**een naam op en schakel het selectievakje Verzenden naar **logboekanalyse in**.
+3. Selecteer het Azure Monitor Logs-abonnement en de werkruimte Log Analytics.
+4. Selecteer **Azure Diagnostics** in de schakelfunctie.
+5. Selecteer in de logboeklijst alle logboeken met het voorvoegsel **AzureSiteRecovery**. Klik vervolgens op **OK**.
 
     ![Werkruimte selecteren](./media/monitoring-log-analytics/select-workspace.png)
 
-De Site Recovery logboeken beginnen met het feeden in een tabel (**AzureDiagnostics**) in de geselecteerde werk ruimte.
+De logboeken siteherstel beginnen te worden ingevoerd in een tabel **(AzureDiagnostics)** in de geselecteerde werkruimte.
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Micro soft monitoring agent configureren op de proces server om verloop-en upload frequentie logboeken te verzenden
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Microsoft-bewakingsagent op de processerver configureren om logboeken met verloop- en uploadsnelheid te verzenden
 
-U kunt de gegevens van het verloop snelheidgegevens en gegevens over de upload snelheid van de bron gegevens vastleggen voor uw VMware/fysieke machines on-premises. Om dit in te scha kelen, moet een micro soft Monitoring Agent worden geïnstalleerd op de proces server.
+U de informatie over de gegevensverloopsnelheid en informatie over de uploadsnelheid van brongegevens voor uw VMware/fysieke machines on-premises vastleggen. Om dit mogelijk te maken, moet een Microsoft-bewakingsagent op de processerver worden geïnstalleerd.
 
-1. Ga naar de werk ruimte Log Analytics en klik op **Geavanceerde instellingen**.
-2. Klik op de pagina **verbonden bronnen** en selecteer vervolgens **Windows-servers**.
-3. Down load de Windows-agent (64 bits) op de proces server. 
-4. [De werk ruimte-ID en-sleutel ophalen](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [Agent configureren voor het gebruik van TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Voltooi de installatie van de agent](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) door de opgehaalde werk ruimte-ID en-sleutel op te geven.
-7. Nadat de installatie is voltooid, gaat u naar Log Analytics werk ruimte en klikt u op **Geavanceerde instellingen**. Ga naar de pagina **gegevens** en klik op **Windows-prestatie meter items**. 
-8. Klik op **+** om de volgende twee tellers toe te voegen met een steekproef interval van 300 seconden:
+1. Ga naar de werkruimte Log Analytics en klik op **Geavanceerde instellingen**.
+2. Klik op de pagina **Verbonden bronnen** en selecteer verder **Windows-servers**.
+3. Download de Windows Agent (64-bits) op de processerver. 
+4. [De werkruimte-id en -sleutel verkrijgen](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Agent configureren om TLS 1.2 te gebruiken](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Voltooi de installatie van de agent](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) door de verkregen werkruimte-ID en -sleutel te verstrekken.
+7. Zodra de installatie is voltooid, gaat u naar de werkruimte Log Analytics en klikt u op **Geavanceerde instellingen**. Ga naar de **pagina Gegevens** en klik verder op **Windows Prestatiemeteritems**. 
+8. Klik op **'+'** om de volgende twee tellers toe te voegen met een monsterinterval van 300 seconden:
 
         ASRAnalytics(*)\SourceVmChurnRate 
         ASRAnalytics(*)\SourceVmThrpRate 
 
-De gegevens voor het verloop en de upload frequentie worden gestart in de werk ruimte.
+De churn- en uploadsnelheidgegevens worden in de werkruimte ingevoerd.
 
 
-## <a name="query-the-logs---examples"></a>Query's uitvoeren op de logboeken-voor beelden
+## <a name="query-the-logs---examples"></a>De logboeken opvragen - voorbeelden
 
-U haalt gegevens op uit logboeken met behulp van logboek query's die zijn geschreven met de [Kusto-query taal](../azure-monitor/log-query/get-started-queries.md). In deze sectie vindt u enkele voor beelden van algemene query's die u kunt gebruiken voor Site Recovery bewaking.
+U haalt gegevens op uit logboeken met logboekquery's die zijn geschreven met de [kusto-querytaal.](../azure-monitor/log-query/get-started-queries.md) In deze sectie vindt u een paar voorbeelden van veelvoorkomende query's die u mogelijk gebruikt voor siteherstelbewaking.
 
 > [!NOTE]
-> Enkele voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee worden virtuele Azure-machines opgehaald die worden gerepliceerd naar een secundaire Azure-regio met behulp van Site Recovery. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2**als u on-premises virtuele VMware-machines of fysieke servers wilt ophalen die met site Recovery worden gerepliceerd naar Azure.
+> Sommige voorbeelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee worden Azure VM's opgehaald die worden gerepliceerd naar een secundair Azure-gebied met behulp van Siteherstel. In deze voorbeelden u **A2A** vervangen door **InMageAzureV2**, als u on-premises VMware VM's of fysieke servers wilt ophalen die met Site Recovery naar Azure worden gerepliceerd.
 
 
-### <a name="query-replication-health"></a>Status van query replicatie
+### <a name="query-replication-health"></a>Queryreplicatiestatus
 
-Met deze query wordt een cirkel diagram getekend voor de huidige replicatie status van alle beveiligde Azure-Vm's, onderverdeeld in drie statussen: normaal, waarschuwing of kritiek.
+Met deze query wordt een cirkeldiagram voor de huidige replicatiestatus van alle beveiligde Azure VM's, onderverdeeld in drie statussen, in kaart gebracht: Normaal, Waarschuwing of Kritiek.
 
 ```
 AzureDiagnostics  
@@ -95,9 +95,9 @@ AzureDiagnostics 
 | summarize count() by replicationHealth_s  
 | render piechart   
 ```
-### <a name="query-mobility-service-version"></a>Versie van de query Mobility-service
+### <a name="query-mobility-service-version"></a>Query Mobility-serviceversie
 
-Met deze query wordt een cirkel diagram getekend voor virtuele Azure-machines die met Site Recovery worden gerepliceerd, onderverdeeld op basis van de versie van de Mobility-agent die ze uitvoeren.
+Met deze query wordt een cirkeldiagram voor Azure VM's weergegeven dat is gerepliceerd met Siteherstel, uitgesplitst naar de versie van de mobiliteitsagent die ze uitvoeren.
 
 ```
 AzureDiagnostics  
@@ -111,7 +111,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>Query RPO-tijd
 
-Met deze query wordt een staaf diagram getekend van virtuele Azure-machines die zijn gerepliceerd met Site Recovery, onderverdeeld op basis van Recovery Point Objective (RPO): minder dan 15 minuten, tussen 15-30 minuten en meer dan 30 minuten.
+Deze query brengt een staafdiagram met Azure VM's in kaart dat is gerepliceerd met Siterecovery, uitgesplitst naar doel herstelpunt (RPO): Minder dan 15 minuten, tussen 15-30 minuten, meer dan 30 minuten.
 
 ```
 AzureDiagnostics 
@@ -127,9 +127,9 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 
 ![Query RPO](./media/monitoring-log-analytics/example1.png)
 
-### <a name="query-site-recovery-jobs"></a>Query's uitvoeren op Site Recovery taken
+### <a name="query-site-recovery-jobs"></a>Querysitehersteltaken
 
-Met deze query worden alle Site Recovery-taken (voor alle scenario's voor herstel na nood gevallen) opgehaald die in de afgelopen 72 uur zijn geactiveerd en de voltooiings status.
+Met deze query worden alle sitehersteltaken opgehaald (voor alle scenario's voor noodherstel), die in de afgelopen 72 uur zijn geactiveerd en de voltooiingsstatus ervan.
 
 ```
 AzureDiagnostics  
@@ -138,9 +138,9 @@ AzureDiagnostics 
 | project JobName = OperationName , VaultName = Resource , TargetName = affectedResourceName_s, State = ResultType  
 ```
 
-### <a name="query-site-recovery-events"></a>Site Recovery gebeurtenissen opvragen
+### <a name="query-site-recovery-events"></a>Querysiteherstelgebeurtenissen
 
-Met deze query worden alle Site Recovery gebeurtenissen opgehaald (voor alle scenario's voor herstel na nood gevallen) die zijn opgetreden in de afgelopen 72 uur, samen met hun ernst. 
+Met deze query worden alle gebeurtenissen voor siteherstel (voor alle scenario's voor noodherstel) opgehaald die in de afgelopen 72 uur zijn opgehaald, samen met de ernst ervan. 
 
 ```
 AzureDiagnostics   
@@ -149,9 +149,9 @@ AzureDiagnostics  
 | project AffectedObject=affectedResourceName_s , VaultName = Resource, Description_s = healthErrors_s , Severity = Level  
 ```
 
-### <a name="query-test-failover-state-pie-chart"></a>Status van de query testen op failover (cirkel diagram)
+### <a name="query-test-failover-state-pie-chart"></a>Failoverstatus querytest (cirkeldiagram)
 
-Met deze query wordt een cirkel diagram getekend voor de status van de testfailover van virtuele Azure-machines die zijn gerepliceerd met Site Recovery.
+Met deze query wordt een cirkeldiagram voor de failoverstatus van Azure VM's weergegeven die zijn gerepliceerd met Siteherstel.
 
 ```
 AzureDiagnostics  
@@ -164,9 +164,9 @@ AzureDiagnostics 
 | render piechart 
 ```
 
-### <a name="query-test-failover-state-table"></a>Status van de testfailover van de query (tabel)
+### <a name="query-test-failover-state-table"></a>Failoverstatus querytest (tabel)
 
-Met deze query wordt een tabel getekend voor de status van de testfailover van virtuele Azure-machines die zijn gerepliceerd met Site Recovery.
+Met deze query wordt een tabel voor de failoverstatus van Azure VM's gerepd met Site Recovery.
 
 ```
 AzureDiagnostics   
@@ -177,9 +177,9 @@ AzureDiagnostics  
 | project VirtualMachine = name_s , VaultName = Resource , TestFailoverStatus = failoverHealth_s 
 ```
 
-### <a name="query-machine-rpo"></a>Query computer RPO
+### <a name="query-machine-rpo"></a>Querymachine RPO
 
-Met deze query wordt een trend grafiek getekend waarmee de RPO van een specifieke Azure-VM (ContosoVM123) wordt bijgehouden voor de afgelopen 72 uur.
+Met deze query wordt een trendgrafiek weergegeven die de RPO van een specifieke Azure VM (ContosoVM123) van de afgelopen 72 uur bijhoudt.
 
 ```
 AzureDiagnostics   
@@ -190,11 +190,11 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Query computer RPO](./media/monitoring-log-analytics/example2.png)
+![Querymachine RPO](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een Azure-VM
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Querygegevenswijzigingssnelheid (verloop) en uploadsnelheid voor een Azure-vm
 
-Met deze query wordt een trend grafiek getekend voor een specifieke Azure-VM (ContosoVM123), die de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie voor gegevens vertegenwoordigt. 
+Met deze query wordt een trendgrafiek voor een specifieke Azure VM (ContosoVM123) weergegeven, die de snelheid van gegevenswijziging (Schrijfbytes per seconde) en de snelheid voor het uploaden van gegevens vertegenwoordigt. 
 
 ```
 AzureDiagnostics   
@@ -207,14 +207,14 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Wijziging in query gegevens](./media/monitoring-log-analytics/example3.png)
+![Wijziging van querygegevens](./media/monitoring-log-analytics/example3.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een VMware of fysieke machine
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Querygegevenswijzigingssnelheid (churn) en uploadsnelheid voor een VMware- of fysieke machine
 
 > [!Note]
-> Zorg ervoor dat u de bewakings agent op de proces server instelt om deze logboeken op te halen. Raadpleeg de [stappen voor het configureren van de bewakings agent](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+> Zorg ervoor dat u de bewakingsagent op de processerver instelt om deze logboeken op te halen. Stappen [doorverwijzen om de bewakingsagent te configureren](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
 
-Met deze query wordt een trend grafiek getekend voor een specifieke schijf **disk0** van een gerepliceerd item **Win-9r7sfh9qlru**, dat de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie van gegevens vertegenwoordigt. U vindt de Blade schijf naam op **schijven** van het gerepliceerde item in de Recovery Services-kluis. De exemplaar naam die in de query moet worden gebruikt, is de DNS-naam van de computer gevolgd door _ en de naam van de schijf zoals in dit voor beeld.
+Deze query brengt een trendgrafiek voor een specifieke **schijfvan** een gerepliceerd item **win-9r7sfh9qlru**uit, dat de gegevenswijzigingssnelheid (Schrijfbytes per seconde) en de snelheid voor gegevensupload vertegenwoordigt. U de schijfnaam vinden op **het schijvenblad** van het gerepliceerde item in de kluis van herstelservices. Instantienaam die in de query moet worden gebruikt, is de DNS-naam van de machine, gevolgd door _ en de naam van de schijf, zoals in dit voorbeeld.
 
 ```
 Perf
@@ -224,11 +224,11 @@ Perf
 | project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
 | render timechart
 ```
-De proces server duwt deze gegevens elke vijf minuten naar de Log Analytics-werk ruimte. Deze gegevens punten vertegenwoordigen het gemiddelde berekenen gedurende 5 minuten.
+Process Server pusht deze gegevens elke 5 minuten naar de Log Analytics-werkruimte. Deze gegevenspunten vertegenwoordigen het gemiddelde berekend gedurende 5 minuten.
 
-### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Samen vatting van herstel na nood geval query (Azure naar Azure)
+### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Querydisaster recovery summary (Azure to Azure)
 
-Met deze query wordt een overzichts tabel getekend voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio.  Hierin worden de VM-naam, de replicatie en de beveiligings status, RPO, de status van de testfailover, de Mobility-agent versie, eventuele actieve replicatie fouten en de bron locatie weer gegeven.
+Met deze query wordt een overzichtstabel voor Azure VM's gerepliceerd naar een secundair Azure-gebied.  Het toont VM naam, replicatie en bescherming status, RPO, test failover status, Mobility agent versie, eventuele actieve replicatie fouten, en de bronlocatie.
 
 ```
 AzureDiagnostics 
@@ -238,9 +238,9 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, SourceLocation = primaryFabricName_s 
 ```
 
-### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Samen vatting van herstel na nood geval query (VMware/fysieke servers)
+### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Querydisaster recovery summary (VMware/physical servers)
 
-Met deze query wordt een overzichts tabel getekend voor virtuele VMware-machines en fysieke servers die worden gerepliceerd naar Azure.  Hierin worden de computer naam, de replicatie en de beveiligings status, RPO, de status van de testfailover, de Mobility-agent versie, eventuele actieve replicatie fouten en de relevante proces server weer gegeven.
+Met deze query wordt een overzichtstabel voor VMware VM's en fysieke servers die naar Azure zijn gerepliceerd, weergegeven.  Het toont machinenaam, replicatie en beveiligingsstatus, RPO, testfailoverstatus, Mobility agent-versie, actieve replicatiefouten en de relevante processerver.
 
 ```
 AzureDiagnostics  
@@ -250,16 +250,16 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, ProcessServer = processServerName_g  
 ```
 
-## <a name="set-up-alerts---examples"></a>Waarschuwingen instellen-voor beelden
+## <a name="set-up-alerts---examples"></a>Waarschuwingen instellen - voorbeelden
 
-U kunt Site Recovery waarschuwingen instellen op basis van Azure Monitor gegevens. Meer [informatie](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) over het instellen van logboek waarschuwingen. 
+U waarschuwingen voor siteherstel instellen op basis van Azure Monitor-gegevens. [Meer informatie](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) over het instellen van logboekwaarschuwingen. 
 
 > [!NOTE]
-> Enkele voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee stelt u waarschuwingen in voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2** als u waarschuwingen wilt instellen voor on-premises virtuele VMware-machines of fysieke servers die worden gerepliceerd naar Azure.
+> Sommige voorbeelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee worden waarschuwingen ingesteld voor Azure VM's die worden gerepliceerd naar een secundair Azure-gebied. In deze voorbeelden u **A2A** vervangen door **InMageAzureV2** als u waarschuwingen wilt instellen voor on-premises Vm's vMware of fysieke servers die zijn gerepliceerd naar Azure.
 
-### <a name="multiple-machines-in-a-critical-state"></a>Meerdere computers met een kritieke status
+### <a name="multiple-machines-in-a-critical-state"></a>Meerdere machines in kritieke toestand
 
-Stel een waarschuwing in als meer dan 20 gerepliceerde Azure-Vm's een kritieke status hebben.
+Stel een waarschuwing in als meer dan 20 gerepliceerde Azure VM's in kritieke status worden opgenomen.
 
 ```
 AzureDiagnostics   
@@ -269,11 +269,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-Stel voor de waarschuwing **drempel waarde** in op 20.
+Stel voor de waarschuwing **de drempelwaarde** in op 20.
 
-### <a name="single-machine-in-a-critical-state"></a>Eén computer met een kritieke status
+### <a name="single-machine-in-a-critical-state"></a>Eén machine in kritieke toestand
 
-Stel een waarschuwing in als een bepaalde gerepliceerde Azure-VM een kritieke status heeft.
+Stel een waarschuwing in als een specifieke gerepliceerde Azure VM in kritieke toestand terechtkomt.
 
 ```
 AzureDiagnostics   
@@ -284,11 +284,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Stel voor de waarschuwing **drempel waarde** in op 1.
+Stel voor de waarschuwing **drempelwaarde** in op 1.
 
 ### <a name="multiple-machines-exceed-rpo"></a>Meerdere machines overschrijden RPO
 
-Stel een waarschuwing in als de RPO voor meer dan 20 virtuele machines van meer dan 30 minuten overschrijdt.
+Stel een waarschuwing in als de RPO meer dan 20 Azure VM's meer dan 30 minuten bedraagt.
 ```
 AzureDiagnostics   
 | where replicationProviderName_s == "A2A"   
@@ -298,11 +298,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-Stel voor de waarschuwing **drempel waarde** in op 20.
+Stel voor de waarschuwing **de drempelwaarde** in op 20.
 
-### <a name="single-machine-exceeds-rpo"></a>Eén machine overschrijdt de RPO
+### <a name="single-machine-exceeds-rpo"></a>Enkele machine overschrijdt RPO
 
-Stel een waarschuwing in als de RPO voor één Azure-VM langer is dan 30 minuten.
+Stel een waarschuwing in als de RPO voor één Azure VM meer dan 30 minuten bedraagt.
 
 ```
 AzureDiagnostics   
@@ -314,11 +314,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-Stel voor de waarschuwing **drempel waarde** in op 1.
+Stel voor de waarschuwing **drempelwaarde** in op 1.
 
-### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Testfailover voor meerdere machines is groter dan 90 dagen
+### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Testfailover voor meerdere machines meer dan 90 dagen
 
-Stel een waarschuwing in als de laatste geslaagde testfailover meer dan 90 dagen was, voor meer dan 20 Vm's. 
+Stel een waarschuwing in als de laatste geslaagde testfailover meer dan 90 dagen was, voor meer dan 20 VM's. 
 
 ```
 AzureDiagnostics  
@@ -329,11 +329,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Stel voor de waarschuwing **drempel waarde** in op 20.
+Stel voor de waarschuwing **de drempelwaarde** in op 20.
 
-### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Testfailover voor één computer is groter dan 90 dagen
+### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Testfailover voor enkele machine meer dan 90 dagen
 
-Stel een waarschuwing in als de laatste geslaagde testfailover voor een specifieke virtuele machine meer dan 90 dagen geleden is.
+Stel een waarschuwing in als de laatste geslaagde testfailover voor een specifieke vm meer dan 90 dagen geleden was.
 ```
 AzureDiagnostics  
 | where replicationProviderName_s == "A2A"   
@@ -344,11 +344,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Stel voor de waarschuwing **drempel waarde** in op 1.
+Stel voor de waarschuwing **drempelwaarde** in op 1.
 
-### <a name="site-recovery-job-fails"></a>Site Recovery-taak mislukt
+### <a name="site-recovery-job-fails"></a>Site herstel taak mislukt
 
-Stel een waarschuwing in als een Site Recovery-taak (in dit geval de taak opnieuw beveiligen) tijdens de laatste dag mislukt voor een Site Recovery scenario. 
+Stel een waarschuwing in als een sitehersteltaak (in dit geval de taak Opnieuw beveiligen) mislukt voor een scenario voor siteherstel, gedurende de laatste dag. 
 ```
 AzureDiagnostics   
 | where Category == "AzureSiteRecoveryJobs"   
@@ -357,8 +357,8 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-Stel voor de waarschuwing **drempel waarde** in op 1 en een **periode** van 1440 minuten om fouten in de afgelopen dag te controleren.
+Stel voor de waarschuwing **de drempelwaarde** in op 1 en **Periode** op 1440 minuten om fouten op de laatste dag te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over](site-recovery-monitor-and-troubleshoot.md) de ingebouwde site Recovery bewaking.
+[Meer informatie over](site-recovery-monitor-and-troubleshoot.md) ingebouwde siteherstelbewaking.

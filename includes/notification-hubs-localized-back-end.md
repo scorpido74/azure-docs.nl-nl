@@ -9,13 +9,13 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260710"
 ---
-Wanneer u sjabloon meldingen verzendt, hoeft u alleen een aantal eigenschappen op te geven. In dit scenario bevatten de set eigenschappen de gelokaliseerde versie van het huidige nieuws.
+Wanneer u sjabloonmeldingen verzendt, hoeft u alleen een reeks eigenschappen op te geven. In dit scenario bevat de set eigenschappen de gelokaliseerde versie van het huidige nieuws.
 
 ```json
 {
@@ -25,9 +25,9 @@ Wanneer u sjabloon meldingen verzendt, hoeft u alleen een aantal eigenschappen o
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>Meldingen verzenden met een C# console-app
+### <a name="send-notifications-using-a-c-console-app"></a>Meldingen verzenden met een C#-console-app
 
-In deze sectie wordt beschreven hoe u meldingen verzendt met behulp van een console-app. De code verzendt meldingen naar zowel Windows Store als iOS-apparaten. Wijzig de methode `SendTemplateNotificationAsync` in de console-app die u eerder hebt gemaakt met de volgende code:
+In deze sectie ziet u hoe u meldingen verzendt via een console-app. De code zendt meldingen uit naar zowel Windows Store- als iOS-apparaten. Wijzig de methode `SendTemplateNotificationAsync` in de console-app die u eerder hebt gemaakt met de volgende code:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-De methode SendTemplateNotificationAsync levert het gelokaliseerde nieuws aan **al** uw apparaten, ongeacht het platform. Uw notification hub bouwt voort en levert de juiste systeem eigen nettolading aan alle apparaten die zijn geabonneerd op een bepaalde tag.
+De SendTemplateNotificationAsync-methode levert het gelokaliseerde stukje nieuws op **al** uw apparaten, ongeacht het platform. Uw meldingshub bouwt en levert de juiste native payload op alle apparaten die zijn geabonneerd op een specifieke tag.
 
-### <a name="sending-notification-with-mobile-services"></a>Melding verzenden met Mobile Services
+### <a name="sending-notification-with-mobile-services"></a>Melding verzenden met mobiele services
 
-Gebruik in uw Mobile Services scheduler het volgende script:
+Gebruik in uw mobile services-planner het volgende script:
 
 ```csharp
 var azure = require('azure');

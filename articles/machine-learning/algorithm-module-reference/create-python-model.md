@@ -1,7 +1,7 @@
 ---
-title: 'Python-model maken: module verwijzing'
+title: 'Python-model maken: naslaginformatie over module'
 titleSuffix: Azure Machine Learning
-description: Leer hoe u de module python-model maken in Azure Machine Learning kunt gebruiken om een aangepaste module voor model lering of gegevens verwerking te maken.
+description: Meer informatie over het gebruik van de module Python-model maken in Azure Machine Learning om een aangepaste modellerings- of gegevensverwerkingsmodule te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,36 +10,36 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371814"
 ---
-# <a name="create-python-model-module"></a>Python-model module maken
+# <a name="create-python-model-module"></a>Python-modelmodule maken
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Meer informatie over het gebruik van de module python-model maken voor het maken van een niet-traind model van een python-script. U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning Designer-omgeving. 
+Meer informatie over het gebruik van de module Python-model maken om een ongetraind model te maken op basis van een Python-script. U het model baseren op elke leerling die is opgenomen in een Python-pakket in de Azure Machine Learning-ontwerpomgeving. 
 
-Nadat u het model hebt gemaakt, kunt u [Train model](train-model.md) gebruiken om het model op een gegevensset te trainen, zoals elke andere informatieer in azure machine learning. Het getrainde model kan worden door gegeven aan het [score model](score-model.md) om voor spellingen te maken. Vervolgens kunt u het getrainde model opslaan en de Score werk stroom publiceren als een webservice.
+Nadat u het model hebt gemaakt, u [Train Model](train-model.md) gebruiken om het model te trainen op een gegevensset, net als elke andere leerling in Azure Machine Learning. Het getrainde model kan worden doorgegeven aan [scoremodel](score-model.md) om voorspellingen te doen. U vervolgens het getrainde model opslaan en de scorewerkstroom publiceren als een webservice.
 
 > [!WARNING]
-> Op dit moment is het niet mogelijk om de gescoorde resultaten van een python-model door te geven om het [model te evalueren](evaluate-model.md). Als u een model wilt evalueren, kunt u een aangepast python-script schrijven en dit uitvoeren met behulp van de script module voor het [uitvoeren van python](execute-python-script.md) .  
+> Momenteel is het niet mogelijk om de gescoorde resultaten van een Python-model door te geven aan [Het Model evalueren.](evaluate-model.md) Als u een model wilt evalueren, u een aangepast Python-script schrijven en uitvoeren met de [Python Script-module uitvoeren.](execute-python-script.md)  
 
 
 ## <a name="configure-the-module"></a>De module configureren
 
-Het gebruik van deze module vereist tussenliggende of deskundige kennis van python. De module ondersteunt het gebruik van een deel van de informatie die is opgenomen in de Python-pakketten die al in Azure Machine Learning zijn geïnstalleerd. Zie de lijst met vooraf geïnstalleerde Python-pakketten in [uitvoeren python-script](execute-python-script.md).
+Het gebruik van deze module vereist tussentijdse of deskundige kennis van Python. De module ondersteunt het gebruik van elke leerling die is opgenomen in de Python-pakketten die al zijn geïnstalleerd in Azure Machine Learning. Zie de lijst met vooraf geïnstalleerde Python-pakketten in [Python Script uitvoeren](execute-python-script.md).
   
 
-In dit artikel wordt beschreven hoe u een **python-model maakt** met een eenvoudige pijp lijn. Hier volgt een diagram van de pijp lijn:
+In dit artikel ziet u hoe **u Python-model maken** met een eenvoudige pijplijn gebruiken. Hier is een diagram van de pijplijn:
 
-![Diagram van het python-model maken](./media/module/create-python-model.png)
+![Diagram van Python-model maken](./media/module/create-python-model.png)
 
-1. Selecteer **python-model maken**en bewerk het script om uw model-of gegevens beheer proces te implementeren. U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning omgeving.
+1. Selecteer **Python-model maken**en bewerk het script om uw modellerings- of gegevensbeheerproces te implementeren. U het model baseren op elke leerling die is opgenomen in een Python-pakket in de Azure Machine Learning-omgeving.
 
-   De volgende voorbeeld code van de Naive Bayes-classificatie met twee klassen maakt gebruik van het populaire *sklearn* -pakket:
+   De volgende voorbeeldcode van de twee-klasse Naïeve Bayes classifier maakt gebruik van de populaire *sklearn* pakket:
 
    ```Python
 
@@ -73,11 +73,11 @@ In dit artikel wordt beschreven hoe u een **python-model maakt** met een eenvoud
 
    ```
 
-1. Verbind de module **python-model maken** die u zojuist hebt gemaakt om **model** -en **score model**te trainen.
+1. Sluit de **module Python-model maken** die u zojuist hebt gemaakt om model en **scoremodel**te **trainen.**
 
-1. Als u het model wilt evalueren, voegt u een [script](execute-python-script.md) module voor het uitvoeren van een python uit en bewerkt u het python-script.
+1. Als u het model wilt evalueren, voegt u een [Python Script-module uitvoeren](execute-python-script.md) toe en bewerkt u het Python-script.
 
-   Het volgende script is voorbeeld evaluatie code:
+   Het volgende script is voorbeeldevaluatiecode:
 
    ```Python
 
@@ -118,4 +118,4 @@ In dit artikel wordt beschreven hoe u een **python-model maakt** met een eenvoud
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

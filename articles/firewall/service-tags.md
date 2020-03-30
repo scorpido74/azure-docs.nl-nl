@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure Firewall-service Tags
+title: Overzicht van Azure Firewall-servicetags
 description: Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt.
 services: firewall
 author: vhorne
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168687"
 ---
-# <a name="azure-firewall-service-tags"></a>Azure Firewall-service Tags
+# <a name="azure-firewall-service-tags"></a>Azure Firewall-servicetags
 
 Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U kunt niet uw eigen servicetag maken en ook niet opgeven welke IP-adressen zijn opgenomen in een tag. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
 
-Azure Firewall service tags kunnen worden gebruikt in het doel veld netwerk regels. U kunt deze gebruiken in plaats van specifieke IP-adressen.
+Azure Firewall-servicetags kunnen worden gebruikt in het doelveld netwerkregels. U ze gebruiken in plaats van specifieke IP-adressen.
 
-## <a name="supported-service-tags"></a>Ondersteunde service Tags
+## <a name="supported-service-tags"></a>Ondersteunde servicetags
 
-Zie [beveiligings groepen](../virtual-network/security-overview.md#service-tags) voor een lijst met Service tags die beschikbaar zijn voor gebruik in azure firewall-netwerk regels.
+Zie [Beveiligingsgroepen](../virtual-network/security-overview.md#service-tags) voor een lijst met servicetags die beschikbaar zijn voor gebruik in Azure-firewallnetwerkregels.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure firewall logica voor regel verwerking](rule-processing.md)voor meer informatie over Azure firewall-regels.
+Zie [Azure Firewall-regelverwerkingslogica voor](rule-processing.md)meer informatie over Azure Firewall-regels.

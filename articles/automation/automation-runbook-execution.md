@@ -1,65 +1,65 @@
 ---
-title: Uitvoering van Runbook in Azure Automation
-description: Hierin worden de details van het verwerken van een runbook in Azure Automation beschreven.
+title: Runbook-uitvoering in Azure Automation
+description: Beschrijft de details van de manier waarop een runbook in Azure Automation wordt verwerkt.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367139"
 ---
-# <a name="runbook-execution-in-azure-automation"></a>Uitvoering van Runbook in Azure Automation
+# <a name="runbook-execution-in-azure-automation"></a>Runbook-uitvoering in Azure Automation
 
-Runbooks worden uitgevoerd op basis van de logica die erin is gedefinieerd. Als een runbook wordt onderbroken, wordt het runbook aan het begin opnieuw opgestart. Dit gedrag vereist dat u runbooks schrijft die ondersteuning bieden voor opnieuw opstarten als tijdelijke problemen optreden.
+Runbooks worden uitgevoerd op basis van de logica die erin is gedefinieerd. Als een runbook wordt onderbroken, wordt het runbook aan het begin opnieuw opgestart. Dit gedrag vereist dat u runbooks schrijft die ondersteunen bij het opnieuw starten als er tijdelijke problemen optreden.
 
-Bij het starten van een runbook in Azure Automation wordt een taak gemaakt. Een taak is één uitvoerings exemplaar van het runbook. Elke taak heeft toegang tot Azure-resources door verbinding te maken met uw Azure-abonnement. De taak heeft alleen toegang tot resources in uw Data Center als deze bronnen toegankelijk zijn vanuit de open bare Cloud.
+Als u een runbook start in Azure Automation, wordt een taak gestart. Een taak is één uitvoeringsinstantie van het runbook. Elke taak heeft toegang tot Azure-bronnen door een verbinding te maken met uw Azure-abonnement. De taak heeft alleen toegang tot resources in uw datacenter als deze bronnen toegankelijk zijn vanuit de openbare cloud.
 
-Azure Automation wijst een werk nemer toe om elke taak uit te voeren tijdens de uitvoering van het runbook. Terwijl werk rollen worden gedeeld door veel Azure-accounts, zijn taken van verschillende Automation-accounts van elkaar geïsoleerd. U hebt geen controle over welke Worker-Services uw taak aanvraag.
+Azure Automation wijst een werknemer toe om elke taak uit te voeren tijdens de uitvoering van de runbook. Hoewel werknemers door veel Azure-accounts worden gedeeld, worden taken van verschillende Automatiseringsaccounts van elkaar geïsoleerd. U hebt geen controle over welke werknemer uw taakaanvraag bedient.
 
-Wanneer u de lijst met runbooks in de Azure Portal weergeeft, wordt de status weer gegeven van elke taak die voor elk runbook is gestart. Met Azure Automation worden taak logboeken Maxi maal 30 dagen opgeslagen. 
+Wanneer u de lijst met runbooks in de Azure-portal bekijkt, wordt de status weergegeven van elke taak die voor elke runbook is gestart. Azure Automation slaat taaklogboeken op voor maximaal 30 dagen. 
 
-In het volgende diagram ziet u de levens cyclus van een runbook-taak voor [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks), [grafische Runbooks](automation-runbook-types.md#graphical-runbooks)en [Power shell workflow-runbooks](automation-runbook-types.md#powershell-workflow-runbooks).
+In het volgende diagram wordt de levenscyclus van een runbook-taak voor [PowerShell-runbooks,](automation-runbook-types.md#powershell-runbooks) [grafische runbooks](automation-runbook-types.md#graphical-runbooks)en [PowerShell-werkstroomboeken](automation-runbook-types.md#powershell-workflow-runbooks)weergegeven .
 
-![Taak statussen-Power shell-werk stroom](./media/automation-runbook-execution/job-statuses.png)
+![Taakstatussen - PowerShell-werkstroom](./media/automation-runbook-execution/job-statuses.png)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
 
-## <a name="where-to-run-your-runbooks"></a>Waar worden uw runbooks uitgevoerd?
+## <a name="where-to-run-your-runbooks"></a>Waar u uw runbooks uitvoeren?
 
-Runbooks in Azure Automation kunnen worden uitgevoerd op een Azure sandbox of een [Hybrid Runbook worker](automation-hybrid-runbook-worker.md). De meeste runbooks kunnen eenvoudig worden uitgevoerd in een Azure sandbox, een gedeelde omgeving die door meerdere taken kan worden gebruikt. Taken die gebruikmaken van dezelfde sandbox zijn gebonden aan de resource beperkingen van de sandbox.
+Runbooks in Azure Automation kunnen worden uitgevoerd op een Azure sandbox of een [Hybride Runbook Worker.](automation-hybrid-runbook-worker.md) De meeste runbooks kunnen eenvoudig worden uitgevoerd in een Azure-sandbox, een gedeelde omgeving die meerdere taken kunnen gebruiken. Taken met dezelfde sandbox zijn gebonden aan de resourcebeperkingen van de sandbox.
 
-U kunt een Hybrid Runbook Worker gebruiken om runbooks rechtstreeks uit te voeren op de computer die de rol host en de lokale resources in de omgeving. Azure Automation runbooks opslaat en beheert en vervolgens aan een of meer toegewezen computers worden geleverd.
+U een hybride runbookworker gebruiken om boeken rechtstreeks uit te voeren op de computer die de rol host en tegen lokale bronnen in de omgeving. Azure Automation slaat runbooks op en beheert deze vervolgens op een of meer toegewezen computers.
 
-De volgende tabel bevat een aantal uitvoerings taken voor runbook met de aanbevolen uitvoerings omgeving die voor elk wordt vermeld.
+In de volgende tabel worden enkele uitvoeringstaken voor runbook weergegeven met de aanbevolen uitvoeringsomgeving voor elk.
 
 |Taak|Beste keuze|Opmerkingen|
 |---|---|---|
-|Integreren met Azure-resources|Azure sandbox|Verificatie is eenvoudiger in Azure. Als u een Hybrid Runbook Worker op een virtuele Azure-machine gebruikt, kunt u [beheerde identiteiten gebruiken voor Azure-resources](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources).|
-|Optimale prestaties verkrijgen om Azure-resources te beheren|Azure sandbox|Script wordt uitgevoerd in dezelfde omgeving, met minder latentie.|
-|Beperk operationele kosten|Azure sandbox|Er zijn geen berekenings overhead en er is geen virtuele machine nodig.|
-|Langlopend script uitvoeren|Hybrid Runbook Worker|Azure-sandboxes hebben [beperkingen op resources](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
-|Interactie met lokale services|Hybrid Runbook Worker|Kan rechtstreeks toegang hebben tot de hostmachine.|
-|Software en uitvoer bare bestanden van derden vereisen|Hybrid Runbook Worker|U beheert het besturings systeem en kan software installeren.|
-|Een bestand of map bewaken met een runbook|Hybrid Runbook Worker|Een [Watcher-taak](automation-watchers-tutorial.md) gebruiken op een Hybrid Runbook Worker.|
-|Een resource-intensieve script uitvoeren|Hybrid Runbook Worker| Azure-sandboxes hebben [beperkingen op resources](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
-|Modules met specifieke vereisten gebruiken| Hybrid Runbook Worker|Een aantal voorbeelden:</br> WinSCP-afhankelijkheid op WinSCP. exe </br> IISAdministration: afhankelijkheid van het inschakelen van IIS.|
-|Een module installeren met een installatie programma|Hybrid Runbook Worker|Modules voor sandbox moeten kopiëren ondersteunen.|
-|Runbooks of modules gebruiken waarvoor .NET Framework versie anders is dan 4.7.2|Hybrid Runbook Worker|Automation-sandboxes hebben .NET Framework 4.7.2 en er is geen manier om het te upgraden.|
-|Scripts uitvoeren waarvoor uitbrei ding van bevoegdheden is vereist|Hybrid Runbook Worker|Sandboxes staan geen uitbrei ding van bevoegdheden toe. Met een Hybrid Runbook Worker kunt u UAC uitschakelen en **invoke-opdracht** gebruiken bij het uitvoeren van de opdracht die uitbrei ding vereist.|
-|Scripts uitvoeren waarvoor toegang tot WMI is vereist|Hybrid Runbook Worker|Taken die worden uitgevoerd in sandboxes in de Cloud, hebben geen toegang tot WMI. |
+|Integreren met Azure-bronnen|Azure Sandbox|Gehost in Azure is verificatie eenvoudiger. Als u een hybride runbookworker gebruikt op een Azure VM, u [beheerde identiteiten gebruiken voor Azure-resources.](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
+|Optimale prestaties verkrijgen om Azure-resources te beheren|Azure Sandbox|Script wordt uitgevoerd in dezelfde omgeving, die minder latentie heeft.|
+|Minimaliseer de operationele kosten|Azure Sandbox|Er is geen rekenkosten en geen vm nodig.|
+|Langlopend script uitvoeren|Hybrid Runbook Worker|Azure-sandboxes hebben [beperkingen op resources.](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
+|Interactie met lokale services|Hybrid Runbook Worker|Kan direct toegang hebben tot de hostmachine.|
+|Software en uitvoerbare software van derden vereisen|Hybrid Runbook Worker|U beheert het besturingssysteem en software installeren.|
+|Een bestand of map bewaken met een runbook|Hybrid Runbook Worker|Gebruik een [Watcher-taak](automation-watchers-tutorial.md) op een hybride runbookworker.|
+|Een resourceintensief script uitvoeren|Hybrid Runbook Worker| Azure-sandboxes hebben [beperkingen op resources.](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
+|Modules gebruiken met specifieke vereisten| Hybrid Runbook Worker|Een aantal voorbeelden:</br> WinSCP - afhankelijkheid van winscp.exe </br> IISAdministration - afhankelijkheid van het inschakelen van IIS.|
+|Een module installeren met een installateur|Hybrid Runbook Worker|Modules voor sandbox moeten kopiëren ondersteunen.|
+|Runbooks of modules gebruiken waarvoor een andere .NET Framework-versie nodig is dan 4.7.2|Hybrid Runbook Worker|Automatiseringssandboxes hebben .NET Framework 4.7.2 en er is geen manier om deze te upgraden.|
+|Scripts uitvoeren waarvoor hoogte nodig is|Hybrid Runbook Worker|Zandbakken staan geen hoogte toe. Met een hybride runbookworker u UAC uitschakelen en **Aanroep-command** gebruiken wanneer u de opdracht uitvoert waarvoor hoogte vereist is.|
+|Scripts uitvoeren waarvoor toegang tot WMI vereist is|Hybrid Runbook Worker|Taken die worden uitgevoerd in zandbakken in de cloud, hebben geen toegang tot WMI. |
 
-## <a name="runbook-behavior"></a>Gedrag van Runbook
+## <a name="runbook-behavior"></a>Runbook-gedrag
 
 ### <a name="creating-resources"></a>Resources maken
 
-Als uw runbook een resource maakt, moet u controleren of de resource al bestaat voordat u deze probeert te maken. Hier volgt een voor beeld van een basis.
+Als uw runbook een resource maakt, moet het script controleren of de bron al bestaat voordat u deze probeert te maken. Hier is een basisvoorbeeld.
 
 ```powershell
 $vmName = "WindowsVM1"
@@ -78,22 +78,22 @@ else
     }
 ```
 
-### <a name="supporting-time-dependent-scripts"></a>Ondersteunende scripts voor tijd afhankelijke
+### <a name="supporting-time-dependent-scripts"></a>Ondersteunde tijdsafhankelijke scripts
 
-Uw runbooks moeten robuust en geschikt zijn voor het afhandelen van tijdelijke fouten die ertoe kunnen leiden dat ze opnieuw worden opgestart of mislukken. Als een runbook is mislukt, Azure Automation opnieuw proberen.
+Uw runbooks moeten robuust zijn en in staat zijn om tijdelijke fouten te verwerken die ervoor kunnen zorgen dat ze opnieuw worden opgestart of mislukken. Als een runbook mislukt, probeert Azure Automation het opnieuw.
 
-Als uw runbook normaal gesp roken binnen een tijds beperking wordt uitgevoerd, laat u het script de logica implementeren om de uitvoerings tijd te controleren. Met deze controle wordt de uitvoering van bewerkingen, zoals opstarten, afsluiten of uitschalen, alleen tijdens bepaalde tijden gegarandeerd.
+Als uw runbook normaal gesproken binnen een tijdsdruk wordt uitgevoerd, moet u de logica voor het implementeren van het script uitvoeren om de uitvoeringstijd te controleren. Deze controle zorgt ervoor dat bewerkingen zoals opstarten, afsluiten of uitschalen alleen op bepaalde tijdstippen worden uitgevoerd.
 
 > [!NOTE]
-> De lokale tijd op het Azure sandbox-proces is ingesteld op UTC. Berekeningen voor de datum en tijd in uw runbooks moeten in overweging worden genomen.
+> De lokale tijd in het Azure sandbox-proces is ingesteld op UTC. Berekeningen voor datum en tijd in uw runbooks moeten rekening houden met dit feit.
 
 ### <a name="tracking-progress"></a>Voortgang bijhouden
 
-Het is een goed idee om uw runbooks te schrijven, zodat u de hoofdomgevings logica kunt structureren zodat deze eenvoudig opnieuw kan worden gebruikt en opnieuw kan worden gestart. Het bijhouden van de voortgang in een runbook is een goede manier om ervoor te zorgen dat de runbook-logica correct wordt uitgevoerd als er problemen zijn. Het is mogelijk om de voortgang van een runbook bij te houden met behulp van een externe bron, zoals een opslag account, een Data Base of gedeelde bestanden. U kunt logica in uw runbook maken om eerst de status van de laatste uitgevoerde actie te controleren. Op basis van het resultaat van de controle kan de logica specifieke taken in het runbook overs Laan of voortzetten.
+Het is een goede gewoonte om uw runbooks auteur te zijn modulair van aard, structureren runbook logica, zodat het kan worden hergebruikt en opnieuw gemakkelijk. Het bijhouden van de voortgang in een runbook is een goede manier om ervoor te zorgen dat de runbook-logica correct wordt uitgevoerd als er problemen zijn. Het is mogelijk om de voortgang van een runbook bij te houden met behulp van een externe bron, zoals een opslagaccount, een database of gedeelde bestanden. U logica maken in uw runbook om eerst de status van de laatste actie te controleren. Vervolgens kan de logica, op basis van het resultaat van de controle, specifieke taken in het runbook overslaan of voortzetten.
 
-### <a name="preventing-concurrent-jobs"></a>Gelijktijdige taken voor komen
+### <a name="preventing-concurrent-jobs"></a>Gelijktijdige taken voorkomen
 
-Sommige runbooks gedragen zich niet alleen als ze in meerdere taken tegelijk worden uitgevoerd. In dit geval is het belang rijk dat een runbook logica implementeert om te bepalen of er al een actieve taak is. Hier volgt een voor beeld van een basis.
+Sommige runbooks gedragen zich vreemd als ze lopen over meerdere banen op hetzelfde moment. In dit geval is het belangrijk dat een runbook logica implementeert om te bepalen of er al een lopende taak is. Hier is een basisvoorbeeld.
 
 ```powershell
 # Authenticate to Azure
@@ -123,7 +123,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ### <a name="working-with-multiple-subscriptions"></a>Met meerdere abonnementen werken
 
-Om te kunnen omgaan met meerdere abonnementen, moet uw runbook de cmdlet [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) gebruiken om ervoor te zorgen dat de verificatie context niet wordt opgehaald uit een ander runbook dat wordt uitgevoerd in dezelfde sandbox. Het runbook gebruikt ook de para meter`AzContext` op de AZ module-cmdlets en geeft deze de juiste context.
+Om meerdere abonnementen af te handelen, moet uw runbook de cmdlet [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) gebruiken om ervoor te zorgen dat de verificatiecontext niet wordt opgehaald uit een ander runbook dat in dezelfde sandbox wordt uitgevoerd. Het runbook maakt`AzContext` ook gebruik van de parameter op de Az module cmdlets en geeft het de juiste context.
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -150,13 +150,13 @@ Start-AzAutomationRunbook `
 
 ### <a name="handling-exceptions"></a>Afhandeling van uitzonderingen
 
-In deze sectie worden enkele manieren beschreven voor het afhandelen van uitzonde ringen of onregelmatige problemen in uw runbooks.
+In deze sectie worden enkele manieren beschreven om uitzonderingen of onderbroken problemen in uw runbooks af te handelen.
 
 #### <a name="erroractionpreference"></a>ErrorActionPreference
 
-De variabele [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe Power shell reageert op een niet-afsluit fout. Afsluit fouten worden altijd beëindigd en worden niet beïnvloed door *ErrorActionPreference*.
+De variabele [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe PowerShell reageert op een niet-beëindigende fout. Beëindiging van fouten altijd beëindigen en worden niet beïnvloed door *ErrorActionPreference*.
 
-Wanneer het runbook gebruikmaakt van `ErrorActionPreference`, stopt een normaal niet-afsluit fout, zoals **PathNotFound** van de `Get-ChildItem`-cmdlet, de voltooiing van het runbook. In het volgende voor beeld ziet u het gebruik van `ErrorActionPreference`. De laatste `Write-Output` opdracht wordt nooit uitgevoerd, omdat het script stopt.
+Wanneer het runbook wordt gebruikt, `ErrorActionPreference`stopt een normaal gesproken niet-beëindigende fout zoals **PathNotFound** van de `Get-ChildItem` cmdlet het voltooien van het runbook. In het volgende voorbeeld `ErrorActionPreference`wordt het gebruik van . De `Write-Output` laatste opdracht wordt nooit uitgevoerd, omdat het script stopt.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -164,9 +164,9 @@ Get-Childitem -path nofile.txt
 Write-Output "This message will not show"
 ```
 
-#### <a name="try-catch-finally"></a>Probeer catch ten slotte
+#### <a name="try-catch-finally"></a>Probeer Catch Tot slot
 
-[Try catch finally](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) wordt gebruikt in Power shell-scripts voor het afhandelen van afsluit fouten. Het script kan dit mechanisme gebruiken om specifieke uitzonde ringen of algemene uitzonde ringen te ondervangen. De instructie `catch` moet worden gebruikt om fouten bij te houden of te proberen af te handelen. In het volgende voor beeld wordt geprobeerd een bestand te downloaden dat niet bestaat. De `System.Net.WebException` uitzonde ring wordt onderschept en de laatste waarde voor een andere uitzonde ring wordt geretourneerd.
+[Try Catch Finally](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) wordt gebruikt in PowerShell-scripts om beëindigingsfouten af te handelen. Het script kan dit mechanisme gebruiken om specifieke uitzonderingen of algemene uitzonderingen te vangen. De `catch` instructie moet worden gebruikt om fouten bij te houden of te proberen om te gaan. In het volgende voorbeeld wordt geprobeerd een bestand te downloaden dat niet bestaat. Het vangt `System.Net.WebException` de uitzondering en geeft de laatste waarde voor een andere uitzondering.
 
 ```powershell-interactive
 try
@@ -184,9 +184,9 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Sprong
+#### <a name="throw"></a>Gooien
 
-[Throw](/powershell/module/microsoft.powershell.core/about/about_throw) kan worden gebruikt om een afsluit fout te genereren. Dit mechanisme kan nuttig zijn bij het definiëren van uw eigen logica in een runbook. Als het script voldoet aan een criterium dat het moet stoppen, kan het de `throw`-instructie gebruiken om te stoppen. In het volgende voor beeld wordt deze instructie gebruikt om een vereiste functie parameter weer te geven.
+[Gooien](/powershell/module/microsoft.powershell.core/about/about_throw) kan worden gebruikt om een beëindigingsfout te genereren. Dit mechanisme kan handig zijn bij het definiëren van uw eigen logica in een runbook. Als het script voldoet aan een criterium dat `throw` het moet stoppen, kan het de instructie gebruiken om te stoppen. In het volgende voorbeeld wordt deze instructie gebruikt om een vereiste functieparameter weer te geven.
 
 ```powershell-interactive
 function Get-ContosoFiles
@@ -196,86 +196,86 @@ function Get-ContosoFiles
 }
 ```
 
-### <a name="using-executables-or-calling-processes"></a>Uitvoer bare bestanden of aanroepende processen gebruiken
+### <a name="using-executables-or-calling-processes"></a>Uitvoerbare of oproepprocessen gebruiken
 
-Runbooks die worden uitgevoerd in azure-sandboxes bieden geen ondersteuning voor het aanroepen van processen, zoals uitvoer bare bestanden ( **. exe** ) of subprocessen.  De reden hiervoor is dat een Azure sandbox een gedeeld proces is dat wordt uitgevoerd in een container die mogelijk geen toegang heeft tot alle onderliggende Api's. Voor scenario's waarvoor software van derden of aanroepen naar subprocessen vereist is, is het raadzaam om een runbook uit te voeren op een [Hybrid Runbook worker](automation-hybrid-runbook-worker.md).
+Runbooks die worden uitgevoerd in Azure-sandboxes ondersteunen geen aanroepprocessen, zoals executables (**.exe-bestanden)** of subprocessen.  De reden hiervoor is dat een Azure sandbox een gedeeld proces is dat wordt uitgevoerd in een container die mogelijk geen toegang heeft tot alle onderliggende API's. Voor scenario's waarvoor software van derden of oproepen naar subprocessen vereist zijn, wordt aanbevolen om een runbook uit te voeren op een [hybride runbook worker.](automation-hybrid-runbook-worker.md)
 
-### <a name="accessing-device-and-application-characteristics"></a>Eigenschappen van het apparaat en de toepassing openen
+### <a name="accessing-device-and-application-characteristics"></a>Toegangsapparaat en toepassingskenmerken
 
-Runbook-taken die worden uitgevoerd in azure-sandboxes hebben geen toegang tot kenmerken van apparaten of toepassingen. De meest voorkomende API die wordt gebruikt om de metrische gegevens over prestaties in Windows op te vragen, is WMI, met een aantal algemene metrische gegevens die geheugen en CPU-gebruik zijn. Het maakt echter niet uit welke API wordt gebruikt, omdat taken die in de cloud worden uitgevoerd, geen toegang hebben tot de micro soft-implementatie van Web-Based Enterprise Management (WBEM). Dit platform is gebaseerd op de Common Information Model (CIM) en biedt de industrie normen voor het definiëren van kenmerken van apparaten en toepassingen.
+Runbook-taken die worden uitgevoerd in Azure-sandboxes hebben geen toegang tot apparaat- of toepassingskenmerken. De meest voorkomende API die wordt gebruikt om prestatiestatistieken op Te vragen op Windows is WMI, waarbij enkele van de algemene statistieken geheugen- en CPU-gebruik zijn. Het maakt echter niet uit welke API wordt gebruikt, omdat taken die in de cloud worden uitgevoerd geen toegang hebben tot de Microsoft-implementatie van Web-Based Enterprise Management (WBEM). Dit platform is gebouwd op het Common Information Model (CIM), dat de industriestandaarden biedt voor het definiëren van apparaat- en toepassingskenmerken.
 
-## <a name="handling-errors"></a>Fouten afhandelen
+## <a name="handling-errors"></a>Afhandeling van fouten
 
-Uw runbooks moeten fouten kunnen afhandelen. Power Shell heeft twee typen fouten, eindigend en niet-beëindigen. Bij het beëindigen van fouten wordt de uitvoering van het runbook gestopt wanneer deze zich voordoen. Het runbook stopt met de taak status mislukt.
+Uw runbooks moeten in staat zijn om fouten te verwerken. PowerShell heeft twee soorten fouten, die eindigen en niet beëindigen. Als u fouten beëindigt, wordt de uitvoering van runbook gestopt wanneer deze zich voordoen. Het runbook stopt met een taakstatus van Mislukt.
 
-Met niet-afsluit fouten kan een script worden voortgezet, zelfs nadat het is uitgevoerd. Een voor beeld van een niet-afsluit fout is een van de volgende situaties wanneer een runbook gebruikmaakt van de `Get-ChildItem` cmdlet met een pad dat niet bestaat. Power shell ziet dat het pad niet bestaat, een fout genereert en naar de volgende map gaat. De fout in dit geval stelt de status status van de runbook-taak niet in op mislukt en de taak kan zelfs zijn voltooid. Als u wilt afdwingen dat een runbook stopt bij een niet-afsluit fout, kunt u `-ErrorAction Stop` gebruiken voor de cmdlet.
+Met niet-beëindigende fouten kan een script worden voortgezet, zelfs nadat deze zich hebben voorgedaan. Een voorbeeld van een niet-beëindigende fout is een `Get-ChildItem` fout die optreedt wanneer een runbook de cmdlet gebruikt met een pad dat niet bestaat. PowerShell ziet dat het pad niet bestaat, gooit een fout en gaat door naar de volgende map. De fout in dit geval stelt de status van runbook-taak niet in op Mislukt en de taak kan zelfs worden voltooid. Als u een runbook wilt dwingen om te stoppen `-ErrorAction Stop` bij een niet-beëindigende fout, u de cmdlet gebruiken.
 
-## <a name="handling-jobs"></a>Taken verwerken
+## <a name="handling-jobs"></a>Afhandeling van taken
 
-U kunt de uitvoerings omgeving hergebruiken voor taken van hetzelfde Automation-account. Eén runbook kan meerdere taken tegelijk uitvoeren. Hoe meer taken u tegelijkertijd uitvoert, hoe vaak deze naar dezelfde sandbox kunnen worden verzonden.
+U de uitvoeringsomgeving opnieuw gebruiken voor taken van hetzelfde automatiseringsaccount. Een enkel runbook kan veel taken tegelijk uitvoeren. Hoe meer taken u tegelijkertijd uitvoert, hoe vaker ze naar dezelfde sandbox kunnen worden verzonden.
 
-Taken die worden uitgevoerd in hetzelfde sandbox-proces, kunnen van invloed zijn op elkaar. Met een voor beeld wordt de cmdlet `Disconnect-AzAccount` uitgevoerd. Uitvoering van deze cmdlet verbreekt de verbinding van elke runbook-taak in het gedeelde sandbox-proces.
+Taken die in hetzelfde sandbox-proces worden uitgevoerd, kunnen van invloed zijn op elkaar. Een voorbeeld is `Disconnect-AzAccount` het uitvoeren van de cmdlet. Uitvoering van deze cmdlet verbreekt elke runbook-taak in het gedeelde sandbox-proces.
 
-Power shell-taken die zijn gestart vanuit een runbook dat wordt uitgevoerd in een Azure-sandbox, worden mogelijk niet uitgevoerd in de volledige taal modus. Zie [Power shell-taal modi](/powershell/module/microsoft.powershell.core/about/about_language_modes)voor meer informatie over Power shell-taal modi. Zie de [taak status ophalen met Power shell](#retrieving-job-status-using-powershell)voor meer informatie over interactie met taken in azure Automation.
+PowerShell-taken zijn gestart vanuit een runbook die wordt uitgevoerd in een Azure-sandbox, mogelijk niet in de volledige taalmodus. Zie [PowerShell-taalmodi](/powershell/module/microsoft.powershell.core/about/about_language_modes)voor meer informatie over de taalmodi van PowerShell. Zie [Taakstatus ophalen met PowerShell](#retrieving-job-status-using-powershell)voor meer informatie over interactie met taken in Azure Automation.
 
-### <a name="job-statuses"></a>Taak status
+### <a name="job-statuses"></a>Functiestatussen
 
-De volgende tabel beschrijft de statussen die mogelijk zijn voor een taak.
+In de volgende tabel worden de statussen beschreven die mogelijk zijn voor een taak.
 
 | Status | Beschrijving |
 |:--- |:--- |
 | Voltooid |De taak is voltooid. |
-| Mislukt |Het compileren van een grafisch of Power shell-werk stroom runbook is mislukt. Een Power shell-script-runbook kan niet worden gestart of er is een uitzonde ring opgetreden in de taak. Zie [Azure Automation typen runbook](automation-runbook-types.md).|
-| Mislukt, wachten op resources |De taak is mislukt omdat de limiet voor de [billijke share](#fair-share) drie keer is bereikt en vanaf hetzelfde controle punt of vanaf het begin van het runbook elke keer is gestart. |
-| In wachtrij |Er wordt gewacht tot resources op een Automation-werk nemer beschikbaar zijn, zodat deze kunnen worden gestart. |
-| Starten |De taak is toegewezen aan een werk nemer en het systeem wordt gestart. |
-| Hervatten |Het systeem hervat de taak nadat deze is onderbroken. |
+| Mislukt |Een grafische of PowerShell Workflow-runbook kan niet worden gecompileerd. Een PowerShell-scriptrunbook kan niet worden gestart of de taak had een uitzondering. Zie [Azure Automation runbook-typen](automation-runbook-types.md).|
+| Mislukt, wachten op resources |De taak is mislukt omdat deze de [limiet voor een eerlijk aandeel](#fair-share) drie keer heeft bereikt en telkens vanaf hetzelfde controlepunt of vanaf het begin van het runbook is gestart. |
+| In wachtrij |De taak wacht op resources op een automatiseringsmedewerker die beschikbaar is, zodat deze kan worden gestart. |
+| Starten |De taak is toegewezen aan een werknemer en het systeem wordt gestart. |
+| Hervatten |Het systeem hervat de taak nadat het werd opgeschort. |
 | In uitvoering |De taak wordt uitgevoerd. |
-| Uitvoeren, wachten op resources |De taak is uit het geheugen verwijderd omdat de limiet voor de billijke share is bereikt. Het wordt binnenkort hervat vanaf het laatste controle punt. |
+| Uitvoeren, wachten op resources |De taak is gelost omdat het de fair share limiet heeft bereikt. Het zal binnenkort worden hervat vanaf zijn laatste controlepunt. |
 | Gestopt |De gebruiker heeft de taak gestopt voordat deze is voltooid. |
-| Stoppen |Het systeem stopt de taak. |
-| Suspended |Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . De taak is door de gebruiker, door het systeem of door een opdracht in het runbook onderbroken. Als een runbook geen controle punt heeft, begint het vanaf het begin. Als er een controle punt is, kan het opnieuw worden gestart en wordt hervat vanaf het laatste controle punt. Het systeem onderbreekt alleen het runbook wanneer er een uitzonde ring optreedt. De variabele `ErrorActionPreference` is standaard ingesteld op door gaan, wat aangeeft dat de taak wordt uitgevoerd op een fout. Als de voorkeurs variabele is ingesteld op Stop, wordt een fout door de taak onderbroken.  |
-| Onderbreken |Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . Het systeem probeert de taak op verzoek van de gebruiker te onderbreken. Het runbook moet het volgende controle punt bereiken voordat het kan worden onderbroken. Als het laatste controle punt al is door gegeven, wordt het voltooid voordat het kan worden onderbroken. |
+| Stoppen |Het systeem stopt de klus. |
+| Onderbroken |Is alleen van toepassing op [grafische en PowerShell Workflow runbooks.](automation-runbook-types.md) De taak is door de gebruiker, door het systeem of door een opdracht in het runbook onderbroken. Als een runbook geen controlepunt heeft, begint het vanaf het begin. Als het een controlepunt heeft, kan het opnieuw beginnen en vanaf zijn laatste controlepunt hervatten. Het systeem schort het runbook alleen op wanneer er een uitzondering optreedt. Standaard is `ErrorActionPreference` de variabele ingesteld op Doorgaan, wat aangeeft dat de taak blijft draaien op een fout. Als de voorkeursvariabele is ingesteld op Stoppen, wordt de taak op een fout opgeschort.  |
+| Onderbreken |Is alleen van toepassing op [grafische en PowerShell Workflow runbooks.](automation-runbook-types.md) Het systeem probeert de taak op te schorten op verzoek van de gebruiker. Runbook moet het volgende controlepunt bereiken voordat de taak kan worden onderbroken. Als het al zijn laatste controlepunt is gepasseerd, wordt het voltooid voordat het kan worden opgeschort. |
 
-### <a name="viewing-job-status-from-the-azure-portal"></a>Taak status weer geven vanuit de Azure Portal
+### <a name="viewing-job-status-from-the-azure-portal"></a>Taakstatus weergeven vanuit de Azure-portal
 
-U kunt een samenvattings status van alle runbook-taken weer geven of Details van een specifieke runbook-taak in het Azure Portal bekijken. U kunt ook integratie met uw Log Analytics-werk ruimte configureren om de taak status en taak stromen van een runbook door te sturen. Zie voor meer informatie over het integreren met Azure Monitor-logboeken [taak status door sturen van automatisering naar Azure monitor-logboeken](automation-manage-send-joblogs-log-analytics.md).
+U een samengevatte status van alle runbook-taken bekijken of inzoomen op details van een specifieke runbook-taak in de Azure-portal. U integratie met uw Log Analytics-werkruimte ook configureren om de status van runbook-taken en taakstromen door te sturen. Zie [Taakstatus en taakstromen doorsturen van Automatisering naar Azure Monitor-logboeken voor](automation-manage-send-joblogs-log-analytics.md)meer informatie over de integratie met Azure Monitor-logboeken.
 
-Rechts van het geselecteerde Automation-account ziet u een samen vatting van alle runbook-taken onder de tegel **taak statistieken** .
+Rechts van het geselecteerde automatiseringsaccount ziet u een overzicht van alle runbook-taken onder de tegel **Taakstatistieken.**
 
-![Taak statistieken tegel](./media/automation-runbook-execution/automation-account-job-status-summary.png)
+![Tegel Functiestatistieken](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
-Deze tegel bevat een aantal en een grafische weer gave van de taak status van elke uitgevoerde taak.
+Deze tegel geeft een telling en grafische weergave weer van de taakstatus voor elke uitgevoerde taak.
 
-Als u op de tegel klikt, wordt de pagina taken weer gegeven, die een overzicht bevat van alle uitgevoerde taken. Op deze pagina worden de status, de runbook-naam, de start tijd en de voltooiings tijd voor elke taak weer gegeven.
+Als u op de tegel klikt, wordt de pagina Vacatures weergegeven, die een samengevatte lijst bevat met alle uitgevoerde taken. Op deze pagina worden de status, de naam van het runbook, de begintijd en de voltooiingstijd voor elke taak weergegeven.
 
-![Pagina Automation-account taken](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Pagina Vacatures voor automatiseringsaccount](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-U kunt de lijst met taken filteren door **taken filteren**te selecteren. Filter op een specifiek runbook, de taak status of een keuze in de vervolg keuzelijst en geef het tijds bereik voor de zoek opdracht op.
+U de lijst met taken filteren door **Taken filteren**te selecteren. Filter op een specifiek runbook, taakstatus of een keuze uit de vervolgkeuzelijst en geef het tijdsbereik voor het zoeken op.
 
-![Taak status filteren](./media/automation-runbook-execution/automation-account-jobs-filter.png)
+![Functiestatus filteren](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook door dat runbook te selecteren op de pagina Runbooks in uw Automation-account en vervolgens de tegel **taken** te selecteren. Deze actie geeft de pagina taken weer. Hier kunt u klikken op de taak record om de details en de uitvoer weer te geven.
+U ook de details van het taakoverzicht voor een specifiek runbook bekijken door dat runbook te selecteren op de pagina Runbooks in uw automatiseringsaccount en vervolgens de tegel **Taken te** selecteren. Met deze actie wordt de pagina Vacatures weergegeven. Vanaf hier u op de taakrecord klikken om de details en uitvoer te bekijken.
 
-![Pagina Automation-account taken](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Pagina Vacatures voor automatiseringsaccount](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
-### <a name="viewing-the-job-summary"></a>De samen vatting van de taak weer geven
+### <a name="viewing-the-job-summary"></a>Het overzicht van de taak bekijken
 
-Met het samen vatting van de taak dat hierboven wordt beschreven, kunt u een lijst bekijken met alle taken die voor een bepaald runbook zijn gemaakt en de meest recente status. Als u gedetailleerde informatie en uitvoer voor een taak wilt weer geven, klikt u op de naam in de lijst. De gedetailleerde weer gave van de taak bevat de waarden voor de runbook-para meters die zijn opgegeven voor die taak.
+Met het hierboven beschreven overzicht van de taak u een lijst bekijken met alle taken die zijn gemaakt voor een bepaald runbook en hun meest recente status. Als u gedetailleerde informatie en uitvoer voor een taak wilt zien, klikt u op de naam in de lijst. De gedetailleerde weergave van de taak bevat de waarden voor de runbook-parameters die aan die taak zijn verstrekt.
 
 U kunt de volgende stappen gebruiken om de taken voor een runbook weer te geven.
 
-1. Selecteer in de Azure Portal **Automation** en selecteer vervolgens de naam van een Automation-account.
-2. Selecteer in de hub **Runbooks** onder **proces automatisering**.
+1. Selecteer in de Azure-portal **Automatisering** en selecteer vervolgens de naam van een automatiseringsaccount.
+2. Selecteer in de hub **Runbooks** onder **Procesautomatisering**.
 3. Selecteer op de pagina Runbooks een runbook in de lijst.
-3. Klik op de pagina voor het geselecteerde runbook op de tegel **taken** .
-4. Klik op een van de taken in de lijst en Bekijk de details en uitvoer op de pagina met details van de runbook-taak.
+3. Klik op de pagina voor het geselecteerde runbook op de tegel **Vacatures.**
+4. Klik op een van de taken in de lijst en bekijk de details en uitvoer op de pagina taakdetails van runbook.
 
-### <a name="retrieving-job-status-using-powershell"></a>De taak status ophalen met behulp van Power shell
+### <a name="retrieving-job-status-using-powershell"></a>Taakstatus ophalen met PowerShell
 
-Gebruik de cmdlet `Get-AzAutomationJob` om de taken op te halen die voor een runbook zijn gemaakt en de details van een bepaalde taak. Als u een runbook start met Power shell met `Start-AzAutomationRunbook`, wordt de resulterende taak geretourneerd. Gebruik [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) om taak uitvoer op te halen.
+Gebruik `Get-AzAutomationJob` de cmdlet om de taken op te halen die zijn gemaakt voor een runbook en de details van een bepaalde taak. Als u een runbook start `Start-AzAutomationRunbook`met PowerShell met PowerShell met , wordt de resulterende taak geretourneerd. Gebruik [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) om de taakuitvoer op te halen.
 
-In het volgende voor beeld wordt de laatste taak voor een voor beeld-runbook opgehaald en worden de status, de opgegeven waarden voor de runbook-para meters en de taak uitvoer weer gegeven.
+In het volgende voorbeeld wordt de laatste taak voor een voorbeeldrunbook weergegeven en wordt de status ervan weergegeven, de waarden die zijn opgegeven voor de parameters van de runbook en de taakuitvoer.
 
 ```azurepowershell-interactive
 $job = (Get-AzAutomationJob –AutomationAccountName "MyAutomationAccount" `
@@ -286,7 +286,7 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-In het volgende voor beeld wordt de uitvoer voor een specifieke taak opgehaald en wordt elke record geretourneerd. Als er een uitzonde ring is voor een van de records, schrijft het script de uitzonde ring in plaats van de waarde. Dit gedrag is nuttig, omdat uitzonde ringen aanvullende informatie kunnen bevatten die mogelijk niet normaal bij de uitvoer wordt geregistreerd.
+In het volgende voorbeeld wordt de uitvoer voor een specifieke taak opgehaald en wordt elke record geretourneerd. Als er een uitzondering is voor een van de records, schrijft het script de uitzondering in plaats van de waarde. Dit gedrag is handig, omdat uitzonderingen aanvullende informatie kunnen bieden die mogelijk niet normaal wordt geregistreerd tijdens de uitvoer.
 
 ```azurepowershell-interactive
 $output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -304,9 +304,9 @@ foreach($item in $output)
 }
 ```
 
-## <a name="getting-details-from-the-activity-log"></a>Details ophalen uit het activiteiten logboek
+## <a name="getting-details-from-the-activity-log"></a>Gegevens ophalen in het activiteitenlogboek
 
-U kunt de details van het runbook ophalen, zoals de persoon of het account waarmee het runbook is gestart, uit het activiteiten logboek voor het Automation-account. Het volgende Power shell-voor beeld bevat de laatste gebruiker om het opgegeven runbook uit te voeren.
+U runbook-gegevens, zoals de persoon of het account waarmee het runbook is gestart, ophalen in het activiteitenlogboek voor het automatiseringsaccount. In het volgende PowerShell-voorbeeld wordt de laatste gebruiker opgegeven die de opgegeven runbook uitvoert.
 
 ```powershell-interactive
 $SubID = "00000000-0000-0000-0000-000000000000"
@@ -336,17 +336,17 @@ foreach ($log in $JobActivityLogs)
 $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```
 
-## <a name="fair-share"></a>Resources delen tussen runbooks
+## <a name="sharing-resources-among-runbooks"></a><a name="fair-share"></a>Bronnen delen tussen runbooks
 
-Als u resources wilt delen tussen alle runbooks in de Cloud, wordt met Azure Automation tijdelijk een taak verwijderd die langer dan drie uur is uitgevoerd. Taken voor [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks) en [python-runbooks](automation-runbook-types.md#python-runbooks) worden gestopt en niet opnieuw gestart en de taak status wordt gestopt.
+Als u resources wilt delen tussen alle runbooks in de cloud, ontlaadt of stopt Azure Automation tijdelijk elke taak die langer dan drie uur is uitgevoerd. Taken voor [PowerShell-runbooks](automation-runbook-types.md#powershell-runbooks) en [Python-runbooks](automation-runbook-types.md#python-runbooks) worden gestopt en niet opnieuw gestart en de taakstatus wordt Gestopt.
 
-Voor langlopende taken kunt u het beste een Hybrid Runbook Worker gebruiken. Hybrid Runbook Workers worden niet beperkt door een billijke share en hebben geen beperking voor de manier waarop een Runbook kan worden uitgevoerd. De overige taak [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als Hybrid Runbook Workers. Hoewel Hybrid Runbook Workers niet worden beperkt door de limiet van 3 uur, billijke delen, moet u runbooks ontwikkelen die worden uitgevoerd op de werk nemers die het opnieuw opstarten van onverwachte problemen met de lokale infra structuur ondersteunen.
+Voor langlopende taken wordt aanbevolen om een hybride runbookworker te gebruiken. Hybride Runbook-werknemers worden niet beperkt door een eerlijk aandeel en hebben geen beperking op hoe lang een runbook kan worden uitgevoerd. De andere [taaklimieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als hybride runbook-werknemers. Hoewel hybride runbook-werknemers niet worden beperkt door de limiet voor eerlijke delen van 3 uur, moet u runbooks ontwikkelen om te draaien op de werknemers die opnieuw opstarten ondersteunen van onverwachte lokale infrastructuurproblemen.
 
-Een andere optie is om een runbook te optimaliseren door onderliggende runbooks te gebruiken. Uw runbook kan bijvoorbeeld een lus door lopen op verschillende resources, zoals een database bewerking in verschillende data bases. U kunt deze functie verplaatsen naar een [onderliggend runbook](automation-child-runbooks.md) en het runbook aanroepen met behulp van `Start-AzAutomationRunbook`. Onderliggende runbooks worden parallel uitgevoerd in afzonderlijke processen.
+Een andere optie is het optimaliseren van een runbook met behulp van onderliggende runbooks. Uw runbook kan bijvoorbeeld dezelfde functie doorlopen op verschillende bronnen, zoals een databasebewerking in verschillende databases. U deze functie verplaatsen naar een [onderliggend runbook](automation-child-runbooks.md) en uw runbook laten bellen met behulp van `Start-AzAutomationRunbook`. Onderliggende runbooks worden parallel uitgevoerd in afzonderlijke processen.
 
-Als u onderliggende runbooks gebruikt, wordt de totale hoeveelheid tijd voor het volt ooien van het bovenliggende runbook verkleind. Uw runbook kan de cmdlet `Get-AzAutomationJob` gebruiken om de taak status voor een onderliggend runbook te controleren als het nog bewerkingen bevat die moeten worden uitgevoerd nadat het onderliggende proces is voltooid.
+Als u onderliggende runbooks gebruikt, wordt de totale tijd die het bovenliggende runbook moet voltooien, beperkt. Uw runbook kan `Get-AzAutomationJob` de cmdlet gebruiken om de taakstatus voor een onderliggend eis te controleren als het nog bewerkingen moet uitvoeren nadat het kind is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [starten van een runbook in azure Automation](automation-starting-a-runbook.md)voor meer informatie over de methoden die kunnen worden gebruikt om een runbook te starten in azure Automation.
-* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Zie [Een runbook starten in Azure Automation](automation-starting-a-runbook.md)voor meer informatie over de methoden die kunnen worden gebruikt om een runbook te starten in Azure Automation.
+* Zie voor meer informatie over PowerShell, inclusief taalverwijzingen en leermodules, de [PowerShell-documenten](https://docs.microsoft.com/powershell/scripting/overview).

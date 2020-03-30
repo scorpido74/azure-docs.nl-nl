@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ffd47d886a9d74c637f4f7ff634b3fd4c4a77574
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240868"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408280"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Snelstartgids: een Tenant instellen
+# <a name="quickstart-set-up-a-tenant"></a>Snelstart: een tenant instellen
 
 Met het Microsoft Identity Platform kunnen ontwikkelaars apps bouwen voor een breed scala van aangepaste Microsoft 365-omgevingen en -identiteiten. Om aan de slag te gaan met het Microsoft Identity Platform hebt u toegang nodig tot een omgeving, ook wel een Azure AD-tenant genoemd, waarmee u apps kunt registreren en beheren. Daarnaast hebt u toegang nodig tot Microsoft 365-gegevens en moet u aangepaste beperkingen voor voorwaardelijke toegang en de tenant implementeren.
 
@@ -57,7 +57,7 @@ Als er geen bestaande tenant is gekoppeld aan uw account, ziet u een GUID onder 
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Een nieuwe Azure AD-tenant maken
 
-Als u nog geen Azure AD-Tenant hebt of een nieuwe wilt maken voor ontwikkeling, raadpleegt u de [Snelstartgids](../fundamentals/active-directory-access-create-new-tenant.md) of volgt u de [ervaring](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)voor het maken van mappen. U moet de volgende informatie opgeven voor het maken van de nieuwe tenant:
+Als u nog geen Azure AD-tenant hebt of een nieuwe wilt maken voor ontwikkeling, raadpleegt u de [quickstart](../fundamentals/active-directory-access-create-new-tenant.md) of volgt u gewoon de [ervaring voor het maken van een map.](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) U moet de volgende informatie opgeven voor het maken van de nieuwe tenant:
 
 - **Naam van de organisatie**
 - **Eerste domein**: dit wordt onderdeel van *. onmicrosoft.com. U kunt het domein later nog aanpassen.
@@ -72,6 +72,6 @@ Om te beginnen met het bouwen van apps waarmee socialemedia-accounts en lokale a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Probeer een snelstart voor het schrijven van code en begin met het verifiëren van gebruikers. 
-* Ga voor meer gedetailleerde codevoorbeelden naar het gedeelte **Zelfstudies** van de documentatie.
-* Wilt u uw app in de cloud implementeren? Lees dan [containers implementeren naar Azure](https://docs.microsoft.com/azure/index?pivot=products&panel=containers).
+* [Registreer een app](quickstart-register-app.md) en integreer met het Microsoft-identiteitsplatform. 
+* Leer de [basisprincipes van verificatie](authentication-scenarios.md).
+* Zie [hoe Azure-abonnementen zijn gekoppeld aan Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor details over de relatie tussen abonnementen en een Azure AD-tenant.

@@ -1,84 +1,84 @@
 ---
-title: Azure Block Chain-tokens opstellen
-description: Azure Block Chain tokens samenstel baarheid biedt flexibiliteit voor het maken van tokens voor geavanceerde scenario's.
+title: Composability azure blockchain-tokens
+description: De composability van Azure Blockchain Tokens biedt flexibiliteit om tokens te maken voor geavanceerde scenario's.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: a3fe1b290917de20b7c3af31fe386ed93580d850
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325125"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Block Chain-tokens opstellen
+# <a name="azure-blockchain-tokens-composability"></a>Composability azure blockchain-tokens
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token samenstel baarheid biedt flexibiliteit voor het maken van tokens voor geavanceerde scenario's. Mogelijk hebt u een complex scenario dat niet kan worden geïmplementeerd met behulp van de [vier vooraf samengestelde token sjablonen](templates.md#base-token-types). Met token opstellen kunt u uw eigen token sjablonen ontwerpen door gedefinieerde gedragingen toe te voegen of te verwijderen om uw eigen token sjabloon te maken. Bij het maken van een nieuwe token sjabloon verifieert Azure Block Chain-tokens alle token-grammatica regels. Samengestelde sjablonen worden opgeslagen in de Azure Block Chain tokens-service voor uitgifte op verbonden Block chain netwerken.
+Token-composability biedt flexibiliteit om tokens te maken voor geavanceerde scenario's. Mogelijk hebt u een complex scenario dat niet kan worden geïmplementeerd met behulp van de [vier vooraf gebouwde tokensjablonen.](templates.md#base-token-types) Met tokencomposability u uw eigen tokensjablonen ontwerpen door gedefinieerd gedrag toe te voegen of te verwijderen om uw eigen tokensjabloon te bouwen. Bij het maken van een nieuwe tokensjabloon verifieert Azure Blockchain Tokens alle regels voor tokengrammatica. Samengestelde sjablonen worden opgeslagen in de Azure Blockchain Tokens-service voor uitgifte op verbonden blockchain-netwerken.
 
-U kunt het [token gedrag](templates.md#token-behaviors) in de volgende secties gebruiken om uw token sjabloon te ontwerpen.
+U het [tokengedrag](templates.md#token-behaviors) in de volgende secties gebruiken om uw tokensjabloon te ontwerpen.
 
-## <a name="burnable-b"></a>Branden (b)
+## <a name="burnable-b"></a>Brandbaar (b)
 
-De mogelijkheid om de tokens uit de levering te verwijderen.
+Mogelijkheid om de tokens uit de voorraad te verwijderen.
 
-Wanneer u bijvoorbeeld online creditcard punten inwisselt voor een geschenkbon, worden de creditcard punten gebrand.
+Wanneer u bijvoorbeeld online creditcardpunten inwisselt voor een cadeaubon, worden de creditcardpunten verbrand.
 
-## <a name="delegable-g"></a>Delegeer bare (g)
+## <a name="delegable-g"></a>Delegable (g)
 
-De mogelijkheid voor het delegeren van de acties die zijn uitgevoerd op het token waarvan u de eigenaar bent.
+Mogelijkheid om de acties te delegeren die zijn uitgevoerd op het token dat u bezit.
 
-De gemachtigde kan acties uitvoeren als de eigenaar van het token. U kunt bijvoorbeeld een Delegeer bare-token gebruiken om een stem te implementeren. Met een Delegeer bare-token kan de eigenaar van het stem token iemand anders in hun naam laten stemmen.
+De gemachtigde kan acties uitvoeren als eigenaar van het token. U bijvoorbeeld een delegable token gebruiken om een stemming uit te voeren. Met een delegable token kan de eigenaar van het stemtoken iemand anders namens hen laten stemmen.
 
 ## <a name="logable-l"></a>Logable (l)
 
-De mogelijkheid om te registreren.
+Mogelijkheid om in te loggen.
 
-U kunt bijvoorbeeld een logable-token uitgeven voor een film distributie naar elke theater met een specifieke film. De weer gave van de film moet een trans actie registreren voor elke uitzending, omdat royalty-uitbetalingen per uitzending worden weer gegeven tijdens de release van de uitvoering van de film. De bouwers kunnen de film tokens gebruiken voor het valideren van uitbetalingen per film per theater in de distributie.
+U bijvoorbeeld een aanmeldbaar token uitgeven voor een filmdistributie naar elk theater met een specifieke film. Om de film te kunnen afspelen, moet de vertoning een transactie registreren voor elke vertoning, omdat royalty-uitbetalingen per vertoning zijn tijdens de releaserun van de film. De acteurs bouwen kan de film tokens gebruiken om uitbetalingen per film weergegeven per theater in de distributie te valideren.
 
-## <a name="mint-able-m"></a>Licht-mogelijk (m)
+## <a name="mint-able-m"></a>Mint-staat (m)
 
-De mogelijkheid om extra tokens te licht voor de token klasse. De rol Minter omvat het gedrag mintable.
+Mogelijkheid om extra tokens te slaan voor de tokenklasse. De minter rol omvat het mintable gedrag.
 
-Een retail bedrijf dat bijvoorbeeld een getrouwheids programma wil implementeren, kan mintable-tokens gebruiken voor hun loyaliteits programma. Ze kunnen extra loyaliteits punten voor hun klanten lichten wanneer hun klanten database groeit.  
+Bijvoorbeeld, een retail bedrijf, die wil een loyaliteitsprogramma te implementeren kan mintable tokens gebruiken voor hun loyaliteitsprogramma. Ze kunnen extra loyaliteitspunten voor hun klanten slaan naarmate hun klantenbestand groeit.  
 
-## <a name="non-subdividable-or-whole-d"></a>Niet-verdeelbaar of geheel (~ d)
+## <a name="non-subdividable-or-whole-d"></a>Niet-ondergedeeld of geheel (~d)
 
-Beperking om te voor komen dat een token wordt onderverdeeld in kleinere delen.
+Beperking om te voorkomen dat een token wordt verdeeld in kleinere delen.
 
-Een tekening met één illustratie kan bijvoorbeeld niet worden onderverdeeld in meerdere kleinere delen. 
+Een enkel schilderij kan bijvoorbeeld niet worden onderverdeeld in meerdere kleinere delen. 
 
-## <a name="non-transferable-t"></a>Niet-overdraag bare (~ t)
+## <a name="non-transferable-t"></a>Niet-overdraagbaar (~t)
 
-Beperking om te voor komen dat het eigendom van de oorspronkelijke token eigenaar wordt gewijzigd.
+Beperking om een verandering van eigenaar van de oorspronkelijke token-eigenaar te voorkomen.
 
-Een universiteit diploma is bijvoorbeeld een token dat niet kan worden overgedragen. Zodra een diploma aan een afgestudeerde is gegeven, kan deze niet worden overgedragen van de afstuderen naar een andere persoon.
+Een universitair diploma is bijvoorbeeld een niet-overdraagbaar token. Zodra een diploma aan een afgestudeerde wordt gegeven, kan het niet worden overgedragen van de afgestudeerde naar een andere persoon.
 
 ## <a name="roles-r"></a>Rollen (r)
 
-De mogelijkheid om rollen te definiëren in de token sjabloon klasse voor specifiek gedrag.
+Mogelijkheid om rollen binnen de sjabloonklasse token te definiëren voor specifiek gedrag.
 
-U kunt een lijst opgeven met namen van rollen die door een token worden ondersteund bij de aanmaak tijd van het token. Wanneer rollen zijn opgegeven, kan de gebruiker rollen toewijzen aan deze gedragingen. Op dit moment wordt alleen de rol Minter ondersteund.
+U een lijst met rolnamen opmaken die een token ondersteunt op de tijd voor het maken van token. Wanneer rollen zijn opgegeven, kan de gebruiker rollen toewijzen aan deze gedragingen. Momenteel wordt alleen de minter-rol ondersteund.
 
 ## <a name="singleton-s"></a>Singleton (s)
 
-Beperking voor het toestaan van een-aanbod van één token.
+Beperking om een levering van één token toe te staan.
 
-Een museum artefact is bijvoorbeeld een singleton-token. Museum artefacten zijn uniek. Een token dat een artefact vertegenwoordigt, heeft slechts één item in de levering.
+Een museumartefact is bijvoorbeeld een singleton-token. Museum artefacten zijn uniek. Een token dat een artefact vertegenwoordigt, heeft slechts één item in de voorraad.
 
-## <a name="subdividable-d"></a>Onderverdelen (d)
+## <a name="subdividable-d"></a>Ondergedeeld (d)
 
-De mogelijkheid om een token te verdelen in kleinere delen.
+Mogelijkheid om een token in kleinere delen te verdelen.
 
-Een dollar kan bijvoorbeeld worden onderverdeeld in cent.
+Bijvoorbeeld, een dollar kan worden onderverdeeld in centen.
 
 ## <a name="transferable-t"></a>Overdraagbaar (t)
 
-De mogelijkheid om het eigendom van het token over te dragen.
+Mogelijkheid om het eigendom van het token over te dragen.
 
-Een eigenschaps titel is bijvoorbeeld een overdraagbaar token dat kan worden overgedragen van een persoon naar een andere wanneer de eigenschap wordt verkocht.
+Een eigendomstitel is bijvoorbeeld een overdraagbaar token, dat van de ene persoon naar de andere kan worden overgedragen wanneer de eigenschap wordt verkocht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [account beheer van Azure Block Chain-tokens](account-management.md).
+Meer informatie over [Azure Blockchain Tokens-accountbeheer](account-management.md).

@@ -1,5 +1,5 @@
 ---
-title: Samen vatting van de conversie van Designer naar werkmappen Azure Monitor weer geven
+title: Overzicht en toegang voor de conversievan azure Monitor-weergave voor werkmappen
 description: ''
 author: austonli
 ms.author: aul
@@ -7,44 +7,44 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658843"
 ---
-# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Conversie samenvatting en toegang van Designer naar werkmappen weer geven
-[View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Deze worden gefaseerd en vervangen door werkmappen, die extra functionaliteit bieden. In dit artikel vindt u informatie over het maken van overzichts samenvatting en machtigingen die vereist zijn voor toegang tot werkmappen.
+# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Conversieoverzicht en toegang voor de conversie van ontwerpmappen naar werkmappen weergeven
+[View designer](view-designer.md) is een functie van Azure Monitor waarmee u aangepaste weergaven maken om gegevens in uw Log Analytics-werkruimte te visualiseren, met grafieken, lijsten en tijdlijnen. Ze worden uitgefaseerd en vervangen door werkmappen, die extra functionaliteit bieden. In dit artikel wordt beschreven hoe u een overzichtsoverzicht en machtigingen maken die nodig zijn om toegang te krijgen tot werkmappen.
 
-## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>Uw werkruimte samenvatting maken op basis van het Azure-dash board
-Gebruikers van Designer weer geven kunnen bekend zijn met een overzichts tegel die een set weer gaven vertegenwoordigt. Voor het bijhouden van een visueel overzicht zoals de samen vatting van de weer gave Designer-werk bladen worden vastgemaakte stappen geboden, die kunnen worden vastgemaakt aan uw [Azure Portal dash board](../../azure-portal/azure-portal-dashboards.md). Net als de overzichts tegels in de samen vatting van de werk ruimte, worden vastgemaakte werkmap items rechtstreeks gekoppeld aan de werkmap weergave.
+## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>Uw werkruimteoverzicht maken vanuit Azure Dashboard
+Gebruikers van ontwerpers van het weergeven hebben mogelijk een overzichtstegel om een reeks weergaven weer te geven. Als u een visueel overzicht wilt behouden, zoals het overzicht van de werkruimte voor de weergavevan de ontwerper, biedt werkmappen vastgemaakte stappen, die kunnen worden vastgemaakt aan uw [Azure-portaldashboard.](../../azure-portal/azure-portal-dashboards.md) Net als de overzichtstegels in het overzichtsoverzicht worden vastgemaakte werkmapitems rechtstreeks gekoppeld aan de werkmapweergave.
 
-U kunt profiteren van de geavanceerde functies voor aanpassing van Azure-Dash boards, waarmee automatisch vernieuwen, verplaatsen, verg Roten/verkleinen en aanvullende filters voor uw vastgemaakte items en visualisaties kunnen worden gefilterd. 
+U profiteren van het hoge niveau van aanpassingsfuncties die zijn voorzien van Azure-dashboards, waarmee u automatisch vernieuwen, verplaatsen, dimensioneren en extra filteren voor uw vastgemaakte items en visualisaties. 
 
 ![Dashboard](media/view-designer-conversion-access/dashboard.png)
 
-Maak een nieuw Azure-dash board of selecteer een bestaand dash board om te beginnen met het vastmaken van werkmappen-items.
+Maak een nieuw Azure-dashboard of selecteer een bestaand dashboard om werkmappen items vast te maken.
 
-Als u het afzonderlijke item wilt vastmaken, moet u het PIN-pictogram inschakelen voor uw specifieke stap. Als u dit wilt doen, selecteert u de bijbehorende knop **bewerken** voor de stap en selecteert u vervolgens het tandwiel pictogram om **Geavanceerde instellingen**te openen. Schakel het selectie vakje in om **altijd het speld pictogram op deze stap weer te geven**. er wordt een speld pictogram in de rechter bovenhoek van de stap weer gegeven. Met deze pincode kunt u specifieke visualisaties aan uw dash board vastmaken, zoals in de overzichts tegels.
+Als u een afzonderlijk item wilt vastmaken, moet u het pictogram van de pin voor uw specifieke stap inschakelen. Selecteer hiervoor de bijbehorende **knop Bewerken** voor uw stap en selecteer vervolgens het tandwielpictogram om Geavanceerde instellingen te **openen.** Controleer de optie Om **het pictogram van de pin in deze stap altijd weer**te geven en in de rechterbovenhoek van uw stap verschijnt een pinpictogram. Met deze pin u specifieke visualisaties vastmaken aan uw dashboard, zoals de overzichtstegels.
 
-![Stap pincode](media/view-designer-conversion-access/pin-step.png)
+![Stap vastmaken](media/view-designer-conversion-access/pin-step.png)
 
 
-Mogelijk wilt u ook meerdere visualisaties van de werkmap of de hele werkmap inhoud vastmaken aan een dash board. Als u de hele werkmap wilt vastmaken, selecteert u **bewerken** op de bovenste werk balk om de **bewerkings modus**in te scha kelen. Er wordt een speld pictogram weer gegeven, zodat u het hele werkmap item of alle afzonderlijke stappen en visualisaties in de werkmap kunt vastmaken.
+U ook meerdere visualisaties uit de werkmap of de volledige werkmapinhoud aan een dashboard vastmaken. Als u de hele werkmap wilt vastmaken, selecteert u **Bewerken** op de bovenste werkbalk om **de bewerkingsmodus**in te schakelen . Er verschijnt een pinpictogram, zodat u het volledige werkmapitem of alle afzonderlijke stappen en visualisaties in de werkmap vastmaken.
 
 ![Alles vastmaken](media/view-designer-conversion-access/pin-all.png)
 
 
 
-## <a name="sharing-and-viewing-permissions"></a>Machtigingen voor delen en weer geven 
-Werkmappen hebben het voor deel van ofwel een privé-of gedeeld document. Opgeslagen werkmappen worden standaard opgeslagen onder **mijn rapporten**, wat betekent dat alleen de maker deze werkmap kan bekijken.
+## <a name="sharing-and-viewing-permissions"></a>Machtigingen voor delen en bekijken 
+Werkmappen hebben het voordeel dat het een privé- of gedeeld document is. Standaard worden opgeslagen werkmappen opgeslagen onder **Mijn rapporten,** wat betekent dat alleen de maker deze werkmap kan bekijken.
 
-U kunt uw werkmappen delen door het **deel** pictogram in de bovenste werk balk te selecteren in de **bewerkings modus**. U wordt gevraagd uw werkmap te verplaatsen naar **gedeelde rapporten**, waarmee een koppeling wordt gegenereerd die directe toegang biedt tot de werkmap.
+U uw werkmappen delen door het pictogram **Delen** te selecteren in de bovenste gereedschapsbalk in **de bewerkingsmodus**. U wordt gevraagd uw werkmap te verplaatsen naar **Gedeelde rapporten,** waardoor een koppeling wordt gegenereerd die directe toegang biedt tot de werkmap.
 
-Een gebruiker kan alleen een gedeelde werkmap weer geven als ze toegang hebben tot het abonnement en de resource groep waarin de werkmap is opgeslagen.
+Als een gebruiker een gedeelde werkmap kan bekijken, moet hij of zij toegang hebben tot zowel de abonnements- als de resourcegroep waarin de werkmap is opgeslagen.
 
-![Toegang op basis van abonnementen](media/view-designer-conversion-access/subscription-access.png)
+![Toegang op basis van een abonnement](media/view-designer-conversion-access/subscription-access.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Algemene taken](view-designer-conversion-tasks.md)
+- [Veelvoorkomende taken](view-designer-conversion-tasks.md)

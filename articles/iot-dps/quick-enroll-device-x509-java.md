@@ -1,6 +1,6 @@
 ---
-title: X. 509-apparaten registreren bij Azure Device Provisioning Service met behulp van Java
-description: In deze quickstart wordt gebruikgemaakt van zowel groepsregistraties als afzonderlijke registraties. In deze Quick Start schrijft u X. 509-apparaten in bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van Java.
+title: X.509-apparaten inschrijven voor Azure Device Provisioning Service met Java
+description: In deze quickstart wordt gebruikgemaakt van zowel groepsregistraties als afzonderlijke registraties. In deze quickstart schrijft u X.509-apparaten in voor de DpS (Azure IoT Hub Device Provisioning Service) van Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,25 +10,25 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77604915"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-In deze Quick Start gebruikt u Java voor het programmatisch inschrijven van een groep X. 509 gesimuleerde apparaten naar de Azure-IoT Hub Device Provisioning Service. Apparaten worden inge schreven bij een inrichtings service-exemplaar door een registratie groep te maken of een afzonderlijke registratie. Deze Quick Start laat zien hoe u beide soorten inschrijvingen kunt maken met behulp van de Java Service-SDK en een Java-voorbeeld toepassing.
+In deze quickstart gebruikt u Java om een groep X.509 gesimuleerde apparaten programmatisch in te schrijven bij de Azure IoT Hub Device Provisioning Service. Apparaten worden ingeschreven voor een inrichtingsservice-instantie door een inschrijvingsgroep of een individuele inschrijving te maken. Deze quickstart laat zien hoe u beide typen inschrijvingen maakt met behulp van de Java Service SDK en een voorbeeld java-toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Volt ooien van [het instellen van de IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md).
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze Snelstartgids wordt de onderstaande SDK voor de [Java-service](https://azure.github.io/azure-iot-sdk-java/service/) geïnstalleerd. Het werkt op Windows en Linux. Deze Snelstartgids maakt gebruik van Windows.
-- [Maven 3](https://maven.apache.org/download.cgi).
-- [Git](https://git-scm.com/download/).
+- Voltooiing van het instellen van [de IoT Hub Device Provisioning Service met de Azure-portal.](./quick-setup-auto-provision.md)
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Deze quickstart installeert hieronder de [Java Service SDK.](https://azure.github.io/azure-iot-sdk-java/service/) Het werkt op zowel Windows als Linux. Deze quickstart maakt gebruik van Windows.
+- [Maven 3.](https://maven.apache.org/download.cgi)
+- [Git.](https://git-scm.com/download/)
 
 <a id="javasample"></a>
 
@@ -41,29 +41,29 @@ In dit gedeelte wordt een zelfondertekend X.509-certificaat gebruikt. Het is bel
 
 In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het X.509-apparaat toevoegt aan de voorbeeldcode. 
 
-1. Open een opdrachtprompt. Kloon de GitHub-opslag plaats voor de registratie code van het apparaat met behulp van de SDK van de [Java-service](https://azure.github.io/azure-iot-sdk-java/service/):
+1. Open een opdrachtprompt. Kloon de GitHub repo voor het voorbeeld van apparaatinschrijvingscode met behulp van de [Java Service SDK:](https://azure.github.io/azure-iot-sdk-java/service/)
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. Navigeer in de gedownloade broncode naar de voorbeeldmap **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . Open het bestand **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** in een editor naar keuze, en voeg de volgende gegevens toe:
+2. Navigeer in de gedownloade broncode naar de voorbeeldmap **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. Open het bestand **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** in een editor naar keuze, en voeg de volgende gegevens toe:
 
     1. Voeg de `[Provisioning Connection String]` voor de inrichtingsservice als volgt toe vanuit de portal:
-        1. Navigeer naar de inrichtingsservice in [Azure Portal](https://portal.azure.com). 
+        1. Navigeer naar uw inrichtingsservice in de [Azure-portal.](https://portal.azure.com) 
         2. Open **Gedeeld toegangsbeleid** en selecteer een beleid met de machtiging *EnrollmentWrite*.
         3. Kopieer de **Verbindingsreeks van de primaire sleutel**. 
 
             ![De verbindingsreeks voor de inrichting ophalen uit de portal](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. Vervang  **in het voorbeeldcodebestandServiceEnrollmentGroupSample.java**`[Provisioning Connection String]` door de **Verbindingsreeks van de primaire sleutel**.
+        4. Vervang `[Provisioning Connection String]` in het voorbeeldcodebestand **_ServiceEnrollmentGroupSample.java_** door de **Verbindingsreeks van de primaire sleutel**.
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
     2. Voeg het basiscertificaat voor de groep apparaten toe. Als u een voorbeeldbasiscertificaat nodig hebt, gebruikt u het hulpprogramma _X.509-certificaatgenerator_ als volgt:
-        1. Navigeer in een opdrachtvenster naar de map **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** .
+        1. Navigeer in een opdrachtvenster naar de map **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_**.
         2. Bouw het hulpprogramma met behulp van de volgende opdracht:
 
                 ```cmd\sh
@@ -79,7 +79,7 @@ In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het
 
         5. Wanneer u hierom wordt gevraagd, kunt u ook een _algemene naam_ invoeren voor de certificaten.
         6. Het hulpprogramma genereert lokaal een **Clientcertificaat**, de **Persoonlijke sleutel van clientcertificaat** en het **Basiscertificaat**.
-        7. Kopieer het **Basiscertificaat**, inclusief de regels **_-----BEGIN CERTIFICATE-----_** and **_-----END CERTIFICATE-----_** . 
+        7. Kopieer het **Basiscertificaat**, inclusief de regels **_-----BEGIN CERTIFICATE-----_** and **_-----END CERTIFICATE-----_**. 
         8. Wijs de waarde van het **Basiscertificaat** toe aan de parameter **PUBLIC_KEY_CERTIFICATE_STRING** zoals hieronder wordt weergegeven:
 
                 ```Java
@@ -131,14 +131,14 @@ In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Een voorbeeldgroepsinschrijving bouwen en uitvoeren
 
-Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
+Azure IoT Device Provisioning Service ondersteunt twee typen inschrijvingen:
 
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Individuele inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om één apparaat in te schrijven.
 
-Deze procedure maakt gebruik van een registratie groep. In de volgende sectie wordt een afzonderlijke inschrijving gebruikt.
+Deze procedure maakt gebruik van een inschrijvingsgroep. In de volgende sectie wordt een individuele inschrijving gebruikt.
 
-1. Open een opdrachtvenster en navigeer naar de map **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
+1. Open een opdrachtvenster en navigeer naar de map **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**.
 
 2. Bouw de voorbeeldcode met behulp van deze opdracht:
 
@@ -146,7 +146,7 @@ Deze procedure maakt gebruik van een registratie groep. In de volgende sectie wo
     mvn install -DskipTests
     ```
 
-   Met deze opdracht wordt het Maven-pakket [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) gedownload naar de computer. Dit pakket bevat de binaire bestanden voor de Java service-SDK, die de voorbeeldcode nodig heeft voor het bouwen. Als u het hulpprogramma _X.509-certificaatgenerator_ hebt uitgevoerd in de vorige sectie, is dit pakket al gedownload op de computer. 
+   Deze opdracht downloadt [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) het Maven-pakket naar uw machine. Dit pakket bevat de binaire bestanden voor de Java service-SDK, die de voorbeeldcode nodig heeft voor het bouwen. Als u het hulpprogramma _X.509-certificaatgenerator_ hebt uitgevoerd in de vorige sectie, is dit pakket al gedownload op de computer. 
 
 3. Voer het voorbeeld uit met behulp van deze opdrachten in het opdrachtvenster:
 
@@ -157,7 +157,7 @@ Deze procedure maakt gebruik van een registratie groep. In de volgende sectie wo
 
 4. Houd het uitvoervenster in de gaten voor een geslaagde inschrijving.
 
-5. Navigeer naar de inrichtingsservice in Azure Portal. Klik op **Inschrijvingen beheren**. U ziet dat de groep X.509-apparaten wordt weergegeven op het tabblad **Registratiegroepen** met een automatisch gegenereerde *GROEPSNAAM*. 
+5. Navigeer naar de inrichtingsservice in Azure Portal. Klik op **Inschrijvingen beheren**. Uw groep X.509-apparaten wordt weergegeven onder het tabblad **Inschrijvingsgroepen** met een automatisch gegenereerde *groepsnaam*. 
 
     ![De X.509-inschrijving controleren in de portal](./media/quick-enroll-device-x509-java/verify-x509-enrollment.png)  
 
@@ -195,18 +195,18 @@ Als u een enkel X.509-apparaat wilt inschrijven, wijzigt u als volgt de voorbeel
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. Sla het voorbeeldbestand voor de *afzonderlijke registratie* op, bouw het bestand en voer het uit. Gebruik hiervoor de stappen in het gedeelte [Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample) (De voorbeeldcode voor afzonderlijke registraties bouwen en uitvoeren).
+4. Sla het *voorbeeldbestand voor afzonderlijke inschrijvingen* op, bouw en voer deze uit met de stappen in de sectie [Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample).
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent het Java service-voor beeld te verkennen, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+Als u van plan bent het voorbeeld van de Java-service te verkennen, moet u de bronnen die in deze quickstart zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle bronnen die door deze quickstart zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het Java-voorbeeld op de computer.
 1. Sluit het venster voor de _X.509-certificaatgenerator_ op de computer.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **registratie groepen** . Schakel het selectie vakje in naast de *groeps naam* voor de X. 509-apparaten die u hebt Inge schreven met behulp van deze Quick Start. Klik vervolgens op de knop **verwijderen** boven aan het deel venster.  
+1. Navigeer naar de service Apparaatinrichting in de Azure-portal, selecteer **Inschrijvingen beheren**en schakel het tabblad **Inschrijvingsgroepen** in. Schakel het selectievakje in naast de *groepsnaam* voor de X.509-apparaten die u met deze snelstart hebt ingeschreven en druk op de knop **Verwijderen** boven in het deelvenster.  
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u een gesimuleerde groep X. 509-apparaten Inge schreven bij uw Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
+In deze quickstart hebt u een gesimuleerde groep X.509-apparaten ingeschreven bij uw service voor apparaatvoorziening. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

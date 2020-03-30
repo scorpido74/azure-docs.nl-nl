@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566060"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Aan de slag met het leveren van inhoud on demand met .NET SDK  
@@ -70,7 +70,7 @@ Bij het werken met Azure Media Services wordt video meestal via Adaptive Bitrate
 
 U start het streaming-eindpunt als volgt:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Log in bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het venster Instellingen op Streaming-eindpunten.
 3. Klik op het standaardstreaming-eindpunt.
 
@@ -81,7 +81,7 @@ U start het streaming-eindpunt als volgt:
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
+1. Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
 2. Maak een nieuwe map (deze kan overal op uw lokaal station zijn opgeslagen) en kopieer een MP4-bestand dat u wilt coderen en streamen of progressief wilt downloaden. In dit voorbeeld wordt het pad C:\VideoFiles gebruikt.
 
 ## <a name="connect-to-the-media-services-account"></a>Verbinding met het Azure Media Services-account maken
@@ -152,11 +152,11 @@ Met de functie **Main** worden methoden aangeroepen die later in deze sectie ver
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Een nieuwe asset maken en een videobestand uploaden
 
-In Media Services moet u uw digitale bestanden uploaden naar (of opnemen in) een asset. De **Asset** -entiteit kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten.  Zodra de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming. De bestanden in de asset worden **assetbestanden** genoemd.
+In Media Services moet u uw digitale bestanden uploaden naar (of opnemen in) een asset. De **entiteit Asset** kan video-, audio-, afbeeldingen-, miniatuurverzamelingen, teksttracks en bestanden met ondertiteling (en de metagegevens over deze bestanden) bevatten.  Zodra de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming. De bestanden in de asset worden **assetbestanden** genoemd.
 
 Met de methode **UploadFile**, zoals hieronder gedefinieerd, wordt **CreateFromFile** (gedefinieerd in .NET SDK Extensions) aangeroepen. Met **CreateFromFile** wordt een nieuwe asset gemaakt waarnaar het opgegeven bestand wordt geüpload.
 
-De methode **CreateFromFile** maakt gebruik van **AssetCreationOptions**, waarmee u een van de volgende opties voor het maken van assets kunt opgeven:
+De methode **CreateFromFile** neemt **AssetCreationOptions**, waarmee u een van de volgende opties voor het maken van activa opgeven:
 
 * **Geen**: er wordt geen versleuteling gebruikt. Dit is de standaardwaarde. Houd er rekening mee dat bij gebruik van deze optie de inhoud tijdens de overdracht of in de opslag niet is beveiligd.
   Als u een MP4-bestand wilt leveren via progressief downloaden, gebruikt u deze optie.

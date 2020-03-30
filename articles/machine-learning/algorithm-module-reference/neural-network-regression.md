@@ -1,7 +1,7 @@
 ---
-title: 'Neural netwerk regressie: module verwijzing'
+title: 'Neuralnetworkregressie: modulereferentie'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de Neural-module voor netwerk regressie in Azure Machine Learning om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
+description: Meer informatie over het gebruik van de neurale netwerkregressiemodule in Azure Machine Learning om een regressiemodel te maken met behulp van een aanpasbaar neuraal netwerkalgoritme..
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,91 +9,91 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3a591badab29a1669d109f01f8a93732704d2fd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920379"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456095"
 ---
-# <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
+# <a name="neural-network-regression-module"></a>Neuralnetworkregressiemodule
 
-*Hiermee maakt u een regressie model met behulp van een Neural-netwerk algoritme*  
+*Maakt een regressiemodel met behulp van een neurale netwerkalgoritme*  
   
- Categorie: model/regressie Machine Learning/initialiseren
+ Categorie: Machine Learning / Initialize Model / Regressie
   
-## <a name="module-overview"></a>Module overzicht  
+## <a name="module-overview"></a>Overzicht van de module  
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
+Gebruik deze module om een regressiemodel te maken met behulp van een aanpasbaar neuraal netwerkalgoritme.
   
- Hoewel Neural-netwerken algemeen bekend zijn voor gebruik in diep gaande lessen en het model leren van complexe problemen, zoals afbeeldings herkenning, kunnen ze eenvoudig worden aangepast aan regressie problemen. Een klasse van statistische modellen kan een Neural-netwerk worden genoemd als ze adaptieve gewichten gebruiken en niet-lineaire functies van hun invoer kunnen benaderen. Daarom is Neural netwerk regressie geschikt voor problemen waarbij een meer traditioneel regressie model niet aan een oplossing kan voldoen.
+ Hoewel neurale netwerken zijn algemeen bekend voor gebruik in deep learning en modellering complexe problemen zoals beeldherkenning, ze zijn gemakkelijk aan te passen aan regressie problemen. Elke klasse van statistische modellen kan worden genoemd een neuraal netwerk als ze gebruik maken van adaptieve gewichten en kan benaderen niet-lineaire functies van hun ingangen. Zo is neurale netwerkregressie geschikt voor problemen waarbij een meer traditioneel regressiemodel niet in een oplossing past.
   
- Neural Network regressie is een *gemarkeerde*leer methode en vereist daarom een gecodeerde gegevensset, die een kolom Label bevat. Omdat een regressie model een numerieke waarde voor spelt, moet de kolom Label een numeriek gegevens type zijn.  
+ Neurale netwerkregressie is een begeleide leermethode en vereist daarom een *gelabelde gegevensset*, die een labelkolom bevat. Omdat een regressiemodel een numerieke waarde voorspelt, moet de labelkolom een numeriek gegevenstype zijn.  
   
- U kunt het model trainen door het model en de gecodeerde gegevensset op te geven als invoer voor het [trainen van modellen](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden te voors pellen voor de nieuwe invoer voorbeelden.  
+ U het model trainen door het model en de gelabelde gegevensset op te geven als input voor [Train Model.](./train-model.md) Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoervoorbeelden te voorspellen.  
   
-## <a name="configure-neural-network-regression"></a>Regressie voor Neural-netwerk configureren 
+## <a name="configure-neural-network-regression"></a>Neuralnetworkregressie configureren 
 
-Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschreven hoe u een model maakt met behulp van twee methoden:
+Neurale netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschreven hoe u een model maakt met behulp van twee methoden:
   
-+ [Een Neural-netwerk model maken met behulp van de standaard architectuur](#bkmk_DefaultArchitecture)  
++ [Een neuraal netwerkmodel maken met behulp van de standaardarchitectuur](#bkmk_DefaultArchitecture)  
   
-    Als u de standaard Neural-netwerk architectuur accepteert, gebruikt u het deel venster **Eigenschappen** om para meters in te stellen die het gedrag van het Neural-netwerk bepalen, zoals het aantal knoop punten in de verborgen laag, het leer tempo en de normalisatie.
+    Als u de standaardneurale netwerkarchitectuur accepteert, gebruikt u het deelvenster **Eigenschappen** om parameters in te stellen die het gedrag van het neurale netwerk bepalen, zoals het aantal knooppunten in de verborgen laag, de leersnelheid en de normalisatie.
 
-    Begin hier als u geen ervaring hebt met Neural-netwerken. De module ondersteunt een groot aantal aanpassingen, evenals model afstemming, zonder grondige kennis van Neural netwerken. 
+    Begin hier als je nieuw bent in neurale netwerken. De module ondersteunt veel aanpassingen, evenals modeltuning, zonder diepgaande kennis van neurale netwerken. 
 
-+ Een aangepaste architectuur definiëren voor een Neural-netwerk 
++ Een aangepaste architectuur definiëren voor een neuraal netwerk 
 
-    Gebruik deze optie als u extra verborgen lagen wilt toevoegen of de netwerk architectuur, de verbindingen en activerings functies volledig wilt aanpassen.
+    Gebruik deze optie als u extra verborgen lagen wilt toevoegen of de netwerkarchitectuur, de verbindingen en activeringsfuncties volledig wilt aanpassen.
     
-    Deze optie is het beste als u al enigszins bekend bent met Neural Networks. U gebruikt de net # taal om de netwerk architectuur te definiëren.  
+    Deze optie is het beste als u al enigszins vertrouwd bent met neurale netwerken. U gebruikt de net#-taal om de netwerkarchitectuur te definiëren.  
 
-##  <a name="bkmk_DefaultArchitecture"></a>Een Neural-netwerk model maken met behulp van de standaard architectuur
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Een neuraal netwerkmodel maken met behulp van de standaardarchitectuur
 
-1.  Voeg de **Neural-module netwerk regressie** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
+1.  Voeg de **Neural Network Regression-module** toe aan uw pijplijn in de ontwerper. U deze module vinden onder **Machine Learning**, **Initialiseren**, in de categorie **Regressie.** 
   
-2. Geef aan hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
+2. Geef aan hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.  
   
-    -   **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
+    -   **Eén parameter:** kies deze optie als u al weet hoe u het model wilt configureren.
 
-    -   **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.   
+    -   **Parameterbereik:** Selecteer deze optie als u niet zeker bent van de beste parameters en een parametersweep wilt uitvoeren. Selecteer een reeks waarden om over te herhalen en de [Tune Model Hyperparameters](tune-model-hyperparameters.md) herhalen over alle mogelijke combinaties van de instellingen die u hebt opgegeven om de hyperparameters te bepalen die de optimale resultaten opleveren.   
 
-3.  In **specificatie van verborgen laag**selecteert u **volledig verbonden Case**. Met deze optie wordt een model gemaakt met behulp van de standaard Neural-netwerk architectuur, die voor een Neural netwerk regressie model deze kenmerken heeft:  
+3.  Selecteer In **De specificatie van de verborgen laag**de optie Volledig verbonden **aanvraag**. Met deze optie maakt u een model met behulp van de standaard neurale netwerkarchitectuur, die voor een neurale netwerkregressiemodel de volgende kenmerken heeft:  
   
     + Het netwerk heeft precies één verborgen laag.
-    + De uitvoer laag is volledig verbonden met de verborgen laag en de verborgen laag is volledig verbonden met de invoer laag.
-    + Het aantal knoop punten in de verborgen laag kan worden ingesteld door de gebruiker (de standaard waarde is 100).  
+    + De uitvoerlaag is volledig verbonden met de verborgen laag en de verborgen laag is volledig verbonden met de invoerlaag.
+    + Het aantal knooppunten in de verborgen laag kan door de gebruiker worden ingesteld (standaardwaarde is 100).  
   
-    Omdat het aantal knoop punten in de invoer laag wordt bepaald door het aantal functies in de trainings gegevens, kan er in een regressie model slechts één knoop punt in de uitvoer laag zijn.  
+    Omdat het aantal knooppunten in de invoerlaag wordt bepaald door het aantal functies in de trainingsgegevens, kan er in een regressiemodel slechts één knooppunt in de uitvoerlaag zijn.  
   
-4. Voor het **aantal verborgen knoop punten**typt u het aantal verborgen knoop punten. De standaard waarde is één verborgen laag met 100 knoop punten. (Deze optie is niet beschikbaar als u een aangepaste architectuur definieert met behulp van net #.)
+4. Typ **voor aantal verborgen knooppunten**het aantal verborgen knooppunten. De standaardinstelling is een verborgen laag met 100 knooppunten. (Deze optie is niet beschikbaar als u een aangepaste architectuur definieert met Net#.)
   
-5.  Voor het **leer tempo**typt u een waarde die de stap definieert die bij elke herhaling moet worden uitgevoerd, vóór correctie. Een hogere waarde voor het leer tempo kan ertoe leiden dat het model sneller wordt geconvergeerd, maar dat het lokale minima kan overschrijden.
+5.  Typ **bij Leersnelheid**een waarde die de stap definieert die bij elke iteratie is gezet, vóór correctie. Een grotere waarde voor leersnelheid kan ertoe leiden dat het model sneller convergeert, maar het kan lokale minima overlopen.
 
-6.  Geef voor **aantal Learning-iteraties**het maximum aantal keren op dat het algoritme de trainings cases verwerkt.
+6.  Geef **bij Aantal leeriteraties**het maximum aantal keren dat het algoritme de trainingscases verwerkt.
 
 
-8.  Voor **de impuls**typt u een waarde die tijdens het leren moet worden toegepast als gewicht op knoop punten uit eerdere iteraties.
+8.  Typ **voor Het momentum**een waarde die moet worden toegepast tijdens het leren als een gewicht op knooppunten van eerdere iteraties.
 
-10. Selecteer de optie, **wille keurige voor beelden**om de volg orde van de aanvragen tussen herhalingen te wijzigen. Als u deze optie uitschakelt, worden cases in precies dezelfde volg orde verwerkt telkens wanneer u de pijp lijn uitvoert.
+10. Selecteer de optie **Shuffle-voorbeelden**om de volgorde van aanvragen tussen iteraties te wijzigen. Als u deze optie deselecteert, worden aanvragen telkens in exact dezelfde volgorde verwerkt wanneer u de pijplijn uitvoert.
   
-11. Voor **wille keurig getal zaad**kunt u eventueel een waarde invoeren die als seed moet worden gebruikt. Het opgeven van een Seed-waarde is handig als u de Herhaal baarheid wilt garanderen voor uitvoeringen van dezelfde pijp lijn.
+11. Voor **willekeurig nummerzaad**u optioneel een waarde typen die u als zaad wilt gebruiken. Het opgeven van een seedwaarde is handig wanneer u wilt zorgen voor herhaalbaarheid in runs van dezelfde pijplijn.
   
-13. Verbind een trainings gegevensset en een van de [trainings modules](module-reference.md): 
+13. Sluit een trainingsdataset en een van de [trainingsmodules](module-reference.md)aan: 
   
-    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u [Train model](./train-model.md).  
+    -   Als u **De trainermodus maken** instelt op Eén **parameter,** gebruikt u [Treinmodel](./train-model.md).  
   
    
-14. Voer de pijplijn uit.  
+14. Verzend de pijplijn.  
 
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid:
+Na de training is voltooid:
 
-- Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
+- Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van de **module Treinmodel.** Selecteer het pictogram **Gegevensset registreren** om het model op te slaan als een herbruikbare module.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

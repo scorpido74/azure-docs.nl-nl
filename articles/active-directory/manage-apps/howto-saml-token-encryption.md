@@ -1,6 +1,6 @@
 ---
-title: SAML-token versleuteling in Azure Active Directory
-description: Meer informatie over het configureren van Azure Active Directory SAML-token versleuteling.
+title: SAML-tokenversleuteling in Azure Active Directory
+description: Meer informatie over het configureren van Azure Active Directory SAML-tokenversleuteling.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365863"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Procedure: Azure AD SAML-token versleuteling configureren
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>How to: Azure AD SAML-tokenversleuteling configureren
 
 > [!NOTE]
-> Token versleuteling is een functie van Azure Active Directory (Azure AD) Premium. Zie [prijzen voor Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie over Azure AD-edities,-functies en-prijzen.
+> Tokenversleuteling is een premium-functie voor Azure Active Directory (Azure AD). Zie [Azure AD-prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie over Azure AD-edities, -functies en -prijzen.
 
-SAML-token versleuteling maakt het gebruik mogelijk van versleutelde SAML-bevestigingen met een toepassing die deze ondersteunt. Wanneer de configuratie voor een toepassing is geconfigureerd, versleutelt Azure AD de SAML-beweringen die worden verzonden voor die toepassing met behulp van de open bare sleutel die is verkregen van een certificaat dat is opgeslagen in azure AD. De toepassing moet de bijbehorende persoonlijke sleutel gebruiken om het token te ontsleutelen voordat het kan worden gebruikt als bewijs van authenticatie voor de aangemelde gebruiker.
+SAML-tokenversleuteling maakt het gebruik van versleutelde SAML-beweringen mogelijk met een toepassing die deze ondersteunt. Wanneer Azure AD is geconfigureerd voor een toepassing, versleutelt het de SAML-beweringen die voor die toepassing worden uitgezonden met behulp van de openbare sleutel die is verkregen uit een certificaat dat is opgeslagen in Azure AD. De toepassing moet de overeenkomende privésleutel gebruiken om het token te decoderen voordat het kan worden gebruikt als bewijs van verificatie voor de aangemelde gebruiker.
 
-Het versleutelen van de SAML-bevestigingen tussen Azure AD en de toepassing biedt extra zekerheid dat de inhoud van het token niet kan worden onderschept en dat persoonlijke of zakelijke gegevens zijn aangetast.
+Het versleutelen van de SAML-beweringen tussen Azure AD en de toepassing biedt extra zekerheid dat de inhoud van het token niet kan worden onderschept en persoonlijke of bedrijfsgegevens worden gecompromitteerd.
 
-Zelfs zonder token versleuteling worden Azure AD SAML-tokens nooit door gegeven in de heldere. Azure AD vereist dat de uitwisseling van token aanvragen of-antwoorden plaatsvindt via versleutelde HTTPS/TLS-kanalen, zodat de communicatie tussen de IDP, browser en toepassing plaatsvindt via versleutelde koppelingen. Houd rekening met de waarde van token encryptie voor uw situatie vergeleken met de overhead van het beheer van extra certificaten.   
+Zelfs zonder tokenversleuteling worden Azure AD SAML-tokens nooit duidelijk doorgegeven aan het netwerk. Azure AD vereist dat tokenrequest/response-uitwisselingen plaatsvinden via versleutelde HTTPS/TLS-kanalen, zodat communicatie tussen de IDP, browser en toepassing plaatsvindt via versleutelde koppelingen. Houd rekening met de waarde van tokenversleuteling voor uw situatie in vergelijking met de overhead van het beheren van extra certificaten.   
 
-Als u token versleuteling wilt configureren, moet u een X. 509-certificaat bestand uploaden dat de open bare sleutel bevat naar het Azure AD-toepassings object dat de toepassing vertegenwoordigt. Als u het X. 509-certificaat wilt ophalen, kunt u het downloaden van de toepassing zelf of het ontvangen van de leverancier van de toepassing in gevallen waarin de leverancier van de toepassing versleutelings sleutels levert of in gevallen waarin de toepassing u verwacht een persoonlijke sleutel op te geven, kan deze worden gemaakt met behulp van crypto grafie-hulpprogram ma's, het deel van de persoonlijke sleutel dat is geüpload naar de sleutel opslag van de toepassing en het overeenkomende open bare-sleutel certificaat dat is geüpload naar Azure AD
+Als u tokenversleuteling wilt configureren, moet u een X.509-certificaatbestand uploaden dat de openbare sleutel bevat voor het Azure AD-toepassingsobject dat de toepassing vertegenwoordigt. Om het X.509-certificaat te verkrijgen, u het downloaden van de toepassing zelf, of het downloaden van de leverancier van de toepassing in gevallen waarin de leverancier van de toepassing versleutelingssleutels verstrekt of in gevallen waarin de toepassing verwacht dat u een privésleutel verstrekt, kan dit gemaakt met behulp van cryptografietools, het gedeelte met de privésleutel die is geüpload naar het sleutelarchief van de toepassing en het bijbehorende certificaat met openbare sleutels dat is geüpload naar Azure AD.
 
-Azure AD maakt gebruik van AES-256 voor het versleutelen van de gegevens van de SAML-verklaring.
+Azure AD gebruikt AES-256 om de SAML-beweringsgegevens te versleutelen.
 
-## <a name="configure-saml-token-encryption"></a>SAML-token versleuteling configureren
+## <a name="configure-saml-token-encryption"></a>SAML-tokenversleuteling configureren
 
-Voer de volgende stappen uit om SAML-token versleuteling te configureren:
+Voer de volgende stappen uit om SAML-tokenversleuteling te configureren:
 
-1. Verkrijg een certificaat met een open bare sleutel dat overeenkomt met een persoonlijke sleutel die in de toepassing is geconfigureerd.
+1. Verkrijg een certificaat met openbare sleutel dat overeenkomt met een privésleutel die is geconfigureerd in de toepassing.
 
-    Maak een asymmetrisch sleutel paar om te gebruiken voor versleuteling. Als de toepassing een open bare sleutel voor versleuteling levert, volgt u de instructies van de toepassing om het X. 509-certificaat te downloaden.
+    Maak een asymmetrisch sleutelpaar om te gebruiken voor versleuteling. Of, als de toepassing een openbare sleutel levert om te gebruiken voor versleuteling, volg dan de instructies van de toepassing om het X.509-certificaat te downloaden.
 
-    De open bare sleutel moet worden opgeslagen in een X. 509-certificaat bestand in. CER-indeling.
+    De openbare sleutel moet worden opgeslagen in een X.509-certificaatbestand in .cer-indeling.
 
-    Als de toepassing gebruikmaakt van een sleutel die u voor uw exemplaar maakt, volgt u de instructies van uw toepassing voor het installeren van de persoonlijke sleutel die de toepassing gebruikt om tokens te ontsleutelen vanuit uw Azure AD-Tenant.
+    Als de toepassing een sleutel gebruikt die u voor uw instantie maakt, volgt u de instructies van uw toepassing voor het installeren van de privésleutel die de toepassing zal gebruiken om tokens te decoderen van uw Azure AD-tenant.
 
-1. Voeg het certificaat toe aan de toepassings configuratie in azure AD.
+1. Voeg het certificaat toe aan de toepassingsconfiguratie in Azure AD.
 
-### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Token versleuteling configureren in de Azure Portal
+### <a name="to-configure-token-encryption-in-the-azure-portal"></a>Tokenversleuteling configureren in de Azure-portal
 
-U kunt het open bare certificaat toevoegen aan de configuratie van uw toepassing binnen het Azure Portal.
+U het openbare cert toevoegen aan uw toepassingsconfiguratie binnen de Azure-portal.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure-portal.](https://portal.azure.com)
 
-1. Ga naar de Blade **Azure Active Directory > zakelijke toepassingen** en selecteer vervolgens de toepassing waarvoor u de token versleuteling wilt configureren.
+1. Ga naar het **Azure Active Directory > Enterprise-toepassingsblad** en selecteer vervolgens de toepassing waarvoor u tokenversleuteling wilt configureren.
 
-1. Selecteer op de pagina van de toepassing **token versleuteling**.
+1. Selecteer **tokenversleuteling**op de pagina van de toepassing .
 
-    ![Optie voor token versleuteling in de Azure Portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
+    ![Tokenversleutelingsoptie in de Azure-portal](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
     > [!NOTE]
-    > De optie **token Encryption** is alleen beschikbaar voor SAML-toepassingen die zijn ingesteld op de Blade **bedrijfs toepassingen** in de Azure Portal, hetzij vanuit de toepassings galerie of een niet-galerie-app. Voor andere toepassingen is deze menu optie uitgeschakeld. Voor toepassingen die zijn geregistreerd via de **app-registraties** -ervaring in de Azure Portal kunt u versleuteling configureren voor SAML-tokens met behulp van het toepassings manifest, via Microsoft Graph of via Power shell.
+    > De optie **Tokenversleuteling** is alleen beschikbaar voor SAML-toepassingen die zijn ingesteld vanuit het **Bedrijfstoepassingsblad** in de Azure-portal, vanuit de Toepassingsgalerie of een niet-Galerij-app. Voor andere toepassingen is deze menuoptie uitgeschakeld. Voor toepassingen die zijn geregistreerd via de ervaring **met app-registraties** in de Azure-portal, u versleuteling voor SAML-tokens configureren via het toepassingsmanifest, via Microsoft Graph of via PowerShell.
 
-1. Selecteer op de pagina **token versleuteling** de optie **certificaat importeren** om het CER-bestand te importeren dat uw open bare X. 509-certificaat bevat.
+1. Selecteer op de pagina **Tokenversleuteling** de optie **Certificaat importeren** om het .cer-bestand te importeren dat uw openbare X.509-certificaat bevat.
 
-    ![Importeer het CER-bestand dat het X. 509-certificaat bevat](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![Het .cer-bestand importeren dat het X.509-certificaat bevat](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. Zodra het certificaat is geïmporteerd en de persoonlijke sleutel is geconfigureerd voor gebruik aan de kant van de toepassing, kunt u versleuteling activeren door de **...** naast de vingerafdruk status te selecteren en vervolgens **token versleuteling activeren** te selecteren in de opties in de vervolg keuzelijst.
+1. Zodra het certificaat is geïmporteerd en de privésleutel is geconfigureerd voor gebruik aan de toepassingszijde, activeert u versleuteling door de **status ...** naast de duimafdrukstatus te selecteren en selecteert u **Tokenversleuteling activeren** in de opties in het vervolgkeuzemenu.
 
-1. Selecteer **Ja** om de activering van het certificaat voor token versleuteling te bevestigen.
+1. Selecteer **Ja** om de activering van het tokenversleutelingscertificaat te bevestigen.
 
-1. Controleer of de SAML-beweringen die voor de toepassing zijn verzonden, zijn versleuteld.
+1. Controleer of de SAML-beweringen die voor de toepassing worden uitgezonden, zijn versleuteld.
 
-### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Token versleuteling in de Azure Portal deactiveren
+### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Tokenversleuteling in de Azure-portal deactiveren
 
-1. Ga in het Azure Portal naar **Azure Active Directory > zakelijke toepassingen**en selecteer vervolgens de toepassing waarvoor SAML-token versleuteling is ingeschakeld.
+1. Ga in de Azure-portal naar **Azure Active Directory > Enterprise-toepassingen**en selecteer vervolgens de toepassing waarin SAML-tokenversleuteling is ingeschakeld.
 
-1. Selecteer op de pagina van de toepassing **token versleuteling**, zoek het certificaat en selecteer vervolgens de optie **...** om het vervolg keuzemenu weer te geven.
+1. Selecteer op de pagina van de toepassing **Token-versleuteling,** zoek het certificaat en selecteer vervolgens de **optie ...** om het vervolgkeuzemenu weer te geven.
 
-1. Selecteer **token versleuteling deactiveren**.
+1. Selecteer **Tokenversleuteling deactiveren**.
 
-## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML-token versleuteling configureren met behulp van Graph API, Power shell of app-manifest
+## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML-tokenversleuteling configureren met Graph API, PowerShell of app-manifest
 
-Versleutelings certificaten worden opgeslagen op het toepassings object in azure AD met een `encrypt` gebruiks label. U kunt meerdere versleutelings certificaten configureren en de certificerings instanties die actief zijn voor het versleutelen van tokens, wordt geïdentificeerd door het kenmerk `tokenEncryptionKeyID`.
+Versleutelingscertificaten worden opgeslagen op het toepassingsobject in Azure AD met een `encrypt` gebruikstag. U meerdere versleutelingscertificaten configureren en degene die actief is `tokenEncryptionKeyID` voor het versleutelen van tokens wordt geïdentificeerd door het kenmerk.
 
-U hebt de object-ID van de toepassing nodig voor het configureren van token versleuteling met behulp van Microsoft Graph-API of Power shell. U kunt deze waarde programmatisch vinden, of door naar de **Eigenschappen** pagina van de toepassing in de Azure portal te gaan en de **object-id-** waarde te gebruiken.
+U hebt de object-id van de toepassing nodig om tokenversleuteling te configureren met Behulp van Microsoft Graph API of PowerShell. U deze waarde programmatisch vinden of door naar de pagina **Eigenschappen** van de toepassing in de Azure-portal te gaan en de **object-id-waarde** op te merken.
 
-Wanneer u een sleutel referentie configureert met Graph, Power shell of in het manifest van de toepassing, moet u een GUID genereren om te gebruiken voor de keyId.
+Wanneer u een keyCredential configureert met Grafiek, PowerShell of in het toepassingsmanifest, moet u een GUID genereren die u voor de keyId moet gebruiken.
 
-### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Token versleuteling configureren met behulp van Microsoft Graph
+### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Tokenversleuteling configureren met Microsoft Graph
 
-1. Werk de `keyCredentials` van de toepassing bij met een X. 509-certificaat voor versleuteling. In het volgende voor beeld ziet u hoe u dit doet.
+1. Werk de toepassing `keyCredentials` bij met een X.509-certificaat voor versleuteling. In het volgende voorbeeld ziet u hoe u dit doet.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>
@@ -111,7 +111,7 @@ Wanneer u een sleutel referentie configureert met Graph, Power shell of in het m
     }
     ```
 
-1. Identificeer het versleutelings certificaat dat actief is voor het versleutelen van tokens. In het volgende voor beeld ziet u hoe u dit doet.
+1. Identificeer het versleutelingscertificaat dat actief is voor het versleutelen van tokens. In het volgende voorbeeld ziet u hoe u dit doet.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid> 
@@ -121,17 +121,17 @@ Wanneer u een sleutel referentie configureert met Graph, Power shell of in het m
     }
     ```
 
-### <a name="to-configure-token-encryption-using-powershell"></a>Token versleuteling configureren met Power shell
+### <a name="to-configure-token-encryption-using-powershell"></a>Tokenversleuteling configureren met PowerShell
 
-1. Gebruik de nieuwste Azure AD Power shell-module om verbinding te maken met uw Tenant.
+1. Gebruik de nieuwste Azure AD PowerShell-module om verbinding te maken met uw tenant.
 
-1. Stel de coderings instellingen voor tokens in met de opdracht **[set-azurekunt](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** .
+1. Stel de tokencoderingsinstellingen in met de opdracht **[Set-AzureApplication.](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)**
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Lees de versleutelings instellingen voor tokens met behulp van de volgende opdrachten.
+1. Lees de tokencoderingsinstellingen met de volgende opdrachten.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
@@ -139,17 +139,17 @@ Wanneer u een sleutel referentie configureert met Graph, Power shell of in het m
     $app.TokenEncryptionKeyId
     ```
 
-### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Token versleuteling configureren met het toepassings manifest
+### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Tokenversleuteling configureren met behulp van het toepassingsmanifest
 
-1. Ga vanuit het Azure Portal naar **Azure Active Directory > app-registraties**.
+1. Ga vanuit de Azure-portal naar **Azure Active Directory > App-registraties**.
 
-1. Selecteer **alle apps** in de vervolg keuzelijst om alle apps weer te geven en selecteer vervolgens de bedrijfs toepassing die u wilt configureren.
+1. Selecteer **Alle apps** in de vervolgkeuzelijst om alle apps weer te geven en selecteer vervolgens de bedrijfstoepassing die u wilt configureren.
 
-1. Op de pagina van de toepassing selecteert u **manifest** om het [toepassings manifest](../develop/reference-app-manifest.md)te bewerken.
+1. Selecteer **Manifest** op de pagina van de toepassing om het [toepassingsmanifest](../develop/reference-app-manifest.md)te bewerken .
 
-1. Stel de waarde voor het kenmerk `tokenEncryptionKeyId` in.
+1. Stel de waarde `tokenEncryptionKeyId` voor het kenmerk in.
 
-    In het volgende voor beeld ziet u een manifest van een toepassing dat is geconfigureerd met twee versleutelings certificaten en met de tweede die als actieve is geselecteerd met behulp van de tokenEnryptionKeyId.
+    In het volgende voorbeeld wordt een toepassingsmanifest weergegeven dat is geconfigureerd met twee versleutelingscertificaten en waarbij het tweede is geselecteerd als de actieve met behulp van de tokenEnryptionKeyId.
 
     ```json
     { 
@@ -220,5 +220,5 @@ Wanneer u een sleutel referentie configureert met Graph, Power shell of in het m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek [hoe Azure ad het SAML-protocol gebruikt](../develop/active-directory-saml-protocol-reference.md)
-* Meer informatie over de indeling, beveiligings kenmerken en de inhoud van [SAML-tokens in azure AD](../develop/reference-saml-tokens.md)
+* Ontdek [hoe Azure AD het SAML-protocol gebruikt](../develop/active-directory-saml-protocol-reference.md)
+* Meer informatie over de indeling, beveiligingskenmerken en inhoud van [SAML-tokens in Azure AD](../develop/reference-saml-tokens.md)

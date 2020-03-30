@@ -1,5 +1,5 @@
 ---
-title: Een interne Load Balancer maken - Azure-sjabloon
+title: Een interne load balancer maken - Azure-sjabloon
 titleSuffix: Azure Load Balancer
 description: Meer informatie over hoe u met een sjabloon een interne load balancer maakt in Resource Manager
 services: load-balancer
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: bdc9a8079c46a05e5045d72cd6d7b07a9a457899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456961"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Een interne load balancer maken met behulp van een sjabloon
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
-> * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
+> * [Azure-portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure-CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -42,10 +42,10 @@ De voorbeeldsjabloon in de openbare opslagplaats maakt gebruik van een parameter
 
 Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implementeren met PowerShell.
 
-1. Als u Azure PowerShell nog niet eerder hebt gebruikt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) en volgt u de instructies helemaal tot aan het einde om u aan te melden bij Azure en uw abonnement te selecteren.
+1. Als u Azure PowerShell nog nooit hebt gebruikt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) en volgt u de instructies tot het einde om u aan te melden bij Azure en uw abonnement te selecteren.
 2. Download het parameterbestand naar de lokale schijf.
 3. Bewerk het bestand en sla het op.
-4. Voer de cmdlet **New-AzResourceGroupDeployment** uit om een resource groep te maken met behulp van de sjabloon.
+4. Voer de cmdlet **Nieuw-AzResourceGroupDeployment** uit om een resourcegroep te maken met behulp van de sjabloon.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -57,10 +57,10 @@ Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implemen
 
 Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
-1. Als u Azure CLI nog nooit hebt gebruikt, raadpleegt u [De Azure CLI installeren en configureren](../cli-install-nodejs.md) en volgt u de instructies tot het punt waar u uw Azure-account en -abonnement moet selecteren.
-2. Voer de opdracht **azure config mode** uit om over te schakelen naar de modus Resource Manager, zoals hieronder weergegeven.
+1. Als u Azure CLI nog nooit hebt gebruikt, [raadpleegt](../cli-install-nodejs.md) u Azure CLI installeren en configureren en volgt u de instructies tot het punt waarop u uw Azure-account en -abonnement selecteert.
+2. Ga [https://shell.azure.com](https://shell.azure.com) naar Cloud Shell openen in uw browser. Voer de opdracht **azure config mode** uit om over te schakelen naar de modus Resource Manager, zoals hieronder weergegeven.
 
-    ```azurecli-interactive
+    ```console
     azure config mode arm
     ```
 
@@ -71,7 +71,7 @@ Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 3. Open het parameterbestand, selecteer de inhoud en sla deze op in een bestand op uw computer. Hier is het parameterbestand opgeslagen als *parameters.json*.
 4. Voer de opdracht **azure group deployment create** uit om de nieuwe interne load balancer te implementeren met behulp van de sjabloon en de parameterbestanden die u hebt gedownload en hierboven hebt gewijzigd. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
 
-    ```azurecli
+    ```console
     azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
     ```
 
@@ -81,4 +81,4 @@ Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
 [TCP-time-outinstellingen voor inactiviteit voor de load balancer configureren](load-balancer-tcp-idle-timeout.md)
 
-Zie [micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)voor de JSON-syntaxis en-eigenschappen van een Load Balancer in een sjabloon.
+Zie [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)voor de syntaxis en eigenschappen van json van een load balancer in een sjabloon .

@@ -1,6 +1,6 @@
 ---
 title: Met Application Gateway integreren
-description: Meer informatie over het integreren van een app in uw ILB-App Service Environment met een Application Gateway in deze end-to-end-instructies.
+description: Meer informatie over het integreren van een app in uw ILB-appserviceomgeving met een Application Gateway in deze end-to-end-walk-through.
 author: ccompy
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.topic: article
@@ -8,111 +8,111 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687141"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Uw ILB-App Service Environment integreren met de Azure-toepassing gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Uw ILB App Service-omgeving integreren met Azure Application Gateway #
 
-De [app service Environment](./intro.md) is een implementatie van Azure app service in het subnet van het virtuele Azure-netwerk van een klant. Het kan worden geïmplementeerd met een openbaar of persoonlijk eind punt voor toegang tot apps. De implementatie van de App Service Environment met een persoonlijk eind punt (dat wil zeggen, een interne load balancer) wordt een ILB App Service Environment genoemd.  
+De [App Service-omgeving](./intro.md) is een implementatie van Azure App Service in het subnet van het Azure-netwerk van een klant. Het kan worden geïmplementeerd met een openbaar of privé eindpunt voor app-toegang. De implementatie van de App Service-omgeving met een privéeindpunt (dat wil zeggen een interne load balancer) wordt een ILB App Service Environment genoemd.  
 
-Met firewalls voor webtoepassingen kunt u uw webtoepassingen beveiligen door inkomend webverkeer te inspecteren om SQL-injecties, cross-site scripting, uploads van malware & toepassings DDoS en andere aanvallen te blok keren. Ook worden de antwoorden van de back-end-webservers voor preventie van gegevens verlies (DLP) gecontroleerd. U kunt een WAF-apparaat verkrijgen via de Azure Marketplace of u kunt de [Azure-toepassing gateway][appgw]gebruiken.
+Firewalls voor webapplicaties helpen uw webapplicaties te beveiligen door binnenkomend webverkeer te inspecteren om SQL-injecties, Cross-Site Scripting, malware-uploads & toepassing DDoS en andere aanvallen te blokkeren. Het inspecteert ook de reacties van de back-end webservers voor Data Loss Prevention (DLP). U een WAF-apparaat ophalen van de Azure-marktplaats of u de [Azure Application Gateway gebruiken.][appgw]
 
-De Azure-toepassing-gateway is een virtueel apparaat dat laag 7-taak verdeling, SSL-offloading en Web Application Firewall (WAF) beveiliging biedt. Het kan Luis teren naar een openbaar IP-adres en verkeer door sturen naar het eind punt van de toepassing. In de volgende informatie wordt beschreven hoe u een met WAF geconfigureerde toepassings gateway integreert met een app in een ILB-App Service Environment.  
+De Azure Application Gateway is een virtueel toestel dat layer 7 load balancing, SSL offloading en Web Application Firewall (WAF) bescherming biedt. Het kan luisteren op een openbaar IP-adres en routeverkeer naar het eindpunt van uw toepassing. De volgende informatie beschrijft hoe u een WAF-geconfigureerde toepassingsgateway integreren met een app in een ILB-appserviceomgeving.  
 
-De integratie van de toepassings gateway met de ILB-App Service Environment bevindt zich op een app-niveau. Wanneer u de toepassings gateway configureert met uw ILB-App Service Environment, voert u deze uit voor specifieke apps in uw ILB App Service Environment. Deze techniek maakt het mogelijk om beveiligde multi tenant-toepassingen in één ILB-App Service Environment te hosten.  
+De integratie van de applicatiegateway met de ILB App Service Environment is op app-niveau. Wanneer u de toepassingsgateway configureert met uw ILB-appserviceomgeving, doet u dit voor specifieke apps in uw ILB-appserviceomgeving. Deze techniek maakt het hosten van veilige multitenant-applicaties mogelijk in één ILB-appserviceomgeving.  
 
-![Application Gateway die verwijst naar de app op een ILB-App Service Environment][1]
+![Toepassingsgateway die naar de app wijst op een ILB-appserviceomgeving][1]
 
 In deze procedure gaat u het volgende doen:
 
-* Een Azure-toepassing gateway maken.
-* Configureer de Application Gateway zodanig dat deze verwijst naar een app in uw ILB App Service Environment.
-* Configureer uw app om te voldoen aan de aangepaste domein naam.
-* Bewerk de naam van de open bare DNS-host die naar uw toepassings gateway verwijst.
+* Maak een Azure Application Gateway.
+* Configureer de toepassingsgateway om een app in uw ILB-appserviceomgeving aan te wijzen.
+* Configureer uw app om de aangepaste domeinnaam te eren.
+* Bewerk de openbare DNS-hostnaam die naar uw toepassingsgateway verwijst.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u uw Application Gateway wilt integreren met uw ILB-App Service Environment, hebt u het volgende nodig:
+Als u uw Application Gateway wilt integreren met uw ILB-appserviceomgeving, moet u het:
 
-* Een ILB-App Service Environment.
-* Een app die wordt uitgevoerd in de ILB-App Service Environment.
-* Een Internet routeerbaar domein naam die wordt gebruikt voor uw app in de ILB-App Service Environment.
-* Het ILB-adres dat uw ILB-App Service Environment gebruikt. Deze informatie bevindt zich in de App Service Environment portal onder **instellingen** > **IP-adressen**:
+* Een ILB App-serviceomgeving.
+* Een app die wordt uitgevoerd in de ILB-appserviceomgeving.
+* Een internetrouteerbare domeinnaam die met uw app kan worden gebruikt in de ILB App Service-omgeving.
+* Het ILB-adres dat uw ILB-appserviceomgeving gebruikt. Deze informatie bevindt zich in de portal App Service Environment onder **Instellingen** > **IP-adressen:**
 
-    ![Een voor beeld van een lijst met IP-adressen die worden gebruikt door de ILB-App Service Environment][9]
+    ![Voorbeeldlijst met IP-adressen die worden gebruikt door de ILB-appserviceomgeving][9]
     
-* Een open bare DNS-naam die later wordt gebruikt om naar uw Application Gateway te verwijzen. 
+* Een openbare DNS-naam die later wordt gebruikt om naar uw Application Gateway te wijzen. 
 
-Zie [een ILB app service Environment maken en gebruiken][ilbase]voor meer informatie over het maken van een ILB-app service environment.
+Zie [Een ILB-appserviceomgeving maken en gebruiken][ilbase]voor meer informatie over het maken van een ILB-appserviceomgeving.
 
-In dit artikel wordt ervan uitgegaan dat u een Application Gateway wilt in hetzelfde virtuele Azure-netwerk waar de App Service Environment wordt geïmplementeerd. Kies of maak een subnet dat u gaat gebruiken om de gateway te hosten voordat u begint met het maken van de Application Gateway. 
+In dit artikel wordt ervan uitgegaan dat u een toepassingsgateway wilt in hetzelfde virtuele Azure-netwerk waar de App Service-omgeving is geïmplementeerd. Voordat u de toepassingsgateway gaat maken, kiest of maakt u een subnet dat u gebruikt om de gateway te hosten. 
 
-U moet een subnet gebruiken dat niet de naam GatewaySubnet heeft. Als u de Application Gateway in GatewaySubnet plaatst, kunt u later geen virtuele netwerk gateway maken. 
+U moet een subnet gebruiken dat niet het subnet is met de naam GatewaySubnet. Als u de Application Gateway in GatewaySubnet plaatst, u later geen virtuele netwerkgateway meer maken. 
 
-U kunt de gateway ook niet in het subnet plaatsen dat door uw ILB-App Service Environment wordt gebruikt. Het App Service Environment is het enige wat in dit subnet kan zijn.
+U de gateway ook niet in het subnet plaatsen dat uw ILB App Service-omgeving gebruikt. De App Service Omgeving is het enige dat kan worden in dit subnet.
 
 ## <a name="configuration-steps"></a>Configuratiestappen ##
 
-1. Ga in het Azure Portal naar **nieuw** > **netwerk** > **Application Gateway**.
+1. Ga in de Azure-portal naar **Nieuwe** > **netwerktoepassingsgateway****Network** > .
 
-2. In het gebied **basis** :
+2. In de **basis:**
 
-   a. Voer bij **naam**de naam van de Application Gateway in.
+   a. Voer **voor Naam**de naam van de toepassingsgateway in.
 
-   b. Selecteer bij **laag**de optie **WAF**.
+   b. Selecteer **WAF**voor **Laag**.
 
-   c. Selecteer voor het **abonnement**hetzelfde abonnement dat door het virtuele app service Environment-netwerk wordt gebruikt.
+   c. Selecteer **bij Abonnement**hetzelfde abonnement dat het virtuele netwerk van de App-serviceomgeving gebruikt.
 
-   d. Voor **resource groep**, maakt of selecteert u de resource groep.
+   d. Maak of selecteer de resourcegroep voor **resourcegroep.**
 
-   e. Selecteer bij **locatie**de locatie van het app service environment virtuele netwerk.
+   e. Selecteer **bij Locatie**de locatie van het virtuele netwerk App Service Environment.
 
-   ![Basis beginselen van nieuwe Application Gateway maken][2]
+   ![Basisprincipes voor het maken van nieuwe toepassingsgateways][2]
 
-3. In het gebied **instellingen** :
+3. Ga als het gaat om **instellingen:**
 
-   a. Selecteer voor **virtueel netwerk**het app service environment virtuele netwerk.
+   a. Selecteer **voor virtueel netwerk**het virtuele netwerk App Service Environment.
 
-   b. Selecteer bij **subnet**het subnet waar de Application Gateway moet worden geïmplementeerd. Gebruik GatewaySubnet niet om te voor komen dat VPN-gateways worden gemaakt.
+   b. Selecteer **bij Subnet**het subnet waarin de toepassingsgateway moet worden geïmplementeerd. Gebruik GatewaySubnet niet, omdat het het maken van VPN-gateways zal voorkomen.
 
-   c. Selecteer **openbaar**bij **IP-adres type**.
+   c. Selecteer Openbaar voor **IP-adrestype** **.**
 
-   d. Selecteer een openbaar IP-adres voor **openbaar IP-adres**. Als u er nog geen hebt, maakt u er nu een.
+   d. Selecteer **voor openbaar IP-adres**een openbaar IP-adres. Als je er geen hebt, maak er dan nu een.
 
-   e. Selecteer voor **protocol** **http** of **https**. Als u configureert voor HTTPS, moet u een PFX-certificaat opgeven.
+   e. Selecteer **HTTP** of **HTTPS**voor **Protocol**. Als u configureert voor HTTPS, moet u een PFX-certificaat verstrekken.
 
-   f. Voor **Web Application firewall**kunt u de firewall inschakelen en deze ook instellen voor **detectie** of voor **komen** .
+   f. Voor **firewall voor webtoepassingen**u de firewall inschakelen en deze ook instellen voor **detectie** of **preventie naar** eigen inzicht.
 
-   ![Nieuwe instellingen voor het maken van Application Gateway][3]
+   ![Nieuwe instellingen voor het maken van toepassingsgateways][3]
     
-4. Controleer de instellingen in de sectie **samen vatting** en selecteer **OK**. Het volt ooien van de installatie van uw Application Gateway kan iets meer dan 30 minuten duren.  
+4. Controleer **in** de sectie Samenvatting de instellingen en selecteer **OK**. Het kan iets meer dan 30 minuten duren voordat de installatie is voltooid.  
 
-5. Nadat de installatie van Application Gateway is voltooid, gaat u naar uw Application Gateway portal. Selecteer de **back-end-pool**. Voeg het ILB-adres voor uw ILB-App Service Environment toe.
+5. Nadat de installatie van uw toepassingsgateway is voltooid, gaat u naar de Portal van de Toepassingsgateway. Selecteer **Backend-groep**. Voeg het ILB-adres toe voor uw ILB-appserviceomgeving.
 
-   ![Back-end-groep configureren][4]
+   ![Backend-pool configureren][4]
 
-6. Nadat het proces voor het configureren van uw back-end-pool is voltooid, selecteert u **status controles**. Maak een status test voor de domein naam die u wilt gebruiken voor uw app. 
+6. Nadat het configureren van uw back-endpool is voltooid, selecteert u **Statussondes**. Maak een statussonde voor de domeinnaam die u voor uw app wilt gebruiken. 
 
    ![Statuscontroles configureren][5]
     
-7. Nadat het proces van het configureren van de status tests is voltooid, selecteert u **http-instellingen**. Bewerk de bestaande instellingen, selecteer **aangepaste test gebruiken**en kies de test die u hebt geconfigureerd.
+7. Nadat het configureren van uw statussondes is voltooid, selecteert u **HTTP-instellingen**. Bewerk de bestaande instellingen, selecteer **Aangepaste sonde gebruiken**en kies de sonde die u hebt geconfigureerd.
 
    ![HTTP-instellingen configureren][6]
     
-8. Ga naar de sectie **overzicht** van de Application Gateway en kopieer het open bare IP-adres dat door uw Application Gateway wordt gebruikt. Stel dat IP-adres in als een record voor de domein naam van uw app of gebruik de DNS-naam voor dat adres in een CNAME-record. Het is eenvoudiger om het open bare IP-adres te selecteren en dit te kopiëren van de gebruikers interface van het open bare IP-adres in plaats van deze te kopiëren van de koppeling in de sectie **overzicht** van de Application Gateway. 
+8. Ga naar de sectie **Overzicht** van de toepassingsgateway en kopieer het openbare IP-adres dat uw Application Gateway gebruikt. Stel dat IP-adres in als een A-record voor uw app-domeinnaam of gebruik de DNS-naam voor dat adres in een CNAME-record. Het is eenvoudiger om het openbare IP-adres te selecteren en te kopiëren vanuit de gebruikersinterface van het openbare IP-adres in plaats van het te kopiëren via de koppeling in de sectie **Overzicht** van de toepassingsgateway. 
 
-   ![Application Gateway portal][7]
+   ![Toepassingsgatewayportal][7]
 
-9. Stel de aangepaste domein naam voor uw app in uw ILB-App Service Environment in. Ga naar uw app in de portal en selecteer **aangepaste domeinen**onder **instellingen**.
+9. Stel de aangepaste domeinnaam voor uw app in in uw ILB-appserviceomgeving. Ga naar uw app in de portal en selecteer onder **Instellingen** **aangepaste domeinen**.
 
-   ![Aangepaste domein naam voor de app instellen][8]
+   ![Aangepaste domeinnaam instellen in de app][8]
 
-Er is informatie over het instellen van aangepaste domein namen voor uw web-apps in het artikel [instelling van aangepaste domein namen voor uw web-app][custom-domain]. Maar voor een app in een ILB-App Service Environment is er geen validatie voor de domein naam. Omdat u de eigenaar bent van de DNS-server die de app-eind punten beheert, kunt u daar wat u wilt opnemen. De aangepaste domein naam die u in dit geval toevoegt, hoeft niet in uw DNS te zijn, maar moet wel worden geconfigureerd met uw app. 
+Er vindt u informatie over het instellen van aangepaste domeinnamen voor uw web-apps in het artikel [Aangepaste domeinnamen instellen voor uw web-app.][custom-domain] Maar voor een app in een ILB App Service Environment is er geen validatie op de domeinnaam. Omdat u eigenaar bent van de DNS die de eindpunten van de app beheert, u daar alles in plaatsen wat u wilt. De aangepaste domeinnaam die u in dit geval toevoegt, hoeft niet in uw DNS te zitten, maar moet wel worden geconfigureerd met uw app. 
 
-Nadat de installatie is voltooid en u een korte tijd hebt om uw DNS-wijzigingen door te geven, kunt u toegang krijgen tot uw app met behulp van de aangepaste domein naam die u hebt gemaakt. 
+Nadat de installatie is voltooid en u een korte tijd hebt toegestaan voor het doorgeven van uw DNS-wijzigingen, u uw app openen met behulp van de aangepaste domeinnaam die u hebt gemaakt. 
 
 
 <!--IMAGES-->

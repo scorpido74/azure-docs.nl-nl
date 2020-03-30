@@ -6,23 +6,23 @@ ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: caefb11e3d691cea940bae5103bf918d3d31cc96
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77134443"
 ---
-Wanneer u klaar bent met uw app en Azure Cosmos DB account, kunt u de Azure-resources die u hebt gemaakt, verwijderen zodat er geen kosten in rekening worden gebracht. Om de resources te verwijderen:
+Wanneer u klaar bent met uw app en Azure Cosmos DB-account, u de Azure-resources verwijderen die u hebt gemaakt, zodat u niet meer kosten hoeft te maken. Om de resources te verwijderen:
 
-1. Zoek en selecteer in de zoek balk Azure Portal de optie **resource groepen**.
+1. Zoek in de Azure-portal-zoekbalk naar **resourcegroepen**en selecteer deze.
 
-2. Selecteer in de lijst de resource groep die u hebt gemaakt voor deze Quick Start.  
+2. Selecteer in de lijst de resourcegroep die u voor deze quickstart hebt gemaakt.  
 
-   ![Selecteer de resource groep die u wilt verwijderen](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+   ![Selecteer de brongroep die u wilt verwijderen](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. Selecteer **resource groep verwijderen**op de pagina **overzicht** van de resource groep.
+2. Selecteer resourcegroep verwijderen op de pagina **Overzicht** van de brongroep **verwijderen**.
 
-   ![De resource groep verwijderen](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+   ![De resourcegroep verwijderen](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. Voer in het volgende venster de naam in van de resource groep die u wilt verwijderen en selecteer vervolgens **verwijderen**.
+3. Voer in het volgende venster de naam in van de resourcegroep die u wilt verwijderen en selecteer **Verwijderen**.
 

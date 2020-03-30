@@ -1,6 +1,6 @@
 ---
-title: Importeren/exporteren van Azure IoT Hub apparaat-id's | Microsoft Docs
-description: De Azure IoT Service SDK gebruiken om bulk bewerkingen uit te voeren op het identiteits register om apparaat-id's te importeren en exporteren. Met import bewerkingen kunt u de apparaat-id's in bulk maken, bijwerken en verwijderen.
+title: Identiteiten van Azure IoT Hub-apparaatidentiteiten importeren/exporteren | Microsoft Documenten
+description: De Azure IoT-service SDK gebruiken om bulkbewerkingen uit te voeren tegen het identiteitsregister om identiteiten van apparaten te importeren en te exporteren. Met importbewerkingen u apparaatidentiteiten in bulk maken, bijwerken en verwijderen.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371576"
 ---
-# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub apparaat-id's in bulk importeren en exporteren
+# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Id's van IoT Hub-apparaten bulksgewijs importeren en exporteren
 
-Elke IoT-hub beschikt over een id-REGI ster dat u kunt gebruiken voor het maken van resources per apparaat in de service. Met het id-REGI ster kunt u ook de toegang tot de eind punten van het apparaat beheren. In dit artikel wordt beschreven hoe u apparaat-id's in bulk kunt importeren en exporteren naar een identiteits register. Zie [een IOT hub klonen](iot-hub-how-to-clone.md)om C# een werkend voor beeld in te bekijken en te leren hoe u deze mogelijkheid kunt gebruiken bij het klonen van een hub naar een andere regio.
+Elke IoT-hub heeft een identiteitsregister dat u gebruiken om bronnen per apparaat in de service te maken. Met het identiteitsregister u ook de toegang tot de apparaatgerichte eindpunten beheren. In dit artikel wordt beschreven hoe u apparaatidentiteiten in bulk importeert en exporteert naar en vanuit een identiteitsregister. Zie [Een IoT-hub](iot-hub-how-to-clone.md)klonen als u een werkend voorbeeld in C# wilt bekijken en hoe u deze mogelijkheid gebruiken bij het klonen van een hub naar een andere regio.
 
 > [!NOTE]
-> IoT Hub heeft onlangs ondersteuning voor het virtuele netwerk in een beperkt aantal regio's toegevoegd. Deze functie beveiligt import-en export bewerkingen en elimineert de nood zaak om sleutels voor verificatie uit te voeren.  De ondersteuning voor het virtuele netwerk is in eerste instantie alleen beschikbaar in deze regio's: *WestUS2*, *eastus*en *SouthCentralUS*. Zie [IOT hub-ondersteuning voor virtuele netwerken](virtual-network-support.md)voor meer informatie over ondersteuning voor virtuele netwerken en de API-aanroepen om deze te implementeren.
+> IoT Hub heeft onlangs virtuele netwerkondersteuning toegevoegd in een beperkt aantal regio's. Deze functie beveiligt import- en exportbewerkingen en elimineert de noodzaak om sleutels voor verificatie door te geven.  In eerste instantie is ondersteuning van virtueel netwerk alleen beschikbaar in deze regio's: *WestUS2*, *EastUS*en *SouthCentralUS*. Zie [IoT Hub Support voor virtuele netwerken voor](virtual-network-support.md)meer informatie over ondersteuning van virtuele netwerken en de API-aanroepen om deze te implementeren.
 
-Import-en export bewerkingen worden uitgevoerd in de context van *taken* waarmee u bulksgewijze service bewerkingen kunt uitvoeren op een IOT-hub.
+Import- en exportbewerkingen vinden plaats in de context van *Taken* waarmee u bulkservicebewerkingen uitvoeren op een IoT-hub.
 
-De **RegistryManager** -klasse bevat de methoden **ExportDevicesAsync** en **ImportDevicesAsync** die gebruikmaken van het **project** Framework. Met deze methoden kunt u het geheel van een IoT hub-identiteits register exporteren, importeren en synchroniseren.
+De klasse **RegistryManager** bevat de methoden **ExportDevicesAsync** en **ImportDevicesAsync** die het **taakframework** gebruiken. Met deze methoden u het volledige identiteitsregister van een IoT-hub exporteren, importeren en synchroniseren.
 
-In dit onderwerp wordt beschreven hoe u de **RegistryManager** -klasse en het **taak** systeem gebruikt voor het uitvoeren van bulksgewijs importeren en exporteren van apparaten naar en van het identiteits register van een IOT-hub. U kunt ook de Azure IoT Hub Device Provisioning Service gebruiken voor het inschakelen van Zero-Touch, just-in-time inrichting naar een of meer IoT-hubs zonder menselijke tussen komst. Zie de documentatie van de [inrichtings service](/azure/iot-dps)voor meer informatie.
+In dit onderwerp wordt gesproken over het gebruik van het **registermanager-** en **taaksysteem** om bulkinvoer en -export van apparaten uit te voeren van en naar het identiteitsregister van een IoT-hub. U de Azure IoT Hub Device Provisioning Service ook gebruiken om zero-touch, just-in-time provisioning voor een of meer IoT-hubs mogelijk te maken zonder menselijke tussenkomst. Zie voor meer informatie de documentatie van de [inrichtingsservice](/azure/iot-dps).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-## <a name="what-are-jobs"></a>Wat zijn taken?
+## <a name="what-are-jobs"></a>Wat zijn banen?
 
-Identiteits register bewerkingen gebruiken het **taak** systeem wanneer de bewerking:
+Identiteitsregisterbewerkingen gebruiken het **taaksysteem** wanneer de bewerking:
 
-* Heeft een mogelijk lange uitvoerings tijd ten opzichte van de standaard runtime bewerkingen.
+* Heeft een potentieel lange uitvoeringstijd in vergelijking met standaard run-time operaties.
 
-* Retourneert een grote hoeveelheid gegevens naar de gebruiker.
+* Retourneert een grote hoeveelheid gegevens aan de gebruiker.
 
-In plaats van één API-aanroep wacht op het resultaat van de bewerking, maakt de bewerking asynchroon een **taak** voor die IOT-hub. De bewerking retourneert vervolgens onmiddellijk een **JobProperties** -object.
+In plaats van één API-aanroep te wachten of te blokkeren op het resultaat van de bewerking, maakt de bewerking asynchroon een **taak** voor die IoT-hub. De bewerking retourneert vervolgens onmiddellijk een object **JobProperties.**
 
-Het volgende C# code fragment laat zien hoe u een export taak maakt:
+In het volgende C#-codefragment ziet u hoe u een exporttaak maakt:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
@@ -49,26 +49,26 @@ JobProperties exportJob = await
 ```
 
 > [!NOTE]
-> Als u de **RegistryManager** -klasse in C# uw code wilt gebruiken, voegt u het NuGet-pakket **micro soft. Azure. devices** toe aan uw project. De **RegistryManager** -klasse bevindt zich in de naam ruimte **micro soft. Azure. devices** .
+> Als u de klasse **RegistryManager** wilt gebruiken in uw C#-code, voegt u het **NuGet-pakket Microsoft.Azure.Devices** nuGet toe aan uw project. De klasse **RegistryManager** bevindt zich in de naamruimte **Microsoft.Azure.Devices.**
 
-U kunt de **RegistryManager** -klasse gebruiken om de status van de **taak** op te vragen met de geretourneerde **JobProperties** -meta gegevens. Als u een exemplaar van de **RegistryManager** -klasse wilt maken, gebruikt u de methode **API createfromconnectionstring** .
+U de klasse **RegistryManager** gebruiken om de status van de **taak** op te vragen met de metagegevens van geretourneerde **JobProperties.** Als u een instantie van de klasse **RegisterManager wilt** maken, gebruikt u de methode **CreateFromConnectionString.**
 
 ```csharp
 RegistryManager registryManager =
   RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
 ```
 
-Als u de connection string voor uw IoT-hub wilt vinden, gaat u in het Azure Portal naar:
+Ga als verkenner voor de verbindingstekenreeks voor uw IoT-hub naar de Azure-portal:
 
 - Ga naar uw IoT-hub.
 
-- Selecteer **beleid voor gedeelde toegang**.
+- Selecteer **Beleid voor gedeelde toegang**.
 
-- Selecteer een beleid, waarbij rekening wordt gehouden met de machtigingen die u nodig hebt.
+- Selecteer een beleid, rekening houdend met de machtigingen die u nodig hebt.
 
-- Kopieer de Connections Tring van het deel venster aan de rechter kant van het scherm.
+- Kopieer de verbindingstekenreeks van het paneel aan de rechterkant van het scherm.
 
-Het volgende C# code fragment laat zien hoe u elke vijf seconden kunt pollen om te zien of de taak is uitgevoerd:
+In het volgende C#-codefragment ziet u hoe u elke vijf seconden pollen om te zien of de taak is voltooid:
 
 ```csharp
 // Wait until job is finished
@@ -88,31 +88,31 @@ while(true)
 ```
 
 > [!NOTE]
-> Als uw opslag account firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) te gebruiken (beschikbaar in geselecteerde regio's voor IOT-hubs met een beheerde service-identiteit).
+> Als uw opslagaccount firewallconfiguraties heeft die de connectiviteit van IoT Hub beperken, u microsoft [vertrouwde first party-uitzondering](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) gebruiken (beschikbaar in bepaalde regio's voor IoT-hubs met beheerde service-identiteit).
 
 
-## <a name="device-importexport-job-limits"></a>Taak limieten voor importeren/exporteren van apparaten
+## <a name="device-importexport-job-limits"></a>Taaklimieten voor het importeren/exporteren van apparaten
 
-Voor alle IoT Hub lagen is slechts één actieve apparaat-import of-export taak toegestaan. IoT Hub heeft ook limieten voor de frequentie van taken. Zie [referentie-IOT hub quota's en beperking](iot-hub-devguide-quotas-throttling.md)voor meer informatie.
+Slechts 1 actieve taak voor het importeren of exporteren van actieve apparaten is toegestaan op een moment voor alle IoT Hub-lagen. IoT Hub heeft ook limieten voor het aantal taken. Zie [Referentie - IoT Hub-quota en beperking](iot-hub-devguide-quotas-throttling.md)voor meer informatie.
 
-## <a name="export-devices"></a>Apparaten exporteren
+## <a name="export-devices"></a>Exportapparaten
 
-Gebruik de methode **ExportDevicesAsync** om het volledig van een IOT hub-identiteits register te exporteren naar een Azure Storage BLOB-container met behulp van een Shared Access Signature (SAS). Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md).
+Gebruik de **methode ExportDevicesAsync** om het volledige identiteitsregister van een IoT-hub te exporteren naar een Azure Storage blob-container met behulp van een gedeelde toegangshandtekening (SAS). Zie Beperkte toegang tot Azure [Storage-bronnen verlenen met behulp van gedeelde toegangshandtekeningen (SAS)](../storage/common/storage-sas-overview.md)voor meer informatie over handtekeningen voor gedeelde toegang.
 
-Met deze methode kunt u betrouw bare back-ups maken van de apparaatgegevens in een BLOB-container die u beheert.
+Met deze methode u betrouwbare back-ups van uw apparaatgegevens maken in een blobcontainer die u beheert.
 
-De methode **ExportDevicesAsync** vereist twee para meters:
+De **exportdevicesAsync-methode** vereist twee parameters:
 
-* Een *teken reeks* die een URI bevat van een BLOB-container. Deze URI moet een SAS-token bevatten dat schrijf toegang verleent aan de container. Met de taak wordt een blok-Blob in deze container gemaakt voor het opslaan van de geserialiseerde gegevens van het export apparaat. Het SAS-token moet deze machtigingen bevatten:
+* Een *tekenreeks* die een URI van een blobcontainer bevat. Deze URI moet een SAS-token bevatten waarmee schrijftoegang tot de container wordt toegekend. De taak maakt een blokblob in deze container om de geserialiseerde exportapparaatgegevens op te slaan. Het SAS-token moet de volgende machtigingen bevatten:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
      | SharedAccessBlobPermissions.Delete
    ```
 
-* Een *Booleaanse waarde* die aangeeft of u verificatie sleutels uit uw export gegevens wilt uitsluiten. Als deze eigenschap **Onwaar**is, worden verificatie sleutels opgenomen in de export uitvoer. Anders worden sleutels geëxporteerd als **Null**.
+* Een *booleaan* die aangeeft of u verificatiesleutels wilt uitsluiten van uw exportgegevens. Als **onwaar**, zijn verificatiesleutels opgenomen in exportuitvoer. Anders worden sleutels geëxporteerd als **null**.
 
-Het volgende C# code fragment laat zien hoe u een export taak initieert met stuur programma-verificatie sleutels in de export gegevens en vervolgens pollen voor voltooiing:
+In het volgende C#-codefragment ziet u hoe u een exporttaak initieert die apparaatverificatiesleutels in de exportgegevens bevat en vervolgens wordt gepeild voor voltooiing:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
@@ -135,9 +135,9 @@ while(true)
 }
 ```
 
-De uitvoer van de taak wordt in de gegeven BLOB-container opgeslagen als een blok-blob met de naam **devices. txt**. De uitvoer gegevens bestaan uit JSON serialized Device Data, met één apparaat per regel.
+De taak slaat de uitvoer op in de meegeleverde blobcontainer als een blokblob met de naam **devices.txt**. De uitvoergegevens bestaan uit GESERIALiseerde apparaatgegevens van JSON, met één apparaat per lijn.
 
-In het volgende voor beeld ziet u de uitvoer gegevens:
+In het volgende voorbeeld worden de uitvoergegevens weergegeven:
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -147,7 +147,7 @@ In het volgende voor beeld ziet u de uitvoer gegevens:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Als een apparaat dubbele gegevens heeft, worden de dubbele gegevens ook samen met de gegevens van het apparaat geëxporteerd. In het volgende voor beeld ziet u deze notatie. Alle gegevens van de regel ' twinETag ' tot het einde is twee ledige gegevens.
+Als een apparaat dubbele gegevens heeft, worden de dubbele gegevens ook geëxporteerd samen met de apparaatgegevens. In het volgende voorbeeld wordt deze indeling weergegeven. Alle gegevens van de "twinETag" lijn tot het einde is twin data.
 
 ```json
 {
@@ -194,7 +194,7 @@ Als een apparaat dubbele gegevens heeft, worden de dubbele gegevens ook samen me
 }
 ```
 
-Als u toegang tot deze gegevens in code nodig hebt, kunt u deze gegevens eenvoudig deserialiseren met behulp van de **ExportImportDevice** -klasse. Het volgende C# code fragment laat zien hoe u apparaatgegevens kunt lezen die eerder zijn geëxporteerd naar een blok-blob:
+Als u toegang tot deze gegevens in code nodig hebt, u deze gegevens eenvoudig deserialiseren met de klasse **ExportImportDevice.** In het volgende C#-codefragment ziet u hoe u apparaatgegevens leest die eerder naar een blokblob zijn geëxporteerd:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -212,22 +212,22 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## <a name="import-devices"></a>Apparaten importeren
 
-Met de methode **ImportDevicesAsync** in de klasse **RegistryManager** kunt u bulksgewijze import-en synchronisatie bewerkingen uitvoeren in een IOT hub-identiteits register. Net als de methode **ExportDevicesAsync** gebruikt de methode **ImportDevicesAsync** het **taak** raamwerk.
+Met de **methode ImportDevicesAsync** in de klasse **RegistryManager** u bulkimport- en synchronisatiebewerkingen uitvoeren in een IoT-hub-identiteitsregister. Net als de **exportdevicesAsync-methode** gebruikt de methode **ImportDevicesAsync** het **taakframework.**
 
-Wees voorzichtig met het gebruik van de methode **ImportDevicesAsync** omdat er naast het inrichten van nieuwe apparaten in uw identiteits register ook bestaande apparaten kunnen worden bijgewerkt en verwijderd.
+Wees voorzichtig met behulp van de **ImportDevicesAsync-methode,** omdat het niet alleen nieuwe apparaten in uw identiteitsregister instelt, maar ook bestaande apparaten kan bijwerken en verwijderen.
 
 > [!WARNING]
-> Een import bewerking kan niet ongedaan worden gemaakt. Maak altijd een back-up van uw bestaande gegevens met behulp van de methode **ExportDevicesAsync** naar een andere blob-container voordat u bulksgewijs wijzigingen aanbrengt in uw identiteits register.
+> Een importbewerking kan niet ongedaan worden gemaakt. Maak altijd een back-up van uw bestaande gegevens met de **methode ExportDevicesAsync** naar een andere blobcontainer voordat u bulkwijzigingen aanbrengt in uw identiteitsregister.
 
-De methode **ImportDevicesAsync** heeft twee para meters:
+De **methode ImportDevicesAsync** heeft twee parameters:
 
-* Een *teken reeks* die een URI bevat van een [Azure Storage](../storage/index.yml) BLOB-container die moet worden gebruikt als *invoer* voor de taak. Deze URI moet een SAS-token bevatten dat lees toegang verleent aan de container. Deze container moet een BLOB bevatten met de naam **devices. txt** die de geserialiseerde apparaatgegevens bevat die moeten worden geïmporteerd in uw identiteits register. De import gegevens moeten informatie over het apparaat bevatten in dezelfde JSON-indeling als de **ExportImportDevice** -taak die wordt gebruikt bij het maken van een **apparaat. txt** -blob. Het SAS-token moet deze machtigingen bevatten:
+* Een *tekenreeks* die een URI van een [Azure Storage blob-container](../storage/index.yml) bevat die kan worden gebruikt als *invoer voor* de taak. Deze URI moet een SAS-token bevatten dat leestoegang tot de container verleent. Deze container moet een blob bevatten met de naam **devices.txt** die de geserialiseerde apparaatgegevens bevat die u wilt importeren in uw identiteitsregister. De importgegevens moeten apparaatgegevens bevatten in dezelfde JSON-indeling die de taak **ExporterenImportDevice** gebruikt wanneer er een **devices.txt-blob** wordt gemaakt. Het SAS-token moet de volgende machtigingen bevatten:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
 
-* Een *teken reeks* die een URI bevat van een [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB-container die moet worden gebruikt als *uitvoer* van de taak. Met de taak wordt een blok-Blob in deze container gemaakt voor het opslaan van de fout gegevens van de voltooide import **taak**. Het SAS-token moet deze machtigingen bevatten:
+* Een *tekenreeks* die een URI van een [Azure Storage blob-container](https://azure.microsoft.com/documentation/services/storage/) bevat die kan worden gebruikt als *uitvoer* van de taak. De taak maakt een blokblob in deze container om foutgegevens van de voltooide **importtaak op**te slaan. Het SAS-token moet de volgende machtigingen bevatten:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -235,54 +235,54 @@ De methode **ImportDevicesAsync** heeft twee para meters:
    ```
 
 > [!NOTE]
-> De twee para meters kunnen verwijzen naar dezelfde BLOB-container. Met de afzonderlijke para meters hoeft u meer controle over uw gegevens in te scha kelen, omdat de uitvoer container extra machtigingen nodig heeft.
+> De twee parameters kunnen naar dezelfde blobcontainer wijzen. De afzonderlijke parameters maken eenvoudig meer controle over uw gegevens mogelijk, omdat de uitvoercontainer extra machtigingen vereist.
 
-Het volgende C# code fragment laat zien hoe u een import taak start:
+In het volgende C#-codefragment ziet u hoe u een importtaak initieert:
 
 ```csharp
 JobProperties importJob = 
    await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Deze methode kan ook worden gebruikt voor het importeren van de gegevens voor het apparaat dubbele. De notatie voor de gegevens invoer is hetzelfde als de indeling die wordt weer gegeven in de sectie **ExportDevicesAsync** . Op deze manier kunt u de geëxporteerde gegevens opnieuw importeren. De **$metadata** is optioneel.
+Deze methode kan ook worden gebruikt om de gegevens voor de apparaattweeling te importeren. De indeling voor de gegevensinvoer is dezelfde als de indeling die wordt weergegeven in de sectie **ExportDevicesAsync.** Op deze manier u de geëxporteerde gegevens opnieuw importeren. De **$metadata** is optioneel.
 
-## <a name="import-behavior"></a>Gedrag bij importeren
+## <a name="import-behavior"></a>Importgedrag
 
-U kunt de methode **ImportDevicesAsync** gebruiken om de volgende bulk bewerkingen uit te voeren in uw identiteits register:
+U de **methode ImportDevicesAsync** gebruiken om de volgende bulkbewerkingen uit te voeren in uw identiteitsregister:
 
-* Bulk registratie van nieuwe apparaten
-* Bulk verwijderingen van bestaande apparaten
-* Bulk status wijzigingen (apparaten in-of uitschakelen)
-* Bulk toewijzing van nieuwe authenticatie sleutels voor apparaten
-* Automatisch opnieuw genereren van sleutels voor verificatie van apparaten
+* Bulkregistratie van nieuwe apparaten
+* Bulkverwijderingen van bestaande apparaten
+* Wijzigingen in de bulkstatus (apparaten in- of uitschakelen)
+* Bulktoewijzing van nieuwe apparaatverificatiesleutels
+* Bulkautomatische regeneratie van apparaatverificatiesleutels
 * Bulk update van dubbele gegevens
 
-U kunt een combi natie van de voor gaande bewerkingen uitvoeren binnen één **ImportDevicesAsync** -aanroep. U kunt bijvoorbeeld nieuwe apparaten registreren en bestaande apparaten verwijderen of bijwerken. Bij gebruik in combi natie met de methode **ExportDevicesAsync** kunt u al uw apparaten volledig migreren van een IOT-hub naar een andere.
+U elke combinatie van de voorgaande bewerkingen uitvoeren binnen één **ImportDevicesAsync-gesprek.** U bijvoorbeeld nieuwe apparaten registreren en tegelijkertijd bestaande apparaten verwijderen of bijwerken. Wanneer u samen met de **ExportDevicesAsync-methode** wordt gebruikt, u al uw apparaten volledig migreren van de ene IoT-hub naar de andere.
 
-Als het import bestand dubbele meta gegevens bevat, worden met deze meta gegevens de bestaande dubbele meta gegevens overschreven. Als het import bestand geen dubbele meta gegevens bevat, worden alleen de `lastUpdateTime` meta gegevens bijgewerkt met de huidige tijd.
+Als het importbestand twee metagegevens bevat, overschrijft deze metagegevens de bestaande dubbele metagegevens. Als het importbestand geen dubbele metagegevens bevat, worden alleen de `lastUpdateTime` metagegevens bijgewerkt met de huidige tijd.
 
-Gebruik de optionele eigenschap **importMode** in de import-serialisatie-gegevens voor elk apparaat om het import proces per apparaat te beheren. De eigenschap **importMode** heeft de volgende opties:
+Gebruik de optionele eigenschap **importMode** in de importserialisatiegegevens voor elk apparaat om het importproces per apparaat te beheren. De eigenschap **importMode** heeft de volgende opties:
 
 | importMode | Beschrijving |
 | --- | --- |
-| **createOrUpdate** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
-| **maken** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
-| **bijwerk** |Als er al een apparaat met de opgegeven **id**bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
-| **updateIfMatchETag** |Als er al een apparaat met de opgegeven **id**bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens alleen als er sprake is van een **ETAG** -overeenkomst. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. <br/>Als er een **ETAG** niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. |
-| **createOrUpdateIfMatchETag** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens alleen als er sprake is van een **ETAG** -overeenkomst. <br/>Als er een **ETAG** niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
-| **verwijderen** |Als er al een apparaat met de opgegeven **id**bestaat, wordt dit verwijderd zonder rekening te houden met de **ETAG** -waarde. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. |
-| **deleteIfMatchETag** |Als er al een apparaat met de opgegeven **id**bestaat, wordt dit alleen verwijderd als er sprake is van een **ETAG** -overeenkomst. Als het apparaat niet bestaat, wordt er een fout naar het logboek bestand geschreven. <br/>Als er een ETag niet overeenkomt, wordt er een fout naar het logboek bestand geschreven. |
+| **createOrUpdate** |Als een apparaat niet bestaat met de opgegeven **ID,** wordt het opnieuw geregistreerd. <br/>Als het apparaat al bestaat, wordt bestaande informatie overschreven met de verstrekte invoergegevens, zonder rekening te houden met de **ETag-waarde.** <br> De gebruiker kan optioneel dubbele gegevens opgeven, samen met de apparaatgegevens. De etag van de tweeling, indien gespecificeerd, wordt onafhankelijk van de etag van het apparaat verwerkt. Als er een mismatch is met de etag van de bestaande tweeling, wordt er een fout naar het logboekbestand geschreven. |
+| **Maken** |Als een apparaat niet bestaat met de opgegeven **ID,** wordt het opnieuw geregistreerd. <br/>Als het apparaat al bestaat, wordt er een fout naar het logboekbestand geschreven. <br> De gebruiker kan optioneel dubbele gegevens opgeven, samen met de apparaatgegevens. De etag van de tweeling, indien gespecificeerd, wordt onafhankelijk van de etag van het apparaat verwerkt. Als er een mismatch is met de etag van de bestaande tweeling, wordt er een fout naar het logboekbestand geschreven. |
+| **Update** |Als een apparaat al bestaat met de opgegeven **id,** wordt bestaande informatie overschreven met de verstrekte invoergegevens, zonder rekening te houden met de **ETag-waarde.** <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboekbestand geschreven. |
+| **updateIfMatchETag** |Als een apparaat al bestaat met de opgegeven **id,** wordt bestaande informatie alleen overschreven met de verstrekte invoergegevens als er een **ETag-overeenkomst** is. <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboekbestand geschreven. <br/>Als er een **ETag-fout** is, wordt er een fout naar het logboekbestand geschreven. |
+| **createorUpdateIfMatchETag** |Als een apparaat niet bestaat met de opgegeven **ID,** wordt het opnieuw geregistreerd. <br/>Als het apparaat al bestaat, wordt bestaande informatie alleen overschreven met de verstrekte invoergegevens als er een **ETag-overeenkomst** is. <br/>Als er een **ETag-fout** is, wordt er een fout naar het logboekbestand geschreven. <br> De gebruiker kan optioneel dubbele gegevens opgeven, samen met de apparaatgegevens. De etag van de tweeling, indien gespecificeerd, wordt onafhankelijk van de etag van het apparaat verwerkt. Als er een mismatch is met de etag van de bestaande tweeling, wordt er een fout naar het logboekbestand geschreven. |
+| **Verwijderen** |Als een apparaat al bestaat met de opgegeven **ID,** wordt het verwijderd zonder rekening te houden met de **ETag-waarde.** <br/>Als het apparaat niet bestaat, wordt er een fout naar het logboekbestand geschreven. |
+| **deleteIfMatchETag** |Als een apparaat al bestaat met de opgegeven **id,** wordt het alleen verwijderd als er een **ETag-overeenkomst** is. Als het apparaat niet bestaat, wordt er een fout naar het logboekbestand geschreven. <br/>Als er een ETag-fout is, wordt er een fout naar het logboekbestand geschreven. |
 
 > [!NOTE]
-> Als de serialisatie-gegevens niet expliciet een **importMode** -vlag voor een apparaat definiëren, wordt standaard de **createOrUpdate** tijdens de import bewerking.
+> Als de serialisatiegegevens een **importMode-vlag** voor een apparaat niet expliciet definiëren, wordt het standaard **gemaaktofupdate** tijdens de importbewerking.
 
-## <a name="import-devices-example--bulk-device-provisioning"></a>Voor beeld van apparaten importeren-Bulksgewijs inrichten van apparaten
+## <a name="import-devices-example--bulk-device-provisioning"></a>Voorbeeld van importapparaten – inrichten van bulkapparaten
 
-In het C# volgende code voorbeeld ziet u hoe u meerdere apparaat-id's kunt genereren die:
+In het volgende c#-codevoorbeeld ziet u hoe u meerdere apparaatidentiteiten genereren die:
 
-* Verificatie sleutels bevatten.
-* Schrijf die apparaatgegevens naar een blok-blob.
-* Importeer de apparaten in het identiteits register.
+* Neem verificatiesleutels op.
+* Schrijf die apparaatgegevens naar een blokblob.
+* Importeer de apparaten in het identiteitsregister.
 
 ```csharp
 // Provision 1,000 more devices
@@ -348,9 +348,9 @@ while(true)
 }
 ```
 
-## <a name="import-devices-example--bulk-deletion"></a>Voor beeld van apparaten importeren-bulksgewijs verwijderen
+## <a name="import-devices-example--bulk-deletion"></a>Voorbeeld van apparaten importeren – verwijdering van bulk
 
-In het volgende code voorbeeld ziet u hoe u de apparaten verwijdert die u hebt toegevoegd met behulp van het vorige code voorbeeld:
+In het volgende codevoorbeeld ziet u hoe u de apparaten verwijdert die u hebt toegevoegd met behulp van het vorige codevoorbeeld:
 
 ```csharp
 // Step 1: Update each device's ImportMode to be Delete
@@ -398,9 +398,9 @@ while(true)
 }
 ```
 
-## <a name="get-the-container-sas-uri"></a>De SAS-URI van de container ophalen
+## <a name="get-the-container-sas-uri"></a>Haal de container SAS URI
 
-In het volgende code voorbeeld ziet u hoe u een [SAS-URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md) kunt genereren met de machtigingen lezen, schrijven en verwijderen voor een BLOB-container:
+In het volgende codevoorbeeld ziet u hoe u een [SAS URI genereert](../storage/common/storage-dotnet-shared-access-signature-part-1.md) met lees-, schrijf- en verwijdermachtigingen voor een blobcontainer:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -427,20 +427,20 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u bulk bewerkingen kunt uitvoeren op het id-REGI ster in een IoT-hub. Veel van deze bewerkingen, met inbegrip van het verplaatsen van apparaten van de ene hub naar een andere, worden gebruikt in de [sectie apparaten beheren die zijn geregistreerd bij de IOT-hub van het klonen van een IOT hub](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+In dit artikel hebt u geleerd hoe u bulkbewerkingen uitvoeren tegen het identiteitsregister in een IoT-hub. Veel van deze bewerkingen, waaronder het verplaatsen van apparaten van de ene hub naar de andere, worden gebruikt in het [gedeelte Apparaten beheren die zijn geregistreerd in het Gedeelte IoT-hub van Hoe een IoT-hub te klonen.](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub) 
 
-Er is een werk voorbeeld aan het kloon artikel gekoppeld. Dit bevindt zich in de C# IOT-voor beelden op deze pagina: [Azure C#IOT-voor beelden voor ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), waarbij het project wordt ImportExportDevicesSample. U kunt het voor beeld downloaden en het uitproberen. Er zijn instructies in het artikel [een IOT hub klonen](iot-hub-how-to-clone.md) .
+Het klonen artikel heeft een werkend monster gekoppeld aan het, die zich bevindt in de IoT C # monsters op deze pagina: [Azure IoT Samples for C #](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), met het project wordt ImportExportDevicesSample. U het voorbeeld downloaden en uitproberen; er zijn instructies in het artikel [Hoe een IoT Hub te klonen.](iot-hub-how-to-clone.md)
 
-Raadpleeg de volgende artikelen voor meer informatie over het beheren van Azure IoT Hub:
+Ga voor meer informatie over het beheer van Azure IoT Hub naar de volgende artikelen:
 
-* [IoT Hub metrische gegevens](iot-hub-metrics.md)
-* [IoT Hub logboeken](iot-hub-monitor-resource-health.md)
+* [IoT Hub-statistieken](iot-hub-metrics.md)
+* [IoT Hub-logboeken](iot-hub-monitor-resource-health.md)
 
-Zie voor meer informatie over de mogelijkheden van IoT Hub:
+Zie:
 
-* [Ontwikkelaars handleiding IoT Hub](iot-hub-devguide.md)
-* [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Handleiding voor IoT Hub-ontwikkelaars](iot-hub-devguide.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Zie voor meer informatie over het gebruik van de IoT Hub Device Provisioning Service om Zero-Touch, just-in-time inrichten in te scha kelen: 
+Zie: 
 
 * [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

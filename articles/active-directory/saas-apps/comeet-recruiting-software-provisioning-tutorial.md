@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: uw wervings software configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts om te voldoen aan de wervings software.
+title: 'Zelfstudie: Comeet Recruiting Software configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Comeet Recruiting Software.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,75 +16,75 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058328"
 ---
-# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Zelf studie: coontmoeting software configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Zelfstudie: Comeet Recruiting Software configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd om de wervings software en Azure Active Directory (Azure AD) aan te passen om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen om te voldoen aan wervings software.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Comeet Recruiting Software en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor Comeet Recruiting Software.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een mede werker van de aanwerving-software Tenant](https://www.comeet.co/)
-* Een gebruikers account met beheerders machtigingen voor de wervings software.
+* Een Azure AD-tenant
+* [Een Comeet Recruiting Software tenant](https://www.comeet.co/)
+* Een gebruikersaccount in Comeet Recruiting Software met beheerdersmachtigingen.
 
-## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Mede-ontmoet wervings software toevoegen vanuit de galerie
+## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Comeet Recruiting Software toevoegen vanuit de galerie
 
-Voordat u de functie voor het maken van een coadering-software configureert voor automatische gebruikers toewijzing met Azure AD, moet u aan uw lijst met beheerde SaaS-toepassingen een coontmoete wervings software toevoegen vanuit de Azure AD-toepassings galerie.
+Voordat u Comeet Recruiting Software configureert voor automatische gebruikersvoorziening met Azure AD, moet u Comeet Recruiting Software uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om mede-ontmoet software voor werving toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om Comeet Recruiting Software toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak mede **ontmoet wervings software**in, selecteer deel nemen **aan wervings software** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **comeet recruiting software**in het zoekvak, selecteer **Comeet Recruiting Software** in het resultatenpaneel en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
     ![Comeet Recruiting Software in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="assigning-users-to-comeet-recruiting-software"></a>Gebruikers toewijzen om te voldoen aan wervings software
+## <a name="assigning-users-to-comeet-recruiting-software"></a>Gebruikers toewijzen aan Comeet Recruiting Software
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben om te voldoen aan wervings software. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen om aan wervings software te voldoen door de volgende instructies te volgen:
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang nodig hebben tot Comeet Recruiting Software. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Comeet Recruiting Software door de instructies hier te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Belang rijke tips voor het toewijzen van gebruikers om aan wervings software te voldoen
+### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Belangrijke tips voor het toewijzen van gebruikers aan Comeet Recruiting Software
 
-* U wordt aangeraden één Azure AD-gebruiker toe te passen aan de wervings software om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker wordt toegewezen aan Comeet Recruiting Software om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst om aan wervings software te voldoen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Comeet Recruiting Software, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Automatische gebruikers inrichting configureren om te voldoen aan wervings software 
+## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Automatische gebruikersinrichting configureren voor Comeet Recruiting Software 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen te maken, bij te werken en uit te scha kelen in ingrijpende wervings software op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Comeet Recruiting Software te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor wervings software naast elkaar, gevolgd door de instructies in de [zelf studie voor het wervings software-eenmalige aanmelding](comeetrecruitingsoftware-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Comeet Recruiting Software, volgens de instructies in de [Comeet Recruiting Software single sign-on tutorial](comeetrecruitingsoftware-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Voor het configureren van automatische gebruikers inrichting voor het ontmoeten van wervings software in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor Comeet Recruiting Software in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -92,66 +92,66 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![De koppeling Comeet Recruiting Software in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. In het gedeelte **beheerders referenties** voert u de **Tenant-URL** en het **geheime token** in van uw mede ontmoet het account van de wervings software, zoals beschreven in stap 6.
+5. Voer onder de sectie **Beheerdersreferenties** de **URL van tenant** en geheim **token** van het account van uw Comeet Recruiting Software in zoals beschreven in stap 6.
 
-6. Navigeer in de [beheer console van de wervings software](https://app.comeet.co/)op basis van **>-instellingen > verificatie > Microsoft Azure**en kopieer het **geheime token voor de waarde van het bedrijf** naar het veld **geheime token** in azure AD.
+6. Navigeer in de [beheerconsole Voor Comeet Recruiting Software](https://app.comeet.co/)naar **Comeet > Instellingen >-verificatie > Microsoft Azure**en kopieer het geheime token voor uw **bedrijfswaarde** naar het veld **Secret Token** in Azure AD.
 
-    ![Tegemoetkomen aan wervings software inrichten](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
+    ![Comeet Recruiting Software Provisioning](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken om te voldoen aan wervings software. Als de verbinding mislukt, moet u ervoor zorgen dat uw account voor wervings software beheerders machtigingen heeft en probeer het opnieuw.
+7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Comeet Recruiting Software wanneer u de velden in stap 5 bevolken. Als de verbinding mislukt, moet u ervoor zorgen dat uw Comeet Recruiting Software-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
     ![Token](common/provisioning-testconnection-token.png)
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **synchroniseren Azure Active Directory gebruikers om te voldoen**.
+10. Selecteer Azure **Active Directory-gebruikers synchroniseren met Comeet**onder de sectie **Toewijzingen** .
 
-    ![Coadering van gebruikers toewijzingen voor wervings software](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
+    ![Comeet Recruiting Software User Mappings](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD om te voldoen aan de wervings software in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in combi natie met wervings software voor update bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Comeet Recruiting Software in de sectie **Attribute Mapping.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Comeet Recruiting Software te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Voldoen aan wervings software groeps kenmerken](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
+    ![Comeet Recruiting Software Group Attributen](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-13. Als u de Azure AD-inrichtings service wilt inschakelen voor het ontmoeten van wervings software, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+13. Als u de Azure AD-inrichtingsservice voor Comeet Recruiting Software wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten om te voldoen aan wervings software door de gewenste waarden in het **bereik** te kiezen in het gedeelte **instellingen** .
+14. Definieer de gebruikers en/of groepen die u wilt inrichten aan Comeet Recruiting Software door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service aan wervings software.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Comeet Recruiting Software.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Beperkingen voor connectoren
 
-* Het is niet mogelijk om op dit moment te voldoen aan wervings software.
+* Comeet Recruiting Software ondersteunt momenteel geen groepen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 

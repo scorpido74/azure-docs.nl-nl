@@ -1,184 +1,184 @@
 ---
-title: Slimme detectie-prestatie afwijkingen | Microsoft Docs
-description: Application Insights voert een slimme analyse uit van de telemetrie van uw app en waarschuwt u mogelijke problemen. Deze functie hoeft niet te worden ingesteld.
+title: Slimme detectie - prestatieafwijkingen | Microsoft Documenten
+description: Application Insights voert slimme analyse van uw app telemetrie uit en waarschuwt u voor mogelijke problemen. Deze functie behoeft geen installatie.
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671729"
 ---
-# <a name="smart-detection---performance-anomalies"></a>Slimme detectie-prestatie afwijkingen
+# <a name="smart-detection---performance-anomalies"></a>Slimme detectie - Prestatieafwijkingen
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) analyseert automatisch de prestaties van uw webtoepassing en kan u waarschuwen over mogelijke problemen. U kunt dit lezen omdat u een van onze slimme detectie meldingen hebt ontvangen.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) analyseert automatisch de prestaties van uw webapplicatie en kan u waarschuwen voor mogelijke problemen. Mogelijk leest u dit omdat u een van onze slimme detectiemeldingen hebt ontvangen.
 
-Voor deze functie is geen speciale configuratie vereist, behalve het configureren van uw app voor Application Insights (op [ASP.net](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md), [node. js](../../azure-monitor/app/nodejs.md)en [webpagina code](../../azure-monitor/app/javascript.md)). Het is actief wanneer uw app voldoende telemetrie genereert.
+Deze functie vereist geen speciale installatie, anders dan het configureren van uw app voor Application Insights (op [ASP.NET,](../../azure-monitor/app/asp-net.md) [Java](../../azure-monitor/app/java-get-started.md)of [Node.js](../../azure-monitor/app/nodejs.md), en in [webpagina code).](../../azure-monitor/app/javascript.md) Het is actief wanneer uw app voldoende telemetrie genereert.
 
-## <a name="when-would-i-get-a-smart-detection-notification"></a>Wanneer krijg ik een melding over een slimme detectie?
+## <a name="when-would-i-get-a-smart-detection-notification"></a>Wanneer krijg ik een slimme detectiemelding?
 
-Application Insights heeft gedetecteerd dat de prestaties van uw toepassing op een van de volgende manieren worden verslechterd:
+Application Insights heeft ontdekt dat de prestaties van uw toepassing op een van de volgende manieren zijn verslechterd:
 
-* **Reactie tijd-degradatie** : uw app reageert op aanvragen langzamer dan deze is gebruikt voor. De wijziging is mogelijk snel geweest, bijvoorbeeld omdat er sprake was van een regressie in uw nieuwste implementatie. Het is ook mogelijk dat de computer geleidelijk kan worden veroorzaakt door een geheugenlek. 
-* Afname van de **afhankelijkheids duur** : uw app maakt aanroepen van een rest API, data base of andere afhankelijkheid. De afhankelijkheid reageert trager dan wordt gebruikt.
-* **Langzaam prestatie patroon** : uw app lijkt een prestatie probleem te hebben dat slechts enkele aanvragen beïnvloedt. Zo worden pagina's bijvoorbeeld langzamer geladen voor een type browser dan andere. of aanvragen worden langzamer van een bepaalde server bediend. Momenteel bekijken onze algoritmen de pagina laad tijden, reactie tijden van aanvragen en reactie tijden voor afhankelijkheden.  
+* **Verslechtering van de reactietijd** - Uw app reageert langzamer op aanvragen dan voorheen. De wijziging kan snel zijn geweest, bijvoorbeeld omdat er een regressie was in uw laatste implementatie. Of het is misschien geleidelijk geweest, misschien veroorzaakt door een geheugenlek. 
+* **Afhankelijkheidsduur degradatie** - Uw app voert aan naar een REST API, database of andere afhankelijkheid. De afhankelijkheid reageert langzamer dan vroeger.
+* **Traag prestatiepatroon** : uw app lijkt een prestatieprobleem te hebben dat slechts van invloed is op sommige aanvragen. Pagina's worden bijvoorbeeld langzamer geladen op het ene type browser dan op andere; of verzoeken worden langzamer bediend vanaf een bepaalde server. Momenteel bekijken onze algoritmen de laadtijden van pagina's, reactietijden voor aanvragen en reactietijden van afhankelijkheid.  
 
-Slimme detectie vereist ten minste 8 dagen telemetrie op een werkbaar volume om een basis lijn van de normale prestaties vast te leggen. Nadat uw toepassing voor die periode is uitgevoerd, resulteert dit in een belang rijk probleem in een melding.
-
-
-## <a name="does-my-app-definitely-have-a-problem"></a>Heeft mijn app een probleem?
-
-Nee, een melding betekent niet dat uw app een probleem heeft. Het is slechts een suggestie voor iets dat u misschien nauwkeuriger moet bekijken.
-
-## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
-
-De meldingen bevatten diagnostische gegevens. Hier volgt een voorbeeld:
+Smart Detection vereist ten minste 8 dagen telemetrie op een werkbaar volume om een basislijn van normale prestaties vast te stellen. Dus, nadat uw aanvraag is uitgevoerd voor die periode, een significant probleem zal resulteren in een melding.
 
 
-![Hier volgt een voor beeld van detectie van server reactietijd voor de degradatie](media/proactive-performance-diagnostics/server_response_time_degradation.png)
+## <a name="does-my-app-definitely-have-a-problem"></a>Heeft mijn app zeker een probleem?
 
-1. **Sorteren**. In de melding ziet u hoeveel gebruikers of hoeveel bewerkingen worden beïnvloed. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
-2. **Bereik**. Is het probleem van invloed op alle verkeer of alleen op sommige pagina's? Is het beperkt tot bepaalde browsers of locaties? Deze informatie kan worden opgehaald uit de melding.
-3. **Diagnose**. Vaak wordt de aard van het probleem voorgesteld door de diagnostische gegevens in de melding. Als de reactie tijd bijvoorbeeld langzaam verloopt wanneer het aanvraag aantal hoog is, wordt er een suggestie voor uw server of afhankelijkheden overbelast. 
+Nee, een melding betekent niet dat uw app zeker een probleem heeft. Het is slechts een suggestie voor iets dat u misschien nauwkeuriger moet bekijken.
 
-    Als dat niet het geval is, opent u de Blade prestaties in Application Insights. Daar vindt u [profilerings](profiler.md) gegevens. Als er uitzonde ringen worden gegenereerd, kunt u ook de [fout opsporing voor de moment opname](../../azure-monitor/app/snapshot-debugger.md)proberen.
+## <a name="how-do-i-fix-it"></a>Hoe kan ik dit probleem oplossen?
+
+De meldingen bevatten diagnostische informatie. Hier volgt een voorbeeld:
+
+
+![Hier is een voorbeeld van serverresponstijddegradatiedetectie](media/proactive-performance-diagnostics/server_response_time_degradation.png)
+
+1. **Triage.** In de melding ziet u hoeveel gebruikers of hoeveel bewerkingen worden beïnvloed. Dit kan u helpen een prioriteit toe te wijzen aan het probleem.
+2. **Toepassingsgebied**. Is het probleem van invloed op al het verkeer, of slechts enkele pagina's? Is het beperkt tot bepaalde browsers of locaties? Deze informatie kan worden verkregen uit de kennisgeving.
+3. **Diagnose stellen**. Vaak zal de diagnostische informatie in de melding de aard van het probleem suggereren. Als de reactietijd bijvoorbeeld vertraagt wanneer de aanvraagsnelheid hoog is, suggereert dit dat uw server of afhankelijkheden overbelast zijn. 
+
+    Open anders het prestatieblad in Application Insights. Daar vindt u [Profiler](profiler.md) Profiler-gegevens. Als er uitzonderingen worden gemaakt, u ook de [momentopnamefoutopsporing proberen.](../../azure-monitor/app/snapshot-debugger.md)
 
 
 
-## <a name="configure-email-notifications"></a>E-mail meldingen configureren
+## <a name="configure-email-notifications"></a>E-mailmeldingen configureren
 
-Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar personen die een [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) hebben en de toegang tot het abonnement waartoe de Application Insights-bron zich bevindt, [bewaken.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) Als u dit wilt wijzigen, klikt u in de e-mail melding op **configureren** of opent u instellingen voor slimme detectie in Application Insights. 
+Smart Detection-meldingen worden standaard ingeschakeld en verzonden naar degenen die toegang hebben tot [monitoringlezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) en [monitoringbijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) toegang tot het abonnement waarin de Application Insights-bron zich bevindt. Als u dit wilt wijzigen, klikt u op **Configureren** in de e-mailmelding of opent u Instellingen voor slimme detectie in Toepassingsinzichten. 
   
-  ![Instellingen voor slimme detectie](media/proactive-performance-diagnostics/smart_detection_configuration.png)
+  ![Slimme detectie-instellingen](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * U kunt de koppeling voor **Afmelden** in het e-mail bericht voor slimme detectie gebruiken om te stoppen met het ontvangen van e-mail meldingen.
+  * U de **koppeling Afmelden** in de e-mail Voor slimme detectie gebruiken om de e-mailmeldingen niet meer te ontvangen.
 
-E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties zijn beperkt tot één e-mail per dag per Application Insights resource. Het e-mail bericht wordt alleen verzonden als er ten minste één nieuw probleem op die dag is gedetecteerd. U krijgt geen herhalingen van een bericht. 
+E-mails over prestatieafwijkingen voor slimme detecties zijn beperkt tot één e-mail per dag per Application Insights-bron. De e-mail wordt alleen verzonden als er ten minste één nieuw probleem is dat op die dag is gedetecteerd. Je krijgt geen herhalingen van een bericht. 
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-* *Dus bekijken micro soft-mede werkers mijn gegevens?*
-  * Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](../../azure-monitor/app/data-retention-privacy.md).
-* *Analyseert u alle gegevens die worden verzameld door Application Insights?*
-  * Momenteel niet. Op dit moment analyseren we de reactie tijd van de aanvraag, de reactie tijd van de afhankelijkheid en de laad tijd van de pagina. De analyse van extra metrische gegevens vindt u op onze achterstand.
+* *Dus, Microsoft personeel kijken naar mijn gegevens?*
+  * Nee. De service is volledig automatisch. Alleen jij krijgt de meldingen. Uw gegevens zijn [privé.](../../azure-monitor/app/data-retention-privacy.md)
+* *Analyseert u alle gegevens verzameld door Application Insights?*
+  * Op dit moment niet. Momenteel analyseren we de responstijd van aanvragen, de reactietijd van afhankelijkheid en de laadtijd van de pagina. Analyse van aanvullende statistieken is op onze achterstand vooruit te kijken.
 
-* Voor welk type toepassing werkt dit?
-  * Deze degradaties worden gedetecteerd in alle toepassingen die de juiste telemetrie genereren. Als u Application Insights in uw web-app hebt geïnstalleerd, worden aanvragen en afhankelijkheden automatisch bijgehouden. Maar in back-end-services of andere apps als u aanroepen hebt ingevoegd in [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), werkt Slimme detectie op dezelfde manier.
+* Voor welke soorten toepassingen werkt dit?
+  * Deze degradaties worden gedetecteerd in elke toepassing die de juiste telemetrie genereert. Als u Application Insights in uw web-app hebt geïnstalleerd, worden aanvragen en afhankelijkheden automatisch bijgehouden. Maar in backendservices of andere apps werkt Smart Detection op dezelfde manier als u oproepen hebt geplaatst naar [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency.](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 
-* *Kan ik mijn eigen anomalie detectie regels maken of bestaande regels aanpassen?*
+* *Kan ik mijn eigen regels voor anomaliedetectie maken of bestaande regels aanpassen?*
 
-  * Nog niet, maar u kunt het volgende doen:
-    * [Stel waarschuwingen](../../azure-monitor/app/alerts.md) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
-    * [Telemetrie exporteren](../../azure-monitor/app/export-telemetry.md) naar een [Data Base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar Power bi](../../azure-monitor/app/export-power-bi.md ), waar u deze zelf kunt analyseren.
+  * Nog niet, maar je kunt:
+    * [Stel waarschuwingen in](../../azure-monitor/app/alerts.md) die u vertellen wanneer een statistiek een drempelwaarde overschrijdt.
+    * [Exporteer telemetrie](../../azure-monitor/app/export-telemetry.md) naar een [database](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar PowerBI,](../../azure-monitor/app/export-power-bi.md )waar u het zelf analyseren.
 * *Hoe vaak wordt de analyse uitgevoerd?*
 
-  * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volle dag in UTC-tijd zone).
-* *Daarom worden [metrische waarschuwingen](../../azure-monitor/app/alerts.md)vervangen?*
-  * Nee.  Het detecteren van elk gedrag dat u mogelijk zou kunnen overwegen, wordt niet door ons vastgelegd.
+  * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volledige dag in UTC-tijdzone).
+* *Dus is dit in de plaats [van metrische waarschuwingen?](../../azure-monitor/app/alerts.md)*
+  * Nee.  We verplichten ons niet om elk gedrag te detecteren dat je abnormaal zou kunnen vinden.
 
 
-* *Als ik niets doe in reactie op een melding, krijg ik dan een herinnering?*
-  * Nee, er wordt een bericht weer gegeven over elk probleem. Als het probleem zich blijft voordoen, wordt het bijgewerkt op de Blade Slimme detectie-feed.
-* *Ik ben de e-mail kwijt geraakt. Waar vind ik de meldingen in de portal?*
-  * Klik in het Application Insights overzicht van uw app op de tegel **Slimme detectie** . U kunt alle meldingen tot 90 dagen terug vinden.
+* *Als ik niets doe naar aanleiding van een melding, ontvang ik dan een herinnering?*
+  * Nee, u krijgt slechts één keer een bericht over elk probleem. Als het probleem blijft bestaan, wordt het bijgewerkt in het voedingsblad voor slimme detectie.
+* *Ik ben de e-mail kwijt. Waar vind ik de meldingen in de portal?*
+  * Klik in het overzicht Applicatie-inzichten van uw app op de tegel **Slimme detectie.** Daar kun je alle meldingen tot 90 dagen terug vinden.
 
 ## <a name="how-can-i-improve-performance"></a>Hoe kan ik de prestaties verbeteren?
-Trage en mislukte reacties zijn een van de grootste frustraties voor website gebruikers, zoals u van uw eigen ervaring kent. Het is dus belang rijk om de problemen op te lossen.
+Trage en mislukte reacties zijn een van de grootste frustraties voor websitegebruikers, zoals u weet uit uw eigen ervaring. Het is dus belangrijk om de problemen aan te pakken.
 
-### <a name="triage"></a>Sorteren
-Ten eerste is het belang rijk? Als een pagina altijd langzaam moet worden geladen, maar slechts 1% van de gebruikers van uw site ooit moet kijken, hebt u meer belang rijke dingen die u moet nadenken. Aan de andere kant, als er slechts 1% van de gebruikers deze opent, maar deze elke keer uitzonde ringen genereren, die mogelijk waard zijn.
+### <a name="triage"></a>Triage
+Ten eerste, maakt het uit? Als een pagina altijd traag is om te laden, maar slechts 1% van de gebruikers van uw site er ooit naar hoeft te kijken, hebt u misschien belangrijkere dingen om over na te denken. Aan de andere kant, als slechts 1% van de gebruikers te openen, maar het gooit uitzonderingen elke keer, dat zou kunnen worden onderzocht.
 
-Gebruik de impact-instructie (betrokken gebruikers of verkeer) als een algemene hand leiding, maar houd er rekening mee dat dit niet het hele verhaal is. Verzamel andere gegevens om te bevestigen.
+Gebruik de impactinstructie (getroffen gebruikers of % van het verkeer) als algemene handleiding, maar houd er rekening mee dat het niet het hele verhaal is. Verzamel ander bewijs om het te bevestigen.
 
-Houd rekening met de para meters van het probleem. Als het geografie afhankelijke is, stelt u [beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) in, waaronder die regio: er kunnen zich gewoon netwerk problemen in dat gebied voordoen.
+Houd rekening met de parameters van het probleem. Als het afhankelijk is van geografie, stelt u [beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md) in, inclusief die regio: er kunnen alleen netwerkproblemen zijn in dat gebied.
 
-### <a name="diagnose-slow-page-loads"></a>Diagnose van langzame pagina laden
-Waar is het probleem? Reageert de server traag, is de pagina erg lang, of heeft de browser veel werk om deze weer te geven?
+### <a name="diagnose-slow-page-loads"></a>Diagnose van langzame paginabelastingen
+Waar is het probleem? Is de server traag om te reageren, is de pagina erg lang, of moet de browser veel werk doen om het weer te geven?
 
-Open de Blade metric voor browsers. De gesegmenteerde weer gave van de laad tijd van een browser pagina geeft aan waar de tijd naartoe gaat. 
+Open het metriekblad Browsers. De gesegmenteerde weergave van de laadtijd van de browserpagina geeft aan waar de tijd naartoe gaat. 
 
-* Als de **aanvraag tijd** hoog is, reageert de server langzaam of de aanvraag is een bericht dat veel gegevens bevat. Bekijk de [metrische gegevens voor prestaties](../../azure-monitor/app/web-monitor-performance.md#metrics) om reactie tijden te onderzoeken.
-* Stel het [bijhouden van afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) in om te zien of de vertraging wordt veroorzaakt door externe services of uw data base.
-* Als **antwoord wordt ontvangen** , zijn uw pagina en de afhankelijke onderdelen: Java script, CSS, afbeeldingen enzovoort (maar niet asynchroon geladen gegevens) lang. Stel een [beschikbaarheids test](../../azure-monitor/app/monitor-web-app-availability.md)in en zorg ervoor dat u de optie voor het laden van afhankelijke onderdelen hebt ingesteld. Wanneer u een aantal resultaten krijgt, opent u de details van een resultaat en vouwt u het uit om de laad tijden van verschillende bestanden weer te geven.
-* De hoge **client verwerkings tijd** voor komt dat scripts langzaam worden uitgevoerd. Als dit niet het geval is, kunt u een timing code toevoegen en de tijden in trackMetric-aanroepen verzenden.
+* Als **de aanvraagtijd verzenden** hoog is, reageert de server langzaam of is het verzoek een bericht met veel gegevens. Bekijk de prestatiestatistieken om de [responstijden](../../azure-monitor/app/web-monitor-performance.md#metrics) te onderzoeken.
+* Stel [afhankelijkheidstracking](../../azure-monitor/app/asp-net-dependencies.md) in om te zien of de traagheid te wijten is aan externe services of uw database.
+* Als **ontvangstrespons** overheersend is, zijn uw pagina en de afhankelijke onderdelen ervan - JavaScript, CSS, afbeeldingen enzovoort (maar niet asynchrone geladen gegevens) lang. Stel een [beschikbaarheidstest](../../azure-monitor/app/monitor-web-app-availability.md)in en stel de optie in om afhankelijke onderdelen te laden. Wanneer u resultaten krijgt, opent u de details van een resultaat en vouwt u het uit om de laadtijden van verschillende bestanden te zien.
+* Hoge **verwerkingstijd van** de client suggereert dat scripts langzaam worden uitgevoerd. Als de reden niet duidelijk is, u overwegen om een bepaalde timingcode toe te voegen en de tijden in trackMetric-oproepen te verzenden.
 
 ### <a name="improve-slow-pages"></a>Langzame pagina's verbeteren
-Er is een webvol met advies over het verbeteren van uw server reacties en pagina laad tijden, dus we proberen deze niet hier te herhalen. Hier volgen enkele tips die u waarschijnlijk al kent, zodat u op de hoogte bent:
+Er is een web vol met advies over het verbeteren van uw server reacties en pagina laadtijden, dus we zullen niet proberen om het allemaal hier te herhalen. Hier zijn een paar tips die je waarschijnlijk al weet, gewoon om je aan het denken:
 
-* Langzaam laden vanwege grote bestanden: de scripts en andere onderdelen asynchroon laden. Gebruik script bundeling. Splits de hoofd pagina in widgets die de gegevens afzonderlijk laden. Geen gewone oude HTML voor lange tabellen verzenden: gebruik een script om de gegevens als JSON of een andere compacte indeling aan te vragen en vul vervolgens de tabel in. Er zijn fantastische kaders om u hierbij te helpen. (Ze omvatten ook grote scripts, uiteraard.)
-* Langzame server afhankelijkheden: Houd rekening met de geografische locaties van uw onderdelen. Als u bijvoorbeeld Azure gebruikt, zorg er dan voor dat de webserver en de data base zich in dezelfde regio bevinden. Halen query's meer informatie dan ze nodig hebben? Wordt de Help in de cache geplaatst of in batch verwerking?
-* Capaciteits problemen: Bekijk de metrische gegevens van de server van de reactie tijden en het aantal aanvragen. Als de reactie tijden piek onevenredig zijn met pieken in het aantal aanvragen, is het waarschijnlijk dat uw servers worden uitgerekt.
+* Langzaam laden vanwege grote bestanden: laad de scripts en andere onderdelen asynchroon. Gebruik scriptbundeling. Breek de hoofdpagina op in widgets die hun gegevens afzonderlijk laden. Stuur geen gewone oude HTML voor lange tabellen: gebruik een script om de gegevens op te vragen als JSON of een ander compact formaat en vul de tabel op zijn plaats. Er zijn grote kaders om te helpen met dit alles. (Ze brengen ook grote scripts, natuurlijk.)
+* Langzame serverafhankelijkheden: houd rekening met de geografische locaties van uw componenten. Als u bijvoorbeeld Azure gebruikt, controleert u of de webserver en de database zich in dezelfde regio bevinden. Halen query's meer informatie op dan ze nodig hebben? Zou caching of batching helpen?
+* Capaciteitsproblemen: bekijk de serverstatistieken van responstijden en het aantal aanvragen. Als de responstijden onevenredig pieken met pieken in het aantal aanvragen, is het waarschijnlijk dat uw servers worden uitgerekt.
 
 
-## <a name="server-response-time-degradation"></a>Degradatie van server reactietijd
+## <a name="server-response-time-degradation"></a>Verslechtering van de reactietijd van de server
 
-De melding over de degradatie van de reactie tijd vertelt u het volgende:
+De melding van de degradatievan de reactietijd vertelt u:
 
-* De reactie tijd vergeleken met de normale reactie tijd voor deze bewerking.
+* De reactietijd in vergelijking met de normale reactietijd voor deze bewerking.
 * Hoeveel gebruikers worden beïnvloed.
-* De gemiddelde reactie tijd en de reactie tijd van negen tigste percentielen voor deze bewerking op de dag van de detectie en 7 dagen vóór. 
-* Aantal bewerkings aanvragen op de dag van de detectie en 7 dagen vóór.
-* Correlatie tussen de degradatie van deze bewerking en degradatie in verwante afhankelijkheden. 
-* Koppelingen waarmee u het probleem kunt vaststellen.
-  * Profiler traceringen waarmee u kunt zien waar de bewerkings tijd wordt besteed (de koppeling is beschikbaar als Profiler-trace-voor beelden zijn verzameld voor deze bewerking tijdens de detectie periode). 
-  * Prestatie rapporten in metrische Explorer, waar u tijd bereik/filters voor deze bewerking kunt segmenteren en analyseren.
-  * Zoek naar deze aanroep om specifieke eigenschappen van het gesprek weer te geven.
-  * Fouten rapporten-als Count > 1 Dit betekent dat er fouten zijn opgetreden in deze bewerking die mogelijk hebben bijgedragen aan de verslechtering van de prestaties.
+* Gemiddelde responstijd en 90e percentiel responstijd voor deze bewerking op de dag van de detectie en 7 dagen vóór. 
+* Tel van deze bewerkingsaanvragen op de dag van de detectie en 7 dagen ervoor.
+* Correlatie tussen degradatie in deze operatie en degradaties in gerelateerde afhankelijkheden. 
+* Links om u te helpen het probleem te diagnosticeren.
+  * Profiel van profilerom u te helpen te zien waar de bewerkingstijd wordt besteed (de koppeling is beschikbaar als voorbeelden van Profiler-traces voor deze bewerking zijn verzameld tijdens de detectieperiode). 
+  * Prestatierapporten in Metric Explorer, waar u het tijdbereik/filters voor deze bewerking segmenteren en inblokjesen.
+  * Zoek naar deze oproep om specifieke oproepeigenschappen weer te geven.
+  * Foutrapporten - Als het aantal > 1 betekent dit dat er fouten in deze bewerking zijn die kunnen hebben bijgedragen aan prestatiedegradatie.
 
-## <a name="dependency-duration-degradation"></a>Degradatie van afhankelijkheids duur
+## <a name="dependency-duration-degradation"></a>Afhankelijkheidsduur degradatie
 
-Moderne toepassing meer en meer ontwerp benadering van micro Services, die in veel gevallen leidt tot een zware betrouw baarheid op externe services. Als uw toepassing bijvoorbeeld afhankelijk is van een bepaald gegevens platform of zelfs als u uw eigen bot-service bouwt, kunt u waarschijnlijk een enkele cognitieve Services-provider door sturen zodat uw bots kan communiceren op meer humane manieren en een gegevens opslag service voor bot om de antwoorden te halen m.  
+Moderne toepassing meer en meer gebruik maken van micro-diensten ontwerp aanpak, die in veel gevallen leidt tot een hoge betrouwbaarheid op externe diensten. Bijvoorbeeld, als uw toepassing is gebaseerd op een gegevensplatform of zelfs als u uw eigen bot service die u zal waarschijnlijk relais op een aantal cognitieve dienstverlener om uw bots in staat stellen om te communiceren in meer menselijke manieren en sommige data store service voor bot om de antwoorden te trekken Van.  
 
-Voor beeld van een melding over afhankelijkheids degradatie:
+Melding van afhankelijkheidsdegradatie:
 
-![Hier volgt een voor beeld van detectie van de duur van de afhankelijkheid van de periode](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
+![Hier is een voorbeeld van afhankelijkheidsduration degradatiedetectie](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
 
-U ziet dat u:
+Merk op dat het je vertelt:
 
-* De duur vergeleken met de normale reactie tijd voor deze bewerking
+* De duur in vergelijking met de normale reactietijd voor deze bewerking
 * Hoeveel gebruikers worden beïnvloed
-* De duur van de gemiddelde duur en de negen tigste percentiel voor deze afhankelijkheid op de dag van de detectie en 7 dagen vóór
-* Aantal afhankelijkheids aanroepen op de dag van de detectie en 7 dagen vóór
-* Koppelingen waarmee u het probleem kunt vaststellen
-  * Prestatie rapporten in metrische Explorer voor deze afhankelijkheid
-  * Zoeken naar deze afhankelijkheids aanroepen om eigenschappen van aanroepen weer te geven
-  * Fouten rapporten-als Count > 1 Dit betekent dat er tijdens de detectie periode een afhankelijkheids aanroep is uitgevoerd die mogelijk heeft bijgedragen aan de duur van de degradatie. 
-  * Open Analytics met query's die de duur en het aantal van deze afhankelijkheid berekenen  
+* Gemiddelde duur en 90e percentielduur voor deze afhankelijkheid op de dag van de detectie en 7 dagen vóór
+* Aantal afhankelijkheidsoproepen op de dag van de detectie en 7 dagen vóór
+* Koppelingen om u te helpen het probleem te diagnosticeren
+  * Prestatierapporten in Metric Explorer voor deze afhankelijkheid
+  * Zoeken naar deze afhankelijkheidsoproepen om aanroepeneigenschappen weer te geven
+  * Foutrapporten - Als het aantal > 1 betekent dit dat er mislukte afhankelijkheidsoproepen zijn uitgevoerd tijdens de detectieperiode die mogelijk hebben bijgedragen aan de degradatie van de duur. 
+  * Analytics openen met query's die deze afhankelijkheidsduur berekenen en tellen  
 
-## <a name="smart-detection-of-slow-performing-patterns"></a>Slimme detectie van langzaam uitgevoerde patronen 
+## <a name="smart-detection-of-slow-performing-patterns"></a>Slimme detectie van traag presterende patronen 
 
-Application Insights vindt u prestatie problemen die mogelijk alleen van invloed zijn op een deel van uw gebruikers, of alleen van invloed zijn op gebruikers in sommige gevallen. Bijvoorbeeld: melding over het laden van pagina's is trager voor een type browser dan voor andere typen browsers, of als aanvragen langzamer van een bepaalde server worden bediend. Het kan ook problemen detecteren die zijn gekoppeld aan combi Naties van eigenschappen, zoals het laden van langzame pagina's in één geografisch gebied voor clients die een bepaald besturings systeem gebruiken.  
+Application Insights vindt prestatieproblemen die slechts van invloed kunnen zijn op een deel van uw gebruikers of die in sommige gevallen alleen van invloed zijn op gebruikers. De melding over het laden van pagina's is bijvoorbeeld trager in het ene type browser dan in andere typen browsers, of als aanvragen langzamer worden weergegeven vanaf een bepaalde server. Het kan ook problemen ontdekken die verband houden met combinaties van eigenschappen, zoals langzame paginabelastingen in één geografisch gebied voor clients die een bepaald besturingssysteem gebruiken.  
 
-Afwijkingen zoals deze zijn zeer moeilijk te detecteren door de gegevens te controleren, maar zijn veel gangbaar dan u mogelijk denkt. Vaak zijn ze alleen van het Opper vlak wanneer uw klanten klagen. Op dat moment is het te laat: de betrokken gebruikers wisselen al naar uw concurrenten.
+Afwijkingen zoals deze zijn zeer moeilijk te detecteren alleen door het inspecteren van de gegevens, maar komen vaker voor dan je zou denken. Vaak komen ze alleen naar boven als uw klanten klagen. Tegen die tijd is het te laat: de getroffen gebruikers zijn al over te schakelen naar uw concurrenten!
 
-Op dit moment zien onze algoritmen de pagina laad tijden, vraagt de reactie tijden van de server en de reactie tijden voor afhankelijkheden.  
+Momenteel bekijken onze algoritmen de laadtijden van pagina's, de responstijden van aanvragen op de server en de reactietijden van afhankelijkheid.  
 
-U hoeft geen drempel waarden in te stellen of regels te configureren. Machine learning en algoritmen voor gegevens analyse worden gebruikt voor het detecteren van abnormale patronen.
+U hoeft geen drempelwaarden in te stellen of regels te configureren. Machine learning en data mining algoritmen worden gebruikt om abnormale patronen te detecteren.
 
-![Klik in de e-mail waarschuwing op de koppeling om het diagnostische rapport in azure te openen](./media/proactive-performance-diagnostics/03.png)
+![Klik in de e-mailwaarschuwing op de koppeling om het diagnostische rapport in Azure te openen](./media/proactive-performance-diagnostics/03.png)
 
-* **Wanneer** de tijd wordt weer gegeven waarop het probleem is gedetecteerd.
+* **Wanneer** wordt weergegeven hoe laat het probleem is gedetecteerd.
 * **Wat** beschrijft:
 
   * Het probleem dat is gedetecteerd;
-  * De kenmerken van de set gebeurtenissen die worden gevonden, hebben het probleem gedrag weer gegeven.
-* De tabel vergelijkt de slecht uitgevoerde set met het gemiddelde gedrag van alle andere gebeurtenissen.
+  * De kenmerken van de reeks gebeurtenissen die we vonden, toonden het probleemgedrag.
+* De tabel vergelijkt de slecht presterende set met het gemiddelde gedrag van alle andere gebeurtenissen.
 
-Klik op de koppelingen om metrische Explorer te openen en te zoeken naar relevante rapporten, gefilterd op de tijd en eigenschappen van de langzaam uitgevoerde set.
+Klik op de koppelingen om Metric Explorer te openen en zoeken op relevante rapporten, gefilterd op de tijd en eigenschappen van de langzaam presterende set.
 
-Wijzig het tijds bereik en de filters om de telemetrie te verkennen.
+Wijzig het tijdsbereik en de filters om de telemetrie te verkennen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecteren:
+Met deze diagnostische hulpprogramma's u de telemetrie vanuit uw app inspecteren:
 
 * [Profiler](profiler.md) 
-* [Fout opsporing voor moment opnamen](../../azure-monitor/app/snapshot-debugger.md)
-* [Analytische gegevens](../../azure-monitor/log-query/get-started-portal.md)
-* [Slimme diagnostische gegevens over analyse](../../azure-monitor/app/analytics.md)
+* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
+* [Analytics](../../azure-monitor/log-query/get-started-portal.md)
+* [Analytics slimme diagnostiek](../../azure-monitor/app/analytics.md)
 
 Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
-* [Webtests voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Handmatig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
+* [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)

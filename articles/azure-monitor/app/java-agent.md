@@ -1,51 +1,51 @@
 ---
-title: Prestatie bewaking Java Web apps-Azure-toepassing Insights
-description: Uitgebreide prestaties en gebruiks bewaking van uw Java-website met Application Insights.
+title: Prestatiebewaking van Java-webapps - Azure Application Insights
+description: Uitgebreide prestaties en gebruikscontrole van uw Java-website met Application Insights.
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657024"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden, onderschepte uitzonde ringen en methode-uitvoerings tijden in Java-Web-apps bewaken
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden bewaken, uitzonderingen en uitvoeringstijden voor methoden in Java-webapps controleren
 
 
-Als u [uw Java-Web-app hebt voorzien van Application Insights][java], kunt u de Java-Agent gebruiken om diepere inzichten te verkrijgen, zonder dat u code hoeft te wijzigen:
+Als u [uw Java-webapp hebt uitgerust met Application Insights,][java]u de Java-agent gebruiken om diepere inzichten te verkrijgen, zonder wijzigingen in de code:
 
-* **Afhankelijkheden:** Gegevens over de aanroepen die uw toepassing maakt met andere onderdelen, waaronder:
-  * **Uitgaande HTTP-aanroepen** via Apache httpclient maakt, OkHttp en `java.net.HttpURLConnection` worden vastgelegd.
-  * **Redis-aanroepen** via de jedis-client worden vastgelegd.
-  * **JDBC-query's** : voor MySQL en PostgreSQL, als de aanroep langer dan 10 seconden duurt, rapporteert de agent het query plan.
+* **Afhankelijkheden:** Gegevens over oproepen die uw toepassing naar andere onderdelen voert, waaronder:
+  * **Uitgaande HTTP-oproepen** via Apache HttpClient, `java.net.HttpURLConnection` OkHttp en worden vastgelegd.
+  * **Redis telefoontjes** via de Jedis cliënt worden vastgelegd.
+  * **JDBC-query's** - Als het gesprek langer duurt dan 10 seconden voor MySQL en PostgreSQL, rapporteert de agent het queryplan.
 
-* **Toepassings logboeken:** Uw toepassings logboeken vastleggen en correleren met HTTP-aanvragen en andere telemetrie
-  * **Log4j 1,2**
+* **Toepassing logboekregistratie:** Uw toepassingslogboeken vastleggen en correleren met HTTP-aanvragen en andere telemetrie
+  * **Log4j 1.2**
   * **Log4j2**
-  * **Logback**
+  * **Aanmelding**
 
-* **Betere bewerkings naam:** (gebruikt voor aggregatie van aanvragen in de portal)
-  * **Lente** op basis van `@RequestMapping`.
-  * **Jax-RS** -gebaseerd op `@Path`. 
+* **Betere bedrijfsnaamgeving:** (gebruikt voor aggregatie van aanvragen in de portal)
+  * **Lente** - `@RequestMapping`gebaseerd op .
+  * **JAX-RS** - `@Path`gebaseerd op . 
 
-Als u de Java-Agent wilt gebruiken, installeert u deze op uw server. Uw web-apps moeten worden beinstrumented met de [Application Insights Java SDK][java]. 
+Als u de Java-agent wilt gebruiken, installeert u deze op uw server. Uw web-apps moeten worden uitgerust met de [Application Insights Java SDK.][java] 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>De Application Insights-agent voor Java installeren
 1. [Download de agent](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) op de machine die uw Java-server uitvoert. Zorg ervoor dat u dezelfde versie van de Java-agent downloadt als de Java-SDK-kern en -webpakketten van Application Insights.
-2. Bewerk het opstart script van de toepassings server en voeg het volgende JVM-argument toe:
+2. Bewerk het opstartscript van de toepassingsserver en voeg het volgende argument VAN JVM toe:
    
     `-javaagent:<full path to the agent JAR file>`
    
-    Bijvoorbeeld in Tomcat op een Linux-computer:
+    Bijvoorbeeld in Tomcat op een Linux-machine:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
-3. Start de toepassings server opnieuw op.
+3. Start de toepassingsserver opnieuw.
 
 ## <a name="configure-the-agent"></a>De agent configureren
-Maak een bestand met de naam `AI-Agent.xml` en plaats het in dezelfde map als het JAR-bestand van de agent.
+Maak een `AI-Agent.xml` bestand met de naam en plaats het in dezelfde map als het jar-bestand van de agent.
 
-Stel de inhoud van het XML-bestand in. Bewerk het volgende voor beeld om de gewenste functies toe te voegen of te weglaten.
+Stel de inhoud van het xml-bestand in. Bewerk het volgende voorbeeld om de gewenste functies op te nemen of weg te laten.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -75,30 +75,30 @@ Stel de inhoud van het XML-bestand in. Bewerk het volgende voor beeld om de gewe
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>Aanvullende configuratie (Spring boot)
+## <a name="additional-config-spring-boot"></a>Extra config (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
-Ga als volgt te werk voor Azure-app Services:
+Ga als volgt te werk voor Azure App Services:
 
 * Selecteer Instellingen > Toepassingsinstellingen
 * Voeg een nieuw sleutelwaardepaar toe bij App-instellingen:
 
-Sleutel: `JAVA_OPTS` waarde: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Sleutel: `JAVA_OPTS` Waarde:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Voor de meest recente versie van de Java-agent controleert u [hier](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)de releases. 
+Voor de nieuwste versie van de Java-agent, check de releases [hier](https://github.com/Microsoft/ApplicationInsights-Java/releases
+). 
 
-De agent moet worden verpakt als een resource in uw project, zodat deze wordt beëindigd op de D:/Home/site/wwwroot/map. U kunt controleren of uw agent zich in de juiste App Service Directory bevindt door te gaan naar **ontwikkel hulpprogramma's** > **geavanceerde Hulpprogram ma's** > **console voor fout opsporing** en de inhoud van de sitemap te controleren.    
+De agent moet worden verpakt als een bron in uw project, zodat het eindigt in de D:/home/site/wwwroot / directory. U bevestigen dat uw agent zich in de juiste appservicemap bevindt door naar **Advanced Tools** > **Advanced Tools** > **Debug Console** te gaan en de inhoud van de sitemap te onderzoeken.    
 
-* Sla de instellingen op en start de app opnieuw. (Deze stappen zijn alleen van toepassing op App Services die worden uitgevoerd op Windows.)
+* Sla de instellingen op met Opslaan en start de app opnieuw met Opnieuw opstarten. (Deze stappen zijn alleen van toepassing op App Services die op Windows worden uitgevoerd.)
 
 > [!NOTE]
-> AI-Agent. XML en het jar-bestand van de agent moeten zich in dezelfde map bevindt. Ze worden vaak samen in de map `/resources` van het project geplaatst.  
+> AI-Agent.xml en het agentjarbestand moeten zich in dezelfde map bevinden. Ze worden vaak samen `/resources` in de map van het project geplaatst.  
 
-#### <a name="enable-w3c-distributed-tracing"></a>In W3C gedistribueerde tracering inschakelen
+#### <a name="enable-w3c-distributed-tracing"></a>W3C distributed tracing inschakelen
 
-Voeg het volgende toe aan AI-Agent. XML:
+Voeg het volgende toe aan AI-Agent.xml:
 
 ```xml
 <Instrumentation>
@@ -109,21 +109,21 @@ Voeg het volgende toe aan AI-Agent. XML:
 ```
 
 > [!NOTE]
-> Achterwaartse compatibiliteits modus is standaard ingeschakeld en de para meter enableW3CBackCompat is optioneel en moet alleen worden gebruikt als u deze wilt uitschakelen. 
+> De achterwaartse compatibiliteitsmodus is standaard ingeschakeld en de parameter enableW3CBackCompat is optioneel en mag alleen worden gebruikt wanneer u deze wilt uitschakelen. 
 
-In het ideale geval is dit de situatie waarin al uw services zijn bijgewerkt naar een nieuwere versie van Sdk's die W3C-protocol ondersteunen. Het wordt sterk aanbevolen om zo snel mogelijk over te stappen op een nieuwere versie van Sdk's met W3C-ondersteuning.
+Idealiter zou dit het geval zijn wanneer al uw diensten zijn bijgewerkt naar nieuwere versie van SDKs ondersteunen W3C protocol. Het wordt ten zeerste aanbevolen om zo snel mogelijk over te stappen op een nieuwere versie van SDKs met W3C-ondersteuning.
 
-Zorg ervoor dat de **configuraties voor [Inkomend](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) en uitgaand verkeer (agent)** precies hetzelfde zijn.
+Zorg ervoor dat **zowel [inkomende](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) als uitgaande (agent)configuraties** precies hetzelfde zijn.
 
-## <a name="view-the-data"></a>De gegevens weer geven
-In de Application Insights resource worden de geaggregeerde externe afhankelijkheden en de uitvoerings tijden van de methode weer gegeven [onder de tegel prestaties][metrics].
+## <a name="view-the-data"></a>De gegevens weergeven
+In de resource Application Insights worden geaggregeerde afhankelijkheids- en methodeuitvoeringstijden op afstand weergegeven [onder de tegel Prestaties][metrics].
 
-Als u wilt zoeken naar afzonderlijke exemplaren van de rapporten afhankelijkheid, uitzonde ring en methode, opent u [zoeken][diagnostic].
+Als u wilt zoeken naar afzonderlijke instanties van afhankelijkheids-, uitzonderings- en methoderapporten, opent u [Zoeken][diagnostic].
 
-[Afhankelijkheids problemen vaststellen-meer informatie](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
+[Het diagnosticeren van afhankelijkheidsproblemen - meer informatie](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Vragen? Problemen?
-* Zijn er geen gegevens? [Firewall-uitzonde ringen instellen](../../azure-monitor/app/ip-addresses.md)
+* Zijn er geen gegevens? [Uitzonderingen op firewall instellen](../../azure-monitor/app/ip-addresses.md)
 * [Problemen met Java oplossen](java-troubleshoot.md)
 
 <!--Link references-->

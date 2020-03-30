@@ -1,16 +1,16 @@
 ---
-title: Consistentie in Azure Cosmos DB beheren
-description: Meer informatie over het configureren en beheren van consistentie niveaus in Azure Cosmos DB met behulp van Azure Portal, .NET SDK, Java SDK en diverse andere Sdk's
+title: Consistentie beheren in Azure Cosmos DB
+description: Meer informatie over het configureren en beheren van consistentieniveaus in Azure Cosmos DB met Azure portal, .Net SDK, Java SDK en diverse andere SDK's
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79369400"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u consistentieniveaus beheert in Azure Cosmos
 
 ## <a name="configure-the-default-consistency-level"></a>Het standaardconsistentieniveau configureren
 
-Het [standaard consistentie niveau](consistency-levels.md) is het consistentie niveau dat clients standaard gebruiken. Clients kunnen deze altijd overschrijven.
+Het [standaardconsistentieniveau](consistency-levels.md) is het consistentieniveau dat clients standaard gebruiken. Klanten kunnen het altijd overschrijven.
 
 ### <a name="cli"></a>CLI
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-In dit voor beeld wordt een nieuw Azure Cosmos-account gemaakt waarbij meerdere schrijf regio's zijn ingeschakeld in de regio's VS-Oost en VS-West. Het standaard consistentie niveau is ingesteld op consistentie van *sessies* .
+In dit voorbeeld wordt een nieuw Azure Cosmos-account gemaakt met meerdere schrijfregio's ingeschakeld in regio's in Oost-VS en West-VS. Het standaardconsistentieniveau is ingesteld op *sessieconsistentie.*
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,17 +59,17 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
-Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
+Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **consistentievenster Standaard.** Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure-portal biedt ook een visualisatie van verschillende consistentieniveaus met muzieknotities. 
 
 ![Menu Consistentie in de Azure-portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Het standaardconsistentieniveau overschrijven
 
-Clients kunnen het standaardconsistentieniveau dat is ingesteld door de service overschrijven. Het consistentie niveau kan worden ingesteld per aanvraag, waardoor het standaard consistentie niveau wordt overschreven op account niveau.
+Clients kunnen het standaardconsistentieniveau dat is ingesteld door de service overschrijven. Consistentieniveau kan worden ingesteld op een per verzoek, waarbij het standaardconsistentieniveau dat op accountniveau is ingesteld, wordt overschreven.
 
-### <a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
 ```csharp
 // Override consistency at the client level
@@ -81,7 +81,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 // Override consistency at the request level via request options
@@ -94,7 +94,7 @@ var response = await client.GetContainer(databaseName, containerName)
         requestOptions);
 ```
 
-### <a id="override-default-consistency-java-async"></a>Java Async SDK
+### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java Async SDK
 
 ```java
 // Override consistency at the client level
@@ -108,7 +108,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="override-default-consistency-java-sync"></a>Java Sync SDK
+### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java Sync SDK
 
 ```java
 // Override consistency at the client level
@@ -116,7 +116,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -129,7 +129,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a id="override-default-consistency-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK
 
 ```python
 # Override consistency at the client level
@@ -140,11 +140,11 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>Sessietokens gebruiken
 
-Een van de consistentie niveaus in Azure Cosmos DB is *sessie* consistentie. Dit is het standaard niveau dat standaard wordt toegepast op Cosmos-accounts. Bij het werken met *sessie* consistentie gebruikt de client een sessie token intern met elke Lees-en query aanvraag om ervoor te zorgen dat het set-consistentie niveau wordt gehandhaafd.
+Een van de consistentieniveaus in Azure Cosmos DB is *sessieconsistentie.* Dit is standaard het standaardniveau dat standaard op Cosmos-accounts wordt toegepast. Wanneer de client met *sessieconsistentie* werkt, gebruikt hij intern een sessietoken bij elk lees-/queryverzoek om ervoor te zorgen dat het ingestelde consistentieniveau wordt gehandhaafd.
 
 Als u sessietokens handmatig wilt beheren, haalt u het sessietoken op uit het antwoord en stelt u het in per aanvraag. Als u sessietokens niet handmatig hoeft te beheren, hoeft u deze voorbeelden niet te gebruiken. De SDK houdt sessietokens automatisch bij. Als u het sessietoken niet handmatig instelt, gebruikt de SDK standaard het meest recente sessietoken.
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -157,7 +157,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -169,7 +169,7 @@ options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
 
-### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
+### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java Async SDK
 
 ```java
 // Get session token from response
@@ -191,7 +191,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
+### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
 
 ```java
 // Get session token from response
@@ -204,7 +204,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response
@@ -215,7 +215,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a id="utilize-session-tokens-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK
 
 ```python
 // Get the session token from the last response headers
@@ -231,7 +231,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Metrische gegevens van aan waarschijnlijkheid gebonden veroudering (PBS) controleren
 
-Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde grenzen bieden ten aanzien van versie geschiedenis en-tijd. De metrische gegevens van de [**Probabilistically-binding (PBS)** ](https://pbs.cs.berkeley.edu/) proberen de waarschijnlijkheid van veroudering te bepalen en geeft deze weer als een metrieke waarde. Als u de metrische gegevens van de PBS wilt weer geven, gaat u naar uw Azure Cosmos-account in de Azure Portal. Open het deel venster **metrieken** en selecteer het tabblad **consistentie** . Bekijk de grafiek met de naam **kans op zeer consistente Lees bewerkingen op basis van uw werk belasting (Zie PBS)** .
+Hoe uiteindelijk is uiteindelijke consistentie? Voor de gemiddelde case, kunnen we bieden staleness grenzen met betrekking tot de versie geschiedenis en tijd. De [**probabilistically Bounded Staleness (PBS)**](https://pbs.cs.berkeley.edu/) statistiek probeert om de waarschijnlijkheid van staleness te kwantificeren en toont het als metriek. Als u de PBS-statistiek wilt weergeven, gaat u naar uw Azure Cosmos-account in de Azure-portal. Open het deelvenster **Statistieken** en selecteer het tabblad **Consistentie.** Kijk naar de grafiek met de naam **Waarschijnlijkheid van sterk consistente reads op basis van uw werkbelasting (zie PBS).**
 
 ![PBS-grafiek in de Azure-portal](./media/how-to-manage-consistency/pbs-metric.png)
 
@@ -240,9 +240,9 @@ Wat is de uiteindelijke consistentie? Voor het gemiddelde kunnen we verouderde g
 
 Lees meer informatie over het beheer van gegevensconflicten of ga verder met het volgende sleutelbegrip in Azure Cosmos DB. Zie de volgende artikelen:
 
-* [Consistentie niveaus in Azure Cosmos DB](consistency-levels.md)
+* [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
 * [Conflicten tussen regio 's beheren](how-to-manage-conflicts.md)
 * [Partitionering en gegevensdistributie](partition-data.md)
-* [Consistentie-afwegingen in het moderne ontwerp van gedistribueerde database systemen](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Consistentie afwegingen in moderne gedistribueerde database systemen ontwerp](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Hoge beschikbaarheid](high-availability.md)
-* [SLA voor Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -1,163 +1,163 @@
 ---
-title: Verificatie toevoegen voor het beveiligen van aanroepen naar aangepaste Api's
-description: Verificatie instellen voor betere beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
+title: Verificatie toevoegen voor het beveiligen van oproepen naar aangepaste API's
+description: Verificatie instellen om de beveiliging van oproepen naar aangepaste API's van Azure Logic Apps te verbeteren
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191407"
 ---
-# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Verbeter de beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>De beveiliging voor oproepen naar aangepaste API's van Azure Logic Apps verhogen
 
-Als u de beveiliging voor het aanroepen van uw Api's wilt verbeteren, kunt u Azure Active Directory (Azure AD)-verificatie instellen via de Azure Portal zodat u de code niet hoeft bij te werken. Of u kunt verificatie vereisen en afdwingen via de code van uw API.
+Als u de beveiliging voor oproepen naar uw API's wilt verbeteren, u Azure Active Directory-verificatie (Azure AD) instellen via de Azure-portal, zodat u uw code niet hoeft bij te werken. Of u kunt verificatie vereisen en afdwingen via de code van uw API.
 
-## <a name="authentication-options-for-your-api"></a>Verificatie opties voor uw API
+## <a name="authentication-options-for-your-api"></a>Verificatieopties voor uw API
 
-U kunt de beveiliging voor het aanroepen van uw aangepaste API op de volgende manieren verbeteren:
+U de beveiliging voor oproepen naar uw aangepaste API op de volgende manieren verbeteren:
 
-* [Er zijn geen code wijzigingen](#no-code): Bescherm uw api met [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) via de Azure Portal, zodat u uw code niet hoeft bij te werken of uw API opnieuw moet implementeren.
+* [Geen codewijzigingen](#no-code): Bescherm uw API met [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) via de Azure-portal, zodat u uw code niet hoeft bij te werken of uw API opnieuw hoeft te implementeren.
 
   > [!NOTE]
-  > De Azure AD-verificatie die u inschakelt in de Azure Portal biedt standaard geen verfijnde autorisatie. Met deze verificatie wordt uw API bijvoorbeeld vergrendeld op alleen een specifieke Tenant, niet op een specifieke gebruiker of app. 
+  > Standaard biedt de Azure AD-verificatie die u inschakelt in de Azure-portal geen fijnmazige autorisatie. Deze verificatie vergrendelt uw API bijvoorbeeld naar slechts een specifieke tenant, niet naar een specifieke gebruiker of app. 
 
-* [De code van uw API bijwerken](#update-code): Beveilig uw API door [certificaat verificatie](#certificate), [basis verificatie](#basic)of [Azure AD-verificatie](#azure-ad-code) af te dwingen via code.
+* [De code van uw API bijwerken:](#update-code)Bescherm uw API door [certificaatverificatie,](#certificate) [basisverificatie](#basic)of [Azure AD-verificatie](#azure-ad-code) via code af te dwingen.
 
 <a name="no-code"></a>
 
-### <a name="authenticate-calls-to-your-api-without-changing-code"></a>Aanroepen naar uw API verifiëren zonder code te wijzigen
+### <a name="authenticate-calls-to-your-api-without-changing-code"></a>Oproepen naar uw API verifiëren zonder code te wijzigen
 
-Hier volgen de algemene stappen voor deze methode:
+Hier zijn de algemene stappen voor deze methode:
 
-1. Maak twee toepassings identiteiten voor Azure Active Directory (Azure AD): één voor uw logische app en een voor uw web-app (of API-app).
+1. Maak twee Azure Active Directory-toepassingsidentiteiten (Azure AD) : één voor uw logische app en één voor uw web-app (of API-app).
 
-2. Als u aanroepen naar uw API wilt verifiëren, gebruikt u de referenties (client-ID en geheim) voor de service-principal die is gekoppeld aan de Azure AD-toepassings-id voor uw logische app.
+2. Als u oproepen naar uw API wilt verifiëren, gebruikt u de referenties (client-id en geheim) voor de serviceprincipal die is gekoppeld aan de Azure AD-toepassingsidentiteit voor uw logische app.
 
-3. Neem de toepassings-Id's op in de definitie van de logische app.
+3. Neem de toepassings-id's op in de definitie van uw logische app.
 
-#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>Deel 1: een Azure AD-toepassings-id maken voor uw logische app
+#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>Deel 1: Een Azure AD-toepassingsidentiteit maken voor uw logische app
 
-Uw logische app maakt gebruik van deze Azure AD-toepassings identiteit om te verifiëren bij Azure AD. U hoeft deze identiteit slechts één keer in te stellen voor uw Directory. U kunt er bijvoorbeeld voor kiezen om dezelfde identiteit voor al uw Logic apps te gebruiken, ook al kunt u unieke identiteiten voor elke logische app maken. U kunt deze identiteiten instellen in de Azure Portal of [Power shell](#powershell)gebruiken.
+Uw logische app gebruikt deze Azure AD-toepassingsidentiteit om te verifiëren tegen Azure AD. U hoeft deze identiteit slechts één keer in te stellen voor uw directory. U er bijvoorbeeld voor kiezen om dezelfde identiteit te gebruiken voor al uw logische apps, ook al u unieke identiteiten maken voor elke logische app. U deze identiteiten instellen in de Azure-portal of [PowerShell](#powershell)gebruiken.
 
-**Maak de toepassings-id voor uw logische app in de Azure Portal**
+**De toepassingsidentiteit voor uw logische app maken in de Azure-portal**
 
-1. Kies in het [Azure Portal](https://portal.azure.com "https://portal.azure.com") **Azure Active Directory**. 
+1. Kies azure active directory in de [Azure-portal](https://portal.azure.com "https://portal.azure.com"). **Azure Active Directory** 
 
-2. Controleer of u zich in dezelfde map bevindt als de web-app of API-app.
-
-   > [!TIP]
-   > Als u wilt scha kelen tussen directory's, kiest u uw profiel en selecteert u een andere map. Of kies **overzicht** > **map te scha kelen**.
-
-3. Kies in het menu Directory onder **beheren**de optie **app-registraties** > **nieuwe toepassing registreren**.
+2. Controleer of u zich in dezelfde map bevindt als uw web-app of API-app.
 
    > [!TIP]
-   > De lijst met app-registraties bevat standaard alle app-registraties in uw Directory. Als u alleen uw app-registraties wilt weer geven, gaat u naar het zoekvak en selecteert u **mijn apps**. 
+   > Als u van directeur wilt wisselen, kiest u uw profiel en selecteert u een andere map. Kies > **overzichtsmap overschakelen**. **Overview**
+
+3. Kies in het mapmenu onder **Beheren**de optie **App-registraties** > **Nieuwe toepassingsregistratie**kiezen .
+
+   > [!TIP]
+   > Standaard worden in de lijst met app-registraties alle app-registraties in uw map weergegeven. Als u alleen uw app-registraties wilt weergeven, selecteert u naast het zoekvak De optie **Mijn apps**. 
 
    ![Nieuwe app-registratie maken](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
 
-4. Geef de identiteit van uw toepassing een naam, laat het **toepassings type** ingesteld op **Web app/API**, geef een unieke teken reeks op die is opgemaakt als een domein voor de **aanmeldings-URL**en kies **maken**.
+4. Geef uw toepassingsidentiteit een naam, laat **toepassingstype** instellen op **web-app / API,** geef een unieke tekenreeks opgemaakt als domein voor **aanmeldings-URL**en kies **Maken**.
 
-   ![Geef een naam en aanmeldings-URL op voor de toepassings-id](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
+   ![Url van naam en aanmelding opgeven voor toepassingsidentiteit](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
 
-   De toepassings-id die u hebt gemaakt voor uw logische app wordt nu weer gegeven in de lijst app-registraties.
+   De toepassingsidentiteit die u voor uw logische app hebt gemaakt, wordt nu weergegeven in de lijst met app-registraties.
 
-   ![Toepassings-id voor uw logische app](./media/logic-apps-custom-api-authentication/logic-app-identity-created.png)
+   ![Toepassingsidentiteit voor uw logische app](./media/logic-apps-custom-api-authentication/logic-app-identity-created.png)
 
-5. Selecteer uw nieuwe toepassings identiteit in de lijst app-registraties. Kopieer de **toepassings-id** en sla deze op om te gebruiken als de ' client-id ' voor uw logische app in deel 3.
+5. Selecteer in de lijst met app-registraties uw nieuwe toepassingsidentiteit. Kopieer en sla de **toepassings-id** op die u wilt gebruiken als de 'client-id' voor uw logische app in deel 3.
 
-   ![De toepassings-ID voor de logische app kopiëren en opslaan](./media/logic-apps-custom-api-authentication/logic-app-application-id.png)
+   ![Toepassings-id voor logische app kopiëren en opslaan](./media/logic-apps-custom-api-authentication/logic-app-application-id.png)
 
-6. Als uw toepassings-id-instellingen niet worden weer gegeven, kiest u **instellingen** of **alle instellingen**.
+6. Als de instellingen van de toepassingsidentiteit niet zichtbaar zijn, kiest u **Instellingen** of **Alle instellingen**.
 
-7. Kies **sleutels**onder **API-toegang**. Geef onder **Beschrijving**een naam op voor de sleutel. Selecteer onder **verloopt**een duur voor de sleutel.
+7. Kies Onder **API Access**de optie **Sleutels**. Geef **onder Beschrijving**een naam voor uw sleutel op. Selecteer **onder Verloopt**een duur voor uw sleutel.
 
-   De sleutel die u maakt, fungeert als het geheim of het wacht woord van de toepassings-id voor uw logische app.
+   De sleutel die u maakt, fungeert als het 'geheim' of wachtwoord van de toepassingsidentiteit voor uw logische app.
 
-   ![Sleutel maken voor de logische app-identiteit](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
+   ![Sleutel maken voor de identiteit van logische apps](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
 
-8. Kies **Opslaan**op de werk balk. Onder **waarde**wordt uw sleutel nu weer gegeven. 
-**Zorg ervoor dat u de sleutel kopieert en opslaat** voor later gebruik omdat de sleutel verborgen is wanneer u de pagina **sleutels** verlaat.
+8. Kies op de werkbalk **Opslaan**. Onder **Waarde**wordt uw sleutel nu weergegeven. 
+**Zorg ervoor dat u uw sleutel kopieert en opslaat** voor later gebruik, omdat de sleutel is verborgen wanneer u de pagina **Sleutels** verlaat.
 
-   Wanneer u uw logische app in deel 3 configureert, geeft u deze sleutel op als ' geheim ' of wacht woord.
+   Wanneer u uw logische app configureert in deel 3, geeft u deze sleutel op als het 'geheim' of wachtwoord.
 
-   ![Kopieer en bewaar de sleutel voor later](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
+   ![Sleutel kopiëren en opslaan voor later](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
 
 <a name="powershell"></a>
 
-**De toepassings-id voor uw logische app maken in Power shell**
+**De toepassingsidentiteit voor uw logische app maken in PowerShell**
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt deze taak uitvoeren via Azure Resource Manager met Power shell. Voer in Power shell de volgende opdrachten uit:
+U deze taak uitvoeren via Azure Resource Manager met PowerShell. Voer in PowerShell de volgende opdrachten uit:
 
 1. `Add-AzAccount`
 
 1. `$SecurePassword = Read-Host -AsSecureString`
 
-1. Voer een wacht woord in en druk op ENTER.
+1. Voer een wachtwoord in en druk op Enter.
 
 1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
-1. Zorg ervoor dat u de **Tenant-id** (GUID voor uw Azure AD-Tenant), de **toepassings-id**en het wacht woord die u hebt gebruikt, kopieert.
+1. Zorg ervoor dat u de **tenant-id** (GUID voor uw Azure AD-tenant), de **toepassings-id**en het wachtwoord dat u hebt gebruikt, kopieert.
 
-Meer informatie over het [maken van een service-principal met Power shell voor toegang tot resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Voor meer informatie, meer informatie over hoe [u een serviceprincipal maakt met PowerShell om toegang te krijgen tot bronnen](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>Deel 2: een Azure AD-toepassings-id maken voor uw web-app of API-app
+#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>Deel 2: Een Azure AD-toepassingsidentiteit maken voor uw web-app of API-app
 
-Als uw web-app of API-app al is geïmplementeerd, kunt u verificatie inschakelen en de toepassings-id maken in de Azure Portal. Anders kunt u [verificatie inschakelen wanneer u implementeert met een Azure Resource Manager sjabloon](#authen-deploy). 
+Als uw web-app of API-app al is geïmplementeerd, u verificatie inschakelen en de toepassingsidentiteit maken in de Azure-portal. Anders u [verificatie inschakelen wanneer u implementeert met een Azure Resource Manager-sjabloon.](#authen-deploy) 
 
-**De toepassings-id maken en verificatie inschakelen in de Azure Portal voor geïmplementeerde apps**
+**De toepassingsidentiteit maken en verificatie inschakelen in de Azure-portal voor geïmplementeerde apps**
 
-1. Zoek en selecteer uw web-app of API-app in de [Azure Portal](https://portal.azure.com "https://portal.azure.com"). 
+1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com "https://portal.azure.com")uw web-app of API-app. 
 
-2. Kies onder **instellingen**de optie **verificatie/autorisatie**. Schakel onder **app service verificatie**de optie verificatie **in**. Kies **Azure Active Directory**bij **verificatie providers**.
+2. Kies **onder Instellingen**de optie **Verificatie/Autorisatie**. Schakel verificatie in onder **Verificatie van appservice** **.** Kies **onder Verificatieproviders**de optie **Azure Active Directory**.
 
    ![Verificatie inschakelen](./media/logic-apps-custom-api-authentication/custom-web-api-app-authentication.png)
 
-3. Maak nu een toepassings-id voor uw web-app of API-app, zoals hier wordt weer gegeven. Stel op de pagina **instellingen Azure Active Directory** de **beheer modus** in op **Express**. Kies **nieuwe AD-app maken**. Geef de identiteit van uw toepassing een naam en kies **OK**. 
+3. Maak nu een toepassingsidentiteit voor uw web-app of API-app zoals hier wordt weergegeven. Stel op de pagina **Azure Active Directory Settings** de **beheermodus** in **op Express.** Kies **Nieuwe AD-app maken**. Geef uw toepassingsidentiteit een naam en kies **OK.** 
 
-   ![Een toepassings-id voor uw web-app of API-app maken](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
+   ![Toepassingsidentiteit maken voor uw web-app of API-app](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
 4. Kies **Opslaan** op de pagina **Verificatie/autorisatie**.
 
-Nu moet u de client-ID en Tenant-ID vinden voor de toepassings identiteit die is gekoppeld aan uw web-app of API-app. U gebruikt deze Id's in deel 3. Ga dus door met deze stappen voor de Azure Portal.
+Nu moet u de client-id en tenant-id vinden voor de toepassingsidentiteit die is gekoppeld aan uw web-app of API-app. Je gebruikt deze id's in deel 3. Ga dus verder met deze stappen voor de Azure-portal.
 
-**De client-ID en Tenant-ID van de toepassings identiteit zoeken voor uw web-app of API-app in de Azure Portal**
+**De client-id en de tenant-id van de toepassing-identiteit zoeken voor uw web-app of API-app in de Azure-portal**
 
-1. Kies **Azure Active Directory**bij **verificatie providers**. 
+1. Kies **onder Verificatieproviders**de optie **Azure Active Directory**. 
 
    ![Azure Active Directory kiezen](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
 
-2. Stel op de pagina **instellingen Azure Active Directory** de **beheer modus** in op **Geavanceerd**.
+2. Stel op de pagina **Azure Active Directory-instellingen** de **beheermodus** in **op Geavanceerd**.
 
-3. Kopieer de **client-id**en sla de GUID op voor gebruik in deel 3.
+3. Kopieer de **client-id**en sla die GUID op voor gebruik in deel 3.
 
    > [!TIP] 
-   > Als de URL van de **client-id** en de **certificaat verlener** niet worden weer gegeven, vernieuwt u de Azure Portal en herhaalt u stap 1.
+   > Als **client-id** en **url van de uitgever** niet worden weergegeven, probeert u de Azure-portal te vernieuwen en herhaalt u stap 1.
 
-4. Kopieer en sla alleen de GUID voor deel 3 op onder URL van de **Uitgever**. U kunt deze GUID ook gebruiken in de implementatie sjabloon van uw web-app of API-app, indien nodig.
+4. Onder **Uitgever Url,** kopieer en sla alleen de GUID voor deel 3. U deze GUID ook gebruiken in de implementatiesjabloon van uw web-app of API-app, indien nodig.
 
-   Deze GUID is de GUID van uw specifieke Tenant (Tenant-ID) en moet worden weer gegeven in deze URL: `https://sts.windows.net/{GUID}`
+   Deze GUID is de GUID ('tenant-id') van uw specifieke tenant en moet in deze URL worden weergegeven:`https://sts.windows.net/{GUID}`
 
-5. Sluit de pagina met **Azure Active Directory instellingen** zonder uw wijzigingen op te slaan.
+5. Sluit de pagina **Azure Active Directory Settings** zonder uw wijzigingen op te slaan.
 
 <a name="authen-deploy"></a>
 
-**Verificatie inschakelen wanneer u met een Azure Resource Manager-sjabloon implementeert**
+**Verificatie inschakelen wanneer u implementeert met een Azure Resource Manager-sjabloon**
 
-U moet nog steeds een Azure AD-toepassings-id voor uw web-app of API-app maken die afwijkt van de app-identiteit voor uw logische app. Volg de vorige stappen in deel 2 van de Azure Portal om de toepassings-id te maken. 
+U moet nog steeds een Azure AD-toepassingsidentiteit maken voor uw web-app of API-app die verschilt van de app-identiteit voor uw logische app. Als u de toepassingsidentiteit wilt maken, volgt u de vorige stappen in deel 2 voor de Azure-portal. 
 
-U kunt ook de stappen in deel 1 volgen, maar zorg ervoor dat u de daad werkelijke `https://{URL}` van uw web-app of API-app gebruikt voor de **aanmeldings-URL** en de URI van de **App-ID**. In deze stappen moet u zowel de client-ID als de Tenant-ID opslaan voor gebruik in de implementatie sjabloon van uw app en ook voor deel 3.
+U ook de stappen in deel 1 volgen, maar zorg ervoor `https://{URL}` dat u de werkelijke web-app of API-app gebruikt voor **aanmeldings-URL** en **App ID URI.** Vanuit deze stappen moet u zowel de client-id als de tenant-id opslaan voor gebruik in de implementatiesjabloon van uw app en ook voor deel 3.
 
 > [!NOTE]
-> Wanneer u de Azure AD-toepassings-id voor uw web-app of API-app maakt, moet u het Azure Portal gebruiken, niet Power shell. De Power shell-commandlet heeft niet de vereiste machtigingen ingesteld voor het aanmelden van gebruikers op een website.
+> Wanneer u de Azure AD-toepassingsidentiteit voor uw web-app of API-app maakt, moet u de Azure-portal gebruiken, niet PowerShell. De PowerShell-opdrachtbevat niet de vereiste machtigingen instellen om gebruikers aan te melden bij een website.
 
-Nadat u de client-ID en Tenant-ID hebt opgehaald, neemt u deze Id's op als een subresource van uw web-app of API-app in uw implementatie sjabloon:
+Nadat u de client-id en tenant-id hebt opgemaakt, neemt u deze id's op als subbron van uw web-app of API-app in uw implementatiesjabloon:
 
 ``` json
 "resources": [ 
@@ -177,15 +177,15 @@ Nadat u de client-ID en Tenant-ID hebt opgehaald, neemt u deze Id's op als een s
 ]
 ```
 
-Als u automatisch een lege web-app en een logische app wilt implementeren in combi natie met Azure Active Directory verificatie, [bekijkt u de volledige sjabloon hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)of klikt **u op implementeren naar Azure** :
+Als u een lege web-app en een logische app automatisch wilt implementeren in combinatie met Azure Active Directory-verificatie, [bekijkt u hier de volledige sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)of klikt u hier op Implementeren naar **Azure:**
 
-[![Implementeren in Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![Implementeren naar Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>Deel 3: de autorisatie sectie in uw logische app vullen
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>Deel 3: De sectie Autorisatie in uw logica-app invullen
 
-Deze autorisatie sectie is al ingesteld voor de vorige sjabloon, maar als u de logische app rechtstreeks wilt ontwerpen, moet u de sectie volledige autorisatie toevoegen.
+De vorige sjabloon heeft deze autorisatiesectie al ingesteld, maar als u de logische app rechtstreeks aan het ontwerpen bent, moet u de volledige autorisatiesectie opnemen.
 
-Open de definitie van de logische app in de code weergave, ga naar de **http-** actie definitie, zoek het gedeelte **autorisatie** en voeg deze eigenschappen toe:
+Open de definitie van uw logische app in de codeweergave, ga naar de **HTTP-actiedefinitie,** zoek de sectie **Autorisatie** en voeg deze eigenschappen toe:
 
 ```json
 {
@@ -199,11 +199,11 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| tenant | Ja | De GUID voor de Azure AD-Tenant | 
-| audience | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
-| clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
-| geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
-| type | Ja | Het verificatie type. Voor ActiveDirectoryOAuth-verificatie is de waarde `ActiveDirectoryOAuth`. | 
+| tenant | Ja | De GUID voor de Azure AD-tenant | 
+| Publiek | Ja | De GUID voor de doelbron die u wilt openen, dat is de client-id van de toepassingsidentiteit voor uw web-app of API-app | 
+| clientId | Ja | De GUID voor de client die toegang aanvraagt, dat is de client-id van de toepassingsidentiteit voor uw logische app | 
+| geheim | Ja | De sleutel of het wachtwoord van de toepassingsidentiteit voor de client die het toegangstoken aanvraagt | 
+| type | Ja | Het verificatietype. Voor ActiveDirectoryOAuth-verificatie is `ActiveDirectoryOAuth`de waarde . | 
 |||| 
 
 Bijvoorbeeld:
@@ -236,9 +236,9 @@ Bijvoorbeeld:
 
 #### <a name="certificate-authentication"></a>Verificatie via certificaat
 
-Als u de binnenkomende aanvragen van uw logische app wilt valideren naar uw web-app of API-app, kunt u client certificaten gebruiken. Meer informatie over het instellen van uw code voor het [configureren van TLS-wederzijdse verificatie](../app-service/app-service-web-configure-tls-mutual-auth.md).
+Als u de binnenkomende aanvragen van uw logische app wilt valideren naar uw web-app of API-app, u clientcertificaten gebruiken. Als u uw code wilt instellen, leest u [hoe u wederzijdse verificatie van TLS configureert.](../app-service/app-service-web-configure-tls-mutual-auth.md)
 
-Neem de volgende eigenschappen op in de sectie **autorisatie** :
+Neem **in** de sectie Autorisatie de volgende eigenschappen op:
 
 ```json
 {
@@ -250,18 +250,18 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `type` | Ja | Het verificatie type. Voor SSL-client certificaten moet de waarde `ClientCertificate`zijn. |
-| `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
-| `pfx` | Ja | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
+| `type` | Ja | Het verificatietype. Voor SSL-clientcertificaten moet `ClientCertificate`de waarde . |
+| `password` | Nee | Het wachtwoord voor toegang tot het clientcertificaat (PFX-bestand) |
+| `pfx` | Ja | De basis64-gecodeerde inhoud van het clientcertificaat (PFX-bestand) |
 ||||
 
 <a name="basic"></a>
 
 #### <a name="basic-authentication"></a>Basisverificatie
 
-Als u binnenkomende aanvragen van uw logische app wilt valideren naar uw web-app of API-app, kunt u basis verificatie gebruiken, zoals een gebruikers naam en wacht woord. Basis verificatie is een algemeen patroon, en u kunt deze verificatie gebruiken in elke taal die wordt gebruikt om uw web-app of API-app te maken.
+Als u binnenkomende aanvragen van uw logische app naar uw web-app of API-app wilt valideren, u basisverificatie gebruiken, zoals een gebruikersnaam en wachtwoord. Basisverificatie is een veelvoorkomend patroon en u deze verificatie gebruiken in elke taal die wordt gebruikt om uw web-app of API-app te bouwen.
 
-Neem de volgende eigenschappen op in de sectie **autorisatie** :
+Neem **in** de sectie Autorisatie de volgende eigenschappen op:
 
 ```json
 {
@@ -273,18 +273,18 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| type | Ja | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde `Basic`zijn. | 
-| gebruikersnaam | Ja | De gebruikers naam die u wilt gebruiken voor verificatie | 
-| wachtwoord | Ja | Het wacht woord dat u wilt gebruiken voor verificatie | 
+| type | Ja | Het verificatietype dat u wilt gebruiken. Voor basisverificatie moet de `Basic`waarde . | 
+| gebruikersnaam | Ja | De gebruikersnaam die u wilt gebruiken voor verificatie | 
+| wachtwoord | Ja | Het wachtwoord dat u wilt gebruiken voor verificatie | 
 |||| 
 
 <a name="azure-ad-code"></a>
 
-#### <a name="azure-active-directory-authentication-through-code"></a>Verificatie Azure Active Directory via code
+#### <a name="azure-active-directory-authentication-through-code"></a>Azure Active Directory-verificatie via code
 
-De Azure AD-verificatie die u inschakelt in de Azure Portal biedt standaard geen verfijnde autorisatie. Met deze verificatie wordt uw API bijvoorbeeld vergrendeld op alleen een specifieke Tenant, niet op een specifieke gebruiker of app. 
+Standaard biedt de Azure AD-verificatie die u inschakelt in de Azure-portal geen fijnmazige autorisatie. Deze verificatie vergrendelt uw API bijvoorbeeld naar slechts een specifieke tenant, niet naar een specifieke gebruiker of app. 
 
-Als u via code de API-toegang tot uw logische app wilt beperken, extraheert u de header met de JSON-webtoken (JWT). Controleer de identiteit van de aanroeper en weiger aanvragen die niet overeenkomen.
+Als u api-toegang tot uw logische app wilt beperken via code, haalt u de koptekst met het JSON-webtoken (JWT) uit. Controleer de identiteit van de beller en weiger verzoeken die niet overeenkomen.
 
 <!-- Going further, to implement this authentication entirely in your own code, 
 and not use the Azure portal, learn how to 
@@ -295,4 +295,4 @@ you must follow the previous steps. -->
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aangepaste Api's implementeren en aanroepen vanuit werk stromen voor logische apps](../logic-apps/logic-apps-custom-api-host-deploy-call.md)
+* [Aangepaste API's implementeren en aanroepen vanuit logische app-werkstromen](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

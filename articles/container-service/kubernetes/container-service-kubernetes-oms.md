@@ -1,6 +1,6 @@
 ---
-title: KEUR Azure Kubernetes-cluster bewaken-Operations Management
-description: Kubernetes-cluster bewaken in Azure Container Service met behulp van Log Analytics
+title: (AFGESCHAFT) Azure Kubernetes-cluster bewaken - Operations Management
+description: Kubernetes-cluster in Azure Container Service bewaken met Behulp van Log Analytics
 author: bburns
 ms.service: container-service
 ms.topic: conceptual
@@ -8,52 +8,52 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371151"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>KEUR Een Azure Container Service cluster met Log Analytics bewaken
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(AFGESCHAFT) Een Azure Container Service-cluster bewaken met Log Analytics
 
 > [!TIP]
-> Zie [Azure monitor voor containers](../../azure-monitor/insights/container-insights-overview.md)voor de bijgewerkte versie van dit artikel waarin de Azure Kubernetes-service wordt gebruikt.
+> Zie [Azure Monitor voor containers voor](../../azure-monitor/insights/container-insights-overview.md)de bijgewerkte versie van dit artikel die Azure Kubernetes Service gebruikt.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-In dit scenario wordt ervan uitgegaan dat u [een Kubernetes-cluster hebt gemaakt met behulp van Azure container service](container-service-kubernetes-walkthrough.md).
+Deze walkthrough gaat ervan uit dat u [een Kubernetes-cluster](container-service-kubernetes-walkthrough.md)hebt gemaakt met Azure Container Service.
 
-Er wordt ook van uitgegaan dat u de `az` Azure CLI en `kubectl`-hulpprogram ma's hebt geïnstalleerd.
+Het gaat er ook `az` van uit `kubectl` dat u de Azure cli en tools hebt geïnstalleerd.
 
-U kunt testen of u het `az`-hulp programma hebt geïnstalleerd door uit te voeren:
+U testen of `az` u het gereedschap hebt geïnstalleerd door het uitvoeren van:
 
 ```azurecli
 az --version
 ```
 
-Als u het hulp programma `az` niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
-U kunt ook [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)gebruiken, die de `az` Azure CLI-en `kubectl`-hulpprogram ma's bevat die al voor u zijn geïnstalleerd.
+Als u het `az` gereedschap niet hebt geïnstalleerd, zijn er [hier](https://github.com/azure/azure-cli#installation)instructies.
+U ook [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)gebruiken, waar de `az` Azure cli en `kubectl` tools al voor u zijn geïnstalleerd.
 
-U kunt testen of u het `kubectl`-hulp programma hebt geïnstalleerd door uit te voeren:
+U testen of `kubectl` u het gereedschap hebt geïnstalleerd door het uitvoeren van:
 
 ```console
 kubectl version
 ```
 
-Als `kubectl` niet is geïnstalleerd, kunt u het volgende uitvoeren:
+Als u niet `kubectl` hebt geïnstalleerd, u het:
 
 ```azurecli
 az acs kubernetes install-cli
 ```
 
-Als u wilt testen of er kubernetes-sleutels zijn geïnstalleerd in uw kubectl-hulp programma, kunt u het volgende uitvoeren:
+Ga als of u kubernetes-toetsen in uw kubectl-tool hebt geïnstalleerd:
 
 ```console
 kubectl get nodes
 ```
 
-Als de bovenstaande opdracht fouten opleveren, moet u kubernetes-cluster sleutels installeren in uw kubectl-hulp programma. U kunt dit doen met de volgende opdracht:
+Als de bovenstaande opdracht fouten uit, moet u kubernetes cluster sleutels te installeren in uw kubectl tool. U dat doen met de volgende opdracht:
 
 ```azurecli
 RESOURCE_GROUP=my-resource-group
@@ -63,52 +63,52 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>Containers controleren met Log Analytics
 
-Log Analytics is de Cloud oplossing van micro soft die u helpt bij het beheren en beveiligen van uw on-premises en Cloud infrastructuur. Container oplossing is een oplossing in Log Analytics, waarmee u de container inventaris, de prestaties en logboeken op één locatie kunt bekijken. U kunt controleren, problemen met containers oplossen door de logboeken op gecentraliseerde locatie te bekijken en te zoeken naar een overmatige container op een host.
+Log Analytics is de cloudgebaseerde IT-beheeroplossing van Microsoft die u helpt bij het beheren en beschermen van uw on-premises en cloudinfrastructuur.Container Solution is een oplossing in Log Analytics, waarmee u de containervoorraad, prestaties en logboeken op één locatie bekijken. U controleren, containers oplossen door de logboeken op een centrale locatie te bekijken en luidruchtige overtollige container op een host vinden.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Raadpleeg de [container solution log Analytics](../../azure-monitor/insights/containers.md)voor meer informatie over container oplossingen.
+Voor meer informatie over Container Solution verwijzen wij u naar de [Container Solution Log Analytics](../../azure-monitor/insights/containers.md).
 
-## <a name="installing-log-analytics-on-kubernetes"></a>Log Analytics op Kubernetes installeren
+## <a name="installing-log-analytics-on-kubernetes"></a>Log Analytics installeren op Kubernetes
 
-### <a name="obtain-your-workspace-id-and-key"></a>Uw werk ruimte-ID en-sleutel ophalen
-De Log Analytics-agent om te communiceren met de service die moet worden geconfigureerd met een werk ruimte-ID en een werkruimte sleutel. Als u de werk ruimte-ID en-sleutel wilt ophalen, moet u een account maken op <https://mms.microsoft.com>.
-Volg de stappen voor het maken van een account. Zodra u klaar bent met het maken van het account, kunt u uw ID en sleutel verkrijgen door te klikken op de Blade **log Analytics** en vervolgens op de naam van uw werk ruimte. Onder **Geavanceerde instellingen**, **verbonden bronnen**en vervolgens **Linux-servers**vindt u de informatie die u nodig hebt, zoals hieronder wordt weer gegeven.
+### <a name="obtain-your-workspace-id-and-key"></a>Uw werkplek-id en -sleutel verkrijgen
+Als de loganalytics-agent met de service wilt praten, moet deze worden geconfigureerd met een werkruimte-id en een werkruimtesleutel. Als u de werkruimte-id en -sleutel <https://mms.microsoft.com>wilt krijgen, moet u een account aanmaken bij .
+Volg de stappen om een account aan te maken. Zodra u klaar bent met het maken van het account, u uw id en sleutel verkrijgen door te klikken op het **blad Log Analytics,** vervolgens de naam van uw werkruimte. Dan, onder **Geavanceerde instellingen**, **Verbonden Bronnen**, en vervolgens Linux **Servers**, vindt u de informatie die u nodig hebt, zoals hieronder weergegeven.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>De Log Analytics agent installeren met behulp van een Daemonset
+### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>De log-analyse-agent installeren met een DaemonSet
 DaemonSets worden door Kubernetes gebruikt om één exemplaar van een container op elke host in het cluster uit te voeren.
-Ze zijn perfect voor het uitvoeren van bewakings agenten.
+Ze zijn perfect voor het runnen van bewakingsagenten.
 
-Dit is het [yaml-bestand van de daemonset](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Sla het op in een bestand met de naam `oms-daemonset.yaml` en vervang de waarden van de plaats houder voor `WSID` en `KEY` met uw werk ruimte-ID en-sleutel in het bestand.
+Hier is het [DaemonSet YAML-bestand.](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) Sla het op `oms-daemonset.yaml` in een bestand met `WSID` de `KEY` naam en vervang de plaatsaanduidingswaarden voor en door uw werkruimte-id en sleutel in het bestand.
 
-Zodra u uw werk ruimte-ID en-sleutel aan de Daemonset-configuratie hebt toegevoegd, kunt u de Log Analytics agent op uw cluster installeren met het `kubectl` opdracht regel programma:
+Zodra u uw werkruimte-id en sleutel hebt toegevoegd aan de Configuratie DaemonSet, `kubectl` u de agent Log Analytics op uw cluster installeren met het opdrachtregelgereedschap:
 
 ```console
 kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>De Log Analytics-agent installeren met behulp van een Kubernetes-geheim
-Als u uw Log Analytics werk ruimte-ID en-sleutel wilt beveiligen, kunt u Kubernetes Secret gebruiken als onderdeel van het bestand Daemonset YAML.
+### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>De Log Analytics-agent installeren met een Kubernetes Secret
+Om uw Log Analytics workspace ID en sleutel te beschermen, u Kubernetes Secret gebruiken als onderdeel van DaemonSet YAML-bestand.
 
-- Kopieer het script, het geheime sjabloon bestand en het YAML-bestand van de Daemonset (uit de [opslag plaats](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) en zorg ervoor dat deze zich in dezelfde map bevinden.
-  - script voor het genereren van geheimen-secret-gen.sh
-  - geheime sjabloon - geheim template.yaml
-    - Daemonset YAML-bestand-omsagent-DS-geheimen. yaml
-- Voer het script uit. Het script vraagt om de Log Analytics werk ruimte-ID en primaire sleutel. Voeg dit toe en het script maakt een geheim yaml-bestand zodat u het kunt uitvoeren.
+- Kopieer het script, het geheime sjabloonbestand en het DaemonSet YAML-bestand (uit [de opslagplaats)](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)en zorg ervoor dat ze zich in dezelfde map bevinden.
+  - geheim genereren script - secret-gen.sh
+  - geheime sjabloon - secret-template.yaml
+    - DaemonSet YAML bestand - omsagent-ds-secrets.yaml
+- Voer het script uit. Het script vraagt om de Log Analytics Workspace ID en Primary Key. Voeg dat in en het script maakt een geheim yaml-bestand zodat je het uitvoeren.
 
   ```console
   sudo bash ./secret-gen.sh
   ```
 
-  - Maak de schil geheimen door het uitvoeren van de volgende:
+  - Maak de pod Geheimen door het volgende uit te voeren:
 
      ```console
      kubectl create -f omsagentsecret.yaml
      ```
 
-  - Als u wilt controleren, voert u het volgende uit:
+  - Voer het volgende uit om het volgende te controleren:
 
   ```console
   kubectl get secrets
@@ -132,11 +132,11 @@ Als u uw Log Analytics werk ruimte-ID en-sleutel wilt beveiligen, kunt u Kuberne
   KEY:    88 bytes
   ```
 
-  - Maak uw omsagent-daemon-set door de volgende handelingen uit te voeren:
+  - Maak je omsagent daemon-set door het volgende uit te voeren:
   
   ```console
   kubectl create -f omsagent-ds-secrets.yaml
   ```
 
 ### <a name="conclusion"></a>Conclusie
-Dat is alles. Na enkele minuten moet u de gegevens stroom naar uw Log Analytics dash board kunnen zien.
+Dat is alles. Na een paar minuten u gegevens zien die naar uw Log Analytics-dashboard stromen.

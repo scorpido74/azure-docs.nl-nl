@@ -1,51 +1,51 @@
 ---
-title: Gegevens verzenden van de Windows Azure Diagnostics-extensie naar Azure Event Hubs
-description: Configureer de uitbrei ding van diagnostische gegevens in Azure Monitor zodat u deze kunt verzenden naar een Azure Event hub.
+title: Gegevens van Windows Azure-diagnostische extensie verzenden naar Azure Event Hubs
+description: Configureer diagnostische extensie in Azure Monitor om gegevens naar Azure Event Hub te verzenden, zodat u deze doorsturen naar locaties buiten Azure.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672528"
 ---
-# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Gegevens verzenden van de Windows Azure Diagnostics-extensie naar Azure Event Hubs
-Azure Diagnostics-extensie is een agent in Azure Monitor die bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele Azure-machines en andere reken bronnen verzamelt. In dit artikel wordt beschreven hoe u gegevens verzendt van de Windows Azure Diagnostic extension (WAD) naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/) zodat u kunt door sturen naar locaties buiten Azure.
+# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Gegevens van Windows Azure-diagnostische extensie verzenden naar Azure Event Hubs
+Azure-diagnostische extensie is een agent in Azure Monitor die bewakingsgegevens verzamelt van het gastbesturingssysteem en workloads van Azure virtuele machines en andere rekenbronnen. In dit artikel wordt beschreven hoe u gegevens van de Wad (Windows Azure Diagnostic extension) naar [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) verzendt, zodat u doorsturen naar locaties buiten Azure.
 
 ## <a name="supported-data"></a>Ondersteunde gegevens
 
-De gegevens die worden verzameld uit het gast besturingssysteem dat naar Event Hubs kan worden verzonden, bevatten het volgende. Andere gegevens bronnen die door WAD worden verzameld, zoals IIS-logboeken en crash dumps, kunnen niet naar Event Hubs worden verzonden.
+De gegevens die worden verzameld van het gastbesturingssysteem die naar gebeurtenishubs kunnen worden verzonden, bevatten de volgende gegevens. Andere gegevensbronnen die door WAD worden verzameld, waaronder IIS-logboeken en crashdumps, kunnen niet naar gebeurtenishubs worden verzonden.
 
 * ETW-gebeurtenissen (Event Tracing for Windows)
 * Prestatiemeteritems
-* Windows-gebeurtenis logboeken, inclusief toepassings Logboeken in het Windows-gebeurtenis logboek
+* Windows-gebeurtenislogboeken, inclusief toepassingslogboeken in het Windows-gebeurtenislogboek
 * Logboeken van Azure Diagnostics-infrastructuur
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Diagnostische Windows-extensie 1,6 of hoger. Zie [Azure Diagnostics schema versies en geschiedenis van de extensie configuratie](diagnostics-extension-versions.md) voor een versie geschiedenis en [Azure Diagnostics extensie overzicht](diagnostics-extension-overview.md) voor ondersteunde bronnen.
-* Event Hubs naam ruimte moet altijd worden ingericht. Zie [aan de slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) voor meer informatie.
+* Windows diagnostische extensie 1.6 of hoger. Zie [de configuratieschemaversies en -geschiedenis van Azure Diagnostics-extensie](diagnostics-extension-versions.md) voor een versiegeschiedenis en azure [diagnostics-extensieoverzicht](diagnostics-extension-overview.md) voor ondersteunde resources.
+* Naamruimte voor gebeurtenishubs moet altijd worden ingericht. Zie [Aan de slag met Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) voor meer informatie.
 
 
-## <a name="configuration-schema"></a>Configuratie schema
-Zie [Windows Azure Diagnostics extension (WAD) installeren en configureren](diagnostics-extension-windows-install.md) voor verschillende opties voor het inschakelen en configureren van de uitbrei ding voor diagnostische gegevens en het [Azure Diagnostics configuratie schema](diagnostics-extension-schema-windows.md) voor een verwijzing van het configuratie schema. In de rest van dit artikel wordt beschreven hoe u deze configuratie gebruikt voor het verzenden van gegevens naar een Event Hub. 
+## <a name="configuration-schema"></a>Configuratieschema
+Zie [Wad (Installand Configure)](diagnostics-extension-windows-install.md) voor verschillende opties voor het inschakelen en configureren van de diagnostische extensie en [het configuratieschema](diagnostics-extension-schema-windows.md) azure diagnostics voor een verwijzing naar het configuratieschema. In de rest van dit artikel wordt beschreven hoe u deze configuratie gebruiken om gegevens naar een gebeurtenishub te verzenden. 
 
-Azure Diagnostics stuurt altijd logboeken en metrische gegevens naar een Azure Storage-account. U kunt een of meer *gegevens-sinks* configureren waarmee gegevens naar extra locaties worden verzonden. Elke sink wordt gedefinieerd in het [SinksConfig-element](diagnostics-extension-schema-windows.md#sinksconfig-element) van de open bare configuratie met gevoelige informatie in de persoonlijke configuratie. Deze configuratie voor Event hubs gebruikt de waarden in de volgende tabel.
+Azure Diagnostics stuurt altijd logboeken en statistieken naar een Azure Storage-account. U een of meer *gegevensputten* configureren die gegevens naar extra locaties verzenden. Elke gootsteen wordt gedefinieerd in het [SinksConfig-element](diagnostics-extension-schema-windows.md#sinksconfig-element) van de openbare configuratie met gevoelige informatie in de privéconfiguratie. Deze configuratie voor gebeurtenishubs gebruikt de waarden in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:---|:---|
-| Name | Beschrijvende naam voor de sink. Wordt gebruikt in de configuratie om op te geven welke gegevens bronnen moeten worden verzonden naar de sink. |
-| URL  | De URL van de Event Hub in het formulier \<gebeurtenis-hubs-namespace\>. servicebus.windows.net/\<gebeurtenis-hub-naam\>.          |
-| SharedAccessKeyName | De naam van een gedeeld toegangs beleid voor de Event Hub die ten minste een **Verzend** instantie heeft. |
-| SharedAccessKey     | Primaire of secundaire sleutel van het beleid voor gedeelde toegang voor de Event Hub. |
+| Name | Beschrijvende naam voor de gootsteen. Wordt in de configuratie gebruikt om aan te geven welke gegevensbronnen naar de gootsteen moeten worden verzonden. |
+| URL  | Url van de gebeurtenishub \<in de form\>event-hubs-namespace .servicebus.windows.net/\<gebeurtenis-hubnaam\>.          |
+| SharedAccessKeyName | Naam van een gedeeld toegangsbeleid voor de gebeurtenishub die ten minste de bevoegdheid **voor verzenden** heeft. |
+| SharedAccessKey     | Primaire of secundaire sleutel van het beleid voor gedeelde toegang voor de gebeurtenishub. |
 
-Voor beelden van open bare en persoonlijke configuraties worden hieronder weer gegeven. Dit is een minimale configuratie met één prestatie meter item en gebeurtenis logboek om te laten zien hoe de Event Hub gegevens Sink moet worden geconfigureerd en gebruikt. Zie [Azure Diagnostics configuratie schema](diagnostics-extension-schema-windows.md) voor een complexere voor beeld.
+Voorbeeld van openbare en privéconfiguraties worden hieronder weergegeven. Dit is een minimale configuratie met één prestatiemeter en gebeurtenislogboek om te illustreren hoe u de gebeurtenishubgegevenssink configureren en gebruiken. Zie [configuratieschema Azure Diagnostics](diagnostics-extension-schema-windows.md) voor een complexer voorbeeld.
 
-### <a name="public-configuration"></a>Open bare configuratie
+### <a name="public-configuration"></a>Openbare configuratie
 
 ```JSON
 {
@@ -89,7 +89,7 @@ Voor beelden van open bare en persoonlijke configuraties worden hieronder weer g
 ```
 
 
-### <a name="private-configuration"></a>Persoonlijke configuratie
+### <a name="private-configuration"></a>Privéconfiguratie
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Voor beelden van open bare en persoonlijke configuraties worden hieronder weer g
 
 
 ## <a name="configuration-options"></a>Configuratie-opties
-Als u gegevens wilt verzenden naar een gegevens-sink, geeft u het kenmerk **sinks** op het knoop punt van de gegevens bron op. Waar u het kenmerk **sinks** plaatst, bepaalt het bereik van de toewijzing. In het volgende voor beeld wordt het kenmerk **sinks** gedefinieerd voor het **Performance Counters** -knoop punt, waardoor alle onderliggende prestatie meter items naar de Event hub worden verzonden.
+Als u gegevens naar een gegevenssink wilt verzenden, geeft u het **eigenschapsinks** op het knooppunt van de gegevensbron op. Waar u het eigenschap **sinks** plaatst, bepaalt het bereik van de toewijzing. In het volgende voorbeeld wordt het kenmerk **Sinks** gedefinieerd in het knooppunt **Prestatiemeteritems,** waardoor alle prestatiemeteritems voor kinderen naar de gebeurtenishub worden verzonden.
 
 ```JSON
 "PerformanceCounters": {
@@ -131,7 +131,7 @@ Als u gegevens wilt verzenden naar een gegevens-sink, geeft u het kenmerk **sink
 ```
 
 
-In het volgende voor beeld wordt het kenmerk **sinks** rechtstreeks toegepast op drie tellers, waardoor alleen de prestatie meter items naar de Event hub worden verzonden. 
+In het volgende voorbeeld wordt het eigenschap **sinks** rechtstreeks toegepast op drie tellers, waardoor alleen die prestatiemeteritems naar de gebeurtenishub worden verzonden. 
 
 ```JSON
 "PerformanceCounters": {
@@ -165,19 +165,19 @@ In het volgende voor beeld wordt het kenmerk **sinks** rechtstreeks toegepast op
 ```
 
 ## <a name="validating-configuration"></a>Configuratie valideren
-U kunt verschillende methoden gebruiken om te valideren dat gegevens naar de Event Hub worden verzonden. ne eenvoudige methode is het gebruik van Event Hubs Capture zoals beschreven in [gebeurtenissen vastleggen via azure Event hubs in azure Blob Storage of Azure data Lake Storage](../../event-hubs/event-hubs-capture-overview.md). 
+U verschillende methoden gebruiken om te valideren dat gegevens naar de gebeurtenishub worden verzonden. ne eenvoudige methode is het gebruik van Event Hubs vastleggen zoals beschreven in [Capture gebeurtenissen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage](../../event-hubs/event-hubs-capture-overview.md). 
 
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Problemen met Event Hubs-sinks oplossen
+## <a name="troubleshoot-event-hubs-sinks"></a>Problemen met gebeurtenishubs oplossen
 
-- Bekijk de Azure Storage tabel **WADDiagnosticInfrastructureLogsTable** die logboeken en fouten bevat voor Azure Diagnostics. Een optie is het gebruik van een hulp programma zoals [Azure Storage Explorer](https://www.storageexplorer.com) om verbinding te maken met dit opslag account, de tabel te bekijken en een query voor tijds tempel toe te voegen in de afgelopen 24 uur. U kunt het hulp programma gebruiken om een CSV-bestand te exporteren en dit te openen in een toepassing zoals micro soft Excel. In Excel kunt u eenvoudig zoeken naar telefoonkaart teken reeksen, zoals **Event hubs**, om te zien welke fout Er wordt gerapporteerd.  
+- Kijk naar de AZURE Storage-tabel **WADDiagnosticInfrastructureLogsTable** met logboeken en fouten voor Azure Diagnostics zelf. Een optie is om een hulpprogramma zoals [Azure Storage Explorer](https://www.storageexplorer.com) te gebruiken om verbinding te maken met dit opslagaccount, deze tabel weer te geven en een query voor TimeStamp toe te voegen in de afgelopen 24 uur. U het hulpprogramma gebruiken om een CSV-bestand te exporteren en te openen in een toepassing zoals Microsoft Excel. Excel maakt het eenvoudig om te zoeken naar telefoonkaarten, zoals **EventHubs,** om te zien welke fout wordt gerapporteerd.  
 
-- Controleer of uw Event Hub is ingericht. Alle verbindings gegevens in het gedeelte **PrivateConfig** van de configuratie moeten overeenkomen met de waarden van uw resource, zoals weer gegeven in de portal. Zorg ervoor dat er een SAS-beleid is gedefinieerd (*SendRule* in het voor beeld) in de portal en dat de machtiging *verzenden* wordt verleend.  
+- Controleer of uw gebeurtenishub is ingericht. Alle verbindingsgegevens in het **gedeelte PrivateConfig** van de configuratie moeten overeenkomen met de waarden van uw bron zoals die in de portal worden gezien. Zorg ervoor dat u een SAS-beleid hebt gedefinieerd *(SendRule* in het voorbeeld) in de portal en dat *Toestemming verzenden* wordt verleend.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Event Hubs-overzicht](../../event-hubs/event-hubs-about.md)
-* [Een Event Hub maken](../../event-hubs/event-hubs-create.md)
+* [Overzicht van gebeurtenishubs](../../event-hubs/event-hubs-about.md)
+* [Een gebeurtenishub maken](../../event-hubs/event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](../../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->

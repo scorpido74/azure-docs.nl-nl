@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: werk plek configureren via Facebook voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Werkplek door Facebook configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Workplace by Facebook configureert.
 services: active-directory
 documentationCenter: na
@@ -16,122 +16,122 @@ ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603203"
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelfstudie: Workplace by Facebook configureren voor automatische gebruikersinrichting
 
-In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel de werk plek van Facebook als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Indien geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en ongedaan gemaakt met behulp [van](https://work.workplace.com/) de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+In deze zelfstudie worden de stappen beschreven die u moet uitvoeren in zowel Workplace by Facebook als Azure Active Directory (Azure AD) om automatische gebruikersinrichting te configureren. Wanneer azure AD is geconfigureerd, worden gebruikers en groepen automatisch ingericht en de-bepalingen voor [Workplace door Facebook](https://work.workplace.com/) met behulp van de Azure AD Provisioning-service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
 
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migreren naar de nieuwe werk plek via Facebook-toepassing
-Als u een bestaande integratie met behulp van Facebook hebt, raadpleegt u de onderstaande sectie over de wijzigingen die worden weer gegeven. Als u de werk plek voor de eerste keer instelt op Facebook, kunt u deze sectie overs Laan en naar de ondersteunde mogelijkheden gaan. 
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migreren naar de nieuwe Workplace by Facebook-applicatie
+Als je een bestaande integratie met Workplace by Facebook hebt, zie je het onderstaande gedeelte over de komende wijzigingen. Als je Workplace by Facebook voor het eerst instelt, kun je deze sectie overslaan en naar de ondersteunde mogelijkheden gaan. 
 
-#### <a name="whats-changing"></a>Wat wordt er gewijzigd?
-* Wijzigingen aan de kant van Azure AD: de autorisatie methode voor het inrichten van gebruikers op de werk plek heeft in het verleden een geheim token met een lange levens duur. U ziet binnenkort dat de autorisatie methode is gewijzigd in de toekenning van OAuth-autorisatie. 
-* Wijzigingen aan de werk plek: voorheen was de Azure AD-app een aangepaste integratie in werk plek via Facebook. Nu ziet u Azure AD in de map werk plek integratie als een toepassing van derden. 
-
- 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wat moet ik doen om mijn bestaande aangepaste integratie naar de nieuwe toepassing te migreren?
-Als u een bestaande werk plek hebt geïntegreerd met een geldig token, **is er geen actie vereist**. We migreren klanten elke week automatisch naar de nieuwe toepassing. Dit gebeurt volledig achter de schermen. Als u niet kunt wachten en u hand matig naar de nieuwe toepassing wilt verplaatsen, kunt u een nieuw exemplaar van de werk plek toevoegen uit de galerie en de inrichting opnieuw configureren. Bij alle nieuwe exemplaren van de werk plek wordt automatisch de nieuwe toepassings versie gebruikt. 
+#### <a name="whats-changing"></a>Wat verandert er?
+* Wijzigingen aan de Azure AD-kant: de autorisatiemethode voor het inrichten van gebruikers in Workplace is van oudsher een langlevend geheim token. Binnenkort ziet u de autorisatiemethode gewijzigd in de OAuth autorisatie subsidie. 
+* Wijzigingen aan de werkplekkant: voorheen was de Azure AD-app een aangepaste integratie in Workplace by Facebook. Nu ziet u Azure AD in de map Workplace-integraties als een toepassing van derden. 
 
  
-Als uw werk plek is geïntegreerd in quarantaine, moet u opnieuw een geldig token opgeven om u te migreren. De sectie beheerders referenties wordt grijs weer gegeven, maar u kunt het volgende toevoegen ( **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = True**) naar uw URL om de referenties opnieuw op te slaan. 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wat moet ik doen om mijn bestaande aangepaste integratie te migreren naar de nieuwe toepassing?
+Als u een bestaande Workplace-integratie hebt met een geldig token, **is er geen actie vereist.** We migreren automatisch klanten elke week naar de nieuwe applicatie. Dit gebeurt volledig achter de schermen. Als u niet wachten en handmatig naar de nieuwe toepassing wilt gaan, u vanuit de galerie een nieuw exemplaar van Workplace toevoegen en de inrichting opnieuw configureren. Alle nieuwe exemplaren van Workplace gebruiken automatisch de nieuwe toepassingsversie. 
+
+ 
+Als uw Workplace-integratie in quarantaine is, moet u opnieuw een geldig token leveren om u te kunnen migreren. De sectie beheerdersreferenties wordt grijs weergegeven, maar u het volgende toevoegen (**? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)** aan uw URL om referenties opnieuw op te slaan. 
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Hoe kan ik zien of mijn toepassing is gemigreerd? 
-Wanneer uw toepassing wordt gemigreerd, wordt de banner in de autorisatie sectie over de wijzigingen van de upcommie verwijderd en wordt het veld geheim token vervangen door een knop met een blauwe machtiging. 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Hoe weet ik of mijn aanvraag is gemigreerd? 
+Wanneer uw toepassing wordt gemigreerd, wordt de banner in de autorisatiesectie over upcomming changes verwijderd en wordt het geheime tokenveld vervangen door een blauwe autocodeknop. 
 
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>De sectie beheerders referenties is grijs weer gegeven in mijn toepassing en kan niet worden opgeslagen. Hoe komt dat?
-De sectie beheerders referenties is vergrendeld voor bestaande werk plek-klanten. Wanneer uw Tenant is gemigreerd naar de nieuwe werkplek toepassing, kunt u de sectie beheerders referenties opnieuw bijwerken. Als u niet kunt wachten, kunt u de bovenstaande URL gebruiken om uw toepassing te bewerken. 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>De admin referenties sectie is grijs op mijn applicatie en ik kan niet opslaan. Hoe komt dat?
+We hebben de sectie beheerdersreferenties voor bestaande Workplace-klanten vergrendeld. Wanneer uw tenant is gemigreerd naar de nieuwe Workplace-toepassing, u de sectie beheerdersreferenties opnieuw bijwerken. Als u niet wachten, u de bovenstaande URL gebruiken om uw toepassing te bewerken. 
 
  
-#### <a name="when-will-these-changes-happen"></a>Wanneer worden deze wijzigingen aangebracht?
-Bij alle nieuwe exemplaren van de werk plek wordt de nieuwe integratie/autorisatie methode al gebruikt. Bestaande integraties worden geleidelijk door mogelijk gemigreerd. Het werkplek team heeft een verlenging gegeven van de deadline van feb-28 tot mei-1. 
+#### <a name="when-will-these-changes-happen"></a>Wanneer zullen deze veranderingen plaatsvinden?
+Alle nieuwe exemplaren van Workplace maken al gebruik van de nieuwe integratie/ autorisatiemethode. Bestaande integraties zullen in mei geleidelijk worden gemigreerd. Het werkplekteam heeft een verlenging van de deadline van 28 februari tot 1 mei verstrekt. 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
-> * Gebruikers in werk plek maken op Facebook
-> * Gebruikers in werk plek verwijderen via Facebook wanneer ze geen toegang meer nodig hebben
-> * Gebruikers kenmerken gesynchroniseerd blijven tussen Azure AD en werk plek via Facebook
-> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) bij werk plek via Facebook (aanbevolen)
+> * Gebruikers maken op Workplace by Facebook
+> * Verwijder gebruikers in Workplace by Facebook wanneer ze geen toegang meer nodig hebben
+> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en Workplace by Facebook
+> * [Single sign-on to](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) Workplace by Facebook (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld de toepassings beheerder, de beheerder van de Cloud toepassing, de eigenaar van de toepassing of de globale beheerder)
-* Een werk plek met een Facebook-abonnement dat is ingeschakeld voor eenmalige aanmelding
+* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikersaccount in Azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) om inrichting te configureren (bijvoorbeeld toepassingsbeheerder, cloudtoepassingsbeheerder, toepassingseigenaar of globale beheerder)
+* Een abonnement op Workplace by Facebook met één teken op ingeschakeld
 
 > [!NOTE]
-> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de  productieomgeving te gebruiken.
+> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de productieomgeving te gebruiken.
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
-- Als u nog geen proefversie van Azure AD hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) een proefversie van één maand aanvragen.
+- Als u geen Azure AD-proefomgeving hebt, u [hier](https://azure.microsoft.com/pricing/free-trial/)een proefperiode van één maand krijgen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
-1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
-3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en werk plek via Facebook](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtingsimplementatie plannen
+1. Meer informatie over [hoe de inprovisioningservice werkt.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+2. Bepaal wie in de ruimte voor [de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)zal zijn .
+3. Bepaal welke gegevens u wilt [toewijzen tussen Azure AD en Workplace by Facebook](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
-## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>Stap 2. Werk plek via Facebook configureren ter ondersteuning van de inrichting van Azure AD
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>Stap 2. Workplace by Facebook configureren om voorzieningen met Azure AD te ondersteunen
 
-Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw werk plek via Facebook app. Nadat u hebt besloten, kunt u deze gebruikers aan uw werk plek toewijzen via de Facebook-app door de volgende instructies te volgen:
+Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD de gebruikers vertegenwoordigen die toegang tot uw Workplace per Facebook-app nodig hebben. Eenmaal besloten, u deze gebruikers toewijzen aan uw Workplace door Facebook app door het volgen van de instructies hier:
 
-*   U wordt aangeraden één Azure AD-gebruiker toe te wijzen op werk plek via Facebook om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+*   Het wordt aanbevolen dat één Azure AD-gebruiker door Facebook aan Workplace wordt toegewezen om de inrichtingsconfiguratie te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-*   Wanneer u een gebruiker toewijst aan werk plek via Facebook, moet u een geldige gebruikersrol selecteren. De rol ' standaard toegang ' werkt niet voor het inrichten.
+*   Wanneer je een gebruiker door Facebook aan Workplace toewijst, moet je een geldige gebruikersrol selecteren. De rol 'Standaardtoegang' werkt niet voor inrichten.
 
-## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Stap 3. Werk plek toevoegen via Facebook vanuit de Azure AD-toepassings galerie
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Stap 3. Workplace by Facebook toevoegen vanuit de Azure AD-toepassingsgalerie
 
-Voeg werk plek toe via Facebook vanuit de Azure AD-toepassings galerie om het beheer van de inrichting op de werk plek via Facebook te starten. Als u de werk plek eerder hebt ingesteld via Facebook voor SSO, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)
+Voeg Workplace by Facebook toe vanuit de Azure AD-toepassingsgalerie om de inrichting voor Workplace door Facebook te beheren. Als je Workplace by Facebook voor SSO eerder hebt ingesteld, kun je dezelfde toepassing gebruiken. Het wordt echter aanbevolen om een aparte app te maken bij het testen van de integratie in eerste instantie. Meer informatie over het toevoegen van een toepassing uit de galerie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Bepalen wie in het vermogen van de inrichting 
 
-Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
+Met de Azure AD-inrichtingsservice u scopen die worden ingericht op basis van toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker /groep. Als u ervoor kiest om het bereik te bepalen wie op basis van toewijzing aan uw app wordt toegewezen, u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om scope die zal worden ingericht uitsluitend op basis van attributen van de gebruiker of groep, u gebruik maken van een scoping filter zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)beschreven. 
 
-* Wanneer u gebruikers en groepen toewijst aan werk plek via Facebook, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen door Facebook aan Workplace toewijst, moet u een andere rol dan **Standaardtoegang**selecteren. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten en worden gemarkeerd als niet effectief gerechtigd in de inrichtingslogboeken. Als de enige rol die beschikbaar is in de toepassing de standaardtoegangsrol is, u [het toepassingsmanifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
+* Begin klein. Test met een kleine set gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer de inrichtingsruimte is ingesteld op toegewezen gebruikers en groepen, u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, u een [op kenmerken gebaseerd scopingfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **werk plek op Facebook**.
+2. Selecteer Workplace by **Facebook**in de lijst met toepassingen .
 
     ![De koppeling Workplace by Facebook in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Klik onder de sectie **beheerders referenties** op **autoriseren**. U wordt omgeleid naar werk plek op de autorisatie pagina van Facebook. Voer uw werk plek in op Facebook-gebruikers naam en klik op de knop **door gaan** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met werk plek via Facebook. Als de verbinding mislukt, zorg er dan voor dat uw werk plek op Facebook-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Klik onder de sectie **Beheerdersreferenties** op **Autoriseren**. Je wordt doorgestuurd naar Workplace via de autorisatiepagina van Facebook. Voer je Workplace in op facebook gebruikersnaam en klik op de knop **Doorgaan.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Workplace by Facebook. Als de verbinding mislukt, moet u ervoor zorgen dat je Workplace by Facebook-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![inrichtings](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Provisioning](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
     ![autoriseren](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt.**
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers op de werk plek synchroniseren met Facebook**.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met De werkplek door Facebook**in de sectie **Toewijzingen** .
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD op werk plek via Facebook in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de gebruikers accounts in werk plek van Facebook te vergelijken voor update bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de werk plek van de Facebook-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Workplace by Facebook in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Workplace by Facebook te matchen voor updatebewerkingen. Als u ervoor kiest het [overeenkomende doelkenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de Workplace by Facebook API filteringgebruikers ondersteunt op basis van dat kenmerk. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
    |Kenmerk|Type|
    |---|---|
@@ -139,56 +139,56 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |displayName|Tekenreeks|
    |actief|Booleaans|
    |titel|Booleaans|
-   |e-mailberichten [type eq 'werk'] .value|Tekenreeks|
+   |e-mails[type eq "werk"].waarde|Tekenreeks|
    |name.givenName|Tekenreeks|
    |name.familyName|Tekenreeks|
-   |naam. opgemaakt|Tekenreeks|
-   |adressen [type EQ "werk]. opgemaakt|Tekenreeks|
-   |adressen type eq 'werk'.streetAddress|Tekenreeks|
-   |adressen [type EQ "werk]. locatie|Tekenreeks|
-   |adressen [type EQ "werk]. regio|Tekenreeks|
-   |adressen [type EQ "werk]. land|Tekenreeks|
-   |adressen type eq 'werk'.postalCode|Tekenreeks|
-   |adressen [type EQ "other"]. Format|Tekenreeks|
-   |phoneNumbers [type eq 'werk'] .value|Tekenreeks|
-   |phoneNumbers [type eq 'mobiel'] .value|Tekenreeks|
-   |phoneNumbers [type eq "fax"] .value|Tekenreeks|
-   |externalId|Tekenreeks|
-   |preferredLanguage|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
+   |name.opgemaakt|Tekenreeks|
+   |adressen[type eq "werk"].opgemaakt|Tekenreeks|
+   |adressen[type eq "werk"].streetAddress|Tekenreeks|
+   |adressen[type eq "werk"].plaats|Tekenreeks|
+   |adressen[type eq "werk"].regio|Tekenreeks|
+   |adressen[type eq "werk"].land|Tekenreeks|
+   |adressen[type eq "werk"].postcode|Tekenreeks|
+   |adressen[type eq "andere"].opgemaakt|Tekenreeks|
+   |phoneNumbers[type eq "werk"].waarde|Tekenreeks|
+   |phoneNumbers[type eq "mobile"].value|Tekenreeks|
+   |phoneNumbers[type eq "fax"].value|Tekenreeks|
+   |extern id|Tekenreeks|
+   |voorkeurTaal|Tekenreeks|
+   |urn:ietf:params:scim:schema's:extension:enterprise:2.0:User:manager|Tekenreeks|
+   |urn:ietf:params:scim:schema's:extension:enterprise:2.0:User:department|Tekenreeks|
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)
 
-11. Als u de Azure AD-inrichtings service voor werk plek wilt inschakelen op Facebook, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtingsservice voor Workplace door Facebook wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten op werk plek via Facebook door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+12. Definieer de gebruikers en/of groepen die u wilt inrichten op Workplace by Facebook door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste cyclus duurt langer om uit te voeren dan de volgende cycli, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
-Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
+Zodra u de inrichting hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te controleren:
 
-1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
-2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
-3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers met succes of zonder succes zijn ingericht
+2. Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus te bekijken en hoe dicht deze bij voltooiing is
+3. Als de inrichtingsconfiguratie in een ongezonde status lijkt te zijn, wordt de toepassing in quarantaine geplaatst. Meer informatie over quarantainestaten [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
-*  Als een gebruiker niet met succes is gemaakt en er een controle logboek gebeurtenis is met de code ' 1789003 ', betekent dit dat de gebruiker afkomstig is van een niet-geverifieerd domein.
+*  Als u een gebruiker ziet die niet succesvol is gemaakt en er een auditlogboekgebeurtenis is met de code "1789003" betekent dit dat de gebruiker afkomstig is van een niet-geverifieerd domein.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../manage-apps/check-status-user-account-provisioning.md)

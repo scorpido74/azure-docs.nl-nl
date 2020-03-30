@@ -1,6 +1,6 @@
 ---
-title: Azure CLI gebruiken voor bestanden & Acl's in Azure Data Lake Storage Gen2 (preview-versie)
-description: Gebruik de Azure CLI voor het beheren van mappen en ACL'S (toegangs beheer lijsten) in opslag accounts met een hiërarchische naam ruimte.
+title: Azure CLI gebruiken voor bestanden & ACL's in Azure Data Lake Storage Gen2 (voorbeeld)
+description: Gebruik de Azure CLI om mappen en lijsten met bestands- en adresmaptoegangsbeheer (ACL) te beheren in opslagaccounts met een hiërarchische naamruimte.
 services: storage
 author: normesta
 ms.service: storage
@@ -10,39 +10,39 @@ ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
 ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486131"
 ---
-# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2 (preview-versie)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2 (voorbeeld)
 
-In dit artikel wordt beschreven hoe u de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte. 
+In dit artikel ziet u hoe u de [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruiken om mappen, bestanden en machtigingen te maken en te beheren in opslagaccounts met een hiërarchische naamruimte. 
 
 > [!IMPORTANT]
-> De uitbrei ding `storage-preview` die in dit artikel wordt aanbevolen, is momenteel beschikbaar als open bare preview.
+> De `storage-preview` extensie die in dit artikel wordt weergegeven, is momenteel in openbare preview.
 
-Voor [beeld](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
+[Voorbeeld](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [Geef feedback](https://github.com/Azure/azure-cli-extensions/issues)
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-> * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
+> * Een opslagaccount met hiërarchische naamruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 > * Azure CLI-versie `2.0.67` of hoger.
 
-## <a name="install-the-storage-cli-extension"></a>De opslag-CLI-extensie installeren
+## <a name="install-the-storage-cli-extension"></a>De CLI-extensie voor opslag installeren
 
-1. Open de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)of open een opdracht console toepassing zoals Windows Power shell als u de Azure cli lokaal hebt [geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+1. Open de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)of open de Azure CLI lokaal als u de Azure CLI hebt [geïnstalleerd,](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) open een opdrachtconsoletoepassing zoals Windows PowerShell.
 
-2. Controleer of de geïnstalleerde versie van de Azure CLI `2.0.67` of hoger is met behulp van de volgende opdracht.
+2. Controleer of de geïnstalleerde versie van `2.0.67` Azure CLI of hoger is met de volgende opdracht.
 
    ```azurecli
     az --version
    ```
-   Als uw versie van Azure CLI lager is dan `2.0.67`, installeert u een nieuwere versie. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Als uw versie van Azure `2.0.67`CLI lager is dan , installeer dan een latere versie. Zie [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Installeer de `storage-preview` extensie.
+3. Installeer de `storage-preview`-extensie.
 
    ```azurecli
    az extension add -n storage-preview
@@ -50,31 +50,31 @@ Voor [beeld](https://github.com/Azure/azure-cli-extensions/tree/master/src/stora
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account
 
-1. Als u Azure CLI lokaal gebruikt, voert u de aanmeldings opdracht uit.
+1. Als u Azure CLI lokaal gebruikt, voert u de aanmeldingsopdracht uit.
 
    ```azurecli
    az login
    ```
 
-   Als de CLI uw standaard browser kan openen, wordt dit gedaan en wordt er een Azure-aanmeldings pagina geladen.
+   Als de CLI uw standaardbrowser kan openen, wordt dit gedaan en wordt een Azure-aanmeldingspagina geladen.
 
-   Als dat niet het geval is, opent u een browser pagina op [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en voert u de autorisatie code in die wordt weer gegeven in uw Terminal. Meld u vervolgens aan met uw account referenties in de browser.
+   Anders opent u een [https://aka.ms/devicelogin](https://aka.ms/devicelogin) browserpagina op en voert u de autorisatiecode in die in uw terminal wordt weergegeven. Meld u vervolgens aan met uw accountgegevens in de browser.
 
-   Zie aanmelden met Azure CLI voor meer informatie over de verschillende verificatie methoden.
+   Raadpleeg Aanmelden met Azure CLI voor meer informatie over verschillende verificatiemethoden.
 
-2. Als uw identiteit is gekoppeld aan meer dan één abonnement, stelt u uw actieve abonnement in op het abonnement van het opslag account dat als host voor uw statische website gaat.
+2. Als uw identiteit is gekoppeld aan meer dan één abonnement, stelt u uw actieve abonnement in op een abonnement op het opslagaccount dat uw statische website host.
 
    ```azurecli
    az account set --subscription <subscription-id>
    ```
 
-   Vervang de waarde van de tijdelijke `<subscription-id>` door de ID van uw abonnement.
+   Vervang `<subscription-id>` de tijdelijke aanduidingswaarde door de id van uw abonnement.
 
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de `az storage container create` opdracht. 
+Een bestandssysteem fungeert als een container voor uw bestanden. U er een `az storage container create` maken met behulp van de opdracht. 
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system`.
+In dit voorbeeld wordt `my-file-system`een bestandssysteem met de naam .
 
 ```azurecli
 az storage container create --name my-file-system --account-name mystorageaccount
@@ -82,27 +82,27 @@ az storage container create --name my-file-system --account-name mystorageaccoun
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Maak een directory verwijzing met behulp van de opdracht `az storage blob directory create`. 
+Maak een adreslijstverwijzing `az storage blob directory create` met de opdracht. 
 
-In dit voor beeld wordt een map met de naam `my-directory` toegevoegd aan een bestands systeem met de naam `my-file-system` dat zich bevindt in een account met de naam `mystorageaccount`.
+In dit voorbeeld `my-directory` wordt een map `my-file-system` toegevoegd met de `mystorageaccount`naam aan een bestandssysteem met de naam die zich bevindt in een account met de naam .
 
 ```azurecli
 az storage blob directory create -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="show-directory-properties"></a>Mapeigenschappen weer geven
+## <a name="show-directory-properties"></a>Mapeigenschappen weergeven
 
-U kunt de eigenschappen van een directory afdrukken naar de-console met behulp van de opdracht `az storage blob show`.
+U de eigenschappen van een map `az storage blob show` afdrukken op de console met behulp van de opdracht.
 
 ```azurecli
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
+## <a name="rename-or-move-a-directory"></a>De naam van een map wijzigen of verplaatsen
 
-Wijzig de naam van een map of verplaats deze met behulp van de `az storage blob directory move` opdracht.
+Wijzig de naam of verplaats `az storage blob directory move` een map met de opdracht.
 
-In dit voor beeld wordt de naam van een map gewijzigd van de naam `my-directory` naar de naam `my-new-directory`.
+In dit voorbeeld wordt de `my-directory` naam `my-new-directory`van een map van de naam naar de naam gewijzigd.
 
 ```azurecli
 az storage blob directory move -c my-file-system -d my-new-directory -s my-directory --account-name mystorageaccount
@@ -110,9 +110,9 @@ az storage blob directory move -c my-file-system -d my-new-directory -s my-direc
 
 ## <a name="delete-a-directory"></a>Een map verwijderen
 
-Verwijder een directory met de opdracht `az storage blob directory delete`.
+Een map verwijderen `az storage blob directory delete` met de opdracht.
 
-In dit voor beeld wordt een map met de naam `my-directory`verwijderd. 
+In dit voorbeeld wordt `my-directory`een map met de naam . 
 
 ```azurecli
 az storage blob directory delete -c my-file-system -d my-directory --account-name mystorageaccount 
@@ -120,25 +120,25 @@ az storage blob directory delete -c my-file-system -d my-directory --account-nam
 
 ## <a name="check-if-a-directory-exists"></a>Controleren of er een map bestaat
 
-Bepaal of een specifieke map bestaat in het bestands systeem met behulp van de opdracht `az storage blob directory exist`.
+Bepaal met de `az storage blob directory exist` opdracht of er een specifieke map in het bestandssysteem bestaat.
 
-In dit voor beeld wordt onthuld of een map met de naam `my-directory` bestaat in het `my-file-system` bestands systeem. 
+In dit voorbeeld wordt `my-directory` duidelijk of `my-file-system` er een map met de naam in het bestandssysteem bestaat. 
 
 ```azurecli
 az storage blob directory exists -c my-file-system -d my-directory --account-name mystorageaccount 
 ```
 
-## <a name="download-from-a-directory"></a>Downloaden uit een directory
+## <a name="download-from-a-directory"></a>Downloaden uit een map
 
-Down load een bestand vanuit een map met behulp van de opdracht `az storage blob directory download`.
+Download een bestand uit een `az storage blob directory download` map met de opdracht.
 
-In dit voor beeld wordt een bestand met de naam `upload.txt` gedownload uit een map met de naam `my-directory`. 
+In dit voorbeeld `upload.txt` wordt een `my-directory`bestand met de naam uit een map met de naam gedownload. 
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/upload.txt" -d "C:\mylocalfolder\download.txt"
 ```
 
-In dit voor beeld wordt een volledige map gedownload.
+In dit voorbeeld wordt een hele map gedownload.
 
 ```azurecli
 az storage blob directory download -c my-file-system --account-name mystorageaccount -s "my-directory/" -d "C:\mylocalfolder" --recursive
@@ -146,9 +146,9 @@ az storage blob directory download -c my-file-system --account-name mystorageacc
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-De inhoud van een directory weer geven met behulp van de opdracht `az storage blob directory list`.
+Vermeld de inhoud van een `az storage blob directory list` map met behulp van de opdracht.
 
-In dit voor beeld wordt de inhoud weer gegeven van een map met de naam `my-directory` die zich bevindt in het `my-file-system` bestands systeem van een opslag account met de naam `mystorageaccount`. 
+In dit voorbeeld worden de `my-directory` inhoud weergegeven `my-file-system` van een map met `mystorageaccount`de naam die zich bevindt in het bestandssysteem van een opslagaccount met de naam . 
 
 ```azurecli
 az storage blob directory list -c my-file-system -d my-directory --account-name mystorageaccount
@@ -156,33 +156,33 @@ az storage blob directory list -c my-file-system -d my-directory --account-name 
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Upload een bestand naar een map met behulp van de opdracht `az storage blob directory upload`.
+Upload een bestand naar een `az storage blob directory upload` map met de opdracht.
 
-In dit voor beeld wordt een bestand met de naam `upload.txt` geüpload naar een map met de naam `my-directory`. 
+In dit voorbeeld wordt `upload.txt` een bestand `my-directory`geüpload dat is vernoemd naar een map met de naam . 
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\upload.txt" -d my-directory
 ```
 
-In dit voor beeld wordt een volledige directory geüpload.
+In dit voorbeeld wordt een hele map geüpload.
 
 ```azurecli
 az storage blob directory upload -c my-file-system --account-name mystorageaccount -s "C:\mylocaldirectory\" -d my-directory --recursive 
 ```
 
-## <a name="show-file-properties"></a>Bestands eigenschappen weer geven
+## <a name="show-file-properties"></a>Bestandseigenschappen weergeven
 
-U kunt de eigenschappen van een bestand afdrukken naar de-console met behulp van de opdracht `az storage blob show`.
+U de eigenschappen van een bestand `az storage blob show` afdrukken op de console met behulp van de opdracht.
 
 ```azurecli
 az storage blob show -c my-file-system -b my-file.txt --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-file"></a>Een bestand een andere naam geven of verplaatsen
+## <a name="rename-or-move-a-file"></a>De naam van een bestand wijzigen of verplaatsen
 
-Wijzig de naam of verplaats een bestand met behulp van de opdracht `az storage blob move`.
+Wijzig de naam of verplaats `az storage blob move` een bestand met de opdracht.
 
-In dit voor beeld wordt de naam van een bestand gewijzigd van de naam `my-file.txt` naar de naam `my-file-renamed.txt`.
+In dit voorbeeld wordt de `my-file.txt` naam `my-file-renamed.txt`van een bestand van de naam naar de naam gewijzigd.
 
 ```azurecli
 az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --account-name mystorageaccount
@@ -190,9 +190,9 @@ az storage blob move -c my-file-system -d my-file-renamed.txt -s my-file.txt --a
 
 ## <a name="delete-a-file"></a>Een bestand verwijderen
 
-Verwijder een bestand met behulp van de opdracht `az storage blob delete`.
+Een bestand verwijderen `az storage blob delete` met de opdracht.
 
-In dit voor beeld wordt een bestand met de naam `my-file.txt` verwijderd
+In dit voorbeeld wordt een bestand met de naam`my-file.txt`
 
 ```azurecli
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
@@ -200,106 +200,106 @@ az storage blob delete -c my-file-system -b my-file.txt --account-name mystorage
 
 ## <a name="manage-permissions"></a>Machtigingen beheren
 
-U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken.
+U toegangsmachtigingen voor mappen en bestanden ontvangen, instellen en bijwerken.
 
 > [!NOTE]
-> Als u Azure Active Directory (Azure AD) gebruikt om opdrachten te autoriseren, moet u ervoor zorgen dat aan uw beveiligingsprincipal de [rol van BLOB-gegevens eigenaar voor opslag](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is toegewezen. Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+> Als u Azure Active Directory (Azure AD) gebruikt om opdrachten te autoriseren, controleert u of uw beveiligingsprincipal de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)heeft toegewezen . Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan.
 
-### <a name="get-directory-and-file-permissions"></a>Map-en bestands machtigingen ophalen
+### <a name="get-directory-and-file-permissions"></a>Directory- en bestandsmachtigingen downloaden
 
-De ACL van een **Directory** ophalen met behulp van de opdracht `az storage blob directory access show`.
+Haal de ACL **directory** van een `az storage blob directory access show` map met behulp van de opdracht.
 
-In dit voor beeld wordt de ACL van een Directory opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voorbeeld wordt de ACL van een map en wordt de ACL op de console afgedrukt.
 
 ```azurecli
 az storage blob directory access show -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-De toegangs machtigingen van een **bestand** ophalen met behulp van de opdracht `az storage blob access show`. 
+Download de toegangsmachtigingen **file** van een `az storage blob access show` bestand met behulp van de opdracht. 
 
-In dit voor beeld wordt de ACL van een bestand opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voorbeeld wordt de ACL van een bestand opgevraagd en wordt de ACL op de console afgedrukt.
 
 ```azurecli
 az storage blob access show -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-In de volgende afbeelding ziet u de uitvoer na het ophalen van de ACL van een directory.
+De volgende afbeelding toont de uitvoer na het verkrijgen van de ACL van een directory.
 
-![ACL-uitvoer ophalen](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
+![ACL-uitvoer krijgen](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
 
-In dit voor beeld heeft de gebruiker die eigenaar is, de machtigingen lezen, schrijven en uitvoeren. De groep die eigenaar is, heeft alleen lees-en uitvoer machtigingen. Zie [toegangs beheer in azure data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangs beheer lijsten.
+In dit voorbeeld heeft de eigenaar van de gebruiker machtigingen gelezen, geschreven en uitgevoerd. De eigenaargroep heeft alleen lees- en uitvoermachtigingen. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangscontrolelijsten.
 
-### <a name="set-directory-and-file-permissions"></a>Map-en bestands machtigingen instellen
+### <a name="set-directory-and-file-permissions"></a>Adreslijst- en bestandsmachtigingen instellen
 
-Gebruik de `az storage blob directory access set` opdracht om de ACL van een **Directory**in te stellen. 
+Gebruik `az storage blob directory access set` de opdracht om de ACL van een **map**in te stellen. 
 
-In dit voor beeld wordt de ACL ingesteld op een map voor de gebruiker die eigenaar is van de groep of andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voorbeeld wordt de ACL ingesteld op een map voor de eigenaar, de eigenaar van de groep of andere gebruikers en wordt de ACL op de console afgedrukt.
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-In dit voor beeld wordt de *standaard* -ACL ingesteld op een map voor de gebruiker die eigenaar is of de groep die eigenaar is, en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voorbeeld wordt de *standaardACL* ingesteld op een map voor de eigenaar, de eigenaar van de groep of andere gebruikers en wordt de ACL op de console afgedrukt.
 
 ```azurecli
 az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-Gebruik de opdracht `az storage blob access set` om de ACL van een **bestand**in te stellen. 
+Gebruik `az storage blob access set` de opdracht om de acl van een **bestand**in te stellen. 
 
-In dit voor beeld wordt de toegangs beheer lijst voor een bestand ingesteld op de gebruiker die eigenaar is van de groep of van andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voorbeeld wordt de ACL ingesteld op een bestand voor de eigenaar, de eigenaar van de groep of andere gebruikers en wordt de ACL op de console afgedrukt.
 
 ```azurecli
 az storage blob access set -a "user::rw-,group::rw-,other::-wx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-In de volgende afbeelding ziet u de uitvoer na het instellen van de ACL van een bestand.
+De volgende afbeelding toont de uitvoer na het instellen van de ACL van een bestand.
 
-![ACL-uitvoer ophalen](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![ACL-uitvoer krijgen](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
-In dit voor beeld hebben de gebruiker die eigenaar is en de groep die eigenaar is alleen lees-en schrijf machtigingen. Alle andere gebruikers hebben machtigingen voor schrijven en uitvoeren. Zie [toegangs beheer in azure data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangs beheer lijsten.
+In dit voorbeeld hebben de eigenaarsgebruiker en de eigenaarsgroep alleen lees- en schrijfmachtigingen. Alle andere gebruikers hebben schrijf- en uitvoermachtigingen. Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangscontrolelijsten.
 
-### <a name="update-directory-and-file-permissions"></a>Map-en bestands machtigingen bijwerken
+### <a name="update-directory-and-file-permissions"></a>Map- en bestandsmachtigingen bijwerken
 
-Een andere manier om deze machtiging in te stellen, is door de `az storage blob directory access update`-of `az storage blob access update` opdracht te gebruiken. 
+Een andere manier om deze `az storage blob directory access update` toestemming `az storage blob access update` in te stellen is het gebruik van de of opdracht. 
 
-Werk de ACL van een map of bestand bij door de para meter `-permissions` in te stellen op de korte vorm van een ACL.
+Werk de ACL van een map `-permissions` of bestand bij door de parameter in te stellen op de korte vorm van een ACL.
 
-In dit voor beeld wordt de ACL van een **Directory**bijgewerkt.
+In dit voorbeeld wordt de ACL van een **map bijgewerkt.**
 
 ```azurecli
 az storage blob directory access update --permissions "rwxrwxrwx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-In dit voor beeld wordt de ACL van een **bestand**bijgewerkt.
+In dit voorbeeld wordt de ACL van een **bestand bijgewerkt.**
 
 ```azurecli
 az storage blob access update --permissions "rwxrwxrwx" -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
 
-U kunt ook de gebruiker en groep van een map of bestand die eigenaar is, bijwerken door de `--owner`-of `group`-para meters in te stellen op de entiteit-ID of UPN (User Principal Name) van een gebruiker. 
+U de eigenaar van een map of bestand `--owner` ook `group` bijwerken door de or-parameters in te stellen op de entiteits-id of gebruikersnaam (UPN) van een gebruiker. 
 
-In dit voor beeld wordt de eigenaar van een map gewijzigd. 
+In dit voorbeeld wordt de eigenaar van een map gewijzigd. 
 
 ```azurecli
 az storage blob directory access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
-In dit voor beeld wordt de eigenaar van een bestand gewijzigd. 
+In dit voorbeeld wordt de eigenaar van een bestand gewijzigd. 
 
 ```azurecli
 az storage blob access update --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -b my-directory/upload.txt -c my-file-system --account-name mystorageaccount
 ```
-## <a name="manage-user-defined-metadata"></a>Door de gebruiker gedefinieerde meta gegevens beheren
+## <a name="manage-user-defined-metadata"></a>Metagegevens van gebruikers beheren
 
-U kunt door de gebruiker gedefinieerde meta gegevens toevoegen aan een bestand of map met behulp van de `az storage blob directory metadata update` opdracht met een of meer naam/waarde-paren.
+U door de gebruiker gedefinieerde metagegevens `az storage blob directory metadata update` toevoegen aan een bestand of map met behulp van de opdracht met een of meer naamwaardeparen.
 
-In dit voor beeld worden door de gebruiker gedefinieerde meta gegevens toegevoegd voor een map met de naam `my-directory` Directory.
+In dit voorbeeld worden door de `my-directory` gebruiker gedefinieerde metagegevens toegevoegd voor een map met de naam directory.
 
 ```azurecli
 az storage blob directory metadata update --metadata tag1=value1 tag2=value2 -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-In dit voor beeld worden alle door de gebruiker gedefinieerde meta gegevens weer gegeven voor de map met de naam `my-directory`.
+In dit voorbeeld worden alle door `my-directory`de gebruiker gedefinieerde metagegevens voor map met de naam .
 
 ```azurecli
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
@@ -307,8 +307,8 @@ az storage blob directory metadata show -c my-file-system -d my-directory --acco
 
 ## <a name="see-also"></a>Zie ook
 
-* [Voorbeeld](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
-* [Toewijzing van gen1 naar Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Monster](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
+* [Gen1 naar Gen2 mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
 * [Feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Broncode](https://github.com/Azure/azure-cli-extensions/tree/master/src)

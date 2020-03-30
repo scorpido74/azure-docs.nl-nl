@@ -1,40 +1,40 @@
 ---
-title: resource ()-expressie in Azure Monitor logboek query | Microsoft Docs
-description: De resource-expressie wordt gebruikt in een resource gerichte Azure Monitor-logboek query om gegevens op te halen uit meerdere resources.
+title: resource() expressie in Azure Monitor-logboekquery | Microsoft Documenten
+description: De bronexpressie wordt gebruikt in een azure monitor-logboekquery die is gericht op basis van resources om gegevens uit meerdere bronnen op te halen.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665696"
 ---
-# <a name="resource-expression-in-azure-monitor-log-query"></a>resource ()-expressie in Azure Monitor-logboek query
+# <a name="resource-expression-in-azure-monitor-log-query"></a>resource() expressie in Azure Monitor-logboekquery
 
-De `resource` expressie wordt gebruikt in een Azure Monitor query [bereik voor een resource](scope.md#query-scope) om gegevens op te halen uit andere resources. 
+De `resource` expressie wordt gebruikt in een Azure Monitor-query [die is ingericht met een bron](scope.md#query-scope) om gegevens uit andere bronnen op te halen. 
 
 
 ## <a name="syntax"></a>Syntaxis
 
-`resource(`*id*`)`
+`resource(`*Id*`)`
 
 ## <a name="arguments"></a>Argumenten
 
-- *Id*: Resource-id van een resource.
+- *Id:* resource-id van een resource.
 
 | Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
-| Resource | Bevat gegevens voor de resource. | resource ("/Subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup/providers/Microsoft.Compute/virtualmachines/myvm") |
-| Resource groep of-abonnement | Bevat gegevens voor de resource en alle resources die deze bevat.  | resource ("/Subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourcesgroups/myresourcegroup) |
+| Resource | Bevat gegevens voor de bron. | resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm") |
+| Resourcegroep of -abonnement | Bevat gegevens voor de resource en alle bronnen die deze bevat.  | bron("/abonnementen/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcesgroups/myresourcegroup) |
 
 
 ## <a name="notes"></a>Opmerkingen
 
-* U moet lees toegang hebben tot de resource.
+* U moet de toegang tot de bron hebben gelezen.
 
 
 ## <a name="examples"></a>Voorbeelden
@@ -49,5 +49,5 @@ union (Heartbeat),(resource("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [logboek query bereik en het tijds bereik in Azure Monitor Log Analytics](scope.md) voor meer informatie over een query bereik.
-- Toegang tot volledige documentatie voor de [Kusto-query taal](/azure/kusto/query/).
+- Zie [Querybereik en -tijdsbereik in Azure Monitor Log Analytics](scope.md) voor meer informatie over een querybereik.
+- Toegang tot de volledige documentatie voor de [Kusto-querytaal](/azure/kusto/query/).

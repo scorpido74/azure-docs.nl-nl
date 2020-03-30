@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77657304"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Overzicht van Azure Spatial Anchors
@@ -42,10 +42,10 @@ Uw eerste app maken met Spatial Anchors.
 > [Eenheid (HoloLens)](quickstarts/get-started-unity-hololens.md)
 
 > [!div class="nextstepaction"]
-> [Unity (iOS)](quickstarts/get-started-unity-ios.md)
+> [Eenheid (iOS)](quickstarts/get-started-unity-ios.md)
 
 > [!div class="nextstepaction"]
-> [Unity (Android)](quickstarts/get-started-unity-android.md)
+> [Eenheid (Android)](quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)

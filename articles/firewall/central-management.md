@@ -1,6 +1,6 @@
 ---
 title: Centraal beheer van Azure Firewall
-description: Meer informatie over Centraal beheer van Azure Firewall Manager
+description: Meer informatie over centraal beheer van Azure Firewall Manager
 author: vhorne
 ms.service: firewall
 services: firewall
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444548"
 ---
 # <a name="azure-firewall-central-management"></a>Centraal beheer van Azure Firewall
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Als u meerdere firewalls beheert, weet u dat de firewall regels voortdurend worden gewijzigd, zodat deze moeilijk te synchroniseren zijn. Centrale IT-teams hebben een manier nodig om het base firewall-beleid te definiëren en af te dwingen voor meerdere bedrijfs eenheden. Terzelfder tijd willen DevOps teams hun eigen lokale afgeleide firewall-beleid maken voor een betere flexibiliteit.
+Als u meerdere firewalls beheert, weet u dat voortdurend veranderende firewallregels het moeilijk maken om ze synchroon te houden. Centrale IT-teams hebben een manier nodig om basisfirewallbeleid te definiëren en af te dwingen op meerdere bedrijfseenheden. Tegelijkertijd willen DevOps-teams hun eigen lokale afgeleide firewallbeleid maken voor een betere wendbaarheid.
 
-Azure Firewall Manager-voor beeld kan helpen bij het oplossen van deze problemen.
+Azure Firewall Manager Preview kan helpen deze problemen op te lossen.
 
 
-## <a name="azure-firewall-manager-preview"></a>Azure Firewall Manager-preview
+## <a name="azure-firewall-manager-preview"></a>Proefversie van Azure Firewall Manager
 
-Azure Firewall Manager preview is een service voor het beheren van netwerk beveiliging die het centrale beveiligings beleid en route beheer biedt voor beveiligings verbindingen in de Cloud. Het maakt het eenvoudig voor IT-teams van ondernemingen om regels van netwerk-en toepassings niveau te definiëren voor het filteren van verkeer op meerdere exemplaren van Azure Firewall. U kunt verschillende Azure-regio's en-abonnementen onderverdelen in hub-en spoke-architecturen voor verkeer governance en beveiliging. Het biedt ook DevOps betere flexibiliteit met afgeleide lokale firewall beveiligings beleidsregels die worden geïmplementeerd in verschillende organisaties.
+Azure Firewall Manager Preview is een netwerkbeveiligingsbeheerservice die centraal beveiligingsbeleid en routebeheer biedt voor cloudgebaseerde beveiligingsperimeters. Het maakt het voor Enterprise IT-teams gemakkelijk om regels op netwerk- en toepassingsniveau voor verkeersfiltering in meerdere Azure Firewall-instanties centraal te definiëren. U verschillende Azure-regio's en -abonnementen omvatten in hub- en spoke-architecturen voor verkeersbeheer en -beveiliging. Het biedt DevOps ook een betere flexibiliteit met afgeleid lokaal firewallbeveiligingsbeleid dat binnen organisaties wordt geïmplementeerd.
 
-### <a name="firewall-policy"></a>Firewall beleid
+### <a name="firewall-policy"></a>Firewallbeleid
 
-Een firewall beleid is een Azure-resource die NAT-, netwerk-en toepassings regel verzamelingen en instellingen voor bedreigings informatie bevat. Het is een wereld wijde resource die kan worden gebruikt voor meerdere Azure Firewall instanties in *beveiligde virtuele hubs* en *hub virtuele netwerken*. Nieuwe beleids regels kunnen volledig worden gemaakt of worden overgenomen van bestaande beleids regels. Met overname kan DevOps lokaal firewall beleid maken op basis van de organisatie. Beleids regels werken in verschillende regio's en abonnementen.
+Een Firewall-beleid is een Azure-bron die NAT-, netwerk- en toepassingsregelverzamelingen en Threat Intelligence-instellingen bevat. Het is een globale bron die kan worden gebruikt in meerdere Azure Firewall-exemplaren in *Beveiligde virtuele hubs* en virtuele *hubnetwerken.* Nieuw beleid kan vanaf nul worden gemaakt of overgenomen van bestaand beleid. Met Overerving kan DevOps lokaal firewallbeleid maken bovenop het basisbeleid van de organisatie. Beleid werkt in verschillende regio's en abonnementen.
  
-U kunt Firewall beleid en-koppelingen maken met Azure Firewall Manager. U kunt echter ook een beleid maken en beheren met behulp van REST API, sjablonen, Azure PowerShell en CLI. Wanneer u een beleid hebt gemaakt, kunt u dit koppelen aan een firewall in een virtuele WAN-hub, waardoor het een *beveiligde virtuele hub* is en/of een firewall in een virtueel netwerk, waardoor IT- *hub Virtual Network*.
+U Firewallbeleid en koppelingen maken met Azure Firewall Manager. U echter ook een beleid maken en beheren met REST API, sjablonen, Azure PowerShell en CLI. Zodra u een beleid hebt gemaakt, u het koppelen aan een firewall in een virtuele WAN-hub, waardoor het een *beveiligde virtuele hub* en/of een firewall in een virtueel netwerk is, waardoor het Hub Virtual Network *is.*
 
 ### <a name="pricing"></a>Prijzen
 
-Het beleid wordt in rekening gebracht op basis van Firewall koppelingen. Een beleid met nul of één firewall koppeling is gratis. Een beleid met meerdere firewall koppelingen wordt gefactureerd tegen een vast bedrag. Zie [prijzen van Azure firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/)voor meer informatie.
+Beleidsregels worden gefactureerd op basis van firewall-associaties. Een beleid met nul of één firewall associatie is gratis. Een beleid met meerdere firewall-associaties wordt tegen een vast tarief gefactureerd. Zie [Azure Firewall Manager Pricing](https://azure.microsoft.com/pricing/details/firewall-manager/)voor meer informatie.
 
-## <a name="azure-firewall-management-partners"></a>Azure Firewall beheer partners
+## <a name="azure-firewall-management-partners"></a>Azure Firewall Management-partners
 
-De volgende toonaangevende oplossingen van derden ondersteunen Azure Firewall centraal beheer met behulp van standaard-Azure REST Api's. Elk van deze oplossingen heeft zijn eigen unieke kenmerken en functies:
+De volgende toonaangevende oplossingen van derden ondersteunen azure firewall centraal beheer met behulp van standaard Azure REST API's. Elk van deze oplossingen heeft zijn eigen unieke kenmerken en kenmerken:
 
 - [AlgoSec CloudFlow](https://www.algosec.com/azure/) 
 - [Barracuda Cloud Security Guardian](https://www.barracuda.com/products/cloudsecurityguardian/for_azure)
@@ -48,4 +48,4 @@ De volgende toonaangevende oplossingen van derden ondersteunen Azure Firewall ce
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is Azure firewall Manager preview?](../firewall-manager/overview.md) voor meer informatie over de preview-versie van Azure firewall Manager.
+Zie Wat is Azure Firewall [Manager Preview voor](../firewall-manager/overview.md) meer informatie over Azure Firewall Manager Preview?

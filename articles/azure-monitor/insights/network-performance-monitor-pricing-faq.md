@@ -1,115 +1,115 @@
 ---
-title: Veelgestelde vragen over prijzen voor Azure Netwerkprestatiemeter | Microsoft Docs
-description: Veelgestelde vragen-Azure Netwerkprestatiemeter
+title: Veelgestelde vragen over de prijsprijzen voor Azure Network Performance Monitor | Microsoft Documenten
+description: Veelgestelde vragen - Azure Network Performance Monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654389"
 ---
-# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Prijs wijzigingen voor Azure Netwerkprestatiemeter
+# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Prijswijzigingen voor Azure Network Performance Monitor
 
-We hebben geluisterd naar uw feedback en hebben onlangs een [nieuwe prijs ervaring](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) geïntroduceerd voor verschillende bewakings Services in Azure. In dit artikel worden de prijs wijzigingen met betrekking tot Azure [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) vastgelegd in een gemakkelijk te lezen vraag-en antwoord indeling.
+We hebben geluisterd naar uw feedback en onlangs een [nieuwe prijservaring](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) geïntroduceerd voor verschillende bewakingsservices in Azure. In dit artikel worden de prijswijzigingen met betrekking tot Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) vastgelegd in een gemakkelijk te lezen vraag- en antwoordindeling.
 
-Netwerkprestatiemeter bestaat uit drie onderdelen:
-* [Prestatie meter](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Controle programma voor service-eind punten](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [Monitor voor ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+Network Performance Monitor bestaat uit drie componenten:
+* [Prestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [Service-eindpuntmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
+* [ExpressRoute-monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-In de volgende secties worden de prijs wijzigingen voor de NPM-onderdelen uitgelegd.
+In de volgende secties worden de prijswijzigingen voor de NPM-componenten uitgelegd.
 
 ## <a name="performance-monitor"></a>Prestatiemeter
 
-**Hoe werd het gebruik van de prestatie meter in het oude model gefactureerd?**
+**Hoe werd het gebruik van prestatiemeter gefactureerd in het oude model?**
 
-De facturering voor NPM is gebaseerd op het gebruik en het verbruik van twee onderdelen:
-* **Knoop punten**: alle synthetische trans acties zijn afkomstig van en eindigen op de knoop punten. Knoop punten worden ook wel agents of micro soft-beheer agenten genoemd.
-* **Gegevens**: de resultaten van de verschillende netwerk tests worden opgeslagen in de werk ruimte log Analytics.
+De facturering voor NPM was gebaseerd op het gebruik en verbruik van twee componenten:
+* **Knooppunten**: Alle synthetische transacties ontstaan en eindigen bij de knooppunten. Knooppunten worden ook wel agents of Microsoft Management Agents genoemd.
+* **Gegevens**: De resultaten van de verschillende netwerktests worden opgeslagen in de werkruimte Log Analytics.
 
-Onder het oude model werd de factuur berekend op basis van het aantal knoop punten en het gegenereerde gegevens volume. 
+Onder het oude model werd de factuur berekend op basis van het aantal knooppunten en het volume van de gegenereerde gegevens. 
 
-**Hoe wordt het gebruik van prestatie meter in rekening gebracht onder het nieuwe model?**
+**Hoe wordt het gebruik van prestatiemeter in rekening gebracht onder het nieuwe model?**
 
-De functie prestatie meter in NPM wordt nu gefactureerd op basis van een combi natie van: 
+De functie Prestatiemonitor in NPM wordt nu gefactureerd op basis van een combinatie van: 
 
-* Subnet koppelingen bewaakt
+* Subnetkoppelingen gecontroleerd
 * Gegevensvolume
 
-**Wat is een subnet-koppeling?**
+**Wat is een subnetlink?**
 
-Prestatie meter bewaakt de connectiviteit tussen twee of meer locaties op het netwerk. De verbinding tussen een groep knoop punten of agents op één subnet en een groep knoop punten op een ander subnet wordt een subnet-koppeling genoemd.
+Performance Monitor bewaakt de connectiviteit tussen twee of meer locaties in het netwerk. De verbinding tussen een groep knooppunten of agents op een subnet en een groep knooppunten op een ander subnet wordt een subnetkoppeling genoemd.
 
-**Ik heb twee subnetten (A en B) en ik heb meerdere agents op elk subnet. Met de prestatie meter wordt de connectiviteit van alle agents op subnet A gecontroleerd op alle agents in Subnet B. Worden er kosten in rekening gebracht op basis van het aantal verbindingen tussen subnetten?**
+**Ik heb twee subnetten (A en B), en ik heb verschillende agenten op elk subnet. Performance Monitor bewaakt de connectiviteit van alle agents op subnet A met alle agents op subnet B. Worden er kosten in rekening gebracht op basis van het aantal intersubnetverbindingen?**
 
-Nee. Voor facturerings doeleinden worden alle verbindingen van subnet A naar subnet B gegroepeerd in één subnet-koppeling. U wordt gefactureerd voor één verbinding. Prestatie meter blijft de connectiviteit tussen verschillende agents op elk subnet bewaken.
+Nee. Voor factureringsdoeleinden worden alle verbindingen van subnet A naar subnet B gegroepeerd in één subnetkoppeling. Je wordt gefactureerd voor één verbinding. Performance Monitor blijft de connectiviteit tussen verschillende agents op elk subnet monitoren.
 
-**Wat zijn de kosten voor het bewaken van een subnet-koppeling?**
+**Wat zijn de kosten voor het bewaken van een subnetlink?**
 
-Zie de sectie [ping mesh](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten voor het bewaken van één subnet-koppeling voor de hele maand.
+Zie de sectie [Ping Mesh](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten van het bewaken van één subnetkoppeling voor de hele maand.
 
-**Wat zijn de kosten voor gegevens die door prestatie meter worden gegenereerd?**
+**Wat zijn de kosten voor gegevens die Performance Monitor genereert?**
 
-De kosten voor opname (gegevens uploaden naar Log Analytics werk ruimte in Azure Monitor, verwerking en indexering) zijn beschikbaar op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor log Analytics in de sectie gegevens opname. De kosten voor het bewaren van gegevens (dat wil zeggen, gegevens bewaard op de optie van de klant, na de eerste maand) zijn ook beschikbaar op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)in het gedeelte gegevens retentie.
+De kosten voor inname (gegevens uploaden naar Log Analytics-werkruimte in Azure Monitor, verwerking en indexering) zijn beschikbaar op de [prijspagina](https://azure.microsoft.com/pricing/details/log-analytics/) voor Log Analytics in de sectie Gegevensopname. De kosten voor het bewaren van gegevens (dat wil zeggen gegevens die worden bewaard op de optie van de klant, na de eerste maand) is ook beschikbaar op de [prijspagina](https://azure.microsoft.com/pricing/details/log-analytics/), in de sectie Gegevensbewaring.
 
 
-## <a name="expressroute-monitor"></a>Monitor voor ExpressRoute
+## <a name="expressroute-monitor"></a>ExpressRoute-monitor
 
-**Wat zijn de kosten voor het gebruik van de ExpressRoute-monitor?**
+**Wat zijn de kosten voor het gebruik van ExpressRoute Monitor?**
 
-Kosten voor ExpressRoute-monitor worden gefactureerd op basis van het volume van de gegevens die tijdens de bewaking zijn gegenereerd. Zie ' wat zijn de kosten voor gegevens die worden gegenereerd door prestatie meter? ' voor meer informatie.
+Kosten voor ExpressRoute Monitor worden gefactureerd op basis van de hoeveelheid gegevens die tijdens de monitoring worden gegenereerd. Zie 'Wat zijn de kosten voor gegevens die prestatiemeter genereert?'
 
-**Ik gebruik de ExpressRoute-monitor om meerdere ExpressRoute-circuits te bewaken. Worden er kosten in rekening gebracht op basis van het aantal circuits dat wordt bewaakt?**
+**Ik gebruik ExpressRoute Monitor om meerdere ExpressRoute circuits te monitoren. Worden er kosten in rekening gebracht op basis van het aantal circuits dat wordt gecontroleerd?**
 
-Er worden geen kosten in rekening gebracht op basis van het aantal circuits of het type peering (bijvoorbeeld persoonlijke peering, micro soft-peering). Er worden kosten in rekening gebracht op basis van het volume van de gegevens, zoals eerder is uitgelegd.
+Er worden geen kosten in rekening gebracht op basis van het aantal circuits of het type peering (bijvoorbeeld privépeering, Microsoft-peering). Er worden kosten in rekening gebracht op basis van de hoeveelheid gegevens, zoals eerder uitgelegd.
 
 **Wat is het volume van de gegevens die worden gegenereerd wanneer ExpressRoute één circuit bewaakt?**
 
-Het volume van de gegevens die per maand worden gegenereerd, is als volgt wanneer ExpressRoute een particuliere peering-verbinding bewaakt:
+Het volume van de gegevens die per maand worden gegenereerd wanneer ExpressRoute een privé-peeringverbinding controleert, is als volgt:
 
 |Percentiel      |Gegevens/maand (MB)|
 | :---:          |           ---:|
-|50<sup>th</sup> |            192|
-|60<sup>th</sup> |            256|
-|70<sup>th</sup> |            360|
+|50<sup>e</sup> |            192|
+|60<sup>e</sup> |            256|
+|70<sup>e</sup> |            360|
 |80<sup>th</sup> |            498|
 |90<sup>th</sup> |            870|
 |95<sup>th</sup> |           1560|
 
 
-Volgens deze tabel betalen klanten met het 50e percentiel voor 192 MB aan gegevens. Bij USD $2.30/GB voor de eerste maand zijn de kosten voor het bewaken van een circuit USD $0,43 (= 192 * 2,30/1024).
+Volgens deze tabel betalen klanten met een 50e percentiel voor 192 MB aan gegevens. Bij USD $2.30/GB voor de eerste maand, zijn de kosten die voor het controleren van een kring worden gemaakt USD $0.43 (= 192 * 2.30 / 1024).
 
-**Wat zijn de redenen voor variaties in het volume van de gegevens?**
+**Wat zijn enkele redenen voor variaties in het volume van de gegevens?**
 
-Hoeveel bewakings gegevens er worden gegenereerd, is afhankelijk van verschillende factoren, zoals:
-* Aantal agents. De nauw keurigheid van fouten isolatie neemt toe met een toename van het aantal agents.
-* Het aantal hops in het netwerk.
-* Het aantal paden tussen de bron en de bestemming.
+De hoeveelheid gegenereerde monitoringgegevens is afhankelijk van verschillende factoren, zoals:
+* Aantal agenten. De nauwkeurigheid van foutisolatie neemt toe met een toename van het aantal agenten.
+* Aantal hops op het netwerk.
+* Aantal paden tussen de bron en de bestemming.
 
-Klanten op het hoogste percentiel (in de voor gaande tabel) bewaken doorgaans hun circuits van verschillende Vantage-punten in hun on-premises netwerk. Meerdere agents worden ook dieper in het netwerk geplaatst, verder van de service provider edge-router. De agents worden vaak geplaatst op verschillende gebruikers sites, vertakkingen en racks in data centers.
+Klanten aan de hogere percentielen (in de vorige tabel) meestal controleren hun circuits vanuit verschillende uitkijkpunten op hun on-premises netwerk. Meerdere agents worden ook dieper in het netwerk geplaatst, verder van de edge router van de serviceprovider. De agents worden vaak geplaatst op verschillende gebruikerssites, vestigingen en racks in datacenters.
 
-## <a name="service-endpoint-monitor"></a>Controle programma voor service-eind punten
+## <a name="service-endpoint-monitor"></a>Service-eindpuntmonitor
 
-**Wat zijn de kosten voor het gebruik van de service-eindpunt monitor?**
+**Wat zijn de kosten voor het gebruik van Service Endpoint Monitor?**
 
-De kosten voor het gebruik van de service-eindpunt monitor worden berekend op basis van:
+Kosten voor het gebruik van Service Endpoint Monitor worden berekend op basis van:
 * Aantal verbindingen
-* Hoeveelheid gegevens
+* Volume van de gegevens
 
-**Wat is een verbinding?**
+**Wat is een verband?**
 
-Een verbinding is een test op het bereiken van een eind punt (URL of netwerk service) van één agent voor de hele maand. Als u bijvoorbeeld een verbinding met bing.com van drie agents bewaken, worden er drie verbindingen tot stand.
+Een verbinding is een test van de bereikbaarheid naar één eindpunt (URL of netwerkservice) van één agent gedurende de hele maand. Het bewaken van een verbinding met bing.com van drie agents vormt bijvoorbeeld drie verbindingen.
 
-**Wat zijn de kosten voor service Endpoint monitor?**
+**Wat zijn de kosten voor Service Endpoint Monitor?**
 
-Raadpleeg de sectie [verbindings bewaking](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten voor het bewaken van een eind punt voor de hele maand. De kosten voor gegevens zijn beschikbaar op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor log Analytics, in de sectie gegevens opname.
+Raadpleeg de sectie [Verbindingsbewaking](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten van het bewaken van een eindpunt voor de hele maand. De kosten voor gegevens zijn beschikbaar op de [prijspagina](https://azure.microsoft.com/pricing/details/log-analytics/) voor Log Analytics, in de sectie Gegevensopname.
 
 ## <a name="references"></a>Verwijzingen
 
-[Veelgestelde vragen over log Analytics prijs](https://azure.microsoft.com/pricing/details/log-analytics/): de sectie Veelgestelde vragen bevat informatie over de gratis laag, de prijzen per knoop punt en andere prijs informatie.
+[Veelgestelde vragen over de prijzen van Log Analytics:](https://azure.microsoft.com/pricing/details/log-analytics/)de faq-sectie bevat informatie over de gratis laag, de prijzen per knooppunt en andere prijsdetails.
 
