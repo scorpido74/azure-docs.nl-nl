@@ -1,36 +1,36 @@
 ---
-title: Weers cover Microsoft Azure kaarten
-description: In dit artikel vindt u meer informatie over de weer dekking van Microsoft Azure kaarten.
-author: farah-alyasari
-ms.author: v-faalya
+title: Weersdekking | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over de weersdekking in Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333571"
 ---
-# <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
+# <a name="azure-maps-weather-coverage"></a>Azure Maps weerdekking
 
-In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en het weers bericht langs een route.
+In dit artikel vindt u dekkingsgegevens voor Azure Maps [Weather Services.](https://aka.ms/AzureMapsWeatherService) Azure Maps Weergegevensservices retourneert details zoals radartegels, huidige weersomstandigheden, weersvoorspellingen en het weer langs een route.
 
-Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen en regio's.
+Azure Maps heeft niet hetzelfde niveau van informatie en nauwkeurigheid voor alle landen en regio's.
 
-De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvragen van elk land/elke regio.
+In de volgende tabel vindt u informatie over wat voor soort weersinformatie u opvragen bij elk land/regio.
 
-| Valuta | Betekenis |
+| Symbool | Betekenis |
 |--------|---------|
-|*       |Behandelt weer berichten over route, huidige omstandigheden, prognose per uur, prognose van kwartaal dagen en dagelijkse prognose-Api's |
+|*       |Dekt het weer langs route, huidige omstandigheden, uurvoorspelling, kwartaalprognose en dagelijkse prognose-API's |
 
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
+| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarctica                               | ✓ |   |  ✓|
@@ -44,7 +44,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Bolivia                                  | ✓ |   |  ✓| 
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brazilië                                   | ✓ |   |  ✓| 
-| Britse Maagden eilanden                   | ✓ |   |  ✓| 
+| Britse Maagdeneilanden                   | ✓ |   |  ✓| 
 | Canada                                   | ✓ | ✓ |  ✓| 
 | Kaaimaneilanden                           | ✓ |   |  ✓| 
 | Chili                                    | ✓ |   |  ✓| 
@@ -58,7 +58,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | El Salvador                              | ✓ |   |  ✓| 
 | Falklandeilanden                         | ✓ |   |  ✓| 
 | Frans-Guyana                            | ✓ |   |  ✓| 
-| Heilbot                                | ✓ |   |  ✓| 
+| Groenland                                | ✓ |   |  ✓| 
 | Grenada                                  | ✓ |   |  ✓| 
 | Guadeloupe                               | ✓ |   |  ✓| 
 | Guatemala                                | ✓ |   |  ✓| 
@@ -74,20 +74,20 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Puerto Rico                              | ✓ |   |  ✓| 
-| Saint--Barthélemy                         | ✓ |   |  ✓| 
+| Sint-Barthélemie                         | ✓ |   |  ✓| 
 | Saint Kitts en Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint-Martin                             | ✓ |   |  ✓| 
-| Saint-Pierre en Miquelon                | ✓ |   |  ✓| 
+| Saint Pierre en Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent en de Grenadines         | ✓ |   |  ✓| 
-| Sint-Eustatius                           | ✓ |   |  ✓|  
-| Sint-Maarten                             | ✓ |   |  ✓| 
-| Zuid-Georgië en de zuidelijke Sandwich eilanden | ✓ |   |  ✓| 
+| Sint Eustatius                           | ✓ |   |  ✓|  
+| Sint Maarten                             | ✓ |   |  ✓| 
+| Zuid-Georgië en Zuid-Sandwich eilanden | ✓ |   |  ✓| 
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad en Tobago                      | ✓ |   |  ✓| 
 | Turks- en Caicoseilanden                 | ✓ |   |  ✓| 
-| Amerikaanse ondergeschikte afgelegen eilanden                    | ✓ |   |  ✓| 
-| Amerikaanse Maagden eilanden                      | ✓ |   |  ✓| 
+| Amerikaanse afgelegen eilanden                    | ✓ |   |  ✓| 
+| Amerikaanse Maagdeneilanden                      | ✓ |   |  ✓| 
 | Verenigde Staten                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
@@ -95,14 +95,14 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
+| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Algerije                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
 | Bahrein                     | ✓               |                              |        ✓| 
 | Benin                       | ✓               |                              |        ✓| 
 | Botswana                    | ✓               |                              |        ✓| 
-| Bouvet eiland               | ✓               |                              |        ✓| 
+| Bouveteiland               | ✓               |                              |        ✓| 
 | Burkina Faso                | ✓               |                              |        ✓| 
 | Burundi                     | ✓               |                              |        ✓| 
 | Kameroen                    | ✓               |                              |        ✓| 
@@ -111,14 +111,14 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Tsjaad                        | ✓               |                              |        ✓| 
 | Comoren                     | ✓               |                              |        ✓| 
 | Congo (DRC)                 | ✓               |                              |        ✓|
-| Ivoor kust               | ✓               |                              |        ✓| 
+| Ivoorkust               | ✓               |                              |        ✓| 
 | Djibouti                    | ✓               |                              |        ✓| 
 | Egypte                       | ✓               |                              |        ✓| 
 | Equatoriaal-Guinea           | ✓               |                              |        ✓| 
 | Eritrea                     | ✓               |                              |        ✓| 
 | eSwatini                    | ✓               |                              |        ✓| 
 | Ethiopië                    | ✓               |                              |        ✓| 
-| Franse zuidelijke gebieden | ✓               |                              |        ✓| 
+| Franse Gebieden in de zuidelijke Indische Oceaan | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
 | Gambia                      | ✓               |                              |        ✓| 
 | Ghana                       | ✓               |                              |        ✓| 
@@ -146,15 +146,15 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Niger                       | ✓               |                              |        ✓| 
 | Nigeria                     | ✓               |                              |        ✓| 
 | Oman                        | ✓               |                              |        ✓| 
-| Palestijnse autoriteit       | ✓               |                              |        ✓| 
+| Palestijnse Autoriteit       | ✓               |                              |        ✓| 
 | Qatar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| Sint-Helena, Ascension en Tristan da Cunha        | ✓               |                              |        ✓| 
-| Sao Tomé en principe       | ✓               |                              |        ✓| 
+| St Helena, Hemelvaart, Tristan da Cunha        | ✓               |                              |        ✓| 
+| São Tomé en Príncipe       | ✓               |                              |        ✓| 
 | Saoedi-Arabië                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
-| Seychell                  | ✓               |                              |        ✓| 
+| Seychellen                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somalië                     | ✓               |                              |        ✓| 
 | Zuid-Afrika                | ✓               |                              |        ✓| 
@@ -174,24 +174,24 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
+| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghanistan                       | ✓ |   |  ✓| 
 | Amerikaans-Samoa                    | ✓ |   |  ✓| 
 | Australië                         | ✓ | ✓ |  ✓| 
 | Bangladesh                        | ✓ |   |  ✓| 
 | Bhutan                            | ✓ |   |  ✓| 
-| Brits territorium in de Indische Oceaan    | ✓ |   |  ✓| 
+| Brits Territorium in de Indische Oceaan    | ✓ |   |  ✓| 
 | Brunei                            | ✓ |   |  ✓| 
 | Cambodja                          | ✓ |   |  ✓| 
 | China                             | ✓ | ✓ |  ✓| 
-| Christmas eiland                  | ✓ |   |  ✓| 
-| Cocos-Keeling-eilanden           | ✓ |   |  ✓| 
-| Cook eilanden                      | ✓ |   |  ✓| 
+| Christmaseiland                  | ✓ |   |  ✓| 
+| Cocoseilanden           | ✓ |   |  ✓| 
+| Cookeilanden                      | ✓ |   |  ✓| 
 | Fiji                              | ✓ |   |  ✓| 
 | Frans-Polynesië                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Heard Island en McDonald eilanden | ✓ |   |  ✓| 
+| Gehoord eiland en McDonald Eilanden | ✓ |   |  ✓| 
 | Hongkong SAR                     | ✓ |   |  ✓| 
 | India                             | ✓ |   |  ✓| 
 | Indonesië                         | ✓ |   |  ✓| 
@@ -204,7 +204,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Macau SAR                         | ✓ |   |  ✓| 
 | Maleisië                          | ✓ |   |  ✓| 
 | Maldiven                          | ✓ |   |  ✓| 
-| Marshall eilanden                  | ✓ |   |  ✓| 
+| Marshalleilanden                  | ✓ |   |  ✓| 
 | Micronesia                        | ✓ |   |  ✓| 
 | Mongolië                          | ✓ |   |  ✓| 
 | Myanmar                           | ✓ |   |  ✓| 
@@ -213,17 +213,17 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Nieuw-Caledonië                     | ✓ |   |  ✓| 
 | Nieuw-Zeeland                       | ✓ |   |  ✓| 
 | Niue                              | ✓ |   |  ✓| 
-| Norfolk eiland                    | ✓ |   |  ✓| 
+| Norfolk                    | ✓ |   |  ✓| 
 | Noord-Korea                       | ✓ |   |  ✓| 
 | Noordelijke Marianen          | ✓ |   |  ✓| 
 | Pakistan                          | ✓ |   |  ✓| 
 | Palau                             | ✓ |   |  ✓| 
 | Papoea-Nieuw-Guinea                  | ✓ |   |  ✓| 
 | Filipijnen                       | ✓ |   |  ✓| 
-| Pitcairneilanden                  | ✓ |   |  ✓| 
+| Pitcairn eilanden                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
 | Singapore                         | ✓ |   |  ✓| 
-| Salomons eilanden                   | ✓ |   |  ✓| 
+| Salomonseilanden                   | ✓ |   |  ✓| 
 | Sri Lanka                         | ✓ |   |  ✓| 
 | Taiwan                            | ✓ |   |  ✓| 
 | Tadzjikistan                        | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 
 ## <a name="europe"></a>Europa
 
-| Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
+| Land/regio              |  Satelliettegels | Minute Forecast, Radar Tiles | Andere* | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Albanië                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,10 +254,10 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Bulgarije               | ✓ |   |  ✓| 
 | Kroatië                | ✓ | ✓ |  ✓| 
 | Cyprus                 | ✓ |   |  ✓| 
-| Czechia                | ✓ | ✓ |  ✓| 
+| Tsjechië                | ✓ | ✓ |  ✓| 
 | Denemarken                | ✓ | ✓ |  ✓| 
 | Estland                | ✓ | ✓ |  ✓| 
-| Faeröereilanden          | ✓ |   |  ✓| 
+| Faeröer          | ✓ |   |  ✓| 
 | Finland                | ✓ | ✓ |  ✓| 
 | Frankrijk                 | ✓ | ✓ |  ✓| 
 | Georgië                | ✓ |   |  ✓| 
@@ -269,7 +269,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | IJsland                | ✓ |   |  ✓| 
 | Ierland                | ✓ | ✓ |  ✓| 
 | Italië                  | ✓ |   |  ✓|
-| Isle of man            | ✓ |   |  ✓| 
+| Isle of Man            | ✓ |   |  ✓| 
 | Jersey                 | ✓ |   |  ✓| 
 | Kosovo                 | ✓ |   |  ✓| 
 | Letland                 | ✓ |   |  ✓| 
@@ -278,7 +278,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Luxemburg             | ✓ | ✓ |  ✓| 
 | Noord-Macedonië        | ✓ |   |  ✓| 
 | Malta                  | ✓ |   |  ✓| 
-| Werden                | ✓ | ✓ |  ✓| 
+| Moldavië                | ✓ | ✓ |  ✓| 
 | Monaco                 | ✓ | ✓ |  ✓| 
 | Montenegro             | ✓ | ✓ |  ✓| 
 | Nederland            | ✓ | ✓ |  ✓| 
@@ -292,11 +292,11 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Slowakije               | ✓ | ✓ |  ✓| 
 | Slovenië               | ✓ | ✓ |  ✓| 
 | Spanje                  | ✓ | ✓ |  ✓| 
-| Jan               | ✓ |   |  ✓|
+| Svalbard               | ✓ |   |  ✓|
 | Jan Mayen              | ✓ |   |  ✓| 
 | Zweden                 | ✓ | ✓ |  ✓| 
 | Zwitserland            | ✓ | ✓ |  ✓| 
 | Turkije                 | ✓ |   |  ✓| 
 | Oekraïne                | ✓ |   |  ✓| 
 | Verenigd Koninkrijk         | ✓ | ✓ |  ✓| 
-| Vaticaan stad           | ✓ |   |  ✓| 
+| Vaticaanstad           | ✓ |   |  ✓| 

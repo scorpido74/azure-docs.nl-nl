@@ -1,42 +1,41 @@
 ---
-title: Aanbiedings instellingen voor een Azure IoT Edge module | Azure Marketplace
-description: Instellingen voor het aanbod voor een IoT Edge module configureren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Instellingen bieden voor een Azure IoT Edge-module | Azure Marketplace
+description: Aanbiedingsinstellingen configureren voor een IoT Edge-module.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 1043f467a7363bc0e3eedba40fd2246015592276
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0fb15a6d71278be9b380f793d39732e763d6447d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286571"
 ---
-# <a name="iot-edge-module-offer-settings-tab"></a>Tabblad instellingen van IoT Edge-module
+# <a name="iot-edge-module-offer-settings-tab"></a>Tabblad Aanbiedingsinstellingen voor IoT Edge-module
 
-De pagina **IOT Edge-Modules > nieuwe aanbieding** wordt geopend met de focus op het tabblad instellingen van de **aanbieding** . 
+De **pagina IoT Edge Modules > nieuwe aanbieding** wordt geopend met de focus op het tabblad **Aanbiedingsinstellingen.** 
 
-![Nieuwe aanbiedings pagina voor IoT Edge modules](./media/iot-edge-module-offer-settings-tab.png)
+![Nieuwe aanbiedingspagina voor IoT Edge-modules](./media/iot-edge-module-offer-settings-tab.png)
 
 
-## <a name="offer-identity-settings"></a>Identiteits instellingen van aanbod
+## <a name="offer-identity-settings"></a>Identiteitsinstellingen aanbieden
 
-Onder **identiteit van aanbod**moet u informatie opgeven voor de velden die in de volgende tabel worden beschreven. Een asterisk (*) die wordt toegevoegd aan de veld naam geeft aan dat deze vereist is. 
+Onder **Aanbiedingsidentiteit**moet u informatie verstrekken voor de velden die in de volgende tabel worden beschreven. Een sterretje (*) dat aan de veldnaam is toegevoegd, geeft aan dat dit vereist is. 
 
 |  **Veld**       |     **Beschrijving**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Aanbiedings-ID\***       | Een unieke id (binnen een Publisher-profiel) voor de aanbieding. Deze id is zichtbaar in product-Url's en inzichten rapporten. De naam mag Maxi maal 50 tekens lang zijn en kan kleine letters en streepjes (-) bevatten. (De id mag niet eindigen met een streepje.) **Opmerking:** Dit veld kan niet worden gewijzigd nadat een aanbieding Live is. <br> Als contoso bijvoorbeeld een aanbieding publiceert met voor beeld van een aanbiedings-ID **-IOT-Edge-module**, wordt de URL van de Azure Marketplace toegewezen `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
-| **Uitgever\***     | De unieke id van uw organisatie in azure Marketplace. Al uw aanbiedingen moeten worden gekoppeld aan uw uitgevers-ID. Deze waarde kan niet worden gewijzigd nadat de aanbieding is opgeslagen. |
-| **Naam\***          | De weergave naam voor uw aanbieding. Deze naam wordt weer gegeven in de Azure Marketplace en in de Cloud Partner-portal. De naam mag maximaal 50 tekens bevatten. We raden u aan om een herken bare merk naam voor uw product te gebruiken. Neem de naam van uw organisatie niet op, tenzij u het product in de handel brengt. Als u dit aanbod in de handel wilt brengen in andere websites en publicaties, moet u ervoor zorgen dat de naam precies hetzelfde is in alle publicaties. |
+| **Aanbiedings-id\***       | Een unieke id (binnen een uitgeversprofiel) voor de aanbieding. Deze id is zichtbaar in product-URL's en insights-rapporten. Het heeft een maximale lengte van 50 tekens en kan alfanumerieke letters en streepjes (-) gebruiken. (De id kan niet eindigen met een streepje.) **Let op:** Dit veld kan niet worden gewijzigd nadat een aanbieding live is gegaan. <br> Als Contoso bijvoorbeeld een aanbieding publiceert met **voorbeeld-iot-edge-module**voor aanbiedings-ID, krijgt deze de URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`van Azure Marketplace toegewezen. |
+| **Publisher\***     | De unieke id van uw organisatie in de Azure Marketplace. Al uw aanbiedingen moeten worden gekoppeld aan uw uitgever-id. Deze waarde kan niet worden gewijzigd nadat de aanbieding is opgeslagen. |
+| **Naam\***          | De weergavenaam voor uw aanbieding. Deze naam wordt weergegeven in de Azure Marketplace en in de Cloud Partner Portal. De naam mag maximaal 50 tekens bevatten. Wij raden u aan een herkenbare merknaam voor uw product te gebruiken. Vermeld de naam van uw organisatie niet, tenzij uw product op die manier op de markt wordt gebracht. Als u deze aanbieding op de markt zet in andere websites en publicaties, zorg er dan voor dat de naam in alle publicaties precies hetzelfde is. |
 |  |  |
 
 
-Selecteer **Opslaan** om de instellingen voor uw aanbieding op te slaan.
+Selecteer **Opslaan** om uw aanbiedingsinstellingen op te slaan.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik het tabblad [sku's](./cpp-skus-tab.md) voor het configureren van de sku's voor uw aanbieding.
+Gebruik het tabblad [SKU's](./cpp-skus-tab.md) om de SKU's voor uw aanbieding te configureren.

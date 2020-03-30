@@ -1,46 +1,45 @@
 ---
 title: Een Power BI-app-aanbieding maken | Azure Marketplace
-description: Een Power BI app-aanbieding maken voor de Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+description: Een Power BI-app-aanbieding maken voor de Microsoft AppSource Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pabutler
-ms.openlocfilehash: e0ee26672697517556a2f639b533a1217712d03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286384"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
-In dit artikel worden de stappen beschreven die u moet volgen om een nieuwe Power BI app-aanbieding voor [AppSource](https://appsource.microsoft.com)te maken. Elk aanbod wordt als eigen entiteit weer gegeven in AppSource. Wanneer u een nieuwe aanbieding in de [Cloud Partner-Portal](https://cloudpartner.azure.com/)maakt, moet u vier groepen met assets voor uw aanbieding opgeven.
+In dit artikel worden de stappen weergegeven die moeten worden gevolgd om een nieuwe Power BI-app-aanbieding voor [AppSource](https://appsource.microsoft.com)te maken. Elk aanbod wordt weergegeven als een eigen entiteit in AppSource. Wanneer u een nieuwe aanbieding maakt in de [Cloud Partner Portal,](https://cloudpartner.azure.com/)moet u vier groepen assets leveren voor uw aanbieding.
 
-De activa groepen worden beschreven in de volgende tabel:
+De activagroepen worden beschreven in de volgende tabel:
 
-|   Activa groep      | Beschrijving                                                                         |
+|   Activagroep      | Beschrijving                                                                         |
 | ----------------   | ----------------                                                                    |
-| Aanbiedings instellingen     | De primaire identificaties en de naam voor de aanbieding.                                      |
-| Technische informatie     | De installatie-URL die u gebruikt voor het installeren van de app in de Power BI-werk ruimte van de client. Zie [Power bi app-documentatie](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over het genereren van deze URL. |
-| Details van de winkel | Bevat marketing-, juridische en Lead beheer-assets. Marketing assets bevatten een beschrijving en logo's van de aanbieding. Rechts middelen zijn onder andere een privacybeleid, gebruiks voorwaarden en andere juridische documentatie. Met het beleid voor het beheer van potentiële klanten kunt u opgeven hoe leads van de AppSource-gebruikers Portal moeten worden afgehandeld. |
-| Contactpersonen           | Bevat ondersteunings contactpersoon en beleids gegevens.                                     |
+| Aanbiedingsinstellingen     | De primaire identificaties en de naam voor de aanbieding.                                      |
+| Technische informatie     | De installatie-URL die u gebruikt om de app te installeren in de Power BI-werkruimte van de client. Zie [Power BI App-documentatie](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over het genereren van deze URL. |
+| Storefront-gegevens | Bevat activa voor marketing, juridische en leadmanagement. Marketingmiddelen bevatten een aanbiedingsbeschrijving en logo's. Juridische activa omvatten een privacybeleid, gebruiksvoorwaarden en andere juridische documentatie. Met het beheerbeleid voor leads u opgeven hoe u leads van de Gebruikersportal AppSource moet verwerken. |
+| Contactpersonen           | Bevat ondersteuningscontact- en beleidsinformatie.                                     |
 
-## <a name="new-offer-form"></a>Formulier voor nieuwe aanbieding
+## <a name="new-offer-form"></a>Nieuw aanbiedingsformulier
 
-Nadat u zich hebt aangemeld bij de Cloud Partner-portal, selecteert u **nieuwe aanbieding** in het linkerdeel venster. Selecteer vervolgens **Power bi apps**om het nieuwe aanbiedings formulier weer te geven en het proces van het definiëren van assets voor een nieuwe app-aanbieding te starten.
+Nadat u zich hebt aangemeld bij de Cloud Partner Portal, selecteert u **Nieuwe aanbieding** in het linkerdeelvenster. Selecteer vervolgens **Power BI-apps**als u het formulier Nieuwe aanbieding wilt weergeven en het proces wilt starten voor het definiëren van elementen voor een nieuwe app-aanbieding.
 
-![Menu-item Power BI-aanbieding](./media/new-offer-menu.png)
+![Menu-item voor Power BI-aanbieding](./media/new-offer-menu.png)
 
 > [!NOTE] 
-> Als de optie **Power bi apps** niet wordt weer gegeven of niet is ingeschakeld, is uw account niet gemachtigd om dit aanbiedings type te maken. Controleer of u aan alle [vereisten](./cpp-prerequisites.md) voor dit aanbiedings type hebt voldaan, inclusief registratie voor een ontwikkelaars account.
+> Als de optie **Power BI Apps** niet wordt weergegeven of niet is ingeschakeld, heeft uw account geen toestemming om dit aanbiedingstype te maken. Controleer of u aan alle voorwaarden voor dit [aanbiedingstype](./cpp-prerequisites.md) hebt voldaan, inclusief het registreren voor een ontwikkelaarsaccount.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen worden de tabbladen op de pagina **nieuw aanbod** voor een Power bi app-offer type beschreven. In elk artikel worden de activa groepen en ondersteunende services voor uw nieuwe Power BI-app-aanbieding beschreven.
+In de volgende artikelen worden de tabbladen op de pagina **Nieuwe aanbieding** voor een aanbiedingstype van De App van Power BI uitgelegd. In elk artikel worden de assetgroepen en ondersteunende services voor uw nieuwe Power BI App-aanbieding beschreven.
 
 -  [Tabblad voor aanbiedingsinstellingen](./cpp-offer-settings-tab.md)
 -  [Tabblad Technische gegevens](./cpp-technical-info-tab.md)

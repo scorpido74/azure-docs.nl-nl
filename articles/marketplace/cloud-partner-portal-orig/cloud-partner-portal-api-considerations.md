@@ -1,19 +1,18 @@
 ---
 title: API-overwegingen | Azure Marketplace
-description: Problemen met versie beheer, fout afhandeling en autorisatie bij het gebruik van Marketplace-Api's.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Problemen met versiebeheer, foutafhandeling en autorisatie bij het gebruik van de marketplace-API's.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 07cdb5e44dde0ca655191111d0a23dbab85b4cb2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819727"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288628"
 ---
 # <a name="api-considerations"></a>API-overwegingen
 
@@ -21,11 +20,11 @@ ms.locfileid: "73819727"
 <a name="api-versioning"></a>API-versiebeheer
 --------------
 
-Er kunnen meerdere versies van de API tegelijk beschikbaar zijn. Clients moeten aangeven welke versie ze willen gebruiken door de `api-version`-para meter op te geven als onderdeel van de query teken reeks.
+Er kunnen meerdere versies van de API tegelijk beschikbaar zijn. Clients moeten aangeven welke versie ze willen `api-version` aanroepen door de parameter op te geven als onderdeel van de querytekenreeks.
 
    `GET https://cloudpartner.azure.com/api/offerTypes?api-version=2017-10-31`
 
-Het antwoord op een aanvraag met een onbekende of ongeldige API-versie is een HTTP-code 400. Deze fout retourneert de verzameling van bekende API-versies in de antwoord tekst.
+Het antwoord op een aanvraag met een onbekende of ongeldige API-versie is een HTTP-code 400. Met deze fout wordt de verzameling van bekende API-versies in de antwoordtekst geretourneerd.
 
 ``` json
     {
@@ -39,13 +38,13 @@ Het antwoord op een aanvraag met een onbekende of ongeldige API-versie is een HT
 <a name="errors"></a>Fouten
 ------
 
-De API reageert op fouten met de bijbehorende HTTP-status codes en optioneel extra informatie in het antwoord dat als JSON is geserialiseerd.
-Wanneer u een fout bericht ontvangt, met name een 400-klasse fout, moet u de aanvraag niet opnieuw uitvoeren voordat u de onderliggende oorzaak herstelt. Corrigeer bijvoorbeeld in het bovenstaande voor beeld van het antwoord de API-versie parameter voordat u de aanvraag opnieuw verzendt.
+De API reageert op fouten met de bijbehorende HTTP-statuscodes en optioneel aanvullende informatie in de respons geserialiseerd als JSON.
+Wanneer u een fout ontvangt, met name een fout van 400 klassen, probeert u de aanvraag niet opnieuw voordat de onderliggende oorzaak wordt vastgesteld. Stel bijvoorbeeld in het voorbeeldantwoord hierboven de parameter API-versie vast voordat u de aanvraag opnieuw verzendt.
 
-<a name="authorization-header"></a>Autorisatie-header
+<a name="authorization-header"></a>Autorisatiekoptekst
 --------------------
 
-Voor alle Api's in deze Naslag informatie moet u de autorisatie-header door geven, samen met het Bearer-token dat is verkregen van Azure Active Directory (Azure AD). Deze header moet een geldig antwoord ontvangen. Als deze niet aanwezig is, wordt er een `401 Unauthorized` fout geretourneerd. 
+Voor alle API's in deze verwijzing moet u de autorisatiekop doorgeven, samen met het token aan toonder dat is verkregen uit Azure Active Directory (Azure AD). Deze header is vereist om een geldig antwoord te ontvangen; indien niet aanwezig, wordt een `401 Unauthorized` fout geretourneerd. 
 
 ``` HTTP
   GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview

@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten
-description: Problemen met hybride Azure Active Directory oplossen die zijn toegevoegd aan Windows 10-en Windows Server 2016-apparaten.
+title: Hybride Azure Active Directory-apparaten oplossen
+description: Het oplossen van problemen met hybride Azure Active Directory is toegetreden tot Windows 10- en Windows Server 2016-apparaten.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,36 +11,36 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331774"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hybride Azure Active Directory-apparaten oplossen 
 
 De inhoud van dit artikel is van toepassing op apparaten met Windows 10 of Windows Server 2016.
 
-Zie voor andere Windows-clients het artikel [problemen oplossen met hybride Azure Active Directory gekoppelde apparaten](troubleshoot-hybrid-join-windows-legacy.md)op hetzelfde niveau.
+Zie voor andere Windows-clients het artikel [Probleemoplossing hybride Azure Active Directory met downlevel apparaten](troubleshoot-hybrid-join-windows-legacy.md).
 
-In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory gekoppelde apparaten hebt geconfigureerd](hybrid-azuread-join-plan.md) om de volgende scenario's te ondersteunen:
+In dit artikel wordt ervan uitgegaan dat u [hybride Azure Active Directory-samengevoegde apparaten](hybrid-azuread-join-plan.md) hebt geconfigureerd om de volgende scenario's te ondersteunen:
 
-- Voorwaardelijke toegang op basis van een apparaat
-- [Zwervende instellingen voor ondernemingen](../active-directory-windows-enterprise-state-roaming-overview.md)
+- Voorwaardelijke toegang op basis van het apparaat
+- [Bedrijfsroaming van instellingen](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello voor Bedrijven](../active-directory-azureadjoin-passport-deployment.md)
 
-Dit document bevat richt lijnen voor probleem oplossing om mogelijke problemen op te lossen. 
+Dit document biedt richtlijnen voor het oplossen van problemen om mogelijke problemen op te lossen. 
 
-Voor Windows 10 en Windows Server 2016, hybride Azure Active Directory-koppeling, worden de update voor Windows 10 november 2015 en hoger ondersteund.
+Voor Windows 10 en Windows Server 2016 ondersteunt hybride Azure Active Directory join de Windows 10 November 2015 Update en hoger.
 
-## <a name="troubleshoot-join-failures"></a>Fouten bij samen voegen oplossen
+## <a name="troubleshoot-join-failures"></a>Problemen met joinfouten oplossen
 
-### <a name="step-1-retrieve-the-join-status"></a>Stap 1: de status van de samen voeging ophalen 
+### <a name="step-1-retrieve-the-join-status"></a>Stap 1: De joinstatus ophalen 
 
-**De status van de samen voeging ophalen:**
+**Ga als lid op om de joinstatus op te halen:**
 
-1. Open een opdracht prompt als beheerder
+1. Een opdrachtprompt openen als beheerder
 2. Type `dsregcmd /status`
 
 ```
@@ -88,31 +88,31 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>Stap 2: de status van de deelname evalueren 
+### <a name="step-2-evaluate-the-join-status"></a>Stap 2: De joinstatus evalueren 
 
-Controleer de volgende velden en zorg ervoor dat ze de verwachte waarden hebben:
+Bekijk de volgende velden en controleer of de verwachte waarden zijn:
 
-#### <a name="domainjoined--yes"></a>DomainJoined: Ja  
+#### <a name="domainjoined--yes"></a>DomainJoined : JA  
 
-Dit veld geeft aan of het apparaat is gekoppeld aan een on-premises Active Directory of niet. Als de waarde **Nee**is, kan het apparaat geen hybride Azure AD-deelname uitvoeren.  
+In dit veld wordt aangegeven of het apparaat is verbonden met een on-premises Active Directory of niet. Als de waarde **NEE**is, kan het apparaat geen hybride Azure AD-join uitvoeren.  
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined: Nee  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined : NEE  
 
-Dit veld geeft aan of het apparaat is geregistreerd bij Azure AD als persoonlijk apparaat (gemarkeerd als *toegevoegd aan werk plek*). Deze waarde mag **niet** worden toegevoegd aan een computer die lid is van een domein en ook hybride Azure AD is toegevoegd. Als de waarde **Ja**is, is er een werk-of school account toegevoegd vóór het volt ooien van de deelname van de hybride Azure AD. In dit geval wordt het account genegeerd wanneer u de jubileum update versie van Windows 10 (1607) gebruikt.
+In dit veld wordt aangegeven of het apparaat is geregistreerd bij Azure AD als een persoonlijk apparaat (gemarkeerd als *Workplace Joined).* Deze waarde moet **NEE** zijn voor een met een domein verbonden computer die ook hybride Azure AD heeft samengevoegd. Als de waarde **JA**is, is een werk- of schoolaccount toegevoegd voordat de hybride Azure AD wordt voltooid. In dit geval wordt het account genegeerd wanneer u de verjaardagsupdateversie van Windows 10 (1607) gebruikt.
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined: Ja  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : JA  
 
-Dit veld geeft aan of het apparaat is gekoppeld. De waarde is **Ja** als het apparaat een gekoppeld Azure AD-apparaat of een hybride Azure AD-apparaat is.
-Als de waarde **Nee**is, is de koppeling naar Azure AD nog niet voltooid. 
+In dit veld wordt aangegeven of het apparaat is verbonden. De waarde is **JA** als het apparaat een Azure AD-apparaat is of een hybride Azure AD-apparaat.
+Als de waarde **NEE**is, is de join to Azure AD nog niet voltooid. 
 
-Ga verder met de volgende stappen voor meer informatie over het oplossen van problemen.
+Ga naar de volgende stappen voor verdere probleemoplossing.
 
-### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Stap 3: de fase waarin de samen voeging is mislukt en de error code vinden
+### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Stap 3: De fase zoeken waarin deelnemen is mislukt en de foutcode
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
-In het veld ' fout fase ' wordt de fase van de fout bij het samen voegen aangegeven, terwijl ' client code-error ' de fout code van de koppelings bewerking aanduidt.
+Zoek naar 'Vorige registratie' onderafdeling in de sectie 'Diagnostische gegevens' van de join status output. Deze sectie wordt alleen weergegeven als het apparaat is samengevoegd en azure AD niet kan hybrideworden.
+Het veld 'Foutfase' geeft de fase van de joinfout aan, terwijl 'Client ErrorCode' de foutcode van de bewerking Join aangeeft.
 
 ```
 +----------------------------------------------------------------------+
@@ -127,62 +127,62 @@ In het veld ' fout fase ' wordt de fase van de fout bij het samen voegen aangege
 +----------------------------------------------------------------------+
 ```
 
-#### <a name="older-windows-10-versions"></a>Oudere versies van Windows 10
+#### <a name="older-windows-10-versions"></a>Oudere Windows 10-versies
 
-Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
+Gebruik Logboeklogboeken om de fase- en foutcode voor de joinfouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder het **logboek van toepassingen en Services** > **micro soft** > **Windows** - > **registratie van gebruikers apparaten**
-2. Zoek naar gebeurtenissen met de volgende eventIDs 304, 305, 307.
+1. Open de **gebeurtenislogboeken voor gebruikersapparaatregistratie** in gebeurtenisviewer. Bevindt zich onder **Toepassingen en Services-logboek** > **Microsoft** > **Windows-gebruikersapparaatregistratie** **Windows** > 
+2. Zoek naar evenementen met de volgende eventID's 304, 305, 307.
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/1.png)
+![Gebeurtenis logboek mislukte](./media/troubleshoot-hybrid-join-windows-current/1.png)
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/2.png)
+![Gebeurtenis logboek mislukte](./media/troubleshoot-hybrid-join-windows-current/2.png)
 
-### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Stap 4: controleren op mogelijke oorzaken en oplossingen in de onderstaande lijsten
+### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Stap 4: Controleer op mogelijke oorzaken en resoluties uit de onderstaande lijsten
 
-#### <a name="pre-check-phase"></a>Controle fase
+#### <a name="pre-check-phase"></a>Pre-check fase
 
-Mogelijke oorzaken voor fout:
+Mogelijke redenen voor het falen:
 
-- Het apparaat heeft geen regel voor het gezichts vermogen van de domein controller.
-   - Het apparaat moet zich in het interne netwerk van de organisatie of op VPN met netwerk regel bezien op een on-premises Active Directory (AD) domein controller.
+- Apparaat heeft geen zichtlijn naar de domeincontroller.
+   - Het apparaat moet zich op het interne netwerk van de organisatie of op VPN bevinden met netwerkzichtlijn naar een on-premises Active Directory -domeincontroller (AD).
 
-#### <a name="discover-phase"></a>Detectie fase
+#### <a name="discover-phase"></a>Ontdek fase
 
-Mogelijke oorzaken voor fout:
+Mogelijke redenen voor het falen:
 
-- SCP-object (Service Connection Point) is onjuist geconfigureerd/kan het SCP-object niet lezen van de domein controller.
-   - Een geldig SCP-object is vereist in het AD-forest waartoe het apparaat behoort, dat verwijst naar een geverifieerde domein naam in azure AD.
-   - Meer informatie vindt u in de sectie [een service verbindings punt configureren](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
-- Kan geen verbinding maken met de meta gegevens van de detectie en ophalen van het detectie-eind punt.
-   - Het apparaat moet in de systeem context toegang hebben tot `https://enterpriseregistration.windows.net`om de eind punten voor registratie en autorisatie te detecteren. 
-   - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat het computer account van het apparaat kan detecteren en op de achtergrond kan worden geverifieerd bij de uitgaande proxy.
-- Kan geen verbinding maken met het gebruikers realm-eind punt en voert realm-detectie uit. (Alleen Windows 10 versie 1809 en hoger)
-   - Het apparaat moet toegang hebben tot `https://login.microsoftonline.com`, in de systeem context, voor het uitvoeren van realm-detectie voor het geverifieerde domein en het bepalen van het domein type (beheerd/federatief).
-   - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat de systeem context op het apparaat kan detecteren en op de achtergrond kan worden geverifieerd bij de uitgaande proxy.
+- SCP-object (Service Connection Point) is verkeerd geconfigureerd/kan SCP-object uit DC niet lezen.
+   - Een geldig SCP-object is vereist in het AD-forest, waartoe het apparaat behoort, dat verwijst naar een geverifieerde domeinnaam in Azure AD.
+   - Details zijn te vinden in de sectie [Een serviceverbindingspunt configureren](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+- Het niet verbinden en ophalen van de detectiemetagegevens van het detectieeindpunt.
+   - Het apparaat moet in `https://enterpriseregistration.windows.net`staat zijn om toegang te krijgen tot , in de SYSTEEM-context, om de registratie- en autorisatieeindpunten te ontdekken. 
+   - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat het computeraccount van het apparaat in staat is om de uitgaande proxy te ontdekken en in stilte te verifiëren.
+- Het niet verbinden van het eindpunt van gebruikersrealm en het uitvoeren van realm-detectie. (Windows 10 versie 1809 en later alleen)
+   - Het apparaat moet in `https://login.microsoftonline.com`staat zijn om toegang te krijgen tot , in de systeemcontext, om realm detectie uit te voeren voor het geverifieerde domein en het domeintype te bepalen (beheerd /gefedereerd).
+   - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat de systeemcontext op het apparaat de uitgaande proxy kan ontdekken en in stilte kan verifiëren.
 
-**Algemene fout codes:**
+**Veelvoorkomende foutcodes:**
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - Reden: kan het SCP-object niet lezen en ophalen van de gegevens van de Azure AD-Tenant.
-   - Oplossing: Raadpleeg de sectie [een service verbindings punt configureren](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+   - Reden: kan het SCP-object niet lezen en de azure AD-tenantgegevens ontvangen.
+   - Oplossing: raadpleeg de sectie [Een serviceverbindingspunt configureren](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
-   - Reden: algemene detectie fout. Ophalen van de meta gegevens van de detectie van DRS is mislukt.
-   - Oplossing: Zoek hieronder de subfout op om verder te onderzoeken.
+   - Reden: Generieke discovery-fout. Kan de detectiemetagegevens van DRS niet krijgen.
+   - Oplossing: Zoek de onderfout hieronder om verder te onderzoeken.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
-   - Reden: er is een time-out opgetreden tijdens de bewerking tijdens het detecteren.
-   - Oplossing: Zorg ervoor dat `https://enterpriseregistration.windows.net` toegankelijk is in de systeem context. Zie de sectie [netwerk connectiviteit vereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+   - Reden: Er is een time-out ophet gebied van de operatie tijdens het uitvoeren van Discovery.
+   - Oplossing: Zorg `https://enterpriseregistration.windows.net` ervoor dat dit toegankelijk is in de systeemcontext. Zie voor meer informatie de sectie [Netwerkconnectiviteitsvereisten](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Reden: algemene realm-detectie fout. Kan het domein type (beheerd/Federatie) niet bepalen vanuit de STS. 
-   - Oplossing: Zoek hieronder de subfout op om verder te onderzoeken.
+   - Reden: Generieke Realm Discovery mislukking. Kan het domeintype (beheerd/gefedereerd) van STS niet bepalen. 
+   - Oplossing: Zoek de onderfout hieronder om verder te onderzoeken.
 
-**Algemene subfout codes:**
+**Veelvoorkomende subfoutcodes:**
 
-Gebruik een van de volgende methoden om de subfout code voor de fout code van de detectie te vinden.
+Als u de subfoutcode voor de detectiefoutcode wilt vinden, gebruikt u een van de volgende methoden.
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
+Zoek naar 'DRS Discovery Test' in het gedeelte 'Diagnostische gegevens' van de join status output. Deze sectie wordt alleen weergegeven als het apparaat is samengevoegd en azure AD niet kan hybrideworden.
 
 ```
 +----------------------------------------------------------------------+
@@ -202,112 +202,112 @@ Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de 
 +----------------------------------------------------------------------+
 ```
 
-##### <a name="older-windows-10-versions"></a>Oudere versies van Windows 10
+##### <a name="older-windows-10-versions"></a>Oudere Windows 10-versies
 
-Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
+Gebruik Logboeklogboeken om de fase en foutcode voor de joinfouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder het **logboek van toepassingen en Services** > **micro soft** > **Windows** - > **registratie van gebruikers apparaten**
+1. Open de **gebeurtenislogboeken voor gebruikersapparaatregistratie** in gebeurtenisviewer. Bevindt zich onder **Toepassingen en Services-logboek** > **Microsoft** > **Windows-gebruikersapparaatregistratie** **Windows** > 
 2. Zoek naar gebeurtenissen met de volgende eventIDs 201
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/5.png)
+![Gebeurtenis logboek mislukte](./media/troubleshoot-hybrid-join-windows-current/5.png)
 
-###### <a name="network-errors"></a>Netwerk fouten
+###### <a name="network-errors"></a>Netwerkfouten
 
-- **WININET_E_CANNOT_CONNECT** (0x80072EFD/-2147012867)
-   - Reden: verbinding met de server is niet tot stand gebracht
-   - Oplossing: Controleer of de netwerk verbinding met de vereiste micro soft-resources is. Zie [vereisten voor netwerk connectiviteit](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867)
+   - Reden: Verbinding met de server kon niet worden vastgesteld
+   - Oplossing: zorg voor netwerkconnectiviteit met de vereiste Microsoft-bronnen. Zie [Netwerkconnectiviteitsvereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie .
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Reden: algemene time-out in het netwerk.
-   - Oplossing: Controleer of de netwerk verbinding met de vereiste micro soft-resources is. Zie [vereisten voor netwerk connectiviteit](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+   - Reden: Algemene netwerktime-out.
+   - Oplossing: zorg voor netwerkconnectiviteit met de vereiste Microsoft-bronnen. Zie [Netwerkconnectiviteitsvereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie .
 - **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721)
-   - Reden: netwerk stack kan de reactie van de server niet ontsleutelen.
-   - Oplossing: Zorg ervoor dat de netwerk proxy de reactie van de server niet verstoort en wijzigt.
+   - Reden: Netwerkstack kan het antwoord van de server niet decoderen.
+   - Oplossing: zorg ervoor dat de netwerkproxy de serverrespons niet verstoort en wijzigt.
 
 ###### <a name="http-errors"></a>HTTP-fouten
 
 - **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582)
-   - Reden: SCP-object is geconfigureerd met een onjuiste Tenant-ID. Of er zijn geen actieve abonnementen gevonden in de Tenant.
-   - Oplossing: Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen of aanwezig is in de Tenant.
+   - Reden: SCP-object geconfigureerd met verkeerde tenant-id. Of er zijn geen actieve abonnementen gevonden in de tenant.
+   - Oplossing: ervoor zorgen dat scp-object is geconfigureerd met de juiste Azure AD-tenant-id en actieve abonnementen of aanwezig is in de tenant.
 - **DSREG_SERVER_BUSY** (0x801c0025/-2145648603)
    - Reden: HTTP 503 van DRS-server.
-   - Oplossing: de server is momenteel niet beschikbaar. toekomstige deelname pogingen zullen waarschijnlijk slagen zodra de server weer online is.
+   - Oplossing: server is momenteel niet beschikbaar. toekomstige join pogingen zal waarschijnlijk slagen zodra de server is weer online.
 
 ###### <a name="other-errors"></a>Andere fouten
 
 - **E_INVALIDDATA** (0x8007000d/-2147024883)
-   - Reden: de JSON van het server antwoord kan niet worden geparseerd. Waarschijnlijk vanwege een proxy retour nering van HTTP 200 met een HTML-auth-pagina.
-   - Oplossing: als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat de systeem context op het apparaat kan detecteren en op de achtergrond kan worden geverifieerd bij de uitgaande proxy.
+   - Reden: Server reactie JSON kon niet worden ontleed. Waarschijnlijk te wijten aan proxy terug te keren HTTP 200 met een HTML auth pagina.
+   - Oplossing: Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat de systeemcontext op het apparaat de uitgaande proxy kan ontdekken en in stilte kan verifiëren.
 
-#### <a name="authentication-phase"></a>Verificatie fase
+#### <a name="authentication-phase"></a>Verificatiefase
 
-Alleen van toepassing op federatieve domein accounts.
+Alleen van toepassing op federatieve domeinaccounts.
 
-Redenen voor fout:
+Redenen voor het mislukken:
 
-- Kan geen toegangs token op de achtergrond ophalen voor de DRS-resource.
-   - Windows 10-apparaten verkrijgen verificatie token van de Federation-service met geïntegreerde Windows-verificatie naar een actief WS-Trust-eind punt. Details: [Federation service configuratie](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+- Kan een Access-token niet in stilte krijgen voor DRS-bron.
+   - Windows 10-apparaten krijgen een auth-token van de federatieservice met geïntegreerde Windows-verificatie tot een actief WS-Trust-eindpunt. Details: [Federation Service Configuration](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
-**Algemene fout codes:**
+**Veelvoorkomende foutcodes:**
 
-Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de server en het fout bericht van de server te vinden.
+Gebruik Logboeklogboeken om de foutcode, subfoutcode, serverfoutcode en serverfoutbericht te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder het **logboek van toepassingen en Services** > **micro soft** > **Windows** - > **registratie van gebruikers apparaten**
-2. Zoek naar gebeurtenissen met de volgende gebeurtenis-305
+1. Open de **gebeurtenislogboeken voor gebruikersapparaatregistratie** in gebeurtenisviewer. Bevindt zich onder **Toepassingen en Services-logboek** > **Microsoft** > **Windows-gebruikersapparaatregistratie** **Windows** > 
+2. Zoek naar gebeurtenissen met de volgende gebeurtenisID 305
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/3.png)
+![Gebeurtenis logboek mislukte](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
 ##### <a name="configuration-errors"></a>Configuratiefouten
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
-   - Reden: verificatie protocol is niet WS-Trusted.
-   - Oplossing: de on-premises ID-provider moet WS-Trust ondersteunen 
+   - Reden: Verificatieprotocol is geen WS-Trust.
+   - Oplossing: De on-premises identiteitsprovider moet WS-Trust ondersteunen 
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
-   - Reden: on-premises Federation service heeft geen XML-antwoord geretourneerd.
-   - Oplossing: Zorg ervoor dat MEX-eind punt een geldig XML-bestand retourneert. Zorg ervoor dat de proxy geen problemen ondervindt met het retour neren van niet-XML-antwoorden.
+   - Reden: On-premises federation service heeft geen XML-antwoord retourneren.
+   - Oplossing: zorg ervoor dat MEX-eindpunt een geldige XML retouraft. Zorg ervoor dat proxy niet interfereert en niet-xml-reacties retourt.
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045)
-   - Reden: kan het eind punt voor de verificatie van gebruikers naam en wacht woord niet detecteren.
-   - Oplossing: Controleer de instellingen van on-premises ID-provider. Zorg ervoor dat de WS-Trust-eind punten zijn ingeschakeld en zorg ervoor dat het MEX-antwoord deze juiste eind punten bevat.
+   - Reden: Kan geen eindpunt ontdekken voor verificatie van gebruikersnaam/wachtwoord.
+   - Oplossing: Controleer de instellingen van de on-premises identiteitsprovider. Zorg ervoor dat de WS-Trust-eindpunten zijn ingeschakeld en zorg ervoor dat het MEX-antwoord deze juiste eindpunten bevat.
 
-##### <a name="network-errors"></a>Netwerk fouten
+##### <a name="network-errors"></a>Netwerkfouten
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
-   - Reden: algemene time-out in het netwerk.
-   - Oplossing: Zorg ervoor dat `https://login.microsoftonline.com` toegankelijk is in de systeem context. Zorg ervoor dat de on-premises ID-provider toegankelijk is in de systeem context. Zie [vereisten voor netwerk connectiviteit](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+   - Reden: Algemene netwerktime-out.
+   - Oplossing: Zorg `https://login.microsoftonline.com` ervoor dat dit toegankelijk is in de systeemcontext. Zorg ervoor dat de on-premises identiteitsprovider toegankelijk is in de SYSTEEMcontext. Zie [Netwerkconnectiviteitsvereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie .
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
-   - Reden: verbinding met het verificatie-eind punt is afgebroken.
-   - Oplossing: Probeer het over enige tijd opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie.
+   - Reden: Verbinding met het auth-eindpunt is afgebroken.
+   - Oplossing: Probeer het opnieuw na enige tijd of probeer lid te worden vanaf een alternatieve stabiele netwerklocatie.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - Reden: het door de server verzonden certificaat voor Secure Sockets Layer (SSL) kan niet worden gevalideerd.
-   - Oplossing: Controleer de client tijd scheefheid. Probeer het later opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie. 
+   - Reden: het TLS (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), kan niet worden gevalideerd.
+   - Oplossing: Controleer de clienttijd scheeftrekken. Probeer het opnieuw na enige tijd of probeer lid te worden van een alternatieve stabiele netwerklocatie. 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Reden: de poging om verbinding te maken met `https://login.microsoftonline.com` is mislukt.
-   - Oplossing: Controleer de netwerk verbinding met `https://login.microsoftonline.com`.
+   - Reden: De poging `https://login.microsoftonline.com` om verbinding te maken is mislukt.
+   - Oplossing: Netwerkverbinding `https://login.microsoftonline.com`controleren met .
 
 ##### <a name="other-errors"></a>Andere fouten
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
-   - Reden: SAML-token van de on-premises ID-provider is niet geaccepteerd door Azure AD.
-   - Oplossing: Controleer de instellingen van de Federatie server. Zoek naar de fout code van de server in de verificatie Logboeken.
+   - Reden: SAML-token van de on-premises identiteitsprovider is niet geaccepteerd door Azure AD.
+   - Oplossing: Controleer de instellingen van de federatieserver. Zoek naar de serverfoutcode in de verificatielogboeken.
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
-   - Reden: de server WS-Trust Response heeft een fout uitzondering gerapporteerd en de bevestiging is niet opgehaald
-   - Oplossing: Controleer de instellingen van de Federatie server. Zoek naar de fout code van de server in de verificatie Logboeken.
-- **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
-   - Reden: er is een fout opgetreden bij het ophalen van het toegangs token van het token eindpunt.
-   - Oplossing: zoek naar de onderliggende fout in het ADAL-logboek. 
+   - Reden: Server WS-Trust response gemeld fout uitzondering en het niet om bewering te krijgen
+   - Oplossing: Controleer de instellingen van de federatieserver. Zoek naar de serverfoutcode in de verificatielogboeken.
+- **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xca90006/-894894074)
+   - Reden: er is een fout ontvangen wanneer u toegangstoken probeert te krijgen van het tokeneindpunt.
+   - Oplossing: Zoek naar de onderliggende fout in het ADAL-logboek. 
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
-   - Reden: algemene ADAL-fout
-   - Oplossing: zoek naar de code van de subfout of de fout code van de server uit de verificatie Logboeken.
+   - Reden: Algemene ADAL mislukking
+   - Oplossing: zoek naar de subfoutcode of serverfoutcode uit de verificatielogboeken.
     
-#### <a name="join-phase"></a>Deelname fase
+#### <a name="join-phase"></a>Deelnemen aan fase
 
-Redenen voor fout:
+Redenen voor het mislukken:
 
-Zoek het registratie type en zoek naar de fout code in de onderstaande lijst.
+Zoek het registratietype en zoek naar de foutcode in de onderstaande lijst.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 en hoger
 
-Zoek naar de subsectie ' voorafgaande registratie ' in de sectie ' Diagnostische gegevens ' van de uitvoer van de samenvoeg status. Deze sectie wordt alleen weer gegeven als het apparaat lid is van een domein en niet kan hybride Azure AD join.
-Het veld registratie type geeft het type samen voeging aan dat wordt uitgevoerd.
+Zoek naar 'Vorige registratie' onderafdeling in de sectie 'Diagnostische gegevens' van de join status output. Deze sectie wordt alleen weergegeven als het apparaat is samengevoegd en azure AD niet kan hybrideworden.
+Het veld 'Registratietype' geeft het type uitgevoerd join aan.
 
 ```
 +----------------------------------------------------------------------+
@@ -322,94 +322,94 @@ Het veld registratie type geeft het type samen voeging aan dat wordt uitgevoerd.
 +----------------------------------------------------------------------+
 ```
 
-#### <a name="older-windows-10-versions"></a>Oudere versies van Windows 10
+#### <a name="older-windows-10-versions"></a>Oudere Windows 10-versies
 
-Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
+Gebruik Logboeklogboeken om de fase en foutcode voor de joinfouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder het **logboek van toepassingen en Services** > **micro soft** > **Windows** - > **registratie van gebruikers apparaten**
+1. Open de **gebeurtenislogboeken voor gebruikersapparaatregistratie** in gebeurtenisviewer. Bevindt zich onder **Toepassingen en Services-logboek** > **Microsoft** > **Windows-gebruikersapparaatregistratie** **Windows** > 
 2. Zoek naar gebeurtenissen met de volgende eventIDs 204
 
-![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/4.png)
+![Gebeurtenis logboek mislukte](./media/troubleshoot-hybrid-join-windows-current/4.png)
 
-##### <a name="http-errors-returned-from-drs-server"></a>HTTP-fouten geretourneerd door de DRS-server
+##### <a name="http-errors-returned-from-drs-server"></a>HTTP-fouten geretourneerd van DRS-server
 
 - **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630)
-   - Reden: er is een fout antwoord ontvangen van DRS met error code: "Directory fout"
-   - Oplossing: Raadpleeg de fout code van de server voor mogelijke redenen en oplossingen.
+   - Reden: Een foutreactie van DRS ontvangen met ErrorCode: "DirectoryError"
+   - Oplossing: Raadpleeg de serverfoutcode om mogelijke redenen en oplossingen.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Reden: er is een fout antwoord ontvangen van DRS met error code: ' AuthenticationError ' en ErrorSubCode is niet ' DeviceNotFound '. 
-   - Oplossing: Raadpleeg de fout code van de server voor mogelijke redenen en oplossingen.
+   - Reden: Ontvangen een foutreactie van DRS met ErrorCode: "AuthenticationError" en ErrorSubCode is NIET "DeviceNotFound". 
+   - Oplossing: Raadpleeg de serverfoutcode om mogelijke redenen en oplossingen.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
-   - Reden: er is een fout antwoord ontvangen van DRS met error code: "Directory fout"
-   - Oplossing: Raadpleeg de fout code van de server voor mogelijke redenen en oplossingen.
+   - Reden: Een foutreactie van DRS ontvangen met ErrorCode: "DirectoryError"
+   - Oplossing: Raadpleeg de serverfoutcode om mogelijke redenen en oplossingen.
 
 ##### <a name="tpm-errors"></a>TPM-fouten
 
 - **NTE_BAD_KEYSET** (0x80090016/-2146893802)
-   - Reden: TPM-bewerking is mislukt of is ongeldig
-   - Oplossing: waarschijnlijk vanwege een onjuiste Sysprep-installatie kopie. Zorg ervoor dat de computer waarvan de Sysprep-installatie kopie is gemaakt, niet is toegevoegd aan Azure AD, aan hybride Azure AD is toegevoegd of dat Azure AD is geregistreerd.
+   - Reden: TPM-bewerking is mislukt of ongeldig is
+   - Oplossing: Waarschijnlijk te wijten aan een slechte sysprep afbeelding. Controleer of de machine waarvan de sysprep-afbeelding is gemaakt, niet is toegetreden tot Azure AD, dat hybride Azure AD is samengevoegd of azure AD is geregistreerd.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Reden: algemene TPM-fout. 
-   - Oplossing: Schakel TPM op apparaten met deze fout uit. Windows 10 versie 1809 en hoger detecteert automatisch TPM-fouten en voert hybride Azure AD-deelname uit zonder de TPM te gebruiken.
+   - Reden: Generieke TPM-fout. 
+   - Resolutie: Schakel TPM uit op apparaten met deze fout. Windows 10 versie 1809 en hoger detecteert automatisch TPM-fouten en voltooit hybride Azure AD-join zonder de TPM te gebruiken.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
    - Reden: TPM in FIPS-modus wordt momenteel niet ondersteund.
-   - Oplossing: Schakel TPM op apparaten met deze fout uit. Windows 1809 detecteert automatisch TPM-fouten en voltooit hybride Azure AD-deelname zonder de TPM te gebruiken.
+   - Resolutie: Schakel TPM uit op apparaten met deze fout. Windows 1809 detecteert automatisch TPM-fouten en voltooit hybride Azure AD-join zonder de TPM te gebruiken.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
-   - Reden: TPM is vergrendeld.
-   - Oplossing: tijdelijke fout. Wacht tot de cooldown-periode. Probeer het na enige tijd opnieuw. Meer informatie vindt u in het artikel over de [grond beginselen van TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Reden: TPM buitengesloten.
+   - Oplossing: Tijdelijke fout. Wacht op de cooldown periode. Deelnemen poging na enige tijd moet slagen. Meer Informatie is te vinden in het artikel [TPM fundamentals](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
-##### <a name="network-errors"></a>Netwerk fouten
+##### <a name="network-errors"></a>Netwerkfouten
 
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Reden: time-out bij algemeen netwerk bij het registreren van het apparaat bij DRS
-   - Oplossing: Controleer de netwerk verbinding met `https://enterpriseregistration.windows.net`.
-- **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
-   - Reden: de server naam of het adres kan niet worden omgezet.
-   - Oplossing: Controleer de netwerk verbinding met `https://enterpriseregistration.windows.net`. Zorg ervoor dat de DNS-omzetting voor de hostnaam nauw keurig is in de n/w en op het apparaat.
+   - Reden: Algemene netwerktime-out proberen om het apparaat te registreren bij DRS
+   - Resolutie: Controleer de `https://enterpriseregistration.windows.net`netwerkverbinding naar .
+- **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
+   - Reden: de servernaam of het adres kan niet worden opgelost.
+   - Resolutie: Controleer de `https://enterpriseregistration.windows.net`netwerkverbinding naar . Zorg ervoor dat de DNS-resolutie voor de hostnaam nauwkeurig is in de n/w en op het apparaat.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
-   - Reden: de verbinding met de server is abnormaal beëindigd.
-   - Oplossing: Probeer het over enige tijd opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie.
+   - Reden: De verbinding met de server is abnormaal beëindigd.
+   - Oplossing: Probeer het opnieuw na enige tijd of probeer lid te worden vanaf een alternatieve stabiele netwerklocatie.
 
-##### <a name="federated-join-server-errors"></a>Fouten van federatieve lid server
+##### <a name="federated-join-server-errors"></a>Federatieve joinserverfouten
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
+| Serverfoutcode | Serverfoutbericht | Mogelijke redenen | Oplossing |
 | --- | --- | --- | --- |
-| Directory fout | Uw aanvraag is tijdelijk beperkt. Probeer na 300 seconden een ogen blik. | Verwachte fout. Mogelijk omdat er snel meerdere registratie aanvragen worden gedaan. | Na de cooldown-periode opnieuw verbinding maken |
+| DirectoryFout | Uw aanvraag wordt tijdelijk in beslag genomen. Probeer het na 300 seconden. | Verwachte fout. Mogelijk te wijten aan het maken van meerdere registratieaanvragen in snelle opeenvolging. | Opnieuw proberen lid te worden na de cooldown-periode |
 
-##### <a name="sync-join-server-errors"></a>Fouten bij het samen voegen van servers
+##### <a name="sync-join-server-errors"></a>Fouten in joinserver synchroniseren
 
-| Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
+| Serverfoutcode | Serverfoutbericht | Mogelijke redenen | Oplossing |
 | --- | --- | --- | --- |
-| Directory fout | AADSTS90002: kan de Tenant <UUID> niet vinden. Deze fout kan optreden als er geen actieve abonnementen voor de Tenant zijn. Neem contact op met de beheerder van uw abonnement. | De Tenant-ID in het SCP-object is onjuist | Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen en aanwezig is in de Tenant. |
-| Directory fout | Het apparaatobject met de opgegeven ID is niet gevonden. | Verwachte fout voor Sync-koppeling. Het apparaatobject is niet gesynchroniseerd van AD naar Azure AD | Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |
-| AuthenticationError | De verificatie van de SID van de doel computer | Het certificaat op het Azure AD-apparaat komt niet overeen met het certificaat dat wordt gebruikt voor het ondertekenen van de BLOB tijdens de synchronisatie koppeling. Deze fout betekent meestal dat de synchronisatie nog niet is voltooid. |  Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |
+| DirectoryFout | AADSTS90002: <UUID> Huurder niet gevonden. Deze fout kan optreden als er geen actieve abonnementen voor de tenant zijn. Neem contact op met uw abonnementsbeheerder. | Tenant-id in SCP-object is onjuist | Controleer of het SCP-object is geconfigureerd met de juiste Azure AD-tenant-id en actieve abonnementen en aanwezig is in de tenant. |
+| DirectoryFout | Het apparaatobject van de opgegeven ID wordt niet gevonden. | Verwachte fout voor synchronisatie join. Het apparaatobject is niet gesynchroniseerd van AD naar Azure AD | Wacht tot de synchronisatie van Azure AD Connect is voltooid en de volgende joinpoging na synchronisatie wordt opgelost |
+| VerificatieFout | De verificatie van de SID van de doelcomputer | Het certificaat op het Azure AD-apparaat komt niet overeen met het certificaat dat wordt gebruikt om de blob te ondertekenen tijdens de synchronisatiejoin. Deze fout betekent meestal dat de synchronisatie nog niet is voltooid. |  Wacht tot de synchronisatie van Azure AD Connect is voltooid en de volgende joinpoging na synchronisatie wordt opgelost |
 
-### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Stap 5: Logboeken verzamelen en contact opnemen met Microsoft Ondersteuning
+### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Stap 5: Logboeken verzamelen en contact opnemen met Microsoft Support
 
-Krijg hier open bare scripts: [https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+Hier krijg je openbare scripts: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
-1. Open een opdracht prompt voor beheerders en voer `start_ngc_tracing_public.cmd`uit.
+1. Open een opdrachtprompt `start_ngc_tracing_public.cmd`voor beheerders en voer uit .
 2. Voer de stappen uit om het probleem te reproduceren.
-3. Stop het uitvoeren van het logboek script door `stop_ngc_tracing_public.cmd`uit te voeren.
-4. Zip en verzend de Logboeken onder `%SYSTEMDRIVE%\TraceDJPP\*` voor analyse.
+3. Stop met het uitvoeren `stop_ngc_tracing_public.cmd`van het logboekscript door het uitvoeren van .
+4. Zip en stuur `%SYSTEMDRIVE%\TraceDJPP\*` de logs onder voor analyse.
 
-## <a name="troubleshoot-post-join-issues"></a>Problemen met post-deelname oplossen
+## <a name="troubleshoot-post-join-issues"></a>Problemen met post-join oplossen
 
-### <a name="retrieve-the-join-status"></a>De status van de samen voeging ophalen 
+### <a name="retrieve-the-join-status"></a>De joinstatus ophalen 
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: Ja en AzureADPrt: Ja
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: JA en AzureADPrt: JA
   
-Deze velden geven aan of de gebruiker is geverifieerd bij Azure AD bij het aanmelden bij het apparaat. Als de waarden **Nee**zijn, kan dit worden veroorzaakt door:
+Deze velden geven aan of de gebruiker zich bij het aanmelden bij het apparaat heeft geverifieerd bij Azure AD. Als de waarden **NEE**zijn, kan dit het gevolg zijn:
 
-- Ongeldige opslag sleutel in de TPM die tijdens de registratie aan het apparaat is gekoppeld (Controleer de KeySignTest tijdens de uitvoering van de verhoogde bevoegdheid).
-- Alternatieve aanmeldings-ID
-- Kan de HTTP-proxy niet vinden
+- Slechte opslagsleutel in de TPM die bij registratie aan het apparaat is gekoppeld (controleer de KeySignTest terwijl u verhoogd loopt).
+- Alternatieve aanmeldings-id
+- HTTP-proxy niet gevonden
 
 ## <a name="known-issues"></a>Bekende problemen
-- Onder Instellingen-> Accounts-> toegang tot werk of school kunnen hybride Azure AD gekoppelde apparaten twee verschillende accounts weer geven, één voor Azure AD en één voor on-premises AD, wanneer deze zijn verbonden met mobiele HOTS pots of externe WiFi-netwerken. Dit is slechts een UI-probleem en heeft geen invloed op de functionaliteit. 
+- Onder Instellingen -> Accounts -> Toegang tot werk of school kunnen hybride Azure AD-apparaten twee verschillende accounts weergeven, een voor Azure AD en een voor on-premises AD, wanneer deze zijn verbonden met mobiele hotspots of externe WiFi-netwerken. Dit is slechts een ui-probleem en heeft geen invloed op de functionaliteit. 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Door gaan met [het oplossen van problemen met de dsregcmd-opdracht](troubleshoot-device-dsregcmd.md)
+Doorgaan [met het oplossen van problemen met apparaten met de opdracht dsregcmd](troubleshoot-device-dsregcmd.md)
 
-Zie [Veelgestelde vragen over Apparaatbeheer](faq.md) voor meer informatie.
+Zie de [veelgestelde vragen over apparaatbeheer](faq.md) voor vragen

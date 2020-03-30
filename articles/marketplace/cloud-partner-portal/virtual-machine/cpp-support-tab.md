@@ -1,46 +1,45 @@
 ---
-title: Tabblad ondersteuning voor virtuele machines in de Cloud Partner-portal voor Azure Marketplace
-description: Hierin wordt het tabblad ondersteuning beschreven dat wordt gebruikt voor het maken van een Azure Marketplace-VM-aanbieding.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Tabblad Ondersteuning voor virtuele machines in de Cloud Partner Portal voor azure marketplace
+description: Beschrijft het tabblad Ondersteuning dat wordt gebruikt bij het maken van een Azure Marketplace VM-aanbieding.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: fcf7a51e69e901ae04b29c4fb621d401d170d2f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288849"
 ---
-# <a name="virtual-machine-support-tab"></a>Tabblad ondersteuning voor virtuele machines
+# <a name="virtual-machine-support-tab"></a>Tabblad Ondersteuning voor virtuele machines
 
-Op het tabblad **ondersteuning** van de pagina **nieuwe aanbieding** kunt u technische en gebruikers ondersteunings bronnen bieden voor uw aanbieding.  Het is onderverdeeld in drie gebieden: **technische**en **ondersteunings-url's**.
+Op het tabblad **Ondersteuning** van de pagina **Nieuwe aanbieding** u technische en gebruikersondersteuningsbronnen voor uw aanbieding bieden.  Het is verdeeld in drie gebieden: **Engineering,** **Customer Support**en **Support URL's**.
 
-![Tabblad ondersteuning van het formulier nieuwe aanbieding voor virtuele machines](./media/publishvm_012.png)
+![Tabblad Ondersteuning op het formulier Nieuwe aanbieding voor virtuele machines](./media/publishvm_012.png)
 
-## <a name="field-values"></a>Veld waarden
+## <a name="field-values"></a>Veldwaarden
 
-In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden gedicteerd door een asterisk (*).
+In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Vereiste velden worden aangeklaagd door een sterretje (*).
 
 |         Veld                 |       Beschrijving                                                        |
 |        -------                |       ------------                                                       |
-| *Technische contact persoon*     | Fungeert als technische contact persoon tussen micro soft en uw organisatie | 
-| **Naam\***                | De naam van de persoon of groep die fungeert als technische/technische ondersteuning     |
-| **E-mail\***               | E-mail adres van deze technische contact persoon                                      |
-| **Telefoon\***               | Telefoon nummer voor technische ondersteuning                                           |
-| *Klant ondersteuning*        | Ontvangt ondersteunings tickets die zijn geopend door klanten in azure |
-| **Naam\***                | De naam van de persoon of groep die fungeert als klant ondersteuning                  |
-| **E-mail\***               | E-mail adres van de klant ondersteuning                                            |
-| **Telefoon\***               | Telefoon nummer voor klant ondersteuning                                            |
-| *Url's voor ondersteuning*            | Ondersteunings sites die door micro soft worden gebruikt wanneer uw klanten ondersteunings tickets openen |
-| **Open bare Azure**          | URL voor de site voor open bare Internet ondersteuning                                         |
-| **Azure Government Cloud**| URL voor de Cloud-ondersteunings site van de overheid                                        |
+| *Contactpersoon voor engineering*     | Fungeert als een technisch contact tussen Microsoft en uw organisatie | 
+| **Naam\***                | Naam van de persoon of groep die fungeert als technische/technische ondersteuning     |
+| **Email\***               | E-mailadres van deze technische contactpersoon                                      |
+| **Telefoon\***               | Telefoonnummer voor technische ondersteuning                                           |
+| *Klantenondersteuning*        | Ontvangt ondersteuningstickets die zijn geopend door klanten binnen Azure |
+| **Naam\***                | Naam van de persoon of groep die fungeert als klantenservice                  |
+| **Email\***               | E-mailadres van de klantenservice                                            |
+| **Telefoon\***               | Telefoonnummer voor klantenondersteuning                                            |
+| *Urls ondersteunen*            | Ondersteuningssites die Microsoft zal gebruiken wanneer uw klanten ondersteuningstickets openen |
+| **Openbaar Azure**          | URL voor openbare internetondersteuningssite                                         |
+| **Azure Government Cloud**| URL voor de ondersteuningssite voor overheidscloud                                        |
 |  |  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, voltooit u de [technische assets van uw virtuele machines](./cpp-create-technical-assets.md).
+Volgende als u nog niet zo doen, rond uw [virtuele machine technische activa](./cpp-create-technical-assets.md).

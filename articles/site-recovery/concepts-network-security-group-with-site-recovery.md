@@ -1,78 +1,78 @@
 ---
-title: Netwerkbeveiligingsgroepen met Azure Site Recovery | Microsoft Docs
-description: Beschrijft hoe u Netwerkbeveiligingsgroepen gebruikt met Azure Site Recovery voor herstel na noodgevallen en migratie
+title: Netwerkbeveiligingsgroepen met Azure-siteherstel | Microsoft Documenten
+description: Beschrijft hoe u netwerkbeveiligingsgroepen gebruiken met Azure Site Recovery voor herstel en migratie na noodgevallen
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292366"
 ---
-# <a name="network-security-groups-with-azure-site-recovery"></a>Netwerkbeveiligingsgroepen met Azure Site Recovery
+# <a name="network-security-groups-with-azure-site-recovery"></a>Netwerkbeveiligingsgroepen met Azure-siteherstel
 
-Netwerkbeveiligingsgroepen worden gebruikt voor het beperken van netwerkverkeer tot resources in een virtueel netwerk. Een [Netwerkbeveiligingsgroep (NSG)](../virtual-network/security-overview.md#network-security-groups) bevat een lijst met beveiligingsregels die toestaan of weigeren van binnenkomend of uitgaand netwerkverkeer op basis van de bron of doel-IP-adres, poort en protocol.
+Netwerkbeveiligingsgroepen worden gebruikt om netwerkverkeer te beperken tot bronnen in een virtueel netwerk. Een [Network Security Group (NSG)](../virtual-network/security-overview.md#network-security-groups) bevat een lijst met beveiligingsregels die binnenkomend of uitgaand netwerkverkeer toestaan of weigeren op basis van bron- of bestemmings-IP-adres, poort en protocol.
 
-Nsg's kunnen worden gekoppeld aan subnetten of afzonderlijke netwerkinterfaces in het Resource Manager-implementatiemodel. Wanneer een NSG is gekoppeld aan een subnet, zijn de regels van toepassing op alle resources die zijn verbonden met het subnet. Verkeer kan verder worden beperkt door ook een NSG koppelen aan afzonderlijke netwerkinterfaces binnen een subnet waarvoor al een gekoppelde NSG.
+Onder het implementatiemodel ResourceManager kunnen NSG's worden gekoppeld aan subnetten of afzonderlijke netwerkinterfaces. Wanneer een NSG is gekoppeld aan een subnet, zijn de regels van toepassing op alle resources die zijn verbonden met het subnet. Het verkeer kan verder worden beperkt door ook een NSG te koppelen aan individuele netwerkinterfaces binnen een subnet dat al een bijbehorende NSG heeft.
 
-Dit artikel wordt beschreven hoe u Netwerkbeveiligingsgroepen kunt gebruiken met Azure Site Recovery.
+In dit artikel wordt beschreven hoe u netwerkbeveiligingsgroepen gebruiken met Azure Site Recovery.
 
-## <a name="using-network-security-groups"></a>Met behulp van Netwerkbeveiligingsgroepen
+## <a name="using-network-security-groups"></a>Netwerkbeveiligingsgroepen gebruiken
 
-Een afzonderlijk subnet kan zijn nul of één Netwerkbeveiligingsgroep gekoppeld. Een afzonderlijke netwerkinterfaces kan ook zijn nul of één Netwerkbeveiligingsgroep gekoppeld. U kunt dus effectief dual verkeer beperking voor een virtuele machine te koppelen van een NSG eerst aan een subnet, en vervolgens op een andere NSG aan de netwerkinterface van de virtuele machine hebben. De toepassing van NSG-regels zijn in dit geval afhankelijk van de richting van verkeer en de prioriteit van toegepaste beveiligingsregels.
+Een individueel subnet kan nul of één bijbehorende NSG hebben. Een afzonderlijke netwerkinterface kan ook nul of één bijbehorende NSG hebben. U dus effectief een dubbele verkeersbeperking voor een virtuele machine hebben door eerst een NSG aan een subnet te koppelen en vervolgens een andere NSG aan de netwerkinterface van de VM. De toepassing van NSG-regels is in dit geval afhankelijk van de rijrichting en de prioriteit van de toegepaste beveiligingsregels.
 
-Houd rekening met een eenvoudig voorbeeld met één virtuele machine als volgt:
--   De virtuele machine wordt geplaatst in de **Contoso Subnet**.
--   **Contoso-Subnet** is gekoppeld aan **Subnet-NSG**.
--   De VM-netwerkinterface is ook gekoppeld aan **VM NSG**.
+Overweeg een eenvoudig voorbeeld met één virtuele machine als volgt:
+-    De virtuele machine wordt in het **Contoso Subnet**geplaatst.
+-    **Contoso Subnet** is gekoppeld aan **Subnet NSG**.
+-    De VM-netwerkinterface is bovendien gekoppeld aan **VM NSG.**
 
-![NSG met Site Recovery](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
+![NSG met siteherstel](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
-In dit voorbeeld voor binnenkomend verkeer de Subnet-NSG, wordt eerst geëvalueerd. Verkeer dat is toegestaan via de Subnet-NSG wordt vervolgens geëvalueerd door VM NSG. Het omgekeerde geldt voor uitgaand verkeer met VM-NSG wordt eerst geëvalueerd. Verkeer dat is toegestaan via VM NSG wordt vervolgens geëvalueerd door de Subnet-NSG.
+In dit voorbeeld wordt voor binnenkomend verkeer het subnet NSG eerst geëvalueerd. Verkeer dat via Subnet NSG is toegestaan, wordt vervolgens geëvalueerd door VM NSG. Het omgekeerde is van toepassing op uitgaand verkeer, waarbij VM NSG eerst wordt geëvalueerd. Alle verkeer toegestaan via VM NSG wordt vervolgens geëvalueerd door Subnet NSG.
 
-Hierdoor Regeltoepassing verfijnde beveiliging. U wilt bijvoorbeeld inkomende internet toegang tot een paar toepassings-VM's (zoals de front-end VM's) in een subnet, maar binnenkomende toegang tot internet beperken tot andere virtuele machines (zoals een database en andere back-end-VM's). U kunt in dit geval hebt een soepeler regel op de Subnet-NSG, zodat internetverkeer, en toegang tot specifieke virtuele machines beperken door het weigeren van toegang op VM NSG. Hetzelfde kan worden toegepast voor uitgaand verkeer.
+Dit maakt het mogelijk voor gedetailleerde beveiligingsregel toepassing. U bijvoorbeeld binnenkomende internettoegang toestaan tot een paar vm's voor toepassingen (zoals frontend VM's) onder een subnet, maar de inkomende internettoegang beperken tot andere VM's (zoals database- en andere backend-VM's). In dit geval u een mildere regel hebben op het subnet NSG, waardoor internetverkeer wordt toegestaan en de toegang tot specifieke VM's wordt beperkt door de toegang op VM NSG te weigeren. Hetzelfde kan worden toegepast voor uitgaand verkeer.
 
-Bij het instellen van dergelijke NSG-configuraties, zorg ervoor dat de juiste prioriteiten worden toegepast op de [beveiligingsregels](../virtual-network/security-overview.md#security-rules). Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.
+Controleer bij het instellen van dergelijke NSG-configuraties of de juiste prioriteiten worden toegepast op de [beveiligingsregels.](../virtual-network/security-overview.md#security-rules) Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.
 
-U ben er mogelijk niet altijd van op de hoogte wanneer netwerkbeveiligingsgroepen worden toegepast op zowel een netwerkinterface als een subnet. U kunt controleren of de cumulatieve regels toegepast op een netwerkinterface hand de [effectieve beveiligingsregels](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) voor een netwerkinterface. U kunt ook de [IP-stroom controleren](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) -mogelijkheid in [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) om te bepalen of de communicatie is toegestaan naar of van een netwerkinterface. Deze functie vertelt u of communicatie is toegestaan en welke netwerkbeveiligingsregel verkeer toestaat of weigert.
+U ben er mogelijk niet altijd van op de hoogte wanneer netwerkbeveiligingsgroepen worden toegepast op zowel een netwerkinterface als een subnet. U de geaggregeerde regels die op een netwerkinterface worden toegepast controleren door de [effectieve beveiligingsregels](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) voor een netwerkinterface te bekijken. U de [IP-stroomverificatiemogelijkheid](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) ook gebruiken in [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) om te bepalen of communicatie is toegestaan van of vanuit een netwerkinterface. Deze functie vertelt u of communicatie is toegestaan en welke netwerkbeveiligingsregel verkeer toestaat of weigert.
 
 ## <a name="on-premises-to-azure-replication-with-nsg"></a>On-premises naar Azure-replicatie met NSG
 
-Azure Site Recovery maakt herstel na noodgevallen en migratie naar Azure voor on-premises [Hyper-V virtuele machines](hyper-v-azure-architecture.md), [virtuele VMware-machines](vmware-azure-architecture.md), en [fysieke servers](physical-azure-architecture.md). Replicatiegegevens worden voor alle on-premises naar Azure-scenario's, verzonden naar en opgeslagen in een Azure Storage-account. Tijdens de replicatie betaalt u geen kosten voor elke virtuele machine. Wanneer u een failover naar Azure uitvoert, maakt Site Recovery automatisch virtuele machines van Azure IaaS.
+Azure Site Recovery maakt disaster recovery en migratie naar Azure mogelijk voor on-premises [Virtuele Hyper-V-machines,](hyper-v-azure-architecture.md) [Virtuele VMware-machines](vmware-azure-architecture.md)en [fysieke servers](physical-azure-architecture.md). Voor alle on-premises naar Azure-scenario's worden replicatiegegevens verzonden naar en opgeslagen in een Azure Storage-account. Tijdens de replicatie betaalt u geen kosten voor virtuele machines. Wanneer u een failover uitvoert naar Azure, maakt Site Recovery automatisch azure IaaS-virtuele machines.
 
-Zodra VM's zijn gemaakt na een failover naar Azure, kunnen de nsg's worden gebruikt om te beperken van netwerkverkeer naar het virtuele netwerk en VM's. Site Recovery maakt geen nsg's als onderdeel van de failoverbewerking. Het is raadzaam om de vereiste Azure nsg's maken voordat de failover wordt gestart. U kunt vervolgens nsg's koppelen aan virtuele machines automatisch failover tijdens de failover, met behulp van automatiseringsscripts met Site Recovery van krachtige [herstelplannen](site-recovery-create-recovery-plans.md).
+Zodra VM's zijn gemaakt na een failover naar Azure, kunnen NSG's worden gebruikt om netwerkverkeer te beperken tot het virtuele netwerk en VM's. Site Recovery maakt geen NSGs als onderdeel van de failover-bewerking. We raden u aan de vereiste Azure NSGs te maken voordat u een failover start. Vervolgens u NSGs automatisch koppelen aan mislukte VM's tijdens failover, met behulp van automatiseringsscripts met de krachtige [herstelplannen van](site-recovery-create-recovery-plans.md)Site Recovery.
 
-Bijvoorbeeld, als de configuratie van de virtuele machine na een failover is vergelijkbaar met de [voorbeeldscenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) hierboven beschreven:
--   U kunt maken **Contoso VNet** en **Contoso Subnet** als onderdeel van herstel na Noodgevallen plannen op de doel-Azure-regio.
--   U kunt ook maken en configureren van beide **Subnet-NSG** , evenals **VM NSG** als onderdeel van de dezelfde herstel na Noodgevallen plannen.
--   **Subnet-NSG** vervolgens direct kunnen worden gekoppeld aan **Contoso Subnet**, zoals de NSG en voor het subnet al beschikbaar zijn.
--   **VM NSG** kan worden gekoppeld aan virtuele machines tijdens de failover met behulp van herstelplannen.
+Als de VM-configuratie na failover bijvoorbeeld vergelijkbaar is met het [voorbeeldscenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) dat hierboven wordt beschreven:
+-    U **Contoso VNet** en **Contoso Subnet** maken als onderdeel van DR-planning op de doelazure-regio.
+-    U ook zowel **Subnet NSG** als **VM NSG** maken en configureren als onderdeel van dezelfde DR-planning.
+-    **Subnet NSG** kan dan direct worden gekoppeld aan **Contoso Subnet,** omdat zowel de NSG als het subnet al beschikbaar zijn.
+-    **VM NSG** kan tijdens failover aan VM's worden gekoppeld met herstelplannen.
 
-Zodra de nsg's zijn gemaakt en geconfigureerd, wordt aangeraden die wordt uitgevoerd een [testfailover](site-recovery-test-failover-to-azure.md) om te controleren of een script vastgelegd NSG koppelingen en VM-connectiviteit na een failover.
+Zodra de NSG's zijn gemaakt en geconfigureerd, raden we u aan een [testfailover](site-recovery-test-failover-to-azure.md) uit te voeren om gescripte NSG-koppelingen en VM-connectiviteit na het failoveren te verifiëren.
 
-## <a name="azure-to-azure-replication-with-nsg"></a>Replicatie van Azure naar Azure met NSG
+## <a name="azure-to-azure-replication-with-nsg"></a>Azure naar Azure-replicatie met NSG
 
-Azure Site Recovery maakt herstel na noodgevallen van [virtuele Azure-machines](azure-to-azure-architecture.md). Bij het inschakelen van replicatie voor virtuele machines van Azure kan Site Recovery maken van de replica virtuele netwerken (met inbegrip van subnetten en gateway-subnetten) op de doelregio en maken de vereiste toewijzingen tussen de bron en doel van de virtuele netwerken. U kunt ook vooraf de doel-kant netwerken en subnetten maken en gebruiken dezelfde tijdens het inschakelen van replicatie. Site Recovery maakt geen virtuele machines op de doel-Azure-regio voorafgaand aan de [failover](azure-to-azure-tutorial-failover-failback.md).
+Azure Site Recovery maakt disaster recovery van [Azure virtuele machines](azure-to-azure-architecture.md)mogelijk. Wanneer replicatie voor Azure VM's wordt ingeschakeld, kan Site Recovery de virtuele replicanetwerken (inclusief subnetten en gateway-subnetten) op het doelgebied maken en de vereiste toewijzingen maken tussen de bron- en doelvirtuele netwerken. U ook vooraf de doelnetwerken en subnetten maken en hetzelfde gebruiken terwijl u replicatie inschakelt. Siteherstel maakt geen VM's op het doelAzure-gebied voordat [deze mislukt.](azure-to-azure-tutorial-failover-failback.md)
 
-Zorg ervoor dat de NSG-regels op de bron-Azure-regio toestaan voor Azure VM-replicatie, [uitgaande connectiviteit](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) voor replicatieverkeer. U kunt ook testen en controleren of deze vereiste regels via deze [NSG voorbeeldconfiguratie](azure-to-azure-about-networking.md#example-nsg-configuration).
+Controleer voor Azure VM-replicatie of de NSG-regels voor het bronazure-gebied [uitgaande connectiviteit](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) voor replicatieverkeer toestaan. U deze vereiste regels ook testen en verifiëren via dit [voorbeeld NSG-configuratie.](azure-to-azure-about-networking.md#example-nsg-configuration)
 
-Site Recovery niet maken of repliceren nsg's als onderdeel van de failoverbewerking. Het is raadzaam om het maken van de vereiste nsg's op de doel-Azure-regio voordat de failover wordt gestart. U kunt vervolgens nsg's koppelen aan virtuele machines automatisch failover tijdens de failover, met behulp van automatiseringsscripts met Site Recovery van krachtige [herstelplannen](site-recovery-create-recovery-plans.md).
+Site recovery maakt of repliceert geen SGS als onderdeel van de failover-bewerking. We raden u aan de vereiste NSG's te maken op de beoogde Azure-regio voordat u een failover start. Vervolgens u NSGs automatisch koppelen aan mislukte VM's tijdens failover, met behulp van automatiseringsscripts met de krachtige [herstelplannen van](site-recovery-create-recovery-plans.md)Site Recovery.
 
-U overweegt de [voorbeeldscenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) die eerder zijn beschreven:
--   Site Recovery kunt maken van replica's van **Contoso VNet** en **Contoso Subnet** op de doel-Azure-regio wanneer replicatie is ingeschakeld voor de virtuele machine.
--   Kunt u de gewenste replica's van **Subnet-NSG** en **VM NSG** (met de naam, bijvoorbeeld **doel Subnet-NSG** en **doel VM NSG**, respectievelijk) op het doel Azure-regio, zodat voor eventuele extra regels die zijn vereist op de doelregio.
--   **Gericht op Subnet-NSG** kunnen vervolgens worden onmiddellijk die zijn gekoppeld aan het doelsubnet regio als zowel de NSG en het subnet al beschikbaar zijn.
--   **Richt VM NSG** kan worden gekoppeld aan virtuele machines tijdens de failover met behulp van herstelplannen.
+Rekening houdend met het [voorbeeldscenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) dat eerder is beschreven:
+-    Siteherstel kan replica's van **Contoso VNet** en **Contoso Subnet** maken op het doelazure-gebied wanneer replicatie is ingeschakeld voor de VM.
+-    U de gewenste replica's van **Subnet NSG** en **VM NSG** (met de naam bijvoorbeeld **Target Subnet NSG** en **Target VM NSG**) op de doelazure-regio maken, zodat er aanvullende regels voor het doelgebied nodig zijn.
+-    **Target Subnet NSG** kan dan direct worden gekoppeld aan het subnet van het doelgebied, omdat zowel de NSG als het subnet al beschikbaar zijn.
+-    **Target VM NSG** kan tijdens failover aan VM's worden gekoppeld met herstelplannen.
 
-Zodra de nsg's zijn gemaakt en geconfigureerd, wordt aangeraden die wordt uitgevoerd een [testfailover](azure-to-azure-tutorial-dr-drill.md) om te controleren of een script vastgelegd NSG koppelingen en VM-connectiviteit na een failover.
+Zodra de NSG's zijn gemaakt en geconfigureerd, raden we u aan een [testfailover](azure-to-azure-tutorial-dr-drill.md) uit te voeren om gescripte NSG-koppelingen en VM-connectiviteit na het failoveren te verifiëren.
 
 ## <a name="next-steps"></a>Volgende stappen
--   Meer informatie over [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md#network-security-groups).
--   Meer informatie over NSG [beveiligingsregels](../virtual-network/security-overview.md#security-rules).
--   Meer informatie over [effectieve beveiligingsregels](../virtual-network/diagnose-network-traffic-filter-problem.md) voor een NSG.
--   Meer informatie over [herstelplannen](site-recovery-create-recovery-plans.md) toepassing failover wilt automatiseren.
+-    Meer informatie over [netwerkbeveiligingsgroepen](../virtual-network/security-overview.md#network-security-groups).
+-    Meer informatie over [NSG-beveiligingsregels](../virtual-network/security-overview.md#security-rules).
+-    Meer informatie over [effectieve beveiligingsregels](../virtual-network/diagnose-network-traffic-filter-problem.md) voor een NSG.
+-    Meer informatie over [herstelplannen](site-recovery-create-recovery-plans.md) om failover van toepassingen te automatiseren.

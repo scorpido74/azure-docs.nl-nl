@@ -1,29 +1,29 @@
 ---
-title: Eenvoudig realtime mobiele toepassingen bouwen met de Azure signalerings service
-description: Meer informatie over de service waarmee u realtime toepassingen kunt bouwen met behulp van de Azure signalerings service.
-author: elamalani
+title: Eenvoudig realtime mobiele toepassingen bouwen met Azure SignalR Service
+description: Meer informatie over de service waarmee u realtime toepassingen bouwen met Azure SignalR Service.
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 988d5f9a66baeae46661ae363029aed0f521c8e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 242a929e4a4ebe00dd0a2101b27ab8a8bef3fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454393"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240818"
 ---
-# <a name="build-real-time-applications-with-azure-signalr-service"></a>Real-time toepassingen bouwen met de Azure signalerings service
+# <a name="build-real-time-applications-with-azure-signalr-service"></a>Real-time toepassingen bouwen met Azure SignalR-service
 
-Met de [Azure signalerings service](https://azure.microsoft.com/services/signalr-service/)kunt u eenvoudig real-time functionaliteit aan toepassingen toevoegen. Met deze real-time functionaliteit kan de service inhouds updates naar verbonden mobiele toepassingen pushen. Als gevolg hiervan worden apps bijgewerkt zonder de nood zaak om de server te pollen of nieuwe HTTP-aanvragen voor updates te verzenden.
+Met [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/)u eenvoudig realtime functionaliteit toevoegen aan toepassingen. Deze real-time functionaliteit stelt de service in staat om inhoudsupdates naar verbonden mobiele applicaties te pushen. Als gevolg hiervan worden apps bijgewerkt zonder dat u de server hoeft te peilen of nieuwe HTTP-verzoeken om updates hoeft in te dienen.
 
-## <a name="azure-signalr-service-features"></a>Functies van de Azure signalerings service
-- Biedt brede client ondersteuning voor een breed scala aan clients, zoals web-en mobiele browsers, bureaublad toepassingen, Server proces, IoT-apparaten en spel consoles.
-- Hiermee kunnen meerdere instanties samen werken om te schalen naar miljoenen mobiele toepassings verbindingen. Het ondersteunt ook meerdere globale regio's voor sharding, hoge Beschik baarheid of herstel na nood gevallen.
-- Biedt uitgebreide Api's voor verschillende bericht patronen voor het verzenden van berichten naar een bepaalde verbinding, alle verbindingen of een subset van verbindingen die deel uitmaken van een specifieke gebruiker of die in een wille keurige groep zijn geplaatst.
+## <a name="azure-signalr-service-features"></a>Azure SignalR-servicefuncties
+- Heeft brede clientondersteuning voor een breed scala aan clients, zoals web- en mobiele browsers, desktoptoepassingen, serverproces, IoT-apparaten en gameconsoles.
+- Hiermee kunnen meerdere instanties samenwerken om te schalen naar miljoenen mobiele toepassingsverbindingen. Het ondersteunt ook meerdere wereldwijde regio's voor sharding, hoge beschikbaarheid of disaster recovery doeleinden.
+- Biedt uitgebreide API's voor verschillende berichtenpatronen om berichten naar een bepaalde verbinding, alle verbindingen of een subset van verbindingen te verzenden die eigendom zijn van een specifieke gebruiker of in een willekeurige groep zijn geplaatst.
 
-## <a name="references"></a>Naslaginformatie
-   - [Azure Portal](https://portal.azure.com)
+## <a name="references"></a>Verwijzingen
+   - [Azure-portal](https://portal.azure.com)
    - [Documentatie voor Azure SignalR Service](/azure/azure-signalr/signalr-overview)
    - [Zelfstudies](/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions)

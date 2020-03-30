@@ -1,73 +1,73 @@
 ---
-title: Herkennings vaardigheid van entity erkennen
+title: Entiteit herkenning cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Extraheer verschillende typen entiteiten uit tekst in een verrijkings pijplijn in azure Cognitive Search.
+description: Verschillende typen entiteiten uit tekst halen in een verrijkingspijplijn in Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297819"
 ---
-#   <a name="entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van entity erkennen
+#    <a name="entity-recognition-cognitive-skill"></a>Entiteit herkenning cognitieve vaardigheid
 
-De kwalificatie voor **entiteits herkenning** extraheert entiteiten van verschillende typen van tekst. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in cognitive Services.
+Met de vaardigheid **Entiteitsherkenning** worden entiteiten van verschillende typen uit tekst geëxtraheerd. Deze vaardigheid maakt gebruik van de machine learning-modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in Cognitive Services.
 
 > [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
+> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de trefwoordextractor van de sleutelzin stuurt, u overwegen de [vaardigheid Text Split te](cognitive-search-skill-textsplit.md)gebruiken.
 
-## <a name="skill-parameters"></a>Vaardigheids parameters
+## <a name="skill-parameters"></a>Vaardigheidsparameters
 
-Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
+Parameters zijn hoofdlettergevoelig en zijn allemaal optioneel.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| categorieën    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
-|defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Niet alle entiteits categorieën worden ondersteund voor alle talen. Zie de opmerking hieronder.|
-|minimumPrecision | Een waarde tussen 0 en 1. Als de betrouwbaarheids Score (in de `namedEntities` uitvoer) lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaard waarde is 0. |
-|includeTypelessEntities | Stel deze in op `true` als u bekende entiteiten wilt herkennen die niet aan de huidige categorieën voldoen. Erkende entiteiten worden geretourneerd in het `entities` complexe uitvoer veld. "Windows 10" is bijvoorbeeld een bekende entiteit (een product), maar omdat "Products" geen ondersteunde categorie is, wordt deze entiteit opgenomen in het uitvoer veld entiteiten. De standaard waarde is `false` |
+| categorieën    | Reeks categorieën die moeten worden geëxtraheerd.  Mogelijke `"Person"`categorietypen: `"Location"` `"Organization"`, `"Quantity"` `"Datetime"`, `"URL"` `"Email"`, , , . Als er geen categorie is opgegeven, worden alle typen geretourneerd.|
+|standaardLanguageCode |    Taalcode van de invoertekst. De volgende talen worden `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`ondersteund: . Niet alle entiteitscategorieën worden voor alle talen ondersteund; zie opmerking hieronder.|
+|minimaalPrecisie | Een waarde tussen 0 en 1. Als de betrouwbaarheidsscore `namedEntities` (in de uitvoer) lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaardwaarde is 0. |
+|includeTypelessEntities | Stel `true` in op als u bekende entiteiten wilt herkennen die niet in de huidige categorieën passen. Erkende entiteiten worden geretourneerd `entities` in het complexe uitvoerveld. 'Windows 10' is bijvoorbeeld een bekende entiteit (een product), maar aangezien 'Producten' geen ondersteunde categorie is, wordt deze entiteit opgenomen in het uitvoerveld entiteiten. Standaard is`false` |
 
 
-## <a name="skill-inputs"></a>Vaardigheids invoer
+## <a name="skill-inputs"></a>Vaardigheidsingangen
 
-| Invoer naam      | Beschrijving                   |
+| Invoernaam      | Beschrijving                   |
 |---------------|-------------------------------|
-| languageCode  | Optioneel. De standaardwaarde is `"en"`.  |
-| tekst          | De tekst die moet worden geanalyseerd.          |
+| languageCode    | Optioneel. De standaardwaarde is `"en"`.  |
+| tekst          | De tekst om te analyseren.          |
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
+## <a name="skill-outputs"></a>Vaardigheidsuitvoer
 
 > [!NOTE]
-> Niet alle entiteits categorieën worden ondersteund voor alle talen. De categorie typen `"Person"`, `"Location"`en `"Organization"` entiteit worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_Hans-, _en_- _es_-, _fr_ _-en zh-_ ondersteuning ondersteunen het uitpakken van `"Quantity"`, `"Datetime"`, `"URL"`en `"Email"` typen. Zie [taal-en regio ondersteuning voor de Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)voor meer informatie.  
+> Niet alle entiteitscategorieën worden voor alle talen ondersteund. De `"Person"` `"Location"`typen `"Organization"` , en entiteitscategorieën worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_, _en_, _es_, _fr_, `"URL"`en `"Email"` _zh-hans_ ondersteunen extractie van `"Quantity"`, `"Datetime"`, en types. Zie [Taal- en regioondersteuning voor de Text Analytics API voor](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)meer informatie.  
 
-| Uitvoer naam     | Beschrijving                   |
+| Uitvoernaam      | Beschrijving                   |
 |---------------|-------------------------------|
-| personen      | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
-| locaties  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
-| organizations  | Een matrix met teken reeksen waarbij elke teken reeks een organisatie vertegenwoordigt. |
-| groot  | Een matrix met teken reeksen waarbij elke teken reeks een hoeveelheid vertegenwoordigt. |
-| Tijd  | Een matrix met teken reeksen waarbij elke teken reeks een datum/tijd vertegenwoordigt (zoals deze in de tekst) waarde wordt weer gegeven. |
-| adres | Een matrix met teken reeksen waarbij elke teken reeks een URL vertegenwoordigt |
-| emails | Een matrix met teken reeksen waarbij elke teken reeks een e-mail vertegenwoordigt |
-| namedEntities | Een matrix met complexe typen die de volgende velden bevat: <ul><li>category</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>vertrouwen (hogere waarde betekent dat het meer een echte entiteit is)</li></ul> |
-| Rijg | Een matrix met complexe typen met uitgebreide informatie over de entiteiten die zijn geëxtraheerd uit de tekst, met de volgende velden <ul><li> naam (de werkelijke naam van de entiteit. Dit vertegenwoordigt een ' genormaliseerd ' formulier.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (een koppeling naar de Wikipedia-pagina voor de entiteit)</li><li>bingId</li><li>type (de categorie van de entiteit die wordt herkend)</li><li>subtype (alleen beschikbaar voor bepaalde categorieën geeft dit een gedetailleerdere weer gave van het entiteits type)</li><li> komt overeen (een complexe verzameling die bevat)<ul><li>tekst (de onbewerkte tekst voor de entiteit)</li><li>offset (de locatie waar deze zich bevindt)</li><li>lengte (de lengte van de tekst van de onbewerkte entiteit)</li></ul></li></ul> |
+| Personen       | Een array met tekenreeksen waarbij elke tekenreeks de naam van een persoon vertegenwoordigt. |
+| locaties  | Een array met tekenreeksen waarbij elke tekenreeks een locatie vertegenwoordigt. |
+| organizations  | Een array met tekenreeksen waarbij elke tekenreeks een organisatie vertegenwoordigt. |
+| Hoeveelheden  | Een array met tekenreeksen waarbij elke tekenreeks een hoeveelheid vertegenwoordigt. |
+| datumTimes  | Een reeks tekenreeksen waarbij elke tekenreeks een datumtijdwaarde vertegenwoordigt (zoals deze in de tekst wordt weergegeven). |
+| Urls | Een array met tekenreeksen waarbij elke tekenreeks een URL vertegenwoordigt |
+| E-mails | Een reeks tekenreeksen waarbij elke tekenreeks een e-mail vertegenwoordigt |
+| namedEnentiteiten | Een array met complexe typen die de volgende velden bevat: <ul><li>category</li> <li>waarde (De werkelijke entiteitsnaam)</li><li>verschuiving (de locatie waar deze in de tekst is gevonden)</li><li>vertrouwen (Hogere waarde betekent dat het meer is om een echte entiteit te zijn)</li></ul> |
+| Entiteiten | Een array met complexe typen die uitgebreide informatie bevat over de entiteiten die uit tekst zijn geëxtraheerd, met de volgende velden <ul><li> naam (de werkelijke entiteitsnaam. Dit vertegenwoordigt een "genormaliseerd" formulier)</li><li> wikipediaId</li><li>wikipediaTaal</li><li>wikipediaUrl (een link naar Wikipedia-pagina voor de entiteit)</li><li>bingId</li><li>type (de categorie van de entiteit die is erkend)</li><li>subType (alleen beschikbaar voor bepaalde categorieën, dit geeft een meer gedetailleerde weergave van het entiteitstype)</li><li> overeenkomsten (een complexe verzameling die bevat)<ul><li>tekst (de ruwe tekst voor de entiteit)</li><li>offset (de locatie waar deze is gevonden)</li><li>lengte (de lengte van de tekst van de ruwe entiteit)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>Voorbeeld definitie
+##    <a name="sample-definition"></a>Voorbeelddefinitie
 
 ```json
   {
@@ -97,7 +97,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
     ]
   }
 ```
-##  <a name="sample-input"></a>Voorbeeld invoer
+##    <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -114,7 +114,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 }
 ```
 
-##  <a name="sample-output"></a>Voorbeelduitvoer
+##    <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
 {
@@ -187,11 +187,12 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 }
 ```
 
+Houd er rekening mee dat de verschuivingen die zijn geretourneerd voor entiteiten in de uitvoer van deze vaardigheid rechtstreeks worden geretourneerd vanuit de [Text Analytics-API,](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)wat betekent dat als u ze gebruikt om te indexeren in de oorspronkelijke tekenreeks, u de klasse [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) in .NET moet gebruiken om de juiste inhoud te extraheren.  [Meer details vindt u hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
-## <a name="error-cases"></a>Fout cases
-Als de taal code voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
+## <a name="error-cases"></a>Foutgevallen
+Als de taalcode voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
++ [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)

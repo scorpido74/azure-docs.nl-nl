@@ -1,77 +1,77 @@
 ---
-title: Tijdelijke connectiviteits fouten-Azure Database for MySQL
-description: Meer informatie over het afhandelen van problemen met de tijdelijke verbinding en om efficiënt verbinding te maken met Azure Database for MySQL.
-keywords: MySQL-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout, efficiënt verbinding maken
+title: Tijdelijke verbindingsfouten - Azure Database voor MySQL
+description: Meer informatie over het omgaan met tijdelijke verbindingsfouten en efficiënt verbinding maken met Azure Database voor MySQL.
+keywords: mysql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout, efficiënt verbinden
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d91048c52794869b5db1467a3456ca58e703d1ad
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 3/18/2020
+ms.openlocfilehash: 79c5c7e485cc9cb03757b8a981cef92d79b81c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719922"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537173"
 ---
-# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Tijdelijke fouten afhandelen en efficiënt verbinding maken met Azure Database for MySQL
+# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Tijdelijke fouten verwerken en efficiënt verbinding maken met Azure Database voor MySQL
 
-In dit artikel wordt beschreven hoe u tijdelijke fouten verwerkt en efficiënt verbinding maakt met Azure Database for MySQL.
+In dit artikel wordt beschreven hoe u tijdelijke fouten verwerken en efficiënt verbinding maken met Azure Database voor MySQL.
 
 ## <a name="transient-errors"></a>Tijdelijke fouten
 
-Een tijdelijke fout, ook wel bekend als tijdelijke fout, is een fout die zichzelf zal oplossen. Meestal worden deze fouten manifesten beschouwd als een verbinding met de database server die wordt verwijderd. Er kunnen ook geen nieuwe verbindingen met een server worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden als er een hardware-of netwerk fout optreedt. Een andere reden kan een nieuwe versie zijn van een PaaS-service die wordt geïmplementeerd. De meeste van deze gebeurtenissen worden in minder dan 60 seconden automatisch door het systeem beperkt. Een best practice voor het ontwerpen en ontwikkelen van toepassingen in de Cloud is het verwachten van tijdelijke fouten. We gaan ervan uit dat ze op elk gewenst moment in elk onderdeel kunnen plaatsvinden en dat ze de juiste logica hebben om deze situaties af te handelen.
+Een tijdelijke fout, ook wel een tijdelijke fout genoemd, is een fout die zichzelf zal oplossen. Meestal manifesteren deze fouten zich als een verbinding met de databaseserver die wordt verwijderd. Ook kunnen nieuwe verbindingen met een server niet worden geopend. Tijdelijke fouten kunnen bijvoorbeeld optreden wanneer er hardware- of netwerkfouten optreden. Een andere reden zou kunnen zijn een nieuwe versie van een PaaS-service die wordt uitgerold. De meeste van deze gebeurtenissen worden automatisch beperkt door het systeem in minder dan 60 seconden. Een aanbevolen manier voor het ontwerpen en ontwikkelen van applicaties in de cloud is het verwachten van tijdelijke fouten. Stel dat ze kunnen gebeuren in elk onderdeel op elk gewenst moment en om de juiste logica op zijn plaats om deze situaties te behandelen.
 
 ## <a name="handling-transient-errors"></a>Tijdelijke fouten verwerken
 
-Tijdelijke fouten moeten worden afgehandeld met behulp van logica opnieuw proberen. Situaties die in overweging moeten worden genomen:
+Tijdelijke fouten moeten worden verwerkt met behulp van logica voor opnieuw proberen. Situaties die in aanmerking moeten worden genomen:
 
 * Er treedt een fout op wanneer u een verbinding probeert te openen
-* Er wordt een niet-actieve verbinding aan de server zijde verwijderd. Wanneer u een opdracht probeert uit te geven, kan deze niet worden uitgevoerd
-* Een actieve verbinding die momenteel een opdracht uitvoert, wordt verwijderd.
+* Een niet-actieve verbinding wordt aan de serverzijde verbroken. Wanneer u een opdracht probeert uit te geven, kan deze niet worden uitgevoerd
+* Een actieve verbinding die momenteel een opdracht uitvoert, wordt verbroken.
 
-Het eerste en tweede geval zijn redelijk direct in de richting van de hand. Probeer de verbinding opnieuw te openen. Wanneer u dit hebt gedaan, wordt de tijdelijke fout door het systeem verholpen. U kunt uw Azure Database for MySQL opnieuw gebruiken. We raden u aan te wachten op het opnieuw proberen van de verbinding. Back-ups maken als de eerste pogingen mislukken. Op deze manier kan het systeem alle bronnen gebruiken die beschikbaar zijn om de fout situatie op te lossen. Een goed patroon dat u moet volgen:
+De eerste en tweede zaak zijn vrij rechttoe rechtaan te behandelen. Probeer de verbinding opnieuw te openen. Wanneer u slaagt, is de tijdelijke fout door het systeem beperkt. U uw Azure Database opnieuw gebruiken voor MySQL. We raden u aan te wachten voordat u de verbinding opnieuw probeert. Terug uit als de eerste pogingen mislukken. Op deze manier kan het systeem alle beschikbare middelen gebruiken om de foutsituatie te overwinnen. Een goed patroon om te volgen is:
 
-* Wacht vijf seconden vóór uw eerste nieuwe poging.
-* Voor elke volgende poging wordt de wacht tijd exponentieel verhoogd, tot 60 seconden.
-* Stel een maximum aantal nieuwe pogingen in op het moment dat de bewerking door uw toepassing wordt beschouwd.
+* Wacht 5 seconden voordat je eerste nieuwe poging doet.
+* Voor elke volgende opnieuw proberen, de verhoging van het wachten exponentieel, tot 60 seconden.
+* Stel een maximum aantal nieuwe pogingen in op welk punt de bewerking is mislukt.
 
-Wanneer een verbinding met een actieve trans actie mislukt, is het moeilijker om het herstel af te handelen. Er zijn twee gevallen: als de trans actie alleen-lezen is, is het veilig om de verbinding opnieuw te openen en de trans actie opnieuw uit te voeren. Als de trans actie echter ook is geschreven naar de data base, moet u bepalen of de trans actie is teruggedraaid of dat deze is geslaagd voordat de tijdelijke fout is opgetreden. In dat geval is het mogelijk dat u alleen de bevestiging van de door Voer van de database server hebt ontvangen.
+Wanneer een verbinding met een actieve transactie mislukt, is het moeilijker om het herstel correct te verwerken. Er zijn twee gevallen: Als de transactie alleen-lezen van aard was, is het veilig om de verbinding te heropenen en de transactie opnieuw te proberen. Als de transactie echter ook naar de database is geschreven, moet u bepalen of de transactie is teruggedraaid of dat deze is geslaagd voordat de tijdelijke fout is uitgevoerd. In dat geval hebt u misschien de commit-bevestiging van de databaseserver niet ontvangen.
 
-Een manier om dit te doen, is door een unieke ID te genereren op de client die wordt gebruikt voor alle nieuwe pogingen. U geeft deze unieke ID door als onderdeel van de trans actie op de server en om deze op te slaan in een kolom met een unieke beperking. Op deze manier kunt u de trans actie veilig opnieuw proberen. Deze wordt uitgevoerd als de vorige trans actie teruggedraaid is en de door de client gegenereerde unieke ID nog niet in het systeem bestaat. Deze fout kan optreden als de unieke ID eerder is opgeslagen, omdat de vorige trans actie is voltooid.
+Een manier om dit te doen, is het genereren van een unieke ID op de client die wordt gebruikt voor alle pogingen. U geeft deze unieke ID als onderdeel van de transactie door aan de server en slaat deze op in een kolom met een unieke beperking. Op deze manier u de transactie veilig opnieuw proberen. Het zal lukken als de vorige transactie is teruggedraaid en de door de client gegenereerde unieke ID nog niet in het systeem bestaat. Het wordt niet weergegeven als de schending van de dubbele sleutel wordt aangegeven als de unieke id eerder is opgeslagen omdat de vorige transactie is voltooid.
 
-Wanneer uw programma communiceert met Azure Database for MySQL via middleware van een derde partij, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
+Wanneer uw programma communiceert met Azure Database voor MySQL via middleware van derden, vraagt u de leverancier of de middleware opnieuw proberenlogica bevat voor tijdelijke fouten.
 
-Zorg ervoor dat u de logica probeert te testen. Probeer bijvoorbeeld uw code uit te voeren terwijl u de reken resources van uw Azure Database for MySQL-server omhoog of omlaag kunt schalen. Uw toepassing moet de korte downtime die tijdens deze bewerking wordt aangetroffen zonder problemen verwerken.
+Zorg ervoor dat u de logica opnieuw probeert. Probeer bijvoorbeeld uw code uit te voeren terwijl u de rekenbronnen van uw Azure Database voor MySQL-server opoft. Uw toepassing moet de korte downtime die tijdens deze bewerking wordt ondervonden, zonder problemen verwerken.
 
-## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Efficiënt verbinding maken met Azure Database for MySQL
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Efficiënt verbinding maken met Azure Database voor MySQL
 
-Database verbindingen zijn een beperkte bron, waardoor het effectief gebruik van groepsgewijze verbindingen voor toegang tot Azure Database for MySQL de prestaties te verbeteren. In de volgende sectie wordt uitgelegd hoe u Groepsgewijze verbinding of permanente verbindingen gebruikt om toegang te krijgen tot Azure Database for MySQL.
+Databaseverbindingen zijn een beperkte bron, dus door effectief gebruik te maken van verbindingspooling om toegang te krijgen tot Azure Database voor MySQL, worden de prestaties geoptimaliseerd. In het onderstaande gedeelte wordt uitgelegd hoe u verbindingspooling of permanente verbindingen gebruikt om beter toegang te krijgen tot Azure Database voor MySQL.
 
-## <a name="access-databases-by-using-connection-pooling-recommended"></a>Access-data bases met behulp van groepsgewijze verbindingen (aanbevolen)
+## <a name="access-databases-by-using-connection-pooling-recommended"></a>Toegang tot databases met behulp van koppelingspooling (aanbevolen)
 
-Het beheren van database verbindingen kan een grote invloed hebben op de prestaties van de toepassing als geheel. Het doel is om de prestaties van uw toepassing te optimaliseren door het aantal keren dat verbindingen tot stand worden gebracht en de tijd voor het tot stand brengen van verbindingen in sleutel code paden te verminderen. We raden u ten zeerste aan om verbinding te maken met de pooling van database verbindingen of permanente verbindingen met Azure Database for MySQL. Met database verbindings groepen wordt het maken, beheren en toewijzen van database verbindingen afgehandeld. Wanneer een programma een database verbinding aanvraagt, wordt er prioriteit gegeven aan de toewijzing van bestaande niet-actieve database verbindingen, in plaats van het maken van een nieuwe verbinding. Nadat het programma is voltooid met behulp van de database verbinding, wordt de verbinding hersteld ter voor bereiding op verdere gebruik, in plaats van gewoon te worden afgesloten.
+Het beheren van databaseverbindingen kan een aanzienlijke invloed hebben op de prestaties van de toepassing als geheel. Om de prestaties van uw toepassing te optimaliseren, moet het doel zijn om het aantal keren dat verbindingen worden gemaakt en tijd voor het tot stand brengen van verbindingen in belangrijke codepaden te verminderen. We raden ten zeerste aan om databaseverbindingen te poolen of permanente verbindingen te gebruiken om verbinding te maken met Azure Database voor MySQL. Databaseverbinding pooling verzorgt het maken, beheren en toewijzen van databaseverbindingen. Wanneer een programma een databaseverbinding aanvraagt, geeft het prioriteit aan de toewijzing van bestaande niet-actieve databaseverbindingen, in plaats van het maken van een nieuwe verbinding. Nadat het programma is voltooid met behulp van de databaseverbinding, wordt de verbinding hersteld ter voorbereiding op verder gebruik, in plaats van gewoon te worden gesloten.
 
-Voor een betere afbeelding biedt dit artikel [een stukje voorbeeld code](./sample-scripts-java-connection-pooling.md) die Java als voor beeld gebruikt. Zie [apache common dbcp](https://commons.apache.org/proper/commons-dbcp/)(Engelstalig) voor meer informatie.
+Voor een betere illustratie, dit artikel biedt [een stukje van de steekproef code](./sample-scripts-java-connection-pooling.md) die JAVA gebruikt als voorbeeld. Zie [Apache common DBCP voor](https://commons.apache.org/proper/commons-dbcp/)meer informatie.
 
 > [!NOTE]
-> De server configureert een time-outmechanisme om een verbinding te sluiten waarvan de status niet-actief is geweest gedurende enige tijd om bronnen vrij te maken. Zorg ervoor dat u het verificatie systeem instelt om te zorgen voor de effectiviteit van permanente verbindingen wanneer u deze gebruikt. Zie [verificatie systemen configureren aan de client zijde voor meer informatie over de effectiviteit van permanente verbindingen](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
+> De server configureert een time-outmechanisme om een verbinding te sluiten die al enige tijd in een niet-actieve status is om resources vrij te maken. Zorg ervoor dat u het verificatiesysteem instelt om de effectiviteit van permanente verbindingen te garanderen wanneer u ze gebruikt. Zie [Verificatiesystemen configureren aan de clientzijde om de effectiviteit van permanente verbindingen te garanderen voor](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)meer informatie.
 
-## <a name="access-databases-by-using-persistent-connections-recommended"></a>Toegang krijgen tot data bases met behulp van permanente verbindingen (aanbevolen)
+## <a name="access-databases-by-using-persistent-connections-recommended"></a>Toegang tot databases met behulp van permanente verbindingen (aanbevolen)
 
-Het concept van permanente verbindingen is vergelijkbaar met die van verbindings groepen. Het vervangen van korte verbindingen met permanente verbindingen vereist alleen kleine wijzigingen in de code, maar heeft een belang rijke invloed op de prestaties in veel typische toepassings scenario's.
+Het concept van permanente verbindingen is vergelijkbaar met dat van verbinding pooling. Het vervangen van korte verbindingen door permanente verbindingen vereist slechts kleine wijzigingen in de code, maar het heeft een groot effect in termen van het verbeteren van de prestaties in veel typische toepassingsscenario's.
 
-## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Toegang krijgen tot data bases met behulp van een wacht tijd en opnieuw proberen met korte verbindingen
+## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Toegang tot databases met behulp van wacht- en probeermechanisme met korte verbindingen
 
-Als u resource beperkingen hebt, raden we u ten zeerste aan database groepen of permanente verbindingen te gebruiken voor toegang tot data bases. Als uw toepassing gebruikmaakt van korte verbindingen en verbindings fouten in de praktijk wanneer u de bovengrens voor het aantal gelijktijdige verbindingen nadert, kunt u wachten en het mechanisme opnieuw proberen. U kunt een geschikte wacht tijd instellen, met een korte wacht tijd na de eerste poging. Daarna kunt u meerdere keren proberen om te wachten op gebeurtenissen.
+Als u resourcebeperkingen hebt, raden we u ten zeerste aan databasepooling of permanente verbindingen te gebruiken om toegang te krijgen tot databases. Als uw toepassing korte verbindingen gebruikt en verbindingsfouten ervaart wanneer u de bovengrens voor het aantal gelijktijdige verbindingen nadert, u het mechanisme proberen te wachten en opnieuw te proberen. U een geschikte wachttijd instellen, met een kortere wachttijd na de eerste poging. Daarna u meerdere keren proberen te wachten op gebeurtenissen.
 
-## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Verificatie mechanismen in clients configureren om de effectiviteit van permanente verbindingen te bevestigen
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Verificatiemechanismen configureren in clients om de effectiviteit van permanente verbindingen te bevestigen
 
-De-server configureert een time-outmechanisme om een verbinding te sluiten waarvan de status niet actief is om bronnen vrij te maken. Wanneer de client weer toegang heeft tot de data base, is het gelijk aan het maken van een nieuwe verbindings aanvraag tussen de client en de server. Configureer een verificatie mechanisme op de client om de effectiviteit van verbindingen te garanderen tijdens het gebruik ervan. Zoals in het volgende voor beeld wordt weer gegeven, kunt u Tomcat JDBC-verbindings groepering gebruiken om dit verificatie mechanisme te configureren.
+De server configureert een time-outmechanisme om een verbinding te sluiten die al enige tijd niet actief is om resources vrij te maken. Wanneer de client de database opnieuw opent, is dit gelijk aan het maken van een nieuwe verbindingsaanvraag tussen de client en de server. Om de effectiviteit van verbindingen tijdens het gebruik ervan te garanderen, configureert u een verificatiemechanisme op de client. Zoals in het volgende voorbeeld wordt weergegeven, u Tomcat JDBC-koppelingspooling gebruiken om dit verificatiemechanisme te configureren.
 
-Wanneer u de para meter TestOnBorrow instelt, wordt de effectiviteit van alle beschik bare inactieve verbindingen automatisch gecontroleerd door de verbindings groep. Als een dergelijke verbinding effectief is, wordt de verbinding met de rechtstreeks geretourneerde andere verbindings groep ingetrokken. De verbindings groep maakt vervolgens een nieuwe efficiënte verbinding en retourneert deze. Dit proces zorgt ervoor dat de data base efficiënt wordt geopend. 
+Door de parameter TestOnBorrow in te stellen, controleert de verbindingsgroep bij een nieuwe aanvraag automatisch de effectiviteit van beschikbare niet-actieve verbindingen. Als een dergelijke verbinding effectief is, trekt de direct geretourneerde verbindingspool de verbinding in. De verbindingsgroep maakt vervolgens een nieuwe effectieve verbinding en retourneert deze. Dit proces zorgt ervoor dat de database efficiënt wordt geopend. 
 
-Zie voor meer informatie over de specifieke instellingen het [document JDBC-verbindings groep officiële Inleiding](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). U moet hoofd zakelijk de volgende drie para meters instellen: TestOnBorrow (ingesteld op True), ValidationQuery (ingesteld op SELECT 1) en ValidationQueryTimeout (ingesteld op 1). De specifieke voorbeeld code wordt hieronder weer gegeven:
+Zie het officiële introductiedocument voor de [JDBC-verbindingsgroep](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)voor informatie over de specifieke instellingen. U moet voornamelijk de volgende drie parameters instellen: TestOnBorrow (ingesteld op true), ValidationQuery (ingesteld op SELECT 1) en ValidationQueryTimeout (ingesteld op 1). De specifieke voorbeeldcode wordt hieronder weergegeven:
 
 ```java
 public class SimpleTestOnBorrowExample {

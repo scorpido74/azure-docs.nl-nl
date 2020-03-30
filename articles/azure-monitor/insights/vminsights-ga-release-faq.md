@@ -1,125 +1,115 @@
 ---
-title: Veelgestelde vragen over Azure Monitor voor VM's (GA) | Microsoft Docs
-description: Azure Monitor voor VM's is een oplossing in azure met een combi natie van de status-en prestatie bewaking van het Azure VM-besturings systeem, evenals het automatisch detecteren van toepassings onderdelen en afhankelijkheden met andere resources en het toewijzen van de communicatie tussen ermee. In dit artikel vindt u antwoorden op veelgestelde vragen over de GA-versie.
+title: Veelgestelde azure monitor voor VM's (GA) | Microsoft Documenten
+description: Azure Monitor voor VM's is een oplossing in Azure die status- en prestatiebewaking van het Azure VM-besturingssysteem combineert, evenals het automatisch ontdekken van toepassingsonderdelen en afhankelijkheden met andere bronnen en de communicatie tussen Hen. Dit artikel beantwoordt veelgestelde vragen over de GA-release.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656191"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283885"
 ---
-# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
-
-Deze veelgestelde vragen over algemene Beschik baarheid omvatten wijzigingen die zich voordoen in Azure Monitor voor VM's tijdens de voor bereiding op onze GA-release. 
+# <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over vraag naar veel gestelde Azure-monitor voor VM's
+Deze algemene beschikbaarheid faq heeft betrekking op wijzigingen die zijn aangebracht in Q4 2019 en Q1 2020 zoals we voorbereid voor GA.
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Updates voor Azure Monitor voor VM's
-
-Er is een nieuwe versie van Azure Monitor voor VM's uitgebracht. Klanten die Azure monitors voor Vm's inschakelen, ontvangen nu de nieuwe versie, maar bestaande klanten die al gebruikmaken van Azure Monitor voor VM's, wordt gevraagd om bij te werken. Deze veelgestelde vragen en onze documentatie bieden richt lijnen voor het uitvoeren van een upgrade op schaal als u grote implementaties in meerdere werk ruimten hebt.
-
-Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md), waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
-
-Onze prestatie weergaven gebruiken nu de gegevens die we opslaan in de tabel *InsightsMetrics* .  Als u nog niet hebt bijgewerkt voor het gebruik van de meest recente VMInsights-oplossing in uw werk ruimte, worden er geen gegevens meer weer gegeven in uw grafieken.  U kunt een upgrade uitvoeren van de pagina **aan de slag** zoals hieronder wordt beschreven.
-
-We realiseren dat bestaande klanten die een upgrade uitvoeren, een onderbreking van de werk stroom veroorzaken. Daarom hebben we ervoor gekozen om dit nu uit te voeren in een open bare preview, in plaats van later na GA.
+We hebben in januari 2020 een nieuwe versie van Azure Monitor voor VM's uitgebracht voorafgaand aan onze GA-aankondiging. Klanten die Azure Monitor voor VM's inschakelen, ontvangen nu de GA-versie, maar bestaande klanten die de versie van Azure Monitor voor VM's van Q4 2019 en eerder gebruiken, worden gevraagd om te upgraden. Deze veelgestelde vragen biedt richtlijnen om een upgrade op schaal uit te voeren als u grote implementaties in meerdere werkruimten hebt.
 
 
-## <a name="what-is-changing"></a>Wat wordt er gewijzigd?
+Met deze upgrade worden prestatiegegevens van Azure Monitor voor VM's opgeslagen in dezelfde *InsightsMetrics-tabel* als [Azure Monitor voor containers](container-insights-overview.md), waardoor u de twee gegevenssets gemakkelijker opvragen. Ook u meer diverse gegevenssets opslaan die we niet konden opslaan in de eerder gebruikte tabel. 
 
-We hebben een nieuwe oplossing met de naam VMInsights, die aanvullende mogelijkheden bevat voor het verzamelen van gegevens, samen met een nieuwe locatie voor het opslaan van deze gegevens in uw Log Analytics-werk ruimte. 
-
-In het verleden hebben we de ServiceMap-oplossing ingeschakeld in uw werk ruimte en de prestatie meter items in uw Log Analytics-werk ruimte om de gegevens naar de *prestatie* tabel te verzenden. Deze nieuwe oplossing verzendt de gegevens naar een tabel met de naam *InsightsMetrics* die ook wordt gebruikt door Azure monitor voor containers. Met dit tabel schema kunnen we aanvullende metrische gegevens en servicegegevens sets opslaan die niet compatibel zijn met de indeling van de *prestatie* tabel.
-
-We hebben onze prestatie grafieken bijgewerkt voor het gebruik van de gegevens die we opslaan in de *InsightsMetrics* -tabel. U kunt een upgrade uitvoeren om de tabel *InsightsMetrics* te gebruiken op de pagina **aan** de slag zoals hieronder wordt beschreven.
+Onze prestatieweergaven gebruiken nu de gegevens die we opslaan in de tabel *InsightsMetrics.*  Als u nog geen upgrade hebt uitgevoerd om de nieuwste VMInsights-oplossing op uw werkruimte te gebruiken, worden er geen gegevens meer weergegeven in uw grafieken.  U upgraden via onze **pagina Aan de slag,** zoals hieronder beschreven.
 
 
-## <a name="how-do-i-upgrade"></a>Hoe kan ik upgrade?
-Wanneer een upgrade van een Log Analytics-werk ruimte naar de nieuwste versie van Azure Monitor naar Vm's wordt uitgevoerd, wordt de afhankelijkheids agent bijgewerkt op elke virtuele machine die aan die werk ruimte is gekoppeld. Elke VM die moet worden bijgewerkt, wordt geïdentificeerd op het tabblad **aan de slag** in azure monitor voor VM's in het Azure Portal. Wanneer u ervoor kiest om een virtuele machine te upgraden, wordt de werk ruimte voor die VM bijgewerkt, samen met eventuele andere virtuele machines die aan die werk ruimte zijn gekoppeld. U kunt één virtuele machine of meerdere Vm's, resource groepen of abonnementen selecteren. 
+## <a name="what-is-changing"></a>Wat verandert er?
+We hebben een nieuwe oplossing uitgebracht, vminsights genaamd, met extra mogelijkheden voor het verzamelen van gegevens, samen met een nieuwe locatie voor het opslaan van deze gegevens in uw Log Analytics-werkruimte. 
 
-Gebruik de volgende opdracht om een werk ruimte bij te werken met Power shell:
+In het verleden hebben we de ServiceMap-oplossing op uw werkruimte en prestatiemeteritems in uw Log Analytics-werkruimte ingeschakeld om de gegevens naar de *perf-tabel* te verzenden. Deze nieuwe oplossing stuurt de gegevens naar een tabel met de naam *InsightsMetrics* die ook door Azure Monitor voor containers wordt gebruikt. Met dit tabelschema kunnen we aanvullende statistieken en servicegegevenssets opslaan die niet compatibel zijn met de *perf-tabelindeling.*
+
+We hebben onze prestatiegrafieken bijgewerkt om de gegevens te gebruiken die we opslaan in de tabel *InsightsMetrics.* U upgraden naar de tabel *InsightsMetrics* op onze pagina **Aan de slag,** zoals hieronder beschreven.
+
+
+## <a name="how-do-i-upgrade"></a>Hoe kan ik upgraden?
+Wanneer een Log Analytics-werkruimte wordt geüpgraded naar de nieuwste versie van Azure Monitor naar VM's, wordt de afhankelijkheidsagent op elk van de VM's die aan die werkruimte zijn gekoppeld, geüpgraded. Elke vm die een upgrade nodig heeft, wordt geïdentificeerd op het tabblad **Aan de slag** in Azure Monitor voor VM's in de Azure-portal. Wanneer u ervoor kiest een virtuele machine te upgraden, wordt de werkruimte voor die vm geüpuwd, samen met alle andere VM's die aan die werkruimte zijn gekoppeld. U één vm of meerdere VM's, resourcegroepen of abonnementen selecteren. 
+
+Gebruik de volgende opdracht om een werkruimte te upgraden met PowerShell:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
 ```
 
-## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Wat moet ik doen met de prestatie meter items in mijn werk ruimte als ik de VMInsights-oplossing Installeer?
+## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Wat moet ik doen met de prestatiemeteritems in mijn werkruimte als ik de VMInsights-oplossing installeer?
 
-Met de huidige methode voor het inschakelen van Azure Monitor voor VM's worden prestatie meter items in uw werk ruimte gebruikt. Met de nieuwe methode worden deze gegevens opgeslagen in een nieuwe tabel met de naam `InsightsMetrics`.
-
-Zodra we onze gebruikers interface hebben bijgewerkt voor het gebruik van de gegevens in de tabel `InsightsMetrics`, zullen we onze documentatie bijwerken en deze aankondiging via meerdere kanalen communiceren, met inbegrip van het weer geven van een banner in de Azure Portal. Op dat moment kunt u ervoor kiezen om deze [prestatie meter items](vminsights-enable-overview.md#performance-counters-enabled) in uw werk ruimte uit te scha kelen als u ze niet meer nodig hebt. 
+De vorige methode voor het inschakelen van Azure Monitor voor VM's gebruikte prestatiemeteritems in uw werkruimte. De huidige versie slaat deze `InsightsMetrics`gegevens op in een tabel met de naam . U ervoor kiezen om deze prestatiemeteritems in uw werkruimte uit te schakelen als u ze niet meer hoeft te gebruiken. 
 
 >[!NOTE]
->Als u waarschuwings regels hebt die naar deze prestatie meter items in de `Perf` tabel verwijzen, moet u deze bijwerken om te verwijzen naar nieuwe gegevens die zijn opgeslagen in de tabel `InsightsMetrics`. Raadpleeg de documentatie voor voorbeeld logboek query's die u kunt gebruiken om deze tabel te raadplegen.
+>Als u waarschuwingsregels hebt die `Perf` verwijzen naar deze tellers in de tabel, `InsightsMetrics` moet u deze bijwerken om te verwijzen naar nieuwe gegevens die in de tabel zijn opgeslagen. Raadpleeg bijvoorbeeld onze documentatie logquery's die u gebruiken die verwijzen naar deze tabel.
 >
 
-Als u ervoor kiest om de prestatie meter items ingeschakeld te laten, wordt u gefactureerd voor de gegevens die zijn opgenomen en opgeslagen in de tabel `Perf` op basis van [Log Analytics prijzen [(https://azure.microsoft.com/pricing/details/monitor/).
+Als u besluit de prestatiemeteritems ingeschakeld te houden, wordt u gefactureerd `Perf` voor de ingenomen gegevenshttps://azure.microsoft.com/pricing/details/monitor/)en opgeslagen in de tabel op basis van [Log Analytics-prijzen[.
 
-## <a name="how-will-this-change-affect-my-alert-rules"></a>Wat is de invloed van deze wijziging op mijn waarschuwings regels?
+## <a name="how-will-this-change-affect-my-alert-rules"></a>Welke invloed heeft deze wijziging op mijn waarschuwingsregels?
 
-Als u [logboek waarschuwingen](../platform/alerts-unified-log.md) hebt gemaakt die query's uitvoeren op de `Perf` tabel met doel prestatie meter items die zijn ingeschakeld in de werk ruimte, moet u deze regels bijwerken om te verwijzen naar de `InsightsMetrics`-tabel. Deze richt lijnen zijn ook van toepassing op alle regels voor logboek zoeken die gebruikmaken van `ServiceMapComputer_CL` en `ServiceMapProcess_CL`, omdat deze gegevens sets worden verplaatst naar `VMComputer` en `VMProcess` tabellen.
+Als u [Logboekwaarschuwingen](../platform/alerts-unified-log.md) hebt `Perf` gemaakt waarin de prestatiemeteritems voor de tabel worden geopperd die in de werkruimte zijn ingeschakeld, moet u deze regels bijwerken om in plaats daarvan naar de `InsightsMetrics` tabel te verwijzen. Deze richtlijnen zijn ook van `ServiceMapComputer_CL` toepassing `ServiceMapProcess_CL`op alle logzoekregels `VMComputer` `VMProcess` die worden gebruikt en omdat deze gegevenssets worden verplaatst naar en tabellen.
 
-Deze veelgestelde vragen worden bijgewerkt en onze documentatie bevat voor beelden van waarschuwings regels voor logboek zoeken in de gegevens sets die worden verzameld.
+We zullen deze faq en onze documentatie bijwerken met voorbeeld regels voor het zoeken naar logboek voor de gegevenssets die we verzamelen.
 
-## <a name="how-will-this-affect-my-bill"></a>Wat is van invloed op mijn factuur?
+## <a name="how-will-this-affect-my-bill"></a>Welke invloed heeft dit op mijn factuur?
 
-Facturering is nog steeds gebaseerd op gegevens die zijn opgenomen en bewaard in uw Log Analytics-werk ruimte.
+Facturering is nog steeds gebaseerd op gegevens die zijn ingenomen en bewaard in uw Log Analytics-werkruimte.
 
-De prestatie gegevens voor het computer niveau die we verzamelen, zijn hetzelfde als die van de gegevens die we hebben opgeslagen in de tabel `Perf` en kosten ongeveer hetzelfde bedrag.
+De prestatiegegevens op machineniveau die we verzamelen, zijn dezelfde, zijn `Perf` even groot als de gegevens die we in de tabel hebben opgeslagen en kosten ongeveer hetzelfde bedrag.
 
-## <a name="what-if-i-only-want-to-use-service-map"></a>Wat moet ik doen als ik alleen Servicetoewijzing wil gebruiken?
+## <a name="what-if-i-only-want-to-use-service-map"></a>Wat moet ik doen als ik alleen Servicemap wil gebruiken?
 
-Dat is prima. U ziet de prompts in de Azure Portal wanneer u Azure Monitor voor VM's over de aanstaande update bekijkt. Zodra de release is uitgebracht, wordt u gevraagd om u bij te werken naar de nieuwe versie. Als u liever alleen de [Maps](vminsights-maps.md) -functie gebruikt, kunt u ervoor kiezen om niet te upgraden en door te gaan met het gebruik van de Maps-functie in azure monitor voor VM's en de servicetoewijzing-oplossing die wordt geopend vanuit uw werk ruimte of dashboard tegel.
+Dat is prima. U ziet aanwijzingen in de Azure-portal wanneer u Azure Monitor voor VM's bekijkt over de komende update. Zodra u is vrijgegeven, ontvangt u een prompt met het verzoek om de nieuwe versie bij te werken. Als u liever alleen de functie [Kaarten](vminsights-maps.md) gebruikt, u ervoor kiezen om de functie Kaarten in Azure Monitor voor VM's en de servicekaartoplossing die vanuit uw werkruimte of dashboardtegel wordt geopend, niet te upgraden en te blijven gebruiken.
 
-Als u ervoor hebt gekozen om de prestatie meter items in uw werk ruimte hand matig in te scha kelen, kunt u de gegevens in een aantal van de prestatie diagrammen weer geven vanuit Azure Monitor. Zodra de nieuwe oplossing is uitgebracht, worden de prestatie grafieken bijgewerkt om de gegevens op te vragen die zijn opgeslagen in de `InsightsMetrics` tabel. Als u gegevens uit die tabel in deze grafieken wilt zien, moet u een upgrade uitvoeren naar de nieuwe versie van Azure Monitor voor VM's.
+Als u ervoor hebt gekozen om de prestatiemeteritems in uw werkruimte handmatig in te schakelen, u mogelijk gegevens zien in sommige van onze prestatiegrafieken die worden weergegeven vanuit Azure Monitor. Zodra de nieuwe oplossing is vrijgegeven, werken we onze `InsightsMetrics` prestatiegrafieken bij om de gegevens op te vragen die in de tabel zijn opgeslagen. Als u gegevens uit die tabel in deze grafieken wilt zien, moet u upgraden naar de nieuwe versie van Azure Monitor voor VM's.
 
-De wijzigingen voor het verplaatsen van gegevens van `ServiceMapComputer_CL` en `ServiceMapProcess_CL` beïnvloeden zowel Servicetoewijzing als Azure Monitor voor VM's, dus u moet deze update nog steeds plannen.
+De wijzigingen om `ServiceMapComputer_CL` gegevens `ServiceMapProcess_CL` van te verplaatsen en hebben invloed op zowel Service Map als Azure Monitor voor VM's, dus u moet nog steeds plannen voor deze update.
 
-Als u ervoor hebt gekozen om geen upgrade uit te voeren naar de **VMInsights** -oplossing, zullen we oudere versies van onze prestatie werkmappen blijven leveren die verwijzen naar gegevens in de tabel `Perf`.  
+Als u ervoor kiest om niet te upgraden naar de **VMInsights-oplossing,** blijven we `Perf` verouderde versies van onze prestatiewerkmappen leveren die verwijzen naar gegevens in de tabel.  
 
-## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Worden de Servicetoewijzing gegevens sets ook opgeslagen in InsightsMetrics?
+## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Worden de gegevenssets van de servicekaart ook opgeslagen in InsightsMetrics?
 
-De gegevens sets worden niet gedupliceerd als u beide oplossingen gebruikt. Beide aanbiedingen delen de gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort` tabellen om de kaart gegevens sets op te slaan die we verzamelen.  
+De gegevenssets worden niet gedupliceerd als u beide oplossingen gebruikt. Beide aanbiedingen delen de gegevenssets `VMComputer` die worden opgeslagen `VMProcess` in (voorheen `VMConnection`ServiceMapComputer_CL), (voorheen ServiceMapProcess_CL) en `VMBoundPort` tabellen om de kaartgegevenssets op te slaan die we verzamelen.  
 
-In de tabel `InsightsMetrics` worden de gegevens sets van de VM, het proces en de service opgeslagen die we verzamelen en alleen worden ingevuld als u Azure Monitor voor VM's en de VM Insights-oplossing gebruikt. Met de Servicetoewijzing oplossing worden geen gegevens verzameld of opgeslagen in de `InsightsMetrics` tabel.
+In `InsightsMetrics` de tabel worden VM-, proces- en servicegegevenssets opgeslagen die we verzamelen en worden ze alleen ingevuld als u Azure Monitor voor VM's en de VM Insights-oplossing gebruikt. De servicekaartoplossing verzamelt of slaat geen `InsightsMetrics` gegevens op in de tabel.
 
-## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Worden er dubbele kosten in rekening gebracht als ik de Servicetoewijzing-en VMInsights-oplossingen in mijn werk ruimte heb?
+## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Krijg ik dubbel kosten in rekening als ik de servicekaart- en VMInsights-oplossingen in mijn werkruimte heb?
 
-Nee, de twee oplossingen delen de kaart gegevens sets die we opslaan in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort`. Als u beide oplossingen in uw werk ruimte hebt, worden deze gegevens niet dubbel in rekening gebracht.
+Nee, de twee oplossingen delen de kaartgegevenssets waarin `VMComputer` `VMProcess` we opslaan (voorheen ServiceMapComputer_CL), (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort`. Voor deze gegevens worden geen dubbele kosten in rekening gebracht als u beide oplossingen in uw werkruimte hebt.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Als ik de Servicetoewijzing-of VMInsights-oplossing Verwijder, worden mijn gegevens verwijderd?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Als ik de ServiceMap of vmInsights-oplossing verwijder, worden mijn gegevens dan verwijderd?
 
-Nee, de twee oplossingen delen de kaart gegevens sets die we opslaan in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort`. Als u een van de oplossingen verwijdert, ziet u in deze gegevens sets dat er nog steeds een oplossing aanwezig is die gebruikmaakt van de gegevens en deze blijft in de werk ruimte Log Analytics. U moet beide oplossingen uit uw werk ruimte verwijderen om ervoor te zorgen dat de gegevens erin worden verwijderd.
+Nee, de twee oplossingen delen de kaartgegevenssets waarin `VMComputer` `VMProcess` we opslaan (voorheen ServiceMapComputer_CL), (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort`. Als u een van de oplossingen verwijdert, wordt in deze gegevenssets opgemerkt dat er nog steeds een oplossing is die de gegevens gebruikt en deze in de werkruimte Log Analytics blijft. U moet beide oplossingen uit uw werkruimte verwijderen om de gegevens eruit te kunnen verwijderen.
 
-## <a name="when-will-this-update-be-released"></a>Wanneer wordt deze update vrijgegeven?
+## <a name="health-feature-is-in-limited-public-preview"></a>Gezondheidsfunctie is in beperkte openbare preview
 
-We verwachten dat de update voor Azure Monitor voor VM's in eerste januari 2020 wordt uitgebracht. Zodra de release datum in januari wordt ontvangen, worden hier updates in de Azure Portal geplaatst wanneer u Azure Monitor opent.
+We hebben veel goede feedback ontvangen van klanten over onze VM Health-functieset. Er is veel belangstelling rond deze functie en opwinding over het potentieel voor het ondersteunen van monitoring workflows. We zijn van plan om een reeks wijzigingen aan te brengen om functionaliteit toe te voegen en de feedback die we hebben ontvangen aan te pakken. 
 
-## <a name="health-feature-is-in-limited-public-preview"></a>Health-functie heeft een beperkte open bare preview
+Om de impact van deze wijzigingen op nieuwe klanten te minimaliseren, hebben we deze functie verplaatst naar een **beperkte openbare preview.** Deze update vond plaats in oktober 2019.
 
-We hebben een groot aantal fantastische feedback ontvangen van klanten over onze VM-status functie ingesteld. Er is veel belang aan deze functie en de kans op het ondersteunen van bewakings werk stromen. We zijn van plan een reeks wijzigingen aan te brengen om functionaliteit toe te voegen en de ontvangen feedback te verhelpen. 
+We zijn van plan om deze statusfunctie opnieuw te starten in 2020, nadat Azure Monitor for VM's in GA is.
 
-Om de gevolgen van deze wijzigingen aan nieuwe klanten te beperken, hebben we deze functie verplaatst naar een **beperkte open bare preview**. Deze update is opgetreden in oktober 2019.
+## <a name="how-do-existing-customers-access-the-health-feature"></a>Hoe krijgen bestaande klanten toegang tot de functie Gezondheid?
 
-We zijn van plan deze status functie opnieuw te starten in 2020, nadat Azure Monitor voor VM's in GA is.
+Bestaande klanten die de statusfunctie gebruiken, blijven toegang tot de functie hebben, maar worden niet aangeboden aan nieuwe klanten.  
 
-## <a name="how-do-existing-customers-access-the-health-feature"></a>Hoe krijgen bestaande klanten toegang tot de status functie?
+Als u toegang wilt krijgen tot `feature.vmhealth=true` de functie, [https://portal.azure.com](https://portal.azure.com)kunt u de volgende functievlag toevoegen aan de URL van de Azure-portal. Voorbeeld `https://portal.azure.com/?feature.vmhealth=true`.
 
-Bestaande klanten die gebruikmaken van het Health-onderdeel, hebben nog steeds toegang tot het, maar ze worden niet aangeboden aan nieuwe klanten.  
+U deze korte url ook gebruiken, die [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)de functievlag automatisch instelt:.
 
-Als u de functie wilt openen, kunt u de volgende functie vlag `feature.vmhealth=true` toevoegen aan de Azure Portal-URL [https://portal.azure.com](https://portal.azure.com). Voor beeld `https://portal.azure.com/?feature.vmhealth=true`.
+Als bestaande klant u de functie Status blijven gebruiken op VM's die zijn verbonden met een bestaande werkruimte-instelling met de statusfunctionaliteit.  
 
-U kunt ook deze korte URL gebruiken, waarmee de functie vlag automatisch wordt ingesteld: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview).
+## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Ik gebruik VM Health nu met één omgeving en wil deze graag implementeren in een nieuwe omgeving
 
-Als een bestaande klant kunt u de status functie blijven gebruiken op virtuele machines die zijn verbonden met een bestaande installatie van een werk ruimte met de status functionaliteit.  
-
-## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Ik gebruik nu VM-status met één omgeving en wil deze implementeren in een nieuw abonnement
-
-Als u een bestaande klant bent die gebruikmaakt van de Health-functie en deze wilt gebruiken voor een nieuwe implementatie, neemt u contact met ons op vminsights@microsoft.com om instructies aan te vragen.
+Als u een bestaande klant bent die de functie Gezondheid gebruikt en deze wilt vminsights@microsoft.com gebruiken voor een nieuwe uitrol, neem dan contact met ons op om instructies te vragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg [Deploy Azure monitor voor VM's](vminsights-enable-overview.md)voor meer informatie over de vereisten en methoden die u helpen bij het bewaken van uw virtuele machines.
+Als u inzicht wilt krijgen in de vereisten en methoden waarmee u uw virtuele machines controleren, controleert u [Azure-monitor voor VM's implementeren.](vminsights-enable-overview.md)

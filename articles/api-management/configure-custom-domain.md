@@ -1,7 +1,7 @@
 ---
-title: Aangepaste domein naam voor Azure API Management-exemplaar configureren
+title: Aangepaste domeinnaam configureren voor Azure API Management-instantie
 titleSuffix: Azure API Management
-description: In dit onderwerp wordt beschreven hoe u een aangepaste domein naam configureert voor uw Azure API Management-exemplaar.
+description: In dit onderwerp wordt beschreven hoe u een aangepaste domeinnaam configureert voor uw Azure API Management-exemplaar.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,89 +12,89 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 887019bbdb92807d49c09af3a83313470f334a52
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649536"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335838"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
-Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van `azure-api.net` toe (bijvoorbeeld `apim-service-name.azure-api.net`). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
+Wanneer u een Azure API Management-serviceinstantie maakt, `azure-api.net` wijst Azure `apim-service-name.azure-api.net`deze een subdomein toe van (bijvoorbeeld). U uw API Management-eindpunten echter blootstellen met uw eigen aangepaste domeinnaam, zoals **contoso.com.** In deze zelfstudie ziet u hoe u een bestaande aangepaste DNS-naam in kaart brengt aan eindpunten die worden blootgesteld door een API-beheerexemplaar.
 
 > [!IMPORTANT]
-> API Management accepteert alleen aanvragen met de waarden van de [host-header](https://tools.ietf.org/html/rfc2616#section-14.23) die overeenkomen met de standaard domein naam of een van de geconfigureerde aangepaste domein namen.
+> API Management accepteert alleen aanvragen met [hostheaderwaarden](https://tools.ietf.org/html/rfc2616#section-14.23) die overeenkomen met de standaarddomeinnaam of een van de geconfigureerde aangepaste domeinnamen.
 
 > [!WARNING]
-> Klanten die een certificaat willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten een aangepaste domein naam en een certificaat gebruiken die ze beheren, niet het standaard certificaat. Klanten die het standaard certificaat in plaats daarvan vastmaken, nemen een vaste afhankelijkheid op de eigenschappen van het certificaat die ze niet beheren. Dit is geen aanbevolen procedure.
+> Klanten die certificaatpinning willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten een aangepaste domeinnaam en certificaat gebruiken dat ze beheren, niet het standaardcertificaat. Klanten die het standaardcertificaat vastmaken, hoeven afhankelijk te zijn van de eigenschappen van het certificaat waarover ze geen controle hebben, wat geen aanbevolen praktijk is.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u het volgende nodig:
+Als u de in dit artikel beschreven stappen wilt uitvoeren, moet u het volgende hebben:
 
 -   Een actief Azure-abonnement.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
--   Een API Management-exemplaar. Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
--   Een aangepaste domein naam die eigendom is van u of uw organisatie. In dit onderwerp vindt u geen instructies voor het aanschaffen van een aangepaste domein naam.
--   Een CNAME-record die wordt gehost op een DNS-server die de aangepaste domein naam toewijst aan de standaard domein naam van uw API Management-exemplaar. In dit onderwerp vindt u geen instructies voor het hosten van een CNAME-record.
--   U moet een geldig certificaat met een open bare en persoonlijke sleutel hebben (. PFX). Het onderwerp of de alternatieve naam voor het onderwerp (SAN) moet overeenkomen met de domein naam (dit zorgt ervoor dat API Management exemplaar veilig Url's via SSL beschikbaar maakt).
+-   Een API-beheerexemplaar. Zie [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
+-   Een aangepaste domeinnaam die eigendom is van u of uw organisatie. In dit onderwerp worden geen instructies gegeven over het aanschaffen van een aangepaste domeinnaam.
+-   Een CNAME-record die wordt gehost op een DNS-server die de aangepaste domeinnaam toebrengt aan de standaarddomeinnaam van uw API-beheerexemplaar. Dit onderwerp geeft geen instructies over het hosten van een CNAME-record.
+-   U moet in het bezit zijn van een geldig certificaat met een openbare en privésleutel (. PFX). Onderwerp of onderwerp alternatieve naam (SAN) moet overeenkomen met de domeinnaam (dit stelt API Management instantie om veilig bloot URL's via TLS).
 
-## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>De Azure Portal gebruiken om een aangepaste domein naam in te stellen
+## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>De Azure-portal gebruiken om een aangepaste domeinnaam in te stellen
 
-1. Navigeer naar uw API Management-exemplaar in de [Azure Portal](https://portal.azure.com/).
-1. Selecteer **aangepaste domeinen**.
+1. Navigeer naar uw api-beheerexemplaar in de [Azure-portal.](https://portal.azure.com/)
+1. Selecteer **Aangepaste domeinen**.
 
-    Er zijn een aantal eind punten waaraan u een aangepaste domein naam kunt toewijzen. Momenteel zijn de volgende eind punten beschikbaar:
+    Er zijn een aantal eindpunten waaraan u een aangepaste domeinnaam toewijzen. Momenteel zijn de volgende eindpunten beschikbaar:
 
-    - **Gateway** (standaard is: `<apim-service-name>.azure-api.net`),
-    - **Portal** (standaard is: `<apim-service-name>.portal.azure-api.net`),
-    - **Beheer** (standaard is: `<apim-service-name>.management.azure-api.net`),
-    - **SCM** (standaard is: `<apim-service-name>.scm.azure-api.net`),
-    - **NewPortal** (standaard is: `<apim-service-name>.developer.azure-api.net`).
-
-    > [!NOTE]
-    > Alleen het **Gateway** -eind punt is beschikbaar voor configuratie in de laag verbruik.
-    > U kunt alle eind punten of een aantal hiervan bijwerken. Klanten updaten **Gateway** (deze URL wordt meestal gebruikt voor het aanroepen van de API die wordt weer gegeven via API Management) en de **Portal** (de URL van de ontwikkelaars Portal).
-    > **Beheer** -en **SCM** -eind punten worden intern gebruikt door de eigen aren van het API Management-exemplaar en zijn dus minder vaak toegewezen aan een aangepaste domein naam.
-    > De **Premium** -laag biedt ondersteuning voor het instellen van meerdere hostnamen voor het **Gateway** -eind punt.
-
-1. Selecteer het eind punt dat u wilt bijwerken.
-1. Klik in het venster aan de rechter kant op **aangepast**.
-
-    - Geef in de naam van het **aangepaste domein**de naam op die u wilt gebruiken. Bijvoorbeeld `api.contoso.com`.
-    - Selecteer in het **certificaat**een certificaat van Key Vault. U kunt ook een geldige uploaden. PFX-bestand en geef het **wacht woord**op als het certificaat is beveiligd met een wacht woord.
+    - **Gateway** (standaard `<apim-service-name>.azure-api.net`is: ),
+    - **Portal** (standaard `<apim-service-name>.portal.azure-api.net`is: ),
+    - **Beheer** (standaard `<apim-service-name>.management.azure-api.net`is: ),
+    - **SCM** (standaard `<apim-service-name>.scm.azure-api.net`is: ),
+    - **NewPortal** (standaard `<apim-service-name>.developer.azure-api.net`is: ).
 
     > [!NOTE]
-    > Domein namen met Joker tekens, zoals `*.contoso.com`, worden in alle lagen ondersteund, met uitzonde ring van de laag verbruik.
+    > Alleen het **Gateway-eindpunt** is beschikbaar voor configuratie in de laag Verbruik.
+    > U alle eindpunten of een aantal van deze punten bijwerken. Vaak werken klanten **Gateway** bij (deze URL wordt gebruikt om de API aan te roepen die wordt blootgesteld via API-beheer) en **Portal** (de URL van de ontwikkelaarsportal).
+    > **Beheer-** en **SCM-eindpunten** worden alleen intern gebruikt door de api-beheerinstantie-eigenaren en krijgen dus minder vaak een aangepaste domeinnaam toegewezen.
+    > De **premiumlaag** ondersteunt het instellen van meerdere hostnamen voor het **Gateway-eindpunt.**
+
+1. Selecteer het eindpunt dat u wilt bijwerken.
+1. Klik in het venster rechts op **Aangepast**.
+
+    - Geef in de **aangepaste domeinnaam**de naam op die u wilt gebruiken. Bijvoorbeeld `api.contoso.com`.
+    - Selecteer in het **certificaat**een certificaat uit Key Vault. Je ook een geldige uploaden. PFX bestand en geef het **wachtwoord,** als het certificaat is beveiligd met een wachtwoord.
+
+    > [!NOTE]
+    > Wildcard-domeinnamen worden bijvoorbeeld `*.contoso.com` in alle lagen ondersteund, behalve in de categorie Verbruik.
 
     > [!TIP]
-    > U kunt het beste Azure Key Vault gebruiken voor het beheren van certificaten en het instellen hiervan op automatisch draaien.
-    > Als u Azure Key Vault gebruikt voor het beheren van het SSL-certificaat van het aangepaste domein, moet u ervoor zorgen dat het certificaat wordt ingevoegd in Key Vault [als een _certificaat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), niet als een _geheim_.
+    > We raden u aan Azure Key Vault te gebruiken voor het beheren van certificaten en deze in te stellen op automatisch roteren.
+    > Als u Azure Key Vault gebruikt om het aangepaste DOMEIN TLS/SSL-certificaat te beheren, controleert u of het certificaat [als _certificaat_in](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)Key Vault wordt ingevoegd, geen _geheim_.
     >
-    > Als u een SSL-certificaat wilt ophalen, moet API Management de lijst hebben en geheimen machtigingen krijgen voor de Azure Key Vault met het certificaat. Wanneer u Azure Portal gebruikt, worden alle benodigde configuratie stappen automatisch voltooid. Wanneer u opdracht regel Programma's of beheer-API gebruikt, moeten deze machtigingen hand matig worden verleend. Dit gebeurt in twee stappen. Gebruik eerst Managed Identities pagina op uw API Management-exemplaar om er zeker van te zijn dat de beheerde identiteit is ingeschakeld en noteer de principal-id die op die pagina wordt weer gegeven. Ten tweede geeft u de machtigingen lijst op en krijgt u een geheimen aan deze principal-id op het Azure Key Vault met het certificaat.
+    > Als u een TLS/SSL-certificaat wilt ophalen, moet API-beheer de lijst hebben en geheimenmachtigingen krijgen voor de Azure Key Vault die het certificaat bevat. Bij het gebruik van Azure portal worden alle benodigde configuratiestappen automatisch voltooid. Bij het gebruik van opdrachtregelgereedschappen of beheer-API moeten deze machtigingen handmatig worden verleend. Dit gebeurt in twee stappen. Gebruik eerst de pagina Beheerde identiteiten in uw API-beheerexemplaar om ervoor te zorgen dat Beheerde identiteit is ingeschakeld en maak een notitie van de hoofdnummerid die op die pagina wordt weergegeven. Ten tweede geeft u toestemmingslijst en krijgt u toestemming voor geheimen voor deze hoofd-id op de Azure Key Vault die het certificaat bevat.
     >
-    > Als het certificaat is ingesteld op autorotate, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
+    > Als het certificaat is ingesteld op automatisch roteren, haalt API Management automatisch de nieuwste versie op zonder dat de service wordt uitvalbuiten (als uw API-beheerlaag SLA heeft - d.w.z. in alle lagen behalve de projectlaag).
 
 1. Klik op Toepassen.
 
     > [!NOTE]
-    > Het proces voor het toewijzen van het certificaat kan 15 minuten of langer duren, afhankelijk van de grootte van de implementatie. Ontwikkel aars-SKU heeft downtime, Basic-en hogere Sku's hebben geen downtime.
+    > Het toewijzen van het certificaat kan 15 minuten of langer duren, afhankelijk van de grootte van de implementatie. Ontwikkelaar SKU heeft downtime, Basic en hogere SKU's hebben geen downtime.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
 ## <a name="dns-configuration"></a>DNS-configuratie
 
-Bij het configureren van DNS voor uw aangepaste domein naam hebt u twee opties:
+Bij het configureren van DNS voor uw aangepaste domeinnaam hebt u twee opties:
 
--   Configureer een CNAME-record die verwijst naar het eind punt van uw geconfigureerde aangepaste domein naam.
--   Configureer een A-record die verwijst naar het IP-adres van uw API Management Gateway.
+-   Configureer een CNAME-record die verwijst naar het eindpunt van uw geconfigureerde aangepaste domeinnaam.
+-   Configureer een A-record die verwijst naar het IP-adres van uw API Management-gateway.
 
 > [!NOTE]
-> Hoewel het IP-adres van de API Management-instantie statisch is, kan dit in een paar scenario's worden gewijzigd. Daarom is het raadzaam om CNAME te gebruiken bij het configureren van een aangepast domein. Neem hierbij rekening mee bij het kiezen van een DNS-configuratie methode. Meer informatie vindt u in de [Veelgestelde vragen over API Management](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
+> Hoewel het IP-adres van de API-managment-instantie statisch is, kan dit in een paar scenario's veranderen. Daarom is het raadzaam om CNAME te gebruiken bij het configureren van een aangepast domein. Houd daar rekening mee bij het kiezen van DNS-configuratiemethode. Lees meer in [het IP-documentatieartikel](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) en de [FAQ API Management](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw service bijwerken en schalen](upgrade-and-scale.md)
+[Uw service upgraden en schalen](upgrade-and-scale.md)

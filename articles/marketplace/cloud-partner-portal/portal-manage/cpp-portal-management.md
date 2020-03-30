@@ -1,20 +1,19 @@
 ---
-title: Cloud Partner-portal-beheer | Azure Marketplace
-description: Afgeschafte CPP-artikel, gewijs naar PC-artikel; is "beschrijft de typen bewerkingen die beschikbaar zijn voor het beheren van accounts voor de Cloud Partner-portal voor de Azure Marketplace."
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Beheer van cloudpartnerportalen | Azure Marketplace
+description: Afgeschaft CPP artikel, wees op PC artikel; was 'Beschrijft de typen bewerkingen die beschikbaar zijn voor het beheren van accounts voor de Cloud Partner Portal voor de Azure Marketplace'.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 4d586e45b0d86bedce61eef69a87d3fc187cf279
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: ce7e56352533072c625d0ea54a77fa6c4860f2e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288441"
 ---
-# <a name="cloud-partner-portal-management"></a>Cloud Partner-portal beheer
+# <a name="cloud-partner-portal-management"></a>Beheer van cloudpartnerportalen
 
-Deze functionaliteit is verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie [uw commerciële Marketplace-account beheren in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie.
+Deze functionaliteit is verplaatst naar de Microsoft [Partner Center-portal.](https://partner.microsoft.com/) Zie [Uw Commerciële Marketplace-account beheren in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie.

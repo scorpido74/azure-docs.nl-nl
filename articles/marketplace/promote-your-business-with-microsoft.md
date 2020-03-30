@@ -1,39 +1,37 @@
 ---
-title: Uw bedrijf promoten met micro soft | Azure Marketplace
-description: Promoot uw bedrijf met Azure Marketplace en AppSource voor app-en service-uitgevers
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Uw bedrijf promoten met Microsoft | Azure Marketplace
+description: Uw bedrijf promoten met Azure Marketplace en AppSource voor app- en service-uitgevers
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: c0f33402c5ff9f970e2ffebf405178dbc0974690
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 89309bc09559d205fd9b8826749def6d98dd43bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285024"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Promoot uw bedrijf met micro soft 
+# <a name="promote-your-business-with-microsoft"></a>Uw bedrijf promoten met Microsoft 
 
-Micro soft heeft het doel om partners (u) te ondersteunen en om het verkopen van uw app of aanbieding op de Marketplace te vereenvoudigen. Door op Marketplace te vermelden, hebt u toegang tot de Program ma's en bronnen op de Marketplace. 
+Microsoft heeft als doel partners (u) te ondersteunen en de verkoop van uw app of aanbod in de etalages op de marktplaats te vereenvoudigen. Door op de marktplaats te vermelden, hebt u toegang tot de programma's en bronnen op de marktplaats. 
 
-Als u zich nog niet hebt aangemeld bij de Microsoft Partner Network (MPN), moet u dit doen voordat u doorgaat.  
-*   Ga voor meer informatie over MPN naar de pagina Microsoft Partner Network op [partner.Microsoft.com](https://partner.microsoft.com).  
+Als u zich nog niet hebt aangemeld bij het Microsoft Partner Network (MPN), doe dit dan voordat u verdergaat.  
+*   Ga voor meer informatie over MPN naar de pagina Microsoft Partner Network op [partner.microsoft.com.](https://partner.microsoft.com)  
 
-MPN biedt richt lijnen voor de volgende onderwerpen.  
+MPN geeft richtlijnen over de volgende onderwerpen.  
 *   Nieuwe zakelijke kansen  
 *   Verbinding maken met teams of partners  
-*   Oplossingen en training om uw vaardig heden te verg Roten  
+*   Oplossingen en training om je vaardigheden te laten groeien  
 
-Gebruik de volgende tabel om toegang te krijgen tot meer voor delen en bronnen om uw aanbieding of app te promoten. 
+Als u uw aanbieding of app wilt promoten, gebruikt u de volgende tabel om toegang te krijgen tot meer voordelen en bronnen. 
 
-| handig | Resources |  
+| Voordeel | resources |  
 |:--- |:--- |  
-| Gebruik uw belangrijkste voor delen | Als onderdeel van de Microsoft Partner Network ontvangt u een aantal basis voordelen waarmee u tijd en geld kunt besparen. De voor delen kunnen u ook helpen uw mogelijkheden te verbeteren, klanten beter te laten werken en verbindingen te bouwen om uw volledige bedrijfs potentieel te bereiken.<ul> <li>Voor meer informatie over de belangrijkste voor delen gaat u naar de pagina met belangrijkste voor delen en vereisten op [partner.Microsoft.com/Membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
-| Uw Cloud platform competentie verdienen | Het verdienen van een competentie helpt u bij het onderscheiden van andere partners van micro soft. Het verdienen van een competentie helpt u ook om technische expertise en successen van klanten in de markt te demonstreren. Competentie is een vereiste voor veel belang rijke partner Programma's, zoals mede verkopen.<ul> <li>Ga voor meer informatie over de competentie van het Cloud platform naar de pagina voor de competentie van het Cloud platform op [partner.Microsoft.com/Membership/Cloud-platform-Competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
-| Klaar voor de verkoop | Met het programma voor samen verkoop dat u kunt samen werken met micro soft-verkopers en andere partners op het vlak van de verkoop kansen en de planning van de klant. Uw oplossing wordt zichtbaar voor verkopers van micro soft in de oplossings catalogus van verkopers. Micro soft-verkopers worden beloond om samen te werken en met u te winnen.<ul> <li>Ga voor meer informatie over de voor bereiding op de verkoop van mede werkers naar de pagina promoten uw bedrijf op [partner.Microsoft.com/REACH-Customers/Promote-Your-Business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
+| Gebruik je belangrijkste voordelen | Als onderdeel van het Microsoft Partner Network ontvangt u een reeks kernvoordelen waarmee u tijd en geld besparen. De voordelen kunnen u ook helpen uw mogelijkheden te versterken, klanten beter van dienst te zijn en verbindingen op te bouwen om uw volledige bedrijfspotentieel te bereiken.<ul> <li>Ga voor meer informatie over de belangrijkste voordelen naar de pagina Core-voordelen en -vereisten op [partner.microsoft.com/membership/core-benefits.](https://partner.microsoft.com/membership/core-benefits)</li> </ul> |  
+| Verdien je Cloud Platform Competentie | Het verdienen van een competentie helpt u zich te onderscheiden tussen andere Microsoft-partners. Het behalen van een competentie helpt u ook technische expertise en klantsucces in de markt aan te tonen. Competentie is een voorwaarde voor veel belangrijke partnerprogramma's zoals Co-Sell.<ul> <li>Ga voor meer informatie over de competentie van het Cloud Platform naar de competentiepagina van het Cloud Platform op [partner.microsoft.com/membership/cloud-platform-competency.](https://partner.microsoft.com/membership/cloud-platform-competency)</li> </ul> |  
+| Word co-sell ready | Met het Co-Sell Ready-programma u rechtstreeks samenwerken met Microsoft-verkopers en andere partners op doelklantkansen en accountplanning. Uw oplossing wordt zichtbaar voor Microsoft-verkopers in de catalogus van de verkopersoplossing. Microsoft-verkopers worden beloond voor het samenwerken en winnen met u.<ul> <li>Ga voor meer informatie over gereedheid voor Co-Sell naar de pagina Uw bedrijf promoten op [partner.microsoft.com/reach-customers/promote-your-business.](https://partner.microsoft.com/reach-customers/promote-your-business)</li> </ul> |  
 
 ---

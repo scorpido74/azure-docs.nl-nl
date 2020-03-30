@@ -1,155 +1,161 @@
 ---
-title: Query hulp programma voor zoeken in Verkenner in Azure Portal
+title: Queryhulpprogramma voor zoekverkenners in Azure-portal
 titleSuffix: Azure Cognitive Search
-description: Search Explorer is ingebouwd in de Azure Portal, handig voor het verkennen van inhoud en het valideren van query's in azure Cognitive Search. Voer teken reeksen in voor de term of woordgroepen zoeken, of volledig gekwalificeerde Zoek expressies met een geavanceerde syntaxis.
+description: Gebruik in deze Snelstart van Azure-portal Zoekverkenner om querysyntaxis, test queryexpressies of inspecteer een zoekdocument. Zoekexplorer-query's indexen in Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ff2986c4e90cb997df250d647bdfbd068d70e51f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.topic: quickstart
+ms.date: 03/27/2020
+ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112092"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369666"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Zoek Verkenner gebruiken in de Azure Portal voor het opvragen van documenten in azure Cognitive Search 
+# <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Snelstart: zoekverkenner gebruiken om query's uit te voeren in de portal
 
-Dit artikel laat u zien hoe u een query kunt uitvoeren op een bestaande Azure Cognitive Search-index met behulp van **Search Explorer** in de Azure Portal. U kunt Search Explorer starten vanaf de opdracht balk om eenvoudige of volledige lucene-query-expressies naar een wille keurige bestaande index in uw service te verzenden. 
+**Search explorer** is een ingebouwd queryhulpprogramma dat wordt gebruikt voor het uitvoeren van query's tegen een zoekindex in Azure Cognitive Search. Met dit hulpprogramma u eenvoudig de syntaxis van query's leren, een query of filterexpressie testen of de resultaten van een indexvernieuwing bevestigen door te controleren of er nieuwere inhoud bestaat.
 
-   ![Zoek opdracht Verkenner in de portal](./media/search-explorer/search-explorer-cmd2.png "Zoek opdracht Verkenner in de portal")
+Deze quickstart maakt gebruik **van realestate-us-sample-index** om Search explorer aan te tonen. Aanvragen worden geformuleerd met behulp van de [Search REST API,](https://docs.microsoft.com/rest/api/searchservice/)met antwoorden geretourneerd als JSON-documenten.
 
-## <a name="basic-search-strings"></a>Eenvoudige Zoek reeksen
+## <a name="prerequisites"></a>Vereisten
 
-In de volgende voor beelden wordt ervan uitgegaan dat de ingebouwde voor beeld-index van onroerend goed is. U kunt deze index maken met behulp van de wizard gegevens importeren in de portal en voor **beelden** kiezen als de gegevens bron.
++ [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U gebruik maken van een gratis service voor deze quickstart.
 
-### <a name="example-1---empty-search"></a>Voor beeld 1: lege zoek opdracht
++ **realestate-us-sample-index** wordt gebruikt voor deze quickstart. Stap door de wizard [**Gegevens importeren**](search-import-data-portal.md) om de index te genereren uit de ingebouwde gegevensbron van voorbeelden.
 
-Voer een lege zoek opdracht uit als u de inhoud voor het eerst wilt bekijken en klik op **zoeken** zonder voor waarden. Een lege zoek opdracht is handig als eerste query omdat hiermee hele documenten worden geretourneerd, zodat u de document samenstelling kunt controleren. Bij een lege zoek opdracht zijn er geen zoek volgorde en documenten worden geretourneerd in een wille keurige volg orde (`"@search.score": 1` voor alle documenten). Standaard worden 50-documenten geretourneerd in een zoek opdracht.
+## <a name="start-search-explorer"></a>Zoekverkenner starten
 
-Een gelijkwaardige syntaxis voor een lege zoek opdracht is `*` of `search=*`.
+1. Open in de [Azure-portal](https://portal.azure.com)de pagina met zoekservice vanuit het dashboard of [zoek uw service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 
-   ```Input
+1. Open Zoekverkenner vanaf de opdrachtbalk:
+
+   ![Opdracht Verkenner zoeken in portal](./media/search-explorer/search-explorer-cmd2.png "Opdracht Verkenner zoeken in portal")
+
+    Of gebruik het ingesloten tabblad **Zoekverkenner** op een geopende index:
+
+   ![Tabblad Verkenner](./media/search-explorer/search-explorer-tab.png "Tabblad Verkenner")
+
+## <a name="unspecified-query"></a>Niet-gespecificeerde query
+
+Voer voor een eerste blik op de inhoud een lege zoekopdracht uit door op **Zoeken** te klikken zonder dat er termen zijn opgegeven. Een lege zoekopdracht is handig als eerste query omdat volledige documenten worden geretourneerd, zodat u de documentsamenstelling controleren. Bij een lege zoekopdracht is er geen zoekrang en`"@search.score": 1` worden documenten in willekeurige volgorde geretourneerd (voor alle documenten). Standaard worden 50 documenten geretourneerd in een zoekverzoek.
+
+Gelijkwaardige syntaxis voor `*` een `search=*`lege zoekopdracht is of .
+   
+   ```http
    search=*
    ```
 
-   **Results**
+   **Resultaten**
    
-   ![Voor beeld van lege query](./media/search-explorer/search-explorer-example-empty.png "Voor beeld van niet-gekwalificeerde of lege query")
+   ![Voorbeeld van lege query](./media/search-explorer/search-explorer-example-empty.png "Voorbeeld van ongekwalificeerde of lege query")
 
-### <a name="example-2---free-text-search"></a>Voor beeld 2: zoeken in vrije tekst
+## <a name="free-text-search"></a>Gratis tekst zoeken
 
-Vrije-vorm query's, met of zonder Opera Tors, zijn handig voor het simuleren van door de gebruiker gedefinieerde query's die vanuit een aangepaste app naar Azure Cognitive Search worden verzonden. Wanneer u query termen of-expressies opgeeft, komt de zoek prioriteit in afspeel. In het volgende voor beeld ziet u een zoek opdracht met vrije tekst.
+Query's in vrije vorm, met of zonder operatoren, zijn handig voor het simuleren van door de gebruiker gedefinieerde query's die vanuit een aangepaste app naar Azure Cognitive Search worden verzonden. Alleen de velden die worden toegeschreven als **Doorzoekbaar** in de indexdefinitie worden gescand op overeenkomsten. 
 
-   ```Input
+Wanneer u zoekcriteria opgeeft, zoals querytermen of expressies, wordt de zoekrang in het spel gebracht. In het volgende voorbeeld wordt een gratis tekstzoekopdracht weergegeven.
+
+   ```http
    Seattle apartment "Lake Washington" miele OR thermador appliance
    ```
 
-   **Results**
+   **Resultaten**
 
-   U kunt CTRL-F gebruiken om binnen de resultaten te zoeken naar specifieke gebruiks voorwaarden.
+   U Ctrl-F gebruiken om in de resultaten te zoeken naar specifieke termen die interessant zijn.
 
-   ![Voor beeld van een vrije-tekst query](./media/search-explorer/search-explorer-example-freetext.png "Voor beeld van een vrije-tekst query")
+   ![Voorbeeld van gratis tekstquery](./media/search-explorer/search-explorer-example-freetext.png "Voorbeeld van gratis tekstquery")
 
-### <a name="example-3---count-of-matching-documents"></a>Voor beeld 3: aantal overeenkomende documenten 
+## <a name="count-of-matching-documents"></a>Aantal overeenkomende documenten 
 
-Voeg **$Count** toe om het aantal overeenkomsten op te halen dat in een index is gevonden. Bij een lege zoek opdracht is Count het totale aantal documenten in de index. Bij een gekwalificeerde zoek opdracht is het het aantal documenten dat overeenkomt met de invoer van de query.
+Voeg **$count=true toe** om het aantal overeenkomsten in een index te krijgen. Bij een lege zoekopdracht is het aantal het totale aantal documenten in de index. Bij een gekwalificeerde zoekopdracht is dit het aantal documenten dat overeenkomt met de queryinvoer.
 
-   ```Input1
+   ```http
    $count=true
    ```
-   **Results**
 
-   ![Voor beeld van aantal documenten](./media/search-explorer/search-explorer-example-count.png "Aantal overeenkomende documenten in de index")
+   **Resultaten**
 
-### <a name="example-4---restrict-fields-in-search-results"></a>Voor beeld 4: velden in Zoek resultaten beperken
+   ![Aantal documenten voorbeeld](./media/search-explorer/search-explorer-example-count.png "Aantal overeenkomende documenten in index")
 
-Voeg **$Select** toe om de resultaten te beperken tot de expliciet benoemde velden voor meer Lees bare uitvoer in **Search Explorer**. Voor het behoud van de zoek teken reeks en **$Count = True**, voorvoegsel argumenten met **&** . 
+## <a name="limit-fields-in-search-results"></a>Velden in zoekresultaten beperken
 
-   ```Input
+Voeg [**$select**](search-query-odata-select.md) toe om resultaten te beperken tot de expliciet benoemde velden voor meer leesbare uitvoer in **Zoekverkenner**. Als u de zoektekenreeks en **$count=true wilt**behouden, u argumenten vooraf weergeven met **&**. 
+
+   ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
    ```
 
-   **Results**
+   **Resultaten**
 
-   ![Voor beeld van limiet velden](./media/search-explorer/search-explorer-example-selectfield.png "Velden in Zoek resultaten beperken")
+   ![Voorbeeld van velden beperken](./media/search-explorer/search-explorer-example-selectfield.png "Velden in zoekresultaten beperken")
 
-### <a name="example-5---return-next-batch-of-results"></a>Voor beeld 5: volgende batch met resultaten retour neren
+## <a name="return-next-batch-of-results"></a>Volgende batch resultaten retourneren
 
-Azure Cognitive Search retourneert de beste 50 overeenkomsten op basis van de zoek positie. Als u de volgende set overeenkomende documenten wilt ophalen, voegt u **$Top = 100 toe, & $Skip = 50** om de resultatenset te verhogen naar 100-documenten (de standaard waarde is 50, maximum is 1000), waarbij de eerste 50 documenten worden overgeslagen. U moet zoek criteria opgeven, zoals een query term of expressie, om gerangschikte resultaten te krijgen. U ziet dat zoek scores de diep gaande Zoek resultaten verlagen.
+Azure Cognitive Search retourneert de top 50-overeenkomsten op basis van de zoekpositie. Als u de volgende set overeenkomende documenten wilt krijgen, wordt **$top=100.&$skip=50** toegevoegd om het resultaat dat is ingesteld op 100 documenten te verhogen (standaard is 50, maximaal 1000), waarbij de eerste 50 documenten worden overgeslagen. Bedenk dat u zoekcriteria, zoals een queryterm of -expressie, moet verstrekken om gerangschikte resultaten te krijgen. Merk op dat zoekscores afnemen hoe dieper je in de zoekresultaten.
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
    ```
 
-   **Results**
+   **Resultaten**
 
-   ![Zoek resultaten batch](./media/search-explorer/search-explorer-example-topskip.png "Volgende batch met zoek resultaten retour neren")
+   ![Zoekresultaten voor batch's](./media/search-explorer/search-explorer-example-topskip.png "Volgende batch zoekresultaten retourneren")
 
-## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filter expressies (groter dan, kleiner dan, gelijk aan)
+## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filterexpressies (groter dan, minder dan, gelijk aan)
 
-Gebruik de para meter **$filter** als u nauw keurige criteria wilt opgeven in plaats van zoeken met vrije tekst. In dit voor beeld wordt gezocht naar slaap kamers groter dan 3:
+Gebruik de [**parameter $filter**](search-query-odata-filter.md) wanneer u precieze criteria wilt opgeven in plaats van het zoeken naar vrije tekst. Het veld moet worden toegeschreven als **Filterbaar** in de index. In dit voorbeeld wordt gezocht naar slaapkamers groter dan 3:
 
-   ```Input
+   ```http
    search=seattle condo&$filter=beds gt 3&$count=true
    ```
    
-   **Results**
+   **Resultaten**
 
-   ![Filter expressie](./media/search-explorer/search-explorer-example-filter.png "Filteren op criteria")
+   ![Filterexpressie](./media/search-explorer/search-explorer-example-filter.png "Filteren op criteria")
 
-## <a name="order-by-expressions"></a>Order-by-expressies
+## <a name="order-by-expressions"></a>Volgorde-door-expressies
 
-Voeg **$OrderBy** toe om resultaten te sorteren op een ander veld behalve een zoek Score. Een voorbeeld expressie die u kunt gebruiken om dit uit te testen is:
+Voeg [**$orderby**](search-query-odata-orderby.md) toe om resultaten te sorteren op een ander veld naast de zoekscore. Het veld moet worden toegeschreven als **Sorteerbaar** in de index. Een voorbeeldexpressie die u gebruiken om dit uit te testen, is:
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc
    ```
    
-   **Results**
+   **Resultaten**
 
-   ![OrderBy-expressie](./media/search-explorer/search-explorer-example-ordery.png "De sorteer volgorde wijzigen")
+   ![Volgordeperexpressie](./media/search-explorer/search-explorer-example-ordery.png "De sorteervolgorde wijzigen")
 
-Zowel **$filter** -als **$OrderBy** -expressies zijn OData-constructies. Zie [OData-syntaxis filteren](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
+Zowel **$filter** als **$orderby** expressies zijn OData-constructies. Zie [OData-syntaxis filteren](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
 
 <a name="start-search-explorer"></a>
 
-## <a name="how-to-start-search-explorer"></a>Zoeken Verkenner starten
+## <a name="takeaways"></a>Opgedane kennis
 
-1. Open in de [Azure Portal](https://portal.azure.com)de pagina zoek service in het dash board of [Zoek uw service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in de lijst met Services.
+In deze snelstart hebt u **Search explorer** gebruikt om een index op te vragen met behulp van de REST API.
 
-2. Klik op de pagina overzicht van services op **Search Explorer**.
++ Resultaten worden geretourneerd als uitgebreide JSON-documenten, zodat u de documentconstructie en -inhoud in zijn geheel bekijken. U queryexpressies gebruiken, weergegeven in de voorbeelden, om te beperken welke velden worden geretourneerd.
 
-   ![Zoek opdracht Verkenner in de portal](./media/search-explorer/search-explorer-cmd2.png "Zoek opdracht Verkenner in de portal")
++ Documenten bestaan uit alle velden die zijn gemarkeerd als **Opvraagbaar** in de index. Als u indexkenmerken in de portal wilt weergeven, klikt u op *het voorbeeld van onroerend goed en ons* in de lijst **Indexen** op de pagina met zoekresultaten.
 
-3. Selecteer de index die u wilt opvragen.
++ Query's in vrije vorm, vergelijkbaar met wat u in een commerciële webbrowser invoeren, zijn handig voor het testen van een gebruikerservaring. Bijvoorbeeld, uitgaande van de ingebouwde onroerend goed monster index, u in te voeren Seattle appartementen lake Washington, en dan u ctrl-F gebruiken om termen te vinden in de zoekresultaten. 
 
-   ![Selecteer de index die u wilt doorzoeken](./media/search-explorer/search-explorer-changeindex-se2.png "De index selecteren")
++ Query- en filterexpressies worden gearticuleerd in een syntaxis die wordt ondersteund door Azure Cognitive Search. De standaardis een [eenvoudige syntaxis,](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)maar u optioneel [volledige Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) gebruiken voor krachtigere query's. [Filterexpressies](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) zijn een syntaxis van OData.
 
-4. U kunt desgewenst de API-versie instellen. De huidige algemeen beschik bare API-versie is standaard geselecteerd, maar u kunt een voor beeld of een oudere API kiezen als de syntaxis die u wilt gebruiken, versie-specifiek is.
+## <a name="clean-up-resources"></a>Resources opschonen
 
-5. Zodra de index-en API-versie is geselecteerd, voert u zoek termen of Fully Qualified query expressies in de zoek balk in en klikt u op **zoeken** om uit te voeren.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-   ![Voer zoek termen in en klik op zoeken](./media/search-explorer/search-explorer-query-string-example.png "Voer zoek termen in en klik op zoeken")
+U resources in de portal vinden en beheren met de koppeling **Alle resources** of **Resourcegroepen** in het linkernavigatiedeelvenster.
 
-Tips voor zoeken in **Search Explorer**:
-
-+ Resultaten worden geretourneerd als uitgebreide JSON-documenten, zodat u de document constructie en-inhoud volledig kunt weer geven. U kunt query-expressies die in de voor beelden worden weer gegeven, gebruiken om te beperken welke velden worden geretourneerd.
-
-+ Documenten bestaan uit alle velden die in de index zijn gemarkeerd als **ophalen** . Als u index kenmerken wilt weer geven in de portal, klikt u in de lijst **indexen** op de pagina overzicht van zoek opdrachten op *realestate-VS-voor beeld* .
-
-+ Vrije-vorm query's, vergelijkbaar met wat u in een commerciële webbrowser kunt invoeren, zijn handig voor het testen van de ervaring van de eind gebruiker. Als u bijvoorbeeld de ingebouwde realestate-voor beeld-index gebruikt, kunt u ' Seattle appartementen Lake Washington ' invoeren en vervolgens CTRL-F gebruiken om voor waarden te vinden in de zoek resultaten. 
-
-+ Query-en filter expressies moeten worden gegeleeerd in een syntaxis die wordt ondersteund door Azure Cognitive Search. De standaard instelling is een [eenvoudige syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), maar u kunt eventueel [volledige lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) gebruiken voor krachtiger query's. [Filter expressies](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) zijn een OData-syntaxis.
-
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u beperkt bent tot drie indexen, indexeerders en gegevensbronnen. U afzonderlijke items in de portal verwijderen om onder de limiet te blijven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende resources bieden extra informatie over querysyntaxis en voorbeelden.
+Voor meer informatie over querystructuren en syntaxis gebruikt u Postman of een gelijkwaardig hulpprogramma om queryexpressies te maken die meer onderdelen van de API gebruiken. De [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) is vooral handig voor leren en verkennen.
 
- + [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
- + [Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
- + [Lucene-queryvoorbeelden](search-query-lucene-examples.md) 
- + [OData-filterexpressiesyntaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 
+> [!div class="nextstepaction"]
+> [Een basisquery maken in Postman](search-query-simple-examples.md)

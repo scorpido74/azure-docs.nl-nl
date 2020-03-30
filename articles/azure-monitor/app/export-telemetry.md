@@ -1,122 +1,134 @@
 ---
-title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft Docs
-description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
+title: Continue export van telemetrie vanuit Application Insights | Microsoft Documenten
+description: Exporteer diagnostische en gebruiksgegevens naar opslag in Microsoft Azure en download deze vanaf daar.
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/25/2020
+ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663910"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298286"
 ---
-# <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren uit Application Insights
-Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
+# <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
+Wilt u uw telemetrie langer bewaren dan de standaardbewaarperiode? Of verwerken op een gespecialiseerde manier? Continuous Export is hiervoor ideaal. De gebeurtenissen die u ziet in de Portal Application Insights, kunnen worden geëxporteerd naar opslag in Microsoft Azure in JSON-indeling. Van daaruit u uw gegevens downloaden en schrijven welke code u nodig hebt om het te verwerken.  
 
-Voordat u doorlopend exporteren instelt, zijn er enkele alternatieven die u wellicht wilt overwegen:
+Voordat u continue export instelt, zijn er enkele alternatieven die u misschien wilt overwegen:
 
-* Met de knop Exporteren boven aan een metriek of zoek tabblad kunt u tabellen en grafieken overdragen naar een Excel-spread sheet.
+* Met de knop Exporteren boven aan een statistieken- of zoektabblad u tabellen en grafieken overzetten naar een Excel-spreadsheet.
 
-* [Analytics](../../azure-monitor/app/analytics.md) biedt een krachtige query taal voor telemetrie. Er kunnen ook resultaten worden geëxporteerd.
-* Als u [uw gegevens in Power bi wilt verkennen](../../azure-monitor/app/export-power-bi.md ), kunt u dat doen zonder doorlopend exporteren te gebruiken.
-* Met de [rest API voor gegevens toegang](https://dev.applicationinsights.io/) kunt u via een programma toegang krijgen tot uw telemetrie.
-* U kunt ook instellen dat [doorlopende export via Power shell wordt uitgevoerd](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
+* [Analytics](../../azure-monitor/app/analytics.md) biedt een krachtige querytaal voor telemetrie. Het kan ook resultaten exporteren.
+* Als u uw [gegevens in Power BI](../../azure-monitor/app/export-power-bi.md )wilt verkennen, u dat doen zonder Continue export te gebruiken.
+* Met [de REST API voor gegevenstoegang](https://dev.applicationinsights.io/) u programmatisch toegang krijgen tot uw telemetrie.
+* U ook toegang krijgen tot [setup continuous export via Powershell.](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)
 
-Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang mogelijk kunt blijven), is deze nog steeds beschikbaar in Application Insights voor de gebruikelijke [Bewaar periode](../../azure-monitor/app/data-retention-privacy.md).
+Nadat Continuous Export uw gegevens naar opslag heeft kopieën gemaakt (waar deze zo lang kunnen blijven als u wilt), is deze nog steeds beschikbaar in Application Insights voor de gebruikelijke [bewaarperiode.](../../azure-monitor/app/data-retention-privacy.md)
 
-## <a name="continuous-export-advanced-storage-configuration"></a>Geavanceerde opslag configuratie voor continue export
+## <a name="continuous-export-advanced-storage-configuration"></a>Geavanceerde opslagconfiguratie continu exporteren
 
-Continue export **biedt geen ondersteuning** voor de volgende functies/configuraties van Azure Storage:
+Continuous Export **biedt geen ondersteuning voor** de volgende Azure-opslagfuncties/-configuraties:
 
-* Gebruik van [VNET/Azure Storage-firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in combi natie met Azure Blob Storage.
+* Gebruik van [VNET/Azure Storage-firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in combinatie met Azure Blob-opslag.
 
-* [Onveranderbare opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) voor Azure Blob Storage.
+* [Onveranderlijke opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) voor Azure Blob-opslag.
 
-* [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
-## <a name="setup"></a>Een continue export maken
+## <a name="create-a-continuous-export"></a><a name="setup"></a>Een continue export maken
 
-1. Open in de resource Application Insights voor uw app onder configureren aan de linkerkant de optie doorlopend exporteren en kies **toevoegen**:
+1. Open Continue exporteren in de bron Application Insights voor uw app onder Configureren aan de linkerkant en kies **Toevoegen:**
 
-2. Kies de gegevens typen voor telemetrie die u wilt exporteren.
+2. Kies de telemetriegegevenstypen die u wilt exporteren.
 
-3. Maak of selecteer een [Azure Storage-account](../../storage/common/storage-introduction.md) waar u de gegevens wilt opslaan. Ga naar de [pagina met officiële prijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over de opties voor opslag prijzen.
+3. Maak of selecteer een [Azure-opslagaccount](../../storage/common/storage-introduction.md) waar u de gegevens wilt opslaan. Ga voor meer informatie over opslagprijsopties naar de [officiële prijspagina.](https://azure.microsoft.com/pricing/details/storage/)
 
-     Klik op toevoegen, bestemming exporteren, opslag account en vervolgens een nieuwe winkel maken of een bestaande Store kiezen.
+     Klik op Toevoegen, Doel exporteren, Opslagaccount en maak vervolgens een nieuwe winkel of kies een bestaande winkel.
 
     > [!Warning]
-    > De opslag locatie wordt standaard ingesteld op dezelfde geografische regio als uw Application Insights-resource. Als u in een andere regio opslaat, kunnen er kosten in rekening worden gebracht.
+    > Standaard wordt de opslaglocatie ingesteld op dezelfde geografische regio als uw Application Insights-bron. Als u in een andere regio opslaat, u transferkosten maken.
 
-4. Maak of selecteer een container in de opslag.
+4. Een container in de opslag maken of selecteren.
 
-Zodra u uw export hebt gemaakt, wordt deze gestart. U ontvangt alleen gegevens die binnenkomen nadat u de export hebt gemaakt.
+Zodra u uw export hebt gemaakt, begint deze te gaan. U krijgt alleen gegevens die binnenkomen nadat u de export hebt gemaakt.
 
-Er kan een vertraging van ongeveer een uur optreden voordat de gegevens in de opslag worden weer gegeven.
+Er kan een vertraging van ongeveer een uur zijn voordat gegevens in de opslag worden weergegeven.
+
+Zodra de eerste export is voltooid, vindt u een structuur die vergelijkbaar is met de volgende structuur in uw Azure Blob-opslagcontainer: (Dit is afhankelijk van de gegevens die u verzamelt.)
+
+|Name | Beschrijving |
+|:----|:------|
+| [Beschikbaarheid](export-data-model.md#availability) | Rapporten [beschikbaarheid webtests](../../azure-monitor/app/monitor-web-app-availability.md).  |
+| [Gebeurtenis](export-data-model.md#events) | Aangepaste gebeurtenissen gegenereerd door [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
+| [Uitzonderingen](export-data-model.md#exceptions) |Rapporteert [uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md) in de server en in de browser.
+| [Berichten](export-data-model.md#trace-messages) | Verzonden door [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)en door de [logboekadapters](../../azure-monitor/app/asp-net-trace-logs.md).
+| [Statistieken](export-data-model.md#metrics) | Gegenereerd door metrische API-aanroepen.
+| [Prestatiemeteritems](export-data-model.md) | Prestatiemeteritems verzameld door Application Insights.
+| [Verzoeken](export-data-model.md#requests)| Verzonden door [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). De standaardmodules gebruiken dit om de responstijd van de server, gemeten op de server, te rapporten.| 
 
 ### <a name="to-edit-continuous-export"></a>Continue export bewerken
 
-Klik op doorlopend exporteren en selecteer het opslag account dat u wilt bewerken.
+Klik op continue export en selecteer het opslagaccount dat u wilt bewerken.
 
-### <a name="to-stop-continuous-export"></a>Continue export stoppen
+### <a name="to-stop-continuous-export"></a>Om continue export te stoppen
 
-Als u het exporteren wilt stoppen, klikt u op uitschakelen. Wanneer u nogmaals op inschakelen klikt, wordt het exporteren opnieuw gestart met nieuwe gegevens. De gegevens die in de portal zijn ontvangen, worden niet weer gegeven terwijl het exporteren is uitgeschakeld.
+Als u de export wilt stoppen, klikt u op Uitschakelen. Wanneer u opnieuw op Inschakelen klikt, wordt de export opnieuw gestart met nieuwe gegevens. U krijgt de gegevens die in de portal zijn aangekomen niet terwijl de export is uitgeschakeld.
 
-Als u de export permanent wilt stoppen, verwijdert u deze. Hierdoor worden uw gegevens niet verwijderd uit de opslag.
+Als u de export permanent wilt stoppen, verwijdert u deze. Als u dit doet, worden uw gegevens niet uit de opslag verwijderd.
 
-### <a name="cant-add-or-change-an-export"></a>Kunt u een export niet toevoegen of wijzigen?
-* Als u exports wilt toevoegen of wijzigen, hebt u de machtiging voor eigenaar, bijdrager of Application Insights Inzender nodig. [Meer informatie over rollen][roles].
+### <a name="cant-add-or-change-an-export"></a>u een export niet toevoegen of wijzigen?
+* Als u export wilt toevoegen of wijzigen, hebt u toegangsrechten voor eigenaren, inzender of toepassingsstatistieken nodig. [Meer informatie over rollen][roles].
 
-## <a name="analyze"></a>Welke gebeurtenissen krijgt u?
-De geëxporteerde gegevens zijn de ruwe telemetriegegevens die we van uw toepassing ontvangen, behalve dat er locatie gegevens worden toegevoegd die worden berekend op basis van het IP-adres van de client.
+## <a name="what-events-do-you-get"></a><a name="analyze"></a>Welke evenementen krijg je?
+De geëxporteerde gegevens zijn de ruwe telemetrie die we van uw toepassing ontvangen, behalve dat we locatiegegevens toevoegen, die we berekenen op basis van het IP-adres van de client.
 
-Gegevens die zijn verwijderd door middel van [steek proeven](../../azure-monitor/app/sampling.md) , worden niet opgenomen in de geëxporteerde gegevens.
+Gegevens die door [steekproeven](../../azure-monitor/app/sampling.md) zijn verwijderd, worden niet opgenomen in de geëxporteerde gegevens.
 
-Andere berekende metrische gegevens worden niet opgenomen. We exporteren bijvoorbeeld geen gemiddeld CPU-gebruik, maar we exporteren de ruwe telemetrie waarvan het gemiddelde wordt berekend.
+Andere berekende statistieken zijn niet inbegrepen. We exporteren bijvoorbeeld geen gemiddeld CPU-gebruik, maar we exporteren wel de ruwe telemetrie waaruit het gemiddelde wordt berekend.
 
-De gegevens bevatten ook de resultaten van alle [beschik bare-webtesten](../../azure-monitor/app/monitor-web-app-availability.md) die u hebt ingesteld.
+De gegevens bevatten ook de resultaten van eventuele [beschikbaarheid webtests](../../azure-monitor/app/monitor-web-app-availability.md) die u hebt ingesteld.
 
 > [!NOTE]
-> **Proef.** Als uw toepassing veel gegevens verzendt, kan de bemonsterings functie worden gebruikt en kan slechts een fractie van de gegenereerde telemetrie worden verzonden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
+> **Bemonstering.** Als uw toepassing veel gegevens verzendt, kan de samplingfunctie slechts een fractie van de gegenereerde telemetrie gebruiken en verzenden. [Meer informatie over steekproeven.](../../azure-monitor/app/sampling.md)
 >
 >
 
-## <a name="get"></a>De gegevens controleren
-U kunt de opslag direct in de portal inspecteren. Klik op Start in het meest linkse menu, waar u ' Azure-Services ' selecteert, selecteer **opslag accounts**, selecteer de naam van het opslag account op de pagina overzicht Selecteer **blobs** onder Services en selecteer ten slotte de container naam.
+## <a name="inspect-the-data"></a><a name="get"></a>De gegevens inspecteren
+U de opslag direct in het portaal inspecteren. Klik op start in het meest linkse menu, bovenaan waar 'Azure-services' staan **selecteer Opslagaccounts,** selecteer de naam van het opslagaccount, selecteer blobs onder services op de **overzichtspagina** en selecteer ten slotte de containernaam.
 
-Als u Azure Storage wilt controleren in Visual Studio, opent u **weer gave**, **Cloud Explorer**. (Als u deze menu opdracht niet hebt, moet u de Azure SDK installeren: Open het dialoog venster **New Project** , vouw Visual C#/Cloud uit en kies **Get Microsoft Azure SDK voor .net**.)
+Als u Azure-opslag wilt inspecteren in Visual Studio, opent u **Weergave**, **Cloud Explorer**. (Als u die menuopdracht niet hebt, moet u de Azure SDK installeren: open het dialoogvenster **Nieuw project,** vouw Visual C#/Cloud uit en kies **Microsoft Azure SDK voor .NET .)**
 
-Wanneer u uw BLOB-archief opent, ziet u een container met een set BLOB-bestanden. De URI van elk bestand dat is afgeleid van uw Application Insights resource naam, de bijbehorende instrumentatie sleutel, telemetrie-type/datum/tijd. (De resource naam is allemaal kleine letters en de instrumentatie sleutel laat streepjes.)
+Wanneer u uw blob-winkel opent, ziet u een container met een reeks blobbestanden. De URI van elk bestand dat is afgeleid van de naam van uw Application Insights-bron, de instrumentatiesleutel, telemetrie-type/datum/tijd. (De naam van de resource is alle kleine letters en de instrumentatiesleutel laat streepjes weg.)
 
-![Inspecteer de BLOB Store met een geschikt hulp programma](./media/export-telemetry/04-data.png)
+![Inspecteer de blob store met een geschikt gereedschap](./media/export-telemetry/04-data.png)
 
-De datum en tijd zijn UTC en wanneer de telemetrie in de Store is gestort, niet de tijd dat deze is gegenereerd. Dus als u code schrijft voor het downloaden van de gegevens, kan deze lineair door de gegevens worden verplaatst.
+De datum en tijd zijn UTC en zijn wanneer de telemetrie werd gedeponeerd in de winkel - niet de tijd die het werd gegenereerd. Dus als je code schrijft om de gegevens te downloaden, kan het lineair door de gegevens gaan.
 
-Dit is de vorm van het pad:
+Hier is de vorm van het pad:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
 Waar
 
-* `blobCreationTimeUtc` is tijd waarop blob is gemaakt in de interne staging-opslag
-* `blobDeliveryTimeUtc` is de tijd waarop de BLOB wordt gekopieerd naar de export doel opslag
+* `blobCreationTimeUtc`is het moment waarop blob is gemaakt in de interne faseringsopslag
+* `blobDeliveryTimeUtc`is het moment waarop blob wordt gekopieerd naar de exportbestemmingsopslag
 
-## <a name="format"></a>Gegevens indeling
-* Elke blob is een tekst bestand dat meerdere \n-gescheiden rijen bevat. Het bevat de telemetrie die gedurende een periode van ongeveer een halve minuut is verwerkt.
-* Elke rij vertegenwoordigt een telemetrie-gegevens punt, zoals een aanvraag of pagina weergave.
-* Elke rij is een niet-opgemaakt JSON-document. Als u een ster wilt maken, opent u het in Visual Studio en kiest u bewerken, Geavanceerd, indelings bestand:
+## <a name="data-format"></a><a name="format"></a>Gegevensindeling
+* Elke blob is een tekstbestand dat meerdere '\n'-gescheiden rijen bevat. Het bevat de telemetrie verwerkt over een periode van ongeveer een halve minuut.
+* Elke rij vertegenwoordigt een telemetriegegevenspunt, zoals een aanvraag of paginaweergave.
+* Elke rij is een JSON-document zonder opmaak. Als u wilt toekijken, opent u deze in Visual Studio en kiest u Bewerken, Geavanceerd, Opmaakbestand:
 
-![De telemetrie weer geven met een geschikt hulp programma](./media/export-telemetry/06-json.png)
+![Bekijk de telemetrie met een geschikt gereedschap](./media/export-telemetry/06-json.png)
 
-Tijds duursen zijn in tikken, waarbij 10 000 Ticks = 1 MS. Deze waarden tonen bijvoorbeeld een tijd van 1 MS om een aanvraag te verzenden vanuit de browser, 3 MS om deze te ontvangen en 1,8 s om de pagina in de browser te verwerken:
+Tijdsduur zijn in teken, waar 10 000 teken = 1 ms. Deze waarden tonen bijvoorbeeld een tijd van 1 ms om een verzoek van de browser te verzenden, 3 ms om het te ontvangen en 1,8 s om de pagina in de browser te verwerken:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},
     "clientProcess": {"value": 17970000.0}
 
-[Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](export-data-model.md)
+[Gedetailleerde gegevensmodelreferentie voor de eigenschapstypen en -waarden.](export-data-model.md)
 
-## <a name="processing-the-data"></a>De gegevens verwerken
-Op een kleine schaal kunt u code schrijven om uw gegevens uit elkaar te halen, deze in een werk blad te lezen, enzovoort. Bijvoorbeeld:
+## <a name="processing-the-data"></a>Verwerking van de gegevens
+Op kleine schaal u een code schrijven om uw gegevens uit elkaar te halen, deze in een spreadsheet te lezen, enzovoort. Bijvoorbeeld:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -135,57 +147,57 @@ Op een kleine schaal kunt u code schrijven om uw gegevens uit elkaar te halen, d
       }
     }
 
-Zie [een werk rollen gebruiken][exportasa]voor een groter code voorbeeld.
+Zie [een werkrol gebruiken voor][exportasa]een groter codevoorbeeld .
 
-## <a name="delete"></a>Oude gegevens verwijderen
-U bent verantwoordelijk voor het beheren van uw opslag capaciteit en het verwijderen van de oude gegevens, indien nodig.
+## <a name="delete-your-old-data"></a><a name="delete"></a>Uw oude gegevens verwijderen
+U bent verantwoordelijk voor het beheren van uw opslagcapaciteit en het verwijderen van de oude gegevens indien nodig.
 
-## <a name="if-you-regenerate-your-storage-key"></a>Als u uw opslag sleutel opnieuw genereert...
-Als u de sleutel naar uw opslag wijzigt, werkt doorlopend exporteren niet meer. U ziet een melding in uw Azure-account.
+## <a name="if-you-regenerate-your-storage-key"></a>Als u uw opslagsleutel regenereert...
+Als u de sleutel van uw opslag wijzigt, werkt continue export niet meer. U ziet een melding in uw Azure-account.
 
-Open het tabblad doorlopend exporteren en bewerk de export. Bewerk het export doel, maar laat dezelfde opslag geselecteerd. Klik op OK om te bevestigen.
+Open het tabblad Continu exporteren en bewerk uw export. Bewerk de exportbestemming, maar laat dezelfde opslag geselecteerd. Klik op OK om dit te bevestigen.
 
 De continue export wordt opnieuw gestart.
 
-## <a name="export-samples"></a>Voor beelden exporteren
+## <a name="export-samples"></a>Monsters exporteren
 
 * [Exporteren naar SQL met Stream Analytics][exportasa]
-* [Stream Analytics voor beeld 2](export-stream-analytics.md)
+* [Voorbeeld 2 van Stream Analytics](export-stream-analytics.md)
 
-Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop-clusters in de Cloud. HDInsight biedt diverse technologieën voor het beheren en analyseren van big data, en u kunt deze gebruiken voor het verwerken van gegevens die zijn geëxporteerd uit Application Insights.
+Op grotere schaal, overwegen [HDInsight](https://azure.microsoft.com/services/hdinsight/) - Hadoop clusters in de cloud. HDInsight biedt een verscheidenheid aan technologieën voor het beheren en analyseren van big data, en u deze gebruiken om gegevens te verwerken die zijn geëxporteerd vanuit Application Insights.
 
-## <a name="q--a"></a>Q & A
-* *Maar het enige wat ik wil, is een eenmalige down load van een grafiek.*  
+## <a name="q--a"></a>Vragen en antwoorden
+* *Maar alles wat ik wil is een eenmalige download van een grafiek.*  
 
-    Ja, dat kunt u doen. Klik boven aan het tabblad op **gegevens exporteren**.
-* *Ik heb een export ingesteld, maar er zijn geen gegevens in mijn Store.*
+    Ja, dat kun je doen. Klik boven aan het tabblad op **Gegevens exporteren**.
+* *Ik heb een export ingesteld, maar er zijn geen gegevens in mijn winkel.*
 
-    Heeft Application Insights telemetrie van uw app ontvangen sinds u de export hebt ingesteld? U ontvangt alleen nieuwe gegevens.
-* *Ik heb geprobeerd een export in te stellen, maar de toegang is geweigerd*
+    Heeft Application Insights telemetrie ontvangen van uw app sinds u de export hebt ingesteld? U ontvangt alleen nieuwe gegevens.
+* *Ik heb geprobeerd om het opzetten van een export, maar werd de toegang geweigerd*
 
-    Als het account eigendom is van uw organisatie, moet u lid zijn van de groepen eigen aren of Inzender.
-* *Kan ik rechtstreeks naar mijn eigen on-premises Store exporteren?*
+    Als het account eigendom is van uw organisatie, moet u lid zijn van de eigenaren of bijdragersgroepen.
+* *Kan ik rechtstreeks exporteren naar mijn eigen on-premises winkel?*
 
-    Nee, helaas. Onze export engine werkt momenteel alleen met Azure Storage.  
-* *Geldt er een limiet voor de hoeveelheid gegevens die u in mijn Store plaatst?*
+    Nee, sorry. Onze exportengine werkt momenteel alleen met Azure-opslag op dit moment.  
+* *Is er een limiet aan de hoeveelheid gegevens die u in mijn winkel hebt geplaatst?*
 
-    Nee. Het pushen van gegevens wordt bewaard totdat u de export verwijdert. We stoppen als we de buitenste limieten voor Blob-opslag hebben bereikt, maar dat is tamelijk groot. U kunt bepalen hoeveel opslag ruimte u gebruikt.  
-* *Hoeveel blobs moet er worden weer geven in de opslag?*
+    Nee. We blijven gegevens pushen totdat u de export verwijdert. We stoppen als we de buitenste grenzen voor blob opslag raken, maar dat is vrij groot. Het is aan jou om te bepalen hoeveel opslagruimte je gebruikt.  
+* *Hoeveel blobs moet ik zien in de opslag?*
 
-  * Voor elk gegevens type dat u hebt geselecteerd om te exporteren, wordt elke minuut een nieuwe BLOB gemaakt (als er gegevens beschikbaar zijn).
-  * Daarnaast worden er voor toepassingen met veel verkeer extra partitie-eenheden toegewezen. In dit geval maakt elke eenheid elke minuut een blob.
-* *Ik heb de sleutel opnieuw gegenereerd voor mijn opslag of de naam van de container gewijzigd en nu werkt de export niet.*
+  * Voor elk gegevenstype dat u hebt geselecteerd om te exporteren, wordt elke minuut een nieuwe blob gemaakt (als er gegevens beschikbaar zijn).
+  * Bovendien worden voor toepassingen met veel verkeer extra partitie-eenheden toegewezen. In dit geval maakt elke eenheid elke minuut een blob.
+* *Ik heb de sleutel van mijn opslag geregenereerd of de naam van de container gewijzigd, en nu werkt de export niet.*
 
-    Bewerk de export en open het tabblad uitvoer bestemming. Wijzig dezelfde opslag als voorheen en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
-* *Kan ik het exporteren onderbreken?*
+    Bewerk de export en open het tabblad exportbestemming. Laat dezelfde opslag als voorheen en klik op OK om te bevestigen. De export wordt opnieuw gestart. Als de wijziging in de afgelopen dagen is geweest, verliest u geen gegevens.
+* *Kan ik de export onderbreken?*
 
     Ja. Klik op Uitschakelen.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-* [Stream Analytics-voor beeld](export-stream-analytics.md)
+* [Voorbeeld van Stream Analytics](export-stream-analytics.md)
 * [Exporteren naar SQL met Stream Analytics][exportasa]
-* [Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](export-data-model.md)
+* [Gedetailleerde gegevensmodelreferentie voor de eigenschapstypen en -waarden.](export-data-model.md)
 
 <!--Link references-->
 

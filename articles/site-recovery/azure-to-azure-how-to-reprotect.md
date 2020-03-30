@@ -1,6 +1,6 @@
 ---
-title: Azure-Vm's opnieuw beveiligen naar de primaire regio met Azure Site Recovery | Microsoft Docs
-description: Hierin wordt beschreven hoe u Azure-Vm's na een failover opnieuw beveiligt, de secundaire naar de primaire regio met behulp van Azure Site Recovery.
+title: Azure VM's opnieuw beveiligen naar het primaire gebied met Azure Site Recovery | Microsoft Documenten
+description: Beschrijft hoe u Azure VM's opnieuw beschermen na een failover, het secundaire naar primaire gebied, met Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,88 +8,92 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 73747b8331054cdc3bfa1f4073ccf2cdb62ab326
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258120"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283239"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Failover van virtuele Azure-machines naar de primaire regio opnieuw beveiligen
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opnieuw beveiligen is mislukt ten opzichte van Azure VM's naar het primaire gebied
 
-Wanneer u virtuele Azure-machines van de ene regio naar de andere gebruikt via [Azure site Recovery](site-recovery-overview.md), wordt de virtuele machine in de secundaire regio opgestart, in een [niet](site-recovery-failover.md) - **beveiligde** status. Als u een failback wilt uitvoeren voor de virtuele machines naar de primaire regio, voert u de volgende taken uit:
+Wanneer u [niet meer dan](site-recovery-failover.md) Azure VM's van de ene regio naar de andere met Azure Site [Recovery](site-recovery-overview.md), de VM's opstarten in de secundaire regio, in een **onbeveiligde** status. Als u de VM's naar het primaire gebied wilt terugsturen naar het primaire gebied, doet u de volgende taken:
 
-1. Beveilig de virtuele machines in de secundaire regio opnieuw zodat ze repliceren naar de primaire regio.
-1. Nadat de beveiliging is voltooid en de virtuele machines zijn gerepliceerd, kunt u een failover uitvoeren van de secundaire naar de primaire regio.
+1. Bescherm de VM's in het secundaire gebied opnieuw, zodat ze beginnen te repliceren naar het primaire gebied.
+1. Nadat de beveiliging is voltooid en de VM's zijn gerepliceerd, u mislukken van het secundaire naar primaire gebied.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De VM-failover van de primaire naar de secundaire regio moet worden doorgevoerd.
-- De primaire doel site moet beschikbaar zijn en u moet toegang hebben tot of resources kunnen maken in die regio.
+- De VM-failover van het primaire naar secundaire gebied moet worden vastgelegd.
+- De primaire doelsite moet beschikbaar zijn en u moet toegang hebben tot bronnen in die regio of deze kunnen maken.
 
 ## <a name="reprotect-a-vm"></a>Een virtuele machine opnieuw beveiligen
 
-1. Klik in **kluis** > **gerepliceerde items**met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer **opnieuw beveiligen**. De richting voor opnieuw beveiligen moet van secundair naar primair worden weer gegeven.
+1. Klik in > **gevault-gerepliceerde items**met de rechtermuisknop op de mislukte over-vm en selecteer **Opnieuw beveiligen**. **Vault** De herbeschermingsrichting moet van secundair naar primair worden weergegeven.
 
    ![Opnieuw beveiligen](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. Bekijk de resource groep-, netwerk-, opslag-en beschikbaarheids sets. Klik vervolgens op **OK**. Als er resources zijn gemarkeerd als nieuw, worden ze gemaakt als onderdeel van het proces voor opnieuw beveiligen.
-1. De taak voor opnieuw beveiligen zaait de doel site met de meest recente gegevens. Nadat de taak is voltooid, vindt er Delta replicatie plaats. Daarna kunt u een failover uitvoeren naar de primaire site. Met de optie aanpassen kunt u het opslag account selecteren of het netwerk dat u wilt gebruiken tijdens het opnieuw beveiligen.
+1. Bekijk de resourcegroep, netwerk-, opslag- en beschikbaarheidssets. Klik vervolgens op **OK**. Als er resources zijn gemarkeerd als nieuw, worden ze gemaakt als onderdeel van het herbeschermingsproces.
+1. De taak voor herbescherming zaait de doelsite met de nieuwste gegevens. Nadat de taak is voltooid, vindt deltareplicatie plaats. Vervolgens u niet meer naar de primaire site gaan. U het opslagaccount of het netwerk selecteren dat u wilt gebruiken tijdens de reprotect, met behulp van de optie Aanpassen.
 
-   ![Optie aanpassen](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Optie Aanpassen](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>Instellingen voor opnieuw beveiligen aanpassen
 
-U kunt de volgende eigenschappen van de doel-VM aanpassen tijdens het opnieuw beveiligen.
+U de volgende eigenschappen van de doel-VM aanpassen tijdens herbeveiliging.
 
 ![Aanpassen](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Eigenschap |Opmerkingen  |
 |---------|---------|
-|Doel resource groep | Wijzig de doel resource groep waarin de virtuele machine is gemaakt. Als onderdeel van de herbeveiliging wordt de doel-VM verwijderd. U kunt een nieuwe resource groep kiezen voor het maken van de virtuele machine na een failover. |
-|Virtueel netwerk van doel | Het doelnet werk kan niet worden gewijzigd tijdens de taak beveiliging opnieuw beveiligen. Als u het netwerk wilt wijzigen, voert u de netwerk toewijzing opnieuw uit. |
-|Doel opslag (secundaire virtuele machine maakt geen gebruik van beheerde schijven) | U kunt het opslag account dat door de virtuele machine wordt gebruikt, wijzigen na een failover. |
-|Beheerde replica schijven (secundaire virtuele machine maakt gebruik van beheerde schijven) | Site Recovery maakt met replica beheerde schijven in de primaire regio om de beheerde schijven van de secundaire virtuele machine te spie gelen. |
-|Cache opslag | U kunt een cache-opslag account opgeven dat moet worden gebruikt tijdens de replicatie. Standaard wordt er een nieuwe cache opslag account gemaakt, als deze nog niet bestaat. |
-|Beschikbaarheidsset | Als de virtuele machine in de secundaire regio deel uitmaakt van een beschikbaarheidsset, kunt u een beschikbaarheidsset kiezen voor de doel-VM in de primaire regio. Site Recovery zoekt standaard naar de bestaande beschikbaarheidsset in de primaire regio en gebruikt deze. Tijdens het aanpassen kunt u een nieuwe beschikbaarheidsset opgeven. |
+|Doelgroepgroep | Wijzig de doelgroepwaarin de VM is gemaakt. Als onderdeel van herbescherming wordt de doel-VM verwijderd. U een nieuwe resourcegroep kiezen waaronder u de VM na failover wilt maken. |
+|Virtueel netwerk targeten | Het doelnetwerk kan niet worden gewijzigd tijdens de taak opnieuw beveiligen. Als u het netwerk wilt wijzigen, moet u de netwerktoewijzing opnieuw uitvoeren. |
+|Doelopslag (Secundaire VM maakt geen beheerde schijven) | U het opslagaccount wijzigen dat de VM gebruikt na een failover. |
+|Replica beheerde schijven (Secundaire VM maakt gebruik van beheerde schijven) | Siteherstel maakt replicabeheerde schijven in het primaire gebied om de beheerde schijven van de secundaire virtuele machine te spiegelen. |
+|Cacheopslag | U een cacheopslagaccount opgeven dat tijdens de replicatie moet worden gebruikt. Standaard wordt een nieuw cacheopslagaccount gemaakt als dit niet bestaat. |
+|Beschikbaarheidsset | Als de VM in het secundaire gebied deel uitmaakt van een beschikbaarheidsset, u een beschikbaarheidsset kiezen voor de doel-vm in de primaire regio. Siteherstel probeert standaard de bestaande beschikbaarheidsset in het primaire gebied te vinden en deze te gebruiken. Tijdens het aanpassen u een nieuwe beschikbaarheidsset opgeven. |
 
-### <a name="what-happens-during-reprotection"></a>Wat gebeurt er tijdens het opnieuw beveiligen?
+### <a name="what-happens-during-reprotection"></a>Wat gebeurt er tijdens de herbescherming?
 
-Standaard gebeurt het volgende:
+Standaard treedt het volgende op:
 
-1. Er wordt een cache-opslag account gemaakt in de regio waarin de virtuele machine waarvoor een failover is uitgevoerd, is gestart.
-1. Als het doel-opslag account (het oorspronkelijke opslag account in de primaire regio) niet bestaat, wordt er een nieuwe gemaakt. De toegewezen opslag accountnaam is de naam van het opslag account dat wordt gebruikt door de secundaire virtuele machine, met het achtervoegsel `asr`.
-1. Als uw virtuele machine beheerde schijven gebruikt, worden beheerde replica schijven in de primaire regio gemaakt voor het opslaan van de gegevens die worden gerepliceerd vanaf de schijven van de secundaire virtuele machine.
-1. Als de beschik baarheid van de doel groep niet bestaat, wordt er een nieuwe gemaakt als onderdeel van de taak voor opnieuw beveiligen, indien nodig. Als u de instellingen voor opnieuw beveiligen hebt aangepast, wordt de geselecteerde set gebruikt.
+1. Er wordt een cacheopslagaccount gemaakt in het gebied waar de mislukte vm wordt uitgevoerd.
+1. Als het doelopslagaccount (het oorspronkelijke opslagaccount in het primaire gebied) niet bestaat, wordt een nieuw account gemaakt. De toegewezen opslagaccountnaam is de naam van het opslagaccount `asr`dat wordt gebruikt door de secundaire virtuele machine, die is vastgelegd met .
+1. Als uw vm beheerde schijven gebruikt, worden replicabeheerde schijven gemaakt in het primaire gebied om de gegevens op te slaan die zijn gerepliceerd vanaf de schijven van de secundaire virtuele machine.
+1. Als de doelbeschikbaarheidsset niet bestaat, wordt indien nodig een nieuwe set gemaakt als onderdeel van de taak reprotect. Als u de instellingen voor herbeveiliging hebt aangepast, wordt de geselecteerde set gebruikt.
 
-Wanneer u een taak voor opnieuw beveiligen start en de doel-VM bestaat, gebeurt het volgende:
+Wanneer u een taak voor herbescherming activeert en de doel-vm bestaat, treedt het volgende op:
 
-1. De doel-VM is uitgeschakeld als deze wordt uitgevoerd.
-1. Als de virtuele machine beheerde schijven gebruikt, wordt er een kopie van de oorspronkelijke schijf gemaakt met een `-ASRReplica` achtervoegsel. De oorspronkelijke schijven worden verwijderd. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
-1. Als de virtuele machine gebruikmaakt van niet-beheerde schijven, worden de gegevens schijven van de doel-VM losgekoppeld en gebruikt voor replicatie. Er wordt een kopie van de besturingssysteem schijf gemaakt en aangesloten op de VM. De oorspronkelijke besturingssysteem schijf wordt losgekoppeld en gebruikt voor replicatie.
-1. Alleen wijzigingen tussen de bron schijf en de doel schijf worden gesynchroniseerd. De verschillen worden berekend door de schijven te vergelijken en vervolgens te worden overgedragen. Hieronder ziet u de geschatte tijd voor het volt ooien van de herbeveiliging.
-1. Nadat de synchronisatie is voltooid, wordt de Delta replicatie gestart en wordt er een herstel punt gemaakt in overeenstemming met het replicatie beleid.
+1. De VM aan de doelzijde is uitgeschakeld als deze wordt uitgevoerd.
+1. Als de VM beheerde schijven gebruikt, wordt een `-ASRReplica` kopie van de oorspronkelijke schijf gemaakt met een achtervoegsel. De oorspronkelijke schijven worden verwijderd. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
+1. Als de VM onbeheerde schijven gebruikt, worden de gegevensschijven van de doel-VM losgemaakt en gebruikt voor replicatie. Een kopie van de OS-schijf wordt gemaakt en gekoppeld aan de VM. De oorspronkelijke OS-schijf wordt losgemaakt en gebruikt voor replicatie.
+1. Alleen wijzigingen tussen de bronschijf en de doelschijf worden gesynchroniseerd. De differentiëlen worden berekend door zowel de schijven te vergelijken als vervolgens over te dragen. Bekijk hieronder de geschatte tijd om de herbescherming te voltooien.
+1. Nadat de synchronisatie is voltooid, wordt de deltareplicatie gestart en wordt een herstelpunt gemaakt in overeenstemming met het replicatiebeleid.
 
-Wanneer u een taak voor opnieuw beveiligen start en de doel-VM en schijven niet bestaan, gebeurt het volgende:
+Wanneer u een taak voor herbescherming activeert en de doel-VM en -schijven niet bestaan, treedt het volgende op:
 
-1. Als de virtuele machine gebruikmaakt van beheerde schijven, worden er replica schijven met `-ASRReplica` achtervoegsel gemaakt. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
-1. Als de virtuele machine gebruikmaakt van niet-beheerde schijven, worden er replica schijven gemaakt in het doel-opslag account.
-1. De gehele schijven worden gekopieerd van de regio waarvoor een failover is uitgevoerd naar de nieuwe doel regio.
-1. Nadat de synchronisatie is voltooid, wordt de Delta replicatie gestart en wordt er een herstel punt gemaakt in overeenstemming met het replicatie beleid.
+1. Als de VM beheerde schijven gebruikt, `-ASRReplica` worden replicaschijven gemaakt met achtervoegsel. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
+1. Als de VM onbeheerde schijven gebruikt, worden replicaschijven gemaakt in het doelopslagaccount.
+1. De volledige schijven worden gekopieerd van de mislukte bovenregio naar het nieuwe doelgebied.
+1. Nadat de synchronisatie is voltooid, wordt de deltareplicatie gestart en wordt een herstelpunt gemaakt in overeenstemming met het replicatiebeleid.
 
-#### <a name="estimated-time-to-do-the-reprotection"></a>Geschatte tijd voor het uitvoeren van de herbeveiliging
+#### <a name="estimated-time-to-do-the-reprotection"></a>Geschatte tijd om de herbescherming te doen
 
-In de meeste gevallen repliceert Azure Site Recovery de volledige gegevens niet naar de bron regio.
-De volgende voor waarden bepalen hoeveel gegevens worden gerepliceerd:
+In de meeste gevallen repliceert Azure Site Recovery de volledige gegevens niet naar het brongebied.
+De volgende voorwaarden bepalen hoeveel gegevens worden gerepliceerd:
 
-1. Als de gegevens van de bron-VM worden verwijderd, beschadigd of ontoegankelijk zijn, zoals een wijziging/verwijdering van een resource groep, treedt er tijdens het opnieuw beveiligen een volledige initiële replicatie op omdat er geen gegevens beschikbaar zijn in de bron regio die moet worden gebruikt.
-1. Als de gegevens van de bron-VM toegankelijk zijn, worden alleen verschillen berekend door de schijven te vergelijken en vervolgens te worden overgedragen. Controleer de onderstaande tabel om de geschatte tijd op te halen.
+1. Als de bron-VM-gegevens om de een of andere reden worden verwijderd, beschadigd of ontoegankelijk, zoals een wijziging/verwijdering van de brongroep, gebeurt tijdens de herbescherming een volledige eerste replicatie omdat er geen gegevens beschikbaar zijn over het brongebied om te gebruiken.
+1. Als de bron-VM-gegevens toegankelijk zijn, worden alleen differentiëlen berekend door zowel de schijven te vergelijken als vervolgens over te dragen. Bekijk de onderstaande tabel om de geschatte tijd te krijgen.
 
-|Voorbeeld situatie | Benodigde tijd voor opnieuw beveiligen |
+|Voorbeeldsituatie | Tijd die nodig is om opnieuw te beschermen |
 |---|---|
-|Bron regio heeft 1 VM met 1 TB standaard schijf.<br/>Er worden slechts 127 GB gegevens gebruikt en de rest van de schijf is leeg.<br/>Schijf type is standaard met 60 MiB/S door voer.<br/>Er zijn geen gegevens gewijzigd na de failover.| Geschatte tijd: 45 minuten: 1,5 uur.<br/>Tijdens het opnieuw beveiligen vult Site Recovery de controlesom in van alle gegevens die 127 GB/45 MBs, ongeveer 45 minuten zullen duren.<br/>Er is enige overhead tijd nodig om Site Recovery automatisch te schalen, ongeveer 20-30 minuten.<br/>Geen kosten voor uitgaand verkeer. |
-|Bron regio heeft 1 VM met 1 TB standaard schijf.<br/>Er worden slechts 127 GB gegevens gebruikt en de rest van de schijf is leeg.<br/>Schijf type is standaard met 60 MiB/S door voer.<br/>45 GB gegevens wijzigingen na een failover.| Geschatte tijd: 1 uur – 2 uur.<br/>Tijdens het opnieuw beveiligen vult Site Recovery de controlesom in van alle gegevens die 127 GB/45 MBs, ongeveer 45 minuten zullen duren.<br/>Overdrachts tijd voor het Toep assen van wijzigingen van 45 GB van 45 GB/45 MBps, ongeveer 17 minuten.<br/>Uitgangs kosten zijn van 45 GB gegevens wijzigingen, niet voor de controlesom. |
+|Bronregio heeft 1 VM met standaardschijf van 1 TB.<br/>Er worden slechts gegevens van 127 GB gebruikt en de rest van de schijf is leeg.<br/>Het schijftype is standaard met een doorvoersnelheid van 60 MiB/S.<br/>Geen gegevens veranderen na failover.| Geschatte tijd: 45 minuten – 1,5 uur.<br/>Tijdens de herbescherming zal Site Recovery de checksum van alle gegevens die 127 GB/ 45 GB in beslag nemen, ongeveer 45 minuten, vullen.<br/>Enige overheadtijd is vereist voor siteherstel om automatisch te schalen, ongeveer 20-30 minuten.<br/>Geen Aanklachten van Uitgang. |
+|Bronregio heeft 1 VM met standaardschijf van 1 TB.<br/>Er worden slechts gegevens van 127 GB gebruikt en de rest van de schijf is leeg.<br/>Het schijftype is standaard met een doorvoersnelheid van 60 MiB/S.<br/>gegevens van 45 GB worden gewijzigd na een failover.| Geschatte tijd: 1 uur – 2 uur.<br/>Tijdens de herbescherming zal Site Recovery de checksum van alle gegevens die 127 GB/ 45 GB in beslag nemen, ongeveer 45 minuten, vullen.<br/>Overdrachtstijd om wijzigingen van 45 GB toe te passen, dat is 45 GB/ 45 MBps, ongeveer 17 minuten.<br/>Uitgaande kosten zou zijn voor 45 GB gegevens wijzigingen, niet voor de checksum. |
+
+Wanneer de VM opnieuw wordt beveiligd nadat deze niet is teruggezet naar het primaire gebied (d.w.z. als de VM opnieuw wordt beveiligd van primaire regio naar DR-regio), worden de doel-VM en bijbehorende NIC(s) verwijderd.
+
+Wanneer de VM wordt opnieuw beveiligd van het DR-gebied naar het primaire gebied, verwijderen we de voormalige primaire VM en bijbehorende NIC(s) niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de virtuele machine is beveiligd, kunt u een failover initiëren. Met de failover wordt de virtuele machine in de secundaire regio afgesloten en wordt de virtuele machine in de primaire regio gemaakt en opgestart, met een korte downtime tijdens dit proces. U kunt het beste een geschikte tijd kiezen voor dit proces en u voert een testfailover uit voordat u een volledige failover naar de primaire site initieert. [Meer informatie](site-recovery-failover.md) over Azure site Recovery failover.
+Nadat de VM is beveiligd, u een failover starten. De failover schakelt de VM in de secundaire regio uit en maakt en start de VM in de primaire regio, met korte downtime tijdens dit proces. We raden u aan een geschikt tijdstip voor dit proces te kiezen en een testfailover uit te voeren voordat u een volledige failover naar de primaire site initieert. [Meer informatie](site-recovery-failover.md) over failover van Azure Site Recovery.

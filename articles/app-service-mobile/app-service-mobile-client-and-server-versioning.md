@@ -1,70 +1,70 @@
 ---
-title: Versie beheer voor client en Server-SDK
-description: Lijst met client-Sdk's en-compatibiliteit met Server SDK-versies voor Mobile Services en Azure Mobile Apps.
+title: SDK-versie van client en server
+description: Lijst met client-SDK's en compatibiliteit met server SDK-versies voor mobiele services en Azure Mobile Apps.
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: a9ba442c00ec2498139ee34a1ff7497c98f17ede
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461552"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293486"
 ---
-# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client-en Server versie beheer in Mobile Apps en Mobile Services
+# <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client- en serverversies in mobiele apps en mobiele services
 
-De nieuwste versie van Azure Mobile Services is de **Mobile apps** -functie van Azure app service.
+De nieuwste versie van Azure Mobile Services is de functie **Mobiele apps** van Azure App Service.
 
-De Mobile Apps-client-en server-Sdk's zijn oorspronkelijk gebaseerd op die in Mobile Services, maar ze zijn *niet* compatibel met elkaar.
-Dat wil zeggen dat u een *Mobile apps* client-SDK met een *Mobile apps* Server-SDK moet gebruiken en ook voor *Mobile Services*. Dit contract wordt afgedwongen via een speciale header-waarde die wordt gebruikt door de Sdk's van de client en de server, `ZUMO-API-VERSION`.
+De Mobile Apps client en server SDKs zijn oorspronkelijk gebaseerd op die in Mobiele Diensten, maar ze zijn *niet* compatibel met elkaar.
+Dat wil zeggen, u moet een *Mobile Apps* client SDK gebruiken met een *Mobile Apps* server SDK en op dezelfde manier voor *Mobiele Diensten.* Dit contract wordt afgedwongen door middel van een speciale header `ZUMO-API-VERSION`waarde die wordt gebruikt door de client en server SDKs, .
 
-Opmerking: wanneer dit document naar een *Mobile Services* back-end verwijst, hoeft het niet per se te worden gehost op Mobile Services. Het is nu mogelijk om een mobiele service te migreren om te worden uitgevoerd op App Service zonder code wijzigingen, maar de service zal nog steeds gebruikmaken van *Mobile Services* SDK-versies.
+Opmerking: wanneer dit document verwijst naar een back-end *van Mobiele Services,* hoeft het niet per se te worden gehost op mobiele services. Het is nu mogelijk om een mobiele service te migreren om te draaien op App Service zonder wijzigingen in de code, maar de service zou nog steeds gebruik maken van *Mobile Services* SDK-versies.
 
-## <a name="header-specification"></a>Header specificatie
-De sleutel `ZUMO-API-VERSION` kan worden opgegeven in de HTTP-header of in de query reeks. De waarde is een versie teken reeks in de vorm **x. y. z**.
+## <a name="header-specification"></a>Specificatie van koptekst
+De `ZUMO-API-VERSION` sleutel kan worden opgegeven in de HTTP-header of de querytekenreeks. De waarde is een versietekenreeks in het formulier **x.y.z**.
 
 Bijvoorbeeld:
 
-https://service.azurewebsites.net/tables/TodoItem ophalen
+`GET https://service.azurewebsites.net/tables/TodoItem`
 
-HEADERS: ZUMO-API-VERSION: 2.0.0
+HEADERS: ZUMO-API-VERSIE: 2.0.0
 
-POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+`POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
-## <a name="opting-out-of-version-checking"></a>Controle van versie uitschakelen
-U kunt de versie controle afmelden door de waarde **True** in te stellen voor de app-instelling **MS_SkipVersionCheck**. Geef dit op in het web. config-bestand of in de sectie toepassings instellingen van de Azure Portal.
+## <a name="opting-out-of-version-checking"></a>Afmelden voor versiecontrole
+U zich afmelden voor versiecontrole door een waarde in te stellen die **geldt** voor de app-instelling **MS_SkipVersionCheck**. Geef dit op in uw web.config of in de sectie Toepassingsinstellingen van de Azure-portal.
 
 > [!NOTE]
-> Er zijn een aantal gedrags wijzigingen tussen Mobile Services en Mobile Apps, met name op het gebied van offline synchronisatie, verificatie en push meldingen. U moet de controle van de versie alleen afmelden na het volt ooien van testen om ervoor te zorgen dat deze gedrags wijzigingen de functionaliteit van uw app niet onderbreken.
+> Er zijn een aantal gedragswijzigingen tussen mobiele services en mobiele apps, met name op het gebied van offline synchronisatie, verificatie en pushmeldingen. U moet zich alleen afmelden voor versiecontrole na volledige tests om ervoor te zorgen dat deze gedragswijzigingen de functionaliteit van uw app niet verbreken.
 
-## <a name="2.0.0"></a>Azure Mobile Apps-client en-server
-### <a name="MobileAppsClients"></a>Client-Sdk's voor mobiele *apps*
-De versie controle werd geïntroduceerd vanaf de volgende versies van de client SDK voor **Azure Mobile apps**:
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure Mobile Apps-client en -server
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a>SDKs-client Van Mobiele *Apps*
+Versiecontrole werd geïntroduceerd vanaf de volgende versies van de client SDK voor **Azure Mobile Apps:**
 
-| Client platform | Version | Waarde van versie-header |
+| Client platform | Versie | Waarde van versiekop |
 | --- | --- | --- |
 | Beheerde client (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
 | Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
-### <a name="mobile-apps-server-sdks"></a>Sdk's van Mobile *apps* server
-Versie controle is opgenomen in de volgende server SDK-versies:
+### <a name="mobile-apps-server-sdks"></a>SDK's voor mobiele *apps-server*
+Versiecontrole is inbegrepen in de volgende SDK-versies van de server:
 
-| Server platform | SDK | Geaccepteerde versie header |
+| Serverplatform | SDK | Geaccepteerde versiekoptekst |
 | --- | --- | --- |
-| .NET |[Micro soft. Azure. Mobile. server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[Azure-Mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
-### <a name="behavior-of-mobile-apps-backends"></a>Gedrag van Mobile Apps back-ends
+### <a name="behavior-of-mobile-apps-backends"></a>Gedrag van backends voor mobiele apps
 | ZUMO-API-VERSIE | Waarde van MS_SkipVersionCheck | Antwoord |
 | --- | --- | --- |
-| x. y. z of Null |True |200 - OK |
-| Null |ONWAAR/niet opgegeven |400 - Foute aanvraag |
-| 1. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
-| 2.0.0-2. x. y |ONWAAR/niet opgegeven |200 - OK |
-| 3.0.0-3. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
+| x.y.z of Null |True |200 - OK |
+| Null |False/Not Specified |400 - Foute aanvraag |
+| 1.x.y |False/Not Specified |400 - Foute aanvraag |
+| 2.0.0-2.x.y |False/Not Specified |200 - OK |
+| 3.0.0-3.x.y |False/Not Specified |400 - Foute aanvraag |
 
 [Mobile Services clients]: #MobileServicesClients
 [Mobile Apps clients]: #MobileAppsClients

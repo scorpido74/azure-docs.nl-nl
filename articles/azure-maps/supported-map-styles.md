@@ -1,116 +1,116 @@
 ---
-title: Ondersteunde kaart stijlen | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over verschillende stijlen voor het weer geven van kaarten die worden ondersteund door Microsoft Azure kaarten.
-author: farah-alyasari
-ms.author: v-faalya
+title: Ondersteunde kaartstijlen | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over verschillende stijlen voor het maken van kaarten die worden ondersteund door Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334042"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
-Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
+# <a name="azure-maps-supported-map-styles"></a>Ondersteunde kaartstijlen voor Azure Maps
+Azure Maps ondersteunt verschillende ingebouwde kaartstijlen zoals hieronder beschreven.
 
-## <a name="road"></a>Tour
-Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige functies, samen met de labels voor deze functies.
+## <a name="road"></a>Weg
+Een **routekaart** is een standaardkaart met wegen, natuurlijke en kunstmatige kenmerken, samen met de labels voor die functies.
 
-![kaart stijl weg](./media/supported-map-styles/road.png)
+![kaartstijl](./media/supported-map-styles/road.png)
 
-**Toepasselijke Api's:**
-* [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* [Afbeelding van kaart](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Kaarttegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 ## <a name="blank-and-blank_accessible"></a>leeg en blank_accessible
 
-De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible** stijl blijft scherm lezers-updates bieden met de locatie Details van de kaart, ook al wordt de basis toewijzing niet weer gegeven.
+De **lege** en **blank_accessible** kaartstijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible-stijl** blijft schermlezer-updates bieden met de locatiegegevens van de kaart, ook al wordt de basiskaart niet weergegeven.
 
 > [!Note]
-> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de stijl CSS `background-color` van het element map DIV in te stellen.
+> In de web SDK u de achtergrondkleur `background-color` van de kaart wijzigen door de CSS-stijl van map DIV-element in te stellen.
 
-**Toepasselijke Api's:**
-* Web SDK-kaart besturings element
+**Toepasselijke API's:**
+* Web SDK-kaartbesturingselement
 
-## <a name="satellite"></a>kantoor 
-De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
+## <a name="satellite"></a>satellite 
+De **satellietstijl** is een combinatie van satelliet- en luchtfoto's.
 
-![stijl van kaart voor satelliet tegel](./media/supported-map-styles/satellite.png)
+![satelliettegelkaartstijl](./media/supported-map-styles/satellite.png)
 
-**Toepasselijke Api's:**
-* [Satelliet tegel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* [Satelliettegel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
-Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lucht foto-afbeelding.
+Deze kaart stijl is een hybride van wegen en labels bedekt op de top van satelliet-en luchtfoto's.
 
-![stijl van satellite_road_labelse kaart](./media/supported-map-styles/satellite-road-labels.png)
+![satellite_road_labels kaartstijl](./media/supported-map-styles/satellite-road-labels.png)
 
-**Toepasselijke Api's:**
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 ## <a name="grayscale_dark"></a>grayscale_dark
-het **donkere grijs tinten** is een donkere versie van het kaart type weg.
+**grijstinten donker** is een donkere versie van de routekaart stijl.
 
-![stijl van gray_scalee kaart](./media/supported-map-styles/grayscale-dark.png)
+![gray_scale kaartstijl](./media/supported-map-styles/grayscale-dark.png)
 
-**Toepasselijke Api's:**
-* [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK-kaart besturings element 
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* [Afbeelding van kaart](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Kaarttegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK-kaartbesturingselement 
+* Android-kaartbediening
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**grijs waarden licht** is een lichte versie van het kaart type weg.
+**grijswaardenlicht** is een lichte versie van de routekaartstijl.
 
-![stijl van licht grijs waarden diagram](./media/supported-map-styles/grayscale-light.png)
+![grijswaardenlichtkaartstijl](./media/supported-map-styles/grayscale-light.png)
 
-**Toepasselijke Api's:**
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 
-## <a name="night"></a>'S
-**'s avonds** is een donkere versie van de kaart stijl met gekleurde wegen en symbolen.
+## <a name="night"></a>nacht
+**nacht** is een donkere versie van de routekaart stijl met gekleurde wegen en symbolen.
 
-![stijl van nacht kaart](./media/supported-map-styles/night.png)
+![nachtkaartstijl](./media/supported-map-styles/night.png)
 
-**Toepasselijke Api's:**
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-**Uitlichting** van de weg is een Azure Maps hoofd stijl voltooid met conto uren van de aarde.
+**weg gearceerde reliëf** is een Azure Maps belangrijkste stijl aangevuld met contouren van de aarde.
 
-![stijl van de kaart met schaduw verlichting](./media/supported-map-styles/shaded-relief.png)
+![gearceerde reliëfkaartstijl](./media/supported-map-styles/shaded-relief.png)
 
-**Toepasselijke Api's:**
-* [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Web SDK-kaart besturings element
-* Besturings element Android-kaart
+**Toepasselijke API's:**
+* [Kaarttegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK-kaartbesturingselement
+* Android-kaartbediening
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
-**high_contrast_dark** is een donkere kaart stijl met een hoger contrast dan de andere stijlen.
+**high_contrast_dark** is een donkere kaartstijl met een hoger contrast dan de andere stijlen.
 
-![donkere kaart stijl met hoog contrast](./media/supported-map-styles/high-contrast-dark.png)
+![donkere kaartstijl met hoog contrast](./media/supported-map-styles/high-contrast-dark.png)
 
-**Toepasselijke Api's:**
-* Web SDK-kaart besturings element
+**Toepasselijke API's:**
+* Web SDK-kaartbesturingselement
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het instellen van een kaart stijl in Azure Maps:
+Meer informatie over het instellen van een kaartstijl in Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Een kaart stijl kiezen](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+> [Een kaartstijl kiezen](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

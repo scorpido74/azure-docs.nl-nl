@@ -1,7 +1,7 @@
 ---
-title: Assets in Azure Media Services beheren
+title: Assets beheren in Azure Media Services
 titleSuffix: Azure Media Services
-description: Een Asset waar u media invoert (bijvoorbeeld via uploaden of live-opname), uitvoer media (vanuit een taak uitvoer) en het publiceren van media van (voor streaming). In dit onderwerp vindt u een overzicht van het maken van een nieuw activum en het uploaden van bestanden.
+description: Een asset waarbij u media invoert (bijvoorbeeld via upload of live inname), uitvoermedia (uit een taakuitvoer) en media publiceert van (voor streaming). Dit onderwerp geeft een overzicht van hoe u een nieuw item maken en bestanden uploaden.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,42 +10,42 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b1ec4ee3d7a51c2a21a5bbd8888ea4662cf78bf5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304154"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345899"
 ---
 # <a name="manage-assets"></a>Assets beheren
 
-In Azure Media Services is een [activum](https://docs.microsoft.com/rest/api/media/assets) waar u 
+In Azure Media Services is een [asset](https://docs.microsoft.com/rest/api/media/assets) de plaats waar u 
 
-* Media bestanden uploaden naar een Asset,
-* Live streams opnemen en archiveren in een Asset,
-* de resultaten van een code ring van de analyse taak naar een Asset uitvoeren,
+* mediabestanden uploaden naar een asset,
+* live streams in te nemen en te archiveren tot een asset,
+* de resultaten van een codering van analysetaak naar een asset,
 * media publiceren voor streaming, 
-* down load bestanden van een Asset.
+* bestanden downloaden van een asset.
 
-In dit onderwerp vindt u een overzicht van hoe u bestanden uploadt naar een Asset en enkele andere algemene bewerkingen uitvoert. Het bevat ook koppelingen naar code voorbeelden en verwante onderwerpen.
+Dit onderwerp geeft een overzicht van hoe u bestanden uploaden naar een asset en een aantal andere algemene bewerkingen uitvoeren. Het biedt ook links naar code monsters en aanverwante onderwerpen.
 
 ## <a name="prerequisite"></a>Vereiste 
 
-Controleer het volgende voordat u begint met ontwikkelen:
+Voordat u begint met ontwikkelen, bekijkt u:
 
 * [Concepten](concepts-overview.md)
-* [Ontwikkelen met Media Services v3-api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort) 
+* [Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md) (inclusief informatie over toegang tot API's, naamgevingsconventies, enzovoort) 
 
-## <a name="upload-media-files-into-an-asset"></a>Media bestanden uploaden naar een Asset
+## <a name="upload-media-files-into-an-asset"></a>Mediabestanden uploaden naar een asset
 
-Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan een Asset, kunnen ze worden gebruikt in de Media Services versleuteling, streaming en analyse van inhouds werk stromen. Een van de algemene Media Services werk stromen is het uploaden, coderen en streamen van een bestand. In deze sectie vindt u een overzicht van de algemene stappen.
+Nadat de digitale bestanden zijn geüpload naar opslag en gekoppeld aan een asset, kunnen ze worden gebruikt in de Media Services-coderings-, streaming- en analyse-inhoudswerkstromen. Een van de algemene mediaservices-werkstromen is het uploaden, coderen en streamen van een bestand. In dit gedeelte worden de algemene stappen beschreven.
 
-1. Gebruik de API van Media Services v3 om een asset voor nieuwe 'invoer' te maken. Met deze bewerking wordt een container gemaakt in het opslagaccount dat aan uw Media Services-account is gekoppeld. De API retourneert de naam van de container (bijvoorbeeld `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Gebruik de API van Media Services v3 om een asset voor nieuwe 'invoer' te maken. Met deze bewerking wordt een container gemaakt in het opslagaccount dat aan uw Media Services-account is gekoppeld. De API retourneert de `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`containernaam (bijvoorbeeld).
 
-    Als u al een BLOB-container hebt die u aan een Asset wilt koppelen, kunt u de naam van de container opgeven tijdens het maken van de Asset. Media Services ondersteunt momenteel alleen blobs in de hoofdmap van de container en geen mappen met paden in de bestandsnaam. Dus het werkt voor een container met de bestandsnaam 'input.mp4'. Een container met de bestands naam ' Video's/invoer/invoer. MP4 ' werkt echter niet.
+    Als u al een blobcontainer hebt die u aan een actief wilt koppelen, u de containernaam opgeven wanneer u het actief maakt. Media Services ondersteunt momenteel alleen blobs in de hoofdmap van de container en geen mappen met paden in de bestandsnaam. Dus het werkt voor een container met de bestandsnaam 'input.mp4'. Een container met de bestandsnaam 'video's/inputs/input.mp4' werkt echter niet.
 
     U kunt de Azure CLI gebruiken om bestanden rechtstreeks in een opslagaccount en container te uploaden waarvoor u rechten hebt in uw abonnement.
 
@@ -54,15 +54,21 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Haal een SAS-URL op met lees-/schrijfmachtigingen die wordt gebruikt voor het uploaden van digitale bestanden in de asset-container. U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) om bestanden te uploaden naar de-container van de Asset.
-4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [Transformaties en taken](transform-concept.md) voor meer informatie.
-5. De inhoud van de Asset ' output ' streamen.
+2. Haal een SAS-URL op met lees-/schrijfmachtigingen die wordt gebruikt voor het uploaden van digitale bestanden in de asset-container.
 
-### <a name="create-a-new-asset"></a>Een nieuwe Asset maken
+    U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+
+    **AssetContainerSas.listContainerSas** neemt een [parameter ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) waarop u instelt `expiryTime`. De tijd moet worden ingesteld op < 24 uur.
+
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-URL's omdat er twee opslagaccountsleutels voor elk opslagaccount zijn. Een opslagaccount heeft twee sleutels omdat het zorgt voor een naadloze rotatie van opslagaccountsleutels (bijvoorbeeld de ene keer tijdens het gebruik van de andere, en begint vervolgens de nieuwe sleutel te gebruiken en de andere sleutel te roteren). De 1e SAS URL staat voor storage key1 en de tweede opslagsleutel2.
+3. Gebruik de Azure Storage API's of SDK's (bijvoorbeeld de [Storage REST API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK)](../../storage/blobs/storage-quickstart-blobs-dotnet.md)om bestanden in de Asset-container te uploaden.
+4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [Transformeren en taken voor](transform-concept.md)meer informatie.
+5. Stream de inhoud van het item 'uitvoer'.
+
+### <a name="create-a-new-asset"></a>Nieuwe asset maken
 
 > [!NOTE]
-> De eigenschappen van een Asset van het type datetime zijn altijd in UTC-indeling.
+> De eigenschappen van een asset van het type Datetime zijn altijd in UTC-indeling.
 
 #### <a name="rest"></a>REST
 
@@ -70,9 +76,9 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Zie het voor beeld [een activum maken met rest](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) voor een rest-voor beeld.
+Zie voor een voorbeeld van REST het voorbeeld [Een actief maken met REST.](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples)
 
-Het voor beeld laat zien hoe u de **hoofd tekst** van de aanvraag maakt, waarin u een beschrijving, container naam, opslag account en andere nuttige informatie kunt opgeven.
+In het voorbeeld wordt uitgelegd hoe u de **aanvraaginstantie maakt,** waar u beschrijving, containernaam, opslagaccount en andere nuttige informatie opgeven.
 
 #### <a name="curl"></a>cURL
 
@@ -96,49 +102,49 @@ curl -X PUT \
 
 ### <a name="see-also"></a>Zie ook
 
-* [Een taak invoer maken op basis van een lokaal bestand](job-input-from-local-file-how-to.md)
-* [Een taak invoer maken op basis van een HTTPS-URL](job-input-from-http-how-to.md)
+* [Een taakinvoer maken uit een lokaal bestand](job-input-from-local-file-how-to.md)
+* [Een taakinvoer maken op basis van een HTTPS-URL](job-input-from-http-how-to.md)
 
-## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Live streams opnemen en archiveren in een Asset
+## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Inname en archiveren van live streams in een asset
 
-In Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [activa](https://docs.microsoft.com/rest/api/media/assets) .
+In Media Services is een [object Live Output](https://docs.microsoft.com/rest/api/media/liveoutputs) als een digitale videorecorder die uw live stream opneemt en opneemt tot een asset in uw Media Services-account. De opgenomen inhoud blijft bestaan in de container die wordt gedefinieerd door de [assetbron.](https://docs.microsoft.com/rest/api/media/assets)
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
 * [Een cloud-DVR gebruiken](live-event-cloud-dvr.md)
-* [Zelf studie over streaming live](stream-live-tutorial-with-api.md)
+* [Live-zelfstudie streamen](stream-live-tutorial-with-api.md)
 
-## <a name="output-the-results-of-a-job-to-an-asset"></a>De resultaten van een taak naar een Asset uitvoeren
+## <a name="output-the-results-of-a-job-to-an-asset"></a>De resultaten van een taak uitleveren aan een actief
 
-In Media Services moet u bij het verwerken van uw Video's (bijvoorbeeld code ring of analyse) een uitvoer [activum](assets-concept.md) maken om het resultaat van uw [taak](transforms-jobs-concept.md)op te slaan.
+In Media Services moet u bij het verwerken van uw video's (bijvoorbeeld coderen of analyseren) een [uitvoerasset](assets-concept.md) maken om het resultaat van uw taak op te [slaan.](transforms-jobs-concept.md)
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
 * [Een video coderen](encoding-concept.md)
-* [Een taak invoer maken op basis van een lokaal bestand](job-input-from-local-file-how-to.md)
+* [Een taakinvoer maken uit een lokaal bestand](job-input-from-local-file-how-to.md)
 
-## <a name="publish-an-asset-for-streaming"></a>Een Asset publiceren voor streaming
+## <a name="publish-an-asset-for-streaming"></a>Een asset publiceren voor streaming
 
-Als u een Asset voor streaming wilt publiceren, moet u een [streaming-Locator](streaming-locators-concept.md)maken. De streaming-Locator moet weten wat de naam van de Asset is die u wilt publiceren. 
+Als u een item voor streaming wilt publiceren, moet u een [streaminglocator](streaming-locators-concept.md)maken. De streaming locator moet weten welke naam u wilt publiceren. 
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
-[Zelf studie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
+[Zelfstudie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
 
-## <a name="download-results-of-a-job-from-an-output-asset"></a>Resultaten van een taak downloaden van een uitvoer activum
+## <a name="download-results-of-a-job-from-an-output-asset"></a>Resultaten van een taak downloaden van een uitvoerasset
 
-U kunt deze resultaten van uw taak vervolgens downloaden naar een lokale map met behulp van media service en opslag-Api's. 
+U deze resultaten van uw taak vervolgens downloaden naar een lokale map met behulp van Media Service en Storage API's. 
 
-Zie het voor beeld voor het [downloaden van bestanden](download-results-howto.md) .
+Zie het [voorbeeld van downloadbestanden.](download-results-howto.md)
 
-## <a name="filtering-ordering-paging"></a>Filters, bestellen, wisselbestand
+## <a name="filtering-ordering-paging"></a>Filteren, bestellen, paging
 
-Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overview.md).
+Zie [Het filteren, bestellen, paging van mediaservices entiteiten](entities-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de volledige code voorbeelden die laten zien hoe u live en on-Demand kunt uploaden, coderen, analyseren en streamen: 
+Bekijk de volledige codevoorbeelden die laten zien hoe je live en on-demand uploaden, coderen, analyseren, streamen: 
 
 * [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [Rest](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [.net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [RUST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

@@ -1,41 +1,41 @@
 ---
-title: AKS automatisch schalen met metrische gegevens over Azure-toepassing gateway
-description: In dit artikel vindt u instructies voor het schalen van uw AKS-back-end met behulp van Application Gateway metrische gegevens en de Azure Kubernetes metric-adapter
+title: Aks-pods automatisch schalen met Azure Application Gateway-statistieken
+description: In dit artikel vindt u instructies over het schalen van uw AKS-backendpods met behulp van Application Gateway-statistieken en Azure Kubernetes Metric Adapter
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715075"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239455"
 ---
-# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Uw AKS-peul automatisch schalen met behulp van Application Gateway metrische gegevens (bèta)
+# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Uw AKS-pods automatisch schalen met application gateway metrics (bèta)
 
-Als binnenkomend verkeer toeneemt, wordt het cruciaal om uw toepassingen op basis van de vraag te schalen.
+Naarmate het inkomende verkeer toeneemt, wordt het cruciaal om uw applicaties op te schalen op basis van de vraag.
 
-In de volgende zelf studie wordt uitgelegd hoe u de `AvgRequestCountPerHealthyHost`waarde van Application Gateway kunt gebruiken om uw toepassing omhoog te schalen. `AvgRequestCountPerHealthyHost` gemiddeld aantal aanvragen dat is verzonden naar een specifieke back-end van een backend-groep en een back-end-HTTP-instellingen
+In de volgende zelfstudie leggen we uit `AvgRequestCountPerHealthyHost` hoe u de statistiek van Application Gateway gebruiken om uw toepassing op te schalen. `AvgRequestCountPerHealthyHost`meet gemiddelde aanvragen die naar een specifieke backendpool en backend HTTP-instellingscombinatie worden verzonden.
 
-We gaan de volgende twee onderdelen gebruiken:
+We gaan volgende twee componenten gebruiken:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) -we gebruiken de metrische adapter om Application Gateway metrische gegevens beschikbaar te stellen via de metrische server. De Azure Kubernetes metric-adapter is een open-source project onder Azure, vergelijkbaar met de Application Gateway ingangs controller. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) -we gebruiken HPA om Application Gateway metrische gegevens te gebruiken en een implementatie te richten op schalen.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)- We gebruiken de metrische adapter om Application Gateway-statistieken via de metrische server bloot te leggen. De Azure Kubernetes Metric Adapter is een open source-project onder Azure, vergelijkbaar met de Application Gateway Ingress Controller. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)- We gebruiken HPA om Application Gateway-statistieken te gebruiken en een implementatie te targeten voor schalen.
 
-## <a name="setting-up-azure-kubernetes-metric-adapter"></a>De metrische adapter voor Azure Kubernetes instellen
+## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Azure Kubernetes-metrische adapter instellen
 
-1. Eerst maakt u een Azure AAD-Service-Principal en wijst u deze toe `Monitoring Reader` toegang tot de resource groep van Application Gateway. 
+1. We maken eerst een Azure AAD-serviceprincipal en wijzen deze toe via de `Monitoring Reader` brongroep van Application Gateway. 
 
-    ```bash
+    ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
         applicationGatewayGroupId=$(az group show -g $applicationGatewayGroupName -o tsv --query "id")
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Nu gaan we de [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) implementeren met behulp van de hierboven gemaakte Aad-Service-Principal.
+1. Nu, We zullen [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) het gebruik van de AAD service principal hierboven gemaakt implementeren.
 
     ```bash
     kubectl create namespace custom-metrics
@@ -47,7 +47,7 @@ We gaan de volgende twee onderdelen gebruiken:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Er wordt een `ExternalMetric` resource met de naam `appgw-request-count-metric`gemaakt. Met deze resource wordt de metrische adapter geïnstrueerd om `AvgRequestCountPerHealthyHost` metriek voor `myApplicationGateway` resource in `myResourceGroup` resource groep beschikbaar te maken. U kunt het veld `filter` gebruiken om een specifieke back-end-en back-end-HTTP-instelling in de Application Gateway te richten.
+1. We maken `ExternalMetric` een resource `appgw-request-count-metric`met naam. Deze resource geeft de metrische `AvgRequestCountPerHealthyHost` adapter `myApplicationGateway` opdracht `myResourceGroup` om metrische gegevens bloot te leggen voor resource in resourcegroep. U `filter` het veld gebruiken om een specifieke backendpool en backend HTTP-instelling te targeten in de Toepassingsgateway.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -67,7 +67,7 @@ We gaan de volgende twee onderdelen gebruiken:
             filter: BackendSettingsPool eq '<backend-pool-name>~<backend-http-setting-name>' # optional
     ```
 
-U kunt nu een aanvraag indienen bij de metrische server om te zien of onze nieuwe metrische gegevens beschikbaar worden gesteld:
+U nu een verzoek indienen bij de metrische server om te zien of onze nieuwe statistiek wordt blootgesteld:
 ```bash
 kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appgw-request-count-metric"
 # Sample Output
@@ -90,13 +90,13 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>De nieuwe maat eenheid gebruiken om de implementatie omhoog te schalen
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>De nieuwe statistiek gebruiken om de implementatie op te schalen
 
-Zodra we `appgw-request-count-metric` kunnen weer geven via de metrische server, zijn we klaar om [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) te gebruiken om onze doel implementatie te verg Roten.
+Zodra we in `appgw-request-count-metric` staat zijn om bloot te [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) leggen via de metrische server, zijn we klaar om te gebruiken om onze doelimplementatie op te schalen.
 
-In het volgende voor beeld wordt een voor beeld van een implementatie `aspnet`. We zullen het Peul omhoog schalen wanneer `appgw-request-count-metric` > 200 per pod tot Maxi maal `10` peul.
+In het volgende voorbeeld richten `aspnet`we ons op een voorbeeldimplementatie. We zullen Pods `appgw-request-count-metric` opschalen als > 200 `10` per Pod tot een maximum aan Pods.
 
-Vervang de naam van de doel implementatie en pas de volgende configuratie voor automatisch schalen toe:
+Vervang de naam van uw doelimplementatie en pas de volgende automatische schaalconfiguratie toe:
 ```yaml
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -116,10 +116,10 @@ spec:
       targetAverageValue: 200
 ```
 
-Test uw installatie met behulp van een load test tool zoals Apache Bank:
+Test je setup met behulp van een load test tool zoals apache bench:
 ```bash
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Problemen met [**ingangs controller**](ingress-controller-troubleshoot.md)oplossen: problemen met de ingangs controller oplossen.
+- [**Problemen met de Ingress-controller oplossen:**](ingress-controller-troubleshoot.md)problemen met de Ingress-controller oplossen.

@@ -1,25 +1,24 @@
 ---
-title: Geografische Beschik baarheid en valuta ondersteuning | Azure
-description: Geografische Beschik baarheid in azure Marketplace en AppSource
-services: Azure, Marketplace, Compute, Storage, Networking
+title: Geografische beschikbaarheid en valutaondersteuning | Azure
+description: Geografische beschikbaarheid in Azure Marketplace en AppSource
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2020
-ms.author: ellacroi
-ms.openlocfilehash: f2369388f00f6a023ac77865ab8e3540bc35de70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.author: dsindona
+ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288424"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Geografische Beschik baarheid en valuta ondersteuning
+# <a name="geographic-availability-and-currency-support"></a>Geografische beschikbaarheid en valutaondersteuning
 
-Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geografies zoals gedefinieerd door het factuur adres van de klant, en trans acties kunnen worden uitgevoerd in 17 valuta's. De volgende tabel bevat een lijst met de ondersteunde geografische locatie, de bijbehorende [ISO 3166 2-digits-code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
+Azure Marketplace- en AppSource-aanbiedingen kunnen worden gekocht in 141 regio's zoals gedefinieerd door het factureringsadres van de klant en transacties kunnen worden voltooid in 17 valuta's. In de onderstaande tabel vindt u elke ondersteunde geografische locatie, de [ISO 3166-alfacode met twee cijfers](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
 
-|   Naam van land/regio               |   ISO-2   |   Valuta   |
+|   Naam land/regio               |   ISO-2   |   Valuta   |
 |-------------------------------------|-----------|--------------|
 | Afghanistan                         | AF        | USD          |
 | Albanië                             | AL        | USD          |
@@ -34,10 +33,10 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Bahrein                             | BH        | USD          |
 | Bangladesh                          | BD        | USD          |
 | Barbados                            | BB        | USD          |
-| Wit-Rusland                             | BY        | USD          |
+| Belarus                             | BY        | USD          |
 | België                             | BE        | EUR          |
 | Belize                              | BZ        | USD          |
-| Bermuda                             | BM        | USD          |
+| Bermuda                             | Bm        | USD          |
 | Bolivia                             | BO        | USD          |
 | Bosnië en Herzegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
@@ -49,12 +48,12 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Cabo Verde                          | CV        | USD          |
 | Kaaimaneilanden                      | KY        | USD          |
 | Chili                               | CL        | USD          |
-| China\**                            | CN        | N/A          |
+| China\**                            | CN        | N.v.t.          |
 | Colombia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
-| Côte d'Ivoire                       | CI        | USD          |
+| Cote d'Ivoire                       | CI        | USD          |
 | Kroatië                             | HR        | EUR          |
-| Curaçao                             | CW        | USD          |
+| Curaçao                             | Cw        | USD          |
 | Cyprus                              | CY        | EUR          |
 | Tsjechië                      | CZ        | EUR          |
 | Denemarken                             | DK        | DKK          |
@@ -64,7 +63,7 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | El Salvador                         | SV        | USD          |
 | Estland                             | EE        | EUR          |
 | Ethiopië                            | ET        | USD          |
-| Faeröer                       | FO        | DKK          |
+| Faeröer                       | Fo        | DKK          |
 | Fiji                                | FJ        | AUD          |
 | Finland                             | FI        | EUR          |
 | Frankrijk                              | FR        | EUR          |
@@ -74,7 +73,7 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Griekenland                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hong Kong SAR                       | HK        | USD          |
+| Hongkong SAR                       | HK        | USD          |
 | Hongarije                             | HU        | EUR          |
 | IJsland                             | IS        | EUR          |
 | India                               | IN        | INR          |
@@ -101,14 +100,14 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Noord-Macedonië                     | MK        | USD          |
 | Maleisië                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
-| Mauritius                           | MU        | USD          |
+| Mauritius                           | Mu        | USD          |
 | Mexico                              | MX        | USD          |
 | Moldavië                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
 | Mongolië                            | MN        | USD          |
-| Montenegro                          | VERVOLG        | USD          |
+| Montenegro                          | ME        | USD          |
 | Marokko                             | MA        | USD          |
-| Namibië                             | N.V.T.        | USD          |
+| Namibië                             | N.v.t.        | USD          |
 | Nepal                               | NP        | USD          |
 | Nederland                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |
@@ -121,7 +120,7 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Panama                              | PA        | USD          |
 | Paraguay                            | PY        | USD          |
 | Peru                                | PE        | USD          |
-| Filippijnen                         | PH        | USD          |
+| Filipijnen                         | PH        | USD          |
 | Polen                              | PL        | EUR          |
 | Portugal                            | PT        | EUR          |
 | Puerto Rico                         | PR        | USD          |
@@ -142,16 +141,16 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Zweden                              | SE        | SEK          |
 | Zwitserland                         | CH        | CHF          |
 | Taiwan                              | TW        | TWD          |
-| Tadzjikistan                          | TJ        | USD          |
+| Tadzjikistan                          | Tj        | USD          |
 | Tanzania                            | TZ        | USD          |
 | Thailand                            | TH        | USD          |
 | Trinidad en Tobago                 | TT        | USD          |
 | Tunesië                             | TN        | USD          |
 | Turkije                              | TR        | USD          |
 | Turkmenistan                        | TM        | USD          |
-| Vaticaan stad (Heilige stoel)             | V        | EUR          |
-| Amerikaanse Maagdeneilanden | VI        | USD          |
-| Uganda                              | UG        | USD          |
+| Vaticaanstad (Heilige Stoel)             | VA        | EUR          |
+| Maagdeneilanden van de Verenigde Staten | VI        | USD          |
+| Oeganda                              | UG        | USD          |
 | Oekraïne                             | UA        | USD          |
 | Verenigde Arabische Emiraten                | AE        | USD          |
 | Verenigd Koninkrijk                      | GB        | GBP          |
@@ -160,11 +159,11 @@ Azure Marketplace-en AppSource-aanbiedingen kunnen worden aangeschaft in 141-geo
 | Oezbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | TEZAM        | USD          |
+| Jemen                               | Gij        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
+\*Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
 
-\** alleen gratis en BYOL VM-installatie kopieën.
+\** Gratis en BYOL VM beelden alleen.

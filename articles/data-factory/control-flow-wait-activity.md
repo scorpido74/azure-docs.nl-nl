@@ -1,6 +1,6 @@
 ---
-title: Wachten op activiteit in Azure Data Factory
-description: De wait-activiteit pauzeert de uitvoering van de pijp lijn voor de opgegeven periode.
+title: Wachtactiviteit in Azure Data Factory
+description: Met de activiteit Wachten wordt de uitvoering van de pijplijn voor de opgegeven periode onderbroken.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678248"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Wacht activiteit uitvoeren in Azure Data Factory
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Wachtactiviteit uitvoeren in Azure Data Factory
 Als u een Wait Activity in een pijplijn gebruikt, wacht de pijplijn tot de opgegeven periode voorbij is voordat de volgende activiteiten worden uitgevoerd. 
 
 ## <a name="syntax"></a>Syntaxis
@@ -34,21 +34,21 @@ Als u een Wait Activity in een pijplijn gebruikt, wacht de pijplijn tot de opgeg
 
 ```
 
-## <a name="type-properties"></a>Type-eigenschappen
+## <a name="type-properties"></a>Eigenschappen typen
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-naam | De naam van de `Wait` activiteit. | Tekenreeks | Ja
-type | Moet worden ingesteld op **wait**. | Tekenreeks | Ja
-waitTimeInSeconds | Het aantal seconden dat de pijp lijn wacht voordat de verwerking doorgaat. | Geheel getal | Ja
+name | Naam van `Wait` de activiteit. | Tekenreeks | Ja
+type | Moet ingesteld zijn op **Wait.** | Tekenreeks | Ja
+waitTimeInSeconden | Het aantal seconden dat de pijplijn wacht voordat de verwerking wordt voortgezet. | Geheel getal | Ja
 
 ## <a name="example"></a>Voorbeeld
 
 > [!NOTE]
-> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
+> In deze sectie worden JSON-definities en voorbeeld-PowerShell-opdrachten voor het uitvoeren van de pijplijn opgenomen. Zie [zelfstudie: maak een gegevensfabriek met Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een stapsgewijze handleiding voor het maken van een Data Factory-pijplijn met azure PowerShell- en JSON-definities.
 
-### <a name="pipeline-with-wait-activity"></a>Pijp lijn met wachtende activiteit
-In dit voor beeld heeft de pijp lijn twee activiteiten: **tot** en met een **ogen blik geduld**. De wacht activiteit is zo geconfigureerd dat deze gedurende één seconde wordt gewacht. De pijp lijn voert de Web-activiteit in een lus uit met één seconde wacht tijd tussen elke uitvoering. 
+### <a name="pipeline-with-wait-activity"></a>Pijplijn met wachtactiviteit
+In dit voorbeeld heeft de pijplijn twee activiteiten: **Tot** en **wacht.** De activiteit Wachten is geconfigureerd om een seconde te wachten. De pijplijn voert de webactiviteit uit in een lus met een wachttijd van één seconde tussen elke run. 
 
 ```json
 {
@@ -99,7 +99,7 @@ In dit voor beeld heeft de pijp lijn twee activiteiten: **tot** en met een **oge
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
+Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)

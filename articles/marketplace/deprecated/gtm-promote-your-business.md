@@ -1,42 +1,41 @@
 ---
-title: 'Go-to-Market-Services: Promoot uw bedrijf met micro soft | Azure'
-description: 'Go-to-Market-Services: uitgevers kunnen leren hoe we uw bedrijf met micro soft promoten in deze sectie.'
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Go-To-Market Services - Uw bedrijf promoten met Microsoft | Azure
+description: Go-To-Market Services - Uitgevers kunnen in deze sectie leren hoe u uw bedrijf met Microsoft promoten.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281541"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Uw bedrijf promoten met Microsoft
 
-Marketplace-partners moeten deel uitmaken van de Microsoft Partner Network (MPN). Als een MPN-lid kunt u toegang krijgen tot extra bedrijfs gerichte voor delen. Ga naar [partner.Microsoft.com](https://partner.microsoft.com) om te zien hoe u het netwerk kunt gebruiken om toegang te krijgen tot:
+Marketplace-partners moeten deel uitmaken van het Microsoft Partner Network (MPN). Als MPN-lid hebt u toegang tot extra bedrijfsgerichte voordelen. Ga [partner.microsoft.com](https://partner.microsoft.com) om te zien hoe u het netwerk gebruiken om toegang te krijgen tot:
 
 * Nieuwe zakelijke kansen.
 * Verbinding maken met teams of partners.
-* Oplossingen en training om uw vaardig heden te verg Roten.
+* Oplossingen en training om je vaardigheden te laten groeien.
 
-## <a name="benefits-and-resources"></a>Voor delen en bronnen
+## <a name="benefits-and-resources"></a>Voordelen en middelen
 
-Gebruik de volgende tabel om uw aanbieding of app te promoten en om toegang te krijgen tot meer voor delen en resources:
+Gebruik de volgende tabel om uw aanbieding of app te promoten en toegang te krijgen tot meer voordelen en bronnen:
 
-| Voordelen | Bronnen |
+| Voordelen | Resources |
 |:--- |:--- |
-| Gebruik uw belangrijkste voor delen | Als onderdeel van de Microsoft Partner Network ontvangt u een aantal kern voordelen waarmee u tijd en geld kunt besparen. De voor delen kunnen u helpen <ul> <li> uw mogelijkheden versterken, </li> <li> klanten beter van dienst zijn en </li> <li> bouw verbindingen om uw volledige bedrijfs potentieel te bereiken. </li> </ul> Voor meer informatie over de belangrijkste voor delen gaat u naar [kern voordelen en-vereisten](https://partner.microsoft.com/membership/core-benefits#tab-content-1). |
-| Uw Cloud platform competentie verdienen | Het verdienen van een competentie helpt u om <ul> <li> Onderscheid te maken tussen andere partners van micro soft. </li> <li> Laat technische expertise en successen van klanten zien op de markt. </li> </ul> Competentie is een vereiste voor veel belang rijke partner Programma's, zoals samen verkopen. Zie [competentie voor het Cloud platform](https://partner.microsoft.com/reach-customers/selling-with-microsoft) voor meer informatie. |
-| Klaar voor het samen verkopen met IP | Mogelijk komt u in aanmerking voor het programma dat klaar is voor het verkopen van de software.  Met dit programma kunt u het volgende doen: <ul> <li> Werk rechtstreeks samen met micro soft-verkopers en andere partners op het bereiken van de verkoop kansen en de planning van de klant. </li> <li> Uw oplossing zichtbaar maken voor verkopers van micro soft in de verkopers Solution Catalog. </li> <li> Micro soft-verkopers worden beloond om samen te werken en met u te winnen. </li> </ul> Bekijk [het programma dat klaar is voor de verkoop en Promoot uw bedrijf](https://partner.microsoft.com/reach-customers/selling-with-microsoft) voor meer informatie, inclusief de vereisten voor de geschiktheid. |
+| Gebruik je belangrijkste voordelen | Als onderdeel van het Microsoft Partner Network ontvangt u een reeks kernvoordelen die u tijd en geld kunnen besparen. De voordelen kunnen u helpen <ul> <li> uw capaciteiten te versterken, </li> <li> klanten beter van dienst te zijn, en </li> <li> verbindingen te leggen om uw volledige bedrijfspotentieel te bereiken. </li> </ul> Ga voor meer informatie over de belangrijkste voordelen naar [kernvoordelen en -vereisten.](https://partner.microsoft.com/membership/core-benefits#tab-content-1) |
+| Verdien je Cloud Platform Competentie | Het behalen van een competentie helpt u om <ul> <li> Onderscheid jezelf tussen andere Microsoft-partners. </li> <li> Toon technische expertise en klantsucces in de markt. </li> </ul> Competentie is een voorwaarde voor veel belangrijke partnerprogramma's, zoals Co-Sell. Zie [de competentie van Cloud Platform](https://partner.microsoft.com/reach-customers/selling-with-microsoft) voor meer informatie. |
+| Word IP Co-Sell Ready | Mogelijk komt u in aanmerking voor het IP Co-Sell Ready-programma.  Met dit programma u: <ul> <li> Werk rechtstreeks samen met Microsoft-verkopers en andere partners aan doelklantkansen en accountplanning. </li> <li> Uw oplossing zichtbaar maken voor Microsoft-verkopers in de catalogus van de verkopersoplossing. </li> <li> Microsoft-verkopers worden beloond voor het samenwerken en winnen met u. </li> </ul> Raadpleeg [het co-sell ready-programma en promoot uw bedrijf](https://partner.microsoft.com/reach-customers/selling-with-microsoft) voor meer informatie, waaronder geschiktheidsvereisten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over Marketplace GTM Services gaat u naar [Go-to-Market-Services](https://partner.microsoft.com/reach-customers/gtm).
+Ga voor meer informatie over gtm-services op marktplaats naar [Go-to-market-services.](https://partner.microsoft.com/reach-customers/gtm)
 
-Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
+Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
 
 ---

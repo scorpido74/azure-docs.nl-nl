@@ -1,53 +1,52 @@
 ---
-title: SaaS-fulfillment-Api's v1 | Azure Marketplace
-description: Hierin wordt uitgelegd hoe u een SaaS-aanbieding op de Azure Marketplace maakt en beheert met behulp van de bijbehorende fulfillment v1-Api's.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: SaaS Fulfillment API's v1 | Azure Marketplace
+description: Hier wordt uitgelegd hoe u een SaaS-aanbieding op de Azure Marketplace maakt en beheert met behulp van de bijbehorene Fulfillment v1 API's.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
-ms.author: evansma
+ms.author: dsindona
 ROBOTS: NOINDEX
-ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3ec8373288a2ea5809ee5d349c52c57051586035
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715382"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288339"
 ---
-# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS-fulfillment-Api's versie 1 (afgeschaft)
+# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API's versie 1 (afgeschaft)
 
-In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding met Api's maakt. De Api's, bestaande uit REST methoden en eind punten, zijn nodig om abonnementen op uw SaaS-aanbieding toe te staan als u via Azure hebt gekozen voor verkopen.  
+In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding met API's maken. De API's, bestaande uit REST-methoden en eindpunten, zijn nodig om abonnementen op uw SaaS-aanbieding toe te staan als u Verkopen via Azure hebt geselecteerd.  
 
 > [!WARNING]
-> Deze eerste versie van de SaaS-fulfillment-API is afgeschaft. gebruik in plaats daarvan [SaaS fulfillment API v2](./pc-saas-fulfillment-api-v2.md).  Deze eerste versie van de API wordt momenteel alleen onderhouden voor bestaande uitgevers. 
+> Deze eerste versie van de SaaS Fulfillment API is afgeschaft; Gebruik in plaats daarvan [SaaS Fulfillment API V2](./pc-saas-fulfillment-api-v2.md).  Deze eerste versie van de API wordt momenteel alleen onderhouden om bestaande uitgevers te bedienen. 
 
-De volgende Api's zijn bedoeld om u te helpen uw SaaS-service te integreren met Azure:
+De volgende API's worden verstrekt om u te helpen uw SaaS-service te integreren met Azure:
 
 -   Oplossen
--   Abonneren op
+-   Abonneren
 -   Converteren
 -   Afmelden
 
 
-## <a name="api-methods-and-endpoints"></a>API-methoden en-eind punten
+## <a name="api-methods-and-endpoints"></a>API-methoden en eindpunten
 
-De volgende secties beschrijven de API-methoden en-eind punten die beschikbaar zijn voor het inschakelen van abonnementen voor een SaaS-aanbieding.
+In de volgende secties worden de API-methoden en eindpunten beschreven die beschikbaar zijn voor het inschakelen van abonnementen voor een SaaS-aanbieding.
 
 
-### <a name="marketplace-api-endpoint-and-api-version"></a>Marketplace-API-eind punt en API-versie
+### <a name="marketplace-api-endpoint-and-api-version"></a>Marketplace API-eindpunt en API-versie
 
-Het eind punt voor de Azure Marketplace-API is `https://marketplaceapi.microsoft.com`.
+Het eindpunt voor Azure `https://marketplaceapi.microsoft.com`Marketplace API is .
 
 De huidige API-versie is `api-version=2017-04-15`.
 
 
 ### <a name="resolve-subscription"></a>Abonnement oplossen
 
-Met de actie na het oplossen van een eind punt kunnen gebruikers een Marketplace-token omzetten in een permanente Resource-ID.  De resource-ID is de unieke id voor het SAAS-abonnement. 
+Post actie op te lossen eindpunt kunnen gebruikers een marketplace token op te lossen om een permanente Resource ID.  De Resource-id is de unieke id voor het SAAS-abonnement. 
 
-Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL een token in de query parameters. De ISV wordt verwacht dit token te gebruiken en een aanvraag indienen om deze te kunnen oplossen. Het antwoord bevat de unieke SAAS-abonnements-ID, de naam, de aanbiedings-ID en het plan voor de resource. Dit token is alleen geldig voor een uur.
+Wanneer een gebruiker wordt doorgestuurd naar de website van een ISV, bevat de URL een token in de queryparameters. De ISV zal naar verwachting dit token gebruiken en een verzoek indienen om het op te lossen. Het antwoord bevat de unieke SAAS-abonnements-ID, naam, aanbiedings-ID en plan voor de bron. Dit token is slechts een uur geldig.
 
 *Aanvraag*
 
@@ -55,25 +54,25 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=2017-04-15**
 
-|  **Parameter naam** |     **Beschrijving**                                      |
+|  **Parameternaam** |     **Beschrijving**                                      |
 |  ------------------ |     ---------------------------------------------------- |
-|  api-version        |  De versie van de bewerking die moet worden gebruikt voor deze aanvraag.   |
+|  api-versie        |  De versie van de bewerking die voor dit verzoek moet worden gebruikt.   |
 |  |  |
 
 
 *Headers*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.  |
-| x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Dit veld verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| Inhouds type       | Ja          | `application/json`                                        |
-| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
-| x-MS-Marketplace-token| Ja| De token query-para meter in de URL wanneer de gebruiker wordt omgeleid naar de website van SaaS ISV van Azure. **Opmerking:** Dit token is slechts één uur geldig. Daarnaast moet de URL de token waarde decoderen van de browser voordat u deze gebruikt.|
+| x-ms-requestid     | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client, bij voorkeur een GUID. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.  |
+| x-ms-correlatieid | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Dit veld correleert alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
+| Inhoudstype       | Ja          | `application/json`                                        |
+| autorisatie      | Ja          | Het JSON-webtoken (JWT) dragertoken.                    |
+| x-ms-marketplace-token| Ja| De parameter tokenquery in de URL wanneer de gebruiker vanuit Azure wordt doorgestuurd naar de website van SaaS ISV. **Let op:** Dit token is slechts 1 uur geldig. Bovendien decodeert URL de tokenwaarde van de browser voordat u deze gebruikt.|
 |  |  |  |
   
 
-*Antwoord tekst*
+*Reactie-instantie*
 
 ``` json
 {
@@ -87,59 +86,59 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 | **Parameternaam** | **Gegevenstype** | **Beschrijving**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | Tekenreeks        | ID van het SaaS-abonnement.          |
-| subscriptionName| Tekenreeks| De naam van het SaaS-abonnement dat is ingesteld door de gebruiker in azure terwijl u zich abonneert op de SaaS-service.|
-| OfferId            | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd. |
-| planId             | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd.  |
+| subscriptionName| Tekenreeks| Naam van het SaaS-abonnement dat door de gebruiker in Azure is ingesteld terwijl u zich abonneert op de SaaS-service.|
+| AanbiedingId            | Tekenreeks        | Bied id aan waarop de gebruiker zich heeft geabonneerd. |
+| planId             | Tekenreeks        | Plan ID waarop de gebruiker zich heeft geabonneerd.  |
 |  |  |  |
 
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                                         |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
-| 200                  | `OK`                 | Het token is opgelost.                                                            |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of er is een ongeldige API-versie opgegeven. Kan het token niet omzetten omdat het token ongeldig is of is verlopen (het token is slechts één uur geldig nadat het is gegenereerd). |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                                 |
-| 429                  | `RequestThrottleId`  | De service is bezig met het verwerken van aanvragen. Probeer het later opnieuw.                                |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                                        |
+| 200                  | `OK`                 | Token is opgelost.                                                            |
+| 400                  | `BadRequest`         | Vereist headers ontbreken of een ongeldige api-versie is opgegeven. Kan het token niet oplossen omdat het token verkeerd is vervormd of is verlopen (het token is slechts 1 uur geldig nadat het is gegenereerd). |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                                 |
+| 429                  | `RequestThrottleId`  | Service is bezig met het verwerken van aanvragen, probeer het later opnieuw.                                |
+| 503                  | `ServiceUnavailable` | Service is tijdelijk uitgeschakeld, probeer het later opnieuw.                                        |
 |  |  |  |
 
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze ID wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Nee           | Deze waarde wordt alleen ingesteld voor een 429-antwoord.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is deze waarde de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Deze ID wordt gebruikt voor eventuele afstemmingen. |
+| Opnieuw proberen-Na        | Nee           | Deze waarde is alleen ingesteld voor een reactie van 429.                                                                   |
 |  |  |  |
 
 
-### <a name="subscribe"></a>Abonneren op
+### <a name="subscribe"></a>Abonneren
 
-Met het abonnements eindpunt kunnen gebruikers een abonnement op een SaaS-service voor een bepaald plan starten en facturering in het commerce-systeem inschakelen.
+Met het abonnementseindpunt kunnen gebruikers een abonnement op een SaaS-service starten voor een bepaald abonnement en facturering in het commercesysteem inschakelen.
 
-**PUT**
+**ZET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-versie=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | Unieke ID van het SaaS-abonnement dat is verkregen na het oplossen van het token via de API voor omzetten.                              |
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| subscriptionId      | Unieke ID van SaaS-abonnement dat wordt verkregen na het oplossen van het token via Resolve API.                              |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-|  **Header sleutel**        | **Vereist** |  **Beschrijving**                                                  |
+|  **Kopteksttoets**        | **Vereist** |  **Beschrijving**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-ms-requestid         |   Nee         | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| x-MS-correlationid     |   Nee         | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| If-match/If-None-Match |   Nee         |   ETag-waarde voor sterke validatie.                                                          |
-| content-type           |   Ja        |    `application/json`                                                                   |
-|  authorization         |   Ja        |    Het JWT-Bearer-token (Web token).                                               |
-| x-ms-marketplace-session-mode| Nee | Vlag waarmee de modus voor droge uitvoering wordt ingeschakeld wanneer u zich abonneert op een SaaS-aanbieding. Indien ingesteld, worden er geen kosten in rekening gebracht voor het abonnement. Dit is handig voor ISV-Test scenario's. Stel dit in op **dryrun**|
+| x-ms-requestid         |   Nee         | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client, bij voorkeur een GUID. Als dit niet wordt verstrekt, zal men worden gegenereerd en verstrekt in de antwoordheaders. |
+| x-ms-correlatieid     |   Nee         | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als dit niet wordt verstrekt, zal men worden gegenereerd en verstrekt in de antwoordheaders. |
+| If-Match/If-None-Match |   Nee         |   Sterke validator ETag waarde.                                                          |
+| inhoudstype           |   Ja        |    `application/json`                                                                   |
+|  autorisatie         |   Ja        |    Het JSON-webtoken (JWT) dragertoken.                                               |
+| x-ms-marketplace-session-mode| Nee | Vlag om de droogloopmodus in te schakelen terwijl u zich abonneert op een SaaS-aanbieding. Als dit is ingesteld, worden er geen kosten in rekening gebracht. Dit is handig voor ISV-testscenario's. Zet het in op **'dryrun'**|
 |  |  |  |
 
 *Hoofdtekst*
@@ -150,60 +149,60 @@ Met het abonnements eindpunt kunnen gebruikers een abonnement op een SaaS-servic
 }
 ```
 
-| **Element naam** | **Gegevenstype** | **Beschrijving**                      |
+| **Elementnaam** | **Gegevenstype** | **Beschrijving**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | Lang Tekenreeksexpressie        | De plan-ID van de SaaS-service gebruiker is geabonneerd op.  |
+| planId           | (Vereist) Tekenreeks        | Plan ID van de SaaS-servicegebruiker is een abonnement.  |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                           |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Activering van SaaS-abonnement ontvangen voor een bepaald abonnement.                   |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of de hoofd tekst van de JSON is onjuist gevormd. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                   |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID                                  |
-| 409                  | `Conflict`           | Er wordt een andere bewerking uitgevoerd voor het abonnement.                     |
-| 429                  | `RequestThrottleId`  | De service is bezig met het verwerken van aanvragen. Probeer het later opnieuw.                  |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                          |
+| 202                  | `Accepted`           | SaaS-abonnementsactivering ontvangen voor een bepaald abonnement.                   |
+| 400                  | `BadRequest`         | Ofwel vereiste headers ontbreken of het lichaam van de JSON is misvormd. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                   |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID                                  |
+| 409                  | `Conflict`           | Er is een andere bewerking aan de gang voor het abonnement.                     |
+| 429                  | `RequestThrottleId`  | Service is bezig met het verwerken van aanvragen, probeer het later opnieuw.                  |
+| 503                  | `ServiceUnavailable` | Service is tijdelijk uitgeschakeld, probeer het later opnieuw.                          |
 |  |  |  |
 
-Voor een 202-antwoord moet u de status van de aanvraag bewerking opvolgen op de koptekst van de bewerkings locatie. De verificatie is hetzelfde als andere Marketplace-Api's.
+Voor een 202-antwoord moet u de status van de aanvraagbewerking opvolgen op de kop 'Operatielocatie'. De verificatie is hetzelfde als andere Marketplace-API's.
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is deze waarde de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor eventuele afstemmingen. |
+| Opnieuw proberen-Na        | Ja          | Interval waarmee de client de status kan controleren.                                                       |
+| Operatielocatie | Ja          | Koppeling naar een resource om de bedrijfsstatus te krijgen.                                                        |
 |  |  |  |
 
-### <a name="change-plan-endpoint"></a>Eind punt van abonnement wijzigen
+### <a name="change-plan-endpoint"></a>Eindpunt van plan wijzigen
 
-Met het wijzigings eindpunt kan de gebruiker het abonnement dat op dat moment is geabonneerd converteren naar een nieuw abonnement.
+Met het wijzigingseindpunt kan de gebruiker zijn momenteel geabonneerde abonnement converteren naar een nieuw abonnement.
 
-**VERZENDEN**
+**Patch**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-versie=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID van het SaaS-abonnement.                              |
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| subscriptionId      | ID van SaaS-abonnement.                              |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-| **Header sleutel**          | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
+| **Kopteksttoets**          | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid          | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers.   |
-| x-MS-correlationid      | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| If-match/If-None-Match | Nee           | ETag-waarde voor sterke validatie.                              |
-| content-type            | Ja          | `application/json`                                        |
-| authorization           | Ja          | Het JWT-Bearer-token (Web token).                    |
+| x-ms-requestid          | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client. Beveel een GUID aan. Als dit niet wordt verstrekt, zal men worden gegenereerd en verstrekt in de antwoordheaders.   |
+| x-ms-correlatieid      | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als dit niet wordt verstrekt, zal men worden gegenereerd en verstrekt in de antwoordheaders. |
+| If-Match /If-None-Match | Nee           | Sterke validator ETag waarde.                              |
+| inhoudstype            | Ja          | `application/json`                                        |
+| autorisatie           | Ja          | Het JSON-webtoken (JWT) dragertoken.                    |
 |  |  |  |
 
 *Hoofdtekst*
@@ -214,111 +213,111 @@ Met het wijzigings eindpunt kan de gebruiker het abonnement dat op dat moment is
 }
 ```
 
-|  **Element naam** |  **Gegevenstype**  | **Beschrijving**                              |
+|  **Elementnaam** |  **Gegevenstype**  | **Beschrijving**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  Lang Tekenreeksexpressie         | De plan-ID van de SaaS-service gebruiker is geabonneerd op.          |
+|  planId           |  (Vereist) Tekenreeks         | Plan ID van de SaaS-servicegebruiker is een abonnement.          |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                           |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Activering van SaaS-abonnement ontvangen voor een bepaald abonnement.                   |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of de hoofd tekst van de JSON is onjuist gevormd. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                   |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID                                  |
-| 409                  | `Conflict`           | Er wordt een andere bewerking uitgevoerd voor het abonnement.                     |
-| 429                  | `RequestThrottleId`  | De service is bezig met het verwerken van aanvragen. Probeer het later opnieuw.                  |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                          |
+| 202                  | `Accepted`           | SaaS-abonnementsactivering ontvangen voor een bepaald abonnement.                   |
+| 400                  | `BadRequest`         | Ofwel vereiste headers ontbreken of het lichaam van de JSON is misvormd. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                   |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID                                  |
+| 409                  | `Conflict`           | Er is een andere bewerking aan de gang voor het abonnement.                     |
+| 429                  | `RequestThrottleId`  | Service is bezig met het verwerken van aanvragen, probeer het later opnieuw.                  |
+| 503                  | `ServiceUnavailable` | Service is tijdelijk uitgeschakeld, probeer het later opnieuw.                          |
 |  |  |  |
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is deze waarde de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor eventuele afstemmingen. |
+| Opnieuw proberen-Na        | Ja          | Interval waarmee de client de status kan controleren.                                                       |
+| Operatielocatie | Ja          | Koppeling naar een resource om de bedrijfsstatus te krijgen.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Abonnement verwijderen
 
-Met de actie verwijderen op het abonnements eindpunt kan een gebruiker een abonnement met een opgegeven ID verwijderen.
+Met de actie Verwijderen op het eindpunt abonneren kan een gebruiker een abonnement met een bepaalde id verwijderen.
 
 *Aanvraag*
 
-**DELETE**
+**Verwijderen**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-versie=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID van het SaaS-abonnement.                              |
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| subscriptionId      | ID van SaaS-abonnement.                              |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
-| x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| x-ms-requestid     | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client. Beveel een GUID aan. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.                                                           |
+| x-ms-correlatieid | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als dit niet wordt verstrekt, zal men worden gegenereerd en verstrekt in de antwoordheaders. |
+| autorisatie      | Ja          | Het JSON-webtoken (JWT) dragertoken.                    |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                           |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | Activering van SaaS-abonnement ontvangen voor een bepaald abonnement.                   |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of de hoofd tekst van de JSON is onjuist gevormd. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                   |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID                                  |
-| 429                  | `RequestThrottleId`  | De service verwerkt aanvragen. Probeer het later opnieuw.                  |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                          |
+| 202                  | `Accepted`           | SaaS-abonnementsactivering ontvangen voor een bepaald abonnement.                   |
+| 400                  | `BadRequest`         | Ofwel vereiste headers ontbreken of het lichaam van de JSON is misvormd. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                   |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID                                  |
+| 429                  | `RequestThrottleId`  | Service is druk bezig met het verwerken van aanvragen, probeer het later opnieuw.                  |
+| 503                  | `ServiceUnavailable` | De service is tijdelijk uitgeschakeld. Probeer het later opnieuw.                          |
 |  |  |  |
 
-Voor een 202-antwoord moet u de status van de aanvraag bewerking opvolgen op de koptekst van de bewerkings locatie. De verificatie is hetzelfde als andere Marketplace-Api's.
+Voor een 202-antwoord moet u de status van de aanvraagbewerking opvolgen op de kop 'Operatielocatie'. De verificatie is hetzelfde als andere Marketplace-API's.
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is dit de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor eventuele verzoeningen. |
+| Opnieuw proberen-Na        | Ja          | Interval waarmee de client de status kan controleren.                                                       |
+| Operatielocatie | Ja          | Koppeling naar een resource om de bedrijfsstatus te krijgen.                                                        |
 |   |  |  |
 
 ### <a name="get-operation-status"></a>Bewerkingsstatus ophalen
 
-Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerking (abonneren/afmelden/wijzigings plan) bijhouden.
+Met dit eindpunt kan de gebruiker de status van een geactiveerde synchronisatiebewerking bijhouden (Abonnement/Afmelden/wijzigen).
 
 *Aanvraag*
 
-**GET**
+**Toevoegen**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-versie=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| operationId         | De unieke ID voor de geactiveerde bewerking.                |
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| operationId         | Unieke ID voor de geactiveerde bewerking.                |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.   |
-| x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.  |
-| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| x-ms-requestid     | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client. Beveel een GUID aan. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.   |
+| x-ms-correlatieid | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.  |
+| autorisatie      | Ja          | Het JSON-webtoken (JWT) dragertoken.                    |
 |  |  |  | 
 
-*Antwoord tekst*
+*Reactie-instantie*
 
 ```json
 {
@@ -332,61 +331,61 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 
 | **Parameternaam** | **Gegevenstype** | **Beschrijving**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Tekenreeks        | De ID van de bewerking.                                                                      |
-| status             | Enum          | Bewerkings status, een van de volgende: `In Progress`, `Succeeded`of `Failed`.          |
-| resourceLocation   | Tekenreeks        | Koppeling naar het abonnement dat is gemaakt of gewijzigd. Zo kan de client bijgewerkte status post-bewerking ophalen. Deze waarde is niet ingesteld voor `Unsubscribe` bewerkingen. |
-| toegevoegd            | DateTime      | Aanmaak tijd van de bewerking in UTC.                                                           |
-| lastModified       | DateTime      | Laatste update voor de bewerking in UTC.                                                      |
+| id                 | Tekenreeks        | ID van de operatie.                                                                      |
+| status             | Enum          | De bedrijfsstatus, een `In Progress`van `Succeeded`de `Failed`volgende: , of .          |
+| resourceLocation   | Tekenreeks        | Koppeling naar het abonnement dat is gemaakt of gewijzigd. Dit helpt de client om bijgewerkte statuspostbewerking te krijgen. Deze waarde is `Unsubscribe` niet ingesteld voor bewerkingen. |
+| Gemaakt            | DateTime      | Bewerkingstijd in UTC.                                                           |
+| Lastmodified       | DateTime      | Laatste update over de bewerking in UTC.                                                      |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                              |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | De GET-aanvraag is opgelost en de hoofd tekst bevat de reactie.    |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of er is een ongeldige API-versie opgegeven. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                      |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID.                                     |
-| 429                  | `RequestThrottleId`  | De service is bezig met het verwerken van aanvragen. Probeer het later opnieuw.                     |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                             |
+| 200                  | `OK`                 | Resolved the get request successfully and the body contains the response.    |
+| 400                  | `BadRequest`         | Vereist headers ontbreken of er is een ongeldige api-versie opgegeven. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                      |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID.                                     |
+| 429                  | `RequestThrottleId`  | Service is bezig met het verwerken van aanvragen, probeer het later opnieuw.                     |
+| 503                  | `ServiceUnavailable` | Service is tijdelijk uitgeschakeld, probeer het later opnieuw.                             |
 |  |  |  |
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is dit de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor eventuele verzoeningen. |
+| Opnieuw proberen-Na        | Ja          | Interval waarmee de client de status kan controleren.                                                       |
 |  |  |  |
 
-### <a name="get-subscription"></a>Abonnement ophalen
+### <a name="get-subscription"></a>Abonnement krijgen
 
-Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement met een bepaalde resource-id ophalen.
+Met de actie Ophalen op het eindpunt abonneren kan een gebruiker een abonnement ophalen met een bepaalde resource-id.
 
 *Aanvraag*
 
-**GET**
+**Toevoegen**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-versie=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID van het SaaS-abonnement.                              |
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| subscriptionId      | ID van SaaS-abonnement.                              |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                           |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
-| x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| authorization      | Ja          | Het JWT-Bearer-token (Web token).                                                                    |
+| x-ms-requestid     | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client, bij voorkeur een GUID. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.                                                           |
+| x-ms-correlatieid | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
+| autorisatie      | Ja          | Het JSON-webtoken (JWT) dragertoken.                                                                    |
 |  |  |  |
 
-*Antwoord tekst*
+*Reactie-instantie*
 
 ```json
 {
@@ -402,63 +401,63 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Tekenreeks        | ID van de SaaS-abonnements resource in Azure.    |
-| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd.         |
-| planId                 | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd.          |
-| saasSubscriptionName   | Tekenreeks        | De naam van het SaaS-abonnement.                |
-| saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC. |
-| lastModified           | DateTime      | De time stamp-waarde voor het abonnement is gewijzigd in UTC. |
+| id                     | Tekenreeks        | ID van SaaS-abonnementsbron in Azure.    |
+| aanbiedingId                | Tekenreeks        | Bied id aan waarop de gebruiker zich heeft geabonneerd.         |
+| planId                 | Tekenreeks        | Plan ID waarop de gebruiker zich heeft geabonneerd.          |
+| saasSubscriptionName   | Tekenreeks        | Naam van het SaaS-abonnement.                |
+| saasSubscriptionStatus | Enum          | De status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: Abonnement is actief.  <br/> - `Pending`: Gebruiker maakt de bron, maar wordt niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: De gebruiker heeft zich afgemeld.   <br/> - `Suspended`: De gebruiker heeft het abonnement opgeschort.   <br/> - `Deactivated`: Azure-abonnement wordt opgeschort.  |
+| Gemaakt                | DateTime      | Waarde van tijdstempelvoor het maken van abonnementen in UTC. |
+| Lastmodified           | DateTime      | Gewijzigde tijdstempelwaarde voor abonnementen in UTC. |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                              |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | De GET-aanvraag is opgelost en de hoofd tekst bevat de reactie.    |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of er is een ongeldige API-versie opgegeven. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                      |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID                                     |
-| 429                  | `RequestThrottleId`  | De service is bezig met het verwerken van aanvragen. Probeer het later opnieuw.                     |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                             |
+| 200                  | `OK`                 | Resolved the get request successfully and the body contains the response.    |
+| 400                  | `BadRequest`         | Vereist headers ontbreken of er is een ongeldige api-versie opgegeven. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                      |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID                                     |
+| 429                  | `RequestThrottleId`  | Service is bezig met het verwerken van aanvragen, probeer het later opnieuw.                     |
+| 503                  | `ServiceUnavailable` | Service is tijdelijk uitgeschakeld, probeer het later opnieuw.                             |
 |  |  |  |
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Nee           | Het interval waarmee de client de status kan controleren.                                                       |
-| eTag               | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is dit de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor eventuele verzoeningen. |
+| Opnieuw proberen-Na        | Nee           | Interval waarmee de client de status kan controleren.                                                       |
+| eTag               | Ja          | Koppeling naar een resource om de bedrijfsstatus te krijgen.                                                        |
 |  |  |  |
 
-### <a name="get-subscriptions"></a>Abonnementen ophalen
+### <a name="get-subscriptions"></a>Abonnementen kopen
 
-Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnementen ophalen voor alle aanbiedingen van de ISV.
+Met het eindpunt Ophalen op abonnementen kan een gebruiker alle abonnementen ophalen voor alle aanbiedingen van de ISV.
 
 *Aanvraag*
 
-**GET**
+**Toevoegen**
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2017-04-15**
 
-| **Parameter naam**  | **Beschrijving**                                       |
+| **Parameternaam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-versie         | De versie van de bewerking die voor dit verzoek moet worden gebruikt. |
 |  |  |
 
 *Headers*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                           |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.             |
-| x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| x-ms-requestid     | Nee           | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client. Beveel een GUID aan. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen.             |
+| x-ms-correlatieid | Nee           | Een unieke tekenreekswaarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
+| autorisatie      | Ja          | Het JSON-webtoken (JWT) dragertoken.                    |
 |  |  |  |
 
-*Antwoord tekst*
+*Reactie-instantie*
 
 ```json
 {
@@ -474,40 +473,40 @@ Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnem
 
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Tekenreeks        | ID van SaaS-abonnements resource in azure    |
-| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd         |
-| planId                 | Tekenreeks        | Plan-ID waarop de gebruiker zich heeft geabonneerd          |
+| id                     | Tekenreeks        | ID van SaaS-abonnementsbron in Azure    |
+| aanbiedingId                | Tekenreeks        | Aanbiedings-id waarop de gebruiker zich heeft geabonneerd         |
+| planId                 | Tekenreeks        | Id plannen waarop de gebruiker zich heeft geabonneerd          |
 | saasSubscriptionName   | Tekenreeks        | Naam van het SaaS-abonnement                |
-| saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC |
-| lastModified           | DateTime      | Time Stamp-waarde gewijzigd in UTC |
+| saasSubscriptionStatus | Enum          | De status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: Abonnement is actief.  <br/> - `Pending`: Gebruiker maakt de bron, maar wordt niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: De gebruiker heeft zich afgemeld.   <br/> - `Suspended`: De gebruiker heeft het abonnement opgeschort.   <br/> - `Deactivated`: Azure-abonnement wordt opgeschort.  |
+| Gemaakt                | DateTime      | Waarde van tijdstempelvoor het maken van abonnementen in UTC |
+| Lastmodified           | DateTime      | Gewijzigde tijdstempelwaarde voor abonnementen in UTC |
 |  |  |  |
 
-*Antwoord codes*
+*Reactiecodes*
 
-| **HTTP-status code** | **Fout code**     | **Beschrijving**                                                              |
+| **HTTP-statuscode** | **Foutcode**     | **Beschrijving**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | De GET-aanvraag is opgelost en de hoofd tekst bevat de reactie.    |
-| 400                  | `BadRequest`         | De vereiste headers ontbreken of er is een ongeldige API-versie opgegeven. |
-| 403                  | `Forbidden`          | De aanroeper is niet gemachtigd om deze bewerking uit te voeren.                      |
-| 404                  | `NotFound`           | Het abonnement is niet gevonden met de opgegeven ID                                     |
-| 429                  | `RequestThrottleId`  | De service verwerkt aanvragen. Probeer het later opnieuw.                     |
-| 503                  | `ServiceUnavailable` | De service is tijdelijk niet beschikbaar. Probeer het later opnieuw.                             |
+| 200                  | `OK`                 | Resolved the get request successfully and the body contains the response.    |
+| 400                  | `BadRequest`         | Vereist headers ontbreken of er is een ongeldige api-versie opgegeven. |
+| 403                  | `Forbidden`          | De beller is niet bevoegd om deze bewerking uit te voeren.                      |
+| 404                  | `NotFound`           | Abonnement niet gevonden met de opgegeven ID                                     |
+| 429                  | `RequestThrottleId`  | Service is druk bezig met het verwerken van aanvragen, probeer het later opnieuw.                     |
+| 503                  | `ServiceUnavailable` | De service is tijdelijk uitgeschakeld. Probeer het later opnieuw.                             |
 |  |  |  |
 
-*Antwoord headers*
+*Antwoordheaders*
 
-| **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
+| **Kopteksttoets**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
-| x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
-| Opnieuw proberen na        | Nee           | Het interval waarmee de client de status kan controleren.                                                       |
+| x-ms-requestid     | Ja          | Aanvraag-ID ontvangen van de klant.                                                                   |
+| x-ms-correlatieid | Ja          | Correlatie-ID als deze door de client wordt doorgegeven, anders is dit de servercorrelatie-id.                   |
+| x-ms-activiteit    | Ja          | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor eventuele verzoeningen. |
+| Opnieuw proberen-Na        | Nee           | Interval waarmee de client de status kan controleren.                                                       |
 |  |  |  |
 
 ### <a name="saas-webhook"></a>SaaS Webhook
 
-Een SaaS-webhook wordt gebruikt voor het proactief op de hoogte brengen van wijzigingen aan de SaaS-service. Deze bericht-API wordt naar verwachting niet-geverifieerd en wordt aangeroepen door de micro soft-service. De SaaS-service wordt verwacht de operations API aan te roepen om te valideren en goed te keuren voordat actie wordt ondernomen voor de webhook-melding. 
+Een SaaS webhook wordt gebruikt om wijzigingen proactief aan te melden bij de SaaS-service. Deze POST API is naar verwachting niet geverifieerd en zal worden aangeroepen door de Microsoft-service. De SaaS-service zal naar verwachting de operations API aanroepen om te valideren en te autoriseren voordat deze actie onderneemt op de webhook-melding. 
 
 *Hoofdtekst*
 
@@ -524,17 +523,17 @@ Een SaaS-webhook wordt gebruikt voor het proactief op de hoogte brengen van wijz
 
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Tekenreeks       | De unieke ID voor de geactiveerde bewerking.                |
-| activityId   | Tekenreeks        | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties.               |
-| subscriptionId                     | Tekenreeks        | ID van de SaaS-abonnements resource in Azure.    |
-| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd. Alleen gegeven bij de actie ' update '.        |
-| publisherId                | Tekenreeks        | Uitgevers-ID van de SaaS-aanbieding         |
-| planId                 | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd. Alleen gegeven bij de actie ' update '.          |
-| action                 | Tekenreeks        | De actie waarmee deze melding wordt geactiveerd. Mogelijke waarden: activeren, verwijderen, onderbreken, opnieuw invoeren, bijwerken          |
-| Neem                 | Tekenreeks        | Time Stamp-waarde in UTC wanneer deze melding is geactiveerd.          |
+| id  | Tekenreeks       | Unieke ID voor de geactiveerde bewerking.                |
+| activiteitId   | Tekenreeks        | Een unieke tekenreekswaarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor eventuele verzoeningen.               |
+| subscriptionId                     | Tekenreeks        | ID van SaaS-abonnementsbron in Azure.    |
+| aanbiedingId                | Tekenreeks        | Bied id aan waarop de gebruiker zich heeft geabonneerd. Alleen voorzien van de actie 'Bijwerken'.        |
+| uitgeverId                | Tekenreeks        | Publisher ID van de SaaS aanbieding         |
+| planId                 | Tekenreeks        | Plan ID waarop de gebruiker zich heeft geabonneerd. Alleen voorzien van de actie 'Bijwerken'.          |
+| action                 | Tekenreeks        | De actie die deze melding activeert. Mogelijke waarden - Activeren, verwijderen, onderbreken, herstellen, bijwerken          |
+| Tijdstempel                 | Tekenreeks        | TImestamp-waarde in UTC toen deze melding werd geactiveerd.          |
 |  |  |  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ontwikkel aars kunnen werk belastingen, aanbiedingen en Publisher-profielen ook programmatisch ophalen en manipuleren met behulp van de [Cloud Partner-Portal rest-api's](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).
+Ontwikkelaars kunnen ook programmatisch workloads, aanbiedingen en uitgeversprofielen ophalen en manipuleren met behulp van de [API's van Cloud Partner Portal REST.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)
