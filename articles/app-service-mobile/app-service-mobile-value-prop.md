@@ -1,18 +1,18 @@
 ---
-title: Over Mobile Apps
+title: Over mobiele apps
 description: Lees welke voordelen App Service heeft voor de mobiele apps in uw onderneming.
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 06/25/2019
-ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 33548f202046310b91fc79d38ac7d8fb18a8727e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461433"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499424"
 ---
-# <a name="getting-started"> </a>Over Mobile Apps in azure app service
+# <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>Mobile Apps in Azure App Service
 
 Azure App Service is een volledig beheerde [PaaS-](https://azure.microsoft.com/overview/what-is-paas/)aanbieding (Platform as a Service) voor professionele ontwikkelaars. De service biedt een uitgebreide reeks mogelijkheden voor web-, mobiele en integratiescenario's. 
 
@@ -26,7 +26,7 @@ Met de functie Mobile Apps kunt u het volgende doen:
 * **Native en platformoverschrijdende apps bouwen**: of u nu native iOS-, Android- of Windows-apps, of platformoverschrijdende Xamarin- of Cordova-apps (Phonegap) bouwt, u hebt altijd voordeel van App Service door native SDK's te gebruiken.
 * **Verbinding maken met uw bedrijfssystemen**: met de functie Mobile Apps kunt u in slechts enkele minuten zakelijke aanmeldingen toevoegen en verbinding maken met uw bedrijfsresources, on-premises of in de cloud.
 * **Apps bouwen die offline beschikbaar zijn met gegevenssynchronisatie**: maak uw mobiele werknemers productiever door apps te bouwen die offline werken en door gebruik te maken van Mobile Apps om gegevens op de achtergrond te synchroniseren wanneer er verbinding is met een van uw gegevensbronnen of SaaS-API's (Software as a Service) in de onderneming.
-* **Pushmeldingen in enkele seconden naar miljoenen klanten verzenden**: houd contact met uw klanten door gebruik te maken van directe pushmeldingen op elk apparaat, afgestemd op de eigen behoeften van de klant en verzonden op het gewenste moment.
+* **Pushmeldingen naar miljoenen in seconden:** betrek uw klanten met onmiddellijke pushmeldingen op elk apparaat, aangepast aan hun behoeften en verzonden wanneer de tijd rijp is.
 
 ## <a name="mobile-apps-features"></a>Functies van Mobile Apps
 De volgende functies zijn belangrijk wanneer u mobiele apps ontwikkelt die zijn ingeschakeld voor de cloud:
@@ -68,18 +68,18 @@ De volgende platformfuncties zijn handig voor mobiele productiesites:
 
 * **Geïsoleerde/toegewezen omgevingen**: u kunt App Service uitvoeren in een volledig geïsoleerde en toegewezen omgeving, zodat Azure App Service-apps veilig kunnen worden uitgevoerd. Deze omgeving is ideaal voor toepassingsworkloads die op grote schaal worden uitgevoerd, of waarvoor isolatie of beveiligde netwerktoegang nodig is.
 
-  Lees meer over [App Service-omgevingen].
+  Meer informatie over [App Service-omgevingen].
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Begin met de zelfstudie [Aan de slag] om snel bekend te raken met Mobile Apps in Azure App Service. De zelfstudie bevat de basisinformatie voor het produceren van een mobiele back-end en een client van uw keuze. Er wordt ook aandacht besteed aan het integreren van verificatie, offlinesynchronisatie en pushmeldingen. U kunt de zelfstudie meerdere keren volgen, steeds voor een andere clienttoepassing.
 
 Zie ons [leeroverzicht] voor meer informatie over Azure Mobile Apps.
-Zie [Azure App Service] voor meer informatie over het Azure App Service-platform.
+Zie Azure App Service voor meer informatie over het Azure App [Service-platform.]
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[aan de slag]: app-service-mobile-ios-get-started.md
+[Slag]: app-service-mobile-ios-get-started.md
 [Azure Table storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
 [verificatiefuncties]: ./app-service-mobile-auth.md
@@ -91,11 +91,11 @@ Zie [Azure App Service] voor meer informatie over het Azure App Service-platform
 [Xamarin.iOS en Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[Automatische schaling]: ../app-service/manage-scale-up.md
+[automatisch schalen]: ../app-service/manage-scale-up.md
 [Faseringsomgevingen]: ../app-service/deploy-staging-slots.md
 [hybride verbindingen]: ../biztalk-services/integration-hybrid-connection-overview.md
 [virtuele netwerken]: ../app-service/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
-[App Service-omgevingen]: ../app-service/environment/intro.md
+[ExpressRoute ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[App-serviceomgevingen]: ../app-service/environment/intro.md
 [leeroverzicht]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 [Azure App Service]: ../app-service/overview.md

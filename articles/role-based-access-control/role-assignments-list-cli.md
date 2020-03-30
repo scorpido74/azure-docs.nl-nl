@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weer geven met behulp van Azure RBAC en Azure CLI
-description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van op rollen gebaseerd toegangs beheer (RBAC) en Azure CLI.
+title: Roltoewijzingen weergeven met Azure RBAC en Azure CLI
+description: Meer informatie over het bepalen van welke resources gebruikers, groepen, serviceprincipals of beheerde identiteiten toegang hebben tot het gebruik van RBAC (Azure ROLE-based Access Control) en Azure CLI.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,41 +14,41 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b02ec00544ef11ca1048fd6d3bd9bdf3fccd8c8c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471411"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385058"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en Azure CLI
+# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Roltoewijzingen weergeven met Azure RBAC en Azure CLI
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] in dit artikel wordt beschreven hoe u roltoewijzingen kunt weer geven met behulp van Azure CLI.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen weergeven met Azure CLI.
 
 > [!NOTE]
-> Als uw organisatie uitbestede beheer functies heeft voor een service provider die gebruikmaakt van [Azure delegated resource management](../lighthouse/concepts/azure-delegated-resource-management.md), worden roltoewijzingen die door die service provider worden toegestaan, hier niet weer gegeven.
+> Als uw organisatie beheerfuncties heeft uitbesteed aan een serviceprovider die [azure-gedelegeerd resourcebeheer](../lighthouse/concepts/azure-delegated-resource-management.md)gebruikt, worden roltoewijzingen die zijn geautoriseerd door die serviceprovider, hier niet weergegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](/cli/azure)
+- [Bash in Azure Cloud Shell](/azure/cloud-shell/overview) of Azure [CLI](/cli/azure)
 
 ## <a name="list-role-assignments-for-a-user"></a>Roltoewijzingen voor een gebruiker weergeven
 
-Als u de roltoewijzingen voor een specifieke gebruiker wilt weer geven, gebruikt u de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
+Als u de roltoewijzingen voor een specifieke gebruiker wilt vermelden, gebruikt u [de lijst met az-rollentoewijzing:](/cli/azure/role/assignment#az-role-assignment-list)
 
-```azurecli
+```azurecli-interactive
 az role assignment list --assignee <assignee>
 ```
 
-Standaard worden alleen roltoewijzingen voor het huidige abonnement weer gegeven. Als u roltoewijzingen voor het huidige abonnement en hieronder wilt weer geven, voegt u de para meter `--all` toe. Als u overgenomen roltoewijzingen wilt weer geven, voegt u de para meter `--include-inherited` toe.
+Standaard worden alleen roltoewijzingen voor het huidige abonnement weergegeven. Als u roltoewijzingen voor het huidige `--all` abonnement en hieronder wilt weergeven, voegt u de parameter toe. Als u overgenomen roltoewijzingen `--include-inherited` wilt weergeven, voegt u de parameter toe.
 
-In het volgende voor beeld ziet u de roltoewijzingen die rechtstreeks zijn toegewezen aan de *patlong-\@contoso.com* -gebruiker:
+In het volgende voorbeeld worden de roltoewijzingen weergegeven die rechtstreeks aan de *contoso.com\@* gebruiker zijn toegewezen:
 
-```azurecli
+```azurecli-interactive
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-```Output
+```
 {
   "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
@@ -63,19 +63,19 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Roltoewijzingen voor een resourcegroep opvragen
 
-Als u de roltoewijzingen wilt weer geven die voor komen in een bereik van een resource groep, gebruikt u de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list):
+Als u de roltoewijzingen wilt weergeven die in een bereik van een resourcegroep bestaan, gebruikt u [de lijst met az-rollentoewijzing:](/cli/azure/role/assignment#az-role-assignment-list)
 
-```azurecli
+```azurecli-interactive
 az role assignment list --resource-group <resource_group>
 ```
 
-In het volgende voor beeld worden de roltoewijzingen voor de resource groep *Pharma-Sales* weer gegeven:
+In het volgende voorbeeld worden de roltoewijzingen voor de *farma-sales* resourcegroep weergegeven:
 
-```azurecli
+```azurecli-interactive
 az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-```Output
+```
 {
   "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
@@ -92,52 +92,56 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Roltoewijzingen weergeven voor een abonnement
 
-Gebruik [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list)om alle roltoewijzingen in een abonnements bereik weer te geven. Als u de abonnements-ID wilt ophalen, kunt u deze vinden op de Blade **abonnementen** in de Azure portal of kunt u [AZ account list](/cli/azure/account#az-account-list)gebruiken.
+Als u alle roltoewijzingen op een abonnementsgebied wilt vermelden, gebruikt u [de lijst met az-rollentoewijzing](/cli/azure/role/assignment#az-role-assignment-list). Als u de abonnements-ID wilt krijgen, u deze vinden op het **blade Abonnementen** in de Azure-portal of u de lijst [met AZ-account](/cli/azure/account#az-account-list)gebruiken.
 
-```azurecli
+```azurecli-interactive
 az role assignment list --subscription <subscription_name_or_id>
 ```
 
-```Example
+Voorbeeld:
+
+```azurecli-interactive
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-## <a name="list-role-assignments-for-a-management-group"></a>Roltoewijzingen voor een beheer groep weer geven
+## <a name="list-role-assignments-for-a-management-group"></a>Roltoewijzingen voor een beheergroep opsommen
 
-Gebruik [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list)om alle roltoewijzingen in een beheer groeps bereik weer te geven. Als u de beheer groep-ID wilt ophalen, kunt u deze vinden op de Blade **beheer groepen** in de Azure portal of u kunt [AZ Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)gebruiken.
+Als u alle roltoewijzingen wilt vermelden in een beheergroepbereik, gebruikt u [de lijst met az-rollentoewijzing](/cli/azure/role/assignment#az-role-assignment-list). Als u de beheergroep-id wilt krijgen, u deze vinden op het blade **van beheergroepen** in de Azure-portal of u [de lijst met AZ-accountbeheergroepen](/cli/azure/account/management-group#az-account-management-group-list)gebruiken.
 
-```azurecli
+```azurecli-interactive
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-```Example
+Voorbeeld:
+
+```azurecli-interactive
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-## <a name="list-role-assignments-for-a-managed-identity"></a>Roltoewijzingen voor een beheerde identiteit weer geven
+## <a name="list-role-assignments-for-a-managed-identity"></a>Roltoewijzingen voor een beheerde identiteit opsommen
 
-1. Haal de object-ID op van de door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteit. 
+1. Haal de object-id van de door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteit op.
 
-    Als u de object-ID van een door de gebruiker toegewezen beheerde identiteit wilt ophalen, kunt u [AZ AD SP List](/cli/azure/ad/sp#az-ad-sp-list) of [AZ ID List](/cli/azure/identity#az-identity-list)gebruiken.
+    Als u de object-id van een door de gebruiker toegewezen beheerde identiteit wilt krijgen, u [de AZ-lijst of de](/cli/azure/ad/sp#az-ad-sp-list) [AZ-identiteitslijst](/cli/azure/identity#az-identity-list)gebruiken.
 
-    ```azurecli
+    ```azurecli-interactive
     az ad sp list --display-name "<name>" --query [].objectId --output tsv
     ```
 
-    Als u de object-ID van een door het systeem toegewezen beheerde identiteit wilt ophalen, kunt u [AZ AD SP List](/cli/azure/ad/sp#az-ad-sp-list)gebruiken.
+    Als u de object-id van een door het systeem toegewezen beheerde identiteit wilt krijgen, u [de az-ad sp-lijst](/cli/azure/ad/sp#az-ad-sp-list)gebruiken.
 
-    ```azurecli
+    ```azurecli-interactive
     az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
     ```
 
-1. Als u de roltoewijzingen wilt weer geven, gebruikt u de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list).
+1. Als u de roltoewijzingen wilt vermelden, gebruikt u [de lijst met az-rollentoewijzing](/cli/azure/role/assignment#az-role-assignment-list).
 
-    Standaard worden alleen roltoewijzingen voor het huidige abonnement weer gegeven. Als u roltoewijzingen voor het huidige abonnement en hieronder wilt weer geven, voegt u de para meter `--all` toe. Als u overgenomen roltoewijzingen wilt weer geven, voegt u de para meter `--include-inherited` toe.
+    Standaard worden alleen roltoewijzingen voor het huidige abonnement weergegeven. Als u roltoewijzingen voor het huidige `--all` abonnement en hieronder wilt weergeven, voegt u de parameter toe. Als u overgenomen roltoewijzingen `--include-inherited` wilt weergeven, voegt u de parameter toe.
 
-    ```azurecli
+    ```azurecli-interactive
     az role assignment list --assignee <objectid>
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure CLI](role-assignments-cli.md)
+- [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en Azure CLI](role-assignments-cli.md)

@@ -1,7 +1,7 @@
 ---
 title: Uitgaande verbindingen in Azure
 titleSuffix: Azure Load Balancer
-description: In dit artikel wordt uitgelegd hoe Azure virtuele machines kan communiceren met open bare Internet Services.
+description: In dit artikel wordt uitgelegd hoe Azure VM's in staat stelt om te communiceren met openbare internetservices.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,89 +13,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: a6b0ebf811d662046d1a9a89fb75a0ab137569c3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 411c06e19b932b441f27a3c7578d847c6dfc1f7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336995"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
-Azure biedt uitgaande connectiviteit voor klant implementaties via verschillende mechanismen. In dit artikel wordt beschreven wat de scenario's zijn, wanneer deze van toepassing zijn, hoe ze werken en hoe u ze beheert.
+Azure biedt uitgaande connectiviteit voor klantimplementaties via verschillende mechanismen. In dit artikel wordt beschreven wat de scenario's zijn, wanneer ze van toepassing zijn, hoe ze werken en hoe ze moeten worden beheerd.
 
 >[!NOTE] 
->In dit artikel worden alleen de implementaties van Resource Manager besproken. Controleer de [uitgaande verbindingen (klassiek)](load-balancer-outbound-connections-classic.md) voor alle klassieke implementatie Scenario's in Azure.
+>Dit artikel heeft alleen betrekking op implementaties van Resource Manager. Controleer [uitgaande verbindingen (Klassiek)](load-balancer-outbound-connections-classic.md) voor alle klassieke implementatiescenario's in Azure.
 
-Een implementatie in azure kan communiceren met eind punten buiten Azure in de open bare IP-adres ruimte. Wanneer een exemplaar een uitgaande stroom initieert naar een bestemming in de open bare IP-adres ruimte, wijst Azure het privé-IP-adres dynamisch toe aan een openbaar IP-adres. Nadat deze toewijzing is gemaakt, kan het retour verkeer voor deze uitgaande stroom van het doel ook het privé-IP-adres bereiken waarvan de stroom afkomstig is.
+Een implementatie in Azure kan communiceren met eindpunten buiten Azure in de openbare IP-adresruimte. Wanneer een instantie een uitgaande stroom naar een bestemming in de openbare IP-adresruimte initieert, brengt Azure het privé-IP-adres dynamisch in kaart aan een openbaar IP-adres. Nadat deze toewijzing is gemaakt, kan retourverkeer voor deze uitgaande stroom ook het privé-IP-adres bereiken waar de stroom is ontstaan.
 
-Azure gebruikt bron Network Address Translation (SNAT) om deze functie uit te voeren. Wanneer meerdere privé-IP-adressen worden gemaskeerd achter één openbaar IP-adres, gebruikt Azure [poort adres omzetting (Pat)](#pat) voor het maskeren van privé-IP-adressen. Tijdelijke poorten worden gebruikt voor PAT en zijn [vooraf toegewezen](#preallocatedports) op basis van pool grootte.
+Azure gebruikt de vertaling van het bronnetwerkadres (SNAT) om deze functie uit te voeren. Wanneer meerdere privé-IP-adressen zich voordoen achter één openbaar IP-adres, gebruikt Azure [poortadresvertaling (PAT)](#pat) om privé-IP-adressen te maskeren. Kortstondige poorten worden gebruikt voor PAT en zijn [vooraf toegewezen](#preallocatedports) op basis van de grootte van het zwembad.
 
-Er zijn meerdere [uitgaande scenario's](#scenarios). U kunt deze scenario's zo nodig combi neren. Lees deze zorgvuldig door om inzicht te krijgen in de mogelijkheden, beperkingen en patronen zoals die van toepassing zijn op uw implementatie model en toepassings scenario. Raadpleeg de richt lijnen voor het [beheren van deze scenario's](#snatexhaust).
+Er zijn meerdere [uitgaande scenario's.](#scenarios) U deze scenario's naar behoefte combineren. Bekijk ze zorgvuldig om de mogelijkheden, beperkingen en patronen te begrijpen die van toepassing zijn op uw implementatiemodel en toepassingsscenario. Bekijk de richtlijnen voor [het beheer van deze scenario's](#snatexhaust).
 
 >[!IMPORTANT] 
->Standard Load Balancer en standaard open bare IP introduceren nieuwe mogelijkheden en verschillende gedragingen voor uitgaande connectiviteit.  Ze zijn niet hetzelfde als de basis-Sku's.  Als u een uitgaande verbinding wilt gebruiken bij het werken met standaard-Sku's, moet u deze expliciet definiëren met een openbaar IP-adres of standaard open bare Load Balancer.  Dit omvat het maken van uitgaande connectiviteit bij het gebruik van een interne Standard Load Balancer.  U wordt aangeraden om altijd uitgaande regels te gebruiken op een standaard open bare Load Balancer.  [Scenario 3](#defaultsnat) is niet beschikbaar voor de standaard-SKU.  Dit betekent dat als er een interne Standard Load Balancer wordt gebruikt, u stappen moet nemen om uitgaande connectiviteit te maken voor de virtuele machines in de back-endadresgroep als uitgaande connectiviteit gewenst is.  In de context van uitgaande connectiviteit, één zelfstandige virtuele machine, alle virtuele machines in een Beschikbaarheidsset, werken alle exemplaren in een VMSS als groep. Dit betekent dat als er één virtuele machine in een Beschikbaarheidsset is gekoppeld aan een standaard-SKU, alle VM-exemplaren binnen deze Beschikbaarheidsset nu dezelfde regels gedragen als voor de standaard-SKU, zelfs als een afzonderlijke instantie niet rechtstreeks is gekoppeld. Dit gedrag wordt ook waargenomen in het geval van een zelfstandige virtuele machine met meerdere netwerk interface kaarten die aan een load balancer zijn gekoppeld. Als één NIC als zelfstandige wordt toegevoegd, heeft deze hetzelfde gedrag. Lees dit volledige document aandachtig door om inzicht te krijgen in de algemene concepten, Lees [Standard Load Balancer](load-balancer-standard-overview.md) voor verschillen tussen sku's en controleer de [regels voor uitgaande verbindingen](load-balancer-outbound-rules-overview.md).  Met uitgaande regels kunt u de controle over alle aspecten van de uitgaande connectiviteit nauw keuriger maken.
+>Standard Load Balancer en Standard Public IP introduceren nieuwe vaardigheden en verschillende gedragingen voor uitgaande connectiviteit.  Ze zijn niet hetzelfde als Basic SKU's.  Als u uitgaande connectiviteit wilt wanneer u met standaard SKU's werkt, moet u deze expliciet definiëren met standaard IP-adressen voor openbare apparaten of met standaardopenbare load balancer.  Dit omvat het maken van uitgaande connectiviteit bij het gebruik van een interne Standard Load Balancer.  We raden u aan altijd uitgaande regels te gebruiken voor een standaard openbare load balancer.  [Scenario 3](#defaultsnat) is niet beschikbaar met Standaard SKU.  Dat betekent dat wanneer een interne Standaard Load Balancer wordt gebruikt, u stappen moet ondernemen om uitgaande connectiviteit te maken voor de VM's in de backendpool als uitgaande connectiviteit gewenst is.  In de context van uitgaande connectiviteit gedragen één zelfstandige VM, alle VM's in een beschikbaarheidsset, alle exemplaren in een VMSS zich als een groep. Dit betekent dat als één vm in een beschikbaarheidsset is gekoppeld aan een standaard SKU, alle VM-exemplaren binnen deze beschikbaarheidsset zich nu volgens dezelfde regels gedragen als of ze zijn gekoppeld aan standaard SKU, zelfs als een afzonderlijke instantie er niet rechtstreeks aan is gekoppeld. Dit gedrag wordt ook waargenomen in het geval van een standalone VM met meerdere netwerkinterfacekaarten die aan een load balancer zijn gekoppeld. Als een NIC wordt toegevoegd als een standalone, zal het hetzelfde gedrag hebben. Controleer dit hele document zorgvuldig om de algemene concepten te begrijpen, [standaardloadbalancer](load-balancer-standard-overview.md) te bekijken op verschillen tussen SKU's en [uitgaande regels te](load-balancer-outbound-rules-overview.md)herzien.  Met behulp van uitgaande regels u fijne korrelige controle over alle aspecten van uitgaande connectiviteit.
 
-## <a name="scenarios"></a>Scenario-overzicht
+## <a name="scenario-overview"></a><a name="scenarios"></a>Overzicht van scenario's
 
-Azure Load Balancer en gerelateerde resources worden expliciet gedefinieerd wanneer u [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)gebruikt.  Azure biedt momenteel drie verschillende methoden voor het bezorgen van uitgaande connectiviteit voor Azure Resource Manager-resources. 
+Azure Load Balancer en gerelateerde resources worden expliciet gedefinieerd wanneer u [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)gebruikt.  Azure biedt momenteel drie verschillende methoden om uitgaande connectiviteit voor Azure Resource Manager-resources te bereiken. 
 
-| Voorraad | Scenario | Methode | IP-protocollen | Beschrijving |
+| SKU's | Scenario | Methode | IP-protocollen | Beschrijving |
 | --- | --- | --- | --- | --- |
-| Standaard, basis | [1. VM met een openbaar IP-adres op exemplaar niveau (met of zonder Load Balancer)](#ilpip) | SNAT, poort masker niet gebruikt | TCP, UDP, ICMP, ESP | Azure gebruikt het open bare IP-adres dat is toegewezen aan de IP-configuratie van de NIC van de instantie. Alle tijdelijke poorten zijn beschikbaar voor het exemplaar. Wanneer u Standard Load Balancer gebruikt, worden [Uitgaande regels](load-balancer-outbound-rules-overview.md) niet ondersteund als er een openbaar IP-adres aan de virtuele machine wordt toegewezen. |
-| Standaard, basis | [2. open bare Load Balancer gekoppeld aan een virtuele machine (geen openbaar IP-adres op het exemplaar)](#lb) | SNAT met poort maskering (PAT) met behulp van de Load Balancer-frontends | TCP, UDP |Azure deelt het open bare IP-adres van de open bare front Load Balancer-front-end met meerdere privé IP-adressen. Azure gebruikt tijdelijke poorten van de front-ends tot PAT. U moet [Uitgaande regels](load-balancer-outbound-rules-overview.md) gebruiken om de uitgaande connectiviteit expliciet te definiëren. |
-| geen of basis | [3. zelfstandige VM (niet Load Balancer, geen openbaar IP-adres)](#defaultsnat) | SNAT met poort maskering (PAT) | TCP, UDP | Azure wijst automatisch een openbaar IP-adres toe voor SNAT, deelt dit open bare IP-adres met meerdere privé IP-adressen van de beschikbaarheidsset en maakt gebruik van tijdelijke poorten van dit open bare IP-adres. Dit scenario is een terugval van de voor gaande scenario's. Het is niet raadzaam om het te controleren en te beheren. |
+| Standaard, Basic | [1. VM met een openbaar IP-adres op instantieniveau (met of zonder load balancer)](#ilpip) | SNAT, havenmaskerading niet gebruikt | TCP, UDP, ICMP, ESP | Azure maakt gebruik van het openbare IP-adres dat is toegewezen aan de IP-configuratie van de NIC van de instantie. De instantie heeft alle tijdelijke poorten beschikbaar. Bij het gebruik van Standard Load Balancer worden [uitgaande regels](load-balancer-outbound-rules-overview.md) niet ondersteund als een openbaar IP-adres is toegewezen aan de virtuele machine. |
+| Standaard, Basic | [2. Public Load Balancer gekoppeld aan een VM (geen openbaar IP-adres in de instantie)](#lb) | SNAT met port masquerading (PAT) met behulp van de Load Balancer frontends | TCP, UDP |Azure deelt het openbare IP-adres van de openbare Load Balancer frontends met meerdere privé IP-adressen. Azure maakt gebruik van kortstondige poorten van de frontends naar PAT. U moet [uitgaande regels](load-balancer-outbound-rules-overview.md) gebruiken om uitgaande connectiviteit expliciet te definiëren. |
+| none | [3. Zelfstandige VM (geen load balancer, geen openbaar IP-adres)](#defaultsnat) | SNAT met port maskerading (PAT) | TCP, UDP | Azure wijst automatisch een openbaar IP-adres aan voor SNAT, deelt dit openbare IP-adres met meerdere privé-IP-adressen van de beschikbaarheidsset en maakt gebruik van tijdelijke poorten van dit openbare IP-adres. Dit scenario is een terugval voor de voorgaande scenario's. We raden het niet aan als je zichtbaarheid en controle nodig hebt. |
 
-Als u niet wilt dat een virtuele machine communiceert met eind punten buiten Azure in een open bare IP-adres ruimte, kunt u netwerk beveiligings groepen (Nsg's) gebruiken om de toegang naar behoefte te blok keren. In de sectie wordt voor [komen dat uitgaande connectiviteit](#preventoutbound) nsg's meer details bevat. Richt lijnen voor het ontwerpen, implementeren en beheren van een virtueel netwerk zonder uitgaande toegang valt buiten het bereik van dit artikel.
+Als u niet wilt dat een VM communiceert met eindpunten buiten Azure in openbare IP-adresruimte, u netwerkbeveiligingsgroepen (NSG's) gebruiken om de toegang te blokkeren als dat nodig is. In [de](#preventoutbound) sectie Voorkomen van uitgaande connectiviteit worden NSG's nader besproken. Richtlijnen voor het ontwerpen, implementeren en beheren van een virtueel netwerk zonder uitgaande toegang vallen buiten het bereik van dit artikel.
 
-### <a name="ilpip"></a>Scenario 1: virtuele machine met openbaar IP-adres
+### <a name="scenario-1-vm-with-public-ip-address"></a><a name="ilpip"></a>Scenario 1: VM met openbaar IP-adres
 
-In dit scenario wordt er een openbaar IP-adres aan de virtuele machine toegewezen. Voor uitgaande verbindingen is het niet van belang of de virtuele machine gelijkmatig is verdeeld of niet. Dit scenario heeft voor rang op de andere. Wanneer een openbaar IP-adres wordt gebruikt, gebruikt de virtuele machine het open bare IP-adres voor alle uitgaande stromen.  
+In dit scenario heeft de VM een openbaar IP-adres toegewezen. Wat uitgaande verbindingen betreft, maakt het niet uit of de VM in balans is met de belasting of niet. Dit scenario heeft voorrang op de anderen. Wanneer een openbaar IP-adres wordt gebruikt, gebruikt de VM het openbare IP-adres voor alle uitgaande stromen.  
 
-Een openbaar IP-adres dat is toegewezen aan een virtuele machine is een 1:1-relatie (in plaats van 1: veel) en geïmplementeerd als een stateless 1:1 NAT.  Poort maskering (PAT) wordt niet gebruikt en de virtuele machine heeft alle tijdelijke poorten die beschikbaar zijn voor gebruik.
+Een openbaar IP dat aan een VM is toegewezen, is een 1:1-relatie (in plaats van 1: veel) en geïmplementeerd als een staatloze 1:1 NAT.  Port masquerading (PAT) wordt niet gebruikt en de VM heeft alle tijdelijke poorten beschikbaar voor gebruik.
 
-Als uw toepassing veel uitgaande stromen initieert en u de SNAT-poort uitputtt, kunt u overwegen een [openbaar IP-adres toe te wijzen om de SNAT-beperkingen te beperken](#assignilpip). Bekijk het beheer van de [SNAT-uitputting](#snatexhaust) in zijn geheel.
+Als uw toepassing veel uitgaande stromen initieert en u snat-poortuitputting ondervindt, u overwegen een [openbaar IP-adres toe te wijzen om snat-beperkingen te beperken.](#assignilpip) Review [Het beheer van SNAT-uitputting](#snatexhaust) in zijn geheel.
 
-### <a name="lb"></a>Scenario 2: virtuele machine met taak verdeling zonder openbaar IP-adres
+### <a name="scenario-2-load-balanced-vm-without-a-public-ip-address"></a><a name="lb"></a>Scenario 2: VM met taak in balans brengen zonder openbaar IP-adres
 
-In dit scenario maakt de VM deel uit van een open bare Load Balancer back-end-groep. Aan de virtuele machine is geen openbaar IP-adres toegewezen. De Load Balancer resource moet worden geconfigureerd met een load balancer regel om een koppeling te maken tussen de open bare IP-frontend met de back-end-groep.
+In dit scenario maakt de VM deel uit van een openbare backendpool loadbalancer. De VM heeft geen openbaar IP-adres toegewezen. De load balancer-bron moet zijn geconfigureerd met een regel voor load balancer om een koppeling te maken tussen de openbare IP-frontend met de backendpool.
 
-Als u deze regel configuratie niet voltooit, is het gedrag zoals beschreven in het scenario voor [zelfstandige virtuele machine zonder openbaar IP-adres](#defaultsnat). Het is niet nodig dat de regel een werkende listener in de back-end-pool heeft om de status test te laten slagen.
+Als u deze regelconfiguratie niet voltooit, is het gedrag zoals beschreven in het scenario voor [zelfstandige VM zonder openbaar IP.](#defaultsnat) Het is niet nodig dat de regel een werkende luisteraar in de backend pool heeft om de statussonde te laten slagen.
 
-Wanneer de virtuele machine met taak verdeling een uitgaande stroom maakt, vertaalt Azure het IP-adres van de particuliere bron van de uitgaande stroom naar het open bare IP-adres van de open bare frontend van Load Balancer. Azure gebruikt SNAT om deze functie uit te voeren. Azure gebruikt ook [Pat](#pat) om meerdere privé-IP-adressen achter een openbaar IP-adres te maskeren. 
+Wanneer de vm met belastingsgebalanceerde een uitgaande stroom maakt, vertaalt Azure het IP-adres van de privébron van de uitgaande stroom naar het openbare IP-adres van de frontend van de openbare load balancer. Azure gebruikt SNAT om deze functie uit te voeren. Azure gebruikt [PAT](#pat) ook om meerdere privé-IP-adressen achter een openbaar IP-adres te maskeren. 
 
-Tijdelijke poorten van de open bare IP-adres-frontend van de load balancer worden gebruikt voor het onderscheiden van de afzonderlijke stromen die afkomstig zijn van de virtuele machine. SNAT maakt dynamisch gebruik van [vooraf toegewezen tijdelijke poorten](#preallocatedports) wanneer uitgaande stromen worden gemaakt. In deze context worden de tijdelijke poorten die worden gebruikt voor SNAT de SNAT-poorten genoemd.
+Kortstondige poorten van de openbare IP-adresfrontend van de load balancer worden gebruikt om afzonderlijke stromen van de VM te onderscheiden. SNAT maakt dynamisch gebruik [van vooraf toegewezen efemere poorten](#preallocatedports) wanneer uitgaande stromen worden gemaakt. In deze context worden de kortstondige poorten die voor SNAT worden gebruikt SNAT-poorten genoemd.
 
-SNAT-poorten worden vooraf toegewezen, zoals beschreven in de sectie [over SNAT en Pat](#snat) . Ze zijn een eindige resource die kan worden uitgeput. Het is belang rijk om te begrijpen hoe ze worden [verbruikt](#pat). Als u wilt weten hoe u dit verbruik kunt ontwerpen en zo nodig kunt beperken, raadpleegt u de [beheer SNAT-uitputting](#snatexhaust).
+SNAT-poorten zijn vooraf toegewezen zoals beschreven in de sectie [Understanding SNAT en PAT.](#snat) Ze zijn een eindige bron die kan worden uitgeput. Het is belangrijk om te begrijpen hoe ze [worden geconsumeerd.](#pat) Als u wilt begrijpen hoe u voor dit verbruik ontwerpen en waar nodig beperken, bekijkt u [het beheer van SNAT-uitputting](#snatexhaust).
 
-Wanneer [meerdere open bare IP-adressen zijn gekoppeld aan Load Balancer Basic](load-balancer-multivip-overview.md), zijn een van deze open bare IP-adressen een kandidaat voor uitgaande stromen en wordt er een wille keurige selectie geselecteerd.  
+Wanneer [meerdere openbare IP-adressen zijn gekoppeld aan Load Balancer Basic,](load-balancer-multivip-overview.md)is een van deze openbare IP-adressen een kandidaat voor uitgaande stromen en wordt er een willekeurig geselecteerd.  
 
-Als u de status van uitgaande verbindingen met Load Balancer Basic wilt bewaken, kunt u [Azure monitor-Logboeken gebruiken voor Load Balancer](load-balancer-monitor-log.md) en [waarschuwings gebeurtenis logboeken](load-balancer-monitor-log.md#alert-event-log) om te controleren op berichten over SNAT-poort uitputting.
+Als u de status van uitgaande verbindingen met Load Balancer Basic wilt controleren, u [Azure Monitor-logboeken voor load balancer-](load-balancer-monitor-log.md) en [waarschuwingsgebeurtenislogboeken](load-balancer-monitor-log.md#alert-event-log) gebruiken om te controleren op SNAT-poortuitputtingsberichten.
 
-### <a name="defaultsnat"></a>Scenario 3: zelfstandige VM zonder openbaar IP-adres
+### <a name="scenario-3-standalone-vm-without-a-public-ip-address"></a><a name="defaultsnat"></a>Scenario 3: Zelfstandige VM zonder openbaar IP-adres
 
-In dit scenario maakt de virtuele machine geen deel uit van een open bare Load Balancer groep (en maakt geen deel uit van een interne Standard Load Balancer groep) en waaraan geen openbaar IP-adres is toegewezen. Wanneer de virtuele machine een uitgaande stroom maakt, vertaalt Azure het IP-adres van de privé bron van de uitgaande stroom naar een IP-adres van een open bare bron. Het open bare IP-adres dat voor deze uitgaande stroom wordt gebruikt, kan niet worden geconfigureerd en telt niet op basis van de open bare IP-resource limiet van het abonnement. Dit open bare IP-adres behoort niet tot u en kan niet worden gereserveerd. Als u de virtuele machine of Beschikbaarheidsset of de VM-schaalset opnieuw implementeert, wordt dit open bare IP-adres vrijgegeven en wordt er een nieuw openbaar IP-adres aangevraagd. Gebruik dit scenario niet voor White List IP-adressen. Gebruik in plaats daarvan een van de andere twee scenario's waarin u het uitgaande scenario expliciet declareert en het open bare IP-adres dat moet worden gebruikt voor uitgaande verbindingen.
+In dit scenario maakt de VM geen deel uit van een openbare groep Load Balancer (en maakt geen deel uit van een interne groep standaardlastbalansen) en heeft deze geen openbaar IP-adres toegewezen. Wanneer de VM een uitgaande stroom maakt, vertaalt Azure het IP-adres van de privébron van de uitgaande stroom naar een IP-adres van een openbare bron. Het openbare IP-adres dat voor deze uitgaande stroom wordt gebruikt, is niet configureerbaar en telt niet mee voor de openbare IP-bronlimiet van het abonnement. Dit openbare IP-adres is niet van u en kan niet worden gereserveerd. Als u de VM- of beschikbaarheidsset of de virtuele machineschaalset opnieuw implementeert, wordt dit openbare IP-adres vrijgegeven en wordt een nieuw openbaar IP-adres aangevraagd. Gebruik dit scenario niet voor het whitelisten van IP-adressen. Gebruik in plaats daarvan een van de andere twee scenario's waarbij u expliciet het uitgaande scenario en het openbare IP-adres declareert dat moet worden gebruikt voor uitgaande connectiviteit.
 
 >[!IMPORTANT] 
->Dit scenario is ook van toepassing wanneer __alleen__ een interne basis Load Balancer is gekoppeld. Scenario 3 is __niet beschikbaar__ wanneer een interne Standard Load Balancer is gekoppeld aan een virtuele machine.  U moet een [scenario 1](#ilpip) of [scenario 2](#lb) expliciet maken naast het gebruik van een interne Standard Load Balancer.
+>Dit scenario is ook van toepassing wanneer __alleen__ een interne Basislastbalancer is gekoppeld. Scenario 3 is __niet beschikbaar__ wanneer een interne standaardloadbalancer aan een vm is gekoppeld.  U moet expliciet [scenario 1](#ilpip) of scenario [2](#lb) maken naast het gebruik van een interne StandaardLoad Balancer.
 
-Azure gebruikt SNAT met poort maskering ([Pat](#pat)) om deze functie uit te voeren. Dit scenario is vergelijkbaar met [scenario 2](#lb), maar er is geen controle over het gebruikte IP-adres. Dit is een terugval scenario voor situaties waarin de scenario's 1 en 2 niet bestaan. Dit scenario wordt niet aanbevolen als u het uitgaande adres wilt beheren. Als uitgaande verbindingen een belang rijk onderdeel zijn van uw toepassing, moet u een ander scenario kiezen.
+Azure gebruikt SNAT met poortmaskering[(PAT)](#pat)om deze functie uit te voeren. Dit scenario is vergelijkbaar met [scenario 2,](#lb)behalve dat er geen controle is over het gebruikte IP-adres. Dit is een terugvalscenario voor wanneer scenario's 1 en 2 niet bestaan. We raden dit scenario niet aan als u controle wilt over het uitgaande adres. Als uitgaande verbindingen een essentieel onderdeel van uw toepassing zijn, moet u een ander scenario kiezen.
 
-SNAT-poorten zijn vooraf toegewezen, zoals beschreven in de sectie [over SNAT en Pat](#snat) .  Het aantal Vm's dat een Beschikbaarheidsset deelt, bepaalt welke voortoewijzings laag van toepassing is.  Een zelfstandige virtuele machine zonder een Beschikbaarheidsset is in feite een pool van 1 voor het bepalen van de voor toewijzing (1024 SNAT-poorten). SNAT-poorten zijn een eindige resource die kan worden uitgeput. Het is belang rijk om te begrijpen hoe ze worden [verbruikt](#pat). Als u wilt weten hoe u dit verbruik kunt ontwerpen en zo nodig kunt beperken, raadpleegt u de [beheer SNAT-uitputting](#snatexhaust).
+SNAT-poorten zijn vooraf toegewezen zoals beschreven in de sectie [Understanding SNAT en PAT.](#snat)  Het aantal VM's dat een beschikbaarheidsset deelt, bepaalt welke prelocatielaag van toepassing is.  Een standalone VM zonder beschikbaarheidsset is in feite een pool van 1 voor het bepalen van preallocatie (1024 SNAT-poorten). SNAT-poorten zijn een eindige bron die kan worden uitgeput. Het is belangrijk om te begrijpen hoe ze [worden geconsumeerd.](#pat) Als u wilt begrijpen hoe u voor dit verbruik ontwerpen en waar nodig beperken, bekijkt u [het beheer van SNAT-uitputting](#snatexhaust).
 
-### <a name="combinations"></a>Meerdere, gecombineerde scenario's
+### <a name="multiple-combined-scenarios"></a><a name="combinations"></a>Meerdere, gecombineerde scenario's
 
-U kunt de scenario's die in de voor gaande secties worden beschreven, combi neren om een bepaald resultaat te krijgen. Wanneer er meerdere scenario's aanwezig zijn, geldt een volg orde van prioriteit: [scenario 1](#ilpip) heeft voor rang op [scenario 2](#lb) en [3](#defaultsnat). [Scenario 2](#lb) overschrijft [scenario 3](#defaultsnat).
+U de in de voorgaande secties beschreven scenario's combineren om een bepaald resultaat te bereiken. Wanneer er meerdere scenario's aanwezig zijn, is een rangorde van toepassing: [scenario 1](#ilpip) heeft voorrang op [scenario 2](#lb) en [3](#defaultsnat). [Scenario 2](#lb) overschrijft [scenario 3](#defaultsnat).
 
-Een voor beeld is een Azure Resource Manager-implementatie waarbij de toepassing intensief gebruikmaakt van uitgaande verbindingen met een beperkt aantal doelen, maar ook inkomende stromen ontvangt via een Load Balancer front-end. In dit geval kunt u scenario 1 en 2 combi neren voor vrijs telling. Zie voor aanvullende patronen [beheer van SNAT-uitputting](#snatexhaust).
+Een voorbeeld is een Azure Resource Manager-implementatie waarbij de toepassing sterk afhankelijk is van uitgaande verbindingen naar een beperkt aantal bestemmingen, maar ook inkomende stromen ontvangt via een frontend van load balancer. In dit geval u scenario's 1 en 2 combineren voor verlichting. Voor aanvullende patronen, bekijk [het beheer van SNAT-uitputting](#snatexhaust).
 
-### <a name="multife"></a>Meerdere frontends voor uitgaande stromen
+### <a name="multiple-frontends-for-outbound-flows"></a><a name="multife"></a>Meerdere frontends voor uitgaande stromen
 
-#### <a name="standard-load-balancer"></a>Standard Load Balancer
+#### <a name="standard-load-balancer"></a>Standaard load balancer
 
-Standard Load Balancer gebruikt alle kandidaten voor uitgaande stromen tegelijk wanneer [meerdere (open bare) IP-frontends](load-balancer-multivip-overview.md) aanwezig zijn. Elke frontend vermenigvuldigt het aantal beschik bare, vooraf toegewezen SNAT-poorten als een taakverdelings regel is ingeschakeld voor uitgaande verbindingen.
+Standard Load Balancer gebruikt alle kandidaten voor uitgaande stromen op hetzelfde moment dat [meerdere (openbare) IP frontends](load-balancer-multivip-overview.md) aanwezig zijn. Elke frontend vermenigvuldigt het aantal beschikbare vooraf toegewezen SNAT-poorten als een regel voor het balanceren van de last is ingeschakeld voor uitgaande verbindingen.
 
-U kunt ervoor kiezen om een frontend-IP-adres dat wordt gebruikt voor uitgaande verbindingen, te onderdrukken met een nieuwe regel optie voor taak verdeling:
+U ervoor kiezen om een IP-adres aan de frontend te onderdrukken voor uitgaande verbindingen met een nieuwe taakverdelingsregel:
 
 ```json    
       "loadBalancingRules": [
@@ -105,164 +105,163 @@ U kunt ervoor kiezen om een frontend-IP-adres dat wordt gebruikt voor uitgaande 
       ]
 ```
 
-Normaal gesp roken wordt de optie `disableOutboundSnat` standaard ingesteld op _False_ en geeft dit aan dat deze regel verloopt uitgaande SNAT voor de gekoppelde virtuele machines in de back-endadresgroep van de taakverdelings regel. De `disableOutboundSnat` kan worden gewijzigd in _True_ om te voor komen dat Load Balancer het gekoppelde frontend-IP-adres gebruikt voor uitgaande verbindingen voor de virtuele machines in de back-endserver van deze taakverdelings regel.  Daarnaast kunt u ook nog steeds een specifiek IP-adres voor uitgaande stromen opgeven, zoals wordt beschreven in [meerdere, gecombineerde scenario's](#combinations) .
+Normaal gesproken `disableOutboundSnat` is de optie standaard _false_ en betekent dat deze regel uitgaande SNAT programmeert voor de bijbehorende VM's in de backendpool van de regel voor het balanceren van de last. Het `disableOutboundSnat` kan worden gewijzigd in _true_ om te voorkomen dat Load Balancer het bijbehorende FRONTEnd IP-adres gebruikt voor uitgaande verbindingen voor de VM's in de backendpool van deze regel voor taakverdeling.  En u ook nog steeds een specifiek IP-adres aanwijzen voor uitgaande stromen zoals beschreven in [meerdere, gecombineerde scenario's.](#combinations)
 
-#### <a name="load-balancer-basic"></a>Load Balancer Basic
+#### <a name="load-balancer-basic"></a>Basisbalanssaldobasis
 
-Load Balancer Basic kiest voor een eenmalige front-end voor uitgaande stromen wanneer [meerdere (open bare) IP-frontends](load-balancer-multivip-overview.md) kandidaten voor uitgaande stromen zijn. Deze selectie kan niet worden geconfigureerd. u kunt het selectie algoritme het beste wille keurig beschouwen. U kunt een specifiek IP-adres voor uitgaande stromen opgeven, zoals beschreven in [meerdere, gecombineerde scenario's](#combinations).
+Load Balancer Basic kiest één frontend voor uitgaande stromen wanneer [meerdere (openbare) IP frontends](load-balancer-multivip-overview.md) kandidaten zijn voor uitgaande stromen. Deze selectie is niet configureerbaar en u moet het selectiealgoritme als willekeurig beschouwen. U een specifiek IP-adres aanwijzen voor uitgaande stromen zoals beschreven in [meerdere, gecombineerde scenario's.](#combinations)
 
-### <a name="az"></a>Beschikbaarheidszones
+### <a name="availability-zones"></a><a name="az"></a>Beschikbaarheidszones
 
-Wanneer u [Standard Load Balancer met Beschikbaarheidszones](load-balancer-standard-availability-zones.md)gebruikt, kan de zone-redundante front-ends zone-redundante uitgaande SNAT-verbindingen bieden en kan er met de SNAT-programmering een zone storing optreden.  Wanneer zonegebonden-front-ends worden gebruikt, delen uitgaande SNAT-verbindingen verspreiding met de zone waartoe ze behoren.
+Bij het gebruik van [Standard Load Balancer met Availability Zones](load-balancer-standard-availability-zones.md)kunnen zoneredundante frontends zoneredundante uitgaande SNAT-verbindingen bieden en overleeft SNAT-programmering zonefouten.  Wanneer zonale frontends worden gebruikt, delen uitgaande SNAT-verbindingen het lot met de zone waartoe ze behoren.
 
-## <a name="snat"></a>Meer informatie over SNAT en PAT
+## <a name="understanding-snat-and-pat"></a><a name="snat"></a>Inzicht in SNAT en PAT
 
-### <a name="pat"></a>Poort maskering SNAT (PAT)
+### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Port maskerading SNAT (PAT)
 
-Wanneer een open bare Load Balancer resource is gekoppeld aan VM-exemplaren, wordt elke uitgaande verbindings bron herschreven. De bron wordt herschreven van de privé-IP-adres ruimte van het virtuele netwerk naar het open bare IP-adres van de load balancer. In de open bare IP-adres ruimte moet de 5-tuple van de stroom (bron-IP-adres, bron poort, IP-transport protocol, doel-IP-adres, doel poort) uniek zijn.  Het SNAT-poort masker kan worden gebruikt met TCP-of UDP IP-protocollen.
+Wanneer een openbare Load Balancer-bron is gekoppeld aan VM-exemplaren, wordt elke uitgaande verbindingsbron opnieuw geschreven. De bron wordt herschreven van de private IP-adresruimte van het virtuele netwerk naar het frontend Openbaar IP-adres van de load balancer. In de openbare IP-adresruimte moet de 5-tuple van de stroom (bron-IP-adres, bronpoort, IP-transportprotocol, bestemmings-IP-adres, doelpoort) uniek zijn.  Port masquerading SNAT kan worden gebruikt met TCP- of UDP IP-protocollen.
 
-Tijdelijke poorten (SNAT-poorten) worden gebruikt om dit te verhelpen na het herschrijven van het IP-adres van de privé bron, omdat meerdere stromen afkomstig zijn van één openbaar IP-adres. Met het SNAT-algoritme voor poort maskering worden de SNAT-poorten anders toegewezen voor UDP versus TCP.
+Efemere ports (SNAT-poorten) worden gebruikt om dit te bereiken na het herschrijven van het IP-adres van de privébron, omdat meerdere stromen afkomstig zijn van één openbaar IP-adres. Het SNAT-algoritme voor de poort maskeren wijst SNAT-poorten anders toe voor UDP versus TCP.
 
-#### <a name="tcp"></a>TCP-SNAT-poorten
+#### <a name="tcp-snat-ports"></a><a name="tcp"></a>TCP SNAT-poorten
 
-Eén SNAT-poort wordt per stroom verbruikt naar één doel-IP-adres, poort. Voor meerdere TCP-stromen naar hetzelfde doel-IP-adres, dezelfde poort en hetzelfde protocol gebruikt elke TCP-stroom één SNAT-poort. Dit zorgt ervoor dat de stromen uniek zijn wanneer ze afkomstig zijn uit hetzelfde open bare IP-adres en naar hetzelfde doel-IP-adres, dezelfde poort en hetzelfde protocol gaan. 
+Eén SNAT-poort wordt per stroom verbruikt naar één IP-adres voor één bestemming, poort. Voor meerdere TCP-stromen naar hetzelfde doel-IP-adres, -poort en -protocol verbruikt elke TCP-stroom één SNAT-poort. Dit zorgt ervoor dat de stromen uniek zijn wanneer ze afkomstig zijn van hetzelfde openbare IP-adres en naar hetzelfde doel IP-adres, poort en protocol gaan. 
 
-Meerdere stromen, elk naar een ander doel-IP-adres, poort en protocol, delen één SNAT-poort. Het doel-IP-adres, de poort en het Protocol maken stroom uniek zonder dat er extra bron poorten nodig zijn om stromen te onderscheiden van de open bare IP-adres ruimte.
+Meerdere stromen, elk naar een ander doel-IP-adres, poort en protocol, delen één SNAT-poort. Het doel-IP-adres, de poort en het protocol maken stromen uniek zonder dat extra bronpoorten nodig zijn om stromen in de openbare IP-adresruimte te onderscheiden.
 
-#### <a name="udp"></a>UDP SNAT-poorten
+#### <a name="udp-snat-ports"></a><a name="udp"></a>UDP SNAT-poorten
 
-UDP SNAT-poorten worden beheerd door een ander algoritme dan TCP-SNAT-poorten.  Load Balancer gebruikt een algoritme dat wordt aangeduid als ' Port-restricted kegel NAT ' voor UDP.  Er wordt één SNAT-poort verbruikt voor elke stroom, ongeacht het doel-IP-adres, de poort.
+UDP SNAT-poorten worden beheerd door een ander algoritme dan TCP SNAT-poorten.  Load Balancer maakt gebruik van een algoritme dat bekend staat als "poortbeperkte kegel NAT" voor UDP.  Voor elke stroom wordt één SNAT-poort verbruikt, ongeacht het ip-adres van de bestemming, de poort.
 
-#### <a name="snat-port-reuse"></a>SNAT-poort opnieuw gebruiken
+#### <a name="snat-port-reuse"></a>Hergebruik van SNAT-poort
 
-Zodra een poort is vrijgegeven, kan de poort zo nodig opnieuw worden gebruikt.  U kunt SNAT-poorten beschouwen als een reeks van laag naar Maxi maal beschikbaar voor een bepaald scenario en de eerste beschik bare SNAT-poort wordt gebruikt voor nieuwe verbindingen. 
+Zodra een poort is vrijgegeven, is de poort beschikbaar voor hergebruik als dat nodig is.  U SNAT-poorten zien als een reeks van laag naar hoogste beschikbaar voor een bepaald scenario en de eerste beschikbare SNAT-poort wordt gebruikt voor nieuwe verbindingen. 
  
 #### <a name="exhaustion"></a>Uitputting
 
-Wanneer de SNAT-poort resources zijn uitgeput, mislukken uitgaande stromen totdat bestaande stromen van SNAT-poorten worden vrijgegeven. Load Balancer overschrijden de SNAT-poorten wanneer de stroom wordt gesloten en gebruikt een [time-out van 4 minuten](#idletimeout) voor het vrijmaken van de SNAT-poorten van niet-actieve stromen.
+Wanneer SNAT-poortbronnen zijn uitgeput, mislukken uitgaande stromen totdat bestaande stromen SNAT-poorten vrijgeven. Load Balancer claimt SNAT-poorten wanneer de stroom wordt gesloten en gebruikt een [idle time-out van 4 minuten](#idletimeout) voor het terugwinnen van SNAT-poorten uit niet-actieve stromen.
 
-UDP SNAT-poorten lopen doorgaans veel sneller dan TCP SNAT-poorten vanwege het verschil in gebruikte algoritmen. U moet de test met dit verschil ontwerpen en schalen.
+UDP SNAT-poorten geven over het algemeen veel sneller uit dan TCP SNAT-poorten vanwege het verschil in gebruikte algoritme. U moet ontwerpen en schalen test met dit verschil in het achterhoofd.
 
-Raadpleeg de sectie [SNAT beheren](#snatexhaust) als u patronen wilt beperken die vaak leiden tot een SNAT-poort uitputting.
+Bekijk de sectie [SNAT beheren](#snatexhaust) voor patronen om omstandigheden te beperken die gewoonlijk leiden tot snat-poortuitputting.
 
-### <a name="preallocatedports"></a>Tijdelijke poort voortoewijzing voor poort maskering SNAT (PAT)
+### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Kortstondige havenprealalalalvoortoewijzing voor havenmaskerading SNAT (PAT)
 
-Azure gebruikt een algoritme om te bepalen hoeveel vooraf toegewezen SNAT-poorten beschikbaar zijn op basis van de grootte van de back-end-pool wanneer poort maskering SNAT ([Pat](#pat)) wordt gebruikt. SNAT-poorten zijn tijdelijke poorten die beschikbaar zijn voor een bepaald openbaar IP-bron adres.
+Azure gebruikt een algoritme om het aantal vooraf toegewezen SNAT-poorten te bepalen dat beschikbaar is op basis van de grootte van de backendpool bij het gebruik van poortmaskerende SNAT[(PAT).](#pat) SNAT-poorten zijn tijdelijke poorten die beschikbaar zijn voor een bepaald openbaar IP-bronadres.
 
-Hetzelfde aantal SNAT-poorten wordt vooraf toegewezen voor UDP en TCP, respectievelijk onafhankelijk per IP-transport protocol.  Het SNAT-poort gebruik is echter anders, afhankelijk van het feit of de stroom UDP of TCP is.
+Hetzelfde aantal SNAT-poorten wordt vooraf toegewezen voor respectievelijk UDP en TCP en wordt onafhankelijk verbruikt per IP-transportprotocol.  Het SNAT-poortgebruik is echter anders, afhankelijk van of de stroom UDP of TCP is.
 
 >[!IMPORTANT]
->Standaard-SKU SNAT-programmering is per IP-transport protocol en afgeleid van de taakverdelings regel.  Als er slechts een regel voor TCP-taak verdeling bestaat, is SNAT alleen beschikbaar voor TCP. Als u alleen een TCP-taakverdelings regel hebt en uitgaand SNAT voor UDP nodig hebt, maakt u een UDP-taakverdelings regel van dezelfde frontend naar dezelfde back-end-groep.  Hiermee wordt SNAT-programmering geactiveerd voor UDP.  Een werk regel of status test is niet vereist.  Basic SKU SNAT always Program ma's SNAT voor IP-transport protocol, ongeacht het transport protocol dat is opgegeven in de taakverdelings regel.
+>Standaard SKU SNAT-programmering is per IP-transportprotocol en afgeleid van de regel voor het balanceren van de last.  Als er alleen een TCP-regel voor taakverdeling bestaat, is SNAT alleen beschikbaar voor TCP. Als u alleen een TCP-regel voor taakverdeling hebt en uitgaande SNAT voor UDP nodig hebt, maakt u een UDP-regel voor taakverdeling van dezelfde frontend naar dezelfde backendpool.  Dit zal leiden tot SNAT programmering voor UDP.  Een werkregel of gezondheidssonde is niet vereist.  Basic SKU SNAT programmeert altijd SNAT voor beide IP-transportprotocol's, ongeacht het transportprotocol dat is opgegeven in de regel voor het balanceren van de lading.
 
-Azure wijst SNAT-poorten vooraf toe aan de IP-configuratie van de NIC van elke virtuele machine. Wanneer een IP-configuratie wordt toegevoegd aan de pool, worden de SNAT-poorten vooraf toegewezen voor deze IP-configuratie op basis van de grootte van de back-endserver. Wanneer uitgaande stromen worden gemaakt, gebruikt [Pat](#pat) dynamisch (Maxi maal de vooraf toegewezen limiet) en worden deze poorten vrijgegeven wanneer de stroom wordt gesloten of er [time-outs voor inactiviteit](#idletimeout) optreden.
+Azure wijst SNAT-poorten vooraf toe aan de IP-configuratie van de NIC van elke VM. Wanneer een IP-configuratie aan de groep wordt toegevoegd, worden de SNAT-poorten vooraf toegewezen voor deze IP-configuratie op basis van de grootte van de backendpool. Wanneer uitgaande stromen worden gemaakt, verbruikt [PAT](#pat) dynamisch (tot de vooraf toegewezen limiet) en geeft deze poorten vrij wanneer de stroom wordt gesloten of [idle time-outs](#idletimeout) plaatsvinden.
 
-In de volgende tabel ziet u de SNAT-poort voortoewijzingen voor lagen van back-endadresgroep-Pools:
+In de volgende tabel worden de voortoewijzingen van de SNAT-poort voor lagen van backendpoolgroottes weergegeven:
 
-| Pool grootte (VM-exemplaren) | Vooraf toegewezen SNAT-poorten per IP-configuratie|
+| Poolgrootte (VM-exemplaren) | Vooraf toegewezen SNAT-poorten per IP-configuratie|
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 801-1000 | 32 |
+| 801-1,000 | 32 |
 
 >[!NOTE]
-> Wanneer u Standard Load Balancer met [meerdere frontends](load-balancer-multivip-overview.md)gebruikt, vermenigvuldigt elk frontend-IP-adres het aantal beschik bare SNAT-poorten in de vorige tabel. Bijvoorbeeld, een back-end-pool van 50 VM met 2 taakverdelings regels, elk met een afzonderlijk frontend-IP-adres, gebruikt 2048 (2x 1024) SNAT-poorten per IP-configuratie. Bekijk de Details voor [meerdere frontends](#multife).
+> Bij het gebruik van Standard Load Balancer met [meerdere frontends](load-balancer-multivip-overview.md)vermenigvuldigt elk IP-adres aan de frontend het aantal beschikbare SNAT-poorten in de vorige tabel. Een backendpool van 50 VM's met 2 load balancing rules, elk met een apart frontend IP-adres, gebruikt bijvoorbeeld 2048 (2x 1024) SNAT-poorten per IP-configuratie. Zie details voor [meerdere frontends](#multife).
 
-Houd er rekening mee dat het aantal beschik bare SNAT-poorten niet rechtstreeks naar het aantal stromen kan worden vertaald. Eén SNAT-poort kan opnieuw worden gebruikt voor meerdere unieke bestemmingen. Poorten worden alleen gebruikt als het nodig is om stromen uniek te maken. Raadpleeg de sectie over het [beheren van deze exhaustible-resource](#snatexhaust) en de sectie met [Pat](#pat)voor instructies voor het ontwerpen en beperken van problemen.
+Houd er rekening mee dat het aantal beschikbare SNAT-poorten niet direct wordt vertaald naar het aantal stromen. Eén SNAT-poort kan worden hergebruikt voor meerdere unieke bestemmingen. Poorten worden alleen verbruikt als het nodig is om stromen uniek te maken. Raadpleeg voor ontwerp- en mitigatierichtlijnen het gedeelte over [het beheren van deze uitputtende bron](#snatexhaust) en de sectie waarin [PAT](#pat)wordt beschreven.
 
-Het wijzigen van de grootte van uw back-end-pool kan invloed hebben op sommige van uw vastgelegde stromen. Als de grootte van de back-end-groep toeneemt en overschakelt naar de volgende laag, worden de helft van uw vooraf toegewezen SNAT-poorten vrijgemaakt tijdens de overgang naar de volgende grotere back-endadresgroep. Stromen die zijn gekoppeld aan een vrijgestelde SNAT-poort, worden getimed en moeten opnieuw worden ingesteld. Als er een nieuwe stroom wordt gedaan, wordt de stroom onmiddellijk uitgevoerd zolang er vooraf toegewezen poorten beschikbaar zijn.
+Als u de grootte van uw backendpool wijzigt, kan dit gevolgen hebben voor sommige van uw gevestigde stromen. Als de grootte van de backendpool toeneemt en overgaat naar de volgende laag, wordt de helft van de vooraf toegewezen SNAT-poorten teruggewonnen tijdens de overgang naar de volgende grotere backendpoollaag. Stromen die zijn gekoppeld aan een teruggewonnen SNAT-poort, krijgen een time-out en moeten opnieuw worden ingesteld. Als een nieuwe stroom wordt geprobeerd, zal de stroom onmiddellijk slagen zolang vooraf toegewezen poorten beschikbaar zijn.
 
-Als de back-end-pool grootte vermindert en overgangen naar een lagere laag, neemt het aantal beschik bare SNAT-poorten toe. In dit geval worden bestaande toegewezen SNAT-poorten en de bijbehorende stromen niet beïnvloed.
+Als de grootte van de backendpool afneemt en overgaat naar een lagere laag, neemt het aantal beschikbare SNAT-poorten toe. In dit geval worden bestaande toegewezen SNAT-poorten en hun respectieve stromen niet beïnvloed.
 
-Toewijzing van SNAT-poorten is een specifiek IP-transport protocol (TCP en UDP worden afzonderlijk onderhouden) en worden vrijgegeven onder de volgende voor waarden:
+SNAT-poorten toewijzingen zijn IP-transportprotocol specifiek (TCP en UDP worden afzonderlijk onderhouden) en worden vrijgegeven onder de volgende voorwaarden:
 
-### <a name="tcp-snat-port-release"></a>TCP SNAT-poort release
+### <a name="tcp-snat-port-release"></a>TCP SNAT-poortrelease
 
-- Als de server/client FINACK verzendt, wordt de SNAT-poort na 240 seconden vrijgegeven.
+- Als een van beide server/client FINACK verzendt, wordt de SNAT-poort na 240 seconden vrijgegeven.
 - Als een RST wordt gezien, wordt de SNAT-poort na 15 seconden vrijgegeven.
-- Als er een time-out voor inactiviteit is bereikt, wordt de poort vrijgegeven.
+- Als de niet-actieve time-out is bereikt, wordt de poort vrijgegeven.
 
-### <a name="udp-snat-port-release"></a>UDP SNAT-poort release
+### <a name="udp-snat-port-release"></a>UDP SNAT-poortrelease
 
-- Als er een time-out voor inactiviteit is bereikt, wordt de poort vrijgegeven.
+- Als de niet-actieve time-out is bereikt, wordt de poort vrijgegeven.
 
-## <a name="problemsolving"></a>Probleem oplossen 
+## <a name="problem-solving"></a><a name="problemsolving"></a>Probleemoplossing 
 
-Deze sectie is bedoeld om te helpen bij het verminderen van de SNAT-uitputting en die kan optreden bij uitgaande verbindingen in Azure.
+Deze sectie is bedoeld om snat-uitputting te beperken en dat kan optreden met uitgaande verbindingen in Azure.
 
-### <a name="snatexhaust"></a>Poort uitputting van SNAT (PAT) beheren
-[Tijdelijke poorten](#preallocatedports) die worden gebruikt voor [Pat](#pat) zijn een exhaustible-resource, zoals beschreven in [zelfstandige virtuele machine zonder openbaar IP-adres](#defaultsnat) en [VM met gelijke taak verdeling zonder openbaar IP-adres](#lb).
+### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Beheer van SNAT (PAT) poortuitputting
+[Kortstondige poorten](#preallocatedports) die worden gebruikt voor [PAT](#pat) zijn een uitputtende bron, zoals beschreven in Standalone VM zonder een [openbaar IP-adres](#defaultsnat) en [load-balanced VM zonder een openbaar IP-adres](#lb).
 
-Als u weet dat u een groot aantal uitgaande TCP-of UDP-verbindingen met hetzelfde doel-IP-adres en dezelfde poort wilt initiëren, kunt u zien dat uitgaande verbindingen mislukken of worden aanbevolen door ondersteuning te bieden voor de SNAT-poorten (vooraf toegewezen [tijdelijke poorten](#preallocatedports) die worden gebruikt door [Pat](#pat)), hebt u verschillende algemene opties voor risico beperking. Bekijk deze opties en beslis wat er beschikbaar en beste is voor uw scenario. Het is mogelijk dat een of meer informatie kan helpen bij het beheren van dit scenario.
+Als u weet dat u veel uitgaande TCP- of UDP-verbindingen initieert naar hetzelfde doel-IP-adres en dezelfde poort, en u geen uitgaande verbindingen observeert of wordt geadviseerd door ondersteuning dat u SNAT-poorten uitvermoeiendt (vooraf toegewezen [efemere poorten](#preallocatedports) die door [PAT](#pat)worden gebruikt), hebt u verschillende algemene mitigatieopties. Bekijk deze opties en bepaal wat er beschikbaar en het beste is voor uw scenario. Het is mogelijk dat een of meer kan helpen bij het beheren van dit scenario.
 
-Als u problemen ondervindt met het gedrag van uitgaande verbindingen, kunt u IP-stack statistieken (netstat) gebruiken. Het kan ook handig zijn om verbindings gedrag te observeren met behulp van pakket opnamen. U kunt deze pakket opnames uitvoeren in het gast besturingssysteem van uw exemplaar of gebruikmaken van [Network Watcher voor pakket opname](../network-watcher/network-watcher-packet-capture-manage-portal.md).
+Als u problemen ondervindt bij het begrijpen van het uitgaande verbindingsgedrag, u IP-stackstatistieken (netstat) gebruiken. Of het kan handig zijn om verbindingsgedragingen te observeren met behulp van pakketopnames. U deze pakketopnames uitvoeren in het gastbesturingssysteem van uw instantie of Network Watcher gebruiken [voor het vastleggen van pakketten.](../network-watcher/network-watcher-packet-capture-manage-portal.md)
 
-#### <a name="connectionreuse"></a>Wijzig de toepassing om verbindingen opnieuw te gebruiken 
-U kunt de vraag beperken voor tijdelijke poorten die worden gebruikt voor SNAT door verbindingen in uw toepassing opnieuw te gebruiken. Dit geldt met name voor protocollen zoals HTTP/1.1, waarbij hergebruik van verbindingen de standaard instelling is. En andere protocollen die gebruikmaken van HTTP als Trans Port (bijvoorbeeld REST), kunnen op hun beurt profiteren van. 
+#### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>De toepassing wijzigen om verbindingen opnieuw te gebruiken 
+U de vraag naar tijdelijke poorten die voor SNAT worden gebruikt, verminderen door verbindingen in uw toepassing opnieuw te gebruiken. Dit geldt met name voor protocollen zoals HTTP/1.1, waarbij hergebruik van verbindingen de standaardis. En andere protocollen die HTTP gebruiken als hun transport (bijvoorbeeld REST) kunnen op hun beurt profiteren. 
 
-Hergebruik is altijd beter dan afzonderlijke, atomische TCP-verbindingen voor elke aanvraag. Het opnieuw gebruiken van resultaten in meer uitvoerende, zeer efficiënte TCP-trans acties.
+Hergebruik is altijd beter dan individuele, atomaire TCP-verbindingen voor elke aanvraag. Hergebruik resulteert in meer performante, zeer efficiënte TCP-transacties.
 
-#### <a name="connection pooling"></a>De toepassing wijzigen voor het gebruik van groepsgewijze verbindingen
-U kunt een schema voor groepsgewijze verbindingen gebruiken in uw toepassing, waarbij aanvragen intern worden gedistribueerd via een vaste set verbindingen (waarbij elk gebruik waar mogelijk wordt gebruikt). Dit schema beperkt het aantal tijdelijke poorten dat in gebruik is en maakt een meer voorspel bare omgeving. Dit schema kan ook de door Voer van aanvragen verhogen door meerdere gelijktijdige bewerkingen toe te staan wanneer één verbinding wordt geblokkeerd bij het beantwoorden van een bewerking.  
+#### <a name="modify-the-application-to-use-connection-pooling"></a><a name="connection pooling"></a>De toepassing wijzigen om verbindingspooling te gebruiken
+U een verbindingspoolingschema gebruiken in uw toepassing, waarbij aanvragen intern worden verdeeld over een vaste set verbindingen (waar mogelijk opnieuw worden gebruikt). Deze regeling beperkt het aantal tijdelijke poorten in gebruik en creëert een meer voorspelbare omgeving. Deze regeling kan ook de doorvoer van aanvragen verhogen door meerdere gelijktijdige bewerkingen toe te staan wanneer één verbinding het antwoord van een bewerking blokkeert.  
 
-Verbindings groeperingen kunnen al bestaan in het Framework dat u gebruikt voor het ontwikkelen van uw toepassing of de configuratie-instellingen voor uw toepassing. U kunt groepsgewijze verbindingen combi neren met het opnieuw gebruiken van verbindingen. Uw meerdere aanvragen verbruiken vervolgens een vast, voorspelbaar aantal poorten op hetzelfde doel-IP-adres en dezelfde poort. De aanvragen profiteren ook van efficiënt gebruik van TCP-trans acties waarbij de latentie en het resource gebruik worden verminderd. UDP-trans acties kunnen ook profiteren van het voor deel, omdat het beheer van het aantal UDP-stromen mogelijk is om de uitlaat omstandigheden te voor komen en het SNAT-poort gebruik te beheren.
+Er bestaat mogelijk al verbindingspooling binnen het framework dat u gebruikt om uw toepassing of de configuratie-instellingen voor uw toepassing te ontwikkelen. U het bundelen van verbindingen combineren met het hergebruik van verbindingen. Uw meerdere aanvragen verbruiken vervolgens een vast, voorspelbaar aantal poorten naar hetzelfde doel-IP-adres en dezelfde poort. De aanvragen profiteren ook van een efficiënt gebruik van TCP-transacties, waardoor latentie en resourcegebruik worden verminderd. UDP-transacties kunnen ook hiervan profiteren, omdat het beheren van het aantal UDP-stromen op zijn beurt uitlaatomstandigheden kan vermijden en het gebruik van de SNAT-poort kan beheren.
 
-#### <a name="retry logic"></a>De toepassing wijzigen voor het gebruik van minder agressieve nieuwe logica
-Wanneer [tijdelijke poorten](#preallocatedports) die worden gebruikt voor [Pat](#pat) , worden uitgeput of er fouten in de toepassing optreden, worden pogingen voor agressieve of brute Forces zonder onverwachting en uitstel Logic uitputting veroorzaakt of blijven ze behouden. U kunt de vraag naar tijdelijke poorten verminderen door een minder agressieve pogings logica te gebruiken. 
+#### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a><a name="retry logic"></a>De toepassing wijzigen om minder agressieve logica voor nieuwe try's te gebruiken
+Wanneer [vooraf toegewezen efemere poorten](#preallocatedports) die worden gebruikt voor [PAT](#pat) zijn uitgeput of toepassing fouten optreden, agressieve of brute kracht pogingen zonder verval en backoff logica veroorzaken uitputting optreden of aanhouden. U de vraag naar tijdelijke poorten verminderen door een minder agressieve logica voor nieuwe try te gebruiken. 
 
-Tijdelijke poorten hebben een time-out van 4 minuten (niet aanpasbaar). Als de nieuwe pogingen te agressief zijn, heeft de uitputting geen mogelijkheid om zichzelf zelf te wissen. Daarom is het een belang rijk onderdeel van het ontwerp om te overwegen hoe--en hoe vaak uw toepassingen nieuwe pogingen doen.
+Kortstondige poorten hebben een idle time-out van 4 minuten (niet instelbaar). Als de pogingen te agressief zijn, heeft de uitputting geen kans om op te helderen op zijn eigen. Daarom is het een essentieel onderdeel van het ontwerp, gezien hoe - en hoe vaak - uw toepassing transacties opnieuw indient.
 
-#### <a name="assignilpip"></a>Een openbaar IP-adres toewijzen aan elke VM
-Als u een openbaar IP-adres toewijst, wordt uw scenario gewijzigd in [een open bare IP voor een VM](#ilpip). Alle tijdelijke poorten van het open bare IP-adres dat voor elke VM worden gebruikt, zijn beschikbaar voor de VM. (In tegens telling tot scenario's waarbij tijdelijke poorten van een openbaar IP-adres worden gedeeld met alle virtuele machines die zijn gekoppeld aan de bijbehorende back-end-groep) Er zijn zaken die u moet overwegen, zoals de extra kosten van open bare IP-adressen en de mogelijke impact van White List op een groot aantal afzonderlijke IP-adressen.
+#### <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>Een openbaar IP toewijzen aan elke virtuele machine
+Als u een openbaar IP-adres toewijs, wordt uw scenario gewijzigd in [Openbaar IP in een vm.](#ilpip) Alle tijdelijke poorten van het openbare IP-adres die voor elke VM worden gebruikt, zijn beschikbaar voor de VM. (In tegenstelling tot scenario's waarin kortstondige poorten van een openbaar IP worden gedeeld met alle VM's die zijn gekoppeld aan de desbetreffende backendpool.) Er zijn afwegingen te overwegen, zoals de extra kosten van openbare IP-adressen en de mogelijke impact van het whitelisten van een groot aantal individuele IP-adressen.
 
 >[!NOTE] 
->Deze optie is niet beschikbaar voor Web Worker-rollen.
+>Deze optie is niet beschikbaar voor webworkerrollen.
 
-#### <a name="multifesnat"></a>Meerdere frontends gebruiken
+#### <a name="use-multiple-frontends"></a><a name="multifesnat"></a>Meerdere frontends gebruiken
 
-Wanneer u open bare Standard Load Balancer gebruikt, wijst u [meerdere frontend-IP-adressen toe voor uitgaande verbindingen](#multife) en [vermenigvuldigt u het aantal beschik bare SNAT-poorten](#preallocatedports).  Een front-end-IP-configuratie, regel en back-end-pool maken om de programmering van SNAT aan het open bare IP-adres van de frontend te activeren.  De regel hoeft niet te functioneren en een status test hoeft niet te slagen.  Als u meerdere front-ends gebruikt voor inkomend verkeer (in plaats van alleen voor uitgaand verkeer), moet u aangepaste status tests gebruiken om de betrouw baarheid te garanderen.
+Wanneer u openbare StandaardloadBalancer gebruikt, wijst u [meerdere frontend IP-adressen](#multife) toe voor uitgaande verbindingen en [vermenigvuldigt u het aantal beschikbare SNAT-poorten.](#preallocatedports)  Maak een frontend IP-configuratie, regel en backend pool om de programmering van SNAT te activeren naar het openbare IP-adres van de frontend.  De regel hoeft niet te functioneren en een gezondheidssonde hoeft niet te slagen.  Als u meerdere frontends ook voor binnenkomende (in plaats van alleen voor uitgaande) gebruikt, moet u aangepaste statussondes goed gebruiken om betrouwbaarheid te garanderen.
 
 >[!NOTE]
->In de meeste gevallen is de uitputting van de SNAT-poorten een teken van een slecht ontwerp.  Zorg ervoor dat u weet waarom u poorten uitgeput voordat u meer frontends gebruikt om SNAT-poorten toe te voegen.  Het kan zijn dat u een probleem maskeert dat later kan optreden.
+>In de meeste gevallen is uitputting van SNAT-poorten een teken van slecht ontwerp.  Zorg ervoor dat u begrijpt waarom u poorten uitvermoeiend voordat u meer frontends gebruikt om SNAT-poorten toe te voegen.  U een probleem maskeren dat kan leiden tot mislukking later.
 
-#### <a name="scaleout"></a>Uitschalen
+#### <a name="scale-out"></a><a name="scaleout"></a>Uitschalen
 
-Vooraf [toegewezen poorten](#preallocatedports) worden toegewezen op basis van de grootte van de back-endserver en gegroepeerd in lagen om onderbrekingen te minimaliseren wanneer een aantal poorten opnieuw moet worden toegewezen om de eerstvolgende grotere laag van de back-endadresgroep te maken.  Mogelijk hebt u de mogelijkheid om de intensiteit van het SNAT-poort gebruik voor een bepaalde frontend te verhogen door de back-endadresgroep te schalen naar de maximale grootte voor een bepaalde laag.  Dit vereist dat de toepassing efficiënt kan worden geschaald.
+[Vooraf toegewezen poorten](#preallocatedports) worden toegewezen op basis van de grootte van de backendpool en gegroepeerd in lagen om verstoringte minimaliseren wanneer sommige poorten moeten worden herverdeeld om de volgende grotere backendpoolgroottelaag te kunnen huisvesten.  U hebt mogelijk een optie om de intensiteit van het SNAT-poortgebruik voor een bepaalde frontend te verhogen door uw backendpool te schalen naar de maximale grootte voor een bepaalde laag.  Dit vereist dat de toepassing efficiënt wordt opgeschaald.
 
-Twee virtuele machines in de back-end-pool zouden bijvoorbeeld 1024 SNAT-poorten beschikbaar hebben per IP-configuratie, waardoor er een totaal van 2048 SNAT-poorten voor de implementatie mogelijk is.  Als de implementatie moet worden verhoogd tot 50 virtuele machines, hoewel het aantal vooraf toegewezen poorten constant per virtuele machine blijft, kunnen er in totaal 51.200 (50 x 1024) SNAT-poorten worden gebruikt door de implementatie.  Als u uw implementatie wilt uitschalen, controleert u het aantal [vooraf toegewezen poorten](#preallocatedports) per laag om ervoor te zorgen dat u uw uitschalen afshapet naar het maximum voor de betreffende laag.  Als u in het vorige voor beeld hebt gekozen om uit te schalen naar 51 in plaats van met 50-instanties, gaat u naar de volgende laag en eindigt u met minder SNAT-poorten per VM en in totaal.
+Twee virtuele machines in de backendpool zouden bijvoorbeeld 1024 SNAT-poorten beschikbaar hebben per IP-configuratie, waardoor in totaal 2048 SNAT-poorten voor de implementatie kunnen worden uitgevoerd.  Als de implementatie zou worden verhoogd tot 50 virtuele machines, hoewel het aantal vooraf toegewezen poorten constant blijft per virtuele machine, kunnen in totaal 51.200 (50 x 1024) SNAT-poorten door de implementatie worden gebruikt.  Als u uw implementatie wilt uitschalen, controleert u het aantal [vooraf toegewezen poorten](#preallocatedports) per laag om ervoor te zorgen dat u uw schaal vormgeeft tot het maximum voor de desbetreffende laag.  In het voorgaande voorbeeld, als u ervoor had gekozen om uit te schalen naar 51 in plaats van 50 exemplaren, zou u doorstromen naar de volgende laag en eindigen met minder SNAT-poorten per VM en in totaal.
 
-Als u uitbreidt naar de volgende grotere laag van de back-endadresgroep, is er mogelijk een time-out opgestaan voor sommige van uw uitgaande verbindingen als toegewezen poorten opnieuw moeten worden toegewezen.  Als u slechts een aantal SNAT-poorten gebruikt, kunt u uitschalen over de volgende grotere back-inconsequential.  De helft van de bestaande poorten wordt opnieuw toegewezen telkens wanneer u overstapt naar de volgende back-endadresgroep.  Als u dit niet wilt doen, moet u uw implementatie vorm geven in de laag grootte.  Of zorg ervoor dat uw toepassing zo nodig kan detecteren en probeer het opnieuw.  TCP-keepalives kunnen worden gebruikt om te detecteren wanneer de SNAT-poorten niet meer werken omdat ze opnieuw moeten worden toegewezen.
+Als u uitschaalt naar de volgende grotere backendpoolgroottelaag, is er potentieel voor sommige van uw uitgaande verbindingen om een time-out te maken als toegewezen poorten moeten worden toegewezen.  Als u slechts een deel van uw SNAT-poorten gebruikt, is het inconsequent om uit te schalen naar de volgende grotere backendpoolgrootte.  De helft van de bestaande poorten wordt bij elke backendpoollaag toegewezen.  Als u niet wilt dat dit gebeurt, moet u uw implementatie vormgeven aan de laaggrootte.  Of zorg ervoor dat uw toepassing kan detecteren en opnieuw proberen als dat nodig is.  TCP keepalives kan helpen bij het detecteren wanneer SNAT-poorten niet meer functioneren als gevolg van herverdeling.
 
-### <a name="idletimeout"></a>Keepalives gebruiken om de uitgaande time-out voor inactiviteit opnieuw in te stellen
+### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a><a name="idletimeout"></a>Keepalives gebruiken om de uitgaande idle time-out opnieuw in te stellen
 
-Uitgaande verbindingen hebben een time-out van 4 minuten. Deze time-out is aanpasbaar via [Uitgaande regels](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout). U kunt ook Trans Port (bijvoorbeeld TCP-keepalives) of keepalives op toepassings niveau gebruiken om een niet-actieve stroom te vernieuwen en deze time-out voor inactiviteit zo nodig opnieuw in te stellen.  
+Uitgaande verbindingen hebben een idle time-out van 4 minuten. Deze time-out is instelbaar via [uitgaande regels.](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout) U ook transport (bijvoorbeeld TCP keepalives) of keepalives voor toepassingslagen gebruiken om een niet-actieve stroom te vernieuwen en indien nodig deze niet-actieve time-out opnieuw in te stellen.  
 
-Bij het gebruik van TCP-keepalives is het voldoende om deze in te scha kelen aan één zijde van de verbinding. Het is bijvoorbeeld voldoende om ze alleen in te scha kelen op de server om de niet-actieve timer van de stroom opnieuw in te stellen en het is niet nodig voor beide zijden voor het starten van TCP-keepalives.  Er bestaan soort gelijke concepten voor Application Layer, waaronder client-server configuraties voor data bases.  Controleer de server zijde voor welke opties er bestaan voor toepassingsspecifieke keepalives.
+Bij het gebruik van TCP keepalives is het voldoende om ze aan één kant van de verbinding in te schakelen. Het is bijvoorbeeld voldoende om ze aan de serverkant alleen te laten resetten om de niet-actieve timer van de stroom te resetten en het is niet nodig dat beide partijen TCP keepalives starten.  Vergelijkbare concepten bestaan voor toepassingslaag, waaronder databaseclientserverconfiguraties.  Controleer de serverkant op welke opties er bestaan voor toepassingsspecifieke keepalives.
 
-## <a name="discoveroutbound"></a>Het open bare IP-adres dat door een virtuele machine wordt gebruikt, wordt gedetecteerd
-Er zijn veel manieren om het IP-adres van de open bare bron van een uitgaande verbinding te bepalen. OpenDNS biedt een service waarmee u het open bare IP-adres van uw virtuele machine kunt weer geven. 
+## <a name="discovering-the-public-ip-that-a-vm-uses"></a><a name="discoveroutbound"></a>Het openbare IP ontdekken dat een VM gebruikt
+Er zijn veel manieren om het IP-adres van een uitgaande verbinding te bepalen. OpenDNS biedt een service die u het openbare IP-adres van uw vm kan laten zien. 
 
-Met de opdracht nslookup kunt u een DNS-query voor de naam myip.opendns.com verzenden naar de OpenDNS-resolver. De service retourneert het bron-IP-adres dat is gebruikt om de query te verzenden. Wanneer u de volgende query uitvoert vanaf uw virtuele machine, is het antwoord het open bare IP-adres dat voor die virtuele machine wordt gebruikt:
+Met de opdracht nslookup u een DNS-query verzenden voor de naam myip.opendns.com naar de OpenDNS-resolver. De service retourneert het bron-IP-adres dat is gebruikt om de query te verzenden. Wanneer u de volgende query uitvoert vanaf uw vm, is het antwoord het openbare IP-adres dat voor die vm wordt gebruikt:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
-## <a name="preventoutbound"></a>Uitgaande connectiviteit voor komen
-Soms is het niet wenselijk dat een virtuele machine een uitgaande stroom maakt. Of er is mogelijk een vereiste om te beheren welke doelen kunnen worden bereikt met uitgaande stromen of welke doelen binnenkomende stromen kunnen starten. In dit geval kunt u [netwerk beveiligings groepen](../virtual-network/security-overview.md) gebruiken om de doelen te beheren die de virtuele machine kan bereiken. U kunt Nsg's ook gebruiken om te beheren welke open bare bestemming binnenkomende stromen kan initiëren.
+## <a name="preventing-outbound-connectivity"></a><a name="preventoutbound"></a>Uitgaande connectiviteit voorkomen
+Soms is het ongewenst dat een VM een uitgaande stroom mag maken. Of er kan een vereiste zijn om te beheren welke bestemmingen kunnen worden bereikt met uitgaande stromen, of welke bestemmingen kunnen beginnen inkomende stromen. In dit geval u [netwerkbeveiligingsgroepen](../virtual-network/security-overview.md) gebruiken om de bestemmingen te beheren die de VM kan bereiken. U ook NSG's gebruiken om te beheren welke openbare bestemming binnenkomende stromen kan initiëren.
 
-Wanneer u een NSG toepast op een virtuele machine met taak verdeling, moet u rekening houden met de [service Tags](../virtual-network/security-overview.md#service-tags) en de [standaard beveiligings regels](../virtual-network/security-overview.md#default-security-rules). U moet ervoor zorgen dat de VM Health probe-aanvragen van Azure Load Balancer kan ontvangen. 
+Wanneer u een NSG toepast op een vm die in balans is met de belasting, moet u letten op de [servicetags](../virtual-network/security-overview.md#service-tags) en [de standaardbeveiligingsregels.](../virtual-network/security-overview.md#default-security-rules) U moet ervoor zorgen dat de VM aanvragen voor statussondes van Azure Load Balancer kan ontvangen. 
 
-Als een NSG de status test aanvragen blokkeert vanuit het standaard label AZURE_LOADBALANCER, mislukt de VM-status test en wordt de virtuele machine gemarkeerd. Load Balancer stopt met het verzenden van nieuwe stromen naar die virtuele machine.
+Als een NSG aanvragen voor statussondes blokkeert van de AZURE_LOADBALANCER standaardtag, mislukt de VM-statussonde en wordt de VM gemarkeerd. Load Balancer stopt met het verzenden van nieuwe stromen naar die VM.
 
 ## <a name="limitations"></a>Beperkingen
-- Disableoutboundsnat toegevoegd is niet beschikbaar als optie bij het configureren van een taakverdelings regel in de portal.  Gebruik in plaats daarvan REST-, sjabloon-of client hulpprogramma's.
-- Rollen van webwerkers zonder VNet en andere micro soft-platform Services kunnen toegankelijk zijn wanneer alleen een interne Standard Load Balancer wordt gebruikt als gevolg van een neven effect van de manier waarop de voor bereide en andere functie van de platform services functioneren. Vertrouw niet op deze zijde als de respectieve service zelf of het onderliggende platform kan zonder kennisgeving worden gewijzigd. U moet altijd aannemen dat u een uitgaande connectiviteit expliciet moet maken als u alleen een interne Standard Load Balancer wilt gebruiken. Het [standaard SNAT](#defaultsnat) -scenario 3 dat in dit artikel wordt beschreven, is niet beschikbaar.
+- Webworker-rollen zonder VNet en andere Microsoft-platformservices kunnen toegankelijk zijn wanneer alleen een interne StandaardloadBalancer wordt gebruikt vanwege een bijwerking van de werking van pre-VNet-services en andere platformservices. Vertrouw niet op deze bijwerking, omdat de betreffende service zelf of het onderliggende platform zonder kennisgeving kan veranderen. U moet er altijd van uitgaan dáár desgewenst uitgaande connectiviteit moeten maken wanneer u alleen een interne standaardloadbalancer gebruikt. Het [standaard SNAT-scenario](#defaultsnat) 3 dat in dit artikel wordt beschreven, is niet beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
-- Meer informatie over [Uitgaande regels](load-balancer-outbound-rules-overview.md) voor standaard open bare Load Balancer.
+- Meer informatie over [uitgaande regels](load-balancer-outbound-rules-overview.md) voor standaard openbare load balancer.
 - Meer informatie over [Load Balancer](load-balancer-overview.md).
-- Meer informatie over [netwerk beveiligings groepen](../virtual-network/security-overview.md).
-- Meer informatie over een aantal van de andere belang rijke [netwerk mogelijkheden](../networking/networking-overview.md) van Azure.
+- Meer informatie over [netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+- Meer informatie over enkele andere belangrijke [netwerkmogelijkheden](../networking/networking-overview.md) in Azure.

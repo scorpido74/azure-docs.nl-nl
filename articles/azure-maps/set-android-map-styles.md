@@ -1,33 +1,33 @@
 ---
-title: Een kaart stijl instellen met behulp van Azure Maps Android SDK | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over Microsoft Azure functies voor het toewijzen van kaarten voor de Android-SDK.
-author: farah-alyasari
-ms.author: v-faalya
+title: Een kaartstijl instellen met Azure Maps Android SDK| Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over microsoft Azure Maps-stijlgerelateerde functionaliteiten voor de Android SDK.
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334354"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Kaart stijl instellen met Azure Maps Android SDK
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Kaartstijl instellen met Azure Maps Android SDK
 
-In dit artikel ziet u twee manieren om kaart stijlen in te stellen met behulp van de Azure Maps Android SDK. Azure Maps heeft zes verschillende kaarten stijlen waaruit u kunt kiezen. Zie [ondersteunde kaart stijlen in azure Maps](./supported-map-styles.md)voor meer informatie over ondersteunde kaart stijlen.
+In dit artikel ziet u twee manieren om kaartstijlen in te stellen met de Azure Maps Android SDK. Azure Maps heeft zes verschillende kaartstijlen om uit te kiezen. Zie [ondersteunde kaartstijlen in Azure Maps](./supported-map-styles.md)voor meer informatie over ondersteunde kaartstijlen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
+Als u het proces in dit artikel wilt voltooien, moet u [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren om een kaart te laden.
 
 
-## <a name="set-map-style-in-the-layout"></a>Kaart stijl instellen in de lay-out
+## <a name="set-map-style-in-the-layout"></a>Kaartstijl instellen in de indeling
 
-U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten klasse. Wijzig de **indeling res > > activity_main. XML**, zodat deze er als volgt uitziet:
+U een kaartstijl instellen in het indelingsbestand voor uw activiteitsklasse. Bewerk **opnieuw > lay-out > activity_main.xml,** zodat het lijkt op de onderstaande:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +51,15 @@ U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten k
 </FrameLayout>
 ```
 
-Met het `mapcontrol_style` kenmerk hierboven stelt u de kaart stijl in op **grayscale_dark**. 
+In `mapcontrol_style` het kenmerk hierboven wordt de kaartstijl ingesteld op **grayscale_dark**. 
 
 <center>
 
 ![stijl-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Kaart stijl instellen in de klasse activiteit
+## <a name="set-map-style-in-the-activity-class"></a>Kaartstijl instellen in de activiteitsklasse
 
-Kaart stijl kan worden ingesteld in de klasse activity. Kopieer het volgende code fragment in de methode **onCreate ()** van uw `MainActivity.java`-klasse. Met deze code wordt de kaart stijl ingesteld op **satellite_road_labels**.
+De kaartstijl kan worden ingesteld in de activiteitsklasse. Kopieer het volgende codefragment naar de methode `MainActivity.java` **onCreate()** van uw klasse. Met deze code wordt de kaartstijl ingesteld op **satellite_road_labels**.
 
 ```Java
 mapControl.onReady(map -> {
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![stijl-satelliet-Road-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![stijl-satelliet-weg-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>

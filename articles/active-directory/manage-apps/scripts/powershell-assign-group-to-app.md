@@ -1,6 +1,6 @@
 ---
-title: 'Power shell-voor beeld: groep toewijzen aan een app voor toepassings proxy'
-description: Power shell-voor beeld dat een groep toewijst aan een toepassing voor toepassings proxy van Azure Active Directory (Azure AD).
+title: PowerShell-voorbeeld - Groep toewijzen aan een app Application Proxy
+description: PowerShell-voorbeeld waarmee een groep wordt toewijst aan een Azure Active Directory -toepassingsproxytoepassing (Azure Active Directory).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 540453e5de3eed97b1207ca16443b46dffd5f8e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483347"
 ---
-# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Een groep toewijzen aan een specifieke Azure AD-toepassingsproxy-toepassing
+# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Een groep toewijzen aan een specifieke Azure AD-toepassingsproxy
 
-In dit voor beeld van een Power shell-script kunt u een specifieke groep toewijzen aan een toepassing voor toepassings proxy van Azure Active Directory (Azure AD).
+Met dit PowerShell-scriptvoorbeeld u een specifieke groep toewijzen aan een Azure Active Directory-toepassingsproxytoepassing (Azure Directory).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ In dit voor beeld van een Power shell-script kunt u een specifieke groep toewijz
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voorbeeld is de [AzureAD V2 PowerShell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor graph-modulepreviewversie](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,10 +39,10 @@ Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://doc
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | Hiermee wijst u een groep toe aan een toepassingsrol. |
+| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | Wijst een groep toe aan een toepassingsrol. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
+Zie azure [AD PowerShell-moduleoverzicht](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD PowerShell-module.
 
-Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).
+Zie [Azure AD PowerShell-voorbeelden voor](../application-proxy-powershell-samples.md)andere PowerShell-voorbeelden voor andere PowerShell-toepassingen.

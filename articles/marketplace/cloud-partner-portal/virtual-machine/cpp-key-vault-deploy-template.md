@@ -1,23 +1,22 @@
 ---
-title: Implementatie sjabloon Azure Key Vault | Azure Marketplace
-description: Hier wordt een lijst weer gegeven met de Azure Resource Manager sjabloon die is vereist voor het implementeren van een nieuw Azure Key Vault exemplaar
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure Key Vault-implementatiesjabloon | Azure Marketplace
+description: Hiermee wordt de Azure Resource Manager-sjabloon weergegeven die nodig is om een nieuw Azure Key Vault-exemplaar te implementeren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: befed70b6858ebc8aaab7ebe200bb8082a430bab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 63f49946b14b003348758a5ae7ebadd7a4acf383
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824053"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277665"
 ---
 # <a name="key-vault-deployment-template"></a>Implementatiesjabloon voor sleutelkluis
 
-Met de volgende Azure Resource Manager sjabloon wordt een nieuw Azure Key Vault exemplaar gedefinieerd.  Het wordt gebruikt in het artikel [sleutel kluis certificaat maken](cpp-create-key-vault-cert.md). 
+Met de volgende sjabloon Azure Resource Manager wordt een nieuwe Azure Key Vault-instantie gedefinieerd.  Het wordt gebruikt in het artikel [Sleutelkluiscertificaat maken](cpp-create-key-vault-cert.md). 
 
 ```json
 {

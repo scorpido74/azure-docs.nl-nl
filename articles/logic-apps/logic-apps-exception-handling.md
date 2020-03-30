@@ -1,6 +1,6 @@
 ---
-title: Fouten en uitzonde ringen in werk stromen afhandelen
-description: Meer informatie over het afhandelen van fouten en uitzonde ringen die optreden in geautomatiseerde taken en werk stromen die zijn gemaakt met behulp van Azure Logic Apps
+title: Fouten en uitzonderingen in werkstromen verwerken
+description: Meer informatie over het verwerken van fouten en uitzonderingen die plaatsvinden in geautomatiseerde taken en werkstromen die zijn gemaakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -9,45 +9,45 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284029"
 ---
-# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
+# <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonderingen verwerken in Azure Logic Apps
 
-De manier waarop elke integratie architectuur op de juiste wijze downtime of problemen verwerkt die door afhankelijke systemen worden veroorzaakt, kan een uitdaging vormen. Logic Apps biedt een topervaring voor het afhandelen van fouten en uitzonde ringen, om u te helpen bij het maken van robuuste en robuuste integraties die problemen en storingen op de juiste manier afhandelen.
+De manier waarop elke integratiearchitectuur op de juiste manier omgaat met downtime of problemen veroorzaakt door afhankelijke systemen kan een uitdaging vormen. Om u te helpen robuuste en veerkrachtige integraties te maken die problemen en fouten op een elegante manier afhandelen, biedt Logic Apps een eersteklas ervaring voor het verwerken van fouten en uitzonderingen.
 
 <a name="retry-policies"></a>
 
-## <a name="retry-policies"></a>Beleid voor opnieuw proberen
+## <a name="retry-policies"></a>Beleid opnieuw proberen
 
-Voor de meest eenvoudige uitzonde ring en fout afhandeling kunt u een *beleid voor opnieuw proberen* gebruiken in elke actie of trigger waarbij wordt ondersteund, bijvoorbeeld [http-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger). Met een beleid voor opnieuw proberen wordt aangegeven of en hoe de actie of de trigger een aanvraag opnieuw probeert wanneer de oorspronkelijke aanvraag een time-out heeft of mislukt. Dit is een aanvraag die resulteert in een 408-, 429-of 5xx-antwoord. Als er geen ander beleid voor opnieuw proberen wordt gebruikt, wordt het standaard beleid gebruikt.
+Voor de meest elementaire uitzonderings- en foutafhandeling u een *beleid voor opnieuw proberen* gebruiken in elke actie of trigger waar deze wordt ondersteund, bijvoorbeeld zie [HTTP-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger). Een beleid voor opnieuw proberen geeft aan of en hoe de actie of trigger een aanvraag opnieuw indient wanneer de oorspronkelijke aanvraag een keer is uitgekeerd of mislukt, wat een verzoek is dat resulteert in een antwoord van 408, 429 of 5xx. Als er geen ander beleid voor nieuwe poging wordt gebruikt, wordt het standaardbeleid gebruikt.
 
-Dit zijn de beleids typen voor opnieuw proberen:
+Hier volgen de typen beleid opnieuw proberen:
 
 | Type | Beschrijving |
 |------|-------------|
-| **Standaard** | Met dit beleid worden Maxi maal vier nieuwe pogingen verzonden met *exponentieel toenemende* intervallen. deze worden geschaald op 7,5 seconden, maar worden tussen 5 en 45 seconden gelimiteerd. |
-| **Exponentieel interval**  | Dit beleid wacht een wille keurig interval dat is geselecteerd uit een exponentieel groeiend bereik voordat de volgende aanvraag wordt verzonden. |
-| **Vast interval**  | Met dit beleid wordt het opgegeven interval gewacht voordat de volgende aanvraag wordt verzonden. |
-| **Geen**  | De aanvraag niet opnieuw verzenden. |
+| **Standaard** | Dit beleid stuurt maximaal vier nieuwe pogingen met *exponentieel toenemende* intervallen, die met 7,5 seconden worden geschaald, maar worden afgetopt tussen 5 en 45 seconden. |
+| **Exponentieel interval**  | Dit beleid wacht een willekeurig interval dat is geselecteerd uit een exponentieel groeiend bereik voordat u de volgende aanvraag verzendt. |
+| **Vast interval**  | Dit beleid wacht het opgegeven interval voordat u het volgende verzoek verzendt. |
+| **Geen**  | Stuur het verzoek niet opnieuw. |
 |||
 
-Zie [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#request-limits)voor meer informatie over limieten voor het beleid voor opnieuw proberen.
+Zie [Limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#request-limits)van Logic Apps voor informatie over beleidslimieten opnieuw proberen.
 
-### <a name="change-retry-policy"></a>Beleid voor opnieuw proberen wijzigen
+### <a name="change-retry-policy"></a>Beleid voor nieuwe wijzigingen wijzigen
 
-Voer de volgende stappen uit om een ander beleid voor opnieuw proberen te selecteren:
+Voer de volgende stappen uit om een ander beleid voor nieuwe instanties te selecteren:
 
-1. Open uw logische app in de ontwerp functie voor logische apps.
+1. Open uw logische app in Logic App Designer.
 
 1. Open de **instellingen** voor een actie of trigger.
 
-1. Als de actie of trigger het beleid voor nieuwe pogingen ondersteunt, selecteert u het gewenste type onder **beleid voor opnieuw proberen**.
+1. Als de actie of trigger beleid voor het opnieuw proberen ondersteunt, selecteert u onder **Beleid voor opnieuw proberen**het gewenste type.
 
-Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `inputs` voor een actie of trigger die beleids regels voor opnieuw proberen ondersteunt. Als u geen beleid voor opnieuw proberen opgeeft, gebruikt de actie het standaard beleid.
+U ook handmatig het beleid voor `inputs` opnieuw proberen opgeven in de sectie voor een actie of trigger die het beleid voor het opnieuw proberen ondersteunt. Als u geen beleid voor opnieuw proberen opgeeft, wordt met de actie het standaardbeleid gebruikt.
 
 ```json
 "<action-name>": {
@@ -71,28 +71,28 @@ Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `i
 
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*opnieuw proberen-beleid type*> | Tekenreeks | Het type beleid voor opnieuw proberen dat u wilt gebruiken: `default`, `none`, `fixed`of `exponential` |
-| <*interval voor opnieuw proberen*> | Tekenreeks | Het interval voor nieuwe pogingen waarbij de waarde de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken. Het minimale standaard interval is `PT5S` en het maximum interval wordt `PT1D`. Wanneer u het beleid voor exponentiële intervallen gebruikt, kunt u verschillende minimum-en maximum waarden opgeven. |
-| <*nieuwe pogingen:* > | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt |
+| <*retry-policy-type*> | Tekenreeks | Het type beleid opnieuw proberen `default`dat `none` `fixed`u wilt gebruiken: , , of`exponential` |
+| <*opnieuw proberen-interval*> | Tekenreeks | Het interval voor opnieuw proberen waarbij de waarde [de ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)moet gebruiken . Het standaard minimuminterval is `PT5S` en `PT1D`het maximale interval is . Wanneer u het exponentiële intervalbeleid gebruikt, u verschillende minimum- en maximumwaarden opgeven. |
+| <*pogingen opnieuw proberen*> | Geheel getal | Het aantal pogingen om opnieuw te proberen, dat tussen 1 en 90 moet liggen |
 ||||
 
-*Beschrijving*
+*Optionele*
 
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
-| <*Mini maal interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen wordt het kleinste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
-| <*maximum interval*> | Tekenreeks | Voor het beleid voor exponentiële intervallen is het grootste interval voor het wille keurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*minimum-interval*> | Tekenreeks | Voor het exponentiële intervalbeleid wordt het kleinste interval voor het willekeurig geselecteerde interval in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
+| <*maximale interval*> | Tekenreeks | Voor het exponentiële intervalbeleid wordt het grootste interval voor het willekeurig geselecteerde interval in [iso 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 ||||
 
-Hier vindt u meer informatie over de verschillende beleids typen.
+Hier vindt u meer informatie over de verschillende beleidstypen.
 
 <a name="default-retry"></a>
 
 ### <a name="default"></a>Standaard
 
-Als u geen beleid voor opnieuw proberen opgeeft, gebruikt de actie het standaard beleid, dat eigenlijk een [exponentieel interval beleid](#exponential-interval) is dat Maxi maal vier nieuwe pogingen verzendt met exponentieel toenemende intervallen die met 7,5 seconden worden geschaald. Het interval wordt tussen 5 en 45 seconden gelimiteerd.
+Als u geen beleid voor opnieuw proberen opgeeft, wordt met de actie het standaardbeleid gebruikt, dat eigenlijk een [exponentieel intervalbeleid](#exponential-interval) is dat maximaal vier nieuwe pogingen verzendt met exponentieel toenemende intervallen die met 7,5 seconden worden geschaald. Het interval is beperkt tussen 5 en 45 seconden.
 
-Hoewel niet expliciet is gedefinieerd in uw actie of trigger, is dit het standaard beleid gedraagt in een voor beeld van een HTTP-actie:
+Hoewel niet expliciet gedefinieerd in uw actie of trigger, is hier hoe het standaardbeleid zich gedraagt in een voorbeeld HTTP-actie:
 
 ```json
 "HTTP": {
@@ -112,17 +112,17 @@ Hoewel niet expliciet is gedefinieerd in uw actie of trigger, is dit het standaa
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>Geen
 
-Als u wilt opgeven dat bij de actie of trigger geen mislukte aanvragen worden uitgevoerd, stelt u het > <*opnieuw proberen*in op `none`.
+Als u wilt opgeven dat de actie of trigger mislukte aanvragen niet opnieuw `none`probeert, stelt u het <het type> van *het* <opnieuw proberen> in .
 
 ### <a name="fixed-interval"></a>Vast interval
 
-Als u wilt opgeven dat de actie of trigger het opgegeven interval moet wachten voordat de volgende aanvraag wordt verzonden, stelt u de <*opnieuw proberen beleid type*> in `fixed`.
+Als u wilt opgeven dat de actie of trigger het opgegeven interval wacht voordat u `fixed`het volgende verzoek verzendt, stelt u het <het type <opnieuw *proberen-beleid* in> in .
 
 *Voorbeeld*
 
-Dit beleid voor opnieuw proberen probeert het laatste nieuws twee keer na de eerste mislukte aanvraag met een vertraging van 30 seconden tussen elke poging te verkrijgen:
+Met dit beleid probeert u het laatste nieuws nog twee keer te ontvangen nadat de eerste mislukte aanvraag is mislukt met een vertraging van 30 seconden tussen elke poging:
 
 ```json
 "Get_latest_news": {
@@ -143,56 +143,56 @@ Dit beleid voor opnieuw proberen probeert het laatste nieuws twee keer na de eer
 
 ### <a name="exponential-interval"></a>Exponentieel interval
 
-Als u wilt opgeven dat bij de actie of trigger een wille keurig interval moet worden gewacht voordat de volgende aanvraag wordt verzonden, stelt u het > <*opnieuw proberen*in op `exponential`. Het wille keurig interval wordt geselecteerd uit een exponentieel groeiend bereik. U kunt eventueel ook de standaard minimum-en maximum intervallen onderdrukken door uw eigen minimum-en maximum intervallen op te geven.
+Als u wilt opgeven dat de actie of trigger een willekeurig interval wacht voordat u `exponential`het volgende verzoek verzendt, stelt u het <het> van het opnieuw *proberen-beleid* in . Het willekeurige interval wordt geselecteerd uit een exponentieel groeiend bereik. Optioneel u ook de standaard minimale en maximale intervallen overschrijven door uw eigen minimum- en maximale intervallen op te geven.
 
-**Bereiken voor wille keurige variabele**
+**Willekeurige variabele bereiken**
 
-In deze tabel ziet u hoe Logic Apps een uniforme wille keurige variabele in het opgegeven bereik genereert voor elke nieuwe poging tot en met het aantal nieuwe pogingen:
+In deze tabel ziet u hoe Logic Apps een uniforme willekeurige variabele genereert in het opgegeven bereik voor elke nieuwe poging tot en met het aantal nieuwe pogingen:
 
-| Aantal nieuwe pogingen | Minimum interval | Maximum interval |
+| Getal opnieuw proberen | Minimuminterval | Maximaal interval |
 |--------------|------------------|------------------|
-| 1 | Max (0, <*Mini maal interval*>) | min (interval, <*maximum-interval*>) |
-| 2 | Max (interval, <*Mini maal interval*>) | min (2 * interval, <*maximum-interval*>) |
-| 3 | Max (2 * interval, <*Mini maal interval*>) | min (4 * interval, <*maximum-interval*>) |
-| 4 | Max (4 * interval, <*Mini maal interval*>) | min (8 * interval, <*maximum-interval*>) |
+| 1 | max(0, <*> met een minimuminterval)* | min(interval, <*maximale>)* |
+| 2 | max(interval, <*> met een minimuminterval)* | min(2 * interval, <*maximale>)* |
+| 3 | max(2 * interval, <*> met een minimuminterval)* | min(4 * interval, <*maximale interval*>) |
+| 4 | max(4 * interval, <*> met een minimuminterval)* | min(8 * interval, <*> met maximale interval)* |
 | .... | .... | .... |
 ||||
 
 <a name="control-run-after-behavior"></a>
 
-## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>Ondervangen en afhandelen van fouten door het gedrag ' uitvoeren na ' te wijzigen
+## <a name="catch-and-handle-failures-by-changing-run-after-behavior"></a>Fouten vangen en afhandelen door het gedrag 'run after' te wijzigen
 
-Wanneer u acties toevoegt in de ontwerp functie voor logische apps, declareert u impliciet de volg orde die moet worden gebruikt voor het uitvoeren van deze acties. Nadat een actie is uitgevoerd, wordt die actie gemarkeerd met een status als `Succeeded`, `Failed`, `Skipped`of `TimedOut`. In elke actie definitie specificeert de eigenschap `runAfter` de voorafgaande actie die eerst moet worden voltooid en de statussen die zijn toegestaan voor die voorafgaande actie voordat de opvolgende handeling kan worden uitgevoerd. Een actie die u in de ontwerp functie toevoegt, wordt standaard pas uitgevoerd nadat de voorafgaande taak is voltooid met `Succeeded` status.
+Wanneer u acties toevoegt in de Logic App Designer, geeft u impliciet aan welke volgorde u moet gebruiken voor het uitvoeren van deze acties. Nadat een actie is uitgevoerd, wordt die actie `Succeeded` `Failed`gemarkeerd `Skipped`met `TimedOut`een status zoals , , of . In elke actiedefinitie `runAfter` geeft de eigenschap de voorafgaande actie aan die eerst moet worden voltooid en de statussen die voor die voorganger zijn toegestaan voordat de volgende actie kan worden uitgevoerd. Standaard wordt een actie die u in de ontwerper toevoegt, alleen uitgevoerd nadat de voorganger de `Succeeded` status heeft voltooid.
 
-Wanneer een actie een niet-verwerkte fout of uitzonde ring genereert, wordt de actie gemarkeerd `Failed`en worden eventuele opvolgende acties gemarkeerd `Skipped`. Als dit gedrag optreedt voor een actie die parallelle vertakkingen heeft, volgt de Logic Apps-Engine de andere vertakkingen om de voltooiings status te bepalen. Als een vertakking bijvoorbeeld eindigt met een `Skipped` actie, wordt de voltooiings status van die vertakking gebaseerd op de voorafgaande status van de overgeslagen actie. Nadat de uitvoering van de logische app is voltooid, bepaalt de engine de volledige status van de uitvoering door alle vertakkings statussen te evalueren. Als een vertakking stopt met de fout, wordt de volledige uitvoering van de logische app gemarkeerd `Failed`.
+Wanneer een actie een onverwerkte fout of `Failed`uitzondering genereert, wordt `Skipped`de actie gemarkeerd en wordt elke actie voor een opvolger gemarkeerd . Als dit gedrag optreedt voor een actie met parallelle branches, volgt de Logic Apps-engine de andere branches om de voltooiingsstatus te bepalen. Als een vertakking bijvoorbeeld `Skipped` eindigt met een actie, is de voltooiingsstatus van die vertakking gebaseerd op de voorloperstatus van die overgeslagen actie. Nadat de logische app is voltooid, bepaalt de engine de status van de hele uitvoering door alle branchstatussen te evalueren. Als een vertakking eindigt in een `Failed`fout, wordt de hele logische app-run gemarkeerd .
 
-![Voor beelden die laten zien hoe uitvoerings statussen worden geëvalueerd](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
+![Voorbeelden die laten zien hoe runstatussen worden geëvalueerd](./media/logic-apps-exception-handling/status-evaluation-for-parallel-branches.png)
 
-Om ervoor te zorgen dat een actie nog steeds kan worden uitgevoerd ondanks de status van de voorafgaande taak, past u het [gedrag ' uitvoeren na '](#customize-run-after) aan om de statussen van de voorafgaande actie te verwerken.
+Als u ervoor wilt zorgen dat een actie ondanks de status van zijn voorganger nog steeds kan worden uitgevoerd, [past u het gedrag 'run after' van een actie aan](#customize-run-after) om de mislukte status van de voorganger te verwerken.
 
 <a name="customize-run-after"></a>
 
-### <a name="customize-run-after-behavior"></a>Gedrag van ' uitvoeren na ' aanpassen
+### <a name="customize-run-after-behavior"></a>Gedrag 'uitvoeren na' aanpassen
 
-U kunt het gedrag ' uitvoeren na ' aanpassen zodat de actie wordt uitgevoerd wanneer de status van de voorafgaande taak een `Succeeded`, `Failed`, `Skipped`, `TimedOut`of een van deze statussen is. Als u bijvoorbeeld een e-mail bericht wilt verzenden nadat de voorafgaande actie van Excel online `Add_a_row_into_a_table` is gemarkeerd `Failed`in plaats van `Succeeded`, wijzigt u het gedrag ' uitvoeren na ' door een van de volgende stappen uit te voeren:
+U het gedrag 'run after' van een actie aanpassen, zodat `Succeeded`de `Failed` `Skipped`actie `TimedOut`wordt uitgevoerd wanneer de status van de voorganger,,, of een van deze statussen is. Als u bijvoorbeeld een e-mail `Add_a_row_into_a_table` wilt verzenden `Failed`nadat `Succeeded`de vorige actie van Excel Online is gemarkeerd, in plaats van het gedrag 'uitvoeren na' te wijzigen door een van beide stappen te volgen:
 
-* Selecteer in de ontwerp weergave de knop met weglatings tekens ( **...** ) en selecteer vervolgens **uitvoeren na**.
+* Selecteer in de ontwerpweergave de knop ellips (**... )** en selecteer Uitvoeren **configureren na**.
 
-  ![Gedrag van ' uitvoeren na ' configureren voor een actie](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
+  ![Gedrag 'uitvoeren na' configureren voor een actie](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
 
-  De shape actie toont de standaard status die is vereist voor de voorafgaande actie, wat **een rij aan een tabel** in dit voor beeld bevat:
+  De actievorm toont de standaardstatus die vereist is voor de voorafgaande actie, namelijk **Een rij toevoegen aan een tabel** in dit voorbeeld:
 
-  ![Standaard gedrag ' uitvoeren na ' voor een actie](./media/logic-apps-exception-handling/change-run-after-property-status.png)
+  ![Standaardgedrag 'na uitvoeren' voor een actie](./media/logic-apps-exception-handling/change-run-after-property-status.png)
 
-  Wijzig het gedrag ' uitvoeren na ' in de status die u wilt, in dit voor beeld is **mislukt** :
+  Wijzig het gedrag 'uitvoeren na' in de gewenste status, wat in dit voorbeeld **is mislukt:**
 
-  ![Het gedrag ' uitvoeren na ' wordt gewijzigd in ' is mislukt '](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
+  ![Gedrag 'ren na' wijzigen in 'is mislukt'](./media/logic-apps-exception-handling/run-after-property-status-set-to-failed.png)
 
-  Als u wilt opgeven dat de actie wordt uitgevoerd of de voorafgaande actie wordt gemarkeerd als `Failed`, `Skipped` of `TimedOut`, selecteert u de andere statussen:
+  Als u wilt opgeven of de actie `Failed` `Skipped` wordt `TimedOut`uitgevoerd of de vorige actie is gemarkeerd als , of , selecteert u de andere statussen:
 
-  ![Het gedrag ' uitvoeren na ' wijzigen om een andere status te hebben](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
+  ![Gedrag 'ren na' wijzigen om een andere status te hebben](./media/logic-apps-exception-handling/run-after-property-multiple-statuses.png)
 
-* Bewerk in de code weergave in de JSON-definitie van de actie de eigenschap `runAfter`, met de volgende syntaxis:
+* Bewerk in de codeweergave in de JSON-definitie van de actie de `runAfter` eigenschap, die deze syntaxis volgt:
 
   ```json
   "<action-name>": {
@@ -208,7 +208,7 @@ U kunt het gedrag ' uitvoeren na ' aanpassen zodat de actie wordt uitgevoerd wan
   }
   ```
 
-  Voor dit voor beeld wijzigt u de eigenschap `runAfter` van `Succeeded` in `Failed`:
+  Wijzig in dit `runAfter` voorbeeld `Succeeded` de `Failed`eigenschap van :
 
   ```json
   "Send_an_email_(V2)": {
@@ -235,7 +235,7 @@ U kunt het gedrag ' uitvoeren na ' aanpassen zodat de actie wordt uitgevoerd wan
   }
   ```
 
-  Als u wilt opgeven dat de actie wordt uitgevoerd of de voorafgaande actie wordt gemarkeerd als `Failed`, `Skipped` of `TimedOut`, voegt u de volgende statussen toe:
+  Ga als volgt te werk om op `Failed` `Skipped` te `TimedOut`geven of de actie wordt uitgevoerd of de vorige actie is gemarkeerd als , of , voeg de andere statussen toe:
 
   ```json
   "runAfter": {
@@ -247,29 +247,29 @@ U kunt het gedrag ' uitvoeren na ' aanpassen zodat de actie wordt uitgevoerd wan
 
 <a name="scopes"></a>
 
-## <a name="evaluate-actions-with-scopes-and-their-results"></a>Acties met bereiken en hun resultaten evalueren
+## <a name="evaluate-actions-with-scopes-and-their-results"></a>Acties evalueren met scopes en hun resultaten
 
-Net als bij het uitvoeren van stappen na afzonderlijke acties met de eigenschap `runAfter`, kunt u acties groeperen binnen een [bereik](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). U kunt bereiken gebruiken als u acties logisch wilt groeperen, de aggregatie status van het bereik wilt beoordelen en acties wilt uitvoeren op basis van deze status. Nadat alle acties in een bereik zijn uitgevoerd, krijgt de scope zelf een eigen status.
+Net als bij het uitvoeren `runAfter` van stappen na afzonderlijke acties met de eigenschap, u acties groeperen binnen een [bereik.](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md) U scopes gebruiken wanneer u acties logisch wilt groeperen, de geaggregeerde status van het bereik wilt beoordelen en acties wilt uitvoeren op basis van die status. Nadat alle acties in een scope zijn voltooid, krijgt het bereik zelf zijn eigen status.
 
-Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een logische app te controleren, zoals `Succeeded`, `Failed`, enzovoort.
+Als u de status van een bereik wilt controleren, u dezelfde criteria gebruiken `Succeeded`die `Failed`u gebruikt om de runstatus van een logische app te controleren, zoals, enzovoort.
 
-Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd `Succeeded`. Als de laatste actie in een bereik resulteert in `Failed` of `Aborted`, wordt de status van het bereik gemarkeerd `Failed`.
+Wanneer alle acties van het bereik slagen, wordt de `Succeeded`status van het bereik standaard gemarkeerd . Als de uiteindelijke actie `Failed` in `Aborted`een bereik als of `Failed`, de status van het bereik wordt gemarkeerd .
 
-Als u uitzonde ringen in een `Failed` bereik wilt ondervangen en acties wilt uitvoeren die deze fouten verwerken, kunt u de eigenschap `runAfter` gebruiken voor dat `Failed` bereik. Op die manier, als *er* acties in de scope mislukken en u de eigenschap `runAfter` voor dat bereik gebruikt, kunt u één actie maken om fouten te ondervangen.
+Als u uitzonderingen `Failed` wilt maken in een bereik en `runAfter` acties wilt `Failed` uitvoeren die deze fouten verwerken, u de eigenschap voor dat bereik gebruiken. Op die *any* manier u één actie maken `runAfter` om fouten op te vangen als er acties in het bereik mislukken en u de eigenschap voor dat bereik gebruikt.
 
-Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes.
+Zie [Limieten en config](../logic-apps/logic-apps-limits-and-config.md)voor beperkingen op scopes.
 
 <a name="get-results-from-failures"></a>
 
-### <a name="get-context-and-results-for-failures"></a>Context en resultaten ophalen voor fouten
+### <a name="get-context-and-results-for-failures"></a>Krijg context en resultaten voor fouten
 
-Hoewel het niet nuttig is om een bereik te bereiken, is het mogelijk dat u ook wilt weten welke acties zijn mislukt plus eventuele fouten of status codes die zijn geretourneerd.
+Hoewel het nuttig is om fouten uit een bereik op te vangen, wilt u mogelijk ook context om u te helpen precies te begrijpen welke acties zijn mislukt plus eventuele fouten of statuscodes die zijn geretourneerd.
 
-De functie [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) biedt context over de resultaten van alle acties in een bereik. De functie `result()` accepteert één para meter, de naam van het bereik, en retourneert een matrix die alle actie resultaten van binnen dat bereik bevat. Deze actie objecten bevatten dezelfde kenmerken als het `actions()`-object, zoals de begin tijd, eind tijd, status, invoer, correlatie-Id's en uitvoer van de actie. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig een `@result()` expressie koppelen aan de eigenschap `runAfter`.
+De [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) functie biedt context over de resultaten van alle acties in een bereik. De `result()` functie accepteert één parameter, de naam van het bereik, en retourneert een array die alle actieresultaten van binnen dat bereik bevat. Deze actieobjecten bevatten dezelfde kenmerken `actions()` als het object, zoals de begintijd, eindtijd, status, ingangen, correlatie-id's en uitvoer. Als u context wilt verzenden voor acties die binnen `@result()` een `runAfter` bereik zijn mislukt, u eenvoudig een expressie koppelen aan de eigenschap.
 
-Als u een actie wilt uitvoeren voor elke actie in een bereik met een `Failed` resultaat en als u de matrix met resultaten wilt filteren op de mislukte acties, kunt u een `@result()`-expressie koppelen aan een [**filter matrix**](logic-apps-perform-data-operations.md#filter-array-action) actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp van de `For_each`-lus.
+Als u een actie wilt uitvoeren voor `Failed` elke actie in een bereik dat een resultaat heeft, `@result()` en de reeks resultaten wilt filteren op de mislukte acties, u een expressie koppelen aan een actie [**Filterarray**](logic-apps-perform-data-operations.md#filter-array-action) en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U de gefilterde resultaatarray uitvoeren en `For_each` een actie uitvoeren voor elke fout met behulp van de lus.
 
-Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg, waarmee een HTTP POST-aanvraag wordt verzonden met de antwoord tekst voor acties die zijn mislukt binnen de scope ' My_Scope ':
+Hier volgt een voorbeeld, gevolgd door een gedetailleerde uitleg, dat een HTTP POST-verzoek verzendt met de antwoordinstantie voor acties die zijn mislukt binnen het bereik "My_Scope":
 
 ```json
 "Filter_array": {
@@ -310,23 +310,23 @@ Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg, waarmee een H
 }
 ```
 
-Hier volgt een gedetailleerde beschrijving van wat er in dit voor beeld gebeurt:
+Hier volgt een gedetailleerde walkthrough die beschrijft wat er in dit voorbeeld gebeurt:
 
-1. Als u het resultaat wilt ophalen uit alle acties in ' My_Scope ', gebruikt de actie **filter matrix** deze filter expressie: `@result('My_Scope')`
+1. Als u het resultaat wilt krijgen van alle acties in My_Scope, gebruikt de actie **Filterarray** de als volgt:`@result('My_Scope')`
 
-1. De voor waarde voor de **filter matrix** is een `@result()` item waarvan de status gelijk is aan `Failed`. Met deze voor waarde wordt de matrix met alle actie resultaten van ' My_Scope ' naar een matrix met alleen de mislukte actie resultaten gefilterd.
+1. De voorwaarde voor **Filterarray** is een `@result()` item `Failed`met een status die gelijk is aan . Met deze voorwaarde filtert u de array met alle actieresultaten van 'My_Scope' tot een array met alleen de mislukte actieresultaten.
 
-1. Een herhalings actie van `For_each` uitvoeren op de *gefilterde matrix* uitvoer. Met deze stap voert u een actie uit voor elk mislukt actie resultaat dat eerder is gefilterd.
+1. Voer `For_each` een lusactie uit op de *gefilterde arrayuitvoer.* Met deze stap wordt een actie uitgevoerd voor elk mislukt actieresultaat dat eerder is gefilterd.
 
-   Als één actie in het bereik mislukt, worden de acties in de `For_each` loop één keer uitgevoerd. Meerdere mislukte acties veroorzaken één actie per fout.
+   Als één actie in het bereik mislukt, worden de acties in de `For_each` lus slechts één keer uitgevoerd. Meerdere mislukte acties veroorzaken één actie per fout.
 
-1. Verzend een HTTP POST op de antwoord tekst van het `For_each` item. Dit is de `@item()['outputs']['body']`-expressie.
+1. Stuur een HTTP-BERICHT op de `For_each` objectresponstekst, de `@item()['outputs']['body']` expressie.
 
-   De shape `@result()` item is hetzelfde als de `@actions()` vorm en kan op dezelfde manier worden geparseerd.
+   De `@result()` itemvorm is hetzelfde als de `@actions()` vorm en kan op dezelfde manier worden ontleed.
 
-1. Voeg twee aangepaste headers toe met de mislukte actie naam (`@item()['name']`) en de mislukte tracking-ID van de client (`@item()['clientTrackingId']`).
+1. Voeg twee aangepaste kopteksten toe`@item()['name']`met de mislukte actienaam`@item()['clientTrackingId']`( ) en de mislukte run client tracking ID ( ).
 
-Ter referentie: Hier volgt een voor beeld van een enkel `@result()` item met daarin de eigenschappen `name`, `body`en `clientTrackingId` die in het vorige voor beeld worden geparseerd. Buiten een `For_each` actie retourneert `@result()` een matrix van deze objecten.
+Voor referentie, hier is een `@result()` voorbeeld van `name`een `body`enkel `clientTrackingId` item, met de , en eigenschappen die zijn ontleed in het vorige voorbeeld. Als `For_each` `@result()` u buiten een actie een array van deze objecten retourneert.
 
 ```json
 {
@@ -358,15 +358,15 @@ Ter referentie: Hier volgt een voor beeld van een enkel `@result()` item met daa
 }
 ```
 
-Als u andere patronen voor uitzonde ringen wilt verwerken, kunt u de eerder beschreven expressies in dit artikel gebruiken. U kunt ervoor kiezen om één actie voor het afhandelen van uitzonde ringen uit te voeren buiten het bereik dat de volledige gefilterde matrix van fouten accepteert en de `For_each` actie verwijderen. U kunt ook andere nuttige eigenschappen van de `\@result()` reactie toevoegen zoals eerder is beschreven.
+Als u verschillende patronen voor het afhandelen van uitzonderingen wilt uitvoeren, u de eerder beschreven expressies in dit artikel gebruiken. U ervoor kiezen om één uitzonderingsverwerkingsactie uit te voeren buiten het `For_each` bereik dat de volledige gefilterde array met fouten accepteert en de actie te verwijderen. U ook andere nuttige `\@result()` eigenschappen van het antwoord opnemen zoals eerder beschreven.
 
 ## <a name="set-up-azure-monitor-logs"></a>Azure Monitor-logboeken instellen
 
-De vorige patronen zijn een uitstekende manier om fouten en uitzonde ringen binnen een uitvoering af te handelen, maar u kunt ook fouten onafhankelijk van de uitvoering identificeren en erop reageren. [Azure monitor](../azure-monitor/overview.md) biedt een eenvoudige manier om alle werk stroom gebeurtenissen te verzenden, inclusief alle uitvoerings-en actie statussen, naar een [log Analytics-werk ruimte](../azure-monitor/platform/data-platform-logs.md), een [Azure-opslag account](../storage/blobs/storage-blobs-overview.md)of [Azure Event hubs](../event-hubs/event-hubs-about.md).
+De vorige patronen zijn een geweldige manier om fouten en uitzonderingen binnen een run te verwerken, maar u ook fouten identificeren en erop reageren die onafhankelijk zijn van de run zelf. [Azure Monitor](../azure-monitor/overview.md) biedt een eenvoudige manier om alle werkstroomgebeurtenissen, inclusief alle run- en actiestatussen, naar een [Log Analytics-werkruimte,](../azure-monitor/platform/data-platform-logs.md) [Azure-opslagaccount](../storage/blobs/storage-blobs-overview.md)of [Azure Event Hubs](../event-hubs/event-hubs-about.md)te verzenden.
 
-Als u de uitvoerings status wilt evalueren, kunt u de logboeken en metrische gegevens controleren of ze publiceren in elk bewakings programma dat u wilt gebruiken. Een mogelijke mogelijkheid is om alle gebeurtenissen via Event Hubs naar [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)te streamen. In Stream Analytics kunt u live-query's schrijven op basis van eventuele afwijkingen, gemiddelden of fouten uit de diagnostische Logboeken. U kunt Stream Analytics gebruiken om gegevens te verzenden naar andere gegevens bronnen, zoals wacht rijen, onderwerpen, SQL, Azure Cosmos DB of Power BI.
+Als u runstatussen wilt evalueren, u de logboeken en statistieken controleren of publiceren in een bewakingstool die u verkiest. Een mogelijke optie is om alle gebeurtenissen via Gebeurtenishubs te streamen naar [Azure Stream Analytics.](https://azure.microsoft.com/services/stream-analytics/) In Stream Analytics u live query's schrijven op basis van afwijkingen, gemiddelden of fouten uit de diagnostische logboeken. U Stream Analytics gebruiken om informatie naar andere gegevensbronnen te verzenden, zoals wachtrijen, onderwerpen, SQL, Azure Cosmos DB of Power BI.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Bekijk hoe een klant fout afhandeling bouwt met Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Meer Logic Apps-voor beelden en-scenario's zoeken](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Bekijk hoe een klant foutafhandeling bouwt met Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Voorbeelden en scenario's voor Logic Apps zoeken](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -1,32 +1,31 @@
 ---
-title: Pagina goed keuringen voor Azure Marketplace
-description: Overzicht van de pagina goed keuringen in Cloud Partner-portal voor Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Goedkeuringspagina voor Azure Marketplace
+description: Overzicht van de pagina Goedkeuringen in Cloud Partner Portal voor Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: de6ad58ebd0442772eddfcf14792bc77cd76aad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8bd00e3b71e74775697a615152885e55703a41fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821534"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288934"
 ---
 # <a name="approvals-page"></a>Pagina voor Goedkeuringen
 
-De pagina [**goed keuringen**](https://cloudpartner.azure.com/#approvals) bevat een lijst met goedgekeurde aanbiedingen, waaronder de naam van de aanbieding, de uitgever, het type aanbieding en de huidige actie.  Goedgekeurde aanbiedingen zijn al gepubliceerd of worden gepubliceerd.  De resultaten kunnen worden gerangschikt op kolom of gefilterd op een opgegeven teken reeks.  In het status gebied onder aan de pagina worden aggregatie-en pagina aantallen weer gegeven, en kunt u tussen lijst pagina's navigeren.  Als u een aanbieding in deze lijst selecteert, wordt de aanbieding in de bijbehorende aanbiedings editor weer gegeven. 
+Op de pagina Goedkeuringen vindt u een lijst met goedgekeurde aanbiedingen, waaronder de naam van de aanbieding, de uitgever, het [**aanbiedingstype**](https://cloudpartner.azure.com/#approvals) en de huidige actie.  Goedgekeurde aanbiedingen worden al gepubliceerd of worden momenteel gepubliceerd.  De resultaten kunnen worden besteld op kolom of gefilterd op een opgegeven tekenreeks.  In het statusgebied onder aan de pagina worden geaggregeerde en paginatellingen weergegeven en u tussen lijstpagina's navigeren.  Als u een aanbieding in deze lijst selecteert, wordt die aanbieding weergegeven in de bijbehorende aanbiedingseditor. 
 
 
-## <a name="example-page"></a>Voorbeeld pagina
+## <a name="example-page"></a>Voorbeeldpagina
 
-De volgende afbeelding toont de pagina **goed keuringen** voor contoso.
+In de volgende afbeelding ziet u de **goedkeuringspagina** voor Contoso.
 
-![Pagina goedgekeurde aanbiedingen](./media/approvals-page1.png)
+![Pagina Goedgekeurde aanbiedingen](./media/approvals-page1.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende navigatie menu balk-item bevat een [pagina alle uitgevers](./cpp-all-publishers-page.md), waarin alle geregistreerde uitgevers worden weer gegeven.
+Het volgende item met de navigatiemenubalk geeft een [pagina Alle uitgevers](./cpp-all-publishers-page.md)weer, waarin alle geregistreerde uitgevers worden weergegeven.

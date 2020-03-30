@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage migreren van gen1 naar Gen2
-description: Migreer Azure Data Lake Storage van gen1 naar Gen2.
+title: Azure Data Lake Storage migreren van Gen1 naar Gen2
+description: Migreer Azure Data Lake Storage van Gen1 naar Gen2.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,203 +8,203 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 245bcac81189ac8aa63f81fbe4ed30655a457bc8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: fb982324b66c5ac0d2db00eb906ed850827bc72e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371847"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79533280"
 ---
-# <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
+# <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van Gen1 naar Gen2
 
-U kunt uw gegevens, werk belastingen en toepassingen migreren van Data Lake Storage Gen1 naar Data Lake Storage Gen2.
+U uw gegevens, workloads en toepassingen migreren van Data Lake Storage Gen1 naar Data Lake Storage Gen2.
 
-Azure Data Lake Storage Gen2 is gebaseerd op [Azure Blob-opslag](storage-blobs-introduction.md) en biedt een reeks mogelijkheden die zijn toegewezen aan Big Data Analytics. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) combineert functies van [Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/index), zoals bestandssysteem semantiek, Directory en beveiliging op bestands niveau en schaal met goedkope, gelaagde opslag, hoge Beschik baarheid/herstel na nood gevallen vanuit [Azure Blob-opslag](storage-blobs-introduction.md).
-
-> [!NOTE]
-> Voor een eenvoudiger lees gemak gebruikt dit artikel de term *gen1* om naar Azure data Lake Storage gen1 te verwijzen en de term *Gen2* om naar Azure data Lake Storage Gen2 te verwijzen.
-
-## <a name="recommended-approach"></a>Aanbevolen benadering
-
-Als u wilt migreren naar Gen2, raden we u aan de volgende benadering uit te voeren.
-
-: heavy_check_mark: stap 1: gereedheid evalueren
-
-: heavy_check_mark: stap 2: migratie voorbereiden
-
-: heavy_check_mark: stap 3: gegevens en werk belastingen van toepassingen migreren
-
-: heavy_check_mark: stap 4: Cutover van gen1 naar Gen2
+Azure Data Lake Storage Gen2 is gebouwd op [Azure Blob-opslag](storage-blobs-introduction.md) en biedt een reeks mogelijkheden die zijn gewijd aan big data-analyses. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) combineert functies van [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), zoals bestandssysteemsemantiek, directory- en bestandsniveaubeveiliging en -schaal met lage kosten, gelaagde opslag, mogelijkheden met hoge beschikbaarheid/noodherstel van Azure [Blob-opslag](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Gen1 en Gen2 zijn verschillende services, er is geen in-place upgrade ervaring, wat opzettelijke migratie nodig is. 
+> Voor eenvoudiger lezen gebruikt dit artikel de term *Gen1* om te verwijzen naar Azure Data Lake Storage Gen1 en de term *Gen2* om te verwijzen naar Azure Data Lake Storage Gen2.
 
-### <a name="step-1-assess-readiness"></a>Stap 1: gereedheid beoordelen
+## <a name="recommended-approach"></a>Aanbevolen aanpak
 
-1. Meer informatie over de [Data Lake Storage Gen2 aanbieding](https://azure.microsoft.com/services/storage/data-lake-storage/); het gaat om voor delen, kosten en algemene architectuur. 
+Om te migreren naar Gen2, raden we de volgende aanpak aan.
 
-2. [Vergelijk de mogelijkheden](#gen1-gen2-feature-comparison) van gen1 met die van Gen2. 
+:heavy_check_mark: Stap 1: Beoordeel de bereidheid
 
-3. Bekijk een lijst met [bekende problemen](data-lake-storage-known-issues.md) om eventuele hiaten in de functionaliteit te beoordelen.
+:heavy_check_mark: Stap 2: Voorbereiden om te migreren
 
-4. Gen2 biedt ondersteuning voor Blob Storage-functies, zoals [Diagnostische logboek registratie](../common/storage-analytics-logging.md), [toegangs lagen](storage-blob-storage-tiers.md)en beleid voor het [levenscyclus beheer van Blob-opslag](storage-lifecycle-management-concepts.md). Als u geïnteresseerd bent in het gebruik van een van deze functies, raadpleegt u het [huidige ondersteunings niveau](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-feature-support).
+:heavy_check_mark: Stap 3: Werkbelasting voor gegevens en toepassingen migreren
 
-5. Bekijk de huidige status van [Azure ecosysteem ondersteuning](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-ecosystem-support) om ervoor te zorgen dat Gen2 alle services ondersteunt waarvan uw oplossingen afhankelijk zijn.
+:heavy_check_mark: Stap 4: Cutover van Gen1 naar Gen2
 
-### <a name="step-2-prepare-to-migrate"></a>Stap 2: migratie voorbereiden
+> [!NOTE]
+> Gen1 en Gen2 zijn verschillende diensten, er is geen in-place upgrade ervaring, opzettelijke migratie-inspanning vereist. 
 
-1. Identificeer de gegevens sets die u wilt migreren.
+### <a name="step-1-assess-readiness"></a>Stap 1: Beoordeel de gereedheid
 
-   Volg deze mogelijkheid om gegevens sets op te schonen die u niet meer gebruikt. Tenzij u van plan bent om al uw gegevens in één keer te migreren, moet u deze tijd volgen om logische gegevens groepen te identificeren die u in fasen kunt migreren.
+1. Meer informatie over het [Data Lake Storage Gen2-aanbod;](https://azure.microsoft.com/services/storage/data-lake-storage/) het zijn voordelen, kosten en algemene architectuur. 
+
+2. [Vergelijk de mogelijkheden](#gen1-gen2-feature-comparison) van Gen1 met die van Gen2. 
+
+3. Bekijk een lijst met [bekende problemen](data-lake-storage-known-issues.md) om eventuele hiaten in functionaliteit te beoordelen.
+
+4. Gen2 ondersteunt Blob-opslagfuncties zoals [diagnostische logboekregistratie,](../common/storage-analytics-logging.md) [toegangslagen](storage-blob-storage-tiers.md)en [blob-opslaglevenscyclusbeheerbeleid](storage-lifecycle-management-concepts.md). Als u interessant bent in het gebruik van een van deze functies, bekijkt u het [huidige ondersteuningsniveau.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)
+
+5. Bekijk de huidige status van [Azure-ecosysteemondersteuning](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) om ervoor te zorgen dat Gen2 alle services ondersteunt waarvan uw oplossingen afhankelijk zijn.
+
+### <a name="step-2-prepare-to-migrate"></a>Stap 2: Voorbereiden om te migreren
+
+1. Identificeer de gegevenssets die u migreert.
+
+   Maak van deze gelegenheid gebruik om gegevenssets op te schonen die u niet meer gebruikt. Tenzij u van plan bent om al uw gegevens in één keer te migreren, neemt u deze tijd om logische groepen gegevens te identificeren die u gefaseerd migreren.
    
-2. Bepaal wat het effect is van een migratie op uw bedrijf.
+2. Bepaal de impact die een migratie heeft op uw bedrijf.
 
-   U kunt bijvoorbeeld overwegen of u elke downtime wilt veroorloven terwijl de migratie plaatsvindt. Deze overwegingen kunnen u helpen bij het identificeren van een geschikt migratie patroon en het kiezen van de meest geschikte hulpprogram ma's.
+   Bedenk bijvoorbeeld of u zich downtime veroorloven terwijl de migratie plaatsvindt. Deze overwegingen kunnen u helpen om een geschikt migratiepatroon te identificeren en de meest geschikte tools te kiezen.
 
-3. Een migratie plan maken. 
+3. Maak een migratieplan. 
 
-   Deze [migratie patronen](#migration-patterns)worden aangeraden. U kunt een van deze patronen kiezen, samen combi neren of een aangepaste eigen patroon ontwerpen.
+   Wij raden deze [migratiepatronen](#migration-patterns)aan. U een van deze patronen kiezen, ze combineren of een eigen patroon ontwerpen.
 
-### <a name="step-3-migrate-data-workloads-and-applications"></a>Stap 3: gegevens, werk belastingen en toepassingen migreren
+### <a name="step-3-migrate-data-workloads-and-applications"></a>Stap 3: Gegevens, workloads en toepassingen migreren
 
-Migreer gegevens, werk belastingen en toepassingen met behulp van het gewenste patroon. We raden u aan scenario's incrementeel te valideren.
+Migreer gegevens, workloads en toepassingen met het patroon dat u verkiest. We raden u aan scenario's stapsgewijs te valideren.
 
-1. [Maak een opslag account](data-lake-storage-quickstart-create-account.md) en schakel de functie voor hiërarchische naam ruimte in. 
+1. [Maak een opslagaccount](data-lake-storage-quickstart-create-account.md) en schakel de functie hiërarchische naamruimte in. 
 
-2. Uw gegevens migreren. 
+2. Migreer uw gegevens. 
 
-3. Configureer [Services in uw workloads](data-lake-storage-integrate-with-azure-services.md) zodat deze verwijzen naar uw Gen2-eind punt. 
+3. Configureer [services in uw workloads](data-lake-storage-integrate-with-azure-services.md) om naar uw Gen2-eindpunt te wijzen. 
    
-4. Toepassingen bijwerken voor het gebruik van Gen2-Api's. Raadpleeg de hand leidingen voor [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [python](data-lake-storage-directory-file-acl-python.md), [Java script](data-lake-storage-directory-file-acl-javascript.md) en [rest](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2). 
+4. Toepassingen bijwerken om Gen2 API's te gebruiken. Zie gidsen voor [.NET,](data-lake-storage-directory-file-acl-dotnet.md) [Java,](data-lake-storage-directory-file-acl-java.md) [Python,](data-lake-storage-directory-file-acl-python.md) [JavaScript](data-lake-storage-directory-file-acl-javascript.md) en [REST](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2). 
    
-5. Scripts bijwerken om Data Lake Storage Gen2 [Power shell-cmdlets](data-lake-storage-directory-file-acl-powershell.md)en [Azure cli-opdrachten](data-lake-storage-directory-file-acl-cli.md)te gebruiken.
+5. Scripts bijwerken om Gegevens Lake Storage Gen2 [PowerShell-cmdlets](data-lake-storage-directory-file-acl-powershell.md)en [Azure CLI-opdrachten](data-lake-storage-directory-file-acl-cli.md)te gebruiken.
    
-6. Zoek naar URI-verwijzingen die de teken reeks bevatten `adl://` in code bestanden, of in Databricks-notebooks, Apache Hive HQL-bestanden of een ander bestand dat wordt gebruikt als onderdeel van uw werk belastingen. Vervang deze verwijzingen door de met [Gen2 geformatteerde URI](data-lake-storage-introduction-abfs-uri.md) van uw nieuwe opslag account. Bijvoorbeeld: de gen1-URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` worden mogelijk `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`. 
+6. Zoek naar URI-verwijzingen die `adl://` de tekenreeks bevatten in codebestanden of in Databricks-notitieblokken, Apache Hive HQL-bestanden of een ander bestand dat wordt gebruikt als onderdeel van uw workloads. Vervang deze verwijzingen door de [Gen2-geformatteerde URI](data-lake-storage-introduction-abfs-uri.md) van uw nieuwe opslagaccount. Bijvoorbeeld: de Gen1 `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` URI: `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`zou kunnen worden . 
 
-7. Configureer de beveiliging van uw account voor op [rollen gebaseerd toegangs beheer (RBAC) rollen](../common/storage-auth-aad-rbac-portal.md), [beveiliging op bestands-en mapniveau](data-lake-storage-access-control.md)en [Azure Storage firewalls en virtuele netwerken](../common/storage-network-security.md).
+7. Configureer de beveiliging van uw account om [RBAC-rollen (Role-based access control),](../common/storage-auth-aad-rbac-portal.md) [beveiliging op bestands- en mapniveau](data-lake-storage-access-control.md)en [Azure Storage-firewalls en virtuele netwerken](../common/storage-network-security.md)op te nemen.
 
-### <a name="step-4-cutover-from-gen1-to-gen2"></a>Stap 4: Cutover van gen1 naar Gen2
+### <a name="step-4-cutover-from-gen1-to-gen2"></a>Stap 4: Cutover van Gen1 naar Gen2
 
-Wanneer u zeker weet dat uw toepassingen en workloads stabiel zijn op Gen2, kunt u Gen2 gaan gebruiken om te voldoen aan uw bedrijfs scenario's. Schakel alle resterende pijp lijnen uit die worden uitgevoerd op gen1 en maak uw gen1-account buiten gebruik. 
+Nadat u er zeker van bent dat uw toepassingen en workloads stabiel zijn op Gen2, u Gen2 gaan gebruiken om aan uw bedrijfsscenario's te voldoen. Schakel de resterende pijplijnen die op Gen1 worden uitgevoerd uit en schakel uw Gen1-account uit. 
 
 <a id="gen1-gen2-feature-comparison" />
 
-## <a name="gen1-vs-gen2-capabilities"></a>Mogelijkheden van gen1 tegenover Gen2
+## <a name="gen1-vs-gen2-capabilities"></a>Gen1 vs Gen2-mogelijkheden
 
-Deze tabel vergelijkt de mogelijkheden van gen1 tot die van Gen2.
+Deze tabel vergelijkt de mogelijkheden van Gen1 met die van Gen2.
 
-|Onderwerp |Gen1   |Gen2 |
+|Onderwerp |Gen1 Gen1   |Gen2 Gen2 |
 |---|---|---|
-|Gegevens kunnen worden geordend|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor bestanden en mappen|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor containers, bestanden en mappen |
-|Geo-redundantie| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [Ra-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Verificatie|[Door AAD beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Service-principals](../../active-directory/develop/app-objects-and-service-principals.md)|[Door AAD beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Service-principals](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Gedeelde toegangs sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
-|Autorisatie|Beheer- [RBAC](../../role-based-access-control/overview.md)<br>Gegevens: [acl's](data-lake-storage-access-control.md)|Beheer – [RBAC](../../role-based-access-control/overview.md)<br>Gegevens- [acl's](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
-|Versleuteling – Data-at-rest|Server zijde: met door [service beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) of door de [klant beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) sleutels|Server zijde: met door [service beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) of door de [klant beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) sleutels|
-|VNET-ondersteuning|[VNET-integratie](../../data-lake-store/data-lake-store-network-security.md)|[Service-eind punten](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [persoonlijke eind punten (open bare preview)](../common/storage-private-endpoints.md)|
-|Ontwikkelaars ervaring|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [python](../../data-lake-store/data-lake-store-data-operations-python.md), [Power shell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure cli](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[Rest](https://review.docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2), [.net](/data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [python](data-lake-storage-directory-file-acl-python.md), [Java script](data-lake-storage-directory-file-acl-javascript.md), [Power shell](data-lake-storage-directory-file-acl-powershell.md), [Azure cli](data-lake-storage-directory-file-acl-cli.md) (in open bare preview)|
-|Diagnostische logboeken|Klassieke logboeken<br>[Azure Monitor geïntegreerd](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klassieke logboeken](../common/storage-analytics-logging.md) (in open bare preview)<br>Integratie van Azure monitor – tijd lijn TBD|
-|Ecosysteem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 en hoger)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 en hoger)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Gegevensorganisatie|[Hiërarchische naamruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor bestanden en mappen|[Hiërarchische naamruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor container-, bestands- en map |
+|Geo-redundantie| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
+|Authentication|[Aad beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Serviceprincipals](../../active-directory/develop/app-objects-and-service-principals.md)|[Aad beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Serviceprincipals](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Gedeelde toegangssleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Autorisatie|Management - [RBAC](../../role-based-access-control/overview.md)<br>Gegevens – [ACL's](data-lake-storage-access-control.md)|Management – [RBAC](../../role-based-access-control/overview.md)<br>Gegevens - [ACL's](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
+|Versleuteling – Gegevens in rust|Serverzijde – met [door Microsoft beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) of [door de klant beheerde](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) sleutels|Serverzijde – met [door Microsoft beheerde](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) of [door de klant beheerde](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) sleutels|
+|Ondersteuning voor VNET|[VNET-integratie](../../data-lake-store/data-lake-store-network-security.md)|[Serviceeindpunten](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Privéeindpunten (openbare preview)](../common/storage-private-endpoints.md)|
+|Ervaring met ontwikkelaars|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [PowerShell](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md) (In openbare preview)|
+|Diagnostische logboeken|Klassieke logboeken<br>[Azure Monitor geïntegreerd](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klassieke logboeken](../common/storage-analytics-logging.md) (In openbare preview)<br>Azure-monitorintegratie – tbd-tijdlijn|
+|Ecosysteem|[HDInsight (3.6),](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) [Azure Databricks (3.1 en hoger),](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html) [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6, 4.0),](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) [Azure Databricks (5.1 en hoger),](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2) [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />
 
-## <a name="gen1-to-gen2-patterns"></a>Gen1 naar Gen2-patronen
+## <a name="gen1-to-gen2-patterns"></a>Gen1 naar Gen2 patronen
 
-Kies een migratie patroon en wijzig dit patroon naar wens.
+Kies een migratiepatroon en wijzig dat patroon indien nodig.
 
 |||
 |---|---|
-|**Lift en SHIFT**|Het eenvoudigste patroon. Ideaal als uw gegevens pijplijnen downtime kunnen veroorloven.|
-|**Incrementele kopie**|Net als bij *liften en verschuiving*, maar met minder downtime. Ideaal voor grote hoeveel heden gegevens die meer moeten worden gekopieerd.|
-|**Dubbele pijp lijn**|Ideaal voor pijp lijnen die geen downtime kunnen bieden.|
-|**Bidirectionele synchronisatie**|Net als bij *dubbele pijp lijn*, maar met een meer gefaseerde benadering die geschikt is voor complexere pijp lijnen.|
+|**Lift en Shift**|Het eenvoudigste patroon. Ideaal als uw gegevenspijplijnen downtime kunnen veroorloven.|
+|**Incrementele kopie**|Vergelijkbaar met *tillen en schakelen,* maar met minder downtime. Ideaal voor grote hoeveelheden gegevens die langer duren om te kopiëren.|
+|**Dubbele pijplijn**|Ideaal voor pijpleidingen die zich geen downtime kunnen veroorloven.|
+|**Bidirectionele synchronisatie**|Vergelijkbaar met *dual pipeline,* maar met een meer gefaseerde aanpak die geschikt is voor meer gecompliceerde pijpleidingen.|
 
-Laten we eens kijken naar elk patroon.
+Laten we eens een kijkje nemen op elk patroon.
  
-### <a name="lift-and-shift-pattern"></a>Patroon voor lift en verschuiving
+### <a name="lift-and-shift-pattern"></a>Lift- en schakelpatroon
 
 Dit is het eenvoudigste patroon.
 
-1. Alle schrijf bewerkingen naar gen1 stoppen.
+1. Stop alle schrijft aan Gen1.
 
-2. Verplaats gegevens van gen1 naar Gen2. We raden u aan [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Acl's kopiëren met de gegevens.
+2. Gegevens verplaatsen van Gen1 naar Gen2. We raden [Azure Data Factory aan.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) ACL's kopiëren met de gegevens.
 
-3. Het opnemen van bewerkingen en workloads naar Gen2.
+3. Wijs bewerkingen en workloads aan Gen2.
 
-4. Gen1 uit bedrijf nemen.
-
-> [!div class="mx-imgBorder"]
-> ![lift-en Shift-patroon](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
-
-#### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Overwegingen voor het gebruik van het lift-en Shift-patroon
-
-: heavy_check_mark: Cutover van gen1 naar Gen2 voor alle werk belastingen tegelijk.
-
-: heavy_check_mark: verwachte uitval tijd tijdens de migratie en de cutover periode.
-
-: heavy_check_mark: ideaal voor pijp lijnen die downtime kunnen veroorloven en alle apps tegelijk kunnen worden bijgewerkt.
-
-### <a name="incremental-copy-pattern"></a>Patroon voor incrementeel kopiëren
-
-1. Begin met het verplaatsen van gegevens van gen1 naar Gen2. We raden u aan [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Acl's kopiëren met de gegevens.
-
-2. Incrementeel nieuwe gegevens kopiëren vanuit gen1.
-
-3. Nadat alle gegevens zijn gekopieerd, stopt u alle schrijf bewerkingen naar gen1 en wijst u werk belastingen toe aan Gen2.
-
-4. Gen1 uit bedrijf nemen.
+4. Ontmanteld gen1.
 
 > [!div class="mx-imgBorder"]
-> ![incrementele Kopieer patroon](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> ![lift- en schakelpatroon](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
 
-#### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Overwegingen voor het gebruik van het patroon voor incrementeel kopiëren:
+#### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>Overwegingen voor het gebruik van het lift- en ploegenpatroon
 
-: heavy_check_mark: Cutover van gen1 naar Gen2 voor alle werk belastingen tegelijk.
+:heavy_check_mark: Cutover van Gen1 naar Gen2 voor alle workloads tegelijk.
 
-: heavy_check_mark: er wordt alleen downtime verwacht tijdens de cutover-periode.
+:heavy_check_mark: Verwacht downtime tijdens de migratie en de cutover periode.
 
-: heavy_check_mark: ideaal voor pijp lijnen waarbij alle apps tegelijk zijn bijgewerkt, maar er meer tijd nodig is voor het kopiëren van de gegevens.
+:heavy_check_mark: Ideaal voor pijplijnen die downtime kunnen veroorloven en alle apps kunnen in één keer worden geüpgraded.
 
-### <a name="dual-pipeline-pattern"></a>Patroon met dubbele pijp lijn
+### <a name="incremental-copy-pattern"></a>Incrementeel kopieerpatroon
 
-1. Verplaats gegevens van gen1 naar Gen2. We raden u aan [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Acl's kopiëren met de gegevens.
+1. Begin met het verplaatsen van gegevens van Gen1 naar Gen2. We raden [Azure Data Factory aan.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) ACL's kopiëren met de gegevens.
 
-2. Nieuwe gegevens opnemen in zowel gen1 als Gen2.
+2. Kopieer stapsgewijs nieuwe gegevens van Gen1.
 
-3. Werk belastingen op Gen2.
+3. Nadat alle gegevens zijn gekopieerd, stopt u alle schrijft naar Gen1 en wijs workloads naar Gen2.
 
-4. Alle schrijf bewerkingen naar gen1 stoppen en vervolgens gen1 uit bedrijf nemen.
-
-> [!div class="mx-imgBorder"]
-> ![dubbele pijplijn patroon](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
-
-#### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Overwegingen voor het gebruik van het patroon met dubbele pijp lijnen:
-
-: heavy_check_mark: gen1-en Gen2-pijp lijnen worden naast elkaar uitgevoerd.
-
-: heavy_check_mark: ondersteunt geen uitval tijd.
-
-: heavy_check_mark: ideaal in situaties waarin uw workloads en toepassingen geen downtime kunnen veroorloven en u kunt opnemen in beide opslag accounts.
-
-### <a name="bi-directional-sync-pattern"></a>Patroon voor bidirectionele synchronisatie
-
-1. Bidirectionele replicatie tussen gen1 en Gen2 instellen. We raden [WanDisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)aan. Het biedt een herstel functie voor bestaande gegevens.
-
-3. Wanneer alle verplaatsingen zijn voltooid, stopt u alle schrijf bewerkingen naar gen1 en schakelt u bidirectionele replicatie uit.
-
-4. Gen1 uit bedrijf nemen.
+4. Ontmanteld gen1.
 
 > [!div class="mx-imgBorder"]
-> ![bidirectionele patroon](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> ![Incrementeel kopieerpatroon](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
-#### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Overwegingen voor het gebruik van het bidirectionele synchronisatie patroon:
+#### <a name="considerations-for-using-the-incremental-copy-pattern"></a>Overwegingen voor het gebruik van het incrementele kopieerpatroon:
 
-: heavy_check_mark: ideaal voor complexe scenario's die betrekking hebben op een groot aantal pijp lijnen en afhankelijkheden waarbij een gefaseerde benadering meer indruk kan maken.  
+:heavy_check_mark: Cutover van Gen1 naar Gen2 voor alle workloads tegelijk.
 
-: heavy_check_mark: migratie is hoog, maar biedt wel ondersteuning naast elkaar voor gen1 en Gen2.
+:heavy_check_mark: Verwacht alleen downtime tijdens de cutover-periode.
+
+:heavy_check_mark: Ideaal voor pijplijnen waarbij alle apps in één keer zijn bijgewerkt, maar de gegevenskopie meer tijd nodig heeft.
+
+### <a name="dual-pipeline-pattern"></a>Patroon van dubbele pijpleidingen
+
+1. Gegevens verplaatsen van Gen1 naar Gen2. We raden [Azure Data Factory aan.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) ACL's kopiëren met de gegevens.
+
+2. Nieuwe gegevens inslikken voor zowel Gen1 als Gen2.
+
+3. Richt workloads op Gen2.
+
+4. Stop alle schrijft aan Gen1 en dan ontmantelen Gen1.
+
+> [!div class="mx-imgBorder"]
+> ![Patroon van dubbele pijpleidingen](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+
+#### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>Overwegingen voor het gebruik van het dubbele pijplijnpatroon:
+
+:heavy_check_mark: Gen1- en Gen2-pijpleidingen lopen naast elkaar.
+
+:heavy_check_mark: Ondersteunt nul downtime.
+
+:heavy_check_mark: Ideaal in situaties waarin uw workloads en applicaties zich geen downtime kunnen veroorloven en u beide opslagaccounts opnemen.
+
+### <a name="bi-directional-sync-pattern"></a>Bidirectioneel synchronisatiepatroon
+
+1. Bidirectionele replicatie instellen tussen Gen1 en Gen2. Wij raden [WanDisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)aan. Het biedt een reparatiefunctie voor bestaande gegevens.
+
+3. Wanneer alle zetten zijn voltooid, stopt u alle schrijft naar Gen1 en schakelt u bidirectionele replicatie uit.
+
+4. Ontmanteld gen1.
+
+> [!div class="mx-imgBorder"]
+> ![Bidirectioneel patroon](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+
+#### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Overwegingen voor het gebruik van het bidirectionele synchronisatiepatroon:
+
+:heavy_check_mark: Ideaal voor complexe scenario's waarbij een groot aantal pijplijnen en afhankelijkheden betrokken zijn waarbij een gefaseerde aanpak logischer kan zijn.  
+
+:heavy_check_mark: Migratie-inspanning is hoog, maar het biedt side-by-side ondersteuning voor Gen1 en Gen2.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de verschillende onderdelen van het instellen van de beveiliging van een opslag account. Zie [Azure Storage Security Guide (Engelstalig](../common/storage-security-guide.md)).
-- Optimaliseer de prestaties van uw Data Lake Store. Zie [Azure data Lake Storage Gen2 optimaliseren voor prestaties](data-lake-storage-performance-tuning-guidance.md)
-- Bekijk de aanbevolen procedures voor het beheren van uw Data Lake Store. Bekijk [Aanbevolen procedures voor het gebruik van Azure data Lake Storage Gen2](data-lake-storage-best-practices.md)
+- Meer informatie over de verschillende onderdelen van het instellen van beveiliging voor een opslagaccount. Zie [azure storage-beveiligingshandleiding](../common/storage-security-guide.md).
+- Optimaliseer de prestaties voor uw Data Lake Store. Zie [Azure Data Lake Storage Gen2 optimaliseren voor prestaties](data-lake-storage-performance-tuning-guidance.md)
+- Bekijk de aanbevolen procedures voor het beheren van uw Data Lake Store. Aanbevolen [procedures voor het gebruik van Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md)
 

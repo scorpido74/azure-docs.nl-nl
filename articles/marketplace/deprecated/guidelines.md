@@ -1,20 +1,19 @@
 ---
-title: Richt lijnen voor Azure Marketplace en AppSource Publisher | Azure
-description: Richt lijnen voor Azure Marketplace en AppSource voor app-en service-uitgevers
+title: Richtlijnen voor Azure Marketplace- en AppSource-uitgever | Azure
+description: Richtlijnen voor Azure Marketplace en AppSource voor app- en service-uitgevers
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281524"
 ---
 # <a name="guidelines"></a>Richtlijnen  
 
@@ -23,52 +22,52 @@ ms.locfileid: "73825938"
 -->
 ---
 
-## <a name="guidelines-for-azure-marketplace"></a>Richt lijnen voor Azure Marketplace  
+## <a name="guidelines-for-azure-marketplace"></a>Richtlijnen voor Azure Marketplace  
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Richt lijnen voor het maken van een micro soft-ID voor het beheren van een Marketplace-account  
-Als meer dan één persoon toegang vereist tot dezelfde micro soft-ID die is gebruikt voor het maken van uw Marketplace-account, moet u deze richt lijnen volgen om u te helpen bij het maken van een bedrijfs account. 
+### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Richtlijnen voor het maken van een Microsoft ID voor het beheren van een marktplaatsaccount  
+Als meer dan één persoon toegang nodig heeft tot dezelfde Microsoft-id die wordt gebruikt om uw marketplace-account te maken, moet u deze richtlijnen volgen om u te helpen een bedrijfsaccount aan te maken. 
 
 >[!IMPORTANT]
->Als u meerdere gebruikers toegang wilt verlenen tot uw micro soft Developer Center-account (dev Center), raadt micro soft u aan Azure Active Directory (Azure AD) te gebruiken om rollen toe te wijzen aan afzonderlijke gebruikers. Elke gebruiker moet toegang hebben tot het account door zich aan te melden met de afzonderlijke Azure AD-referenties. Maak uw micro soft-ID met behulp van een e-mail adres in een domein dat is geregistreerd bij uw bedrijf micro soft raadt aan dat het e-mail bericht niet aan een persoon is toegewezen. Een voorbeeld is `windowsapps@fabrikam.com`.  
->*   Ga voor meer informatie naar het onderwerp [: micro soft-id in een federatieve AD-domein](#issue-microsoft-id-in-an-azure-ad-federated-domain) sectie.  
+>Als u meerdere gebruikers wilt autoriseren om toegang te krijgen tot uw Microsoft Developer Center-account (Dev Center), raadt Microsoft u aan Azure Active Directory (Azure AD) te gebruiken om rollen toe te wijzen aan individuele gebruikers. Elke gebruiker moet toegang krijgen tot het account door zich aan te melden met afzonderlijke Azure AD-referenties. Maak uw Microsoft-id met behulp van een e-mailadres in een domein dat is geregistreerd bij uw bedrijf Microsoft stelt voor om de e-mail niet aan een persoon te toegewezen. Een voorbeeld is `windowsapps@fabrikam.com`.  
+>*   Ga voor meer informatie naar Issue: Microsoft ID in een azure [AD-sectie voor een federatief domein.](#issue-microsoft-id-in-an-azure-ad-federated-domain)  
 
-*   Beperk de toegang tot de micro soft-ID tot het kleinst mogelijke aantal ontwikkel aars. 
-*   Stel een zakelijke e-mail distributie lijst (DL) in die alle gebruikers bevat die toegang moeten hebben tot uw ontwikkelaars centrum-account. Voeg het e-mail adres voor de DL toe aan uw beveiligings gegevens. Met de DL kunnen alle werk nemers in de lijst beveiligings codes ontvangen wanneer daarom wordt gevraagd en de beveiligings gegevens voor uw micro soft-ID worden beheerd. Als het instellen van een distributie lijst niet haalbaar is, moet de eigenaar van het afzonderlijke e-mail account beschikbaar zijn voor toegang tot en delen van de beveiligings code wanneer u hierom wordt gevraagd.  
-    *   De eigenaar wordt bijvoorbeeld gevraagd wanneer nieuwe beveiligings gegevens worden toegevoegd aan de micro soft-ID of wanneer de micro soft-ID wordt geopend vanaf een nieuw apparaat.  
-*   Voeg een telefoon nummer van het bedrijf toe waarvoor geen extensie is vereist en dat toegankelijk is voor belang rijke team leden.  
-*   Over het algemeen moet u ontwikkel aars verplichten om te gebruiken van vertrouwde apparaten om zich aan te melden bij uw ontwikkelaars centrum-account. Alle belang rijke team leden moeten toegang hebben tot de vertrouwde apparaten. Het gebruik van vertrouwde apparaten voor toegang vermindert de vereiste voor het verzenden van beveiligings codes wanneer iemand toegang heeft tot het ontwikkelaars centrum-account.  
-*   Als u verplicht bent om toegang te verlenen tot het ontwikkelaars centrum-account van een niet-vertrouwde computer, moet u de toegang tot Maxi maal vijf ontwikkel aars beperken. In het ideale geval moeten uw ontwikkel aars toegang hebben tot het account van computers die dezelfde geografische en netwerk locatie delen.  
-*   Controleer uw beveiligings gegevens regel matig en controleer deze.  
-    *   Als u uw beveiligings gegevens wilt bekijken, gaat u naar de pagina beveiligings instellingen op [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
+*   Beperk de toegang tot de Microsoft ID tot een zo klein mogelijk aantal ontwikkelaars. 
+*   Stel een zakelijke e-maildistributielijst (DL) in met iedereen die toegang moet krijgen tot uw Dev Center-account. Voeg het DL-e-mailadres toe aan uw beveiligingsgegevens. Met de DL kunnen alle werknemers in de lijst desgevraagd beveiligingscodes ontvangen en de beveiligingsgegevens voor uw Microsoft ID beheren. Als het opzetten van een distributielijst niet haalbaar is, moet de eigenaar van het afzonderlijke e-mailaccount beschikbaar zijn om de beveiligingscode te openen en te delen wanneer daarom wordt gevraagd.  
+    *   De eigenaar wordt bijvoorbeeld gevraagd wanneer nieuwe beveiligingsgegevens worden toegevoegd aan de Microsoft-id of wanneer de Microsoft ID wordt geopend vanaf een nieuw apparaat.  
+*   Voeg een bedrijfstelefoonnummer toe waarvoor geen extensie nodig is en toegankelijk is voor belangrijke teamleden.  
+*   In het algemeen moet u vereisen dat ontwikkelaars vertrouwde apparaten gebruiken om zich aan te melden bij uw Dev Center-account. Alle belangrijke teamleden moeten toegang hebben tot de vertrouwde apparaten. Het gebruik van vertrouwde apparaten om toegang te krijgen vermindert de vereiste voor het verzenden van beveiligingscodes wanneer iemand toegang heeft tot het Dev Center-account.  
+*   Als u toegang moet verlenen tot het Dev Center-account vanaf een niet-vertrouwde computer, moet u de toegang beperken tot niet meer dan vijf ontwikkelaars. Idealiter moeten uw ontwikkelaars toegang krijgen tot het account vanaf computers die dezelfde geografische en netwerklocatie hebben.  
+*   Controleer en verifieer regelmatig uw beveiligingsgegevens.  
+    *   Als u uw beveiligingsgegevens wilt bekijken, gaat u naar de pagina Beveiligingsinstellingen op [account.live.com/proofs/Manage.](https://account.live.com/proofs/Manage)
 
-Uw ontwikkelaars centrum-account moet voornamelijk worden geopend vanaf vertrouwde computers. Het is essentieel dat u toegang krijgt vanaf vertrouwde computers, omdat er een limiet is voor het aantal gegenereerde codes per dev Center-account per week. Als u gebruikmaakt van vertrouwde computers, wordt de veiligste en consistente aanmeldings ervaring ook ingeschakeld. 
-*   Ga voor meer informatie over extra ontwikkelaars centrum-account richtlijnen en beveiliging naar de pagina een ontwikkelaars account openen op [docs.Microsoft.com/Windows/UWP/Publish/opening-a-Developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
+Uw Dev Center-account moet voornamelijk worden geopend vanaf vertrouwde computers. Het is van cruciaal belang dat u toegang hebt vanaf vertrouwde computers, omdat er een limiet is aan het aantal codes dat per Dev Center-account per week wordt gegenereerd. Het gebruik van vertrouwde computers maakt ook de meest veilige en consistente aanmeldingservaring mogelijk. 
+*   Ga voor meer informatie over aanvullende dev Center-accountrichtlijnen en -beveiliging naar de pagina Een ontwikkelaarsaccount openen op [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
 
 ---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Probleem: micro soft-ID in een federatief Azure AD-domein  
-Uw bedrijfs account kan worden federatieve door Azure Active Directory (Azure AD). Als u probeert een micro soft-ID te maken op basis van een zakelijk e-mail adres dat is federatieve met Azure AD, ontvangt u een fout melding. Als u een fout bericht ontvangt, moet u bij uw IT-team controleren of uw account is federatieve via Azure AD. Federatieve e-mail van Azure AD is een bekend probleem en micro soft werkt eraan om dit op te lossen.  
-*   Ga voor meer informatie over Azure AD naar de Azure Active Directory-documentatie pagina bevindt zich op [docs.Microsoft.com/azure/Active-Directory](https://docs.microsoft.com/azure/active-directory).
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Probleem: Microsoft ID in een Azure AD-federatief domein  
+Uw bedrijfsaccount kan worden gefedereerd via Azure Active Directory (Azure AD). Als u een Microsoft ID probeert te maken met een bedrijfse-mailadres dat is gefedereerd met Azure AD, ontvangt u een foutmelding. Als u een fout ontvangt, moet u contact opnemen met uw IT-team om te bevestigen dat uw account wordt gefedereerd via Azure AD. Azure AD federatieve e-mail is een bekend probleem en Microsoft werkt aan het oplossen van het.  
+*   Ga voor meer informatie over Azure AD naar de pagina Azure Active Directory Documentation op [docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory).
 
-Micro soft raadt u aan om een tijdelijke oplossing. Volg deze stappen voor het maken van een nieuw e-mail adres in het `outlook.com` domein en maak een regel om uw communicatie door te sturen.  
-1.  Ga naar de pagina account maken en klik op de koppeling een nieuw e-mail adres ophalen. 
-    *   Als u zich wilt aanmelden voor uw micro soft-ID, gaat u naar de pagina account maken op [signup.live.com/signup](https://signup.live.com/signup).  
-2.  Maak het nieuwe e-mail adres en voer een wacht woord in. Er wordt een nieuw micro soft-ID en e-mail postvak in het `outlook.com` domein gemaakt. Ga door met het registratie proces totdat het account is gemaakt.  
+Microsoft raadt een tijdelijke oplossing aan. Volg deze stappen om een nieuw `outlook.com` e-mailadres in het domein te maken en maak een regel om uw communicatie door te sturen.  
+1.  Ga naar de pagina Account maken en klik op de koppeling Een nieuw e-mailadres ontvangen. 
+    *   Als u zich wilt aanmelden voor uw Microsoft ID, gaat u naar de pagina Account maken op [signup.live.com/signup](https://signup.live.com/signup).  
+2.  Maak het nieuwe e-mailadres en voer een wachtwoord in. Er wordt een nieuwe Microsoft `outlook.com` ID en een e-mailpostvak in het domein gemaakt. Ga door met het registratieproces totdat het account is gemaakt.  
 
     >[!IMPORTANT]
-    >U moet een e-mail adres of distributie lijst gebruiken die is geregistreerd als een micro soft-ID om te registreren in het ontwikkelaars centrum. Micro soft raadt u aan om een distributie lijst te gebruiken voor het verwijderen van de afhankelijkheid van personen. Als uw e-mail adres of distributie lijst niet is geregistreerd, moet u zich nu registreren.    
+    >U moet een e-mailadres of distributielijst gebruiken die is geregistreerd als Microsoft-id om u te registreren in Dev Center. Microsoft raadt u aan een distributielijst te gebruiken om afhankelijkheid van personen te verwijderen. Als uw e-mailadres of distributielijst niet is geregistreerd, moet u zich nu registreren.    
 
     >[!Important]
-    >Als uw e-mail adres zich in het `Microsoft`-bedrijfs domein bevindt, kunt u dit niet gebruiken voor registratie in het ontwikkelaars centrum.  
+    >Als uw e-mailadres zich `Microsoft` in het bedrijfsdomein bevindt, u het niet gebruiken voor registratie in HetV Center.  
 
-3.  Nadat u de micro soft-ID met het e-mail adres van Outlook hebt gemaakt, meldt u zich aan bij uw Outlook-postvak. Een regel voor het door sturen van e-mail maken. De regel voor het door sturen van e-mail moet alle e-mail berichten die in het Outlook-postvak worden ontvangen, verplaatsen naar het e-mail adres in uw domein dat u hebt gemaakt voor het beheren van uw Marketplace-account.  
-    *   Ga naar de Outlook-pagina op [Outlook.live.com/OWA](https://outlook.live.com/owa)om u aan te melden bij uw Outlook-postvak.  
-    *   Ga voor meer informatie over regels voor door sturen naar de regels in Outlook Web app gebruiken om berichten automatisch door te sturen naar een andere account pagina op [support.Office.com/article/use-rules-in-Outlook-Web-app-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
+3.  Nadat u de Microsoft-id met het Outlook-e-mailadres hebt gemaakt, meldt u zich aan bij uw Outlook-postvak. Maak een regel voor het doorsturen van e-mail. De regel voor e-maildoorsturen moet alle e-mails die in het Outlook-postvak zijn ontvangen, verplaatsen naar het e-mailadres in uw domein dat u hebt gemaakt om uw marketplace-account te beheren.  
+    *   Als u zich wilt aanmelden bij uw Outlook-postvak, gaat u naar de Outlook-pagina op [outlook.live.com/owa](https://outlook.live.com/owa).  
+    *   Ga voor meer informatie over doorstuurregels naar de regels gebruiken in Outlook Web App om berichten automatisch door te sturen naar een andere accountpagina op [support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
 
-1.  De doorstuur regel verzendt alle e-mail en communicaties die zijn ontvangen in het Outlook-e-mail account naar het e-mail adres in een domein dat bij uw bedrijf is geregistreerd. Uw `outlook.com`-e-mail adres moet worden gebruikt voor verificatie in zowel het ontwikkelaars centrum als Cloud Partner-portal.  
+1.  De doorstuurregel stuurt alle e-mail en communicatie die in het E-mailaccount van Outlook zijn ontvangen naar het e-mailadres in een domein dat is geregistreerd bij uw bedrijf. Uw `outlook.com` e-mailadres moet worden gebruikt om te verifiëren in zowel Dev Center als Cloud Partner Portal.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*   Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) . 
+*   Ga naar de pagina [Azure Marketplace en AppSource Publisher Guide.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) 
  
 ---

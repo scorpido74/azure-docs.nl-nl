@@ -1,7 +1,7 @@
 ---
-title: Trainen met azureml-gegevens sets
+title: Trainen met azureml-datasets
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van gegevens sets in training
+description: Meer informatie over het gebruik van gegevenssets in training
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283496"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Trainen met gegevenssets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel vindt u informatie over de twee manieren om [Azure machine learning gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) te gebruiken in een externe experiment-trainings uitvoering zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden.
+In dit artikel leert u de twee manieren om [Azure Machine Learning-gegevenssets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) te gebruiken in een externe experimenttraining zonder u zorgen te maken over verbindingstekenreeksen of gegevenspaden.
 
-- Optie 1: als u gestructureerde gegevens hebt, maakt u een TabularDataset en gebruikt u deze rechtstreeks in uw trainings script.
+- Optie 1: Als u gestructureerde gegevens hebt, maakt u een TabularDataset en gebruikt u deze rechtstreeks in uw trainingsscript.
 
-- Optie 2: als u niet-gestructureerde gegevens hebt, maakt u een FileDataset en koppelt of downloadt u bestanden naar een externe Compute voor training.
+- Optie 2: Als u ongestructureerde gegevens hebt, maakt u een FileDataset en monteert of downloadt u bestanden naar een externe computervoor training.
 
-Azure Machine Learning gegevens sets bieden een naadloze integratie met Azure Machine Learning trainings producten zoals [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) en [Azure machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
+Azure Machine Learning-gegevenssets bieden een naadloze integratie met Azure Machine Learning-trainingsproducten zoals [ScriptRun,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py) [Estimator,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) en [Azure Machine Learning-pijplijnen.](how-to-create-your-first-pipeline.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u gegevens sets wilt maken en trainen, hebt u het volgende nodig:
+Als u gegevenssets wilt maken en trainen, hebt u het:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 
-* Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
+* Een [Azure Machine Learning-werkruimte](how-to-manage-workspace.md).
 
-* De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), waaronder het pakket met de azureml-gegevens sets.
+* De [Azure Machine Learning SDK voor Python geïnstalleerd,](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)die de azureml-datasets pakket omvat.
 
 > [!Note]
-> Voor sommige verzamelings klassen zijn afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
+> Sommige gegevenssetklassen hebben afhankelijkheden van het [azureml-dataprep-pakket.](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) Voor Linux-gebruikers worden deze klassen alleen ondersteund op de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Optie 1: gegevens sets rechtstreeks in trainings scripts gebruiken
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>Optie 1: Gegevenssets rechtstreeks gebruiken in trainingsscripts
 
-In dit voor beeld maakt u een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en gebruikt u deze als directe invoer voor uw `estimator`-object voor training. 
+In dit voorbeeld maakt u een [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en gebruikt `estimator` u deze als directe invoer voor uw object voor training. 
 
-### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
+### <a name="create-a-tabulardataset"></a>Een tabeltabelsetmaken
 
-Met de volgende code wordt een niet-geregistreerde TabularDataset gemaakt van een web-URL. U kunt ook gegevens sets maken op basis van lokale bestanden of paden in gegevens opslag. Meer informatie over [het maken van gegevens sets](https://aka.ms/azureml/howto/createdatasets).
+Met de volgende code wordt een niet-geregistreerde TabularDataset van een web-url. U ook gegevenssets maken van lokale bestanden of paden in datastores. Meer informatie over [het maken van gegevenssets](https://aka.ms/azureml/howto/createdatasets).
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -57,11 +57,11 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-### <a name="access-the-input-dataset-in-your-training-script"></a>Toegang tot de invoer gegevensset in uw trainings script
+### <a name="access-the-input-dataset-in-your-training-script"></a>Toegang tot de invoergegevensset in uw trainingsscript
 
-TabularDataset-objecten bieden de mogelijkheid om de gegevens te laden in een Panda of Spark data frame, zodat u kunt werken met de vertrouwde gegevens voorbereiding en-trainings bibliotheken. Als u gebruik wilt maken van deze mogelijkheid, kunt u een TabularDataset door geven als de invoer in uw trainings configuratie en deze vervolgens ophalen in uw script.
+Tabelmapdataset-objecten bieden de mogelijkheid om de gegevens in een panda's of spark DataFrame te laden, zodat u werken met bekende gegevensvoorbereidings- en trainingsbibliotheken. Als u deze mogelijkheid wilt benutten, u een TabularDataset als invoer in uw trainingsconfiguratie doorgeven en deze ophalen in uw script.
 
-Hiertoe opent u de invoer gegevensset via het [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) -object in uw trainings script en gebruikt u de methode [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) . 
+Om dit te doen, toegang [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) tot de invoerset [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) via het object in uw trainingsscript en gebruik de methode. 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -75,17 +75,17 @@ dataset = run.input_datasets['titanic']
 df = dataset.to_pandas_dataframe()
 ```
 
-### <a name="configure-the-estimator"></a>De Estimator configureren
+### <a name="configure-the-estimator"></a>De schatter configureren
 
-Een [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -object wordt gebruikt om de uitvoering van het experiment in te dienen. Azure Machine Learning heeft vooraf geconfigureerde schattingen voor algemene machine learning frameworks, evenals een algemene Estimator.
+Een [schatterobject](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) wordt gebruikt om de experimentrun in te dienen. Azure Machine Learning heeft vooraf geconfigureerde schatters voor veelgebruikte machine learning-frameworks en een generieke schatter.
 
-Deze code maakt een Gene riek Estimator-object, `est`, dat aangeeft
+Met deze code wordt een `est`algemeen schatterobject gemaakt, dat
 
-* Een script Directory voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
-* Het trainings script, *train_titanic. py*.
-* De invoer gegevensset voor training, `titanic`. `as_named_input()` is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen naam in uw trainings script. 
-* Het reken doel voor het experiment.
-* De omgevings definitie voor het experiment.
+* Een scriptmap voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
+* Het trainingsscript, *train_titanic.py*.
+* De invoergegevensset `titanic`voor training, . `as_named_input()`is vereist, zodat de invoergegevensset kan worden verwezen met de toegewezen naam in uw trainingsscript. 
+* Het rekendoel voor het experiment.
+* De omgevingsdefinitie voor het experiment.
 
 ```Python
 est = Estimator(source_directory=script_folder,
@@ -101,19 +101,19 @@ experiment_run.wait_for_completion(show_output=True)
 ```
 
 
-## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Optie 2: bestanden koppelen aan een extern Compute-doel
+## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Optie 2: Bestanden monteren naar een extern rekendoel
 
-Als u uw gegevens bestanden beschikbaar wilt maken voor het reken doel voor training, gebruikt u [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) om bestanden te koppelen of te downloaden waarnaar wordt verwezen.
+Als u uw gegevensbestanden beschikbaar wilt maken op het rekendoel voor training, gebruikt u [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) om bestanden te monteren of te downloaden die door het apparaat worden verwezen.
 
-### <a name="mount-vs-download"></a>Koppeling versus downloaden
+### <a name="mount-vs-download"></a>Mount vs. Downloaden
 
-Het koppelen of downloaden van bestanden van een indeling wordt ondersteund voor gegevens sets die zijn gemaakt op basis van Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. 
+Het monteren of downloaden van bestanden van elke indeling wordt ondersteund voor gegevenssets die zijn gemaakt met Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database voor PostgreSQL. 
 
-Wanneer u een gegevensset koppelt, koppelt u de bestanden waarnaar wordt verwezen door de gegevensset naar een directory (koppel punt) en maakt u deze beschikbaar op het berekenings doel. Koppelen wordt ondersteund voor op Linux gebaseerde berekeningen, waaronder Azure Machine Learning compute, virtual machines en HDInsight. Wanneer u een gegevensset downloadt, worden alle bestanden waarnaar wordt verwezen door de gegevensset gedownload naar het Compute-doel. Downloaden wordt ondersteund voor alle reken typen. 
+Wanneer u een gegevensset monteert, koppelt u de bestanden waarnaar de gegevensset verwijst toe aan een map (bevestigingspunt) en maakt u deze beschikbaar op het rekendoel. Montage wordt ondersteund voor op Linux gebaseerde computes, waaronder Azure Machine Learning Compute, virtuele machines en HDInsight. Wanneer u een gegevensset downloadt, worden alle bestanden waarnaar de gegevensset verwijst, gedownload naar het rekendoel. Downloaden wordt ondersteund voor alle compute types. 
 
-Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset, en uw berekenings schijf kan overeenkomen met uw volledige gegevensset, wordt het downloaden aanbevolen om de overhead van streaming-gegevens van opslag services te voor komen. Als uw gegevens grootte de grootte van de berekenings schijf overschrijdt, is downloaden niet mogelijk. Voor dit scenario wordt u aangeraden te koppelen, omdat alleen de gegevens bestanden die door het script worden gebruikt, worden geladen op het moment van verwerking.
+Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset en uw compute disk in uw volledige gegevensset past, wordt downloaden aanbevolen om de overhead van streaminggegevens van opslagservices te voorkomen. Als de grootte van uw gegevens groter is dan de grootte van de rekenschijf, is downloaden niet mogelijk. Voor dit scenario raden we aan om te worden gemonteerd, omdat alleen de gegevensbestanden die door uw script worden gebruikt, worden geladen op het moment van verwerking.
 
-Met de volgende code worden `dataset` gekoppeld aan de map Temp op `mounted_path`
+De volgende code `dataset` wordt gemonteerd op de tijdelijke map op`mounted_path`
 
 ```python
 import tempfile
@@ -129,9 +129,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
-### <a name="create-a-filedataset"></a>Een FileDataset maken
+### <a name="create-a-filedataset"></a>Een Bestandssetgegevensmaken
 
-In het volgende voor beeld wordt een niet-geregistreerde FileDataset gemaakt op basis van web-url's. Meer informatie over [het maken van gegevens sets](https://aka.ms/azureml/howto/createdatasets) van andere bronnen.
+In het volgende voorbeeld wordt een niet-geregistreerde FileDataset van weburls gemaakt. Meer informatie over het maken van [gegevenssets](https://aka.ms/azureml/howto/createdatasets) uit andere bronnen.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -145,11 +145,11 @@ web_paths = [
 mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
-### <a name="configure-the-estimator"></a>De Estimator configureren
+### <a name="configure-the-estimator"></a>De schatter configureren
 
-Naast het door geven van de gegevensset via de para meter `inputs` in de Estimator, kunt u de gegevensset ook door geven via `script_params` en het gegevenspad (koppel punt) in uw trainings script ophalen via argumenten. Op deze manier kunt u uw trainings script onafhankelijk van de azureml-SDK blijven gebruiken. Met andere woorden, u kunt hetzelfde trainings script gebruiken voor lokale fout opsporing en externe training op elk cloud platform.
+Naast het doorgeven `inputs` van de dataset via de parameter in `script_params` de schatter, u de gegevensset ook doorgeven en het gegevenspad (montagepunt) in uw trainingsscript via argumenten krijgen. Op deze manier u uw trainingsscript onafhankelijk houden van azureml-sdk. Met andere woorden, u hetzelfde trainingsscript gebruiken voor lokale debuggen en externe training op elk cloudplatform.
 
-Een [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) Estimator-object wordt gebruikt om de run for scikit-experimenten te verzenden. Meer informatie over training met de [SKlearn Estimator](how-to-train-scikit-learn.md).
+Een [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) SKLearn-schatterobject wordt gebruikt om de run in te dienen voor scikit-learn-experimenten. Meer informatie over trainen met de [SKlearn-schatter](how-to-train-scikit-learn.md).
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -171,9 +171,9 @@ run = experiment.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>De gegevens in uw trainings script ophalen
+### <a name="retrieve-the-data-in-your-training-script"></a>De gegevens ophalen in uw trainingsscript
 
-Nadat u de uitvoering hebt verzonden, worden gegevens bestanden waarnaar wordt verwezen door de `mnist` gegevensset gekoppeld aan het Compute-doel. De volgende code laat zien hoe u de gegevens in uw script kunt ophalen.
+Nadat u de run hebt verzonden, worden gegevensbestanden die door de `mnist` gegevensset worden verwezen, gemonteerd op het rekendoel. In de volgende code ziet u hoe u de gegevens in uw script ophaalt.
 
 ```Python
 %%writefile $script_folder/train_mnist.py
@@ -207,14 +207,14 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
-## <a name="notebook-examples"></a>Voor beelden van notebooks
+## <a name="notebook-examples"></a>Voorbeelden van notitieblokken
 
-De [notitie blokken](https://aka.ms/dataset-tutorial) van de gegevensset tonen en uitvouwen op concepten in dit artikel.
+De [gegevenssetnotitieblokken](https://aka.ms/dataset-tutorial) tonen en breiden concepten uit in dit artikel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Machine learning modellen automatisch trainen](how-to-auto-train-remote.md) met TabularDatasets
+* [Train machine learning-modellen](how-to-auto-train-remote.md) automatisch met TabularDatasets
 
-* [Classificatie modellen voor installatie kopieën trainen](https://aka.ms/filedataset-samplenotebook) met FileDatasets
+* [Classificatiemodellen voor schermafbeeldingen](https://aka.ms/filedataset-samplenotebook) met Bestandsdatasets
 
-* [Train met gegevens sets met behulp van pijp lijnen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [Trainen met gegevenssets met behulp van pijplijnen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

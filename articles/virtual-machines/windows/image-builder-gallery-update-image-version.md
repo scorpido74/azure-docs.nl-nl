@@ -1,28 +1,28 @@
 ---
-title: Een nieuwe installatie kopie versie maken op basis van een bestaande installatie kopie versie met behulp van Azure Image Builder (preview)
-description: Maak een nieuwe VM-installatie kopie versie van een bestaande installatie kopie versie met behulp van Azure Image Builder.
+title: Een nieuwe afbeeldingsversie maken op basis van een bestaande afbeeldingsversie met Azure Image Builder (voorbeeld)
+description: Maak een nieuwe VM-afbeeldingsversie van een bestaande afbeeldingsversie met Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 160de4521f4035ba3abd01137955cafc27071a05
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 60a37588ddcac339d9545fb6f597ef7bdc17ccb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247364"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Voor beeld: een nieuwe VM-installatie kopie maken van een bestaande installatie kopie versie met behulp van Azure Image Builder
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Voorbeeld: een nieuwe VERSIE van de VM-afbeelding maken op basis van een bestaande afbeeldingsversie met Azure Image Builder
 
-In dit artikel wordt beschreven hoe u een bestaande versie van een installatie kopie in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md)kunt maken, hoe u deze kunt bijwerken en hoe u deze publiceert als een nieuwe installatie kopie versie naar de galerie.
+In dit artikel ziet u hoe u een bestaande afbeeldingsversie in een [gedeelde afbeeldingsgalerie kunt](shared-image-galleries.md)gebruiken, deze bijwerken en publiceren als een nieuwe afbeeldingsversie naar de galerie.
 
-Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateforSIGfromWinSIG. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
+We gebruiken een voorbeeld .json-sjabloon om de afbeelding te configureren. De .json bestand dat we gebruiken is hier: [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 > [!IMPORTANT]
-> Azure Image Builder is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Azure Image Builder bevindt zich momenteel in een openbare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
 ## <a name="register-the-features"></a>De functies registreren
 Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe functie registreren.
@@ -31,7 +31,7 @@ Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe fu
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Controleer de status van de functie registratie.
+Controleer de status van de functieregistratie.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
@@ -45,7 +45,7 @@ az provider show -n Microsoft.Storage | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 ```
 
-Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
+Als ze niet zeggen geregistreerd, voer het volgende uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -56,9 +56,9 @@ az provider register -n Microsoft.Compute
 
 ## <a name="set-variables-and-permissions"></a>Variabelen en machtigingen instellen
 
-Als u [een installatie kopie maken hebt gebruikt en naar een galerie met gedeelde installatie kopieën hebt gedistribueerd](image-builder-gallery.md) om uw gedeelde galerie met installatie kopieën te maken, hebt u de variabelen die we nodig hebben, al gemaakt. Als dat niet het geval is, moet u een aantal variabelen instellen die voor dit voor beeld moeten worden gebruikt.
+Als je [Een afbeelding maken en distribueren naar een gedeelde afbeeldingsgalerie](image-builder-gallery.md) hebt gebruikt om je gedeelde afbeeldingsgalerie te maken, heb je al de variabelen gemaakt die we nodig hebben. Zo niet, dan u instellen een aantal variabelen worden gebruikt voor dit voorbeeld.
 
-Voor de preview-versie kan de opbouw functie voor afbeeldingen alleen het maken van aangepaste installatie kopieën in dezelfde resource groep als de door de bron beheerde installatie kopie worden ondersteund. Werk de naam van de resource groep in dit voor beeld bij naar dezelfde resource groep als de door de bron beheerde installatie kopie.
+Voor Preview ondersteunt imagebuilder alleen het maken van aangepaste afbeeldingen in dezelfde resourcegroep als de bronbeheerde afbeelding. Werk de naam van de brongroep in dit voorbeeld bij om dezelfde resourcegroep te zijn als de bronbeheerde afbeelding.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -78,13 +78,13 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met behulp van `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U dit `az account show | grep id`krijgen met behulp van.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
 ```
 
-Down load de versie van de installatie kopie die u wilt bijwerken.
+Download de afbeeldingsversie die u wilt bijwerken.
 
 ```azurecli-interactive
 sigDefImgVersionId=$(az sig image-version list \
@@ -95,7 +95,7 @@ sigDefImgVersionId=$(az sig image-version list \
 ```
 
 
-Als u al beschikt over uw eigen gedeelde galerie met installatie kopieën en u het vorige voor beeld niet hebt gevolgd, moet u machtigingen voor de opbouw functie voor installatie kopieën toewijzen om toegang te krijgen tot de resource groep, zodat deze toegang heeft tot de galerie.
+Als u al uw eigen gedeelde afbeeldingsgalerie hebt en het vorige voorbeeld niet hebt gevolgd, moet u machtigingen toewijzen voor Image Builder om toegang te krijgen tot de brongroep, zodat deze toegang heeft tot de galerie.
 
 
 ```azurecli-interactive
@@ -106,11 +106,11 @@ az role assignment create \
 ```
 
 
-## <a name="modify-helloimage-example"></a>HelloImage-voor beeld wijzigen
-U kunt het voor beeld bekijken dat we graag gebruiken door het JSON-bestand hier te openen: [helloImageTemplateforSIGfromSIG. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) samen met de [verwijzing naar de installatie kopie Builder-sjabloon](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+## <a name="modify-helloimage-example"></a>Voorbeeld van helloImage wijzigen
+U het voorbeeld dat we gaan gebruiken bekijken door het .json-bestand hier te openen: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) samen met de [sjabloonverwijzing Image Builder.](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
 
 
-Down load het. json-voor beeld en configureer dit met de variabelen. 
+Download het voorbeeld .json en configureer het met uw variabelen. 
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
@@ -126,7 +126,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromWinSI
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Verzend de configuratie van de installatie kopie naar de VM Image Builder-service.
+Verzend de afbeeldingsconfiguratie naar de VM Image Builder-service.
 
 ```azurecli-interactive
 az resource create \
@@ -137,7 +137,7 @@ az resource create \
     -n imageTemplateforSIGfromWinSIG01
 ```
 
-Start het maken van de installatie kopie.
+Start de afbeeldingsopbouw.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -147,7 +147,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Wacht totdat de installatie kopie is gemaakt en replicatie voordat u verdergaat met de volgende stap.
+Wacht tot de afbeelding is gebouwd en replicatie voordat u doorgaat naar de volgende stap.
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
@@ -162,18 +162,18 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>De aanpassing controleren
-Maak een Extern bureaublad verbinding met de virtuele machine met behulp van de gebruikers naam en het wacht woord die u hebt ingesteld tijdens het maken van de virtuele machine. Open een opdracht prompt in de virtuele machine en typ het volgende:
+## <a name="verify-the-customization"></a>De aanpassing verifiëren
+Maak een verbinding met Extern bureaublad met de vm met de gebruikersnaam en het wachtwoord die u hebt ingesteld toen u de virtuele machine maakte. Open in de VM een cmd-prompt en typ:
 
 ```console
 dir c:\
 ```
 
-Nu ziet u twee mappen:
-- `buildActions` dat is gemaakt in de eerste versie van de installatie kopie.
-- `buildActions2` dat is gemaakt als onderdeel van het bijwerken van de eerste versie van de installatie kopie om de versie van de tweede installatie kopie te maken.
+Je zou nu twee mappen moeten zien:
+- `buildActions`die is gemaakt in de eerste afbeeldingsversie.
+- `buildActions2`die is gemaakt als onderdeel van het bijwerken van de eerste afbeeldingsversie om de tweede afbeeldingsversie te maken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de onderdelen van het JSON-bestand dat in dit artikel wordt gebruikt [Image Builder-sjabloon verwijzing](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Zie Sjabloonverwijzing voor [imagebuilder](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over de onderdelen van het .json-bestand dat in dit artikel wordt gebruikt.

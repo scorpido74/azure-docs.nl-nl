@@ -1,79 +1,79 @@
 ---
-title: Host uw bron code voor uw mobiele toepassing in de Cloud met GitHub en Azure DevOps
-description: Meer informatie over de services voor het hosten van uw mobiele toepassings code in de Cloud met micro soft-Services.
-author: elamalani
+title: Host uw broncode van uw mobiele toepassing in de cloud met GitHub en Azure DevOps
+description: Meer informatie over de services voor het hosten van uw mobiele toepassingscode in de cloud met Microsoft-services.
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 8662b9f77614339ff514fa4fcf97dc1ee8fc7417
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 66d8980ab53010af0703d789fbe791c60a32052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240965"
 ---
-# <a name="cloud-hosted-source-code-management-services"></a>In de Cloud gehoste bron code beheer Services
-Als u ontwikkel teams hebt met meerdere team leden die aan dezelfde code basis werken, moet u een geschikte plaats vinden om uw code te hosten. Door de gegevens op te slaan in de Cloud en een centrale opslag plaats te hebben, kan iedereen de code bestanden uploaden, bewerken en beheren. Ze kunnen ook communiceren met andere ontwikkel aars op projecten. De code kan gemakkelijk toegankelijk zijn, ongeacht waar u zich bevindt, op voor waarde dat u een Internet verbinding hebt.
+# <a name="cloud-hosted-source-code-management-services"></a>Cloud-gehoste broncodebeheerservices
+Als je ontwikkelteams hebt met meerdere teamleden die op dezelfde codebasis werken, moet je een geschikte plek vinden om je code te hosten. Door de gegevens op te slaan in de cloud en een gecentraliseerde opslagplaats te hebben, kan iedereen de codebestanden uploaden, bewerken en beheren. Ze kunnen ook communiceren met andere ontwikkelaars op projecten. De code kan gemakkelijk toegankelijk zijn, ongeacht waar u zich bevindt, zolang u een internetverbinding hebt.
 
-Het hosten van Clouds is veel eenvoudiger dan on-premises opties. Hiervoor is minder hardwareconfiguratie vereist en kunnen organisaties het implementatie proces op een flexibeler manier volt ooien.
+Cloudhosting is veel eenvoudiger dan on-premises opties. Het vereist minder hardwareconfiguratie en stelt organisaties in staat om het implementatieproces op een flexibelere manier te voltooien.
 
-## <a name="benefits-of-hosting-source-code-in-the-cloud"></a>Voor delen van het hosten van bron code in de Cloud
-- **Gecentraliseerde Cloud opslag:** Bekijk en beheer uw gegevens vanaf elke locatie.
-- **Betere samen werking en schone code:** Houd code bij in teams en beheer projecten om de continue levering van uitstekende software te garanderen.
-- **Het is gemakkelijker om het volgende te doen:** U kunt eenvoudig bijdragen aan uw projecten.
-- **Snellere release cyclus:** Sneller werken in uw teams en eenvoudig bijdragen aan uw projecten.
-- **Kosten verlagen:** U hoeft zich geen zorgen te maken over het onderhouden van uw eigen hardware, servers, VPN, enzovoort.
+## <a name="benefits-of-hosting-source-code-in-the-cloud"></a>Voordelen van het hosten van broncode in de cloud
+- **Gecentraliseerde cloudopslag:** Bekijk en beheer uw gegevens vanaf elke locatie.
+- **Betere samenwerking en schonere code:** Houd code binnen teams bij en beheer projecten om de continue levering van uitstekende software te garanderen.
+- **Makkelijker om mee te doen:** Draag eenvoudig bij aan uw projecten.
+- **Snellere releasecyclus:** Werk sneller in uw teams en draag eenvoudig bij aan uw projecten.
+- **Verlaag de kosten:** Maak je geen zorgen over het onderhouden van je eigen hardware, servers, VPN, enzovoort.
 
-Gebruik de volgende services voor het hosten van uw toepassings gegevens in de Cloud.
+Gebruik de volgende services om uw toepassingsgegevens in de cloud te hosten.
 
 ## <a name="github"></a>GitHub
-[Github](https://github.com/) is een open-source hosting service voor opslag plaatsen die als host fungeert voor broncode projecten in verschillende programmeer talen. GitHub houdt de verschillende wijzigingen bij die zijn aangebracht in elke iteratie.
+[GitHub](https://github.com/) is een open-source repository hosting service die broncode projecten hosts in een verscheidenheid van verschillende programmeertalen. GitHub houdt de verschillende wijzigingen bij die in elke iteratie zijn aangebracht.
 
 **Belangrijke functies**
-- Gebruik code hosting om al uw code op één plek te laten staan. Persoonlijke, open bare en open source-opslag plaatsen zijn allemaal voorzien van hulpprogram ma's waarmee u de code van de host, versie en release kunt helpen.
-- Code controleren en de ingebouwde beoordelings hulpprogramma's gebruiken om code een essentieel onderdeel van het proces van een team te laten beoordelen:
-    - Filialen beveiligen, wijzigingen Voorst Ellen en beoordelingen aanvragen.
-    - Spot verschillen, commentaar in context en duidelijke feedback krijgen.
-- U kunt in een vroeg stadium een coördinaat maken en meer doen met de project management tools van GitHub:
-    - Bekijk de grote afbeelding van het project.
-    - Gebruik taak borden die direct naast uw code in GitHub zijn.
-    - Sleep kaarten om problemen of pull-aanvragen aan team leden toe te wijzen.
-    - Stel mijl palen in om de voortgang te organiseren en bij te houden.
-    - Schrijf notities om ideeën vast te leggen die nuttig kunnen zijn, maar niet horen bij een bepaald probleem of een pull-aanvraag.
-- U kunt eenvoudig de juiste hulpprogram ma's ontdekken en kiezen voor betere communicatie en automatisering van werk door toepassingen te kopen van [github Marketplace](https://github.com/marketplace).
-- Teams beheren en uitbreiden met behulp van: 
-    - Gebruikers rollen om teams en toegangs machtigingen te organiseren.
-    - Hulp middelen voor discussie threads om gesp rekken over het onderwerp en team gericht te blijven.
-    - Communautaire richt lijnen om snel nieuwe team leden met een account in te stellen.
-- Blader door populaire projecten om ze te volgen.
-- Netwerk en leer van anderen in de branche.
+- Gebruik codehosting om al je code op één plek te houden. Private, publieke en open-source repositories zijn allemaal uitgerust met tools om u te helpen hosten, versie, en release code.
+- Controleer de code en gebruik de ingebouwde beoordelingstools om codecontrole een essentieel onderdeel van het proces van elk team te maken:
+    - Bescherm branches, stel wijzigingen voor en vraag beoordelingen aan.
+    - Zoek verschillen, commentaar in context en krijg duidelijke feedback.
+- Coördineer vroeg, blijf op één lijn en krijg meer gedaan met de projectbeheertools van GitHub:
+    - Zie het grote plaatje van het project.
+    - Gebruik taakborden die direct naast uw code in GitHub staan.
+    - Sleep kaarten om problemen toe te wijzen of aanvragen op te vragen aan teamleden.
+    - Stel mijlpalen in om de voortgang te organiseren en bij te houden.
+    - Schrijf notities om ideeën vast te leggen die nuttig kunnen zijn, maar niet tot een bepaald probleem of pull-verzoek behoren.
+- Ontdek en kies eenvoudig de juiste tools voor betere communicatie en automatisering van werk door applicaties te kopen bij [GitHub Marketplace.](https://github.com/marketplace)
+- Teams beheren en laten groeien met behulp van: 
+    - Gebruikersrollen om teams te organiseren en toegangsmachtigingen te krijgen.
+    - Discussiethread-tools om gesprekken op onderwerp en teamgericht te houden.
+    - Communityrichtlijnen om snel nieuwe teamleden in te stellen met een account.
+- Blader en ster populaire projecten om ze te volgen.
+- Netwerk en leren van anderen in de industrie.
 
-**Referentie**
-- [GitHub](https://github.com/)
-- [GitHub-hand leidingen](https://guides.github.com/)
-- [GitHub Community-Forum](https://github.community/)
+**Verwijzingen**
+- [GitHub GitHub](https://github.com/)
+- [GitHub-gidsen](https://guides.github.com/)
+- [GitHub-communityforum](https://github.community/)
 - [GitHub Marketplace](https://github.com/marketplace)
 
 ## <a name="azure-devops"></a>Azure DevOps
-[Azure DevOps](https://azure.microsoft.com/services/devops/) ondersteunt [Azure opslag plaatsen](https://azure.microsoft.com/services/devops/repos/) en [Team Foundation Version Control (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) als broncode beheer opties. Het heeft onbeperkte gratis privé-opslag plaatsen met revisies op het samen stellen van code, Geavanceerd bestands beheer, zoeken naar code en vertakkings beleid om code van hoge kwaliteit te garanderen. Azure opslag plaatsen is ideaal voor kleine projecten en grote organisaties die systeem eigen Azure Active Directory ondersteuning en geavanceerde beleids regels nodig hebben.
+[Azure DevOps](https://azure.microsoft.com/services/devops/) ondersteunt [Azure Repos](https://azure.microsoft.com/services/devops/repos/) en [Team Foundation Version Control (TFVC)](https://docs.microsoft.com/azure/devops/repos/tfvc/index?view=azure-devops) als bronbeheeropties. Het heeft onbeperkte gratis privérepositories met collaboratieve codebeoordelingen, geavanceerd bestandsbeheer, codezoeken en branch-beleid om code van hoge kwaliteit te garanderen. Azure Repos is ideaal voor kleine projecten en grote organisaties die native Azure Active Directory-ondersteuning en geavanceerd beleid nodig hebben.
     
 **Belangrijke functies**
-- Gebruik een onbeperkte in de Cloud gehoste Git-bron code opslagplaats voor uw open bare en persoonlijke opslag plaatsen:
-    - Ontvang ondersteuning voor een Git-client.
+- Gebruik een onbeperkte Git-broncoderepository die in de cloud wordt gehost voor uw openbare en privérepo's:
+    - Krijg ondersteuning voor elke Git-client.
     - Gebruik webhooks en API-integratie.
-- Start uw volgende Build vanuit een opslag plaats-pull-aanvraag:
-    - Werk samen om betere code te bouwen met behulp van threaded discussies en continue integratie voor elke wijziging.
-    - Stel doorlopende integratie/continue levering (CI/CD) in om automatisch builds, testen en implementaties te activeren met elke voltooide pull-aanvraag. U kunt Azure-pijp lijnen of uw hulp middelen gebruiken.
-    - Bescherm uw code kwaliteit met vertakkings beleid.
-- Onderhoud gecentraliseerd versie beheer met versie beheer van Team Foundation, dat code controle bevat.
-- Maak verbinding met uw code met behulp van Xcode, eclips, IntelliJ, Android Studio, Visual Studio, Visual Studio code en meer.
-- Gebruik krachtige zoek functie voor semantische code.
-- Profiteer van de voor delen van bedrijfs klare functies. Azure DevOps heeft systeem eigen integratie met Azure Active Directory. Dit vereenvoudigt het beheer van de toegang tot uw code opslagplaatsen.
-- Zorg voor code kwaliteit met branch-beleids regels, zoals een minimum aantal code beoordelingen, vereisten voor succes volle builds en handhaving van Git-samenvoegings strategieën.
-- Verbind uw favoriete ontwikkel omgeving om toegang te krijgen tot opslag plaatsen en uw werk te beheren.
+- Kick off uw volgende build van een repo pull verzoek:
+    - Werk samen om betere code te bouwen met behulp van threaded discussie en continue integratie voor elke wijziging.
+    - Stel continue integratie/continue levering (CI/CD) in om automatisch builds, tests en implementaties te activeren bij elke voltooide pull-aanvraag. U Azure Pipelines of uw hulpprogramma's gebruiken.
+    - Bescherm uw codekwaliteit met het filiaalbeleid.
+- Behoud gecentraliseerd versiebeheer met Team Foundation Version Control, inclusief codecontrole.
+- Maak verbinding met uw code met Xcode, Eclipse, IntelliJ, Android Studio, Visual Studio, Visual Studio Code en meer.
+- Gebruik krachtige semantische codezoeken.
+- Profiteer van functies die klaar zijn voor bedrijven. Azure DevOps heeft native integratie met Azure Active Directory, wat het proces van het beheren van toegang tot uw coderepositories vereenvoudigt.
+- Zorg voor codekwaliteit met filiaalbeleid, zoals een minimum aantal codebeoordelingen, vereisten voor succesvolle builds en handhaving van Git-samenvoegstrategieën.
+- Verbind uw favoriete ontwikkelomgeving om toegang te krijgen tot repo's en werk te beheren.
 
-**Referentie**
-- [Aan de slag met Azure opslag plaatsen](https://azure.microsoft.com/services/devops/repos/) 
-- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/?view=azure-devops)
+**Verwijzingen**
+- [Aan de slag met Azure Repos](https://azure.microsoft.com/services/devops/repos/) 
+- [Azure Repos-documentatie](/azure/devops/repos/?view=azure-devops)

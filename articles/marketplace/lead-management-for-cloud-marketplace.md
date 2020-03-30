@@ -1,140 +1,139 @@
 ---
-title: Lead beheer voor Cloud Marketplace | Azure Marketplace en AppSource
-description: Een overzicht van de verschillende onderwerpen met betrekking tot het publiceren van aanbiedingen en technische artefacten naar Azure Marketplace en AppSource
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+title: Leadmanagement voor cloudmarktplaatsen | Azure Marketplace en AppSource
+description: Een overzicht van verschillende onderwerpen met betrekking tot het publiceren van aanbiedingen en technische artefacten naar de Azure Marketplace en AppSource
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94510d02a28e0364f1c715dbcf9ff641fe2b14fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286129"
 ---
-# <a name="lead-management-for-cloud-marketplace"></a>Lead beheer voor Cloud Marketplace
+# <a name="lead-management-for-cloud-marketplace"></a>Leadmanagement voor de cloud-marketplace
 
 
-Klanten zijn het midden van een goed bedrijf. Bij de trans formatie van de huidige product verwervingen, moeten de markt verwerkers zich richten op het rechtstreeks verbinden met klanten en het bouwen van een relatie. Daarom is het genereren van leads van hoge kwaliteit een essentieel hulp middel voor uw verkoop cyclus. Nadat u uw aanbieding in de [Cloud Partner-Portal](https://cloudpartner.azure.com/)hebt opgenomen, zijn er hulpprogram ma's ingeschakeld waarmee u op een programmatische manier contact gegevens van klanten kunt ontvangen nadat een klant rente heeft ingecheckt of uw product in Marketplace heeft geïmplementeerd. 
+Klanten zijn het centrum van een goede business. Bij de transformatie van de huidige productacquisities moeten marketeers zich richten op het rechtstreeks verbinden met klanten en het opbouwen van een relatie. Daarom is het genereren van leads van hoge kwaliteit een essentieel hulpmiddel voor uw verkoopcyclus. Nadat u uw aanbieding in de Cloud Partner Portal hebt [vermeld,](https://cloudpartner.azure.com/)zijn er tools waarmee u programmatisch contactgegevens van klanten ontvangen onmiddellijk nadat een klant interesse heeft getoond of uw product op de markt heeft geïmplementeerd. 
 
 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Wat zijn leads in de Marketplace?
+## <a name="what-are-leads-in-the-marketplace"></a>Wat zijn leads in de markt?
 
-De leads zijn afkomstig van klanten die geïnteresseerd zijn of uw producten implementeren via Marketplace. Of uw product wordt vermeld op Azure Marketplace of AppSource, u kunt leads van klanten ontvangen zodra het correct is ingesteld vanuit uw CRM naar uw aanbieding (en) in Cloud Partner-portal 
+De leads zijn van klanten die geïnteresseerd zijn of uw producten implementeren via de Marketplace. Of uw product nu wordt vermeld op Azure Marketplace of AppSource, u leads van klanten ontvangen zodra het goed is ingesteld van uw CRM naar uw vermelding(en) in Cloud Partner Portal 
 
 
-## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Verbinding maken tussen uw CRM-systeem en de Cloud Partner Portal
+## <a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Uw CRM-systeem verbinden met de cloudpartnerportal
 
-Als u leads wilt ophalen, is lead management connector op de Cloud Partner-portal zo ontworpen dat deze eenvoudig met uw CRM-gegevens kan worden aangesloten op een lijst met beschik bare CRM-systemen. U kunt nu eenvoudig gebruikmaken van de leads die door Marketplace worden gegenereerd zonder een belang rijke engineering-inspanning om te integreren met een extern systeem.
+Om leads te krijgen, is leadmanagementconnector op de Cloud Partner Portal zo ontworpen dat deze eenvoudig kan worden aangesloten met uw CRM-gegevens op een lijst met beschikbare CRM-systemen. Nu u eenvoudig gebruik maken van de leads gegenereerd door de markt zonder een aanzienlijke technische inspanning om te integreren met een extern systeem.
 
-Hier vindt u stapsgewijze instructies voor het verbinden van elk van de mogelijke lead doelen:
+Hier volgen stapsgewijze instructies voor het verbinden van elk van de mogelijke leadbestemmingen:
 
-**Dynamics CRM online** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) voor instructies over het configureren van Dynamics CRM Online voor het ophalen van leads.
+**Dynamics CRM Online** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) voor de instructies voor het configureren van Dynamics CRM Online voor het verkrijgen van leads.
 
-**Marketo** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) voor instructies voor het instellen van de configuratie van de marketo-lead om leads op te halen.
+**Marketo** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) om de instructies voor het opzetten van Marketo Lead Configuration te krijgen om leads te krijgen.
 
-**Sales force** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) voor instructies voor het instellen van uw Sales Force-exemplaar voor het verkrijgen van leads.
+**Salesforce** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) voor instructies voor het instellen van je Salesforce-exemplaar om leads te krijgen.
 
-**Azure table** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) voor instructies voor het instellen van uw Azure Storage-account voor het ophalen van leads in een Azure-tabel.
+**Azure-tabel** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) om de instructies te krijgen voor het instellen van uw Azure-opslagaccount voor het ophalen van leads in een Azure-tabel.
 
-**Https-eind punt** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) voor de instructies voor het instellen van uw https-eind punt om leads op te halen.
+**Https-eindpunt** - [Klik hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) om de instructies voor het instellen van uw Https-eindpunt te krijgen.
 
-Zodra u uw lead doel correct hebt geconfigureerd en op uw aanbieding hebt geklikt op publiceren, zullen we de verbinding valideren en u een test lead sturen. Wanneer u de aanbieding bekijkt voordat u live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding te verkrijgen in de preview-omgeving. Het is belang rijk om ervoor te zorgen dat uw lead instellingen up-to-date blijven, zodat u geen leads kwijtraakt. Zorg er dus voor dat u deze verbindingen bijwerkt wanneer iets aan uw kant is gewijzigd.
+Zodra u uw leadbestemming goed hebt geconfigureerd en op Publicatie op uw aanbieding hebt geraken, valideren we de verbinding en sturen we u een testlead. Wanneer u het aanbod bekijkt voordat u live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te verkrijgen in de preview-omgeving. Het is belangrijk om ervoor te zorgen dat uw leadinstellingen up-to-date blijven, zodat u geen leads verliest, dus zorg ervoor dat u deze verbindingen bijwerkt wanneer er iets is veranderd aan uw kant.
 
 
 ### <a name="what-are-the-next-steps"></a>Wat zijn de volgende stappen?
 
-Zodra de technische installatie is ingesteld, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken op het leveren van leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in feedback en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.
+Zodra de technische set-up is op zijn plaats, moet u deze leads op te nemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter begrip van uw totale verkoopproces en willen nauw met u samenwerken bij het leveren van hoogwaardige leads en voldoende gegevens om u succesvol te maken. We zijn blij met uw feedback over hoe we de leads die we u sturen kunnen optimaliseren en verbeteren met aanvullende gegevens om deze klanten succesvol te maken. Laat het ons weten als je geïnteresseerd bent in het geven van feedback en suggesties om je verkoopteam succesvoller te laten zijn met Marketplace Leads.
 
 
 
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Veelvoorkomende fouten bij de configuratie van de lead tijdens het publiceren op de Cloud Partner-Portal 
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Veelvoorkomende fouten in de leadconfiguratie tijdens het publiceren op de cloudpartnerportal 
 
-**Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
+**Kon de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: Kan zich niet aanmelden bij Dynamics CRM, LastCRMException:** 
 
-> Als O365-verificatie is geselecteerd, controleert u of het gebruikers account en het wacht woord geldig zijn. Als AAD is geselecteerd, controleert u of de Tenant-ID, toepassings-ID en sleutel van de toepassing geheim overeenkomen met wat er is ingesteld voor AAD. Volg de instructies [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics). Als de gebruikers naam of het wacht woord van het account geldig is, controleert u of het toegang heeft tot Dynamics 365 en of er een licentie is toegewezen (stap 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u een Office-gebruiker gebruikt). 
+> Als O365-verificatie is geselecteerd, controleert u of het gebruikersaccount en het wachtwoord geldig zijn. Als AAD is geselecteerd, controleert u of de tenant-id, toepassings-id en toepassingsgeheime sleutel overeenkomen met wat er op AAD is ingesteld. Volg [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)de instructies . Als de gebruikersnaam/het wachtwoord van het account geldig is, moet u ervoor zorgen dat het toegang heeft tot Dynamics 365 en een licentie heeft toegewezen (stappen 11-15 als u Azure Active Directory of beveiligingsinstellingen gebruikt als u een Office-gebruiker gebruikt). 
 
  
-**Kan de lead niet opslaan in Dynamics CRM. De gebruiker heeft geen machtigingen voor het maken van het kenmerk leadsourcecode in de entiteit lead** 
+**Kon de lead niet opslaan in Dynamics CRM. Gebruiker heeft geen machtigingen voor het kenmerk leadsourcecode in de leadentiteit** 
 
-> De toepassing/gebruiker mist een of meer beveiligings rollen om de lead schrijver te Microsoft Marketplace. Volg de stappen 11-15 als u Azure Active Directory of beveiligings instellingen gebruikt als u [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)een Office-gebruiker gebruikt.
+> De toepassing/gebruiker mist beveiligingsrollen(en) naar Microsoft Marketplace-leadwriter. Volg stappen 11-15 als u Azure Active Directory of beveiligingsinstellingen gebruikt als u hier een Office-gebruiker [gebruikt.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de Tenant is niet gevonden. Dit exemplaar kan zich voordoen als er geen actieve abonnementen voor de Tenant zijn.**  
+**Kon de lead niet opslaan voor Dynamics CRM met behulp van AAD. Uitzondering:: Huurder niet gevonden. Dit exemplaar kan gebeuren als er geen actieve abonnementen voor de tenant zijn.**  
 
-> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. U kunt de Directory-id ophalen op [basis van de](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) instructies bij stap 2 (onder Azure Active Directory 
+> De directory-id die in de sectie leadbeheer wordt opgegeven, is geen geldige map. Ontvang de Directory Id op basis van de instructies in stap 2 (onder Azure Active Directory, vanaf [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Kan de lead niet opslaan in Dynamics CRM. LastCRMError: SecLib:: RetrievePrivilegeForUser is mislukt-er zijn geen rollen aan de gebruiker toegewezen.**  
+**Kon de lead niet opslaan in Dynamics CRM. LastCRMError: SecLib::RetrievePrivilegeForUser is mislukt - er zijn geen rollen toegewezen aan de gebruiker.**  
 
-> Oplossing: wijs de beveiligingsrol toe aan Microsoft Marketplace lead Writer. Volg de [instructies in](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) de beveiligings instellingen. 
+> Oplossing: Beveiligingsrol toewijzen aan Microsoft Marketplace-hoofdschrijver. Volg [de](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) instructies hier onder Beveiligingsinstellingen 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de toepassing met de id is niet gevonden in de map** 
+**Kon de lead niet opslaan voor Dynamics CRM met behulp van AAD. Uitzondering:: Toepassing met id is niet gevonden in de map** 
 
-> De toepassings-id die is opgenomen in de sectie Lead beheer is geen geldige map. Haal de Directory-id op op basis van de instructies in stap 8 (onder Azure Active Directory van [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> De toepassings-id die in de sectie leadbeheer wordt opgegeven, is geen geldige map. Ontvang de Directory Id op basis van de instructies in stap 8 (onder Azure Active Directory, vanaf [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: de aangevraagde Tenant-id is ongeldig en heeft geen geldige indeling voor een extern domein** 
+**Kon de lead niet opslaan voor Dynamics CRM met behulp van AAD. Uitzondering:: Aangevraagde tenant-id is niet geldig en niet geldig externe domeinindeling** 
 
-> De map-id die is opgenomen in de sectie Lead beheer is geen geldige map. Haal de Directory-id op op basis van de instructies bij stap 2 (onder Azure Active Directory van [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
+> De directory-id die in de sectie leadbeheer wordt opgegeven, is geen geldige map. Ontvang de Directory Id op basis van de instructies in stap 2 (onder Azure Active Directory, vanaf [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)). 
 
-**Kan de potentiële klant niet opslaan in Dynamics CRM met AAD. Uitzonde ring:: fout bij het valideren van referenties.: er is een ongeldig client geheim gegeven.** 
+**Kon de lead niet opslaan voor Dynamics CRM met behulp van AAD. Uitzondering:: Fout bij het valideren van referenties.: Ongeldig clientgeheim wordt verstrekt.** 
 
-> Oplossing: Meld u aan bij Azure Portal, Controleer of de toepassings sleutel overeenkomt met wat er in de Cloud Partner-portal. Genereer een wacht woord op [basis van de](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)instructie bij stap 10 (onder Azure Active Directory). 
+> Oplossing: Meld u aan bij de Azure Portal en controleer of de toepassingssleutel overeenkomt met wat zich in de Cloud Partner Portal bevindt. Genereer wachtwoord op basis van de instructie bij Stap 10 (onder Azure Active Directory), vanaf [hier).](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Kan de lead niet opslaan in Dynamics CRM. LastCRMError: er is een time-out opgetreden voor het aanvraag kanaal tijdens het wachten op een antwoord na 00:02:00. Verhoog de time-outwaarde die is door gegeven aan de aanroep naar request of verhoog de SendTimeout-waarde voor de binding. De tijd die aan deze bewerking wordt toegewezen, heeft mogelijk een deel van een langere time-out.**  
+**Kon de lead niet opslaan in Dynamics CRM. LastCRMError: Het aanvraagkanaal heeft een time-out opgetreden tijdens het wachten op een antwoord na 00:02:00. Verhoog de time-outwaarde die wordt doorgegeven aan de aanroep naar Aanvraag of verhoog de verzendtijdwaarde op de binding. De tijd die aan deze bewerking is toegewezen, kan een deel van een langere time-out zijn geweest.**  
 
-> Oplossing: Meld u aan bij Cloud Partner-portal, Controleer de details van de winkel > > doel locatie van de lead > > URL, Controleer of het een geldig dynamisch CRM-exemplaar is
+> Oplossing: Meld u aan bij Cloud Partner Portal, controleer storefront-gegevens >> bestemming leiden >> URL, controleer of het een geldig Dynamic CRM-exemplaar is
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Wat zijn leads en waarom zijn deze belang rijk voor mij als een uitgever op Marketplace?** 
+**Wat zijn leads en waarom zijn ze belangrijk voor mij als uitgever op Marketplace?** 
 
-Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product wordt vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) of [AppSource](https://appsource.microsoft.com/), u kunt leads ontvangen van klanten die geïnteresseerd zijn in uw product als u de lead bestemming hebt ingesteld op uw aanbieding.  
-
-
-**Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?** 
-
-U kunt hier documentatie vinden: [leads van klanten ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) of een ondersteunings ticket verzenden via aka.MS/marketplacepublishersupport Select offer type en lead management. 
+Leads zijn klanten die uw producten implementeren via de Marketplace. Of uw product nu wordt vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) of [AppSource,](https://appsource.microsoft.com/)u leads ontvangen van klanten die geïnteresseerd zijn in uw product als u de hoofdbestemming in uw aanbieding hebt ingesteld.  
 
 
+**Waar kan ik hulp krijgen bij het instellen van mijn hoofdbestemming?** 
 
-**Moet ik een lead bestemming configureren om een aanbieding op Marketplace te publiceren?**
+U vindt hier documentatie: [Ontvang klantleads](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) of verzend een ondersteuningsticket via aka.ms/marketplacepublishersupport selecteer aanbiedingstype en leadbeheer. 
 
-Ja, als u een contact persoon, SaaS-app of advies service publiceert.  
+
+
+**Moet ik een leadbestemming configureren om een aanbieding op Marketplace te publiceren?**
+
+Ja, als u een Contact Me SaaS-app of Consulting Services publiceert.  
  
 
 
-**Hoe kan ik controleren of de lead configuratie juist is?**
+**Hoe kan ik bevestigen dat de leadconfiguratie correct is?**
 
-Nadat u uw aanbieding hebt ingesteld en het doel van de lead, publiceert u uw aanbieding. In de stap voor het valideren van de lead stuurt Marketplace een test bericht naar de doel locatie van de lead die in uw aanbieding is geconfigureerd. 
-
-
-**Hoe kan ik de test lead vinden?**
+Nadat u uw aanbieding hebt ingesteld en de bestemming van het hoofd hebt geleid, publiceert u uw aanbieding. Bij de stap leadvalidatie stuurt Marketplace een testlead naar de hoofdbestemming die in uw aanbieding is geconfigureerd. 
 
 
-Zoek naar ' MSFT_TEST ' in de doel locatie van de lead. Hier volgt een voor beeld van lead gegevens: 
+**Hoe kan ik de testlead vinden?**
 
-bedrijf = MSFT_TEST_636573304831318844 
 
-land = US 
+Zoek naar 'MSFT_TEST' in uw hoofdbestemming, hier is een voorbeeld test lead gegevens: 
 
-Beschrijving = MSFT_TEST_636573304831318844 
+onderneming = MSFT_TEST_636573304831318844 
 
-e-mail = MSFT_TEST_636573304831318844@test.com
+land = VS 
 
-Encoding = UTF-8 
+description = MSFT_TEST_636573304831318844 
 
-Encoding = UTF-8 
+e-mail =MSFT_TEST_636573304831318844@test.com
+
+codering = UTF-8 
+
+codering = UTF-8 
 
 first_name = MSFT_TEST_636573304831318844 
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<aanbiedings naam > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844| \<Aanbiedingsnaam> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
 telefoon = 1234567890 
 
@@ -142,18 +141,18 @@ titel = MSFT_TEST_636573304831318844
 
  
 
-**Ik heb een live aanbieding, maar ik zie geen leads?**
+**Ik heb een live aanbod, maar ik zie geen aanwijzingen?**
 
-Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde doel bestemming, de leads krijgen de volgende indeling: **bron actie | Aanbieding** 
+Elke lead heeft gegevens doorgegeven in velden in uw geselecteerde leadbestemming, de leads komen in deze indeling: **Bron-Actie| Aanbieding** 
 
-  *Beperken*
+  *Bronnen:*
 
     "AzureMarketplace", 
     "AzurePortal", 
     "TestDrive",  
     "SPZA" (acronym for AppSource) 
 
-  *Regelen*
+  *Acties:*
 
     "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -165,7 +164,7 @@ Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde d
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  *Over*
+  *Biedt:*
 
     "checkpoint.check-point-r77-10sg-byol", 
     "bitnami.openedxcypress", 
@@ -173,7 +172,7 @@ Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde d
 
  
 
-  *Hier worden de voorbeeld gegevens van de klant gegevens weer gegeven*
+  *Hier vindt u voorbeeldgegevens van de klantgegevens*
 
     { 
 
@@ -193,41 +192,41 @@ Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde d
 
     } 
 
-Meer informatie vindt u onder [lead info](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
+Lees meer onder [Lead Info](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads). 
 
 
-**Ik heb Azure BLOB geconfigureerd als mijn lead doel, waarom zie ik de lead niet?** 
+**Ik heb Azure BLOB geconfigureerd als mijn hoofdbestemming, waarom zie ik de lead niet?** 
 
-De lead wordt alleen geschreven wanneer u Azure BLOB-opslag als uw lead bestemming selecteert. Overschakelen naar Azure-tabel om de lead real time te ontvangen 
+De lead wordt alleen geschreven wanneer u Azure BLOB-opslag als hoofdbestemming selecteert. Overschakelen naar Azure-tabel om de lead realtime te ontvangen 
 
 
 **Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?**  
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Voor privacy-redenen geven we geen PII-gegevens uit het domein. edu door. Een ondersteunings ticket verzenden via aka.ms/marketplacepublishersupport 
+Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen PII-gegevens van het .edu-domein door. Stuur een support ticket in via aka.ms/marketplacepublishersupport 
 
 
- **Ik heb Azure Table/Azure-BLOB geconfigureerd als mijn lead doel, hoe kan ik de leads weer geven?** 
+ **Ik heb Azure Table/Azure BLOB geconfigureerd als mijn hoofdbestemming, hoe kan ik de leads bekijken?** 
 
-U kunt toegang krijgen tot de BLOB of tabel vanuit Azure Portal, of u kunt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabellen/blobs van uw Azure Storage-account weer te geven. 
-
-
-**Ik heb Azure Table als mijn lead bestemming geconfigureerd, kan ik een melding ontvangen wanneer een nieuwe lead door Marketplace wordt verzonden?** 
-
-Ja, volg de instructies voor het instellen van de Azure Table +-functie in de documentatie [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table). 
+U hebt toegang tot de blob of tabel vanuit Azure Portal of u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabellen/blobs van uw Azure-opslagaccount te bekijken. 
 
 
+**Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, kan ik een melding krijgen wanneer een nieuwe lead wordt verzonden door Marketplace?** 
 
-**Ik heb Sales Force geconfigureerd als mijn lead-doel waarom kan ik de leads niet vinden?** 
+Ja, volg [hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)de instructies voor het instellen van Azure Table + Function on the documentation. 
 
-Controleer of het formulier Web to lead een verplicht veld is op basis van een selectie lijst. Zo ja, schakelt u over naar het veld naar een niet-verplicht tekst veld.  
+
+
+**Ik heb Salesforce geconfigureerd als mijn hoofdbestemming, waarom kan ik de leads niet vinden?** 
+
+Controleer of het web-naar-leadformulier een verplicht veld is op basis van een picklist. Zo ja, schakel het veld over naar een niet-verplicht tekstveld.  
  
 
-**Er is een probleem met mijn lead doel en er zijn enkele leads gemist. Kan ik ze in een e-mail bericht naar mij verzenden?** 
+**Er was een probleem met mijn hoofdbestemming, en ik miste enkele aanwijzingen. Kan ik ze in een e-mail naar mij laten sturen?** 
 
-Als gevolg van PII-beleid (persoonlijke Identificeer bare informatie) kunnen we geen lead gegevens delen via onbeveiligde e-mail berichten. 
+Vanwege het BELEID van PII (Private Identificeerbare Informatie) kunnen we geen leadgegevens delen via onbeveiligde e-mail. 
 
 
 
-**Ik heb Azure Storage (BLOB/Table) geconfigureerd als mijn lead-Destination, wat kost het dan kosten?** 
+**Ik heb Azure Storage (BLOB/Table) geconfigureerd als mijn hoofdbestemming, hoeveel kost dit?** 
 
-De gegevens van de lead zijn laag (< 1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000-leads per maand worden ontvangen, kosten ongeveer 50 cent. 
+Lead gen-gegevens zijn laag (<1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000 leads worden ontvangen in een maand, kost het ongeveer 50 cent. 

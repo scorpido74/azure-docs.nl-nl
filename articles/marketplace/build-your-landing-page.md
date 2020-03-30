@@ -1,58 +1,56 @@
 ---
-title: Uw landings pagina bouwen in azure Marketplace | Azure
-description: Meer informatie over het maken van een landings pagina in de Azure Marketplace en Microsoft AppSource, voor app-en service-Publishers.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Uw bestemmingspagina bouwen in de Azure Marketplace | Azure
+description: Meer informatie over het maken van een bestemmingspagina in de Azure Marketplace en Microsoft AppSource voor app- en service-uitgevers.
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6959e7ba7fbf7d9afca84a803f8df588ac9149f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819813"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280589"
 ---
-# <a name="build-your-landing-page"></a>Uw landings pagina bouwen
+# <a name="build-your-landing-page"></a>Uw bestemmingspagina bouwen
 
-Een landings pagina op de website van uw bedrijf is een gateway van de activiteiten voor het genereren van aanvragen naar uw vermelding in de [Azure Marketplace](https://azuremarketplace.microsoft.com).
+Een bestemmingspagina op uw bedrijfswebsite is een gateway van uw activiteiten voor het genereren van vraag naar uw vermelding in de [Azure Marketplace.](https://azuremarketplace.microsoft.com)
 
-Begin met het identificeren van uw doel stellingen. Kies voor uw oplossingen uw doel klant en de actie die de klant zal ondernemen. Uw oplossing kan onder andere de volgende acties omvatten:
-*   De oplossing testen
-*   Nu een oplossing ophalen
+Begin met het identificeren van uw doelen. Kies voor uw oplossingen uw doelklant en de actie die uw klant zal ondernemen. Uw oplossing kan de volgende acties omvatten:
+*   Proefrit de oplossing
+*   Krijg nu een oplossing
 
-U kunt naar uw landings pagina verwijzen in meerdere marketing tactieken. U kunt de volgende marketing tactieken gebruiken: 
+U uw bestemmingspagina verwijzen over meerdere marketingtactieken. U de volgende marketingtactieken gebruiken: 
 *   Gebeurtenissen
 *   Webcasts
-*   Social media
+*   Sociale media
 *   Technische documenten
-*   Technische trainings sessies
-*   Pers.
+*   Technische trainingen
+*   Persberichten
 
-Hoe consistenter u zich bevindt in uw berichten en bij het aanroepen van actie, hoe eenvoudiger uw klanten zijn om uw oplossing te vinden.
+Hoe consistenter u bent in uw berichten- en in uw call-to-action, hoe gemakkelijker het voor uw klanten is om uw oplossing te vinden.
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-Wanneer u een campagne plan klaar hebt, maakt u uw landings pagina in de Marketplace. In de volgende tabel worden de manieren beschreven waarop u de effectiviteit van uw landings pagina kunt maximaliseren: 
+Als je een campagneplan klaar hebt, maak je je bestemmingspagina op de Marketplace. In de volgende tabel wordt beschreven hoe u de effectiviteit van uw bestemmingspagina maximaliseren: 
 
-| Best practice | Zeilen |
+| Best practice | Vermijden |
 |:--- |:--- |
-| **Communiceren welk klant probleem uw oplossing oplost en hoe u Azure gebruikt om dit te doen** | Geen communicatie tussen de manieren waarop uw oplossing werkt met Azure. |
-| **Een korte, gemakkelijk te onthouden URL maken** | Lange Url's gebruiken. Lange Url's zijn niet te onthouden en zijn moeilijk te vinden. |
-| **Voeg relevante visuele inhoud toe, zoals een klant waarin video of een oplossings architectuur** | Als u te veel tekst gebruikt, kunnen uw klanten uw inhoud negeren en stoppen met verkennen.|
-| **Een duidelijke oproep naar actie maken om bezoekers naar uw Marketplace-catalogus pagina te verwijzen** | Er zijn te veel koppelingen of acties op de pagina. |
-| **Uw oproep naar actie in een koptekst of duidelijk afgebakend gedeelte plaatsen** | U kunt de koppelingen naar uw vermelding in de Marketplace insluiten in een alinea met tekst. |
-| **De beste tref woorden onderzoeken en de pagina optimaliseren voor zoeken** | Ervan uitgaande dat uw product naam hogere Zoek classificaties genereert. |
-| **Tref woorden uit uw advertentie campagnes gebruiken** | Het gebruik van veel verschillende tref woorden in uw webeigenschappen verdunnet uw reclame investeringen. |
-| **Plaats de relevante product namen en tref woorden boven de vouw** | Gebruikers schuiven naar het product of de oplossing die u laat zien. |
-| **Gebruik een merk afbeelding om uw oplossing te valideren in overeenstemming met huisstijl richtlijnen van micro soft, zoals Azure Certified** | Micro soft-merk afbeeldingen gebruiken die niet zijn goedgekeurd. |
+| **Communiceer welk klantprobleem uw oplossing oplost en hoe u Azure gebruikt om dit mogelijk te maken** | Niet communiceren op welke manieren uw oplossing werkt met Azure. |
+| **Maak een korte, gemakkelijk te onthouden URL** | Met behulp van lange URL's. Lange URL's zijn niet onvergetelijk en zijn moeilijk te vinden. |
+| **Voeg relevante visuele inhoud toe, zoals een video voor getuigenis van klanten of een oplossingsarchitectuur** | Het gebruik van te veel tekst zorgt ervoor dat uw klanten uw inhoud negeren en stoppen met verkennen.|
+| **Een duidelijke call-to-action maken om bezoekers naar uw Marketplace-cataloguspagina te leiden** | Met te veel links of acties op de pagina. |
+| **Zet uw call-to-action in een koptekst of duidelijk afgebakende sectie** | De koppelingen naar uw aanbieding in de Marketplace insluiten in een tekstalinea. |
+| **Onderzoek de beste zoekwoorden en optimaliseer de pagina voor zoeken** | Ervan uitgaande dat uw productnaam genereert hogere zoekresultaten. |
+| **Trefwoorden uit uw advertentiecampagnes gebruiken** | Het gebruik van veel verschillende zoekwoorden in uw webeigenschappen verwatert uw advertentie-investeringen. |
+| **Relevante productnamen en trefwoorden "boven de vouw" zetten** | Gebruikers laten scrollen om het product of de oplossing te zien die u presenteert. |
+| **Gebruik merkafbeeldingen om uw oplossing te valideren in overeenstemming met de merkrichtlijnen van Microsoft, zoals Azure Certified** | Met behulp van Microsoft merkafbeeldingen die niet is goedgekeurd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*   Zie [Microsoft Azure Certified Guidelines](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines)(Engelstalig) voor meer informatie over de Azure Certified-badge.
-*   Ga voor meer informatie over huis stijl naar [merk-centraal](https://microsoft.sharepoint.com/teams/brandcentral).
-*   Zie [logo Builder](https://logobuilder.partner.microsoft.com)voor meer informatie over het hulp programma logo Builder.
-*   Bekijk [hoe het programma micro soft partner werkt voor u](https://partner.microsoft.com/membership/how-it-works).
+*   Zie Richtlijnen voor Microsoft Azure Certified voor meer informatie over de Azure [Certified-badge.](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines)
+*   Zie [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral)voor meer bronnen over branding.
+*   Zie [Logobuilder](https://logobuilder.partner.microsoft.com)voor meer informatie over het gereedschap Logo Builder .
+*   Bekijk [hoe het Microsoft Partner-programma voor u werkt.](https://partner.microsoft.com/membership/how-it-works)

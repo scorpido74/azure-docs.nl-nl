@@ -1,44 +1,34 @@
 ---
-title: Een onderliggend technisch profiel definiëren in een aangepast beleid
+title: Een RESTful technisch profiel definiëren in een aangepast beleid
 titleSuffix: Azure AD B2C
-description: Definieer een onderliggend technisch profiel in een aangepast beleid in Azure Active Directory B2C.
+description: Definieer een RESTful technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 410f413fc8450c0ee33c3ca95e860a3e8de34107
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332609"
 ---
-# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
+# <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een RESTful-technisch profiel definiëren in een aangepast Azure Directory B2C-beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor uw eigen REST-service. Azure AD B2C verzendt gegevens naar de REST-service in een claim verzameling met invoer en ontvangt gegevens terug in een verzameling uitvoer claims. Met de ondersteunings integratie van de REST-service kunt u het volgende doen:
-
-- **Gebruikers invoer valideren** : hiermee voor komt u dat er ongeldige gegevens worden bewaard in azure AD B2C. Als de waarde van de gebruiker ongeldig is, retourneert de REST-service een fout bericht dat de gebruiker de opdracht geeft een vermelding op te geven. U kunt bijvoorbeeld controleren of het e-mail adres van de gebruiker bestaat in de data base van uw klant.
-- **Invoer claims overschrijven** : Hiermee kunt u de waarden in invoer claims opnieuw indelen. Als een gebruiker bijvoorbeeld de eerste naam in alle kleine letters of hoofd letters typt, kunt u de naam alleen met de eerste letter in een letter type Format teren.
-- **Verrijkende gebruikers gegevens** : Hiermee kunt u verder integreren met zakelijke line-of-business-toepassingen. Zo kan uw REST-service bijvoorbeeld het e-mail adres van de gebruiker ontvangen, een query uitvoeren op de data base van de klant en het loyaliteits nummer van de gebruiker retour neren om Azure AD B2C. De retour claims kunnen worden opgeslagen, geëvalueerd in de volgende Orchestration-stappen of opgenomen in het toegangs token.
-- **Aangepaste bedrijfs logica uitvoeren** : maakt het mogelijk om Push meldingen te verzenden, zakelijke data bases bij te werken, een gebruikers migratie proces uit te voeren, machtigingen te beheren, data bases te controleren en andere acties uit te voeren.
-
-Uw beleid kan invoer claims naar uw REST API verzenden. De REST API kan ook uitvoer claims retour neren die u later in uw beleid kunt gebruiken of een fout bericht kan genereren. U kunt op de volgende manieren de integratie met de REST-services ontwerpen:
-
-- **Validatie technische profiel** : een validatie technisch profiel roept de rest-service aan. Het validatie-technische profiel valideert de door de gebruiker verschafte gegevens voordat de gebruikers traject doorgaat. Met het technische profiel voor validatie wordt een fout bericht weer gegeven op een zelfbevestigende pagina en geretourneerd in uitvoer claims.
-- **Claim uitwisseling** : er wordt een aanroep uitgevoerd naar de rest-service via een Orchestration-stap. In dit scenario is er geen gebruikers interface om het fout bericht weer te geven. Als uw REST API een fout retourneert, wordt de gebruiker teruggeleid naar de Relying Party-toepassing met het fout bericht.
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor het integreren van uw eigen RESTful-service. Azure AD B2C verzendt gegevens naar de RESTful-service in een invoerclaimverzameling en ontvangt gegevens terug in een verzameling uitvoerclaims. Zie [Rest API-claims uitwisselingen integreren in uw aangepaste Azure AD B2C-beleid](custom-policy-rest-api-intro.md)voor meer informatie.  
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Het kenmerk **Naam** van het element `Proprietary` **Protocol** moet worden ingesteld op . Het **handlerkenmerk** moet de volledig gekwalificeerde naam bevatten van de protocolhandlerassemblage `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`die wordt gebruikt door Azure AD B2C: .
 
-In het volgende voor beeld wordt een onderliggend technisch profiel weer gegeven:
+In het volgende voorbeeld ziet u een restful technisch profiel:
 
 ```XML
 <TechnicalProfile Id="REST-UserMembershipValidator">
@@ -47,9 +37,9 @@ In het volgende voor beeld wordt een onderliggend technisch profiel weer gegeven
   ...
 ```
 
-## <a name="input-claims"></a>Invoer claims
+## <a name="input-claims"></a>Invoerclaims
 
-Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar de rest API. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in de REST API. In het volgende voor beeld ziet u de toewijzing tussen uw beleid en de REST API. De naam van **de claim wordt** verzonden naar de rest API als **FirstName**, **terwijl de achternaam wordt** verzonden als **LastName**. De **e-mail** claim is ingesteld als is.
+Het element **InputClaims** bevat een lijst met claims die naar de REST-API moeten worden verzonden. U de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in de REST API. In het volgende voorbeeld wordt de toewijzing tussen uw beleid en de REST-API weergegeven. De **givenName-claim** wordt naar de REST API verzonden als **firstName**, terwijl **de achternaam** wordt verzonden als **achternaam**. De **e-mailclaim** is ingesteld zoals het is.
 
 ```XML
 <InputClaims>
@@ -59,22 +49,22 @@ Het **InputClaims** -element bevat een lijst met claims die moeten worden verzon
 </InputClaims>
 ```
 
-Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de rest API worden verzonden.
+Het element **InputClaimsTransformations** kan een verzameling **inputclaimstransformatie-elementen** bevatten die worden gebruikt om de invoerclaims te wijzigen of nieuwe claims te genereren voordat ze naar de REST-API worden verzonden.
 
-## <a name="send-a-json-payload"></a>Een JSON-nettolading verzenden
+## <a name="send-a-json-payload"></a>Stuur een JSON payload
 
-Met het technische profiel van REST API kunt u een complexe JSON-nettolading verzenden naar een eind punt.
+Met het technische profiel VAN de REST API u een complexe JSON-payload naar een eindpunt sturen.
 
-Een complexe JSON-nettolading verzenden:
+Ga als lid van het werk om een complexe JSON-payload te verzenden:
 
-1. Bouw uw JSON-nettolading met de [GenerateJson](json-transformations.md) -claim transformatie.
-1. In het REST API technische profiel:
-    1. Voeg een invoer claims transformatie toe met een verwijzing naar de trans formatie van de `GenerateJson` claims.
-    1. Stel de optie voor het `SendClaimsIn` van meta gegevens in op `body`
-    1. Stel de `ClaimUsedForRequestPayload` meta gegevens optie in op de naam van de claim met de JSON-nettolading.
-    1. Voeg in de invoer claim een verwijzing toe naar de invoer claim met de JSON-nettolading.
+1. Bouw je JSON-payload met de [GenerateJson-claimtransformatie.](json-transformations.md)
+1. In het technische profiel VAN de REST API:
+    1. Voeg een transformatie van invoerclaims `GenerateJson` toe met een verwijzing naar de claimtransformatie.
+    1. De `SendClaimsIn` optie metagegevens instellen op`body`
+    1. Stel `ClaimUsedForRequestPayload` de optie metagegevens in op de naam van de claim die de JSON-payload bevat.
+    1. Voeg in de invoerclaim een verwijzing toe naar de invoerclaim die de JSON-payload bevat.
 
-In het volgende voor beeld `TechnicalProfile` een verificatie-e-mail verzenden met behulp van een e-mail service van derden (in dit geval SendGrid).
+In het `TechnicalProfile` volgende voorbeeld wordt een verificatie-e-mail verzonden met behulp van een e-mailservice van derden (in dit geval SendGrid).
 
 ```XML
 <TechnicalProfile Id="SendGrid">
@@ -98,19 +88,19 @@ In het volgende voor beeld `TechnicalProfile` een verificatie-e-mail verzenden m
 </TechnicalProfile>
 ```
 
-## <a name="output-claims"></a>Uitvoer claims
+## <a name="output-claims"></a>Outputclaims
 
-Het **OutputClaims** -element bevat een lijst met claims die zijn geretourneerd door de rest API. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de REST API. U kunt ook claims toevoegen die niet worden geretourneerd door de REST API ID-provider, op voor waarde dat u het kenmerk `DefaultValue` hebt ingesteld.
+Het element **OutputClaims** bevat een lijst met claims die zijn geretourneerd door de REST API. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in de REST-API. U ook claims opnemen die niet worden geretourneerd door de REST `DefaultValue` API-identiteitsprovider, zolang u het kenmerk instelt.
 
-Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
+Het element **OutputClaimsTransformations** kan een verzameling **outputclaimstransformatie-elementen** bevatten die worden gebruikt om de uitvoerclaims te wijzigen of nieuwe claims te genereren.
 
-In het volgende voor beeld ziet u de claim die wordt geretourneerd door de REST API:
+In het volgende voorbeeld wordt de claim weergegeven die is geretourneerd door de REST API:
 
-- De **MembershipId** -claim die is toegewezen aan de naam van de **loyaltyNumber** -claim.
+- De **claim MembershipId** die is toegewezen aan de naam van de **loyaliteitsclaimNummer.**
 
-Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
+Het technische profiel retourneert ook claims, die niet worden geretourneerd door de identiteitsprovider:
 
-- De **loyaltyNumberIsNew** -claim waarvoor een standaard waarde is ingesteld op `true`.
+- De **claim loyaltyNumberIsNew** met een `true`standaardwaarde ingesteld op .
 
 ```xml
 <OutputClaims>
@@ -123,19 +113,20 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ServiceUrl | Ja | De URL van het REST API-eind punt. |
-| AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None`, `Basic`, `Bearer`of `ClientCertificate`. De waarde `None` geeft aan dat de REST API niet anoniem is. De waarde `Basic` geeft aan dat de REST API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De waarde `ClientCertificate` (Recommended) geeft aan dat de REST API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services die de juiste certificaten hebben, bijvoorbeeld Azure AD B2C, hebben toegang tot uw API. De waarde `Bearer` geeft aan dat de REST API de toegang beperkt met behulp van de client OAuth2 Bearer-token. |
-| AllowInsecureAuthInProduction| Nee| Hiermee wordt aangegeven of de `AuthenticationType` kan worden ingesteld op `none` in de productie omgeving (`DeploymentMode` van de [TrustFrameworkPolicy](trustframeworkpolicy.md) is ingesteld op `Production`of niet opgegeven). Mogelijke waarden: True of False (standaard). |
-| SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de invoer claim die wordt verzonden in de hoofd tekst van de aanvraag in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. De HTTP-woorden die door elk van beide worden aangeroepen, zijn als volgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: ophalen</li><li>`QueryString`: ophalen</li></ul> |
+| ServiceUrl (ServiceUrl) | Ja | De URL van het REST API-eindpunt. |
+| AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de RESTful-claimprovider. Mogelijke `None`waarden: `Basic` `Bearer`, `ClientCertificate`, of . De `None` waarde geeft aan dat de REST API niet anoniem is. De `Basic` waarde geeft aan dat de REST API is beveiligd met HTTP basic authentication. Alleen geverifieerde gebruikers, waaronder Azure AD B2C, hebben toegang tot uw API. De `ClientCertificate` (aanbevolen) waarde geeft aan dat de REST API de toegang beperkt met behulp van clientcertificaatverificatie. Alleen services met de juiste certificaten, bijvoorbeeld Azure AD B2C, hebben toegang tot uw API. De `Bearer` waarde geeft aan dat de REST API de toegang beperkt met behulp van client OAuth2 Bearer token. |
+| AllowInsecureAuthInProduction| Nee| Hiermee geeft `AuthenticationType` u aan `none` of deze`DeploymentMode` kan worden ingesteld in `Production`de productieomgeving (van het [Vertrouwenskaderbeleid](trustframeworkpolicy.md) is ingesteld op of niet is opgegeven). Mogelijke waarden: waar of onwaar (standaard). |
+| Claimsin verzenden | Nee | Hiermee geeft u op hoe de invoerclaims naar de RESTful-claimprovider worden verzonden. Mogelijke `Body` waarden: `Form`(standaard), , `Header`of `QueryString`. De `Body` waarde is de invoerclaim die in de aanvraaginstantie in JSON-indeling wordt verzonden. De `Form` waarde is de invoerclaim die in de aanvraaginstantie wordt verzonden in een gescheiden sleutelwaardenotatie van ampersand '&'. De `Header` waarde is de invoerclaim die wordt verzonden in de aanmeldingskop. De `QueryString` waarde is de invoerclaim die wordt verzonden in de querytekenreeks voor aanvragen. De DOOR elk van beide http-werkwoorden worden als volgt aangeroepen:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
-| ClaimUsedForRequestPayload| Nee | Naam van een teken reeks claim die de payload bevat die naar de REST API moet worden verzonden. |
-| DebugMode | Nee | Voert het technische profiel in de foutopsporingsmodus. Mogelijke waarden: `true`of `false` (standaard). In de foutopsporingsmodus kan de REST API meer informatie retour neren. Zie de sectie [fout bericht over het retour neren](#returning-error-message) . |
-| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
-| ResolveJsonPathsInJsonTokens  | Nee | Hiermee wordt aangegeven of het technische profiel JSON-paden oplost. Mogelijke waarden: `true`of `false` (standaard). Gebruik deze meta gegevens om gegevens van een genest JSON-element te lezen. Stel in een [output claim](technicalprofiles.md#outputclaims)de `PartnerClaimType` in op het JSON-padcomponent-element dat u wilt uitvoeren. Bijvoorbeeld: `firstName.localized`of `data.0.to.0.email`.|
+| ClaimUsedForRequestPayload| Nee | Naam van een tekenreeksclaim die de payload bevat die naar de REST-API moet worden verzonden. |
+| Foutopsporingsmodus | Nee | Voert het technische profiel uit in de foutopsporingsmodus. Mogelijke waarden: `true` `false` , of (standaard). In de foutopsporingsmodus kan de REST API meer informatie retourneren. Zie de sectie [Foutbericht retourneren.](#returning-error-message) |
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer- en uitvoerclaims geeft u aan of [schadeafhandeling](claim-resolver-overview.md) is opgenomen in het technische profiel. Mogelijke waarden: `true` `false`  , of (standaard). Als u een claimresolver in het technische profiel `true`wilt gebruiken, stelt u dit in op . |
+| ResolveJsonPathsInJsonTokens  | Nee | Geeft aan of het technische profiel JSON-paden oplost. Mogelijke waarden: `true` `false` , of (standaard). Gebruik deze metagegevens om gegevens uit een genest JSON-element te lezen. Stel in een [OutputClaim](technicalprofiles.md#outputclaims)het `PartnerClaimType` JSON-padelement in dat u wilt uitvoeren. Bijvoorbeeld: `firstName.localized`, `data.0.to.0.email`of .|
+| UseClaimasBearerToken| Nee| De naam van de claim die het token aan toonder bevat.|
 
-## <a name="cryptographic-keys"></a>Cryptografische sleutels
+## <a name="cryptographic-keys"></a>Cryptografische toetsen
 
-Als het type verificatie is ingesteld op `None`, wordt het element **CryptographicKeys** niet gebruikt.
+Als het type verificatie `None`is ingesteld op , wordt het element **CryptographicKeys** niet gebruikt.
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -149,14 +140,14 @@ Als het type verificatie is ingesteld op `None`, wordt het element **Cryptograph
 </TechnicalProfile>
 ```
 
-Als het type verificatie is ingesteld op `Basic`, bevat het element **CryptographicKeys** de volgende kenmerken:
+Als het type verificatie `Basic`is ingesteld op , bevat het element **CryptographicKeys** de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Ja | De gebruikers naam die wordt gebruikt voor verificatie. |
-| BasicAuthenticationPassword | Ja | Het wacht woord dat wordt gebruikt voor verificatie. |
+| BasicAuthenticationGebruikersnaam | Ja | De gebruikersnaam die wordt gebruikt om te verifiëren. |
+| BasicAuthenticationPassword BasicAuthenticationPassword | Ja | Het wachtwoord dat wordt gebruikt om te verifiëren. |
 
-In het volgende voor beeld ziet u een technisch profiel met basis verificatie:
+In het volgende voorbeeld wordt een technisch profiel met basisverificatie weergegeven:
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -174,11 +165,11 @@ In het volgende voor beeld ziet u een technisch profiel met basis verificatie:
 </TechnicalProfile>
 ```
 
-Als het type verificatie is ingesteld op `ClientCertificate`, bevat het **CryptographicKeys** -element het volgende kenmerk:
+Als het type verificatie `ClientCertificate`is ingesteld op , bevat het element **CryptographicKeys** het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ClientCertificate | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor verificatie. |
+| Clientcertificaat | Ja | De X509-certificaat (RSA-sleutelset) die moet worden gebruikt om te verifiëren. |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -195,11 +186,11 @@ Als het type verificatie is ingesteld op `ClientCertificate`, bevat het **Crypto
 </TechnicalProfile>
 ```
 
-Als het type verificatie is ingesteld op `Bearer`, bevat het **CryptographicKeys** -element het volgende kenmerk:
+Als het type verificatie `Bearer`is ingesteld op , bevat het element **CryptographicKeys** het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| BearerAuthenticationToken | Nee | Het OAuth 2,0 Bearer-token. |
+| BearerAuthenticationToken | Nee | De OAuth 2.0 bearer token. |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -216,21 +207,9 @@ Als het type verificatie is ingesteld op `Bearer`, bevat het **CryptographicKeys
 </TechnicalProfile>
 ```
 
-## <a name="returning-error-message"></a>Fout bericht retour neren
+## <a name="returning-error-message"></a>Foutbericht retourneren
 
-Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie) met de volgende kenmerken:
-
-| Kenmerk | Vereist | Beschrijving |
-| --------- | -------- | ----------- |
-| -versie | Ja | 1.0.0 |
-| status | Ja | 409 |
-| code | Nee | Een fout code van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
-| requestId | Nee | Een aanvraag-id van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
-| userMessage | Ja | Een fout bericht dat wordt weer gegeven aan de gebruiker. |
-| developerMessage | Nee | De uitgebreide beschrijving van het probleem en hoe het kan worden opgelost, dat wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
-| moreInfo | Nee | Een URI die verwijst naar extra informatie, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
-
-In het volgende voor beeld ziet u een REST API die een fout bericht retourneert dat is ingedeeld in JSON:
+Uw REST API moet mogelijk een foutbericht retourneren, zoals 'De gebruiker is niet in het CRM-systeem gevonden'. Als er een fout optreedt, moet de REST API een HTTP 4xx-foutbericht retourneren, zoals 400 (slechte aanvraag) of 409 (conflict)-statuscode. De antwoordtekst bevat een foutbericht dat is opgemaakt in JSON:
 
 ```JSON
 {
@@ -244,7 +223,18 @@ In het volgende voor beeld ziet u een REST API die een fout bericht retourneert 
 }
 ```
 
-In het volgende voor beeld C# ziet u een-klasse die een fout bericht retourneert:
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| versie | Ja | Uw REST API-versie. Bijvoorbeeld: 1.0.1 |
+| status | Ja | Moet 409 zijn |
+| code | Nee | Een foutcode van de RESTful-eindpuntprovider, `DebugMode` die wordt weergegeven wanneer is ingeschakeld. |
+| requestId | Nee | Een aanvraag-id van de RESTful-eindpuntprovider, `DebugMode` die wordt weergegeven wanneer is ingeschakeld. |
+| userMessage | Ja | Een foutbericht dat aan de gebruiker wordt weergegeven. |
+| ontwikkelaarMessage | Nee | De uitgebreide beschrijving van het probleem en hoe het `DebugMode` op te lossen, die wordt weergegeven wanneer is ingeschakeld. |
+| meerInfo | Nee | Een URI die wijst op aanvullende informatie, die wordt weergegeven wanneer `DebugMode` is ingeschakeld. |
+
+
+In het volgende voorbeeld wordt een klasse C#weergegeven die een foutbericht retourneert:
 
 ```csharp
 public class ResponseContent
@@ -261,9 +251,10 @@ public class ResponseContent
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor voor beelden van het gebruik van een reactief technisch profiel:
+Zie de volgende artikelen voor voorbeelden van het gebruik van een RESTful technisch profiel:
 
-- [REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer](rest-api-claims-exchange-dotnet.md)
-- [Beveilig uw REST-services met behulp van HTTP-basis verificatie](secure-rest-api-dotnet-basic-auth.md)
-- [Uw REST-service beveiligen met behulp van client certificaten](secure-rest-api-dotnet-certificate-auth.md)
-- [Walkthrough: REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers door voeren als validatie op gebruikers invoer](custom-policy-rest-api-claims-validation.md)
+- [Rest API-claims uitwisselingen integreren in uw Azure AD B2C-aangepaste beleid](custom-policy-rest-api-intro.md)
+- [Walkthrough: Integratie van REST API-claims uitwisselingen in uw Azure AD B2C-gebruikersreis als validatie van gebruikersinvoer](custom-policy-rest-api-claims-validation.md)
+- [Walkthrough: Rest API-claims uitwisselingen toevoegen aan aangepast beleid in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
+- [Uw REST API-services beveiligen](secure-rest-api.md)
+

@@ -1,24 +1,25 @@
 ---
-title: SQL-tref woorden voor Azure Cosmos DB
-description: Meer informatie over SQL-tref woorden voor Azure Cosmos DB.
+title: SQL-trefwoorden voor Azure Cosmos DB
+description: Meer informatie over SQL-zoekwoorden voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498551"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Tref woorden in Azure Cosmos DB
-In dit artikel worden tref woorden beschreven die kunnen worden gebruikt in Azure Cosmos DB SQL-query's.
+# <a name="keywords-in-azure-cosmos-db"></a>Trefwoorden in Azure Cosmos DB
 
-## <a name="between"></a>VERDEELD
+In dit artikel worden trefwoorden beschreven die kunnen worden gebruikt in AZURE Cosmos DB SQL-query's.
 
-Net als in ANSI SQL kunt u het sleutel woord tussen gebruiken om query's uit te drukken op bereiken van teken reeks-of numerieke waarden. Met de volgende query worden bijvoorbeeld alle items geretourneerd waarin de categorie van het eerste kind 1-5 is, inclusief.
+## <a name="between"></a>BETWEEN
+
+U `BETWEEN` het trefwoord gebruiken om query's uit te drukken op basis van reeksen tekenreeks- of numerieke waarden. Met de volgende query worden bijvoorbeeld alle items geretourneerd waarin het cijfer van het eerste kind 1-5 is, inclusief.
 
 ```sql
     SELECT *
@@ -26,30 +27,30 @@ Net als in ANSI SQL kunt u het sleutel woord tussen gebruiken om query's uit te 
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-In tegens telling tot in ANSI SQL kunt u ook de component between in de component FROM gebruiken, zoals in het volgende voor beeld.
+U het `BETWEEN` zoekwoord `SELECT` ook in de clausule gebruiken, zoals in het volgende voorbeeld.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-In de SQL-API, in tegens telling tot ANSI SQL, kunt u de bereik query's expliciet op Eigenschappen van gemengde typen uitvoeren. `grade` kan bijvoorbeeld een getal zijn zoals `5` in sommige items en een teken reeks zoals `grade4` in anderen. In deze gevallen, zoals in Java script, resulteert de vergelijking tussen de twee verschillende typen in `Undefined`, zodat het item wordt overgeslagen.
+In SQL API u, in tegenstelling tot ANSI SQL, bereikquery's uitdrukken op basis van eigenschappen van gemengde typen. Het kan `grade` bijvoorbeeld een `5` getal zijn zoals in `grade4` sommige items en een tekenreeks zoals in andere. In deze gevallen, zoals in JavaScript, resulteert de `Undefined`vergelijking tussen de twee verschillende typen in , zodat het item wordt overgeslagen.
 
 > [!TIP]
-> Voor een snellere query-uitvoerings tijd maakt u een indexerings beleid dat gebruikmaakt van een bereik index type voor numerieke eigenschappen of paden die de component between filtert.
+> Maak voor snellere queryuitvoeringstijden een indexeringsbeleid dat een bereikindextype gebruikt `BETWEEN` voor numerieke eigenschappen of paden die de component filtert.
 
-## <a name="distinct"></a>ONDERSCHEIDEN
+## <a name="distinct"></a>DISTINCT
 
-Met het sleutel woord DISTINCT elimineert u dubbele waarden in de projectie van de query.
+Het `DISTINCT` trefwoord elimineert duplicaten in de projectie van de query.
 
-In dit voor beeld worden de waarden van de query projecten voor elke achternaam:
+In dit voorbeeld worden de querywaarden voor elke achternaam uitgevoerd:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
 [
@@ -57,14 +58,14 @@ De resultaten zijn:
 ]
 ```
 
-U kunt ook unieke objecten projecteren. In dit geval bestaat het veld lastName niet in een van de twee documenten, dus retourneert de query een leeg object.
+U ook unieke objecten projecteren. In dit geval bestaat het veld lastName niet in een van de twee documenten, dus de query retourneert een leeg object.
 
 ```sql
 SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
 [
@@ -82,9 +83,9 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-Deze query projecteert een matrix die de OpgegevenNaam van elk kind bevat met dubbele items verwijderd. Deze matrix heeft een alias als ChildNames en geprojecteerd in de buitenste query.
+Met deze query wordt een array uitgevoerd die de givenName van elk kind bevat en duplicaten is verwijderd. Deze array wordt aliasals ChildNames en geprojecteerd in de buitenste query.
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
 [
@@ -102,7 +103,7 @@ De resultaten zijn:
 ]
 ```
 
-Query's met een statistische systeem functie en een subquery met DISTINCT worden niet ondersteund. De volgende query wordt bijvoorbeeld niet ondersteund:
+Query's met een geaggregeerde systeemfunctie en een subquery met `DISTINCT` worden niet ondersteund. De volgende query wordt bijvoorbeeld niet ondersteund:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -110,7 +111,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-Gebruik het sleutel woord IN om te controleren of een opgegeven waarde overeenkomt met een wille keurige waarde in een lijst. Met de volgende query worden bijvoorbeeld alle familie-items geretourneerd waarbij de `id` is `WakefieldFamily` of `AndersenFamily`.
+Gebruik het trefwoord IN om te controleren of een opgegeven waarde overeenkomt met een waarde in een lijst. Met de volgende query worden bijvoorbeeld `id` alle `WakefieldFamily` `AndersenFamily`gezinsitems geretourneerd waar de is of .
 
 ```sql
     SELECT *
@@ -118,7 +119,7 @@ Gebruik het sleutel woord IN om te controleren of een opgegeven waarde overeenko
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-In het volgende voor beeld worden alle items geretourneerd waarbij de status een van de opgegeven waarden is:
+In het volgende voorbeeld worden alle items geretourneerd waarbij de status een van de opgegeven waarden is:
 
 ```sql
     SELECT *
@@ -126,22 +127,22 @@ In het volgende voor beeld worden alle items geretourneerd waarbij de status een
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-De SQL-API biedt ondersteuning voor het [herhalen van JSON-matrices](sql-query-object-array.md#Iteration), waarbij een nieuwe constructie wordt toegevoegd via het sleutel woord in in de bron van.
+De SQL API biedt ondersteuning voor [het herhalen van JSON-arrays,](sql-query-object-array.md#Iteration)met een nieuwe constructie toegevoegd via het in-trefwoord in de FROM-bron.
 
-Als u de partitie sleutel opneemt in het `IN` filter, wordt de query automatisch gefilterd op de relevante partities.
+Als u de partitiesleutel `IN` in het filter opneemt, wordt uw query automatisch gefilterd op alleen de relevante partities.
 
 ## <a name="top"></a>Boven
 
-Met het sleutel woord TOP wordt het eerste `N` aantal query resultaten in een niet-gedefinieerde volg orde geretourneerd. Als best practice gebruikt u TOP met de component ORDER BY om de resultaten te beperken tot het eerste `N` aantal geordende waarden. Het combi neren van deze twee componenten is de enige manier om te zoals verwacht geven op welke rijen het bovenste effect heeft.
+Het trefwoord TOP `N` retourneert het eerste aantal queryresultaten in een niet-gedefinieerde volgorde. Gebruik TOP als best practice `ORDER BY` om de resultaten `N` te beperken tot het eerste aantal bestelde waarden. Het combineren van deze twee clausules is de enige manier om voorspelbaar aan te geven welke rijen TOP beïnvloedt.
 
-U kunt TOP gebruiken met een constante waarde, zoals in het volgende voor beeld of met een variabele waarde met behulp van query's met para meters.
+U TOP gebruiken met een constante waarde, zoals in het volgende voorbeeld, of met een variabele waarde met behulp van geparameteriseerde query's.
 
 ```sql
     SELECT TOP 1 *
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -165,6 +166,6 @@ De resultaten zijn:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag](sql-query-getting-started.md)
+- [Slag](sql-query-getting-started.md)
 - [Joins](sql-query-join.md)
 - [Subquery's](sql-query-subquery.md)

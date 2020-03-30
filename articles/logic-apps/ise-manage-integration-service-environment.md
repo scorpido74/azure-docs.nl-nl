@@ -1,183 +1,183 @@
 ---
-title: Integratie service omgevingen in Azure Logic Apps beheren
-description: Controleer de netwerk status en beheer logische apps, verbindingen, aangepaste connectors en integratie accounts in uw integratie service omgeving (ISE) voor Azure Logic Apps
+title: Integratieserviceomgevingen beheren in Azure Logic Apps
+description: Controleer de netwerkstatus en beheer logische apps, verbindingen, aangepaste connectors en integratieaccounts in uw integratieserviceomgeving (ISE) voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284198"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integration service Environment) beheren in Azure Logic Apps
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw integratieserviceomgeving (ISE) beheren in Azure Logic Apps
 
-In dit artikel wordt beschreven hoe u beheer taken kunt uitvoeren voor uw [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), bijvoorbeeld:
+In dit artikel ziet u hoe u beheertaken uitvoert voor uw [integratieserviceomgeving (ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)bijvoorbeeld:
 
-* Beheer de resources zoals Logic apps, verbindingen, integratie accounts en connectors in uw ISE.
-* Controleer de netwerk status van uw ISE.
-* Voeg capaciteit toe, start uw ISE opnieuw of verwijder uw ISE. Volg de stappen in dit onderwerp. Zie [artefacten toevoegen aan uw integratie service omgeving](../logic-apps/add-artifacts-integration-service-environment-ise.md)om deze artefacten aan uw ISE toe te voegen.
+* Beheer de bronnen zoals logische apps, verbindingen, integratieaccounts en connectoren in uw ISE.
+* Controleer de netwerkstatus van uw ISE.
+* Voeg capaciteit toe, start uw ISE opnieuw op of verwijder uw ISE, volg de stappen in dit onderwerp. Zie [Artefacten toevoegen aan uw integratieserviceomgeving](../logic-apps/add-artifacts-integration-service-environment-ise.md)om deze artefacten aan uw ISE toe te voegen.
 
-## <a name="view-your-ise"></a>Uw ISE weer geven
+## <a name="view-your-ise"></a>Bekijk uw ISE
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Voer in het zoekvak van de portal "integratie service omgevingen" in en selecteer vervolgens **integratie service omgevingen**.
+1. Voer in het zoekvak van de portal 'integratieserviceomgevingen' in en selecteer **vervolgens Integratieserviceomgevingen.**
 
-   ![Integratie service omgevingen zoeken](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
+   ![Integratieserviceomgevingen zoeken](./media/ise-manage-integration-service-environment/find-integration-service-environment.png)
 
-1. Selecteer uw integratie service omgeving in de lijst met resultaten.
+1. Selecteer in de resultatenlijst uw integratieserviceomgeving.
 
-   ![Integratie service omgeving selecteren](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
+   ![Integratieserviceomgeving selecteren](./media/ise-manage-integration-service-environment/select-integration-service-environment.png)
 
-1. Ga door naar de volgende secties om logische apps, verbindingen, connectors of integratie accounts in uw ISE te vinden.
+1. Ga door naar de volgende secties om logische apps, verbindingen, connectors of integratieaccounts in uw ISE te vinden.
 
 <a name="check-network-health"></a>
 
-## <a name="check-network-health"></a>De netwerk status controleren
+## <a name="check-network-health"></a>Netwerkstatus controleren
 
-Selecteer in het menu ISE onder **instellingen**de optie **netwerk status**. Dit deel venster toont de integriteits status voor uw subnetten en uitgaande afhankelijkheden op andere services.
+Selecteer **netwerkstatus**in het menu ISE onder **Instellingen**. In dit deelvenster ziet u de status van uw subnetten en uitgaande afhankelijkheden van andere services.
 
-![De netwerk status controleren](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
+![Netwerkstatus controleren](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
 
 <a name="find-logic-apps"></a>
 
-## <a name="manage-your-logic-apps"></a>Uw Logic apps beheren
+## <a name="manage-your-logic-apps"></a>Uw logische apps beheren
 
-U kunt de Logic apps in uw ISE weer geven en beheren.
+U de logische apps in uw ISE bekijken en beheren.
 
-1. Selecteer in het menu ISE onder **instellingen**de optie **Logic apps**.
+1. Selecteer in het menu ISE onder **Instellingen**de optie **Logische apps**.
 
-   ![Logic apps weer geven](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
+   ![Logische apps weergeven](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
-1. Als u logische Apps wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze Logic apps en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+1. Als u logische apps wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze logische apps en selecteert u **Verwijderen**. Als u wilt bevestigen dat u wilt verwijderen, selecteert u **Ja**.
 
 <a name="find-api-connections"></a>
 
 ## <a name="manage-api-connections"></a>API-verbindingen beheren
 
-U kunt de verbindingen weer geven en beheren die zijn gemaakt door de Logic apps die worden uitgevoerd in uw ISE.
+U de verbindingen bekijken en beheren die zijn gemaakt door de logische apps die in uw ISE worden uitgevoerd.
 
-1. Selecteer in het menu ISE onder **instellingen**de optie **API-verbindingen**.
+1. Selecteer **API-verbindingen**in het menu ISE onder **Instellingen**.
 
-   ![API-verbindingen weer geven](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
+   ![API-verbindingen weergeven](./media/ise-manage-integration-service-environment/ise-find-api-connections.png)
 
-1. Als u verbindingen wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze verbindingen en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+1. Als u verbindingen wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze verbindingen en selecteert u **Verwijderen**. Als u wilt bevestigen dat u wilt verwijderen, selecteert u **Ja**.
 
 <a name="manage-api-connectors"></a>
 
-## <a name="manage-ise-connectors"></a>ISE-connectors beheren
+## <a name="manage-ise-connectors"></a>ISE-connectoren beheren
 
-U kunt de API-connectors weer geven en beheren die zijn geïmplementeerd in uw ISE.
+U de API-connectors die zijn geïmplementeerd op uw ISE bekijken en beheren.
 
-1. Selecteer in het menu ISE, onder **instellingen**, **beheerde connectors**.
+1. Selecteer **beheerde connectors**in het menu ISE onder **Instellingen**.
 
-   ![Beheerde connectors weer geven](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
+   ![Beheerde connectors weergeven](./media/ise-manage-integration-service-environment/ise-view-managed-connectors.png)
 
-1. Als u connectors wilt verwijderen die u niet beschikbaar wilt maken in uw ISE, selecteert u deze connectors en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+1. Als u connectors wilt verwijderen die u niet beschikbaar wilt hebben in uw ISE, selecteert u deze connectoren en selecteert u **Verwijderen**. Als u wilt bevestigen dat u wilt verwijderen, selecteert u **Ja**.
 
 <a name="find-custom-connectors"></a>
 
 ## <a name="manage-custom-connectors"></a>Aangepaste connectors beheren
 
-U kunt de aangepaste connectors weer geven en beheren die u hebt geïmplementeerd voor uw ISE.
+U de aangepaste connectors bekijken en beheren die u op uw ISE hebt geïmplementeerd.
 
-1. Selecteer in het menu ISE onder **instellingen**de optie **aangepaste connectors**.
+1. Selecteer in het menu ISE onder **Instellingen**de optie **Aangepaste connectoren**.
 
    ![Aangepaste connectoren vinden](./media/ise-manage-integration-service-environment/ise-find-custom-connectors.png)
 
-1. Als u aangepaste connectors die u niet meer nodig hebt in uw ISE wilt verwijderen, selecteert u deze connectors en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+1. Als u aangepaste connectors wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze connectoren en selecteert u **Verwijderen**. Als u wilt bevestigen dat u wilt verwijderen, selecteert u **Ja**.
 
 <a name="find-integration-accounts"></a>
 
 ## <a name="manage-integration-accounts"></a>Integratieaccounts beheren
 
-1. Selecteer in uw ISE-menu onder **instellingen**de optie **integratie accounts**.
+1. Selecteer in het menu ISE onder **Instellingen**de optie **Integratieaccounts**.
 
-   ![Integratie accounts zoeken](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
+   ![Integratieaccounts zoeken](./media/ise-manage-integration-service-environment/ise-find-integration-accounts.png)
 
-1. Als u integratie accounts uit uw ISE wilt verwijderen wanneer u deze niet meer nodig hebt, selecteert u deze integratie accounts en selecteert u vervolgens **verwijderen**.
+1. Als u integratieaccounts uit uw ISE wilt verwijderen wanneer dit niet meer nodig is, selecteert u deze integratieaccounts en selecteert u **Verwijderen**.
 
 <a name="add-capacity"></a>
 
 ## <a name="add-ise-capacity"></a>ISE-capaciteit toevoegen
 
-De Premium ISE-basis eenheid heeft een vaste capaciteit, dus als u meer door voer wilt, kunt u tijdens het maken of later meer schaal eenheden toevoegen. De Developer SKU bevat niet de mogelijkheid om schaal eenheden toe te voegen.
+De Premium ISE-basiseenheid heeft een vaste capaciteit, dus als u meer doorvoer nodig hebt, u meer schaaleenheden toevoegen, tijdens het maken of achteraf. De Ontwikkelaar SKU bevat niet de mogelijkheid om schaaleenheden toe te voegen.
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar uw ISE.
+1. Ga in de [Azure-portal](https://portal.azure.com)naar uw ISE.
 
-1. Als u de metrische gegevens over gebruik en prestaties voor uw ISE wilt bekijken, selecteert u in het menu ISE **overzicht**.
+1. Als u de gebruiks- en prestatiestatistieken voor uw ISE wilt bekijken, selecteert u **Overzicht**in uw ISE-menu .
 
-   ![Gebruik voor ISE weer geven](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
+   ![Gebruik voor ISE weergeven](./media/ise-manage-integration-service-environment/integration-service-environment-usage.png)
 
-1. Onder **instellingen**selecteert u **uitschalen**. Selecteer een van deze opties in het deel venster **configureren** :
+1. Selecteer **onder Instellingen**De optie **Uitschalen**. Selecteer in het deelvenster **Configureren** de volgende opties:
 
-   * [**Hand matig schalen**](#manual-scale): schalen op basis van het aantal verwerkings eenheden dat u wilt gebruiken.
-   * [**Aangepaste automatisch schalen**](#custom-autoscale): schalen op basis van metrische gegevens voor prestaties door te selecteren uit verschillende criteria en de drempel waarden op te geven voor het voldoen aan de criteria.
+   * [**Handmatige schaal:**](#manual-scale)Schaal op basis van het aantal verwerkingseenheden dat u wilt gebruiken.
+   * [**Aangepaste automatische schaal**](#custom-autoscale): Schaal op basis van prestatiestatistieken door te selecteren op basis van verschillende criteria en de drempelvoorwaarden op te geven om aan die criteria te voldoen.
 
-   ![Selecteer het gewenste schaal type](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![Selecteer het gewenste schaaltype](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 
-### <a name="manual-scale"></a>Hand matig schalen
+### <a name="manual-scale"></a>Handmatigschalen
 
-1. Wanneer u **hand matig schalen**hebt geselecteerd, selecteert u voor **extra capaciteit**het aantal schaal eenheden dat u wilt gebruiken.
+1. Nadat u **Handmatigschalen**hebt geselecteerd voor **Extra capaciteit,** selecteert u het aantal schaaleenheden dat u wilt gebruiken.
 
-   ![Selecteer het gewenste schaal type](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
+   ![Selecteer het gewenste schaaltype](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 
 <a name="custom-autoscale"></a>
 
-### <a name="custom-autoscale"></a>Aangepaste automatisch schalen
+### <a name="custom-autoscale"></a>Aangepaste automatische schaal
 
-1. Nadat u **aangepaste automatisch schalen**hebt geselecteerd, moet u bij **naam van instelling voor automatisch schalen**een naam opgeven voor de instelling en optioneel de Azure-resource groep selecteren waarvan de instelling deel uitmaakt.
+1. Nadat u **Aangepaste automatische schaal hebt**geselecteerd , voor De **instellingsnaam Automatisch schalen**, geeft u een naam op voor uw instelling en selecteert u optioneel de Azure-brongroep waar de instelling thuishoort.
 
-   ![Geef een naam op voor de instelling voor automatisch schalen en selecteer een resource groep](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
+   ![Naam opgeven voor instelling automatisch schalen en resourcegroep selecteren](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. Voor de **standaard** voorwaarde selecteert u **schaal op basis van een metriek** of **schalen naar een specifiek aantal exemplaren**.
+1. Selecteer **voor** de standaardvoorwaarde **Schaal op basis van een statistiek** of Schaal naar een specifiek aantal **instanties**.
 
-   * Als u op instantie gebaseerd kiest, voert u het nummer in voor de verwerkings eenheden. Dit is een waarde van 0 tot 10.
+   * Als u instantiegebaseerd kiest, voert u het nummer in voor de verwerkingseenheden, een waarde van 0 tot 10.
 
-   * Als u op basis van metrische gegevens kiest, voert u de volgende stappen uit:
+   * Als u op metrische basis kiest, voert u de volgende stappen uit:
 
-     1. Selecteer **een regel toevoegen**in de sectie **regels** .
+     1. Selecteer in de sectie **Regels** de optie **Een regel toevoegen**.
 
-     1. Stel in het deel venster **schaal regel** uw criteria en actie in die moeten worden uitgevoerd wanneer de regel wordt geactiveerd.
+     1. Stel in het venster **Regelschalen** uw criteria en actie in die u wilt uitvoeren wanneer de regel wordt geactiveerd.
 
-     1. Geef voor **instantie limieten**de volgende waarden op:
+     1. Geef **bijvoorbeeld de**volgende waarden op:
 
-        * **Minimum**: het minimum aantal verwerkings eenheden dat moet worden gebruikt
-        * **Maximum**: het maximum aantal verwerkings eenheden dat moet worden gebruikt
-        * **Standaard**: als er problemen zijn bij het lezen van de metrische gegevens van de resource en de huidige capaciteit lager is dan de standaard capaciteit, wordt automatisch schalen geschaald naar het standaard aantal verwerkings eenheden. Als de huidige capaciteit echter de standaard capaciteit overschrijdt, wordt automatisch schalen niet geschaald in.
+        * **Minimum**: Het minimum aantal te gebruiken verwerkingseenheden
+        * **Maximum**: Het maximum aantal te gebruiken verwerkingseenheden
+        * **Standaard:** als er problemen optreden tijdens het lezen van de resourcestatistieken en de huidige capaciteit onder de standaardcapaciteit ligt, worden automatisch schalen naar het standaardaantal verwerkingseenheden. Als de huidige capaciteit echter de standaardcapaciteit overschrijdt, wordt automatisch schalen niet inschaald.
 
-1. Selecteer **schaal voorwaarde toevoegen**om een andere voor waarde toe te voegen.
+1. Als u een andere voorwaarde wilt toevoegen, selecteert u **Schaalvoorwaarde toevoegen**.
 
-1. Wanneer u klaar bent met uw instellingen voor automatisch schalen, slaat u de wijzigingen op.
+1. Wanneer u klaar bent met de instellingen voor automatisch schalen, slaat u de wijzigingen op.
 
 <a name="restart-ISE"></a>
 
 ## <a name="restart-ise"></a>ISE opnieuw starten
 
-Als u de instellingen van de DNS-server of DNS-server wijzigt, moet u uw ISE opnieuw opstarten zodat de ISE deze wijzigingen kan ophalen. Het opnieuw starten van een Premium-SKU ISE resulteert niet in downtime vanwege redundantie en onderdelen die tijdens het recyclen één keer opnieuw worden opgestart. Een ontwikkelaar-SKU ISE echter downtime, omdat er geen redundantie bestaat. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)voor meer informatie.
+Als u de dns-server- of DNS-serverinstellingen wijzigt, moet u uw ISE opnieuw opstarten, zodat de ISE deze wijzigingen kan oppikken. Het opnieuw opstarten van een Premium SKU ISE leidt niet tot downtime als gevolg van redundantie en onderdelen die een voor een opnieuw opstarten tijdens recycling. Een Ontwikkelaar SKU ISE ervaart echter downtime omdat er geen redundantie bestaat. Zie [ISE SKU's voor](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)meer informatie.
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar uw ISE.
+1. Ga in de [Azure-portal](https://portal.azure.com)naar uw ISE.
 
-1. Selecteer **overzicht**in het menu ISE. **Start opnieuw**op in de werk balk overzicht.
+1. Selecteer **Overzicht**in het menu ISE . Start op de werkbalk Overzicht **opnieuw op.**
 
-   ![Integratie service omgeving opnieuw starten](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
+   ![Integratieserviceomgeving opnieuw opstarten](./media/connect-virtual-network-vnet-isolated-environment/restart-integration-service-environment.png)
 
 <a name="delete-ise"></a>
 
 ## <a name="delete-ise"></a>ISE verwijderen
 
-Voordat u een ISE verwijdert die u niet meer nodig hebt of een Azure-resource groep die een ISE bevat, moet u controleren of u geen beleids regels of vergren delingen hebt voor de Azure-resource groep die deze resources bevat of op uw virtuele Azure-netwerk, omdat deze items het verwijderen kunnen blok keren.
+Voordat u een ISE verwijdert die u niet meer nodig hebt of een Azure-brongroep die een ISE bevat, controleert u of er geen beleid of vergrendelingen zijn op de Azure-brongroep die deze bronnen bevat of op uw Virtuele Azure-netwerk, omdat deze items verwijdering kunnen blokkeren.
 
-Nadat u uw ISE hebt verwijderd, moet u mogelijk tot negen uur wachten voordat u probeert uw virtuele Azure-netwerk of subnetten te verwijderen.
+Nadat u uw ISE hebt verwijderd, moet u mogelijk tot 9 uur wachten voordat u uw virtuele Azure-netwerk of subnetten probeert te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Resources toevoegen aan integratie service omgevingen](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Resources toevoegen aan integratieserviceomgevingen](../logic-apps/add-artifacts-integration-service-environment-ise.md)

@@ -1,46 +1,46 @@
 ---
-title: Overzicht van Azure Monitor voor VM's (preview) inschakelen | Microsoft Docs
-description: Meer informatie over het implementeren en configureren van Azure Monitor voor VM's. Ontdek de systeem vereisten.
+title: Overzicht van Azure Monitor voor VM's inschakelen
+description: Meer informatie over het implementeren en configureren van Azure Monitor voor VM's. Ontdek de systeemvereisten.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/27/2020
+ms.openlocfilehash: 26ed33e967aff1714d2a6fb174eab623e71534c2
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249202"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382729"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
+# <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
-In dit artikel vindt u een overzicht van de beschik bare opties voor het instellen van Azure Monitor voor VM's. Gebruik Azure Monitor voor VM's om de status en prestaties te bewaken. Detecteer toepassings afhankelijkheden die worden uitgevoerd op virtuele machines van Azure (Vm's) en virtuele-machine schaal sets, on-premises Vm's of Vm's die worden gehost in een andere cloud omgeving.  
+In dit artikel vindt u een overzicht van de beschikbare opties om Azure Monitor voor VM's op uw virtuele machines in te schakelen om de status en prestaties te controleren. Ontdek toepassingsafhankelijkheden die worden uitgevoerd op Virtuele Azure-machines (VM's) en virtuele machineschaalsets, on-premises VM's of VM's die worden gehost in een andere cloudomgeving.  
 
-Azure Monitor voor VM's instellen:
+Ga als volgt te werk om Azure Monitor voor VM's in te stellen:
 
-* Schakel een schaalset voor een virtuele Azure-machine in of virtual machines door **inzichten (preview)** rechtstreeks te selecteren op de virtuele machine of in de VM-schaalset.
-* Schakel twee of meer Azure-Vm's en virtuele-machine schaal sets in met behulp van Azure Policy. Deze methode zorgt ervoor dat de vereiste afhankelijkheden op bestaande en nieuwe virtuele machines en schaal sets worden geïnstalleerd en op de juiste wijze zijn geconfigureerd. Niet-compatibele Vm's en schaal sets worden gerapporteerd, zodat u kunt beslissen of u ze wilt inschakelen en deze wilt herstellen.
-* Inschakelen van twee of meer virtuele Azure-machines of virtuele machine-schaalsets voor een opgegeven abonnement of resourcegroep met behulp van PowerShell.
-* Schakel Azure Monitor voor VM's in om Vm's of fysieke computers te bewaken die worden gehost in uw bedrijfs netwerk of een andere cloud omgeving.
+* Schakel één Azure VM- of virtuele machineschaalset in door **Insights** rechtstreeks te selecteren in de vm- of virtuele machineschaalset.
+* Schakel twee of meer Azure VM's en virtuele machineschaalsets in met Azure Policy. Deze methode zorgt ervoor dat op bestaande en nieuwe VM's en schaalsets de vereiste afhankelijkheden worden geïnstalleerd en correct geconfigureerd. Niet-conforme VM's en schaalsets worden gerapporteerd, zodat u beslissen of u deze wilt inschakelen en deze wilt herstellen.
+* Schakel twee of meer Azure VM's of virtuele machineschaalsets in een opgegeven abonnement of resourcegroep in met PowerShell.
+* Azure Monitor voor VM's inschakelen om VM's of fysieke computers te controleren die worden gehost in uw bedrijfsnetwerk of andere cloudomgeving.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, zorg ervoor dat u weet dat de informatie in de volgende secties. 
+Controleer voordat u begint of u de informatie in de volgende secties begrijpt. 
 
 >[!NOTE]
->De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
+>De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicekaartoplossing.](service-map.md)  
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende regio's:
+Azure Monitor voor VM's ondersteunt een Log Analytics-werkruimte in de volgende regio's:
 
 - VS - west-centraal
 - VS - west
 - VS - west 2
 - VS - zuid-centraal
 - VS - oost
-- VS - oost2
+- VS - oost 2
 - VS - centraal
 - VS - noord-centraal
 - Canada - midden
@@ -55,65 +55,65 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 - Australië - zuidoost
 
 >[!NOTE]
->U kunt Azure-Vm's implementeren vanuit elke regio. Deze Vm's zijn niet beperkt tot de regio's die worden ondersteund door de Log Analytics-werk ruimte.
+>U Azure VM's in elke regio controleren. De VM's zelf zijn niet beperkt tot de regio's die worden ondersteund door de werkruimte Log Analytics.
 >
 
-Als u geen werk ruimte hebt, kunt u er een maken met behulp van een van deze resources:
-* [De Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
+Als u geen werkruimte loganalytics hebt, u er een maken met een van de bronnen:
+* [Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Powershell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
-U kunt ook een werk ruimte maken terwijl u controle inschakelt voor één virtuele machine in azure of voor de schaalset van VM'S in de Azure Portal.
+U ook een werkruimte maken terwijl u bewaking inschakelt voor één Azure VM- of virtuele machineschaalset in de Azure-portal.
 
-Als u een schaal scenario wilt instellen dat gebruikmaakt van Azure Policy-, Azure PowerShell-of Azure Resource Manager sjablonen, in uw Log Analytics-werk ruimte:
+Ga als u een scenario op schaal instelt waarin azure-beleid,Azure PowerShell- of Azure Resource Manager-sjablonen worden gebruikt in uw werkruimte Log Analytics:
 
-* Installeer de ServiceMap en InfrastructureInsights oplossingen. U kunt deze installatie volt ooien met behulp van een meegeleverde Azure Resource Manager sjabloon. Klik op het tabblad **aan de slag** op **werk ruimte configureren**.
-* Configureer de werkruimte voor logboekanalyse voor het verzamelen van prestatiemeteritems.
+* Installeer de *oplossingen servicemap* en *InfrastructureInsights.* U deze installatie voltooien met behulp van een meegeleverde Azure Resource Manager-sjabloon. Of selecteer **Werkruimte configureren**op het tabblad Aan **de slag** in de Azure-portal .
+* Configureer de werkruimte Log Analytics om prestatiemeteritems te verzamelen.
 
-Gebruik een van de volgende methoden om uw werk ruimte te configureren voor het schaal scenario:
+Als u uw werkruimte wilt configureren voor het scenario op schaal, gebruikt u een van de volgende methoden:
 
-* Gebruik [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
-* Selecteer op de pagina dekking van Azure Monitor voor VM's [**beleid**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) de optie **werk ruimte configureren**. 
+* Azure [PowerShell gebruiken](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
+* Selecteer **werkruimte configureren**op de pagina [**Beleidsdekking**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) azure monitor voor VMs . 
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
+In de volgende tabel worden de Windows- en Linux-besturingssystemen weergegeven die Azure Monitor voor VM's ondersteunt. Later in deze sectie vindt u een volledige lijst met details over de belangrijkste en kleine Linux OS release en ondersteunde kernel versies.
 
 |Versie van het besturingssysteem |Prestaties |Kaarten |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
-|WindowsServer 2016 1803 | X | X |
+|Windows Server 2016 1803 | X | X |
 |Windows Server 2016 | X | X |
 |Windows Server 2012 R2 | X | X |
 |Windows Server 2012 | X | X |
 |Windows Server 2008 R2 | X | X|
-|Windows 10-1803 | X | X |
+|Windows 10 1803 | X | X |
 |Windows 8.1 | X | X |
 |Windows 8 | X | X |
 |Windows 7 SP1 | X | X |
 |Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18,04, 16,04 | X | X |
+|Ubuntu 18.04, 16.04 | X | X |
 |CentOS Linux 7, 6 | X | X |
 |SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Debian 9.4, 8 | X<sup>1</sup> | |
+|Debian 9.4. | X<sup>1</sup> | |
 
-<sup>1</sup> de functie prestaties van Azure monitor voor VM's is alleen beschikbaar vanuit Azure monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
+<sup>1</sup> De prestatiefunctie van Azure Monitor voor VM's is alleen beschikbaar via Azure Monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeelvenster van de Azure VM.
 
 >[!NOTE]
->In het Linux-besturings systeem:
+>In het Linux-besturingssysteem:
 > - Alleen standaard- en SMP Linux kernelversies worden ondersteund.
-> - Niet-standaard kernel versies, zoals fysieke Address Extension (PAE) en Xen, worden niet ondersteund voor een Linux-distributie. Bijvoorbeeld, een systeem met de release reeks *2.6.16.21-0,8-xen* wordt niet ondersteund.
-> - Aangepaste kernels, met inbegrip van hercompilaties van standaard-kernels, worden niet ondersteund.
-> - De CentOSPlus-kernel wordt ondersteund.
-> - Er moet een patch worden uitgevoerd voor de Linux-kernel voor het Spectre-beveiligings probleem. Neem contact op met de leverancier van de Linux-distributie voor meer informatie.
+> - Niet-standaard kernel releases, zoals Physical Address Extension (PAE) en Xen, worden niet ondersteund voor een Linux-distributie. Een systeem met de releasetekenreeks van *2.6.16.21-0,8 xen* wordt bijvoorbeeld niet ondersteund.
+> - Aangepaste kernels, waaronder recompilaties van standaardkernels, worden niet ondersteund.
+> - CentOSPlus kernel wordt ondersteund.
+> - De Linux kernel moet worden gepatcht voor de Spectre kwetsbaarheid. Raadpleeg uw Linux distributie leverancier voor meer informatie.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-| 7,6 | 3.10.0-957 |
-| 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
+| 7,5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
@@ -123,7 +123,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 | 6.10 | 2.6.32-754 |
 | 6.9 | 2.6.32-696 |
 
-#### <a name="centosplus"></a>CentOSPlus
+#### <a name="centosplus"></a>CentOSPlus (CentOSPlus)
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
@@ -134,129 +134,85 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-| 18,04 | 5,0 (inclusief door Azure afgestemde kernel)<br>4,18 *<br>4,15* |
-| 16.04.3 | 4,15. * |
-| 16.04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
+| 18.04 | 5.0 (inclusief azure-tuned kernel)<br>4.18*<br>4.15* |
+| 16.04.3 | 4.15.* |
+| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-|12 SP4 | 4,12. * (inclusief door Azure afgestemde kernel) |
-|12 SP3 | 4.4. * |
-|12 SP2 | 4.4. * |
+|12 SP4 | 4.12.* (inclusief azure-tuned kernel) |
+|12 SP3 | 4.4.* |
+|12 SP2 | 4.4.* |
 
 #### <a name="debian"></a>Debian 
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-| 9 | 4,9 | 
+| 9 | 4.9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>De agent voor Microsoft Dependency
+### <a name="the-microsoft-dependency-agent"></a>De Microsoft Dependency-agent
 
-De functie map in Azure Monitor voor VM's haalt gegevens op uit de micro soft-afhankelijkheids agent. De agent voor afhankelijkheden, is afhankelijk van de Log Analytics-agent voor de verbinding met Log Analytics. Daarom moet op uw systeem de Log Analytics-agent zijn geïnstalleerd en geconfigureerd met de afhankelijkheids agent.
+De mapfunctie in Azure Monitor voor VM's krijgt de gegevens van de Microsoft Dependency-agent. De afhankelijkheidsagent vertrouwt op de Log Analytics-agent voor de verbinding met Log Analytics. Uw systeem moet dus de log-analyse-agent hebben geïnstalleerd en geconfigureerd met de afhankelijkheidsagent.
 
-Of u Azure Monitor voor VM's voor één virtuele Azure-machine inschakelt of u de implementatie methode op schaal gebruikt, gebruikt u de Azure VM dependency agent-extensie voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) of [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) om de agent te installeren als onderdeel van de ervaring.
+Of u Azure Monitor voor VM's nu inschakelt voor één Azure VM of de implementatiemethode op schaal gebruikt, gebruikt u de Azure VM Dependency agent-extensie voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) of [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) om de agent te installeren als onderdeel van de ervaring.
 
 >[!NOTE]
->De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
+>De volgende informatie die in deze sectie wordt beschreven, is ook van toepassing op de [servicekaartoplossing.](service-map.md)  
 
-In een hybride omgeving kunt u de afhankelijkheids agent hand matig downloaden en installeren of een geautomatiseerde methode gebruiken.
+In een hybride omgeving u de afhankelijkheidsagent handmatig downloaden en installeren of een geautomatiseerde methode gebruiken.
 
-De volgende tabel beschrijft de verbonden bronnen die ondersteuning biedt voor de kaart-functie in een hybride omgeving.
+In de volgende tabel worden de verbonden bronnen beschreven die de functie Kaart ondersteunt in een hybride omgeving.
 
 | Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Windows-agents | Ja | Samen met de [Log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md)hebben Windows-agents de afhankelijkheidsagent nodig. Zie [ondersteunde besturingssystemen](#supported-operating-systems)voor meer informatie . |
+| Linux-agents | Ja | Samen met de [Log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de Afhankelijkheidsagent nodig. Zie [ondersteunde besturingssystemen](#supported-operating-systems)voor meer informatie . |
 | Beheergroep System Center Operations Manager | Nee | |
 
-U kunt de afhankelijkheids agent downloaden van de volgende locaties:
+U de afhankelijkheidsagent downloaden vanaf deze locaties:
 
-| File | OS | Version | SHA-256 |
+| File | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.2.9060 | B7725B6B205CF8C336D9AAD87956336C816412740E9D6499CB6F862AE3896  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.2.9060 | C6995A67A782AEC312647D74A99C3C823F68F5FF490FD4BB6006A2FF2941B0 |
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Als u de functies in Azure Monitor voor VM's wilt inschakelen en gebruiken, moet u de rol *log Analytics Inzender* hebben. Als u de prestaties, de status en de kaart gegevens wilt bekijken, moet u de rol *bewakings lezer* hebben voor de Azure-VM. De Log Analytics-werkruimte moet worden geconfigureerd voor Azure Monitor voor virtuele machines.
+Als u de functies in Azure Monitor voor VM's wilt inschakelen en openen, moet u de rol *van de medewerker van Log Analytics* hebben. Als u prestatie-, status- en kaartgegevens wilt weergeven, moet u de rol *van de monitorlezer* voor de Azure VM hebben. De werkruimte Log Analytics moet zijn geconfigureerd voor Azure Monitor voor VM's.
 
-Zie [werk ruimten beheren](../../azure-monitor/platform/manage-access.md)voor meer informatie over het controleren van de toegang tot een log Analytics-werk ruimte.
+Zie [Werkruimten beheren](../../azure-monitor/platform/manage-access.md)voor meer informatie over het beheren van toegang tot een Log Analytics-werkruimte.
 
-## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Azure Monitor voor VM's inschakelen (preview)
+## <a name="how-to-enable-azure-monitor-for-vms"></a>Azure-monitor inschakelen voor VM's
 
-Schakel Azure Monitor voor VM's in met een van de methoden die in deze tabel worden beschreven:
+Azure Monitor voor VM's inschakelen met een van de methoden die in deze tabel worden beschreven:
 
-| Implementatie status | Methode | Beschrijving |
+| Implementatiestatus | Methode | Beschrijving |
 |------------------|--------|-------------|
-| Eén Azure VM of schaalset voor virtuele machines | [Inschakelen vanaf de VM](vminsights-enable-single-vm.md) | U kunt één virtuele Azure-machine inschakelen door **inzichten (preview)** rechtstreeks te selecteren op basis van de VM of virtuele-machine schaalset. |
-| Meerdere Azure Vm's of virtuele-machine schaal sets | [Inschakelen via Azure Policy](vminsights-enable-at-scale-policy.md) | U kunt meerdere virtuele machines van Azure inschakelen met behulp van Azure Policy en beschik bare beleids definities. |
-| Meerdere Azure Vm's of virtuele-machine schaal sets | [Azure PowerShell-of Azure Resource Manager-sjablonen inschakelen](vminsights-enable-at-scale-powershell.md) | U kunt meerdere Azure Vm's of virtuele-machine schaal sets inschakelen voor een opgegeven abonnement of resource groep met behulp van Azure PowerShell-of Azure Resource Manager sjablonen. |
-| Hybride cloud | [Inschakelen voor de hybride omgeving](vminsights-enable-hybrid-cloud.md) | U kunt implementeren op Vm's of fysieke computers die worden gehost in uw Data Center of in andere Cloud omgevingen. |
-
-## <a name="performance-counters-enabled"></a>Prestatiemeteritems ingeschakeld 
-
-Azure Monitor voor VM's configureert een Log Analytics werk ruimte voor het verzamelen van de prestatie meter items die worden gebruikt. De volgende tabellen geven een lijst van de objecten en tellers die elke 60 seconden worden verzameld.
-
->[!NOTE]
->De volgende lijst met prestatie meter items die worden ingeschakeld door Azure Monitor voor VM's, beperkt u niet tot het inschakelen van aanvullende prestatie meter items die u moet verzamelen van Vm's die rapporteren aan de werk ruimte. Als u deze items uitschakelt, voor komt u dat de reeks prestatie grafieken die deel uitmaken van de prestatie functie, het resource gebruik van uw Vm's niet kan weer geven.
-
-### <a name="windows-performance-counters"></a>Windows-prestatiemeteritems
-
-|Objectnaam |Naam van het prestatiemeteritem |
-|------------|-------------|
-|Logische schijf |Percentage vrije ruimte |
-|Logische schijf |Gemiddelde Lees tijd schijf |
-|Logische schijf |Gemiddelde tijd schijf overdracht |
-|Logische schijf |Gemiddelde schrijf tijd schijf |
-|Logische schijf |Schijf Bytes per seconde |
-|Logische schijf |Bytes gelezen op schijf/sec |
-|Logische schijf |Schijf lezen per seconde |
-|Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |Bytes geschreven naar schijf/sec |
-|Logische schijf |Schijf schrijven per seconde |
-|Logische schijf |Beschikbare Megabytes |
-|Geheugen |Beschikbare megabytes (MB) |
-|-Netwerkadapter |Ontvangen bytes per seconde |
-|-Netwerkadapter |Verzonden bytes per seconde |
-|Processor |% Processortijd |
-
-### <a name="linux-performance-counters"></a>Linux-prestatiemeteritems
-
-|Objectnaam |Naam van het prestatiemeteritem |
-|------------|-------------|
-|Logische schijf |Percentage gebruikte ruimte |
-|Logische schijf |Bytes gelezen op schijf/sec |
-|Logische schijf |Schijf lezen per seconde |
-|Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |Bytes geschreven naar schijf/sec |
-|Logische schijf |Schijf schrijven per seconde |
-|Logische schijf |Beschikbare Megabytes |
-|Logische schijf |Logische schijf Bytes per seconde |
-|Geheugen |Beschikbaar geheugen in megabytes |
-|Netwerk |Totaal aantal ontvangen Bytes |
-|Netwerk |Totaal aantal verzonden Bytes |
-|Processor |% Processortijd |
+| Eén Azure VM- of virtuele machineschaalset | [Inschakelen vanaf de VM](vminsights-enable-single-vm.md) | U één Azure VM inschakelen door **Insights** rechtstreeks te selecteren in de vm- of virtuele machineschaalset. |
+| Meerdere Azure VM's of virtuele machineschaalsets | [Inschakelen via Azure-beleid](vminsights-enable-at-scale-policy.md) | U meerdere Azure VM's inschakelen met Azure Policy en beschikbare beleidsdefinities. |
+| Meerdere Azure VM's of virtuele machineschaalsets | [Inschakelen via Azure PowerShell- of Azure Resource Manager-sjablonen](vminsights-enable-at-scale-powershell.md) | U meerdere Azure VM's of virtuele machineschaalsets inschakelen voor een bepaald abonnement of resourcegroep met Azure PowerShell- of Azure Resource Manager-sjablonen. |
+| Hybride cloud | [Inschakelen voor de hybride omgeving](vminsights-enable-hybrid-cloud.md) | U implementeren op VM's of fysieke computers die worden gehost in uw datacenter of andere cloudomgevingen. |
 
 ## <a name="management-packs"></a>Management packs
 
-Wanneer Azure Monitor voor VM's is ingeschakeld en geconfigureerd met een Log Analytics-werk ruimte, wordt een management pack doorgestuurd naar alle Windows-computers die aan die werk ruimte rapporteren. Als u [uw System Center Operations Manager-beheer groep hebt geïntegreerd](../../azure-monitor/platform/om-agents.md) met de log Analytics-werk ruimte, wordt de servicetoewijzing Management Pack van de beheer groep geïmplementeerd naar de Windows-computers die rapporteren aan de beheer groep.  
+Wanneer Azure Monitor voor VM's is ingeschakeld en geconfigureerd met een Log Analytics-werkruimte, wordt een beheerpakket doorgestuurd naar alle Windows-computers die naar die werkruimte rapporteren. Als u [uw beheergroep System Center Operations Manager](../../azure-monitor/platform/om-agents.md) hebt geïntegreerd met de werkruimte Log Analytics, wordt het beheerpakket servicekaarten geïmplementeerd vanuit de beheergroep naar de Windows-computers die rapporteren aan de beheergroep.  
 
-De management pack heet *micro soft. intelligence packs. ApplicationDependencyMonitor*. De map die is geschreven naar `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\`. De gegevens bron die door de management pack wordt gebruikt, is `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`.
+Het management pack heet *Microsoft.IntelligencePacks.ApplicationDependencyMonitor*. Zijn geschreven `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` aan omslag. De gegevensbron die het `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`beheerpakket gebruikt, is .
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiksgegevens
 
-Microsoft verzamelt automatisch gebruiks- en -gegevens door uw gebruik van de Azure Monitor-service. Micro soft gebruikt deze gegevens om de kwaliteit, beveiliging en integriteit van de service te verbeteren. 
+Microsoft verzamelt automatisch gebruiks- en prestatiegegevens door uw gebruik van de Azure Monitor-service. Microsoft gebruikt deze gegevens om de kwaliteit, beveiliging en integriteit van de service te verbeteren. 
 
-De kaart functie bevat gegevens over de configuratie van uw software om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden. De gegevens bevatten informatie zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Microsoft biedt geen namen, adressen of andere contactgegevens verzameld.
+De mapfunctie bevat gegevens over de configuratie van uw software om nauwkeurige en efficiënte probleemoplossingsmogelijkheden te bieden. De gegevens bieden informatie zoals het besturingssysteem en de versie, IP-adres, DNS-naam en werkstationnaam. Microsoft verzamelt geen namen, adressen of andere contactgegevens.
 
-Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
+Zie de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-Nu u bewaking hebt ingeschakeld voor uw virtuele machine, zijn bewakings gegevens beschikbaar voor analyse in Azure Monitor voor VM's.
+Nu u bewaking voor uw VM hebt ingeschakeld, is bewakingsinformatie beschikbaar voor analyse in Azure Monitor voor VM's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure monitor voor VM's prestaties weer geven](vminsights-performance.md)voor meer informatie over het gebruik van de functie voor prestatie bewaking. Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven.
+Zie [Azure Monitor for VM-prestaties weergeven voor](vminsights-performance.md)meer informatie over het gebruik van de functie Prestatiecontrole voor prestaties van de prestaties van de prestaties . Zie Azure Monitor for [VM-toewijzing weergeven](vminsights-maps.md)om gedetecteerde toepassingsafhankelijkheden weer te geven.

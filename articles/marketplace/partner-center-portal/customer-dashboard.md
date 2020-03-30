@@ -1,118 +1,117 @@
 ---
-title: Klanten dashboard in Commercial Marketplace Analytics op partner centrum
-description: Informatie over toegang tot informatie over uw klanten, met inbegrip van groei trends, met behulp van het dash board van de klant in de analyse van commerciële Marketplace.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Klantendashboard in Commercial Marketplace-analyses in partnercentrum
+description: Meer informatie over informatie over uw klanten, waaronder groeitrends, vindt u in het dashboard van de klant in Commercial Marketplace-analyses.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264013"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286112"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Klanten dashboard in commerciële Marketplace-analyse
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Klantendashboard in Commercial Marketplace-analyses
 
-Dit artikel bevat informatie over het **dash board van klanten** in het partner centrum. Dit dash board geeft informatie weer over uw klanten, met inbegrip van groei trends, die worden weer gegeven in een grafische en download bare indeling.
+In dit artikel vindt u informatie over het **dashboard van de klant** in het Partnercentrum. Dit dashboard toont informatie over uw klanten, inclusief groeitrends, gepresenteerd in een grafisch en downloadbaar formaat.
 
-Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace om toegang te krijgen tot het **dash board**van de klant.
+Als u toegang wilt krijgen tot **het dashboard Van de klant,** opent u het dashboard **[Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële marktplaats.
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
+> Zie [Veelgestelde vragen en terminologie voor commerciële marketplace-analyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
 
 ## <a name="customer-dashboard"></a>Dashboard voor klanten
 
-In het **dash board** van de klant van het menu **analyseren** worden gegevens weer gegeven voor klanten die uw aanbiedingen hebben aangeschaft. U kunt grafische weer gaven van de volgende items bekijken:
+In **het dashboard Klant** van het menu **Analyseren** worden gegevens weergegeven voor klanten die uw aanbiedingen hebben verkregen. U grafische weergaven van de volgende items bekijken:
 
-- [Klanten overzicht](#customer-summary)
-- [Klant op geografie](#customer-by-geography)
-- [Klant trends](#customer-trends)
-- [Klanten per orders en gebruik](#customers-by-orders-and-usage)
-- [Klanten per Sku's](#customers-by-skus)
-- [Orders en gebruik per klant type](#orders-and-usage-by-customer-type)
-- [Tabel Klant gegevens](#customer-details-table)
-- [Pagina filters van klant](#customer-page-filters)
+- [Klantoverzicht](#customer-summary)
+- [Klant per geografie](#customer-by-geography)
+- [Klanttrends](#customer-trends)
+- [Klanten door bestellingen en gebruik](#customers-by-orders-and-usage)
+- [Klanten door SKU's](#customers-by-skus)
+- [Bestellingen en gebruik per klanttype](#orders-and-usage-by-customer-type)
+- [Tabel Klantgegevens](#customer-details-table)
+- [Klantenpaginafilters](#customer-page-filters)
 
-### <a name="customer-summary"></a>Klanten overzicht
+### <a name="customer-summary"></a>Klantoverzicht
 
-In de sectie Overzicht van klanten wordt een telling weer gegeven van alle klanten, met inbegrip van nieuwe, bestaande en verlopen, tijdens het geselecteerde datum bereik.
+In de sectie Klantoverzicht wordt een aantal klanten weergegeven, inclusief nieuw, bestaand en verloop, tijdens het geselecteerde datumbereik.
 
 - Totaal aantal klanten wordt gedefinieerd als het aantal klanten dat uw aanbieding heeft gekocht en ten minste één bestelling heeft die niet is geannuleerd.
-- Het percentage van de groei in vergelijking met de vorige maand wordt aangegeven door de indicator aantal en omhoog in een groene of neerwaartse indicator rood.
-- Groei trends worden weer gegeven door staaf diagrammen en de waarde voor elke maand wordt weer gegeven door de muis aanwijzer boven de kolommen van de grafiek te plaatsen.
+- Klanten percentage van de groei ten opzichte van de vorige maand wordt aangegeven door het aantal en opwaartse indicator in groene of neerwaartse indicator in het rood.
+- Groeitrends worden weergegeven door staafgrafieken en geven de waarde voor elke maand weer door boven de kolommen van de grafiek te zweven.
 
-Er zijn drie **typen klanten**: nieuw, bestaand en overlopend.
+Er zijn drie **soorten klanten:** nieuw, bestaand en gekarnd.
 
-- Een nieuwe klant heeft een of meer van uw aanbiedingen voor de eerste keer in de geselecteerde maand opgehaald.
-- Een bestaande klant heeft een of meer van uw aanbiedingen aangeschaft vóór de maand geselecteerd.
-- Een bestaande klant heeft alle aanbiedingen die eerder zijn gekocht, geannuleerd.
+- Een nieuwe klant heeft voor het eerst binnen de geselecteerde maand een of meer van uw aanbiedingen binnen gekocht.
+- Een bestaande klant heeft een of meer van uw aanbiedingen verworven voordat deze is geselecteerd.
+- Een gekarnd klant heeft alle eerder gekochte aanbiedingen geannuleerd.
 
-### <a name="customer-by-geography"></a>Klant op geografie
+### <a name="customer-by-geography"></a>Klant per geografie
 
-In het diagram **klant per geografie** ziet u de aantallen klanten en klanten die zijn aangeschaft tijdens het geselecteerde datum bereik en die worden toegewezen op basis van het land van de klant. Het licht tot donkerere kleur op de kaart vertegenwoordigt de laag tot hoogste waarde van het aantal van de klant. Klik op een record in de tabel om in te zoomen op een land.
+De **grafiek Klant per geografie** toont de tellingen van alle klanten en klanten die tijdens het geselecteerde datumbereik zijn verkregen en worden toegewezen op basis van het land van de klant. De lichte tot donkere kleur op de kaart vertegenwoordigt de lage tot hoge waarde van het aantal klanten. Klik op een record in de tabel om in te zoomen op een land.
 
-In het heatmap wordt het aantal klanten en de klant land weer gegeven. U kunt de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het% van klanten per locatie kunt bekijken, evenals de klanten die nieuw aan die locatie zijn toegevoegd.
+De heatmap geeft het aantal klanten en % per land van de klant weer. U de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het % van de klanten per locatie bekijken, evenals klanten die onlangs aan die locatie zijn toegevoegd.
 
-### <a name="customer-trends"></a>Klant trends
+### <a name="customer-trends"></a>Klanttrends
 
-In het diagram **klant trends** wordt een telling weer gegeven van alle klanten, met inbegrip van nieuwe, bestaande en geverloopte, met een groei trend per maand.
+In het grafiek **Klanttrends** wordt een aantal klanten weergegeven, inclusief nieuw, bestaand en gekarnd, met een groeitrend per maand per maand.
 
-- Het lijn diagram geeft het totale percentage aan klant groei.
-- De kolom month vertegenwoordigt het aantal klanten dat is gestapeld door nieuwe, bestaande en geafnemerde klanten.
-- Het aantal geverloopte klanten wordt weer gegeven op de negatieve richting van de Y-as.
-- U kunt specifieke legenda-items selecteren om meer gedetailleerde weer gaven weer te geven. Selecteer bijvoorbeeld nieuwe klanten in de legenda om alleen nieuwe klanten weer te geven.
-- U kunt de schuif regelaar aan de bovenkant van de grafiek gebruiken om naar rechts en links op de x-as te schuiven en te focussen op specifieke gegevens punten om meer details weer te geven.
-- Als u de muis aanwijzer boven een kolom van de grafiek houdt, worden alleen de Details voor die maand weer gegeven.
+- Het lijndiagram vertegenwoordigt de totale groeipercentages van de klant.
+- De kolom maand vertegenwoordigt het aantal klanten dat is gestapeld door nieuwe, bestaande en gekarnde klanten.
+- Het aantal gekarnde klanten wordt weergegeven op de negatieve richting van Y-as.
+- U specifieke legenda-items selecteren om meer gedetailleerde weergaven weer te geven. Selecteer bijvoorbeeld nieuwe klanten uit de legenda om alleen nieuwe klanten weer te geven.
+- U de schuifregelaar boven aan de grafiek gebruiken om naar rechts en links te scrollen op de x-as en zich te concentreren op specifieke gegevenspunten om meer in detail te bekijken.
+- Als u boven een kolom van de grafiek zweeft, worden alleen details weergegeven voor die maand.
 
-### <a name="customers-by-orders-and-usage"></a>Klanten per orders en gebruik
+### <a name="customers-by-orders-and-usage"></a>Klanten door bestellingen en gebruik
 
-De tabel **klanten per orders/gebruik** heeft drie tabbladen: ' orders ', ' genormaliseerd gebruik ' en ' onbewerkt gebruik '. Het **bovenste klant percentiel** wordt weer gegeven langs de x-as, zoals bepaald door het aantal orders. Op de y-as wordt het aantal orders van de klant weer gegeven. Op de secundaire y-as (lijn diagram) wordt het cumulatieve percentage van het totale aantal orders weer gegeven. U kunt details weer geven door boven punten in het lijn diagram te bewegen.
+De **grafiek Klanten op bestellingen/gebruik** heeft drie tabbladen, 'orders', 'genormaliseerd gebruik' en 'onbewerkt gebruik'. Het **bovenste klantpercentiel** wordt weergegeven langs de x-as, zoals bepaald door het aantal orders. De y-as geeft het aantal bestellingen van de klant weer. De secundaire y-as (lijngrafiek) geeft het cumulatieve percentage van het totale aantal orders weer. U details weergeven door over punten langs het lijndiagram te zweven.
 
-Zie bijvoorbeeld het volgende diagram voor genormaliseerd gebruik: het bovenste 30e percentiel van klanten draagt bij tot 87% van het genormaliseerde gebruik cumulatief. Het 30e percentiel van klanten is slechts 1.570.000 uur gebruik.
+Zie bijvoorbeeld de onderstaande grafiek voor genormaliseerd gebruik: Het bovenste 30e percentiel van klanten draagt bij aan 87% van het genormaliseerde gebruik cumulatief. Het 30e percentiel van klanten draagt slechts 1,57 miljoen uur gebruik bij.
 
-### <a name="customers-by-skus"></a>Klanten per Sku's
+### <a name="customers-by-skus"></a>Klanten door SKU's
 
-De **klanten per sku's/gebruiks** diagram worden hieronder beschreven.
+De **klanten per SKU/gebruiksgrafieken** worden hieronder beschreven.
 
-1. Het Leader Board geeft details weer van de Top 50-klanten gerangschikt op Bestel aantal. Nadat u een klant hebt geselecteerd, worden de gegevens van de klant weer gegeven in de secties 2, 3 en 4 van deze Leader Board.
-2. De details van het klant profiel worden in deze ruimte weer gegeven wanneer uitgevers zijn aangemeld met een rol van eigenaar. Als uitgevers zijn aangemeld met een rol Inzender, is de informatie in deze sectie niet beschikbaar.
-3. In de grafiek orders per Sku's ring wordt de uitsplitsing weer gegeven van de orders die voor Sku's zijn gekocht. De top 5 Sku's met het hoogste aantal orders worden weer gegeven, terwijl de rest van de bestellingen worden gegroepeerd onder ' rest all '.
-4. In de grafiek stoelen per Sku's ring wordt de uitsplitsing weer gegeven van seats die zijn besteld voor Sku's. De top 5 Sku's met de hoogste seats worden weer gegeven, terwijl de rest van de orders worden gegroepeerd onder rest all.
+1. Het Leader-bestuur presenteert details van de top 50 klanten gerangschikt op bestelling. Na het selecteren van een klant worden de details van de klant gepresenteerd in secties 2, 3 en 4 van dit klassement.
+2. De profielgegevens van de klant worden in deze ruimte weergegeven wanneer uitgevers zijn aangemeld met een eigenaarrol. Als uitgevers zijn aangemeld met een bijdragerrol, zijn de details in deze sectie niet beschikbaar.
+3. De donutgrafiek Orders by SKU's geeft de uitsplitsing weer van de orders die voor SKU's zijn gekocht. De top 5 SKU's met het hoogste aantal orders worden weergegeven, terwijl de rest van de orders zijn gegroepeerd onder 'rest all'.
+4. De Seats by SKU's donut grafiek toont de verdeling van de zetels besteld voor SKU's. De top 5 SKU's met de hoogste stoelen worden weergegeven, terwijl de rest van de orders zijn gegroepeerd onder rust allemaal.
 
-### <a name="orders-and-usage-by-customer-type"></a>Orders en gebruik per klant type
+### <a name="orders-and-usage-by-customer-type"></a>Bestellingen en gebruik per klanttype
 
-In het diagram **Orders/gebruik per klant type** wordt het aantal orders, genormaliseerd gebruik en de openstaande verbruiks uren gesplitst tussen nieuwe klanten en bestaande klanten. op basis van de geselecteerde orders, genormaliseerd en onbewerkt gebruik in de grafiek.
+In de grafiek **Orders/gebruik per klanttype** wordt het aantal bestellingen, genormaliseerd gebruik en onbewerkte gebruiksuren weergegeven die worden verdeeld tussen nieuwe klanten en bestaande klanten; gebaseerd op de selectie van orders, genormaliseerd en ongebruikt respectievelijk in de grafiek.
 
-- Een nieuwe klant heeft voor het eerst binnen dezelfde kalender maand (y-as) een of meer van uw aanbiedingen of gerapporteerd gebruik verkregen.
-- Een bestaande klant heeft eerder een aanbieding van u of gerapporteerd gebruik aangeschaft vóór de kalender maand gerapporteerd (op de y-as).
+- Een nieuwe klant heeft voor het eerst binnen dezelfde kalendermaand (y-axis) een of meer van uw aanbiedingen of gerapporteerd gebruik verworven.
+- Een bestaande klant heeft eerder een aanbieding van u verkregen of het gebruik gerapporteerd voordat de gerapporteerde kalendermaand (op de y-as) is gerapporteerd.
 
-### <a name="customer-details-table"></a>Tabel Klant gegevens
+### <a name="customer-details-table"></a>Tabel Klantgegevens
 
-In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klanten weer gegeven, gesorteerd op de datum waarop ze voor het eerst een van uw aanbiedingen hebben verkregen.
+In de tabel **Klantgegevens** wordt een genummerde lijst weergegeven van de top 1000 klanten die zijn gesorteerd op de datum waarop ze voor het eerst een van uw aanbiedingen hebben ontvangen.
 
-- Persoonlijke gegevens van de klant zijn alleen beschikbaar als de klant toestemming heeft gegeven. U kunt deze informatie alleen weer geven als u bent aangemeld met het rol niveau eigenaar van machtigingen. Meer informatie over gebruikers rollen en machtigingen.
+- Persoonlijke gegevens van klanten zijn alleen beschikbaar als de klant toestemming heeft gegeven. U deze informatie alleen bekijken als u bent ingelogd met een rolniveau van de eigenaar. Meer informatie over gebruikersrollen en machtigingen.
 - Elke kolom in het raster is sorteerbaar.
-- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
-- Als het record nummer groter is dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren datum, klant-e-mail, klant land/staat/plaats/post code, klant taal, enzovoort.
+- De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records minder dan 1000 is.
+- Als het recordnummer meer dan 1000 bedraagt, worden geëxporteerde gegevens de komende 30 dagen asynchroon op een downloadspagina geplaatst.
+- Filters kunnen op de tabel worden toegepast om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op bedrijfsnaam, klant-id, Marketplace-abonnements-id, Azure-licentietype, verkregen datum, verloren datum, e-mail van de klant, land van klanten/staat/stad/zip, klanttaal, enz.
 
-### <a name="customer-page-filters"></a>Pagina filters van klant
+### <a name="customer-page-filters"></a>Klantenpaginafilters
 
-De **pagina** filters van de klant worden toegepast op het pagina niveau van de klant. U kunt meerdere filters selecteren om de grafiek te genereren voor de criteria die u wilt weer geven en de gegevens die u wilt zien in het raster Details van gedetailleerde orders/export. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevens bereik dat u hebt geselecteerd in de rechter bovenhoek van de pagina Orders.
+De **paginafilters voor klanten** worden toegepast op paginaniveau klanten. U meerdere filters selecteren om de grafiek weer te geven voor de criteria die u wilt weergeven en de gegevens die u wilt zien in het raster 'Gedetailleerde ordersgegevens' / exporteren. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevensbereik dat u hebt geselecteerd in de rechterbovenhoek van de opdrachtpagina.
 
 >[!NOTE]
-> Gedetailleerde definities voor elk van de velden in klant grid, pagina filters en de mogelijke selecties daarvan vindt u in [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md).
+> Gedetailleerde definities voor elk van de velden in het klantenraster, paginafilters en hun mogelijke selecties bevinden zich in [veelgestelde vragen en terminologie voor Commerciële Marketplace-analyses.](./faq-terminology.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor een overzicht van analyse rapporten die beschikbaar zijn in de commerciële Marketplace van partner Center raadpleegt u [Analytics voor de commerciële Marketplace in Partner Center](./analytics.md).
-- Zie [Summary dash board in Commercial Marketplace Analytics](./summary-dashboard.md)voor grafieken, trends en waarden van statistische gegevens die de Marketplace-activiteiten voor uw aanbieding samenvatten.
-- Voor informatie over uw orders in een grafische en download bare indeling raadpleegt u het [dash board orders in Commercial Marketplace Analytics](./orders-dashboard.md).
-- Voor virtuele machine (VM) zijn metrische gegevens over gebruik en gefactureerde facturering, Zie [gebruiks dashboard in commerciële Marketplace-analyses](./usage-dashboard.md).
-- Zie [dash board downloaden in Commercial Marketplace Analytics](./downloads-dashboard.md)voor een lijst met Download aanvragen voor de afgelopen 30 dagen.
-- Voor een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource raadpleegt u het [dash board beoordelingen en beoordelingen in Commercial Marketplace Analytics](./ratings-reviews.md).
-- Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor veelgestelde vragen over commerciële Marketplace-analyses en voor een uitgebreid woorden boek met gegevens termen.
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
+- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Orders Dashboard in Commercial Marketplace analytics](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
+- Zie [Gebruiksdashboard in Commercial Marketplace-analyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
+- Zie [Downloads Dashboard in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Voor veelgestelde vragen over Commercial Marketplace analytics en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor Commercial Marketplace analytics.](./faq-terminology.md)

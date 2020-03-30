@@ -1,6 +1,6 @@
 ---
-title: Aandachtspunten voor de netwerk topologie voor Azure AD-toepassingsproxy
-description: Bevat informatie over aandachtspunten voor topologie van netwerk bij het gebruik van Azure AD-toepassingsproxy.
+title: Overwegingen voor netwerktopologie voor Azure AD-toepassingsproxy
+description: Dekt overwegingen op het gebied van netwerktopologie bij het gebruik van Azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,165 +16,165 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: eaceaf1f5e9b6e34ced5db39b61e607fffcb5953
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295139"
 ---
-# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Netwerk-topologie overwegingen bij het gebruik van Azure Active Directory-toepassingsproxy
+# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Overwegingen voor netwerktopologie bij het gebruik van Azure Active Directory Application Proxy
 
-In dit artikel wordt uitgelegd aandachtspunten voor topologie van netwerk bij het gebruik van de toepassingsproxy van Azure Active Directory (Azure AD) voor het publiceren en op afstand toegang krijgen tot uw toepassingen.
+In dit artikel worden overwegingen voor netwerktopologie uitgelegd bij het gebruik van Azure Active Directory (Azure AD) Application Proxy voor het publiceren en openen van uw toepassingen op afstand.
 
 ## <a name="traffic-flow"></a>Verkeersstroom
 
-Wanneer een toepassing wordt gepubliceerd via Azure AD-toepassingsproxy, wordt verkeer van de gebruikers naar de toepassingen stromen via drie verbindingen:
+Wanneer een toepassing wordt gepubliceerd via Azure AD Application Proxy, stroomt het verkeer van de gebruikers naar de toepassingen via drie verbindingen:
 
-1. De gebruiker verbinding maakt met het openbare eindpunt van Azure AD Application Proxy-service op Azure
-1. De Application Proxy-service maakt verbinding met de Application Proxy-connector
-1. De Application Proxy-connector maakt verbinding met de doeltoepassing
+1. De gebruiker maakt verbinding met het openbare eindpunt van de Azure AD Application Proxy service op Azure
+1. De application proxy-service maakt verbinding met de toepassingsproxyconnector
+1. De toepassingsproxyconnector maakt verbinding met de doeltoepassing
 
-![Diagram van netwerkverkeer van gebruiker aan de doeltoepassing](./media/application-proxy-network-topology/application-proxy-three-hops.png)
+![Diagram met verkeersstroom van gebruiker naar doeltoepassing](./media/application-proxy-network-topology/application-proxy-three-hops.png)
 
-## <a name="tenant-location-and-application-proxy-service"></a>Tenantlocatie en de service voor toepassingsproxy
+## <a name="tenant-location-and-application-proxy-service"></a>Tenantlocatie en Application Proxy-service
 
-Wanneer u zich aanmeldt voor een Azure AD-Tenant, wordt de regio van uw Tenant bepaald door het land/de regio die u opgeeft. Wanneer u toepassingsproxy hebt ingeschakeld, worden de exemplaren van de toepassingsproxy voor uw tenant gekozen of gemaakt in dezelfde regio als uw Azure AD-tenant, of de dichtstbijzijnde regio.
+Wanneer u zich aanmeldt voor een Azure AD-tenant, wordt de regio van uw tenant bepaald door het land/de regio die u opgeeft. Wanneer u Application Proxy inschakelt, worden de instanties voor de toepassingsproxy voor uw tenant gekozen of gemaakt in dezelfde regio als uw Azure AD-tenant of het dichtstbijzijnde gebied.
 
-Bijvoorbeeld, als het land of regio van uw Azure AD-tenant het Verenigd Koninkrijk is, gebruiken alle uw Application Proxy connectors service-exemplaren in EU-datacenters. Wanneer uw gebruikers toegang tot toepassingen gepubliceerde, hun verkeer wordt gerouteerd via de Application Proxy-service-exemplaren in deze locatie.
+Als het land of de regio van uw Azure AD-tenant bijvoorbeeld het Verenigd Koninkrijk is, gebruiken al uw Application Proxy-connectors service-exemplaren in Europese datacenters. Wanneer uw gebruikers toegang krijgen tot gepubliceerde toepassingen, gaat hun verkeer via de instanties van de Application Proxy-service op deze locatie.
 
-## <a name="considerations-for-reducing-latency"></a>Overwegingen voor de latentie wordt verminderd
+## <a name="considerations-for-reducing-latency"></a>Overwegingen voor het verminderen van latentie
 
-Alle proxyoplossingen introduceren latentie in uw netwerkverbinding. Ongeacht welke proxy- of VPN-oplossing u ook als uw oplossing voor externe toegang kiest, bevat deze altijd een set servers voor het inschakelen van de verbinding met binnen uw bedrijfsnetwerk.
+Alle proxy-oplossingen introduceren latentie in uw netwerkverbinding. Het maakt niet uit welke proxy of VPN-oplossing u kiest als uw oplossing voor externe toegang, het bevat altijd een set servers waarmee de verbinding met uw bedrijfsnetwerk mogelijk is.
 
-Organisaties bevatten doorgaans servereindpunten in het perimeternetwerk. Met Azure AD-toepassingsproxy, echter stroomt verkeer via de proxy-service in de cloud terwijl de connectoren bevinden zich op uw bedrijfsnetwerk. Er is geen perimeternetwerk is vereist.
+Organisaties nemen doorgaans servereindpunten op in hun perimeternetwerk. Met Azure AD Application Proxy stroomt het verkeer echter door de proxyservice in de cloud terwijl de connectors zich op uw bedrijfsnetwerk bevinden. Er is geen perimeternetwerk vereist.
 
-De volgende secties bevatten aanvullende suggesties hebt, kunt u Verminder de latentie nog verder. 
+De volgende secties bevatten aanvullende suggesties om de latentie nog verder te verminderen. 
 
-### <a name="connector-placement"></a>Plaatsing van de connector
+### <a name="connector-placement"></a>Plaatsing van connectoren
 
-Toepassingsproxy kiest de locatie van exemplaren voor u, op basis van de tenantlocatie van uw. Echter, krijgt u om te bepalen waar u de connector installeert zodat u voor het definiëren van de kenmerken van de latentie van uw netwerkverkeer.
+Application Proxy kiest de locatie van instanties voor u, op basis van uw tenantlocatie. U echter beslissen waar u de connector wilt installeren, zodat u de latentiekenmerken van uw netwerkverkeer definiëren.
 
-Bij het instellen van de service voor toepassingsproxy, kunt u de volgende vragen:
+Stel bij het instellen van de application proxy-service de volgende vragen:
 
-- Waar kan ik de app vinden?
-- Waar bevinden de meeste gebruikers die toegang de app tot zich?
-- Waar is de Application Proxy-instantie zich?
-- Hebt u al een speciaal netwerkverbinding met Azure-datacenters instellen, zoals Azure ExpressRoute of een vergelijkbare VPN?
+- Waar bevindt de app zich?
+- Waar bevinden de meeste gebruikers zich bij de app?
+- Waar bevindt zich de instantie Application Proxy?
+- Heeft u al een speciale netwerkverbinding met Azure-datacenters ingesteld, zoals Azure ExpressRoute of een vergelijkbare VPN?
 
-De connector heeft om te communiceren met zowel Azure als uw toepassingen (stap 2 en 3 in het diagram van de stroom verkeer), zodat de plaatsing van de connector is van invloed op de latentie van deze twee verbindingen. Bij het evalueren van de plaatsing van de connector, houd rekening met de volgende punten:
+De connector moet communiceren met zowel Azure als uw toepassingen (stap 2 en 3 in het diagram Verkeersstroom), zodat de plaatsing van de connector van invloed is op de latentie van deze twee verbindingen. Houd bij de evaluatie van de plaatsing van de connector rekening met de volgende punten:
 
-- Als u gebruiken van beperkte Kerberos-delegatie (KCD) voor eenmalige aanmelding wilt, moet de connector peeren naar een datacenter. Bovendien moet de connectorserver worden toegevoegd aan een domein.  
-- Bij twijfel door de connector dichter naar de toepassing te installeren.
+- Als u Kerberos constrained delegation (KCD) wilt gebruiken voor eenmalige aanmelding, heeft de connector een zichtlijn naar een datacenter nodig. Bovendien moet de connectorserver worden samengevoegd.  
+- Installeer bij twijfel de connector dichter bij de toepassing.
 
-### <a name="general-approach-to-minimize-latency"></a>Algemene benadering om latentie te minimaliseren
+### <a name="general-approach-to-minimize-latency"></a>Algemene aanpak om latentie te minimaliseren
 
-U kunt de latentie van het end-to-end-verkeer minimaliseren door het optimaliseren van elke netwerkverbinding. Elke verbinding kan worden geoptimaliseerd door:
+U de latentie van het end-to-end-verkeer minimaliseren door elke netwerkverbinding te optimaliseren. Elke verbinding kan worden geoptimaliseerd door:
 
-- De afstand tussen de twee kanten van de hop verlagen.
-- Kies het juiste netwerk om door te gaan. Bijvoorbeeld, doorlopen van een particulier netwerk in plaats van het openbare Internet mogelijk sneller, vanwege de speciale koppelingen naar.
+- Het verminderen van de afstand tussen de twee uiteinden van de hop.
+- Het kiezen van het juiste netwerk te doorkruisen. Het doorkruisen van een privénetwerk in plaats van het openbare internet kan bijvoorbeeld sneller zijn, als gevolg van speciale links.
 
-Als u een specifieke VPN of ExpressRoute-verbinding tussen Azure en uw bedrijfsnetwerk hebt, kunt u die gebruiken.
+Als u een speciale VPN- of ExpressRoute-koppeling hebt tussen Azure en uw bedrijfsnetwerk, u dat gebruiken.
 
-## <a name="focus-your-optimization-strategy"></a>Richt u uw strategie voor optimalisatie
+## <a name="focus-your-optimization-strategy"></a>Richt uw optimalisatiestrategie
 
-Er is weinig die u voor het beheren van de verbinding tussen uw gebruikers en de service voor toepassingsproxy kunt uitvoeren. Gebruikers kunnen toegang krijgen tot uw apps vanuit een thuis netwerk, een café of een ander land/nieuwe regio. In plaats daarvan kunt u de verbindingen van de service voor toepassingsproxy om de Application Proxy connectors voor de apps te optimaliseren. Houd rekening met het opnemen van de volgende patronen in uw omgeving.
+Er is weinig dat u doen om de verbinding tussen uw gebruikers en de Application Proxy-service te beheren. Gebruikers hebben toegang tot uw apps via een thuisnetwerk, een coffeeshop of een ander land/regio. In plaats daarvan u de verbindingen optimaliseren van de service Application Proxy naar de connectors voor toepassingsproxy's met de apps. Overweeg het opnemen van de volgende patronen in uw omgeving.
 
-### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Patroon 1: De connector dicht bij de toepassing plaatsen
+### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Patroon 1: Zet de connector dicht bij de toepassing
 
-Plaats de connector dicht bij de doeltoepassing in het netwerk van de klant. Deze configuratie wordt stap 3 in het diagram topografie geminimaliseerd omdat de connector en de toepassing sluiten.
+Plaats de connector dicht bij de doeltoepassing in het klantennetwerk. Deze configuratie minimaliseert stap 3 in het topografiediagram, omdat de connector en toepassing dicht zijn.
 
-Als de connector een verbinding met de domeincontroller moet, zijn dit patroon is nuttig. De meeste van onze klanten gebruik dit patroon, omdat deze geschikt is voor de meeste scenario's. Dit patroon kan ook worden gecombineerd met het patroon 2 het optimaliseren van verkeer tussen de service en de connector.
+Als uw connector een zichtlijn naar de domeincontroller nodig heeft, is dit patroon voordelig. De meeste van onze klanten gebruiken dit patroon, omdat het goed werkt voor de meeste scenario's. Dit patroon kan ook worden gecombineerd met patroon 2 om het verkeer tussen de service en de connector te optimaliseren.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>Patroon 2: Profiteren van ExpressRoute met Microsoft-peering
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>Patroon 2: Profiteer van ExpressRoute met Microsoft-peering
 
-Als u ExpressRoute instellen met Microsoft-peering hebt, kunt u de snellere ExpressRoute-verbinding voor verkeer tussen de Application Proxy en de connector. De connector is nog steeds op het netwerk dicht bij de app.
+Als u ExpressRoute hebt ingesteld met Microsoft-peering, u de snellere ExpressRoute-verbinding gebruiken voor verkeer tussen Application Proxy en de connector. De connector bevindt zich nog steeds in uw netwerk, dicht bij de app.
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Patroon 3: Profiteren van ExpressRoute met persoonlijke peering
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Patroon 3: Profiteer van ExpressRoute met private peering
 
-Als u een toegewezen VPN of ExpressRoute instellen met privé-peering tussen Azure en uw bedrijfsnetwerk, hebt u een andere optie. In deze configuratie is doorgaans het virtuele netwerk in Azure beschouwd als een uitbreiding van het bedrijfsnetwerk bevinden. U kunt dus de connector te installeren in het datacenter Azure, en nog steeds voldoen aan de eisen van de lage latentie van de connector-naar-app-verbinding.
+Als u een speciale VPN of ExpressRoute hebt ingesteld met privé-peering tussen Azure en uw bedrijfsnetwerk, hebt u een andere optie. In deze configuratie wordt het virtuele netwerk in Azure doorgaans beschouwd als een uitbreiding van het bedrijfsnetwerk. U de connector dus installeren in het Azure-datacenter en toch voldoen aan de vereisten voor lage latentie van de connector-naar-app-verbinding.
 
-Latentie is niet beschadigd omdat via een speciale verbinding verkeersstromen. U ophalen verbeterde Application Proxy-naar-serviceconnector latentie ook omdat de connector is geïnstalleerd in een Azure-datacenter dicht bij de locatie van uw Azure AD-tenant.
+Latentie komt niet in het gedrang omdat er verkeer over een speciale verbinding stroomt. U krijgt ook een verbeterde latentie van Application Proxy service-to-connector omdat de connector is geïnstalleerd in een Azure-datacenter in de buurt van uw Azure AD-tenantlocatie.
 
-![Diagram van de connector is geïnstalleerd binnen een Azure-datacenter](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
+![Diagram met connector die is geïnstalleerd in een Azure-datacenter](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
 
-### <a name="other-approaches"></a>Andere manieren
+### <a name="other-approaches"></a>Andere benaderingen
 
-Hoewel de focus van dit artikel de plaatsing van de connector wordt, kunt u ook de plaatsing van de toepassing om op te halen van betere latentie kenmerken wijzigen.
+Hoewel de focus van dit artikel is connector plaatsing, u ook de plaatsing van de toepassing te krijgen betere latentie kenmerken.
 
-Steeds meer verplaatst organisaties hun netwerken in gehoste omgevingen. Hierdoor kunnen ze hun apps plaatsen in een omgeving die u maakt ook deel uit van het bedrijfsnetwerk en nog steeds binnen het domein. In dit geval kunnen de patronen in de voorgaande secties besproken worden toegepast op de nieuwe locatie van de toepassing. Als u deze optie overweegt, raadpleegt u [Azure AD Domain Services](../../active-directory-domain-services/overview.md).
+Steeds vaker verplaatsen organisaties hun netwerken naar gehoste omgevingen. Dit stelt hen in staat om hun apps te plaatsen in een gehoste omgeving die ook deel uitmaakt van hun bedrijfsnetwerk en nog steeds deel uitmaakt van het domein. In dit geval kunnen de patronen die in de voorgaande secties worden besproken, worden toegepast op de nieuwe toepassingslocatie. Zie [Azure AD Domain Services](../../active-directory-domain-services/overview.md)als u deze optie overweegt.
 
-U kunt ook uw connectors ordenen met behulp van [connector groepen](application-proxy-connector-groups.md) om apps te richten die zich op verschillende locaties en netwerken bevinden.
+Overweeg bovendien uw connectors te organiseren met behulp van [connectorgroepen](application-proxy-connector-groups.md) om apps te targeten die zich op verschillende locaties en netwerken bevinden.
 
 ## <a name="common-use-cases"></a>Algemene scenario’s
 
-In deze sectie doorlopen we enkele algemene scenario's. Wordt ervan uitgegaan dat de Azure AD-tenant (en dus proxy-service-eindpunt) bevindt zich in de Verenigde Staten (VS). De overwegingen beschreven in deze gevallen gelden ook voor andere regio's over de hele wereld gebruiken.
+In deze sectie doorlopen we een paar veelvoorkomende scenario's. Ga ervan uit dat de Azure AD-tenant (en dus het eindpunt van de proxyservice) zich in de Verenigde Staten (VS) bevindt. De overwegingen die in deze gebruiksgevallen worden besproken, gelden ook voor andere regio's over de hele wereld.
 
-Voor deze scenario's we een 'hop' voor elke verbinding aanroepen en ze voor eenvoudiger bespreking cijfer:
+Voor deze scenario's noemen we elke verbinding een "hop" en nummeren ze voor een gemakkelijkere discussie:
 
-- **Hop 1**: gebruiker naar de Application proxy-service
-- **Hop 2**: Service toepassings proxy aan de connector voor de toepassings proxy
-- **Hop 3**: toepassings proxy connector voor de doel toepassing 
+- **Hop 1**: Gebruiker naar de application proxy service
+- **Hop 2**: Application Proxy-service naar de application proxy-connector
+- **Hop 3**: Application Proxy-connector voor de doeltoepassing 
 
-### <a name="use-case-1"></a>Use-case 1
+### <a name="use-case-1"></a>Gebruik case 1
 
-**Scenario:** De app bevindt zich in het netwerk van een organisatie in de Verenigde Staten, met gebruikers in dezelfde regio. Er zijn geen ExpressRoute of VPN-bestaat tussen het Azure-datacenter en het bedrijfsnetwerk bevinden.
+**Scenario:** De app bevindt zich in het netwerk van een organisatie in de VS, met gebruikers in dezelfde regio. Er bestaat geen ExpressRoute of VPN tussen het Azure-datacenter en het bedrijfsnetwerk.
 
-**Aanbeveling:** Volg patroon 1, zoals beschreven in de vorige sectie. Voor verbeterde latentie, overweeg het gebruik van ExpressRoute, indien nodig.
+**Aanbeveling:** Volg patroon 1, uitgelegd in de vorige sectie. Voor een betere latentie u overwegen expressroute te gebruiken, indien nodig.
 
-Dit is een eenvoudige patroon. U optimaliseren hops 3 door de connector in de buurt van de app. Dit is ook een logische keuze, omdat de connector wordt doorgaans geïnstalleerd met peeren naar de app en het datacenter KCD bewerkingen uit te voeren.
+Dit is een eenvoudig patroon. U optimaliseert hop 3 door de connector in de buurt van de app te plaatsen. Dit is ook een logische keuze, omdat de connector meestal is geïnstalleerd met lijn van het zicht naar de app en naar het datacenter om KCD-bewerkingen uit te voeren.
 
-![Diagram waarin gebruikers, proxy, connector en app worden weer gegeven, zijn allemaal in de Verenigde Staten](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![Diagram waarin gebruikers, proxy, connector en app zijn allemaal in de VS](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
-### <a name="use-case-2"></a>Use-case 2
+### <a name="use-case-2"></a>Gebruik case 2
 
-**Scenario:** De app bevindt zich in het netwerk van een organisatie in de Verenigde Staten, met gebruikers die wereld wijd verspreid zijn. Er zijn geen ExpressRoute of VPN-bestaat tussen het Azure-datacenter en het bedrijfsnetwerk bevinden.
+**Scenario:** De app bevindt zich in het netwerk van een organisatie in de VS, met gebruikers verspreid over de hele wereld. Er bestaat geen ExpressRoute of VPN tussen het Azure-datacenter en het bedrijfsnetwerk.
 
-**Aanbeveling:** Volg patroon 1, zoals beschreven in de vorige sectie.
+**Aanbeveling:** Volg patroon 1, uitgelegd in de vorige sectie.
 
-Nogmaals, het algemene patroon is om te optimaliseren hops 3, plaatst u de connector in de buurt van de app. Hop 3 is niet normaal gesproken dure, als deze allemaal binnen dezelfde regio bevinden. Echter, hop 1 duurder kan zijn, afhankelijk van waar de gebruiker is, omdat gebruikers overal ter wereld moeten toegang hebben tot de Application Proxy-instantie in de Verenigde Staten. Het is vermelden waard dat een proxy-oplossing heeft dezelfde kenmerken met betrekking tot de gebruikers wordt wereldwijd verspreid.
+Nogmaals, het algemene patroon is om hop 3 te optimaliseren, waarbij u de connector in de buurt van de app plaatst. Hop 3 is niet typisch duur, als het allemaal binnen dezelfde regio. Hop 1 kan echter duurder zijn, afhankelijk van waar de gebruiker zich bevindt, omdat gebruikers over de hele wereld toegang moeten krijgen tot de instantie Application Proxy in de VS. Het is vermeldenswaard dat elke proxy-oplossing vergelijkbare kenmerken heeft met betrekking tot gebruikers die wereldwijd worden verspreid.
 
-![Gebruikers zijn wereld wijd verspreid, maar alle andere gegevens bevinden zich in de VS](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![Gebruikers zijn wereldwijd verspreid, maar al het andere is in de VS](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
-### <a name="use-case-3"></a>Use-case 3
+### <a name="use-case-3"></a>Gebruik case 3
 
-**Scenario:** De app bevindt zich in het netwerk van een organisatie in de Verenigde Staten. ExpressRoute met Microsoft-peering bestaat tussen Azure en het bedrijfsnetwerk bevinden.
+**Scenario:** De app bevindt zich in het netwerk van een organisatie in de VS. ExpressRoute met Microsoft peering bestaat tussen Azure en het bedrijfsnetwerk.
 
-**Aanbeveling:** Volg de patronen 1 en 2, zoals beschreven in de vorige sectie.
+**Aanbeveling:** Volg patronen 1 en 2, uitgelegd in de vorige sectie.
 
-Eerst, plaatst u de connector zo dicht mogelijk bij de app. Het systeem worden vervolgens automatisch de ExpressRoute gebruikt voor hop 2.
+Plaats eerst de connector zo dicht mogelijk bij de app. Vervolgens gebruikt het systeem automatisch ExpressRoute voor hop 2.
 
-Als het ExpressRoute-verbinding van Microsoft gebruikmaakt-peering, loopt het verkeer tussen de proxy en de connector die koppeling. Latentie heeft een hop 2 is geoptimaliseerd.
+Als de ExpressRoute-koppeling Microsoft-peering gebruikt, stroomt het verkeer tussen de proxy en de connector over die koppeling. Hop 2 heeft de latentie geoptimaliseerd.
 
-![Diagram van ExpressRoute tussen de proxy- en -connector](./media/application-proxy-network-topology/application-proxy-pattern3.png)
+![Diagram met ExpressRoute tussen de proxy en de connector](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
-### <a name="use-case-4"></a>Use-case 4
+### <a name="use-case-4"></a>Gebruik case 4
 
-**Scenario:** De app bevindt zich in het netwerk van een organisatie in de Verenigde Staten. ExpressRoute met persoonlijke peering bestaat tussen Azure en het bedrijfsnetwerk bevinden.
+**Scenario:** De app bevindt zich in het netwerk van een organisatie in de VS. ExpressRoute met private peering bestaat tussen Azure en het bedrijfsnetwerk.
 
-**Aanbeveling:** Volg patroon 3, zoals beschreven in de vorige sectie.
+**Aanbeveling:** Volg patroon 3, uitgelegd in de vorige sectie.
 
-Plaats de connector in het Azure-datacenter die is verbonden met het bedrijfsnetwerk via ExpressRoute-privépeering.
+Plaats de connector in het Azure-datacenter dat is verbonden met het bedrijfsnetwerk via privépeering via ExpressRoute.
 
-De connector kan worden geplaatst in het Azure-datacenter. Omdat de connector nog steeds een verbinding met de toepassing en het datacenter tot en met het particuliere netwerk is, blijft hops 3 geoptimaliseerd. Bovendien is hops 2 verder geoptimaliseerd.
+De connector kan in het Azure-datacenter worden geplaatst. Aangezien de connector nog steeds een zichtlijn heeft naar de toepassing en het datacenter via het privénetwerk, blijft hop 3 geoptimaliseerd. Daarnaast wordt hop 2 verder geoptimaliseerd.
 
-![Connector in azure Data Center, ExpressRoute tussen connector en app](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Connector in Azure-datacenter, ExpressRoute tussen connector en app](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
-### <a name="use-case-5"></a>Use-case 5
+### <a name="use-case-5"></a>Gebruik case 5
 
-**Scenario:** De app bevindt zich in het netwerk van een organisatie in de EU, met het exemplaar van de toepassings proxy en de meeste gebruikers in de VS.
+**Scenario:** De app bevindt zich in het netwerk van een organisatie in Europa, met de instantie Application Proxy en de meeste gebruikers in de VS.
 
-**Aanbeveling:** Plaats de connector in de buurt van de app. Omdat gebruikers in de VS toegang hebben tot een Application Proxy-exemplaar dat zich in dezelfde regio gebeurt, is het niet hop 1 te duur. Hop 3 is geoptimaliseerd. Overweeg het gebruik van ExpressRoute om te optimaliseren hops 2.
+**Aanbeveling:** Plaats de connector in de buurt van de app. Omdat Amerikaanse gebruikers toegang hebben tot een instantie Application Proxy die zich toevallig in dezelfde regio bevindt, is hop 1 niet te duur. Hop 3 is geoptimaliseerd. Overweeg ExpressRoute te gebruiken om hop 2 te optimaliseren.
 
-![Diagram toont gebruikers en proxy in de Verenigde Staten, connector en app in de EU](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![Diagram toont gebruikers en proxy in de VS, connector en app in Europa](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-U kunt ook overwegen met behulp van een andere variant in dit geval. Als de meeste gebruikers in de organisatie in de Verenigde Staten, dan waarschijnlijk dat wordt uw netwerk ook de Verenigde Staten. Plaats de connector in de Verenigde Staten en gebruikt u de regel toegewezen interne bedrijfsnetwerk bevinden naar de toepassing in de EU. Deze manier hops 2 en 3 worden geoptimaliseerd.
+U ook overwegen om in deze situatie een andere variant te gebruiken. Als de meeste gebruikers in de organisatie zich in de VS bevinden, is de kans groot dat uw netwerk zich ook uitstrekt tot de VS. Plaats de connector in de VS en gebruik de speciale interne bedrijfsnetwerklijn voor de toepassing in Europa. Op deze manier worden hop 2 en 3 geoptimaliseerd.
 
-![Diagram toont gebruikers, proxy en connectors in de VS, app in de EU](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![Diagram toont gebruikers, proxy en connector in de VS, app in Europa](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassings proxy inschakelen](application-proxy-add-on-premises-application.md)
+- [Toepassingsproxy inschakelen](application-proxy-add-on-premises-application.md)
 - [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Voorwaardelijke toegang inschakelen](application-proxy-integrate-with-sharepoint-server.md)
-- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
+- [Problemen met toepassingsproxy oplossen (Engelstalig artikel)](application-proxy-troubleshoot.md)

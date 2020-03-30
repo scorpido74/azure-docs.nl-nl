@@ -1,21 +1,20 @@
 ---
-title: Test uw aanbieding in de commerciële Marketplace | Azure Marketplace
-description: Uw klanten toestaan om uw aanbieding te test drive
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Testdrive uw aanbod op de commerciële marktplaats | Azure Marketplace
+description: Laat uw klanten uw aanbieding testen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.openlocfilehash: 02bd1b10f45a6f4d4b0021f7b7ecd53f7f77bdf7
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 80d85e6b3618e6143f2caf87fba3436b4a0ac942
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933539"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285177"
 ---
-# <a name="allow-your-customers-to-test-drive-your-offer"></a>Uw klanten toestaan om uw aanbieding te test drive
+# <a name="allow-your-customers-to-test-drive-your-offer"></a>Laat uw klanten uw aanbieding testen
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 

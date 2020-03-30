@@ -1,49 +1,48 @@
 ---
-title: Aanbiedings status ophalen | Azure Marketplace
+title: Aanbiedingsstatus ophalen | Azure Marketplace
 description: API haalt de huidige status van de aanbieding op.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819669"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280504"
 ---
 <a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen 
 =====================
 
-Hiermee wordt de huidige status van de aanbieding opgehaald.
+Hiermee haalt u de huidige status van de aanbieding op.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-para meters
+<a name="uri-parameters"></a>URI-parameters
 --------------
 
 |  **Naam**       |   **Beschrijving**                            |  **Gegevenstype** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Uitgevers-id, bijvoorbeeld `Contoso`  |     Tekenreeks     |
-|  OfferId        | GUID die de aanbieding uniek identificeert      |     Tekenreeks     |
-|  API-versie    | Nieuwste versie van API                        |     Date       |
+|  uitgeverId    | Publisher-id, bijvoorbeeld`Contoso`  |     Tekenreeks     |
+|  aanbiedingId        | GUID die het aanbod op unieke wijze identificeert      |     Tekenreeks     |
+|  api-versie    | Nieuwste versie van API                        |     Date       |
 |  |  |
 
 
 <a name="header"></a>Header
 ------
 
-|  Naam           |  Waarde               |
+|  Name           |  Waarde               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Autorisatie  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>Voor beeld van tekst
+<a name="body-example"></a>Voorbeeld van het lichaam
 ------------
 
 ### <a name="response"></a>Antwoord
@@ -121,60 +120,60 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 ```
 
 
-### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
+### <a name="response-body-properties"></a>Eigenschappen van antwoordlichaam
 
 |  **Naam**             |    **Beschrijving**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | De status van de aanbieding. Voor een lijst met mogelijke waarden, zie de status van de [aanbieding](#offer-status) hieronder. |
-|  berichten             | Matrix van berichten die aan de aanbieding zijn gekoppeld                                                    |
-|  stappen                | Matrix van de stappen die de aanbieding doorloopt tijdens een aanbiedings publicatie                      |
-|  estimatedTimeFrame   | Schatting van de tijd die nodig is om deze stap te volt ooien, met een beschrijvende notatie                       |
-|  id                   | Id van de stap                                                                         |
-|  Stapnaam             | De naam van de stap                                                                               |
+|  status               | De status van het aanbod. Zie [Aanbiedingsstatus](#offer-status) hieronder voor de lijst met mogelijke waarden. |
+|  berichten             | Reeks berichten die aan de aanbieding zijn gekoppeld                                                    |
+|  stappen                | Array van de stappen die de aanbieding doormaakt tijdens het publiceren van een aanbieding                      |
+|  geschatTijdsbestek   | Schatting van de tijd die nodig is om deze stap te voltooien, in vriendelijk formaat                       |
+|  id                   | Identificatie van de stap                                                                         |
+|  stepName             | Naam van de stap                                                                               |
 |  description          | Beschrijving van de stap                                                                        |
-|  status               | De status van de stap. Zie [stap status](#step-status) hieronder voor een lijst met mogelijke waarden.    |
-|  berichten             | Matrix van berichten met betrekking tot de stap                                                          |
-|  processPercentage    | Voltooiings percentage van de stap                                                              |
-|  previewLinks         | *Momenteel niet geïmplementeerd*                                                                    |
+|  status               | Status van de stap. Zie [De status Stap](#step-status) hieronder voor de lijst met mogelijke waarden.    |
+|  berichten             | Reeks berichten met betrekking tot de stap                                                          |
+|  procesPercentage    | Percentage voltooiing van de stap                                                              |
+|  voorbeeldLinks         | *Momenteel niet geïmplementeerd*                                                                    |
 |  liveLinks            | *Momenteel niet geïmplementeerd*                                                                    |
-|  notificationEmails   | Een door komma's gescheiden lijst met e-mail adressen die moeten worden geïnformeerd over de voortgang van de bewerking        |
+|  meldingE-mails   | Door komma's gescheiden lijst met e-mailadressen die op de hoogte moeten worden gebracht van de voortgang van de bewerking        |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Antwoord status codes
+### <a name="response-status-codes"></a>Statuscodes voor antwoord
 
-| **Gecodeerd** |   **Beschrijving**                                                                                 |
+| **Code** |   **Beschrijving**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK`-de aanvraag is verwerkt en de huidige status van de aanbieding is geretourneerd. |
-|  400     | `Bad/Malformed request`: de hoofd tekst van het fout bericht bevat mogelijk meer informatie.                 |
-|  404     | `Not found`-de opgegeven entiteit bestaat niet.                                                |
+|  200     |  `OK`- De aanvraag is verwerkt en de huidige status van de aanbieding is geretourneerd. |
+|  400     | `Bad/Malformed request`- De foutreactieinstantie kan meer informatie bevatten.                 |
+|  404     | `Not found`- De opgegeven entiteit bestaat niet.                                                |
 |  |  |
 
 
-### <a name="offer-status"></a>Status van aanbieding
+### <a name="offer-status"></a>Aanbiedingsstatus
 
 |  **Naam**                    |    **Beschrijving**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  NeverPublished              | De aanbieding is nooit gepubliceerd.                          |
-|  NotStarted                  | De aanbieding is nieuw en niet gestart.                            |
-|  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.                 |
-|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.                     |
-|  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.               |
-|  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                           |
-|  Mislukt                      | Kan de aanbieding niet verzenden.                                 |
+|  Nooit gepubliceerd              | Aanbieding is nooit gepubliceerd.                          |
+|  Niet gestart                  | Aanbieding is nieuw en niet gestart.                            |
+|  WaitingForPublisherReview   | Aanbieding wacht op goedkeuring van de uitgever.                 |
+|  In uitvoering                     | Indiening van de aanbieding wordt verwerkt.                     |
+|  Geslaagd                   | Indiening van de aanbieding heeft de verwerking voltooid.               |
+|  Geannuleerd                    | Indiening van de aanbieding is geannuleerd.                           |
+|  Mislukt                      | Indiening van aanbiedingen is mislukt.                                 |
 |  |  |
 
 
-### <a name="step-status"></a>Stap status
+### <a name="step-status"></a>Stapstatus
 
 |  **Naam**                    |    **Beschrijving**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  NotStarted                  | De stap is niet gestart.                        |
-|  InProgress                  | Stap wordt uitgevoerd.                             |
-|  WaitingForPublisherReview   | Stap wacht op goed keuring van uitgever.      |
-|  WaitingForApproval          | De stap wacht op goed keuring van het proces.        |
-|  #                     | De stap is geblokkeerd.                             |
-|  Afgekeurd                    | De stap is geweigerd.                            |
-|  Voltooien                    | Stap is voltooid.                            |
+|  Niet gestart                  | De stap is nog niet begonnen.                        |
+|  InProgress                  | De stap loopt.                             |
+|  WaitingForPublisherReview   | Stap wacht op goedkeuring van de uitgever.      |
+|  Wachtenopgoedkeuring          | Stap wacht op procesgoedkeuring.        |
+|  Geblokkeerd                     | Stap is geblokkeerd.                             |
+|  Geweigerd                    | Stap wordt afgewezen.                            |
+|  Voltooien                    | De stap is voltooid.                            |
 |  Geannuleerd                    | De stap is geannuleerd.                           |
 |  |  |

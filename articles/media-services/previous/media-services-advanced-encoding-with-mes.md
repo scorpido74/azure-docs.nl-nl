@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde code ring uitvoeren door MES-voor instellingen aan te passen | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u geavanceerde code ring kunt uitvoeren door Media Encoder Standard voor instellingen voor de taak aan te passen.
+title: Geavanceerde codering uitvoeren door MES-voorinstellingen aan te maken | Microsoft Documenten
+description: In dit onderwerp ziet u hoe u geavanceerde codering uitvoeren door voorinstellingen voor mediaencoderstandaardtes aan te werken.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,50 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529780"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Geavanceerde code ring uitvoeren door MES-voor instellingen aan te passen 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Geavanceerde codering uitvoeren door MES-voorinstellingen aan te vullen 
 
 ## <a name="overview"></a>Overzicht
 
-In dit onderwerp wordt beschreven hoe u Media Encoder Standard voor instellingen kunt aanpassen. De [code ring met Media Encoder Standard met aangepaste voor instellingen](media-services-custom-mes-presets-with-dotnet.md) laat zien hoe u .net gebruikt voor het maken van een coderings taak en een taak waarmee deze taak wordt uitgevoerd. Zodra u een voor instelling hebt aangepast, geeft u de aangepaste voor instellingen op voor de coderings taak. 
+In dit onderwerp ziet u hoe u voorinstellingen van Media Encoder Standard aanpassen. In het onderwerp [Codering met Media Encoder Standard met behulp van aangepaste voorinstellingen](media-services-custom-mes-presets-with-dotnet.md) ziet u hoe u .NET gebruiken om een coderingstaak en een taak te maken die deze taak uitvoert. Zodra u een voorinstelling hebt aangepast, levert u de aangepaste voorinstellingen aan de coderingstaak. 
 
-Als u een XML-voor instelling gebruikt, moet u ervoor zorgen dat de volg orde van de elementen wordt behouden, zoals wordt weer gegeven in de onderstaande XML-voor beelden (KeyFrameInterval moet voorafgaan aan SceneChangeDetection).
+Als u een XML-voorinstelling gebruikt, moet u de volgorde van elementen behouden, zoals weergegeven in XML-voorbeelden hieronder (bijvoorbeeld Hoofdframeinterval moet voorafgaan aan ScèneChangeDetection).
 
 > [!NOTE] 
-> Veel van de geavanceerde Media Services v2-functies van de Media Encoder Standard zijn momenteel niet beschikbaar in v3. Zie voor meer informatie [functie hiaten](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis).
+> Veel van de geavanceerde Media Services v2-functies van de Media Encoder Standard zijn momenteel niet beschikbaar in v3. Zie [functiehiaten voor](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)meer informatie .
 
-## <a name="support-for-relative-sizes"></a>Ondersteuning voor relatieve grootten
+## <a name="support-for-relative-sizes"></a>Ondersteuning voor relatieve grootte
 
-Bij het genereren van miniaturen hoeft u niet altijd de uitvoer breedte en-hoogte in pixels op te geven. U kunt deze opgeven in percentages, in het bereik [1%,..., 100%].
+Bij het genereren van miniaturen hoeft u niet altijd uitvoerbreedte en -hoogte in pixels op te geven. U ze opgeven in percentages, in het bereik [1%,..., 100%].
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
     "Width": "100%",
     "Height": "100%"
 
-### <a name="xml-preset"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voorinstelling
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a id="thumbnails"></a>Miniaturen genereren
+## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Miniaturen genereren
 
-In deze sectie ziet u hoe u een voor instelling kunt aanpassen waarmee miniaturen worden gegenereerd. De hieronder gedefinieerde definitie bevat informatie over hoe u uw bestand wilt coderen en de informatie die nodig is om miniaturen te genereren. U kunt een van de MES-voor instellingen volgen die in [deze](media-services-mes-presets-overview.md) sectie worden beschreven en code toevoegen waarmee miniaturen worden gegenereerd.  
+In deze sectie ziet u hoe u een voorinstelling aanpast die miniaturen genereert. De vooraf ingestelde hieronder bevat informatie over hoe u uw bestand wilt coderen, evenals informatie die nodig is om miniaturen te genereren. U een van de MES-voorinstellingen die [deze](media-services-mes-presets-overview.md) sectie hebben gedocumenteerd, gebruiken en code toevoegen die miniaturen genereert.  
 
 > [!NOTE]
-> De instelling **SceneChangeDetection** in de volgende vooraf ingestelde voor instelling kan alleen worden ingesteld op True als u codeert naar een video met één bitsnelheid. Als u codeert naar een multi-bitrate video en **SceneChangeDetection** instelt op True, retourneert het coderings programma een fout.  
+> De instelling **ScèneChangeDetection** in de volgende voorinstelling kan alleen worden ingesteld op true als u codeert voor één bitratevideo. Als u codeert voor een video met meerdere bitrates en **SceneChangeDetection** op true instelt, geeft de encoder een fout.  
 >
 >
 
-Zie dit onderwerp voor meer informatie over [het](media-services-mes-schema.md) schema.
+Zie [dit](media-services-mes-schema.md) onderwerp voor informatie over het schema.
 
-Zorg ervoor dat u de sectie [overwegingen](#considerations) bekijkt.
+Controleer de sectie [Overwegingen.](#considerations)
 
-### <a id="json"></a>JSON-voor instelling
+### <a name="json-preset"></a><a id="json"></a>JSON-voorinstelling
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ Zorg ervoor dat u de sectie [overwegingen](#considerations) bekijkt.
     }
 
 
-### <a id="xml"></a>XML-voor instelling
+### <a name="xml-preset"></a><a id="xml"></a>XML-voorinstelling
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -234,25 +234,25 @@ Zorg ervoor dat u de sectie [overwegingen](#considerations) bekijkt.
 
 De volgende overwegingen zijn van toepassing:
 
-* Het gebruik van expliciete tijds tempels voor begin/stap/bereik veronderstelt dat de invoer bron ten minste 1 minuut lang is.
-* Jpg/png/BmpImage-elementen hebben een teken reeks kenmerken van het soort begin, stap en bereik, die kunnen worden geïnterpreteerd als:
+* Het gebruik van expliciete tijdstempels voor Start/Stap/Bereik gaat ervan uit dat de invoerbron ten minste 1 minuut lang is.
+* Jpg/Png/BmpImage-elementen hebben eigenschappen voor start-, stap- en bereiktekenreeksen:
 
-  * Frame nummer als het een niet-negatief geheel getal is, bijvoorbeeld "Start": "120",
-  * Ten opzichte van bron duur als%-achtervoegsel, bijvoorbeeld "Start": "15%" of
-  * Tijds tempel indien uitgedrukt als uu: MM: SS... Format, bijvoorbeeld "Start": "00:01:00"
+  * Framenummer als het niet-negatieve gehele getallen zijn, bijvoorbeeld "Start": "120",
+  * Ten opzichte van de bronduur, uitgedrukt in %-suffixed, bijvoorbeeld "Start": "15%", OF
+  * Tijdstempel als uitgedrukt als HH:MM:SS... opmaak, bijvoorbeeld "Start": "00:01:00"
 
-    U kunt de notaties combi neren en vergelijken.
+    U mix en match notaties als je wilt.
 
-    Daarnaast ondersteunt start ook een speciale macro: {Best}, waarmee wordt geprobeerd het eerste interessante frame van de inhouds notitie te bepalen: (stap en bereik worden genegeerd wanneer start is ingesteld op {best})
-  * Standaard waarden: starten: {Best}
-* De uitvoer indeling moet expliciet worden gegeven voor elke indeling van de afbeelding: jpg/png/BmpFormat. Indien aanwezig, komt MES overeen met JpgVideo in JpgFormat, enzovoort. Output Format introduceert een nieuwe afbeelding-codec specifieke macro: {index}, die aanwezig moet zijn (slechts één keer en slechts één keer) voor uitvoer indelingen voor installatie kopieën.
+    Daarnaast ondersteunt Start ook een speciale macro:{Best}, waarin wordt geprobeerd het eerste 'interessante' frame van de inhoud TE bepalen NOTE: (Stap en bereik worden genegeerd wanneer start is ingesteld op {Best})
+  * Standaardinstellingen: Start:{Best}
+* Uitvoerindeling moet expliciet worden opgegeven voor elke afbeeldingsindeling: Jpg/Png/BmpFormat. Indien aanwezig, komt MES overeen met JpgVideo met JpgFormat en ga zo maar door. OutputFormat introduceert een nieuwe afbeeldingscodec specifieke macro: {Index}, die aanwezig moet zijn (eens en slechts eenmaal) voor beelduitvoerindelingen.
 
-## <a id="trim_video"></a>Een video knippen (knippen)
-In deze sectie vindt u informatie over het wijzigen van de coderings instellingen om de invoer video te knippen of bij te snijden, waarbij de invoer een zogenaamde mezzanine-bestand of een bestand op aanvraag is. Het coderings programma kan ook worden gebruikt voor het knippen of bijsnijden van een activum, dat wordt vastgelegd of gearchiveerd vanuit een live stream. de Details voor dit zijn beschikbaar in [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>Een video bijsnijden (knippen)
+In deze sectie wordt gesproken over het wijzigen van de encodervoorinstellingen om de invoervideo te knippen of bij te snijden wanneer de invoer een zogenaamd mezzaninebestand of on-demandbestand is. De encoder kan ook worden gebruikt voor het knippen of trimmen van een asset, die wordt vastgelegd of gearchiveerd via een live stream - de details hiervoor zijn beschikbaar in [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Als u uw Video's wilt bijsnijden, kunt u een van de MES-voor instellingen volgen die in [deze](media-services-mes-presets-overview.md) sectie worden beschreven en het **bron** element wijzigen (zoals hieronder wordt weer gegeven). De waarde van StartTime moet overeenkomen met de absolute tijds tempels van de invoer video. Als bijvoorbeeld het eerste frame van de invoer video een tijds tempel van 12:00:10.000 heeft, moet StartTime ten minste 12:00:10.000 en groter zijn. In het onderstaande voor beeld gaan we ervan uit dat de invoer video een begin-time stamp van nul heeft. **Bronnen** moeten aan het begin van de voor instelling worden geplaatst.
+Als u uw video's wilt bijsnijden, u een van de MES-voorinstellingen die [deze](media-services-mes-presets-overview.md) sectie hebben gedocumenteerd, het element **Bronnen** wijzigen (zoals hieronder wordt weergegeven). De waarde van StartTime moet overeenkomen met de absolute tijdstempels van de invoervideo. Als het eerste frame van de invoervideo bijvoorbeeld een tijdstempel van 12:00:10.000 heeft, moet StartTime ten minste 12:00:10.000 en hoger zijn. In het onderstaande voorbeeld gaan we ervan uit dat de invoervideo een starttijdstempel van nul heeft. **Bronnen** moeten aan het begin van de voorinstelling worden geplaatst.
 
-### <a id="json"></a>JSON-voor instelling
+### <a name="json-preset"></a><a id="json"></a>JSON-voorinstelling
     {
       "Version": 1.0,
       "Sources": [
@@ -371,8 +371,8 @@ Als u uw Video's wilt bijsnijden, kunt u een van de MES-voor instellingen volgen
       ]
     }
 
-### <a name="xml-preset"></a>XML-voor instelling
-Als u uw Video's wilt bijsnijden, kunt u de MES-voor instellingen die [hier](media-services-mes-presets-overview.md) worden beschreven, uitvoeren en het element **bronnen** wijzigen (zoals hieronder wordt weer gegeven).
+### <a name="xml-preset"></a>XML-voorinstelling
+Als u uw video's wilt bijsnijden, u een van de [hier](media-services-mes-presets-overview.md) gedocumenteerde MES-voorinstellingen nemen en het element **Bronnen** wijzigen (zoals hieronder wordt weergegeven).
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -489,13 +489,13 @@ Als u uw Video's wilt bijsnijden, kunt u de MES-voor instellingen die [hier](med
       </Outputs>
     </Preset>
 
-## <a id="overlay"></a>Een overlay maken
+## <a name="create-an-overlay"></a><a id="overlay"></a>Een overlay maken
 
-Met de Media Encoder Standard kunt u een installatie kopie op een bestaande video bedekken. Momenteel worden de volgende indelingen ondersteund: PNG, JPG, GIF en BMP. De definitie die hieronder is gedefinieerd, is een eenvoudig voor beeld van een video-overlay.
+Met de Media Encoder Standard u een afbeelding op een bestaande video plaatsen. Momenteel worden de volgende indelingen ondersteund: png, jpg, gif en bmp. De vooraf ingestelde hieronder gedefinieerd is een basisvoorbeeld van een video overlay.
 
-Naast het definiëren van een vooraf ingesteld bestand, moet u ook Media Services weten welk bestand in het activum de bedekkings afbeelding is en welk bestand de bron video is waarop u de installatie kopie wilt bedekken. Het video bestand moet het **primaire** bestand zijn.
+Naast het definiëren van een vooraf ingesteld bestand, moet u Media Services ook laten weten welk bestand in de overlayafbeelding de overlayafbeelding is en welk bestand de bronvideo is waarop u de afbeelding wilt bedekken. Het videobestand moet het **primaire** bestand zijn.
 
-Als u .NET gebruikt, voegt u de volgende twee functies toe aan het .NET-voor beeld dat in [Dit](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) onderwerp is gedefinieerd. De functie **UploadMediaFilesFromFolder** uploadt bestanden uit een map (bijvoorbeeld BigBuckBunny. MP4 en Image001. png) en stelt het MP4-bestand in als primair bestand in de Asset. De functie **EncodeWithOverlay** maakt gebruik van het aangepaste vooraf ingestelde bestand dat aan het is door gegeven (bijvoorbeeld de vooraf ingestelde voor instelling) om de coderings taak te maken.
+Als u .NET gebruikt, voegt u de volgende twee functies toe aan het .NET-voorbeeld dat in [dit](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) onderwerp is gedefinieerd. De functie **UploadMediaFilesFromFolder** uploadt bestanden uit een map (bijvoorbeeld BigBuckBunny.mp4 en Image001.png) en stelt het mp4-bestand in als het primaire bestand in de asset. De functie **EncodeWithOverlay** gebruikt het aangepaste voorinstellingsbestand dat is doorgegeven (bijvoorbeeld de voorinstelling die volgt) om de coderingstaak te maken.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -553,13 +553,13 @@ Als u .NET gebruikt, voegt u de volgende twee functies toe aan het .NET-voor bee
 > [!NOTE]
 > Huidige beperkingen:
 >
-> De instelling dekking dekken wordt niet ondersteund.
+> De dekkingsinstelling voor overlay wordt niet ondersteund.
 >
-> Het bron video bestand en het overlay-afbeeldings bestand moeten zich in hetzelfde activum bestemmen en het video bestand moet worden ingesteld als het primaire bestand in deze asset.
+> Uw bronvideobestand en het overlay-afbeeldingsbestand moeten in hetzelfde element staan en het videobestand moet worden ingesteld als het primaire bestand in dit element.
 >
 >
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
     {
       "Version": 1.0,
       "Sources": [
@@ -635,7 +635,7 @@ Als u .NET gebruikt, voegt u de volgende twee functies toe aan het .NET-voor bee
     }
 
 
-### <a name="xml-preset"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voorinstelling
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
@@ -696,14 +696,14 @@ Als u .NET gebruikt, voegt u de volgende twee functies toe aan het .NET-voor bee
     </Preset>
 
 
-## <a id="silent_audio"></a>Een Silent audio-track invoegen wanneer de invoer geen audio heeft
-Standaard, als u een invoer verzendt naar het coderings programma dat alleen video bevat en geen audio, bevat het uitvoer element alleen bestanden die alleen video gegevens bevatten. Sommige spelers kunnen dergelijke uitvoer stromen mogelijk niet verwerken. U kunt deze instelling gebruiken om ervoor te zorgen dat het coderings programma een Silent audio-track toevoegt aan de uitvoer in dat scenario.
+## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Een stille audiotrack invoegen wanneer invoer geen audio heeft
+Als u standaard een invoer verzendt naar de encoder die alleen video en geen audio bevat, bevat het uitvoeritem bestanden die alleen videogegevens bevatten. Sommige spelers kunnen dergelijke uitvoerstromen mogelijk niet verwerken. U deze instelling gebruiken om de encoder te dwingen een stille audiotrack toe te voegen aan de uitvoer in dat scenario.
 
-Geef de ' InsertSilenceIfNoAudio-waarde op als u wilt afdwingen dat het coderings programma een Asset produceert die een Silent audio-track bevat wanneer de invoer geen audio heeft.
+Als u de encoder wilt dwingen een asset te produceren die een stille audiotrack bevat wanneer invoer geen audio heeft, geeft u de waarde 'InsertSilenceIfNoAudio' op.
 
-U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven mes-voor instellingen uitvoeren en de volgende wijziging aanbrengen:
+U een van de MES-voorinstellingen die in [deze](media-services-mes-presets-overview.md) sectie zijn gedocumenteerd, bekijken en de volgende wijziging aanbrengen:
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
     {
       "Channels": 2,
       "SamplingRate": 44100,
@@ -712,19 +712,19 @@ U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven me
       "Condition": "InsertSilenceIfNoAudio"
     }
 
-### <a name="xml-preset"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voorinstelling
     <AACAudio Condition="InsertSilenceIfNoAudio">
       <Channels>2</Channels>
       <SamplingRate>44100</SamplingRate>
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a id="deinterlacing"></a>Automatische uninterliniëring uitschakelen
-Klanten hoeven niets te doen als de inhoud van de interliniëring automatisch wordt geïnterlinieerd. Wanneer de automatische-interliniëring is ingeschakeld (standaard), voert de MES de automatische detectie van geïnterlinieerde frames en alleen de interlaced frames uit die zijn gemarkeerd als geïnterlinieerd.
+## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Automatische ontvlechting uitschakelen
+Klanten hoeven niets te doen als ze willen dat de interlace-inhoud automatisch wordt ontvlecht. Wanneer de automatische ontvlechting is ingeschakeld (standaard) doet de MES de automatische detectie van interlaced frames en alleen de-interlaces frames gemarkeerd als interlaced.
 
-U kunt de automatische deinterliniëring uitschakelen. Deze optie wordt niet aanbevolen.
+U de automatische de-interlacing uitschakelen. Deze optie wordt niet aanbevolen.
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
     "Sources": [
     {
      "Filters": {
@@ -735,7 +735,7 @@ U kunt de automatische deinterliniëring uitschakelen. Deze optie wordt niet aan
     }
     ]
 
-### <a name="xml-preset"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voorinstelling
     <Sources>
     <Source>
       <Filters>
@@ -747,10 +747,10 @@ U kunt de automatische deinterliniëring uitschakelen. Deze optie wordt niet aan
     </Sources>
 
 
-## <a id="audio_only"></a>Voor instellingen voor alleen audio
-In deze sectie ziet u twee voor beelden van alleen audio-inkomend niveau: AAC-audio en de audio van de juiste kwaliteit van AAC.
+## <a name="audio-only-presets"></a><a id="audio_only"></a>Voorinstellingen voor audio alleen
+In dit gedeelte worden twee MES-voorinstellingen voor audio getoond: AAC Audio en AAC Good Quality Audio.
 
-### <a name="aac-audio"></a>AAC Audio
+### <a name="aac-audio"></a>Oc-audio
     {
       "Version": 1.0,
       "Codecs": [
@@ -772,7 +772,7 @@ In deze sectie ziet u twee voor beelden van alleen audio-inkomend niveau: AAC-au
       ]
     }
 
-### <a name="aac-good-quality-audio"></a>Audio van goede kwaliteit van AAC
+### <a name="aac-good-quality-audio"></a>AAC Audio van goede kwaliteit
     {
       "Version": 1.0,
       "Codecs": [
@@ -794,26 +794,26 @@ In deze sectie ziet u twee voor beelden van alleen audio-inkomend niveau: AAC-au
       ]
     }
 
-## <a id="concatenate"></a>Twee of meer video bestanden samen voegen
+## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>Twee of meer videobestanden inconcereren
 
-In het volgende voor beeld ziet u hoe u een voor instelling kunt genereren om twee of meer video bestanden samen te voegen. Het meest voorkomende scenario is wanneer u een kop of een trailer wilt toevoegen aan de hoofd video. Het beoogde gebruik is het moment waarop de video bestanden worden bewerkt: share-eigenschappen (video resolutie, frame frequentie, audio track Count, enzovoort). Houd er rekening mee dat u geen Video's van verschillende frame snelheden kunt combi neren of met een ander aantal audio sporen.
+In het volgende voorbeeld wordt uitgelegd hoe u een voorinstelling genereren om twee of meer videobestanden te laten aansluiten. Het meest voorkomende scenario is wanneer u een koptekst of een trailer aan de hoofdvideo wilt toevoegen. Het beoogde gebruik is wanneer de videobestanden die samen worden bewerkt, eigenschappen delen (videoresolutie, framesnelheid, aantal audiosporen, enz.). Zorg ervoor dat u geen video's van verschillende framesnelheden of met verschillende audiotracks mengt.
 
 >[!NOTE]
->Het huidige ontwerp van de functie voor samen voeging verwacht dat de video clips voor invoer consistent zijn met de voor waarden van de oplossing, de frame frequentie, enzovoort. 
+>Het huidige ontwerp van de concatenatiefunctie verwacht dat de invoervideoclips consistent zijn in termen van resolutie, framesnelheid enz. 
 
-### <a name="requirements-and-considerations"></a>Vereisten en overwegingen
+### <a name="requirements-and-considerations"></a>Eisen en overwegingen
 
-* Invoer Video's mogen slechts één audio track hebben.
-* Invoer Video's moeten allemaal dezelfde frame frequentie hebben.
-* U moet uw Video's in afzonderlijke assets uploaden en de Video's als primair bestand in elk activum instellen.
-* U moet weten wat de duur van uw Video's is.
-* In de onderstaande voor beelden wordt ervan uitgegaan dat alle invoer Video's beginnen met een tijds tempel van nul. U moet de waarden voor StartTime wijzigen als de Video's een andere start tijds tempel hebben, zoals het geval is bij Live-archieven.
-* De JSON-voor instelling maakt expliciete verwijzingen naar de AssetID-waarden van de invoer assets.
-* In de voorbeeld code wordt ervan uitgegaan dat de JSON-voor instelling is opgeslagen in een lokaal bestand, zoals "C:\supportFiles\preset.json". Ook wordt ervan uitgegaan dat er twee assets zijn gemaakt door twee video bestanden te uploaden en dat u de resulterende AssetID-waarden kent.
-* In het code fragment en de JSON-voor instelling ziet u een voor beeld van het samen voegen van twee video bestanden. U kunt dit uitbreiden naar meer dan twee Video's door:
+* Invoervideo's mogen slechts één audiotrack hebben.
+* Invoervideo's moeten allemaal dezelfde framesnelheid hebben.
+* Je moet je video's uploaden naar afzonderlijke elementen en de video's instellen als het primaire bestand in elk item.
+* Je moet de duur van je video's weten.
+* De vooraf ingestelde voorbeelden hieronder gaat ervan uit dat alle invoervideo's beginnen met een tijdstempel van nul. U moet de StartTime-waarden wijzigen als de video's een andere starttijdstempel hebben, zoals meestal het geval is bij live-archieven.
+* De JSON-voorinstelling verwijst expliciet naar de AssetID-waarden van de invoerelementen.
+* De voorbeeldcode gaat ervan uit dat de JSON-voorinstelling is opgeslagen in een lokaal bestand, zoals "C:\supportFiles\preset.json". Het gaat er ook van uit dat twee elementen zijn gemaakt door het uploaden van twee videobestanden, en dat u de resulterende AssetID-waarden kent.
+* Het codefragment en de JSON-voorinstelling toont een voorbeeld van het gelijktijdig maken van twee videobestanden. Je het uitbreiden naar meer dan twee video's door:
 
-  1. Taak aanroepen. InputAssets. Add () herhaaldelijk om meer Video's toe te voegen, in de juiste volg orde.
-  2. Het maken van corresponderende wijzigingen in het element sources in de JSON door meer vermeldingen toe te voegen in dezelfde volg orde.
+  1. Oproeptaak. InputAssets.Add() herhaaldelijk om meer video's toe te voegen, in volgorde.
+  2. Het aanbrengen van overeenkomstige bewerkingen aan het element "Bronnen" in de JSON, door meer vermeldingen toe te voegen, in dezelfde volgorde.
 
 ### <a name="net-code"></a>.NET-code
 
@@ -848,9 +848,9 @@ In het volgende voor beeld ziet u hoe u een voor instelling kunt genereren om tw
     job.Submit();
     job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
 
-Werk uw aangepaste voor instelling bij met id's van de activa die u wilt samen voegen en met het juiste tijd segment voor elke video.
+Werk uw aangepaste voorinstelling bij met id's van de elementen die u wilt samenbrengen en met het juiste tijdssegment voor elke video.
 
     {
       "Version": 1.0,
@@ -904,24 +904,24 @@ Werk uw aangepaste voor instelling bij met id's van de activa die u wilt samen v
       ]
     }
 
-## <a id="crop"></a>Video's bijsnijden met Media Encoder Standard
-Zie het onderwerp [Video's bijsnijden met Media Encoder Standard](media-services-crop-video.md) .
+## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>Video's bijsnijden met Media Encoder Standard
+Bekijk het [crop-video's met het onderwerp Media Encoder Standard.](media-services-crop-video.md)
 
-## <a id="no_video"></a>Een video track invoegen wanneer de invoer geen video bevat
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Een videotrack invoegen wanneer invoer geen video heeft
 
-Standaard, als u een invoer verzendt naar het coderings programma dat alleen audio en geen video bevat, bevat het uitvoer element alleen bestanden die alleen audio gegevens bevatten. Sommige spelers, met inbegrip van Azure Media Player (Zie [Dit](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)), kunnen dergelijke stromen mogelijk niet verwerken. U kunt deze instelling gebruiken om ervoor te zorgen dat het coderings programma een monochroom video spoor toevoegt aan de uitvoer in dat scenario.
+Als u standaard een invoer verzendt naar de encoder die alleen audio en geen video bevat, bevat het uitvoeritem bestanden die alleen audiogegevens bevatten. Sommige spelers, waaronder Azure Media Player (zie [dit)](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)kunnen dergelijke streams mogelijk niet verwerken. U deze instelling gebruiken om de encoder te dwingen een monochrome videotrack toe te voegen aan de uitvoer in dat scenario.
 
 > [!NOTE]
-> Het coderen van het coderings programma voor het invoegen van een uitvoer video spoor neemt de grootte van het uitvoer activum toe en de kosten die zijn gemaakt voor de coderings taak. Voer tests uit om te controleren of deze resulterende toename alleen een bescheiden effect heeft op uw maandelijkse kosten.
+> Als u de encoder dwingt een uitvoervideotrack in te voegen, wordt de grootte van het uitvoeractief vergroot en daardoor de kosten voor de coderingstaak. U moet tests uitvoeren om te controleren of deze resulterende stijging slechts een bescheiden impact heeft op uw maandelijkse kosten.
 >
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Video invoegen met alleen de laagste bitrate
 
-Stel dat u een voor beeld van een meerdere bitsnelheid gebruikt, zoals [' H264 meerdere bitrate 720p '](media-services-mes-preset-h264-multiple-bitrate-720p.md) , waarmee u uw volledige invoer catalogus kunt coderen voor streamen, die een combi natie van video bestanden en bestanden met alleen audio gegevens bevat. In dit scenario kunt u, wanneer de invoer geen video bevat, ervoor zorgen dat het coderings programma een monochroom video track met alleen de laagste bitsnelheid kan invoegen, in tegens telling tot het invoegen van video op elke bitsnelheid van uitvoer. Hiervoor moet u de vlag **InsertBlackIfNoVideoBottomLayerOnly** gebruiken.
+Stel dat u een voorinstelling voor meervoudige bitratecodering gebruikt, zoals ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) om uw volledige invoercatalogus te coderen voor streaming, die een mix van videobestanden en bestanden met alleen audio bevat. In dit scenario, wanneer de invoer geen video heeft, u de encoder dwingen om een monochrome videotrack in te voegen op slechts de laagste bitrate, in tegenstelling tot het invoegen van video bij elke uitvoerbitrate. Om dit te bereiken, moet u de **vlag InsertBlackIfNoVideoBottomLayerOnly** gebruiken.
 
-U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven mes-voor instellingen uitvoeren en de volgende wijziging aanbrengen:
+U een van de MES-voorinstellingen die in [deze](media-services-mes-presets-overview.md) sectie zijn gedocumenteerd, bekijken en de volgende wijziging aanbrengen:
 
-#### <a name="json-preset"></a>JSON-voor instelling
+#### <a name="json-preset"></a>JSON-voorinstelling
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -931,9 +931,9 @@ U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven me
           ]
     }
 
-#### <a name="xml-preset"></a>XML-voor instelling
+#### <a name="xml-preset"></a>XML-voorinstelling
 
-Als XML wordt gebruikt, gebruikt u voor waarde = "InsertBlackIfNoVideoBottomLayerOnly" als een kenmerk voor het **H264Video** -element en de voor waarde = "InsertSilenceIfNoAudio" als een kenmerk voor **AACAudio**.
+Gebruik Condition="InsertBlackIfNoVideoBottomLayerOnly" bij gebruik als kenmerk van het **element H264Video** en Condition="InsertSilenceIfNoAudio" als kenmerk van **AACAudio**.
 
 ```
 . . .
@@ -959,12 +959,12 @@ Als XML wordt gebruikt, gebruikt u voor waarde = "InsertBlackIfNoVideoBottomLaye
 . . .
 ```
 
-### <a name="inserting-video-at-all-output-bitrates"></a>Video invoegen bij alle uitvoer bitrates
-Stel dat u een multi bitsnelheid-voor instelling voor code ring gebruikt, zoals [' H264 meerdere bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) , om uw volledige invoer catalogus te coderen voor streaming, die een combi natie van video bestanden en bestanden met alleen audio gegevens bevat. In dit scenario is het mogelijk dat als de invoer geen video bevat, u wilt afdwingen dat het coderings programma een monochroom video spoor invoegt bij alle uitvoer bitrates. Dit zorgt ervoor dat uw uitvoer activa homo geen zijn ten opzichte van het aantal video sporen en audio sporen. Hiervoor moet u de vlag "InsertBlackIfNoVideo" opgeven.
+### <a name="inserting-video-at-all-output-bitrates"></a>Video invoegen bij alle uitvoerbitrates
+Stel dat u een voorinstelling voor meervoudige bitratecodering gebruikt, zoals ["H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) om uw volledige invoercatalogus te coderen voor streaming, die een mix van videobestanden en bestanden met alleen audio bevat. In dit scenario u, wanneer de invoer geen video heeft, de encoder dwingen om een monochrome videotrack in te voegen bij alle uitvoerbitrates. Dit zorgt ervoor dat uw uitvoerassets allemaal homogeen zijn met betrekking tot het aantal videotracks en audiotracks. Om dit te bereiken, moet u de vlag 'InsertBlackIfNoVideo' opgeven.
 
-U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven mes-voor instellingen uitvoeren en de volgende wijziging aanbrengen:
+U een van de MES-voorinstellingen die in [deze](media-services-mes-presets-overview.md) sectie zijn gedocumenteerd, bekijken en de volgende wijziging aanbrengen:
 
-#### <a name="json-preset"></a>JSON-voor instelling
+#### <a name="json-preset"></a>JSON-voorinstelling
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -974,9 +974,9 @@ U kunt de in [deze](media-services-mes-presets-overview.md) sectie beschreven me
           ]
     }
 
-#### <a name="xml-preset"></a>XML-voor instelling
+#### <a name="xml-preset"></a>XML-voorinstelling
 
-Als XML wordt gebruikt, gebruikt u voor waarde = "InsertBlackIfNoVideo" als een kenmerk voor het **H264Video** -element en de voor waarde = "InsertSilenceIfNoAudio" als een kenmerk voor **AACAudio**.
+Gebruik Condition="InsertBlackIfNoVideo" als kenmerk van het **element H264Video** en Condition="InsertSilenceIfNoAudio" als kenmerk van **AACAudio**.
 
 ```
 . . .
@@ -1002,10 +1002,10 @@ Als XML wordt gebruikt, gebruikt u voor waarde = "InsertBlackIfNoVideo" als een 
 . . .  
 ```
 
-## <a id="rotate_video"></a>Een video draaien
-De [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) biedt ondersteuning voor rotaties op basis van de hoek van 0/90/180/270. Het standaard gedrag is ' auto ', waarbij wordt geprobeerd om de meta gegevens van de draai bewerking in het inkomende video bestand te detecteren en te compenseren. Neem het volgende **bron** element op in een van de voor instellingen die in [deze](media-services-mes-presets-overview.md) sectie zijn gedefinieerd:
+## <a name="rotate-a-video"></a><a id="rotate_video"></a>Een video roteren
+De [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) ondersteunt rotatie door hoeken van 0/90/180/270. Het standaardgedrag is 'Automatisch', waarbij het de rotatiemetagegevens in het binnenkomende videobestand probeert te detecteren en dit probeert te compenseren. Voeg het volgende **element Bronnen** toe aan een van de voorinstellingen die in [deze](media-services-mes-presets-overview.md) sectie zijn gedefinieerd:
 
-### <a name="json-preset"></a>JSON-voor instelling
+### <a name="json-preset"></a>JSON-voorinstelling
     "Sources": [
     {
       "Streams": [],
@@ -1017,7 +1017,7 @@ De [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
     "Codecs": [
 
     ...
-### <a name="xml-preset"></a>XML-voor instelling
+### <a name="xml-preset"></a>XML-voorinstelling
     <Sources>
            <Source>
           <Streams />
@@ -1027,9 +1027,9 @@ De [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
         </Source>
     </Sources>
 
-Zie ook [Dit](media-services-mes-schema.md#PreserveResolutionAfterRotation) onderwerp voor meer informatie over de manier waarop de encoder de instellingen voor breedte en hoogte interpreteert in de voor instelling, wanneer rotatie compensatie wordt geactiveerd.
+Zie [ook dit](media-services-mes-schema.md#PreserveResolutionAfterRotation) onderwerp voor meer informatie over hoe de encoder de instellingen Breedte en Hoogte interpreteert in de voorinstelling, wanneer rotatiecompensatie wordt geactiveerd.
 
-U kunt de waarde "0" gebruiken om aan te geven dat de encoder de meta gegevens van de draaiing negeren, indien aanwezig, in de video invoer.
+U de waarde 0 gebruiken om aan de encoder aan te geven rotatiemetagegevens te negeren, indien aanwezig, in de invoervideo.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -1038,4 +1038,4 @@ U kunt de waarde "0" gebruiken om aan te geven dat de encoder de meta gegevens v
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zie ook
-[Overzicht van Media Services encoding](media-services-encode-asset.md)
+[Overzicht van mediaservices codering](media-services-encode-asset.md)

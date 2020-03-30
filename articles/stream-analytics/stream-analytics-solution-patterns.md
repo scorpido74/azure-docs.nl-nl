@@ -1,192 +1,192 @@
 ---
 title: Azure Stream Analytics-oplossingspatronen
-description: Meer informatie over algemene oplossings patronen voor Azure Stream Analytics, zoals Dash boards, gebeurtenis berichten, gegevens archieven, verrijkingen van referentie gegevens en bewaking.
+description: Meer informatie over algemene oplossingspatronen voor Azure Stream Analytics, zoals dashboarding, gebeurtenisberichten, gegevensopslag, verrijking van referentiegegevens en monitoring.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535779"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
-Net als bij veel andere services in azure kunt u Stream Analytics het beste met andere services gebruiken om een grotere end-to-end oplossing te maken. In dit artikel worden eenvoudige Azure Stream Analytics oplossingen en verschillende architecturale patronen besproken. U kunt deze patronen bouwen om complexere oplossingen te ontwikkelen. De patronen die in dit artikel worden beschreven, kunnen worden gebruikt in een groot aantal verschillende scenario's. Voor beelden van scenario-specifieke patronen zijn beschikbaar in [Azure-oplossings architecturen](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
+Net als veel andere services in Azure wordt Stream Analytics het best gebruikt met andere services om een grotere end-to-end oplossing te maken. In dit artikel worden eenvoudige Azure Stream Analytics-oplossingen en verschillende architecturale patronen besproken. U voortbouwen op deze patronen om complexere oplossingen te ontwikkelen. De patronen beschreven in dit artikel kunnen worden gebruikt in een breed scala van scenario's. Voorbeelden van scenariospecifieke patronen zijn beschikbaar op [Azure-oplossingsarchitecturen.](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)
 
-## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Een Stream Analytics taak maken om in realtime Dash boards te kunnen werken
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Maak een Stream Analytics-taak om realtime dashboardervaring te bieden
 
-Met Azure Stream Analytics kunt u snel realtime-Dash boards en-waarschuwingen opschonen. Met een eenvoudige oplossing worden gebeurtenissen van Event hubs of IOT hub opgenomen, en wordt [het Power bi dash board met een gegevensverzamelinggegevens gevoed](/power-bi/service-real-time-streaming). Zie de gedetailleerde zelf studie [gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power bi dash board](stream-analytics-manage-job.md)voor meer informatie.
+Met Azure Stream Analytics u snel realtime dashboards en waarschuwingen up-up. Een eenvoudige oplossing neemt gebeurtenissen op van Event Hubs of IoT Hub en [voedt het Power BI-dashboard met een streaming gegevensset.](/power-bi/service-real-time-streaming) Zie voor meer informatie de gedetailleerde zelfstudie [Telefoongespreksgegevens analyseren met Stream Analytics en de resultaten visualiseren in het Power BI-dashboard.](stream-analytics-manage-job.md)
 
-![ASA Power BI-dash board](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI-dashboard](media/stream-analytics-solution-patterns/pbidashboard.png)
 
-Deze oplossing kan in slechts enkele minuten van Azure Portal worden gebouwd. Er is geen uitgebreide code ring betrokken en SQL-taal wordt gebruikt voor het uitdrukken van de bedrijfs logica.
+Deze oplossing kan worden gebouwd in slechts een paar minuten van Azure portal. Er is geen uitgebreide codering betrokken, en SQL-taal wordt gebruikt om de bedrijfslogica uit te drukken.
 
-Dit oplossings patroon biedt de laagste latentie van de gebeurtenis bron naar het Power BI dash board in een browser. Azure Stream Analytics is de enige Azure-service met deze ingebouwde mogelijkheid.
+Dit oplossingspatroon biedt de laagste latentie van de gebeurtenisbron naar het Power BI-dashboard in een browser. Azure Stream Analytics is de enige Azure-service met deze ingebouwde mogelijkheid.
 
-## <a name="use-sql-for-dashboard"></a>SQL voor dash board gebruiken
+## <a name="use-sql-for-dashboard"></a>SQL gebruiken voor dashboard
 
-Het Power BI dash board biedt lage latentie, maar kan niet worden gebruikt voor het produceren van volledige Power BI rapporten. Een algemeen rapportage patroon is het uitvoeren van uw gegevens naar een SQL database eerst. Gebruik vervolgens de SQL-connector van Power BI om SQL voor de meest recente gegevens op te vragen.
+Het Power BI-dashboard biedt een lage latentie, maar kan niet worden gebruikt om volwaardige Power BI-rapporten te produceren. Een veelvoorkomend rapportagepatroon is om uw gegevens eerst naar een SQL-database uit te zetten. Gebruik vervolgens de SQL-connector van Power BI om SQL op te vragen voor de nieuwste gegevens.
 
-![ASA SQL-dash board](media/stream-analytics-solution-patterns/sqldashboard.png)
+![ASA SQL-dashboard](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Het gebruik van SQL database biedt meer flexibiliteit, maar ten koste van een iets hogere latentie. Deze oplossing is optimaal voor taken met een latentie vereisten van meer dan één seconde. Met deze methode kunt u de mogelijkheden van Power BI optimaliseren om de gegevens voor rapporten verder te segmenteren en te dobbelten, en nog veel meer visualisatie opties. U krijgt ook de flexibiliteit om andere dashboard oplossingen te gebruiken, zoals tableau.
+Het gebruik van SQL-database geeft u meer flexibiliteit, maar ten koste van een iets hogere latentie. Deze oplossing is optimaal voor taken met latentievereisten van meer dan een seconde. Met deze methode u de Power BI-mogelijkheden maximaliseren om de gegevens voor rapporten verder te segmenteren en te dobbelen en nog veel meer visualisatieopties. U krijgt ook de flexibiliteit om andere dashboardoplossingen te gebruiken, zoals Tableau.
 
-SQL is geen gegevens opslag met hoge door voer. De maximale door Voer voor een SQL database van Azure Stream Analytics is momenteel ongeveer 24 MB/s. Als de gebeurtenis bronnen in uw oplossing een hoger aantal gegevens produceren, moet u de verwerkings logica in Stream Analytics gebruiken om de uitvoer snelheid naar SQL te verminderen. Technieken zoals filteren, aggregaties in Vensters, patroon vergelijking met tijdelijke samen voegingen en analyse functies kunnen worden gebruikt. De uitvoer frequentie naar SQL kan verder worden geoptimaliseerd met behulp van technieken die worden beschreven in [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md).
+SQL is geen gegevensarchief met een hoge doorvoer. De maximale doorvoer naar een SQL-database van Azure Stream Analytics bedraagt momenteel ongeveer 24 MB/s. Als de gebeurtenisbronnen in uw oplossing gegevens met een hogere snelheid produceren, moet u verwerkingslogica gebruiken in Stream Analytics om de uitvoersnelheid te verlagen tot SQL. Technieken zoals filteren, gevensterde aggregaten, patroonmatching met tijdelijke joins en analytische functies kunnen worden gebruikt. De uitvoersnelheid naar SQL kan verder worden geoptimaliseerd met behulp van technieken die worden beschreven in [Azure Stream Analytics-uitvoer naar Azure SQL Database.](stream-analytics-sql-output-perf.md)
 
-## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Real-time inzichten opnemen in uw toepassing met gebeurtenis berichten
+## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Neem realtime inzichten in uw toepassing op met gebeurtenisberichten
 
-Het tweede meest populaire gebruik van Stream Analytics is het genereren van real-time waarschuwingen. In dit oplossings patroon kan bedrijfs logica in Stream Analytics worden gebruikt voor het detecteren van [tijdelijke en ruimtelijke patronen](stream-analytics-geospatial-functions.md) of [afwijkingen](stream-analytics-machine-learning-anomaly-detection.md), waarna waarschuwings signalen worden gegenereerd. Maar in tegens telling tot de dashboard oplossing waarbij Stream Analytics Power BI als voorkeurs eindpunt gebruikt, kan een aantal tussenliggende gegevens-sinks worden gebruikt. Deze sinks zijn Event Hubs, Service Bus en Azure Functions. Als de opbouw functie voor toepassingen moet u bepalen welke gegevens Sink het meest geschikt is voor uw scenario.
+Het tweede populairste gebruik van Stream Analytics is het genereren van realtime waarschuwingen. In dit oplossingspatroon kan bedrijfslogica in Stream Analytics worden gebruikt om [temporele en ruimtelijke patronen](stream-analytics-geospatial-functions.md) of [afwijkingen](stream-analytics-machine-learning-anomaly-detection.md)te detecteren en vervolgens waarschuwingssignalen te produceren. In tegenstelling tot de dashboardoplossing waarbij Stream Analytics Power BI als voorkeurseindpunt gebruikt, kunnen echter een aantal tussenliggende gegevensputten worden gebruikt. Deze sinks omvatten Event Hubs, Service Bus en Azure Functions. U, als de toepassingsbouwer, moet beslissen welke gegevensgootsteen het beste werkt voor uw scenario.
 
-Er moeten downstream event consumer Logic worden geïmplementeerd voor het genereren van waarschuwingen in uw bestaande zakelijke werk stroom. Omdat u aangepaste logica in Azure Functions kunt implementeren, is Azure Functions de snelste manier om deze integratie uit te voeren. Een zelf studie voor het gebruik van Azure function als uitvoer voor een Stream Analytics-taak vindt u in [Run Azure functions van Azure stream Analytics Jobs](stream-analytics-with-azure-functions.md). Azure Functions ondersteunt ook verschillende typen meldingen, waaronder tekst en e-mail. Logische apps kunnen ook worden gebruikt voor deze integratie, met Event Hubs tussen Stream Analytics en logische apps.
+Downstream-logica voor gebeurtenisconsumenten moet worden geïmplementeerd om waarschuwingen te genereren in uw bestaande bedrijfsworkflow. Omdat u aangepaste logica implementeren in Azure-functies, is Azure Functions de snelste manier om deze integratie uit te voeren. Een zelfstudie voor het gebruik van Azure Function als uitvoer voor een Stream Analytics-taak is te vinden in [Azure-functies uitvoeren vanuit Azure Stream Analytics-taken.](stream-analytics-with-azure-functions.md) Azure Functions ondersteunt ook verschillende soorten meldingen, waaronder tekst en e-mail. Logic App kan ook worden gebruikt voor een dergelijke integratie, met Event Hubs tussen Stream Analytics en Logic App.
 
-![Event Messa ging-app voor ASA](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![ASA-gebeurtenisberichten-app](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Event Hubs biedt daarentegen het meest flexibele integratie punt. Veel andere services, zoals Azure Data Explorer en Time Series Insights, kunnen gebeurtenissen van Event Hubs gebruiken. Services kunnen rechtstreeks worden verbonden met de Event Hubs-Sink van Azure Stream Analytics om de oplossing te volt ooien. Event Hubs is ook de hoogste doorvoer bericht Broker die beschikbaar is op Azure voor dergelijke integratie scenario's.
+Event Hubs daarentegen biedt het meest flexibele integratiepunt. Veel andere services, zoals Azure Data Explorer en Time Series Insights, kunnen gebeurtenissen van gebeurtenishubs gebruiken. Services kunnen rechtstreeks worden verbonden met de gebeurtenishubs vanuit Azure Stream Analytics om de oplossing te voltooien. Event Hubs is ook de hoogste doorvoer messaging broker beschikbaar op Azure voor dergelijke integratie scenario's.
 
-## <a name="dynamic-applications-and-websites"></a>Dynamische toepassingen en websites
+## <a name="dynamic-applications-and-websites"></a>Dynamische applicaties en websites
 
-U kunt aangepaste realtime visualisaties maken, zoals dash board of kaart visualisatie, met behulp van Azure Stream Analytics en de Azure signalerings service. Met Signa lering kunnen webclients worden bijgewerkt en dynamische inhoud in realtime worden weer gegeven.
+U aangepaste realtime visualisaties maken, zoals dashboard- of kaartvisualisatie, met Azure Stream Analytics en Azure SignalR Service. Met SignalR kunnen webclients worden bijgewerkt en dynamische inhoud in realtime weergeven.
 
 ![ASA dynamische app](media/stream-analytics-solution-patterns/dynamicapp.png)
 
-## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Real-time inzichten opnemen in uw toepassing via gegevens archieven
+## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Real-time inzichten in uw toepassing opnemen via datastores
 
-De meeste webservices en webtoepassingen gebruiken vandaag nog een aanvraag/antwoord patroon om de presentatielaag te leveren. Het patroon van de aanvraag/reactie is eenvoudig te bouwen en kan eenvoudig worden geschaald met een lage reactie tijd met een stateless front-end en schaal bare winkels, zoals Cosmos DB.
+De meeste webservices en webtoepassingen gebruiken tegenwoordig een aanvraag-/antwoordpatroon om de presentatielaag te bedienen. Het aanvraag-/antwoordpatroon is eenvoudig te bouwen en kan eenvoudig worden geschaald met een lage responstijd met behulp van een stateloze frontend en schaalbare opslag, zoals Cosmos DB.
 
-High data volume maakt vaak knel punten in een systeem op basis van prestaties. Het [oplossings patroon gebeurtenis bronnen](/azure/architecture/patterns/event-sourcing) wordt gebruikt om de knel punten in de prestaties op te lossen. Tijdelijke patronen en inzichten zijn ook lastig en moeilijk te extra heren uit een traditionele gegevens opslag. Moderne grootschalige toepassingen voor gegevens gebruik nemen vaak een architectuur op basis van een gegevensfeed. Azure Stream Analytics als Compute-engine voor gegevens in beweging is een spil in die architectuur.
+Een hoog gegevensvolume creëert vaak prestatieknelpunten in een CRUD-gebaseerd systeem. Het [oplossingspatroon voor het vinden van gebeurtenissen](/azure/architecture/patterns/event-sourcing) wordt gebruikt om de prestatieknelpunten aan te pakken. Temporele patronen en inzichten zijn ook moeilijk en inefficiënt te extraheren uit een traditioneel gegevensarchief. Moderne datagestuurde toepassingen met een hoog volume hanteren vaak een dataflow-gebaseerde architectuur. Azure Stream Analytics als rekenengine voor data in beweging is een spil in die architectuur.
 
-![Event sourcing-app voor ASA](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA event sourcing app](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 
-In dit oplossings patroon worden gebeurtenissen verwerkt en geaggregeerd in gegevens archieven door Azure Stream Analytics. De toepassingslaag communiceert met gegevens archieven met behulp van het traditionele patroon van aanvraag/antwoord. Vanwege Stream Analytics ' de mogelijkheid om een groot aantal gebeurtenissen in realtime te verwerken, is de toepassing uiterst schaalbaar zonder dat de laag van het gegevensarchief hoeft te worden opgedeeld. De laag van het gegevens archief is in feite een gerealiseerde weer gave in het systeem. [Azure stream Analytics uitvoer naar Azure Cosmos DB](stream-analytics-documentdb-output.md) wordt beschreven hoe Cosmos DB wordt gebruikt als stream Analytics uitvoer.
+In dit oplossingspatroon worden gebeurtenissen verwerkt en samengevoegd tot gegevensopslag door Azure Stream Analytics. De toepassingslaag werkt samen met gegevensarchieven met behulp van het traditionele aanvraag-/antwoordpatroon. Vanwege de mogelijkheid van Stream Analytics om een groot aantal gebeurtenissen in realtime te verwerken, is de toepassing zeer schaalbaar zonder dat de gegevensarchieflaag hoeft te worden verruimd. De gegevensarchieflaag is in wezen een gematerialiseerde weergave in het systeem. [Azure Stream Analytics-uitvoer naar Azure Cosmos DB](stream-analytics-documentdb-output.md) beschrijft hoe Cosmos DB wordt gebruikt als Stream Analytics-uitvoer.
 
-In echte toepassingen waarbij de verwerkings logica complex is en de nood zaak is om bepaalde delen van de logica afzonderlijk bij te werken, kunnen meerdere Stream Analytics taken samen met Event Hubs worden samengesteld als de tussenliggende gebeurtenis Broker.
+In echte toepassingen waar de verwerkingslogica complex is en er de noodzaak is om bepaalde delen van de logica onafhankelijk te upgraden, kunnen meerdere Stream Analytics-taken samen met Event Hubs worden samengesteld als de intermediaire gebeurtenismakelaar.
 
-![ASA-app met complexe gebeurtenis bronnen](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA complexe app voor het werven van evenementen](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
 
-Dit patroon verbetert de flexibiliteit en beheer baarheid van het systeem. Hoewel Stream Analytics echter precies één keer zeker weet dat er sprake is van verwerking, is er een klein risico dat dubbele gebeurtenissen in de intermediair worden geEvent Hubs. Het is belang rijk dat de stroomafwaartse Stream Analytics-taak gebeurtenissen ontdubbelt met behulp van logische sleutels in een lookback-venster. Zie voor meer informatie over de levering van gebeurtenissen [gebeurtenis leverings garanties](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) .
+Dit patroon verbetert de veerkracht en beheersbaarheid van het systeem. Hoewel Stream Analytics precies één keer wordt verwerkt, is de kans klein dat dubbele gebeurtenissen in de intermediaire Event Hubs terecht kunnen komen. Het is belangrijk dat de downstream Stream Analytics-taak gebeurtenissen dedupemaakt met logische sleutels in een terugblikvenster. Zie Referentie [voor evenementleveringsgaranties](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) voor meer informatie over de levering van evenementen.
 
-## <a name="use-reference-data-for-application-customization"></a>Referentie gegevens gebruiken voor het aanpassen van toepassingen
+## <a name="use-reference-data-for-application-customization"></a>Referentiegegevens gebruiken voor het aanpassen van toepassingen
 
-De functie voor het Azure Stream Analytics referentie gegevens is specifiek ontworpen voor aanpassing aan eind gebruikers, zoals waarschuwings drempelwaarde, verwerkings regels en [geofences](geospatial-scenarios.md). De toepassingslaag kan parameter wijzigingen accepteren en in een SQL database opslaan. Met de Stream Analytics taak wordt periodiek een query uitgevoerd op wijzigingen in de data base en worden de aanpassings parameters toegankelijk via een referentie gegevens koppeling. Voor meer informatie over het gebruik van referentie gegevens voor het aanpassen van toepassingen raadpleegt u [SQL-referentie gegevens](sql-reference-data.md) en [samen voegen met referentie gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+De referentiegegevensfunctie azure stream analytics is speciaal ontworpen voor aanpassing van eindgebruikers, zoals waarschuwingsdrempel, verwerkingsregels en [geofences.](geospatial-scenarios.md) De toepassingslaag kan parameterwijzigingen accepteren en opslaan in een SQL-database. De taak Stream Analytics vraagt regelmatig om wijzigingen uit de database en maakt de aanpassingsparameters toegankelijk via een verwijzingsgegevensjoin. Zie [SQL-referentiegegevens](sql-reference-data.md) en [referentiegegevens joinvoor](/stream-analytics-query/reference-data-join-azure-stream-analytics)meer informatie over het gebruik van referentiegegevens voor het aanpassen van toepassingen.
 
-Dit patroon kan ook worden gebruikt voor het implementeren van een regel engine waarbij de drempel waarden van de regels worden gedefinieerd vanuit referentie gegevens. Zie voor meer informatie over regels de [procedure Configureer bare op drempel waarden gebaseerde regels in azure stream Analytics](stream-analytics-threshold-based-rules.md).
+Dit patroon kan ook worden gebruikt om een regelsengine te implementeren waarbij de drempelwaarden van de regels worden gedefinieerd aan de hand van referentiegegevens. Zie [Op configureerbare regels voor processu-in-hand in Azure Stream Analytics](stream-analytics-threshold-based-rules.md)voor meer informatie over regels.
 
-![App voor referentie gegevens van ASA](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA-referentiegegevens-app](media/stream-analytics-solution-patterns/refdataapp.png)
 
-## <a name="add-machine-learning-to-your-real-time-insights"></a>Machine Learning toevoegen aan uw real-time inzichten
+## <a name="add-machine-learning-to-your-real-time-insights"></a>Machine Learning toevoegen aan uw realtime inzichten
 
-Azure Stream Analytics ' ingebouwd [anomalie detectie model](stream-analytics-machine-learning-anomaly-detection.md) ' is een handige manier om machine learning te introduceren in uw realtime-toepassing. Zie [Azure stream Analytics integreren met de Score service van Azure machine learning](stream-analytics-machine-learning-integration-tutorial.md)voor een groter aantal machine learning behoeften.
+Het ingebouwde [Anomaliedetectiemodel van](stream-analytics-machine-learning-anomaly-detection.md) Azure Stream Analytics is een handige manier om Machine Learning te introduceren in uw realtime toepassing. Zie Azure Stream Analytics integreert met de [scoringsservice](stream-analytics-machine-learning-integration-tutorial.md)van Azure Machine Learning voor een breder scala aan machine learning-behoeften.
 
-Zie dit voor beeld van een [lineaire regressie](stream-analytics-high-frequency-trading.md)voor ervaren gebruikers die online trainingen en scores willen opnemen in dezelfde stream Analytics pijp lijn.
+Voor gevorderde gebruikers die online training en scoren willen opnemen in dezelfde Stream Analytics-pijplijn, zie dit voorbeeld van hoe je dat doet met [lineaire regressie.](stream-analytics-high-frequency-trading.md)
 
 ![ASA Machine Learning-app](media/stream-analytics-solution-patterns/mlapp.png)
 
-## <a name="near-real-time-data-warehousing"></a>Bijna realtime gegevens opslag
+## <a name="near-real-time-data-warehousing"></a>Bijna real-time data warehousing
 
-Een ander algemeen patroon is real-time gegevens opslag, ook wel streaming data warehouse genoemd. Naast gebeurtenissen die op Event Hubs en IoT Hub uit uw toepassing arriveren, kunnen [Azure stream Analytics die op IOT Edge wordt uitgevoerd](stream-analytics-edge.md) , worden gebruikt om te voldoen aan het opschonen van gegevens, gegevens reductie en gegevens opslag en doorstuur behoeften. Stream Analytics die op IoT Edge wordt uitgevoerd, kunnen de bandbreedte limiet en verbindings problemen in het systeem op de juiste manier verwerken. De SQL-uitvoer adapter kan worden gebruikt om naar SQL Data Warehouse te worden uitgevoerd. de maximale door Voer is echter beperkt tot 10 MB/s.
+Een ander veelvoorkomend patroon is real-time data warehousing, ook wel streaming data warehouse genoemd. Naast gebeurtenissen die vanuit uw toepassing op Event Hubs en IoT Hub binnenkomen, kan [Azure Stream Analytics die op IoT Edge wordt uitgevoerd,](stream-analytics-edge.md) worden gebruikt om te voldoen aan gegevensreiniging, gegevensreductie en gegevensopslag- en forward-behoeften. Stream Analytics die op IoT Edge wordt uitgevoerd, kan probleemmet de beperking van bandbreedte en connectiviteit in het systeem op een elegante manier afhandelen. De SQL-uitvoeradapter kan worden gebruikt om uit te outputnaar SQL Data Warehouse; De maximale doorvoer is echter beperkt tot 10 MB/s.
 
-![ASA data warehousing](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA Data Warehousing](media/stream-analytics-solution-patterns/datawarehousing.png)
 
-Een manier om de door voer te verbeteren met enkele latentie balans is het archiveren van de gebeurtenissen in Azure Blob-opslag en deze vervolgens te [importeren in SQL data warehouse met poly base](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). U moet de uitvoer hand matig combi neren van Stream Analytics naar Blob-opslag en invoer van Blob Storage naar SQL Data Warehouse door [de gegevens te archiveren op tijds tempel](stream-analytics-custom-path-patterns-blob-storage-output.md) en regel matig te importeren.
+Een manier om de doorvoer te verbeteren met enige latentie-afweging is door de gebeurtenissen te archiveren in Azure Blob-opslag en ze vervolgens [te importeren in SQL Data Warehouse met Polybase.](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md) U moet handmatig de uitvoer van Stream Analytics naar blob-opslag en invoer van blob-opslag naar SQL Data Warehouse samenvoegen door [de gegevens te archiveren op tijdstempel](stream-analytics-custom-path-patterns-blob-storage-output.md) en periodiek te importeren.
 
-In dit gebruiks patroon wordt Azure Stream Analytics gebruikt als een nabije realtime ETL-engine. Nieuwe inkomende gebeurtenissen worden continu getransformeerd en opgeslagen voor het downstream Analytics-Service verbruik.
+In dit gebruikspatroon wordt Azure Stream Analytics gebruikt als een bijna realtime ETL-engine. Nieuw aankomende gebeurtenissen worden voortdurend getransformeerd en opgeslagen voor downstream analytics service verbruik.
 
-![Gegevens opslag met hoge door Voer van ASA](media/stream-analytics-solution-patterns/datawarehousing2.png)
+![ASA high throughput Data Warehousing](media/stream-analytics-solution-patterns/datawarehousing2.png)
 
-## <a name="archiving-real-time-data-for-analytics"></a>Real-time gegevens archiveren voor analyse
+## <a name="archiving-real-time-data-for-analytics"></a>Archiveren van realtime gegevens voor analytics
 
-De meeste data wetenschappen-en analyse activiteiten worden nog offline uitgevoerd. Gegevens kunnen worden gearchiveerd door Azure Stream Analytics Azure Data Lake Store Gen2 uitvoer en Parquet. Deze mogelijkheid verwijdert de wrijving tot gegevens rechtstreeks in Azure Data Lake Analytics, Azure Databricks en Azure HDInsight. Azure Stream Analytics wordt gebruikt als een bijna realtime ETL-engine in deze oplossing. U kunt gearchiveerde gegevens in Data Lake verkennen met behulp van verschillende reken engines.
+De meeste data science en analytics activiteiten gebeuren nog steeds offline. Gegevens kunnen worden gearchiveerd door Azure Stream Analytics via Azure Data Lake Store Gen2-uitvoer- en parketuitvoerindelingen. Met deze mogelijkheid worden de frictie verwijderd om gegevens rechtstreeks in Azure Data Lake Analytics, Azure Databricks en Azure HDInsight te voeren. Azure Stream Analytics wordt gebruikt als een bijna realtime ETL-engine in deze oplossing. U gearchiveerde gegevens in Data Lake verkennen met behulp van verschillende compute engines.
 
-![ASA offline-analyse](media/stream-analytics-solution-patterns/offlineanalytics.png)
+![ASA offline analytics](media/stream-analytics-solution-patterns/offlineanalytics.png)
 
-## <a name="use-reference-data-for-enrichment"></a>Referentie gegevens gebruiken voor verrijking
+## <a name="use-reference-data-for-enrichment"></a>Referentiegegevens gebruiken voor verrijking
 
-Gegevens verrijking is vaak een vereiste voor ETL-engines. Azure Stream Analytics ondersteunt gegevens verrijking met [referentie gegevens](stream-analytics-use-reference-data.md) van zowel SQL database als Azure Blob-opslag. Gegevens verrijking kunnen worden uitgevoerd voor de aanvoer van gegevens in zowel Azure Data Lake als SQL Data Warehouse.
+Gegevensverrijking is vaak een vereiste voor ETL-motoren. Azure Stream Analytics ondersteunt gegevensverrijking met [referentiegegevens](stream-analytics-use-reference-data.md) uit zowel SQL-database als Azure Blob-opslag. Gegevensverrijking kan worden gedaan voor het landen van gegevens in zowel Azure Data Lake als SQL Data Warehouse.
 
-![ASA offline analyse met gegevens verrijking](media/stream-analytics-solution-patterns/offlineanalytics.png)
+![ASA offline analytics met dataverrijking](media/stream-analytics-solution-patterns/offlineanalytics.png)
 
-## <a name="operationalize-insights-from-archived-data"></a>Operationeel maken Insights van gearchiveerde gegevens
+## <a name="operationalize-insights-from-archived-data"></a>Inzichten uit gearchiveerde gegevens operationaliseren
 
-Als u het offline analyse patroon combineert met het bijna realtime toepassings patroon, kunt u een feedback-lus maken. Met de feedback-lus kan de toepassing automatisch worden aangepast voor het wijzigen van patronen in de gegevens. Deze feedback-lus kan net zo eenvoudig zijn als het wijzigen van de drempel waarde voor waarschuwingen of als complex als het opnieuw trainen van Machine Learning modellen. Dezelfde oplossings architectuur kan worden toegepast op beide ASA-taken die worden uitgevoerd in de Cloud en op IoT Edge.
+Als u het offline analysepatroon combineert met het bijna realtime toepassingspatroon, u een feedbacklus maken. Met de feedbacklus kan de toepassing automatisch worden aangepast voor het wijzigen van patronen in de gegevens. Deze feedbacklus kan net zo eenvoudig zijn als het wijzigen van de drempelwaarde voor waarschuwingen of net zo complex als het omscholen van Machine Learning-modellen. Dezelfde oplossingsarchitectuur kan worden toegepast op zowel ASA-taken die in de cloud als op IoT Edge worden uitgevoerd.
 
-![ASA Insights-uitoefening](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA geeft inzicht in operationalisering](media/stream-analytics-solution-patterns/insightsoperationalization.png)
 
-## <a name="how-to-monitor-asa-jobs"></a>ASA-taken bewaken
+## <a name="how-to-monitor-asa-jobs"></a>Asa-taken controleren
 
-Een Azure Stream Analytics taak kan 24/7 worden uitgevoerd om binnenkomende gebeurtenissen in realtime continu te verwerken. De gegarandeerde uptime is van cruciaal belang voor de status van de volledige toepassing. Hoewel Stream Analytics de enige streaming Analytics-service in de branche is die een [gegarandeerde Beschik baarheid van 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)biedt, is er mogelijk nog steeds een zekere mate van tijd. Stream Analytics heeft gedurende de jaren metrische gegevens, logboeken en taak statussen geïntroduceerd om de status van de taken weer te geven. Deze zijn allemaal zichtbaar via Azure Monitor-service en kunnen verder worden geëxporteerd naar OMS. Zie [informatie over stream Analytics taak bewaking en het controleren van query's](stream-analytics-monitoring.md)voor meer informatie.
+Een Azure Stream Analytics-taak kan 24/7 worden uitgevoerd om binnenkomende gebeurtenissen continu in realtime te verwerken. De uptime garantie is cruciaal voor de gezondheid van de algehele toepassing. Hoewel Stream Analytics de enige streaming analytics-service in de branche is die een [beschikbaarheidsgarantie van 99,9%](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)biedt, u nog steeds een zekere mate van downtime oplopen. In de loop der jaren heeft Stream Analytics statistieken, logboeken en taakstatussen geïntroduceerd om de status van de taken weer te geven. Ze worden allemaal weergegeven via azure monitor-service en kunnen verder worden geëxporteerd naar OMS. Zie [Taakbewaking van Stream Analytics begrijpen en hoe u query's controleren](stream-analytics-monitoring.md)voor meer informatie.
 
-![ASA-bewaking](media/stream-analytics-solution-patterns/monitoring.png)
+![ASA-monitoring](media/stream-analytics-solution-patterns/monitoring.png)
 
-Er zijn twee belang rijke dingen om te bewaken:
+Er zijn twee belangrijke dingen om te controleren:
 
-- [Status van mislukte taak](job-states.md)
+- [Status taak mislukt](job-states.md)
 
-    U moet er eerst voor zorgen dat de taak wordt uitgevoerd. Zonder dat de taak wordt uitgevoerd, worden er geen nieuwe metrische gegevens of logboeken gegenereerd. Taken kunnen om verschillende redenen worden gewijzigd in een mislukte status, waaronder het gebruik van een hoog SU-gebruiks niveau (dat wil zeggen te weinig resources).
+    Eerst en vooral, moet u ervoor zorgen dat de baan wordt uitgevoerd. Zonder de taak in de lopende status worden er geen nieuwe statistieken of logboeken gegenereerd. Taken kunnen om verschillende redenen worden gewijzigd in een mislukte status, waaronder het hebben van een hoog SU-gebruiksniveau (d.w.z. zonder resources).
 
-- [Meet waarden voor watermerk vertraging](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)
+- [Statistieken voor vertraging van watermerken](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)
 
-    Met deze metriek wordt aangegeven hoe ver achter uw verwerkings pijplijn de klok tijd van de wand (seconden) is. Een deel van de vertraging wordt toegeschreven aan de logica voor de inherente verwerking. Als gevolg hiervan is het controleren van de toenemende trend veel belang rijker dan het bewaken van de absolute waarde. De stabiele status vertraging moet worden opgelost door het ontwerp van uw toepassing, niet door bewaking of waarschuwingen.
+    Deze statistiek geeft aan hoe ver achter uw verwerkingspijplijn zich in de kloktijd (seconden) achterloopt. Een deel van de vertraging wordt toegeschreven aan de inherente verwerkingslogica. Als gevolg daarvan is het monitoren van de stijgende trend veel belangrijker dan het monitoren van de absolute waarde. De vertraging van de steady state moet worden verholpen door uw toepassingsontwerp, niet door te controleren of te waarschuwingen.
 
-Als er een fout is opgetreden, zijn de logboeken voor activiteiten en [Diagnostische gegevens](stream-analytics-job-diagnostic-logs.md) de beste locaties om te beginnen met het zoeken naar fouten.
+Na het mislukken, activiteit logs en [diagnostische logs](stream-analytics-job-diagnostic-logs.md) zijn de beste plaatsen om te beginnen met het zoeken naar fouten.
 
-## <a name="build-resilient-and-mission-critical-applications"></a>Robuuste en essentiële toepassingen bouwen
+## <a name="build-resilient-and-mission-critical-applications"></a>Bouw veerkrachtige en bedrijfskritische toepassingen
 
-Ongeacht de SLA-garantie van Azure Stream Analytics en hoe voorzichtig u uw end-to-end-toepassing uitvoert, treedt er een storing op. Als uw toepassing bedrijfs kritiek is, moet u voor bereid zijn op storingen om op de juiste wijze te herstellen.
+Ongeacht de SLA-garantie van Azure Stream Analytics en hoe voorzichtig u uw end-to-end-toepassing uitvoert, er zijn storingen. Als uw toepassing bedrijfskritisch is, moet u voorbereid zijn op uitval om gracieus te herstellen.
 
-Voor het melden van toepassingen is het belang rijk dat u de volgende waarschuwing detecteert. U kunt ervoor kiezen om de taak opnieuw te starten vanaf de huidige tijd bij het herstellen, waarbij eerdere waarschuwingen worden genegeerd. De tijd voor het starten van de taak is de eerste uitvoer tijd, niet de eerste invoer tijd. De invoer wordt terugspoelen, een juiste hoeveelheid tijd om te garanderen dat de eerste uitvoer op de opgegeven tijd volledig en correct is. Als gevolg hiervan worden geen gedeeltelijke aggregaties opgehaald en wordt onverwacht waarschuwingen gegenereerd.
+Voor het waarschuwen van toepassingen, het belangrijkste is om de volgende waarschuwing te detecteren. U ervoor kiezen om de taak opnieuw op te starten vanaf de huidige tijd bij het herstellen, waarbij meldingen uit het verleden worden genegeerd. De starttijd semantiek van de taak start zijn door de eerste uitvoertijd, niet de eerste invoertijd. De invoer wordt teruggespoeld een passende hoeveelheid tijd om te garanderen dat de eerste output op het opgegeven tijdstip volledig en correct is. U krijgt geen gedeeltelijke aggregaten en activeert hierdoor onverwachtmeldingen.
 
-U kunt er ook voor kiezen om de uitvoer van een bepaalde tijd in het verleden te starten. Zowel Event Hubs als het Bewaar beleid van IoT Hub bevatten een redelijke hoeveelheid gegevens om de verwerking vanuit het verleden toe te staan. De balans is hoe snel u de huidige tijd kunt opvangen en u begint met het genereren van tijdige nieuwe waarschuwingen. Gegevens verliezen de waarde snel in de loop van de tijd. het is dus belang rijk om snel aan de slag te gaan met de huidige tijd. Er zijn twee manieren om snel op te vangen:
+U er ook voor kiezen om de uitvoer te starten vanaf een bepaalde hoeveelheid tijd in het verleden. Zowel event hubs als het bewaarbeleid van IoT Hub bevatten een redelijke hoeveelheid gegevens om verwerking uit het verleden mogelijk te maken. De afweging is hoe snel u inhalen om de huidige tijd en beginnen met het genereren van tijdige nieuwe waarschuwingen. Data verliest zijn waarde snel na verloop van tijd, dus het is belangrijk om snel in te halen om de huidige tijd. Er zijn twee manieren om snel in te halen:
 
-- Meer bronnen (SU) inrichten bij het opvangen van.
-- Opnieuw opstarten vanaf de huidige tijd.
+- Meer resources (SU) inrichten bij een inhaalslag.
+- Opnieuw starten vanaf de huidige tijd.
 
-Opnieuw opstarten vanaf de huidige tijd is eenvoudig, met het bebalans van een onderbreking tijdens de verwerking. Het opnieuw opstarten van deze manier kan op de hoogte zijn van waarschuwings scenario's, maar kan problemen opleveren voor dashboard scenario's en is een niet-starter voor het archiveren van gegevens en Data Warehouse-scenario's.
+Opnieuw opstarten van de huidige de tijd is eenvoudig te doen, met de afweging van het verlaten van een kloof tijdens de verwerking. Het opnieuw opstarten op deze manier kan OK zijn voor het waarschuwen van scenario's, maar kan problematisch zijn voor dashboardscenario's en is een niet-starter voor archivering en data warehousing scenario's.
 
-Het inrichten van meer resources kan het proces versnellen, maar het effect van een verwerkings snelheid is complex.
+Het inrichten van meer resources kan het proces versnellen, maar het effect van een toename van de verwerkingssnelheid is complex.
 
-- Test of uw taak schaalbaar is tot een groter aantal SUs. Niet alle query's zijn schaalbaar. U moet controleren of uw query is [geparallelleerd](stream-analytics-parallelization.md).
+- Test of uw taak schaalbaar is voor een groter aantal SU's. Niet alle query's zijn schaalbaar. U moet ervoor zorgen dat uw query [parallel loopt.](stream-analytics-parallelization.md)
 
-- Zorg ervoor dat de upstream-Event Hubs voldoende partities bevat of IoT Hub u meer doorvoer eenheden (TUs) kunt toevoegen om de invoer doorvoer te schalen. Houd er rekening mee dat elke Event Hubs TU dergelijke bij een uitvoer snelheid van 2 MB/s.
+- Zorg ervoor dat er voldoende partities zijn in de upstream-gebeurtenishubs of IoT-hub waarmee u meer doorvoereenheden (US' s) toevoegen om de invoerdoorvoer te schalen. Vergeet niet dat elke Tu-gebeurtenishubs maxes met een uitvoersnelheid van 2 MB/s.
 
-- Zorg ervoor dat u voldoende resources hebt ingericht in de uitvoer-Sinks (SQL Database, Cosmos DB), zodat ze de piek in uitvoer niet kunnen beperken, wat soms ertoe kan leiden dat het systeem wordt vergrendeld.
+- Zorg ervoor dat u voldoende resources in de uitvoersinks hebt ingericht (d.w.z. SQL Database, Cosmos DB), zodat ze de toename van de uitvoer niet beperken, waardoor het systeem soms kan worden vergrendeld.
 
-Het belangrijkste is dat u de wijziging van de verwerkings factor moet anticiperen, deze scenario's kunt testen voordat u naar de productie omgeving gaat en de verwerking op de juiste manier kunt schalen tijdens de herstel tijd van de storing.
+Het belangrijkste is om te anticiperen op de wijziging van de verwerkingssnelheid, deze scenario's te testen voordat u in productie gaat en klaar bent om de verwerking correct te schalen tijdens de hersteltijd van de fout.
 
-In het extreme scenario dat binnenkomende gebeurtenissen allemaal worden vertraagd, kunnen [alle vertraagde gebeurtenissen worden verwijderd](stream-analytics-time-handling.md) als u een laat tijdige periode hebt toegepast op uw taak. Het verwijderen van de gebeurtenissen lijkt aan het begin van een verwarrende-gedrag te zijn. het overwegen van Stream Analytics echter een real-time verwerkings engine is, verwacht dan dat binnenkomende gebeurtenissen dicht bij de klok tijd van de wand moeten liggen. Het moet gebeurtenissen weghalen die deze beperkingen schenden.
+In het extreme scenario dat inkomende gebeurtenissen allemaal vertraagd zijn, is het mogelijk dat [alle vertraagde gebeurtenissen worden verwijderd](stream-analytics-time-handling.md) als u een laat aankomend venster op uw werk hebt toegepast. Het laten vallen van de gebeurtenissen kan lijken op een mysterieus gedrag aan het begin; Echter, gezien Stream Analytics is een real-time processing engine, het verwacht inkomende gebeurtenissen dicht bij de muur klok tijd. Het moet gebeurtenissen laten vallen die deze beperkingen schenden.
 
-### <a name="lambda-architectures-or-backfill-process"></a>Lambda-architecturen of backfill-proces
+### <a name="lambda-architectures-or-backfill-process"></a>Lambda Architecturen of Backfill proces
 
-Gelukkig kan het vorige patroon voor het archiveren van gegevens worden gebruikt om deze late gebeurtenissen op de juiste wijze te verwerken. Het idee is dat de archiverings taak binnenkomende gebeurtenissen in aankomst tijd verwerkt en gebeurtenissen archiveert in het juiste tijds interval van Azure Blob of Azure Data Lake Store met de bijbehorende gebeurtenis tijd. Het maakt niet uit hoe laat een gebeurtenis arriveert, maar wordt nooit verwijderd. Het land wordt altijd in het juiste tijds interval gegrond. Tijdens het herstel is het mogelijk om de gearchiveerde gebeurtenissen opnieuw te verwerken en de resultaten te backfill naar de gewenste opslag locatie. Dit is vergelijkbaar met de manier waarop Lambda-patronen worden geïmplementeerd.
+Gelukkig kan het vorige gegevensarchiveringspatroon worden gebruikt om deze late gebeurtenissen gracieus te verwerken. Het idee is dat de archiveringstaak binnenkomende gebeurtenissen in aankomsttijd verwerkt en gebeurtenissen archiveert in de juiste tijdbucket in Azure Blob of Azure Data Lake Store met hun gebeurtenistijd. Het maakt niet uit hoe laat een evenement aankomt, het zal nooit worden geschrapt. Het zal altijd landen in de juiste tijd emmer. Tijdens het herstel is het mogelijk om de gearchiveerde gebeurtenissen opnieuw te verwerken en de resultaten terug te vullen naar de winkel van keuze. Dit is vergelijkbaar met hoe lambda patronen worden geïmplementeerd.
 
-![ASA backfill](media/stream-analytics-solution-patterns/backfill.png)
+![ASA-backfill](media/stream-analytics-solution-patterns/backfill.png)
 
-Het backfill-proces moet worden uitgevoerd met een offline batch verwerkings systeem, wat waarschijnlijk een ander programmeer model heeft dan Azure Stream Analytics. Dit betekent dat u de volledige verwerkings logica opnieuw moet implementeren.
+Het backfill-proces moet worden uitgevoerd met een offline batchverwerkingssysteem, dat waarschijnlijk een ander programmeermodel heeft dan Azure Stream Analytics. Dit betekent dat u de volledige verwerkingslogica opnieuw moet implementeren.
 
-Voor backfilling is het nog steeds belang rijk om ten minste tijdelijk meer bronnen in te richten op de output-sinks voor een hogere door voer dan de verwerkings behoeften van de stabiele status.
+Voor het bijvullen is het nog steeds belangrijk om op zijn minst tijdelijk meer resources aan de uitvoergootstenen te voorzien om een hogere doorvoer te verwerken dan de behoeften voor verwerking van stabiele statussen.
 
-|Scenario's  |Opnieuw opstarten vanaf nu  |Opnieuw opstarten na laatste keer gestopt |Opnieuw opstarten vanaf nu + backfill met gearchiveerde gebeurtenissen|
+|Scenario's  |Vanaf nu alleen opnieuw opstarten  |Opnieuw opstarten vanaf de laatste gestopte tijd |Opnieuw starten vanaf nu + vulling met gearchiveerde gebeurtenissen|
 |---------|---------|---------|---------|
-|**Dash boards**   |Maakt tussen ruimte    |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
-|**Waarschuwingen**   |Aanvaardbaar |OK voor korte onderbreking    |Niet nodig |
-|**App voor gebeurtenis bronnen** |Aanvaardbaar |OK voor korte onderbreking    |Gebruiken voor lange onderbreking |
-|**Gegevensopslag**   |Gegevens verlies  |Aanvaardbaar |Niet nodig |
-|**Offline analyse**  |Gegevens verlies  |Aanvaardbaar |Niet nodig|
+|**Dashboarding**   |Maakt kloof    |OK voor korte uitval    |Gebruiken voor langdurige uitval |
+|**Waarschuwingen**   |Aanvaardbaar |OK voor korte uitval    |Niet nodig |
+|**App voor het werven van gebeurtenissen** |Aanvaardbaar |OK voor korte uitval    |Gebruiken voor langdurige uitval |
+|**Data warehousing**   |Gegevensverlies  |Aanvaardbaar |Niet nodig |
+|**Offline analyses**  |Gegevensverlies  |Aanvaardbaar |Niet nodig|
 
 ## <a name="putting-it-all-together"></a>Alles samenvoegen
 
-Het is niet moeilijk om te Voorst Ellen dat alle hierboven genoemde oplossings patronen samen in een complex end-to-end-systeem kunnen worden gecombineerd. Het gecombineerde systeem kan Dash boards, waarschuwingen, gebeurtenis bronnen toepassing, gegevens opslag en mogelijkheden voor offline analyse bevatten.
+Het is niet moeilijk voor te stellen dat alle hierboven genoemde oplossingspatronen kunnen worden gecombineerd in een complex end-to-end systeem. Het gecombineerde systeem kan dashboards, waarschuwingen, event sourcing-toepassingen, gegevensopslag en offline analysemogelijkheden omvatten.
 
-De sleutel is het ontwerpen van uw systeem in samenstel bare patronen, zodat elk subsysteem kan worden gebouwd, getest, bijgewerkt en onafhankelijk kan worden hersteld.
+De sleutel is om uw systeem te ontwerpen in samenstellende patronen, zodat elk subsysteem onafhankelijk kan worden gebouwd, getest, geüpgraded en hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu diverse oplossings patronen gezien met behulp van Azure Stream Analytics. Hierna kunt u zich verder in de materie verdiepen en uw eerste Stream Analytics-taak maken:
+U hebt nu verschillende oplossingspatronen gezien met Azure Stream Analytics. Hierna kunt u zich verder in de materie verdiepen en uw eerste Stream Analytics-taak maken:
 
 * [Een Stream Analytics-taak maken via Azure Portal](stream-analytics-quick-create-portal.md).
-* [Create a Stream Analytics job by using Azure PowerShell](stream-analytics-quick-create-powershell.md) (Een Stream Analytics-taak maken met behulp van Azure PowerShell).
+* [Maak een Stream Analytics-taak met Azure PowerShell](stream-analytics-quick-create-powershell.md).
 * [Create a Stream Analytics job by using Visual Studio](stream-analytics-quick-create-vs.md) (Een Stream Analytics-taak maken met behulp van Visual Studio).

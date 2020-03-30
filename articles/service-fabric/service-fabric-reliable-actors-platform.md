@@ -1,67 +1,67 @@
 ---
-title: Reliable Actors op Service Fabric
-description: Hierin wordt beschreven hoe Reliable Actors op Reliable Services worden gelaagd en de functies van het Service Fabric platform gebruikt.
+title: Betrouwbare acteurs op Service Fabric
+description: Beschrijft hoe betrouwbare actoren zijn gelaagd op betrouwbare services en gebruik maken van de functies van de Service Fabric platform.
 author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282300"
 ---
-# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hoe Reliable Actors het Service Fabric platform gebruiken?
-In dit artikel wordt uitgelegd hoe Reliable Actors werkt op het Azure Service Fabric-platform. Reliable Actors uitgevoerd in een framework dat wordt gehost in een implementatie van een stateful reliable-service met de naam *actor service*. De actor-service bevat alle onderdelen die nodig zijn voor het beheren van de levens cyclus en het verzenden van berichten voor uw actors:
+# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hoe betrouwbare actoren het Service Fabric-platform gebruiken
+In dit artikel wordt uitgelegd hoe betrouwbare actoren werken op het Azure Service Fabric-platform. Betrouwbare actoren draaien in een kader dat wordt gehost in een implementatie van een stateful betrouwbare dienst genaamd de *actor service*. De actorservice bevat alle onderdelen die nodig zijn om de levenscyclus en berichtverzending voor uw acteurs te beheren:
 
-* De actor-runtime beheert de levens cyclus, garbage collection en dwingt toegang met één thread af.
-* Een externe listener voor actor service accepteert RAS-aanroepen naar actors en verzendt deze naar een dispatcher om naar het juiste actor-exemplaar te sturen.
-* De actor State-provider verloopt status providers (zoals de provider van de betrouw bare verzamelingen) en biedt een adapter voor actor status beheer.
+* De Actor Runtime beheert de levenscyclus, garbage collection en dwingt toegang tot single-threaded af.
+* Een actorservice die listener remoting accepteert oproepen op afstand naar acteurs en stuurt deze naar een dispatcher om naar de juiste actor-instantie te leiden.
+* De Actor State Provider verpakt staatproviders (zoals de provider van de status Betrouwbare verzamelingen) en biedt een adapter voor actorstatemanagement.
 
-Deze onderdelen vormen samen het reliable actor-Framework.
+Deze componenten vormen samen het Reliable Actor framework.
 
-## <a name="service-layering"></a>Service lagen
-Omdat de actor service zelf een betrouw bare service is, zijn alle [toepassings modellen](service-fabric-application-model.md), levenscyclus, [verpakking](service-fabric-package-apps.md), [implementatie](service-fabric-deploy-remove-applications.md), upgrade en schaal concepten van reliable Services op dezelfde manier op actor Services toegepast.
+## <a name="service-layering"></a>Servicelaaglaag
+Omdat de actorservice zelf een betrouwbare service is, zijn alle [toepassingsmodellen,](service-fabric-application-model.md)levenscyclus, [verpakking,](service-fabric-package-apps.md) [implementatie,](service-fabric-deploy-remove-applications.md)upgrade en schaalconcepten van Betrouwbare Services op dezelfde manier van toepassing op actorservices.
 
-![Actor service layering][1]
+![Inlagen van actorservice][1]
 
-In het voor gaande diagram ziet u de relatie tussen de Service Fabric toepassings raamwerken en gebruikers code. Blauwe elementen vertegenwoordigen het Reliable Services-toepassings raamwerk, het betrouw bare actor-Framework vertegenwoordigt en groen staat voor gebruikers code.
+Het voorgaande diagram toont de relatie tussen de servicefabric-toepassingsframeworks en de gebruikerscode. Blauwe elementen vertegenwoordigen het toepassingskader voor Betrouwbare Services, oranje vertegenwoordigt het Reliable Actor-framework en groen staat voor gebruikerscode.
 
-In Reliable Services neemt uw service de `StatefulService`-klasse over. Deze klasse is zelf afgeleid van `StatefulServiceBase` (of `StatelessService` voor stateless Services). In Reliable Actors gebruikt u de actor-service. De actor-service is een andere implementatie van de klasse `StatefulServiceBase` die het actor-patroon implementeert waar uw actoren worden uitgevoerd. Omdat de actor service zelf slechts een implementatie van `StatefulServiceBase`is, kunt u uw eigen service schrijven die is afgeleid van `ActorService` en de functies op service niveau implementeert op dezelfde manier als bij het overnemen van `StatefulService`, zoals:
+In Reliable Services erft `StatefulService` uw service de klasse. Deze klasse is `StatefulServiceBase` zelf `StatelessService` afgeleid van (of voor staatsloze diensten). In Reliable Actors maakt u gebruik van de acteursservice. De actor service is een `StatefulServiceBase` andere implementatie van de klasse die de acteur patroon waar uw acteurs lopen implementeert. Omdat de actor service zelf `StatefulServiceBase`is slechts een implementatie van , `ActorService` u uw eigen service die afkomstig `StatefulService`is van en implementeren service-level functies op dezelfde manier als je zou bij het erven, zoals:
 
-* Back-up en herstel van de service.
-* Gedeelde functionaliteit voor alle actors, bijvoorbeeld een circuit onderbreker.
-* Externe procedure aanroepen in de actor-service zelf en op elke afzonderlijke actor.
+* Service back-up en herstel.
+* Gedeelde functionaliteit voor alle acteurs, bijvoorbeeld een stroomonderbreker.
+* De verre procedure roept de acteurdienst zelf en op elke individuele acteur aan.
 
-Zie [implementatie van functies op service niveau in uw actor service](service-fabric-reliable-actors-using.md)voor meer informatie.
+Zie [Functies op serviceniveau implementeren in uw actorservice](service-fabric-reliable-actors-using.md)voor meer informatie.
 
 ## <a name="application-model"></a>Toepassingsmodel
-Actor Services zijn Reliable Services, waardoor het toepassings model hetzelfde is. De hulpprogram ma's voor het bouwen van actor Framework genereren echter enkele van de toepassings model bestanden voor u.
+Actor-services zijn betrouwbare services, dus het toepassingsmodel is hetzelfde. De hulpprogramma's voor het bouwen van actor-framework's genereren echter een aantal van de toepassingsmodelbestanden voor u.
 
-### <a name="service-manifest"></a>Service manifest
-De hulpprogram ma's voor het bouwen van actor Framework genereren automatisch de inhoud van het bestand ServiceManifest. XML van uw actor-service. Dit bestand bevat:
+### <a name="service-manifest"></a>Servicemanifest
+De hulpprogramma's voor het bouwen van actorframework's genereren automatisch de inhoud van het ServiceManifest.xml-bestand van uw actorservice. Dit bestand bevat:
 
-* Type actor service. De type naam wordt gegenereerd op basis van de project naam van uw actor. Op basis van het kenmerk persistentie op uw actor wordt de HasPersistedState-vlag ook dienovereenkomstig ingesteld.
-* Code pakket.
-* Configuratie pakket.
-* Resources en eind punten.
+* Actor servicetype. De typenaam wordt gegenereerd op basis van de projectnaam van uw actor. Op basis van het persistentieattribuut op uw actor, is de Vlag HasPersistedState ook dienovereenkomstig ingesteld.
+* Codepakket.
+* Config pakket.
+* Resources en eindpunten.
 
 ### <a name="application-manifest"></a>Manifest van de toepassing
-De hulpprogram ma's voor het bouwen van actor Framework maken automatisch een standaard service definitie voor uw actor service. De build-hulpprogram ma's vullen de standaard service-eigenschappen in:
+De hulpprogramma's voor het bouwen van actor-framework's maken automatisch een standaardservicedefinitie voor uw actorservice. De buildtools vullen de standaardservice-eigenschappen in:
 
-* Aantal replica sets wordt bepaald door het kenmerk persistentie van uw actor. Telkens wanneer het kenmerk persistentie op uw actor wordt gewijzigd, wordt het aantal replica sets in de standaard service definitie dienovereenkomstig opnieuw ingesteld.
-* Het partitie schema en het bereik zijn ingesteld op uniforme Int64 met het volledige Int64-sleutel bereik.
+* Het aantal replicasets wordt bepaald door het persistentiekenmerk op uw actor. Telkens wanneer het persistentiekenmerk op uw actor wordt gewijzigd, wordt het aantal replicasets in de standaardservicedefinitie dienovereenkomstig gereset.
+* Partitieschema en bereik zijn ingesteld op Uniform Int64 met het volledige Int64-sleutelbereik.
 
-## <a name="service-fabric-partition-concepts-for-actors"></a>Service Fabric partitie concepten voor Actors
-Actor Services zijn gepartitioneerde stateful Services. Elke partitie van een actor service bevat een set actors. Service partities worden automatisch gedistribueerd over meerdere knoop punten in Service Fabric. Actor instanties worden als resultaat gedistribueerd.
+## <a name="service-fabric-partition-concepts-for-actors"></a>Service Fabric partitieconcepten voor acteurs
+Actor-services zijn verdeelde stateful services. Elke partitie van een actorservice bevat een reeks acteurs. Servicepartities worden automatisch verdeeld over meerdere knooppunten in Service Fabric. Actor-exemplaren worden hierdoor verdeeld.
 
-![Actor partitioneren en distribueren][5]
+![Verdeling en distributie van actor][5]
 
-Reliable Services kunnen worden gemaakt met verschillende partitie schema's en partitie sleutel bereik. De actor-service maakt gebruik van het schema Int64 partitioneren met het volledige Int64-sleutel bereik om actors toe te wijzen aan partities.
+Betrouwbare services kunnen worden gemaakt met verschillende partitieschema's en partitiesleutelbereiken. De actorservice maakt gebruik van het Int64-partitieschema met het volledige Int64-sleutelbereik om actoren naar partities toe te zetten.
 
-### <a name="actor-id"></a>Actor-ID
-Aan elke actor die in de service is gemaakt, is een unieke ID gekoppeld die wordt vertegenwoordigd door de `ActorId` klasse. `ActorId` is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme distributie van actors in de service partities door wille keurige Id's te genereren:
+### <a name="actor-id"></a>Actor-id
+Aan elke actor die in de service is gemaakt, is `ActorId` een unieke id gekoppeld, die wordt weergegeven door de klasse. `ActorId`is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme verdeling van actoren over de servicepartities door het genereren van willekeurige ID's:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -71,7 +71,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Elke `ActorId` wordt gehasht naar een Int64. Daarom moet de actor-service een schema voor gegevens type Int64 gebruiken met het volledige Int64-sleutel bereik. Aangepaste ID-waarden kunnen echter worden gebruikt voor een `ActorID`, inclusief GUID'S/UUID, teken reeksen en Int64s.
+Elke `ActorId` is hashed naar een Int64. Daarom moet de actor-service een Int64-partitioneringsschema gebruiken met het volledige Int64-sleutelbereik. Aangepaste ID-waarden kunnen echter `ActorID`worden gebruikt voor een , inclusief GUIDs/UUID's, tekenreeksen en Int64's.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -84,15 +84,15 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Wanneer u GUID'S/UUID en teken reeksen gebruikt, worden de waarden gehasht naar een Int64. Wanneer u echter expliciet een Int64 levert voor een `ActorId`, wordt het gegevens type Int64 rechtstreeks toegewezen aan een partitie zonder verdere hashing. U kunt deze methode gebruiken om te bepalen met welke partitie de actors worden geplaatst.
+Wanneer u GUID's/UUID's en tekenreeksen gebruikt, worden de waarden gehasht naar een Int64. Echter, wanneer u expliciet een Int64 `ActorId`aan een verstrekt, zal de Int64 rechtstreeks naar een partitie worden toegewezen zonder verder te hashing. U deze techniek gebruiken om te bepalen in welke partitie de actoren zijn geplaatst.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Beheer van actor status](service-fabric-reliable-actors-state-management.md)
-* [Actor-levens cyclus en garbagecollection](service-fabric-reliable-actors-lifecycle.md)
-* [Naslag documentatie voor actors-API](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
-* [.NET-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Actor staatbeheer](service-fabric-reliable-actors-state-management.md)
+* [Levenscyclus van actor's en garbage collection](service-fabric-reliable-actors-lifecycle.md)
+* [Verwijzingen naar API-verwijzingen van actoren](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
+* [.NET-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

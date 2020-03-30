@@ -1,41 +1,39 @@
 ---
-title: AppSource en Azure Marketplace vergelijken | Azure
-description: In dit artikel worden de winkels in Microsoft AppSource en de Azure Marketplace beschreven.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: AppSource en de Azure Marketplace vergelijken | Azure
+description: In dit artikel worden de storefronts in Microsoft AppSource en Azure Marketplace beschreven.
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 1e1ce36fa29000b5d8dd82a31278f390144384e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825998"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281609"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource en Azure Marketplace vergelijken
-In de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) zijn unieke klant vereisten van pas. Gebruik winkel functies om klanten te richten op rol. U kunt de juiste oplossing of service op basis van uw klant aanbieden.
+Storefronts in de [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com) bieden unieke klantvereisten. Gebruik winkelpuien om klanten te targeten op rol. U de juiste oplossing of service bieden op basis van uw klant.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Meer informatie over de verschillen tussen de winkel
-Als u een winkel wilt kiezen, moet u eerst de doel groep voor uw aanbieding identificeren. Als u doel groepen in meerdere winkels hebt, kunt u één keer publiceren om te verkopen in meerdere winkels.
+## <a name="understanding-the-differences-between-storefronts"></a>Inzicht in de verschillen tussen winkelpuien
+Als u een etalage wilt kiezen, moet u eerst de doelgroep voor uw aanbieding identificeren. Als je doelgroepen in meerdere winkelpuien target, kun je één keer publiceren om in meerdere winkelpuien te verkopen.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
-| IT-professionals en-ontwikkel aars | Zakelijke gebruikers en besluit vormers |
+| IT-professionals en ontwikkelaars | Zakelijke gebruikers en zakelijke besluitvormers |
  
-In de volgende tabel worden de voor delen van het gebruik van een winkel beschreven:
+In de volgende tabel worden de voordelen beschreven van het gebruik van een etalage:
 
 | Voordelen | Azure Marketplace | AppSource | 
 |:--- |:--- | :--- |
-| **Flexibiliteit bij facturering** | Azure Marketplace biedt ondersteuning voor gratis, proef-, BYOL-en transactable-aanbiedings typen. U kunt aanbiedingen op basis van verbruik of op basis van een abonnement maken. Aanbiedingen op basis van verbruik worden per uur gefactureerd en kunnen een eerste gratis periode bieden. Op abonnementen gebaseerde services worden maandelijks of jaarlijks gefactureerd op basis van een per seat of een vast bedrag.| AppSource biedt ondersteuning voor gratis, proef-, BYOL-en transactable-aanbiedings typen. U kunt gebruikmaken van op abonnementen gebaseerde SaaS-producten die maandelijks of jaarlijks worden gefactureerd op basis van een per seat of een vast tarief. |
-|**Verbindingen met andere partners**  | Op dit moment kunt u geen service provider of leverings partners aan uw aanbieding koppelen. | Koppelt onafhankelijke software leveranciers, systeem integrators en beheerde service providers aan specifieke implementatie scenario's. U kunt gezamenlijk verkopen aan nieuwe klanten. |
-| **Automatisering** | Op dit moment kunt u geen service provider of leverings partners aan uw aanbieding koppelen. Profiteer van automatische SaaS (Software as a Service) met het inrichten van invoeg toepassingen. Gebruik de publicatie optie Azure apps: oplossings sjabloon voor het automatiseren van gegevens verzameling en implementatie scenario's op basis van SaaS. | Koppelt onafhankelijke software leveranciers, systeem integrators en beheerde service providers aan specifieke implementatie scenario's. U kunt gezamenlijk verkopen aan nieuwe klanten. |
-| **Meerdere Cloud typen** | Publiceer oplossingen voor zowel de open bare Cloud als on-premises met behulp van de volgende typen:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionale Clouds, waaronder China en Duitsland</li></ul> | Biedt momenteel geen ondersteuning voor Azure Stack, Azure Government of regionale Clouds. |
-| **Presentaties in de context voor klanten** | Zorg ervoor dat uw oplossing beschikbaar is in de Azure in-portal-ervaring voor contextuele Zoek opdrachten. De virtuele machine en Azure-apps gebruiken: opties voor het publiceren van oplossings sjablonen. | Bereik meer klanten via de in-app-ervaring voor micro soft-producten zoals Dynamics 365, Power BI en Office 365. |
+| **Flexibiliteit bij facturering** | Azure Marketplace ondersteunt gratis, proefversies, BYOL- en transactiesbare aanbiedingstypen. Transactiesbare aanbiedingen zijn op basis van consumptie of op basis van een abonnement. Op verbruik gebaseerde aanbiedingen worden gefactureerd op basis van elk uurgebruik en kunnen een eerste vrije periode bieden. Diensten op basis van een abonnement worden maandelijks of jaarlijks gefactureerd tegen een tarief per stoel of vast tarief.| AppSource ondersteunt gratis, trial, BYOL en transactiesbare aanbiedingstypen. Transactiesbare aanbiedingen zijn op abonnementen gebaseerde SaaS-producten die maandelijks of jaarlijks kunnen worden facturering op een per stoel of vast tarief. |
+|**Verbindingen met andere partners**  | Op dit moment u een serviceprovider of bezorgpartners niet aan uw aanbieding koppelen. | Koppelt onafhankelijke softwareleveranciers, systeemintegratoren en managed serviceproviders aan specifieke implementatiescenario's. U gezamenlijk verkopen aan nieuwe klanten. |
+| **Automatisering** | Op dit moment u een serviceprovider of bezorgpartners niet aan uw aanbieding koppelen. Profiteer van geautomatiseerde software as a service (SaaS) met add-on provisioning. Gebruik de azure-apps: oplossingssjabloonpublicatieoptie om op SaaS gebaseerde scenario's voor het verzamelen en implementeren van gegevens te automatiseren. | Koppelt onafhankelijke softwareleveranciers, systeemintegratoren en managed serviceproviders aan specifieke implementatiescenario's. U gezamenlijk verkopen aan nieuwe klanten. |
+| **Meerdere cloudtypen** | Publiceer oplossingen voor zowel de public cloud als on-premises met behulp van de volgende typen:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionale wolken, waaronder China en Duitsland</li></ul> | Momenteel worden azure stack-, Azure-overheids- of regionale clouds niet ondersteund. |
+| **In-context presentatie aan klanten** | Maak uw oplossing beschikbaar in de Azure in-portal-ervaring voor contextueel zoeken. Gebruik de virtuele machine en Azure-apps: opties voor het publiceren van sjabloonvoor oplossingen. | Bereik meer klanten via de in-app-ervaring voor Microsoft-producten zoals Dynamics 365, Power BI en Office 365. |
 
 ## <a name="next-steps"></a>Volgende stappen
-*   Bekijk de [Azure Marketplace-en AppSource-publicatie handleiding](./marketplace-publishers-guide.md).
+*   Bekijk de [publicatiehandleiding azure marketplace en appsource](./marketplace-publishers-guide.md).
 

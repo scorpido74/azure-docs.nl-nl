@@ -1,61 +1,60 @@
 ---
-title: Azure-toepassings aanbieding publiceren | Azure Marketplace
-description: Hierin worden het proces en de stappen beschreven voor het publiceren van een Azure-toepassings aanbieding op de Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure-toepassingsaanbieding publiceren | Azure Marketplace
+description: Beschrijft het proces en de stappen voor het publiceren van een Azure-toepassingsaanbieding op de Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 0005760a16f5109ca3555df5c5c5137facc84c40
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9f89e31c2d17ef74971d2057ba58e9572e92184c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826165"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280096"
 ---
 # <a name="publish-azure-application-offer"></a>Aanbieding voor Azure-toepassing maken publiceren
 
-Nadat u een aanbieding hebt gemaakt door de informatie op de pagina **nieuw aanbod** op te geven, kunt u de aanbieding publiceren. Selecteer **publiceren** om het publicatie proces te starten.
+Nadat u een aanbieding hebt gemaakt door de informatie op de pagina **Nieuwe aanbieding te** verstrekken, u de aanbieding publiceren. Selecteer **Publiceren** om het publicatieproces te starten.
 
-In het volgende diagram ziet u de belangrijkste stappen in het publicatie proces voor een aanbieding naar ' go live '.
+In het volgende diagram ziet u de belangrijkste stappen in het publicatieproces voor een aanbieding om "live te gaan".
 
-![Publicatie stappen bieden](./media/offer-publishing-steps.png)
+![Publicatiestappen aanbieden](./media/offer-publishing-steps.png)
 
 
-## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van de publicatie stappen
+## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van publicatiestappen
 
-In de volgende tabel vindt u een overzicht en een beschrijving van elke stap van de publicatie, en biedt een tijd schatting voor het volt ooien van de stappen.  Times schattingen in dagen worden gedefinieerd als werk dagen, waarbij weekends en feest dagen worden uitgesloten.
+In de volgende tabel worden elke publicatiestap weergegeven en beschreven en wordt een tijdsschatting weergegeven om elke stap te voltooien.  Tijdenschattingen in "dagen" worden gedefinieerd als werkdagen, die weekends en feestdagen uitsluiten.
 
-|  **Publicatie stap**           | **Tegelijk**    | **Beschrijving**                                                            |
+|  **Publicatiestap**           | **Tijd**    | **Beschrijving**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Vereisten valideren         | < 15 minuten    | De aanbiedings gegevens en aanbiedings instellingen worden gevalideerd.                        |
-| Instellingen voor beïnvloede omzet valideren | < 15 minuten  | Toewijzing van Azure-resource gebruik voor de aanbieding is ingeschakeld.             |
-| Certificering                  | < 1 dag     | De aanbieding wordt geanalyseerd door het Azure-certificerings team. De aanbieding wordt gescand op virussen, malware, veiligheids naleving en beveiligings problemen. De aanbieding wordt gecontroleerd om te zien of deze voldoet aan alle criteria van geschiktheid. Zie [vereisten](./cpp-prerequisites.md)voor meer informatie. Feedback wordt gegeven als er een probleem is gevonden. |
-| Validatie van het test station          | < 2 uur   | Beschrijving Als een test station aanwezig is, valideert micro soft dat het kan worden geïmplementeerd en gerepliceerd.  |
-| Registratie van verpakkingen en leads genereren | < 1 uur  | De technische activa van de aanbieding zijn verpakt voor het gebruik van klanten en de lead systemen worden geconfigureerd en geïmplementeerd. |
-|  Uitgever afmelden             |  Handmatig    | De uiteindelijke controle en bevestiging van de uitgever voordat de aanbieding live gaat. De aanbieding is nu beschikbaar als preview-versie.  U kunt uw aanbieding in de geselecteerde abonnementen implementeren (in de stappen voor de aanbiedings informatie) om te controleren of deze voldoet aan uw vereisten.  Nadat u de aanbieding hebt gecontroleerd, selecteert u **Live gaan** zodat uw aanbieding naar de volgende stap kan gaan. |
-| Micro soft beoordeling                | 7-14 dagen | Micro soft beoordeelt uw Azure-toepassing en stuurt u een e-mail wanneer er problemen zijn gedetecteerd.  De lengte van deze stap is afhankelijk van de complexiteit van de toepassing, de problemen die worden gedetecteerd en hoe u deze vervolgens op de gewenste manier beantwoordt.  |
-| Live                           | < 1 dag | De aanbieding wordt vrijgegeven, gerepliceerd naar de opgegeven regio's en beschikbaar gesteld voor het publiek. |
+| Vereisten valideren         | < 15 min    | Aanbiedingsinformatie en aanbiedingsinstellingen worden gevalideerd.                        |
+| Invloed op de inkomsteninstellingen valideren | < 15 min  | De toeschrijving van Azure-bronnen voor de aanbieding wordt gecontroleerd.             |
+| Certificering                  | < 1 dag     | De aanbieding wordt geanalyseerd door het Azure Certification Team. De aanbieding wordt gescand op virussen, malware, naleving van de veiligheid en beveiligingsproblemen. De aanbieding wordt gecontroleerd om te zien of deze voldoet aan alle geschiktheidscriteria. Zie [voorwaarden voor](./cpp-prerequisites.md)meer informatie. Er wordt feedback gegeven als er een probleem wordt gevonden. |
+| Validatie van teststation          | < 2 uur   | (Optioneel) Als er een teststation aanwezig is, valideert Microsoft dat het kan worden geïmplementeerd en gerepliceerd.  |
+| Registratie van verpakkingen en leadgeneratie | < 1 uur  | De technische assets van de aanbieding zijn verpakt voor gebruik door de klant en de leadsystemen worden geconfigureerd en geïmplementeerd. |
+|  Afmelden voor uitgevers             |  Handmatig    | Definitieve beoordeling en bevestiging van uitgevers voordat de aanbieding live gaat. De aanbieding is nu beschikbaar voor preview.  U uw aanbieding implementeren in de geselecteerde abonnementen (in de stappen voor aanbiedingsinformatie) om te controleren of deze aan al uw vereisten voldoet.  Nadat u de aanbieding hebt geverifieerd, selecteert u **Live gaan** zodat uw aanbieding naar de volgende stap kan gaan. |
+| Microsoft-beoordeling                | 7 - 14 dagen | Microsoft controleert uw Azure-toepassing en e-mailt u als er problemen worden ontdekt.  De duur van deze stap is afhankelijk van de complexiteit van de toepassing, de problemen die aan het licht zijn gekomen en hoe snel u erop reageert.  |
+| Live                           | < 1 dag | Aanbieding wordt vrijgegeven, gerepliceerd naar de opgegeven regio's en beschikbaar gesteld aan het publiek. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
-U kunt het publicatie proces bewaken op het tabblad **status** van uw aanbieding in de Cloud Partner-Portal.
+U het publicatieproces controleren op het tabblad **Status** voor uw aanbieding in de Cloud Partner Portal.
 
-![Tabblad status voor een Azure-app-aanbieding](./media/offer-status-tab.png)
+![Tabblad Status voor een Azure-app-aanbieding](./media/offer-status-tab.png)
 
-Nadat u klaar bent met het publicatie proces, wordt uw aanbieding vermeld in de [categorie Microsoft Azure Marketplace toepassing](https://azuremarketplace.microsoft.com/marketplace/apps/).
+Nadat u het publicatieproces hebt voltooid, wordt uw aanbieding weergegeven in de [categorie Microsoft Azure Marketplace-toepassings.](https://azuremarketplace.microsoft.com/marketplace/apps/)
 
 >[!Note]
->Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het marketing gebruik van uw aanbieding via de micro soft CSP-partner kanalen.
+>Cloud Solution Providers (CSP) partnerkanaal opt-in is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het op de markt brengen van uw aanbieding via de Microsoft CSP-partnerkanalen.
 
 ## <a name="errors-and-review-feedback"></a>Fouten en feedback bekijken
 
-Naast het weer geven van de publicatie status van uw aanbieding, worden in het tabblad **status** ook fout berichten en feedback weer gegeven uit de publicatie stappen waarbij een probleem wordt aangetroffen.  Als het probleem kritiek is, wordt het publiceren geannuleerd.  U moet de gerapporteerde problemen vervolgens corrigeren en de aanbieding opnieuw publiceren.  Omdat de **micro soft Review** -stap een uitgebreide beoordeling van uw aanbieding en de bijbehorende technische activa (met name de Azure Resource Manager sjabloon) vertegenwoordigt, worden problemen doorgaans gepresenteerd als pull-aanvraag (PR)-koppelingen.  Zie [afhandeling van feedback](./cpp-handling-review-feedback.md)bekijken voor meer informatie over het weer geven en reageren op deze pull.
+Het tabblad **Status** geeft niet alleen de publicatiestatus van uw aanbieding weer, maar geeft ook foutmeldingen en feedback weer van alle publicatiestappen waar een probleem is aangetroffen.  Als het probleem kritiek is, wordt publiceren geannuleerd.  U moet vervolgens het gerapporteerde probleem(en) corrigeren en de aanbieding opnieuw publiceren.  Omdat de **microsoft-beoordelingsstap** een uitgebreide beoordeling van uw aanbieding en de bijbehorende technische elementen (met name de Azure Resource Manager-sjabloon) vertegenwoordigt, worden problemen meestal gepresenteerd als koppelingen naar pull request (PR).  Een uitleg over het bekijken en reageren op deze PR's, zie [Feedback over beoordeling afhandelen](./cpp-handling-review-feedback.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als er fouten zijn opgetreden in een of meer van de publicatie stappen, moet u deze corrigeren en uw aanbieding opnieuw publiceren.  Als er kritieke problemen optreden in de stap van **micro soft controle** , moet u [de feedback van de beoordeling afhandelen](./cpp-handling-review-feedback.md) door de Azure DevOps-opslag plaats van het micro soft Review team te openen.
+Als u fouten hebt ondervonden in een of meer van de publicatiestappen, moet u deze corrigeren en uw aanbieding opnieuw publiceren.  Als er kritieke problemen optreden in de **microsoft-beoordelingsstap,** moet u [de koppeling met de beoordeling verwerken](./cpp-handling-review-feedback.md) door toegang te krijgen tot de Azure DevOps-opslagplaats van het Microsoft-beoordelingsteam.
 
-Zodra een Azure-app is gepubliceerd, kunt u [de bestaande aanbieding bijwerken zodat deze](./cpp-update-existing-offer.md) overeenkomt met veranderende zakelijke of technische vereisten. 
+Zodra een Azure-app is gepubliceerd, u [de bestaande aanbieding bijwerken](./cpp-update-existing-offer.md) om rekening te houden met veranderende bedrijfs- of technische vereisten. 

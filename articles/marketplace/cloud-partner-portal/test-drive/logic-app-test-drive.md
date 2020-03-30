@@ -1,148 +1,147 @@
 ---
-title: Test station voor logische apps | Azure Marketplace
-description: Hierin wordt uitgelegd hoe u de test schijf bouwt die met een Dynamics AX/CRM-exemplaar of een andere resource dan alleen Azure wordt verbonden.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+title: Teststation voor logische apps | Azure Marketplace
+description: Hier wordt uitgelegd hoe u hun teststation bouwen dat verbinding maakt met een Dynamics AX/CRM-exemplaar of een andere bron die verder gaat dan alleen Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 766f893d71ca0830fe8b69c50145603c6544cc3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278379"
 ---
-<a name="logic-app-test-drive"></a>Test station voor logische apps
+<a name="logic-app-test-drive"></a>Teststation voor logische apps
 ====================
 
-Dit artikel is bedoeld voor uitgevers die hun aanbieding op AppSource hebben en hun test station willen bouwen dat is verbonden met een Dynamics AX/CRM-exemplaar of een andere resource dan alleen Azure.
+Dit artikel is voor uitgevers die hun aanbod op AppSource hebben en hun Test Drive willen bouwen die verbinding maakt met een Dynamics AX/CRM-exemplaar of een andere bron die verder gaat dan alleen Azure.
 
-<a name="how-to-build-a-logic-app-test-drive"></a>Een test station voor een logische app maken
+<a name="how-to-build-a-logic-app-test-drive"></a>Een Logic App-teststation maken
 -----------------------------------
 
-Test de documentatie voor de test schijven voor logische apps is momenteel nog steeds beschikbaar op GitHub voor [bewerkingen](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) en de [klant betrokkenheid](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app). Ga hiervoor naar meer informatie.
+Test Drive documentatie voor Logic App Test Drives is momenteel nog op GitHub voor [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) en [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app), ga daar om meer te lezen.
 
-<a name="how-to-publish-a-test-drive"></a>Een test station publiceren
+<a name="how-to-publish-a-test-drive"></a>Een teststation publiceren
 ---------------------------
 
-Nu u uw test station hebt gemaakt, gaat u in deze sectie naar elk van de velden die nodig zijn voor het publiceren van uw test station.
+Nu u uw testrit hebt laten bouwen, loopt deze sectie door elk van de velden die nodig zijn om uw testrit met succes te publiceren.
 
-![De functie test drive inschakelen](./media/azure-resource-manager-test-drive/howtopub1.png)
+![De functie Teststation inschakelen](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Het eerste en belangrijkste veld is om te scha kelen of u het formulier wilt testen met alle vereiste velden, zodat u het kunt invullen. Wanneer u **Nee selecteert,** wordt het formulier uitgeschakeld en als u opnieuw publiceert met het test station is uitgeschakeld, wordt het test station uit productie verwijderd.
+Het eerste en belangrijkste veld is om te schakelen of u wilt Test van het formulier met alle vereiste velden worden gepresenteerd voor u in te vullen. Wanneer u **Nee selecteert,** wordt het formulier uitgeschakeld en als u opnieuw publiceert met de testdrive uitgeschakeld, wordt uw teststation uit de productie verwijderd.
 
-*Opmerking*: als er test stations actief worden gebruikt door gebruikers, blijven die test stations actief totdat de sessie verloopt.
+*Opmerking:* Als er teststations zijn die actief door gebruikers worden gebruikt, blijven deze teststations worden uitgevoerd totdat hun sessie is verlopen.
 
 ### <a name="details"></a>Details
 
-De volgende sectie die u moet invullen, is de details van de aanbieding voor uw test drive.
+Het volgende gedeelte dat u moet invullen, zijn de details over uw testdrive-aanbieding.
 
-![Details van test stuur programma](./media/azure-resource-manager-test-drive/howtopub2.png)
+![Gegevens teststuurprogramma](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Beschrijving-** *[vereist veld]* dit is de plaats waar u de hoofd beschrijving schrijft over wat er op uw test station staat. De klant komt hier om te lezen welke scenario's uw test station zal bedekken over uw product. 
+**Beschrijving -** *[Vereist veld]* Hier schrijf je de hoofdbeschrijving over wat er op je teststation staat. De klant komt hier om te lezen welke scenario's uw testdrive zal behandelen over uw product. 
 
-**Gebruikers handleiding-** *[vereist veld]* dit is het gedetailleerde overzicht van uw test drive-ervaring. De klant opent dit en kan leiden tot precies wat u nodig hebt voor hun test station. Het is belang rijk dat deze inhoud eenvoudig te begrijpen is en volgt. (Moet een PDF-bestand zijn)
+**Handleiding -** *[Vereist veld]* Dit is de diepgaande doorloop van uw Test Drive-ervaring. De klant opent dit en kan precies doorlopen wat u wilt dat ze doen tijdens hun proefrit. Het is belangrijk dat deze inhoud gemakkelijk te begrijpen en te volgen is! (Moet een .pdf-bestand zijn)
 
-**Demo video testen:** \[aanbevolen\] vergelijkbaar met de gebruikers handleiding, kunt u het beste een video-zelf studie voor uw test drive-ervaring toevoegen. De klant zal dit vóór of tijdens hun test station bekijken en kunnen door lopen wat u nodig hebt voor hun test station. Het is belang rijk dat deze inhoud eenvoudig te begrijpen is en volgt.
+**Demovideo teststation** \[-\] Aanbevolen Net als in de gebruikershandleiding u het beste een video-zelfstudie van uw Test Drive-ervaring opnemen. De klant zal dit voorafgaand of tijdens zijn proefrit bekijken en kan precies doorlopen wat u wilt dat ze doen tijdens hun proefrit. Het is belangrijk dat deze inhoud gemakkelijk te begrijpen en te volgen is!
 
-- **Naam** : titel van uw video
-- **Link** -moet een Inge sloten URL zijn van YouTube of Vimeo. Hieronder vindt u een voor beeld van het ophalen van de Inge sloten URL:
-- **Miniatuur** : moet een afbeelding van hoge kwaliteit (533x324) zijn. Het is raadzaam om hier een scherm opname van een deel van de test drive-ervaring te maken.
+- **Naam** - Titel van je video
+- **Link** - Moet een ingesloten URL van YouTube of Vimeo zijn. Voorbeeld over hoe u de ingesloten url krijgt, vindt u:
+- **Miniatuur** - Moet een afbeelding van hoge kwaliteit (533x324) pixels zijn. Het wordt aanbevolen om hier een screenshot te maken van een deel van je Test Drive-ervaring.
 
-Hieronder ziet u hoe deze velden voor uw klant worden weer gegeven tijdens hun test beleving.
+Hieronder vindt u hoe deze velden voor uw klant worden weergegeven tijdens hun Test Drive-ervaring.
 
-![Het uiterlijk van de velden in een station testen](./media/azure-resource-manager-test-drive/howtopub4.png)
+![De velden Testdrive zien en voelen](./media/azure-resource-manager-test-drive/howtopub4.png)
 
 ### <a name="technical-configuration"></a>Technische configuratie
 
-In het volgende gedeelte om in te vullen kunt u de logische app voor test schijven configureren en definiëren hoe specifiek uw test drive-instanties werken.
+De volgende sectie die u moet invullen, is waar u de App Voor de logica van uw teststation configureert en bepaalt hoe specifiek uw teststation-exemplaren werken.
 
-![Technische configuratie van test station](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
+![Technische configuratie van Test Drive](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Regio** -  *[vereist veld]* de regio die u selecteert, is de locatie waar de logische app-resources van uw test station worden geïmplementeerd.
+- **Regio** - *[Vereist veld]* Het gebied dat u selecteert, is waar u kiest waar uw Test Drive Logic App-bronnen worden geïmplementeerd.
 
-    *Opmerking:* Als uw logische app aangepaste resources heeft die zijn opgeslagen in een regio, moet u ervoor zorgen dat de regio hier wordt geselecteerd. De beste manier om dit te doen is om **uw logische app lokaal te implementeren in uw Azure-abonnement in de portal en te controleren of deze werkt** voordat u deze hier schrijft.
+    *Let op:* Als uw Logic App aangepaste bronnen heeft die in een regio zijn opgeslagen, controleert u of dat gebied hier is geselecteerd. De beste manier om dit te doen is door **uw Logic App lokaal volledig te implementeren op uw Azure-abonnement in de portal en te controleren of het werkt** voordat u het hier schrijft.
 
-- **Maxi maal aantal gelijktijdige test schijven** -  *[vereist veld]* dit is het nummer van exemplaren van het test station die al zijn geïmplementeerd en wachten op toegang per geselecteerde regio. Klanten hebben direct toegang tot deze test stations in plaats van te wachten op een implementatie.
+- **Maximaal gelijktijdige teststations** - *[Vereist veld]* Aantal teststation-exemplaren dat al is geïmplementeerd en in afwachting van toegang per geselecteerde regio. Klanten hebben direct toegang tot deze testritten in plaats van te hoeven wachten op een implementatie.
 
-    *Opmerking:* Als u een webinar/klasse uitvoert waar u al uw N-aantal studenten een test station wilt maken, is het raadzaam om te publiceren met N Hot instances en zodra de klasse opnieuw wordt gepubliceerd naar uw normale aantal hot instances.
+    *Let op:* Als u een webinar/klas uitvoert waarbij u wilt dat al uw N-studenten een teststation uitvoeren, wordt aanbevolen om te publiceren met N-nummer van Hot-instanties en vervolgens zodra de klasse is afgelopen om opnieuw te publiceren naar uw normale aantal Hotspots.
 
-- **Test drive duur (uren)-** *[vereist veld]* de duur van hoe lang het test station actief blijft, in \# van uur. Het test station wordt automatisch beëindigd nadat deze periode is verstreken.
+- **Duur van de testrit (uren) -** *[Vereist veld]* Duur \# voor hoe lang de testrit binnen enkele uren actief blijft. De testdrive eindigt automatisch nadat deze periode is afgelopen.
 
-- **Naam van de Azure-resource groep-** *[vereist veld]* Schrijf in de naam van de resource groep waar de test stations van de logische app worden opgeslagen.
+- **Azure Resource Group Name -** *[Vereist veld]* Schrijf in de naam van de resourcegroep waar uw Logic App Test Drives worden opgeslagen.
 
-- De naam van de **logische app toewijzen-** *[vereist veld]* schrijven in de logische app die wordt gebruikt om een gebruiker toe te wijzen in het test station voordat de klant deze ontvangt, moet u hier de naam van de logische app schrijven. Zorg ervoor dat dit bestand wordt opgeslagen in de bovenstaande resource groep.
+- **Logische app-naam toewijzen -** *[Vereist veld]* Schrijf in de Logische App die wordt gebruikt om een gebruiker toe te wijzen in het teststation voordat de klant deze krijgt, schrijf hier in de naam van die Logic App. Controleer of dit bestand is opgeslagen in de brongroep hierboven.
 
-- De naam van de logische app voor het ongedaan maken van de **inrichting-** *[vereist veld]* Schrijf in de naam van de logische app op voor uw onbeschikbaarstelling van alle resources die zijn gemaakt in het test station. Zorg ervoor dat dit bestand wordt opgeslagen in de bovenstaande resource groep.
+- **Naam van de logische app deprovisionen -** *[Vereist veld]* Schrijf in de naam van de Logische app voor het deprovisioneren van alle bronnen die in de testdrive zijn gemaakt. Controleer of dit bestand is opgeslagen in de brongroep hierboven.
 
-- **Toegangs gegevens-** *[vereist veld]* nadat een klant hun test station heeft opgehaald, worden de toegangs gegevens weer gegeven. Deze instructies zijn bedoeld voor het delen van de bruikbare uitvoer parameters van uw test station Resource Manager-sjabloon. Als u uitvoer parameters wilt toevoegen, gebruikt u dubbele accolades (bijvoorbeeld **{{uitvoermap}}** ). deze worden op de juiste wijze ingevoegd op de locatie. (De opmaak van HTML-teken reeksen wordt hier aanbevolen om weer te geven in de front-end).
+- **Toegangsinformatie -** *[Vereist veld]* Nadat een klant zijn teststation heeft opgevraagd, wordt de toegangsinformatie aan hem of haar gepresenteerd. Deze instructies zijn bedoeld om de nuttige uitvoerparameters te delen van de sjabloon Test Drive Resource Manager. Als u uitvoerparameters wilt opnemen, gebruikt u dubbele krullende haakjes (bijvoorbeeld **{{outputname}}** en worden ze correct ingevoegd op de locatie. (HTML-tekenreeksopmaak wordt hier aanbevolen om aan de voorkant weer te geven).
 
-### <a name="test-drive-deployment-subscription-details"></a>Details van implementatie abonnement testen
+### <a name="test-drive-deployment-subscription-details"></a>Abonnementsgegevens voor implementatie van teststation
 
-De laatste sectie die moet worden ingevuld, is om de test stations automatisch te kunnen implementeren door uw Azure-abonnement en Azure Active Directory (AD) te verbinden.
+Het laatste gedeelte dat moet worden ingevuld, is om de teststations automatisch te kunnen implementeren door uw Azure Subscription en Azure Active Directory (AD) met elkaar te verbinden.
 
-![Details van implementatie abonnement testen](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Abonnementsgegevens voor Proefstation-implementatie](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Azure-abonnements-id** *[vereist veld]* Hiermee krijgt u toegang tot Azure-Services en de Azure Portal. In het abonnement wordt het resource gebruik gerapporteerd en de services worden gefactureerd. Als u nog geen **apart** Azure-abonnement voor test stations hebt, kunt u er een maken. U kunt Azure-abonnement-Id's vinden door u aan te melden bij Azure Portal en te navigeren naar de abonnementen in het menu aan de linkerkant.
-(Bijvoorbeeld: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**Azure Subscription ID** *[Vereist veld]* Hiermee wordt toegang vergund tot Azure-services en de Azure-portal. Het abonnement is waar resourcegebruik wordt gerapporteerd en services worden gefactureerd. Als u nog niet alleen een **apart** Azure-abonnement voor teststations hebt, gaat u verder en maakt u er een. U Azure Subscription Id's vinden door u aan te melden bij azure portal en te navigeren naar de abonnementen in het menu aan de linkerkant.
+(Voorbeeld: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure-abonnementen](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure AD-Tenant-id** *[vereist veld]* als u een Tenant-id al hebt, kunt u deze hieronder vinden in de map met eigenschappen-\> Directory-id.
+**Azure AD-tenant-id** *[Vereist veld]* Als u al een tenant-id\> beschikbaar hebt, u deze hieronder vinden in de eigenschappen - directory-id.
 
 ![Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-Als dat niet het geval is, maakt u een nieuwe Tenant in Azure Active Directory.
+Maak anders een nieuwe tenant in Azure Active Directory.
 
-![Scherm Eigenschappen van Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Scherm Azure Active Directory-eigenschappen](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-! Azure Active Directory] (./Media/Azure-Resource-Manager-test-drive/subdetails5.png)
+! Azure Active Directory](./media/azure-resource-manager-teststation/subdetails5.png)
 
 ![Azure Active Directory-tenants](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Azure AD-App-ID** *[vereist veld]* is de volgende stap het maken en registreren van een nieuwe toepassing. Deze toepassing wordt gebruikt voor het uitvoeren van bewerkingen op uw exemplaar van het test station.
+**Azure AD-app-id** *[Vereist veld]* De volgende stap is het maken en registreren van een nieuwe toepassing. We gebruiken deze toepassing om bewerkingen uit te voeren op uw Test Drive-exemplaar.
 
-1. Ga naar de zojuist gemaakte map of al een bestaande map en selecteer Azure Active Directory in het deel venster filter.
-2. Zoek "App-registraties" en klik op toevoegen.
-3. Geef een toepassings naam op.
-4. Het type van als web-app/API selecteren
-5. Geef een waarde op voor de aanmeldings-URL, wij hebben gewonnen\'t dat veld te gebruiken.
-6. Klik op maken.
-7. Nadat de toepassing is gemaakt, gaat u naar eigenschappen-\> stelt u de toepassing in als multi tenant en klikt u op opslaan.
+1. Navigeer naar de nieuw gemaakte map of reeds bestaande map en selecteer Azure Active-map in het filtervenster.
+2. Zoek op 'App-registraties' en klik op 'Toevoegen'
+3. Geef een toepassingsnaam op.
+4. Selecteer het type als "Web-app / API"
+5. Geef enige waarde op in de\'URL van aanmelding, we gebruiken dat veld niet.
+6. Klik op Maken.
+7. Nadat de toepassing is gemaakt,\> gaat u naar Eigenschappen - Stel de toepassing in als meervoudige tenant en gaat u op Opslaan.
 
-Klik op Opslaan. De laatste stap bestaat uit het oppakken van de toepassings-ID voor deze geregistreerde app en deze in het veld test station te plakken.
+Klik op Opslaan. De laatste stap is om de applicatie-id voor deze geregistreerde app te pakken en deze hier in het veld Testdrive te plakken.
 
 ![Azure Active Directory-toepassings-id](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Omdat we de toepassing gebruiken om te implementeren in het abonnement, moeten we de toepassing toevoegen als een bijdrager aan het abonnement. Hieronder vindt u instructies:
+Aangezien we de toepassing gebruiken om te implementeren op het abonnement, moeten we de toepassing toevoegen als bijdrager aan het abonnement. De instructies hiervoor zijn hieronder:
 
-1. Navigeer naar de Blade abonnementen en selecteer het juiste abonnement dat u alleen voor het test station gebruikt.
-1. Klik op **Toegangsbeheer (IAM)** .
-1. Klik op **het tabblad roltoewijzingen.**  ![Azure Active Directory het toevoegen van een nieuwe Access Control Principal](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Klik op **roltoewijzing toevoegen**.
-1. Stel de rol in als **Inzender**.
+1. Navigeer naar het blad Abonnementen en selecteer het juiste abonnement dat u alleen voor het teststation gebruikt.
+1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op het tabblad **Roltoewijzingen.**  ![Azure Active Directory, een nieuwe access control-principal toevoegen](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klik **op Roltoewijzing toevoegen**.
+1. Stel de rol in als **bijdrager**.
 1. Typ de naam van de Azure AD-toepassing en selecteer de toepassing om de rol toe te wijzen.
-    ![Azure Active Directory machtigingen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+    ![Azure Active Directory-machtigingen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klik op **Opslaan**.
 
-**Azure AD-App sleutel-** *[vereist veld]* het laatste veld is om een verificatie sleutel te genereren. Voeg onder sleutels een sleutel beschrijving toe, stel de duur in op nooit verlopen en selecteer vervolgens opslaan. Het is **belang rijk** om te voor komen dat u een verlopen sleutel hebt, waardoor uw test drive in productie worden verbroken. Kopieer deze waarde en plak deze in het verplichte veld test station.
+**Azure AD-appsleutel -** *[Vereist veld]* Het laatste veld is het genereren van een verificatiesleutel. Voeg onder toetsen een sleutelbeschrijving toe, stel de duur in om nooit te verlopen en selecteer opslaan. Het is **belangrijk** om te voorkomen dat u een verlopen sleutel, die uw proefrit in productie zal breken. Kopieer deze waarde en plak deze in het veld Vereist Testdrive.
 
-![Sectie Azure Active Directory sleutels](./media/azure-resource-manager-test-drive/subdetails8.png)
+![De sectie Azure Active Directory Keys](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 > [!CAUTION]
-> U kunt de preview van Azure-app-registratie niet gebruiken omdat er momenteel geen base64-gecodeerde sleutel wordt gegenereerd.
+> U de Azure App Registration Preview niet gebruiken omdat er momenteel geen basissleutel van 64 wordt gegenereerd.
 
 
 <a name="next-steps"></a>Volgende stappen
 ----------
 
-Nu u alle velden van het test station hebt ingevuld, gaat u naar uw aanbieding en publiceert u deze **opnieuw** . Als uw test station het certificerings proces heeft door lopen, moet u de gebruikers ervaring in de **Preview** van uw aanbieding uitgebreid testen. Start een test station in de gebruikers interface en controleer of de test stations volledig correct worden geïmplementeerd.
+Nu u al uw testdrive-velden hebt ingevuld, gaat u door en publiceert u uw aanbieding **opnieuw.** Zodra uw testdrive het certificeringsproces heeft doorstaan, moet u de klantervaring uitgebreid testen in de **preview** van uw aanbieding. Start een testrit in de gebruikersinterface en controleer of uw teststations volledig correct worden geïmplementeerd.
 
-Het is belang rijk te weten dat u geen enkel deel van het test station verwijdert wanneer het is ingericht voor uw klanten, zodat de service voor het testen van deze resource groepen automatisch opschoont nadat een klant is voltooid.
+Het is belangrijk op te merken dat u geen enkel deel van de testdrive verwijdert omdat ze zijn ingericht voor uw klanten, dus de Test Drive-service zal deze resourcegroepen automatisch opschonen nadat een klant ermee is voltooid.
 
-Zodra u vertrouwd bent met uw preview-aanbieding, is het tijd om **Live te gaan**! Er is een laatste beoordelings proces van micro soft wanneer de aanbieding is gepubliceerd om de volledige end-to-end-ervaring dubbel te controleren. Als het aanbod om de een of andere reden wordt afgewezen, wordt er een melding verzonden naar de technische contact persoon van uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
+Zodra u zich comfortabel voelt met uw Preview-aanbod, is het nu tijd om live te **gaan!** Er is een laatste beoordelingsproces van Microsoft zodra de aanbieding is gepubliceerd om de volledige ervaring van eind tot eind te controleren. Als om de een of andere reden het aanbod wordt afgewezen, sturen we een melding naar de contactpersoon voor uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
 
-Als u meer vragen hebt, zoekt u naar advies over het oplossen van problemen of wilt u uw test station sneller laten verlopen, ga dan naar [Veelgestelde vragen, probleem oplossing & aanbevolen procedures](./marketing-and-best-practices.md).
+Als u meer vragen hebt, op zoek bent naar advies over het oplossen van problemen of uw testrit succesvoller wilt maken, gaat u naar [veelgestelde vragen, probleemoplossing, & Aanbevolen procedures.](./marketing-and-best-practices.md)

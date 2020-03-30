@@ -1,101 +1,100 @@
 ---
-title: 'Go-to-Market-Services: Aanbevolen procedures voor aanbiedings aanbiedingen | Azure'
-description: Go-to-Market-Services-in deze sectie worden de aanbevolen procedures voor een aanbieding beschreven
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Go-To-Market Services - Aanbieding aanbieding beste praktijken | Azure
+description: Go-To-Market Services - in deze sectie worden de aanbevolen procedures voor een aanbieding beschreven
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/21/2018
-ms.author: ellacroi
-ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.author: dsindona
+ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286248"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
-De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Marketplace-aanbiedingen. Als u uw marketing materiaal wilt schrijven en configureren, gaat u naar de [Cloud Partner Portal](https://cloudpartner.azure.com/#insights). 
+De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) 
 
-## <a name="storefront-offer-details"></a>Details van de winkel aanbieding
+## <a name="storefront-offer-details"></a>Storefront aanbieding details
 
-| Winkel instelling | Best practice |
+| Storefront-instelling | Best practice |
 |:--- |:--- |  
-| Naam van aanbieding: | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
-| Beschrijving van aanbieding | Geef een beschrijving van een duidelijk aanbod op:<br> <ul> <li> Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.</li> <li> Daarnaast moeten service voorbeelden van Consulting de door u geboden professionele service duidelijk vermelden. </li></ul> De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Het type gebruiker dat voor deel is van het product.</li><li>De klant nodig heeft of pijnt dat de product adressen.</li></ul> |
+| Naam van aanbieding | Geef een sterke titel:<br> <ul> <li> Uw app-naam moet de kernwaarde voor uw klanten communiceren. </li> <li> Voeg zoekzoekwoorden toe aan uw app-titel om een hogere positie in de resultaten van zoekmachines te ontvangen. </li> </ul> Volg een vaste titelnotatie voor servicevermeldingen:<br>[Naam van de aanbieding: [Duur] [Aanbiedingstype] (bijvoorbeeld *Contoso: implementatie van 2 weken)* <br><br> Houd je aan de merkrichtlijnen:<br>Volg [microsoft-handelsmerk- en merkrichtlijnen](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante, productspecifieke richtlijnen wanneer u verwijst naar microsoft-handelsmerken en de namen van Microsoft-software, -producten en -services. |
+| Aanbiedingsbeschrijving | Geef een duidelijke aanbiedingsbeschrijving:<br> <ul> <li> Beschrijf duidelijk de waardepropositie van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weergegeven in de resultaten van zoekmachines. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zoveel mogelijk gebruik van branchespecifieke woordenschat of op voordelen gebaseerde formuleringen.</li> <li> Bovendien moeten consultingservicevermeldingen duidelijk aangeven in de professionele service die u aanbiedt. </li></ul> Kerncomponenten van uw waardepropositie moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Type gebruiker dat profiteert van het product.</li><li>Klant behoefte of pijn die het product adressen.</li></ul> |
 
-De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Marketplace-aanbiedingen. Als u uw marketing materiaal wilt schrijven en configureren, gaat u naar de [Cloud Partner Portal](https://cloudpartner.azure.com/#insights). 
+De tabellen in deze sectie bieden suggesties voor het maken en betrekken van marktplaatsaanbiedingen. Als u uw marketingmateriaal wilt schrijven en configureren, gaat u naar de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) 
 
-## <a name="storefront-listing-details"></a>Details van de winkel vermelding
+## <a name="storefront-listing-details"></a>Details van winkelaanbiedingen
 
-| Winkel instelling | Best practice |
+| Storefront-instelling | Best practice |
 |:--- |:--- |  
-| Branches: AppSource apps en alleen Consulting Services | Selecteer branches als uw aanbieding gericht is op de behoeften van de branche: <ul><li> Noem branchespecifieke mogelijkheden in de beschrijving van uw aanbieding.</li> </ul> **Opmerking**: het maximum aantal opties is afhankelijk van het aanbiedings type en wordt aangegeven in de [Cloud Partner Portal](https://cloudpartner.azure.com/#insights). |
-| Categorieën | Selecteer categorieën die het beste overeenkomen met uw aanbieding:<br> <ul> <li> Kies de categorieën zorgvuldig, omdat klanten deze gebruiken om te zoeken naar relevante apps. </li> <li> Zorg ervoor dat u uitbelt hoe uw aanbod categorie-specifieke behoeften ondersteunt in de beschrijving van de aanbieding. </li> </ul> **Opmerking**: het maximum aantal opties is afhankelijk van het aanbiedings type en wordt aangegeven in de [Cloud Partner Portal](https://cloudpartner.azure.com/#insights). |
-| Producten waarvoor uw app werkt (3 Max.): alleen AppSource-apps | Vermeld aanvullende producten en technologieën die uw oplossing gebruikt of uitbreidt. Bijvoorbeeld Azure IoT Hub of Azure Machine Learning. |
-| Tref woorden zoeken (Maxi maal 3) | Met tref woorden zoeken kunnen zakelijke gebruikers uw aanbieding vinden tijdens het zoeken <ul> <li> in azure Marketplace </li> <li> op AppSource </li> <li> Zoek machines gebruiken </li> </ul> Als u uw vermelding wilt weer geven in deze Zoek opdrachten, moet u het volgende doen: <ul> <li> Identificeer de eerste drie Zoek trefwoorden voor uw aanbieding. </li> <li> de zoek woorden opnemen in de samen vatting en beschrijving van uw aanbieding; </li> <li> noem hier de tref woorden. </li> </ul> |
+| Industrieën: alleen AppSource-apps en adviesservices | Selecteer bedrijfstakken als uw aanbod voldoet aan branchespecifieke behoeften: <ul><li> Roep branchespecifieke mogelijkheden uit in uw aanbiedingsbeschrijving.</li> </ul> **Opmerking:** het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) |
+| Categorieën | Selecteer categorieën die het beste aansluiten bij uw aanbieding:<br> <ul> <li> Kies de categorieën zorgvuldig, omdat klanten ze gebruiken om te zoeken naar relevante apps. </li> <li> Zorg ervoor dat u in de aanbiedingsbeschrijving roept hoe uw aanbieding categoriespecifieke behoeften ondersteunt. </li> </ul> **Opmerking:** het maximum aantal opties varieert per aanbiedingstype en wordt aangegeven in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights) |
+| Producten waarmee uw app werkt (3 max.): alleen AppSource-apps | Vermeld aanvullende producten en technologieën die uw oplossing gebruikt of uitbreidt. Bijvoorbeeld Azure IoT Hub of Azure Machine Learning. |
+| Zoekzoekwoorden (3 max.) | Zoekzoekwoorden kunnen zakelijke gebruikers helpen uw aanbieding te vinden wanneer ze zoeken <ul> <li> in de Azure Marketplace </li> <li> op AppSource </li> <li> met behulp van zoekmachines </li> </ul> Als je aanbieding in deze zoekopdrachten wilt weergeven, moet je het volgende doen: <ul> <li> Identificeer de drie belangrijkste zoekwoorden voor uw aanbieding; </li> <li> de zoekzoekwoorden opnemen in uw aanbiedingsoverzicht en -beschrijving; </li> <li> lijst van de zoekwoorden hier. </li> </ul> |
 
 ### <a name="category"></a>Categorie
 
-Azure Marketplace en Microsoft AppSource zijn Stores die verschillende en unieke klant vereisten bieden. Kies de juiste winkel en categorieën voor elke aanbieding om uw klanten te richten op rol. 
+Azure Marketplace en Microsoft AppSource zijn storefronts die verschillende en unieke klantvereisten bieden. Kies de juiste etalage en categorieën voor elke aanbieding om uw klanten te targeten op rol. 
 
-U kunt Maxi maal twee categorieën en twee subcategorieën voor een aanbieding selecteren. De categorieën en subcategorieën die hieronder worden weer gegeven, zijn beschikbaar in beide-winkels.  Zorg ervoor dat uw categorie selectie is afgestemd op de beoogde doel groep, de beschrijving van de aanbieding en de toegevoegde waarde van uw aanbieding.
+U maximaal twee categorieën en twee subcategorieën selecteren voor een aanbieding. De onderstaande categorieën en subcategorieën zijn beschikbaar in beide etalages.  Zorg ervoor dat uw categorieselectie is afgestemd op de beoogde doelgroep, aanbiedingsbeschrijving en waardepropositie van uw aanbieding.
 
-| **Markt**    | **Subsector**  | 
+| **Branche**    | **Subindustrie**  | 
 | :------------------- | :-------------------|
-| \* Automobiel     | \* Automobiel |
-| Landbouw     | \* Overig-niet-gesegmenteerd |
-| Distributie    | \* Groot handel <br> \* Pakket verzen ding van Parcel & |
-| Opleiding     | \* Hoger onderwijs <br> \* Primaire & secundair onderwijs/K-12 <br> \* Bibliotheken & musea |
-| Financiële dienstverlening     | \* Bankieren & kapitaal markten <br> \* Verzekering |
-| Overheid    | \* Verdediging &e intelligentie (gebruikt voor de zogenaamde nationale en open bare veiligheid) <br> \* Open bare veiligheid & rechtvaardigheid <br> \* Burger overheid |
-| Gezondheids zorg (gebruikt voor de status)   | \* Status betaler <br> \* Health-provider <br> \* Farmaceutische producten |
-| Resources voor productie & (gebruikt voor de zogenaamde productie)   | \* Chemisch & Agrochemical <br> \* Discrete productie <br> \* Energie |
-| Retail & consumenten goederen (gebruikt voor de verkoop van Retail)  | \* Consumenten goederen <br> \* Detail handelaren |
-| \* Media & communicatie (gebruikt voor het noemen van media en entertainment)  | \* Media & Entertainment <br> \* Telecommunicatie |
-| Professionele diensten  | \* Juridisch <br> \* Partner Professional-Services |
-| \* Architectuur & constructie (wordt gebruikt als architectuur techniek)  | \* Overig-niet-gesegmenteerd |
-| \* Horeca & reizen  | \* Hotels & vrije tijd <br> \* Reis & transport <br> \* Restaurants & voedsel Services |
-| \* Andere branches uit de open bare sector  | \* Bosbouw & visserij <br> \* Non-profit organisaties |
-| \* Onroerend goed  | \* Overig-niet-gesegmenteerd |
+| *Automotive     | *Automotive |
+| Landbouw     | *Overig - Niet gesegmenteerd |
+| Distributie    | *Groothandel <br> *Pakket verzending & pakket |
+| Education     | *Hoger onderwijs <br> *Primair & secundair onderwijs / K-12 <br> *Bibliotheken & Musea |
+| Financiële dienstverlening     | *Banking & kapitaalmarkten <br> *Verzekering |
+| Overheid    | *Defense & Intelligence (vroeger nationale en openbare veiligheid genoemd) <br> *Openbare veiligheid & Justitie <br> *Civiele regering |
+| Gezondheidszorg (vroeger gezondheid genoemd)   | *Health Payor <br> *Zorgverlener <br> *Farmaceutische producten |
+| Manufacturing & Resources (vroeger Manufacturing genoemd)   | *Chemische & Agrochemische <br> *Discrete productie <br> *Energie |
+| Retail & Consumer Goods (vroeger retail)  | *Consumptiegoederen <br> *Detailhandelaren |
+| *Media & Communications (heette vroeger Media en Entertainment)  | *Media & Entertainment <br> *Telecommunicatie |
+| Professionele diensten  | *Legaal <br> *Partner Professional Services |
+| *Architectuur & Bouw (vroeger Architecture Engineering genoemd)  | *Overig - Niet gesegmenteerd |
+| *Gastvrijheid & Reizen  | *Hotels & Leisure <br> *Reis & Transport <br> *Restaurants & Food Services |
+| *Andere bedrijfstakken van de publieke sector  | *Bosbouw & Visserij <br> *Non-profitorganisaties |
+| *Onroerend goed  | *Overig - Niet gesegmenteerd |
 
 ### <a name="industries"></a>Bedrijfstakken
 
-Branche selectie geldt alleen voor aanbiedingen die zijn gepubliceerd op AppSource en Consulting Services die zijn gepubliceerd in azure Marketplace. Selecteer branches en/of verticaal als uw aanbieding gericht is op de behoeften van de branche en die branchespecifieke mogelijkheden in uw aanbiedings beschrijving aanroept. U kunt Maxi maal twee (2) sectoren selecteren en twee (2) verticaal per branche geselecteerd.
+Brancheselectie is alleen van toepassing op aanbiedingen die zijn gepubliceerd in AppSource- en Consulting Services die zijn gepubliceerd in Azure Marketplace. Selecteer industrieën en/of verticalen als uw aanbod voldoet aan branchespecifieke behoeften en roep branchespecifieke mogelijkheden uit in uw aanbiedingsbeschrijving. U maximaal twee (2) industrieën en twee (2) verticalen per geselecteerde industrie selecteren.
 
 ### <a name="applicable-products"></a>Toepasselijke producten
 
-Selecteer de producten die van toepassing zijn op uw app voor de aanbieding om weer te geven onder geselecteerde producten in AppSource.
+Selecteer de toepasselijke producten waarmee uw app werkt om de aanbieding weer te geven onder geselecteerde producten in AppSource.
 
-### <a name="search-keywords"></a>Sleutelwoorden zoeken
+### <a name="search-keywords"></a>Zoektrefwoorden
 
-Tref woorden kunnen klanten helpen bij het zoeken naar uw aanbieding. Bepaal de belangrijkste Zoek woorden voor uw aanbieding, neem deze op in de samen vatting en beschrijving van uw aanbieding, evenals in het gedeelte tref woorden van de sectie met details van de aanbieding.
+Zoekwoorden kunnen klanten helpen uw aanbieding te vinden wanneer ze zoeken. Identificeer de belangrijkste zoekwoorden voor uw aanbieding, neem ze op in uw aanbiedingsoverzicht en -beschrijving en in het trefwoordgedeelte van de sectie aanbiedingsvermeldingsdetails.
 
-## <a name="storefront-marketing-details"></a>Marketing Details van winkel
-| Winkel instelling | Best practice |
+## <a name="storefront-marketing-details"></a>Storefront marketing details
+| Storefront-instelling | Best practice |
 |:--- |:--- |  
-| Logo van aanbieding (PNG-indeling, 48&nbsp;&times;&nbsp;48): pagina zoeken | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoek pagina van uw aanbieding. |
-| Logo van aanbieding (PNG-indeling, 216&nbsp;&times;&nbsp;216): pagina met app-Details | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. |
-| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden: <ul> <li> technische documenten, </li> <li> brochures </li> <li> controle lijsten of </li> <li> Power Point-presentaties.</li> </ul>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen. <br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
-| Video's: AppSource, Consulting Services en SaaS biedt alleen | De krach tigste Video's communiceren de waarde van uw aanbieding in een verhalende vorm:<ul> <li> Maak uw klant, niet uw bedrijf, de held van het verhaal. </li> <li> Uw video moet de belangrijkste uitdagingen en doel stellingen van uw doel klant aanpakken. </li> <li> Aanbevolen lengte: 60-90 seconden.</li> <li> Belang rijke Zoek woorden opnemen die de naam van de Video's gebruiken. </li> <li> Overweeg extra Video's toe te voegen, zoals een procedure, aan de slag of klant ervaringen. </li> </ul> |
-| Scherm afbeeldingen (1280&nbsp;&times;&nbsp;720) | Maxi maal vijf scherm opnamen toevoegen:<br>Belang rijke Zoek woorden opnemen in de bestands namen. |
+| Aanbiedingslogo (PNG-indeling, 48&nbsp;&times;&nbsp;48): zoekpagina | Ontwerp en optimaliseer uw logo voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoekpagina van uw aanbieding. |
+| Aanbiedingslogo (PNG-indeling,&nbsp;&times;&nbsp;216 216): pagina met app-details | Ontwerp en optimaliseer uw logo voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met app-details van uw aanbieding. |
+| Meer informatie over documenten | Onder 'Meer informatie' u ondersteunen op het ondersteunen van verkoop- en marketingmiddelen: <ul> <li> Witboeken </li> <li> Brochures </li> <li> checklists, of </li> <li> PowerPoint-presentaties.</li> </ul>Sla alle bestanden op in PDF-indeling. Uw doel hier zou moeten zijn om klanten op te leiden, niet aan hen te verkopen. <br><br>Voeg een koppeling toe aan de bestemmingspagina van uw app aan al uw documenten en voeg URL-parameters toe om bezoekers en proefversies bij te houden. |
+| Video's: AppSource, consulting services en SaaS biedt alleen | De sterkste video's communiceren de waarde van uw aanbod in narratieve vorm:<ul> <li> Maak uw klant, niet uw bedrijf, de held van het verhaal. </li> <li> Uw video moet de belangrijkste uitdagingen en doelen van uw doelklant aanpakken. </li> <li> Aanbevolen lengte: 60-90 seconden.</li> <li> Neem trefwoorden op die de naam van de video's gebruiken. </li> <li> Overweeg om extra video's toe te voegen, zoals een instructie, aan de slag of getuigenissen van klanten. </li> </ul> |
+| Schermafbeeldingen (1280&nbsp;&times;&nbsp;720) | Voeg maximaal vijf screenshots toe:<br>Neem trefwoorden op in de bestandsnamen. |
 
-## <a name="link-to-your-offer-page-from-your-website"></a>Koppeling naar uw aanbiedings pagina van uw website
+## <a name="link-to-your-offer-page-from-your-website"></a>Link naar uw aanbiedingspagina vanaf uw website
 
-Wanneer u vanuit de AppSource of de Azure Marketplace-badge op uw site een koppeling maakt naar uw vermelding in Marketplace, kunt u een sterke analyse en rapportage ondersteunen door de volgende query parameters aan het einde van de URL op te nemen:
-* **src**: Neem de bron op van waaruit het verkeer wordt doorgestuurd naar AppSource (bijvoorbeeld website, LinkedIn of Facebook).
-* **mktcmpid**: uw marketing campagne-id, die Maxi maal 16 tekens kan bevatten in een combi natie van letters, cijfers, onderstrepings teken en afbreek streepjes (bijvoorbeeld *blogpost_12*).
+Wanneer u een koppeling maakt van de AppSource- of Azure Marketplace-badge op uw site naar uw vermelding op de marktplaats, u sterke analyses en rapportages ondersteunen door de volgende queryparameters aan het einde van de URL op te nemen:
+* **src**: Voeg de bron van waaruit het verkeer wordt doorgestuurd naar AppSource (bijvoorbeeld website, LinkedIn of Facebook).
+* **mktcmpid**: Uw marketingcampagne-ID, die maximaal 16 tekens kan bevatten in een combinatie van letters, cijfers, underscores en koppeltekens (bijvoorbeeld *blogpost_12).*
 
-De volgende voor beeld-URL bevat beide van de voor gaande query parameters: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+De volgende URL van het voorbeeld bevat beide voorgaande queryparameters:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Door de para meters aan uw AppSource-URL toe te voegen, kunt u de effectiviteit van uw campagne controleren in het dash board van de cloud in de [Partner Portal](https://cloudpartner.azure.com/#insights).
+Door de parameters toe te voegen aan uw AppSource-URL, u de effectiviteit van uw campagne bekijken in het analysedashboard in de [Cloud Partner-portal.](https://cloudpartner.azure.com/#insights)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [voor delen van uw commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Meer informatie over uw [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)
 
-Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com) maken en configureren uw aanbieding.
+Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com) om uw aanbieding te maken en te configureren.
 
 ---

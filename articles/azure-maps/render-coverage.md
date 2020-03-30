@@ -1,38 +1,38 @@
 ---
-title: Dekking weer geven | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over regio's met Microsoft Azure kaarten weergave dekking samen met het niveau van de weer gegeven gegevens.
-author: jingjing-z
+title: Dekking van de render | Microsoft Azure Maps
+description: Lees in dit artikel meer over regio's met Microsoft Azure Maps en de dekking ervan, samen met het niveau van gerenderde details.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209542"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536748"
 ---
-# <a name="azure-maps-render-coverage"></a>Azure Maps weergave dekking
+# <a name="azure-maps-render-coverage"></a>Azure Maps renderdekking
 
-Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken. Bij de laagste resolutie past de hele wereld aan op één tegel. Bij de hoogste resolutie vertegenwoordigt één tegel een vier Kante meter van 38. U ziet meer details over continenten, regio's, steden en afzonderlijke straten wanneer u inzoomt in de kaart. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over tegels.
+Azure Maps gebruikt zowel rastertegels als vectortegels om kaarten te maken. Bij de laagste resolutie past de hele wereld in één tegel. Bij de hoogste resolutie vertegenwoordigt een enkele tegel 38 vierkante meter. U ziet meer details over continenten, regio's, steden en afzonderlijke straten terwijl u inzoomt op de kaart. Zie [Zoomniveaus en tegelraster voor](zoom-levels-and-tile-grid.md)meer informatie over tegels.
 
-Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen beschrijven het informatie niveau dat u voor elke regio kunt weer geven.
+Maps heeft echter niet hetzelfde niveau van informatie en nauwkeurigheid voor alle regio's. In de volgende tabellen wordt beschreven hoe het informatieniveau voor elke regio worden weergegeven.
 
-## <a name="legend"></a>Labels
+## <a name="legend"></a>Legenda
 
-| Valuta | Betekenis |
+| Symbool | Betekenis |
 |--------|---------|
-| ✓ | Regio wordt weer gegeven met gedetailleerde gegevens.   |
-| Ø | Regio wordt weer gegeven met vereenvoudigde gegevens. |
+| ✓ | Regio wordt weergegeven met gedetailleerde gegevens.   |
+| Ø | Regio wordt weergegeven met vereenvoudigde gegevens. |
 
 
-## <a name="africa"></a>Africa 
+## <a name="africa"></a>Afrika 
 
 
-| Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
+| Land/regio | Rastertegels verenigd | Vectortegels verenigd |
 | ------ | :------------------: | :------------------: |
 | Algerije                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -45,8 +45,8 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Centraal-Afrikaanse Republiek         | ✓ | Ø |
 | Tsjaad                             | ✓ | Ø |
 | Comoren                          | ✓ | Ø |
-| Congo (DRC) | ✓ | ✓ |
-| Ivoor kust                    | ✓ | Ø |
+| Democratische Republiek Congo | ✓ | ✓ |
+| Cote d'Ivoire                    | ✓ | Ø |
 | Djibouti                         | ✓ | Ø |
 | Egypte                            | ✓ | ✓ |
 | Equatoriaal-Guinea                | ✓ | Ø |
@@ -74,8 +74,8 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Nigeria                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Sint-Helena, Ascension en Tristan da Cunha | ✓ | Ø |
-| Sao Tomé en principe            | ✓ | Ø |
+| Sint Helena, Hemelvaart en Tristan da Cunha | ✓ | Ø |
+| São Tomé en Príncipe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somalië                          | ✓ | ✓ |
@@ -92,7 +92,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
+| Land/regio | Rastertegels verenigd | Vectortegels verenigd |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua en Barbuda       | ✓ | ✓ |
@@ -102,7 +102,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
 | Bermuda                   | ✓ | ✓ |
-| Bolivia-status van Bolivia | ✓ | ✓ |
+| Plurinationale staat Bolivia | ✓ | ✓ |
 | Bonaire, Sint Eustatius en Saba | ✓ | ✓ |
 | Brazilië                    | ✓ | ✓ |
 | Canada                    | ✓ | ✓ |
@@ -117,7 +117,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Ecuador                   | ✓ | ✓ |
 | Falklandeilanden (Malvinas) | ✓ | ✓ |
 | Frans-Guyana             | ✓ | ✓ |
-| Heilbot                 | ✓ | Ø |
+| Groenland                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
 | Guadeloupe                | ✓ | ✓ |
 | Guatemala                 | ✓ | ✓ |
@@ -135,14 +135,14 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Peru                      | ✓ | ✓ |
 | Puerto Rico               | ✓ | ✓ |
 | Quebec (Canada)           | ✓ | ✓ |
-| Saint--Barthélemy          | ✓ | ✓ |
+| Sint-Barthélemie          | ✓ | ✓ |
 | Saint Kitts en Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
-| Saint-Martin (Frans)     | ✓ | ✓ |
-| Saint-Pierre en Miquelon | ✓ | ✓ |
+| Sint Maarten (Frans)     | ✓ | ✓ |
+| Saint Pierre en Miquelon | ✓ | ✓ |
 | Saint Vincent en de Grenadines | ✓ | ✓ |
-| Sint-Maarten (Nederlands)      | ✓ | ✓ |
-| Zuid-Georgië en de zuidelijke Sandwich eilanden | ✓ | ✓ |
+| Sint Maarten      | ✓ | ✓ |
+| Zuid-Georgië en de Zuidelijke Sandwich-eilanden | ✓ | ✓ |
 | Suriname                  | ✓ | ✓ |
 | Trinidad en Tobago       | ✓ | ✓ |
 | Turks- en Caicoseilanden  | ✓ | ✓ |
@@ -154,18 +154,18 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="asia"></a>Azië 
 
-| Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
+| Land/regio | Rastertegels verenigd | Vectortegels verenigd |
 | ------ | :------------------: | :------------------: |
 | Afghanistan               |   | Ø |
 | Bahrein                   | ✓ | ✓ |
 | Bangladesh                |   | Ø |
 | Bhutan                    |   | Ø |
-| Brits territorium in de Indische Oceaan |   | Ø |
+| Brits Territorium in de Indische Oceaan |   | Ø |
 | Brunei                    | ✓ | ✓ |
 | Cambodja                  |   | Ø |
 | China                     |   | Ø |
-| Cocos-Keeling-eilanden   |   | Ø |
-| Democratische volks Republiek Korea |   | Ø |
+| Cocoseilanden   |   | Ø |
+| Democratische Volksrepubliek Korea |   | Ø |
 | Hongkong SAR             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonesië                 | ✓ | ✓ |
@@ -191,7 +191,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Qatar                     | ✓ | ✓ |
 | Republiek Korea         | ✓ | Ø |
 | Saoedi-Arabië              | ✓ | ✓ |
-| Senkakuman eilanden           |   | ✓ |
+| Senkaku-eilanden           |   | ✓ |
 | Singapore                 | ✓ | ✓|
 | Sri Lanka                 |   | Ø |
 | Arabische Republiek Syrië      |   | Ø |
@@ -201,34 +201,34 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Timor-Leste               |   | Ø |
 | Turkmenistan              |   | Ø |
 | Verenigde Arabische Emiraten      | ✓ | ✓ |
-| Verenigde Staten ondergeschikte afgelegen eilanden |   | Ø |
+| Verenigde Staten Kleine Afgelegen eilanden |   | Ø |
 | Oezbekistan                |   | Ø |
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceanië
 
-| Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
+| Land/regio | Rastertegels verenigd | Vectortegels verenigd |
 | ------ | :------------------: | :------------------: |
 | Amerikaans-Samoa            |   | ✓ |
 | Australië                 | ✓ | ✓ |
-| Cook eilanden              |   | Ø |
+| Cookeilanden              |   | Ø |
 | Fiji                      |   | Ø |
 | Frans-Polynesië          |   | Ø |
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
-| Marshall eilanden          |   | Ø |
+| Marshalleilanden          |   | Ø |
 | Micronesia                |   | Ø |
 | Nauru                     |   | Ø |
 | Nieuw-Caledonië             |   | Ø |
 | Nieuw-Zeeland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk eiland            |   | Ø |
+| Norfolk            |   | Ø |
 | Palau                     |   | Ø |
 | Papoea-Nieuw-Guinea          |   | Ø |
-| Pitcairneilanden                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
-| Salomons eilanden           |   | Ø|
+| Salomonseilanden           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
 | Tuvalu                    |   | Ø |
@@ -238,7 +238,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="europe"></a>Europa
 
-| Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
+| Land/regio | Rastertegels verenigd | Vectortegels verenigd |
 | ------ | :------------------: | :------------------: |
 | Albanië                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
@@ -247,14 +247,14 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Azerbeidzjan                | ✓ | Ø |
 | Belarus                   | Ø | ✓ |
 | België                   | ✓ | ✓ |
-| Bosnia-Herzegovina        | ✓ | ✓ |
+| Bosnië-Herzegovina        | ✓ | ✓ |
 | Bulgarije                  | ✓ | ✓ |
 | Kroatië                   | ✓ | ✓ |
 | Cyprus                    | ✓ | ✓ |
 | Tsjechië            | ✓ | ✓ |
 | Denemarken                   | ✓ | ✓ |
 | Estland                   | ✓ | ✓ |
-| Faeröereilanden             | ✓ | Ø |
+| Faeröer             | ✓ | Ø |
 | Finland                   | ✓ | ✓ |
 | Frankrijk                    | ✓ | ✓ |
 | Georgië                   | ✓ | Ø |
@@ -265,7 +265,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Hongarije                   | ✓ | ✓ |
 | IJsland                   | ✓ | ✓ |
 | Ierland                   | ✓ | ✓ |
-| Isle of man               | ✓ | ✓ |
+| Isle of Man               | ✓ | ✓ |
 | Italië                     | ✓ | ✓ |
 | Jan Mayen                 | ✓ | ✓ |
 | Jersey                    | ✓ | ✓ |
@@ -275,7 +275,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Luxemburg                | ✓ | ✓ |
 | Noord-Macedonië           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
-| Werden                   | ✓ | ✓ |
+| Moldavië                   | ✓ | ✓ |
 | Monaco                    | ✓ | ✓ |
 | Montenegro                | ✓ | ✓ |
 | Nederland               | ✓ | ✓ |
@@ -288,18 +288,18 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Servië                    | ✓ | ✓ |
 | Slowakije                  | ✓ | ✓ |
 | Slovenië                  | ✓ | ✓ |
-| Zuidelijk Kurils           | ✓ | ✓ |
+| Zuidelijke Koerilen           | ✓ | ✓ |
 | Spanje                     | ✓ | ✓ |
-| Jan                  | ✓ | ✓ |
+| Svalbard                  | ✓ | ✓ |
 | Zweden                    | ✓ | ✓ |
 | Zwitserland               | ✓ | ✓ |
 | Turkije                    | ✓ | ✓ |
 | Oekraïne                   | ✓ | ✓ |
 | Verenigd Koninkrijk            | ✓ | ✓ |
-| Vaticaan stad              | ✓ | ✓ |
+| Vaticaanstad              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over het weer geven van Azure Maps.
+Zie [Zoomniveaus en tegelraster voor](zoom-levels-and-tile-grid.md)meer informatie over het renderen van Azure Maps.
 
-Meer informatie over de [dekkings gebieden voor de Routing-service kaarten](routing-coverage.md). 
+Meer informatie over de [dekkingsgebieden voor de routeringsservice kaarten](routing-coverage.md). 

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een Stream Analytics-taak maken met behulp van Azure PowerShell'
+title: Snelstart - Een streamanalytics-taak maken met Azure PowerShell
 description: In deze quickstart wordt uitgelegd hoe u met de Azure PowerShell-module een Azure Stream Analytics-taak kunt implementeren en uitvoeren.
 author: mamccrea
 ms.author: mamccrea
@@ -7,14 +7,14 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241022"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536799"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snelstartgids: een Stream Analytics-taak maken met behulp van Azure PowerShell
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snelstart: een streamanalytics-taak maken met Azure PowerShell
 
 De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources met behulp van PowerShell-cmdlets of -scripts. In deze snelstart vindt u informatie over het gebruik van de Azure PowerShell-module om een Azure Stream Analytics-taak te implementeren en uit te voeren.
 
@@ -24,11 +24,11 @@ De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. De invoerge
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Als u nog geen Azure-abonnement hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account aan.](https://azure.microsoft.com/free/)
 
 * Voor deze quickstart is de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie op te zoeken die op uw lokale computer is geïnstalleerd. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Sommige IoT Hub acties worden niet ondersteund door Azure PowerShell en moeten worden voltooid met behulp van Azure CLI versie 2.0.70 of hoger en de IoT-extensie voor Azure CLI. [Installeer de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en gebruik `az extension add --name azure-iot` voor het installeren van de IoT-extensie.
+* Sommige IoT Hub-acties worden niet ondersteund door Azure PowerShell en moeten worden voltooid met Azure CLI-versie 2.0.70 of hoger en de IoT-extensie voor Azure CLI. [Installeer de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en gebruik `az extension add --name azure-iot` voor het installeren van de IoT-extensie.
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -104,7 +104,7 @@ In het volgende codeblok van de Azure CLI worden meerdere opdrachten uitgevoerd 
 
     **Voorbeeld van uitvoer:**
 
-    ```azurecli
+    ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
@@ -297,17 +297,18 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>De IoT-simulator uitvoeren
 
 1. Open de [Raspberry Pi Azure IoT Online Simulator](https://azure-samples.github.io/raspberry-pi-web-simulator/).
 
 2. Vervang de tijdelijke aanduiding op regel 15 door de verbindingsreeks van het Azure IoT Hub-apparaat die u hebt opgeslagen in een eerdere sectie.
 
-3. Klik op **Run**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
+3. Klik **op Uitvoeren**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
 
     ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics-taak starten en uitvoer controleren
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>De Stream Analytics-taak starten en uitvoer controleren
 
 Start de taak met de cmdlet [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob). Deze cmdlet gebruikt de taaknaam, resourcegroepnaam, uitvoerstartmodus en begintijd als parameters. `OutputStartMode` accepteert waarden van `JobStartTime`, `CustomTime` of `LastOutputEventTime`. Zie de sectie [Parameters](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) in de PowerShell-documentatie voor meer informatie over waar deze waarden naar verwijzen.
 

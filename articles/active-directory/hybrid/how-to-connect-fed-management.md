@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect-AD FS beheer en aanpassing | Microsoft Docs
-description: AD FS beheer met Azure AD Connect en aanpassing van de aanmeldings ervaring van gebruikers AD FS met Azure AD Connect en Power shell.
-keywords: AD FS, ADFS, AD FS beheer, AAD Connect, Connect, aanmelden, AD FS aanpassing, herstel vertrouwen, O365, Federatie, Relying Party
+title: Azure AD Connect - AD FS-beheer en -aanpassing | Microsoft Documenten
+description: AD FS-beheer met Azure AD Connect en aanpassing van de inlogervaring van de gebruiker AD FS met Azure AD Connect en PowerShell.
+keywords: AD FS, ADFS, AD FS-beheer, AAD Connect, Connect, sign-in, AD FS-aanpassing, reparatievertrouwensrelatie, O365, federatie, relying party
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,237 +18,237 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331985"
 ---
-# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
-In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
+# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met Azure AD Connect
+In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) beheert en aanpast met Azure AD Connect (Azure AD). Het bevat ook andere veelvoorkomende AD FS-taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
 
-| Onderwerp | Wat het betreft |
+| Onderwerp | Wat het dekt |
 |:--- |:--- |
 | **AD FS beheren** | |
-| [De vertrouwens relatie herstellen](#repairthetrust) |De federatieve vertrouwens relatie met Office 365 herstellen. |
-| [Communiceren met Azure AD met een alternatieve aanmeldings-ID](#alternateid) | Federatie configureren met alternatieve aanmeldings-ID  |
+| [Herstel het vertrouwen](#repairthetrust) |De federatievertrouwensrelatie herstellen met Office 365. |
+| [Federate met Azure AD met alternatieve inlog-id](#alternateid) | Federatie configureren met alternatieve aanmeldings-id  |
 | [Een AD FS-server toevoegen](#addadfsserver) |Een AD FS-farm uitbreiden met een extra AD FS-server. |
-| [Een AD FS Web Application proxy-server toevoegen](#addwapserver) |Een AD FS-farm uitbreiden met een extra WAP-server (Web Application proxy). |
-| [Een federatief domein toevoegen](#addfeddomain) |Het toevoegen van een federatief domein. |
-| [Het SSL-certificaat bijwerken](how-to-connect-fed-ssl-update.md)| Het SSL-certificaat voor een AD FS-farm bijwerken. |
+| [Een proxyserver van AD FS-webtoepassing toevoegen](#addwapserver) |Een AD FS-farm uitbreiden met een extra WAP-server (Web Application Proxy). |
+| [Een federatief domein toevoegen](#addfeddomain) |Hoe voeg je een federatief domein toe. |
+| [Het TLS/SSL-certificaat bijwerken](how-to-connect-fed-ssl-update.md)| Het TLS/SSL-certificaat bijwerken voor een AD FS-farm. |
 | **AD FS aanpassen** | |
-| [Een aangepast bedrijfs logo of een aangepaste afbeelding toevoegen](#customlogo) |Een AD FS-aanmeldings pagina aanpassen met een bedrijfs logo en een afbeelding. |
-| [Een beschrijving van een aanmelding toevoegen](#addsignindescription) |Een beschrijving van een aanmeldings pagina toevoegen. |
-| [AD FS claim regels wijzigen](#modclaims) |Het wijzigen van AD FS claims voor verschillende Federatie scenario's. |
+| [Een aangepast bedrijfslogo of -illustratie toevoegen](#customlogo) |Een AD FS-aanmeldingspagina aanpassen met een bedrijfslogo en illustratie. |
+| [Een aanmeldingsbeschrijving toevoegen](#addsignindescription) |Een aanmeldingspaginabeschrijving toevoegen. |
+| [Regels voor AD FS-claimwijzigen](#modclaims) |Ad FS-claims wijzigen voor verschillende federatiescenario's. |
 
 ## <a name="manage-ad-fs"></a>AD FS beheren
-U kunt met behulp van de Azure AD Connect wizard diverse taken met betrekking tot AD FS uitvoeren in Azure AD Connect met minimale tussen komst van de gebruiker. Nadat u klaar bent met het installeren van Azure AD Connect door de wizard uit te voeren, kunt u de wizard opnieuw uitvoeren om aanvullende taken uit te voeren.
+U verschillende AD FS-gerelateerde taken uitvoeren in Azure AD Connect met minimale tussenkomst van de gebruiker met behulp van de wizard Azure AD Connect. Nadat u Azure AD Connect hebt geïnstalleerd door de wizard uit te voeren, u de wizard opnieuw uitvoeren om extra taken uit te voeren.
 
-## <a name="repairthetrust"></a>De vertrouwens relatie herstellen 
-U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-vertrouwens relatie te controleren en de juiste maat regelen te nemen om de vertrouwens relatie te herstellen. Volg deze stappen om uw Azure AD-en AD FS-vertrouwens relatie te herstellen.
+## <a name="repair-the-trust"></a><a name="repairthetrust"></a>Herstel het vertrouwen 
+U Azure AD Connect gebruiken om de huidige status van de AD FS- en Azure AD-vertrouwensrelatie te controleren en passende acties te ondernemen om de vertrouwensrelatie te herstellen. Volg deze stappen om uw Azure AD- en AD FS-vertrouwensrelatie te herstellen.
 
-1. Selecteer **Aad en ADFS-vertrouwens relatie** in de lijst met extra taken herstellen.
-   AAD-en ADFS-vertrouwens relatie ![herstellen](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+1. Selecteer **AAD en ADFS-vertrouwensrelatie herstellen** in de lijst met extra taken.
+   ![Aad- en ADFS-vertrouwensrelatie herstellen](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. Geef op de pagina **verbinding maken met Azure AD** uw globale beheerders referenties voor Azure AD op en klik op **volgende**.
+2. Geef op de pagina **Verbinding maken met Azure AD** uw globale beheerdersreferenties op voor Azure AD en klik op **Volgende**.
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
-3. Voer op de pagina **referenties voor externe toegang** de referenties voor de domein beheerder in.
+3. Voer op de pagina **Referenties voor externe toegang** de referenties voor de domeinbeheerder in.
 
-   ![Referenties voor externe toegang](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Rastoegangsreferenties](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    Nadat u op **volgende**hebt geklikt, controleert Azure AD Connect de status van het certificaat en worden eventuele problemen weer gegeven.
+    Nadat u op **Volgende**hebt geklikt, controleert Azure AD Connect op de certificaatstatus en worden eventuele problemen weergegeven.
 
-    ![Status van certificaten](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
+    ![Staat van de certificaten](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
-    De pagina **gereed voor configuratie** toont de lijst met acties die worden uitgevoerd om de vertrouwens relatie te herstellen.
+    Op de pagina **Klaar om te configureren** wordt de lijst weergegeven met acties die worden uitgevoerd om de vertrouwensrelatie te herstellen.
 
-    ![Klaar om te configureren](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Gereed voor configuratie](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
-4. Klik op **installeren** om de vertrouwens relatie te herstellen.
+4. Klik **op Installeren** om de vertrouwensrelatie te herstellen.
 
 > [!NOTE]
-> Azure AD Connect kunt alleen certificaten repareren of actie ondernemen die zelfondertekend zijn. Azure AD Connect kan geen certificaten van derden herstellen.
+> Azure AD Connect kan alleen certificaten herstellen of erop reageren die zelf zijn ondertekend. Azure AD Connect kan certificaten van derden niet herstellen.
 
-## <a name="alternateid"></a>Communiceren met Azure AD met behulp van AlternateID 
-Het is raadzaam om de on-premises UPN (User Principal Name) en de principal-naam van de Cloud gebruiker hetzelfde te houden. Als de on-premises UPN een niet-routeerbaar domein gebruikt (bijvoorbeeld Contoso. local) of kan niet worden gewijzigd vanwege lokale toepassings afhankelijkheden, kunt u het beste een alternatieve aanmeldings-ID instellen. Met de alternatieve aanmeldings-ID kunt u een aanmeldings ervaring configureren waarbij gebruikers zich kunnen aanmelden met een ander kenmerk dan hun UPN, zoals e-mail. De keuze voor de UPN-naam in Azure AD Connect standaard ingesteld op het kenmerk userPrincipalName in Active Directory. Als u een ander kenmerk kiest voor User Principal name en federeren met behulp van AD FS, dan configureert Azure AD Connect AD FS voor de alternatieve aanmeldings-ID. Hieronder ziet u een voor beeld van het kiezen van een ander kenmerk voor User Principal name:
+## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>Federate met Azure AD met AlternateID 
+Het wordt aanbevolen dat de on-premises user principal name (UPN) en de cloud User Principal Name hetzelfde blijven. Als de lokale UPN gebruikmaakt van een niet-routeerbare domein (ex. Contoso.local) of kan niet worden gewijzigd vanwege lokale toepassingsafhankelijkheden, raden we aan om alternatieve inlog-id in te stellen. Met alternatieve inlog-id u een aanmeldingservaring configureren waarbij gebruikers zich kunnen aanmelden met een ander kenmerk dan hun UPN, zoals e-mail. De keuze voor gebruikersnaam in Azure AD Connect is standaard voor het kenmerk UserPrincipalName in Active Directory. Als u een ander kenmerk voor gebruikersnaam kiest en federt met AD FS, configureert Azure AD Connect AD FS voor alternatieve aanmeldings-id. Hieronder wordt een voorbeeld gegeven van het kiezen van een ander kenmerk voor gebruikersnaam:
 
-![Alternatieve ID-kenmerk selectie](./media/how-to-connect-fed-management/attributeselection.png)
+![Selectie van alternatieve id-kenmerken](./media/how-to-connect-fed-management/attributeselection.png)
 
-Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee belang rijke stappen:
-1. **De juiste set met uitgifte claims configureren**: de claim regels voor uitgifte in de Azure AD Relying Party-vertrouwens relatie zijn gewijzigd om het geselecteerde userPrincipalName-kenmerk te gebruiken als de alternatieve id van de gebruiker.
-2. **Alternatieve aanmeldings-id inschakelen in de AD FS configuratie**: de AD FS configuratie wordt bijgewerkt, zodat AD FS gebruikers in de juiste forests kunt opzoeken met de alternatieve id. Deze configuratie wordt ondersteund voor AD FS op Windows Server 2012 R2 (met KB2919355) of hoger. Als de AD FS servers 2012 R2 zijn, Azure AD Connect de aanwezigheid van de vereiste KB controleren. Als de KB niet wordt gedetecteerd, wordt een waarschuwing weer gegeven nadat de configuratie is voltooid, zoals hieronder wordt weer gegeven:
+Het configureren van alternatieve inlog-id voor AD FS bestaat uit twee hoofdstappen:
+1. **De juiste set uitgifteclaims configureren:** de uitgifteclaimregels in de vertrouwensrelatie tussen Azure AD en relying party worden gewijzigd om het geselecteerde kenmerk UserPrincipalName te gebruiken als de alternatieve id van de gebruiker.
+2. **Alternatieve aanmeldings-id inschakelen in de AD FS-configuratie**: de AD FS-configuratie wordt bijgewerkt, zodat AD FS gebruikers in de juiste forests kan opzoeken met behulp van de alternatieve id. Deze configuratie wordt ondersteund voor AD FS op Windows Server 2012 R2 (met KB2919355) of hoger. Als de AD FS-servers 2012 R2 zijn, controleert Azure AD Connect op de aanwezigheid van de vereiste KB. Als de KB niet wordt gedetecteerd, wordt een waarschuwing weergegeven nadat de configuratie is voltooid, zoals hieronder wordt weergegeven:
 
     ![Waarschuwing voor ontbrekende KB op 2012R2](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Als u de configuratie wilt corrigeren in geval van ontbrekende KB, installeert u de vereiste [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) en herstelt u de vertrouwens relatie met [Aad en AD FS-vertrouwens relatie](#repairthetrust).
+    Als u de configuratie wilt herstellen in geval van ontbrekende KB, installeert u de vereiste [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) en herstelt u de vertrouwensrelatie met [Reparatie AAD en AD FS Trust.](#repairthetrust)
 
 > [!NOTE]
-> Lees de [alternatieve aanmeldings-id configureren](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) voor meer informatie over alternateID en stappen om deze hand matig te configureren
+> Lees [Alternatieve aanmeldings-id](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) configureren voor meer informatie over alternatieve ID en stappen die handmatig moeten worden geconfigureerd
 
-## <a name="addadfsserver"></a>Een AD FS-server toevoegen 
+## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>Een AD FS-server toevoegen 
 
 > [!NOTE]
-> Azure AD Connect vereist het PFX-certificaat om een AD FS server toe te voegen. Daarom kunt u deze bewerking alleen uitvoeren als u de AD FS farm hebt geconfigureerd met behulp van Azure AD Connect.
+> Azure AD Connect heeft het PFX-certificaat nodig om een AD FS-server toe te voegen. Daarom u deze bewerking alleen uitvoeren als u de AD FS-farm hebt geconfigureerd met Azure AD Connect.
 
-1. Selecteer **een extra Federatie server implementeren**en klik op **volgende**.
+1. Selecteer **Een extra federatieserver implementeren**en klik op **Volgende**.
 
-   ![Aanvullende Federatie server](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
+   ![Extra federatieserver](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. Voer op de pagina **verbinding maken met Azure AD** uw globale beheerders referenties in voor Azure AD en klik op **volgende**.
+2. Voer op de pagina **Verbinding maken met Azure AD** uw globale beheerdersreferenties voor Azure AD in en klik op **Volgende**.
 
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
-3. Geef de referenties voor de domein beheerder op.
+3. Geef de referenties van de domeinbeheerder op.
 
-   ![Referenties voor domein beheerder](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
+   ![Referenties voor domeinbeheerder](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect vraagt naar het wacht woord van het PFX-bestand dat u hebt opgegeven bij het configureren van uw nieuwe AD FS farm met Azure AD Connect. Klik op **wacht woord invoeren** om het wacht woord voor het pfx-bestand op te geven.
+4. Azure AD Connect vraagt om het wachtwoord van het PFX-bestand dat u hebt opgegeven tijdens het configureren van uw nieuwe AD FS-farm met Azure AD Connect. Klik **op Wachtwoord invoeren** om het wachtwoord voor het PFX-bestand op te geven.
 
-   ![Certificaat wachtwoord](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Certificaatwachtwoord](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![SSL-certificaat opgeven](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![TLS/SSL-certificaat opgeven](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
-5. Voer op de pagina **AD FS servers** de server naam of het IP-adres in dat moet worden toegevoegd aan de AD FS-farm.
+5. Voer op de pagina **AD FS-servers** de servernaam of het IP-adres in dat moet worden toegevoegd aan de AD FS-farm.
 
    ![AD FS-servers](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Klik op **volgende**en ga door de pagina definitieve **configuratie** . Nadat Azure AD Connect het toevoegen van de servers aan de AD FS-farm hebt voltooid, krijgt u de mogelijkheid om de verbinding te controleren.
+6. Klik **op Volgende**en ga door de laatste pagina **Configureren.** Nadat Azure AD Connect klaar is met het toevoegen van de servers aan de AD FS-farm, krijgt u de optie om de connectiviteit te verifiëren.
 
-   ![Klaar om te configureren](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Gereed voor configuratie](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![Installatie voltooid](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>Een AD FS WAP-server toevoegen 
+## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>Een WAP-server van AD FS toevoegen 
 
 > [!NOTE]
-> Als u een WAP-server wilt toevoegen, moet Azure AD Connect het PFX-certificaat hebben. Daarom kunt u deze bewerking alleen uitvoeren als u de AD FS farm hebt geconfigureerd met behulp van Azure AD Connect.
+> Azure AD Connect heeft het PFX-certificaat nodig om een WAP-server toe te voegen. Daarom u deze bewerking alleen uitvoeren als u de AD FS-farm hebt geconfigureerd met Azure AD Connect.
 
-1. Selecteer **Web Application proxy implementeren** in de lijst met beschik bare taken.
+1. Selecteer **Proxy van webtoepassing implementeren** in de lijst met beschikbare taken.
 
-   ![Web Application proxy implementeren](./media/how-to-connect-fed-management/WapServer1.PNG)
+   ![Proxy van webtoepassing implementeren](./media/how-to-connect-fed-management/WapServer1.PNG)
 
-2. Geef de referenties van de globale Azure-beheerder op.
+2. Geef de referenties van de globale beheerder van Azure op.
 
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
 
-3. Geef op de pagina **SSL-certificaat opgeven** het wacht woord op voor het pfx-bestand dat u hebt opgegeven toen u de AD FS farm met Azure AD Connect hebt geconfigureerd.
-   ![certificaat wachtwoord](./media/how-to-connect-fed-management/WapServer3.PNG)
+3. Geef op de pagina **SSL-certificaat opgeven** het wachtwoord op voor het PFX-bestand dat u hebt opgegeven toen u de AD FS-farm configureerde met Azure AD Connect.
+   ![Certificaatwachtwoord](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![SSL-certificaat opgeven](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![TLS/SSL-certificaat opgeven](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. Voeg de server toe die moet worden toegevoegd als WAP-server. Omdat de WAP-server mogelijk niet is toegevoegd aan het domein, vraagt de wizard om beheerders referenties aan de server die wordt toegevoegd.
+4. Voeg de server toe die als WAP-server moet worden toegevoegd. Omdat de WAP-server mogelijk niet aan het domein is verbonden, vraagt de wizard om beheerdersreferenties voor de server die wordt toegevoegd.
 
-   ![Referenties voor beheerders server](./media/how-to-connect-fed-management/WapServer5.PNG)
+   ![Referenties van de beheerserver](./media/how-to-connect-fed-management/WapServer5.PNG)
 
-5. Geef op de pagina **proxy Trust referenties** de beheerders referenties op voor het configureren van de proxy vertrouwensrelatie en toegang tot de primaire server in de AD FS-farm.
+5. Geef op de pagina **Proxy-vertrouwensreferenties** beheerdersreferenties op om de proxyvertrouwensrelatie te configureren en toegang te krijgen tot de primaire server in de AD FS-farm.
 
-   ![Referenties voor proxy vertrouwen](./media/how-to-connect-fed-management/WapServer6.PNG)
+   ![Proxyvertrouwensreferenties](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. Op de pagina **gereed voor configuratie** bevat de wizard de lijst met acties die worden uitgevoerd.
+6. Op de pagina **Klaar om te configureren** toont de wizard de lijst met acties die worden uitgevoerd.
 
-   ![Klaar om te configureren](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Gereed voor configuratie](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. Klik op **installeren** om de configuratie te volt ooien. Nadat de configuratie is voltooid, krijgt u de mogelijkheid om de verbinding met de servers te controleren. Klik op **controleren** om de verbinding te controleren.
+7. Klik **op Installeren** om de configuratie te voltooien. Nadat de configuratie is voltooid, geeft de wizard u de mogelijkheid om de verbinding met de servers te verifiëren. Klik **op Verifiëren** om de verbinding te controleren.
 
    ![Installatie voltooid](./media/how-to-connect-fed-management/WapServer8.PNG)
 
-## <a name="addfeddomain"></a>Een federatief domein toevoegen 
+## <a name="add-a-federated-domain"></a><a name="addfeddomain"></a>Een federatief domein toevoegen 
 
-Het is eenvoudig om een domein toe te voegen voor federatief met Azure AD met behulp van Azure AD Connect. Azure AD Connect voegt het domein voor Federatie toe en wijzigt de claim regels zo dat de uitgever correct wordt weer gegeven wanneer u meerdere domeinen hebt die worden gefederatied met Azure AD.
+Het is eenvoudig om een domein toe te voegen dat met Azure AD kan worden gefedereerd met Azure AD. Azure AD Connect voegt het domein voor federatie toe en wijzigt de claimregels om de uitgever correct weer te geven wanneer u meerdere domeinen hebt die zijn gefedereerd met Azure AD.
 
-1. Als u een federatief domein wilt toevoegen, selecteert u de taak **een extra Azure AD-domein toevoegen**.
+1. Als u een federatief domein wilt toevoegen, selecteert u de taak **Een extra Azure AD-domein toevoegen**.
 
    ![Extra Azure AD-domein](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
-2. Geef op de volgende pagina van de wizard de globale beheerders referenties voor Azure AD op.
+2. Geef op de volgende pagina van de wizard de globale beheerdersreferenties voor Azure AD op.
 
    ![Verbinding maken met Azure AD](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
-3. Geef de referenties van de domein beheerder op de pagina **referenties voor externe toegang** op.
+3. Geef op de pagina **Referenties voor externe toegang** de referenties van de domeinbeheerder op.
 
-   ![Referenties voor externe toegang](./media/how-to-connect-fed-management/additionaldomain3.PNG)
+   ![Rastoegangsreferenties](./media/how-to-connect-fed-management/additionaldomain3.PNG)
 
-4. Op de volgende pagina bevat de wizard een lijst met Azure AD-domeinen waarmee u uw on-premises Directory kunt vergeven met. Kies het domein in de lijst.
+4. Op de volgende pagina biedt de wizard een lijst met Azure AD-domeinen waarmee u uw on-premises directory federatieren. Kies het domein in de lijst.
 
    ![Azure AD-domein](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Nadat u het domein hebt gekozen, biedt de wizard u de juiste informatie over verdere acties die de wizard zal ondernemen en de impact van de configuratie. Als u in sommige gevallen een domein selecteert dat nog niet is geverifieerd in azure AD, biedt de wizard u informatie om u te helpen bij het verifiëren van het domein. Zie [uw aangepaste domein naam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie.
+    Nadat u het domein hebt gekozen, geeft de wizard u de juiste informatie over verdere acties die de wizard zal uitvoeren en de impact van de configuratie. Als u in sommige gevallen een domein selecteert dat nog niet is geverifieerd in Azure AD, biedt de wizard u informatie waarmee u het domein verifiëren. Zie [Uw aangepaste domeinnaam toevoegen aan Azure Active Directory](../active-directory-domains-add-azure-portal.md) voor meer informatie.
 
-5. Klik op **Volgende**. Op de pagina **gereed voor configuratie ziet u** de lijst met acties die Azure AD Connect worden uitgevoerd. Klik op **installeren** om de configuratie te volt ooien.
+5. Klik op **Volgende**. Op de pagina **Klaar om te configureren** wordt de lijst weergegeven met acties die Azure AD Connect uitvoert. Klik **op Installeren** om de configuratie te voltooien.
 
-   ![Klaar om te configureren](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
-
-> [!NOTE]
-> Gebruikers van het toegevoegde federatieve domein moeten worden gesynchroniseerd voordat ze zich kunnen aanmelden bij Azure AD.
-
-## <a name="ad-fs-customization"></a>AD FS aanpassing
-De volgende secties bevatten informatie over een aantal algemene taken die u mogelijk moet uitvoeren wanneer u uw AD FS-aanmeldings pagina aanpast.
-
-## <a name="customlogo"></a>Een aangepast bedrijfs logo of een aangepaste afbeelding toevoegen 
-Als u het logo van het bedrijf wilt wijzigen dat wordt weer gegeven op de **aanmeldings** pagina, gebruikt u de volgende Windows Power shell-cmdlet en syntaxis.
+   ![Gereed voor configuratie](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
-> De aanbevolen afmetingen voor het logo zijn 260 x 35 \@ 96 dpi met een bestands grootte die niet groter is dan 10 KB.
+> Gebruikers van het toegevoegde federatieve domein moeten worden gesynchroniseerd voordat ze kunnen inloggen op Azure AD.
+
+## <a name="ad-fs-customization"></a>AD FS-aanpassing
+In de volgende secties vindt u meer informatie over enkele veelvoorkomende taken die u mogelijk moet uitvoeren wanneer u uw AD FS-aanmeldingspagina aanpast.
+
+## <a name="add-a-custom-company-logo-or-illustration"></a><a name="customlogo"></a>Een aangepast bedrijfslogo of -illustratie toevoegen 
+Als u het logo wilt wijzigen van het bedrijf dat wordt weergegeven op de **aanmeldingspagina,** gebruikt u de volgende Windows PowerShell-cmdlet en -syntaxis.
+
+> [!NOTE]
+> De aanbevolen afmetingen voor het logo zijn 260 x 35 \@ 96 dpi met een bestandsgrootte van niet groter dan 10 KB.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> De *TargetName*-parameter is vereist. Het standaard thema dat wordt uitgebracht met AD FS is standaard genoemd.
+> De parameter *TargetName* is vereist. Het standaardthema dat is uitgebracht met AD FS, krijgt de naam Standaard.
 
-## <a name="addsignindescription"></a>Een beschrijving van een aanmelding toevoegen 
-Als u een beschrijving van de aanmeldings pagina wilt toevoegen aan de **aanmeldings pagina**, gebruikt u de volgende Windows Power shell-cmdlet en syntaxis.
+## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Een aanmeldingsbeschrijving toevoegen 
+Als u een aanmeldingspaginabeschrijving wilt toevoegen aan de **aanmeldingspagina,** gebruikt u de volgende Windows PowerShell-cmdlet en -syntaxis.
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>AD FS claim regels wijzigen 
-AD FS ondersteunt een uitgebreide claim taal die u kunt gebruiken om aangepaste claim regels te maken. Zie [de rol van de taal van de claim regel](https://technet.microsoft.com/library/dd807118.aspx)voor meer informatie.
+## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Regels voor AD FS-claimwijzigen 
+AD FS ondersteunt een uitgebreide claimtaal die u gebruiken om aangepaste claimregels te maken. Zie [De rol van de taal van de claimregel voor](https://technet.microsoft.com/library/dd807118.aspx)meer informatie .
 
-In de volgende secties wordt beschreven hoe u aangepaste regels kunt schrijven voor bepaalde scenario's die betrekking hebben op Azure AD en AD FS federatie.
+In de volgende secties wordt beschreven hoe u aangepaste regels schrijven voor bepaalde scenario's die betrekking hebben op Azure AD en AD FS-federatie.
 
-### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Onveranderbare ID die afhankelijk is van een waarde die in het kenmerk aanwezig is
-Met Azure AD Connect kunt u een kenmerk opgeven dat moet worden gebruikt als een bron anker wanneer objecten worden gesynchroniseerd met Azure AD. Als de waarde in het aangepaste kenmerk niet leeg is, wilt u mogelijk een onveranderlijke ID-claim uitgeven.
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Onveranderlijke ID afhankelijk van een waarde die aanwezig is in het kenmerk
+Met Azure AD Connect u een kenmerk opgeven dat moet worden gebruikt als bronanker wanneer objecten worden gesynchroniseerd met Azure AD. Als de waarde in het aangepaste kenmerk niet leeg is, u een onveranderlijke id-claim indienen.
 
-U kunt bijvoorbeeld **MS-DS-consistencyguid** als het kenmerk voor het bron anker selecteren en **ImmutableID** als **MS-DS-consistencyguid** geven als het kenmerk een waarde heeft. Als er geen waarde is voor het kenmerk, geeft u **objectGuid** als de onveranderbare id. U kunt de set aangepaste claim regels maken, zoals wordt beschreven in de volgende sectie.
+U bijvoorbeeld **ms-ds-consistencyguid** selecteren als het kenmerk voor het bronanker en **ImmutableID** als **ms-ds-consistencyguid** uitgeven voor het geval het kenmerk er een waarde tegenover heeft. Als er geen waarde is voor het kenmerk, geeft u **objectGuid** als de onveranderlijke id. U de set aangepaste claimregels samenstellen zoals beschreven in de volgende sectie.
 
-**Regel 1: query kenmerken**
+**Regel 1: Querykenmerken**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
-In deze regel zoekt u een query uit op de waarden **MS-DS-consistencyguid** en **objectGuid** voor de gebruiker van Active Directory. Wijzig de archief naam in een geschikte archief naam in uw AD FS-implementatie. Wijzig ook het claim type in een juist claim type voor uw Federatie, zoals gedefinieerd voor **objectGuid** en **MS-DS-consistencyguid**.
+In deze regel bevraagt u de waarden van **ms-ds-consistencyguid** en **objectGuid** voor de gebruiker uit Active Directory. Wijzig de winkelnaam in een geschikte winkelnaam in uw AD FS-implementatie. Wijzig ook het type claims in een juist claimtype voor uw federatie, zoals gedefinieerd voor **objectGuid** en **ms-ds-consistencyguid.**
 
-Daarnaast kunt u met behulp van **toevoegen** en niet bij niet- **probleem**voor komen dat u een uitgaand probleem voor de entiteit toevoegt en de waarden als tussenliggende waarden gebruiken. U geeft de claim op in een latere regel nadat u hebt vastgesteld welke waarde moet worden gebruikt als de onveranderlijke ID.
+U vermijdt ook het toevoegen **en** niet **uitgeven**van een uitgaande kwestie voor de entiteit en u de waarden als tussenliggende waarden gebruiken. U geeft de claim in een latere regel uit nadat u hebt vastgesteld welke waarde u als onveranderlijke id moet gebruiken.
 
-**Regel 2: controleren of MS-DS-consistencyguid bestaat voor de gebruiker**
+**Regel 2: Controleer of ms-ds-consistencyguid bestaat voor de gebruiker**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Deze regel definieert een tijdelijke vlag met de naam **idflag** die is ingesteld op **useguid** als er geen **MS-DS-consistencyguid** voor de gebruiker is ingevuld. De logica achter dit is het feit dat AD FS geen lege claims toestaat. Dus wanneer u claims http://contoso.com/ws/2016/02/identity/claims/objectguid en http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid in regel 1 toevoegt, wordt er alleen een **msdsconsistencyguid** -claim gemaakt als de waarde voor de gebruiker wordt ingevuld. Als deze niet is ingevuld, ziet AD FS dat deze een lege waarde heeft en deze onmiddellijk wegvalt. Alle objecten hebben **objectGuid**, zodat de claim altijd aanwezig is nadat regel 1 is uitgevoerd.
+Deze regel definieert een tijdelijke vlag genaamd **idflag** die is ingesteld op **useguid** als er geen **ms-ds-consistencyguid voor** de gebruiker. De logica hierachter is het feit dat AD FS geen lege claims toestaat. Dus wanneer u `http://contoso.com/ws/2016/02/identity/claims/objectguid` `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` claims toevoegt en in regel 1, komt u alleen in een **msdsconsistencyguid-claim** terecht als de waarde voor de gebruiker wordt ingevuld. Als deze niet wordt ingevuld, ziet AD FS dat deze een lege waarde heeft en deze onmiddellijk daalt. Alle objecten hebben **bezwaarGuid,** zodat claim zal er altijd zijn nadat regel 1 is uitgevoerd.
 
-**Regel 3: MS-DS-consistencyguid als onveranderbare ID uitgeven als deze aanwezig is**
+**Regel 3: Geef ms-ds-consistencyguid af als onveranderlijke ID als deze aanwezig is**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Dit is **een impliciete** controle. Als de waarde voor de claim bestaat, moet u deze als onveranderlijke ID uitgeven. In het vorige voor beeld wordt de claim **nameidentifier** gebruikt. U moet dit wijzigen in het juiste claim type voor de onveranderbare ID in uw omgeving.
+Dit is een impliciete **Exist** check. Als de waarde voor de claim bestaat, geef dat dan af als de onveranderlijke ID. In het vorige voorbeeld wordt de **claim voor naam-id's** gebruikt. U moet dit wijzigen in het juiste claimtype voor de onveranderlijke id in uw omgeving.
 
-**Regel 4: objectGuid als onveranderlijke ID uitgeven als MS-DS-consistencyGuid niet aanwezig is**
+**Regel 4: Probleem objectGuid als onveranderlijke ID als ms-ds-consistencyGuid niet aanwezig is**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
-In deze regel controleert u gewoon de tijdelijke vlag **idflag**. U bepaalt of de claim moet worden uitgegeven op basis van de waarde.
+In deze regel controleert u gewoon de tijdelijke **vlag-idflag.** U beslist of u de claim wilt indienen op basis van de waarde ervan.
 
 > [!NOTE]
-> De volg orde van deze regels is belang rijk.
+> De volgorde van deze regels is belangrijk.
 
-### <a name="sso-with-a-subdomain-upn"></a>Eenmalige aanmelding met een subdomein-UPN
+### <a name="sso-with-a-subdomain-upn"></a>SSO met subdomein UPN
 
-U kunt meer dan één domein aan federatieve toevoegen met behulp van Azure AD Connect, zoals wordt beschreven in [een nieuw federatief domein toevoegen](how-to-connect-fed-management.md#addfeddomain). Azure AD Connect versie 1.1.553.0 en de laatste maakt de juiste claim regel voor issuerID automatisch. Als u Azure AD Connect versie 1.1.553.0 of de nieuwste niet kunt gebruiken, is het raadzaam om de [Azure AD rap-claim regels](https://aka.ms/aadrptclaimrules) voor het genereren en instellen van de juiste claim regels voor de vertrouwens relatie van azure AD Relying Party.
+U meer dan één domein toevoegen dat moet worden gefedereerd met Azure AD Connect, zoals beschreven in [Een nieuw federatief domein toevoegen.](how-to-connect-fed-management.md#addfeddomain) Met Azure AD Connect-versie 1.1.553.0 en uiterlijk wordt automatisch de juiste claimregel voor issuerID gemaakt. Als u geen gebruik maken van Azure AD Connect-versie 1.1.553.0 of uiterlijk, wordt aanbevolen dat het hulpprogramma [voor Azure AD RPT-claimregels](https://aka.ms/aadrptclaimrules) wordt gebruikt om de juiste claimregels voor de vertrouwensrelatie van azure AD-relying party te genereren en in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [Opties voor gebruikers aanmelding](plan-connect-user-signin.md).
+Meer informatie over [aanmeldingsopties voor gebruikers](plan-connect-user-signin.md).

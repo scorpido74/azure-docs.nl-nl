@@ -1,6 +1,6 @@
 ---
-title: 'REST API fout codes: Azure Key Vault'
-description: Deze fout codes kunnen worden geretourneerd door een bewerking op een Azure Key Vault-webservice.
+title: REST API-foutcodes - Azure Key Vault
+description: Deze foutcodes kunnen worden geretourneerd door een bewerking op een Azure Key Vault-webservice.
 keywords: ''
 services: machine-learning
 author: msmbaldwin
@@ -9,31 +9,31 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01fb5393217834bc0196da25c4a56314ca7eae2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293382"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294537"
 ---
-# <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
+# <a name="azure-key-vault-rest-api-error-codes"></a>Foutcodes azure Key Vault REST API
  
-De volgende fout codes kunnen worden geretourneerd door een bewerking op een Azure Key Vault-webservice.
+De volgende foutcodes kunnen worden geretourneerd door een bewerking op een Azure Key Vault-webservice.
  
-## <a name="http-401-unauthenticated-request"></a>HTTP 401: niet-geverifieerde aanvraag
+## <a name="http-401-unauthenticated-request"></a>HTTP 401: Niet-geverifieerde aanvraag
 
 401 betekent dat de aanvraag niet is geverifieerd voor Key Vault. 
 
 Een aanvraag wordt geverifieerd als:
 
-- De sleutel kluis kent de identiteit van de aanroeper; maar
-- De aanroeper mag proberen om toegang te krijgen tot Key Vault resources. 
+- De sleutelkluis kent de identiteit van de beller; En
+- De beller mag proberen toegang te krijgen tot Key Vault-bronnen. 
 
-Er zijn verschillende redenen waarom een aanvraag 401 kan retour neren.
+Er zijn verschillende redenen waarom een verzoek 401 kan retourneren.
 
-### <a name="no-authentication-token-attached-to-the-request"></a>Er is geen verificatie token aan de aanvraag gekoppeld. 
+### <a name="no-authentication-token-attached-to-the-request"></a>Er is geen verificatietoken aan het verzoek gekoppeld. 
 
-Hier volgt een voor beeld van een aanvraag PUT, waarbij de waarde van een geheim wordt ingesteld:
+Hier is een voorbeeld PUT verzoek, het instellen van de waarde van een geheim:
 
 ``` 
 PUT https://putreqexample.vault.azure.net//secrets/DatabaseRotatingPassword?api-version=7.0 HTTP/1.1
@@ -50,15 +50,15 @@ Content-Length: 31
 }
 ```
 
-De header ' autorisatie ' is het toegangs token dat vereist is voor elke aanroep van de Key Vault voor gegevens vlak bewerkingen. Als de header ontbreekt, moet het antwoord 401 zijn.
+De koptekst 'Autorisatie' is het toegangstoken dat vereist is bij elk gesprek naar de Key Vault voor gegevensbewerkingen. Als de koptekst ontbreekt, moet het antwoord 401 zijn.
 
-### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Het token heeft niet de juiste resource die eraan is gekoppeld. 
+### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Het token mist de juiste bron die eraan is gekoppeld. 
 
-Bij het aanvragen van een toegangs token van het Azure OAUTH-eind punt is een para meter met de naam ' resource ' verplicht. De waarde is belang rijk voor de token provider, omdat deze het token voor het beoogde gebruik van het bereik. De resource voor **alle** tokens voor toegang tot een Key Vault is *https:\//Vault.keyvault.net* (zonder afsluitende slash).
+Bij het aanvragen van een toegangstoken van het Azure OAUTH-eindpunt is een parameter met de naam "resource" verplicht. De waarde is belangrijk voor de tokenprovider omdat het token geschikt is voor het beoogde gebruik. De bron voor **alle** tokens om toegang te krijgen tot een Key Vault is *https:\//vault.keyvault.net* (zonder trailing slash).
 
 ### <a name="the-token-is-expired"></a>Het token is verlopen
 
-Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites zoals [http://jwt.calebb.net](http://jwt.calebb.net). Dit is het bovenstaande token dat is gedecodeerd:
+Tokens zijn base64 gecodeerd en de waarden kunnen [http://jwt.calebb.net](http://jwt.calebb.net)worden gedecodeerd op websites zoals . Hier is het bovenstaande token gedecodeerd:
 
 ```
     {
@@ -86,20 +86,20 @@ Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites
 [signature]
 ```
 
-Er kunnen veel belang rijke onderdelen in dit token worden weer geven:
+We zien veel belangrijke onderdelen in dit token:
 
-- AUD (doel groep): de bron van het token. U ziet dat dit <https://vault.azure.net>is. Dit token werkt niet voor resources die niet expliciet overeenkomen met deze waarde, zoals Graph.
-- IAT (uitgegeven op): het aantal maat streepjes sinds het begin van de Epoch wanneer het token is uitgegeven.
-- NBF (niet vóór): het aantal maat streepjes sinds het begin van de epoche wanneer dit token geldig wordt.
-- EXP (verval datum): het aantal maat streepjes sinds het begin van de epoche wanneer dit token verloopt.
-- AppID (toepassings-ID): de GUID voor de toepassings-ID die deze aanvraag indient.
-- TID (Tenant-ID): de GUID voor de Tenant-ID van de principal die deze aanvraag indient
+- aud (publiek): de bron van het token. Merk op <https://vault.azure.net>dat dit . Dit token werkt NIET voor resources die niet expliciet overeenkomen met deze waarde, zoals grafiek.
+- iat (uitgegeven bij): Het aantal teken sinds het begin van het tijdperk toen het token werd uitgegeven.
+- nbf (niet eerder): Het aantal teken sinds het begin van het tijdperk wanneer dit token geldig wordt.
+- exp (vervaldatum): Het aantal teken sinds het begin van het tijdperk wanneer dit token verloopt.
+- appid (applicatie-id): de GUID voor de toepassings-ID die dit verzoek indient.
+- tid (tenant ID): De GUID voor de tenant-ID van de opdrachtgever die dit verzoek doet
 
-Het is belang rijk dat alle waarden correct worden geïdentificeerd in het token om de aanvraag te laten werken. Als alles correct is, resulteert de aanvraag niet in 401.
+Het is belangrijk dat alle waarden goed worden geïdentificeerd in het token om het verzoek te laten werken. Als alles klopt, dan zal het verzoek niet resulteren in 401.
 
-### <a name="troubleshooting-401"></a>Problemen oplossen 401
+### <a name="troubleshooting-401"></a>Probleemoplossing 401
 
-401s moet worden onderzocht vanaf het moment dat het token wordt gegenereerd, voordat de aanvraag wordt gedaan aan de sleutel kluis. In de meeste gevallen wordt code gebruikt om het token aan te vragen. Zodra het token is ontvangen, wordt het door gegeven aan de Key Vault aanvraag. Als de code lokaal wordt uitgevoerd, kunt u Fiddler gebruiken om de aanvraag/reactie voor https://login.microsoftonline.com vast te leggen. Een aanvraag ziet er als volgt uit:
+401s moeten worden onderzocht vanaf het punt van tokengeneratie, voordat het verzoek wordt gedaan naar de sleutelkluis. Over het algemeen wordt code gebruikt om het token aan te vragen. Zodra het token is ontvangen, wordt het doorgegeven aan de Key Vault-aanvraag. Als de code lokaal wordt uitgevoerd, u Fiddler `https://login.microsoftonline.com`gebruiken om de aanvraag/het antwoord op. Een aanvraag ziet er als volgt uit:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
@@ -111,59 +111,59 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-De volgende door de gebruiker opgegeven informatie Mush zijn juist:
+De volgende door de gebruiker verstrekte informatie brij correct zijn:
 
-- De Tenant-ID van de sleutel kluis
-- Bron waarde ingesteld op https %3 A %2 F %2 F kluis. Azure. net (URL-code ring)
+- De sleutelkluistenant-id
+- Resourcewaarde ingesteld op https%3A%2F%2Fvault.azure.net (URL gecodeerd)
 - Client-id
 - Clientgeheim
 
-Zorg ervoor dat de rest van de aanvraag bijna identiek is.
+Zorg ervoor dat de rest van het verzoek vrijwel identiek is.
 
-Als u alleen het toegangs token voor de reactie kunt ophalen, kunt u dit decoderen (zoals hierboven wordt weer gegeven) om ervoor te zorgen dat de Tenant-ID, de client-id (App-ID) en de bron.
+Als u alleen het antwoordtoegangstoken krijgen, u het (zoals hierboven weergegeven) decoderen om ervoor te zorgen dat de tenant-id, de client-id (app-id) en de bron worden bepaald.
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403: onvoldoende machtigingen
+## <a name="http-403-insufficient-permissions"></a>HTTP 403: Onvoldoende machtigingen
 
-HTTP 403 betekent dat de aanvraag is geverifieerd (de aangevraagde identiteit kent), maar de identiteit heeft geen machtiging voor toegang tot de aangevraagde resource. Er zijn twee oorzaken:
+HTTP 403 betekent dat de aanvraag is geverifieerd (het de identiteit van het aanvragen kent), maar dat de identiteit geen toestemming heeft om toegang te krijgen tot de gevraagde bron. Er zijn twee oorzaken:
 
-- Er is geen toegangs beleid voor de identiteit.
-- Het IP-adres van de aanvragende bron is niet white list in de firewall instellingen van de sleutel kluis.
+- Er is geen toegangsbeleid voor de identiteit.
+- Het IP-adres van de aanvragende bron staat niet op de witte lijst in de firewall-instellingen van de sleutelkluis.
 
-HTTP 403 treedt vaak op wanneer de toepassing van de klant niet de client-ID gebruikt die de klant denkt dat deze is. Dit betekent meestal dat het toegangs beleid niet juist is ingesteld voor de daad werkelijke aanroep-id.
+HTTP 403 treedt vaak op wanneer de toepassing van de klant de client-ID niet gebruikt die de klant denkt dat het is. Dat betekent meestal dat het toegangsbeleid niet correct is ingesteld voor de werkelijke belidentiteit.
 
-### <a name="troubleshooting-403"></a>Problemen oplossen 403
+### <a name="troubleshooting-403"></a>Probleemoplossing 403
 
-Schakel eerst logboek registratie in. Zie [Azure Key Vault logboek registratie](key-vault-logging.md)voor instructies over hoe u dit doet.
+Schakel eerst logboekregistratie in. Zie [Azure Key Vault-logboekregistratie](key-vault-logging.md)voor instructies over hoe u dit moet doen.
 
-Zodra logboek registratie is ingeschakeld, kunt u bepalen of de 403 is vanwege het toegangs beleid of het firewall beleid.
+Zodra logboekregistratie is ingeschakeld, u bepalen of de 403 te wijten is aan toegangsbeleid of firewallbeleid.
 
-#### <a name="error-due-to-firewall-policy"></a>Fout vanwege het firewall beleid
+#### <a name="error-due-to-firewall-policy"></a>Fout als gevolg van firewallbeleid
 
-' Client adres (00.00.00.00) is niet geautoriseerd en de aanroeper is geen vertrouwde service '
+"Klantadres (00.00.00.00) is niet geautoriseerd en de beller is geen vertrouwde service"
 
-Er is een beperkte lijst met ' vertrouwde ' Azure-Services. Azure-websites zijn **geen** vertrouwde Azure-service. Zie het blog bericht [Key Vault firewall toegang door Azure-app Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)voor meer informatie.
+Er is een beperkte lijst met "Azure Trusted Services". Azure-websites zijn **geen** vertrouwde Azure-service. Zie voor meer informatie de toegang tot Key Vault Firewall van het blogbericht [Key Vault Firewall door Azure App Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services).
 
-U moet het IP-adres van de Azure-website toevoegen aan de Key Vault om het te kunnen gebruiken.
+U moet het IP-adres van de Azure-website toevoegen aan de Key Vault om het te laten werken.
 
-Als gevolg van het toegangs beleid: Zoek de object-ID voor de aanvraag en zorg ervoor dat de object-ID overeenkomt met het object waarnaar de gebruiker het toegangs beleid probeert toe te wijzen. Er zijn vaak meerdere objecten in de AAD die dezelfde naam hebben, zodat het juiste belang rijk is. Door het toegangs beleid te verwijderen en opnieuw toe te voegen, is het mogelijk om te zien of er meerdere objecten met dezelfde naam bestaan.
+Als u vanwege het toegangsbeleid: zoek de object-id voor de aanvraag en zorg ervoor dat de object-id overeenkomt met het object waaraan de gebruiker het toegangsbeleid probeert toe te wijzen. Er zullen vaak meerdere objecten in de AAD die dezelfde naam hebben, dus het kiezen van de juiste is zeer belangrijk. Door het toegangsbeleid te verwijderen en opnieuw toe te voegen, is het mogelijk om te zien of er meerdere objecten met dezelfde naam bestaan.
 
-Daarnaast is het gebruik van de ' geautoriseerde toepassing ' niet vereist voor het meeste toegangs beleid, zoals weer gegeven in de portal. Een geautoriseerde toepassing wordt gebruikt voor verificatie scenario's ' namens ' die zeldzaam zijn. 
+Bovendien vereisen de meeste toegangsbeleidsregels niet het gebruik van de "Geautoriseerde toepassing" zoals weergegeven in de portal. Geautoriseerde toepassing wordt gebruikt voor "on-behalf-of" authenticatie scenario's, die zeldzaam zijn. 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429: te veel aanvragen
+## <a name="http-429-too-many-requests"></a>HTTP 429: Te veel aanvragen
 
-Beperking treedt op wanneer het aantal aanvragen het opgegeven maximum voor de periode overschrijdt. Als er sprake is van beperking, wordt het antwoord van de Key Vault HTTP 429. Er worden maximum waarden opgegeven voor typen aanvragen. Bijvoorbeeld: het maken van een HSM 2048-bits sleutel is 5 aanvragen per 10 seconden, maar alle andere HSM-trans acties hebben een limiet van 1000 aanvragen/tien seconden. Daarom is het belang rijk om te begrijpen welke typen aanroepen er worden gemaakt bij het bepalen van de oorzaak van de beperking.
-Over het algemeen zijn aanvragen voor de Key Vault beperkt tot 2000 aanvragen/tien seconden. Uitzonde ringen zijn belang rijke bewerkingen, zoals beschreven in [Key Vault service limieten](key-vault-service-limits.md)
+Beperking treedt op wanneer het aantal aanvragen het opgegeven maximum voor de termijn overschrijdt. Als er een beperking optreedt, is het antwoord van de Key Vault HTTP 429. Er zijn vermelde maxima voor soorten verzoeken. Bijvoorbeeld: het maken van een HSM 2048-bit sleutel is 5 aanvragen per 10 seconden, maar alle andere HSM-transacties hebben een limiet van 1000 aanvragen/10 seconden. Daarom is het belangrijk om te begrijpen welke soorten oproepen worden gemaakt bij het bepalen van de oorzaak van throttling.
+Over het algemeen zijn aanvragen voor de Key Vault beperkt tot 2000 aanvragen/10 seconden. Uitzonderingen zijn key operations, zoals gedocumenteerd in [Key Vault-servicelimieten](key-vault-service-limits.md)
 
-### <a name="troubleshooting-429"></a>Problemen oplossen 429
-Het gebruik van deze technieken verloopt als volgt:
+### <a name="troubleshooting-429"></a>Probleemoplossing 429
+Throttling wordt gewerkt rond met behulp van deze technieken:
 
-- Verminder het aantal aanvragen voor de Key Vault door te bepalen of er patronen zijn naar een aangevraagde resource en te proberen deze op te slaan in de aanroepende toepassing. 
+- Verminder het aantal aanvragen voor de Key Vault door te bepalen of er patronen zijn voor een aangevraagde bron en probeer ze in de aanroepende toepassing in de cache te bewaren. 
 
-- Wanneer Key Vault beperking optreedt, past u de aanvraag code aan om een exponentiële uitstel te gebruiken om het opnieuw te proberen. De algoritme wordt hier uitgelegd: [uw app beperken](key-vault-ovw-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- Wanneer Key Vault-beperking optreedt, past u de aanvragende code aan om een exponentiële back-off te gebruiken om opnieuw te proberen. Het algoritme wordt hier uitgelegd: [Hoe u uw app beperken](key-vault-ovw-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-- Als het aantal aanvragen niet kan worden verkleind door caching en tijdgebonden uitstel niet werkt, kunt u de sleutels in meerdere sleutel kluizen splitsen. De service limiet voor één abonnement is 5x de limiet voor individuele Key Vault. Als u meer dan 5 sleutel kluizen gebruikt, moet aandacht worden besteed aan het gebruik van meerdere abonnementen. 
+- Als het aantal aanvragen niet kan worden verminderd door caching en getimede back-off niet werkt, u overwegen de sleutels op te splitsen in meerdere key vaults. De servicelimiet voor één abonnement is 5x de afzonderlijke Key Vault-limiet. Als u meer dan 5 key vaults gebruikt, moet worden overwogen om meerdere abonnementen te gebruiken. 
 
-Gedetailleerde richt lijnen, waaronder aanvragen voor het verhogen van limieten, vindt u hier: [Key Vault beperkings richtlijnen](key-vault-ovw-throttling.md)
+Gedetailleerde richtlijnen, inclusief verzoek om limieten te verhogen, vindt u hier: [Key Vault throttling guidance](key-vault-ovw-throttling.md)
 
 
