@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-voorbeeldscript - Een bestand uploaden naar een container | Microsoft Docs
-description: In dit artikel ziet u hoe u het Azure CLI-script kunt gebruiken om een lokaal bestand te uploaden naar een opslag container.
+description: In dit artikel wordt uitgelegd hoe u het Azure CLI-script gebruiken om een lokaal bestand naar een opslagcontainer te uploaden.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,26 +14,27 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d6720200da341ee466339edde6dded02dd4fddc6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970105"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383001"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI-voorbeeld: Een lokaal bestand uploaden naar een container 
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI-voorbeeld: een lokaal bestand uploaden naar een container
 
 In het Azure CLI-script in dit artikel ziet u hoe u een lokaal bestand kunt uploaden naar een opslagcontainer.
 
-## <a name="prerequisites"></a>Vereisten 
+## <a name="prerequisites"></a>Vereisten
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md).
+* [Een Azure Media Services-account maken](create-account-cli-how-to.md).
+* Beheervan [activa controleren](manage-asset-concept.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Voorbeeldscript
 
-```Azure CLI 
+```azurecli-interactive
 #!/bin/bash
 # Update the following variables for your own settings:
 storageAccountName=build2018storage

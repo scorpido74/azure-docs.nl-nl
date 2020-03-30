@@ -1,6 +1,6 @@
 ---
-title: Just-in-time-toegang tot virtuele machines in Azure Security Center | Microsoft Docs
-description: In dit document wordt gedemonstreerd hoe just-in-time-VM-toegang in Azure Security Center u de toegang tot uw virtuele Azure-machines kunt beheren.
+title: Just-in-time toegang tot virtuele machines in Azure Security Center | Microsoft Documenten
+description: Dit document laat zien hoe just-in-time VM-toegang in Azure Security Center u helpt de toegang tot uw virtuele Azure-machines te beheren.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,207 +9,207 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603983"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheer poorten met Just-in-time-toegang
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheerpoorten met just-in-time toegang
 
-Als u zich in de Standard-prijs categorie van Security Center bevindt (Zie [prijzen](/azure/security-center/security-center-pricing)), kunt u inkomend verkeer naar uw Azure-vm's vergren delen met Just-in-time-toegang (VM) voor virtuele machines. Dit vermindert de bloot stelling aan aanvallen en biedt zo eenvoudig toegang om verbinding te maken met Vm's wanneer dat nodig is.
+Als u de standaardprijslaag van het Beveiligingscentrum (zie [prijzen)](/azure/security-center/security-center-pricing)bevindt, u binnenkomend verkeer naar uw Azure VM's vergrendelen met vm-toegang (Just-in-time). Dit vermindert de blootstelling aan aanvallen en biedt tegelijkertijd gemakkelijke toegang tot vm's wanneer dat nodig is.
 
 > [!NOTE]
-> Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over het klassieke en Resource Manager-implementatie model.
+> Just-in-time VM-toegang voor beveiligingscentrum ondersteunt momenteel alleen VM's die zijn geïmplementeerd via Azure Resource Manager. Zie Azure Resource Manager versus klassieke [implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de klassieke en Resource Manager-implementatiemodellen.
 
 [!INCLUDE [security-center-jit-description](../../includes/security-center-jit-description.md)]
 
-## <a name="configure-jit-on-a-vm"></a>JIT configureren op een virtuele machine
+## <a name="configure-jit-on-a-vm"></a>JIT configureren op een vm
 
-Er zijn drie manieren om een JIT-beleid te configureren op een virtuele machine:
+Er zijn drie manieren om een JIT-beleid op een VM te configureren:
 
 - [JIT-toegang configureren in Azure Security Center](#jit-asc)
 - [JIT-toegang configureren op een Azure VM-pagina](#jit-vm)
-- [Een JIT-beleid op een virtuele machine via een programma configureren](#jit-program)
+- [Een JIT-beleid configureren op een VM-programmatisch](#jit-program)
 
 ## <a name="configure-jit-in-azure-security-center"></a>JIT configureren in Azure Security Center
 
-Vanuit Security Center kunt u een JIT-beleid configureren en toegang aanvragen tot een virtuele machine met behulp van een JIT-beleid
+Vanuit Security Center u een JIT-beleid configureren en toegang tot een VM aanvragen met behulp van een JIT-beleid
 
-### JIT-toegang configureren op een virtuele machine in Security Center<a name="jit-asc"></a>
+### <a name="configure-jit-access-on-a-vm-in-security-center"></a>JIT-toegang configureren op een vm in beveiligingscentrum<a name="jit-asc"></a>
 
 1. Open het dashboard van **Security Center**.
 
-1. Selecteer in het linkerdeel venster **just-in-time-VM-toegang**.
+1. Selecteer in het linkerdeelvenster **just-in-time VM-toegang**.
 
-    ![Tegel just-in-time-VM-toegang](./media/security-center-just-in-time/just-in-time.png)
+    ![Just-in-time VM-toegangstegel](./media/security-center-just-in-time/just-in-time.png)
 
-    Het venster **just-in-time-VM-toegang** wordt geopend en toont informatie over de status van uw vm's:
+    Het **just-in-time VM-toegangsvenster** wordt geopend en toont informatie over de status van uw VM's:
 
-    - **Geconfigureerd** : vm's die zijn geconfigureerd voor ondersteuning van just-in-time-VM-toegang. De gegevens die worden weer gegeven, zijn de afgelopen week en bevatten voor elke VM het aantal goedgekeurde aanvragen, de datum en tijd van laatste toegang en de laatste gebruiker.
-    - **Aanbevolen** : vm's die just-in-time-VM-toegang kunnen ondersteunen, maar die niet zijn geconfigureerd voor. U wordt aangeraden just-in-time-VM-toegangs beheer in te scha kelen voor deze Vm's.
+    - **Geconfigureerd** - VM's die zijn geconfigureerd om just-in-time VM-toegang te ondersteunen. De gepresenteerde gegevens zijn voor de laatste week en bevatten voor elke VM het aantal goedgekeurde aanvragen, de laatste toegangsdatum en -tijd en de laatste gebruiker.
+    - **Aanbevolen** - VM's die just-in-time VM-toegang kunnen ondersteunen, maar niet zijn geconfigureerd. We raden u aan just-in-time VM-toegangscontrole in te schakelen voor deze VM's.
     - **Geen aanbeveling**: redenen waarom een VM mogelijk niet wordt aanbevolen zijn:
-      - Ontbrekende NSG: voor de just-in-time-oplossing moet een NSG aanwezig zijn.
-      - Klassieke VM-Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd. Een klassieke implementatie wordt niet ondersteund door de just-in-time-oplossing. 
-      - Andere-een VM bevindt zich in deze categorie als de just-in-time-oplossing is uitgeschakeld in het beveiligings beleid van het abonnement of de resource groep, of als op de virtuele machine een openbaar IP-adres ontbreekt en er geen NSG aanwezig is.
+      - Ontbrekende NSG - Voor de just-in-time-oplossing moet een NSG aanwezig zijn.
+      - De just-in-time VM-toegang voor het klassieke VM - Beveiligingscentrum ondersteunt momenteel alleen VM's die zijn geïmplementeerd via Azure Resource Manager. Een klassieke implementatie wordt niet ondersteund door de just-in-time oplossing. 
+      - Andere - Een VM bevindt zich in deze categorie als de just-in-time-oplossing is uitgeschakeld in het beveiligingsbeleid van het abonnement of de resourcegroep, of als de VM een openbaar IP-adres mist en geen NSG heeft.
 
-1. Selecteer het tabblad **Aanbevolen** .
+1. Selecteer het **tabblad Aanbevolen.**
 
-1. Onder **virtuele machine**klikt u op de virtuele machines die u wilt inschakelen. Hiermee wordt een vinkje bij een virtuele machine geplaatst.
+1. Klik **onder VIRTUELE MACHINE**op de VM's die u wilt inschakelen. Hiermee wordt een vinkje naast een VM plaatst.
 
-      ![Just-in-time-toegang inschakelen](./media/security-center-just-in-time/enable-just-in-time.png)
+      ![Just-in-time toegang inschakelen](./media/security-center-just-in-time/enable-just-in-time.png)
 
-1. Klik op **JIT inschakelen op vm's**. Er wordt een deel venster geopend met de standaard poorten die worden aanbevolen door Azure Security Center:
-    - 22-SSH
+1. Klik **op JIT inschakelen op VM's**. Er wordt een deelvenster geopend met de standaardpoorten die worden aanbevolen door Azure Security Center:
+    - 22 - SSH
     - 3389 - RDP
     - 5985 - WinRM 
     - 5986 - WinRM
-1. U kunt desgewenst aangepaste poorten toevoegen aan de lijst:
+1. Optioneel u aangepaste poorten aan de lijst toevoegen:
 
-      1. Klik op **Toevoegen**. Het venster **poort configuratie toevoegen** wordt geopend.
-      1. Voor elke poort die u wilt configureren, zowel standaard als aangepast, kunt u de volgende instellingen aanpassen:
-            - **Protocol type**: het protocol dat is toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd.
-            - **Toegestane IP-adressen van bron**-de IP-bereiken die op deze poort zijn toegestaan wanneer een aanvraag wordt goedgekeurd.
-            - **Maximale aanvraag tijd**: de maximale tijd venster gedurende welke een specifieke poort kan worden geopend.
+      1. Klik op**toevoegen**. Het venster **Poortconfiguratie toevoegen** wordt geopend.
+      1. Voor elke poort die u wilt configureren, zowel standaard als aangepast, u de volgende instellingen aanpassen:
+            - **Protocoltype**- Het protocol dat is toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd.
+            - **Toegestane bron-IP-adressen**- De IP-bereiken die zijn toegestaan op deze poort wanneer een aanvraag wordt goedgekeurd.
+            - **Maximale aanvraagtijd**- Het maximale tijdvenster waarin een specifieke poort kan worden geopend.
 
      1. Klik op **OK**.
 
 1. Klik op **Opslaan**.
 
 > [!NOTE]
->Wanneer JIT-VM-toegang is ingeschakeld voor een virtuele machine, maakt Azure Security Center de regels ' alle binnenkomend verkeer weigeren ' voor de geselecteerde poorten in de netwerk beveiligings groepen die zijn gekoppeld en Azure Firewall. Als er andere regels zijn gemaakt voor de geselecteerde poorten, hebben de bestaande regels voor rang op de nieuwe regels ' alle inkomende verkeer weigeren '. Als er geen bestaande regels zijn op de geselecteerde poorten, hebben de nieuwe regels voor het weigeren van binnenkomend verkeer de hoogste prioriteit in de netwerk beveiligings groepen en de Azure Firewall.
+>Wanneer JIT VM Access is ingeschakeld voor een VM, maakt Azure Security Center 'alle binnenkomende verkeersregels weigeren' regels voor de geselecteerde poorten in de netwerkbeveiligingsgroepen die zijn gekoppeld en Azure Firewall ermee. Als er andere regels zijn gemaakt voor de geselecteerde poorten, hebben de bestaande regels voorrang op de nieuwe regels 'alle binnenkomende verkeer weigeren'. Als er geen bestaande regels zijn voor de geselecteerde poorten, hebben de nieuwe regels 'alle binnenkomende verkeer weigeren' de hoogste prioriteit in de netwerkbeveiligingsgroepen en Azure Firewall.
 
 
 ## <a name="request-jit-access-via-security-center"></a>JIT-toegang aanvragen via Security Center
 
-Om toegang te vragen tot een virtuele machine via Security Center:
+Ga als lid van het Beveiligde Centrum om toegang tot een vm aan te vragen:
 
-1. Onder **just-in-time-VM-toegang**selecteert u het tabblad **geconfigureerd** .
+1. Selecteer onder **Just-in-time VM-toegang**het tabblad **Geconfigureerd.**
 
-1. Onder **virtuele machine**klikt u op de virtuele machines waarvoor u toegang wilt aanvragen. Hiermee wordt een vinkje naast de virtuele machine geplaatst.
+1. Klik **onder Virtuele machine**op de VM's waarvoor u toegang wilt aanvragen. Hiermee wordt een vinkje naast de VM plaatst.
 
-    - Het pictogram in de kolom **verbindings Details** geeft aan of JIT is ingeschakeld op de NSG of FW. Als de functie is ingeschakeld op beide, wordt alleen het pictogram Firewall weer gegeven.
+    - Het pictogram in de kolom **Verbindingsdetails** geeft aan of JIT is ingeschakeld op de NSG of FW. Als deze op beide is ingeschakeld, wordt alleen het firewallpictogram weergegeven.
 
-    - In de kolom **verbindings Details** vindt u de informatie die nodig is om verbinding te maken met de virtuele machine en de bijbehorende open poorten.
+    - De kolom **Verbindingsdetails** bevat de informatie die nodig is om de VM en de geopende poorten met elkaar te verbinden.
 
       ![Just-in-time-toegang aanvragen](./media/security-center-just-in-time/request-just-in-time-access.png)
 
-1. Klik op **toegang aanvragen**. Het venster **toegang tot aanvragen** wordt geopend.
+1. Klik **op Toegang tot aanvragen**. Het **toegangsvenster voor aanvragen** wordt geopend.
 
-      ![JIT-Details](./media/security-center-just-in-time/just-in-time-details.png)
+      ![JIT-details](./media/security-center-just-in-time/just-in-time-details.png)
 
-1. Configureer onder **toegang aanvragen**voor elke virtuele machine de poorten die u wilt openen en de bron-IP-adressen waarop de poort is geopend en het tijd venster waarvoor de poort wordt geopend. Het is alleen mogelijk om toegang aan te vragen voor de poorten die zijn geconfigureerd in het just-in-time-beleid. Elke poort heeft een Maxi maal toegestane tijd die is afgeleid van het just-in-time-beleid.
+1. Configureer onder **Toegang tot aanvragen**voor elke virtuele machine de poorten die u wilt openen en de bron-IP-adressen waarop de poort wordt geopend en het tijdvenster waarvoor de poort wordt geopend. Het is alleen mogelijk om toegang te vragen tot de poorten die zijn geconfigureerd in het just-in-time beleid. Elke poort heeft een maximaal toegestane tijd die is afgeleid van het just-in-time-beleid.
 
-1. Klik op **poorten openen**.
+1. Klik **op Poorten openen**.
 
 > [!NOTE]
-> Als een gebruiker die toegang aanvraagt zich achter een proxy bevindt, werkt de optie **Mijn IP** mogelijk niet. Mogelijk moet u het volledige IP-adres bereik van de organisatie definiëren.
+> Als een gebruiker die om toegang vraagt achter een proxy zit, werkt de optie **Mijn IP** mogelijk niet. Mogelijk moet u het volledige IP-adresbereik van de organisatie definiëren.
 
 
 
-## <a name="edit-a-jit-access-policy-via-security-center"></a>Een JIT-toegangs beleid bewerken via Security Center
+## <a name="edit-a-jit-access-policy-via-security-center"></a>Een JIT-toegangsbeleid bewerken via Security Center
 
-U kunt het bestaande just-in-time-beleid van een virtuele machine wijzigen door een nieuwe poort toe te voegen en te configureren voor de beveiliging van die virtuele machine of door een andere instelling te wijzigen die betrekking heeft op een reeds beveiligde poort.
+U het bestaande just-in-time-beleid van een vm wijzigen door een nieuwe poort toe te voegen en te configureren om voor die vm te beschermen, of door een andere instelling met betrekking tot een reeds beveiligde poort te wijzigen.
 
-Een bestaande just-in-time-beleid van een virtuele machine bewerken:
+Ga als lid van het werk om een bestaand just-in-time beleid van een virtuele machine te bewerken:
 
-1. Op het tabblad **geconfigureerd** , onder **vm's**, selecteert u een virtuele machine waaraan u een poort wilt toevoegen door te klikken op de drie puntjes in de rij voor die virtuele machine. 
+1. Selecteer op het tabblad **Geconfigureerd** onder **VM's**een vm waaraan u een poort wilt toevoegen door op de drie puntjes in de rij voor die vm te klikken. 
 
 1. Selecteer **Bewerken**.
 
-1. Onder **JIT VM-toegangs configuratie**kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen. 
-  ![JIT-VM-toegang](./media/security-center-just-in-time/edit-policy.png)
+1. Onder **jit-vm-toegangsconfiguratie**u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen. 
+  ![jit vm-toegang](./media/security-center-just-in-time/edit-policy.png)
 
 
 
-## <a name="audit-jit-access-activity-in-security-center"></a>JIT-toegangs activiteit controleren in Security Center
+## <a name="audit-jit-access-activity-in-security-center"></a>JIT-toegangsactiviteit controleren in Security Center
 
-U kunt inzicht krijgen in VM-activiteiten met zoeken in Logboeken. Logboeken weer geven:
+U inzicht krijgen in VM-activiteiten met behulp van logboekzoekopdrachten. Logboeken weergeven:
 
-1. Onder **just-in-time-VM-toegang**selecteert u het tabblad **geconfigureerd** .
-2. Onder **vm's**selecteert u een virtuele machine om informatie weer te geven over door te klikken op de drie puntjes in de rij voor die VM en selecteert u **activiteiten logboek** in het menu. Het **activiteiten logboek** wordt geopend.
+1. Selecteer onder **Just-in-time VM-toegang**het tabblad **Geconfigureerd.**
+2. Selecteer **onder VM's**een vm om informatie over weer te geven door op de drie puntjes in de rij voor die vm te klikken en **selecteer Activiteitslogboek** in het menu. Het **logboek Activiteit** wordt geopend.
 
-   ![Activiteiten logboek selecteren](./media/security-center-just-in-time/select-activity-log.png)
+   ![Activiteitslogboek selecteren](./media/security-center-just-in-time/select-activity-log.png)
 
-   Het **activiteiten logboek** bevat een gefilterde weer gave van eerdere bewerkingen voor die virtuele machine, samen met tijd, datum en abonnement.
+   **Activiteitenlogboek** biedt een gefilterde weergave van eerdere bewerkingen voor die vm, samen met tijd, datum en abonnement.
 
-U kunt de logboek gegevens downloaden door **hier te klikken om alle items te downloaden als CSV**-bestand.
+U de loginformatie downloaden door **Klik hier om alle items als CSV te downloaden.**
 
-Wijzig de filters en klik op **Toep assen** om een zoek opdracht en logboek te maken.
+Wijzig de filters en klik op **Toepassen** om een zoekopdracht en logboek te maken.
 
 
 
-## JIT-toegang vanaf een Azure VM-pagina configureren<a name="jit-vm"></a>
+## <a name="configure-jit-access-from-an-azure-vms-page"></a>JIT-toegang configureren vanaf de pagina van een Azure VM<a name="jit-vm"></a>
 
-Voor uw gemak kunt u vanuit de pagina van de virtuele machine in Security Center verbinding maken met een virtuele machine met behulp van JIT.
+Voor uw gemak u rechtstreeks verbinding maken met een VM via JIT vanuit de pagina van de VM in Security Center.
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>JIT-toegang op een virtuele machine configureren via de Azure VM-pagina
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>JIT-toegang op een vm configureren via de Azure VM-pagina
 
-Als u de just-in-time-toegang op uw Vm's eenvoudig wilt implementeren, kunt u een virtuele machine zo instellen dat alleen just-in-time-toegang rechtstreeks vanuit de virtuele machine wordt toegestaan.
+Om het eenvoudig te maken om just-in-time toegang uit te rollen in uw VM's, u een VM instellen om alleen just-in-time toegang rechtstreeks vanuit de VM toe te staan.
 
-1. Zoek in het [Azure Portal](https://ms.portal.azure.com)naar **virtuele machines**en selecteer deze. 
-2. Selecteer de virtuele machine die u wilt beperken tot just-in-time-toegang.
-3. Selecteer in het menu **configuratie**.
-4. Onder **just-in-time-toegang**selecteert u **just-in-time inschakelen**. 
+1. Zoek in de [Azure-portal](https://ms.portal.azure.com)naar virtuele **machines**en selecteer deze. 
+2. Selecteer de virtuele machine die u wilt beperken tot just-in-time toegang.
+3. Selecteer **Configuratie**in het menu .
+4. Selecteer **Just-in-time toegang onder Just-in-time-toegang**de optie **Just-in-time inschakelen**. 
 
-Dit maakt just-in-time-toegang voor de virtuele machine mogelijk met de volgende instellingen:
+Dit maakt just-in-time toegang voor de VM mogelijk met behulp van de volgende instellingen:
 
 - Windows-servers:
     - RDP-poort 3389
-    - Drie uur voor Maxi maal toegestane toegang
-    - Toegestane IP-adressen van bron worden ingesteld op een
-- Linux-servers:
+    - Drie uur maximaal toegestane toegang
+    - Toegestane bron-IP-adressen is ingesteld op
+- Linux servers:
     - SSH-poort 22
-    - Drie uur voor Maxi maal toegestane toegang
-    - Toegestane IP-adressen van bron worden ingesteld op een
+    - Drie uur maximaal toegestane toegang
+    - Toegestane bron-IP-adressen is ingesteld op
      
-Als een virtuele machine al just-in-time is ingeschakeld, kunt u, wanneer u naar de pagina configuratie gaat, zien dat just-in-time is ingeschakeld en kunt u de koppeling gebruiken om het beleid in Azure Security Center te openen om de instellingen weer te geven en te wijzigen.
+Als een vm al just-in-time is ingeschakeld, u bij het openen van de configuratiepagina zien dat just-in-time is ingeschakeld en u de koppeling gebruiken om het beleid in Azure Security Center te openen om de instellingen weer te geven en te wijzigen.
 
-![JIT-configuratie in VM](./media/security-center-just-in-time/jit-vm-config.png)
+![jit config in vm](./media/security-center-just-in-time/jit-vm-config.png)
 
-### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>JIT-toegang aanvragen tot een virtuele machine via de pagina van een Azure-VM
+### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>JIT-toegang tot een VM aanvragen via de pagina van een Azure VM
 
-Wanneer u in de Azure Portal probeert verbinding te maken met een virtuele machine, controleert Azure of u een just-in-time-toegangs beleid op die VM hebt geconfigureerd.
+In de Azure-portal controleert Azure wanneer u verbinding probeert te maken met een vm of u een just-in-time toegangsbeleid hebt geconfigureerd op die VM.
 
-- Als u een JIT-beleid op de virtuele machine hebt geconfigureerd, kunt u op **toegang aanvragen** klikken om toegang te verlenen volgens het JIT-beleid dat is ingesteld voor de virtuele machine. 
+- Als u een JIT-beleid hebt geconfigureerd op de VM, u op **Toegang aanvragen** om toegang te verlenen in overeenstemming met het JIT-beleid voor de VM klikken. 
 
-  >![JIT-aanvraag](./media/security-center-just-in-time/jit-request.png)
+  >![jit-verzoek](./media/security-center-just-in-time/jit-request.png)
 
-  Toegang is aangevraagd met de volgende standaard parameters:
+  Toegang wordt aangevraagd met de volgende standaardparameters:
 
-  - **bron-IP**: ' any ' (*) (kan niet worden gewijzigd)
-  - **tijds bereik**: drie uur (kan niet worden gewijzigd) <!--Isn't this set in the policy-->
-  - **poort nummer** RDP-poort 3389 voor Windows/poort 22 voor Linux (kan worden gewijzigd)
+  - **bron-IP**: 'Any' (*) (kan niet worden gewijzigd)
+  - **tijdsbereik**: Drie uur (kan niet worden gewijzigd) <!--Isn't this set in the policy-->
+  - **poortnummer** RDP-poort 3389 voor Windows / poort 22 voor Linux (kan worden gewijzigd)
 
     > [!NOTE]
-    > Nadat een aanvraag is goedgekeurd voor een virtuele machine die wordt beveiligd door Azure Firewall, geeft Security Center de gebruiker de juiste verbindings gegevens (de poort toewijzing van de tabel DNAT) die moet worden gebruikt om verbinding te maken met de virtuele machine.
+    > Nadat een aanvraag is goedgekeurd voor een VM die is beveiligd door Azure Firewall, biedt Security Center de gebruiker de juiste verbindingsgegevens (de poorttoewijzing uit de DNAT-tabel) om verbinding te maken met de VM.
 
-- Als u geen JIT hebt geconfigureerd op een virtuele machine, wordt u gevraagd om een JIT-beleid te configureren.
+- Als u geen JIT-geconfigureerd hebt op een virtuele machine, wordt u gevraagd er een JIT-beleid op te configureren.
 
-  ![JIT-prompt](./media/security-center-just-in-time/jit-prompt.png)
+  ![jit prompt](./media/security-center-just-in-time/jit-prompt.png)
 
-## Een JIT-beleid op een virtuele machine via een programma configureren<a name="jit-program"></a>
+## <a name="configure-a-jit-policy-on-a-vm-programmatically"></a>Een JIT-beleid configureren op een VM-programmatisch<a name="jit-program"></a>
 
-U kunt just-in-time instellen en gebruiken via REST Api's en via Power shell.
+U just-in-time instellen en gebruiken via REST API's en via PowerShell.
 
-### <a name="jit-vm-access-via-rest-apis"></a>JIT-VM-toegang via REST-Api's
+### <a name="jit-vm-access-via-rest-apis"></a>JIT VM toegang via REST API's
 
-De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Center-API. U kunt informatie krijgen over geconfigureerde Vm's, nieuwe toevoegen, toegang aanvragen tot een virtuele machine en meer via deze API. Zie [JIT-netwerk toegangs beleid](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)voor meer informatie over de just-in-time-rest API.
+De just-in-time VM-toegangsfunctie kan worden gebruikt via de Azure Security Center API. U informatie krijgen over geconfigureerde VM's, nieuwe toevoegen, toegang tot een VM aanvragen en meer via deze API. Zie [Jit Network Access Policies](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)voor meer informatie over de just-in-time REST API.
 
-### <a name="jit-vm-access-via-powershell"></a>JIT-VM-toegang via Power shell
+### <a name="jit-vm-access-via-powershell"></a>JIT VM-toegang via PowerShell
 
-Gebruik de officiële Azure Security Center Power shell-cmdlets en `Set-AzJitNetworkAccessPolicy`om de just-in-time-toegang tot een VM via Power shell te gebruiken.
+Als u de just-in-time VM-toegangsoplossing via PowerShell wilt gebruiken, gebruikt `Set-AzJitNetworkAccessPolicy`u de officiële PowerShell-cmdlets van azure security center, en specifiek.
 
-In het volgende voor beeld wordt een just-in-time-VM-toegangs beleid ingesteld op een specifieke virtuele machine en worden de volgende opties ingesteld:
+In het volgende voorbeeld wordt een just-in-time VM-toegangsbeleid ingesteld op een specifieke virtuele machine en wordt het volgende ingesteld:
 
-1.  Sluit poort 22 en 3389.
+1.  Sluit poorten 22 en 3389.
 
-2.  Stel een maximum tijd venster van drie uur in voor elke periode zodat deze kan worden geopend per goedgekeurde aanvraag.
-3.  Hiermee staat u toe dat de gebruiker die toegang aanvraagt om de bron-IP-adressen te beheren en de gebruiker in staat stelt een geslaagde sessie te maken op een goedgekeurde just-in-time-toegangs aanvraag.
+2.  Stel een maximumtijdvenster van 3 uur in voor elk, zodat ze per goedgekeurde aanvraag kunnen worden geopend.
+3.  Hiermee kan de gebruiker die toegang vraagt om de bron-IP-adressen te beheren en kan de gebruiker een succesvolle sessie instellen op een goedgekeurd just-in-time toegangsverzoek.
 
-Voer de volgende handelingen uit in Power shell om dit te bewerkstelligen:
+Voer het volgende uit in PowerShell om dit te bereiken:
 
-1.  Wijs een variabele toe die het just-in-time-VM-toegangs beleid voor een virtuele machine bevat:
+1.  Wijs een variabele toe die het just-in-time VM-toegangsbeleid voor een vm bevat:
 
         $JitPolicy = (@{
          id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -224,20 +224,20 @@ Voer de volgende handelingen uit in Power shell om dit te bewerkstelligen:
              allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
 
-2.  Voeg het just-in-time-VM-toegangs beleid in op een matrix:
+2.  Voeg het vm-just-in-time VM-toegangsbeleid in een array in:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Configureer het just-in-time-toegangs beleid voor de virtuele machine op de geselecteerde VM:
+3.  Configureer het just-in-time VM-toegangsbeleid op de geselecteerde VM:
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
-### <a name="request-access-to-a-vm-via-powershell"></a>Toegang aanvragen tot een virtuele machine via Power shell
+### <a name="request-access-to-a-vm-via-powershell"></a>Toegang tot een VM aanvragen via PowerShell
 
-In het volgende voor beeld ziet u een just-in-time-toegangs aanvraag voor een virtuele machine naar een specifieke virtuele machine waarvoor poort 22 is aangevraagd voor het openen van een specifiek IP-adres en voor een specifieke hoeveelheid tijd:
+In het volgende voorbeeld ziet u een just-in-time VM-toegangsverzoek naar een specifieke vm waarin poort 22 wordt gevraagd om te worden geopend voor een specifiek IP-adres en voor een bepaalde hoeveelheid tijd:
 
-Voer het volgende uit in Power shell:
-1.  De toegangs eigenschappen van de VM-aanvraag configureren
+Voer het volgende uit in PowerShell:
+1.  De eigenschappen voor toegang tot vm-aanvragen configureren
 
         $JitPolicyVm1 = (@{
           id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
@@ -245,32 +245,32 @@ Voer het volgende uit in Power shell:
            number=22;
            endTimeUtc="2018-09-17T17:00:00.3658798Z";
            allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  De para meters voor de VM-toegangs aanvraag invoegen in een matrix:
+2.  De parameters voor vm-toegangsaanvragen in een array invoegen:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  De aanvraag toegang verzenden (gebruik de resource-ID die u in stap 1 hebt ontvangen)
+3.  De aanvraagtoegang verzenden (gebruik de bron-id die u hebt in stap 1)
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
-Zie de [Power shell-cmdlet-documentatie](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)voor meer informatie.
+Zie voor meer informatie de [PowerShell-cmdlet-documentatie](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
-## <a name="automatic-cleanup-of-redundant-jit-rules"></a>Automatisch opschonen van redundante JIT-regels 
+## <a name="automatic-cleanup-of-redundant-jit-rules"></a>Automatisch opruimen van overbodige JIT-regels 
 
-Telkens wanneer u een JIT-beleid bijwerkt, wordt automatisch een Cleanup-hulp programma uitgevoerd om de geldigheid van de volledige ruleset te controleren. Het hulp programma zoekt naar verschillen tussen regels in uw beleid en regels in het NSG. Als het hulp programma voor opschonen een niet-overeenkomend item detecteert, wordt de oorzaak bepaald en, wanneer het veilig is om dit te doen, verwijdert u ingebouwde regels die niet meer nodig zijn. De verruiming verwijdert nooit regels die u hebt gemaakt.
+Wanneer u een JIT-beleid bijwerkt, wordt er automatisch een opschoningstool uitgevoerd om de geldigheid van uw hele regelset te controleren. De tool zoekt naar discrepanties tussen regels in uw beleid en regels in de NSG. Als het opruimgereedschap een mismatch vindt, bepaalt het de oorzaak en verwijdert het, wanneer het veilig is om dit te doen, ingebouwde regels weg die niet meer nodig zijn. De reiniger verwijdert nooit regels die u hebt gemaakt.
 
-Voor beelden van scenario's waarin de Removal een ingebouwde regel kan verwijderen:
+Voorbeelden van scenario's waarin de reiniger een ingebouwde regel kan verwijderen:
 
-- Wanneer er twee regels met identieke definities bestaan en een hogere prioriteit heeft dan de andere, (wat betekent dat de regel met een lagere prioriteit nooit wordt gebruikt)
-- Wanneer een regel beschrijving de naam bevat van een virtuele machine die niet overeenkomt met de doel-IP in de regel 
+- Wanneer er twee regels met identieke definities bestaan en de ene een hogere prioriteit heeft dan de andere (wat betekent dat de regel met een lagere prioriteit nooit zal worden gebruikt)
+- Wanneer een regelbeschrijving de naam van een VM bevat die niet overeenkomt met het doel-IP in de regel 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u met Just-in-time-VM-toegang in Security Center de toegang tot uw virtuele Azure-machines kunt beheren.
+In dit artikel leert u hoe just-in-time VM-toegang in beveiligingscentrum u helpt de toegang tot uw virtuele Azure-machines te beheren.
 
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+Zie de volgende onderwerpen voor meer informatie over Security Center:
 
-- [Beveiligings beleid instellen](tutorial-security-policy.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
-- [Aanbevelingen voor beveiliging beheren](security-center-recommendations.md) : Ontdek hoe u met aanbevelingen uw Azure-resources kunt beveiligen.
-- [Bewaking van beveiligings status](security-center-monitoring.md) : Leer hoe u de status van uw Azure-resources kunt bewaken.
+- [Beveiligingsbeleid instellen](tutorial-security-policy.md) : meer informatie over het configureren van beveiligingsbeleid voor uw Azure-abonnementen en resourcegroepen.
+- [Beveiligingsaanbevelingen beheren](security-center-recommendations.md) : lees hoe aanbevelingen u helpen uw Azure-bronnen te beschermen.
+- [Bewaking van de beveiligingsstatus](security-center-monitoring.md) : meer informatie over het bewaken van de status van uw Azure-bronnen.

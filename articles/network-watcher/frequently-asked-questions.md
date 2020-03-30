@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Network Watcher | Microsoft Docs
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Azure Network Watcher-service.
+title: Veelgestelde vragen (FAQ) over Azure Network Watcher | Microsoft Documenten
+description: In dit artikel worden veelgestelde vragen over de Azure Network Watcher-service beantwoord.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,97 +14,97 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471853"
 ---
-# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen over Azure Network Watcher
-De [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -service biedt een reeks hulpprogram ma's voor het bewaken, diagnosticeren, weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk. In dit artikel vindt u antwoorden op veelgestelde vragen over de service.
+# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen (FAQ) over Azure Network Watcher
+De [Azure Network Watcher-service](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) biedt een reeks hulpprogramma's voor het bewaken, diagnosticeren, bekijken van statistieken en het in- of uitschakelen van logboeken voor resources in een virtueel Azure-netwerk. In dit artikel worden veelgestelde vragen over de service beantwoord.
 
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-is-network-watcher"></a>Wat is Network Watcher?
-Network Watcher is ontworpen om de netwerk status van IaaS-onderdelen (Infrastructure-as-a-Service) te controleren en te herstellen, waaronder Virtual Machines, virtuele netwerken, toepassings gateways, load balancers en andere bronnen in een virtueel Azure-netwerk. Het is geen oplossing voor het bewaken van de PaaS-infra structuur (platform-as-a-Service) of voor het ophalen van Web/Mobile-analyses.
+Network Watcher is ontworpen om de netwerkstatus van IaaS-componenten (Infrastructure-as-a-Service) te bewaken en te herstellen, waaronder virtuele machines, virtuele netwerken, toepassingsgateways, load-balancers en andere bronnen in een virtueel Azure-netwerk. Het is geen oplossing voor het monitoren van PaaS (Platform-as-a-Service) infrastructuur of het verkrijgen van web/mobile analytics.
 
-### <a name="what-tools-does-network-watcher-provide"></a>Welke hulpprogram ma's Network Watcher bieden?
-Network Watcher biedt drie belang rijke sets mogelijkheden
+### <a name="what-tools-does-network-watcher-provide"></a>Welke tools biedt Network Watcher?
+Network Watcher biedt drie belangrijke sets van mogelijkheden
 * Bewaking
-  * In de [topologie weergave](https://docs.microsoft.com/azure/network-watcher/view-network-topology) ziet u de resources in uw virtuele netwerk en de relaties daartussen.
-  * Met [verbindings monitor](https://docs.microsoft.com/azure/network-watcher/connection-monitor) kunt u de connectiviteit en latentie tussen een virtuele machine en een andere netwerk bron bewaken.
-  * Met [netwerk prestatie meter](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) kunt u connectiviteit en latentie bewaken over hybride netwerk architecturen, Expressroute-circuits en service/toepassings eindpunten.  
+  * [De topologieweergave](https://docs.microsoft.com/azure/network-watcher/view-network-topology) toont u de bronnen in uw virtuele netwerk en de relaties tussen deze netwerken.
+  * [Met Connection Monitor](https://docs.microsoft.com/azure/network-watcher/connection-monitor) u de connectiviteit en latentie tussen een VM en een andere netwerkbron controleren.
+  * [Met de netwerkprestatiemonitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) u de connectiviteit en latencies bewaken voor hybride netwerkarchitecturen, Expressroute-circuits en service-/toepassingseindpunten.  
 * Diagnostiek
-  * Met [IP-stroom controle](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) kunt u problemen met verkeer filteren op een VM-niveau detecteren.
-  * [Volgende hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) helpt u bij het controleren van verkeers routes en het detecteren van routerings problemen.
-  * [Met verbindings problemen oplossen](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) kunt u een eenmalige verbinding en latentie controle tussen een virtuele machine en een andere netwerk bron.
-  * Met [pakket opname](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) kunt u al het verkeer op een VM in uw virtuele netwerk vastleggen.
-  * [Met VPN-problemen oplossen](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) voert u meerdere diagnostische controles uit op uw VPN-gateways en verbindingen om problemen met de fout op te lossen.
+  * [Met IP Flow Verify](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) u problemen met het filteren van verkeer op VM-niveau detecteren.
+  * [Next Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) helpt u bij het verifiëren van verkeersroutes en het detecteren van routeringsproblemen.
+  * [Verbindingsproblemen](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) maken een eenmalige connectiviteits- en latentiecontrole mogelijk tussen een VM en een andere netwerkbron.
+  * [Packet Capture](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) stelt u in staat om al het verkeer op een VM in uw virtuele netwerk vast te leggen.
+  * [VPN Troubleshoot](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) voert meerdere diagnostische controles uit op uw VPN-gateways en verbindingen om problemen met foutopsporing te helpen.
 * Logboekregistratie
-  * Met [NSG-stroom logboeken](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) kunt u al het verkeer in uw [netwerk beveiligings groepen registreren (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview)
-  * [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) verwerkt de gegevens van uw NSG-stroom logboek om uw netwerk verkeer te visualiseren, op te vragen, te analyseren en te begrijpen.
+  * [Met NSG Flow Logs](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) u al het verkeer registreren in uw [Network Security Groups (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview)
+  * [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) verwerkt uw NSG Flow Log-gegevens waarmee u uw netwerkverkeer visualiseren, opvragen, analyseren en begrijpen.
 
 
-Zie de [overzichts pagina van Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)voor meer informatie.
+Zie de [overzichtspagina van Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)voor meer gedetailleerde informatie.
 
 
-### <a name="how-does-network-watcher-pricing-work"></a>Hoe werkt Network Watcher prijzen?
-Ga naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) voor Network Watcher onderdelen en hun prijzen.
+### <a name="how-does-network-watcher-pricing-work"></a>Hoe werkt de prijzen van Network Watcher?
+Ga naar [de prijspagina](https://azure.microsoft.com/pricing/details/network-watcher/) voor network watcher-componenten en de prijzen ervan.
 
-### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Welke regio's worden Network Watcher ondersteund/beschikbaar in?
-U kunt de nieuwste regionale Beschik baarheid bekijken op de [pagina Beschik baarheid van Azure-service](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>In welke regio's wordt Network Watcher ondersteund/beschikbaar in welke regio's?
+U de nieuwste regionale beschikbaarheid bekijken op de [beschikbaarheidspagina van Azure Service](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
 
-### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Welke machtigingen zijn er nodig om Network Watcher te gebruiken?
-Zie de lijst met [RBAC-machtigingen die zijn vereist voor het gebruik van Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Voor het implementeren van resources hebt u Inzender machtigingen nodig voor de NetworkWatcherRG (zie hieronder).
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Welke machtigingen zijn nodig om Network Watcher te gebruiken?
+Bekijk de lijst met [RBAC-machtigingen die nodig zijn om Network Watcher te gebruiken.](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions) Voor het implementeren van resources hebt u machtigingen voor bijdragen aan de NetworkWatcherRG nodig (zie hieronder).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Hoe kan ik Network Watcher inschakelen?
-De Network Watcher-service wordt [automatisch ingeschakeld](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) voor elk abonnement.
+De Network Watcher-service is [automatisch ingeschakeld](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) voor elk abonnement.
 
-### <a name="what-is-the-network-watcher-deployment-model"></a>Wat is het Network Watcher-implementatie model?
-De Network Watcher bovenliggende resource wordt geïmplementeerd met een uniek exemplaar in elke regio. Naamgevings indeling: NetworkWatcher_RegionName. Voor beeld: NetworkWatcher_centralus is de Network Watcher resource voor de regio ' centraal VS '.
+### <a name="what-is-the-network-watcher-deployment-model"></a>Wat is het implementatiemodel van Network Watcher?
+De bovenliggende bron Network Watcher wordt geïmplementeerd met een unieke instantie in elke regio. Naamgevingsindeling: NetworkWatcher_RegionName. Voorbeeld: NetworkWatcher_centralus is de Netwerkwatcher-bron voor de regio 'Centraal VS'.
 
 ### <a name="what-is-the-networkwatcherrg"></a>Wat is de NetworkWatcherRG?
-Network Watcher resources bevinden zich in de verborgen **NetworkWatcherRG** -resource groep die automatisch wordt gemaakt. De NSG-stroom logboeken resource is bijvoorbeeld een onderliggende bron van Network Watcher en is ingeschakeld in de NetworkWatcherRG.
+Network Watcher-bronnen bevinden zich in de verborgen **NetworkWatcherRG-brongroep** die automatisch wordt gemaakt. De NSG Flow Logs-bron is bijvoorbeeld een onderliggende bron van Network Watcher en is ingeschakeld in de NetworkWatcherRG.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Waarom moet ik de Network Watcher-extensie installeren? 
-De uitbrei ding Network Watcher is vereist voor elke functie die verkeer van een virtuele machine moet genereren of onderscheppen. 
+De Network Watcher-extensie is vereist voor elke functie die verkeer van een vm moet genereren of onderscheppen. 
 
-### <a name="which-features-require-the-network-watcher-extension"></a>Voor welke functies is de Network Watcher-extensie vereist?
-De pakket opname, verbindings problemen en de functies voor verbindings controle moeten de Network Watcher extensie bevatten.
+### <a name="which-features-require-the-network-watcher-extension"></a>Welke functies vereisen de Network Watcher-extensie?
+De functies Packet Capture, Connection Troubleshoot en Connection Monitor hebben de Network Watcher-extensie nodig.
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Wat zijn de limieten voor resources op Network Watcher?
-Zie de pagina met [service beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) voor alle limieten.  
+### <a name="what-are-resource-limits-on-network-watcher"></a>Wat zijn resourcelimieten voor Network Watcher?
+Zie de pagina [Servicelimieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) voor alle limieten.  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Waarom is er slechts één exemplaar van Network Watcher per regio toegestaan? 
-Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abonnement, maar dit is geen service limiet.
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Waarom is slechts één exemplaar van Network Watcher toegestaan per regio? 
+Network Watcher hoeft alleen maar eenmaal worden ingeschakeld voor een abonnement voor zijn functies om te werken, dit is een niet een service limiet.
 
-### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hoe kan ik de Network Watcher resource beheren? 
-De Network Watcher resource vertegenwoordigt de back-end-service voor Network Watcher en wordt volledig beheerd door Azure. Klanten hoeven deze niet te beheren. Bewerkingen zoals verplaatsen worden niet ondersteund voor de resource. [De resource kan echter worden verwijderd](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hoe kan ik de Network Watcher Resource beheren? 
+De Network Watcher-bron vertegenwoordigt de backendservice voor Network Watcher en wordt volledig beheerd door Azure. Klanten hoeven het niet te beheren. Bewerkingen zoals verplaatsen worden niet ondersteund op de resource. De [bron kan](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)echter worden verwijderd . 
 
-## <a name="nsg-flow-logs"></a>NSG-stroom logboeken
+## <a name="nsg-flow-logs"></a>NSG-stroomlogboeken
 
-### <a name="what-does-nsg-flow-logs-do"></a>Wat gebeurt er met NSG-stroom logboeken?
-Azure-netwerk bronnen kunnen worden gecombineerd en beheerd via [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview). Met NSG-stroom Logboeken kunt u 5-tuple-stroom gegevens registreren over al het verkeer via uw Nsg's. De onbewerkte stroom logboeken worden naar een Azure Storage-account geschreven, waar ze verder kunnen worden verwerkt, geanalyseerd, opgevraagd of geëxporteerd als dat nodig is.
+### <a name="what-does-nsg-flow-logs-do"></a>Wat doet NSG Flow Logs?
+Azure-netwerkbronnen kunnen worden gecombineerd en beheerd via [Network Security Groups (NSGs).](https://docs.microsoft.com/azure/virtual-network/security-overview) Met NSG Flow Logs u 5-tuple flow informatie registreren over al het verkeer via uw NSG's. De raw flow logs worden naar een Azure Storage-account geschreven van waaruit ze naar behoefte verder kunnen worden verwerkt, geanalyseerd, opgevraagd of geëxporteerd.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een firewall?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Hoe gebruik ik NSG Flow Logs met een Storage account achter een firewall?
 
-Als u een opslag account achter een firewall wilt gebruiken, moet u een uitzonde ring voor vertrouwde micro soft-Services voor toegang tot uw opslag account opgeven:
+Als u een opslagaccount achter een firewall wilt gebruiken, moet u een uitzondering maken voor Trusted Microsoft Services om toegang te krijgen tot uw opslagaccount:
 
-* Navigeer naar het opslag account door de naam van het opslag account in de globale zoek opdracht op de portal of op de [pagina opslag accounts](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) te typen.
+* Navigeer naar het opslagaccount door de naam van het opslagaccount te typen in de globale zoekopdracht op de portal of op de [pagina Opslagaccounts](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)
 * Selecteer in de sectie **INSTELLINGEN** de optie **Firewalls en virtuele netwerken**
-* Selecteer in ' toegang toestaan vanaf ' **geselecteerde netwerken**. Tik vervolgens onder **uitzonde ringen**op het vakje naast **' vertrouwde micro soft-Services toegang geven tot dit opslag account '** 
+* Selecteer Geselecteerde netwerken selecteren in 'Toegang toestaan **vanuit'**. Vink vervolgens onder **Uitzonderingen**het vakje aan naast **'Vertrouwde Microsoft-services toestaan toegang te krijgen tot dit opslagaccount'.** 
 * Als deze optie al is geselecteerd, is er geen wijziging nodig.  
-* Zoek uw doel-NSG op de [overzichts pagina van de NSG-stroom logboeken](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) en schakel NSG-stroom Logboeken in met het hierboven geselecteerde opslag account.
+* Zoek uw doel NSG op de [overzichtspagina van NSG Flow Logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) en schakel NSG Flow Logs in met het bovenstaande opslagaccount geselecteerd.
 
 U kunt de Storage-logboeken na enkele minuten controleren. U ziet dan een bijgewerkte tijdstempel of een nieuw JSON-bestand.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een service-eind punt?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hoe gebruik ik NSG Flow Logs met een Opslagaccount achter een Service Endpoint?
 
-NSG-stroom logboeken zijn compatibel met Service-eind punten zonder extra configuratie. Raadpleeg de [zelf studie over het inschakelen van service-eind punten](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) in uw virtuele netwerk.
+NSG Flow Logs zijn compatibel met Service Endpoints zonder extra configuratie. Zie de [zelfstudie over het inschakelen van Service-eindpunten](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) in uw virtuele netwerk.
 
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Wat is het verschil tussen stroom logboeken versie 1 & 2?
-Stroom logboeken versie 2 introduceert het concept van de *stroom status* & slaat informatie op over verzonden bytes en pakketten. [Meer informatie](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
+### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Wat is het verschil tussen flow logs versies 1 & 2?
+Flow Logs versie 2 introduceert het concept van *Flow State* & slaat informatie op over verzonden bytes en pakketten. [Lees meer](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
 
 ## <a name="next-steps"></a>Volgende stappen
- - Ga naar de [pagina overzicht](https://docs.microsoft.com/azure/network-watcher/) van de documentatie voor enkele zelf studies om aan de slag te gaan met Network Watcher.
+ - Ga naar onze [documentatieoverzichtspagina](https://docs.microsoft.com/azure/network-watcher/) voor een aantal tutorials om je op weg te helpen met Network Watcher.

@@ -1,39 +1,39 @@
 ---
-title: Een Microsoft Azure FXT Edge-eenheid afsluiten
-description: Procedures voor opstarten en veilig afsluiten van een Azure FXT Edge-Bestandsr knoop punt
+title: Een Microsoft Azure FXT Edge Filer-eenheid afsluiten
+description: Procedures voor het opstarten en veilig afsluiten van een Azure FXT Edge Filer-knooppunt
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72255997"
 ---
-# <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>De hardware van Azure FXT edge-apparaat veilig uitzetten
+# <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer-hardware veilig uitschakelen
 
-Hoewel u de fysieke aan/uit-knop kunt gebruiken om over te scha kelen op een afzonderlijk knoop punt, moet u dit niet gebruiken om de eenheid onder normale omstandigheden af te sluiten.
+Hoewel u de fysieke aan/uit-knop gebruiken om een individueel knooppunt in te schakelen, moet u het apparaat onder normale omstandigheden niet gebruiken om het apparaat uit te schakelen.
 
-Nadat een Azure FXT Edge-knoop punt wordt gebruikt als onderdeel van een cluster, moet u de software in het configuratie scherm van het cluster gebruiken om de hardware af te sluiten. 
+Nadat een Azure FXT Edge Filer-knooppunt in gebruik is als onderdeel van een cluster, moet u de software van het clusterconfiguratiepaneel gebruiken om de hardware af te sluiten. 
 
 > [!NOTE] 
-> Als u wilt voor komen dat gegevens verloren gaan of beschadigd raken, gebruikt u altijd de software van het configuratie scherm om een Azure FXT Edge-bestand af te sluiten. Gebruik niet de fysieke energie knop voor afsluiten, tenzij u dit doet door de klanten service en ondersteuning van micro soft.
+> Gebruik altijd de Software voor het Configuratiescherm om een Azure FXT Edge Filer af te sluiten om mogelijk gegevensverlies of beschadiging te voorkomen. Gebruik de fysieke aan/uit-knop niet voor afsluiten, tenzij u daartoe wordt geïnstrueerd door de klantenservice en ondersteuning van Microsoft.
 > 
-> Verbreek in een elektrische nood voeding of gebruik het energie verbrekings mechanisme van uw Data Center.
+> Los in een elektrisch noodgeval de stroomkabels los of gebruik het elektriciteitsloskoppelmechanisme van uw datacenter.
 
-## <a name="shut-down-a-node-from-the-control-panel"></a>Een knoop punt afsluiten via het configuratie scherm
+## <a name="shut-down-a-node-from-the-control-panel"></a>Een knooppunt afsluiten vanuit het Configuratiescherm
 
-Volg deze instructies om een Azure FXT Edge-knoop punt veilig uit te scha kelen:
+Volg deze instructies om een Azure FXT Edge Filer-knooppunt veilig uit te schakelen:
 
-1. Meld u aan bij het configuratie scherm van het cluster. (De instructies in [de pagina's met instellingen openen](fxt-cluster-create.md#open-the-settings-pages))
-1. Klik op het tabblad **instellingen** en laad vervolgens de pagina **cluster** > **FXT-knoop punten** .
-1. Zoek in de lijst met cluster knooppunten het account dat u wilt afsluiten. Klik op de knop aan **/uit** in de kolom **acties** . 
-1. Wacht even. Het knoop punt wordt afgesloten en Power is uitgeschakeld.
+1. Meld u aan bij het configuratiescherm van het cluster. (Routebeschrijving in [De pagina's Instellingen openen)](fxt-cluster-create.md#open-the-settings-pages)
+1. Klik op het tabblad **Instellingen** en laad vervolgens de pagina **Cluster** > **FXT-knooppunten.**
+1. Zoek in de lijst met clusterknooppunten de lijst met knooppunten die u wilt afsluiten. Klik op de knop **Aan-uit** in de kolom **Handelingen.** 
+1. Wacht even. Het knooppunt wordt uitgeschakeld en zichzelf uitgeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de status-Led's en andere indica toren in de status van de [Azure FXT Edge-hardwareprovider bewaken](fxt-monitor.md).
-* Lees meer over de voeding van Azure FXT Edge-bestanden in [Connect stroom kabels](fxt-network-power.md#connect-power-cables).
+* Meer informatie over de status-LED's en andere indicatoren in [de hardwarestatus van Monitor Azure FXT Edge Filer](fxt-monitor.md).
+* Lees meer over Azure FXT Edge Filer-voedingen in [Connect-stroomkabels](fxt-network-power.md#connect-power-cables).

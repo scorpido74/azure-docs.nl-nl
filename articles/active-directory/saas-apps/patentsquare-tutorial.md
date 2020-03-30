@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met PatentSQUARE | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en PatentSQUARE.
+title: 'Zelfstudie: Azure Active Directory-integratie met PatentSQUARE | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en PatentSQUARE.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 01bdd54ce0f661502ba0db902b150d76092ec03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Zelfstudie: Azure Active Directory-integratie met PatentSQUARE
 
-In deze zelfstudie leert u hoe u PatentSQUARE integreren met Azure Active Directory (Azure AD).
-PatentSQUARE integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u PatentSQUARE integreert met Azure Active Directory (Azure AD).
+De integratie van PatentSQUARE met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot PatentSQUARE heeft.
-* U kunt uw gebruikers worden automatisch aangemeld PatentSQUARE (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot PatentSQUARE.
+* U uw gebruikers automatisch laten aanmelden bij PatentSQUARE (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met PatentSQUARE, moet u de volgende items:
+Als u Azure AD-integratie met PatentSQUARE wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding PatentSQUARE ingeschakeld abonnement
+* PatentSQUARE single sign-on enabled subscription PatentSQUARE single sign-on enabled subscription PatentSQUARE single sign-on enabled subscription PatentSQUARE
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor PatentSQUARE **SP** gestart door SSO
+* PatentSQUARE ondersteunt **DOOR SP** geïnitieerde SSO
 
-## <a name="adding-patentsquare-from-the-gallery"></a>PatentSQUARE uit de galerie toe te voegen
+## <a name="adding-patentsquare-from-the-gallery"></a>PatentSQUARE toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van PatentSQUARE in Azure AD, moet u PatentSQUARE uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van PatentSQUARE in Azure AD wilt configureren, moet u PatentSQUARE uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen PatentSQUARE uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om PatentSQUARE vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van PatentSQUARE in Azure AD, moet u Pat
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **PatentSQUARE**, selecteer **PatentSQUARE** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **PatentSQUARE**in het zoekvak , selecteer **PatentSQUARE** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![PatentSQUARE in de lijst met resultaten](common/search-new-app.png)
+     ![PatentSQUARE in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met PatentSQUARE op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in PatentSQUARE tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on bij PatentSQUARE op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in PatentSQUARE.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met PatentSQUARE, moet u de volgende bouwstenen voltooien:
+Als u Azure AD single sign-on met PatentSQUARE wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding PatentSQUARE](#configure-patentsquare-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker PatentSQUARE](#create-patentsquare-test-user)**  : als u wilt een equivalent van Britta Simon in PatentSQUARE die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer PatentSQUARE Single Sign-On](#configure-patentsquare-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak PatentSQUARE-testgebruiker](#create-patentsquare-test-user)** - om een tegenhanger van Britta Simon in PatentSQUARE te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met PatentSQUARE, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om azure AD single sign-on met PatentSQUARE te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **PatentSQUARE** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Integratie van **patentsquare-toepassingen** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Voor het configureren van Azure AD eenmalige aanmelding met PatentSQUARE, moet u
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![PatentSQUARE domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Informatie over patentSQUARE-domein en URL's met één aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companysubdomain>.pat-dss.com:443/patlics/secure/aad`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<companysubdomain>.pat-dss.com:443/patlics`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<companysubdomain>.pat-dss.com:443/patlics`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [PatentSQUARE Client ondersteuningsteam](https://www.panasonic.com/jp/business/its/patentsquare.html) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ondersteuningsteam van PatentSQUARE Client](https://www.panasonic.com/jp/business/its/patentsquare.html) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-5. Op de **PatentSQUARE instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+5. Kopieer in de sectie **PatentSQUARE instellen** de juiste URL(s) volgens uw eis.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met PatentSQUARE, moet u
 
     c. Afmeldings-URL
 
-### <a name="configure-patentsquare-single-sign-on"></a>PatentSQUARE voor eenmalige aanmelding configureren
+### <a name="configure-patentsquare-single-sign-on"></a>PatentSQUARE Single Sign-On configureren
 
-Het configureren van eenmalige aanmelding op **PatentSQUARE** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [PatentSQUARE-ondersteuningsteam ](https://www.panasonic.com/jp/business/its/patentsquare.html). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de Kant van **PatentSQUARE** wilt configureren, moet u de gedownloade **Xml met aalmetagegevens** van de Federatie en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van PatentSQUARE](https://www.panasonic.com/jp/business/its/patentsquare.html)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -146,26 +146,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan PatentSQUARE.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot PatentSQUARE.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **PatentSQUARE**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens PatentSQUARE**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **PatentSQUARE**.
+2. Selecteer **PatentSQUARE**in de lijst met toepassingen .
 
-    ![De koppeling PatentSQUARE in de lijst met toepassingen](common/all-applications.png)
+    ![De Koppeling PatentSQUARE in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -175,27 +175,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-patentsquare-test-user"></a>PatentSQUARE testgebruiker maken
+### <a name="create-patentsquare-test-user"></a>PatentSQUARE-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in PatentSQUARE. Werken met [PatentSQUARE ondersteuningsteam](https://www.panasonic.com/jp/business/its/patentsquare.html) om toe te voegen de gebruikers in het PatentSQUARE-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in PatentSQUARE. Werk samen met [het Ondersteuningsteam van PatentSQUARE](https://www.panasonic.com/jp/business/its/patentsquare.html) om de gebruikers toe te voegen aan het PatentSQUARE-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel PatentSQUARE in het toegangsvenster, moet u worden automatisch aangemeld bij de PatentSQUARE waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de PatentSQUARE-tegel in het Toegangspaneel klikt, moet u automatisch worden aangemeld bij het PatentSQUARE waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

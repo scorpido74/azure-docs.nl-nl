@@ -1,40 +1,40 @@
 ---
-title: 'Zelf studie: een spoke-netwerk maken in azure met behulp van terraform'
-description: Meer informatie over het implementeren van twee spoke VNets die zijn verbonden met een hub in een hub-spoke-topologie
+title: Zelfstudie - Een gesproken netwerk maken in Azure met Terraform
+description: Meer informatie over het implementeren van twee spaakvNets die zijn aangesloten op een hub in een hub-spoke topologie
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 2a36b8ac22fb52f6b8f1246fd254d9c3ff22fc82
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159008"
 ---
-# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Zelf studie: een spoke-netwerk maken in azure met behulp van terraform
+# <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Zelfstudie: Een gesproken netwerk maken in Azure met Terraform
 
-In deze zelf studie implementeert u twee afzonderlijke spoke-netwerken om de schei ding van workloads te demonstreren. De netwerken delen algemene bronnen met behulp van het virtuele hub-netwerk. Knooppunten kunnen worden gebruikt om werkbelastingen te isoleren in hun eigen VNets, afzonderlijk beheerd vanaf andere knooppunten. Elke workload kan meerdere lagen bevatten, met meerdere subnetten die zijn verbonden via Azure-load balancers.
+In deze zelfstudie implementeert u twee afzonderlijke gesproken netwerken om de scheiding van workloads aan te tonen. De netwerken delen gemeenschappelijke bronnen met behulp van hub virtueel netwerk. Knooppunten kunnen worden gebruikt om werkbelastingen te isoleren in hun eigen VNets, afzonderlijk beheerd vanaf andere knooppunten. Elke workload kan meerdere lagen bevatten, met meerdere subnetten die zijn verbonden via Azure-load balancers.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Gebruik HCL (HashiCorp Language) voor het implementeren van de spoke VNets in hub-spoke-topologie
-> * Terraform gebruiken voor het maken van virtuele machines in de spoke-netwerken
-> * Terraform gebruiken om peerings voor virtuele netwerken te maken met de hub netwerken
+> * Gebruik HCL (HashiCorp Language) om de Spoke VNets te implementeren in hub-spoke topologie
+> * Terraform gebruiken om virtuele machines te maken in de spaaknetwerken
+> * Terraform gebruiken om virtuele netwerkpeeringen met de hubnetwerken op te zetten
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
-1. [Maak een on-premises virtueel netwerk met terraform in azure](./terraform-hub-spoke-on-prem.md).
-1. [Een hub-virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-hub-network.md).
-1. [Maak een hub virtueel netwerk apparaat met terraform in azure](./terraform-hub-spoke-hub-nva.md).
+1. [Maak een hub- en spoke hybride netwerktopologie met Terraform in Azure.](./terraform-hub-spoke-introduction.md)
+1. [On-premises virtueel netwerk maken met Terraform in Azure.](./terraform-hub-spoke-on-prem.md)
+1. [Maak een virtueel hubnetwerk met Terraform in Azure.](./terraform-hub-spoke-hub-network.md)
+1. [Maak een virtueel netwerktoestel met Terraform in Azure.](./terraform-hub-spoke-hub-nva.md)
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
-In deze sectie worden twee spoke-scripts gemaakt. Elk script definieert een spoke-virtueel netwerk en een virtuele machine voor de werk belasting. Vervolgens wordt er een gekoppeld virtueel netwerk van hub naar spoke gemaakt.
+In deze sectie worden twee spaakscripts gemaakt. Elk script definieert een gesproken virtueel netwerk en een virtuele machine voor de werkbelasting. Er wordt vervolgens een peered virtueel netwerk gemaakt van hub naar spoke.
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
-1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
+1. Azure [Cloud Shell openen](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
     ![Cloud Shell-prompt](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -50,9 +50,9 @@ In deze sectie worden twee spoke-scripts gemaakt. Elk script definieert een spok
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>De twee spoke-netwerken declareren
+## <a name="declare-the-two-spoke-networks"></a>Verklaar de twee spaaknetwerken
 
-1. Open in Cloud Shell een nieuw bestand met de naam `spoke1.tf`.
+1. Open in Cloud Shell een `spoke1.tf`nieuw bestand met de naam .
 
     ```bash
     code spoke1.tf
@@ -303,4 +303,4 @@ In deze sectie worden twee spoke-scripts gemaakt. Elk script definieert een spok
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Een hub-en spoke-netwerk valideren met terraform in azure](./terraform-hub-spoke-validation.md)
+> [Een hub en spoke-netwerk valideren met Terraform in Azure](./terraform-hub-spoke-validation.md)

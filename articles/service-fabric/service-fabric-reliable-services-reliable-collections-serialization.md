@@ -1,50 +1,50 @@
 ---
-title: Betrouw bare verzameling van object-serialisatie
-description: Meer informatie over de serialisatie van Azure Service Fabric reliable Collections-objecten, met inbegrip van de standaard strategie en het definiëren van aangepaste serialisatie.
+title: Serialisatie van objecten betrouwbare verzameling
+description: Meer informatie over azure servicefabric betrouwbare verzamelingen maken objectserialisatie, inclusief de standaardstrategie en hoe u aangepaste serialisatie definieert.'
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639544"
 ---
-# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Betrouw bare serialisatie van verzamelings objecten in azure Service Fabric
-Betrouw bare verzamelingen repliceren en blijven hun items om ervoor te zorgen dat ze duurzaam zijn in de machine storingen en stroom uitval.
-Voor het repliceren en persistent maken van items moeten betrouw bare verzamelingen worden geserialiseerd.
+# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serialisatie van betrouwbare verzamelingsobjecten in Azure Service Fabric
+Betrouwbare collecties repliceren en blijven hun artikelen repliceren om ervoor te zorgen dat ze duurzaam zijn in machinestoringen en stroomuitval.
+Zowel om items te repliceren als te blijven bestaan, moet Reliable Collections ze serialiseren.
 
-Betrouw bare verzamelingen ' Haal de juiste serialisatiefunctie op voor een bepaald type vanuit betrouw bare status Manager.
-Betrouw bare status beheerder bevat ingebouwde serialisatiefuncties en kan aangepaste serialisatiefuncties registreren voor een bepaald type.
+Reliable Collections' krijgt de juiste serializer voor een bepaald type van Reliable State Manager.
+Reliable State Manager bevat ingebouwde serializers en maakt het mogelijk aangepaste serializers te registreren voor een bepaald type.
 
-## <a name="built-in-serializers"></a>Ingebouwde Serialisatiefunctie
+## <a name="built-in-serializers"></a>Ingebouwde serialisators
 
-Betrouw bare status Manager bevat een ingebouwde serialisatiefunctie voor een aantal algemene typen, zodat deze standaard efficiënt kunnen worden geserialiseerd. Voor andere typen is betrouw bare status beheer terugvallen op het gebruik van de [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
-Ingebouwde serialisatiefuncties zijn efficiënter omdat ze weten dat hun typen niet kunnen worden gewijzigd en ze hoeven geen informatie over het type op te nemen zoals de type naam ervan.
+Reliable State Manager bevat ingebouwde serializer voor sommige veelvoorkomende typen, zodat ze standaard efficiënt kunnen worden geserialiseerd. Voor andere typen valt Reliable State Manager terug om de [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)te gebruiken.
+Ingebouwde serialisators zijn efficiënter omdat ze weten dat hun typen niet kunnen veranderen en ze hoeven geen informatie over het type zoals de typenaam op te nemen.
 
-Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgende typen: 
+Reliable State Manager heeft ingebouwde serializer voor de volgende typen: 
 - GUID
-- bool
-- DBCS
+- Booleaanse waarde
+- Byte
 - sbyte
 - byte[]
-- char
-- string
+- Char
+- tekenreeks
 - decimal
 - double
 - float
 - int
 - uint
-- lang
-- ULONG
-- korte
-- USHORT
+- long
+- ulong
+- Korte
+- ushort ushort
 
 ## <a name="custom-serialization"></a>Aangepaste serialisatie
 
-Aangepaste serialisatiefunctie worden vaak gebruikt om de prestaties te verbeteren of om de gegevens te versleutelen via de kabel en op schijf. Aangepaste serialisatiefunctieen zijn over het algemeen efficiënter dan generieke serialisatiefunctie, omdat ze geen informatie over het type hoeven te serialiseren. 
+Aangepaste serialisators worden vaak gebruikt om de prestaties te verhogen of om de gegevens te versleutelen via de draad en op de schijf. Onder andere redenen, aangepaste serializers zijn vaak efficiënter dan generieke serializer omdat ze niet nodig om informatie over het type serialiseren. 
 
-[IReliableStateManager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt voor het registreren van een aangepaste serialisatiefunctie voor het opgegeven type t. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel wordt gestart, alle betrouw bare verzamelingen toegang hebben tot de relevante serialisatiefunctie om hun persistente gegevens te lezen.
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt om een aangepaste serialisator voor het gegeven type T te registreren. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel begint, alle betrouwbare collecties toegang hebben tot de relevante serializer om hun aanhoudende gegevens te lezen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -58,16 +58,16 @@ public StatefulBackendService(StatefulServiceContext context)
 ```
 
 > [!NOTE]
-> Aangepaste serializers krijgen voor rang op ingebouwde serialisatiefunctie. Wanneer bijvoorbeeld een aangepaste serialisatiefunctie voor int wordt geregistreerd, wordt deze gebruikt voor het serialiseren van gehele getallen in plaats van de ingebouwde serialisatiefunctie voor int.
+> Aangepaste serialisators krijgen voorrang op ingebouwde serialisators. Wanneer bijvoorbeeld een aangepaste serializer voor int wordt geregistreerd, wordt deze gebruikt om gehele getallen te serialiseren in plaats van de ingebouwde serializer voor int.
 
-### <a name="how-to-implement-a-custom-serializer"></a>Een aangepaste serialisatiefunctie implementeren
+### <a name="how-to-implement-a-custom-serializer"></a>Een aangepaste serialisator implementeren
 
-Een aangepaste serialisatiefunctie moet de IStateSerializer-interface van de [\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) implementeren.
+Een aangepaste serializer moet de [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) interface implementeren.
 
 > [!NOTE]
-> IStateSerializer\<T > bevat een overbelasting voor schrijven en lezen die een extra T wordt genoemd. Deze API is voor differentiële serialisatie. Momenteel wordt de functie voor differentiële serialisatie niet weer gegeven. Deze twee Overloads worden daarom pas aangeroepen als differentiële serialisatie wordt weer gegeven en ingeschakeld.
+> IStateSerializer\<T> bevat een overbelasting voor Write and Read die een extra T-basiswaarde in zich opneemt. Deze API is voor differentiële serialisatie. Momenteel is differentiële serialisatie functie niet blootgesteld. Vandaar dat deze twee overbelastingen niet worden aangeroepen totdat differentiële serialisatie is blootgesteld en ingeschakeld.
 
-Hieronder ziet u een voor beeld van een aangepast type met de naam OrderKey dat vier eigenschappen bevat
+Hieronder volgt een voorbeeld van een aangepast type ordersleutel dat vier eigenschappen bevat
 
 ```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
@@ -85,8 +85,8 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Hier volgt een voor beeld van de implementatie van IStateSerializer\<OrderKey >.
-Houd er rekening mee dat de overbelasting van lees-en schrijf bewerkingen die in baseValue worden uitgevoerd, hun respectieve overbelasting aanroept voor voorwaartse compatibiliteit.
+Hieronder volgt een voorbeeld implementatie\<van IStateSerializer OrderKey>.
+Houd er rekening mee dat lees- en schrijfoverbelasting en basiswaarde in zich opnemen, en noemen hun respectieve overbelasting voor forwards-compatibiliteit.
 
 ```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
@@ -124,24 +124,24 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 }
 ```
 
-## <a name="upgradability"></a>Upgradatie
-Bij een [upgrade van een rolling toepassing](service-fabric-application-upgrade.md)wordt de upgrade toegepast op een subset knoop punten, één upgrade domein per keer. Tijdens dit proces zullen sommige upgrade domeinen zich op de nieuwere versie van uw toepassing bekomen. sommige upgrade domeinen bezullen de oudere versie van uw toepassing. Tijdens de implementatie moet de nieuwe versie van uw toepassing de oude versie van uw gegevens kunnen lezen, en de oude versie van uw toepassing moet de nieuwe versie van uw gegevens kunnen lezen. Als de gegevens indeling niet voorwaarts en achterwaarts compatibel is, kan de upgrade mislukken of kunnen de gegevens verloren gaan of beschadigd raken.
+## <a name="upgradability"></a>Uitbreidbaarheid
+In een [upgrade met rollende toepassingen](service-fabric-application-upgrade.md)wordt de upgrade toegepast op een subset van knooppunten, één upgradedomein tegelijk. Tijdens dit proces, zullen sommige upgrade domeinen worden op de nieuwere versie van uw toepassing, en sommige upgrade domeinen zullen worden op de oudere versie van uw toepassing. Tijdens de implementatie moet de nieuwe versie van uw toepassing de oude versie van uw gegevens kunnen lezen en de oude versie van uw toepassing moet de nieuwe versie van uw gegevens kunnen lezen. Als de gegevensindeling niet vooruit- en achterwaarts compatibel is, kan de upgrade mislukken of erger nog, gegevens kunnen verloren gaan of beschadigd raken.
 
-Als u ingebouwde serialisatiefunctie gebruikt, hoeft u zich geen zorgen te maken over de compatibiliteit.
-Als u echter een aangepaste serialisatiefunctie of de DataContractSerializer gebruikt, moeten de gegevens oneindig achterwaarts zijn en compatibel worden doorgestuurd.
-Met andere woorden, elke versie van serialisatiefunctie moet een wille keurige versie van het type kunnen serialiseren en deserialiseren.
+Als u ingebouwde serializer gebruikt, hoeft u zich geen zorgen te maken over compatibiliteit.
+Als u echter een aangepaste serializer of de DataContractSerializer gebruikt, moeten de gegevens oneindig achterwaarts en voorwaarts compatibel zijn.
+Met andere woorden, elke versie van serializer moet in staat zijn om elke versie van het type te serialiseren en te de-serialiseren.
 
-Gebruikers van het gegevens contract moeten de goed gedefinieerde versie regels volgen om velden toe te voegen, te verwijderen en te wijzigen. Data contract biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](https://msdn.microsoft.com/library/ms733127.aspx)(Engelstalig) voor meer informatie.
+Gebruikers van gegevenscontracten moeten de goed gedefinieerde versieregels volgen voor het toevoegen, verwijderen en wijzigen van velden. Data Contract heeft ook ondersteuning voor het omgaan met onbekende velden, aansluiten bij de serialisatie en deserialisatie proces, en het omgaan met klasse erfenis. Zie [Gegevenscontract gebruiken](https://msdn.microsoft.com/library/ms733127.aspx)voor meer informatie .
 
-Aangepaste serialisatiefunctie-gebruikers moeten voldoen aan de richt lijnen van de serialisatiefunctie die ze gebruiken om ervoor te zorgen dat deze achterwaarts en doorgestuurd compatibel zijn.
-Gang bare methode voor het ondersteunen van alle versies is het toevoegen van grootte-informatie aan het begin en alleen het toevoegen van optionele eigenschappen.
-Op deze manier kan elke versie zoveel mogelijk worden gelezen en over het resterende deel van de stroom heen gaan.
+Gebruikers van aangepaste serialisator moeten zich houden aan de richtlijnen van de serialisator die ze gebruiken om ervoor te zorgen dat het compatibel is met de serie.
+Veelvoorkomende manier om alle versies te ondersteunen, is het toevoegen van grootte-informatie aan het begin en alleen het toevoegen van optionele eigenschappen.
+Op deze manier kan elke versie zo veel lezen dat het kan en springen over het resterende deel van de stream.
 
 ## <a name="next-steps"></a>Volgende stappen
   * [Serialisatie en upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  * Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
-  * Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
-  * Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).
-  * Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
-  * Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
+  * [Ontwikkelaarsreferentie voor betrouwbare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Upgraden van uw toepassing Met Visual Studio](service-fabric-application-upgrade-tutorial.md) u een applicatie-upgrade doorlopen met Visual Studio.
+  * [Het upgraden van uw toepassing met Powershell](service-fabric-application-upgrade-tutorial-powershell.md) leidt u door een applicatie-upgrade met PowerShell.
+  * Bepaal hoe uw toepassing wordt bijgewerkt met [upgradeparameters.](service-fabric-application-upgrade-parameters.md)
+  * Meer informatie over het gebruik van geavanceerde functionaliteit tijdens het upgraden van uw toepassing door te verwijzen naar [geavanceerde onderwerpen.](service-fabric-application-upgrade-advanced.md)
+  * Los veelvoorkomende problemen op in toepassingsupgrades door te verwijzen naar de stappen in [het oplossen van toepassingsupgrades.](service-fabric-application-upgrade-troubleshooting.md)

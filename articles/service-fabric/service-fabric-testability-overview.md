@@ -1,96 +1,96 @@
 ---
-title: Overzicht van fout analyse service
-description: In dit artikel wordt de fout analyse service in Service Fabric beschreven om fouten te voor komen en test scenario's uit te voeren op basis van uw services.
+title: Overzicht van de Fault Analysis Service
+description: In dit artikel wordt de Fault Analysis Service in Service Fabric beschreven voor het veroorzaken van fouten en het uitvoeren van testscenario's tegen uw services.
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465569"
 ---
-# <a name="introduction-to-the-fault-analysis-service"></a>Inleiding tot de fout analyse service
-De fout analyse service is ontworpen voor het testen van services die zijn gebouwd op Microsoft Azure Service Fabric. Met de fout analyse service kunt u zinvolle fouten tegen komen en volledige test scenario's uitvoeren voor uw toepassingen. Deze fouten en scenario's oefenen en valideren de talrijke statussen en overgangen die gedurende de levens duur van een service worden ervaren, op een gecontroleerde, veilige en consistente manier.
+# <a name="introduction-to-the-fault-analysis-service"></a>Inleiding tot de fault analysis service
+De Fault Analysis Service is ontworpen voor het testen van services die zijn gebouwd op Microsoft Azure Service Fabric. Met de Fault Analysis Service u zinvolle fouten veroorzaken en volledige testscenario's uitvoeren tegen uw toepassingen. Deze fouten en scenario's oefenen en valideren van de talrijke toestanden en overgangen die een service gedurende zijn hele levensduur zal ervaren, allemaal op een gecontroleerde, veilige en consistente manier.
 
-Acties zijn de afzonderlijke fouten die gericht zijn op een service om deze te testen. Een service ontwikkelaar kan deze gebruiken als bouw stenen voor het schrijven van gecompliceerde scenario's. Bijvoorbeeld:
+Acties zijn de afzonderlijke fouten die gericht zijn op een service om deze te testen. Een serviceontwikkelaar kan deze gebruiken als bouwstenen om ingewikkelde scenario's te schrijven. Bijvoorbeeld:
 
-* Start een knoop punt opnieuw voor het simuleren van een wille keurig aantal situaties waarbij een machine of VM opnieuw wordt opgestart.
-* Verplaats een replica van uw stateful service om taak verdeling, failover of toepassings upgrade te simuleren.
-* Aanroepen van quorum verlies op een stateful service voor het maken van een situatie waarin schrijf bewerkingen niet kunnen worden voortgezet omdat er onvoldoende ' back-up '-of ' secundaire ' replica's zijn om nieuwe gegevens te accepteren.
-* Gegevens verlies op een stateful service aanroepen om een situatie te maken waarin de status van alle in-Memory volledig is gewist.
+* Start een knooppunt opnieuw om een willekeurig aantal situaties te simuleren waarin een machine of VM opnieuw wordt opgestart.
+* Een replica van uw stateful service verplaatsen om taakverdeling, failover of applicatie-upgrade te simuleren.
+* Beroep doen op quorumverlies op een stateful service om een situatie te creëren waarin schrijfbewerkingen niet kunnen doorgaan omdat er niet genoeg 'back-up' of 'secundaire' replica's zijn om nieuwe gegevens te accepteren.
+* Beroep op gegevensverlies op een stateful service om een situatie te creëren waarin alle in-memory status volledig is weggevaagd.
 
-Scenario's zijn complexe bewerkingen die bestaan uit een of meer acties. De fout analyse service biedt twee ingebouwde volledige scenario's:
+Scenario's zijn complexe bewerkingen die bestaan uit een of meer acties. De Fault Analysis Service biedt twee ingebouwde complete scenario's:
 
-* Chaos-scenario
-* Failover-scenario
+* Chaos Scenario
+* Failoverscenario
 
-## <a name="testing-as-a-service"></a>Testen als een service
-De fout analyse service is een Service Fabric systeem service die automatisch wordt gestart met een Service Fabric cluster. Deze service fungeert als host voor fout injectie, uitvoering van test scenario en status analyse. 
+## <a name="testing-as-a-service"></a>Testen als service
+De Fault Analysis Service is een Service Fabric-systeemservice die automatisch wordt gestart met een Service Fabric-cluster. Deze service fungeert als de host voor foutinjectie, testscenario-uitvoering en gezondheidsanalyse. 
 
-![Fout analyse service][0]
+![Foutanalyseservice][0]
 
-Wanneer een fout actie of test scenario wordt gestart, wordt een opdracht verzonden naar de fout analyse service om de fout actie of het test scenario uit te voeren. De fout analyse service is stateful, zodat er op betrouw bare wijze fouten en scenario's kunnen worden uitgevoerd en de resultaten worden gevalideerd. Een langlopend test scenario kan bijvoorbeeld betrouwbaar worden uitgevoerd door de fout analyse service. En omdat tests in het cluster worden uitgevoerd, kan de service de status van het cluster en uw services controleren om meer gedetailleerde informatie over fouten te bieden.
+Wanneer een foutactie of testscenario wordt gestart, wordt een opdracht naar de foutanalyseservice verzonden om de foutactie of het testscenario uit te voeren. De Fault Analysis Service is stateful, zodat het op betrouwbare wijze fouten en scenario's kan uitvoeren en resultaten kan valideren. Een langlopend testscenario kan bijvoorbeeld betrouwbaar worden uitgevoerd door de Fault Analysis Service. En omdat tests binnen het cluster worden uitgevoerd, kan de service de status van het cluster en uw services onderzoeken om meer diepgaande informatie over fouten te bieden.
 
-## <a name="testing-distributed-systems"></a>Gedistribueerde systemen testen
-Service Fabric maakt het eenvoudiger om gedistribueerde schaal bare toepassingen te schrijven en te beheren. Met de fout analyse service wordt een gedistribueerde toepassing op dezelfde manier getest. Er zijn drie belang rijke problemen die moeten worden opgelost tijdens het testen:
+## <a name="testing-distributed-systems"></a>Testen van gedistribueerde systemen
+Service Fabric maakt het schrijven en beheren van gedistribueerde schaalbare applicaties aanzienlijk eenvoudiger. De Fault Analysis Service maakt het testen van een gedistribueerde toepassing op dezelfde manier eenvoudiger. Er zijn drie belangrijke problemen die moeten worden opgelost tijdens het testen:
 
-1. Simuleren/genereren van fouten die kunnen optreden in praktijk scenario's: een van de belang rijke aspecten van Service Fabric is dat gedistribueerde toepassingen kunnen worden hersteld van verschillende fouten. Als u echter wilt testen of de toepassing van deze fouten kan worden hersteld, moet u een mechanisme hebben voor het simuleren/genereren van deze praktijk fouten in een gecontroleerde test omgeving.
-1. De mogelijkheid om gecorreleerde fouten te genereren: basis fouten in het systeem, zoals netwerk fouten en computer fouten, kunnen eenvoudig afzonderlijk worden geproduceerd. Het genereren van een groot aantal scenario's die zich in de praktijk kunnen voordoen als gevolg van de interactie van deze afzonderlijke fouten is niet-trivial.
-1. Geïntegreerde ervaring op verschillende niveaus van ontwikkeling en implementatie: er zijn veel fout injectie systemen waarop verschillende soorten fouten kunnen worden uitgevoerd. De ervaring in al deze situaties is echter slecht wanneer u overstapt van ontwikkel scenario's met één box, om dezelfde tests uit te voeren in grote test omgevingen, om ze te gebruiken voor tests in de productie omgeving.
+1. Fouten simuleren/genereren die zich kunnen voordoen in echte scenario's: Een van de belangrijke aspecten van Service Fabric is dat gedistribueerde toepassingen kunnen herstellen van verschillende fouten. Echter, om te testen dat de toepassing in staat is om te herstellen van deze fouten, hebben we een mechanisme nodig om deze real-world storingen te simuleren / genereren in een gecontroleerde testomgeving.
+1. De mogelijkheid om gecorreleerde fouten te genereren: Basisfouten in het systeem, zoals netwerkstoringen en machinestoringen, zijn eenvoudig afzonderlijk te produceren. Het genereren van een aanzienlijk aantal scenario's die kunnen gebeuren in de echte wereld als gevolg van de interacties van deze individuele mislukkingen is niet-triviaal.
+1. Uniforme ervaring op verschillende niveaus van ontwikkeling en implementatie: Er zijn veel foutinjectiesystemen die verschillende soorten storingen kunnen uitvoeren. Echter, de ervaring in al deze is slecht bij het verplaatsen van one-box developer scenario's, om dezelfde tests uit te voeren in grote testomgevingen, om ze te gebruiken voor tests in productie.
 
-Hoewel er veel mechanismen zijn om deze problemen op te lossen, een systeem dat hetzelfde doet als de vereiste garanties: alle van een ontwikkel omgeving met één vak om te testen in productie clusters, ontbreekt. De fout analyse service helpt de ontwikkel aars van toepassingen te concentreren op het testen van hun bedrijfs logica. De fout analyse service biedt alle mogelijkheden die nodig zijn om de interactie van de service met het onderliggende gedistribueerde systeem te testen.
+Hoewel er veel mechanismen zijn om deze problemen op te lossen, ontbreekt een systeem dat hetzelfde doet met vereiste garanties - helemaal uit een one-box developer-omgeving, om te testen in productieclusters - ontbreekt. De Fault Analysis Service helpt de ontwikkelaars van de toepassing zich te concentreren op het testen van hun bedrijfslogica. De Fault Analysis Service biedt alle mogelijkheden die nodig zijn om de interactie van de service met het onderliggende gedistribueerde systeem te testen.
 
-### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Scenario's voor praktijk fouten simuleren/genereren
-Als u de robuustheid van een gedistribueerd systeem wilt testen op fouten, moet er een mechanisme worden gegenereerd voor het genereren van fouten. In theorie is het genereren van een storing, zoals een knoop punt, gemakkelijk te vinden, maar op dezelfde reeks consistentie problemen die Service Fabric probeert op te lossen. Als we bijvoorbeeld een knoop punt willen afsluiten, is de vereiste werk stroom het volgende:
+### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Scenario's voor het simuleren/genereren van echte fouten
+Om de robuustheid van een gedistribueerd systeem tegen storingen te testen, hebben we een mechanisme nodig om storingen te genereren. Terwijl in theorie, het genereren van een mislukking als een knooppunt naar beneden lijkt eenvoudig, het begint het raken van dezelfde set van consistentie problemen die Service Fabric probeert op te lossen. Als we bijvoorbeeld een knooppunt willen afsluiten, is de vereiste werkstroom de volgende:
 
-1. Geef vanuit de client een aanvraag voor het afsluiten van het knoop punt op.
-1. Verzend de aanvraag naar het juiste knoop punt.
+1. Geef bij de client een knooppuntaanvraag voor afsluiten uit.
+1. Stuur het verzoek naar het juiste knooppunt.
    
-    a. Als het knoop punt niet wordt gevonden, zou het mislukken moeten zijn.
+    a. Als het knooppunt niet wordt gevonden, moet het mislukken.
    
-    b. Als het knoop punt wordt gevonden, moet dit alleen worden geretourneerd als het knoop punt is afgesloten.
+    b. Als het knooppunt wordt gevonden, mag het alleen terugkeren als het knooppunt wordt afgesloten.
 
-Als u de fout van een test perspectief wilt controleren, moet de test er zeker van zijn dat de fout daad werkelijk optreedt wanneer deze fout optreedt. De garantie dat Service Fabric biedt, is dat het knoop punt wordt uitgeschakeld of al was ingedrukt toen de opdracht het knoop punt bereikte. In beide gevallen moet de test op de juiste manier in staat zijn om de status te controleren en goed te kunnen slagen of mislukken tijdens de validatie. Een systeem dat buiten Service Fabric wordt geïmplementeerd om dezelfde set fouten uit te voeren, zou kunnen oplopen over veel netwerk-, hardware-en software problemen, waardoor het niet mogelijk is om de voor gaande garanties te bieden. In aanwezigheid van de problemen die eerder zijn vermeld, configureert Service Fabric de cluster status opnieuw om de problemen te omzeilen, waardoor de fout analyse service nog steeds de juiste set garanties kan bieden.
+Om de fout vanuit een testperspectief te verifiëren, moet de test weten dat wanneer deze fout wordt veroorzaakt, de fout daadwerkelijk gebeurt. De garantie die Service Fabric biedt is dat ofwel het knooppunt naar beneden zal gaan of al naar beneden is gegaan toen het commando het knooppunt bereikte. In beide gevallen moet de test in staat zijn om correct reden over de status en slagen of correct mislukken in de validatie. Een systeem dat buiten Service Fabric is geïmplementeerd om dezelfde reeks fouten uit te voeren, kan veel netwerk-, hardware- en softwareproblemen veroorzaken, waardoor het de voorgaande garanties niet kan bieden. In aanwezigheid van de eerder genoemde problemen zal Service Fabric de clusterstatus opnieuw configureren om de problemen te omzeilen, en daarom kan de Fault Analysis Service nog steeds de juiste set garanties geven.
 
 ### <a name="generating-required-events-and-scenarios"></a>Vereiste gebeurtenissen en scenario's genereren
-Hoewel het simuleren van een Real-World-fout consequent moeilijk is om te beginnen met, is de mogelijkheid om gecorreleerde fouten te genereren, zelfs lastiger. Zo vindt er een gegevens verlies plaats in een stateful persistente service wanneer de volgende zaken zich voordoen:
+Terwijl het simuleren van een real-world mislukking consequent is moeilijk om mee te beginnen, de mogelijkheid om gecorreleerde mislukkingen te genereren is nog moeilijker. Een gegevensverlies vindt bijvoorbeeld plaats in een stateful persisted-service wanneer de volgende dingen gebeuren:
 
-1. Er wordt alleen een schrijf quorum van de replica's gedetecteerd bij replicatie. Alle secundaire replica's hebben een vertraging achter de primaire replica.
-1. Het schrijf quorum gaat omlaag vanwege de replica's (als gevolg van een code pakket of een knoop punt).
-1. Er kan geen back-up worden gemaakt van het schrijf quorum, omdat de gegevens voor de replica's verloren zijn gegaan (vanwege een beschadigde schijf of het opnieuw maken van een machine).
+1. Alleen een schrijfquorum van de replica's wordt ingehaald op replicatie. Alle secundaire replica's blijven achter bij de primaire.
+1. Het schrijfquorum gaat omlaag vanwege de replica's die naar beneden gaan (als gevolg van een codepakket of knooppunt dat naar beneden gaat).
+1. Het schrijfquorum kan niet worden teruggedraaid omdat de gegevens voor de replica's verloren zijn gegaan (als gevolg van schijfbeschadiging of machinereimaging).
 
-Deze gecorreleerde fouten doen zich voor in de echte wereld, maar niet zo vaak als afzonderlijke fouten. De mogelijkheid om deze scenario's te testen voordat deze in de productie omgeving plaatsvindt, is essentieel. Nog belang rijker is dat u deze scenario's kunt simuleren met productie werkbelastingen in gecontroleerde omstandigheden (in het midden van de dag met alle technici op het dek). Dat is veel beter dan het voor de eerste keer in de productie om 2:00 uur.
+Deze gecorreleerde mislukkingen gebeuren in de echte wereld, maar niet zo vaak als individuele mislukkingen. De mogelijkheid om te testen voor deze scenario's voordat ze gebeuren in de productie is van cruciaal belang. Nog belangrijker is de mogelijkheid om deze scenario's te simuleren met productieworkloads in gecontroleerde omstandigheden (in het midden van de dag met alle ingenieurs aan dek). Dat is veel beter dan dat het voor het eerst in productie is om 02:00 uur.
 
-### <a name="unified-experience-across-different-environments"></a>Geïntegreerde ervaring in verschillende omgevingen
-Het is gebruikelijk om drie verschillende sets ervaringen te maken, één voor de ontwikkel omgeving, één voor testen en één voor productie. Het model is:
+### <a name="unified-experience-across-different-environments"></a>Uniforme ervaring in verschillende omgevingen
+De praktijk is van oudsher het creëren van drie verschillende sets van ervaringen, een voor de ontwikkeling omgeving, een voor tests, en een voor de productie. Het model was:
 
-1. In de ontwikkel omgeving produceert u status overgangen die de eenheids tests van afzonderlijke methoden toestaan.
-1. In de test omgeving worden er fouten gegenereerd om end-to-end-tests toe te staan die verschillende scenario's voor storingen uitoefenen.
-1. Bewaar de productie omgeving pristine om onnatuurlijke storingen te voor komen en ervoor te zorgen dat er zeer snelle menselijke reacties op fouten zijn.
+1. In de ontwikkelingsomgeving, produceren staat overgangen die eenheid tests van individuele methoden mogelijk te maken.
+1. In de testomgeving, produceren mislukkingen om end-to-end tests die verschillende mislukking scenario's uit te oefenen.
+1. Houd de productieomgeving ongerept om niet-natuurlijke storingen te voorkomen en om ervoor te zorgen dat er een extreem snelle menselijke reactie op falen is.
 
-In Service Fabric wordt de fout analyse service Voorst Ellen om dit te omzeilen en dezelfde methodologie te gebruiken van de ontwikkelaars omgeving tot de productie. Er zijn twee manieren om dit te doen:
+In Service Fabric stellen we via de Fault Analysis Service voor om dit om te draaien en dezelfde methodologie te gebruiken van ontwikkelaarsomgeving tot productie. Er zijn twee manieren om dit te bereiken:
 
-1. Gebruik de fout analyse service-Api's van een omgeving met één doos voor het produceren van gecontroleerde storingen.
-1. Om het cluster een koorts te geven dat de automatische inductie van fouten veroorzaakt, gebruikt u de fout analyse service om automatische fouten te genereren. Als u de frequentie van fouten via de configuratie beheert, kan dezelfde service in verschillende omgevingen anders worden getest.
+1. Als u gecontroleerde fouten wilt veroorzaken, gebruikt u de API's van de Foutanalyseservice vanuit een one-box-omgeving tot productieclusters.
+1. Gebruik de Fault Analysis Service om het cluster koorts te geven die automatische inductie van storingen veroorzaakt, om automatische storingen te genereren. Door de snelheid van storingen via configuratie te regelen, kan dezelfde service in verschillende omgevingen anders worden getest.
 
-Met Service Fabric, hoewel de schaal van storingen in de verschillende omgevingen anders zou zijn, zijn de daad werkelijke mechanismen identiek. Dit biedt een veel snellere pijp lijn voor het implementeren van code en de mogelijkheid om de services te testen onder praktijk belasting.
+Met Service Fabric, hoewel de schaal van storingen zou verschillen in de verschillende omgevingen, de werkelijke mechanismen identiek zou zijn. Dit zorgt voor een veel snellere code-to-deployment pijplijn en de mogelijkheid om de services te testen onder real-world ladingen.
 
-## <a name="using-the-fault-analysis-service"></a>De fout analyse service gebruiken
-**C#**
+## <a name="using-the-fault-analysis-service"></a>De foutanalyseservice gebruiken
+**C #**
 
-De functies van de fout analyse service bevinden zich in de naam ruimte System. fabric in het NuGet-pakket van micro soft. ServiceFabric. Als u de fout Analysis Service-functies wilt gebruiken, neemt u het nuget-pakket op als referentie in uw project.
+De functies van de Foutanalyseservice bevinden zich in de naamruimte van System.Fabric in het Microsoft.ServiceFabric NuGet-pakket. Als u de functies van de Fault Analysis Service wilt gebruiken, neemt u het nuget-pakket op als referentie in uw project.
 
-**PowerShell**
+**Powershell**
 
-Als u Power shell wilt gebruiken, moet u de Service Fabric SDK installeren. Nadat de SDK is geïnstalleerd, wordt de Power shell-module ServiceFabric automatisch geladen zodat u deze kunt gebruiken.
+Als u PowerShell wilt gebruiken, moet u de Service Fabric SDK installeren. Nadat de SDK is geïnstalleerd, wordt de ServiceFabric PowerShell-module automatisch geladen voor u om te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor het maken van echt Cloud-Scale-Services is het van essentieel belang om ervoor te zorgen dat de services voor en na de implementatie een grote situatie in de praktijk kunnen opvangen. In de wereld van Services is de mogelijkheid om snel te innoveren en code naar productie te verplaatsen, heel belang rijk. Met de service fout analyse kunnen service ontwikkelaars nauw keurig dat doen.
+Om echt cloud-scale services te creëren, is het van cruciaal belang om ervoor te zorgen, zowel voor als na implementatie, dat services bestand zijn tegen echte fouten in de wereld. In de dienstenwereld van vandaag is de mogelijkheid om snel te innoveren en code snel naar productie te verplaatsen erg belangrijk. De Fault Analysis Service helpt serviceontwikkelaars om precies dat te doen.
 
-Begin met het testen van uw toepassingen en services met behulp van de ingebouwde [test scenario's](service-fabric-testability-scenarios.md)of maak uw eigen test scenario's met behulp van de [fout acties](service-fabric-testability-actions.md) van de fout analyse service.
+Begin met het testen van uw toepassingen en services met behulp van de ingebouwde [testscenario's](service-fabric-testability-scenarios.md)of schrijf uw eigen testscenario's met behulp van de [foutacties](service-fabric-testability-actions.md) van de Fault Analysis Service.
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

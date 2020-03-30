@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over het weigeren van toewijzingen voor Azure-resources
-description: Meer informatie over het weigeren van toewijzingen in op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources.
+title: Inzicht in weigeringstoewijzingen voor Azure-resources
+description: Meer informatie over weigeringstoewijzingen in rbac(role-based access control) voor Azure-resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,68 +11,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137380"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372489"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Meer informatie over het weigeren van toewijzingen voor Azure-resources
+# <a name="understand-deny-assignments-for-azure-resources"></a>Inzicht in weigeringstoewijzingen voor Azure-resources
 
-Net als bij een roltoewijzing koppelt een *weigerings toewijzing* een reeks weigerings acties toe aan een gebruiker, groep of Service-Principal in een bepaald bereik voor het weigeren van de toegang. Toewijzingen weigeren blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent.
+Net als bij een roltoewijzing koppelt een *weigeringstoewijzing* een reeks weigeringsacties aan een gebruiker, groep of serviceprincipal op een bepaalde scope met het oog op het weigeren van toegang. Toewijzingen weigeren blokkeren gebruikers om specifieke Azure-bronacties uit te voeren, zelfs als een roltoewijzing hen toegang verleent.
 
-In dit artikel wordt beschreven hoe weigerings toewijzingen worden gedefinieerd.
+In dit artikel wordt beschreven hoe weigeringstoewijzingen worden gedefinieerd.
 
-## <a name="how-deny-assignments-are-created"></a>Hoe weiger toewijzingen worden gemaakt?
+## <a name="how-deny-assignments-are-created"></a>Hoe weigeringsopdrachten worden gemaakt
 
-Geweigerde toewijzingen worden door Azure gemaakt en beheerd om resources te beveiligen. Azure-blauw drukken en Azure Managed apps gebruiken toewijzingen weigeren voor het beveiligen van door het systeem beheerde bronnen. Azure-blauw drukken en Azure Managed apps zijn de enige manier waarop het weigeren van toewijzingen kan worden gemaakt. U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken.  Zie [nieuwe resources beveiligen met Azure-blauw drukken resource vergrendeling](../governance/blueprints/tutorials/protect-new-resources.md)voor meer informatie.
+Weigeringstoewijzingen worden gemaakt en beheerd door Azure om resources te beschermen. Azure Blueprints en Azure managed apps gebruiken weigeringstoewijzingen om systeembeheerbronnen te beschermen. Azure Blueprints en Azure managed apps zijn de enige manier waarop weigeringstoewijzingen kunnen worden gemaakt. Je niet direct je eigen weigeringsopdrachten maken. Zie [Resourcevergrendeling in Azure Blueprints](../governance/blueprints/concepts/resource-locking.md)begrijpen in Azure Blueprints voor meer informatie over hoe Blauwdrukken weigerten gebruiken om resources te vergrendelen.
 
 > [!NOTE]
-> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken.
+> Je niet direct je eigen weigeringsopdrachten maken.
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Roltoewijzingen vergelijken en toewijzingen weigeren
+## <a name="compare-role-assignments-and-deny-assignments"></a>Roltoewijzingen vergelijken en opdrachten weigeren
 
-Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzingen, maar er zijn ook enkele verschillen.
+Weigeren opdrachten volgen een vergelijkbaar patroon als roltoewijzingen, maar hebben ook enkele verschillen.
 
-| Mogelijkheid | Roltoewijzing | Toewijzing weigeren |
+| Mogelijkheid | Nieuwe roltoewijzing | Toewijzing weigeren |
 | --- | --- | --- |
 | Toegang verlenen | :heavy_check_mark: |  |
 | Toegang weigeren |  | :heavy_check_mark: |
-| Kan rechtstreeks worden gemaakt | :heavy_check_mark: |  |
-| Toep assen op een bereik | :heavy_check_mark: | :heavy_check_mark: |
-| Principals uitsluiten |  | :heavy_check_mark: |
-| Overname voor komen op onderliggende bereiken |  | :heavy_check_mark: |
-| Toep assen op [klassieke abonnements beheerders](rbac-and-directory-admin-roles.md) toewijzingen |  | :heavy_check_mark: |
+| Kan direct worden gemaakt | :heavy_check_mark: |  |
+| Solliciteren op een scope | :heavy_check_mark: | :heavy_check_mark: |
+| Aangevers uitsluiten |  | :heavy_check_mark: |
+| Overerving naar onderliggende scopes voorkomen |  | :heavy_check_mark: |
+| Toepassen op [klassieke abonnementsbeheerderstoewijzingen](rbac-and-directory-admin-roles.md) |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Eigenschappen van toewijzing weigeren
+## <a name="deny-assignment-properties"></a>Toewijzingseigenschappen weigeren
 
- Een weiger toewijzing heeft de volgende eigenschappen:
+ Een weigeringstoewijzing heeft de volgende eigenschappen:
 
 > [!div class="mx-tableFixed"]
 > | Eigenschap | Vereist | Type | Beschrijving |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ja | Tekenreeks | De weergave naam van de weigerings toewijzing. De namen moeten uniek zijn voor een bepaald bereik. |
-> | `Description` | Nee | Tekenreeks | De beschrijving van de weigerings toewijzing. |
-> | `Permissions.Actions` | Ten minste één actie of één DataActions | String[] | Een matrix met teken reeksen waarmee de beheer bewerkingen worden opgegeven waarnaar de weigerings toewijzing toegang blokkeert. |
-> | `Permissions.NotActions` | Nee | String[] | Een matrix met teken reeksen waarmee de beheer bewerkingen worden opgegeven die moeten worden uitgesloten van de weigerings toewijzing. |
-> | `Permissions.DataActions` | Ten minste één actie of één DataActions | String[] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven waarnaar de weigerings toewijzing toegang blokkeert. |
-> | `Permissions.NotDataActions` | Nee | String[] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die moeten worden uitgesloten van de weigerings toewijzing. |
-> | `Scope` | Nee | Tekenreeks | Een teken reeks die het bereik opgeeft waarop de weigerings toewijzing van toepassing is. |
-> | `DoNotApplyToChildScopes` | Nee | Booleaans | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
-> | `Principals[i].Id` | Ja | String[] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing van toepassing is. Ingesteld op een lege GUID `00000000-0000-0000-0000-000000000000` om alle principals weer te geven. |
-> | `Principals[i].Type` | Nee | String[] | Een matrix van object typen vertegenwoordigd door principals [i]. id. set to `SystemDefined` om alle principals weer te geven. |
-> | `ExcludePrincipals[i].Id` | Nee | String[] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing niet van toepassing is. |
-> | `ExcludePrincipals[i].Type` | Nee | String[] | Een matrix met object typen vertegenwoordigd door ExcludePrincipals [i]. id. |
-> | `IsSystemProtected` | Nee | Booleaans | Hiermee wordt aangegeven of deze deny-toewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Op dit moment worden alle deny-toewijzingen met het systeem beveiligd. |
+> | `DenyAssignmentName` | Ja | Tekenreeks | De weergavenaam van de weigeringsopdracht. Namen moeten uniek zijn voor een bepaald bereik. |
+> | `Description` | Nee | Tekenreeks | De beschrijving van de weigeringsopdracht. |
+> | `Permissions.Actions` | Ten minste één acties of één DataActions | Tekenreeks[] | Een array met tekenreeksen die de beheerbewerkingen opgeven waartoe de toewijzing voor weigeren toegang blokkeert. |
+> | `Permissions.NotActions` | Nee | Tekenreeks[] | Een array met tekenreeksen die de beheerbewerkingen opgeven die moeten worden uitgesloten van de weigeringstoewijzing. |
+> | `Permissions.DataActions` | Ten minste één acties of één DataActions | Tekenreeks[] | Een array met tekenreeksen die de gegevensbewerkingen opgeven waartoe de toewijzing voor weigeren toegang blokkeert. |
+> | `Permissions.NotDataActions` | Nee | Tekenreeks[] | Een array met tekenreeksen die de gegevensbewerkingen opgeven die moeten worden uitgesloten van de toewijzing weigeren. |
+> | `Scope` | Nee | Tekenreeks | Een tekenreeks die het bereik opgeeft waarop de toewijzing voor weigeren van toepassing is. |
+> | `DoNotApplyToChildScopes` | Nee | Booleaans | Hiermee geeft u op of de toewijzing weigeren van toepassing is op onderliggende scopes. De standaardwaarde is onwaar. |
+> | `Principals[i].Id` | Ja | Tekenreeks[] | Een array van Azure AD-hoofdobject-id's (gebruiker, groep, serviceprincipal of beheerde identiteit) waarop de toewijzing voor weigeren van toepassing is. Stel in op `00000000-0000-0000-0000-000000000000` een lege GUID om alle principals te vertegenwoordigen. |
+> | `Principals[i].Type` | Nee | Tekenreeks[] | Een reeks objecttypen vertegenwoordigd door Principals[i].Id. Ingesteld op `SystemDefined` alle principals te vertegenwoordigen. |
+> | `ExcludePrincipals[i].Id` | Nee | Tekenreeks[] | Een array met Azure AD-hoofdobject-id's (gebruiker, groep, serviceprincipal of beheerde identiteit) waarop de toewijzing voor weigeren niet van toepassing is. |
+> | `ExcludePrincipals[i].Type` | Nee | Tekenreeks[] | Een array van objecttypen vertegenwoordigd door ExcludePrincipals[i].Id. |
+> | `IsSystemProtected` | Nee | Booleaans | Hiermee geeft u op of deze weigeringstoewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Momenteel zijn alle weigeringsopdrachten systeembeveiligd. |
 
-## <a name="the-all-principals-principal"></a>De principal alle principals
+## <a name="the-all-principals-principal"></a>De principal
 
-Voor het ondersteunen van weigerings toewijzingen is een door het systeem gedefinieerde principal met *de naam alle principals* geïntroduceerd. Deze principal vertegenwoordigt alle gebruikers, groepen, service-principals en beheerde identiteiten in een Azure AD-adres lijst. Als de principal-ID een nul-GUID `00000000-0000-0000-0000-000000000000` is en het Principal-type `SystemDefined`is, vertegenwoordigt de principal alle principals. In Azure PowerShell uitvoer ziet u dat alle principals er als volgt uitzien:
+Om weigeringsopdrachten te ondersteunen, is een systeemgedefinieerde principal met de naam *All Principals* geïntroduceerd. Deze principal vertegenwoordigt alle gebruikers, groepen, serviceprincipals en beheerde identiteiten in een Azure AD-map. Als de hoofd-ID een `00000000-0000-0000-0000-000000000000` nul-GUID `SystemDefined`is en het hoofdtype is, vertegenwoordigt de principal alle principals. In Azure PowerShell-uitvoer ziet Alle principals er als volgt uit:
 
 ```azurepowershell
 Principals              : {
@@ -82,12 +82,12 @@ Principals              : {
                           }
 ```
 
-Alle principals kunnen worden gecombineerd met `ExcludePrincipals` om alle principals behalve sommige gebruikers te weigeren. Voor alle principals gelden de volgende beperkingen:
+Alle principals kunnen `ExcludePrincipals` worden gecombineerd met het weigeren van alle opdrachtgevers, behalve sommige gebruikers. Alle opdrachtgevers hebben de volgende beperkingen:
 
-- Kan alleen worden gebruikt in `Principals` en kan niet worden gebruikt in `ExcludePrincipals`.
-- `Principals[i].Type` moet zijn ingesteld op `SystemDefined`.
+- Kan alleen worden `Principals` gebruikt in `ExcludePrincipals`en kan niet worden gebruikt in .
+- `Principals[i].Type`moeten worden `SystemDefined`ingesteld op .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Toewijzing van toewijzingen voor Azure-resources met behulp van de Azure Portal weer geven](deny-assignments-portal.md)
-* [Functie definities voor Azure-resources begrijpen](role-definitions.md)
+* [Zelfstudie: Nieuwe resources beveiligen met Azure Blueprints-bronvergrendelingen](../governance/blueprints/tutorials/protect-new-resources.md)
+* [Toewijzingen voor Azure-resources voor Azure-resources weergeven met behulp van de Azure-portal](deny-assignments-portal.md)

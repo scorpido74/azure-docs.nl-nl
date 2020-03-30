@@ -1,6 +1,6 @@
 ---
 title: Gegevens kopiëren van Dynamics AX
-description: Meer informatie over het kopiëren van gegevens van Dynamics AX naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+description: Meer informatie over het kopiëren van gegevens uit Dynamics AX naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,61 +13,61 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 4acad5e2de55211b6c4492513f331c36286ed852
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892781"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Gegevens uit Dynamics AX kopiëren met behulp van Azure Data Factory
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Gegevens uit Dynamics AX kopiëren met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit de Dynamics AX-bron te kopiëren. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
+In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens uit Dynamics AX-bron te kopiëren. Het artikel bouwt voort op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), dat een algemeen overzicht van Kopieeractiviteit weergeeft.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Dynamics AX-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-U kunt gegevens van Dynamics AX kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+U gegevens van Dynamics AX kopiëren naar elk ondersteund sinkdataarchief. Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die Activiteit kopiëren als bronnen en sinks ondersteunt.
 
-Met name deze Dynamics AX-connector ondersteunt het kopiëren van gegevens van Dynamics AX met het **OData-protocol** met service- **Principal-verificatie**.
+Deze Dynamics AX-connector ondersteunt specifiek het kopiëren van gegevens van Dynamics AX met **odata-protocol** met **Service Principal-verificatie.**
 
 >[!TIP]
->U kunt deze connector ook gebruiken om gegevens te kopiëren uit **Dynamics 365-Financiën en-bewerkingen**. Raadpleeg de [OData-ondersteuning](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) en [verificatie methode](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)van Dynamics 365.
+>U deze connector ook gebruiken om gegevens van **Dynamics 365 Finance and Operations**te kopiëren. Raadpleeg de [OData-ondersteunings-](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) en [verificatiemethode van](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)Dynamics 365.
 
 ## <a name="get-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Dynamics AX-connector.
+In de volgende secties vindt u informatie over eigenschappen die u gebruiken om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor Dynamics AX-connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Volg deze stappen voor het gebruik van service-principal verificatie:
+Voer de volgende stappen uit om serviceprincipal-verificatie te gebruiken:
 
-1. Registreren van een Toepassingsentiteit in Azure Active Directory (Azure AD) door [uw toepassing registreren bij een Azure AD-tenant](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Noteer de volgende waarden, die u gebruikt voor het definiëren van de gekoppelde service:
+1. Registreer een toepassingsentiteit in Azure Active Directory (Azure AD) door Uw toepassing te registreren [bij een Azure AD-tenant.](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant) Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
     - Toepassings-id
     - Toepassingssleutel
     - Tenant-id
 
-2. Ga naar Dynamics AX en verleen deze service-principal de juiste machtigingen voor toegang tot uw Dynamics AX.
+2. Ga naar Dynamics AX en geef deze serviceprincipal de juiste toestemming om toegang te krijgen tot uw Dynamics AX.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor een gekoppelde Dynamics AX-service:
+De volgende eigenschappen worden ondersteund voor Dynamics AX-gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **DynamicsAX**. |Ja |
-| url | Het OData-eind punt van het exemplaar van Dynamics AX (of Dynamics 365 Finance and Operations). |Ja |
-| servicePrincipalId | Opgeven van de toepassing client-ID. | Ja |
-| servicePrincipalKey | Geef de sleutel van de toepassing. Dit veld als markeert een **SecureString** voor het veilig opslaan in de Data Factory of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| tenant | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. Deze ophalen door de muis in de rechterbovenhoek van de Azure-portal. | Ja |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie. Als uw Dynamics-URL bijvoorbeeld `https://sampledynamics.sandbox.operations.dynamics.com/data/`is, wordt de bijbehorende AAD-resource meestal `https://sampledynamics.sandbox.operations.dynamics.com`. | Ja |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. U kunt kiezen Azure Integration Runtime of een zelf-hostend Integration Runtime (als uw gegevens archief zich in een particulier netwerk bevindt). Indien niet opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
+| type | De eigenschap **type** moet zijn ingesteld op **DynamicsAX**. |Ja |
+| url | Het OData-eindpunt Dynamics AX (of Dynamics 365 Finance and Operations). |Ja |
+| servicePrincipalId | Geef de client-id van de toepassing op. | Ja |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als een **SecureString** om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
+| tenant | Geef de tenantgegevens op (domeinnaam of tenant-id) waaronder uw toepassing zich bevindt. Haal deze op door met de muis in de rechterbovenhoek van de Azure-portal te zweven. | Ja |
+| aadResourceId | Geef de AAD-bron op die u om autorisatie vraagt. Als uw URL Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/`bijvoorbeeld is, is `https://sampledynamics.sandbox.operations.dynamics.com`de bijbehorende AAD-bron meestal . | Ja |
+| connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. U Azure Integration Runtime of een self-hosted Integration Runtime kiezen (als uw gegevensarchief zich in een privénetwerk bevindt). Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld**
 
@@ -97,16 +97,16 @@ De volgende eigenschappen worden ondersteund voor een gekoppelde Dynamics AX-ser
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-In deze sectie vindt u een lijst met eigenschappen die door de Dynamics AX-gegevensset worden ondersteund.
+In deze sectie vindt u een lijst met eigenschappen die de Dynamica AX-gegevensset ondersteunt.
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets en gekoppelde services](concepts-datasets-linked-services.md). 
+Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. 
 
-Als u gegevens wilt kopiëren uit Dynamics AX, stelt u de eigenschap **type** van de gegevensset in op **DynamicsAXResource**. De volgende eigenschappen worden ondersteund:
+Als u gegevens uit Dynamics AX wilt kopiëren, stelt u de **eigenschap type** van de gegevensset in op **DynamicsAXResource**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **DynamicsAXResource**. | Ja |
-| Pad | Het pad naar de Dynamics AX OData-entiteit. | Ja |
+| type | De **eigenschap type** van de gegevensset moet worden ingesteld op **DynamicsAXResource**. | Ja |
+| path | Het pad naar de entiteit Dynamics AX OData. | Ja |
 
 **Voorbeeld**
 
@@ -127,20 +127,20 @@ Als u gegevens wilt kopiëren uit Dynamics AX, stelt u de eigenschap **type** va
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
 
-In deze sectie vindt u een lijst met eigenschappen die door de Dynamics AX-bron worden ondersteund.
+In deze sectie vindt u een lijst met eigenschappen die de Dynamics AX-bron ondersteunt.
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van activiteiten en secties, [pijplijnen](concepts-pipelines-activities.md). 
+Zie [Pijplijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
 
 ### <a name="dynamics-ax-as-source"></a>Dynamics AX als bron
 
-Als u gegevens wilt kopiëren uit Dynamics AX, stelt u het **bron** type in de Kopieer activiteit in op **DynamicsAXSource**. De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
+Als u gegevens uit Dynamics AX wilt kopiëren, stelt u het **brontype** in Activiteit kopiëren in **DynamicsAXSource**. De volgende eigenschappen worden ondersteund in de sectie Activiteit **kopiëren:**
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **DynamicsAXSource**. | Ja |
-| query | OData-query opties voor het filteren van gegevens. Voorbeeld: `"?$select=Name,Description&$top=5"`.<br/><br/>**Opmerking**: de connector kopieert gegevens van de gecombineerde URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
+| type | De **eigenschap type** van de bron Activiteit kopiëren moet zijn ingesteld op **DynamicsAXSource**. | Ja |
+| query | OData-queryopties voor het filteren van gegevens. Bijvoorbeeld: `"?$select=Name,Description&$top=5"`.<br/><br/>**Opmerking:** De connector kopieert gegevens `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`uit de gecombineerde URL: . Zie [OData URL-componenten](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)voor meer informatie . | Nee |
 
 **Voorbeeld**
 
@@ -175,10 +175,10 @@ Als u gegevens wilt kopiëren uit Dynamics AX, stelt u het **bron** type in de K
 ```
 
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een lijst met gegevensarchieven die Kopieeractiviteit ondersteunt als bronnen en sinks in Azure Data Factory, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die activiteit kopiëren als bronnen en sinks in Azure Data Factory ondersteunt.

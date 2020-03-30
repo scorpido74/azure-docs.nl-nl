@@ -1,7 +1,7 @@
 ---
 title: MSAL gebruiken met Azure Active Directory B2CLearn | Azure
 titleSuffix: Microsoft identity platform
-description: Met micro soft Authentication Library (MSAL) kunnen toepassingen gelijktijdig gebruikmaken van Azure AD B2C en tokens verkrijgen om beveiligde web-Api's aan te roepen. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, Web-Api's van anderen of uw eigen web-API.
+description: Met Microsoft Authentication Library (MSAL) kunnen toepassingen samenwerken met Azure AD B2C en tokens aanschaffen om beveiligde web-API's aan te roepen. Deze web-API's kunnen Microsoft Graph, andere Microsoft API's, webAPI's van anderen of uw eigen web-API zijn.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696449"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Micro soft-verificatie bibliotheek gebruiken om te werken met Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Microsoft-verificatiebibliotheek gebruiken om te werken met Azure Active Directory B2C
 
-Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen gebruikers met sociale en lokale identiteiten verifiëren met behulp van [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Azure AD B2C is een service voor identiteits beheer. Door het te gebruiken, kunt u aanpassen en bepalen hoe klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
+Met Microsoft Authentication Library (MSAL) kunnen toepassingsontwikkelaars gebruikers met sociale en lokale identiteiten verifiëren met [Azure Active Directory B2C (Azure AD B2C).](https://docs.microsoft.com/azure/active-directory-b2c/) Azure AD B2C is een service voor identiteitsbeheer. Door het te gebruiken, u aanpassen en bepalen hoe klanten zich aanmelden, zich aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
 
-Met Azure AD B2C kunt u ook de gebruikers interface van uw toepassingen branden en aanpassen om uw klanten een naadloze ervaring te bieden.
+Azure AD B2C stelt u ook in staat om de gebruikersinterface van uw toepassingen te brandmerken en aan te passen om uw klanten een naadloze ervaring te bieden.
 
-In deze zelf studie wordt gedemonstreerd hoe u MSAL kunt gebruiken om te werken met Azure AD B2C.
+In deze zelfstudie wordt uitgelegd hoe u MSAL gebruiken om te werken met Azure AD B2C.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen eigen [Azure AD B2C Tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hebt gemaakt, maakt u er nu een. U kunt ook een bestaande Azure AD B2C Tenant gebruiken.
+Als u nog geen eigen [Azure AD B2C-tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hebt gemaakt, maakt u er nu een. U ook een bestaande Azure AD B2C-tenant gebruiken.
 
 ## <a name="javascript"></a>JavaScript
 
-De volgende stappen laten zien hoe een toepassing met één pagina kan Azure AD B2C gebruiken om zich aan te melden, zich aan te melden en een beveiligde web-API aan te roepen.
+De volgende stappen laten zien hoe een toepassing van één pagina Azure AD B2C kan gebruiken om u aan te melden, u aan te melden en een beveiligde web-API aan te roepen.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u verificatie wilt implementeren, moet u de toepassing eerst registreren. Zie [uw toepassing registreren](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) voor gedetailleerde stappen.
+Als u verificatie wilt implementeren, moet u eerst uw toepassing registreren. Zie [Uw aanvraag registreren](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) voor gedetailleerde stappen.
 
-### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
+### <a name="step-2-download-the-sample-application"></a>Stap 2: De voorbeeldtoepassing downloaden
 
-Down load het voor beeld als een zip-bestand of kloon het uit GitHub:
+Download het voorbeeld als zip-bestand of kloon het van GitHub:
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>Stap 3: verificatie configureren
+### <a name="step-3-configure-authentication"></a>Stap 3: Verificatie configureren
 
-1. Open het bestand **index. html** in het voor beeld.
+1. Open het **bestand index.html** in het voorbeeld.
 
-1. Configureer het voor beeld met de client-ID en-sleutel die u eerder hebt vastgelegd tijdens het registreren van uw toepassing. Wijzig de volgende regels met code door de waarden te vervangen door de namen van uw map en API's:
+1. Configureer het voorbeeld met de client-id en sleutel die u eerder hebt opgenomen tijdens het registreren van uw toepassing. Wijzig de volgende regels met code door de waarden te vervangen door de namen van uw map en API's:
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,22 +78,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-De naam van de [gebruikers stroom](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) in deze zelf studie is **B2C_1_signupsignin1**. Als u een andere gebruikers stroom naam gebruikt, stelt u de waarde van de **instantie** in op die naam.
+De naam van de [gebruikersstroom](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) in deze zelfstudie is **B2C_1_signupsignin1**. Als u een andere gebruikersnaam gebruikt, stelt u de **waarde van** de autoriteit in op die naam.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Stap 4: uw toepassing configureren voor het gebruik van `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Stap 4: Uw toepassing configureren om te gebruiken`b2clogin.com`
 
-U kunt `b2clogin.com` in plaats van `login.microsoftonline.com` gebruiken als omleidings-URL. U doet dit in uw Azure AD B2C-toepassing bij het instellen van een id-provider voor registratie en aanmelding.
+U kunt `b2clogin.com` gebruiken `login.microsoftonline.com` in plaats van als een omleiding URL. U doet dit in uw Azure AD B2C-toepassing wanneer u een identiteitsprovider instelt voor aanmelden en aanmelden.
 
-Het gebruik van `b2clogin.com` in de context van `https://your-tenant-name.b2clogin.com/your-tenant-guid` heeft de volgende effecten:
+Gebruik `b2clogin.com` van in `https://your-tenant-name.b2clogin.com/your-tenant-guid` de context van heeft de volgende effecten:
 
-- Micro soft-Services verbruiken minder ruimte in de cookie-header.
-- Uw Url's bevatten niet langer een verwijzing naar micro soft. Zo verwijst uw Azure AD B2C-toepassing waarschijnlijk naar `login.microsoftonline.com`.
+- Microsoft-services verbruiken minder ruimte in de cookieheader.
+- Uw URL's bevatten niet langer een verwijzing naar Microsoft. Uw Azure AD B2C-toepassing verwijst `login.microsoftonline.com`bijvoorbeeld waarschijnlijk naar .
 
- Als u `b2clogin.com`wilt gebruiken, moet u de configuratie van uw toepassing bijwerken.  
+ Als `b2clogin.com`u wilt gebruiken, moet u de configuratie van uw toepassing bijwerken.  
 
-- Stel de eigenschap **validateAuthority** in op `false`, zodat omleidingen met `b2clogin.com` kunnen worden uitgevoerd.
+- Stel de eigenschap `false` **validateAuthority** in op `b2clogin.com` , zodat omleidingen kunnen worden uitgevoerd.
 
-In het volgende voor beeld ziet u hoe u de eigenschap kunt instellen:
+In het volgende voorbeeld ziet u hoe u de eigenschap instellen:
 
 ```javascript
 // The current application coordinates were pre-registered in a B2C directory.
@@ -112,9 +112,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
 > [!NOTE]
-> Uw Azure AD B2C-toepassing verwijst waarschijnlijk naar `login.microsoftonline.com` op meerdere locaties, zoals de verwijzingen naar uw gebruikers stroom en Token-eind punten. Zorg ervoor dat uw autorisatie-eind punt, token-eind punt en uitgever zijn bijgewerkt om `your-tenant-name.b2clogin.com`te gebruiken.
+> Uw Azure AD B2C-toepassing verwijst waarschijnlijk naar `login.microsoftonline.com` op verschillende plaatsen, zoals uw gebruikersstroomverwijzingen en tokeneindpunten. Zorg ervoor dat uw autorisatieeindpunt, tokeneindpunt en uitgever `your-tenant-name.b2clogin.com`zijn bijgewerkt om te gebruiken .
 
-Volg [deze MSAL java script](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) -voor beeld over het gebruik van de MSAL Preview voor Java script (MSAL. js). Het voor beeld haalt een toegangs token op en roept een API aan die is beveiligd door Azure AD B2C.
+Volg [dit MSAL JavaScript-voorbeeld](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) over het gebruik van de MSAL Preview voor JavaScript (MSAL.js). Het voorbeeld krijgt een toegangstoken en roept een API aan die is beveiligd door Azure AD B2C.
 
 ## <a name="next-steps"></a>Volgende stappen
 

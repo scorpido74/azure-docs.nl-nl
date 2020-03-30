@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs Secure push voor iOS
-description: Meer informatie over het verzenden van beveiligde push meldingen naar een iOS-app vanuit Azure. Code voorbeelden geschreven in doel-C en C#.
+title: Azure Notification Hubs Secure Push voor iOS
+description: Meer informatie over het verzenden van beveiligde pushmeldingen naar een iOS-app vanuit Azure. Codevoorbeelden geschreven in Objective-C en C#.
 documentationcenter: ios
 author: sethmanheim
 manager: femila
@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75530745"
 ---
-# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
+# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure Push
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -32,47 +32,47 @@ ms.locfileid: "75530745"
 
 ## <a name="overview"></a>Overzicht
 
-Met ondersteuning voor push meldingen in Microsoft Azure kunt u toegang krijgen tot een gebruiks vriendelijke, geschaalde push-infra structuur met meerdere platforms, waardoor de implementatie van push meldingen voor zowel consumenten als bedrijfs toepassingen voor mobiel wordt vereenvoudigd. eiland.
+Push-notificatie-ondersteuning in Microsoft Azure stelt u in staat om toegang te krijgen tot een gebruiksvriendelijke, multi-platform, geschaalde push-infrastructuur, wat de implementatie van pushmeldingen voor zowel consumenten- als bedrijfstoepassingen voor mobiele platforms.
 
-Vanwege regelgeving of beveiligings beperkingen kan het gebeuren dat een toepassing iets wil toevoegen in de melding die niet kan worden verzonden via de standaard infra structuur voor push meldingen. In deze zelf studie wordt beschreven hoe u dezelfde ervaring kunt krijgen door gevoelige informatie te verzenden via een beveiligde, geverifieerde verbinding tussen het client apparaat en de back-end van de app.
+Vanwege wettelijke of beveiligingsbeperkingen wil een toepassing soms iets opnemen in de melding dat niet kan worden verzonden via de standaard push-notificatie-infrastructuur. In deze zelfstudie wordt beschreven hoe u dezelfde ervaring bereiken door gevoelige informatie te verzenden via een beveiligde, geverifieerde verbinding tussen het clientapparaat en de back-end van de app.
 
-Op hoog niveau is de stroom als volgt:
+Op een hoog niveau is de stroom als volgt:
 
 1. De back-end van de app:
-   * Slaat een beveiligde Payload op in de back-enddatabase.
-   * Hiermee wordt de ID van deze melding naar het apparaat verzonden (er worden geen beveiligde gegevens verzonden).
-2. De app op het apparaat wanneer de melding wordt ontvangen:
-   * Het apparaat neemt contact op met de back-end die de beveiligde Payload aanvraagt.
-   * De app kan de payload weer geven als een melding op het apparaat.
+   * Slaat veilige payload op in back-end database.
+   * Hiermee wordt de id van deze melding naar het apparaat verzonden (er wordt geen beveiligde informatie verzonden).
+2. De app op het apparaat, bij ontvangst van de melding:
+   * Het apparaat neemt contact op met de back-end met het verzoek om de veilige lading.
+   * De app kan de payload weergeven als een melding op het apparaat.
 
-Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in lokale opslag nadat de gebruiker zich heeft aangemeld. Dit garandeert een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de app bij het ontvangen van de melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
+Het is belangrijk op te merken dat in de voorafgaande stroom (en in deze zelfstudie), we aannemen dat het apparaat een verificatietoken opslaat in lokale opslag, nadat de gebruiker zich heeft aanmeldt. Dit garandeert een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met behulp van dit token. Als uw toepassing geen verificatietokens op het apparaat opslaat of als deze tokens kunnen worden verlopen, moet de apparaat-app, na ontvangst van de melding, een algemene melding weergeven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de payload van de melding.
 
-In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig verzendt. De zelf studie bouwt voort op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , daarom moet u eerst de stappen in deze zelf studie volt ooien.
+Deze secure push-zelfstudie laat zien hoe je een pushmelding veilig verzenden. De zelfstudie bouwt voort op de zelfstudie [Gebruikers melden,](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) dus u moet eerst de stappen in die zelfstudie voltooien.
 
 > [!NOTE]
-> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Ios)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+> In deze zelfstudie wordt ervan uitgegaan dat u uw meldingshub hebt gemaakt en geconfigureerd zoals beschreven in [Aan de slag met meldingenhubs (iOS).](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-ios-project"></a>Het iOS-project wijzigen
 
-Nu u de back-end van uw app hebt gewijzigd om alleen de id van een melding te verzenden, moet u uw iOS *-* app wijzigen zodat deze melding wordt afgehandeld en de back-end terugbellen om het beveiligde bericht weer te geven.
+Nu u uw back-end van uw app hebt gewijzigd om alleen de *id* van een melding te verzenden, moet u uw iOS-app wijzigen om die melding te verwerken en uw back-end terugbellen om het beveiligde bericht op te halen dat moet worden weergegeven.
 
-Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud op te halen uit de back-end van de app.
+Om dit doel te bereiken, moeten we de logica schrijven om de beveiligde inhoud uit de back-end van de app op te halen.
 
-1. In `AppDelegate.m`moet u ervoor zorgen dat de app registreert voor stille meldingen, zodat de meldings-ID wordt verwerkt die van de back-end wordt verzonden. Voeg de optie `UIRemoteNotificationTypeNewsstandContentAvailability` toe aan didFinishLaunchingWithOptions:
+1. Zorg `AppDelegate.m`er in, zorg ervoor dat de app registreert op stille meldingen, zodat deze de meldings-ID verwerkt die vanaf de backend wordt verzonden. Voeg `UIRemoteNotificationTypeNewsstandContentAvailability` de optie toe in didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. Voeg bovenaan in uw `AppDelegate.m` een implementatie sectie toe met de volgende verklaring:
+2. Voeg `AppDelegate.m` bovenaan een implementatiesectie toe met de volgende verklaring:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Voeg vervolgens in de sectie implementatie de volgende code toe en vervang de tijdelijke aanduiding `{back-end endpoint}` door het eind punt voor uw back-end die u eerder hebt verkregen:
+3. Voeg vervolgens in de implementatiesectie de volgende `{back-end endpoint}` code toe, waarbij de tijdelijke aanduiding wordt vervangen door het eindpunt voor uw eerder verkregen back-end:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -119,14 +119,14 @@ Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud
     }
     ```
 
-    Met deze methode wordt de back-end van uw app aangeroepen om de meldings inhoud op te halen met de referenties die zijn opgeslagen in de gedeelde voor keuren.
+    Met deze methode wordt uw app back-end aanroept om de meldingsinhoud op te halen met behulp van de referenties die zijn opgeslagen in de gedeelde voorkeuren.
 
-4. Nu moeten we de inkomende melding verwerken en de bovenstaande methode gebruiken om de inhoud op te halen om weer te geven. Eerst moeten we ervoor zorgen dat uw iOS-app op de achtergrond wordt uitgevoerd wanneer er een push melding wordt ontvangen. In **Xcode**selecteert u uw app-project in het linkerdeel venster en klikt u vervolgens op het hoofd doel van de app in het gedeelte **doelen** van het middelste deel venster.
-5. Klik vervolgens op het tabblad **mogelijkheden** boven aan het middelste deel venster en schakel het selectie vakje **externe meldingen** in.
+4. Nu moeten we de binnenkomende melding afhandelen en de bovenstaande methode gebruiken om de inhoud op te halen die wordt weergegeven. Eerst moeten we uw iOS-app op de achtergrond laten draaien wanneer u een pushmelding ontvangt. Selecteer in **XCode**uw app-project in het linkerdeelvenster en klik vervolgens op uw belangrijkste app-doel in het gedeelte **Doelen** in het centrale deelvenster.
+5. Klik vervolgens op het tabblad **Mogelijkheden** boven aan het centrale deelvenster en schakel het selectievakje **Externe meldingen** in.
 
     ![][IOS1]
 
-6. Voeg in `AppDelegate.m` de volgende methode toe voor het verwerken van push meldingen:
+6. Voeg `AppDelegate.m` bij Het toevoegen van de volgende methode om pushmeldingen te verwerken:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -151,14 +151,14 @@ Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud
     }
     ```
 
-    Houd er rekening mee dat het de voor keur heeft om de gevallen van ontbrekende verificatie-header-eigenschap of weigering door de back-end af te handelen. De specifieke afhandeling van deze cases is vooral afhankelijk van uw doel gebruikers ervaring. Een optie is om een melding weer te geven met een algemene prompt voor de gebruiker om de daad werkelijke melding op te halen.
+    Houd er rekening mee dat het beter is om de gevallen van ontbrekende verificatieheadereigenschap of afwijzing door de back-end af te handelen. De specifieke afhandeling van deze gevallen hangt meestal af van uw doelgebruikerservaring. Een optie is om een melding weer te geven met een algemene prompt voor de gebruiker om te verifiëren om de werkelijke melding op te halen.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 Ga als volgt te werk om de toepassing uit te voeren:
 
-1. In XCode voert u de app uit op een fysiek iOS-apparaat (push meldingen werken niet in de simulator).
-2. Voer een gebruikers naam en wacht woord in de gebruikers interface van de iOS-app in. Dit kan een wille keurige teken reeks zijn, maar ze moeten dezelfde waarde hebben.
-3. Klik in de gebruikers interface van de iOS-app op **Aanmelden**. Klik vervolgens op **Push verzenden**. U ziet dat de beveiligde melding wordt weer gegeven in uw meldingen centrum.
+1. Voer de app in XCode uit op een fysiek iOS-apparaat (pushmeldingen werken niet in de simulator).
+2. Voer in de gebruikersinterface van de iOS-app een gebruikersnaam en wachtwoord in. Dit kan elke string zijn, maar ze moeten dezelfde waarde hebben.
+3. Klik in de gebruikersinterface van de iOS-app op **Aanmelden**. Klik vervolgens op **Push verzenden**. U ziet dat de beveiligde melding wordt weergegeven in uw meldingscentrum.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

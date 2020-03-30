@@ -1,101 +1,101 @@
 ---
-title: Een openbaar uitgaand IP-adres instellen voor ISEs
-description: Meer informatie over het instellen van één openbaar uitgaand IP-adres voor integratie service omgevingen (ISEs) in Azure Logic Apps
+title: Een openbaar uitgaand IP-adres instellen voor ISE's
+description: Meer informatie over het instellen van één openbaar verouderd IP-adres voor integratieserviceomgevingen (ISEs) in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191503"
 ---
-# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Eén IP-adres instellen voor een of meer integratieserviceomgevingen in Azure Logic Apps
 
-Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Wanneer u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eind punten met IP-beperkingen, implementeert u een [Azure firewall](../firewall/overview.md) of een [virtueel netwerk apparaat](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en stuurt u uitgaand verkeer via die firewall of het virtuele netwerk apparaat. U kunt vervolgens alle ISE-exemplaren in uw virtuele netwerk gebruiken om een enkel, openbaar, statisch en voorspelbaar IP-adres te communiceren met behulp van doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op deze doel systemen in te stellen voor elke ISE.
+Wanneer u met Azure Logic Apps werkt, u een [ *integratieserviceomgeving* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk.](../virtual-network/virtual-networks-overview.md) Wanneer u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eindpunten met IP-beperkingen, implementeert u een [Azure Firewall](../firewall/overview.md) of een [virtueel netwerktoestel](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en routeert u uitgaand verkeer via dat firewall of virtuele netwerktoestel. U vervolgens alle ISE-exemplaren in uw virtuele netwerk één openbaar, statisch en voorspelbaar IP-adres laten gebruiken om te communiceren met doelsystemen. Op die manier hoeft u geen extra firewallopeningen in te stellen op die bestemmingssystemen voor elke ISE.
 
-In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall stuurt, maar u kunt vergelijk bare concepten Toep assen op een virtueel netwerk apparaat, zoals een firewall van derden vanuit Azure Marketplace. Dit onderwerp richt zich op het instellen van meerdere ISE-instanties, maar u kunt deze methode ook gebruiken voor één ISE wanneer uw scenario het aantal IP-adressen dat toegang nodig heeft beperken. Bepaal of de extra kosten voor de firewall of het virtuele netwerk apparaat logisch kunnen zijn voor uw scenario. Meer informatie over [Azure firewall prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
+In dit onderwerp wordt uitgelegd hoe u uitgaand verkeer routeren via een Azure Firewall, maar u vergelijkbare concepten toepassen op een virtueel netwerktoestel, zoals een firewall van derden vanuit de Azure Marketplace. Hoewel dit onderwerp zich richt op het instellen voor meerdere ISE-exemplaren, u deze benadering ook gebruiken voor één ISE wanneer uw scenario het aantal IP-adressen dat toegang nodig heeft, moet beperken. Overweeg of de extra kosten voor de firewall of het virtuele netwerktoestel zinvol zijn voor uw scenario. Meer informatie over [azure firewall-prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-firewall die wordt uitgevoerd in hetzelfde virtuele netwerk als uw ISE. Als u geen firewall hebt, moet u eerst [een subnet](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) met de naam `AzureFirewallSubnet` toevoegen aan uw virtuele netwerk. U kunt vervolgens [een firewall maken en implementeren](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) in uw virtuele netwerk.
+* Een Azure-firewall die wordt uitgevoerd in hetzelfde virtuele netwerk als uw ISE. Als u geen firewall hebt, voegt u eerst een `AzureFirewallSubnet` [subnet toe](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) dat is vernoemd naar uw virtuele netwerk. U vervolgens [een firewall maken en implementeren](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) in uw virtuele netwerk.
 
-* Een Azure- [route tabel](../virtual-network/manage-route-table.md). Als u er nog geen hebt, moet u eerst [een route tabel maken](../virtual-network/manage-route-table.md#create-a-route-table). Zie [virtueel netwerk verkeer routeren](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie over route ring.
+* Een [Azure-routetabel](../virtual-network/manage-route-table.md). Als u er geen hebt, [maakt u eerst een routetabel.](../virtual-network/manage-route-table.md#create-a-route-table) Zie [Routering van virtueel netwerkverkeer](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie over routering.
 
-## <a name="set-up-route-table"></a>Route tabel instellen
+## <a name="set-up-route-table"></a>Routetabel instellen
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)de route tabel, bijvoorbeeld:
+1. Selecteer in de [Azure-portal](https://portal.azure.com)de routetabel, bijvoorbeeld:
 
-   ![Route tabel selecteren met regel voor het omleiden van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
+   ![Routetabel selecteren met regel voor het aansturen van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. Als u [een nieuwe route wilt toevoegen](../virtual-network/manage-route-table.md#create-a-route), selecteert u in het menu route tabel **routes** > **toevoegen**.
+1. Als u een nieuwe route wilt [toevoegen,](../virtual-network/manage-route-table.md#create-a-route)selecteert u Routes**toevoegen**in het menu **van** > de routetabel .
 
-   ![Route toevoegen voor het omleiden van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
+   ![Route toevoegen voor het aansturen van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
-1. Stel in het deel venster **route toevoegen** [de nieuwe route](../virtual-network/manage-route-table.md#create-a-route) in met een regel waarmee wordt aangegeven dat het uitgaande verkeer naar het doel systeem het volgende gedrag volgt:
+1. Stel **in** het deelvenster Route toevoegen [de nieuwe route in](../virtual-network/manage-route-table.md#create-a-route) met een regel die aangeeft dat al het uitgaande verkeer naar het doelsysteem dit gedrag volgt:
 
-   * Maakt gebruik van het [**virtuele apparaat**](../virtual-network/virtual-networks-udr-overview.md#user-defined) als het type van de volgende hop.
+   * Gebruikt het [**virtuele toestel**](../virtual-network/virtual-networks-udr-overview.md#user-defined) als het volgende hoptype.
 
-   * Gaat naar het privé-IP-adres voor de firewall instantie als het adres van de volgende hop.
+   * Gaat naar het privé-IP-adres voor de firewall-instantie als het volgende hopadres.
 
-     Als u dit IP-adres wilt zoeken, selecteert u in het menu Firewall de optie **overzicht**en zoekt u het adres onder **persoonlijk IP-adres**, bijvoorbeeld:
+     Als u dit IP-adres wilt vinden, selecteert u **Overzicht**, zoek het adres onder **Privé-IP-adres,** bijvoorbeeld:
 
-     ![Privé-IP-adres van firewall zoeken](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
+     ![Firewall privé-IP-adres zoeken](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
 
-   Hier volgt een voor beeld waarin wordt getoond hoe een dergelijke regel eruit kan zien:
+   Hier is een voorbeeld dat laat zien hoe een dergelijke regel eruit zou kunnen zien:
 
-   ![Regel voor het omleiden van uitgaand verkeer instellen](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
-
-   | Eigenschap | Waarde | Beschrijving |
-   |----------|-------|-------------|
-   | **Routenaam** | <*unieke route naam*> | Een unieke naam voor de route in de route tabel |
-   | **Adresvoorvoegsel** | <*doel adres*> | Het doel systeem adres waar u het verkeer wilt laten lopen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. |
-   | **Volgend hoptype** | **Virtueel apparaat** | Het [type hop](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) dat wordt gebruikt door uitgaand verkeer |
-   | **Adres van volgende hop** | <*firewall-persoonlijk IP-adres*> | Het privé-IP-adres voor uw firewall |
-   |||
-
-## <a name="set-up-network-rule"></a>Netwerk regel instellen
-
-1. Zoek en selecteer uw firewall in de Azure Portal. Selecteer in het menu Firewall onder **instellingen**de optie **regels**. Selecteer in het deel venster regels de optie **netwerk regel verzameling** > **netwerk regel verzameling toevoegen**.
-
-   ![Netwerk regel verzameling toevoegen aan firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
-
-1. Voeg in de verzameling een regel toe die verkeer naar het doel systeem toestaat.
-
-   Stel bijvoorbeeld dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-systeem. U maakt een netwerk regel verzameling met de naam `LogicApp_ISE_SFTP_Outbound`, die een netwerk regel bevat met de naam `ISE_SFTP_Outbound`. Deze regel staat het verkeer toe van het IP-adres van elk subnet waar uw ISE wordt uitgevoerd in uw virtuele netwerk naar het doel-SFTP-systeem met behulp van het privé-IP-adres van uw firewall.
-
-   ![Netwerk regel voor Firewall instellen](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
-
-   **Eigenschappen van de verzameling netwerk regels**
+   ![Regel instellen voor het aansturen van uitgaand verkeer](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*netwerk-regel-verzameling-naam*> | De naam voor uw netwerk regel verzameling |
-   | **Prioriteit** | <*prioriteits niveau*> | De volg orde van prioriteit die moet worden gebruikt voor het uitvoeren van de regel verzameling. Zie [Wat zijn enkele Azure firewall concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? voor meer informatie. |
-   | **Actie** | **Dat** | Het actie type dat moet worden uitgevoerd voor deze regel |
+   | **Routenaam** | <*unieke routenaam*> | Een unieke naam voor de route in de routetabel |
+   | **Adresvoorvoegsel** | <*bestemmingsadres*> | Het adres van het bestemmingssysteem waar u het verkeer naartoe wilt brengen. Zorg ervoor dat u [cidr-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. |
+   | **Volgend hoptype** | **Virtueel toestel** | Het [hoptype](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) dat wordt gebruikt door uitgaand verkeer |
+   | **Adres van de volgende hop** | <*firewall-privé-IP-adres*> | Het privé-IP-adres voor uw firewall |
    |||
 
-   **Eigenschappen van netwerk regel**
+## <a name="set-up-network-rule"></a>Netwerkregel instellen
+
+1. Zoek en selecteer uw firewall in de Azure-portal. Selecteer In het firewallmenu onder **Instellingen**de optie **Regels**. Selecteer in het deelvenster Regels de optie **Netwerkregelverzameling** > **Netwerkregelverzameling Toevoegen.**
+
+   ![Verzameling van netwerkregels toevoegen aan firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
+
+1. Voeg in de verzameling een regel toe die verkeer naar het doelsysteem toestaat.
+
+   Stel dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-systeem. U maakt een netwerkregelverzameling `LogicApp_ISE_SFTP_Outbound`met de naam , `ISE_SFTP_Outbound`die een netwerkregel met de naam bevat . Deze regel maakt verkeer mogelijk vanaf het IP-adres van een subnet waar uw ISE in uw virtuele netwerk naar het sftp-doelsysteem draait met behulp van het privé-IP-adres van uw firewall.
+
+   ![Netwerkregel instellen voor firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
+
+   **Eigenschappen voor het verzamelen van netwerkregels**
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*netwerk regel-naam*> | De naam voor uw netwerk regel |
-   | **Protocol** | <*verbinding-protocollen*> | De verbindings protocollen die moeten worden gebruikt. Als u bijvoorbeeld NSG-regels gebruikt, selecteert u zowel **TCP** als **UDP**, niet alleen **TCP**. |
-   | **Bron adressen** | <*ISE-subnet-adressen*> | Het subnet-IP-adres waar uw ISE wordt uitgevoerd en waar verkeer van uw logische app afkomstig is |
-   | **Doel adressen** | <*doel-IP-adres*> | Het IP-adres van het doel systeem waar u het verkeer wilt laten lopen |
-   | **Doel poorten** | <*doel poorten*> | Poorten die het doel systeem gebruikt voor binnenkomende communicatie |
+   | **Naam** | <*naam netwerkregel-verzameling*> | De naam voor uw netwerkregelverzameling |
+   | **Prioriteit** | <*prioriteitsniveau*> | De volgorde van prioriteit die moet worden gebruikt voor het uitvoeren van de regelverzameling. Zie [Wat zijn enkele Azure Firewall-concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)voor meer informatie? |
+   | **Actie** | **Toestaan** | Het actietype dat voor deze regel moet worden uitgevoerd |
    |||
 
-   Zie de volgende artikelen voor meer informatie over netwerk regels:
+   **Eigenschappen van netwerkregel**
 
-   * [Een netwerk regel configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
-   * [Logica voor de verwerking van Azure Firewall regels](../firewall/rule-processing.md#network-rules-and-applications-rules)
+   | Eigenschap | Waarde | Beschrijving |
+   |----------|-------|-------------|
+   | **Naam** | <*naam netwerkregel*> | De naam voor uw netwerkregel |
+   | **Protocol** | <*verbindingsprotocollen*> | De verbindingsprotocollen die u moet gebruiken. Als u bijvoorbeeld NSG-regels gebruikt, selecteert u zowel **TCP** als **UDP,** niet alleen **TCP**. |
+   | **Bronadressen** | <*ISE-subnetadressen*> | De subnet IP-adressen waar uw ISE wordt uitgevoerd en waar het verkeer van uw logica-app vandaan komt |
+   | **Bestemmingsadressen** | <*bestemming-IP-adres*> | Het IP-adres voor uw bestemmingssysteem waar u het verkeer naartoe wilt |
+   | **Bestemmingspoorten** | <*bestemmingspoorten*> | Alle poorten die uw bestemmingssysteem gebruikt voor binnenkomende communicatie |
+   |||
+
+   Zie de volgende artikelen voor meer informatie over netwerkregels:
+
+   * [Een netwerkregel configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
+   * [Regels voor de logicaverwerking in Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Veelgestelde vragen over Azure Firewall](../firewall/firewall-faq.md)
-   * [Azure PowerShell: New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: AZ Network Firewall Network-Rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell: nieuwe azfirewallnetwerkregel](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLI: netwerknetwerkregel AZ-netwerk](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Het Azure Blob-bestandssysteem stuur programma voor Azure Data Lake Storage Gen2
-description: Het ABFS Hadoop-bestandssysteem stuur programma
+title: Het Azure Blob Filesystem-stuurprogramma voor Azure Data Lake Storage Gen2
+description: De ABFS Hadoop Filesystem driver
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,59 +9,59 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75970280"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob Filesystem-stuurprogramma (ABFS): een speciaal Azure Storage-stuurprogramma voor Hadoop
 
-Een van de primaire toegangs methoden voor gegevens in Azure Data Lake Storage Gen2 is via het [Hadoop-bestands systeem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Met Data Lake Storage Gen2 kunnen gebruikers van Azure Blob Storage toegang tot een nieuw stuur programma, het Azure Blob File System-stuur programma of `ABFS`. ABFS maakt deel uit van Apache Hadoop en is opgenomen in een groot aantal commerciële distributies van Hadoop. Met dit stuur programma kunnen veel toepassingen en frameworks toegang krijgen tot gegevens in Azure Blob Storage zonder enige code die expliciet verwijst naar Data Lake Storage Gen2.
+Een van de primaire toegangsmethoden voor gegevens in Azure Data Lake Storage Gen2 is via het [Hadoop FileSystem.](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) Met Data Lake Storage Gen2 kunnen gebruikers van Azure Blob Storage toegang `ABFS`krijgen tot een nieuw stuurprogramma, het Azure Blob File System-stuurprogramma of . ABFS is onderdeel van Apache Hadoop en is opgenomen in veel van de commerciële distributies van Hadoop. Met dit stuurprogramma hebben veel toepassingen en frameworks toegang tot gegevens in Azure Blob Storage zonder dat er code is die expliciet verwijst naar Data Lake Storage Gen2.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Eerdere mogelijkheid: het Windows Azure Storage Blob-stuur programma
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Eerdere mogelijkheden: het Windows Azure Storage Blob-stuurprogramma
 
-De Windows Azure Storage Blob driver of het [WASB-stuur programma](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) bood de oorspronkelijke ondersteuning voor Azure Blob Storage. Dit stuur programma heeft de complexe taak voor het toewijzen van bestandssysteem semantiek (zoals vereist door de Hadoop-bestands systeem Interface) uitgevoerd aan die van de object Store Style interface die door Azure Blob Storage wordt weer gegeven. Dit stuur programma blijft ondersteuning bieden voor dit model en biedt hoge prestaties voor gegevens die zijn opgeslagen in blobs, maar bevat een aanzienlijke hoeveelheid code die deze toewijzing uitvoert, waardoor het lastig is om te onderhouden. Daarnaast moet het stuur programma, zoals [File System. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) en [File System. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) bij het Toep assen op directory's, een groot aantal bewerkingen uitvoeren (vanwege object archieven zonder ondersteuning voor directory's). Dit leidt vaak tot slechtere prestaties. Het ABFS-stuur programma is ontworpen om de inherente tekortkomingen van WASB te overwinnen.
+Het Windows Azure Storage Blob-stuurprogramma of [het WASB-stuurprogramma](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) biedt de oorspronkelijke ondersteuning voor Azure Blob Storage. Dit stuurprogramma heeft de complexe taak uitgevoerd om de semantiek van bestandssystemen (zoals vereist door de Hadoop FileSystem-interface) te toewijzen aan die van de interface met objectopslagstijl die wordt blootgesteld door Azure Blob Storage. Dit stuurprogramma blijft dit model ondersteunen en biedt hoge prestaties toegang tot gegevens die zijn opgeslagen in blobs, maar bevat een aanzienlijke hoeveelheid code die deze toewijzing uitvoert, waardoor het moeilijk te onderhouden is. Bovendien vereisen sommige bewerkingen, zoals [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) en [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) wanneer deze worden toegepast op mappen, het stuurprogramma een groot aantal bewerkingen uitvoeren (vanwege objectstores gebrek aan ondersteuning voor mappen), wat vaak leidt tot verminderde prestaties. De ABFS-driver is ontworpen om de inherente tekortkomingen van WASB te overwinnen.
 
-## <a name="the-azure-blob-file-system-driver"></a>Het Azure Blob File System-stuur programma
+## <a name="the-azure-blob-file-system-driver"></a>Het azure blob-bestandssysteemstuurprogramma
 
-De [Azure data Lake Storage rest-interface](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) is ontworpen ter ondersteuning van de semantiek van bestands systemen via Azure Blob Storage. Gezien het Hadoop-bestands systeem is ook ontworpen om dezelfde semantiek te ondersteunen, is er geen vereiste voor een complexe toewijzing in het stuur programma. Het Azure Blob File System-stuur programma (of ABFS) is dus een louter client-Shim voor de REST API.
+De [Azure Data Lake Storage REST-interface](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) is ontworpen om de semantiek van bestandssystemen via Azure Blob Storage te ondersteunen. Gezien het feit dat de Hadoop FileSystem is ook ontworpen om dezelfde semantiek te ondersteunen is er geen vereiste voor een complexe mapping in de driver. Het Azure Blob File System-stuurprogramma (of ABFS) is dus slechts een clientshim voor de REST API.
 
-Er zijn echter enkele functies die het stuur programma nog moet uitvoeren:
+Er zijn echter enkele functies die het stuurprogramma nog moet uitvoeren:
 
-### <a name="uri-scheme-to-reference-data"></a>URI-schema om te verwijzen naar gegevens
+### <a name="uri-scheme-to-reference-data"></a>URI-schema voor referentiegegevens
 
-Consistent met andere bestandssysteem implementaties in Hadoop, het ABFS-stuur programma definieert een eigen URI-schema, zodat resources (directory's en bestanden) kunnen worden verholpen. Het URI-schema wordt beschreven in [de Azure data Lake Storage Gen2-URI gebruiken](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+In overeenstemming met andere FileSystem-implementaties binnen Hadoop definieert de ABFS-driver zijn eigen URI-schema, zodat resources (mappen en bestanden) duidelijk kunnen worden aangepakt. Het URI-schema is gedocumenteerd in [Het gebruik van de Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md). De structuur van de URI is:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
-Met de bovenstaande URI-indeling kunnen standaard Hadoop-hulpprogram ma's en-frameworks worden gebruikt om te verwijzen naar deze bronnen:
+Met behulp van het bovenstaande URI-formaat kunnen standaard Hadoop-tools en frameworks worden gebruikt om naar deze bronnen te verwijzen:
 
 ```bash
 hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data
 hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
-Intern vertaalt het ABFS-stuur programma de resource (s) die zijn opgegeven in de URI naar bestanden en mappen, en maakt aanroepen van de Azure Data Lake Storage REST API met die verwijzingen.
+Intern vertaalt het ABFS-stuurprogramma de resource(s) die in de URI is opgegeven naar bestanden en mappen en voert het met deze verwijzingen aan naar de Azure Data Lake Storage REST API.
 
 ### <a name="authentication"></a>Authentication
 
-Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoop-toepassing veilig toegang kan krijgen tot bronnen in een Data Lake Storage Gen2-account dat kan worden ondersteund. Volledige details van de beschik bare verificatie schema's vindt u in de [Azure Storage beveiligings handleiding](security-recommendations.md). Dit zijn:
+Het ABFS-stuurprogramma ondersteunt twee vormen van verificatie, zodat de Hadoop-toepassing veilig toegang heeft tot bronnen die zijn opgenomen in een account met Gegevensmeeropslag Gen2. De volledige details van de beschikbare verificatieschema's worden verstrekt in de [beveiligingshandleiding voor Azure Storage.](security-recommendations.md) Dit zijn:
 
-- **Gedeelde sleutel:** Hierdoor kunnen gebruikers toegang krijgen tot alle resources in het account. De sleutel is versleuteld en opgeslagen in Hadoop-configuratie.
+- **Gedeelde sleutel:** Hierdoor hebben gebruikers toegang tot ALLE bronnen in het account. De sleutel wordt versleuteld en opgeslagen in hadoop configuratie.
 
-- **Azure Active Directory OAuth Bearer-token:** Azure AD Bearer-tokens worden verkregen en vernieuwd door het stuur programma met behulp van de identiteit van de eind gebruiker of een geconfigureerde service-principal. Met behulp van dit verificatie model wordt alle toegang per oproep geautoriseerd met behulp van de identiteit die is gekoppeld aan het opgegeven token en wordt geëvalueerd op basis van de toegewezen POSIX-Access Control lijst (ACL).
+- **Azure Active Directory OAuth-token voor drager:** Azure AD-tokens voor dragers worden door het stuurprogramma aangeschaft en vernieuwd met de identiteit van de eindgebruiker of een geconfigureerde serviceprincipal. Met behulp van dit verificatiemodel wordt alle toegang per gesprek geautoriseerd met behulp van de identiteit die is gekoppeld aan het meegeleverde token en geëvalueerd op basis van de toegewezen POSIX Access Control List (ACL).
 
    > [!NOTE]
-   > Azure Data Lake Storage Gen2 ondersteunt alleen Azure AD v 1.0-eind punten.
+   > Azure Data Lake Storage Gen2 ondersteunt alleen Azure AD v1.0-eindpunten.
 
 ### <a name="configuration"></a>Configuratie
 
-Alle configuratie voor het ABFS-stuur programma wordt opgeslagen in het configuratie bestand van <code>core-site.xml</code>. Bij Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met de webportal of Ambari rest API.
+Alle configuratie voor het ABFS-stuurprogramma wordt opgeslagen in het <code>core-site.xml</code> configuratiebestand. Op Hadoop-distributies met [Ambari](https://ambari.apache.org/)kan de configuratie ook worden beheerd met behulp van de webportal of Ambari REST API.
 
-Details van alle ondersteunde configuratie vermeldingen zijn opgegeven in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html).
+Details van alle ondersteunde configuratie-items zijn gespecificeerd in de [officiële Hadoop documentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html).
 
-### <a name="hadoop-documentation"></a>Hadoop-documentatie
+### <a name="hadoop-documentation"></a>Hadoop documentatie
 
-Het ABFS-stuur programma is volledig gedocumenteerd in de [officiële Hadoop-documentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)
+De ABFS-chauffeur is volledig gedocumenteerd in de [officiële hadoopdocumentatie](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)
 
 ## <a name="next-steps"></a>Volgende stappen
 

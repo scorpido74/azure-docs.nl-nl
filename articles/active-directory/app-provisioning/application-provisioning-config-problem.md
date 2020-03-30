@@ -1,6 +1,6 @@
 ---
-title: Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-app
-description: Algemene problemen oplossen die zich voordoen bij het configureren van het inrichten van gebruikers voor een toepassing die al wordt vermeld in de Azure AD-toepassings galerie
+title: Probleem met het configureren van gebruikersinrichting naar een Azure AD Gallery-app
+description: Algemene problemen oplossen bij het configureren van gebruikersinrichting voor een toepassing die al in de Azure AD Application Gallery is vermeld
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,58 +17,58 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3955b96e4a7edfc79a229d927523bdd4473409d4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522761"
 ---
-# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing
+# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Probleem met het configureren van gebruikersinrichting voor een Azure AD Gallery-toepassing
 
-Voor het configureren van de [automatische gebruikers inrichting](user-provisioning.md) voor een app (indien ondersteund) moeten specifieke instructies worden gevolgd om de toepassing voor te bereiden voor automatische inrichting. Vervolgens kunt u de Azure Portal gebruiken om de inrichtings service te configureren om gebruikers accounts te synchroniseren met de toepassing.
+Voor het configureren van [automatische gebruikersinrichting](user-provisioning.md) voor een app (indien ondersteund) moeten specifieke instructies worden gevolgd om de toepassing voor te bereiden op automatische inrichting. Vervolgens u de Azure-portal gebruiken om de inrichtingsservice te configureren om gebruikersaccounts te synchroniseren met de toepassing.
 
-U moet altijd eerst de installatie-zelf studie vinden die specifiek is voor het instellen van inrichting voor uw toepassing. Volg vervolgens de stappen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken. Een lijst met app-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
+U moet altijd beginnen met het vinden van de setup tutorial specifiek voor het opzetten van provisioning voor uw toepassing. Volg vervolgens deze stappen om zowel de app als Azure AD te configureren om de inrichtingsverbinding te maken. Een lijst met zelfstudies voor apps is te vinden in [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory.](../saas-apps/tutorial-list.md)
 
-## <a name="how-to-see-if-provisioning-is-working"></a>Controleren of inrichten werkt 
+## <a name="how-to-see-if-provisioning-is-working"></a>Hoe om te zien of provisioning werkt 
 
-Zodra de service is geconfigureerd, kan de meest inzicht in de werking van de service vanaf twee locaties worden getrokken:
+Zodra de service is geconfigureerd, kunnen de meeste inzichten in de werking van de service worden getrokken uit twee plaatsen:
 
--   **Inrichtings Logboeken (preview)** : de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) registreren alle bewerkingen die worden uitgevoerd door de inrichtings service, inclusief het opvragen van Azure AD voor toegewezen gebruikers die binnen het bereik van de inrichting vallen. Zoek de doel-app op voor het bestaan van deze gebruikers, waarbij de gebruikers objecten tussen het systeem worden vergeleken. Vervolgens kunt u het gebruikers account in het doel systeem toevoegen, bijwerken of uitschakelen op basis van de vergelijking. U kunt toegang krijgen tot de inrichtings Logboeken in de Azure Portal door **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** te selecteren in de sectie **activiteit** .
+-   **Logboekregistratielogboeken (voorbeeld)** : de [inrichtingslogboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) registreren alle bewerkingen die door de inrichtingsservice worden uitgevoerd, inclusief het opvragen van Azure AD voor toegewezen gebruikers die in het bereik van de inrichting zijn. Query de doel-app voor het bestaan van deze gebruikers, het vergelijken van de gebruikersobjecten tussen het systeem. Voeg vervolgens het gebruikersaccount toe, bij of schakel het uit in het doelsysteem op basis van de vergelijking. U hebt toegang tot de inrichtingslogboeken in de Azure-portal door **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **Activiteit.**
 
--   **Huidige status:** Een samen vatting van de laatste uitvoerings uitvoering voor een bepaalde app kan worden weer gegeven in de **Azure Active Directory &gt; Enter prise-Apps &gt; \[toepassings naam\] &gt;inrichtings** sectie onder aan het scherm onder de service-instellingen. De sectie huidige status geeft aan of een inrichtings cyclus is begonnen met het inrichten van gebruikers accounts. U kunt de voortgang van de cyclus bekijken, bekijken hoeveel gebruikers en groepen zijn ingericht en bekijken hoeveel rollen er zijn gemaakt. Als er fouten zijn, kunt u de details vinden in [inrichtings Logboeken (.. /Reports-monitoring/concept-Provisioning-logs.MD? context = Azure/Active-Directory/Manage-apps/context/Manage-apps-context).
+-   **Huidige status –** Een overzicht van de laatste inrichtingsuitvoering voor een bepaalde app is te zien in de sectie **Azure Active &gt; Directory Enterprise Apps &gt; \[Application Name\] &gt;Provisioning,** onder aan het scherm onder de service-instellingen. In de sectie Huidige status wordt weergegeven of een inrichtingscyclus is begonnen met het inrichten van gebruikersaccounts. U de voortgang van de cyclus bekijken, zien hoeveel gebruikers en groepen zijn ingericht en zien hoeveel rollen er zijn gemaakt. Als er fouten zijn, zijn details te vinden in de [Provisioning logs (.. /reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Algemene probleem gebieden met het inrichten om te overwegen
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Algemene probleemgebieden met voorzieningen om te overwegen
 
-Hieronder vindt u een lijst met algemene probleem gebieden die u kunt inzoomen als u een idee hebt van waar u moet beginnen.
+Hieronder vindt u een lijst van de algemene probleemgebieden waarin u inzoomen als u een idee hebt van waar u moet beginnen.
 
-* [De inrichtings service lijkt niet te worden gestart](#provisioning-service-does-not-appear-to-start)
-* Kan de configuratie niet opslaan omdat de app-referenties niet werken
-* [Inrichtings logboeken: gebruikers worden overgeslagen en niet ingericht, ook al zijn ze toegewezen](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+* [De inddienst lijkt niet te starten](#provisioning-service-does-not-appear-to-start)
+* Kan configuratie niet opslaan omdat app-referenties niet werken
+* [Inprovisioning logs zeggen dat gebruikers worden "overgeslagen" en niet ingericht, ook al zijn ze toegewezen](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>De inrichtings service lijkt niet te worden gestart
+## <a name="provisioning-service-does-not-appear-to-start"></a>De inddienst lijkt niet te starten
 
-Als u instelt dat de **inrichtings status** moet worden **ingeschakeld** in de **Azure Active Directory &gt; Enter prise Apps &gt; \[toepassings naam\] &gt;inrichtings** sectie van de Azure Portal. Er worden echter geen andere status gegevens op die pagina weer gegeven nadat de volgende keer opnieuw is geladen. Het is waarschijnlijk dat de service wordt uitgevoerd, maar nog niet een eerste cyclus heeft voltooid. Controleer de hierboven beschreven **inrichtings logboeken** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
+Als u de **inrichtingsstatus** instelt **in** de sectie **Azure Active &gt; Directory Enterprise Apps &gt; \[Application Name Provisioning\] &gt;** sectie van de Azure portal. Er worden echter geen andere statusdetails op die pagina weergegeven na volgende herladen. Het is waarschijnlijk dat de service wordt uitgevoerd, maar nog geen eerste cyclus heeft voltooid. Controleer de hierboven beschreven **indiklogboeken** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
 
 >[!NOTE]
->Een eerste cyclus kan 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers binnen het bereik van de inrichting. Volgende synchronisaties na de eerste cyclus worden sneller uitgevoerd, omdat de inrichtings service de water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchronisaties worden verbeterd.
+>Een eerste cyclus kan 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers dat in staatis. Latere synchronisaties na de eerste cyclus zijn sneller, omdat de inrichtingsservice watermerken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van de volgende synchronisaties worden verbeterd.
 >
 >
 
-## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Kan de configuratie niet opslaan omdat de app-referenties niet werken
+## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Kan configuratie niet opslaan omdat app-referenties niet werken
 
-Voor het uitvoeren van de inrichting vereist Azure AD geldige referenties waarmee verbinding kan worden gemaakt met een API voor gebruikers beheer die wordt geleverd door die app. Als deze referenties niet werken of als u niet weet wat ze zijn, raadpleegt u de zelf studie voor het instellen van deze app, zoals eerder beschreven.
+Azure AD heeft geldige referenties nodig waarmee verbinding kan worden gemaakt met een API voor gebruikersbeheer die door die app wordt geleverd. Als deze referenties niet werken of als u niet weet wat ze zijn, bekijkt u de zelfstudie voor het instellen van deze eerder beschreven app.
 
-## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Inrichtings logboeken zeggen dat gebruikers worden overgeslagen en niet ingericht, zelfs als ze worden toegewezen
+## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Inprovisioning logs zeggen dat gebruikers worden overgeslagen en niet ingericht, ook al zijn ze toegewezen
 
-Wanneer een gebruiker wordt weer gegeven als ' overgeslagen ' in de inrichtings logboeken, is het belang rijk om de uitgebreide details in het logboek bericht te lezen om de reden te bepalen. Hieronder vindt u enkele veelvoorkomende redenen en oplossingen:
+Wanneer een gebruiker wordt weergegeven als "overgeslagen" in de provisioning logs, is het zeer belangrijk om de uitgebreide details in het logboekbericht te lezen om de reden te bepalen. Hieronder staan veelvoorkomende redenen en oplossingen:
 
-- **Er is een bereik filter geconfigureerd** **waarmee de gebruiker wordt gefilterd op basis van een kenmerk waarde**. Zie [op kenmerken gebaseerde toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor meer informatie.
+- **Er is een scopingfilter geconfigureerd** **dat de gebruiker filtert op basis van een kenmerkwaarde.** Zie [Toepassingsinrichting op basis van toepassingen op basis van kenmerken met scopingfilters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor meer informatie.
 
-- **De gebruiker is niet effectief.** Als u dit specifieke fout bericht ziet, is er een probleem met de gebruikers toewijzings record die is opgeslagen in azure AD. U kunt dit probleem oplossen door de toewijzing van de gebruiker (of groep) uit de app ongedaan te maken en het opnieuw toe te wijzen. Zie [een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)voor meer informatie.
+- **De gebruiker is "niet effectief gerechtigd".** Als u dit specifieke foutbericht ziet, is dit omdat er een probleem is met de gebruikerstoewijzingsrecord die is opgeslagen in Azure AD. Als u dit probleem wilt oplossen, wijst u de gebruiker (of groep) uit de app af en wijst u het opnieuw toe. Zie [Een gebruiker of groep toewijzen aan een bedrijfsapp voor](../manage-apps/assign-user-or-group-access-portal.md)meer informatie .
 
-- **Een vereist kenmerk ontbreekt of is niet ingevuld voor een gebruiker.** Het is belang rijk om rekening mee te houden bij het instellen van inrichting om de kenmerk toewijzingen en werk stromen te controleren en te configureren die bepalen welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Dit omvat het instellen van de ' overeenkomende eigenschap ' die wordt gebruikt om gebruikers/groepen tussen de twee systemen uniek te identificeren en te vergelijken. Zie voor meer informatie over dit belang rijke proces het [aanpassen van kenmerk toewijzingen voor gebruikers inrichting](../app-provisioning/customize-application-attributes.md).
+- **Een vereist kenmerk ontbreekt of wordt niet ingevuld voor een gebruiker.** Een belangrijk ding om te overwegen bij het instellen van inrichting zijn het controleren en configureren van de attribuut toewijzingen en werkstromen die bepalen welke gebruiker (of groep) eigenschappen stromen van Azure AD naar de toepassing. Dit omvat het instellen van de "overeenkomende eigenschap" die wordt gebruikt om gebruikers/groepen tussen de twee systemen op unieke wijze te identificeren en te matchen. Zie [Het inrichten van kenmerktoewijzingen](../app-provisioning/customize-application-attributes.md)van gebruikers aanpassen voor meer informatie over dit belangrijke proces.
 
-  * **Kenmerk toewijzingen voor groepen:** Het inrichten van de groeps naam en groeps gegevens, naast de leden, als deze worden ondersteund voor sommige toepassingen. U kunt deze functie in-of uitschakelen door de **toewijzing** voor groeps objecten die op het tabblad **inrichten** wordt weer gegeven in of uit te scha kelen. Als inrichtings groepen is ingeschakeld, moet u de kenmerk toewijzingen controleren om ervoor te zorgen dat er een geschikt veld wordt gebruikt voor de ' overeenkomende ID '. Dit kan de weergave naam of e-mail alias zijn), omdat de groep en de bijbehorende leden niet worden ingericht als de overeenkomende eigenschap leeg is of niet is ingevuld voor een groep in azure AD.
+  * **Toewijzingen voor groepen:** Inrichten van de groepsnaam en groepsgegevens, naast de leden, indien ondersteund voor sommige toepassingen. U deze functionaliteit in- of uitschakelen door de **toewijzing** voor groepsobjecten in te schakelen of uit te schakelen die worden weergegeven op het tabblad **Inrichten.** Als inrichtingsgroepen is ingeschakeld, moet u de kenmerktoewijzingen controleren om ervoor te zorgen dat een geschikt veld wordt gebruikt voor de 'overeenkomende id'. Dit kan de weergavenaam of e-mailalias zijn), omdat de groep en haar leden niet zijn ingericht als de overeenkomende eigenschap leeg is of niet wordt ingevuld voor een groep in Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

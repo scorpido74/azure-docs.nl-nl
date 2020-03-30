@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65987919"
 ---
-# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met PowerShell en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Asynchrone bewerkingen bieden flexibele, Brokered Messaging, samen met gestructureerde FIFO-berichtenuitwisseling (first in, first out) en mogelijkheden voor publiceren/abonneren. 
+Microsoft Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die informatie tussen toepassingen en services verzendt. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. 
 
-In deze snelstartgids wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+In deze snelstartgids wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp maken met Azure PowerShell
 > * Onderwerpfilters toevoegen met Azure PowerShell
-> * Twee berichten met verschillende inhoud maken
+> * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 
@@ -34,7 +34,7 @@ Een voorbeeld van dit scenario is het bijwerken van het voorraadassortiment voor
 
 ![onderwerp](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][] aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account][] voordat u begint.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -43,7 +43,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][] aan voo
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-1. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
+1. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 Voor deze zelfstudie hebt u de nieuwste versie van Azure PowerShell nodig. Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren][].
@@ -91,11 +91,11 @@ New-AzServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespa
 Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-Zodra de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingsreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze gegevens nodig in de volgende stap.
+Zodra de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingsreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze nodig in de volgende stap.
 
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
-Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) bestuderen.
+Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
 
 Ga als volgt te werk om de code uit te voeren:
 
@@ -271,16 +271,16 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). De Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtentiteiten op een eenvoudige manier te beheren. Het hulpprogramma biedt geavanceerde functies zoals import/export-functionaliteit of de mogelijkheid om te testen, onderwerp, wachtrijen, abonnementen, relayservices, notification hubs en gebeurtenissen hubs. 
+> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u resources ingericht met behulp van Azure PowerShell en vervolgens berichten verzonden en ontvangen van een Service Bus-onderwerp en de daarbij behorende abonnementen. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
+> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
 > * Onderwerpfilters toevoegen met .NET-code
-> * Twee berichten met verschillende inhoud maken
+> * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 
@@ -289,7 +289,7 @@ Meer voorbeelden voor het verzenden en ontvangen van berichten vindt u in [de Se
 Ga naar de volgende zelfstudie voor meer informatie over het gebruik van de mogelijkheden voor publiceren/abonneren van Service Bus.
 
 > [!div class="nextstepaction"]
-> [Voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-cli.md)
+> [Voorraad bijwerken met PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Azure PowerShell installeren en configureren]: /powershell/azure/install-Az-ps

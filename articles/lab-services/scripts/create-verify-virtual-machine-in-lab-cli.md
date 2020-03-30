@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI: een virtuele machine in een lab maken en verifiëren'
+title: Azure CLI - Een virtuele machine maken en verifiëren in een lab
 description: Met dit Azure CLI-script wordt een virtuele machine in een lab gemaakt en gecontroleerd of deze beschikbaar is.
 services: lab-services
 author: spelluru
@@ -15,10 +15,10 @@ ms.date: 01/16/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 767d1f3a504e91783e37d8ff1c1b97f62816af3b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76169259"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI gebruiken om een virtuele machine in een lab te maken en de beschikbaarheid te controleren in Azure DevTest Labs
@@ -53,6 +53,6 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Er zijn extra voorbeelden van Azure Lab Services CLI-scripts te vinden in de [voorbeelden van Azure Lab Services CLI](../samples-cli.md).

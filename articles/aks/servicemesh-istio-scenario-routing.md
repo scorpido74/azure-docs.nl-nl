@@ -1,90 +1,90 @@
 ---
-title: Intelligente route ring en Canarische releases met Istio in azure Kubernetes service (AKS)
-description: Meer informatie over het gebruik van Istio voor intelligente route ring en het implementeren van Canarische releases in een Azure Kubernetes service-cluster (AKS)
+title: Intelligente routering en canary releases met Istio in Azure Kubernetes Service (AKS)
+description: Meer informatie over het gebruik van Istio voor het bieden van intelligente routering en het implementeren van canary-releases in een AKS-cluster (Azure Kubernetes Service)
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273010"
 ---
-# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligente route ring en Canarische releases gebruiken met Istio in azure Kubernetes service (AKS)
+# <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligente routering en canary-releases gebruiken met Istio in Azure Kubernetes Service (AKS)
 
-[Istio][istio-github] is een open-source service-net dat een belang rijke set functionaliteit biedt voor de micro Services in een Kubernetes-cluster. Deze functies omvatten verkeer beheer, service-identiteit en-beveiliging, afdwinging van beleid en de bekrachtiging. Zie voor meer informatie over Istio de officiële [What is Istio?][istio-docs-concepts] -documentatie.
+[Istio][istio-github] is een open-source service mesh die een belangrijke set functionaliteit biedt voor de microservices in een Kubernetes-cluster. Deze functies omvatten verkeersbeheer, service-identiteit en -beveiliging, beleidshandhaving en waarneembaarheid. Voor meer informatie over Istio, zie de officiële [Wat is Istio?][istio-docs-concepts] documentatie.
 
-In dit artikel wordt beschreven hoe u de functionaliteit voor verkeers beheer van Istio gebruikt. Een voor beeld van een AKS stem-app wordt gebruikt om intelligente route ring en Canarische releases te verkennen.
+In dit artikel ziet u hoe u de verkeersbeheerfunctionaliteit van Istio gebruiken. Een voorbeeld AKS stem-app wordt gebruikt om intelligente routing en canary releases te verkennen.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * De toepassing implementeren
 > * De toepassing bijwerken
-> * Een Canarische versie van de toepassing samen vouwen
-> * De implementatie volt ooien
+> * Een canary release van de applicatie uitrollen
+> * De implementatie afronden
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 > [!NOTE]
-> Dit scenario is getest op Istio-versie `1.3.2`.
+> Dit scenario is getest tegen `1.3.2`Istio versie .
 
-Voor de stappen die in dit artikel worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt (Kubernetes `1.13` en hoger, waarbij RBAC is ingeschakeld) en een `kubectl`-verbinding met het cluster heeft gemaakt. U hebt ook Istio geïnstalleerd in uw cluster.
+De stappen in dit artikel gaan ervan uit dat `1.13` u een AKS-cluster hebt gemaakt `kubectl` (Kubernetes en hoger, met RBAC ingeschakeld) en dat u een verbinding met het cluster hebt gemaakt. U hebt ook Istio nodig die in uw cluster is geïnstalleerd.
 
-Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart] start en [installeert u Istio in AKS][istio-install] Guidance (Engelstalig).
+Als u hulp nodig hebt met een van deze items, zie dan de [AKS quickstart][aks-quickstart] en [Installeer Istio in AKS][istio-install] begeleiding.
 
-## <a name="about-this-application-scenario"></a>Over dit toepassings scenario
+## <a name="about-this-application-scenario"></a>Informatie over dit toepassingsscenario
 
-De voor beeld-AKS stem-app biedt twee stem opties (**katten** of **honden**) aan gebruikers. Er is een opslag onderdeel waarmee het aantal stemmen voor elke optie wordt gehandhaafd. Daarnaast bevat een analyse component waarmee details over de stemmen voor elke optie worden verstrekt.
+De voorbeeld AKS stem-app biedt twee stemopties **(Katten** of **Honden)** aan gebruikers. Er is een opslagcomponent die het aantal stemmen voor elke optie aanhoudt. Daarnaast is er een analytics-component die details geeft rond de uitgebrachte stemmen voor elke optie.
 
-In dit toepassings scenario begint u met het implementeren van versie `1.0` van de stem-app en versie `1.0` van het onderdeel analyse. De analyse component biedt eenvoudige tellingen voor het aantal stemmen. De stem-app en het analyse onderdeel communiceren met versie `1.0` van het opslag onderdeel, die wordt ondersteund door redis.
+In dit toepassingsscenario begint u `1.0` met het implementeren `1.0` van de versie van de stem-app en de versie van de analysecomponent. De analytics-component biedt eenvoudige tellingen voor het aantal stemmen. De stem-app en analytics-component werken samen met de versie `1.0` van de opslagcomponent, die wordt ondersteund door Redis.
 
-U werkt de analyse component bij naar versie `1.1`, die tellingen en nu totalen en percentages bevat.
+U upgradet de `1.1`analytics-component naar versie , die telt biedt, en nu totalen en percentages.
 
-Een subset van gebruikers test versie `2.0` van de app via een Canarische versie. Deze nieuwe versie maakt gebruik van een opslag onderdeel dat wordt ondersteund door een MySQL-data base.
+Een subset van `2.0` gebruikers test versie van de app via een canary release. Deze nieuwe versie maakt gebruik van een opslagcomponent die wordt ondersteund door een MySQL-database.
 
-Wanneer u zeker weet dat versie `2.0` werkt zoals verwacht in uw subset van gebruikers, implementeert u versie `2.0` voor al uw gebruikers.
+Zodra u er zeker `2.0` van bent dat de versie werkt `2.0` zoals verwacht op uw subset van gebruikers, rolt u versie uit naar al uw gebruikers.
 
 ## <a name="deploy-the-application"></a>De toepassing implementeren
 
-Laten we beginnen met het implementeren van de toepassing in uw Azure Kubernetes service (AKS)-cluster. In het volgende diagram ziet u wat er wordt uitgevoerd aan het einde van deze sectie-versie `1.0` van alle onderdelen met inkomende aanvragen die worden verwerkt via de Istio ingress-gateway:
+Laten we beginnen met het implementeren van de toepassing in uw Azure Kubernetes Service (AKS)-cluster. In het volgende diagram ziet u wat `1.0` er aan het einde van deze sectie wordt uitgevoerd - versie van alle componenten met binnenkomende aanvragen die via de Istio-ingress-gateway worden onderhouden:
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-01.png)
+![De onderdelen en routering van de AKS Voting-app.](media/servicemesh/istio/scenario-routing-components-01.png)
 
-De artefacten die u moet volgen in dit artikel, zijn beschikbaar in de [Azure-samples/AKS-stem-app][github-azure-sample] github opslag plaats. U kunt de artefacten downloaden of de opslag plaats als volgt klonen:
+De artefacten die u samen met dit artikel moet volgen, zijn beschikbaar in de [GitHub repo van Azure-Samples/aks-voting-app.][github-azure-sample] U de artefacten downloaden of de repo als volgt klonen:
 
 ```console
 git clone https://github.com/Azure-Samples/aks-voting-app.git
 ```
 
-Ga naar de volgende map in de gedownloade/gekloonde opslag plaats en voer alle volgende stappen uit in deze map:
+Wijzig de volgende map in de gedownloade / gekloonde repo en voer alle volgende stappen uit deze map uit:
 
 ```console
 cd aks-voting-app/scenarios/intelligent-routing-with-istio
 ```
 
-Maak eerst een naam ruimte in uw AKS-cluster voor de voor beeld-AKS stem-app met de naam `voting` als volgt:
+Maak eerst een naamruimte in uw AKS-cluster voor `voting` de voorbeeld-AKS-stem-app die als volgt wordt genoemd:
 
 ```console
 kubectl create namespace voting
 ```
 
-Voorzie de naam ruimte van een label met `istio-injection=enabled`. Dit label geeft Istio om de Istio-proxy's automatisch als zijspan te injecteren in al uw peulen in deze naam ruimte.
+Label de naamruimte met `istio-injection=enabled`. Dit label instrueert Istio om de istio-proxies automatisch als sidecars in al uw pods in deze naamruimte te injecteren.
 
 ```console
 kubectl label namespace voting istio-injection=enabled
 ```
 
-We gaan nu de onderdelen maken voor de AKS stem-app. Maak deze onderdelen in de `voting` naam ruimte die u in een vorige stap hebt gemaakt.
+Laten we nu de componenten voor de AKS Voting-app maken. Maak deze componenten `voting` in de naamruimte die in een vorige stap is gemaakt.
 
 ```console
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u de resources die worden gemaakt:
+In de volgende voorbeelduitvoer worden de resources weergegeven die worden gemaakt:
 
 ```output
 deployment.apps/voting-storage-1-0 created
@@ -96,15 +96,15 @@ service/voting-app created
 ```
 
 > [!NOTE]
-> Istio heeft een aantal specifieke vereisten rond peulen en services. Zie de [Istio-vereisten voor peul-en service documentatie][istio-requirements-pods-and-services]voor meer informatie.
+> Istio heeft een aantal specifieke eisen rond pods en diensten. Zie de [istio-vereisten voor pods en services-documentatie voor][istio-requirements-pods-and-services]meer informatie.
 
-Als u wilt zien wat het meest is gemaakt, gebruikt u de opdracht [kubectl Get peul][kubectl-get] als volgt:
+Als u de pods wilt zien die zijn gemaakt, gebruikt u de opdracht [kubectl get pods][kubectl-get] als volgt:
 
 ```console
 kubectl get pods -n voting --show-labels
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat er drie exemplaren van de `voting-app` pod en één exemplaar van zowel de `voting-analytics` als `voting-storage` peul zijn. Elk van de peulen heeft twee containers. Een van deze containers is het onderdeel en de andere is de `istio-proxy`:
+In de volgende voorbeelduitvoerwordt weergegeven `voting-app` dat er drie exemplaren `voting-analytics` `voting-storage` van de pod en één instantie van zowel de pod als de pods zijn. Elk van de pods heeft twee containers. Een van deze containers is het onderdeel, en de andere is de: `istio-proxy`
 
 ```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
@@ -115,7 +115,7 @@ voting-app-1-0-956756fd-wsxvt           2/2       Running   0          39s   app
 voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app=voting-storage,pod-template-hash=5d8fcc89c4,version=1.0
 ```
 
-Als u informatie wilt weer geven over de Pod, gebruikt u de [kubectl pod][kubectl-describe] -opdracht beschrijven met label selectie vakjes om de `voting-analytics` pod te selecteren. De uitvoer wordt gefilterd om de details weer te geven van de twee containers die aanwezig zijn in de Pod:
+Als u informatie over de pod wilt zien, gebruiken we de opdracht [kubectl describe pod][kubectl-describe] met labelselectors om de `voting-analytics` pod te selecteren. We filteren de uitvoer om de details van de twee containers in de pod weer te geven:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -135,73 +135,73 @@ Als u informatie wilt weer geven over de Pod, gebruikt u de [kubectl pod][kubect
 
 ::: zone-end
 
-U kunt pas verbinding maken met de stem-app als u de Istio- [Gateway][istio-reference-gateway] en de [virtuele service][istio-reference-virtualservice]hebt gemaakt. Deze Istio bronnen routeren verkeer van de standaard-Istio van de binnenkomende gateway naar onze toepassing.
+U pas verbinding maken met de stem-app als u de Istio [Gateway][istio-reference-gateway] en [Virtual Service hebt gemaakt.][istio-reference-virtualservice] Deze Istio-bronnen leiden het verkeer van de standaard-Istio-ingress-gateway naar onze toepassing.
 
 > [!NOTE]
-> Een **Gateway** is een onderdeel aan de rand van het service-net dat binnenkomend of uitgaand http-en TCP-verkeer ontvangt.
+> Een **gateway** is een onderdeel aan de rand van het servicenet dat binnenkomend of uitgaand HTTP- en TCP-verkeer ontvangt.
 > 
-> Een **virtuele service** definieert een set routerings regels voor een of meer doel Services.
+> Een **virtuele service** definieert een set routeringsregels voor een of meer bestemmingsservices.
 
-Gebruik de `kubectl apply` opdracht om de gateway en de virtuele service yaml te implementeren. Vergeet niet om de naam ruimte op te geven waarin deze resources worden geïmplementeerd.
+Gebruik `kubectl apply` de opdracht om de gateway- en virtuele serviceyaml te implementeren. Vergeet niet de naamruimte op te geven waarin deze resources zijn geïmplementeerd.
 
 ```console
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u de nieuwe gateway en de virtuele service die wordt gemaakt:
+In de volgende voorbeelduitvoerwordt de nieuwe gateway en virtuele service weergegeven die worden gemaakt:
 
 ```output
 virtualservice.networking.istio.io/voting-app created
 gateway.networking.istio.io/voting-app-gateway created
 ```
 
-Gebruik de volgende opdracht om het IP-adres van de Istio ingress-gateway te verkrijgen:
+Verkrijg het IP-adres van de Istio Ingress Gateway met de volgende opdracht:
 
 ```output
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
-In de volgende voorbeeld uitvoer wordt het IP-adres van de ingangs gateway weer gegeven:
+In de volgende voorbeelduitvoer wordt het IP-adres van de Ingress-gateway weergegeven:
 
 ```output
 20.188.211.19
 ```
 
-Open een browser en plak het IP-adres. De voor beeld-app voor AKS stem wordt weer gegeven.
+Open een browser en plak het IP-adres. De voorbeeld-AKS-stem-app wordt weergegeven.
 
-![De AKS stem-app die wordt uitgevoerd in onze Istio ingeschakelde AKS-cluster.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![De AKS Voting app draait in ons Istio enabled AKS cluster.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-In de informatie onder aan het scherm ziet u dat de App versie `1.0` van `voting-app` en versie `1.0` van `voting-storage` (redis) gebruikt.
+De informatie onder aan het scherm laat `1.0` zien `voting-app` dat `1.0` `voting-storage` de app versie van en versie van (Redis) gebruikt.
 
 ## <a name="update-the-application"></a>De toepassing bijwerken
 
-We gaan een nieuwe versie van het onderdeel analyse implementeren. In deze nieuwe versie `1.1` worden totalen en percentages weer gegeven naast het aantal voor elke categorie.
+Laten we een nieuwe versie van de analysecomponent implementeren. Deze nieuwe `1.1` versie geeft totalen en percentages weer naast het aantal voor elke categorie.
 
-In het volgende diagram ziet u wat er aan het einde van deze sectie alleen wordt uitgevoerd `1.1` van ons `voting-analytics` onderdeel verkeer heeft gerouteerd van het `voting-app` onderdeel. Ondanks dat versie `1.0` van onze `voting-analytics` onderdeel blijft lopen en waarnaar wordt verwezen door de `voting-analytics` service, worden de Istio-proxy's niet toegestaan.
+Het volgende diagram laat zien wat er aan het `1.1` einde `voting-analytics` van deze sectie `voting-app` wordt uitgevoerd - alleen de versie van ons onderdeel heeft verkeer dat van het onderdeel wordt gerouteerd. Hoewel de `1.0` versie `voting-analytics` van onze component blijft draaien `voting-analytics` en wordt verwezen door de service, de Istio proxy's verbieden verkeer van en naar het.
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-02.png)
+![De onderdelen en routering van de AKS Voting-app.](media/servicemesh/istio/scenario-routing-components-02.png)
 
-We gaan versie `1.1` van het onderdeel `voting-analytics` implementeren. Dit onderdeel maken in de naam ruimte `voting`:
+Laten we de `1.1` versie `voting-analytics` van de component implementeren. Maak deze component `voting` in de naamruimte:
 
 ```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u de resources die worden gemaakt:
+In de volgende voorbeelduitvoer worden de resources weergegeven die worden gemaakt:
 
 ```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
-Open opnieuw de voor beeld-AKS stem-app in een browser, met behulp van het IP-adres van de Istio ingress-gateway die u in de vorige stap hebt verkregen.
+Open de voorbeeld-AKS-stem-app opnieuw in een browser, met behulp van het IP-adres van de Istio Ingress Gateway die in de vorige stap is verkregen.
 
-Uw browser kan worden vervangen door de twee weer gaven die hieronder worden weer gegeven. Omdat u een Kubernetes- [service][kubernetes-service] gebruikt voor het onderdeel `voting-analytics` met slechts één label kiezer (`app: voting-analytics`), gebruikt Kubernetes het standaard gedrag van Round-Robin tussen het Peul dat overeenkomt met die selector. In dit geval is de versie `1.0` en `1.1` van uw `voting-analytics` peul.
+Uw browser wisselt tussen de twee weergaven hieronder. Aangezien u een [Kubernetes-service][kubernetes-service] gebruikt voor de `voting-analytics` component`app: voting-analytics`met slechts één labelkiezer ( ), gebruikt Kubernetes het standaardgedrag van round-robin tussen de pods die overeenkomen met die kiezer. In dit geval is `1.0` het `1.1` zowel `voting-analytics` versie als van uw pods.
 
-![Versie 1,0 van de analyse component die wordt uitgevoerd in onze AKS-stem-app.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
+![Versie 1.0 van de analytics-component die wordt uitgevoerd in onze AKS Voting-app.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-![Versie 1,1 van de analyse component die wordt uitgevoerd in onze AKS-stem-app.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![Versie 1.1 van de analytics-component die wordt uitgevoerd in onze AKS Voting-app.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-U kunt de scha kelen tussen de twee versies van het onderdeel `voting-analytics` als volgt visualiseren. Vergeet niet om het IP-adres van uw eigen Istio ingangs gateway te gebruiken.
+U het schakelen tussen de `voting-analytics` twee versies van de component als volgt visualiseren. Vergeet niet om het IP-adres van uw eigen Istio Ingress Gateway te gebruiken.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -221,7 +221,7 @@ U kunt de scha kelen tussen de twee versies van het onderdeel `voting-analytics`
 
 ::: zone-end
 
-In de volgende voorbeeld uitvoer ziet u het relevante deel van de geretourneerde website als de site switches tussen versies:
+In de volgende voorbeelduitvoer wordt het relevante deel van de geretourneerde website weergegeven terwijl de site tussen versies schakelt:
 
 ```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
@@ -231,24 +231,24 @@ In de volgende voorbeeld uitvoer ziet u het relevante deel van de geretourneerde
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Het verkeer naar versie 1,1 van de toepassing vergren delen
+### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Verkeer vergrendelen naar versie 1.1 van de toepassing
 
-We gaan het verkeer nu alleen vergren delen naar versie `1.1` van het onderdeel `voting-analytics` en de versie `1.0` van het onderdeel `voting-storage`. Vervolgens definieert u de routerings regels voor alle andere onderdelen.
+Laten we nu het verkeer `1.1` vergrendelen `voting-analytics` naar alleen `1.0` de `voting-storage` versie van de component en naar de versie van de component. Vervolgens definieert u routeringsregels voor alle andere onderdelen.
 
-> * Een **virtuele service** definieert een set routerings regels voor een of meer doel Services.
-> * Een **doel regel** definieert Traffic-beleids regels en versie-specifieke beleids regels.
-> * Een **beleid** definieert welke verificatie methoden kunnen worden geaccepteerd op werk belasting (s).
+> * Een **virtuele service** definieert een set routeringsregels voor een of meer bestemmingsservices.
+> * Een **doelregel** definieert verkeersbeleid en versiespecifiek beleid.
+> * Een **beleid** definieert welke verificatiemethoden kunnen worden geaccepteerd op werkbelasting(en).
 
-Gebruik de `kubectl apply` opdracht om de definitie van de virtuele service op uw `voting-app` te vervangen en om [doel regels][istio-reference-destinationrule] en [virtuele Services][istio-reference-virtualservice] voor de andere onderdelen toe te voegen. U voegt een [beleid][istio-reference-policy] toe aan de naam ruimte van `voting` om ervoor te zorgen dat alle communicatie tussen services wordt beveiligd met wederzijdse TLS-en client certificaten.
+Gebruik `kubectl apply` de opdracht om de definitie `voting-app` van virtuele service op uw [doelregels][istio-reference-destinationrule] en [virtuele services][istio-reference-virtualservice] voor de andere componenten toe te voegen. U voegt [Policy][istio-reference-policy] een beleid `voting` toe aan de naamruimte om ervoor te zorgen dat alle communicatie tussen services wordt beveiligd met behulp van wederzijdse TLS- en clientcertificaten.
 
-* Voor het beleid is `peers.mtls.mode` ingesteld op `STRICT` om ervoor te zorgen dat wederzijdse TLS wordt afgedwongen tussen uw services binnen de `voting` naam ruimte.
-* We stellen de `trafficPolicy.tls.mode` ook in op `ISTIO_MUTUAL` in alle doel regels. Istio biedt services met sterke identiteiten en beveiligt communicatie tussen services met behulp van wederzijdse TLS-en client certificaten die Istio transparant beheert.
+* Het beleid `peers.mtls.mode` is `STRICT` ingesteld om ervoor te zorgen dat `voting` wederzijdse TLS wordt afgedwongen tussen uw services binnen de naamruimte.
+* We hebben `trafficPolicy.tls.mode` ook `ISTIO_MUTUAL` de to in al onze bestemmingsregels. Istio biedt diensten met sterke identiteiten en beveiligt communicatie tussen diensten met behulp van wederzijdse TLS- en clientcertificaten die Istio transparant beheert.
 
 ```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u het nieuwe beleid, de doel regels en de virtuele services die worden bijgewerkt/gemaakt:
+In de volgende voorbeelduitvoerwordt de nieuwe beleidsregels, bestemmingsregels en virtuele services weergegeven die worden bijgewerkt/gemaakt:
 
 ```output
 virtualservice.networking.istio.io/voting-app configured
@@ -260,11 +260,11 @@ destinationrule.networking.istio.io/voting-storage created
 virtualservice.networking.istio.io/voting-storage created
 ```
 
-Als u de AKS-stem-app opnieuw opent in een browser, wordt alleen de nieuwe versie `1.1` van het onderdeel `voting-analytics` gebruikt door het `voting-app` onderdeel.
+Als u de AKS Voting-app opnieuw opent `1.1` in `voting-analytics` een browser, `voting-app` wordt alleen de nieuwe versie van de component door de component gebruikt.
 
-![Versie 1,1 van de analyse component die wordt uitgevoerd in onze AKS-stem-app.](media/servicemesh/istio/scenario-routing-update-app-01.png)
+![Versie 1.1 van de analytics-component die wordt uitgevoerd in onze AKS Voting-app.](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-U kunt visualiseren dat u nu alleen naar versie `1.1` van uw `voting-analytics` onderdeel gaat als volgt. Vergeet niet om het IP-adres van uw eigen Istio ingangs gateway te gebruiken:
+U visualiseren dat u nu `1.1` alleen `voting-analytics` als volgt naar de versie van uw component wordt doorgestuurd. Vergeet niet om het IP-adres van uw eigen Istio Ingress Gateway te gebruiken:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -284,7 +284,7 @@ U kunt visualiseren dat u nu alleen naar versie `1.1` van uw `voting-analytics` 
 
 ::: zone-end
 
-In de volgende voorbeeld uitvoer ziet u het relevante deel van de geretourneerde website:
+In de volgende voorbeelduitvoer wordt het relevante deel van de geretourneerde website weergegeven:
 
 ```output
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -294,13 +294,13 @@ In de volgende voorbeeld uitvoer ziet u het relevante deel van de geretourneerde
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-We gaan nu controleren of Istio wederzijdse TLS gebruikt voor het beveiligen van de communicatie tussen de verschillende services. Hiervoor gebruiken we de [TLS-controle opdracht van authn][istioctl-authn-tls-check] op de binaire `istioctl`-client, die de volgende vorm heeft.
+Laten we nu bevestigen dat Istio wederzijdse TLS gebruikt om de communicatie tussen elk van onze services te beveiligen. Hiervoor gebruiken we de [authn tls-check][istioctl-authn-tls-check] opdracht op de `istioctl` client binaire, die de volgende vorm neemt.
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]
 ```
 
-Deze reeks opdrachten bevat informatie over de toegang tot de opgegeven services, van alle peulen die zich in een naam ruimte bevinden en overeenkomen met een set labels:
+Deze set opdrachten geeft informatie over de toegang tot de opgegeven services, van alle pods die zich in een naamruimte bevinden en overeenkomen met een set labels:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -320,7 +320,7 @@ Deze reeks opdrachten bevat informatie over de toegang tot de opgegeven services
 
 ::: zone-end
 
-In de volgende voorbeeld uitvoer ziet u dat wederzijdse TLS wordt afgedwongen voor elk van de bovenstaande query's. In de uitvoer ziet u ook de beleids-en doel regels die de wederzijdse TLS afdwingen:
+Uit de volgende voorbeelduitvoer blijkt dat wederzijdse TLS wordt afgedwongen voor elk van onze bovenstaande query's. De uitvoer toont ook de beleids- en bestemmingsregels die de wederzijdse TLS afdwingen:
 
 ```output
 # mTLS configuration between istio ingress pods and the voting-app service
@@ -348,27 +348,27 @@ HOST:PORT                                        STATUS     SERVER     CLIENT   
 voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS       default/voting     voting-storage/voting
 ```
 
-## <a name="roll-out-a-canary-release-of-the-application"></a>Een Canarische versie van de toepassing samen vouwen
+## <a name="roll-out-a-canary-release-of-the-application"></a>Een canary release van de applicatie uitrollen
 
-We gaan nu een nieuwe versie implementeren `2.0` van de onderdelen `voting-app`, `voting-analytics`en `voting-storage`. Het nieuwe `voting-storage`-onderdeel maakt gebruik van MySQL in plaats van redis en de `voting-app` en `voting-analytics` onderdelen worden bijgewerkt zodat ze dit nieuwe `voting-storage`-onderdeel kunnen gebruiken.
+Laten we nu een `2.0` nieuwe `voting-app`versie `voting-analytics`van `voting-storage` de , en componenten implementeren. De `voting-storage` nieuwe component gebruikt MySQL in `voting-app` plaats `voting-analytics` van Redis en de `voting-storage` onderdelen en componenten worden bijgewerkt zodat ze deze nieuwe component kunnen gebruiken.
 
-Het onderdeel `voting-app` ondersteunt nu functionaliteit voor functie vlaggen. Met deze functie vlag kunt u de Istio van de Canarische versie testen voor een subset van gebruikers.
+Het `voting-app` onderdeel ondersteunt nu functievlagfunctionaliteit. Met deze functievlag u de canary release-mogelijkheid van Istio testen voor een subset van gebruikers.
 
-In het volgende diagram ziet u wat u aan het einde van deze sectie kunt uitvoeren.
+In het volgende diagram ziet u wat er aan het einde van deze sectie wordt uitgevoerd.
 
-* Versie `1.0` van het onderdeel `voting-app`, versie `1.1` van de `voting-analytics` onderdeel en versie `1.0` van het `voting-storage` onderdeel kunnen communiceren met elkaar.
-* Versie `2.0` van het onderdeel `voting-app`, versie `2.0` van de `voting-analytics` onderdeel en versie `2.0` van het `voting-storage` onderdeel kunnen communiceren met elkaar.
-* Versie `2.0` van het onderdeel `voting-app` zijn alleen toegankelijk voor gebruikers waarvoor een specifieke functie vlag is ingesteld. Deze wijziging wordt beheerd met behulp van een functie vlag via een cookie.
+* Versie `1.0` van `voting-app` de `1.1` component, `voting-analytics` versie `1.0` van `voting-storage` de component en versie van de component kunnen met elkaar communiceren.
+* Versie `2.0` van `voting-app` de `2.0` component, `voting-analytics` versie `2.0` van `voting-storage` de component en versie van de component kunnen met elkaar communiceren.
+* Versie `2.0` van `voting-app` de component is alleen toegankelijk voor gebruikers met een specifieke functievlagset. Deze wijziging wordt beheerd met behulp van een functievlag via een cookie.
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-03.png)
+![De onderdelen en routering van de AKS Voting-app.](media/servicemesh/istio/scenario-routing-components-03.png)
 
-Werk eerst de Istio-doel regels en virtuele Services bij om deze nieuwe onderdelen in te stellen. Deze updates zorgen ervoor dat u geen verkeer stuurt naar de nieuwe onderdelen en gebruikers geen onverwachte toegang krijgen:
+Werk eerst de Istio-bestemmingsregels en virtuele services bij om deze nieuwe componenten te kunnen gebruiken. Deze updates zorgen ervoor dat u verkeer niet verkeerd doorzet naar de nieuwe componenten en dat gebruikers geen onverwachte toegang krijgen:
 
 ```console
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u de doel regels en de virtuele services die worden bijgewerkt:
+In de volgende voorbeelduitvoer ziet u dat de doelregels en virtuele services worden bijgewerkt:
 
 ```output
 destinationrule.networking.istio.io/voting-app configured
@@ -379,13 +379,13 @@ destinationrule.networking.istio.io/voting-storage configured
 virtualservice.networking.istio.io/voting-storage configured
 ```
 
-Vervolgens voegen we de Kubernetes-objecten voor de nieuwe versie `2.0` onderdelen toe. U werkt ook de `voting-storage`-service bij om de `3306` poort voor MySQL op te zetten:
+Laten we vervolgens de Kubernetes-objecten toevoegen `2.0` voor de nieuwe versiecomponenten. U werkt `voting-storage` de service `3306` ook bij om de poort voor MySQL op te nemen:
 
 ```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat de Kubernetes-objecten zijn bijgewerkt of gemaakt:
+In de volgende voorbeelduitvoerziet u dat de Kubernetes-objecten zijn bijgewerkt of gemaakt:
 
 ```output
 service/voting-storage configured
@@ -396,43 +396,43 @@ deployment.apps/voting-analytics-2-0 created
 deployment.apps/voting-app-2-0 created
 ```
 
-Wacht totdat alle versies `2.0` peul worden uitgevoerd. Gebruik de opdracht [kubectl Get peul][kubectl-get] met de schakel optie `-w` Watch om te kijken of er wijzigingen zijn op alle peulen in de `voting` naam ruimte:
+Wacht tot alle `2.0` versiepods actief zijn. Gebruik de opdracht [kubectl][kubectl-get] `-w` get pods met de horlogeschakelaar `voting` om te kijken naar wijzigingen op alle pods in de naamruimte:
 
 ```console
 kubectl get pods --namespace voting -w
 ```
 
-U kunt nu scha kelen tussen de versie `1.0` en versie `2.0` (Canarische) van de stem toepassing. Met de functie vlag in-of uitschakelen onder aan het scherm wordt een cookie ingesteld. Deze cookie wordt gebruikt door de virtuele `voting-app`-service om gebruikers te routeren naar de nieuwe versie `2.0`.
+U moet nu kunnen schakelen `1.0` tussen `2.0` de versie en versie (kanarie) van de stemtoepassing. De functievlag die onder aan het scherm wordt geschakeld, stelt een cookie in. Deze cookie wordt `voting-app` door de Virtuele Dienst gebruikt `2.0`om gebruikers naar de nieuwe versie te leiden.
 
-![Versie 1,0 van de AKS stem-app-functie vlag IS niet ingesteld.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
+![Versie 1.0 van de AKS Voting app - feature flag IS NOT set.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
 
-![Versie 2,0 van de AKS stem-app-functie vlag IS ingesteld.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
+![Versie 2.0 van de AKS Voting-app - functievlag IS ingesteld.](media/servicemesh/istio/scenario-routing-canary-release-02.png)
 
-De stem aantallen verschillen van de versies van de app. Dit verschil markeert dat u twee verschillende opslag back-ends gebruikt.
+De stemtellingen zijn verschillend tussen de versies van de app. Dit verschil benadrukt dat u twee verschillende opslagback-ends gebruikt.
 
-## <a name="finalize-the-rollout"></a>De implementatie volt ooien
+## <a name="finalize-the-rollout"></a>De implementatie afronden
 
-Zodra u de Canarische versie hebt getest, werkt u de virtuele `voting-app`-service bij om al het verkeer naar versie `2.0` van het `voting-app` onderdeel te routeren. Alle gebruikers zien vervolgens de versie `2.0` van de toepassing, ongeacht of de functie vlag is ingesteld of niet:
+Zodra u de canary-release hebt `voting-app` getest, werkt u de `2.0` virtuele `voting-app` service bij om al het verkeer naar de versie van de component te leiden. Alle gebruikers zien `2.0` dan de versie van de toepassing, ongeacht of de functievlag is ingesteld of niet:
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-04.png)
+![De onderdelen en routering van de AKS Voting-app.](media/servicemesh/istio/scenario-routing-components-04.png)
 
-Werk alle doel regels bij om de versies te verwijderen van de onderdelen die u niet meer wilt laten actief. Werk vervolgens alle virtuele Services bij om te stoppen met het verwijzen naar die versies.
+Werk alle doelregels bij om de versies van de onderdelen te verwijderen die u niet langer actief wilt hebben. Werk vervolgens alle virtuele services bij om te stoppen met verwijzen naar deze versies.
 
-Omdat er geen verkeer meer is naar een van de oudere versies van de onderdelen, kunt u nu veilig alle implementaties voor deze onderdelen verwijderen.
+Aangezien er geen verkeer meer is naar een van de oudere versies van de componenten, u nu alle implementaties voor die onderdelen veilig verwijderen.
 
-![De onderdelen en route ring van de AKS stem-app.](media/servicemesh/istio/scenario-routing-components-05.png)
+![De onderdelen en routering van de AKS Voting-app.](media/servicemesh/istio/scenario-routing-components-05.png)
 
-U hebt nu een nieuwe versie van de AKS-stem-app geïmplementeerd.
+Je hebt nu met succes een nieuwe versie van de AKS Voting App uitgerold.
 
 ## <a name="clean-up"></a>Opruimen 
 
-U kunt de AKS-stem-app die we in dit scenario hebben gebruikt, verwijderen uit uw AKS-cluster door de `voting` naam ruimte als volgt te verwijderen:
+U de AKS-stem-app die we in dit scenario `voting` hebben gebruikt, uit uw AKS-cluster verwijderen door de naamruimte als volgt te verwijderen:
 
 ```console
 kubectl delete namespace voting
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat alle onderdelen van de app AKS stemmen zijn verwijderd uit uw AKS-cluster.
+Uit de volgende voorbeelduitvoer blijkt dat alle onderdelen van de AKS-stemapp uit uw AKS-cluster zijn verwijderd.
 
 ```output
 namespace "voting" deleted
@@ -440,7 +440,7 @@ namespace "voting" deleted
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt aanvullende scenario's verkennen met behulp van het [voor beeld van de Istio Bookinfo-toepassing][istio-bookinfo-example].
+U aanvullende scenario's verkennen met behulp van het voorbeeld van de [Istio Bookinfo-toepassing][istio-bookinfo-example].
 
 <!-- LINKS - external -->
 [github-azure-sample]: https://github.com/Azure-Samples/aks-voting-app

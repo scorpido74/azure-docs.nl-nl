@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met micro soft Identity platform UWP | Azure
-description: Hoe Universeel Windows-platform-toepassingen (UWP) een API kunnen aanroepen die toegangs tokens vereist voor het micro soft Identity platform-eind punt.
+title: Microsoft identity platform UWP aan de slag | Azure
+description: Hoe Universal Windows Platform applications (UWP) een API kan aanroepen waarvoor toegangstokens vereist zijn van het eindpunt van het Microsoft-identiteitsplatform.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,73 +16,73 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129894"
 ---
-# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph-API aanroepen vanuit een Universeel Windows-platform toepassing (XAML)
+# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API aanroepen vanuit een Universele Windows Platform-toepassing (XAML)
 
 > [!div renderon="docs"]
 
-In deze hand leiding wordt uitgelegd hoe een systeem eigen Universeel Windows-platform-toepassing (UWP) een toegangs token kan aanvragen. De toepassing roept vervolgens Microsoft Graph-API aan. De hand leiding is ook van toepassing op andere Api's waarvoor toegangs tokens van het micro soft Identity platform-eind punt zijn vereist.
+In deze handleiding wordt uitgelegd hoe een native Universal Windows Platform (UWP)-toepassing een toegangstoken kan aanvragen. De toepassing roept vervolgens Microsoft Graph API aan. De handleiding is ook van toepassing op andere API's waarvoor toegangstokens van het eindpunt van het Microsoft-identiteitsplatform nodig zijn.
 
-Aan het einde van deze hand leiding roept uw toepassing een beveiligde API aan met persoonlijke accounts. Voor beelden zijn outlook.com, live.com en anderen. Uw toepassing roept ook werk-en school accounts aan van een bedrijf of organisatie met Azure Active Directory (Azure AD).
-
->[!NOTE]
-> Voor deze hand leiding moet Visual Studio met Universeel Windows-platform Development zijn geïnstalleerd. Zie [instellen](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) voor instructies voor het downloaden en configureren van Visual Studio voor het ontwikkelen van universeel Windows-platform-apps.
+Aan het einde van deze handleiding roept uw toepassing een beveiligde API aan met behulp van persoonlijke accounts. Voorbeelden zijn outlook.com, live.com en anderen. Uw toepassing roept ook werk- en schoolaccounts op van elk bedrijf of organisatie met Azure Active Directory (Azure AD).
 
 >[!NOTE]
-> Als u geen ervaring hebt met het micro soft-identiteits platform, raden we u aan om te beginnen met de [Microsoft Graph-API aanroepen vanuit een universeel Windows-platform-toepassing (UWP) Quick](quickstart-v2-uwp.md)start.
+> Deze handleiding vereist Visual Studio met Universal Windows Platform ontwikkeling geïnstalleerd. Zie [Instellen](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) voor instructies voor het downloaden en configureren van Visual Studio om Universele Windows Platform-apps te ontwikkelen.
+
+>[!NOTE]
+> Als u nieuw bent op het Microsoft-identiteitsplatform, raden we u aan om snel te beginnen met [het aanroepen van de Microsoft Graph API vanaf een UwP-toepassing (Universal Windows Platform).](quickstart-v2-uwp.md)
 
 ## <a name="how-this-guide-works"></a>De werking van deze handleiding
 
-![Toont hoe de voor beeld-app die door deze zelf studie wordt gegenereerd, werkt](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
+![Laat zien hoe de voorbeeld-app die door deze zelfstudie wordt gegenereerd, werkt](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
 
-In deze hand leiding wordt een voorbeeld toepassing voor UWP gemaakt waarmee Microsoft Graph-API wordt opgevraagd. Voor dit scenario wordt een token toegevoegd aan HTTP-aanvragen via de autorisatie-header. Micro soft Authentication Library (MSAL) verwerkt verwervingen en vernieuwingen van tokens.
+Met deze handleiding wordt een voorbeeld-UWP-toepassing gemaakt die microsoft graph-api opvraagt. Voor dit scenario wordt een token toegevoegd aan HTTP-aanvragen met de kopautorisatie. Microsoft Authentication Library (MSAL) verwerkt tokenacquisities en -verlengingen.
 
 ## <a name="nuget-packages"></a>NuGet-pakketten
 
-In deze hand leiding wordt het volgende NuGet-pakket gebruikt:
+In deze handleiding wordt het volgende NuGet-pakket gebruikt:
 
 |Bibliotheek|Beschrijving|
 |---|---|
-|[Micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-In deze sectie vindt u stapsgewijze instructies voor het integreren van een Windows Desktop .NET-toepassing (XAML) met aanmelden bij micro soft. Vervolgens kan de toepassing Web-Api's opvragen waarvoor een token is vereist, zoals Microsoft Graph-API.
+In deze sectie worden stapsgewijze instructies gegeven om een Windows Desktop .NET-toepassing (XAML) te integreren met Sign-In met Microsoft. Vervolgens kan de toepassing web-API's opvragen waarvoor een token nodig is, zoals Microsoft Graph API.
 
-In deze hand leiding wordt een toepassing gemaakt waarmee een knop wordt weer gegeven die Graph API en een knop om u af te melden. Er worden ook tekst vakken weer gegeven die de resultaten van de aanroepen bevatten.
+Met deze handleiding wordt een toepassing gemaakt met een knop die de Graph API opvraagt en een knop om af te melden. Het toont ook tekstvakken die de resultaten van de oproepen bevatten.
 
 > [!NOTE]
-> Wilt u het Visual Studio-project van dit voor beeld downloaden in plaats van het te maken? [Down load een project](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) en ga naar de stap [toepassings registratie](#register-your-application "stap toepassings registratie") om het code voorbeeld te configureren voordat het wordt uitgevoerd.
+> Wilt u het Visual Studio-project van dit voorbeeld downloaden in plaats van het te maken? [Download een project](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) en ga naar de [aanvraagregistratiestap](#register-your-application "aanvraagregistratiestap") om het codevoorbeeld te configureren voordat het wordt uitgevoerd.
 
 ### <a name="create-your-application"></a>Uw toepassing maken
 
-1. Open Visual Studio en selecteer **een nieuw project maken**.
-1. Kies in **een nieuw project maken de**optie **lege app (universeel Windows)** voor C# en selecteer **volgende**.
-1. In **uw nieuwe project configureren**, de app een naam en selecteer **maken**.
-1. Als u hierom wordt gevraagd, selecteert u in **nieuw universeel Windows-platform project**een wille keurige versie voor de **doel** -en **minimum** versie en selecteert u **OK**.
+1. Open Visual Studio en selecteer **Een nieuw project maken**.
+1. Kies in **Een nieuw project maken**de optie Lege app **(Universele Windows)** voor C# en selecteer **Volgende**.
+1. Geef **in Uw nieuwe project configureren**de naam van de app en selecteer **Maken**.
+1. Selecteer desgevraagd in **New Universal Windows Platform Project**een versie voor **doel-** en **minimumversies** en selecteer **OK**.
 
-   ![Minimum-en doel versies](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
+   ![Minimum- en doelversies](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Micro soft-verificatie bibliotheek toevoegen aan uw project
+### <a name="add-microsoft-authentication-library-to-your-project"></a>Microsoft-verificatiebibliotheek toevoegen aan uw project
 
-1. Selecteer in Visual Studio **Tools** > **NuGet Package Manager** > **Package Manager Console**.
-1. Kopieer en plak de volgende opdracht in het venster **Package Manager-console** :
+1. Selecteer in Visual Studio **de** > optie Tools**NuGet Package Manager** > **Package Manager Console**.
+1. Kopieer en plak de volgende opdracht in het venster **Package Manager Console:**
 
     ```powershell
     Install-Package Microsoft.Identity.Client
     ```
 
    > [!NOTE]
-   > Met deze opdracht [wordt de micro soft-verificatie bibliotheek](https://aka.ms/msal-net)geïnstalleerd. MSAL verkrijgt, bewaart en vernieuwt gebruikers tokens die toegang hebben tot Api's die worden beveiligd door het micro soft Identity-platform.
+   > Met deze opdracht installeert [microsoft-verificatiebibliotheek](https://aka.ms/msal-net). MSAL verwerft, caches en ververst gebruikerstokens die toegang krijgen tot API's die worden beschermd door het identiteitsplatform van Microsoft.
 
-### <a name="create-your-applications-ui"></a>De gebruikers interface van uw toepassing maken
+### <a name="create-your-applications-ui"></a>De gebruikersinterface van uw toepassing maken
 
-Visual Studio maakt *MainPage. xaml* als onderdeel van de project sjabloon. Open dit bestand en vervang het **raster** knooppunt van uw toepassing door de volgende code:
+Visual Studio maakt *MainPage.xaml* als onderdeel van uw projectsjabloon. Open dit bestand en vervang het **rasterknooppunt** van uw toepassing door de volgende code:
 
 ```xml
 <Grid>
@@ -99,11 +99,11 @@ Visual Studio maakt *MainPage. xaml* als onderdeel van de project sjabloon. Open
 </Grid>
 ```
 
-### <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>MSAL gebruiken om een token op te halen voor de Microsoft Graph-API
+### <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>MSAL gebruiken om een token voor Microsoft Graph API te krijgen
 
-In deze sectie wordt uitgelegd hoe u MSAL gebruikt om een token op te halen voor Microsoft Graph-API. Breng wijzigingen aan in het *MainPage.xaml.cs* -bestand.
+In deze sectie ziet u hoe u MSAL gebruikt om een token voor Microsoft Graph API te krijgen. Wijzigingen aanbrengen *MainPage.xaml.cs* in het MainPage.xaml.cs-bestand.
 
-1. Voeg in *MainPage.xaml.cs*de volgende verwijzingen toe:
+1. Voeg in *MainPage.xaml.cs*de volgende referenties toe:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -111,7 +111,7 @@ In deze sectie wordt uitgelegd hoe u MSAL gebruikt om een token op te halen voor
     using System.Threading.Tasks;
     ```
 
-1. Vervang uw `MainPage`-klasse door de volgende code:
+1. Vervang `MainPage` uw klasse door de volgende code:
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -206,27 +206,27 @@ In deze sectie wordt uitgelegd hoe u MSAL gebruikt om een token op te halen voor
     }
     ```
 
-#### Een gebruikers token interactief ophalen<a name="more-information"></a>
+#### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen<a name="more-information"></a>
 
-De methode `AcquireTokenInteractive` resulteert in een venster waarin de gebruiker wordt gevraagd zich aan te melden. In toepassingen moeten gebruikers doorgaans de eerste keer zich aanmelden om toegang te krijgen tot een beveiligde bron. Ze moeten zich mogelijk ook aanmelden wanneer een stille bewerking voor het verkrijgen van een token mislukt. Een voor beeld hiervan is wanneer het wacht woord van een gebruiker is verlopen.
+De `AcquireTokenInteractive` methode resulteert in een venster dat gebruikers vraagt zich aan te melden. Toepassingen vereisen meestal dat gebruikers zich de eerste keer interactief aanmelden om toegang te krijgen tot een beveiligde bron. Mogelijk moeten ze zich ook aanmelden wanneer een stille bewerking om een token te verkrijgen mislukt. Een voorbeeld is wanneer het wachtwoord van een gebruiker is verlopen.
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
-Met de `AcquireTokenSilent` methode worden verwervingen en vernieuwingen van tokens verwerkt zonder tussen komst van de gebruiker. Nadat `AcquireTokenInteractive` voor de eerste keer wordt uitgevoerd en de gebruiker om referenties wordt gevraagd, gebruikt u de methode `AcquireTokenSilent` om tokens aan te vragen voor latere aanroepen. Deze methode verwerft tokens op de achtergrond. MSAL verwerkt de token cache en de verlenging.
+De `AcquireTokenSilent` methode verwerkt tokenacquisities en -verlengingen zonder enige interactie van de gebruiker. Nadat `AcquireTokenInteractive` u voor het eerst is uitgevoerd en de `AcquireTokenSilent` gebruiker om referenties heeft gevraagd, gebruikt u de methode om tokens aan te vragen voor latere oproepen. Die methode verwerft tokens in stilte. MSAL verwerkt tokencache en -vernieuwing.
 
-Uiteindelijk mislukt de `AcquireTokenSilent` methode. De oorzaak van de fout is het toevoegen van een gebruiker die het wacht woord heeft afgemeld of gewijzigd op een ander apparaat. Wanneer MSAL detecteert dat het probleem een interactieve actie vereist, wordt een uitzonde ring `MsalUiRequiredException` gegenereerd. Uw toepassing kan deze uitzonde ring op twee manieren afhandelen:
+Uiteindelijk, `AcquireTokenSilent` de methode mislukt. Redenen voor het mislukken zijn onder andere een gebruiker die zich heeft afgemeld of zijn wachtwoord op een ander apparaat heeft gewijzigd. Wanneer MSAL detecteert dat het probleem een `MsalUiRequiredException` interactieve actie vereist, wordt er een uitzondering gemaakt. Uw toepassing kan deze uitzondering op twee manieren verwerken:
 
-* Uw toepassing roept direct `AcquireTokenInteractive`. Met deze aanroep wordt de gebruiker gevraagd zich aan te melden. Normaal gesp roken gebruikt u deze methode voor online toepassingen waarbij er geen offline-inhoud beschikbaar is voor de gebruiker. Het voor beeld dat door deze begeleide installatie wordt gegenereerd, volgt het patroon. De eerste keer dat u het voor beeld uitvoert, ziet u dat deze in actie is.
+* Uw sollicitatie `AcquireTokenInteractive` belt onmiddellijk. Deze oproep leidt ertoe dat de gebruiker wordt gevraagd zich aan te melden. Normaal gesproken, gebruik maken van deze aanpak voor online toepassingen waar er geen offline inhoud beschikbaar voor de gebruiker. Het voorbeeld dat door deze begeleide instelling wordt gegenereerd, volgt het patroon. U ziet het in actie wanneer u het voorbeeld voor het eerst uitvoert.
 
-   Omdat geen enkele gebruiker de toepassing heeft gebruikt, heeft `accounts.FirstOrDefault()` een null-waarde en wordt een uitzonde ring gegenereerd `MsalUiRequiredException`.
+   Omdat geen enkele gebruiker `accounts.FirstOrDefault()` de toepassing heeft gebruikt, `MsalUiRequiredException` een null-waarde bevat en een uitzondering gooit.
 
-   De code in het voor beeld behandelt vervolgens de uitzonde ring door `AcquireTokenInteractive`aan te roepen. Met deze aanroep wordt de gebruiker gevraagd zich aan te melden.
+   De code in het voorbeeld verwerkt `AcquireTokenInteractive`vervolgens de uitzondering door aan te roepen . Deze oproep leidt ertoe dat de gebruiker wordt gevraagd zich aan te melden.
 
-* Uw toepassing bevat een visuele indicatie voor gebruikers die zich moeten aanmelden. Vervolgens kunnen ze het juiste tijdstip selecteren om zich aan te melden. De toepassing kan later opnieuw `AcquireTokenSilent`. Gebruik deze benadering wanneer gebruikers de functionaliteit van andere toepassingen zonder onderbreking kunnen gebruiken. Een voor beeld hiervan is wanneer offline-inhoud beschikbaar is in de toepassing. In dit geval kunnen gebruikers bepalen wanneer ze zich willen aanmelden. De toepassing kan opnieuw `AcquireTokenSilent` nadat het netwerk tijdelijk niet beschikbaar was.
+* Uw toepassing geeft gebruikers een visuele indicatie dat ze zich moeten aanmelden. Vervolgens kunnen ze het juiste moment selecteren om in te loggen. De toepassing kan `AcquireTokenSilent` later opnieuw proberen. Gebruik deze aanpak wanneer gebruikers andere toepassingsfunctionaliteit kunnen gebruiken zonder onderbreking. Een voorbeeld hiervan is wanneer offline inhoud beschikbaar is in de toepassing. In dit geval kunnen gebruikers beslissen wanneer ze zich willen aanmelden. De toepassing kan `AcquireTokenSilent` opnieuw proberen nadat het netwerk tijdelijk niet beschikbaar was.
 
-### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Microsoft Graph-API aanroepen met behulp van het token dat u zojuist hebt verkregen
+### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Microsoft Graph API aanroepen met behulp van het token dat u zojuist hebt verkregen
 
-Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs*:
+Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs:*
 
    ```csharp
    /// <summary>
@@ -256,15 +256,15 @@ Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs*:
     }
    ```
 
- Met deze methode wordt een `GET` aanvraag van Graph API met behulp van een `Authorization`-header.
+ Met deze `GET` methode wordt een aanvraag `Authorization` ingediend bij Graph API met behulp van een koptekst.
 
-#### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Meer informatie over het maken van een REST-aanroep voor een beveiligde API
+#### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Meer informatie over het maken van een REST-aanroep tegen een beveiligde API
 
-In deze voorbeeld toepassing maakt de `GetHttpContentWithToken` methode een HTTP-`GET` aanvraag voor een beveiligde bron die een token vereist. Vervolgens retourneert de methode de inhoud naar de aanroeper. Met deze methode wordt het verkregen token toegevoegd aan de **http-autorisatie-** header. Voor dit voor beeld is de resource het Microsoft Graph API **me** -eind punt, waarin de profiel gegevens van de gebruiker worden weer gegeven.
+In deze voorbeeldtoepassing `GetHttpContentWithToken` maakt de `GET` methode een HTTP-aanvraag tegen een beveiligde bron waarvoor een token vereist is. Vervolgens retourneert de methode de inhoud naar de beller. Met deze methode wordt het verkregen token toegevoegd aan de **koptekst HTTP Autorisatie.** Voor dit voorbeeld is de bron het eindpunt van de Microsoft Graph API **me,** waarmee de profielgegevens van de gebruiker worden weergegeven.
 
-### <a name="add-a-method-to-sign-out-the-user"></a>Een methode voor het afmelden van de gebruiker toevoegen
+### <a name="add-a-method-to-sign-out-the-user"></a>Een methode toevoegen om de gebruiker af te melden
 
-Als u de gebruiker wilt afmelden, voegt u de volgende methode toe aan *MainPage.xaml.cs*:
+Als u de gebruiker wilt afmelden, voegt u de volgende methode toe aan *MainPage.xaml.cs:*
 
    ```csharp
    /// <summary>
@@ -293,17 +293,17 @@ Als u de gebruiker wilt afmelden, voegt u de volgende methode toe aan *MainPage.
    ```
 
 > [!NOTE]
-> MSAL.NET maakt gebruik van asynchrone methoden om tokens te verkrijgen of accounts te manipuleren. U moet de acties van de gebruikers interface ondersteunen in de UI-thread. Dit is de reden voor het aanroepen van `Dispatcher.RunAsync` en de voorzorgsmaatregelen voor het aanroepen van `ConfigureAwait(false)`.
+> MSAL.NET gebruikt asynchrone methoden om tokens te verwerven of accounts te manipuleren. U moet u de gebruikersinterface-acties in de thread UI ondersteunen. Dit is de `Dispatcher.RunAsync` reden voor de `ConfigureAwait(false)`oproep en de voorzorgsmaatregelen om te bellen.
 
-#### Meer informatie over afmelden<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>Meer informatie over afmelden<a name="more-information-on-sign-out"></a>
 
-Met de methode `SignOutButton_Click` wordt de gebruiker uit de MSAL-gebruikers cache verwijderd. Deze methode vertelt MSAL de huidige gebruiker te verg eten. Een toekomstige aanvraag voor het verkrijgen van een token slaagt alleen als deze interactief is.
+De `SignOutButton_Click` methode verwijdert de gebruiker uit de MSAL-gebruikerscache. Deze methode vertelt MSAL effectief om de huidige gebruiker te vergeten. Een toekomstig verzoek om een token te verkrijgen, wordt alleen voltooid als het interactief is.
 
-De toepassing in dit voor beeld ondersteunt één gebruiker. MSAL ondersteunt scenario's waarbij de gebruiker zich kan aanmelden bij meer dan een account. Een voor beeld is een e-mail toepassing waarbij een gebruiker meerdere accounts heeft.
+De toepassing in dit voorbeeld ondersteunt één gebruiker. MSAL ondersteunt scenario's waarin de gebruiker zich op meer dan één account kan aanmelden. Een voorbeeld is een e-mailtoepassing waarbij een gebruiker meerdere accounts heeft.
 
-### <a name="display-basic-token-information"></a>Elementaire token gegevens weer geven
+### <a name="display-basic-token-information"></a>Basistokengegevens weergeven
 
-Voeg de volgende methode toe aan *MainPage.xaml.cs* om basis informatie over het token weer te geven:
+Voeg de volgende methode toe aan *MainPage.xaml.cs* om basisinformatie over het token weer te geven:
 
    ```csharp
    /// <summary>
@@ -320,13 +320,13 @@ Voeg de volgende methode toe aan *MainPage.xaml.cs* om basis informatie over het
    }
    ```
 
-#### Meer informatie<a name="more-information-1"></a>
+#### <a name="more-information"></a>Meer informatie<a name="more-information-1"></a>
 
-ID-tokens die zijn verkregen met behulp van **OpenID Connect Connect** , bevatten ook een kleine subset van informatie die betrekking heeft op de gebruiker. `DisplayBasicTokenInfo` bevat basis informatie in het token. Deze informatie bevat de weergave naam en-ID van de gebruiker. Het bevat ook de verval datum van het token en de teken reeks die het toegangs token zelf vertegenwoordigt. Als u de knop **Call Microsoft Graph API** meerdere keren selecteert, ziet u dat hetzelfde token opnieuw is gebruikt voor latere aanvragen. U kunt ook zien hoe lang de verloop datum moet worden verlengd wanneer MSAL beslist dat het token wordt vernieuwd.
+ID-tokens die zijn verkregen met **OpenID Connect** bevatten ook een kleine subset van informatie die relevant is voor de gebruiker. `DisplayBasicTokenInfo`geeft basisinformatie in het token weer. Deze informatie omvat de weergavenaam en id van de gebruiker. Het bevat ook de vervaldatum van het token en de tekenreeks die het toegangstoken zelf vertegenwoordigt. Als u de **API-aanroep van Microsoft Graph** meerdere keren selecteert, ziet u dat hetzelfde token opnieuw is gebruikt voor latere aanvragen. U ook de vervaldatum verlengd zien wanneer MSAL besluit dat het tijd is om het token te vernieuwen.
 
-### <a name="display-message"></a>Bericht weer geven
+### <a name="display-message"></a>Bericht weergeven
 
-Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs*:
+Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs:*
 
    ```csharp
    /// <summary>
@@ -344,103 +344,103 @@ Voeg de volgende nieuwe methode toe aan *MainPage.xaml.cs*:
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-U moet uw toepassing nu registreren:
+Nu moet u uw aanvraag registreren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **Azure Active Directory** > **app-registraties**.
-1. Selecteer **nieuwe registratie**. Voer een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, bijvoorbeeld *UWP-app-Call-MSGraph*.
-1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie-map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)** en selecteert u **registreren** om door te gaan.
-1. Zoek op de pagina overzicht de waarde van de **toepassing (client)** en kopieer deze. Ga terug naar Visual Studio, open *MainPage.xaml.cs*en vervang de waarde van `ClientId` door deze waarde.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory** > **App-registraties**.
+1. Selecteer **Nieuwe registratie**. Voer een zinvolle toepassingsnaam in die wordt weergegeven aan gebruikers van de app, bijvoorbeeld *UWP-App-calling-MSGraph.*
+1. Selecteer onder **Ondersteunde accounttypen** **accounts in een organisatiemap en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox)** en selecteer **Vervolgens Registreren** om door te gaan.
+1. Zoek op de overzichtspagina de **id-waarde van de toepassing (client)** en kopieer deze. Ga terug naar Visual *MainPage.xaml.cs*Studio, open MainPage.xaml.cs `ClientId` en vervang de waarde van deze waarde.
 
-Verificatie voor uw toepassing configureren:
+Verificatie configureren voor uw toepassing:
 
-1. Ga terug naar de [Azure Portal](https://portal.azure.com)en selecteer **verificatie**onder **beheren**.
-1. Controleer in de sectie **omleidings-uri's** | **voorgestelde omleidings-uri's voor open bare clients (Mobile, Desktop)** **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Terug in de [Azure-portal](https://portal.azure.com)selecteert u **verificatie**onder **Beheren**.
+1. Schakel in de sectie **URL's** | die worden voorgesteld om te leiden**naar URL's voor openbare clients (mobiel, desktop)** de controle **https://login.microsoftonline.com/common/oauth2/nativeclient**.
 1. Selecteer **Opslaan**.
 
 API-machtigingen voor uw toepassing configureren:
 
-1. Selecteer onder **beheren**de optie **API-machtigingen**.
-1. Selecteer **een machtiging toevoegen** en zorg ervoor dat u **micro soft-api's**hebt geselecteerd.
+1. Selecteer **API-machtigingen** **onder Beheren**.
+1. Selecteer **Een machtiging toevoegen** en controleer of u **Microsoft-API's**hebt geselecteerd.
 1. Selecteer **Microsoft Graph**.
-1. Selecteer **gedelegeerde machtigingen**, zoek naar *gebruiker. Lees* en controleer of **User. Read** is geselecteerd.
-1. Als u wijzigingen hebt aangebracht, selecteert u **machtigingen toevoegen** om ze op te slaan.
+1. Selecteer **Gedelegeerde machtigingen**, zoek naar *User.Read* en controleer of **User.Read** is geselecteerd.
+1. Als u wijzigingen hebt aangebracht, selecteert u **Machtigingen toevoegen** om deze op te slaan.
 
-## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Geïntegreerde verificatie inschakelen voor federatieve domeinen (optioneel)
+## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Geïntegreerde verificatie inschakelen op federatieve domeinen (optioneel)
 
-Als u geïntegreerde Windows-verificatie wilt inschakelen wanneer deze wordt gebruikt in combi natie met een federatief Azure AD-domein, moet het toepassings manifest extra mogelijkheden inschakelen. Ga terug naar uw toepassing in Visual Studio.
+Als u Windows-geïntegreerde verificatie wilt inschakelen wanneer deze wordt gebruikt met een gefedereerd Azure AD-domein, moet het toepassingsmanifest extra mogelijkheden inschakelen. Ga terug naar je sollicitatie in Visual Studio.
 
-1. Open *package. appxmanifest*.
-1. Selecteer **mogelijkheden** en schakel de volgende instellingen in:
+1. Open *Package.appxmanifest*.
+1. Selecteer **Mogelijkheden** en schakel de volgende instellingen in:
 
-   * **Ondernemings verificatie**
-   * **Particuliere netwerken (client & Server)**
-   * **Gedeelde gebruikers certificaten**
+   * **Bedrijfsverificatie**
+   * **Privénetwerken (client & server)**
+   * **Gedeelde gebruikerscertificaten**
 
 > [!IMPORTANT]
-> [Geïntegreerde Windows-verificatie](https://aka.ms/msal-net-iwa) is niet standaard geconfigureerd voor dit voor beeld. Toepassingen die `Enterprise Authentication`-of `Shared User Certificates`-mogelijkheden aanvragen, vereisen een hoger verificatie niveau van de Windows Store. Het is ook niet alle ontwikkel aars nodig om het hogere verificatie niveau uit te voeren. Schakel deze instelling alleen in als u geïntegreerde Windows-verificatie met een federatief Azure AD-domein nodig hebt.
+> [Geïntegreerde Windows-verificatie](https://aka.ms/msal-net-iwa) is niet standaard geconfigureerd voor dit voorbeeld. Toepassingen die `Enterprise Authentication` `Shared User Certificates` aanvragen of mogelijkheden vereisen een hoger niveau van verificatie door de Windows Store. Ook willen niet alle ontwikkelaars het hogere niveau van verificatie uitvoeren. Schakel deze instelling alleen in als u Windows Integrated Authentication nodig hebt met een gefedereerd Azure AD-domein.
 
 ## <a name="test-your-code"></a>Uw code testen
 
-Als u uw toepassing wilt testen, selecteert u F5 om uw project uit te voeren in Visual Studio. Het hoofd venster wordt weer gegeven:
+Als u uw toepassing wilt testen, selecteert u F5 om uw project uit te voeren in Visual Studio. Het hoofdvenster wordt weergegeven:
 
-![Gebruikers interface van de toepassing](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
+![Gebruikersinterface van de toepassing](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
 
-Wanneer u klaar bent om te testen, selecteert u **Microsoft Graph-API aanroepen**. Gebruik vervolgens een Azure AD-organisatie account of een Microsoft-account, zoals live.com of outlook.com, om u aan te melden. De eerste keer dat een gebruiker dit uitvoert, wordt in de toepassing een venster weer gegeven waarin de gebruiker wordt gevraagd zich aan te melden.
+Wanneer u klaar bent om te testen, selecteert u **Microsoft Graph API aanroepen**. Gebruik vervolgens een Azure AD-organisatieaccount of een Microsoft-account, zoals live.com of outlook.com, om u aan te melden. De eerste keer dat een gebruiker dit uitvoert, geeft de toepassing een venster weer waarin de gebruiker wordt gevraagd zich aan te melden.
 
-### <a name="consent"></a>Vergunning
+### <a name="consent"></a>Toestemming
 
-De eerste keer dat u zich bij uw toepassing aanmeldt, wordt er een venster voor toestemming weer gegeven dat vergelijkbaar is met het volgende. Selecteer **Ja** om expliciet toestemming te geven voor toegang:
+De eerste keer dat u zich aanmeldt bij uw aanvraag, krijgt u een toestemmingsscherm te zien dat vergelijkbaar is met het volgende. Selecteer **Ja** om expliciet toestemming te geven voor toegang:
 
-![Venster toegangs bevestiging](./media/tutorial-v2-windows-uwp/consentscreen-vs2019.png)
+![Scherm toegangstoestemming](./media/tutorial-v2-windows-uwp/consentscreen-vs2019.png)
 
 ### <a name="expected-results"></a>Verwachte resultaten
 
-U ziet de gebruikers profiel gegevens die worden geretourneerd door de API-aanroep van Microsoft Graph op het scherm met de **API-aanroep resultaten** :
+U ziet gebruikersprofielgegevens die worden geretourneerd door de API-aanroep van Microsoft Graph in het scherm **API-oproepresultaten:**
 
-![Scherm met resultaten van API-aanroep](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
+![Scherm API-oproepresultaten](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-U ziet ook basis informatie over het token dat is verkregen via `AcquireTokenInteractive` of `AcquireTokenSilent` in het vak **token info** :
+U ziet ook basisinformatie over `AcquireTokenInteractive` het `AcquireTokenSilent` token dat is verkregen via of in het vak **Tokeninfo:**
 
 |Eigenschap  |Indeling  |Beschrijving |
 |---------|---------|---------|
-|`Username` |`user@domain.com` |De gebruikers naam waarmee de gebruiker wordt geïdentificeerd.|
-|`Token Expires` |`DateTime` |Het tijdstip waarop het token verloopt. MSAL breidt de verloop datum uit door de token indien nodig te vernieuwen.|
+|`Username` |`user@domain.com` |De gebruikersnaam die de gebruiker identificeert.|
+|`Token Expires` |`DateTime` |Het tijdstip waarop het token verloopt. MSAL verlengt de vervaldatum door het token zo nodig te vernieuwen.|
 
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over bereiken en gedelegeerde machtigingen
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over scopes en gedelegeerde machtigingen
 
-Microsoft Graph-API vereist dat het `user.read` bereik het profiel van een gebruiker kan lezen. Deze scope wordt standaard toegevoegd in elke toepassing die is geregistreerd in de portal voor toepassings registratie. Andere Api's voor Microsoft Graph en aangepaste Api's voor uw back-endserver vereisen mogelijk extra scopes. Microsoft Graph-API vereist bijvoorbeeld het `Calendars.Read` bereik om de agenda's van de gebruiker weer te geven.
+Microsoft Graph API `user.read` vereist het bereik om het profiel van een gebruiker te lezen. Dit bereik wordt standaard toegevoegd in elke toepassing die is geregistreerd in het Portal voor toepassingsregistratie. Andere API's voor Microsoft Graph en aangepaste API's voor uw back-endserver vereisen mogelijk extra scopes. Microsoft Graph API vereist `Calendars.Read` bijvoorbeeld het bereik om de agenda's van de gebruiker weer te geven.
 
-Als u toegang wilt krijgen tot de agenda's van de gebruiker in de context van een toepassing, voegt u de `Calendars.Read` gedelegeerde machtiging toe aan de registratie gegevens van de toepassing. Voeg het `Calendars.Read` bereik vervolgens toe aan de `acquireTokenSilent`-aanroep.
+Als u de agenda's van de gebruiker wilt `Calendars.Read` openen in de context van een toepassing, voegt u de gedelegeerde machtiging toe aan de registratiegegevens van de toepassing. Voeg vervolgens `Calendars.Read` het `acquireTokenSilent` bereik toe aan het gesprek.
 
 > [!NOTE]
-> Gebruikers kunnen worden gevraagd om aanvullende toestemmingen wanneer u het aantal bereiken verhoogt.
+> Gebruikers kunnen worden gevraagd om extra toestemmingen als u het aantal scopes te verhogen.
 
 ## <a name="known-issues"></a>Bekende problemen
 
 ### <a name="issue-1"></a>Probleem 1
 
-Er wordt een van de volgende fout berichten weer gegeven wanneer u zich aanmeldt bij uw toepassing in een federatief Azure AD-domein:
+U ontvangt een van de volgende foutmeldingen wanneer u zich aanmeldt bij uw toepassing op een gefedereerd Azure AD-domein:
 
-* Er is geen geldig client certificaat gevonden in de aanvraag.
-* Er zijn geen geldige certificaten gevonden in het certificaat archief van de gebruiker.
-* Probeer opnieuw een andere verificatie methode te kiezen.
+* Geen geldig clientcertificaat gevonden in de aanvraag.
+* Geen geldige certificaten gevonden in het certificaatarchief van de gebruiker.
+* Probeer opnieuw een andere verificatiemethode te kiezen.
 
-Oorzaak: de mogelijkheden voor ondernemings en certificaten zijn niet ingeschakeld.
+Oorzaak: Enterprise- en certificaatmogelijkheden zijn niet ingeschakeld.
 
-Oplossing: Volg de stappen in [geïntegreerde verificatie inschakelen voor federatieve domeinen (optioneel)](#enable-integrated-authentication-on-federated-domains-optional).
+Oplossing: Volg de stappen in [Geïntegreerde verificatie inschakelen op federatieve domeinen (optioneel).](#enable-integrated-authentication-on-federated-domains-optional)
 
 ### <a name="issue-2"></a>Probleem 2
 
-U schakelt [geïntegreerde verificatie in voor federatieve domeinen](#enable-integrated-authentication-on-federated-domains-optional) en probeert Windows hello te gebruiken op een Windows 10-computer om u aan te melden bij een omgeving waarvoor multi-factor Authentication is geconfigureerd. De lijst met certificaten wordt weer gegeven. Als u echter kiest voor het gebruik van uw pincode, wordt het venster vastmaken nooit weer gegeven.
+U schakelt [geïntegreerde verificatie in op federatieve domeinen](#enable-integrated-authentication-on-federated-domains-optional) en probeert Windows Hello te gebruiken op een Windows 10-computer om u aan te melden bij een omgeving met multi-factor authenticatie geconfigureerd. De lijst met certificaten wordt gepresenteerd. Als u er echter voor kiest om uw pincode te gebruiken, wordt het pincodevenster nooit weergegeven.
 
-Oorzaak: dit probleem is een bekende beperking van de Web authentication Broker in UWP-toepassingen die worden uitgevoerd op Windows 10 Desktop. Het werkt prima op Windows 10 Mobile.
+Oorzaak: Dit probleem is een bekende beperking van de webverificatiebroker in UWP-toepassingen die worden uitgevoerd op Windows 10-bureaublad. Het werkt prima op Windows 10 Mobile.
 
-Tijdelijke oplossing: Selecteer **Aanmelden met andere opties**. Selecteer vervolgens **Aanmelden met een gebruikers naam en wacht woord**. Selecteer **uw wacht woord opgeven**. Ga vervolgens door met het verificatie proces voor de telefoon.
+Tijdelijke oplossing: Selecteer **Aanmelden met andere opties**. Selecteer **Vervolgens Aanmelden met een gebruikersnaam en wachtwoord**. Selecteer **Uw wachtwoord opgeven**. Ga dan door het verificatieproces voor telefoons.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien:
+Help ons het Microsoft-identiteitsplatform te verbeteren. Vertel ons wat u ervan vindt door een korte enquête met twee vragen in te vullen:
 
 > [!div class="nextstepaction"]
-> [Micro soft Identity platform-enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Enquête van microsoft-identiteitsplatform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

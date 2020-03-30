@@ -9,35 +9,35 @@ ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75564707"
 ---
 ## <a name="register-extensions"></a>Extensies registreren
 
-Met uitzonde ring van HTTP-en timer-triggers, worden function-bindingen in runtime versie 2. x en hoger geïmplementeerd als uitbreidings pakketten. In versie 2. x en voorbij de Azure Functions runtime moet u de uitbrei dingen expliciet registreren voor de bindings typen die in uw functies worden gebruikt. De uitzonde ringen hierop zijn HTTP-bindingen en timer triggers, waarvoor geen uitbrei dingen zijn vereist.
+Met uitzondering van HTTP- en timertriggers worden functiesbindingen in runtime versie 2.x en hoger geïmplementeerd als uitbreidingspakketten. In versie 2.x en verder van de runtime van Azure-functies moet u de extensies expliciet registreren voor de bindingstypen die in uw functies worden gebruikt. De uitzonderingen hierop zijn HTTP-bindingen en timertriggers, waarvoor geen extensies nodig zijn.
 
-U kunt ervoor kiezen om bindings uitbreidingen afzonderlijk te installeren of u kunt een referentie voor een uitbreidings bundel toevoegen aan het JSON-project bestand van de host. Met uitbreidings bundels wordt de kans verwijderd om compatibiliteits problemen met het pakket op te lossen wanneer u meerdere bindings typen gebruikt. Het is de aanbevolen methode voor het registreren van bindings uitbreidingen. Extensie bundels verwijdert ook de vereiste van het installeren van de .NET Core 2. x SDK. 
+U ervoor kiezen om bindende extensies afzonderlijk te installeren of u een extensiebundel toevoegen die verwijst naar het projectbestand host.json. Extensiebundels verwijdert de kans op compatibiliteitsproblemen met pakketten bij het gebruik van meerdere bindingstypen. Het is de aanbevolen aanpak voor het registreren van bindende extensies. Extensiebundels verwijdert ook de vereiste voor het installeren van de .NET Core 2.x SDK. 
 
-### <a name="extension-bundles"></a>Uitbreidings bundels
+### <a name="extension-bundles"></a>Uitbreidingsbundels
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-Zie [Azure functions bindings uitbreidingen registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)voor meer informatie. U moet uitbreidings bundels toevoegen aan de host. json voordat u bindingen toevoegt aan het bestand function. json.
+Zie [Azure Functions bindingsextensies registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)voor meer informatie. U moet extensiebundels toevoegen aan host.json voordat u bindingen toevoegt aan het bestand function.json.
 
-### <a name="register-individual-extensions"></a>Afzonderlijke uitbrei dingen registreren
+### <a name="register-individual-extensions"></a>Afzonderlijke extensies registreren
 
-Als u uitbrei dingen wilt installeren die zich niet in een bundel bevinden, kunt u hand matig afzonderlijke extensie pakketten voor specifieke bindingen registreren. 
+Als u extensies moet installeren die niet in een bundel zitten, u handmatig afzonderlijke uitbreidingspakketten registreren voor specifieke bindingen. 
 
 > [!NOTE]
-> Als u de extensies hand matig wilt registreren met behulp van `func extensions install`, moet u de .NET Core 2. x SDK hebben geïnstalleerd.
+> Als u extensies handmatig `func extensions install`wilt registreren met behulp van , moet u de .NET Core 2.x SDK hebben geïnstalleerd.
 
-Nadat u het bestand *Function. json* hebt bijgewerkt met alle bindingen die uw functie nodig heeft, voert u de volgende opdracht uit in de projectmap.
+Nadat u uw *function.json-bestand* hebt bijgewerkt om alle bindingen op te nemen die uw functie nodig heeft, voert u de volgende opdracht uit in de projectmap.
 
 ```bash
 func extensions install
 ```
 
-Met de opdracht leest u het bestand *Function. json* om te zien welke pakketten u nodig hebt, installeert u ze en bouwt u het project extensies opnieuw op. Er worden nieuwe bindingen aan de huidige versie toegevoegd, maar bestaande bindingen worden niet bijgewerkt. Gebruik de optie `--force` om bestaande bindingen bij te werken naar de meest recente versie bij het installeren van nieuwe.
+De opdracht leest het *bestand function.json* om te zien welke pakketten u nodig hebt, installeert ze en herbouwt het extensiesproject. Het voegt nieuwe bindingen toe aan de huidige versie, maar werkt bestaande bindingen niet bij. Gebruik `--force` de optie om bestaande bindingen bij te werken naar de nieuwste versie bij het installeren van nieuwe.

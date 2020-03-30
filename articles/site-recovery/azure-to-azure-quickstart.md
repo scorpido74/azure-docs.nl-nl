@@ -1,73 +1,75 @@
 ---
-title: Herstel na nood gevallen voor Azure VM instellen op een secundaire regio met Azure Site Recovery
-description: Stel snel herstel na nood gevallen in op een andere Azure-regio voor een Azure-VM met behulp van de Azure Site Recovery-service.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
+title: Azure VM-noodherstel instellen op een secundaire regio met Azure Site Recovery
+description: Stel snel herstel van noodgevallen in op een andere Azure-regio voor een Azure-vm met de Azure Site Recovery-service.
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.author: raynew
+ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: de4d3ce11e23d7ec4f6ad26852e7d7d01eebe590
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780008"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371876"
 ---
-# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Herstel na noodgeval instellen naar een secundaire Azure-regio voor een Azure-VM
+# <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Snelstart: noodherstel instellen op een secundairazure-gebied voor een Azure-vm
 
-De service [Azure Site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) door te zorgen dat uw zakelijke apps actief blijven tijdens geplande en ongeplande uitval. Site Recovery beheert en orkestreert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
+De [Azure Site Recovery-service](site-recovery-overview.md) draagt bij aan uw BCDR-strategie (Business Continuity and Disaster Recovery) door uw bedrijfstoepassingen online te houden tijdens geplande en ongeplande uitval. Site Recovery beheert en orkestreert noodherstel van on-premises machines en Virtuele Azure-machines (VM), inclusief replicatie, failover en herstel.
 
-In deze Quick Start wordt beschreven hoe u herstel na nood gevallen instelt voor een virtuele Azure-machine door deze te repliceren naar een andere Azure-regio.
+In deze snelstart wordt beschreven hoe u noodherstel voor een Azure VM instelt door deze te repliceren naar een secundairAzure-gebied. In het algemeen worden standaardinstellingen gebruikt om replicatie in te schakelen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+## <a name="prerequisites"></a>Vereisten
 
-> [!NOTE]
-> Dit artikel bevat een kort overzicht van nieuwe gebruikers. Het eenvoudigste pad wordt gebruikt, met de standaard opties en de minimale aanpassing. Raadpleeg de zelf studie [replicatie inschakelen](azure-to-azure-tutorial-enable-replication.md)voor een volledige walkthrough.
+Als u deze zelfstudie wilt voltooien, hebt u een Azure-abonnement en een VM nodig.
 
-## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+- Als u geen Azure-account met een actief abonnement hebt, u [gratis een account aanmaken.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Een VM met minimaal 1 GB RAM wordt aanbevolen. [Meer informatie](/azure/virtual-machines/windows/quick-create-portal) over het maken van een virtuele machine.
+
+## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Replicatie inschakelen voor de Azure-VM
 
-1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt repliceren.
-2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
-3. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren.
-4. Accepteer voor deze snelstartgids de overige standaardinstellingen.
-5. Selecteer **evalueren en replicatie starten**. Selecteer vervolgens **replicatie starten** om een taak te starten om replicatie in te scha kelen voor de virtuele machine.
+Met de volgende stappen u VM-replicatie inschakelen naar een secundaire locatie.
 
-   ![replicatie inschakelen](media/azure-to-azure-quickstart/enable-replication1.png)
+1. Selecteer in de Azure-portal, vanuit het menu**Virtuele startapparaten,** **Home** > een VM die u wilt repliceren.
+1. Selecteer **In Operations** Disaster **recovery**.
+1. Selecteer in het**doelgebied** **Basisdoelen** > het doelgebied.
+1. Als u de replicatie-instellingen wilt weergeven, selecteert u **Revisie + Replicatie starten**. Als u standaardinstellingen wilt wijzigen, selecteert u **Geavanceerde instellingen**.
+1. Als u de taak wilt starten waarmee vm-replicatie wordt ingemaakt, selecteert u **Replicatie starten**.
+
+   :::image type="content" source="media/azure-to-azure-quickstart/enable-replication1.png" alt-text="Replicatie inschakelen.":::
 
 ## <a name="verify-settings"></a>Instellingen controleren
 
-Nadat de replicatietaak is voltooid, kunt u de replicatiestatus controleren, de replicatie-instellingen wijzigen en de implementatie testen.
+Nadat de replicatietaak is voltooid, u de replicatiestatus controleren, replicatie-instellingen wijzigen en de implementatie testen.
 
-1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt controleren.
-2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
+1. Selecteer **virtuele machines** in het menu Azure portal en selecteer de VM die u hebt gerepliceerd.
+1. Selecteer **In Operations** Disaster **recovery**.
+1. Als u de replicatiegegevens wilt weergeven in **het overzicht** selecteert u **Essentials**. Meer details worden weergegeven in de **status en status**, **Failover-gereedheid**en de kaart van de **infrastructuurweergave.**
 
-   U kunt de replicatiestatus, de gemaakte herstelpunten, en de bron- en doelregio's op de kaart controleren.
-
-   ![Replicatiestatus](media/azure-to-azure-quickstart/replication-status.png)
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Replicatiestatus.":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De VM in de primaire regio stopt met repliceren wanneer u replicatie uitschakelt:
+Als u de replicatie van de vm in het primaire gebied wilt stoppen, moet u replicatie uitschakelen:
 
-- De bronreplicatie-instellingen worden automatisch opgeschoond. De uitbrei ding Site Recovery die als onderdeel van de replicatie op de virtuele machine is geïnstalleerd, wordt niet verwijderd en moet hand matig worden verwijderd.
-- Site Recovery facturering voor de virtuele machine wordt gestopt.
+- De bronreplicatie-instellingen worden automatisch opgeschoond.
+- De extensie Siteherstel die tijdens de replicatie op de vm is geïnstalleerd, wordt niet verwijderd.
+- Facturering voor siteherstel voor de VM stopt.
 
-Stop de replicatie als volgt:
+Ga als volgt te werk om replicatie uit te schakelen:
 
-1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt wijzigen.
-2. Selecteer **replicatie uitschakelen**bij **herstel na nood gevallen**.
+1. Selecteer **virtuele machines** in het menu Azure portal en selecteer de VM die u hebt gerepliceerd.
+1. Selecteer **In Operations** Disaster **recovery**.
+1. Selecteer **Replicatie uitschakelen**in het **overzicht**.
+1. Als u de extensie Siteherstel wilt verwijderen, gaat u naar de > **instellingen-extensies**van de VM . **Settings**
 
-   ![Replicatie uitschakelen](media/azure-to-azure-quickstart/disable2-replication.png)
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Replicatie uitschakelen.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u één VM gerepliceerd naar een secundaire regio. Probeer nu meerdere virtuele Azure-machines te repliceren met een herstel plan.
+In deze snelstartgids hebt u één VM gerepliceerd naar een secundaire regio. Stel vervolgens replicatie in voor meerdere Azure VM's.
 
 > [!div class="nextstepaction"]
-> [Herstel na nood geval instellen voor virtuele Azure-machines](azure-to-azure-tutorial-enable-replication.md)
+> [Disaster recovery instellen voor Azure VM's](azure-to-azure-tutorial-enable-replication.md)

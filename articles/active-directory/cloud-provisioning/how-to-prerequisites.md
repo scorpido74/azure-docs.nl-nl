@@ -1,6 +1,6 @@
 ---
-title: Vereisten voor het inrichten van Azure AD Connect Cloud in azure AD
-description: In dit artikel worden de vereisten en hardwarevereisten beschreven die u nodig hebt voor het inrichten van Clouds.
+title: Voorwaarden voor Azure AD Connect cloud provisioning in Azure AD
+description: In dit artikel worden de vereisten en hardwarevereisten beschreven die u nodig hebt voor cloudprovisioning.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,77 +11,77 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332087"
 ---
-# <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
-Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
+# <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voorwaarden voor Azure AD Connect-cloudinrichting
+In dit artikel vindt u richtlijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) Connect cloudprovisioning als uw identiteitsoplossing.
 
 
 
-## <a name="cloud-provisioning-agent-requirements"></a>Vereisten voor de inrichtings agent voor Cloud
-U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting:
+## <a name="cloud-provisioning-agent-requirements"></a>Vereisten voor cloudprovisioning-agent
+U hebt het volgende nodig om Azure AD Connect-cloudprovisioning te gebruiken:
     
-- Een globaal beheerders account voor uw Azure AD-Tenant dat geen gast gebruiker is.
-- Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.
-- On-premises firewall configuraties.
+- Een algemeen beheerdersaccount voor uw Azure AD-tenant die geen gastgebruiker is.
+- Een on-premises server voor de inrichtingsagent met Windows 2012 R2 of hoger.
+- On-premises firewallconfiguraties.
 
 >[!NOTE]
->De inrichtings agent kan momenteel alleen worden geïnstalleerd op de Engelse taal servers. Het installeren van een Engels taal pakket op een niet-Engelse server is geen geldige tijdelijke oplossing, waardoor de agent niet kan worden geïnstalleerd. 
+>De inrichtingsagent kan momenteel alleen op Engelstalige servers worden geïnstalleerd. Het installeren van een Engels taalpakket op een niet-Engelse server is geen geldige tijdelijke oplossing en zal resulteren in de agent niet te installeren. 
 
-De rest van het document bevat stapsgewijze instructies voor deze vereisten.
+De rest van het document biedt stapsgewijze instructies voor deze vereisten.
 
-### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheer centrum
+### <a name="in-the-azure-active-directory-admin-center"></a>In het Azure Active Directory-beheercentrum
 
-1. Maak een alleen-Cloud account voor globale beheerders op uw Azure AD-Tenant. Op deze manier kunt u de configuratie van uw Tenant beheren als uw on-premises Services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een globale beheerders account voor de Cloud](../active-directory-users-create-azure-portal.md). Het volt ooien van deze stap is van cruciaal belang om ervoor te zorgen dat de Tenant niet wordt vergrendeld.
-1. Voeg een of meer [aangepaste domein namen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-Tenant. Uw gebruikers kunnen zich aanmelden met een van deze domein namen.
+1. Maak een algemeen beheerdersaccount voor de cloud op uw Azure AD-tenant. Op deze manier u de configuratie van uw tenant beheren als uw on-premises services mislukken of niet meer beschikbaar zijn. Meer informatie over het [toevoegen van een wereldwijd beheerdersaccount voor alleen cloud](../active-directory-users-create-azure-portal.md). Het voltooien van deze stap is essentieel om ervoor te zorgen dat u niet buitengesloten van uw huurder.
+1. Voeg een of meer [aangepaste domeinnamen](../active-directory-domains-add-azure-portal.md) toe aan uw Azure AD-tenant. Uw gebruikers kunnen zich aanmelden met een van deze domeinnamen.
 
-### <a name="in-your-directory-in-active-directory"></a>In uw directory in Active Directory
+### <a name="in-your-directory-in-active-directory"></a>In uw map in Active Directory
 
-Voer het [hulp programma IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) uit om de Directory kenmerken voor te bereiden op synchronisatie.
+Voer het [gereedschap IdFix uit](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) om de directorykenmerken voor te bereiden op synchronisatie.
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 
-1. Identificeer een hostserver die lid is van een domein en waarop Windows Server 2012 R2 of hoger wordt uitgevoerd, met een minimum van 4 GB RAM en .NET 4.7.1 + runtime.
+1. Identificeer een hostserver met domeinlid met Windows Server 2012 R2 of hoger met een minimum van 4 GB RAM en .NET 4.7.1+ runtime.
 
-1. Als er zich een firewall tussen uw servers en Azure AD bevindt, configureert u de volgende items:
-   - Zorg ervoor dat agenten *uitgaande* aanvragen kunnen indienen bij Azure AD via de volgende poorten:
+1. Als er een firewall is tussen uw servers en Azure AD, configureert u de volgende items:
+   - Controleer of agents *uitgaande* aanvragen kunnen indienen bij Azure AD via de volgende poorten:
 
         | Poortnummer | Hoe dat wordt gebruikt |
         | --- | --- |
-        | **80** | Hiermee worden de certificaatintrekkingslijsten (Crl's) gedownload tijdens het valideren van het SSL-certificaat.  |
-        | **443** | Hiermee wordt alle uitgaande communicatie met de service verwerkt. |
-        | **8080** (optioneel) | Agents rapporteren hun status elke 10 minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. |
+        | **80** | Downloadt de certificaatintrekkingslijsten (CRL's) terwijl het TLS/SSL-certificaat wordt valideren.  |
+        | **443** | Verwerkt alle uitgaande communicatie met de service. |
+        | **8080** (optioneel) | Agenten melden hun status elke 10 minuten via poort 8080, als poort 443 niet beschikbaar is. Deze status wordt weergegeven in de Azure AD-portal. |
      
-   - Als uw firewall regels afdwingt op basis van de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als een netwerk service worden uitgevoerd.
-   - Als u met uw firewall of proxy veilige achtervoegsels kunt opgeven, voegt u verbindingen toe aan \*. msappproxy.net en \*. servicebus.windows.net. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
-   - Uw agenten hebben toegang tot login.windows.net en login.microsoftonline.com nodig voor de eerste registratie. Open ook uw firewall voor deze Url's.
-   - Deblokkeren van de certificaat validatie de volgende Url's: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 en www\.microsoft.com:80. Deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, zodat u deze Url's mogelijk al hebt gedeblokkeerd.
+   - Als uw firewall regels afdwingt volgens de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als netwerkservice worden uitgevoerd.
+   - Als u met uw firewall of proxy veilige achtervoegsels opgeven, voegt u verbindingen toe aan \*.msappproxy.net en \*.servicebus.windows.net. Zo niet, geef dan toegang tot de [IP-bereiken van Azure-datacenters,](https://www.microsoft.com/download/details.aspx?id=41653)die wekelijks worden bijgewerkt.
+   - Uw agenten hebben toegang nodig tot login.windows.net en login.microsoftonline.com voor de eerste registratie. Open uw firewall ook voor die URL's.
+   - Blokkeer de volgende URL's voor certificaatvalidatie: mscrl.microsoft.com:80,\.crl.microsoft.com:80, ocsp.msocsp.com:80 en www microsoft.com:80. Deze URL's worden gebruikt voor certificaatvalidatie met andere Microsoft-producten, dus mogelijk hebt u deze URL's al gedeblokkeerd.
 
-### <a name="verify-the-port"></a>De poort controleren
-Als u wilt controleren of Azure luistert op poort 443 en dat uw agent ermee kan communiceren, gebruikt u de volgende URL:
+### <a name="verify-the-port"></a>De poort verifiëren
+Gebruik de volgende URL om te controleren of Azure luistert op poort 443 en of uw agent ermee kan communiceren:
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
+Deze test controleert of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL vanaf de server waar de agent is geïnstalleerd.
 
-![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify2.png)
+![Verificatie van de bereikbaarheid van de poort](media/how-to-install/verify2.png)
 
-### <a name="additional-requirements"></a>Aanvullende vereisten
+### <a name="additional-requirements"></a>Aanvullende eisen
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS-vereisten
 
 >[!NOTE]
->Transport Layer Security (TLS) is een protocol dat zorgt voor beveiligde communicatie. Het wijzigen van de TLS-instellingen is van invloed op het hele forest. Zie [Update voor het inschakelen van TLS 1,1 en tls 1,2 als standaard beveiligde protocollen in WinHTTP in Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)voor meer informatie.
+>Transport Layer Security (TLS) is een protocol dat zorgt voor veilige communicatie. Het wijzigen van de TLS-instellingen heeft invloed op het hele forest. Zie [Bijwerken om TLS 1.1 en TLS 1.2 in te schakelen als standaardbeveiligde protocollen in WinHTTP in Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)voor meer informatie.
 
-Op de Windows-Server die als host fungeert voor de Azure AD Connect Cloud-inrichtings agent moet TLS 1,2 zijn ingeschakeld voordat u deze installeert.
+De Windows-server die de Azure AD Connect-cloudinrichtingsagent host, moet TLS 1.2 hebben ingeschakeld voordat u deze installeert.
 
-Voer de volgende stappen uit om TLS 1,2 in te scha kelen.
+Voer deze stappen uit om TLS 1.2 in te schakelen.
 
 1. Stel de volgende registersleutels in:
     
@@ -97,6 +97,6 @@ Voer de volgende stappen uit om TLS 1,2 in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-- [Wat is inrichten?](what-is-provisioning.md)
-- [Wat is Azure AD Connect Cloud inrichting?](what-is-cloud-provisioning.md)
+- [Wat is inrichting?](what-is-provisioning.md)
+- [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)
 

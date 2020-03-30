@@ -9,34 +9,34 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176047"
 ---
 ## <a name="update-resources"></a>Resources bijwerken
 
-Er zijn enkele beperkingen met betrekking tot wat kan worden bijgewerkt. De volgende items kunnen worden bijgewerkt: 
+Er zijn een aantal beperkingen op wat kan worden bijgewerkt. De volgende items kunnen worden bijgewerkt: 
 
-Galerie met installatiekopieën van de gedeelde:
-- Description
+Gedeelde afbeeldingsgalerie:
+- Beschrijving
 
-de definitie van de installatiekopie:
-- Aanbevolen vcpu 's
+Afbeeldingsdefinitie:
+- Aanbevolen vCPU's
 - Aanbevolen geheugen
-- Description
-- Einde van de levensduur van datum
+- Beschrijving
+- Einddatum van het einde van de levensduur
 
-Installatiekopieversie:
-- Aantal regionale replica 's
-- Doelregio 's
-- Uitsluiting van de meest recente
-- Einde van de levensduur van datum
+Afbeeldingsversie:
+- Aantal regionale replica's
+- Doelregio's
+- Uitsluiting van de laatste
+- Einddatum van het einde van de levensduur
 
-Als u van plan bent over het toevoegen van replica-regio's, een beheerde installatiekopie van de bron niet verwijderen. Een beheerde installatiekopie van de bron nodig is voor de versie van de installatiekopie die wordt gerepliceerd naar extra regio's. 
+Als u replicagebieden wilt toevoegen, verwijdert u de door de bron beheerde afbeelding niet. De bronbeheerde afbeelding is nodig voor het repliceren van de afbeeldingsversie naar extra regio's. 
 
-De beschrijving van het gebruik van een galerie van update ([az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update). 
+Update de beschrijving van een galerij met behulp van ([az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update). 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-Bijwerken van de beschrijving van een installatiekopie definitie met [az sig installatiekopie-definitie-update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update).
+Werk de beschrijving van een beelddefinitie bij met behulp van [de az sig image-definition update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update).
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-Bijwerken van de versie van een installatiekopie om toe te voegen een regio worden gerepliceerd naar de met behulp van [az sig image-versie bijwerken](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update). Deze wijziging duurt even als de afbeelding worden gerepliceerd naar de nieuwe regio.
+Werk een afbeeldingsversie bij om een regio toe te voegen om te repliceren met het gebruik van [de update van de AZ SIG-afbeeldingsversie](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update). Deze wijziging zal een tijdje duren als de afbeelding wordt gerepliceerd naar de nieuwe regio.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -69,9 +69,9 @@ az sig image-version update \
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-U hebt om resources te verwijderen in omgekeerde volgorde door de versie van de installatiekopie eerst verwijderen. Nadat u alle van de versies van een installatiekopie verwijderen, kunt u de definitie van de installatiekopie verwijderen. Nadat u alle definities van de installatiekopie hebt verwijderd, kunt u de galerie verwijderen. 
+U moet resources in omgekeerde volgorde verwijderen door eerst de afbeeldingsversie te verwijderen. Nadat u alle afbeeldingsversies hebt verwijderd, u de afbeeldingsdefinitie verwijderen. Nadat u alle afbeeldingsdefinities hebt verwijderd, u de galerie verwijderen. 
 
-Verwijderen van een installatiekopie versie via [az sig-versie van installatiekopie verwijderen](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete).
+Verwijder een afbeeldingversie met behulp van [az sig image-versie verwijderen](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete).
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -81,7 +81,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-Verwijderen van een installatiekopie definitie met [az sig-definitie van installatiekopie verwijderen](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete).
+Een afbeeldingsdefinitie verwijderen met behulp van [het verwijderen van az sig-afbeeldingsdefinitie](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete).
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -91,7 +91,7 @@ az sig image-definition delete \
 ```
 
 
-Verwijderen van een installatiekopie galerie met [az sig verwijderen](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete).
+Een afbeeldingsgalerie verwijderen met [az sig delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete).
 
 ```azurecli-interactive
 az sig delete \

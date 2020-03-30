@@ -1,6 +1,6 @@
 ---
-title: Azure Relay Hybride verbindingen-websockets in .NET
-description: Een C# console toepassing schrijven voor Azure relay hybride verbindingen websockets.
+title: Hybride verbindingen voor Azure Relay - WebSockets in .NET
+description: Schrijf een C#-consoletoepassing voor Azure Relay Hybrid Connections WebSockets.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355200"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Aan de slag met websockets voor hybride verbindingen in Azure Relay in .NET
@@ -64,7 +64,7 @@ Maak in Visual Studio een C#-consoletoepassing om berichten naar de Relay te stu
 
     ![actieve-toepassingen](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Gefeliciteerd, u hebt een complete Hybride verbindingen-toepassing gemaakt.
+Gefeliciteerd, je hebt een complete Hybrid Connections applicatie gemaakt!
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze snelstart hebt u .NET toepassingen gemaakt voor afzenders en ontvangers waarmee berichten worden verzonden en ontvangen met behulp van websockets. De hybride verbindingsfunctie van Azure Relay ondersteunt tevens HTTP voor het verzenden en ontvangen van berichten. Zie de [snelstart over HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md) voor informatie over het gebruik van HTTP met hybride verbindingen van Azure Relay.

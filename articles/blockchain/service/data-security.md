@@ -1,62 +1,62 @@
 ---
-title: Azure Block Chain service-beveiliging
-description: Azure Block Chain Service Data Access-en Security-concepten
+title: Azure Blockchain-servicebeveiliging
+description: Azure Blockchain Service-concepten voor toegang tot gegevens en beveiliging
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982233"
 ---
-# <a name="azure-blockchain-service-security"></a>Azure Block Chain service-beveiliging
+# <a name="azure-blockchain-service-security"></a>Azure Blockchain-servicebeveiliging
 
-Azure Blockchain Service gebruikt verschillende Azure-functionaliteiten om uw gegevens veilig en beschikbaar te houden. Gegevens worden beveiligd door middel van isolatie, versleuteling en verificatie.
+Azure Blockchain Service maakt gebruik van verschillende Azure-mogelijkheden om uw gegevens veilig en beschikbaar te houden. Gegevens worden beveiligd met isolatie, versleuteling en verificatie.
 
 ## <a name="isolation"></a>Isolatie
 
-Azure Block Chain-service bronnen worden geïsoleerd in een particulier virtueel netwerk. Elk trans actie-en validatie knooppunt is een virtuele machine (VM). Vm's in één virtueel netwerk kunnen niet rechtstreeks communiceren met virtuele machines in een ander virtueel netwerk. Isolatie zorgt ervoor dat de communicatie privé blijft binnen het virtuele netwerk. Zie [isolatie in de open bare Azure-Cloud](../../security/fundamentals/isolation-choices.md#networking-isolation)voor meer informatie over de isolatie van het virtuele Azure-netwerk.
+Azure Blockchain Service-resources worden geïsoleerd in een privé virtueel netwerk. Elke transactie en validatieknooppunt is een virtuele machine (VM). VM's in één virtueel netwerk kunnen niet rechtstreeks communiceren met VM's in een ander virtueel netwerk. Isolatie zorgt ervoor dat de communicatie privé blijft binnen het virtuele netwerk. Zie isolatie in de Azure [Public Cloud voor](../../security/fundamentals/isolation-choices.md#networking-isolation)meer informatie over de isolatie van het virtuele Azure-netwerk .
 
 ![VNET-diagram](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Versleuteling
 
-Gebruikers gegevens worden opgeslagen in azure Storage. Gebruikers gegevens zijn versleuteld in beweging en op rest voor beveiliging en vertrouwelijkheid. Zie [Azure Storage Security Guide (Engelstalig](../../storage/blobs/security-recommendations.md)) voor meer informatie.
+Gebruikersgegevens worden opgeslagen in Azure-opslag. Gebruikersgegevens worden versleuteld in beweging en in rust voor veiligheid en vertrouwelijkheid. Zie voor meer informatie: [Azure Storage security guide](../../storage/blobs/security-recommendations.md).
 
 ## <a name="authentication"></a>Authentication
 
-Trans acties kunnen via een RPC-eind punt naar Block Chain-knoop punten worden verzonden. Clients communiceren met een transactie knooppunt met behulp van een reverse proxy server die gebruikers verificatie afhandelt en gegevens versleutelt via SSL.
+Transacties kunnen via een RPC-eindpunt naar blockchain-knooppunten worden verzonden. Clients communiceren met een transactieknooppunt met behulp van een reverse proxy-server die gebruikersverificatie verwerkt en gegevens versleutelt via SSL.
 
-![Verificatie diagram](./media/data-security/authentication.png)
+![Verificatiediagram](./media/data-security/authentication.png)
 
-Er zijn drie verificatie methoden voor RPC-toegang.
+Er zijn drie verificatiemodi voor RPC-toegang.
 
 ### <a name="basic-authentication"></a>Basisverificatie
 
-Basis verificatie maakt gebruik van een HTTP-verificatie header met de gebruikers naam en het wacht woord. De gebruikers naam is de naam van het block Chain-knoop punt. Het wacht woord wordt ingesteld tijdens het inrichten van een lid of knoop punt. Het wacht woord kan worden gewijzigd met behulp van de Azure Portal of CLI.
+Basisverificatie maakt gebruik van een HTTP-verificatiekop met de gebruikersnaam en het wachtwoord. Gebruikersnaam is de naam van het blockchain-knooppunt. Wachtwoord wordt ingesteld tijdens het inrichten van een lid of knooppunt. Het wachtwoord kan worden gewijzigd met behulp van de Azure-portal of CLI.
 
 ### <a name="access-keys"></a>Toegangssleutels
 
-Toegangs sleutels gebruiken een wille keurig gegenereerde teken reeks die is opgenomen in de URL van het eind punt. Met twee toegangs toetsen kunt u sleutel rotatie inschakelen. Sleutels kunnen opnieuw worden gegenereerd op basis van de Azure Portal en CLI.
+Toegangssleutels gebruiken een willekeurig gegenereerde tekenreeks die is opgenomen in de URL van het eindpunt. Met twee toegangstoetsen u sleutelrotatie inschakelen. Sleutels kunnen worden geregenereerd vanuit de Azure-portal en CLI.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD) maakt gebruik van een verificatie mechanisme op basis van claims waarbij de gebruiker wordt geverifieerd door Azure AD met behulp van Azure AD-gebruikers referenties. Azure AD biedt identiteits beheer in de Cloud en stelt klanten in staat om één identiteit te gebruiken voor een volledige onderneming en toegang te krijgen tot toepassingen in de Cloud. De Azure Block Chain-service kan worden geïntegreerd met Azure AD Enable ID Federation, eenmalige aanmelding en multi-factor Authentication. U kunt gebruikers, groepen en toepassings rollen toewijzen in uw organisatie voor Block Chain-lidmaatschap en toegang tot knoop punten.
+Azure Active Directory (Azure AD) maakt gebruik van een verificatiemechanisme op basis van claimen waarbij de gebruiker door Azure AD wordt geverifieerd met Azure AD-gebruikersreferenties. Azure AD biedt cloudgebaseerd identiteitsbeheer en stelt klanten in staat om één identiteit te gebruiken voor een hele onderneming en toegang te krijgen tot toepassingen in de cloud. Azure Blockchain Service integreert met Azure AD, -federatie, single sign-on en multi-factor authenticatie. U gebruikers, groepen en toepassingsrollen in uw organisatie toewijzen voor toegang tot blockchain-leden en knooppunts.
 
-De Azure AD-client proxy is beschikbaar op [github](https://github.com/Microsoft/azure-blockchain-connector/releases). De client proxy stuurt de gebruiker naar de aanmeldings pagina van Azure AD en verkrijgt een Bearer-token bij geslaagde authenticatie. Vervolgens koppelt de gebruiker een Ethereum-client toepassing, zoals Geth of truffle, aan het eind punt van de client proxy. Ten slotte, wanneer een trans actie wordt verzonden, injecteert de client proxy het Bearer-token in de http-header en de omgekeerde proxy valideert het token met behulp van het OAuth-protocol.
+De Azure AD-clientproxy is beschikbaar op [GitHub.](https://github.com/Microsoft/azure-blockchain-connector/releases) De clientproxy leidt de gebruiker naar de aanmeldingspagina van Azure AD en verkrijgt een token aan toonder bij succesvolle verificatie. Vervolgens verbindt de gebruiker een Ethereum client applicatie zoals Geth of Truffle met het eindpunt van de client proxy. Ten slotte, wanneer een transactie wordt ingediend, injecteert de clientproxy het token aan toonder in de http-header en valideert de omgekeerde proxy het token met behulp van het OAuth-protocol.
 
 ## <a name="keys-and-ethereum-accounts"></a>Sleutels en Ethereum-accounts
 
-Bij het inrichten van een Azure Block Chain-service-lid, wordt een Ethereum-account en een openbaar en persoonlijk sleutel paar gegenereerd. De persoonlijke sleutel wordt gebruikt om trans acties naar de Block chain te verzenden. Het Ethereum-account is de laatste 20 bytes van de hash van de open bare sleutel. Het Ethereum-account wordt ook een wallet genoemd.
+Bij het inrichten van een Azure Blockchain Service-lid wordt een Ethereum-account en een openbaar en privésleutelpaar gegenereerd. De privésleutel wordt gebruikt om transacties naar de blockchain te verzenden. Het Ethereum-account is de laatste 20 bytes van de hash van de openbare sleutel. De Ethereum account wordt ook wel een portemonnee.
 
-Het persoonlijke en open bare sleutel paar wordt opgeslagen als keyfile in JSON-indeling. De persoonlijke sleutel wordt versleuteld met het wacht woord dat is ingevoerd bij het maken van de Block Chain-grootboek service.
+Het private en public key pair wordt opgeslagen als keyfile in JSON-formaat. De privésleutel wordt versleuteld met behulp van het wachtwoord dat is ingevoerd wanneer de blockchain-grootboekservice wordt gemaakt.
 
-Persoonlijke sleutels worden gebruikt voor het digitaal ondertekenen van trans acties. In een persoonlijke blockchains vertegenwoordigt een slim contract dat is ondertekend door een persoonlijke sleutel de identiteit van de ondertekenaar. Om de geldigheid van de hand tekening te controleren, kan de ontvanger de open bare sleutel van de ondertekenaar vergelijken met het adres dat is berekend op basis van de hand tekening.
+Privésleutels worden gebruikt om transacties digitaal te ondertekenen. In private blockchains vertegenwoordigt een slim contract dat is ondertekend door een privésleutel de identiteit van de ondertekenaar. Als u de geldigheid van de handtekening wilt verifiëren, kan de ontvanger de openbare sleutel van de ondertekenaar vergelijken met het adres dat is berekend op basis van de handtekening.
 
-Constellation sleutels worden gebruikt om een quorum knooppunt uniek te identificeren. Constellation-sleutels worden gegenereerd op het moment van het inrichten van het knoop punt en zijn opgegeven in de para meter privateFor van een persoonlijke trans actie in quorum.
+Constellatietoetsen worden gebruikt om een quorumknooppunt op unieke wijze te identificeren. Constellation-sleutels worden gegenereerd op het moment van knooppuntinrichting en worden opgegeven in de privateFor-parameter van een privétransactie in Quorum.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Active Directory toegang configureren voor de Azure Block Chain-Service](configure-aad.md).
+Zie [Azure Active Directory-toegang configureren voor Azure Blockchain-service](configure-aad.md).

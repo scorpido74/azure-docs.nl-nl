@@ -1,5 +1,5 @@
 ---
-title: De HBase .NET SDK-Azure HDInsight gebruiken
+title: De HBase .NET SDK gebruiken - Azure HDInsight
 description: Gebruik de HBase .NET SDK om tabellen te maken en te verwijderen en om gegevens te lezen en te schrijven.
 author: ashishthaps
 ms.author: ashishth
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806657"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>De .NET-SDK gebruiken voor Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Gebruik de .NET SDK voor Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) biedt twee primaire opties voor het werken met uw gegevens: [Apache Hive query's en aanroepen naar de rest API van HBase](apache-hbase-tutorial-get-started-linux.md). U kunt rechtstreeks met de REST API werken met behulp van de `curl`-opdracht of een vergelijkbaar hulp programma.
+[Apache HBase](apache-hbase-overview.md) biedt twee primaire keuzes om met uw gegevens te werken: [Apache Hive-query's en roept naar de RESTful API van HBase.](apache-hbase-tutorial-get-started-linux.md) U rechtstreeks met de `curl` REST API werken met de opdracht of een soortgelijk hulpprogramma.
 
-Voor C# -en .NET-toepassingen biedt de [micro soft HBase rest-client bibliotheek voor .net](https://www.nuget.org/packages/Microsoft.HBase.Client/) een client bibliotheek boven op de HBase-rest API.
+Voor C#- en .NET-toepassingen biedt de [Microsoft HBase REST-clientbibliotheek voor .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) een clientbibliotheek bovenop de HBase REST API.
 
 ## <a name="install-the-sdk"></a>De SDK installeren
 
-De HBase .NET SDK wordt weer gegeven als een NuGet-pakket, dat via de Visual Studio **NuGet Package Manager-console** kan worden geïnstalleerd met de volgende opdracht:
+De HBase .NET SDK wordt geleverd als een NuGet-pakket, dat kan worden geïnstalleerd vanuit de Visual Studio **NuGet Package Manager Console** met de volgende opdracht:
 
     Install-Package Microsoft.HBase.Client
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Een nieuw HBaseClient-object instantiëren
 
-Als u de SDK wilt gebruiken, maakt u een nieuw `HBaseClient`-object, waarbij u in `ClusterCredentials` bestaande uit de `Uri` aan uw cluster en de Hadoop-gebruikers naam en het-wacht woord.
+Als u de SDK wilt gebruiken, wilt u een nieuw `HBaseClient` object instantiëren, waarbij `ClusterCredentials` u de binnenkomende `Uri` cluster en de hadoop-gebruikersnaam en -wachtwoord wilt invoeren.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
 
-Vervang CLUSTERNAME door de naam van uw HDInsight HBase-cluster en de gebruikers naam en het wacht woord met de Apache Hadoop referenties die zijn opgegeven bij het maken van het cluster. De standaard Hadoop-gebruikers naam is **beheerder**.
+Vervang CLUSTERNAME door uw HDInsight HBase-clusternaam en gebruikersnaam en wachtwoord door de Apache Hadoop-referenties die zijn opgegeven bij het maken van het cluster. De standaard Hadoop-gebruikersnaam is **beheerder**.
 
 ## <a name="create-a-new-table"></a>Een nieuwe tabel maken
 
-HBase slaat gegevens op in tabellen. Een tabel bestaat uit een *Rowkey*, de primaire sleutel en een of meer groepen kolommen met de naam *kolom families*. De gegevens in elke tabel worden horizon taal gedistribueerd met een Rowkey bereik in *regio's*. Elke regio heeft een begin-en een end-sleutel. Een tabel kan een of meer regio's bevatten. Wanneer de gegevens in de tabel groeit, splitst HBase grote regio's op in kleinere regio's. Regio's worden opgeslagen in *regio servers*, waarbij één regio server meerdere regio's kan opslaan.
+HBase slaat gegevens op in tabellen. Een tabel bestaat uit een *Rowkey,* de primaire sleutel en een of meer groepen kolommen genaamd *kolomfamilies*. De gegevens in elke tabel worden horizontaal verdeeld door een Rowkey-bereik in *regio's*. Elke regio heeft een start- en eindtoets. Een tabel kan een of meer regio's hebben. Naarmate de gegevens in de tabel groeien, splitst HBase grote regio's op in kleinere regio's. Regio's worden opgeslagen in *regioservers,* waar één regioserver meerdere regio's kan opslaan.
 
-De gegevens worden fysiek opgeslagen in *HFiles*. Eén HFile bevat gegevens voor één tabel, één regio en één kolom familie. Rijen in HFile worden opgeslagen in Rowkey. Elke HFile heeft een *B +-structuur* index voor het snel ophalen van de rijen.
+De gegevens worden fysiek opgeslagen in *HFiles*. Eén HFile bevat gegevens voor één tabel, één regio en één kolomfamilie. Rijen in HFile worden opgeslagen gesorteerd op Rowkey. Elke HFile heeft een *B + Tree* index voor het snel ophalen van de rijen.
 
-Als u een nieuwe tabel wilt maken, geeft u een `TableSchema` en kolommen op. Met de volgende code wordt gecontroleerd of de tabel RestSDKTable al bestaat. als dat niet het geval is, wordt de tabel gemaakt.
+Als u een nieuwe `TableSchema` tabel wilt maken, geeft u een en kolommen op. De volgende code controleert of de tabel 'RestSDKTable' al bestaat - zo niet, de tabel wordt gemaakt.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-Deze nieuwe tabel bestaat uit twee kolom families, T1 en T2. Aangezien kolom families afzonderlijk in verschillende HFiles worden opgeslagen, is het zinvol om een afzonderlijke kolom familie te hebben voor vaak opgevraagde gegevens. In het volgende voor beeld van [Insert data](#insert-data) worden kolommen toegevoegd aan de T1-kolom familie.
+Deze nieuwe tabel heeft tweekolomsfamilies, t1 en t2. Aangezien kolomfamilies afzonderlijk in verschillende HFiles worden opgeslagen, is het zinvol om een aparte kolomfamilie te hebben voor veelgevraagde gegevens. In het volgende voorbeeld [Gegevens invoegen](#insert-data) worden kolommen toegevoegd aan de kolomfamilie T1.
 
 ## <a name="delete-a-table"></a>Een tabel verwijderen
 
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Gegevens invoegen
 
-Als u gegevens wilt invoegen, geeft u een unieke rijdefinitie op als de rij-id. Alle gegevens worden opgeslagen in een `byte[]` matrix. Met de volgende code worden de `title`, `director`en `release_date` kolommen gedefinieerd en toegevoegd aan de T1-kolom familie, omdat deze kolommen het meest worden gebruikt. De kolommen `description` en `tagline` worden toegevoegd aan de kolom familie T2. U kunt uw gegevens naar behoefte in kolom families partitioneren.
+Als u gegevens wilt invoegen, geeft u een unieke rijsleutel op als de rij-id. Alle gegevens worden `byte[]` opgeslagen in een array. De volgende code definieert `director`en `release_date` voegt de `title`, en kolommen toe aan de t1-kolomfamilie, omdat deze kolommen het vaakst worden geopend. De `description` `tagline` kolommen en kolommen worden toegevoegd aan de kolomfamilie T2. U uw gegevens naar behoefte verdelen in kolomfamilies.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementeert [Cloud Bigtable](https://cloud.google.com/bigtable/), dus de gegevens indeling ziet eruit als in de volgende afbeelding:
+HBase implementeert [Cloud BigTable,](https://cloud.google.com/bigtable/)zodat de gegevensindeling er als de volgende afbeelding uitziet:
 
-![Voorbeeld gegevens uitvoer Apache HBase](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+![Apache HBase-voorbeeldgegevensuitvoer](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Gegevens selecteren
 
-Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabel naam en de rij-sleutel door aan de `GetCellsAsync` methode om de `CellSet`te retour neren.
+Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabelnaam en de rijsleutel door aan de `GetCellsAsync` methode om de `CellSet`.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde wordt in `string` indeling gewijzigd vanuit de `byte[]` matrix. U kunt de waarde ook converteren naar andere typen, zoals een geheel getal voor de release datum van de film:
+In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde `string` wordt `byte[]` gewijzigd in opmaak van de array. U de waarde ook converteren naar andere typen, zoals een geheel getal voor de releasedatum van de film:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -149,7 +149,7 @@ Console.WriteLine(releaseDate);
 
 ## <a name="scan-over-rows"></a>Scannen over rijen
 
-HBase maakt gebruik van `scan` om een of meer rijen op te halen. In dit voor beeld wordt een aanvraag voor meerdere rijen in batches van 10 en worden gegevens opgehaald waarvan de sleutel waarden tussen 25 en 35 liggen. Nadat u alle rijen hebt opgehaald, verwijdert u de scanner om de resources op te schonen.
+HBase `scan` gebruikt om een of meer rijen op te halen. In dit voorbeeld worden meerdere rijen in batches van 10 aanvragen en gegevens opgevraagd waarvan de hoofdwaarden tussen 25 en 35 liggen. Nadat u alle rijen hebt opgehaald, verwijdert u de scanner om bronnen op te schonen.
 
 ```csharp
 var tableName = "mytablename";
@@ -187,5 +187,5 @@ finally
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aan de slag met een Apache HBase-voor beeld in HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Een end-to-end-toepassing bouwen met het [analyseren van real-time Twitter-sentiment met Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* [Aan de slag met een voorbeeld van Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md)
+* Bouw een end-to-end applicatie met [Analyze real-time Twitter sentiment met Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)

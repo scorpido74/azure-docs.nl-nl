@@ -1,37 +1,37 @@
 ---
-title: Verkeers gegevens weer geven op Android-kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u verkeers gegevens op een kaart kunt weer geven met behulp van de Microsoft Azure Maps Android SDK.
-author: farah-alyasari
-ms.author: v-faalya
+title: Verkeersgegevens weergeven op de Android-kaart | Microsoft Azure Maps
+description: In dit artikel leert u hoe u verkeersgegevens op een kaart weergeeft met de Microsoft Azure Maps Android SDK.
+author: philmea
+ms.author: philmea
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249503"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335377"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeers gegevens op de kaart weer geven met behulp van Azure Maps Android SDK
+# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeersgegevens op de kaart weergeven met Azure Maps Android SDK
 
-Gegevens over stroom gegevens en incidenten zijn de twee typen verkeers gegevens die op de kaart kunnen worden weer gegeven. In deze hand leiding wordt beschreven hoe u beide typen verkeers gegevens kunt weer geven. Gegevens over incidenten bestaan uit punt-en lijn gegevens voor dingen, zoals constructies, wegsluitingen en ongel ukken. In stroom gegevens worden statistieken over de stroom van verkeer onderweg weer gegeven.
+Stroomgegevens en incidentengegevens zijn de twee soorten verkeersgegevens die op de kaart kunnen worden weergegeven. In deze handleiding ziet u hoe u beide typen verkeersgegevens weergeven. Incidenten gegevens bestaat uit punt en lijn-gebaseerde gegevens voor dingen zoals constructies, wegafsluitingen, en ongevallen. Stroomgegevens tonen statistieken over de doorstroming van het verkeer op de weg.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)en [een abonnements sleutel verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Vervolgens moet u de [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren en een kaart laden.
+Voordat u verkeer op de kaart weergeven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)en [een abonnementssleutel verkrijgen.](quick-demo-map-app.md#get-the-primary-key-for-your-account) Vervolgens moet u de [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren en een kaart laden.
 
-## <a name="incidents-traffic-data"></a>Verkeers gegevens van incidenten 
+## <a name="incidents-traffic-data"></a>Verkeersgegevens incidenten 
 
-U moet de volgende bibliotheken importeren om `setTraffic` en `incidents`aan te roepen:
+U moet de volgende bibliotheken importeren `setTraffic` om `incidents`te bellen en:
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Het volgende code fragment laat zien hoe u verkeers gegevens op de kaart kunt weer geven. We geven een Booleaanse waarde door aan de `incidents` methode en geven deze door aan de methode `setTraffic`. 
+ In het volgende codefragment ziet u hoe u verkeersgegevens op de kaart weergeven. We geven een booleaanse waarde door aan de `incidents` methode en geven dat door aan de `setTraffic` methode. 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,23 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="flow-traffic-data"></a>Verkeer gegevens stroom
+## <a name="flow-traffic-data"></a>Stroomverkeersgegevens
 
-Eerst moet u de volgende bibliotheken importeren om `setTraffic` en `flow`aan te roepen:
+U moet eerst de volgende bibliotheken importeren `setTraffic` `flow`om te bellen en:
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Gebruik het volgende code fragment om gegevens over de verkeers stroom in te stellen. Net als bij de code in de vorige sectie geven we de retour waarde van de methode `flow` door aan de methode `setTraffic`. Er zijn vier waarden die kunnen worden door gegeven aan `flow`, en elke waarde zou `flow` activeren om de desbetreffende waarde te retour neren. De retour waarde van `flow` wordt vervolgens door gegeven als het argument voor `setTraffic`. Zie de onderstaande tabel voor deze vier waarden:
+Gebruik het volgende codefragment om verkeersstroomgegevens in te stellen. Net als bij de code in de vorige `flow` sectie geven `setTraffic` we de retourwaarde van de methode door aan de methode. Er zijn vier waarden die `flow`kunnen worden doorgegeven aan , en elke waarde zou leiden tot `flow` het retourneren van de respectievelijke waarde. De retourwaarde `flow` van wordt vervolgens doorgegeven als argument aan `setTraffic`. Zie de onderstaande tabel voor deze vier waarden:
 
 | | |
 | :-- | :-- |
-| Verkeers stroom. NONE | Verkeers gegevens worden niet weer gegeven op de kaart |
-| Verkeers stroom. RELATIVE | Geeft verkeers gegevens weer die relatief zijn ten opzichte van de vrije stroom snelheid van de weg |
-| Verkeers stroom. RELATIVE_DELAY | Hiermee worden gebieden weer gegeven die langzamer zijn dan de gemiddelde verwachte vertraging |
-| Verkeers stroom. ABSOLUTE | Toont de absolute snelheid van alle Voer tuigen op de weg |
+| TrafficFlow.NONE | Geeft geen verkeersgegevens weer op de kaart |
+| TrafficFlow.RELATIVE | Toont verkeersgegevens die ten opzichte van de vrije doorstromingssnelheid van de weg zijn |
+| TrafficFlow.RELATIVE_DELAY | Geeft gebieden weer die langzamer zijn dan de gemiddelde verwachte vertraging |
+| TrafficFlow.ABSOLUTE | Toont de absolute snelheid van alle voertuigen op de weg |
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Gegevens van incident verkeer weer geven door te klikken op een functie
+## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Verkeersgegevens voor incidenten weergeven door op een functie te klikken
 
-U kunt de volgende code gebruiken om de incidenten voor een specifieke functie te verkrijgen. Wanneer er op een functie wordt geklikt, controleert de code logica op incidenten en wordt er een bericht over het incident gegenereerd. Aan de onderkant van het scherm wordt een bericht met de details weer gegeven.
+Om de incidenten voor een specifieke functie te verkrijgen, u de onderstaande code gebruiken. Wanneer op een functie wordt geklikt, controleert de codelogica op incidenten en wordt een bericht over het incident gemaakt. Onderaan het scherm verschijnt een bericht met de details.
 
-1. Eerst moet u de indeling van **res > bewerken > activity_main. XML**, zodat deze er als volgt uitziet. U kunt de `mapcontrol_centerLat`, `mapcontrol_centerLng`en `mapcontrol_zoom` vervangen door de gewenste waarden. Intrekken, het zoom niveau is een waarde tussen 0 en 22. Op Zoom niveau 0 past de hele wereld op één tegel.
+1. Eerst moet u res bewerken **> lay-out > activity_main.xml,** zodat het lijkt op de onderstaande. U `mapcontrol_centerLat`de `mapcontrol_centerLng`, `mapcontrol_zoom` , en met de gewenste waarden vervangen. Terugroepen, het zoomniveau is een waarde tussen 0 en 22. Bij zoomniveau 0 past de hele wereld op één tegel.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ U kunt de volgende code gebruiken om de incidenten voor een specifieke functie t
    </FrameLayout>
    ```
 
-2. Voeg de volgende code toe aan het bestand **MainActivity. java** . Het pakket is standaard opgenomen, dus zorg ervoor dat u het pakket bovenaan bewaart.
+2. Voeg de volgende code toe aan uw **MainActivity.java-bestand.** Het pakket is standaard inbegrepen, dus zorg ervoor dat u uw pakket aan de bovenkant houdt.
 
    ```java
    package <yourpackagename>;
@@ -221,26 +221,26 @@ U kunt de volgende code gebruiken om de incidenten voor een specifieke functie t
    }
    ```
 
-3. Zodra u de bovenstaande code in uw toepassing hebt opgenomen, kunt u op een functie klikken en de details van de verkeers incidenten bekijken. Afhankelijk van de waarden voor de breedte graad, lengte graad en zoom niveau die u in uw **activity_main. XML-** bestand hebt gebruikt, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende afbeelding:
+3. Zodra u de bovenstaande code in uw toepassing hebt opgenomen, u op een functie klikken en de details van de verkeersincidenten bekijken. Afhankelijk van de breedtegraad, lengtegraad en de zoomniveauwaarden die u in uw **activity_main.xml-bestand** hebt gebruikt, ziet u resultaten die vergelijkbaar zijn met de volgende afbeelding:
 
    <center>
 
-   ![Incident-verkeer-op de kaart](./media/how-to-show-traffic-android/android-traffic.png)
+   ![Incident-verkeer-op-de-kaart](./media/how-to-show-traffic-android/android-traffic.png)
 
    </center>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de volgende hand leidingen voor meer informatie over het toevoegen van meer gegevens aan uw kaart:
+Bekijk de volgende handleidingen om te leren hoe u meer gegevens aan uw kaart toevoegen:
 
 > [!div class="nextstepaction"]
-> [Een symbool laag toevoegen](how-to-add-symbol-to-android-map.md)
+> [Een symboollaag toevoegen](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Een laag voor een tegel toevoegen](how-to-add-tile-layer-android-map.md)
+> [Een titellaag toevoegen](how-to-add-tile-layer-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Shapes toevoegen aan Android-kaart](how-to-add-shapes-to-android-map.md)
+> [Shapes toevoegen aan de Android-kaart](how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Onderdeel informatie weer geven](display-feature-information-android.md)
+> [Functie-informatie weergeven](display-feature-information-android.md)
