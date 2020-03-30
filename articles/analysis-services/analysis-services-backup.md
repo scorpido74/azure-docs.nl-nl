@@ -1,6 +1,6 @@
 ---
-title: Back-up en herstel van Azure Analysis Services Data Base | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een back-up maakt van model meta gegevens en gegevens van een Azure Analysis Services Data Base.
+title: Back-up en herstel van Azure Analysis Services-database | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u modelmetagegevens en gegevens uit een Azure Analysis Services-database back-ups maken en herstellen.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,101 +8,101 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573448"
 ---
-# <a name="backup-and-restore"></a>Back-up maken en terugzetten
+# <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Het maken van een back-up van tabellaire model databases in Azure Analysis Services is veel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslag account](../storage/common/storage-create-storage-account.md). U kunt een opslag account en een container gebruiken die u al hebt, of ze kunnen worden gemaakt bij het configureren van opslag instellingen voor uw server.
+Het maken van back-ups van tabelmodeldatabases in Azure Analysis Services is vrijwel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslagaccount.](../storage/common/storage-create-storage-account.md) U een opslagaccount en een container gebruiken die u al hebt, of deze kunnen worden gemaakt bij het configureren van opslaginstellingen voor uw server.
 
 > [!NOTE]
-> Het maken van een opslag account kan resulteren in een nieuwe factureer bare service. Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie.
+> Het maken van een opslagaccount kan resulteren in een nieuwe factureerbare service. Zie [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie.
 > 
 > 
 
-Back-ups worden opgeslagen met de extensie. ABF. Voor in-Memory tabellaire modellen worden zowel model gegevens als meta gegevens opgeslagen. Voor DirectQuery-modellen in tabel vorm worden alleen model meta gegevens opgeslagen. Back-ups kunnen worden gecomprimeerd en versleuteld, afhankelijk van de opties die u kiest.
+Back-ups worden opgeslagen met een .abf-extensie. Voor tabelmodellen in het geheugen worden zowel modelgegevens als metagegevens opgeslagen. Voor tabelmodellen van DirectQuery worden alleen modelmetagegevens opgeslagen. Back-ups kunnen worden gecomprimeerd en versleuteld, afhankelijk van de opties die u kiest.
 
 
-## <a name="configure-storage-settings"></a>Opslag instellingen configureren
-Voordat u een back-up maakt, moet u de opslag instellingen voor uw server configureren.
+## <a name="configure-storage-settings"></a>Opslaginstellingen configureren
+Voordat u een back-up maakt, moet u opslaginstellingen voor uw server configureren.
 
 
-### <a name="to-configure-storage-settings"></a>Opslag instellingen configureren
-1.  Klik in Azure Portal >- **instellingen**op **back-up**.
+### <a name="to-configure-storage-settings"></a>Opslaginstellingen configureren
+1.  Klik in Azure-portal **>-instellingen**op **Back-up**.
 
     ![Back-ups in instellingen](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  Klik op **ingeschakeld**en klik vervolgens op **opslag instellingen**.
+2.  Klik **op Ingeschakeld**en klik vervolgens op **Opslaginstellingen**.
 
     ![Inschakelen](./media/analysis-services-backup/aas-backup-enable.png)
 
-3. Selecteer uw opslag account of maak een nieuwe.
+3. Selecteer uw opslagaccount of maak een nieuw account.
 
 4. Selecteer een container of maak een nieuwe.
 
     ![Container selecteren](./media/analysis-services-backup/aas-backup-container.png)
 
-5. Sla de back-upinstellingen op.
+5. Sla uw back-upinstellingen op.
 
     ![Back-upinstellingen opslaan](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 
-### <a name="to-backup-by-using-ssms"></a>Back-up maken met behulp van SSMS
+### <a name="to-backup-by-using-ssms"></a>Een back-up maken met SSMS
 
-1. Klik in SSMS met de rechter muisknop op een data base > **Maak een back-up**.
+1. Klik in SSMS met de rechtermuisknop op een database > **Back-up maken.**
 
-2. Klik in **back-updatabase** > **back-upbestand**op **Bladeren**.
+2. Klik in **back-updatabaseback-upbestand** > **Backup file**op **Bladeren**.
 
-3. Controleer in het dialoog venster **bestand opslaan als** het mappad en typ een naam voor het back-upbestand. 
+3. Controleer in het **dialoogvenster Bestand opslaan als** het mappad en typ vervolgens een naam voor het back-upbestand. 
 
-4. Selecteer opties in het dialoog venster **back-updatabase** .
+4. Selecteer opties in het dialoogvenster **Back-updatabase.**
 
-    **Overschrijven van bestand toestaan** : Selecteer deze optie als u de back-upbestanden met dezelfde naam wilt overschrijven. Als deze optie niet is ingeschakeld, kan het bestand dat u opslaat niet dezelfde naam hebben als een bestand dat al op dezelfde locatie bestaat.
+    **Bestand overschrijven toestaan** - Selecteer deze optie om back-upbestanden met dezelfde naam te overschrijven. Als deze optie niet is geselecteerd, kan het bestand dat u opslaat niet dezelfde naam hebben als een bestand dat al op dezelfde locatie bestaat.
 
-    **Compressie Toep assen** : Selecteer deze optie om het back-upbestand te comprimeren. Gecomprimeerde back-upbestanden besparen schijf ruimte, maar vereisen iets hoger CPU-gebruik. 
+    **Compressie toepassen** : Selecteer deze optie om het back-upbestand te comprimeren. Gecomprimeerde back-upbestanden besparen schijfruimte, maar vereisen een iets hoger CPU-gebruik. 
 
-    **Back-upbestand versleutelen** : Selecteer deze optie om het back-upbestand te versleutelen. Voor deze optie is een door de gebruiker opgegeven wacht woord vereist om het back-upbestand te beveiligen. Het wacht woord voor komt dat de back-upgegevens op een andere manier worden gelezen dan een herstel bewerking. Als u ervoor kiest om back-ups te versleutelen, moet u het wacht woord opslaan op een veilige locatie.
+    **Back-upbestand versleutelen** : selecteer deze optie om het back-upbestand te versleutelen. Voor deze optie is een door de gebruiker opgegeven wachtwoord vereist om het back-upbestand te beveiligen. Het wachtwoord voorkomt het lezen van de back-upgegevens op een andere manier dan een herstelbewerking. Als u ervoor kiest back-ups te versleutelen, slaat u het wachtwoord op een veilige locatie op.
 
 5. Klik op **OK** om het back-upbestand te maken en op te slaan.
 
 
 ### <a name="powershell"></a>PowerShell
-[Back-up-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) -cmdlet gebruiken.
+Gebruik de cmdlet [Backup-ASDatabase.](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)
 
 ## <a name="restore"></a>Herstellen
-Bij het herstellen moet het back-upbestand zich in het opslag account bevinden dat u hebt geconfigureerd voor uw server. Als u een back-upbestand van een on-premises locatie naar uw opslag account wilt verplaatsen, gebruikt u [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) of het [AzCopy](../storage/common/storage-use-azcopy.md) -opdracht regel programma. 
+Bij het herstellen moet uw back-upbestand zich in het opslagaccount bevindt dat u voor uw server hebt geconfigureerd. Als u een back-upbestand van een on-premises locatie naar uw opslagaccount wilt verplaatsen, gebruikt u [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) of het [azcopy-hulpprogramma.](../storage/common/storage-use-azcopy.md) 
 
 
 
 > [!NOTE]
-> Als u een on-premises server wilt herstellen, moet u alle domein gebruikers uit de rollen van het model verwijderen en ze weer toevoegen aan de rollen als Azure Active Directory gebruikers.
+> Als u herstelt vanaf een on-premises server, moet u alle domeingebruikers uit de rollen van het model verwijderen en deze weer toevoegen aan de rollen als Azure Active Directory-gebruikers.
 > 
 > 
 
-### <a name="to-restore-by-using-ssms"></a>Herstellen met behulp van SSMS
+### <a name="to-restore-by-using-ssms"></a>Herstellen met SSMS
 
-1. Klik in SSMS met de rechter muisknop op een data base > **herstellen**.
+1. Klik in SSMS met de rechtermuisknop op een database > **Herstellen**.
 
-2. Klik in het dialoog venster **back-updatabase** in **back-upbestand**op **Bladeren**.
+2. Klik in het dialoogvenster **Back-updatabase** in **back-upbestand**op **Bladeren**.
 
-3. Selecteer in het dialoog venster **database bestanden zoeken** het bestand dat u wilt herstellen.
+3. Selecteer in het dialoogvenster **Databasebestanden zoeken** het bestand dat u wilt herstellen.
 
-4. Selecteer de data base in **Data Base herstellen**.
+4. Selecteer in **Database herstellen**de database.
 
-5. Opties opgeven. Beveiligings opties moeten overeenkomen met de back-upopties die u hebt gebruikt bij het maken van een back-up.
+5. Opties opgeven. Beveiligingsopties moeten overeenkomen met de back-upopties die u hebt gebruikt bij het maken van een back-up.
 
 
 ### <a name="powershell"></a>PowerShell
 
-Gebruik de cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) .
+Gebruik de cmdlet [Restore-ASDatabase.](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)
 
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-[Azure-opslag accounts](../storage/common/storage-create-storage-account.md)  
+[Azure-opslagaccounts](../storage/common/storage-create-storage-account.md)  
 [Hoge beschikbaarheid](analysis-services-bcdr.md)     
-[Azure Analysis Services beheren](analysis-services-manage.md)
+[Azure-analyseservices beheren](analysis-services-manage.md)

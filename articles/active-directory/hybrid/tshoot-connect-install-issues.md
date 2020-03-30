@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure AD Connect installatie oplossen | Microsoft Docs '
-description: Dit onderwerp bevat stappen voor het oplossen van problemen met het installeren van Azure AD Connect.
+title: Problemen met installatieproblemen met Azure AD Connect oplossen | Microsoft Docs'
+description: In dit onderwerp vindt u stappen voor het oplossen van problemen met het installeren van Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,48 +16,48 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70211838"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problemen oplossen: Installatieproblemen met Azure AD Connect
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problemen met problemen met de installatie problemen met Azure AD Connect oplossen
 
 ## <a name="recommended-steps"></a>**Aanbevolen stappen**
-Controleer welk [Azure AD Connect installatie type](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) geschikt is voor u. Als u voldoet aan de criteria van snelle installatie, raden we u ten zeerste aan om met de snelle installatie te gaan. De snelle installatie biedt minimale opties die nodig zijn om de installatie te volt ooien, waardoor er minder kans is op problemen. 
+Controleer welk [Azure AD Connect-installatietype](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) geschikt is voor u. Als u voldoet aan de criteria van express installatie, dan raden wij u ten zeerste aan om te gaan met de express installatie. De express installatie geeft u minimale opties die nodig zijn om de installatie te voltooien, daarom is er minder kans op problemen. 
 
-Als u echter niet voldoet aan de criteria voor de snelle installatie en u de aangepaste installatie moet uitvoeren, zijn hier enkele aanbevolen procedures die u kunt volgen om veelvoorkomende problemen te voor komen. In het geval van eenvoud worden hier alleen selectieve opties vermeld:
+Als u echter niet voldoet aan de uitdrukkelijke installatiecriteria en de aangepaste installatie moet doen, zijn hier enkele aanbevolen procedures die u volgen om veelvoorkomende problemen te voorkomen. Omwille van de eenvoud worden hier alleen selectieve opties genoemd:
 
-* Zorg ervoor dat u een beheerder bent van de computer waarop u AAD Connect installeert. Meld u aan bij de computer met dezelfde beheerders referenties.
+* Zorg ervoor dat u een beheerder bent op de machine waarop u AAD Connect installeert. Meld u aan bij de machine met dezelfde beheerdersreferenties.
 
-* Laat alle opties standaard op de volgende pagina staan, met uitzonde ring van ' een bestaande SQL Server gebruiken ', als u bestaande SQL Server wilt gebruiken. Hier vindt u [meer informatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) over het gebruik van aangepaste installatie opties. 
+* Laat alle opties standaard op de volgende pagina staan, behalve 'Gebruik een bestaande SQL Server', als u bestaande SQL Server wilt gebruiken. Hier vindt [u meer informatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) over het gebruik van aangepaste installatieopties. 
 
     ![Bestaande SQL Server gebruiken](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
-* Kies op de volgende pagina de optie nieuwe AD-account maken om te voor komen dat er machtigings problemen met een bestaand account worden gemaakt.
+* Kies op de volgende pagina de optie 'Nieuw AD-account maken' om eventuele problemen met de toestemming met het bestaande account te voorkomen.
 
-    ![AD-forest-account](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
+    ![AD-forestaccount](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
 ### <a name="common-issues"></a>**Algemene problemen**
 
-* [Connectiviteits problemen met on-premises Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
+* [Verbindingsproblemen met on-premises Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
 
-* [Connectiviteits problemen met online Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
+* [Verbindingsproblemen met online Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
 
-* [Machtigings problemen met on-premises Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
+* [Machtigingsproblemen met on-premises Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
 
 ## <a name="recommended-documents"></a>**Aanbevolen documenten**
 * [Vereisten voor Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [Het installatietype voor Azure AD Connect selecteren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
-* [Aan de slag met Azure AD Connect met Express-instellingen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
+* [Aan de slag met Azure AD Connect met expresinstellingen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Aangepaste installatie van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect: Upgraden van een vorige naar de meest recente versie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD Connect: Wat is een faseringsserver?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
+* [Azure AD Connect: upgraden van een vorige naar de meest recente versie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
+* [Azure AD Connect: wat is staging server?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [Wat is de PowerShell-module ADConnectivityTool?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md).
+- [Synchronisatie van Azure AD Connect](how-to-connect-sync-whatis.md).
 - [Wat is hybride identiteit?](whatis-hybrid-identity.md)
 
 

@@ -1,7 +1,7 @@
 ---
 title: Sentiment cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Extraheer een positieve, negatieve sentiment-Score van tekst in een AI-pijp lijn in azure Cognitive Search.
+description: Haal een positief-negatieve sentimentscore uit tekst in een AI-verrijkingspijplijn in Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,52 +9,52 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791900"
 ---
 # <a name="sentiment-cognitive-skill"></a>Sentiment cognitieve vaardigheid
 
-De **sentiment** -vaardigheid evalueert ongestructureerde tekst langs een positieve negatieve continuüm, en voor elke record wordt een numerieke Score geretourneerd tussen 0 en 1. Scores dicht bij 1 geven een positieve stemming aan en scores dicht bij 0 geven een negatieve stemming aan. Deze vaardigheid maakt gebruik van de machine learning modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in cognitive Services.
+De **sentimentvaardigheid** evalueert ongestructureerde tekst langs een positief-negatief continuüm en geeft voor elke record een numerieke score tussen 0 en 1. Scores dicht bij 1 geven een positief sentiment aan en scores dicht bij 0 geven een negatief sentiment aan. Deze vaardigheid maakt gebruik van de machine learning-modellen van [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) in Cognitive Services.
 
 > [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
+> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
 
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. Text. SentimentSkill
+Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 5000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+De maximale grootte van een record moet 5000 tekens zijn, gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de sentimentanalyzer stuurt, gebruikt u de [vaardigheid Text Split](cognitive-search-skill-textsplit.md).
 
 
-## <a name="skill-parameters"></a>Vaardigheids parameters
+## <a name="skill-parameters"></a>Vaardigheidsparameters
 
-Para meters zijn hoofdletter gevoelig.
+Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam |                      |
 |----------------|----------------------|
-| defaultLanguageCode | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven. <br/> [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md) weer geven |
+| standaardLanguageCode | (facultatief) De taalcode die moet worden toegepast op documenten die geen expliciet taal opgeven. <br/> Zie [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
-## <a name="skill-inputs"></a>Vaardigheids invoer 
+## <a name="skill-inputs"></a>Vaardigheidsingangen 
 
-| Invoer naam | Beschrijving |
+| Invoernaam | Beschrijving |
 |--------------------|-------------|
-| tekst | De tekst die moet worden geanalyseerd.|
-| languageCode  |  Beschrijving Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/>Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| tekst | De te analyseren tekst.|
+| languageCode  |  (Optioneel) Een tekenreeks die de taal van de records aangeeft. Als deze parameter niet is opgegeven, is de standaardwaarde 'nl'. <br/>Zie [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
+## <a name="skill-outputs"></a>Vaardigheidsuitvoer
 
-| Uitvoer naam | Beschrijving |
+| Uitvoernaam | Beschrijving |
 |--------------------|-------------|
-| Score | Een waarde tussen 0 en 1 die de sentiment van de geanalyseerde tekst aangeeft. Waarden die dicht bij 0 liggen, hebben een negatieve sentiment, dicht bij 0,5 hebben neutrale sentiment en waarden die dicht bij 1 staan, hebben een positieve sentiment.|
+| Score | Een waarde tussen 0 en 1 die het sentiment van de geanalyseerde tekst vertegenwoordigt. Waarden dicht bij 0 hebben een negatief sentiment, dicht bij 0,5 hebben een neutraal sentiment en waarden dicht bij 1 hebben een positief sentiment.|
 
 
-##  <a name="sample-definition"></a>Voorbeeld definitie
+##  <a name="sample-definition"></a>Voorbeelddefinitie
 
 ```json
 {
@@ -78,7 +78,7 @@ Para meters zijn hoofdletter gevoelig.
 }
 ```
 
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -111,12 +111,12 @@ Para meters zijn hoofdletter gevoelig.
 ```
 
 ## <a name="notes"></a>Opmerkingen
-Als deze leeg is, wordt er geen sentiment-Score geretourneerd voor die records.
+Als deze leeg is, wordt een gevoelsscore niet geretourneerd voor die records.
 
-## <a name="error-cases"></a>Fout cases
-Als een taal niet wordt ondersteund, wordt er een fout gegenereerd en wordt er geen sentiment Score geretourneerd.
+## <a name="error-cases"></a>Foutgevallen
+Als een taal niet wordt ondersteund, wordt er een fout gegenereerd en wordt er geen gevoelsscore geretourneerd.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
++ [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)

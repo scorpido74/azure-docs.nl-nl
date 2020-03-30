@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857367"
 ---
-**.Net-backC#-end ()** :
+**.NET backend (C#)**:
   
-1. Klik in Visual Studio met de rechter muisknop op het server project en klik op **NuGet-pakketten beheren**, zoek naar `Microsoft.Azure.NotificationHubs`en klik vervolgens op **installeren**. Hiermee installeert u de Notification Hubs-bibliotheek voor het verzenden van meldingen van uw back-end.
-2. Open in het Visual Studio-project van de back-end **controllers** > **TodoItemController.cs**. Voeg boven aan het bestand de volgende `using` instructie toe:
+1. Klik in Visual Studio met de rechtermuisknop op het serverproject en klik op **NuGet-pakketten beheren,** zoeken `Microsoft.Azure.NotificationHubs`naar en klik vervolgens op **Installeren**. Hiermee wordt de Bibliotheek Meldinghubs geïnstalleerd voor het verzenden van meldingen vanaf uw backend.
+2. In het Visual Studio-project van de backend opent u **Controllers** > **TodoItemController.cs.** Voeg boven aan het bestand `using` de volgende instructie toe:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "68857367"
     }
     ```
 
-4. Publiceer het server project opnieuw.
+4. Publiceer het serverproject opnieuw.
 
 **Node.js-back-end**:
 
-1. Stel uw back-end-project in.    
+1. Stel je backend project in.    
 
-2. Vervang het tabel script todoitem. js door de volgende code:
+2. Vervang het tabelscript todoitem.js door de volgende code:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "68857367"
     module.exports = table;
     ```
 
-3. Wanneer u het bestand op uw lokale computer bewerkt, publiceert u het server project opnieuw.
+3. Wanneer u het bestand op uw lokale computer bewerkt, publiceert u het serverproject opnieuw.

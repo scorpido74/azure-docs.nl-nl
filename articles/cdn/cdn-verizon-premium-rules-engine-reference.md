@@ -1,6 +1,6 @@
 ---
-title: Naslag informatie voor Azure CDN-regels-engine | Microsoft Docs
-description: Referentie documentatie voor voor waarden en functies voor de Azure CDN regels-engine.
+title: Verwijzing naar de azure CDN-regelsengine | Microsoft Documenten
+description: Referentiedocumentatie voor Azure CDN-regels engine komen overeen met voorwaarden en functies.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,75 +8,75 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69996754"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referentie voor Azure CDN van Verizon Premium-regels engine
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN van Verizon Premium regels engine referentie
 
-In dit artikel vindt u gedetailleerde beschrijvingen van de beschik bare matching voorwaarden en-functies voor de [regels engine](cdn-verizon-premium-rules-engine.md)van Azure Content Delivery Network (CDN).
+In dit artikel worden gedetailleerde beschrijvingen weergegeven van de beschikbare wedstrijdvoorwaarden en -functies voor de [CDN-regelsengine](cdn-verizon-premium-rules-engine.md)(Azure Content Delivery Network).
 
-De regel engine is ontworpen als de definitieve autoriteit voor het verwerken van specifieke typen aanvragen door het CDN.
+De regels motor is ontworpen om de uiteindelijke autoriteit over hoe specifieke soorten verzoeken worden verwerkt door het CDN.
 
-**Veelvoorkomende toepassingen**:
+**Gemeenschappelijk gebruik**:
 
-- Een aangepast cache beleid overschrijft of definieert.
-- Aanvragen voor gevoelige inhoud beveiligen of weigeren.
-- Aanvragen omleiden.
-- Aangepaste logboek gegevens opslaan.
+- Een aangepast cachebeleid overschrijven of definiëren.
+- Verzoeken om gevoelige inhoud beveiligen of weigeren.
+- Omleiden van aanvragen.
+- Aangepaste logboekgegevens opslaan.
 
 ## <a name="terminology"></a>Terminologie
 
-Een regel is gedefinieerd met behulp van [**voorwaardelijke expressies**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md), [**matching voorwaarden**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)en [**onderdelen**](cdn-verizon-premium-rules-engine-reference-features.md). Deze elementen zijn gemarkeerd in de volgende afbeelding:
+Een regel wordt gedefinieerd door het gebruik van [**voorwaardelijke expressies**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md), [**overeenkomen met voorwaarden**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)en [**functies**](cdn-verizon-premium-rules-engine-reference-features.md). Deze elementen worden gemarkeerd in de volgende afbeelding:
 
- ![Voor waarde voor CDN-overeenkomst](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+ ![CDN-wedstrijdvoorwaarde](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
 
 ## <a name="syntax"></a>Syntaxis
 
-De manier waarop speciale tekens worden behandeld, is afhankelijk van hoe een overeenkomst voorwaarde of-functie tekst waarden verwerkt. Een match-voor waarde of functie kan tekst op een van de volgende manieren interpreteren:
+De manier waarop speciale tekens worden behandeld, is afhankelijk van de manier waarop een overeenkomstvoorwaarde of functie omgaat met tekstwaarden. Een overeenkomstvoorwaarde of -functie kan tekst op een van de volgende manieren interpreteren:
 
 1. [**Letterlijke waarden**](#literal-values)
-2. [**Joker teken waarden**](#wildcard-values)
+2. [**Wildcardwaarden**](#wildcard-values)
 3. [**Reguliere expressies**](#regular-expressions)
 
 ### <a name="literal-values"></a>Letterlijke waarden
 
-Tekst die wordt geïnterpreteerd als een letterlijke waarde, behandelt alle speciale tekens, met uitzonde ring van het symbool%, als onderdeel van de waarde die moet worden aangepast. Met andere woorden, een letterlijke match-voor `\'*'\` waarde die is ingesteld op is alleen vervuld wanneer die exacte `\'*'\`waarde (dat wil zeggen) wordt gevonden.
+Tekst die wordt geïnterpreteerd als een letterlijke waarde, behandelt alle speciale tekens, met uitzondering van het symbool %, als een deel van de waarde die moet worden geëvenaard. Met andere woorden, een letterlijke match voorwaarde ingesteld op `\'*'\` is `\'*'\`alleen voldaan wanneer die exacte waarde (dat wil zeggen, ) wordt gevonden.
 
-Een percentage symbool wordt gebruikt om URL-code ring aan te geven `%20`(bijvoorbeeld).
+Een percentagesymbool wordt gebruikt om URL-codering `%20`aan te geven (bijvoorbeeld).
 
-### <a name="wildcard-values"></a>Joker teken waarden
+### <a name="wildcard-values"></a>Wildcardwaarden
 
-Tekst die wordt geïnterpreteerd als een Joker teken, wijst extra betekenissen toe aan speciale tekens. In de volgende tabel wordt beschreven hoe de volgende reeks tekens wordt geïnterpreteerd:
+Tekst die wordt geïnterpreteerd als een wildcardwaarde, wijst extra betekenis toe aan speciale tekens. In de volgende tabel wordt beschreven hoe de volgende set tekens wordt geïnterpreteerd:
 
-Teken | Description
+Teken | Beschrijving
 ----------|------------
-\ | Een back slash wordt gebruikt om een van de tekens die in deze tabel zijn opgegeven, te escapepen. Een back slash moet direct voor het speciale teken worden opgegeven.<br/>De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
-% | Een percentage symbool wordt gebruikt om URL-code ring aan te geven `%20`(bijvoorbeeld).
-\* | Een asterisk is een Joker teken dat bestaat uit een of meer tekens.
-Spatiebalk | Een spatie geeft aan dat aan een voor waarde voor een overeenkomst kan worden voldaan door een van de opgegeven waarden of patronen.
-'value' | Een enkele aanhaling heeft geen speciale betekenis. Er wordt echter een set met enkele aanhalings tekens gebruikt om aan te geven dat een waarde moet worden behandeld als een letterlijke waarde. Dit kan op de volgende manieren worden gebruikt:<br><br/>-Hiermee kan een match-voor waarde worden vervuld wanneer de opgegeven waarde overeenkomt met een deel van de vergelijkings waarde.  Bijvoorbeeld, `'ma'` komt overeen met een van de volgende teken reeksen: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />-Hiermee kan een speciaal teken worden opgegeven als een letterlijke teken. U kunt bijvoorbeeld een letterlijke spatie opgeven door een spatie te plaatsen binnen een set met enkele aanhalings tekens ( `' '` of `'sample value'`).<br/>-Hiermee kan een lege waarde worden opgegeven. Geef een lege waarde op door een set met enkele aanhalings tekens (,) op te geven.<br /><br/>**Belangrijk:**<br/>-Als de opgegeven waarde geen joker teken bevat, wordt deze automatisch beschouwd als een letterlijke waarde, wat betekent dat het niet nodig is om een set met enkele aanhalings tekens op te geven.<br/>-Als een back slash geen ander teken in deze tabel weglaat, wordt deze genegeerd wanneer deze is opgegeven binnen een set met enkele aanhalings tekens.<br/>-Een andere manier om een speciaal teken op te geven als een letterlijke teken, is het escapeel te maken `\`met behulp van een back slash (dat wil zeggen).
+\ | Een backslash wordt gebruikt om te ontsnappen aan een van de tekens die in deze tabel zijn opgegeven. Een backslash moet direct worden opgegeven voor het speciale teken dat moet worden ontsnapt.<br/>De volgende syntaxis ontsnapt bijvoorbeeld aan een sterretje:`\*`
+% | Een percentagesymbool wordt gebruikt om URL-codering `%20`aan te geven (bijvoorbeeld).
+\* | Een sterretje is een wildcard die een of meer tekens vertegenwoordigt.
+Space | Een spatieteken geeft aan dat een overeenkomende voorwaarde kan worden bepaald door een van de opgegeven waarden of patronen.
+"waarde" | Een enkel citaat heeft geen speciale betekenis. Een set enkele aanhalingstekens wordt echter gebruikt om aan te geven dat een waarde moet worden behandeld als een letterlijke waarde. Het kan op de volgende manieren worden gebruikt:<br><br/>- Hiermee kan aan een wedstrijdvoorwaarde worden voldaan wanneer de opgegeven waarde overeenkomt met een deel van de vergelijkingswaarde.  Komt bijvoorbeeld `'ma'` overeen met een van de volgende tekenreeksen: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />- Hiermee kan een speciaal teken als een letterlijk teken worden opgegeven. U bijvoorbeeld een letterlijk spatieteken opgeven door een spatieteken in een `' '` `'sample value'`set enkele aanhalingstekens (dat wil zeggen) om te voegen.<br/>- Hiermee kan een lege waarde worden opgegeven. Geef een lege waarde op door een set enkele aanhalingstekens op te geven (dat wil zeggen '').<br /><br/>**Belangrijk:**<br/>- Als de opgegeven waarde geen wildcard bevat, wordt deze automatisch beschouwd als een letterlijke waarde, wat betekent dat het niet nodig is om een set enkele aanhalingstekens op te geven.<br/>- Als een backslash niet ontsnapt aan een ander teken in deze tabel, wordt deze genegeerd wanneer deze is opgegeven in een set enkele aanhalingstekens.<br/>- Een andere manier om een speciaal teken als een letterlijk teken `\`te specificeren is om te ontsnappen met behulp van een backslash (dat wil zeggen, ).
 
 ### <a name="regular-expressions"></a>Reguliere expressies
 
-Reguliere expressies definiëren een patroon dat wordt doorzocht in een tekst waarde. De notatie reguliere expressie definieert specifieke betekenissen voor diverse symbolen. In de volgende tabel wordt aangegeven hoe speciale tekens worden behandeld door matching voorwaarden en functies die reguliere expressies ondersteunen.
+Reguliere expressies definiëren een patroon dat wordt gezocht binnen een tekstwaarde. Regelmatige expressienotatie definieert specifieke betekenissen voor een verscheidenheid aan symbolen. In de volgende tabel wordt aangegeven hoe speciale tekens worden behandeld aan de andere kant van de voorwaarden en functies die reguliere expressies ondersteunen.
 
-Speciaal teken | Description
+Speciaal teken | Beschrijving
 ------------------|------------
-\ | Met een back slash wordt het teken dat het volgt, als een letterlijke waarde gezien in plaats van de normale expressie betekenis. De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
-% | De betekenis van een percentage symbool is afhankelijk van het gebruik.<br/><br/> `%{HTTPVariable}`: Met deze syntaxis wordt een HTTP-variabele aangeduid.<br/>`%{HTTPVariable%Pattern}`: Deze syntaxis gebruikt een percentage om een HTTP-variabele en als scheidings teken te identificeren.<br />`\%`: Als u een percentage tekent, kunt u het gebruiken als letterlijke waarde of om URL-code ring aan te `\%20`geven (bijvoorbeeld).
-\* | Met een sterretje kan het voorafgaande teken nul of meer keer worden gevonden.
-Spatiebalk | Een spatie wordt meestal beschouwd als een letterlijke teken.
-'value' | Enkele aanhalings tekens worden beschouwd als letterlijke letters. Een set met enkele aanhalings tekens heeft geen speciale betekenis.
+\ | Een backslash ontsnapt aan het teken volgt het, waardoor dat teken wordt behandeld als een letterlijke waarde in plaats van het nemen van de reguliere expressie betekenis. De volgende syntaxis ontsnapt bijvoorbeeld aan een sterretje:`\*`
+% | De betekenis van een percentagesymbool is afhankelijk van het gebruik ervan.<br/><br/> `%{HTTPVariable}`: Met deze syntaxis wordt een HTTP-variabele aangegeven.<br/>`%{HTTPVariable%Pattern}`: Deze syntaxis gebruikt een percentagesymbool om een HTTP-variabele en als scheidingsteken te identificeren.<br />`\%`: Ontsnappen aan een percentage symbool maakt het mogelijk om te worden gebruikt `\%20`als een letterlijke waarde of om URL-codering aan te geven (bijvoorbeeld, ).
+\* | Met een sterretje kan het voorgaande teken nul of meer keer worden geëvenaard.
+Space | Een spatieteken wordt meestal behandeld als een letterlijk teken.
+"waarde" | Enkele aanhalingstekens worden behandeld als letterlijke tekens. Een reeks enkele aanhalingstekens heeft geen speciale betekenis.
 
-Voor waarden en functies die reguliere expressies ondersteunen, accepteren patronen die zijn gedefinieerd door perl compatibele reguliere expressies (PCRE).
+Overeenkomen met voorwaarden en functies die reguliere expressies ondersteunen, accepteren patronen die zijn gedefinieerd door Perl Compatible Regular Expressions (PCRE).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Criteria voor overeenkomst regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
-- [Voorwaardelijke expressies regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Functies regelengine](cdn-verizon-premium-rules-engine-reference-features.md)
-- [HTTP-gedrag negeren met de regel engine](cdn-verizon-premium-rules-engine.md)
+- [Regels motor overeenkomen met voorwaarden](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Regels engine voorwaardelijke expressies](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Regels motorfuncties](cdn-verizon-premium-rules-engine-reference-features.md)
+- [HTTP-gedrag overschrijven met de rules engine](cdn-verizon-premium-rules-engine.md)
 - [Overzicht van Azure CDN](cdn-overview.md)
