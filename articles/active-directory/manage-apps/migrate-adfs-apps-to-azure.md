@@ -1,6 +1,6 @@
 ---
-title: Apps van AD FS verplaatsen naar Azure AD. | Microsoft Docs
-description: In dit artikel is bedoeld ter ondersteuning van organisaties bij het verplaatsen van toepassingen naar Azure AD, met een focus op federatieve SaaS-toepassingen.
+title: Apps verplaatsen van AD FS naar Azure AD. | Microsoft Docs
+description: Dit artikel is bedoeld om organisaties te helpen begrijpen hoe ze toepassingen naar Azure AD kunnen verplaatsen, met een focus op gefedereerde SaaS-toepassingen.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159009"
 ---
-# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Toepassingen van AD FS verplaatsen naar Azure AD 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Toepassingen verplaatsen van AD FS naar Azure AD 
 
-Dit artikel helpt u begrijpen hoe u toepassingen verplaatsen van AD FS met Azure Active Directory (Azure AD). De focus ligt hierbij op federatieve SaaS-toepassingen.
+In dit artikel u begrijpen hoe u toepassingen verplaatsen van AD FS naar Azure Active Directory (Azure AD). De focus ligt hierbij op federatieve SaaS-toepassingen.
 
 In dit document wordt geen stapsgewijze begeleiding gegeven. Het biedt wel theoretische richtlijnen voor de migratie door de vertaling van on-premises configuraties naar Azure AD inzichtelijk te maken. Er worden ook enkele veelvoorkomende scenario's behandeld.
 
@@ -32,22 +32,22 @@ Als u een on-premises map met gebruikersaccounts hebt, dan is de kans groot dat 
 
 En net als vele andere organisatie bent u waarschijnlijk al bezig over te stappen op cloudtoepassingen en -identiteiten. Mogelijk maakt u al gebruik van Office 365 en Azure AD Connect. Misschien hebt u SaaS-cloudtoepassingen ingesteld voor enkele belangrijke werkbelastingen, maar nog niet voor alle.  
 
-Veel organisaties beschikken over SaaS- of line-of-business (LOB)-apps die rechtstreeks zijn gefedereerd met een on-premises aanmeldingsservice, zoals Active Directory Federation Services (AD FS), in combinatie met Office 365- en Azure AD-apps. Deze handleiding wordt beschreven waarom en hoe u uw toepassingen naar Azure AD.
+Veel organisaties beschikken over SaaS- of line-of-business (LOB)-apps die rechtstreeks zijn gefedereerd met een on-premises aanmeldingsservice, zoals Active Directory Federation Services (AD FS), in combinatie met Office 365- en Azure AD-apps. In deze handleiding wordt beschreven waarom en hoe u uw toepassingen verplaatsen naar Azure AD.
 
 > [!NOTE]
 > De handleiding biedt uitgebreide informatie over de configuratie en migratie van SaaS-apps, met belangrijke informatie over aangepaste LOB-apps. Meer gedetailleerde richtlijnen voor LOB-apps staan voor later gepland.
 
-![Toepassingen die rechtstreeks on-premises zijn verbonden](media/migrate-adfs-apps-to-azure/migrate1.png)
+![Toepassingen die direct on-premises zijn aangesloten](media/migrate-adfs-apps-to-azure/migrate1.png)
 
-![Toepassingen die worden federatief via Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
+![Toepassingen die worden gefedereerd via Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
 
 ## <a name="reasons-for-moving-apps-to-azure-ad"></a>Redenen voor het verplaatsen van apps naar Azure AD
 
-Voor een organisatie die al gebruikmaakt van AD FS, Ping of een andere on-premises verificatieprovider, kunt apps verplaatsen naar Azure AD de volgende voordelen:
+Voor een organisatie die al AD FS, Ping of een andere on-premises verificatieprovider gebruikt, biedt het verplaatsen van apps naar Azure AD de volgende voordelen:
 
 - **Veiliger toegang**
 
-  - Gedetailleerde besturings elementen voor toegang per toepassing, met inbegrip van Azure Multi-Factor Authentication, met behulp van [voorwaardelijke toegang van Azure AD](../active-directory-conditional-access-azure-portal.md)configureren. Het beleid kan worden toegepast op SaaS- en aangepaste apps op dezelfde manier als u voor Office 365 zou doen.
+  - Configureer gedetailleerde toegangsbesturingselementen per toepassing, inclusief Azure Multi-Factor Authentication, met azure [AD Conditional Access](../active-directory-conditional-access-azure-portal.md). Het beleid kan worden toegepast op SaaS- en aangepaste apps op dezelfde manier als u voor Office 365 zou doen.
   - Voor de detectie van bedreigingen en het helpen beveiligen van de aanmelding op basis van machine learning en heuristieken waarmee risicovol verkeer wordt geïdentificeerd, kunt u profiteren van [Azure AD Identity Protection](../active-directory-identityprotection.md).
 
 - **B2B-samenwerking van Azure AD**
@@ -67,7 +67,7 @@ Voor een organisatie die al gebruikmaakt van AD FS, Ping of een andere on-premis
 
 - **Hulp bij buiten gebruik stellen van de on-premises id-provider**
   
-  Voor organisaties die gebruik wilt stellen van de on-premises verificatie-product, kan apps verplaatsen naar Azure AD een eenvoudigere overgang door deel van het werk uit de weg.
+  Voor organisaties die het on-premises verificatieproduct willen stoppen, maakt het verplaatsen van apps naar Azure AD een eenvoudigere overgang mogelijk door een deel van het werk uit de weg te ruimen.
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>App-typen on-premises toewijzen aan app-typen in Azure AD
 
@@ -128,21 +128,21 @@ Op hoog niveau zijn er enkele belangrijke dingen waarmee een SaaS-app naar Azure
 - Afmeldings-URL van de id-provider: https&#58;//login.microsoftonline.com/{tenant-id}/saml2 
 - Locatie van bestand met federatieve metagegevens: https&#58;//login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id} 
 
-Vervang {Tenant-id} door uw tenant-id, te vinden in de Azure-portal onder **Azure Active Directory** > **Eigenschappen** als **Map-ID**. Vervang {application-id} door uw toepassings-id, te vinden in de eigenschappen van de toepassing als **Toepassings-id**.
+Vervang {tenant-id} door uw tenant-id, gevonden in de Azure-portal onder Azure Active > **Directory-eigenschappen** als **Directory-id**. **Azure Active Directory** Vervang {application-id} door uw toepassings-id, te vinden in de eigenschappen van de toepassing als **Toepassings-id**.
 
 De volgende tabel beschrijft de belangrijkste IdP-configuratie-elementen voor het configureren van SSO-instellingen in de app en hun waarden of locaties binnen AD FS en Azure AD. Het referentiekader van de tabel is de SaaS-app, die moet weten waarnaar verificatieaanvragen moeten worden verzonden en hoe de ontvangen tokens moeten worden gevalideerd.
 
 |Configuratie-element|Beschrijving|AD FS|Azure AD|
 |---|---|---|---|
-|IdP </br>aanmelden </br>URL|Aanmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid voor aanmelding).|De AD FS-aanmeldings-URL is de AD FS-federation-servicenaam gevolgd door ‘/adfs/ls/’. Bijvoorbeeld: https&#58;//fs.contoso.com/adfs/ls/|De overeenkomstige waarde voor Azure AD volgt het patroon waarbij {tenant-id} wordt vervangen door uw tenant-id. Deze waarde is te vinden in de Azure-portal onder **Azure Active Directory** > **Eigenschappen** als **Map-ID**.</br></br>Voor apps die gebruikmaken van het SAML-P-protocol: https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>Voor apps die gebruikmaken van het WS-Federation-protocol: https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
-|IdP </br>afmelden </br>URL|URL voor afmelden van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid wanneer deze zich afmeldt bij de app).|Voor AD FS is URL voor afmelden gelijk aan de aanmeldings-URL, of dezelfde URL met het achtervoegsel "wa=wsignout1.0". Bijvoorbeeld: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|De overeenkomstige waarde voor Azure AD hangt ervan af of de app SAML 2.0-afmelding ondersteunt.</br></br>Als de app SAML-afmelding ondersteunt, heeft de waarde het patroon waarbij de waarde voor {tenant-id} word vervangen door de tenant-id. Deze is te vinden in de Azure-portal onder **Azure Active Directory** > **Eigenschappen** als **Map-ID**: https&#58;//login.microsoftonline.com/{tenant-id}/saml2</br></br>Als de app geen ondersteuning biedt voor SAML afmelding: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
+|IdP </br>aanmelden </br>URL|Aanmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid voor aanmelding).|De AD FS-aanmeldings-URL is de AD FS-federation-servicenaam gevolgd door ‘/adfs/ls/’. Bijvoorbeeld: https&#58;//fs.contoso.com/adfs/ls/|De overeenkomstige waarde voor Azure AD volgt het patroon waarbij {tenant-id} wordt vervangen door uw tenant-id. Zoek deze in de Azure-portal onder Azure Active > **Directory-eigenschappen** als **Directory-id**. **Azure Active Directory**</br></br>Voor apps die gebruikmaken van het SAML-P-protocol: https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>Voor apps die gebruikmaken van het WS-Federation-protocol: https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
+|IdP </br>afmelden </br>URL|URL voor afmelden van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid wanneer deze zich afmeldt bij de app).|Voor AD FS is URL voor afmelden gelijk aan de aanmeldings-URL, of dezelfde URL met het achtervoegsel "wa=wsignout1.0". Bijvoorbeeld: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|De overeenkomstige waarde voor Azure AD hangt ervan af of de app SAML 2.0-afmelding ondersteunt.</br></br>Als de app SAML-afmelding ondersteunt, heeft de waarde het patroon waarbij de waarde voor {tenant-id} word vervangen door de tenant-id. Zoek het in de Azure-portal onder **Azure Active Directory** > **Properties** als **Directory-ID**: https&#58;/login.microsoftonline.com/{tenant-id}/saml2</br></br>Als de app geen ondersteuning biedt voor SAML afmelding: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Token </br>ondertekening </br>certificaat|Het certificaat waarvan de IdP de persoonlijke sleutel gebruikt voor het ondertekenen van uitgegeven tokens. Er wordt gecontroleerd of het token afkomstig is van de dezelfde IdP die de app is geconfigureerd om te vertrouwen.|U vindt het AD FS-certificaat voor token-ondertekening in AD FS-beheer onder **Certificaten**.|In Azure AD kunt u het certificaat voor token-ondertekening vinden in de Azure-portal in de eigenschappen voor **eenmalige aanmelding** onder de kop **SAML-handtekeningcertificaat**. Daar kunt u het certificaat downloaden om het te uploaden naar de app.</br></br> Als de toepassing meer dan één certificaat heeft, kunt u alle certificaten vinden in het metagegevens-XML-bestand van de federatie.|
-|Id/</br>'verlener'|Id van de IdP vanuit het perspectief van de app (ook wel 'uitgever-ID' genoemd).</br></br>In het SAML-token wordt de waarde weergegeven als het element **Verlener**.|De id voor AD FS is meestal de federatieservice-id in AD FS-beheer onder **Service** > **Eigenschappen van de Federation Service bewerken**. Bijvoorbeeld: http&#58;//fs.contoso.com/adfs/services/trust|De overeenkomstige waarde voor Azure AD volgt het patroon waarbij de waarde voor {tenant-id} wordt vervangen door de tenant-id. Te vinden in de Azure-portal onder **Azure Active Directory** > **Eigenschappen** als **Map-ID**: https&#58;//sts.windows.net/{tenant-id}/|
-|IdP </br>federatie- </br>metagegevens|Locatie van de openbaar beschikbare federatiemetagegevens van de IdP. (Sommige apps gebruiken federatiemetagegevens als alternatief voor het afzonderlijk door de beheerder configureren van URL's, id en tokenhandtekeningcertificaat.)|U vindt de URL van de AD FS-federatiemetagegevens in AD FS-beheer onder **Service** > **Eindpunten** > **Metagegevens** >  **Type: Federatiemetagegevens**. Bijvoorbeeld: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|De overeenkomstige waarde voor Azure AD volgt het patroon https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml. De waarde voor {TenantDomainName} wordt vervangen door de naam van uw tenant in de notatie "contoso.onmicrosoft.com". </br></br>Zie voor meer informatie [Federatiemetagegevens](../azuread-dev/azure-ad-federation-metadata.md).
+|Id/</br>'verlener'|Id van de IdP vanuit het perspectief van de app (ook wel 'uitgever-ID' genoemd).</br></br>In het SAML-token wordt de waarde weergegeven als het element **Verlener**.|De id voor AD FS is meestal de federatieservice-id in AD FS-beheer onder > **Serviceedit Federation Service-eigenschappen**. **Service** Bijvoorbeeld: http&#58;//fs.contoso.com/adfs/services/trust|De overeenkomstige waarde voor Azure AD volgt het patroon waarbij de waarde voor {tenant-id} wordt vervangen door de tenant-id. Zoek het in de Azure-portal onder **Azure Active Directory** > **Properties** als **Directory-ID**: https&#58;:sts.windows.net/{tenant-id}/|
+|IdP </br>federatie- </br>metagegevens|Locatie van de openbaar beschikbare federatiemetagegevens van de IdP. (Sommige apps gebruiken federatiemetagegevens als alternatief voor het afzonderlijk door de beheerder configureren van URL's, id en tokenhandtekeningcertificaat.)|Zoek de URL van de AD FS-federatie metagegevens in AD FS-beheer onder **Service** > **Endpoints** > **Metadata** > **Type: Federation Metadata**. Bijvoorbeeld: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|De overeenkomstige waarde voor Azure AD volgt het patroon https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml. De waarde voor {TenantDomainName} wordt vervangen door de naam van uw tenant in de notatie "contoso.onmicrosoft.com". </br></br>Zie voor meer informatie [Federatiemetagegevens](../azuread-dev/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>SaaS-apps verplaatsen
 
-Vandaag is een handmatig proces verplaatsen SaaS-apps van AD FS of een andere id-provider naar Azure AD. Zie de [lijst met zelfstudies voor het integreren van SaaS-apps in de Marketplace](../saas-apps/tutorial-list.md) voor app-specifieke richtlijnen.
+Het verplaatsen van SaaS-apps van AD FS of een andere identiteitsprovider naar Azure AD is tegenwoordig een handmatig proces. Zie de [lijst met zelfstudies voor het integreren van SaaS-apps in de Marketplace](../saas-apps/tutorial-list.md) voor app-specifieke richtlijnen.
 
 Bij de integratiezelfstudies wordt ervan uitgegaan dat u een geheel nieuwe integratie uitvoert. Bij het plannen, beoordelen, configureren en overzetten van uw apps moet u rekening houden met een paar belangrijke concepten die specifiek zijn voor migratie:  
 
@@ -162,9 +162,9 @@ Voor sommige configuraties zijn extra stappen vereist om te configureren in Azur
 - Uitgegeven SAML-tokenversies.
 - Andere configuraties, zoals regels voor uitgifteautorisatie of het beleid voor toegangsbeheer en regels voor meervoudige verificatie (aanvullende verificatie).
 
-#### <a name="what-can-be-moved-today"></a>Wat vandaag nog kunnen worden verplaatst
+#### <a name="what-can-be-moved-today"></a>Wat kan vandaag worden verplaatst
 
-Apps die u vandaag gemakkelijk kunt verplaatsen zijn SAML 2.0-apps die gebruikmaken van de standaardset van configuratie-elementen en claims. Deze apps kunnen bestaan uit:
+Apps die u vandaag de dag gemakkelijk verplaatsen, omvatten SAML 2.0-apps die de standaardset configuratie-elementen en claims gebruiken. Deze apps kunnen bestaan uit:
 
 - User principal name.
 - E-mailadres.
@@ -175,7 +175,7 @@ Apps die u vandaag gemakkelijk kunt verplaatsen zijn SAML 2.0-apps die gebruikma
 
 Naast aangepaste claims en **NameID**-elementen, zijn configuraties waarvoor extra configuratiestappen in Azure AD nodig zijn als onderdeel van de migratie:
 
-- Aangepaste autorisatie-of Multi-Factor Authentication-regels in AD FS. U kunt deze configureren met behulp van de functie [voorwaardelijke toegang van Azure AD](../active-directory-conditional-access-azure-portal.md) .
+- Aangepaste autorisatie-of Multi-Factor Authentication-regels in AD FS. U configureert ze met de functie [Voorwaardelijke toegang voor Azure AD.](../active-directory-conditional-access-azure-portal.md)
 - Apps met meerdere SAML-eindpunten. U configureert deze in Azure AD met behulp van PowerShell. (Deze mogelijkheid is niet beschikbaar in de portal.)
 - WS-Federation-apps, zoals SharePoint-apps waarvoor versie 1.1-SAML-tokens vereist zijn. U moet deze handmatig configureren met behulp van PowerShell.
 
@@ -212,11 +212,11 @@ In Azure AD configureert u eenmalige SAML-aanmelding (zoals vereist door uw app)
 
 Selecteer **Alle gebruikerskenmerken weergeven en bewerken** om de kenmerken te zien die als claims in het beveiligingstoken moeten worden verzonden.
 
-![Hiermee wordt de lijst met kenmerken weer gegeven die u als claims kunt verzenden](media/migrate-adfs-apps-to-azure/migrate4.png)
+![Toont de lijst met kenmerken die u als claims verzenden](media/migrate-adfs-apps-to-azure/migrate4.png)
 
 Selecteer een bepaalde kenmerkrij om deze te bewerken, of selecteer **Kenmerk toevoegen** om een nieuw kenmerk toe te voegen.
 
-![Hiermee wordt het deel venster kenmerk bewerken weer gegeven](media/migrate-adfs-apps-to-azure/migrate5.png)
+![Toont het deelvenster Kenmerk bewerken](media/migrate-adfs-apps-to-azure/migrate5.png)
 
 #### <a name="assign-users-to-the-app"></a>Gebruikers aan de app toewijzen
 
@@ -226,7 +226,7 @@ Als u gebruikers in de Azure AD-portal wilt toewijzen, gaat u naar het scherm va
 
 ![Knop 'Gebruiker toevoegen' in 'Gebruikers en groepen'](media/migrate-adfs-apps-to-azure/migrate6.png)
 
-![Hiermee wordt het deel venster toewijzing toevoegen weer gegeven](media/migrate-adfs-apps-to-azure/migrate7.png)
+![Toont het deelvenster Toewijzing toevoegen](media/migrate-adfs-apps-to-azure/migrate7.png)
 
 Om hun toegang te verifiëren, moeten gebruikers de SaaS-app in hun [toegangsvenster](../user-help/active-directory-saas-access-panel-introduction.md) zien wanneer ze zich aanmelden. Zij kunnen het toegangsvenster vinden op https://myapps.microsoft.com. In dit voorbeeld is aan een gebruiker toegang verleend tot zowel Salesforce als ServiceNow.
 
@@ -248,13 +248,13 @@ Het cutover-proces van on-premises federatie naar Azure AD hangt ervan af of de
 
    Als de app meerdere id-providers ondersteunt en u ervoor kiest meerdere IdP’s tegelijkertijd verificatie bij aanmelden te laten afhandelen, kan de gebruiker op de aanmeldingspagina een IdP kiezen voor verificatie.
 
-#### <a name="example-support-for-multiple-identity-providers"></a>Voor beeld: ondersteuning voor meerdere id-providers
+#### <a name="example-support-for-multiple-identity-providers"></a>Voorbeeld: Ondersteuning voor meerdere identiteitsproviders
 
-In Salesforce kunt u de IdP-configuratie bijvoorbeeld vinden onder **Instellingen** > **Bedrijfsinstellingen** > **Mijn domein** > **Verificatieconfiguratie**.
+In Salesforce u bijvoorbeeld de IDP-configuratie vinden onder **Instellingen** > **Bedrijfsinstellingen** > Mijn**domeinverificatieconfiguratie****My Domain** > .
 
 ![De sectie 'Verificatieconfiguratie' in de Salesforce-app](media/migrate-adfs-apps-to-azure/migrate9.png)
 
-Vanwege de configuratie die eerder is gemaakt onder **Identiteit** > **Instellingen voor eenmalige aanmelding**, moet u uw IdP voor vertificatieconfiguratie kunnen wijzigen. U kunt deze bijvoorbeeld wijzigen van AD FS in Azure AD.
+Vanwege de configuratie die eerder is gemaakt onder instellingen**voor een malige aanmelding met** **identiteit,** > moet u uw IdP kunnen wijzigen voor verificatieconfiguratie. U kunt deze bijvoorbeeld wijzigen van AD FS in Azure AD.
 
 ![Azure AD selecteren als verificatieservice](media/migrate-adfs-apps-to-azure/migrate10.png)
 

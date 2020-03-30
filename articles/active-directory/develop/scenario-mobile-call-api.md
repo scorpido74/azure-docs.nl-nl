@@ -1,7 +1,7 @@
 ---
 title: Een web-API aanroepen vanuit een mobiele app | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept. (Een web-API aanroepen.)
+description: Meer informatie over het bouwen van een mobiele app die web-API's aanroept. (Roep een web-API aan.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,36 +17,36 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: bd848fa6f74f049f97956ef1736ac2b08f3a6148
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160148"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Een web-API aanroepen vanuit een mobiele app
 
-Nadat uw app een gebruiker heeft ondertekend en tokens ontvangt, wordt er informatie weer gegeven over de gebruiker, de omgeving van de gebruiker en de uitgegeven tokens. Uw app kan deze waarden gebruiken om een web-API aan te roepen of een welkomst bericht voor de gebruiker weer te geven.
+Nadat uw app zich heeft aanmeldt bij een gebruiker en tokens heeft ontvangen, geeft Microsoft Authentication Library (MSAL) informatie over de gebruiker, de omgeving van de gebruiker en de uitgegeven tokens bloot. Uw app kan deze waarden gebruiken om een web-API aan te roepen of een welkomstbericht aan de gebruiker weer te geven.
 
-In dit artikel kijken we eerst naar het MSAL-resultaat. Vervolgens gaan we kijken hoe u een toegangs token van `AuthenticationResult` of `result` kunt gebruiken om een beveiligde web-API aan te roepen.
+In dit artikel zullen we eerst kijken naar het MSAL-resultaat. Vervolgens bekijken we hoe we een toegangstoken kunnen gebruiken van `AuthenticationResult` of `result` een beveiligde web-API kunnen aanroepen.
 
 ## <a name="msal-result"></a>MSAL resultaat
-MSAL biedt de volgende waarden: 
+MSAL geeft de volgende waarden: 
 
-- `AccessToken` beveiligde web-Api's aanroepen in een HTTP Bearer-aanvraag.
-- `IdToken` bevat nuttige informatie over de aangemelde gebruiker. Deze informatie omvat de naam van de gebruiker, de thuis Tenant en een unieke id voor opslag.
-- `ExpiresOn` is de verloop tijd van het token. MSAL verwerkt de automatische vernieuwing van een app.
-- `TenantId` is de id van de Tenant waarbij de gebruiker zich heeft aangemeld. Voor gast gebruikers in Azure Active Directory (Azure AD) B2B, wordt met deze waarde de Tenant geïdentificeerd waar de gebruiker zich heeft aangemeld. Met de waarde wordt niet de thuis Tenant van de gebruiker geïdentificeerd.  
-- `Scopes` geeft de bereiken aan die met uw token zijn verleend. De toegekende bereiken kunnen een subset zijn van de bereiken die u hebt aangevraagd.
+- `AccessToken`roept beschermde web-API's in een HTTP-verzoek om drager.
+- `IdToken`bevat nuttige informatie over de aangemelde gebruiker. Deze informatie omvat de naam van de gebruiker, de huistenant en een unieke id voor opslag.
+- `ExpiresOn`is de vervaldatum van het token. MSAL verwerkt de automatische vernieuwing van een app.
+- `TenantId`is de id van de tenant waar de gebruiker zich heeft aangemeld. Voor gastgebruikers in Azure Active Directory (Azure AD) B2B identificeert deze waarde de tenant waar de gebruiker zich heeft aangemeld. De waarde identificeert niet de huistenant van de gebruiker.  
+- `Scopes`geeft de scopes aan die met uw token zijn toegekend. De toegekende scopes kunnen een subset zijn van de scopes die u hebt aangevraagd.
 
-MSAL biedt ook een abstractie voor een `Account` waarde. Een `Account` waarde staat voor het aangemelde account van de huidige gebruiker:
+MSAL biedt ook een `Account` abstractie voor een waarde. Een `Account` waarde vertegenwoordigt het account van de huidige gebruiker:
 
-- `HomeAccountIdentifier` identificeert de thuis Tenant van de gebruiker.
-- `UserName` is de voorkeurs gebruikersnaam van de gebruiker. Deze waarde kan leeg zijn voor gebruikers van Azure AD B2C.
-- `AccountIdentifier` identificeert de aangemelde gebruiker. In de meeste gevallen is deze waarde hetzelfde als de `HomeAccountIdentifier` waarde, tenzij de gebruiker een gast is in een andere Tenant.
+- `HomeAccountIdentifier`identificeert de huistenant van de gebruiker.
+- `UserName`is de voorkeursgebruikersnaam van de gebruiker. Deze waarde kan leeg zijn voor Azure AD B2C-gebruikers.
+- `AccountIdentifier`identificeert de aangemelde gebruiker. In de meeste gevallen is deze `HomeAccountIdentifier` waarde hetzelfde als de waarde, tenzij de gebruiker een gast is in een andere tenant.
 
 ## <a name="call-an-api"></a>Een API aanroepen
 
-Nadat u het toegangs token hebt, kunt u een web-API aanroepen. In uw app wordt het token gebruikt voor het bouwen van een HTTP-aanvraag en het uitvoeren van de aanvraag.
+Nadat u het toegangstoken hebt, u een web-API aanroepen. Uw app gebruikt het token om een HTTP-aanvraag te maken en voert het verzoek uit.
 
 ### <a name="android"></a>Android
 
@@ -90,7 +90,7 @@ Nadat u het toegangs token hebt, kunt u een web-API aanroepen. In uw app wordt h
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens retour neren een `MSALResult`-object. `MSALResult` beschrijft een `accessToken` eigenschap. U kunt `accessToken` gebruiken om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
+De methoden om tokens `MSALResult` te verkrijgen geven een object terug. `MSALResult`onthult `accessToken` een eigenschap. U kunt `accessToken` een web-API aanroepen. Voeg deze eigenschap toe aan de HTTP-autorisatiekop voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -118,17 +118,17 @@ task.resume()
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-## <a name="make-several-api-requests"></a>Meerdere API-aanvragen doen
+## <a name="make-several-api-requests"></a>Meerdere API-aanvragen indienen
 
-Als u dezelfde API meerdere keren moet aanroepen, of als u meerdere Api's moet aanroepen, moet u rekening houden met de volgende onderwerpen wanneer u uw app bouwt:
+Als u meerdere keren dezelfde API moet aanroepen of als u meerdere API's moet aanroepen, moet u bij het bouwen van uw app rekening houden met de volgende onderwerpen:
 
-- **Incrementele toestemming**: met het micro soft Identity-platform kunnen Apps gebruikers toestemming krijgen wanneer er machtigingen zijn vereist in plaats van aan het begin. Telkens wanneer uw app klaar is om een API aan te roepen, moet deze alleen de bereiken aanvragen die het nodig heeft.
+- **Incrementele toestemming**: Met het Microsoft-identiteitsplatform kunnen apps toestemming van gebruikers krijgen wanneer machtigingen vereist zijn in plaats van allemaal aan het begin. Elke keer dat uw app klaar is om een API aan te roepen, moet deze alleen de scopes aanvragen die deze nodig heeft.
 
-- **Voorwaardelijke toegang**: wanneer u meerdere API-aanvragen maakt, moet u mogelijk voldoen aan aanvullende vereisten voor voorwaardelijke toegang. De vereisten kunnen op deze manier toenemen als de eerste aanvraag geen beleids regels voor voorwaardelijke toegang heeft en uw app probeert op de achtergrond toegang te krijgen tot een nieuwe API waarvoor voorwaardelijke toegang is vereist. Als u dit probleem wilt verhelpen, moet u ervoor zorgen dat u fouten opvangt van Silent-aanvragen en een interactieve aanvraag maakt.  Zie [richt lijnen voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md)voor meer informatie.
+- **Voorwaardelijke toegang:** Wanneer u meerdere API-aanvragen instelt, moet u in bepaalde scenario's mogelijk voldoen aan aanvullende vereisten voor voorwaardelijke toegang. Vereisten kunnen op deze manier toenemen als het eerste verzoek geen beleid voor voorwaardelijke toegang heeft en uw app probeert in stilte toegang te krijgen tot een nieuwe API die voorwaardelijke toegang vereist. Om dit probleem aan te pakken, moet u fouten van stille verzoeken opvangen en bereid zijn om een interactief verzoek in te dienen.  Zie [Richtlijnen voor voorwaardelijke toegang voor](../azuread-dev/conditional-access-dev-guide.md)meer informatie .
 
-## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen met behulp van incrementele toestemming en voorwaardelijke toegang
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Meerdere API's aanroepen met incrementele toestemming en voorwaardelijke toegang
 
-Als u meerdere Api's voor dezelfde gebruiker moet aanroepen, kunt u, nadat u een token voor de gebruiker hebt aangeschaft, voor komen dat de gebruiker herhaaldelijk om referenties wordt gevraagd door vervolgens `AcquireTokenSilent` aan te roepen om een token op te halen:
+Als u meerdere API's voor dezelfde gebruiker moet bellen, u, nadat u een token voor `AcquireTokenSilent` de gebruiker hebt aangeschaft, voorkomen dat u de gebruiker herhaaldelijk om referenties vraagt door vervolgens te bellen om een token te krijgen:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -140,8 +140,8 @@ result = await app.AcquireTokenSilent("scopeApi2")
 
 Interactie is vereist wanneer:
 
-- De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden gestemd op meer bereiken. In dit geval gebruikt u incrementele toestemming.
-- Voor de eerste API is geen meervoudige verificatie vereist, maar de volgende API doet dat wel.
+- De gebruiker heeft ingestemd met de eerste API, maar moet nu toestemming geven voor meer scopes. In dit geval gebruikt u incrementele toestemming.
+- De eerste API vereist geen meervoudige verificatie, maar de volgende API wel.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -163,4 +163,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-mobile-production.md)
+> [Verplaatsen naar productie](scenario-mobile-production.md)

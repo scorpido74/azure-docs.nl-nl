@@ -1,7 +1,7 @@
 ---
 title: 'Een virtueel netwerk maken: quickstart - Azure PowerShell'
 titlesuffix: Azure Virtual Network
-description: In deze snelstart leert u hoe u een virtueel netwerk maakt met het Azure Portal. Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren.
+description: In deze snelstart leert u hoe u een virtueel netwerk maakt met Azure Portal. Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241442"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Snelstart: een virtueel netwerk maken met PowerShell
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u PowerShell lokaal wilt installeren en gebruiken, is voor deze quickstart Azure PowerShell-module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor installatie- en upgrade-informatie.
+Als u PowerShell lokaal wilt installeren en gebruiken, is voor deze quickstart Azure PowerShell-module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor installatie- en upgrade-informatie.
 
 Tenslotte moet u, als u PowerShell lokaal uitvoert, ook `Connect-AzAccount` uitvoeren. Met deze opdracht wordt een verbinding met Azure gemaakt.
 
@@ -145,13 +145,13 @@ mstsc /v:<publicIpAddress>
 1. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
 
     > [!NOTE]
-    > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
+    > Mogelijk moet u **Meer opties** > selecteren**Gebruik een ander account**om de referenties op te geven die u hebt ingevoerd toen u de vm hebt gemaakt.
 
 1. Selecteer **OK**.
 
 1. Er kan een certificaatwaarschuwing worden weergegeven. Als dit het geval is, selecteert u **Ja** of **Doorgaan**.
 
-## <a name="communicate-between-vms"></a>Communiceren tussen VM's
+## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
 
 1. Open PowerShell in het externe bureaublad van *myVm1*.
 

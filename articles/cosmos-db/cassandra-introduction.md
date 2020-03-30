@@ -1,6 +1,6 @@
 ---
 title: Inleiding tot de Azure Cosmos DB Cassandra-API
-description: Meer informatie over hoe u Azure Cosmos DB kunt gebruiken om bestaande toepassingen te ' til en verschuiven ' en nieuwe toepassingen te bouwen met behulp van de Cassandra-Stuur Programma's en CQL
+description: Ontdek hoe u Azure Cosmos DB gebruiken om bestaande toepassingen te lift-and-shift en nieuwe toepassingen te bouwen met behulp van de Cassandra-stuurprogramma's en CQL
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
 ms.openlocfilehash: 075b55b5a798924b55ef9d901e4d2e9ecfc9dc1e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77597572"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Inleiding tot de Azure Cosmos DB Cassandra-API
 
-Azure Cosmos DB Cassandra-API kan worden gebruikt als gegevensopslag voor apps die zijn geschreven voor [Apache Cassandra](https://cassandra.apache.org). Dit betekent dat uw bestaande Cassandra-toepassing nu kan communiceren met de Azure Cosmos DB Cassandra-API, door gebruik te maken van bestaande [Apache-apparaatstuurprogramma’s](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met CQLv4. In veel gevallen kunt u overschakelen van het gebruik van Apache Cassandra naar het gebruik van Azure Cosmos DB Cassandra-API door alleen een connection string te wijzigen. 
+Azure Cosmos DB Cassandra-API kan worden gebruikt als gegevensopslag voor apps die zijn geschreven voor [Apache Cassandra](https://cassandra.apache.org). Dit betekent dat uw bestaande Cassandra-toepassing nu kan communiceren met de Azure Cosmos DB Cassandra-API, door gebruik te maken van bestaande [Apache-apparaatstuurprogramma’s](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met CQLv4. In veel gevallen u overschakelen van apache cassandra naar het gebruik van de Cassandra API van Azure Cosmos DB, door gewoon een verbindingstekenreeks te wijzigen. 
 
 De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen in Azure Cosmos DB. Dit doet u via de Cassandra-querytaal (CQL), hulpprogramma’s op basis van de Cassandra-querytaal (bijvoorbeeld cqlsh) en Cassandra-clientstuurprogramma’s waarmee u al vertrouwd bent.
 
@@ -42,9 +42,9 @@ De Cassandra-API stelt u in staat om gegevens te gebruiken die zijn opgeslagen i
 * U kunt snel aan de slag met het bouwen van de volgende taalspecifieke toepassingen om Cassandra-API-gegevens te maken en beheren:
   - [Node.js-app](create-cassandra-nodejs.md)
   - [.NET app](create-cassandra-dotnet.md)
-  - [Python app](create-cassandra-python.md)
+  - [Python-app](create-cassandra-python.md)
 
-* Ga aan de slag met het [maken van een Cassandra-API-account, -database en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
+* Ga aan de slag met [het maken van een Cassandra API-account, database en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
 
 * [Laad voorbeeldgegevens in de Cassandra-API-tabel](cassandra-api-load-data.md) met behulp van een Java-toepassing.
 

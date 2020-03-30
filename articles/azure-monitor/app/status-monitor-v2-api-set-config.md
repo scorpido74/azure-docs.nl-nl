@@ -1,47 +1,47 @@
 ---
-title: API-naslag informatie over Azure-toepassing Insights-agent
-description: Application Insights agent API-verwijzing. Set-ApplicationInsightsMonitoringConfig. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Api-verwijzing naar Azure Application Insights Agent-api
+description: Api-referentie van Application Insights Agent. Set-ApplicationInsightsMonitoringConfig. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671236"
 ---
-# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights agent-API: set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights Agent API: Set-ApplicationInsightsMonitoringConfig
 
-In dit document wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+In dit document wordt een cmdlet beschreven die lid is van de [Az.ApplicationMonitor PowerShell-module.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)
 
 ## <a name="description"></a>Beschrijving
 
-Hiermee stelt u het configuratie bestand in zonder volledige herinstallatie.
-Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
+Hiermee stelt u het config-bestand in zonder een volledige herinstallatie te doen.
+Start IIS opnieuw op om uw wijzigingen van kracht te laten worden.
 
 > [!IMPORTANT] 
-> Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen vereist.
+> Deze cmdlet vereist een PowerShell-sessie met beheerdersmachtigingen.
 
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="example-with-a-single-instrumentation-key"></a>Voor beeld met één instrumentatie sleutel
-In dit voor beeld wordt aan alle apps op de huidige computer één instrumentatie sleutel toegewezen.
+### <a name="example-with-a-single-instrumentation-key"></a>Voorbeeld met één instrumentatietoets
+In dit voorbeeld krijgen alle apps op de huidige computer één instrumentatiesleutel toegewezen.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
+### <a name="example-with-an-instrumentation-key-map"></a>Voorbeeld met een instrumentatiesleutelkaart
 In dit voorbeeld:
-- `MachineFilter` komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
-- `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
-- `AppFilter='WebAppTwo'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
-- Ten slotte gebruikt `AppFilter` ook het Joker teken `'.*'` om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
-- Spaties worden toegevoegd voor de Lees baarheid.
+- `MachineFilter`komt overeen met `'.*'` de huidige computer met behulp van de wildcard.
+- `AppFilter='WebAppExclude'`biedt `null` een instrumentatiesleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
+- `AppFilter='WebAppTwo'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
+- Tot `AppFilter` slot gebruikt `'.*'` u de wildcard ook om alle web-apps aan te passen die niet overeenkomen met de eerdere regels en een standaardinstrumentatiesleutel toe te wijzen.
+- Spaties worden toegevoegd voor leesbaarheid.
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -53,38 +53,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ## <a name="parameters"></a>Parameters
 
-### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Vereist.** Gebruik deze para meter om één instrumentatie sleutel op te geven voor gebruik door alle apps op de doel computer.
+### <a name="-instrumentationkey"></a>-Instrumentatiesleutel
+**Vereist.** Gebruik deze parameter om één instrumentatiesleutel te leveren voor gebruik door alle apps op de doelcomputer.
 
-### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door `MachineFilter`in te stellen.
+### <a name="-instrumentationkeymap"></a>-InstrumentatieKeyMap
+**Vereist.** Gebruik deze parameter om meerdere instrumentatietoetsen en een toewijzing van de instrumentatietoetsen die door elke app worden gebruikt, te leveren.
+U één installatiescript voor meerdere `MachineFilter`computers maken door.
 
 > [!IMPORTANT]
-> Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
+> Apps komen overeen met de regels in de volgorde waarin de regels worden verstrekt. U moet dus eerst de meest specifieke regels opgeven en de meest algemene regels duren.
 
 #### <a name="schema"></a>Schema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter** is een vereiste C# regex van de naam van de computer of virtuele machine.
-    - '. * ' komt overeen met alles
-    - ComputerName komt alleen overeen met computers met de opgegeven naam.
-- **AppFilter** is een vereiste C# regex van de naam van de computer of virtuele machine.
-    - '. * ' komt overeen met alles
-    - ApplicationName komt alleen overeen met IIS-apps met de opgegeven naam.
-- **InstrumentationKey** is vereist om de bewaking van de apps in te scha kelen die overeenkomen met de voor gaande twee filters.
-    - Laat deze waarde leeg als u regels wilt definiëren om bewaking uit te sluiten.
+- **MachineFilter** is een vereiste C# regex van de computer of VM-naam.
+    - '.*' komt overeen met alle
+    - 'ComputerName' komt alleen overeen met computers met de opgegeven naam.
+- **AppFilter** is een vereiste C# regex van de computer of VM-naam.
+    - '.*' komt overeen met alle
+    - 'ApplicationName' komt alleen overeen met IIS-apps met de opgegeven naam.
+- **InstrumentationKey** is vereist om de bewaking van de apps die overeenkomen met de voorgaande twee filters mogelijk te maken.
+    - Laat deze waarde nietig als u regels wilt definiëren om controle uit te sluiten.
 
 
 ### <a name="-verbose"></a>-Verbose
-**Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
+**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken weer te geven.
 
 
 ## <a name="output"></a>Uitvoer
 
 Standaard geen uitvoer.
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Voor beeld van uitgebreide uitvoer van het instellen van het configuratie bestand via-InstrumentationKey
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Voorbeeld van verbose-uitvoer van het instellen van het config-bestand via -InstrumentationKey
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -96,7 +96,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Voor beeld van uitgebreide uitvoer van het instellen van het configuratie bestand via-InstrumentationKeyMap
+#### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Voorbeeld van verbose-uitvoer van het instellen van het config-bestand via -InstrumentationKeyMap
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -113,17 +113,17 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ## <a name="next-steps"></a>Volgende stappen
 
   Uw telemetrie weergeven:
- - [Bekijk metrische gegevens](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te bewaken.
-- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
-- [Gebruik analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
-- [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
+ - [Bekijk statistieken](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te controleren.
+- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen te diagnosticeren.
+- [Gebruik Analytics](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
+- [Dashboards maken](../../azure-monitor/app/overview-dashboard.md).
  
  Meer telemetrie toevoegen:
  - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
-- [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+- [Voeg telemetrie van webclient toe](../../azure-monitor/app/javascript.md) om uitzonderingen van webpaginacode te bekijken en tracecalls in te schakelen.
+- [Voeg de Application Insights SDK toe aan uw code,](../../azure-monitor/app/asp-net.md) zodat u trace- en logcalls invoegen
  
- Meer doen met Application Insights agent:
- - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
- - Stel [de configuratie](status-monitor-v2-api-get-config.md) in om te bevestigen dat de instellingen correct zijn geregistreerd.
- - [De status ophalen om de](status-monitor-v2-api-get-status.md) bewaking te controleren.
+ Doe meer met Application Insights Agent:
+ - Gebruik onze gids om application insights agent op te [lossen.](status-monitor-v2-troubleshoot.md)
+ - [Laat de config](status-monitor-v2-api-get-config.md) bevestigen dat uw instellingen correct zijn geregistreerd.
+ - [Zorg dat de status de](status-monitor-v2-api-get-status.md) controle inspecteert.

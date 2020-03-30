@@ -1,42 +1,42 @@
 ---
-title: Migreren van Couch Base naar Azure Cosmos DB SQL-API
-description: Stapsgewijze richt lijnen voor het migreren van Couch Base naar Azure Cosmos DB SQL-API
+title: Migreren van CouchBase naar Azure Cosmos DB SQL API
+description: Stapsgewijze richtlijnen voor het migreren van CouchBase naar Azure Cosmos DB SQL API
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210942"
 ---
-# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
+# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van CouchBase naar Azure Cosmos DB SQL API
 
-Azure Cosmos DB is een schaal bare, wereld wijd gedistribueerde, volledig beheerde data base. Het biedt gegarandeerde lage latentie toegang tot uw gegevens. Zie het artikel [overzicht](introduction.md) voor meer informatie over Azure Cosmos db. Dit artikel bevat instructies voor het migreren van Java-toepassingen die zijn verbonden met Couch Base naar een SQL-API-account in Azure Cosmos DB.
+Azure Cosmos DB is een schaalbare, wereldwijd gedistribueerde, volledig beheerde database. Het biedt gegarandeerde lage latentie toegang tot uw gegevens. Zie het [overzichtsartikel](introduction.md) voor meer informatie over Azure Cosmos DB. In dit artikel vindt u instructies voor het migreren van Java-toepassingen die zijn verbonden met Couchbase naar een SQL API-account in Azure Cosmos DB.
 
-## <a name="differences-in-nomenclature"></a>Verschillen in de nomenclatuur
+## <a name="differences-in-nomenclature"></a>Verschillen in nomenclatuur
 
-Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken in vergelijking tot Couch Base:
+Hieronder volgen de belangrijkste functies die anders werken in Azure Cosmos DB in vergelijking met Couchbase:
 
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
-|Couch Base-Server| Account       |
-|Verzamelingen           | Database      |
-|Verzamelingen           | Container/verzameling |
-|JSON-document    | Item/document |
+|Couchbase-server| Account       |
+|Emmer           | Database      |
+|Emmer           | Container/Verzameling |
+|JSON-document    | Item / Document |
 
 ## <a name="key-differences"></a>Belangrijke verschillen
 
-* Azure Cosmos DB heeft een ID-veld in het document, terwijl Couch base de ID als onderdeel van Bucket heeft. Het veld ID is uniek voor de partitie.
+* Azure Cosmos DB heeft een veld 'ID' in het document, terwijl Couchbase de ID als onderdeel van de bucket heeft. Het veld 'ID' is uniek in de partitie.
 
-* Azure Cosmos DB wordt geschaald met behulp van de methode partitioneren of sharding. Dit betekent dat de gegevens worden gesplitst in meerdere Shards/partities. Deze partities/Shards worden gemaakt op basis van de partitie sleutel eigenschap die u opgeeft. U kunt de partitie sleutel selecteren om Lees-en schrijf bewerkingen te optimaliseren of te lezen/schrijven. Zie het artikel [partitioning](./partition-data.md) voor meer informatie.
+* Azure Cosmos DB schaalt met behulp van de partitionering- of shardingtechniek. Dat betekent dat het de gegevens splitst in meerdere scherven / partities. Deze partities/shards worden gemaakt op basis van de eigenschap partitiesleutel die u opgeeft. U de partitiesleutel selecteren om leesbewerkingen te optimaliseren en ook lees-/schrijfbewerkingen te optimaliseren. Zie het artikel [partitionering](./partition-data.md) voor meer informatie.
 
-* In Azure Cosmos DB is het niet vereist voor de hiërarchie op het hoogste niveau om de verzameling aan te duiden, omdat de naam van de verzameling al bestaat. Deze functie maakt de JSON-structuur veel eenvoudiger. Hier volgt een voor beeld waarin de verschillen in het gegevens model tussen Couch base en Azure Cosmos DB worden weer gegeven:
+* In Azure Cosmos DB is het niet vereist dat de hiërarchie op het hoogste niveau de verzameling aangeeft omdat de verzamelingsnaam al bestaat. Deze functie maakt de JSON-structuur veel eenvoudiger. Het volgende is een voorbeeld dat verschillen in het gegevensmodel tussen Couchbase en Azure Cosmos DB weergeeft:
 
-   **Couch base**: document-id = "99FF4444"
+   **Couchbase**: Document ID = "99FF4444"
 
     ```json
     {
@@ -66,7 +66,7 @@ Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken 
     }
    ```
 
-   **Azure Cosmos DB**: verwijst naar id in het document, zoals hieronder wordt weer gegeven
+   **Azure Cosmos DB**: Verwijs "ID" in het document zoals hieronder weergegeven
 
     ```json
     {
@@ -98,18 +98,18 @@ Hieronder ziet u de belangrijkste functies die in Azure Cosmos DB anders werken 
          
 ## <a name="java-sdk-support"></a>Ondersteuning voor Java SDK
 
-Azure Cosmos DB heeft Sdk's voor het ondersteunen van verschillende Java-frameworks:
+Azure Cosmos DB heeft volgende SDK's om verschillende Java-frameworks te ondersteunen:
 
-* Async-SDK
-* Spring boot SDK
+* Async SDK
+* Spring Boot SDK
 
-In de volgende secties wordt beschreven wanneer u elk van deze Sdk's gebruikt. Bekijk een voor beeld waarin we drie soorten workloads hebben:
+In de volgende secties wordt beschreven wanneer elk van deze SDK's moet worden gebruikt. Neem een voorbeeld waarbij we drie soorten workloads hebben:
 
-## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Couch Base als document opslagplaats & lente op gegevens gebaseerde aangepaste query's
+## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Couchbase als documentrepository & aangepaste query's op basis van voorjaarsgegevens
 
-Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde SDK, kunt u de volgende stappen uitvoeren:
+Als de werkbelasting die u migreert is gebaseerd op Spring Boot Based SDK, u de volgende stappen gebruiken:
 
-1. Voeg Parent toe aan het bestand POM. XML:
+1. Bovenliggende gegevens toevoegen aan het POM.xml-bestand:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde S
    </parent>
    ```
 
-1. Voeg eigenschappen toe aan het bestand POM. XML:
+1. Eigenschappen toevoegen aan het POM.xml-bestand:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Afhankelijkheden toevoegen aan het bestand POM. XML:
+1. Voeg afhankelijkheden toe aan het POM.xml-bestand:
 
    ```java
    <dependency>
@@ -136,7 +136,7 @@ Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde S
    </dependency>
    ```
 
-1. Voeg toepassings eigenschappen onder resources toe en geef het volgende op. Zorg ervoor dat u de para meters URL, sleutel en database naam vervangt:
+1. Voeg toepassingseigenschappen toe onder resources en geef het volgende op. Zorg ervoor dat u de parameters URL, sleutel en databasenaam vervangt:
 
    ```java
       azure.cosmosdb.uri=<your-cosmosDB-URL>
@@ -144,7 +144,7 @@ Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde S
       azure.cosmosdb.database=<your-cosmosDB-dbName>
    ```
 
-1. Definieer de naam van de verzameling in het model. U kunt ook aanvullende aantekeningen opgeven. Bijvoorbeeld ID, partitie sleutel om ze expliciet aan te duiden:
+1. Definieer de naam van de verzameling in het model. U ook verdere annotaties opgeven. Id, partitiesleutel om ze expliciet aan te duiden:
 
    ```java
    @Document(collection = "mycollection")
@@ -157,50 +157,50 @@ Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde S
        }
    ```
 
-Hier volgen de code fragmenten voor ruwe bewerkingen:
+Hieronder volgen de codefragmenten voor CRUD-bewerkingen:
 
-### <a name="insert-and-update-operations"></a>INSERT-en update-bewerkingen
+### <a name="insert-and-update-operations"></a>Bewerkingen invoegen en bijwerken
 
-Waarbij *_repo* het object van de opslag plaats en *doc* het object van de klasse POJO is. U kunt `.save` gebruiken om in te voegen of te upsert (als het document met de opgegeven ID is gevonden). Het volgende code fragment laat zien hoe u een doc-object invoegt of bijwerkt:
+Waar *_repo* het voorwerp van repository en *doc* is, is het object van de POJO-klasse. U kunt `.save` gebruiken om in te voegen of upsert (als document met opgegeven ID gevonden). In het volgende codefragment ziet u hoe u een documentobject invoegt of bijwerkt:
 
 ```_repo.save(doc);```
 
-### <a name="delete-operation"></a>Verwijder bewerking
+### <a name="delete-operation"></a>Bewerking verwijderen
 
-Bekijk het volgende code fragment, waarbij document object ID en partitie sleutel verplicht zijn om het object te zoeken en te verwijderen:
+Overweeg het volgende codefragment, waarbij het documentobject id- en partitiesleutel verplicht heeft om het object te lokaliseren en te verwijderen:
 
 ```_repo.delete(doc);```
 
-### <a name="read-operation"></a>Lees bewerking
+### <a name="read-operation"></a>Bewerking lezen
 
-U kunt het document lezen met of zonder de partitie sleutel op te geven. Als u de partitie sleutel niet opgeeft, wordt deze behandeld als een kruis partitie query. Houd rekening met de volgende code voorbeelden, waarbij eerst de bewerking wordt uitgevoerd met de ID en het partitie sleutel veld. In het tweede voor beeld wordt een standaard veld & gebruikt zonder het partitie sleutel veld op te geven.
+U het document lezen met of zonder de partitiesleutel op te geven. Als u de partitiesleutel niet opgeeft, wordt deze behandeld als een kruispartitiequery. Houd rekening met de volgende codevoorbeelden, de eerste wordt uitgevoerd met id- en partitiesleutelveld. In het tweede voorbeeld wordt een normaal veld & zonder het veld partitiesleutel op te geven.
 
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Dat is alles. u kunt uw toepassing nu gebruiken met Azure Cosmos DB. Het volledige code voorbeeld voor het voor beeld dat in dit document wordt beschreven, is beschikbaar in de [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) github opslag plaats.
+Dat is het, u nu gebruik maken van uw toepassing met Azure Cosmos DB. Het volledige codevoorbeeld voor het voorbeeld dat in dit document wordt beschreven, is beschikbaar in de [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub repo.
 
-## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couch Base als document opslagplaats & het gebruik van N1QL-query's
+## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase als documentrepository & n1QL-query's gebruikt
 
-N1QL query's zijn de manier om query's te definiëren in de Couch base.
+N1QL-query's is de manier om query's in couchbase te definiëren.
 
 |N1QL-query | Azure CosmosDB-query|
 |-------------------|-------------------|
-|Selecteer META (`TravelDocument`). id als id, `TravelDocument`. * van `TravelDocument` waarbij `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" en "India" en een m in visa voldoen aan m. type = = ' multi-entry ' en m. land IN [' India ', Bhutan '] sorteren op ` Validity` DESC limiet 25 OFFSET 0   | Selecteer c. id, c van c koppelen m in c. Country = ' India ' WHERE c. _type = ' com. xx. xx. xx. xxx. xxx. xxxx ' en c. Country = ' India ' en m. type = ' multi-entry ' en m. country IN (' India ', ' Bhutan ') ORDER BY c. geldigheid DESC OFFSET 0 LIMIT 25 |
+|SELECT`TravelDocument`META( ).id `TravelDocument`AS id, .* FROM `TravelDocument` WHERE `_type` = "com.xx.xx.xxx.xxx.xxxx " and country = 'India' and ANY m in Visas SATISFIES m.type == ` Validity` 'Multi-Entry' and m.Country IN ['India', Bhutan'] ORDER BY DESC LIMIT 25 OFFSET 0   | SELECT c.id,c FROM c JOIN m in c.country='India' WHERE c._type = " com.xx.xx.xxx.xxx.xxxx" and c.country = 'India' and m.type = 'Multi-Entry' and m.Country IN ('India', 'Bhutan') ORDER BY c.Validity DESC OFFSET 0 LIMIT 25 |
 
-U kunt de volgende wijzigingen in uw N1QL-query's waarnemen:
+U de volgende wijzigingen in uw N1QL-query's opmerken:
 
-* U hoeft het sleutel woord META niet te gebruiken of naar het document van het eerste niveau te verwijzen. In plaats daarvan kunt u een eigen verwijzing naar de container maken. In dit voor beeld hebben we het gezien als ' c ' (dit kan alles zijn). Deze verwijzing wordt gebruikt als een voor voegsel voor alle velden van het eerste niveau. FR-voor beeld, c.id, c. land enz.
+* U hoeft het META-trefwoord niet te gebruiken of te verwijzen naar het document op het eerste niveau. In plaats daarvan u uw eigen verwijzing naar de container maken. In dit voorbeeld hebben we het beschouwd als "c" (het kan van alles zijn). Deze verwijzing wordt gebruikt als voorvoegsel voor alle velden op het eerste niveau. Fr voorbeeld, c.id, c.country etc.
 
-* U kunt in plaats van ' ANY ' nu een koppeling uitvoeren op een subdocument en ernaar verwijzen met een toegewezen alias zoals ' m '. Zodra u een alias voor een subdocument hebt gemaakt, moet u alias gebruiken. Bijvoorbeeld m. land.
+* In plaats van ANY u nu een join op subdocument doen en verwijzen met een speciale alias zoals m. Nadat u alias voor een subdocument hebt gemaakt, moet u alias gebruiken. Bijvoorbeeld, m.Country.
 
-* De volg orde van de verschuiving wijkt af van Azure Cosmos DB query. u moet eerst een OFFSET opgeven. U wordt aangeraden geen lente data SDK te gebruiken als u Maxi maal aangepaste, gedefinieerde query's gebruikt, omdat deze onnodig overhead aan de client zijde kan hebben terwijl de query wordt door gegeven aan Azure Cosmos DB. We hebben in plaats daarvan een directe async Java-SDK, die in dit geval veel efficiënt kan worden gebruikt.
+* De volgorde van OFFSET is anders in Azure Cosmos DB-query, eerst moet u OFFSET opgeven en vervolgens LIMIT. Het wordt aanbevolen om Spring Data SDK niet te gebruiken als u maximaal aangepaste gedefinieerde query's gebruikt, omdat deze onnodige overhead aan de clientzijde kan hebben terwijl u de query doorgeeft aan Azure Cosmos DB. In plaats daarvan hebben we een directe Async Java SDK, die in dit geval veel efficiënt kan worden gebruikt.
 
-### <a name="read-operation"></a>Lees bewerking
+### <a name="read-operation"></a>Leesbewerking
 
-Gebruik de asynchrone Java-SDK met de volgende stappen:
+Gebruik de Async Java SDK met de volgende stappen:
 
-1. Configureer de volgende afhankelijkheid op het bestand POM. XML:
+1. Configureer de volgende afhankelijkheid naar het POM.xml-bestand:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->
@@ -211,7 +211,7 @@ Gebruik de asynchrone Java-SDK met de volgende stappen:
    </dependency>
    ```
 
-1. Maak een verbindings object voor Azure Cosmos DB met behulp van de methode `ConnectionBuilder`, zoals wordt weer gegeven in het volgende voor beeld. Zorg ervoor dat u deze declaratie in de bonen plaatst, zodat de volgende code slechts één keer wordt uitgevoerd:
+1. Maak een verbindingsobject voor Azure `ConnectionBuilder` Cosmos DB met behulp van de methode zoals weergegeven in het volgende voorbeeld. Zorg ervoor dat u deze verklaring in de boon zodanig dat de volgende code moet slechts eenmaal uitgevoerd:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -228,13 +228,13 @@ Gebruik de asynchrone Java-SDK met de volgende stappen:
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-1. Als u de query wilt uitvoeren, moet u het volgende code fragment uitvoeren:
+1. Als u de query wilt uitvoeren, moet u het volgende codefragment uitvoeren:
 
    ```java
    Flux<FeedResponse<CosmosItemProperties>> objFlux= container.queryItems(query, fo);
    ```
 
-Nu kunt u met de bovenstaande methode meerdere query's door geven en zonder enige moeite worden uitgevoerd. Als u de vereiste hebt om één grote query uit te voeren, die kan worden opgesplitst in meerdere query's, kunt u het volgende code fragment proberen in plaats van het vorige:
+Nu, met behulp van bovenstaande methode u meerdere query's doorgeven en uitvoeren zonder gedoe. Als u de vereiste hebt om één grote query uit te voeren, die kan worden opgesplitst in meerdere query's, probeert u vervolgens het volgende codefragment in plaats van het vorige:
 
 ```java
 for(SqlQuerySpec query:queries)
@@ -258,9 +258,9 @@ for(SqlQuerySpec query:queries)
 }
 ```
 
-Met de vorige code kunt u query's parallel uitvoeren en de gedistribueerde uitvoeringen verhogen om te optimaliseren. Verder kunt u de bewerkingen INSERT en update als volgt uitvoeren:
+Met de vorige code u query's parallel uitvoeren en de gedistribueerde uitvoeringen verhogen om te optimaliseren. Verder u de invoeg- en updatebewerkingen ook uitvoeren:
 
-### <a name="insert-operation"></a>Invoeg bewerking
+### <a name="insert-operation"></a>Invoegen, bewerking
 
 Voer de volgende code uit om het document in te voegen:
 
@@ -268,7 +268,7 @@ Voer de volgende code uit om het document in te voegen:
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Abonneer u vervolgens op mono als:
+Abonneer je dan op Mono als:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -284,33 +284,33 @@ objMono .subscribeOn(Schedulers.elastic())
 latch.await();              
 ```
 
-### <a name="upsert-operation"></a>Bewerking Upsert
+### <a name="upsert-operation"></a>Upsert-bewerking
 
-Voor de bewerking Upsert moet u het document opgeven dat moet worden bijgewerkt. Als u het volledige document wilt ophalen, kunt u het fragment dat wordt vermeld onder koptekst lezen gebruiken en vervolgens de vereiste velden wijzigen. Het volgende code fragment upsert het document:
+Voor de bewerking van Upsert moet u het document opgeven dat moet worden bijgewerkt. Als u het volledige document wilt ophalen, u het fragment gebruiken dat onder kopleesbewerking wordt vermeld en vervolgens het vereiste veld(en) wijzigen. Het volgende codefragment upserts het document:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Meld u vervolgens aan bij mono. Raadpleeg het fragment voor een mono-abonnement in de INSERT-bewerking.
+Abonneer je dan op mono. Raadpleeg het mono-abonnementsfragment in de invoegbewerking.
 
-### <a name="delete-operation"></a>Verwijder bewerking
+### <a name="delete-operation"></a>Bewerking verwijderen
 
-In het volgende fragment wordt de bewerking verwijderen uitgevoerd:
+Following snippet will do delete operation:
 
 ```java     
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Vervolgens abonneert u zich op mono, raadpleegt u het fragment met een mono-abonnement in een invoeg bewerking. Het volledige code voorbeeld is beschikbaar in de [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) github opslag plaats.
+Abonneer je vervolgens op mono, verwijs mono-abonnementsfragment in invoegbewerking. Het volledige codevoorbeeld is beschikbaar in de [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub repo.
 
-## <a name="couchbase-as-a-keyvalue-pair"></a>Couch Base als sleutel/waarde-paar
+## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase als sleutel/waardepaar
 
-Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in plaats van query's. Gebruik de volgende stappen voor sleutel/waarde-paren:
+Dit is een eenvoudig type werkbelasting waarbij u opzoekingen uitvoeren in plaats van query's. Gebruik de volgende stappen voor sleutel-/waardeparen:
 
-1. Overweeg '/ID ' als primaire sleutel. Dit zorgt ervoor dat u de opzoek bewerking rechtstreeks kunt uitvoeren in de specifieke partitie. Maak een verzameling en geef '/ID ' op als partitie sleutel.
+1. Overweeg om /ID als primaire sleutel te hebben, waardoor u de opzoekbewerking direct in de specifieke partitie uitvoeren. Maak een verzameling en geef "/ID" op als partitiesleutel.
 
-1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer**, selecteer uw **Data Base** en de **container**. Open het tabblad **schaal & instellingen** en selecteer het **indexerings beleid**. Momenteel ziet het indexerings beleid er als volgt uit:
+1. Schakel de indexering volledig uit. Omdat u opzoekbewerkingen uitvoert, heeft het geen zin om overhead te indexeren. Als u indexering wilt uitschakelen, meldt u zich aan bij Azure Portal, gaat u naar Azure Cosmos DB-account. Open de **Gegevensverkenner,** selecteer uw **database** en de **container**. Open het tabblad **Schalen & instellingen** en selecteer het **indexeringsbeleid**. Momenteel ziet indexeringsbeleid er als volgt uit:
     
    ```json
    {
@@ -348,7 +348,7 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
    }
    ````
 
-   Vervang het bovenstaande indexerings beleid door het volgende beleid:
+   Vervang het bovenstaande indexeringsbeleid door het volgende beleid:
 
    ```json
    {
@@ -356,7 +356,7 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
    }
    ```
 
-1. Gebruik het volgende code fragment om het verbindings object te maken. Verbindings object (om in @Bean te plaatsen of dit statisch te maken):
+1. Gebruik het volgende codefragment om het verbindingsobject te maken. Verbindingsobject (in plaatsen @Bean of statisch maken):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -373,11 +373,11 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-U kunt de ruwe bewerkingen nu als volgt uitvoeren:
+Nu u de CRUD-bewerkingen als volgt uitvoeren:
 
-### <a name="read-operation"></a>Lees bewerking
+### <a name="read-operation"></a>Leesbewerking
 
-Als u het item wilt lezen, gebruikt u het volgende code fragment:
+Als u het item wilt lezen, gebruikt u het volgende fragment:
 
 ```java        
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
@@ -398,15 +398,15 @@ objMono .subscribeOn(Schedulers.elastic())
 latch.await();
 ```
 
-### <a name="insert-operation"></a>Invoeg bewerking
+### <a name="insert-operation"></a>Invoegen, bewerking
 
-U kunt de volgende code uitvoeren om een item in te voegen:
+Als u een item wilt invoegen, u de volgende code uitvoeren:
 
 ```java 
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Abonneer u vervolgens op mono als:
+Abonneer je dan op mono als:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -422,36 +422,36 @@ objMono.subscribeOn(Schedulers.elastic())
 latch.await();
 ```
 
-### <a name="upsert-operation"></a>Bewerking Upsert
+### <a name="upsert-operation"></a>Upsert-bewerking
 
-Als u de waarde van een item wilt bijwerken, raadpleegt u het volgende code fragment:
+Als u de waarde van een item wilt bijwerken, raadpleegt u het onderstaande codefragment:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Vervolgens abonneert u zich op mono, raadpleegt u het fragment met een mono-abonnement in een invoeg bewerking.
+Abonneer je vervolgens op mono, verwijs mono-abonnementsfragment in invoegbewerking.
 
-### <a name="delete-operation"></a>Verwijder bewerking
+### <a name="delete-operation"></a>Bewerking verwijderen
 
-Gebruik het volgende code fragment om de Verwijder bewerking uit te voeren:
+Gebruik het volgende fragment om de verwijderbewerking uit te voeren:
 
 ```java     
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Vervolgens abonneert u zich op mono, raadpleegt u het fragment met een mono-abonnement in een invoeg bewerking. Het volledige code voorbeeld is beschikbaar in de [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) github opslag plaats.
+Abonneer je vervolgens op mono, verwijs mono-abonnementsfragment in invoegbewerking. Het volledige codevoorbeeld is beschikbaar in de [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub repo.
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
 Er zijn twee manieren om gegevens te migreren.
 
-* **Azure Data Factory gebruiken:** Dit is de aanbevolen methode voor het migreren van de gegevens. Zie het artikel over Azure [Cosmos DB Data Factory connector](../data-factory/connector-azure-cosmos-db.md) voor gedetailleerde stappen voor het configureren van de bron als Couch base en sink als Azure Cosmos DB SQL-API.
+* **Azure Data Factory gebruiken:** Dit is de meest aanbevolen methode om de gegevens te migreren. Configureer de bron als Couchbase en sink als Azure Cosmos DB SQL API, zie het azure [cosmos DB Data Factory-connectorartikel](../data-factory/connector-azure-cosmos-db.md) voor gedetailleerde stappen.
 
-* **Gebruik het Azure Cosmos DB hulp programma voor het importeren van gegevens:** Deze optie wordt aanbevolen om te migreren met behulp van Vm's met minder gegevens. Zie het artikel over het [importeren van gegevens](./import-data.md) uit voor gedetailleerde stappen.
+* Gebruik het hulpprogramma voor **het importeren van Azure Cosmos DB-gegevens:** Deze optie wordt aanbevolen om te migreren met VM's met minder hoeveelheid gegevens. Zie het artikel [Gegevensimporteur](./import-data.md) voor gedetailleerde stappen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [prestaties en schalen testen met Azure Cosmos DB](./performance-testing.md) artikel om prestatie tests uit te voeren.
-* Zie [Tips voor prestaties voor Azure Cosmos DB](./performance-tips-async-java.md) artikel voor meer informatie over het optimaliseren van de code.
-* Verken de Java async v3 SDK, [SDK Reference](https://github.com/Azure/azure-cosmosdb-java/tree/v3) github opslag plaats.
+* Zie [Prestatie- en schaaltests uitvoeren met het azure cosmos DB-artikel](./performance-testing.md) voor het uitvoeren van prestatietests.
+* Zie [Prestatietips voor het](./performance-tips-async-java.md) artikel Azure Cosmos DB om de code te optimaliseren.
+* Ontdek Java Async V3 SDK, [SDK referentie](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub repo.

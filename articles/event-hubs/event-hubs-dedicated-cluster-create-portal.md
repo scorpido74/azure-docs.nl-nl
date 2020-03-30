@@ -1,6 +1,6 @@
 ---
-title: Een Event Hubs toegewezen cluster maken met behulp van de Azure Portal
-description: In deze Quick Start leert u hoe u een Azure Event Hubs-cluster maakt met behulp van Azure Portal.
+title: Een speciaal cluster met gebeurtenishubs maken met de Azure-portal
+description: In deze quickstart leert u hoe u een Azure Event Hubs-cluster maakt met Azure-portal.
 services: event-hubs
 documentationcenter: ''
 author: femila
@@ -11,105 +11,105 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77157479"
 ---
-# <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Snelstartgids: een toegewezen Event Hubs-cluster maken met behulp van Azure Portal 
-Event Hubs-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Deze aanbieding heeft een gegarandeerde 99,99%-SLA en is alleen beschikbaar in onze speciale prijs categorie. Een [Event hubs cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in een cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. De speciale aanbieding bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)kunt vastleggen in batches.
+# <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Snelstart: een speciaal cluster van gebeurtenishubs maken met Azure-portal 
+Event Hubs-clusters bieden implementaties met één tenant voor klanten met de meest veeleisende streamingbehoeften. Dit aanbod heeft een gegarandeerde SLA van 99,99% en is alleen beschikbaar op onze dedicated prijscategorie. Een [cluster van Gebeurtenishubs](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde binnendringen met gegarandeerde capaciteit en subsecondelatentie. Naamruimten en gebeurtenishubs die binnen een cluster zijn gemaakt, bevatten alle functies van het standaardaanbod en meer, maar zonder invallen. Het speciale aanbod bevat ook de populaire functie voor [het vastleggen van gebeurtenishubs](event-hubs-capture-overview.md) zonder extra kosten, zodat u automatisch gegevensstromen batchen en logboeken naar [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of Azure Data Lake Storage [Gen 1](../data-lake-store/data-lake-store-overview.md).
 
-Toegewezen clusters worden ingericht en gefactureerd op basis van **capaciteits eenheden (CUs)** , een vooraf toegewezen hoeveelheid CPU-en geheugen bronnen. U kunt 1, 2, 4, 8, 12, 16 of 20 voor elk cluster aanschaffen. In deze Quick Start wordt u stapsgewijs begeleid bij het maken van een 1-CU Event Hubs cluster via de Azure Portal.
+Speciale clusters worden ingericht en gefactureerd door **Capaciteitseenheden (CPU's),** een vooraf toegewezen hoeveelheid CPU- en geheugenbronnen. U voor elk cluster 1, 2, 4, 8, 12, 16 of 20 CPU's kopen. In deze quickstart nemen we je mee door het maken van een cluster van 1 CU-gebeurtenishubs via de Azure-portal.
 
 > [!NOTE]
-> Dit is momenteel beschikbaar in de preview-versie van [Azure Portal](https://aka.ms/eventhubsclusterquickstart). Als u vragen hebt over de speciale aanbieding, neem dan contact op met het [Event hubs team](mailto:askeventhubs@microsoft.com).
+> Deze self-serve-ervaring is momenteel beschikbaar in preview op [Azure Portal.](https://aka.ms/eventhubsclusterquickstart) Als je vragen hebt over het dedicated-aanbod, neem dan contact op met het [Event Hubs-team.](mailto:askeventhubs@microsoft.com)
 
 
 ## <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een Azure-account. Als u nog geen account hebt, kunt u [het](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) pas doen voordat u begint. Deze functie wordt niet ondersteund met een gratis Azure-account. 
-- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 update 3 (versie 15,3, 26730,01) of hoger.
-- [.NET Standard SDK](https://dotnet.microsoft.com/download), versie 2.0 of later.
-- [Een resource groep gemaakt](../event-hubs/event-hubs-create.md#create-a-resource-group).
+- Een Azure-account. Als je er geen hebt, [koop je een account](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) voordat je begint. Deze functie wordt niet ondersteund met een gratis Azure-account. 
+- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 Update 3 (versie 15.3, 26730.01) of hoger.
+- [.NET Standard SDK](https://dotnet.microsoft.com/download), versie 2.0 of hoger.
+- [Een resourcegroep maken](../event-hubs/event-hubs-create.md#create-a-resource-group).
 
-## <a name="create-an-event-hubs-dedicated-cluster"></a>Een Event Hubs Dedicated-cluster maken
-Een Event Hubs cluster bevat een unieke bereik container waarin u een of meer naam ruimten kunt maken. In deze preview-fase van de portal zelf-ondergeschikte ervaring kunt u 1 CU-clusters maken in regio's selecteren. Als u een cluster hebt dat groter is dan 1 CU, kunt u een Azure-ondersteunings aanvraag indienen om uw cluster te schalen nadat het is gemaakt.
+## <a name="create-an-event-hubs-dedicated-cluster"></a>Een speciaal cluster voor gebeurtenishubs maken
+Een cluster van Gebeurtenishubs biedt een unieke scopingcontainer waarin u een of meer naamruimten maken. In deze previewfase van de zelfbedieningservaring van de portal u 1 CU-clusters maken in bepaalde regio's. Als u een cluster nodig hebt dat groter is dan 1 CU, u een Azure-ondersteuningsaanvraag indienen om uw cluster op te schalen na de creatie ervan.
 
-Voer de volgende stappen uit om een cluster in uw resource groep te maken met behulp van de Azure Portal:
+Voer de volgende stappen uit om een cluster in uw brongroep te maken met behulp van de Azure-portal:
 
-1. Volg [deze koppeling](https://aka.ms/eventhubsclusterquickstart) om een cluster op Azure portal te maken. Selecteer daarentegen **alle services** in het navigatie deel venster links en typ vervolgens ' event hubs clusters ' in de zoek balk en selecteer Event hubs clusters in de lijst met resultaten.
-2. Configureer op de pagina **cluster maken** het volgende:
-    1. Voer een **naam in voor het cluster**. Er wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
+1. Volg [deze koppeling](https://aka.ms/eventhubsclusterquickstart) om een cluster op Azure-portal te maken. Selecteer daarentegen **Alle services** in het linkernavigatiedeelvenster, typ vervolgens 'Clusterclusters van gebeurtenishubs' in de zoekbalk en selecteer 'Clusterclusters van gebeurtenishubs' in de lijst met resultaten.
+2. Configureer op de pagina **Cluster maken** het volgende:
+    1. Voer een **naam in voor het cluster**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
     2. Selecteer het **abonnement** waarin u het cluster wilt maken.
-    3. Selecteer de **resource groep** waarin u het cluster wilt maken.
-    4. Selecteer een **locatie** voor het cluster. Als uw voorkeurs regio grijs wordt weer gegeven, is er tijdelijk onvoldoende capaciteit en kunt u een [ondersteunings aanvraag](#submit-a-support-request) indienen bij het event hubs-team.
-    5. Selecteer de knop **volgende: Labels** onder aan de pagina. U moet een paar minuten wachten voordat het systeem de resources volledig heeft ingericht.
+    3. Selecteer de **resourcegroep** waarin u het cluster wilt maken.
+    4. Selecteer een **locatie** voor het cluster. Als uw voorkeursregio grijs is, is deze tijdelijk buiten capaciteit en u een [ondersteuningsverzoek](#submit-a-support-request) indienen bij het Team Gebeurtenishubs.
+    5. Selecteer de knop **Volgende: Tags** onder aan de pagina. U moet een paar minuten wachten voordat het systeem de resources volledig heeft ingericht.
 
-        ![Event Hubs-cluster maken-basis pagina](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
-3. Configureer de volgende instellingen op de pagina **Tags** :
-    1. Voer een **naam** en een **waarde** in voor het label dat u wilt toevoegen. Deze stap is **optioneel**.  
-    2. Selecteer de knop **beoordeling + maken** .
+        ![Cluster gebeurtenishubs maken - basispagina](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
+3. Configureer op de pagina **Labels** het volgende:
+    1. Voer een **naam** en een **waarde** in voor de tag die u wilt toevoegen. Deze stap is **optioneel**.  
+    2. Selecteer de knop **Controleren + Maken.**
 
-        ![Event Hubs cluster pagina maken-Tags pagina](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
-4. Controleer de details op de pagina **controleren en maken** en selecteer **maken**. 
+        ![Clusterpagina gebeurtenishubs maken - pagina Labels](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
+4. Bekijk op de pagina **Controleren + Maken** de details en selecteer **Maken**. 
 
-    ![Event Hubs cluster pagina maken-pagina controleren en maken](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
+    ![Clusterpagina gebeurtenishubs maken - Pagina Controleren + Maken](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
 
-## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>Een naam ruimte en Event Hub maken binnen een cluster
+## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>Een naamruimte- en gebeurtenishub maken binnen een cluster
 
-1. Als u een naam ruimte binnen een cluster wilt maken, selecteert u op de pagina **cluster Event hubs** voor uw cluster de optie **+ naam ruimte** in het bovenste menu.
+1. Als u een naamruimte in een cluster wilt maken, selecteert u op de clusterpagina **Van Gebeurtenishubs** voor uw cluster **+Naamruimte** in het bovenste menu.
 
-    ![Pagina Cluster beheer-knop naam ruimte toevoegen](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
-2. Voer op de pagina een naam ruimte maken de volgende stappen uit:
+    ![Pagina Clusterbeheer - knop naamruimte toevoegen](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
+2. Ga op de pagina Een naamruimte maken de volgende stappen uit:
     1. Voer een **naam in voor de naamruimte**.  Het systeem controleert of de naam beschikbaar is.
-    2. De naam ruimte neemt de volgende eigenschappen over:
+    2. De naamruimte neemt de volgende eigenschappen over:
         1. Abonnements-id
         2. Resourcegroep
         3. Locatie
         4. Clusternaam
-    3. Selecteer **maken** om de naam ruimte te maken. U kunt uw cluster nu beheren.  
+    3. Selecteer **Maken** om de naamruimte te maken. Nu u uw cluster beheren.  
 
-        ![Naam ruimte maken op de cluster pagina](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
-3. Zodra de naam ruimte is gemaakt, kunt u [een event hub maken](event-hubs-create.md#create-an-event-hub) zoals u deze normaal gesp roken maakt in een naam ruimte. 
+        ![Naamruimte maken op de clusterpagina](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
+3. Zodra uw naamruimte is gemaakt, u [een gebeurtenishub maken](event-hubs-create.md#create-an-event-hub) zoals u er normaal gesproken een zou maken binnen een naamruimte. 
 
 
-## <a name="submit-a-support-request"></a>Een ondersteuningsaanvraag indienen
+## <a name="submit-a-support-request"></a>Een ondersteuningsverzoek indienen
 
-Als u de grootte van het cluster na het maken wilt wijzigen of als uw voorkeurs regio niet beschikbaar is, kunt u een ondersteunings aanvraag indienen door de volgende stappen uit te voeren:
+Als u de grootte van uw cluster na het maken wilt wijzigen of als uw voorkeursregio niet beschikbaar is, dient u een ondersteuningsverzoek in door de volgende stappen te volgen:
 
-1. Selecteer in [Azure Portal](https://portal.azure.com) **Help + ondersteuning** in het menu links.
-2. Selecteer **+ nieuwe ondersteunings aanvraag** in het menu ondersteuning.
-3. Voer de volgende stappen uit op de pagina ondersteuning:
-    1. Selecteer in de vervolg keuzelijst voor **type probleem**de optie **technisch** .
+1. Selecteer **help + ondersteuning** in de [Azure-portal](https://portal.azure.com)in het linkermenu.
+2. Selecteer **+ Nieuw ondersteuningsverzoek** in het menu Ondersteuning.
+3. Volg op de ondersteuningspagina de volgende stappen:
+    1. Selecteer Bij **Issue Type**De optie **Techniek** in de vervolgkeuzelijst.
     2. Bij **Abonnement** selecteert u uw abonnement.
-    3. Selecteer voor **service** **de optie mijn Services**en selecteer vervolgens **Event hubs**.
-    4. Voor **resource**selecteert u uw cluster als dit al bestaat, anders selecteert u **algemene vraag/resource niet beschikbaar**.
-    5. Selecteer voor **probleem type** **quotum**.
-    6. Selecteer in de vervolg keuzelijst een van de volgende waarden voor het **subtype**van het probleem:
-        1. Selecteer **aanvraag voor toegewezen SKU** om aan te vragen dat de functie wordt ondersteund in uw regio.
-        2. Selecteer **aanvraag om het toegewezen cluster omhoog of omlaag** te schalen als u uw toegewezen cluster omhoog of omlaag wilt schalen. 
-    7. Beschrijf het probleem voor het **onderwerp**.
+    3. Selecteer Voor **Service** **Mijn services**en selecteer **vervolgens Gebeurtenishubs**.
+    4. Selecteer **voor Resource**uw cluster als het al bestaat, anders selecteert u Algemene **vraag/resource niet beschikbaar**.
+    5. Selecteer Quota voor **probleemtype** **.**
+    6. Selecteer **voor subtype Probleem**een van de volgende waarden in de vervolgkeuzelijst:
+        1. Selecteer **Verzoek om speciale SKU** om te vragen of de functie in uw regio moet worden ondersteund.
+        2. Selecteer **Verzoek om dedicated cluster op te schalen of op te schalen** als u uw specifieke cluster wilt opschalen of schalen. 
+    7. Voor **Onderwerp,** beschrijf het probleem.
 
-        ![Pagina ondersteunings ticket](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)
+        ![Pagina ondersteuningsticket](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)
 
- ## <a name="delete-a-dedicated-cluster"></a>Een toegewezen cluster verwijderen
+ ## <a name="delete-a-dedicated-cluster"></a>Een speciaal cluster verwijderen
  
-1. Als u het cluster wilt verwijderen, selecteert u **verwijderen** in het bovenste menu. Houd er rekening mee dat uw cluster na het maken wordt gefactureerd met een minimum van 4 uur gebruik. 
-2. Er wordt een bericht weer gegeven waarin wordt bevestigd dat u het cluster wilt verwijderen.
-3. Typ de **naam van het cluster** en selecteer **verwijderen** om het cluster te verwijderen.
+1. Als u het cluster wilt verwijderen, selecteert u **Verwijderen** in het bovenste menu. Houd er rekening mee dat uw cluster na het maken ten minste 4 uur wordt gefactureerd. 
+2. Er verschijnt een bericht waarin wordt bevestigd dat u het cluster wilt verwijderen.
+3. Typ de **naam van het cluster** en selecteer **Verwijderen** om het cluster te verwijderen.
 
-    ![Cluster pagina verwijderen](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
+    ![Clusterpagina verwijderen](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een Event Hubs-cluster gemaakt. Zie de volgende zelf studies voor stapsgewijze instructies voor het verzenden en ontvangen van gebeurtenissen van een Event Hub en het vastleggen van gebeurtenissen in een Azure-opslag of Azure Data Lake Store.
+In dit artikel hebt u een cluster van gebeurtenishubs gemaakt. Zie de volgende zelfstudies voor stapsgewijze instructies voor het verzenden en ontvangen van gebeurtenissen vanuit een gebeurtenishub en het vastleggen van gebeurtenissen naar een Azure-opslag of Azure Data Lake Store:
 
 - Gebeurtenissen verzenden en ontvangen 
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
-- [Azure Portal gebruiken om Event Hubs vastleggen in te scha kelen](event-hubs-capture-enable-through-portal.md)
-- [Azure Event Hubs gebruiken voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+    - [Javascript](get-started-java-send-v2.md)
+- [Azure-portal gebruiken om gebeurtenishubs vast te leggen](event-hubs-capture-enable-through-portal.md)
+- [Azure-gebeurtenishubs gebruiken voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

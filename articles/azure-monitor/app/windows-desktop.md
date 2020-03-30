@@ -4,10 +4,10 @@ description: Analyseer het gebruik en de prestaties van uw Windows-bureaublad-ap
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670828"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Gebruik en prestaties bewaken in Klassieke Windows-bureaublad-apps
@@ -28,9 +28,9 @@ Toepassingen die on-premises worden gehost, in Azure, en in andere clouds, kunne
    
     Als u ApplicationInsights.config gebruikt, moet u ervoor zorgen dat de bijbehorende eigenschappen in Solution Explorer zijn ingesteld op **Buildactie = Inhoud, Naar uitvoermap kopiëren = Kopiëren**.
 5. [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om telemetrie te verzenden.
-6. Voer uw app uit en Bekijk de telemetrie in de resource die u hebt gemaakt in de Azure Portal.
+6. Voer uw app uit en bekijk de telemetrie in de bron die u in de Azure-portal hebt gemaakt.
 
-## <a name="telemetry"></a>Voorbeeldcode
+## <a name="example-code"></a><a name="telemetry"></a>Voorbeeldcode
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>Opslag van computer naam overschrijven
+## <a name="override-storage-of-computer-name"></a>Opslag van computernaam overschrijven
 
-Standaard verzamelt deze SDK de computer naam van het systeem dat telemetrie verzendt en opslaat. Als u de verzameling wilt overschrijven, moet u een initialisatie functie voor telemetrie gebruiken:
+Standaard verzamelt en bewaart deze SDK de computernaam van het systeem dat telemetrie uitzendt. Als u de verzameling wilt overschrijven, moet u een telemetrieinitialisator gebruiken:
 
-**Schrijf aangepaste TelemetryInitializer zoals hieronder.**
+**Schrijf aangepaste TelemetrieInitializer zoals hieronder.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Exemplaar de initialisatie functie in het `Program.cs` `Main()` onderstaande methode de instrumentatie sleutel in te stellen:
+Instantiate de initialisator in de `Program.cs` `Main()` onderstaande methode het instellen van de instrumentatietoets:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

@@ -1,51 +1,51 @@
 ---
-title: Scenario's voor herstel na nood gevallen
-description: Meer informatie over wat u moet doen in het geval dat een Azure-service een onderbreking heeft op Azure virtual machines.
+title: Scenario's voor noodherstel
+description: Lees wat u moet doen in het geval dat een Azure-serviceonderbreking gevolgen heeft voor virtuele Azure-machines.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
 ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115623"
 ---
-# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Wat gebeurt er als de onderbreking van een Azure-service gevolgen heeft voor Azure Vm's
-Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
+# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Wat gebeurt er als een Azure-serviceonderbreking gevolgen heeft voor Azure VM's
+Bij Microsoft werken we er hard aan om ervoor te zorgen dat onze services altijd voor u beschikbaar zijn wanneer u ze nodig hebt. Krachten buiten onze controle beïnvloeden ons soms op manieren die ongeplande serviceonderbrekingen veroorzaken.
 
-Micro soft biedt een Service Level Agreement (SLA) voor zijn services als een toezeg ging voor de uptime en connectiviteit. De SLA voor afzonderlijke Azure-Services vindt u op [Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+Microsoft biedt een SLA (Service Level Agreement) voor zijn services als een verbintenis voor uptime en connectiviteit. De SLA voor afzonderlijke Azure-services is te vinden bij [Azure Service Level Agreements.](https://azure.microsoft.com/support/legal/sla/)
 
-Azure biedt al veel ingebouwde platform functies die ondersteuning bieden voor Maxi maal beschik bare toepassingen. Lees [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over deze services.
+Azure heeft al veel ingebouwde platformfuncties die zeer beschikbare toepassingen ondersteunen. Lees Voor meer informatie over deze services [Disaster recovery en hoge beschikbaarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-In dit artikel wordt een scenario voor herstel na nood gevallen beschreven, wanneer een hele regio een storing veroorzaakt door een grote natuur ramp of een uitgebreide service onderbreking. Dit zijn zeldzame gevallen, maar u moet er wel voor bereid zijn dat er een storing optreedt in een hele regio. Als een hele regio een onderbreking van de service ondervindt, zijn de lokaal redundante kopieën van uw gegevens tijdelijk niet beschikbaar. Als u geo-replicatie hebt ingeschakeld, worden er drie extra kopieën van uw Azure Storage-blobs en-tabellen in een andere regio opgeslagen. In het geval van een volledige regionale onderbreking of nood gevallen waarin de primaire regio niet kan worden hersteld, wijst Azure alle DNS-vermeldingen toe aan de regio met geo-replicatie.
+Dit artikel behandelt een echt scenario voor noodherstel, wanneer een hele regio een storing ondervindt als gevolg van een grote natuurramp of wijdverspreide onderbreking van de service. Dit zijn zeldzame gebeurtenissen, maar u moet zich voorbereiden op de mogelijkheid dat er een storing van een hele regio is. Als een hele regio een onderbreking van de service ondervindt, zijn de lokaal overbodige kopieën van uw gegevens tijdelijk niet beschikbaar. Als u georeplicatie hebt ingeschakeld, worden drie extra exemplaren van uw Azure Storage-blobs en -tabellen in een andere regio opgeslagen. In het geval van een volledige regionale storing of een ramp waarbij de primaire regio niet kan worden hersteld, brengt Azure alle DNS-vermeldingen opnieuw in het geo-gerepliceerde gebied.
 
-Om u te helpen deze zeldzame gevallen te verwerken, bieden we de volgende richt lijnen voor virtuele Azure-machines in het geval van een service onderbreking van de hele regio waar uw Azure virtual machine-toepassing wordt geïmplementeerd.
+Om u te helpen deze zeldzame gebeurtenissen te verwerken, bieden we de volgende richtlijnen voor virtuele Azure-machines in het geval van een serviceonderbreking van het hele gebied waar uw Azure-toepassing voor virtuele machines wordt geïmplementeerd.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Optie 1: een failover initiëren met behulp van Azure Site Recovery
-U kunt Azure Site Recovery voor uw virtuele machines configureren, zodat u uw toepassing met één klik in een paar minuten kunt herstellen. U kunt repliceren naar de Azure-regio van uw keuze en niet beperkt tot gekoppelde regio's. U kunt aan de slag door [uw virtuele machines te repliceren](https://aka.ms/a2a-getting-started). U kunt [een herstel plan maken](../site-recovery/site-recovery-create-recovery-plans.md) zodat u het hele failoverproces voor uw toepassing kunt automatiseren. U kunt [de failovers](../site-recovery/site-recovery-test-failover-to-azure.md) van tevoren testen zonder dat dit van invloed is op de productie toepassing of de continue replicatie. In het geval van een onderbreking van de primaire regio [initieert u zojuist een failover](../site-recovery/site-recovery-failover.md) en brengt u uw toepassing in de doel regio.
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Optie 1: Een failover starten met Azure Site Recovery
+U Azure Site Recovery configureren voor uw VM's, zodat u uw toepassing binnen enkele minuten met één klik herstellen. U repliceren naar Azure-gebied van uw keuze en niet beperkt tot gekoppelde regio's. U aan de slag door [uw virtuele machines te repliceren.](https://aka.ms/a2a-getting-started) U [een herstelplan maken,](../site-recovery/site-recovery-create-recovery-plans.md) zodat u het volledige failoverproces voor uw toepassing automatiseren. U [uw failovers](../site-recovery/site-recovery-test-failover-to-azure.md) vooraf testen zonder dat dit gevolgen heeft voor de productietoepassing of de doorlopende replicatie. In het geval van een primaire regioverstoring, start u gewoon een failover en brengt u uw toepassing in doelregio.In the s of a primary region disruption, you just [initiate a failover](../site-recovery/site-recovery-failover.md) and bring your application in target region.
 
 
-## <a name="option-2-wait-for-recovery"></a>Optie 2: wachten op herstel
-In dit geval is er geen actie voor uw onderdeel vereist. U weet dat we hard werken om de beschik baarheid van de service te herstellen. U kunt de huidige status van de service zien op het [Azure service Health-dash board](https://azure.microsoft.com/status/).
+## <a name="option-2-wait-for-recovery"></a>Optie 2: Wachten op herstel
+In dit geval is er geen actie van uw kant vereist. Weet dat we hard werken om de beschikbaarheid van de service te herstellen. U de huidige servicestatus bekijken op ons [Azure Service Health Dashboard.](https://azure.microsoft.com/status/)
 
-Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante opslag met lees toegang of geografisch redundante opslag hebt ingesteld voorafgaand aan de onderbreking. Als u geografisch redundante opslag of geografisch redundante opslag met lees toegang hebt ingesteld voor het opslag account waarin de virtuele harde schijven van uw virtuele machines zijn opgeslagen, kunt u de VHD met basis installatie kopie herstellen en proberen een nieuwe VM in te richten. Dit is geen voorkeurs optie omdat er geen garanties zijn voor het synchroniseren van gegevens. Daarom is deze optie niet gegarandeerd werk.
+Dit is de beste optie als u Azure Site Recovery, georedundante opslag voor lezen of georedundante opslag niet hebt ingesteld voordat de onderbreking wordt geopend. Als u georedundante opslag of georedundante opslag voor leestoegang hebt ingesteld voor het opslagaccount waar uw virtuele VM-harde schijven (VHD's) zijn opgeslagen, u kijken naar het herstellen van de basisafbeelding VHD en proberen er een nieuwe VM van in te richten. Dit heeft geen voorkeursoptie omdat er geen garanties zijn voor synchronisatie van gegevens. Deze optie is dan ook niet gegarandeerd om te werken.
 
 
 > [!NOTE]
-> Houd er rekening mee dat u geen controle hebt over dit proces. dit gebeurt alleen voor onderbrekingen van de hele regio. Daarom moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieen om het hoogste niveau van Beschik baarheid te krijgen. Zie de sectie over [gegevens strategieën voor herstel na nood gevallen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)voor meer informatie.
+> Houd er rekening mee dat u geen controle hebt over dit proces en dat dit alleen geldt voor onderbrekingen in de hele regio. Hierdoor moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieën om het hoogste niveau van beschikbaarheid te bereiken. Zie voor meer informatie het gedeelte [gegevensstrategieën voor herstel na noodgevallen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Het beveiligen van uw toepassingen die worden uitgevoerd op virtuele machines van Azure](https://aka.ms/a2a-getting-started) met Azure site Recovery starten
+- Uw [toepassingen die op virtuele Azure-machines worden uitgevoerd, beveiligen](https://aka.ms/a2a-getting-started) met Azure Site Recovery
 
-- Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
+- Zie [Disaster recovery en hoge beschikbaarheid voor Azure-toepassingen voor](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)meer informatie over het implementeren van een strategie voor noodherstel en hoge beschikbaarheid.
 
-- Zie [technische richt lijnen voor Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
+- Zie [technische richtlijnen](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)voor azure tolerantie om een gedetailleerd technisch inzicht in de mogelijkheden van een cloudplatform te ontwikkelen.
 
 
-- Neem contact op met de [klant ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als de instructies niet duidelijk zijn of als u wilt dat micro soft de bewerkingen namens u uitvoert.
+- Als de instructies niet duidelijk zijn of als u wilt dat Microsoft de bewerkingen namens u uitvoert, neemt u contact op met [de klantenservice.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

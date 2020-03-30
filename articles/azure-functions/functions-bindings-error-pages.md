@@ -1,43 +1,43 @@
 ---
-title: Richt lijnen voor het afhandelen van Azure Functions
-description: Meer informatie over het afhandelen van fouten in Azure Functions met koppelingen naar specifieke bindings fouten.
+title: Richtlijnen voor foutafhandeling azure-functies
+description: Leer fouten in Azure-functies verwerken met koppelingen naar specifieke bindingsfouten.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586186"
 ---
-# <a name="azure-functions-error-handling"></a>Fout afhandeling Azure Functions
+# <a name="azure-functions-error-handling"></a>Foutafhandeling azure-functies
 
-Het afhandelen van fouten in Azure Functions is belang rijk om te voor komen dat gegevens verloren gaan, gemiste gebeurtenissen en de status van uw toepassing te controleren.
+Het afhandelen van fouten in Azure-functies is belangrijk om verloren gegevens, gemiste gebeurtenissen te voorkomen en de status van uw toepassing te controleren.
 
-In dit artikel worden algemene strategieën beschreven voor het afhandelen van fouten, samen met koppelingen naar binding-specifieke fouten.
+In dit artikel worden algemene strategieën voor foutafhandeling beschreven, samen met koppelingen naar bindingsspecifieke fouten.
 
-## <a name="handling-errors"></a>Fouten afhandelen
+## <a name="handling-errors"></a>Afhandeling van fouten
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-## <a name="binding-error-codes"></a>Bindings fout codes
+## <a name="binding-error-codes"></a>Bindende foutcodes
 
-Wanneer u integreert met Azure-Services, kunnen fouten afkomstig zijn van de Api's van de onderliggende services. Informatie met betrekking tot binding-specifieke fouten is beschikbaar in de sectie **uitzonde ringen en retour codes** van de volgende artikelen:
+Bij de integratie met Azure-services kunnen fouten afkomstig zijn van de API's van de onderliggende services. Informatie met betrekking tot bindingsspecifieke fouten is beschikbaar in de sectie **Uitzonderingen en retourcodes** van de volgende artikelen:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
-+ [Blob Storage](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
++ [Blob-opslag](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
-+ [Event Hubs](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
++ [Gebeurtenishubs](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
 
 + [IoT-hubs](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
 
 + [Notification Hubs](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 
-+ [Queue Storage](functions-bindings-storage-queue-output.md#exceptions-and-return-codes)
++ [Wachtrijopslag](functions-bindings-storage-queue-output.md#exceptions-and-return-codes)
 
-+ [Service Bus](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
++ [Servicebus](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
-+ [Table Storage](functions-bindings-storage-table.md#exceptions-and-return-codes)
++ [Tabelopslag](functions-bindings-storage-table.md#exceptions-and-return-codes)

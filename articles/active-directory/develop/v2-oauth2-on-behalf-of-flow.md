@@ -1,6 +1,6 @@
 ---
-title: Micro soft Identity platform & OAuth 2.0 namens-of-flow | Azure
-description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om service te implementeren voor service verificatie met behulp van de OAuth 2.0 namens-of-stroom.
+title: Microsoft-identiteitsplatform & OAuth2.0-stroom namens de stroom | Azure
+description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruiken om serviceverificatie te implementeren met behulp van de oauth2.0-stroom namens de nl-nl-uitvoerstroom.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,67 +18,67 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159639"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft-identiteitsplatform en OAuth 2.0 On-Behalf-Of flow
 
 
-De OAuth 2,0-of-flow (OBO) wordt gebruikt als een toepassing een service/Web-API aanroept, die op zijn beurt een andere service/Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. Voor de middelste service om geverifieerde aanvragen voor de downstream-service te maken, moet het een toegangs token van het micro soft Identity-platform worden beveiligd namens de gebruiker.
+De OAuth 2.0 On-Behalf-Of flow (OBO) dient de use case waarbij een toepassing een service/web API aanroept, die op zijn beurt een andere service/web API moet aanroepen. Het idee is om de gedelegeerde gebruikersidentiteit en machtigingen te verspreiden via de aanvraagketen. Als de middle-tier-service geverifieerde aanvragen voor de downstreamservice wil indienen, moet deze namens de gebruiker een toegangstoken van het Microsoft-identiteitsplatform beveiligen.
 
-In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol in uw toepassing.  Als dat mogelijk is, kunt u het beste de ondersteunde micro soft-verificatie bibliotheken (MSAL) gebruiken in plaats van [tokens te verkrijgen en beveiligde web-api's](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)aan te roepen.  Bekijk ook de voor beeld- [apps die gebruikmaken van MSAL](sample-v2-code.md).
+In dit artikel wordt beschreven hoe u rechtstreeks programmeren tegen het protocol in uw toepassing.  Waar mogelijk raden we u aan de ondersteunde Microsoft Authentication Libraries (MSAL) te gebruiken om tokens te [verkrijgen en beveiligde web-API's te bellen.](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  Kijk ook eens naar de [voorbeeld-apps die MSAL gebruiken.](sample-v2-code.md)
 
 > [!NOTE]
 >
-> - Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle scenario's en functies. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken. 
-> - Vanaf mei 2018 kan sommige impliciete stroom die is afgeleid `id_token` niet worden gebruikt voor OBO-stroom. Apps met één pagina (SPAs) moeten een **toegangs** token door geven aan een vertrouwelijke client voor de middelste laag om in plaats daarvan OBO stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer informatie over welke clients OBO-aanroepen kunnen uitvoeren.
+> - Het eindpunt van het Microsoft-identiteitsplatform ondersteunt niet alle scenario's en functies. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md) 
+> - Vanaf mei 2018 `id_token` kan een impliciete stroom niet meer worden gebruikt voor OBO-stroom. Apps met één pagina (SB's) moeten een **toegangstoken** doorgeven aan een vertrouwelijke client op het middenniveau om obo-stromen uit te voeren. Zie [beperkingen](#client-limitations)voor meer informatie over welke clients OBO-gesprekken kunnen uitvoeren.
 
-## <a name="protocol-diagram"></a>Protocol diagram
+## <a name="protocol-diagram"></a>Protocoldiagram
 
-Stel dat de gebruiker is geverifieerd op een toepassing met behulp van de [OAuth 2,0-autorisatie code subsidie stroom](v2-oauth2-auth-code-flow.md) of een andere aanmeldings stroom. Op dit moment heeft de toepassing een toegangs token *voor API a* (token a) met de claims van de gebruiker en toestemming om toegang te krijgen tot de Web-API (API a) van de middelste laag. Nu moet API A een geverifieerde aanvraag indienen bij de downstream Web API (API B).
+Ga ervan uit dat de gebruiker is geverifieerd op een toepassing met behulp van de [OAuth 2.0-autorisatiecode-subsidiestroom](v2-oauth2-auth-code-flow.md) of een andere inlogstroom. Op dit moment heeft de toepassing een toegangstoken *voor API A* (token A) met de claims en toestemming van de gebruiker om toegang te krijgen tot de middle-tier web API (API A). API A moet nu een geverifieerd verzoek indienen bij de downstream web API (API B).
 
-De volgende stappen vormen de OBO-stroom en worden uitgelegd in de Help van het onderstaande diagram.
+De volgende stappen vormen de OBO-stroom en worden uitgelegd met behulp van het volgende diagram.
 
-![Hiermee worden de OAuth 2.0 namens-stroom weer gegeven](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Toont de OAuth2.0 On-Behalf-Of flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. De client toepassing maakt een aanvraag voor API A met token A (met een `aud` claim van API A).
-1. API A wordt geverifieerd bij het micro soft Identity platform token uitgifte-eind punt en vraagt een token aan voor toegang tot API B.
-1. Met het micro soft Identity platform uitgifte-eind punt worden de referenties van de API A gevalideerd samen met token A en wordt het toegangs token voor API B (token B) naar API A uitgegeven.
-1. Token B wordt ingesteld door API A in de autorisatie-header van de aanvraag voor API B.
-1. Gegevens van de beveiligde bron worden door API B naar API A en van daaruit naar de client geretourneerd.
+1. De clienttoepassing doet een verzoek om API `aud` A met token A (met een claim van API A).
+1. API A verifieert naar het eindpunt voor de uitgifte van tokenvan microsoft-identiteitsplatformen en vraagt om een token om toegang te krijgen tot API B.
+1. Het eindpunt voor de uitgifte van het Microsoft-identiteitsplatform-token valideert de referenties van API A samen met token A en geeft het toegangstoken voor API B (token B) uit aan API A.
+1. Token B wordt ingesteld door API A in de autorisatiekop van de aanvraag naar API B.
+1. Gegevens uit de beveiligde bron worden door API B naar API A en van daaruit naar de client teruggestuurd.
 
 > [!NOTE]
-> In dit scenario heeft de middelste laag service geen interactie van de gebruiker om de toestemming van de gebruiker voor toegang tot de downstream API te verkrijgen. Daarom wordt de optie voor het verlenen van toegang tot de downstream API vooraf weer gegeven als onderdeel van de stap voor toestemming tijdens de verificatie. Zie [toestemming geven voor de middelste toepassing](#gaining-consent-for-the-middle-tier-application)voor meer informatie over het instellen van dit voor uw app.
+> In dit scenario heeft de middle-tier service geen gebruikersinteractie om toestemming van de gebruiker te verkrijgen om toegang te krijgen tot de downstream API. Daarom wordt de optie om toegang te verlenen tot de downstream-API vooraf gepresenteerd als onderdeel van de toestemmingsstap tijdens de verificatie. Zie Toestemming krijgen voor de toepassing [op de middelste laag](#gaining-consent-for-the-middle-tier-application)voor meer informatie over het instellen van deze app voor uw app.
 
-## <a name="service-to-service-access-token-request"></a>Aanvraag voor service-naar-service-toegangs token
+## <a name="service-to-service-access-token-request"></a>Tokenaanvraag service-to-service-toegang
 
-Als u een toegangs token wilt aanvragen, maakt u een HTTP POST naar het Tenant-specifieke micro soft Identity platform token-eind punt met de volgende para meters.
+Als u een toegangstoken wilt aanvragen, maakt u een HTTP-BERICHT naar het tokeneindpunt voor het tenant-specifieke Microsoft-identiteitsplatform met de volgende parameters.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-Er zijn twee gevallen, afhankelijk van het feit of de client toepassing wordt beveiligd door een gedeeld geheim of een certificaat.
+Er zijn twee gevallen, afhankelijk van de vraag of de clienttoepassing ervoor kiest om te worden beveiligd door een gedeeld geheim of een certificaat.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste geval: Toegang tot tokenaanvraag met een gedeeld geheim
 
-Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
+Bij het gebruik van een gedeeld geheim bevat een service-to-service access tokenaanvraag de volgende parameters:
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| `grant_type` | Vereist | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
-| `client_id` | Vereist | De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
-| `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app op de pagina Azure Portal-App-registraties. |
-| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt.  Dit token moet een doel groep hebben van de app die deze OBO-aanvraag maakt (de app wordt aangeduid met het `client-id` veld). |
-| `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie. |
-| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
+| `grant_type` | Vereist | Het type tokenaanvraag. Voor een aanvraag met een JWT `urn:ietf:params:oauth:grant-type:jwt-bearer`moet de waarde . |
+| `client_id` | Vereist | De toepassings-id (client) die [de Azure-portal - app-registratiepagina](https://go.microsoft.com/fwlink/?linkid=2083908) aan uw app heeft toegewezen. |
+| `client_secret` | Vereist | Het clientgeheim dat u voor uw app hebt gegenereerd op de pagina Azure-portal - App-registraties. |
+| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt.  Dit token moet een publiek van de app hebben die deze `client-id` OBO-aanvraag doet (de app die door het veld wordt aangeduid). |
+| `scope` | Vereist | Een ruimtegescheiden lijst met scopes voor de tokenaanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie . |
+| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de `on_behalf_of`waarde worden ingesteld op . |
 
 #### <a name="example"></a>Voorbeeld
 
-De volgende HTTP POST vraagt een toegangs token en vernieuwings token met `user.read` bereik voor de https://graph.microsoft.com Web-API.
+De volgende HTTP POST vraagt om `user.read` een access https://graph.microsoft.com token en refresh token met ruimte voor de web-API.
 
 ```
 //line breaks for legibility only
@@ -95,25 +95,25 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
+### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede aanvraag: Aanvraag voor toegangstoken met een certificaat
 
-Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
+Een service-to-service access tokenaanvraag met een certificaat bevat de volgende parameters:
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| `grant_type` | Vereist | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde `urn:ietf:params:oauth:grant-type:jwt-bearer`zijn. |
-| `client_id` | Vereist |  De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
-| `client_assertion_type` | Vereist | De waarde moet `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`zijn. |
-| `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Zie [certificaat referenties](active-directory-certificate-credentials.md)voor meer informatie over het registreren van uw certificaat en de indeling van de bevestiging. |
+| `grant_type` | Vereist | Het type tokenaanvraag. Voor een aanvraag met een JWT `urn:ietf:params:oauth:grant-type:jwt-bearer`moet de waarde . |
+| `client_id` | Vereist |  De toepassings-id (client) die [de Azure-portal - app-registratiepagina](https://go.microsoft.com/fwlink/?linkid=2083908) aan uw app heeft toegewezen. |
+| `client_assertion_type` | Vereist | De waarde `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`moet . |
+| `client_assertion` | Vereist | Een bewering (een JSON-webtoken) dat u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Zie [certificaatreferenties](active-directory-certificate-credentials.md)voor meer informatie over het registreren van uw certificaat en de notatie van de bewering. |
 | `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
-| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of`. |
-| `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie.|
+| `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de `on_behalf_of`waarde worden ingesteld op . |
+| `scope` | Vereist | Een ruimte-gescheiden lijst met scopes voor de tokenaanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie .|
 
-U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter `client_secret` wordt vervangen door twee para meters: een `client_assertion_type` en `client_assertion`.
+Merk op dat de parameters zijn bijna hetzelfde als in `client_secret` het geval van het `client_assertion_type` verzoek `client_assertion`door gedeeld geheim, behalve dat de parameter wordt vervangen door twee parameters: a en .
 
 #### <a name="example"></a>Voorbeeld
 
-Met de volgende HTTP POST wordt een toegangs token met `user.read` bereik aangevraagd voor de https://graph.microsoft.com Web-API met een certificaat.
+De volgende HTTP POST vraagt `user.read` een https://graph.microsoft.com toegangstoken aan met ruimte voor de web-API met een certificaat.
 
 ```
 // line breaks for legibility only
@@ -131,21 +131,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Antwoord service-to-service-toegangs token
+## <a name="service-to-service-access-token-response"></a>Service-toegang tot tokenrespons
 
-Een reactie op geslaagde pogingen is een JSON OAuth 2,0-antwoord met de volgende para meters.
+Een succesrespons is een JSON OAuth 2.0 respons met de volgende parameters.
 
 | Parameter | Beschrijving |
 | --- | --- |
-| `token_type` | Geeft de waarde van het token type aan. Het enige type dat door micro soft Identity platform wordt ondersteund, is `Bearer`. Zie voor meer informatie over Bearer-tokens het [OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| `scope` | Het bereik van toegang dat in het token wordt verleend. |
-| `expires_in` | De tijds duur in seconden dat het toegangs token geldig is. |
-| `access_token` | Het aangevraagde toegangs token. De aanroepende service kan dit token gebruiken om te verifiëren bij de ontvangende service. |
-| `refresh_token` | Het vernieuwings token voor het aangevraagde toegangs token. De aanroepende service kan dit token gebruiken om een ander toegangs token aan te vragen nadat het huidige toegangs token is verlopen. Het vernieuwings token wordt alleen opgegeven als het `offline_access` bereik is aangevraagd. |
+| `token_type` | Geeft de waarde van het tokentype aan. Het enige type dat het `Bearer`Identiteitsplatform van Microsoft ondersteunt, is . Zie het [OAuth 2.0 Authorization Framework: Toondertokengebruik (RFC 6750) voor](https://www.rfc-editor.org/rfc/rfc6750.txt)meer informatie over tokens aan toonder. |
+| `scope` | De reikwijdte van de toegang die in het token wordt verleend. |
+| `expires_in` | De tijdsduur, in seconden, dat het toegangstoken geldig is. |
+| `access_token` | Het gevraagde toegangstoken. De oproepservice kan dit token gebruiken om te verifiëren aan de ontvangende service. |
+| `refresh_token` | Het vernieuwingstoken voor het gevraagde toegangstoken. De aanroepende service kan dit token gebruiken om een ander toegangstoken aan te vragen nadat het huidige toegangstoken is verlopen. Het vernieuwingstoken wordt `offline_access` alleen verstrekt als het bereik is aangevraagd. |
 
-### <a name="success-response-example"></a>Voor beeld van een geslaagd antwoord
+### <a name="success-response-example"></a>Voorbeeld van succesrespons
 
-In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs token voor de Web-API van https://graph.microsoft.com.
+In het volgende voorbeeld wordt een succesreactie weergegeven https://graph.microsoft.com op een aanvraag voor een toegangstoken voor de web-API.
 
 ```
 {
@@ -159,11 +159,11 @@ In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs 
 ```
 
 > [!NOTE]
-> Het bovenstaande toegangs token is een token met de indeling v 1.0. Dit komt doordat het token wordt aangeboden op basis van de **bron** waartoe toegang wordt verkregen. De Microsoft Graph is ingesteld om v 1.0-tokens te accepteren, waardoor het micro soft Identity-platform v 1.0 toegangs tokens produceert wanneer een client tokens voor Microsoft Graph aanvraagt. Alleen toepassingen moeten de toegangs tokens bekijken. Clients **mogen deze niet** controleren.
+> Het bovenstaande toegangstoken is een v1.0-geformatteerd token. Dit komt omdat het token wordt geleverd op basis van de **bron** die wordt geopend. De Microsoft Graph is ingesteld om v1.0-tokens te accepteren, dus Microsoft-identiteitsplatform produceert v1.0-toegangstokens wanneer een client tokens voor Microsoft Graph aanvraagt. Alleen toepassingen moeten kijken naar toegangstokens. Klanten mogen ze **niet** inspecteren.
 
-### <a name="error-response-example"></a>Voor beeld van fout antwoorden
+### <a name="error-response-example"></a>Voorbeeld van foutreactie
 
-Er wordt een fout bericht geretourneerd door het token-eind punt bij het ophalen van een toegangs token voor de downstream API als voor de downstream API een beleid voor voorwaardelijke toegang is ingesteld (zoals multi-factor Authentication). De middelste laag service moet deze fout op de client toepassing belicht, zodat de client toepassing de gebruikers interactie kan bieden om te voldoen aan het beleid voor voorwaardelijke toegang.
+Een foutantwoord wordt geretourneerd door het tokeneindpunt wanneer u een toegangstoken voor de downstream-API probeert te verkrijgen, als de downstream-API een conditional access-beleid (zoals meervoudige verificatie) heeft ingesteld. De service op het middenniveau moet deze fout aan de clienttoepassing weergeven, zodat de clienttoepassing de gebruikersinteractie kan bieden om te voldoen aan het beleid voor voorwaardelijke toegang.
 
 ```
 {
@@ -177,9 +177,9 @@ Er wordt een fout bericht geretourneerd door het token-eind punt bij het ophalen
 }
 ```
 
-## <a name="use-the-access-token-to-access-the-secured-resource"></a>Het toegangs token gebruiken om toegang te krijgen tot de beveiligde resource
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Het toegangstoken gebruiken om toegang te krijgen tot de beveiligde bron
 
-De middelste laag service kan nu het aangeschafte token gebruiken om geverifieerde aanvragen naar de downstream Web-API te maken, door het token in te stellen in de `Authorization`-header.
+Nu kan de middle-tier service het hierboven verkregen token gebruiken om geverifieerde aanvragen te `Authorization` doen voor de downstream web-API, door het token in de koptekst in te stellen.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -189,37 +189,37 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
-## <a name="gaining-consent-for-the-middle-tier-application"></a>Toestemming geven voor de toepassing in de middelste laag
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Toestemming verkrijgen voor de toepassing op het middenniveau
 
-Afhankelijk van de architectuur of het gebruik van uw toepassing, kunt u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom slaagt. In alle gevallen is het ultieme doel om ervoor te zorgen dat de client-app de middelste laag kan aanroepen, en de app voor de middelste laag is gemachtigd om de back-end-bron aan te roepen. 
+Afhankelijk van de architectuur of het gebruik van uw toepassing, u verschillende strategieën overwegen om ervoor te zorgen dat de OBO-stroom succesvol is. In alle gevallen is het uiteindelijke doel om ervoor te zorgen dat de juiste toestemming wordt gegeven, zodat de client-app de middelste-tier-app kan bellen en de middelste laag-app toestemming heeft om de back-endbron te bellen. 
 
 > [!NOTE]
-> Voorheen heeft het Microsoft-account systeem (persoonlijke accounts) het veld ' bekende client toepassing ' niet ondersteund, noch kon er geen gecombineerde toestemming worden weer gegeven.  Dit is toegevoegd en alle apps in het micro soft Identity-platform kunnen gebruikmaken van de benadering van een bekende client toepassing voor gettign toestemming voor OBO-aanroepen. 
+> Voorheen ondersteunde het Microsoft-accountsysteem (persoonlijke accounts) het veld 'Bekende clienttoepassing' niet en kon het ook geen gecombineerde toestemming weergeven.  Dit is toegevoegd en alle apps in het Microsoft-identiteitsplatform kunnen de bekende clientapplicatiebenadering gebruiken voor gettign-toestemming voor OBO-gesprekken. 
 
-### <a name="default-and-combined-consent"></a>/.default en gecombineerde toestemming
+### <a name="default-and-combined-consent"></a>/.standaard- en gecombineerde toestemming
 
-De middelste laag toepassing voegt de client toe aan de lijst met bekende client toepassingen in het manifest en vervolgens kan de client een gecombineerde toestemmings stroom voor zowel zichzelf als de middelste laag toepassing activeren. Op het micro soft Identity platform-eind punt wordt dit gedaan met behulp van het [`/.default` bereik](v2-permissions-and-consent.md#the-default-scope). Wanneer een goedkeurings scherm wordt geactiveerd met behulp van bekende client toepassingen en `/.default`, toont het venster toestemming de machtigingen voor **zowel** de client op de middenlaag van de middelste laag, en vraagt ook welke machtigingen voor de middelste laag-API vereist zijn. De gebruiker geeft toestemming voor beide toepassingen en vervolgens werkt de OBO-stroom.
+De toepassing op de middelste laag voegt de client toe aan de lijst met bekende clienttoepassingen in het manifest en vervolgens kan de client een gecombineerde toestemmingsstroom activeren voor zowel zichzelf als de toepassing op de middelste laag. Op het eindpunt van het Microsoft-identiteitsplatform gebeurt dit met behulp van het [ `/.default` bereik.](v2-permissions-and-consent.md#the-default-scope) Wanneer u een toestemmingsscherm activeert met behulp van bekende clienttoepassingen en `/.default`, worden in het toestemmingsscherm machtigingen weergegeven voor **zowel** de client naar de API op de middelste laag) en worden ook de machtigingen opgevraagd die vereist zijn voor de API op het middenniveau. De gebruiker geeft toestemming voor beide toepassingen, en dan werkt de OBO-stroom.
 
-### <a name="pre-authorized-applications"></a>Vooraf geautoriseerde toepassingen
+### <a name="pre-authorized-applications"></a>Vooraf geautoriseerde aanvragen
 
-Resources kunnen aangeven dat een bepaalde toepassing altijd gemachtigd is om bepaalde bereiken te ontvangen. Dit is vooral handig om verbindingen te maken tussen een front-end-client en een back-end-bron naadloos. Een resource kan meerdere vooraf geautoriseerde toepassingen declareren: elke toepassing kan deze machtigingen aanvragen in een OBO-stroom en ze ontvangen zonder toestemming te geven aan de gebruiker.
+Bronnen kunnen aangeven dat een bepaalde toepassing altijd toestemming heeft om bepaalde scopes te ontvangen. Dit is vooral handig om verbindingen tussen een front-end client en een back-end resource naadlooser te maken. Een resource kan meerdere vooraf geautoriseerde toepassingen declareren - een dergelijke toepassing kan deze machtigingen aanvragen in een OBO-stroom en deze ontvangen zonder dat de gebruiker toestemming geeft.
 
 ### <a name="admin-consent"></a>toestemming van de beheerder
 
-Een Tenant beheerder kan garanderen dat toepassingen gemachtigd zijn om de vereiste Api's aan te roepen door toestemming van de beheerder voor de middelste laag toepassing op te geven. Om dit te doen, kan de beheerder de toepassing voor het middelste niveau vinden in hun Tenant, de pagina vereiste machtigingen openen en ervoor kiezen om toestemming te geven voor de app. Zie de [documentatie voor toestemming en machtigingen](v2-permissions-and-consent.md)voor meer informatie over de toestemming van de beheerder.
+Een tenantbeheerder kan garanderen dat toepassingen toestemming hebben om hun vereiste API's te bellen door beheerderstoestemming te geven voor de toepassing op de middelste laag. Om dit te doen, kan de beheerder de toepassing op de middelste laag in zijn tenant vinden, de pagina vereiste machtigingen openen en ervoor kiezen om toestemming te geven voor de app. Zie de [documentatie over toestemming en machtigingen](v2-permissions-and-consent.md)voor meer informatie over beheerderstoestemming.
 
 ### <a name="use-of-a-single-application"></a>Gebruik van één toepassing
 
-In sommige scenario's is het mogelijk dat u slechts één paar van de middelste laag en front-end-client hoeft te koppelen. In dit scenario is het mogelijk dat u deze app gemakkelijker kunt maken, waardoor het niet meer nodig is om een toepassing met een middelste laag te verbinden. Als u wilt verifiëren tussen de front-end en de Web-API, kunt u cookies, een id_token of een toegangs token gebruiken dat is aangevraagd voor de toepassing zelf. Vraag vervolgens toestemming van deze enkele toepassing aan de back-end-bron.
+In sommige scenario's hebt u mogelijk slechts één koppeling van de midden- en front-endclient. In dit scenario u het gemakkelijker vinden om dit één enkele toepassing te maken, waardoor de noodzaak van een toepassing op het middenniveau helemaal wordt ontkend. Als u wilt verifiëren tussen de front-end en de web-API, u cookies, een id_token of een toegangstoken gebruiken dat voor de toepassing zelf is aangevraagd. Vraag vervolgens toestemming van deze afzonderlijke toepassing aan de back-endbron.
 
-## <a name="client-limitations"></a>Client beperkingen
+## <a name="client-limitations"></a>Clientbeperkingen
 
-Als een client de impliciete stroom gebruikt om een id_token op te halen en die client ook joker tekens heeft in een antwoord-URL, kan de id_token niet worden gebruikt voor een OBO-stroom.  Toegangs tokens die zijn verkregen via de impliciete toekennings stroom kunnen echter nog steeds worden ingewisseld door een vertrouwelijke client, zelfs als de initiërende client een antwoord-URL voor joker tekens heeft geregistreerd.
+Als een client de impliciete stroom gebruikt om een id_token te krijgen en die client heeft ook wildcards in een antwoord-URL, kan de id_token niet worden gebruikt voor een OBO-stroom.  Toegangstokens die via de impliciete subsidiestroom zijn verkregen, kunnen echter nog steeds worden ingewisseld door een vertrouwelijke client, zelfs als de initiërende client een URL met een wildcard-antwoord heeft geregistreerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het OAuth 2,0-protocol en een andere manier om service-to-service-verificatie uit te voeren met behulp van client referenties.
+Meer informatie over het OAuth 2.0-protocol en een andere manier om service uit te voeren met behulp van clientreferenties.
 
-* [OAuth 2,0-client referenties verlenen in het micro soft Identity-platform](v2-oauth2-client-creds-grant-flow.md)
-* [OAuth 2,0-code stroom in micro soft Identity platform](v2-oauth2-auth-code-flow.md)
+* [OAuth 2.0 clientreferenties verlenen in Microsoft identity platform](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0-codestroom in microsoft-identiteitsplatform](v2-oauth2-auth-code-flow.md)
 * [Het `/.default` bereik gebruiken](v2-permissions-and-consent.md#the-default-scope)

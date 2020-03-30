@@ -1,6 +1,6 @@
 ---
-title: Resource dashboards voor toegangs beoordelingen in PIM-Azure AD | Microsoft Docs
-description: Hierin wordt beschreven hoe u een resource dashboard gebruikt voor het uitvoeren van een toegangs beoordeling in Azure AD Privileged Identity Management (PIM).
+title: Resourcedashboards voor toegangsbeoordelingen in PIM - Azure AD | Microsoft Documenten
+description: Beschrijft hoe u een resourcedashboard gebruiken om een toegangscontrole uit te voeren in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,30 +17,30 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6affa2ecc8919dabeb6173622b525280ce96bcfe
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847034"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Een resource dashboard gebruiken om een toegangs beoordeling uit te voeren in Privileged Identity Management
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Een resourcedashboard gebruiken om een toegangscontrole uit te voeren in Privileged Identity Management
 
-U kunt een resource dashboard gebruiken om een toegangs beoordeling uit te voeren in Privileged Identity Management (PIM). Het dash board van de beheer weergave in Azure Active Directory (Azure AD) heeft drie primaire onderdelen:
+U een resourcedashboard gebruiken om een toegangscontrole uit te voeren in Privileged Identity Management (PIM). Het dashboard Beheerweergave in Azure Active Directory (Azure AD) bevat drie primaire componenten:
 
-- Een grafische weer gave van de activering van een resource functie
-- Grafieken waarin de distributie van roltoewijzingen per toewijzings type wordt weer gegeven
-- Een gegevens gebied met informatie over nieuwe roltoewijzingen
+- Een grafische weergave van activeringen van resourcerollen
+- Grafieken die de verdeling van roltoewijzingen per toewijzingstype weergeven
+- Een gegevensgebied met informatie over nieuwe roltoewijzingen
 
-![Scherm opname van het dash board van de beheer weergave, met grafieken en grafieken](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
+![Schermafbeelding van het dashboard voor beheerweergave met grafieken en grafieken](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![Scherm opname van het dash board van de beheer weergave, met gegevens lijsten](media/pim-resource-roles-overview-dashboards/role-settings.png)
+![Schermafbeelding van het dashboard voor beheerweergave, met gegevenslijsten](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
-De grafische weer gave van de functie activeringen van de resource behandelt de afgelopen zeven dagen. Deze gegevens zijn gericht op de geselecteerde resource en weer gave-activeringen voor de meest voorkomende rollen (eigenaar, Inzender, gebruikers toegangs beheer) en voor alle rollen gecombineerd.
+De grafische weergave van resourcerolactiveringen bestrijkt de afgelopen zeven dagen. Deze gegevens worden weergegeven in de geselecteerde bron en worden activeringen weergegeven voor de meest voorkomende rollen (eigenaar, bijdrager, gebruikerstoegangsbeheerder) en voor alle gecombineerde rollen.
 
-Aan de ene kant van de activerings grafiek worden in twee grafieken de verdeling van roltoewijzingen per toewijzings type weer gegeven voor gebruikers en groepen. U kunt de waarde wijzigen in een percentage (of andersom) door een segment van de grafiek te selecteren.
+Aan de ene kant van de activeringsgrafiek geven twee grafieken de verdeling van roltoewijzingen per toewijzingstype weer, voor zowel gebruikers als groepen. U de waarde wijzigen in een percentage (of omgekeerd), door een segment van de grafiek te selecteren.
 
-Onder de grafieken ziet u het aantal gebruikers en groepen met nieuwe roltoewijzingen in de afgelopen 30 dagen, en rollen gesorteerd op totaal aantal toewijzingen in aflopende volg orde.
+Hieronder de grafieken worden het aantal gebruikers en groepen met nieuwe roltoewijzingen in de afgelopen 30 dagen vermeld en rollen gesorteerd op totale toewijzingen in aflopende volgorde.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een toegangs beoordeling starten voor Azure-resource rollen in Privileged Identity Management](pim-resource-roles-start-access-review.md)
+- [Een toegangscontrole voor Azure-bronrollen starten in Privileged Identity Management](pim-resource-roles-start-access-review.md)

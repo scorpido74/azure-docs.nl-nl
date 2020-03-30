@@ -1,6 +1,6 @@
 ---
-title: B2B-samenwerkings gebruikers toevoegen als informatie medewerker-Azure AD
-description: B2B-samen werking staat informatie medewerkers en app-eigen aren toe om gast gebruikers toe te voegen aan Azure AD voor toegang | Microsoft Docs
+title: B2B-samenwerkingsgebruikers toevoegen als informatiewerker - Azure AD
+description: Met B2B-samenwerking kunnen informatiewerkers en app-eigenaren gastgebruikers toevoegen aan Azure AD voor toegang | Microsoft Documenten
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,111 +13,111 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565414"
 ---
-# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hoe gebruikers in uw organisatie gast gebruikers kunnen uitnodigen voor een app
+# <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hoe gebruikers in uw organisatie gastgebruikers kunnen uitnodigen voor een app
 
-Nadat een gast gebruiker is toegevoegd aan de Directory in azure AD, kan de eigenaar van een toepassing de gast gebruiker een directe koppeling sturen naar de app die ze willen delen. Azure AD-beheerders kunnen ook Self-Service beheer instellen voor galerie-of op SAML gebaseerde apps in hun Azure AD-Tenant. Op deze manier kunnen toepassings eigenaren hun eigen gast gebruikers beheren, zelfs als de gast gebruikers nog niet aan de Directory zijn toegevoegd. Wanneer een app is geconfigureerd voor Self-service, gebruikt de eigenaar van de toepassing hun toegangs venster om een gast gebruiker aan een app uit te nodigen of een gast gebruiker toe te voegen aan een groep die toegang heeft tot de app. Voor het beheer van self-service apps voor de galerie en op SAML gebaseerde apps is een eerste installatie van een beheerder vereist. Hier volgt een samen vatting van de installatie stappen (Zie voor meer informatie [vereisten](#prerequisites) verderop op deze pagina):
+Nadat een gastgebruiker is toegevoegd aan de directory in Azure AD, kan een eigenaar van de toepassing de gastgebruiker een directe link sturen naar de app die hij wil delen. Azure AD-beheerders kunnen ook selfservicebeheer instellen voor galerie- of SAML-apps in hun Azure AD-tenant. Op deze manier kunnen eigenaren van toepassingen hun eigen gastgebruikers beheren, zelfs als de gastgebruikers nog niet aan de directory zijn toegevoegd. Wanneer een app is geconfigureerd voor selfservice, gebruikt de eigenaar van de toepassing het toegangspaneel om een gastgebruiker uit te nodigen voor een app of een gastgebruiker toe te voegen aan een groep die toegang heeft tot de app. Selfservice-appbeheer voor galerij- en SAML-gebaseerde apps vereist een eerste installatie door een beheerder. Het volgende is een overzicht van de installatiestappen (zie [Voorwaarden later](#prerequisites) op deze pagina voor meer gedetailleerde instructies):
 
- - Self-service groeps beheer inschakelen voor uw Tenant
- - Een groep maken om aan de app toe te wijzen en de gebruiker een eigenaar te maken
- - De app configureren voor Self-service en de groep toewijzen aan de app
+ - Selfservicegroepsbeheer inschakelen voor uw tenant
+ - Een groep maken die aan de app moet worden toegewezen en van de gebruiker een eigenaar maken
+ - De app configureren voor selfservice en de groep toewijzen aan de app
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u Self-Service beheer instelt voor galerie-en op SAML gebaseerde apps die u hebt toegevoegd aan uw Azure AD-Tenant. U kunt ook [selfservice office 365-groepen instellen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) zodat uw gebruikers de toegang tot hun eigen Office 365-groepen kunnen beheren. Voor meer manieren waarop gebruikers Office-bestanden en-apps kunnen delen met gast gebruikers, Zie [gast toegang in Office 365-groepen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) en share [Point-bestanden of-mappen](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> In dit artikel wordt beschreven hoe u selfservicebeheer instelt voor galerie- en SAML-apps die u hebt toegevoegd aan uw Azure AD-tenant. U ook [zelfbedieningsgroepen voor Office 365 instellen,](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) zodat uw gebruikers de toegang tot hun eigen Office 365-groepen kunnen beheren. Zie [Gasttoegang in Office 365-groepen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) en [SharePoint-bestanden of -mappen](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)voor meer manieren waarop ze Office-bestanden en -apps kunnen delen met gastgebruikers.
 
-## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Een gast gebruiker uitnodigen voor een app vanuit het toegangs venster
+## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Een gastgebruiker uitnodigen voor een app vanuit het Toegangspaneel
 
-Nadat een app is geconfigureerd voor Self-service, kunnen toepassings eigenaren hun eigen toegangs venster gebruiken om een gast gebruiker uit te nodigen voor de app die ze willen delen. De gast gebruiker hoeft niet noodzakelijkerwijs aan Azure AD vooraf te worden toegevoegd. 
+Nadat een app is geconfigureerd voor selfservice, kunnen eigenaren van toepassingen hun eigen toegangspaneel gebruiken om een gastgebruiker uit te nodigen voor de app die hij wil delen. De gastgebruiker hoeft niet per se vooraf aan Azure AD te worden toegevoegd. 
 
-1. Open het toegangs venster door naar `https://myapps.microsoft.com`te gaan.
-2. Wijs de app aan, selecteer de weglatings tekens ( **...** ) en selecteer vervolgens **app beheren**.
+1. Open uw toegangspaneel `https://myapps.microsoft.com`door naar .
+2. Wijs de app aan, selecteer de ellipsen (**...**) en selecteer **App beheren**.
  
-   ![Scherm opname van het submenu voor het beheren van de app voor de Sales Force-app](media/add-users-iw/access-panel-manage-app.png)
+   ![Schermafbeelding van het submenu App beheren voor de Salesforce-app](media/add-users-iw/access-panel-manage-app.png)
  
-3. Selecteer de optie **+** boven aan de lijst gebruikers.
+3. Selecteer boven aan de gebruikerslijst . **+**
    
-   ![Scherm afbeelding met het plus teken voor het toevoegen van leden aan de app](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Schermafbeelding van het plussymbool voor het toevoegen van leden aan de app](media/add-users-iw/access-panel-manage-app-add-user.png)
    
-4. Typ in het zoekvak **leden toevoegen** het e-mail adres voor de gast gebruiker. U kunt optioneel een welkomstbericht toevoegen.
+4. Typ in het zoekvak **Leden toevoegen** het e-mailadres voor de gastgebruiker. U kunt optioneel een welkomstbericht toevoegen.
    
-   ![Scherm opname van het venster leden toevoegen voor het toevoegen van een gast](media/add-users-iw/access-panel-invitation.png)
+   ![Schermafbeelding van het venster Leden toevoegen voor het toevoegen van een gast](media/add-users-iw/access-panel-invitation.png)
    
-5. Selecteer **toevoegen** om een uitnodiging naar de gast gebruiker te verzenden. Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
+5. Selecteer **Toevoegen** om een uitnodiging naar de gastgebruiker te verzenden. Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
 
 ## <a name="invite-someone-to-join-a-group-that-has-access-to-the-app"></a>Iemand uitnodigen om lid te worden van een groep die toegang heeft tot de app
-Nadat een app is geconfigureerd voor Self-service, kunnen de eigen aren van toepassingen gast gebruikers uitnodigen voor de groepen die ze beheren die toegang hebben tot de apps die ze willen delen. De gast gebruikers hoeven zich niet al in de Directory te bevinden. De eigenaar van de toepassing volgt deze stappen voor het uitnodigen van een gast gebruiker aan de groep, zodat deze toegang heeft tot de app.
+Nadat een app is geconfigureerd voor selfservice, kunnen eigenaren van toepassingen gastgebruikers uitnodigen voor de groepen die ze beheren en die toegang hebben tot de apps die ze willen delen. De gastgebruikers hoeven nog niet in de directory te staan. De eigenaar van de toepassing volgt deze stappen om een gastgebruiker uit te nodigen voor de groep, zodat deze toegang heeft tot de app.
 
-1. Zorg ervoor dat u eigenaar bent van de self-service groep die toegang heeft tot de app die u wilt delen.
-2. Open het toegangs venster door naar `https://myapps.microsoft.com`te gaan.
-3. Selecteer de **groeps** -app.
+1. Zorg ervoor dat u eigenaar bent van de selfservicegroep die toegang heeft tot de app die u wilt delen.
+2. Open uw toegangspaneel `https://myapps.microsoft.com`door naar .
+3. Selecteer de app **Groepen.**
    
-   ![Scherm opname van de app groepen in het toegangs venster](media/add-users-iw/access-panel-groups.png)
+   ![Schermafbeelding van de app Groepen in het toegangspaneel](media/add-users-iw/access-panel-groups.png)
    
-4. Selecteer onder **groepen waarvan ik eigenaar ben**de groep die toegang heeft tot de app die u wilt delen.
+4. Selecteer **onder Groepen die ik bezit**de groep die toegang heeft tot de app die u wilt delen.
    
-   ![Scherm afbeelding die laat zien waar u een groep selecteert onder de groepen waarvan ik eigenaar ben](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Schermafbeelding van de plaats waarin wordt weergegeven waar u een groep selecteren onder de groepen die ik bezit](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. Selecteer op **+** boven aan de lijst groeps leden.
+5. Selecteer boven aan de lijst **+** met groepsleden .
    
-   ![Scherm afbeelding met het plus teken voor het toevoegen van leden aan de groep](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Schermafbeelding van het plussymbool voor het toevoegen van leden aan de groep](media/add-users-iw/access-panel-groups-add-member.png)
    
-6. Typ in het zoekvak **leden toevoegen** het e-mail adres voor de gast gebruiker. U kunt optioneel een welkomstbericht toevoegen.
+6. Typ in het zoekvak **Leden toevoegen** het e-mailadres voor de gastgebruiker. U kunt optioneel een welkomstbericht toevoegen.
    
-   ![Scherm opname van het venster leden toevoegen voor het toevoegen van een gast](media/add-users-iw/access-panel-invitation.png)
+   ![Schermafbeelding van het venster Leden toevoegen voor het toevoegen van een gast](media/add-users-iw/access-panel-invitation.png)
    
-7. Selecteer **toevoegen** om de uitnodiging automatisch naar de gast gebruiker te verzenden. Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
+7. Selecteer **Toevoegen** om de uitnodiging automatisch naar de gastgebruiker te verzenden. Nadat u de uitnodiging verzendt, wordt het gebruikersaccount automatisch toegevoegd aan de map als gast.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor Self-service app-beheer is een aantal initiële installaties vereist door een globale beheerder en een Azure AD-beheerder. Als onderdeel van deze installatie configureert u de app voor Self-service en wijst u een groep toe aan de app die de eigenaar van de toepassing kan beheren. U kunt de groep ook zo configureren dat iedereen het lidmaatschap kan aanvragen, maar dat de goed keuring van een groeps eigenaar verplicht is. (Meer informatie over [self-service groeps beheer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
+Selfservice-appbeheer vereist een eerste installatie door een globale beheerder en een Azure AD-beheerder. Als onderdeel van deze instelling configureert u de app voor selfservice en wijst u een groep toe aan de app die de eigenaar van de toepassing kan beheren. U de groep ook zo configureren dat iedereen lidmaatschap kan aanvragen, maar de goedkeuring van een groepseigenaar vereist. (Meer informatie over [selfservicegroepsbeheer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management).) 
 
 > [!NOTE]
-> U kunt geen gast gebruikers toevoegen aan een dynamische groep of aan een groep die is gesynchroniseerd met on-premises Active Directory.
+> U gastgebruikers niet toevoegen aan een dynamische groep of aan een groep die is gesynchroniseerd met on-premises Active Directory.
 
-### <a name="enable-self-service-group-management-for-your-tenant"></a>Self-service groeps beheer inschakelen voor uw Tenant
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder.
-2. Selecteer **Azure Active Directory**in het navigatie venster.
-3. Selecteer **groepen**.
-4. Selecteer onder **instellingen**de optie **Algemeen**.
-5. Onder **self-service groeps beheer**, naast **eigen aren, kunnen aanvragen voor groepslid maatschappen beheren in het toegangs venster**, selecteert u **Ja**.
+### <a name="enable-self-service-group-management-for-your-tenant"></a>Selfservicegroepsbeheer inschakelen voor uw tenant
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als globale beheerder.
+2. Selecteer Azure Active **Directory**in het navigatiedeelvenster .
+3. Selecteer **Groepen**.
+4. Selecteer **Onder Instellingen**de optie **Algemeen**.
+5. Onder **Self Service Group Management**kunnen naast Eigenaren **groepslidmaatschapsaanvragen beheren in het access panel**, selecteer **Ja**.
 6. Selecteer **Opslaan**.
 
-### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Een groep maken om aan de app toe te wijzen en de gebruiker een eigenaar te maken
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Azure AD-beheerder of globale beheerder.
-2. Selecteer **Azure Active Directory**in het navigatie venster.
-3. Selecteer **groepen**.
-4. Selecteer **nieuwe groep**.
-5. Onder **groeps type**, selecteer **beveiliging**.
-6. Typ een beschrijving voor de **groeps naam** en **groep**.
-7. Selecteer **toegewezen**onder **lidmaatschaps type**.
-8. Selecteer **maken**en sluit de pagina **groep** .
-9. Open de groep op de pagina **groepen-alle groepen** . 
-10. Selecteer onder **beheren**de optie **eigen aren** > **eigen aars toevoegen**. Zoek naar de gebruiker die de toegang tot de toepassing moet beheren. Selecteer de gebruiker en klik vervolgens op **selecteren**.
+### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Een groep maken die aan de app moet worden toegewezen en van de gebruiker een eigenaar maken
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als Azure AD-beheerder of globale beheerder.
+2. Selecteer Azure Active **Directory**in het navigatiedeelvenster .
+3. Selecteer **Groepen**.
+4. Selecteer **Nieuwe groep**.
+5. Selecteer Onder **Groepstype**de optie **Beveiliging**.
+6. Geef een **groepsnaam** en een **beschrijving** voor de groep op.
+7. Selecteer Toegewezen onder **lidmaatschapstype** **.**
+8. Selecteer **Maken**en sluit de pagina **Groep.**
+9. Open de groep op de pagina **Groepen - Alle groepen.** 
+10. **Owners** > Selecteer Eigenaren Eigenaren toevoegen onder **Beheren.****Add owners** Zoek naar de gebruiker die de toegang tot de toepassing moet beheren. Selecteer de gebruiker en klik op **Selecteren**.
 
-### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>De app configureren voor Self-service en de groep toewijzen aan de app
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Azure AD-beheerder of globale beheerder.
-2. Selecteer **Azure Active Directory**in het navigatie deel venster.
-3. Selecteer onder **beheren**de optie **bedrijfs toepassingen** > **alle toepassingen**.
+### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>De app configureren voor selfservice en de groep toewijzen aan de app
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als Azure AD-beheerder of globale beheerder.
+2. Selecteer Azure Active **Directory**in het navigatiedeelvenster .
+3. Selecteer **onder Beheren**de optie Alle toepassingen **van** > **All applications**Ondernemingen selecteren .
 4. Zoek en open de app in de lijst met toepassingen.
-5. Selecteer onder **beheren**de optie **eenmalige aanmelding**en configureer de toepassing voor eenmalige aanmelding. (Zie [eenmalige aanmelding beheren voor zakelijke apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)(Engelstalig) voor meer informatie.
-6. Selecteer onder **beheren**de optie **self-service**en stel selfservice app-toegang in. (Zie [self-service app-toegang gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)voor meer informatie.) 
+5. Selecteer **onder Beheren**de optie Eén **aanmelding**en configureer de toepassing voor eenmalige aanmelding. (Zie voor meer informatie [hoe u eenmalige aanmelding voor bedrijfsapps beheert](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
+6. Selecteer **onder Beheren**de optie **Selfservice**en stel zelfservice-app-toegang in. (Zie voor meer informatie [hoe u toegang tot de selfservice-app gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]
-    > Voor de instelling **waaraan gebruikers moeten worden toegevoegd** , moet u de groep selecteren die u in de vorige sectie hebt gemaakt.
-7. Selecteer onder **beheren**de optie **gebruikers en groepen**en controleer of de self-service groep die u hebt gemaakt, wordt weer gegeven in de lijst.
-8. Als u de app wilt toevoegen aan het toegangs venster van de groeps eigenaar, selecteert u **gebruiker toevoegen** > **gebruikers en groepen**. Zoek naar de groeps eigenaar en selecteer de gebruiker, klik op **selecteren**en klik vervolgens op **toewijzen** om de gebruiker toe te voegen aan de app.
+    > Voor de instelling **Aan welke groep moeten gebruikers worden toegewezen?**
+7. Selecteer **onder Beheren**de optie Gebruikers en **groepen**en controleer of de zelfservicegroep die u hebt gemaakt, wordt weergegeven in de lijst.
+8. Als u de app wilt toevoegen aan het toegangspaneel van de groepseigenaar, selecteert u **Gebruikersgebruikers** > **en -groepen**toevoegen . Zoek naar de groepseigenaar en selecteer de gebruiker, klik op **Selecteren**en klik vervolgens op **Toewijzen** om de gebruiker aan de app toe te voegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
+Zie de volgende artikelen over Azure AD B2B-samenwerking:
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [Hoe kunnen Azure Active Directory beheerders gebruikers voor B2B-samen werking toevoegen?](add-users-administrator.md)
-- [Inwisseling uitnodiging voor B2B-samen werking](redemption-experience.md)
-- [Licenties voor Azure AD B2B-samenwerking](licensing-guidance.md)
+- [Hoe voegen Azure Active Directory-beheerders B2B-samenwerkingsgebruikers toe?](add-users-administrator.md)
+- [B2B-uitnodigingsuitnodiging en inwisseling](redemption-experience.md)
+- [Licentie voor Azure AD B2B-samenwerking](licensing-guidance.md)

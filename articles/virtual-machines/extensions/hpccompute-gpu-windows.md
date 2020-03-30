@@ -1,6 +1,6 @@
 ---
-title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Windows-Vm's
-description: Microsoft Azure-uitbrei ding voor het installeren van NVIDIA GPU-Stuur Programma's op virtuele machines met N-serie Compute die Windows uitvoeren.
+title: NVIDIA GPU Driver Extension - Azure Windows VM's
+description: Microsoft Azure-extensie voor het installeren van NVIDIA GPU-stuurprogramma's op gegevensvm's uit de N-serie met Windows.
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -14,28 +14,28 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250541"
 ---
-# <a name="nvidia-gpu-driver-extension-for-windows"></a>Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows
+# <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU Driver Extension voor Windows
 
 ## <a name="overview"></a>Overzicht
 
-Met deze extensie worden NVIDIA GPU-Stuur Programma's geïnstalleerd op Vm's uit de Windows N-serie. Afhankelijk van de VM-familie installeert de uitbrei ding CUDA of GRID-Stuur Programma's. Wanneer u NVIDIA-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert u de voor waarden van de [gebruiksrecht overeenkomst](https://go.microsoft.com/fwlink/?linkid=874330)van de NVIDIA en gaat u ermee akkoord. Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
+Deze extensie installeert NVIDIA GPU-stuurprogramma's op Vm's uit de Windows N-serie. Afhankelijk van de VM-familie installeert de extensie CUDA- of GRID-stuurprogramma's. Wanneer u NVIDIA-stuurprogramma's installeert met behulp van deze extensie, accepteert en stemt u in met de voorwaarden van de [NVIDIA-licentieovereenkomst voor eindgebruikers.](https://go.microsoft.com/fwlink/?linkid=874330) Tijdens het installatieproces kan de VM opnieuw worden opgestart om de stuurprogramma-installatie te voltooien.
 
-Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)beschikbaar.
-Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te installeren op Vm's uit de [Linux N-serie](hpccompute-gpu-linux.md).
+Instructies voor handmatige installatie van de stuurprogramma's en de huidige ondersteunde versies zijn [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)beschikbaar.
+Een extensie is ook beschikbaar voor het installeren van NVIDIA GPU drivers op [Linux N-serie VM's.](hpccompute-gpu-linux.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Deze extensie ondersteunt de volgende OSs:
+Deze extensie ondersteunt de volgende bes:
 
-| Distributie | Version |
+| Distributie | Versie |
 |---|---|
 | Windows 10 | Kern |
 | Windows Server 2016 | Kern |
@@ -43,11 +43,11 @@ Deze extensie ondersteunt de volgende OSs:
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De uitbrei ding van de Microsoft Azure voor NVIDIA GPU-Stuur Programma's vereist dat de doel-VM is verbonden met internet en toegang heeft.
+De Microsoft Azure Extension for NVIDIA GPU Drivers vereist dat de doel-VM is verbonden met het internet en toegang heeft.
 
 ## <a name="extension-schema"></a>Extensieschema
 
-In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
+De volgende JSON toont het schema voor de extensie.
 
 ```json
 {
@@ -71,23 +71,23 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Naam | Waarde / voorbeeld | Gegevenstype |
+| Name | Waarde / Voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | tekenreeks |
+| uitgever | Microsoft.HpcCompute | tekenreeks |
 | type | NvidiaGpuDriverWindows | tekenreeks |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersie | 1.2 | int |
 
 
 ## <a name="deployment"></a>Implementatie
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon 
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor een configuratie na implementatie vereist is.
 
-De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+De JSON-configuratie voor een virtuele machine-extensie kan worden genest in de bron van de virtuele machine of op het hoofd- of hoogste niveau van een JSON-sjabloon voor Resource Manager worden geplaatst. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en -type. Zie [Naam en type voor onderliggende bronnen instellen voor](../../azure-resource-manager/resource-manager-template-child-resource.md)meer informatie . 
 
-In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []`-object van de virtuele machine geplaatst.
+In het volgende voorbeeld wordt ervan uitgegaan dat de extensie is genest in de bron van de virtuele machine. Bij het nesten van de extensiebron wordt `"resources": []` de JSON in het object van de virtuele machine geplaatst.
 
 ```json
 {
@@ -124,7 +124,7 @@ Set-AzVMExtension
     }'
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli
 az vm extension set `
@@ -141,7 +141,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal en met behulp van Azure PowerShell en Azure CLI. Voer de volgende opdracht uit om de implementatie status van uitbrei dingen voor een bepaalde virtuele machine weer te geven.
+Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met Azure PowerShell en Azure CLI. Voer de volgende opdracht uit om de implementatiestatus van extensies voor een bepaalde vm te bekijken.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -151,7 +151,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uitvoer voor uitvoering van extensie wordt vastgelegd in de volgende map:
+De uitvoer van extensieuitvoering wordt vastgelegd in de volgende map:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
@@ -161,19 +161,19 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 0 | Bewerking is voltooid |
-| 1 | De bewerking is voltooid. Opnieuw opstarten is vereist. |
-| 100 | De bewerking wordt niet ondersteund of kan niet worden voltooid. | Mogelijke oorzaken: de Power shell-versie wordt niet ondersteund, de VM-grootte is geen VM van de N-serie, fout bij het downloaden van gegevens. Controleer de logboek bestanden om de oorzaak van de fout te achterhalen. |
-| 240, 840 | Time-out van bewerking. | Probeer het opnieuw. |
-| -1 | Uitzonde ring opgetreden. | Controleer de logboek bestanden om de oorzaak van de uitzonde ring te bepalen. |
-| -5x | De bewerking is onderbroken omdat opnieuw opstarten in behandeling is. | Start de VM opnieuw op. De installatie wordt voortgezet nadat de computer opnieuw is opgestart. Uninstall moet hand matig worden aangeroepen. |
+| 0 | Bewerking geslaagd |
+| 1 | Operatie geslaagd. Opnieuw opstarten vereist. |
+| 100 | Bewerking die niet wordt ondersteund of niet kan worden voltooid. | Mogelijke oorzaken: PowerShell-versie wordt niet ondersteund, VM-grootte is geen N-serie VM, Fout downloaden van gegevens. Controleer de logboekbestanden om de oorzaak van de fout te bepalen. |
+| 240, 840 | Een time-out van de operatie. | Probeer de operatie opnieuw. |
+| -1 | Uitzondering opgetreden. | Controleer de logboekbestanden om de oorzaak van de uitzondering te bepalen. |
+| -5x | Bewerking onderbroken vanwege in behandeling zijnde herstart. | VM opnieuw opstarten. De installatie wordt voortgezet na het opnieuw opstarten. Verwijderen moet handmatig worden ingeroepen. |
 
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/community/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.
+Zie [Virtuele machine-extensies en -functies voor Windows voor](features-windows.md)meer informatie over extensies.
 
-Zie [grootten van virtuele machines](../windows/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.
+Zie [GPU-geoptimaliseerde virtuele machineformaten](../windows/sizes-gpu.md)voor meer informatie over VM's uit de N-serie.

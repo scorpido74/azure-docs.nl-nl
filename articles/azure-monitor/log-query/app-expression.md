@@ -1,47 +1,47 @@
 ---
-title: app ()-expressie in Azure Monitor logboek query's | Microsoft Docs
-description: De app-expressie wordt gebruikt in een Azure Monitor logboek query om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement.
+title: app() expressie in Azure Monitor-logboekquery's | Microsoft Documenten
+description: De app-expressie wordt gebruikt in een Azure Monitor-logboekquery om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resourcegroep, een andere brongroep of een ander abonnement.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670251"
 ---
-# <a name="app-expression-in-azure-monitor-query"></a>app ()-expressie in Azure Monitor query
+# <a name="app-expression-in-azure-monitor-query"></a>app() expressie in Azure Monitor-query
 
-De `app` expressie wordt gebruikt in een Azure Monitor query om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit is handig om toepassings gegevens op te halen in een Azure Monitor-logboek query en om gegevens over meerdere toepassingen in een Application Insights query op te vragen.
+De `app` expressie wordt gebruikt in een Azure Monitor-query om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resourcegroep, een andere resourcegroep of een ander abonnement. Dit is handig om toepassingsgegevens op te nemen in een Azure Monitor-logboekquery en om gegevens over meerdere toepassingen op te vragen in een query Met toepassingsstatistieken.
 
 
 
 ## <a name="syntax"></a>Syntaxis
 
-`app(`*id*`)`
+`app(`*Id*`)`
 
 
 ## <a name="arguments"></a>Argumenten
 
-- *Id*: identificeert de app aan de hand van een van de volgende indelingen in de tabel hieronder.
+- *Id:* identificeert de app met een van de indelingen in de onderstaande tabel.
 
 | Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
-| Resourcenaam | Door de mens lees bare naam van de app (ook wel "onderdeel naam") | app("fabrikamapp") |
-| Gekwalificeerde naam | Volledige naam van de app in de vorm: ' subscriptionname/resourceGroup/naam van onderdeel ' | app('AI-Prototype/Fabrikam/fabrikamapp') |
-| Id | GUID van de app | app ("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Azure-Resource-ID | Id voor de Azure-resource |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Resourcenaam | Menselijke leesbare naam van de app (AKA "componentnaam") | app("fabrikamapp") |
+| Gekwalificeerde naam | Volledige naam van de app in het formulier: "subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
+| Id | GUID van de app | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Azure-bron-id | Id voor de Azure-bron |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Opmerkingen
 
-* U moet lees toegang hebben tot de toepassing.
-* Door de naam van een toepassing te identificeren, wordt ervan uitgegaan dat deze uniek is voor alle toegankelijke abonnementen. Als u meerdere toepassingen met de opgegeven naam hebt, mislukt de query vanwege de dubbel zinnigheid. In dit geval moet u een van de andere id's gebruiken.
-* Gebruik de gerelateerde expressie- [werk ruimte](workspace-expression.md) om een query uit te kunnen log Analytics-werk ruimten.
-* De expressie app () wordt momenteel niet ondersteund in de zoek query wanneer u de Azure Portal gebruikt om een [aangepaste waarschuwings regel voor logboek zoeken](../platform/alerts-log.md)te maken, tenzij een Application Insights toepassing wordt gebruikt als de resource voor de waarschuwings regel.
+* U moet leestoegang hebben tot de toepassing.
+* Het identificeren van een toepassing met de naam gaat ervan uit dat deze uniek is voor alle toegankelijke abonnementen. Als u meerdere toepassingen met de opgegeven naam hebt, mislukt de query vanwege de ambiguïteit. In dit geval moet u een van de andere id's gebruiken.
+* Gebruik de bijbehorende [werkruimte](workspace-expression.md) voor expressies om query's in log Analytics-werkruimten te plaatsen.
+* De expressie app() wordt momenteel niet ondersteund in de zoekopdracht wanneer u de Azure-portal gebruikt om een [aangepaste waarschuwingsregel voor logboekzoekopdrachten](../platform/alerts-log.md)te maken, tenzij een toepassing Insights-toepassing wordt gebruikt als bron voor de waarschuwingsregel.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -71,6 +71,6 @@ union
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [werkruimte expressie](workspace-expression.md) om te verwijzen naar een log Analytics-werk ruimte.
-- Meer informatie over hoe [Azure monitor gegevens](../../azure-monitor/log-query/log-query-overview.md) worden opgeslagen.
-- Toegang tot volledige documentatie voor de [Kusto-query taal](/azure/kusto/query/).
+- Zie de [werkruimte-expressie](workspace-expression.md) die moet verwijzen naar een werkruimte log Analytics.
+- Lees hoe [Azure Monitor-gegevens](../../azure-monitor/log-query/log-query-overview.md) worden opgeslagen.
+- Toegang tot de volledige documentatie voor de [Kusto-querytaal](/azure/kusto/query/).

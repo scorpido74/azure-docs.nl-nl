@@ -1,55 +1,55 @@
 ---
-title: Trigger voor Azure Functions opwarm
-description: Meer informatie over het gebruik van de opwarm-trigger in Azure Functions.
+title: Opwarmtrigger azure-functies
+description: Meer informatie over het gebruik van de opwarmtrigger in Azure-functies.
 documentationcenter: na
 author: alexkarcher-msft
 manager: gwallace
-keywords: Azure functions, functies, gebeurtenis verwerking, opwarm, koude start, Premium, dynamische compute, serverloze architectuur
+keywords: azure-functies, functies, gebeurtenisverwerking, warming-up, koude start, premium, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167315"
 ---
-# <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
+# <a name="azure-functions-warm-up-trigger"></a>Opwarmtrigger azure-functies
 
-In dit artikel wordt uitgelegd hoe u kunt werken met de trigger opwarm in Azure Functions. De trigger opwarm wordt alleen ondersteund voor functie-apps die worden uitgevoerd in een [Premium-abonnement](functions-premium-plan.md). Er wordt een opwarm-trigger aangeroepen wanneer een exemplaar wordt toegevoegd om een actieve functie-app te schalen. U kunt een opwarm-trigger gebruiken om vooraf aangepaste afhankelijkheden te laden tijdens het [voorbereidings proces](./functions-premium-plan.md#pre-warmed-instances) , zodat uw functies gereed zijn om het verwerken van aanvragen onmiddellijk te starten. 
+In dit artikel wordt uitgelegd hoe u werken met de opwarmtrigger in Azure-functies. De opwarmtrigger wordt alleen ondersteund voor functie-apps die worden uitgevoerd in een [Premium-abonnement.](functions-premium-plan.md) Er wordt een opwarmtrigger aangeroepen wanneer een instantie wordt toegevoegd om een functie-app voor hardlopen te schalen. U een opwarmtrigger gebruiken om aangepaste afhankelijkheden vooraf te laden tijdens het [voorverwarmende proces,](./functions-premium-plan.md#pre-warmed-instances) zodat uw functies klaar zijn om onmiddellijk te beginnen met het verwerken van aanvragen. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
+## <a name="packages---functions-2x-and-higher"></a>Pakketten - Functies 2.x en hoger
 
-Het pakket [micro soft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet, versie **3.0.5 of hoger** is vereist. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) . 
+Het [NuGet-pakket microsoft.azure.webjobs.extensions,versie](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) **3.0.5 of hoger** is vereist. Broncode voor het pakket bevindt zich in de [GitHub-repository van Azure-Webjobs-sdk-extensions.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Trigger
 
-Met de trigger opwarm kunt u een functie definiëren die wordt uitgevoerd op een nieuw exemplaar wanneer deze wordt toegevoegd aan uw actieve app. U kunt een opwarm-functie gebruiken om verbindingen te openen, afhankelijkheden te laden of andere aangepaste logica uit te voeren voordat uw app verkeer ontvangt. 
+Met de opwarmtrigger u een functie definiëren die wordt uitgevoerd op een nieuw exemplaar wanneer deze wordt toegevoegd aan uw hardloopapp. U een opwarmfunctie gebruiken om verbindingen te openen, afhankelijkheden te laden of andere aangepaste logica uit te voeren voordat uw app verkeer begint te ontvangen. 
 
-De trigger opwarm is bedoeld voor het maken van gedeelde afhankelijkheden die worden gebruikt door de andere functies in uw app. [Zie hier voor voor beelden van gedeelde afhankelijkheden](./manage-connections.md#client-code-examples).
+De opwarmtrigger is bedoeld om gedeelde afhankelijkheden te maken die worden gebruikt door de andere functies in uw app. [Bekijk hier voorbeelden van gedeelde afhankelijkheden.](./manage-connections.md#client-code-examples)
 
-Houd er rekening mee dat de trigger opwarm alleen wordt aangeroepen tijdens scale-out bewerkingen, niet tijdens het opnieuw opstarten of het niet schalen van de schaal. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
+Houd er rekening mee dat de opwarmtrigger alleen wordt aangeroepen tijdens scale-outbewerkingen, niet tijdens het opnieuw opstarten of andere niet-schaal start-ups. U moet ervoor zorgen dat uw logica alle benodigde afhankelijkheden kan laden zonder de opwarmtrigger te gebruiken. Lazy loading is een goed patroon om dit te bereiken.
 
 ## <a name="trigger---example"></a>Trigger - voorbeeld
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app. Een retour waarde-kenmerk is niet vereist.
+In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die op elk nieuw exemplaar wordt uitgevoerd wanneer deze aan uw app wordt toegevoegd. Een toeschrijfattribuut retourwaarde is niet vereist.
 
 
-* De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
-* Als u opwarm als een .NET-klassen bibliotheek functie wilt gebruiken, moet u een pakket verwijzing naar **micro soft. Azure. webjobs. Extensions > = 3.0.5**
+* Uw functie moet ```warmup``` een naam hebben (case-ongevoelig) en er kan slechts één opwarmfunctie per app zijn.
+* Als u warming-up wilt gebruiken als een .NET-klassebibliotheekfunctie, moet u een pakketverwijzing naar **Microsoft.Azure.WebJobs.Extensions >= 3.0.5**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
 
-In de tijdelijke aanduiding opmerkingen wordt aangegeven waar in de toepassing gedeelde afhankelijkheden moeten worden gedeclareerd en geïnitialiseerd. 
-Meer [informatie over gedeelde afhankelijkheden vindt u hier](./manage-connections.md#client-code-examples).
+Tijdelijke opmerkingen geven aan waar in de toepassing gedeelde afhankelijkheden moeten worden aangegeven en geïnitialiseren. 
+[Meer informatie over gedeelde afhankelijkheden vindt u hier](./manage-connections.md#client-code-examples).
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [ C# script-functie](functions-reference-csharp.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voorbeeld wordt een opwarmtrigger weergegeven in een *function.json-bestand* en een [C#-scriptfunctie](functions-reference-csharp.md) die op elk nieuw exemplaar wordt uitgevoerd wanneer deze aan uw app wordt toegevoegd.
 
-De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
+Uw functie moet ```warmup``` een naam hebben (case-ongevoelig) en er kan slechts één opwarmfunctie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -94,9 +94,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#trigger---configuration) worden deze eigenschappen uitgelegd.
 
-Dit is C# de script code die wordt gekoppeld aan `HttpRequest`:
+Hier is C# scriptcode die `HttpRequest`zich bindt aan:
 
 ```cs
 public static void Run(ILogger log)
@@ -105,13 +105,13 @@ public static void Run(ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voorbeeld wordt een opwarmtrigger weergegeven in een *function.json-bestand* en een [JavaScript-functie](functions-reference-node.md) die op elk nieuw exemplaar wordt uitgevoerd wanneer deze aan uw app wordt toegevoegd.
 
-De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
+Uw functie moet ```warmup``` een naam hebben (case-ongevoelig) en er kan slechts één opwarmfunctie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -125,9 +125,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#trigger---configuration) worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -136,13 +136,13 @@ module.exports = async function (context, warmupContext) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voorbeeld wordt een opwarmtrigger weergegeven in een *function.json-bestand* en een [Python-functie](functions-reference-python.md) die op elk nieuw exemplaar wordt uitgevoerd wanneer deze aan uw app wordt toegevoegd.
 
-De functie moet een naam hebben ```warmup``` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
+Uw functie moet ```warmup``` een naam hebben (case-ongevoelig) en er kan slechts één opwarmfunctie per app zijn.
 
-Hier is het bestand *Function. json* :
+Hier is het *function.json* bestand:
 
 ```json
 {
@@ -156,9 +156,9 @@ Hier is het bestand *Function. json* :
 }
 ```
 
-In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
+In de [configuratiesectie](#trigger---configuration) worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 import logging
@@ -169,11 +169,11 @@ def main(warmupContext: func.Context) -> None:
     logging.info('Function App instance is warm 🌞🌞🌞')
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een opwarm-trigger die wordt uitgevoerd wanneer elk nieuw exemplaar wordt toegevoegd aan uw app.
+In het volgende voorbeeld wordt een opwarmtrigger weergegeven die wordt uitgevoerd wanneer elk nieuw exemplaar aan uw app wordt toegevoegd.
 
-De functie moet een naam hebben `warmup` (niet hoofdletter gevoelig) en er mag slechts één opwarm-functie per app zijn.
+Uw functie moet `warmup` een naam hebben (case-ongevoelig) en er kan slechts één opwarmfunctie per app zijn.
 
 ```java
 @FunctionName("Warmup")
@@ -186,13 +186,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>Trigger - kenmerken
 
-In [ C# class-bibliotheken](functions-dotnet-class-library.md)is het kenmerk `WarmupTrigger` beschikbaar voor het configureren van de functie.
+In [klassebibliotheken van C#](functions-dotnet-class-library.md)is het kenmerk beschikbaar om de `WarmupTrigger` functie te configureren.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In dit voor beeld ziet u hoe u het kenmerk [opwarm](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) gebruikt.
+In dit voorbeeld wordt uitgelegd hoe u het [kenmerk opwarmt.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)
 
-Houd er rekening mee dat uw functie moet worden aangeroepen ```Warmup``` en dat er slechts één opwarm-functie per app kan zijn.
+Houd er rekening mee ```Warmup``` dat uw functie moet worden aangeroepen en dat er slechts één opwarmfunctie per app kan zijn.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -203,47 +203,47 @@ Houd er rekening mee dat uw functie moet worden aangeroepen ```Warmup``` en dat 
         }
 ```
 
-Zie voor een volledig voor beeld het [voor beeld](#trigger---example)van de trigger.
+Zie het [voorbeeld van](#trigger---example)de trigger voor een volledig voorbeeld .
 
-# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# het script.
+Kenmerken worden niet ondersteund door C# Script.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
+De opwarmtrigger wordt niet ondersteund in Java als attribuut.
 
 ---
 
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `WarmupTrigger`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `WarmupTrigger` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
-| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in`. |
-| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
+| **Type** | N.v.t.| Vereist - moet `warmupTrigger`worden ingesteld op . |
+| **direction** | N.v.t.| Vereist - moet `in`worden ingesteld op . |
+| **Naam** | N.v.t.| Vereist - de variabele naam die wordt gebruikt in functiecode.|
 
 ## <a name="trigger---usage"></a>Trigger - gebruik
 
-Er wordt geen aanvullende informatie verstrekt aan een door opwarm geactiveerde functie wanneer deze wordt aangeroepen.
+Er wordt geen aanvullende informatie verstrekt aan een opwarmfunctie wanneer deze wordt aangeroepen.
 
-## <a name="trigger---limits"></a>Trigger-limieten
+## <a name="trigger---limits"></a>Trigger - limieten
 
-* De trigger opwarm is alleen beschikbaar voor apps die worden uitgevoerd op het [Premium-abonnement](./functions-premium-plan.md).
-* De trigger opwarm wordt alleen aangeroepen tijdens het schalen van bewerkingen, niet tijdens het opnieuw opstarten of andere niet-geschaalde opstart handelingen. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
-* De trigger opwarm kan niet worden aangeroepen als er al een exemplaar wordt uitgevoerd.
-* Er kan slechts één opwarm-trigger functie per functie-app zijn.
+* De opwarmtrigger is alleen beschikbaar voor apps die op het [Premium-abonnement](./functions-premium-plan.md)worden uitgevoerd.
+* De opwarmtrigger wordt alleen aangeroepen tijdens scale-upbewerkingen, niet tijdens het opnieuw opstarten of andere niet-schaal start-ups. U moet ervoor zorgen dat uw logica alle benodigde afhankelijkheden kan laden zonder de opwarmtrigger te gebruiken. Lazy loading is een goed patroon om dit te bereiken.
+* De opwarmtrigger kan niet worden aangeroepen zodra een instantie al wordt uitgevoerd.
+* Er kan slechts één opwarmtriggerfunctie per functie-app zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
+[Meer informatie over triggers en bindingen voor Azure-functies](functions-triggers-bindings.md)

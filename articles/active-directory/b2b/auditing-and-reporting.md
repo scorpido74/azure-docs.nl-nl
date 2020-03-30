@@ -1,6 +1,6 @@
 ---
-title: Een B2B-samenwerkings gebruiker controleren en rapporteren-Azure AD
-description: Eigenschappen van gast gebruikers kunnen worden geconfigureerd in Azure Active Directory B2B-samen werking
+title: Controleren en rapporteren van een B2B-samenwerkingsgebruiker - Azure AD
+description: Eigenschappen van gastgebruikers kunnen worden geconfigureerd in Azure Active Directory B2B-samenwerking
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,29 +13,29 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74273300"
 ---
-# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Een B2B-samenwerkings gebruiker controleren en rapporteren
-Met gast gebruikers hebt u controle mogelijkheden die vergelijkbaar zijn met gebruikers van leden. 
+# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Controle en rapportage van een B2B-samenwerkingsgebruiker
+Met gastgebruikers hebt u controlemogelijkheden die vergelijkbaar zijn met die van leden. 
 
 ## <a name="access-reviews"></a>Toegangsbeoordelingen
-U kunt toegangs beoordelingen gebruiken om periodiek te controleren of gast gebruikers nog steeds toegang tot uw resources nodig hebben. De functie **toegangs beoordelingen** is beschikbaar in **Azure Active Directory** onder > **organisatie relaties** **beheren** . (U kunt ook zoeken naar ' toegangs beoordelingen ' van **alle services** in de Azure Portal.) Zie [gast toegang beheren met Azure AD-toegangs beoordelingen](../governance/manage-guest-access-with-access-reviews.md)voor meer informatie over het gebruik van toegangs Beoordelingen.
+U toegangsbeoordelingen gebruiken om periodiek te controleren of gastgebruikers nog steeds toegang tot uw bronnen nodig hebben. De functie **Toegangsrecensies** is beschikbaar in **Azure Active Directory** onder**Organisatierelaties** **beheren** > . (U ook zoeken naar 'toegangsbeoordelingen' van **alle services** in de Azure-portal.) Zie [Gasttoegang beheren met Azure AD-toegangsbeoordelingen](../governance/manage-guest-access-with-access-reviews.md)voor meer informatie over het gebruik van toegangsbeoordelingen.
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-De audit logboeken van Azure AD bieden records van systeem-en gebruikers activiteiten, waaronder activiteiten die worden geïnitieerd door gast gebruikers. Als u de controle logboeken wilt openen, selecteert u in **Azure Active Directory** **controle logboeken**onder **bewaking**. Hier volgt een voor beeld van de uitnodiging en de geschiedenis van de genodigden van de SAM oogle:
+De Azure AD-controlelogboeken bieden records van systeem- en gebruikersactiviteiten, inclusief activiteiten die zijn geïnitieerd door gastgebruikers. Als u controlelogboeken wilt openen, selecteert u in **Azure Active Directory**onder **Controle**de optie **Controlelogboeken**. Hier is een voorbeeld van de uitnodiging en verlossing geschiedenis van genodigde Sam Oogle:
 
-![Scherm afbeelding met een voor beeld van een controle logboek uitvoer](./media/auditing-and-reporting/audit-log.png)
+![Schermafbeelding en voorbeeld van de uitvoer van het controlelogboek](./media/auditing-and-reporting/audit-log.png)
 
-U kunt aan elk van deze gebeurtenissen beginnen om de details op te halen. Laten we bijvoorbeeld de acceptatie gegevens bekijken.
+U duiken in elk van deze evenementen om de details te krijgen. Laten we bijvoorbeeld eens kijken naar de acceptatiedetails.
 
-![Scherm afbeelding met een voor beeld van uitvoer van de activiteit Details](./media/auditing-and-reporting/activity-details.png)
+![Schermafbeelding en voorbeeld van de uitvoer van activiteitsdetails](./media/auditing-and-reporting/activity-details.png)
 
-U kunt deze logboeken ook exporteren vanuit Azure AD en het rapportage programma gebruiken om aangepaste rapporten op te halen.
+U deze logboeken ook exporteren vanuit Azure AD en het rapportageprogramma van uw keuze gebruiken om aangepaste rapporten te krijgen.
 
 ### <a name="next-steps"></a>Volgende stappen
 

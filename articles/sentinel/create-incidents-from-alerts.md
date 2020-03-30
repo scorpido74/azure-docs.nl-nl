@@ -1,6 +1,6 @@
 ---
-title: Incidenten maken op basis van waarschuwingen in azure Sentinel | Microsoft Docs
-description: Meer informatie over het maken van incidenten op basis van waarschuwingen in azure Sentinel.
+title: Incidenten maken op gebruik van waarschuwingen in Azure Sentinel | Microsoft Documenten
+description: Meer informatie over het maken van incidenten op gebruik maken van waarschuwingen in Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,57 +16,57 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77587971"
 ---
-# <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisch incidenten maken op basis van beveiligings waarschuwingen van micro soft
+# <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisch incidenten maken vanuit microsoft-beveiligingswaarschuwingen
 
-Waarschuwingen die zijn geactiveerd in micro soft-beveiligings oplossingen die zijn verbonden met Azure Sentinel, zoals Microsoft Cloud App Security en Azure Advanced Threat Protection, maken geen incidenten automatisch in azure Sentinel. Wanneer u een micro soft-oplossing verbindt met Azure Sentinel, wordt elke waarschuwing die in die service wordt gegenereerd, als onbewerkte gegevens opgeslagen in azure Sentinel, in de tabel beveiligings waarschuwing in uw Azure Sentinel-werk ruimte. U kunt deze gegevens vervolgens gebruiken, zoals andere onbewerkte gegevens die u in Sentinel maakt.
+Waarschuwingen die worden geactiveerd in microsoft-beveiligingsoplossingen die zijn verbonden met Azure Sentinel, zoals Microsoft Cloud App Security en Azure Advanced Threat Protection, leiden niet automatisch tot incidenten in Azure Sentinel. Wanneer u een Microsoft-oplossing koppelt aan Azure Sentinel, wordt elke waarschuwing die in die service wordt gegenereerd standaard opgeslagen als ruwe gegevens in Azure Sentinel, in de tabel Beveiligingswaarschuwing in uw Azure Sentinel-werkruimte. U die gegevens vervolgens gebruiken zoals alle andere ruwe gegevens die u met Sentinel verbindt.
 
-U kunt Azure Sentinel zo configureren dat er automatisch incidenten worden gemaakt telkens wanneer er een waarschuwing wordt geactiveerd in een verbonden micro soft-beveiligings oplossing, door de instructies in dit artikel te volgen.
+U Azure Sentinel eenvoudig configureren om automatisch incidenten te maken telkens wanneer een waarschuwing wordt geactiveerd in een verbonden Microsoft-beveiligingsoplossing door de instructies in dit artikel te volgen.
 
 ## <a name="prerequisites"></a>Vereisten
-U moet [micro soft-beveiligings oplossingen verbinden](connect-data-sources.md#data-connection-methods) om het maken van incidenten vanuit beveiligings Service waarschuwingen in te scha kelen.
+U moet [microsoft-beveiligingsoplossingen verbinden](connect-data-sources.md#data-connection-methods) om het maken van incidenten mogelijk te maken via waarschuwingen van beveiligingsservices.
 
-## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Analytische regels voor het maken van micro soft-beveiligings incidenten gebruiken
+## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Analytische regels voor het maken van incidenten met Microsoft Security gebruiken
 
-Gebruik de ingebouwde regels die beschikbaar zijn in azure Sentinel om te kiezen welke verbonden beveiligings oplossingen van micro soft Azure-Sentinel-incidenten automatisch in realtime moeten maken. U kunt ook de regels bewerken om meer specifieke opties te definiëren voor het filteren van de waarschuwingen die worden gegenereerd door de micro soft-beveiligings oplossing om incidenten te maken in azure Sentinel. U kunt bijvoorbeeld alleen Azure-Sentinel-incidenten automatisch maken op basis van waarschuwingen voor hoge urgentie Azure Security Center.
+Gebruik de ingebouwde regels die beschikbaar zijn in Azure Sentinel om te kiezen welke verbonden Microsoft-beveiligingsoplossingen azure sentinel-incidenten automatisch in realtime moeten maken. U de regels ook bewerken om meer specifieke opties te definiëren voor het filteren van welke waarschuwingen die door de Microsoft-beveiligingsoplossing worden gegenereerd, incidenten in Azure Sentinel moeten veroorzaken. U er bijvoorbeeld voor kiezen om Azure Sentinel-incidenten automatisch alleen te maken op basis van azure security center-waarschuwingen met hoge ernst.
 
-1. Selecteer in de Azure Portal onder Azure Sentinel **Analytics**.
+1. Selecteer **Analytics**in de Azure-portal onder Azure Sentinel .
 
-1. Selecteer het tabblad **regel sjablonen** om alle ingebouwde analytische regels weer te geven.
+1. Selecteer het tabblad **Regelsjablonen** om alle ingebouwde analytische regels weer te geven.
 
-    ![Regel sjablonen](media/incidents-from-alerts/rule-templates.png)
+    ![Regelsjablonen](media/incidents-from-alerts/rule-templates.png)
 
-1. Kies de **micro soft security** Analytics-regel sjabloon die u wilt gebruiken en klik op **regel maken**.
+1. Kies de **microsoft-regelsjabloon voor beveiligingsanalyse** die u wilt gebruiken en klik op **Regel maken**.
 
-    ![Regel voor beveiligings analyse](media/incidents-from-alerts/security-analytics-rule.png)
+    ![Beveiligingsanalyseregel](media/incidents-from-alerts/security-analytics-rule.png)
 
-1. U kunt de regel details wijzigen en ervoor kiezen om de waarschuwingen te filteren waarmee incidenten worden gemaakt op basis van de ernst van de waarschuwing of de tekst in de naam van de waarschuwing.  
+1. U de regeldetails wijzigen en ervoor kiezen om de waarschuwingen te filteren die incidenten veroorzaken op basis van de ernst van de waarschuwing of op tekst in de naam van de waarschuwing.  
       
-    Als u bijvoorbeeld **Azure Security Center** in het veld **micro soft-beveiligings service** kiest en **hoog** kiest in het veld **filteren op Ernst** , worden er door alleen waarschuwingen met hoge Ernst Azure Security Center automatisch incidenten in azure Sentinel gemaakt.  
+    Als u bijvoorbeeld **Azure Security Center** kiest in het veld **Beveiligingsservice van Microsoft** en **Hoog** kiest in het veld Filter **op ernst,** worden alleen waarschuwingen voor Azure Security Center met hoge ernst automatisch gemaakt in Azure Sentinel.  
 
-    ![Wizard regel maken](media/incidents-from-alerts/create-rule-wizard.png)
+    ![Regelwizard maken](media/incidents-from-alerts/create-rule-wizard.png)
 
-1. U kunt ook een nieuwe **micro soft-beveiligings** regel maken waarmee waarschuwingen van verschillende micro soft-beveiligings services worden gefilterd door te klikken op **+ maken** en de regel voor het maken van een **micro soft-incident**te selecteren
+1. U ook een nieuwe **Microsoft-beveiligingsregel** maken die waarschuwingen van verschillende Microsoft-beveiligingsservices filtert door te klikken op **+Microsoft-regel voor** **het maken van incidenten**maken en selecteren.
 
     ![Regel voor het maken van incidenten](media/incidents-from-alerts/incident-creation-rule.png)
 
-  U kunt meer dan één **micro soft-beveiligings** analyse regel maken per type **beveiligings service van micro soft** . Er worden geen dubbele incidenten gemaakt, omdat elke regel wordt gebruikt als een filter. Zelfs als een waarschuwing overeenkomt met meer dan één **micro soft-beveiligings** analyse regel, wordt slechts één onderverklikker incident van Azure gemaakt.
+  U meer dan één analytische regel voor Microsoft Security maken per **microsoft-beveiligingsservicetype.** **Microsoft Security** Hierdoor worden geen dubbele incidenten gemaakt, omdat elke regel als filter wordt gebruikt. Zelfs als een waarschuwing overeenkomt met meer dan één analytische regel **van Microsoft Security,** wordt slechts één Azure Sentinel-incident veroorzaakt.
 
-## <a name="enable-incident-generation-automatically-during-connection"></a>Genereren van incidenten automatisch inschakelen tijdens verbinding
- Wanneer u een micro soft-beveiligings oplossing verbindt, kunt u selecteren of u wilt dat de waarschuwingen van de beveiligings oplossing automatisch incidenten in azure Sentinel automatisch genereren.
+## <a name="enable-incident-generation-automatically-during-connection"></a>Incidentgeneratie automatisch inschakelen tijdens verbinding
+ Wanneer u een Microsoft-beveiligingsoplossing aanverbindt, u selecteren of u wilt dat de waarschuwingen van de beveiligingsoplossing automatisch incidenten genereren in Azure Sentinel.
 
-1. Verbind een gegevens bron met een micro soft-beveiligings oplossing. 
+1. Verbind een gegevensbron voor microsoft-beveiligingsoplossingen. 
 
-   ![Beveiligings incidenten genereren](media/incidents-from-alerts/generate-security-incidents.png)
+   ![Beveiligingsincidenten genereren](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
+1. Selecteer **onder Incidenten maken** **inschakelen** om de standaardanalytische regel in te schakelen die incidenten automatisch maakt op uit waarschuwingen die zijn gegenereerd in de verbonden beveiligingsservice. U deze regel vervolgens bewerken onder **Analytics** en vervolgens **Actieve regels**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U hebt een abonnement op Microsoft Azure nodig om aan de slag te gaan met Azure Sentinel. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/).
-- Meer informatie over het [voorbereiden van uw gegevens naar Azure Sentinel](quickstart-onboard.md)en [inzicht krijgen in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Om aan de slag te gaan met Azure Sentinel, hebt u een abonnement op Microsoft Azure nodig. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/).
+- Meer informatie over het [gebruik van uw gegevens naar Azure Sentinel](quickstart-onboard.md)en inzicht krijgen in uw gegevens en potentiële [bedreigingen.](quickstart-get-visibility.md)

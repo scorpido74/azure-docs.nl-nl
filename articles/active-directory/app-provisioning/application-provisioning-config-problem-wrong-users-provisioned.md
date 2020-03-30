@@ -1,6 +1,6 @@
 ---
-title: Er is een onjuiste set gebruikers ingericht voor een Azure AD Gallery-app
-description: Meer informatie over hoe u kunt nagaan waarom een andere set gebruikers wordt ingericht voor een toepassing dan de toepassingen die u verwacht
+title: Verkeerde set gebruikers is ingericht in een Azure AD Gallery-app
+description: Meer informatie over hoe u weten waarom een andere groep gebruikers wordt ingericht voor een toepassing dan u zou verwachten
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,100 +17,100 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c94388011605da73666e82011bb8ef56d2af8d30
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522778"
 ---
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing
+# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Verkeerde set gebruikers wordt ingericht voor een Azure AD Gallery-toepassing
 
-Welke gebruikers worden ingericht voor de app, worden voornamelijk bestuurd door de gebruikers en groepen die zijn **toegewezen** aan de toepassing.
+Welke gebruikers zijn ingericht op de app wordt voornamelijk aangestuurd door welke gebruikers en groepen zijn **toegewezen aan** de toepassing.
 
-Gebruik de volgende bronnen om te leren hoe u kunt controleren welke gebruikers en groepen zijn toegewezen aan een toepassing in Azure Active Directory.
+Gebruik de volgende bronnen om te zien hoe u controleren welke gebruikers en groepen zijn toegewezen aan een toepassing in Azure Active Directory.
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Een gebruiker rechtstreeks toewijzen als beheerder
+## <a name="assign-a-user-directly-as-an-administrator"></a>Een gebruiker rechtstreeks als beheerder toewijzen
 
-Voer de volgende stappen uit om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing:
+Voer de volgende stappen uit om een of meer gebruikers rechtstreeks aan een toepassing toe te wijzen:
 
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
 
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
+   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
 
-6. Selecteer de toepassing die u wilt toewijzen van een gebruiker in de lijst.
+6. Selecteer de toepassing waaraan u een gebruiker wilt toewijzen uit de lijst.
 
-7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
+7. Zodra de toepassing wordt geladen, klikt u op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
 
-8. Als u het deel venster **toewijzing toevoegen** wilt openen, klikt u op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** .
+8. Als u het deelvenster Toewijzing toevoegen wilt **openen,** klikt u op de knop **Toevoegen** boven aan de lijst **Gebruikers en groepen.**
 
-9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
+9. klik op de selectie **voor gebruikers en groepen** in het deelvenster Toewijzing **toevoegen.**
 
-10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
+10. Typ de **volledige naam** of het volledige **e-mailadres** van de gebruiker die u wilt toewijzen aan het zoekvak Zoeken op naam of **e-mailadres.**
 
-11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast de foto of het logo van het profiel van de gebruiker om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
+11. Plaats de **plaats van** de gebruiker in de lijst om een **selectievakje**te onthullen. Klik op het selectievakje naast de profielfoto of het logo van de gebruiker om uw gebruiker toe te voegen aan de **lijst Geselecteerde.**
 
-12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
+12. **Optioneel:** Als u meer dan één gebruiker wilt **toevoegen,** typt u een andere **volledige naam** of **e-mailadres** in het zoekvak **Zoeken op naam of e-mailadres** en klikt u op het selectievakje om deze gebruiker toe te voegen aan de **lijst Geselecteerde.**
 
-13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
+13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **Selecteren** om deze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
+14. **Optioneel:** klik op de rolkiezer **selecteren** in het deelvenster **Toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
 
-15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
+15. Klik **op** de knop Toewijzen om de toepassing toe te wijzen aan de geselecteerde gebruikers.
 
-Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in ongeveer 10 minuten worden ingericht voor een toepassing. Raadpleeg de **controle logboeken** voor meer informatie.
+Als de inrichting is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in ongeveer 10 minuten worden ingericht op een toepassing. Controleer de **controlelogboeken** voor meer informatie.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Een groep rechtstreeks aan een toepassing toewijzen als beheerder
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Een groep rechtstreeks toewijzen aan een toepassing als beheerder
 
-Voer de volgende stappen uit om een of meer groepen rechtstreeks toe te wijzen aan een toepassing:
+Voer de volgende stappen uit om een of meer groepen rechtstreeks aan een toepassing toe te wijzen:
 
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
+2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
 
-3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
+3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
 
-4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
+4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
 
-5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
+   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
 
-6. Selecteer de toepassing die u wilt toewijzen van een gebruiker in de lijst.
+6. Selecteer de toepassing waaraan u een gebruiker wilt toewijzen uit de lijst.
 
-7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
+7. Zodra de toepassing wordt geladen, klikt u op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
 
-8. Als u het deel venster **toewijzing toevoegen** wilt openen, klikt u op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** .
+8. Als u het deelvenster Toewijzing toevoegen wilt **openen,** klikt u op de knop **Toevoegen** boven aan de lijst **Gebruikers en groepen.**
 
-9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
+9. klik op de selectie **voor gebruikers en groepen** in het deelvenster Toewijzing **toevoegen.**
 
-10. Typ de **volledige groeps naam** van de groep die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
+10. Typ de **volledige groepsnaam** van de groep die u wilt toewijzen aan het zoekvak **Zoeken op naam of e-mailadres.**
 
-11. Beweeg de muis aanwijzer over de **groep** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast het profiel foto of logo van de groep om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
+11. Plaats de **plaats in** de groep in de lijst om een **selectievakje**te onthullen. Klik op het selectievakje naast de profielfoto of het logo van de groep om uw gebruiker toe te voegen aan de **lijst Geselecteerd.**
 
-12. **Optioneel:** Als u **meer dan één groep wilt toevoegen**, typt u een andere **volledige groeps naam** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze groep aan de **geselecteerde** lijst toe te voegen.
+12. **Optioneel:** Als u meer dan één groep wilt **toevoegen,** typt u een andere **volledige groepsnaam** in het zoekvak **Zoeken op naam of e-mailadres** en klikt u op het selectievakje om deze groep toe te voegen aan de lijst **Geselecteerd.**
 
-13. Wanneer u klaar bent met het selecteren van groepen, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
+13. Wanneer u klaar bent met het selecteren van groepen, klikt u op de knop **Selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de groepen die u hebt geselecteerd.
+14. **Optioneel:** klik op de rolkiezer **selecteren** in het deelvenster **Toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de groepen die u hebt geselecteerd.
 
-15. Klik op de knop **toewijzen** om de toepassing toe te wijzen aan de geselecteerde groepen.
+15. Klik **op** de knop Toewijzen om de toepassing toe te wijzen aan de geselecteerde groepen.
 
-Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in de groep ongeveer 10 minuten worden ingericht voor een toepassing. Raadpleeg de **controle logboeken** voor meer informatie.
+Als de inrichting is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieuwe gebruikers in de groep in ongeveer 10 minuten worden ingericht op een toepassing. Controleer de **controlelogboeken** voor meer informatie.
 
 >[!IMPORTANT]
->Het inrichten van de groeps naam en groeps gegevens, naast de leden, als deze worden ondersteund voor sommige toepassingen. U kunt deze functie in-of uitschakelen door de **toewijzing** voor groeps objecten die op het tabblad **inrichten** wordt weer gegeven in of uit te scha kelen. 
+>Inrichten van de groepsnaam en groepsgegevens, naast de leden, indien ondersteund voor sommige toepassingen. U deze functionaliteit in- of uitschakelen door de **toewijzing** voor groepsobjecten in te schakelen of uit te schakelen die worden weergegeven op het tabblad **Inrichten.** 
 >
 >
 
-Als inrichtings groepen is ingeschakeld, moet u de kenmerk toewijzingen controleren om ervoor te zorgen dat er een geschikt veld wordt gebruikt voor de ' overeenkomende ID '. Deze overeenkomende ID kan de weergave naam of e-mail alias zijn. De groep en de bijbehorende leden worden niet ingericht als de overeenkomende eigenschap leeg is of niet is ingevuld voor een groep in azure AD.
+Als inrichtingsgroepen is ingeschakeld, moet u de kenmerktoewijzingen controleren om ervoor te zorgen dat een geschikt veld wordt gebruikt voor de 'overeenkomende id'. Deze overeenkomende ID kan de weergavenaam of e-mailalias zijn. De groep en haar leden zijn niet ingericht als de overeenkomende eigenschap leeg is of niet wordt ingevuld voor een groep in Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

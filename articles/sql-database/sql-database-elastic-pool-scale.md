@@ -1,6 +1,6 @@
 ---
 title: Resources voor elastische pools schalen
-description: Op deze pagina wordt de schaal van resources voor elastische Pools in Azure SQL Database beschreven.
+description: Op deze pagina worden schaalresources voor elastische groepen in Azure SQL Database beschreven.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -12,88 +12,88 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
 ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462595"
 ---
-# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische pool-resources in Azure SQL Database schalen
+# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische poolresources schalen in Azure SQL Database
 
-In dit artikel wordt beschreven hoe u de berekenings-en opslag resources die beschikbaar zijn voor elastische Pools en gepoolde data bases in Azure SQL Database kunt schalen.
+In dit artikel wordt beschreven hoe u de beschikbare reken- en opslagbronnen schalen voor elastische pools en samengevoegde databases in Azure SQL Database.
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>Reken bronnen wijzigen (vCores of Dtu's)
+## <a name="change-compute-resources-vcores-or-dtus"></a>Compute resources (vCores of DTU's) wijzigen
 
-Nadat u het aantal vCores of Edtu's hebt gekozen, kunt u een elastische pool dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Nadat u in eerste instantie het aantal vCores of eDTU's hebt gekozen, u een elastische pool dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure-portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell,](/powershell/module/az.sql/Get-AzSqlElasticPool)de [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Gevolgen van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Impact van het wijzigen van de servicelaag of het opnieuw schalen van de rekengrootte
 
-Het wijzigen van de servicelaag of de reken grootte van een elastische pool volgt een vergelijkbaar patroon als voor afzonderlijke data bases en omvat voornamelijk de service die de volgende stappen uitvoert:
+Het wijzigen van de servicelaag of rekengrootte van een elastische groep volgt een vergelijkbaar patroon als voor afzonderlijke databases en houdt voornamelijk in dat de service de volgende stappen uitvoert:
 
-1. Een nieuw reken exemplaar maken voor de elastische pool  
+1. Nieuwe rekeninstantie maken voor de elastische groep  
 
-    Er wordt een nieuw reken exemplaar voor de elastische pool gemaakt met de aangevraagde servicelaag en de berekenings grootte. Voor sommige combi Naties van de service tier en de grootte van de berekening moet er een replica van elke Data Base worden gemaakt in het nieuwe reken exemplaar, waarbij het kopiëren van gegevens is vereist en de algehele latentie kan beïnvloeden. Ongeacht dat de data bases tijdens deze stap online blijven en dat er verbindingen worden uitgevoerd naar de data bases in het oorspronkelijke reken exemplaar.
+    Er wordt een nieuwe rekeninstantie voor de elastische pool gemaakt met de gevraagde servicelaag en rekengrootte. Voor sommige combinaties van wijzigingen in de servicelaag en de rekengrootte moet een replica van elke database worden gemaakt in de nieuwe rekeninstantie, waarbij gegevens worden gekopieerd en de algehele latentie sterk kan worden beïnvloed. Hoe dan ook, de databases blijven online tijdens deze stap en verbindingen blijven worden gericht op de databases in de oorspronkelijke rekeninstantie.
 
-2. Route ring van verbindingen naar een nieuw reken exemplaar overschakelen
+2. Routering van verbindingen naar nieuwe rekeninstantie overschakelen
 
-    Bestaande verbindingen met de data bases in het oorspronkelijke Compute-exemplaar worden verwijderd. Er worden nieuwe verbindingen tot stand gebracht met de data bases in het nieuwe reken exemplaar. Voor sommige combi Naties van service tier-en Compute-wijzigingen worden database bestanden losgekoppeld en opnieuw gekoppeld tijdens de switch.  De switch kan echter een korte service onderbreking veroorzaken wanneer data bases in de meeste gevallen minder dan 30 seconden niet beschikbaar zijn en vaak slechts enkele seconden. Als er langlopende trans acties worden uitgevoerd wanneer de verbindingen worden verbroken, kan de duur van deze stap langer duren om afgebroken trans acties te herstellen. [Versneld database herstel](sql-database-accelerated-database-recovery.md) kan het effect verminderen van het afbreken van langlopende trans acties.
+    Bestaande verbindingen met de databases in de oorspronkelijke rekeninstantie worden verwijderd. Eventuele nieuwe verbindingen worden tot stand gebracht met de databases in de nieuwe rekeninstantie. Voor sommige combinaties van servicelagen en wijzigingen in de rekengrootte worden databasebestanden tijdens de switch losgemaakt en opnieuw gekoppeld.  Hoe dan ook, de schakelaar kan resulteren in een korte onderbreking van de service wanneer databases over het algemeen minder dan 30 seconden en vaak slechts enkele seconden niet beschikbaar zijn. Als er langlopende transacties worden uitgevoerd wanneer verbindingen worden verwijderd, kan de duur van deze stap langer duren om afgebroken transacties te herstellen. [Versneld databaseherstel](sql-database-accelerated-database-recovery.md) kan de impact van het afbreken van langlopende transacties verminderen.
 
 > [!IMPORTANT]
-> Er gaan geen gegevens verloren tijdens elke stap in de werk stroom.
+> Er gaan geen gegevens verloren tijdens een stap in de workflow.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latentie van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latentie van het wijzigen van de servicelaag of het opnieuw schalen van de rekengrootte
 
-De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte van één data base of elastische pool is als volgt:
+De geschatte latentie om de servicelaag te wijzigen of de rekengrootte van één database of elastische groep te wijzigen, wordt als volgt geparameteriseerd:
 
-|Servicelaag|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
+|Servicelaag|Basisdatabase,</br>Standaard (S0-S1)|Basis elastisch zwembad,</br>Standaard (S2-S12), </br>Hyperschaal, </br>Single Database of elastic pool voor algemeen gebruik|Premium of Business Critical enkele database of elastische pool|
 |:---|:---|:---|:---|
-|**Basis enkele data base,</br> Standard (S0-S1)**|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
-|**Basic elastische pool, </br>Standard (S2-S12), </br>grootschalige, </br>Algemeen afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
-|**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basisdatabase,</br> Standaard (S0-S1)**|&bull;&nbsp;Constante tijdlatentie onafhankelijk van de gebruikte ruimte</br>&bull;&nbsp;Meestal minder dan 5 minuten|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|
+|**Basiselastische </br>pool, Standaard (S2-S12), </br>Hyperscale, </br>Algemene Doel enkele database of elastische pool**|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|&bull;&nbsp;Constante tijdlatentie onafhankelijk van de gebruikte ruimte</br>&bull;&nbsp;Meestal minder dan 5 minuten|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|
+|**Premium of Business Critical enkele database of elastische pool**|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|&bull;&nbsp;Latentie evenredig aan databaseruimte die wordt gebruikt vanwege het kopiëren van gegevens</br>&bull;&nbsp;Meestal minder dan 1 minuut per GB aan gebruikte ruimte|
 
 > [!NOTE]
 >
-> - In het geval van het wijzigen van de servicelaag of het opnieuw schalen van de computer voor een elastische pool, moet de som van de ruimte die wordt gebruikt voor alle data bases in de pool worden gebruikt voor het berekenen van de schatting.
-> - In het geval van het verplaatsen van een Data Base naar/van een elastische pool, is alleen de ruimte die wordt gebruikt door de data base van invloed op de latentie, niet de ruimte die wordt gebruikt door de elastische pool.
+> - In het geval van het wijzigen van de servicelaag of het opnieuw schalen van gegevens voor een elastische groep, moet de optelling van ruimte die wordt gebruikt voor alle databases in de groep worden gebruikt om de schatting te berekenen.
+> - In het geval van het verplaatsen van een database van/naar een elastische groep, heeft alleen de ruimte die door de database wordt gebruikt, invloed op de latentie, niet op de ruimte die wordt gebruikt door de elastische pool.
 >
 > [!TIP]
-> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie Voor het monitoren van lopende bewerkingen: [Bewerkingen beheren met de SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), Operations beheren met [CLI,](/cli/azure/sql/db/op) [Monitor operations met Behulp van T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee PowerShell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de rekengrootte
 
-- Wanneer Overweeg vCores of Edtu's voor een elastische pool wordt gebruikt, moet de gebruikte ruimte van de groep kleiner zijn dan de Maxi maal toegestane grootte van de doel-servicelaag en de groeps-Edtu's.
-- Bij het opnieuw schalen van Edtu's voor een elastische pool, geldt een extra opslag kosten als (1) de maximale grootte van de opslag ruimte van de groep wordt ondersteund door de doel groep en (2) de maximale grootte van de opslag ruimte de opgenomen hoeveelheid opslag ruimte van de doel groep overschrijdt. Als bijvoorbeeld een 100 eDTU Standard-pool met een maximale grootte van 100 GB is verkleind aan een standaard groep van 50 eDTU, worden er extra opslag kosten in rekening kunnen worden genomen omdat de doel groep een maximale grootte van 100 GB ondersteunt en de inbegrepen opslag hoeveelheid alleen 50 GB is. De extra opslag ruimte is dus 100 GB – 50 GB = 50 GB. Zie voor prijzen voor extra opslag [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/). Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan het totale aantal opslag, kunnen deze extra kosten worden vermeden door de maximale grootte van de data base te verlagen tot het opgenomen bedrag.
+- Bij het verkleinen van vCores of eDTU's voor een elastische pool moet de gebruikte ruimte kleiner zijn dan de maximaal toegestane grootte van de doelservicelaag en eDTU's.
+- Bij het opnieuw schalen van eDTU's voor een elastische groep gelden extra opslagkosten als (1) de maximale opslaggrootte van de groep wordt ondersteund door de doelgroep en (2) de maximale opslaggrootte groter is dan de meegeleverde opslaghoeveelheid van de doelgroep. Als een 100 eDTU-standaardpool met een maximale grootte van 100 GB bijvoorbeeld is ingekrompen tot een 50 eDTU-standaardgroep, zijn er extra opslagkosten van toepassing omdat doelgroep een maximale grootte van 100 GB ondersteunt en de meegeleverde opslagruimte slechts 50 GB bedraagt. De extra opslagruimte is dus 100 GB – 50 GB = 50 GB. Zie [SQL Database-prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor de prijzen van extra opslag. Als de werkelijke hoeveelheid gebruikte ruimte lager is dan het meegeleverde opslagbedrag, kunnen deze extra kosten worden vermeden door de maximale grootte van de database te verkleinen tot het inbegrepen bedrag.
 
-### <a name="billing-during-rescaling"></a>Facturering tijdens opnieuw schalen
+### <a name="billing-during-rescaling"></a>Facturering tijdens herschalen
 
-Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met de hoogste service laag + reken grootte die tijdens dat uur is toegepast, ongeacht het gebruik of het feit dat de data base minder dan een uur actief was. Als u bijvoorbeeld een enkele data base maakt en deze vijf minuten later verwijdert, wordt de factuur voor één data base uur weer gegeven.
+Er worden kosten in rekening gebracht voor elk uur dat een database bestaat met behulp van de hoogste servicelaag + rekengrootte die tijdens dat uur is toegepast, ongeacht het gebruik of of de database minder dan een uur actief was. Als u bijvoorbeeld één database maakt en deze vijf minuten later verwijdert, wordt in uw factuur een toeslag voor één databaseuur weergegeven.
 
-## <a name="change-elastic-pool-storage-size"></a>Opslag grootte van elastische pool wijzigen
+## <a name="change-elastic-pool-storage-size"></a>De opslaggrootte van elastische groep wijzigen
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> Onder bepaalde omstandigheden moet u mogelijk een database verkleinen om ongebruikte ruimte terug te winnen. Zie [Bestandsruimte beheren in Azure SQL Database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
-- Opslag kan worden ingericht tot de maximale grootte:
+- Opslag kan worden ingericht tot de maximale groottelimiet:
 
-  - Voor opslag in de service lagen standaard of algemeen, verg root of verkleint u de grootte in stappen van 10 GB
-  - Voor opslag in de essentiële of bedrijfskritische service lagen verg root of verkleint u de grootte in stappen van 250 GB
-- Opslag voor een elastische pool kan worden ingericht door de maximale grootte te verhogen of te verlagen.
-- De prijs van opslag voor een elastische pool is de opslag hoeveelheid vermenigvuldigd met de prijs voor de opslag eenheid van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
-
-> [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
-
-### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
-
-- De eDTU-prijs voor een elastische pool bevat een bepaalde hoeveelheid opslag zonder extra kosten. Extra opslag buiten de inbegrepen hoeveelheid kan worden ingericht voor extra kosten tot de maximale grootte in stappen van 250 GB tot 1 TB en vervolgens in stappen van 256 GB tot meer dan 1 TB. Zie [elastische pool: opslag grootten en reken grootten](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)voor inbegrepen opslag bedragen en maximale grootte limieten.
-- Extra opslag voor een elastische pool kan worden ingericht door de maximale grootte te verhogen met behulp van de [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [Power shell](/powershell/module/az.sql/Get-AzSqlElasticPool), de [Azure cli](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
-- De prijs van extra opslag voor een elastische pool is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
+  - Voor opslag in de servicelagen voor standaard of algemeen gebruik u de grootte in stappen van 10 GB vergroten of verkleinen
+  - Voor opslag in de premium- of bedrijfskritieke servicelagen u de grootte in stappen van 250 GB vergroten of verkleinen
+- Opslag voor een elastische pool kan worden ingericht door het verhogen of verkleinen van de maximale grootte.
+- De prijs van opslag voor een elastische groep is de opslaghoeveelheid vermenigvuldigd met de prijs van de opslageenheid van de servicelaag. Zie [SQL Database-prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> Onder bepaalde omstandigheden moet u mogelijk een database verkleinen om ongebruikte ruimte terug te winnen. Zie [Bestandsruimte beheren in Azure SQL Database](sql-database-file-space-management.md)voor meer informatie.
+
+### <a name="dtu-based-purchasing-model"></a>DTU-gebaseerd inkoopmodel
+
+- De eDTU-prijs voor een elastische pool omvat een bepaalde hoeveelheid opslagruimte zonder extra kosten. Extra opslag buiten het meegeleverde bedrag kan worden ingericht voor extra kosten tot de maximale groottelimiet in stappen van 250 GB tot 1 TB, en vervolgens in stappen van 256 GB na 1 TB. Zie [Elastische groep: opslaggroottes en rekengroottes](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)voor inbegrepen opslagbedragen en maximale groottes.
+- Extra opslag voor een elastische groep kan worden ingericht door de maximale grootte te vergroten met behulp van de [Azure-portal,](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases) [PowerShell,](/powershell/module/az.sql/Get-AzSqlElasticPool)de [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)of de [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- De prijs van extra opslag voor een elastischzwembad is de extra opslagruimte vermenigvuldigd met de extra opslageenheidsprijs van de servicelaag. Zie [SQL Database-prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
+
+> [!IMPORTANT]
+> Onder bepaalde omstandigheden moet u mogelijk een database verkleinen om ongebruikte ruimte terug te winnen. Zie [Bestandsruimte beheren in Azure SQL Database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [SQL database op vCore gebaseerde resource](sql-database-vcore-resource-limits-elastic-pools.md) limieten voor algemene resource limieten: elastische pools en [SQL database op DTU gebaseerde resource limieten-elastische Pools](sql-database-dtu-resource-limits-elastic-pools.md).
+Zie SQL Database [vCore-gebaseerde resourcelimieten voor](sql-database-vcore-resource-limits-elastic-pools.md) algemene resourcelimieten - elastische pools en [SQL Database DTU-gebaseerde resourcelimieten - elastische pools](sql-database-dtu-resource-limits-elastic-pools.md).

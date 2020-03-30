@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176680"
 ---
-- Voor toegang tot de gegevens in het Edge-service, moet uw organisatie een Enterprise Agreement (EA) of Cloud Solution Provider (CSP)-abonnement hebben. Zie voor meer informatie, [zich aanmelden voor een Azure-abonnement](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
-- Omdat deze management-service wordt gehost in Azure, wordt deze wordt beveiligd door de functies van Azure-beveiliging. Voor meer informatie over de beveiligingsfuncties die worden geleverd door Azure, gaat u naar de [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
-- SDK-management-bewerkingen, kunt u de versleutelingssleutel aanschaffen voor uw resource in **apparaateigenschappen**. U vindt de versleutelingssleutel alleen als u machtigingen voor de Resource Graph-API hebt.
+- Om toegang te krijgen tot de Data Box Edge-service moet uw organisatie een EA- of Cloud Solution Provider-abonnement (Enterprise Agreement Provider) hebben. Zie [Aanmelden voor een Azure-abonnement voor](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)meer informatie.
+- Omdat deze beheerservice wordt gehost in Azure, wordt deze beschermd door de Azure-beveiligingsfuncties. Ga voor meer informatie over de beveiligingsfuncties van Azure naar het [Microsoft Azure Trust Center.](https://azure.microsoft.com/support/trust-center/security/)
+- Voor SDK-beheerbewerkingen u de versleutelingssleutel voor uw bron downloaden in **apparaateigenschappen.** U de versleutelingssleutel alleen bekijken als u machtigingen hebt voor de Api resourcegraph.

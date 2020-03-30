@@ -1,16 +1,16 @@
 ---
 title: Interne werking van Azure SignalR Service
-description: Meer informatie over de interne service van Azure signalering, de architectuur, de verbindingen en hoe gegevens worden verzonden.
+description: Meer informatie over de internals van Azure SignalR Service, de architectuur, de verbindingen en de manier waarop gegevens worden verzonden.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157594"
 ---
 # <a name="azure-signalr-service-internals"></a>Interne werking van Azure SignalR Service

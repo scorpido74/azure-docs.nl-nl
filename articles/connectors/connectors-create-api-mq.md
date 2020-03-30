@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met de IBM MQ-server
-description: Berichten verzenden en ophalen met een Azure-of on-premises IBM MQ-server en Azure Logic Apps
+title: Verbinding maken met IBM MQ-server
+description: Berichten verzenden en ophalen met een Azure- of on-premises IBM MQ-server en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
@@ -10,135 +10,135 @@ ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
 ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650944"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanuit Azure Logic Apps
 
-De IBM MQ-connector verzendt en haalt berichten op die zijn opgeslagen in een IBM MQ-server on-premises of in Azure. Deze connector bevat een micro soft MQ-client die communiceert met een externe IBM MQ-server via een TCP/IP-netwerk. Dit artikel bevat een Start handleiding voor het gebruik van de MQ-connector. U kunt beginnen door één bericht in een wachtrij te bladeren en vervolgens andere acties uit te proberen.
+De IBM MQ-connector verzendt en haalt berichten op die zijn opgeslagen in een IBM MQ-server op locatie of in Azure. Deze connector bevat een Microsoft MQ-client die communiceert met een externe IBM MQ-server via een TCP/IP-netwerk. Dit artikel biedt een startgids voor het gebruik van de MQ-connector. U beginnen met één bericht in een wachtrij te bladeren en vervolgens andere acties uit te proberen.
 
 De IBM MQ-connector bevat deze acties, maar biedt geen triggers:
 
-- Door één bericht bladeren zonder het bericht te verwijderen van de IBM MQ-server
-- Bladeren in een batch berichten zonder de berichten van de IBM MQ-server te verwijderen
-- Eén bericht ontvangen en het bericht verwijderen van de IBM MQ-server
-- Een batch berichten ontvangen en de berichten van de IBM MQ-server verwijderen
+- Blader door één bericht zonder het bericht van de IBM MQ-server te verwijderen
+- Blader door een batch berichten zonder de berichten van de IBM MQ-server te verwijderen
+- Ontvang één bericht en verwijder het bericht van de IBM MQ-server
+- Ontvang een batch berichten en verwijder de berichten van de IBM MQ-server
 - Eén bericht verzenden naar de IBM MQ-server
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u een on-premises MQ-server gebruikt, [installeert u de on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) op een server in uw netwerk. Op de server waarop de on-premises gegevens gateway is geïnstalleerd moet ook .NET Framework 4,6 zijn geïnstalleerd om de MQ-connector te kunnen gebruiken. U moet ook een resource in azure maken voor de on-premises gegevens gateway. Zie [de data gateway-verbinding instellen](../logic-apps/logic-apps-gateway-connection.md)voor meer informatie.
+* Als u een on-premises MQ-server gebruikt, [installeert u de on-premises gegevensgateway](../logic-apps/logic-apps-gateway-install.md) op een server binnen uw netwerk. De server waarop de on-premises datagateway is geïnstalleerd, moet ook .NET Framework 4.6 hebben geïnstalleerd om de MQ-connector te laten werken. U moet ook een bron maken in Azure voor de on-premises gegevensgateway. Zie De verbinding met [de gegevensgateway instellen](../logic-apps/logic-apps-gateway-connection.md)voor meer informatie .
 
-  Als uw MQ-server echter openbaar beschikbaar of beschikbaar is in azure, hoeft u de gegevens gateway niet te gebruiken.
+  Als uw MQ-server echter openbaar beschikbaar is of beschikbaar is in Azure, hoeft u de gegevensgateway niet te gebruiken.
 
-* Officieel ondersteunde IBM WebSphere MQ-versies:
+* Officieel ondersteunde IBM WebSphere MQ versies:
 
-  * MQ 7,5
-  * MQ 8,0
-  * MQ 9,0
+  * MQ 7.5
+  * MQ 8.0
+  * MQ 9.0
 
-* De logische app waaraan u de MQ-actie wilt toevoegen. Deze logische app moet dezelfde locatie gebruiken als uw on-premises gegevens gateway-verbinding en moet al een trigger hebben waarmee de werk stroom wordt gestart. 
+* De logische app waar u de MQ-actie wilt toevoegen. Deze logische app moet dezelfde locatie gebruiken als uw on-premises datagatewayverbinding en moet al een trigger hebben waarmee uw werkstroom wordt gestart. 
 
-  De MQ-connector heeft geen triggers, dus u moet eerst een trigger toevoegen aan uw logische app. U kunt bijvoorbeeld de terugkeer patroon trigger gebruiken. Als u geen ervaring hebt met Logic apps, kunt u deze [Snelstartgids proberen om uw eerste logische app te maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  De MQ-connector heeft geen triggers, dus u moet eerst een trigger toevoegen aan uw logische app. U bijvoorbeeld de recidieftrigger gebruiken. Als u nieuw bent in logische apps, probeert u deze [snelle start om uw eerste logische app te maken.](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
-## <a name="browse-a-single-message"></a>Door één bericht bladeren
+## <a name="browse-a-single-message"></a>Blader door één bericht
 
-1. Kies in uw logische app, onder de trigger of andere actie, de optie **nieuwe stap**. 
+1. Kies in uw logica-app, onder de trigger of een andere actie, De optie **Nieuwe stap**. 
 
-1. Typ ' MQ ' in het zoekvak en selecteer deze actie: **door bericht bladeren**
+1. Typ in het zoekvak 'mq' en selecteer deze actie: **Blader door bericht**
 
-   ![Bericht door bladeren](media/connectors-create-api-mq/Browse_message.png)
+   ![Bladeren door bericht](media/connectors-create-api-mq/Browse_message.png)
 
 1. Als u geen bestaande MQ-verbinding hebt, maakt u de verbinding:  
 
-   1. Selecteer in de actie **verbinding maken via on-premises gegevens gateway**.
+   1. Selecteer in de actie **Verbinding maken via on-premises datagateway.**
    
    1. Voer de eigenschappen voor uw MQ-server in.  
 
-      Voor de **Server**kunt u de naam van de MQ-server invoeren of het IP-adres invoeren, gevolgd door een dubbele punt en het poort nummer.
+      Voor **Server**u de naam mq-server invoeren of het IP-adres invoeren, gevolgd door een dubbele punt en het poortnummer.
     
-   1. Open de lijst met **gateways** , waarin eerder geconfigureerde gateway verbindingen worden weer gegeven. Selecteer uw gateway.
+   1. Open de **gatewaylijst,** waarin eerder geconfigureerde gatewayverbindingen worden weergegeven. Selecteer uw gateway.
     
    1. Wanneer u klaar bent, kiest u **Maken**. 
    
-      Uw verbinding ziet eruit als in dit voor beeld:
+      Uw verbinding ziet er als volgt uit:
 
       ![Verbindingseigenschappen](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. De eigenschappen van de actie instellen:
 
-   * **Wachtrij**: Geef een wachtrij op die verschilt van de verbinding.
+   * **Wachtrij:** Geef een wachtrij op die verschilt van de verbinding.
 
-   * **MessageId**, **CorrelationId**, **GroupId**en andere eigenschappen: bladeren naar een bericht op basis van de verschillende MQ-bericht eigenschappen
+   * **MessageId,** **CorrelationId,** **GroupId**en andere eigenschappen: Blader naar een bericht op basis van de verschillende MQ-berichteigenschappen
 
-   * **IncludeInfo**: Geef **waar** op om aanvullende bericht gegevens op te geven in de uitvoer. Of geef **False** op als u geen aanvullende bericht gegevens wilt toevoegen aan de uitvoer.
+   * **IncludeInfo**: Geef **True** op om aanvullende berichtgegevens op te nemen in de uitvoer. Of geef **False** op om geen aanvullende berichtgegevens in de uitvoer op te nemen.
 
-   * **Time-out**: Voer een waarde in om te bepalen hoe lang moet worden gewacht tot een bericht in een lege wachtrij arriveert. Als niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten op het verschijnen van een bericht.
+   * **Time-out:** voer een waarde in om te bepalen hoe lang u moet wachten tot een bericht in een lege wachtrij wordt weergegeven. Als er niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten tot een bericht wordt weergegeven.
 
-     ![Door bericht eigenschappen bladeren](media/connectors-create-api-mq/Browse_message_Props.png)
+     ![Blader door berichteigenschappen](media/connectors-create-api-mq/Browse_message_Props.png)
 
-1. **Sla** uw wijzigingen op en voer vervolgens uw logische app **uit** .
+1. **Sla** uw wijzigingen op en voer uw logica-app **uit.**
 
    ![Opslaan en uitvoeren](media/connectors-create-api-mq/Save_Run.png)
 
-   Nadat de uitvoering is voltooid, worden de stappen van de uitvoering weer gegeven en kunt u de uitvoer bekijken.
+   Nadat de run is voltooid, worden de stappen van de run weergegeven en u de uitvoer bekijken.
 
-1. Als u de Details voor elke stap wilt bekijken, kiest u het groene vinkje. Als u meer informatie over de uitvoer gegevens wilt bekijken, kiest u **onbewerkte uitvoer weer geven**.
+1. Als u de details voor elke stap wilt bekijken, kiest u het groene vinkje. Als u meer informatie over de uitvoergegevens wilt bekijken, kiest **u Ruwe uitvoer weergeven**.
 
-   ![Bladeren in bericht uitvoer](media/connectors-create-api-mq/Browse_message_output.png)  
+   ![Berichtuitvoer bekijken](media/connectors-create-api-mq/Browse_message_output.png)  
 
-   Hier volgt een voor beeld van een onbewerkte uitvoer:
+   Hier is een aantal monster ruwe output:
 
-   ![Bladeren in bericht onbewerkte uitvoer](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   ![Bladeren door de onbewerkte uitvoer van berichten bladeren](media/connectors-create-api-mq/Browse_message_raw_output.png)
 
-1. Als u **IncludeInfo** instelt op True, wordt de volgende uitvoer weer gegeven:
+1. Als u **IncludeInfo** op true instelt, wordt de volgende uitvoer weergegeven:
 
-   ![Bladeren in bericht gegevens toevoegen](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+   ![Browse bericht bevatten info](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
 ## <a name="browse-multiple-messages"></a>Door meerdere berichten bladeren
 
-De actie **Bladeren door berichten** bevat een **BatchSize** -optie om aan te geven hoeveel berichten er moeten worden geretourneerd uit de wachtrij.  Als **BatchSize** geen vermelding heeft, worden alle berichten geretourneerd. De geretourneerde uitvoer is een matrix van berichten.
+De actie **Berichten bladeren** bevat een optie **BatchSize** om aan te geven hoeveel berichten uit de wachtrij moeten worden geretourneerd.  Als **BatchSize** geen vermelding heeft, worden alle berichten geretourneerd. De geretourneerde uitvoer is een reeks berichten.
 
-1. Wanneer u de actie **Bladeren door berichten** toevoegt, is de eerste eerder geconfigureerde verbinding standaard geselecteerd. Als u een nieuwe verbinding wilt maken, kiest u **verbinding wijzigen**. Of selecteer een andere verbinding.
+1. Wanneer u de actie **Browse-berichten** toevoegt, wordt de eerste eerder geconfigureerde verbinding standaard geselecteerd. Als u een nieuwe verbinding wilt maken, kiest u **Verbinding wijzigen**. Of selecteer een andere verbinding.
 
-1. Nadat de uitvoering van de logische app is voltooid, ziet u een voor beeld van de uitvoer van de actie **berichten door bladeren** :
+1. Nadat de logische app-run is voltooid, vindt u hier een voorbeeld uitvoer van de actie **Berichten bladeren:**
 
-   ![Door de uitvoer van berichten bladeren](media/connectors-create-api-mq/Browse_messages_output.png)
+   ![Berichten uitvoer bekijken](media/connectors-create-api-mq/Browse_messages_output.png)
 
 ## <a name="receive-single-message"></a>Eén bericht ontvangen
 
-De actie **bericht ontvangen** heeft dezelfde invoer en uitvoer als de actie **bericht bladeren** . Wanneer u **bericht ontvangen**gebruikt, wordt het bericht uit de wachtrij verwijderd.
+De actie **Bericht ontvangen** heeft dezelfde ingangen en uitvoer als de actie **Bericht bladeren.** Wanneer u **Bericht Ontvangen gebruikt,** wordt het bericht uit de wachtrij verwijderd.
 
 ## <a name="receive-multiple-messages"></a>Meerdere berichten ontvangen
 
-De actie **berichten ontvangen** heeft dezelfde invoer en uitvoer als de actie **berichten door bladeren** . Wanneer u **berichten ontvangen**gebruikt, worden de berichten uit de wachtrij verwijderd.
+De actie **Berichten ontvangen** heeft dezelfde ingangen en uitvoer als de actie **Berichten bladeren.** Bij gebruik **Van Berichten ontvangen,** worden de berichten uit de wachtrij verwijderd.
 
-Als er geen berichten in de wachtrij staan wanneer u een Blader-of ontvangst bewerking uitvoert, mislukt de stap met deze uitvoer:  
+Als er geen berichten in de wachtrij staan bij het bladeren of ontvangen, mislukt de stap met deze uitvoer:  
 
-![MQ geen bericht fout](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+![MQ Geen berichtfout](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
 
 ## <a name="send-message"></a>Bericht verzenden
 
-Wanneer u de actie **berichten verzenden** toevoegt, is de eerste eerder geconfigureerde verbinding standaard geselecteerd. Als u een nieuwe verbinding wilt maken, kiest u **verbinding wijzigen**. Of selecteer een andere verbinding.
+Wanneer u de actie **Berichten verzenden** toevoegt, wordt de eerste eerder geconfigureerde verbinding standaard geselecteerd. Als u een nieuwe verbinding wilt maken, kiest u **Verbinding wijzigen**. Of selecteer een andere verbinding.
 
-1. Selecteer een geldig bericht type: **Data gram**, **antwoord**of **aanvraag**  
+1. Een geldig berichttype selecteren: **Datagram,** **Beantwoorden**of **Aanvragen**  
 
-   ![Bericht-eigenschappen verzenden](media/connectors-create-api-mq/Send_Msg_Props.png)
+   ![Stuur Msg Rekwisieten](media/connectors-create-api-mq/Send_Msg_Props.png)
 
-1. Nadat de logische app is uitgevoerd, ziet u een voor beeld van de uitvoer van de actie **bericht verzenden** :
+1. Nadat de logische app is uitgevoerd, vindt u hier een voorbeeld uitvoer van de actie **Bericht verzenden:**
 
-   ![Bericht uitvoer verzenden](media/connectors-create-api-mq/Send_Msg_Output.png)
+   ![Msg-uitvoer verzenden](media/connectors-create-api-mq/Send_Msg_Output.png)
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/mq/).
+Zie de [referentiepagina van](https://docs.microsoft.com/connectors/mq/)de connector voor meer technische details over deze connector, zoals triggers, acties en limieten zoals beschreven in het Swagger-bestand van de connector.
 
 > [!NOTE]
-> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
+> Voor logische apps in een [integratieserviceomgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)gebruikt de ISE-versie met HET LABEL ISE in plaats daarvan de [ISE-berichtlimieten.](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)

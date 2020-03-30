@@ -1,95 +1,95 @@
 ---
-title: Hybride Kubernetes-clusters met Azure Monitor voor containers configureren | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
+title: Hybride Kubernetes-clusters configureren met Azure Monitor voor containers | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u Azure Monitor configureren voor containers om Kubernetes-clusters te controleren die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198051"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
+# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters configureren met Azure Monitor voor containers
 
-Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure Kubernetes-service (AKS) en [AKS-engine op Azure](https://github.com/Azure/aks-engine), een zelf beheerd Kubernetes-cluster dat wordt gehost op Azure. In dit artikel wordt beschreven hoe u de bewaking van Kubernetes-clusters die buiten Azure worden gehost, inschakelt en een vergelijk bare bewakings ervaring krijgt.
+Azure Monitor voor containers biedt uitgebreide monitoringervaring voor de Azure Kubernetes Service (AKS) en [AKS Engine op Azure](https://github.com/Azure/aks-engine), een zelfbeheerd Kubernetes-cluster dat wordt gehost op Azure. In dit artikel wordt beschreven hoe u monitoring van Kubernetes-clusters die buiten Azure worden gehost, inschakelen en een vergelijkbare bewakingservaring bereiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, zorg ervoor dat u het volgende hebt:
+Controleer voordat u begint het volgende:
 
 * Een Log Analytics-werkruimte.
 
-    Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
+    Azure Monitor voor containers ondersteunt een Log Analytics-werkruimte in de regio's die worden vermeld in [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Als u uw eigen werkruimte wilt maken, kan deze worden gemaakt via [Azure Resource Manager,](../platform/template-workspace-configuration.md)via [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure-portal.](../learn/quick-create-workspace.md)
 
     >[!NOTE]
-    >Het inschakelen van de bewaking van meerdere clusters met dezelfde cluster naam op dezelfde Log Analytics werk ruimte wordt niet ondersteund. Cluster namen moeten uniek zijn.
+    >Controle van meerdere clusters met dezelfde clusternaam als dezelfde Log Analytics-werkruimte inschakelen, wordt niet ondersteund. Clusternamen moeten uniek zijn.
     >
 
-* U bent lid van de **rol log Analytics Inzender** om container bewaking in te scha kelen. Voor meer informatie over het beheren van de toegang tot een Log Analytics werkruimte raadpleegt [u toegang tot de werk ruimte en logboek gegevens](../platform/manage-access.md)
+* U bent lid van de **rol van de bijdrager log Analytics** om containerbewaking mogelijk te maken. Zie [Toegang tot werkruimte en logboekgegevens beheren](../platform/manage-access.md) voor meer informatie over het beheren van toegang tot een Log Analytics-werkruimte
 
-* [Helm-client](https://helm.sh/docs/using_helm/) voor het voorbereiden van de grafiek Azure monitor voor containers voor het opgegeven Kubernetes-cluster.
+* [HELM-client](https://helm.sh/docs/using_helm/) aan boord van de Azure Monitor voor containersdiagram voor het opgegeven Kubernetes-cluster.
 
-* De volgende proxy-en firewall configuratie gegevens zijn vereist voor de container versie van de Log Analytics-agent voor Linux om te communiceren met Azure Monitor:
+* De volgende proxy- en firewallconfiguratiegegevens zijn vereist voor de containerversie van de Log Analytics-agent voor Linux om te communiceren met Azure Monitor:
 
     |Agentresource|Poorten |
     |------|---------|   
     |*.ods.opinsights.azure.com |Poort 443 |  
     |*.oms.opinsights.azure.com |Poort 443 |  
     |*.blob.core.windows.net |Poort 443 |  
-    |*. dc.services.visualstudio.com |Poort 443 |
+    |*.dc.services.visualstudio.com |Poort 443 |
 
-* De container agent vereist dat Kubelet `cAdvisor secure port: 10250` of `unsecure port :10255` worden geopend op alle knoop punten in het cluster om metrische gegevens over prestaties te verzamelen. U wordt aangeraden `secure port: 10250` te configureren op de cAdvisor van Kubelet als deze nog niet is geconfigureerd.
+* De containeragent vereist dat Kubelet's `cAdvisor secure port: 10250` of `unsecure port :10255` wordt geopend op alle knooppunten in het cluster om prestatiestatistieken te verzamelen. We raden `secure port: 10250` u aan om te configureren op de CAdvisor van de Kubelet als deze nog niet is geconfigureerd.
 
-* Voor de container agent moeten de volgende omgevings variabelen worden opgegeven in de container om te communiceren met de Kubernetes API-service binnen het cluster om de `KUBERNETES_SERVICE_HOST` en `KUBERNETES_PORT_443_TCP_PORT`van de inventaris gegevens te verzamelen.
+* De gecontaineriseerde agent vereist dat de volgende omgevingsvariabelen op de container worden opgegeven om te `KUBERNETES_SERVICE_HOST` communiceren `KUBERNETES_PORT_443_TCP_PORT`met de Kubernetes API-service binnen het cluster om voorraadgegevens te verzamelen - en .
 
 >[!IMPORTANT]
->De minimale agent versie die wordt ondersteund voor het bewaken van hybride Kubernetes-clusters is ciprod10182019 of hoger.
+>De minimale agentversie die wordt ondersteund voor het monitoren van hybride Kubernetes-clusters is ciprod10182019 of hoger.
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
 
 Het volgende wordt officieel ondersteund met Azure Monitor voor containers.
 
-- Omgevingen: Kubernetes on-premises, AKS-engine op Azure en Azure Stack. Zie de [AKS-engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
-- De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als de versies van AKS die worden [ondersteund](../../aks/supported-kubernetes-versions.md).
-- Container runtime: docker en Moby
-- Linux-besturingssysteem release voor Master-en werk knooppunten: Ubuntu (18,04 LTS en 16,04 LTS)
-- Ondersteund toegangs beheer: Kubernetes RBAC en non-RBAC
+- Omgevingen: Kubernetes on-premises, AKS Engine op Azure en Azure Stack. Zie [AKS Engine op Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
+- Versies van Kubernetes en ondersteuningsbeleid zijn hetzelfde als versies van [AKS ondersteund](../../aks/supported-kubernetes-versions.md).
+- Containerruntime: Docker en Moby
+- Linux OS release voor master en worked nodes: Ubuntu (18.04 LTS en 16.04 LTS)
+- Ondersteuning voor toegangscontrole: Kubernetes RBAC en niet-RBAC
 
 ## <a name="enable-monitoring"></a>Bewaking inschakelen
 
-Het inschakelen van Azure Monitor voor containers voor het hybride Kubernetes-cluster bestaat uit de volgende stappen in de aangegeven volg orde uit te voeren.
+Het inschakelen van Azure Monitor voor containers voor het hybride Kubernetes-cluster bestaat uit het uitvoeren van de volgende stappen in volgorde.
 
-1. Configureer uw Log Analytics-werk ruimte met de container Insights-oplossing.
+1. Configureer uw Log Analytics-werkruimte met de Oplossing Container Insights.
 
-2. Schakel de Azure Monitor-grafiek voor containers HELM in met Log Analytics werk ruimte.
+2. Schakel de Azure Monitor voor containers HELM-diagram in met Log Analytics-werkruimte.
 
-### <a name="how-to-add-the-azure-monitor-containers-solution"></a>De Azure Monitor containers-oplossing toevoegen
+### <a name="how-to-add-the-azure-monitor-containers-solution"></a>De oplossing Azure Monitor Containers toevoegen
 
-U kunt de oplossing met de meegeleverde Azure Resource Manager sjabloon implementeren met behulp van de Azure PowerShell-cmdlet `New-AzResourceGroupDeployment` of met Azure CLI.
+U de oplossing implementeren met de meegeleverde Azure Resource `New-AzResourceGroupDeployment` Manager-sjabloon met behulp van de Azure PowerShell-cmdlet of met Azure CLI.
 
-Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
+Zie als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon:
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+* [Resources implementeren met Resource Manager-sjablonen en de Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om `az --version`uw versie te identificeren. Zie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren als u de Azure CLI moet installeren of upgraden.
 
-Deze methode omvat twee JSON-sjablonen. Een sjabloon Hiermee geeft u de configuratie voor bewaking en de andere bevat parameterwaarden die u configureert voor het volgende opgeven:
+Deze methode bevat twee JSON-sjablonen. Eén sjabloon geeft de configuratie op om bewaking in te schakelen en de andere bevat parameterwaarden die u configureert om het volgende op te geven:
 
-- **workspaceResourceId** : de volledige resource-id van uw log Analytics-werk ruimte.
-- **workspaceRegion** : de regio waarin de werk ruimte is gemaakt, die ook wel **locatie** in de werkruimte eigenschappen wordt genoemd bij het weer geven van de Azure Portal.
+- **workspaceResourceId** - de volledige resource-id van uw Log Analytics-werkruimte.
+- **workspaceRegion** - het gebied waarin de werkruimte is gemaakt, dat ook locatie **wordt** genoemd in de werkruimteeigenschappen wanneer deze wordt weergeven vanuit de Azure-portal.
 
-Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics werk ruimte die vereist is voor de waarde van de `workspaceResourceId`-para meter in het bestand **containerSolutionParams. json** , voert u de volgende stappen uit en voert u de Power shell-cmdlet of de Azure cli-opdracht uit om de oplossing toe te voegen.
+Als u eerst de volledige resource-id van `workspaceResourceId` uw Log Analytics-werkruimte wilt identificeren die vereist is voor de parameterwaarde in het **containerSolutionParams.json-bestand,** voert u de volgende stappen uit en voert u de opdracht PowerShell-cmdlet of Azure CLI uit om de oplossing toe te voegen.
 
-1. Een lijst met alle abonnementen waartoe u toegang hebt met behulp van de volgende opdracht:
+1. Vermeld alle abonnementen waartoe u toegang hebt met de volgende opdracht:
 
     ```azurecli
     az account list --all -o table
     ```
 
-    De uitvoer ziet eruit als in het volgende:
+    De uitvoer lijkt op het volgende:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -99,19 +99,19 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
 
     Kopieer de waarde voor **SubscriptionId**.
 
-2. Schakel over naar het abonnement dat als host fungeert voor de Log Analytics-werk ruimte met behulp van de volgende opdracht:
+2. Schakel met de volgende opdracht over naar het abonnement dat als host van de werkruimte Log Analytics host:
 
     ```azurecli
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. In het volgende voor beeld wordt de lijst met werk ruimten in uw abonnementen weer gegeven in de standaard JSON-indeling.
+3. In het volgende voorbeeld wordt de lijst met werkruimten in uw abonnementen weergegeven in de standaard JSON-indeling.
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
+    Zoek in de uitvoer de naam van de werkruimte en kopieer vervolgens de volledige resource-id van die log-analysewerkruimte onder de **veld-ID**.
 
 4. Kopieer en plak de volgende JSON-syntaxis in het bestand:
 
@@ -172,7 +172,7 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
    }
     ```
 
-5. Sla dit bestand op als containerSolution. json naar een lokale map.
+5. Sla dit bestand op als containerSolution.json in een lokale map.
 
 6. Plak de volgende JSON-syntaxis in het bestand:
 
@@ -191,13 +191,13 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
     }
     ```
 
-7. Bewerk de waarden voor **workspaceResourceId** met de waarde die u in stap 3 hebt gekopieerd en voor **WorkspaceRegion** Kopieer de **regio** waarde na het uitvoeren van de Azure cli-opdracht [AZ monitor log-Analytics werk ruimte show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list).
+7. Bewerk de waarden voor **workspaceResourceId** met de waarde die u in stap 3 hebt gekopieerd en voor **werkruimteKopiëren** de **regiowaarde** nadat de azure CLI-opdracht [az-monitorlogboekanalysewerkruimte is uitgevoerd.](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list)
 
-8. Sla dit bestand op als containerSolutionParams. json naar een lokale map.
+8. Sla dit bestand op als containerSolutionParams.json in een lokale map.
 
 9. U kunt deze sjabloon nu implementeren.
 
-   * Als u wilt implementeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map met de sjabloon:
+   * Als u wilt implementeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map die de sjabloon bevat:
 
        ```powershell
        # configure and login to the cloud of log analytics workspace.Specify the corresponding cloud environment of your workspace to below command.
@@ -214,13 +214,13 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
 
-       Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+       Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
 
        ```powershell
        provisioningState       : Succeeded
        ```
 
-   * Als u wilt implementeren met Azure CLI, voert u de volgende opdrachten uit:
+   * Voer de volgende opdrachten uit om te implementeren met Azure CLI:
 
        ```azurecli
        az login
@@ -231,19 +231,19 @@ Als u eerst de volledige Resource-ID wilt identificeren van uw Log Analytics wer
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
+       Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
 
-       Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven.
+       Nadat u de bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u statusstatistieken voor het cluster weergeven.
 
 ## <a name="install-the-chart"></a>De grafiek installeren
 
-Ga als volgt te werk om de HELM-grafiek in te scha kelen:
+Ga als volgt te werk om de HELM-grafiek in te schakelen:
 
-1. Voeg de opslag plaats van Azure Charts toe aan uw lokale lijst door de volgende opdracht uit te voeren:
+1. Voeg de Azure charts repository toe aan uw lokale lijst door de volgende opdracht uit te voeren:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
@@ -256,41 +256,41 @@ Ga als volgt te werk om de HELM-grafiek in te scha kelen:
     --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
-    Als de Log Analytics-werk ruimte zich in azure China bevindt, voert u de volgende opdracht uit:
+    Als de werkruimte Log Analytics zich in Azure China bevindt, voert u de volgende opdracht uit:
 
     ```
     $ helm install --name myrelease-1 \
      --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
-    Als de Log Analytics-werk ruimte zich in azure US Government bevindt, voert u de volgende opdracht uit:
+    Als de werkruimte Log Analytics zich in Azure US Government bevindt, voert u de volgende opdracht uit:
 
     ```
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
-## <a name="configure-agent-data-collection"></a>Gegevens verzameling van agent configureren
+## <a name="configure-agent-data-collection"></a>Agentgegevensverzameling configureren
 
-Als u een stert met grafiek versie 1.0.0, worden de instellingen voor het verzamelen van agents bepaald vanuit de ConfigMap. Raadpleeg [hier](container-insights-agent-config.md)de documentatie over het verzamelen van instellingen voor agent gegevens.
+Staring met grafiekversie 1.0.0, de instellingen voor het verzamelen van agentgegevens worden beheerd vanuit de ConfigMap. Raadpleeg hier documentatie over de instellingen voor het verzamelen van gegevens [van](container-insights-agent-config.md)agenten.
 
-Nadat u de grafiek hebt geïmplementeerd, kunt u de gegevens voor uw hybride Kubernetes-cluster in Azure Monitor voor containers in de Azure Portal controleren.  
+Nadat u de grafiek hebt geïmplementeerd, u de gegevens voor uw hybride Kubernetes-cluster in Azure Monitor controleren op containers vanuit de Azure-portal.  
 
 >[!NOTE]
->De latentie van de opname is ongeveer vijf tot tien minuten van de agent die moet worden doorgevoerd in de Azure Log Analytics-werk ruimte. De status van het cluster toont de waarde **geen gegevens** of is **onbekend** totdat alle vereiste bewakings gegevens beschikbaar zijn in azure monitor.
+>Innamelatentie is ongeveer vijf tot tien minuten van agent tot commit in de Azure Log Analytics-werkruimte. Status van het cluster geeft de waarde **Geen gegevens** of **onbekend** weer totdat alle vereiste bewakingsgegevens beschikbaar zijn in Azure Monitor.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubernetes-cluster, kopieert u het Power shell-script [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) en slaat u het op in een map op uw computer. Dit script wordt verstrekt om te helpen bij het detecteren en oplossen van de gevonden problemen. De problemen waarmee het volgende kan worden opgelost:
+Als u een fout ondervindt tijdens een poging om bewaking in te schakelen voor uw hybride Kubernetes-cluster, kopieert u het PowerShell-script [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) en slaat u deze op in een map op uw computer. Dit script is beschikbaar om de ondervonden problemen op te sporen en op te lossen. De problemen die het is ontworpen om op te sporen en te proberen correctie van zijn de volgende:
 
-* De opgegeven Log Analytics werk ruimte is geldig
-* De Log Analytics-werk ruimte is geconfigureerd met de Azure Monitor voor containers. Als dat niet het geval is, configureert u de werk ruimte.
-* De OmsAgent-replicaset wordt uitgevoerd
-* OmsAgent-daemonset-peulen worden uitgevoerd
-* De OmsAgent Health-Service wordt uitgevoerd
-* De Log Analytics werk ruimte-ID en-sleutel die zijn geconfigureerd op de container agent komen overeen met de werk ruimte waarin het inzicht is geconfigureerd.
-* Valideer alle Linux worker-knoop punten hebben `kubernetes.io/role=agent` label voor het plannen van RS pod. Als deze niet bestaat, voegt u deze toe.
-* Valideer `cAdvisor secure port:10250` of `unsecure port: 10255` wordt geopend op alle knoop punten in het cluster.
+* De opgegeven Log Analytics-werkruimte is geldig
+* De werkruimte Log Analytics is geconfigureerd met de oplossing Azure Monitor for Containers. Zo niet, configureer dan de werkruimte.
+* OmsAgent replicaset pods worden uitgevoerd
+* OmsAgent daemonset pods worden uitgevoerd
+* OmsAgent Health-service wordt uitgevoerd
+* De log analytics-werkruimte-id en de sleutel die is geconfigureerd op de containeragent komen overeen met de werkruimte waarmee de Insight is geconfigureerd.
+* Valideren van alle Linux `kubernetes.io/role=agent` werknemer knooppunten hebben label te plannen rs pod. Als het niet bestaat, voeg het toe.
+* Valideren `cAdvisor secure port:10250` `unsecure port: 10255` of worden geopend op alle knooppunten in het cluster.
 
 Als u wilt uitvoeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map die het script bevat:
 
@@ -300,4 +300,4 @@ Als u wilt uitvoeren met Azure PowerShell, gebruikt u de volgende opdrachten in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als bewaking is ingeschakeld voor het verzamelen van het status-en resource gebruik van uw hybride Kubernetes-cluster en werk belastingen die hierop worden uitgevoerd, leert [u hoe u Azure monitor gebruikt](container-insights-analyze.md) voor containers.
+Als monitoring is ingeschakeld om de status en het gebruik van resources van uw hybride Kubernetes-cluster en workloads die erop worden uitgevoerd, te verzamelen, leest u hoe u Azure Monitor voor containers [gebruiken.](container-insights-analyze.md)

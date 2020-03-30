@@ -1,6 +1,6 @@
 ---
-title: DDL-bewerkingen in Azure Cosmos DB Cassandra-API vanuit Spark
-description: In dit artikel vindt u informatie over de bewerking van de toetsen ruimte en tabel-DDL voor Azure Cosmos DB Cassandra-API van Spark.
+title: DDL-bewerkingen in Azure Cosmos DB Cassandra API van Spark
+description: In dit artikel worden keyspace- en tabelDDL-bewerkingen beschreven tegen Azure Cosmos DB Cassandra API van Spark.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622574"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-bewerkingen in Azure Cosmos DB Cassandra-API vanuit Spark
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-bewerkingen in Azure Cosmos DB Cassandra API van Spark
 
-In dit artikel vindt u informatie over de bewerking van de toetsen ruimte en tabel-DDL voor Azure Cosmos DB Cassandra-API van Spark.
+In dit artikel worden keyspace- en tabelDDL-bewerkingen beschreven tegen Azure Cosmos DB Cassandra API van Spark.
 
-## <a name="cassandra-api-related-configuration"></a>Configuratie met betrekking tot Cassandra-API 
+## <a name="cassandra-api-related-configuration"></a>Cassandra API-gerelateerde configuratie 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>DDL-bewerkingen voor Keys
+## <a name="keyspace-ddl-operations"></a>Keyspace DDL-bewerkingen
 
-### <a name="create-a-keyspace"></a>Een spatie maken
+### <a name="create-a-keyspace"></a>Een sleutelruimte maken
 
 ```scala
 //Cassandra connector instance
@@ -62,13 +62,13 @@ cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EX
 
 #### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht uit in cqlsh en Bekijk de spatie die u eerder hebt gemaakt.
+Voer de volgende opdracht uit in cqlsh en u ziet de keyspace die u eerder hebt gemaakt.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Een spatie verwijderen
+### <a name="drop-a-keyspace"></a>Een sleutelruimte laten vallen
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
@@ -80,14 +80,14 @@ cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```bash
 DESCRIBE keyspaces;
 ```
-## <a name="table-ddl-operations"></a>DDL-bewerkingen voor tabel
+## <a name="table-ddl-operations"></a>Tabel DDL-bewerkingen
 
-**Tot**  
+**Overwegingen:**  
 
-- De door Voer kan worden toegewezen op tabel niveau met behulp van de instructie CREATE TABLE.  
-- Met één partitie sleutel kan 20 GB aan gegevens worden opgeslagen.  
-- Met één record kunnen Maxi maal 2 MB aan gegevens worden opgeslagen.  
-- Een partitie sleutel bereik kan meerdere partitie sleutels bevatten.
+- Doorvoer kan op tabelniveau worden toegewezen met behulp van de tabelinstructie maken.  
+- Eén partitiesleutel kan 20 GB aan gegevens opslaan.  
+- Eén record kan maximaal 2 MB aan gegevens opslaan.  
+- Eén partitiesleutelbereik kan meerdere partitiesleutels opslaan.
 
 ### <a name="create-a-table"></a>Een tabel maken
 
@@ -98,22 +98,22 @@ cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXIST
 
 #### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht uit in cqlsh en zie de tabel ' boeken: 
+Voer de volgende opdracht in cqlsh uit en u zou de lijst met de naam "boeken" moeten zien: 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-Ingerichte door Voer en standaard TTL-waarden worden niet weer gegeven in de uitvoer van de vorige opdracht. u kunt deze waarden ophalen uit de portal.
+Ingerichte doorvoer- en standaardTTL-waarden worden niet weergegeven in de uitvoer van de vorige opdracht, u deze waarden uit de portal halen.
 
-### <a name="alter-table"></a>ALTER TABLE
+### <a name="alter-table"></a>Tabel wijzigen
 
-U kunt de volgende waarden wijzigen met behulp van de opdracht ALTER TABLE:
+U de volgende waarden wijzigen met de opdracht Tabel wijzigen:
 
-* ingerichte door Voer 
-* time-to-Live-waarde
-<br>Kolom wijzigingen worden momenteel niet ondersteund.
+* ingerichte doorvoer 
+* time-to-live waarde
+<br>Kolomwijzigingen worden momenteel niet ondersteund.
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
@@ -129,7 +129,7 @@ cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS book
 
 #### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht uit in cqlsh en u ziet dat de tabel ' boeken ' niet meer beschikbaar is:
+Voer de volgende opdracht in cqlsh uit en u moet zien dat de tabel "boeken" niet meer beschikbaar is:
 
 ```bash
 USE books_ks;
@@ -138,11 +138,11 @@ DESCRIBE tables;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de spatie en de tabel hebt gemaakt, gaat u verder met de volgende artikelen voor ruwe bewerkingen en meer:
+Ga na het maken van de sleutelruimte en de tabel verder naar de volgende artikelen voor CRUD-bewerkingen en meer:
  
 * [Bewerkingen maken/invoegen](cassandra-spark-create-ops.md)  
-* [Lees bewerkingen](cassandra-spark-read-ops.md)  
-* [Upsert bewerkingen](cassandra-spark-upsert-ops.md)  
+* [Bewerkingen lezen](cassandra-spark-read-ops.md)  
+* [Upsert-activiteiten](cassandra-spark-upsert-ops.md)  
 * [Bewerkingen verwijderen](cassandra-spark-delete-ops.md)  
-* [Aggregatie bewerkingen](cassandra-spark-aggregation-ops.md)  
-* [Tabel Kopieer bewerkingen](cassandra-spark-table-copy-ops.md)  
+* [Aggregatiebewerkingen](cassandra-spark-aggregation-ops.md)  
+* [Bewerkingen voor tabelkopiëren](cassandra-spark-table-copy-ops.md)  

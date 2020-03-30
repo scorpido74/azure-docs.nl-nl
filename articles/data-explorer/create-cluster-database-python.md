@@ -1,6 +1,6 @@
 ---
-title: Een Azure Data Explorer-cluster maken & DB met behulp van python
-description: Meer informatie over het maken van een Azure Data Explorer-cluster en-data base met behulp van python.
+title: Een Azure Data Explorer-cluster & DB maken met Python
+description: Meer informatie over het maken van een Azure Data Explorer-cluster en -database met Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,42 +8,42 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 8425058c9f6ac5b90c37a99f749a810672b406fc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560504"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van python
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Een Azure Data Explorer-cluster en -database maken met Python
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM-sjabloon](create-cluster-database-resource-manager.md)
 
-In dit artikel maakt u een Azure Data Explorer-cluster en-data base met behulp van python. Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster en maakt u een of meer data bases in dat cluster. Vervolgens gegevens opnemen of laden in een Data Base, zodat u er query's op kunt uitvoeren.
+In dit artikel maakt u een Azure Data Explorer-cluster en -database met Python. Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster en maakt u een of meer databases in dat cluster. Neem vervolgens gegevens in of laad ze in een database, zodat u er query's tegen uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Waarden ophalen voor `Directory (tenant) ID`, `Application ID`en `Client Secret`.
+* [Een Azure AD-toepassing en serviceprincipal die toegang heeft tot bronnen.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) Waarden voor `Directory (tenant) ID` `Application ID`, `Client Secret`en .
 
 ## <a name="install-python-package"></a>Python-pakket installeren
 
-Als u het python-pakket voor Azure Data Explorer (Kusto) wilt installeren, opent u een opdracht prompt met python in het pad. Voer deze opdracht uit:
+Als u het Python-pakket voor Azure Data Explorer (Kusto) wilt installeren, opent u een opdrachtprompt met Python op zijn pad. Voer deze opdracht uit:
 
 ```
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## <a name="authentication"></a>Authentication
-Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen.
+Voor het uitvoeren van de voorbeelden in dit artikel hebben we een Azure AD-toepassing en serviceprincipal nodig die toegang heeft tot bronnen. Schakel [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnementsbereik. Het laat ook zien `Directory (tenant) ID` `Application ID`hoe `Client Secret`je de , , en .
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken
 
@@ -82,16 +82,16 @@ Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toe
     poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
-   |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+   |**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
    |---|---|---|
    | cluster_name | *mykustocluster* | De gewenste naam van uw cluster.|
    | sku_name | *Standard_D13_v2* | De SKU die wordt gebruikt voor uw cluster. |
-   | laag | *Standard* | De SKU-laag. |
-   | capacity | *Telwoord* | Het aantal exemplaren van het cluster. |
+   | laag | *Standaard* | De SKU-laag. |
+   | capacity | *Nummer* | Het aantal exemplaren van het cluster. |
    | resource_group_name | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
 
     > [!NOTE]
-    > **Een cluster maken** is een langlopende bewerking. **Create_or_update** -methode retourneert een exemplaar van LROPoller. Zie [LROPoller](/python/api/msrest/msrest.polling.lropoller?view=azure-python) voor meer informatie.
+    > **Een cluster maken** is een langlopende bewerking. Methode **create_or_update** een exemplaar van LROPoller retourneert, zie [klasse LROPoller](/python/api/msrest/msrest.polling.lropoller?view=azure-python) voor meer informatie.
 
 1. Voer de volgende opdracht uit om te controleren of het cluster is gemaakt:
 
@@ -125,10 +125,10 @@ Als het resultaat `provisioningState` met waarde `Succeeded` bevat, is het maken
         [!NOTE]
         If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
 
-   |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+   |**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
    |---|---|---|
    | cluster_name | *mykustocluster* | De naam van het cluster waar de database wordt gemaakt.|
-   | database_name | *mykustodatabase* | De naam van uw database.|
+   | Database_name | *mykustodatabase* | De naam van uw database.|
    | resource_group_name | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
    | soft_delete_period | *3650 dagen, 0:00:00* | Hoe lang gegevens worden opgeslagen om query's erop te kunnen uitvoeren. |
    | hot_cache_period | *3650 dagen, 0:00:00* | Hoe lang gegevens worden opgeslagen in de cache. |
@@ -143,7 +143,7 @@ U hebt nu een cluster en een database.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-* Als u van plan bent om onze andere artikelen te volgen, moet u de resources die u hebt gemaakt, blijven gebruiken.
+* Als u van plan bent onze andere artikelen te volgen, behoudt u de resources die u hebt gemaakt.
 * Als u resources wilt opschonen, moet u het cluster verwijderen. Wanneer u een cluster verwijdert, worden alle databases hierin ook verwijderd. Gebruik de volgende opdracht om uw cluster te verwijderen:
 
     ```Python
@@ -152,4 +152,4 @@ U hebt nu een cluster en een database.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevens opnemen met behulp van de Azure Data Explorer python-bibliotheek](python-ingest-data.md)
+* [Gegevens opnemen met behulp van de Python-bibliotheek voor Azure Data Explorer](python-ingest-data.md)

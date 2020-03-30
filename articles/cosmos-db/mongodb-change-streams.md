@@ -1,6 +1,6 @@
 ---
 title: Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
-description: Meer informatie over het gebruik van Change streams n Azure Cosmos DB API voor MongoDB om de wijzigingen aan te brengen in uw gegevens.
+description: Meer informatie over het gebruik van wijzigingsstromen n Azure Cosmos DB's API voor MongoDB om de wijzigingen in uw gegevens op te halen.
 author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
 ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77467774"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
 
-[Change feed](change-feed.md) -ondersteuning in de Azure Cosmos DB-API voor MongoDb is beschikbaar via de Change streams-API. Door gebruik te maken van de Change streams-API, kunnen uw toepassingen de wijzigingen die zijn aangebracht aan de verzameling of aan de items in één Shard ophalen. Later kunt u verdere acties uitvoeren op basis van de resultaten. Wijzigingen in de items in de verzameling worden vastgelegd in de volg orde van hun wijzigings tijd en de sorteer volgorde wordt gegarandeerd per Shard-sleutel.
+[De feedondersteuning](change-feed.md) wijzigen in de API van Azure Cosmos DB voor MongoDB is beschikbaar met behulp van de API voor wijzigingsstreams. Door de API voor wijzigingsstreams te gebruiken, kunnen uw toepassingen de wijzigingen in de verzameling of de items in één shard krijgen. Later u verdere acties ondernemen op basis van de resultaten. Wijzigingen in de items in de collectie worden vastgelegd in de volgorde van hun wijzigingstijd en de sorteervolgorde is gegarandeerd per shardsleutel.
 
 > [!NOTE]
-> Als u een wijzigings stroom wilt gebruiken, maakt u het account met versie 3,6 van de API van Azure Cosmos DB voor MongoDB of een latere versie. Als u de voor beelden van de wijzigings stroom uitvoert voor een eerdere versie, ziet u mogelijk de `Unrecognized pipeline stage name: $changeStream` fout. 
+> Als u wijzigingsstreams wilt gebruiken, maakt u het account met versie 3.6 van de API van Azure Cosmos DB voor MongoDB of een latere versie. Als u de voorbeelden van wijzigingsstromen uitvoert ten `Unrecognized pipeline stage name: $changeStream` opzichte van een eerdere versie, ziet u mogelijk de fout. 
 
-In het volgende voor beeld ziet u hoe u een wijzigings stroom kunt ophalen voor alle items in de verzameling. In dit voor beeld wordt een cursor gemaakt om items te bekijken wanneer ze worden ingevoegd, bijgewerkt of vervangen. De $match fase, $project fase en fullDocument-optie zijn vereist voor het ophalen van de wijzigings stromen. Het is niet mogelijk om delete-bewerkingen te volgen met behulp van wijzigings stromen. Als tijdelijke oplossing kunt u een zachte markering toevoegen voor de items die worden verwijderd. U kunt bijvoorbeeld een kenmerk toevoegen aan het item ' verwijderd ' en dit instellen op ' True ' en een TTL instellen voor het item, zodat u het automatisch kunt verwijderen, zodat u het kan registreren.
+In het volgende voorbeeld ziet u hoe u wijzigingsstreams ontvangen op alle items in de verzameling. In dit voorbeeld wordt een cursor ontworpen om items te bekijken wanneer ze worden ingevoegd, bijgewerkt of vervangen. De $match fase, $project fase en de optie FullDocument zijn vereist om de wijzigingsstreams op te halen. Het bekijken van verwijderingsbewerkingen met behulp van wijzigingsstreams wordt momenteel niet ondersteund. Als tijdelijke oplossing u een zachte markering toevoegen aan de items die worden verwijderd. U bijvoorbeeld een kenmerk toevoegen aan het item 'verwijderd' en het instellen op 'true' en een TTL instellen op het item, zodat u het automatisch verwijderen en bijhouden.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -38,7 +38,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-In het volgende voor beeld ziet u hoe u wijzigingen kunt aanbrengen in de items in één Shard. In dit voor beeld worden de wijzigingen van items met de Shard-sleutel gelijk aan "a" en de waarde van de Shard-sleutel gelijk aan "1".
+In het volgende voorbeeld ziet u hoe u wijzigingen in de items in één shard krijgen. In dit voorbeeld worden de wijzigingen van items met een shardtoets gelijk aan "a" en de shardsleutelwaarde gelijk aan "1".
 
 ```javascript
 var cursor = db.coll.watch(
@@ -59,22 +59,22 @@ var cursor = db.coll.watch(
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-De volgende beperkingen zijn van toepassing wanneer u een wijzigings stroom gebruikt:
+De volgende beperkingen zijn van toepassing bij het gebruik van wijzigingsstromen:
 
-* De eigenschappen `operationType` en `updateDescription` worden nog niet ondersteund in het uitvoer document.
-* De bewerkings typen `insert`, `update`en `replace` worden momenteel ondersteund. De Verwijder bewerking of andere gebeurtenissen worden nog niet ondersteund.
+* De `operationType` `updateDescription` eigenschappen en eigenschappen worden nog niet ondersteund in het uitvoerdocument.
+* De `insert` `update`typen `replace` , en bewerkingen worden momenteel ondersteund. Verwijderbewerking of andere gebeurtenissen worden nog niet ondersteund.
 
-Als gevolg van deze beperkingen zijn de opties $match fase, $project fase en fullDocument vereist, zoals in de vorige voor beelden wordt weer gegeven.
+Vanwege deze beperkingen zijn de $match fase, $project fase en volledigeDocument-opties vereist, zoals in de vorige voorbeelden wordt weergegeven.
 
 ## <a name="error-handling"></a>Foutafhandeling
 
-De volgende fout codes en-berichten worden ondersteund bij het gebruik van wijzigings stromen:
+De volgende foutcodes en berichten worden ondersteund bij het gebruik van wijzigingsstreams:
 
-* **HTTP-fout code 429** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
+* **HTTP-foutcode 429** - Wanneer de wijzigingsstroom wordt beperkt, wordt een lege pagina geretourneerd.
 
-* **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de eigenschap `operationType` niet kan worden geretourneerd in het uitvoer document, in plaats van de `operationType Invalidate` fout, wordt de `NamespaceNotFound` fout geretourneerd.
+* **NamespaceNotFound (OperationType ongeldig)** - Als u wijzigingsstroom uitvoert op de verzameling die `NamespaceNotFound` niet bestaat of als de verzameling wordt verwijderd, wordt een fout geretourneerd. Omdat `operationType` de eigenschap niet kan worden geretourneerd in `operationType Invalidate` het uitvoerdocument, wordt de `NamespaceNotFound` fout geretourneerd in plaats van de fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Time to Live gebruiken om gegevens automatisch te laten verlopen in de API van Azure Cosmos DB voor MongoDB](mongodb-time-to-live.md)
-* [Indexering in de API van Azure Cosmos DB voor MongoDB](mongodb-indexing.md)
+* [Gebruik de tijd om te leven om gegevens automatisch te verlopen in de API van Azure Cosmos DB voor MongoDB](mongodb-time-to-live.md)
+* [Indexering in azure cosmos DB's API voor MongoDB](mongodb-indexing.md)

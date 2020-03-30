@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van MongoDB
-description: Meer informatie over het kopiëren van gegevens uit Mongo DB naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+title: Gegevens van MongoDB kopiëren
+description: Meer informatie over het kopiëren van gegevens van Mongo DB naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251711"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory
+# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens van MongoDB kopiëren met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een MongoDB-data base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een MongoDB-database te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 >[!IMPORTANT]
->ADF release deze nieuwe versie van de MongoDB-connector, die betere ondersteuning voor systeem eigen MongoDB biedt. Raadpleeg het artikel [MongoDb connector (verouderd)](connector-mongodb-legacy.md) als u de vorige MongoDb-connector gebruikt in uw oplossing die wordt ondersteund als-is voor achterwaartse compatibiliteit.
+>ADF release deze nieuwe versie van MongoDB connector die betere native MongoDB ondersteuning biedt. Als u de vorige MongoDB-connector gebruikt in uw oplossing die wordt ondersteund als-is voor achterwaartse compatibiliteit, raadpleegt u het artikel [(MongoDB-connector) (legacy).](connector-mongodb-legacy.md)
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U kunt gegevens uit de MongoDB-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
+U gegevens uit de MongoDB-database kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
 
-Deze MongoDB-connector ondersteunt **met name versie 3,4**.
+Specifiek, deze MongoDB connector ondersteunt **versies tot 3.4**.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,18 +40,18 @@ Deze MongoDB-connector ondersteunt **met name versie 3,4**.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor MongoDB-connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om gegevensfabrieksentiteiten te definiëren die specifiek zijn voor de MongoDB-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
+De volgende eigenschappen worden ondersteund voor mongoDB gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **MongoDbV2** |Ja |
-| connectionString |Geef de MongoDB-connection string bijvoorbeeld `mongodb://[username:password@]host[:port][/[database][?options]]`op. Raadpleeg de [hand leiding voor MongoDb op Connection String](https://docs.mongodb.com/manual/reference/connection-string/) voor meer informatie. <br/><br /> U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. |Ja |
-| enddatabase | De naam van de data base die u wilt openen. | Ja |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| type |Het type eigenschap moet worden ingesteld op: **MongoDbV2** |Ja |
+| Connectionstring |Geef de MongoDB-verbindingstekenreeks `mongodb://[username:password@]host[:port][/[database][?options]]`op, bijvoorbeeld . Raadpleeg [mongoDB handleiding op verbindingstekenreeks](https://docs.mongodb.com/manual/reference/connection-string/) voor meer details. <br/><br /> U ook een wachtwoord in Azure `password` Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen. Raadpleeg [storereferenties in Azure Key Vault](store-credentials-in-key-vault.md) met meer details. |Ja |
+| database | Naam van de database die u wilt openen. | Ja |
+| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld:**
 
@@ -74,12 +74,12 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. De volgende eigenschappen worden ondersteund voor MongoDB-gegevensset:
+Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. De volgende eigenschappen worden ondersteund voor de MongoDB-gegevensset:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbV2Collection** | Ja |
-| collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
+| collectionNaam |Naam van de collectie in de MongoDB-database. |Ja |
 
 **Voorbeeld:**
 
@@ -102,24 +102,24 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door MongoDB-bron worden ondersteund.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de MongoDB-bron.
 
 ### <a name="mongodb-as-source"></a>MongoDB als bron
 
-De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbV2Source** | Ja |
-| filter | Hiermee geeft u selectie filter op met behulp van query operators. Als u alle documenten in een verzameling wilt retour neren, laat u deze para meter weg of geeft u een leeg document door ({}). | Nee |
-| cursorMethods.project | Hiermee geeft u de velden op die moeten worden geretourneerd in de documenten voor projectie. Als u alle velden in de overeenkomende documenten wilt retour neren, laat u deze para meter weg. | Nee |
-| cursorMethods.sort | Hiermee geeft u de volg orde waarin de query overeenkomende documenten retourneert. Raadpleeg [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nee |
-| cursorMethods.limit | Hiermee geeft u het maximum aantal documenten op dat door de server wordt geretourneerd. Raadpleeg [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nee |
-| cursorMethods.skip | Hiermee geeft u het aantal documenten op dat moet worden overgeslagen en waar MongoDB begint met het retour neren van resultaten. Raadpleeg [cursor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nee |
-| batchSize | Hiermee geeft u het aantal documenten op dat moet worden geretourneerd in elke batch van het antwoord van de MongoDB-instantie. In de meeste gevallen heeft het wijzigen van de Batch grootte geen invloed op de gebruiker of de toepassing. Cosmos DB limieten voor elke batch kan niet groter zijn dan 40MB. Dit is de som van de grootte van het batchSize aantal documenten. Verlaag deze waarde dus als de grootte van het document groot is. | Nee<br/>(de standaard waarde is **100**) |
+| type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op: **MongoDbV2Source** | Ja |
+| filter | Hiermee geeft u het selectiefilter op met queryoperatoren. Als u alle documenten in een verzameling wilt retourneren, laat u deze parameter weg of geeft u een leeg document door ({}). | Nee |
+| cursorMethods.project | Hiermee geeft u de velden op die moeten worden teruggevonden in de documenten voor projectie. Als u alle velden in de overeenkomende documenten wilt retourneren, laat u deze parameter weg. | Nee |
+| cursorMethoden.sorteren | Hiermee geeft u de volgorde op waarin de query overeenkomende documenten retourneert. Raadpleeg [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nee |
+| cursorMethods.limit | Hiermee geeft u het maximumaantal documenten op dat de server retourneert. Raadpleeg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nee |
+| cursorMethoden.overslaan | Hiermee geeft u het aantal documenten op dat moet worden overgeslagen en van waar MongoDB resultaten begint terug te sturen. Raadpleeg [cursor.overslaan()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nee |
+| batchSize | Hiermee geeft u het aantal documenten op dat moet worden retourneren in elke batch van het antwoord van de instantie MongoDB. In de meeste gevallen heeft het wijzigen van de batchgrootte geen invloed op de gebruiker of de toepassing. Cosmos DB beperkt elke batch mag niet groter zijn dan 40 MB, wat de som is van het batchSize-aantal documenten, dus verlaag deze waarde als de grootte van uw document groot is. | Nee<br/>(de standaardinstelling is **100**) |
 
 >[!TIP]
->ADF-ondersteuning die BSON-document verbruikt in de **strikte modus**. Zorg ervoor dat uw filter query in de strikte modus in plaats van in de shell modus is. Meer beschrijving vindt u in [MongoDb hand matig](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF-ondersteuning voor het consumeren van BSON-document in **de strikte modus**. Zorg ervoor dat uw filterquery in de modus Strikt staat in plaats van in de Shell-modus. Meer beschrijving is te vinden op [MongoDB handleiding](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Voorbeeld:**
 
@@ -159,13 +159,13 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 ]
 ```
 
-## <a name="export-json-documents-as-is"></a>JSON-documenten exporteren als-is
+## <a name="export-json-documents-as-is"></a>JSON-documenten exporteren naar-is
 
-U kunt deze MongoDB-connector gebruiken om JSON-documenten te exporteren als-afkomstig van een MongoDB-verzameling naar verschillende op bestanden gebaseerde archieven of Azure Cosmos DB. Om een dergelijke schema-neutraal kopie te krijgen, slaat u de sectie ' Structure ' (ook wel *schema*genoemd) in de gegevensset en schema toewijzing in de Kopieer activiteit over.
+U deze MongoDB-connector gebruiken om JSON-documenten te exporteren van een MongoDB-verzameling naar verschillende bestandenopslag of naar Azure Cosmos DB. Als u een dergelijke schema-agnostische kopie wilt bereiken, slaat u de sectie "structuur" (ook wel *schema*genoemd) in gegevensset en schematoewijzing in kopieeractiviteit over.
 
-## <a name="schema-mapping"></a>Schema toewijzing
+## <a name="schema-mapping"></a>Schematoewijzing
 
-Zie [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping)als u gegevens van MongoDb naar tabellaire Sink wilt kopiëren.
+Als u gegevens van MongoDB wilt kopiëren naar tabelgoot, raadpleegt u [schematoewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

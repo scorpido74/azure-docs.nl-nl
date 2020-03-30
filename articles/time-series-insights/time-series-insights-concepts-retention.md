@@ -1,6 +1,6 @@
 ---
-title: Gegevens retentie in uw omgeving begrijpen-Azure time series Insight | Microsoft Docs
-description: In dit artikel worden twee instellingen beschreven die de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving regelen.
+title: Inzicht in het bewaren van gegevens in uw omgeving - Azure Time Series Insight | Microsoft Documenten
+description: In dit artikel worden twee instellingen beschreven die het bewaren van gegevens in uw Azure Time Series Insights-omgeving regelen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,90 +12,90 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 34cf1e91b1fe5aae516c77bf2c280dfe70000611
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894760"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Gegevens retentie in Azure Time Series Insights begrijpen
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Inzicht in gegevensretentie in Azure Time Series Insights
 
-In dit artikel worden twee primaire instellingen beschreven die van invloed zijn op de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving.
+In dit artikel worden twee primaire instellingen beschreven die van invloed zijn op het bewaren van gegevens in uw Azure Time Series Insights-omgeving.
 
 ## <a name="video"></a>Video
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>De volgende video bevat een overzicht van Time Series Insights gegevens retentie en hoe u deze kunt plannen.</br>
+### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>De volgende video vat het bewaren van time series Insights-gegevens samen en hoe u dit plannen.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Elk van uw Azure Time Series Insights omgevingen heeft een instelling waarmee de **Bewaar tijd van gegevens**wordt beheerd. De waarde ligt tussen 1 en 400 dagen. De gegevens worden verwijderd op basis van de opslag capaciteit van de omgeving of de Bewaar periode, afhankelijk van wat het eerste komt.
+Elk van uw Azure Time Series Insights-omgevingen heeft een instelling die de **bewaartijd voor gegevens**regelt. De waarde varieert van 1 tot 400 dagen. De gegevens worden verwijderd op basis van de opslagcapaciteit of bewaarduur van de omgeving, afhankelijk van wat het eerst komt.
 
-Daarnaast heeft uw Azure Time Series Insights omgeving een instelling voor het gedrag van de **opslag limiet overschreden** . Het bepaalt de ingang en het opschonen van gedrag wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee manieren om te kiezen bij de configuratie:
+Bovendien heeft uw Azure Time Series Insights-omgeving een **opslaglimiet die de gedragsinstelling heeft overschreden.** Het controleert het binnendringen en zuiveren van gedrag wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee gedragingen om uit te kiezen bij het configureren van het:
 
-- **Oude gegevens opschonen** (standaard)  
-- **Ingangs onderbrekingen**
+- **Oude gegevens wissen** (standaard)  
+- **Binnenlaten onderbreken**
 
 > [!NOTE]
-> Wanneer u een nieuwe omgeving maakt, wordt standaard de Bewaar periode geconfigureerd om **oude gegevens te verwijderen**. Deze instelling kan worden in-of uitgeschakeld nadat deze is gemaakt met behulp van de Azure Portal op de pagina **configureren** van de time series Insights omgeving.
-> * Lees voor meer informatie over het configureren van Bewaar beleid het [configureren van Bewaar periode in time series Insights](time-series-insights-how-to-configure-retention.md).
+> Bij het maken van een nieuwe omgeving is de retentie standaard geconfigureerd om oude gegevens te **zuiveren.** Deze instelling kan indien nodig worden ingeschakeld na het maken van de tijd met behulp van de Azure-portal, op de pagina **Configureren** van de time series Insights-omgeving.
+> * Lees [Bewaarbeleid configureren in Time Series Insights](time-series-insights-how-to-configure-retention.md)voor informatie over het configureren van bewaarbeleid.
 
-Beide beleids regels voor het bewaren van gegevens worden in meer detail beschreven.
+Beide beleid voor het bewaren van gegevens worden hieronder nader beschreven.
 
-## <a name="purge-old-data"></a>Oude gegevens opschonen
+## <a name="purge-old-data"></a>Oude gegevens wissen
 
-- **Oude gegevens opschonen** is de standaard instelling voor Azure time series Insights omgevingen.  
-- Het **opschonen van oude gegevens** verdient de voor keur wanneer gebruikers altijd hun *meest recente gegevens* in hun time series Insights omgeving willen hebben.
-- Met de instelling **oude gegevens opschonen** worden gegevens *verwijderd* zodra de limieten van de omgeving (de retentie tijd, de grootte of het aantal, afhankelijk van wat het eerste komt) worden bereikt. De Bewaar periode is standaard ingesteld op 30 dagen.
-- De oudste opgenomen gegevens worden eerst opgeschoond (de ' First ' first out '-benadering).
+- **Oude gegevens wissen** is de standaardinstelling voor Azure Time Series Insights-omgevingen.  
+- **Het wissen van oude gegevens** heeft de voorkeur wanneer gebruikers altijd hun meest recente *gegevens* in hun Time Series Insights-omgeving willen hebben.
+- Met **de instelling Oude gegevens wissen** worden gegevens *verwijderd* zodra de grenzen van de omgeving (bewaartijd, grootte of telling, wat het eerst komt) zijn bereikt. Retentie is standaard ingesteld op 30 dagen.
+- De oudste ingenomen gegevens worden eerst gezuiverd (de "First In First Out"-benadering).
 
-### <a name="example-one"></a>Voor beeld 1
+### <a name="example-one"></a>Voorbeeld één
 
-Bekijk een voor beeld van een omgeving met Bewaar gedrag door te gaan met inkomend **en oude gegevens op te schonen**:
+Overweeg een voorbeeldomgeving met bewaargedrag **Doorgaan met binnendringen en oude gegevens zuiveren:**
 
-De **Bewaar tijd voor gegevens** is ingesteld op 400 dagen. De **capaciteit** wordt ingesteld op S1-eenheid, die 30 GB aan totale capaciteit bevat. Laten we uitgaan dat inkomende gegevens elke dag gemiddeld 500 MB worden opgeteld. In deze omgeving kunnen alleen 60 dagen voor gegevens worden bewaard op basis van het aantal inkomende gegevens, omdat de maximum capaciteit wordt bereikt om 60 dagen. De inkomende gegevens worden als volgt verzameld: 500 MB elke dag x 60 dagen = 30 GB.
+**De bewaartijd van gegevens** is ingesteld op 400 dagen. **De capaciteit** is ingesteld op S1-eenheid, die 30 GB totale capaciteit bevat. Laten we aannemen dat binnenkomende gegevens zich ophopen tot gemiddeld 500 MB per dag. Deze omgeving kan slechts 60 dagen aan gegevens bewaren, gezien de snelheid van binnenkomende gegevens, omdat de maximale capaciteit wordt bereikt op 60 dagen. De binnenkomende gegevens stapelen zich op als: 500 MB per dag x 60 dagen = 30 GB.
 
-Op de dag van de 61st worden de meest recente gegevens in de omgeving weer gegeven, maar worden de oudste gegevens ouder dan 60 dagen verwijderd. Het leegmaken maakt ruimte voor de nieuwe gegevensstreaming in, zodat nieuwe gegevens kunnen worden geverkennen. Als de gebruiker gegevens langer wil bewaren, kunnen ze de omvang van de omgeving verg Roten door extra eenheden toe te voegen of minder gegevens te pushen.  
+Op de 61e dag toont de omgeving de meest verse gegevens, maar worden de oudste gegevens, ouder dan 60 dagen, gewist. De zuivering maakt ruimte voor de nieuwe gegevens streaming in, zodat nieuwe gegevens kunnen blijven worden onderzocht. Als de gebruiker gegevens langer wil bewaren, kan deze de grootte van de omgeving vergroten door extra eenheden toe te voegen of minder gegevens te pushen.  
 
-### <a name="example-two"></a>Voor beeld twee
+### <a name="example-two"></a>Voorbeeld twee
 
-Denk ook na over een omgeving geconfigureerde Bewaar gedrag door te gaan met inkomend **en oude gegevens te verwijderen**. In dit voor beeld wordt de **Bewaar periode voor gegevens** ingesteld op een lagere waarde van 180 dagen. De **capaciteit** wordt ingesteld op S1-eenheid, die 30 GB aan totale capaciteit bevat. Als u gegevens voor de volledige 180 dagen wilt opslaan, mag de dagelijkse ingang niet meer dan 0,166 GB (166 MB) per dag bedragen.  
+Overweeg een omgeving die ook een bewaargedrag heeft **geconfigureerd, ga verder met binnendringen en oude gegevens zuiveren.** In dit voorbeeld wordt **de bewaartijd van gegevens** ingesteld op een lagere waarde van 180 dagen. **De capaciteit** is ingesteld op S1-eenheid, die 30 GB totale capaciteit bevat. Om gegevens gedurende de volledige 180 dagen op te slaan, mag de dagelijkse binnenlaten niet meer bedragen dan 0,166 GB (166 MB) per dag.  
 
-Wanneer het dagelijkse ingangs gemiddelde van deze omgeving meer dan 0,166 GB per dag overschrijdt, kunnen gegevens gedurende 180 dagen niet worden opgeslagen, omdat sommige gegevens worden opgeschoond. Houd rekening met deze omgeving tijdens een actief tijds bestek. Stel dat de ingangs snelheid van de omgeving kan toenemen tot een gemiddelde van 0,189 GB per dag. In het kader van deze bezette tijd worden ongeveer 158 dagen aan gegevens bewaard (30 GB/0.189 = 158,73 dagen retentie). Deze tijd is kleiner dan het gewenste tijds bestek voor het bewaren van gegevens.
+Wanneer de dagelijkse invallenvan deze omgeving hoger is dan 0,166 GB per dag, kunnen gegevens niet gedurende 180 dagen worden opgeslagen, omdat sommige gegevens worden verwijderd. Overweeg deze zelfde omgeving tijdens een drukke periode. Stel dat de invallende snelheid van de omgeving kan stijgen tot gemiddeld 0,189 GB per dag. In dat drukke tijdsbestek worden ongeveer 158 dagen aan gegevens bewaard (30GB/0.189 = 158,73 dagen retentie). Deze tijd is minder dan de gewenste tijdsbewaartermijn voor gegevens.
 
-## <a name="pause-ingress"></a>Ingangs onderbrekingen
+## <a name="pause-ingress"></a>Binnenlaten onderbreken
 
-- De instelling voor het onderbreken van de **onderbreking** is zodanig ontworpen dat de gegevens niet worden opgeschoond als de limieten voor grootte en aantal zijn bereikt voordat de Bewaar periode is verstreken.  
-- **Onderbrekingen** van inkomend verkeer bieden extra tijd voor de gebruikers om de capaciteit van hun omgeving te verg Roten voordat de gegevens worden opgeschoond door schending van de Bewaar periode.
-- Het helpt u bij het verlies van gegevens, maar u kunt ook een kans maken voor het verlies van uw meest recente gegevens als binnenkomend wordt gepauzeerd na de Bewaar periode van de bron van de gebeurtenis.
-- Zodra de maximum capaciteit van een omgeving is bereikt, worden de gegevens in de omgeving echter onderbroken totdat de volgende aanvullende acties worden uitgevoerd:
+- De instelling **Onderbreken binnenlaten** is ontworpen om ervoor te zorgen dat gegevens niet worden gewist als de grootte- en tellimieten vóór de bewaarperiode worden bereikt.  
+- **Pauze-ingress** biedt extra tijd voor de gebruikers om de capaciteit van hun omgeving te verhogen voordat gegevens worden verwijderd als gevolg van schending van de bewaartermijn.
+- Het helpt u te beschermen tegen gegevensverlies, maar kan een kans creëren voor het verlies van uw meest recente gegevens als het binnendringen wordt onderbroken na de bewaarperiode van uw gebeurtenisbron.
+- Zodra de maximale capaciteit van een omgeving is bereikt, wordt de gegevens in de omgeving echter onderbroken totdat de volgende aanvullende acties optreden:
 
-   - U verhoogt de maximum capaciteit van de omgeving om meer schaal eenheden toe te voegen, zoals wordt beschreven in [uw time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
-   - De Bewaar periode voor gegevens is bereikt en de gegevens worden opgeschoond, waardoor de omgeving onder de maximum capaciteit komt.
+   - U verhoogt de maximale capaciteit van de omgeving om meer schaaleenheden toe te voegen zoals beschreven in [Hoe u uw Time Series Insights-omgeving schalen.](time-series-insights-how-to-scale-your-environment.md)
+   - De bewaartermijn voor gegevens wordt bereikt en gegevens worden gezuiverd, waardoor de omgeving onder de maximale capaciteit komt.
 
-### <a name="example-three"></a>Voor beeld drie
+### <a name="example-three"></a>Voorbeeld drie
 
-Denk na over een omgeving met Bewaar gedrag dat is geconfigureerd om **ingangen te onderbreken**. In dit voor beeld wordt de **Bewaar periode voor gegevens** ingesteld op 60 dagen. De **capaciteit** is ingesteld op drie (3) eenheden van S1. We gaan ervan uit dat deze omgeving elke dag 2 GB gegevens bevat. In deze omgeving wordt binnenkomend gepauzeerd zodra de maximum capaciteit is bereikt.
+Overweeg een omgeving met bewaargedrag dat is geconfigureerd om binnendringen te **pauzeren.** In dit voorbeeld wordt de **bewaarperiode voor gegevens** geconfigureerd tot 60 dagen. **De capaciteit** is ingesteld op drie (3) eenheden van S1. Stel dat deze omgeving elke dag een binnendringenvan 2 GB-gegevens heeft. In deze omgeving wordt het binnendringen onderbroken zodra de maximale capaciteit is bereikt.
 
-Op dat moment wordt in de omgeving dezelfde gegevensset weer gegeven totdat ingangen wordt hervat of **totdat de** inschakeling is ingeschakeld (waardoor oudere gegevens worden opgeschoond om ruimte te maken voor nieuwe gegevens).
+Op dat moment toont de omgeving dezelfde gegevensset totdat binnendringen wordt hervat of totdat **blijven binnendringen** is ingeschakeld (wat oudere gegevens zou zuiveren om ruimte te maken voor nieuwe gegevens).
 
-Wanneer ingangs werkzaamheden worden hervat:
+Bij het binnenvallen hervat:
 
-- Gegevens stromen in de volg orde waarin deze zijn ontvangen door de gebeurtenis bron
-- De gebeurtenissen worden geïndexeerd op basis van hun tijds tempel, tenzij u het Bewaar beleid voor uw gebeurtenis bron hebt overschreden. [Event hubs Veelgestelde vragen](../event-hubs/event-hubs-faq.md) voor meer informatie over het configureren van de Bewaar periode voor gebeurtenis bronnen.
+- Gegevensstromen in de volgorde waarin deze door gebeurtenisbron is ontvangen
+- De gebeurtenissen worden geïndexeerd op basis van hun tijdstempel, tenzij u het bewaarbeleid op uw gebeurtenisbron hebt overschreden. [Veelgestelde vragen](../event-hubs/event-hubs-faq.md) over gebeurtenisbronbehoud
 
 > [!IMPORTANT]
-> Stel waarschuwingen in om te zorgen dat binnenkomend verkeer niet wordt onderbroken. Gegevens verlies is mogelijk omdat de standaard Bewaar periode 1 dag is voor Azure-gebeurtenis bronnen. Wanneer de ingang is onderbroken, verliest u waarschijnlijk de meest recente gegevens, tenzij er extra actie wordt ondernomen. U moet de capaciteit verg Roten of overschakelen om **oude gegevens te verwijderen** om de kans op gegevens verlies te voor komen.
+> U moet waarschuwingen instellen om een melding te geven om te voorkomen dat binnendringen wordt onderbroken. Gegevensverlies is mogelijk omdat de standaardretentie 1 dag is voor Azure-gebeurtenisbronnen. Daarom, zodra binnendringen is onderbroken, verliest u waarschijnlijk de meest recente gegevens, tenzij extra actie wordt ondernomen. U moet de capaciteit vergroten of het gedrag omschakelen naar **oude gegevens wissen** om het potentieel voor gegevensverlies te voorkomen.
 
-In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren van berichten** aan te passen om gegevens verlies te minimaliseren wanneer inkomend onderbreken plaatsvindt in time series Insights.
+In de impacthebbende gebeurtenishubs u overwegen de eigenschap **Berichtbehoud** aan te passen om gegevensverlies te minimaliseren wanneer het onderbreken van de gebeurtenissen plaatsvindt in inzichten in de tijdreeksen.
 
-[![Event hub-bericht bewaaring.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
+[![Gebeurtenishubberichtbehoud.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron (`timeStampPropertyName`), Time Series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event Hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
+Als er geen eigenschappen zijn`timeStampPropertyName`geconfigureerd op gebeurtenisbron ( ), wordt Time Series Insights standaard ingesteld op de tijdstempel van aankomst op gebeurtenishub als de X-as. Als `timeStampPropertyName` de omgeving is geconfigureerd als iets anders, `timeStampPropertyName` zoekt de omgeving naar het geconfigureerde in het gegevenspakket wanneer gebeurtenissen worden ontleed.
 
-Lees [hoe u uw time series Insights omgeving kunt schalen](time-series-insights-how-to-scale-your-environment.md) om uw omgeving te schalen, zodat u meer capaciteit hebt of de Bewaar periode kunt verg Roten.
+Lees [hoe u uw Time Series Insights-omgeving schalen](time-series-insights-how-to-scale-your-environment.md) om uw omgeving te schalen om extra capaciteit mogelijk te maken of de retentieduur te verlengen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor informatie over het configureren of wijzigen van de instellingen voor het bewaren van gegevens, raadpleegt u [retentie configureren in time series Insights](time-series-insights-how-to-configure-retention.md).
+- Voor informatie over het configureren of wijzigen van instellingen voor gegevensbewaring, controleert [u Het configureren van retentie in Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-- Meer informatie over het [beperken van latentie in azure time series Insights](time-series-insights-environment-mitigate-latency.md).
+- Meer informatie over [het beperken van latentie in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).

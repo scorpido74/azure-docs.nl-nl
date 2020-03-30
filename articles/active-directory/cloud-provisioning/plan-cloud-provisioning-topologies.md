@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor topologieën en scenario's voor het inrichten van Clouds Azure AD Connect
-description: In dit onderwerp worden de vereisten en de hardwarevereisten voor de Cloud inrichting beschreven.
+title: Ondersteunde topologieën en scenario's voor Azure AD Connect-cloudprovisioning
+description: In dit onderwerp worden de vereisten en de hardwarevereisten voor cloudprovisioning beschreven.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,52 +12,52 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77620877"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Ondersteuning voor topologieën en scenario's voor het inrichten van Clouds Azure AD Connect
-In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Cloud inrichting. Dit artikel bevat alleen ondersteunde configuraties en scenario's.
+# <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Ondersteunde topologieën en scenario's voor Azure AD Connect-cloudprovisioning
+In dit artikel worden verschillende on-premises en Azure Active Directory (Azure AD) topologieën beschreven die gebruik maken van Azure AD Connect cloud provisioning. Dit artikel bevat alleen ondersteunde configuraties en scenario's.
 
 > [!IMPORTANT]
-> Micro soft biedt geen ondersteuning voor het wijzigen of bewerken van Azure AD Connect Cloud inrichting buiten de configuraties of acties die formeel zijn gedocumenteerd. Een van deze configuraties of acties kan leiden tot een inconsistente of niet-ondersteunde status van Azure AD Connect Cloud inrichting. Daarom biedt Microsoft geen technische ondersteuning voor dergelijke implementaties.
+> Microsoft biedt geen ondersteuning voor het wijzigen of exploiteren van Azure AD Connect cloudprovisioning buiten de configuraties of acties die formeel zijn gedocumenteerd. Een van deze configuraties of acties kan resulteren in een inconsistente of niet-ondersteunde status van Azure AD Connect cloud provisioning. Daarom biedt Microsoft geen technische ondersteuning voor dergelijke implementaties.
 
-## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>Wat u moet weten over alle scenario's en topologieën
-Hier volgt een lijst met informatie die u moet onthouden wanneer u een oplossing selecteert.
+## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>Dingen om te onthouden over alle scenario's en topologieën
+Het volgende is een lijst met informatie om in gedachten te houden bij het selecteren van een oplossing.
 
-- Gebruikers en groepen moeten uniek worden geïdentificeerd in alle forests
-- De overeenkomst tussen forests vindt niet plaats met Cloud inrichting
-- Een gebruiker of groep mag slechts één keer worden weer gegeven in alle forests
-- Het bron anker voor objecten wordt automatisch gekozen.  Er wordt gebruikgemaakt van MS-DS-ConsistencyGuid indien aanwezig, anders wordt ObjectGUID gebruikt.
-- U kunt het kenmerk dat wordt gebruikt voor het bron anker niet wijzigen.
+- Gebruikers en groepen moeten uniek worden geïdentificeerd in alle bossen
+- Matching over forests vindt niet plaats met cloudprovisioning
+- Een gebruiker of groep mag slechts één keer in alle bossen vertegenwoordigd zijn
+- Het bronanker voor objecten wordt automatisch gekozen.  Het maakt gebruik van ms-DS-ConsistencyGuid indien aanwezig, anders objectGUId wordt gebruikt.
+- U het kenmerk dat wordt gebruikt voor bronanker niet wijzigen.
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/single-forest.png)
+## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-tenant
+![Topologie voor één forest en één tenant](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-De eenvoudigste topologie is één on-premises forest met een of meer domeinen en één Azure AD-Tenant.  Zie [zelf studie: Eén forest met één Azure AD-Tenant](tutorial-single-forest.md) voor een voor beeld van dit scenario.
+De eenvoudigste topologie is één on-premises forest, met één of meerdere domeinen en één Azure AD-tenant.  Zie [Zelfstudie: een enkel forest met één Azure AD-tenant](tutorial-single-forest.md) voor een voorbeeld van dit scenario.
 
 
-## <a name="multi-forest-single-azure-ad-tenant"></a>Meerdere forests, één Azure AD-Tenant
-![Topologie voor een multi-forest en één Tenant](media/plan-cloud-provisioning-topologies/multi-forest.png)
+## <a name="multi-forest-single-azure-ad-tenant"></a>Meerdere forest, één Azure AD-tenant
+![Topologie voor een multi-forest en één tenant](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-Een algemene topologie is een meerdere AD-forests met een of meer domeinen en één Azure AD-Tenant.  
+Een gemeenschappelijke topologie is een meerdere AD-forests, met één of meerdere domeinen en één Azure AD-tenant.  
 
-## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Bestaand forest met Azure AD Connect, nieuw forest met Cloud inrichting
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Bestaand forest met Azure AD Connect, nieuw forest met cloudprovisioning
+![Topologie voor één forest en één tenant](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
-Dit scenario is een topologie die vergelijkbaar is met het scenario met meerdere forests, maar dit is een bestaande Azure AD Connect omgeving en brengt vervolgens een nieuw forest met Azure AD Connect Cloud inrichting aan.  Zie [zelf studie: een bestaand forest met één Azure AD-Tenant](tutorial-existing-forest.md) voor een voor beeld van dit scenario.
+Dit scenario is topologie is vergelijkbaar met het multi-forest scenario, maar dit betreft een bestaande Azure AD Connect-omgeving en vervolgens brengen op een nieuw forest met behulp van Azure AD Connect cloud provisioning.  Zie [Zelfstudie: een bestaand forest met één Azure AD-tenant voor](tutorial-existing-forest.md) een voorbeeld van dit scenario.
 
-## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Piloten Azure AD Connect Cloud inrichting in een bestaand hybride AD-forest
-![topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/migrate.png) het pilot scenario omvat het bestaan van zowel Azure AD Connect als Azure AD Connect Cloud inrichting in hetzelfde forest en de gebruikers en groepen dienovereenkomstig te bepalen. Opmerking: een object moet binnen het bereik van slechts een van de hulpprogram ma's zijn. 
+## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Azure AD Connect-cloudinrichting in een bestaand hybride AD-forest besturen
+![Topologie voor één forest en](media/plan-cloud-provisioning-topologies/migrate.png) één tenant Het pilotscenario omvat het bestaan van zowel Azure AD Connect als Azure AD Connect cloudprovisioning in hetzelfde forest en het opslaan van de gebruikers en groepen dienovereenkomstig. OPMERKING: Een object moet slechts in één van de gereedschappen in het bereik zijn. 
 
-Zie voor een voor beeld van dit scenario [zelf studie: Pilot Azure AD Connect Cloud Provisioning in een bestaand GESYNCHRONISEERD AD-forest](tutorial-pilot-aadc-aadccp.md)
+Zie [Zelfstudie: Azure AD Connect-cloudprovisioning in een bestaand gesynchroniseerd AD-forest leiden voor](tutorial-pilot-aadc-aadccp.md) een voorbeeld van dit scenario
 
 
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-- [Wat is inrichten?](what-is-provisioning.md)
-- [Wat is Azure AD Connect Cloud inrichting?](what-is-cloud-provisioning.md)
+- [Wat is inrichting?](what-is-provisioning.md)
+- [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)
 

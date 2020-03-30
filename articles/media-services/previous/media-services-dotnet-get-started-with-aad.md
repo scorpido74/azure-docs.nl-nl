@@ -1,6 +1,6 @@
 ---
-title: Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services-API met .NET | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u Azure Active Directory (Azure AD)-verificatie gebruikt voor toegang tot Azure Media Services-API (AMS) met .NET.
+title: Azure AD-verificatie gebruiken om toegang te krijgen tot azure mediaservices-API met .NET | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u Azure Active Directory-verificatie (Azure AD) gebruiken om toegang te krijgen tot de AMS-API (Azure Media Services) met .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,91 +14,91 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b53fca292630ef988ee1357ea50adc4d7b7e9be5
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162876"
 ---
-# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services-API met .NET
+# <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure AD-verificatie gebruiken om toegang te krijgen tot azure media services-api met .NET
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Vanaf windowsazure. Media Services 4.0.0.4 ondersteunt Azure Media Services verificatie op basis van Azure Active Directory (Azure AD). In dit onderwerp wordt beschreven hoe u Azure AD-verificatie gebruikt voor toegang tot Azure Media Services-API met Microsoft .NET.
+Vanaf windowsazure.mediaservices 4.0.0.4 ondersteunt Azure Media Services verificatie op basis van Azure Active Directory (Azure AD). In dit onderwerp ziet u hoe u Azure AD-verificatie gebruikt om toegang te krijgen tot azure media services-api met Microsoft .NET.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie. 
-- Een Media Services-account. Zie [een Azure Media Services-account maken met behulp van de Azure Portal](media-services-portal-create-account.md)voor meer informatie.
-- Het meest recente [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -pakket.
-- Vertrouwd zijn met het onderwerp [toegang tot Azure Media Services-API met Azure AD-verificatie overzicht](media-services-use-aad-auth-to-access-ams-api.md). 
+- Een Azure-account. Zie gratis [proefversie van Azure voor](https://azure.microsoft.com/pricing/free-trial/)meer informatie. 
+- Een Media Services-account. Zie [Een Azure Media Services-account maken met de Azure-portal](media-services-portal-create-account.md)voor meer informatie.
+- Het nieuwste [NuGet-pakket.](https://www.nuget.org/packages/windowsazure.mediaservices)
+- Vertrouwdheid met het onderwerp [Toegang tot Azure Media Services API met Azure AD-verificatieoverzicht](media-services-use-aad-auth-to-access-ams-api.md). 
 
-Wanneer u Azure AD-verificatie gebruikt met Azure Media Services, kunt u op een van de volgende twee manieren verifiëren:
+Wanneer u Azure AD-verificatie gebruikt met Azure Media Services, u op twee manieren verifiëren:
 
-- **Gebruikers verificatie** verifieert een persoon die de app gebruikt om te communiceren met Azure Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen om referenties. Een voor beeld is een beheer console-app die wordt gebruikt door geautoriseerde gebruikers om de versleutelings taken of live streamen te controleren. 
-- **Service-Principal-verificatie** verifieert een service. Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren, zoals web apps, functie-apps, Logic apps, Api's of micro Services.
+- **Gebruikersverificatie** verifieert een persoon die de app gebruikt om te communiceren met Azure Media Services-bronnen. De interactieve toepassing moet eerst vragen aan de gebruiker om referenties. Een voorbeeld is een beheerconsole-app die wordt gebruikt door geautoriseerde gebruikers om coderingstaken of live streaming te controleren. 
+- **Serviceprincipal-verificatie** verifieert een service. Toepassingen die deze verificatiemethode vaak gebruiken, zijn apps die daemonservices, services op het middensegment of geplande taken uitvoeren, zoals web-apps, functie-apps, logische apps, API's of microservices.
 
 >[!IMPORTANT]
->Azure media service ondersteunt momenteel een Azure Access Control Service-verificatie model. Access Control autorisatie zal echter worden afgeschaft op 22 juni 2018. U wordt aangeraden zo snel mogelijk naar een Azure Active Directory verificatie model te migreren.
+>Azure Media Service ondersteunt momenteel een Azure Access Control Service-verificatiemodel. De toegangscontroleautorisatie wordt echter afgeschaft op 22 juni 2018. We raden u aan zo snel mogelijk te migreren naar een Azure Active Directory-verificatiemodel.
 
-## <a name="get-an-azure-ad-access-token"></a>Een Azure AD-toegangs Token ophalen
+## <a name="get-an-azure-ad-access-token"></a>Een Azure AD-toegangstoken ophalen
 
-Om verbinding te maken met de Azure Media Services-API met Azure AD-verificatie, moet de client-app een Azure AD-toegangs token aanvragen. Wanneer u de Media Services .NET-client-SDK gebruikt, worden veel van de details over het verkrijgen van een Azure AD-toegangs token in de [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) -en [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) -klassen genest en vereenvoudigd. 
+Als u verbinding wilt maken met de Azure Media Services API met Azure AD-verificatie, moet de client-app een Azure AD-toegangstoken aanvragen. Wanneer u de SDK van de Media Services .NET-client gebruikt, worden veel van de details over het aanschaffen van een Azure AD-toegangstoken voor u verpakt en vereenvoudigd in de klassen [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) en [AzureAdTokenCredentials.](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) 
 
-U hoeft bijvoorbeeld geen Azure AD-instantie, Media Services resource-URI of systeem eigen Azure AD-toepassings gegevens op te geven. Dit zijn bekende waarden die al zijn geconfigureerd door de klasse van de Azure AD-toegangs token provider. 
+U hoeft bijvoorbeeld geen azure-ad-autoriteit, Media Services-bron URI of native Azure AD-toepassingsgegevens op te geven. Dit zijn bekende waarden die al zijn geconfigureerd door de klasse Azure AD-toegangstokenprovider. 
 
-Als u geen Azure media service .NET SDK gebruikt, raden we u aan de [Azure AD-verificatie bibliotheek](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)te gebruiken. Zie [de Azure Portal gebruiken om toegang te krijgen tot Azure AD-verificatie-instellingen](media-services-portal-get-started-with-aad.md)voor de waarden van de para meters die u moet gebruiken met de Azure AD-verificatie bibliotheek.
+Als u azure media service .NET SDK niet gebruikt, raden we u aan de [Azure AD-verificatiebibliotheek](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)te gebruiken. Zie De Azure-portal gebruiken om toegang te krijgen [tot Azure AD-verificatieinstellingen](media-services-portal-get-started-with-aad.md)als u waarden wilt krijgen voor de parameters die u moet gebruiken met Azure AD-verificatiebibliotheek.
 
-U kunt ook de standaard implementatie van de **AzureAdTokenProvider** vervangen door uw eigen implementatie.
+U hebt ook de mogelijkheid om de standaardimplementatie van de **AzureAdTokenProvider** te vervangen door uw eigen implementatie.
 
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK installeren en configureren
 
 >[!NOTE] 
->Als u Azure AD-verificatie wilt gebruiken met de Media Services .NET SDK, hebt u het meest recente [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -pakket nodig. Voeg ook een verwijzing naar de assembly **micro soft. Identity model. clients. ActiveDirectory** toe. Als u een bestaande app gebruikt, neemt u de assembly **micro soft. WindowsAzure. Media Services. client. common. Authentication. dll** op. 
+>Als u Azure AD-verificatie wilt gebruiken met de Media Services .NET SDK, moet u over het nieuwste [NuGet-pakket](https://www.nuget.org/packages/windowsazure.mediaservices) beschikken. Voeg ook een verwijzing toe naar de **microsoft.identitymodel.clients.ActiveDirectory-assemblage.** Als u een bestaande app gebruikt, neemt u de assemblage **van Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** toe. 
 
 1. Maak in Visual Studio een nieuwe C#-consoletoepassing.
-2. Gebruik het [windowsazure. Media Services](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-pakket om **Azure Media Services .NET SDK**te installeren. 
+2. Gebruik het [NuGet-pakket windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) om **Azure Media Services .NET SDK**te installeren. 
 
-    Als u referenties wilt toevoegen met behulp van NuGet, voert u de volgende stappen uit: Klik in **Solution Explorer**met de rechter muisknop op de project naam en selecteer vervolgens **NuGet-pakketten beheren**. Zoek vervolgens naar **windowsazure. Media Services** en selecteer **installeren**.
+    Als u verwijzingen wilt toevoegen met NuGet, neemt u de volgende stappen: klik in **Solution Explorer**met de rechtermuisknop op de projectnaam en selecteer **NuGet-pakketten beheren.** Zoek vervolgens naar **windowsazure.mediaservices** en selecteer **Installeren**.
     
     -of-
 
-    Voer de volgende opdracht uit in de **Package Manager-console** in Visual Studio.
+    Voer de volgende opdracht uit in **Package Manager Console** in Visual Studio.
 
         Install-Package windowsazure.mediaservices -Version 4.0.0.4
 
-3. Voeg **deze toe aan** de bron code.
+3. Voeg **het gebruik** toe aan uw broncode.
 
         using Microsoft.WindowsAzure.MediaServices.Client; 
 
-## <a name="use-user-authentication"></a>Gebruikers verificatie gebruiken
+## <a name="use-user-authentication"></a>Gebruikersverificatie gebruiken
 
-Als u verbinding wilt maken met de Azure media service-API met de optie voor gebruikers verificatie, moet de client-app een Azure AD-token aanvragen met behulp van de volgende para meters:  
+Als u verbinding wilt maken met de Azure Media Service API met de optie voor gebruikersverificatie, moet de client-app een Azure AD-token aanvragen met behulp van de volgende parameters:  
 
-- Azure AD-Tenant eindpunt. De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Beweeg de muis aanwijzer over de aangemelde gebruiker in de rechter bovenhoek.
-- Media Services resource-URI.
-- Media Services (systeem eigen) client-ID van toepassing. 
-- Media Services (systeem eigen) URI voor omleiding van toepassing. 
+- Eindpunt azure AD-tenant. De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de plaats boven de aangemelde gebruiker in de rechterbovenhoek.
+- Media Services resource URI.
+- Media Services (native) application client ID. 
+- Media Services (native) applicatie redirect URI. 
 
-De waarden voor deze para meters vindt u in **AzureEnvironments. AzureCloudEnvironment**. De constante **AzureEnvironments. AzureCloudEnvironment** is een helper in de .NET SDK voor het verkrijgen van de juiste omgevings variabele-instellingen voor een openbaar Azure-Data Center. 
+De waarden voor deze parameters zijn te vinden in **AzureEnvironments.AzureCloudEnvironment**. De **azureenvironments.AzureCloudEnvironment** constant is een helper in de .NET SDK om de juiste omgevingsvariabele instellingen te krijgen voor een openbaar Azure Data Center. 
 
-Het bevat vooraf gedefinieerde omgevings instellingen voor het openen van Media Services in de open bare data centers. Voor soevereine of overheids Cloud regio's kunt u respectievelijk **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**of **AzureGermanCloudEnvironment** gebruiken.
+Het bevat vooraf gedefinieerde omgevingsinstellingen voor alleen toegang tot Media Services in openbare datacenters. Voor soevereine of overheidscloudregio's u respectievelijk **AzureChinaCloudEnvironment,** **AzureUsGovernmentEnvironment**of **AzureGermanCloudEnvironment** gebruiken.
 
-In het volgende code voorbeeld wordt een token gemaakt:
+In het volgende codevoorbeeld wordt een token getekend:
     
     var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
   
-Als u wilt beginnen met het Program meren op Media Services, moet u een **cloudmediacontext maakt** -exemplaar maken dat de server context vertegenwoordigt. De **cloudmediacontext maakt** bevat verwijzingen naar belang rijke verzamelingen, waaronder taken, assets, bestanden, toegangs beleid en Locators. 
+Als u wilt beginnen met programmeren tegen Media Services, moet u een **CloudMediaContext-exemplaar** maken dat de servercontext vertegenwoordigt. De **CloudMediaContext** bevat verwijzingen naar belangrijke verzamelingen, waaronder taken, assets, bestanden, toegangsbeleid en locators. 
 
-U moet ook de resource- **URI voor media rest-Services** door geven aan de **cloudmediacontext maakt** -constructor. Als u de resource-URI voor media REST-services wilt ophalen, meldt u zich aan bij de Azure Portal, selecteert u uw Azure Media Services account, selecteert u **API-toegang**en selecteert **u verbinding maken met Azure Media Services met gebruikers verificatie**. 
+U moet ook de **resource URI voor Media REST Services** doorgeven aan de **CloudMediaContext** constructor. Als u de bron URI voor Media REST Services wilt krijgen, meldt u zich aan bij de Azure-portal, selecteert u uw Azure Media Services-account, selecteert u **API-toegang**en selecteert u **Verbinding maken met Azure Media Services met gebruikersverificatie**. 
 
-In het volgende code voorbeeld wordt een **cloudmediacontext maakt** -exemplaar gemaakt:
+In het volgende codevoorbeeld wordt een **CloudMediaContext-exemplaar** gemaakt:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
 
-In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
+In het volgende voorbeeld ziet u hoe u het Azure AD-token en de context maakt:
 
     namespace AzureADAuthSample
     {
@@ -125,19 +125,19 @@ In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
     }
 
 >[!NOTE]
->Als u een uitzonde ring krijgt met de tekst "de externe server heeft een fout geretourneerd: (401) niet gemachtigd," Zie de sectie [toegangs beheer](media-services-use-aad-auth-to-access-ams-api.md#access-control) van toegang tot Azure Media Services-API met Azure AD-verificatie overzicht.
+>Als u een uitzondering krijgt met de tekst 'De externe server heeft een fout geretourneerd: (401) Onbevoegd", raadpleegt u het gedeelte [Toegangsbeheer](media-services-use-aad-auth-to-access-ams-api.md#access-control) van de Accessing Azure Media Services API met Azure AD-verificatieoverzicht.
 
-## <a name="use-service-principal-authentication"></a>Service-Principal-verificatie gebruiken
+## <a name="use-service-principal-authentication"></a>Serviceprincipal-verificatie gebruiken
     
-Als u verbinding wilt maken met de Azure Media Services-API met de optie Service-Principal, moet uw middelste app (Web API of Web Application) een Azure AD-token aanvragen met de volgende para meters:  
+Als u verbinding wilt maken met de Azure Media Services API met de serviceprincipaloptie, moet uw middelste-tier-app (web-API of webtoepassing) een Azure AD-token met de volgende parameters aanvragen:  
 
-- Azure AD-Tenant eindpunt. De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Beweeg de muis aanwijzer over de aangemelde gebruiker in de rechter bovenhoek.
-- Media Services resource-URI.
-- Azure AD-toepassings waarden: de **client-id** en het **client geheim**.
+- Eindpunt azure AD-tenant. De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de plaats boven de aangemelde gebruiker in de rechterbovenhoek.
+- Media Services resource URI.
+- Azure AD-toepassingswaarden: de **client-id** en **het clientgeheim**.
 
-De waarden voor de **client-id** en **client Secret** -para meters vindt u in de Azure Portal. Zie [aan de slag met Azure AD-verificatie met behulp van de Azure Portal](media-services-portal-get-started-with-aad.md)voor meer informatie.
+De waarden voor de geheime **parameters client-id** en **client** zijn te vinden in de Azure-portal. Zie [Aan de slag met Azure AD-verificatie met de Azure-portal](media-services-portal-get-started-with-aad.md)voor meer informatie.
 
-In het volgende code voorbeeld wordt een token gemaakt met behulp van de **AzureAdTokenCredentials** -constructor die **AzureAdClientSymmetricKey** als para meter neemt: 
+In het volgende codevoorbeeld wordt een token gemaakt met behulp van de **AzureAdTokenCredentials** constructor die **AzureAdClientSymmetricKey** als parameter neemt: 
     
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"), 
@@ -145,21 +145,21 @@ In het volgende code voorbeeld wordt een token gemaakt met behulp van de **Azure
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-U kunt ook de **AzureAdTokenCredentials** -constructor opgeven die **AzureAdClientCertificate** als para meter gebruikt. 
+U ook de **AzureAdTokenCredentials-constructor** opgeven die **AzureAdClientCertificate** als parameter neemt. 
 
-Voor instructies over het maken en configureren van een certificaat in een formulier dat door Azure AD kan worden gebruikt, raadpleegt [u verificatie bij Azure AD in daemon-apps met certificaten-hand matige configuratie stappen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md).
+Zie [Authenticeren naar Azure AD in daemon-apps met certificaten - handmatige configuratiestappen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md)voor instructies over het maken en configureren van een certificaat in een formulier dat door Azure AD kan worden gebruikt.
 
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureCloudEnvironment);
 
-Als u wilt beginnen met het Program meren op Media Services, moet u een **cloudmediacontext maakt** -exemplaar maken dat de server context vertegenwoordigt. U moet ook de resource- **URI voor media rest-Services** door geven aan de **cloudmediacontext maakt** -constructor. U kunt de **resource-URI voor de media rest Services** -waarde ook ophalen uit het Azure Portal.
+Als u wilt beginnen met programmeren tegen Media Services, moet u een **CloudMediaContext-exemplaar** maken dat de servercontext vertegenwoordigt. U moet ook de **resource URI voor Media REST Services** doorgeven aan de **CloudMediaContext** constructor. U de **waarde van de resource URI voor Media REST Services** ook van de Azure-portal halen.
 
-In het volgende code voorbeeld wordt een **cloudmediacontext maakt** -exemplaar gemaakt:
+In het volgende codevoorbeeld wordt een **CloudMediaContext-exemplaar** gemaakt:
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
     
-In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
+In het volgende voorbeeld ziet u hoe u het Azure AD-token en de context maakt:
 
     namespace AzureADAuthSample
     {
@@ -191,4 +191,4 @@ In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met [het uploaden van bestanden naar uw account](media-services-dotnet-upload-files.md).
+Ga aan de slag met [het uploaden van bestanden naar je account.](media-services-dotnet-upload-files.md)

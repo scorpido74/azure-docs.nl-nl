@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks | Microsoft Docs'
+title: 'Snelstart: gegevens analyseren in Azure Data Lake Storage Gen2 met Azure Databricks | Microsoft Documenten'
 description: Leer hoe u een Spark-taak kunt uitvoeren op Azure Databricks met behulp van de Azure-portal en een Azure Data Lake Storage Gen2-opslagaccount.
 author: normesta
 ms.author: normesta
@@ -9,38 +9,38 @@ ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
 ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470731"
 ---
-# <a name="quickstart-analyze-data-with-databricks"></a>Snelstartgids: gegevens analyseren met Databricks
+# <a name="quickstart-analyze-data-with-databricks"></a>Snelstart: gegevens analyseren met Databricks
 
-In deze Quick Start voert u een Apache Spark-taak uit met behulp van Azure Databricks voor het uitvoeren van analyses op gegevens die zijn opgeslagen in een opslag account. Als onderdeel van de Apache Spark-taak gaat u abonnementsgegevens van een radiozender analyseren om meer inzicht te krijgen in vrij/betaald gebruik op basis van demografische gegevens.
+In deze quickstart voert u een Apache Spark-taak uit met Azure Databricks om analyses uit te voeren op gegevens die zijn opgeslagen in een opslagaccount. Als onderdeel van de Apache Spark-taak gaat u abonnementsgegevens van een radiozender analyseren om meer inzicht te krijgen in vrij/betaald gebruik op basis van demografische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* De naam van uw Azure Data Lake Gen2-opslag account. [Maak een Azure data Lake Storage Gen2 Storage-account](data-lake-storage-quickstart-create-account.md).
+* De naam van uw Azure Data Lake Gen2-opslagaccount. [Maak een Azure Data Lake Storage Gen2-opslagaccount](data-lake-storage-quickstart-create-account.md).
 
-* De Tenant-ID, App-ID en het wacht woord van een Azure-Service-Principal met een toegewezen rol van de Inzender voor gegevens van de **opslag-BLOB**. [Maak een Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md).
+* De tenant-id, app-id en wachtwoord van een Azure-serviceprincipal met een toegewezen rol van **Opslagblob-gegevensopdragers**. [Een serviceprincipal maken.](../../active-directory/develop/howto-create-service-principal-portal.md)
 
   > [!IMPORTANT]
-  > Wijs de rol toe binnen het bereik van de Data Lake Storage Gen2 Storage-account. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
+  > Wijs de rol toe in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
 In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure Portal.
 
-1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
+1. Selecteer in de Azure-portal de optie **Een resource** > **Analytics** > **Azure Databricks maken**.
 
-    ![Databricks op Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks op Azure Portal")
+    ![Databricks op Azure-portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks op Azure-portal")
 
 2. Geef bij **Azure Databricks Service** de waarden op voor het maken van een Databricks-werkruimte.
 
-    ![Een Azure Databricks-werk ruimte maken](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
+    ![Een Azure Databricks-werkruimte maken](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Een Azure Databricks-werkruimte maken")
 
     Geef de volgende waarden op:
 
@@ -50,7 +50,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **VS - west 2**. U kunt desgewenst een andere openbare regio selecteren.        |
-    |**Prijscategorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+    |**Prijsniveau**     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -60,13 +60,13 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 1. Ga in Azure Portal naar de Databricks-werkruimte die u hebt gemaakt en selecteer **Werkruimte starten**.
 
-2. U wordt omgeleid naar de Azure Databricks-portal. Selecteer in de portal **Nieuw** > **Cluster**.
+2. U wordt omgeleid naar de Azure Databricks-portal. Selecteer **Nieuw** > **cluster**in de portal .
 
     ![Databricks op Azure](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Databricks op Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
+    ![Databricks Spark-cluster maken op Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Databricks Spark-cluster maken op Azure")
 
     Vul de waarden voor de volgende velden in (en laat bij de overige velden de standaardwaarden staan):
 
@@ -78,7 +78,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html) voor meer informatie over het maken van clusters.
 
-## <a name="create-storage-account-container"></a>Een opslag account container maken
+## <a name="create-storage-account-container"></a>Opslagaccountcontainer maken
 
 In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voert u vervolgens codefragmenten uit om het opslagaccount te configureren.
 
@@ -86,11 +86,11 @@ In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voer
 
 2. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitie blok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
 3. Voer in het dialoogvenster **Notitieblok maken** een naam voor het notitieblok in. Selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitie blok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Notitieblok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -107,7 +107,7 @@ In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voer
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-5. In dit codeblok vervangt u de tijdelijke aanduidingen `storage-account-name`, `appID`, `password` en `tenant-id` door de waarden die u hebt verzameld toen u de service-principal maakte. Stel de waarde van de tijdelijke aanduiding `container-name` in op de naam die u wilt toewijzen aan de container.
+5. In dit codeblok vervangt u de tijdelijke aanduidingen `storage-account-name`, `appID`, `password` en `tenant-id` door de waarden die u hebt verzameld toen u de service-principal maakte. Stel `container-name` de tijdelijke aanduidingswaarde in op de naam die u de container wilt geven.
 
 6. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -156,17 +156,17 @@ Voer de volgende taken uit om een Spark SQL-taak op de gegevens uit te voeren.
 
 3. U ziet uitvoer in tabelvorm zoals weergegeven in de volgende schermafbeelding (alleen bepaalde kolommen worden weergegeven):
 
-    ![Voor beeld van JSON-gegevens](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Voor beeld van JSON-gegevens")
+    ![Voorbeeld van JSON-gegevens](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Voorbeeld van JSON-gegevens")
 
     Naast andere gegevens wordt in de voorbeeldgegevens ook het geslacht van de doelgroep van een radiokanaal vastgelegd (kolomnaam **geslacht**) en of het om een gratis dan wel betaald abonnement gaat (kolomnaam **niveau**).
 
 4. U gaat nu een visuele weergave van deze gegevens maken om voor elk geslacht te zien kunnen hoeveel gebruikers een gratis account hebben en hoeveel een betaald. Klik onder in de tabel met uitvoer op het pictogram voor het **staafdiagram** en klik vervolgens op **Tekenopties**.
 
-    ![Staaf diagram maken](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Staaf diagram maken")
+    ![Staafdiagram maken](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "Staafdiagram maken")
 
 5. In **Tekening aanpassen** sleept en zet u de waarden neer zoals in de schermafbeelding wordt weergegeven.
 
-    ![Staaf diagram aanpassen](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Staaf diagram aanpassen")
+    ![Staafdiagram aanpassen](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Staafdiagram aanpassen")
 
     - Stel **Sleutels** in op **geslacht**.
     - Stel **Reeksgroeperingen** in op **niveau**.
@@ -177,15 +177,15 @@ Voer de volgende taken uit om een Spark SQL-taak op de gegevens uit te voeren.
 
 7. De uitvoer toont de visuele weergave zoals de volgende schermafbeelding laat zien:
 
-     ![Staaf diagram aanpassen](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Staaf diagram aanpassen")
+     ![Staafdiagram aanpassen](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Staafdiagram aanpassen")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Beëindig het cluster wanneer u klaar bent met het artikel. Selecteer **Clusters** in de Azure Databricks-werkruimte en zoek het cluster dat u wilt beëindigen. Plaats de cursor op het weglatingsteken onder de kolom **Acties** en selecteer het pictogram **Beëindigen**.
 
-![Een Databricks-cluster stoppen](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
+![Een cluster met Databricks stoppen](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Een cluster met Databricks stoppen")
 
-Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten van inactiviteit** is ingeschakeld tijdens het maken van het cluster. Als u deze optie instelt, wordt het cluster gestopt als het gedurende de opgegeven hoeveelheid tijd inactief is.
+Als u het cluster niet handmatig beëindigt, stopt het automatisch, op voorwaarde dat u het selectievakje **Beëindigen na \_ \_ minuten van inactiviteit** hebt ingeschakeld tijdens het maken van het cluster. Als u deze optie instelt, wordt het cluster gestopt als het gedurende de opgegeven hoeveelheid tijd inactief is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -194,8 +194,8 @@ In dit artikel hebt u een Spark-cluster in Azure Databricks gemaakt en een Spark
 Ga naar het volgende artikel voor informatie over het uitvoeren van een ETL-bewerking (Extraction, Transformation, and Loading) met behulp van Azure Databricks.
 
 > [!div class="nextstepaction"]
->[Gegevens uitpakken, transformeren en laden met behulp van Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+>[Gegevens extraheren, transformeren en laden met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
 
-- Zie [Spark-gegevens bronnen](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)voor meer informatie over het importeren van gegevens uit andere gegevens bronnen in azure Databricks.
+- Zie [Spark-gegevensbronnen](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)voor meer informatie over het importeren van gegevens uit andere gegevensbronnen in Azure Databricks.
 
-- Zie [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)voor meer informatie over andere manieren om toegang te krijgen tot Azure data Lake Storage Gen2 vanuit een Azure Databricks-werk ruimte.
+- Zie [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)voor meer informatie over andere manieren om toegang te krijgen tot Azure Data Lake Storage Gen2 vanuit een Azure Databricks-werkruimte.

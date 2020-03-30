@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer ODBC-connector gebruiken om tableau-gegevens te visualiseren
-description: In dit artikel leert u hoe u een Open Database Connectivity (ODBC)-verbinding met Data Explorer Azure kunt gebruiken om gegevens te visualiseren met tableau.
+title: OdBC-connector van Azure Data Explorer gebruiken om Tableau-gegevens te visualiseren
+description: In dit artikel leert u hoe u een ODBC-verbinding (Open Database Connectivity) gebruiken voor azure data explorer-verbinding om gegevens met Tableau te visualiseren.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,53 +8,53 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562442"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Gegevens visualiseren vanuit Azure Data Explorer in tableau
+# <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Gegevens van Azure Data Explorer visualiseren in Tableau
 
- [Tableau](https://www.tableau.com/) is een Visual Analytics-platform voor Business Intelligence. Als u verbinding wilt maken met Azure Data Explorer van tableau en gegevens uit een voor beeld van een cluster wilt halen, gebruikt u het stuur programma SQL Server Open Database Connectivity (ODBC). 
+ [Tableau](https://www.tableau.com/) is een visual analytics platform voor business intelligence. Als u verbinding wilt maken met Azure Data Explorer vanuit Tableau en gegevens uit een voorbeeldcluster wilt inbrengen, gebruikt u het ODBC-stuurprogramma (SQL Server Open Database Connectivity). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om dit artikel te volt ooien:
+Je hebt het volgende nodig om dit artikel te voltooien:
 
-* [Maak verbinding met azure Data Explorer met ODBC](connect-odbc.md) met behulp van het SQL Server ODBC-stuur programma om verbinding te maken met Azure Data Explorer vanuit tableau. 
+* [Maak verbinding met Azure Data Explorer met ODBC](connect-odbc.md) met het SQL Server ODBC-stuurprogramma om verbinding te maken met Azure Data Explorer vanuit Tableau. 
 
-* Tableau Desktop, full of [proef](https://www.tableau.com/products/desktop/download) versie.
+* Tableau Desktop, volledige of [proefversie.](https://www.tableau.com/products/desktop/download)
 
-* Een cluster dat de StormEvents-voorbeeld gegevens bevat. Zie [een azure Data Explorer-cluster en-data base maken](create-cluster-database-portal.md) en [voorbeeld gegevens opnemen in azure Data Explorer](ingest-sample-data.md)voor meer informatie.
+* Een cluster met voorbeeldgegevens van StormEvents. Zie [Een Azure Data Explorer-cluster en -database maken en](create-cluster-database-portal.md) [voorbeeldgegevens opnemen in Azure Data Explorer](ingest-sample-data.md)voor meer informatie.
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="visualize-data-in-tableau"></a>Gegevens visualiseren in tableau 
+## <a name="visualize-data-in-tableau"></a>Data visualiseren in Tableau 
 
-Zodra u klaar bent met het configureren van ODBC, kunt u voorbeeld gegevens in tableau plaatsen.
+Zodra u odbc hebt geconfigureerd, u voorbeeldgegevens naar Tableau brengen.
 
-1. Selecteer in tableau bureau blad in het linkermenu **andere data bases (ODBC)** .
+1. Selecteer in Tableau Desktop in het linkermenu de optie **Andere databases (ODBC)**.
 
     ![Verbinding maken met ODBC](media/tableau/connect-odbc.png)
 
-1. Selecteer bij **DSN**de gegevens bron die u hebt gemaakt voor ODBC en selecteer vervolgens **Aanmelden**.
+1. Selecteer voor **DSN**de gegevensbron die u voor ODBC hebt gemaakt en selecteer **Vervolgens Aanmelden**.
 
     ![ODBC-aanmelding](media/tableau/odbc-sign-in.png)
 
-1. Selecteer voor de **Data Base**de Data Base op uw voor beeld-cluster, zoals *TestDatabase*. Selecteer voor **schema** *dbo*en selecteer voor **tabel**de voorbeeld tabel *StormEvents* .
+1. Selecteer **voor Database**de database in uw voorbeeldcluster, zoals *TestDatabase*. Selecteer **voor Schema** *dbo*en selecteer voor **Tabel**de voorbeeldtabel *StormEvents.*
 
-    ![Data Base en tabel selecteren](media/tableau/select-database-table.png)
+    ![Database en tabel selecteren](media/tableau/select-database-table.png)
 
-1. Tableau toont nu het schema voor de voorbeeld gegevens. Selecteer **Nu bijwerken** om de gegevens naar tableau te brengen.
+1. Tableau toont nu het schema voor de voorbeeldgegevens. Selecteer **Nu bijwerken** om de gegevens naar Tableau te brengen.
 
     ![Gegevens bijwerken](media/tableau/update-data.png)
 
-    Wanneer de gegevens worden geïmporteerd, worden in tableau rijen met gegevens weer gegeven die lijken op de volgende afbeelding.
+    Wanneer de gegevens worden geïmporteerd, toont Tableau rijen met gegevens die vergelijkbaar zijn met de volgende afbeelding.
 
-    ![Resultatenset](media/tableau/result-set.png)
+    ![Resultaatset](media/tableau/result-set.png)
 
-1. Nu kunt u visualisaties in tableau maken op basis van de gegevens die u hebt verzameld van Azure Data Explorer. Zie [tableau Learning](https://www.tableau.com/learn)(Engelstalig) voor meer informatie.
+1. Nu u visualisaties maken in Tableau op basis van de gegevens die u hebt binnengehaald vanuit Azure Data Explorer. Zie [Tableau Learning](https://www.tableau.com/learn)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

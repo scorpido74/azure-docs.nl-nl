@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over open-source technologieën
-description: Krijg antwoorden op veelgestelde vragen over open-source technologieën in Azure App Service.
+title: Gestelde vragen over open source-technologieën
+description: Krijg antwoorden op veelgestelde vragen over open-sourcetechnologieën in Azure App Service.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -10,135 +10,135 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672431"
 ---
-# <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
+# <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over opensourcetechnologieën voor webapps in Azure
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over problemen met open-source technologieën voor de [Web apps functie van Azure app service](https://azure.microsoft.com/services/app-service/web/).
+Dit artikel bevat antwoorden op veelgestelde vragen (veelgestelde vragen) over problemen met open-sourcetechnologieën voor de [Web Apps-functie van Azure App Service.](https://azure.microsoft.com/services/app-service/web/)
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>Hoe kan ik PHP-logboek registratie inschakelen om PHP-problemen op te lossen?
+## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>Hoe schakel ik PHP-logboekregistratie in om PHP-problemen op te lossen?
 
-PHP-logboek registratie inschakelen:
+Ga als nodig de PHP-logboekregistratie inschakelen:
 
-1. Meld u aan bij uw [kudu-website](https://*yourwebsitename*.scm.azurewebsites.net).
-2. Selecteer in het bovenste menu de optie **debug Console** > **cmd**.
-3. Selecteer de map van de **site** .
-4. Selecteer de map **wwwroot** .
-5. Selecteer het pictogram **+** en selecteer vervolgens **nieuw bestand**.
-6. Stel de bestands naam in op **. User. ini**.
-7. Selecteer het potlood pictogram naast **. User. ini**.
-8. Voeg in het bestand de volgende code toe: `log_errors=on`
+1. Meld u aan op uw [Kudu-website.](https://*yourwebsitename*.scm.azurewebsites.net)
+2. Selecteer in het bovenste menu **Debug Console** > **CMD**.
+3. Selecteer de **map Site.**
+4. Selecteer de **map wwwroot.**
+5. Selecteer **+** het pictogram en selecteer **Nieuw bestand**.
+6. Stel de bestandsnaam in op **.user.ini**.
+7. Selecteer het potloodpictogram naast **.user.ini**.
+8. Voeg in het bestand deze code toe:`log_errors=on`
 9. Selecteer **Opslaan**.
-10. Selecteer het potlood pictogram naast **wp-config. php**.
+10. Selecteer het potloodpictogram naast **wp-config.php**.
 11. Wijzig de tekst in de volgende code:
     ```php
     //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
     //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
     ```
-12. Start uw web-app in het menu van de web-app in het Azure Portal.
+12. Start uw web-app opnieuw in de Azure-portal in het menu van de web-app.
 
-Zie voor meer informatie [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Zie [WordPress-foutlogboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)voor meer informatie .
 
-## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hoe kan ik python-toepassings fouten vastleggen in apps die worden gehost in App Service?
+## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hoe log ik python-toepassingsfouten aan in apps die worden gehost in App Service?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hoe kan ik de versie van de node. js-toepassing die wordt gehost in App Service, wijzigen?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hoe wijzig ik de versie van de Node.js-toepassing die wordt gehost in App-service?
 
-Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volgende opties gebruiken:
+Als u de versie van de toepassing Node.js wilt wijzigen, u een van de volgende opties gebruiken:
 
-* Gebruik in de Azure Portal **app-instellingen**.
-  1. Ga in het Azure Portal naar uw web-app.
-  2. Selecteer **Toepassings instellingen**op de Blade **instellingen** .
-  3. In **app-instellingen**kunt u WEBSITE_NODE_DEFAULT_VERSION toevoegen als de sleutel en de versie van node. js die u als waarde wilt gebruiken.
-  4. Ga naar de [kudu-console](https://*yourwebsitename*.scm.azurewebsites.net).
-  5. Als u de versie van node. js wilt controleren, voert u de volgende opdracht in:  
+* Gebruik **app-instellingen**in de Azure-portal .
+  1. Ga in de Azure-portal naar uw web-app.
+  2. Selecteer in het blad **Instellingen** de optie **Toepassingsinstellingen**.
+  3. In **app-instellingen**u WEBSITE_NODE_DEFAULT_VERSION als sleutel opnemen en de versie van Node.js die u als waarde wilt gebruiken.
+  4. Ga naar je [Kudu console.](https://*yourwebsitename*.scm.azurewebsites.net)
+  5. Voer de volgende opdracht in om de versie van Node.js te controleren:  
      ```
      node -v
      ```
-* Wijzig het bestand iisnode. yml. Als u de node. js-versie in het bestand iisnode. yml wijzigt, wordt alleen de runtime-omgeving ingesteld die iisnode gebruikt. Uw kudu-cmd en andere gebruiken nog steeds de node. js-versie die is ingesteld in de **app-instellingen** in de Azure Portal.
+* Wijzig het iisnode.yml-bestand. Als u de Node.js-versie in het bestand iisnode.yml wijzigt, wordt alleen de runtime-omgeving ingesteld die iisnode gebruikt. Uw Kudu-cmd en anderen gebruiken nog steeds de Node.js-versie die is ingesteld in **app-instellingen** in de Azure-portal.
 
-  Als u de iisnode. yml hand matig wilt instellen, maakt u een iisnode. yml-bestand in de hoofdmap van de app. Voeg in het bestand de volgende regel toe:
+  Als u de iisnode.yml handmatig wilt instellen, maakt u een iisnode.yml-bestand in de hoofdmap van uw app. Neem in het bestand de volgende regel op:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Stel het bestand iisnode. yml in met behulp van package. json tijdens de implementatie van broncode beheer.
-  Het implementatie proces van het Azure-bron beheer omvat de volgende stappen:
+* Stel het iisnode.yml-bestand in met behulp van package.json tijdens de implementatie van bronbeheer.
+  Het implementatieproces voor Azure-bronbeheer omvat de volgende stappen:
   1. Hiermee verplaatst u inhoud naar de Azure-web-app.
-  2. Hiermee maakt u een standaard implementatie script als er zich geen (Deploy. cmd,. Deployment-bestanden) in de hoofdmap van de web-app bevindt.
-  3. Voert een implementatie script uit waarin het een iisnode. yml-bestand maakt als u de node. js-versie in het bestand Package. json > engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-  4. Het bestand iisnode. yml heeft de volgende regel code:
+  2. Hiermee maakt u een standaardimplementatiescript als er geen (deploy.cmd, .deployment-bestanden) in de hoofdmap van de web-app is.
+  3. Hiermee wordt een implementatiescript uitgevoerd waarin een iisnode.yml-bestand wordt gemaakt als u de Node.js-versie in het bestand package.json >-engine vermeldt`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Het iisnode.yml-bestand heeft de volgende coderegel:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
       ```
 
-## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Ik zie het bericht ' fout bij het maken van een database verbinding ' in de WordPress-app die wordt gehost in App Service. Hoe kan ik dit probleem oplossen?
+## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Ik zie het bericht "Fout tot oprichting van een databaseverbinding" in mijn WordPress-app die wordt gehost in App-service. Hoe los ik dit op?
 
-Als deze fout wordt weer geven in de Azure WordPress-app, kunt u php_errors. log en debug. log uitvoeren door de stappen uit te voeren die worden beschreven in [WordPress-fouten logboeken inschakelen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+Als u deze fout ziet in uw Azure WordPress-app om php_errors.log en foutopsporing.log in te schakelen, voert u de stappen uit die worden beschreven in [WordPress-foutlogboeken inschakelen.](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)
 
-Als de logboeken zijn ingeschakeld, reproduceert u de fout en raadpleegt u de logboeken om te controleren of er verbinding is met de volgende:
+Wanneer de logboeken zijn ingeschakeld, voert u de fout weer en controleert u de logboeken om te zien of de verbindingen op raken:
 ```
 [09-Oct-2015 00:03:13 UTC] PHP Warning: mysqli_real_connect(): (HY000/1226): User ‘abcdefghijk79' has exceeded the ‘max_user_connections’ resource (current value: 4) in D:\home\site\wwwroot\wp-includes\wp-db.php on line 1454
 ```
 
-Als deze fout wordt weer geven in de bestanden debug. log of php_errors. log, overschrijdt uw app het aantal verbindingen. Als u host bent op ClearDB, controleert u het aantal verbindingen dat beschikbaar is in uw [service-abonnement](https://www.cleardb.com/pricing.view).
+Als u deze fout ziet in uw bestanden foutopsporing.logboek of php_errors.log, overschrijdt uw app het aantal verbindingen. Als u host op ClearDB, controleert u het aantal verbindingen dat beschikbaar is in uw [serviceplan.](https://www.cleardb.com/pricing.view)
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hoe kan ik fouten opsporen in een node. js-app die wordt gehost in App Service?
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hoe kan ik een Node.js-app debuggen die wordt gehost in App-service?
 
-1.  Ga naar de [kudu-console](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole).
-2.  Ga naar de map met toepassings Logboeken (D:\home\LogFiles\Application).
-3.  Controleer in het bestand logging_errors. txt op inhoud.
+1.  Ga naar je [Kudu console.](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)
+2.  Ga naar de map toepassingslogboeken (D:\home\LogFiles\Application).
+3.  Controleer in het logging_errors.txt-bestand op inhoud.
 
-## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hoe kan ik systeem eigen python-modules installeren in een App Service web-app of API-app?
+## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hoe installeer ik native Python-modules in een App Service-web-app of API-app?
 
-Sommige pakketten kunnen niet worden geïnstalleerd met behulp van PIP in Azure. Mogelijk is het pakket niet beschikbaar op de python-pakket index of is een compiler vereist (er is geen compiler beschikbaar op de computer waarop de web-app wordt uitgevoerd in App Service). Zie [python-modules installeren in app service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/)voor meer informatie over het installeren van systeem eigen modules in app service Web apps en API apps.
+Sommige pakketten worden mogelijk niet geïnstalleerd met pip in Azure. Het pakket is mogelijk niet beschikbaar op de Python Package Index of er is mogelijk een compiler vereist (een compiler is niet beschikbaar op de computer waarop de web-app in App Service wordt uitgevoerd). Zie [Python-modules installeren in App Service](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/)voor informatie over het installeren van native modules in App Service.
 
-## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hoe kan ik een Django-app implementeren op App Service met behulp van Git en de nieuwe versie van python?
+## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hoe implementeer ik een Django-app naar App Service met Git en de nieuwe versie van Python?
 
-Zie [Deploying a Django app to app service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/)voor informatie over het installeren van Django.
+Zie [Een Django-app implementeren naar appservice](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/)voor informatie over het installeren van Django.
 
-## <a name="where-are-the-tomcat-log-files-located"></a>Waar bevinden zich de logboek bestanden van de Tomcat?
+## <a name="where-are-the-tomcat-log-files-located"></a>Waar bevinden zich de Tomcat-logbestanden?
 
 Voor Azure Marketplace en aangepaste implementaties:
 
-* Maplocatie: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
-* Interessante bestanden:
-    * catalina. *jjjj-mm-dd*. log
-    * host-Manager. *jjjj-mm-dd*. log
-    * lokalehost. *jjjj-mm-dd*. log
-    * Manager. *jjjj-mm-dd*. log
-    * site_access_log. *jjjj-mm-dd*. log
+* Maplocatie: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Dossiers van belang:
+    * Catalina. *yyyy-mm-dd*.log
+    * gastheer-manager. *yyyy-mm-dd*.log
+    * Localhost. *yyyy-mm-dd*.log
+    * Manager. *yyyy-mm-dd*.log
+    * site_access_log. *yyyy-mm-dd*.log
 
 
-Voor implementaties van de portal- **app-instellingen** :
+Voor implementaties **van portal-app-instellingen:**
 
 * Maplocatie: D:\home\LogFiles
-* Interessante bestanden:
-    * catalina. *jjjj-mm-dd*. log
-    * host-Manager. *jjjj-mm-dd*. log
-    * lokalehost. *jjjj-mm-dd*. log
-    * Manager. *jjjj-mm-dd*. log
-    * site_access_log. *jjjj-mm-dd*. log
+* Dossiers van belang:
+    * Catalina. *yyyy-mm-dd*.log
+    * gastheer-manager. *yyyy-mm-dd*.log
+    * Localhost. *yyyy-mm-dd*.log
+    * Manager. *yyyy-mm-dd*.log
+    * site_access_log. *yyyy-mm-dd*.log
 
-## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Problemen met de verbindings fouten van het JDBC-stuur programma Hoe kan ik oplossen?
+## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hoe los ik jdbc-stuurprogrammaverbindingsfouten op?
 
-Mogelijk wordt het volgende bericht weer gegeven in uw Tomcat-logboeken:
+Mogelijk ziet u het volgende bericht in uw Tomcat-logboeken:
 
 ```
 The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak,the JDBC Driver has been forcibly unregistered
 ```
 
-Om de fout op te lossen:
+Ga als een besluit over de fout:
 
-1. Verwijder het bestand sqljdbc*. jar uit de map app/lib.
-2. Als u de aangepaste Tomcat of de Tomcat-webserver van Azure Marketplace gebruikt, kopieert u dit jar-bestand naar de map tomcat lib.
-3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **java 1,8** > **Tomcat-server**), kopieert u het sqljdbc. * jar-bestand in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
+1. Verwijder het sqljdbc*.jar-bestand uit uw app/lib-map.
+2. Als u de aangepaste Tomcat- of Azure Marketplace-tomcat-webserver gebruikt, kopieert u dit .jar-bestand naar de map Tomcat lib.
+3. Als u Java inschakelt via de Azure-portal (selecteer **Java 1.8** > **Tomcat-server),** kopieert u het sqljdbc.* jar-bestand in de map die parallel loopt aan uw app. Voeg vervolgens de volgende klassepadinstelling toe aan het bestand web.config:
 
     ```xml
     <httpPlatform>
@@ -149,9 +149,9 @@ Om de fout op te lossen:
     </httpPlatform>
     ```
 
-## <a name="why-do-i-see-errors-when-i-attempt-to-copy-live-log-files"></a>Waarom worden fouten weer geven wanneer ik live-logboek bestanden probeer te kopiëren?
+## <a name="why-do-i-see-errors-when-i-attempt-to-copy-live-log-files"></a>Waarom zie ik fouten wanneer ik live logbestanden probeer te kopiëren?
 
-Als u probeert live-logboek bestanden te kopiëren voor een Java-app (bijvoorbeeld Tomcat), ziet u mogelijk de volgende FTP-fout:
+Als u live-logboekbestanden voor een Java-app probeert te kopiëren (bijvoorbeeld Tomcat), ziet u mogelijk deze FTP-fout:
 
 ```
 Error transferring file [filename] Copying files from remote side failed.
@@ -159,57 +159,57 @@ Error transferring file [filename] Copying files from remote side failed.
 The process cannot access the file because it is being used by another process.
 ```
 
-Het fout bericht kan variëren, afhankelijk van de FTP-client.
+Het foutbericht kan variëren, afhankelijk van de FTP-client.
 
-Alle Java-apps hebben dit vergrendelings probleem. Alleen kudu ondersteunt het downloaden van dit bestand tijdens de uitvoering van de app.
+Alle Java-apps hebben dit vergrendelingsprobleem. Alleen Kudu ondersteunt het downloaden van dit bestand terwijl de app wordt uitgevoerd.
 
-Als de app wordt gestopt, is FTP-toegang tot deze bestanden toegestaan.
+Als u de app stopt, heeft FTP ftp-toegang tot deze bestanden.
 
-Een andere oplossing is het schrijven van een Webtaak die volgens een schema wordt uitgevoerd en deze bestanden kopieert naar een andere map. Zie het [CopyLogsJob](https://github.com/kamilsykora/CopyLogsJob) -project voor een voorbeeld project.
+Een andere tijdelijke oplossing is het schrijven van een WebJob die volgens een schema wordt uitgevoerd en deze bestanden kopieert naar een andere map. Zie het [CopyLogsJob-project](https://github.com/kamilsykora/CopyLogsJob) voor een voorbeeldproject.
 
-## <a name="where-do-i-find-the-log-files-for-jetty"></a>Waar vind ik de logboek bestanden voor jetty?
+## <a name="where-do-i-find-the-log-files-for-jetty"></a>Waar vind ik de logbestanden voor Jetty?
 
-Voor Marketplace en aangepaste implementaties bevindt het logboek bestand zich in de map D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs. Houd er rekening mee dat de maplocatie afhankelijk is van de versie van Jetty die u gebruikt. Het pad dat hier wordt vermeld, is bijvoorbeeld voor jetty 9.1.2. Zoek naar jetty_*YYYY_MM_DD*. stderrout. log.
+Voor Marketplace- en aangepaste implementaties bevindt het logboekbestand zich in de map D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs. Houd er rekening mee dat de locatie van de map afhankelijk is van de versie van Jetty die u gebruikt. Het pad dat hier wordt geboden, is bijvoorbeeld voor Jetty 9.1.2. Zoek naar jetty_*YYYY_MM_DD*.stderrout.log.
 
-Voor implementaties van portal-app-instellingen is het logboek bestand in D:\home\LogFiles. Zoek naar jetty_*YYYY_MM_DD*. stderrout. log
+Voor implementaties van portal-app-instellingen bevindt het logboekbestand zich in D:\home\LogFiles. Zoek naar jetty_*YYYY_MM_DD*.stderrout.log
 
-## <a name="can-i-send-email-from-my-azure-web-app"></a>Kan ik een e-mail verzenden vanuit mijn Azure-web-app?
+## <a name="can-i-send-email-from-my-azure-web-app"></a>Kan ik e-mail verzenden vanuit mijn Azure-webapp?
 
-App Service heeft geen ingebouwde e-mail functie. Zie deze [stack overflow discussie](https://stackoverflow.com/questions/17666161/sending-email-from-azure)voor een aantal goede alternatieven voor het verzenden van e-mail vanuit uw app.
+App Service heeft geen ingebouwde e-mailfunctie. Voor een aantal goede alternatieven voor het verzenden van e-mail vanuit uw app, zie deze [Stack Overflow discussie](https://stackoverflow.com/questions/17666161/sending-email-from-azure).
 
-## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Waarom leidt mijn WordPress-site naar een andere URL?
+## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Waarom wordt mijn WordPress-site omgeleid naar een andere URL?
 
-Als u onlangs naar Azure hebt gemigreerd, kan WordPress omleiden naar de oude domein-URL. Dit wordt veroorzaakt door een instelling in de MySQL-data base.
+Als u onlangs bent gemigreerd naar Azure, kan WordPress worden omgeleid naar de oude domein-URL. Dit wordt veroorzaakt door een instelling in de MySQL-database.
 
-WordPress Buddy + is een Azure-site-uitbrei ding die u kunt gebruiken om de omleidings-URL rechtstreeks in de-data base bij te werken. Zie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)voor meer informatie over het gebruik van WordPress buddy +.
+WordPress Buddy+ is een Azure-site-extensie die u gebruiken om de omleidings-URL rechtstreeks in de database bij te werken. Zie [WordPress-tools en MySQL-migratie met WordPress Buddy+voor](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)meer informatie over het gebruik van WordPress Buddy+.
 
-Als u de omleidings-URL liever hand matig bijwerkt met behulp van SQL-query's of PHPMyAdmin, raadpleegt u [WordPress: omleiden naar de verkeerde URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Als u de omleidings-URL handmatig wilt bijwerken met SQL-query's of PHPMyAdmin, raadpleegt u [Ook WordPress: Omleiden naar de verkeerde URL.](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)
 
-## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hoe kan ik mijn WordPress-aanmeldings wachtwoord wijzigen?
+## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hoe wijzig ik mijn aanmeldingswachtwoord voor WordPress?
 
-Als u het aanmeldings wachtwoord van WordPress hebt verg eten, kunt u WordPress Buddy + gebruiken om het wacht woord bij te werken. Als u uw wacht woord opnieuw wilt instellen, installeert u de WordPress Buddy + Azure-site-extensie en voert u de stappen uit die worden beschreven in [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Als je je WordPress-aanmeldingswachtwoord bent vergeten, kun je WordPress Buddy+ gebruiken om het bij te werken. Als u uw wachtwoord opnieuw wilt instellen, installeert u de WordPress Buddy+ Azure-siteextensie en voert u de stappen uit die zijn beschreven in [WordPress-hulpprogramma's en MySQL-migratie met WordPress Buddy+.](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
-## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Ik kan me niet aanmelden bij WordPress. Hoe kan ik dit oplossen?
+## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Ik kan me niet aanmelden bij WordPress. Hoe los ik dit op?
 
-Als u zichzelf hebt geblokkeerd na de laatste keer dat u een invoeg toepassing hebt geïnstalleerd, hebt u een defecte invoeg toepassing. WordPress Buddy + is een Azure-site-uitbrei ding die u kan helpen om invoeg toepassingen uit te scha kelen in WordPress. Zie voor meer informatie [WordPress-hulpprogram ma's en MySQL-migratie met WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Als u merkt dat u buitengesloten van WordPress na onlangs het installeren van een plugin, u een defecte plugin. WordPress Buddy+ is een Azure-site-extensie waarmee u plug-ins in WordPress uitschakelen. Zie [WordPress-tools en MySQL-migratie met WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)voor meer informatie.
 
-## <a name="how-do-i-migrate-my-wordpress-database"></a>Hoe kan ik de WordPress-data base te migreren?
+## <a name="how-do-i-migrate-my-wordpress-database"></a>Hoe migreer ik mijn WordPress-database?
 
-U hebt meerdere opties voor het migreren van de MySQL-data base die is verbonden met uw WordPress-website:
+U hebt meerdere opties voor het migreren van de MySQL-database die is verbonden met uw WordPress-website:
 
-* Ontwikkel aars: gebruik de [opdracht prompt of phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Niet-ontwikkel aars: gebruik [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
+* Ontwikkelaars: gebruik de [opdrachtprompt of PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Niet-ontwikkelaars: [Gebruik WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
-## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hoe kan ik kunt u WordPress veiliger maken?
+## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hoe kan ik WordPress veiliger maken?
 
-Zie [Aanbevolen procedures voor WordPress-beveiliging in azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/)voor meer informatie over aanbevolen beveiligings procedures voor WordPress.
+Zie [Aanbevolen procedures voor WordPress-beveiliging in Azure](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/)voor meer informatie over aanbevolen beveiligingsprocedures voor WordPress.
 
-## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ik probeer PHPMyAdmin te gebruiken en het bericht ' toegang geweigerd ' wordt weer gegeven. Hoe kan ik dit oplossen?
+## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ik probeer PHPMyAdmin te gebruiken, en ik zie het bericht "Toegang geweigerd." Hoe los ik dit op?
 
-Dit probleem kan optreden als de functie MySQL in-app nog niet wordt uitgevoerd in dit App Service exemplaar. Probeer het probleem op te lossen door toegang te krijgen tot uw website. Hiermee worden de vereiste processen gestart, inclusief het MySQL in-app proces. Als u wilt controleren of MySQL in-app wordt uitgevoerd, controleert u in Process Explorer of mysqld. exe wordt weer gegeven in de processen.
+U dit probleem ondervinden als de mysql-in-app-functie nog niet wordt uitgevoerd in dit app-service-exemplaar. Als u het probleem wilt oplossen, probeert u toegang te krijgen tot uw website. Hiermee worden de vereiste processen gestart, waaronder het MySQL in-app-proces. Als u wilt controleren of MySQL in-app wordt uitgevoerd, controleert u in Process Explorer of mysqld.exe in de processen wordt weergegeven.
 
-Nadat u hebt gezorgd dat MySQL in-app actief is, probeert u PHPMyAdmin te gebruiken.
+Nadat u ervoor hebt gezorgd dat MySQL in-app wordt uitgevoerd, probeert u PHPMyAdmin te gebruiken.
 
-## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Er wordt een HTTP 403-fout weer geven wanneer ik mijn MySQL in-app-data base probeer te importeren of exporteren met behulp van PHPMyadmin. Hoe kan ik dit oplossen?
+## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Ik krijg een HTTP 403-fout wanneer ik mijn MySQL in-app-database probeer te importeren of exporteren met PHPMyadmin. Hoe los ik dit op?
 
-Als u een oudere versie van Chrome gebruikt, ondervindt u mogelijk een bekende fout. Om het probleem op te lossen, voert u een upgrade uit naar een nieuwere versie van Chrome. Probeer ook een andere browser te gebruiken, zoals Internet Explorer of micro soft Edge, waar het probleem zich niet voordoet.
+Als u een oudere versie van Chrome gebruikt, hebt u mogelijk last van een bekende bug. Als u het probleem wilt oplossen, u upgraden naar een nieuwere versie van Chrome. Probeer ook een andere browser te gebruiken, zoals Internet Explorer of Microsoft Edge, waar het probleem zich niet voordoet.

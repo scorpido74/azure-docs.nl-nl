@@ -1,6 +1,6 @@
 ---
-title: Azure AD-beheerders rollen toewijzen met Microsoft Graph-API | Microsoft Docs
-description: Azure AD-beheerders rollen toewijzen en verwijderen met Graph API in Azure Active Directory
+title: Azure AD-beheerrollen toewijzen met Microsoft Graph API | Microsoft Documenten
+description: Azure AD-beheerdersrollen toewijzen en verwijderen met Graph API in Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559144"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Wijs aangepaste beheerders rollen toe met behulp van de Microsoft Graph-API in Azure Active Directory 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Aangepaste beheerdersrollen toewijzen met de Microsoft Graph-API in Azure Active Directory 
 
-U kunt automatiseren hoe u rollen aan gebruikers accounts toewijst met behulp van de Microsoft Graph-API. Dit artikel behandelt POST-, GET-en DELETE-bewerkingen op roleAssignments.
+U automatiseren hoe u rollen toewijst aan gebruikersaccounts met behulp van de Microsoft Graph API. Dit artikel behandelt bewerkingen post, get en delete voor rollenToewijzingen.
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-Maak verbinding met uw Azure AD-Tenant met behulp van een algemeen beheerders account of een bevoegde identiteits beheerder om rollen toe te wijzen of te verwijderen.
+Maak verbinding met uw Azure AD-tenant via een globale beheerdersaccount of een beheerder van een geprivilegieerde identiteit om rollen toe te wijzen of te verwijderen.
 
-## <a name="post-operations-on-roleassignment"></a>POST-bewerkingen op RoleAssignment
+## <a name="post-operations-on-roleassignment"></a>POST-bewerkingen op roleassignment
 
-HTTP-aanvraag voor het maken van een roltoewijzing tussen een gebruiker en een functie definitie.
+HTTP-aanvraag om een roltoewijzing tussen een gebruiker en een roldefinitie te maken.
 
 POST
 
@@ -55,7 +55,7 @@ Antwoord
 HTTP/1.1 201 Created
 ```
 
-HTTP-aanvraag voor het maken van een roltoewijzing waarbij de principal of roldefinitie niet bestaat
+HTTP-verzoek om een roltoewijzing te maken waarbij de hoofd- of roldefinitie niet bestaat
 
 POST
 
@@ -79,10 +79,10 @@ Antwoord
 HTTP/1.1 404 Not Found
 ```
 
-HTTP-aanvraag voor het maken van een functie toewijzing met één resource bereik voor een ingebouwde roldefinitie.
+HTTP-aanvraag om één roltoewijzing met een resourcebereik te maken op een ingebouwde roldefinitie.
 
 > [!NOTE] 
-> Voor ingebouwde rollen geldt een beperking waarbij deze alleen kan worden beperkt tot het bereik '/' organisatie-breed of het bereik '/AU/* '. Het bereik van één resource werkt niet voor ingebouwde rollen, maar werkt voor aangepaste rollen.
+> Ingebouwde rollen hebben vandaag de dag een beperking waarbij ze alleen kunnen worden ondergebracht bij het bereik "/" van de organisatie of het bereik "/AU/*". Single resource scoping werkt niet voor ingebouwde rollen, maar werkt voor aangepaste rollen.
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>GET-bewerkingen op RoleAssignment
+## <a name="get-operations-on-roleassignment"></a>GET-bewerkingen op roleassignment
 
-HTTP-aanvraag voor het ophalen van een roltoewijzing voor een bepaalde principal
+HTTP-verzoek om een roltoewijzing voor een bepaalde opdrachtgever te krijgen
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-HTTP-aanvraag voor het ophalen van een roltoewijzing voor een bepaalde roldefinitie.
+HTTP-aanvraag om een roltoewijzing voor een bepaalde roldefinitie te krijgen.
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-HTTP-aanvraag voor het ophalen van een roltoewijzing per ID.
+HTTP-aanvraag om een roltoewijzing per id te krijgen.
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>Verwijder bewerkingen op RoleAssignment
+## <a name="delete-operations-on-roleassignment"></a>Bewerkingen verwijderen op roltoewijzing
 
-HTTP-aanvraag voor het verwijderen van een roltoewijzing tussen een gebruiker en een roldefinitie.
+HTTP-verzoek om een roltoewijzing tussen een gebruiker en een roldefinitie te verwijderen.
 
 DELETE
 
@@ -207,7 +207,7 @@ Antwoord
 HTTP/1.1 204 No Content
 ```
 
-HTTP-aanvraag voor het verwijderen van een roltoewijzing die niet meer bestaat
+HTTP-verzoek om een roltoewijzing te verwijderen die niet meer bestaat
 
 DELETE
 
@@ -221,7 +221,7 @@ Antwoord
 HTTP/1.1 404 Not Found
 ```
 
-HTTP-aanvraag voor het verwijderen van een roltoewijzing tussen de definitie zelf en de ingebouwde rol
+HTTP-verzoek om een roltoewijzing tussen zelf- en ingebouwde roldefinitie te verwijderen
 
 DELETE
 
@@ -249,6 +249,6 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* U kunt graag delen met ons op het [forum van Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Zie [beheerders rollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over functies en de toewijzing van beheerdersrol.
-* Zie voor standaard gebruikers machtigingen een [vergelijking van de standaard machtigingen voor gast-en gebruikers rechten](../fundamentals/users-default-permissions.md).
+* Voel je vrij om met ons te delen op het [Azure AD-forum voor beheerfuncties](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* Zie [Beheerdersrollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over rollen en toewijzing van beheerders.
+* Zie een vergelijking van [standaardmachtigingen voor gasten en leden](../fundamentals/users-default-permissions.md)voor standaardgebruikersmachtigingen voor standaardgebruikers.

@@ -1,6 +1,6 @@
 ---
-title: Overzicht van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
-description: Overzicht van het implementeren van SAP HANA op Azure (grote exemplaren).
+title: Overzicht van SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
+description: Overzicht van het implementeren van SAP HANA op Azure (Large Instances).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,48 +14,48 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616954"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Wat is SAP HANA on Azure (grote exemplaren)?
 
-SAP HANA op Azure (grote exemplaren) is een unieke oplossing voor Azure. Naast het leveren van virtuele machines voor het implementeren en uitvoeren van SAP HANA, biedt Azure u de mogelijkheid om SAP HANA uit te voeren en te implementeren op bare-metal servers die aan u zijn toegewezen. De oplossing voor het SAP HANA op Azure (grote exemplaren) is gebaseerd op niet-gedeelde host/server bare-metal hardware die aan u is toegewezen. De serverhardware is inge sloten in grotere stem pels die een Compute/Server-, netwerk-en opslag infrastructuur bevatten. Als een combi natie hiervan is de HANA-gecertificeerde Data Center-integratie (TDI) goedgekeurd. SAP HANA op Azure (grote exemplaren) biedt verschillende server-Sku's of-grootten. Eenheden kunnen 36 Intel CPU-kernen en 768 GB aan geheugen hebben en tot Maxi maal 480 Intel CPU-kernen en tot 24 TB aan geheugen beschikken.
+SAP HANA op Azure (Large Instances) is een unieke oplossing voor Azure. Azure biedt u niet alleen virtuele machines voor het implementeren en uitvoeren van SAP HANA, maar biedt u ook de mogelijkheid om SAP HANA uit te voeren en te implementeren op bare-metal servers die aan u zijn gewijd. De SAP HANA-oplossing voor Azure (Large Instances) bouwt voort op niet-gedeelde host/server bare-metal hardware die aan u is toegewezen. De serverhardware is ingebed in grotere stempels die compute/server, netwerk- en opslaginfrastructuur bevatten. Als combinatie is het HANA-datacenterintegratie (TDI) gecertificeerd. SAP HANA op Azure (Large Instances) biedt verschillende serverSKU's of -formaten. Eenheden kunnen 36 Intel CPU-cores en 768 GB geheugen hebben en gaan naar eenheden met maximaal 480 Intel CPU-cores en tot 24 TB geheugen.
 
-De isolatie van de klant binnen het infrastructuur stempel wordt uitgevoerd in de tenants. dit ziet er als volgt uit:
+De klantisolatie binnen de infrastructuurstempel wordt uitgevoerd bij huurders, die eruit ziet als:
 
-- **Netwerken**: isolatie van klanten binnen infrastructuur stack via virtuele netwerken per door de klant toegewezen Tenant. Een Tenant wordt toegewezen aan één klant. Een klant kan meerdere tenants hebben. De netwerk isolatie van tenants verbiedt netwerk communicatie tussen tenants in het niveau van de infrastructuur stempel, zelfs als de tenants bij dezelfde klant horen.
-- **Opslag onderdelen**: isolatie via opslag-virtuele machines waaraan opslag volumes zijn toegewezen. Opslag volumes kunnen alleen worden toegewezen aan één virtuele opslag machine. Een virtuele opslag machine wordt uitsluitend toegewezen aan één enkele Tenant in de SAP HANA TDI Certified Infrastructure-stack. Als gevolg hiervan kunnen opslag volumes die zijn toegewezen aan een virtuele opslag machine alleen worden geopend in een specifieke en gerelateerde Tenant. Ze zijn niet zichtbaar tussen de verschillende geïmplementeerde tenants.
-- **Server of host**: een server of host-eenheid wordt niet gedeeld tussen klanten of tenants. Een server of host die is geïmplementeerd voor een klant, is een Atomic bare-metal Compute-eenheid die is toegewezen aan één enkele Tenant. *Er wordt geen* hardware-partitionering of zachte partitionering gebruikt. Dit kan ertoe leiden dat u een host of een server met een andere klant kunt delen. Opslag volumes die zijn toegewezen aan de virtuele opslag machine van de specifieke Tenant, worden aan een dergelijke server gekoppeld. Een Tenant kan één tot veel server eenheden van verschillende Sku's worden toegewezen.
-- Binnen een SAP HANA op de infra structuur van Azure (grote instanties) worden veel verschillende tenants geïmplementeerd en geïsoleerd via de Tenant concepten op het niveau van netwerken, opslag en reken kracht. 
+- **Netwerken**: Isolatie van klanten binnen infrastructuurstack via virtuele netwerken per door de klant toegewezen tenant. Een tenant wordt toegewezen aan één klant. Een klant kan meerdere huurders hebben. De netwerkisolatie van huurders verbiedt netwerkcommunicatie tussen huurders op het niveau van de infrastructuurstempel, zelfs als de huurders tot dezelfde klant behoren.
+- **Opslagcomponenten:** Isolatie via virtuele opslagmachines waaraan opslagvolumes zijn toegewezen. Opslagvolumes kunnen alleen aan één virtuele opslagmachine worden toegewezen. Een virtuele opslagmachine wordt uitsluitend toegewezen aan één tenant in de SAP HANA TDI-gecertificeerde infrastructuurstack. Als gevolg hiervan kunnen opslagvolumes die zijn toegewezen aan een virtuele opslagmachine alleen in één specifieke en gerelateerde tenant worden geopend. Ze zijn niet zichtbaar tussen de verschillende geïmplementeerde tenants.
+- **Server of host:** een server of host-eenheid wordt niet gedeeld tussen klanten of tenants. Een server of host die is geïmplementeerd bij een klant, is een atomaire bare-metal compute unit die is toegewezen aan één tenant. *Er* wordt geen hardwarepartitie of zachte partitionering gebruikt die ertoe kan leiden dat u een host of een server deelt met een andere klant. Opslagvolumes die zijn toegewezen aan de virtuele opslagmachine van de specifieke tenant, worden op een dergelijke server gemonteerd. Een tenant kan een tot veel servereenheden van verschillende SKU's exclusief toegewezen.
+- Binnen een SAP HANA op Azure (Large Instances) infrastructuurstempel worden veel verschillende tenants geïmplementeerd en tegen elkaar geïsoleerd via de tenantconcepten op netwerk-, opslag- en rekenniveau. 
 
 
-Deze bare-metal server eenheden worden alleen ondersteund om SAP HANA uit te voeren. De SAP-toepassingslaag of de werk belasting van de middelste workload-laag worden uitgevoerd in virtuele machines. De infra structuur-stem pels die de SAP HANA op Azure-eenheden (grote exemplaren) uitvoeren, zijn verbonden met de Azure Network Services-backbones. Op deze manier wordt connectiviteit met lage latentie tussen SAP HANA op Azure-eenheden (grote exemplaren) en virtuele machines gegeven.
+Deze bare-metal server units worden ondersteund om SAP HANA alleen uit te voeren. De SAP-toepassingslaag of workload middle-ware-laag wordt uitgevoerd in virtuele machines. De infrastructuurstempels waarop de SAP HANA op Azure (Large Instances)-eenheden worden uitgevoerd, zijn verbonden met de backbones azure network services. Op deze manier wordt low-latency connectiviteit tussen SAP HANA op Azure (Large Instances) eenheden en virtuele machines verstrekt.
 
-Vanaf juli 2019 maken we onderscheid tussen twee verschillende revisies van HANA grote instantie stempels en locatie van implementaties:
+Vanaf juli 2019 maken we onderscheid tussen twee verschillende revisies van HANA Large Instance-stempels en locatie van implementaties:
 
-- Revisie 3 (Rev 3): zijn de stem pels die beschikbaar zijn gesteld voor de klant om te implementeren vóór 2019 juli
-- "Revisie 4" (Rev 4): nieuw stempel ontwerp dat is geïmplementeerd in dicht bij Azure VM-hosts en wat tot nu toe wordt vrijgegeven in de Azure-regio's van:
+- "Revisie 3" (Rev 3): Zijn de stempels die beschikbaar zijn gesteld voor de klant om te implementeren vóór juli 2019
+- 'Revisie 4' (Rev 4): nieuw stempelontwerp dat wordt geïmplementeerd in de nabijheid van Azure VM-hosts en dat tot nu toe is uitgebracht in de Azure-regio's van:
     -  VS - west 2 
     -  VS - oost 
     -  Europa -west
     -  Europa - noord
 
 
-Dit document is een van de documenten die betrekking hebben SAP HANA op Azure (grote exemplaren). In dit document worden de basis architectuur, de verantwoordelijkheden en de services van de oplossing geïntroduceerd. Ook de mogelijkheden van de oplossing op hoog niveau worden besproken. Voor de meeste andere gebieden, zoals netwerken en connectiviteit, hebben vier andere documenten betrekking op Details en inzoomen. De documentatie van SAP HANA op Azure (grote instanties) heeft geen betrekking op de installatie of implementatie van SAP NetWeaver in Vm's. SAP NetWeaver op Azure wordt behandeld in afzonderlijke documenten die zijn gevonden in dezelfde Azure-documentatie container. 
+Dit document is een van de vele documenten die BETREKKING hebben op SAP HANA op Azure (Large Instances). Dit document introduceert de basisarchitectuur, verantwoordelijkheden en services die door de oplossing worden geleverd. Ook de mogelijkheden op hoog niveau van de oplossing komen aan bod. Voor de meeste andere gebieden, zoals netwerken en connectiviteit, vier andere documenten betrekking hebben op details en drill-down informatie. De documentatie van SAP HANA op Azure (Large Instances) heeft geen betrekking op aspecten van de SAP NetWeaver-installatie of -implementaties van SAP NetWeaver in VM's. SAP NetWeaver op Azure is bedekt met afzonderlijke documenten die in dezelfde Azure-documentatiecontainer zijn gevonden. 
 
 
-De verschillende documenten van de HANA-ondersteuning voor grote instanties omvatten de volgende gebieden:
+De verschillende documenten van HANA Large Instance guidance hebben betrekking op de volgende gebieden:
 
-- [Overzicht en architectuur van SAP HANA (grote exemplaren) op Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Infra structuur en connectiviteit van SAP HANA (grote instanties) op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (grote exemplaren) installeren en configureren op Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (grote instanties) hoge Beschik baarheid en herstel na nood geval op Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Problemen met SAP HANA (grote instanties) oplossen en controleren op Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Hoge Beschik baarheid die in SUSE is ingesteld met behulp van de STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Back-up en herstel van het besturings systeem voor de type II Sku's van Revision 3-stem pels](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [SAP HANA (Large Instances) overzicht en architectuur op Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (Large Instances) infrastructuur en connectiviteit op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (Large Instances) installeren en configureren op Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (Large Instances) hoge beschikbaarheid en disaster recovery op Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [PROBLEEMOPLOSSING en bewaking van SAP HANA (Large Instances) op Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Hoge beschikbaarheid in SUSE met behulp van de STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [OS back-up en herstel voor Type II SKU's van Revisie 3 stempels](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Volgende stappen**
-- Raadpleeg [de voor waarden](hana-know-terms.md)
+- Verwijs [Ken de voorwaarden](hana-know-terms.md)

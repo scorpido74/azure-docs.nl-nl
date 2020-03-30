@@ -1,56 +1,56 @@
 ---
 title: Door drones verzamelde afbeeldingen ophalen
-description: In dit artikel wordt beschreven hoe u drone installatie kopieën van partners kunt ophalen.
+description: In dit artikel wordt beschreven hoe u dronebeelden van partners krijgen.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132055"
 ---
-# <a name="get-drone-imagery-from-drone-partners"></a>Drone-installatie kopie van drone-partners ophalen
+# <a name="get-drone-imagery-from-drone-partners"></a>Krijg dronebeelden van dronepartners
 
-In dit artikel wordt beschreven hoe u orthomosaic-gegevens uit uw drone-installatie kopie partners naar Azure FarmBeats Datahub kunt brengen. Een orthomosaic is een foto met lucht afbeelding of afbeelding die geometrisch is gecorrigeerd en wordt afgenomen van gegevens die zijn verzameld door een drone.
+In dit artikel wordt beschreven hoe u orthomozaïekgegevens van uw partners voor dronebeelden inbrengen naar Azure FarmBeats Datahub. Een orthomozaïek is een luchtillustratie of afbeelding die geometrisch is gecorrigeerd en gestikt op basis van gegevens die door een drone zijn verzameld.
 
-Op dit moment worden de volgende afbeeldings partners ondersteund.
+Momenteel worden de volgende beeldenpartners ondersteund.
 
-  ![FarmBeats drone imagey-partners](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
+  ![FarmBeats drone beelden partners](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
 
-Het integreren van drone-installatie kopie gegevens met Azure FarmBeats helpt u bij het ophalen van orthomosaic gegevens van de drone vluchten die u in uw farm uitvoert in de datahub. Wanneer de gegevens beschikbaar zijn, kunt u deze weer geven in de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en kunst matige intelligentie en het bouwen van machine learning model.
+Door dronebeelden te integreren met Azure FarmBeats u orthomozaïekgegevens van de dronevluchten die u op uw farm uitvoert, in de datahub krijgen. Nadat de gegevens beschikbaar zijn, u deze bekijken in de FarmBeats Accelerator. De gegevens kunnen worden gebruikt voor datafusion en kunstmatige intelligentie en machine learning modelbuilding.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-  - Zorg ervoor dat u Azure FarmBeats hebt geïnstalleerd. Zie [Azure FarmBeats installeren](install-azure-farmbeats.md)voor meer informatie over het installeren van FarmBeats.
-  - Zorg ervoor dat u de farm hebt waarvoor u de drone-installatie kopie in uw FarmBeats-systeem wilt definiëren.
+  - Zorg ervoor dat u Azure FarmBeats hebt geïnstalleerd. Zie [Azure FarmBeats](install-azure-farmbeats.md)installeren voor informatie over het installeren van FarmBeats.
+  - Zorg ervoor dat je de boerderij hebt waarvoor je dronebeelden wilt definiëren in je FarmBeats-systeem.
 
-## <a name="enable-drone-imagery-integration-with-farmbeats"></a>Drone image-integratie met FarmBeats inschakelen
+## <a name="enable-drone-imagery-integration-with-farmbeats"></a>Integratie van dronebeelden inschakelen met FarmBeats
 
-Geef de volgende informatie op voor de provider van uw apparaat om integratie met FarmBeats in te scha kelen:
- - API-eind punt
+Geef de volgende informatie aan uw apparaatprovider om integratie met FarmBeats mogelijk te maken:
+ - API-eindpunt
  - Tenant-id
  - Client-id
  - Clientgeheim
 
 Volg deze stappen.
 
-1. Down load dit [script](https://aka.ms/farmbeatspartnerscript)en pak het uit naar uw lokale station. Twee bestanden bevinden zich in het zip-bestand.
-2. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en open Azure Cloud shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal.
+1. Download dit [script](https://aka.ms/farmbeatspartnerscript)en haal het naar uw lokale schijf. Er zitten twee bestanden in het zip-bestand.
+2. Meld u aan bij [Azure Portal](https://portal.azure.com/) en open Azure Cloud Shell. Deze optie is beschikbaar op de werkbalk in de rechterbovenhoek van de portal.
 
-    ![Azure Cloud Shell openen op de rechter balk van de portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Azure Cloud Shell openen op de rechterbovenbalk van de portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Zorg ervoor dat de omgeving is ingesteld op **Power shell**.
+3. Controleer of de omgeving is ingesteld op **PowerShell.**
 
-    ![Power shell-instelling](./media/get-drone-imagery-from-drone-partner/power-shell-new-1.png)
+    ![PowerShell-instelling](./media/get-drone-imagery-from-drone-partner/power-shell-new-1.png)
 
-4. Upload de twee bestanden die u hebt gedownload uit stap 1 van uw Cloud Shell-exemplaar.
+4. Upload de twee bestanden die je hebt gedownload van stap 1 in je Cloud Shell-exemplaar.
 
     ![Bestanden uploaden](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
 
-5. Ga naar de map waarin de bestanden zijn geüpload. Standaard worden deze geüpload naar de basismap onder de gebruikers naam.
+5. Ga naar de map waar de bestanden zijn geüpload. Standaard worden ze geüpload naar de thuismap onder de gebruikersnaam.
 6. Voer het volgende script uit:
 
     ```azurepowershell-interactive 
@@ -59,36 +59,36 @@ Volg deze stappen.
 
     ```
 
-7. Volg de instructies op het scherm voor het vastleggen van de waarden van API-eind punt, Tenant-ID, client-ID, client geheim en EventHub-verbindings reeks.
+7. Volg de instructies op het scherm om de waarden van API-eindpunt, tenant-id, client-id, clientgeheim en EventHub-verbindingstekenreeks vast te leggen.
 
-    Nadat u de vereiste referenties hebt opgegeven in het drone-software systeem van de partner, kunt u alle farms importeren uit het FarmBeats-systeem. Vervolgens kunt u de gegevens van de farm gebruiken om uw drone-installatie kopie verzameling te plannen.
+    Nadat u de vereiste referenties in het dronesoftwaresysteem van de partner hebt ingevoerd, u alle boerderijen importeren uit het FarmBeats-systeem. Vervolgens u de details van de boerderij gebruiken om uw vliegrouteplanning en het verzamelen van dronebeelden te doen.
 
-    Nadat de onbewerkte installatie kopieën door de software van de drone-providers zijn verwerkt, laadt het drone-software systeem de niet-geplaatste orthomosaic en andere verwerkte installatie kopieën in de datahub.
+    Nadat de ruwe beelden zijn verwerkt door de software van de droneproviders, uploadt het dronesoftwaresysteem het gestikte orthomozaïek en andere verwerkte beelden naar de datahub.
 
-## <a name="view-drone-imagery"></a>Drone-installatie kopie weer geven
+## <a name="view-drone-imagery"></a>Bekijk dronebeelden
 
-Nadat de gegevens zijn verzonden naar de FarmBeats-datahub, kunt u een query uitvoeren op het scène archief met behulp van FarmBeats Datahub-Api's.
+Nadat de gegevens naar de FarmBeats-datahub zijn verzonden, u de scènearchief opvragen met FarmBeats Datahub API's.
 
-U kunt ook de meest recente drone-installatie kopie bekijken op de pagina met **Farm Details** . Volg de stappen om de installatie kopie weer te geven.
+U ook de nieuwste droneafbeelding bekijken op de pagina **Farm Details.** Volg de stappen om de afbeelding te bekijken.
 
-1. Selecteer de farm waarnaar uw installatie kopie is geüpload. De pagina Details van **Farm** wordt weer gegeven.
-2. Schuif omlaag naar het gedeelte meest recente **precisie kaarten** .
-3. Bekijk de afbeelding in het gedeelte **drone installatie kopie** .
+1. Selecteer de farm waarnaar uw afbeeldingen zijn geüpload. De pagina **Farmdetails** wordt weergegeven.
+2. Scroll naar beneden naar de nieuwste **sectie Precision Maps.**
+3. Bekijk de afbeelding in de sectie **Drone-beelden.**
 
-    ![Sectie drone installatie kopie](./media/get-drone-imagery-from-drone-partner/drone-imagery-1.png)
+    ![Sectie Dronebeelden](./media/get-drone-imagery-from-drone-partner/drone-imagery-1.png)
 
-## <a name="download-drone-imagery"></a>Drone-installatie kopie downloaden
+## <a name="download-drone-imagery"></a>Dronebeelden downloaden
 
-Wanneer u de sectie drone installatie kopie selecteert, wordt er een pop-up geopend met een afbeelding met een hoge resolutie van de drone-orthomosaic.
+Wanneer u de sectie Drone-beelden selecteert, wordt een pop-up geopend om een afbeelding met hoge resolutie van het droneorthomozaïek weer te geven.
 
-![Orthomosaic met hoge resolutie](./media/get-drone-imagery-from-drone-partner/download-drone-imagery-1.png)
+![Orthomozaïek met hoge resolutie](./media/get-drone-imagery-from-drone-partner/download-drone-imagery-1.png)
 
-## <a name="view-all-drone-maps"></a>Alle drone-kaarten weer geven
+## <a name="view-all-drone-maps"></a>Bekijk alle dronekaarten
 
-Bestanden en afbeeldingen die zijn geüpload door de drone-provider, worden weer gegeven in de sectie **kaarten** . Selecteer de sectie **Maps** , filter op **Farm**en selecteer de juiste bestanden om weer te geven en te downloaden.
+Bestanden en afbeeldingen die door de droneprovider zijn geüpload, worden weergegeven in de sectie **Kaarten.** Selecteer de sectie **Kaarten,** filter op **Farm**en selecteer de juiste bestanden die u wilt bekijken en downloaden.
 
-  ![Sectie kaarten](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
+  ![Sectie Kaarten](./media/get-drone-imagery-from-drone-partner/view-drone-maps-1.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u FarmBeats Datahub- [api's](rest-api-in-azure-farmbeats.md) kunt gebruiken om uw drone-installatie kopie te downloaden.
+Meer informatie over het gebruik van FarmBeats Datahub [API's](rest-api-in-azure-farmbeats.md) om uw dronebeelden te krijgen.

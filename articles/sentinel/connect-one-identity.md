@@ -1,6 +1,6 @@
 ---
-title: Eén identiteits beveiliging verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over hoe u één identiteits beveiliging verbindt met Azure Sentinel.
+title: Eén identiteitsbeveiliging verbinden met Azure Sentinel| Microsoft Documenten
+description: Meer informatie over het verbinden van één identiteitsbeveiliging met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588141"
 ---
-# <a name="connect-one-identity-safeguard"></a>Verbinding maken met één identiteits beveiliging
-De gegevens connector met één identiteits beveiliging verbetert de standaard CEF-connector (common Event Format) met beveiliging voor op privileges gebaseerde Dash boards. Gebruik deze connector om eenvoudig te beginnen met het gebruik van de gebeurtenissen die door uw apparaat worden gegenereerd voor visualisaties, waarschuwingen, onderzoeken en meer.
+# <a name="connect-one-identity-safeguard"></a>Eén identiteitsbeveiliging verbinden
+De One Identity Safeguard-gegevensconnector verbetert de standaard CEF-connector (Common Event Format) met Safeguard for Privileged Sessions-specifieke dashboards. Gebruik deze connector om eenvoudig de gebeurtenissen te gebruiken die door uw apparaat worden gegenereerd voor visualisatie, waarschuwingen, onderzoeken en meer.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte.
+- Lees- en schrijfmachtigingen voor de Azure Sentinel-werkruimte.
 
-## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Azure-Sentinel verbinden met één identiteits beveiliging
+## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Azure Sentinel verbinden met één identiteitsbeveiliging
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector voor **identiteits beveiliging** .
+1. Navigeer in de **Azure-portal** > naar Azure**Sentinel-gegevensconnectors** en selecteer vervolgens de **one identity safeguard-connector.**
 
-2. Selecteer de **pagina connector openen**.
+2. Selecteer **Connectorpagina openen**.
 
-3. Volg de instructies op de pagina voor **identiteits beveiliging** .
+3. Volg de instructies op de **one identity safeguard** pagina.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u één identiteits beveiliging verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
+In dit document hebt u geleerd hoe u One Identity Safeguard verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
+- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te controleren.
 
 

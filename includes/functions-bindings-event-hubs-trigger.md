@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589712"
 ---
-Gebruik de functie trigger om te reageren op een gebeurtenis die wordt verzonden naar een Event Hub gebeurtenis stroom. U moet lees toegang hebben tot de onderliggende Event Hub om de trigger in te stellen. Wanneer de functie wordt geactiveerd, wordt het bericht dat is door gegeven aan de functie als een teken reeks getypt.
+Gebruik de functietrigger om te reageren op een gebeurtenis die naar een gebeurtenishubgebeurtenisstream is verzonden. U moet leestoegang hebben tot de onderliggende gebeurtenishub om de trigger in te stellen. Wanneer de functie wordt geactiveerd, wordt het bericht dat wordt doorgegeven aan de functie getypt als een tekenreeks.
 
 ## <a name="scaling"></a>Schalen
 
-Elk exemplaar van een door een gebeurtenis geactiveerde functie wordt ondersteund door één [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -exemplaar. De trigger (aangedreven door Event Hubs) zorgt ervoor dat slechts één [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -exemplaar een lease kan verkrijgen op een bepaalde partitie.
+Elke instantie van een gebeurtenisgeactiveerde functie wordt ondersteund door één [EventProcessorHost-exemplaar.](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) De trigger (aangedreven door Event Hubs) zorgt ervoor dat slechts één [EventProcessorHost-exemplaar](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) een lease-overeenkomst op een bepaalde partitie kan krijgen.
 
-Denk bijvoorbeeld aan een event hub als volgt:
+Overweeg bijvoorbeeld een Gebeurtenishub als volgt:
 
 * 10 partities
-* 1\.000 gebeurtenissen worden gelijkmatig verdeeld over alle partities, met 100 berichten per partitie
+* 1.000 gebeurtenissen gelijkmatig verdeeld over alle partities, met 100 berichten in elke partitie
 
-Wanneer de functie voor het eerst wordt ingeschakeld, is er slechts één exemplaar van de functie. We bellen de eerste functie-exemplaar `Function_0`. De functie `Function_0` heeft één exemplaar van [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) dat een lease op alle tien partities bevat. Dit exemplaar leest gebeurtenissen van partities 0-9. Vanaf dit punt gebeurt een van de volgende handelingen:
+Wanneer uw functie voor het eerst is ingeschakeld, is er slechts één exemplaar van de functie. Laten we de eerste `Function_0`functie-instantie aanroepen. De `Function_0` functie heeft één exemplaar van [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) dat een lease heeft op alle tien partities. Dit exemplaar leest gebeurtenissen van partities 0-9. Vanaf dit punt gebeurt een van de volgende dingen:
 
-* **Er zijn geen nieuwe functie exemplaren nodig**: `Function_0` kunt alle 1.000 gebeurtenissen verwerken voordat de functies voor het schalen van de functie van kracht worden. In dit geval worden alle 1.000-berichten verwerkt door `Function_0`.
+* **Nieuwe functie-exemplaren zijn niet nodig:** `Function_0` kan alle 1000 gebeurtenissen verwerken voordat de logica voor het schalen van functies van kracht wordt. In dit geval worden alle 1.000 `Function_0`berichten verwerkt door .
 
-* **Er wordt een extra functie-exemplaar toegevoegd**: als de logica voor het schalen van functies bepaalt dat `Function_0` meer berichten heeft dan kan worden verwerkt, wordt een nieuw functie-app-exemplaar (`Function_1`) gemaakt. Deze nieuwe functie heeft ook een bijbehorend exemplaar van [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Als de onderliggende Event Hubs detecteert dat een nieuw exemplaar van de host probeert berichten te lezen, worden de partities in de exemplaren van de host gebalanceerd. Partities 0-4 kunnen bijvoorbeeld worden toegewezen aan `Function_0` en partities 5-9 tot `Function_1`.
+* **Een extra functie-instantie wordt toegevoegd:** Als `Function_0` de logica voor het schalen van functies`Function_1`bepaalt dat er meer berichten zijn dan het kan verwerken, wordt een nieuwe functie-app-instantie ( ) gemaakt. Deze nieuwe functie heeft ook een bijbehorende instantie van [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Terwijl de onderliggende gebeurtenishubs detecteren dat een nieuw hostexemplaar berichten probeert te lezen, worden de partities over de host-instanties geladen. Partities 0-4 kunnen bijvoorbeeld worden `Function_0` toegewezen aan en `Function_1`partities 5-9 aan .
 
-* **N er worden meer functie exemplaren toegevoegd**: als de logica voor het schalen van functies wordt vastgesteld dat zowel `Function_0` als `Function_1` meer berichten hebben dan ze kunnen verwerken, worden nieuwe apps voor de functie van `Functions_N`-functies gemaakt.  Apps worden gemaakt op het punt waar `N` groter is dan het aantal Event Hub partities. In ons voor beeld verdeelt Event Hubs opnieuw taak verdeling van de partities, in dit geval over de instanties `Function_0`...`Functions_9`.
+* **N meer functie-exemplaren worden toegevoegd:** Als `Function_0` de `Function_1` logica voor het schalen van `Functions_N` functies bepaalt dat beide en meer berichten hebben dan ze kunnen verwerken, worden nieuwe functie-app-exemplaren gemaakt.  Apps worden gemaakt tot `N` het punt waar groter is dan het aantal gebeurtenishubpartities. In ons voorbeeld, Event Hubs opnieuw laden saldi de `Function_0`partities, in dit geval over de instanties ... `Functions_9`.
 
-Als er wordt geschaald, is `N` exemplaren een getal dat groter is dan het aantal Event Hub partities. Dit patroon wordt gebruikt om ervoor te zorgen dat er [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) -instanties beschikbaar zijn voor het verkrijgen van vergren delingen op partities, omdat deze beschikbaar zijn voor andere exemplaren. Er worden alleen kosten in rekening gebracht voor de resources die worden gebruikt wanneer het functie-exemplaar wordt uitgevoerd. Met andere woorden, er worden geen kosten in rekening gebracht voor deze overinrichting.
+Bij schaling `N` is het aantal instanties een getal dat groter is dan het aantal gebeurtenishubpartities. Dit patroon wordt gebruikt om ervoor te zorgen [EventProcessorHost-exemplaren](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) beschikbaar zijn voor het verkrijgen van vergrendelingen op partities zodra ze beschikbaar zijn in andere instanties. Er worden alleen kosten in rekening gebracht voor de resources die worden gebruikt wanneer de functie-instantie wordt uitgevoerd. Met andere woorden, u wordt niet in rekening gebracht voor deze over-provisioning.
 
-Wanneer de uitvoering van alle functies is voltooid (met of zonder fouten), worden controle punten toegevoegd aan het gekoppelde opslag account. Wanneer een controle slaagt, worden alle 1.000-berichten nooit meer opgehaald.
+Wanneer alle functieuitvoering is voltooid (met of zonder fouten), worden controlepunten toegevoegd aan het bijbehorende opslagaccount. Wanneer het controleren slaagt, worden alle 1.000 berichten nooit meer opgehaald.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In het volgende voor beeld ziet u een [ C# functie](../articles/azure-functions/functions-dotnet-class-library.md) waarmee de bericht tekst van de Event hub trigger wordt geregistreerd.
+In het volgende voorbeeld wordt een [C#-functie](../articles/azure-functions/functions-dotnet-class-library.md) weergegeven die de berichttekst van de gebeurtenishubtrigger registreert.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -48,7 +48,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Als u toegang wilt krijgen tot [meta gegevens van gebeurtenissen](#event-metadata) in functie code, kunt u een binding maken met een [Event Data](/dotnet/api/microsoft.servicebus.messaging.eventdata) -object (hiervoor is een instructie using vereist voor `Microsoft.Azure.EventHubs`). U kunt ook toegang krijgen tot dezelfde eigenschappen met behulp van bindings expressies in de methode handtekening.  In het volgende voor beeld ziet u beide manieren om dezelfde gegevens op te halen:
+Als u toegang wilt krijgen tot [metagegevens](#event-metadata) van gebeurtenissen in `Microsoft.Azure.EventHubs`functiecode, bindt u aan een [GebeurtenisGegevensobject](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vereist een gebruiksinstructie voor ). U hebt ook toegang tot dezelfde eigenschappen door bindende expressies te gebruiken in de methodehandtekening.  In het volgende voorbeeld worden beide manieren weergegeven om dezelfde gegevens te krijgen:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -71,10 +71,10 @@ public static void Run(
 }
 ```
 
-Als u gebeurtenissen in een batch wilt ontvangen, maakt u `string` of `EventData` een matrix.  
+Om gebeurtenissen in een `string` batch `EventData` te ontvangen, maak of een array.  
 
 > [!NOTE]
-> Wanneer u een batch ontvangt, kunt u niet binden aan methode parameters zoals in het bovenstaande voor beeld met `DateTime enqueuedTimeUtc` en moet u deze ontvangen van elk `EventData` object  
+> Wanneer u in een batch ontvangt, u `DateTime enqueuedTimeUtc` zich niet binden `EventData` aan methodeparameters zoals in het bovenstaande voorbeeld met en moet u deze van elk object ontvangen  
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -88,13 +88,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van een event hub trigger in een *Function. json* -bestand en een [ C# script functie](../articles/azure-functions/functions-reference-csharp.md) die gebruikmaakt van de binding. De functie registreert de bericht tekst van de trigger van de Event Hub.
+In het volgende voorbeeld ziet u een gebeurtenishubtriggerbinding in een *function.json-bestand* en een [C#-scriptfunctie](../articles/azure-functions/functions-reference-csharp.md) die de binding gebruikt. De functie registreert de berichttekst van de gebeurtenishubtrigger.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* .
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.*
 
-### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
+### <a name="version-2x-and-higher"></a>Versie 2.x en hoger
 
 ```json
 {
@@ -106,7 +106,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```json
 {
@@ -118,7 +118,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is de C#-scriptcode:
+Hier is de C# scriptcode:
 
 ```cs
 using System;
@@ -129,7 +129,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Als u toegang wilt krijgen tot [meta gegevens van gebeurtenissen](#event-metadata) in functie code, kunt u een binding maken met een [Event Data](/dotnet/api/microsoft.servicebus.messaging.eventdata) -object (hiervoor is een instructie using vereist voor `Microsoft.Azure.EventHubs`). U kunt ook toegang krijgen tot dezelfde eigenschappen met behulp van bindings expressies in de methode handtekening.  In het volgende voor beeld ziet u beide manieren om dezelfde gegevens op te halen:
+Als u toegang wilt krijgen tot [metagegevens](#event-metadata) van gebeurtenissen in `Microsoft.Azure.EventHubs`functiecode, bindt u aan een [GebeurtenisGegevensobject](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vereist een gebruiksinstructie voor ). U hebt ook toegang tot dezelfde eigenschappen door bindende expressies te gebruiken in de methodehandtekening.  In het volgende voorbeeld worden beide manieren weergegeven om dezelfde gegevens te krijgen:
 
 ```cs
 #r "Microsoft.Azure.EventHubs"
@@ -157,7 +157,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-Als u gebeurtenissen in een batch wilt ontvangen, moet u `string` of `EventData` een matrix:
+Als u gebeurtenissen in `string` een `EventData` batch wilt ontvangen, maakt u het volgende:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Event Hub trigger binding in een *Function. json* -bestand en een [Java script-functie](../articles/azure-functions/functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van gebeurtenissen](#event-metadata) gelezen en wordt het bericht geregistreerd.
+In het volgende voorbeeld wordt een gebeurtenishubtriggerbinding weergegeven in een *function.json-bestand* en een [JavaScript-functie](../articles/azure-functions/functions-reference-node.md) die de binding gebruikt. De functie leest [metagegevens van gebeurtenissen](#event-metadata) en registreert het bericht.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* .
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.*
 
-### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
+### <a name="version-2x-and-higher"></a>Versie 2.x en hoger
 
 ```json
 {
@@ -187,7 +187,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```json
 {
@@ -199,7 +199,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -212,9 +212,9 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-Als u gebeurtenissen in een batch wilt ontvangen, stelt u `cardinality` in op `many` in het bestand *Function. json* , zoals in de volgende voor beelden wordt weer gegeven.
+Als u gebeurtenissen in `cardinality` een `many` batch wilt ontvangen, stelt u in het *bestand function.json* in, zoals in de volgende voorbeelden wordt weergegeven.
 
-### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
+### <a name="version-2x-and-higher"></a>Versie 2.x en hoger
 
 ```json
 {
@@ -227,7 +227,7 @@ Als u gebeurtenissen in een batch wilt ontvangen, stelt u `cardinality` in op `m
 }
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```json
 {
@@ -240,7 +240,7 @@ Als u gebeurtenissen in een batch wilt ontvangen, stelt u `cardinality` in op `m
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -259,9 +259,9 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een binding van Event Hub trigger in een *Function. json* -bestand en een [python-functie](../articles/azure-functions/functions-reference-python.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van gebeurtenissen](#event-metadata) gelezen en wordt het bericht geregistreerd.
+In het volgende voorbeeld ziet u een gebeurtenishubtriggerbinding in een *function.json-bestand* en een [Python-functie](../articles/azure-functions/functions-reference-python.md) die de binding gebruikt. De functie leest [metagegevens van gebeurtenissen](#event-metadata) en registreert het bericht.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* .
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.*
 
 ```json
 {
@@ -273,7 +273,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 import logging
@@ -289,7 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een event hub-trigger binding die de bericht tekst van de Event hub-trigger registreert.
+In het volgende voorbeeld ziet u een gebeurtenishubtriggerbinding die de berichttekst van de trigger van de gebeurtenishub registreert.
 
 ```java
 @FunctionName("ehprocessor")
@@ -303,17 +303,17 @@ public void eventHubProcessor(
  }
 ```
 
- Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `EventHubTrigger` annotatie op para meters waarvan de waarde afkomstig is van Event hub. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van `Optional<T>`.
+ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de annotatie op parameters waarvan de `EventHubTrigger` waarde afkomstig zou zijn van Event Hub. Parameters met deze annotaties zorgen ervoor dat de functie wordt uitgevoerd wanneer een gebeurtenis aankomt.  Deze annotatie kan worden gebruikt met native Java-typen, `Optional<T>`POJOs of nullable waarden met behulp van .
 
  ---
 
-## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
+## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Gebruik in [ C# class bibliotheken](../articles/azure-functions/functions-dotnet-class-library.md)het kenmerk [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) .
+Gebruik in [klassebibliotheken van C#](../articles/azure-functions/functions-dotnet-class-library.md)het kenmerk [EventHubTriggerAttribute.](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs)
 
-De constructor van het kenmerk neemt de naam van de Event Hub, de naam van de Consumer groep en de naam van een app-instelling die de connection string bevat. Zie de [sectie trigger configuratie](#configuration)voor meer informatie over deze instellingen. Hier volgt een voor beeld van een `EventHubTriggerAttribute`-kenmerk:
+De constructor van het kenmerk neemt de naam van de gebeurtenishub, de naam van de consumentengroep en de naam van een app-instelling die de verbindingstekenreeks bevat. Zie de [sectie triggerconfiguratie](#configuration)voor meer informatie over deze instellingen. Hier is `EventHubTriggerAttribute` een kenmerkvoorbeeld:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -323,61 +323,61 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Zie voor een volledig voor beeld [trigger- C# voor beeld](#example).
+Zie Voorbeeld trigger [- C#](#example)voor een volledig voorbeeld.
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# het script.
+Kenmerken worden niet ondersteund door C# Script.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gebruik in de [runtime-bibliotheek](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)van Java-functies de [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) -aantekening voor para meters waarvan de waarde afkomstig is van Event hub. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van `Optional<T>`.
+Gebruik de [functions runtime library](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) [GebeurtenisHubTrigger-annotatie](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) op parameters waarvan de waarde afkomstig zou zijn van Event Hub. Parameters met deze annotaties zorgen ervoor dat de functie wordt uitgevoerd wanneer een gebeurtenis aankomt. Deze annotatie kan worden gebruikt met native Java-typen, `Optional<T>`POJOs of nullable waarden met behulp van .
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `EventHubTrigger`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `EventHubTrigger` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | moet worden ingesteld op `eventHubTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction** | N.v.t. | moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**naam** | N.v.t. | De naam van de variabele die het gebeurtenis item in functie code vertegenwoordigt. |
-|**path** |**EventHubName** | Functions 1. x. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
-|**eventHubName** |**EventHubName** | Functions 2. x en hoger. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. Kan worden verwezen via de app-instellingen% eventHubName% |
-|**consumerGroup** |**ConsumerGroup** | Een optionele eigenschap waarmee de [Consumer groep](../articles/event-hubs/event-hubs-features.md#event-consumers) wordt ingesteld die wordt gebruikt om zich te abonneren op gebeurtenissen in de hub. Als u dit weglaat, wordt de `$Default` consumenten groep gebruikt. |
-|**kardinaliteit** | N.v.t. | Voor Java script. Stel deze optie in op `many` om batch verwerking in te scha kelen.  Als u niets opgeeft of instelt op `one`, wordt één bericht door gegeven aan de functie. |
-|**Combi** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de [naam ruimte](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), niet op de Event hub zelf. Deze connection string moet mini maal lees machtigingen hebben om de trigger te activeren.|
+|**Type** | N.v.t. | Moet ingesteld `eventHubTrigger`zijn op. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal.|
+|**direction** | N.v.t. | Moet ingesteld `in`zijn op. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure-portal. |
+|**Naam** | N.v.t. | De naam van de variabele die het gebeurtenisitem in functiecode vertegenwoordigt. |
+|**Pad** |**EventHubName** | Functies alleen 1.x. De naam van de gebeurtenishub. Wanneer de naam van de gebeurtenishub ook aanwezig is in de verbindingstekenreeks, overschrijft die waarde deze eigenschap tijdens runtime. |
+|**eventHubName** |**EventHubName** | Functies 2.x en hoger. De naam van de gebeurtenishub. Wanneer de naam van de gebeurtenishub ook aanwezig is in de verbindingstekenreeks, overschrijft die waarde deze eigenschap tijdens runtime. Kan worden verwezen via app-instellingen %eventHubName% |
+|**consumerGroup** |**Consumentengroep** | Een optionele eigenschap die de [consumentengroep](../articles/event-hubs/event-hubs-features.md#event-consumers) instelt waarmee u zich abonneert op gebeurtenissen in de hub. Indien weggelaten, `$Default` wordt de consumentengroep gebruikt. |
+|**Kardinaliteit** | N.v.t. | Voor Javascript. Ingesteld `many` op om batching mogelijk te maken.  Als deze wordt `one`weggelaten of ingesteld op , wordt één bericht doorgegeven aan de functie. |
+|**verbinding** |**Verbinding** | De naam van een app-instelling die de verbindingstekenreeks bevat met de naamruimte van de gebeurtenishub. Kopieer deze verbindingstekenreeks door op de knop **Verbindingsgegevens** voor de [naamruimte](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)te klikken, niet op de gebeurtenishub zelf. Deze verbindingstekenreeks moet ten minste leesmachtigingen hebben om de trigger te activeren.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="event-metadata"></a>Meta gegevens van gebeurtenis
+## <a name="event-metadata"></a>Metagegevens van gebeurtenissen
 
-De trigger Event Hubs biedt verschillende [Eigenschappen van meta gegevens](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Eigenschappen van meta gegevens kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. De eigenschappen zijn afkomstig van de [Event Data](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) -klasse.
+De trigger gebeurtenishubs biedt verschillende [metagegevenseigenschappen.](../articles/azure-functions/./functions-bindings-expressions-patterns.md) Metagegevenseigenschappen kunnen worden gebruikt als onderdeel van bindende expressies in andere bindingen of als parameters in uw code. De eigenschappen zijn afkomstig van de klasse [EventData.](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)
 
 |Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Het `PartitionContext`-exemplaar.|
-|`EnqueuedTimeUtc`|`DateTime`|De in de wachtrij-tijd in UTC.|
-|`Offset`|`string`|De offset van de gegevens ten opzichte van de Event hub-partitie stroom. De offset is een markering of id voor een gebeurtenis binnen de Event Hubs stroom. De id is uniek binnen een partitie van de Event Hubs stroom.|
-|`PartitionKey`|`string`|De partitie waarnaar gebeurtenis gegevens moeten worden verzonden.|
-|`Properties`|`IDictionary<String,Object>`|De gebruikers eigenschappen van de gebeurtenis gegevens.|
-|`SequenceNumber`|`Int64`|Het logische Volg nummer van de gebeurtenis.|
-|`SystemProperties`|`IDictionary<String,Object>`|De systeem eigenschappen, met inbegrip van de gebeurtenis gegevens.|
+|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|De `PartitionContext` instantie.|
+|`EnqueuedTimeUtc`|`DateTime`|De in de wachtrij tijd in UTC.|
+|`Offset`|`string`|De verschuiving van de gegevens ten opzichte van de partitiestroom van de gebeurtenishub. De verschuiving is een markering of id voor een gebeurtenis binnen de stream van gebeurtenishubs. De id is uniek binnen een partitie van de gebeurtenishubsstream.|
+|`PartitionKey`|`string`|De partitie naar welke gebeurtenisgegevens moeten worden verzonden.|
+|`Properties`|`IDictionary<String,Object>`|De gebruikerseigenschappen van de gebeurtenisgegevens.|
+|`SequenceNumber`|`Int64`|Het logische volgnummer van de gebeurtenis.|
+|`SystemProperties`|`IDictionary<String,Object>`|De systeemeigenschappen, inclusief de gebeurtenisgegevens.|
 
-Zie [code voorbeelden](#example) die gebruikmaken van deze eigenschappen eerder in dit artikel.
+Zie [codevoorbeelden](#example) die deze eigenschappen eerder in dit artikel gebruiken.
 
-## <a name="hostjson-properties"></a>host. json-eigenschappen
+## <a name="hostjson-properties"></a>host.json-eigenschappen
 
-Het bestand [host. json](../articles/azure-functions/functions-host-json.md#eventhub) bevat instellingen die het gedrag van Event hubs trigger regelen.
+Het [bestand host.json](../articles/azure-functions/functions-host-json.md#eventhub) bevat instellingen die het triggergedrag van gebeurtenishubs beheren.
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

@@ -1,7 +1,7 @@
 ---
-title: 'Azure PowerShell script-voor beeld: IPv6-front-end configureren met Standard Load Balancer (preview-versie)'
+title: Voorbeeld van Azure PowerShell-script - IPv6-frontend configureren met standaardloadbalansr(voorbeeld)
 titlesuffix: Azure Virtual Network
-description: IPv6-eind punten inschakelen met behulp van Power shell in azure Virtual Network
+description: IPv6-eindpunten inschakelen met Powershell in Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,34 +12,34 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201319"
 ---
-# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>IPv6-front-end configureren in een virtueel netwerk script voor beeld met Standard Load Balancer (preview-versie)
+# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>IPv6 frontend configureren in voorbeeld van virtuele netwerkscript met Standaardload Balancer(preview)
 
-In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure met een virtueel netwerk met twee stacks met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, Dual Network-beveiligings groeps regels en dubbele open bare Ip's.
+In dit artikel ziet u hoe u een IPv4 + IPv6-toepassing (Dual Stack + IPv6) implementeert in Azure met een dual stack virtueel netwerk met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dubbele IP-configuratie, regels voor dual network security group en dual public IP's.
 
-U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/powershell) of vanuit een lokale installatie van PowerShell. Als u Power shell lokaal gebruikt, is voor dit script de Azure AZ Power shell-module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/powershell) of vanuit een lokale installatie van PowerShell. Als u PowerShell lokaal gebruikt, vereist dit script de Azure Az PowerShell-module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u een dual stack-toepassing in azure implementeert, moet u uw abonnement slechts eenmaal configureren voor deze preview-functie met behulp van de volgende Azure PowerShell:
+Voordat u een dual stack-toepassing implementeert in Azure, moet u uw abonnement slechts één keer configureren voor deze voorbeeldfunctie met de volgende Azure PowerShell:
 
-Meld u als volgt aan:
+Registreer als volgt:
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer de registratie als volgt:
+Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure PowerShell uit te voeren: Controleer de registratie als volgt:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Nadat de registratie is voltooid, voert u de volgende opdracht uit:
+Voer de volgende opdracht uit nadat de registratie is voltooid:
 
 ```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -240,18 +240,18 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep, VM, en alle gerelateerde resources te verwijderen:
+Voer de volgende opdracht uit om de resourcegroep, VM en alle gerelateerde resources te verwijderen:
 
 ```powershell
 Remove-AzResourceGroup -Name <resourcegroupname> -Force
 ```
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u een subnetconfiguratie. Deze configuratie wordt gebruikt bij het maken van het virtueel netwerk. |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel Azure-netwerk en -subnet. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)  | Hiermee maakt u een openbaar IP-adres met een statisch IP-adres en een bijbehorende DNS-naam. |
@@ -261,10 +261,10 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep (NSG), die fungeert als een beveiligingsgrens tussen het internet en de virtuele machine. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | Hiermee maakt u een NSG-regel om binnenkomend verkeer toe te staan. In dit voorbeeld wordt poort 22 geopend voor SSH-verkeer. |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u een netwerkkaart die gekoppeld wordt aan het virtuele netwerk, het subnet en de NSG. |
-| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheids sets garanderen de uptime van toepassingen door de virtuele machines te verspreiden over fysieke resources, zodat de volledige set niet wordt beïnvloed als er een fout optreedt. |
+| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheidssets zorgen voor de uptime van de toepassing door de virtuele machines over fysieke bronnen te spreiden, zodat als er een storing optreedt, de hele set niet wordt beïnvloed. |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Hiermee maakt u een VM-configuratie. Deze configuratie bevat informatie zoals de naam, het besturingssysteem en de beheerdersreferenties van de virtuele machine. De configuratie wordt gebruikt tijdens het maken van de virtuele machine. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Onboarding naar Azure Security Center met Power shell
-description: Dit document helpt u bij het voorbereiden van Azure Security Center met Power shell-cmdlets.
+title: Onboard naar Azure Security Center met PowerShell
+description: Dit document leidt u door het proces van onboarding Azure Security Center met PowerShell-cmdlets.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,83 +14,83 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603686"
 ---
-# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Het onboarden van Azure Security Center automatiseren met Power shell
+# <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Onboarding van Azure Security Center automatiseren met PowerShell
 
-U kunt uw Azure-workloads programmatisch beveiligen met behulp van de Azure Security Center Power shell-module.
-Met behulp van Power shell kunt u taken automatiseren en de menselijke fout voor komen die inherent zijn aan hand matige taken. Dit is vooral handig bij grootschalige implementaties waarbij tien tallen abonnementen betrokken zijn met honderden en duizenden resources, die allemaal moeten worden beveiligd vanaf het begin.
+U uw Azure-workloads programmatisch beveiligen met de PowerShell-module azure Security Center.
+Met PowerShell u taken automatiseren en de menselijke fout vermijden die inherent is aan handmatige taken. Dit is vooral handig bij grootschalige implementaties waarbij tientallen abonnementen met honderden en duizenden resources betrokken zijn , die allemaal vanaf het begin moeten worden beveiligd.
 
-Met behulp van de onboarding Azure Security Center met Power shell kunt u uw Azure-resources op een programmatische manier voorbereiden en beheren en de benodigde beveiligings controles toevoegen.
+Onboarding Azure Security Center met PowerShell stelt u in staat om onboarding en beheer van uw Azure-resources programmatisch te automatiseren en de nodige beveiligingscontroles toe te voegen.
 
-Dit artikel bevat een voor beeld van een Power shell-script dat kan worden gewijzigd en in uw omgeving kan worden gebruikt om Security Center in uw abonnementen uit te vouwen. 
+In dit artikel vindt u een voorbeeld van PowerShell-script dat in uw omgeving kan worden gewijzigd en gebruikt om Beveiligingscentrum voor uw abonnementen uit te rollen. 
 
-In dit voor beeld wordt Security Center ingeschakeld voor een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en worden de aanbevolen instellingen toegepast die een hoog niveau van beveiliging bieden door de implementatie van de laag standaard van Security Center. Dit biedt geavanceerde mogelijkheden voor bedreigings beveiliging en detectie:
+In dit voorbeeld schakelen we Security Center in op een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en passen de aanbevolen instellingen toe die een hoog beschermingsniveau bieden, door de standaardlaag van beveiligingscentrum te implementeren, die de standaardlaag van beveiligingscentrum implementeert, die de aanbevolen instellingen biedt die een hoog beschermingsniveau bieden, geavanceerde mogelijkheden voor bescherming en detectie van bedreigingen:
 
-1. Stel het [Security Center standaard beveiligings niveau in](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Stel het [standaardbeschermingsniveau van het Beveiligingscentrum in.](https://azure.microsoft.com/pricing/details/security-center/) 
  
-2. Stel de Log Analytics-werk ruimte in waarnaar de gegevens die worden verzameld op de Vm's die zijn gekoppeld aan het abonnement worden verzonden met behulp van de micro soft monitoring agent. in dit voor beeld is dit een bestaande door de gebruiker gedefinieerde werk ruimte (myWorkspace).
+2. Stel de werkruimte Log Analytics in waarnaar de Microsoft Monitoring Agent de gegevens verzendt die worden gebruikt op de VM's die aan het abonnement zijn gekoppeld, in dit voorbeeld een bestaande door de gebruiker gedefinieerde werkruimte (myWorkspace).
 
-3. Activeer de automatische agent inrichting van Security Center waarin [de micro soft monitoring agent wordt geïmplementeerd](security-center-enable-data-collection.md#auto-provision-mma).
+3. Activeer de automatische agentinrichting van het beveiligingscentrum die [de Microsoft Monitoring Agent implementeert.](security-center-enable-data-collection.md#auto-provision-mma)
 
-5. Stel de ciso van de organisatie [in als de beveiligings contact persoon voor Security Center waarschuwingen en](security-center-provide-security-contact-details.md)belang rijke gebeurtenissen.
+5. Stel de CISO van de organisatie [in als de beveiligingscontactpersoon voor waarschuwingen van het Beveiligingscentrum en opmerkelijke gebeurtenissen.](security-center-provide-security-contact-details.md)
 
-6. Wijs het [standaard beveiligings beleid](tutorial-security-policy.md)van Security Center toe.
+6. Het [standaardbeveiligingsbeleid](tutorial-security-policy.md)van beveiligingscentrum toewijzen .
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze stappen moeten worden uitgevoerd voordat u de Security Center-cmdlets uitvoert:
+Deze stappen moeten worden uitgevoerd voordat u de cmdlets van het Beveiligingscentrum uitvoert:
 
-1.  Voer Power shell uit als beheerder.
-2.  Voer de volgende opdrachten uit in Power shell:
+1.  Voer PowerShell uit als beheerder.
+2.  Voer de volgende opdrachten uit in PowerShell:
       
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Install-Module -Name Az.Security -Force
 
-## <a name="onboard-security-center-using-powershell"></a>Onboard Security Center met Power shell
+## <a name="onboard-security-center-using-powershell"></a>In boord van beveiligingscentrum met PowerShell
 
-1.  Uw abonnementen registreren bij de provider van de Security Center-resource:
+1.  Registreer uw abonnementen op de Security Center Resource Provider:
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Optioneel: het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
+2.  Optioneel: stel het dekkingsniveau (prijscategorie) van de abonnementen in (Als deze niet is gedefinieerd, is de prijscategorie ingesteld op Gratis):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 
-3.  Een Log Analytics-werk ruimte configureren waarin de agents worden gerapporteerd. U moet een Log Analytics-werk ruimte hebben die u al hebt gemaakt, waarbij de Vm's van het abonnement worden gerapporteerd aan. U kunt meerdere abonnementen definiëren om aan dezelfde werk ruimte te rapporteren. Als deze niet is gedefinieerd, wordt de standaardwerk ruimte gebruikt.
+3.  Configureer een Log Analytics-werkruimte waaraan de agents rapporteren. U moet een Log Analytics-werkruimte hebben die u al hebt gemaakt, waaraan de VM's van het abonnement worden gemeld. U meerdere abonnementen definiëren om aan dezelfde werkruimte te rapporteren. Als deze niet is gedefinieerd, wordt de standaardwerkruimte gebruikt.
 
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  De installatie van micro soft monitoring agent automatisch inrichten op uw Azure-Vm's:
+4.  Installatie van de Microsoft-bewakingsagent automatisch inrichten op uw Azure VM's:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
     > [!NOTE]
-    > Het wordt aanbevolen automatische inrichting in te scha kelen om ervoor te zorgen dat uw virtuele Azure-machines automatisch worden beveiligd door Azure Security Center.
+    > Het wordt aanbevolen om automatische inrichting in te schakelen om ervoor te zorgen dat uw virtuele Azure-machines automatisch worden beschermd door Azure Security Center.
     >
 
-5.  Optioneel: u kunt het beste de contact gegevens van de beveiliging definiëren voor de abonnementen die u wilt voorbereiden. deze worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door Security Center:
+5.  Optioneel: het wordt ten zeerste aanbevolen om de beveiligingscontactgegevens te definiëren voor de abonnementen die u aan boord hebt, die worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door security center:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
-6.  Wijs het standaard Security Center Policy Initiative toe:
+6.  Wijs het standaard beleidsinitiatief beveiligingscentrum toe:
 
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
         New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
-U hebt nu onboarded Azure Security Center met Power shell.
+U hebt nu met PowerShell een Azure Security Center aan boord genomen!
 
-U kunt deze Power shell-cmdlets nu met automatiserings scripts gebruiken om op een programmatische manier te herhalen voor abonnementen en bronnen. Dit bespaart tijd en vermindert de kans op menselijke fouten. U kunt dit [voorbeeld script](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) gebruiken als verwijzing.
+U deze PowerShell-cmdlets nu gebruiken met automatiseringsscripts om programmatisch te herhalen tussen abonnementen en resources. Dit bespaart tijd en vermindert de kans op menselijke fouten. U dit [voorbeeldscript](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) als referentie gebruiken.
 
 
 
@@ -98,11 +98,11 @@ U kunt deze Power shell-cmdlets nu met automatiserings scripts gebruiken om op e
 
 
 ## <a name="see-also"></a>Zie ook
-Zie het volgende artikel voor meer informatie over hoe u Power shell kunt gebruiken om onboarding naar Security Center te automatiseren:
+Zie het volgende artikel voor meer informatie over hoe u PowerShell gebruiken om onboarding te automatiseren in beveiligingscentrum:
 
-* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
 
-Zie het volgende artikel voor meer informatie over Security Center:
+Zie het volgende artikel voor meer informatie over Beveiligingscentrum:
 
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
+* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center:](security-center-managing-and-responding-alerts.md) meer informatie over het beheren en reageren op beveiligingswaarschuwingen.

@@ -1,6 +1,6 @@
 ---
-title: X. 509-apparaten registreren bij Azure Device Provisioning Service met behulp van node. js
-description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze Quick Start schrijft u X. 509-apparaten in bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van de node. js-Service-SDK
+title: X.509-apparaten inschrijven voor Azure Device Provisioning Service met Node.js
+description: In deze snelstart wordt gebruikgemaakt van groepsregistraties. In deze quickstart schrijft u X.509-apparaten in voor de Azure IoT Hub Device Provisioning Service (DPS) met behulp van de Node.js-service SDK
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,25 +10,25 @@ services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
 ms.openlocfilehash: 35f5cc4914689fd171cc3fa8ec7d809924127f28
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77605548"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Node.js
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-In deze Quick Start gebruikt u node. js om programmatisch een registratie groep te maken die gebruikmaakt van tussenliggende of basis-CA X. 509-certificaten. De registratie groep wordt gemaakt met behulp van de IoT SDK voor node. js en een voor beeld-node. js-toepassing.
+In deze quickstart gebruikt u Node.js om programmatisch een inschrijvingsgroep te maken die tussentijdse of hoofd-CA X.509-certificaten gebruikt. De registratiegroep is gemaakt met behulp van de IoT-SDK voor Node.js en een Node.js-voorbeeldtoepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Volt ooien van [het instellen van de IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md).
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org). In deze Quick Start wordt de [IOT-SDK voor node. js](https://github.com/Azure/azure-iot-sdk-node) hieronder geïnstalleerd.
-- [Git](https://git-scm.com/download/).
-- [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c).
+- Voltooiing van het instellen van [de IoT Hub Device Provisioning Service met de Azure-portal.](./quick-setup-auto-provision.md)
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Node.js v4.0+](https://nodejs.org). Deze quickstart installeert hieronder de [IoT SDK voor Node.js.](https://github.com/Azure/azure-iot-sdk-node)
+- [Git.](https://git-scm.com/download/)
+- [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
 ## <a name="prepare-test-certificates"></a>Testcertificaten voorbereiden
 
@@ -36,13 +36,13 @@ Voor deze snelstart hebt u een .pem- of een .cer-bestand met het openbare gedeel
 
 Zie [Overzicht van beveiliging op basis van X.509-CA-certificaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview) voor meer informatie over het gebruik vanop X.509-certificaten gebaseerde Public Key Infrastructure (PKI) met Azure IoT Hub en Device Provisioning Service.
 
-De [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) bevat testhulpmiddelen waarmee u een X.509-certificaatketen kunt maken, een basis- of tussencertificaat kunt uploaden vanuit die keten en een bewijs van eigendom kunt uitvoeren met de service om het certificaat te verifiëren. Certificaten die zijn gemaakt met de SDK-hulpmiddelen, zijn alleen ontworpen voor **ontwikkeltesten**. Deze certificaten **mogen niet in productie worden gebruikt**. Ze bevatten in code vastgelegde wachtwoorden ('1234') die na 30 dagen verlopen. Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
+De [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) bevat testhulpmiddelen waarmee u een X.509-certificaatketen kunt maken, een basis- of tussencertificaat kunt uploaden vanuit die keten en een bewijs van eigendom kunt uitvoeren met de service om het certificaat te verifiëren. Certificaten die zijn gemaakt met de SDK-hulpmiddelen zijn alleen ontworpen voor **ontwikkeltesten**. Deze certificaten **mogen niet in productie worden gebruikt**. Ze bevatten in code vastgelegde wachtwoorden ('1234') die na 30 dagen verlopen. Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
 
 Voer de volgende stappen uit om deze testhulpmiddelen te gebruiken om certificaten te genereren:
  
-1. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de Azure IOT C-SDK.
+1. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de Azure IoT C SDK.
 
-2. Open een opdrachtprompt of Git Bash-shell en wijzig deze in een werkmap op uw computer. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen. Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor de para meter `-b`:
+2. Open een opdrachtprompt of Git Bash-shell en wijzig deze in een werkmap op uw computer. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-repository te klonen. Gebruik de tag die u in de `-b` vorige stap hebt gevonden als de waarde voor de parameter:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om deze testhulpmiddelen te gebruiken om certificat
 
 ## <a name="create-the-enrollment-group-sample"></a>Een voorbeeld van een registratiegroep maken 
 
-Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
+Azure IoT Device Provisioning Service ondersteunt twee typen inschrijvingen:
 
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Individuele inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om één apparaat in te schrijven.
@@ -118,17 +118,17 @@ Een registratiegroep beheert de toegang tot de inrichtingsservice voor apparaten
 ## <a name="run-the-enrollment-group-sample"></a>Het voorbeeld van de registratiegroep uitvoeren
  
 1. Als u het voorbeeld wilt uitvoeren, hebt u de verbindingsreeks voor de inrichtingsservice nodig. 
-    1. Meld u aan bij de Azure Portal, selecteer de knop **alle resources** in het linkermenu en open uw Device Provisioning-Service. 
-    2. Klik op **beleid voor gedeelde toegang**en selecteer vervolgens het toegangs beleid dat u wilt gebruiken om de eigenschappen te openen. Kopieer of noteer de verbindingsreeks van de primaire sleutel uit het venster **Toegangsbeleid**. 
+    1. Meld u aan bij de Azure-portal, selecteer de knop **Alle bronnen** in het linkermenu en open de service Apparaatvoorziening. 
+    2. Klik **op Beleid voor gedeelde toegang**en selecteer vervolgens het toegangsbeleid dat u wilt gebruiken om de eigenschappen ervan te openen. Kopieer of noteer de verbindingsreeks van de primaire sleutel uit het venster **Toegangsbeleid**. 
 
        ![Verbindingsreeks voor de inrichtingsservice ophalen uit de portal](./media/quick-enroll-device-x509-node/get-service-connection-string.png) 
 
 
-3. Zoals vermeld in [Testcertificaten voorbereiden](quick-enroll-device-x509-node.md#prepare-test-certificates) hebt u ook een .pem-bestand nodig dat een tussen- of basis-X.509 CA-certificaat bevat dat eerder is geüpload naar en is geverifieerd met uw inrichtingsservice. Als u wilt controleren of uw certificaat is geüpload en geverifieerd, selecteert u op de pagina overzicht van Device Provisioning Service in het Azure Portal **certificaten**. Zoek het certificaat dat u wilt gebruiken voor de groepsregistratie en zorg ervoor dat de statuswaarde *geverifieerd* is.
+3. Zoals vermeld in [Testcertificaten voorbereiden](quick-enroll-device-x509-node.md#prepare-test-certificates) hebt u ook een .pem-bestand nodig dat een tussen- of basis-X.509 CA-certificaat bevat dat eerder is geüpload naar en is geverifieerd met uw inrichtingsservice. Als u wilt controleren of uw certificaat is geüpload en geverifieerd, selecteert u op de overzichtspagina apparaatinrichtingsservice in de Azure-portal **certificaten**. Zoek het certificaat dat u wilt gebruiken voor de groepsregistratie en zorg ervoor dat de statuswaarde *geverifieerd* is.
 
     ![Geverifieerd certificaat in de portal](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 
-1. Als u een [registratie groep](concepts-service.md#enrollment-group) voor uw certificaat wilt maken, voert u de volgende opdracht uit (Voeg de aanhalings tekens toe rondom de opdracht argumenten):
+1. Als u een [inschrijvingsgroep](concepts-service.md#enrollment-group) voor uw certificaat wilt maken, voert u de volgende opdracht uit (de aanhalingstekens rond de opdrachtargumenten):
  
      ```cmd\sh
      node create_enrollment_group.js "<the connection string for your provisioning service>" "<your certificate's .pem file>"
@@ -143,17 +143,17 @@ Een registratiegroep beheert de toegang tot de inrichtingsservice voor apparaten
     ![Eigenschappen van de inschrijving in de portal](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent de service voorbeelden van node. js te verkennen, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle Azure-resources die door deze Quick start zijn gemaakt, te verwijderen.
+Als u van plan bent de node.js-servicevoorbeelden te verkennen, moet u de bronnen die in deze quickstart zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle Azure-resources te verwijderen die door deze quickstart zijn gemaakt.
  
 1. Sluit het uitvoervenster van het Node.js-voorbeeld op de computer.
-2. Navigeer naar uw Device Provisioning Service in de Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **registratie groepen** . Schakel het selectie vakje in naast de *groeps naam* voor de X. 509-apparaten die u hebt Inge schreven met behulp van deze Quick Start. Klik vervolgens op de knop **verwijderen** boven aan het deel venster.    
-3. Selecteer **certificaten**uit uw Device Provisioning Service in de Azure Portal, selecteer het certificaat dat u voor deze Quick Start hebt geüpload en klik op de knop **verwijderen** boven aan het venster **certificaat Details** .  
+2. Navigeer naar de service Apparaatinrichting in de Azure-portal, selecteer **Inschrijvingen beheren**en schakel het tabblad **Inschrijvingsgroepen** in. Schakel het selectievakje in naast de *groepsnaam* voor de X.509-apparaten die u met deze snelstart hebt ingeschreven en druk op de knop **Verwijderen** boven in het deelvenster.    
+3. Selecteer **certificaten,** selecteer het certificaat dat u voor deze quickstart hebt geüpload en druk op de knop **Verwijderen** boven aan het venster **Certificaatgegevens.**  
  
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een groeps registratie gemaakt voor een X. 509-tussenliggend of basis-CA-certificaat met behulp van de Azure-IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
+In deze quickstart hebt u een groepsinschrijving gemaakt voor een R.509 intermediate of root CA-certificaat met behulp van de Azure IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
 
-Zie ook het voor beeld van het inrichten van het [node. js-apparaat](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
+Zie ook het voorbeeld voor het inrichten van het [apparaat node.js.](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples)
  
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

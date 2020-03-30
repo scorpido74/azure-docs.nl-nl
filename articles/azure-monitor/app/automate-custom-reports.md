@@ -1,44 +1,44 @@
 ---
-title: Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
-description: Aangepaste dagelijkse/wekelijkse/maandelijkse rapporten automatiseren met Azure-toepassing Insights-gegevens
+title: Aangepaste rapporten automatiseren met Azure Application Insights-gegevens
+description: Aangepaste dagelijkse/wekelijkse/maandelijkse rapporten automatiseren met Azure Application Insights-gegevens
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655120"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
+# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure Application Insights-gegevens
 
-Periodieke rapporten helpen een team op de hoogte te houden van hoe hun bedrijfs kritieke services doen. Ontwikkel aars, DevOps/SRE teams en hun managers kunnen productief zijn met geautomatiseerde rapporten die op betrouw bare wijze inzichten leveren zonder dat iedereen zich hoeft aan te melden bij de portal. Dergelijke rapporten kunnen ook leiden tot het identificeren van geleidelijke toename van latentie, laad-of fout percentages waarmee geen waarschuwings regels kunnen worden geactiveerd.
+Periodieke rapporten helpen een team op de hoogte te houden van hoe hun bedrijfskritieke services het doen. Ontwikkelaars, DevOps/SRE-teams en hun managers kunnen productief zijn met geautomatiseerde rapporten die betrouwbaar inzichten leveren zonder dat iedereen zich moet aanmelden bij de portal. Dergelijke rapporten kunnen ook helpen bij het identificeren van geleidelijke toename van latencies, belasting of uitval percentages die mogelijk geen waarschuwingsregels veroorzaken.
 
-Elke onderneming heeft zijn unieke rapportage behoeften, zoals: 
+Elke onderneming heeft zijn unieke rapportagebehoeften, zoals: 
 
-* Specifieke percentiel aggregaties van metrische gegevens of aangepaste metrische gegevens in een rapport.
-* Hebben verschillende rapporten voor dagelijkse, wekelijkse en maandelijkse samenbrengen van gegevens voor verschillende doel groepen.
-* Segmenteren op aangepaste kenmerken, zoals regio, of omgeving. 
-* Groepeer enkele AI-resources samen in één rapport, zelfs als ze zich in verschillende abonnementen of resource groepen bevinden, enzovoort.
-* Afzonderlijke rapporten met gevoelige metrische gegevens die worden verzonden naar selectief publiek.
-* Rapporten aan belanghebbenden die mogelijk geen toegang tot de portal resources hebben.
+* Specifieke percentielaggregaties van metrische gegevens of aangepaste statistieken in een rapport.
+* Hebben verschillende rapporten voor dagelijkse, wekelijkse en maandelijkse roll-ups van gegevens voor verschillende doelgroepen.
+* Segmentatie op aangepaste kenmerken zoals regio of omgeving. 
+* Groepeer sommige AI-resources samen in één rapport, zelfs als ze zich in verschillende abonnementen of resourcegroepen, enz.
+* Afzonderlijke rapporten met gevoelige statistieken die naar selectieve doelgroepen worden verzonden.
+* Rapporten aan belanghebbenden die mogelijk geen toegang hebben tot de portalbronnen.
 
 > [!NOTE] 
-> De wekelijkse Application Insights Digest-e-mail heeft geen aanpassing toegestaan en wordt niet meer in aanmerking genomen voor de hieronder vermelde aangepaste opties. De laatste wekelijkse overzichts-e-mail wordt verzonden op 11 juni 2018. Configureer een van de volgende opties om Vergelijk bare aangepaste rapporten te verkrijgen (gebruik de query die hieronder wordt voorgesteld).
+> De wekelijkse Application Insights digest e-mail stond geen aanpassingen toe en wordt stopgezet ten gunste van de aangepaste opties die hieronder worden vermeld. De laatste wekelijkse samenvatting e-mail zal worden verzonden op 11 juni 2018. Configureer een van de volgende opties om vergelijkbare aangepaste rapporten te krijgen (gebruik de onderstaande query).
 
-## <a name="to-automate-custom-report-emails"></a>Aangepaste rapport e-mails automatiseren
+## <a name="to-automate-custom-report-emails"></a>Aangepaste rapporte-mails automatiseren
 
-U kunt [programmatisch query's uitvoeren op Application Insights](https://dev.applicationinsights.io/) gegevens om aangepaste rapporten te genereren op schema. U kunt de volgende opties gebruiken om snel aan de slag te gaan:
+U [toepassingsinzichtengegevens programmatisch opvragen](https://dev.applicationinsights.io/) om aangepaste rapporten in een planning te genereren. Met de volgende opties u snel aan de slag:
 
 * [Rapporten automatiseren met Microsoft Flow](automate-with-flow.md)
 * [Rapporten automatiseren met Logic Apps](automate-with-logic-apps.md)
-* Gebruik de [Azure function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) -sjabloon ' Application Insights gepland overzicht ' in het bewakings scenario. Deze functie maakt gebruik van SendGrid om het e-mail bericht te leveren. 
+* Gebruik de [Azure-functiesjabloon 'Application](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) Insights scheduled digest' in het scenario Monitoring. Deze functie maakt gebruik van SendGrid om de e-mail te leveren. 
 
-    ![Azure-functie sjabloon](./media/automate-custom-reports/azure-function-template.png)
+    ![Azure-functiesjabloon](./media/automate-custom-reports/azure-function-template.png)
 
-## <a name="sample-query-for-a-weekly-digest-email"></a>Voorbeeld query voor een wekelijks overzicht van e-mail
-De volgende query geeft een samen voeging tussen meerdere gegevens sets voor een wekelijks overzicht per e-mail, zoals rapport. Pas deze indien nodig aan en gebruik dit met een van de hierboven genoemde opties om een wekelijks rapport te automatiseren.   
+## <a name="sample-query-for-a-weekly-digest-email"></a>Voorbeeldquery voor een wekelijkse samenvattingse e-mail
+In de volgende query wordt weergegeven dat u zich aansluiten bij meerdere gegevenssets voor een wekelijks e-mailachtige samenvatting. Pas het aan zoals vereist en gebruik het met een van de bovenstaande opties om een wekelijks rapport te automatiseren.   
 
 ```AIQL
 let period=7d;
@@ -68,95 +68,95 @@ availabilityResults
 | project TotalRequests, FailedRequests, RequestsDuration, TotalDependencies, FailedDependencies, DependenciesDuration, TotalViews, TotalExceptions, OverallAvailability, AvailabilityDuration
 ```
 
-## <a name="application-insights-scheduled-digest-report"></a>Application Insights gepland samenvattings rapport
+## <a name="application-insights-scheduled-digest-report"></a>Plandigest-rapport voor toepassingsinzichten
 
-1. Selecteer in de Azure Portal **een resource maken** > **compute** > **functie-app**.
+1. Selecteer in de Azure-portal de optie **Een Resource** > **Compute** > **Function App maken**.
 
-   ![Een functie-app scherm opname van een Azure-resource maken](./media/automate-custom-reports/function-app-01.png)
+   ![Schermafbeelding van een schermafbeelding van de Azure Resource Function App](./media/automate-custom-reports/function-app-01.png)
 
-2. Voer de juiste gegevens in voor uw app en selecteer _maken_. (Application Insights _is_ alleen vereist als u de nieuwe functie-app wilt controleren met Application Insights)
+2. Voer de juiste gegevens voor uw app in en selecteer _Maken_. (Application Insights _On_ is alleen vereist als u uw nieuwe functie-app wilt controleren met Application Insights)
 
-   ![Een scherm opname van de Azure-resource functie-app instellingen maken](./media/automate-custom-reports/function-app-02.png)
+   ![Schermafbeelding van een schermafbeelding van de app-instellingen van Azure Resource-functie](./media/automate-custom-reports/function-app-02.png)
 
-3. Wanneer de implementatie van uw nieuwe functie-app is voltooid, selecteert **u naar resource**.
+3. Zodra de implementatie van uw nieuwe functie-app is voltooid, selecteert u **Ga naar resource**.
 
-4. Selecteer **nieuwe functie**.
+4. Selecteer **Nieuwe functie**.
 
-   ![Een nieuwe functie scherm afbeelding maken](./media/automate-custom-reports/function-app-03.png)
+   ![Een nieuwe functieschermafbeelding maken](./media/automate-custom-reports/function-app-03.png)
 
-5. Selecteer de **_sjabloon geplande samen vatting Application Insights_** .
+5. Selecteer de **_geplande samenvattingssjabloon Toepassingsinzichten_**.
 
      > [!NOTE]
-     > Functie-apps worden standaard gemaakt met runtime versie 2. x. U moet [Azure functions runtime versie](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** instellen voor het gebruik van de sjabloon Application Insights geplande samen vatting.  scherm opname van ![-runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Functie-apps worden standaard gemaakt met runtime-versie 2.x. U moet [azure-functies runtime versie](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1.x** targeten om de geplande samenvattingsjabloon application insights te gebruiken.  ![schermafbeelding van runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
-   ![Scherm afbeelding nieuwe functie Application Insights sjabloon](./media/automate-custom-reports/function-app-04.png)
+   ![Schermafbeelding van de sjabloon nieuwe functietoepassingsinzichten](./media/automate-custom-reports/function-app-04.png)
 
-6. Voer het juiste e-mail adres van de ontvanger in voor uw rapport en selecteer **maken**.
+6. Voer een geschikt e-mailadres voor de ontvanger in voor uw rapport en selecteer **Maken**.
 
-   ![Scherm opname van functie-instellingen](./media/automate-custom-reports/function-app-05.png)
+   ![Schermafbeelding functie-instellingen](./media/automate-custom-reports/function-app-05.png)
 
-7. Selecteer uw **functie-app** > **platform functies** > **Toepassings instellingen**.
+7. Selecteer de > **toepassingsinstellingen**van het **functie-app-platform.** > **Platform features**
 
-    ![Scherm opname van de Azure function-toepassings instellingen](./media/automate-custom-reports/function-app-07.png)
+    ![Schermafbeelding van Azure Function Application-instellingen](./media/automate-custom-reports/function-app-07.png)
 
-8. Maak drie nieuwe toepassings instellingen met de juiste overeenkomende waarden ``AI_APP_ID``, ``AI_APP_KEY``en ``SendGridAPI``. Selecteer **Opslaan**.
+8. Maak drie nieuwe toepassingsinstellingen ``AI_APP_ID``met ``AI_APP_KEY``de ``SendGridAPI``juiste bijbehorende waarden , en . Selecteer **Opslaan**.
 
-     ![Scherm opname van de functie integratie interface](./media/automate-custom-reports/function-app-08.png)
+     ![Schermafbeelding van de interface voor functie-integratie](./media/automate-custom-reports/function-app-08.png)
     
-    (De AI_ waarden vindt u onder API-toegang voor de Application Insights resource waarover u een rapport wilt maken. Als u geen Application Insights-API-sleutel hebt, kunt u een **API-sleutel maken**.)
+    (De AI_ waarden vindt u onder API Access voor de Application Insights Resource waarover u wilt rapporteren. Als u geen API-sleutel voor Application Insights hebt, is er de optie om **API-sleutel te maken**.)
     
-   * AI_APP_ID = toepassings-ID
+   * AI_APP_ID = Toepassings-id
    * AI_APP_KEY = API-sleutel
-   * SendGridAPI = SendGrid-API-sleutel
+   * SendGridAPI =SendGrid API-sleutel
 
      > [!NOTE]
-     > Als u geen SendGrid-account hebt, kunt u er een maken. De documentatie van SendGrid voor Azure Functions is [hier](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)beschikbaar. Als u alleen een minimale uitleg wilt over het instellen van SendGrid en het genereren van een API-sleutel, wordt aan het einde van dit artikel vermeld. 
+     > Als je geen SendGrid-account hebt, kun je er een maken. De documentatie van SendGrid voor Azure-functies vindt [u hier.](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid) Als u alleen een minimale uitleg wilt over het instellen van SendGrid en het genereren van een API-sleutel, wordt aan het einde van dit artikel een api-sleutel verstrekt. 
 
-9. Selecteer **integreren** en klik onder uitvoer op **SendGrid ($Return)** .
+9. Selecteer **Integreren** en klik onder Uitvoer op **SendGrid ($return)**.
 
-     ![Scherm opname van uitvoer](./media/automate-custom-reports/function-app-09.png)
+     ![Schermafbeelding van uitvoer](./media/automate-custom-reports/function-app-09.png)
 
-10. Selecteer de zojuist gemaakte app-instelling voor **SendGridAPI**onder de **instelling app SendGridAPI-sleutel**.
+10. Selecteer onder de **instelling SendGridAPI Key App**de nieuw gemaakte app-instelling voor **SendGridAPI**.
 
-     ![Scherm afbeelding van functie-app uitvoeren](./media/automate-custom-reports/function-app-010.png)
+     ![Schermafbeelding van functie-app uitvoeren](./media/automate-custom-reports/function-app-010.png)
 
-11. Voer uw functie-app uit en test deze.
+11. Voer de functie-app uit en test deze.
 
-     ![Scherm opname testen](./media/automate-custom-reports/function-app-11.png)
+     ![Schermafbeelding van de test](./media/automate-custom-reports/function-app-11.png)
 
 12. Controleer uw e-mail om te bevestigen dat het bericht is verzonden/ontvangen.
 
-     ![Scherm afbeelding van onderwerpregel van E-mail](./media/automate-custom-reports/function-app-12.png)
+     ![Schermafbeelding van onderwerpregel e-mail](./media/automate-custom-reports/function-app-12.png)
 
 ## <a name="sendgrid-with-azure"></a>SendGrid met Azure
 
 Deze stappen zijn alleen van toepassing als u nog geen SendGrid-account hebt geconfigureerd.
 
-1. Ga naar het Azure Portal Selecteer **een resource maken** zoek naar **SendGrid-e-mail bezorging** > Klik op > **maken** en vul de specifieke instructies voor het maken van de SendGrid in. 
+1. Selecteer in de Azure-portal **Een bronzoekopdracht** maken voor **SendGrid-e-mailbezorging** > Klik op **> maken** en vul de sendgrid-specifieke maakinstructies in. 
 
-     ![Scherm opname van SendGrid-resource maken](./media/automate-custom-reports/function-app-13.png)
+     ![Schermafbeelding van SendGrid-bron maken](./media/automate-custom-reports/function-app-13.png)
 
-2. Wanneer u hebt gemaakt onder SendGrid-accounts, selecteert u **beheren**.
+2. Eenmaal gemaakt onder SendGrid-accounts selecteert u **Beheren**.
 
-     ![Scherm opname van API-sleutel instellingen](./media/automate-custom-reports/function-app-14.png)
+     ![Schermafbeelding van de api-toets instellingen](./media/automate-custom-reports/function-app-14.png)
 
-3. Hiermee wordt de site van SendGrid gestart. Selecteer **instellingen** > **API-sleutels**.
+3. Dit zal de site van SendGrid lanceren. Selecteer **API-sleutels** > **voor**instellingen .
 
-     ![Scherm opname van API-sleutel toepassing maken en weer geven](./media/automate-custom-reports/function-app-15.png)
+     ![Schermafbeelding van API-sleutel-app maken en weergeven](./media/automate-custom-reports/function-app-15.png)
 
-4. Een API-sleutel maken > Kies **& weer gave maken** (Raadpleeg de documentatie van SendGrid over beperkte toegang om te bepalen welk niveau van machtigingen het meest geschikt is voor uw API-sleutel. Volledige toegang is hier alleen voor beeld van toepassing geselecteerd.)
+4. Maak een API-sleutel > kies **& weergave maken** (Bekijk de documentatie van SendGrid over beperkte toegang om te bepalen welk niveau van machtigingen geschikt is voor uw API-sleutel. Full Access wordt hier geselecteerd voor bijvoorbeeld doeleinden.)
 
-   ![Scherm opname van volledige toegang](./media/automate-custom-reports/function-app-16.png)
+   ![Schermafbeelding van volledige toegang](./media/automate-custom-reports/function-app-16.png)
 
-5. Kopieer de volledige sleutel. deze waarde is wat u nodig hebt in uw functie-app-instellingen als waarde voor SendGridAPI
+5. Kopieer de hele sleutel, deze waarde is wat je nodig hebt in je functie-app-instellingen als de waarde voor SendGridAPI
 
-   ![Scherm opname van API-sleutel kopiëren](./media/automate-custom-reports/function-app-17.png)
+   ![Schermafbeelding van API-sleutel kopiëren](./media/automate-custom-reports/function-app-17.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het maken van [Analytics-query's](../../azure-monitor/log-query/get-started-queries.md).
-* Meer informatie over het [programmatisch opvragen van Application Insights gegevens](https://dev.applicationinsights.io/)
+* Meer informatie over [het programmatisch opvragen van Application Insights-gegevens](https://dev.applicationinsights.io/)
 * Meer informatie over [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
-* Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
+* Meer informatie over [Microsoft Flow](https://ms.flow.microsoft.com).

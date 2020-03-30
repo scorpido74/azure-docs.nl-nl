@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161882"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-gatewayoverdracht configureren voor peering voor virtuele netwerken
@@ -48,7 +48,7 @@ Raadpleeg de volgende documenten voor instructies:
 2. [Peering voor virtuele netwerken maken met hetzelfde implementatiemodel](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [Peering voor virtuele netwerken maken met verschillende implementatiemodellen](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>Machtigingen
+## <a name="permissions"></a><a name="permissions"></a>Machtigingen
 
 De accounts die u gebruikt voor het maken van peering voor virtuele netwerken, moeten de benodigde rollen of machtigingen hebben. In het onderstaande voorbeeld, waar twee virtuele netwerken genaamd Hub-RM en Spoke-Classic als peer worden ingesteld, moet uw account de volgende rollen of machtigingen hebben voor elke virtueel netwerk:
     

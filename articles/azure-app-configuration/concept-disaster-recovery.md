@@ -1,35 +1,35 @@
 ---
-title: Configuratie tolerantie en herstel na nood gevallen Azure-app
-description: Lean implementeren van tolerantie en herstel na nood gevallen met Azure-app configuratie.
+title: Tolerantie voor azure-app-configuratie en herstel na noodgevallen
+description: Lean hoe u tolerantie en herstel na noodgevallen implementeert met Azure App-configuratie.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523761"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
 
-Azure-app configuratie is momenteel een regionale service. Elke configuratie opslag wordt in een bepaalde Azure-regio gemaakt. Een onderbreking voor de hele regio is van invloed op alle archieven in die regio. App-configuratie biedt geen automatische failover naar een andere regio. Dit artikel bevat algemene richt lijnen over hoe u meerdere configuratie archieven kunt gebruiken in azure-regio's om de geo-tolerantie van uw toepassing te verg Roten.
+Momenteel is Azure App Configuration een regionale service. Elk configuratiearchief wordt gemaakt in een bepaalde Azure-regio. Een regio-brede storing treft alle winkels in die regio. App-configuratie biedt geen automatische failover naar een andere regio. In dit artikel vindt u algemene richtlijnen voor het gebruik van meerdere configuratieopslag in Azure-regio's om de geotolerantie van uw toepassing te vergroten.
 
-## <a name="high-availability-architecture"></a>Architectuur met hoge Beschik baarheid
+## <a name="high-availability-architecture"></a>Architectuur met hoge beschikbaarheid
 
-Als u de redundantie tussen regio's wilt realiseren, moet u meerdere app-configuratie archieven maken in verschillende regio's. Bij deze installatie heeft uw toepassing ten minste één extra configuratie opslag om terug te vallen als het primaire archief niet toegankelijk is. In het volgende diagram ziet u de topologie tussen uw toepassing en de primaire en secundaire configuratie archieven:
+Als u redundantie in meerdere regio's wilt realiseren, moet u meerdere app-configuratiewinkels in verschillende regio's maken. Met deze instelling heeft uw toepassing ten minste één extra configuratiearchief om op terug te vallen als de primaire winkel ontoegankelijk wordt. In het volgende diagram wordt de topologie tussen uw toepassing en de primaire en secundaire configuratieopgeslagen geïllustreerd:
 
-![Geografisch redundante opslag](./media/geo-redundant-app-configuration-stores.png)
+![Georedundante winkels](./media/geo-redundant-app-configuration-stores.png)
 
-Uw toepassing laadt de configuratie van de primaire en secundaire archieven parallel. Dit verhoogt de kans dat de configuratie gegevens correct worden opgehaald. U bent verantwoordelijk voor het bewaren van de gegevens in beide archieven. In de volgende secties wordt uitgelegd hoe u geografische tolerantie kunt bouwen in uw toepassing.
+Uw toepassing laadt de configuratie van zowel de primaire als secundaire opslag parallel. Hierdoor vergroot u de kans op het succesvol verkrijgen van de configuratiegegevens. U bent verantwoordelijk voor het synchroon houden van de gegevens in beide winkels. In de volgende secties wordt uitgelegd hoe u geo-tolerantie in uw toepassing inbouwen.
 
-## <a name="failover-between-configuration-stores"></a>Failover tussen configuratie archieven
+## <a name="failover-between-configuration-stores"></a>Failover tussen configuratieopslag
 
-Technisch gesp roken voert uw toepassing geen failover uit. Er wordt geprobeerd om dezelfde set configuratie gegevens uit twee app-configuratie archieven tegelijk op te halen. Rang Schik uw code zo dat deze eerst wordt geladen vanuit de secundaire Store en vervolgens op de primaire opslag. Deze aanpak zorgt ervoor dat de configuratie gegevens in de primaire Store voor rang krijgen wanneer deze beschikbaar zijn. Het volgende code fragment laat zien hoe u deze ordening in .NET Core kunt implementeren:
+Technisch gezien voert uw toepassing geen failover uit. Het probeert dezelfde set configuratiegegevens tegelijkertijd op te halen uit twee app-configuratieopslag. Schik uw code zo dat deze eerst vanuit de secundaire winkel wordt geladen en vervolgens de primaire winkel. Deze aanpak zorgt ervoor dat de configuratiegegevens in het primaire archief voorrang hebben wanneer deze beschikbaar zijn. In het volgende codefragment ziet u hoe u deze regeling implementeren in .NET Core:
 
-#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,23 +60,23 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-Let op de `optional` para meter die is door gegeven aan de functie `AddAzureAppConfiguration`. Als deze para meter is ingesteld op `true`, kan de toepassing niet worden voortgezet als de functie geen configuratie gegevens kan laden.
+Let `optional` op de `AddAzureAppConfiguration` parameter die in de functie wordt doorgegeven. Wanneer deze `true`parameter is ingesteld, voorkomt deze parameter dat de toepassing niet wordt voortgezet als de functie geen configuratiegegevens kan laden.
 
-## <a name="synchronization-between-configuration-stores"></a>Synchronisatie tussen configuratie archieven
+## <a name="synchronization-between-configuration-stores"></a>Synchronisatie tussen configuratieopslag
 
-Het is belang rijk dat uw Geo-redundante configuratie alle dezelfde set gegevens bevat. U kunt de functie **exporteren** in app-configuratie gebruiken om gegevens van het primaire archief te kopiëren naar de secundaire opslag op aanvraag. Deze functie is beschikbaar via zowel de Azure Portal als de CLI.
+Het is belangrijk dat uw georedundante configuratiewinkels allemaal dezelfde set gegevens hebben. U de functie **Exporteren** in app-configuratie gebruiken om gegevens uit het primaire archief naar het secundaire on-demand te kopiëren. Deze functie is beschikbaar via zowel de Azure-portal als de CLI.
 
-Vanuit het Azure Portal kunt u een wijziging naar een andere configuratie Store pushen door de volgende stappen uit te voeren.
+Vanuit de Azure-portal u een wijziging naar een ander configuratiearchief pushen door deze stappen te volgen.
 
-1. Ga naar het tabblad **importeren/exporteren** en selecteer > app- **configuratie** **exporteren** > **doel** > **Selecteer een resource**.
+1. Ga naar het tabblad **Importeren/exporteren** en**Target** >  **selecteer** > **Doel voor app-configuratie** > **exporteren Selecteer een bron**.
 
-1. Op de nieuwe blade die wordt geopend, geeft u het abonnement, de resource groep en de resource naam van uw secundaire archief op. Selecteer vervolgens **Toep assen**.
+1. Geef in het nieuwe blad dat wordt geopend de abonnements-, resourcegroep- en resourcenaam van uw secundaire winkel op en selecteer **Vervolgens Toepassen**.
 
-1. De gebruikers interface wordt bijgewerkt, zodat u kunt kiezen welke configuratie gegevens u wilt exporteren naar uw secundaire archief. U kunt de standaard waarde tijd laten staan en beide **van label** en **naar label** op dezelfde waarde instellen. Selecteer **Toepassen**.
+1. De gebruikersinterface wordt bijgewerkt, zodat u kiezen welke configuratiegegevens u wilt exporteren naar uw secundaire winkel. U de standaardtijdwaarde zoals deze is en zowel **Van label** als **Label** instellen op dezelfde waarde. Selecteer **Toepassen**.
 
-1. Herhaal de vorige stappen voor alle configuratie wijzigingen.
+1. Herhaal de vorige stappen voor alle configuratiewijzigingen.
 
-Gebruik de Azure CLI om dit export proces te automatiseren. De volgende opdracht laat zien hoe u één configuratie wijziging van de primaire opslag naar de secundaire exporteert:
+Als u dit exportproces wilt automatiseren, gebruikt u de Azure CLI. In de volgende opdracht ziet u hoe u één configuratiewijziging exporteert van het primaire archief naar het secundaire:
 
 ```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
@@ -84,4 +84,4 @@ Gebruik de Azure CLI om dit export proces te automatiseren. De volgende opdracht
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u uw toepassing kunt uitbreiden om geo-tolerantie te krijgen tijdens de runtime voor app-configuratie. U kunt ook configuratie gegevens van de app-configuratie insluiten tijdens de build-of implementatie tijd. Zie [integreren met een CI/cd-pijp lijn](./integrate-ci-cd-pipeline.md)voor meer informatie.
+In dit artikel hebt u geleerd hoe u uw toepassing uitbreiden om geo-tolerantie te bereiken tijdens runtime voor app-configuratie. U ook configuratiegegevens van app-configuratie insluiten op het bouwen of implementeren. Zie [Integreren met een CI/CD-pijplijn](./integrate-ci-cd-pipeline.md)voor meer informatie.

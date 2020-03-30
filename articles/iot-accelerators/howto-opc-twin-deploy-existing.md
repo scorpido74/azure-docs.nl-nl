@@ -1,6 +1,6 @@
 ---
-title: Een OPC-dubbele module implementeren in een bestaand Azure-project | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u OPC twee kunt implementeren in een bestaand project. U kunt ook leren hoe u implementatie fouten oplost.
+title: Een OPC Twin-module implementeren in een bestaand Azure-project | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u OPC Twin implementeren in een bestaand project. U ook leren hoe u implementatiefouten oplossen.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,105 +9,105 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824125"
 ---
-# <a name="deploy-opc-twin-to-an-existing-project"></a>OPC van twee tot een bestaand project implementeren
+# <a name="deploy-opc-twin-to-an-existing-project"></a>OPC Twin implementeren in een bestaand project
 
-De OPC-dubbele module wordt uitgevoerd op IoT Edge en biedt verschillende Edge-services aan de OPC-dubbele en register Services.
+De OPC Twin-module draait op IoT Edge en biedt verschillende edge-services aan de OPC Twin- en Registry-services.
 
-De OPC-dubbele micro Service vereenvoudigt de communicatie tussen de fabrieks operatoren en de OPC UA-server apparaten op de fabriek via een OPC-dubbele IoT Edge-module. De micro service biedt OPC UA-Services (bladeren, lezen, schrijven en uitvoeren) via de REST API. 
+De OPC Twin microservice vergemakkelijkt de communicatie tussen fabrieksoperators en OPC UA-serverapparaten op de fabrieksvloer via een OPC Twin IoT Edge-module. De microservice legt OPC UA-services (Bladeren, lezen, schrijven en uitvoeren) bloot via de REST API. 
 
-De OPC UA Device Registry micro service biedt toegang tot geregistreerde OPC UA-toepassingen en hun eind punten. Opera tors en beheerders kunnen nieuwe OPC UA-toepassingen registreren en de registratie ervan ongedaan maken, met inbegrip van hun eind punten. Naast het beheer van toepassingen en eind punten catalogeert de register service ook geregistreerde OPC-dubbele IoT Edge modules. Met de service-API kunt u de functionaliteit van de Edge-module beheren, bijvoorbeeld het starten of stoppen van de server detectie (Scan Services) of het activeren van nieuwe apparaatdubbels die toegankelijk zijn via de OPC-dubbele micro service.
+De MICROservice voor het opc-apparaatregister biedt toegang tot geregistreerde OPC UA-toepassingen en hun eindpunten. Operators en beheerders kunnen nieuwe OPC UA-toepassingen registreren en uitschrijven en door de bestaande toepassingen bladeren, inclusief hun eindpunten. Naast applicatie- en eindpuntbeheer catalogiseert de registerservice ook geregistreerde OPC Twin IoT Edge-modules. De service-API biedt u controle over de functionaliteit van de edge-module, bijvoorbeeld het starten of stoppen van serverdetectie (scanservices) of het activeren van nieuwe endpoint twins die toegankelijk zijn met de OPC Twin-microservice.
 
-De kern van de module is de identiteit van de Super Visor. De Super Visor beheert eind punt dubbele, die overeenkomt met OPC UA-server eindpunten die worden geactiveerd met behulp van de bijbehorende OPC UA Registry API. Dit eind punt apparaatdubbels Vertaal OPC UA JSON ontvangen van de OPC-dubbele micro service die in de Cloud wordt uitgevoerd in OPC UA binaire berichten, die via een stateful veilig kanaal naar het beheerde eind punt worden verzonden. De Super Visor biedt ook detectie services die detectie gebeurtenissen voor apparaten verzenden naar de OPC UA Device-voorbereidings service voor verwerking, waarbij deze gebeurtenissen resulteren in updates van het OPC UA-REGI ster.  In dit artikel wordt beschreven hoe u de OPC-dubbele module implementeert in een bestaand project.
+De kern van de module is de supervisor identiteit. De supervisor beheert endpoint twin, wat overeenkomt met OPC UA-servereindpunten die worden geactiveerd met behulp van de bijbehorende OPC UA-register-API. Deze endpoint twins vertalen OPC UA JSON ontvangen van de OPC Twin microservice draait in de cloud in OPC UA binaire berichten, die worden verzonden via een stateful secure kanaal naar het beheerde eindpunt. De supervisor biedt ook detectieservices die gebeurtenissen voor het ontdekken van apparaten verzenden naar de onboarding-service voor op- en instappen van OPC UA-apparaten voor verwerking, waarbij deze gebeurtenissen resulteren in updates voor het OPC UA-register.  In dit artikel ziet u hoe u de OPC Twin-module implementeren in een bestaand project.
 
 > [!NOTE]
-> Zie de GitHub- [opslag plaats](https://github.com/Azure/azure-iiot-opc-twin-module)voor meer informatie over de implementatie details en instructies.
+> Zie de [GitHub-repository](https://github.com/Azure/azure-iiot-opc-twin-module)voor meer informatie over implementatiegegevens en -instructies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat Power shell-en [AzureRM Power](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) shell-extensies zijn geïnstalleerd. Als u dit nog niet hebt gedaan, kloont u deze GitHub-opslag plaats. Voer de volgende opdrachten uit in Power shell:
+Zorg ervoor dat PowerShell- en [AzureRM PowerShell-extensies](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) zijn geïnstalleerd. Als je dit nog niet hebt gedaan, kloon dan deze GitHub repository. Voer de volgende opdrachten uit in PowerShell:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
-## <a name="deploy-industrial-iot-services-to-azure"></a>Industriële IoT-services implementeren in azure
+## <a name="deploy-industrial-iot-services-to-azure"></a>Industriële IoT-services implementeren in Azure
 
-1. Voer in uw Power shell-sessie de volgende handelingen uit:
+1. Voer in uw PowerShell-sessie het als:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy.cmd
     ```
 
-2. Volg de aanwijzingen om een naam toe te wijzen aan de resource groep van de implementatie en een naam aan de website.   Het script implementeert de micro Services en hun Azure platform-afhankelijkheden in de resource groep in uw Azure-abonnement.  Met het script wordt ook een toepassing geregistreerd in de Tenant van uw Azure Active Directory (AAD) om verificatie op basis van OAUTH te ondersteunen.  De implementatie kan enkele minuten duren.  Een voor beeld van wat u ziet zodra de oplossing is geïmplementeerd:
+2. Volg de aanwijzingen om een naam toe te wijzen aan de resourcegroep van de implementatie en een naam aan de website.   Het script implementeert de microservices en hun Azure-platformafhankelijkheden in de brongroep in uw Azure-abonnement.  Het script registreert ook een toepassing in uw Azure Active Directory (AAD)-tenant om verificatie op basis van OAUTH te ondersteunen.  Implementatie duurt enkele minuten.  Een voorbeeld van wat u ziet zodra de oplossing is geïmplementeerd:
 
-   ![Industrieel IoT OPC-dubbele implementatie voor bestaand project](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
+   ![Industriële IoT OPC Twin ingezet voor bestaand project](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
 
-   De uitvoer bevat de URL van het open bare eind punt. 
+   De uitvoer bevat de URL van het openbare eindpunt. 
 
-3. Zodra het script is voltooid, selecteert u of u het `.env` bestand wilt opslaan.  U hebt het `.env`-omgevings bestand nodig als u verbinding wilt maken met het Cloud-eind punt met behulp van hulpprogram ma's zoals de console of modules implementeren voor ontwikkeling en fout opsporing.
+3. Zodra het script is voltooid, selecteert u `.env` of u het bestand wilt opslaan.  U hebt `.env` het omgevingsbestand nodig als u verbinding wilt maken met het eindpunt van de cloud met behulp van hulpprogramma's zoals de console of modules implementeren voor ontwikkeling en foutopsporing.
 
-## <a name="troubleshooting-deployment-failures"></a>Implementatie fouten oplossen
+## <a name="troubleshooting-deployment-failures"></a>Implementatiefouten oplossen
 
 ### <a name="resource-group-name"></a>Naam van de resourcegroep
 
-Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt om resources te noemen, omdat deze moeten voldoen aan de vereisten voor resource naamgeving.  
+Zorg ervoor dat u een korte en eenvoudige naam van de resourcegroep gebruikt.  De naam wordt ook gebruikt om resources als zodanig een naam te geven en moet voldoen aan de vereisten voor resourcenaamgeving.  
 
-### <a name="website-name-already-in-use"></a>De naam van de website wordt al gebruikt
+### <a name="website-name-already-in-use"></a>Websitenaam al in gebruik
 
-Het is mogelijk dat de naam van de website al in gebruik is.  Als u deze fout uitvoert, moet u een andere toepassings naam gebruiken.
+Het is mogelijk dat de naam van de website al in gebruik is.  Als u tegen deze fout aanloopt, moet u een andere toepassingsnaam gebruiken.
 
-### <a name="azure-active-directory-aad-registration"></a>Registratie van Azure Active Directory (AAD)
+### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) registratie
 
-Het implementatie script probeert twee AAD-toepassingen in Azure Active Directory te registreren.  Afhankelijk van uw rechten voor de geselecteerde AAD-Tenant kan de implementatie mislukken. Er zijn twee opties:
+Het implementatiescript probeert twee AAD-toepassingen te registreren in Azure Active Directory.  Afhankelijk van uw rechten op de geselecteerde AAD-tenant kan de implementatie mislukken. Er zijn twee opties:
 
-1. Als u een AAD-Tenant hebt gekozen uit een lijst met tenants, start u het script opnieuw en kiest u een ander account in de lijst.
-2. U kunt ook een persoonlijke AAD-Tenant in een ander abonnement implementeren, het script opnieuw starten en selecteren om het te gebruiken.
+1. Als u een AAD-tenant hebt gekozen uit een lijst met tenants, start u het script opnieuw en kiest u een ander script uit de lijst.
+2. U ook een particuliere AAD-tenant implementeren in een ander abonnement, het script opnieuw starten en selecteren om het te gebruiken.
 
 > [!WARNING]
-> NOOIT door gaan zonder verificatie.  Als u ervoor kiest om dit te doen, heeft iedereen toegang tot uw OPC-twee eind punten via internet niet-geverifieerd.   U kunt altijd de [optie ' lokale implementatie](howto-opc-twin-deploy-dependencies.md) ' kiezen om de banden te starten.
+> GA NOOIT verder zonder verificatie.  Als u ervoor kiest om dit te doen, kan iedereen toegang krijgen tot uw OPC Twin-eindpunten vanaf het internet.   U altijd kiezen voor de [lokale inzet optie](howto-opc-twin-deploy-dependencies.md) om de banden te schoppen.
 
-## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Een alles-in-één industriële IoT-Services-demo implementeren
+## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Een alles-in-één demo voor industriële IoT-services implementeren
 
-In plaats van alleen de services en afhankelijkheden kunt u ook een alles-in-één-demo implementeren.  De alles-in-één-demo bevat drie OPC UA-servers, de OPC-dubbele module, alle micro Services en een voor beeld-webtoepassing.  Het is bedoeld voor demonstratie doeleinden.
+In plaats van alleen de services en afhankelijkheden u ook een alles-in-één demo implementeren.  De alles-in-één demo bevat drie OPC UA-servers, de OPC Twin-module, alle microservices en een voorbeeldwebtoepassing.  Het is bedoeld voor demonstratiedoeleinden.
 
-1. Zorg ervoor dat u beschikt over een kloon van de opslag plaats (zie hierboven). Open een Power shell-prompt in de hoofdmap van de opslag plaats en voer het volgende uit:
+1. Zorg ervoor dat je een kloon van de repository hebt (zie hierboven). Open een PowerShell-prompt in de hoofdmap van de opslagplaats en voer het uitvoeren uit:
 
     ```powershell
     set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
     .\deploy -type demo
     ```
 
-2. Volg de aanwijzingen om een nieuwe naam toe te wijzen aan de resource groep en een naam aan de website.  Zodra het script is geïmplementeerd, wordt de URL van het eind punt van de webtoepassing weer gegeven.
+2. Volg de aanwijzingen om een nieuwe naam toe te wijzen aan de resourcegroep en een naam aan de website.  Zodra het script succesvol is geïmplementeerd, wordt de URL van het eindpunt van de webtoepassing weergegeven.
 
-## <a name="deployment-script-options"></a>Opties voor implementatie script
+## <a name="deployment-script-options"></a>Opties voor implementatiescript
 
-Het script heeft de volgende para meters:
+Het script neemt de volgende parameters:
 
 ```powershell
 -type
 ```
 
-Het type implementatie (VM, lokaal, demo)
+Het type implementatie (vm, lokaal, demo)
 
 ```powershell
 -resourceGroupName
 ```
 
-Dit kan de naam van een bestaande of een nieuwe resource groep zijn.
+Kan de naam zijn van een bestaande of een nieuwe resourcegroep.
 
 ```powershell
 -subscriptionId
 ```
 
-Optioneel, het abonnement-ID waar resources worden geïmplementeerd.
+Optioneel is de abonnements-ID waar resources worden geïmplementeerd.
 
 ```powershell
 -subscriptionName
@@ -119,19 +119,19 @@ Of de naam van het abonnement.
 -resourceGroupLocation
 ```
 
-Optioneel, een locatie van een resource groep. Als deze is opgegeven, wordt geprobeerd een nieuwe resource groep te maken op deze locatie.
+Optioneel, een locatie voor resourcegroepen. Als dit is opgegeven, probeert u op deze locatie een nieuwe resourcegroep te maken.
 
 ```powershell
 -aadApplicationName
 ```
 
-Een naam voor de AAD-toepassing die u wilt registreren.
+Een naam voor de AAD-aanvraag om zich onder te registreren.
 
 ```powershell
 -tenantId
 ```
 
-AAD-Tenant die moet worden gebruikt.
+AAD huurder te gebruiken.
 
 ```powershell
 -credentials
@@ -139,7 +139,7 @@ AAD-Tenant die moet worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u OPC twee kunt implementeren in een bestaand project, is dit de voorgestelde volgende stap:
+Nu u hebt geleerd hoe u OPC Twin implementeren in een bestaand project, gaat het hier om de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Beveiligde communicatie van de OPC UA-client en de OPC UA PLC](howto-opc-vault-secure.md)
+> [Veilige communicatie van OPC UA Client en OPC UA PLC](howto-opc-vault-secure.md)

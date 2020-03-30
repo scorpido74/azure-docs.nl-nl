@@ -1,6 +1,6 @@
 ---
-title: Vergelijking van Video Indexer en Azure Media Services v3-voor waarden
-description: In dit artikel worden Video Indexer mogelijkheden en Azure Media Services v3-voor waarden vergeleken.
+title: Vergelijking van V3-voorinstellingen voor VideoIndexer en Azure Media Services
+description: In dit artikel worden de mogelijkheden van Video Indexer en de V3-voorinstellingen van Azure Media Services vergeleken.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77602184"
 ---
-# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services voorinstellingen voor v3 en Video Indexer vergelijken 
+# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Vergelijk Azure Media Services v3-voorinstellingen en Video-indexer 
 
-In dit artikel worden de mogelijkheden van **video indexer api's** en **Media Services v3 api's**vergeleken. 
+In dit artikel worden de mogelijkheden van **Video Indexer API's** en **Media Services v3 API's vergeleken.** 
 
-Er is momenteel een overlap ping tussen de functies die worden geboden door de [video indexer api's](https://api-portal.videoindexer.ai/) en de [Media Services v3-api's](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). De volgende tabel bevat de huidige richt lijnen voor het leren van de verschillen en overeenkomsten. 
+Momenteel is er een overlap tussen functies die worden aangeboden door de [Video Indexer API's](https://api-portal.videoindexer.ai/) en de [Media Services v3 API's](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). De volgende tabel biedt de huidige richtlijn voor het begrijpen van de verschillen en overeenkomsten. 
 
 ## <a name="compare"></a>Vergelijken
 
-|Functie|Video Indexer-Api's |Video-en audio analyse-voor instellingen<br/>in Media Services v3-Api's|
+|Functie|Video Indexer API's |Voorinstellingen voor video-analyzer en audioanalyse<br/>in Media Services v3 API's|
 |---|---|---|
-|Media Insights|[Intensievere](video-indexer-output-json-v2.md) |[Basisprincipes](../latest/intelligence-concept.md)|
-|Bewerkingen|Bekijk de volledige lijst met ondersteunde functies: <br/> [Overzicht](video-indexer-overview.md)|Retourneert alleen video inzichten|
-|Facturering|[Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Naleving|Ga voor de meest recente nalevings updates naar [Azure compliance-aanbiedingen. PDF](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar "video indexer" om te zien of het voldoet aan een certificaat van belang.|Ga voor de meest recente nalevings updates naar [Azure compliance-aanbiedingen. PDF](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar "Media Services" om te zien of het voldoet aan een certificaat van belang.|
-|Gratis proef versie|VS - oost|Niet beschikbaar|
-|Beschikbaarheid in regio’s|[Beschik baarheid van Cognitive services per regio](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) weer geven|Zie [Media Services Beschik baarheid per regio](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Media-inzichten|[Verbeterd](video-indexer-output-json-v2.md) |[Basisprincipes](../latest/intelligence-concept.md)|
+|Ervaringen|Bekijk de volledige lijst met ondersteunde functies: <br/> [Overzicht](video-indexer-overview.md)|Geeft alleen als resultaat video-inzichten|
+|Billing|[Prijzen mediaservices](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Prijzen mediaservices](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
+|Naleving|Ga voor de meest recente nalevingsupdates naar [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar 'Video Indexer' om te zien of deze voldoet aan een certificaat van belang.|Ga voor de meest recente nalevingsupdates naar [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar 'Media Services' om te zien of het voldoet aan een certificaat van belang.|
+|Gratis proefversie|VS - oost|Niet beschikbaar|
+|Beschikbaarheid in regio’s|Beschikbaarheid [van cognitieve services per regio bekijken](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|Zie [Beschikbaarheid mediaservices per regio](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Overzicht van Video Indexer](video-indexer-overview.md)
 
-[Overzicht van Media Services v3](../latest/media-services-overview.md)
+[Media Services v3 overzicht](../latest/media-services-overview.md)

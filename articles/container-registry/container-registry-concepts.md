@@ -1,89 +1,89 @@
 ---
-title: Over opslag plaatsen & installatie kopieën
-description: Inleiding tot de belangrijkste concepten van Azure-container registers, opslag plaatsen en container installatie kopieën.
+title: Informatie over repositories & afbeeldingen
+description: Inleiding tot belangrijke concepten van Azure-containerregisters, opslagplaatsen en containerafbeeldingen.
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247057"
 ---
-# <a name="about-registries-repositories-and-images"></a>Over registers, opslag plaatsen en installatie kopieën
+# <a name="about-registries-repositories-and-images"></a>Over registers, opslagplaatsen en afbeeldingen
 
-In dit artikel worden de belangrijkste concepten van container registers, opslag plaatsen en container installatie kopieën en gerelateerde artefacten geïntroduceerd. 
+Dit artikel introduceert de belangrijkste concepten van containerregisters, opslagplaatsen en containerafbeeldingen en gerelateerde artefacten. 
 
 ## <a name="registry"></a>Register
 
-Een container *register* is een service waarmee container installatie kopieën worden opgeslagen en gedistribueerd. Docker hub is een openbaar container register dat ondersteuning biedt voor de open source-community en fungeert als een algemene catalogus met installatie kopieën. Azure Container Registry biedt gebruikers rechtstreeks controle over hun installatie kopieën, met geïntegreerde verificatie, [geo-replicatie](container-registry-geo-replication.md) die wereld wijde distributie en betrouw baarheid ondersteunt voor implementaties van netwerken, het [virtuele netwerk en firewall configuratie](container-registry-vnet.md), [Label vergrendeling](container-registry-image-lock.md)en vele andere uitgebreide functies. 
+Een *containerregister* is een service die containerafbeeldingen opslaat en distribueert. Docker Hub is een openbaar containerregister dat de open source-community ondersteunt en dient als een algemene catalogus van afbeeldingen. Azure Container Registry biedt gebruikers directe controle over hun afbeeldingen, met geïntegreerde verificatie, [geo-replicatie](container-registry-geo-replication.md) ter ondersteuning van wereldwijde distributie en betrouwbaarheid voor netwerk-close implementaties, [virtuele netwerk- en firewallconfiguratie,](container-registry-vnet.md) [tagvergrendeling](container-registry-image-lock.md)en vele andere verbeterde functies. 
 
-Naast docker-container installatie kopieën ondersteunt Azure Container Registry gerelateerde [inhouds artefacten](container-registry-image-formats.md) , waaronder OCI-afbeeldings indelingen (open container Initiative).
+Naast Docker-containerafbeeldingen ondersteunt Azure Container Registry gerelateerde [inhoudsartefacten,](container-registry-image-formats.md) waaronder OCI-afbeeldingsindelingen (Open Container Initiative).
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Inhoud adresseer bare elementen van een artefact
+## <a name="content-addressable-elements-of-an-artifact"></a>Inhoudsadresseerbare elementen van een artefact
 
-Het adres van een artefact in een Azure container Registry bevat de volgende elementen. 
+Het adres van een artefact in een Azure-containerregister bevat de volgende elementen. 
 
 `[loginUrl]/[namespace]/[artifact:][tag]`
 
-* **loginUrl** : de volledig gekwalificeerde naam van de registerpad. De Registry-host in een Azure container Registry heeft de indeling *myregistry*. azurecr.io (alle kleine letters). U moet de loginUrl opgeven wanneer u docker of andere client hulpprogramma's gebruikt om artefacten te halen of te pushen naar een Azure container Registry. 
-* **naam ruimte** -slash-gescheiden logische groepering van gerelateerde installatie kopieën of artefacten, bijvoorbeeld voor een werk groep of app
-* **artefact** -de naam van een opslag plaats voor een bepaalde afbeelding of artefact
-* **Label** : een specifieke versie van een afbeelding of artefact die is opgeslagen in een opslag plaats
+* **loginUrl** - De volledig gekwalificeerde naam van de registerhost. De registerhost in een Azure-containerregister bevindt zich in de indeling *myregistry*.azurecr.io (alle kleine letters). U moet de loginUrl opgeven wanneer u Docker of andere clienthulpprogramma's gebruikt om artefacten naar een Azure-containerregister te halen of te pushen. 
+* **naamruimte** - Logische groepering van gerelateerde afbeeldingen of artefacten met slash-afgebakende strepen - bijvoorbeeld voor een werkgroep of app
+* **artefact** - De naam van een opslagplaats voor een bepaalde afbeelding of artefact
+* **tag** - Een specifieke versie van een afbeelding of artefact die is opgeslagen in een opslagplaats
 
 
-De volledige naam van een installatie kopie in een Azure container Registry kan er bijvoorbeeld als volgt uitzien:
+De volledige naam van een afbeelding in een Azure-containerregister kan er bijvoorbeeld uitzien als:
 
 *myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
-Raadpleeg de volgende secties voor meer informatie over deze elementen.
+Zie de volgende secties voor meer informatie over deze elementen.
 
-## <a name="repository-name"></a>Naam van opslag plaats
+## <a name="repository-name"></a>Naam van opslagplaats
 
-Container registers beheren *opslag*plaatsen, verzamelingen container installatie kopieën of andere artefacten met dezelfde naam, maar met verschillende Tags. De volgende drie installatie kopieën bevinden zich bijvoorbeeld in de opslag plaats ' ACR-HelloWorld ':
+Containerregisters beheren *opslagplaatsen, verzamelingen*van containerafbeeldingen of andere artefacten met dezelfde naam, maar verschillende tags. Bijvoorbeeld, de volgende drie beelden zijn in de "acr-helloworld" repository:
 
 
-- *ACR-HelloWorld: nieuwste*
-- *ACR-HelloWorld: v1*
-- *ACR-HelloWorld: v2*
+- *acr-helloworld: laatste*
+- *acr-helloworld:v1*
+- *acr-helloworld:v2*
 
-Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u installatie kopieën groeperen met behulp van door slash gescheiden namen van opslag plaatsen, bijvoorbeeld:
+Repository-namen kunnen ook [naamruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naamruimten u afbeeldingen groeperen met doorsturende slash-delimited repository-namen, bijvoorbeeld:
 
-- *Marketing/campaign10-18/Web: v2*
-- *Marketing-campaign10-18/API: v3*
-- *Marketing-campaign10-18/Email-Sender: v2*
-- *product-retouren/webverzending: 20180604*
-- *product-retourneert/legacy-integrator: 20180715*
+- *marketing/campagne10-18/web:v2*
+- *marketing/campagne10-18/api:v3*
+- *marketing/campagne10-18/e-mailafzender:v2*
+- *product-retouren/web-submission:20180604*
+- *productretouren/legacy-integrator:20180715*
 
-## <a name="image"></a>Image
+## <a name="image"></a>Installatiekopie
 
-Een container installatie kopie of ander artefact in een REGI ster is gekoppeld aan een of meer tags, heeft een of meer lagen en wordt geïdentificeerd door een manifest. Meer informatie over hoe deze onderdelen aan elkaar zijn gerelateerd, kan u helpen uw REGI ster effectief te beheren.
+Een containerafbeelding of ander artefact in een register is gekoppeld aan een of meer tags, heeft een of meer lagen en wordt geïdentificeerd door een manifest. Als u begrijpt hoe deze componenten zich tot elkaar verhouden, u uw register effectief beheren.
 
 ### <a name="tag"></a>Label
 
-De- *tag* voor een afbeelding of ander artefact specificeert de versie. Een enkel artefact in een opslag plaats kan worden toegewezen aan een of meer tags en kan ook ' zonder Tags ' zijn. Dat wil zeggen dat u alle tags uit een installatie kopie kunt verwijderen terwijl de gegevens van de afbeelding (de lagen) in het REGI ster blijven.
+De *tag* voor een afbeelding of ander artefact geeft de versie aan. Een enkel artefact in een opslagplaats kan worden toegewezen een of vele tags, en kan ook worden "untagged." Dat wil zeggen dat u alle tags uit een afbeelding verwijderen, terwijl de gegevens van de afbeelding (de lagen) in het register blijven.
 
-De opslag plaats (of opslag plaats en naam ruimte) plus een tag definieert de naam van een afbeelding. U kunt een installatie kopie pushen en ophalen door de naam op te geven in de push-of pull-bewerking.
+De repository (of repository en namespace) plus een tag definieert de naam van een afbeelding. U een afbeelding duwen en trekken door de naam ervan op te geven in de push- of pull-bewerking.
 
-Hoe u container installatie kopieën labelt, wordt door uw scenario's begeleid om ze te ontwikkelen of te implementeren. Stabiele Tags worden bijvoorbeeld aanbevolen voor het onderhouden van uw basis installatie kopieën en unieke labels voor het implementeren van installatie kopieën. Zie voor meer informatie [aanbevelingen voor het coderen en versie beheer van container installatie kopieën](container-registry-image-tag-version.md).
+Hoe u containerafbeeldingen tagt, wordt geleid door uw scenario's om ze te ontwikkelen of te implementeren. Stabiele tags worden bijvoorbeeld aanbevolen voor het onderhouden van uw basisafbeeldingen en unieke tags voor het implementeren van afbeeldingen. Zie [Aanbevelingen voor het taggen en versien van containerafbeeldingen](container-registry-image-tag-version.md)voor meer informatie .
 
 ### <a name="layer"></a>Laag
 
-Container installatie kopieën bestaan uit een of meer *lagen*, die overeenkomen met een regel in de Dockerfile die de afbeelding definieert. Installatie kopieën in een REGI ster delen algemene lagen, waardoor de efficiëntie van opslag wordt verhoogd. Het is bijvoorbeeld mogelijk dat verschillende installatie kopieën in verschillende opslag plaatsen dezelfde Alpine Linux-basis laag delen, maar er wordt slechts één exemplaar van die laag opgeslagen in het REGI ster.
+Containerafbeeldingen bestaan uit een of meer *lagen,* die elk overeenkomen met een regel in het Dockerbestand die de afbeelding definieert. Afbeeldingen in een register delen gemeenschappelijke lagen, waardoor de opslagefficiëntie toeneemt. Verschillende afbeeldingen in verschillende opslagplaatsen kunnen bijvoorbeeld dezelfde Alpine Linux-basislaag delen, maar slechts één kopie van die laag wordt in het register opgeslagen.
 
-Laag delen optimaliseert ook laag distributie naar knoop punten met meerdere afbeeldingen die algemene lagen delen. Als een afbeelding die al in een knoop punt staat, bijvoorbeeld de Alpine Linux-laag als basis bevat, wordt de laag door de volgende pull-bewerking van een andere afbeelding die verwijst naar dezelfde laag, niet overgedragen naar het knoop punt. In plaats daarvan verwijst deze naar de laag die al bestaat op het knoop punt.
+Het delen van lagen optimaliseert ook de laagverdeling naar knooppunten met meerdere afbeeldingen die algemene lagen delen. Als een afbeelding die al op een knooppunt staat bijvoorbeeld de Alpine Linux-laag als basis bevat, wordt de volgende aantrekkingskracht van een ander beeld dat naar dezelfde laag verwijst, niet overgebracht naar het knooppunt. In plaats daarvan verwijst het naar de laag die al op het knooppunt aanwezig is.
 
-Lagen worden niet gedeeld door de verschillende registers om te zorgen voor veilige isolatie en bescherming tegen de mogelijke laag bewerking.
+Om veilige isolatie en bescherming tegen mogelijke laagmanipulatie te bieden, worden lagen niet gedeeld in registers.
 
 ### <a name="manifest"></a>Manifest
 
-Elke container installatie kopie of artefact die naar een container register is gepusht, is gekoppeld aan een *manifest*. Het manifest dat door het REGI ster wordt gegenereerd wanneer de installatie kopie wordt gepusht, identificeert de afbeelding uniek en geeft de bijbehorende lagen aan. U kunt de manifesten voor een opslag plaats weer geven met de Azure CLI [-opdracht AZ ACR repository show-manifests][az-acr-repository-show-manifests]:
+Elke containerafbeelding of -artefact die naar een containerregister wordt gepusht, is gekoppeld aan een *manifest*. Het manifest, gegenereerd door het register wanneer de afbeelding wordt geduwd, identificeert op unieke wijze de afbeelding en specificeert de lagen ervan. U de manifesten voor een opslagplaats aanbieden met de azure CLI-opdracht [az acr repository-showmanifesten:][az-acr-repository-show-manifests]
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-Geef bijvoorbeeld de manifesten voor de opslag plaats ' ACR-HelloWorld ' weer:
+Vermeld bijvoorbeeld de manifesten voor de "acr-helloworld"-opslagplaats:
 
 ```azurecli
 az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -116,22 +116,22 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-### <a name="manifest-digest"></a>Manifest Digest
+### <a name="manifest-digest"></a>Manifestsamenvatting
 
-Manifesten worden geïdentificeerd aan de hand van een unieke SHA-256-Hash of met de samen vatting van het *manifest*. Elke afbeelding of elk afzonderlijk artefact: of het label is gelabeld of niet, wordt geïdentificeerd door de samen vatting. De Digest-waarde is uniek, zelfs als de laag gegevens van de afbeelding identiek zijn aan die van een andere afbeelding. Dit mechanisme biedt u de mogelijkheid om herhaaldelijk gelabelde installatie kopieën naar een REGI ster te pushen. U kunt bijvoorbeeld herhaaldelijk `myimage:latest` naar uw REGI ster pushen zonder fout omdat elke installatie kopie wordt geïdentificeerd door de unieke samen vatting.
+Manifesten worden geïdentificeerd door een unieke SHA-256 hash, of *manifest digest*. Elke afbeelding of artefact - of gelabeld of niet - wordt geïdentificeerd door zijn samenvatting. De digestwaarde is uniek, zelfs als de laaggegevens van de afbeelding identiek zijn aan die van een andere afbeelding. Dit mechanisme is wat u toestaat om identiek gecodeerde beelden herhaaldelijk aan een register te duwen. U bijvoorbeeld herhaaldelijk `myimage:latest` foutloos naar uw register pushen omdat elke afbeelding wordt geïdentificeerd door zijn unieke samenvatting.
 
-U kunt een installatie kopie van een REGI ster ophalen door de samen vatting op te geven in de pull-bewerking. Sommige systemen kunnen worden geconfigureerd om te worden opgehaald door Digest, omdat hiermee wordt gegarandeerd dat de installatie kopie versie wordt opgehaald, zelfs als er vervolgens een identiek gelabelde afbeelding naar het REGI ster wordt gepusht.
+U een afbeelding uit een register halen door de samenvatting ervan op te geven in de pull-bewerking. Sommige systemen kunnen worden geconfigureerd om te trekken door digest, omdat het garandeert dat de afbeelding versie wordt getrokken, zelfs als een identiek gelabelde afbeelding vervolgens wordt geduwd naar het register.
 
-U kunt bijvoorbeeld een installatie kopie ophalen uit de opslag plaats ' ACR-HelloWorld ' per manifest Digest:
+Trek bijvoorbeeld een afbeelding uit de "acr-helloworld" repository door manifest digest:
 
 `docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
-> Als u herhaaldelijk gewijzigde installatie kopieën met identieke Tags pusht, kunt u zwevende installatie kopieën maken--installatie kopieën die niet zijn gelabeld, maar nog steeds ruimte in uw REGI ster gebruiken. Niet-gelabelde afbeeldingen worden niet weer gegeven in de Azure CLI of in het Azure Portal wanneer u afbeeldingen op label lijst of weer geven. De lagen zijn echter nog steeds aanwezig en gebruiken ruimte in het REGI ster. Als u een niet-gecodeerde afbeelding verwijdert, maakt u register ruimte vrij wanneer het manifest de enige is, of het laatste, dat verwijst naar een bepaalde laag. Zie [container installatie kopieën in azure container Registry verwijderen](container-registry-delete.md)voor meer informatie over het vrijmaken van ruimte die wordt gebruikt door niet-gecodeerde installatie kopieën.
+> Als u herhaaldelijk gewijzigde afbeeldingen met identieke tags pusht, u zwevende afbeeldingen maken - afbeeldingen die niet zijn gelabeld, maar toch ruimte in uw register verbruiken. Niet-gecodeerde afbeeldingen worden niet weergegeven in de Azure CLI of in de Azure-portal wanneer u afbeeldingen op tag aanbiedt of bekijkt. Echter, hun lagen bestaan nog steeds en verbruiken ruimte in uw register. Als u een niet-gelabelde afbeelding verwijderen, wordt de registerruimte vrijgegeven wanneer het manifest de enige of de laatste is die naar een bepaalde laag wijst. Zie [Containerafbeeldingen verwijderen in Azure Container Registry voor](container-registry-delete.md)informatie over het vrijmaken van ruimte die wordt gebruikt door niet-gelabelde afbeeldingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [afbeeldings opslag](container-registry-storage.md) en [ondersteunde inhouds indelingen](container-registry-image-formats.md) in azure container Registry.
+Meer informatie over [beeldopslag](container-registry-storage.md) en [ondersteunde inhoudsindelingen](container-registry-image-formats.md) in Azure Container Registry.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

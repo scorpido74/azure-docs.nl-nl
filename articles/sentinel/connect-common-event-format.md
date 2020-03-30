@@ -1,5 +1,5 @@
 ---
-title: CEF-gegevens verbinden met Azure Sentinel preview | Microsoft Docs
+title: CEF-gegevens verbinden met Azure Sentinel Preview| Microsoft Documenten
 description: Meer informatie over het verbinden van CEF-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -15,76 +15,76 @@ ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
 ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588345"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
+# <a name="connect-your-external-solution-using-common-event-format"></a>Uw externe oplossing verbinden met common event-indeling
 
 
-Wanneer u verbinding maakt met een externe oplossing die CEF berichten verzendt, zijn er drie stappen om verbinding te maken met Azure Sentinel:
+Wanneer u een externe oplossing verbindt die CEF-berichten verzendt, zijn er drie stappen om verbinding te maken met Azure Sentinel:
 
-STAP 1: [verbinding maken met CEF met behulp van de agent](connect-cef-agent.md) stap 2: [oplossingen uitvoeren-specifieke stappen](connect-cef-solution-config.md) stap 3: de [verbinding controleren](connect-cef-verify.md)
+STAP 1: [CEF verbinden door de agent](connect-cef-agent.md) STAP 2 te implementeren: [Oplossingsspecifieke stappen uitvoeren](connect-cef-solution-config.md) STAP 3: Connectiviteit [verifiëren](connect-cef-verify.md)
 
-In dit artikel wordt beschreven hoe de verbinding werkt, aan de hand van vereisten en krijgt u de stappen voor het implementeren van de agent op beveiligings oplossingen die algemene Event Format-berichten (CEF) boven op syslog verzenden. 
+In dit artikel wordt beschreven hoe de verbinding werkt, voorwaarden bevat en u de stappen biedt voor het implementeren van de agent op beveiligingsoplossingen die CEF-berichten (Common Event Format) verzenden bovenop Syslog. 
 
 > [!NOTE] 
-> Gegevens worden opgeslagen op de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
+> Gegevens worden opgeslagen in de geografische locatie van de werkruimte waarop u Azure Sentinel uitvoert.
 
-Als u deze verbinding wilt maken, moet u een agent implementeren op een toegewezen Linux-machine (VM of on-premises) om de communicatie tussen het apparaat en de Azure-Sentinel te ondersteunen. In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven.
+Om deze verbinding te maken, moet u een agent implementeren op een speciale Linux-machine (VM of on-premises) om de communicatie tussen het toestel en Azure Sentinel te ondersteunen. In het volgende diagram wordt de instelling beschreven in het geval van een Linux-vm in Azure.
 
- ![CEF in azure](./media/connect-cef/cef-syslog-azure.png)
+ ![CEF in Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of op een on-premises computer gebruikt. 
+Deze instelling bestaat als u een VM gebruikt in een andere cloud of een on-premises machine. 
 
- ![CEF on-premises](./media/connect-cef/cef-syslog-onprem.png)
+ ![CEF op locatie](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
-Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. U kunt de volgende instructies gebruiken om de beveiligings configuratie van uw computer te verbeteren:  [Beveilig de virtuele machine in azure](../virtual-machines/linux/security-policy.md), [Aanbevolen procedures voor netwerk beveiliging](../security/fundamentals/network-best-practices.md).
+Zorg ervoor dat u de beveiliging van de machine configureert volgens het beveiligingsbeleid van uw organisatie. U bijvoorbeeld uw netwerk configureren om af te stemmen op uw bedrijfsnetwerkbeveiligingsbeleid en de poorten en protocollen in de daemon wijzigen om aan uw vereisten te voldoen. U de volgende instructies gebruiken om de beveiligingsconfiguratie van uw machine te verbeteren:  [Secure VM in Azure](../virtual-machines/linux/security-policy.md), Best [practices for Network security](../security/fundamentals/network-best-practices.md).
 
-Als u TLS-communicatie tussen de beveiligings oplossing en de syslog-computer wilt gebruiken, moet u de syslog-daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [syslog-verkeer met TLS-rsyslog versleutelen](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [logboek berichten versleutelen met TLS-syslog-aardgas](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
+Om TLS-communicatie tussen de beveiligingsoplossing en de Syslog-machine te gebruiken, moet u de Syslog daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [Syslog Traffic versleutelen met TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [Logberichten versleutelen met TLS –syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
 ## <a name="prerequisites"></a>Vereisten
-Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
+Zorg ervoor dat de Linux-machine die u als proxy gebruikt, een van de volgende besturingssystemen draait:
 
 - 64-bits
   - CentOS 6 en 7
-  - Amazon Linux 2017,09
+  - Amazon Linux 2017.09
   - Oracle Linux 6 en 7
   - Red Hat Enterprise Linux Server 6 en 7
   - Debian GNU/Linux 8 en 9
-  - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
+  - Ubuntu Linux 14.04 LTS, 16.04 LTS en 18.04 LTS
   - SUSE Linux Enterprise Server 12
 - 32-bits
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6
    - Debian GNU/Linux 8 en 9
-   - Ubuntu Linux 14,04 LTS en 16,04 LTS
+   - Ubuntu Linux 14.04 LTS en 16.04 LTS
  
  - Daemon-versies
-   - Syslog-ng: 2,1-3.22.1
-   - Rsyslog: V8
+   - Syslog-ng: 2.1 - 3.22.1
+   - Rsyslog: v8
   
- - Ondersteuning voor syslog-Rfc's
+ - Syslog RFC's ondersteund
    - Syslog RFC 3164
    - Syslog RFC 5424
  
-Zorg ervoor dat uw computer ook aan de volgende vereisten voldoet: 
+Zorg ervoor dat uw machine ook aan de volgende eisen voldoet: 
 - Machtigingen
-    - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
+    - U moet verhoogde machtigingen (sudo) op uw machine hebben. 
 - Softwarevereisten
-    - Zorg ervoor dat python op uw computer wordt uitgevoerd
+    - Zorg ervoor dat Python op uw machine draait
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u CEF-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+In dit document hebt u geleerd hoe u CEF-apparaten verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
+- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats.md)
 

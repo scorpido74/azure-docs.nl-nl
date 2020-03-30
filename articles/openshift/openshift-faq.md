@@ -1,69 +1,69 @@
 ---
-title: Veelgestelde vragen over Azure Red Hat open Shift
-description: Hier vindt u antwoorden op veelgestelde vragen over Microsoft Azure Red Hat open Shift
+title: Veelgestelde vragen voor Azure Red Hat OpenShift
+description: Hier vindt u antwoorden op veelgestelde vragen over Microsoft Azure Red Hat OpenShift
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619471"
 ---
-# <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
+# <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat OpenShift
 
-In dit artikel vindt u veelgestelde vragen over Microsoft Azure Red Hat open SHIFT.
+In dit artikel worden veelgestelde vragen (veelgestelde vragen) over Microsoft Azure Red Hat OpenShift beantwoord.
 
 ## <a name="which-azure-regions-are-supported"></a>Welke Azure-regio's worden ondersteund?
 
-Zie [ondersteunde resources](supported-resources.md#azure-regions) voor een lijst met wereld wijde regio's waar Azure Red Hat open Shift wordt ondersteund.
+Zie [Ondersteunde resources](supported-resources.md#azure-regions) voor een lijst met globale regio's waar Azure Red Hat OpenShift wordt ondersteund.
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Kan ik een cluster implementeren in een bestaand virtueel netwerk?
 
-Nee. Maar u kunt een Azure Red Hat open Shift-cluster verbinden met een bestaand VNET via peering. Zie [verbinding maken met een virtueel netwerk van een cluster met een bestaand virtueel netwerk](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) voor meer informatie.
+Nee. Maar u een Azure Red Hat OpenShift-cluster verbinden met een bestaand VNET via peering. Zie [Het virtuele netwerk van een cluster verbinden met een bestaand virtueel netwerk](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) voor meer informatie.
 
-## <a name="what-cluster-operations-are-available"></a>Welke cluster bewerkingen zijn beschikbaar?
+## <a name="what-cluster-operations-are-available"></a>Welke clusterbewerkingen zijn beschikbaar?
 
-U kunt het aantal reken knooppunten alleen omhoog of omlaag schalen. Er zijn geen andere wijzigingen toegestaan aan de `Microsoft.ContainerService/openShiftManagedClusters` resource nadat deze is gemaakt. Het maximum aantal reken knooppunten is beperkt tot 20.
+U alleen het aantal compute nodes op- of omlaag schalen. Er zijn geen andere wijzigingen `Microsoft.ContainerService/openShiftManagedClusters` toegestaan aan de resource na het maken. Het maximum aantal compute nodes is beperkt tot 20.
 
-## <a name="what-virtual-machine-sizes-can-i-use"></a>Welke groottes voor virtuele machines kan ik gebruiken?
+## <a name="what-virtual-machine-sizes-can-i-use"></a>Welke virtuele machineformaten kan ik gebruiken?
 
-Zie [grootten van Azure Red Hat open Shift](supported-resources.md#virtual-machine-sizes) voor een lijst met grootten voor virtuele machines die u kunt gebruiken met een Azure Red Hat open Shift-cluster.
+Zie [Azure Red Hat OpenShift virtuele machineformaten](supported-resources.md#virtual-machine-sizes) voor een lijst met virtuele machineformaten die u gebruiken met een Azure Red Hat OpenShift-cluster.
 
-## <a name="is-data-on-my-cluster-encrypted"></a>Versleutelde gegevens op mijn cluster?
+## <a name="is-data-on-my-cluster-encrypted"></a>Zijn de gegevens op mijn cluster versleuteld?
 
-Standaard is versleuteling in rust. Op het Azure Storage-platform worden uw gegevens automatisch versleuteld voordat deze persistent worden gemaakt en worden de gegevens gedecodeerd voordat ze worden opgehaald. Zie [Azure Storage service versleuteling voor gegevens in rust](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) voor meer informatie.
+Standaard is er encryptie in rust. Het Azure Storage-platform versleutelt uw gegevens automatisch voordat deze worden uitgevoerd en decodeert de gegevens voordat u deze ophaalt. Zie [Azure Storage Service Encryption voor gegevens in rust](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) voor meer informatie.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Kan ik Prometheus/Grafana gebruiken voor het bewaken van mijn toepassingen?
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Kan ik Prometheus/Grafana gebruiken om mijn applicaties te monitoren?
 
-Ja, u kunt Prometheus in uw naam ruimte implementeren en toepassingen in uw naam ruimte controleren.
+Ja, u Prometheus implementeren in uw naamruimte en toepassingen in uw naamruimte controleren.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Kan ik Prometheus/Grafana gebruiken voor het bewaken van metrische gegevens met betrekking tot de status en capaciteit van het cluster?
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Kan ik Prometheus/Grafana gebruiken om statistieken met betrekking tot clusterstatus en -capaciteit te controleren?
 
-Nee, niet op huidige tijd.
+Nee, niet op dit moment.
 
-## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Is het docker-REGI ster extern beschikbaar, zodat ik hulpprogram ma's zoals Jenkins kan gebruiken?
+## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Is het Docker-register extern beschikbaar, zodat ik tools zoals Jenkins kan gebruiken?
 
-Het docker-REGI ster is beschikbaar via `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` echter, er is geen krachtige garantie voor de duurzaamheid van opslag. U kunt ook [Azure container Registry](https://azure.microsoft.com/services/container-registry/)gebruiken.
+Het Docker-register `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` is echter verkrijgbaar bij een sterke garantie voor opslagduurzaamheid. U ook [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)gebruiken.
 
-## <a name="is-cross-namespace-networking-supported"></a>Wordt meerdere naam ruimte netwerken ondersteund?
+## <a name="is-cross-namespace-networking-supported"></a>Wordt cross-namespace-netwerken ondersteund?
 
-Klanten en afzonderlijke project beheerders kunnen meerdere naam ruimte netwerken (inclusief het weigeren) aanpassen per project met behulp van `NetworkPolicy`-objecten.
+Klant- en individuele projectbeheerders kunnen cross-namespace-netwerken (inclusief het weigeren `NetworkPolicy` ervan) per project aanpassen met behulp van objecten.
 
-## <a name="can-an-admin-manage-users-and-quotas"></a>Kan een beheerder gebruikers en quota's beheren?
+## <a name="can-an-admin-manage-users-and-quotas"></a>Kan een beheerder gebruikers en quota beheren?
 
-Ja. Een Azure Red Hat open Shift-beheerder kan gebruikers en quota's beheren naast toegang tot alle door de gebruiker gemaakte projecten.
+Ja. Een Azure Red Hat OpenShift-beheerder kan gebruikers en quota beheren, naast toegang tot alle door gebruikers gemaakte projecten.
 
-## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Kan ik een cluster beperken tot bepaalde Azure AD-gebruikers?
+## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Kan ik een cluster beperken tot alleen bepaalde Azure AD-gebruikers?
 
-Ja. U kunt beperken welke Azure AD-gebruikers zich kunnen aanmelden bij een cluster door de Azure AD-toepassing te configureren. Zie [How to: uw app beperken tot een set gebruikers](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users) voor meer informatie.
+Ja. U beperken welke Azure AD-gebruikers zich bij een cluster kunnen aanmelden door de Azure AD-toepassing te configureren. Zie Hoe: Uw app beperken tot een set gebruikers voor meer [informatie: Uw app beperken tot een reeks gebruikers](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
-## <a name="can-i-restrict-users-from-creating-projects"></a>Kan ik voor komen dat gebruikers projecten maken?
+## <a name="can-i-restrict-users-from-creating-projects"></a>Kan ik gebruikers beperken om projecten te maken?
 
-Ja. Meld u aan bij uw cluster als een Azure Red Hat open Shift-beheerder en voer deze opdracht uit:
+Ja. Meld u aan bij uw cluster als Azure Red Hat OpenShift-beheerder en voer deze opdracht uit:
 
 ```
 oc adm policy \
@@ -71,138 +71,138 @@ oc adm policy \
     system:authenticated:oauth
 ```
 
-Zie voor meer informatie de open Shift-documentatie over het [uitschakelen van self-provisioning](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning).
+Zie voor meer informatie de [OpenShift-documentatie](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)over het uitschakelen van zelfvoorziening .
 
-## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Kan een cluster reken knooppunten hebben in meerdere Azure-regio's?
+## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Kan een cluster rekenknooppunten hebben in meerdere Azure-regio's?
 
-Nee. Alle knoop punten in een open Shift-cluster van Azure Red Hat moeten afkomstig zijn uit dezelfde Azure-regio.
+Nee. Alle knooppunten in een Azure Red Hat OpenShift-cluster moeten afkomstig zijn van dezelfde Azure-regio.
 
-## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Zijn de Master-en infrastructuur knooppunten opabstracted als ze zijn met Azure Kubernetes service (AKS)?
+## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Worden master- en infrastructuurknooppunten verwijderd zoals ze zijn met Azure Kubernetes Service (AKS)?
 
-Nee. Alle resources, inclusief de cluster Master, worden uitgevoerd in uw klant abonnement. Deze typen resources worden in een alleen-lezen resource groep geplaatst.
+Nee. Alle bronnen, inclusief de clustermaster, worden uitgevoerd in uw klantabonnement. Dit soort resources worden in een alleen-lezen brongroep geplaatst.
 
-## <a name="is-open-service-broker-for-azure-osba-supported"></a>Is open Service Broker voor Azure (OSBA) ondersteund?
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Wordt Open Service Broker for Azure (OSBA) ondersteund?
 
-Ja. U kunt OSBA gebruiken met Azure Red Hat open SHIFT. Zie [Service Broker voor Azure openen](https://github.com/Azure/open-service-broker-azure#openshift-project-template) voor meer informatie.
+Ja. U OSBA gebruiken met Azure Red Hat OpenShift. Zie [Open Service Broker voor Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) voor meer informatie.
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ik probeer te koppelen aan een virtueel netwerk in een ander abonnement, maar `Failed to get vnet CIDR` fout.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ik probeer te peer in een virtueel netwerk `Failed to get vnet CIDR` in een ander abonnement, maar het krijgen van fout.
 
-Zorg er in het abonnement met het virtuele netwerk voor dat u `Microsoft.ContainerService` provider registreert bij `az provider register -n Microsoft.ContainerService --wait` 
+Zorg er in het abonnement dat het `Microsoft.ContainerService` virtuele netwerk heeft, ervoor dat u provider registreert bij`az provider register -n Microsoft.ContainerService --wait` 
 
-## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Wat is het onderhouds proces van Azure Red Hat open Shift (ARO)?
+## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Wat is het Azure Red Hat OpenShift (ARO) onderhoudsproces?
 
-Er zijn drie soorten onderhoud voor ARO: upgrades, back-ups maken en herstellen van etcd-gegevens en door de Cloud provider geïnitieerd onderhoud.
+Er zijn drie soorten onderhoud voor ARO: upgrades, back-up en herstel van etcd-gegevens en door de cloudprovider geïnitieerd onderhoud.
 
-+ Upgrades zijn onder andere software-upgrades en CVEs. CVE herstel vindt plaats bij het opstarten door `yum update` uit te voeren en biedt onmiddellijke beperking.  Op parallelle manier wordt een nieuwe installatie kopie gemaakt voor het maken van een nieuw cluster.
++ Upgrades omvatten software-upgrades en CvE's. CVE-herstel vindt plaats `yum update` bij het opstarten door het uitvoeren van en voorziet in onmiddellijke mitigatie.  Tegelijkertijd zal een nieuwe image build worden gemaakt voor toekomstige cluster creëert.
 
-+ Het maken en beheren van etcd-gegevens is een geautomatiseerd proces waarvoor mogelijk downtime van het cluster nodig is, afhankelijk van de actie. Als de etcd-data base wordt hersteld vanuit een back-up, zal er downtime zijn. Er wordt een back-up van etcd elk uur gemaakt en de laatste 6 uur van de back-ups worden bewaard.
++ Back-up en beheer van etcd-gegevens is een geautomatiseerd proces dat mogelijk clusterdowntime vereist, afhankelijk van de actie. Als de etcd-database wordt hersteld van een back-up zal er downtime zijn. We een back-up etcd per uur en behouden de laatste 6 uur van back-ups.
 
-+ Door de Cloud provider geïnitieerd onderhoud omvat netwerk-, opslag-en regionale storingen. Het onderhoud is afhankelijk van de Cloud provider en is afhankelijk van door de provider geleverde updates.
++ Door de cloudprovider geïnitieerd onderhoud omvat netwerk-, opslag- en regionale uitval. Het onderhoud is afhankelijk van de cloudprovider en is afhankelijk van door de provider geleverde updates.
 
-## <a name="what-is-the-general-upgrade-process"></a>Wat is het algemene upgrade proces?
+## <a name="what-is-the-general-upgrade-process"></a>Wat is het algemene upgradeproces?
 
-Het uitvoeren van een upgrade moet een veilig proces zijn om uit te voeren en Cluster Services niet te onderbreken. De SRE kan het upgrade proces activeren wanneer er nieuwe versies beschikbaar zijn of als CVEs openstaan.
+Het uitvoeren van een upgrade moet een veilig proces zijn om uit te voeren en mag clusterservices niet verstoren. De SRE kan het upgradeproces activeren wanneer er nieuwe versies beschikbaar zijn of CvE's uitstekend zijn.
 
-Beschik bare updates worden getest in een omgeving met fase ring en vervolgens toegepast op productie clusters. Wanneer u dit toepast, wordt er tijdelijk een nieuw knoop punt toegevoegd en worden de knoop punten op een roteerende manier bijgewerkt zodat het aantal replica aantallen behouden blijft. Volg de aanbevolen procedures om ervoor te zorgen dat er mini maal geen uitval tijd is.
+Beschikbare updates worden getest in een faseomgeving en vervolgens toegepast op productieclusters. Wanneer toegepast, wordt een nieuw knooppunt tijdelijk toegevoegd en knooppunten worden bijgewerkt op een roterende manier, zodat pods replica tellingen behouden. Het volgen van best practices zorgt voor minimale tot geen downtime.
 
-Afhankelijk van de ernst van de in behandeling zijnde upgrade of update, kan het proces verschillen als de updates mogelijk snel worden toegepast om de bloot stelling van de service aan een CVE te beperken. Een nieuwe installatie kopie wordt asynchroon, getest en uitgerold als een cluster upgrade. Behalve dat is er geen verschil tussen nood herstel en gepland onderhoud. Gepland onderhoud is niet voorgepland met de klant.
+Afhankelijk van de ernst van de in behandeling zijnde upgrade of update kan het proces verschillen omdat de updates snel kunnen worden toegepast om de blootstelling van de service aan een CVE te beperken. Een nieuwe afbeelding wordt asynchroon gebouwd, getest en uitgerold als een clusterupgrade. Anders dan dat, is er geen verschil tussen nood- en gepland onderhoud. Gepland onderhoud is niet vooraf gepland met de klant.
 
-U kunt meldingen verzenden via ICM en e-mail als communicatie met de klant is vereist.
+Meldingen kunnen worden verzonden via ICM en e-mail als communicatie naar de klant nodig is.
 
-## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Hoe zit het met nood en geplande onderhouds Vensters?
+## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Hoe zit het met nood versus geplande onderhoudsramen?
 
-Er wordt geen onderscheid gemaakt tussen de twee soorten onderhoud. Onze teams zijn beschikbaar 24/7/365 en gebruiken geen traditionele, geplande ' out-of-uren ' onderhouds Vensters.
+We maken geen onderscheid tussen de twee soorten onderhoud. Onze teams zijn 24/7/365 beschikbaar en maken geen gebruik van traditionele geplande "out-of-hours" onderhoudsvensters.
 
-## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>Hoe wordt het hosten van het besturings systeem en open Shift-software bijgewerkt?
+## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>Hoe worden het hostbesturingssysteem en OpenShift-software bijgewerkt?
 
-Het besturings systeem van de host en open Shift-software worden bijgewerkt via onze algemene upgrade en installatie kopie-buildproces.
+Het hostbesturingssysteem en OpenShift-software worden bijgewerkt via ons algemene upgrade- en image-opbouwproces.
 
-## <a name="whats-the-process-to-reboot-the-updated-node"></a>Wat is het proces om het bijgewerkte knoop punt opnieuw op te starten?
+## <a name="whats-the-process-to-reboot-the-updated-node"></a>Wat is het proces om het bijgewerkte knooppunt opnieuw op te starten?
 
-Dit moet worden afgehandeld als onderdeel van een upgrade.
+Dit moet worden behandeld als onderdeel van een upgrade.
 
-## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>Worden gegevens die zijn opgeslagen in etcd versleuteld op ARO?
+## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>Zijn gegevens opgeslagen in geë-geë-mogelijk versleuteld op ARO?
 
-Het is niet versleuteld op het niveau van de etcd. De optie om deze in te scha kelen, wordt momenteel niet ondersteund. Open Shift ondersteunt deze functie, maar technische inspanningen zijn vereist om deze op de weg kaart te maken. De gegevens worden versleuteld op schijf niveau. Zie [gegevens versleutelen in de Data Store-laag](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) voor meer informatie.
+Het is niet versleuteld op het etsniveau. De optie om het in te schakelen wordt momenteel niet ondersteund. OpenShift ondersteunt deze functie, maar technische inspanningen zijn nodig om het op de routekaart te maken. De gegevens worden versleuteld op schijfniveau. Raadpleeg [Gegevens versleutelen bij Datastore Layer](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) voor meer informatie.
 
-## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Kunnen Logboeken van onderliggende Vm's worden gestreamd naar een logboek analyse systeem van klanten?
+## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Kunnen logboeken van onderliggende VM's worden gestreamd naar een analysesysteem voor klantenlogboeken?
 
-Syslog, docker-logboeken, logboeken en dmesg worden verwerkt door de beheerde service en worden niet blootgesteld aan klanten.
+Syslog, docker logs, journal, en dmesg worden behandeld door de managed service en worden niet blootgesteld aan klanten.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hoe kan een klant toegang krijgen tot metrische gegevens, zoals CPU/geheugen op knooppunt niveau, om actie te ondernemen om te schalen, problemen op te lossen, enzovoort. Ik kan `kubectl top` niet uitvoeren op een ARO-cluster.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hoe kan een klant toegang krijgen tot statistieken zoals CPU / geheugen op knooppuntniveau om actie te ondernemen om te schalen, problemen met de foutopsporing, enz. Ik kan niet `kubectl top` lijken te draaien op een ARO cluster.
 
-Klanten hebben toegang tot de metrische gegevens van de CPU/het geheugen op knooppunt niveau met behulp van de opdracht `oc adm top nodes` of `kubectl top nodes` met de beheerder clusterrole van de klant.  Klanten hebben ook toegang tot de metrische gegevens van de CPU/het geheugen van `pods` met de opdracht `oc adm top pods` of `kubectl top pods`
+Klanten hebben toegang tot de CPU/Memory-statistieken op `oc adm top nodes` `kubectl top nodes` knooppuntniveau met behulp van de opdracht of met de clusterrol voor klantbeheer.  Klanten hebben ook toegang tot `pods` de CPU/Memory metrics van met de opdracht `oc adm top pods` of`kubectl top pods`
 
-## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Wat is de standaard configuratie van de pod Scheduler voor ARO?
+## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Wat is de standaardpodplannerconfiguratie voor ARO?
 
-ARO maakt gebruik van de standaard planner die wordt geleverd in open SHIFT. Er zijn een aantal extra mechanismen die niet worden ondersteund in ARO. Raadpleeg de documentatie voor de [standaard planner](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) en de [hoofd planner](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) voor meer informatie.
+ARO gebruikt de standaardplanner die wordt verzonden in OpenShift. Er zijn een paar extra mechanismen die niet worden ondersteund in ARO. Raadpleeg [standaardplannerdocumentatie](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) en [hoofdplannerdocumentatie](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) voor meer informatie.
 
-Geavanceerde/aangepaste planning wordt momenteel niet ondersteund. Raadpleeg de [plannings documentatie](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) voor meer informatie.
+Geavanceerde/aangepaste planning wordt momenteel niet ondersteund. Raadpleeg de [planningsdocumentatie](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) voor meer informatie.
 
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Als de implementatie wordt geschaald, hoe kunnen Azure-fout domeinen worden toegewezen aan de pod-plaatsing om ervoor te zorgen dat alle peulen voor een service niet worden uitgesp aard door een storing in één fout domein?
+## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Als we de implementatie opschalen, hoe worden Azure-foutdomeinen toegewezen aan podplaatsing om ervoor te zorgen dat alle pods voor een service niet worden uitgeschakeld door een fout in een enkel foutdomein?
 
-Er zijn standaard vijf fout domeinen bij het gebruik van schaal sets voor virtuele machines in Azure. Elk exemplaar van de virtuele machine in een schaalset wordt in een van deze fout domeinen geplaatst. Dit zorgt ervoor dat toepassingen die zijn geïmplementeerd op de reken knooppunten in een cluster, in afzonderlijke fout domeinen worden geplaatst.
+Er zijn standaard vijf foutdomeinen bij het gebruik van virtuele machineschaalsets in Azure. Elke virtuele machine-instantie in een schaalset wordt in een van deze foutdomeinen geplaatst. Dit zorgt ervoor dat toepassingen die worden geïmplementeerd op de compute nodes in een cluster in afzonderlijke foutdomeinen worden geplaatst.
 
-Raadpleeg [het juiste aantal fout domeinen voor de schaalset voor virtuele machines](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) voor meer informatie.
+Raadpleeg [het kiezen van het juiste aantal foutdomeinen voor virtuele machineschaal ingesteld](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) voor meer details.
 
-## <a name="is-there-a-way-to-manage-pod-placement"></a>Is er een manier om pod-plaatsing te beheren?
+## <a name="is-there-a-way-to-manage-pod-placement"></a>Is er een manier om pod plaatsing te beheren?
 
-Klanten hebben de mogelijkheid om knoop punten op te halen en labels te bekijken als de beheerder van de klant.  Dit biedt een manier om een virtuele machine in de schaalset te richten.
+Klanten hebben de mogelijkheid om knooppunten te krijgen en labels te bekijken als de klantbeheerder.  Dit biedt een manier om elke VM in de schaalset te targeten.
 
-Let op wanneer u specifieke labels gebruikt:
+Voorzichtigheid is geboden bij het gebruik van specifieke etiketten:
 
-- De hostnaam mag niet worden gebruikt. De hostnaam wordt vaak met upgrades en updates gedraaid en wordt gegarandeerd gewijzigd.
+- Hostname mag niet worden gebruikt. Hostname wordt vaak gedraaid met upgrades en updates en is gegarandeerd te veranderen.
 
-- Als de klant een aanvraag voor specifieke labels of een implementatie strategie heeft, kan dit worden bereikt, maar is er technische inspanningen nodig en wordt deze niet ondersteund.
+- Als de klant een aanvraag heeft voor specifieke labels of een implementatiestrategie, kan dit worden bereikt, maar vereist het technische inspanningen en wordt deze vandaag niet ondersteund.
 
-## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Wat is het maximum aantal peulen in een ARO-cluster?  Wat is het maximum aantal peulen per knoop punt in ARO?
+## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Wat is het maximum aantal pods in een ARO-cluster?Wat is het maximum aantal pods per knooppunt in ARO?
 
- Azure Red Hat open Shift 3,11 heeft een limiet van 50-pod per knoop punt met [Aro met een limiet van 20 reken knooppunten](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), zodat het maximum aantal peulingen in een Aro-cluster wordt gecaps tot 50 * 20 = 1000.
+ Azure Red Hat OpenShift 3.11 heeft een limiet van 50 pod per node met ARO met een limiet van [20 compute node,](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)zodat het maximum aantal pods dat wordt ondersteund in een ARO-cluster wordt beperkt tot 50*20 = 1000.
 
-## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Kunnen we IP-bereiken voor implementatie op het privé-VNET opgeven, waardoor er geen conflict is met andere bedrijfs VNETs zodra het peerend is?
+## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Kunnen we IP-bereiken opgeven voor implementatie op het particuliere VNET, waardoor botsingen met andere zakelijke VNET's worden vermeden die eenmaal zijn peered?
 
-Azure Red Hat open Shift ondersteunt VNET-peering en stelt de klant in staat om een VNET te leveren aan de peer en een VNET-CIDR waarin het open Shift-netwerk werkt.
+Azure Red Hat OpenShift ondersteunt VNET-peering en stelt de klant in staat om een VNET te bieden om mee te kijken en een VNET CIDR waarin het OpenShift-netwerk actief zal zijn.
 
-Het VNET dat door ARO is gemaakt, wordt beveiligd en accepteert geen configuratie wijzigingen. Het VNET dat wordt beheerd door de klant en zich in het abonnement bevindt.
+De VNET die aro heeft gemaakt, wordt beschermd en accepteert geen configuratiewijzigingen. Het VNET dat wordt peered wordt gecontroleerd door de klant en woont in hun abonnement.
 
-## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Bevindt het cluster zich in een klant abonnement? 
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Heeft het cluster een klantabonnement? 
 
-De door Azure beheerde toepassing bevindt zich in een vergrendelde resource groep met het abonnement van de klant. De klant kan objecten in die RG weer geven, maar niet wijzigen.
+De Azure Managed Application wordt gebruikt in een vergrendelde resourcegroep met het klantabonnement. De klant kan objecten in die RG bekijken, maar niet wijzigen.
 
-## <a name="is-the-sdn-module-configurable"></a>Kan de SDN-module worden geconfigureerd?
+## <a name="is-the-sdn-module-configurable"></a>Is de SDN-module configureerbaar?
 
-SDN is open Shift-OVS-networkpolicy en kan niet worden geconfigureerd.
+SDN is openshift-ovs-netwerkbeleid en is niet configureerbaar.
 
-## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Welke UNIX-rechten (in IaaS) zijn beschikbaar voor modellen/infra structuur/app-knoop punten?
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Welke UNIX-rechten (in IaaS) zijn beschikbaar voor Masters/Infra/App Nodes?
 
-Niet van toepassing op deze aanbieding. Toegang tot knoop punt is niet toegestaan.
+Niet van toepassing op dit aanbod. Toegang tot het knooppunt is verboden.
 
-## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Welke OCP-rechten hebben we? Cluster-beheerder? Project-beheerder?
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Welke OCP-rechten hebben we? Cluster-admin? Project-admin?
 
-Zie overzicht van Azure Red Hat open SHIFT [Cluster Administration](https://docs.openshift.com/aro/admin_guide/index.html)voor meer informatie.
+Zie het overzicht van Azure Red Hat [OpenShift-clusterbeheer](https://docs.openshift.com/aro/admin_guide/index.html)voor meer informatie .
 
-## <a name="which-kind-of-federation-with-ldap"></a>Welk type Federatie met LDAP?
+## <a name="which-kind-of-federation-with-ldap"></a>Wat voor federatie met LDAP?
 
-Dit wordt bereikt via Azure AD-integratie. 
+Dit zou worden bereikt via Azure AD-integratie. 
 
 ## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Is er een element in ARO gedeeld met andere klanten? Of is alles onafhankelijk?
 
-Elk Azure Red Hat open Shift-cluster is toegewezen aan een bepaalde klant en valt binnen het abonnement van de klant. 
+Elk Azure Red Hat OpenShift-cluster is gewijd aan een bepaalde klant en leeft binnen het abonnement van de klant. 
 
-## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Kunnen we een permanente opslag oplossing kiezen, zoals OCS? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Kunnen we kiezen voor een permanente opslagoplossing, zoals OCS? 
 
-Er zijn twee opslag klassen beschikbaar om te selecteren uit: Azure disk en Azure file.
+Er zijn twee opslagklassen beschikbaar om uit te kiezen: Azure Disk en Azure File.
 
-## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hoe wordt een cluster bijgewerkt (inclusief belang rijke en minder jarigen als gevolg van beveiligings problemen)?
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hoe wordt een cluster bijgewerkt (inclusief majors en minderjarigen als gevolg van kwetsbaarheden)?
 
-Zie [Wat is het algemene upgrade proces?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+Zie [Wat is het algemene upgradeproces?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
 
-## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Welke Azure Load Balancer wordt gebruikt door ARO?  Is it Standard of Basic en kan het worden geconfigureerd?
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Welke Azure Load balancer wordt gebruikt door ARO?Is het standaard of basic en is het configureerbaar?
 
-ARO maakt gebruik van standaard Azure Load Balancer en kan niet worden geconfigureerd.
+ARO maakt gebruik van Standard Azure Load Balancer en is niet configureerbaar.
 
-## <a name="can-aro-use-netapp-based-storage"></a>Kan ARO opslag gebruiken?
+## <a name="can-aro-use-netapp-based-storage"></a>Kan ARO netapp-gebaseerde opslag gebruiken?
 
-Op het moment van de enige ondersteunde opslag opties zijn Azure disk en Azure File Storage-klassen. 
+Op dit moment zijn de enige ondersteunde opslagopties Azure Disk en Azure File storage classes. 
 
 

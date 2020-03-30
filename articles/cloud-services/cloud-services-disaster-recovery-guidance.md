@@ -1,7 +1,7 @@
 ---
-title: Het afhandelen van een onderbreking van de Azure-service die gevolgen heeft voor Azure Cloud Services
+title: Een Azure-serviceonderbreking verwerken die gevolgen heeft voor Azure Cloud Services
 titleSuffix: Azure Cloud Services
-description: Meer informatie over wat u moet doen in het geval van een onderbreking van de Azure-service die gevolgen heeft voor Azure Cloud Services.
+description: Meer informatie over wat u moet doen in het geval van een Azure-serviceonderbreking die gevolgen heeft voor Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157503"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Wat te doen in het geval van een onderbreking van de Azure-service die invloed heeft op de Azure-Cloud Services
-Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Wat te doen wanneer een Azure-service wordt onderbroken, wat gevolgen heeft voor Azure Cloud Services
+Bij Microsoft werken we er hard aan om ervoor te zorgen dat onze services altijd voor u beschikbaar zijn wanneer u ze nodig hebt. Krachten buiten onze controle beïnvloeden ons soms op manieren die ongeplande serviceonderbrekingen veroorzaken.
 
-Micro soft biedt een Service Level Agreement (SLA) voor zijn services als een toezeg ging voor de uptime en connectiviteit. De SLA voor afzonderlijke Azure-Services vindt u op [Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+Microsoft biedt een SLA (Service Level Agreement) voor zijn services als een verbintenis voor uptime en connectiviteit. De SLA voor afzonderlijke Azure-services is te vinden bij [Azure Service Level Agreements.](https://azure.microsoft.com/support/legal/sla/)
 
-Azure biedt al veel ingebouwde platform functies die ondersteuning bieden voor Maxi maal beschik bare toepassingen. Lees [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over deze services.
+Azure heeft al veel ingebouwde platformfuncties die zeer beschikbare toepassingen ondersteunen. Lees Voor meer informatie over deze services [Disaster recovery en hoge beschikbaarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-In dit artikel wordt een scenario voor herstel na nood gevallen beschreven, wanneer een hele regio een storing veroorzaakt door een grote natuur ramp of een uitgebreide service onderbreking. Dit zijn zeldzame gevallen, maar u moet er wel voor bereid zijn dat er een storing optreedt in een hele regio. Als een hele regio een onderbreking van de service ondervindt, zijn de lokaal redundante kopieën van uw gegevens tijdelijk niet beschikbaar. Als u geo-replicatie hebt ingeschakeld, worden er drie extra kopieën van uw Azure Storage-blobs en-tabellen in een andere regio opgeslagen. In het geval van een volledige regionale onderbreking of nood gevallen waarin de primaire regio niet kan worden hersteld, wijst Azure alle DNS-vermeldingen toe aan de regio met geo-replicatie.
+Dit artikel behandelt een echt scenario voor noodherstel, wanneer een hele regio een storing ondervindt als gevolg van een grote natuurramp of wijdverspreide onderbreking van de service. Dit zijn zeldzame gebeurtenissen, maar u moet zich voorbereiden op de mogelijkheid dat er een storing van een hele regio is. Als een hele regio een onderbreking van de service ondervindt, zijn de lokaal overbodige kopieën van uw gegevens tijdelijk niet beschikbaar. Als u georeplicatie hebt ingeschakeld, worden drie extra exemplaren van uw Azure Storage-blobs en -tabellen in een andere regio opgeslagen. In het geval van een volledige regionale storing of een ramp waarbij de primaire regio niet kan worden hersteld, brengt Azure alle DNS-vermeldingen opnieuw in het geo-gerepliceerde gebied.
 
 > [!NOTE]
-> Houd er rekening mee dat u geen controle hebt over dit proces en dat dit alleen geldt voor onderbrekingen van de service voor het hele Data Center. Daarom moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieen om het hoogste niveau van Beschik baarheid te krijgen. Zie [herstel na nood gevallen en hoge Beschik baarheid voor toepassingen die zijn gebouwd op Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie. Als u van invloed wilt zijn op uw eigen failover, kunt u het gebruik van [geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-redundancy.md)overwegen om een alleen-lezen kopie van uw gegevens in een andere regio te maken.
+> Houd er rekening mee dat u geen controle hebt over dit proces en dat dit alleen geldt voor serviceonderbrekingen in het hele datacenter. Hierdoor moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieën om het hoogste niveau van beschikbaarheid te bereiken. Zie [Herstel na noodgevallen en hoge beschikbaarheid voor toepassingen die zijn gebouwd op Microsoft Azure voor](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)meer informatie. Als u uw eigen failover wilt kunnen beïnvloeden, u overwegen om het gebruik van [read-access geo-redundante opslag (RA-GRS)](../storage/common/storage-redundancy.md)te overwegen, waardoor een alleen-lezen kopie van uw gegevens in een andere regio wordt gemaakt.
 >
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Optie 1: een back-upimplementatie gebruiken via Azure Traffic Manager
-De meest robuuste oplossing voor herstel na nood gevallen omvat het onderhoud van meerdere implementaties van uw toepassing in verschillende regio's, waarna [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) wordt gebruikt om het verkeer tussen de toepassingen te omleiden. Azure Traffic Manager biedt meerdere [routerings methoden](../traffic-manager/traffic-manager-routing-methods.md), zodat u kunt kiezen of u uw implementaties wilt beheren met behulp van een primair/back-upmodel of dat u het verkeer ertussen wilt splitsen.
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Optie 1: Een back-upimplementatie gebruiken via Azure Traffic Manager
+De meest robuuste oplossing voor noodherstel omvat het onderhouden van meerdere implementaties van uw toepassing in verschillende regio's en vervolgens [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) gebruiken om verkeer tussen deze toepassingen te leiden. Azure Traffic Manager biedt meerdere [routeringsmethoden,](../traffic-manager/traffic-manager-routing-methods.md)zodat u kiezen of u uw implementaties wilt beheren met behulp van een primair/back-upmodel of om verkeer tussen deze methoden te splitsen.
 
-![Azure Cloud Services verdelen over regio's met Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
+![Azure Cloud Services in verschillende regio's balanceren met Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
-Voor de snelste reactie op het verlies van een regio is het belang rijk dat u de [eindpunt bewaking](../traffic-manager/traffic-manager-monitoring.md)van Traffic Manager configureert.
+Voor de snelste reactie op het verlies van een regio is het belangrijk dat u de eindpuntbewaking van Traffic Manager [configureert.](../traffic-manager/traffic-manager-monitoring.md)
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>Optie 2: de toepassing implementeren in een nieuwe regio
-Het onderhoud van meerdere actieve implementaties zoals beschreven in de vorige optie brengt extra lopende kosten met zich mee. Als uw beoogde herstel tijd (RTO) flexibel genoeg is en u de oorspronkelijke code of het gecompileerde Cloud Services-pakket hebt, kunt u een nieuw exemplaar van uw toepassing in een andere regio maken en uw DNS-records bijwerken zodat deze naar de nieuwe implementatie verwijzen.
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>Optie 2: Uw toepassing implementeren in een nieuwe regio
+Het onderhouden van meerdere actieve implementaties zoals beschreven in de vorige optie brengt extra lopende kosten met zich mee. Als uw hersteltijddoelstelling (RTO) flexibel genoeg is en u de oorspronkelijke code of het gecompileerde Cloud Services-pakket hebt, u een nieuw exemplaar van uw toepassing in een andere regio maken en uw DNS-records bijwerken om naar de nieuwe implementatie te wijzen.
 
-Zie [een Cloud service maken en implementeren](cloud-services-how-to-create-deploy-portal.md)voor meer informatie over het maken en implementeren van een Cloud service toepassing.
+Zie [Een cloudservice maken en implementeren](cloud-services-how-to-create-deploy-portal.md)voor meer informatie over het maken en implementeren van een cloudservicetoepassing.
 
-Afhankelijk van de gegevens bronnen van uw toepassing, moet u mogelijk de herstel procedures voor de gegevens bron van uw toepassing controleren.
+Afhankelijk van uw toepassingsgegevensbronnen moet u mogelijk de herstelprocedures voor uw toepassingsgegevensbron controleren.
 
-* Zie [Azure Storage redundantie](../storage/common/storage-redundancy.md) voor het controleren van de beschik bare opties op basis van het gekozen redundantie model voor uw toepassing voor Azure Storage gegevens bronnen.
-* Lees overzicht voor SQL Database bronnen [: bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL database](../sql-database/sql-database-business-continuity.md) om de opties te controleren die beschikbaar zijn op basis van het gekozen replicatie model voor uw toepassing.
+* Zie Redundantie van Azure Storage voor Azure [Storage-redundantie](../storage/common/storage-redundancy.md) om te controleren welke opties beschikbaar zijn op basis van het gekozen redundantiemodel voor uw toepassing.
+* Lees voor SQL Database-bronnen [Overzicht: Cloud business continuity en database disaster recovery with SQL Database](../sql-database/sql-database-business-continuity.md) to check on the options that are available based on the chosen replication model for your application.
 
 
-## <a name="option-3-wait-for-recovery"></a>Optie 3: wachten op herstel
-In dit geval is er geen actie voor uw onderdeel vereist, maar uw service is niet beschikbaar totdat de regio is hersteld. U kunt de huidige status van de service zien op het [Azure service Health dash board](https://azure.microsoft.com/status/).
+## <a name="option-3-wait-for-recovery"></a>Optie 3: Wachten op herstel
+In dit geval is er geen actie van uw kant vereist, maar uw service is niet beschikbaar totdat de regio is hersteld. U de huidige servicestatus zien op het [Azure Service Health Dashboard](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
+Zie [Disaster recovery en hoge beschikbaarheid voor Azure-toepassingen voor](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)meer informatie over het implementeren van een strategie voor noodherstel en hoge beschikbaarheid.
 
-Zie [technische richt lijnen voor Azure](/azure/architecture/checklist/resiliency-per-service)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
+Zie [technische richtlijnen](/azure/architecture/checklist/resiliency-per-service)voor azure tolerantie om een gedetailleerd technisch inzicht in de mogelijkheden van een cloudplatform te ontwikkelen.

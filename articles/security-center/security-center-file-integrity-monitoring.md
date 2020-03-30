@@ -1,6 +1,6 @@
 ---
-title: Controle van bestands integriteit in Azure Security Center | Microsoft Docs
-description: Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
+title: Controle op bestandsintegriteit in Azure Security Center | Microsoft Documenten
+description: Meer informatie over het configureren van Fim (File Integrity Monitoring) in Azure Security Center met deze walkthrough.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,198 +14,198 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
 ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604286"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
-Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
+Meer informatie over het configureren van Fim (File Integrity Monitoring) in Azure Security Center met deze walkthrough.
 
 ## <a name="what-is-fim-in-security-center"></a>Wat is FIM in Security Center?
-Met de File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen onderzocht op wijzigingen die mogelijk duiden op een aanval. Een vergelijkings methode wordt gebruikt om te bepalen of de huidige status van het bestand afwijkt van de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
+File Integrity Monitoring (FIM), ook wel bekend als change monitoring, onderzoekt bestanden en registers van het besturingssysteem, applicatiesoftware en anderen op wijzigingen die kunnen duiden op een aanval. Er wordt een vergelijkingsmethode gebruikt om te bepalen of de huidige status van het bestand verschilt van de laatste scan van het bestand. U deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
 
-De bestands integriteits controle van Security Center valideert de integriteit van Windows-bestanden, Windows-REGI ster en Linux-bestanden. U selecteert de bestanden die u wilt controleren door FIM in te scha kelen. Security Center bewaakt bestanden met FIM ingeschakeld voor activiteit, zoals:
+Security Center's File Integrity Monitoring valideert de integriteit van Windows-bestanden, Windows-register en Linux-bestanden. U selecteert de bestanden die u wilt controleren door FIM in te schakelen. Security Center controleert bestanden met FIM ingeschakeld voor activiteiten zoals:
 
-- Bestanden en REGI ster maken en verwijderen
-- Bestands wijzigingen (wijzigingen in de bestands grootte, Toegangs beheer lijsten en de hash van de inhoud)
-- Wijzigingen in het REGI ster (wijzigingen in grootte, toegangscontrole lijsten, type en de inhoud)
+- Aanmaak en verwijdering van bestanden en register
+- Bestandswijzigingen (wijzigingen in bestandsgrootte, toegangscontrolelijsten en hash van de inhoud)
+- Registerwijzigingen (wijzigingen in grootte, toegangscontrolelijsten, type en inhoud)
 
-Security Center raadt entiteiten aan om te bewaken, waarmee u eenvoudig FIM kunt inschakelen. U kunt ook uw eigen FIM-beleid of-entiteiten definiëren om te bewaken. In dit scenario ziet u hoe.
-
-> [!NOTE]
-> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en Vm's en is beschikbaar op de standaard-laag van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
-
-FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Als bestands integriteits controle is ingeschakeld, hebt u een **Wijzigingen bijhouden** bron van het type **oplossing**. Zie [Wijzigingen bijhouden details verzamelen](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) voor Azure wijzigingen bijhouden voor details over het verzamelen van gegevens.
+Security Center raadt entiteiten aan om te controleren, waarop u FIM eenvoudig inschakelen. U ook uw eigen FIM-beleid of entiteiten definiëren om te controleren. Deze walkthrough laat je zien hoe.
 
 > [!NOTE]
-> Als u de **Wijzigingen bijhouden** resource verwijdert, schakelt u ook de functie bestands integriteit controleren uit in Security Center.
+> De FIM-functie (File Integrity Monitoring) werkt voor Windows- en Linux-computers en VM's en is beschikbaar op de standaardlaag van beveiligingscentrum. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center. FIM uploadt gegevens naar de werkruimte Log Analytics. Er zijn gegevenskosten van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [Log Analytics-prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
+
+FIM gebruikt de Azure Change Tracking-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Wanneer File Integrity Monitoring is ingeschakeld, beschikt u over een **change tracking-bron** van het type **Solution**. Zie Details van het [verzamelen van gegevens wijzigen](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) voor Azure Change.
+
+> [!NOTE]
+> Als u de bron **Voor het bijhouden van wijzigingen** verwijdert, schakelt u ook de functie Bestandsintegriteitscontrole in Security Center uit.
 
 ## <a name="which-files-should-i-monitor"></a>Welke bestanden moet ik controleren?
-U moet nadenken over de bestanden die essentieel zijn voor uw systeem en toepassingen wanneer u kiest welke bestanden moeten worden bewaakt. Overweeg het kiezen van bestanden die u niet verwacht te wijzigen zonder te hoeven plannen. Het kiezen van bestanden die regel matig worden gewijzigd door toepassingen of besturings systeem (zoals logboek bestanden en tekst bestanden) maken veel ruis waardoor het moeilijk is om een aanval te identificeren.
+U moet nadenken over de bestanden die essentieel zijn voor uw systeem en toepassingen bij het kiezen van welke bestanden te controleren. Overweeg om bestanden te kiezen waarvan u niet verwacht dat ze zonder planning worden gewijzigd. Het kiezen van bestanden die vaak worden gewijzigd door toepassingen of besturingssysteem (zoals logbestanden en tekstbestanden) maken veel ruis waardoor het moeilijk is om een aanval te identificeren.
 
-Security Center wordt aanbevolen welke bestanden als standaard moeten worden bewaakt volgens bekende aanvals patronen die bestands-en register wijzigingen bevatten.
+Security Center raadt aan welke bestanden u standaard moet controleren volgens bekende aanvalspatronen die bestands- en registerwijzigingen bevatten.
 
-## <a name="using-file-integrity-monitoring"></a>Bestands integriteit controleren
+## <a name="using-file-integrity-monitoring"></a>Controle op bestandsintegriteit gebruiken
 1. Open het dashboard van **Security Center**.
-2. Selecteer in het linkerdeel venster onder **geavanceerde Cloud beveiliging**de optie **Bestands integriteit controleren**.
-![Security Center-dash board][1]
+2. Selecteer **Bestandsintegriteitscontrole**in het linkerdeelvenster onder **Geavanceerde cloudverdediging**.
+![Dashboard van Security Center][1]
 
-**Controle van bestands integriteit** wordt geopend.
-  ![Security Center-dash board][2]
+**File Integrity Monitoring** wordt geopend.
+  ![Dashboard van Security Center][2]
 
-De volgende informatie wordt gegeven voor elke werk ruimte:
+Voor elke werkruimte wordt de volgende informatie verstrekt:
 
-- Het totale aantal wijzigingen dat is opgetreden in de afgelopen week (mogelijk ziet u een streepje '-' als FIM niet is ingeschakeld op de werk ruimte)
-- Totaal aantal computers en Vm's die aan de werk ruimte rapporteren
-- Geografische locatie van de werk ruimte
-- Azure-abonnement waarvan de werk ruimte zich bevindt
+- Totaal aantal wijzigingen dat zich in de afgelopen week heeft voorgedaan (u ziet mogelijk een streepje "-" als FIM niet is ingeschakeld op de werkruimte)
+- Totaal aantal computers en VM's dat rapporteert aan de werkruimte
+- Geografische locatie van de werkruimte
+- Azure-abonnement waaronder de werkruimte
 
-De volgende knoppen kunnen ook worden weer gegeven voor een werk ruimte:
+De volgende knoppen kunnen ook worden weergegeven voor een werkruimte:
 
-- ![Pictogram inschakelen][3] Geeft aan dat FIM niet is ingeschakeld voor de werk ruimte. Als u de werk ruimte selecteert, kunt u FIM inschakelen op alle computers onder de werk ruimte.
-- ![pictogram upgrade plan][4] geeft aan dat de werk ruimte of het abonnement niet wordt uitgevoerd onder de Standard-laag van Security Center. Als u de FIM-functie wilt gebruiken, moet uw abonnement standaard worden uitgevoerd.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren naar Standard. Zie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging voor](security-center-pricing.md)meer informatie over de laag standaard en hoe u de upgrade uitvoert.
-- Een leeg (er is geen knop) betekent dat FIM al is ingeschakeld in de werk ruimte.
+- ![Pictogram Inschakelen][3] Geeft aan dat FIM niet is ingeschakeld voor de werkruimte. Als u de werkruimte selecteert, u FIM inschakelen op alle machines onder de werkruimte.
+- ![Pictogram Upgradeplan][4] Geeft aan dat de werkruimte of het abonnement niet wordt uitgevoerd onder de standaardlaag van het beveiligingscentrum. Als u de FIM-functie wilt gebruiken, moet uw abonnement standaard worden uitgevoerd.  Als u de werkruimte selecteert, u upgraden naar Standaard. Zie [Upgrade naar standaardlaag](security-center-pricing.md)voor verbeterde beveiliging voor meer informatie over de standaardlaag van de standaardklasse standard .
+- Een lege (er is geen knop) betekent dat FIM al is ingeschakeld op de werkruimte.
 
-Onder **File Integrity Monitoring**kunt u een werk ruimte selecteren om FIM voor die werk ruimte in te scha kelen, het dash board bestands integriteit controleren voor die werk ruimte weer te geven of een upgrade van de werk ruimte naar Standard [uit](security-center-pricing.md) te voeren.
+Onder **Bestandsintegriteitscontrole**u een werkruimte selecteren om FIM voor die werkruimte in te schakelen, het dashboard voor bestandsintegriteitscontrole voor die werkruimte weergeven of de werkruimte [upgraden](security-center-pricing.md) naar Standaard.
 
 ## <a name="enable-fim"></a>FIM inschakelen
-FIM inschakelen op een werk ruimte:
+Fim inschakelen op een werkruimte:
 
-1. Selecteer onder **Bestands integriteit controleren**een werk ruimte met de knop **inschakelen** .
-2. **Bestands integriteit controleren** wordt geopend met de weer gave van het aantal Windows-en Linux-machines onder de werk ruimte.
+1. Selecteer **onder Bestandsintegriteitscontrole**een werkruimte met de knop **Inschakelen.**
+2. **Met de bewaking** van bestandsintegriteit wordt geopend en wordt het aantal Windows- en Linux-machines onder de werkruimte weergegeven.
 
-   ![Controle van bestands integriteit inschakelen][5]
+   ![Controle op bestandsintegriteit inschakelen][5]
 
-   De aanbevolen instellingen voor Windows en Linux worden ook vermeld.  Vouw **Windows-bestanden**, het **REGI ster**en de **Linux-bestanden** uit om de volledige lijst met aanbevolen items weer te geven.
+   De aanbevolen instellingen voor Windows en Linux worden ook vermeld.  Vouw **Windows-bestanden,** **Register-** en **Linux-bestanden** uit om de volledige lijst met aanbevolen items te bekijken.
 
-3. Schakel alle aanbevolen entiteiten uit waarop u FIM niet wilt Toep assen.
-4. Selecteer **Bestands integriteit controleren Toep assen** om FIM in te scha kelen.
+3. Schakel de aanbevolen entiteiten waar u FIM niet op wilt toepassen uit.
+4. Selecteer **Bestandsintegriteitscontrole toepassen** om FIM in te schakelen.
 
 > [!NOTE]
-> U kunt de instellingen op elk gewenst moment wijzigen. Zie de onderstaande bewaakte entiteiten bewerken voor meer informatie.
+> U de instellingen op elk gewenst moment wijzigen. Zie Bewaakte entiteiten bewerken hieronder voor meer informatie.
 >
 >
 
-## <a name="view-the-fim-dashboard"></a>Het FIM-dash board weer geven
-Het dash board **Bestands integriteits controle** wordt weer gegeven voor werk ruimten waarin FIM is ingeschakeld. Het FIM-dash board wordt geopend nadat u FIM hebt ingeschakeld in een werk ruimte of wanneer u een werk ruimte selecteert in het venster **Bestands integriteit controle** waarvoor FIM is ingeschakeld.
+## <a name="view-the-fim-dashboard"></a>Het FIM-dashboard weergeven
+Het dashboard **voor het bewaken van de bestandsintegriteit** wordt weergegeven voor werkruimten waar FIM is ingeschakeld. Het FIM-dashboard wordt geopend nadat u FIM ineenhebt ineenschakelt in een werkruimte of wanneer u een werkruimte selecteert in het venster **Bestandsintegriteitscontrole** waarin al FIM is ingeschakeld.
 
-![Dash board bestands integriteit controleren][6]
+![Dashboard Bestandsintegriteitscontrole][6]
 
-In het FIM-dash board voor een werk ruimte worden de volgende details weer gegeven:
+In het FIM-dashboard voor een werkruimte worden de volgende details weergegeven:
 
-- Totaal aantal machines dat is verbonden met de werk ruimte
-- Totaal aantal wijzigingen dat is opgetreden tijdens de geselecteerde tijds periode
-- Een uitsplitsing van het wijzigings type (bestanden, REGI ster)
-- Een uitsplitsing van een wijzigings categorie (gewijzigd, toegevoegd, verwijderd)
+- Totaal aantal machines dat is aangesloten op de werkruimte
+- Totaal aantal wijzigingen dat tijdens de geselecteerde periode is opgetreden
+- Een uitsplitsing van het type wijziging (bestanden, register)
+- Een uitsplitsing van de wijzigingscategorie (gewijzigd, toegevoegd, verwijderd)
 
-Als u op Filter boven aan het dash board selecteert, kunt u de periode Toep assen waarvoor u wijzigingen wilt zien.
+Als u Filter boven aan het dashboard selecteert, u de periode toepassen waarvoor u wijzigingen wilt zien.
 
-![Tijds periode filter][7]
+![Tijdsperiodefilter][7]
 
-Op het tabblad **computers** (zie hierboven) wordt een lijst weer gegeven met alle computers die aan deze werk ruimte rapporteren. Voor elke machine worden de volgende dashboard lijsten weer gegeven:
+Op het tabblad **Computers** (hierboven weergegeven) worden alle machines weergegeven die naar deze werkruimte rapporteren. Voor elke machine wordt in het dashboard het als belangrijkste vermeld:
 
-- Totaal aantal wijzigingen dat is opgetreden tijdens de geselecteerde periode
-- Een uitsplitsing van de totale wijzigingen als bestands wijzigingen of register wijzigingen
+- Totaal aantal wijzigingen dat tijdens de geselecteerde periode is opgetreden
+- Een uitsplitsing van de totale wijzigingen als bestandswijzigingen of registerwijzigingen
 
-**Zoeken in Logboeken** wordt geopend wanneer u een computer naam invoert in het zoek veld of een computer selecteert die wordt vermeld op het tabblad computers. in de zoek opdracht in Logboeken worden alle wijzigingen weer gegeven die zijn aangebracht tijdens de geselecteerde tijds periode voor de machine. U kunt een wijziging uitbreiden voor meer informatie.
+**Log Search** wordt geopend wanneer u een machinenaam invoert in het zoekveld of een machine selecteert die wordt weergegeven onder het tabblad Computers. Log Search geeft alle wijzigingen weer die tijdens de geselecteerde periode voor de machine zijn aangebracht. U een wijziging uitbreiden voor meer informatie.
 
 ![Zoeken in logboeken][8]
 
-Op het tabblad **wijzigingen** (zie hieronder) worden alle wijzigingen voor de werk ruimte in de geselecteerde tijds periode weer gegeven. Voor elke entiteit die is gewijzigd, wordt in het dash board het volgende weer gegeven:
+Op het tabblad **Wijzigingen** (zie hieronder) worden alle wijzigingen voor de werkruimte gedurende de geselecteerde periode weergegeven. Voor elke entiteit die is gewijzigd, wordt in het dashboard de sa.o.a.
 
-- Computer waarop de wijziging plaatsvond
-- Type wijziging (REGI ster of bestand)
-- Wijzigings categorie (gewijzigd, toegevoegd, verwijderd)
+- Computer waarop de wijziging heeft plaatsgevonden
+- Type wijziging (register of bestand)
+- Categorie van wijziging (gewijzigd, toegevoegd, verwijderd)
 - Datum en tijd van wijziging
 
-![Wijzigingen voor de werk ruimte][9]
+![Wijzigingen voor de werkruimte][9]
 
-**Wijzigings Details** worden geopend wanneer u een wijziging in het zoek veld invoert of een entiteit selecteert die wordt vermeld op het tabblad **wijzigingen** .
+**Details wijzigen** wordt geopend wanneer u een wijziging invoert in het zoekveld of een entiteit selecteert die wordt vermeld onder het tabblad **Wijzigingen.**
 
 ![Details wijzigen][10]
 
 ## <a name="edit-monitored-entities"></a>Bewaakte entiteiten bewerken
 
-1. Ga terug naar het **dash board bestands integriteit controleren** en selecteer **instellingen**.
+1. Ga terug naar het **dashboard voor bestandsintegriteitscontrole** en selecteer **Instellingen**.
 
    ![Instellingen][11]
 
-   **Werkruimte configuratie** wordt geopend met de weer gave van drie tabbladen: **Windows-REGI ster**, **Windows-bestanden**en Linux- **bestanden**. Elk tabblad bevat de entiteiten die u in die categorie kunt bewerken. Voor elke entiteit die wordt vermeld, geeft Security Center aan of FIM is ingeschakeld (true) of niet is ingeschakeld (false).  Als u de entiteit bewerkt, kunt u FIM in-of uitschakelen.
+   **Werkruimteconfiguratie** wordt geopend met drie tabbladen: **Windows Registry,** **Windows Files**en Linux **Files**. Elk tabblad bevat de entiteiten die u in die categorie bewerken. Voor elke vermelde entiteit identificeert Security Center of FIM is ingeschakeld (true) of niet is ingeschakeld (false).  Met het bewerken van de entiteit u FIM in- of uitschakelen.
 
-   ![Configuratie van de werkruimte][12]
+   ![Werkruimteconfiguratie][12]
 
-2. Selecteer een identiteits beveiliging. In dit voor beeld hebben we een item geselecteerd onder het Windows-REGI ster. **Bewerken voor wijzigingen bijhouden** wordt geopend.
+2. Selecteer een identiteitsbescherming. In dit voorbeeld hebben we een item geselecteerd onder Windows Registry. **Bewerken voor het bijhouden van wijzigingen** wordt geopend.
 
-   ![Bewerken of wijzigingen bijhouden][13]
+   ![Tracking bewerken of wijzigen][13]
 
-Onder **bewerken voor wijzigingen bijhouden** kunt u het volgende doen:
+Onder **Bewerken voor bijhouden van wijzigingen** u:
 
-- Controle van bestands integriteit inschakelen (true) of uitschakelen (ONWAAR)
+- Controle op de integriteit van het bestand (True) inschakelen of uitschakelen (False)
 - De naam van de entiteit opgeven of wijzigen
 - De waarde of het pad opgeven of wijzigen
-- De entiteit verwijderen, de wijziging negeren of de wijziging opslaan
+- De entiteit verwijderen, de wijziging verwijderen of de wijziging opslaan
 
-## <a name="add-a-new-entity-to-monitor"></a>Een nieuwe entiteit toevoegen om te bewaken
-1. Ga terug naar het **dash board bestands integriteit controleren** en selecteer de **instellingen** bovenaan. **Werkruimte configuratie** wordt geopend.
-2. Selecteer onder **werkruimte configuratie**het tabblad voor het type entiteit dat u wilt toevoegen: Windows-REGI ster, Windows-bestanden of Linux-bestanden. In dit voor beeld hebben we **Linux-bestanden**geselecteerd.
+## <a name="add-a-new-entity-to-monitor"></a>Een nieuwe entiteit toevoegen om te controleren
+1. Ga terug naar het **dashboard voor het bewaken van de integriteit van bestand** en selecteer **Instellingen** bovenaan. **Werkruimteconfiguratie** wordt geopend.
+2. Selecteer **onder Werkruimteconfiguratie**het tabblad voor het type entiteit dat u wilt toevoegen: Windows Registry, Windows Files of Linux-bestanden. In dit voorbeeld hebben we **Linux-bestanden**geselecteerd.
 
-   ![Een nieuw item toevoegen om te bewaken][14]
+   ![Een nieuw item toevoegen om te controleren][14]
 
-3. Selecteer **Toevoegen**. **Toevoegen voor wijzigingen bijhouden** wordt geopend.
+3. Selecteer **Toevoegen**. **Add for Change Tracking** opens.
 
-   ![Aangevraagde informatie invoeren][15]
+   ![Opgevraagde gegevens invoeren][15]
 
-4. Typ op de pagina **toevoegen** de gevraagde gegevens en selecteer **Opslaan**.
+4. Typ op de pagina **Toevoegen** de gevraagde informatie en selecteer **Opslaan**.
 
 ## <a name="disable-monitored-entities"></a>Bewaakte entiteiten uitschakelen
-1. Ga terug naar het dash board **File Integrity Monitoring** .
-2. Selecteer een werk ruimte waar FIM momenteel is ingeschakeld. Een werk ruimte is ingeschakeld voor FIM als de knop inschakelen of upgrade plan ontbreekt.
+1. Ga terug naar het dashboard **Voor het bewaken van bestandsintegriteit.**
+2. Selecteer een werkruimte waar FIM momenteel is ingeschakeld. Een werkruimte is ingeschakeld voor FIM als deze de knop Inschakelen of Upgradeplan mist.
 
-   ![Een werk ruimte selecteren waar FIM is ingeschakeld][16]
+   ![Een werkruimte selecteren waar FIM is ingeschakeld][16]
 
-3. Selecteer **instellingen**onder Bestands integriteit controleren.
+3. Selecteer Onder Bestandsintegriteitscontrole de optie **Instellingen**.
 
    ![Instellingen selecteren][17]
 
-4. Selecteer onder **werkruimte configuratie**een groep waarvoor **ingeschakeld** is ingesteld op waar.
+4. Selecteer **onder Werkruimteconfiguratie**een groep waarin **Ingeschakeld** is ingesteld op true.
 
-   ![Werkruimte configuratie][18]
+   ![Werkruimteconfiguratie][18]
 
-5. Selecteer onder **bewerken voor wijzigingen bijhouden** venster **ingesteld op** onwaar.
+5. Stel **onder Venster Bewerken voor bijhouden wijzigen** instellen **Ingeschakeld** voor Onwaar.
 
-   ![Ingeschakeld instellen op ONWAAR][19]
+   ![Ingeschakeld instellen op false][19]
 
 6. Selecteer **Opslaan**.
 
-## <a name="folder-and-path-monitoring-using-wildcards"></a>Controle van mappen en paden met behulp van joker tekens
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Map- en padbewaking met jokertekens
 
-Joker tekens gebruiken om het bijhouden van meerdere mappen te vereenvoudigen. De volgende regels zijn van toepassing wanneer u de bewaking van mappen configureert met behulp van joker tekens:
--   Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
--   Joker tekens kunnen alleen worden gebruikt in het laatste segment van een pad, zoals C:\folder\file of/etc/*. conf
--   Als een omgevings variabele een pad bevat dat niet geldig is, wordt de validatie uitgevoerd, maar het pad mislukt wanneer de inventarisatie wordt uitgevoerd.
--   Bij het instellen van het pad vermijdt u algemene paden zoals c:\*. *, waardoor er te veel mappen worden gepasseerd.
+Gebruik wildcards om tracking in mappen te vereenvoudigen. De volgende regels zijn van toepassing wanneer u mapbewaking configureert met jokertekens:
+-   Wildcards zijn vereist voor het bijhouden van meerdere bestanden.
+-   Jokertekens kunnen alleen worden gebruikt in het laatste segment van een pad, zoals C:\folder\bestand of /etc/*.conf
+-   Als een omgevingsvariabele een pad bevat dat niet geldig is, wordt de validatie uitgevoerd, maar mislukt het pad wanneer de voorraad wordt uitgevoerd.
+-   Vermijd bij het instellen van het\*pad algemene paden zoals c: .* waardoor er te veel mappen worden doorsneden.
 
 ## <a name="disable-fim"></a>FIM uitschakelen
-U kunt FIM uitschakelen. FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Door FIM uit te scha kelen, verwijdert u de Wijzigingen bijhouden-oplossing uit de geselecteerde werk ruimte.
+U FIM uitschakelen. FIM gebruikt de Azure Change Tracking-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Door FIM uit te schakelen, verwijdert u de oplossing Voor het bijhouden van wijzigingen uit geselecteerde werkruimte.
 
-1. Als u FIM wilt uitschakelen, keert u terug naar het dash board **File Integrity Monitoring** .
+1. Als u FIM wilt uitschakelen, gaat u terug naar het dashboard **Voor bestandsintegriteitscontrole.**
 2. Selecteer een werkruimte.
-3. Selecteer onder **Bestands integriteit controleren**de optie **uitschakelen**.
+3. Selecteer **Onder Bestandsintegriteitscontrole**de optie **Uitschakelen**.
 
    ![FIM uitschakelen][20]
 
-4. Selecteer **verwijderen** om uit te scha kelen.
+4. Selecteer **Verwijderen** om uit te schakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u de File Integrity Monitoring (FIM) in Security Center kunt gebruiken. Voor meer informatie over Security Center raadpleegt u de volgende pagina's:
+In dit artikel hebt u geleerd om File Integrity Monitoring (FIM) te gebruiken in Security Center. Zie de volgende pagina's voor meer informatie over Security Center:
 
-* [Beveiligings beleid instellen](tutorial-security-policy.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
-* [Aanbevelingen voor beveiliging beheren](security-center-recommendations.md) : meer informatie over hoe aanbevelingen u helpen uw Azure-resources te beveiligen.
-* [Bewaking van beveiligings status](security-center-monitoring.md)--meer informatie over het controleren van de status van uw Azure-resources.
-* [Beveiligings waarschuwingen beheren en](security-center-managing-and-responding-alerts.md)erop reageren--meer informatie over het beheren van en reageren op beveiligings waarschuwingen.
-* [Partner oplossingen bewaken](security-center-partner-solutions.md) : Leer hoe u de integriteits status van uw partner oplossingen kunt bewaken.
+* [Beveiligingsbeleid instellen:](tutorial-security-policy.md) meer informatie over het configureren van beveiligingsbeleid voor uw Azure-abonnementen en brongroepen.
+* [Beveiligingsaanbevelingen beheren:](security-center-recommendations.md) lees hoe aanbevelingen u helpen uw Azure-bronnen te beschermen.
+* [Monitoring van de beveiligingsstatus](security-center-monitoring.md)--Lees hoe u de status van uw Azure-bronnen controleren.
+* [Beveiligingswaarschuwingen beheren en beantwoorden](security-center-managing-and-responding-alerts.md)--Meer informatie over het beheren en reageren op beveiligingswaarschuwingen.
+* [Monitoring partneroplossingen](security-center-partner-solutions.md) - Ontdek hoe u de gezondheidsstatus van uw partneroplossingen controleren.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Azure-beveiligingsblog): hier vindt u het laatste nieuws over Azure-beveiliging en andere informatie.
 
 <!--Image references-->

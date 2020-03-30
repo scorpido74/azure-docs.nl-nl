@@ -10,30 +10,30 @@ ms.topic: include
 ms.date: 02/07/2020
 ms.custom: include file
 ms.openlocfilehash: 0e7cb7e4aaa9862a2b4af51593c29793ea54dd14
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111202"
 ---
 > [!NOTE]
-> Voor meerdelige aanvragen zijn doorgaans drie onderdelen vereist:
-> * Een **Content-type-** header:
+> Aanvragen voor meerdere delen vereisen doorgaans drie stukken:
+> * Een **koptekst van Inhoudstype:**
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * Een **Content-Disposition**:
+> * Een **content-disposition:**
 >   * `form-data; name="metadata"`
-> * De bestands inhoud die moet worden geüpload
+> * De bestandsinhoud die moet worden geüpload
 >
-> **Het inhouds type** en de **verplaatsingen van inhoud** variëren afhankelijk van het gebruiks scenario.
+> **Content-Type** en **Content-Disposition** zijn afhankelijk van het gebruiksscenario.
 
-Meerdelige aanvragen kunnen via een programma worden gemaakt ( C#via), via een rest-client of hulp programma zoals [postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request). REST-client hulpprogramma's kunnen verschillende ondersteunings niveaus voor complexe meerdelige aanvragen hebben. Configuratie-instellingen kunnen ook enigszins afwijken van het hulp programma. Controleer welk hulp programma het meest geschikt is voor uw behoeften.
+Meerdelige aanvragen kunnen programmatisch worden gedaan (via C#), via een REST-client of tool zoals [Postman.](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request) REST-clienttools kunnen verschillende ondersteuningsniveaus hebben voor complexe meerdelige aanvragen. Configuratie-instellingen kunnen ook enigszins variëren van gereedschap tot gereedschap. Controleer welke tool het meest geschikt is voor uw behoeften.
 
 > [!IMPORTANT]
-> Meerdelige aanvragen voor de Azure Digital Apparaatdubbels Management-Api's hebben doorgaans twee delen:
-> * BLOB-meta gegevens (zoals een gekoppeld MIME-type) die worden gedeclareerd door **inhouds type** en/of **Content-Disposition**
-> * Blob-inhoud die de ongestructureerde inhoud bevat van een bestand dat moet worden geüpload
+> Aanvragen voor meerdere delen die worden ingediend bij de Azure Digital Twins Management API's hebben doorgaans twee delen:
+> * Blob-metagegevens (zoals een gekoppeld MIME-type) die is gedeclareerd door **Content-Type** en/of **Inhoudsgezindheid**
+> * Blob-inhoud die de ongestructureerde inhoud van een bestand bevat dat moet worden geüpload
 >
-> Geen van beide onderdelen is vereist voor **patch** -aanvragen. Beide zijn vereist voor **post** -of Create-bewerkingen.
+> Geen van beide delen is **PATCH** vereist voor PATCH-aanvragen. Beide zijn vereist voor **POST** of het maken van bewerkingen.
 
-De [bron code](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) voor de Quick Start C# van de bezetting bevat volledige voor beelden die laten zien hoe u meerdelige aanvragen kunt maken voor de Azure Digital Apparaatdubbels-beheer-api's.
+De [broncode van Occupancy Quickstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs) bevat volledige C#-voorbeelden die laten zien hoe u meerdelige aanvragen indienen tegen de Azure Digital Twins Management API's.

@@ -4,15 +4,15 @@ description: Inleiding tot het gebruik van Terraform om de Azure-infrastructuur 
 ms.topic: overview
 ms.date: 10/26/2019
 ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77472159"
 ---
 # <a name="terraform-with-azure"></a>Terraform met Azure
 
-[Hashicorp Terraform](https://www.terraform.io/) is een open-source-hulpprogramma voor het inrichten en beheren van cloudinfrastructuur. Er wordt een infra structuur in configuratie bestanden die de topologie van Cloud bronnen beschrijven beschreven. Deze resources omvatten virtuele machines, opslag accounts en netwerk interfaces. De terraform CLI biedt een eenvoudig mechanisme voor het implementeren en de versie van de configuratie bestanden naar Azure.
+[Hashicorp Terraform](https://www.terraform.io/) is een open-source-hulpprogramma voor het inrichten en beheren van cloudinfrastructuur. Het codificert infrastructuur in configuratiebestanden die de topologie van cloudbronnen beschrijven. Deze bronnen omvatten virtuele machines, opslagaccounts en netwerkinterfaces. De Terraform CLI biedt een eenvoudig mechanisme voor het implementeren en versievan de configuratiebestanden naar Azure.
 
 In dit artikel worden de voordelen beschreven van het gebruik van Terraform voor het beheer van de Azure-infrastructuur.
 
@@ -24,17 +24,17 @@ Met de op sjablonen gebaseerde configuratiebestanden van Terraform kunt u Azure-
 - Dezelfde sjabloon wordt meerdere keren geïmplementeerd om identieke ontwikkel-, test- en productieomgevingen te maken.
 - Reduceert de kosten van ontwikkel- en testomgevingen door ze op aanvraag te maken.
 
-## <a name="understand-infrastructure-changes-before-being-applied"></a>Wijzigingen in de infra structuur begrijpen voordat u deze toepast
+## <a name="understand-infrastructure-changes-before-being-applied"></a>Inzicht in wijzigingen in de infrastructuur voordat u wordt toegepast
 
 Als een resourcetopologie complex wordt, kan het moeilijk zijn om de betekenis en impact van wijzigingen in de infrastructuur te begrijpen.
 
-Met de terraform CLI kunnen gebruikers wijzigingen in de infra structuur valideren en bekijken vóór de toepassing. Het bekijken van een voor beeld van infrastructuur wijzigingen op een veilige manier heeft verschillende voor delen:
+Met de Terraform CLI kunnen gebruikers wijzigingen in de infrastructuur valideren en bekijken voordat ze worden toegepast. Het op een veilige manier bekijken van wijzigingen in de infrastructuur heeft verschillende voordelen:
 - Teamleden kunnen effectiever samenwerken door voorgestelde wijzigingen en hun impact snel te begrijpen.
 - Onbedoelde veranderingen kunnen vroeg in het ontwikkelingsproces worden opgevangen
 
 ## <a name="deploy-infrastructure-to-multiple-clouds"></a>Infrastructuur implementeren in meerdere clouds
 
-Terraform is vertrouwd bij het implementeren van een infra structuur over meerdere cloud providers. Hierdoor kunnen ontwikkel aars consistente hulp middelen gebruiken om elke infrastructuur definitie te beheren.
+Terraform is bedreven in het implementeren van een infrastructuur voor meerdere cloudproviders. Het stelt ontwikkelaars in staat om consistente tooling te gebruiken om elke infrastructuurdefinitie te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

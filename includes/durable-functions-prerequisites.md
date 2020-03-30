@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 85fbd7a65fe19e785488714411d671c8ee29ab40
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77562056"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-* [Het artikel Snelstartgids volt ooien](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-* [Kloon of down load het project met voor beelden van GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
+* [Het quickstart-artikel voltooien](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
+* [Kloon of download het voorbeeldproject van GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-* [Het artikel Snelstartgids volt ooien](../articles/azure-functions/durable/quickstart-js-vscode.md)
-* [Kloon of down load het project met voor beelden van GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
+* [Het quickstart-artikel voltooien](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [Kloon of download het voorbeeldproject van GitHub](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
 
 ---

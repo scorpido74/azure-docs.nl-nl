@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde aanvals detectie in azure-Sentinel
-description: Gebruik fusie technologie in azure Sentinel om waarschuwings-intensiefheid te verminderen en incidenten te maken die zijn gebaseerd op geavanceerde aanvals detectie.
+title: Geavanceerde multistage-aanvalsdetectie in Azure Sentinel
+description: Gebruik Fusion-technologie in Azure Sentinel om waarschuwingsvermoeidheid te verminderen en bruikbare incidenten te maken die zijn gebaseerd op geavanceerde multistage-aanvalsdetectie.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,328 +13,328 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587920"
 ---
-# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Geavanceerde aanvals detectie in azure-Sentinel
+# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Geavanceerde multistage-aanvalsdetectie in Azure Sentinel
 
 
 > [!IMPORTANT]
-> Sommige Fusion-functies in azure Sentinel zijn momenteel beschikbaar als open bare preview.
-> Deze functies worden zonder service level agreement gegeven en worden niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Sommige Fusion-functies in Azure Sentinel zijn momenteel in openbare preview.
+> Deze functies worden geleverd zonder een serviceniveauovereenkomst en worden niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
 
 
-Door gebruik te maken van fusie technologie die is gebaseerd op machine learning, kan Azure Sentinel automatisch meerdere fase aanvallen detecteren door afwijkend gedrag en verdachte activiteiten te combi neren die in verschillende stadia van de Kill-keten worden waargenomen. Azure Sentinel genereert vervolgens incidenten die op een andere manier moeilijk te ondervangen zijn. Deze incidenten omsluiten twee of meer waarschuwingen of activiteiten. Het ontwerp van deze incidenten is een laag volume, een hoge mate van kwaliteit en een hoge ernst.
+Door fusietechnologie te gebruiken die is gebaseerd op machine learning, kan Azure Sentinel automatisch aanvallen op meerdere podia detecteren door afwijkend gedrag en verdachte activiteiten te combineren die in verschillende stadia van de kill-chain worden waargenomen. Azure Sentinel genereert vervolgens incidenten die anders zeer moeilijk te vangen zouden zijn. Bij deze incidenten zijn twee of meer waarschuwingen of activiteiten nodig. Door het ontwerp, deze incidenten zijn laag volume, high fidelity, en hoge ernst.
 
-Deze detectie verkleint uw omgeving, maar vermindert niet alleen valse positieve tarieven, maar kan ook aanvallen met beperkte of ontbrekende gegevens detecteren.
+Aangepast voor uw omgeving, deze detectie vermindert niet alleen vals-positieve tarieven, maar kan ook aanvallen detecteren met beperkte of ontbrekende informatie.
 
-## <a name="configuration-for-advanced-multistage-attack-detection"></a>Configuratie voor geavanceerde detectie van aanvallen met een andere fase
+## <a name="configuration-for-advanced-multistage-attack-detection"></a>Configuratie voor geavanceerde detectie van aanvallen met meerdere fasen
 
-Deze detectie is standaard ingeschakeld in azure Sentinel. Gebruik de volgende instructies om de status te controleren of het mogelijk uit te scha kelen omdat u een alternatieve oplossing gebruikt om incidenten te maken op basis van meerdere waarschuwingen:
+Deze detectie is standaard ingeschakeld in Azure Sentinel. Gebruik de volgende instructies om de status te controleren of uit te schakelen omdat u een alternatieve oplossing gebruikt om incidenten te maken op basis van meerdere waarschuwingen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als u dat nog niet hebt gedaan.
 
-2. Ga naar **Azure Sentinel** > **Configuration** > **Analytics**
+2. Navigeren naar **Azure Sentinel** > **Configuration** > **Analytics**
 
-3. Selecteer **actieve regels** en zoek in de kolom **naam** de **Geavanceerde detectie van aanvallen** met meerdere fasen. Controleer de kolom **status** om te controleren of deze detectie is ingeschakeld of uitgeschakeld.
+3. Selecteer **Actieve regels** en zoek Geavanceerde **multistage-aanvalsdetectie** in de kolom **NAAM.** Controleer de kolom **STATUS** om te controleren of deze detectie is ingeschakeld of uitgeschakeld.
 
-4. Als u de status wilt wijzigen **, selecteert u**dit item en selecteert u op de Blade **Geavanceerde aanvals detectie** .
+4. Als u de status wilt wijzigen, selecteert u dit item en selecteert u op het geavanceerde **mes voor aanvalsdetectie op meerdere plaatsen** de optie **Bewerken**.
 
-5. Op de Blade wizard voor het **maken van regels** wordt de status wijziging automatisch voor u geselecteerd, dus Selecteer **volgende: controleren**en vervolgens **Opslaan**. 
+5. In het **wizardblad regelcreatie** wordt de statuswijziging automatisch voor u geselecteerd, dus selecteer **Volgende: Controleren**en **vervolgens Opslaan**. 
 
-Regel sjablonen zijn niet van toepassing op de geavanceerde detectie van de multifase-aanval.
+Regelsjablonen zijn niet van toepassing op de geavanceerde multistage-aanvalsdetectie.
 
 > [!NOTE]
-> Azure Sentinel maakt momenteel gebruik van 30 dagen aan historische gegevens om de machine learning systemen te trainen. Deze gegevens worden altijd versleuteld met behulp van de sleutels van micro soft, zoals door de machine learning pijp lijn wordt door gegeven. De trainings gegevens worden echter niet versleuteld met behulp van door de [klant beheerde sleutels (CMK)](customer-managed-keys.md) als u CMK hebt ingeschakeld in uw Azure Sentinel-werk ruimte. Als u wilt deel nemen aan fusie, gaat u naar **Azure Sentinel** \> **configuratie** \> **Analytics \> actieve regels \> geavanceerde aanval** van meerdere fasen en selecteert u in de kolom **status** de optie **uitschakelen.**
+> Azure Sentinel gebruikt momenteel 30 dagen aan historische gegevens om de machine learning-systemen te trainen. Deze gegevens worden altijd versleuteld met de sleutels van Microsoft terwijl deze door de machine learning-pijplijn gaan. De trainingsgegevens worden echter niet versleuteld met [behulp van Customer Managed Keys (CMK)](customer-managed-keys.md) als u CMK hebt ingeschakeld in uw Azure Sentinel-werkruimte. Als u zich wilt afmelden voor Fusion, navigeert u naar **Azure Sentinel** \> **Configuration** \> ** \> Analytics Active rules \> Advanced Multistage Attack Detection** en selecteert u In de kolom **Status** de optie **Uitschakelen.**
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusie met Palo Alto-netwerken en micro soft Defender ATP
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusion met Palo Alto Networks en Microsoft Defender ATP
 
-In deze scenario's worden twee van de fundamentele logboeken gecombineerd die worden gebruikt door beveiligings analisten: Firewall logboeken van Palo Alto-netwerken en logboeken voor eindpunt detectie vanuit micro soft Defender ATP. In alle scenario's die hieronder worden weer gegeven, wordt er een verdachte activiteit gedetecteerd in het eind punt met een extern IP-adres. vervolgens wordt dit gevolgd door afwijkend verkeer van het externe IP-adres terug naar de firewall. In Palo Alto-Logboeken wordt Azure Sentinel gericht op [bedreigings logboeken](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)en verkeer wordt beschouwd als verdacht Wanneer bedreigingen zijn toegestaan (verdachte gegevens, bestanden, flooden, pakketten, scans, spyware, url's, virussen, beveiligings problemen, bosbrand-virussen, Wildfires).
+Deze scenario's combineren twee van de fundamentele logboeken die worden gebruikt door beveiligingsanalisten: firewalllogboeken van Palo Alto Networks en end-point detectielogboeken van Microsoft Defender ATP. In alle onderstaande scenario's wordt een verdachte activiteit gedetecteerd in het eindpunt waarbij een extern IP-adres is betrokken, dit wordt gevolgd door afwijkend verkeer van het externe IP-adres terug naar de firewall. In Palo Alto-logboeken richt Azure Sentinel zich op [bedreigingslogboeken](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)en wordt verkeer als verdacht beschouwd wanneer bedreigingen zijn toegestaan (verdachte gegevens, bestanden, overstromingen, pakketten, scans, spyware, URL's, virussen, kwetsbaarheden, bosbranden, bosbranden).
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Netwerk aanvraag naar TOR anoniem maken-service, gevolgd door afwijkend verkeer dat is gemarkeerd met de firewall van Palo Alto Networks.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Netwerkaanvraag voor TOR-anonymization-service, gevolgd door afwijkend verkeer dat is gemarkeerd door de firewall van Palo Alto Networks.
 
-In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat er een netwerk aanvraag naar een TOR anoniem maken-service is gedetecteerd die leidt tot afwijkende activiteiten. Dit is gestart onder account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}.
-Vervolgens is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit duidt op schadelijk verkeer dat uw netwerk heeft opgegeven het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat Microsoft Defender Advanced Threat Protection een netwerkaanvraag heeft gedetecteerd voor een TOR-anonymisatieservice die leidt tot afwijkende activiteit. Dit werd gestart onder account {account name} met SID ID {sid} op {time}. Het uitgaande IP-adres van de verbinding was {IndividualIp}.
+Vervolgens werd ongebruikelijke activiteit gedetecteerd door de Palo Alto Networks Firewall op {TimeGenerated}. Dit geeft aan dat er kwaadaardig verkeer in uw netwerk is ingevoerd Het doel-IP-adres voor het netwerkverkeer is {DestinationIP}.
 
-Dit scenario is momenteel beschikbaar als open bare preview.
+Dit scenario bevindt zich momenteel in een openbare preview.
 
 
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Power Shell heeft een verdachte netwerk verbinding gemaakt, gevolgd door afwijkend verkeer dat is gemarkeerd met de firewall Palo Alto Networks.
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell maakte een verdachte netwerkverbinding gevolgd door afwijkend verkeer gemarkeerd door Palo Alto Networks firewall.
 
-In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat er door Power shell een verdachte netwerk verbinding is gemaakt die leidt tot afwijkende activiteiten die zijn gedetecteerd door een Palo Alto-netwerk firewall. Dit is gestart door het account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}. Vervolgens is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit geeft aan dat het schadelijke verkeer uw netwerk heeft binnengekomen. Het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat Microsoft Defender Advanced Threat Protection heeft gedetecteerd dat PowerShell een verdachte netwerkverbinding heeft gemaakt die leidde tot afwijkende activiteit die werd gedetecteerd door een Palo Alto Network Firewall. Dit is geïnitieerd door het account {accountname} met SID ID {sid} op {time}. Het uitgaande IP-adres van de verbinding was {IndividualIp}. Vervolgens werd ongebruikelijke activiteit gedetecteerd door de Palo Alto Networks Firewall op {TimeGenerated}. Dit geeft aan dat kwaadwillig verkeer uw netwerk is binnengekomen. Het doel-IP-adres voor het netwerkverkeer is {DestinationIP}.
 
-Dit scenario is momenteel beschikbaar als open bare preview.
+Dit scenario bevindt zich momenteel in een openbare preview.
 
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Uitgaande verbinding met IP met een geschiedenis van ongeoorloofde toegangs pogingen gevolgd door afwijkend verkeer dat is gemarkeerd door de firewall Palo Alto Networks
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Uitgaande verbinding met IP met een geschiedenis van ongeautoriseerde toegangspogingen gevolgd door afwijkend verkeer dat is gemarkeerd door de firewall van Palo Alto Networks
 
-In dit scenario detecteert Azure Sentinel een waarschuwing dat een uitgaande verbinding met een IP-adres door micro soft Defender Advanced Threat Protection is gedetecteerd met een geschiedenis van ongeoorloofde toegangs pogingen die leiden tot afwijkende activiteiten die worden gedetecteerd door de Palo Alto Netwerk firewall. Dit is gestart door het account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}. Hierna is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit geeft aan dat het schadelijke verkeer uw netwerk heeft binnengekomen. Het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+In dit scenario detecteert Azure Sentinel een waarschuwing dat Microsoft Defender Advanced Threat Protection een uitgaande verbinding met een IP-adres heeft gedetecteerd met een geschiedenis van ongeautoriseerde toegangspogingen die leiden tot abnormale activiteit die wordt gedetecteerd door de Palo Alto Netwerken Firewall. Dit is geïnitieerd door het account {accountname} met SID ID {sid} op {time}. Het uitgaande IP-adres van de verbinding was {IndividualIp}. Hierna werd ongebruikelijke activiteit gedetecteerd door de Palo Alto Networks Firewall op {TimeGenerated}. Dit geeft aan dat kwaadwillig verkeer uw netwerk is binnengekomen. Het doel-IP-adres voor het netwerkverkeer is {DestinationIP}.
 
-Dit scenario is momenteel beschikbaar als open bare preview.
+Dit scenario bevindt zich momenteel in een openbare preview.
 
 
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fusie met identiteits beveiliging en Microsoft Cloud App Security
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fusion met identity protection en Microsoft Cloud App Security
 
-Met geavanceerde detectie van aanvallen met meerdere fasen ondersteunt Azure Sentinel de volgende scenario's die afwijkende gebeurtenissen van Azure Active Directory Identity Protection en Microsoft Cloud App Security combi neren:
+Met behulp van geavanceerde multistage-aanvalsdetectie ondersteunt Azure Sentinel de volgende scenario's die anomaliegebeurtenissen van Azure Active Directory Identity Protection en Microsoft Cloud App Security combineren:
 
-- [Onmogelijke reis naar ongewone locatie, gevolgd door afwijkende Office 365-activiteit](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Aanmeldings activiteit voor onbekende locatie gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Aanmeldings activiteiten vanaf geïnfecteerd apparaat, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Aanmeldings activiteit vanaf een anoniem IP-adres, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Aanmeldings activiteit van de gebruiker met de gelekte referenties, gevolgd door een afwijkend Office 365-activiteit](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+- [Onmogelijke reizen naar atypische locatie, gevolgd door afwijkende Office 365-activiteit](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
+- [Aanmeldingsactiviteit voor onbekende locatie, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
+- [Aanmeldingsactiviteit van geïnfecteerd apparaat, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
+- [Aanmeldingsactiviteit vanaf anoniem IP-adres, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
+- [Aanmeldingsactiviteit van gebruiker met gelekte referenties, gevolgd door afwijkende Office 365-activiteit](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
 
-U moet beschikken over de [Azure AD Identity Protection Data Connector](connect-azure-ad-identity-protection.md) en de [Cloud app Security](connect-cloud-app-security.md) -connectors zijn geconfigureerd.
+U moet de [azure AD Identity Protection-gegevensconnector](connect-azure-ad-identity-protection.md) en de [cloud-app-beveiligingsconnectoren](connect-cloud-app-security.md) hebben geconfigureerd.
 
-In de volgende beschrijvingen geeft Azure Sentinel de werkelijke waarde weer van uw gegevens die op deze pagina worden weer gegeven als variabelen tussen vier Kante haken. Bijvoorbeeld, de werkelijke weergave naam van een account in plaats van \<*account naam*> en het werkelijke nummer in plaats van \<*nummer*>.
+In de volgende beschrijvingen geeft Azure Sentinel de werkelijke waarde van uw gegevens weer die op deze pagina wordt weergegeven als variabelen tussen haakjes. Bijvoorbeeld, de werkelijke weergavenaam van \<een account in plaats van \< *accountnaam*>, en het werkelijke aantal in plaats van *nummer*>.
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Onmogelijke reis naar ongewone locatie, gevolgd door afwijkende Office 365-activiteit
+### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Onmogelijke reizen naar atypische locatie, gevolgd door afwijkende Office 365-activiteit
 
-Er zijn zeven mogelijke Azure-Sentinel-incidenten die onmogelijke reis naar ongewone locatie waarschuwingen combi neren van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die door Microsoft Cloud App Security worden gegenereerd:
+Er zijn zeven mogelijke Azure Sentinel-incidenten die onmogelijk reizen combineren met atypische locatiewaarschuwingen van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die worden gegenereerd door Microsoft Cloud App Security:
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot Office 365-postvak exfiltration**
+- **Onmogelijke verplaatsing naar atypische locaties die leiden tot exfiltratie van Office 365-postvak**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijk traject naar \<*locatie*>, een ongewoone locatie, gevolgd door een verdachte postvak-doorstuur regel, ingesteld op het postvak in van een gebruiker.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie, gevolgd door een verdachte inbox doorstuurregel die is ingesteld op het postvak IN van een gebruiker.
     
-    Dit kan erop wijzen dat het account is aangetast en dat het postvak wordt gebruikt om gegevens van uw organisatie te exfiltreren. De gebruikers \<*account naam*> een regel voor het door sturen van het postvak in gemaakt of bijgewerkt waarmee alle binnenkomende e-mails worden doorgestuurd naar het externe adres \<*e-mail adres*>.
+    Dit kan erop wijzen dat het account is gecompromitteerd en dat het postvak wordt gebruikt om informatie van uw organisatie te exfiltreren. De \< *gebruikersnaam>* een doorstuurregel voor inboxen gemaakt of bijgewerkt \<die alle binnenkomende e-mail doorstuurt naar het *e-mailadres* van het externe adres>.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot verdachte Cloud app-beheer activiteiten**
+- **Onmogelijke reizen naar atypische locaties die leiden tot verdachte beheeractiviteiten van cloud-apps**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijke reis naar \<*locatie*>, een ongewoone locatie.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie.
     
-    Vervolgens wordt het account \<*account naam*> uitgevoerd via \<*nummer*> beheer activiteiten tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<uitgevoerd op *het aantal*> administratieve activiteiten in één sessie.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot massale bestands verwijdering**
+- **Onmogelijke reizen naar atypische locaties die leiden tot massa-verwijdering van bestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> naar \<*locatie*>, een ongewoone locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> \< *locatie*>, een atypische locatie. 
     
-    Vervolgens wordt het account \<*account naam*> een \<*aantal*> unieke bestanden verwijderd tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<het *aantal*> unieke bestanden in één sessie verwijderd.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot massale bestands downloads**
+- **Onmogelijke reizen naar atypische locaties die leiden tot massa-bestand te downloaden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijke reis naar \<*locatie*>, een ongewoone locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie. 
     
-    Vervolgens wordt het account \<*account naam*> gedownload via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* gedownload \<over *het aantal*> unieke bestanden in één sessie.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot Office 365-imitatie**
+- **Onmogelijke reizen naar atypische locaties die leiden tot Office 365-imitatie**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijke reis naar \<*locatie*>, een ongewoone locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie. 
     
-    Vervolgens wordt het account \<*account naam*> een ongebruikelijke hoeveelheid (\<*aantal activiteiten*>) van imitatie activiteiten in één sessie uitgevoerd.
+    Vervolgens> \<de *accountnaam* een ongebruikelijk\<bedrag *(aantal activiteiten*>) van imitatieactiviteiten in één sessie uitgevoerd.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot massale bestands deling**
+- **Onmogelijke reizen naar atypische locaties die leiden tot het delen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijke reis naar \<*locatie*>, een ongewoone locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie. 
     
-    Vervolgens wordt het account \<*account naam*> gedeeld via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<gedeeld over *het aantal*> unieke bestanden in één sessie.
 
-- **Onmogelijke reis naar ongewone locaties die leiden tot Ransomware in de Cloud-app**
+- **Onmogelijke reizen naar atypische locaties die leiden tot ransomware in cloud-app**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een onmogelijke reis naar \<*locatie*>, een ongewoone locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een onmogelijke reis naar *locatie*>, een atypische locatie. 
     
-    Vervolgens wordt het account \<*account naam*> geüpload \<*aantal*> bestanden, en wordt het totale *aantal \<bestanden*verwijderd. 
+    Vervolgens> \<de *accountnaam* \< *het aantal*> bestanden geüpload \<en een totaal *aantal*> bestanden verwijderd. 
     
-    Dit activiteiten patroon is indicatief voor een mogelijke Ransomware-aanval.
+    Deze activiteit patroon is indicatief voor een potentiële ransomware aanval.
 
 
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Aanmeldings activiteit voor onbekende locatie gevolgd door afwijkende Office 365-activiteit
+### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Aanmeldingsactiviteit voor onbekende locatie, gevolgd door afwijkende Office 365-activiteit
 
-Er zijn zeven mogelijke Azure-Sentinel-incidenten die aanmeldings activiteiten combi neren voor onbekende locatie waarschuwingen van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die door Microsoft Cloud App Security worden gegenereerd.
+Er zijn zeven mogelijke Azure Sentinel-incidenten die aanmeldingsactiviteit combineren voor onbekende locatiewaarschuwingen van Azure AD-identiteitsbeveiliging en afwijkende Office 365-waarschuwingen die worden gegenereerd door Microsoft Cloud App Security.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot Exchange Online-postvak exfiltration**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot exfiltratie van Exchange Online-postvak**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie, gevolgd door een verdachte postvak-doorstuur regel, ingesteld op het postvak in van een gebruiker.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> vanaf \< *locatie*>, een onbekende locatie, gevolgd door een verdachte inbox doorstuurregel die is ingesteld op het postvak in van een gebruiker.
     
-    Dit kan erop wijzen dat het account is aangetast en dat het postvak wordt gebruikt om gegevens van uw organisatie te exfiltreren. De gebruikers \<*account naam*> een regel voor het door sturen van het postvak in gemaakt of bijgewerkt waarmee alle binnenkomende e-mails worden doorgestuurd naar het externe adres \<*e-mail adres*>. 
+    Dit kan erop wijzen dat het account is gecompromitteerd en dat het postvak wordt gebruikt om informatie van uw organisatie te exfiltreren. De \< *gebruikersnaam>* een doorstuurregel voor inboxen gemaakt of bijgewerkt \<die alle binnenkomende e-mail doorstuurt naar het *e-mailadres* van het externe adres>. 
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot verdachte Cloud app-beheer activiteiten**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot verdachte beheeractiviteiten van cloud-apps**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie. 
     
-    Vervolgens wordt het account \<*account naam*> uitgevoerd via \<*aantal*> beheer activiteiten tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<uitgevoerd ten opzichte *van het aantal*> administratieve activiteiten in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot massale bestands verwijdering**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot het verwijderen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie. 
     
-    Vervolgens wordt het account \<*account naam*> een \<*aantal*> unieke bestanden verwijderd tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<het *aantal*> unieke bestanden in één sessie verwijderd.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot massale bestands downloads**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot het downloaden van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie. 
     
-    Vervolgens wordt het account \<*account naam*> gedownload via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* gedownload \<over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot Office 365-imitatie**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot Office 365-imitatie**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie.
     
-    Vervolgens wordt het account \<*account naam*> geïmiteerd \<*aantal*> accounts in één sessie.
+    Vervolgens> \<de *accountnaam* zich \<voorgedaan boven *het aantal*> verschillende accounts in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot massaal delen van bestanden**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot het delen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie. 
     
-    Vervolgens wordt het account \<*account naam*> gedeeld via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<gedeeld over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een onbekende locatie die leidt tot Ransomware in de Cloud-app**
+- **Aanmeldingsgebeurtenis vanaf een onbekende locatie die leidt tot ransomware in de cloud-app**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van \<*locatie*>, een onbekende locatie. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van \< *locatie*>, een onbekende locatie. 
     
-    Vervolgens wordt het account \<*account naam*> geüpload \<*aantal*> bestanden, en wordt het totale *aantal \<bestanden*verwijderd. 
+    Vervolgens> \<de *accountnaam* \< *het aantal*> bestanden geüpload \<en een totaal *aantal*> bestanden verwijderd. 
     
-    Dit activiteiten patroon is indicatief voor een mogelijke Ransomware-aanval.
+    Deze activiteit patroon is indicatief voor een potentiële ransomware aanval.
 
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Aanmeldings activiteiten vanaf geïnfecteerd apparaat, gevolgd door afwijkende Office 365-activiteit
+### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Aanmeldingsactiviteit van geïnfecteerd apparaat, gevolgd door afwijkende Office 365-activiteit
 
-Er zijn zeven mogelijke Azure-Sentinel-incidenten die aanmeldings activiteiten combi neren van geïnfecteerde apparaatstuurprogramma's van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die zijn gegenereerd door Microsoft Cloud App Security:
+Er zijn zeven mogelijke Azure Sentinel-incidenten die aanmeldingsactiviteit combineren van geïnfecteerde apparaatwaarschuwingen van Azure AD-identiteitsbeveiliging en afwijkende Office 365-waarschuwingen die worden gegenereerd door Microsoft Cloud App Security:
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat dat het Office 365-postvak exfiltration**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot exfiltratie van Office 365-postvak**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met malware, gevolgd door een verdachte doorstuur regel voor Postvak in, ingesteld in het postvak in van een gebruiker.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd, gevolgd door een verdachte inbox doorstuurregel die is ingesteld op het postvak IN van een gebruiker.
     
-    Dit kan erop wijzen dat het account is aangetast en dat het postvak wordt gebruikt om gegevens van uw organisatie te exfiltreren. De gebruikers \<*account naam*> een regel voor het door sturen van het postvak in gemaakt of bijgewerkt waarmee alle binnenkomende e-mails worden doorgestuurd naar het externe adres \<*e-mail adres*>. 
+    Dit kan erop wijzen dat het account is gecompromitteerd en dat het postvak wordt gebruikt om informatie van uw organisatie te exfiltreren. De \< *gebruikersnaam>* een doorstuurregel voor inboxen gemaakt of bijgewerkt \<die alle binnenkomende e-mail doorstuurt naar het *e-mailadres* van het externe adres>. 
 
-- **Aanmeldings gebeurtenis van een geïnfecteerd apparaat die tot verdachte Cloud app-beheer activiteit leidt**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot verdachte administratieve activiteit in de cloud-app**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd.
     
-    Vervolgens wordt het account \<*account naam*> uitgevoerd via \<*aantal*> beheer activiteiten tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<uitgevoerd ten opzichte *van het aantal*> administratieve activiteiten in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat waardoor massale bestanden kunnen worden verwijderd**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot het verwijderen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd. 
     
-    Vervolgens wordt het account \<*account naam*> een \<*aantal*> unieke bestanden verwijderd tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<het *aantal*> unieke bestanden in één sessie verwijderd.
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat waardoor massale bestanden kunnen worden gedownload**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot het downloaden van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd. 
     
-    Vervolgens wordt het account \<*account naam*> gedownload via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* gedownload \<over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat die leidt tot Office 365-imitatie**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot Office 365-imitatie**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd. 
     
-    Vervolgens wordt het account \<*account naam*> geïmiteerd \<*aantal*> accounts in één sessie.
+    Vervolgens> \<de *accountnaam* zich \<voorgedaan boven *het aantal*> verschillende accounts in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat waardoor massa bestanden kunnen worden gedeeld**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot het delen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd. 
     
-    Vervolgens wordt het account \<*account naam*> gedeeld via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<gedeeld over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een geïnfecteerd apparaat die tot Ransomware kan leiden in de Cloud-app**
+- **Aanmeldingsgebeurtenis vanaf een geïnfecteerd apparaat dat leidt tot ransomware in de cloud-app**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een apparaat dat mogelijk is geïnfecteerd met schadelijke software. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een apparaat dat mogelijk met malware is geïnfecteerd. 
     
-    Vervolgens wordt het account \<*account naam*> geüpload \<*aantal*> bestanden, en wordt het totale *aantal \<bestanden*verwijderd. 
+    Vervolgens> \<de *accountnaam* \< *het aantal*> bestanden geüpload \<en een totaal *aantal*> bestanden verwijderd. 
     
-    Dit activiteiten patroon is indicatief voor een mogelijke Ransomware-aanval.
+    Deze activiteit patroon is indicatief voor een potentiële ransomware aanval.
 
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Aanmeldings activiteit vanaf een anoniem IP-adres, gevolgd door afwijkende Office 365-activiteit
+### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Aanmeldingsactiviteit vanaf anoniem IP-adres, gevolgd door afwijkende Office 365-activiteit
 
-Er zijn zeven mogelijke Azure-Sentinel-incidenten die aanmeldings activiteiten combi neren van anonieme IP-adres waarschuwingen van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die door Microsoft Cloud App Security worden gegenereerd:
+Er zijn zeven mogelijke Azure Sentinel-incidenten die aanmeldingsactiviteiten combineren van anonieme IP-adreswaarschuwingen van Azure AD-identiteitsbeveiliging en afwijkende Office 365-waarschuwingen die worden gegenereerd door Microsoft Cloud App Security:
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot Office 365-postvak exfiltration**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt tot exfiltratie van Office 365-postvak**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>, gevolgd door een verdachte postvak in-doorstuur regel, ingesteld op het postvak in van een gebruiker.
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op *accountnaam*> van een anoniem IP-adres van een \< *proxy-IP-adres*>, gevolgd door een verdachte inbox doorstuurregel die is ingesteld op het postvak IN van een gebruiker.
     
-    Dit kan erop wijzen dat het account is aangetast en dat het postvak wordt gebruikt om gegevens van uw organisatie te exfiltreren. De gebruikers \<*account naam*> een regel voor het door sturen van het postvak in gemaakt of bijgewerkt waarmee alle binnenkomende e-mails worden doorgestuurd naar het externe adres \<*e-mail adres*>. 
+    Dit kan erop wijzen dat het account is gecompromitteerd en dat het postvak wordt gebruikt om informatie van uw organisatie te exfiltreren. De \< *gebruikersnaam>* een doorstuurregel voor inboxen gemaakt of bijgewerkt \<die alle binnenkomende e-mail doorstuurt naar het *e-mailadres* van het externe adres>. 
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot verdachte Cloud app-beheer activiteiten**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt tot verdachte beheeractiviteiten van cloud-apps**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> uitgevoerd via \<*aantal*> beheer activiteiten tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<uitgevoerd ten opzichte *van het aantal*> administratieve activiteiten in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot massale bestands verwijdering**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt tot het verwijderen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> een \<*aantal*> unieke bestanden verwijderd tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<het *aantal*> unieke bestanden in één sessie verwijderd.
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot massale bestands downloads**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt tot het downloaden van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> gedownload via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* gedownload \<over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot Office 365-imitatie**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt naar Office 365-imitatie**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> geïmiteerd \<*aantal*> accounts in één sessie.
+    Vervolgens> \<de *accountnaam* zich \<voorgedaan boven *het aantal*> verschillende accounts in één sessie.
 
-- **Aanmeldings gebeurtenis vanaf een anoniem IP-adres dat leidt tot massaal delen van bestanden**
+- **Aanmeldingsgebeurtenis vanaf een anoniem IP-adres dat leidt tot het delen van massabestanden**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> gedeeld via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<gedeeld over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis van een anoniem IP-adres naar Ransomware in de Cloud-app**
+- **Aanmeldingsgebeurtenis van een anoniem IP-adres naar ransomware in de cloud-app**
     
-    Deze waarschuwing geeft een indicatie van een aanmeldings gebeurtenis door \<*account naam*> van een IP-adres van een anonieme proxy \<*ip-adres*>. 
+    Deze waarschuwing is een indicatie van \<een aanmeldingsgebeurtenis op \< *accountnaam*> van een anoniem IP-adres van een *proxy-IP-adres*>. 
     
-    Vervolgens wordt het account \<*account naam*> geüpload \<*aantal*> bestanden, en wordt het totale *aantal \<bestanden*verwijderd. 
+    Vervolgens> \<de *accountnaam* \< *het aantal*> bestanden geüpload \<en een totaal *aantal*> bestanden verwijderd. 
     
-    Dit activiteiten patroon is indicatief voor een mogelijke Ransomware-aanval.
+    Deze activiteit patroon is indicatief voor een potentiële ransomware aanval.
 
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Aanmeldings activiteit van de gebruiker met de gelekte referenties, gevolgd door een afwijkend Office 365-activiteit
+### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Aanmeldingsactiviteit van gebruiker met gelekte referenties, gevolgd door afwijkende Office 365-activiteit
 
-Er zijn zeven mogelijke Azure-Sentinel-incidenten die aanmeldings activiteiten combi neren van de gebruiker met gelekte aanmeldings gegevens van Azure AD Identity Protection en afwijkende Office 365-waarschuwingen die door Microsoft Cloud App Security worden gegenereerd:
+Er zijn zeven mogelijke Azure Sentinel-incidenten die aanmeldingsactiviteit van de gebruiker combineren met gelekte referentieswaarschuwingen van Azure AD-identiteitsbeveiliging en afwijkende Office 365-waarschuwingen die worden gegenereerd door Microsoft Cloud App Security:
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties die het gevolg zijn van het Office 365-postvak exfiltration**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot exfiltratie van Office 365-postvak**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties, gevolgd door een verdachte postvak in-doorstuur regel, is ingesteld in het postvak in van een gebruiker. 
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt, gevolgd door een verdachte inbox doorstuurregel die is ingesteld op het postvak IN van een gebruiker. 
     
-    Dit kan erop wijzen dat het account is aangetast en dat het postvak wordt gebruikt om gegevens van uw organisatie te exfiltreren. De gebruikers \<*account naam*> een regel voor het door sturen van het postvak in gemaakt of bijgewerkt waarmee alle binnenkomende e-mails worden doorgestuurd naar het externe adres \<*e-mail adres*>. 
+    Dit kan erop wijzen dat het account is gecompromitteerd en dat het postvak wordt gebruikt om informatie van uw organisatie te exfiltreren. De \< *gebruikersnaam>* een doorstuurregel voor inboxen gemaakt of bijgewerkt \<die alle binnenkomende e-mail doorstuurt naar het *e-mailadres* van het externe adres>. 
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties voor de verdachte Cloud app Administrative-activiteit**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot verdachte beheeractiviteit van cloud-apps**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties.
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt.
     
-    Vervolgens wordt het account \<*account naam*> uitgevoerd via \<*aantal*> beheer activiteiten tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<uitgevoerd ten opzichte *van het aantal*> administratieve activiteiten in één sessie.
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties voor het verwijderen van massale bestanden**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot het verwijderen van massabestanden**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties.
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt.
     
-    Vervolgens wordt het account \<*account naam*> een \<*aantal*> unieke bestanden verwijderd tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<het *aantal*> unieke bestanden in één sessie verwijderd.
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties voor het downloaden van massale bestanden**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot het downloaden van massabestanden**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties.
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt.
     
-    Vervolgens wordt het account \<*account naam*> gedownload via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* gedownload \<over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties die het gevolg zijn van een Office 365-imitatie**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot Office 365-imitatie**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties. 
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt. 
     
-    Vervolgens wordt het account \<*account naam*> geïmiteerd \<*aantal*> accounts in één sessie.
+    Vervolgens> \<de *accountnaam* zich \<voorgedaan boven *het aantal*> verschillende accounts in één sessie.
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties voor het delen van massa bestanden**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties die leiden tot het delen van massabestanden**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties.
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt.
     
-    Vervolgens wordt het account \<*account naam*> gedeeld via \<*aantal*> unieke bestanden tijdens één sessie.
+    Vervolgens> \<de *accountnaam* \<gedeeld over *het aantal*> unieke bestanden in één sessie.
 
-- **Aanmeldings gebeurtenis van de gebruiker met de gelekte referenties voor Ransomware in de Cloud-app**
+- **Aanmeldingsgebeurtenis van gebruiker met gelekte referenties naar ransomware in cloud-app**
     
-    Deze waarschuwing geeft aan dat de aanmeldings gebeurtenis door \<*account naam*> gebruikte gelekte referenties. 
+    Deze waarschuwing is een indicatie dat \<de aanmeldingsgebeurtenis op *accountnaam*> gelekte referenties heeft gebruikt. 
     
-    Vervolgens wordt het account \<*account naam*> geüpload \<*aantal*> bestanden, en wordt het totale *aantal \<bestanden*verwijderd. 
+    Vervolgens> \<de *accountnaam* \< *het aantal*> bestanden geüpload \<en een totaal *aantal*> bestanden verwijderd. 
     
-    Dit activiteiten patroon is indicatief voor een mogelijke Ransomware-aanval.
+    Deze activiteit patroon is indicatief voor een potentiële ransomware aanval.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u meer hebt geleerd over geavanceerde detectie van aanvallen met meerdere fasen, bent u mogelijk geïnteresseerd in de volgende Snelstartgids om te leren hoe u uw gegevens en mogelijke bedreigingen kunt zien: aan de [slag met Azure Sentinel](quickstart-get-visibility.md).
+Nu u meer hebt geleerd over geavanceerde multistage-aanvalsdetectie, bent u mogelijk geïnteresseerd in de volgende quickstart om te leren hoe u inzicht krijgt in uw gegevens en potentiële bedreigingen: [Aan de slag met Azure Sentinel](quickstart-get-visibility.md).
 
-Als u klaar bent voor het onderzoeken van de incidenten die voor u zijn gemaakt, raadpleegt u de volgende zelf studie: [incidenten onderzoeken met Azure Sentinel](tutorial-investigate-cases.md).
+Als u klaar bent om de voor u gemaakte incidenten te onderzoeken, raadpleegt u de volgende zelfstudie: [Incidenten onderzoeken met Azure Sentinel.](tutorial-investigate-cases.md)
 

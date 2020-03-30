@@ -1,29 +1,29 @@
 ---
-title: Geavanceerde aggregaties in Azure Monitor-logboek query's | Microsoft Docs
-description: Hierin worden een aantal geavanceerde aggregatie opties beschreven die beschikbaar zijn voor Azure Monitor-logboek query's.
+title: Geavanceerde aggregaties in Azure Monitor-logboekquery's| Microsoft Documenten
+description: Beschrijft enkele van de meer geavanceerde aggregatieopties die beschikbaar zijn voor Azure Monitor-logboekquery's.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662175"
 ---
-# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboek query's
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboekquery's
 
 > [!NOTE]
-> U moet [aggregaties in azure monitor query's](./aggregations.md) volt ooien voordat u deze les voltooit.
+> U moet [aggregaties in Azure Monitor-query's](./aggregations.md) voltooien voordat u deze les voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In dit artikel worden enkele van de meer geavanceerde aggregatie opties beschreven die beschikbaar zijn voor Azure Monitor query's.
+In dit artikel worden enkele van de meer geavanceerde aggregatieopties beschreven die beschikbaar zijn voor Azure Monitor-query's.
 
 ## <a name="generating-lists-and-sets"></a>Lijsten en sets genereren
-U kunt `makelist` gebruiken om gegevens te draaien op basis van de volg orde van de waarden in een bepaalde kolom. Het is bijvoorbeeld mogelijk dat u de meest voorkomende volg orde van gebeurtenissen op uw computers wilt verkennen. U kunt de gegevens in feite op elke computer in de juiste volg orde van EventIDs draaien. 
+U kunt `makelist` gegevens gebruiken om gegevens te draaien op basis van de volgorde van waarden in een bepaalde kolom. U bijvoorbeeld de meest voorkomende ordergebeurtenissen op uw machines verkennen. U de gegevens in wezen draaien aan de orde van EventID's op elke machine. 
 
 ```Kusto
 Event
@@ -34,13 +34,13 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| computer1 | [704, 701, 1501, 1500, 1085, 704, 704, 701] |
-| computer2 | [326.105.302.301.300.102] |
+| computer1 | [704,701,1501,1500,1085,704,704,701] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
-`makelist` genereert een lijst in de volg orde waarin gegevens zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren, gebruikt u `asc` in de instructie order in plaats van `desc`. 
+`makelist`genereert een lijst in de volgorde waarin gegevens zijn doorgegeven. Als u gebeurtenissen wilt sorteren `asc` van oudste naar `desc`nieuwste, gebruikt u in de volgordeinstructie in plaats van . 
 
-Het is ook handig om een lijst met alleen unieke waarden te maken. Dit wordt een _set_ genoemd en kan worden gegenereerd met `makeset`:
+Het is ook handig om een lijst te maken met alleen verschillende waarden. Dit wordt een _set_ genoemd `makeset`en kan worden gegenereerd met:
 
 ```Kusto
 Event
@@ -51,14 +51,14 @@ Event
 
 |Computer|list_EventID|
 |---|---|
-| computer1 | [704, 701, 1501, 1500, 1085] |
-| computer2 | [326.105.302.301.300.102] |
+| computer1 | [704,701,1501,1500,1085] |
+| computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
-Net als bij `makelist`werkt `makeset` ook met beschik bare gegevens en worden de matrices gegenereerd op basis van de volg orde van de rijen die worden door gegeven.
+Net `makelist` `makeset` als , werkt ook met bestelde gegevens en zal het genereren van de arrays op basis van de volgorde van de rijen die worden doorgegeven in het.
 
 ## <a name="expanding-lists"></a>Lijsten uitbreiden
-De omgekeerde bewerking van `makelist` of `makeset` is `mvexpand`, die een lijst met waarden uitbreidt om rijen te scheiden. Het kan worden uitgebreid over een wille keurig aantal dynamische kolommen, zowel JSON als matrix. U kunt bijvoorbeeld de *heartbeat* -tabel controleren op oplossingen die gegevens verzenden van computers die in het afgelopen uur een heartbeat hebben verzonden:
+De omgekeerde bewerking `makelist` `makeset` van `mvexpand`of is , die een lijst met waarden uitbreidt om rijen te scheiden. Het kan worden uitgebreid over een willekeurig aantal dynamische kolommen, zowel JSON als array. U bijvoorbeeld de *heartbeattabel* controleren op oplossingen die gegevens verzenden van computers die in het afgelopen uur een heartbeat hebben verzonden:
 
 ```Kusto
 Heartbeat
@@ -68,12 +68,12 @@ Heartbeat
 
 | Computer | Oplossingen | 
 |--------------|----------------------|
-| computer1 | ' Beveiliging ', ' updates ', ' change tracking ' |
-| computer2 | ' Beveiliging ', ' updates ' |
-| computer3 | "antimalware", "change tracking" |
+| computer1 | "beveiliging", "updates", "changeTracking" |
+| computer2 | "veiligheid", "updates" |
+| computer3 | "antiMalware", "changeTracking" |
 | ... | ... |
 
-Gebruik `mvexpand` om elke waarde in een afzonderlijke rij weer te geven in plaats van een door komma's gescheiden lijst:
+Hiermee `mvexpand` u elke waarde in een afzonderlijke rij weergeven in plaats van in een door komma's gescheiden lijst:
 
 ```Kusto
 Heartbeat
@@ -84,17 +84,17 @@ Heartbeat
 
 | Computer | Oplossingen | 
 |--------------|----------------------|
-| computer1 | beveiligingsprincipal |
-| computer1 | updates |
-| computer1 | Change tracking |
-| computer2 | beveiligingsprincipal |
-| computer2 | updates |
+| computer1 | "veiligheid" |
+| computer1 | "updates" |
+| computer1 | "changeTracking" |
+| computer2 | "veiligheid" |
+| computer2 | "updates" |
 | computer3 | "antiMalware" |
-| computer3 | Change tracking |
+| computer3 | "changeTracking" |
 | ... | ... |
 
 
-U kunt vervolgens `makelist` opnieuw gebruiken om items te groeperen en deze keer de lijst met computers per oplossing bekijken:
+U `makelist` vervolgens opnieuw items groeperen en deze keer de lijst met computers per oplossing bekijken:
 
 ```Kusto
 Heartbeat
@@ -106,14 +106,14 @@ Heartbeat
 
 |Oplossingen | list_Computer |
 |--------------|----------------------|
-| beveiligingsprincipal | ["computer1", "computer2"] |
-| updates | ["computer1", "computer2"] |
-| Change tracking | ["computer1", "computer3"] |
+| "veiligheid" | ["computer1", "computer2"] |
+| "updates" | ["computer1", "computer2"] |
+| "changeTracking" | ["computer1", "computer3"] |
 | "antiMalware" | ["computer3"] |
 | ... | ... |
 
-## <a name="handling-missing-bins"></a>Ontbrekende opslag locaties verwerken
-Een handige toepassing van `mvexpand` is de nood zaak om standaard waarden in te vullen voor ontbrekende opslag locaties. Stel bijvoorbeeld dat u op zoek bent naar de uptime van een bepaalde machine door de heartbeat te verkennen. U wilt ook de bron van de heartbeat zien die zich in de kolom _categorie_ bevindt. Normaal gesp roken gebruiken we een eenvoudige samenvattings instructie als volgt:
+## <a name="handling-missing-bins"></a>Ontbrekende opslaglocaties verwerken
+Een handige `mvexpand` toepassing van is de noodzaak om standaardwaarden in te vullen voor ontbrekende opslaglocaties. Stel dat u op zoek bent naar de uptime van een bepaalde machine door de hartslag te verkennen. U wilt ook de bron zien van de hartslag die zich in de _categoriekolom_ bevindt. Normaal gesproken zouden we gebruik maken van een eenvoudige samenvatting verklaring als volgt:
 
 ```Kusto
 Heartbeat
@@ -123,14 +123,14 @@ Heartbeat
 
 | Categorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Directe agent | 2017-06-06T17:00:00Z | 15 |
-| Directe agent | 2017-06-06T18:00:00Z | 60 |
-| Directe agent | 2017-06-06T20:00:00Z | 55 |
-| Directe agent | 2017-06-06T21:00:00Z | 57 |
-| Directe agent | 2017-06-06T22:00:00Z | 60 |
+| Direct Agent | 2017-06-06T17:00:00Z | 15 |
+| Direct Agent | 2017-06-06T18:00:00Z | 60 |
+| Direct Agent | 2017-06-06T20:00:00Z | 55 |
+| Direct Agent | 2017-06-06T21:00:00Z | 57 |
+| Direct Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-In deze resultaten wordt de Bucket die is gekoppeld aan "2017-06-06T19:00:00Z ontbreekt omdat er geen heartbeat-gegevens voor dat uur zijn. Gebruik de functie `make-series` om een standaard waarde toe te wijzen aan lege buckets. Hiermee wordt een rij gegenereerd voor elke categorie met twee extra matrix kolommen, één voor waarden en één voor overeenkomende tijds verzamelingen:
+In deze resultaten ontbreekt echter de bucket die is gekoppeld aan "2017-06-06T19:00:00Z" omdat er geen hartslaggegevens voor dat uur zijn. Gebruik `make-series` de functie om een standaardwaarde toe te wijzen aan lege buckets. Hiermee wordt een rij gegenereerd voor elke categorie met twee extra matrixkolommen, één voor waarden en één voor overeenkomende tijdbuckets:
 
 ```Kusto
 Heartbeat
@@ -139,10 +139,10 @@ Heartbeat
 
 | Categorie | count_ | TimeGenerated |
 |---|---|---|
-| Directe agent | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
+| Direct Agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00000000Z","2017-06-06T19:0 00:0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:000000000Z",...] |
 | ... | ... | ... |
 
-Het derde element van de *count_* matrix is 0 zoals verwacht, en er is een overeenkomende tijds tempel van "2017-06-06T19:00:00.0000000 z" in de _TimeGenerated_ -matrix. Het is moeilijk om deze matrix indeling te lezen. Gebruik `mvexpand` om de matrices uit te breiden en dezelfde indelings uitvoer te produceren als gegenereerd door `summarize`:
+Het derde element van de *count_* array is een 0 zoals verwacht, en er is een overeenkomende tijdstempel van "2017-06-06T19:00:00.0000000Z" in de _array TimeGenerated._ Deze array formaat is echter moeilijk te lezen. Gebruik `mvexpand` om de arrays uit te vouwen `summarize`en dezelfde indelingsuitvoer te produceren als gegenereerd door:
 
 ```Kusto
 Heartbeat
@@ -153,18 +153,18 @@ Heartbeat
 
 | Categorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Directe agent | 2017-06-06T17:00:00Z | 15 |
-| Directe agent | 2017-06-06T18:00:00Z | 60 |
-| Directe agent | 2017-06-06T19:00:00Z | 0 |
-| Directe agent | 2017-06-06T20:00:00Z | 55 |
-| Directe agent | 2017-06-06T21:00:00Z | 57 |
-| Directe agent | 2017-06-06T22:00:00Z | 60 |
+| Direct Agent | 2017-06-06T17:00:00Z | 15 |
+| Direct Agent | 2017-06-06T18:00:00Z | 60 |
+| Direct Agent | 2017-06-06T19:00:00Z | 0 |
+| Direct Agent | 2017-06-06T20:00:00Z | 55 |
+| Direct Agent | 2017-06-06T21:00:00Z | 57 |
+| Direct Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een set elementen: `let`, `makeset`, `toscalar``in`
-Een veelvoorkomend scenario is door de namen van bepaalde entiteiten te selecteren op basis van een set criteria en vervolgens een andere gegevensset te filteren die is ingesteld op die entiteit. U kunt bijvoorbeeld computers vinden waarvan bekend is dat deze updates bevatten en IP-adressen identificeren die op deze computers worden genoemd:
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een `let` `makeset`reeks `toscalar`elementen: , ,`in`
+Een veelvoorkomend scenario is om de namen van bepaalde specifieke entiteiten te selecteren op basis van een reeks criteria en vervolgens een andere gegevensset te filteren op die set entiteiten. U bijvoorbeeld computers vinden waarvan bekend is dat ze ontbrekende updates hebben en IP's identificeren waarvoor deze computers hebben geroepen:
 
 
 ```Kusto
@@ -179,12 +179,12 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/) met Azure monitor-logboek gegevens:
+Bekijk andere lessen voor het gebruik van de [Kusto-querytaal](/azure/kusto/query/) met Azure Monitor-logboekgegevens:
 
-- [Teken reeks bewerkingen](string-operations.md)
-- [Datum-en tijd bewerkingen](datetime-operations.md)
-- [Aggregatie functies](aggregations.md)
+- [Tekenreeksbewerkingen](string-operations.md)
+- [Datum- en tijdbewerkingen](datetime-operations.md)
+- [Aggregatiefuncties](aggregations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
-- [JSON en gegevens structuren](json-data-structures.md)
+- [JSON en gegevensstructuren](json-data-structures.md)
 - [Joins](joins.md)
-- [Diagrammen](charts.md)
+- [Grafieken](charts.md)
