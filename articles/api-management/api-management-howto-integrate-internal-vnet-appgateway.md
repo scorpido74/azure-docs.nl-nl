@@ -1,7 +1,7 @@
 ---
-title: API Management gebruiken in Virtual Network met Application Gateway
+title: API-beheer gebruiken in virtueel netwerk met toepassingsgateway
 titleSuffix: Azure API Management
-description: Meer informatie over het instellen en configureren van Azure-API Management in interne Virtual Network met Application Gateway (WAF) als front-end
+description: Meer informatie over het instellen en configureren van Azure API Management in intern virtueel netwerk met Application Gateway (WAF) als FrontEnd
 services: api-management
 documentationcenter: ''
 author: solankisamir
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298050"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API-beheer integreren in een interne VNET met Application Gateway
 
-## <a name="overview"> </a> Overzicht
+## <a name="overview"></a><a name="overview"> </a> Overzicht
 
-De API Management-service kan worden geconfigureerd in een Virtual Network in de interne modus, waardoor deze alleen toegankelijk is vanuit de Virtual Network. Azure-toepassing gateway is een PAAS-service, die een Layer-7-load balancer biedt. Het fungeert als een omgekeerde proxy service en biedt een WAF (Web Application firewall).
+De API Management-service kan worden geconfigureerd in een virtueel netwerk in interne modus, waardoor deze alleen toegankelijk is vanuit het virtuele netwerk. Azure Application Gateway is een PAAS-service, die een Layer-7 load balancer biedt. Het fungeert als een reverse-proxy service en biedt onder haar het aanbieden van een Web Application Firewall (WAF).
 
-Als u API Management die is ingericht in een intern VNET combineert met de Application Gateway front-end, worden de volgende scenario's ingeschakeld:
+Door API Management te combineren in een intern VNET met de Frontend van de Application Gateway, worden de volgende scenario's mogelijk:
 
-* Gebruik dezelfde API Management resource voor verbruik door interne consumenten en externe consumenten.
-* Gebruik één API Management resource en een subset van Api's gedefinieerd in API Management die beschikbaar is voor externe gebruikers.
-* Bieden een andere manier om de toegang tot API Management van het open bare Internet te scha kelen in-en uitschakelen.
+* Gebruik dezelfde API Management-bron voor consumptie door zowel interne consumenten als externe consumenten.
+* Gebruik één API Management-bron en een subset van API's die zijn gedefinieerd in API-beheer beschikbaar voor externe consumenten.
+* Bied een turn-key manier om toegang tot API Management over te schakelen vanaf het openbare internet in en uit.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -39,55 +39,55 @@ Als u API Management die is ingericht in een intern VNET combineert met de Appli
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor het volgen van de stappen die in dit artikel worden beschreven, hebt u het volgende nodig:
+Als u de in dit artikel beschreven stappen wilt volgen, moet u het volgende hebben:
 
 * Een actief Azure-abonnement.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Certificaten: pfx en CER voor de API-hostnaam en pfx voor de hostnaam van de ontwikkelaars Portal.
+* Certificaten - pfx en cer voor de API hostname en pfx voor de hostname van de ontwikkelaarsportal.
 
-## <a name="scenario"> </a> Scenario
+## <a name="scenario"></a><a name="scenario"> </a> Scenario
 
-In dit artikel wordt beschreven hoe u een single API Management-service gebruikt voor zowel interne als externe consumenten en hoe u deze kunt gebruiken als één frontend voor zowel on-premises als Cloud-Api's. U ziet ook hoe u slechts een subset van uw Api's beschikbaar maakt (in het voor beeld dat ze in het groen zijn gemarkeerd) voor extern verbruik met behulp van route ring beschikbaar in Application Gateway.
+Dit artikel gaat over het gebruik van één API Management-service voor zowel interne als externe consumenten en ervoor zorgen dat deze fungeert als één frontend voor zowel on-premises als cloud-API's. U ziet ook hoe u alleen een subset van uw API's (in het voorbeeld waarin ze in het groen zijn gemarkeerd) blootstellen aan extern verbruik met behulp van routeringsfunctionaliteit die beschikbaar is in Application Gateway.
 
-In het eerste voor beeld van Setup worden al uw Api's alleen beheerd vanuit uw Virtual Network. Interne consumenten (oranje gemarkeerd) hebben toegang tot al uw interne en externe Api's. Verkeer gaat nooit naar Internet. Connectiviteit met hoge prestaties wordt geleverd via Express route-circuits.
+In het eerste installatievoorbeeld worden al uw API's alleen beheerd vanuit uw virtuele netwerk. Interne consumenten (oranje gemarkeerd) hebben toegang tot al uw interne en externe API's. Verkeer gaat nooit uit naar het internet. Krachtige connectiviteit wordt geleverd via Express Route-circuits.
 
-![URL-route](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
+![url-route](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> Voordat u begint
+## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Voordat u begint
 
-* Zorg ervoor dat u de nieuwste versie van Azure PowerShell gebruikt. Zie de installatie-instructies bij de [installatie Azure PowerShell](/powershell/azure/install-az-ps). 
+* Zorg ervoor dat u de nieuwste versie van Azure PowerShell gebruikt. Zie de installatie-instructies bij [Installeer Azure PowerShell](/powershell/azure/install-az-ps). 
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Wat is er vereist voor het maken van een integratie tussen API Management en Application Gateway?
+## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Wat is er nodig om een integratie te maken tussen API Management en Application Gateway?
 
-* **Back-end-server groep:** Dit is het interne virtuele IP-adres van de API Management service.
-* **Back-endserverpoolinstellingen:** elke pool heeft instellingen, zoals voor de poort, het protocol en de op cookies gebaseerde affiniteit. Deze instellingen worden toegepast op alle servers in de groep.
-* **Front-end-poort:** Dit is de open bare poort die wordt geopend op de Application Gateway. Aangestuurd verkeer wordt omgeleid naar een van de back-endservers.
-* **Listener:** de listener beschikt over een front-endpoort, een protocol (Http of Https; deze waarden zijn hoofdlettergevoelig) en de SSL-certificaatnaam (als u SSL-offloading configureert).
-* **Regel:** De regel verbindt een listener met een back-endserver-Server groep.
-* **Aangepaste status test:** Application Gateway maakt standaard gebruik van tests op basis van IP-adressen om erachter te komen welke servers in de BackendAddressPool actief zijn. De API Management-service reageert alleen op aanvragen met de juiste host-header, daarom mislukken de standaard tests. Er moet een aangepaste status test worden gedefinieerd om de toepassings gateway te helpen bepalen dat de service actief is en dat aanvragen worden doorgestuurd.
-* **Aangepaste domein certificaten:** Om toegang te krijgen tot API Management vanaf internet, moet u een CNAME-toewijzing van de hostnaam maken naar de Application Gateway front-end-DNS-naam. Dit zorgt ervoor dat de naam van de host-header en het certificaat die worden verzonden naar Application Gateway die naar API Management worden doorgestuurd, één APIM kan herkennen als geldig. In dit voor beeld gebruiken we twee certificaten: voor de back-end en voor de ontwikkelaars Portal.  
+* **Back-endservergroep:** Dit is het interne virtuele IP-adres van de API Management-service.
+* **Instellingen voor back-endservergroep:** Elke groep heeft instellingen zoals poort, protocol en cookie-gebaseerde affiniteit. Deze instellingen worden toegepast op alle servers in de groep.
+* **Front-end poort:** Dit is de openbare poort die wordt geopend op de toepassingsgateway. Verkeer raken wordt doorgestuurd naar een van de back-end servers.
+* **Luisteraar:** De listener heeft een front-end poort, een protocol (Http of Https, deze waarden zijn hoofdlettergevoelig) en de naam van het SSL-certificaat (als ssl-offload wordt geconfigureerd).
+* **Regel:** De regel bindt een listener aan een back-endservergroep.
+* **Aangepaste statussonde:** Application Gateway gebruikt standaard op IP-adres gebaseerde sondes om erachter te komen welke servers in de BackendAddressPool actief zijn. De API Management-service reageert alleen op aanvragen met de juiste hostheader, vandaar dat de standaardsondes mislukken. Er moet een aangepaste statussonde worden gedefinieerd om de toepassingsgateway te helpen bepalen of de service in leven is en moet aanvragen doorsturen.
+* **Aangepaste domeincertificaten:** Als u apibeheer vanaf internet wilt openen, moet u een CNAME-toewijzing van de hostnaam maken naar de front-end DNS-naam van de Application Gateway. Dit zorgt ervoor dat de hostname header en certificaat verzonden naar Application Gateway die wordt doorgestuurd naar API Management is een APIM kan herkennen als geldig. In dit voorbeeld gebruiken we twee certificaten - voor de backend en voor de ontwikkelaarsportal.  
 
-## <a name="overview-steps"> </a> Stappen die vereist zijn voor het integreren van API Management en Application Gateway
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> Stappen vereist voor de integratie van API-beheer en application gateway
 
 1. Maak een resourcegroep voor Resource Manager.
-2. Maak een Virtual Network, subnet en openbaar IP-adres voor de Application Gateway. Maak een ander subnet voor API Management.
-3. Maak een API Management-service in het eerder gemaakte VNET-subnet en zorg ervoor dat u de interne modus gebruikt.
-4. Stel een aangepaste domein naam in de API Management-service in.
-5. Maak een Application Gateway-configuratie object.
-6. Een Application Gateway-resource maken.
-7. Maak een CNAME van de open bare DNS-naam van de Application Gateway naar de API Management proxy-hostnaam.
+2. Maak een virtueel netwerk, subnet en openbaar IP voor de Toepassingsgateway. Maak een ander subnet voor API-beheer.
+3. Maak een API Management-service in het bovenstaande VNET-subnet en zorg ervoor dat u de interne modus gebruikt.
+4. Stel een aangepaste domeinnaam in de API-beheerservice in.
+5. Maak een configuratieobject Application Gateway.
+6. Maak een application gateway-bron.
+7. Maak een CNAME van de openbare DNS-naam van de Toepassingsgateway naar de hostnaam API Management proxy.
 
-## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>De ontwikkelaars Portal extern beschikbaar maken via Application Gateway
+## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>De ontwikkelaarsportal extern blootstellen via Application Gateway
 
-In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor externe doel groepen via de Application Gateway. Hiervoor zijn aanvullende stappen vereist voor het maken van de listener, test, instellingen en regels van de ontwikkelaars Portal. Alle details vindt u in de verschillende stappen.
-
-> [!WARNING]
-> Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](../application-gateway/features.md#session-affinity) in Application Gateway.
+In deze gids zullen we ook de **ontwikkelaarsportal** blootstellen aan externe doelgroepen via de Application Gateway. Het vereist extra stappen om de listener, sonde, instellingen en regels van de ontwikkelaarsportal te maken. Alle details worden verstrekt in de respectievelijke stappen.
 
 > [!WARNING]
-> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet u de firewall regel `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`uitschakelen.
+> Als u Azure AD of verificatie door derden gebruikt, schakelt u de functie [sessieaffiniteit op basis van cookies](../application-gateway/features.md#session-affinity) in Application Gateway in.
+
+> [!WARNING]
+> Om te voorkomen dat Application Gateway WAF de download van OpenAPI-specificatie `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`in de ontwikkelaarsportal breekt, moet u de firewallregel uitschakelen.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
 
@@ -99,7 +99,7 @@ Meld u aan bij Azure.
 Connect-AzAccount
 ```
 
-Verifieer met uw referenties.
+Authenticeer met uw referenties.
 
 ### <a name="step-2"></a>Stap 2
 
@@ -120,15 +120,15 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Azure Resource Manager vereist dat er voor alle resourcegroepen een locatie wordt opgegeven. Deze locatie wordt gebruikt als de standaardlocatie voor resources in die resourcegroep. Zorg ervoor dat alle opdrachten voor het maken van een toepassings gateway dezelfde resource groep gebruiken.
+Azure Resource Manager vereist dat er voor alle resourcegroepen een locatie wordt opgegeven. Deze locatie wordt gebruikt als de standaardlocatie voor resources in die resourcegroep. Zorg ervoor dat alle opdrachten voor het maken van een toepassingsgateway dezelfde brongroep gebruiken.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Een Virtual Network en een subnet voor de toepassings gateway maken
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Een virtueel netwerk en een subnet voor de toepassingsgateway maken
 
-In het volgende voor beeld ziet u hoe u een Virtual Network maakt met Resource Manager.
+In het volgende voorbeeld ziet u hoe u een virtueel netwerk maakt met Resource Manager.
 
 ### <a name="step-1"></a>Stap 1
 
-Wijs het adres bereik 10.0.0.0/24 toe aan de subnet-variabele die moet worden gebruikt voor Application Gateway tijdens het maken van een Virtual Network.
+Wijs het adresbereik 10.0.0.0/24 toe aan de subnetvariabele die moet worden gebruikt voor Application Gateway terwijl u een virtueel netwerk maakt.
 
 ```powershell
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
@@ -136,7 +136,7 @@ $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPref
 
 ### <a name="step-2"></a>Stap 2
 
-Wijs het adres bereik 10.0.1.0/24 toe aan de subnet-variabele die moet worden gebruikt voor API Management tijdens het maken van een Virtual Network.
+Wijs het adresbereik 10.0.1.0/24 toe aan de subnetvariabele die moet worden gebruikt voor API-beheer tijdens het maken van een virtueel netwerk.
 
 ```powershell
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
@@ -144,7 +144,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>Stap 3
 
-Maak een Virtual Network met de naam **appgwvnet** in de resource groep **APIM-appGw-RG** voor de regio vs-West. Gebruik het voor voegsel 10.0.0.0/16 met subnetten 10.0.0.0/24 en 10.0.1.0/24.
+Maak een virtueel netwerk met de naam **appgwvnet** in resourcegroep **apim-appGw-RG** voor de regio West-VS. Gebruik het voorvoegsel 10.0.0.0/16 met subnetten 10.0.0.0/24 en 10.0.1.0/24.
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -152,20 +152,20 @@ $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName 
 
 ### <a name="step-4"></a>Stap 4
 
-Een subnet-variabele toewijzen voor de volgende stappen
+Een subnetvariabele toewijzen voor de volgende stappen
 
 ```powershell
 $appgatewaysubnetdata = $vnet.Subnets[0]
 $apimsubnetdata = $vnet.Subnets[1]
 ```
 
-## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Een API Management-service maken binnen een VNET dat is geconfigureerd in de interne modus
+## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Een API-beheerservice maken in een VNET-configuratie in de interne modus
 
-In het volgende voor beeld ziet u hoe u een API Management-service maakt in een VNET dat is geconfigureerd voor alleen interne toegang.
+In het volgende voorbeeld ziet u hoe u een API Management-service maakt in een VNET die alleen is geconfigureerd voor interne toegang.
 
 ### <a name="step-1"></a>Stap 1
 
-Maak een API Management Virtual Network-object met behulp van het subnet $apimsubnetdata dat hierboven is gemaakt.
+Maak een object API Management Virtual Network met het subnet $apimsubnetdata hierboven gemaakt.
 
 ```powershell
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
@@ -173,7 +173,7 @@ $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apims
 
 ### <a name="step-2"></a>Stap 2
 
-Maak een API Management-service in de Virtual Network.
+Maak een API Management-service binnen het virtuele netwerk.
 
 ```powershell
 $apimServiceName = "ContosoApi"       # API Management service instance name
@@ -182,16 +182,16 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-Nadat de bovenstaande opdracht is uitgevoerd, raadpleegt u de [DNS-configuratie die is vereist om toegang te krijgen tot de interne VNET-API Management service](api-management-using-with-internal-vnet.md#apim-dns-configuration) om deze te openen. Deze stap kan meer dan een helft van een uur duren.
+Nadat de bovenstaande opdracht slaagt, verwijst u naar [DNS-configuratie die vereist is om toegang te krijgen tot de interne VNET API Management-service](api-management-using-with-internal-vnet.md#apim-dns-configuration) om toegang te krijgen tot deze service. Deze stap kan meer dan een half uur duren.
 
-## <a name="set-up-a-custom-domain-name-in-api-management"></a>Een aangepaste domein naam instellen in API Management
+## <a name="set-up-a-custom-domain-name-in-api-management"></a>Een aangepaste domeinnaam instellen in API-beheer
 
 > [!IMPORTANT]
-> De [nieuwe ontwikkelaars Portal](api-management-howto-developer-portal.md) moet ook verbinding met het beheer eindpunt van de API Management inschakelen, naast de onderstaande stappen.
+> De [nieuwe ontwikkelaarsportal](api-management-howto-developer-portal.md) vereist naast de onderstaande stappen ook connectiviteit met het beheereindpunt van het API-beheer mogelijk maken.
 
 ### <a name="step-1"></a>Stap 1
 
-Initialiseer de volgende variabelen met de details van de certificaten met persoonlijke sleutels voor de domeinen. In dit voor beeld gebruiken we `api.contoso.net` en `portal.contoso.net`.  
+Initialiseer de volgende variabelen met de details van de certificaten met privésleutels voor de domeinen. In dit voorbeeld zullen `api.contoso.net` `portal.contoso.net`we gebruiken en .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,7 +208,7 @@ $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainT
 
 ### <a name="step-2"></a>Stap 2
 
-Maak en stel de hostnamen-configuratie objecten voor de proxy en voor de portal in.  
+Maak en stel de configuratieobjecten hostnaam in voor de proxy en voor de portal.  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
@@ -220,11 +220,11 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> Als u de verouderde ontwikkelaars Portal-connectiviteit wilt configureren, moet u `-HostnameType DeveloperPortal` vervangen door `-HostnameType Portal`.
+> Als u de verouderde ontwikkelaarsportalconnectiviteit `-HostnameType DeveloperPortal` wilt `-HostnameType Portal`configureren die u moet vervangen door .
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Een openbaar IP-adres maken voor de front-endconfiguratie
 
-Maak een **publicIP01** voor de open bare IP-resource in de resource groep.
+Maak een openbare IP-bron **publicIP01** in de resourcegroep.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
@@ -232,13 +232,13 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 Er wordt een IP-adres toegewezen aan de toepassingsgateway wanneer de service wordt gestart.
 
-## <a name="create-application-gateway-configuration"></a>De configuratie van de toepassings gateway maken
+## <a name="create-application-gateway-configuration"></a>Toepassingsgatewayconfiguratie maken
 
 Alle configuratie-items moeten zijn ingesteld voordat u de toepassingsgateway maakt. Volg de onderstaande stappen om de configuratie-items te maken die nodig zijn voor een toepassingsgatewayresource.
 
 ### <a name="step-1"></a>Stap 1
 
-Maak voor de toepassingsgateway een IP-configuratie en geef deze de naam **gatewayIP01**. Wanneer de toepassingsgateway wordt geopend, wordt er een IP-adres opgehaald via het geconfigureerde subnet en wordt het netwerkverkeer omgeleid naar de IP-adressen in de back-end-IP-pool. Onthoud dat elk exemplaar één IP-adres gebruikt.
+Maak een IP-configuratie van de toepassingsgateway met de naam **gatewayIP01**. Wanneer de toepassingsgateway wordt geopend, wordt er een IP-adres opgehaald via het geconfigureerde subnet en wordt het netwerkverkeer omgeleid naar de IP-adressen in de back-end-IP-pool. Onthoud dat elk exemplaar één IP-adres gebruikt.
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -246,7 +246,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet
 
 ### <a name="step-2"></a>Stap 2
 
-Configureer de front-end-IP-poort voor het open bare IP-eind punt. Deze poort is de poort waarmee eind gebruikers verbinding maken.
+Configureer de front-end IP-poort voor het openbare IP-eindpunt. Deze poort is de poort waarmee eindgebruikers verbinding maken.
 
 ```powershell
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
@@ -262,7 +262,7 @@ $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -Publi
 
 ### <a name="step-4"></a>Stap 4
 
-Configureer de certificaten voor de Application Gateway, die wordt gebruikt voor het ontsleutelen en opnieuw versleutelen van het verkeer dat wordt door gegeven.
+Configureer de certificaten voor de Application Gateway, die worden gebruikt om het verkeer dat doorgaat te decoderen en opnieuw te versleutelen.
 
 ```powershell
 $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>Stap 5
 
-Maak de HTTP-listeners voor de Application Gateway. Wijs de front-end-IP-configuratie, poort en SSL-certificaten eraan toe.
+Maak de HTTP-listeners voor de toepassingsgateway. Wijs de front-end IP-configuratie-, poort- en ssl-certificaten aan hen toe.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,10 +280,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Stap 6
 
-Aangepaste tests maken voor de API Management-service `ContosoApi` het domein eindpunt van de proxy. Het pad `/status-0123456789abcdef` is een standaard status eindpunt dat wordt gehost op alle API Management Services. Stel `api.contoso.net` in als een aangepaste test-hostnaam om deze te beveiligen met een SSL-certificaat.
+Aangepaste sondes maken `ContosoApi` voor het eindpunt van het API Management-proxydomein. Het `/status-0123456789abcdef` pad is een standaardeindpunt voor de status dat wordt gehost op alle API-beheerservices. Stel `api.contoso.net` in als een aangepaste hostname van sondeomslag om deze te beveiligen met SSL-certificaat.
 
 > [!NOTE]
-> De hostnaam `contosoapi.azure-api.net` is de standaard-hostnaam voor de proxy die is geconfigureerd wanneer een service met de naam `contosoapi` wordt gemaakt in open bare Azure.
+> De hostnaam `contosoapi.azure-api.net` is de standaardnaam van de `contosoapi` proxyhost die is geconfigureerd wanneer een service met de naam wordt gemaakt in het openbare Azure.
 >
 
 ```powershell
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>Stap 7
 
-Upload het certificaat dat moet worden gebruikt op de back-bronnen voor de backend-functie. Dit is het certificaat dat u in stap 4 hierboven hebt gegeven.
+Upload het certificaat dat moet worden gebruikt op de backend-bronnen met SSL-functie. Dit is hetzelfde certificaat dat u in stap 4 hierboven hebt opgegeven.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
@@ -301,7 +301,7 @@ $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistce
 
 ### <a name="step-8"></a>Stap 8
 
-Configureer de HTTP-back-end-instellingen voor de Application Gateway. Dit omvat het instellen van een time-outlimiet voor de back-end-aanvraag, waarna deze wordt geannuleerd. Deze waarde wijkt af van de time-out van de test.
+Configureer HTTP-backend-instellingen voor de toepassingsgateway. Dit omvat het instellen van een time-outlimiet voor backend-aanvragen, waarna deze worden geannuleerd. Deze waarde is anders dan de time-out van de sonde.
 
 ```powershell
 $apimPoolSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
@@ -310,7 +310,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>Stap 9
 
-Configureer een back-end-IP-adres groep met de naam **apimbackend** met het interne virtuele IP-adres van de API Management-service die hierboven is gemaakt.
+Configureer een back-end IP-adresgroep met de naam **apimbackend** met het interne virtuele IP-adres van de api-beheerservice die hierboven is gemaakt.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
@@ -318,7 +318,7 @@ $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimba
 
 ### <a name="step-10"></a>Stap 10
 
-Regels maken voor de Application Gateway om basis routering te gebruiken.
+Maak regels voor de toepassingsgateway om basisroutering te gebruiken.
 
 ```powershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType Basic -HttpListener $listener -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
@@ -326,11 +326,11 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 ```
 
 > [!TIP]
-> Wijzig de-RuleType en-route ring om de toegang tot bepaalde pagina's van de ontwikkelaars portal te beperken.
+> Wijzig het regeltype en de routering om de toegang tot bepaalde pagina's van de ontwikkelaarsportal te beperken.
 
 ### <a name="step-11"></a>Stap 11
 
-Configureer het aantal exemplaren en de grootte voor de Application Gateway. In dit voor beeld gebruiken we de [WAF-SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) voor een betere beveiliging van de API Management resource.
+Configureer het aantal exemplaren en de grootte van de toepassingsgateway. In dit voorbeeld gebruiken we de [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) voor een betere beveiliging van de API Management-bron.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -338,39 +338,39 @@ $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 
 ### <a name="step-12"></a>Stap 12
 
-Configureer WAF in de modus voor preventie.
+Configureer WAF om in de "Preventie"-modus te zijn.
 
 ```powershell
 $config = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Application Gateway maken
+## <a name="create-application-gateway"></a>Toepassingsgateway maken
 
-Maak een Application Gateway met alle configuratie objecten uit de voor gaande stappen.
+Maak een toepassingsgateway met alle configuratieobjecten uit de voorgaande stappen.
 
 ```powershell
 $appgwName = "apim-app-gw"
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupName -Location $location -BackendAddressPools $apimProxyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $apimPoolPortalSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener, $portalListener -RequestRoutingRules $rule01, $rule02 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert, $certPortal -AuthenticationCertificates $authcert -Probes $apimprobe, $apimPortalProbe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME de hostnaam van de API Management proxy naar de open bare DNS-naam van de Application Gateway resource
+## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME de API Management proxy hostname voor de openbare DNS-naam van de Application Gateway-bron
 
-Wanneer de gateway is gemaakt, gaat u in de volgende stap de front-end voor communicatie configureren. Bij het gebruik van een openbaar IP-adres Application Gateway een dynamisch toegewezen DNS-naam vereist, die mogelijk niet eenvoudig te gebruiken is.
+Wanneer de gateway is gemaakt, gaat u in de volgende stap de front-end voor communicatie configureren. Bij het gebruik van een openbaar IP-adres vereist Application Gateway een dynamisch toegewezen DNS-naam, die mogelijk niet eenvoudig te gebruiken is.
 
-De DNS-naam van de Application Gateway moet worden gebruikt voor het maken van een CNAME-record die verwijst naar de hostnaam van de APIM-proxy (bijvoorbeeld `api.contoso.net` in de bovenstaande voor beelden) naar deze DNS-naam. Als u de frontend-IP CNAME-record wilt configureren, haalt u de details van de Application Gateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd bij het opnieuw starten van de gateway.
+De DNS-naam van de Application Gateway moet worden gebruikt om een CNAME-record `api.contoso.net` te maken die de naam van de APIM-proxyhost (bijvoorbeeld in de bovenstaande voorbeelden) naar deze DNS-naam verwijst. Als u de IP CNAME-record voor frontend wilt configureren, haalt u de details van de Toepassingsgateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt afgeraden omdat de VIP kan veranderen bij het opnieuw opstarten van gateway.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a> Samen vatting
-Azure API Management geconfigureerd in een VNET biedt één gateway-interface voor alle geconfigureerde Api's, ongeacht of deze on-premises of in de cloud worden gehost. Het integreren van Application Gateway met API Management biedt de flexibiliteit om specifieke Api's selectief toegankelijk te maken op internet en biedt een firewall voor webtoepassingen als een front-end voor uw API Management-exemplaar.
+## <a name="summary"></a><a name="summary"> </a> Overzicht
+Azure API Management geconfigureerd in een VNET biedt één gateway-interface voor alle geconfigureerde API's, ongeacht of ze op locatie of in de cloud worden gehost. De integratie van Application Gateway met API Management biedt de flexibiliteit om bepaalde API's selectief toegankelijk te maken op het internet en een Web Application Firewall te bieden als een frontend voor uw API Management-instantie.
 
-## <a name="next-steps"> </a> Volgende stappen
-* Meer informatie over Azure-toepassing gateway
-  * [Overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway Web Application firewall](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Application Gateway met behulp van op pad gebaseerde route ring](../application-gateway/application-gateway-create-url-route-arm-ps.md)
-* Meer informatie over API Management en VNETs
-  * [API Management gebruiken die alleen beschikbaar zijn in het VNET](api-management-using-with-internal-vnet.md)
-  * [API Management in VNET gebruiken](api-management-using-with-vnet.md)
+## <a name="next-steps"></a><a name="next-steps"> </a> Volgende stappen
+* Meer informatie over Azure Application Gateway
+  * [Overzicht van toepassingsgateway](../application-gateway/application-gateway-introduction.md)
+  * [Application Gateway Web Application Firewall](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
+  * [Toepassingsgateway met routeroutering op basis van paden](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+* Meer informatie over API-beheer en VNET's
+  * [Api-beheer gebruiken dat alleen beschikbaar is binnen vnet](api-management-using-with-internal-vnet.md)
+  * [API-beheer gebruiken in VNET](api-management-using-with-vnet.md)

@@ -1,60 +1,60 @@
 ---
-title: Het implementatie quotum is overschreden
-description: Hierin wordt beschreven hoe u de fout van het gebruik van meer dan 800 implementaties in de geschiedenis van de resource groep kunt oplossen.
+title: Implementatiequotum overschreden
+description: Beschrijft hoe u de fout oplossen van het hebben van meer dan 800 implementaties in de geschiedenis van de resourcegroep.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 7f389827513562a3add67f022fec360081754b02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245086"
 ---
-# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties groter is dan 800
+# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties hoger is dan 800
 
-Elke resource groep is beperkt tot 800 implementaties in de implementatie geschiedenis. In dit artikel wordt de fout beschreven die u ontvangt wanneer een implementatie mislukt, omdat deze de toegestane 800-implementaties zou overschrijden. U kunt deze fout oplossen door implementaties te verwijderen uit de geschiedenis van de resource groep. Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
+Elke resourcegroep is beperkt tot 800 implementaties in de implementatiegeschiedenis. In dit artikel wordt de fout beschreven die u ontvangt wanneer een implementatie mislukt omdat deze de toegestane 800-implementaties overschrijdt. Als u deze fout wilt oplossen, verwijdert u implementaties uit de resourcegroepgeschiedenis. Als u een implementatie uit de geschiedenis verwijderde, heeft dit geen invloed op de resources die zijn geïmplementeerd.
 
 ## <a name="symptom"></a>Symptoom
 
-Tijdens de implementatie wordt er een fout bericht weer gegeven met de mede deling dat de huidige implementatie het quotum van 800 implementaties overschrijdt.
+Tijdens de implementatie ontvangt u een fout waarin staat dat de huidige implementatie het quotum van 800 implementaties zal overschrijden.
 
 ## <a name="solution"></a>Oplossing
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Gebruik de opdracht [AZ Group Deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) om implementaties uit de geschiedenis te verwijderen.
+Gebruik de opdracht [Verwijderen van az-implementatiegroepen](/cli/azure/group/deployment) om implementaties uit de geschiedenis te verwijderen.
 
 ```azurecli-interactive
-az group deployment delete --resource-group exampleGroup --name deploymentName
+az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
-Als u alle implementaties die ouder zijn dan vijf dagen wilt verwijderen, gebruikt u:
+Als u alle implementaties ouder dan vijf dagen wilt verwijderen, gebruikt u:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
-deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
+deployments=$(az deployment group list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
 
 for deployment in $deployments
 do
-  az group deployment delete --resource-group exampleGroup --name $deployment
+  az deployment group delete --resource-group exampleGroup --name $deployment
 done
 ```
 
-U kunt het huidige aantal in de implementatie geschiedenis ophalen met de volgende opdracht:
+U het huidige aantal in de implementatiegeschiedenis opde volgende opdracht krijgen:
 
 ```azurecli-interactive
-az group deployment list --resource-group exampleGroup --query "length(@)"
+az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Gebruik de opdracht [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) om implementaties uit de geschiedenis te verwijderen.
+Gebruik de opdracht [Verwijderen-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) om implementaties uit de geschiedenis te verwijderen.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
 ```
 
-Als u alle implementaties die ouder zijn dan vijf dagen wilt verwijderen, gebruikt u:
+Als u alle implementaties ouder dan vijf dagen wilt verwijderen, gebruikt u:
 
 ```azurepowershell-interactive
 $deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
@@ -64,7 +64,7 @@ foreach ($deployment in $deployments) {
 }
 ```
 
-U kunt het huidige aantal in de implementatie geschiedenis ophalen met de volgende opdracht:
+U het huidige aantal in de implementatiegeschiedenis opde volgende opdracht krijgen:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
@@ -74,5 +74,5 @@ U kunt het huidige aantal in de implementatie geschiedenis ophalen met de volgen
 
 De volgende externe oplossingen hebben betrekking op specifieke scenario's:
 
-* [Azure Logic Apps-en Power shell-oplossingen](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
-* [AzDevOps-extensie](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)
+* [Azure Logic Apps- en PowerShell-oplossingen](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [AzDevOps Uitbreiding](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

@@ -1,7 +1,7 @@
 ---
-title: Voor beeld van Azure CLI-script-IPv6-front-end configureren-Standard Load Balancer
+title: Voorbeeld van Azure CLI-script - IPv6 frontend configureren - StandaardloadBalancer
 titlesuffix: Azure Virtual Network
-description: IPv6-eind punten inschakelen met behulp van Azure CLI in azure Virtual Network
+description: IPv6-eindpunten inschakelen met Azure CLI in Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,37 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201336"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235041"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-eind punten configureren in het voorbeeld script van een virtueel netwerk met behulp van Standard Load Balancer (preview-versie)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-eindpunten configureren in voorbeeld van virtuele netwerkscript met standaardloadbalancer(voorbeeld)
 
-In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure met een virtueel netwerk met twee stacks met een dual stack-subnet, een Standard Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbel IP-adres configuratie, regels voor dubbele netwerk beveiligings groepen en dubbele open bare Ip's.
+In dit artikel ziet u hoe u een Dual Stack (IPv4 + IPv6)-toepassing implementeert in Azure met een dual stack virtueel netwerk met een dual stack-subnet, een Standaard Load Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dual IP configuratie, dubbele netwerkbeveiligingsgroepregels en dubbele openbare IP's.
 
-U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/bash) of vanuit een lokale installatie van de Azure CLI. Als u de CLI lokaal gebruikt, hebt u versie 2.0.28 of hoger nodig om dit script uit te voeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om verbinding te maken met Azure.
+U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/bash), of vanuit een lokale installatie van Azure CLI. Als u de CLI lokaal gebruikt, hebt u versie 2.0.28 of hoger nodig om dit script uit te voeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om verbinding te maken met Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de IPv6-functie voor virtuele netwerken van Azure wilt gebruiken, moet u uw abonnement slechts eenmaal configureren als volgt:
+Als u de virtuele netwerkfunctie IPv6 voor Azure wilt gebruiken, moet u uw abonnement slechts één keer als volgt configureren:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure CLI-opdracht uit te voeren:
 
-```azurelci
+Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure CLI uit te voeren:
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Nadat de registratie is voltooid, voert u de volgende opdracht uit:
 
-```azurelci
+Voer de volgende opdracht uit nadat de registratie is voltooid:
+
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -279,17 +281,18 @@ az vm create \
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
-U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
-1. Voer in de zoek balk van de portal *dsVnet*in.
-2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*. 
+
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6 dual stack virtueel netwerk weergeven in Azure portal
+U het virtuele IPv6-dual stack-netwerk in Azure-portal als volgt bekijken:
+1. Voer in de zoekbalk van het portaal *dsVnet*in.
+2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee wordt de **overzichtspagina** van het virtuele dual stack-netwerk genaamd *dsVnet*gelanceerd. De dual stack virtuele netwerk toont de twee NIC's met zowel IPv4 en IPv6 configuraties gelegen in de dual stack subnet genaamd *dsSubnet*. 
 
 > [!NOTE]
-> Het virtuele netwerk van IPv6 voor Azure is beschikbaar in het Azure Portal alleen-lezen voor deze preview-versie.
+> Het virtuele IPv6 voor Azure-netwerk is beschikbaar in de Azure-portal in alleen-lezen voor deze preview-release.
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep, VM, en alle gerelateerde resources te verwijderen:
+Voer de volgende opdracht uit om de resourcegroep, VM en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name <resourcegroupname> --yes
@@ -297,11 +300,11 @@ az group delete --name <resourcegroupname> --yes
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Hiermee maakt u een virtueel Azure-netwerk en -subnet. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-create) | Hiermee maakt u een openbaar IP-adres met een statisch IP-adres en een bijbehorende DNS-naam. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-create) | Hiermee maakt u een Azure-load balancer. |
@@ -313,10 +316,10 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | Hiermee maakt u een netwerkkaart die gekoppeld wordt aan het virtuele netwerk, het subnet en de NSG. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheidssets waarborgen de uptime van toepassingen door de virtuele machines te verdelen over fysieke resources, zodat als er een fout optreedt, niet de hele set wordt getroffen. |
 | [az vm create](/cli/azure/vm#az-vm-create) | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure-netwerken vindt u in de [Documentatie over Azure-netwerken](../cli-samples.md).

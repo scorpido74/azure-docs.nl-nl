@@ -1,35 +1,35 @@
 ---
-title: Een Windows-VM met Azure Image Builder maken (preview)
-description: Een Windows-VM maken met de Azure Image Builder.
+title: Een Windows-vm maken met Azure Image Builder (voorbeeld)
+description: Maak een Windows-vm met de Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e82d82dac833f7455e3d83d7e11c0c57c4eea816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238809"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Preview: Een Windows-VM maken met Azure Image Builder
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Voorbeeld: een Windows-vm maken met Azure Image Builder
 
-In dit artikel wordt uitgelegd hoe u een aangepaste installatie kopie van Windows kunt maken met behulp van de opbouw functie voor installatie kopieën van Azure VM. In het voor beeld in dit artikel worden [aanpassingen](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) gebruikt voor het aanpassen van de installatie kopie:
-- Power shell (ScriptUri): down load en voer een [Power shell-script](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)uit.
-- Windows opnieuw starten: Hiermee wordt de virtuele machine opnieuw opgestart.
-- Power shell (inline)-een specifieke opdracht uitvoeren. In dit voor beeld maakt het een map op de VM met `mkdir c:\\buildActions`behulp van.
-- Bestand: Kopieer een bestand van GitHub naar de virtuele machine. In dit voor [](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) beeld wordt `c:\buildArtifacts\index.html` index.MD naar op de VM gekopieerd.
+In dit artikel ziet u hoe u een aangepaste Windows-afbeelding maken met behulp van de Azure VM Image Builder. In het voorbeeld in dit artikel worden [aanpasapparaten](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) gebruikt voor het aanpassen van de afbeelding:
+- PowerShell (ScriptUri) - een [PowerShell-script](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)downloaden en uitvoeren .
+- Windows Opnieuw opstarten - start de VM opnieuw.
+- PowerShell (inline) - voer een specifieke opdracht uit. In dit voorbeeld wordt een map `mkdir c:\\buildActions`op de virtuele machine gemaakt met behulp van .
+- Bestand - kopieer een bestand van GitHub naar de VM. In dit [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) voorbeeld `c:\buildArtifacts\index.html` wordt index.md op de VM.
 
-U kunt ook een `buildTimeoutInMinutes`opgeven. De standaard waarde is 240 minuten en u kunt een build-tijd verg Roten zodat er meer builds meer worden uitgevoerd.
+U ook `buildTimeoutInMinutes`een. De standaardinstelling is 240 minuten en u de buildtijd verhogen om langer lopende builds mogelijk te maken.
 
-Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateWin. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+We gebruiken een voorbeeld .json-sjabloon om de afbeelding te configureren. Het .json-bestand dat we gebruiken is hier: [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
-> Azure Image Builder is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Azure Image Builder bevindt zich momenteel in een openbare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
 
 ## <a name="register-the-features"></a>De functies registreren
@@ -40,7 +40,7 @@ Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe fu
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Controleer de status van de functie registratie.
+Controleer de status van de functieregistratie.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
@@ -54,7 +54,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
+Als ze niet zeggen geregistreerd, voer het volgende uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -64,7 +64,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="set-variables"></a>Variabelen instellen
 
-We zullen enkele gegevens herhaaldelijk gebruiken, dus we maken een aantal variabelen om deze informatie op te slaan.
+We zullen een aantal stukjes informatie herhaaldelijk gebruiken, dus we zullen een aantal variabelen maken om die informatie op te slaan.
 
 
 ```azurecli-interactive
@@ -80,22 +80,22 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U dit `az account show | grep id`krijgen met behulp van.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Deze resource groep wordt gebruikt voor het opslaan van het sjabloon artefact van de installatie kopie en de installatie kopie.
+Deze brongroep wordt gebruikt om het artefact van de afbeeldingsconfiguratiesjabloon en de afbeelding op te slaan.
 
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Machtigingen voor de resource groep instellen
+## <a name="set-permissions-on-the-resource-group"></a>Machtigingen instellen voor de resourcegroep
 
-Geef de machtiging Inzender om de afbeelding in de resource groep te maken. Als dit niet het geval is, mislukt het maken van de installatie kopie. 
+Geef Image Builder 'bijdrager' toestemming om de afbeelding in de resourcegroep te maken. Zonder dit, zal het beeld te bouwen mislukken. 
 
 De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
 
@@ -107,9 +107,9 @@ az role assignment create \
 ```
 
 
-## <a name="download-the-image-configuration-template-example"></a>Het voor beeld van een installatie kopie configuratie sjabloon downloaden
+## <a name="download-the-image-configuration-template-example"></a>Voorbeeld van de afbeeldingsconfiguratiesjabloon downloaden
 
-Er is een geparametriseerde afbeeldings configuratie sjabloon gemaakt die u kunt proberen. Down load het bestand example. json en configureer dit met de variabelen die u eerder hebt ingesteld.
+Er is een parametersjabloon voor afbeeldingsconfiguratie gemaakt die u proberen. Download het voorbeeld .json-bestand en configureer het met de variabelen die u eerder hebt ingesteld.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -122,19 +122,19 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
 
 ```
 
-U kunt dit voor beeld wijzigen in de Terminal met een tekst editor zoals `vi`.
+U dit voorbeeld wijzigen in de `vi`terminal met behulp van een teksteditor zoals.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt deze `latest`niet gebruiken.
-> Als u de resource groep waaraan de afbeelding is gedistribueerd toevoegt of wijzigt, moet u de [machtigingen instellen](#set-permissions-on-the-resource-group) voor de resource groep.
+> Voor de bronafbeelding moet u altijd een `latest`versie [opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)die u niet gebruiken.
+> Als u de resourcegroep toevoegt of wijzigt waarin de afbeelding wordt gedistribueerd, moet u ervoor zorgen dat de [machtigingen zijn ingesteld](#set-permissions-on-the-resource-group) op de resourcegroep.
  
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-De configuratie van de installatie kopie verzenden naar de VM Image Builder-service
+De afbeeldingsconfiguratie verzenden naar de VM Image Builder-service
 
 ```azurecli-interactive
 az resource create \
@@ -145,16 +145,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Als u klaar bent, wordt er een bericht weer gegeven dat de console is voltooid en `Image Builder Configuration Template` maakt u `$imageResourceGroup`een in de. Als u verborgen typen weer geven inschakelt, ziet u deze resource in de resource groep in de Azure Portal.
+Als deze is voltooid, wordt een succesbericht teruggestuurd `Image Builder Configuration Template` naar `$imageResourceGroup`de console en wordt een in de . U deze bron zien in de brongroep in de Azure-portal als u 'Verborgen typen weergeven' inschakelt.
 
-Op de achtergrond maakt de opbouw functie voor installatie kopieën ook een staging-resource groep in uw abonnement. Deze resource groep wordt gebruikt voor het bouwen van de installatie kopie. Deze heeft de volgende indeling:`IT_<DestinationResourceGroup>_<TemplateName>`
+Op de achtergrond maakt Image Builder ook een brongroep voor tijdelijke bestanden in uw abonnement. Deze resourcegroep wordt gebruikt voor het maken van afbeeldingen. Het zal in dit formaat:`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> U moet de faserings resource groep niet rechtstreeks verwijderen. Verwijder eerst de afbeeldings sjabloon artefact, waardoor de faserings resource groep wordt verwijderd.
+> U mag de groep voor tijdelijke bronnen niet rechtstreeks verwijderen. Verwijder eerst het artefact van de afbeeldingssjabloon, waardoor de groep met tijdelijke bron wordt verwijderd.
 
-Als de service een fout meldt tijdens het verzenden van de installatie kopie:
--  Bekijk deze [probleemoplossings](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) stappen. 
-- U moet de sjabloon verwijderen met behulp van het volgende code fragment voordat u het opnieuw probeert te verzenden.
+Als de service een fout meldt tijdens het indienen van de afbeeldingsconfiguratiesjabloon:
+-  Bekijk deze [stappen voor het oplossen van problemen.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) 
+- U moet de sjabloon met het volgende fragment verwijderen voordat u opnieuw de indiening probeert.
 
 ```azurecli-interactive
 az resource delete \
@@ -163,8 +163,8 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>De installatie kopie starten
-Start het proces voor het bouwen van de installatie kopie met behulp van [AZ resource invoke-Action](/cli/azure/resource#az-resource-invoke-action).
+## <a name="start-the-image-build"></a>De afbeeldingsopbouw starten
+Start het imagebuildingproces met [az resource invoke-action](/cli/azure/resource#az-resource-invoke-action).
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -174,14 +174,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Wacht tot het build is voltooid. Dit kan ongeveer 15 minuten duren.
+Wacht tot de build is voltooid. Dit kan ongeveer 15 minuten duren.
 
-Als er fouten optreden, raadpleegt u deze [probleemoplossings](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) stappen.
+Als u fouten tegenkomt, raadpleegt u deze [stappen voor het oplossen van problemen.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak de virtuele machine met behulp van de installatie kopie die u hebt gemaakt. `aibuser`  *Vervang\<wachtwoord >* door uw eigen wacht woord voor de virtuele machine.
+Maak de VM met de afbeelding die u hebt gemaakt. Vervang * \<wachtwoord>* met uw `aibuser` eigen wachtwoord voor de op de VM.
 
 ```azurecli-interactive
 az vm create \
@@ -193,23 +193,24 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>De aanpassing controleren
+## <a name="verify-the-customization"></a>De aanpassing verifiëren
 
-Maak een Extern bureaublad verbinding met de virtuele machine met behulp van de gebruikers naam en het wacht woord die u hebt ingesteld tijdens het maken van de virtuele machine. Open een opdracht prompt in de virtuele machine en typ het volgende:
+Maak een verbinding met Extern bureaublad met de vm met de gebruikersnaam en het wachtwoord die u hebt ingesteld toen u de virtuele machine maakte. Open in de VM een cmd-prompt en typ:
 
 ```console
 dir c:\
 ```
 
-Tijdens het aanpassen van de installatie kopie ziet u deze twee directory's:
-- buildActions
-- buildArtifacts
+U ziet deze twee mappen die zijn gemaakt tijdens het aanpassen van afbeeldingen:
+- buildActies
+- buildArtefacten
 
 ## <a name="clean-up"></a>Opruimen
 
 Wanneer u klaar bent, verwijdert u de resources.
 
-### <a name="delete-the-image-builder-template"></a>De sjabloon voor de opbouw functie voor installatie kopieën verwijderen
+### <a name="delete-the-image-builder-template"></a>De sjabloon voor de opbouw van afbeeldingen verwijderen
+
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -217,7 +218,8 @@ az resource delete \
     -n helloImageTemplateWin01
 ```
 
-### <a name="delete-the-image-resource-group"></a>De resource groep voor de installatie kopie verwijderen
+### <a name="delete-the-image-resource-group"></a>De afbeeldingsbrongroep verwijderen
+
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
 ```
@@ -225,4 +227,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de onderdelen van het JSON-bestand dat in dit artikel wordt gebruikt [Image Builder-sjabloon verwijzing](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Zie Sjabloonverwijzing voor [imagebuilder](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over de onderdelen van het .json-bestand dat in dit artikel wordt gebruikt.

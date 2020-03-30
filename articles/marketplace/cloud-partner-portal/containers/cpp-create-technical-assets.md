@@ -1,64 +1,63 @@
 ---
-title: Installatie kopieën van Azure containers maken technische activa | Azure Marketplace
-description: Maak de technische activa voor een Azure-container.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Technische elementen van Azure Containers-afbeelding maken | Azure Marketplace
+description: Maak de technische elementen voor een Azure-container.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: 6aae1957a3dcc58339eb4f3c9e250513843ceb18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 71b3ec4bf505c333e5eca170e1f5e808ab51f41a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280062"
 ---
 # <a name="prepare-your-container-technical-assets"></a>De technische activa van de container voorbereiden
 
-In dit artikel worden de stappen en vereisten beschreven voor het configureren van een container waarin de Azure Marketplace wordt aangeboden.
+In dit artikel worden stappen en vereisten beschreven voor het configureren van een containeraanbieding op Azure Marketplace.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Raadpleeg de [Azure container instances](https://docs.microsoft.com/azure/container-instances) -documentatie, waarmee u Quick starts, zelf studies en voor beelden kunt bekijken.
+Controleer de documentatie [Azure Container Instances,](https://docs.microsoft.com/azure/container-instances) die Quickstarts, Tutorials en Samples bevat.
 
 ## <a name="fundamental-technical-knowledge"></a>Fundamentele technische kennis
 
-Het ontwerpen, bouwen en testen van deze assets vergt tijd en vereist technische kennis van het Azure-platform en de technologieën die worden gebruikt om de aanbieding te bouwen.
+Het ontwerpen, bouwen en testen van deze assets kost tijd en vereist technische kennis van zowel het Azure-platform als de technologieën die worden gebruikt om het aanbod te bouwen.
  
-Naast uw oplossings domein moet uw technische team kennis hebben over de volgende micro soft-technologieën:
+Naast uw oplossingsdomein moet uw engineeringteam kennis hebben over de volgende Microsoft-technologieën:
 
--   Basis informatie over [Azure-Services](https://azure.microsoft.com/services/) 
--   Azure- [toepassingen ontwerpen en ontwikkelen](https://azure.microsoft.com/solutions/architecture/)
--   Praktische kennis van [Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking)
--   Werk ervaring van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
--   Praktische kennis van [JSON](https://www.json.org/)
+-   Basiskennis van [Azure Services](https://azure.microsoft.com/services/) 
+-   [Azure-toepassingen ontwerpen en ontwerpen](https://azure.microsoft.com/solutions/architecture/)
+-   Werkkennis van [Azure Virtual Machines,](https://azure.microsoft.com/services/virtual-machines/) [Azure Storage](https://azure.microsoft.com/services/?filter=storage) en Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
+-   Werkkennis van [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+-   Werkkennis van [JSON](https://www.json.org/)
 
-## <a name="suggested-tools"></a>Aanbevolen hulpprogram ma's
+## <a name="suggested-tools"></a>Voorgestelde hulpprogramma's
 
-Kies een of beide van de volgende script omgevingen om uw container installatie kopie te beheren:
+Kies een of beide van de volgende scriptomgevingen om uw containerafbeelding te beheren:
 
 -   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-   [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
-Daarnaast raden wij aan de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
+Daarnaast raden we aan om de volgende tools toe te voegen aan je ontwikkelomgeving:
 
--   [Azure-opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Extensie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Visual Studio-code](https://code.visualstudio.com/)
+    *   Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-We raden u ook aan om de beschik bare hulpprogram ma's op de [Azure Ontwikkelhulpprogramma's](https://azure.microsoft.com/tools/) -pagina te bekijken en als u Visual Studio, de [Visual Studio Marketplace](https://marketplace.visualstudio.com/), gebruikt.
+We raden ook aan om de beschikbare hulpprogramma's op de pagina [Azure Developer Tools](https://azure.microsoft.com/tools/) te bekijken en, als u Visual Studio gebruikt, de Visual Studio [Marketplace](https://marketplace.visualstudio.com/).
 
-## <a name="create-the-container-image"></a>De container installatie kopie maken
+## <a name="create-the-container-image"></a>De containerafbeelding maken
 
 Zie het volgende voor meer informatie:
 
-* [Zelf studie: een container installatie kopie maken voor implementatie naar Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure Container Registry taken](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [Zelfstudie: Een containerafbeelding maken voor implementatie naar Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Zelfstudie: Containerafbeeldingen in de cloud maken en implementeren met Azure Container Registry Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw container aanbieding maken](./cpp-create-offer.md)
+[Uw containeraanbieding maken](./cpp-create-offer.md)

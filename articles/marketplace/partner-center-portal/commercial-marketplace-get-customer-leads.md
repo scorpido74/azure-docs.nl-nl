@@ -1,111 +1,110 @@
 ---
-title: Leads van klanten configureren | Azure Marketplace
-description: Klanten leads in commerciële Marketplace configureren.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Klantleads configureren | Azure Marketplace
+description: Klantleads configureren in commerciële marktplaats.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275897"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw Marketplace-aanbieding
 
-Leads zijn klanten die geïnteresseerd zijn in of implementeren uw aanbiedingen vanuit de [Azure Marketplace](https://azuremarketplace.microsoft.com) of via [AppSource](https://appsource.microsoft.com). Zodra uw aanbieding naar de Marketplace is gepubliceerd, ontvangt u leads van klanten. In dit artikel wordt uitgelegd:
+Leads zijn klanten die geïnteresseerd zijn in of het implementeren van uw aanbiedingen via de [Azure Marketplace](https://azuremarketplace.microsoft.com) of van [AppSource.](https://appsource.microsoft.com) U ontvangt klantleads zodra uw aanbieding op de marktplaats is gepubliceerd. In dit artikel wordt uitgelegd:
 
-* Hoe uw Marketplace-aanbieding klanten leads genereert, zodat u geen zakelijke kansen meer mist. 
-* Verbind uw CRM met uw aanbieding, zodat u uw leads kunt beheren op één centrale locatie.
-* Meer informatie over de lead gegevens die we u sturen, zodat u klanten kunt opvolgen die aan u zijn terechtgekomen.
+* Hoe uw marktplaatsaanbod leads van klanten genereert, zodat u geen zakelijke kansen mist. 
+* Verbind uw CRM met uw aanbod, zodat u uw leads op één centrale locatie beheren.
+* Begrijp de leadgegevens die we u sturen, zodat u klanten opvolgen die contact met u hebben opgenomen.
 
-## <a name="generate-customer-leads"></a>Leads van klanten genereren
+## <a name="generate-customer-leads"></a>Klantleads genereren
 
-Hier vindt u plaatsen waar een lead wordt gegenereerd:
+Hier zijn plaatsen waar een lead wordt gegenereerd:
 
-1. Wanneer een klant toestemming heeft gegeven om hun gegevens te delen nadat ik contact met mij op de Marketplace heb geselecteerd. Deze lead is een **eerste geïnteresseerde** lead, waar we informatie delen over de klant die geïnteresseerd is in het ophalen van uw product. De lead is de bovenkant van de verwervings trechter.
+1. Wanneer een klant instemt met het delen van hun informatie na het selecteren van "Neem contact met mij op" van de marktplaats. Deze lead is een **eerste interesselead,** waarbij we informatie delen over de klant die interesse heeft getoond in het verkrijgen van uw product. De lead is de bovenkant van de acquisitietrechter.
 
-      ![Dynamics 365 contact met mij opnemen](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
+      ![Dynamics 365 Neem contact met mij op](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. Wanneer een klant ' nu downloaden ' of ' maken ' (in de [Azure Portal](https://portal.azure.com/)) selecteert om uw aanbieding te ontvangen, is deze lead een **actieve lead**, waar we informatie delen over een klant die de implementatie van uw product heeft gestart.
+2. Wanneer een klant 'Nu krijgen' of 'Nu maken' (in de [Azure-portal)](https://portal.azure.com/)selecteert om uw aanbieding te krijgen, is deze lead een **actieve lead,** waarbij we informatie delen over een klant die is begonnen met het implementeren van uw product.
 
-    ![SQL nu ophalen](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
+    ![SQL Get it Now](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
     ![Windows Server maken](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-3. Een klant krijgt een ' test station ' of start een ' gratis proef versie ' van uw aanbieding. Test stations of gratis proef versies zijn versnelde kansen om uw bedrijf direct te delen met potentiële klanten zonder enige obstakels in te brengen.
+3. Een klant neemt een "Proefrit" of start een "Gratis proefversie" van uw aanbieding. Testdrives of gratis proefversies zijn versnelde mogelijkheden voor u om uw bedrijf direct te delen met potentiële klanten zonder enige toetredingsdrempels.
 
-    ![Dynamics 365-test station](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
+    ![Dynamics 365-testrit](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
-    ![Dynamics 365-test station](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
+    ![Dynamics 365-testrit](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
 
 ## <a name="connect-to-your-crm-system"></a>Verbinding maken met uw CRM-systeem
 
 [!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-## <a name="understand-lead-data"></a>Informatie over leads
+## <a name="understand-lead-data"></a>Inzicht in leadgegevens
 
-Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in specifieke velden. Het eerste veld dat moet worden uitgecheckt, is het `LeadSource` veld met de volgende indeling: **bron actie** | **aanbieding**.
+Elke lead die u ontvangt tijdens het klantacquisitieproces heeft gegevens op specifieke gebieden. Het eerste veld waar naar `LeadSource` moet worden gezocht is het veld, dat deze indeling volgt: **Source-Action** | **Offer**.
 
-**Bronnen**: de waarde voor dit veld wordt ingevuld op basis van de Marketplace die de lead heeft gegenereerd. Mogelijke waarden zijn `"AzureMarketplace"`, `"AzurePortal"`en `"AppSource (SPZA)"`.
+**Bronnen:** De waarde voor dit veld wordt ingevuld op basis van de marktdie de lead heeft gegenereerd. Mogelijke waarden `"AzureMarketplace"` `"AzurePortal"`zijn `"AppSource (SPZA)"`, , en .
 
-**Acties**: de waarde voor dit veld wordt ingevuld op basis van de actie die de klant heeft ondernomen op de Marketplace, waardoor de lead werd gegenereerd. 
+**Acties:** De waarde voor dit veld wordt ingevuld op basis van de actie die de klant heeft uitgevoerd in de marketplace, waardoor de lead is gegenereerd. 
 
 Mogelijke waarden zijn:
 
-- ' INS '--installatie. Deze actie bevindt zich op Azure Marketplace of AppSource wanneer een klant uw product koopt.
-- "PLT": staat voor een partner-LED-proef versie. Deze actie is op AppSource wanneer een klant de optie contact opnemen gebruikt.
-- "DNC"--geen contact opnemen. Deze actie bevindt zich op AppSource wanneer een partner die op de pagina van uw app staat, wordt gevraagd om contact met u op te nemen. De koppen worden gedeeld die deze klant heeft door gegeven aan uw app, maar er hoeven geen contact mee te worden gemaakt.
-- ' Maken ': deze actie bevindt zich alleen in de Azure Portal en wordt gegenereerd wanneer een klant uw aanbieding aan hun account koopt.
-- "StartTestDrive": deze actie geldt alleen voor test stations en wordt gegenereerd wanneer een klant hun test drive start.
+- "INS" -- Installatie. Deze actie is op Azure Marketplace of AppSource wanneer een klant uw product koopt.
+- "PLT" - staat voor Partner Led Trial. Deze actie is op AppSource wanneer een klant de optie Contact met mij gebruikt.
+- "DNC" -- Neem geen contact op. Deze actie staat op AppSource wanneer een partner die is crossop uw app-pagina wordt vermeld, wordt verzocht gecontacteerd te worden. We delen de heads-up dat deze klant is vermeld in uw app, maar ze hoeven niet te worden gecontacteerd.
+- 'Maken' - Deze actie bevindt zich alleen in de Azure-portal en wordt gegenereerd wanneer een klant uw aanbieding naar zijn account koopt.
+- "StartTestDrive" - Deze actie is alleen voor teststations en wordt gegenereerd wanneer een klant zijn testrit start.
 
-**Aanbiedingen**: mogelijk hebt u meerdere aanbiedingen op Marketplace. De waarde voor dit veld wordt ingevuld op basis van de aanbieding die de lead heeft gegenereerd. De uitgevers-ID en aanbiedings-ID worden beide in dit veld verzonden en zijn de waarden die u hebt ingevoerd tijdens het publiceren van de aanbieding naar de Marketplace.
+**Aanbiedingen:** Je hebt mogelijk meerdere aanbiedingen op de markt. De waarde voor dit veld wordt ingevuld op basis van de aanbieding die de lead heeft gegenereerd. De uitgevers-id en aanbiedings-id worden zowel in dit veld verzonden als zijn waarden die u hebt opgegeven toen u de aanbieding op de marktplaats hebt gepubliceerd.
 
-In de volgende voor beelden ziet u voorbeeld waarden in de verwachte indeling `publisherid.offerid`: 
+In de volgende voorbeelden worden voorbeeldwaarden in de verwachte indeling weergegeven: `publisherid.offerid` 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
 1. `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
 
-## <a name="customer-info"></a>Klant gegevens
+## <a name="customer-info"></a>Klantgegevens
 
-De gegevens van de klant worden verzonden via meerdere velden. In het volgende voor beeld ziet u de klant gegevens die zijn opgenomen in een lead.
+De informatie van de klant wordt via meerdere velden verzonden. In het volgende voorbeeld worden de klantgegevens weergegeven die in een lead zijn opgenomen.
 
-- Voor naam: John
-- LastName: Smit
-- E-mail: jsmith\@microsoft.com
+- Voornaam: John
+- Achternaam: Smith
+- E-mail:\@jsmith microsoft.com
 - Telefoon: 1234567890
 - Land: VS
-- Bedrijf: micro soft
-- Titel: CTO
+- Bedrijf: Microsoft
+- Benaming: CTO
 
 >[!Note]
->Niet alle gegevens in het vorige voor beeld zijn altijd beschikbaar voor elke lead. Omdat u leads van meerdere stappen krijgt, zoals vermeld in de sectie leads van klanten, is de beste manier om de leads af te handelen en de opvolging van de records te personaliseren. Op deze manier krijgt elke klant een passend bericht en maakt u een unieke relatie.
+>Niet alle gegevens in het vorige voorbeeld zijn altijd beschikbaar voor elke lead. Omdat u leads krijgt van meerdere stappen zoals vermeld in de sectie Klantleads, u de leads het beste verwerken door de records te dedupliceren en de follow-ups te personaliseren. Op deze manier krijgt elke klant een passend bericht en creëer je een unieke relatie.
 
-## <a name="best-practices-for-lead-management"></a>Aanbevolen procedures voor het beheer van leads
+## <a name="best-practices-for-lead-management"></a>Best practices voor leadmanagement
 
-1. *Proces* : Definieer een duidelijk verkoop proces met mijl palen, kpi's en het wissen van de team eigendom.
-2. *Kwalificatie* : Definieer vereisten, die aangeven of een lead volledig is gekwalificeerd. Zorg ervoor dat verkoop-of marketing vertegenwoordigers leads goed kwalificeren voordat ze via het volledige verkoop proces door lopen.
-3. *Follow-up* : Vergeet niet om te volgen, verwacht dat de gebruikelijke trans actie 5 tot 12 opvolgings oproepen vereist
-4. *Nurture* -nurture uw leads om u op weg te helpen met een hogere winst marge.
+1. *Proces* - Definieer een duidelijk verkoopproces, met mijlpalen, KPI's en duidelijke teameigendom.
+2. *Kwalificatie* - Definieer voorwaarden, die aangeven of een lead volledig gekwalificeerd is. Zorg ervoor dat verkoop- of marketingvertegenwoordigers leads zorgvuldig kwalificeren voordat ze het volledige verkoopproces doorlopen.
+3. *Follow-up* - Vergeet niet om follow-up, verwachten dat de typische transactie te vereisen 5 tot 12 follow-up gesprekken
+4. *Nurture* - Koester je leads om je op weg te krijgen naar een hogere winstmarge.
 
-## <a name="leads-frequently-asked-questions"></a>Veelgestelde vragen over leads
+## <a name="leads-frequently-asked-questions"></a>Veelgestelde vragen leiden
 
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?
+### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn hoofdbestemming?
 
-U kunt [hier](#connect-to-your-crm-system) documentatie vinden of een ondersteunings ticket indienen via aka.MS/marketplacepublishersupport. Selecteer vervolgens **' aanbieding maken '** → **uw type aanbod** → **' configuratie van lead beheer '.**
+U [hier](#connect-to-your-crm-system) documentatie vinden of een ondersteuningsticket indienen via aka.ms/marketplacepublishersupport selecteer vervolgens **'offer creatie'** → **uw type aanbieding** → **'lead management configuration'.**
 
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Moet ik een lead bestemming configureren om een aanbieding op Marketplace te publiceren?
+### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Moet ik een leadbestemming configureren om een aanbieding op de marktplaats te publiceren?
 
-Het antwoord is afhankelijk van het type aanbieding dat u publiceert. SaaS en Dynamics 365 voor klanten engagement aanbiedingen aanbieden als ' contact persoon ', alle Dynamics 365 voor de operationele aanbiedingen, alle Dynamics 365 Business Central-aanbiedingen en alle advies service-aanbiedingen vereisen een verbinding met een lead bestemming. Als uw aanbiedings type niet wordt vermeld, is dit niet vereist. U kunt echter het beste een lead bestemming configureren zodat u geen zakelijke kansen meer hebt.
+Het antwoord is afhankelijk van het type aanbod dat u publiceert. SaaS en Dynamics 365 for Customer Engagement biedt om als 'Contact Me' te vermelden, alle Dynamics 365 for Operations-aanbiedingen, alle Dynamics 365 Business Central-aanbiedingen en alle Consulting Service-aanbiedingen vereisen een verbinding met een hoofdbestemming. Als uw aanbiedingstype niet is vermeld, is dit niet vereist. Het wordt echter aanbevolen om een hoofdbestemming te configureren, zodat u geen zakelijke kansen mist.
 
-### <a name="how-can-i-find-the-test-lead"></a>Hoe kan ik de test lead vinden?
+### <a name="how-can-i-find-the-test-lead"></a>Hoe kan ik de testlead vinden?
 
-Zoek naar `"MSFT_TEST"` in uw lead doel, hier volgt een voor beeld van een test lead van micro soft:
+Zoek `"MSFT_TEST"` naar in uw hoofdbestemming, hier is een voorbeeld testlead van Microsoft:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -122,42 +121,42 @@ phone = 1234567890
 title = MSFT_TEST_636573304831318844
 ```
 
-### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Ik heb een live aanbieding, maar ik zie geen leads?
+### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Ik heb een live aanbod, maar ik zie geen aanwijzingen?
 
-Zorg ervoor dat de verbinding met de doel locatie van de lead geldig is. We sturen u een test lead nadat u op uw aanbieding hebt geklikt in het partner centrum. Als u de test leider ziet, is de verbinding geldig. U kunt ook uw lead verbinding testen door te proberen de preview-versie van de aanbieding te verkrijgen tijdens de preview-stap door te klikken op nu downloaden, contact opnemen of gratis proef versie van de aanbieding in de Marketplace.
+Zorg ervoor dat uw verbinding met de hoofdbestemming geldig is. We sturen je een testlead nadat je op je aanbieding in partnercentrum hebt gepubliceerd. Als u de testlead ziet, is de verbinding geldig. U uw leadverbinding ook testen door te proberen de aanbiedingsvoorbeeld te verkrijgen tijdens de voorbeeldstap door te klikken op 'nu kopen', 'contact met mij' of 'gratis proefversie' op de vermelding op de marktplaats.
 
-Zorg er ook voor dat u de juiste gegevens zoekt. De inhoud van de sectie [lead gegevens begrijpen](#understand-lead-data) van dit document beschrijft de lead gegevens die we verzenden naar uw lead bestemming.
+Zorg er ook voor dat u op zoek bent naar de juiste gegevens. De inhoud in de sectie [Leadgegevens begrijpen](#understand-lead-data) van dit document beschrijft de leadgegevens die we naar uw hoofdbestemming verzenden.
 
-### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Ik heb Azure BLOB geconfigureerd als mijn lead doel, waarom zie ik de lead niet?
+### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Ik heb Azure BLOB geconfigureerd als mijn hoofdbestemming, waarom zie ik de lead niet?
 
-De Azure Blob-doel locatie wordt niet meer ondersteund, zodat er geen potentiële klant leads ontbreken die door uw aanbieding zijn gegenereerd. Schakel over naar een van de andere opties voor de [doel bestemming](./commercial-marketplace-get-customer-leads.md). 
+De Azure Blob-leadbestemming wordt niet langer ondersteund, zodat u klantleads mist die door uw aanbieding worden gegenereerd. Schakel over naar een van de andere [opties voor hoofdbestemming](./commercial-marketplace-get-customer-leads.md). 
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen PII-gegevens door van het domein. edu. Dien een ondersteunings ticket in via aka.ms/marketplacepublishersupport.
+Het is mogelijk dat het e-maildomein van de eindgebruiker van .edu is. Om privacyredenen geven we geen PII-gegevens door van het .edu-domein. Stuur een supportticket in via aka.ms/marketplacepublishersupport.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb Azure Table geconfigureerd als mijn lead-bestemming, hoe kan ik de leads bekijken?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, hoe kan ik de leads bekijken?
 
-U kunt toegang krijgen tot de lead gegevens die zijn opgeslagen in de Azure-tabel vanuit Azure Portal, of u kunt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabel gegevens van uw Azure Storage-account weer te geven.
+U hebt toegang tot de leadgegevens die zijn opgeslagen in de Azure-tabel vanuit de Azure Portal, of u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gratis downloaden en installeren om de tabellengegevens van uw Azure-opslagaccount weer te geven.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Ik heb Azure Table als mijn lead bestemming geconfigureerd, kan ik een melding ontvangen wanneer een nieuwe lead door Marketplace wordt verzonden?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, kan ik een melding krijgen wanneer een nieuwe lead wordt verzonden door Marketplace?
 
-Ja, volg de instructies voor het instellen van een micro soft flow waarmee een e-mail bericht wordt verzonden als een lead wordt toegevoegd aan de Azure-tabel in [de documentatie.](./commercial-marketplace-lead-management-instructions-azure-table.md)
+Ja, volg de instructies voor het instellen van een Microsoft-stroom die een e-mail verzendt als [hier](./commercial-marketplace-lead-management-instructions-azure-table.md)een lead wordt toegevoegd aan de Azure-tabel in de documentatie.
 
-### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Ik heb Sales Force geconfigureerd als mijn lead-doel waarom kan ik de leads niet vinden?
+### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Ik heb Salesforce geconfigureerd als mijn hoofdbestemming, waarom kan ik de leads niet vinden?
 
-Controleer of het formulier Web to lead een verplicht veld is op basis van een selectie lijst. Zo ja, schakelt u over naar het veld naar een niet-verplicht tekst veld.
+Controleer of het formulier 'web to lead' een verplicht veld is op basis van een picklist. Zo ja, schakel het veld over naar een niet-verplicht tekstveld.
 
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Er is een probleem met mijn lead doel en er zijn enkele leads gemist. Kan ik ze in een e-mail bericht naar mij verzenden?
+### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Er was een probleem met mijn hoofdbestemming, en ik miste enkele aanwijzingen. Kan ik ze in een e-mail naar mij laten sturen?
 
-Als gevolg van PII-beleid (persoonlijke Identificeer bare informatie) kunnen we geen lead gegevens delen via onbeveiligde e-mail berichten.
+Vanwege het BELEID van PII (Private Identificeerbare Informatie) kunnen we geen leadgegevens delen via onbeveiligde e-mail.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Ik heb de Azure-tabel als mijn lead bestemming geconfigureerd, wat kost het dan kosten?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Ik heb Azure Table geconfigureerd als mijn hoofdbestemming, hoeveel kost dit?
 
-De gegevens van de lead zijn laag (< 1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000-leads per maand worden ontvangen, kosten ongeveer 50 cent. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
+Lead gen-gegevens zijn laag (<1 GB voor bijna alle uitgevers). De kosten zijn afhankelijk van het aantal ontvangen leads, als 1.000 leads worden ontvangen in een maand, kost het ongeveer 50 cent. Zie [opslagprijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over opslagprijzen.
 
-Als uw vraag nog steeds niet wordt beantwoord, neemt u contact op met de ondersteuning via aka.ms/marketplacepublishersupport en selecteert u vervolgens **aanbieding maken** → **uw type aanbieding** → **' configuratie van lead beheer '.** 
+Als uw vraag nog steeds niet wordt beantwoord, neemt u contact op met ondersteuning via aka.ms/marketplacepublishersupport en selecteert u **'aanmaken aanbieden'** → **uw type aanbieding** → **'leadmanagementconfiguratie'.** 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra de technische configuratie is geïmplementeerd, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken op het leveren van leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in [feedback](mailto:AzureMarketOnboard@microsoft.com) en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.
+Zodra de technische set-up is op zijn plaats, moet u deze leads op te nemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter begrip van uw totale verkoopproces en willen nauw met u samenwerken bij het leveren van hoogwaardige leads en voldoende gegevens om u succesvol te maken. We zijn blij met uw feedback over hoe we de leads die we u sturen kunnen optimaliseren en verbeteren met aanvullende gegevens om deze klanten succesvol te maken. Laat het ons weten als je geïnteresseerd bent in [het geven van feedback](mailto:AzureMarketOnboard@microsoft.com) en suggesties om je verkoopteam succesvoller te laten zijn met Marketplace Leads.

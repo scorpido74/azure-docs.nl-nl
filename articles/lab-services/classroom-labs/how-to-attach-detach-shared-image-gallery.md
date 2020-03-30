@@ -1,6 +1,6 @@
 ---
-title: Een galerie met gedeelde afbeeldingen koppelen of ontkoppelen in Azure Lab Services | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een galerie met gedeelde afbeeldingen koppelt aan een leslokaal Lab in Azure Lab Services.
+title: Een gedeelde afbeeldingsgalerie koppelen of loskoppelen in Azure Lab Services | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u een gedeelde afbeeldingsgalerie koppelt aan een klaslokaallab in Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,81 +14,81 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284315"
 ---
-# <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen koppelen of ontkoppelen in Azure Lab Services
-Docenten/Lab-beheerder kunnen een sjabloon-VM-installatie kopie opslaan in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md) van Azure, zodat deze door anderen opnieuw kan worden gebruikt. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
+# <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Een gedeelde afbeeldingsgalerie koppelen of loskoppelen in Azure Lab Services
+Docenten/labbeheerders kunnen een vm-afbeelding van een sjabloon opslaan in een [azure-gedeelde afbeeldingsgalerie](../../virtual-machines/windows/shared-image-galleries.md) om deze door anderen opnieuw te kunnen gebruiken. Als eerste stap koppelt de labbeheerder een bestaande gedeelde afbeeldingsgalerie aan het labaccount. Zodra de gedeelde afbeeldingsgalerie is gekoppeld, kunnen laboratoria die in het labaccount zijn gemaakt, afbeeldingen opslaan in de gedeelde afbeeldingsgalerie. Andere docenten kunnen deze afbeelding selecteren in de gedeelde afbeeldingsgalerie om een sjabloon voor hun klassen te maken. 
 
-Wanneer een afbeelding wordt opgeslagen in een galerie met gedeelde afbeeldingen, Azure Lab Services de opgeslagen installatie kopie repliceren naar andere regio's die beschikbaar zijn in dezelfde [geografie](https://azure.microsoft.com/global-infrastructure/geographies/). Het zorgt ervoor dat de installatie kopie beschikbaar is voor Labs die is gemaakt in andere regio's in dezelfde geografie. Het opslaan van afbeeldingen naar een galerie met gedeelde afbeeldingen brengt extra kosten met zich mee voor alle gerepliceerde installatie kopieën. Deze kosten zijn gescheiden van de kosten voor het Azure Lab Services gebruik. Voor meer informatie over de prijzen voor de galerie met gedeelde afbeeldingen raadpleegt u [Galerie met gedeelde afbeeldingen-facturering]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
+Wanneer een afbeelding wordt opgeslagen in een gedeelde afbeeldingsgalerie, repliceert Azure Lab Services de opgeslagen afbeelding naar andere regio's die beschikbaar zijn in dezelfde [geografie.](https://azure.microsoft.com/global-infrastructure/geographies/) Het zorgt ervoor dat de afbeelding beschikbaar is voor laboratoria die zijn gemaakt in andere regio's in dezelfde geografie. Het opslaan van afbeeldingen in een gedeelde afbeeldingsgalerie brengt extra kosten met zich mee, waaronder kosten voor alle gerepliceerde afbeeldingen. Deze kosten staan los van de gebruikskosten van Azure Lab Services. Zie Gedeelde galerie voor afbeeldingen [– Facturering]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)voor meer informatie over de prijzen van gedeelde afbeeldingengalerij.
 
-In dit artikel wordt beschreven hoe u een galerie met gedeelde afbeeldingen koppelt aan of koppelt aan een Lab-account. 
+In dit artikel ziet u hoe u een gedeelde afbeeldingsgalerie aan een labaccount koppelt of loskoppelt. 
 
 > [!NOTE]
-> Op dit moment biedt Azure Lab Services alleen ondersteuning voor het maken van sjabloon-Vm's op basis van alleen **gegeneraliseerde** VM-installatie kopieën (geen gespecialiseerde installatie kopieën) in een galerie met gedeelde installatie kopieën. 
+> Momenteel ondersteunt Azure Lab Services het maken van sjabloonVM's op basis van alleen **gegeneraliseerde** VM-afbeeldingen (geen gespecialiseerde afbeeldingen) in een gedeelde afbeeldingsgalerie. 
 
 
-## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment dat het lab-account wordt gemaakt
-Wanneer u een Lab-account maakt, kunt u een galerie met gedeelde afbeeldingen koppelen aan het lab-account. U kunt een bestaande galerie met gedeelde afbeeldingen selecteren in de vervolg keuzelijst of een nieuwe maken. Als u een galerie met gedeelde afbeeldingen wilt maken en koppelen aan het lab-account, selecteert u **Nieuw maken**, voert u een naam in voor de galerie en voert u **OK**in. 
+## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment van het maken van labaccount
+Wanneer u een labaccount maakt, u een gedeelde afbeeldingsgalerie aan het labaccount koppelen. U een bestaande gedeelde afbeeldingsgalerie selecteren in de vervolgkeuzelijst of een nieuwe galerie maken. Als u een gedeelde afbeeldingsgalerie wilt maken en koppelen aan het labaccount, selecteert u **Nieuw maken,** voert u een naam voor de galerie in en voert **u OK**in. 
 
-![Galerie met gedeelde afbeeldingen configureren op het moment dat het account wordt gemaakt](../media/how-to-use-shared-image-gallery/new-lab-account.png)
+![Gedeelde afbeeldingsgalerie configureren op het moment van het maken van labaccount](../media/how-to-use-shared-image-gallery/new-lab-account.png)
 
-## <a name="configure-after-the-lab-account-is-created"></a>Configureren nadat het lab-account is gemaakt
-Nadat het lab-account is gemaakt, kunt u de volgende taken uitvoeren:
+## <a name="configure-after-the-lab-account-is-created"></a>Configureren nadat het labaccount is gemaakt
+Nadat het labaccount is gemaakt, u de volgende taken uitvoeren:
 
-- Een galerie met gedeelde afbeeldingen maken en koppelen
-- Een galerie met gedeelde afbeeldingen koppelen aan het lab-account
-- Een galerie met gedeelde afbeeldingen loskoppelen van het lab-account
+- Een gedeelde afbeeldingsgalerie maken en eraan koppelen
+- Een gedeelde afbeeldingsgalerie toevoegen aan het labaccount
+- Een gedeelde afbeeldingsgalerie loskoppelen van het labaccount
 
-## <a name="create-and-attach-a-shared-image-gallery"></a>Een galerie met gedeelde afbeeldingen maken en koppelen
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS** . Als u ster (`*`) selecteert naast **Lab-Services**, wordt deze toegevoegd aan de sectie **Favorieten** in het menu links. Vanaf de volgende keer kunt u **Lab-Services** selecteren onder **Favorieten**.
+## <a name="create-and-attach-a-shared-image-gallery"></a>Een gedeelde afbeeldingsgalerie maken en eraan koppelen
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS.** Als u ster`*`( ) naast **Lab Services**selecteert, wordt deze toegevoegd aan de sectie **FAVORIETEN** in het linkermenu. Vanaf de volgende keer selecteert u **Lab Services** onder **FAVORIETEN**.
 
-    ![Alle services-> Lab-Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Selecteer uw Lab-account om de pagina **Lab-account** weer te geven. 
-4. Selecteer in het menu links **gedeelde installatie kopie galerie** en selecteer **+ maken** op de werk balk.  
+    ![Alle services -> Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Selecteer uw labaccount om de pagina **Lab-account** te bekijken. 
+4. Selecteer **Gedeelde afbeeldingsgalerie** in het linkermenu en selecteer **+ Maken** op de werkbalk.  
 
-    ![Knop gedeelde installatie kopie galerie maken](../media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
-5. Voer in het venster **gedeelde installatie kopie galerie maken** een **naam** in voor de galerie en voer **OK**in. 
+    ![Knop Gedeelde afbeeldingsgalerie maken](../media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
+5. Voer in het venster **Gedeelde afbeeldingsgalerie maken** een **naam** voor de galerie in en voer **OK**in. 
 
-    ![Venster gedeelde installatie kopie galerie maken](../media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
+    ![Venster gedeelde afbeeldingsgalerie maken](../media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
 
-    Azure Lab Services maakt de galerie met gedeelde afbeeldingen en koppelt deze aan het lab-account. Alle Labs die in dit lab-account is gemaakt, hebben toegang tot de gekoppelde gedeelde afbeeldingen galerie. 
+    Azure Lab Services maakt de gedeelde afbeeldingsgalerie en koppelt deze aan het labaccount. Alle labs die in dit labaccount zijn gemaakt, hebben toegang tot de bijgevoegde gedeelde afbeeldingsgalerie. 
 
-    ![Galerie met bijgevoegde afbeeldingen](../media/how-to-use-shared-image-gallery/image-gallery-in-list.png)
+    ![Bijgevoegde afbeeldingsgalerie](../media/how-to-use-shared-image-gallery/image-gallery-in-list.png)
 
-    In het onderste deel venster ziet u afbeeldingen in de galerie met gedeelde afbeeldingen. In deze nieuwe galerie zijn er geen installatie kopieën. Wanneer u afbeeldingen naar de galerie uploadt, worden deze op deze pagina weer geven.     
+    In het onderste deelvenster ziet u afbeeldingen in de gedeelde afbeeldingsgalerie. In deze nieuwe galerij zijn er geen afbeeldingen. Wanneer u afbeeldingen uploadt naar de galerie, ziet u ze op deze pagina.     
 
-    Alle installatie kopieën in de gekoppelde gedeelde installatie kopie galerie zijn standaard ingeschakeld. U kunt geselecteerde installatie kopieën in-of uitschakelen door ze te selecteren in de lijst en de knop geselecteerde installatie kopieën **inschakelen** of **geselecteerde afbeeldingen uitschakelen** te gebruiken.
+    Alle afbeeldingen in de bijgevoegde gedeelde afbeeldingsgalerie zijn standaard ingeschakeld. U geselecteerde afbeeldingen in- of uitschakelen door ze in de lijst te selecteren en geselecteerde **afbeeldingen inschakelen** of Geselecteerde **afbeeldingen uitschakelen.**
 
-## <a name="attach-an-existing-shared-image-gallery"></a>Een bestaande galerie met gedeelde afbeeldingen koppelen
-De volgende procedure laat zien hoe u een bestaande galerie met gedeelde afbeeldingen koppelt aan een Lab-account. 
+## <a name="attach-an-existing-shared-image-gallery"></a>Een bestaande gedeelde afbeeldingsgalerie toevoegen
+In de volgende procedure ziet u hoe u een bestaande gedeelde afbeeldingsgalerie aan een labaccount koppelt. 
 
-1. Selecteer op de pagina **Lab-account** de optie **Galerie met gedeelde afbeeldingen** in het linkermenu en selecteer vervolgens **bijvoegen** op de werk balk. 
+1. Selecteer op de pagina **Lab-account** de optie **Gedeelde afbeeldingsgalerie** in het linkermenu en selecteer **Bijvoegen** op de werkbalk. 
 
-    ![Galerie gedeelde afbeeldingen-knop toevoegen](../media/how-to-use-shared-image-gallery/sig-attach-button.png)
-5. Selecteer op de pagina **een bestaande gedeelde installatie kopie galerie koppelen** de galerie met gedeelde afbeeldingen en selecteer **OK**.
+    ![Gedeelde afbeeldingsgalerie - knop Toevoegen](../media/how-to-use-shared-image-gallery/sig-attach-button.png)
+5. Selecteer op de pagina **Een bestaande gedeelde afbeeldingsgalerie** de optie van uw gedeelde afbeeldingsgalerie en selecteer **OK**.
 
     ![Een bestaande galerie selecteren](../media/how-to-use-shared-image-gallery/select-image-gallery.png)
-6. Het volgende scherm wordt weer gegeven: 
+6. U ziet het volgende scherm: 
 
     ![Mijn galerie in de lijst](../media/how-to-use-shared-image-gallery/my-gallery-in-list.png)
     
-    In dit voor beeld zijn er nog geen installatie kopieën in de galerie met gedeelde afbeeldingen.
+    In dit voorbeeld zijn er nog geen afbeeldingen in de gedeelde afbeeldingsgalerie.
 
-    Azure Lab Services identiteit wordt toegevoegd als een bijdrager aan de galerie met gedeelde afbeeldingen die is gekoppeld aan het lab. Hiermee kunnen docenten/IT-beheerder installatie kopieën van virtuele machines opslaan in de galerie met gedeelde installatie kopieën. Alle Labs die in dit lab-account is gemaakt, hebben toegang tot de gekoppelde gedeelde afbeeldingen galerie. 
+    Azure Lab Services-identiteit wordt toegevoegd als bijdrager aan de gedeelde afbeeldingsgalerie die aan het lab is gekoppeld. Hiermee kunnen docenten/IT-beheerders afbeeldingen van virtuele machines opslaan in de gedeelde afbeeldingsgalerie. Alle labs die in dit labaccount zijn gemaakt, hebben toegang tot de bijgevoegde gedeelde afbeeldingsgalerie. 
 
-    Alle installatie kopieën in de gekoppelde gedeelde installatie kopie galerie zijn standaard ingeschakeld. U kunt geselecteerde installatie kopieën in-of uitschakelen door ze te selecteren in de lijst en de knop geselecteerde installatie kopieën **inschakelen** of **geselecteerde afbeeldingen uitschakelen** te gebruiken. 
+    Alle afbeeldingen in de bijgevoegde gedeelde afbeeldingsgalerie zijn standaard ingeschakeld. U geselecteerde afbeeldingen in- of uitschakelen door ze in de lijst te selecteren en geselecteerde **afbeeldingen inschakelen** of Geselecteerde **afbeeldingen uitschakelen.** 
 
-## <a name="detach-a-shared-image-gallery"></a>Een galerie met gedeelde afbeeldingen loskoppelen
-Er kan slechts één galerie met gedeelde afbeeldingen worden gekoppeld aan een lab. Als u een andere galerie met gedeelde afbeeldingen wilt koppelen, moet u het huidige loskoppelen voordat u het nieuwe toevoegt. Als u een galerie met gedeelde installatie kopieën wilt loskoppelen van uw Lab, selecteert u **loskoppelen** op de werk balk en bevestigt u de koppelings bewerking. 
+## <a name="detach-a-shared-image-gallery"></a>Een gedeelde afbeeldingsgalerie loskoppelen
+Aan een lab kan slechts één gedeelde afbeeldingsgalerie worden gekoppeld. Als u een andere gedeelde afbeeldingsgalerie wilt koppelen, koppelt u de huidige afbeelding los voordat u de nieuwe afbeelding koppelt. Als u een gedeelde afbeeldingsgalerie los maakt van uw lab, selecteert u **Losmaken** op de werkbalk en bevestigt u de losmakende bewerking. 
 
-![De galerie met gedeelde afbeeldingen loskoppelen van het lab-account](../media/how-to-use-shared-image-gallery/detach.png)
+![De gedeelde afbeeldingsgalerie loskoppelen van het labaccount](../media/how-to-use-shared-image-gallery/detach.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de [Galerie met gedeelde afbeeldingen gebruiken](how-to-use-shared-image-gallery.md)voor meer informatie over het opslaan van een Lab-afbeelding in de galerie met gedeelde afbeeldingen of het gebruik van een afbeelding uit de galerie met gedeelde afbeeldingen om een virtuele machine te maken.
+Zie Hoe u een galerie met gedeelde afbeeldingen gebruiken voor meer informatie over het opslaan van een labafbeelding in de gedeelde afbeeldingsgalerie of een afbeelding uit de gedeelde afbeeldingsgalerie gebruiken om een virtuele afbeelding [te maken.](how-to-use-shared-image-gallery.md)
 
-Zie [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën in het algemeen.
+Zie [gedeelde afbeeldingsgalerie](../../virtual-machines/windows/shared-image-galleries.md)voor meer informatie over gedeelde galeries in het algemeen.

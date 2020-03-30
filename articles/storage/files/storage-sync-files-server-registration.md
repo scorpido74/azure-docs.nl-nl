@@ -1,6 +1,6 @@
 ---
-title: Geregistreerde servers beheren met Azure File Sync | Microsoft Docs
-description: Meer informatie over het registreren en opheffen van de registratie van een Windows-Server met een Azure File Sync Storage-synchronisatie service.
+title: Geregistreerde servers beheren met Azure File Sync | Microsoft Documenten
+description: Meer informatie over het registreren en uitschrijven van een Windows Server met een Azure File Sync Storage Sync Service.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,45 +8,45 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255091"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Geregistreerde servers beheren met Azure File Sync
-Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
+Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit gebeurt door uw Windows-servers om te zetten in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
 
-In het volgende artikel ziet u hoe u een server met een opslag synchronisatie service registreert en beheert. Zie [Azure file sync implementeren](storage-sync-files-deployment-guide.md) voor informatie over het implementeren van Azure File Sync End-to-end.
+In het volgende artikel wordt uitgelegd hoe u een server registreert en beheert met een Storage Sync-service. Zie [Azure File Sync implementeren](storage-sync-files-deployment-guide.md) voor informatie over het end-to-end implementeren van Azure File Sync.
 
-## <a name="registerunregister-a-server-with-storage-sync-service"></a>Een server bij de opslag synchronisatie service registreren of de registratie ervan opheffen
-Bij het registreren van een server met Azure File Sync wordt een vertrouwens relatie tussen Windows Server en Azure tot stand gebracht. Deze relatie kan vervolgens worden gebruikt om *Server eindpunten* te maken op de server, die specifieke mappen vertegenwoordigen die moeten worden gesynchroniseerd met een Azure-bestands share (ook wel een *Cloud-eind punt*genoemd). 
+## <a name="registerunregister-a-server-with-storage-sync-service"></a>Een server registreren/uitschrijven met Storage Sync Service
+Als u een server registreert met Azure File Sync, wordt een vertrouwensrelatie tussen Windows Server en Azure tot gevolg. Deze relatie kan vervolgens worden gebruikt om *servereindpunten* op de server te maken, die specifieke mappen vertegenwoordigen die moeten worden gesynchroniseerd met een Azure-bestandsshare (ook wel een eindpunt in de *cloud genoemd).* 
 
 ### <a name="prerequisites"></a>Vereisten
-Als u een server wilt registreren bij een opslag synchronisatie service, moet u eerst uw server voorbereiden met de vereiste onderdelen:
+Als u een server wilt registreren bij een Storage Sync Service, moet u uw server eerst voorbereiden met de vereiste vereisten:
 
-* Op de server moet een ondersteunde versie van Windows Server worden uitgevoerd. Zie [Azure File Sync System Requirements and interoperabiliteit](storage-sync-files-planning.md#windows-file-server-considerations)(Engelstalig) voor meer informatie.
-* Zorg ervoor dat er een opslag synchronisatie service is geïmplementeerd. Zie [Azure file sync implementeren](storage-sync-files-deployment-guide.md)voor meer informatie over het implementeren van een opslag synchronisatie service.
-* Zorg ervoor dat de server is verbonden met internet en dat Azure toegankelijk is.
-* Schakel de verbeterde beveiliging van Internet Explorer voor beheerders uit met de gebruikers interface van Serverbeheer.
+* Op uw server moet een ondersteunde versie van Windows Server worden uitgevoerd. Zie Azure [File Sync-systeemvereisten en interoperabiliteit](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie.
+* Controleer of er een Storage Sync-service is geïmplementeerd. Zie [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)voor meer informatie over het implementeren van een Opslagsynchronisatieservice.
+* Controleer of de server is verbonden met internet en dat Azure toegankelijk is.
+* Schakel de IE Enhanced Security Configuration voor beheerders uit met de gebruikersinterface serverbeheer.
     
-    ![Serverbeheer gebruikers interface met de verbeterde beveiliging van Internet Explorer gemarkeerd](media/storage-sync-files-server-registration/server-manager-ie-config.png)
+    ![Gebruikersinterface serverbeheer met de iE-verbeterde beveiligingsconfiguratie gemarkeerd](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Zorg ervoor dat de module Azure PowerShell is geïnstalleerd op uw server. Als uw server lid is van een failovercluster, moet op elk knoop punt in het cluster de module AZ worden vereist. Meer informatie over het installeren van de AZ-module vindt u in de [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Controleer of de Azure PowerShell-module op uw server is geïnstalleerd. Als uw server lid is van een Failovercluster, is voor elk knooppunt in het cluster de Az-module vereist. Meer informatie over het installeren van de Az-module vindt u op de [Installatie en configureer Azure PowerShell.](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 
     > [!Note]  
-    > U kunt het beste de nieuwste versie van de AZ Power shell-module gebruiken om een server te registreren of de registratie ervan ongedaan te maken. Als het pakket AZ eerder op deze server is geïnstalleerd (en de Power shell-versie op deze server 5. * of hoger is), kunt u de cmdlet `Update-Module` gebruiken om dit pakket bij te werken. 
-* Als u een netwerk proxy server in uw omgeving gebruikt, configureert u de proxy-instellingen op uw server zodat de synchronisatie agent kan gebruiken.
-    1. Het IP-adres en poort nummer van uw proxy bepalen
+    > We raden u aan de nieuwste versie van de Az PowerShell-module te gebruiken om een server te registreren/uitte registreren. Als het Az-pakket eerder op deze server is geïnstalleerd (en de PowerShell-versie op `Update-Module` deze server 5.* of meer is), u de cmdlet gebruiken om dit pakket bij te werken. 
+* Als u een netwerkproxyserver in uw omgeving gebruikt, configureert u proxy-instellingen op uw server voor het gebruik van de synchronisatieagent.
+    1. Uw proxy-IP-adres en poortnummer bepalen
     2. Bewerk deze twee bestanden:
         * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
         * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
-    3. Voeg de regels in afbeelding 1 (onder deze sectie) onder/System.ServiceModel in de bovenstaande twee bestanden die 127.0.0.1:8888 wijzigen in het juiste IP-adres (vervangen 127.0.0.1) en het juiste poort nummer (vervangen 8888):
-    4. De WinHTTP-proxy-instellingen instellen via de opdracht regel:
-        * De proxy weer geven: netsh WinHTTP show proxy
-        * Stel de proxy in: netsh WinHTTP set proxy 127.0.0.1:8888
-        * De proxy opnieuw instellen: netsh WinHTTP reset proxy
-        * Als dit het geval is nadat de agent is geïnstalleerd, start u de synchronisatie agent opnieuw: net stop filesyncsvc
+    3. Voeg de regels in figuur 1 (onder deze sectie) onder /System.ServiceModel in de bovenstaande twee bestanden die 127.0.0.1:8888 wijzigen, toe aan het juiste IP-adres (vervang 127.0.0.1) en het juiste poortnummer (vervang 8888):
+    4. Stel de winhttp-proxy-instellingen in via de opdrachtregel:
+        * De proxy weergeven: netsh winhttp show proxy
+        * De proxy instellen: netsh winhttp set proxy 127.0.0.1:8888
+        * De proxy opnieuw instellen: netsh winhttp reset proxy
+        * als dit is ingesteld nadat de agent is geïnstalleerd, start u onze synchronisatieagent opnieuw op: net stop filesyncsvc
     
 ```XML
     Figure 1:
@@ -57,59 +57,59 @@ Als u een server wilt registreren bij een opslag synchronisatie service, moet u 
     </system.net>
 ```    
 
-### <a name="register-a-server-with-storage-sync-service"></a>Een server met de opslag synchronisatie service registreren
-Voordat een server kan worden gebruikt als een *Server eindpunt* in een Azure file sync *synchronisatie groep*, moet deze zijn geregistreerd bij een *opslag synchronisatie service*. Een server kan slechts met één opslag synchronisatie service tegelijk worden geregistreerd.
+### <a name="register-a-server-with-storage-sync-service"></a>Een server registreren met Storage Sync Service
+Voordat een server kan worden gebruikt als *een servereindpunt* in een Azure File *Sync-groep,* moet deze zijn geregistreerd bij een *Storage Sync Service*. Een server kan slechts bij één Storage Sync Service tegelijk worden geregistreerd.
 
 #### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync-agent installeren
-1. [Down load de Azure file sync-agent](https://go.microsoft.com/fwlink/?linkid=858257).
-2. Start het installatie programma van de Azure File Sync-agent.
+1. [Download de Azure File Sync-agent](https://go.microsoft.com/fwlink/?linkid=858257).
+2. Start het installatieprogramma van de Azure File Sync-agent.
     
-    ![Het eerste deel venster van het installatie programma van de Azure File Sync-agent](media/storage-sync-files-server-registration/install-afs-agent-1.png)
+    ![Het eerste deelvenster van het installatieprogramma van de Azure File Sync-agent](media/storage-sync-files-server-registration/install-afs-agent-1.png)
 
-3. Zorg ervoor dat u updates voor de Azure File Sync agent inschakelt met behulp van Microsoft Update. Het is belang rijk omdat essentiële beveiligingsfixes en functie verbeteringen voor het server pakket worden verzonden via Microsoft Update.
+3. Zorg ervoor dat u updates voor de Azure File Sync-agent inschakelt met Microsoft Update. Het is belangrijk omdat kritieke beveiligingsoplossingen en functieverbeteringen voor het serverpakket worden verzonden via Microsoft Update.
 
-    ![Zorg ervoor dat Microsoft Update is ingeschakeld in het deel venster Microsoft Update van het installatie programma van Azure File Sync agent](media/storage-sync-files-server-registration/install-afs-agent-2.png)
+    ![Controleren of Microsoft Update is ingeschakeld in het deelvenster Microsoft Update van het installatieprogramma van de Azure File Sync-agent](media/storage-sync-files-server-registration/install-afs-agent-2.png)
 
-4. Als de server nog niet eerder is geregistreerd, wordt de gebruikers interface voor Server registratie onmiddellijk weer gegeven nadat de installatie is voltooid.
-
-> [!Important]  
-> Als de server lid is van een failovercluster, moet de Azure File Sync-agent worden geïnstalleerd op elk knoop punt in het cluster.
-
-#### <a name="register-the-server-using-the-server-registration-ui"></a>De server registreren met de gebruikers interface voor Server registratie
-> [!Important]  
-> Cloud Solution Provider (CSP)-abonnementen kunnen de gebruikers interface voor Server registratie niet gebruiken. Gebruik in plaats daarvan Power shell (onder deze sectie).
-
-1. Als de gebruikers interface voor Server registratie niet onmiddellijk is gestart na het volt ooien van de installatie van de Azure File Sync agent, kunt u deze hand matig starten door `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`uit te voeren.
-2. Klik op *Aanmelden* om toegang te krijgen tot uw Azure-abonnement. 
-
-    ![Dialoog venster openen van de gebruikers interface voor Server registratie](media/storage-sync-files-server-registration/server-registration-ui-1.png)
-
-3. Kies het juiste abonnement, de resource groep en de opslag synchronisatie service in het dialoog venster.
-
-    ![Gegevens van de opslag synchronisatie service](media/storage-sync-files-server-registration/server-registration-ui-2.png)
-
-4. In de preview-versie is een meer aanmelding vereist om het proces te volt ooien. 
-
-    ![Dialoog venster Aanmelden](media/storage-sync-files-server-registration/server-registration-ui-3.png)
+4. Als de server nog niet eerder is geregistreerd, verschijnt de gebruikersinterface voor serverregistratie onmiddellijk na het voltooien van de installatie.
 
 > [!Important]  
-> Als de server lid is van een failovercluster, moet elke server de server registratie uitvoeren. Wanneer u de geregistreerde servers in azure Portal bekijkt, herkent Azure File Sync elk knoop punt automatisch als lid van hetzelfde failovercluster en worden ze op de juiste wijze gegroepeerd.
+> Als de server lid is van een Failovercluster, moet de Azure File Sync-agent op elk knooppunt in het cluster worden geïnstalleerd.
 
-#### <a name="register-the-server-with-powershell"></a>De server registreren bij Power shell
-U kunt ook Server registratie uitvoeren via Power shell. Dit is de enige ondersteunde manier voor het registreren van de server voor de Cloud Solution Provider (CSP)-abonnementen:
+#### <a name="register-the-server-using-the-server-registration-ui"></a>De server registreren met de gebruikersinterface voor serverregistratie
+> [!Important]  
+> CSP-abonnementen (Cloud Solution Provider) kunnen geen gebruik maken van de gebruikersinterface voor serverregistratie. Gebruik in plaats daarvan PowerShell (onder deze sectie).
+
+1. Als de serverregistratie-gebruikersinterface niet onmiddellijk na het voltooien van de installatie van de Azure `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`File Sync-agent is gestart, kan deze handmatig worden gestart door het uitvoeren van .
+2. Klik op Aanmelden om toegang te krijgen tot uw *Azure-abonnement.* 
+
+    ![Dialoogvenster openen van de gebruikersinterface voor serverregistratie](media/storage-sync-files-server-registration/server-registration-ui-1.png)
+
+3. Kies de juiste abonnements-, brongroep- en opslagsynchronisatieservice in het dialoogvenster.
+
+    ![Informatie over opslagsynchronisatie](media/storage-sync-files-server-registration/server-registration-ui-2.png)
+
+4. In preview is nog een aanmelding vereist om het proces te voltooien. 
+
+    ![Het dialoogvenster Aanmelden](media/storage-sync-files-server-registration/server-registration-ui-3.png)
+
+> [!Important]  
+> Als de server lid is van een failovercluster, moet elke server serverregistratie uitvoeren. Wanneer u de geregistreerde servers in de Azure Portal bekijkt, herkent Azure File Sync automatisch elk knooppunt als lid van hetzelfde Failovercluster en groepeert u deze op de juiste manier.
+
+#### <a name="register-the-server-with-powershell"></a>De server registreren met PowerShell
+U ook serverregistratie uitvoeren via PowerShell. Dit is de enige ondersteunde manier van serverregistratie voor CSP-abonnementen (Cloud Solution Provider):
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
 ```
 
-### <a name="unregister-the-server-with-storage-sync-service"></a>De registratie van de server bij de opslag synchronisatie service ongedaan maken
-Er zijn verschillende stappen vereist voor het opheffen van de registratie van een server bij een opslag synchronisatie service. Laten we eens kijken hoe u de registratie van een server goed kunt opheffen.
+### <a name="unregister-the-server-with-storage-sync-service"></a>De server uitschrijven met Storage Sync Service
+Er zijn verschillende stappen vereist om een server uit te schrijven bij een Storage Sync Service. Laten we eens kijken hoe je een server goed uitschrijven.
 
 > [!Warning]  
-> Probeer geen problemen met synchronisatie, Cloud lagen of enig ander aspect van Azure File Sync op te lossen door de registratie van een server ongedaan te maken en te registreren, of door de server eindpunten te verwijderen en opnieuw te maken, tenzij expliciet door een micro soft-Engineer wordt geïnstrueerd. Het ongedaan maken van de registratie van een server en het verwijderen van server eindpunten is een destructieve bewerking, en gelaagde bestanden op de volumes met server-eind punten worden niet opnieuw verbonden met hun locaties op de Azure-bestands share nadat de geregistreerde server-en server eindpunten zijn opnieuw gemaakt, wat leidt tot synchronisatie fouten. Opmerking: gelaagde bestanden die zich buiten een naam ruimte van een server eindpunt bevinden, kunnen permanent verloren gaan. Gelaagde bestanden kunnen bestaan in Server-eind punten, zelfs als Cloud lagen nooit zijn ingeschakeld.
+> Probeer geen problemen met synchronisatie, cloudtiering of enig ander aspect van Azure File Sync op te lossen door het registreren en registreren van een server niet uit te doen, of de servereindpunten te verwijderen en opnieuw te maken, tenzij dit expliciet is geïnstrueerd door een Microsoft-technicus. Het verwijderen van een server en het verwijderen van servereindpunten is een destructieve bewerking en gelaagde bestanden op de volumes met servereindpunten worden niet 'opnieuw verbonden' met hun locaties in het Azure-bestandsshare nadat de geregistreerde server- en servereindpunten zijn opnieuw gemaakt, wat resulteert in synchronisatiefouten. Houd er ook rekening mee dat gelaagde bestanden die buiten de naamruimte van een servereindpunt bestaan, permanent verloren kunnen gaan. Er kunnen gelaagde bestanden bestaan binnen servereindpunten, zelfs als cloudtiering nooit is ingeschakeld.
 
-#### <a name="optional-recall-all-tiered-data"></a>Beschrijving Alle gelaagde gegevens intrekken
-Als u wilt dat bestanden die momenteel zijn gelaagd, beschikbaar zijn na het verwijderen van Azure File Sync (dat wil zeggen een productie, geen test omgeving), worden alle bestanden op elk volume met server eindpunten ingetrokken. Schakel Cloud lagen voor alle server eindpunten uit en voer vervolgens de volgende Power shell-cmdlet uit:
+#### <a name="optional-recall-all-tiered-data"></a>(Optioneel) Alle gelaagde gegevens terugroepen
+Als u wilt dat bestanden die momenteel gelaagd zijn, beschikbaar zijn na het verwijderen van Azure File Sync (d.w.z. dit is een productie, geen test, omgeving), roept u alle bestanden op elk volume met servereindpunten terug. Schakel cloudlagen voor alle servereindpunten uit en voer vervolgens de volgende PowerShell-cmdlet uit:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -117,17 +117,17 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  
-> Als het lokale volume dat als host fungeert voor het server eindpunt onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, mislukt de `Invoke-StorageSyncFileRecall`-cmdlet.  
+> Als het lokale volume dat het servereindpunt host niet genoeg vrije ruimte `Invoke-StorageSyncFileRecall` heeft om alle gelaagde gegevens terug te roepen, mislukt de cmdlet.  
 
-#### <a name="remove-the-server-from-all-sync-groups"></a>De server uit alle synchronisatie groepen verwijderen
-Voordat u de registratie van de server bij de opslag synchronisatie service ongedaan maakt, moeten alle server eindpunten op die server worden verwijderd. Dit kan worden gedaan via de Azure Portal:
+#### <a name="remove-the-server-from-all-sync-groups"></a>De server uit alle synchronisatiegroepen verwijderen
+Voordat u de server uitschrijft in de Storage Sync Service, moeten alle servereindpunten op die server worden verwijderd. Dit kan via de Azure-portal:
 
-1. Navigeer naar de opslag synchronisatie service waar uw server is geregistreerd.
-2. Verwijder alle server eindpunten voor deze server in elke synchronisatie groep in de opslag synchronisatie service. U kunt dit doen door met de rechter muisknop te klikken op het relevante server eindpunt in het deel venster synchronisatie groep.
+1. Navigeer naar de opslagsynchronisatieservice waar uw server is geregistreerd.
+2. Verwijder alle servereindpunten voor deze server in elke synchronisatiegroep in de opslagsynchronisatieservice. Dit kan worden bereikt door met de rechtermuisknop op het desbetreffende servereindpunt in het deelvenster synchronisatiegroep te klikken.
 
-    ![Een server eindpunt verwijderen uit een synchronisatie groep](media/storage-sync-files-server-registration/sync-group-server-endpoint-remove-1.png)
+    ![Een servereindpunt uit een synchronisatiegroep verwijderen](media/storage-sync-files-server-registration/sync-group-server-endpoint-remove-1.png)
 
-Dit kan ook worden bereikt met een eenvoudig Power shell-script:
+Dit kan ook worden bereikt met een eenvoudig PowerShell-script:
 
 ```powershell
 Connect-AzAccount
@@ -143,47 +143,47 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 }
 ```
 
-#### <a name="unregister-the-server"></a>De registratie van de server opheffen
-Nu alle gegevens zijn ingetrokken en de server is verwijderd uit alle synchronisatie groepen, kan de registratie van de server ongedaan worden gemaakt. 
+#### <a name="unregister-the-server"></a>Het registreren van de server uitschrijven
+Nu alle gegevens zijn teruggeroepen en de server uit alle synchronisatiegroepen is verwijderd, kan de server worden losgekoppeld. 
 
-1. Ga in het Azure Portal naar het gedeelte *geregistreerde servers* van de opslag synchronisatie service.
-2. Klik met de rechter muisknop op de server waarvan u de registratie ongedaan wilt maken en klikt u op Server registratie ongedaan maken.
+1. Navigeer in de Azure-portal naar het gedeelte *Geregistreerde servers* van de Opslagsynchronisatieservice.
+2. Klik met de rechtermuisknop op de server die u wilt uitschrijven en klik op 'Server uitschrijven'.
 
-    ![Registratie server opheffen](media/storage-sync-files-server-registration/unregister-server-1.png)
+    ![Server uitschrijven](media/storage-sync-files-server-registration/unregister-server-1.png)
 
-## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zorgen dat Azure File Sync een goede buur is in uw Data Center 
-Omdat Azure File Sync zelden als enige service wordt uitgevoerd in uw Data Center, kunt u het netwerk-en opslag gebruik van Azure File Sync beperken.
+## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zorgen voor Azure File Sync is een goede buur in uw datacenter 
+Aangezien Azure File Sync zelden de enige service is die in uw datacenter wordt uitgevoerd, u het netwerk- en opslaggebruik van Azure File Sync beperken.
 
 > [!Important]  
-> De instellings limieten te laag zijn van invloed op de prestaties van Azure File Sync synchronisatie en het terughalen.
+> Het instellen van te lage limieten heeft invloed op de prestaties van Azure File Sync-synchronisatie en terugroepen.
 
-### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync netwerk limieten instellen
-U kunt het netwerk gebruik van Azure File Sync beperken met behulp van de `StorageSyncNetworkLimit`-cmdlets.
+### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync-netwerklimieten instellen
+U het netwerkgebruik van Azure `StorageSyncNetworkLimit` File Sync beperken met behulp van de cmdlets.
 
 > [!Note]  
-> Netwerk limieten zijn niet van toepassing wanneer een gelaagd bestand wordt geopend of de cmdlet invoke-StorageSyncFileRecall wordt gebruikt.
+> Netwerklimieten zijn niet van toepassing wanneer een gelaagd bestand wordt geopend of de cmdlet Invoke-StorageSyncFileRecall wordt gebruikt.
 
-U kunt bijvoorbeeld een nieuwe beperkings limiet maken om ervoor te zorgen dat Azure File Sync gedurende de werk week niet meer dan 10 Mbps van 9 uur en 5 pm (17:00h) gebruikt: 
+U bijvoorbeeld een nieuwe gaskleplimiet maken om ervoor te zorgen dat Azure File Sync tijdens de werkweek niet meer dan 10 Mbps gebruikt tussen 9.00 en 17.00 uur(17:00u): 
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
 ```
 
-U kunt uw limiet zien met behulp van de volgende cmdlet:
+U uw limiet zien met behulp van de volgende cmdlet:
 
 ```powershell
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-Als u netwerk limieten wilt verwijderen, gebruikt u `Remove-StorageSyncNetworkLimit`. Met de volgende opdracht worden bijvoorbeeld alle netwerk limieten verwijderd:
+Als u netwerklimieten `Remove-StorageSyncNetworkLimit`wilt verwijderen, gebruikt u . Met de volgende opdracht worden bijvoorbeeld alle netwerklimieten verwijderd:
 
 ```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-### <a name="use-windows-server-storage-qos"></a>QoS voor Windows Server-opslag gebruiken 
-Als Azure File Sync wordt gehost op een virtuele machine die wordt uitgevoerd op een Windows Server Virtualization-Host, kunt u QoS voor opslag (Quality of service voor opslag) gebruiken om opslag-i/o-verbruik te reguleren. Het QoS-beleid voor opslag kan worden ingesteld als een maximum (of limiet, bijvoorbeeld hoe StorageSyncNetwork limiet wordt afgedwongen) of als een minimum (of reserve ring). Als u een minimum instelt in plaats van Maxi maal, kan Azure File Sync burst gebruiken voor het gebruik van beschik bare opslag bandbreedte als andere workloads deze niet gebruiken. Zie [opslag Quality of service](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)voor meer informatie.
+### <a name="use-windows-server-storage-qos"></a>QoS van Windows Server-opslag gebruiken 
+Wanneer Azure File Sync wordt gehost in een virtuele machine die wordt uitgevoerd op een Windows Server-virtualisatiehost, u Storage QoS (opslagkwaliteit van de service) gebruiken om het IO-verbruik van opslag te regelen. Het QoS-beleid voor opslag kan worden ingesteld als een maximum (of limiet, zoals hoe de StorageSyncNetwork-limiet hierboven wordt afgedwongen) of als minimum (of reservering). Als u een minimum in plaats van een maximum instelt, kan Azure File Sync barsten om beschikbare opslagbandbreedte te gebruiken als andere workloads deze niet gebruiken. Zie [De kwaliteit van de service voor opslag voor](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)meer informatie.
 
 ## <a name="see-also"></a>Zie ook
 - [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
