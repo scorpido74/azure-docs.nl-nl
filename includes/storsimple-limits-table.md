@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 93f4f74d435cc14130668da102d1246c5fad5872
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176433"
 ---
 | Limiet-id | Limiet | Opmerkingen |
 | --- | --- | --- |
-| Maximum aantal referenties voor het opslag account |64 | |
-| Maximum aantal volume containers |64 | |
+| Maximaal aantal referenties voor opslagaccount |64 | |
+| Maximum aantal volumecontainers |64 | |
 | Maximum aantal volumes |255 | |
-| Maximum aantal planningen per band breedte sjabloon |168 |Een planning voor elk uur, elke dag van de week. |
+| Maximaal aantal schema's per bandbreedtesjabloon |168 |Een schema voor elk uur, elke dag van de week. |
 | Maximale grootte van een gelaagd volume op fysieke apparaten |64 TB voor StorSimple 8100 en StorSimple 8600 |StorSimple 8100 en StorSimple 8600 zijn fysieke apparaten. |
-| Maximale grootte van een gelaagd volume op virtuele apparaten in azure |30 TB voor StorSimple 8010 <br></br> 64 TB voor StorSimple 8020 |StorSimple 8010 en StorSimple 8020 zijn virtuele apparaten in azure die respectievelijk gebruikmaken van standaard opslag en Premium-opslag. |
-| Maximale grootte van lokaal vastgemaakt volume op fysieke apparaten |9 TB voor StorSimple 8100 <br></br> 24 TB voor StorSimple 8600 |StorSimple 8100 en StorSimple 8600 zijn fysieke apparaten. |
+| Maximale grootte van een gelaagd volume op virtuele apparaten in Azure |30 TB voor StorSimple 8010 <br></br> 64 TB voor StorSimple 8020 |StorSimple 8010 en StorSimple 8020 zijn virtuele apparaten in Azure die respectievelijk gebruikmaken van standaardopslag en Premium-opslag. |
+| Maximale grootte van een lokaal vastgemaakt volume op fysieke apparaten |9 TB voor StorSimple 8100 <br></br> 24 TB voor StorSimple 8600 |StorSimple 8100 en StorSimple 8600 zijn fysieke apparaten. |
 | Maximum aantal iSCSI-verbindingen |512 | |
-| Maximum aantal iSCSI-verbindingen van initia tors |512 | |
-| Maximum aantal toegangs beheer records per apparaat |64 | |
-| Maximum aantal volumes per back-upbeleid |24 | |
-| Maximum aantal back-ups dat per back-upbeleid wordt bewaard |64 | |
-| Maximum aantal planningen per back-upbeleid |10 | |
-| Maximum aantal moment opnamen van elk type dat per volume kan worden bewaard |256 |Dit bedrag omvat lokale moment opnamen en Cloud momentopnamen. |
-| Het maximum aantal moment opnamen dat aanwezig kan zijn op elk apparaat |10.000 | |
-| Maximum aantal volumes dat parallel kan worden verwerkt voor back-up, herstel of kloon |16 |<ul><li>Als er meer dan 16 volumes zijn, worden ze opeenvolgend verwerkt omdat er verwerkings sleuven beschikbaar zijn.</li><li>Nieuwe back-ups van een gekloond of een hersteld gelaagd volume kunnen niet worden uitgevoerd totdat de bewerking is voltooid. Voor een lokaal volume zijn back-ups toegestaan nadat het volume online is.</li></ul> |
-| Herstel tijd herstellen en klonen voor gelaagde volumes |< 2 minuten |<ul><li>Het volume wordt binnen twee minuten na een herstel-of kloon bewerking beschikbaar gemaakt, ongeacht de grootte van het volume.</li><li>De prestaties van het volume zijn mogelijk langzamer dan normaal, omdat de meeste gegevens en meta gegevens zich nog steeds in de cloud bevinden. De prestaties kunnen toenemen als gegevens stromen van de Cloud naar het StorSimple-apparaat.</li><li>De totale tijd voor het downloaden van meta gegevens is afhankelijk van de grootte van het toegewezen volume. Meta gegevens worden op de achtergrond automatisch op het apparaat gebracht, met een snelheid van vijf minuten per TB aan toegewezen volume gegevens. Dit aantal kan worden beïnvloed door de Internet bandbreedte voor de Cloud.</li><li>De herstel-of kloon bewerking is voltooid wanneer alle meta gegevens zich op het apparaat bevinden.</li><li>Er kunnen geen back-upbewerkingen worden uitgevoerd tot het terugzetten of de kloon is voltooid. |
-| Herstel tijd herstellen voor lokaal vastgemaakte volumes |< 2 minuten |<ul><li>Het volume wordt beschikbaar gesteld binnen twee minuten nadat de herstel bewerking is uitgevoerd, ongeacht de grootte van het volume.</li><li>De prestaties van het volume zijn mogelijk langzamer dan normaal, omdat de meeste gegevens en meta gegevens zich nog steeds in de cloud bevinden. De prestaties kunnen toenemen als gegevens stromen van de Cloud naar het StorSimple-apparaat.</li><li>De totale tijd voor het downloaden van meta gegevens is afhankelijk van de grootte van het toegewezen volume. Meta gegevens worden op de achtergrond automatisch op het apparaat gebracht, met een snelheid van vijf minuten per TB aan toegewezen volume gegevens. Dit aantal kan worden beïnvloed door de Internet bandbreedte voor de Cloud.</li><li>In tegens telling tot gelaagde volumes geldt dat als er lokaal vastgemaakte volumes zijn, de volume gegevens ook lokaal op het apparaat worden gedownload. De herstel bewerking is voltooid wanneer alle volume gegevens naar het apparaat zijn overgebracht.</li><li>De herstel bewerkingen kunnen lang duren en de totale tijd voor het volt ooien van de herstel bewerking is afhankelijk van de grootte van het ingerichte lokale volume, uw Internet bandbreedte en de bestaande gegevens op het apparaat. Back-upbewerkingen op het lokaal vastgemaakte volume zijn toegestaan tijdens het terugzetten. |
-| Thin-Restore-Beschik baarheid |Laatste failover | |
-| Maximale door Voer voor lezen/schrijven van client, wanneer bediend vanuit de SSD-laag * |920/720 MB/sec. met één 10 Gigabit Ethernet-netwerk interface |Maxi maal twee keer met MPIO en twee netwerk interfaces. |
-| Maximale door Voer voor lezen/schrijven van client, wanneer bediend vanuit de HDD-laag * |120/250 MB/sec. | |
-| Maximale door Voer voor lezen/schrijven van client, wanneer deze wordt bediend vanuit de Cloud-laag * |11/41 MB/sec. |Lees doorvoer is afhankelijk van clients die voldoende I/O-wachtrij diepte genereren en onderhouden. |
+| Maximum aantal iSCSI-verbindingen van initiators |512 | |
+| Maximum aantal toegangscontrolerecords per apparaat |64 | |
+| Maximaal aantal volumes per back-upbeleid |24 | |
+| Maximaal aantal back-ups dat per back-upbeleid wordt behouden |64 | |
+| Maximaal aantal schema's per back-upbeleid |10 | |
+| Maximaal aantal momentopnamen van elk type dat per volume kan worden bewaard |256 |Dit bedrag omvat lokale momentopnamen en cloudsnapshots. |
+| Maximaal aantal momentopnamen dat in elk apparaat aanwezig kan zijn |10.000 | |
+| Maximaal aantal volumes dat parallel kan worden verwerkt voor back-up, herstel of kloon |16 |<ul><li>Als er meer dan 16 volumes zijn, worden ze opeenvolgend verwerkt als verwerkingssleuven beschikbaar komen.</li><li>Nieuwe back-ups van een gekloond of een hersteld gelaagd volume kunnen pas plaatsvinden nadat de bewerking is voltooid. Voor een lokaal volume zijn back-ups toegestaan nadat het volume online is.</li></ul> |
+| Hersteltijd herstellen en klonen voor gelaagde volumes |<2 minuten |<ul><li>Het volume wordt beschikbaar gesteld binnen 2 minuten na een herstel- of kloonbewerking, ongeacht de volumegrootte.</li><li>De volumeprestaties kunnen in eerste instantie trager zijn dan normaal, omdat de meeste gegevens en metagegevens zich nog steeds in de cloud bevinden. De prestaties kunnen toenemen naarmate gegevens van de cloud naar het StorSimple-apparaat stromen.</li><li>De totale tijd om metagegevens te downloaden is afhankelijk van de toegewezen volumegrootte. Metagegevens worden automatisch op de achtergrond in het apparaat gebracht met een snelheid van 5 minuten per TB aan toegewezen volumegegevens. Dit tarief kan worden beïnvloed door internetbandbreedte naar de cloud.</li><li>De herstel- of kloonbewerking is voltooid wanneer alle metagegevens op het apparaat staan.</li><li>Back-upbewerkingen kunnen pas worden uitgevoerd als de herstel- of kloonbewerking volledig is voltooid. |
+| Hersteltijd herstellen voor lokaal vastgemaakte volumes |<2 minuten |<ul><li>Het volume wordt beschikbaar gesteld binnen 2 minuten na de herstelbewerking, ongeacht de grootte van het volume.</li><li>De volumeprestaties kunnen in eerste instantie trager zijn dan normaal, omdat de meeste gegevens en metagegevens zich nog steeds in de cloud bevinden. De prestaties kunnen toenemen naarmate gegevens van de cloud naar het StorSimple-apparaat stromen.</li><li>De totale tijd om metagegevens te downloaden is afhankelijk van de toegewezen volumegrootte. Metagegevens worden automatisch op de achtergrond in het apparaat gebracht met een snelheid van 5 minuten per TB aan toegewezen volumegegevens. Dit tarief kan worden beïnvloed door internetbandbreedte naar de cloud.</li><li>In tegenstelling tot gelaagde volumes worden de volumegegevens ook lokaal gedownload op het apparaat als er lokaal vastgemaakte volumes zijn. De herstelbewerking is voltooid wanneer alle volumegegevens naar het apparaat zijn gebracht.</li><li>De herstelbewerkingen kunnen lang zijn en de totale tijd om het herstel te voltooien, is afhankelijk van de grootte van het ingerichte lokale volume, uw internetbandbreedte en de bestaande gegevens op het apparaat. Back-upbewerkingen op het lokaal vastgemaakte volume zijn toegestaan terwijl de herstelbewerking wordt uitgevoerd. |
+| Beschikbaarheid voor thin-restore |Laatste failover | |
+| Maximale lees-/schrijfdoorvoer van de client, wanneer deze wordt bediend vanuit de SSD-laag* |920/720 MB/sec met één 10-gigabit Ethernet-netwerkinterface |Tot twee keer toe met MPIO en twee netwerkinterfaces. |
+| Maximale lees-/schrijfdoorvoer van de client, wanneer deze wordt bediend vanaf de HDD-laag* |120/250 MB/sec | |
+| Maximale lees-/schrijfdoorvoer van de client, wanneer deze wordt bediend vanuit de cloudlaag* |11/41 MB/sec |Leesdoorvoer is afhankelijk van clients die voldoende I/O-wachtrijdiepte genereren en behouden. |
 
-&#42;De maximale door Voer per I/O-type werd gemeten met 100 procent Lees-en 100 procent schrijf scenario's. De werkelijke door Voer is mogelijk lager en is afhankelijk van I/O-mix en netwerk omstandigheden.
+&#42;Maximale doorvoer per I/O-type werd gemeten met 100 procent gelezen en 100 procent schrijfscenario's. De werkelijke doorvoer kan lager zijn en is afhankelijk van de I/O-mix en netwerkomstandigheden.
 

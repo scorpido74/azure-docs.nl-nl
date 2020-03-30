@@ -1,9 +1,9 @@
 ---
-title: Aanvraag proces & meldingen-beheer van rechten van Azure AD
-description: Meer informatie over het aanvraag proces voor een toegangs pakket en wanneer e-mail meldingen worden verzonden in Azure Active Directory rechten beheer.
+title: Aanvraagproces & meldingen - Azure AD-rechtenbeheer
+description: Meer informatie over het aanvraagproces voor een toegangspakket en wanneer e-mailmeldingen worden verzonden in Azure Active Directory-rechtenbeheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -12,147 +12,147 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/11/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128526"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Aanvraag proces en e-mail meldingen in het beheer van rechten van Azure AD
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Proces- en e-mailmeldingen aanvragen in Azure AD-rechtenbeheer
 
-Wanneer een gebruiker een aanvraag indient bij een toegangs pakket, begint een proces met het leveren van die toegangs aanvraag. Het Azure AD-rechts beheer verzendt e-mail meldingen naar goed keurders en aanvragers wanneer er belang rijke gebeurtenissen optreden tijdens het proces. In dit artikel worden het aanvraag proces en de e-mail meldingen beschreven die worden verzonden.
+Wanneer een gebruiker een verzoek indient bij een toegangspakket, begint een proces met het leveren van dat toegangsverzoek. Azure AD-rechtenbeheer stuurt e-mailmeldingen naar fiatteurs en aanvragers wanneer belangrijke gebeurtenissen tijdens het proces plaatsvinden. In dit artikel worden de aanvraagprocedure en de verzonden e-mailmeldingen beschreven.
 
-## <a name="request-process"></a>Aanvraag proces
+## <a name="request-process"></a>Aanvraagprocedure
 
-Een gebruiker die toegang tot een toegangs pakket nodig heeft, kan een toegangs aanvraag indienen. Afhankelijk van de configuratie van het beleid, kan de aanvraag een goed keuring vereisen. Wanneer een aanvraag wordt goedgekeurd, begint een proces met het toewijzen van de gebruikers toegang tot elke resource in het toegangs pakket. In het volgende diagram ziet u een overzicht van het proces en de verschillende statussen:
+Een gebruiker die toegang nodig heeft tot een toegangspakket kan een toegangsverzoek indienen. Afhankelijk van de configuratie van het beleid is de aanvraag mogelijk een goedkeuring nodig. Wanneer een aanvraag wordt goedgekeurd, begint een proces om de gebruiker toegang te geven tot elke bron in het toegangspakket. Het volgende diagram toont een overzicht van het proces en de verschillende toestanden:
 
-![Diagram goedkeurings proces](./media/entitlement-management-process/request-process.png)
+![Diagram voor goedkeuringsproces](./media/entitlement-management-process/request-process.png)
 
-| Staat | Beschrijving |
+| Status | Beschrijving |
 | --- | --- |
-| Verzonden | Gebruiker een aanvraag indient. |
-| Wachten op goedkeuring | Als voor het beleid voor een toegangs pakket goed keuring is vereist, wordt een aanvraag verplaatst naar wachtende goed keuring. |
-| Verlopen | Als geen goed keurders een aanvraag binnen de time-out van de goedkeurings aanvraag goed keuren, verloopt de aanvraag. Als u het opnieuw wilt proberen, moet de gebruiker de aanvraag opnieuw verzenden. |
-| Geweigerd | Goed keurder weigert een aanvraag. |
-| Goedgekeurd | Goed keurder keurt een aanvraag goed. |
-| Leveren | Aan de gebruiker is **geen** toegang toegewezen tot alle resources in het toegangs pakket. Als dit een externe gebruiker is, heeft de gebruiker mogelijk nog geen toegang tot de resource directory. Ze hebben de toestemming ook mogelijk niet geaccepteerd. |
-| Afgeleverd | Aan de gebruiker is toegang toegewezen tot alle resources in het toegangs pakket. |
-| Toegang uitgebreid | Als de uitbrei dingen in het beleid zijn toegestaan, wordt de toewijzing door de gebruiker uitgebreid. |
-| Toegang is verlopen | De toegang van de gebruiker tot het toegangs pakket is verlopen. Als u opnieuw toegang wilt krijgen, moet de gebruiker een aanvraag indienen. |
+| Ingediend | De gebruiker dient een verzoek in. |
+| In afwachting van goedkeuring | Als het beleid voor een toegangspakket goedkeuring vereist, wordt een aanvraag verplaatst naar goedkeuring in behandeling. |
+| Verlopen | Als geen fiatteurs een aanvraag goedkeuren binnen de time-out van de goedkeuringsaanvraag, verloopt de aanvraag. Om het opnieuw te proberen, moet de gebruiker zijn verzoek opnieuw indienen. |
+| Geweigerd | De fiatter ontkent een verzoek. |
+| Goedgekeurd | De fiattiser keurt een verzoek goed. |
+| Leveren | De gebruiker heeft **geen** toegang gekregen tot alle bronnen in het toegangspakket. Als dit een externe gebruiker is, heeft de gebruiker mogelijk nog geen toegang tot de bronmap. Zij kunnen ook niet hebben aanvaard de toestemming prompt. |
+| Afgeleverd | De gebruiker heeft toegang gekregen tot alle bronnen in het toegangspakket. |
+| Toegang verlengd | Als extensies zijn toegestaan in het beleid, heeft de gebruiker de toewijzing verlengd. |
+| Toegang verlopen | De toegang van de gebruiker tot het toegangspakket is verlopen. Om weer toegang te krijgen, moet de gebruiker een verzoek indienen. |
 
 ## <a name="email-notifications"></a>E-mailmeldingen
 
-Als u een goed keurder bent, worden er e-mail meldingen verzonden wanneer u een toegangs aanvraag moet goed keuren. U ontvangt ook meldingen wanneer een toegangs aanvraag is voltooid. U ontvangt ook e-mail meldingen die de status van uw aanvraag aangeven als u een aanvrager bent.
+Als je een goedkeurder bent, krijg je e-mailmeldingen wanneer je een toegangsverzoek moet goedkeuren. U ontvangt ook meldingen wanneer een toegangsverzoek is voltooid. Je ontvangt ook e-mailmeldingen die de status van je verzoek aangeven als je een aanvrager bent.
 
-In de volgende diagrammen ziet u wanneer deze e-mail meldingen worden verzonden naar de goed keurders of de aanvrager. Raadpleeg de [tabel e-mail meldingen](entitlement-management-process.md#email-notifications-table) om het overeenkomende nummer te vinden voor de e-mail meldingen die in de diagrammen worden weer gegeven.
+De volgende diagrammen geven aan wanneer deze e-mailmeldingen worden verzonden naar de fiatteurs of de aanvrager. Verwijs naar de [tabel met e-mailmeldingen](entitlement-management-process.md#email-notifications-table) om het bijbehorende nummer te vinden voor de e-mailmeldingen die in de diagrammen worden weergegeven.
 
-### <a name="first-approvers-and-alternate-approvers"></a>Eerste goed keurders en alternatieve goed keurders
-In het volgende diagram ziet u de ervaring van eerste goed keurders en alternatieve goed keurders en de e-mail meldingen die ze ontvangen tijdens het aanvraag proces:
+### <a name="first-approvers-and-alternate-approvers"></a>Eerste fiatteurs en alternatieve fiatteurs
+In het volgende diagram ziet u de ervaring van de eerste fiatteurs en alternatieve fiatteurs en de e-mailmeldingen die ze tijdens het aanvraagproces ontvangen:
 
-![Eerste en alternatieve goed keurders proces stroom](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
+![Eerste en alternatieve goedkeurders processtroom](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Aanvragers
-In het volgende diagram ziet u de ervaring van aanvragers en de e-mail meldingen die worden ontvangen tijdens het aanvraag proces:
+Het volgende diagram toont de ervaring van aanvragers en de e-mailmeldingen die ze ontvangen tijdens het aanvraagproces:
 
-![Proces stroom van de aanvrager](./media/entitlement-management-process/requestor-approval-request-flow.png)
+![Processtroom van aanvrager](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>2-fase goedkeuring
-In het volgende diagram ziet u de ervaring van fase 1 en fase 2-goed keurders en de e-mail meldingen die worden ontvangen tijdens het aanvraag proces:
+### <a name="2-stage-approval"></a>Goedkeuring in 2 fasen
+Het volgende diagram toont de ervaring van stap-1- en fase-2-fiatteurs en de e-mailmeldingen die ze tijdens het aanvraagproces ontvangen:
 
-![goedkeurings proces voor twee fasen stroom](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+![Goedkeuringsprocesstroom in 2 fasen](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
-### <a name="email-notifications-table"></a>Tabel met e-mail meldingen
-De volgende tabel bevat meer details over elk van deze e-mail meldingen. Als u deze e-mail berichten wilt beheren, kunt u regels gebruiken. In Outlook kunt u bijvoorbeeld regels maken om de e-mail berichten naar een map te verplaatsen als het onderwerp woorden uit deze tabel bevat:
+### <a name="email-notifications-table"></a>Tabel E-mailmeldingen
+In de volgende tabel vindt u meer informatie over elk van deze e-mailmeldingen. Om deze e-mails te beheren, u regels gebruiken. In Outlook u bijvoorbeeld regels maken om de e-mails naar een map te verplaatsen als het onderwerp woorden uit deze tabel bevat:
 
-| # | E-mail onderwerp | Na verzen ding | Verzonden naar |
+| # | Onderwerp van e-mail | Wanneer verzonden | Verzonden naar |
 | --- | --- | --- | --- |
-| 1 | Actie vereist: doorgestuurde aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar fase-1 alternatieve goed keurders (nadat de aanvraag is geëscaleerd) om actie te ondernemen. | Fase-1 alternatieve goed keurders |
-| 2 | Actie vereist: aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar de eerste goed keurder als escalatie is uitgeschakeld, om actie te ondernemen. | Eerste goed keurder |
-| 3 | Herinnering: de aanvraag goed keuren of weigeren voor *[date]* voor *[aanvrager]* | Deze herinnerings-e-mail wordt verzonden naar de eerste fiatteur als escalatie is uitgeschakeld. In het e-mail bericht wordt gevraagd om actie te ondernemen als dat niet het geval is. | Eerste goed keurder |
-| 4 | De aanvraag wordt goedgekeurd of geweigerd door *[time]* op *[date]* | Deze e-mail wordt verzonden naar de eerste goed keurder (als escalatie is ingeschakeld) om actie te ondernemen. | Eerste goed keurder |
-| 5 | Herinnering voor actie vereist: Hiermee wordt de aanvraag goedgekeurd of geweigerd voor [ *date]* voor *[aanvrager]* | Deze herinnerings-e-mail wordt verzonden naar de eerste fiatteur als escalatie is ingeschakeld. In het e-mail bericht wordt gevraagd om actie te ondernemen als dat niet het geval is. | Eerste goed keurder |
-| 6 | De aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders nadat de aanvraag is verlopen. | Eerste goed keurder, fase-1 alternatieve goed keurders |
-| 7 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders wanneer de aanvraag is voltooid. | Eerste goed keurder, fase-1 alternatieve goed keurders |
-| 8 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de eerste goed keurder en fase 1 alternatieve goed keurders van een aanvraag met twee fasen wanneer de fase-1-aanvraag is goedgekeurd. | Eerste goed keurder, fase-1 alternatieve goed keurders |
-| 9 | Aanvraag geweigerd tot *[access_package]* | Dit e-mail bericht wordt naar de aanvrager verzonden wanneer de aanvraag wordt geweigerd | Requestor |
-| 10 | Uw aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt aan het einde van een aanvraag met één of twee fasen verzonden naar de aanvrager. In het e-mail bericht wordt de aanvrager gewaarschuwd dat de aanvraag is verlopen. | Requestor |
-| 11 | Actie vereist: aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar de tweede goed keurder als escalatie is uitgeschakeld, om actie te ondernemen. | Tweede goed keurder |
-| 12 | Herinnering voor actie vereist: de aanvraag goed keuren of weigeren voor *[date]* | Deze herinnerings-e-mail wordt verzonden naar de tweede goed keurder als de escalatie is uitgeschakeld. De melding vraagt hen om actie te ondernemen als ze nog niet zijn uitgevoerd. | Tweede goed keurder |
-| 13 | Actie vereist: de aanvraag goed keuren of weigeren voor [ *date]* voor *[aanvrager]* | Deze e-mail wordt verzonden naar de tweede goed keurder als escalatie is ingeschakeld, om actie te ondernemen. | Tweede goed keurder |
-| 14 | Herinnering voor actie vereist: Hiermee wordt de aanvraag goedgekeurd of geweigerd voor [ *date]* voor *[aanvrager]* | Deze herinnerings-e-mail wordt verzonden naar de tweede goed keurder als escalatie is ingeschakeld. De melding vraagt hen om actie te ondernemen als ze nog niet zijn uitgevoerd. | Tweede goed keurder |
-| 15 | Actie vereist: doorgestuurde aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar fase 2 alternatieve goed keurders, als escalatie is ingeschakeld, om actie te ondernemen. | Fase-2 alternatieve goed keurders |
-| 16 | Aanvraag goedgekeurd voor *[aanvrager]* naar *[access_package]* | Deze e-mail wordt verzonden naar de tweede goed keurder en fase 2 alternatieve goed keurders bij het goed keuren van de aanvraag. | Tweede goed keurder, fase 2 alternatieve goed keurders |
-| 17 | Een aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de tweede goed keurder of alternatieve goed keurders, nadat de aanvraag is verlopen. | Tweede goed keurder, fase 2 alternatieve goed keurders |
-| 18 | U hebt nu toegang tot *[access_package]* | Dit e-mail bericht wordt naar de eind gebruikers verzonden om hun toegang te gebruiken. | Requestor |
-| 19 | Toegang uitbreiden voor *[access_package]* op *[date]* | Deze e-mail wordt verzonden naar de eind gebruikers voordat hun toegang verloopt. | Requestor |
-| 20 | De toegang is beëindigd voor *[access_package]* | Deze e-mail wordt verzonden naar de eind gebruikers nadat de toegang is verlopen. | Requestor |
+| 1 | Vereiste actie: doorgestuurde aanvraag goedkeuren of weigeren op *[datum]* | Deze e-mail wordt verzonden naar alternatieve fiatteurs in fase 1 (nadat het verzoek is geëscaleerd) om actie te ondernemen. | Alternatieve fiatteurs fase 1 |
+| 2 | Actie vereist: verzoek goedkeuren of weigeren op *[datum]* | Deze e-mail wordt verzonden naar de eerste goedkeurder, als escalatie is uitgeschakeld, om actie te ondernemen. | Eerste keurgever |
+| 3 | Herinnering: Het verzoek goedkeuren of weigeren op *[datum]* voor *[aanvrager]* | Deze herinneringse-mail wordt naar de eerste goedkeurder verzonden als escalatie is uitgeschakeld. De e-mail vraagt hen om actie te ondernemen als ze dat niet hebben gedaan. | Eerste keurgever |
+| 4 | Het verzoek *v.v. [tijd]* op *[datum]* goedkeuren of weigeren | Deze e-mail wordt verzonden naar de eerste goedkeurder (als escalatie is ingeschakeld) om actie te ondernemen. | Eerste keurgever |
+| 5 | Herinnering waarvoor actie vereist is: het verzoek goedkeuren of weigeren op *[datum]* voor *[aanvrager]* | Deze herinneringse-mail wordt naar de eerste goedkeurder verzonden als escalatie is ingeschakeld. De e-mail vraagt hen om actie te ondernemen als ze dat niet hebben gedaan. | Eerste keurgever |
+| 6 | Aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de eerste goedkeurder en fase-1 alternatieve fiatteurs nadat het verzoek is verlopen. | Eerste keurgever, fase-1 alternatieve fiatteurs |
+| 7 | Verzoek goedgekeurd voor *[aanvrager]* aan *[access_package]* | Deze e-mail wordt verzonden naar de eerste keursman en fase-1 alternatieve fiatteurs op verzoek voltooiing. | Eerste keurgever, fase-1 alternatieve fiatteurs |
+| 8 | Verzoek goedgekeurd voor *[aanvrager]* aan *[access_package]* | Deze e-mail wordt verzonden naar de eerste goedkeurder en fase-1 alternatieve fiatteurs van een 2-fase aanvraag wanneer de fase-1 aanvraag wordt goedgekeurd. | Eerste keurgever, fase-1 alternatieve fiatteurs |
+| 9 | Verzoek afgewezen om *[access_package]* | Deze e-mail wordt naar de aanvrager verzonden wanneer hun verzoek wordt geweigerd | Requestor |
+| 10 | Uw aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt naar de aanvrager gestuurd aan het einde van een aanvraag of 2-fase aanvraag. De e-mail laat de aanvrager weten dat het verzoek is verlopen. | Requestor |
+| 11 | Actie vereist: verzoek goedkeuren of weigeren op *[datum]* | Deze e-mail wordt naar de tweede goedkeurder gestuurd om actie te ondernemen als escalatie is uitgeschakeld. | Tweede keurgever |
+| 12 | Herinnering voor vereiste actie: het verzoek goedkeuren of weigeren op *[datum]* | Deze herinneringse-mail wordt naar de tweede goedkeurder verzonden als escalatie is uitgeschakeld. De melding vraagt hen om actie te ondernemen als ze dat nog niet hebben gedaan. | Tweede keurgever |
+| 13 | Vereiste actie: Het verzoek op *[datum]* goedkeuren of weigeren voor *[aanvrager]* | Deze e-mail wordt verzonden naar de tweede goedkeurder, als escalatie is ingeschakeld, om actie te ondernemen. | Tweede keurgever |
+| 14 | Herinnering waarvoor actie vereist is: het verzoek goedkeuren of weigeren op *[datum]* voor *[aanvrager]* | Deze herinneringse-mail wordt naar de tweede goedkeurder verzonden als escalatie is ingeschakeld. De melding vraagt hen om actie te ondernemen als ze dat nog niet hebben gedaan. | Tweede keurgever |
+| 15 | Vereiste actie: doorgestuurde aanvraag goedkeuren of weigeren op *[datum]* | Deze e-mail wordt verzonden naar fase-2 alternatieve fiatteurs, indien escalatie is ingeschakeld, om actie te ondernemen. | Alternatieve fiatteurs fase 2 |
+| 16 | Verzoek goedgekeurd voor *[aanvrager]* aan *[access_package]* | Deze e-mail wordt verzonden naar de tweede keursman en fase-2 alternatieve fiatteurs bij goedkeuring van het verzoek. | Tweede keurgever, Stage-2 alternatieve fiatteurs |
+| 17 | Een aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de tweede goedkeurder of alternatieve fiatteurs, nadat het verzoek is verlopen. | Tweede keurgever, fase-2 alternatieve fiatteurs |
+| 18 | Je hebt nu toegang tot *[access_package]* | Deze e-mail wordt naar de eindgebruikers verzonden om hun toegang te gebruiken. | Requestor |
+| 19 | Toegang voor *[access_package]* uitbreiden naar *[datum]* | Deze e-mail wordt naar de eindgebruikers verzonden voordat hun toegang verloopt. | Requestor |
+| 20 | De toegang is beëindigd voor *[access_package]* | Deze e-mail wordt naar de eindgebruikers verzonden nadat hun toegang is verlopen. | Requestor |
 
-### <a name="access-request-emails"></a>E-mail berichten voor toegang
+### <a name="access-request-emails"></a>E-mails met toegangsverzoeken
 
-Wanneer een aanvrager een toegangs aanvraag indient voor een toegangs pakket dat is geconfigureerd om goed keuring te vereisen, ontvangt alle goed keurders die zijn toegevoegd aan het beleid een e-mail melding met de details van de aanvraag. De details in het e-mail bericht zijn onder andere: naam van de aanvrager en zakelijke rechtvaardiging; en de aangevraagde start-en eind datum van toegang (indien opgegeven). De details worden ook vermeld wanneer de aanvraag is verzonden en wanneer de aanvraag verloopt.
+Wanneer een aanvrager een toegangsaanvraag indient voor een toegangspakket dat is geconfigureerd om goedkeuring te vereisen, ontvangen alle fiatteurs die aan het beleid zijn toegevoegd, een e-mailmelding met details over het verzoek. De details in de e-mail zijn: requestor's name organization, and business justification; en de gevraagde begin- en einddatum van de toegang (indien aanwezig). De details zullen ook omvatten wanneer de aanvraag is ingediend en wanneer de aanvraag verloopt.
 
-Het e-mail bericht bevat een koppeling goed keurders kunnen klikken om naar mijn toegang te gaan om de toegangs aanvraag goed te keuren of te weigeren. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar de eerste fiatteur of tweede goed keurder (als de 2-fase goedkeuring is ingeschakeld) om een toegangs aanvraag te volt ooien:
+De e-mail bevat een link fiatteurs kunnen klikken om naar Mijn toegang te gaan om het toegangsverzoek goed te keuren of te weigeren. Hier is een voorbeeld e-mailmelding die wordt verzonden naar de eerste goedkeurder of tweede goedkeurder (als goedkeuring in twee fasen is ingeschakeld) om een toegangsaanvraag te voltooien:
 
-![Aanvraag voor toegang tot pakket e-mail goed keuren](./media/entitlement-management-shared/approver-request-email.png)
+![Verzoek om toegang tot pakkete-mail goed te keuren](./media/entitlement-management-shared/approver-request-email.png)
 
-Goed keurders kunnen ook een herinnerings-e-mail ontvangen. Het e-mail bericht vraagt de goed keurder een beslissing te nemen over de aanvraag. Hier volgt een voor beeld van een e-mail melding die de goed keurder ontvangt om actie te ondernemen:
+Goedkeurders kunnen ook een herinneringse-mail ontvangen. De e-mail vraagt de goedkeurder om een beslissing te nemen over het verzoek. Hier is een voorbeeld e-mail melding van de goedkeurder ontvangt om hen eraan te herinneren om actie te ondernemen:
 
-![E-mail voor herinnerings toegang](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![E-mail met aanvraag voor herinneringstoegang](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approvers-request-emails"></a>E-mails met alternatieve goed keurders aanvragen
+### <a name="alternate-approvers-request-emails"></a>Alternatieve goedkeurders vragen e-mails aan
 
-Als de instelling alternatieve goed keurders is ingeschakeld en de aanvraag nog steeds in behandeling is, wordt deze doorgestuurd. Alternatieve goed keurders ontvangen een e-mail om de aanvraag goed te keuren of te weigeren. U kunt alternatieve goed keurders inschakelen in fase-1 en fase 2. Hier volgt een voor beeld van een e-mail bericht van de melding dat de alternatieve goed keurders worden ontvangen:
+Als de alternatieve fiatteursinstelling is ingeschakeld en de aanvraag nog in behandeling is, wordt deze doorgestuurd. Alternatieve fiatteurs ontvangen een e-mail om het verzoek goed te keuren of te weigeren. U alternatieve fiatteurs inschakelen in fase 1 en fase-2. Hier is een voorbeeld e-mail van de melding van de alternatieve fiatteurs ontvangen:
 
-![E-mail van alternatieve goed keurders aanvragen](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Alternatieve fiatteurs vragen e-mail aan](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Zowel de goed keurder als de alternatieve goed keurders kunnen de aanvraag goed keuren of weigeren.
+Zowel de fiatteur als de alternatieve fiatteurs kunnen het verzoek goedkeuren of weigeren.
 
-### <a name="approved-or-denied-emails"></a>Goedgekeurde of geweigerde e-mail berichten
+### <a name="approved-or-denied-emails"></a>Goedgekeurde of geweigerde e-mails
 
- Wanneer een goed keurder een toegangs aanvraag ontvangt die door een aanvrager is ingediend, kan hij of zij de toegangs aanvraag goed keuren of weigeren. De fiatteur moet een zakelijke rechtvaardiging toevoegen voor hun beslissing. Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden naar goed keurders en alternatieve goed keurders nadat een aanvraag is goedgekeurd:
+ Wanneer een fiatteur een toegangsverzoek ontvangt dat is ingediend door een aanvrager, kan hij of zij het toegangsverzoek goedkeuren of weigeren. De goedkeurder moet een zakelijke rechtvaardiging voor zijn beslissing toevoegen. Hier vindt u een voorbeelde-mail die naar de fiatteurs en alternatieve fiatteurs wordt verzonden nadat een verzoek is goedgekeurd:
 
-![Goedgekeurde aanvraag voor toegang tot pakket-e-mail](./media/entitlement-management-process/approver-request-email-approved.png)
+![Goedgekeurd verzoek om toegang te krijgen tot e-mail met een pakket](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Wanneer een toegangs aanvraag wordt goedgekeurd en de toegang is ingericht, wordt er een e-mail melding verzonden naar de aanvrager dat ze nu toegang tot het toegangs pakket hebben. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer ze toegang krijgen tot een toegangs pakket:
+Wanneer een toegangsaanvraag wordt goedgekeurd en de toegang ervan is ingericht, wordt een e-mailmelding verzonden naar de aanvrager of dat ze nu toegang hebben tot het toegangspakket. Hier is een voorbeeld e-mailmelding die wordt verzonden naar een aanvrager wanneer ze toegang krijgen tot een toegangspakket:
 
-![E-mail adres goedgekeurde aanvrager toegang](./media/entitlement-management-process/requestor-email-approved.png)
+![E-mail met goedgekeurde aanvrager-toegangsverzoek](./media/entitlement-management-process/requestor-email-approved.png)
 
-Wanneer een toegangs aanvraag wordt geweigerd, wordt een e-mail melding verzonden naar de aanvrager. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangs aanvraag wordt geweigerd:
+Wanneer een toegangsverzoek wordt geweigerd, wordt een e-mailmelding naar de aanvrager verzonden. Hier is een voorbeeld e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangsverzoek wordt geweigerd:
 
-![E-mail afgewezen aanvraag geweigerd](./media/entitlement-management-process/requestor-email-denied.png)
+![Verzoeker verzoek geweigerd e-mail](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>2-fase goedkeurings aanvragen e-mail berichten
+### <a name="2-stage-approval-access-request-emails"></a>E-mails met goedkeuringsverzoeken in 2 fasen
 
-Als de 2-fase goedkeuring is ingeschakeld, moeten ten minste twee goed keurders de aanvraag goed keuren, één van elke fase voordat de aanvrager toegang kan krijgen.
+Als goedkeuring in twee fasen is ingeschakeld, moeten ten minste twee fiatteurs het verzoek goedkeuren, één van elke fase, voordat de aanvrager toegang kan krijgen.
 
-Tijdens fase 1 ontvangt de eerste goed keurder het e-mail bericht voor de toegangs aanvraag en een beslissing nemen. Als de aanvraag wordt goedgekeurd, ontvangt alle eerste goed keurders en alternatieve goed keurders in fase 1 (als escalatie is ingeschakeld) een melding dat fase-1 is voltooid. Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden wanneer fase-1 is voltooid:
+Tijdens fase-1 ontvangt de eerste goedkeurder de e-mail met het toegangsverzoek en neemt hij een beslissing. Als ze het verzoek goedkeuren, ontvangen alle eerste fiatteurs en alternatieve fiatteurs in fase-1 (als escalatie is ingeschakeld) een melding dat fase-1 is voltooid. Hier is een voorbeeld e-mail van de melding die wordt verzonden wanneer fase-1 is voltooid:
 
-![e-mail adres voor toegang tot 2 werk plaatsen](./media/entitlement-management-process/approver-request-email-2stage.png)
+![E-mail met toegangsverzoeken in 2 fasen](./media/entitlement-management-process/approver-request-email-2stage.png)
 
-Nadat de eerste of alternatieve goed keurders de aanvraag in fase 1 hebben goedgekeurd, wordt fase 2 gestart. Tijdens fase 2 ontvangt de tweede goed keurder de e-mail melding voor de toegangs aanvraag. Nadat de tweede goed keurder of alternatieve goed keurders in fase 2 (als escalatie is ingeschakeld) besluiten om de aanvraag goed te keuren of te weigeren, worden e-mail meldingen verzonden naar de eerste en tweede goed keurders, en alle alternatieve goed keurders in fase-1 en fase 2, evenals de aanvrager.
+Nadat de eerste of alternatieve fiatteurs de aanvraag in fase-1 hebben goedgekeurd, begint fase-2. Tijdens fase-2 ontvangt de tweede goedkeurder de e-mail met de e-mail met de toegangsaanvraag. Nadat de tweede fiatteurs of alternatieve fiatteurs in fase-2 (als escalatie is ingeschakeld) besluiten het verzoek goed te keuren of te weigeren, worden kennisgevingse-mails verzonden naar de eerste en tweede fiatteurs en alle alternatieve fiatteurs in fase-1 en fase-2, evenals de aanvrager.
 
-### <a name="expired-access-request-emails"></a>Verlopen e-mail berichten voor toegang
+### <a name="expired-access-request-emails"></a>Verlopen e-mails met toegangsverzoeken
 
-Toegangs aanvragen kunnen verlopen als geen fiatteur de aanvraag heeft goedgekeurd of geweigerd. 
+Toegangsaanvragen kunnen verlopen als geen goedkeurder het verzoek heeft goedgekeurd of geweigerd. 
 
-Wanneer de aanvraag de geconfigureerde verloop datum bereikt en verloopt, kan deze niet meer worden goedgekeurd of geweigerd door de goed keurders. Hier volgt een voor beeld van een e-mail bericht van de melding die wordt verzonden naar alle eerste, tweede (indien goed keuring in twee fasen is ingeschakeld) en alternatieve goed keurders:
+Wanneer de aanvraag de geconfigureerde vervaldatum heeft bereikt en verloopt, kan het niet langer worden goedgekeurd of geweigerd door de fiatteurs. Hier is een voorbeeld e-mail van de kennisgeving verzonden naar alle van de eerste, tweede (als 2-fase goedkeuring is ingeschakeld), en alternatieve fiatrovers:
 
-![E-mail met verlopen toegang aanvragen voor goed keurders](./media/entitlement-management-process/approver-request-email-expired.png)
+![E-mail met verlopen toegangsverzoeken](./media/entitlement-management-process/approver-request-email-expired.png)
 
-Er wordt ook een e-mail melding verzonden naar de aanvrager, waarin wordt gemeld dat hun toegangs aanvraag is verlopen en dat de toegangs aanvraag opnieuw moet worden ingediend. In het volgende diagram ziet u de ervaring van de aanvrager en de e-mail meldingen die ze ontvangen wanneer ze aanvragen om toegang uit te breiden:
+Er wordt ook een e-mailmelding naar de aanvrager verzonden, waarin wordt gemeld dat hun toegangsverzoek is verlopen en dat ze het toegangsverzoek opnieuw moeten indienen. Het volgende diagram toont de ervaring van de aanvrager en de e-mailmeldingen die ze ontvangen wanneer ze verzoeken om de toegang uit te breiden:
 
-![De aanvrager breidt de toegangs proces stroom uit](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+![Aanvrager se toegangsprocesstroom uitbreiden](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 
-Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangs aanvraag is verlopen:
+Hier is een voorbeeld e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangsverzoek is verlopen:
 
-![E-mail met verlopen verzoeken voor aanvrager](./media/entitlement-management-process/requestor-email-request-expired.png)
+![Aanvrager verlopen toegangsverzoek e-mail](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang aanvragen tot een toegangs pakket](entitlement-management-request-access.md)
-- [Toegangs aanvragen goed keuren of weigeren](entitlement-management-request-approve.md)
+- [Toegang tot een toegangspakket aanvragen](entitlement-management-request-access.md)
+- [Toegangsaanvragen goedkeuren of weigeren](entitlement-management-request-approve.md)

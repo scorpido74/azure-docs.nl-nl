@@ -1,48 +1,48 @@
 ---
-title: Netwerk patronen voor Azure Service Fabric
-description: Beschrijft veelvoorkomende netwerk patronen voor Service Fabric en het maken van een cluster met behulp van Azure-netwerk functies.
+title: Netwerkpatronen voor Azure Service Fabric
+description: Beschrijft veelvoorkomende netwerkpatronen voor Service Fabric en hoe u een cluster maakt met Azure-netwerkfuncties.
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466285"
 ---
-# <a name="service-fabric-networking-patterns"></a>Service Fabric netwerk patronen
-U kunt uw Azure Service Fabric-cluster integreren met andere Azure-netwerk functies. In dit artikel wordt uitgelegd hoe u clusters maakt die gebruikmaken van de volgende functies:
+# <a name="service-fabric-networking-patterns"></a>Netwerkpatronen van Service Fabric
+U uw Azure Service Fabric-cluster integreren met andere Azure-netwerkfuncties. In dit artikel laten we u zien hoe u clusters maakt die de volgende functies gebruiken:
 
 - [Bestaand virtueel netwerk of subnet](#existingvnet)
 - [Statisch openbaar IP-adres](#staticpublicip)
-- [Alleen intern load balancer](#internallb)
+- [Interne load balancer](#internallb)
 - [Interne en externe load balancer](#internalexternallb)
 
-Service Fabric wordt uitgevoerd in een standaard schaalset voor virtuele machines. Alle functionaliteiten die u kunt gebruiken in een schaalset voor virtuele machines, kunt u gebruiken met een Service Fabric cluster. De netwerk secties van de Azure Resource Manager sjablonen voor schaal sets voor virtuele machines en Service Fabric zijn identiek. Nadat u een bestaand virtueel netwerk hebt geïmplementeerd, kunt u eenvoudig andere netwerk functies, zoals Azure ExpressRoute, Azure VPN Gateway, een netwerk beveiligings groep en virtuele netwerk-peering, opnemen.
+Service Fabric draait in een standaard virtuele machine schaalset. Elke functionaliteit die u gebruiken in een virtuele machineschaalset, u gebruiken met een Cluster Service Fabric. De netwerksecties van de Azure Resource Manager-sjablonen voor virtuele machineschaalsets en Service Fabric zijn identiek. Nadat u bent geïmplementeerd in een bestaand virtueel netwerk, is het eenvoudig om andere netwerkfuncties op te nemen, zoals Azure ExpressRoute, Azure VPN Gateway, een netwerkbeveiligingsgroep en virtueel netwerkpeeren.
 
-### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>De Service Fabric resource provider toestaan om uw cluster op te vragen
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>De resourceprovider van Service Fabric toestaan uw cluster op te vragen
 
-Service Fabric is uniek van andere netwerk functies in één aspect. De [Azure Portal](https://portal.azure.com) gebruikt intern de service Fabric resource provider om een cluster aan te roepen om informatie over knoop punten en toepassingen op te halen. De resource provider Service Fabric vereist openbaar toegankelijke inkomende toegang tot de HTTP-gateway poort (standaard poort 19080) op het beheer eindpunt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) gebruikt het beheer eindpunt om uw cluster te beheren. De Service Fabric resource provider gebruikt deze poort ook om informatie over uw cluster op te vragen, om weer te geven in de Azure Portal. 
+Service Fabric is uniek van andere netwerkfuncties in één aspect. De [Azure-portal](https://portal.azure.com) gebruikt intern de serviceprovider Service Fabric-bron om naar een cluster te bellen om informatie over knooppunten en toepassingen te krijgen. De servicefabric-resourceprovider vereist openbaar toegankelijke inkomende toegang tot de HTTP-gatewaypoort (poort 19080, standaard) op het beheereindpunt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) gebruikt het beheereindpunt om uw cluster te beheren. De resourceprovider servicefabric gebruikt deze poort ook om informatie over uw cluster op te vragen om weer te geven in de Azure-portal. 
 
-Als poort 19080 niet toegankelijk is vanuit de Service Fabric resource provider, wordt in de portal een bericht weer gegeven als *knoop punten die niet zijn gevonden* . de lijst met knoop punten en toepassingen wordt leeg weer gegeven. Als u uw cluster in de Azure Portal wilt zien, moet uw load balancer een openbaar IP-adres beschikbaar stellen en moet uw netwerk beveiligings groep binnenkomend poort 19080 verkeer toestaan. Als uw installatie niet aan deze vereisten voldoet, wordt de status van uw cluster in de Azure Portal niet weer gegeven.
+Als poort 19080 niet toegankelijk is vanuit de resourceprovider Service Fabric, wordt een bericht als *Knooppunten niet gevonden* in de portal weergegeven en wordt uw knooppunt- en toepassingslijst leeg weergegeven. Als u uw cluster in de Azure-portal wilt zien, moet uw load balancer een openbaar IP-adres weergeven en moet uw netwerkbeveiligingsgroep inkomende poort 19080-verkeer toestaan. Als uw installatie niet aan deze vereisten voldoet, wordt in de Azure-portal de status van uw cluster niet weergegeven.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Sjablonen
 
-Alle Service Fabric sjablonen bevinden zich in [github](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). U moet de sjablonen net zo kunnen implementeren met behulp van de volgende Power shell-opdrachten. Als u de bestaande Azure Virtual Network-sjabloon of het statische open bare IP-sjabloon implementeert, lees dan eerst de sectie [eerste installatie](#initialsetup) in dit artikel.
+Alle Service Fabric-sjablonen bevinden zich in [GitHub.](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking) U moet de sjablonen kunnen implementeren met behulp van de volgende PowerShell-opdrachten. Als u de bestaande Azure Virtual Network-sjabloon of de statische openbare IP-sjabloon implementeert, leest u eerst het gedeelte [Initiële installatie](#initialsetup) van dit artikel.
 
 <a id="initialsetup"></a>
-## <a name="initial-setup"></a>Eerste installatie
+## <a name="initial-setup"></a>Initiële installatie
 
 ### <a name="existing-virtual-network"></a>Bestaand virtueel netwerk
 
-In het volgende voor beeld beginnen we met een bestaand virtueel netwerk met de naam ExistingRG-vnet in de resource groep **ExistingRG** . Het subnet heeft de naam standaard. Deze standaard resources worden gemaakt wanneer u de Azure Portal gebruikt voor het maken van een standaard virtuele machine (VM). U kunt het virtuele netwerk en het subnet maken zonder de virtuele machine te maken, maar het belangrijkste doel van het toevoegen van een cluster aan een bestaand virtueel netwerk is het bieden van een netwerk verbinding met andere Vm's. Het maken van de VM geeft een goed voor beeld van hoe een bestaand virtueel netwerk normaal gesp roken wordt gebruikt. Als uw Service Fabric cluster alleen een interne load balancer gebruikt, zonder een openbaar IP-adres, kunt u de virtuele machine en de open bare IP gebruiken als een beveiligde *Jump Box*.
+In het volgende voorbeeld beginnen we met een bestaand virtueel netwerk **ExistingRG** genaamd ExistingRG-vnet, in de ExistingRG-resourcegroep. Het subnet heeft de naam standaard. Deze standaardresources worden gemaakt wanneer u de Azure-portal gebruikt om een virtuele virtuele machine (standaardmachine) te maken. U het virtuele netwerk en subnet maken zonder de VM te maken, maar het belangrijkste doel van het toevoegen van een cluster aan een bestaand virtueel netwerk is het bieden van netwerkconnectiviteit met andere VM's. Het maken van de VM geeft een goed voorbeeld van hoe een bestaand virtueel netwerk doorgaans wordt gebruikt. Als uw Cluster Servicefabric alleen een interne load balancer gebruikt, zonder een openbaar IP-adres, u de VM en het openbare IP-adres gebruiken als een veilige *springbox.*
 
 ### <a name="static-public-ip-address"></a>Statisch openbaar IP-adres
 
-Een statisch openbaar IP-adres is doorgaans een toegewezen resource die onafhankelijk van de virtuele machine wordt beheerd of de Vm's waaraan deze is toegewezen. Het is ingericht in een specifieke netwerk resource groep (in plaats van in de Service Fabric cluster resource groep zelf). Maak een statisch openbaar IP-adres met de naam staticIP1 in dezelfde ExistingRG-resource groep, hetzij in het Azure Portal of met behulp van Power shell:
+Een statisch openbaar IP-adres is over het algemeen een speciale bron die afzonderlijk wordt beheerd van de VM of VM's waaraan het is toegewezen. Het is ingericht in een speciale netwerkbrongroep (in tegenstelling tot in de clusterbrongroep ServiceFabric zelf). Maak een statisch openbaar IP-adres met de naam staticIP1 in dezelfde ExistingRG-brongroep, in de Azure-portal of met PowerShell:
 
 ```powershell
 PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -66,14 +66,14 @@ DnsSettings              : {
                            }
 ```
 
-### <a name="service-fabric-template"></a>Service Fabric sjabloon
+### <a name="service-fabric-template"></a>Sjabloon Servicefabric
 
-In de voor beelden in dit artikel gebruiken we de Service Fabric template. json. U kunt de standaard portal wizard gebruiken om de sjabloon uit de portal te downloaden voordat u een cluster maakt. U kunt ook een van de [voorbeeld sjablonen](https://github.com/Azure-Samples/service-fabric-cluster-templates)gebruiken, zoals het [beveiligde service Fabric cluster met vijf knoop punten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
+In de voorbeelden in dit artikel gebruiken we de sjabloon Service Fabric.json. U de standaardportalwizard gebruiken om de sjabloon van de portal te downloaden voordat u een cluster maakt. U ook een van de [voorbeeldsjablonen](https://github.com/Azure-Samples/service-fabric-cluster-templates)gebruiken, zoals het [cluster Beveiligde servicestructuur met vijf node.](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure)
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>Bestaand virtueel netwerk of subnet
 
-1. Wijzig de para meter subnet in de naam van het bestaande subnet en Voeg twee nieuwe para meters toe om te verwijzen naar het bestaande virtuele netwerk:
+1. Wijzig de subnetparameter in de naam van het bestaande subnet en voeg vervolgens twee nieuwe parameters toe om naar het bestaande virtuele netwerk te verwijzen:
 
     ```json
         "subnet0Name": {
@@ -100,20 +100,20 @@ In de voor beelden in dit artikel gebruiken we de Service Fabric template. json.
             },*/
     ```
 
-2. Commentaar uit `nicPrefixOverride` kenmerk van `Microsoft.Compute/virtualMachineScaleSets`, omdat u een bestaand subnet gebruikt en u deze variabele hebt uitgeschakeld in stap 1.
+2. Opmerking `nicPrefixOverride` uit `Microsoft.Compute/virtualMachineScaleSets`attribuut van , omdat u bestaande subnet gebruikt en u deze variabele hebt uitgeschakeld in stap 1.
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
-3. Wijzig de `vnetID` variabele zodat deze naar het bestaande virtuele netwerk wijst:
+3. Wijzig `vnetID` de variabele om het bestaande virtuele netwerk aan te wijzen:
 
     ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-4. Verwijder `Microsoft.Network/virtualNetworks` uit uw resources, dus maakt Azure geen nieuw virtueel netwerk:
+4. Verwijder `Microsoft.Network/virtualNetworks` uit uw resources, zodat Azure geen nieuw virtueel netwerk maakt:
 
     ```json
     /*{
@@ -143,7 +143,7 @@ In de voor beelden in dit artikel gebruiken we de Service Fabric template. json.
     },*/
     ```
 
-5. Maak een opmerking van het virtuele netwerk vanuit het `dependsOn` kenmerk van `Microsoft.Compute/virtualMachineScaleSets`, zodat u niet afhankelijk bent van het maken van een nieuw virtueel netwerk:
+5. Reageer op het virtuele `dependsOn` netwerk `Microsoft.Compute/virtualMachineScaleSets`vanuit het kenmerk van , zodat u niet afhankelijk bent van het maken van een nieuw virtueel netwerk:
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -164,20 +164,20 @@ In de voor beelden in dit artikel gebruiken we de Service Fabric template. json.
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Na de implementatie moet het virtuele netwerk de nieuwe Vm's voor schaal sets bevatten. In het knooppunt type voor de schaalset voor virtuele machines moet het bestaande virtuele netwerk en subnet worden weer gegeven. U kunt Remote Desktop Protocol (RDP) ook gebruiken om toegang te krijgen tot de virtuele machine die al in het virtuele netwerk stond en om de nieuwe virtuele machines met schaal sets te pingen:
+    Na implementatie moet uw virtuele netwerk de nieuwe vm's voor de schaalset bevatten. Het type knooppunt van de virtuele machineschaal moet het bestaande virtuele netwerk en subnet weergeven. U rdp (Remote Desktop Protocol) ook gebruiken om toegang te krijgen tot de vm die zich al in het virtuele netwerk bevond en om de nieuwe vm's van de schaalset te pingen:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Zie in een ander voorbeeld [een voorbeeld dat niet specifiek is voor Service Fabric.](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)
 
 
 <a id="staticpublicip"></a>
 ## <a name="static-public-ip-address"></a>Statisch openbaar IP-adres
 
-1. Voeg para meters toe voor de naam van de bestaande vaste IP-resource groep, naam en Fully Qualified Domain Name (FQDN):
+1. Parameters toevoegen voor de naam van de bestaande statische IP-brongroep, naam en volledig gekwalificeerde domeinnaam (FQDN):
 
     ```json
     "existingStaticIPResourceGroup": {
@@ -191,7 +191,7 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
     }
     ```
 
-2. Verwijder de para meter `dnsName`. (Het statische IP-adres heeft er al een.)
+2. Verwijder `dnsName` de parameter. (Het statische IP-adres heeft er al een.)
 
     ```json
     /*
@@ -201,13 +201,13 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
     */
     ```
 
-3. Voeg een variabele toe om te verwijzen naar het bestaande vaste IP-adres:
+3. Voeg een variabele toe om naar het bestaande statische IP-adres te verwijzen:
 
     ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
-4. Verwijder `Microsoft.Network/publicIPAddresses` van uw resources, zodat Azure geen nieuw IP-adres maakt:
+4. Verwijder `Microsoft.Network/publicIPAddresses` uit uw resources, zodat Azure geen nieuw IP-adres maakt:
 
     ```json
     /*
@@ -229,7 +229,7 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
     }, */
     ```
 
-5. Maak een opmerking van het IP-adres van het `dependsOn` kenmerk van `Microsoft.Network/loadBalancers`, zodat u niet afhankelijk bent van het maken van een nieuw IP-adres:
+5. Reageer op het IP-adres van het `dependsOn` kenmerk van `Microsoft.Network/loadBalancers`, zodat u niet afhankelijk bent van het maken van een nieuw IP-adres:
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
     "properties": {
     ```
 
-6. Wijzig in de `Microsoft.Network/loadBalancers` resource het `publicIPAddress` element van `frontendIPConfigurations` om te verwijzen naar het bestaande vaste IP-adres in plaats van een nieuw gemaakt:
+6. Wijzig `Microsoft.Network/loadBalancers` in de `publicIPAddress` resource `frontendIPConfigurations` het element van het verwijzen naar het bestaande statische IP-adres in plaats van een nieuw gemaakt ip-adres:
 
     ```json
                 "frontendIPConfigurations": [
@@ -259,7 +259,7 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
                     ],
     ```
 
-7. Wijzig in de `Microsoft.ServiceFabric/clusters` resource `managementEndpoint` in de DNS FQDN van het statische IP-adres. Als u een beveiligd cluster gebruikt, zorg er dan voor dat u *http://* wijzigt in *https://* . (Houd er rekening mee dat deze stap alleen van toepassing is op Service Fabric clusters. Sla deze stap over als u een schaalset voor virtuele machines gebruikt.)
+7. Wijzig `Microsoft.ServiceFabric/clusters` in `managementEndpoint` de bron de DNS FQDN van het statische IP-adres. Als u een beveiligd cluster gebruikt, moet u ervoor zorgen dat u *http://* wijzigt in *https://.* (Houd er rekening mee dat deze stap alleen van toepassing is op clusters van ServiceFabric. Als u een virtuele machineschaalset gebruikt, slaat u deze stap over.)
 
     ```json
                     "fabricSettings": [],
@@ -279,14 +279,14 @@ Zie een ander voor beeld [dat niet specifiek is voor service Fabric](https://git
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-Na de implementatie kunt u zien dat uw load balancer is gebonden aan het open bare statische IP-adres van de andere resource groep. Het eind punt van de Service Fabric client verbinding en [service Fabric Explorer](service-fabric-visualizing-your-cluster.md) eind punt verwijzen naar de DNS-FQDN van het statische IP-adres.
+Na implementatie u zien dat uw load balancer is gekoppeld aan het openbare statische IP-adres van de andere resourcegroep. Het eindpunt van de servicefabric-clientverbinding en het eindpunt [van Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) wijzen op de DNS FQDN van het statische IP-adres.
 
 <a id="internallb"></a>
-## <a name="internal-only-load-balancer"></a>Alleen intern load balancer
+## <a name="internal-only-load-balancer"></a>Interne load balancer
 
-In dit scenario worden de externe load balancer in de standaard sjabloon vervangen door een load balancer met alleen interne Service Fabric. Zie [eerder in dit artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) voor implicaties voor de Azure Portal en voor de resource Provider service Fabric.
+Dit scenario vervangt de externe load balancer in de standaard sjabloon Servicefabric door een interne load balancer. Zie [eerder in het artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) voor implicaties voor de Azure-portal en voor de provider van servicefabric-bronnen.
 
-1. Verwijder de para meter `dnsName`. (Dit is niet nodig.)
+1. Verwijder `dnsName` de parameter. (Het is niet nodig.)
 
     ```json
     /*
@@ -296,7 +296,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
     */
     ```
 
-2. Als u een statische toewijzings methode gebruikt, kunt u desgewenst een para meter voor een statisch IP-adres toevoegen. Als u een dynamische toewijzings methode gebruikt, hoeft u deze stap niet uit te voeren.
+2. Als u een statische toewijzingsmethode gebruikt, u optioneel een statische IP-adresparameter toevoegen. Als u een dynamische toewijzingsmethode gebruikt, hoeft u deze stap niet te doen.
 
     ```json
             "internalLBAddress": {
@@ -305,7 +305,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
             }
     ```
 
-3. Verwijder `Microsoft.Network/publicIPAddresses` van uw resources, zodat Azure geen nieuw IP-adres maakt:
+3. Verwijder `Microsoft.Network/publicIPAddresses` uit uw resources, zodat Azure geen nieuw IP-adres maakt:
 
     ```json
     /*
@@ -327,7 +327,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
     }, */
     ```
 
-4. Verwijder het IP-adres `dependsOn` kenmerk van `Microsoft.Network/loadBalancers`, zodat u niet afhankelijk bent van het maken van een nieuw IP-adres. Voeg het `dependsOn` kenmerk virtuele netwerk toe, omdat de load balancer nu afhankelijk is van het subnet van het virtuele netwerk:
+4. Verwijder het `dependsOn` IP-adreskenmerk van `Microsoft.Network/loadBalancers`, zodat u niet afhankelijk bent van het maken van een nieuw IP-adres. Voeg het `dependsOn` kenmerk van het virtuele netwerk toe omdat de load balancer nu afhankelijk is van het subnet van het virtuele netwerk:
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -340,7 +340,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
                 ],
     ```
 
-5. Wijzig de `frontendIPConfigurations`-instelling van de load balancer van een `publicIPAddress`met behulp van een subnet en `privateIPAddress`. `privateIPAddress` gebruikt een vooraf gedefinieerd statisch intern IP-adres. Als u een dynamisch IP-adres wilt gebruiken, verwijdert u het `privateIPAddress`-element en wijzigt u vervolgens de `privateIPAllocationMethod` in **dynamische**.
+5. Wijzig de instelling van `frontendIPConfigurations` de load `publicIPAddress`balancer van het `privateIPAddress`gebruik van een subnet naar het gebruik van een subnet en . `privateIPAddress`gebruikt een vooraf gedefinieerd statisch ip-adres. Als u een dynamisch IP-adres wilt gebruiken, verwijdert u het `privateIPAddress` element en wijzigt u vervolgens `privateIPAllocationMethod` in **Dynamisch**.
 
     ```json
                 "frontendIPConfigurations": [
@@ -361,7 +361,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
                     ],
     ```
 
-6. Wijzig in de `Microsoft.ServiceFabric/clusters` resource `managementEndpoint` om naar het interne load balancer adres te verwijzen. Als u een beveiligd cluster gebruikt, zorg er dan voor dat u *http://* wijzigt in *https://* . (Houd er rekening mee dat deze stap alleen van toepassing is op Service Fabric clusters. Sla deze stap over als u een schaalset voor virtuele machines gebruikt.)
+6. Wijzig `Microsoft.ServiceFabric/clusters` in de `managementEndpoint` resource de aanwijs naar het adres interne load balancer. Als u een beveiligd cluster gebruikt, moet u *http://* wijzigen in *https://.* (Houd er rekening mee dat deze stap alleen van toepassing is op clusters van ServiceFabric. Als u een virtuele machineschaalset gebruikt, slaat u deze stap over.)
 
     ```json
                     "fabricSettings": [],
@@ -377,16 +377,16 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Na de implementatie maakt uw load balancer gebruik van het privé 10.0.0.250 IP-adres. Als u een andere machine in hetzelfde virtuele netwerk hebt, kunt u naar het interne [service Fabric Explorer](service-fabric-visualizing-your-cluster.md) -eind punt gaan. Houd er rekening mee dat deze verbinding maakt met een van de knoop punten achter de load balancer.
+Na de implementatie gebruikt uw load balancer het privéstatische 10.0.0.250 IP-adres. Als u een andere machine in datzelfde virtuele netwerk hebt, u naar het interne [eindpunt van Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) gaan. Houd er rekening mee dat het verbinding maakt met een van de knooppunten achter de load balancer.
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>Interne en externe load balancer
 
-In dit scenario begint u met het bestaande type met één knoop punt externe load balancer en voegt u een intern load balancer toe voor hetzelfde knooppunt type. Een back-end-poort die is gekoppeld aan een back-end-adres groep kan alleen worden toegewezen aan een enkele load balancer. Kies welke load balancer uw toepassings poorten heeft en welke load balancer uw beheer eindpunten heeft (poorten 19000 en 19080). Als u de beheer eindpunten op de interne load balancer plaatst, moet u er wel voor zorgen dat de beperkingen van de Service Fabric resource provider [eerder in het artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)worden besproken. In het voor beeld dat we gebruiken, blijven de beheer eindpunten op de externe load balancer. U voegt ook een poort 80-toepassings poort toe en plaatst deze op de interne load balancer.
+In dit scenario begint u met de bestaande externe lastenbalancer met één knooppunt en voegt u een interne load balancer toe voor hetzelfde knooppunttype. Een back-endpoort die is gekoppeld aan een back-end-adresgroep, kan slechts aan één load balancer worden toegewezen. Kies welke load balancer uw applicatiepoorten heeft en welke load balancer uw beheereindpunten heeft (poorten 19000 en 19080). Als u de beheereindpunten op de interne load balancer plaatst, moet u rekening houden met de beperkingen van de serviceprovider servicefabric die [eerder in het artikel](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)zijn besproken. In het voorbeeld dat we gebruiken, blijven de beheereindpunten op de externe load balancer staan. U voegt ook een poort 80-toepassingspoort toe en plaatst deze op de interne load balancer.
 
-In een cluster met twee knoop punten bevindt zich één knooppunt type op het externe load balancer. Het andere type knoop punt bevindt zich op de interne load balancer. Als u een cluster met twee knoop punten wilt gebruiken, schakelt u in de door de portal gemaakte sjabloon met twee knoop punten (die wordt geleverd met twee load balancers) het tweede load balancer naar een interne load balancer. Zie de sectie [met alleen interne Load Balancer](#internallb) voor meer informatie.
+In een cluster met twee node-type is één knooppunttype op de externe load balancer. Het andere knooppunttype bevindt zich op de interne load balancer. Als u een cluster met twee node-type wilt gebruiken, schakelt u in de door portal gemaakte tweenode-type (die wordt geleverd met twee load balancers), de tweede load balancer in een interne load balancer. Zie de sectie [Intern-only load balancer](#internallb) voor meer informatie.
 
-1. Voeg de para meter static interne load balancer IP-adres toe. (Zie eerdere secties in dit artikel voor opmerkingen met betrekking tot het gebruik van een dynamisch IP-adres.)
+1. Voeg de parameter ip-adres van de statische interne load balancer toe. (Zie eerdere delen van dit artikel voor notities met betrekking tot het gebruik van een dynamisch IP-adres.)
 
     ```json
             "internalLBAddress": {
@@ -395,9 +395,9 @@ In een cluster met twee knoop punten bevindt zich één knooppunt type op het ex
             }
     ```
 
-2. Voeg een toepassings poort 80-para meter toe.
+2. Voeg een parameter toepassingspoort 80 toe.
 
-3. Als u interne versies van de bestaande netwerk variabelen wilt toevoegen, kopieert en plakt u deze en voegt u '-int ' toe aan de naam:
+3. Als u interne versies van de bestaande netwerkvariabelen wilt toevoegen, kopieert en plakt u deze en voegt u "-Int" toe aan de naam:
 
     ```json
     /* Add internal load balancer networking variables */
@@ -410,7 +410,7 @@ In een cluster met twee knoop punten bevindt zich één knooppunt type op het ex
             /* Internal load balancer networking variables end */
     ```
 
-4. Als u begint met de door de portal gegenereerde sjabloon die gebruikmaakt van toepassings poort 80, voegt de standaard Portal sjabloon AppPort1 (poort 80) toe aan de externe load balancer. Verwijder in dit geval AppPort1 uit de externe load balancer `loadBalancingRules` en test, zodat u deze kunt toevoegen aan de interne load balancer:
+4. Als u begint met de door portal gegenereerde sjabloon die toepassingspoort 80 gebruikt, voegt de standaardportalsjabloon AppPort1 (poort 80) toe aan de externe load balancer. Verwijder in dit geval AppPort1 uit `loadBalancingRules` de externe load balancer en sondes, zodat u deze toevoegen aan de interne load balancer:
 
     ```json
     "loadBalancingRules": [
@@ -487,7 +487,7 @@ In een cluster met twee knoop punten bevindt zich één knooppunt type op het ex
     "inboundNatPools": [
     ```
 
-5. Voeg een tweede `Microsoft.Network/loadBalancers` resource toe. Het lijkt op het interne load balancer dat is gemaakt in de sectie [alleen intern Load Balancer](#internallb) , maar gebruikt de Load Balancer variabelen '-int ' en implementeert alleen de toepassings poort 80. Hiermee worden ook `inboundNatPools`verwijderd om RDP-eind punten op de open bare load balancer te blijven gebruiken. Als u RDP wilt inschakelen voor de interne load balancer, verplaatst u `inboundNatPools` van de externe load balancer naar deze interne load balancer:
+5. Voeg een `Microsoft.Network/loadBalancers` tweede resource toe. Het lijkt op de interne load balancer gemaakt in de [interne-only load balancer](#internallb) sectie, maar het maakt gebruik van de "-Int" load balancer variabelen, en implementeert alleen de toepassing poort 80. Dit verwijdert `inboundNatPools`ook , om RDP-eindpunten op de openbare load balancer te houden. Als u RDP op de interne `inboundNatPools` load balancer wilt, gaat u van de externe load balancer naar deze interne load balancer:
 
     ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -572,7 +572,7 @@ In een cluster met twee knoop punten bevindt zich één knooppunt type op het ex
             },
     ```
 
-6. Voeg in `networkProfile` voor de `Microsoft.Compute/virtualMachineScaleSets` resource de interne back-end-adres groep toe:
+6. Voeg `networkProfile` de `Microsoft.Compute/virtualMachineScaleSets` interne back-endadresgroep toe voor de resource:
 
     ```json
     "loadBalancerBackendAddressPools": [
@@ -594,14 +594,14 @@ In een cluster met twee knoop punten bevindt zich één knooppunt type op het ex
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Na de implementatie kunt u twee load balancers weer geven in de resource groep. Als u door de load balancers bladert, ziet u het open bare IP-adres en de beheer eindpunten (poorten 19000 en 19080) die zijn toegewezen aan het open bare IP-adres. U kunt ook het statische interne IP-adres en eind punt van de toepassing zien (poort 80) die aan de interne load balancer zijn toegewezen. Beide load balancers maken gebruik van dezelfde back-end-groep voor schaal sets voor virtuele machines.
+Na implementatie ziet u twee load balancers in de resourcegroep. Als u door de load balancers bladert, ziet u de openbare IP-adres- en beheereindpunten (poorten 19000 en 19080) die zijn toegewezen aan het openbare IP-adres. U ook het statische interne IP-adres en het eindpunt van de toepassing (poort 80) zien dat is toegewezen aan de interne load balancer. Beide load balancers maken gebruik van dezelfde virtuele machine schaal set back-end pool.
 
-## <a name="notes-for-production-workloads"></a>Opmerkingen voor werk belastingen voor productie
+## <a name="notes-for-production-workloads"></a>Opmerkingen voor productieworkloads
 
-De bovenstaande GitHub-sjablonen zijn ontworpen voor gebruik met de standaard SKU voor Azure Standard Load Balancer (SLB), de basis-SKU. Deze SLB heeft geen SLA, dus voor productie werkbelastingen moet de standaard-SKU worden gebruikt. Zie het [overzicht van Azure Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)voor meer informatie. Elk Service Fabric cluster dat gebruikmaakt van de standaard-SKU voor SLB moet ervoor zorgen dat elk knooppunt type een regel heeft die uitgaand verkeer op poort 443 toestaat. Dit is nodig voor het volt ooien van de installatie van het cluster en een implementatie zonder een dergelijke regel zal mislukken. In het bovenstaande voor beeld van een load balancer ' alleen intern ' moet er een extra externe load balancer aan de sjabloon worden toegevoegd met een regel voor uitgaand verkeer voor poort 443.
+De bovenstaande GitHub-sjablonen zijn ontworpen om te werken met de standaard SKU voor Azure Standard Load Balancer (SLB), de Basic SKU. Deze SLB heeft geen SLA, dus voor productieworkloads moet de standaard SKU worden gebruikt. Zie het [overzicht Azure Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)voor meer informatie hierover. Elk servicefabriccluster dat de Standaard SKU voor SLB gebruikt, moet ervoor zorgen dat elk knooppunttype een regel heeft die uitgaand verkeer op poort 443 mogelijk maakt. Dit is nodig om de clusterinstallatie te voltooien en elke implementatie zonder een dergelijke regel mislukt. In het bovenstaande voorbeeld van een "interne alleen"-loadbalancer moet een extra externe load balancer aan de sjabloon worden toegevoegd met een regel die uitgaand verkeer voor poort 443 mogelijk maakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Een cluster maken](service-fabric-cluster-creation-via-arm.md)
 
-Na de implementatie kunt u twee load balancers weer geven in de resource groep. Als u door de load balancers bladert, ziet u het open bare IP-adres en de beheer eindpunten (poorten 19000 en 19080) die zijn toegewezen aan het open bare IP-adres. U kunt ook het statische interne IP-adres en eind punt van de toepassing zien (poort 80) die aan de interne load balancer zijn toegewezen. Beide load balancers maken gebruik van dezelfde back-end-groep voor schaal sets voor virtuele machines.
+Na implementatie ziet u twee load balancers in de resourcegroep. Als u door de load balancers bladert, ziet u de openbare IP-adres- en beheereindpunten (poorten 19000 en 19080) die zijn toegewezen aan het openbare IP-adres. U ook het statische interne IP-adres en het eindpunt van de toepassing (poort 80) zien dat is toegewezen aan de interne load balancer. Beide load balancers maken gebruik van dezelfde virtuele machine schaal set back-end pool.
 

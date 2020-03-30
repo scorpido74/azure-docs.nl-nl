@@ -1,47 +1,47 @@
 ---
 title: Beheerde identiteit gebruiken met een toepassing
-description: Beheerde identiteiten gebruiken in azure Service Fabric toepassings code voor toegang tot Azure-Services. Deze functie is beschikbaar voor openbare preview.
+description: Beheerde identiteiten gebruiken in Azure Service Fabric-toepassingscode om toegang te krijgen tot Azure Services. Deze functie is beschikbaar voor openbare preview.
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610315"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services (preview)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken om toegang te krijgen tot Azure-services (voorbeeld)
 
-Service Fabric toepassingen kunnen beheerde identiteiten gebruiken om toegang te krijgen tot andere Azure-resources die ondersteuning bieden voor op Azure Active Directory gebaseerde verificatie. Een toepassing kan een [toegangs token](../active-directory/develop/developer-glossary.md#access-token) verkrijgen dat de identiteit vertegenwoordigt, die door het systeem of de gebruiker kan worden toegewezen, en dit als een Bearer-token gebruiken om zichzelf te verifiëren bij een andere service, ook wel bekend als een [beveiligde bron server](../active-directory/develop/developer-glossary.md#resource-server). Het token vertegenwoordigt de identiteit die is toegewezen aan de Service Fabric-toepassing en wordt alleen verleend aan Azure-resources (inclusief SF-toepassingen) die deze identiteit delen. Raadpleeg de documentatie van het [overzicht van beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een gedetailleerde beschrijving van beheerde identiteiten, evenals het onderscheid tussen systeem toewijzingen en door de gebruiker toegewezen identiteiten. In dit artikel wordt gerefereerd aan een met Managed Identity geschikte Service Fabric toepassing als de [client toepassing](../active-directory/develop/developer-glossary.md#client-application) .
-
-> [!IMPORTANT]
-> Een beheerde identiteit vertegenwoordigt de koppeling tussen een Azure-resource en een Service-Principal in de bijbehorende Azure AD-Tenant die is gekoppeld aan het abonnement dat de resource bevat. In de context van Service Fabric worden beheerde identiteiten alleen ondersteund voor toepassingen die als Azure-resources worden geïmplementeerd. 
+Service Fabric-toepassingen kunnen beheerde identiteiten gebruiken om toegang te krijgen tot andere Azure-bronnen die azure Active Directory-gebaseerde verificatie ondersteunen. Een toepassing kan een [toegangstoken](../active-directory/develop/developer-glossary.md#access-token) verkrijgen dat zijn identiteit vertegenwoordigt, dat kan worden toegewezen of door de gebruiker is toegewezen, en het gebruiken als een 'drager' token om zichzelf te authenticeren naar een andere service - ook wel bekend als een [beveiligde resourceserver](../active-directory/develop/developer-glossary.md#resource-server). Het token vertegenwoordigt de identiteit die is toegewezen aan de Service Fabric-toepassing en wordt alleen uitgegeven aan Azure-resources (inclusief SF-toepassingen) die die identiteit delen. Raadpleeg de [documentatie van het beheerde identiteitsoverzicht](../active-directory/managed-identities-azure-resources/overview.md) voor een gedetailleerde beschrijving van beheerde identiteiten, evenals het onderscheid tussen door het systeem toegewezen en door de gebruiker toegewezen identiteiten. We zullen verwijzen naar een managed-identity-enabled Service Fabric applicatie als de [client applicatie](../active-directory/develop/developer-glossary.md#client-application) in dit artikel.
 
 > [!IMPORTANT]
-> Voordat de beheerde identiteit van een Service Fabric toepassing wordt gebruikt, moet aan de client toepassing toegang worden verleend tot de beveiligde bron. Raadpleeg de lijst met Azure- [Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) om te controleren op ondersteuning en vervolgens naar de documentatie van de betreffende service voor specifieke stappen voor het verlenen van identiteits toegang tot belang rijke bronnen. 
+> Een beheerde identiteit vertegenwoordigt de koppeling tussen een Azure-bron en een serviceprincipal in de bijbehorende Azure AD-tenant die is gekoppeld aan het abonnement dat de bron bevat. In het kader van Service Fabric worden beheerde identiteiten daarom alleen ondersteund voor toepassingen die als Azure-resources worden geïmplementeerd. 
 
-## <a name="acquiring-an-access-token-using-rest-api"></a>Een toegangs Token ophalen met behulp van REST API
-In clusters waarvoor een beheerde identiteit is ingeschakeld, maakt de Service Fabric-runtime gebruik van een localhost-eind punt dat toepassingen kunnen gebruiken om toegangs tokens te verkrijgen. Het eind punt is beschikbaar op elk knoop punt van het cluster en is toegankelijk voor alle entiteiten op het knoop punt. Geautoriseerde bellers kunnen toegangs tokens verkrijgen door dit eind punt aan te roepen en een verificatie code te presen teren. de code wordt gegenereerd door de Service Fabric runtime voor elke afzonderlijke activering van service code-pakket en is gebonden aan de levens duur van het proces dat als host fungeert voor het service code pakket.
+> [!IMPORTANT]
+> Voordat de beheerde identiteit van een Service Fabric-toepassing wordt gebruikt, moet de clienttoepassing toegang krijgen tot de beveiligde bron. Raadpleeg de lijst met [Azure-services die Azure AD-verificatie ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) om te controleren op ondersteuning en vervolgens naar de documentatie van de desbetreffende service voor specifieke stappen om een identiteitstoegang tot bronnen van belang te verlenen. 
 
-Met name de omgeving van een Service Fabric service met beheerde identiteiten wordt geseedd met de volgende variabelen:
-- ' MSI_ENDPOINT ': het localhost-eind punt, voltooid met het pad, de API-versie en de para meters die overeenkomen met de beheerde identiteit van die service
-- ' MSI_SECRET ': een verificatie code, een ondoorzichtige teken reeks en vertegenwoordigt de service op het huidige knoop punt
+## <a name="acquiring-an-access-token-using-rest-api"></a>Een toegangstoken aanschaffen met REST API
+In clusters die zijn ingeschakeld voor beheerde identiteit, wordt in de runtime van Service Fabric een localhost-eindpunt weergegeven dat toepassingen kunnen gebruiken om toegangstokens te verkrijgen. Het eindpunt is beschikbaar op elk knooppunt van het cluster en is toegankelijk voor alle entiteiten op dat knooppunt. Geautoriseerde bellers kunnen toegangstokens verkrijgen door dit eindpunt aan te roepen en een verificatiecode te presenteren; de code wordt gegenereerd door de runtime van Service Fabric voor elke afzonderlijke activering van servicecodepakketten en is gebonden aan de levensduur van het proces dat dat servicecodepakket host.
+
+Met name de omgeving van een servicefabric-service met managed-identity wordt met de volgende variabelen ingezaaid:
+- 'MSI_ENDPOINT': het eindpunt van localhost, compleet met pad, API-versie en parameters die overeenkomen met de beheerde identiteit van die service
+- 'MSI_SECRET': een verificatiecode, die een ondoorzichtige tekenreeks is en op unieke wijze de service op het huidige knooppunt vertegenwoordigt
 
 > [!NOTE]
-> De namen ' MSI_ENDPOINT ' en ' MSI_SECRET ' verwijzen naar de vorige aanwijzing van beheerde identiteiten (' Managed Service Identity ') en die nu is afgeschaft. De namen zijn ook consistent met de equivalente namen van omgevings variabelen die worden gebruikt door andere Azure-Services die beheerde identiteiten ondersteunen.
+> De namen 'MSI_ENDPOINT' en 'MSI_SECRET' verwijzen naar de vorige aanwijzing van beheerde identiteiten (Managed Service Identity), en die nu is afgeschaft. De namen komen ook overeen met de equivalente omgevingsvariabelenamen die worden gebruikt door andere Azure-services die beheerde identiteiten ondersteunen.
 
 > [!IMPORTANT]
-> De toepassings code moet rekening houden met de waarde van de omgevings variabele ' MSI_SECRET ' als gevoelige gegevens. deze kan niet worden geregistreerd of anderszins worden verspreid. De verificatie code heeft geen waarde buiten het lokale knoop punt of nadat het proces dat als host fungeert voor de service is beëindigd, maar het de identiteit van de Service Fabric-service vertegenwoordigt, en moet dus worden behandeld met dezelfde voorzorgsmaatregelen als het toegangs token zelf.
+> De toepassingscode moet de waarde van de 'MSI_SECRET' omgevingsvariabele als gevoelige gegevens beschouwen - deze mag niet worden geregistreerd of anderszins worden verspreid. De verificatiecode heeft geen waarde buiten het lokale knooppunt of nadat het proces dat de service host is beëindigd, maar wel de identiteit van de Service Fabric-service vertegenwoordigt en dus moet worden behandeld met dezelfde voorzorgsmaatregelen als het toegangstoken zelf.
 
-Voor het verkrijgen van een token voert de client de volgende stappen uit:
-- een URI vormt door het samen voegen van het beheerde identiteits eindpunt (MSI_ENDPOINT waarde) met de API-versie en de bron (doel groep) die vereist is voor het token
-- Hiermee maakt u een GET HTTP-aanvraag voor de opgegeven URI
-- Hiermee wordt de verificatie code (MSI_SECRET waarde) als koptekst aan de aanvraag toegevoegd
-- Hiermee wordt de aanvraag verzonden
+Om een token te verkrijgen, voert de client de volgende stappen uit:
+- vormt een URI door het beheerde identiteitseindpunt (MSI_ENDPOINT waarde) samen te stellen met de API-versie en de resource (doelgroep) die nodig is voor het token
+- hiermee maakt u een GET http-aanvraag voor de opgegeven URI
+- hiermee voegt u de verificatiecode (MSI_SECRET waarde) toe als koptekst aan de aanvraag
+- dient het verzoek in
 
-Een geslaagde reactie bevat een JSON-Payload die het resulterende toegangs token en meta gegevens beschrijft. Een mislukte reactie omvat ook een uitleg van de fout. Zie hieronder voor meer informatie over het afhandelen van fouten.
+Een succesvol antwoord bevat een JSON-payload die het resulterende toegangstoken vertegenwoordigt, evenals metagegevens die het beschrijven. Een mislukte reactie bevat ook een verklaring van de fout. Zie hieronder voor meer informatie over foutafhandeling.
 
-Toegangs tokens worden in de cache opgeslagen door Service Fabric op verschillende niveaus (knoop punt, cluster, resource Provider service), waardoor een geslaagde reactie niet noodzakelijkerwijs impliceert dat het token rechtstreeks is uitgegeven als reactie op de aanvraag van de gebruikers toepassing. Tokens worden voor minder dan hun levens duur in de cache opgeslagen, zodat een toepassing gegarandeerd een geldig token kan ontvangen. Het is raadzaam dat de toepassings code zichzelf bewaart alle toegangs tokens die worden opgehaald. de cache sleutel moet (een afleiding van) de doel groep bevatten. 
+Toegangstokens worden in de cache opgeslagen door Service Fabric op verschillende niveaus (knooppunt, cluster, resourceproviderservice), dus een succesvol antwoord betekent niet noodzakelijkerwijs dat het token rechtstreeks is uitgegeven in reactie op het verzoek van de gebruikerstoepassing. Tokens worden minder dan hun levensduur in de cache opgeslagen en dus ontvangt een toepassing gegarandeerd een geldig token. Het wordt aanbevolen dat de toepassingscode zichzelf alle toegangstokens in slaat die het verwerft; de caching sleutel moet (een afleiding van) het publiek bevatten. 
 
 
 Voorbeeldaanvraag:
@@ -52,14 +52,14 @@ Hierbij
 
 | Element | Beschrijving |
 | ------- | ----------- |
-| `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteits eindpunt voor Service Fabric toepassingen, dat wordt gegeven via de MSI_ENDPOINT omgevings variabele. |
-| `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is de enige geaccepteerde waarde `2019-07-01-preview`en kan deze worden gewijzigd. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de claim van de `aud` (doel groep) van het gepubliceerde token. In dit voor beeld wordt een token aangevraagd om toegang te krijgen tot Azure Key Vault, waarvan de URI van de App-ID https is:\//keyvault.azure.com/. |
-| `Secret` | Een veld voor de HTTP-aanvraag header, dat wordt vereist door de Service Fabric Managed Identity token service voor Service Fabric Services om de oproepende functie te verifiëren. Deze waarde wordt verschaft door de SF runtime via MSI_SECRET omgevings variabele. |
+| `GET` | Het HTTP-werkwoord, dat aangeeft dat u gegevens uit het eindpunt wilt ophalen. In dit geval een OAuth-toegangstoken. | 
+| `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteitseindpunt voor Service Fabric-toepassingen, geleverd via de MSI_ENDPOINT omgevingsvariabele. |
+| `api-version` | Een parameter querytekenreeks, die de API-versie van de Managed Identity Token Service opgeeft; momenteel is `2019-07-01-preview`de enige geaccepteerde waarde, en is onderhevig aan verandering. |
+| `resource` | Een parameter querytekenreeks die de URI van de app-id van de doelbron aangeeft. Dit wordt weerspiegeld `aud` als de (publieks)claim van het uitgegeven token. In dit voorbeeld wordt een token gevraagd om toegang te\/krijgen tot Azure Key Vault, waarvan een URI voor app-id's https is: /keyvault.azure.com/. |
+| `Secret` | Een http-aanvraagkopveld, vereist door de Service Fabric Managed Identity Token Service voor Service Fabric-services om de beller te verifiëren. Deze waarde wordt geleverd door de SF-runtime via MSI_SECRET omgevingsvariabele. |
 
 
-Voorbeeld antwoord:
+Voorbeeldrespons:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -74,14 +74,14 @@ Hierbij
 
 | Element | Beschrijving |
 | ------- | ----------- |
-| `token_type` | Het type token; in dit geval is het toegangs token ' Bearer ', wat betekent dat de presentator (' Bearer ') van dit token het beoogde onderwerp van het token is. |
-| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token Inge sloten in het veld `Authorization` aanvraag header als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
-| `expires_on` | De tijds tempel van de verval datum van het toegangs token; wordt weer gegeven als het aantal seconden van "1970-01-01T0:0: 0Z UTC" en komt overeen met de `exp` claim van het token. In dit geval verloopt het token op 2019-08-08T06:10:11 + 00:00 (in RFC 3339)|
-| `resource` | De resource waarvoor het toegangs token is uitgegeven, opgegeven via de `resource` query teken reeks parameter van de aanvraag; komt overeen met de claim ' AUD ' van het token. |
+| `token_type` | Het type token; in dit geval een toegangstoken "Drager", wat betekent dat de presentator ('drager') van dit token het beoogde onderwerp van het token is. |
+| `access_token` | Het gevraagde toegangstoken. Wanneer u een beveiligde REST-API aanroept, wordt het token ingesloten in het veld van de `Authorization` aanvraagkoptekst als een 'drager'-token, waardoor de API de beller kan verifiëren. | 
+| `expires_on` | De tijdstempel van het verstrijken van het toegangstoken; weergegeven als het aantal seconden van "1970-01-01T0:0:0Z UTC" en `exp` komt overeen met de claim van het token. In dit geval verloopt het token op 2019-08-08T06:10:11+00:00 (in RFC 3339)|
+| `resource` | De bron waarvoor het toegangstoken is `resource` uitgegeven, opgegeven via de querytekenreeksparameter van de aanvraag. komt overeen met de 'aud'-claim van het token. |
 
 
-## <a name="acquiring-an-access-token-using-c"></a>Een toegangs token verkrijgen metC#
-De bovenstaande wordt weer in C#:
+## <a name="acquiring-an-access-token-using-c"></a>Een toegangstoken aanschaffen met C #
+Het bovenstaande wordt, in C#:
 
 ```C#
 namespace Azure.ServiceFabric.ManagedIdentity.Samples
@@ -161,8 +161,8 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
     } // class AccessTokenAcquirer
 } // namespace Azure.ServiceFabric.ManagedIdentity.Samples
 ```
-## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Toegang tot Key Vault vanuit een Service Fabric-toepassing met behulp van beheerde identiteit
-Dit voor beeld bouwt voort op het bovenstaande om de toegang tot een geheim dat is opgeslagen in een Key Vault met beheerde identiteit te demonstreren.
+## <a name="accessing-key-vault-from-a-service-fabric-application-using-managed-identity"></a>Toegang tot Key Vault vanuit een Service Fabric-toepassing met Managed Identity
+Dit voorbeeld bouwt voort op het bovenstaande om aan te tonen dat toegang wordt verkrijgd tot een geheim dat is opgeslagen in een Key Vault met behulp van een beheerde identiteit.
 
 ```C#
         /// <summary>
@@ -310,59 +310,59 @@ Dit voor beeld bouwt voort op het bovenstaande om de toegang tot een geheim dat 
 ```
 
 ## <a name="error-handling"></a>Foutafhandeling
-Het veld status code van de HTTP-antwoord header geeft de status van het succes van de aanvraag aan. de status ' 200 OK ' geeft aan dat geslaagd is en het antwoord bevat het toegangs token zoals hierboven is beschreven. Hieronder vindt u een korte opsomming van mogelijke fout berichten.
+Het veld 'statuscode' van de HTTP-antwoordkop geeft de successtatus van de aanvraag aan; een '200 OK'-status geeft succes aan en het antwoord bevat het toegangstoken zoals hierboven beschreven. Hieronder volgt een korte opsomming van mogelijke foutreacties.
 
-| Statuscode | Fout reden | Omgaan met |
+| Statuscode | Foutreden | Hoe om te gaan |
 | ----------- | ------------ | ------------- |
-| 404 niet gevonden. | Onbekende verificatie code of de toepassing heeft geen beheerde identiteit toegewezen. | Corrigeer de toepassings instellingen of de code voor het ophalen van tokens. |
-| 429 te veel aanvragen. |  De beperkings limiet is bereikt, opgelegd door AAD of SF. | Probeer het opnieuw met exponentiële uitstel. Zie de onderstaande instructies. |
-| 4xx-fout in de aanvraag. | Een of meer van de aanvraag parameters zijn onjuist. | Probeer het niet opnieuw.  Raadpleeg de fout Details voor meer informatie.  4xx fouten zijn tijdens de ontwerp fase.|
-| 5xx-fout van service. | Het subsysteem Managed Identity of Azure Active Directory retourneerde een tijdelijke fout. | Het is veilig om na een korte tijd opnieuw te proberen. U kunt een beperkings voorwaarde (429) bereiken wanneer u het opnieuw probeert.|
+| 404 Niet gevonden. | Onbekende verificatiecode of de toepassing is geen beheerde identiteit toegewezen. | De installatie- of tokenacquisitiecode van de toepassing corrigeren. |
+| 429 Te veel verzoeken. |  Throttle limiet bereikt, opgelegd door AAD of SF. | Probeer het opnieuw met Exponential Backoff. Zie de richtlijnen hieronder. |
+| 4xx Fout in aanvraag. | Een of meer van de aanvraagparameters waren onjuist. | Probeer het niet opnieuw.  Bekijk de foutgegevens voor meer informatie.  4xx fouten zijn ontwerptijdfouten.|
+| 5xx Fout van service. | Het subsysteem beheerde identiteit of Azure Active Directory heeft een tijdelijke fout geretourneerd. | Het is veilig om opnieuw te proberen na een korte tijd. U een beperking voorwaarde (429) raken bij het opnieuw proberen.|
 
-Als er een fout optreedt, bevat de bijbehorende HTTP-antwoord tekst een JSON-object met de fout Details:
+Als er een fout optreedt, bevat de bijbehorende HTTP-antwoordbody een JSON-object met de foutgegevens:
 
 | Element | Beschrijving |
 | ------- | ----------- |
 | code | Foutcode. |
-| correlationId | Een correlatie-ID die kan worden gebruikt voor fout opsporing. |
-| message | Uitgebreide beschrijving van de fout. **Fout beschrijvingen kunnen op elk gewenst moment worden gewijzigd. Niet afhankelijk van het fout bericht zelf.**|
+| correlationId | Een correlatie-ID die kan worden gebruikt voor het debuggen. |
+| message | Verbose beschrijving van de fout. **Foutbeschrijvingen kunnen op elk gewenst moment worden gewijzigd. Niet afhankelijk van de foutmelding zelf.**|
 
-Voorbeeld fout:
+Voorbeeldfout:
 ```json
 {"error":{"correlationId":"7f30f4d3-0f3a-41e0-a417-527f21b3848f","code":"SecretHeaderNotFound","message":"Secret is not found in the request headers."}}
 ```
 
-Hier volgt een lijst met typische Service Fabric fouten die specifiek zijn voor beheerde identiteiten:
+Hieronder volgt een lijst met typische fouten in servicefabric die specifiek zijn voor beheerde identiteiten:
 
-| Coderen | Bericht | Beschrijving | 
+| Code | Bericht | Beschrijving | 
 | ----------- | ----- | ----------------- |
-| SecretHeaderNotFound | Het geheim is niet gevonden in de aanvraag headers. | De verificatie code is niet in de aanvraag opgenomen. | 
-| ManagedIdentityNotFound | Beheerde identiteit niet gevonden voor de opgegeven toepassingshost. | De toepassing heeft geen identiteit, of de verificatie code is onbekend. |
-| ArgumentNullOrEmpty | De para meter ' resource ' mag niet null of een lege teken reeks zijn. | De resource (doel groep) is niet in de aanvraag opgenomen. |
-| InvalidApiVersion | De API-versie wordt niet ondersteund. De ondersteunde versie is 2019-07-01-preview. | Ontbrekende of niet-ondersteunde API-versie opgegeven in de aanvraag-URI. |
-| InternalServerError | Er is een fout opgetreden. | Er is een fout opgetreden in het beheerde identiteits subsysteem, mogelijk buiten de Service Fabric stack. De meest waarschijnlijke oorzaak is een onjuiste waarde die is opgegeven voor de resource (Controleer op het navolgen van '/'?) | 
+| SecretHeaderNotFound | Geheim is niet te vinden in de aanvraagheaders. | De verificatiecode is niet bij het verzoek geleverd. | 
+| ManagedIdentityNotFound | Beheerde identiteit niet gevonden voor de opgegeven toepassingshost. | De toepassing heeft geen identiteit of de verificatiecode is onbekend. |
+| ArgumentnullorEmpty | De parameter 'resource' mag geen null of lege tekenreeks zijn. | De resource (doelgroep) is niet in de aanvraag opgenomen. |
+| Ongeldige apiversie | De api-versie '' wordt niet ondersteund. Ondersteunde versie is '2019-07-01-preview'. | Ontbrekende of niet-ondersteunde API-versie opgegeven in de aanvraag URI. |
+| InternalServerError | Er is een fout opgetreden. | Er is een fout opgetreden in het subsysteem beheerde identiteit, mogelijk buiten de servicestructuur. Meest waarschijnlijke oorzaak is een onjuiste waarde opgegeven voor de resource (controleer op trailing '/'?) | 
 
-## <a name="retry-guidance"></a>Richt lijnen voor opnieuw proberen 
+## <a name="retry-guidance"></a>Richtlijnen opnieuw proberen 
 
-Normaal gesp roken is de fout code alleen opnieuw proberen 429 (te veel aanvragen). interne server fouten/5xx-fout codes kunnen opnieuw worden geprobeerd, hoewel de oorzaak mogelijk permanent is. 
+Meestal is de enige herprobeerbare foutcode 429 (Te veel aanvragen); interne serverfouten/5xx-foutcodes kunnen opnieuw worden geprobeerd, hoewel de oorzaak permanent kan zijn. 
 
-Beperkings limieten zijn van toepassing op het aantal aanroepen van het subsysteem Managed Identity, met name de upstream-afhankelijkheden (de beheerde identiteit Azure-service of de Secure Token-Service). Service Fabric tokens op verschillende niveaus in de pijp lijn op te slaan in de cache, maar gezien de gedistribueerde aard van de betrokken onderdelen, kan de aanroeper mogelijk inconsistente beperkings reacties ondervinden (dat wil zeggen: er wordt beperkt op één knoop punt/exemplaar van een toepassing, maar niet op een ander knoop punt tijdens het aanvragen van een token voor dezelfde identiteit.) Wanneer de beperkings voorwaarde is ingesteld, kunnen volgende aanvragen van dezelfde toepassing mislukken met de HTTP-status code 429 (te veel aanvragen) totdat de voor waarde is gewist.  
+Beperkingslimieten zijn van toepassing op het aantal oproepen naar het subsysteem Beheerde identiteit - met name de 'upstream'-afhankelijkheden (de Managed Identity Azure-service of de secure token-service). Service Fabric caches tokens op verschillende niveaus in de pijplijn, maar gezien de gedistribueerde aard van de betrokken componenten, kan de beller inconsistente throttling reacties ervaren (d.w.z. krijgen gewurgd op een knooppunt / instantie van een toepassing, maar niet op een ander knooppunt, terwijl het aanvragen van een token voor dezelfde identiteit.) Wanneer de beperkingsvoorwaarde is ingesteld, kunnen volgende aanvragen van dezelfde toepassing mislukken met de HTTP-statuscode 429 (Te veel aanvragen) totdat de voorwaarde is gewist.  
 
-Het wordt aanbevolen dat aanvragen die zijn mislukt door beperking, als volgt opnieuw worden geprobeerd met een exponentiële uitstel: 
+Het wordt aanbevolen dat aanvragen die zijn mislukt als gevolg van beperking opnieuw worden geprobeerd met een exponentiële back-off, als volgt: 
 
-| Index aanroepen | Actie voor het ontvangen van 429 | 
+| Oproepindex | Actie bij ontvangst van 429 | 
 | --- | --- | 
-| 1 | Wacht 1 seconde en probeer het opnieuw |
-| 2 | Wacht 2 seconden en probeer het opnieuw |
-| 3 | Wacht 4 seconden en probeer het opnieuw |
-| 4 | Wacht 8 seconden en probeer het opnieuw |
-| 4 | Wacht 8 seconden en probeer het opnieuw |
-| 5 | Wacht 16 seconden en probeer het opnieuw |
+| 1 | Wacht 1 seconde en probeer opnieuw |
+| 2 | Wacht 2 seconden en probeer opnieuw |
+| 3 | Wacht 4 seconden en probeer opnieuw |
+| 4 | Wacht 8 seconden en probeer opnieuw |
+| 4 | Wacht 8 seconden en probeer opnieuw |
+| 5 | Wacht 16 seconden en probeer opnieuw |
 
-## <a name="resource-ids-for-azure-services"></a>Resource-Id's voor Azure-Services
-Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-msi.md) voor een lijst met resources die ondersteuning bieden voor Azure AD en de bijbehorende resource-id's.
+## <a name="resource-ids-for-azure-services"></a>Bron-iD's voor Azure-services
+Zie [Azure-services die Azure AD-verificatie ondersteunen](../active-directory/managed-identities-azure-resources/services-support-msi.md) voor een lijst met bronnen die Azure AD ondersteunen en hun respectieve bron-id's.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Een Azure Service Fabric-toepassing implementeren met een beheerde identiteit met systeemtoegewezen](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)
+* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-bronnen](./how-to-grant-access-other-resources.md)

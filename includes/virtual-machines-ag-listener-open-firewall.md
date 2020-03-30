@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175981"
 ---
-In deze stap maakt u een firewall-regel om de testpoort voor het eindpunt met load balancing (zoals eerder opgegeven 59999) te openen en een andere regel om te openen, de poort beschikbaarheidsgroeplistener. Omdat u het met load balancing-eindpunt op de virtuele machines die replica's van beschikbaarheidsgroepen bevatten gemaakt, moet u de testpoort en de listener-poort op de desbetreffende VM's te openen.
+In deze stap maakt u een firewallregel om de sondepoort voor het load-balanced endpoint (59999, zoals eerder opgegeven) te openen en een andere regel om de listenerpoort voor beschikbaarheidsgroep te openen. Omdat u het laadpunt voor de belasting hebt gemaakt op de VM's die replica's van de beschikbaarheidsgroep bevatten, moet u de sondepoort en de listenerpoort op de desbetreffende VM's openen.
 
-1. Start op virtuele machines die als host fungeren van replica's, **Windows Firewall met geavanceerde beveiliging**.
+1. Start **Windows Firewall met geavanceerde beveiliging**op VM's die replica's hosten.
 
 2. Met de rechtermuisknop op **regels voor binnenkomende verbindingen**, en klik vervolgens op **nieuwe regel**.
 
-3. Op de **regeltype** weergeeft, schakelt **poort**, en klik vervolgens op **volgende**.
+3. Selecteer op de pagina **Regeltype** de optie **Poort**en klik op **Volgende**.
 
-4. Op de **protocollen en poorten** weergeeft, schakelt **TCP**, type **59999** in de **specifieke lokale poorten** vak en klik vervolgens op  **Volgende**.
+4. Selecteer **op** de pagina Protocol en poorten **TCP**, typ **59999** in het vak **Specifieke lokale poorten** en klik op **Volgende**.
 
-5. Op de **actie** pagina, bewaart **de verbinding toestaan** geselecteerd en klik vervolgens op **volgende**.
+5. Houd op de **actiepagina** **De geselecteerde verbinding toestaan** en klik vervolgens op **Volgende**.
 
-6. Op de **profiel** pagina, accepteer de standaardinstellingen en klik vervolgens op **volgende**.
+6. Accepteer **op** de pagina Profiel de standaardinstellingen en klik op **Volgende**.
 
-7. Op de **naam** pagina, in de **naam** tekst, geeft u de regelnaam van een, zoals **altijd op Listener-test poort**, en klik vervolgens op **voltooien**.
+7. Geef op de pagina **Naam** in het tekstvak **Naam** een regelnaam op, zoals **Altijd op de sondepoort van listener**, en klik vervolgens op **Voltooien**.
 
-8. Herhaal de voorgaande stappen voor de poort beschikbaarheidsgroeplistener (zoals is opgegeven als eerder in de parameter $EndpointPort van het script) en geef vervolgens een naam voor de desbetreffende regel, zoals **altijd op Listener-poort**.
+8. Herhaal de voorgaande stappen voor de listenerpoort van de beschikbaarheidsgroep (zoals eerder opgegeven in de parameter $EndpointPort van het script) en geef vervolgens een geschikte regelnaam op, zoals **Altijd listenerpoort**.
 

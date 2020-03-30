@@ -9,37 +9,37 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d9ff01cf0180dae7f75d9753ba889d0caddad937
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775340"
 ---
-In deze sectie wordt beschreven hoe u de volgende wijzigings bewerkingen uitvoert voor directe peering:
+In deze sectie wordt beschreven hoe u de volgende wijzigingsbewerkingen voor Direct peering uitvoert:
 
-### <a name="add-direct-peering-connections"></a>Directe peering-verbindingen toevoegen
-1. Klik op de knop **+ verbindingen toevoegen** aan de bovenkant en configureer een nieuwe peering-verbinding.
+### <a name="add-direct-peering-connections"></a>Directe peeringverbindingen toevoegen
+1. Klik op de knop **+ Verbindingen toevoegen** bovenaan en configureer een nieuwe peeringverbinding.
     > [!div class="mx-imgBorder"]
-    > ![peering resource weergave](../media/setup-direct-modify-addconnection.png)
-1. Vul het verbindings formulier **direct peering** in en klik op **Opslaan**. Voor hulp bij het configureren van een peering-verbinding raadpleegt u de stappen onder "een directe peering maken en inrichten" hierboven.
+    > ![Weergave van peeringbronnen](../media/setup-direct-modify-addconnection.png)
+1. Vul het formulier **Verbinding direct peering** in en klik op **Opslaan**. Voor hulp bij het configureren van een peering-verbinding controleert u de stappen onder de sectie Direct peering maken en inrichten.
     > [!div class="mx-imgBorder"]
-    > ![peering resource weergave](../media/setup-direct-modify-savenewconnection.png)
+    > ![Weergave van peeringbronnen](../media/setup-direct-modify-savenewconnection.png)
 
-### <a name="remove-direct-peering-connections"></a>Directe peering-verbindingen verwijderen
+### <a name="remove-direct-peering-connections"></a>Directe peeringverbindingen verwijderen
 
-Het verwijderen van een verbinding wordt momenteel niet ondersteund in de portal. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een verbinding wordt momenteel niet ondersteund op portal. Neem contact op met [Microsoft-peering](mailto:peeringexperience@microsoft.com).
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>De band breedte van actieve verbindingen upgraden of verlagen
-1. Klik op een peering-verbinding die u wilt wijzigen en klik vervolgens op de knop verbinding **..** . > **bewerken** .
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Bandbreedte upgraden of downgraden op Actieve verbindingen
+1. Klik op een peering verbinding die u wilt wijzigen en klik dan op de **...**  >  **Knop Verbinding bewerken.**
     > [!div class="mx-imgBorder"]
-    > ![peering-verbinding bewerken](../media/setup-direct-modify-editconnection.png)
-1. Wijzig de band breedte zoals hieronder wordt weer gegeven en klik vervolgens op **Opslaan**.
+    > ![Bewerken van peeringverbinding](../media/setup-direct-modify-editconnection.png)
+1. Wijzig de bandbreedte zoals hieronder wordt weergegeven en klik op **Opslaan**.
     > [!div class="mx-imgBorder"]
-    > ![peering-verbinding band breedte wijzigen](../media/setup-direct-modify-editconnectionsettings.png)
+    > ![Bandbreedte wijzigen van peering-verbinding](../media/setup-direct-modify-editconnectionsettings.png)
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Voeg een IPv4/IPv6-sessie toe aan actieve verbindingen.
-1. Klik op een peering-verbinding die u wilt wijzigen en klik vervolgens op de knop verbinding **..** . > **bewerken** , zoals hierboven wordt weer gegeven.
-1. Voeg informatie over het **IPv4-voor voegsel** of de **IPv6-voor voegsel** voor de sessie toe en klik op **Opslaan**.
+### <a name="add-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie toevoegen op Actieve verbindingen.
+1. Klik op een peering verbinding die u wilt wijzigen en klik dan op de **...**  >  **De knop Verbindingsknop bewerken** zoals hierboven weergegeven.
+1. Voeg **sessie IPv4-voorvoegsel** of **Sessie IPv6-voorvoegselgegevens toe** en klik op **Opslaan**.
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie op actieve verbindingen verwijderen.
+### <a name="remove-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie verwijderen op Actieve verbindingen.
     Removing a **Session IPv4 prefix** or **Session IPv6 prefix** info is not currently supported on portal. Contact [Microsoft peering](mailto:peeringexperience@microsoft.com).

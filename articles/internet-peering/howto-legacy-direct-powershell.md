@@ -1,7 +1,7 @@
 ---
-title: Een verouderde directe peering converteren naar een Azure-resource met behulp van Power shell
+title: Een verouderde Direct-peering converteren naar Azure-bron met PowerShell
 titleSuffix: Azure
-description: Een verouderde directe peering converteren naar een Azure-resource met behulp van Power shell
+description: Een verouderde Direct-peering converteren naar Azure-bron met PowerShell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775015"
 ---
-# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>Een verouderde directe peering converteren naar een Azure-resource met behulp van Power shell
+# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>Een verouderde Direct-peering converteren naar Azure-bron met PowerShell
 
-In dit artikel wordt beschreven hoe u een bestaande verouderde directe peering converteert naar een Azure-resource met behulp van Power shell-cmdlets.
+In dit artikel wordt beschreven hoe u een bestaande verouderde direct peering converteert naar Azure-bron met PowerShell-cmdlets.
 
-Als u wilt, kunt u deze hand leiding volt ooien met behulp van de [Portal](howto-legacy-direct-portal.md).
+Als u dat liever hebt, u deze handleiding voltooien via de [portal.](howto-legacy-direct-portal.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
-* Bekijk [vereisten](prerequisites.md) en [direct peering-scenario](walkthrough-direct-all.md) voordat u begint met de configuratie.
+* Bekijk [vereisten](prerequisites.md) en [directe peering-walkthrough](walkthrough-direct-all.md) voordat u met de configuratie begint.
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Verouderde directe peering converteren naar Azure-resource
+## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Verouderde direct-peering converteren naar Azure-bron
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Meld u aan bij uw Azure-account en selecteer uw abonnement
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>Verouderde directe peering voor conversie ophalen
-Hieronder ziet u een voor beeld van het ophalen van verouderde directe peering op Seattle peering-locatie
+### <a name="get-legacy-direct-peering-for-conversion"></a><a name= get></a>Krijg legacy Direct-peering voor conversie
+Hieronder is een voorbeeld om legacy Direct peering te krijgen op Seattle peering locatie
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -41,7 +41,7 @@ $legacyPeering = Get-AzLegacyPeering `
 $legacyPeering
 ```
 
-Hieronder ziet u een voor beeld van een antwoord:
+Hieronder is een voorbeeld reactie:
 ```powershell
 Name                       :
 Sku                        : Basic_Direct_Free
@@ -79,13 +79,13 @@ ProvisionedBandwidthInMbps : 20000
 ProvisioningState          : Succeeded
 ```
 
-### <a name="convert-legacy-direct-peering"></a>Verouderde directe peering converteren
+### <a name="convert-legacy-direct-peering"></a>Verouderde direct peering converteren
 
 &nbsp;
 > [!IMPORTANT]
-> Houd er rekening mee dat bij het converteren van verouderde peering naar Azure-resource geen wijzigingen worden ondersteund. &nbsp;
+> Houd er rekening mee dat bij het converteren van legacy-peering naar azure-bron wijzigingen niet worden ondersteund. &nbsp;
 
-Gebruik de onderstaande opdracht om verouderde directe peering te converteren naar Azure-resource:
+Gebruik onderstaande opdracht om verouderde direct-peering om te zetten in Azure-bron:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -94,7 +94,7 @@ $legacyPeering[0] | New-AzPeering `
 
 ```
 
-Hieronder ziet u een voor beeld van een antwoord:
+Hieronder is een voorbeeld reactie:
 
 ```powershell
 Name                 : SeattleDirectPeering
@@ -112,14 +112,14 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
-U kunt gedetailleerde beschrijvingen van alle parameters krijgen door de volgende opdracht uit:
+U gedetailleerde beschrijvingen van alle parameters krijgen door de volgende opdracht uit te voeren:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-Ga voor meer informatie naar [Veelgestelde vragen over Internet peering](faqs.md)
+Ga voor meer informatie naar [veelgestelde vragen over internetpeering](faqs.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een directe peering maken of wijzigen met behulp van Power shell](howto-direct-powershell.md).
+* [Een direct peering maken of wijzigen met PowerShell](howto-direct-powershell.md).

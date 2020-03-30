@@ -1,24 +1,24 @@
 ---
-title: Verwijzing naar sjabloon artefact
-description: Hier vindt u een voor beeld van de implementatie sjabloon artefact voor Azure Managed Applications.
+title: Verwijzing naar sjabloonartefact
+description: Biedt een voorbeeld van het artefact voor de implementatiesjabloon voor Azure Managed Applications.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651460"
 ---
-# <a name="reference-deployment-template-artifact"></a>Verwijzing: implementatie sjabloon artefact
+# <a name="reference-deployment-template-artifact"></a>Naslag: Artefact van implementatiesjablonen
 
-Dit artikel bevat een verwijzing naar een *mainTemplate. json* -artefact in azure Managed Applications. Zie [Azure Resource Manager-sjablonen](../templates/template-syntax.md)voor meer informatie over het ontwerpen van een implementatie sjabloon.
+Dit artikel is een verwijzing naar een *mainTemplate.json-artefact* in Azure Managed Applications. Zie [Azure Resource Manager-sjablonen](../templates/template-syntax.md)voor meer informatie over het maken van implementatiesjablonen.
 
 ## <a name="deployment-template"></a>Implementatiesjabloon
 
-In de volgende JSON ziet u een voor beeld van het bestand *mainTemplate. json* voor Azure Managed Applications:
+In het volgende JSON wordt een voorbeeld van *mainTemplate.json-bestand* voor Azure Managed Applications weergegeven:
 
 ```json
 {
@@ -189,6 +189,6 @@ In de volgende JSON ziet u een voor beeld van het bestand *mainTemplate. json* v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
-- [Verwijzing: elementen artefact van gebruikers interface](reference-createuidefinition-artifact.md)
-- [Verwijzing: definitie-artefact weer geven](reference-view-definition-artifact.md)
+- [Zelfstudie: Beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
+- [Naslag: Artefact van gebruikersinterface-elementen](reference-createuidefinition-artifact.md)
+- [Referentie: Artefact voor definitie weergeven](reference-view-definition-artifact.md)

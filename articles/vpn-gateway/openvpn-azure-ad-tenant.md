@@ -1,6 +1,6 @@
 ---
-title: 'VPN Gateway: Azure AD-Tenant voor P2S VPN-verbindingen: Azure AD-verificatie'
-description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
+title: 'VPN-gateway: Azure AD-tenant voor P2S VPN-verbindingen: Azure AD-verificatie'
+description: U P2S VPN gebruiken om verbinding te maken met uw VNet met Azure AD-verificatie
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: alzam
 ms.openlocfilehash: f4092f651a3058c8a2e738c81d9db7e296386bfa
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402890"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant maken voor P2S OpenVPN-protocol verbindingen
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
-Wanneer u verbinding maakt met uw VNet, kunt u verificatie op basis van certificaten of RADIUS-verificatie gebruiken. Wanneer u echter het open VPN-protocol gebruikt, kunt u ook Azure Active Directory-verificatie gebruiken. Dit artikel helpt u bij het instellen van een Azure AD-Tenant voor P2S open VPN-verificatie.
+Wanneer u verbinding maakt met uw VNet, u verificatie op basis van certificaten of RADIUS-verificatie gebruiken. Wanneer u echter het Open VPN-protocol gebruikt, u ook Azure Active Directory-verificatie gebruiken. Met dit artikel u een Azure AD-tenant instellen voor Vpn-verificatie van P2S Open.
 
 > [!NOTE]
-> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
+> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN® protocolverbindingen.
 >
 
 
-## <a name="tenant"></a>1. Azure AD-Tenant verifiëren
+## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1. Azure AD-tenant verifiëren
 
-Controleer of u een Azure AD-Tenant hebt. Als u geen Azure AD-Tenant hebt, kunt u er een maken met behulp van de stappen in het artikel [een nieuwe Tenant maken](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
+Controleer of u een Azure AD-tenant hebt. Als u geen Azure AD-tenant hebt, u er een maken met de stappen in het artikel [Een nieuw tenant maken:](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* Organisatie naam
-* Initiële domein naam
+* Organisatienaam
+* Oorspronkelijke domeinnaam
 
 Voorbeeld:
 
-   ![Nieuwe Azure AD-Tenant](./media/openvpn-create-azure-ad-tenant/newtenant.png)
+   ![Nieuwe Azure AD-tenant](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="users"></a>2. gebruikers van Azure AD-tenants maken
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. Azure AD-tenantgebruikers maken
 
-Uw Azure AD-Tenant heeft de volgende accounts nodig: een globaal beheerders account en een hoofd gebruikers account. Het hoofd gebruikers account wordt gebruikt als uw hoofd account voor insluiten (Service-account). Wanneer u een Azure AD-Tenant gebruikers account maakt, past u de Directory-rol aan voor het type gebruiker dat u wilt maken.
+Uw Azure AD-tenant heeft de volgende accounts nodig: een Global Admin-account en een hoofdgebruikersaccount. Het hoofdgebruikersaccount wordt gebruikt als uw hoofdinsluitingsaccount (serviceaccount). Wanneer u een Azure AD-tenantgebruikersaccount maakt, past u de maprol aan voor het type gebruiker dat u wilt maken.
 
-Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azure-active-directory.md) om ten minste twee gebruikers te maken voor uw Azure AD-Tenant. Zorg ervoor dat u de **Directory-rol** wijzigt om de volgende account typen te maken:
+Gebruik de stappen in [dit artikel](../active-directory/fundamentals/add-users-azure-active-directory.md) om ten minste twee gebruikers voor uw Azure AD-tenant te maken. Wijzig de **maprol** om de accounttypen te maken:
 
 * Globale beheerder
 * Gebruiker
 
-## <a name="enable-authentication"></a>3. Azure AD-verificatie inschakelen op de VPN-gateway
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. Azure AD-verificatie inschakelen op de VPN-gateway
 
-1. Zoek de Directory-ID van de map die u voor verificatie wilt gebruiken. Deze wordt weer gegeven in de sectie eigenschappen van de pagina Active Directory.
+1. Zoek de directory-id van de map die u wilt gebruiken voor verificatie. Het wordt vermeld in de sectie Eigenschappen van de Active Directory-pagina.
 
-    ![Map-ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![Directory-id](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
-2. Kopieer de map-ID.
+2. Kopieer de Map-id.
 
-3. Meld u aan bij de Azure Portal als gebruiker aan wie de rol van **globale beheerder** is toegewezen.
+3. Meld u aan bij de Azure-portal als gebruiker waaraan de **globale beheerdersrol** is toegewezen.
 
-4. Geef vervolgens toestemming voor de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatie locatie in de adres balk van uw browser:
+4. Geef vervolgens toestemming van de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatielocatie in de adresbalk van uw browser:
 
-    Openbaar
+    Public
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -79,24 +79,24 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. Selecteer het account van de **globale beheerder** als u hierom wordt gevraagd.
+5. Selecteer het globale **beheerdersaccount** als u daarom wordt gevraagd.
 
-    ![Map-ID](./media/openvpn-create-azure-ad-tenant/pick.png)
+    ![Directory-id](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. Selecteer **accepteren** wanneer u hierom wordt gevraagd.
+6. Selecteer **Accepteren** wanneer daarom wordt gevraagd.
 
     ![Accepteren](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-7. Onder uw Azure AD, in **bedrijfs toepassingen**, wordt **Azure VPN** weer gegeven.
+7. Onder uw Azure AD ziet u in **Enterprise-toepassingen** **Azure VPN** vermeld.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
-8. Als u nog geen werkende Point-to-site-omgeving hebt, volgt u de instructie om er een te maken. Zie [een punt-naar-site-VPN maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md) voor het maken en configureren van een punt-naar-site-VPN-gateway met systeem eigen Azure-certificaat verificatie. 
+8. Als u nog geen functionerende point-to-site-omgeving hebt, volgt u de instructie om er een te maken. Zie [Een point-to-site VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) maken om een point-to-site VPN-gateway te maken en te configureren met native Azure-certificaatverificatie. 
 
     > [!IMPORTANT]
-    > De basis-SKU wordt niet ondersteund voor OpenVPN.
+    > De Basic SKU wordt niet ondersteund voor OpenVPN.
 
-9. Schakel Azure AD-verificatie in op de VPN-gateway door de volgende opdrachten uit te voeren. Zorg er daarom voor dat u de opdracht wijzigt in overeenstemming met uw eigen omgeving:
+9. Azure AD-verificatie op de VPN-gateway inschakelen door de volgende opdrachten uit te voeren, zodat u de opdracht wijzigt om uw eigen omgeving weer te geven:
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
@@ -105,25 +105,25 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
     ```
 
    > [!NOTE]
-   > Zorg ervoor dat u een afsluitende slash aan het einde van de `AadIssuerUri` waarde opneemt. Anders mislukt de opdracht.
+   > Zorg ervoor dat u een trailing `AadIssuerUri` slash aan het einde van de waarde. Anders mislukt de opdracht.
 
-10. Maak en down load het profiel door de volgende opdrachten uit te voeren. Wijzig de waarden voor-ResourceGroupName en-name zodat deze overeenkomen met uw eigen waarde.
+10. Maak en download het profiel door de volgende opdrachten uit te voeren. Wijzig de waarden -ResourceGroupName en -Naam die overeenkomen met die van u.
 
     ```azurepowershell-interactive
     $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 
-11. Na het uitvoeren van de opdrachten ziet u een resultaat zoals hieronder. Kopieer de URL van het resultaat naar uw browser om het profiel-zip-bestand te downloaden.
+11. Nadat u de opdrachten hebt uitgevoerd, ziet u een resultaat dat vergelijkbaar is met het resultaat hieronder. Kopieer de resultaat-URL naar uw browser om het zip-bestand van het profiel te downloaden.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
 
-12. Pak het gedownloade zip-bestand uit.
+12. Haal het gedownloade zip-bestand eruit.
 
-13. Blader naar de map ungezipte ' AzureVPN '.
+13. Blader naar de map "AzureVPN".
 
-14. Noteer de locatie van het bestand azurevpnconfig. XML. Azurevpnconfig. XML bevat de instelling voor de VPN-verbinding en kan rechtstreeks in de Azure VPN-client toepassing worden geïmporteerd. U kunt dit bestand ook distribueren naar alle gebruikers die verbinding moeten maken via e-mail of een andere manier. De gebruiker heeft geldige Azure AD-referenties nodig om verbinding te kunnen maken.
+14. Noteer de locatie van het bestand "azurevpnconfig.xml". De azurevpnconfig.xml bevat de instelling voor de VPN-verbinding en kan rechtstreeks worden geïmporteerd in de Azure VPN Client-toepassing. U dit bestand ook distribueren naar alle gebruikers die verbinding moeten maken via e-mail of andere middelen. De gebruiker heeft geldige Azure AD-referenties nodig om verbinding te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u verbinding wilt maken met uw virtuele netwerk, moet u een VPN-client profiel maken en configureren. Zie [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+Om verbinding te maken met uw virtuele netwerk, moet u een VPN-clientprofiel maken en configureren. Zie [Een VPN-client configureren voor P2S VPN-verbindingen](openvpn-azure-ad-client.md).

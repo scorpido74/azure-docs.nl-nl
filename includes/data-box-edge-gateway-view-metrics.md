@@ -5,64 +5,64 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176486"
 ---
-U kunt ook de metrische gegevens voor het controleren van de prestaties van het apparaat en in sommige gevallen voor het oplossen van problemen met het apparaat weergeven.
+U ook de statistieken bekijken om de prestaties van het apparaat te controleren en in sommige gevallen voor het oplossen van apparaatproblemen.
 
-De volgende stappen uitvoeren in Azure portal een grafiek voor metrische gegevens voor geselecteerde apparaat wilt maken.
+Neem de volgende stappen in de Azure-portal om een grafiek te maken voor geselecteerde apparaatstatistieken.
 
-1. Voor uw resource in Azure portal, gaat u naar **bewaking > metrische gegevens** en selecteer **metrische waarde toevoegen**.
+1. Ga voor uw resource in de Azure-portal naar **Monitoring > Metrics** en selecteer Metrische **toevoegen**.
 
     ![Waarde toevoegen](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
-2. De resource wordt automatisch ingevuld.  
+2. De bron wordt automatisch ingevuld.  
 
     ![Huidige resource](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    Als u wilt een andere bron opgeven, selecteert u de resource. Op **selecteert u een resource** blade, selecteer het abonnement, resourcegroep, resourcetype en de specifieke resource waarvoor u wenst te geven de metrische gegevens en selecteer **toepassen**.
+    Als u een andere resource wilt opgeven, selecteert u de resource. Selecteer **bij Een resourceblad selecteren** het abonnement, de resourcegroep, het resourcetype en de specifieke resource waarvoor u de statistieken wilt weergeven en selecteer **Toepassen**.
 
-    ![Kies een andere resource](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
+    ![Een andere bron kiezen](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. Selecteer een metrische waarde voor het bewaken van uw apparaat in de vervolgkeuzelijst. De metrische gegevens kunnen worden **metrische gegevens over capaciteit** of **metrische gegevens die transactie**. De metrische gegevens over de capaciteit zijn gerelateerd aan de capaciteit van het apparaat. De metrische gegevens transactie zijn gerelateerd aan de lees- en schrijfbewerkingen naar Azure Storage.
+3. Selecteer in de vervolgkeuzelijst een statistiek om uw apparaat te controleren. De statistieken kunnen **capaciteitsstatistieken** of **transactiestatistieken**zijn. De capaciteitsstatistieken zijn gerelateerd aan de capaciteit van het apparaat. De transactiestatistieken zijn gerelateerd aan de lees- en schrijfbewerkingen naar Azure Storage.
 
-    |Capaciteit metrische gegevens                     |Description  |
+    |Metrische capaciteitsgegevens                     |Beschrijving  |
     |-------------------------------------|-------------|
-    |**Beschikbare capaciteit**               | Verwijst naar de grootte van de gegevens die kunnen worden geschreven naar het apparaat. Dit is met andere woorden, de capaciteit die beschikbaar kan worden gemaakt op het apparaat. <br></br>U kunt de capaciteit van het apparaat vrij door het verwijderen van de lokale kopie van bestanden die een kopie op zowel het apparaat als de cloud hebben.        |
-    |**Totale capaciteit**                   | Verwijst naar het totaal aantal bytes op het apparaat om gegevens op te schrijven. Dit is ook aangeduid als de totale grootte van de lokale cache. <br></br> Nu kunt u de capaciteit van een bestaand virtueel apparaat verhogen door een gegevensschijf toe te voegen. Een gegevensschijf via de hypervisor-voor de virtuele machine toevoegt en opnieuw opstarten van uw virtuele machine. De groep lokale opslag van het Gateway-apparaat wilt uitbreiden om te voldoen aan de toegevoegde gegevensschijf. <br></br>Ga voor meer informatie naar [toevoegen van een harde schijf voor Hyper-V virtuele machine](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
+    |**Beschikbare capaciteit**               | Verwijst naar de grootte van de gegevens die naar het apparaat kunnen worden geschreven. Met andere woorden, dit is de capaciteit die beschikbaar kan worden gesteld op het apparaat. <br></br>U de apparaatcapaciteit vrijmaken door de lokale kopie te verwijderen van bestanden met een kopie op zowel het apparaat als de cloud.        |
+    |**Totale capaciteit**                   | Verwijst naar de totale bytes op het apparaat om gegevens naar te schrijven. Dit wordt ook wel de totale grootte van de lokale cache genoemd. <br></br> U nu de capaciteit van een bestaand virtueel apparaat vergroten door een gegevensschijf toe te voegen. Voeg een gegevensschijf toe via het hypervisorbeheer voor de VM en start uw VM opnieuw op. De lokale opslaggroep van het Gateway-apparaat wordt uitgebreid met de nieuw toegevoegde gegevensschijf. <br></br>Ga voor meer informatie naar [Een harde schijf toevoegen voor de virtuele hyper-v-machine.](https://www.youtube.com/watch?v=EWdqUw9tTe4) |
     
-    |Metrische gegevens de transactie              | Description         |
+    |Metrische gegevens voor transacties              | Beschrijving         |
     |-------------------------------------|---------|
-    |**Verzonden bytes (apparaat) in de cloud**    | Som van alle bytes wordt geüpload voor alle shares op uw apparaat        |
-    |**Verzonden bytes (delen) in de cloud**     | Bytes verzonden per share. Dit kan zijn: <br></br> Gem. Dit is de (som van alle bytes verzonden per share / het nummer van shares),  <br></br>Limiet is bereikt, is het maximum aantal bytes van een share geüpload <br></br>Minimum, dit het minimale aantal bytes dat is geüpload van een share is      |
-    |**Doorvoer van cloud-download (delen)**| Bytes gedownload per share. Dit kan zijn: <br></br> Gem. Dit is de (som van alle bytes lezen of gedownload naar een share / het nummer van shares) <br></br> Limiet is bereikt, is het maximum aantal bytes gedownload van een share<br></br> en Min, dit het minimale aantal bytes dat is gedownload van een share is  |
-    |**Cloud leesdoorvoer**            | Som van alle bytes lezen vanuit de cloud via alle shares op uw apparaat     |
-    |**Cloud uploaden doorvoer**          | Som van alle bytes geschreven naar de cloud via alle shares op uw apparaat     |
-    |**Doorvoer van cloud-uploaden (delen)**  | Som van alle bytes geschreven naar de cloud van een share / totaal aantal shares is average, max en min per share      |
-    |**Lezen doorvoer (netwerk)**           | Bevat de netwerkdoorvoer systeem voor alle bytes lezen vanuit de cloud. In deze weergave kan gegevens die is niet beperkt tot bestandsshares bevatten. <br></br>Splitsen, wordt het verkeer via de netwerkadapters op het apparaat weergegeven. Dit omvat netwerkadapters die niet zijn verbonden of ingeschakeld.      |
-    |**Doorvoer (netwerk) schrijven**       | Bevat de netwerkdoorvoer systeem voor alle bytes geschreven naar de cloud. In deze weergave kan gegevens die is niet beperkt tot bestandsshares bevatten. <br></br>Splitsen, wordt het verkeer via de netwerkadapters op het apparaat weergegeven. Dit omvat netwerkadapters die niet zijn verbonden of ingeschakeld.          |
-    |**Edge-compute - gebruik van geheugen**      | Deze waarde is niet van toepassing op Data Box-Gateway en is daarom niet ingevuld.          |
-    |**Edge-compute - percentage CPU**    | Deze waarde is niet van toepassing op Data Box-Gateway en is daarom niet ingevuld.         |
+    |**Cloudbytes geüpload (apparaat)**    | Som van alle bytes die zijn geüpload over alle aandelen op uw apparaat        |
+    |**Cloudbytes geüpload (delen)**     | Bytes geüpload per aandeel. Dit kan zijn: <br></br> Avg, dat is de (Som van alle bytes geüpload per aandeel / Aantal aandelen),  <br></br>Max, dat is het maximum aantal bytes geüpload van een aandeel <br></br>Min, dat is het minimum aantal bytes geüpload van een aandeel      |
+    |**Cloud downloaddoorvoer (delen)**| Bytes gedownload per aandeel. Dit kan zijn: <br></br> Avg, dat is de (Som van alle bytes gelezen of gedownload naar een aandeel / Aantal aandelen) <br></br> Max, dat is het maximum aantal bytes gedownload van een aandeel<br></br> en Min, dat is het minimum aantal bytes gedownload van een aandeel  |
+    |**Cloudleesdoorvoer**            | Som van alle bytes die vanuit de cloud worden gelezen over alle aandelen op uw apparaat     |
+    |**Doorvoer van cloudupload**          | Som van alle bytes die naar de cloud zijn geschreven over alle aandelen op uw apparaat     |
+    |**Doorvoer van cloudupload (delen)**  | Som van alle bytes geschreven naar de cloud van een aandeel / # van de aandelen is gemiddeld, max, en min per aandeel      |
+    |**Doorvoer lezen (netwerk)**           | Inclusief de netwerkdoorvoer van het systeem voor alle bytes die uit de cloud worden gelezen. Deze weergave kan gegevens bevatten die niet beperkt zijn tot aandelen. <br></br>Splitsen toont het verkeer over alle netwerkadapters op het apparaat. Dit geldt ook voor adapters die niet zijn aangesloten of ingeschakeld.      |
+    |**Doorvoer schrijven (netwerk)**       | Inclusief de netwerkdoorvoer van het systeem voor alle bytes die naar de cloud zijn geschreven. Deze weergave kan gegevens bevatten die niet beperkt zijn tot aandelen. <br></br>Splitsen toont het verkeer over alle netwerkadapters op het apparaat. Dit geldt ook voor adapters die niet zijn aangesloten of ingeschakeld.          |
+    |**Edge compute - geheugengebruik**      | Deze statistiek is niet van toepassing op Data Box Gateway en dus niet ingevuld.          |
+    |**Edge compute - percentage CPU**    | Deze statistiek is niet van toepassing op Data Box Gateway en dus niet ingevuld.         |
 
-4. Wanneer een waarde in de vervolgkeuzelijst is geselecteerd, kan ook aggregatie worden gedefinieerd. Aggregatie verwijst naar de werkelijke waarde samengevoegd tijdens een opgegeven tijdsduur. De geaggregeerde waarden kunnen worden gemiddelde, minimum of de toegestane maximumwaarde. Selecteer de aggregatie van de Avg, Max of Min.
+4. Wanneer een statistiek is geselecteerd uit de vervolgkeuzelijst, kan ook aggregatie worden gedefinieerd. Aggregatie verwijst naar de werkelijke waarde die over een bepaalde tijdspanne is geaggregeerd. De geaggregeerde waarden kunnen gemiddeld, minimaal of de maximale waarde zijn. Selecteer de aggregatie in Avg, Max of Min.
 
     ![Grafiek weergeven](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. Als de metrische gegevens die u hebt geselecteerd, meerdere exemplaren heeft, zijn de splitsen optie is beschikbaar. Selecteer **toepassen splitsen** en selecteer vervolgens de waarde waarmee u wilt zien van de verdeling.
+5. Als de statistiek die u hebt geselecteerd meerdere exemplaren heeft, is de splitsingsoptie beschikbaar. Selecteer **Splitsen toepassen** en selecteer vervolgens de waarde waarmee u de uitsplitsing wilt zien.
 
-    ![Toepassing splitsen](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
+    ![Splitsen toepassen](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. Als u nu wilt om te zien van de uitsplitsing van slechts voor enkele exemplaren, kunt u de gegevens kunt filteren. Bijvoorbeeld: in dit geval, als u zien van de netwerkdoorvoer alleen voor de twee verbonden netwerkinterfaces op uw apparaat wilt, u kunt filteren die interfaces. Selecteer **filter toevoegen** en geeft u de naam van de netwerk-interface voor het filteren.
+6. Als u de uitsplitsing nu slechts voor een paar exemplaren wilt zien, u de gegevens filteren. Als u in dit geval bijvoorbeeld de netwerkdoorvoer alleen wilt zien voor de twee verbonden netwerkinterfaces op uw apparaat, u deze interfaces filteren. Selecteer **Filter toevoegen** en geef de naam van de netwerkinterface op voor het filteren.
 
-    ![filter toevoegen](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
+    ![Filter toevoegen](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 
-7. U kunt ook de grafiek vastmaken aan dashboard voor eenvoudige toegang.
+7. U de grafiek ook vastmaken aan het dashboard voor eenvoudige toegang.
 
     ![Vastmaken aan dashboard](media/data-box-edge-gateway-view-metrics/view-metrics-7.png)
 
-8. Gegevens exporteren naar een Excel-spreadsheet of een koppeling naar de grafiek die u kunt delen, selecteert u de optie delen vanuit de opdrachtbalk.
+8. Als u grafiekgegevens wilt exporteren naar een Excel-spreadsheet of een koppeling wilt maken naar de grafiek die u delen, selecteert u de optie delen op de opdrachtbalk.
 
     ![Gegevens exporteren](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

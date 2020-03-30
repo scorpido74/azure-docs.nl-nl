@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176471"
 ---
 > [!div class="op_single_selector"]
@@ -23,59 +23,59 @@ ms.locfileid: "67176471"
 > * [Node.js op Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-In deze zelfstudie implementeert u een **Koelunit** apparaat dat de volgende telemetrie naar de externe controle verzendt [oplossingsverbetering](../articles/iot-accelerators/about-iot-accelerators.md):
+In deze zelfstudie implementeert u een **Chiller-apparaat** dat de volgende telemetrie naar de versneller met externe [bewakingsoplossing](../articles/iot-accelerators/about-iot-accelerators.md)verzendt:
 
 * Temperatuur
-* Druk te verlichten
+* Druk
 * Vochtigheid
 
-Voor het gemak, genereert de code telemetrie voorbeeldwaarden voor de **Koelunit**. U kunt het voorbeeld kan uitbreiden door echte sensoren verbinding te maken met uw apparaat en echte telemetrie te verzenden.
+Voor de eenvoud genereert de code voorbeeldtelemetriewaarden voor de **Chiller.** U het monster uitbreiden door echte sensoren op uw apparaat aan te sluiten en echte telemetrie te verzenden.
 
-Het apparaat voorbeeld ook:
+Het voorbeeldapparaat ook:
 
-* Stuurt metagegevens naar de oplossing voor het beschrijven van de mogelijkheden ervan.
-* Reageert op acties die worden geactiveerd in de **apparaten** pagina in de oplossing.
-* Reageert op wijzigingen in de configuratie verzenden vanuit de **apparaten** pagina in de oplossing.
+* Hiermee stuurt u metagegevens naar de oplossing om de mogelijkheden ervan te beschrijven.
+* Reageert op acties die zijn geactiveerd vanaf de pagina **Apparaten** in de oplossing.
+* Reageert op configuratiewijzigingen die vanaf de pagina **Apparaten** in de oplossing worden verzonden.
 
 U hebt een actief Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Voordat u code voor uw apparaat schrijven, de oplossingsverbetering voor externe bewaking implementeert en een nieuwe echt apparaat toevoegen aan de oplossing.
+Voordat u code voor uw apparaat schrijft, implementeert u de accelerator voor remote monitoring-oplossingen en voegt u een nieuw echt apparaat toe aan de oplossing.
 
-### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>De oplossingsverbetering voor externe bewaking implementeren
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Uw remote monitoring oplossingsversneller implementeren
 
-De **Koelunit** apparaat in deze zelfstudie u maakt verzendt gegevens naar een exemplaar van de [bewaking op afstand](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) oplossingsverbetering. Als u de oplossingsverbetering voor externe controle in uw Azure-account nog niet hebt ingericht, Zie [de oplossingsverbetering voor externe bewaking implementeren](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
+Het **Chiller-apparaat** dat u in deze zelfstudie maakt, verzendt gegevens naar een instantie van de versneller met [de oplossing voor externe bewaking.](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) Zie De versneller van de oplossing voor externe bewaking implementeren in uw Azure-account als u de versneller voor externe [bewaking-oplossingen](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) nog niet hebt ingericht
 
-Wanneer het implementatieproces voor de oplossing voor externe controle is voltooid, klikt u op **starten** dashboard van de oplossing in uw browser openen.
+Wanneer het implementatieproces voor de oplossing voor externe bewaking is voltooid, klikt u op **Starten** om het oplossingsdashboard in uw browser te openen.
 
-![Dashboard van de oplossing](media/iot-suite-selector-connecting/dashboard.png)
+![Het oplossingsdashboard](media/iot-suite-selector-connecting/dashboard.png)
 
-### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Uw apparaat toevoegt aan de oplossing voor externe controle
+### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Uw apparaat toevoegen aan de oplossing voor externe bewaking
 
 > [!NOTE]
-> Als u al een apparaat in uw oplossing hebt toegevoegd, kunt u deze stap overslaan. De volgende stap is echter vereist dat de verbindingsreeks van uw apparaat. U kunt ophalen van een apparaat connection string vanuit de [Azure-portal](https://portal.azure.com) of met behulp van de [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI-hulpprogramma.
+> Als u al een apparaat in uw oplossing hebt toegevoegd, u deze stap overslaan. Voor de volgende stap is echter de tekenreeks van de verbinding met uw apparaat vereist. U de verbindingstekenreeks van een apparaat ophalen uit de [Azure-portal](https://portal.azure.com) of het [AZ-iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI-hulpprogramma gebruiken.
 
-Voor een apparaat verbinding maakt met de oplossingsversnellers, moet deze zelf identificeren bij IoT Hub met geldige referenties. U hebt de mogelijkheid om op te slaan van de verbindingsreeks met deze referenties wanneer u het apparaat aan de oplossing toevoegt. U kunt de apparaatverbindingsreeks opnemen in uw clienttoepassing verderop in deze zelfstudie.
+Als een apparaat verbinding wil maken met de oplossingsversneller, moet het zich identificeren met IoT Hub met behulp van geldige referenties. U hebt de mogelijkheid om de tekenreeks voor apparaatverbinding op te slaan die deze referenties bevat wanneer u het apparaat aan de oplossing toevoegt. U neemt de tekenreeks voor apparaatverbinding later in deze zelfstudie op in uw clienttoepassing.
 
-Als u wilt een apparaat toevoegt aan uw oplossing voor externe controle, voltooit u de volgende stappen uit op de **Device Explorer** pagina in de oplossing:
+Voer de volgende stappen uit op de pagina **Device Explorer** in de oplossing om een apparaat toe te voegen aan uw oplossing voor externe bewaking:
 
-1. Kies **+ nieuwe apparaat**, en kies vervolgens **echte** als de **apparaattype**:
+1. Kies **+ Nieuw apparaat**en kies Vervolgens **Echt** als **apparaattype:**
 
     ![Echt apparaat toevoegen](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. Voer **fysieke Koelunit** als de apparaat-ID. Kies de **symmetrische sleutel** en **automatisch sleutels genereren** opties:
+1. Voer **de fysieke koeler** in als de apparaat-id. Kies de **opties Symmetrische sleutel** en Automatisch genereren van **sleutels:**
 
-    ![Apparaatopties voor selecteren](media/iot-suite-selector-connecting/devicesoptions.png)
+    ![Apparaatopties kiezen](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. Kies **toepassen**. Maak een notitie van de **apparaat-ID**, **primaire sleutel**, en **Connection string primaire sleutel** waarden:
+1. Kies **Toepassen**. Noteer vervolgens de primaire kernwaardewaarden **apparaat-id,** **primaire sleutel**en **verbindingstekenreeks:**
 
     ![Referenties ophalen](media/iot-suite-selector-connecting/credentials.png)
 
-U hebt nu een echt apparaat toegevoegd aan de oplossingsverbetering voor externe controle en de apparaatverbindingsreeks die u hebt genoteerd. In de volgende secties vindt u op de clienttoepassing die gebruikmaakt van de verbindingsreeks van het apparaat verbinding maken met uw oplossing implementeren.
+U hebt nu een echt apparaat toegevoegd aan de remote monitoring oplossingsversneller en de tekenreeks van de apparaatverbinding genoteerd. In de volgende secties implementeert u de clienttoepassing die de tekenreeks voor apparaatverbinding gebruikt om verbinding te maken met uw oplossing.
 
-De clienttoepassing implementeert de ingebouwde **Koelunit** Apparaatmodel. Een model solution accelerator apparaat Hiermee geeft u de volgende met betrekking tot een apparaat:
+De clientapplicatie implementeert het **Chiller** ingebouwde Chiller-apparaatmodel. Een oplossingsversnellerapparaatmodel geeft het volgende aan over een apparaat:
 
-* De eigenschappen van het apparaat rapporteert aan de oplossing. Bijvoorbeeld, een **Koelunit** apparaat rapporteert informatie over de firmware en de locatie.
-* De typen telemetrie wordt het apparaat verzendt naar de oplossing. Bijvoorbeeld, een **Koelunit** apparaat verzendt temperatuur, vochtigheid en druk te verlichten waarden.
-* De methoden die u vanuit de oplossing plannen kunt om uit te voeren op het apparaat. Bijvoorbeeld, een **Koelunit** apparaat moet worden geïmplementeerd **opnieuw opstarten**, **FirmwareUpdate**, **EmergencyValveRelease**, en  **IncreasePressure** methoden.
+* De eigenschappen die het apparaat rapporteert aan de oplossing. Een **Chiller-apparaat** rapporteert bijvoorbeeld informatie over de firmware en locatie.
+* De soorten telemetrie die het apparaat naar de oplossing stuurt. Een **koelapparaat** verzendt bijvoorbeeld temperatuur-, vochtigheids- en drukwaarden.
+* De methoden die u plannen vanuit de oplossing om op het apparaat uit te voeren. Een **Chiller-apparaat** moet bijvoorbeeld **opnieuw opstarten,** **firmware-,** **noodklepontgrendelingsmethoden**en **increasepressure-methoden** implementeren.

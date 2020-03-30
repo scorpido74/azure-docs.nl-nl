@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76021232"
 ---
 Het is belangrijk om inzicht te hebben in hoe en waar uw virtuele machines (VM's) in Azure werken, evenals in wat uw mogelijkheden zijn om de prestaties, beschikbaarheid en redundantie te maximaliseren. Dit artikel biedt een overzicht van de mogelijkheden van Azure op het gebied van beschikbaarheid en redundantie.
@@ -21,17 +21,17 @@ Het is belangrijk om inzicht te hebben in hoe en waar uw virtuele machines (VM's
 ## <a name="what-are-azure-regions"></a>Wat zijn Azure-regio's?
 Azure werkt vanuit diverse datacentra, op locaties overal wereld. Deze datacenters worden gegroepeerd in geografische regio's, waardoor u flexibiliteit heeft bij het kiezen waar u uw toepassingen ontwikkelt. 
 
-U maakt Azure-resources in gedefinieerde geografische regio's zoals ' vs-West ', ' Europa-noord ' of ' Zuidoost-Azië '. U kunt zelf de [lijst met regio's en bijbehorende locaties](https://azure.microsoft.com/regions/) bekijken. In elke regio bevinden zich meerdere datacenters, om te zorgen voor voldoende redundantie en beschikbaarheid. Deze benadering biedt u de flexibiliteit bij het ontwerpen van toepassingen om virtuele machines te maken die het dichtst bij uw gebruikers staan en om te voldoen aan alle juridische, nalevings-of belasting doeleinden.
+U maakt Azure-resources in gedefinieerde geografische regio's zoals 'West-VS', 'Noord-Europa' of 'Zuidoost-Azië'. U kunt zelf de [lijst met regio's en bijbehorende locaties](https://azure.microsoft.com/regions/) bekijken. In elke regio bevinden zich meerdere datacenters, om te zorgen voor voldoende redundantie en beschikbaarheid. Deze aanpak biedt u flexibiliteit bij het ontwerpen van toepassingen om VM's te maken die het dichtst bij uw gebruikers staan en om te voldoen aan alle wettelijke, nalevings- of belastingdoeleinden.
 
 ## <a name="special-azure-regions"></a>Speciale Azure-regio's
-Azure heeft een aantal speciale regio's die u mogelijk wilt gebruiken bij het ontwikkelen van uw toepassingen voor naleving of juridische doel einden. Voorbeelden van dergelijke speciale regio's zijn:
+Azure heeft een aantal speciale regio's die u mogelijk wilt gebruiken bij het uitbouwen van uw toepassingen voor naleving of juridische doeleinden. Voorbeelden van dergelijke speciale regio's zijn:
 
 * **US Gov - Virginia** en **US Gov - Iowa**
   * Een fysiek en logisch van netwerken afgeschermd exemplaar van Azure voor de Amerikaanse overheid en zijn partners, bediend door gecontroleerde Amerikaanse staatsburgers. Dit exemplaar beschikt over aanvullende nalevingscertificeringen, zoals [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) en [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Meer informatie over [Azure Government](https://azure.microsoft.com/features/gov/).
 * **China - noord** en **China - oost**
-  * Deze regio's zijn beschikbaar via een unieke samenwerking tussen Microsoft en 21Vianet, waarbij Microsoft niet rechtstreeks de datacentra onderhoudt. Meer informatie over [Azure China 21vianet](https://www.windowsazure.cn/).
+  * Deze regio's zijn beschikbaar via een unieke samenwerking tussen Microsoft en 21Vianet, waarbij Microsoft niet rechtstreeks de datacentra onderhoudt. Meer informatie over [Azure China 21Vianet](https://www.windowsazure.cn/).
 * **Duitsland - centraal** en **Duitsland - noordoost**
-  * Deze regio's zijn beschikbaar via een model voor gegevens vertrouwensrelatie waarbij klant gegevens in Duitsland blijven, onder controle van T-Systems, een Deutsche Telekom-bedrijf dat als de Duitse gegevens beheerder optreedt.
+  * Deze regio's zijn beschikbaar via een data trustee model waarbij klantgegevens in Duitsland onder controle blijven van T-Systems, een deutsche telekom bedrijf, dat optreedt als de Duitse data trustee.
 
 ## <a name="region-pairs"></a>Regioparen
 Elke Azure-regio is gekoppeld aan een andere regio binnen hetzelfde geografische gebied (zoals VS, Europa of Azië). Hierdoor kunnen resources, zoals VM-opslag, worden gerepliceerd op een andere locatie binnen hetzelfde geografische gebied, zodat de kans wordt beperkt dat beide regio’s tegelijkertijd worden beïnvloed door natuurrampen, onrusten, stroomstoringen of fysieke netwerkuitval. Het gebruik van regioparen biedt meer voordelen:
@@ -45,13 +45,13 @@ Voorbeelden van regioparen zijn:
 | Primair | Secundair |
 |:--- |:--- |
 | VS - west |VS - oost |
-| Europa - noord |Europa - west |
+| Europa - noord |Europa -west |
 | Azië - zuidoost |Azië - oost |
 
 U vindt de volledige [lijst met regioparen hier](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
-## <a name="feature-availability"></a>Beschikbaarheid van de functies
-Sommige services of VM-functies zijn alleen beschikbaar in bepaalde regio's, zoals specifieke VM-grootten of opslagtypen. Er zijn ook een aantal algemene Azure-services waarvoor u geen specifieke regio hoeft te kiezen, zoals [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) en [Azure DNS](../articles/dns/dns-overview.md). Als hulp bij het ontwerpen van de omgeving van uw toepassing, kunt u de [beschikbaarheid van Azure-services per regio](https://azure.microsoft.com/regions/#services) raadplegen. U kunt ook [programmatisch query's uitvoeren op de ondersteunde VM-grootten en-beperkingen in elke regio](../articles/azure-resource-manager/templates/error-sku-not-available.md).
+## <a name="feature-availability"></a>Beschikbaarheid van functies
+Sommige services of VM-functies zijn alleen beschikbaar in bepaalde regio's, zoals specifieke VM-grootten of opslagtypen. Er zijn ook een aantal algemene Azure-services waarvoor u geen specifieke regio hoeft te kiezen, zoals [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) en [Azure DNS](../articles/dns/dns-overview.md). Als hulp bij het ontwerpen van de omgeving van uw toepassing, kunt u de [beschikbaarheid van Azure-services per regio](https://azure.microsoft.com/regions/#services) raadplegen. U ook [de ondersteunde VM-formaten en -beperkingen in elke regio programmatisch opvragen.](../articles/azure-resource-manager/templates/error-sku-not-available.md)
 
 ## <a name="storage-availability"></a>Opslagbeschikbaarheid
 Inzicht in Azure-regio's en geografische locaties wordt belangrijk wanneer u gaat kijken naar de verschillende opties voor opslagreplicatie. U hebt verschillende replicatieopties, afhankelijk van het opslagtype.
@@ -84,10 +84,10 @@ Meer informatie over [Azure Storage-replicatieopties vindt u hier](../articles/s
 De kosten zijn afhankelijk van het opslagtype en de beschikbaarheid die u selecteert.
 
 **Azure Managed Disks**
-* Premium-Managed Disks worden ondersteund door Ssd's (Solid-state drives) en standaard Managed Disks worden ondersteund door normale draaiende schijven. Voor zowel Premium als Standard Managed Disks worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf.
+* Premium Managed Disks worden ondersteund door Solid-State Drives (SSD's) en Standard Managed Disks worden ondersteund door gewone draaiende schijven. Voor zowel Premium als Standard Managed Disks worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf.
 
 **Niet-beheerde schijven**
-* Premium Storage wordt ondersteund door Ssd's (Solid-state drives) en wordt in rekening gebracht op basis van de capaciteit van de schijf.
+* Premium opslag wordt ondersteund door Solid-State Drives (SSD's) en wordt opgeladen op basis van de capaciteit van de schijf.
 * Standaard opslag wordt ondersteund door traditionele draaiende schijven en wordt in rekening gebracht op basis van de gebruikte capaciteit en de gewenste opslagbeschikbaarheid.
   * Voor RA-GRS wordt een toeslag in rekening gebracht voor de gegevensoverdracht voor geo-replicatie, voor de bandbreedtekosten van het repliceren van gegevens naar een andere Azure-regio.
 

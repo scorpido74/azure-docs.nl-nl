@@ -1,6 +1,6 @@
 ---
-title: Bulksgewijs kopiëren van bestanden naar een Data Base
-description: Meer informatie over het gebruik van een oplossings sjabloon voor het bulksgewijs kopiëren van gegevens van Azure Data Lake Storage Gen2 naar Azure Synapse Analytics/Azure SQL Database.
+title: Bulkgewijs kopiëren van bestanden naar database
+description: Meer informatie over het gebruik van een oplossingssjabloon om gegevens in bulk te kopiëren van Azure Data Lake Storage Gen2 naar Azure Synapse Analytics / Azure SQL Database.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -9,59 +9,59 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: ae250c7d15801789ad22955845cfa535ed91f2c1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75921143"
 ---
-# <a name="bulk-copy-from-files-to-database"></a>Bulksgewijs kopiëren van bestanden naar een Data Base
+# <a name="bulk-copy-from-files-to-database"></a>Bulkgewijs kopiëren van bestanden naar database
 
-In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om gegevens bulksgewijs te kopiëren van Azure Data Lake Storage Gen2 naar Azure Synapse Analytics/Azure SQL Database.
+In dit artikel wordt een oplossingssjabloon beschreven die u gebruiken om gegevens in bulk te kopiëren van Azure Data Lake Storage Gen2 naar Azure Synapse Analytics / Azure SQL Database.
 
-## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
+## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
 
-Met deze sjabloon worden bestanden opgehaald van Azure Data Lake Storage Gen2 bron. Vervolgens wordt het bestand in de bron doorlopend en gekopieerd naar het doel gegevens archief. 
+Met deze sjabloon worden bestanden opgehaald uit de Bron van Azure Data Lake Storage Gen2. Vervolgens wordt het over elk bestand in de bron heen gehesen en wordt het bestand naar het doelgegevensarchief gekopieerd. 
 
-Deze sjabloon biedt momenteel alleen ondersteuning voor het kopiëren van gegevens in de **DelimitedText** -indeling. Bestanden in andere gegevens indelingen kunnen ook worden opgehaald uit het brongegevens archief, maar kunnen niet worden gekopieerd naar de doel gegevens opslag.  
+Momenteel ondersteunt deze sjabloon alleen het kopiëren van gegevens in **de indeling DelimitedText.** Bestanden in andere gegevensindelingen kunnen ook worden opgehaald uit het brongegevensarchief, maar kunnen niet worden gekopieerd naar het doelgegevensarchief.  
 
 De sjabloon bevat drie activiteiten:
-- Met activity voor **meta gegevens ophalen** worden bestanden van Azure data Lake Storage Gen2 opgehaald en door gegeven aan de volgende *foreach* -activiteit.
-- De **foreach** -activiteit haalt bestanden op uit de activiteit *meta gegevens ophalen* en herhaalt elk bestand naar de *Kopieer* activiteit.
-- **Kopieer** activiteit bevindt zich in de *foreach* -activiteit voor het kopiëren van elk bestand uit de brongegevens opslag naar het doel gegevens archief.
+- **Metagegevensactiviteit** ophalen haalt bestanden op uit Azure Data Lake Storage Gen2 en geeft deze door aan de volgende *ForEach-activiteit.*
+- **ForEach** activity krijgt bestanden van de activiteit *Metagegevens ophalen* en verlegt elk bestand naar de *activiteit Kopiëren.*
+- **Kopieer** activiteit bevindt zich in *ForEach* activiteit om elk bestand te kopiëren van het brongegevensarchief naar het doelgegevensarchief.
 
-De sjabloon definieert de volgende twee para meters:
-- *SourceContainer* is het pad naar de basis container waar de gegevens in uw Azure data Lake Storage Gen2 worden gekopieerd. 
-- *Source Directory* is het mappad onder de hoofd container waaruit de gegevens worden gekopieerd in uw Azure data Lake Storage Gen2.
+De sjabloon definieert de volgende twee parameters:
+- *SourceContainer* is het hoofdcontainerpad waar de gegevens van worden gekopieerd in uw Azure Data Lake Storage Gen2. 
+- *SourceDirectory* is het mappad onder de hoofdcontainer waar de gegevens van worden gekopieerd in uw Azure Data Lake Storage Gen2.
 
-## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
+## <a name="how-to-use-this-solution-template"></a>Deze oplossingssjabloon gebruiken
 
-1. Ga naar de sjabloon **bulksgewijs kopiëren van bestanden naar data base** . Een **nieuwe** verbinding maken met het bron Gen2-archief. Houd er rekening mee dat ' GetMetadataDataset ' en ' source Dataset ' verwijzingen zijn naar dezelfde verbinding als de bron bestands opslag.
+1. Ga naar de **sjabloon Bulk kopiëren van bestanden naar database.** Maak een **nieuwe** verbinding met de bron-Gen2-winkel. Houd er rekening mee dat "GetMetadataDataset" en "SourceDataset" verwijzingen zijn naar dezelfde verbinding van uw bronbestandsarchief.
 
-    ![Een nieuwe verbinding maken met het brongegevens archief](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    ![Een nieuwe verbinding maken met het brongegevensarchief](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. Maak een **nieuwe** verbinding met de Sink-gegevens opslag waarnaar u gegevens kopieert.
+2. Maak een **nieuwe** verbinding met het sink-gegevensarchief waarnaar u gegevens kopieert.
 
-    ![Een nieuwe verbinding maken met het sink-gegevens archief](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    ![Een nieuwe verbinding maken met het sink-gegevensarchief](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
 3. Selecteer **Deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
     
-4. U ziet een pijp lijn die wordt gemaakt, zoals wordt weer gegeven in het volgende voor beeld:
+4. U ziet een pijplijn die is gemaakt zoals in het volgende voorbeeld wordt weergegeven:
 
-    ![De pijp lijn controleren](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
+    ![De pijplijn bekijken](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Als u **Azure Synapse Analytics (voorheen SQL DW)** hebt gekozen als de gegevens bestemming in **stap 2** hierboven, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door SQL Data Warehouse poly base. Zoals in de volgende scherm afbeelding wordt weer gegeven, genereert de sjabloon *automatisch een opslagpad* voor uw Blob Storage. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
+    > Als u **Azure Synapse Analytics (voorheen SQL DW)** als gegevensbestemming in **stap 2** hierboven hebt gekozen, moet u een verbinding met Azure Blob-opslag invoeren voor fasering, zoals vereist door SQL Data Warehouse Polybase. Zoals de volgende schermafbeelding wordt weergegeven, genereert de sjabloon automatisch een *opslagpad* voor uw Blob-opslag. Controleer of de container is gemaakt nadat de pijplijn is uitgevoerd.
         
-    ![Poly base-instelling](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    ![Polybase-instelling](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
+5. Selecteer **Foutopsporing,** voer de **parameters**in en selecteer **Voltooien**.
 
-    ![Klik op * * fout opsporing * *](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    ![Klik op **Foutopsporing**](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 
-6. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u resultaten die vergelijkbaar zijn met het volgende voor beeld:
+6. Wanneer de pijplijnrun is voltooid, ziet u resultaten die vergelijkbaar zijn met het volgende voorbeeld:
 
     ![Bekijk het resultaat](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 

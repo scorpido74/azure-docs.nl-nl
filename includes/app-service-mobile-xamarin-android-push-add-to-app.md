@@ -5,14 +5,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176542"
 ---
-1. Maak een nieuwe klasse in het project met de naam `ToDoBroadcastReceiver`.
-2. Voeg de volgende using-instructies toe aan **ToDoBroadcastReceiver** klasse:
+1. Een nieuwe klasse maken `ToDoBroadcastReceiver`in het project genaamd .
+2. Voeg het volgende toe met behulp van instructies aan de klasse **ToDoBroadcastReceiver:**
 
     ```csharp
     using Gcm.Client;
@@ -20,7 +20,7 @@ ms.locfileid: "67176542"
     using Newtonsoft.Json.Linq;
     ```
 
-3. Voeg de volgende machtigingsaanvragen tussen de **met behulp van** instructies en de **naamruimte** declaratie:
+3. Voeg de volgende machtigingsaanvragen toe tussen de **gebruiksinstructies** en de **naamruimte-vermelding:**
 
     ```csharp
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -32,7 +32,7 @@ ms.locfileid: "67176542"
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-4. Vervang de bestaande **ToDoBroadcastReceiver** klassedefinitie door het volgende:
+4. Vervang de bestaande **klassedefinitie van ToDoBroadcastReceiver** door het volgende:
 
     ```csharp
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -49,9 +49,9 @@ ms.locfileid: "67176542"
     }
     ```
 
-    In de bovenstaande code, moet u vervangen *`<PROJECT_NUMBER>`* met het projectnummer dat is toegewezen door Google bij het inrichten van uw app in de Google developer-portal. 
+    In de bovenstaande code *`<PROJECT_NUMBER>`* moet u het projectnummer vervangen dat door Google is toegewezen toen u uw app indeineerde in de ontwikkelaarsportal van Google. 
 
-5. In het projectbestand ToDoBroadcastReceiver.cs, voeg de volgende code waarmee de **PushHandlerService** klasse:
+5. Voeg in het ToDoBroadcastReceiver.cs projectbestand de volgende code toe die de klasse **PushHandlerService** definieert:
 
     ```csharp
     // The ServiceAttribute must be applied to the class.
@@ -63,12 +63,12 @@ ms.locfileid: "67176542"
     }
     ```
 
-    Houd er rekening mee dat deze klasse is afgeleid van **GcmServiceBase** en dat de **Service** kenmerk moet worden toegepast op deze klasse.
+    Houd er rekening mee dat deze klasse afkomstig is van **GcmServiceBase** en dat het kenmerk **Service** op deze klasse moet worden toegepast.
 
     > [!NOTE]
-    > De **GcmServiceBase** klasse implementeert de **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** en  **OnError()** methoden. U moet deze methoden overschrijven de **PushHandlerService** klasse.
+    > De klasse **GcmServiceBase** implementeert de methoden **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** en **OnError().** U moet deze methoden overschrijven in de klasse **PushHandlerService.**
 
-6. Voeg de volgende code aan de **PushHandlerService** klasse die overschrijft de **OnRegistered** gebeurtenis-handler.
+6. Voeg de volgende code toe aan de klasse **PushHandlerService** die de **gebeurtenishandler OnRegistered** overschrijft.
 
     ```csharp
     protected override void OnRegistered(Context context, string registrationId)
@@ -109,9 +109,9 @@ ms.locfileid: "67176542"
     }
     ```
 
-    Deze methode maakt gebruik van de geretourneerde GCM-registratie-ID te registreren bij Azure voor pushmeldingen. Tags kunnen alleen worden toegevoegd aan de registratie nadat deze is gemaakt. Zie voor meer informatie, [het: Labels toevoegen aan de installatie van een apparaat om in te schakelen van push-naar-tags](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Deze methode gebruikt de geretourneerde GCM-registratie-id om zich te registreren bij Azure voor pushmeldingen. Tags kunnen alleen aan de registratie worden toegevoegd nadat deze is gemaakt. Zie [Labels toevoegen aan een apparaatinstallatie om push-to-tags in te schakelen voor](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)meer informatie.
 
-7. Overschrijf de **OnMessage** methode in **PushHandlerService** door de volgende code:
+7. Overschrijven van de **OnMessage-methode** in **PushHandlerService** met de volgende code:
 
     ```csharp
     protected override void OnMessage(Context context, Intent intent)
@@ -149,7 +149,7 @@ ms.locfileid: "67176542"
     }
     ```
 
-8. Overschrijf de **OnUnRegistered()** en **OnError()** methoden met de volgende code.
+8. Overschrijf de methoden **OnUnRegistered()** en **OnError()** met de volgende code.
 
     ```csharp
     protected override void OnUnRegistered(Context context, string registrationId)

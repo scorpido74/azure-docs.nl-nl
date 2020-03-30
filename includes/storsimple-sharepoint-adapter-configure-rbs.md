@@ -5,58 +5,58 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176075"
 ---
 > [!NOTE]
-> Als u wijzigingen aanbrengt aan de StorSimple-Adapter voor SharePoint RBS configuratie, moet u zijn aangemeld met een gebruikersaccount dat deel uitmaakt van de groep Domeinadministrators. Bovendien moet u toegang tot de configuratiepagina vanuit een browser die wordt uitgevoerd op dezelfde host als de centrale beheersite.
+> Wanneer u wijzigingen aanbrengt in de StorSimple-adapter voor SharePoint RBS-configuratie, moet u zijn aangemeld met een gebruikersaccount dat deel uitmaakt van de groep Domeinadministrators. Bovendien moet u toegang krijgen tot de configuratiepagina vanuit een browser die op dezelfde host wordt uitgevoerd als Central Administration.
 > 
 > 
 
-#### <a name="to-configure-rbs"></a>Resourcestructuur configureren
-1. Open de pagina Centraal beheer van SharePoint en blader naar **systeeminstellingen**. 
-2. In de **Azure StorSimple** sectie, klikt u op **StorSimple-Adapter configureren**.
+#### <a name="to-configure-rbs"></a>RBS configureren
+1. Open de pagina Centraal Beheer van SharePoint en blader naar **Systeeminstellingen**. 
+2. Klik in de sectie **Azure StorSimple** op **StorSimple-adapter configureren**.
    
-    ![De StorSimple-Adapter configureren](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. Op de **StorSimple-Adapter configureren** pagina:
+    ![De StorSimple-adapter configureren](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+3. Ga als een op de pagina **StorSimple-adapter configureren:**
    
-   1. Zorg ervoor dat de **inschakelen bewerken pad** selectievakje is ingeschakeld.
-   2. Typ in het tekstvak de Universal Naming Convention (UNC)-pad van de BLOB-archief.
+   1. Controleer of het selectievakje **Bewerkingspad inschakelen** is ingeschakeld.
+   2. Typ in het tekstvak het UNC-pad (Universal Naming Convention) van het BLOB-archief.
       
       > [!NOTE]
-      > De BLOB store-volume moet worden gehost op een iSCSI-volume dat is geconfigureerd op het StorSimple-apparaat.
+      > Het blob-winkelvolume moet worden gehost op een iSCSI-volume dat is geconfigureerd op het StorSimple-apparaat.
 
-   3. Klik op de **inschakelen** knop onder elk van de inhoudsdatabases die u wilt configureren voor externe opslag.
+   3. Klik **op** de knop Inschakelen onder elk van de inhoudsdatabases die u wilt configureren voor externe opslag.
       
       > [!NOTE]
-      > De BLOB-archief moet worden gedeeld en bereikbaar is door alle web-front-end (WFE)-servers en het gebruikersaccount dat is geconfigureerd voor de SharePoint-serverfarm moet toegang hebben tot de share.
+      > De BLOB-winkel moet worden gedeeld en bereikbaar zijn voor alle WFE-servers (Web Front-End) en het gebruikersaccount dat is geconfigureerd voor de SharePoint-serverfarm moet toegang hebben tot het aandeel.
       
-      ![De provider Resourcestructuur inschakelen](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
+      ![De RBS-provider inschakelen](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      Wanneer u in- of uitschakelen van Resourcestructuur, ziet u ook het volgende bericht weergegeven.
+      Wanneer u RBS in- of uitschakelt, ziet u ook het volgende bericht.
       
-      ![Uitschakelen van StorSimple-Adapter configureren](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
+      ![StorSimple-adapter uitschakelen configureren](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Klik op de **Update** knop om toe te passen van de configuratie. Wanneer u klikt op de **Update** knop klikt, wordt de status van de configuratie Resourcestructuur bijgewerkt op alle WFE-servers en de hele farm worden Resourcestructuur ingeschakeld. Het volgende bericht wordt weergegeven.
+   4. Klik **op** de knop Bijwerken om de configuratie toe te passen. Wanneer u op de knop **Bijwerken** klikt, wordt de RBS-configuratiestatus bijgewerkt op alle WFE-servers en is de hele farm rbs-ingeschakeld. Het volgende bericht wordt weergegeven.
       
-      ![Adapter configuratiebericht](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
+      ![Configuratiebericht adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Als u Resourcestructuur configureert voor een SharePoint-farm met een zeer groot aantal databases (meer dan 200), kan de Centraal beheer van SharePoint-webpagina time-out. Als dat gebeurt, vernieuw de pagina. Dit heeft geen invloed op het configuratieproces.
+      > Als u RBS configureert voor een SharePoint-farm met een zeer groot aantal databases (meer dan 200), kan de webpagina van SharePoint Central Administration een time-out krijgen. Als dat gebeurt, vernieuwt u de pagina. Dit heeft geen invloed op het configuratieproces.
 
-4. Controleer of de configuratie:
+4. Controleer de configuratie:
    
-   1. Meld u aan bij de website Centraal beheer van SharePoint en blader naar de **StorSimple-Adapter configureren** pagina.
-   2. Controleer de informatie over de configuratie om ervoor te zorgen dat ze overeenkomen met de instellingen die u hebt ingevoerd. 
-5. Controleer of Resourcestructuur correct werkt:
+   1. Meld u aan bij de sharepoint central administration-website en blader naar de pagina **StorSimple-adapter configureren.**
+   2. Controleer de configuratiegegevens om te controleren of deze overeenkomen met de instellingen die u hebt ingevoerd. 
+5. Controleer of RBS correct werkt:
    
    1. Een document uploaden naar SharePoint. 
-   2. Blader naar het UNC-pad dat u hebt geconfigureerd. Zorg ervoor dat de mapstructuur Resourcestructuur is gemaakt en dat deze het geüploade object bevat.
-6. (Optioneel) U kunt de Microsoft-RBS `Migrate()` PowerShell-cmdlet die deel uitmaakt van SharePoint om te migreren van bestaande BLOB-inhoud naar het StorSimple-apparaat. Zie voor meer informatie, [inhoud migreren naar of uit Resourcestructuur in SharePoint 2013] [ 6] of [inhoud migreren naar of uit Resourcestructuur (SharePoint Foundation 2010)] [7].
-7. (Optioneel) Op de test-installaties, kunt u controleren dat de BLOBs zijn verplaatst uit de inhoud van de database als volgt: 
+   2. Blader naar het UNC-pad dat u hebt geconfigureerd. Zorg ervoor dat de RBS-mapstructuur is gemaakt en dat het geüploade object is opgenomen.
+6. (Optioneel) U de Microsoft `Migrate()` RBS PowerShell-cmdlet die bij SharePoint is meegeleverd, gebruiken om bestaande BLOB-inhoud te migreren naar het StorSimple-apparaat. Zie [Inhoud migreren naar of uit RBS in SharePoint 2013][6] of Inhoud migreren naar of uit [RBS (SharePoint Foundation 2010)][7]voor meer informatie.
+7. (Optioneel) Op testinstallaties u controleren of de BLOB's als volgt uit de inhoudsdatabase zijn gehaald: 
    
    1. Start SQL Management Studio.
    2. Voer de query ListBlobsInDB_2010.sql of ListBlobsInDB_2013.sql als volgt uit.
@@ -102,18 +102,18 @@ ms.locfileid: "67176075"
         GO
       ```
       
-      Als Resourcestructuur correct is geconfigureerd, kan een NULL-waarde moet worden weergegeven in de kolom SizeOfContentInDB voor elk object dat is geüpload en is externalized met Resourcestructuur.
-8. (Optioneel) Nadat u Resourcestructuur configureert en alle BLOB-inhoud naar het StorSimple-apparaat verplaatsen, kunt u de inhoud van de database verplaatsen naar het apparaat. Als u ervoor kiest om te verplaatsen van de inhoud van de database, raden wij u aan de inhoud van de database-opslag te configureren op het apparaat als een primaire volume. Gebruik vervolgens tot stand gebracht aanbevolen procedures voor SQL Server voor het migreren van de inhoud van de database met de StorSimple-apparaat. 
+      Als RBS correct is geconfigureerd, moet een NULL-waarde worden weergegeven in de kolom SizeOfContentInDB voor elk object dat is geüpload en met succes is geexternaliseerd met RBS.
+8. (Optioneel) Nadat u RBS hebt geconfigureerd en alle BLOB-inhoud naar het StorSimple-apparaat hebt verplaatst, u de inhoudsdatabase naar het apparaat verplaatsen. Als u ervoor kiest de inhoudsdatabase te verplaatsen, raden we u aan de opslag van inhoudsgegevensop het apparaat als primair volume te configureren. Gebruik vervolgens gevestigde SQL Server-aanbevolen procedures om de inhoudsdatabase te migreren naar het StorSimple-apparaat. 
    
    > [!NOTE]
-   > De inhoud van de database te verplaatsen naar het apparaat wordt alleen ondersteund voor de StorSimple 8000-serie (dit wordt niet ondersteund voor de 5000 of 7000-serie).
+   > Het verplaatsen van de inhouddatabase naar het apparaat wordt alleen ondersteund voor de StorSimple 8000-serie (deze wordt niet ondersteund voor de 5000- of 7000-serie).
    
-   Als u BLOBs en de inhoud van de database in afzonderlijke volumes op het StorSimple-apparaat opgeslagen, wordt u aangeraden dat u ze in dezelfde volumecontainer configureren. Dit zorgt ervoor dat ze worden back-ups samen.
+   Als u BLOB's en de inhoudsdatabase in afzonderlijke volumes op het StorSimple-apparaat opslaat, raden we u aan deze in dezelfde volumecontainer te configureren. Dit zorgt ervoor dat er samen een back-up van wordt gemaakt.
    
    > [!WARNING]
-   > Als u Resourcestructuur niet hebt ingeschakeld, niet aangeraden de inhoud van de database verplaatsen naar het StorSimple-apparaat. Dit is een niet-geteste configuratie.
+   > Als u RBS niet hebt ingeschakeld, raden we u aan de inhoudsdatabase naar het StorSimple-apparaat te verplaatsen. Dit is een niet-geteste configuratie.
    
-9. Ga naar de volgende stap: [Garbagecollection configureren](#configure-garbage-collection).
+9. Ga naar de volgende stap: [Garbage Collection configureren.](#configure-garbage-collection)
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

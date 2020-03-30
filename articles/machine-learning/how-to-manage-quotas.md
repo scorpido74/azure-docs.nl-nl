@@ -1,7 +1,7 @@
 ---
-title: "& Quota's voor resources beheren"
+title: Resources & quota beheren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de quota's voor Azure Machine Learning en hoe u meer quota kunt aanvragen.
+description: Meer informatie over de quota voor resources voor Azure Machine Learning en hoe u meer quota aanvragen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,134 +11,134 @@ author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
 ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399152"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Beheren en quota's voor Azure-resources aanvragen
+# <a name="manage-and-request-quotas-for-azure-resources"></a>Quota voor Azure-resources beheren en aanvragen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel vindt u informatie over vooraf geconfigureerde limieten voor Azure-resources voor uw abonnement. Ook vindt u hier instructies voor het aanvragen van quotum verbeteringen voor elk type resource. Deze limieten zijn geplaatst om te voorkomen dat te veel uitgevoerd vanwege fraude budget en capaciteitsbeperkingen voor Azure in acht neemt.
+In dit artikel vindt u informatie over vooraf geconfigureerde limieten voor Azure-bronnen voor uw abonnement. Ook zijn instructies opgenomen over het aanvragen van quotaverbeteringen voor elk type resource. Deze limieten worden ingevoerd om te voorkomen dat budgetoverschrijdingen als gevolg van fraude worden uitgevoerd en om azure-capaciteitsbeperkingen te eren.
 
-Net als bij andere Azure-Services gelden er limieten voor bepaalde resources die zijn gekoppeld aan Azure Machine Learning. Deze limieten variëren van een kapje op het aantal werk ruimten dat kan worden beperkt tot de werkelijke onderliggende Compute die wordt gebruikt voor model training of het afleiden/scoren. 
+Net als bij andere Azure-services zijn er beperkingen voor bepaalde resources die zijn gekoppeld aan Azure Machine Learning. Deze limieten variëren van een limiet op het aantal werkruimten tot beperkingen op de werkelijke onderliggende rekenkracht die wordt gebruikt voor modeltraining of gevolgtrekking/score. 
 
-Houd bij het ontwerpen en schalen van uw Azure Machine Learning resources voor werk belastingen voor productie de volgende limieten. Als uw cluster bijvoorbeeld niet het doel aantal knoop punten bereikt, hebt u mogelijk een Azure Machine Learning limiet voor reken kernen bereikt voor uw abonnement. Als u de is besteed of wanneer het quotum boven de limiet standaard verhogen wilt, opent u een online ondersteuningsverzoek gratis. De limieten kunnen niet worden verhoogd boven de maximumlimiet-waarde die wordt weergegeven in de volgende tabellen vanwege beperkingen van Azure-capaciteit. Als er geen kolom maximumlimiet is, klikt u vervolgens de resource geen instelbare limieten.
+Houd bij het ontwerpen en schalen van uw Azure Machine Learning-resources voor productieworkloads rekening met deze limieten. Als uw cluster bijvoorbeeld het doelaantal knooppunten niet bereikt, hebt u mogelijk een limiet voor Azure Machine Learning Compute-kernen voor uw abonnement bereikt. Als u de limiet of het quotum boven de standaardlimiet wilt verhogen, opent u kosteloos een online verzoek voor klantenondersteuning. De limieten kunnen niet hoger worden dan de maximumlimietwaarde die in de volgende tabellen wordt weergegeven vanwege azure-capaciteitsbeperkingen. Als er geen kolom Maximumlimiet is, heeft de resource geen aanpasbare limieten.
 
-## <a name="special-considerations"></a>Speciale overwegingen
+## <a name="special-considerations"></a>Bijzondere overwegingen
 
-+ Een quotum is een tegoed is besteed, niet een capaciteit gegarandeerd. Als u grootschalige capaciteit nodig hebt, neem dan contact op met ondersteuning van Azure.
++ Een quotum is een kredietlimiet, geen capaciteitsgarantie. Als u op grote schaal capaciteitsbehoeften hebt, neemt u contact op met Azure-ondersteuning.
 
-+ Uw quotum wordt gedeeld door alle services in uw abonnementen, met inbegrip van Azure Machine Learning. De enige uitzonde ring is Azure Machine Learning Compute die een afzonderlijke quota van het core Compute-quotum heeft. Zorg ervoor dat het quotagebruik berekenen van alle services bij het evalueren van uw behoeften aan capaciteit.
++ Uw quotum wordt gedeeld voor alle services in uw abonnementen, waaronder Azure Machine Learning. De enige uitzondering is Azure Machine Learning compute, dat een apart quotum heeft van het kerngegevensquotum. Zorg ervoor dat u het quotumgebruik voor alle services berekent bij het evalueren van uw capaciteitsbehoeften.
 
-+ De standaard limieten variëren per aanbiedings categorie type, zoals een gratis proef versie, een betalen per gebruik-serie en een VM-reeks, zoals dv2, F, G, enzovoort.
++ Standaardlimieten variëren per aanbiedingscategorietype, zoals Gratis proefversie, Betalen per gebruik en VM-serie, zoals Dv2, F, G, enzovoort.
 
-## <a name="default-resource-quotas"></a>Standaard resourcequota
+## <a name="default-resource-quotas"></a>Standaardresourcequota
 
-Hier volgt een overzicht van de quotumlimieten door verschillende resourcetypen in uw Azure-abonnement.
+Hier ziet u een overzicht van de quotumlimieten door verschillende resourcetypen binnen uw Azure-abonnement.
 
 > [!IMPORTANT]
-> Limieten kunnen worden gewijzigd. De meest recente kan altijd worden gevonden op het quota [document](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) op service niveau voor alle Azure.
+> Limieten kunnen worden gewijzigd. De laatste is altijd te vinden in het quotumdocument op [serviceniveau](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) voor alle Azure.The latest can always be found at the service-level quota document for all of Azure.
 
 ### <a name="virtual-machines"></a>Virtuele machines
-Voor elk Azure-abonnement geldt een limiet voor het aantal virtuele machines dat u voor uw services of zelfstandige kunt hebben. Deze limiet is op het regioniveau van de op het totaal aantal kerngeheugens, evenals op basis van de per-familie.
+Voor elk Azure-abonnement is er een limiet voor het aantal virtuele machines dat u hebben voor uw services of zelfstandige services. Deze limiet ligt op regioniveau, zowel op de totale kernen als per gezin.
 
-De kern geheugens van de virtuele machine hebben een regionale limiet en een limiet van regionale per grootte reeksen (dv2, F, etc.), die beide afzonderlijk worden afgedwongen. Neem bijvoorbeeld een abonnement met een limiet van 30 VM-cores voor US - oost, een limiet van 30 cores voor de A-serie en een limiet van 30 cores voor de D-serie. Met dit abonnement zouden 30 A1-VM’s of 30 D1-VM’s kunnen worden geïmplementeerd, of een combinatie van deze twee typen die het totaal van 30 cores niet overschrijdt (bijvoorbeeld 10 A1-VM’s en 20 D1-VM’s).
+Virtuele machinekernen hebben een regionale totale limiet en een regionale per size-serie (Dv2, F, enz.) limiet, die beide afzonderlijk worden afgedwongen. Neem bijvoorbeeld een abonnement met een limiet van 30 VM-cores voor US - oost, een limiet van 30 cores voor de A-serie en een limiet van 30 cores voor de D-serie. Met dit abonnement zouden 30 A1-VM’s of 30 D1-VM’s kunnen worden geïmplementeerd, of een combinatie van deze twee typen die het totaal van 30 cores niet overschrijdt (bijvoorbeeld 10 A1-VM’s en 20 D1-VM’s).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Raadpleeg [het artikel over](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)Azure-quotum voor een gedetailleerde en actuele lijst met quotum limieten.
+Voor een meer gedetailleerde en up-to-date lijst met quotalimieten raadpleegt u [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)het azure-brede quotumartikel .
 
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning-Computing
-Voor Azure Machine Learning-Computing is er een standaard-quotumlimiet voor zowel de aantal kernen en het aantal unieke rekenresources toegestaan per regio in een abonnement. Dit quotum is gescheiden van het bovenstaande VM-kern quotum en de kern limieten worden niet gedeeld tussen de twee resource typen, aangezien AmlCompute een beheerde service is die resources implementeert in een gehoste naam-of model.
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+Voor Azure Machine Learning Compute geldt een standaardquotumlimiet voor zowel het aantal cores als het aantal unieke rekenresources dat per regio in een abonnement is toegestaan. Dit quotum staat los van het bovenstaande VM-kernquotum en de kernlimieten worden niet gedeeld tussen de twee resourcetypen, omdat AmlCompute een beheerde service is die resources implementeert in een gehost-op-naam-van-model.
 
-Beschikbare resources:
-+ Toegewezen kern geheugens per regio hebben een standaard limiet van 24-300, afhankelijk van het type abonnements aanbieding met hogere standaard waarden voor EA-en CSP-aanbiedings typen.  Het aantal toegewijde kernen per abonnement kan worden verhoogd en verschilt voor elke VM-serie. Bepaalde gespecialiseerde VM-families zoals NCv2, NCv3 of ND Series beginnen met een standaard waarde van nul kernen. Neem contact op met de ondersteuning van Azure door een quotum aanvraag voor het bespreken van toename opties te verhogen.
+Beschikbare middelen:
++ Speciale cores per regio hebben een standaardlimiet van 24 - 300, afhankelijk van het type abonnementsaanbieding met hogere standaardinstellingen voor EA- en CSP-aanbiedingstypen.  Het aantal speciale cores per abonnement kan worden verhoogd en verschilt per VM-familie. Bepaalde gespecialiseerde VM-families zoals NCv2, NCv3 of ND-serie beginnen met een standaard van nulcores. Neem contact op met Azure-ondersteuning door een quotumaanvraag te verhogen om de opties voor het vergroten te bespreken.
 
-+ Kernen met een lage prioriteit per regio hebben een standaard limiet van 100-3000, afhankelijk van het type abonnements aanbieding met hogere standaard waarden voor EA-en CSP-aanbiedings typen. Het aantal kernen met lage prioriteit per abonnement kan worden verhoogd en is één waarde voor alle VM-families. Neem contact op met ondersteuning van Azure wilt discussiëren over meer opties.
++ Kernen met lage prioriteit per regio hebben een standaardlimiet van 100 - 3000, afhankelijk van het type abonnementsaanbieding met hogere standaardwaarden voor EA- en CSP-aanbiedingstypen. Het aantal kernen met lage prioriteit per abonnement kan worden verhoogd en is een enkele waarde voor VM-families. Neem contact op met Azure-ondersteuning om de opties voor het vergroten te bespreken.
 
-+ Clusters per regio hebben een standaard limiet van 200. Deze worden gedeeld tussen een trainings cluster en een reken instantie (die als een cluster met één knoop punt wordt beschouwd voor quotum doeleinden). Neem contact op met ondersteuning van Azure als u wilt een verhoging boven deze limiet.
++ Clusters per regio hebben een standaardlimiet van 200. Deze worden gedeeld tussen een trainingscluster en een rekeninstantie (die wordt beschouwd als één knooppuntcluster voor quotadoeleinden). Neem contact op met Azure-ondersteuning als u een verhoging wilt aanvragen die verder gaat dan deze limiet.
 
-+ Er zijn * * andere strikte beperkingen die niet meer dan een keer kunnen worden overschreden.
++ Er zijn ** andere strikte grenzen die niet kunnen worden overschreden eenmaal geraakt.
 
-| **Resource** | **Maximum limiet** |
+| **Resource** | **Maximumlimiet** |
 | --- | --- |
-| Maximum aantal werkruimten per resourcegroep | 800 |
-| Maximum aantal knooppunten in een enkele bron voor Azure Machine Learning-Computing (AmlCompute) | 100 knooppunten |
-| Maximumaantal GPU MPI verwerkt per knooppunt | 1-4 |
-| Maximumaantal GPU werknemers per knooppunt | 1-4 |
-| Maximale levensduur | 90 dagen<sup>1</sup> |
-| Maximale levens duur van de taak op een knoop punt met een lage prioriteit | 7 dagen<sup>2</sup> |
-| Parameter Maximum servers per knooppunt | 1 |
+| Maximale werkruimten per resourcegroep | 800 |
+| Maximale knooppunten in één Azure Machine Learning Compute (AmlCompute)-bron | 100 knooppunten |
+| Maximale GPU MPI-processen per knooppunt | 1-4 |
+| Maximale GPU-werknemers per knooppunt | 1-4 |
+| Maximale levensduur van de baan | 90 dagen<sup>1</sup> |
+| Maximale levensduur van een taak op een knooppunt met lage prioriteit | 7 dagen<sup>2</sup> |
+| Maximale parameterservers per knooppunt | 1 |
 
-<sup>1</sup> de maximale levens duur verwijst naar het tijdstip waarop een uitvoering wordt gestart en wanneer deze is voltooid. Voltooide uitvoeringen behouden voor onbepaalde tijd; gegevens voor uitvoeringen is niet voltooid binnen de maximale levensduur zijn niet toegankelijk.
-<sup>2</sup> taken op een knoop punt met een lage prioriteit kunnen worden afgebroken op het moment dat er een capaciteits beperking is. U wordt aangeraden om in uw taak controle punten te implementeren.
+<sup>1</sup> De maximale levensduur verwijst naar de tijd dat een run start en wanneer deze is voltooid. Voltooide runs blijven voor onbepaalde tijd bestaan; gegevens voor uitvoeringen die niet binnen de maximale levensduur zijn voltooid, zijn niet toegankelijk.
+<sup>2</sup> Taken op een knooppunt met lage prioriteit kunnen worden verlopen wanneer er een capaciteitsbeperking is. We raden je aan checkpointing in je werk te implementeren.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning pijp lijnen
-Voor Azure Machine Learning pijp lijnen geldt een quotum limiet voor het aantal stappen in een pijp lijn en op basis van het aantal op schema's gebaseerde uitvoeringen van gepubliceerde pijp lijnen per regio in een abonnement.
-- Het maximum aantal stappen dat is toegestaan in een pijp lijn is 30.000
-- Maximum aantal uitgevoerde uitvoeringen op basis van een schema en BLOB-Pulls voor door een blog geactiveerde planning van gepubliceerde pijp lijnen per abonnement per maand is 100.000
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-pijplijnen
+Voor Azure Machine Learning Pipelines geldt een quotumlimiet voor het aantal stappen in een pijplijn en voor het aantal op planning gebaseerde uitvoeringen van gepubliceerde pijplijnen per regio in een abonnement.
+- Maximaal aantal stappen toegestaan in een pijplijn is 30.000
+- Het maximum aantal op schema's gebaseerde op schema's gebaseerde uitvoeringen en blob-pulls voor door een blog geactiveerde schema's van gepubliceerde pijplijnen per abonnement per maand is 100.000
 
 > [!NOTE]
-> Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
+> Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 ### <a name="container-instances"></a>Containerinstanties
 
-Er is ook een limiet voor het aantal containerinstanties die u instellen kunt in een bepaalde periode (binnen het bereik van per uur) of in op uw volledige abonnement.
+Er is ook een limiet aan het aantal containerexemplaren dat u in een bepaalde periode opdraaien (per uur ingesteld) of over uw hele abonnement.
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
 
-Raadpleeg [het artikel over](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)Azure-quotum voor een gedetailleerde en actuele lijst met quotum limieten.
+Voor een meer gedetailleerde en up-to-date lijst met quotalimieten raadpleegt u [hier](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)het azure-brede quotumartikel .
 
-### <a name="storage"></a>Opslag
-Er geldt een limiet voor het aantal storage-accounts per regio ook in een bepaald abonnement. De standaard limiet is 250 en bevat zowel de accounts Standard als Premium Storage. Als u meer dan 250 opslag accounts in een bepaalde regio nodig hebt, moet u een aanvraag indienen via [ondersteuning voor Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Het Azure Storage-team controleert uw bedrijfsscenario en kan goedkeuren tot 250 opslagaccounts voor een bepaalde regio.
+### <a name="storage"></a>Storage
+Er is een limiet op het aantal opslagaccounts per regio en in een bepaald abonnement. De standaardlimiet is 250 en omvat zowel standaard- als Premium-opslagaccounts. Als u meer dan 250 opslagaccounts in een bepaalde regio nodig hebt, dient u een aanvraag in via [Azure Support.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) Het Azure Storage-team bekijkt uw bedrijfscase en keurt mogelijk maximaal 250 opslagaccounts voor een bepaalde regio goed.
 
 
-## <a name="workspace-level-quota"></a>Quotum voor werkruimte niveau
+## <a name="workspace-level-quota"></a>Quotum op werkniveau
 
-Voor een beter beheer van resource toewijzingen voor Amlcompute tussen verschillende werk ruimten, hebben we een functie geïntroduceerd waarmee quota's op abonnements niveau (per VM-serie) kunnen worden gedistribueerd en geconfigureerd op het niveau van de werk ruimte. Het standaard gedrag is dat alle werk ruimten dezelfde quota hebben als het quotum van het abonnements niveau voor een VM-serie. Naarmate het aantal werk ruimten toeneemt en werk belastingen met een verschillende prioriteit het delen van dezelfde bronnen willen starten, hebben gebruikers echter een manier om de capaciteit te delen en bronnen conflicten te voor komen. Azure Machine Learning biedt een oplossing met de beheerde Compute-aanbieding door gebruikers toe te staan een maximum quotum voor een bepaalde VM-serie in elke werk ruimte in te stellen. Dit is vergelijkbaar met het distribueren van uw capaciteit tussen werk ruimten en de gebruikers kunnen ervoor kiezen om het maximum gebruik van het apparaat te verg Roten. 
+Om resources allocatie voor Amlcompute beter te beheren tussen verschillende werkruimten, hebben we een functie geïntroduceerd waarmee u quota op abonnementsniveau (per VM-familie) distribueren en configureren op werkruimteniveau. Het standaardgedrag is dat alle werkruimten hetzelfde quotum hebben als het quotum op abonnementsniveau voor elke VM-familie. Naarmate het aantal werkruimten echter toeneemt en workloads met verschillende prioriteit dezelfde resources gaan delen, willen gebruikers een manier om de capaciteit beter te delen en problemen met resourceconflicten te voorkomen. Azure Machine Learning biedt een oplossing met zijn beheerde compute-aanbod door gebruikers in staat te stellen een maximaal quotum in te stellen voor een bepaalde VM-familie op elke werkruimte. Dit is analoog aan het verdelen van uw capaciteit tussen werkruimten, en de gebruikers kunnen ervoor kiezen om ook over-toewijzen om maximale gebruik rijden. 
 
-Als u quota's op het niveau van de werk ruimte wilt instellen, gaat u naar een werk ruimte in uw abonnement en klikt u op **gebruik en quota's** in het linkerdeel venster. Selecteer vervolgens het tabblad **Quota's configureren** om de quota's weer te geven, een VM-serie uit te breiden en een quotum limiet in te stellen voor elke werk ruimte die wordt vermeld onder die VM-serie. Houd er rekening mee dat u geen negatieve waarde of een hogere waarde dan het quotum op abonnements niveau kunt instellen. Net zoals u zou zien, wordt aan alle werk ruimten standaard het volledige abonnements quotum toegewezen, zodat het volledige gebruik van het toegewezen quotum is toegestaan.
+Als u quota wilt instellen op werkruimteniveau, gaat u naar elke werkruimte in uw abonnement en klikt u op **Gebruik + quota** in het linkerdeelvenster. Selecteer vervolgens het tabblad **Quota configureren** om de quota weer te geven, vouw een VM-familie uit en stel een quotumlimiet in voor elke werkruimte die onder die VM-familie wordt vermeld. Houd er rekening mee dat u geen negatieve waarde of een waarde instellen die hoger is dan het quotum op abonnementsniveau. Zoals u zou opmerken, krijgen standaard alle werkruimten het volledige abonnementsquotum toegewezen om het toegewezen quotum volledig te kunnen gebruiken.
 
-[quotum voor Azure Machine Learning-werkruimte niveau ![](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)
+[![Quotum voor Azure Machine Learning-werkruimteniveau](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)](./media/how-to-manage-quotas/azure-machine-learning-workspace-quota.png)
 
 
 > [!NOTE]
-> Dit is alleen een Enter prise Edition-functie. Als u in uw abonnement zowel een basis-als een Enter prise Edition-werk ruimte hebt, kunt u deze gebruiken om alleen quota's in te stellen voor uw werk ruimten in uw onderneming. In uw basis werkruimte blijven de quota niveau quotum, de standaard instelling.
+> Dit is alleen een Functie voor de Enterprise-editie. Als u zowel een werkruimte voor basic- als een Enterprise-editie in uw abonnement hebt, u deze gebruiken om alleen quota in te stellen voor uw Enterprise-werkruimten. Uw Basiswerkruimten blijven het quotum op abonnementsniveau hebben, het standaardgedrag.
 >
-> U hebt machtigingen op abonnements niveau nodig om quota in te stellen op het niveau van de werk ruimte. Dit wordt afgedwongen zodat afzonderlijke eigen aars van werk ruimten hun quota niet kunnen bewerken of verhogen en encroaching kunnen starten op resources die zijn gereserveerd voor een andere werk ruimte. Een abonnements beheerder is daarom het meest geschikt voor het toewijzen en distribueren van deze quota's in werk ruimten.
+> U hebt machtigingen op abonnementsniveau nodig om quota in te stellen op werkruimteniveau. Dit wordt afgedwongen zodat eigenaren van afzonderlijke werkruimtes hun quota niet bewerken of verhogen en beginnen inbreuk te maken op resources die zijn gereserveerd voor een andere werkruimte. Een abonnementsbeheerder is dus het meest geschikt om deze quota toe te wijzen en te distribueren over werkruimten.
 
 
 
-## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota's weer geven
+## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota weergeven
 
-Weergeven van uw quotum voor verschillende resources, zoals virtuele Machines, opslag, netwerk, is het eenvoudig via de Azure-portal.
+Het bekijken van uw quotum voor verschillende bronnen, zoals virtuele machines, opslag, netwerk, is eenvoudig via de Azure-portal.
 
-1. Selecteer in het linkerdeel venster **alle services** en selecteer vervolgens **abonnementen** onder de categorie Algemeen.
+1. Selecteer in het linkerdeelvenster **Alle services** en selecteer **Vervolgens Abonnementen** onder de categorie Algemeen.
 
-1. Selecteer het abonnement waarvan quota die u zoekt in de lijst met abonnementen.
+1. Selecteer in de lijst met abonnementen het abonnement waarvan u het quotum zoekt.
 
-   **Er is een voor behoud**, specifiek voor het weer geven van de Azure machine learning reken quota. Zoals eerder vermeld, staat quotum los van het quotum voor compute voor uw abonnement.
+   **Er is een voorbehoud,** specifiek voor het bekijken van het Azure Machine Learning Compute-quotum. Zoals hierboven vermeld, staat dit quotum los van het rekenquotum voor uw abonnement.
 
-1. Selecteer **machine learning service** in het linkerdeel venster en selecteer vervolgens een werk ruimte in de lijst die wordt weer gegeven
+1. Selecteer in het linkerdeelvenster **machine learning-service** en selecteer vervolgens een werkruimte in de weergegeven lijst
 
-1. Selecteer op de volgende Blade onder de **sectie ondersteuning en probleem oplossing** de optie **gebruik en quota's** om uw huidige quotum limieten en het gebruik te bekijken.
+1. Selecteer op het volgende blad onder de **sectie Ondersteuning + probleemoplossing** de optie **Gebruik + quota** om uw huidige quotumlimieten en -gebruik weer te geven.
 
-1. Selecteer een abonnement om de quotumlimiet weer te geven. Vergeet niet om te filteren naar de regio waarin u geïnteresseerd bent.
+1. Selecteer een abonnement om de quotumlimieten weer te geven. Vergeet niet om te filteren op de regio waarin u geïnteresseerd bent.
 
-1. U kunt nu scha kelen tussen een weer gave op het niveau van het abonnement en een weer gave op werk ruimte niveau:
-    + **Abonnementweergave:** Op deze manier kunt u het gebruik van kern quota per VM-serie weer geven, uitbreiden door de werk ruimte en het uitbreiden door de daad werkelijke cluster namen. Deze weer gave is optimaal voor het snel ophalen van de details van het kern gebruik voor een bepaalde VM-familie om het opsplitsen van werk ruimten en de onderliggende clusters voor elk van deze werk ruimten te bekijken. De algemene conventie in deze weer gave is (gebruik/quotum), waarbij het gebruik het huidige aantal geschaalde kernen is en het quotum het logische maximum aantal kernen is waarmee de resource kan worden geschaald. Voor elke **werk ruimte**zou het quotum de quota voor het niveau van de werk ruimte zijn (zoals hierboven beschreven). Hiermee wordt het maximum aantal kernen aangegeven dat kan worden geschaald naar een bepaalde VM-serie. Voor een **cluster** op dezelfde manier is het quotum feitelijk de kernen die overeenkomen met het maximum aantal knoop punten dat door het cluster kan worden geschaald, zoals gedefinieerd door de eigenschap max_nodes.
+1. U nu schakelen tussen een weergave op abonnementsniveau en een weergave op werkruimteniveau:
+    + **Abonnementsweergave:** Hiermee u uw gebruik van kernquotum per VM-familie bekijken, uitbreiden per werkruimte en verder uitbreiden met de werkelijke clusternamen. Deze weergave is optimaal om snel in te gaan op de details van het kerngebruik voor een bepaalde VM-familie om de break-up per werkruimte en verder door de onderliggende clusters voor elk van deze werkruimten te zien. De algemene conventie in deze weergave is (gebruik/quotum), waarbij het gebruik het huidige aantal opgeschaalde kernen is en quota het logische maximum aantal kernen is waarop de resource kan schalen. Voor elke **werkruimte**is het quotum het quotum op werkniveau (zoals hierboven uitgelegd) dat het maximum aantal kernen aangeeft waarop u schalen voor een bepaalde VM-familie. Voor een **cluster** op dezelfde manier is het quotum in feite de kernen die overeenkomen met het maximum aantal knooppunten dat het cluster kan schalen om te definiëren door de eigenschap max_nodes.
 
-    + **Werkruimte weergave:** Zo kunt u het gebruik van kern quota per werk ruimte weer geven, deze uitbreiden door de VM-serie en het uitbreiden door de daad werkelijke cluster namen. Deze weer gave is optimaal voor het snel ophalen van de details van het kern gebruik voor een bepaalde werk ruimte om de opsplitsing van VM-families en de onderliggende clusters voor elk van deze families te bekijken.
+    + **Werkruimteweergave:** Hiermee u uw gebruik van kernquotum per werkruimte bekijken, uitbreiden per VM-familie en verder uitbreiden met de werkelijke clusternamen. Deze weergave is optimaal om snel in te gaan op de details van het kerngebruik voor een bepaalde werkruimte om de break-up door VM-families en verder door de onderliggende clusters voor elk van deze families te zien.
 
 ## <a name="request-quota-increases"></a>Verhogingen van quotum aanvragen
 
-Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) .
+Als u de limiet of het quotum boven de standaardlimiet wilt verhogen, opent u kosteloos [een online verzoek om klantenondersteuning.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)
 
-De limieten kunnen niet hoger zijn dan de maximum waarde die in de tabellen wordt weer gegeven. Als er geen maximum limiet is, heeft de resource geen aanpas bare limieten. In [Dit](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) artikel wordt het quotum verhogings proces uitgebreid beschreven.
+De limieten kunnen niet hoger worden dan de maximumwaarde in de tabellen. Als er geen maximumlimiet is, heeft de resource geen aanpasbare limieten. [Dit](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) artikel behandelt het proces van de quotaverhoging in meer detail.
 
-Bij het aanvragen van een quotaverhoging, moet u de service die u aanvraagt te verhogen van het quotum tegen te selecteren die services zoals Machine Learning-servicequotum, Container instances of quotum voor opslag kan worden. Naast Azure Machine Learning compute, kunt u op de knop **aanvraag quotum** klikken terwijl u het quotum bekijkt volgens de bovenstaande stappen.
+Wanneer u een quotumverhoging aanvraagt, moet u de service selecteren waarmee u het quotum wilt verhogen, wat services kunnen zijn zoals machine learning-servicequota, containerinstanties of opslagquotum. Bovendien u voor Azure Machine Learning Compute op de knop **Quota aanvragen** klikken terwijl u het quotum bekijkt dat de bovenstaande stappen volgt.
 
 > [!NOTE]
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](../billing/billing-upgrade-azure-subscription.md) en [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
+> [Gratis proefabonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet- of quotaverhogingen. Als u een [gratis proefabonnement hebt,](https://azure.microsoft.com/offers/ms-azr-0044p)u upgraden naar een [betalen per gebruik-abonnement.](https://azure.microsoft.com/offers/ms-azr-0003p/) Zie Veelgestelde [vragen](../billing/billing-upgrade-azure-subscription.md) over azure gratis proefversie upgraden naar veelgestelde vragen over een abonnement voor betalen per gebruik en gratis [proefabonnementen](https://azure.microsoft.com/free/free-account-faq).

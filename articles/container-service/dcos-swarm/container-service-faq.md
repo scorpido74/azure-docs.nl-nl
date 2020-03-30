@@ -10,10 +10,10 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887917"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(AFGESCHAFT) Veelgestelde vragen over Container Service
@@ -52,11 +52,11 @@ Voor meer informatie raadpleegt u ons [ondersteuningsbeleid voor containers](htt
 
 U kunt standaardprogramma's op uw besturingssysteem gebruiken om een sleutelpaar met openbare en privé-SSH RSA-sleutel te maken voor verificatie met de virtuele Linux-machines voor uw cluster. Raadpleeg de stappen voor [OS X en Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) of [Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 
-Als u Azure CLI-opdrachten gebruikt om een container service-cluster te implementeren, kunnen SSH-sleutels automatisch worden gegenereerd voor uw cluster.
+Als u Azure CLI-opdrachten gebruikt om een Container Service-cluster te implementeren, kunnen de SSH-sleutels automatisch worden gegenereerd voor uw cluster.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Hoe kan ik een service-principal maken voor mijn Kubernetes-cluster?
 
-Voor het maken van een Kubernetes-cluster in Azure Container Service zijn ook een id en wachtwoord nodig voor de service-principal van Azure Active Directory nodig. Zie [Over de service-principal voor een Kubernetes-cluster](../../container-service/kubernetes/container-service-kubernetes-service-principal.md) voor meer informatie.
+Voor het maken van een Kubernetes-cluster in Azure Container Service zijn ook een id en wachtwoord nodig voor de service-principal van Azure Active Directory nodig. Zie [Over de serviceprincipal voor een Kubernetes-cluster voor](../../container-service/kubernetes/container-service-kubernetes-service-principal.md)meer informatie.
 
 Als u [Azure CLI-opdrachten](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) gebruikt om een Kubernetes-cluster te implementeren, kunnen de referenties van de service-principal automatisch worden gegenereerd voor uw cluster.
 
@@ -112,9 +112,9 @@ ssh userName@masterFQDN –A –p 22 
 
 Zie [Verbinding maken met een Azure Container Service-cluster](../../container-service/kubernetes/container-service-connect.md) voor meer informatie.
 
-### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Mijn DNS-naamomzetting werkt niet in Windows. Wat zal ik doen?
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Mijn DNS-naamomzetting werkt niet in Windows. Wat moet ik doen?
 
-Er zijn enkele bekende DNS-problemen in Windows waarvan de oplossingen nog steeds actief zijn. Zorg ervoor dat u de meest recente ACS-engine en Windows-versie (met [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) en [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) geïnstalleerd) gebruikt, zodat uw omgeving hiervan kan profiteren. Zie anders de tabel hieronder voor oplossingsstappen:
+Er zijn een aantal bekende DNS-problemen op Windows waarvan de oplossingen nog steeds actief worden uitgefaseerd. Zorg ervoor dat u de meest bijgewerkte acs-engine en Windows-versie gebruikt (met [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) en [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) geïnstalleerd) zodat uw omgeving hiervan kan profiteren. Zie anders de tabel hieronder voor oplossingsstappen:
 
 | DNS-symptoom | Tijdelijke oplossing  |
 |-------------|-------------|

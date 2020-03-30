@@ -1,6 +1,6 @@
 ---
-title: IoT implementeren aangepaste gesimuleerde apparaten - Azure | Microsoft Docs
-description: In deze gebruiksaanwijzing ziet u hoe u aangepaste gesimuleerde apparaten in de oplossingsverbetering voor externe bewaking implementeert.
+title: IoT implementeert aangepaste gesimuleerde apparaten - Azure | Microsoft Documenten
+description: Deze handleiding laat u zien hoe u aangepaste gesimuleerde apparaten implementeert in de remote monitoring oplossingsversneller.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,63 +9,63 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66427565"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat implementeren
 
-De controle op afstand en Apparaatsimulatie oplossingsversnellers beide kunnen u uw eigen gesimuleerde apparaten definiëren. Dit artikel ziet u hoe u een aangepaste Koelunit apparaattype en een nieuwe gloeilamp apparaattype implementeert in de oplossingsverbetering voor externe controle.
+Met de oplossingen voor remote monitoring en apparaatsimulatie u beide uw eigen gesimuleerde apparaten definiëren. In dit artikel ziet u hoe u een aangepast type koelapparaat en een nieuw type gloeilampapparaat implementeert op de accelerator voor oplossingen voor externe bewaking.
 
-De stappen in dit artikel wordt ervan uitgegaan dat u hebt voltooid, de [maken en test een nieuw gesimuleerd apparaat](iot-accelerators-remote-monitoring-create-simulated-device.md) procedures begeleiden en de bestanden die de aangepaste Koelunit en nieuwe gloeilamp apparaattypen definiëren.
+De stappen in dit artikel gaan ervan uit dat u de handleiding [van het nieuwe gesimuleerde apparaat maken en testen,](iot-accelerators-remote-monitoring-create-simulated-device.md) de bestanden hebben die de aangepaste koeler en nieuwe typen gloeilampen definiëren.
 
-De stappen in deze handleiding leert u hoe aan:
+De stappen in deze handleiding laten u zien hoe u:
 
-1. SSH gebruiken voor toegang tot het bestandssysteem van de virtuele machine die als host fungeert voor de oplossingsverbetering voor externe controle.
+1. Gebruik SSH om toegang te krijgen tot het bestandssysteem van de virtuele machine die de remote monitoring oplossingsversneller host.
 
-1. Docker voor het laden van de apparaatmodellen uit een locatie buiten de Docker-container configureren.
+1. Configureer Docker om de apparaatmodellen te laden vanaf een locatie buiten de Docker-container.
 
-1. De oplossingsversnellers bewaking op afstand met behulp van aangepast apparaat modelbestanden worden uitgevoerd.
+1. Voer de remote monitoring oplossingsversneller uit met aangepaste apparaatmodelbestanden.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Voor de stappen in deze handleiding, hebt u een actief Azure-abonnement nodig.
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt in deze gebruiksaanwijzing volgen, hebt u het volgende nodig:
+Om deze handleiding te volgen, moet u het volgende volgen:
 
-- Een geïmplementeerd exemplaar van de [oplossingsverbetering voor externe controle](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
-- Een lokale **bash** shell om uit te voeren de `ssh` en `scp` opdrachten. Op Windows, een eenvoudige manier voor het installeren van **bash** is het installeren van [git](https://git-scm.com/download/win).
-- De bestanden van een aangepast apparaat model, zoals beschreven in die [maken en test een nieuw gesimuleerd apparaat](iot-accelerators-remote-monitoring-create-simulated-device.md).
+- Een geïmplementeerdexemplaar van de [remote monitoring oplossingsversneller](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
+- Een lokale **bash** shell `ssh` `scp` om de en commando's uit te voeren. Op Windows, een eenvoudige manier om **bash** te installeren is het installeren [van git](https://git-scm.com/download/win).
+- Uw aangepaste apparaatmodelbestanden, zoals die beschreven in [Een nieuw gesimuleerd apparaat maken en testen.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
 
 ## <a name="configure-docker"></a>Docker configureren
 
-In deze sectie configureert u Docker voor het laden van de bestanden voor het model van apparaat uit de **/tmp/devicemodels** map in de virtuele machine in plaats van vanaf binnen de Docker-container. Voer de opdrachten in deze sectie in een **bash** shell op uw lokale computer:
+In deze sectie configureert u Docker om de apparaatmodelbestanden te laden vanuit de map **/tmp/devicemodels** in de virtuele machine in plaats van vanuit de Docker-container. Voer de opdrachten in deze sectie uit in een **bashshell** op uw lokale machine:
 
-In deze sectie configureert u Docker voor het laden van de bestanden voor het model van apparaat uit de **/tmp/devicemodels** map in de virtuele machine in plaats van vanaf binnen de Docker-container. Voer de opdrachten in deze sectie in een **bash** shell op uw lokale computer:
+In deze sectie configureert u Docker om de apparaatmodelbestanden te laden vanuit de map **/tmp/devicemodels** in de virtuele machine in plaats van vanuit de Docker-container. Voer de opdrachten in deze sectie uit in een **bashshell** op uw lokale machine:
 
-1. Gebruik SSH verbinding maken met de virtuele machine in Azure vanuit uw lokale computer. De volgende opdracht wordt ervan uitgegaan dat het openbare IP-adres van de virtuele machine **vm-vikxv** is **104.41.128.108** --Vervang deze waarde door het openbare IP-adres van uw virtuele machine uit de vorige sectie:
+1. Gebruik SSH om verbinding te maken met de virtuele machine in Azure vanaf uw lokale machine. De volgende opdracht gaat ervan uit dat het openbare IP-adres van virtuele machine **vm-vikxv** **104.41.128.108** is - vervang deze waarde door het openbare IP-adres van uw virtuele machine uit de vorige sectie:
 
    ```sh
     ssh azureuser@104.41.128.108
     ```
 
-    Volg de aanwijzingen voor het aanmelden bij de virtuele machine met het wachtwoord die u in de vorige sectie instelt.
+    Volg de aanwijzingen om u aan te melden bij de virtuele machine met het wachtwoord dat u in de vorige sectie hebt ingesteld.
 
-1. Configureer de service van de simulatie apparaat voor het laden van de apparaatmodellen van buiten de container. De Docker-configuratiebestand voor het eerst opent:
+1. Configureer de apparaatsimulatieservice om de apparaatmodellen van buiten de container te laden. Open eerst het docker-configuratiebestand:
 
     ```sh
     sudo nano /app/docker-compose.yml
     ```
 
-    Ga naar de instellingen voor de **devicesimulation** container en bewerk de **volumes** instellen zoals wordt weergegeven in het volgende codefragment:
+    Zoek de instellingen voor de **apparaatsimulatiecontainer** en bewerk de **volume-instelling** zoals weergegeven in het volgende fragment:
 
     ```yml
     devicesimulation:
@@ -85,22 +85,22 @@ In deze sectie configureert u Docker voor het laden van de bestanden voor het mo
 
     Sla de wijzigingen op.
 
-1. Kopieer de bestanden van de bestaande apparaatstuurprogramma-model van de container naar de nieuwe locatie. Zoek eerst de container-ID voor de container van de simulatie van apparaat:
+1. Kopieer de bestaande apparaatmodelbestanden van de container naar de nieuwe locatie. Zoek eerst de container-ID voor de apparaatsimulatiecontainer:
 
     ```sh
     sudo docker ps
     ```
 
-    Kopieer de bestanden voor het model van apparaat naar de **tmp** map in de virtuele machine. De volgende opdracht wordt ervan uitgegaan dat de container-ID's c378d6878407--Vervang deze waarde door uw apparaat simulatie container-ID:
+    Kopieer vervolgens de apparaatmodelbestanden naar de **tmp-map** in de virtuele machine. Met de volgende opdracht wordt ervan uitgegaan dat de container-ID c378d6878407 is - vervang deze waarde door de container-ID van uw apparaatsimulatie:
 
     ```sh
     sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
     sudo chown -R azureuser /tmp/devicemodels/
     ```
 
-    Houd de **bash** -venster met de SSH-sessie geopend.
+    Houd het **bash-venster** open met uw SSH-sessie.
 
-1. Kopieer de bestanden van uw aangepaste apparaat model bij de virtuele machine. Voer deze opdracht uit in een andere **bash** shell op de computer waarop u uw aangepaste apparaatmodellen hebt gemaakt. Navigeer naar de lokale map met de JSON-bestanden van uw apparaat-model. De volgende opdrachten wordt ervan uitgegaan dat het openbare IP-adres van de virtuele machine is **104.41.128.108** --Vervang deze waarde door het openbare IP-adres van uw virtuele machine. Voer het wachtwoord van uw virtuele machine wanneer hierom wordt gevraagd:
+1. Kopieer uw aangepaste apparaatmodelbestanden naar de virtuele machine. Voer deze opdracht uit in een andere **bashshell** op de machine waar u uw aangepaste apparaatmodellen hebt gemaakt. Navigeer eerst naar de lokale map met JSON-bestanden van uw apparaatmodel. De volgende opdrachten gaan ervan uit dat het openbare IP-adres van de virtuele machine **104.41.128.108** is - vervang deze waarde door het openbare IP-adres van uw virtuele machine. Voer het wachtwoord van uw virtuele machine in wanneer u daarom wordt gevraagd:
 
     ```sh
     scp *json azureuser@104.41.128.108:/tmp/devicemodels
@@ -108,19 +108,19 @@ In deze sectie configureert u Docker voor het laden van de bestanden voor het mo
     scp *js azureuser@104.41.128.108:/tmp/devicemodels/scripts
     ```
 
-1. Start opnieuw op het apparaat simulatie Docker-container voor het gebruik van de nieuwe apparaatmodellen. Voer de volgende opdrachten de **bash** shell met de open SSH-sessie met de virtuele machine:
+1. Start de Docker-container voor apparaatsimulatie opnieuw om de nieuwe apparaatmodellen te gebruiken. Voer de volgende opdrachten in de **bashshell** uit met de open SSH-sessie naar de virtuele machine:
 
     ```sh
     sudo /app/start.sh
     ```
 
-    Als u zien van de status van de actieve Docker-containers en hun container-id's wilt, gebruikt u de volgende opdracht uit:
+    Als u de status van de met dockercontainers en hun container------iD's wilt zien, gebruikt u de volgende opdracht:
 
     ```sh
     sudo docker ps
     ```
 
-    Als u zien van het logboek van de container van de simulatie van apparaat wilt, de volgende opdracht uitvoeren. De container-ID vervangen door de ID van uw apparaat simuleren-container:
+    Als u het logboek vanuit de apparaatsimulatiecontainer wilt zien, voert u de volgende opdracht uit. Vervang de container-ID door de ID van uw apparaatsimulatiecontainer:
 
     ```sh
     sudo docker logs -f 5d3f3e78822e
@@ -128,20 +128,20 @@ In deze sectie configureert u Docker voor het laden van de bestanden voor het mo
 
 ## <a name="run-simulation"></a>Simulatie uitvoeren
 
-U kunt nu uw aangepaste modellen in de oplossing voor externe controle:
+U nu uw aangepaste apparaatmodellen gebruiken in de oplossing voor externe bewaking:
 
-1. Start uw dashboard externe controle van [Microsoft Azure IoT-oplossingsversnellers](https://www.azureiotsolutions.com/Accelerators#dashboard).
+1. Start uw dashboard voor externe bewaking vanaf [Microsoft Azure IoT Solution Accelerators.](https://www.azureiotsolutions.com/Accelerators#dashboard)
 
-1. Gebruik de **apparaten** pagina gesimuleerde apparaten toevoegen. Wanneer u een nieuw gesimuleerd apparaat toevoegt, wordt uw nieuwe apparaatmodellen zijn beschikbaar om te kiezen.
+1. Gebruik de pagina **Apparaten** om gesimuleerde apparaten toe te voegen. Wanneer u een nieuw gesimuleerd apparaat toevoegt, zijn uw nieuwe apparaatmodellen beschikbaar om te kiezen.
 
-1. Het dashboard kunt u telemetrie van apparaten weergeven en apparaatmethoden aanroepen.
+1. U het dashboard gebruiken om telemetrie en gespreksapparaatmethoden te bekijken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent te verder te verkennen, laat u de oplossingsversneller bewaking op afstand is geïmplementeerd.
+Als u van plan bent verder te verkennen, laat u de remote monitoring oplossingsversneller ingezet.
 
-Als u de oplossingsversneller niet meer nodig hebt, verwijderd uit de [ingericht oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) pagina door te selecteren en vervolgens te klikken op **oplossing verwijderen**.
+Als u de oplossingsversneller niet meer nodig hebt, verwijdert u deze van de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door deze te selecteren en vervolgens op **Oplossing verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze handleiding hebt u geleerd u aangepaste modellen implementeren op de oplossingsverbetering voor externe controle. De voorgestelde volgende stap is te leren hoe u [een echt apparaat verbinden met uw oplossing voor externe controle](iot-accelerators-connecting-devices-node.md).
+Deze handleiding toonde u hoe u aangepaste apparaatmodellen implementeert in de Remote Monitoring-oplossingsversneller. De voorgestelde volgende stap is om te leren hoe [u een echt apparaat aansluiten op uw oplossing voor bewaking op afstand.](iot-accelerators-connecting-devices-node.md)

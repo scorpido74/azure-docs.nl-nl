@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 7316dba7559c4a50e94771d69ce03bac51c0f3c2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774534"
 ---
-Ga vanuit een browser naar de [Portal](https://portal.azure.com/) en meld u aan met uw Azure-account.
+Navigeer vanuit een browser naar de [portal](https://portal.azure.com/) en meld u aan met uw Azure-account.
 
-Als u meerdere abonnementen hebt en abonnementen moet overschakelen:
+Als u meerdere abonnementen hebt en van abonnement moet wisselen:
 
-1. Klik op de knop profiel en kies vervolgens **overschakelen naar een andere map**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Selecteer een andere Directory](../media/choose-subscription-2.png)
-
-1. Kies een abonnement dat u wilt gebruiken voor het instellen van de peering.
+1. Klik op de profielknop en kies **Switch Directory**.
 
     > [!div class="mx-imgBorder"]
-    > ![abonnement kiezen](../media/choose-subscription-3.png)
+    > ![Schakelmap selecteren](../media/choose-subscription-2.png)
+
+1. Kies een abonnement dat u wilt gebruiken voor het instellen van peering.
+
+    > [!div class="mx-imgBorder"]
+    > ![Abonnement kiezen](../media/choose-subscription-3.png)

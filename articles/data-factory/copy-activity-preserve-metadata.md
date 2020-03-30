@@ -1,6 +1,6 @@
 ---
-title: Meta gegevens en Acl's behouden met Kopieer activiteit in Azure Data Factory
-description: Meer informatie over het bewaren van meta gegevens en Acl's tijdens het kopiëren met de Kopieer activiteit in Azure Data Factory.
+title: Metagegevens en ACL's behouden met kopieeractiviteit in Azure Data Factory
+description: Meer informatie over het bewaren van metagegevens en ACL's tijdens het kopiëren met kopieeractiviteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,38 +9,38 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: 056909f5fd5838e5ae50fb84bd3535029d862acf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79260837"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153825"
 ---
-#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Meta gegevens en Acl's behouden met Kopieer activiteit in Azure Data Factory
+#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metagegevens en ACL's behouden met kopieeractiviteit in Azure Data Factory
 
-Wanneer u Azure Data Factory Kopieer activiteit gebruikt om gegevens te kopiëren van bron naar sink, kunt u in de volgende scenario's ook de meta gegevens en Acl's behouden.
+Wanneer u Azure Data Factory activiteit kopieert om gegevens van bron naar gootsteen te kopiëren, u in de volgende scenario's ook de metagegevens en ACL's behouden.
 
-## <a name="preserve-metadata"></a>Meta gegevens voor Lake Migration behouden
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a>Metagegevens bewaren voor migratie van meer
 
-Wanneer u gegevens migreert van de ene data Lake naar een andere, met inbegrip van [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), kunt u ervoor kiezen om de meta gegevens van het bestand te behouden, samen met de gegevens.
+Wanneer u gegevens migreert van het ene gegevensmeer naar het andere, waaronder [Amazon S3,](connector-amazon-simple-storage-service.md) [Azure Blob](connector-azure-blob-storage.md)en Azure Data Lake [Storage Gen2,](connector-azure-data-lake-storage.md)u ervoor kiezen om de bestandsmetagegevens samen met gegevens te bewaren.
 
-De Kopieer activiteit biedt ondersteuning voor het behouden van de volgende kenmerken tijdens het kopiëren van de gegevens:
+Kopieeractiviteit ondersteunt het behouden van de volgende kenmerken tijdens het kopiëren van gegevens:
 
-- **Alle door de klant opgegeven meta gegevens** 
-- En de volgende **vijf ingebouwde systeem eigenschappen van het gegevens archief**: `contentType`, `contentLanguage` (behalve voor Amazon S3), `contentEncoding`, `contentDisposition``cacheControl`.
+- **Alle door de klant opgegeven metagegevens** 
+- En de volgende vijf data store `contentType` **ingebouwde systeemeigenschappen:**, `contentEncoding` `contentLanguage` `contentDisposition`(met uitzondering van Amazon S3), , , . `cacheControl`
 
-Wanneer u bestanden kopieert als-afkomstig van Amazon S3/Azure Data Lake Storage Gen2/Azure Blob naar Azure Data Lake Storage Gen2/Azure Blob met binaire indeling, kunt u de optie **behouden** vinden op het tabblad **Kopieer activiteit** > **instellingen** voor het ontwerpen van activiteiten of de pagina **instellingen** in gegevens kopiëren hulp programma.
+Wanneer u bestanden as-is kopieert van Amazon S3/Azure Data Lake Storage Gen2/Azure Blob naar Azure Data Lake Storage Gen2/Azure Blob met binaire indeling, u de optie **Behouden** vinden op het tabblad **Activiteitsinstellingen** > **Settings** kopiëren voor het maken van activiteiten of de pagina **Instellingen** in Kopieergegevenshulpprogramma.
 
-![De meta gegevens van de Kopieer activiteit behouden](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
+![Metagegevens voor het behouden van activiteiten kopiëren](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 
-Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zie `preserve`): 
+Hier is een voorbeeld van kopieeractiviteit `preserve`JSON configuratie (zie): 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveMetadata",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -76,34 +76,34 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
 ]
 ```
 
-## <a name="preserve-acls"></a>Acl's van Data Lake Storage Gen1 op Gen2 bewaren
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a>ACL's behouden van Data Lake Storage Gen1/Gen2 tot Gen2
 
-Wanneer u een upgrade uitvoert van Azure Data Lake Storage Gen1 naar Gen2, kunt u ervoor kiezen om de POSIX Access Control Lists (Acl's) samen met gegevens bestanden te bewaren. Zie voor meer informatie over toegangs beheer [toegangs beheer in azure data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md) en [toegangs beheer in azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+Wanneer u een upgrade uitvoert van Azure Data Lake Storage Gen1 naar Gen2 of gegevens kopieert tussen ADLS Gen2, u ervoor kiezen om de POSIX access control lists (ACL's) samen met gegevensbestanden te behouden. Zie [Toegangsbeheer in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) en [Toegangsbeheer in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md)voor meer informatie over toegangsbeheer.
 
-De Kopieer activiteit ondersteunt het behouden van de volgende typen Acl's tijdens het kopiëren van de gegevens. U kunt een of meer typen selecteren:
+Kopieeractiviteit ondersteunt het behouden van de volgende typen ACL's tijdens het kopiëren van gegevens. U een of meer typen selecteren:
 
-- **ACL**: de POSIX-toegangs beheer lijsten voor bestanden en mappen kopiëren en bewaren. Hiermee worden de volledige bestaande Acl's van de bron naar de Sink gekopieerd. 
-- **Eigenaar**: de gebruiker die eigenaar is van bestanden en mappen kopiëren en bewaren. Super gebruikers hebben toegang tot Sink Data Lake Storage Gen2 vereist.
-- **Groep**: Kopieer en bewaar de groep die eigenaar is van bestanden en mappen. Super gebruikers hebben toegang tot Sink Data Lake Storage Gen2 of de gebruiker die eigenaar is (als de gebruiker die eigenaar is ook lid is van de doel groep) is vereist.
+- **ACL**: PoSIX-toegangscontrolelijsten kopiëren en bewaren op bestanden en mappen. Het kopieert de volledige bestaande ACL's van bron naar gootsteen. 
+- **Eigenaar**: Kopieer en bewaar de eigenaar van bestanden en mappen. Super-user toegang tot sink Data Lake Storage Gen2 is vereist.
+- **Groep**: Kopieer en bewaar de groep bestanden en mappen. Super-user toegang tot sink Data Lake Storage Gen2 of de eigenaar gebruiker (als de eigenaar gebruiker is ook een lid van de doelgroep) is vereist.
 
-Als u opgeeft dat u wilt kopiëren vanuit een map, Data Factory repliceert de Acl's voor die betreffende map en de bestanden en mappen daaronder als `recursive` is ingesteld op True. Als u opgeeft dat u vanuit één bestand wilt kopiëren, worden de Acl's voor dat bestand gekopieerd.
+Als u opgeeft te kopiëren uit een map, repliceert Data Factory de ACL's voor die map en de bestanden en mappen eronder, als `recursive` deze is ingesteld op true. Als u opgeeft dat u uit één bestand wilt kopiëren, worden de ACL's in dat bestand gekopieerd.
 
 >[!NOTE]
->Wanneer u ADF gebruikt voor het behouden van de Acl's van Data Lake Storage Gen1 naar Gen2, worden de bestaande Acl's op Gen2's bijbehorende map/bestanden overschreven.
+>Wanneer u ADF gebruikt om ACL's te behouden van Data Lake Storage Gen1/Gen2 tot Gen2, worden de bestaande ACL's op de bijbehorende map/bestanden van Sink Gen2 overschreven.
 
 >[!IMPORTANT]
->Wanneer u ervoor kiest om Acl's te behouden, moet u ervoor zorgen dat u Maxi maal voldoende machtigingen voor Data Factory verleent voor het uitvoeren van uw Sink Data Lake Storage Gen2-account. Gebruik bijvoorbeeld account sleutel verificatie of wijs de rol Storage BLOB data owner toe aan de service-principal of beheerde identiteit.
+>Wanneer u ervoor kiest acl.n. te behouden, moet u ervoor zorgen dat u voldoende machtigingen verleent voor Data Factory om te werken tegen uw sink Data Lake Storage Gen2-account. Gebruik bijvoorbeeld accountsleutelverificatie of wijs de rol Storage Blob Data Owner toe aan de serviceprincipal of beheerde identiteit.
 
-Wanneer u bron configureert als Data Lake Storage Gen1 met binaire indeling of de optie voor binaire kopieën, en u de optie Sink als Data Lake Storage Gen2 met binaire indeling of binaire kopie hebt ingesteld, kunt u de optie **behouden** vinden op de pagina **instellingen** in gegevens kopiëren hulp programma of op het tabblad **Kopieer activiteit** > **instellingen** voor het ontwerpen van een activiteit.
+Wanneer u bron configureert als Data Lake Storage Gen1/Gen2 met binaire indeling of de binaire kopieeroptie en zinkt als Data Lake Storage Gen2 met binaire indeling of de binaire kopieoptie, u de optie **Behouden** vinden op de pagina **Instellingen** in Kopieergegevensgereedschap of op het tabblad **Activiteitsinstellingen** > **Settings** kopiëren voor activiteitenontwerpen.
 
-![Data Lake Storage Gen1 Gen2-ACL behouden](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+![Data Lake Storage Gen1/Gen2 naar Gen2 Behouden ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
-Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zie `preserve`): 
+Hier is een voorbeeld van kopieeractiviteit `preserve`JSON configuratie (zie): 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveACLs",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -127,7 +127,7 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
         },
         "inputs": [
             {
-                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1 source>",
+                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1/Gen2 source>",
                 "type": "DatasetReference"
             }
         ],
@@ -143,7 +143,7 @@ Hier volgt een voor beeld van de JSON-configuratie van de Kopieer activiteit (Zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de andere artikelen van de Kopieeractiviteit:
+Zie de andere artikelen Copy Activity:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
-- [Prestaties van Kopieer activiteit](copy-activity-performance.md)
+- [Overzicht van activiteit kopiëren](copy-activity-overview.md)
+- [Activiteitsprestaties kopiëren](copy-activity-performance.md)

@@ -1,6 +1,6 @@
 ---
-title: Toegang tot de app & bronnen beheren met groepen-Azure AD
-description: Meer informatie over het beheren van toegang tot de cloud gebaseerde apps, on-premises toepassingen en bronnen met behulp van Azure Active Directory-groepen van uw organisatie.
+title: App &-brontoegang beheren met groepen - Azure AD
+description: Meer informatie over het beheren van toegang tot de cloudgebaseerde apps, on-premises apps en resources van uw organisatie met Azure Active Directory-groepen.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,57 +14,57 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768007"
 ---
-# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>App- en resource-toegang met behulp van Azure Active Directory-groepen beheren
-Met Azure Active Directory (Azure AD) kunt u groepen gebruiken om de toegang tot uw Cloud-apps, on-premises apps en uw resources te beheren. Uw resources kunnen deel uitmaken van de Azure AD-organisatie, zoals machtigingen voor het beheren van objecten via rollen in azure AD, of externe naar de organisatie, zoals voor SaaS-apps (Software as a Service), Azure-Services, share point-sites en on-premises resources.
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Toegang tot apps en resources beheren met Azure Active Directory-groepen
+Met Azure Active Directory (Azure AD) u groepen gebruiken om toegang te beheren tot uw cloudgebaseerde apps, on-premises apps en uw resources. Uw resources kunnen deel uitmaken van de Azure AD-organisatie, zoals machtigingen voor het beheren van objecten via rollen in Azure AD of extern aan de organisatie, zoals voor SaaS-apps (Software as a Service), Azure-services, SharePoint-sites en on-premises bronnen.
 
 >[!NOTE]
 >U hebt een Azure-account nodig voor het gebruik van Azure Active Directory. Als u nog geen account hebt, kunt u [zich registreren voor een gratis Azure-account](https://azure.microsoft.com/free/).
 >
-> In de Azure Portal ziet u enkele groepen waarvan u de lidmaatschaps-en groeps gegevens niet kunt beheren in de portal:
+> In de Azure-portal u enkele groepen zien waarvan u het lidmaatschap en de groepsgegevens niet beheren in de portal:
 >
-> - Groepen die zijn gesynchroniseerd vanuit on-premises Active Directory, kunnen alleen worden beheerd in on-premises Active Directory.
-> - Andere groeps typen, zoals distributie lijsten en beveiligings groepen met e-mail functionaliteit, worden alleen beheerd in Exchange-beheer centrum of Microsoft 365 beheer centrum. U moet zich aanmelden bij Exchange-beheer centrum of Microsoft 365-beheer centrum om deze groepen te beheren.
+> - Groepen die worden gesynchroniseerd vanuit on-premises Active Directory, kunnen alleen worden beheerd in on-premises Active Directory.
+> - Andere groepstypen, zoals distributielijsten en beveiligingsgroepen met e-mail, worden alleen beheerd in het Exchange-beheercentrum of het Microsoft 365-beheercentrum. U moet zich aanmelden bij het Exchange-beheercentrum of het Microsoft 365-beheercentrum om deze groepen te beheren.
 
-## <a name="how-access-management-in-azure-ad-works"></a>Hoe toegangs beheer in azure AD werkt
+## <a name="how-access-management-in-azure-ad-works"></a>Hoe toegangsbeheer in Azure AD werkt
 
-Azure AD kunt u toegang geven tot resources van uw organisatie door te geven van de rechten voor één gebruiker of groep met een hele Azure AD. Met behulp van groepen, kunt de resource-eigenaar (of de eigenaar van de Azure AD-directory), een reeks machtigingen toewijzen aan alle leden van de groep, in plaats van deze op te geven van de rechten één voor één. De eigenaar van de resource of directory kan ook rights management voor de lijst met leden geven aan iemand anders, zoals de afdelingsmanager van een of Helpdesk-beheerder, zodat deze persoon toevoegen en verwijderen van leden, indien nodig. Zie voor meer informatie over het beheren van groepseigenaren [eigenaren van groepen beheren](active-directory-accessmanagement-managing-group-owners.md)
+Azure AD helpt u toegang te geven tot de bronnen van uw organisatie door toegangsrechten te bieden aan één gebruiker of aan een hele Azure AD-groep. Met behulp van groepen kan de resource-eigenaar (of de Azure AD-Directory-eigenaar) een reeks toegangsmachtigingen toewijzen aan alle leden van de groep, in plaats van de rechten één voor één te verstrekken. De bron- of directory-eigenaar kan ook beheerrechten voor de ledenlijst aan iemand anders geven, zoals een afdelingsmanager of een helpdeskbeheerder, zodat die persoon desnoodzaak leden kan toevoegen en verwijderen. Zie Groepseigenaren beheren voor meer informatie over het beheren [van groepseigenaren](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Schema van toegangsbeheer in Azure Active Directory](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
-## <a name="ways-to-assign-access-rights"></a>Methoden voor het toewijzen van rechten
+## <a name="ways-to-assign-access-rights"></a>Manieren om toegangsrechten toe te wijzen
 
-Er zijn vier manieren om toe te wijzen resource toegangsrechten aan uw gebruikers:
+Er zijn vier manieren om brontoegangsrechten toe te wijzen aan uw gebruikers:
 
-- **Rechtstreekse toewijzing toe.** De gebruiker de resource-eigenaar rechtstreeks toegewezen aan de resource.
+- **Directe opdracht.** De eigenaar van de resource wijst de gebruiker rechtstreeks toe aan de bron.
 
-- **Toewijzing van de groep.** De resource-eigenaar wijst een Azure AD-groep toe aan de resource, waarmee automatisch alle van de groep leden toegang tot de resource. Lidmaatschap van groep wordt beheerd door zowel de Groepseigenaar van de en de resource-eigenaar, zodat de eigenaar toevoegen of verwijderen van leden uit de groep. Zie voor meer informatie over het toevoegen of verwijderen van het groepslidmaatschap [hoe: toevoegen of verwijderen van een groep uit een andere groep met behulp van de Azure Active Directory-portal](active-directory-groups-membership-azure-portal.md). 
+- **Groepsopdracht.** De eigenaar van de resource wijst een Azure AD-groep toe aan de bron, waardoor alle groepsleden automatisch toegang krijgen tot de bron. Het groepslidmaatschap wordt beheerd door zowel de eigenaar van de groep als de eigenaar van de bron, zodat de eigenaar leden uit de groep kan toevoegen of verwijderen. Zie [Een groep toevoegen of verwijderen uit een andere groep toevoegen of verwijderen met behulp van de Azure Active Directory-portal](active-directory-groups-membership-azure-portal.md)voor meer informatie over het toevoegen of verwijderen van groepslidmaatschap. 
 
-- **Toewijzing op basis van een regel.** De resource-eigenaar een groep maakt en gebruikt een regel voor het definiëren welke gebruikers zijn toegewezen aan een specifieke resource. De regel is gebaseerd op kenmerken die zijn toegewezen aan individuele gebruikers. De resource-eigenaar beheert de regel, waarmee wordt bepaald welke kenmerken en waarden vereist zijn voor toegang tot de resource. Zie voor meer informatie, [een dynamische groep maken en de status controleren](../users-groups-roles/groups-create-rule.md).
+- **Op regels gebaseerde toewijzing.** De eigenaar van de resource maakt een groep en gebruikt een regel om te bepalen welke gebruikers aan een specifieke bron zijn toegewezen. De regel is gebaseerd op kenmerken die zijn toegewezen aan individuele gebruikers. De eigenaar van de resource beheert de regel en bepaalt welke kenmerken en waarden nodig zijn om toegang tot de bron toe te staan. Zie [Een dynamische groep maken en status controleren voor](../users-groups-roles/groups-create-rule.md)meer informatie.
 
-    U kunt ook deze korte video voor een korte uitleg over het maken en gebruiken van dynamische groepen bekijken:
+    U deze korte video ook bekijken voor een snelle uitleg over het maken en gebruiken van dynamische groepen:
 
     >[!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
 
-- **Toewijzing van externe-instantie.** Er is toegang afkomstig van een externe bron, zoals een on-premises directory of een SaaS-app. In dit geval de resource-eigenaar wijst een groep voor toegang tot de resource en vervolgens de leden van de groep voor het beheren van de externe bron.
+- **Opdracht van externe autoriteiten.** Toegang is afkomstig van een externe bron, zoals een on-premises directory of een SaaS-app. In deze situatie wijst de eigenaar van de resource een groep toe om toegang te bieden tot de bron en vervolgens beheert de externe bron de groepsleden.
 
    ![Schema van toegangsbeheer](./media/active-directory-manage-groups/access-management-overview.png)
 
-## <a name="can-users-join-groups-without-being-assigned"></a>Gebruikers kunnen lid groepen zonder te worden toegewezen?
-De eigenaar van de groep kunt toestaan dat gebruikers hun eigen groepen om toe te voegen, in plaats van ze toe te wijzen. De eigenaar van de kunt ook instellen van de groep alle gebruikers die deelnemen aan automatisch accepteren of goedkeuring vereisen.
+## <a name="can-users-join-groups-without-being-assigned"></a>Kunnen gebruikers lid worden van groepen zonder te worden toegewezen?
+De eigenaar van de groep kan gebruikers hun eigen groepen laten vinden om lid te worden, in plaats van ze toe te voegen. De eigenaar kan de groep ook zo instellen dat alle gebruikers die lid worden of goedkeuring nodig hebben, automatisch worden geaccepteerd.
 
-Nadat een gebruiker aanvragen voor deelname aan een groep, wordt de aanvraag doorgestuurd naar de eigenaar van de groep. Als dit vereist is, de eigenaar van de aanvraag kan goedkeuren en de gebruiker wordt op de hoogte gesteld van het groepslidmaatschap. Echter, als u meerdere eigenaars hebben en een van beide disapproves, de gebruiker op de hoogte is gesteld, maar is niet toegevoegd aan de groep. Zie voor meer informatie en instructies over het kunnen uw gebruikers vragen om toe te voegen groepen [Azure AD instellen, zodat gebruikers aanvragen kunnen voor deelname aan groepen](../users-groups-roles/groups-self-service-management.md)
+Nadat een gebruiker een groepslid heeft aangevraagd, wordt de aanvraag doorgestuurd naar de eigenaar van de groep. Als dit nodig is, kan de eigenaar het verzoek goedkeuren en wordt de gebruiker op de hoogte gesteld van het groepslidmaatschap. Als u echter meerdere eigenaren hebt en een van hen afkeurt, wordt de gebruiker hiervan op de hoogte gesteld, maar wordt deze niet aan de groep toegevoegd. Zie [Azure AD instellen zodat gebruikers kunnen vragen om lid te worden van groepen voor](../users-groups-roles/groups-self-service-management.md) meer informatie en instructies over het aanvragen van uw gebruikers om lid te worden van groepen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u een deel van een inleiding tot beheer van toegang met behulp van groepen hebt, start u uw resources en -apps beheren.
+Nu u een beetje een inleiding tot toegangsbeheer met behulp van groepen hebt, begint u uw resources en apps te beheren.
 
-- [Maak een nieuwe groep met behulp van Azure Active Directory](active-directory-groups-create-azure-portal.md) of [maken en beheren van een nieuwe groep met behulp van PowerShell-cmdlets](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Een nieuwe groep maken met Azure Active Directory](active-directory-groups-create-azure-portal.md) of Een nieuwe groep maken en beheren met [PowerShell-cmdlets](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-- [Groepen gebruiken voor toegang tot een geïntegreerde SaaS-app toewijzen](../users-groups-roles/groups-saasapps.md)
+- [Groepen gebruiken om toegang toe te wijzen aan een geïntegreerde SaaS-app](../users-groups-roles/groups-saasapps.md)
 
-- [De groep van een on-premises naar Azure met Azure AD Connect synchroniseren](../hybrid/whatis-hybrid-identity.md)
+- [Een on-premises groep synchroniseren met Azure met Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

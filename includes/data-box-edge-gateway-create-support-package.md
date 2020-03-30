@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176494"
 ---
-Als u eventuele problemen met het apparaat ondervindt, kunt u een ondersteuningspakket maken in het systeemlogboek in Logboeken. Microsoft Support maakt gebruik van dit pakket om de problemen op te. Volg deze stappen voor een ondersteuningspakket maken:
+Als u apparaatproblemen ondervindt, u een ondersteuningspakket maken op basis van de systeemlogboeken. Microsoft Support gebruikt dit pakket om de problemen op te lossen. Volg de volgende stappen om een ondersteuningspakket te maken:
 
-1. [Verbinding maken met de PowerShell-interface van uw apparaat](#connect-to-the-powershell-interface).
-2. Gebruik de `Get-HcsNodeSupportPackage` opdracht een ondersteuningspakket maken. Het gebruik van de cmdlet is als volgt:
+1. [Maak verbinding met de PowerShell-interface van uw apparaat.](#connect-to-the-powershell-interface)
+2. Gebruik `Get-HcsNodeSupportPackage` de opdracht om een ondersteuningspakket te maken. Het gebruik van de cmdlet is als volgt:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ Als u eventuele problemen met het apparaat ondervindt, kunt u een ondersteunings
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    De cmdlet. het verzamelt logboeken van uw apparaat en deze logboeken worden gekopieerd naar een opgegeven netwerk of een lokale share.
+    De cmdlet verzamelt logboeken van uw apparaat en kopieert deze logboeken naar een opgegeven netwerk of lokaal aandeel.
 
-    De parameters die worden gebruikt zijn als volgt:
+    De gebruikte parameters zijn als volgt:
 
-    - `-Path` -Geef op het netwerk of het lokale pad naar het ondersteuningspakket te kopiëren. (vereist)
-    - `-Credential` -Geef de referenties voor toegang tot het beveiligde pad.
-    - `-Zip` -Geef voor het genereren van een zip-bestand.
-    - `-Include` -Geef zodanig dat de onderdelen moeten worden opgenomen in het ondersteuningspakket met. Indien niet opgegeven, `Default` wordt uitgegaan.
-    - `-IncludeArchived` -Geef zodat gearchiveerde logboeken die u in het ondersteuningspakket met.
-    - `-IncludePeriodicStats` -Geef om op te nemen van periodieke stat Logboeken in het ondersteuningspakket met.
+    - `-Path`- Geef het netwerk of het lokale pad op waarnaar u het ondersteuningspakket wilt kopiëren. (verplicht)
+    - `-Credential`- Geef de referenties op om toegang te krijgen tot het beveiligde pad.
+    - `-Zip`- Geef op om een zip-bestand te genereren.
+    - `-Include`- Geef op de onderdelen op te nemen die in het ondersteuningspakket moeten worden opgenomen. Indien niet `Default` opgegeven, wordt aangenomen.
+    - `-IncludeArchived`- Geef op om gearchiveerde logboeken op te nemen in het ondersteuningspakket.
+    - `-IncludePeriodicStats`- Geef op om periodieke stat-logboeken op te nemen in het ondersteuningspakket.
 
     

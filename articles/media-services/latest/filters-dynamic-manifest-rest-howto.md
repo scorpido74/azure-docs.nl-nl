@@ -1,6 +1,6 @@
 ---
 title: Filters maken met Azure Media Services v3 REST API
-description: In dit onderwerp wordt beschreven hoe u filters maken, zodat de client voor het specifieke secties van de stroom van een stroom gebruiken kunt. Media Services wordt gemaakt dynamische manifesten voor het bereiken van deze selectief streaming.
+description: In dit onderwerp wordt beschreven hoe u filters maakt, zodat uw client deze kan gebruiken om specifieke secties van een stream te streamen. Media Services creëert dynamische manifesten om deze selectieve streaming te bereiken.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780331"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Filters maken met Media Services REST API
 
-Wanneer uw inhoud levert aan klanten (streaming Live gebeurtenissen of Video on Demand) is de client mogelijk meer flexibiliteit dan wat wordt beschreven in het manifestbestand van de standaard-asset. Azure Media Services kunt u accountfilters en filters actief voor uw inhoud definiëren. 
+Wanneer uw klant uw inhoud aan klanten levert (live-gebeurtenissen streamen of Video on Demand) heeft uw klant mogelijk meer flexibiliteit nodig dan wat wordt beschreven in het manifestbestand van het standaardassetbestand. Met Azure Media Services u accountfilters en assetfilters voor uw inhoud definiëren. 
 
-Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
+Zie [Dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waar deze wordt gebruikt.
 
-Dit onderwerp wordt beschreven hoe u een filter te definiëren voor een Video op aanvraag asset en REST-API's gebruiken om te maken [Accountfilters](https://docs.microsoft.com/rest/api/media/accountfilters) en [Asset Filters](https://docs.microsoft.com/rest/api/media/assetfilters). 
+In dit onderwerp wordt uitgelegd hoe u een filter voor een Video on Demand-asset definieert en REST-API's gebruikt om [accountfilters](https://docs.microsoft.com/rest/api/media/accountfilters) en [-activafilters te](https://docs.microsoft.com/rest/api/media/assetfilters)maken. 
 
 > [!NOTE]
-> Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
+> Controleer de [presentatieTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Als u wilt de in dit onderwerp beschreven stappen hebt voltooid, hebt u naar:
+Als u de in dit onderwerp beschreven stappen wilt voltooien, moet u het volgende doen:
 
-- Beoordeling [Filters en dynamische manifesten](filters-dynamic-manifest-overview.md).
-- [Postman configureren voor Azure Media Services REST API-aanroepen](media-rest-apis-with-postman.md).
+- [Filters en dynamische manifesten bekijken](filters-dynamic-manifest-overview.md).
+- [Postman configureren voor API-aanroepen van Azure Media Services REST](media-rest-apis-with-postman.md).
 
-    Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
+    Volg de laatste stap in het onderwerp [Azure AD-token opvragen](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
-## <a name="define-a-filter"></a>Definieer een filter  
+## <a name="define-a-filter"></a>Een filter definiëren  
 
-Hieronder volgt de **aanvraagtekst** voorbeeld waarin de track selectie voorwaarden die zijn toegevoegd aan het manifest. Dit filter bevat audio tracks die EC-3 zijn en video tracks met bitsnelheid in het 0-1000000-bereik.
+Het volgende is het voorbeeld van de **instantie Van Aanvraag** dat de trainingsselectievoorwaarden definieert die aan het manifest worden toegevoegd. Dit filter bevat alle audiotracks die EC-3 zijn en alle videotracks die bitrate hebben in het 0-1000000-bereik.
 
 ```json
 {
@@ -83,51 +83,51 @@ Hieronder volgt de **aanvraagtekst** voorbeeld waarin de track selectie voorwaar
 
 ## <a name="create-account-filters"></a>Accountfilters maken
 
-Selecteer in van de Postman-verzameling die u hebt gedownload, **Accountfilters**->**maken of bijwerken van een Account-Filter**.
+Selecteer **accountfilters**->**maken of bijwerken van een accountfilter**in de verzameling van de postbode die u hebt gedownload.
 
-De **plaatsen** HTTP-aanvraagmethode is vergelijkbaar met:
+De **METHODE VOOR HET PUT** HTTP-verzoek is vergelijkbaar met:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-Selecteer de **hoofdtekst** tabblad en plak de json-code u [eerder hebt gedefinieerd](#define-a-filter).
+Selecteer het tabblad **Hoofdlichaam** en plak de json-code die u [eerder hebt gedefinieerd.](#define-a-filter)
 
 Selecteer **Verzenden**. 
 
 Het filter is gemaakt.
 
-Zie voor meer informatie, [maken of bijwerken](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Zie ook [JSON-voorbeelden voor filters](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Zie [Maken of bijwerken voor](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)meer informatie. Zie ook [JSON-voorbeelden voor filters](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
-## <a name="create-asset-filters"></a>Asset-filters maken  
+## <a name="create-asset-filters"></a>Assetfilters maken  
 
-Selecteer in de Postman-verzameling Media Services v3 die u hebt gedownload **activa**->**activa filter maken of bijwerken**.
+Selecteer **Assets**->**Create of update**Asset Filter in de postmanverzameling 'Media Services v3' die u hebt gedownload.
 
-De **plaatsen** HTTP-aanvraagmethode is vergelijkbaar met:
+De **METHODE VOOR HET PUT** HTTP-verzoek is vergelijkbaar met:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-Selecteer de **hoofdtekst** tabblad en plak de json-code u [eerder hebt gedefinieerd](#define-a-filter).
+Selecteer het tabblad **Hoofdlichaam** en plak de json-code die u [eerder hebt gedefinieerd.](#define-a-filter)
 
 Selecteer **Verzenden**. 
 
-Het filter asset is gemaakt.
+Het assetfilter is gemaakt.
 
-Zie voor meer informatie over het maken of bijwerken van de asset filters [maken of bijwerken](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Zie ook [JSON-voorbeelden voor filters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Zie [Assetfilters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)maken of bijwerken voor meer informatie over het maken of bijwerken van assetfilters. Zie ook [JSON-voorbeelden voor filters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
-## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan streaming-Locator
+## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan Streaming Locator
 
-U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
+U een lijst met activa- of accountfilters opgeven, die van toepassing zou zijn op uw streaminglocator. De [Dynamic Packager (Streaming Endpoint)](dynamic-packaging-overview.md) past deze lijst met filters toe samen met de filters die uw client in de URL opgeeft. Deze combinatie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md), dat is gebaseerd op filters in de URL + filters die u opgeeft op Streaming Locator. We raden u aan deze functie te gebruiken als u filters wilt toepassen, maar de filternamen in de URL niet wilt blootleggen.
 
-Als u filters met een streaming-Locator wilt maken en koppelen met behulp van REST, gebruikt u de [streams](https://docs.microsoft.com/rest/api/media/streaminglocators/create) voor het maken van een API en geeft u `properties.filters` op in de [aanvraag tekst](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body).
+Als u filters wilt maken en koppelen aan een streaminglocator met REST, gebruikt u de [Streaming Locators - API maken](https://docs.microsoft.com/rest/api/media/streaminglocators/create) en opgeven `properties.filters` in de [aanvraaginstantie.](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)
                                 
 ## <a name="stream-using-filters"></a>Streamen met filters
 
-Zodra u filters hebt gedefinieerd, kunnen uw clients deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op Adaptive Bitrate Streaming protocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
+Zodra u filters hebt gedefinieerd, kunnen uw klanten deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op adaptieve bitrate streaming protocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
 
-In de volgende tabel ziet u enkele voor beelden van Url's met filters:
+In de volgende tabel worden enkele voorbeelden van URL's met filters weergegeven:
 
 |Protocol|Voorbeeld|
 |---|---|
@@ -137,4 +137,4 @@ In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Stream-video 's](stream-files-tutorial-with-rest.md) 
+[Video's streamen](stream-files-tutorial-with-rest.md) 

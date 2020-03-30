@@ -1,6 +1,6 @@
 ---
 title: Team Data Science Process projectplanning
-description: Microsoft Project en Excel-sjablonen die u helpen plannen en beheren van data science-projecten.
+description: Microsoft Project- en Excel-sjablonen waarmee u data science-projecten plannen en beheren.
 author: marktab
 manager: marktab
 editor: marktab
@@ -12,53 +12,53 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864227"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process projectplanning
 
-Het Team Data Science Process (TDSP) biedt een levenscyclus voor de ontwikkeling van uw data science-projecten structureren. Dit artikel bevat koppelingen naar Microsoft Project en Excel-sjablonen die u helpen bij plannen en beheren van deze projectfasen.
+Het Team Data Science Process (TDSP) biedt een levenscyclus om de ontwikkeling van uw data science-projecten te structureren. In dit artikel vindt u koppelingen naar Microsoft Project- en Excel-sjablonen waarmee u deze projectfasen plannen en beheren.
 
-De levenscyclus van geeft een overzicht van de belangrijke fasen die projecten doorgaans worden uitgevoerd, vaak iteratief:
+De levenscyclus schetst de belangrijkste fasen die projecten doorgaans uitvoeren, vaak iteratief:
 
-- Inzicht in het bedrijf
-- Gegevens verzamelen en begrijpen
+- Bedrijfsinzicht
+- Gegevensverwerving en -inzicht
 - Modelleren
 - Implementatie
-- Aanvaarding van de klant
+- Acceptatie door de klant
 
-Zie voor beschrijvingen van elk van deze fasen [levenscyclus van het Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Zie De levenscyclus van [het Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle)voor beschrijvingen van elk van deze fasen.
 
  
 ## <a name="microsoft-project-template"></a>Microsoft Project-sjabloon
 
-De Microsoft-projectsjabloon, maken voor het Team Data Science Process is hier beschikbaar: [Microsoft Project-sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+De Microsoft Project-sjabloon voor het Team Data Science-proces is hier beschikbaar: [Microsoft Project-sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
-Klik op de koppeling aan de linkerkant voor de TDSP bij het openen van het abonnement. Wijzig de naam en beschrijving en voeg vervolgens in alle andere Teamresources die u nodig hebt. Maak een schatting van de datums van uw ervaring is vereist.
+Wanneer u het plan opent, klikt u op de koppeling helemaal links voor de TDSP. Wijzig de naam en beschrijving en voeg vervolgens alle andere teambronnen toe die u nodig hebt. Schat de data die nodig zijn uit uw ervaring.
 
 ![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
-Elke taak heeft een opmerking. Deze taken uit om te zien welke resources al zijn gemaakt voor u geopend.
+Elke taak heeft een notitie. Open deze taken om te zien welke bronnen al voor u zijn gemaakt.
 
 ![2](./media/team-data-science-process-project-templates/ms-project-template-task.png)
 
 
 ## <a name="excel-template"></a>Excel-sjabloon
 
-Als geen toegang hebt tot Microsoft Project, een Excel-werkblad met de dezelfde gegevens zijn ook hier downloaden: [Excel sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) kun je ook hierbij het naar welke hulpprogramma die u wilt gebruiken.
+Als u geen toegang hebt tot Microsoft Project, is een Excel-werkblad met dezelfde gegevens hier ook beschikbaar om te downloaden: [Excel-sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) U het intrekken in het gereedschap dat u het liefst gebruikt.
 
-Deze sjablonen gebruiken voor uw eigen risico. De [gebruikelijke disclaimers](https://www.gnu.org/licenses/gpl-3.0.en.html) toepassen.
+Gebruik deze sjablonen op eigen risico. De [gebruikelijke disclaimers](https://www.gnu.org/licenses/gpl-3.0.en.html) zijn van toepassing.
 
-## <a name="repository-template"></a>Sjabloon van de opslagplaats
+## <a name="repository-template"></a>Sjabloon repository
 
-Gebruik deze [project sjabloonopslagplaats](https://github.com/Azure/Azure-TDSP-ProjectTemplate) ter ondersteuning van efficiënte projectuitvoering en samenwerking. Deze opslagplaats beschikt u over een gestandaardiseerde directory-structuur en het document sjablonen die u kunt gebruiken voor uw eigen TDSP-project.
+Gebruik deze [projectsjabloonrepository](https://github.com/Azure/Azure-TDSP-ProjectTemplate) om efficiënte projectuitvoering en samenwerking te ondersteunen. Deze repository biedt u een gestandaardiseerde directorystructuur en documentsjablonen die u gebruiken voor uw eigen TDSP-project.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Flexibele ontwikkeling van data Science-projecten](agile-development.md) In dit document wordt een Data Science-project beschreven in een systematische versie en op samenwerkings wijze met behulp van het team data Science process.
+[Agile ontwikkeling van data science projecten](agile-development.md) Dit document beschrijft een data science-project op een systematische, versiegestuurde en collaboratieve manier met behulp van het Team Data Science Process.
 
-Scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+Walkthroughs die alle stappen in het proces voor **specifieke scenario's** demonstreren zijn ook voorzien. Ze worden vermeld en gekoppeld aan miniatuurbeschrijvingen in het artikel [Voorbeeld walkthroughs.](walkthroughs.md) Ze illustreren hoe cloud- en on-premises tools en services kunnen worden gecombineerd in een workflow of pijplijn om een intelligente toepassing te maken. 
 

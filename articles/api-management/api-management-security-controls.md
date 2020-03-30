@@ -1,6 +1,6 @@
 ---
-title: Beveiligings controles voor Azure API Management
-description: Een controle lijst met beveiligings controles voor het evalueren van API Management
+title: Beveiligingsbesturingselementen voor Azure API-beheer
+description: Een checklist met beveiligingscontroles voor de evaluatie van API-beheer
 services: api-management
 author: vladvino
 ms.service: api-management
@@ -8,68 +8,68 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751140"
 ---
-# <a name="security-controls-for-api-management"></a>Beveiligings controles voor API Management
+# <a name="security-controls-for-api-management"></a>Beveiligingsbesturingselementen voor API-beheer
 
-In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in API Management.
+In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in API-beheer.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Ondersteuning voor service-eind punten| Nee | |  |
+| Ondersteuning voor serviceeindpunten| Nee | |  |
 | Ondersteuning voor VNet-injectie| Ja | |  |
-| Ondersteuning voor netwerk isolatie en firewalling| Ja | Respectievelijk netwerk beveiligings groepen (NSG) en Azure-toepassing gateway (of ander software apparaat) gebruiken. |  |
-| Ondersteuning voor geforceerde tunneling| Ja | Azure-netwerken bieden geforceerde tunneling. |  |
+| Ondersteuning voor netwerkisolatie en firewalling| Ja | Respectievelijk netwerkbeveiligingsgroepen (NSG) en Azure Application Gateway (of ander softwaretoestel) gebruiken. |  |
+| Ondersteuning voor gedwongen tunneling| Ja | Azure-netwerken bieden gedwongen tunneling. |  |
 
-## <a name="monitoring--logging"></a>& Logboek registratie controleren
+## <a name="monitoring--logging"></a>Controle & logboekregistratie
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | | |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja | [Azure Monitor activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) | |
-| Logboek registratie en controle van het gegevens vlak| Ja | [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md) en (optioneel) [Azure-toepassing Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | | |
+| Logboekregistratie en audit van het controle- en beheervlak| Ja | [Azure Monitor-activiteitslogboeken](../azure-monitor/platform/platform-logs-overview.md) | |
+| Logboekregistratie en -audit van gegevensvliegtuigen| Ja | [Diagnostische logboeken van Azure Monitor](../azure-monitor/platform/platform-logs-overview.md) en (optioneel) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
-## <a name="identity"></a>Identity
+## <a name="identity"></a>Identiteit
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
 | Authentication| Ja | |  |
 | Autorisatie| Ja | |  |
 
-## <a name="data-protection"></a>Databeveiliging
+## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Gevoelige gegevens zoals certificaten, sleutels en geheime naam waarden worden versleuteld met Service-beheerde exemplaren per service-exemplaar. |  |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee | Alle versleutelings sleutels zijn per service-exemplaar en worden beheerd door de service. |  |
-| Versleuteling op kolom niveau (Azure Data Services)| N/A | |  |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | [Express route](../expressroute/index.yml) en VNet-versleuteling worden door [Azure-netwerken](../virtual-network/index.yml)verschaft. |  |
-| Versleutelde API-aanroepen| Ja | Aanroepen van beheer vlak worden gedaan via [Azure Resource Manager](../azure-resource-manager/index.yml) via TLS. Er is een geldig JSON-webtoken (JWT) vereist.  Aanroepen voor gegevens vlak kunnen worden beveiligd met TLS en een van de ondersteunde verificatie mechanismen (bijvoorbeeld client certificaat of JWT). |   |
+| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Gevoelige gegevens zoals certificaten, sleutels en waarden met geheime naam worden versleuteld met servicebeheerde, per service-instantiesleutels. |  |
+| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Nee | Alle versleutelingssleutels zijn per service-instantie en worden servicebeheerd. |  |
+| Versleuteling op kolomniveau (Azure Data Services)| N.v.t. | |  |
+| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | [Express Route-](../expressroute/index.yml) en VNet-versleuteling wordt geleverd door [Azure-netwerken.](../virtual-network/index.yml) |  |
+| API-aanroepen versleuteld| Ja | Management plane calls worden gevoerd via [Azure Resource Manager](../azure-resource-manager/index.yml) via TLS. Een geldig JSON-webtoken (JWT) is vereist.  Gegevensvliegtuigoproepen kunnen worden beveiligd met TLS en een van de ondersteunde verificatiemechanismen (bijvoorbeeld clientcertificaat of JWT). |   |
  |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | De [Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) gebruiken |  |
+| Ondersteuning voor configuratiebeheer (versiebeheer van configuratie, enz.)| Ja | De [Azure API Management DevOps Resource Kit gebruiken](https://aka.ms/apimdevops) |  |
 
-## <a name="vulnerability-scans-false-positives"></a>Beveiligings probleem scant onjuiste positieven
+## <a name="vulnerability-scans-false-positives"></a>Kwetsbaarheid scant false positives
 
-In deze sectie worden veelvoorkomende beveiligings problemen gedocumenteerd die niet van invloed zijn op Azure API Management.
+In deze sectie worden veelvoorkomende kwetsbaarheden die geen invloed hebben op Azure API Management.
 
 | Beveiligingsprobleem               | Beschrijving                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ticketbleed (CVE-2016-9244) | Ticketbleed is een beveiligings probleem in de implementatie van de TLS SessionTicket-extensie die is gevonden in sommige F5-producten. Hiermee kan het lekken (' verbloeden ') van Maxi maal 31 bytes aan gegevens van niet-geïnitialiseerd geheugen. Dit wordt veroorzaakt door de TLS-stack opvulling van een sessie-ID, door gegeven van de client, met gegevens om deze 32 bits lang te maken. |
+| Ticketbleed (CVE-2016-9244) | Ticketbleed is kwetsbaarheid in de implementatie van de TLS SessionTicket extensie gevonden in sommige F5-producten. Het maakt de lekkage ("bloeden") van maximaal 31 bytes aan gegevens uit niet-geïninitialiseerd geheugen. Dit wordt veroorzaakt door de TLS-stack die een sessie-id opvulling, doorgegeven van de client, met gegevens om het 32 bits lang te maken. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../security/fundamentals/security-controls.md).

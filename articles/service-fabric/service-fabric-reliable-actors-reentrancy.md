@@ -1,24 +1,24 @@
 ---
-title: Herbetreedbaarheid in azure Service Fabric Actors
-description: Inleiding tot herbetreedbaarheid voor Service Fabric Reliable Actors, een manier om blok kering op basis van de aanroep context te voor komen.
+title: Reentrancy in Azure Service Fabric-actoren
+description: Inleiding tot reentrancy voor Service Fabric Reliable Actors, een manier om logisch te voorkomen dat blokkeren op basis van oproepcontext.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645528"
 ---
-# <a name="reliable-actors-reentrancy"></a>Reliable Actors herbetreedbaarheid
-Met de Reliable Actors runtime kunt u standaard herbetreedbaarheid op basis van logische oproepen. Hiermee kunnen actors worden ingetrokken als ze zich in dezelfde aanroep context keten bevinden. Actor A verzendt bijvoorbeeld een bericht naar actor B, die een bericht naar actor C verzendt. Als onderdeel van de bericht verwerking, als actor C actor A aanroept, wordt het bericht weer gegeven, zodat het is toegestaan. Andere berichten die deel uitmaken van een andere aanroep context, worden geblokkeerd op actor A tot de verwerking is voltooid.
+# <a name="reliable-actors-reentrancy"></a>Betrouwbare acteurs re-entrancy
+De runtime van Betrouwbare actoren maakt standaard logische re-entrancy op basis van gesprekscontext mogelijk. Dit maakt het mogelijk voor acteurs om re-entrant als ze in dezelfde call context keten. Actor A stuurt bijvoorbeeld een bericht naar Actor B, die een bericht stuurt naar Actor C. Als onderdeel van de berichtverwerking, als Actor C Actor A aanroept, is het bericht opnieuw toetreder, dus het is toegestaan. Alle andere berichten die deel uitmaken van een andere gesprekscontext, worden geblokkeerd op Actor A totdat de verwerking is voltooid.
 
-Er zijn twee opties beschikbaar voor actor herbetreedbaarheid die zijn gedefinieerd in de `ActorReentrancyMode` Enum:
+Er zijn twee opties beschikbaar voor actor reentrancy gedefinieerd in het `ActorReentrancyMode` enum:
 
-* `LogicalCallContext` (standaard gedrag)
-* `Disallowed`-schakelt herbetreedbaarheid uit
+* `LogicalCallContext`(standaardgedrag)
+* `Disallowed`- re-entrancy uitschakelt
 
 ```csharp
 public enum ActorReentrancyMode
@@ -34,9 +34,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Herbetreedbaarheid kunnen tijdens de registratie worden geconfigureerd in de instellingen van een `ActorService`. De instelling is van toepassing op alle actor-exemplaren die zijn gemaakt in de actor-service.
+Reentrancy kan worden geconfigureerd `ActorService`in een 's instellingen tijdens de registratie. De instelling is van toepassing op alle actor-exemplaren die in de actorservice zijn gemaakt.
 
-In het volgende voor beeld ziet u een actor-service waarmee de herbetreedbaarheid-modus wordt ingesteld op `ActorReentrancyMode.Disallowed`. Als een actor een bericht naar een andere actor verzendt, wordt in dit geval een uitzonde ring van het type `FabricException` gegenereerd.
+In het volgende voorbeeld wordt een actorservice weergegeven `ActorReentrancyMode.Disallowed`die de reentrantiemodus instelt op . In dit geval wordt een uitzondering op het type `FabricException` gegooid als een actor een nieuw-deelnemend bericht naar een andere actor stuurt.
 
 ```csharp
 static class Program
@@ -102,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over herbetreedbaarheid in de [ACTOR API-referentie documentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* Meer informatie over re-entrantie in de [referentiedocumentatie voor actor-API's](https://msdn.microsoft.com/library/azure/dn971626.aspx)

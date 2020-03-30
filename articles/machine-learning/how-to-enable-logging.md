@@ -1,6 +1,6 @@
 ---
-title: Logboek registratie inschakelen in Azure Machine Learning
-description: Meer informatie over het inschakelen van logboek registratie in Azure Machine Learning met behulp van zowel het standaard python-logboek registratie pakket als het gebruik van specifieke SDK-functies.
+title: Logboekregistratie inschakelen bij Azure Machine Learning
+description: Meer informatie over het inschakelen van logboekregistratie in Azure Machine Learning met behulp van zowel het standaard Python-logboekpakket als het gebruik van SDK-specifieke functionaliteit.
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,28 +10,28 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78396152"
 ---
-# <a name="enable-logging-in-azure-machine-learning"></a>Logboek registratie inschakelen in Azure Machine Learning
+# <a name="enable-logging-in-azure-machine-learning"></a>Logboekregistratie inschakelen bij Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Met de Azure Machine Learning python-SDK kunt u logboek registratie inschakelen met zowel het standaard python-logboek registratie pakket als met de SDK-specifieke functionaliteit voor lokale logboek registratie en logboek registratie in uw werk ruimte in de portal. Logboeken bieden ontwikkel aars met realtime informatie over de toepassings status en kunnen helpen bij het vaststellen van fouten of waarschuwingen. In dit artikel leert u verschillende manieren om logboek registratie in te scha kelen op de volgende gebieden:
+Met de Azure Machine Learning Python SDK u logboekregistratie inschakelen met behulp van zowel het standaard Python-logboekregistratiepakket als met behulp van SDK-specifieke functionaliteit, zowel voor lokale logboekregistratie als logboekregistratie voor uw werkruimte in de portal. Logboeken bieden ontwikkelaars realtime informatie over de toepassingsstatus en kunnen helpen bij het diagnosticeren van fouten of waarschuwingen. In dit artikel leert u verschillende manieren om logboekregistratie in de volgende gebieden in te schakelen:
 
 > [!div class="checklist"]
-> * Trainings modellen en reken doelen
-> * Het maken van installatiekopieën
+> * Trainingsmodellen en rekendoelen
+> * Beeldmaken
 > * Geïmplementeerde modellen
-> * Instellingen voor python-`logging`
+> * Python-instellingen `logging`
 
-[Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md). Gebruik de [gids](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) voor meer informatie over de SDK.
+[Maak een Azure Machine Learning-werkruimte](how-to-manage-workspace.md). Gebruik de [handleiding](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) voor meer informatie over de SDK.
 
-## <a name="training-models-and-compute-target-logging"></a>Trainings modellen en logboek registratie van Compute-doelen
+## <a name="training-models-and-compute-target-logging"></a>Trainingsmodellen en compute target logging
 
-Er zijn meerdere manieren om logboek registratie in te scha kelen tijdens het model trainings proces en de voor beelden die worden weer gegeven, illustreren veelvoorkomende ontwerp patronen. U kunt met behulp van de functie `start_logging` op de `Experiment`-klasse eenvoudig uitvoerings gegevens vastleggen in uw werk ruimte in de Cloud.
+Er zijn meerdere manieren om logboekregistratie in te schakelen tijdens het modeltrainingsproces en de getoonde voorbeelden illustreren algemene ontwerppatronen. U run-gerelateerde gegevens eenvoudig registreren op uw `start_logging` werkruimte `Experiment` in de cloud met behulp van de functie in de klasse.
 
 ```python
 from azureml.core import Experiment
@@ -41,9 +41,9 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-Zie de referentie documentatie voor de klasse [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) voor extra logboek registratie functies.
+Zie de referentiedocumentatie voor de klasse [Uitvoeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) voor extra logboekfuncties.
 
-Als u de lokale logboek registratie van de toepassings status tijdens de trainings voortgang wilt inschakelen, gebruikt u de para meter `show_output`. Als u uitgebreide logboek registratie inschakelt, kunt u de details van het trainings proces en informatie over externe bronnen of COMPUTE-doelen bekijken. Gebruik de volgende code om logboek registratie in te scha kelen bij het verzenden van experimenten.
+Als u de lokale logboekregistratie van `show_output` de toepassingsstatus tijdens de voortgang van de training wilt inschakelen, gebruikt u de parameter. Met het inschakelen van verbose logging u details uit het trainingsproces zien, evenals informatie over externe bronnen of rekendoelen. Gebruik de volgende code om logboekregistratie in te schakelen bij het indienen van het experiment.
 
 ```python
 from azureml.core import Experiment
@@ -52,13 +52,13 @@ experiment = Experiment(ws, experiment_name)
 run = experiment.submit(config=run_config_object, show_output=True)
 ```
 
-U kunt ook dezelfde para meter gebruiken in de functie `wait_for_completion` van de resulterende uitvoering.
+U dezelfde parameter ook `wait_for_completion` gebruiken in de functie op de resulterende run.
 
 ```python
 run.wait_for_completion(show_output=True)
 ```
 
-De SDK biedt ook ondersteuning voor het gebruik van het standaard pakket voor python-logboek registratie in bepaalde scenario's voor training. In het volgende voor beeld wordt een logboek registratie niveau van `INFO` in een `AutoMLConfig`-object ingeschakeld.
+De SDK ondersteunt ook het gebruik van het standaard python-registratiepakket in bepaalde scenario's voor training. In het volgende voorbeeld `INFO` wordt `AutoMLConfig` een logboekniveau van in een object mogelijk gemaakt.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +73,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-U kunt ook de para meter `show_output` gebruiken bij het maken van een persistent Compute-doel. Geef de para meter op in de functie `wait_for_completion` om logboek registratie in te scha kelen tijdens het maken van het reken doel.
+U de `show_output` parameter ook gebruiken bij het maken van een blijvend berekend doel. Geef de parameter `wait_for_completion` in de functie op om logboekregistratie in te schakelen tijdens het maken van compute target.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -83,9 +83,9 @@ compute_target = ComputeTarget.attach(
 compute.wait_for_completion(show_output=True)
 ```
 
-## <a name="logging-for-deployed-models"></a>Logboek registratie voor geïmplementeerde modellen
+## <a name="logging-for-deployed-models"></a>Logboekregistratie voor geïmplementeerde modellen
 
-Als u logboeken van een eerder geïmplementeerde webservice wilt ophalen, laadt u de service en gebruikt u de functie `get_logs()`. De logboeken bevatten mogelijk gedetailleerde informatie over eventuele fouten die zijn opgetreden tijdens de implementatie.
+Als u logboeken wilt ophalen van een eerder `get_logs()` geïmplementeerde webservice, laadt u de service en gebruikt u de functie. De logboeken kunnen gedetailleerde informatie bevatten over eventuele fouten die tijdens de implementatie zijn opgetreden.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -95,17 +95,17 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-U kunt ook aangepaste stack traceringen voor uw webservice registreren door Application Insights in te scha kelen, waarmee u aanvraag-en reactie tijden, fout tarieven en uitzonde ringen kunt bewaken. Roep de `update()`-functie aan op een bestaande webservice om Application Insights in te scha kelen.
+U ook aangepaste stacksporen voor uw webservice registreren door Application Insights in te schakelen, waarmee u aanvraag-/reactietijden, uitvalpercentages en uitzonderingen controleren. Bel `update()` de functie op een bestaande webservice om Application Insights in te schakelen.
 
 ```python
 service.update(enable_app_insights=True)
 ```
 
-Zie [gegevens bewaken en verzamelen van ml-webservice-eind punten](how-to-enable-app-insights.md)voor meer informatie.
+Zie [Gegevens van ML-eindpunten van de webservice controleren en verzamelen](how-to-enable-app-insights.md)voor meer informatie.
 
-## <a name="python-native-logging-settings"></a>Systeem eigen logboek registratie-instellingen van python
+## <a name="python-native-logging-settings"></a>Instellingen voor native logboekregistratie van Python
 
-Bepaalde Logboeken in de SDK bevatten mogelijk een fout die aangeeft dat u het logboek registratie niveau wilt instellen op fout opsporing. Als u het logboek registratie niveau wilt instellen, voegt u de volgende code toe aan het script.
+Bepaalde logboeken in de SDK kunnen een fout bevatten die u instrueert om het logboekregistratieniveau in te stellen op FOUTOPSPORING. Als u het logboekniveau wilt instellen, voegt u de volgende code toe aan uw script.
 
 ```python
 import logging
@@ -114,4 +114,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevens van ML-webservice-eind punten bewaken en verzamelen](how-to-enable-app-insights.md)
+* [Gegevens van ML-eindpunten van webservice controleren en verzamelen](how-to-enable-app-insights.md)

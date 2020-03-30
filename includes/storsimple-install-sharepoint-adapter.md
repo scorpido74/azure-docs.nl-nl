@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176076"
 ---
-#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-Adapter voor SharePoint installeren
-1. Kopieer het installatieprogramma naar de web front end (WFE)-server die ook is geconfigureerd voor het uitvoeren van de Centraal beheer van SharePoint-webtoepassing. 
-2. Gebruik een account met administrator-bevoegdheden te melden bij de WFE-server.
-3. Dubbelklik op het installatieprogramma. De StorSimple-Adapter voor SharePoint-installatiewizard wordt gestart. Klik op **volgende** om de installatie te starten.
+#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor SharePoint installeren
+1. Kopieer het installatieprogramma naar de WFE-server (Web Front End) die ook is geconfigureerd om de SharePoint Central Administration-webtoepassing uit te voeren. 
+2. Gebruik een account met beheerdersrechten om u aan te melden bij de WFE-server.
+3. Dubbelklik op de installateur. De wizard StorSimple-adapter voor SharePoint-installatie wordt gestart. Klik **op Volgende** om de installatie te starten.
    
-    ![StorSimple adapter setup-startpagina](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. In de StorSimple-Adapter voor SharePoint-installatiepagina configuratie, selecteert u de locatie van een installatie, typt u het IP-adres voor de DATA 0-netwerkinterface op uw StorSimple-apparaat en klik vervolgens op **volgende**. 
+    ![Startpagina voor het instellen van storSimple-adapter](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
+4. Selecteer op de configuratiepagina van StorSimple Adapter voor SharePoint-installatie een installatielocatie, typ het IP-adres voor de DATA 0-netwerkinterface op uw StorSimple-apparaat en klik op **Volgende**. 
    
-    ![Pagina StorSimple-adapter setup-configuratie](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. Klik in de bevestigingspagina setup op **installeren**.
+    ![Configuratiepagina van StorSimple-adapterinstellingen](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
+5. Klik op de bevestigingspagina voor de installatie op **Installeren**.
    
-    ![StorSimple adapter setup bevestigingspagina](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
-6. Klik op **voltooien** aan de Wizard Setup afsluit.
+    ![Bevestigingspagina voor het instellen van storSimple-adapter](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
+6. Klik **op Voltooien** om de wizard Setup te sluiten.
    
-    ![StorSimple adapter klaar installatiepagina](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
-7. Open de pagina Centraal beheer van SharePoint. Hier ziet u een StorSimple-configuratie-groep met de StorSimple-Adapter voor SharePoint-koppelingen.
-8. Ga naar de volgende stap: [Configureren van Resourcestructuur](#configure-rbs).
+    ![StorSimple adapter setup finished pagina StorSimple adapter setup finished page StorSimple adapter setup finished page Stor](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
+7. Open de pagina SharePoint Central Administration. U ziet een StorSimple-configuratiegroep die de StorSimple-adapter voor SharePoint-koppelingen bevat.
+8. Ga naar de volgende stap: [RBS configureren.](#configure-rbs)
 

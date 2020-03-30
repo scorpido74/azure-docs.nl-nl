@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176073"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>Verbinding maken via de seriële console
@@ -21,7 +21,7 @@ ms.locfileid: "67176073"
 5. Wijzig in het rechterdeelvenster **Verbindingstype** in **Serieel**.
 6. Typ in het rechterdeelvenster de juiste COM-poort. Zorg ervoor dat de seriële configuratieparameters als volgt zijn ingesteld:
    
-   * Snelheid van: 115,200
+   * Snelheid: 115.200
    * Gegevensbits: 8
    * Stopbits: 1
    * Pariteit: Geen

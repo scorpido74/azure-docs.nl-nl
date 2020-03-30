@@ -1,6 +1,6 @@
 ---
-title: Instellingen voor Azure-resource-rollen configureren in PIM-Azure AD | Microsoft Docs
-description: Meer informatie over het configureren van instellingen voor Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
+title: Azure-bronrolinstellingen configureren in PIM - Azure AD | Microsoft Documenten
+description: Meer informatie over het configureren van Azure-bronrolinstellingen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,126 +16,126 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638677"
 ---
-# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management
+# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Azure-bronrolinstellingen configureren in Privileged Identity Management
 
-Wanneer u instellingen voor Azure-resource functies configureert, definieert u de standaard instellingen die worden toegepast op toewijzingen van Azure-resource rollen in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Gebruik de volgende procedures om de goedkeurings werk stroom te configureren en op te geven wie aanvragen kan goed keuren of weigeren.
+Wanneer u Azure-bronrolinstellingen configureert, definieert u de standaardinstellingen die worden toegepast op Azure-bronroltoewijzingen in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Gebruik de volgende procedures om de goedkeuringswerkstroom te configureren en geef op wie aanvragen kan goedkeuren of weigeren.
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 
-Volg deze stappen om de instellingen voor een Azure-resource functie te openen.
+Volg deze stappen om de instellingen voor een Azure-bronrol te openen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Meld u aan bij [azure portal](https://portal.azure.com/) met een gebruiker in de rol Privileged [Role Administrator.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-1. Open **Azure AD privileged Identity Management**.
+1. Azure **AD Privileged Identity Management openen**.
 
 1. Selecteer **Azure-resources**.
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheergroep.
 
-    ![Pagina met Azure-resources met resources die kunnen worden beheerd](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Azure-bronnenpagina met resources die kunnen worden beheerd](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Selecteer **rolinstellingen**.
+1. Selecteer **Rolinstellingen**.
 
-    ![Pagina rolinstellingen met een lijst met Azure-resource rollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Pagina Met pagina Met Azure-bronrollen voor rolinstellingen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Selecteer de rol waarvan u de instellingen wilt configureren.
 
-    ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Functie-instelling details pagina met verschillende toewijzing en activering instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Selecteer **bewerken** om het deel venster **functie-instellingen** te openen. Op het eerste tabblad kunt u de configuratie voor de functie activering in Privileged Identity Management bijwerken.
+1. Selecteer **Bewerken** om het deelvenster **Rolinstellingen** te openen. Met het eerste tabblad u de configuratie bijwerken voor rolactivering in Privileged Identity Management.
 
-    ![De pagina functie-instellingen bewerken met het tabblad Activering geopend](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
+    ![Pagina Rolinstellingen bewerken met het tabblad Activering geopend](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-1. Selecteer het tabblad **toewijzing** of de knop **volgende: toewijzing** onder aan de pagina om het tabblad toewijzings instelling te openen. Deze instellingen bepalen de roltoewijzingen die zijn gemaakt in de Privileged Identity Management-Interface.
+1. Selecteer het tabblad **Toewijzing** of de knop **Volgende: Toewijzing** onder aan de pagina om het tabblad Toewijzing su.a. Deze instellingen beheren roltoewijzingen die zijn gemaakt binnen de interface Voor privileged identity management.
 
-    ![Het tabblad roltoewijzing in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+    ![Tabblad Roltoewijzing op de pagina Rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
-1. Gebruik het tabblad **melding** of de knop **volgende: activering** aan de onderkant van de pagina om naar het tabblad meldings instelling voor deze rol te gaan. Deze instellingen bepalen alle e-mail meldingen die betrekking hebben op deze rol.
+1. Gebruik het tabblad **Melding** of de knop **Volgende: Activering** onder aan de pagina om naar het tabblad meldingsinstelling voor deze rol te gaan. Deze instellingen beheren alle e-mailmeldingen met betrekking tot deze rol.
 
-    ![Tabblad meldingen in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+    ![Tabblad Rolmeldingen op de pagina Rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 
-    Op het tabblad **meldingen** op de pagina rolinstellingen kunt privileged Identity Management gedetailleerde controle over wie meldingen ontvangen en welke meldingen ze ontvangen.
+    Op het tabblad **Meldingen** op de pagina Rolinstellingen biedt Privileged Identity Management gedetailleerde controle over wie meldingen ontvangt en welke meldingen ze ontvangen.
 
-    - **Een e-mail uitzetten**<br>U kunt specifieke e-mail adressen uitschakelen door het selectie vakje standaard ontvanger uit te scha kelen en eventuele extra ontvangers te verwijderen.  
+    - **Een e-mail uitschakelen**<br>U specifieke e-mails uitschakelen door het selectievakje Standaardontvanger uit te schakelen en eventuele extra ontvangers te verwijderen.  
 
-    - **E-mails beperken tot opgegeven e-mail adressen**<br>U kunt e-mail berichten die worden verzonden naar standaard ontvangers uitschakelen door het selectie vakje standaard ontvanger uit te scha kelen. U kunt vervolgens extra e-mail adressen toevoegen als extra geadresseerden. Als u meer dan één e-mail adres wilt toevoegen, scheidt u deze met een punt komma (;).
+    - **E-mails beperken tot opgegeven e-mailadressen**<br>U e-mails die naar standaardontvangers worden verzonden uitschakelen door het selectievakje standaardontvanger te wissen. U vervolgens extra e-mailadressen toevoegen als extra geadresseerden. Als u meer dan één e-mailadres wilt toevoegen, scheidt u deze met behulp van een puntkomma (;).
 
-    - **E-mail berichten verzenden naar standaard ontvangers en extra ontvangers**<br>U kunt e-mail berichten verzenden naar de standaard ontvanger en de extra ontvanger door het selectie vakje standaard ontvanger te selecteren en e-mail adressen toe te voegen voor extra ontvangers.
+    - **E-mails verzenden naar zowel standaardontvangers als extra ontvangers**<br>U e-mails verzenden naar zowel de standaardontvanger als de extra ontvanger door het standaardselectievakje voor geadresseerden in te schakelen en e-mailadressen toe te voegen voor extra ontvangers.
 
-    - **Alleen essentiële e-mail berichten**<br>Voor elk type e-mail bericht kunt u het selectie vakje selecteren om alleen essentiële e-mail berichten te ontvangen. Dit betekent dat Privileged Identity Management alleen e-mail berichten naar de geconfigureerde ontvangers stuurt wanneer het e-mail bericht een onmiddellijke actie vereist. E-mail berichten waarin gebruikers worden gevraagd om hun roltoewijzing uit te breiden, worden bijvoorbeeld niet geactiveerd wanneer een e-mail berichten die beheerders vereisen om een uitbreidings aanvraag goed te keuren, worden geactiveerd.
+    - **Alleen kritieke e-mails**<br>Voor elk type e-mail u het selectievakje inschakelen om alleen kritieke e-mails te ontvangen. Dit betekent dat Privileged Identity Management alleen e-mails naar de geconfigureerde ontvangers blijft verzenden wanneer de e-mail onmiddellijk actie vereist. E-mails waarin gebruikers worden gevraagd hun roltoewijzing uit te breiden, worden bijvoorbeeld niet geactiveerd, terwijl een e-mail die beheerders verplicht om een extensieaanvraag goed te keuren, wordt geactiveerd.
 
-1. Selecteer de knop **bijwerken** op elk gewenst moment om de rolinstellingen bij te werken.
+1. Selecteer op elk gewenst moment de knop **Bijwerken** om de rolinstellingen bij te werken.
 
-## <a name="assignment-duration"></a>Toewijzings duur
+## <a name="assignment-duration"></a>Toewijzingsduur
 
-U kunt kiezen uit twee opties voor de toewijzings duur voor elk toewijzings type (in aanmerking komend en actief) wanneer u instellingen voor een rol configureert. Deze opties worden de standaard maximale duur wanneer een gebruiker wordt toegewezen aan de rol in Privileged Identity Management.
+U kiezen uit twee opties voor toewijzingsduur voor elk toewijzingstype (in aanmerking komend en actief) wanneer u instellingen voor een rol configureert. Deze opties worden de standaard maximale duur wanneer een gebruiker is toegewezen aan de rol in Privileged Identity Management.
 
-U kunt kiezen uit een van **deze opties** voor de gewenste duur van de toewijzing:
-
-| | |
-| --- | --- |
-| **Permanente toewijzing in aanmerking komend toestaan** | Resource beheerders kunnen een permanente, in aanmerking komende toewijzing toewijzen. |
-| **In aanmerking komende toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin-en eind datum hebben. |
-
-En u kunt een van deze **actieve** toewijzings duur opties kiezen:
+U een van deze **in aanmerking komende** opties voor de duur van de toewijzing kiezen:
 
 | | |
 | --- | --- |
-| **Permanente actieve toewijzing toestaan** | Resource beheerders kunnen permanente actieve toewijzing toewijzen. |
-| **Actieve toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle actieve toewijzingen een opgegeven begin-en eind datum hebben. |
+| **Permanente toewijzing toestaan** | Resourcebeheerders kunnen een permanente toewijzing toewijzen. |
+| **In aanmerking komende toewijzing aflopen na** | Resourcebeheerders kunnen eisen dat alle in aanmerking komende toewijzingen een opgegeven begin- en einddatum hebben. |
+
+En u een van deze opties voor **actieve** toewijzingsduur kiezen:
+
+| | |
+| --- | --- |
+| **Permanente actieve toewijzing toestaan** | Resourcebeheerders kunnen permanente actieve toewijzing toewijzen. |
+| **Actieve toewijzing verlopen na** | Resourcebeheerders kunnen vereisen dat alle actieve toewijzingen een opgegeven begin- en einddatum hebben. |
 
 > [!NOTE]
-> Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door resource beheerders. Gebruikers kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
+> Alle toewijzingen met een opgegeven einddatum kunnen worden verlengd door resourcebeheerders. Gebruikers kunnen ook selfserviceaanvragen initiëren om [roltoewijzingen uit](pim-resource-roles-renew-extend.md)te breiden of te vernieuwen.
 
-## <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
+## <a name="require-multi-factor-authentication"></a>Meervoudige verificatie vereisen
 
-Privileged Identity Management biedt een optionele afdwinging van Azure Multi-Factor Authentication voor twee verschillende scenario's.
+Privileged Identity Management biedt optionele handhaving van Azure Multi-Factor Authentication voor twee verschillende scenario's.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication vereisen voor actieve toewijzing
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multifactorauthenticatie vereisen bij actieve toewijzing
 
-In sommige gevallen wilt u mogelijk een gebruiker of groep toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management multi-factor Authentication niet afdwingen wanneer de gebruiker hun roltoewijzing gebruikt, omdat ze al actief zijn in de rol vanaf het moment dat deze wordt toegewezen.
+In sommige gevallen u een gebruiker of groep voor een korte duur (bijvoorbeeld één dag) aan een rol toewijzen. In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management geen meervoudige verificatie afdwingen wanneer de gebruiker zijn roltoewijzing gebruikt omdat hij al actief is in de rol vanaf het moment dat deze is toegewezen.
 
-Als u er zeker van wilt zijn dat de resource beheerder die aan de toewijzing voldoet, weet wie ze zijn, kunt u multi-factor Authentication afdwingen voor actieve toewijzing door het selectie vakje **multi-factor Authentication op actieve toewijzing vereisen** in te scha kelen.
+Als u ervoor wilt zorgen dat de resourcebeheerder die de toewijzing vervult, is wie ze zeggen dat ze zijn, u multi-factor authenticatie afdwingen bij actieve toewijzing door het vak **Multifactorverificatie vereisen in actieve toewijzing aan** te vinken.
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication vereisen bij activering
 
-U kunt vereisen dat gebruikers die in aanmerking komen voor een rol bewijzen dat ze Azure Multi-Factor Authentication gebruiken voordat ze kunnen activeren. Multi-factor Authentication zorgt ervoor dat de gebruiker er zeker van is dat ze een redelijke zekerheid hebben. Het afdwingen van deze optie beschermt kritieke resources in situaties waarin het gebruikers account mogelijk is aangetast.
+U gebruikers die in aanmerking komen voor een rol vereisen dat ze bewijzen wie ze Azure Multi-Factor Authentication gebruiken voordat ze kunnen worden geactiveerd. Multi-factor authenticatie zorgt ervoor dat de gebruiker is wie ze zeggen dat ze zijn met redelijke zekerheid. Als u deze optie afdwingt, worden kritieke resources beschermd in situaties waarin het gebruikersaccount mogelijk is gecompromitteerd.
 
-Als u multi-factor Authentication vóór activering wilt vereisen, schakelt u het selectie vakje **multi-factor Authentication vereisen bij activering** in.
+Als u multifactorauthenticatie wilt vereisen voordat u wordt geactiveerd, schakelt u het selectievakje **Multifactorverificatie bij activering** vereisen in.
 
-Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
+Zie [Multi-factor authenticatie en Privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
 
-## <a name="activation-maximum-duration"></a>Maximale activerings duur
+## <a name="activation-maximum-duration"></a>Maximale duur activering
 
-Gebruik de schuif regelaar **maximale duur activering** om de maximum tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan een tot 24 uur zijn.
+Gebruik de schuifregelaar **Activering seinmaximale duur** om de maximale tijd in te stellen, in uren, dat een rol actief blijft voordat deze verloopt. Deze waarde kan van één tot 24 uur zijn.
 
-## <a name="require-justification"></a>Reden vereisen
+## <a name="require-justification"></a>Rechtvaardiging vereisen
 
-U kunt vereisen dat gebruikers een zakelijke reden opgeven wanneer ze het product activeren. Als u dit wilt doen, schakelt u het selectie vakje **uitvulling vereist op actieve toewijzing** of het vakje **uitvulling vereisen bij activering** in.
+U vereisen dat gebruikers een zakelijke rechtvaardiging invoeren wanneer ze worden geactiveerd. Als u rechtvaardiging wilt vereisen, schakelt u het vak **Eis voor actieve toewijzing** of het selectievakje **Motivering op activering vereisen in.**
 
-## <a name="require-approval-to-activate"></a>Goed keuring vereist om te activeren
+## <a name="require-approval-to-activate"></a>Goedkeuring vereisen om te activeren
 
-Als u wilt dat goed keuring vereist is om een rol te activeren, voert u de volgende stappen uit.
+Als u goedkeuring nodig wilt hebben om een rol te activeren, voert u deze stappen uit.
 
-1. Controleer het selectie vakje **goed keuring vereisen om te activeren** .
+1. Schakel het selectievakje **Goedkeuring vereisen in om te activeren.**
 
-1. Selecteer **goed keurders selecteren** om de pagina **een lid of groep selecteren** te openen.
+1. Selecteer **Goederen selecteren** om de pagina Een lid of groep selecteren te **openen.**
 
-    ![Selecteer een gebruikers-of groeps deel venster voor het selecteren van goed keurders](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Een gebruiker of groepsvenster selecteren om fiatteurs te selecteren](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Selecteer ten minste één gebruiker of groep en klik vervolgens op **selecteren**. U kunt een wille keurige combi natie van gebruikers en groepen toevoegen. U moet ten minste één fiatteur selecteren. Er zijn geen standaard fiatteurs.
+1. Selecteer ten minste één gebruiker of groep en klik op **Selecteren**. U elke combinatie van gebruikers en groepen toevoegen. U moet ten minste één goedkeurder selecteren. Er zijn geen standaard fiatteurs.
 
-    Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
+    Uw selecties worden weergegeven in de lijst met geselecteerde goedkeurders.
 
-1. Wanneer u de instellingen van uw rol hebt opgegeven, selecteert u **bijwerken** om uw wijzigingen op te slaan.
+1. Zodra u al uw rolinstellingen hebt opgegeven, selecteert u **Bijwerken** om uw wijzigingen op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-resource rollen toewijzen in Privileged Identity Management](pim-resource-roles-assign-roles.md)
-- [Beveiligings waarschuwingen configureren voor Azure-resource rollen in Privileged Identity Management](pim-resource-roles-configure-alerts.md)
+- [Azure-bronrollen toewijzen in Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Beveiligingswaarschuwingen configureren voor Azure-bronrollen in Privileged Identity Management](pim-resource-roles-configure-alerts.md)

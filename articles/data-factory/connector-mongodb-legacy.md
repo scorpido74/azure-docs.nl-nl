@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van MongoDB met verouderde
-description: Meer informatie over het kopiëren van gegevens uit Mongo DB naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+title: Gegevens van MongoDB kopiëren met behulp van legacy
+description: Meer informatie over het kopiëren van gegevens van Mongo DB naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,61 +13,61 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892555"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory
+# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens van MongoDB kopiëren met Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-on-premises-mongodb-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> * [Versie 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Huidige versie](connector-mongodb.md)
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een MongoDB-data base te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een MongoDB-database te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 >[!IMPORTANT]
->ADF release een nieuwe MongoDB-connector waarmee betere native MongoDB-ondersteuning wordt geboden, vergeleken met deze op ODBC gebaseerde implementatie, raadpleegt u het artikel over [MongoDb connector](connector-mongodb.md) voor meer informatie. Deze verouderde MongoDB-connector wordt ondersteund als-is voor achterwaartse conformiteit, terwijl u voor elke nieuwe werk belasting de nieuwe connector moet gebruiken.
+>ADF release een nieuwe MongoDB connector die een betere native MongoDB ondersteuning in vergelijking met deze ODBC-gebaseerde implementatie biedt, verwijzen naar [MongoDB connector](connector-mongodb.md) artikel over details. Deze verouderde MongoDB-connector wordt ondersteund voor achterwaartse compatibiliteit, terwijl u voor elke nieuwe workload de nieuwe connector gebruikt.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U kunt gegevens uit de MongoDB-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U gegevens uit de MongoDB-database kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
 
-Deze MongoDB-connector ondersteunt met name:
+Specifiek ondersteunt deze MongoDB-connector:
 
-- MongoDB- **versies 2,4, 2,6, 3,0, 3,2, 3,4 en 3,6**.
-- Kopiëren van gegevens met behulp van **eenvoudige** of **anonieme** verificatie.
+- MongoDB-versies **2.4, 2.6, 3.0, 3.2, 3.4 en 3.6**.
+- Gegevens kopiëren met **basis-** of **anonieme** verificatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-De Integration Runtime biedt een ingebouwd MongoDB-stuur programma, dus u hoeft niet hand matig een stuur programma te installeren bij het kopiëren van gegevens uit MongoDB.
+De Integration Runtime biedt een ingebouwde MongoDB driver, daarom hoeft u geen stuurprogramma handmatig te installeren bij het kopiëren van gegevens van MongoDB.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor MongoDB-connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om gegevensfabrieksentiteiten te definiëren die specifiek zijn voor de MongoDB-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
+De volgende eigenschappen worden ondersteund voor mongoDB gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **MongoDb** |Ja |
-| server |Het IP-adres of de hostnaam van de MongoDB-server. |Ja |
-| poort |TCP-poort die de MongoDB-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 27017) |
-| databaseName |De naam van de MongoDB-data base waartoe u toegang wilt krijgen. |Ja |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de MongoDB-data base.<br/>Toegestane waarden zijn: **Basic**en **Anonymous**. |Ja |
-| gebruikersnaam |Gebruikers account voor toegang tot MongoDB. |Ja (als basis verificatie wordt gebruikt). |
-| wachtwoord |Het wachtwoord voor de gebruiker. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja (als basis verificatie wordt gebruikt). |
-| authSource |De naam van de MongoDB-data base die u wilt gebruiken om uw referenties voor verificatie te controleren. |Nee. Voor basis verificatie is het standaard om het beheerders account en de data base te gebruiken die is opgegeven met de eigenschap databasename. |
-| enableSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met behulp van SSL. De standaardwaarde is false.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server is toegestaan. De standaardwaarde is false.  | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| type |Het type eigenschap moet worden ingesteld op: **MongoDb** |Ja |
+| server |IP-adres of hostnaam van de MongoDB-server. |Ja |
+| poort |TCP-poort die de MongoDB-server gebruikt om naar clientverbindingen te luisteren. |Nee (standaard is 27017) |
+| Databasenaam |Naam van de MongoDB-database die u wilt openen. |Ja |
+| authenticationType | Type verificatie wordt gebruikt om verbinding te maken met de MongoDB-database.<br/>Toegestane waarden zijn: **Basic**en **Anoniem**. |Ja |
+| gebruikersnaam |Gebruikersaccount om toegang te krijgen tot MongoDB. |Ja (als basisverificatie wordt gebruikt). |
+| wachtwoord |Het wachtwoord voor de gebruiker. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) |Ja (als basisverificatie wordt gebruikt). |
+| Bronauth |Naam van de MongoDB-database die u wilt gebruiken om uw referenties te controleren op verificatie. |Nee. Voor basisverificatie is standaard het gebruik van het beheerdersaccount en de database die is opgegeven met de eigenschap databaseName. |
+| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met SSL. De standaardwaarde is false.  | Nee |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is false.  | Nee |
+| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld:**
 
@@ -96,12 +96,12 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets en gekoppelde services](concepts-datasets-linked-services.md). De volgende eigenschappen worden ondersteund voor MongoDB-gegevensset:
+Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. De volgende eigenschappen worden ondersteund voor de MongoDB-gegevensset:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbCollection** | Ja |
-| collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
+| collectionNaam |Naam van de collectie in de MongoDB-database. |Ja |
 
 **Voorbeeld:**
 
@@ -123,16 +123,16 @@ Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het def
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die door MongoDB-bron worden ondersteund.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de MongoDB-bron.
 
 ### <a name="mongodb-as-source"></a>MongoDB als bron
 
-De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
+De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbSource** | Ja |
-| query |Gebruik de aangepaste SQL-92-query om gegevens te lezen. Bijvoorbeeld: Select * from MyTable. |Nee (als ' verzamelingsset ' in gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op: **MongoDbSource** | Ja |
+| query |Gebruik de aangepaste SQL-92-query om gegevens te lezen. Selecteer bijvoorbeeld * in MyTable. |Nee (als 'collectionName' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -167,72 +167,72 @@ De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** 
 ```
 
 > [!TIP]
-> Wanneer u de SQL-query opgeeft, let dan op de datum/tijd-indeling. Bijvoorbeeld: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` of voor het gebruik van para meter `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> Wanneer u de SQL-query opgeeft, moet u de DatumTime-indeling in de gaten houden. Bijvoorbeeld: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` of om parameter te gebruiken`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
-## <a name="schema-by-data-factory"></a>Schema door Data Factory
+## <a name="schema-by-data-factory"></a>Schema op gegevensfabriek
 
-Azure Data Factory Service-schema van een MongoDB-verzameling met behulp van de **meest recente 100-documenten** in de verzameling. Als deze 100-documenten geen volledig schema bevatten, kunnen sommige kolommen tijdens de Kopieer bewerking worden genegeerd.
+Azure Data Factory-service leidt schema af uit een MongoDB-verzameling met behulp van de **nieuwste 100 documenten** in de verzameling. Als deze 100 documenten geen volledig schema bevatten, kunnen sommige kolommen worden genegeerd tijdens de kopieerbewerking.
 
-## <a name="data-type-mapping-for-mongodb"></a>Toewijzing van gegevens type voor MongoDB
+## <a name="data-type-mapping-for-mongodb"></a>Gegevenstypetoewijzing voor MongoDB
 
-Bij het kopiëren van gegevens uit MongoDB worden de volgende toewijzingen gebruikt van MongoDB-gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [Schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe copy activity in het schema en de gegevens van een brontype aan de sink toegewezen.
+Bij het kopiëren van gegevens van MongoDB worden de volgende toewijzingen gebruikt van MongoDB-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [Schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieeractiviteit het bronschema en het gegevenstype naar de gootsteen brengt.
 
-| MongoDB-gegevens type | Data factory tussentijdse gegevenstype |
+| MongoDB-gegevenstype | Tussentijds gegevenstype gegevensfabriek |
 |:--- |:--- |
-| Binary |Byte[] |
+| Binair |Byte |
 | Booleaans |Booleaans |
-| Datum |Datum/tijd |
-| NumberDouble |Double |
-| NumberInt |Int32 |
-| NumberLong |Int64 |
+| Date |DateTime |
+| AantalDubbel |Double |
+| NumberInt NumberInt |Int32 |
+| AantalLang |Int64 |
 | ObjectID |Tekenreeks |
 | Tekenreeks |Tekenreeks |
-| MEE |GUID |
-| Object |Opnieuw genormaliseerd in kolommen met ' _ ' als genest scheidings teken |
+| Uuid |GUID |
+| Object |Genormaliseerd tot afvlakkolommen met "_" als geneste scheidingsteken |
 
 > [!NOTE]
-> Raadpleeg voor meer informatie over ondersteuning voor matrices met behulp van virtuele tabellen de sectie [ondersteuning voor complexe typen met virtuele tabellen](#support-for-complex-types-using-virtual-tables) .
+> Raadpleeg ondersteuning voor complexe typen met behulp van virtuele tabellen voor meer informatie over ondersteuning voor arrays met [virtuele tabellen.](#support-for-complex-types-using-virtual-tables)
 >
-> De volgende MongoDB-gegevens typen worden momenteel niet ondersteund: DBPointer, java script, max/min-sleutel, reguliere expressie, symbool, Time Stamp, niet gedefinieerd.
+> Momenteel worden de volgende MongoDB-gegevenstypen niet ondersteund: DBPointer, JavaScript, Max/Min-toets, Reguliere expressie, Symbool, Tijdstempel, Niet gedefinieerd.
 
-## <a name="support-for-complex-types-using-virtual-tables"></a>Ondersteuning voor complexe typen met virtuele tabellen
+## <a name="support-for-complex-types-using-virtual-tables"></a>Ondersteuning voor complexe typen met behulp van virtuele tabellen
 
-Azure Data Factory maakt gebruik van een ingebouwd ODBC-stuur programma om verbinding te maken met gegevens uit uw MongoDB-data base en deze te kopiëren. Voor complexe typen, zoals matrices of objecten met verschillende typen in de documenten, worden de gegevens in de bijbehorende virtuele tabellen opnieuw genormaliseerd. Met name als een tabel dergelijke kolommen bevat, genereert het stuur programma de volgende virtuele tabellen:
+Azure Data Factory gebruikt een ingebouwd ODBC-stuurprogramma om verbinding te maken met gegevens uit uw MongoDB-database en deze te kopiëren. Voor complexe typen zoals arrays of objecten met verschillende typen in de documenten normaliseert het stuurprogramma gegevens opnieuw in overeenkomstige virtuele tabellen. Als een tabel dergelijke kolommen bevat, genereert het stuurprogramma met name de volgende virtuele tabellen:
 
-* Een **basis tabel**met dezelfde gegevens als de echte tabel, met uitzonde ring van de kolommen van het type complex. Voor de basis tabel wordt dezelfde naam gebruikt als voor de echte tabel die deze vertegenwoordigt.
-* Een **virtuele tabel** voor elke kolom met complexe typen, waarmee de geneste gegevens worden uitgevouwen. De virtuele tabellen krijgen een naam met de naam van de tabel Real, een scheidings teken ' _ ' en de naam van de matrix of het object.
+* Een **basistabel**die dezelfde gegevens bevat als de echte tabel, behalve de complexe typekolommen. De basistabel gebruikt dezelfde naam als de echte tabel die deze vertegenwoordigt.
+* Een **virtuele tabel** voor elke complexe typekolom, die de geneste gegevens uitbreidt. De virtuele tabellen worden benoemd met de naam van de echte tabel, een scheidingsteken "_" en de naam van de array of het object.
 
-Virtuele tabellen verwijzen naar de gegevens in de tabel Real, waardoor het stuur programma toegang kan krijgen tot de Gedenormaliseerde gegevens. U kunt toegang krijgen tot de inhoud van MongoDB-matrices door de virtuele tabellen op te vragen en te koppelen.
+Virtuele tabellen verwijzen naar de gegevens in de echte tabel, zodat de bestuurder toegang heeft tot de gedenormaliseerde gegevens. U hebt toegang tot de inhoud van MongoDB-arrays door de virtuele tabellen op te vragen en lid te worden.
 
 ### <a name="example"></a>Voorbeeld
 
-ExampleTable hier is bijvoorbeeld een MongoDB-tabel met één kolom met een matrix met objecten in elke cel, facturen en één kolom met een matrix van scalaire typen – classificaties.
+ExampleTable is hier bijvoorbeeld een MongoDB-tabel met één kolom met een array met objecten in elke cel : Facturen en één kolom met een array van Scalar-typen - Classificaties.
 
-| _id | Klant naam | Facturen | Servicelaag | Waarderingen |
+| _id | Naam van de klant | Facturen | Serviceniveau | Waarderingen |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", item: "pop-uptaak", prijs: "456", korting: "0,2"}, {invoice_id: "124", item: "oven", prijs: "1235", korting: "0,2"}] |Zilver |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", item: "koel kast", prijs: "12543", korting: "0,0"}] |Goud |[1,2] |
+| 1111 |ABC |[{invoice_id:"123", artikel:"broodrooster", prijs:"456", korting:"0,2"}, {invoice_id:"124", artikel:"oven", prijs: "1235", korting: "0.2"}] |Zilver |[5,6] |
+| 2222 |XYZ |[{invoice_id:"135", artikel:"koelkast", prijs: "12543", korting: "0.0"}] |Goud |[1,2] |
 
-Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ', zoals weer gegeven in het voor beeld. De basis tabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens uit de matrices zijn wegge laten en worden uitgevouwen in de virtuele tabellen.
+Het stuurprogramma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basistabel met de naam 'Voorbeeldtabel', weergegeven in het voorbeeld. De basistabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens van de arrays zijn weggelaten en worden uitgebreid in de virtuele tabellen.
 
-| _id | Klant naam | Servicelaag |
+| _id | Naam van de klant | Serviceniveau |
 | --- | --- | --- |
 | 1111 |ABC |Zilver |
 | 2222 |XYZ |Goud |
 
-In de volgende tabellen ziet u de virtuele tabellen die de oorspronkelijke matrices in het voor beeld vertegenwoordigen. Deze tabellen bevatten het volgende:
+In de volgende tabellen worden de virtuele tabellen weergegeven die de oorspronkelijke arrays in het voorbeeld vertegenwoordigen. Deze tabellen bevatten de volgende gegevens:
 
-* Een verwijzing naar de oorspronkelijke primaire-sleutel kolom die overeenkomt met de rij van de oorspronkelijke matrix (via de kolom _id)
-* Een indicatie van de positie van de gegevens in de oorspronkelijke matrix
-* De uitgevouwen gegevens voor elk element in de matrix
+* Een verwijzing naar de oorspronkelijke primaire sleutelkolom die overeenkomt met de rij van de oorspronkelijke array (via de kolom _id)
+* Een indicatie van de positie van de gegevens binnen de oorspronkelijke array
+* De uitgebreide gegevens voor elk element binnen de array
 
 **Tabel "ExampleTable_Invoices":**
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Korting |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |pop- |456 |0.2 |
-| 1111 |1 |124 |droog |1235 |0.2 |
-| 2222 |0 |135 |koel kast |12543 |0,0 |
+| 1111 |0 |123 |Broodrooster |456 |0,2 |
+| 1111 |1 |124 |Oven |1235 |0,2 |
+| 2222 |0 |135 |Koelkast |12543 |0,0 |
 
 **Tabel "ExampleTable_Ratings":**
 
@@ -244,4 +244,4 @@ In de volgende tabellen ziet u de virtuele tabellen die de oorspronkelijke matri
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

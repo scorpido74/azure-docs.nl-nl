@@ -1,7 +1,7 @@
 ---
-title: Modellen implementeren voor reken instanties
+title: Modellen implementeren om instanties te berekenen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het implementeren van uw Azure Machine Learning modellen als een webservice met behulp van reken instanties.
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als webservice met rekeninstanties.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,58 +11,58 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78398204"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren om reken instanties te Azure Machine Learning
+# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren in compute-exemplaren van Azure Machine Learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op uw Azure Machine Learning Reken exemplaar. Reken instanties gebruiken als aan een van de volgende voor waarden wordt voldaan:
+Meer informatie over het gebruik van Azure Machine Learning om een model te implementeren als webservice op uw Azure Machine Learning-rekenexemplaar. Compute-instanties gebruiken als een van de volgende voorwaarden waar is:
 
-- U moet sneller te implementeren en valideren van uw model.
-- U test een model dat is in ontwikkeling.
+- U moet uw model snel implementeren en valideren.
+- U test een model dat in ontwikkeling is.
 
 > [!TIP]
-> Het implementeren van een model van een Jupyter Notebook op een compute-exemplaar, is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer het reken exemplaar. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
+> Het implementeren van een model van een Jupyter-notitieblok op een rekeninstantie naar een webservice op dezelfde VM is een _lokale implementatie._ In dit geval is de 'lokale' computer de rekeninstantie. Zie Modellen implementeren met [Azure Machine Learning voor](how-to-deploy-and-where.md)meer informatie over implementaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Machine Learning-werk ruimte waarbij een reken instantie wordt uitgevoerd. Zie [Setup Environment and Workspace](tutorial-1st-experiment-sdk-setup.md)(Engelstalig) voor meer informatie.
+- Een Azure Machine Learning-werkruimte met een rekeninstantie die wordt uitgevoerd. Zie [Omgeving en werkruimte instellen](tutorial-1st-experiment-sdk-setup.md)voor meer informatie.
 
-## <a name="deploy-to-the-compute-instances"></a>Implementeren in de reken instanties
+## <a name="deploy-to-the-compute-instances"></a>Implementeren in de rekeninstanties
 
-Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen in uw reken exemplaar. Gebruik de volgende stappen om het notitie blok te laden en het model te implementeren als een webservice op de VM:
+Een voorbeeldnotitieblok dat lokale implementaties demonstreert, is opgenomen in uw rekeninstantie. Gebruik de volgende stappen om het notitieblok te laden en het model te implementeren als webservice op de VM:
 
-1. Selecteer uw Azure Machine Learning Reken instanties in [Azure machine learning Studio](https://ml.azure.com).
+1. Selecteer in [Azure Machine Learning-studio](https://ml.azure.com)uw Computer Learning-rekeninstanties van Azure Machine Learning.
 
-1. Open de `samples-*`-submap en open vervolgens `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Als het notitie blok eenmaal is geopend, voert u het uit.
+1. Open `samples-*` de submap en `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`open . Eenmaal geopend, voer het notitieblok uit.
 
-    ![Scherm afbeelding van de actieve lokale service op notebook](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+    ![Schermafbeelding van de lokale service die wordt uitgevoerd op notitieblok](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. In het notitie blok worden de URL en de poort weer gegeven waarop de service wordt uitgevoerd. Bijvoorbeeld `https://localhost:6789`. U kunt ook de cel met `print('Local service port: {}'.format(local_service.port))` uitvoeren om de poort weer te geven.
+1. Het notitieblok geeft de URL en poort weer waarop de service wordt uitgevoerd. Bijvoorbeeld `https://localhost:6789`. U de cel `print('Local service port: {}'.format(local_service.port))` met de poort ook uitvoeren.
 
-    ![Scherm afbeelding van de actieve lokale service poort](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
+    ![Schermafbeelding van de lopende lokale servicepoort](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
-1. Als u de service van een reken instantie wilt testen, gebruikt u de `https://localhost:<local_service.port>` URL. Als u wilt testen vanaf een externe client, haalt u de open bare URL op van de service die wordt uitgevoerd op het reken exemplaar. De open bare URL kan worden bepaald met behulp van de volgende formule. 
-    * VM van notebook: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * Reken instantie: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
+1. Als u de service wilt testen `https://localhost:<local_service.port>` vanuit een rekeninstantie, gebruikt u de URL. Als u wilt testen vanaf een externe client, krijgt u de openbare URL van de service die wordt uitgevoerd op de rekeninstantie. De openbare URL kan worden bepaald met behulp van de volgende formule; 
+    * Notebook VM: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
+    * Rekeninstantie: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
 
     Bijvoorbeeld: 
-    * VM van notebook: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Reken instantie: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+    * Notebook VM:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
+    * Rekeninstantie:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>Test de service
 
-Gebruik de volgende code om voorbeeld gegevens naar de actieve service te verzenden. Vervang de waarde van `service_url` door de URL van de vorige stap:
+Als u voorbeeldgegevens wilt verzenden naar de lopende service, gebruikt u de volgende code. Vervang de `service_url` waarde van de URL van de vorige stap:
 
 > [!NOTE]
-> Bij verificatie bij een implementatie op het reken exemplaar wordt de verificatie gemaakt met behulp van Azure Active Directory. De aanroep van `interactive_auth.get_authentication_header()` in de voorbeeld code verifieert u met AAD en retourneert een header die vervolgens kan worden gebruikt om te verifiëren bij de service op het reken exemplaar. Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md#interactive-authentication)voor meer informatie.
+> Wanneer u een implementatie op de rekeninstantie verifiëren, wordt de verificatie gemaakt met Azure Active Directory. De aanroep naar `interactive_auth.get_authentication_header()` de voorbeeldcode verifieert u met AAD en retourneert een koptekst die vervolgens kan worden gebruikt om te verifiëren naar de service op de rekeninstantie. Zie [Verificatie instellen voor Azure Machine Learning-resources en -werkstromen voor](how-to-setup-authentication.md#interactive-authentication)meer informatie.
 >
-> Bij het verifiëren van een implementatie in azure Kubernetes service of Azure Container Instances, wordt een andere verificatie methode gebruikt. Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md#web-service-authentication)voor meer informatie.
+> Wanneer u een implementatie op Azure Kubernetes Service of Azure Container Instances wilt verifiëren, wordt een andere verificatiemethode gebruikt. Zie Verificatie instellen [voor Azure Machine Learning-resources en -werkstromen voor](how-to-setup-authentication.md#web-service-authentication)meer informatie.
 
 ```python
 import requests
@@ -94,9 +94,9 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
-* [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
-* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
+* [Een model implementeren met een aangepaste Docker-afbeelding](how-to-deploy-custom-docker-image.md)
+* [Problemen met implementatie](how-to-troubleshoot-deployment.md)
+* [Azure Machine Learning-webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als webservice](how-to-consume-web-service.md)
+* [Uw Azure Machine Learning-modellen controleren met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

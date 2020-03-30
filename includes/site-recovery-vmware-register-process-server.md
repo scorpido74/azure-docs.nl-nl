@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67534616"
 ---
-1. Tot stand brengen op een externe bureaubladverbinding met de machine met de processerver. 
-2. Voer cspsconfigtool.exe voor het starten van het configuratieprogramma van Azure Site Recovery voor de processerver.
-    - Het hulpprogramma wordt automatisch gestart en de eerste keer dat u zich bij de processerver aanmeldt.
+1. Een verbinding met extern bureaublad tot stand brengen met de machine waarop de processerver wordt uitgevoerd. 
+2. Voer cspsconfigtool.exe uit om het configuratieprogramma azure site recovery process server te starten.
+    - De tool wordt automatisch gestart wanneer u zich voor het eerst aanmeldt bij de processerver.
     - Als deze niet automatisch wordt geopend, klikt u op de snelkoppeling op het bureaublad.
 
-3. In **configuratieserver FQDN-naam of IP-** , geef de naam of IP-adres van de configuratieserver waarmee de processerver te registreren.
-4. In **configuratie-serverpoort**, Controleer of 443 is opgegeven. Dit is de poort waarop de configuratieserver naar aanvragen luistert.
-5. In **wachtwoordzin voor verbinding met**, geeft u de wachtwoordzin die u hebt opgegeven bij het instellen van de configuratieserver. Zoek de wachtwoordzin:
-    -  Op de configuratieserver, gaat u naar de installatiemap van Site Recovery * *\home\svssystems\bin\** :
+3. Geef in **Configuration server FQDN of IP**de naam of het IP-adres op van de configuratieserver waarmee de processerver moet worden geregistreerd.
+4. Zorg er in **configuratieserverpoort**voor dat 443 is opgegeven. Dit is de poort waarop de configuratieserver naar aanvragen luistert.
+5. Geef in **Verbindingswachtwoord de**wachtwoordzin op die u hebt opgegeven bij het instellen van de configuratieserver. Ga als volgende voor het volgende:
+    -  Ga op de configuratieserver naar de installatiemap Siteherstel **\home\svssystems\bin:\**
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```
-    - Voer de onderstaande opdracht naar het tekstvenster aan de huidige wachtwoordzin:
+    - Voer de onderstaande opdracht uit om de huidige wachtwoordzin uit te printen:
     ```
     genpassphrase.exe -n
     ```
 
-6. In **Gegevensoverdrachtpoort**, laat de standaardwaarde staan, tenzij u een aangepaste poort hebt opgegeven.
+6. Laat in **de poort gegevensoverdracht**de standaardwaarde achter, tenzij u een aangepaste poort hebt opgegeven.
 
-7. Klik op **opslaan** Sla de instellingen op en registreer de processerver.
+7. Klik **op Opslaan** van de instellingen en registreer de processerver.
 
     
-    ![Registreer de processerver](./media/site-recovery-vmware-register-process-server/register-ps.png)
+    ![De processerver registreren](./media/site-recovery-vmware-register-process-server/register-ps.png)

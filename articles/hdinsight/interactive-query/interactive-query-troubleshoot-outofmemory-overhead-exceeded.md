@@ -1,6 +1,6 @@
 ---
-title: Deelname aan Apache Hive leidt tot OutOfMemory-fout-Azure HDInsight
-description: Omgaan met OutOfMemory-fouten ' de GC-overhead limiet is overschreden '
+title: Deelnemen aan Apache Hive leidt tot OutOfMemory-fout - Azure HDInsight
+description: Omgaan met OutOfMemory-fouten "GC overheadlimiet overschreden fout"
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,31 +8,31 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: ab334dfb15044fd0734a107c12003ca2c1f86906
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895173"
 ---
-# <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>Scenario: deelname aan Apache Hive leidt tot een OutOfMemory-fout in azure HDInsight
+# <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>Scenario: Deelnemen aan Apache Hive leidt tot een OutOfMemory-fout in Azure HDInsight
 
-In dit artikel worden probleemoplossings stappen en mogelijke oplossingen voor problemen beschreven bij het gebruik van interactieve query onderdelen in azure HDInsight-clusters.
+In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij het gebruik van interactive query-componenten in Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Het standaard gedrag voor Apache Hive verbindingen is het laden van de volledige inhoud van een tabel in het geheugen, zodat er een samen voeging kan worden uitgevoerd zonder dat u een stap voor het toewijzen of verlagen hoeft uit te voeren. Als de Hive-tabel te groot is om in het geheugen te passen, kan de query mislukken.
+Het standaardgedrag voor Apache Hive joins is om de volledige inhoud van een tabel in het geheugen te laden, zodat een join kan worden uitgevoerd zonder dat u een map/reduce-stap hoeft uit te voeren. Als de Hive-tabel te groot is om in het geheugen te passen, kan de query mislukken.
 
 ## <a name="cause"></a>Oorzaak
 
-Wanneer samen voegingen in een Hive met voldoende grootte worden uitgevoerd, wordt de volgende fout aangetroffen:
+Bij het uitvoeren van joins in bijenkorf van voldoende grootte, wordt de volgende fout aangetroffen:
 
 ```
 Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded error.
 ```
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-Voor komen dat Hive-tabellen in het geheugen worden geladen voor samen voegingen (in plaats van een stap voor het toewijzen/verlagen van een kaart) door de volgende Hive-configuratie waarde in te stellen:
+Voorkomen dat Hive tabellen laadt in geheugen bij joins (in plaats daarvan een kaart/stap verkleinen) door de volgende Hive-configuratiewaarde in te stellen:
 
 ```
 hive.auto.convert.join=false
@@ -40,10 +40,10 @@ hive.auto.convert.join=false
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit probleem niet kunt oplossen met deze waarde, gaat u naar een van de volgende...
+Als u deze waarde niet hebt opgelost, gaat u naar een van de volgende...
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).

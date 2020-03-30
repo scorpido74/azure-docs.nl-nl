@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 14abae6f6f72d724fffb1ccaa12f56fb6976f7a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176035"
 ---
-De volgende tabel bevat de mogelijke uploaden en vastleggen combinaties van Windows (veld) gegeneraliseerde en gespecialiseerde (spec.) Installatiekopieën van het besturingssysteem. De combinaties die worden verwerkt zonder fouten worden aangeduid met een Y en die fouten genereert worden aangeduid met een N. De oorzaken en oplossingen voor de verschillende fouten die u wilt uitvoeren in zijn in de tabel hieronder.
+In de volgende tabel worden de mogelijke upload- en opnamecombinaties van Windows-afbeeldingen (gen.) en gespecialiseerde (spec.) OS-afbeeldingen weergegeven. De combinaties die zonder fouten worden verwerkt, worden aangegeven door een Y en de combinaties die fouten zullen gooien, worden aangegeven door een N. De oorzaken en oplossingen voor de verschillende fouten die u tegenkomt worden weergegeven onder de tabel.
 
-| OS | Specificatie uploaden. | Alg uploaden. | Specificatie vastleggen. | Alg vastleggen. |
+| OS | Upload spec. | Upload gen. | Leg spec vast. | Vang gen. |
 | --- | --- | --- | --- | --- |
-| Windows-generatie. |N<sup>1</sup> |J |N<sup>3</sup> |J |
-| Windows-specificatie. |J |N<sup>2</sup> |J |N<sup>4</sup> |
+| Windows gen. |N<sup>1</sup> |J |N<sup>3</sup> |J |
+| Windows spec. |J |N<sup>2</sup> |J |N<sup>4</sup> |
 

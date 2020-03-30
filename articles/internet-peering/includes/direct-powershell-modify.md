@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774261"
 ---
-In deze sectie wordt beschreven hoe u de volgende wijzigings bewerkingen uitvoert voor directe peering:
+In deze sectie wordt beschreven hoe u de volgende wijzigingsbewerkingen voor Direct peering uitvoert:
 
-* Directe peering-verbindingen toevoegen
-* Directe peering-verbindingen verwijderen
-* De band breedte van actieve verbindingen upgraden of verlagen.
-* Voeg een IPv4/IPv6-sessie toe aan actieve verbindingen.
-* IPv4/IPv6-sessie op actieve verbindingen verwijderen.
+* Directe peeringverbindingen toevoegen
+* Directe peeringverbindingen verwijderen
+* Bandbreedte upgraden of downgraden op Actieve verbindingen.
+* IPv4/IPv6-sessie toevoegen op Actieve verbindingen.
+* IPv4/IPv6-sessie verwijderen op Actieve verbindingen.
 
-### <a name="add-direct-peering-connections"></a>Directe peering-verbindingen toevoegen
+### <a name="add-direct-peering-connections"></a>Directe peeringverbindingen toevoegen
 
-Hieronder wordt beschreven hoe u verbindingen toevoegt aan bestaande directe peering
+Hieronder voorbeeld beschrijft hoe u verbindingen toevoegt aan bestaande Direct-peering
 
 ```powershell
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>Directe peering-verbindingen verwijderen
+### <a name="remove-direct-peering-connections"></a>Directe peeringverbindingen verwijderen
 
-Het verwijderen van een verbinding wordt momenteel niet ondersteund in Power shell. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een verbinding wordt momenteel niet ondersteund op PowerShell. Neem contact op met [Microsoft-peering](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -56,9 +56,9 @@ $directPeering | Update-AzPeering
 ```
 -->
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>De band breedte van actieve verbindingen upgraden of verlagen
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Bandbreedte upgraden of downgraden op Actieve verbindingen
 
-Hieronder wordt beschreven hoe u 10 Gbps toevoegt aan een bestaande directe verbinding.
+Hieronder voorbeeld beschrijft hoe je 10Gbps toevoegt aan bestaande directe verbinding.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Voeg een IPv4/IPv6-sessie toe aan actieve verbindingen.
+### <a name="add-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie toevoegen op Actieve verbindingen.
 
-Hieronder wordt beschreven hoe u een IPv6-sessie toevoegt aan een bestaande directe verbinding met alleen een IPv4-sessie. 
+Hieronder voorbeeld beschrijft hoe u IPv6-sessie toevoegt op een bestaande directe verbinding met alleen IPv4-sessie. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie op actieve verbindingen verwijderen.
+### <a name="remove-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-sessie verwijderen op Actieve verbindingen.
 
-Het verwijderen van een IPv4/IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund in Power shell. Neem contact op met [micro soft-peering](mailto:peeringexperience@microsoft.com).
+Het verwijderen van een IPv4/IPv6-sessie van een bestaande verbinding wordt momenteel niet ondersteund op PowerShell. Neem contact op met [Microsoft-peering](mailto:peeringexperience@microsoft.com).

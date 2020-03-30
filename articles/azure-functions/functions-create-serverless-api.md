@@ -1,31 +1,31 @@
 ---
-title: Een HTTP-eind punt in Azure Functions aanpassen
-description: Meer informatie over het aanpassen van een HTTP trigger-eind punt in Azure Functions
+title: Een HTTP-eindpunt aanpassen in Azure-functies
+description: Meer informatie over het aanpassen van een HTTP-triggereindpunt in Azure-functies
 author: mattchenderson
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769265"
 ---
-# <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eindpunt aanpassen in Azure-functies
 
-In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een verzameling ingebouwde HTTP-triggers en-bindingen, waarmee u eenvoudig een eind punt kunt ontwerpen in verschillende talen, waaronder node. js, C#en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
+In dit artikel leert u hoe u met Azure-functies zeer schaalbare API's bouwen. Azure Functions wordt geleverd met een verzameling ingebouwde HTTP-triggers en bindingen, waarmee u eenvoudig een eindpunt in verschillende talen schrijven, waaronder Node.js, C#en meer. In dit artikel past u een HTTP-trigger aan om specifieke acties in uw API-ontwerp af te handelen. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
 
 ## <a name="prerequisites"></a>Vereisten 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-De resulterende functie wordt gebruikt voor de rest van dit artikel.
+De resulterende functie zal worden gebruikt voor de rest van dit artikel.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Open Azure Portal. Meld u hiervoor met uw Azure-account aan bij [https://portal.azure.com](https://portal.azure.com).
+Open Azure Portal. Meld u hiervoor aan [https://portal.azure.com](https://portal.azure.com) met uw Azure-account.
 
 ## <a name="customize-your-http-function"></a>Uw HTTP-functie aanpassen
 
@@ -105,7 +105,7 @@ Herhaal de stappen uit [Een functie-app maken](https://docs.microsoft.com/azure/
     
 1. Houd er rekening mee dat Azure Functions-proxy's niet het basispadvoorvoegsel `/api` verstrekken en dat dit moet worden opgenomen in de routesjabloon.
 1. De syntaxis van `%HELLO_HOST%` verwijst naar de app-instelling die u eerder hebt gemaakt. De omgezette URL verwijst naar uw oorspronkelijke functie.
-1. Klik op **Maken**.
+1. Klik **op Maken**.
 1. U kunt uw nieuwe proxy uitproberen door de proxy-URL kopiëren en deze te testen in de browser of met de HTTP-client van uw voorkeur.
     1. Gebruik voor een anonieme functie:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
@@ -172,13 +172,13 @@ U gaat nu uw mock-API toevoegen. Vervang het proxies.json-bestand door het volge
 }
 ```
 
-Hiermee wordt een nieuwe proxy 'GetUserByName' toegevoegd, zonder de eigenschap backendUri. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. Dit is vooral handig wanneer u een verouderd systeem gebruikt, waarbij u mogelijk kopteksten, query parameters, enzovoort moet wijzigen. Zie [verzoeken en antwoorden wijzigen in proxy's](https://docs.microsoft.com/azure/azure-functions/functions-proxies)voor meer informatie over het negeren van aanvragen en reacties.
+Hiermee wordt een nieuwe proxy 'GetUserByName' toegevoegd, zonder de eigenschap backendUri. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. Dit is vooral handig bij het proxyn van een verouderd systeem, waarbij u mogelijk kopteksten, queryparameters, enz. Zie [Verzoeken en antwoorden wijzigen in Proxy's voor](https://docs.microsoft.com/azure/azure-functions/functions-proxies)meer informatie over overoverschrijvingen over aanvragen en antwoorden.
 
 Test uw mock-API door het `<YourProxyApp>.azurewebsites.net/api/users/{username}`-eindpunt aan te roepen met behulp van een browser of de REST-client van uw voorkeur. Vervang _{username}_ door een tekenreekswaarde die een gebruikersnaam vertegenwoordigt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een API kunt bouwen en aanpassen op Azure Functions. U hebt ook geleerd hoe u meerdere API's, inclusief mocks, kunt samenbrengen als een geïntegreerd API-gebied. U kunt deze technieken gebruiken om meer en minder complexe API's te ontwikkelen, die alle worden uitgevoerd op het serverloze rekenmodel dat wordt geleverd door Azure Functions.
+In dit artikel hebt u geleerd hoe u een API op Azure-functies bouwen en aanpassen. U hebt ook geleerd hoe u meerdere API's, inclusief mocks, kunt samenbrengen als een geïntegreerd API-gebied. U kunt deze technieken gebruiken om meer en minder complexe API's te ontwikkelen, die alle worden uitgevoerd op het serverloze rekenmodel dat wordt geleverd door Azure Functions.
 
 De volgende informatiebronnen kunnen nuttig zijn als u uw API verder ontwikkelt:
 

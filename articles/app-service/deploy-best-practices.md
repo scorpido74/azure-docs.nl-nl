@@ -1,77 +1,77 @@
 ---
-title: Aanbevolen procedures voor implementatie
-description: Meer informatie over de belangrijkste mechanismen voor het implementeren naar Azure App Service. Zoek taalspecifieke aanbevelingen en andere voor behoud.
-keywords: Azure app service, Web-app, implementeren, implementeren, pijp lijnen, bouwen
+title: Aanbevolen best practices voor implementatie
+description: Meer informatie over de belangrijkste mechanismen voor implementatie naar Azure App Service. Vind taalspecifieke aanbevelingen en andere kanttekeningen.
+keywords: azure app-service, web-app, implementeren, implementeren, pijplijnen, build
 author: jasonfreeberg
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750464"
 ---
 # <a name="deployment-best-practices"></a>Aanbevolen procedures voor implementatie
 
-Elk ontwikkel team heeft unieke vereisten waardoor het implementeren van een efficiënte implementatie pijplijn moeilijk is voor elke Cloud service. In dit artikel worden de drie belangrijkste onderdelen beschreven van de implementatie van App Service: implementatie bronnen, bouw pijp lijnen en implementatie mechanismen. Dit artikel heeft ook betrekking op enkele aanbevolen procedures en tips voor specifieke taal stacks.
+Elk ontwikkelteam heeft unieke vereisten die het implementeren van een efficiënte implementatiepijplijn op elke cloudservice moeilijk kunnen maken. In dit artikel worden de drie belangrijkste onderdelen van implementatie naar App Service geïntroduceerd: implementatiebronnen, buildpipelines en implementatiemechanismen. Dit artikel bevat ook een aantal aanbevolen procedures en tips voor specifieke taalstapels.
 
-## <a name="deployment-components"></a>Implementatie onderdelen
+## <a name="deployment-components"></a>Implementatiecomponenten
 
-### <a name="deployment-source"></a>Implementatie bron
+### <a name="deployment-source"></a>Implementatiebron
 
-Een implementatie bron is de locatie van de toepassings code. Voor productie-apps is de implementatie bron meestal een opslag plaats die wordt gehost door versie beheer software [, zoals github, BitBucket of Azure opslag plaatsen](deploy-continuous-deployment.md). Voor ontwikkelings-en test scenario's kan de implementatie bron [een project op uw lokale computer](deploy-local-git.md)zijn. App Service biedt ook ondersteuning voor [OneDrive-en Dropbox-mappen](deploy-content-sync.md) als implementatie bronnen. Met Cloud mappen kunt u gemakkelijk aan de slag met App Service. het wordt doorgaans niet aanbevolen deze bron te gebruiken voor productie toepassingen op ondernemings niveau. 
+Een implementatiebron is de locatie van uw toepassingscode. Voor productie-apps is de implementatiebron meestal een opslagplaats die wordt gehost door software voor versiebeheer, zoals [GitHub, BitBucket of Azure Repos.](deploy-continuous-deployment.md) Voor ontwikkel- en testscenario's kan de implementatiebron [een project op uw lokale machine](deploy-local-git.md)zijn. App Service ondersteunt ook [OneDrive- en Dropbox-mappen](deploy-content-sync.md) als implementatiebronnen. Hoewel cloudmappen het gemakkelijk kunnen maken om aan de slag te gaan met App Service, wordt het meestal niet aanbevolen om deze bron te gebruiken voor productietoepassingen op bedrijfsniveau. 
 
 ### <a name="build-pipeline"></a>Build-pipeline
 
-Wanneer u een implementatie bron hebt gekozen, is de volgende stap het kiezen van een build-pijp lijn. Met een build-pijp lijn wordt de bron code van de implementatie bron gelezen en wordt een reeks stappen uitgevoerd (zoals het compileren van code, het minifying van HTML en Java script, het uitvoeren van tests en het inpakken van onderdelen) om de toepassing in een uitvoer bare-status te verkrijgen. De specifieke opdrachten die worden uitgevoerd door de build-pijp lijn, zijn afhankelijk van uw taal stack. Deze bewerkingen kunnen worden uitgevoerd op een bouw server zoals Azure-pijp lijnen of lokaal worden uitgevoerd.
+Zodra u een implementatiebron kiest, kiest u een buildpijplijn. Een buildpijplijn leest uw broncode uit de implementatiebron en voert een reeks stappen uit (zoals het compileren van code, het minifying HTML en JavaScript, het uitvoeren van tests en verpakkingscomponenten) om de toepassing in een runnable status te krijgen. De specifieke opdrachten die door de buildpijplijn worden uitgevoerd, zijn afhankelijk van uw taalstack. Deze bewerkingen kunnen worden uitgevoerd op een buildserver, zoals Azure Pipelines, of lokaal worden uitgevoerd.
 
-### <a name="deployment-mechanism"></a>Implementatie mechanisme
+### <a name="deployment-mechanism"></a>Implementatiemechanisme
 
-Het implementatie mechanisme is de actie die wordt gebruikt om uw gemaakte toepassing in de */Home/site/wwwroot* -map van uw web-app te zetten. De */wwwroot* Directory is een gekoppelde opslag locatie die wordt gedeeld door alle exemplaren van uw web-app. Wanneer het implementatie mechanisme uw toepassing in deze map plaatst, ontvangen uw instanties een melding voor het synchroniseren van de nieuwe bestanden. App Service ondersteunt de volgende implementatie mechanismen:
+Het implementatiemechanisme is de actie die wordt gebruikt om uw ingebouwde toepassing in de */home/site/wwwroot-map* van uw web-app te plaatsen. De */wwwroot-map* is een gemonteerde opslaglocatie die wordt gedeeld door alle exemplaren van uw web-app. Wanneer het implementatiemechanisme uw toepassing in deze map plaatst, ontvangen uw instanties een melding om de nieuwe bestanden te synchroniseren. App Service ondersteunt de volgende implementatiemechanismen:
 
-- Kudu-eind punten: [kudu](https://github.com/projectkudu/kudu/wiki) is het open-source hulp programma voor ontwikkel aars dat wordt uitgevoerd als een afzonderlijk proces in Windows app service, en als een tweede container in Linux app service. Kudu verwerkt doorlopende implementaties en biedt HTTP-eind punten voor implementatie, zoals zipdeploy.
-- FTP en Web Deploy: door gebruik te maken van uw [site-of gebruikers referenties](deploy-configure-credentials.md)kunt u bestanden uploaden [via FTP](deploy-ftp.md) of Web Deploy. Deze mechanismen lopen niet via kudu.  
+- Kudu-eindpunten: [Kudu](https://github.com/projectkudu/kudu/wiki) is de productiviteitstool voor open-sourceontwikkelaars die wordt uitgevoerd als een afzonderlijk proces in Windows App Service en als tweede container in Linux App Service. Kudu verwerkt continue implementaties en biedt HTTP-eindpunten voor implementatie, zoals zipdeploy.
+- FTP en WebDeploy: met behulp van uw [site of gebruikersreferenties](deploy-configure-credentials.md)u bestanden uploaden [via FTP](deploy-ftp.md) of WebDeploy. Deze mechanismen gaan niet via Kudu.  
 
-Implementatie hulpprogramma's, zoals Azure-pijp lijnen, Jenkins en editor-invoeg toepassingen, gebruiken een van deze implementatie mechanismen.
+Implementatietools zoals Azure Pipelines, Jenkins en editor-plugins maken gebruik van een van deze implementatiemechanismen.
 
 ## <a name="language-specific-considerations"></a>Taalspecifieke overwegingen
 
 ### <a name="java"></a>Java
 
-Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Raadpleeg [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md) voor meer informatie.
+Gebruik de Kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van JAR-toepassingen en [wardeploy/](deploy-zip.md#deploy-war-file) voor WAR-apps. Als u Jenkins gebruikt, u deze API's rechtstreeks in uw implementatiefase gebruiken. Raadpleeg [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md) voor meer informatie.
 
 ### <a name="node"></a>Knooppunt
 
-Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing (`npm install`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling `SCM_DO_BUILD_DURING_DEPLOYMENT`met de waarde `false`.
+Kudu voert standaard de buildstappen uit voor`npm install`uw Node-toepassing ( ). Als u een buildservice zoals Azure DevOps gebruikt, is de Kudu-build overbodig. Als u de Kudu-build wilt `SCM_DO_BUILD_DURING_DEPLOYMENT`uitschakelen, maakt `false`u een app-instelling met een waarde van .
 
 ### <a name="net"></a>.NET 
 
-Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing (`dotnet build`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling `SCM_DO_BUILD_DURING_DEPLOYMENT`met de waarde `false`.
+Kudu voert standaard de buildstappen uit voor`dotnet build`uw .Net-toepassing ( ). Als u een buildservice zoals Azure DevOps gebruikt, is de Kudu-build overbodig. Als u de Kudu-build wilt `SCM_DO_BUILD_DURING_DEPLOYMENT`uitschakelen, maakt `false`u een app-instelling met een waarde van .
 
-## <a name="other-deployment-considerations"></a>Andere overwegingen bij de implementatie
+## <a name="other-deployment-considerations"></a>Andere implementatieoverwegingen
 
-### <a name="use-deployment-slots"></a>Implementatie sleuven gebruiken
+### <a name="use-deployment-slots"></a>Implementatiesleuven gebruiken
 
-Gebruik waar mogelijk [implementatie sleuven](deploy-staging-slots.md) bij het implementeren van een nieuwe productie-build. Wanneer u een Standard App Service plan-laag of beter gebruikt, kunt u uw app implementeren in een faserings omgeving, uw wijzigingen valideren en een rook testen. Wanneer u klaar bent, kunt u uw staging-en productie-sleuven wisselen. Met de wissel bewerking worden de benodigde Workers geheten zodat deze overeenkomen met uw productie schaal, waardoor uitval tijd wordt geëlimineerd. 
+Gebruik waar mogelijk [implementatiesleuven](deploy-staging-slots.md) bij het implementeren van een nieuwe productiebuild. Wanneer u een standaardapp-serviceplanlaag of beter gebruikt, u uw app implementeren in een faseringsomgeving, uw wijzigingen valideren en rooktests uitvoeren. Wanneer u klaar bent, u uw faserings- en productieslots ruilen. De swapbewerking warmt de benodigde werkexemplaren op die overeenkomen met uw productieschaal, waardoor downtime wordt geëlimineerd. 
 
 ### <a name="local-cache"></a>Lokale cache
 
-Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Sommige apps hebben echter alleen een hoogwaardige, alleen-lezen inhouds opslag nodig die kan worden uitgevoerd met hoge Beschik baarheid. Deze apps kunnen profiteren van het gebruik van [lokale cache](overview-local-cache.md). Lokale cache wordt niet aanbevolen voor content management-sites zoals WordPress.
+Azure App Service-inhoud wordt opgeslagen in Azure Storage en wordt op een duurzame manier opgedoken als inhoudsshare. Sommige apps hebben echter alleen een krachtige, alleen-lezen inhoudswinkel nodig die ze met hoge beschikbaarheid kunnen uitvoeren. Deze apps kunnen profiteren van het gebruik van [lokale cache.](overview-local-cache.md) Lokale cache wordt niet aanbevolen voor sites voor inhoudsbeheer, zoals WordPress.
 
-Gebruik altijd lokale cache in combi natie met [implementatie sleuven](deploy-staging-slots.md) om uitval tijd te voor komen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor meer informatie over het samen gebruiken van deze functies.
+Gebruik altijd lokale cache in combinatie met [implementatiesleuven](deploy-staging-slots.md) om downtime te voorkomen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor informatie over het samen gebruiken van deze functies.
 
 ### <a name="high-cpu-or-memory"></a>Hoge CPU of geheugen
 
-Als uw App Service-abonnement meer dan 90% beschik bare CPU of geheugen gebruikt, kan het zijn dat de onderliggende virtuele machine problemen heeft met het verwerken van uw implementatie. Als dit gebeurt, kunt u het aantal instanties tijdelijk opschalen om de implementatie uit te voeren. Zodra de implementatie is voltooid, kunt u het aantal exemplaren terugsturen naar de vorige waarde.
+Als uw App Service Plan meer dan 90% van de beschikbare CPU of geheugen gebruikt, kan de onderliggende virtuele machine problemen hebben met het verwerken van uw implementatie. Wanneer dit gebeurt, schaalt u het aantal instance's tijdelijk op om de implementatie uit te voeren. Zodra de implementatie is voltooid, u het aantal instance's terugzetten naar de vorige waarde.
 
-Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](https://docs.microsoft.com/azure/app-service/overview-diagnostics) om te bepalen welke best practices u kunt gebruiken voor uw resource.
+Ga voor meer informatie over aanbevolen procedures naar [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) voor meer informatie over bruikbare aanbevolen procedures die specifiek zijn voor uw resource.
 
-- Navigeer naar uw web-app in het [Azure Portal](https://portal.azure.com).
-- Klik op **problemen vaststellen en oplossen** in het navigatie venster aan de linkerkant, waarmee app service diagnostische gegevens worden geopend.
-- Kies de tegel start pagina voor **Best practices** .
-- Klik op **Aanbevolen procedures voor Beschik baarheid & prestaties** of **Aanbevolen procedures voor optimale configuratie** om de huidige status van uw app te bekijken met betrekking tot deze aanbevolen procedures.
+- Navigeer naar uw web-app in de [Azure-portal.](https://portal.azure.com)
+- Klik op **Diagnosticeren en los problemen op** in de linkernavigatie, waarmee App Service Diagnostics wordt geopend.
+- Kies de startpaginategel **Aanbevolen procedures.**
+- Klik **op Aanbevolen procedures voor beschikbaarheid & Prestaties** of Aanbevolen procedures voor optimale **configuratie** om de huidige status van uw app met betrekking tot deze aanbevolen procedures weer te geven.
 
-U kunt deze koppeling ook gebruiken om direct App Service diagnostische gegevens voor uw resource te openen: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.
+U deze koppeling ook gebruiken om App `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`Service Diagnostics direct te openen voor uw resource:.

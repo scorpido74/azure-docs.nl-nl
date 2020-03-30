@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176110"
 ---
 #### <a name="to-create-a-manual-backup"></a>Een handmatige back-up maken
@@ -21,7 +21,7 @@ ms.locfileid: "67176110"
 
 3. Voer de volgende stappen uit op de blade **Nu back-up uitvoeren**:
 
-    1. Kies de juiste **type momentopname** in de vervolgkeuzelijst: **Lokale** momentopname of **Cloud** momentopname. Selecteer Lokale momentopname voor snelle back-ups of herstelacties en Cloud-momentopname voor tolerantie van gegevens.
+    1. Kies het juiste **Type momentopname** in de vervolgkeuzelijst: **Lokale momentopname** of **Cloud-momentopname**. Selecteer Lokale momentopname voor snelle back-ups of herstelacties en Cloud-momentopname voor tolerantie van gegevens.
 
         ![Handmatige back-up maken](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

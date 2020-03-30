@@ -1,20 +1,20 @@
 ---
-title: Een container maken voor Apache Tomcat op Linux
-description: Maak een Linux-container om een toepassing beschikbaar te maken die wordt uitgevoerd op Apache Tomcat server op Azure Service Fabric. Bouw een docker-installatie kopie met uw toepassing en Apache Tomcat-server, push de installatie kopie naar een container register, bouw en implementeer een Service Fabric-container toepassing.
+title: Maak een container voor Apache Tomcat op Linux
+description: Maak Linux-container om een toepassing te blootstellen die wordt uitgevoerd op de Apache Tomcat-server op Azure Service Fabric. Bouw een Docker-afbeelding met uw toepassing en Apache Tomcat-server, duw de afbeelding naar een containerregister, bouw en implementeer een Service Fabric-containertoepassing.
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614414"
 ---
-# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Service Fabric-container maken met Apache Tomcat server op Linux
-Apache Tomcat is een populaire, open-source implementatie van de Java-servlet en Java-Server technologieën. In dit artikel wordt beschreven hoe u een container bouwt met Apache Tomcat en een eenvoudige webtoepassing, de container implementeert in een Service Fabric cluster met Linux en verbinding maakt met de webtoepassing.  
+# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Service Fabric-container met Apache Tomcat-server op Linux
+Apache Tomcat is een populaire, open-source implementatie van de Java Servlet en Java Server technologieën. In dit artikel ziet u hoe u een container bouwt met Apache Tomcat en een eenvoudige webtoepassing, de container implementeert op een Service Fabric-cluster met Linux en verbinding maakt met de webtoepassing.  
 
-Zie de [Introductie pagina van Apache Tomcat](https://tomcat.apache.org/)voor meer informatie over Apache Tomcat. 
+Zie de [Apache Tomcat-homepage voor](https://tomcat.apache.org/)meer informatie over Apache Tomcat. 
 
 ## <a name="prerequisites"></a>Vereisten
 * Een ontwikkelcomputer waarop wordt uitgevoerd:
@@ -22,24 +22,24 @@ Zie de [Introductie pagina van Apache Tomcat](https://tomcat.apache.org/)voor me
   * [Docker CE voor Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric-CLI](service-fabric-cli.md)
 
-* Een container register in Azure Container Registry. U kunt een container register maken in uw Azure-abonnement met behulp van [de Azure Portal](../container-registry/container-registry-get-started-portal.md) of [de Azure cli](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry). 
+* Een containerregister in Azure Container Registry. U een containerregister maken in uw Azure-abonnement met behulp van [de Azure-portal](../container-registry/container-registry-get-started-portal.md) of [de Azure CLI.](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry) 
 
-## <a name="build-a-tomcat-image-and-run-it-locally"></a>Een tomcat-installatie kopie bouwen en lokaal uitvoeren
-Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis van een Apache Tomcat-installatie kopie en een eenvoudige web-app en voer deze uit in een container op het lokale systeem. 
+## <a name="build-a-tomcat-image-and-run-it-locally"></a>Een Tomcat-afbeelding maken en lokaal uitvoeren
+Volg de stappen in deze sectie om een Docker-afbeelding te maken op basis van een Apache Tomcat-afbeelding en een eenvoudige web-app en voer deze vervolgens uit in een container op uw lokale systeem. 
  
-1. Kloon de [service Fabric aan de slag met](https://github.com/Azure-Samples/service-fabric-java-getting-started) de opslag plaats voor Java-voor beelden op uw ontwikkel computer.
+1. Clone the [Service Fabric aan de slag met Java](https://github.com/Azure-Samples/service-fabric-java-getting-started) samples repository op je ontwikkelcomputer.
 
    ```bash
    git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
    ```
 
-1. Wijzig mappen in de voorbeeld Directory Apache Tomcat server (*service-Fabric-Java-Getting-Started/container-Apache-Tomcat-web-server-sample*):
+1. Mappen wijzigen in de Apache Tomcat-serversampledirectory *(service-fabric-java-getting-started/container-apache-tomcat-web-server-sample):*
 
    ```bash
    cd service-fabric-java-getting-started/container-apache-tomcat-web-server-sample
    ```
 
-1. Maak een docker-bestand op basis van de officiële [tomcat-installatie kopie](https://hub.docker.com/_/tomcat/) die zich bevindt in docker hub en het Tomcat server-voor beeld. Maak in de map *service-Fabric-Java-Getting-Started/container-Apache-Tomcat-web-server-voor beeld* een bestand met de naam *Dockerfile* (zonder bestands extensie). Voeg het volgende toe aan het bestand *Dockerfile* en sla de wijzigingen op:
+1. Maak een Docker-bestand op basis van de officiële [Tomcat-afbeelding](https://hub.docker.com/_/tomcat/) op Docker Hub en het voorbeeld van de Tomcat-server. Maak in de *map service-fabric-java-getting-started/container-apache-tomcat-web-server-sample* een bestand met de naam *Dockerfile* (zonder bestandsextensie). Voeg het volgende toe aan het bestand *Dockerfile* en sla de wijzigingen op:
 
    ```
    FROM library/tomcat
@@ -49,16 +49,16 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    COPY ./ApacheTomcat /usr/local/tomcat
    ```
 
-   Zie de [Dockerfile-referentie](https://docs.docker.com/engine/reference/builder/) voor meer informatie.
+   Zie de [dockerfile-referentie](https://docs.docker.com/engine/reference/builder/) voor meer informatie.
 
 
-4. Voer de `docker build` opdracht uit om de installatie kopie te maken waarmee uw webtoepassing wordt uitgevoerd:
+4. Voer `docker build` de opdracht uit om de afbeelding te maken waarop uw webtoepassing wordt uitgevoerd:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Met deze opdracht wordt de nieuwe installatie kopie gemaakt met behulp van de instructies in de Dockerfile, naamgeving (-t tagging) van de afbeelding `tomcattest`. Als u een container installatie kopie wilt maken, wordt eerst de basis installatie kopie gedownload uit docker hub en wordt de toepassing hieraan toegevoegd. 
+   Met deze opdracht wordt de nieuwe afbeelding gemaakt met behulp van de `tomcattest`instructies in het Dockerfile, waarbij de afbeelding wordt vernoemen (-t-tagging). Om een containerafbeelding te maken, wordt de basisafbeelding eerst gedownload van Docker Hub en wordt de toepassing eraan toegevoegd. 
 
    Nadat de buildopdracht is voltooid, voert u de opdracht `docker images` uit om de gegevens van de nieuwe installatiekopie te bekijken:
 
@@ -69,41 +69,41 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    tomcattest                    latest              86838648aab6        2 minutes ago       194 MB
    ```
 
-5. Controleer of de container toepassing lokaal wordt uitgevoerd voordat u deze naar het container register pusht:
+5. Controleer of uw containertoepassing lokaal wordt uitgevoerd voordat u het containerregister invoert:
  
    ```bash
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name` de naam van de container, zodat u er met een beschrijvende naam in plaats van de ID naar kunt verwijzen.
-   * `-p` geeft de poort toewijzing aan tussen de container en het hostbesturingssysteem. 
+   * `--name`noemt de container, zodat u er naar verwijzen met een vriendelijke naam in plaats van de ID.
+   * `-p`hiermee wordt de poorttoewijzing tussen de container en het hostbesturingssysteem opgegeven. 
 
    > [!Note]
-   > De poort die u opent met de para meter `-p` moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het *ApacheTomcat/conf/server. XML-* bestand om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
+   > De poort die `-p` u met de parameter opent, moet de poort zijn waarop uw Tomcat-toepassing naar aanvragen luistert. In het huidige voorbeeld is er een connector geconfigureerd in het *bestand ApacheTomcat/conf/server.xml* om te luisteren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
 
-   Zie de [documentatie van docker run](https://docs.docker.com/engine/reference/commandline/run/)voor meer informatie over andere para meters.
+   Zie de [docker-rundocumentatie](https://docs.docker.com/engine/reference/commandline/run/)voor meer informatie over andere parameters.
 
-1. Als u de container wilt testen, opent u een browser en voert u een van de volgende Url's in. Er wordt een variant van de Hallo wereld! weer geven welkomst scherm voor elke URL.
+1. Als u uw container wilt testen, opent u een browser en voert u een van de volgende URL's in. U ziet een variant van de "Hello World!" welkomstscherm voor elke URL.
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
    - `http://localhost:8080/hello/sayhi` 
 
-   ![Hallo wereld/sayhi](./media/service-fabric-get-started-tomcat/hello.png)
+   ![Hallo wereld /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
-2. De container stoppen en verwijderen van uw ontwikkel computer:
+2. Stop de container en verwijder deze van uw ontwikkelingscomputer:
 
    ```bash
    docker stop tomcat-site
    docker rm tomcat-site
    ```
 
-## <a name="push-the-tomcat-image-to-your-container-registry"></a>De tomcat-installatie kopie naar het container register pushen
-Nu u hebt gecontroleerd of de tomcat-installatie kopie wordt uitgevoerd in een container op uw ontwikkel computer, pusht u deze naar een opslag plaats in een container register. In dit artikel wordt gebruikgemaakt van Azure Container Registry voor het opslaan van de installatie kopie, maar u kunt elk gewenst container register gebruiken als u een aantal stappen hebt gewijzigd. In dit artikel wordt ervan uitgegaan dat de register naam *myregistry* is en dat de volledige register naam myregistry.azurecr.io is. Wijzig deze op de juiste manier voor uw scenario. 
+## <a name="push-the-tomcat-image-to-your-container-registry"></a>De Afbeelding Van Tomcat naar uw containerregister duwen
+Nu u hebt geverifieerd dat de Tomcat-afbeelding in een container op uw ontwikkelingscomputer wordt uitgevoerd, duwt u deze naar een opslagplaats in een containerregister. In dit artikel wordt Azure Container Registry gebruikt om de afbeelding op te slaan, maar met enige wijziging van stappen u elk containerregister gebruiken dat u kiest. In dit artikel wordt aangenomen dat de registernaam *myregistry* is en de volledige registernaam myregistry.azurecr.io. Wijzig deze op de juiste manier voor uw scenario. 
 
-1. Voer `docker login` uit om u aan te melden bij het container register met uw [register referenties](../container-registry/container-registry-authentication.md).
+1. U `docker login` zich aanmelden bij uw containerregister met uw [registerreferenties.](../container-registry/container-registry-authentication.md)
 
-   In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
+   In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U zich ook aanmelden met uw registergebruikersnaam en wachtwoord.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -121,25 +121,25 @@ Nu u hebt gecontroleerd of de tomcat-installatie kopie wordt uitgevoerd in een c
    docker push myregistry.azurecr.io/samples/tomcattest
    ```
 
-## <a name="build-and-deploy-the-service-fabric-container-application"></a>De Service Fabric-container toepassing bouwen en implementeren
-Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt u een Service Fabric container toepassing bouwen en implementeren die de tomcat-installatie kopie uit uw REGI ster haalt en uitvoeren als een container service in uw cluster. 
+## <a name="build-and-deploy-the-service-fabric-container-application"></a>De containertoepassing Service Fabric bouwen en implementeren
+Nu u de Tomcat-afbeelding naar een containerregister hebt gepusht, u een Containertoepassing ServiceFabric maken en implementeren die de Tomcat-afbeelding uit uw register haalt en deze uitvoert als een containerservice in uw cluster. 
 
-1. Maak een nieuwe map buiten uw lokale kloon (buiten de *service-Fabric-Java-Getting-Started* Directory-structuur). Ga naar het en gebruik Yeoman om een steiger voor een container toepassing te maken: 
+1. Maak een nieuwe map buiten uw lokale kloon (buiten de *service-fabric-java-getting-started* directory tree). Schakel ernaar en gebruik Yeoman om een steiger te maken voor een containertoepassing: 
 
    ```bash
    yo azuresfcontainer 
    ```
-   Voer de volgende waarden in wanneer u hierom wordt gevraagd:
+   Voer de volgende waarden in wanneer daarom wordt gevraagd:
 
-   * Uw toepassing een naam: ServiceFabricTomcat
-   * Naam van de toepassings service: TomcatService
-   * Voer de naam van de installatie kopie in: Geef de URL voor de container installatie kopie op in het container register. bijvoorbeeld myregistry.azurecr.io/samples/tomcattest.
-   * Opdrachten: laat dit veld leeg. Omdat voor deze installatiekopie een workloadinvoerpunt is gedefinieerd, hoeft u niet expliciet invoeropdrachten op te geven (opdrachten worden uitgevoerd in de container, zodat de container na het opstarten actief blijft).
-   * Aantal exemplaren van de gast container toepassing: 1
+   * Uw toepassing een naam geven: ServiceFabricTomcat
+   * Naam van de applicatieservice: TomcatService
+   * Voer de naam van de afbeelding in: geef de URL op voor de containerafbeelding in uw containerregister; myregistry.azurecr.io/samples/tomcattest bijvoorbeeld.
+   * Opdrachten: Laat dit leeg. Omdat voor deze installatiekopie een workloadinvoerpunt is gedefinieerd, hoeft u niet expliciet invoeropdrachten op te geven (opdrachten worden uitgevoerd in de container, zodat de container na het opstarten actief blijft).
+   * Aantal exemplaren van de toepassing van gastcontainers: 1
 
    ![Service Fabric Yeoman-generator voor containers](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. Voeg in het service manifest (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. XML*) de volgende XML onder het hoofd- **ServiceManfest** -label toe om de poort te openen waarop uw toepassing luistert naar aanvragen. Het **eindpunt** label declareert het protocol en de poort voor het eind punt. Voor dit artikel luistert de container service naar poort 8080: 
+10. Voeg in het servicemanifest *(ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml)* de volgende XML toe onder de **hoofdtag van ServiceManfest** om de poort te openen waarop uw toepassing naar aanvragen luistert. De **tag Eindpunt** declareert het protocol en de poort voor het eindpunt. Voor dit artikel luistert de containerservice op poort 8080: 
 
    ```xml
    <Resources>
@@ -152,7 +152,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
    </Resources>
    ```
 
-11. Voeg in het manifest van de toepassing (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest. XML*) onder de label **SERVICEMANIFESTIMPORT** de volgende XML toe. Vervang de **AccountName** en het **wacht woord** in de **RepositoryCredentials** -tag door de naam van het container register en het wacht woord dat vereist is om u aan te melden.
+11. Voeg in het toepassingsmanifest *(ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml)* onder de **tag ServiceManifestImport** de volgende XML toe. Vervang de **accountnaam** en **het wachtwoord** in de **tag RepositoryCredentials** door de naam van uw containerregister en het wachtwoord dat nodig is om u aan te melden.
 
    ```xml
    <Policies>
@@ -163,60 +163,60 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
    </Policies>
    ```
 
-   Het **ContainerHostPolicies** -label geeft beleids regels op voor het activeren van container-hosts.
+   De tag **ContainerHostPolicies** geeft beleid op voor het activeren van containerhosts.
     
-   * Het **PortBinding** -label configureert het poort toewijzings beleid voor de container poort-naar-host. Het kenmerk **ContainerPort** is ingesteld op 8080 omdat de container poort 8080 beschikbaar maakt, zoals is opgegeven in de Dockerfile. Het kenmerk **EndpointRef** is ingesteld op ' endpointTest ', het eind punt dat is gedefinieerd in het service manifest in de vorige stap. Inkomende aanvragen voor de service op poort 8080 worden dus toegewezen aan poort 8080 op de container. 
-   * De **RepositoryCredentials** -tag geeft de referenties op die de container moet verifiëren met de opslag plaats (privé) waar de installatie kopie van wordt opgehaald. U hebt dit beleid niet nodig als de installatie kopie wordt opgehaald uit een open bare opslag plaats.
+   * Met de tag PortBinding configureert u het toewijzingsbeleid voor containerpoort-naar-host.The **PortBinding** tag configures the container port-to-host port mapping policy. Het kenmerk **ContainerPort** is ingesteld op 8080 omdat de container poort 8080 blootlegt, zoals opgegeven in het Dockerfile. Het kenmerk **EndpointRef** is ingesteld op 'endpointTest', het eindpunt dat in het servicemanifest in de vorige stap is gedefinieerd. Zo worden inkomende aanvragen voor de service op poort 8080 toegewezen aan poort 8080 op de container. 
+   * De **tag RepositoryCredentials** geeft de referenties op die de container moet verifiëren met de (privé)opslagplaats waar de afbeelding vandaan wordt gehaald. U hebt dit beleid niet nodig als de afbeelding uit een openbare opslagplaats wordt gehaald.
     
 
-12. Maak in de map *ServiceFabricTomcat* verbinding met uw service Fabric-cluster. 
+12. Maak in de map *ServiceFabricTomcat* verbinding met uw cluster van servicefabric. 
 
-   * Als u verbinding wilt maken met het lokale Service Fabric cluster, voert u de volgende handelingen uit:
+   * Voer het als nodig op om verbinding te maken met het lokale cluster Service Fabric:
 
      ```bash
      sfctl cluster select --endpoint http://localhost:19080
      ```
     
-   * Als u verbinding wilt maken met een beveiligd Azure-cluster, controleert u of het client certificaat aanwezig is als een. pem-bestand in de map *ServiceFabricTomcat* en voert u de volgende handelingen uit: 
+   * Als u verbinding wilt maken met een beveiligd Azure-cluster, controleert u of het clientcertificaat aanwezig is als een .pem-bestand in de *serviceFabricTomcat-map* en voert u het uitvoeren uit: 
 
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Vervang in de voor gaande opdracht `your-certificate.pem` door de naam van het client certificaat bestand. In ontwikkel-en test omgevingen wordt het cluster certificaat vaak gebruikt als het client certificaat. Als uw certificaat niet zelf is ondertekend, laat u de para meter `-no-verify` weg. 
+     Vervang in de vorige `your-certificate.pem` opdracht de naam van uw clientcertificaatbestand. In ontwikkel- en testomgevingen wordt het clustercertificaat vaak gebruikt als clientcertificaat. Als uw certificaat niet zelf is `-no-verify` ondertekend, laat u de parameter weg. 
        
-     Cluster certificaten worden doorgaans lokaal gedownload als. pfx-bestand. Als u uw certificaat nog niet in de PEM-indeling hebt, kunt u de volgende opdracht uitvoeren om een. pem-bestand te maken vanuit een pfx-bestand:
+     Clustercertificaten worden meestal lokaal gedownload als .pfx-bestanden. Als u uw certificaat nog niet in PEM-indeling hebt, u de volgende opdracht uitvoeren om een .pem-bestand te maken vanuit een .pfx-bestand:
 
      ```bash
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     Als uw pfx-bestand niet is beveiligd met een wacht woord, gebruikt u `-passin pass:` voor de laatste para meter.
+     Als uw .pfx-bestand niet `-passin pass:` met een wachtwoord is beveiligd, gebruikt u de laatste parameter.
 
 
-13. Voer het installatie script uit dat is opgenomen in de sjabloon om de toepassing te implementeren in uw cluster. Het script kopieert het toepassings pakket naar de installatie kopie opslag van het cluster, registreert het toepassings type en maakt een exemplaar van de toepassing.
+13. Voer het installatiescript uit dat in de sjabloon is opgenomen om de toepassing naar uw cluster te implementeren. Het script kopieert het toepassingspakket naar het afbeeldingsarchief van het cluster, registreert het toepassingstype en maakt een instantie van de toepassing.
 
      ```bash
      ./install.sh
      ```
 
-   Nadat u het installatie script hebt uitgevoerd, opent u een browser en navigeert u naar Service Fabric Explorer:
+   Nadat u het installatiescript hebt uitgevoerd, opent u een browser en navigeert u naar Service Fabric Explorer:
     
-   * Gebruik `http://localhost:19080/Explorer` op een lokaal cluster (Vervang *localhost* door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt).
-   * Gebruik `https://PublicIPorFQDN:19080/Explorer`voor een veilig Azure-cluster. 
+   * Gebruik op een `http://localhost:19080/Explorer` lokaal cluster (vervang *localhost* door het privé-IP van de VM als u Vagrant op Mac OS X gebruikt).
+   * Gebruik op `https://PublicIPorFQDN:19080/Explorer`een beveiligd Azure-cluster . 
     
-   Vouw het knoop punt **toepassingen** uit en houd er rekening mee dat er nu een vermelding is voor uw toepassings type, **ServiceFabricTomcatType**en een andere voor het eerste exemplaar van dat type. Het kan enkele minuten duren voordat de toepassing volledig is geïmplementeerd, dus een ogen blik geduld.
+   Vouw het knooppunt **Toepassingen** uit en houd er rekening mee dat er nu een vermelding is voor uw toepassingstype, **ServiceFabricTomcatType**en een andere voor de eerste instantie van dat type. Het kan enkele minuten duren voordat de toepassing volledig is geïmplementeerd, dus wees geduldig.
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Als u toegang wilt krijgen tot de toepassing op de Tomcat-server, opent u een browser venster en voert u een van de volgende Url's in. Als u hebt geïmplementeerd op het lokale cluster, gebruikt u *localhost* voor *PublicIPorFQDN*. Er wordt een variant van de Hallo wereld! weer geven welkomst scherm voor elke URL.
+1. Als u toegang wilt krijgen tot de toepassing op de Tomcat-server, opent u een browservenster en voert u een van de volgende URL's in. Als u bent geïmplementeerd in het lokale cluster, gebruikt u *localhost* voor *PublicIPorFQDN*. U ziet een variant van de "Hello World!" welkomstscherm voor elke URL.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
 ## <a name="clean-up"></a>Opruimen
-Gebruik het uninstall-script dat is opgenomen in de sjabloon om het toepassings exemplaar te verwijderen uit het cluster en de registratie van het toepassings type op te heffen.
+Gebruik het script voor het verwijderen in de sjabloon om de toepassingsinstantie uit uw cluster te verwijderen en het toepassingstype uit te schrijven.
 
 ```bash
 ./uninstall.sh
@@ -230,8 +230,8 @@ docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Lees [uw eerste service Fabric-container toepassing maken in Linux](service-fabric-get-started-containers-linux.md)voor snelle stappen voor aanvullende functies van de Linux-container.
-* Lees de zelf studie [een Linux-container-app maken](service-fabric-tutorial-create-container-images.md) voor meer gedetailleerde stappen voor Linux-containers.
+* Lees [Uw eerste Service Fabric-containertoepassing maken op Linux](service-fabric-get-started-containers-linux.md)voor snelle stappen met extra Linux-containerfuncties.
+* Voor meer gedetailleerde stappen over Linux-containers, lees de zelfstudie van de [zelfstudie van de Linux-container-app](service-fabric-tutorial-create-container-images.md) maken.
 * Meer informatie over het uitvoeren van [containers in Service Fabric](service-fabric-containers-overview.md).
 
 

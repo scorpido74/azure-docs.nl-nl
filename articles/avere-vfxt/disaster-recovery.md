@@ -1,123 +1,123 @@
 ---
-title: Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
-description: Gegevens in avere vFXT voor Azure beveiligen tegen onbedoeld verwijderen of uitval
+title: Richtlijnen voor noodherstel voor Avere vFXT voor Azure
+description: Gegevens in Avere vFXT voor Azure beschermen tegen onbedoelde verwijdering of uitval
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966655"
 ---
-# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
+# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richtlijnen voor noodherstel voor Avere vFXT voor Azure
 
-In dit artikel vindt u een overzicht van strategieën voor het beveiligen van uw avere vFXT voor Azure-werk stroom en biedt richt lijnen voor het maken van back-ups van gegevens, zodat u ongel ukken of uitval kunt herstellen.
+In dit artikel worden strategieën beschreven om uw Avere vFXT voor Azure-workflow te beschermen en wordt richtlijnen gegeven voor het maken van back-ups van gegevens, zodat u herstellen van ongevallen of uitval.
 
-AVERE vFXT voor Azure slaat tijdelijk gegevens op in de cache. Gegevens worden op lange termijn opgeslagen in back-end-opslag systemen: on-premises hardwareapparaten, Azure Blob-opslag containers of beide.
+Avere vFXT voor Azure slaat tijdelijk gegevens op in de cache. Gegevens worden op lange termijn opgeslagen in back-endopslagsystemen - on-premises hardwaresystemen, Azure Blob-opslagcontainers of beide.
 
-Denk aan deze vier gebieden om te beschermen tegen storingen en mogelijke gegevens verlies:
+Om te waken tegen uitval en mogelijk gegevensverlies, moet u rekening houden met deze vier gebieden:
 
-* Bescherming tegen uitval tijd als een avere vFXT voor Azure-systeem niet beschikbaar is
-* Gegevens in de cluster cache beveiligen
-* Gegevens beveiligen in back-end NAS-hardware-opslag
-* Gegevens beveiligen in back-end Azure Blob-Cloud opslag
+* Bescherming tegen downtime als een Avere vFXT voor Azure-systeem niet beschikbaar wordt
+* Gegevens beveiligen in de clustercache
+* Gegevens beveiligen in back-end NAS-hardwareopslag
+* Gegevens beveiligen in back-end Azure Blob-cloudopslag
 
-Elke avere vFXT voor Azure-klant moet een eigen uitgebreid plan voor herstel na nood gevallen maken dat abonnementen bevat voor deze items. U kunt ook tolerantie bouwen in toepassingen die u gebruikt met het vFXT-cluster. Lees de koppelingen in de [volgende stappen](#next-steps) voor hulp.
+Elke Avere vFXT voor Azure-klant moet zijn eigen uitgebreide disaster recovery-plan maken met plannen voor deze items. U ook tolerantie inbouwen in toepassingen die u met het vFXT-cluster gebruikt. Lees de links in [Volgende stappen](#next-steps) voor hulp.
 
-## <a name="protect-against-downtime"></a>Beveiligen tegen downtime
+## <a name="protect-against-downtime"></a>Bescherm tegen downtime
 
-Redundantie is ingebouwd in het avere vFXT voor Azure-product:
+Redundantie is ingebouwd in het Avere vFXT voor Azure-product:
 
-* Het cluster is Maxi maal beschikbaar en er kan met een minimale onderbreking een failover worden uitgevoerd voor afzonderlijke cluster knooppunten.
-* Gegevens die in de cache worden gewijzigd, worden regel matig geschreven naar back-end-kern bestanden (hardware NAS of Azure Blob) voor lange termijn opslag.
+* Het cluster is zeer beschikbaar en afzonderlijke clusterknooppunten kunnen mislukken met minimale onderbreking.
+* Gegevens die in de cache worden gewijzigd, worden regelmatig naar back-end core-filers (hardware NAS of Azure Blob) geschreven voor langdurige opslag.
 
-Elk avere vFXT voor Azure-cluster moet zich in één beschikbaarheids zone bevinden, maar u kunt redundante clusters in verschillende zones of verschillende regio's gebruiken om snel toegang te bieden in het geval van een regionale storing.
+Elk Avere vFXT voor Azure-cluster moet zich in één beschikbaarheidszone bevinden, maar u redundante clusters in verschillende zones of verschillende regio's gebruiken om snel toegang te bieden in het geval van een regionale storing.
 
-U kunt ook opslag containers in meerdere regio's plaatsen als u zich zorgen maakt over het verlies van toegang tot gegevens. Houd er echter rekening mee dat trans acties tussen regio's een hogere latentie en hogere kosten hebben dan trans acties die binnen een regio blijven.
+U ook opslagcontainers in meerdere regio's plaatsen als u zich zorgen maakt over het verlies van toegang tot gegevens. Houd er echter rekening mee dat transacties tussen regio's een hogere latentie en hogere kosten hebben dan transacties die binnen een regio blijven.
 
-## <a name="protect-data-in-the-cluster-cache"></a>Gegevens in de cluster cache beveiligen
+## <a name="protect-data-in-the-cluster-cache"></a>Gegevens beveiligen in de clustercache
 
-Gegevens in de cache worden altijd naar de kern bestanden geschreven voordat een regel matig wordt afgesloten, maar in een niet-beheerd afsluiten kunnen de gewijzigde gegevens in de cache verloren gaan.
+Gegevens in de cache worden altijd naar de kernfilers geschreven voordat u deze regelmatig afsluit, maar bij een ongecontroleerde afsluiting kunnen gewijzigde gegevens in de cache verloren gaan.
 
-Als u het cluster gebruikt voor het optimaliseren van alleen lees bewerkingen van bestanden, gaan er geen wijzigingen verloren. Als u het cluster ook gebruikt voor het opslaan van bestands wijzigingen (schrijf bewerkingen), moet u overwegen of u het [cache beleid](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html) van de kern bestanden wilt aanpassen<!-- link to legacy doc --> aanpassen hoe vaak gegevens worden geschreven naar lange termijn opslag.
+Als u het cluster gebruikt om alleen bestandsreads te optimaliseren, zijn er geen wijzigingen te verliezen. Als u het cluster ook gebruikt om bestandswijzigingen (schrijft) in de cache te plaatsen, moet u overwegen om het cachebeleid van de cator van de [cator](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html) of de cachevan de cator<!-- link to legacy doc --> om aan te passen hoe vaak gegevens worden geschreven naar langdurige opslag.
 
-In het algemeen is het herstel plan gericht op het maken van back-ups van de back-end-opslag systemen, die meer gegevens bevatten en normaal gesp roken belang rijker zijn voor het opnieuw instellen van uw werk stroom na een storing.
+In het algemeen moet uw herstelplan zich richten op het maken van back-endopslagsystemen, die meer gegevens bevatten en doorgaans belangrijker zijn voor het herstellen van uw workflow na een storing.
 
-## <a name="protect-data-in-nas-core-filers"></a>Gegevens in NAS-kern bestanden beveiligen
+## <a name="protect-data-in-nas-core-filers"></a>Gegevens beveiligen in NAS-kernbestanden
 
-Gebruik geaccepteerde methoden voor het beveiligen van gegevens die zijn opgeslagen in een on-premises NAS-hardware kern bestand, inclusief moment opnamen en volledige back-ups zoals aanbevolen door de NAS-provider. Herstel na nood gevallen voor deze kern bestandsers valt buiten het bereik van dit artikel.
+Gebruik geaccepteerde methoden om gegevens te beschermen die zijn opgeslagen in een on-premises NAS-hardwarecore-filer, inclusief snapshots en volledige back-ups, zoals aanbevolen door de NAS-provider. Disaster recovery voor deze core filers valt buiten het bereik van dit artikel.
 
-## <a name="protect-data-in-azure-blob-storage"></a>Gegevens in Azure Blob-opslag beveiligen
+## <a name="protect-data-in-azure-blob-storage"></a>Gegevens beveiligen in Azure Blob-opslag
 
-AVERE vFXT voor Azure gebruikt lokaal redundante opslag (LRS) voor kern bestanden van Azure Blob. Dit betekent dat de gegevens in de BLOB-containers automatisch worden gekopieerd voor beveiliging tegen tijdelijke hardwarefouten binnen een Data Center.
+Avere vFXT voor Azure maakt gebruik van lrs (local-redundante opslag) voor Azure Blob-kernbestanden. Dit betekent dat de gegevens in uw Blob-containers automatisch worden gekopieerd voor bescherming tegen tijdelijke hardwarefouten in een datacenter.
 
-In deze sectie vindt u tips voor het verder beschermen van uw gegevens in Blob Storage van zeldzame regionale onderbrekingen of onopzettelijke verwijderingen.
+In dit gedeelte vindt u tips om uw gegevens in Blob-opslag verder te beschermen tegen zeldzame regio-brede uitval of onbedoelde verwijderingen.
 
-Best practices voor het beveiligen van gegevens in Azure Blob Storage zijn onder andere:
+Aanbevolen procedures voor het beveiligen van gegevens in Azure Blob-opslag zijn:
 
-* Kopieer uw kritieke gegevens regel matig naar een ander opslag account in een andere regio (zo vaak als bepaald door uw plan voor herstel na nood gevallen).
-* De toegang tot gegevens op alle doel systemen beheren om onbedoeld verwijderen of beschadiging te voor komen. Overweeg het gebruik van [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md) voor gegevens opslag.
-* Schakel de functie avere vFXT voor Azure- [Cloud momentopname](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) in voor uw BLOB-kern bestanden.
+* Kopieer uw kritieke gegevens regelmatig naar een ander opslagaccount in een andere regio (zo vaak als bepaald door uw noodherstelplan).
+* Controle over de toegang tot gegevens op alle doelsystemen om onbedoelde verwijdering of beschadiging te voorkomen. Overweeg [resourcevergrendelingen](../azure-resource-manager/management/lock-resources.md) te gebruiken voor gegevensopslag.
+* Schakel de avere vFXT voor [Azure-cloudsnapshotfunctie](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) in voor uw Blob-kernbestanden.
 
-### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>AVERE vFXT-kern gegevensbestand kopiëren naar een back-upaccount
+### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>Avere vFXT-core filergegevens kopiëren naar een back-upaccount
 
-Volg deze stappen om een back-up van gegevens te maken in een ander account.
+Volg deze stappen om een back-up van gegevens in een ander account te maken.
 
-1. Als dat nodig is, kunt u een nieuwe versleutelings sleutel genereren en deze veilig opslaan buiten de betrokken systemen.
+1. Indien nodig, het genereren van een nieuwe encryptiesleutel en sla deze veilig buiten de getroffen systemen.
 
-   Als uw gegevens zijn versleuteld door de avere vFXT voor Azure-cluster, moet u een nieuwe versleutelings sleutel genereren voordat u de gegevens naar een ander opslag account kopieert. Bewaar deze sleutel en het wacht woord veilig in een faciliteit die veilig zijn en die niet wordt beïnvloed door een regionale fout.
+   Als uw gegevens worden versleuteld door het Avere vFXT voor Azure-cluster, moet u een nieuwe versleutelingssleutel genereren voordat u de gegevens kopieert naar een ander opslagaccount. Sla die sleutel en wachtwoord veilig op in een faciliteit die veilig is en die niet wordt beïnvloed door een regionale storing.
 
-   U moet deze sleutel opgeven bij het toevoegen van de container aan een cluster, zelfs als u deze opnieuw toevoegt aan het oorspronkelijke cluster.
+   U moet deze sleutel leveren bij het toevoegen van de container aan een cluster , zelfs als u deze opnieuw toevoegt aan het oorspronkelijke cluster.
 
-   [Instellingen voor Cloud versleuteling](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>) lezen<!-- link to legacy doc site --> voor gedetailleerde informatie.
+   [Cloud-versleutelingsinstellingen lezen](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)<!-- link to legacy doc site --> voor gedetailleerde informatie.
 
-   Als uw container alleen gebruikmaakt van de ingebouwde versleuteling van Azure, kunt u deze stap overs Laan.
+   Als uw container alleen de ingebouwde versleuteling van Azure gebruikt, u deze stap overslaan.
 
-1. Verwijder de kern bestand van het systeem. Hiermee wordt het cluster gedwongen om alle gewijzigde gegevens te schrijven naar de back-end-opslag.
+1. Verwijder de core filer uit het systeem. Dit dwingt het cluster om alle gewijzigde gegevens te schrijven naar de back-end opslag.
 
-   Hoewel u de kern bestand opnieuw moet toevoegen nadat de back-up is gemaakt, is het verwijderen de beste manier om te garanderen dat alle gegevens volledig naar de back-end zijn geschreven. (De optie ' Suspend ' kan soms gewijzigde gegevens in de cache achterlaten.) <!-- xxx true? or just metadata? -->
+   Hoewel u de core filer opnieuw moet toevoegen na de back-up, is het verwijderen ervan de beste manier om te garanderen dat alle gegevens volledig naar de back-end zijn geschreven. (De optie 'onderbreken' kan soms gewijzigde gegevens in de cache achterlaten.) <!-- xxx true? or just metadata? -->
 
-   Noteer de naam en koppelings gegevens van de kern bestand (vermeld op de pagina **naam ruimte** in het configuratie scherm), zodat u deze kunt repliceren wanneer u de container opnieuw toevoegt na de back-up.
+   Noteer de naam- en knooppuntgegevens van de core filer (vermeld op de pagina **Naamruimte** in het bedieningspaneel), zodat u deze repliceren wanneer u de container opnieuw toevoegt na de back-up.
 
-   Gebruik het configuratie scherm van het cluster om de kern bestand te verwijderen. [Open het configuratie scherm van het cluster](avere-vfxt-cluster-gui.md) en kies **core filer** > **kern bestanden beheren**. Zoek het opslag systeem waarvan u een back-up wilt maken en gebruik de knop **verwijderen** om het te verwijderen uit het cluster.
+   Gebruik het clusterconfiguratiepaneel om de kernfiler te verwijderen. [Open het clusterconfiguratiepaneel](avere-vfxt-cluster-gui.md) en kies **Core filer** > **Core-filers beheren**. Zoek het opslagsysteem waarvan u een back-up wilt maken en gebruik de knop **Verwijderen** om het uit het cluster te verwijderen.
 
-1. Maak een nieuwe, lege Blob Storage-container in een ander opslag account in een andere regio.
+1. Maak een nieuwe, lege Blob-opslagcontainer in een ander opslagaccount in een andere regio.
 
-1. Gebruik een handig Kopieer programma om de gegevens op de kern bestand te kopiëren naar de nieuwe container. De kopie moet de gegevens zonder wijzigingen repliceren en zonder de oorspronkelijke indeling van het Cloud-bestands systeem die wordt gebruikt door avere vFXT voor Azure te onderbreken. Azure-hulpprogram ma's zijn onder andere [AzCopy](../storage/common/storage-use-azcopy-v10.md), [Azure PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)en [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
+1. Gebruik een handig kopieergereedschap om de gegevens op de core filer naar de nieuwe container te kopiëren. De kopie moet de gegevens repliceren zonder wijzigingen en zonder de eigen cloudbestandssysteemindeling te verstoren die door Avere vFXT voor Azure wordt gebruikt. Azure-gebaseerde hulpprogramma's omvatten [AzCopy,](../storage/common/storage-use-azcopy-v10.md) [Azure PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)en [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
-1. Nadat u de gegevens naar de back-upcontainer hebt gekopieerd, voegt u de oorspronkelijke container weer toe aan het cluster zoals beschreven in [opslag ruimte configureren](avere-vfxt-add-storage.md).
+1. Nadat u de gegevens naar de back-upcontainer hebt gekopieerd, voegt u de oorspronkelijke container terug aan het cluster zoals beschreven in [Opslag configureren.](avere-vfxt-add-storage.md)
 
-   * Gebruik dezelfde naam voor de kern bestandsnaam en koppelings informatie zodat client-werk stromen niet hoeven te worden gewijzigd.
-   * Stel de waarde van de **Bucket inhoud** in op de optie bestaande gegevens.
-   * Als de container is versleuteld door het cluster, moet u de huidige versleutelings sleutel voor de inhoud opgeven. (Dit is de sleutel die u in stap één hebt bijgewerkt.)
+   * Gebruik dezelfde kernfilernaam en knooppuntgegevens, zodat clientwerkstromen niet hoeven te worden gewijzigd.
+   * Stel de **inhoudswaarde bucket in** op de bestaande gegevensoptie.
+   * Als de container door het cluster is versleuteld, moet u de huidige versleutelingssleutel voor de inhoud ervan invoeren. (Dit is de sleutel die u hebt bijgewerkt in stap één.)
 
-Voor back-ups na de eerste moet u geen nieuwe opslag container maken. U kunt echter wel een nieuwe versleutelings sleutel genereren telkens wanneer u een back-up uitvoert, zodat u zeker weet dat de huidige sleutel is opgeslagen op een plek waar u zich bevindt.
+Voor back-ups na de eerste, hoeft u geen nieuwe opslagcontainer te maken. Overweeg echter om elke keer dat u een back-up maakt een nieuwe versleutelingssleutel te genereren om ervoor te zorgen dat u de huidige sleutel hebt opgeslagen op een plaats die u zich herinnert.
 
-### <a name="access-a-backup-data-source-during-an-outage"></a>Toegang tot een gegevens bron voor back-ups tijdens een storing
+### <a name="access-a-backup-data-source-during-an-outage"></a>Toegang tot een back-upgegevensbron tijdens een storing
 
-Ga als volgt te werk om toegang te krijgen tot de back-upcontainer van een avere vFXT voor Azure-cluster:
+Volg dit proces als u toegang wilt krijgen tot de back-upcontainer vanuit een Avere vFXT voor Azure-cluster:
 
-1. Maak, indien nodig, een nieuwe avere-vFXT voor Azure-cluster in een regio waarin het probleem niet optreedt.
+1. Maak indien nodig een nieuw Avere vFXT voor Azure-cluster in een onaangetaste regio.
 
    > [!TIP]
-   > Wanneer u een avere vFXT voor Azure-cluster maakt, kunt u een kopie van de aanmaak-sjabloon en-para meters opslaan. Als u deze informatie opslaat tijdens het maken van uw primaire cluster, kunt u deze gebruiken om een vervangend cluster met dezelfde eigenschappen te maken. Klik op de pagina [samen vatting](avere-vfxt-deploy.md#validation-and-purchase) op de koppeling **sjabloon en para meters downloaden** . Sla de informatie op in een bestand voordat u het cluster maakt.
+   > Wanneer u een Avere vFXT voor Azure-cluster maakt, u een kopie van de creatiesjabloon en -parameters opslaan. Als u deze informatie opslaat bij het maken van uw primaire cluster, u deze gebruiken om een vervangend cluster met dezelfde eigenschappen te maken. Klik op de [overzichtspagina](avere-vfxt-deploy.md#validation-and-purchase) op de koppeling **Sjabloon downloaden en parameters.** Sla de informatie op in een bestand voordat u het cluster maakt.
 
-1. Voeg een nieuwe Cloud core-bestands extensie toe die naar de dubbele BLOB-container verwijst.
+1. Voeg een nieuwe cloudcore-filer toe die naar de dubbele Blob-container verwijst.
 
-   Zorg ervoor dat de doel container al gegevens bevat in de instelling van de **Bucket inhoud** van de wizard kern bestand maken. (Het systeem moet u waarschuwen als u per ongeluk deze set **leeg**laat.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
+   Zorg ervoor dat u opgeeft dat de doelcontainer al gegevens bevat in de instelling **bucketinhoud** van de wizard Basisfiler maken. (Het systeem moet u waarschuwen als u deze set per ongeluk aan **Leeg**laat .)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
 
-1. Als dat nodig is, werkt u de clients bij zodat ze het nieuwe cluster of de nieuwe kern bestand koppelen in plaats van het origineel. (Als u de vervangende kern bestand met dezelfde naam en hetzelfde pad als de oorspronkelijke container toevoegt, hoeft u de client processen alleen bij te werken als u het nieuwe cluster moet koppelen aan een nieuw IP-adres.)
+1. Werk clients zo nodig bij, zodat ze het nieuwe cluster of de nieuwe core filer monteren in plaats van het origineel. (Als u de vervangende kernfiler toevoegt met dezelfde naam en knooppuntpad als de oorspronkelijke container, hoeft u clientprocessen niet bij te werken, tenzij u het nieuwe cluster op een nieuw IP-adres moet monteren.)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees [cluster tuning](avere-vfxt-tuning.md)voor meer informatie over het aanpassen van instellingen voor avere VFXT voor Azure.
-* Meer informatie over herstel na nood gevallen en het maken van flexibele toepassingen in Azure:
+* Lees [Clustertuning](avere-vfxt-tuning.md)voor meer informatie over het aanpassen van instellingen voor Avere vFXT voor Azure.
+* Meer informatie over noodherstel en het bouwen van veerkrachtige toepassingen in Azure:
 
   * [Technische richtlijnen voor flexibiliteit van Azure](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-  * [Herstellen van een service onderbreking in de gehele regio](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+  * [Herstel na een serviceonderbreking in de gehele regio](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Herstel na noodgevallen en hoge beschikbaarheid voor Azure-toepassingen](<https://docs.microsoft.com/azure/resiliency/resiliency-disaster-recovery-high-availability-azure-applications>)
   <!-- can't find these in the source tree to use relative links -->

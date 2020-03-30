@@ -1,35 +1,35 @@
 ---
-title: Een persoonlijk cluster maken met Azure Red Hat open Shift 3,11 | Microsoft Docs
-description: Een persoonlijk cluster maken met Azure Red Hat open Shift 3,11
+title: Een privécluster maken met Azure Red Hat OpenShift 3.11 | Microsoft Documenten
+description: Een privécluster maken met Azure Red Hat OpenShift 3.11
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
-keywords: Aro, open Shift, persoonlijk cluster, Red Hat
+keywords: aro, openshift, private cluster, rode hoed
 ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399417"
 ---
-# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Een persoonlijk cluster maken met Azure Red Hat open Shift 3,11
+# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Een privécluster maken met Azure Red Hat OpenShift 3.11
 
 > [!IMPORTANT]
-> Azure Red Hat open Shift (ARO)-particuliere clusters zijn momenteel alleen beschikbaar als particuliere preview in VS-Oost 2. Privé preview-acceptatie is alleen via de uitnodiging. Zorg ervoor dat u uw abonnement registreert voordat u deze functie inschakelt.
+> Azure Red Hat OpenShift (ARO) privéclusters zijn momenteel alleen beschikbaar in private preview in East US 2. Private preview-acceptatie is alleen op uitnodiging. Zorg ervoor dat u uw abonnement registreert voordat u deze functie probeert in te schakelen.
 
-Particuliere clusters bieden de volgende voor delen:
+Particuliere clusters bieden de volgende voordelen:
 
-* Persoonlijke clusters bieden geen onderdelen voor cluster beheer vlak (zoals de API-servers) op een openbaar IP-adres.
-* Het virtuele netwerk van een persoonlijk cluster kan door klanten worden geconfigureerd, zodat u netwerken kunt instellen om peering met andere virtuele netwerken, waaronder ExpressRoute-omgevingen, toe te staan. U kunt ook aangepaste DNS configureren in het virtuele netwerk om te integreren met interne services.
+* Privéclusters leggen clustercontrolevlakcomponenten (zoals de API-servers) niet bloot op een openbaar IP-adres.
+* Het virtuele netwerk van een privécluster is configureerbaar voor klanten, zodat u netwerken instellen om peering met andere virtuele netwerken mogelijk te maken, waaronder ExpressRoute-omgevingen. U ook aangepaste DNS op het virtuele netwerk configureren om te integreren met interne services.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 > [!NOTE]
-> Voor deze functie is versie 2019-10-27-preview van de ARO HTTP API vereist. Het wordt nog niet ondersteund in de Azure CLI.
+> Deze functie vereist versie 2019-10-27-preview van de ARO HTTP API. Het wordt nog niet ondersteund in de Azure CLI.
 
-De velden in het volgende configuratie fragment zijn nieuw en moeten worden opgenomen in de cluster configuratie. `managementSubnetCidr` moet zich in het virtuele cluster netwerk bevindt en door Azure wordt gebruikt om het cluster te beheren.
+De velden in het volgende configuratiefragment zijn nieuw en moeten worden opgenomen in uw clusterconfiguratie. `managementSubnetCidr`moet zich binnen het virtuele clusternetwerk bevinden en wordt door Azure gebruikt om het cluster te beheren.
 
 ```json
 properties:
@@ -40,22 +40,22 @@ properties:
      privateApiServer: true
 ```
 
-Een persoonlijk cluster kan worden geïmplementeerd met behulp van de onderstaande voorbeeld scripts. Zodra het cluster is geïmplementeerd, voert u de opdracht `cluster get` uit en bekijkt u de eigenschap `properties.FQDN` om het privé-IP-adres van de open Shift API-server te bepalen.
+Een privécluster kan worden geïmplementeerd met behulp van de onderstaande voorbeeldscripts. Zodra het cluster is geïmplementeerd, voert u de `cluster get` opdracht uit en bekijkt u de `properties.FQDN` eigenschap om het privé-IP-adres van de OpenShift-API-server te bepalen.
 
-Het virtuele cluster netwerk is gemaakt met machtigingen, zodat u het kunt wijzigen. U kunt vervolgens netwerken instellen voor toegang tot het virtuele netwerk (ExpressRoute, VPN, virtuele netwerk peering) zoals vereist voor uw behoeften.
+Het virtuele clusternetwerk is gemaakt met machtigingen, zodat u het wijzigen. U vervolgens netwerken instellen om toegang te krijgen tot het virtuele netwerk (ExpressRoute, VPN, virtuele netwerkpeering) zoals vereist voor uw behoeften.
 
-Als u de DNS-naam servers op het virtuele cluster netwerk wijzigt, moet u een update uitgeven op het cluster waarop de eigenschap `properties.RefreshCluster` is ingesteld op `true`, zodat de installatie kopie van de Vm's kan worden gewijzigd. Met deze update kunnen de nieuwe naam servers worden opgehaald.
+Als u de DNS-naamservers in het virtuele clusternetwerk wijzigt, moet `properties.RefreshCluster` u een `true` update op het cluster uitvoeren met de eigenschap die is ingesteld op, zodat de VM's opnieuw kunnen worden weergegeven. Met deze update kunnen ze de nieuwe nameservers ophalen.
 
-## <a name="sample-configuration-scripts"></a>Voorbeeld configuratie scripts
+## <a name="sample-configuration-scripts"></a>Voorbeeldconfiguratiescripts
 
-Gebruik de voorbeeld scripts in deze sectie om uw persoonlijke cluster in te stellen en te implementeren.
+Gebruik de voorbeeldscripts in deze sectie om uw privécluster in te stellen en te implementeren.
 
 ### <a name="environment"></a>Omgeving
 
-Vul de volgende omgevings variabelen in om uw eigen waarden te gebruiken.
+Vul hieronder de omgevingsvariabelen in met uw eigen waarden.
 
 > [!NOTE]
-> De locatie moet worden ingesteld op `eastus2`, omdat dit momenteel de enige ondersteunde locatie voor privé clusters is.
+> De locatie moet `eastus2` worden ingesteld omdat dit momenteel de enige ondersteunde locatie voor privéclusters is.
 
 ``` bash
 export CLUSTER_NAME=
@@ -68,9 +68,9 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>persoonlijk-cluster. json
+### <a name="private-clusterjson"></a>private-cluster.json
 
-Als u de hierboven gedefinieerde omgevings variabelen gebruikt, is hier een voor beeld van een cluster configuratie waarvoor een persoonlijk cluster is ingeschakeld.
+Met behulp van de hierboven gedefinieerde omgevingsvariabelen is hier een voorbeeldclusterconfiguratie met ingeschakeld privécluster.
 
 ```json
 {
@@ -133,9 +133,9 @@ Als u de hierboven gedefinieerde omgevings variabelen gebruikt, is hier een voor
 }
 ```
 
-## <a name="deploy-a-private-cluster"></a>Een persoonlijk cluster implementeren
+## <a name="deploy-a-private-cluster"></a>Een privécluster implementeren
 
-Nadat u uw persoonlijke cluster hebt geconfigureerd met de bovenstaande voorbeeld scripts, voert u de volgende opdracht uit om uw persoonlijke cluster te implementeren.
+Nadat u uw privécluster hebt geconfigureerd met de bovenstaande voorbeeldscripts, voert u de volgende opdracht uit om uw privécluster te implementeren.
 
 ``` bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -147,4 +147,4 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [webconsole-overzicht](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html)voor meer informatie over het openen van de open Shift-console.
+Zie [Web Console Walkthrough](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html)voor meer informatie over hoe u toegang krijgt tot de OpenShift-console.

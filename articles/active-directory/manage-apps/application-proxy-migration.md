@@ -1,6 +1,6 @@
 ---
-title: Een upgrade uitvoeren naar Azure AD-toepassingsproxy | Microsoft Docs
-description: Kiezen welke oplossing proxy wordt aanbevolen als u een van Microsoft Forefront of Unified Access-Gateway upgrade uitvoert.
+title: Upgraden naar Azure AD-toepassingsproxy | Microsoft Documenten
+description: Kies welke proxyoplossing het beste is als u een upgrade uitvoert vanuit Microsoft Forefront of Unified Access Gateway.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,51 +17,51 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108415"
 ---
 # <a name="compare-remote-access-solutions"></a>Oplossingen voor externe toegang vergelijken
 
-Azure Active Directory Application Proxy is een van de twee oplossingen voor externe toegang die Microsoft aanbiedt. De andere is een Web Application Proxy, de on-premises versie. Deze twee oplossingen vervangt oudere producten die Microsoft aangeboden: Microsoft Forefront Threat Management Gateway (TMG) en geïntegreerde Access-Gateway (UAG). Gebruik dit artikel om te begrijpen hoe deze vier oplossingen zich verhouden tot elkaar. Voor het geval u nog steeds met behulp van de afgeschafte TMG of UAG oplossingen, in dit artikel gebruiken om u te helpen bij het plannen van uw migratie naar een van de toepassingsproxy. 
+Azure Active Directory Application Proxy is een van de twee oplossingen voor externe toegang die Microsoft aanbiedt. De andere is Web Application Proxy, de on-premises versie. Deze twee oplossingen vervangen eerdere producten die Microsoft aanbood: Microsoft Forefront Threat Management Gateway (TMG) en Unified Access Gateway (UAG). Gebruik dit artikel om te begrijpen hoe deze vier oplossingen zich tot elkaar verhouden. Voor degenen onder u die nog steeds gebruik maken van de afgeschafte TMG- of UAG-oplossingen, gebruikt u dit artikel om uw migratie naar een van de toepassingsproxy te plannen. 
 
 
 ## <a name="feature-comparison"></a>Vergelijking van functies
 
-Gebruik deze tabel om te begrijpen hoe Threat Management Gateway (TMG), Unified Access-Gateway (UAG), Webtoepassingsproxyserver (WAP) en Azure AD Application Proxy (AP) zich tot elkaar verhouden.
+Gebruik deze tabel om te begrijpen hoe Threat Management Gateway (TMG), Unified Access Gateway (UAG), Web Application Proxy (WAP) en Azure AD Application Proxy (AP) zich tot elkaar verhouden.
 
-| Functie | TMG | UAG | WAP | AP |
+| Functie | Tmg | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Certificaatverificatie | Ja | Ja | - | - |
+| Verificatie via certificaat | Ja | Ja | - | - |
 | Browser-apps selectief publiceren | Ja | Ja | Ja | Ja |
-| Vooraf-verificatie en eenmalige aanmelding | Ja | Ja | Ja | Ja | 
-| Laag-2/3-firewall | Ja | Ja | - | - |
-| Proxy voor doorsturen mogelijkheden | Ja | - | - | - |
+| Preauthenticatie en eenmalige aanmelding | Ja | Ja | Ja | Ja | 
+| Laag 2/3 firewall | Ja | Ja | - | - |
+| Proxy-mogelijkheden doorsturen | Ja | - | - | - |
 | VPN-mogelijkheden | Ja | Ja | - | - |
-| Uitgebreide protocolondersteuning | - | Ja | Ja, als uitgevoerd via HTTP | Ja, als via HTTP of via Extern bureaublad-Gateway |
-| Fungeert als AD FS-proxyserver | - | Ja | Ja | - |
-| Een portal voor toegang tot toepassingen | - | Ja | - | Ja |
-| Antwoord hoofdtekst koppeling vertaling | Ja | Ja | - | Ja | 
+| Ondersteuning voor rich-protocollen | - | Ja | Ja, als u http loopt | Ja, als u http of extern bureaublad-gateway loopt |
+| Fungeert als ADFS-proxyserver | - | Ja | Ja | - |
+| Eén portal voor toegang tot toepassingen | - | Ja | - | Ja |
+| Vertaling van de koppeling van de antwoord-instantie | Ja | Ja | - | Ja | 
 | Verificatie met kopteksten | - | Ja | - | Ja, met PingAccess | 
-| Schaalbare beveiliging | - | - | - | Ja | 
+| Beveiliging op cloudschaal | - | - | - | Ja | 
 | Voorwaardelijke toegang | - | Ja | - | Ja |
-| Er zijn geen onderdelen in de gedemilitariseerde zone (DMZ) | - | - | - | Ja |
-| Er is geen binnenkomende verbindingen | - | - | - | Ja |
+| Geen componenten in de gedemilitariseerde zone (DMZ) | - | - | - | Ja |
+| Geen binnenkomende verbindingen | - | - | - | Ja |
 
-Voor de meeste scenario's raden wij Azure AD-toepassingsproxy als de moderne oplossing. Web Application Proxy wordt alleen aanbevolen in scenario's waarin een proxyserver voor AD FS en u kunt geen aangepaste domeinen in Azure Active Directory gebruiken. 
+Voor de meeste scenario's raden we Azure AD Application Proxy aan als de moderne oplossing. Webtoepassingsproxy heeft alleen de voorkeur in scenario's waarvoor een proxyserver voor AD FS vereist is en u geen aangepaste domeinen gebruiken in Azure Active Directory. 
 
 Azure AD Application Proxy biedt unieke voordelen in vergelijking met vergelijkbare producten, waaronder:
 
-- Uitbreiding van Azure AD met on-premises bronnen
-   - Schaalbare beveiliging en bescherming
-   - Functies zoals voorwaardelijke toegang en multi-Factor Authentication zijn gemakkelijk in te schakelen
-- Er zijn geen onderdelen in de gedemilitariseerde zone
-- Er is geen binnenkomende verbindingen die vereist zijn
-- Een Toegangsvenster dat uw gebruikers voor al hun toepassingen raadplegen kunnen, met inbegrip van Office 365, Azure AD SaaS-apps geïntegreerde en uw on-premises web-apps. 
+- Azure AD uitbreiden naar on-premises resources
+   - Beveiliging en beveiliging op cloudschaal
+   - Functies zoals voorwaardelijke toegang en multi-factor authenticatie zijn eenvoudig in te schakelen
+- Geen componenten in de gedemilitariseerde zone
+- Geen inkomende verbindingen vereist
+- Eén toegangspaneel waar uw gebruikers terecht kunnen voor al hun toepassingen, waaronder O365, Azure AD-geïntegreerde SaaS-apps en uw on-premises webapps. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-toepassing gebruiken voor veilige externe toegang tot on-premises toepassingen](application-proxy.md)
+- [Azure AD-toepassing gebruiken om veilige externe toegang tot on-premises toepassingen te bieden](application-proxy.md)

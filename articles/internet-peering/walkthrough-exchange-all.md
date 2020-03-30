@@ -9,47 +9,47 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: bb761afa6d8953b441b6c9541c43b73031719494
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775171"
 ---
 # <a name="exchange-peering-walkthrough"></a>Overzicht van Exchange-peering
 
-In deze sectie worden de stappen beschreven die u moet volgen om een uitwisseling van Exchange-peering in te stellen en te beheren.
+In dit gedeelte worden de stappen uitgelegd die u moet volgen om een Exchange-peering in te stellen en te beheren.
 
 ## <a name="create-an-exchange-peering"></a>Een Exchange-peering maken
 > [!div class="mx-imgBorder"]
-> ![Exchange-peering werk stroom en verbindings status](./media/exchange-peering.png)
+> ![Exchange-werkstroom en verbindingsstatus](./media/exchange-peering.png)
 
-De volgende stappen moeten worden gevolgd om een uitwisseling van Exchange-peering in te richten:
-1. Bekijk het micro soft- [beleid voor peering](https://peering.azurewebsites.net/peering) om inzicht te krijgen in de vereisten voor Exchange-peering.
-1. Micro soft-peering-locatie en peering Facility-id zoeken in [PeeringDB](https://www.peeringdb.com/net/694)
-1. Vraag uitwisseling van Exchange aan voor een peering-locatie met behulp van de instructies in [maken en een Exchange-peering wijzigen met behulp van Power shell](howto-exchange-powershell.md) -artikel voor meer informatie.
-1. Nadat u een aanvraag voor peering hebt ingediend, controleert micro soft de aanvraag en neemt u contact met u op als dat nodig is.
-1. Na goed keuring wordt de verbindings status gewijzigd in goedgekeurd
-1. De BGP-sessie aan het eind configureren en micro soft op de hoogte stellen
-1. Er wordt een BGP-sessie ingericht met alle beleids regels weigeren en end-to-end valideren.
-1. Als dit lukt, ontvangt u een melding dat de verbindings status van de peering actief is.
-1. Het verkeer wordt dan via de nieuwe peering toegestaan.
+De volgende stappen moeten worden gevolgd om een Exchange-peering te bieden:
+1. Bekijk [het peeringbeleid van](https://peering.azurewebsites.net/peering) Microsoft om inzicht te krijgen in de vereisten voor Exchange-peering.
+1. Microsoft-peeringlocatie en peering-faciliteits-id zoeken in [PeeringDB](https://www.peeringdb.com/net/694)
+1. Exchange-peering aanvragen voor een peeringlocatie met behulp van de instructies in [Exchange-peering maken en wijzigen met PowerShell-artikel](howto-exchange-powershell.md) voor meer informatie.
+1. Nadat u een peering-aanvraag hebt ingediend, controleert Microsoft het verzoek en neemt u indien nodig contact met u op.
+1. Na goedkeuring wijzigingen in de verbindingsstatus in Goedgekeurd
+1. BGP-sessie aan het einde configureren en Microsoft hiervan op de hoogte stellen
+1. We zullen BGP-sessie voorzien met DENY ALL-beleid en end-to-end valideren.
+1. Als dit is gelukt, ontvangt u een melding dat de status peering-verbinding actief is.
+1. Het verkeer wordt dan toegestaan door de nieuwe peering.
 
-Houd er rekening mee dat verbindings statussen niet moeten worden verward met standaard [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) -sessie statussen.
+Houd er rekening mee dat verbindingsstatussen niet mogen worden verward met standaard [BGP-sessiestatussen.](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Een verouderde Exchange-peering converteren naar Azure-resource
-De volgende stappen moeten worden gevolgd om een verouderde uitwisseling van Exchange naar Azure-resource te converteren:
-1. Volg de instructies in [een verouderde Exchange-peering converteren naar Azure resource](howto-legacy-exchange-powershell.md)
-1. Nadat u de conversie aanvraag hebt ingediend, wordt de aanvraag door micro soft gecontroleerd en wordt u indien nodig contact met u opgenomen.
-1. Na goed keuring ziet u de Exchange-peering met de verbindings status actief.
+## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Een verouderde Exchange-peering converteren in een Azure-resource
+De volgende stappen moeten worden gevolgd om een verouderde Exchange-peering om te zetten in Azure-bron:
+1. De instructies volgen in [Een verouderde Exchange-peering converteren naar Azure-bron](howto-legacy-exchange-powershell.md)
+1. Nadat u de conversieaanvraag hebt ingediend, controleert Microsoft het verzoek en neemt u indien nodig contact met u op.
+1. Na goedkeuring ziet u uw Exchange-peering met de verbindingsstatus als Actief.
 
-## <a name="deprovision-exchange-peering"></a>Inrichting van Exchange-peering ongedaan maken
-Neem contact op met [micro soft-peering](mailto:peering@microsoft.com) voor het ongedaan maken van de inrichting van Exchange
+## <a name="deprovision-exchange-peering"></a>Exchange-peering deprovisionen
+Neem contact op met [Microsoft peering](mailto:peering@microsoft.com) om Exchange-peering te deprovisioneren.
 
-Wanneer een uitwisseling van peering is ingesteld voor het ongedaan maken van de inrichting, wordt de verbindings status weer geven als **PendingRemove**
+Wanneer een Exchange-peering is ingesteld voor deprovision, ziet u de verbindingsstatus als **PendingRemove**
 
 > [!NOTE]
-> Als u de Power shell-cmdlet uitvoert om de Exchange-peering te verwijderen wanneer de verbindings status ProvisioningStarted of ProvisioningCompleted, mislukt de bewerking.
+> Als u PowerShell-cmdlet uitvoert om het Exchange-peering te verwijderen wanneer de verbindingsstatus ProvisioningStarted of ProvisioningCompleted is, mislukt de bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [vereisten voor het instellen van peering met micro soft](prerequisites.md).
+* Meer informatie over [vereisten voor het instellen van peering met Microsoft](prerequisites.md).

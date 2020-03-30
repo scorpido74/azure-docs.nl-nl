@@ -1,7 +1,7 @@
 ---
-title: De Video Indexer-Api's gebruiken voor het aanpassen van taal modellen-Azure
+title: Een taalmodel aanpassen met de API voor videoindexer
 titlesuffix: Azure Media Services
-description: In dit artikel wordt beschreven hoe u een taal model kunt aanpassen met de Video Indexer-Api's.
+description: Meer informatie over het aanpassen van een taalmodel met de Video Indexer API.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,36 +10,36 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049029"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127982"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Een taal model aanpassen met de Video Indexer-Api's
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Een taalmodel aanpassen met de API voor videoindexer
 
-Met Video Indexer kunt u aangepaste taal modellen maken om spraak herkenning aan te passen door de aanpassings tekst te uploaden, namelijk de tekst van het domein waarvan u wilt dat de engine aan de woorden lijst voldoet. Zodra u het model hebt getraind, worden nieuwe woorden in de aanpassings tekst herkend. 
+Met Video Indexer u aangepaste taalmodellen maken om spraakherkenning aan te passen door aanpassingstekst te uploaden, namelijk tekst uit het domein waarvan u de woordenschat wilt waaraan de engine zich wilt aanpassen. Zodra u uw model traint, worden nieuwe woorden in de aanpassingstekst herkend.
 
-Zie [een taal model aanpassen met video indexer](customize-language-model-overview.md)voor een gedetailleerd overzicht en aanbevolen procedures voor aangepaste taal modellen.
+Zie [Een taalmodel aanpassen met videoindexer](customize-language-model-overview.md)voor een gedetailleerd overzicht en aanbevolen procedures voor aangepaste taalmodellen.
 
-U kunt de Video Indexer-Api's gebruiken om aangepaste taal modellen in uw account te maken en te bewerken, zoals wordt beschreven in dit onderwerp. U kunt ook de website gebruiken, zoals beschreven in [taal model aanpassen met behulp van de video indexer-website](customize-language-model-with-api.md).
+U de API's voor video-indexeren gebruiken om aangepaste taalmodellen in uw account te maken en te bewerken, zoals beschreven in dit onderwerp. U ook de website gebruiken, zoals beschreven in [Het taalmodel aanpassen met behulp van de website Video Indexer.](customize-language-model-with-api.md)
 
-## <a name="create-a-language-model"></a>Een taal model maken
+## <a name="create-a-language-model"></a>Een taalmodel maken
 
-Met de API [Create a language model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) maakt u een nieuw aangepast taal model in het opgegeven account. U kunt bestanden voor het taal model uploaden in deze aanroep. U kunt ook het taal model hier maken en de bestanden voor het model later uploaden door het taal model bij te werken.
+Met de API [voor een taalmodel maken](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) wordt een nieuw aangepast taalmodel gemaakt in het opgegeven account. U in dit gesprek bestanden uploaden voor het taalmodel. U hier ook het taalmodel maken en later bestanden voor het model uploaden door het taalmodel bij te werken.
 
 > [!NOTE]
-> U moet het model nog steeds trainen met de ingeschakelde bestanden voor het model om de inhoud van de bestanden te kunnen zien. Instructies voor het trainen van een taal vindt u in de volgende sectie.
+> U moet het model nog steeds trainen met de ingeschakelde bestanden voor het model om de inhoud van de bestanden te leren. Aanwijzingen voor het trainen van een taal zijn in de volgende sectie.
 
-Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, moet u bestanden in de hoofd tekst uploaden met behulp van formulier gegevens en waarden opgeven voor de vereiste para meters. Er zijn twee manieren om dit te doen: 
+Als u bestanden wilt uploaden die aan het taalmodel moeten worden toegevoegd, moet u bestanden uploaden in de behuizing met FormData, naast het verstrekken van waarden voor de bovenstaande vereiste parameters. Er zijn twee manieren om deze taak uit te voeren:
 
-1. De sleutel wordt de bestands naam en de waarde is het txt-bestand
-2. De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand
+* Sleutel zal de bestandsnaam en waarde zal de txt-bestand.
+* De sleutel is de bestandsnaam en de waarde is een URL naar txt-bestand.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord geeft de meta gegevens van het zojuist gemaakte taal model samen met de meta gegevens op elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
+Het antwoord biedt metagegevens op het nieuw gemaakte taalmodel, samen met metagegevens op elk van de bestanden van het model volgens de indeling van dit voorbeeld JSON-uitvoer:
 
 ```json
 {
@@ -68,16 +68,16 @@ Het antwoord geeft de meta gegevens van het zojuist gemaakte taal model samen me
 
 ```
 
-## <a name="train-a-language-model"></a>Een taal model trainen
+## <a name="train-a-language-model"></a>Een taalmodel trainen
 
-De [trein een taal model-API traint](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) een aangepast taal model in het opgegeven account met de inhoud van de bestanden die zijn geüpload naar en ingeschakeld in het taal model. 
+De [trein een taalmodel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) API traint een aangepast taalmodel in het opgegeven account met de inhoud in de bestanden die zijn geüpload naar en ingeschakeld in het taalmodel.
 
 > [!NOTE]
-> U moet eerst het taal model maken en de bestanden uploaden. U kunt bestanden uploaden wanneer u het taal model maakt of door het taal model bij te werken. 
+> U moet eerst het taalmodel maken en de bestanden uploaden. U bestanden uploaden bij het maken van het taalmodel of door het taalmodel bij te werken.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
+Het antwoord biedt metagegevens op het nieuw getrainde taalmodel, samen met metagegevens op elk van de bestanden van het model volgens de indeling van dit voorbeeld JSON-uitvoer:
 
 ```json
 {
@@ -105,32 +105,31 @@ Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen m
 }
 ```
 
-De geretourneerde **id** is een unieke id die wordt gebruikt om onderscheid te maken tussen taal modellen, terwijl **languageModelId** wordt gebruikt voor het [uploaden](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) van een video en [het opnieuw indexeren van een video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) -api's (ook wel bekend als **linguisticModelId** in video indexer-api's voor uploaden/opnieuw indexeren).
+De `id` geretourneerde is een unieke ID die `languageModelId` wordt gebruikt om onderscheid te maken tussen taalmodellen, terwijl wordt gebruikt voor het [uploaden van een video te indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) en [opnieuw indexeren van een video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API's (ook bekend als `linguisticModelId` in Video Indexer upload / reindex API's).
 
-## <a name="delete-a-language-model"></a>Een taal model verwijderen
+## <a name="delete-a-language-model"></a>Een taalmodel verwijderen
 
-Met de API voor het [verwijderen van een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) wordt een aangepast taal model uit het opgegeven account verwijderd. Alle Video's die het verwijderde taal model gebruiken, blijven dezelfde index totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, kunt u een nieuw taal model toewijzen aan de video. Anders wordt het standaard model van Video Indexer gebruikt om de video opnieuw te indexeren.
+Met de API voor het verwijderen van [een taalmodel](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) wordt een aangepast taalmodel uit het opgegeven account verwijderd. Elke video die het verwijderde taalmodel heeft gebruikt, houdt dezelfde index bij totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, u een nieuw taalmodel aan de video toewijzen. Anders gebruikt Video Indexer het standaardmodel om de video opnieuw te indexeren.
 
 ### <a name="response"></a>Antwoord
 
-Er is geen inhoud geretourneerd tijdens het verwijderen van het taal model.
+Er is geen geretourneerde inhoud wanneer het taalmodel is verwijderd.
 
-## <a name="update-a-language-model"></a>Een taal model bijwerken
+## <a name="update-a-language-model"></a>Een taalmodel bijwerken
 
-Met de [Update een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) -API wordt een aangepast persoonlijk taal model in het opgegeven account bijgewerkt.
+De [update van een Taalmodel-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) werkt een aangepast taalpersoonsmodel bij in het opgegeven account.
 
 > [!NOTE]
-> U moet het taal model al hebben gemaakt. U kunt deze aanroep gebruiken om alle bestanden onder het model in of uit te scha kelen, de naam van het taal model bij te werken en bestanden te uploaden die moeten worden toegevoegd aan het taal model.
+> U moet het taalmodel al hebben gemaakt. U deze oproep gebruiken om alle bestanden onder het model in of uit te schakelen, de naam van het taalmodel bij te werken en bestanden te uploaden die aan het taalmodel moeten worden toegevoegd.
 
-Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, moet u bestanden in de hoofd tekst uploaden met behulp van formulier gegevens en waarden opgeven voor de vereiste para meters. Er zijn twee manieren om dit te doen: 
+Als u bestanden wilt uploaden die aan het taalmodel moeten worden toegevoegd, moet u bestanden uploaden in de behuizing met FormData, naast het verstrekken van waarden voor de bovenstaande vereiste parameters. Er zijn twee manieren om deze taak uit te voeren:
 
-1. De sleutel wordt de bestands naam en de waarde is het txt-bestand
-2. De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand
-
+* Sleutel zal de bestandsnaam en waarde zal de txt-bestand.
+* De sleutel is de bestandsnaam en de waarde is een URL naar txt-bestand.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
+Het antwoord biedt metagegevens op het nieuw getrainde taalmodel, samen met metagegevens op elk van de bestanden van het model volgens de indeling van dit voorbeeld JSON-uitvoer:
 
 ```json
 {
@@ -158,15 +157,15 @@ Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen m
 }
 ```
 
-Gebruik de **id** van de bestanden die zijn geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
+Gebruik `id` de bestanden die in het antwoord zijn geretourneerd om de inhoud van het bestand te downloaden.
 
-## <a name="update-a-file-from-a-language-model"></a>Een bestand bijwerken vanuit een taal model
+## <a name="update-a-file-from-a-language-model"></a>Een bestand bijwerken vanuit een taalmodel
 
-Met de [Update van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) kunt u de **naam en de** status van een bestand in een aangepast taal model in het opgegeven account bijwerken.
+Met [de update van een](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) bestand `enable` u de naam en de status van een bestand bijwerken in een aangepast taalmodel in het opgegeven account.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat meta gegevens voor het bestand dat u hebt bijgewerkt, volgens de indeling van de voor beeld-JSON-uitvoer hieronder.
+Het antwoord bevat metagegevens in het bestand dat u hebt bijgewerkt naar aanleiding van de indeling van de onderstaande JSON-uitvoer.
 
 ```json
 {
@@ -177,15 +176,16 @@ Het antwoord bevat meta gegevens voor het bestand dat u hebt bijgewerkt, volgens
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-Gebruik de **id** van het bestand dat is geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
 
-## <a name="get-a-specific-language-model"></a>Een specifiek taal model ophalen
+Gebruik `id` de van het bestand geretourneerd in het antwoord om de inhoud van het bestand te downloaden.
 
-De [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) -API retourneert informatie over het opgegeven taal model in het opgegeven account, zoals taal en de bestanden in het taal model. 
+## <a name="get-a-specific-language-model"></a>Een specifiek taalmodel
+
+Met [de](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) BRON-API wordt informatie geretourneerd over het opgegeven taalmodel in het opgegeven account, zoals taal en de bestanden die zich in het taalmodel bevinden.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord geeft de meta gegevens van het opgegeven taal model samen met de meta gegevens op elk van de bestanden van het model, gevolgd door de indeling van de voor beeld-JSON-uitvoer hieronder.
+Het antwoord biedt metagegevens op het opgegeven taalmodel, samen met metagegevens op elk van de bestanden van het model volgens de indeling van dit voorbeeld JSON-uitvoer:
 
 ```json
 {
@@ -213,15 +213,15 @@ Het antwoord geeft de meta gegevens van het opgegeven taal model samen met de me
 }
 ```
 
-Gebruik de **id** van het bestand dat is geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
+Gebruik `id` de van het bestand geretourneerd in het antwoord om de inhoud van het bestand te downloaden.
 
-## <a name="get-all-the-language-models"></a>Alle taal modellen ophalen
+## <a name="get-all-the-language-models"></a>Download alle taalmodellen
 
-De [Alles ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) -API retourneert alle aangepaste taal modellen in het opgegeven account in een lijst.
+Als [u alle API's krijgt,](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) worden alle aangepaste taalmodellen in het opgegeven account in een lijst geretourneerd.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat een lijst met alle taal modellen in uw account en elk van de meta gegevens en bestanden volgens de indeling van de voor beeld-JSON-uitvoer hieronder.
+Het antwoord bevat een lijst met alle taalmodellen in uw account en elk van hun metagegevens en bestanden volgens de indeling van dit voorbeeld JSON-uitvoer:
 
 ```json
 [
@@ -259,21 +259,21 @@ Het antwoord bevat een lijst met alle taal modellen in uw account en elk van de 
 ]
 ```
 
-## <a name="delete-a-file-from-a-language-model"></a>Een bestand verwijderen uit een taal model
+## <a name="delete-a-file-from-a-language-model"></a>Een bestand verwijderen uit een taalmodel
 
-Met de API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) wordt het opgegeven bestand uit het opgegeven taal model in het opgegeven account verwijderd. 
-
-### <a name="response"></a>Antwoord
-
-Er is geen inhoud geretourneerd wanneer het bestand wordt verwijderd uit het taal model.
-
-## <a name="get-metadata-on-a-file-from-a-language-model"></a>Meta gegevens ophalen voor een bestand van een taal model
-
-De [meta gegevens van een bestands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) -API ophalen retourneert de inhoud van en meta gegevens van het opgegeven bestand uit het gekozen taal model in uw account.
+De [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API verwijdert het opgegeven bestand uit het opgegeven taalmodel in het opgegeven account.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat de inhoud en meta gegevens van het bestand in de JSON-indeling, vergelijkbaar met het volgende:
+Er is geen geretourneerde inhoud wanneer het bestand wordt verwijderd uit het taalmodel.
+
+## <a name="get-metadata-on-a-file-from-a-language-model"></a>Metagegevens van een bestand ophalen uit een taalmodel
+
+[Metagegevens ophalen van een bestands-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) retourneert de inhoud van en metagegevens op het opgegeven bestand van het gekozen taalmodel in uw account.
+
+### <a name="response"></a>Antwoord
+
+Het antwoord biedt de inhoud en metagegevens van het bestand in JSON-indeling, vergelijkbaar met dit voorbeeld:
 
 ```json
 {
@@ -287,16 +287,16 @@ Het antwoord bevat de inhoud en meta gegevens van het bestand in de JSON-indelin
 ```
 
 > [!NOTE]
-> De inhoud van dit voorbeeld bestand is de woorden ' Hello ' en ' World ' in twee afzonderlijke regels.
+> De inhoud van dit voorbeeldbestand zijn de woorden "hallo" en wereld" in twee afzonderlijke regels.
 
-## <a name="download-a-file-from-a-language-model"></a>Een bestand downloaden van een taal model
+## <a name="download-a-file-from-a-language-model"></a>Een bestand downloaden uit een taalmodel
 
-Het [downloaden van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) -API downloadt een tekst bestand met de inhoud van het opgegeven bestand uit het opgegeven taal model in het opgegeven account. Dit tekst bestand moet overeenkomen met de inhoud van het tekst bestand dat oorspronkelijk is geüpload.
+Als [u een bestands-API downloadt,](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) wordt een tekstbestand gedownload dat de inhoud van het opgegeven bestand bevat van het opgegeven taalmodel in het opgegeven account. Dit tekstbestand moet overeenkomen met de inhoud van het oorspronkelijk geüploade tekstbestand.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord is het downloaden van een tekst bestand met de inhoud van het bestand in de JSON-indeling. 
+Het antwoord is het downloaden van een tekstbestand met de inhoud van het bestand in de JSON-indeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Taal model aanpassen met website](customize-language-model-with-website.md)
+[Taalmodel aanpassen met behulp van website](customize-language-model-with-website.md)

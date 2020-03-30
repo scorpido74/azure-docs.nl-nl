@@ -1,6 +1,6 @@
 ---
-title: 'Data Factory zelf studie: eerste gegevens pijplijn '
-description: In deze Azure Data Factory zelf studie wordt uitgelegd hoe u een data factory maakt en plant waarmee gegevens worden verwerkt met behulp van Hive-script op een Hadoop-cluster.
+title: 'Zelfstudie Data Factory: Eerste gegevenspijplijn '
+description: In deze zelfstudie van Azure Data Factory ziet u hoe u een gegevensfabriek maakt en plant die gegevens verwerkt met Hive-script op een Hadoop-cluster.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,53 +12,53 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966077"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Zelf studie: uw eerste pijp lijn maken om gegevens te transformeren met een Hadoop-cluster
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Zelfstudie: Bouw uw eerste pijplijn om gegevens te transformeren met hadoop-cluster
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager-sjabloon](data-factory-build-your-first-pipeline-using-arm.md)
-> * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Sjabloon ResourceManager](data-factory-build-your-first-pipeline-using-arm.md)
+> * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [snelstart: een gegevensfactory maken met Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
-In deze zelf studie bouwt u uw eerste Azure-data factory met een gegevens pijplijn. De pijp lijn transformeert invoer gegevens door een Hive-script uit te voeren op een Azure HDInsight-cluster (Hadoop) om uitvoer gegevens te produceren.  
+In deze zelfstudie bouwt u uw eerste Azure-gegevensfabriek met een gegevenspijplijn. De pijplijn transformeert invoergegevens door Hive-script uit te voeren op een Azure HDInsight -cluster (Hadoop) om uitvoergegevens te produceren.  
 
-In dit artikel vindt u een overzicht en vereisten voor de zelf studie. Nadat u de vereisten hebt voltooid, kunt u de zelf studie uitvoeren met een van de volgende hulpprogram ma's/Sdk's: Visual Studio, Power shell, Resource Manager-sjabloon REST API. Selecteer een van de opties in de vervolg keuzelijst aan de hand van de koppelingen aan het einde van dit artikel om de zelf studie uit te voeren met een van deze opties.    
+In dit artikel vindt u overzicht en vereisten voor de zelfstudie. Nadat u de vereisten hebt voltooid, u de zelfstudie uitvoeren met een van de volgende hulpprogramma's/SDK's: Visual Studio, PowerShell, Resource Manager-sjabloon, REST API. Selecteer een van de opties in de vervolgkeuzelijst aan het begin (of) links aan het einde van dit artikel om de zelfstudie te doen met behulp van een van deze opties.    
 
 ## <a name="tutorial-overview"></a>Overzicht van de zelfstudie
 In deze zelfstudie voert u de volgende stappen uit:
 
-1. Maak een **Data Factory**. Een data factory kan een of meer gegevens pijplijnen bevatten waarmee gegevens worden verplaatst en getransformeerd.
+1. Maak een **gegevensfabriek**. Een gegevensfabriek kan een of meer gegevenspijplijnen bevatten die gegevens verplaatsen en transformeren.
 
-    In deze zelf studie maakt u een pijp lijn in de data factory.
-2. Een **pijp lijn**maken. Een pijplijn kan een of meer activiteiten bevatten (bijvoorbeeld: kopieeractiviteit, HDInsight Hive-activiteit). In dit voor beeld wordt gebruikgemaakt van de HDInsight Hive-activiteit die een Hive-script uitvoert op een HDInsight Hadoop-cluster. Het script maakt eerst een tabel die verwijst naar de onbewerkte weblogboek gegevens die zijn opgeslagen in Azure Blob-opslag en partitioneert de onbewerkte gegevens vervolgens per jaar en maand.
+    In deze zelfstudie maakt u één pijplijn in de gegevensfabriek.
+2. Een **pijplijn maken**. Een pijplijn kan een of meer activiteiten bevatten (bijvoorbeeld: kopieeractiviteit, HDInsight Hive-activiteit). In dit voorbeeld wordt gebruik gemaakt van de HDInsight Hive-activiteit die een Hive-script uitvoert op een HDInsight Hadoop-cluster. Het script maakt eerst een tabel die verwijst naar de ruwe weblogboekgegevens die zijn opgeslagen in Azure blob-opslag en vervolgens de ruwe gegevens per jaar en maand partities.
 
-    In deze zelf studie gebruikt de pijp lijn de Hive-activiteit voor het transformeren van gegevens door een Hive-query uit te voeren op een Azure HDInsight Hadoop cluster.
-3. **Gekoppelde services**maken. U maakt een gekoppelde service om een gegevensopslag of een rekenservice te koppelen aan de gegevensfactory. In een gegevensopslag zoals Azure Storage worden invoer-/uitvoergegevens bewaard van activiteiten in de pijplijn. Een compute-service zoals een HDInsight Hadoop-cluster verwerkt/transformeert gegevens.
+    In deze zelfstudie gebruikt de pijplijn de Hive-activiteit om gegevens te transformeren door een Hive-query uit te voeren op een Azure HDInsight Hadoop-cluster.
+3. Gekoppelde **services maken**. U maakt een gekoppelde service om een gegevensopslag of een rekenservice te koppelen aan de gegevensfactory. In een gegevensopslag zoals Azure Storage worden invoer-/uitvoergegevens bewaard van activiteiten in de pijplijn. Een compute service zoals HDInsight Hadoop cluster processen/transformeert data.
 
-    In deze zelf studie maakt u twee gekoppelde services: **Azure Storage** en **Azure HDInsight**. De Azure Storage gekoppelde service koppelt een Azure Storage account dat de invoer-en uitvoer gegevens voor de data factory bevat. Gekoppelde Azure HDInsight-Services koppelen een Azure HDInsight-cluster dat wordt gebruikt om gegevens te transformeren naar het data factory.
+    In deze zelfstudie maakt u twee gekoppelde services: **Azure Storage** en **Azure HDInsight**. De gekoppelde Azure Storage-service koppelt een Azure Storage-account met de invoer-/uitvoergegevens aan de gegevensfabriek. Azure HDInsight gekoppelde service koppelt een Azure HDInsight-cluster dat wordt gebruikt om gegevens te transformeren naar de gegevensfabriek.
 3. Maak **gegevenssets** voor invoer en uitvoer. Een invoergegevensset vertegenwoordigt de invoer voor een activiteit in de pijplijn en een uitvoergegevensset vertegenwoordigt de uitvoer voor de activiteit.
 
-    In deze zelf studie geven de invoer-en uitvoer gegevens sets de locatie op van de invoer-en uitvoer data in de Azure-Blob Storage. De Azure Storage gekoppelde service geeft aan wat Azure Storage-account wordt gebruikt. Een invoer-gegevensset geeft aan waar de invoer bestanden zich bevinden en een uitvoer gegevensset geeft aan waar de uitvoer bestanden worden geplaatst.
+    In deze zelfstudie geven de invoer- en uitvoergegevens locaties op van invoer- en uitvoergegevens in de Azure Blob Storage. De gekoppelde Azure Storage-service geeft aan welk Azure Storage-account wordt gebruikt. Een invoergegevensset geeft aan waar de invoerbestanden zich bevinden en een uitvoergegevensset geeft aan waar de uitvoerbestanden worden geplaatst.
 
 
-Zie [Inleiding tot Azure Data Factory](data-factory-introduction.md) -artikel voor een gedetailleerd overzicht van Azure Data Factory.
+Zie Inleiding tot het artikel [Van Azure Data Factory](data-factory-introduction.md) voor een gedetailleerd overzicht van Azure Data Factory.
 
-Dit is de **weer gave diagram** van het voor beeld Data Factory u in deze zelf studie hebt gemaakt. **MyFirstPipeline** heeft één activiteit van het type component die **AzureBlobInput** -gegevensset gebruikt als invoer en produceert **AzureBlobOutput** -gegevensset als uitvoer.
+Hier is de **diagramweergave** van de voorbeeldgegevensfabriek die u in deze zelfstudie bouwt. **MyFirstPipeline** heeft één activiteit van type Hive die **AzureBlobInput-gegevensset** als invoer gebruikt en **AzureBlobOutput-gegevensset** produceert als uitvoer.
 
 ![Zelfstudie voor de Data Factory-diagramweergave](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-In deze zelf studie bevat de map **input data** van de Azure Blob-container **adfgetstarted** één bestand met de naam input. log. Dit logboek bestand bevat vermeldingen van drie maanden: januari, februari en maart 2016. Hier ziet u de voorbeeldrijen per maand in het invoerbestand.
+In deze zelfstudie bevat **de map invoergegevens** van de Azure blobcontainer met **adfgetstarted** één bestand met de naam input.log. Dit logboekbestand heeft vermeldingen van drie maanden: januari, februari en maart 2016. Hier ziet u de voorbeeldrijen per maand in het invoerbestand.
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871
@@ -74,27 +74,27 @@ adfgetstarted/partitioneddata/year=2016/month=2/000000_0
 adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 ```
 
-Van de hierboven weer gegeven voorbeeld regels wordt de eerste (met 2016-01-01) naar het 000000_0-bestand in de map month = 1 geschreven. Op dezelfde manier is de tweede regel geschreven naar het bestand in de map maand=2 en de derde naar het bestand in de map maand=3.  
+Uit de bovenstaande voorbeeldregels wordt de eerste (met 2016-01-01) naar het 000000_0-bestand in de map month=1 geschreven. Op dezelfde manier is de tweede regel geschreven naar het bestand in de map maand=2 en de derde naar het bestand in de map maand=3.  
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u met deze zelfstudie begint, moet u aan de volgende vereisten voldoen:
 
 1. U moet beschikken over een **Azure-abonnement**. Als u geen Azure-abonnement hebt, kunt u in enkele minuten een gratis proefaccount maken. Zie het artikel [Gratis proefversie](https://azure.microsoft.com/pricing/free-trial/) voor informatie over het verkrijgen van een gratis proefaccount.
-2. U moet gebruikmaken van **Azure Storage**. U gebruikt een Azure-opslagaccount om de gegevens in deze zelfstudie op te slaan. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslag account hebt gemaakt, noteert u de **account naam** en de **toegangs sleutel**. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het ophalen van toegangs sleutels voor opslag accounts.
-3. Down load en controleer het Hive-query bestand (**HQL**) dat zich bevindt in: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Met deze query worden invoer gegevens getransformeerd om uitvoer gegevens te produceren.
-4. Down load en controleer het voor beeld-invoer bestand (**input. log**) op de volgende locatie: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
-5. Maak een BLOB-container met de naam **adfgetstarted** in uw Azure Blob Storage.
-6. Upload **partitionweblogs. HQL** -bestand naar de map **script** in de **adfgetstarted** -container. Gebruik hulpprogram ma's zoals [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
-7. Upload **input. log** -bestand naar de map **input data** in de container **adfgetstarted** .
+2. U moet gebruikmaken van **Azure Storage**. U gebruikt een Azure-opslagaccount om de gegevens in deze zelfstudie op te slaan. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, noteert u de **accountnaam** en **de toegangssleutel**. Zie [Toegangssleutels voor opslagaccount beheren](../../storage/common/storage-account-keys-manage.md)voor informatie over het ophalen van de toegangssleutels voor opslagaccount.
+3. Download en bekijk het Hive querybestand **(HQL)** op: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Met deze query worden invoergegevens getransformeerd om uitvoergegevens te produceren.
+4. Download en controleer het voorbeeldinvoerbestand **(input.log)** op:[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+5. Maak een blobcontainer met de naam **adfgetstarted** in uw Azure Blob Storage.
+6. Upload **partitionweblogs.hql-bestand** naar de **scriptmap** in de **adfgetstarted-container.** Gebruik hulpprogramma's zoals [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+7. Upload **input.log-bestand** naar de map **invoergegevens** in de **container met adfgetstarted.**
 
-Nadat u de vereisten hebt voltooid, selecteert u een van de volgende hulpprogram ma's/Sdk's om de zelf studie uit te voeren:
+Nadat u de vereisten hebt voltooid, selecteert u een van de volgende hulpprogramma's/SDK's om de zelfstudie uit te voeren:
 
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager-sjabloon](data-factory-build-your-first-pipeline-using-arm.md)
-- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+- [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Sjabloon ResourceManager](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Visual Studio biedt een grafische manier om uw gegevens fabrieken te bouwen. Overwegende dat Power shell, Resource Manager-sjabloon en REST API opties een script/programmeer manier bieden voor het bouwen van uw gegevens fabrieken.
+Visual Studio biedt een GUI-manier om uw datafabrieken te bouwen. Terwijl, PowerShell, Resource Manager Template, en REST API opties biedt scripting / programmering manier van het bouwen van uw data fabrieken.
 
 > [!NOTE]
 > Met de gegevenspijplijn in deze zelfstudie worden invoergegevens getransformeerd in uitvoergegevens. Er worden bijvoorbeeld geen gegevens gekopieerd van een brongegevensarchief naar een doelgegevensarchief. Zie [Zelfstudie: gegevens kopiëren van Blob Storage naar SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor informatie over het kopiëren van gegevens met Azure Data Factory.

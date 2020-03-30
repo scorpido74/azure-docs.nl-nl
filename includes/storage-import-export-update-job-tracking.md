@@ -9,21 +9,21 @@ ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176249"
 ---
-Na het verzenden van de schijven, gaat u terug naar de **Import/Export** pagina op de Azure-portal. 
+Nadat u de schijven hebt verzonden, gaat u terug naar de pagina **Importeren/exporteren** op de Azure-portal. 
 
 > [!IMPORTANT] 
-> Als het volgnummer niet binnen twee weken bijgewerkt is aan de taak wordt gemaakt, verloopt de taak. 
+> Als het trackingnummer niet binnen 2 weken na het maken van de taak wordt bijgewerkt, vervalt de taak. 
 
-Voor het bijwerken van het volgnummer, moet u de volgende stappen uitvoeren.
+Voer de volgende stappen uit om het volgnummer bij te werken.
  
 1. Selecteer en klik op de taak.
-2. Klik op **taakstatus en traceringsgegevens bij als schijven worden geleverd bijwerken**. 
-3. Het selectievakje voor **als verzonden markeren**.
-4. Geef de **Carrier** en **traceringsnummer**.
-5. De taakvoortgang volgen op het dashboard van de portal. Voor een beschrijving van de taakstatus van elke, gaat u naar [weer de status van uw taak](../articles/storage/common/storage-import-export-view-drive-status.md).
+2. Klik **op Taakstatus bijwerken en informatie bijhouden zodra stations zijn verzonden**. 
+3. Schakel het selectievakje in tegen **Markeren als verzonden**.
+4. Geef het **carrier-** en **volgnummer op.**
+5. Volg de voortgang van de taak op het portaldashboard. Ga voor een beschrijving van elke taakstatus naar [Uw functiestatus weergeven.](../articles/storage/common/storage-import-export-view-drive-status.md)

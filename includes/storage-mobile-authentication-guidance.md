@@ -5,49 +5,49 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: fe4ecc237b56575f99844d3ec074225fadb69d3c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673305"
 ---
-## <a name="configure-your-application-to-access-azure-storage"></a>Uw toepassing configureren voor toegang tot Azure Storage
-Er zijn twee manieren om uw toepassing voor toegang tot opslagservices te verifiëren:
+## <a name="configure-your-application-to-access-azure-storage"></a>Uw toepassing configureren om toegang te krijgen tot Azure Storage
+Er zijn twee manieren om uw toepassing te verifiëren om toegang te krijgen tot opslagservices:
 
-* Gedeelde sleutel: Gedeelde sleutel gebruiken alleen voor testdoeleinden
-* Shared Access Signature (SAS): SAS gebruiken voor productie-Apps
+* Gedeelde sleutel: gebruik gedeelde sleutel alleen voor testdoeleinden
+* Shared Access Signature (SAS): SAS gebruiken voor productietoepassingen
 
 ### <a name="shared-key"></a>Gedeelde sleutel
-Gedeelde sleutelverificatie betekent dat uw toepassing uw accountnaam en accountsleutel wordt gebruikt voor toegang tot opslagservices. Voor de toepassing van het snel weergeven van het gebruik van deze bibliotheek, gebruiken we gedeelde sleutelverificatie in deze aan de slag.
+Verificatie van gedeelde sleutels betekent dat uw toepassing uw accountnaam en accountsleutel gebruikt om toegang te krijgen tot opslagservices. Om snel te laten zien hoe deze bibliotheek te gebruiken, gebruiken we Shared Key-verificatie in deze start.
 
 > [!WARNING] 
-> **Gedeelde sleutelverificatie alleen gebruiken voor testdoeleinden.** Uw accountnaam en accountsleutel, die volledig lezen/schrijven toegang tot het Opslagaccount dat is gekoppeld verleent, worden gedistribueerd naar elke persoon die uw app kan worden gedownload. Dit is **niet** een goede oefening als u het risico dat de sleutel in gevaar komt door niet-vertrouwde clients.
+> **Gebruik alleen Shared Key-verificatie voor testdoeleinden!** Uw accountnaam en accountsleutel, die volledige lees-/schrijftoegang geven tot het bijbehorende Opslagaccount, worden gedistribueerd naar elke persoon die uw app downloadt. Dit is **geen** goede praktijk omdat u het risico loopt dat uw sleutel wordt gecompromitteerd door niet-vertrouwde clients.
 > 
 > 
 
-Bij het gebruik van gedeelde sleutelverificatie, maakt u een [verbindingsreeks](../articles/storage/common/storage-configure-connection-string.md). De verbindingsreeks bestaat uit:  
+Wanneer u verificatie met gedeelde sleutel gebruikt, maakt u een [verbindingstekenreeks](../articles/storage/common/storage-configure-connection-string.md). De verbindingstekenreeks bestaat uit:  
 
-* De **DefaultEndpointsProtocol** -kunt u HTTP of HTTPS. Met behulp van HTTPS wordt echter ten zeerste aanbevolen.
-* De **accountnaam** -de naam van uw storage-account
-* De **Accountsleutel** : Voer op de [Azure Portal](https://portal.azure.com), navigeer naar uw storage-account en klikt u op de **sleutels** pictogram om deze informatie te vinden.
-* (Optioneel) **EndpointSuffix** -deze wordt gebruikt voor storage-services in de regio's met een ander eindpunt achtervoegsels, zoals Azure China of Azure Governance.
+* Het **DefaultEndpointsProtocol** - u HTTP of HTTPS kiezen. Het gebruik van HTTPS is echter een aanrader.
+* De **accountnaam** - de naam van uw opslagaccount
+* De **accountsleutel** - Ga op de [Azure Portal](https://portal.azure.com)naar uw opslagaccount en klik op het pictogram **Sleutels** om deze informatie te vinden.
+* (Optioneel) **EndpointSuffix** - Dit wordt gebruikt voor opslagservices in regio's met verschillende eindpuntachtervoegsels, zoals Azure China of Azure Governance.
 
-Hier volgt een voorbeeld van de connection string met behulp van gedeelde sleutelverificatie:
+Hier is een voorbeeld van verbindingstekenreeks met verificatie van gedeelde sleutels:
 
 `"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here"`
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
-Voor een mobiele toepassing is de aanbevolen methode voor het verifiëren van een aanvraag door een client op basis van de service Azure Storage met behulp van een Shared Access Signature (SAS). SAS kunt u een clienttoegang verlenen tot een bron voor een opgegeven periode, met een opgegeven set machtigingen.
-Als eigenaar van het opslagaccount moet u een SAS genereren voor uw mobiele clients om te gebruiken. Voor het genereren van de SAS, wilt u waarschijnlijk een afzonderlijke service die wordt gegenereerd van de SA's worden gedistribueerd naar uw clients te schrijven. Voor testdoeleinden kunt u de [Microsoft Azure Storage Explorer](https://storageexplorer.com) of de [Azure Portal](https://portal.azure.com) voor het genereren van een SAS. Wanneer u de SAS hebt gemaakt, geeft u het tijdsinterval op waarover de SAS geldig is en de machtigingen die de SAS verleent aan de client.
+Voor een mobiele toepassing is de aanbevolen methode voor het verifiëren van een aanvraag door een client tegen de Azure Storage-service een SAS (Shared Access Signature). Met SAS u een client voor een bepaalde periode toegang verlenen tot een resource, met een opgegeven set machtigingen.
+Als eigenaar van het opslagaccount moet u een SAS genereren die uw mobiele klanten kunnen verbruiken. Als u de SAS wilt genereren, wilt u waarschijnlijk een aparte service schrijven die de SAS genereert die aan uw clients moet worden gedistribueerd. Voor testdoeleinden u de [Microsoft Azure Storage Explorer](https://storageexplorer.com) of de Azure [Portal](https://portal.azure.com) gebruiken om een SAS te genereren. Wanneer u de SAS maakt, u het tijdsinterval opgeven waarover de SAS geldig is en de machtigingen die de SAS aan de client verleent.
 
-Het volgende voorbeeld ziet hoe u kunt de Microsoft Azure Storage Explorer gebruiken voor het genereren van een SAS.
+In het volgende voorbeeld ziet u hoe u de Microsoft Azure Storage Explorer gebruiken om een SAS te genereren.
 
-1. Als u dat nog niet gedaan hebt, [installeren van de Microsoft Azure Storage Explorer](https://storageexplorer.com)
+1. Als u dat nog niet hebt gedaan, [installeert u de Microsoft Azure Storage Explorer](https://storageexplorer.com)
 2. Maak verbinding met uw abonnement.
-3. Klik op uw Storage-account en klik op het tabblad 'Acties' in de linkerbenedenhoek. Klik op 'Shared Access Signature ophalen' voor het genereren van een "connection string" voor de SAS.
-4. Hier volgt een voorbeeld van een SAS-verbindingsreeks dat verleent machtigingen lezen en op de service, container en objectniveau voor de blob-service van het opslagaccount schrijven.
+3. Klik op uw opslagaccount en klik linksonder op het tabblad Acties. Klik op 'Gedeelde toegangshandtekening genereren' om een 'verbindingstekenreeks' voor uw SAS te genereren.
+4. Hier volgt een voorbeeld van een SAS-verbindingstekenreeks die lees- en schrijfmachtigingen verleent op service-, container- en objectniveau voor de blobservice van het opslagaccount.
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-Zoals u zien kunt, wanneer u een SAS, bent u niet uw accountsleutel weergeeft in uw toepassing. U kunt meer informatie over SAS en aanbevolen procedures voor het gebruik van SAS door uit te checken [handtekeningen voor gedeelde toegang: Inzicht in het SAS-model](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Zoals u zien, stelt u bij het gebruik van een SAS uw accountsleutel niet bloot in uw toepassing. U meer informatie krijgen over SAS en aanbevolen procedures voor het gebruik van SAS door te kijken naar [Gedeelde toegangshandtekeningen: Inzicht in het SAS-model](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

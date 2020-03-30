@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176722"
 ---
 1. Open het project in Android Studio.
 
-2. In **Projectverkenner** in Android Studio opent u de `ToDoActivity.java` bestand en voeg de volgende importinstructies toe:
+2. Open **Project Explorer** het `ToDoActivity.java` bestand in Project Explorer in Android Studio en voeg de volgende importinstructies toe:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "67176722"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. Toevoegen van de volgende methode naar de **ToDoActivity** klasse:
+3. Voeg de volgende methode toe aan de klasse **ToDoActivity:**
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -59,20 +59,20 @@ ms.locfileid: "67176722"
     }
     ```
 
-    Deze code maakt een methode voor het afhandelen van het Google-verificatieproces uit. Een dialoogvenster geeft de ID van de geverifieerde gebruiker. U kunt alleen doorgaan op een geslaagde verificatie.
+    Met deze code wordt een methode gemaakt om het Google-verificatieproces te verwerken. In een dialoogvenster wordt de id van de geverifieerde gebruiker weergegeven. U alleen doorgaan met een succesvolle verificatie.
 
     > [!NOTE]
-    > Als u van een id-provider dan Google gebruikmaakt, wijzigt u de waarde die is doorgegeven aan de **aanmelding** methode op een van de volgende waarden: _MicrosoftAccount_, _Facebook_, _Twitter_, of _windowsazureactivedirectory_.
+    > Als u een andere identiteitsprovider dan Google gebruikt, wijzigt u de waarde die wordt doorgegeven aan de **inlogmethode** in een van de volgende waarden: _MicrosoftAccount,_ _Facebook,_ _Twitter_of _windowsazureactivedirectory_.
 
-4. In de **onCreate** methode, voeg de volgende coderegel toe na de code waarmee een instantie de `MobileServiceClient` object.
+4. Voeg in de methode **onCreate** de volgende coderegel toe na `MobileServiceClient` de code die het object instantieert.
 
     ```java
     authenticate();
     ```
 
-    Deze aanroep begint het verificatieproces uit.
+    Met deze oproep wordt het verificatieproces gestart.
 
-5. Verplaatst u de resterende code na `authenticate();` in de **onCreate** methode naar een nieuwe **createTable** methode:
+5. Verplaats de resterende `authenticate();` code na in de **methode onCreate** naar een nieuwe **createTable-methode:**
 
     ```java
     private void createTable() {
@@ -92,7 +92,7 @@ ms.locfileid: "67176722"
     }
     ```
 
-6. Voeg de volgende tekstfragment toe om ervoor te zorgen omleiding werkt zoals verwacht, `RedirectUrlActivity` naar `AndroidManifest.xml`:
+6. Als u wilt zorgen dat omleiding seinen zoals verwacht werken, voegt u het volgende fragment toe aan: `RedirectUrlActivity` `AndroidManifest.xml`
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -106,7 +106,7 @@ ms.locfileid: "67176722"
     </activity>
     ```
 
-7. Voeg `redirectUriScheme` naar `build.gradle` van uw Android-toepassing.
+7. Toevoegen `redirectUriScheme` `build.gradle` aan van uw Android-applicatie.
 
     ```gradle
     android {
@@ -123,7 +123,7 @@ ms.locfileid: "67176722"
     }
     ```
 
-8. Voeg `com.android.support:customtabs:23.0.1` aan de afhankelijkheden in uw `build.gradle`:
+8. Toevoegen `com.android.support:customtabs:23.0.1` aan de afhankelijkheden in uw: `build.gradle`
 
     ```gradle
     dependencies {
@@ -132,9 +132,9 @@ ms.locfileid: "67176722"
     }
     ```
 
-9. Uit de **uitvoeren** menu, klikt u op **app uitvoeren** om te beginnen met de app en meld u aan met uw gekozen identiteitsprovider.
+9. Klik **in** het menu Uitvoeren op **App uitvoeren** om de app te starten en u aan te melden bij de door u gekozen identiteitsprovider.
 
 > [!WARNING]
-> Het URL-schema vermeld is hoofdlettergevoelig. Zorg ervoor dat alle instanties van `{url_scheme_of_you_app}` gebruik van hetzelfde hoofdlettergebruik.
+> Het genoemde URL-schema is hoofdlettergevoelig. Zorg ervoor dat `{url_scheme_of_you_app}` alle gevallen van gebruik hetzelfde geval gebruiken.
 
-Wanneer u bent aangemeld, wordt de app moet worden uitgevoerd zonder fouten en moet u kunnen opvragen van de back-end-service en updates aanbrengen in gegevens.
+Wanneer u bent aangemeld, moet de app foutloos worden uitgevoerd en moet u de back-endservice kunnen opvragen en gegevens kunnen bijwerken.

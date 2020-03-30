@@ -1,50 +1,50 @@
 ---
-title: Verbinding maken met een Azure Cosmos-account met een persoonlijke Azure-koppeling
-description: Meer informatie over hoe u veilig toegang kunt krijgen tot het Azure Cosmos-account via een virtuele machine door een persoonlijk eind punt te maken.
+title: Verbinding maken met een Azure Cosmos-account met Azure Private Link
+description: Meer informatie over hoe u het Azure Cosmos-account veilig openen vanaf een VM door een privéeindpunt te maken.
 author: malopMSFT
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
 ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252603"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van een persoonlijke Azure-koppeling
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met Azure Private Link
 
-Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
+Azure Private Endpoint is de fundamentele bouwsteen voor Private Link in Azure. Hiermee kunnen Azure-resources, zoals virtuele machines (VM's), privé communiceren met Private Link-bronnen.
 
-In dit artikel leert u hoe u een virtuele machine maakt in een virtueel Azure-netwerk en een Azure Cosmos-account met een persoonlijk eind punt met behulp van de Azure Portal. Daarna kunt u veilig toegang krijgen tot het Azure Cosmos-account via de VM.
+In dit artikel leert u hoe u een VM maakt op een virtueel Azure-netwerk en een Azure Cosmos-account met een privéeindpunt met behulp van de Azure-portal. Vervolgens u veilig toegang krijgen tot het Azure Cosmos-account van de VM.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal.](https://portal.azure.com)
+Meld u aan bij de [Azure-portal.](https://portal.azure.com)
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
 
-In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een Azure Cosmos-account in dit voor beeld).
+In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die wordt gebruikt om toegang te krijgen tot uw Private Link-bron (een Azure Cosmos-account in dit voorbeeld).
 
-In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+In deze sectie moet u de volgende parameters in de stappen vervangen door de onderstaande informatie:
 
 | Parameter                   | Waarde                |
 |-----------------------------|----------------------|
-| **\<resource-group-name >**  | myResourceGroup|
-| **\<virtuele-netwerk naam >** | myVirtualNetwork         |
-| **\<regio-naam >**          | VS - west-centraal     |
-| **> \<IPv4-adres ruimte**   | 10.1.0.0 \ 16          |
-| **\<subnet naam >**          | mySubnet        |
-| **\<subnet-adres bereik >** | 10.1.0.0 \ 24          |
+| **\<resourcegroepnaam>**  | myResourceGroup|
+| **\<>van de naam van het virtuele netwerk** | myVirtualNetwork         |
+| **\<regionaam>**          | VS - west-centraal     |
+| **\<IPv4-adresruimte>**   | 10.1.0.0\16          |
+| **\<subnetnaam>**          | mySubnet        |
+| **\<subnet-adresbereik>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **reken** > **virtuele machine**.
+1. Selecteer linksboven in het scherm in de Azure-portal de optie **Een resource** > **Compute** > **Virtual-machine maken**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -52,69 +52,69 @@ In deze sectie moet u de volgende para meters in de stappen vervangen door de on
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
-    | **INSTANTIEDETAILS** |  |
-    | Virtuele machine | Voer *myVm*in. |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit in de vorige sectie gemaakt.  |
+    | **EXEMPLAARDETAILS** |  |
+    | Naam van de virtuele machine | Voer *myVm*in . |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Afbeelding | Selecteer **Windows Server 2019 Data Center**. |
+    | Installatiekopie | Selecteer **Windows Server 2019-datacenter**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
-    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
-    | Wachtwoord | Voer een wacht woord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    | Wachtwoord bevestigen | Voer het wacht woord opnieuw in. |
+    | Gebruikersnaam | Voer een gebruikersnaam van uw keuze in. |
+    | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
     | **REGELS VOOR BINNENKOMENDE POORT** |  |
     | Openbare poorten voor inkomend verkeer | Laat de standaardwaarde **Geen** staan. |
     | **GELD BESPAREN** |  |
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Selecteer **volgende: schijven**.
+1. Selecteer **Volgende: Schijven**.
 
-1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
+1. In **Een virtuele machine maken - Schijven**laat u de standaardinstellingen achter en selecteer **Volgende: Netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
-    | Adresruimte | De standaard **10.1.0.0/24**behouden.|
-    | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)** .|
+    | Virtueel netwerk | Laat de standaard **MyVirtualNetwork**.  |
+    | Adresruimte | Laat de **standaardwaarde 10.1.0.0/24 .**|
+    | Subnet | Laat het standaard **mySubnet (10.1.0.0/24)** achter .|
     | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     ||
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
+1. Selecteer **Controleren + maken**. U wordt naar de **pagina Controleren + maken geleid,** waar Azure uw configuratie valideert.
 
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+1. Wanneer u het **doorgegeven bericht Validatie ziet,** selecteert u **Maken**.
 
 ## <a name="create-an-azure-cosmos-account"></a>Een Azure Cosmos-account maken
 
-Maak een [Azure Cosmos SQL API-account](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). Ter vereenvoudiging kunt u het Azure Cosmos-account maken in dezelfde regio als de andere resources (dat wil zeggen ' WestCentralUS ').
+Maak een [Azure Cosmos SQL API-account](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). Voor de eenvoud u het Azure Cosmos-account maken in dezelfde regio als de andere bronnen (dat is 'WestCentralUS').
 
-## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Een persoonlijk eind punt maken voor uw Azure Cosmos-account
+## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Een privéeindpunt maken voor uw Azure Cosmos-account
 
-Maak een persoonlijke koppeling voor uw Azure Cosmos-account zoals wordt beschreven in de [koppeling een persoonlijke verbinding maken met behulp van de sectie Azure Portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) van het gekoppelde artikel.
+Maak een privékoppeling voor uw Azure Cosmos-account zoals beschreven in de privékoppeling maken met behulp van het gedeelte [Azure-portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) van het gekoppelde artikel.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Maak als volgt verbinding met de VM- *myVm* van het Internet:
+Maak als volgt verbinding met de VM *myVm* via internet:
 
-1. Voer in de zoek balk van de portal *myVm*in.
+1. Voer *myVm*in in de zoekbalk van het portaal.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
+1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het gedownloade *RDP*-bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
+    1. Voer de gebruikersnaam en het wachtwoord in dat u hebt opgegeven bij het maken van de vm.
 
         > [!NOTE]
-        > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
+        > Mogelijk moet u **Meer opties** > selecteren**Gebruik een ander account**om de referenties op te geven die u hebt ingevoerd toen u de vm hebt gemaakt.
 
 1. Selecteer **OK**.
 
@@ -122,13 +122,13 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Het Azure Cosmos-account privé openen vanuit de VM
+## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Privé toegang krijgen tot het Azure Cosmos-account vanaf de VM
 
-In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account met behulp van het persoonlijke eind punt. 
+In deze sectie maakt u privé verbinding met het Azure Cosmos-account met behulp van het privéeindpunt. 
 
-1. Als u het IP-adres en de DNS-toewijzing wilt gebruiken, meldt u zich aan bij de *myVM*van de virtuele machine, opent u het `c:\Windows\System32\Drivers\etc\hosts` bestand en neemt u de DNS-informatie uit de vorige stap op in de volgende indeling:
+1. Als u het IP-adres en de DNS-toewijzing wilt `c:\Windows\System32\Drivers\etc\hosts` opnemen, meldt u zich aan bij *myVM,* opent u het bestand en neemt u de DNS-informatie van vorige stap op in de volgende indeling:
 
-   [Privé IP-adres] [Account eindpunt]. Documents. Azure. com
+   [Privé-IP-adres] [Accounteindpunt].documents.azure.com
 
    **Voorbeeld:**
 
@@ -137,31 +137,31 @@ In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account 
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. Installeer [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)In de Extern bureaublad van *myVM*.
+1. Installeer [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)in het extern bureaublad van *myVM*.
 
-1. Selecteer **Cosmos DB accounts (preview)** met de rechter muisknop.
+1. Selecteer **Cosmos DB-accounts (Voorbeeld)** met de rechtermuisknop.
 
-1. Selecteer **verbinding maken met Cosmos DB**.
+1. Selecteer **Verbinding maken met Cosmos DB**.
 
 1. Selecteer **API**.
 
-1. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
+1. Voer de verbindingstekenreeks in door de eerder gekopieerde gegevens te plakken.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 1. Selecteer **Verbinden**.
 
-1. Blader door de Azure Cosmos-data bases en-containers via *mycosmosaccount*.
+1. Blader door de Azure Cosmos-databases en -containers vanuit *mijncosmosaccount*.
 
-1. (Optioneel) Voeg nieuwe items toe aan *mycosmosaccount*.
+1. (Optioneel) nieuwe items toevoegen aan *mycosmosaccount*.
 
-1. Sluit de verbinding met extern bureau blad met *myVM*.
+1. Sluit de verbinding met extern bureaublad met *myVM*.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met het persoonlijke eind punt, het Azure Cosmos-account en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
+Wanneer u klaar bent met het privéeindpunt, het Azure Cosmos-account en de VM, verwijdert u de brongroep en alle bronnen die deze bevat: 
 
-1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* in de zoek resultaten.
+1. Typ *myResourceGroup* in het vak **Zoeken** boven aan de portal en selecteer *myResourceGroup* in de zoekresultaten.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
@@ -169,8 +169,8 @@ Wanneer u klaar bent met het persoonlijke eind punt, het Azure Cosmos-account en
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een VM gemaakt in een virtueel netwerk, een Azure Cosmos-account en een persoonlijk eind punt. U hebt verbinding gemaakt met de virtuele machine via internet en veilig door gegeven aan het Azure Cosmos-account met behulp van een persoonlijke koppeling.
+In dit artikel hebt u een VM gemaakt voor een virtueel netwerk, een Azure Cosmos-account en een privéeindpunt. U hebt vanaf internet verbinding gemaakt met de VM en veilig gecommuniceerd met het Azure Cosmos-account via Private Link.
 
-* Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.
+* Zie [Wat is Azure Private Endpoint voor](private-endpoint-overview.md)meer informatie over privéeindpunt?
 
-* Zie voor meer informatie over het beperken van een persoonlijk eind punt bij gebruik met Azure Cosmos DB [Azure private link met Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) artikel.
+* Zie Azure [Private Link with Azure Cosmos DB-artikel](../cosmos-db/how-to-configure-private-endpoints.md) voor meer informatie over beperking van privéeindpunt bij gebruik met Azure Cosmos DB.

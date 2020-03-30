@@ -1,38 +1,38 @@
 ---
-title: Linux-cluster gebeurtenissen bewaken in azure Service Fabric
-description: Meer informatie over het bewaken van een Service Fabric Linux-cluster gebeurtenissen door Service Fabric platform gebeurtenissen te schrijven naar syslog.
+title: Linux-clustergebeurtenissen bewaken in Azure Service Fabric
+description: Meer informatie over het monitoren van een Service Fabric Linux-clustergebeurtenissen door servicefabric-platformgebeurtenissen naar Syslog te schrijven.
 author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645749"
 ---
-# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-cluster gebeurtenissen Service Fabric in syslog
+# <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric Linux cluster gebeurtenissen in Syslog
 
-Service Fabric beschrijft een reeks platform gebeurtenissen om u te informeren over belang rijke activiteiten in uw cluster. De volledige lijst met gebeurtenissen die worden weer gegeven, is [hier](service-fabric-diagnostics-event-generation-operational.md)beschikbaar. Er zijn verschillende manieren om deze gebeurtenissen te gebruiken. In dit artikel wordt beschreven hoe u Service Fabric configureert om deze gebeurtenissen te schrijven naar syslog.
+Service Fabric onthult een reeks platformgebeurtenissen om u te informeren over belangrijke activiteiten in uw cluster. De volledige lijst van gebeurtenissen die worden blootgesteld is [hier](service-fabric-diagnostics-event-generation-operational.md)beschikbaar. Er zijn verschillende manieren waarop deze gebeurtenissen kunnen worden geconsumeerd. In dit artikel gaan we bespreken hoe servicefabric te configureren om deze gebeurtenissen naar Syslog te schrijven.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="introduction"></a>Inleiding
 
-In de 6,4-release is de SyslogConsumer geïntroduceerd om de Service Fabric-platform gebeurtenissen te verzenden naar syslog voor Linux-clusters. Wanneer deze functie is ingeschakeld, worden gebeurtenissen automatisch gestroomd naar syslog dat kan worden verzameld en verzonden door de Log Analytics-agent.
+In de 6.4 release is de SyslogConsumer geïntroduceerd om de Service Fabric platform events naar Syslog te sturen voor Linux clusters. Zodra deze is ingeschakeld, worden gebeurtenissen automatisch naar Syslog verzonden, die kunnen worden verzameld en verzonden door de Log Analytics Agent.
 
-Elke syslog-gebeurtenis heeft 4 onderdelen
-* Opslagruimte
-* Identity
+Elk Syslog-evenement heeft 4 componenten
+* Faciliteit
+* Identiteit
 * Bericht
-* Ernst
+* Severity
 
-De SyslogConsumer schrijft alle platform gebeurtenissen met behulp van faciliteit `Local0`. U kunt bijwerken naar een wille keurige geldige faciliteit door de configuratie configuratie te wijzigen. De gebruikte identiteit is `ServiceFabric`. Het veld bericht bevat de gehele gebeurtenis geserialiseerd in JSON, zodat deze kan worden opgevraagd en gebruikt door diverse hulpprogram ma's. 
+De SyslogConsumer schrijft alle `Local0`platform evenementen met behulp van Facility . U updaten naar elke geldige faciliteit door het veranderen van de config config. De gebruikte `ServiceFabric`identiteit is . Het veld Bericht bevat de hele gebeurtenis die is geserialiseerd in JSON, zodat deze kan worden opgevraagd en verbruikt door verschillende hulpprogramma's. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer inschakelen
 
-Als u de SyslogConsumer wilt inschakelen, moet u een upgrade van het cluster uitvoeren. De sectie `fabricSettings` moet worden bijgewerkt met de volgende code. Opmerking Deze code bevat alleen secties die betrekking hebben op SyslogConsumer
+Om de SyslogConsumer in te schakelen, moet u een upgrade van uw cluster uitvoeren. De `fabricSettings` sectie moet worden bijgewerkt met de volgende code. Let op deze code bevat alleen secties met betrekking tot SyslogConsumer
 
 ```json
     "fabricSettings": [
@@ -74,10 +74,10 @@ Als u de SyslogConsumer wilt inschakelen, moet u een upgrade van het cluster uit
     ],
 ```
 
-Dit zijn de wijzigingen die u moet aanroepen
-1. In de sectie algemeen is er een nieuwe para meter met de naam `LinuxStructuredTracesEnabled`. **Dit is vereist om Linux-gebeurtenissen gestructureerd en geserialiseerd te hebben wanneer ze worden verzonden naar syslog.**
-2. In de sectie diagnostische gegevens is een nieuwe ConsumerInstance: SyslogConsumer toegevoegd. Dit geeft aan dat het platform een andere gebruiker van de gebeurtenissen is. 
-3. De nieuwe sectie SyslogConsumer moet `IsEnabled` hebben als `true`. Het is geconfigureerd voor het automatisch gebruiken van de Local0-faciliteit. U kunt dit overschrijven door een andere para meter toe te voegen.
+Hier zijn de wijzigingen om uit te roepen
+1. In de sectie Gemeenschappelijk is `LinuxStructuredTracesEnabled`er een nieuwe parameter genaamd . **Dit is vereist om Linux-gebeurtenissen gestructureerd en geserialiseerd te hebben wanneer deze naar Syslog worden verzonden.**
+2. In de sectie Diagnostics is een nieuwe ConsumerInstance: SyslogConsumer toegevoegd. Dit vertelt het platform is er een andere consument van de gebeurtenissen. 
+3. De nieuwe sectie SyslogConsumer `IsEnabled` `true`moet hebben als . Het is geconfigureerd om de Local0-faciliteit automatisch te gebruiken. U dit overschrijven door een andere parameter toe te voegen.
 
 ```json
     {
@@ -86,22 +86,22 @@ Dit zijn de wijzigingen die u moet aanroepen
     }
 ```
 
-## <a name="azure-monitor-logs-integration"></a>Integratie van Azure Monitor-logboeken
-U kunt deze syslog-gebeurtenissen lezen in een bewakings programma, zoals Azure Monitor Logboeken. U kunt met behulp van de volgende [instructies] een Log Analytics-werk ruimte maken met behulp van de Azure Marketplace. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) u moet ook de Log Analytics agent toevoegen aan uw cluster om deze gegevens te verzamelen en naar de werk ruimte te verzenden. Dit is dezelfde agent die wordt gebruikt voor het verzamelen van prestatie meter items. 
+## <a name="azure-monitor-logs-integration"></a>Azure Monitor registreert integratie
+U deze Syslog-gebeurtenissen lezen in een bewakingstool zoals Azure Monitor-logboeken. U een Log Analytics-werkruimte maken met behulp van de Azure Marketplace met behulp van deze [instructies]. (.. /azure-monitor/learn/quick-create-workspace.md) U moet ook de agent Log Analytics aan uw cluster toevoegen om deze gegevens naar de werkruimte te verzamelen en te verzenden. Dit is dezelfde agent die wordt gebruikt om prestatiemeteritems te verzamelen. 
 
-1. Ga naar de Blade `Advanced Settings`
+1. Navigeren naar `Advanced Settings` het blad
 
     ![Werkruimte-instellingen](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
 2. Klik op `Data`
 3. Klik op `Syslog`
-4. Local0 configureren als de faciliteit die u wilt volgen. U kunt een andere faciliteit toevoegen als u deze hebt gewijzigd in fabricSettings
+4. Configureer Local0 als de faciliteit om bij te houden. U een andere faciliteit toevoegen als u deze hebt gewijzigd in fabricSettings
 
     ![Syslog configureren](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
-5. Ga naar de query Verkenner door te klikken op `Logs` in het menu van de werkruimte resource om query's te starten
+5. Ga naar de queryverkenner `Logs` door in het menu van de werkruimtebron te klikken om te beginnen met query's
 
-    ![Werkruimte logboeken](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. U kunt een query uitvoeren op de `Syslog` tabel die naar `ServiceFabric` zoekt als de proces naam. De onderstaande query is een voor beeld van het parseren van de JSON in de gebeurtenis en het weer geven van de inhoud ervan.
+    ![Werkruimtelogboeken](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
+6. U een `Syslog` query `ServiceFabric` uitvoeren tegen de tabel die zoekt als de ProcessName. De onderstaande query is een voorbeeld van hoe u de JSON in de gebeurtenis ontleden en de inhoud ervan weergeven
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload
@@ -109,10 +109,10 @@ U kunt deze syslog-gebeurtenissen lezen in een bewakings programma, zoals Azure 
 
 ![Syslog-query](media/service-fabric-diagnostics-oms-syslog/syslog-query.png)
 
-Het bovenstaande voor beeld is van een NodeDown-gebeurtenis. U kunt [hier](service-fabric-diagnostics-event-generation-operational.md)de volledige lijst met gebeurtenissen bekijken.
+Het bovenstaande voorbeeld is een nodedown-gebeurtenis. U de volledige lijst van gebeurtenissen [hier](service-fabric-diagnostics-event-generation-operational.md)bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [De Log Analytics-agent implementeren](service-fabric-diagnostics-oms-agent.md) naar uw knooppunten om te verzamelen prestatiemeteritems en verzamelen van Logboeken voor uw containers en docker-statistieken
-* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
-* [De weer gave Designer gebruiken om aangepaste weer gaven te maken in Azure Monitor-logboeken](../log-analytics/log-analytics-view-designer.md)
-* Naslag informatie over het [Azure monitor van logboek integratie met syslog](../log-analytics/log-analytics-data-sources-syslog.md).
+* [Implementeer de Log Analytics-agent](service-fabric-diagnostics-oms-agent.md) op uw knooppunten om prestatiemeteritems te verzamelen en dockerstatistieken en -logboeken voor uw containers te verzamelen
+* Maak kennis met de [functies voor zoeken en query's voor logboeken](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure Monitor-logboeken
+* [View Designer gebruiken om aangepaste weergaven te maken in Azure Monitor-logboeken](../log-analytics/log-analytics-view-designer.md)
+* Informatie over hoe [u azure-monitorlogboekenintegratie met Syslog implementeren](../log-analytics/log-analytics-data-sources-syslog.md).

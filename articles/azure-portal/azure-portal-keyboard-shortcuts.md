@@ -1,6 +1,6 @@
 ---
-title: Azure Portal toetsenbord snel toetsen | Microsoft Docs
-description: De Azure Portal ondersteunt wereld wijde sneltoetsen waarmee u acties kunt uitvoeren, navigeren en naar locaties in de Azure Portal kunt gaan.
+title: Sneltoetsen voor Azure-portal | Microsoft Documenten
+description: De Azure-portal ondersteunt globale sneltoetsen om u te helpen acties uit te voeren, te navigeren en naar locaties in de Azure-portal te gaan.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,42 +16,42 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75641330"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Sneltoetsen in de Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Sneltoetsen in de Azure-portal
 
-In dit artikel vindt u een overzicht van de sneltoetsen die overal in het Azure Portal werken. Afzonderlijke services hebben mogelijk hun eigen sneltoetsen.
+In dit artikel worden de sneltoetsen weergegeven die overal in de Azure-portal werken. Individuele services kunnen hun eigen sneltoetsen hebben.
 
 ## <a name="actions"></a>Acties
 
-|Uit te voeren actie |Druk op |
+|Uit te voeren actie |Actie |
 | --- | --- |
 |Een resource maken|G+N|
-|**Alle services** openen|G+B|
-|Resources, services en documenten zoeken|G +/|
-|Items in het resource menu zoeken|CTRL +/ |
-|Het geselecteerde linkerdeel punt omhoog verplaatsen |ALT + SHIFT + pijl-omhoog|
-|Het geselecteerde linkerdeel punt item omlaag verplaatsen |ALT + SHIFT + pijl-omlaag|
+|Alle **services openen**|G+B|
+|Resources, services en documenten zoeken|G+/|
+|Menu-items voor zoekbronnen|Ctrl+/ |
+|Het geselecteerde linkerzijbalkitem omhoog gaan |ALT+Shift+Pijl-omhoog|
+|Het geselecteerde linkerzijbalkitem naar beneden verplaatsen |ALT+Shift+Pijl-omlaag|
 
 ## <a name="navigation"></a>Navigatie
 
-|Om deze navigatie uit te voeren |Druk op |
+|Om deze navigatie te doen |Actie |
 | --- | --- |
-|Focus verplaatsen naar opdracht balk |G +, |
-|Scha kelen tussen koptekst en linker zijbalk | G +. |
+|Focus verplaatsen naar opdrachtbalk |G+, |
+|Focus schakelen tussen kop- en linkerzijbalk | G+. |
 
 ## <a name="go-to"></a>Ga naar
 
-|Naar deze locatie gaan |Druk op |
+|Om naar deze locatie te gaan |Actie |
 | --- | --- |
-|Naar het **dash board** gaan |G+D |
-|Ga naar **alle resources**|G + A |
-|Ga naar **resource groepen**|G + R |
-|Open het item Sidebar links op deze positie |G + nummer|
+|Naar **Dashboard gaan** |G+D |
+|Ga naar **Alle bronnen**|G+A |
+|Naar **Resourcegroepen gaan**|G+R |
+|Het item linkerzijbalk op deze positie openen |G+getal|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176497"
 ---
-De procedures voor het op afstand verbinding maken met het apparaat zijn afhankelijk van het besturingssysteem van de client, anders.
+Afhankelijk van het besturingssysteem van de client zijn de procedures om op afstand verbinding te maken met het apparaat verschillend.
 
-### <a name="remotely-connect-from-a-windows-client"></a>Extern verbinding te maken van een Windows-client
+### <a name="remotely-connect-from-a-windows-client"></a>Verbinding op afstand maken vanuit een Windows-client
 
-Voordat u begint, zorg ervoor dat uw Windows-client wordt uitgevoerd met Windows PowerShell 5.0 of hoger.
+Controleer voordat u begint of uw Windows-client Windows PowerShell 5.0 of hoger draait.
 
-Volg deze stappen om extern verbinding te maken van een Windows-client.
+Volg deze stappen om op afstand verbinding te maken vanuit een Windows-client.
 
-1. Een Windows PowerShell-sessie als administrator uitvoeren.
-2. Zorg ervoor dat de Windows Remote Management-service wordt uitgevoerd op de client. Typ in de opdrachtprompt:
+1. Voer een Windows PowerShell-sessie uit als beheerder.
+2. Controleer of de Windows Remote Management-service op uw client wordt uitgevoerd. Typ het volgende na de opdrachtprompt:
 
     `winrm quickconfig`
 
-3. Een variabele toewijzen aan IP-adres van het apparaat.
+3. Wijs een variabele toe aan het IP-adres van het apparaat.
 
     $ip = "<device_ip>"
 
-    Vervang `<device_ip>` met het IP-adres van uw apparaat.
+    Vervang `<device_ip>` door het IP-adres van uw apparaat.
 
-4. Het IP-adres van uw apparaat toevoegen aan lijst met vertrouwde hosts van de client, typ de volgende opdracht:
+4. Als u het IP-adres van uw apparaat wilt toevoegen aan de lijst met vertrouwde hosts van de client, typt u de volgende opdracht:
 
     `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
 
-5. Een Windows PowerShell-sessie starten op het apparaat:
+5. Start een Windows PowerShell-sessie op het apparaat:
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. Geef het wachtwoord wanneer hierom wordt gevraagd. Gebruik hetzelfde wachtwoord dat wordt gebruikt voor aanmelding bij de lokale webgebruikersinterface. Het wachtwoord van de lokale web-UI voor de standaard is *Wachtwoord1*. Als u bent met het apparaat met externe PowerShell verbonden, ziet u de volgende voorbeelduitvoer:  
+6. Geef het wachtwoord op wanneer daarom wordt gevraagd. Gebruik hetzelfde wachtwoord dat wordt gebruikt om u aan te melden bij de lokale webgebruikersinterface. Het standaard wachtwoord voor de lokale web-gebruikersinterface is *Wachtwoord1*. Wanneer u met externe PowerShell verbinding maakt met het apparaat, ziet u de volgende voorbeelduitvoer:  
 
     ```
     Windows PowerShell
@@ -54,27 +54,27 @@ Volg deze stappen om extern verbinding te maken van een Windows-client.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Extern verbinding te maken van een Linux-client
+### <a name="remotely-connect-from-a-linux-client"></a>Verbinding op afstand maken vanaf een Linux-client
 
-Op de Linux-client die u gebruiken gaat om verbinding te maken:
+Op de Linux-client die u gebruikt om verbinding te maken:
 
-- [Installeer de meest recente PowerShell Core voor Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) van GitHub om op te halen van de SSH-functie voor externe toegang. 
-- [Installeer alleen de `gss-ntlmssp` pakket van de NTLM-module](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Voor Ubuntu-clients, gebruikt u de volgende opdracht uit:
+- [Installeer de nieuwste PowerShell Core voor Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) van GitHub om de SSH remoting-functie te krijgen. 
+- [Installeer alleen `gss-ntlmssp` het pakket van de NTLM-module.](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md) Voor Ubuntu-clients gebruikt u de volgende opdracht:
     - `sudo apt-get install gss-ntlmssp`
 
-Ga voor meer informatie naar [PowerShell voor externe toegang via SSH](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6).
+Ga voor meer informatie naar [PowerShell remoting over SSH.](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)
 
-Volg deze stappen om extern verbinding te maken van een NFS-client.
+Volg deze stappen om op afstand verbinding te maken vanuit een NFS-client.
 
-1. Als u wilt open PowerShell-sessie, typt u:
+1. Als u de PowerShell-sessie wilt openen, typt u het:
 
     `sudo pwsh`
  
-2. Om verbinding te maken met behulp van de externe client, typt u:
+2. Typ:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Geef desgevraagd het wachtwoord waarmee u zich aanmelden bij uw apparaat.
+    Geef het wachtwoord op dat wordt gebruikt om u aan te melden bij uw apparaat wanneer u daarom wordt gevraagd.
  
 > [!NOTE]
 > Deze procedure werkt niet op Mac OS.

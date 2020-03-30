@@ -1,6 +1,6 @@
 ---
-title: Uitzonde ring bij het uitvoeren van query's vanuit Apache Ambari-Hive-weer gave in azure HDInsight
-description: Stappen voor het oplossen van problemen met het uitvoeren van Apache Hive query's via Apache Ambari-Hive-weer gave in azure HDInsight.
+title: Uitzondering bij het uitvoeren van query's van Apache Ambari Hive View in Azure HDInsight
+description: Problemen oplossen bij het uitvoeren van Apache Hive-query's via apache Ambari Hive View in Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
 ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895036"
 ---
-# <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Uitzonde ring bij het uitvoeren van query's vanuit Apache Ambari-Hive-weer gave in azure HDInsight
+# <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Uitzondering bij het uitvoeren van query's van Apache Ambari Hive View in Azure HDInsight
 
-In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
+In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Wanneer u een Apache Hive query uitvoert vanuit Apache Ambari-Hive-weer gave, wordt er regel matig het volgende fout bericht weer gegeven:
+Wanneer u een Apache Hive-query uitvoert vanuit de Apache Ambari Hive View, ontvangt u met tussenpozen het volgende foutbericht:
 
 ```error
 Cannot create property 'errors' on string '<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
@@ -31,45 +31,45 @@ Cannot create property 'errors' on string '<!DOCTYPE html PUBLIC '-//W3C//DTD XH
 
 ## <a name="cause"></a>Oorzaak
 
-Een time-out voor de gateway.
+Een gateway-time-out.
 
-De time-outwaarde voor de gateway is 2 minuten. Query's van de Ambari-Hive-weer gave worden via de gateway naar het `/hive2`-eind punt verzonden. Zodra de query is gecompileerd en geaccepteerd, retourneert de HiveServer een `queryid`. Clients gebruiken vervolgens polling voor de status van de query. Als de HiveServer tijdens dit proces geen HTTP-antwoord binnen twee minuten retourneert, genereert de HDI-gateway een time-outfout van 502,3-gateway naar de aanroeper. De fouten kunnen zich voordoen wanneer de query wordt verzonden voor verwerking (waarschijnlijker meer) en ook in de aanroep status ophalen (minder waarschijnlijk). Gebruikers zien een van beide.
+De time-outwaarde gateway is 2 minuten. Query's van Ambari Hive `/hive2` View worden via de gateway naar het eindpunt verzonden. Zodra de query is gecompileerd en `queryid`geaccepteerd, retourneert de HiveServer een . Clients houden vervolgens de polling voor de status van de query. Als de HiveServer tijdens dit proces niet binnen 2 minuten een HTTP-antwoord retourneert, gooit de HDI-gateway een time-outfout van 502.3 Gateway naar de beller. De fouten kunnen optreden wanneer de query wordt ingediend voor verwerking (meer waarschijnlijk) en ook in de oproep status krijgen (minder waarschijnlijk). Gebruikers konden een van hen zien.
 
-De http-handler-thread moet snel zijn: de taak voorbereiden en een `queryid`retour neren. Om een aantal redenen kunnen alle handler-threads echter bezet zijn, wat resulteert in time-outs voor nieuwe query's en de status aanvragen ophalen.
+De http handler thread wordt verondersteld om snel `queryid`te zijn: de voorbereiding van de baan en terug te keren een . Echter, als gevolg van verschillende redenen, alle handler threads kunnen worden druk resulterend in time-outs voor nieuwe query's en de get status calls.
 
-### <a name="responsibilities-of-the-http-handler-thread"></a>Verantwoordelijkheden van de HTTP-handler-thread
+### <a name="responsibilities-of-the-http-handler-thread"></a>Verantwoordelijkheden van de HTTP-handlerthread
 
-Wanneer de client een query verzendt naar HiveServer, gebeurt het volgende in de voorgrond thread:
+Wanneer de client een query indient bij HiveServer, wordt het volgende in de voorgrondthread weergegeven:
 
-* De aanvraag parseren, semantische verificatie uitvoeren
-* Vergren deling ophalen
-* Zoek opdracht in de meta Store, indien nodig
+* Ontken het verzoek, doe semantische verificatie
+* Verkrijgen slot
+* Metastore lookup indien nodig
 * De query compileren (DDL of DML)
-* Een query plan voorbereiden
-* Autorisatie uitvoeren (alle toepasselijke zwerver-beleids regels uitvoeren in beveiligde clusters)
+* Een queryplan opstellen
+* Autorisatie uitvoeren (Alle toepasselijke rangerbeleidsregels uitvoeren in beveiligde clusters)
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-Enkele algemene aanbevelingen voor het verbeteren van de situatie:
+Enkele algemene aanbevelingen aan u om de situatie te verbeteren:
 
-* Als u een externe meta Store van een Hive-archief gebruikt, controleert u de metrische gegevens van de data base en zorgt u ervoor dat deze niet zijn overbelast. Overweeg de laag van de meta store-data base te schalen.
+* Als u een externe hive-metastore gebruikt, controleert u de DB-statistieken en controleert u of de database niet overbelast is. Overweeg de metastore-databaselaag te schalen.
 
-* Zorg ervoor dat parallelle OPS is ingeschakeld (Hiermee kunnen de HTTP-handlers gelijktijdig worden uitgevoerd). Als u de waarde wilt controleren, opent u [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) en navigeert u naar **Hive** > **configs** > **Geavanceerde** > **aangepaste Hive-site**. De waarde voor `hive.server2.parallel.ops.in.session` moet `true`zijn.
+* Zorg ervoor dat parallelle ops is ingeschakeld (hierdoor kunnen de HTTP-handlerthreads parallel worden uitgevoerd). Als u de waarde wilt verifiëren, start u [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) en navigeert u naar **Hive** > **Configs** > **Advanced** > **Custom hive-site.** De waarde `hive.server2.parallel.ops.in.session` voor `true`moet zijn .
 
-* Zorg ervoor dat de virtuele machine-SKU van het cluster niet te klein is voor de belasting. Overweeg om het werk over meerdere clusters te splitsen. Zie [een cluster type kiezen](../hdinsight-capacity-planning.md#choose-a-cluster-type)voor meer informatie.
+* Controleer of de VM SKU van het cluster niet te klein is voor de belasting. Overweeg om het werk te splitsen tussen meerdere clusters. Zie [Een clustertype kiezen](../hdinsight-capacity-planning.md#choose-a-cluster-type)voor meer informatie .
 
-* Als zwerver op het cluster is geïnstalleerd, controleert u of er te veel zwerver-beleids regels zijn die moeten worden geëvalueerd voor elke query. Zoek naar dubbele of overbodige beleids regels.
+* Als Ranger op het cluster is geïnstalleerd, controleert u of er te veel Ranger-beleidsregels zijn die voor elke query moeten worden geëvalueerd. Zoek naar duplicaat of onnodig beleid.
 
-* Controleer de **grootte** waarde van de HiveServer2-heap van Ambari. Navigeer naar **Hive** > **configuratie** > **instellingen** > **optimalisatie**. Zorg ervoor dat de waarde groter is dan 10 GB. Pas zo nodig aan om de prestaties te optimaliseren.
+* Controleer de **heapgroottewaarde van HiveServer2 van** Ambari. Navigeer naar **Optimalisatie** > van de**instellingen** > van Hive**Configs** > .**Optimization** Zorg ervoor dat de waarde groter is dan 10 GB. Pas aan waar nodig om de prestaties te optimaliseren.
 
-* Zorg ervoor dat de Hive-query goed is afgestemd. Zie [Apache Hive Query's optimaliseren in azure HDInsight](../hdinsight-hadoop-optimize-hive-query.md)voor meer informatie.
+* Zorg ervoor dat de Hive-query goed is afgestemd. Zie [Apache Hive-query's optimaliseren in Azure HDInsight](../hdinsight-hadoop-optimize-hive-query.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
