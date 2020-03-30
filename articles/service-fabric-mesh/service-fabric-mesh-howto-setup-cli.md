@@ -1,19 +1,19 @@
 ---
-title: De Azure Service Fabric mesh-CLI instellen
-description: De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implementeren en beheren van resources, zowel lokaal als in Azure Service Fabric Mesh. Zo kunt u het instellen.
+title: De Azure Service Fabric Mesh CLI instellen
+description: De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implementeren en beheren van resources, zowel lokaal als in Azure Service Fabric Mesh. Hier is hoe het op te zetten.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259186"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI instellen
-De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implementeren en beheren van resources, zowel lokaal als in Azure Service Fabric Mesh. Zo kunt u het instellen.
+De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implementeren en beheren van resources, zowel lokaal als in Azure Service Fabric Mesh. Hier is hoe het op te zetten.
 
 Er kunnen drie typen CLI worden gebruikt. Ze staan in de tabel hieronder.
 
@@ -21,14 +21,14 @@ Er kunnen drie typen CLI worden gebruikt. Ze staan in de tabel hieronder.
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | De primaire CLI, waarmee u uw toepassingen kunt implementeren en resources beheren in de Azure Service Fabric Mesh-omgeving. 
 | sfctl | Lokale clusters | De Service Fabric CLI waarmee u Service Fabric-resources in lokale clusters kunt implementeren en testen.  
-| Maven CLI | Lokale clusters en Azure Service Fabric Mesh | Een wrapper rond `az mesh` en `sfctl` die Java-Ontwikkel aars in staat stelt een bekende opdracht regel ervaring te gebruiken voor lokale en Azure-ontwikkel ervaring.  
+| Maven CLI | Lokale clusters en Azure Service Fabric Mesh | Een wrapper `az mesh` `sfctl` rond en waarmee Java-ontwikkelaars een vertrouwde opdrachtlijnervaring kunnen gebruiken voor lokale en Azure-ontwikkelingservaring.  
 
 Voor de preview is de Azure Service Fabric-NET CLI geschreven als een uitbreiding voor Azure CLI. U kunt deze installeren in de Azure Cloud Shell of een lokale installatie van Azure CLI. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>De Azure Service Fabric Mesh CLI installeren
-1. U moet de Azure CLI-versie 2.0.67 of hoger installeren. Voer `az --version` uit om de versie te bekijken. Zie [de Azure cli installeren][azure-cli-install]als u de meest recente versie van de CLI wilt installeren of upgraden.
+1. U moet de Azure CLI-versie 2.0.67 of hoger installeren. Voer `az --version` uit om de versie te bekijken. Raadpleeg [De Azure CLI installeren][azure-cli-install] voor informatie over het installeren van of upgraden naar de nieuwste versie van de CLI.
 
 2. Installeer de Azure Service Fabric Mesh CLI-uitbreidingsmodule met behulp van de volgende opdracht. 
 

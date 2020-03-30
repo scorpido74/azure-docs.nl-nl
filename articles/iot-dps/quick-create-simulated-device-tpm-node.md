@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: gesimuleerd TPM-apparaat met behulp van node. js inrichten voor Azure IoT Hub'
-description: 'Quick Start: een gesimuleerd TPM-apparaat maken en inrichten met behulp van node. js apparaat SDK voor Azure IoT Hub Device Provisioning Service (DPS). In deze quickstart wordt gebruikgemaakt van afzonderlijke registraties.'
+title: Snelstart - Gesimuleerd TPM-apparaat inrichten op Azure IoT Hub met Node.js
+description: Snelstart - Een gesimuleerd TPM-apparaat maken en inrichten met Behulp van Node.js device SDK voor Azure IoT Hub Device Provisioning Service (DPS). In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,25 +9,25 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 93e68246d1c978bdb1517922f0284524395c218a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77605476"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Snelstartgids: een gesimuleerd TPM-apparaat met de SDK voor node. js maken en inrichten voor IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Snelstart: een gesimuleerd TPM-apparaat maken en inrichten met Behulp van Node.js-apparaat SDK voor IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-In deze Quick Start maakt u een gesimuleerd IoT-apparaat op een Windows-computer. Het gesimuleerde apparaat bevat een TPM-Simulator als een Hardware Security module (HSM). U gebruikt een voor beeld van een node. js-code voor het apparaat om dit gesimuleerde apparaat te verbinden met uw IoT-hub met behulp van een individuele inschrijving met de Device Provisioning Service (DPS).
+In deze quickstart maakt u een gesimuleerd IoT-apparaat op een Windows-computer. Het gesimuleerde apparaat bevat een TPM-simulator als Hardware Security Module (HSM). U gebruikt de node.js-code van het apparaat om dit gesimuleerde apparaat te verbinden met uw IoT-hub met behulp van een individuele inschrijving bij de DPS (Device Provisioning Service).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Beoordeling van [concepten voor automatische inrichting](concepts-auto-provisioning.md).
-- [Het instellen van IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md)is voltooid.
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org).
-- [Git](https://git-scm.com/download/).
+- Herziening van [auto-inrichting concepten](concepts-auto-provisioning.md).
+- Voltooiing van [de Inrichtingsservice voor IoT-hub-apparaten met de Azure-portal](./quick-setup-auto-provision.md).
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Node.js v4.0+](https://nodejs.org).
+- [Git.](https://git-scm.com/download/)
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -46,7 +46,7 @@ In deze Quick Start maakt u een gesimuleerd IoT-apparaat op een Windows-computer
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. Ga naar de hoofdmap van GitHub en voer de [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) -Simulator uit als [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) voor het gesimuleerde apparaat. Deze luistert via een socket op poorten 2321 en 2322. Sluit dit opdracht venster niet. u moet deze simulator blijven uitvoeren tot aan het einde van deze Snelstartgids: 
+1. Navigeer naar de hoofdmap van GitHub en voer de [TPM-simulator](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) uit als [hsm](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) voor het gesimuleerde apparaat. Deze luistert via een socket op poorten 2321 en 2322. Sluit dit opdrachtvenster niet. je moet deze simulator draaiende houden tot het einde van deze quickstart gids: 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
@@ -130,30 +130,30 @@ In deze Quick Start maakt u een gesimuleerd IoT-apparaat op een Windows-computer
     node ExtractDevice.js
     ```
 
-1. In het uitvoer venster worden de **_goedkeurings sleutel_** en de **_registratie-id_** weer gegeven die nodig zijn voor de registratie van het apparaat. Noteer deze waarden. 
+1. In het uitvoervenster worden de **_goedkeuringssleutel_** en de **_registratie-id_** weergegeven die nodig is voor apparaatinschrijving. Noteer deze waarden. 
 
 
 ## <a name="create-a-device-entry"></a>Apparaatvermelding maken
 
-Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
+Azure IoT Device Provisioning Service ondersteunt twee typen inschrijvingen:
 
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Individuele inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om één apparaat in te schrijven.
 
-In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
+Dit artikel toont individuele inschrijvingen.
 
-1. Meld u aan bij de Azure Portal, selecteer de knop **alle resources** in het linkermenu en open uw Device Provisioning-Service.
+1. Meld u aan bij de Azure-portal, selecteer de knop **Alle bronnen** in het linkermenu en open de service Apparaatvoorziening.
 
-1. Selecteer in het menu Device Provisioning Service de optie **inschrijvingen beheren**. Selecteer het tabblad **afzonderlijke** inschrijvingen en selecteer bovenaan de knop **afzonderlijke registratie toevoegen** . 
+1. Selecteer inschrijvingen beheren in het menu **Apparaatinrichtingsservice**. Selecteer het tabblad **Individuele inschrijvingen** en selecteer bovenaan de knop **Afzonderlijke inschrijving toevoegen.** 
 
-1. Voer in het deel venster **registratie toevoegen** de volgende gegevens in:
+1. Voer **in** het deelvenster Inschrijving toevoegen de volgende gegevens in:
    - Selecteer **TPM** als *mechanisme* voor identiteitscontrole.
-   - Voer de *registratie-id* en *goedkeurings sleutel* voor het TPM-apparaat in van de waarden die u eerder hebt genoteerd.
+   - Voer de *registratie-id* en *goedkeuringssleutel* voor uw TPM-apparaat in op basis van de eerder aangenomen waarden.
    - Selecteer een IoT-hub die is gekoppeld aan uw inrichtingsservice.
    - Desgewenst kunt u de volgende informatie verstrekken:
-       - Voer een unieke *apparaat-id*in. Vermijd gevoelige gegevens bij het benoemen van uw apparaat. Als u ervoor kiest om er geen op te geven, wordt de registratie-ID gebruikt om het apparaat te identificeren.
+       - Voer een unieke *apparaat-id in*. Vermijd gevoelige gegevens bij het benoemen van uw apparaat. Als u ervoor kiest er geen aan te geven, wordt de registratie-id gebruikt om het apparaat te identificeren.
        - Werk de **initiële status van de apparaatdubbel** bij met de gewenste beginconfiguratie voor het apparaat.
-   - Als u klaar bent, drukt u op de knop **Opslaan** . 
+   - Druk op de knop **Opslaan** nadat u bent voltooid. 
 
      ![Gegevens van apparaatinschrijving invoeren in de portalblade](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
@@ -162,7 +162,7 @@ In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 ## <a name="register-the-device"></a>Apparaat registreren
 
-1. Selecteer in de Azure Portal de Blade **overzicht** voor uw Device Provisioning Service en noteer de waarden van het **_globale apparaat-eind punt_** en de **_id-Scope_** .
+1. Selecteer in de Azure-portal het **overzichtsblad** voor uw service voor apparaatinrichting en noteer de waarden **_Global Device Endpoint_** en **_ID Scope._**
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
@@ -241,7 +241,7 @@ In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
     node RegisterDevice.js
     ```
 
-1. De gegevens van uw IoT-hub leest u in de berichten die het opstarten van het apparaat en het verbinding maken met Device Provisioning Service simuleren. Wanneer het gesimuleerde apparaat is ingericht met de IoT-hub die is gekoppeld aan uw inrichtings service, wordt de apparaat-ID weer gegeven op de Blade **IOT-apparaten** van de hub. 
+1. De gegevens van uw IoT-hub leest u in de berichten die het opstarten van het apparaat en het verbinding maken met Device Provisioning Service simuleren. Bij een succesvolle inrichting van uw gesimuleerde apparaat naar de IoT-hub die is gekoppeld aan uw inrichtingsservice, wordt de apparaat-id weergegeven op het **Iot-apparaatblad** van de hub. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -250,17 +250,17 @@ In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met het voor beeld van de apparaatclient, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+Als u van plan bent verder te werken aan en het voorbeeld van de apparaatclient te verkennen, moet u de bronnen die in deze quickstart zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle bronnen die door deze quickstart zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
 1. Sluit het TPM-simulatorvenster op de computer.
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw Device Provisioning Service. Open de Blade **inschrijvingen beheren** voor uw service en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Schakel het selectie vakje in naast de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik boven aan het deel venster op de knop **verwijderen** . 
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw IOT-hub. Open de Blade **IOT-apparaten** voor uw hub, schakel het selectie vakje in naast de *apparaat-id* van het apparaat dat u in deze Quick Start hebt geregistreerd en druk op de knop **verwijderen** boven aan het deel venster.
+1. Selecteer **alle bronnen** in het linkermenu in de Azure-portal en selecteer vervolgens de service Apparaatvoorziening. Open het **mes Inschrijvingen beheren** voor uw service en schakel het tabblad **Individuele inschrijvingen** in. Schakel het selectievakje in naast de *registratie-id* van het apparaat dat u in deze quickstart hebt ingeschreven en druk op de knop **Verwijderen** boven in het deelvenster. 
+1. Selecteer **alle bronnen** in het linkermenu in de Azure-portal en selecteer vervolgens uw IoT-hub. Open het **IE-apparaatblad** voor uw hub, schakel het selectievakje in naast de *apparaat-id* van het apparaat dat u in deze quickstart hebt geregistreerd en druk op de knop **Verwijderen** boven aan het deelvenster.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een door de TPM gesimuleerd apparaat op de computer gemaakt en dit ingericht voor uw IoT-hub met behulp van de IoT Hub Device Provisioning Service. Als u wilt weten hoe u uw TPM-apparaat programmatisch kunt registreren, gaat u verder met de Quick start voor programmatische inschrijving van een TPM-apparaat. 
+In deze quickstart hebt u een TPM-gesimuleerd apparaat op uw machine gemaakt en deze in gerichte tijd in uw IoT-hub met behulp van de IoT Hub Device Provisioning Service. Ga door met de snelle start voor programmatische inschrijving van een TPM-apparaat om uw TPM-apparaat programmatisch in te schrijven. 
 
 > [!div class="nextstepaction"]
-> [Azure Quick Start-TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-node.md)
+> [Azure quickstart - TPM-apparaat inschrijven voor Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-node.md)

@@ -1,6 +1,6 @@
 ---
-title: Buiten gebruik stellen van Security Center-functies (2019 juli) | Microsoft Docs
-description: In dit artikel worden de functies beschreven in Security Center die zijn ingetrokken op 31 juli 2019.
+title: Kenmerken van het Security Center (juli 2019) | Microsoft Documenten
+description: In dit artikel worden de functies in Security Center beschreven die op 31 juli 2019 zijn uitgeschakeld.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,185 +9,185 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245406"
 ---
-# <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
+# <a name="retirement-of-security-center-features-july-2019"></a>Functies van Security Center met pensioen (juli 2019)
 
 > [!NOTE]
-> In dit document vindt u een overzicht van de functies die sinds 31 juli 2019 van Azure Security Center zijn buiten gebruik gesteld.
+> In dit document wordt de lijst met functies beschreven die op 31 juli 2019 zijn verwijderd uit Azure Security Center.
 >
 >
 
-We hebben een aantal [verbeteringen](https://azure.microsoft.com/updates/?product=security-center) aangebracht in de zes maanden Azure Security Center tot en met 2019.
-Met deze verbeterde mogelijkheden hebben we op 31 juli 2019 enkele redundante functies en gerelateerde Api's verwijderd van Security Center.
+In de zes maanden voorafgaand aan juli 2019 hebben we verschillende [verbeteringen](https://azure.microsoft.com/updates/?product=security-center) aangebracht in Azure Security Center.
+Met deze verbeterde mogelijkheden hebben we op 31 juli 2019 een aantal redundante functies en gerelateerde API's uit Security Center verwijderd.
 
-De meeste van deze buiten gebruik gestelde functies kunnen worden vervangen door andere functies in Azure Security Center of Azure Log Analytics. Andere functies kunnen worden geïmplementeerd met behulp van [Azure Sentinel (preview)](https://azure.microsoft.com/services/azure-sentinel/).
+De meeste van deze functies kunnen worden vervangen door andere functionaliteit in Azure Security Center of Azure Log Analytics. Andere functies kunnen worden geïmplementeerd met [Azure Sentinel (preview).](https://azure.microsoft.com/services/azure-sentinel/)
 
-Buiten gebruik gestelde Security Center-functies zijn:
+Functies van het gepensioneerde beveiligingscentrum zijn onder andere:
 
-- [Gebeurtenissen dashboard](#menu_events)
-- [Invoer menu opdracht](#menu_search)
-- [De koppeling klassieke identiteits & toegang weer geven op identiteit en toegang (preview)](#menu_classicidentity)
-- [Knop voor toewijzing van beveiligings gebeurtenissen op de kaart Security Alerts (preview)](#menu_securityeventsmap)
-- [Aangepaste waarschuwings regels (preview-versie)](#menu_customalerts)
-- [De knop onderzoeken in beveiligings waarschuwingen voor bedreigingen beveiliging](#menu_investigate)
-- [Een subset van beveiligings oplossingen](#menu_solutions)
-- [Beveiligings configuraties voor beveiligings beleid bewerken](#menu_securityconfigurations)
-- [Dash board voor beveiliging en controle (oorspronkelijk gebruikt in OMS-Portal) voor Log Analytics-werk ruimten](#menu_securityomsdashboard)
+- [Dashboard Gebeurtenissen](#menu_events)
+- [Menu-invoer zoeken](#menu_search)
+- [Klassieke link Identity & Access bekijken op identiteit en toegang (voorbeeld)](#menu_classicidentity)
+- [Kaartkaart voor beveiligingsgebeurtenissen op de kaart Beveiligingswaarschuwingen (voorbeeld)](#menu_securityeventsmap)
+- [Aangepaste waarschuwingsregels (voorbeeld)](#menu_customalerts)
+- [Knop Onderzoeken in beveiligingswaarschuwingen voor bedreigingsbeveiliging](#menu_investigate)
+- [Een subset van beveiligingsoplossingen](#menu_solutions)
+- [Beveiligingsconfiguraties voor beveiligingsbeleid bewerken](#menu_securityconfigurations)
+- [Beveiligings- en auditdashboard (oorspronkelijk gebruikt in OMS-portal) voor Log Analytics-werkruimten](#menu_securityomsdashboard)
 
-In dit artikel vindt u gedetailleerde informatie over elke buiten gebruik gestelde functie en de stappen die u kunt nemen om de vervangings functies te implementeren.
+In dit artikel vindt u gedetailleerde informatie over elke gepensioneerde functie en de stappen die u nemen om vervangende functies te implementeren.
 
-## Gebeurtenissen dashboard<a name="menu_events"></a>
+## <a name="events-dashboard"></a>Dashboard Gebeurtenissen<a name="menu_events"></a>
 
-Security Center maakt gebruik van micro soft Monitoring Agent voor het verzamelen van verschillende aan beveiliging gerelateerde configuraties en gebeurtenissen van uw computers. Deze gebeurtenissen worden opgeslagen in uw werk ruimten. Met het [Events-dash board](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) kunt u deze gegevens bekijken en u een toegangs punt geven om log Analytics.
+Security Center gebruikt Microsoft Monitoring Agent om verschillende beveiligingsgerelateerde configuraties en gebeurtenissen van uw machines te verzamelen. Het slaat deze gebeurtenissen op in uw werkruimten. Met [het evenementendashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) u deze gegevens bekijken en u een toegangspunt geven voor Log Analytics.
 
-Het dash board gebeurtenissen dat werd weer gegeven toen u een werk ruimte heb geselecteerd, zijn buiten gebruik gesteld:
+We hebben het evenementendashboard dat is weergegeven toen u een werkruimte hebt geselecteerd, buiten gebruik gesteld:
 
-![Gebeurtenissen dashboard][2]
+![Dashboard Gebeurtenissen][2]
 
-### <a name="events-dashboard---the-new-experience"></a>Gebeurtenissen Dashboard: de nieuwe ervaring
+### <a name="events-dashboard---the-new-experience"></a>Evenementen dashboard - de nieuwe ervaring
 
-We raden u aan de systeem eigen mogelijkheden van Azure Log Analytics te gebruiken om de belangrijkste gebeurtenissen in uw werk ruimten te bekijken.
+We hebben u aangemoedigd om de native mogelijkheden van Azure Log Analytics te gebruiken om opmerkelijke gebeurtenissen op uw werkruimten te bekijken.
 
-Als u aangepaste gebeurtenissen in Security Center hebt gemaakt, zijn deze toegankelijk. Ga in Log Analytics naar de **werk ruimte selecteren** > **opgeslagen Zoek opdrachten**. Uw gegevens gaan verloren of worden niet gewijzigd. Systeem eigen gebeurtenissen zijn ook beschikbaar in hetzelfde scherm in Log Analytics.
+Als u aangepaste opmerkelijke gebeurtenissen hebt gemaakt in Beveiligingscentrum, zijn deze toegankelijk. Ga in Logboekanalyse naar **Opgeslagen zoekopdrachten voor werkruimte** > **selecteren**. Uw gegevens worden niet verloren of gewijzigd. Native opmerkelijke gebeurtenissen zijn ook beschikbaar vanaf hetzelfde scherm in Log Analytics.
 
-![Opgeslagen Zoek opdrachten in werk ruimte][3]
+![Op zoeknaar in werkruimte opgeslagen][3]
 
-## Invoer menu opdracht<a name="menu_search"></a>
+## <a name="search-menu-entry"></a>Menu-invoer zoeken<a name="menu_search"></a>
 
-Azure Security Center maakt momenteel gebruik van Azure Monitor logboeken zoeken om uw beveiligings gegevens op te halen en te analyseren. Dit scherm fungeert als een venster voor het Log Analytics van de zoek pagina en stelt gebruikers in staat Zoek query's uit te voeren op hun geselecteerde werk ruimte. Zie [Azure Security Center Search](https://docs.microsoft.com/azure/security-center/security-center-search)voor meer informatie. Dit zoek venster is buiten gebruik gesteld:
+Azure Security Center gebruikt momenteel Azure Monitor-logboeken om uw beveiligingsgegevens op te halen en te analyseren. Dit scherm fungeert als een venster op de zoekpagina Log Analytics en stelt gebruikers in staat om zoekopdrachten uit te voeren op hun geselecteerde werkruimte. Zie [Zoeken in Azure Security Center voor](https://docs.microsoft.com/azure/security-center/security-center-search)meer informatie . We hebben dit zoekvenster met pensioen gehaald:
 
-![Zoek pagina][4]
+![Zoekpagina][4]
 
-### <a name="search-menu-entry---the-new-experience"></a>Zoek menu-item: de nieuwe ervaring
+### <a name="search-menu-entry---the-new-experience"></a>Zoekmenu-vermelding - de nieuwe ervaring
 
-We raden u aan de Azure Log Analytics systeem eigen mogelijkheden te gebruiken om Zoek query's uit te voeren op uw werk ruimten. Ga naar Azure Log Analytics en selecteer **Logboeken**.
+We raden u aan de native mogelijkheden van Azure Log Analytics te gebruiken om zoekopdrachten op uw werkruimten uit te voeren. Ga naar Azure Log Analytics en selecteer **Logboeken**.
 
-![Pagina Log Analytics logboeken][5]
+![Logboekanalyselogboekenpagina][5]
 
-## Klassieke identiteits & toegang (preview)<a name="menu_classicidentity"></a>
+## <a name="classic-identity--access-preview"></a>Toegang voor klassieke identiteit & (voorbeeld)<a name="menu_classicidentity"></a>
 
-Met de klassieke identiteit & toegang in Security Center wordt momenteel een dash board met identiteits-en toegangs gegevens in Log Analytics weer gegeven. Dit dash board weer geven:
+De Ervaring Classic Identity & Access in Security Center toont momenteel een dashboard met identiteits- en toegangsgegevens in Log Analytics. Ga als volgt te werk om dit dashboard te bekijken:
 
-1. Selecteer **klassieke identiteit & toegang weer geven**.
+1. Selecteer **Klassieke identiteits- & Access weergeven**.
 
-   ![Pagina identiteit][6]
+   ![Identiteitspagina][6]
 
-1. Bekijk het **dash board voor identiteits & toegang**.
+1. Bekijk het **dashboard Identity & Access**.
 
-    ![Pagina identiteit-selectie van werk ruimte][7]
+    ![Identiteitspagina - selectie van werkruimtes][7]
 
-1. Selecteer een werk ruimte om het **identiteits & Access** -dash board te openen in log Analytics om identiteits-en toegangs gegevens weer te geven in uw werk ruimte.
+1. Selecteer een werkruimte die het dashboard **Identiteit & Toegang** in Log Analytics opent om identiteit en toegang tot informatie in uw werkruimte weer te geven.
 
-   ![Identiteits pagina-dash board][8]
+   ![Identiteitspagina - dashboard][8]
 
-Alle drie de schermen die in de voor gaande stappen zijn weer gegeven, zijn buiten gebruik gesteld. Uw gegevens blijven beschikbaar in de beveiligings oplossing van Log Analytics en zijn niet gewijzigd of verwijderd.
+We hebben alle drie de schermen in de voorgaande stappen met pensioen laten gaan. Uw gegevens blijven beschikbaar in de beveiligingsoplossing Log Analytics en zijn niet gewijzigd of verwijderd.
 
-### <a name="classic-identity--access-preview---the-new-experience"></a>Klassieke identiteits & toegang (preview): de nieuwe ervaring
+### <a name="classic-identity--access-preview---the-new-experience"></a>Classic Identity & Access (Preview) - de nieuwe ervaring
 
-Het Log Analytics-dash board heeft inzichten op één werk ruimte weer gegeven. Systeem eigen Security Center biedt echter inzicht in alle abonnementen en alle werk ruimten die eraan zijn gekoppeld. U hebt toegang tot een eenvoudig te gebruiken weer gave waarmee u zich kunt richten op wat belang rijk is met de aanbevelingen die zijn afgestemd op basis van hun beveiligde Score.
+Het dashboard Log Analytics heeft inzichten weergegeven op één werkruimte. Native Security Center-mogelijkheden bieden echter inzicht in alle abonnementen en alle werkruimten die eraan zijn gekoppeld. U hebt toegang tot een gebruiksvriendelijke weergave waarmee u zich concentreren op wat belangrijk is met aanbevelingen die zijn gerangschikt op basis van hun beveiligde score.
 
-U kunt alle functies van de **identiteit & Access** -dash board in log Analytics bereiken door **identiteit & Access (Preview)** in Security Center te selecteren.
+Alle functies van het **dashboard Identity & Access** in Log Analytics kunnen worden bereikt door Identiteit & access **(Preview)** te selecteren in het Beveiligingscentrum.
 
-![Pagina identiteit-klassieke ervaring buiten gebruik stellen][9]
+![Identiteitspagina - klassieke ervaring pensioen][9]
 
-## Toewijzing van beveiligings gebeurtenissen<a name="menu_securityeventsmap"></a>
+## <a name="security-events-map"></a>Kaart voor beveiligingsgebeurtenissen<a name="menu_securityeventsmap"></a>
 
-Security Center biedt u een [overzicht van beveiligings waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) waarmee u beveiligings Risico's kunt identificeren. Met de knop **naar de map met beveiligings gebeurtenissen** in deze kaart opent u een dash board waarmee u onbewerkte beveiligings gebeurtenissen kunt weer geven in de geselecteerde werk ruimte.
+Security Center biedt u een [beveiligingswaarschuwingen kaart](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) om te helpen bij het identificeren van beveiligingsrisico's. Met de **kaartkaart Naar beveiligingsgebeurtenissen** in die kaart opent u een dashboard waarmee u onbewerkte beveiligingsgebeurtenissen op de geselecteerde werkruimte weergeven.
 
-We hebben de knop **Ga naar beveiligings gebeurtenissen toewijzen** en het dash board per werk ruimte verwijderd.
+We hebben de **kaartknop Naar beveiligingsgebeurtenissen en** het dashboard per werkruimte verwijderd.
 
-![Toewijzing van beveiligings waarschuwingen-knop][10]
+![Kaart voor beveiligingswaarschuwingen - knop][10]
 
-Wanneer u de knop **naar beveiligings gebeurtenissen toewijzen** selecteert, is het dash board (nu buiten gebruik gesteld) geopend.
+Wanneer u de **kaartkaart Voor beveiligingsgebeurtenissen ga** selecteert, wordt het dashboard voor bedreigingsinformatie (nu met pensioen) geopend.
 
 ![Het dashboard Bedreigingsinformatie][11]
 
-Wanneer u een werk ruimte kiest om het bijbehorende Threat Intelligence-dash board weer te geven, hebt u het scherm (nu buiten gebruik gesteld) geopend in Log Analytics.
+Wanneer u een werkruimte kiest om het dashboard voor bedreigingsinformatie weer te geven, hebt u het scherm (nu gepensioneerde) beveiligingswaarschuwingen geopend in Log Analytics.
 
-![Toewijzing van beveiligings waarschuwingen in Log Analytics][12]
+![Beveiligingswaarschuwingen worden toegewezen in Log Analytics][12]
 
-De bestaande gegevens blijven beschikbaar in de beveiligings oplossing van Log Analytics en zijn niet gewijzigd of verwijderd.
+Uw bestaande gegevens blijven beschikbaar in de beveiligingsoplossing log Analytics en zijn niet gewijzigd of verwijderd.
 
-### <a name="security-events-map---the-new-experience"></a>Toewijzing van beveiligings gebeurtenissen-de nieuwe ervaring
+### <a name="security-events-map---the-new-experience"></a>Kaart van beveiligingsgebeurtenissen - de nieuwe ervaring
 
-We raden u aan de functie voor waarschuwings toewijzing te gebruiken die is ingebouwd in Security Center: **map Security Alerts (preview)** . Deze functie biedt een geoptimaliseerde ervaring en werkt in alle abonnementen en aan de gekoppelde werk ruimten. Het biedt u een weer gave op hoog niveau in uw omgeving en is niet gericht op één werk ruimte.
+We raden u aan de functionaliteit van de waarschuwingskaart te gebruiken die is ingebouwd in het beveiligingscentrum: **de kaart met beveiligingswaarschuwingen (Voorbeeld).** Deze functionaliteit biedt een geoptimaliseerde ervaring en werkt voor alle abonnementen en bijbehorende werkruimten. Het geeft u een overzicht op hoog niveau in uw omgeving en is niet gericht op één werkruimte.
 
-## Aangepaste waarschuwings regels (preview-versie)<a name="menu_customalerts"></a>
+## <a name="custom-alert-rules-preview"></a>Aangepaste waarschuwingsregels (voorbeeld)<a name="menu_customalerts"></a>
 
-We hebben [de aangepaste meldings ervaring](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) op 30 juni 2019 buiten gebruik gesteld, omdat de onderliggende infra structuur buiten gebruik is gesteld. Na afloop van de datum van pensionering worden er geen aangepaste beveiligings waarschuwingen meer gegenereerd.
-We raden u aan [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) in te scha kelen en uw aangepaste waarschuwingen daar opnieuw te maken. U kunt ook waarschuwingen maken met Azure Monitor logboek waarschuwingen.
+We [hebben de ervaring met aangepaste waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) op 30 juni 2019 met pensioen laten gaan omdat de onderliggende infrastructuur met pensioen is gegaan. Na de pensioendatum worden aangepaste beveiligingswaarschuwingen niet meer gegenereerd.
+We raden u aan [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) in te schakelen en daar uw aangepaste waarschuwingen opnieuw te maken. U ook uw waarschuwingen maken met Azure Monitor-logboekwaarschuwingen.
 
 Aangepaste waarschuwingen maken met Azure Sentinel:
 
-1. [Open Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) en selecteer de werk ruimte waar uw aangepaste waarschuwingen worden opgeslagen
-1. **Analyse** selecteren in het menu
-1. Volg de instructies in de volgende [zelf studie](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) over het maken van aangepaste waarschuwingen in azure Sentinel
+1. [Azure Sentinel openen](https://portal.azure.com/#create/Microsoft.ASI/preview) en de werkruimte selecteren waar uw aangepaste waarschuwingen zijn opgeslagen
+1. **Analytics selecteren** in het menu
+1. Instructies volgen in de volgende [zelfstudie](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) over het maken van aangepaste waarschuwingen in Azure Sentinel
 
-Als u niet geïnteresseerd bent in het gebruik van Azure Sentinel, kunt u uw waarschuwingen maken met Azure Monitor logboek waarschuwingen. Zie [logboek waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) en [logboek waarschuwingen in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)voor instructies.
+Als u geen Azure Sentinel wilt gebruiken, u uw waarschuwingen maken met Azure Monitor-logboekwaarschuwingen. Zie [Logboekwaarschuwingen maken, weergeven en beheren met Azure Monitor-](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) en [Logwaarschuwingen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)voor instructies.
 
 ![Aangepaste waarschuwingen][13]
 
-Zie [aangepaste waarschuwings regels in azure Security Center (preview)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)voor meer informatie over het buiten gebruik stellen van aangepaste waarschuwingen.
+Zie [Aangepaste waarschuwingsregels in Azure Security Center (Preview)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)voor meer informatie over het pensioen met aangepaste waarschuwingen.
 
-## Onderzoek van beveiligings waarschuwingen<a name="menu_investigate"></a>
+## <a name="security-alerts-investigation"></a>Beveiligingswaarschuwingen onderzoek<a name="menu_investigate"></a>
 
-Met [de functie voor onderzoek](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center kunt u een potentieel beveiligings incident sorteren. Met deze functie kunt u het bereik van een incident begrijpen en de hoofd oorzaak volgen. Deze functie is van Security Center verwijderd omdat deze is vervangen door een verbeterde ervaring in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/).
+[De functie Onderzoek](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center helpt u bij het triage een mogelijk beveiligingsincident. Met de functie u de omvang van een incident begrijpen en de oorzaak ervan opsporen. We hebben deze functie uit het Beveiligingscentrum verwijderd omdat deze is vervangen door een verbeterde ervaring in [Azure Sentinel.](https://azure.microsoft.com/services/azure-sentinel/)
 
 ![Beveiligingsincident][14]
 
-Wanneer u de knop **onderzoeken** selecteert in het scherm **beveiliging incident** , opent u het dash board onderzoek (preview) in log Analytics. Het dash board voor onderzoek is buiten gebruik gesteld.
+Wanneer u de knop **Onderzoeken** selecteert in een scherm **met beveiligingsincidenten,** opent u het onderzoeksdashboard (Voorbeeld) in Log Analytics. We hebben het onderzoeksdashboard met pensioen laten gaan.
 
-De bestaande gegevens blijven beschikbaar in de beveiligings oplossing van Log Analytics en zijn niet gewijzigd of verwijderd.
+Uw bestaande gegevens blijven beschikbaar in de beveiligingsoplossing log Analytics en zijn niet gewijzigd of verwijderd.
 
-![Dash board voor onderzoek in Log Analytics][15]
+![Onderzoeksdashboard in Log Analytics][15]
 
-### <a name="investigation---the-new-experience"></a>Onderzoek: de nieuwe ervaring
+### <a name="investigation---the-new-experience"></a>Onderzoek - de nieuwe ervaring
 
-We raden u aan om over te stappen op [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) voor een rijke onderzoek ervaring. Azure Sentinel biedt krachtige zoek-en query hulpprogramma's voor het zoeken naar beveiligings Risico's in de gegevens bronnen van uw organisatie.
+We raden u aan om over te stappen op [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) voor een uitgebreide onderzoekservaring. Azure Sentinel biedt krachtige zoek- en querytools om te zoeken naar beveiligingsbedreigingen in de gegevensbronnen van uw organisatie.
 
-## Subset van beveiligings oplossingen<a name="menu_solutions"></a>
+## <a name="subset-of-security-solutions"></a>Subset van beveiligingsoplossingen<a name="menu_solutions"></a>
 
-Security Center kunt [geïntegreerde beveiligings oplossingen inschakelen in azure](https://docs.microsoft.com/azure/security-center/security-center-partner-integration). We hebben de volgende partner oplossingen buiten gebruik gesteld van Security Center. Deze oplossingen zijn ingeschakeld in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) samen met een aantal extra gegevens bronnen.
+Security Center kan [geïntegreerde beveiligingsoplossingen in Azure](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)inschakelen. We hebben de volgende partneroplossingen van Security Center teruggetrokken. Deze oplossingen zijn ingeschakeld in [Azure Sentinel,](https://azure.microsoft.com/services/azure-sentinel/) samen met een aantal extra gegevensbronnen.
 
-- [Firewall-en Web Application Firewall oplossingen van de volgende generatie](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
-- [Integratie van beveiligings oplossingen die de algemene gebeurtenis indeling (CEF) ondersteunen](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
+- [Firewall- en webtoepassingsfirewalloplossingen van de volgende generatie](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+- [Integratie van beveiligingsoplossingen die de Common Event Format (CEF) ondersteunen](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Na het buiten gebruik stellen kunt u geen van de typen oplossingen die in de voor gaande lijst worden vermeld, toevoegen of wijzigen, hetzij via de gebruikers interface of de API. Azure Security Center vindt geen nieuwe exemplaren van deze partner oplossingen meer.
+Na uw pensionering u geen van de oplossingstypen toevoegen of wijzigen die in de vorige lijst worden genoemd, vanuit de gebruikersinterface of de API. Azure Security Center ontdekt geen nieuwe exemplaren meer van deze partneroplossingen.
 
-Als u bestaande verbonden oplossingen hebt, raden we u aan om over te stappen op Azure Sentinel.
+Als u bestaande verbonden oplossingen hebt, raden we u aan om over te stappen naar Azure Sentinel.
 
-![Oplossingen voor Security Centers][16]
+![Oplossingen voor beveiligingscentra][16]
 
-## Beveiligings configuraties voor beveiligings beleid bewerken<a name="menu_securityconfigurations"></a>
+## <a name="edit-security-configurations-for-security-policies"></a>Beveiligingsconfiguraties voor beveiligingsbeleid bewerken<a name="menu_securityconfigurations"></a>
 
-Azure Security Center bewaakt beveiligingsconfiguraties door een set van [meer dan 150 aanbevolen regels](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) toe te passen om het besturingssysteem te beveiligen. Deze regels zijn van toepassing op firewalls, controle, wachtwoord beleid en meer. Als er wordt geconstateerd dat een computer een kwetsbare configuratie heeft, wordt er door Security Center een beveiligingsaanbeveling gegenereerd. In het [scherm beveiligings configuratie bewerken](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) kunnen klanten de standaard configuratie voor de beveiliging van besturings systemen aanpassen in Security Center.
+Azure Security Center bewaakt beveiligingsconfiguraties door een set van [meer dan 150 aanbevolen regels](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) toe te passen om het besturingssysteem te beveiligen. Deze regels hebben betrekking op firewalls, auditing, wachtwoordbeleid en meer. Als er wordt geconstateerd dat een computer een kwetsbare configuratie heeft, wordt er door Security Center een beveiligingsaanbeveling gegenereerd. Met het [beveiligingsconfiguratiescherm bewerken](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) kunnen klanten de standaardbeveiligingsconfiguratie van het besturingssysteem aanpassen in security center.
 
-Deze preview-functie is buiten gebruik gesteld. Ga als [volgt](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)te werk om de standaard waarden na afloop van de eind datum van de beveiligings configuraties te herstellen via de API of Power shell.
+We hebben deze preview-functie met pensioen laten gaan. Als u uw beveiligingsconfiguraties na de pensioendatum wilt terugzetten naar hun standaardwaarden, doet u dit via de API of Powershell met behulp van de [volgende instructies.](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)
 
-![Beveiligings configuraties bewerken][17]
+![Beveiligingsconfiguraties bewerken][17]
 
-### <a name="edit-security-configurations---the-new-experience"></a>Beveiligings configuraties bewerken: de nieuwe ervaring
+### <a name="edit-security-configurations---the-new-experience"></a>Beveiligingsconfiguraties bewerken - de nieuwe ervaring
 
-We willen Security Center in staat stellen om de [gast configuratie agent](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)te ondersteunen. Met deze update kunt u veel rijkere functies instellen, waaronder ondersteuning voor meer besturings systemen en integratie van Azure in-gast beleid voor gast configuraties. Nadat deze wijzigingen zijn ingeschakeld, hebt u ook de mogelijkheid om configuraties op schaal te beheren en ze automatisch toe te passen op nieuwe resources.
+We zijn van plan om Security Center in te schakelen om de [gastconfiguratieagent](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)te ondersteunen. Een dergelijke update maakt een veel rijkere functieset mogelijk, inclusief ondersteuning voor meer besturingssystemen en integratie van Azure-in-guest-beleid voor gastconfiguraties. Nadat deze wijzigingen zijn ingeschakeld, hebt u ook de mogelijkheid om configuraties op schaal te beheren en deze automatisch toe te passen op nieuwe bronnen.
 
-## Beveiligings-en controle dashboard voor Log Analytics-werk ruimten<a name="menu_securityomsdashboard"></a>
+## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>Beveiligings- en auditdashboard voor Log Analytics-werkruimten<a name="menu_securityomsdashboard"></a>
 
-Het dash board beveiliging en controle werd oorspronkelijk gebruikt in de OMS-Portal. In Log Analytics biedt het dash board een overzicht per werk ruimte van belang rijke beveiligings gebeurtenissen en bedreigingen, een bedreigings informatie kaart en een evaluatie van de identiteit en toegang van beveiligings gebeurtenissen die zijn opgeslagen in de werk ruimte. Het dash board is verwijderd. Zoals we al aanbevolen zijn in de gebruikers interface van het dash board, raden we u aan om over te stappen op Azure Security Center.
+Het beveiligings- en auditdashboard werd oorspronkelijk gebruikt in de OMS-portal. In Log Analytics biedt het dashboard een overzicht per werkruimte van opmerkelijke beveiligingsgebeurtenissen en -bedreigingen, een kaart met bedreigingsinformatie en een identiteits- en toegangsbeoordeling van beveiligingsgebeurtenissen die in de werkruimte zijn opgeslagen. We hebben het dashboard verwijderd. Zoals we al hebben aanbevolen in de gebruikersinterface van het dashboard, raden we u aan om over te stappen naar Azure Security Center.
 
-![Log Analytics Security-dash board][18]
+![Beveiligingsdashboard Log Analytics][18]
 
-### <a name="security-and-audit-dashboard---the-new-experience"></a>Beveiligings-en controle Dashboard: de nieuwe ervaring
+### <a name="security-and-audit-dashboard---the-new-experience"></a>Beveiligings- en auditdashboard - de nieuwe ervaring
 
-We raden u aan om over te scha kelen naar Azure Security Center. Het biedt hetzelfde beveiligings overzicht voor meerdere abonnementen en de werk ruimten die eraan zijn gekoppeld, plus een uitgebreidere functieset.
+We raden u aan over te stappen naar Azure Security Center. Het biedt hetzelfde beveiligingsoverzicht voor meerdere abonnementen en de werkruimten die eraan zijn gekoppeld, plus een uitgebreidere functieset.
 
-U kunt de oorspronkelijke Log Analytics query's ophalen die het dash board beveiliging en controle in de [github-opslag plaats](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) voor Security Center vullen.
+U de oorspronkelijke Log Analytics-query's opvragen krijgen die het beveiligings- en auditdashboard vullen in de [GitHub-opslagplaats](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) voor beveiligingscentrum.
 
 ## <a name="next-steps"></a>Volgende stappen
 

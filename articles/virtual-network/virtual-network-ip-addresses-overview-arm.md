@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245185"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
 U kunt IP-adressen toewijzen aan Azure-resources om te communiceren met andere Azure-resources, uw on-premises netwerk en internet. Er zijn twee typen IP-adressen die u in Azure kunt gebruiken:
 
-* **Openbare IP-adressen**: deze worden gebruikt voor communicatie met internet, met inbegrip van openbare Azure-services.
+* **Openbare IP-adressen:** wordt gebruikt voor communicatie met internet, inclusief azure-services die in het openbaar staan.
 * **Privé-IP-adressen**: deze worden gebruikt voor communicatie in een virtueel Azure-netwerk (VNet) en uw on-premises netwerk wanneer u een VPN-gateway of ExpressRoute-circuit gebruikt om uw netwerk uit te breiden naar Azure.
 
 U kunt ook een aaneengesloten reeks statische openbare IP-adressen maken via een openbaar IP-voorvoegsel. [Informatie over een openbaar IP-voorvoegsel.](public-ip-address-prefix.md)
@@ -75,14 +75,14 @@ Openbare IP-adressen van de standaard-SKU:
 - Gebruiken altijd de statische toewijzingsmethode.
 - Hebben een aanpasbare time-out voor inactiviteit van de stroom met inkomende gegevens van 4-30 minuten (de standaardwaarde is vier minuten), en een vaste time-out voor inactiviteit van de stroom met uitgaande gegevens van vier minuten.
 - Zijn standaard veilig en gesloten voor binnenkomend verkeer. U moet toegestaan binnenkomend verkeer met behulp van een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) expliciet opnemen in een whitelist.
-- Toegewezen aan netwerk interfaces, standaard open bare load balancers of toepassings gateways. Meer informatie over Standard load balancers vindt u in [Overzicht van Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Toegewezen aan netwerkinterfaces, standaardbeheerbalansen of toepassingsgateways. Meer informatie over Standard load balancers vindt u in [Overzicht van Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Zijn standaard zoneredundant en optioneel zonegebonden (kunnen zonegebonden en gegarandeerd worden gemaakt in een specifieke beschikbaarheidszone). Zie [Overzicht van beschikbaarheidszones in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Standard-load balancer en beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over beschikbaarheidszones.
  
 > [!NOTE]
 > Inkomende communicatie met een resource uit de Standard-SKU mislukt totdat u een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) maakt en koppelt en het gewenste binnenkomende verkeer expliciet toestaat.
 
 > [!NOTE]
-> Alleen open bare IP-adressen met de basis-SKU zijn beschikbaar wanneer IMDS wordt gebruikt voor het gebruiken van [meta gegevens service](../virtual-machines/windows/instance-metadata-service.md). De standaard-SKU wordt niet ondersteund.
+> Alleen openbare IP-adressen met basis-SKU zijn beschikbaar bij het gebruik van [instantie metadata service IMDS](../virtual-machines/windows/instance-metadata-service.md). Standaard SKU wordt niet ondersteund.
 
 ### <a name="allocation-method"></a>Toewijzingsmethode
 
@@ -106,14 +106,14 @@ Statische openbare IP-adressen worden vaak gebruikt in de volgende scenario's:
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-hostnaamomzetting
-U kunt voor een openbare IP-resource een DNS-domeinnaamlabel opgeven, zodat *domeinnaamlabel*.*locatie*. cloudapp.azure.com verwijst naar het openbare IP-adres op de door Azure beheerde DNS-servers. Als u bijvoorbeeld een openbare IP-resource maakt met **contoso** als *domeinnaamlabel* op de Azure **-locatie***VS - west*, wordt de FQDN-naam (Fully Qualified Domain Name) **contoso.westus.cloudapp.azure.com** omgezet in het openbare IP-adres van de resource.
+U kunt voor een openbare IP-resource een DNS-domeinnaamlabel opgeven, zodat *domeinnaamlabel*.*locatie*. cloudapp.azure.com verwijst naar het openbare IP-adres op de door Azure beheerde DNS-servers. Als u bijvoorbeeld een openbare IP-resource maakt met **contoso** als *domeinnaamlabel* op de Azure *-locatie***VS - west**, wordt de FQDN-naam (Fully Qualified Domain Name) **contoso.westus.cloudapp.azure.com** omgezet in het openbare IP-adres van de resource.
 
 > [!IMPORTANT]
 > Elk domeinnaamlabel dat wordt gemaakt, moet uniek zijn binnen de Azure-locatie.  
 >
 
-### <a name="dns-best-practices"></a>Aanbevolen procedures voor DNS
-Als u ooit naar een andere regio wilt migreren, kunt u de FQDN-namen van uw open bare IP-adres niet migreren. Als best practice kunt u de FQDN gebruiken om een aangepaste domein-CNAME-record te maken die verwijst naar het open bare IP-adres in Azure. Als u wilt overstappen op een ander openbaar IP-adres, moet u een update voor de CNAME-record gebruiken in plaats van de FQDN hand matig bij te werken naar de nieuwe adressen. U kunt [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) of een externe DNS-provider voor uw DNS-record gebruiken. 
+### <a name="dns-best-practices"></a>DNS-aanbevolen procedures
+Als u ooit naar een andere regio moet migreren, u de FQDN van uw openbare IP-adres niet migreren. Als aanbevolen praktijk u de FQDN gebruiken om een aangepaste domeinCNAME-record te maken die naar het openbare IP-adres in Azure wijst. Als u naar een ander openbaar IP-adres moet gaan, moet de CNAME-record worden bijgewerkt in plaats van dat u de FQDN handmatig moet bijwerken naar het nieuwe adres. U [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) of een externe DNS-provider gebruiken voor uw DNS Record. 
 
 ### <a name="virtual-machines"></a>Virtuele machines
 
@@ -129,7 +129,7 @@ Een [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fa
 
 ### <a name="application-gateways"></a>Toepassingsgateways
 
-U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end**-configuratie van de gateway. Dit openbare IP-adres doet dienst als een VIP met taakverdeling. U kunt alleen een *dynamisch* openbaar IP-adres toewijzen aan een Application Gateway v1-front-end-configuratie en alleen een *statisch* standaard-SKU-adres voor een v2 front-end-configuratie.
+U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end**-configuratie van de gateway. Dit openbare IP-adres doet dienst als een VIP met taakverdeling. U alleen een *dynamisch* openbaar IP-adres toewijzen aan een front-endconfiguratie van de toepassingsgateway V1 en alleen een *statisch* standaard SKU-adres aan een V2-front-endconfiguratie.
 
 ### <a name="at-a-glance"></a>In een oogopslag
 De volgende tabel toont de specifieke eigenschap waarmee een openbaar IP-adres kan worden gekoppeld aan een resource op het hoogste niveau, evenals de mogelijke toewijzingsmethoden (dynamisch of statisch) die kunnen worden gebruikt.
@@ -141,7 +141,7 @@ De volgende tabel toont de specifieke eigenschap waarmee een openbaar IP-adres k
 | VPN-gateway |Gateway-IP-configuratie |Ja |Nee |
 | Toepassingsgateway |Front-end-configuratie |Ja (alleen V1) |Ja (alleen V2) |
 
-## <a name="private-ip-addresses"></a>Privé IP-adressen
+## <a name="private-ip-addresses"></a>Privé-IP-adressen
 Privé-IP-adressen stellen Azure-resources in staat om via een VPN-gateway of een ExpressRoute-circuit te communiceren met andere resources in een [virtueel netwerk](virtual-networks-overview.md) of een on-premises netwerk, zonder gebruik te maken van een via internet bereikbaar IP-adres.
 
 In het Azure Resource Manager-implementatiemodel is een privé-IP-adres gekoppeld aan de volgende typen Azure-resources:
@@ -152,7 +152,7 @@ In het Azure Resource Manager-implementatiemodel is een privé-IP-adres gekoppel
 
 ### <a name="allocation-method"></a>Toewijzingsmethode
 
-Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van het virtuele netwerk waarin een resource wordt geïmplementeerd. Azure reserveert de eerste vier adressen in het adresbereik van elk subnet, zodat die adressen niet aan resources kunnen worden toegewezen. Als het adres bereik van het subnet bijvoorbeeld 10.0.0.0/16 is, kunnen de adressen 10.0.0.0-10.0.0.3 en 10.0.255.255 niet worden toegewezen aan resources. IP-adressen binnen het adresbereik van het subnet kunnen slechts aan één resource tegelijkertijd worden toegewezen. 
+Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van het virtuele netwerk waarin een resource wordt geïmplementeerd. Azure reserveert de eerste vier adressen in het adresbereik van elk subnet, zodat die adressen niet aan resources kunnen worden toegewezen. Als het adresbereik van het subnet bijvoorbeeld 10.0.0.0/16 is, kunnen adressen 10.0.0.0-10.0.0.0.3 en 10.0.255.255 niet aan resources worden toegewezen. IP-adressen binnen het adresbereik van het subnet kunnen slechts aan één resource tegelijkertijd worden toegewezen. 
 
 Er zijn twee methoden voor het toewijzen van een privé-IP-adres:
 

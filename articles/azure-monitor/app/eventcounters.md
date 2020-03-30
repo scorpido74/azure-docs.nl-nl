@@ -1,30 +1,30 @@
 ---
-title: Gebeurtenis tellers in Application Insights | Microsoft Docs
-description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Application Insights.
+title: Event tellers in Application Insights | Microsoft Documenten
+description: Monitor systeem en aangepaste .NET/.NET Core EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663586"
 ---
-# <a name="eventcounters-introduction"></a>EventCounters-Inleiding
+# <a name="eventcounters-introduction"></a>Introductie eventcounters
 
-`EventCounter` is een .NET/.NET-kern mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
+`EventCounter`is .NET/.NET Core-mechanisme voor het publiceren en consumeren van tellers of statistieken. [Dit](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document geeft `EventCounters` een overzicht van en voorbeelden over hoe ze te publiceren en te consumeren. EventCounters worden ondersteund in alle OS-platforms - Windows, Linux en macOS. Het kan worden gezien als een cross-platform equivalent voor de [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
 
-Hoewel gebruikers aangepaste `EventCounters` kunnen publiceren om aan hun behoeften te voldoen, publiceert de .NET Core 3,0-runtime standaard een set van deze prestatie meter items. Het document doorloopt de stappen die nodig zijn voor het verzamelen en weer geven van `EventCounters` (door het systeem gedefinieerde of door de gebruiker gedefinieerde) Azure-toepassing Insights.
+Hoewel gebruikers elke `EventCounters` aangepaste kunnen publiceren om aan hun behoeften te voldoen, publiceert de .NET Core 3.0 runtime standaard een set van deze tellers. Het document doorloopt de stappen die `EventCounters` nodig zijn om te verzamelen en weer te geven (systeem gedefinieerd of door de gebruiker gedefinieerd) in Azure Application Insights.
 
-## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters verzamelen met behulp van Application Insights
+## <a name="using-application-insights-to-collect-eventcounters"></a>Toepassingsinzichten gebruiken om eventcounters te verzamelen
 
-Application Insights ondersteunt het verzamelen van `EventCounters` aan de `EventCounterCollectionModule`, die deel uitmaakt van het zojuist gepubliceerde nuget-pakket [micro soft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule` wordt automatisch ingeschakeld wanneer u [AspNetCore](asp-net-core.md) of [WorkerService](worker-service.md)gebruikt. `EventCounterCollectionModule` verzamelt tellers met een niet-Configureer bare verzamelings frequentie van 60 seconden. Er zijn geen speciale machtigingen vereist voor het verzamelen van EventCounters.
+Application Insights `EventCounters` ondersteunt `EventCounterCollectionModule`het verzamelen met zijn , die deel uitmaakt van de onlangs vrijgegeven nuget pakket [Microsoft.ApplicationInsights.EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`wordt automatisch ingeschakeld wanneer u [AspNetCore](asp-net-core.md) of [WorkerService gebruikt.](worker-service.md) `EventCounterCollectionModule`verzamelt tellers met een niet-configureerbare verzamelfrequentie van 60 seconden. Er zijn geen speciale machtigingen vereist om EventCounters te verzamelen.
 
-## <a name="default-counters-collected"></a>Verzamelde standaard items
+## <a name="default-counters-collected"></a>Standaardtellers verzameld
 
-Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie meter items automatisch verzameld door de SDK. De naam van de prestatie meter items heeft de indeling ' Category | Teller ".
+Voor apps die in .NET Core 3.0 worden uitgevoerd, worden de volgende tellers automatisch verzameld door de SDK. De naam van de tellers is van het formulier "Categorie| Counter".
 
-|Categorie | Item|
+|Categorie | Prestatiemeteritem|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -51,11 +51,11 @@ Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie me
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Tellers van de categorie micro soft. AspNetCore. hosting worden alleen toegevoegd in ASP.NET Core toepassingen.
+> Tellers van categorie Microsoft.AspNetCore.Hosting worden alleen toegevoegd in ASP.NET Core Applications.
 
-## <a name="customizing-counters-to-be-collected"></a>Te verzamelen items aanpassen
+## <a name="customizing-counters-to-be-collected"></a>Tellers aanpassen die moeten worden verzameld
 
-In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze aanpassing wordt uitgevoerd in de `ConfigureServices` methode van uw toepassing nadat Application Insights telemetrie-verzameling is ingeschakeld met behulp van `AddApplicationInsightsTelemetry()` of `AddApplicationInsightsWorkerService()`. Hieronder volgt een voorbeeld code van een ASP.NET Core-toepassing. Raadpleeg [Dit](worker-service.md#configuring-or-removing-default-telemetrymodules) document voor een ander type toepassingen.
+In het volgende voorbeeld ziet u hoe u tellers toevoegt/verwijdert. Deze aanpassing zou worden `ConfigureServices` gedaan in de methode van uw toepassing `AddApplicationInsightsTelemetry()` na `AddApplicationInsightsWorkerService()`Application Insights telemetrie verzameling is ingeschakeld met behulp van een of . Hieronder volgt een voorbeeldcode van een ASP.NET Core-toepassing. Raadpleeg [dit](worker-service.md#configuring-or-removing-default-telemetrymodules) document voor andere soorten toepassingen.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -89,27 +89,27 @@ In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze
     }
 ```
 
-## <a name="event-counters-in-metric-explorer"></a>Gebeurtenis tellers in metrische Explorer
+## <a name="event-counters-in-metric-explorer"></a>Gebeurtenistellers in Metric Explorer
 
-Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder aangepaste categorie.
+Als u EventCounter-statistieken wilt weergeven in [Metric Explorer,](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)selecteert u de bron Application Insights en kiest u op logboeken gebaseerde metrische gegevens als metrische naamruimte. Vervolgens worden EventCounter-statistieken weergegeven onder Aangepaste categorie.
 
 > [!div class="mx-imgBorder"]
-> ![gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Gebeurtenistellers gerapporteerd in Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
-## <a name="event-counters-in-analytics"></a>Gebeurtenis tellers in Analytics
+## <a name="event-counters-in-analytics"></a>Gebeurtenistellers in Analytics
 
-U kunt ook rapporten over gebeurtenis tellers in [Analytics](../../azure-monitor/app/analytics.md)zoeken en weer geven in de tabel **customMetrics** .
+U ook rapporten van gebeurtenisgegevensrapporten zoeken en weergeven in [Analytics](../../azure-monitor/app/analytics.md)in de tabel **customMetrics.**
 
-Voer bijvoorbeeld de volgende query uit om te zien welke tellers worden verzameld en beschikbaar zijn voor het uitvoeren van query's:
+Voer bijvoorbeeld de volgende query uit om te zien welke tellers worden verzameld en beschikbaar zijn voor query's:
 
 ```Kusto
 customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/analytics-event-counters.png)
+> ![Gebeurtenistellers gerapporteerd in Application Insights](./media/event-counters/analytics-event-counters.png)
 
-Voer de volgende query uit om een grafiek van een specifieke teller te verkrijgen (bijvoorbeeld `ThreadPool Completed Work Item Count`) in de recente periode.
+Voer de volgende query uit om `ThreadPool Completed Work Item Count`een grafiek van een specifieke teller (bijvoorbeeld: ) in de afgelopen periode uit te voeren.
 
 ```Kusto
 customMetrics 
@@ -119,33 +119,33 @@ customMetrics
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![chatten van één item in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
+> ![Chat van één teller in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Net als bij andere telemetrie heeft **customMetrics** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
+Net als andere telemetrie heeft `cloud_RoleInstance` **customMetrics** ook een kolom die de identiteit aangeeft van het hostserverexemplaar waarop uw app wordt uitgevoerd. De bovenstaande query toont de tegenwaarde per instantie en kan worden gebruikt om de prestaties van verschillende serverexemplaren te vergelijken.
 
 ## <a name="alerts"></a>Waarschuwingen
-Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/app/alerts.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.
+Net als andere statistieken u [een waarschuwing instellen](../../azure-monitor/app/alerts.md) om u te waarschuwen als een gebeurtenisteller buiten een door u opgegeven limiet valt. Open het deelvenster Waarschuwingen en klik op Waarschuwing toevoegen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="can-i-see-eventcounters-in-live-metrics"></a>Kan ik EventCounters in Live Metrics zien?
+### <a name="can-i-see-eventcounters-in-live-metrics"></a>Kan ik EventCounters zien in Live Metrics?
 
-Met Live metrische gegevens wordt EventCounters vanaf vandaag niet weer gegeven. Gebruik metrische Explorer of Analytics om de telemetrie weer te geven.
+Live Metrics worden vanaf vandaag niet meer weergegeven in EventCounters. Gebruik Metric Explorer of Analytics om de telemetrie te bekijken.
 
-### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Op welke platformen kan ik de standaard lijst met .NET Core 3,0-tellers zien?
+### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>Welke platforms kan ik de standaardlijst van .NET Core 3.0-tellers zien?
 
-Event Counter vereist geen speciale machtigingen en wordt ondersteund in alle platformen .NET Core 3,0 wordt ondersteund. Dit omvat:
+EventCounter vereist geen speciale machtigingen en wordt ondersteund op alle platforms .NET Core 3.0 wordt ondersteund. Dit omvat:
 
-* **Besturings systeem**: Windows, Linux of macOS.
-* **Hosting methode**: in verwerking of out-of-process.
-* **Implementatie methode**: Framework-afhankelijk of zelfstandig.
-* **Webserver**: IIS (Internet Information Server) of Kestrel.
-* **Hosting platform**: de web apps functie van Azure app service, Azure VM, docker, Azure Kubernetes service (AKS), enzovoort.
+* **Besturingssysteem**: Windows, Linux of macOS.
+* **Hostingmethode**: In proces of uit proces.
+* **Implementatiemethode**: Framework afhankelijk of op zichzelf staand.
+* **Webserver**: IIS (Internet Information Server) of Torenvalk.
+* **Hostingplatform**: de Web Apps-functie van Azure App Service, Azure VM, Docker, Azure Kubernetes Service (AKS), enzovoort.
 
-### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Ik heb Application Insights ingeschakeld vanuit de Azure web app-Portal. Maar ik zie EventCounters niet.?
+### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Ik heb Application Insights ingeschakeld vanuit Azure Web App Portal. Maar ik kan eventcounters niet zien.
 
- Deze functie wordt nog niet ondersteund door de [Application Insights extensie](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) voor ASP.net core. Dit document wordt bijgewerkt wanneer deze functie wordt ondersteund.
+ [Application Insights-extensie](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) voor ASP.NET Core ondersteunt deze functie nog niet. Dit document wordt bijgewerkt wanneer deze functie wordt ondersteund.
 
-## <a name="next"></a>Volgende stappen
+## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 
-* [Afhankelijkheden bijhouden](../../azure-monitor/app/asp-net-dependencies.md)
+* [Afhankelijkheidstracking](../../azure-monitor/app/asp-net-dependencies.md)

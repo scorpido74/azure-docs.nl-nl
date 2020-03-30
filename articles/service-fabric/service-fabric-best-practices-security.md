@@ -1,39 +1,39 @@
 ---
 title: Best practices voor Azure Service Fabric-beveiliging
-description: Aanbevolen procedures en ontwerp overwegingen voor het beveiligen van Azure Service Fabric-clusters en-toepassingen.
+description: Aanbevolen procedures en ontwerpoverwegingen voor het beveiligen van Azure Service Fabric-clusters en -toepassingen.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258926"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
 
-Lees voor meer informatie over [Aanbevolen procedures voor Azure-beveiliging](https://docs.microsoft.com/azure/security/)de [Aanbevolen procedures voor Azure service Fabric Security](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
+Bekijk aanbevolen procedures voor [Azure Service Fabric-beveiliging voor](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) meer informatie over aanbevolen procedures voor Azure [Security,](https://docs.microsoft.com/azure/security/)
 
 ## <a name="key-vault"></a>Key Vault
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) is de aanbevolen Service voor het beheer van geheimen voor Azure-service Fabric toepassingen en-clusters.
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) is de aanbevolen service voor het beheer van geheimen voor Azure Service Fabric-toepassingen en -clusters.
 > [!NOTE]
-> Als certificaten/geheimen van een Key Vault worden geïmplementeerd op een Schaalset voor virtuele machines als een geheim voor virtuele-machine schaal sets, moeten de Key Vault en de virtuele-machine Schaalset op hetzelfde niveau zijn opgeslagen.
+> Als certificaten/geheimen van een Key Vault worden geïmplementeerd in een virtuele machineschaalset als een geheim van de virtuele machineschaal, moeten de key vault en de virtuele machineschaalset naast elkaar worden geplaatst.
 
-## <a name="create-certificate-authority-issued-service-fabric-certificate"></a>Een door een certificerings instantie uitgegeven Service Fabric certificaat maken
+## <a name="create-certificate-authority-issued-service-fabric-certificate"></a>Certificaatautoriteit uitgegeven Service Fabric-certificaat maken
 
-Een Azure Key Vault certificaat kan worden gemaakt of geïmporteerd in een Key Vault. Wanneer er een Key Vault certificaat wordt gemaakt, wordt de persoonlijke sleutel in de Key Vault gemaakt en nooit zichtbaar voor de eigenaar van het certificaat. U kunt op de volgende manieren een certificaat maken in Key Vault:
+Een Azure Key Vault-certificaat kan worden gemaakt of geïmporteerd in een Key Vault. Wanneer een Key Vault-certificaat wordt gemaakt, wordt de privésleutel gemaakt in de Key Vault en nooit blootgesteld aan de eigenaar van het certificaat. Dit zijn de manieren om een certificaat te maken in Key Vault:
 
-- Maak een zelfondertekend certificaat voor het maken van een combi natie van open bare en persoonlijke sleutels en koppel deze aan een certificaat. Het certificaat wordt door een eigen sleutel ondertekend. 
-- Maak hand matig een nieuw certificaat om een openbaar persoonlijk sleutel paar te maken en Genereer een X. 509-aanvraag voor certificaat ondertekening. De handtekening aanvraag kan worden ondertekend door uw registratie-instantie of certificerings instantie. Het ondertekende x509-certificaat kan worden samengevoegd met het sleutel paar in behandeling om het KV-certificaat in Key Vault te volt ooien. Hoewel deze methode meer stappen vereist, biedt dit u een betere beveiliging omdat de persoonlijke sleutel wordt gemaakt in en beperkt tot Key Vault. Dit wordt uitgelegd in het onderstaande diagram. 
+- Maak een zelfondertekend certificaat om een publiek-private sleutelpaar te maken en te koppelen aan een certificaat. Het certificaat wordt ondertekend door zijn eigen sleutel. 
+- Maak handmatig een nieuw certificaat om een sleutelpaar voor publiek-privé te maken en een x.509-certificaatondertekeningsaanvraag te genereren. De ondertekeningsaanvraag kan worden ondertekend door uw registratieautoriteit of certificeringsinstantie. Het ondertekende x509-certificaat kan worden samengevoegd met het in behandeling zijnde sleutelpaar om het KV-certificaat in Key Vault te voltooien. Hoewel deze methode meer stappen vereist, biedt het u meer beveiliging omdat de privésleutel is gemaakt en beperkt tot Key Vault. Dit wordt uitgelegd in het onderstaande diagram. 
 
-Raadpleeg de methoden voor het [maken van Azure](https://docs.microsoft.com/azure/key-vault/create-certificate) -sleutel kluis voor meer informatie.
+Controleer [methoden voor het maken van Azure Keyvault-certificaatsvoor](https://docs.microsoft.com/azure/key-vault/create-certificate) meer informatie.
 
-## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>Key Vault certificaten implementeren voor het Service Fabric van virtuele-machine schaal sets voor clusters
+## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>Key Vault-certificaten implementeren voor virtuele machineschaalsets van Service Fabric-cluster
 
-Als u certificaten van een met co-locatie bewerkings sleutel wilt implementeren in een Schaalset met virtuele machines, gebruikt u [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)van de virtuele machine Scale set. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon:
+Als u certificaten wilt implementeren van een co-locatie keyvault naar een virtuele machineschaalset, gebruikt u [OsProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)van de virtuele machineschaalset . De volgende eigenschappen van de resourcemanager-sjabloon zijn:
 
 ```json
 "secrets": [
@@ -52,12 +52,12 @@ Als u certificaten van een met co-locatie bewerkings sleutel wilt implementeren 
 ```
 
 > [!NOTE]
-> De kluis moet zijn ingeschakeld voor de implementatie van Resource Manager-sjablonen.
+> De kluis moet zijn ingeschakeld voor de implementatie van resourcebeheersjablonen.
 
-## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Een Access Control-lijst (ACL) Toep assen op uw certificaat voor uw Service Fabric cluster
+## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Een Toegangscontrolelijst (ACL) toepassen op uw certificaat voor uw cluster servicestructuur
 
-[Extensies voor virtuele-machine schaal sets](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) Publisher micro soft. Azure. ServiceFabric wordt gebruikt voor het configureren van de beveiliging van uw knoop punten.
-Als u een ACL wilt Toep assen op uw certificaten voor uw Service Fabric cluster processen, gebruikt u de volgende eigenschappen van de Resource Manager-sjabloon:
+Uitgever Microsoft.Azure.ServiceFabric [met virtuele machineschaalset-extensies](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) wordt gebruikt om de beveiliging van uw knooppunten te configureren.
+Als u een ACL wilt toepassen op uw certificaten voor uw servicestructuurclusterprocessen, gebruikt u de volgende eigenschappen van de resourcemanager-sjabloon:
 
 ```json
 "certificate": {
@@ -68,9 +68,9 @@ Als u een ACL wilt Toep assen op uw certificaten voor uw Service Fabric cluster 
 }
 ```
 
-## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Een Service Fabric cluster certificaat beveiligen op basis van algemene naam
+## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Een clustercertificaat voor servicestructuur beveiligen op algemene naam
 
-Als u uw Service Fabric-cluster op basis van certificaat `Common Name`wilt beveiligen, gebruikt u de Resource Manager-sjabloon eigenschap [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), als volgt:
+Als u uw cluster `Common Name`ServiceFabric per certificaat wilt beveiligen, gebruikt u het [eigenschappencertificaat Resourcebeheer Als](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)volgt:
 
 ```json
 "certificateCommonNames": {
@@ -85,28 +85,28 @@ Als u uw Service Fabric-cluster op basis van certificaat `Common Name`wilt bevei
 ```
 
 > [!NOTE]
-> Service Fabric clusters gebruiken het eerste geldige certificaat dat wordt gevonden in het certificaat archief van de host. In Windows is dit het certificaat met de laatste verval datum die overeenkomt met uw algemene naam en de vinger afdruk van de verlener.
+> Service fabricclusters gebruiken het eerste geldige certificaat dat wordt gevonden in het certificaatarchief van uw host. Op Windows is dit het certificaat met de laatste vervaldatum die overeenkomt met uw gemeenschappelijke naam en duimafdruk van de uitgever.
 
-Azure-domeinen, zoals *\<uw subdomein\>. cloudapp.azure.com of \<uw subdomein\>. trafficmanager.net, zijn eigendom van micro soft. Certificerings instanties geven geen certificaten voor domeinen aan niet-gemachtigde gebruikers. De meeste gebruikers moeten een domein aanschaffen bij een registratie service of een geautoriseerde domein beheerder zijn, zodat een certificerings instantie u een certificaat met deze algemene naam kan uitgeven.
+Azure-domeinen, zoals\<*\>UW SUBDOMEIN .cloudapp.azure.com of \<UW SUBDOMEIN\>.trafficmanager.net, zijn eigendom van Microsoft. Certificaatautoriteiten geven geen certificaten voor domeinen af aan onbevoegde gebruikers. De meeste gebruikers moeten een domein kopen bij een registrar of een geautoriseerde domeinbeheerder zijn, zodat een certificaatautoriteit u een certificaat met die gemeenschappelijke naam moet uitgeven.
 
-Lees voor meer informatie over het configureren van DNS-service voor het omzetten van uw domein naar een micro soft IP-adres hoe u [Azure DNS configureert om uw domein te hosten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
+Voor meer informatie over het configureren van DNS-service om uw domein op te lossen naar een Microsoft IP-adres, raadpleegt u hoe u Azure DNS configureert [om uw domein te hosten.](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)
 
 > [!NOTE]
-> Voeg de volgende twee records toe aan uw DNS-zone nadat u de domein naam servers hebt gedelegeerd naar uw Azure DNS zone naam servers:
-> - Een A-record voor domein APEX die geen `Alias record set` is voor alle IP-adressen die uw aangepaste domein zal omzetten.
-> - Een C-record voor micro soft-subdomeinen die u hebt ingericht en die geen `Alias record set`zijn. U kunt bijvoorbeeld uw Traffic Manager of de DNS-naam van Load Balancer gebruiken.
+> Nadat u de naamservers van uw domeinen hebt delegeren aan uw Azure DNS-zonenaamservers, voegt u de volgende twee records toe aan uw DNS-zone:
+> - Een 'A'-record voor domein `Alias record set` APEX die NIET een naar alle IP-adressen is, wordt uw aangepaste domein opgelost.
+> - Een 'C'-record voor Microsoft-subdomeinen die `Alias record set`u hebt ingericht en die GEEN . U bijvoorbeeld de DNS-naam van uw Traffic Manager of Load Balancer gebruiken.
 
-Als u uw portal wilt bijwerken om een aangepaste DNS-naam voor uw Service Fabric cluster `"managementEndpoint"`weer te geven, werkt u de eigenschappen van de volgende Service Fabric cluster resource manager-sjabloon bij:
+Als u uw portal wilt bijwerken om een `"managementEndpoint"`aangepaste DNS-naam voor uw cluster van servicestructuur weer te geven, werkt u de eigenschappen van de sjabloon Follow Service Fabric Cluster Resource Manager bij:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
 ```
 
-## <a name="encrypting-service-fabric-package-secret-values"></a>De geheime waarden van Service Fabric pakket worden versleuteld
+## <a name="encrypting-service-fabric-package-secret-values"></a>Geheime waarden voor versleutelingsstoffen voor fabric
 
-Veelvoorkomende waarden die zijn versleuteld in Service Fabric-pakketten zijn onder andere Azure Container Registry (ACR) referenties, omgevings variabelen, instellingen en Azure volume plugin opslag account-sleutels.
+Veelvoorkomende waarden die zijn versleuteld in Service Fabric-pakketten zijn ACR-referenties (Azure Container Registry), omgevingsvariabelen, instellingen en Azure Volume-opslagaccountsleutels voor plug-in-inhoud.
 
-Voor [het instellen van een versleutelings certificaat en het versleutelen van geheimen op Windows-clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows):
+Ga [als u een versleutelingscertificaat instelt en geheimen versleutelt op Windows-clusters:](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows)
 
 Een zelfondertekend certificaat genereren voor het versleutelen van uw geheim:
 
@@ -114,26 +114,26 @@ Een zelfondertekend certificaat genereren voor het versleutelen van uw geheim:
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
 ```
 
-Gebruik de instructies in [Deploy Key Vault Certificates to service Fabric Scale sets van virtuele cluster machines](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) om Key Vault certificaten te implementeren op de Virtual Machine Scale sets van uw service Fabric-cluster.
+Gebruik de instructies in [De virtuele machineschaalsets van De Sleutelkluis implementeren voor servicefabriccluster](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) om Key Vault-certificaten te implementeren in de virtuele machineschaalsets van uw Service Fabric-cluster.
 
-Versleutel uw geheim met behulp van de volgende Power shell-opdracht en werk vervolgens uw Service Fabric toepassings manifest bij met de versleutelde waarde:
+Versleutel uw geheim met de volgende PowerShell-opdracht en werk vervolgens het manifest van uw Service Fabric-toepassing bij met de gecodeerde waarde:
 
 ``` powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-Voor [het instellen van een versleutelings certificaat en het versleutelen van geheimen op Linux-clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux):
+Een [versleutelingscertificaat instellen en geheimen versleutelen op Linux-clusters:](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux)
 
-Een zelfondertekend certificaat genereren voor het versleutelen van uw geheimen:
+Genereer een zelfondertekend certificaat voor het versleutelen van uw geheimen:
 
 ```bash
 user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
 user@linux:~$ cat TestCert.prv >> TestCert.pem
 ```
 
-Gebruik de instructies in [Deploy Key Vault Certificates to service Fabric Scale sets van virtuele cluster machines](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) naar de Virtual Machine Scale sets van uw service Fabric-cluster.
+Gebruik de instructies in [De sleutelkluiscertificaten implementeren voor virtuele machineschaalsets van het cluster Fabric](#deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets) voor servicefabric voor de virtuele machineschaalsets van uw Service Fabric-cluster.
 
-Versleutel uw geheim met de volgende opdrachten en werk vervolgens uw Service Fabric toepassings manifest bij met de versleutelde waarde:
+Versleutel uw geheim met behulp van de volgende opdrachten en werk vervolgens het Service Fabric Application Manifest bij met de gecodeerde waarde:
 
 ```bash
 user@linux:$ echo "Hello World!" > plaintext.txt
@@ -141,11 +141,11 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-Nadat u uw beveiligde waarden hebt versleuteld, [geeft u versleutelde geheimen op in service Fabric toepassing](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)en ontsleutelt u [versleutelde geheimen van service code](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
+Nadat u uw beveiligde waarden hebt versleuteld, [geeft u versleutelde geheimen op in servicefabric-toepassing](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)en [ontsleutelt u versleutelde geheimen van servicecode.](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)
 
-## <a name="include-certificate-in-service-fabric-applications"></a>Certificaat in Service Fabric toepassingen toevoegen
+## <a name="include-certificate-in-service-fabric-applications"></a>Certificaat opnemen in Service Fabric-toepassingen
 
-Als u uw toepassing toegang wilt geven tot geheimen, neemt u het certificaat op door een **SecretsCertificate** -element toe te voegen aan het toepassings manifest.
+Om uw toepassing toegang te geven tot geheimen, neemt u het certificaat op door een **SecretsCertificate-element** toe te voegen aan het toepassingsmanifest.
 
 ```xml
 <ApplicationManifest … >
@@ -155,23 +155,23 @@ Als u uw toepassing toegang wilt geven tot geheimen, neemt u het certificaat op 
   </Certificates>
 </ApplicationManifest>
 ```
-## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric toepassingen verifiëren voor Azure-resources met behulp van Managed Service Identity (MSI)
+## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Servicefabric-toepassingen verifiëren voor Azure Resources met behulp van Managed Service Identity (MSI)
 
-Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)voor meer informatie over beheerde identiteiten voor Azure-resources.
-Azure Service Fabric-clusters worden gehost op Virtual Machine Scale Sets, die [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)ondersteunen.
-Zie [Azure-Services die ondersteuning bieden voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)voor een lijst met services die door MSI kunnen worden gebruikt voor verificatie.
+Zie [Wat zijn beheerde identiteiten voor Azure-resources voor](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)meer informatie over beheerde identiteiten voor Azure-resources?
+Azure Service Fabric-clusters worden gehost op virtuele machineschaalsets, die [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)ondersteunen.
+Zie Azure Services die Azure Active Directory Authentication [ondersteunen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)als u een lijst met services wilt krijgen waarmee MSI kan worden geverifieerd.
 
 
-Als u aan het systeem toegewezen beheerde identiteit wilt inschakelen tijdens het maken van een schaalset voor virtuele machines of een bestaande schaalset voor virtuele machines, declareert u de volgende `"Microsoft.Compute/virtualMachinesScaleSets"` eigenschap:
+Als u de beheerde identiteit van het systeem wilt inschakelen tijdens het maken `"Microsoft.Compute/virtualMachinesScaleSets"` van een schaalset voor virtuele machines of een bestaande schaalset voor virtuele machines, geeft u de volgende eigenschap aan:
 
 ```json
 "identity": { 
     "type": "SystemAssigned"
 }
 ```
-Zie [Wat zijn beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) voor meer informatie.
+Zie [Wat is beheerde identiteiten voor Azure-bronnen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity)
 
-Als u een door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hebt gemaakt, declareert u de volgende resource in uw sjabloon om deze toe te wijzen aan de schaalset van de virtuele machine. Vervang `\<USERASSIGNEDIDENTITYNAME\>` door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
+Als u een [door de gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hebt gemaakt, verklaart u de volgende bron in uw sjabloon om deze toe te wijzen aan uw virtuele machineschaalset. Vervang `\<USERASSIGNEDIDENTITYNAME\>` de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
 
 ```json
 "identity": {
@@ -182,8 +182,8 @@ Als u een door de [gebruiker toegewezen beheerde identiteit](https://docs.micros
 }
 ```
 
-Voordat uw Service Fabric-toepassing gebruik kan maken van een beheerde identiteit, moeten er machtigingen worden verleend aan de Azure-resources die moeten worden geverifieerd bij.
-Met de volgende opdrachten wordt toegang verleend aan een Azure-resource:
+Voordat uw Service Fabric-toepassing gebruik kan maken van een beheerde identiteit, moeten machtigingen worden verleend aan de Azure Resources waarmee deze moet worden geverifieerd.
+Met de volgende opdrachten wordt toegang tot een Azure-bron toegekend:
 
 ```bash
 principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGroups/<YOUR RG>/providers/Microsoft.Compute/virtualMachineScaleSets/<YOUR SCALE SET> --api-version 2018-06-01 | python -c "import sys, json; print(json.load(sys.stdin)['identity']['principalId'])")
@@ -191,37 +191,37 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-In uw Service Fabric-toepassings code [kunt u een toegangs token](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) voor Azure Resource Manager verkrijgen door het volgende te doen:
+Verkrijg in uw Service Fabric-toepassingscode [een toegangstoken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) voor Azure Resource Manager door een REST te maken die allemaal vergelijkbaar is met het volgende:
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
 
 ```
 
-Uw Service Fabric-app kan vervolgens het toegangs token gebruiken om te verifiëren bij Azure-resources die Active Directory ondersteunen.
-In het volgende voor beeld ziet u hoe u dit kunt doen voor Cosmos DB resource:
+Uw Service Fabric-app kan vervolgens het toegangstoken gebruiken om te verifiëren naar Azure Resources die Active Directory ondersteunen.
+In het volgende voorbeeld ziet u hoe u dit doet voor Cosmos DB-bron:
 
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
-## <a name="windows-security-baselines"></a>Windows-beveiligings basislijnen
-[U wordt aangeraden een industrie standaard configuratie te implementeren die algemeen bekend en goed getest is, zoals micro soft-beveiligings basislijnen, in tegens telling tot het maken van een basis lijn](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines). een optie voor het inrichten van deze op uw Virtual Machine Scale Sets is het gebruik van de extensie-handler voor Azure desired state Configuration (DSC) om de virtuele machines te configureren zodra deze online zijn, zodat ze de productie software uitvoeren.
+## <a name="windows-security-baselines"></a>Windows-beveiligingsbasislijnen
+[We raden u aan een branchestandaardconfiguratie te implementeren die algemeen bekend en goed is getest, zoals microsoft-beveiligingsbasislijnen, in plaats van zelf een basislijn te maken;](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) een optie voor het inrichten van deze op uw Virtuele Machine Schaal sets is het gebruik van Azure Desired State Configuration (DSC) extensie handler, om de VM's te configureren als ze online komen, zodat ze de productiesoftware draaien.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Azure firewall is een beheerde, Cloud service voor netwerk beveiliging die uw Azure Virtual Network-Resources beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid in de Cloud.](https://docs.microsoft.com/azure/firewall/overview) Hierdoor kan uitgaande HTTP/S-verkeer worden beperkt tot een opgegeven lijst met FQDN-namen (FULLy Qualified Domain names), inclusief joker tekens. Deze functie vereist geen SSL-beëindiging. Het is raadzaam om [Azure firewall FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) te gebruiken voor Windows-updates en om netwerk verkeer in te scha kelen naar micro soft Windows Update-eind punten door uw firewall kunnen stromen. [Azure firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voor beeld van de definitie van de resource sjabloon micro soft. Network/azureFirewalls. Firewall regels die gemeen schappelijk zijn voor Service Fabric toepassingen, zijn het volgende toe te staan voor uw clusters virtueel netwerk:
+[Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-bronnen beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte schaalbaarheid van de cloud.](https://docs.microsoft.com/azure/firewall/overview); Dit maakt de mogelijkheid om uitgaand HTTP/S-verkeer te beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN) inclusief wild cards. Deze functie vereist geen SSL-beëindiging. Het wordt aanbevolen om [Azure Firewall FQDN-tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) voor Windows-updates te gebruiken en om netwerkverkeer naar Microsoft Windows Update-eindpunten in te schakelen, door uw firewall te stromen. [Azure Firewall implementeren met behulp van een sjabloon](https://docs.microsoft.com/azure/firewall/deploy-template) biedt een voorbeeld voor microsoft.Network/azureFirewalls resource template definition. Firewallregels die gemeenschappelijk zijn voor Service Fabric-toepassingen, is om het volgende toe te staan voor uw virtuele clustersnetwerk:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
 - *.core.windows.net
 
-Deze firewall regels vormen een aanvulling op uw toegestane uitgaande netwerk beveiligings groepen, waaronder ServiceFabric en opslag, zoals toegestane bestemmingen van uw virtuele netwerk.
+Deze firewallregels vormen een aanvulling op uw toegestane uitgaande netwerkbeveiligingsgroepen, waaronder ServiceFabric en Storage, zoals toegestaan bestemmingen van uw virtuele netwerk.
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+[Tsg](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Windows Defender anti virus is standaard geïnstalleerd op Windows Server 2016. Zie [Windows Defender anti virus op Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)voor meer informatie. De gebruikersinterface wordt standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Als u de prestaties en de overhead van het Resource verbruik die worden gemaakt door Windows Defender wilt verminderen, en als u met uw beveiligings beleid processen en paden voor open-source software wilt uitsluiten, declareert u de volgende uitbreidings resource voor de virtuele-machine schaal sets Eigenschappen van Manager-sjabloon om uw Service Fabric cluster uit te sluiten van scans:
+Standaard is Windows Defender-antivirus geïnstalleerd op Windows Server 2016. Zie Windows [Defender Antivirus op Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)voor meer informatie. De gebruikersinterface wordt standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Als u processen en paden voor opensourcesoftware wilt uitsluiten als u de impact op prestaties en het verbruik van resources door Windows Defender wilt verminderen en als u met uw beveiligingsbeleid processen en paden voor opensourcesoftware uitsluiten, geeft u de volgende extensiebron voor de bestandsgrootte van virtuele machines aan Beheer sjablooneigenschappen om uw cluster van Servicefabric uit te sluiten van scans:
 
 
 ```json
@@ -251,10 +251,10 @@ Windows Defender anti virus is standaard geïnstalleerd op Windows Server 2016. 
 ```
 
 > [!NOTE]
-> Raadpleeg de documentatie van uw anti-malware voor configuratie regels als u geen gebruik maakt van Windows Defender. Windows Defender wordt niet ondersteund in Linux.
+> Raadpleeg uw antimalwaredocumentatie voor configuratieregels als u Geen Windows Defender gebruikt. Windows Defender wordt niet ondersteund op Linux.
 
 ## <a name="platform-isolation"></a>Platform isolatie
-Service Fabric-toepassingen krijgen standaard toegang tot de Service Fabric runtime zelf, die zich in verschillende vormen bevindt: [omgevings variabelen](service-fabric-environment-variables-reference.md) die verwijzen naar bestands paden op de host die overeenkomt met toepassings-en infrastructuur bestanden, een interproces communicatie-eind punt dat toepassingsspecifieke aanvragen accepteert, en het client certificaat dat door de toepassing wordt gebruikt om zichzelf te verifiëren. Als de service zichzelf niet-vertrouwde code host, is het raadzaam om deze toegang uit te scha kelen naar de SF-runtime, tenzij dit expliciet nodig is. Toegang tot de runtime wordt verwijderd met behulp van de volgende verklaring in de sectie beleid van het toepassings manifest: 
+Standaard krijgen Service Fabric-toepassingen toegang tot de Runtime van De Service Fabric zelf, die zich in verschillende vormen manifesteert: [omgevingsvariabelen](service-fabric-environment-variables-reference.md) die verwijzen naar bestandspaden op de host die overeenkomen met toepassings- en fabricbestanden, een communicatieeindpunt tussen processen dat toepassingsspecifieke aanvragen accepteert, en het clientcertificaat waarvan Fabric verwacht dat de toepassing wordt gebruikt om zichzelf te verifiëren. In het geval dat de service zichzelf niet-vertrouwde code host, is het raadzaam om deze toegang tot de SF-runtime uit te schakelen - tenzij dit uitdrukkelijk nodig is. De toegang tot de runtime wordt verwijderd met de volgende verklaring in de sectie Beleid van het toepassingsmanifest: 
 
 ```xml
 <ServiceManifestImport>
@@ -267,8 +267,8 @@ Service Fabric-toepassingen krijgen standaard toegang tot de Service Fabric runt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een cluster maken op Vm's of computers waarop Windows Server wordt uitgevoerd: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md).
-* Een cluster maken op Vm's of computers waarop Linux wordt uitgevoerd: [een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md).
-* Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
+* Maak een cluster op VM's of computers met Windows Server: [Service Fabric-clustercreatie voor Windows Server.](service-fabric-cluster-creation-for-windows-server.md)
+* Een cluster maken op VM's of computers met Linux: [een Linux-cluster maken.](service-fabric-cluster-creation-via-portal.md)
+* Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

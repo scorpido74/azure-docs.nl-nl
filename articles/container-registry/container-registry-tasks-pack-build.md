@@ -1,40 +1,40 @@
 ---
-title: Installatie kopie bouwen met native Buildpack in de Cloud
-description: Gebruik de opdracht AZ ACR Pack build om een container installatie kopie te bouwen vanuit een app en naar Azure Container Registry te pushen, zonder een Dockerfile te gebruiken.
+title: Afbeelding maken met Cloud Native Buildpack
+description: Gebruik de opdracht az acr pack build om een containerafbeelding vanuit een app te bouwen en naar Azure Container Registry te pushen, zonder een Dockerfile te gebruiken.
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087082"
 ---
-# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Een installatie kopie bouwen en pushen vanuit een app met behulp van een native Buildpack in de Cloud
+# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Een afbeelding vanuit een app maken en pushen met een Cloud Native Buildpack
 
-De Azure CLI-opdracht `az acr pack build` maakt gebruik van het [`pack`](https://github.com/buildpack/pack) cli-hulp programma, van [Buildpacks](https://buildpacks.io/), voor het bouwen van een app en het pushen van de installatie kopie naar een Azure container Registry. Deze functie biedt een optie om snel een container installatie kopie te bouwen op basis van de bron code van uw toepassing in node. js, Java en andere talen, zonder dat u een Dockerfile hoeft te definiëren.
+De opdracht `az acr pack build` Azure [`pack`](https://github.com/buildpack/pack) CLI maakt gebruik van het GEREEDSCHAP CLI, van [Buildpacks,](https://buildpacks.io/)om een app te bouwen en de afbeelding in een Azure-containerregister te duwen. Deze functie biedt een optie om snel een containerafbeelding te bouwen op basis van de broncode van uw toepassing in Node.js, Java en andere talen zonder dat u een Dockerfile hoeft te definiëren.
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de voor beelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.70 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+U de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.70 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
-## <a name="use-the-build-command"></a>De opdracht build gebruiken
+## <a name="use-the-build-command"></a>De opdracht Bouwen gebruiken
 
-Voer de opdracht [AZ ACR Pack build][az-acr-pack-build] uit om een container installatie kopie te bouwen en te pushen met behulp van de native Buildpacks van de Cloud. Terwijl de opdracht [AZ ACR build][az-acr-build] een installatie kopie van een Dockerfile-bron en gerelateerde code bouwt en pusht, met `az acr pack build` u rechtstreeks een toepassings bron structuur opgeeft.
+Voer de opdracht [az acr pack build uit][az-acr-pack-build] om een containerafbeelding te maken en te pushen met Cloud Native Buildpacks. Terwijl de [az acr build-opdracht][az-acr-build] een afbeelding van een Dockerfile-bron en gerelateerde code bouwt en pusht, geef `az acr pack build` je direct een toepassingsbronstructuur op.
 
-Geef ten minste het volgende op wanneer u `az acr pack build`uitvoert:
+Geef ten minste het volgende `az acr pack build`op wanneer u uitvoert:
 
-* Een Azure container Registry waarin u de opdracht uitvoert
-* Een afbeeldings naam en-label voor de resulterende afbeelding
-* Een van de [ondersteunde context locaties](container-registry-tasks-overview.md#context-locations) voor ACR-taken, zoals een lokale map, een github opslag plaats of een externe tarball
-* De naam van een Buildpack Builder-installatie kopie die geschikt is voor uw toepassing. Met Azure Container Registry worden installatie kopieën van de opbouw functie in de cache opgeslagen, zoals `cloudfoundry/cnb:0.0.34-cflinuxfs3` voor snellere builds.  
+* Een Azure-containerregister waarbij u de opdracht uitvoert
+* Een afbeeldingsnaam en -tag voor de resulterende afbeelding
+* Een van de [ondersteunde contextlocaties](container-registry-tasks-overview.md#context-locations) voor ACR-taken, zoals een lokale map, een GitHub-repo of een externe tarball
+* De naam van een Buildpack builder afbeelding geschikt voor uw toepassing. Azure Container Registry caches `cloudfoundry/cnb:0.0.34-cflinuxfs3` builder images zoals for faster builds.  
 
-`az acr pack build` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-logs.md) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
+`az acr pack build`ondersteunt andere functies van ACR-takenopdrachten, waaronder [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taakbeheerlogboeken](container-registry-tasks-logs.md) die worden gestreamd en ook worden opgeslagen voor later ophalen.
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Voor beeld: node. js-installatie kopie bouwen met Cloud Foundry Builder
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Voorbeeld: Afbeelding van Node.js bouwen met cloudfoundry-bouwer
 
-In het volgende voor beeld wordt een container installatie kopie samengesteld uit een node. js-app in de [Azure-samples/nodejs-docs-Hello-World-](https://github.com/Azure-Samples/nodejs-docs-hello-world) opslag plaats met behulp van de `cloudfoundry/cnb:0.0.34-cflinuxfs3` Builder. Deze opbouw functie wordt opgeslagen in de cache van Azure Container Registry. Daarom is een `--pull`-para meter niet vereist:
+In het volgende voorbeeld wordt een containerafbeelding gemaakt vanuit een Node.js-app in de [repo Azure-Samples/nodejs-docs-hello-world,](https://github.com/Azure-Samples/nodejs-docs-hello-world) met behulp van de `cloudfoundry/cnb:0.0.34-cflinuxfs3` bouwer. Deze bouwer wordt in de cache `--pull` opgeslagen door Azure Container Registry, dus een parameter is niet vereist:
 
 ```azurecli
 az acr pack build \
@@ -44,27 +44,27 @@ az acr pack build \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-In dit voor beeld wordt de `node-app` installatie kopie gebouwd met de `1.0` tag en naar het container register van de *myregistry* gepusht. In dit voor beeld wordt de naam van het doel register expliciet voor de naam van de installatie kopie geplaatst. Als u niets opgeeft, wordt de naam van de aanmeldings server van het REGI ster automatisch voor de naam van de installatie kopie geplaatst.
+In dit `node-app` voorbeeld wordt `1.0` de afbeelding met de tag gemaakt en wordt deze naar het *containerregister van myregistry* gepusht. In dit voorbeeld wordt de naam van het doelregister expliciet voorbereid op de afbeeldingsnaam. Als dit niet is opgegeven, wordt de naam van de registerlogserver automatisch voorbereid op de naam van de afbeelding.
 
-De opdracht uitvoer toont de voortgang van het bouwen en pushen van de installatie kopie. 
+Opdrachtuitvoer toont de voortgang van het bouwen en pushen van de afbeelding. 
 
-Nadat de installatie kopie is gemaakt, kunt u deze uitvoeren met docker, als u deze hebt geïnstalleerd. Meld u eerst aan bij uw REGI ster:
+Nadat de afbeelding is gebouwd, u deze uitvoeren met Docker, als u deze hebt geïnstalleerd. Eerste teken in uw register:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Voer de installatie kopie uit:
+Voer de afbeelding uit:
 
 ```console
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-Blader naar `localhost:1337` in uw favoriete browser om de voor beeld-web-app te bekijken. Druk op `[Ctrl]+[C]` om de container te stoppen.
+Blader `localhost:1337` naar in uw favoriete browser om de voorbeeldweb-app te bekijken. Druk `[Ctrl]+[C]` om de container te stoppen.
 
-## <a name="example-build-java-image-with-heroku-builder"></a>Voor beeld: een Java-installatie kopie bouwen met heroku Builder
+## <a name="example-build-java-image-with-heroku-builder"></a>Voorbeeld: Java-afbeelding bouwen met Heroku-bouwer
 
-In het volgende voor beeld wordt een container installatie kopie samengesteld uit de Java-app in de [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) opslag plaats met behulp van de `heroku/buildpacks:18` Builder. De para meter `--pull` geeft aan dat de opdracht de nieuwste installatie kopie van de opbouw functie moet ophalen. 
+In het volgende voorbeeld wordt een containerafbeelding gemaakt vanuit de Java-app in `heroku/buildpacks:18` de [repo buildpack/sample-java-app,](https://github.com/buildpack/sample-java-app) met behulp van de bouwer. De `--pull` parameter geeft aan dat de opdracht de nieuwste builderafbeelding moet trekken. 
 
 ```azurecli
 az acr pack build \
@@ -74,30 +74,30 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-In dit voor beeld wordt de `java-app` afbeelding met de run-ID van de opdracht samengesteld en naar het container register van de *myregistry* gepusht.
+In dit `java-app` voorbeeld wordt de afbeelding gemaakt die is getagd met de run-ID van de opdracht en wordt deze naar het *containerregister van myregistry* gepusht.
 
-De opdracht uitvoer toont de voortgang van het bouwen en pushen van de installatie kopie. 
+Opdrachtuitvoer toont de voortgang van het bouwen en pushen van de afbeelding. 
 
-Nadat de installatie kopie is gemaakt, kunt u deze uitvoeren met docker, als u deze hebt geïnstalleerd. Meld u eerst aan bij uw REGI ster:
+Nadat de afbeelding is gebouwd, u deze uitvoeren met Docker, als u deze hebt geïnstalleerd. Eerste teken in uw register:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-Voer de installatie kopie uit en vervang uw afbeeldings code voor *runid*:
+Voer de afbeelding uit en vervang uw afbeeldingstag door *runid:*
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-Blader naar `localhost:8080` in uw favoriete browser om de voor beeld-web-app te bekijken. Druk op `[Ctrl]+[C]` om de container te stoppen.
+Blader `localhost:8080` naar in uw favoriete browser om de voorbeeldweb-app te bekijken. Druk `[Ctrl]+[C]` om de container te stoppen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een container installatie kopie met `az acr pack build`hebt gemaakt en gepusht, kunt u deze als een wille keurige installatie kopie implementeren naar een doel van uw keuze. Azure-implementatie opties zijn onder andere uitvoeren in [app service](../app-service/containers/tutorial-custom-docker-image.md) of [Azure Kubernetes service](../aks/tutorial-kubernetes-deploy-cluster.md), onder andere.
+Nadat u een containerafbeelding `az acr pack build`hebt gemaakt en met, u deze als elke afbeelding implementeren voor een doel naar keuze. Azure-implementatieopties omvatten het uitvoeren ervan in onder andere [App Service](../app-service/containers/tutorial-custom-docker-image.md) of Azure [Kubernetes Service.](../aks/tutorial-kubernetes-deploy-cluster.md)
 
-Zie [builds van container installatie kopieën automatiseren en onderhoud uitvoeren met ACR-taken](container-registry-tasks-overview.md)voor meer informatie over functies van ACR-taken.
+Zie Het bouwen en onderhouden [van containerafbeeldingen automatiseren met ACR-taken](container-registry-tasks-overview.md)voor meer informatie over acr-taken.
 
 
 <!-- LINKS - External -->

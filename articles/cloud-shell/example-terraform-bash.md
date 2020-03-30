@@ -1,6 +1,6 @@
 ---
-title: Implementeren met terraform vanuit Azure Cloud Shell | Microsoft Docs
-description: Implementeren met terraform vanuit Azure Cloud Shell
+title: Implementeren met Terraform vanuit Azure Cloud Shell | Microsoft Documenten
+description: Implementeren met Terraform vanuit Azure Cloud Shell
 services: Azure
 documentationcenter: ''
 author: tomarchermsft
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: f5939251729905d349b79a94411cf87e3873b279
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458151"
 ---
-# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Implementeren met terraform vanuit bash in Azure Cloud Shell
-Dit artikel helpt u bij het maken van een resource groep met de [terraform AzureRM-provider](https://www.terraform.io/docs/providers/azurerm/index.html). 
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Implementeren met Terraform van Bash in Azure Cloud Shell
+In dit artikel u een brongroep maken met de [Terraform AzureRM-provider.](https://www.terraform.io/docs/providers/azurerm/index.html)
 
-[Hashicorp terraform](https://www.terraform.io/) is een open source-hulp programma dat api's in declaratieve configuratie bestanden die kunnen worden gedeeld door team leden kan worden bewerkt, gecontroleerd en geversied. De provider van micro soft AzureRM wordt gebruikt om te communiceren met bronnen die door Azure Resource Manager worden ondersteund via de AzureRM-Api's. 
+[Hashicorp Terraform](https://www.terraform.io/) is een open source tool die API's codificert in declaratieve configuratiebestanden die kunnen worden gedeeld tussen teamleden die moeten worden bewerkt, beoordeeld en geversioneerd. De Microsoft AzureRM-provider wordt gebruikt om te communiceren met resources die worden ondersteund door Azure Resource Manager via de AzureRM-API's.
 
 ## <a name="automatic-authentication"></a>Automatische verificatie
-Terraform is standaard geïnstalleerd in bash in Cloud Shell. Daarnaast verifieert Cloud Shell automatisch uw standaard Azure CLI-abonnement om resources te implementeren via de terraform Azure-modules.
+Terraform is standaard geïnstalleerd in Bash in Cloud Shell. Bovendien verifieert Cloud Shell automatisch uw standaard Azure CLI-abonnement om resources te implementeren via de Terraform Azure-modules.
 
-Terraform maakt gebruik van het standaard Azure CLI-abonnement dat is ingesteld. Voer de volgende handelingen uit om de standaard abonnementen bij te werken:
+Terraform maakt gebruik van het standaard Azure CLI-abonnement dat is ingesteld. Voer het als instellen voor het bijwerken van standaardabonnementen uit:
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
 ```
 
-## <a name="walkthrough"></a>Walkthrough
+## <a name="walkthrough"></a>Kennismaking
 ### <a name="launch-bash-in-cloud-shell"></a>Bash starten in Cloud Shell
-1. Start Cloud Shell vanaf uw voorkeurs locatie
-2. Controleren of uw voorkeurs abonnement is ingesteld
+1. Cloud Shell starten vanaf uw gewenste locatie
+2. Controleren of uw voorkeursabonnement is ingesteld
 
 ```azurecli-interactive
 az account show
 ```
 
-### <a name="create-a-terraform-template"></a>Een terraform-sjabloon maken
-Maak een nieuwe terraform-sjabloon met de naam main.tf met de gewenste tekst editor.
+### <a name="create-a-terraform-template"></a>Een sjabloon Terraform maken
+Maak een nieuwe Terraform-sjabloon met de naam main.tf met de gewenste teksteditor.
 
 ```
 vim main.tf
 ```
 
-Kopieer/Plak de volgende code in Cloud Shell.
+Kopieer/plak de volgende code in Cloud Shell.
 
 ```
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-Sla het bestand op en sluit de tekst editor.
+Sla uw bestand op en sluit uw teksteditor af.
 
 ### <a name="terraform-init"></a>Terraform init
-Begin door uit `terraform init`te voeren.
+Begin met `terraform init`het uitvoeren van .
 
 ```
 justin@Azure:~$ terraform init
@@ -90,10 +90,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-De [opdracht terraform init](https://www.terraform.io/docs/commands/init.html) wordt gebruikt voor het initialiseren van een werkmap met terraform-configuratie bestanden. De `terraform init` opdracht is de eerste opdracht die moet worden uitgevoerd na het schrijven van een nieuwe terraform-configuratie of het klonen van een bestaande-versie beheer. Het is veilig om deze opdracht meerdere keren uit te voeren.
+De [opdracht terraform init](https://www.terraform.io/docs/commands/init.html) wordt gebruikt om een werkmap met Terraform-configuratiebestanden te initialiseren. De `terraform init` opdracht is de eerste opdracht die moet worden uitgevoerd na het schrijven van een nieuwe Terraform-configuratie of het klonen van een bestaande opdracht van versiebeheer. Het is veilig om deze opdracht meerdere keren uit te voeren.
 
 ### <a name="terraform-plan"></a>Terraform plan
-Bekijk een voor beeld van de resources die moeten worden gemaakt `terraform plan`door de terraform-sjabloon met.
+Bekijk een voorbeeld van de bronnen `terraform plan`die moeten worden gemaakt door de sjabloon Terraform met .
 
 ```
 justin@Azure:~$ terraform plan
@@ -126,10 +126,10 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-De opdracht [terraform plan](https://www.terraform.io/docs/commands/plan.html) wordt gebruikt om een uitvoeringsplan te maken. Terraform voert een vernieuwing uit, tenzij expliciet is uitgeschakeld, en vervolgens bepaalt u welke acties nodig zijn om de gewenste status te krijgen die is opgegeven in de configuratie bestanden. Het plan kan worden opgeslagen met behulp van en wordt vervolgens terraform toegepast om ervoor te zorgen dat alleen de vooraf geplande acties worden uitgevoerd.
+De opdracht [terraform plan](https://www.terraform.io/docs/commands/plan.html) wordt gebruikt om een uitvoeringsplan te maken. Terraform voert een vernieuwing uit, tenzij expliciet uitgeschakeld, en bepaalt vervolgens welke acties nodig zijn om de gewenste status te bereiken die is opgegeven in de configuratiebestanden. Het plan kan worden opgeslagen met -uit en vervolgens worden verstrekt aan terraform toe te passen om ervoor te zorgen dat alleen de vooraf geplande acties worden uitgevoerd.
 
 ### <a name="terraform-apply"></a>Terraform apply
-Richt de Azure-resources `terraform apply`in met.
+Informeer de `terraform apply`Azure-resources in met .
 
 ```
 justin@Azure:~$ terraform apply
@@ -144,15 +144,15 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 De [opdracht terraform apply](https://www.terraform.io/docs/commands/apply.html) wordt gebruikt om de wijzigingen toe te passen die nodig zijn om de gewenste status van de configuratie te bereiken.
 
-### <a name="verify-deployment-with-azure-cli"></a>Implementatie controleren met Azure CLI
-Uitvoeren `az group show -n myRgName` om te controleren of de resource is ingericht.
+### <a name="verify-deployment-with-azure-cli"></a>Implementatie verifiëren met Azure CLI
+Uitvoeren `az group show -n myRgName` om te controleren of de resource is geslaagd voor het inrichten.
 
-```azcliinteractive
+```azurecli-interactive
 az group show -n myRgName
 ```
 
-### <a name="clean-up-with-terraform-destroy"></a>Opschonen met terraform vernietigen
-Opschonen van de resource groep die is gemaakt met de [opdracht terraform Destroy](https://www.terraform.io/docs/commands/destroy.html) om een terraform-gemaakte infra structuur op te schonen.
+### <a name="clean-up-with-terraform-destroy"></a>Opruimen met terraform te vernietigen
+Ruim de resourcegroep op die is gemaakt met het [opdracht Terraform destroy](https://www.terraform.io/docs/commands/destroy.html) om terraform-infrastructuur op te ruimen.
 
 ```
 justin@Azure:~$ terraform destroy
@@ -185,8 +185,8 @@ azurerm_resource_group.demo: Destruction complete after 45s
 Destroy complete! Resources: 1 destroyed.
 ```
 
-U hebt een Azure-resource gemaakt via terraform. Ga naar volgende stappen om over Cloud Shell te blijven leren.
+U hebt een Azure-bron gemaakt via Terraform. Ga naar de volgende stappen om verder te leren over Cloud Shell.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over de terraform Azure-provider](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[Bash in Cloud Shell Quick Start](quickstart.md)
+[Meer informatie over de Terraform Azure-provider](https://www.terraform.io/docs/providers/azurerm/#)<br>
+[Bash in Cloud Shell snelaan de start](quickstart.md)

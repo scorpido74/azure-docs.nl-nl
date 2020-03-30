@@ -9,23 +9,23 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79199639"
 ---
 ### <a name="create-a-console-application"></a>Een consoletoepassing maken
 
 Als u de optie 'Vereist clientautorisatie' hebt uitgeschakeld tijdens het maken van de relay, kunt u met elke browser aanvragen verzenden naar de URL van de hybride verbindingen. Voor toegang tot beveiligde eindpunten moet u een token maken en doorgeven in de header `ServiceBusAuthorization`, die hier wordt weergegeven.
 
-Maak in Visual Studio een nieuw **Console-app (.NET Framework)** -project.
+Maak in Visual Studio een nieuw **Console-app (.NET Framework)**-project.
 
 ### <a name="add-the-relay-nuget-package"></a>Het pakket Relay NuGet toevoegen
 
 1. Klik met de rechtermuisknop op het nieuwe project en selecteer **NuGet-pakketten beheren**.
 2. Selecteer de optie **Prerelease insluiten**. 
-3. Selecteer **Bladeren** en zoek naar **Microsoft.Azure.Relay**. Selecteer **Microsoft Azure Relay** in de lijst met zoekresultaten.
+3. Selecteer **Bladeren** en zoek naar **Microsoft.Azure.Relay**. Selecteer Microsoft Azure **Relay**in de zoekresultaten .
 4. Selecteer versie **2.0.0-preview1-20180523**. 
 5. Selecteer **Installeren** om de installatie uit te voeren. Sluit het dialoogvenster.
 

@@ -1,7 +1,7 @@
 ---
-title: Analyse taken van micro soft-beveiligings code aanpassen
+title: Taken voor microsoft-beveiligingscodeanalyse aanpassen
 titleSuffix: Azure
-description: In dit artikel wordt beschreven hoe u de taken in de uitbrei ding analyse van micro soft-beveiligings code aanpast
+description: In dit artikel worden de taken in de microsoft security code-extensie aangepast
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -14,214 +14,214 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77499993"
 ---
-# <a name="configure-and-customize-the-build-tasks"></a>De build-taken configureren en aanpassen
+# <a name="configure-and-customize-the-build-tasks"></a>De buildtaken configureren en aanpassen
 
-In dit artikel worden de configuratie opties beschreven die beschikbaar zijn in elk van de build-taken. Het artikel begint met de taken voor hulpprogram ma's voor het analyseren van beveiligings code. De taak wordt beëindigd met de taken na de verwerking.
+In dit artikel worden de configuratieopties die beschikbaar zijn in elk van de buildtaken in detail beschreven. Het artikel begint met de taken voor beveiligingscodeanalysetools. Het eindigt met de nabewerkingstaken.
 
-## <a name="anti-malware-scanner-task"></a>Anti-Malware-Scanner taak
+## <a name="anti-malware-scanner-task"></a>Taak anti-malwarescanner
 
 >[!NOTE]
-> De anti-malware scanner build-taak vereist een build-agent met Windows Defender ingeschakeld. Gehoste Visual Studio 2017 en hoger bieden een dergelijke agent. De taak bouwen wordt niet uitgevoerd op de gehoste agent van Visual Studio 2015.
+> De buildtaak Anti-Malware Scanner vereist een buildagent met Windows Defender ingeschakeld. Hosted Visual Studio 2017 en later bieden een dergelijke agent. De buildtaak wordt niet uitgevoerd op de Visual Studio 2015 hosted agent.
 >
-> Hoewel hand tekeningen niet kunnen worden bijgewerkt op deze agents, moeten hand tekeningen altijd minder dan drie uur oud zijn.
+> Hoewel handtekeningen niet kunnen worden bijgewerkt op deze agents, moeten handtekeningen altijd minder dan drie uur oud zijn.
 
-Details van taak configuratie worden weer gegeven in de volgende scherm afbeelding en tekst.
+Details van de taakconfiguratie worden weergegeven in de volgende schermafbeelding en tekst.
 
-![De taak voor het maken van een anti-malware scanner configureren](./media/security-tools/5-add-anti-malware-task600.png)
+![De buildtaak Anti-Malware Scanner configureren](./media/security-tools/5-add-anti-malware-task600.png)
 
-In de keuze lijst **type** van de scherm opname is **standaard** geselecteerd. Selecteer **aangepast** om opdracht regel argumenten op te geven waarmee de scan wordt aangepast.
+In het vak **Tekst** van de schermafbeelding is **Basic** geselecteerd. Selecteer **Aangepast** om opdrachtregelargumenten op te geven die de scan aanpassen.
 
-Windows Defender gebruikt de Windows Update-client om hand tekeningen te downloaden en te installeren. Als de handtekening update mislukt in uw build-agent, komt de **HRESULT** -fout code waarschijnlijk van Windows Update.
+Windows Defender gebruikt de Windows Update-client om handtekeningen te downloaden en te installeren. Als de handtekeningupdate mislukt op uw buildagent, is de **HRESULT-foutcode** waarschijnlijk afkomstig van Windows Update.
 
-[Windows Update Zie fout codes per onderdeel](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) en het TechNet [-artikel Windows Update Agent-fout codes](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)voor meer informatie over Windows Update fouten en de oplossing ervan.
+Zie [Windows Update-foutcodes per component](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) en het TechNet-artikel Windows Update Agent - [Foutcodes](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)voor meer informatie over windows update-fouten en de beperking daarvan.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [anti-malware yaml-opties](yaml-configuration.md#anti-malware-scanner-task)
+Voor informatie over yaml-configuratie voor deze taak, raadpleegt u onze [Anti-Malware YAML-opties](yaml-configuration.md#anti-malware-scanner-task)
 
 ## <a name="binskim-task"></a>BinSkim-taak
 
 > [!NOTE]
-> Voordat u de BinSkim-taak kunt uitvoeren, moet uw build voldoen aan een van de volgende voor waarden:
->  - Uw build produceert binaire artefacten van beheerde code.
->  - U hebt binaire artefacten doorgevoerd die u wilt analyseren met BinSkim.
+> Voordat u de taak BinSkim uitvoeren, moet uw build aan een van de volgende voorwaarden voldoen:
+>  - Uw build produceert binaire artefacten uit beheerde code.
+>  - U hebt binaire artefacten vastgelegd die u wilt analyseren met BinSkim.
 
-Details van taak configuratie worden weer gegeven in de volgende scherm afbeelding en lijst.
+Details van de taakconfiguratie worden weergegeven in de volgende schermafbeelding en -lijst.
 
-![De BinSkim-build-taak configureren](./media/security-tools/7-binskim-task-details.png)
+![De buildtaak BinSkim configureren](./media/security-tools/7-binskim-task-details.png)
 
-- Stel de build-configuratie in op debug, zodat er fout opsporings bestanden voor PDB worden geproduceerd. BinSkim gebruikt deze bestanden om problemen in de binaire uitvoer bestanden terug te wijzen naar de bron code.
-- Ga als volgt te voor komen en uw eigen opdracht regel te maken:
-     - Selecteer in de lijst **type** de optie **Basic**.
-     - Selecteer **analyseren**in de lijst met **functies** .
-- Voer bij **doel**een of meer specificaties in voor een bestand, map of filter patroon. Deze specificaties worden omgezet in een of meer binaire bestanden die moeten worden geanalyseerd:
-    - Meerdere opgegeven doelen moeten worden gescheiden door een punt komma (;).
-    - Een aanduiding kan één bestand zijn of joker tekens bevatten.
-    - De directory specificaties moeten altijd eindigen op \\*.
+- Stel de buildconfiguratie in op Foutopsporing, zodat .pdb-foutopsporingsbestanden worden geproduceerd. BinSkim gebruikt deze bestanden om problemen in de uitvoerbinaire bestanden terug te brengen naar de broncode.
+- Ga als u voorkomen dat u uw eigen opdrachtregel onderzoekt en maakt:
+     - Selecteer **Basic**in de lijst **Type** .
+     - Selecteer **Analyseren** in **Analyze**de lijst Functie .
+- Voer **in Target**een of meer specificeerders in voor een bestand, map of filterpatroon. Deze specificeerders besluiten tot een of meer binaire bestanden die moeten worden geanalyseerd:
+    - Meerdere opgegeven doelen moeten worden gescheiden door een puntkomma (;).
+    - Een specificer kan één bestand zijn of wildcards bevatten.
+    - Directory specificaties moeten \\altijd eindigen met *.
     - Voorbeelden:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- Als u de **opdracht regel** in de lijst **type** selecteert, moet u binskim. exe uitvoeren:
-     - Zorg ervoor dat de eerste argumenten voor binskim. exe de woorden **analyse** zijn, gevolgd door een of meer padspecificatie. Elk pad kan een volledig pad zijn of een pad dat relatief is ten opzichte van de bronmap.
-     - Meerdere doel paden moeten worden gescheiden door een spatie.
-     - U kunt de optie **/o** of **/output** weglaten. De uitvoer waarde wordt toegevoegd of vervangen.
-     - De standaard-opdracht regel configuraties worden als volgt weer gegeven.
+- Als u **Opdrachtregel** selecteert in de lijst **Type,** moet u binskim.exe uitvoeren:
+     - Zorg ervoor dat de eerste argumenten voor binskim.exe het werkwoord **analyseren** gevolgd door een of meer padspecificaties. Elk pad kan een volledig pad of een pad ten opzichte van de bronmap zijn.
+     - Meerdere doelpaden moeten worden gescheiden door een spatie.
+     - U de optie **/o** of **/output** weglaten. De uitvoerwaarde wordt voor u toegevoegd of vervangen.
+     - Standaard configuratie van de opdrachtregel worden als volgt weergegeven.
 
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > Het afsluitende \\* is belang rijk als u directory's voor het doel opgeeft.
+          > De \\trailing * is belangrijk als u mappen voor het doel opgeeft.
 
-Zie de [Gebruikers handleiding voor BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)voor meer informatie over BinSkim-opdracht regel argumenten, regels op id of afsluit codes.
+Zie de [gebruikershandleiding binskim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)voor meer informatie over de opdrachtregelargumenten, regels op id of afsluiten.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [BINSKIM yaml-opties](yaml-configuration.md#binskim-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [BinSkim YAML-opties](yaml-configuration.md#binskim-task)
 
-## <a name="credential-scanner-task"></a>Taak referentie scanner
+## <a name="credential-scanner-task"></a>Taak Referentiescanner
 
-Details van taak configuratie worden weer gegeven in de volgende scherm afbeelding en lijst.
+Details van de taakconfiguratie worden weergegeven in de volgende schermafbeelding en -lijst.
 
-![De taak voor het maken van referentie scanner configureren](./media/security-tools/3-taskdetails.png)
+![De opbouwtaak van de referentiescanner configureren](./media/security-tools/3-taskdetails.png)
 
-Beschik bare opties zijn:
+Beschikbare opties zijn onder meer:
 
-  - **Uitvoer indeling**: beschik bare waarden zijn **TSV**, **CSV**, **SARIF**en **PREfast**.
-  - **Versie van het hulp programma**: we raden u aan om **nieuwste**te selecteren.
-  - **Map scannen**: de map van de opslag plaats die moet worden gescand.
-  - **Zoek functies bestands type**: de opties voor het zoeken naar het Zoek bestand dat wordt gebruikt voor het scannen.
-  - **Onderdrukkings bestand**: een [JSON](https://json.org/) -bestand kan problemen in het uitvoer logboek onderdrukken. Zie de sectie Veelgestelde vragen van dit artikel voor meer informatie over onderdrukkings scenario's.
-  - **Uitgebreide uitvoer**: zelf uitleg.
-  - **Batch grootte**: het aantal gelijktijdige threads dat wordt gebruikt om de referentie scanner uit te voeren. De standaardwaarde is 20. Mogelijke waarden variëren van 1 tot en met 2.147.483.647.
-  - **Overeenkomende time-out**: de hoeveelheid tijd in seconden die nodig is om een zoek opdracht uit te voeren voordat de controle wordt afgebroken.
-  - **Grootte van Lees buffer voor bestands scan**: de grootte in bytes van de buffer die wordt gebruikt terwijl de inhoud wordt gelezen. De standaard waarde is 524.288.  
-  - **Maximale Lees bytes van bestands scan**: het maximum aantal bytes dat moet worden gelezen uit een bestand tijdens inhouds analyse. De standaard waarde is 104.857.600.
-  - **Beheer opties** > **deze taak uit te voeren**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Selecteer **aangepaste voor waarden** om complexere voor waarden op te geven.
-  - **Versie**: de versie van de build-taak in azure DevOps. Deze optie wordt niet regel matig gebruikt.
+  - **Uitvoernotatie**: Beschikbare waarden zijn onder andere **TSV,** **CSV**, **SARIF**en **PREfast**.
+  - **Gereedschapsversie:** We raden u aan **Laatste te**selecteren.
+  - **Map scannen:** de map van de opslagplaats die moet worden gescand.
+  - **Zoektermen Bestandstype:** de opties voor het zoeken naar het bestand van zoekers dat wordt gebruikt voor het scannen.
+  - **Onderdrukkingsbestand:** een [JSON-bestand](https://json.org/) kan problemen in het uitvoerlogboek onderdrukken. Zie het gedeelte Veelgestelde vragen van dit artikel voor meer informatie over onderdrukkingsscenario's.
+  - **Verbose Output**: Vanzelfsprekend.
+  - **Batchgrootte:** het aantal gelijktijdige threads dat wordt gebruikt om de referentiescanner uit te voeren. De standaardwaarde is 20. Mogelijke waarden variëren van 1 tot en met 2.147.483.647.
+  - **Match Timeout:** De hoeveelheid tijd in seconden om een zoeker match te proberen voordat u de cheque verlaat.
+  - **Buffergrootte voor bestandsscanlezen:** de grootte in bytes van de buffer die wordt gebruikt terwijl de inhoud wordt gelezen. De standaardwaarde is 524.288.  
+  - **Maximum File Scan Read Bytes**: Het maximum aantal bytes dat je uit een bestand moet lezen tijdens de inhoudsanalyse. De standaardwaarde is 104.857.600.
+  - **Besturingselementopties** > **Voer deze taak uit:** geeft op wanneer de taak wordt uitgevoerd. Selecteer **Aangepaste voorwaarden** om complexere voorwaarden op te geven.
+  - **Versie:** De versie van de buildtaak binnen Azure DevOps. Deze optie wordt niet vaak gebruikt.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [referentie scanner yaml-opties](yaml-configuration.md#credential-scanner-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [Credential Scanner YAML-opties](yaml-configuration.md#credential-scanner-task)
 
-## <a name="microsoft-security-risk-detection-task"></a>Micro soft-taak risico detectie
+## <a name="microsoft-security-risk-detection-task"></a>Microsoft-taak voor detectie van beveiligingsrisico's
 
 > [!NOTE]
-> U moet een account maken en configureren met de micro soft security risico Detection-service (MSRD) voordat u de MSRD-taak gebruikt. Deze service vereist een afzonderlijk voorbereidings proces. In tegens telling tot de meeste andere taken in deze uitbrei ding, is voor deze taak een afzonderlijk abonnement met MSRD vereist.
+> U moet een account maken en configureren met de MSRD-service (Microsoft Security Risk Detection) voordat u de MSRD-taak gebruikt. Deze service vereist een apart onboardingproces. In tegenstelling tot de meeste andere taken in deze extensie, vereist deze taak een apart abonnement met MSRD.
 >
-> Raadpleeg de [micro soft-beveiligings Risico's](https://aka.ms/msrddocs) en [detectie van micro soft-beveiligings Risico's:](https://docs.microsoft.com/security-risk-detection/how-to/) instructies.
+> Raadpleeg [Microsoft Security Risk Detection](https://aka.ms/msrddocs) en Microsoft Security Risk [Detection: How To](https://docs.microsoft.com/security-risk-detection/how-to/) voor instructies.
 
-Details voor het configureren van deze taak worden weer gegeven in de volgende lijst. Voor elk UI-element kunt u de muis aanwijzer boven dat element houden om hulp te krijgen.
+Details voor het configureren van deze taak worden weergegeven in de volgende lijst. Voor elk UI-element u over dat element zweven om hulp te krijgen.
 
-   - **Azure DevOps service-eindpunt naam voor MSRD**: een Gene riek type van Azure DevOps service-eind punt slaat de URL van uw onboarded MSRD-exemplaar en uw rest API toegangs token op. Als u een dergelijk eind punt hebt gemaakt, kunt u dit hier opgeven. Als dat niet het geval is, selecteert u de koppeling **beheren** om een nieuw service-eind punt voor deze MSRD-taak te maken en te configureren.
+   - **Azure DevOps Service Endpoint Name for MSRD:** A generic type Azure DevOps service endpoint stores your onboarded MSRD instance URL and your REST API access token. Als u een dergelijk eindpunt hebt gemaakt, u dit hier opgeven. Selecteer anders de koppeling **Beheren** om een nieuw serviceeindpunt voor deze MSRD-taak te maken en te configureren.
    - **Account-id**: een GUID die kan worden opgehaald uit de URL van het MSRD-account.
-   - **Url's naar binaire bestanden**: een door punt komma's gescheiden lijst met openbaar beschik bare url's. De fuzzy-computer gebruikt deze Url's om de binaire bestanden te downloaden.
-   - **Url's van de Seed-bestanden**: een door punt komma's gescheiden lijst met openbaar beschik bare url's. Op de computer met fuzzy worden deze Url's gebruikt om de zaden te downloaden. Het opgeven van deze waarde is optioneel als de Seed-bestanden worden gedownload met de binaire bestanden.
-   - **Type besturings**systeem: het besturingssysteem platform van de computers waarop de taak wordt uitgevoerd. Beschik bare waarden zijn **Windows** en **Linux**.
-   - **Windows-editie/Linux Edition**: de versie van het besturings systeem van de computers waarop de taak wordt uitgevoerd. U kunt de standaard waarde overschrijven als uw computers een andere versie van het besturings systeem hebben.
-   - **Pakket installatie script**: het script dat moet worden uitgevoerd op een test machine. Met dit script worden het test doel programma en de afhankelijkheden ervan geïnstalleerd voordat de taak wordt verzonden.
-   - **Para meters voor taak verzending**:
-       - **Seed-map**: het pad naar de map op de fuzzy computer die de zaden bevat.
-       - **Seed-extensie**: de bestandsnaam extensie van de zaden.
-       - **Uitvoerbaar stuur programma testen**: het pad naar het uitvoer bare bestand van het doel op de fuzzy-computer.
-       - **Uitvoer bare architectuur van het test programma testen**: de architectuur van het uitvoer bare bestand. Beschik bare waarden zijn **x86** en **amd64**.
-       - **Test argumenten voor Stuur Programma's**: de opdracht regel argumenten die zijn door gegeven aan het uitvoer bare bestand van de test. Het argument% test file%, inclusief de aanhalings tekens, wordt automatisch vervangen door het volledige pad naar het doel bestand. Dit bestand wordt geparseerd door het test stuur programma en is vereist.
-       - **Testen van het stuur programma wordt afgesloten**wanneer de test is voltooid: Schakel dit selectie vakje in als het test stuur programma na voltooiing moet worden beëindigd. Schakel deze optie uit als het test stuur programma geforceerd moet worden gesloten.
-       - **Maximum duur (in seconden)** : een schatting van de langste redelijkerwijs verwachte tijd die het doel programma nodig heeft voor het parseren van een invoer bestand. Hoe nauw keuriger de schatting, des te efficiëntere uitvoeringen van de app.
-       - Het **test stuur programma kan herhaaldelijk worden uitgevoerd**: Schakel dit selectie vakje in als het test stuur programma herhaaldelijk kan worden uitgevoerd zonder dat dit afhankelijk is van een permanente of gedeelde globale status.
-       - De naam van het **test stuur programma kan worden gewijzigd**: Schakel dit selectie vakje in als u de naam van het uitvoer bare bestand van het test stuur programma wilt wijzigen en nog steeds correct wilt werken.
-       - **De toepassing die u wilt uitvoeren, wordt uitgevoerd als één besturingssysteem proces**: Schakel dit selectie vakje in als het test stuur programma wordt uitgevoerd onder één besturingssysteem proces. Schakel deze optie uit als het test stuur programma extra processen heeft gestart.
+   - **URL's naar binaries:** een lijst met vrijgekomen url's met puntkomma's. De fuzzing machine maakt gebruik van deze URL's om de binaries te downloaden.
+   - **URL's van de seedbestanden:** een lijst met vrijgekomen URL's met puntkomma's. De fuzzing machine maakt gebruik van deze URL's om de zaden te downloaden. Het opgeven van deze waarde is optioneel als de seedbestanden samen met de binaire bestanden worden gedownload.
+   - **OS Platform Type:** Het besturingssysteem (OS) platform van machines die de fuzzing taak draaien. Beschikbare waarden zijn **Windows** en **Linux.**
+   - **Windows Edition / Linux Edition**: De OS-editie van machines die de fuzzing job draaien. U de standaardwaarde overschrijven als uw machines een andere OS-editie hebben.
+   - **Package Installation Script:** Uw script dat moet worden uitgevoerd op een testmachine. Dit script installeert het testdoelprogramma en de afhankelijkheden ervan voordat de fuzzing-taak wordt ingediend.
+   - **Parameters voor het indienen van vacatures:**
+       - **Seed Directory:** Het pad naar de directory op de fuzzing machine die de zaden bevat.
+       - **Seed Extension**: De bestandsnaam extensie van de zaden.
+       - **Test Driver Executable:** Het pad naar het doel uitvoerbare bestand op de fuzzing machine.
+       - **Uitvoerbare architectuur voor teststuurprogramma's:** de architectuur van het doeluitvoerbestand. Beschikbare waarden zijn **x86** en **amd64**.
+       - **Argumenten voor teststuurprogramma's:** de opdrachtregelargumenten worden doorgegeven aan het uitvoerbare testbestand. Het argument "%testfile%", inclusief de aanhalingstekens, wordt automatisch vervangen door het volledige pad naar het doelbestand. Dit bestand wordt ontleed door de testrijder en is vereist.
+       - **Test Driver Process Exits Upon Test Completion**: Schakel dit selectievakje in als het testrijder na voltooiing moet worden beëindigd. Maak het duidelijk als de testrijder met geweld moet worden gesloten.
+       - **Maximale duur (in seconden):** Een schatting van de langste redelijkerwijs verwachte tijd die het doelprogramma nodig heeft om een invoerbestand te ontleden. Hoe nauwkeuriger de schatting, hoe efficiënter de fuzzing app draait.
+       - **Testdriver kan herhaaldelijk worden uitgevoerd:** Schakel dit selectievakje in als het testrijder herhaaldelijk kan worden uitgevoerd zonder afhankelijk te zijn van een permanente of gedeelde globale status.
+       - **Testdriver kan worden hernoemd:** Schakel dit selectievakje in als het uitvoerbare bestand van het teststuurprogramma kan worden hernoemd en nog steeds correct werkt.
+       - **De Fuzzing-toepassing wordt uitgevoerd als een enkel besturingssysteemproces:** Schakel dit selectievakje in als het testrijder onder één besturingssysteemproces wordt uitgevoerd. Maak het duidelijk als de testdriver extra processen voortbrengt.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [micro soft-beveiligings Risico's detectie yaml-opties](yaml-configuration.md#microsoft-security-risk-detection-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [Microsoft Security Risk Detection YAML-opties](yaml-configuration.md#microsoft-security-risk-detection-task)
 
-## <a name="roslyn-analyzers-task"></a>Roslyn-analyse taak
-
-> [!NOTE]
-> Voordat u de Roslyn-analyse taken kunt uitvoeren, moet uw build voldoen aan de volgende voor waarden:
->
-> - De build-definitie bevat de ingebouwde MSBuild-of VSBuild-bouw taak voor C# het compileren of Visual Basic van code. De taak analyse functies is afhankelijk van de invoer en uitvoer van de ingebouwde taak voor het uitvoeren van de MSBuild-compilatie met Roslyn-analyse functies ingeschakeld.
-> - De build-agent die deze build-taak uitvoert, heeft Visual Studio 2017 versie 15,5 of hoger geïnstalleerd, zodat de compiler versie 2,6 of hoger wordt gebruikt.
-
-Details van taak configuratie worden weer gegeven in de volgende lijst en opmerking.
-
-Beschik bare opties zijn:
-
-- **RuleSet**: waarden zijn **sdl vereist**, **SDL wordt aanbevolen**of uw eigen aangepaste regelset.
-- **Versie van analyse**functies: u kunt het beste **meest recente**selecteren.
-- **Onderdrukkings bestand voor waarschuwingen van compiler**: een tekst bestand met een lijst met waarschuwingen die worden onderdrukt.
-- **Beheer opties** > **deze taak uit te voeren**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Kies **aangepaste voor waarden** om complexere voor waarden op te geven.
+## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers taak
 
 > [!NOTE]
+> Voordat u de taak Roslyn Analyzers uitvoeren, moet uw build aan deze voorwaarden voldoen:
 >
-> - Roslyn-analyse functies zijn geïntegreerd met de compiler en kunnen alleen worden uitgevoerd als onderdeel van de CSC. exe-compilatie. Deze taak vereist daarom de compiler opdracht die eerder in de build werd uitgevoerd om opnieuw te worden afgespeeld of opnieuw uit te voeren. Deze herhaling of uitvoering wordt uitgevoerd door een query uit te voeren op Visual Studio Team Services (VSTS) voor de MSBuild build-taak Logboeken.
->
->   Er is geen andere manier om de opdracht regel voor het compileren van MSBuild op betrouw bare wijze op te halen uit de build-definitie. U wordt aangeraden een tekstvak voor vrije vorm toe te voegen om gebruikers in staat te stellen hun opdracht regels in te voeren. Het is echter lastig om deze opdracht regels up-to-date te houden en te synchroniseren met de hoofd build.
->
->   Aangepaste builds vereisen een herhaling van de volledige set opdrachten, niet alleen voor Compileer opdrachten. In dergelijke gevallen is het inschakelen van Roslyn-analyse functies niet mogelijk en niet betrouwbaar.
->
-> - Roslyn-analyse functies zijn geïntegreerd met de compiler. Voor het aanroepen van Roslyn-analyse functies is compilatie vereist.
->
->   Deze nieuwe build-taak wordt geïmplementeerd door C# projecten die al zijn gebouwd opnieuw te compileren. In de nieuwe taak worden alleen de taken MSBuild en VSBuild gemaakt in dezelfde build-of build-definitie als de oorspronkelijke taak. In dit geval maakt de nieuwe taak echter gebruik van Roslyn-analyse functies ingeschakeld.
->
->   Als de nieuwe taak wordt uitgevoerd op dezelfde agent als de oorspronkelijke taak, overschrijft de uitvoer van de nieuwe taak de uitvoer van de oorspronkelijke taak in de map *s* sources. Hoewel de uitvoer van de build hetzelfde is, adviseren we om MSBuild uit te voeren, uitvoer te kopiëren naar de map voor het klaarzetten van artefacten en vervolgens Roslyn-analyse functies uit te voeren.
+> - Je builddefinitie bevat de ingebouwde MSBuild- of VSBuild-buildtaak om C# of Visual Basic-code samen te stellen. De taak van de analysators is gebaseerd op de invoer en uitvoer van de ingebouwde taak om de MSBuild-compilatie uit te voeren met Roslyn-analysators ingeschakeld.
+> - De buildagent die deze buildtaak uitvoert, heeft Visual Studio 2017 versie 15.5 of hoger geïnstalleerd, zodat deze compilerversie 2.6 of hoger gebruikt.
 
-Bekijk voor aanvullende bronnen voor de taak Roslyn-analysen [de op Roslyn gebaseerde analyse](https://docs.microsoft.com/dotnet/standard/analyzers/) functies op Microsoft docs.
+Details van de taakconfiguratie worden weergegeven in de volgende lijst en notitie.
 
-U kunt het analyse pakket dat is geïnstalleerd en wordt gebruikt door deze build-taak vinden op de NuGet-pagina [micro soft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
+Beschikbare opties zijn onder meer:
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [Roslyn-analyse functies yaml opties](yaml-configuration.md#roslyn-analyzers-task)
+- **Regelset:** Waarden zijn **SDL vereist,** **SDL aanbevolen**of uw eigen aangepaste regelset.
+- **Analysers-versie:** we raden u aan **Laatste te**selecteren.
+- **Compiler waarschuwingen onderdrukkingbestand:** een tekstbestand met een lijst met waarschuwingen ID's die worden onderdrukt.
+- **Besturingselementopties** > **Voer deze taak uit:** geeft op wanneer de taak wordt uitgevoerd. Kies **Aangepaste voorwaarden** om complexere voorwaarden op te geven.
 
-## <a name="tslint-task"></a>TSLint-taak
+> [!NOTE]
+>
+> - Roslyn Analyzers zijn geïntegreerd met de compiler en kan alleen worden uitgevoerd als onderdeel van csc.exe compilatie. Daarom vereist deze taak dat de compileropdracht die eerder in de build is uitgevoerd, opnieuw moet worden afgespeeld of uitgevoerd. Deze herhaling of uitvoering wordt gedaan door Visual Studio Team Services (VSTS) op te vragen voor de MSBuild-taaklogboeken.
+>
+>   Er is geen andere manier voor de taak om de MSBuild-compilatieopdrachtregel betrouwbaar te krijgen van de builddefinitie. We hebben overwogen een tekstvak uit vrije vorm toe te voegen zodat gebruikers hun opdrachtregels kunnen invoeren. Maar dan zou het moeilijk zijn om die commandolijnen up-to-date en in sync met de belangrijkste build te houden.
+>
+>   Aangepaste builds vereisen het opnieuw afspelen van de hele set opdrachten, niet alleen compileropdrachten. In deze gevallen is het inschakelen van Roslyn Analyzers niet triviaal of betrouwbaar.
+>
+> - Roslyn Analyzers zijn geïntegreerd met de compiler. Om te worden aangeroepen, roslyn Analyzers vereisen compilatie.
+>
+>   Deze nieuwbouwtaak wordt uitgevoerd door het opnieuw samenstellen van C# projecten die al zijn gebouwd. De nieuwe taak gebruikt alleen de buildtaken MSBuild en VSBuild in dezelfde build- of builddefinitie als de oorspronkelijke taak. In dit geval wordt deze echter gebruikt met Roslyn Analyzers ingeschakeld.
+>
+>   Als de nieuwe taak op dezelfde agent als de oorspronkelijke taak wordt uitgevoerd, overschrijft *s* de uitvoer van de nieuwe taak de uitvoer van de oorspronkelijke taak in de map s-bronnen. Hoewel de build-uitvoer hetzelfde is, raden we u aan MSBuild uit te voeren, uitvoer naar de map met de artefacten staging te kopiëren en vervolgens Roslyn Analyzers uit te voeren.
 
-Ga naar de [TSLint github opslag plaats](https://github.com/palantir/tslint)voor meer informatie over TSLint.
+Voor extra bronnen voor de taak Roslyn Analyzers raadpleegt u [De op Roslyn gebaseerde analyzers](https://docs.microsoft.com/dotnet/standard/analyzers/) op Microsoft Docs.
+
+U vindt het analyzer-pakket dat is geïnstalleerd en gebruikt door deze buildtaak op de NuGet-pagina [Microsoft.CodeAnalysis.FxCopAnalyzers.](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)
+
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [Roslyn Analyzers YAML-opties](yaml-configuration.md#roslyn-analyzers-task)
+
+## <a name="tslint-task"></a>TSLint- taak
+
+Ga voor meer informatie over TSLint naar de [TSLint GitHub repo.](https://github.com/palantir/tslint)
 
 >[!NOTE] 
->Als u op de hoogte bent van de [TSLint github opslag plaats](https://github.com/palantir/tslint) -start pagina, wordt aangegeven dat TSLint op een andere locatie in 2019 wordt afgeschaft. Micro soft onderzoekt [ESLint](https://github.com/eslint/eslint) als een alternatieve taak.
+>Zoals u wellicht weet, zegt de [TSLint GitHub repo-startpagina](https://github.com/palantir/tslint) dat TSLint ergens in 2019 zal worden afgeschaft. Microsoft onderzoekt [ESLint](https://github.com/eslint/eslint) als een alternatieve taak.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [TSLINT yaml-opties](yaml-configuration.md#tslint-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [TSLint YAML-opties](yaml-configuration.md#tslint-task)
 
-## <a name="publish-security-analysis-logs-task"></a>Taak beveiligings analyse logboeken publiceren
+## <a name="publish-security-analysis-logs-task"></a>Taak Logboeken voor beveiligingsanalyse publiceren
 
-Details van taak configuratie worden weer gegeven in de volgende scherm afbeelding en lijst.
+Details van de taakconfiguratie worden weergegeven in de volgende schermafbeelding en -lijst.
 
-![De taak voor het maken van Logboeken voor het publiceren van beveiligings analyses configureren](./media/security-tools/9-publish-security-analsis-logs600.png)  
+![De buildtaak Logboeken voor publicatiebeveiliginganalyselogboeken configureren](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
-- **Artefact naam**: wille keurige teken reeks-id.
-- **Type artefact**: afhankelijk van uw selectie kunt u Logboeken publiceren naar uw Azure DevOps server of naar een gedeeld bestand dat toegankelijk is voor de build-agent.
-- **Hulpprogram ma's**: u kunt ervoor kiezen om logboeken voor specifieke hulpprogram ma's te bewaren of u kunt **alle hulpprogram ma's** selecteren om alle logboeken te bewaren.
+- **Artefactnaam:** elke tekenreeks-id.
+- **Artefacttype:** Afhankelijk van uw selectie u logboeken publiceren naar uw Azure DevOps-server of naar een gedeeld bestand dat toegankelijk is voor de buildagent.
+- **Gereedschappen:** U ervoor kiezen om logboeken te bewaren voor specifieke gereedschappen, of u **Alle gereedschappen** selecteren om alle logboeken te behouden.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze opties voor het [publiceren van beveiligings logboeken yaml](yaml-configuration.md#publish-security-analysis-logs-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [YAML-opties voor publicatiebeveiligingslogboeken](yaml-configuration.md#publish-security-analysis-logs-task)
 
-## <a name="security-report-task"></a>Beveiligings rapport taak
+## <a name="security-report-task"></a>Taak beveiligingsrapport
 
-Details van de configuratie van het beveiligings rapport worden weer gegeven in de volgende scherm afbeelding en lijst.
+Details van de configuratie van het beveiligingsrapport worden weergegeven in de volgende schermafbeelding en -lijst.
 
-![De taak voor het maken van beveiligings rapporten configureren](./media/security-tools/4-createsecurityanalysisreport600.png)
+![De buildtaak beveiligingsrapport configureren](./media/security-tools/4-createsecurityanalysisreport600.png)
 
-- **Rapporten**: Selecteer een van de **pijplijn console**, het **TSV-bestand**en de **HTML-bestands** indelingen. Voor elke geselecteerde indeling wordt één rapport bestand gemaakt.
-- **Hulp middelen**: Selecteer de hulpprogram ma's in de build-definitie waarvoor u een overzicht van de gedetecteerde problemen wilt. Voor elk geselecteerd hulp programma kunt u ook kiezen of u alleen fouten wilt weer geven of fouten en waarschuwingen in het samenvattings rapport wilt weer geven.
-- **Geavanceerde opties**: als er geen logboeken voor een van de hulpprogram ma's zijn geselecteerd, kunt u ervoor kiezen om een waarschuwing of een fout te registreren. Als u een fout registreert, mislukt de taak.
-- **Basis logboeken map**: u kunt de map basis logboeken aanpassen waarin de logboeken moeten worden gevonden. Deze optie wordt meestal niet gebruikt.
+- **Rapporten:** Selecteer een van de **indelingen Pipeline Console,** **TSV-bestand**en **Html-bestand.** Voor elke geselecteerde indeling wordt één rapportbestand gemaakt.
+- **Hulpmiddelen:** Selecteer de gereedschappen in uw builddefinitie waarvoor u een overzicht wilt van gedetecteerde problemen. Voor elk geselecteerd gereedschap is er mogelijk een optie om te selecteren of u alleen fouten ziet of dat fouten en waarschuwingen in het overzichtsrapport worden gezien.
+- **Geavanceerde opties:** Als er geen logboeken zijn voor een van de geselecteerde gereedschappen, u ervoor kiezen om een waarschuwing of een fout in te loggen. Als u een fout inlogt, mislukt de taak.
+- **Map Basislogboeken:** U de map basislogboeken aanpassen waar logboeken te vinden zijn. Maar deze optie wordt meestal niet gebruikt.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [beveiligings rapporten yaml-opties](yaml-configuration.md#security-report-task)
+Voor informatie over de YAML-configuratie voor deze taak, raadpleegt u onze [YAML-opties voor beveiligingsrapport YAML](yaml-configuration.md#security-report-task)
 
-## <a name="post-analysis-task"></a>Taak na de analyse
+## <a name="post-analysis-task"></a>Taak na analyse
 
-Details van taak configuratie worden weer gegeven in de volgende scherm afbeelding en lijst.
+Details van de taakconfiguratie worden weergegeven in de volgende schermafbeelding en -lijst.
 
-![De taak voor het maken van een post-analyse configureren](./media/security-tools/a-post-analysis600.png)
+![De opdracht voor het bouwen na analyse configureren](./media/security-tools/a-post-analysis600.png)
 
-- **Hulp middelen**: Selecteer de hulpprogram ma's in de build-definitie waarvoor u een build-afbreek actie voorwaardelijk wilt injecteren. Voor elk geselecteerd hulp programma kunt u een optie selecteren om te bepalen of u alleen op fouten wilt onderbreken of op fouten en waarschuwingen.
-- **Rapport**: u kunt desgewenst de resultaten schrijven die de build-afbreek bewerking veroorzaken. De resultaten worden geschreven naar het venster en het logboek bestand van de Azure DevOps-console.
-- **Geavanceerde opties**: als er geen logboeken voor een van de hulpprogram ma's zijn geselecteerd, kunt u ervoor kiezen om een waarschuwing of een fout te registreren. Als u een fout registreert, mislukt de taak.
+- **Tools:** Selecteer de gereedschappen in uw builddefinitie waarvoor u voorwaardelijk een buildbreak wilt injecteren. Voor elk geselecteerd gereedschap is er mogelijk een optie om te selecteren of u alleen fouten of op beide fouten en waarschuwingen wilt verbreken.
+- **Rapport**: U optioneel de resultaten schrijven die de buildbreak veroorzaken. De resultaten worden geschreven naar het Azure DevOps-consolevenster en het logboekbestand.
+- **Geavanceerde opties:** Als er geen logboeken zijn voor een van de geselecteerde gereedschappen, u ervoor kiezen om een waarschuwing of een fout in te loggen. Als u een fout inlogt, mislukt de taak.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [yaml-opties voor post analyse](yaml-configuration.md#post-analysis-task)
+Voor informatie over yaml-configuratie voor deze taak, raadpleegt u onze [Post Analysis YAML-opties](yaml-configuration.md#post-analysis-task)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [configuratie handleiding voor yaml](yaml-configuration.md)voor informatie over configuratie op basis van YAML.
+Voor informatie over yaml-gebaseerde configuratie verwijzen wij u naar onze [YAML-configuratiehandleiding.](yaml-configuration.md)
 
-Bekijk [onze pagina met veelgestelde vragen](security-code-analysis-faq.md)als u meer vragen hebt over de uitbrei ding voor de analyse van beveiligings code en de aangeboden hulpprogram ma's.
+Als u nog vragen heeft over de security code analysis extensie en de aangeboden tools, kijk dan op [onze FAQ pagina.](security-code-analysis-faq.md)

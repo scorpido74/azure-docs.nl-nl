@@ -1,57 +1,57 @@
 ---
 title: StorSimple-volumes beheren (update 3)
-description: Hierin wordt uitgelegd hoe u StorSimple-volumes toevoegt, wijzigt, bewaken en verwijderen, en hoe u deze indien nodig offline kunt brengen.
+description: Hiermee wordt uitgelegd hoe u StorSimple-volumes toevoegt, wijzigt, controleert en verwijdert en hoe u deze indien nodig offline halen.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254766"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van volumes (update 3 of hoger)
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>De StorSimple Device Manager-service gebruiken om volumes te beheren (update 3 of hoger)
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie wordt uitgelegd hoe u de StorSimple Apparaatbeheer-service gebruikt voor het maken en beheren van volumes op de StorSimple 8000-serie apparaten met update 3 en hoger.
+In deze zelfstudie wordt uitgelegd hoe u de StorSimple Device Manager-service gebruiken om volumes te maken en te beheren op de apparaten uit de StorSimple 8000-serie met Update 3 en hoger.
 
-De StorSimple-Apparaatbeheer-service is een uitbrei ding in de Azure Portal waarmee u uw StorSimple-oplossing kunt beheren vanuit één webinterface. Gebruik de Azure Portal om volumes op al uw apparaten te beheren. U kunt ook StorSimple-Services maken en beheren, apparaten beheren, back-upbeleid, back-upcatalogussen en waarschuwingen weer geven.
+De StorSimple Device Manager-service is een extensie in de Azure-portal waarmee u uw StorSimple-oplossing vanuit één webinterface beheren. Gebruik de Azure-portal om volumes op al uw apparaten te beheren. U ook StorSimple-services maken en beheren, apparaten, back-upbeleid en back-upcatalogus beheren en waarschuwingen weergeven.
 
-## <a name="volume-types"></a>Volume typen
+## <a name="volume-types"></a>Volumetypen
 
 StorSimple volumes kunnen zijn:
 
-* **Lokaal vastgemaakte volumes**: gegevens in deze volumes blijven te allen tijde op het lokale StorSimple-apparaat.
-* **Gelaagde volumes**: gegevens in deze volumes kunnen overlopen naar de Cloud.
+* **Lokaal vastgemaakte volumes**: Gegevens in deze volumes blijven te allen tijde op het lokale StorSimple-apparaat staan.
+* **Gelaagde volumes**: Gegevens in deze volumes kunnen naar de cloud worden gelekt.
 
-Een archief volume is een type gelaagd volume. Met de grotere segment grootte voor ontdubbeling die wordt gebruikt voor archief volumes kan het apparaat grotere gegevens segmenten naar de Cloud overdragen.
+Een archiefvolume is een type gelaagd volume. De grotere deduplicatie brok grootte die wordt gebruikt voor archiveringsvolumes kan het apparaat om grotere segmenten van gegevens over te dragen aan de cloud.
 
-Indien nodig kunt u het volume type wijzigen van lokaal in gelaagd of van laag naar lokaal. Ga naar [het volume type wijzigen](#change-the-volume-type)voor meer informatie.
+Indien nodig u het volumetype wijzigen van lokaal naar trapsgewijze of van gelaagd naar lokaal. Ga voor meer informatie naar [Het volumetype wijzigen.](#change-the-volume-type)
 
 ### <a name="locally-pinned-volumes"></a>Lokaal vastgemaakte volumes
 
-Lokaal vastgemaakte volumes zijn volledig ingerichte volumes die geen gegevens in de Cloud laagen, waardoor lokale garanties worden gegarandeerd voor primaire gegevens, onafhankelijk van Cloud connectiviteit. Gegevens op lokaal vastgemaakte volumes worden niet ontdubbeld en gecomprimeerd. moment opnamen van lokaal vastgemaakte volumes worden echter ontdubbeld. 
+Lokaal vastgemaakte volumes zijn volledig ingerichte volumes die geen gegevens naar de cloud brengen, waardoor lokale garanties voor primaire gegevens worden gegarandeerd, onafhankelijk van cloudconnectiviteit. Gegevens over lokaal vastgemaakte volumes worden niet gededupliceerd en gecomprimeerd; Momentopnamen van lokaal vastgemaakte volumes worden echter gedupliceerd. 
 
-Lokaal vastgemaakte volumes zijn volledig ingericht. Daarom moet u voldoende ruimte op uw apparaat hebben wanneer u ze maakt. U kunt lokaal vastgemaakte volumes inrichten tot een maximale grootte van 8 TB op het StorSimple 8100-apparaat en 20 TB op het 8600-apparaat. StorSimple reserveert de resterende lokale ruimte op het apparaat voor moment opnamen, meta gegevens en gegevens verwerking. U kunt de grootte van een lokaal vastgemaakt volume verg Roten tot de Maxi maal beschik bare ruimte, maar u kunt de grootte van een volume niet kleiner maken.
+Lokaal vastgemaakte volumes zijn volledig ingericht; Daarom moet u voldoende ruimte op uw apparaat hebben wanneer u ze maakt. U lokaal vastgemaakte volumes tot een maximale grootte van 8 TB inrichten op het StorSimple 8100-apparaat en 20 TB op het 8600-apparaat. StorSimple reserveert de resterende lokale ruimte op het apparaat voor momentopnamen, metagegevens en gegevensverwerking. U de grootte van een lokaal vastgemaakt volume vergroten tot de maximale beschikbare ruimte, maar u de grootte van een volume dat eenmaal is gemaakt niet verkleinen.
 
-Wanneer u een lokaal vastgemaakt volume maakt, wordt de beschik bare ruimte voor het maken van gelaagde volumes gereduceerd. Het omgekeerde is ook waar: als u bestaande gelaagde volumes hebt, is de beschik bare ruimte voor het maken van lokaal vastgemaakte volumes lager dan de hierboven vermelde maximum limieten. Raadpleeg de [Veelgestelde vragen over lokaal vastgemaakte volumes](storsimple-8000-local-volume-faq.md)voor meer informatie over lokale volumes.
+Wanneer u een lokaal vastgemaakt volume maakt, wordt de beschikbare ruimte voor het maken van gelaagde volumes verkleind. Het omgekeerde is ook waar: als u bestaande gelaagde volumes hebt, is de beschikbare ruimte voor het maken van lokaal vastgemaakte volumes lager dan de hierboven vermelde maximumlimieten. Raadpleeg voor meer informatie over lokale volumes de [veelgestelde vragen over lokaal vastgemaakte volumes.](storsimple-8000-local-volume-faq.md)
 
 ### <a name="tiered-volumes"></a>Gelaagd volumes
 
-Gelaagd gelaagde volumes zijn volumes met een Thin Provisioning waarbij de regel matig gebruikte gegevens lokaal op het apparaat blijven, en minder veelgebruikte gegevens worden automatisch aan de Cloud gelaagd. Thin Provisioning is een virtualisatiesoftware waarin beschik bare opslag ruimte groter is dan fysieke resources. In plaats van voldoende opslag vooraf te reserveren, gebruikt StorSimple Thin Provisioning om net zoveel ruimte toe te wijzen om te voldoen aan de huidige vereisten. De elastische aard van Cloud opslag vereenvoudigt deze benadering omdat StorSimple de Cloud opslag kan verg Roten of verkleinen om te voldoen aan veranderende vereisten.
+Gelaagde volumes zijn dun ingerichte volumes waarin de vaak geopende gegevens lokaal op het apparaat blijven en minder vaak gebruikte gegevens automatisch naar de cloud worden gegelaagdeerd. Dunne inrichting is een virtualisatietechnologie waarbij de beschikbare opslag de fysieke resources lijkt te overschrijden. In plaats van vooraf voldoende opslagruimte te reserveren, gebruikt StorSimple dunne provisioning om net genoeg ruimte toe te wijzen om aan de huidige vereisten te voldoen. Het elastische karakter van cloudopslag vergemakkelijkt deze aanpak omdat StorSimple de cloudopslag kan verhogen of verlagen om aan veranderende eisen te voldoen.
 
-Als u het gelaagde volume voor archiverings gegevens gebruikt, schakelt u het selectie vakje **dit volume gebruiken voor minder vaak gebruikte archiverings gegevens** in om de segment grootte van de ontdubbeling voor uw volume te wijzigen in 512 KB. Als u deze optie niet selecteert, wordt in het bijbehorende gelaagde volume een segment grootte van 64 KB gebruikt. Een grotere chunkgrootte voor de ontdubbeling zorgt ervoor dat het apparaat sneller grotere archiveringsgegevens naar de cloud kan overzetten.
+Als u het gelaagde volume gebruikt voor archiefgegevens, schakelt u het selectievakje **Dit volume gebruiken voor minder vaak geopende archiefgegevens** in om de grootte van de duplicatievan den duplicatie voor uw volume te wijzigen in 512 KB. Als u deze optie niet selecteert, wordt met het bijbehorende gelaagde volume een segmentgrootte van 64 KB gebruikt. Een grotere chunkgrootte voor de ontdubbeling zorgt ervoor dat het apparaat sneller grotere archiveringsgegevens naar de cloud kan overzetten.
 
 
-### <a name="provisioned-capacity"></a>Ingerichte capaciteit
+### <a name="provisioned-capacity"></a>Voorzieningen
 
-Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk apparaat en elk volume type. (Houd er rekening mee dat lokaal vastgemaakte volumes niet beschikbaar zijn op een virtueel apparaat.)
+Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk apparaat en volumetype. (Houd er rekening mee dat lokaal vastgemaakte volumes niet beschikbaar zijn op een virtueel apparaat.)
 
-|  | Maximale grootte van het gelaagde volume | Maximum grootte van lokaal vastgemaakt volume |
+|  | Maximale gelaagde volumegrootte | Maximale lokaal vastgemaakte volumegrootte |
 | --- | --- | --- |
 | **Fysieke apparaten** | | |
 | 8100 |64 TB |8 TB |
@@ -60,31 +60,31 @@ Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk appa
 | 8010 |30 TB |N.v.t. |
 | 8020 |64 TB |N.v.t. |
 
-## <a name="the-volumes-blade"></a>De Blade volumes
+## <a name="the-volumes-blade"></a>Het volumesblad
 
-Op de Blade **volumes** kunt u de opslag volumes beheren die zijn ingericht op het Microsoft Azure StorSimple apparaat voor uw initia tors (servers). De lijst met volumes op de StorSimple-apparaten die zijn verbonden met uw service wordt weer gegeven.
+Met het blade **Volumes** u de opslagvolumes beheren die zijn ingericht op het Microsoft Azure StorSimple-apparaat voor uw initiators (servers). Het toont de lijst met volumes op de StorSimple-apparaten die zijn aangesloten op uw service.
 
- ![Pagina volumes](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
+ ![Pagina Volumes](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
-Een volume bestaat uit een reeks kenmerken:
+Een volume bestaat uit een reeks attributen:
 
-* **Volume naam** : een beschrijvende naam die uniek moet zijn en het volume kan identificeren. Deze naam wordt ook gebruikt in bewakings rapporten wanneer u filtert op een specifiek volume. Wanneer het volume is gemaakt, kan het niet worden hernoemd.
-* **Status** : kan online of offline zijn. Als een volume offline is, is het niet zichtbaar voor initia tors (servers) die toegang hebben tot het gebruik van het volume.
-* **Capaciteit** – Hiermee geeft u de totale hoeveelheid gegevens op die kan worden opgeslagen door de initiator (Server). Lokaal vastgemaakte volumes zijn volledig ingericht en bevinden zich op het StorSimple-apparaat. Gelaagde volumes worden dun ingericht en de gegevens worden ontdubbeld. Met thin provisioned volumes wijst uw apparaat geen fysieke opslag capaciteit intern of op basis van de geconfigureerde volume capaciteit toe aan de Cloud. De capaciteit van het volume wordt toegewezen en verbruikt op aanvraag.
-* **Type** – geeft aan of het volume wordt **gelaagd** (de standaard instelling) of **lokaal is vastgemaakt**.
+* **Volumenaam** – Een beschrijvende naam die uniek moet zijn en helpt bij het identificeren van het volume. Deze naam wordt ook gebruikt in bewakingsrapporten wanneer u filtert op een bepaald volume. Zodra het volume is gemaakt, kan de naam niet worden gewijzigd.
+* **Status** – Kan online of offline zijn. Als een volume offline is, is het niet zichtbaar voor initiatiefnemers (servers) die toegang hebben tot het volume.
+* **Capaciteit** – geeft de totale hoeveelheid gegevens op die door de initiator (server) kan worden opgeslagen. Lokaal vastgemaakte volumes zijn volledig ingericht en bevinden zich op het StorSimple-apparaat. Gelaagde volumes zijn dun ingericht en de gegevens worden gededupliceerd. Met dun ingerichte volumes wijst uw apparaat fysieke opslagcapaciteit intern of in de cloud niet vooraf toe op basis van geconfigureerde volumecapaciteit. De volumecapaciteit wordt toegewezen en verbruikt op aanvraag.
+* **Tekst:** geeft aan of het volume **is getierd** (de standaardinstelling) of **Lokaal vastgemaakt**.
 
-Volg de instructies in deze zelf studie om de volgende taken uit te voeren:
+Gebruik de instructies in deze zelfstudie om de volgende taken uit te voeren:
 
 * Een volume toevoegen 
 * Een volume wijzigen 
-* Wijzig het volume type
+* Het volumetype wijzigen
 * Een volume verwijderen 
 * Een volume offline halen 
-* Een volume bewaken 
+* Een volume controleren 
 
 ## <a name="add-a-volume"></a>Een volume toevoegen
 
-U hebt [een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) tijdens de implementatie van uw StorSimple 8000 Series-apparaat. Het toevoegen van een volume is een vergelijk bare procedure.
+U [hebt een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) tijdens de implementatie van uw StorSimple 8000-serieapparaat. Het toevoegen van een volume is een vergelijkbare procedure.
 
 #### <a name="to-add-a-volume"></a>Een volume toevoegen
 
@@ -98,7 +98,7 @@ U hebt [een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-
 
     2. Selecteer in de vervolgkeuzelijst de volumecontainer waaraan u een volume wilt toevoegen.
 
-    3.  een **naam** voor het volume. Wanneer het volume is gemaakt, kunt u de naam van het volume niet wijzigen.
+    3.  een **naam** voor het volume. Zodra het volume is gemaakt, u de naam van het volume niet wijzigen.
 
     4. Selecteer in de vervolgkeuzelijst het **Type** voor het volume. Voor workloads waarvoor lokale garanties, lage latenties en betere prestaties vereist zijn, selecteert u een **lokaal vastgemaakt** volume. Voor alle overige gegevens selecteert u een **gelaagd** volume. Als u dit volume gebruikt voor de archivering van gegevens, schakelt u **Dit volume gebruiken voor minder frequent gebruikte gearchiveerde gegevens** in.
       
@@ -112,213 +112,213 @@ U hebt [een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-
       
        Als u een lokaal vastgemaakt volume van 8,5 TB (maximaal toegestane grootte) op uw 8100-apparaat inricht, hebt u de lokale ruimte die beschikbaar is op het apparaat volledig gebruikt. Vanaf dat moment kunt u geen gelaagd volume maken, omdat er geen lokale ruimte op het apparaat is voor het hosten van de werkset van het gelaagde volume. Bestaande gelaagde volumes zijn ook van invloed op de beschikbare ruimte. Als u bijvoorbeeld een 8100-apparaat hebt met reeds gelaagde volumes van circa 106 TB, is er nog maar 4 TB ruimte beschikbaar voor lokaal vastgemaakte volumes.
 
-    6. Klik in het veld **Verbonden hosts** op de pijl. Kies op de Blade **verbonden hosts** een bestaand ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR kiest, geeft u een **naam** op voor uw ACR. geef de **iSCSI qualified name** (IQN) van uw Windows-host op. Als u de IQN niet hebt, gaat u naar de IQN van een Windows Server-host ophalen. Klik op **Create**. Er wordt een volume gemaakt met de opgegeven instellingen.
+    6. Klik in het veld **Verbonden hosts** op de pijl. Kies in het **blade van Verbonden hosts** een bestaande ACR of voeg een nieuwe ACR toe. Als u een nieuwe ACR kiest en vervolgens een **naam** voor uw ACR levert, geeft u de **iSCSI-gekwalificeerde naam** (IQN) van uw Windows-host op. Als u het IQN niet hebt, gaat u naar Het IQN van een Windows Server-host ophalen. Klik **op Maken**. Er wordt een volume gemaakt met de opgegeven instellingen.
 
         ![Klik op Maken](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
-Het nieuwe volume is nu klaar voor gebruik.
+Uw nieuwe volume is nu klaar voor gebruik.
 
 > [!NOTE]
-> Als u een lokaal vastgemaakt volume maakt en vervolgens nog een lokaal vastgemaakt volume maakt, worden de taken voor het maken van het volume sequentieel uitgevoerd. De eerste taak voor het maken van het volume moet worden voltooid voordat de volgende taak voor het maken van het volume kan beginnen.
+> Als u een lokaal vastgemaakt volume maakt en vervolgens onmiddellijk daarna een ander lokaal vastgemaakt volume maakt, worden de taken voor het maken van volume opeenvolgend uitgevoerd. De eerste taak voor het maken van volume moet worden voltooid voordat de volgende taak voor het maken van volume kan beginnen.
 
 ## <a name="modify-a-volume"></a>Een volume wijzigen
 
-Wijzig een volume wanneer u het wilt uitbreiden of wijzig de hosts die toegang hebben tot het volume.
+Wijzig een volume wanneer u het moet uitbreiden of de hosts die toegang hebben tot het volume moet wijzigen.
 
 > [!IMPORTANT]
-> * Als u de grootte van het volume op het apparaat wijzigt, moet de grootte van het volume ook worden gewijzigd op de host.
-> * De stappen voor de host-side die hier worden beschreven, zijn voor Windows Server 2012 (2012R2). De procedures voor Linux of andere besturings systemen van de host verschillen. Raadpleeg de instructies van uw hostbesturingssysteem wanneer u het volume wijzigt op een host met een ander besturings systeem.
+> * Als u de volumegrootte op het apparaat wijzigt, moet de volumegrootte ook op de host worden gewijzigd.
+> * De hier beschreven stappen aan de hostzijde zijn voor Windows Server 2012 (2012R2). De procedures voor Linux of andere hostbesturingssystemen zullen anders zijn. Raadpleeg de instructies van uw hostbesturingssysteem wanneer u het volume wijzigt op een host waarop een ander besturingssysteem wordt uitgevoerd.
 
 #### <a name="to-modify-a-volume"></a>Een volume wijzigen
 
-1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de lijst in tabel vorm van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik op **instellingen > volumes**.
+1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de tabeltabelvermelding van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik **op Instellingen > Volumes**.
 
-    ![Ga naar de Blade volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Ga naar Volumes blade](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. Selecteer in de lijst in tabel vorm van volumes het volume en klik met de rechter muisknop om het context menu aan te roepen. Selecteer **offline halen** om het volume te maken dat u offline wilt wijzigen.
+2. Selecteer in de tabeltabellijst met volumes het volume en klik met de rechtermuisknop om het contextmenu aan te roepen. Selecteer **Offline gaan** om het volume dat u offline wijzigt, offline te halen.
 
-    ![Volume selecteren en offline halen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Volume offline selecteren en offline halen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. Controleer op de Blade **offline nemen** de gevolgen van het offline halen van het volume en schakel het bijbehorende selectie vakje in. Controleer eerst of het bijbehorende volume op de host offline is. Raadpleeg specifieke instructies voor het besturings systeem voor meer informatie over het offline halen van een volume op de hostserver die is verbonden met StorSimple. Klik op **offline zetten**.
+3. Bekijk in het **offlineblad nemen** de impact van het offline halen van het volume en schakel het bijbehorende selectievakje in. Zorg ervoor dat het bijbehorende volume op de host eerst offline is. Raadpleeg de specifieke instructies van het besturingssysteem voor informatie over het offline halen van een volume op uw hostserver die is verbonden met StorSimple. Klik **op Offline halen**.
 
-    ![De impact van het offline halen van het volume controleren](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Bekijk de impact van het offline halen van volume](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Wanneer het volume offline is (zoals wordt weer gegeven door de volume status), selecteert u het volume en klikt u met de rechter muisknop om het context menu aan te roepen. Selecteer **volume wijzigen**.
+4. Nadat het volume offline is (zoals blijkt uit de volumestatus), selecteert u het volume en klikt u met de rechtermuisknop om het contextmenu aan te roepen. Selecteer **Volume wijzigen**.
 
-    ![Selecteer volume wijzigen](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![Volume wijzigen selecteren](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. Op de Blade **volume wijzigen** kunt u de volgende wijzigingen aanbrengen:
+5. In het **volumeblad wijzigen** u de volgende wijzigingen aanbrengen:
    
-   1. De volume **naam** kan niet worden bewerkt.
-   2. Converteer het **type** van lokaal vastgemaakt naar gelaagd of van gelaagd naar lokaal vastgemaakt (Zie [het volume type wijzigen](#change-the-volume-type) voor meer informatie).
-   3. Verhoog de **ingerichte capaciteit**. De **ingerichte capaciteit** kan alleen worden verhoogd. U kunt een volume niet verkleinen nadat het is gemaakt.
-   4. Onder **verbonden hosts**kunt u de ACR wijzigen. Als u een ACR wilt wijzigen, moet het volume offline zijn.
+   1. De **volumenaam** kan niet worden bewerkt.
+   2. **Converteer** het type van lokaal vastgemaakt naar gelaagd of van gelaagd naar lokaal vastgemaakt (zie [Het volumetype wijzigen](#change-the-volume-type) voor meer informatie).
+   3. Verhoging van de **ingerichte capaciteit**. De **ingerichte capaciteit** kan alleen worden verhoogd. U een volume niet krimpen nadat het is gemaakt.
+   4. Onder **Verbonden hosts**u de ACR wijzigen. Als u een ACR wilt wijzigen, moet het volume offline zijn.
 
-       ![De impact van het offline halen van het volume controleren](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Bekijk de impact van het offline halen van volume](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Klik op **Opslaan** om uw wijzigingen op te slaan. Klik op **Ja** als u om bevestiging wordt gevraagd. Het Azure Portal een update van het volume bericht wordt weer gegeven. Er wordt een bericht weer gegeven wanneer het volume is bijgewerkt.
+5. Klik **op Opslaan** om de wijzigingen op te slaan. Klik op **Ja** als u om bevestiging wordt gevraagd. In de Azure-portal wordt een volumebericht bijgewerkt. Het wordt een succesbericht weergegeven wanneer het volume is bijgewerkt.
 
-    ![De impact van het offline halen van het volume controleren](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Bekijk de impact van het offline halen van volume](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Als u een volume uitbreidt, voert u de volgende stappen uit op de Windows-hostcomputer:
+7. Als u een volume uitbreidt, voert u de volgende stappen uit op uw Windows-hostcomputer:
    
-   1. Ga naar **computer beheer** ->**schijf beheer**.
-   2. Klik met de rechter muisknop op **schijf beheer** en selecteer **schijven opnieuw scannen**.
-   3. Selecteer in de lijst met schijven het volume dat u hebt bijgewerkt, klik met de rechter muisknop en selecteer vervolgens **volume uitbreiden**. De wizard Volume uitbreiden wordt gestart. Klik op **Volgende**.
-   4. Voltooi de wizard en accepteer de standaard waarden. Nadat de wizard is voltooid, moet het volume de verhoogde grootte weer geven.
+   1. Ga naar **Computermanagement** ->**schijfbeheer**.
+   2. Klik met de rechtermuisknop op **Schijfbeheer** en selecteer **Schijven opnieuw scannen**.
+   3. Selecteer in de lijst met schijven het volume dat u hebt bijgewerkt en klik met de rechtermuisknop op **Volume uitbreiden**. De wizard Volume uitbreiden wordt gestart. Klik op **Volgende**.
+   4. Voltooi de wizard en accepteer de standaardwaarden. Nadat de wizard is voltooid, moet het volume de grotere grootte weergeven.
       
       > [!NOTE]
-      > Als u een lokaal vastgemaakt volume uitbreidt en vervolgens nogmaals een lokaal vastgemaakt volume uitbreidt, worden de volume-uitbreidings taken sequentieel uitgevoerd. De eerste volume uitbreiding taak moet worden voltooid voordat de volgende volume uitbreiding kan worden gestart.
+      > Als u een lokaal vastgemaakt volume uitvouwt en vervolgens onmiddellijk daarna een ander lokaal vastgemaakt volume uitvouwt, worden de volumeuitbreidingstaken achtereenvolgens uitgevoerd. De eerste volumeuitbreidingstaak moet worden voltooid voordat de volgende volumeuitbreidingstaak kan beginnen.
       
 
-## <a name="change-the-volume-type"></a>Wijzig het volume type
+## <a name="change-the-volume-type"></a>Het volumetype wijzigen
 
-U kunt het volume type wijzigen van gelaagd naar lokaal vastgemaakt of lokaal vastgemaakt naar gelaagd. Deze conversie zou echter niet vaak moeten plaatsvinden.
+U het volumetype wijzigen van gelaagd naar lokaal vastgemaakt of van lokaal vastgemaakt naar gelaagd. Deze conversie mag echter niet vaak voorkomen.
 
-### <a name="tiered-to-local-volume-conversion-considerations"></a>Aandachtspunten voor de conversie van lokale volume-volumes
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Gelaagd naar overwegingen voor lokale volumeconversie
 
-Enkele redenen voor het converteren van een volume van gelaagd naar lokaal vastgemaakte zijn:
+Enkele redenen om een volume om te zetten van trapsgewijs naar lokaal vastgemaakt zijn:
 
-* Lokale garanties met betrekking tot de beschik baarheid en prestaties van gegevens
-* Eliminatie van Cloud latenties en Cloud verbindings problemen.
+* Lokale garanties met betrekking tot de beschikbaarheid en prestaties van gegevens
+* Eliminatie van cloudlatencies en cloudconnectiviteitsproblemen.
 
-Normaal gesp roken zijn dit kleine bestaande volumes die u regel matig wilt benaderen. Een lokaal vastgemaakt volume is volledig ingericht wanneer het wordt gemaakt. 
+Dit zijn meestal kleine bestaande volumes die u vaak wilt openen. Een lokaal vastgemaakt volume is volledig ingericht wanneer het wordt gemaakt. 
 
-Als u een gelaagd volume converteert naar een lokaal vastgemaakt volume, controleert StorSimple of u voldoende ruimte op uw apparaat hebt voordat de conversie wordt gestart. Als er onvoldoende ruimte beschikbaar is, ontvangt u een fout melding en wordt de bewerking geannuleerd. 
+Als u een gelaagd volume converteert naar een lokaal vastgemaakt volume, controleert StorSimple of u voldoende ruimte op uw apparaat hebt voordat de conversie wordt gestart. Als u onvoldoende ruimte hebt, ontvangt u een foutmelding en wordt de bewerking geannuleerd. 
 
 > [!NOTE]
-> Voordat u een conversie van gelaagd naar lokaal vastgemaakt, moet u rekening houden met de ruimte vereisten van uw andere workloads. 
+> Voordat u begint met een conversie van gelaagd naar lokaal vastgemaakt, moet u rekening houden met de ruimtevereisten van uw andere workloads. 
 
-De conversie van een laag naar een lokaal vastgemaakt volume kan een negatieve invloed hebben op de prestaties van het apparaat. Daarnaast kunnen de volgende factoren de tijd verg Roten die nodig is om de conversie te volt ooien:
+Conversie van een gelaagd naar een lokaal vastgemaakt volume kan de prestaties van het apparaat negatief beïnvloeden. Bovendien kunnen de volgende factoren de tijd die nodig is om de conversie te voltooien, verhogen:
 
-* Er is onvoldoende band breedte.
+* Er is onvoldoende bandbreedte.
 * Er is geen huidige back-up.
 
-U kunt als volgt de gevolgen van deze factoren beperken:
+Ga als belangrijkste voor het minimaliseren van de effecten die deze factoren kunnen hebben:
 
-* Controleer uw beleid voor bandbreedte beperking en zorg ervoor dat er een toegewezen band breedte van 40 Mbps beschikbaar is.
-* De conversie plannen voor daluren.
-* Maak een Cloud momentopname voordat u de conversie start.
+* Bekijk uw bandbreedtebeperkingsbeleid en zorg ervoor dat er een specifieke bandbreedte van 40 Mbps beschikbaar is.
+* Plan de conversie voor daluren.
+* Maak een cloudmomentopname voordat u de conversie start.
 
-Als u meerdere volumes converteert (die ondersteuning bieden voor verschillende werk belastingen), moet u de volume conversie priori teren zodat de volumes met hogere prioriteit eerst worden geconverteerd. U moet bijvoorbeeld volumes die virtuele machines (Vm's) hosten of volumes met SQL-workloads, converteren voordat u volumes converteert met bestands share-workloads.
+Als u meerdere volumes converteert (ondersteuning voor verschillende workloads), moet u prioriteit geven aan de volumeconversie, zodat volumes met een hogere prioriteit eerst worden geconverteerd. U moet bijvoorbeeld volumes converteren die virtuele machines (VM's) of volumes hosten met SQL-workloads voordat u volumes converteert met bestandsshare-workloads.
 
-### <a name="local-to-tiered-volume-conversion-considerations"></a>Overwegingen voor de conversie van lokale naar gelaagde volumes
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Overwegingen voor lokale en gedifferentieerde volumeconversie
 
-U kunt een lokaal vastgemaakt volume wijzigen in een gelaagd volume als u meer ruimte nodig hebt om andere volumes in te richten. Wanneer u het lokaal vastgemaakte volume converteert naar gelaagd, neemt de beschik bare capaciteit op het apparaat toe met de grootte van de vrijgegeven capaciteit. Als verbindings problemen verhinderen dat een volume van het lokale type naar het gelaagde type wordt geconverteerd, geeft het lokale volume eigenschappen van een gelaagd volume tot de conversie is voltooid. De reden hiervoor is dat sommige gegevens in de Cloud zijn overgelopen. Deze gemorste gegevens blijven lokale ruimte op het apparaat innemen. Dit kan pas worden vrijgemaakt als de bewerking opnieuw is gestart en voltooid.
+U een lokaal vastgemaakt volume wijzigen in een gelaagd volume als u extra ruimte nodig hebt om andere volumes in te richten. Wanneer u het lokaal vastgemaakte volume omzet in gelaagde, wordt de beschikbare capaciteit op het apparaat groter met de grootte van de vrijgegeven capaciteit. Als verbindingsproblemen de conversie van een volume van het lokale type naar het gelaagde type verhinderen, worden in het lokale volume eigenschappen van een gelaagd volume weergegeven totdat de conversie is voltooid. Dit komt omdat sommige gegevens mogelijk naar de cloud zijn gelekt. Deze gelekte gegevens blijven lokale ruimte op het apparaat innemen die niet kan worden vrijgegeven totdat de bewerking opnieuw is gestart en voltooid.
 
 > [!NOTE]
-> Het converteren van een volume kan enige tijd duren en u kunt een conversie niet annuleren nadat deze is gestart. Het volume blijft online tijdens de conversie en u kunt back-ups maken, maar het volume kan niet worden uitgevouwen of hersteld terwijl de conversie plaatsvindt.
+> Het converteren van een volume kan enige tijd duren en u een conversie niet annuleren nadat deze is gestart. Het volume blijft online tijdens de conversie en u back-ups maken, maar u het volume niet uitbreiden of herstellen terwijl de conversie plaatsvindt.
 
 
-#### <a name="to-change-the-volume-type"></a>Het volume type wijzigen
+#### <a name="to-change-the-volume-type"></a>Het volumetype wijzigen
 
-1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de lijst in tabel vorm van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik op **instellingen > volumes**.
+1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de tabeltabelvermelding van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik **op Instellingen > Volumes**.
 
-    ![Ga naar de Blade volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Ga naar Volumes blade](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Selecteer in de lijst in tabel vorm van volumes het volume en klik met de rechter muisknop om het context menu aan te roepen. Selecteer **wijzigen**.
+3. Selecteer in de tabeltabellijst met volumes het volume en klik met de rechtermuisknop om het contextmenu aan te roepen. Selecteer **Wijzigen**.
 
-    ![Selecteer in het snelmenu wijzigen](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![Wijzigen selecteren in contextmenu](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. Wijzig op de Blade **volume wijzigen** het volume type door het nieuwe type te selecteren in de vervolg keuzelijst **type** .
+4. Wijzig op het **volumeblad wijzigen** het volumetype door het nieuwe type te selecteren in de vervolgkeuzelijst **Type.**
    
-   * Als u het type wijzigt in **lokaal vastgemaakt**, wordt door StorSimple gecontroleerd of er voldoende capaciteit is.
-   * Als u het type wilt wijzigen in **gelaagd** en dit volume wordt gebruikt voor het archiveren van gegevens, schakelt u het selectie vakje **dit volume gebruiken voor minder vaak gebruikte gegevens archivering** in.
-   * Als u een lokaal vastgemaakt volume configureert als gelaagd of _vice versa_, wordt het volgende bericht weer gegeven.
+   * Als u het type wijzigt in **Lokaal vastgemaakt,** controleert StorSimple of er voldoende capaciteit is.
+   * Als u het type wijzigt in **Trapsgewijs** en dit volume wordt gebruikt voor archiefgegevens, schakelt u het selectievakje **Dit volume gebruiken in voor minder vaak geopende archiefgegevens.**
+   * Als u een lokaal vastgemaakt volume configureert als gelaagd of _omgekeerd,_ wordt het volgende bericht weergegeven.
    
-     ![Bericht van volume type wijzigen](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Bericht van volumetype wijzigen](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Klik op **Opslaan** om de wijzigingen op te slaan. Wanneer u om bevestiging wordt gevraagd, klikt u op **Ja** om het conversie proces te starten. 
+7. Klik op **Opslaan** om de wijzigingen op te slaan. Klik op **Ja** om het conversieproces te starten wanneer u om bevestiging wordt gevraagd. 
 
     ![Opslaan en bevestigen](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. In het Azure Portal wordt een melding weer gegeven voor het maken van de taak waarmee het volume wordt bijgewerkt. Klik op de melding om de status van de volume conversie taak te controleren.
+8. De Azure-portal geeft een melding weer voor het maken van banen die het volume zou bijwerken. Klik op de melding om de status van de volumeconversietaak te controleren.
 
-    ![Taak voor volume conversie](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Taak voor volumeconversie](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
 ## <a name="take-a-volume-offline"></a>Een volume offline halen
 
-Mogelijk moet u een volume offline halen wanneer u van plan bent om het volume te wijzigen of te verwijderen. Wanneer een volume offline is, is het niet beschikbaar voor lezen/schrijven-toegang. U moet het volume offline halen op de host en op het apparaat.
+Mogelijk moet u een volume offline halen wanneer u van plan bent het volume te wijzigen of te verwijderen. Wanneer een volume offline is, is het niet beschikbaar voor lees-schrijftoegang. U moet het volume offline halen op de host en het apparaat.
 
 #### <a name="to-take-a-volume-offline"></a>Een volume offline halen
 
-1. Zorg ervoor dat het betreffende volume niet wordt gebruikt voordat u het offline zet.
-2. Zet het volume eerst offline op de host. Dit elimineert mogelijke Risico's van beschadigde gegevens op het volume. Raadpleeg de instructies voor het besturings systeem van de host voor specifieke stappen.
+1. Zorg ervoor dat het volume in kwestie niet in gebruik is voordat u het offline haalt.
+2. Haal eerst het volume offline op de host. Dit elimineert elk potentieel risico van gegevensbeschadiging op het volume. Raadpleeg voor specifieke stappen de instructies voor uw hostbesturingssysteem.
 3. Nadat de host offline is, neemt u het volume op het apparaat offline door de volgende stappen uit te voeren:
    
-    1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de lijst in tabel vorm van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik op **instellingen > volumes**.
+    1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de tabeltabelvermelding van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik **op Instellingen > Volumes**.
 
-        ![Ga naar de Blade volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Ga naar Volumes blade](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. Selecteer in de lijst in tabel vorm van volumes het volume en klik met de rechter muisknop om het context menu aan te roepen. Selecteer **offline halen** om het volume te maken dat u offline wilt wijzigen.
+    2. Selecteer in de tabeltabellijst met volumes het volume en klik met de rechtermuisknop om het contextmenu aan te roepen. Selecteer **Offline gaan** om het volume dat u offline wijzigt, offline te halen.
 
-        ![Volume selecteren en offline halen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Volume offline selecteren en offline halen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. Controleer op de Blade **offline nemen** de gevolgen van het offline halen van het volume en schakel het bijbehorende selectie vakje in. Klik op **offline zetten**. 
+3. Bekijk in het **offlineblad nemen** de impact van het offline halen van het volume en schakel het bijbehorende selectievakje in. Klik **op Offline halen**. 
 
-    ![De impact van het offline halen van het volume controleren](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Bekijk de impact van het offline halen van volume](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      U wordt gewaarschuwd wanneer het volume offline is. De volume status wordt ook bijgewerkt naar offline.
+      U krijgt een melding wanneer het volume offline is. De volumestatus wordt ook bijgewerkt naar Offline.
       
-4. Als u het volume hebt geselecteerd en met de rechter muisknop op een volume hebt geklikt, wordt de optie **online** beschikbaar in het context menu weer geven.
+4. Nadat een volume offline is, als u het volume selecteert en met de rechtermuisknop klikt, wordt de optie **Online brengen** beschikbaar in het contextmenu.
 
 > [!NOTE]
-> De opdracht **offline nemen** verzendt een aanvraag naar het apparaat om het volume offline te halen. Als hosts nog steeds het volume gebruiken, resulteert dit in verbroken verbindingen, maar neemt het volume offline.
+> Met de opdracht **Offline nemen** wordt een verzoek naar het apparaat verstuurt om het volume offline te halen. Als hosts het volume nog steeds gebruiken, resulteert dit in verbroken verbindingen, maar het offline halen van het volume mislukt niet.
 
 ## <a name="delete-a-volume"></a>Een volume verwijderen
 
 > [!IMPORTANT]
-> U kunt een volume alleen verwijderen als deze offline is.
+> U een volume alleen verwijderen als het offline is.
 
 Voer de volgende stappen uit om een volume te verwijderen.
 
 #### <a name="to-delete-a-volume"></a>Een volume verwijderen
 
-1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de lijst in tabel vorm van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik op **instellingen > volumes**.
+1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de tabeltabelvermelding van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik **op Instellingen > Volumes**.
 
-    ![Ga naar de Blade volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Ga naar Volumes blade](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Controleer de status van het volume dat u wilt verwijderen. Als het volume dat u wilt verwijderen niet offline is, moet u het eerst offline zetten. Volg de stappen in [een volume offline halen](#take-a-volume-offline).
-4. Nadat het volume offline is, selecteert u het volume, klikt u met de rechter muisknop om het context menu aan te roepen en selecteert u vervolgens **verwijderen**.
+3. Controleer de status van het volume dat u wilt verwijderen. Als het volume dat u wilt verwijderen niet offline is, neemt u het eerst offline. Volg de stappen in [Een volume offline uitvoeren](#take-a-volume-offline).
+4. Nadat het volume offline is, selecteert u het volume, klikt u met de rechtermuisknop om het contextmenu aan te roepen en selecteert u **Verwijderen**.
 
-    ![Selecteer verwijderen in het context menu](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Verwijderen uit contextmenu selecteren](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. Bekijk en selecteer op de Blade **verwijderen** het selectie vakje voor de impact van het verwijderen van een volume. Wanneer u een volume verwijdert, gaan alle gegevens die zich op het volume bevinden verloren. 
+5. Controleer en schakel in het blad **Verwijderen** het selectievakje in tegen de impact van het verwijderen van een volume. Wanneer u een volume verwijdert, gaan alle gegevens die zich op het volume bevinden, verloren. 
 
     ![Wijzigingen opslaan en bevestigen](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. Nadat het volume is verwijderd, wordt de lijst in tabel vorm met volumes bijgewerkt om het verwijderen aan te geven.
+6. Nadat het volume is verwijderd, wordt de tabeltabellijst met volumes bijgewerkt om de verwijdering aan te geven.
 
-    ![Bijgewerkte volume lijst](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
+    ![Bijgewerkte volumelijst](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Als u een lokaal vastgemaakt volume verwijdert, wordt de beschik bare ruimte voor nieuwe volumes mogelijk niet onmiddellijk bijgewerkt. De StorSimple-Apparaatbeheer service werkt de lokale beschik bare ruimte regel matig bij. We raden u aan een paar minuten te wachten voordat u het nieuwe volume probeert te maken.
+   > Als u een lokaal vastgemaakt volume verwijdert, wordt de beschikbare ruimte voor nieuwe volumes mogelijk niet onmiddellijk bijgewerkt. De StorSimple Device Manager Service werkt de beschikbare lokale ruimte periodiek bij. We raden u aan een paar minuten te wachten voordat u het nieuwe volume probeert te maken.
    >
-   > Als u een lokaal vastgemaakt volume verwijdert en vervolgens een ander lokaal vastgemaakt volume verwijdert onmiddellijk daarna, worden de taken voor het verwijderen van het volume sequentieel uitgevoerd. De eerste taak voor het verwijderen van het volume moet worden voltooid voordat de volgende taak voor het verwijderen van het volume kan worden gestart.
+   > Als u bovendien een lokaal vastgemaakt volume verwijdert en vervolgens onmiddellijk daarna een ander lokaal vastgemaakt volume verwijdert, worden de taken voor het verwijderen van het volume achtereenvolgens uitgevoerd. De eerste taak voor het verwijderen van het volume moet worden voltooid voordat de volgende taak voor het verwijderen van het volume kan beginnen.
 
-## <a name="monitor-a-volume"></a>Een volume bewaken
+## <a name="monitor-a-volume"></a>Een volume controleren
 
-Met volume bewaking kunt u I/O-gerelateerde statistieken voor een volume verzamelen. Bewaking is standaard ingeschakeld voor de eerste 32 volumes die u maakt. Het controleren van extra volumes is standaard uitgeschakeld. 
+Met volumebewaking u I/O-gerelateerde statistieken verzamelen voor een volume. Controle is standaard ingeschakeld voor de eerste 32 volumes die u maakt. Het controleren van extra volumes is standaard uitgeschakeld. 
 
 > [!NOTE]
-> Bewaking van gekloonde volumes is standaard uitgeschakeld.
+> Controle van gekloonde volumes is standaard uitgeschakeld.
 
 
-Voer de volgende stappen uit om de bewaking van een volume in of uit te scha kelen.
+Voer de volgende stappen uit om de bewaking voor een volume in of uit te schakelen.
 
-#### <a name="to-enable-or-disable-volume-monitoring"></a>Volume bewaking in-of uitschakelen
+#### <a name="to-enable-or-disable-volume-monitoring"></a>Volumebewaking in- of uitschakelen
 
-1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de lijst in tabel vorm van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik op **instellingen > volumes**.
-2. Selecteer in de lijst in tabel vorm van volumes het volume en klik met de rechter muisknop om het context menu aan te roepen. Selecteer **wijzigen**.
-3. Selecteer in de Blade **volume wijzigen** voor **controle** de optie **inschakelen** of **uitschakelen** om bewaking in of uit te scha kelen.
+1. Ga naar de StorSimple-apparaatbeheerfunctie en klik op **Apparaten**. Selecteer in de tabeltabelvermelding van de apparaten het apparaat met het volume dat u wilt wijzigen. Klik **op Instellingen > Volumes**.
+2. Selecteer in de tabeltabellijst met volumes het volume en klik met de rechtermuisknop om het contextmenu aan te roepen. Selecteer **Wijzigen**.
+3. Selecteer in het **volumeblad wijzigen** voor **Controle** selecteren **in-** of **uitschakelen** om bewaking in- of uit te schakelen.
 
     ![Bewaking uitschakelen](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Klik op **Opslaan** en klik op **Ja**om de bevestiging te bevestigen. In het Azure Portal wordt een melding weer gegeven voor het bijwerken van het volume en vervolgens een geslaagd bericht nadat het volume is bijgewerkt.
+4. Klik **op Opslaan** en klik wanneer u om bevestiging wordt gevraagd op **Ja**. De Azure-portal geeft een melding weer voor het bijwerken van het volume en vervolgens een succesbericht, nadat het volume is bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [klonen van een StorSimple-volume](storsimple-8000-clone-volume-u2.md).
-* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Meer informatie over het [klonen van een StorSimple-volume.](storsimple-8000-clone-volume-u2.md)
+* Meer informatie over het [gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Failover en herstel na nood gevallen naar hetzelfde StorSimple 8000-apparaat
-description: Meer informatie over hoe u een failover voor uw StorSimple-apparaat kunt uitvoeren op hetzelfde apparaat.
+title: Failover en disaster recovery naar hetzelfde StorSimple 8000-apparaat
+description: Meer informatie over hoe u falen op uw StorSimple-apparaat op hetzelfde apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,72 +15,72 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471802"
 ---
-# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Failover van het fysieke StorSimple-apparaat naar hetzelfde apparaat
+# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Fail over uw StorSimple fysieke apparaat naar hetzelfde apparaat
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie worden de stappen beschreven die nodig zijn voor het uitvoeren van een failover van een StorSimple-fysieke apparaat in een 8000-serie als er een nood geval is. StorSimple maakt gebruik van de functie Failover van het apparaat om gegevens te migreren van een fysiek bron apparaat in het Data Center naar een ander fysiek apparaat. De richt lijnen in deze zelf studie zijn van toepassing op fysieke apparaten uit de 8000 StorSimple-serie met software versies update 3 en hoger.
+Deze zelfstudie beschrijft de stappen die nodig zijn om te mislukken over een StorSimple 8000-serie fysiek apparaat voor zichzelf als er een ramp. StorSimple gebruikt de failoverfunctie voor apparaten om gegevens van een fysiek bronapparaat in het datacenter te migreren naar een ander fysiek apparaat. De richtlijnen in deze zelfstudie zijn van toepassing op fysieke apparaten uit de StorSimple 8000-serie met softwareversies Update 3 en hoger.
 
-Voor meer informatie over failover van apparaten en hoe deze wordt gebruikt om een nood geval te herstellen, gaat u naar [failover en herstel na nood gevallen voor apparaten uit de StorSimple-serie van 8000](storsimple-8000-device-failover-disaster-recovery.md).
+Ga voor meer informatie over apparaatfailover en hoe het wordt gebruikt om te herstellen van een ramp, naar [Failover en disaster recovery voor StorSimple 8000-serie apparaten.](storsimple-8000-device-failover-disaster-recovery.md)
 
-Als u een failover wilt uitvoeren voor een fysiek apparaat naar een ander fysiek apparaat, gaat u naar een [failover naar hetzelfde fysieke StorSimple-apparaat](storsimple-8000-device-failover-physical-device.md). Als u een failover wilt uitvoeren voor een StorSimple-fysiek apparaat naar een StorSimple Cloud Appliance, gaat u naar [een failover naar een StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md).
+Als u niet over een fysiek apparaat naar een ander fysiek apparaat wilt gaan, gaat u naar [Fail over naar hetzelfde Fysieke StorSimple-apparaat](storsimple-8000-device-failover-physical-device.md). Als u niet wilt falen over een StorSimple-fysiek apparaat naar een StorSimple Cloud Appliance, gaat u naar [Fail over naar een StorSimple Cloud Appliance.](storsimple-8000-device-failover-cloud-appliance.md)
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u de overwegingen voor failover van het apparaat hebt gecontroleerd. Ga voor meer informatie naar [algemene overwegingen voor failover van het apparaat](storsimple-8000-device-failover-disaster-recovery.md).
+- Controleer of u de overwegingen voor de failover van het apparaat hebt gecontroleerd. Ga voor meer informatie naar [Algemene overwegingen voor het mislukken van het apparaat.](storsimple-8000-device-failover-disaster-recovery.md)
 
 
-## <a name="steps-to-fail-over-to-the-same-device"></a>Stappen voor het uitvoeren van een failover naar hetzelfde apparaat
+## <a name="steps-to-fail-over-to-the-same-device"></a>Stappen om niet naar hetzelfde apparaat te gaan
 
-Voer de volgende stappen uit als u een failover naar hetzelfde apparaat moet uitvoeren.
+Voer de volgende stappen uit als u niet naar hetzelfde apparaat moet gaan.
 
-1. Maak Cloud momentopnamen van alle volumes op het apparaat. Ga voor meer informatie naar [gebruik StorSimple Apparaatbeheer service om back-ups te maken](storsimple-8000-manage-backup-policies-u2.md).
-2. Stel de fabrieks instellingen van uw apparaat opnieuw in. Volg de gedetailleerde instructies voor het [opnieuw instellen van een StorSimple-apparaat op de standaard fabrieks instellingen](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-3. Ga naar de StorSimple-Apparaatbeheer service en selecteer vervolgens **apparaten**. Op de Blade **apparaten** moet het oude apparaat als **offline**worden weer gegeven.
+1. Maak cloudsnapshots van alle volumes in uw apparaat. Ga voor meer informatie naar [StorSimple Device Manager-service gebruiken om back-ups te maken.](storsimple-8000-manage-backup-policies-u2.md)
+2. Stel uw apparaat terug op standaardinstellingen in de fabriek. Volg de gedetailleerde instructies [om een StorSimple-apparaat opnieuw in te stellen naar de standaardinstellingen in de fabriek.](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)
+3. Ga naar de StorSimple Device Manager-service en selecteer **Apparaten**. In het **apparaatblad** moet het oude apparaat worden weergegeven als **Offline**.
 
-    ![Bron apparaat is offline](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
+    ![Bronapparaat offline](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. Configureer uw apparaat en registreer het opnieuw met uw StorSimple-Apparaatbeheer service. Het nieuwe geregistreerde apparaat moet zo worden weer gegeven **dat het kan worden ingesteld**. De apparaatnaam voor het nieuwe apparaat is hetzelfde als het oude apparaat, maar toegevoegd met een cijfer om aan te geven dat het apparaat opnieuw is ingesteld op de standaard fabriek en opnieuw wordt geregistreerd.
+4. Configureer uw apparaat en registreer het opnieuw met uw StorSimple Device Manager-service. Het nieuw geregistreerde apparaat moet worden weergegeven als **klaar om in te stellen**. De apparaatnaam voor het nieuwe apparaat is hetzelfde als het oude apparaat, maar wordt toegevoegd met een cijfer om aan te geven dat het apparaat standaard is gereset naar de fabriek en opnieuw is geregistreerd.
 
-    ![Nieuw geregistreerd apparaat gereed voor configuratie](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Voor het nieuwe apparaat voert u de installatie van het apparaat uit. Ga voor meer informatie naar [stap 4: minimale installatie van het apparaat volt ooien](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Op de Blade **apparaten** wordt de status van het apparaat gewijzigd in **online**.
+    ![Nieuw geregistreerd apparaat klaar om in te stellen](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
+5. Voer voor het nieuwe apparaat de installatie van het apparaat in. Ga voor meer informatie naar [Stap 4: Minimale apparaatinstelling voltooien.](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup) Op **het** apparaatblad verandert de status van het apparaat in **Online**.
 
    > [!IMPORTANT]
-   > **Voltooi eerst de minimale configuratie of uw DR kan mislukken.**
+   > **Voer eerst de minimale configuratie in of uw DR kan mislukken.**
 
     ![Nieuw geregistreerd apparaat online](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. Selecteer het oude apparaat (status offline) en klik op de opdracht balk op **failover**. Selecteer in de Blade **failover** een oud apparaat als bron en geef het doel apparaat op als het nieuwe geregistreerde apparaat.
+6. Selecteer het oude apparaat (status offline) en klik op de opdrachtbalk op **Mislukkeren**. Selecteer **in het blad Fail over** het oude apparaat als bron en geef het doelapparaat op als het nieuw geregistreerde apparaat.
 
     ![Overzicht van failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    Voor gedetailleerde instructies raadpleegt u failover naar een ander fysiek apparaat.
+    Raadpleeg fail over naar een ander fysiek apparaat voor gedetailleerde instructies.
 
-7. Er wordt een taak voor het herstellen van een apparaat gemaakt die u kunt bewaken vanuit de Blade **taken** .
+7. Er wordt een taak voor het herstellen van apparaten gemaakt die u controleren vanuit het blade **Jobs.**
 
-8. Nadat de taak is voltooid, opent u het nieuwe apparaat en gaat u naar de Blade **volume containers** . Controleer of alle volume containers van het oude apparaat naar het nieuwe apparaat zijn gemigreerd.
+8. Nadat de taak is voltooid, gaat u naar het nieuwe apparaat en navigeert u naar het blad van de **volumecontainers.** Controleer of alle volumecontainers van het oude apparaat zijn gemigreerd naar het nieuwe apparaat.
 
-   ![Gemigreerde volume containers](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
+   ![Volumecontainers gemigreerd](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
-9. Nadat de failover is voltooid, kunt u het oude apparaat deactiveren en verwijderen uit de portal. Selecteer het oude apparaat (offline), klik met de rechter muisknop en selecteer **deactiveren**. Nadat het apparaat is gedeactiveerd, wordt de status van het apparaat bijgewerkt.
+9. Nadat de failover is voltooid, u het oude apparaat uit de portal deactiveren en verwijderen. Selecteer het oude apparaat (offline), klik met de rechtermuisknop en selecteer **Vervolgens Deactiveren**. Nadat het apparaat is gedeactiveerd, wordt de status van het apparaat bijgewerkt.
 
-     ![Bron apparaat gedeactiveerd](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
+     ![Bronapparaat gedeactiveerd](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
 
-10. Selecteer het gedeactiveerde apparaat, klik met de rechter muisknop en selecteer **verwijderen**. Hiermee verwijdert u het apparaat uit de lijst met apparaten.
+10. Selecteer het gedeactiveerde apparaat, klik met de rechtermuisknop en selecteer **Verwijderen**. Hiermee wordt het apparaat uit de lijst met apparaten verwijderd.
 
-    ![Bron apparaat is verwijderd](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
+    ![Bronapparaat verwijderd](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Nadat u een failover hebt uitgevoerd, moet u mogelijk [uw StorSimple-apparaat deactiveren of verwijderen](storsimple-8000-deactivate-and-delete-device.md).
-* Voor informatie over het gebruik van de StorSimple Apparaatbeheer-service gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
+* Nadat u een failover hebt uitgevoerd, moet u mogelijk [uw StorSimple-apparaat deactiveren of verwijderen.](storsimple-8000-deactivate-and-delete-device.md)
+* Ga voor informatie over het gebruik van de StorSimple Device Manager-service naar [De StorSimple Device Manager-service gebruiken om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
 

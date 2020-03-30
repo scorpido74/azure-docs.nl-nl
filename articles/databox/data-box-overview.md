@@ -10,17 +10,17 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240714"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
 
 Met de cloudoplossing Microsoft Azure Data Box kunt u terabytes aan on-premises gegevens op een snelle, goedkope en betrouwbare manier naar Azure verzenden. De veilige gegevensoverdracht wordt versneld door u een systeemeigen Data Box-opslagapparaat toe te sturen. Elk opslagapparaat heeft een maximaal bruikbare opslagcapaciteit van 80 TB en wordt via een regionale koerier naar uw datacenter vervoerd. Dit apparaat heeft een stevige behuizing om uw gegevens tijdens het verzenden te beschermen.
 
-U kunt het Data Box-apparaat bestellen via de Azure Portal. Nadat het apparaat is ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
+U kunt het Data Box-apparaat bestellen via de Azure Portal. Nadat het apparaat is ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in Azure Portal.
 
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
@@ -30,7 +30,7 @@ Data Box is ideaal voor het overbrengen van gegevens met een totale omvang van 4
  - **Eenmalige migratie**: wanneer grote aantallen on-premises gegevens worden verplaatst naar Azure. 
      - Verplaatsen van een mediabibliotheek van offline tapes naar Azure, voor het maken van een online mediabibliotheek.
      - Uw virtuele machines, SQL Server en toepassingen migreren naar Azure
-     - Verplaatsen van historische gegevens naar Azure voor gedetailleerde analyse en rapportage met HDInsight.
+     - Historische gegevens naar Azure verplaatsen voor gedetailleerde analyse en rapportage met HDInsight
 
  - **Initiële bulkoverdracht**: wanneer eerst een grote overdracht plaatsvindt met Data Box (seed), gevolgd door incrementele overdrachten via het netwerk. 
      - Bijvoorbeeld: voor de eerste grote back-up van historische gegevens naar Azure wordt gebruikgemaakt van een back-upoplossing van Commvault of Data Box. Zodra dat is voltooid, worden gegevens incrementeel via het netwerk overgebracht naar Azure-opslag.
@@ -109,9 +109,9 @@ Tijdens dit proces wordt u via e-mail op de hoogte gesteld van alle statuswijzig
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Data Box kunt gegevens overdragen op basis van de regio waarin de service is geïmplementeerd, het land/de regio waarnaar het apparaat wordt verzonden en het Azure Storage-doel account waar u de gegevens overdraagt. 
+Data Box kan gegevens overdragen op basis van de regio waarin de service wordt geïmplementeerd, land/regio waarnaar het apparaat wordt verzonden en het doelAzure-opslagaccount waar u de gegevens overdraagt. 
 
-- Beschik baarheid van de **service** : Ga naar Azure- [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor meer informatie over de beschik baarheid van regio's. Data Box kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
+- **Beschikbaarheid van service** - Ga voor informatie over de beschikbaarheid van regio's naar [Azure-producten die beschikbaar zijn per regio.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) Data Box kan ook worden geïmplementeerd in de Azure Government Cloud. Zie [Wat is Azure-overheid voor](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)meer informatie?
 
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.  
 
@@ -119,8 +119,8 @@ Data Box kunt gegevens overdragen op basis van de regio waarin de service is ge�
 ## <a name="next-steps"></a>Volgende stappen
 
 - De [Systeemvereisten voor Data Box](data-box-system-requirements.md) lezen.
-- Informatie over de [limieten voor Data Box](data-box-limits.md).
-- [Azure Data Box](data-box-quickstart-portal.md) snel implementeren in de Azure-portal.
+- Informatie over de [Limieten voor Data Box](data-box-limits.md).
+- Snel [Azure Data Box](data-box-quickstart-portal.md) in Azure Portal implementeren.
 
 
 

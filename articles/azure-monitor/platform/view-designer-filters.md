@@ -1,75 +1,75 @@
 ---
-title: Filters in Azure Monitor weergaven | Microsoft Docs
-description: Met een filter in een Azure Monitor weergave kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
+title: Filters in Azure Monitor-weergaven | Microsoft Documenten
+description: Met een filter in een Azure Monitor-weergave kunnen gebruikers de gegevens in de weergave filteren op de waarde van een bepaalde eigenschap zonder de weergave zelf te wijzigen.  In dit artikel wordt beschreven hoe u een filter gebruikt en een filter toevoegen aan een aangepaste weergave.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
 ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658571"
 ---
-# <a name="filters-in-azure-monitor-views"></a>Filters in Azure Monitor weer gaven
-Met een **filter** in een [Azure monitor weergave](view-designer.md) kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  Zo kunt u gebruikers van uw weer gave toestaan om de weer gave alleen te filteren op gegevens van een bepaalde computer of een set computers.  U kunt meerdere filters maken op één weer gave zodat gebruikers meerdere eigenschappen kunnen filteren.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
+# <a name="filters-in-azure-monitor-views"></a>Filters in Azure Monitor-weergaven
+Met een **filter** in een [Azure Monitor-weergave](view-designer.md) kunnen gebruikers de gegevens in de weergave filteren op de waarde van een bepaalde eigenschap zonder de weergave zelf te wijzigen.  U gebruikers van uw weergave bijvoorbeeld toestaan de weergave alleen vanaf een bepaalde computer of een bepaalde computer te filteren.  U meerdere filters maken in één weergave, zodat gebruikers op meerdere eigenschappen kunnen filteren.  In dit artikel wordt beschreven hoe u een filter gebruikt en een filter toevoegen aan een aangepaste weergave.
 
 ## <a name="using-a-filter"></a>Een filter gebruiken
-Klik op het datum-en tijd bereik boven aan een weer gave om de vervolg keuzelijst te openen waar u het datum-en tijd bereik voor de weer gave kunt wijzigen.
+Klik op het datumtijdbereik boven aan een weergave om de vervolgkeuzelijst te openen waarin u het datumtijdbereik voor de weergave wijzigen.
 
-![Filter voorbeeld](media/view-designer-filters/filters-example-time.png)
+![Voorbeeld van filter](media/view-designer-filters/filters-example-time.png)
 
-Klik op het **+** om een filter toe te voegen met behulp van aangepaste filters die voor de weer gave zijn gedefinieerd. Selecteer een waarde voor het filter in de vervolg keuzelijst of typ een waarde. Blijf filters toevoegen door te klikken op de **+** . 
+Klik **+** op de optie om een filter toe te voegen met aangepaste filters die zijn gedefinieerd voor de weergave. Selecteer een waarde voor het filter in de vervolgkeuzelijst of typ een waarde. Doorgaan met het toevoegen **+** van filters door op de . 
 
 
-![Filter voorbeeld](media/view-designer-filters/filters-example-custom.png)
+![Voorbeeld van filter](media/view-designer-filters/filters-example-custom.png)
 
 Als u alle waarden voor een filter verwijdert, wordt dat filter niet meer toegepast.
 
 
 ## <a name="creating-a-filter"></a>Een filter maken
 
-Een filter maken op het tabblad **filters** bij het [bewerken van een weer gave](view-designer.md).  Het filter is globaal voor de weer gave en is van toepassing op alle onderdelen in de weer gave.  
+Maak een filter op het tabblad **Filters** bij [het bewerken van een weergave](view-designer.md).  Het filter is globaal voor de weergave en is van toepassing op alle onderdelen in de weergave.  
 
-![Instellingen filteren](media/view-designer-filters/filters-settings.png)
+![Filterinstellingen](media/view-designer-filters/filters-settings.png)
 
-De volgende tabel beschrijft de instellingen voor een filter.
+In de volgende tabel worden de instellingen voor een filter beschreven.
 
 | Instelling | Beschrijving |
 |:---|:---|
-| Veldnaam | De naam van het veld dat wordt gebruikt voor het filteren.  Dit veld moet overeenkomen met het veld samenvatten in de **query voor waarden**. |
-| Query voor waarden | Query die moet worden uitgevoerd om filter vervolg keuzelijst voor de gebruiker in te vullen.  Deze query moet ofwel een [samen vatting](/azure/kusto/query/summarizeoperator) ofwel een [DISTINCT](/azure/kusto/query/distinctoperator) gebruiken om unieke waarden op te geven voor een bepaald veld, en dit moet overeenkomen met de naam van het **veld**.  U kunt [sorteren](/azure/kusto/query/sortoperator) gebruiken om de waarden te sorteren die voor de gebruiker worden weer gegeven. |
-| Label | De naam voor het veld dat wordt gebruikt in query's die het filter ondersteunen en wordt ook weer gegeven voor de gebruiker. |
+| Veldnaam | Naam van het veld dat wordt gebruikt voor filtering.  Dit veld moet overeenkomen met het veld Samenvatten in **Query voor Waarden**. |
+| Query voor waarden | Query die moet worden uitgevoerd om de vervolgkeuzelijst voor de gebruiker in te vullen.  Deze query moet [samenvatten](/azure/kusto/query/summarizeoperator) of [onderscheiden](/azure/kusto/query/distinctoperator) gebruiken om unieke waarden voor een bepaald veld te bieden en moet overeenkomen met de **veldnaam**.  U [sorteren](/azure/kusto/query/sortoperator) gebruiken om de waarden te sorteren die aan de gebruiker worden weergegeven. |
+| Label | Naam voor het veld dat wordt gebruikt in query's die het filter ondersteunen en wordt ook weergegeven aan de gebruiker. |
 
 ### <a name="examples"></a>Voorbeelden
 
-De volgende tabel bevat enkele voor beelden van algemene filters.  
+De volgende tabel bevat een paar voorbeelden van algemene filters.  
 
 | Veldnaam | Query voor waarden | Label |
 |:--|:--|:--|
-| Computer   | Unieke &#124; heartbeat- &#124; computer sorteren op computer ASC | Computers |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| Ernstniveau | Syslog &#124; DISTINCT-SeverityLevel | Severity |
-| SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | ChangeType |
+| Computer   | Heartbeat &#124; verschillende computer &#124; sorteren op computer asc | Computers |
+| EventLevelName | Gebeurtenis &#124; afzonderlijke EventLevelName | Severity |
+| ErnstNiveau | Syslog &#124; verschillende ernstniveau | Severity |
+| SvcChangeType | ConfigurationChange &#124; afzonderlijke svcChangeType | ChangeType (ChangeType) |
 
 
-## <a name="modify-view-queries"></a>Weergave query's wijzigen
+## <a name="modify-view-queries"></a>Weergavequery's wijzigen
 
-Een filter kan alleen effect hebben als u query's in de weer gave wijzigt om op de geselecteerde waarden te filteren.  Als u geen query's in de weer gave wijzigt, hebben alle waarden die de gebruiker selecteert, geen effect.
+Als een filter enig effect heeft, moet u eventuele query's in de weergave wijzigen om op de geselecteerde waarden te filteren.  Als u geen query's in de weergave wijzigt, hebben alle waarden die de gebruiker selecteert geen effect.
 
-De syntaxis voor het gebruik van een filter waarde in een query is: 
+De syntaxis voor het gebruik van een filterwaarde in een query is: 
 
     where ${filter name}  
 
-Als uw weer gave bijvoorbeeld een query bevat die gebeurtenissen retourneert en een filter gebruikt met de naam _computers_, kunt u de volgende query gebruiken.
+Als in uw weergave bijvoorbeeld een query is weergegeven die gebeurtenissen retourneert en een filter met de naam _Computers_gebruikt, u de volgende query gebruiken.
 
     Event | where ${Computers} | summarize count() by EventLevelName
 
-Als u een ander filter met de naam Ernst hebt toegevoegd, kunt u de volgende query gebruiken om beide filters te gebruiken.
+Als u een ander filter met de naam Ernst hebt toegevoegd, u de volgende query gebruiken om beide filters te gebruiken.
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de [visualisatie onderdelen](view-designer-parts.md) die u kunt toevoegen aan uw aangepaste weer gave.
+* Meer informatie over de [visualisatieonderdelen die](view-designer-parts.md) u toevoegen aan uw aangepaste weergave.

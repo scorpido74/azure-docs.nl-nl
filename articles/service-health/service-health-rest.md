@@ -1,24 +1,24 @@
 ---
-title: Azure resource Health-gebeurtenissen ophalen met behulp van de REST API | Microsoft Docs
-description: Gebruik de Azure REST Api's om de status gebeurtenissen voor uw Azure-resources op te halen.
+title: Statusgebeurtenissen voor Azure-bronnen bijwerken met de REST-API | Microsoft Documenten
+description: Gebruik de Azure REST API's om de statusgebeurtenissen voor uw Azure-bronnen op te halen.
 ms.topic: conceptual
 ms.date: 06/06/2017
 ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77653998"
 ---
-# <a name="get-resource-health-using-the-rest-api"></a>Resource Health ophalen met behulp van de REST API 
+# <a name="get-resource-health-using-the-rest-api"></a>Resourcestatus ophalen met de REST-API 
 
-In dit artikel wordt uitgelegd hoe u een lijst met status gebeurtenissen voor de Azure-resources in uw abonnement kunt ophalen met behulp van de [Azure-rest API](/rest/api/azure/).
+In dit voorbeeldartikel ziet u hoe u een lijst met statusgebeurtenissen voor de Azure-resources in uw abonnement ophaalt met behulp van de [Azure REST API.](/rest/api/azure/)
 
-Volledige referentie documentatie en aanvullende voor beelden voor de REST API zijn beschikbaar in de [Azure monitor rest-referentie](/rest/api/monitor). 
+Volledige referentiedocumentatie en aanvullende voorbeelden voor de REST-API zijn beschikbaar in de [Azure Monitor REST-referentie.](/rest/api/monitor) 
 
 ## <a name="build-the-request"></a>De aanvraag maken
 
-Gebruik de volgende `GET` HTTP-aanvraag om de status gebeurtenissen voor uw abonnement op te geven voor de periode tussen `2018-05-16` en `2018-06-20`.
+Gebruik de `GET` volgende HTTP-aanvraag om de statusgebeurtenissen voor `2018-05-16` uw `2018-06-20`abonnement weer te geven voor het tijdsbereik tussen en .
 
 ```http
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -30,25 +30,25 @@ De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
-|*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
+|*Inhoudstype:*|Vereist. Ingesteld op `application/json`.|  
 |*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-parameters
 
 | Name | Beschrijving |
 | :--- | :---------- |
-| subscriptionId | De abonnements-ID waarmee een Azure-abonnement wordt geïdentificeerd. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| api-version | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document worden de API-versie `2015-04-01`beschreven, die is opgenomen in de bovenstaande URL.  |
-| $filter | De filter optie om de set geretourneerde resultaten te reduceren. De toegestane patronen voor deze para meter zijn beschikbaar [in de verwijzing voor de bewerking activiteiten logboeken](/rest/api/monitor/activitylogs/list#uri-parameters). In het voor beeld wordt weer gegeven, worden alle gebeurtenissen vastgelegd in een tijds bereik tussen 2018-05-16 en 2018-06-20 |
+| subscriptionId | De abonnements-ID die een Azure-abonnement identificeert. Zie Werken met meerdere abonnementen als u meerdere abonnementen [hebt.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) |
+| api-versie | De API-versie die u voor de aanvraag moet gebruiken.<br /><br /> Dit document heeft `2015-04-01`betrekking op api-versie , opgenomen in de bovenstaande URL.  |
+| $filter | De filteroptie om de set geretourneerde resultaten te verminderen. De toegestane patronen voor deze parameter zijn beschikbaar [in de verwijzing naar de bewerking Activiteitslogboeken](/rest/api/monitor/activitylogs/list#uri-parameters). In het getoonde voorbeeld worden alle gebeurtenissen in een tijdsbereik tussen 2018-05-16 en 2018-06-20 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Aanvraagbody
 
-Er is geen aanvraag tekst nodig voor deze bewerking.
+Er is geen aanvraaginstantie nodig voor deze operatie.
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-De status code 200 wordt geretourneerd met een lijst met status waarden die overeenkomt met de filter parameter, samen met een `nextlink`-URI om de volgende pagina met resultaten op te halen.
+Statuscode 200 wordt geretourneerd met een lijst met waarden voor `nextlink` statusgebeurtenissen die overeenkomen met de filterparameter, samen met een URI om de volgende pagina met resultaten op te halen.
 
 ## <a name="example-response"></a>Voorbeeld van een antwoord 
 

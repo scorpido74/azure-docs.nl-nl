@@ -1,7 +1,7 @@
 ---
-title: Rollen in uw werk ruimte beheren
+title: Rollen in uw werkruimte beheren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over toegang tot een Azure Machine Learning-werk ruimte met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+description: Meer informatie over hoe u toegang krijgt tot een Azure Machine Learning-werkruimte met behulp van rbac (Role-based access control).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,48 +12,48 @@ author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
 ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270093"
 ---
-# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
+# <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werkruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
+In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werkruimte beheert. [RBAC (Role-based access control)](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-bronnen te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee ze toegang krijgen tot bronnen. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
 
-## <a name="default-roles"></a>Standaard rollen
+## <a name="default-roles"></a>Standaardrollen
 
-Een Azure Machine Learning-werkruimte is een Azure-resource. Net als andere Azure-resources, heeft een nieuwe Azure Machine Learning-werkruimte drie standaardrollen wanneer deze wordt gemaakt. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
+Een Azure Machine Learning-werkruimte is een Azure-bron. Net als andere Azure-resources wordt bij het maken van een nieuwe Azure Machine Learning-werkruimte drie standaardrollen geleverd. U gebruikers aan de werkruimte toevoegen en deze toewijzen aan een van deze ingebouwde rollen.
 
 | Rol | Toegangsniveau |
 | --- | --- |
-| **Lezer** | Alleen-lezenacties in de werkruimte. Lezers kunnen assets in een werkruimte opsommen en bekijken, maar kunnen ze niet maken of bijwerken. |
-| **Inzender** | Assets in een werkruimte bekijken, maken, bewerken of verwijderen (waar van toepassing). Zo kunnen inzenders een experiment maken, een rekencluster maken of koppelen, een uitvoering starten en een webservice implementeren. |
-| **Eigenaar** | Volledige toegang tot de werkruimte, inclusief de mogelijkheid om assets in een werkruimte te bekijken, maken, bewerken of verwijderen (waar van toepassing). Daarnaast kunt u roltoewijzingen wijzigen. |
+| **Lezer** | Alleen-lezen acties in de werkruimte. Lezers kunnen assets in een werkruimte aanbieden en weergeven, maar kunnen deze elementen niet maken of bijwerken. |
+| **Inzender** | Elementen in een werkruimte weergeven, maken, bewerken of verwijderen (indien van toepassing). Bijdragers kunnen bijvoorbeeld een experiment maken, een compute cluster maken of koppelen, een run verzenden en een webservice implementeren. |
+| **Eigenaar** | Volledige toegang tot de werkruimte, inclusief de mogelijkheid om (indien van toepassing) elementen in een werkruimte weer te geven, te maken, te bewerken of te verwijderen. Daarnaast u roltoewijzingen wijzigen. |
 
 > [!IMPORTANT]
-> De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [How RBAC werkt](/azure/role-based-access-control/overview#how-rbac-works)voor meer informatie.
+> Roltoegang kan worden beperkt tot meerdere niveaus in Azure. Iemand met eigenaartoegang tot een werkruimte heeft bijvoorbeeld geen eigenaartoegang tot de brongroep die de werkruimte bevat. Zie [Hoe RBAC werkt](/azure/role-based-access-control/overview#how-rbac-works)voor meer informatie.
 
-Zie [ingebouwde rollen voor Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
+Zie [Ingebouwde rollen voor Azure voor](/azure/role-based-access-control/built-in-roles)meer informatie over specifieke ingebouwde rollen.
 
-## <a name="manage-workspace-access"></a>Toegang tot de werk ruimte beheren
+## <a name="manage-workspace-access"></a>Werkruimtetoegang beheren
 
-Als u de eigenaar van een werkruimte bent, kunt u rollen voor de werkruimte toevoegen en verwijderen. U kunt ook rollen toewijzen aan gebruikers. Gebruik de volgende koppelingen om te ontdekken hoe u toegang kunt beheren:
-- [Azure-portal-gebruikersinterface](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+Als u eigenaar bent van een werkruimte, u rollen voor de werkruimte toevoegen en verwijderen. U ook rollen toewijzen aan gebruikers. Gebruik de volgende koppelingen om te ontdekken hoe u de toegang beheren:
+- [Gebruikersinterface van Azure-portal](/azure/role-based-access-control/role-assignments-portal)
+- [Powershell](/azure/role-based-access-control/role-assignments-powershell)
+- [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST-API](/azure/role-based-access-control/role-assignments-rest)
 - [Azure Resource Manager-sjablonen](/azure/role-based-access-control/role-assignments-template)
 
-Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u ook een CLI-opdracht gebruiken om rollen toe te wijzen aan gebruikers.
+Als u de [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, u ook een OPDRACHT CLI gebruiken om rollen toe te wijzen aan gebruikers.
 
 ```azurecli-interactive 
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-Het `user` veld is het e-mail adres van een bestaande gebruiker in het exemplaar van Azure Active Directory waar het bovenliggende abonnement van de werk ruimte woont. Hier volgt een voor beeld van het gebruik van deze opdracht:
+Het `user` veld is het e-mailadres van een bestaande gebruiker in het exemplaar van Azure Active Directory waar het abonnement voor de ouder van de werkruimte leeft. Hier volgt een voorbeeld van het gebruik van deze opdracht:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -61,12 +61,12 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
-Als de ingebouwde rollen niet voldoen, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
+Als de ingebouwde rollen onvoldoende zijn, u aangepaste rollen maken. Aangepaste rollen hebben mogelijk machtigingen voor lezen, schrijven, verwijderen en berekenen van resources in die werkruimte. U de rol beschikbaar maken op een specifiek werkplekniveau, een specifiek resourcegroepniveau of een specifiek abonnementsniveau.
 
 > [!NOTE]
-> U moet een eigenaar van de resource op dat niveau zijn om aangepaste rollen te maken binnen die resource.
+> U moet eigenaar zijn van de resource op dat niveau om aangepaste rollen binnen die resource te maken.
 
-Als u een aangepaste rol wilt maken, maakt u eerst een JSON-bestand met een roldefinitie waarmee u de machtiging en het bereik voor de rol opgeeft. In het volgende voor beeld wordt een aangepaste rol met de naam ' data wetenschapper ' gedefinieerd op een specifiek niveau van de werk ruimte:
+Als u een aangepaste rol wilt maken, maakt u eerst een JSON-bestand voor roldefinitie waarin de machtiging en het bereik voor de rol wordt opgegeven. In het volgende voorbeeld wordt een aangepaste rol gedefinieerd met de naam 'Gegevenswetenschapper' die op een specifiek werkruimteniveau is uitgevoerd:
 
 `data_scientist_role.json` :
 ```json
@@ -87,30 +87,30 @@ Als u een aangepaste rol wilt maken, maakt u eerst een JSON-bestand met een rold
 }
 ```
 
-U kunt het `AssignableScopes` veld wijzigen om het bereik van deze aangepaste rol in te stellen op abonnements niveau, op het niveau van de resource groep of op een bepaald niveau van de werk ruimte.
+U `AssignableScopes` het veld wijzigen om het bereik van deze aangepaste rol in te stellen op abonnementsniveau, het niveau van de resourcegroep of een specifiek werkruimteniveau.
 
-Deze aangepaste rol kan alles in de werk ruimte doen, met uitzonde ring van de volgende acties:
+Deze aangepaste rol kan alles in de werkruimte doen, behalve voor de volgende acties:
 
-- Het is niet mogelijk om een compute-resource te maken of bij te werken.
-- Er kan geen reken resource worden verwijderd.
-- Er kunnen geen roltoewijzingen worden toegevoegd, verwijderd of gewijzigd.
-- De werk ruimte kan niet worden verwijderd.
+- Het kan geen compute resource maken of bijwerken.
+- Een compute resource kan niet worden verwijderd.
+- Het kan roltoewijzingen niet toevoegen, verwijderen of wijzigen.
+- De werkruimte kan niet worden verwijderd.
 
-Gebruik de volgende Azure CLI-opdracht om deze aangepaste functie te implementeren:
+Als u deze aangepaste rol wilt implementeren, gebruikt u de volgende opdracht Azure CLI:
 
 ```azurecli-interactive 
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U kunt deze rol nu toevoegen en toewijzen in de Azure Portal. U kunt deze rol ook toewijzen aan een gebruiker met behulp van de `az ml workspace share` CLI-opdracht:
+Na implementatie wordt deze rol beschikbaar in de opgegeven werkruimte. U deze rol nu toevoegen en toewijzen in de Azure-portal. U deze rol ook aan een `az ml workspace share` gebruiker toewijzen met de opdracht CLI:
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Zie [aangepaste rollen voor Azure-resources](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.
+Zie Aangepaste rollen voor [Azure-resources voor](/azure/role-based-access-control/custom-roles)meer informatie over aangepaste rollen.
 
-Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties) die kunnen worden gebruikt met aangepaste rollen.
+Zie [Resourceprovideroperations](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties) die kunnen worden gebruikt voor aangepaste rollen.
 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
@@ -118,59 +118,59 @@ Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/res
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>V. Wat zijn de machtigingen die nodig zijn om verschillende acties uit te voeren in de Azure Machine Learning-service?
 
-De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en de machtigingen die nodig zijn om ze uit te voeren op het minste bereik. Als een voor beeld van een activiteit kan worden uitgevoerd met een werkruimte bereik (kolom 4), zal alle hogere bereiken met die machtiging ook automatisch werken. Alle paden in deze tabel zijn **relatieve paden** naar `Microsoft.MachineLearningServices/`.
+De volgende tabel is een overzicht van Azure Machine Learning-activiteiten en de machtigingen die nodig zijn om deze op het minste bereik uit te voeren. Als voorbeeld als een activiteit kan worden uitgevoerd met een werkruimtebereik (kolom 4), werkt alle hogere scope met die machtiging ook automatisch. Alle paden in deze tabel `Microsoft.MachineLearningServices/`zijn relatieve **paden** naar .
 
-| Activiteit | Bereik op abonnements niveau | Bereik van resource groeps niveau | Bereik op werkruimte niveau |
+| Activiteit | Bereik op abonnementsniveau | Scope op resourcegroepniveau | Bereik op werkruimteniveau |
 |---|---|---|---|
-| Nieuwe werk ruimte maken | Niet vereist | Eigenaar of bijdrager | N.v.t. (wordt eigenaar of neemt de hogere bereik functie over nadat deze is gemaakt) |
-| Nieuw reken cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `workspaces/computes/write` |
-| Nieuwe VM van notebook maken | Niet vereist | Eigenaar of bijdrager | Niet mogelijk |
-| Nieuw reken exemplaar maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `workspaces/computes/write` |
-| Activiteit voor gegevens vlak zoals het verzenden van een uitvoering, toegang tot gegevens, het implementeren van een model of publicatie pijplijn | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor: `workspaces/*/write` <br/> U hebt ook een gegevens opslag die is geregistreerd in de werk ruimte, zodat MSI toegang heeft tot gegevens in uw opslag account. |
+| Nieuwe werkruimte maken | Niet vereist | Eigenaar of bijdrager | N/A (wordt eigenaar of erft een grotere scoperol na creatie) |
+| Nieuw compute cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol die het mogelijk maakt:`workspaces/computes/write` |
+| Nieuwe notebook-vm maken | Niet vereist | Eigenaar of bijdrager | Niet mogelijk |
+| Nieuwe rekeninstantie maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol die het mogelijk maakt:`workspaces/computes/write` |
+| Activiteit van gegevensvlak, zoals het indienen van run, toegang tot gegevens, implementeren van model of publicatiepijplijn | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol die het mogelijk maakt:`workspaces/*/write` <br/> Houd er rekening mee dat u ook een gegevensarchief nodig hebt dat is geregistreerd bij de werkruimte, zodat MSI toegang heeft tot gegevens in uw opslagaccount. |
 
 
-### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>V. Hoe kan ik alle aangepaste rollen in mijn abonnement weer geven?
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>V. Hoe kan ik alle aangepaste rollen in mijn abonnement weergeven?
 
-Voer de volgende opdracht uit in de Azure CLI.
+Voer in de Azure CLI de volgende opdracht uit.
 
 ```azurecli-interactive
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
 
-### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>V. De roldefinitie voor een rol in mijn abonnement Hoe kan ik vinden?
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>V. Hoe vind ik de roldefinitie voor een rol in mijn abonnement?
 
-Voer de volgende opdracht uit in de Azure CLI. Houd er rekening mee dat `<role-name>` dezelfde indeling moet hebben als wordt geretourneerd door de bovenstaande opdracht.
+Voer in de Azure CLI de volgende opdracht uit. Houd `<role-name>` er rekening mee dat moet worden in dezelfde indeling geretourneerd door de opdracht hierboven.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
 ```
 
-### <a name="q-how-do-i-update-a-role-definition"></a>V. Een roldefinitie Hoe kan ik bijwerken?
+### <a name="q-how-do-i-update-a-role-definition"></a>V. Hoe werk ik een roldefinitie bij?
 
-Voer de volgende opdracht uit in de Azure CLI.
+Voer in de Azure CLI de volgende opdracht uit.
 
 ```azurecli-interactive
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-Houd er rekening mee dat u machtigingen hebt voor het hele bereik van de nieuwe functie definitie. Als deze nieuwe rol bijvoorbeeld een bereik heeft over drie abonnementen, moet u machtigingen hebben voor alle drie de abonnementen. 
+Houd er rekening mee dat u machtigingen moet hebben voor het volledige bereik van uw nieuwe roldefinitie. Als deze nieuwe rol bijvoorbeeld een bereik heeft voor drie abonnementen, moet u machtigingen hebben voor alle drie de abonnementen. 
 
 > [!NOTE]
-> Het kan 15 minuten tot een uur duren voordat de functie-updates zijn toegepast op alle roltoewijzingen in dat bereik.
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>V. Kan ik een rol definiëren waarmee wordt voor komen dat de werkruimte editie wordt bijgewerkt? 
+> Rolupdates kunnen 15 minuten tot een uur duren om alle roltoewijzingen in dat bereik toe te passen.
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>V. Kan ik een rol definiëren die het bijwerken van de workspace Edition voorkomt? 
 
-Ja, u kunt een rol definiëren die voor komt dat de werkruimte editie wordt bijgewerkt. Omdat het bijwerken van de werk ruimte een PATCH oproep in het werkruimte object is, doet u dit door de volgende actie in de `"NotActions"`-matrix in uw JSON-definitie te plaatsen: 
+Ja, u een rol definiëren die het bijwerken van de workspace Edition voorkomt. Aangezien de werkruimte-update een PATCH-aanroep op het werkruimteobject is, doet u dit door de volgende actie in de `"NotActions"` array in uw JSON-definitie te plaatsen: 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 
-### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>V. Welke machtigingen zijn er nodig om quotum bewerkingen in een werk ruimte uit te voeren? 
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>V. Welke machtigingen zijn nodig om quotabewerkingen in een werkruimte uit te voeren? 
 
-U hebt machtigingen op abonnements niveau nodig voor het uitvoeren van een gerelateerde bewerking op quota in de werk ruimte. Dit betekent dat het instellen van quotum op abonnements niveau of quotum voor het werkruimte niveau voor uw beheerde reken resources alleen kan optreden als u schrijf machtigingen hebt voor het abonnements bereik. 
+U hebt machtigingen op abonnementsniveau nodig om een quotagerelateerde bewerking in de werkruimte uit te voeren. Dit betekent dat het instellen van een quotum op abonnementsniveau of quotum op werkniveau voor uw beheerde rekenbronnen alleen kan plaatsvinden als u schrijfmachtigingen hebt in het abonnementsbereik. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van ENTER prise Security](concept-enterprise-security.md)
-- [Veilig experimenten en demijnen/Score in een virtueel netwerk uitvoeren](how-to-enable-virtual-network.md)
-- [Zelf studie: modellen trainen](tutorial-train-models-with-aml.md)
+- [Overzicht van Enterprise-beveiliging](concept-enterprise-security.md)
+- [Experimenten en gevolgtrekkingen binnen een virtueel netwerk veilig uitvoeren](how-to-enable-virtual-network.md)
+- [Zelfstudie: Modellen trainen](tutorial-train-models-with-aml.md)
 - [Resourceproviderbewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

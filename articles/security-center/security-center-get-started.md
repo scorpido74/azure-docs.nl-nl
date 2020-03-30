@@ -1,5 +1,5 @@
 ---
-title: Upgrade uitvoeren naar Standard-laag-Azure Security Center
+title: Upgraden naar standaardlaag - Azure Security Center
 description: In deze snelstartgids wordt beschreven hoe u een upgrade uitvoert naar de prijscategorie Standard van Security Center voor extra beveiliging.
 services: security-center
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664290"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Snelstartgids: uw Azure-abonnement onboarden voor Security Center Standard
@@ -33,10 +33,10 @@ Als u een abonnement wilt upgraden naar de prijscategorie Standard, moet de rol 
 
 ## <a name="enable-your-azure-subscription"></a>Uw Azure-abonnement inschakelen
 
-1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
+1. Meld u aan bij de [Azure-portal](https://azure.microsoft.com/features/azure-portal/).
+2. Selecteer In het menu **Microsoft Azure** de optie **Beveiligingscentrum**. **Security Center - Overzicht** wordt geopend.
 
-   ![Security Center-overzicht][2]
+   ![Overzicht van Security Center][2]
 
 **Security Center - overzicht** biedt een duidelijk overzicht van de beveiligingsstatus van uw hybride cloudworkloads, zodat u de beveiliging van uw workloads kunt bepalen en beoordelen en risico's kunt herkennen en verminderen. Security Center activeert automatisch de Azure-abonnementen naar de Gratis laag waarvoor u of een andere abonnementsgebruiker niet eerder onboarding hebt uitgevoerd.
 
@@ -72,9 +72,9 @@ Als automatisch inrichten is ingeschakeld, installeert Security Center de MMA op
 
 Automatische inrichting van de MMA inschakelen:
 
-1. Selecteer in het hoofd menu van Security Center **prijzen & instellingen**.
-2. Klik in de rij van het abonnement op het abonnement waarvan u de instellingen wilt wijzigen.
-3. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Aan**.
+1. Selecteer onder het hoofdmenu Van het Beveiligingscentrum de optie **Prijzen & instellingen**.
+2. Klik in de rij van het abonnement op het abonnement waarop u de instellingen wilt wijzigen.
+3. Stel in het tabblad **Gegevensverzameling****Automatische inrichting** in op **Aan**.
 4. Selecteer **Opslaan**.
 ---
   ![Automatische inrichting inschakelen][6]
@@ -86,16 +86,16 @@ Security Center kan deze nieuwe inzichten in uw Azure-VM's gebruiken om extra aa
 ## <a name="clean-up-resources"></a>Resources opschonen
 Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende snelstartgidsen en zelfstudies ook wilt doornemen, blijf dan de prijscategorie Standard gebruiken en houd automatische inrichting ingeschakeld. Als u niet wilt doorgaan of wilt terugkeren naar de laag gratis:
 
-1. Ga terug naar het hoofd menu van Security Center en selecteer de **& instellingen voor prijzen**.
-2. Klik op het abonnement dat u wilt wijzigen in de laag gratis.
+1. Ga terug naar het hoofdmenu van het Beveiligingscentrum en selecteer **Prijzen & instellingen.**
+2. Klik op het abonnement dat u wilt wijzigen in de gratis laag.
 3. Selecteer **Prijscategorie** en vervolgens **Gratis** om het abonnement te wijzigen van Standard in Gratis.
 5. Selecteer **Opslaan**.
 
 Als u automatisch inrichten wilt uitschakelen:
 
-1. Ga terug naar het hoofd menu van Security Center en selecteer de **& instellingen voor prijzen**.
-2. Reinig op het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
-3. Stel in het tabblad **Gegevensverzameling** **Automatische inrichting** in op **Uit**.
+1. Ga terug naar het hoofdmenu van het Beveiligingscentrum en selecteer **Prijzen & instellingen.**
+2. Maak schoon op het abonnement waarop u de automatische inrichting wilt uitschakelen.
+3. Stel in het tabblad **Gegevensverzameling****Automatische inrichting** in op **Uit**.
 4. Selecteer **Opslaan**.
 
 >[!NOTE]
@@ -106,7 +106,7 @@ Als u automatisch inrichten wilt uitschakelen:
 In deze snelstartgids hebt u een upgrade naar de prijscategorie Standard uitgevoerd en de MMA ingericht voor geïntegreerd beveiligingsbeheer en bescherming tegen bedreigingen voor uw hybride cloudworkloads. Ga naar de snelstartgids voor het onboarden van Windows-computers die zich on-premises en in andere clouds bevinden voor meer informatie over hoe u Security Center kunt gebruiken.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Windows-computers onboarden naar Azure Security Center](quick-onboard-windows-computer.md)
+> [Snelstart: Windows-computers onboarden naar Azure Security Center](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

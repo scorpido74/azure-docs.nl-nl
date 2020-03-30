@@ -1,7 +1,7 @@
 ---
-title: Tips voor het ontwerp van AI-verrijking
+title: Tips voor AI verrijking ontwerp
 titleSuffix: Azure Cognitive Search
-description: Tips en probleem oplossing voor het instellen van AI-verrijkings pijplijnen in azure Cognitive Search.
+description: Tips en probleemoplossing voor het instellen van AI-verrijkingspijplijnen in Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,35 +9,35 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245484"
 ---
-# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in azure Cognitive Search
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in Azure Cognitive Search
 
-Dit artikel bevat een lijst met tips en trucs om u te laten overstappen terwijl u aan de slag gaat met de uitgebreide mogelijkheden van Azure Cognitive Search. 
+Dit artikel bevat een lijst met tips en trucs om u in beweging te houden terwijl u aan de slag gaat met AI-verrijkingsmogelijkheden in Azure Cognitive Search. 
 
-Als u dit nog niet hebt gedaan, volgt u de [zelf studie: informatie over het aanroepen van AI-verrijkings api's](cognitive-search-quickstart-blob.md) voor de praktijk bij het Toep assen van AI-verrijkingen naar een BLOB-gegevens bron.
+Als u dit nog niet hebt gedaan, stapt u door de [zelfstudie: Leer hoe u AI-verrijkingsAPI's](cognitive-search-quickstart-blob.md) voor de praktijk aanroepen bij het toepassen van AI-verrijkingen op een blob-gegevensbron.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>Tip 1: beginnen met een kleine gegevensset
-De beste manier om snel problemen te vinden is door de snelheid te verhogen waarmee u problemen kunt oplossen. De beste manier om de indexerings tijd te verminderen, is door het aantal te indexeren documenten te verminderen. 
+## <a name="tip-1-start-with-a-small-dataset"></a>Tip 1: Begin met een kleine dataset
+De beste manier om problemen snel te vinden is om de snelheid waarmee u problemen oplossen te verhogen. De beste manier om de indexeringstijd te verkorten, is door het aantal te indexeren documenten te verminderen. 
 
-Begin met het maken van een gegevens bron met slechts een aantal documenten/records. Uw document voorbeeld moet een goede weer gave zijn van de verschillende documenten die worden geïndexeerd. 
+Begin met het maken van een gegevensbron met slechts een handvol documenten / records. Uw documentvoorbeeld moet een goede weergave zijn van de verscheidenheid aan documenten die worden geïndexeerd. 
 
-Voer uw document voorbeeld door de end-to-end-pijp lijn uit en controleer of de resultaten voldoen aan uw behoeften. Zodra u tevreden bent met de resultaten, kunt u meer bestanden toevoegen aan de gegevens bron.
+Voer het documentvoorbeeld uit via de end-to-end-pijplijn en controleer of de resultaten aan uw behoeften voldoen. Zodra u tevreden bent met de resultaten, u meer bestanden toevoegen aan uw gegevensbron.
 
-## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tip 2: Controleer of de referenties voor de gegevens bron juist zijn
-De verbinding met de gegevens bron wordt pas gevalideerd als u een Indexeer functie hebt gedefinieerd die gebruikmaakt van deze. Als er fouten worden weer gegeven waarin wordt vermeld dat de Indexeer functie de gegevens niet kan ophalen, moet u ervoor zorgen dat:
-- Uw connection string is juist. Als u SAS-tokens maakt, moet u er ook voor zorgen dat u de notatie gebruikt die wordt verwacht door Azure Cognitive Search. Zie de [sectie referenties opgeven](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) voor meer informatie over de verschillende indelingen die worden ondersteund.
-- De naam van de container in de Indexeer functie is juist.
+## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tip 2: Zorg ervoor dat de gegevensbronreferenties correct zijn
+De gegevensbronverbinding wordt pas gevalideerd als u een indexeerder definieert die deze gebruikt. Als u fouten ziet waarin staat dat de indexer niet bij de gegevens kan komen, moet u ervoor zorgen dat:
+- Uw verbindingstekenreeks is correct. Speciaal wanneer u SAS-tokens maakt, moet u de indeling gebruiken die wordt verwacht door Azure Cognitive Search. Zie [De sectie Referenties opgeven](
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) voor meer informatie over de verschillende ondersteunde indelingen.
+- De naam van uw container in de indexer is correct.
 
-## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Tip 3: bekijken wat er gebeurt, zelfs als er sprake is van een aantal storingen
-Soms stopt een kleine fout een Indexeer functie in de bijbehorende sporen. Dat is prima als u van plan bent om problemen één voor één op te lossen. Het is echter mogelijk dat u een bepaald type fout wilt negeren, waardoor de Indexeer functie kan door gaan, zodat u kunt zien welke stromen werkelijk werken.
+## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Tip 3: Zie wat werkt, zelfs als er een aantal storingen
+Soms stopt een kleine fout een indexeerder in zijn sporen. Dat is prima als u van plan bent om problemen een voor een op te lossen. U echter een bepaald type fout negeren, zodat de indexer kan doorgaan, zodat u zien welke stromen daadwerkelijk werken.
 
-In dat geval kunt u de Indexeer functie de fouten laten negeren. Doe dat door *maxFailedItems* en *maxFailedItemsPerBatch* als-1 in te stellen als onderdeel van de definitie van de Indexeer functie.
+In dat geval u de indexer vertellen fouten te negeren. Doe dat door *maxFailedItems* en *maxFailedItemsPerBatch* in te stellen als -1 als onderdeel van de indexerdefinitie.
 
 ```
 {
@@ -49,16 +49,16 @@ In dat geval kunt u de Indexeer functie de fouten laten negeren. Doe dat door *m
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tip 4: verrijkte documenten op de schermen bekijken 
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tip 4: Kijken naar verrijkte documenten onder de motorkap 
 Verrijkte documenten zijn tijdelijke structuren die tijdens de verrijking zijn gemaakt en vervolgens worden verwijderd wanneer de verwerking is voltooid.
 
 Als u een momentopname van het verrijkte document wilt vastleggen tijdens het indexeren, voegt u een veld met de naam ```enriched``` toe aan uw index. De indexeerfunctie dumpt automatisch een tekenreeksrepresentatie van de verrijkingen voor het document in het veld.
 
 Het veld ```enriched``` bevat dan een tekenreeks die een logische representatie vormt van het verrijkte document in het geheugen in JSON.  De veldwaarde is echter een geldig JSON-document. Aanhalingstekens worden geïdentificeerd met een escape-teken, waardoor u `\"` met `"` moet vervangen als u het document als geformatteerde JSON wilt weergeven. 
 
-Het verrijkte veld is alleen bedoeld voor fout opsporing, zodat u inzicht krijgt in de logische vorm van de inhoud waarvoor expressies worden geëvalueerd. U moet niet afhankelijk zijn van dit veld voor het indexeren van de doel einden.
+Het verrijkte veld is alleen bedoeld voor foutopsporingsdoeleinden, om u te helpen de logische vorm te begrijpen van de inhoud waartegen expressies worden geëvalueerd. U moet niet afhankelijk zijn van dit veld voor indexeringsdoeleinden.
 
-Voeg een ```enriched``` veld toe als onderdeel van de index definitie voor fout opsporing:
+Voeg ```enriched``` een veld toe als onderdeel van uw indexdefinitie voor foutopsporingsdoeleinden:
 
 #### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
 ```json
@@ -77,36 +77,36 @@ Voeg een ```enriched``` veld toe als onderdeel van de index definitie voor fout 
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>Tip 5: verwachte inhoud kan niet worden weer gegeven
+## <a name="tip-5-expected-content-fails-to-appear"></a>Tip 5: Verwachte inhoud wordt niet weergegeven
 
-Ontbrekende inhoud kan het gevolg zijn van het weghalen van documenten tijdens het indexeren. Voor de lagen gratis en basis is de document grootte beperkt. Bestanden die de limiet overschrijden, worden verwijderd tijdens het indexeren. U kunt controleren op verwijderde documenten in de Azure Portal. Dubbel klik op de tegel Indexeer functies in het dash board van de zoek service. Bekijk de verhouding van geslaagde documenten die zijn geïndexeerd. Als dit niet 100% is, kunt u op de verhouding klikken om meer details te krijgen. 
+Ontbrekende inhoud kan het gevolg zijn van documenten die tijdens het indexeren worden gedropt. Gratis en Basic-lagen hebben lage limieten voor de documentgrootte. Elk bestand dat de limiet overschrijdt, wordt tijdens het indexeren verwijderd. U controleren op gevallen documenten in de Azure-portal. Dubbelklik in het dashboard van de zoekservice op de tegel Indexers. Bekijk de verhouding van de geïndexeerde succesvolle documenten. Als het niet 100% is, u op de verhouding klikken om meer detail te krijgen. 
 
-Als het probleem te maken heeft met de bestands grootte, ziet u mogelijk een fout zoals de volgende: ' de BLOB \<bestands naam > ' heeft de grootte van \<bestands grootte > bytes, wat de maximale grootte voor document extractie voor uw huidige servicelaag overschrijdt. ' Zie [service limieten](search-limits-quotas-capacity.md)voor meer informatie over de limieten voor de Indexeer functie.
+Als het probleem gerelateerd is aan de bestandsgrootte, ziet \<u mogelijk een fout als \<volgt: 'De blob-bestandsnaam>' heeft de grootte van de bestandsgrootte> bytes, die de maximale grootte voor documentextractie voor uw huidige servicelaag overschrijdt. Zie [Servicelimieten](search-limits-quotas-capacity.md)voor meer informatie over indexerlimieten.
 
-Een tweede reden waarom inhoud niet wordt weer gegeven, kan betrekking hebben op fouten in de i/o-toewijzing. De naam van een uitvoer doel is bijvoorbeeld ' personen ', maar de naam van het index veld is kleine letters ' personen '. Het systeem kan 201 succes berichten retour neren voor de volledige pijp lijn, zodat u kunt zien dat indexeren is geslaagd, wanneer een veld leeg is. 
+Een tweede reden voor inhoud die niet wordt weergegeven, zijn mogelijk gerelateerde fouten in het toewijzingssysteem voor invoer/uitvoer. Een uitvoerdoelnaam is bijvoorbeeld 'Personen', maar de naam van het indexveld is kleine 'personen'. Het systeem kan 201 succesberichten voor de hele pijplijn retourneren, zodat u denkt dat indexeren geslaagd is, terwijl in feite een veld leeg is. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 6: de verwerking uitbreiden na een maximale uitvoerings tijd (24-uurs venster)
+## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 6: Verleng de verwerking tot na de maximale looptijd (24-uursvenster)
 
-Het berekenen van de afbeeldings analyse is voor eenvoudige cases evenredig, dus wanneer de installatie kopieën bijzonder groot of complex zijn, kan de maximale toegestane tijd worden overschreden. 
+Beeldanalyse is rekenintensief voor zelfs eenvoudige gevallen, dus wanneer afbeeldingen bijzonder groot of complex zijn, kunnen verwerkingstijden de toegestane maximumtijd overschrijden. 
 
-De maximale uitvoerings tijd varieert per laag: enkele minuten op de laag gratis, 24 uur per dag indexeren op factureer bare lagen. Als de verwerking niet kan worden voltooid binnen een periode van 24 uur voor de verwerking op aanvraag, moet u overschakelen naar een schema om de Indexeer functie uit te voeren op het tijdstip waarop deze bewerking is afgebroken. 
+De maximale looptijd verschilt per laag: enkele minuten op de gratis laag, 24-uurs indexering op factureerbare lagen. Als de verwerking niet binnen een periode van 24 uur is voltooid voor verwerking op aanvraag, schakelt u over naar een planning om de indexeerder de verwerking te laten verwerken waar deze was gebleven. 
 
-Voor geplande Indexeer functies worden de indexeringen hervat op schema in het laatst bekende goede document. Als u een terugkerend schema gebruikt, kan de Indexeer functie de achterstand van de installatie kopie over een reeks uren of dagen werken totdat alle niet-verwerkte installatie kopieën zijn verwerkt. Zie [stap 3: Create-a-Indexeer functie](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over de syntaxis van een schema.
+Voor geplande indexeerders wordt de indexering op schema hervat bij het laatst bekende goede document. Door een terugkerend schema te gebruiken, kan de indexer zich een weg banen door de beeldachterstand gedurende een reeks uren of dagen, totdat alle niet-verwerkte afbeeldingen zijn verwerkt. Zie [Stap 3: Maak-een-indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) of zie [Indexers plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over de syntaxis van de planning.
 
 > [!NOTE]
-> Als een Indexeer functie is ingesteld op een bepaald schema, maar herhaaldelijk meerdere keren een fout optreedt in hetzelfde document, wordt de Indexeer functie gestart op een minder frequent interval (Maxi maal ten minste één keer per 24 uur) totdat de voortgang Aga Naast.  Als u van mening bent dat het probleem dat de Indexeer functie niet op een bepaald moment vastloopt, kunt u een on-demand uitvoering van de Indexeer functie uitvoeren. als dat wel het geval is, keert de Indexeer functie weer terug naar het ingestelde plannings interval.
+> Als een indexer is ingesteld op een bepaald schema, maar herhaaldelijk niet op hetzelfde document over en weer elke keer dat het wordt uitgevoerd, zal de indexer beginnen te draaien op een minder frequent interval (tot het maximum van ten minste eenmaal per 24 uur) totdat het met succes vooruitgang boekt Opnieuw.  Als u denkt dat u het probleem hebt opgelost waardoor de indexer op een bepaald punt vast kwam te zitten, u een on-demand-run van de indexeerder uitvoeren en als dat met succes vooruitgang boekt, keert de indexer terug naar het ingestelde schemainterval.
 
-Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kiest u de optie voor het uitvoeren van de Indexeer functie beperkt de verwerking tot 1 uur (`"maxRunTime": "PT1H"`). Mogelijk wilt u het verwerkings venster uitbreiden naar iets langer.
+Voor portal-gebaseerde indexering (zoals beschreven in de quickstart), het kiezen van de`"maxRunTime": "PT1H"`"eenmaal uitvoeren" indexer optie beperkt de verwerking tot 1 uur ( ). U het verwerkingsvenster uitbreiden naar iets langer.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: door Voer van indexering verg Roten
+## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: Verhoog de indexeringsdoorvoer
 
-Voor [parallelle indexering](search-howto-large-index.md)plaatst u uw gegevens in meerdere containers of meerdere virtuele mappen binnen dezelfde container. Maak vervolgens meerdere data source-en Indexeer functie paren. Alle Indexeer functies kunnen dezelfde vaardig heden gebruiken en naar dezelfde doel zoek index schrijven, zodat uw zoek-app niet op de hoogte hoeft te zijn van deze partities.
-Zie [indexeren van grote gegevens sets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)voor meer informatie.
+Voor [parallelle indexering](search-howto-large-index.md)plaatst u uw gegevens in meerdere containers of meerdere virtuele mappen in dezelfde container. Maak vervolgens meerdere datasource- en indexerparen. Alle indexers kunnen dezelfde vaardigheden gebruiken en schrijven in dezelfde doelzoekindex, zodat uw zoek-app zich niet bewust hoeft te zijn van deze partitionering.
+Zie [Grote gegevenssets indexeren voor](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)meer informatie .
 
 ## <a name="see-also"></a>Zie ook
-+ [Snelstartgids: een AI-verrijkings pijplijn maken in de portal](cognitive-search-quickstart-blob.md)
-+ [Zelf studie: REST-Api's voor AI-verrijking leren](cognitive-search-tutorial-blob.md)
-+ [Referenties voor de gegevens bron opgeven](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Grote gegevens sets indexeren](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Uitgebreide velden toewijzen aan een index](cognitive-search-output-field-mapping.md)
++ [Snelstart: een AI-verrijkingspijplijn maken in de portal](cognitive-search-quickstart-blob.md)
++ [Zelfstudie: AI-verrijkingREST API's leren](cognitive-search-tutorial-blob.md)
++ [Gegevensbronreferenties opgeven](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [Grote gegevenssets indexeren](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Verrijkte velden toewijzen aan een index](cognitive-search-output-field-mapping.md)

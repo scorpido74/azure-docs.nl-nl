@@ -1,6 +1,6 @@
 ---
-title: 'Service-naar-service-verificatie: python met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
-description: Meer informatie over service-to-service-verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met behulp van python
+title: 'Service-to-service-verificatie: Python met Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het implementeren van service-to-service-verificatie met Azure Data Lake Storage Gen1 met Azure Active Directory met Python
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260291"
 ---
-# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van python
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Service-to-service-verificatie met Azure Data Lake Storage Gen1 met Python
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-service-to-service-authenticate-java.md)
-> * [.NET-SDK gebruiken](data-lake-store-service-to-service-authenticate-net-sdk.md)
+> * [.NET SDK gebruiken](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-service-to-service-authenticate-python.md)
-> * [REST API gebruiken](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [REST-API gebruiken](data-lake-store-service-to-service-authenticate-rest-api.md)
 > 
 >  
 
-In dit artikel leert u hoe u de python-SDK kunt gebruiken om service-naar-service-verificatie met Azure Data Lake Storage Gen1 uit te voeren. Zie voor verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van python [verificatie van eind gebruikers met data Lake Storage gen1 met behulp van python](data-lake-store-end-user-authenticate-python.md).
+In dit artikel vindt u meer informatie over het gebruik van de Python SDK om service-to-service-verificatie uit te brengen met Azure Data Lake Storage Gen1. Zie [Verificatie van eindgebruikers met Data Lake Storage Gen1 met Python](data-lake-store-end-user-authenticate-python.md)voor verificatie van eindgebruikers met Data Lake Storage Gen1 met Python .
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Python**. U kunt Python [hier](https://www.python.org/downloads/) downloaden. In dit artikel wordt Python 3.6.2 gebruikt.
+* **Python.** U kunt Python [hier](https://www.python.org/downloads/) downloaden. In dit artikel wordt Python 3.6.2 gebruikt.
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Een Azure Active Directory Web-toepassing maken**. U moet de stappen in [service-to-service-verificatie met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md)hebben voltooid.
+* **Maak een Azure Active Directory "Web"-toepassing**. U moet de stappen in [service-to-service-verificatie met Data Lake Storage Gen1](data-lake-store-service-to-service-authenticate-using-active-directory.md)hebben voltooid met Azure Active Directory .
 
 ## <a name="install-the-modules"></a>De modules installeren
 
-Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie modules installeren.
+Als u met Data Lake Storage Gen1 wilt werken met Python, moet u drie modules installeren.
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
-* De module `azure-mgmt-datalake-store`, met inbegrip van de Data Lake Storage Gen1 account beheer bewerkingen. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
-* De module `azure-datalake-store`, die de Data Lake Storage Gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* De `azure-mgmt-datalake-store` module, die de Data Lake Storage Gen1 account management operaties omvat. Zie Naslaginformatie over de [Azure Data Lake Storage Gen1 Management-module voor](/python/api/azure-mgmt-datalake-store/)meer informatie over deze module .
+* De `azure-datalake-store` module, die de Data Lake Storage Gen1 bestandssysteem bewerkingen omvat. Zie naslaginformatie over de [filesysteemmodule azure-datalake-store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)voor meer informatie over deze module.
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
@@ -84,7 +84,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Service-naar-serviceverificatie met clientgeheim voor accountbeheer
 
-Gebruik dit fragment om te verifiëren met Azure AD voor account beheer bewerkingen op Data Lake Storage Gen1, zoals het maken van een Data Lake Storage Gen1 account, het verwijderen van een Data Lake Storage Gen1 account, enzovoort. Het volgende code fragment kan worden gebruikt voor het niet-interactief verifiëren van uw toepassing, met behulp van het client geheim voor een toepassing/Service-Principal van een bestaande Azure AD-toepassing voor web-apps.
+Gebruik dit fragment om te verifiëren met Azure AD voor accountbeheerbewerkingen op Data Lake Storage Gen1, zoals het maken van een Data Lake Storage Gen1-account, het verwijderen van een Data Lake Storage Gen1-account, enz. Het volgende fragment kan worden gebruikt om uw toepassing niet-interactief te verifiëren, met behulp van het clientgeheim voor een toepassing / serviceprincipal van een bestaande Azure AD -webapp-toepassing.
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -99,7 +99,7 @@ Gebruik dit fragment om te verifiëren met Azure AD voor account beheer bewerkin
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Service-naar-serviceverificatie met clientgeheim voor bestandssysteembewerkingen
 
-Gebruik het volgende code fragment om te verifiëren met Azure AD voor bestandssysteem bewerkingen op Data Lake Storage Gen1, zoals het maken van een map, het uploaden van een bestand, enzovoort. Het volgende code fragment kan worden gebruikt voor het niet-interactief verifiëren van uw toepassing, met behulp van het client geheim voor een toepassing/Service-Principal. Gebruik dit met een bestaande Azure AD-toepassing voor webtoepassingen.
+Gebruik het volgende fragment om te verifiëren met Azure AD voor bestandssysteembewerkingen op Data Lake Storage Gen1, zoals map maken, bestanden uploaden, enz. Het volgende fragment kan worden gebruikt om uw toepassing niet-interactief te verifiëren, met behulp van het clientgeheim voor een toepassing / serviceprincipal. Gebruik dit met een bestaande Azure AD-toepassing voor webtoepassingen.
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'
@@ -128,9 +128,9 @@ Use this snippet to authenticate with Azure AD for account management operations
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u service-naar-service-verificatie kunt gebruiken om te verifiëren met Data Lake Storage Gen1 met behulp van python. U kunt nu de volgende artikelen bekijken over het gebruik van python om met Data Lake Storage Gen1 te werken.
+In dit artikel hebt u geleerd hoe u service-to-service-verificatie gebruiken om te verifiëren met Data Lake Storage Gen1 met Python. U nu de volgende artikelen bekijken waarin wordt gesproken over hoe u Python gebruiken om met Data Lake Storage Gen1 te werken.
 
-* [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van python](data-lake-store-get-started-python.md)
-* [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van python](data-lake-store-data-operations-python.md)
+* [Accountbeheerbewerkingen op Data Lake Storage Gen1 met Python](data-lake-store-get-started-python.md)
+* [Gegevensbewerkingen op Data Lake Storage Gen1 met Python](data-lake-store-data-operations-python.md)
 
 

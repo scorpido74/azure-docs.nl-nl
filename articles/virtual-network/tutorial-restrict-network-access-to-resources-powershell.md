@@ -1,6 +1,6 @@
 ---
-title: Netwerk toegang tot PaaS-resources beperken-Azure PowerShell
-description: In dit artikel leert u hoe u netwerk toegang tot Azure-resources, zoals Azure Storage en Azure SQL Database, kunt beperken en beperken met Service-eind punten van virtuele netwerken met behulp van Azure PowerShell.
+title: Netwerktoegang beperken tot PaaS-bronnen - Azure PowerShell
+description: In dit artikel leert u hoe u de netwerktoegang tot Azure-bronnen, zoals Azure Storage en Azure SQL Database, beperkt en beperkt met eindpunten voor virtuele netwerkservices met Azure PowerShell.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185541"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Netwerk toegang tot PaaS-resources beperken met virtuele netwerk service-eind punten met behulp van Power shell
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Netwerktoegang tot PaaS-bronnen beperken met eindpunten voor virtuele netwerkservice met PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,21 +37,21 @@ Met service-eindpunten voor virtuele netwerken kunt u de netwerktoegang tot somm
 * Toegang tot een resource vanaf een subnet bevestigen
 * Bevestigen dat toegang wordt geweigerd aan een resource vanaf een subnet en internet
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u Power shell lokaal wilt installeren en gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell-moduleversie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Voordat u een virtueel netwerk maakt, moet u een resource groep maken voor het virtuele netwerk en alle andere resources die in dit artikel zijn gemaakt. Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup*gemaakt: 
+Voordat u een virtueel netwerk maakt, moet u een brongroep maken voor het virtuele netwerk en alle andere bronnen die in dit artikel zijn gemaakt. Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup geopperd:* 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt met het adres voorvoegsel *10.0.0.0/16*.
+Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* met het adresvoorvoegsel *10.0.0.0/16 .*
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -61,7 +61,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Maak een subnet-configuratie met [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voor beeld wordt een subnet-configuratie gemaakt voor een subnet met de naam *openbaar*:
+Maak een subnetconfiguratie met [Nieuw-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voorbeeld wordt een subnetconfiguratie gemaakt voor een subnet met de naam *Openbaar:*
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -70,7 +70,7 @@ $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Maak het subnet in het virtuele netwerk door de configuratie van het subnet te schrijven naar het virtuele netwerk met [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork):
+Maak het subnet in het virtuele netwerk door de subnetconfiguratie naar het virtuele netwerk te schrijven met [Set-AzVirtualNetwork:](/powershell/module/az.network/Set-azVirtualNetwork)
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
@@ -78,13 +78,13 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="enable-a-service-endpoint"></a>Een service-eindpunt inschakelen
 
-U kunt Service-eind punten alleen inschakelen voor services die service-eind punten ondersteunen. Bekijk service-eindpunt services die beschikbaar zijn op een Azure-locatie met [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice). In het volgende voor beeld wordt een lijst geretourneerd met services die zijn ingeschakeld voor service-eind punten die beschikbaar zijn in de regio *oostus* . De lijst met geretourneerde services groeit na verloop van tijd naarmate meer Azure-Services service-eind punten worden ingeschakeld.
+U serviceeindpunten alleen inschakelen voor services die eindpunten van services ondersteunen. Serviceendpoint-services weergeven die beschikbaar zijn op een [Azure-locatie met Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice). In het volgende voorbeeld wordt een lijst geretourneerd met services die beschikbaar zijn in de *eastusregio.* De lijst met geretourneerde services wordt na verloop van tijd groter naarmate meer Azure-services serviceeindpunt worden ingeschakeld.
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
 ```
 
-Maak een extra subnet in het virtuele netwerk. In dit voor beeld wordt een subnet met de naam *privé* gemaakt met een service-eind punt voor *micro soft. Storage*: 
+Maak een extra subnet in het virtuele netwerk. In dit voorbeeld wordt een subnet met de naam *Privé* gemaakt met een serviceeindpunt voor *Microsoft.Storage:* 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -98,7 +98,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Netwerktoegang voor een subnet beperken
 
-Beveiligings regels voor de netwerk beveiligings groep maken met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). Met de volgende regel is uitgaande toegang mogelijk tot de open bare IP-adressen die zijn toegewezen aan de Azure Storage-service: 
+Maak beveiligingsregels voor netwerkbeveiligingsgroepen met [New-AzNetworkSecurityRuleConfig.](/powershell/module/az.network/new-aznetworksecurityruleconfig) Met de volgende regel u uitgaande toegang tot de openbare IP-adressen die zijn toegewezen aan de Azure Storage-service: 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -113,7 +113,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Met de volgende regel wordt de toegang geweigerd tot alle open bare IP-adressen. De vorige regel overschrijft deze regel vanwege de hogere prioriteit, waardoor toegang tot de open bare IP-adressen van Azure Storage mogelijk is.
+De volgende regel weigert toegang tot alle openbare IP-adressen. De vorige regel overschrijft deze regel vanwege de hogere prioriteit, die toegang geeft tot de openbare IP-adressen van Azure Storage.
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -128,7 +128,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Met de volgende regel kan vanaf elke locatie Remote Desktop Protocol (RDP) verkeer van het subnet binnenkomen. Extern bureau blad-verbindingen zijn toegestaan voor het subnet, zodat u de netwerk toegang tot een bron in een latere stap kunt bevestigen.
+Met de volgende regel extern bureaublad-protocol (RDP) verkeer binnenkomen naar het subnet vanaf elke locatie. Verbindingen met extern bureaublad zijn toegestaan op het subnet, zodat u de toegang van het netwerk tot een bron in een latere stap bevestigen.
 
 ```azurepowershell-interactive
 $rule3 = New-AzNetworkSecurityRuleConfig `
@@ -143,7 +143,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Maak een netwerkbeveiligingsgroep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). In het volgende voor beeld wordt een netwerk beveiligings groep gemaakt met de naam *myNsgPrivate*.
+Maak een netwerkbeveiligingsgroep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). In het volgende voorbeeld wordt een netwerkbeveiligingsgroep met de naam *myNsgPrivate geopperd.*
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -153,7 +153,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-Koppel de netwerk beveiligings groep aan het *persoonlijke* subnet met [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) en schrijf vervolgens de configuratie van het subnet naar het virtuele netwerk. In het volgende voor beeld wordt de *myNsgPrivate* -netwerk beveiligings groep gekoppeld aan het *privé* -subnet:
+Koppel de netwerkbeveiligingsgroep aan het *subnet Privé* aan [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) en schrijf vervolgens de subnetconfiguratie naar het virtuele netwerk. In het volgende voorbeeld wordt de *myNsgPrivate-netwerkbeveiligingsgroep* aan het *subnet Privé* koppelt:
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -168,11 +168,11 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-to-a-resource"></a>Netwerktoegang tot een resource beperken
 
-De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn gemaakt met Azure-services waarvoor service-eindpunten zijn ingeschakeld, verschillen per service. Zie de documentatie voor afzonderlijke services voor specifieke stappen voor elke service. De rest van dit artikel bevat stappen voor het beperken van de netwerk toegang voor een Azure Storage-account, zoals een voor beeld.
+De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn gemaakt met Azure-services waarvoor service-eindpunten zijn ingeschakeld, verschillen per service. Zie de documentatie voor afzonderlijke services voor specifieke stappen voor elke service. De rest van dit artikel bevat stappen om netwerktoegang voor een Azure Storage-account te beperken, als voorbeeld.
 
 ### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-Maak een Azure-opslag account met [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Vervang `<replace-with-your-unique-storage-account-name>` door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters.
+Maak een Azure-opslagaccount met [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Vervang `<replace-with-your-unique-storage-account-name>` door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens in lengte, met alleen cijfers en kleine letters.
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -185,7 +185,7 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-Wanneer het opslag account is gemaakt, haalt u de sleutel voor het opslag account op in een variabele met [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey):
+Nadat het opslagaccount is gemaakt, haalt u de sleutel voor het opslagaccount op in een variabele met [Get-AzStorageAccountKey:](/powershell/module/az.storage/get-azstorageaccountkey)
 
 ```azurepowershell-interactive
 $storageAcctKey = (Get-AzStorageAccountKey `
@@ -193,23 +193,23 @@ $storageAcctKey = (Get-AzStorageAccountKey `
   -AccountName $storageAcctName).Value[0]
 ```
 
-De sleutel wordt gebruikt om een bestands share in een latere stap te maken. Voer `$storageAcctKey` in en noteer de waarde. u moet deze ook hand matig invoeren in een latere stap wanneer u de bestands share toewijst aan een station in een VM.
+De sleutel wordt gebruikt om een bestandsshare in een latere stap te maken. Voer `$storageAcctKey` de waarde in en noteer deze, omdat u deze ook handmatig in een latere stap moet invoeren wanneer u de bestandsshare in een station in een vm in kaart brengt.
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Een bestandsshare maken in het opslagaccount
 
-Maak een context voor uw opslag account en de sleutel met [New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext). In de context zijn de naam van het opslag account en de account sleutel ingekapseld:
+Maak een context voor uw opslagaccount en sleutel met [New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext). De context bevat de naam en accountsleutel van het opslagaccount:
 
 ```azurepowershell-interactive
 $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-Maak een bestands share met [New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare):
+Maak een bestandsshare met [New-AzStorageShare:](/powershell/module/az.storage/new-azstorageshare)
 
-$share = New-AzStorageShare My-file-share-context $storageContext
+$share = Nieuw-AzStorageShare mijn-bestand-share -Context $storageContext
 
-### <a name="deny-all-network-access-to-a-storage-account"></a>Alle netwerk toegang tot een opslag account weigeren
+### <a name="deny-all-network-access-to-a-storage-account"></a>Alle netwerktoegang tot een opslagaccount weigeren
 
-Standaard accepteren opslagaccounts netwerkverbindingen van clients in ieder netwerk. Als u de toegang tot geselecteerde netwerken wilt beperken, wijzigt u de standaard actie voor *weigeren* met [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset). Wanneer de netwerk toegang wordt geweigerd, is het opslag account niet toegankelijk vanaf elk netwerk.
+Standaard accepteren opslagaccounts netwerkverbindingen van clients in ieder netwerk. Als u de toegang tot geselecteerde netwerken wilt beperken, wijzigt u de standaardactie in *Weigeren* met [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset). Nadat de netwerktoegang is geweigerd, is het opslagaccount niet via elk netwerk toegankelijk.
 
 ```azurepowershell-interactive
 Update-AzStorageAccountNetworkRuleSet  `
@@ -220,7 +220,7 @@ Update-AzStorageAccountNetworkRuleSet  `
 
 ### <a name="enable-network-access-from-a-subnet"></a>Netwerktoegang vanuit een subnet inschakelen
 
-Haal het gemaakte virtuele netwerk op met [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) en haal het privé-subnet object vervolgens op in een variabele met [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig):
+Haal het gemaakte virtuele netwerk op met [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) en haal het privé subnetobject op in een variabele met [Get-AzVirtualNetworkSubnetConfig:](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)
 
 ```azurepowershell-interactive
 $privateSubnet = Get-AzVirtualNetwork `
@@ -230,7 +230,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   -Name "Private"
 ```
 
-Netwerk toegang tot het opslag account via het *persoonlijke* subnet toestaan met [add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig).
+Geef netwerktoegang tot het opslagaccount vanaf het *subnet Privé* met [Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -245,7 +245,7 @@ Implementeer een VM in elk subnet om de netwerktoegang tot een opslagaccount te 
 
 ### <a name="create-the-first-virtual-machine"></a>De eerste virtuele machine maken
 
-Maak een virtuele machine in het *open bare* subnet met [New-AzVM](/powershell/module/az.compute/new-azvm). Wanneer de volgende opdracht wordt uitgevoerd, wordt u gevraagd referenties op te geven. De waarden die u invoert, worden geconfigureerd als de gebruikersnaam en het wachtwoord voor de virtuele machine. Met de optie `-AsJob` wordt de virtuele machine op de achtergrond gemaakt, zodat u kunt doorgaan met de volgende stap.
+Maak een virtuele machine in het *openbare* subnet met [Nieuw-AzVM](/powershell/module/az.compute/new-azvm). Wanneer de volgende opdracht wordt uitgevoerd, wordt u gevraagd referenties op te geven. De waarden die u invoert, worden geconfigureerd als de gebruikersnaam en het wachtwoord voor de virtuele machine. Met de optie `-AsJob` wordt de virtuele machine op de achtergrond gemaakt, zodat u kunt doorgaan met de volgende stap.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -257,7 +257,7 @@ New-AzVm `
     -AsJob
 ```
 
-Uitvoer die vergelijkbaar is met de volgende voorbeeld uitvoer wordt geretourneerd:
+Uitvoer die vergelijkbaar is met de volgende voorbeelduitvoer wordt geretourneerd:
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command                  
@@ -267,7 +267,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ### <a name="create-the-second-virtual-machine"></a>De tweede virtuele machine maken
 
-Een virtuele machine maken in het *privé* -subnet:
+Maak een virtuele machine in het *subnet Privé:*
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -278,11 +278,11 @@ New-AzVm `
     -Name "myVmPrivate"
 ```
 
-Het duurt enkele minuten voordat Azure de virtuele machine heeft gemaakt. Ga niet verder met de volgende stap totdat Azure klaar is met het maken van de VM en het retour neren van uitvoer naar Power shell.
+Het duurt een paar minuten voordat Azure de VM maakt. Ga niet door naar de volgende stap totdat Azure klaar is met het maken van de VM en de uitvoer terugkeert naar PowerShell.
 
 ## <a name="confirm-access-to-storage-account"></a>Toegang tot opslagaccount bevestigen
 
-Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van een virtuele machine op te halen. In het volgende voor beeld wordt het open bare IP-adres van de *VM myvmprivate* -VM geretourneerd:
+Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van een virtuele machine op te halen. In het volgende voorbeeld wordt het openbare IP-adres van de *myVmPrivate-vm* geretourneerd:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -299,7 +299,7 @@ mstsc /v:<publicIpAddress>
 
 Er wordt een Remote Desktop Protocol-bestand (.rdp) gemaakt en gedownload naar uw computer. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **Meer opties** en vervolgens **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM. Selecteer **OK**. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
 
-Wijs op de VM *myVmPrivate* de Azure-bestandsshare toe aan station Z met behulp van PowerShell. Voordat u de volgende opdrachten uitvoert, moet u `<storage-account-key>` en `<storage-account-name>` vervangen door de waarden die u hebt opgegeven of opgehaald in [een opslag account maken](#create-a-storage-account).
+Wijs op de VM *myVmPrivate* de Azure-bestandsshare toe aan station Z met behulp van PowerShell. Voordat u de opdrachten uitvoert `<storage-account-key>` `<storage-account-name>` die volgen, worden vervangen en met waarden van u die zijn opgegeven of opgehaald in [Een opslagaccount maken.](#create-a-storage-account)
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -317,7 +317,7 @@ Z                                      FileSystem    \\vnt.file.core.windows.net
 
 De Azure-bestandsshare is toegewezen aan station Z.
 
-Controleer of de virtuele machine geen uitgaande verbinding heeft met andere open bare IP-adressen:
+Controleer of de VM geen uitgaande connectiviteit heeft met andere openbare IP-adressen:
 
 ```powershell
 ping bing.com
@@ -329,7 +329,7 @@ Sluit de externe bureaubladsessie naar de VM *myVmPrivate*.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Bevestigen dat toegang tot opslagaccount wordt geweigerd
 
-Het open bare IP-adres van de *VM myvmpublic* -VM ophalen:
+Haal het openbare IP-adres van de *myVmPublic* VM:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -344,7 +344,7 @@ Vervang `<publicIpAddress>` in de volgende opdracht door het openbare IP-adres d
 mstsc /v:<publicIpAddress>
 ```
 
-Probeer de Azure-bestands share op de *VM myvmpublic* -VM toe te wijzen aan station Z. Voordat u de volgende opdrachten uitvoert, moet u `<storage-account-key>` en `<storage-account-name>` vervangen door de waarden die u hebt opgegeven of opgehaald in [een opslag account maken](#create-a-storage-account).
+Probeer op de *myVmPublic-vm* de Azure-bestandsshare in kaart te brengen om Z te rijden. Voordat u de opdrachten uitvoert `<storage-account-key>` `<storage-account-name>` die volgen, worden vervangen en met waarden van u die zijn opgegeven of opgehaald in [Een opslagaccount maken.](#create-a-storage-account)
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -352,11 +352,11 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-De toegang tot de share is geweigerd en er wordt een `New-PSDrive : Access is denied` fout weer gegeven. De toegang wordt geweigerd omdat de VM *myVmPublic* is geïmplementeerd in het *Openbare* subnet. Het *Openbare* subnet heeft geen service-eindpunt ingeschakeld voor Azure Storage en het opslagaccount staat alleen netwerktoegang toe van het *Privé*-subnet, en niet van het *Openbare*subnet.
+Toegang tot het aandeel wordt geweigerd `New-PSDrive : Access is denied` en u ontvangt een foutmelding. De toegang wordt geweigerd omdat de VM *myVmPublic* is geïmplementeerd in het *Openbare* subnet. Het *Openbare* subnet heeft geen service-eindpunt ingeschakeld voor Azure Storage en het opslagaccount staat alleen netwerktoegang toe van het *Privé*-subnet, en niet van het *Openbare*subnet.
 
 Sluit de externe bureaubladsessie naar de VM *myVmPublic*.
 
-Probeer vanaf uw computer de bestands shares in het opslag account te bekijken met de volgende opdracht:
+Probeer vanaf uw computer de bestandsshares in het opslagaccount te bekijken met de volgende opdracht:
 
 ```powershell-interactive
 Get-AzStorageFile `
@@ -364,11 +364,11 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-De toegang wordt geweigerd en u ontvangt een *Get-AzStorageFile: de externe server heeft een fout geretourneerd: (403) verboden. HTTP-status code: 403-HTTP-fout bericht: deze aanvraag is niet gemachtigd om deze bewerkings fout uit te voeren* omdat uw computer zich niet in het *particuliere* subnet van het *MyVirtualNetwork* virtuele netwerk bevindt.
+Toegang wordt geweigerd en u ontvangt een *Get-AzStorageFile: De externe server heeft een foutmelding geretourneerd: (403) Verboden. HTTP-statuscode: 403 - HTTP-foutbericht: deze aanvraag is niet geautoriseerd om deze bewerkingsfout uit te voeren,* omdat uw computer zich niet in het *subnet Privé* van het virtuele *myvirtualnetwerk* bevindt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat te verwijderen:
+Wanneer dit niet meer nodig is, u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de brongroep en alle bronnen die deze bevat te verwijderen:
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -376,6 +376,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een service-eind punt voor een subnet van een virtueel netwerk ingeschakeld. U hebt geleerd dat service-eindpunten kunnen worden ingeschakeld voor met meerdere Azure-services geïmplementeerde resources. U hebt een Azure Storage-account gemaakt en netwerktoegang tot het opslagaccount beperkt tot alleen resources binnen een subnet van een virtueel netwerk. Zie voor meer informatie over service-eindpunten [Overzicht voor service-eindpunten](virtual-network-service-endpoints-overview.md) en [Subnetten beheren](virtual-network-manage-subnet.md).
+In dit artikel hebt u een serviceeindpunt ingeschakeld voor een virtueel netwerksubnet. U hebt geleerd dat service-eindpunten kunnen worden ingeschakeld voor met meerdere Azure-services geïmplementeerde resources. U hebt een Azure Storage-account gemaakt en netwerktoegang tot het opslagaccount beperkt tot alleen resources binnen een subnet van een virtueel netwerk. Zie voor meer informatie over service-eindpunten [Overzicht voor service-eindpunten](virtual-network-service-endpoints-overview.md) en [Subnetten beheren](virtual-network-manage-subnet.md).
 
-Als u meerdere virtuele netwerken in uw account hebt, kunt u twee virtuele netwerken met elkaar verbinden zodat de resources in beide virtuele netwerken met elkaar kunnen communiceren. Zie [verbinding maken met virtuele netwerken](tutorial-connect-virtual-networks-powershell.md)voor meer informatie.
+Als u meerdere virtuele netwerken in uw account hebt, kunt u twee virtuele netwerken met elkaar verbinden zodat de resources in beide virtuele netwerken met elkaar kunnen communiceren. Zie [Virtuele netwerken verbinden](tutorial-connect-virtual-networks-powershell.md)voor meer informatie.

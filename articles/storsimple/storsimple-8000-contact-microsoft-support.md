@@ -1,111 +1,111 @@
 ---
-title: Ondersteunings ticket of case maken voor de StorSimple 8000-serie
-description: Meer informatie over het registreren van de ondersteunings aanvraag en het starten van een ondersteunings sessie op het StorSimple 8000-serie apparaat.
+title: Maak Support ticket of case voor StorSimple 8000 serie
+description: Meer informatie over het aanmelden van ondersteuningsaanvragen en het starten van een ondersteuningssessie op uw StorSimple 8000-serie apparaat.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254987"
 ---
 # <a name="contact-microsoft-support"></a>Neem contact op met Microsoft Ondersteuning
 
-De StorSimple-Apparaatbeheer biedt de mogelijkheid om **een nieuwe ondersteunings aanvraag in te loggen** op de Blade service overzicht. Als u problemen ondervindt met uw StorSimple-oplossing, kunt u een service aanvraag voor technische ondersteuning maken. In een online-sessie met uw ondersteunings technicus moet u mogelijk ook een ondersteunings sessie starten op uw StorSimple-apparaat. Dit artikel begeleidt u door:
+De StorSimple Device Manager biedt de mogelijkheid om **een nieuwe ondersteuningsaanvraag in** te loggen in het serviceoverzichtsblad. Als u problemen ondervindt met uw StorSimple-oplossing, u een serviceaanvraag voor technische ondersteuning maken. In een online sessie met uw ondersteuningstechnicus moet u mogelijk ook een ondersteuningssessie starten op uw StorSimple-apparaat. Dit artikel leidt je door:
 
-* Een ondersteunings aanvraag maken.
-* Een ondersteunings aanvraag levenscyclus beheren vanuit de portal.
-* Een ondersteunings sessie starten in de Windows Power shell-interface van uw StorSimple-apparaat.
+* Een ondersteuningsaanvraag maken.
+* Hoe u de levenscyclus van een ondersteuningsaanvraag vanuit de portal beheren.
+* Een ondersteuningssessie starten in de Windows PowerShell-interface van uw StorSimple-apparaat.
 
-Bekijk de [StorSimple 8000-serie ondersteuning voor sla's en informatie](https://msdn.microsoft.com/library/mt433077.aspx) voordat u een ondersteuningsaanvraag maakt.
+Bekijk de Sla's en informatie van de [StorSimple 8000-serie ondersteuning](https://msdn.microsoft.com/library/mt433077.aspx) voordat u een ondersteuningsaanvraag maakt.
 
 ## <a name="create-a-support-request"></a>Een ondersteuningsaanvraag maken
 
-Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/plans/)kunt u rechtstreeks op de Blade StorSimple Apparaatbeheer service samen vatting ondersteunings tickets maken voor een probleem op uw StorSimple-apparaat. Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
+Afhankelijk van uw [ondersteuningsplan](https://azure.microsoft.com/support/plans/)u ondersteuningstickets voor een probleem op uw StorSimple-apparaat rechtstreeks vanaf het overzichtsblad van de StorSimple Device Manager-service maken. Voer de volgende stappen uit om een ondersteuningsaanvraag te maken:
 
-#### <a name="to-create-a-support-request"></a>Een ondersteunings aanvraag maken
+#### <a name="to-create-a-support-request"></a>Een ondersteuningsverzoek maken
 
-1. Ga naar uw StorSimple-apparaatbeheerservice. Ga in de Blade instellingen service overzicht naar **ondersteuning en probleem oplossing** en klik vervolgens op **nieuwe ondersteunings aanvraag**.
+1. Ga naar uw StorSimple-apparaatbeheerservice. Ga in de instellingen van het serviceoverzichtsblad naar de sectie **ONDERSTEUNING + PROBLEEMOPLOSSING** en klik vervolgens op **Nieuw ondersteuningsverzoek**.
      
-    ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
+    ![Neem contact op met MS Support via een nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. Selecteer op de Blade **nieuwe ondersteunings aanvraag** de optie **basis**. Voer de volgende stappen uit op de Blade **basis beginselen** :
-   1. Selecteer in de vervolg keuzelijst **probleem type** de optie **technisch**.
-   2. Het huidige **abonnement**, **service** type en de **resource** (StorSimple Apparaatbeheer service) worden automatisch gekozen. 
-   3. Selecteer een **ondersteunings plan** in de vervolg keuzelijst als er meerdere plannen aan uw abonnement zijn gekoppeld. U hebt een betaald ondersteunings abonnement nodig om technische ondersteuning mogelijk te maken.
+2. Selecteer **basics**in het blad **Nieuw ondersteuningsverzoek** . Ga in het **blad Basics** de volgende stappen uit:
+   1. Selecteer In de vervolgkeuzelijst **Probleemtype** de optie **Technisch**.
+   2. Het huidige **abonnement,** **servicetype** en de **Resource** (StorSimple Device Manager-service) worden automatisch gekozen. 
+   3. Selecteer een **ondersteuningsabonnement** in de vervolgkeuzelijst als u meerdere abonnementen aan uw abonnement hebt gekoppeld. U hebt een betaald ondersteuningsplan nodig om technische ondersteuning in te schakelen.
    4. Klik op **Volgende**.
 
-       ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Neem contact op met MS Support via een nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. Selecteer op de Blade **nieuwe ondersteunings aanvraag** het **probleem met stap 2**. Voer op de Blade **probleem** de volgende stappen uit:
+3. Selecteer **stap 2-probleem**in het blad **Nieuw ondersteuningsverzoek** . Ga in het **probleemblad** de volgende stappen uit:
     
-    1. Kies de **Ernst**.
-    2. Geef op of het probleem betrekking heeft op het apparaat of de StorSimple-Apparaatbeheer service.
-    3. Kies een **categorie** voor dit probleem en geef meer **informatie** over het probleem.
-    4. Geef de begin datum en-tijd op voor het probleem.
-    5. Klik in het **bestand uploaden**op het mappictogram om naar uw ondersteunings pakket te bladeren.
-    6. Controleer de **Diagnostische gegevens voor delen**.
+    1. Kies de **ernst**.
+    2. Geef op of het probleem gerelateerd is aan het toestel of de StorSimple Device Manager-service.
+    3. Kies een **rubriek** voor dit probleem en geef meer **details** over het probleem.
+    4. Geef de begindatum en tijd voor het probleem op.
+    5. Klik **in het uploaden van bestanden**op het mappictogram om naar uw ondersteuningspakket te bladeren.
+    6. Controleer **diagnostische gegevens delen**.
     7. Klik op **Volgende**.
 
-       ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Neem contact op met MS Support via een nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. Klik op de Blade **nieuwe ondersteunings aanvraag** op **stap 3 contact gegevens**. Voer de volgende stappen uit op de Blade **contact gegevens** :
+4. Klik in het mes Van het **nieuwe ondersteuningsverzoek** op **Contactgegevens van stap 3**. Ga in het blad **Contactgegevens** de volgende stappen uit:
 
-   1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
-   2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Schakel het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** in.
-   3. Klik op **Create**.
+   1. Geef in de **contactopties**de contactmethode (telefoon of e-mail) en de taal op. De reactietijd wordt automatisch geselecteerd op basis van uw abonnement.
+   2. Geef in de contactgegevens uw naam, e-mail, optionele contactpersoon, land/regio op. Schakel het selectievakje **Wijzigingen in contactpersonen opslaan voor toekomstige ondersteuningsaanvragen** in.
+   3. Klik **op Maken**.
    
-       ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Neem contact op met MS Support via een nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-      Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing.
-      Nadat u uw aanvraag hebt ingediend, neemt een ondersteunings technicus zo snel mogelijk contact met u op om te kunnen door gaan met uw aanvraag.
+      Microsoft Support gebruikt deze informatie om contact met u op te nemen voor meer informatie, diagnose en oplossing.
+      Nadat u uw aanvraag hebt ingediend, neemt een ondersteuningstechnicus zo snel mogelijk contact met u op om verder te gaan met uw verzoek.
 
-## <a name="manage-a-support-request"></a>Een ondersteunings aanvraag beheren
+## <a name="manage-a-support-request"></a>Een ondersteuningsverzoek beheren
 
 Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticket vanuit de portal beheren.
 
-#### <a name="to-manage-your-support-requests"></a>Uw ondersteunings aanvragen beheren
+#### <a name="to-manage-your-support-requests"></a>Uw ondersteuningsverzoeken beheren
 
-1. Als u naar de pagina Help en ondersteuning wilt gaan, bladert u naar **> Help en ondersteuning**.
+1. Als u naar de help- en ondersteuningspagina wilt gaan, navigeert u **naar Bladeren > Help + ondersteuning.**
 
-    ![Ondersteunings aanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
+    ![Ondersteuningsaanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. Een lijst in tabel vorm van alle ondersteunings aanvragen wordt weer gegeven op de Blade **Help en ondersteuning** .
+2. Een tabeltabel met alle ondersteuningsaanvragen wordt weergegeven in het **ondersteuningsblad Help + ondersteuning.**
 
-    ![Ondersteunings aanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Ondersteuningsaanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. Selecteer en klik op een ondersteunings aanvraag. U kunt de status en de Details voor deze aanvraag bekijken. Klik op **+ Nieuw bericht** als u deze aanvraag wilt opvolgen.
+3. Selecteer en klik op een ondersteuningsverzoek. U de status en de details van dit verzoek bekijken. Klik **+ Nieuw bericht** als u dit verzoek wilt opvolgen.
 
-    ![Ondersteunings aanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Ondersteuningsaanvragen beheren](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Een ondersteunings sessie starten in Windows PowerShell voor StorSimple
+## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Een ondersteuningssessie starten in Windows PowerShell voor StorSimple
 
-Als u problemen wilt oplossen met het StorSimple-apparaat, moet u zich aanmelden met het Microsoft Ondersteuning-team. Microsoft Ondersteuning moet mogelijk een ondersteunings sessie gebruiken om u aan te melden bij uw apparaat.
+Als u eventuele problemen met het StorSimple-apparaat wilt oplossen, moet u contact opnemen met het Microsoft Support-team. Microsoft Support moet mogelijk een ondersteuningssessie gebruiken om zich aan te melden bij uw apparaat.
 
-Voer de volgende stappen uit om een ondersteunings sessie te starten:
+Voer de volgende stappen uit om een ondersteuningssessie te starten:
 
-#### <a name="to-start-a-support-session"></a>Een ondersteunings sessie starten
+#### <a name="to-start-a-support-session"></a>Een ondersteuningssessie starten
 
-1. Direct toegang tot het apparaat met behulp van de seriële console of via een Telnet-sessie vanaf een externe computer. Volg hiervoor de stappen in [putty gebruiken om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Druk in de sessie die wordt geopend op de **Enter** -toets om een opdracht prompt op te halen.
-3. Selecteer optie 1 in het menu seriële console en **Meld u aan met volledige toegang**.
-4. Typ bij de prompt het volgende wacht woord:
+1. Rechtstreeks toegang tot het apparaat via de seriële console of via een telnet-sessie vanaf een externe computer. Volg hiervoor de stappen in [PuTTY gebruiken om verbinding te maken met de seriële console van het apparaat.](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)
+2. Druk in de sessie die wordt geopend op **de** enter-toets om een opdrachtprompt te krijgen.
+3. Selecteer in het menu van de seriële console optie 1, **Log in met volledige toegang**.
+4. Typ bij de prompt het volgende wachtwoord:
    
     `Password1`
 5. Typ achter de prompt de volgende opdracht:
    
     `Enable-HcsSupportAccess`
-6. Een versleutelde teken reeks wordt aan u gepresenteerd. Kopieer deze teken reeks in een tekst editor, zoals Klad blok.
-7. Sla deze teken reeks op en verzend deze in een e-mail bericht naar Microsoft Ondersteuning.
+6. Een gecodeerde tekenreeks wordt aan u gepresenteerd. Kopieer deze tekenreeks naar een teksteditor zoals Kladblok.
+7. Sla deze tekenreeks op en stuur deze in een e-mailbericht naar Microsoft Support.
 
 > [!IMPORTANT]
-> U kunt de ondersteunings toegang uitschakelen door `Disable-HcsSupportAccess`uit te voeren. Het StorSimple-apparaat probeert ook de toegang tot 8 uur na het starten van de sessie uit te scha kelen. Het is een best practice om uw StorSimple te wijzigen na het initiëren van een ondersteunings sessie.
+> U ondersteuningstoegang `Disable-HcsSupportAccess`uitschakelen door het uitvoeren van. Het StorSimple-apparaat probeert ook de ondersteuningstoegang 8 uur na de start van de sessie uit te schakelen. Het is een aanbevolen procedure om uw StorSimple-apparaatreferenties te wijzigen na het starten van een ondersteuningssessie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [vaststellen en oplossen van problemen met uw StorSimple 8000 Series-apparaat](storsimple-8000-troubleshoot-deployment.md)
+Meer informatie over het [diagnosticeren en oplossen van problemen met betrekking tot uw StorSimple 8000-serie apparaat](storsimple-8000-troubleshoot-deployment.md)

@@ -1,6 +1,6 @@
 ---
 title: Wat is voorwaardelijke toegang in Azure Active Directory?
-description: Meer informatie over hoe voorwaardelijke toegang de kern is van het nieuwe besturings element op basis van identiteiten.
+description: Ontdek hoe voorwaardelijke toegang de kern vormt van het nieuwe identiteitsgestuurde controlevlak.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,95 +12,95 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240910"
 ---
 # <a name="what-is-conditional-access"></a>Wat is voorwaardelijke toegang?
 
-De moderne beveiligings omtrek gaat nu verder dan het netwerk van een organisatie voor het toevoegen van de identiteit van de gebruiker en het apparaat. Organisaties kunnen deze identiteits signalen gebruiken als onderdeel van hun beslissingen voor toegangs beheer. 
+De moderne beveiligingsperimeter reikt nu verder dan het netwerk van een organisatie en omvat de identiteit van gebruikers en apparaten. Organisaties kunnen deze identiteitssignalen gebruiken als onderdeel van hun toegangscontrolebeslissingen. 
 
-Voorwaardelijke toegang is het hulp programma dat wordt gebruikt door Azure Active Directory om signalen samen te brengen, beslissingen te nemen en organisatie beleid af te dwingen. Voorwaardelijke toegang bevindt zich op het hart van het nieuwe op identiteits gerichte besturings vlak.
+Voorwaardelijke toegang is het hulpmiddel dat wordt gebruikt door Azure Active Directory om signalen samen te brengen, beslissingen te nemen en organisatiebeleid af te dwingen. Conditional Access vormt de kern van het nieuwe identiteitsgestuurde controlevliegtuig.
 
-![Conceptuele voorwaardelijke signalen plus beslissing voor het afdwingen van afdwinging](./media/overview/conditional-access-signal-decision-enforcement.png)
+![Conceptueel voorwaardelijk signaal plus beslissing om handhaving te krijgen](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Beleids regels voor voorwaardelijke toegang op hun eenvoudigste manier zijn als-then-instructies, als een gebruiker toegang wil tot een resource, dan moeten ze een actie volt ooien. Voor beeld: een salaris beheerder wil toegang tot de salaris toepassing en is vereist voor het uitvoeren van multi-factor Authentication voor toegang.
+Voorwaardelijke toegang beleid op hun eenvoudigste zijn als-dan-instructies, als een gebruiker wil toegang tot een bron, dan moeten ze een actie te voltooien. Voorbeeld: Een salarismanager wil toegang krijgen tot de salaristoepassing en moet multi-factor authenticatie uitvoeren om toegang te krijgen.
 
-Beheerders worden geconfronteerd met twee primaire doel stellingen:
+Beheerders worden geconfronteerd met twee primaire doelen:
 
 - Geef gebruikers de mogelijkheid overal en altijd productief te zijn
-- De bedrijfs middelen beveiligen
+- De activa van de organisatie beschermen
 
-Door gebruik te maken van beleids regels voor voorwaardelijke toegang kunt u de juiste toegangs beheer Toep assen als dat nodig is om uw organisatie veilig te houden en op de wijze van de gebruiker te blijven wanneer deze niet nodig is.
+Door het beleid voor voorwaardelijke toegang te gebruiken, u de juiste toegangsbesturingselementen toepassen wanneer dat nodig is om uw organisatie veilig te houden en uit de buurt van uw gebruiker te blijven wanneer dit niet nodig is.
 
-![Voortgangs proces stroom voor voorwaardelijke toegang](./media/overview/conditional-access-overview-how-it-works.png)
+![Conceptuele voorwaardelijke toegangsprocesstroom](./media/overview/conditional-access-overview-how-it-works.png)
 
-Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factor Authentication is voltooid. Voorwaardelijke toegang is niet bedoeld als de eerste verdedigings linie van een organisatie voor scenario's als denial-of-service-aanvallen, maar kan signalen van deze gebeurtenissen gebruiken om toegang te bepalen.
+Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factorverificatie is voltooid. Voorwaardelijke toegang is niet bedoeld als de eerste verdedigingslinie van een organisatie voor scenario's zoals dos-aanvallen (denial-of-service), maar kan signalen van deze gebeurtenissen gebruiken om de toegang te bepalen.
 
-## <a name="common-signals"></a>Algemene signalen
+## <a name="common-signals"></a>Gemeenschappelijke signalen
 
-Veelvoorkomende signalen die bij het maken van een beleids beslissing kunnen worden gebruikt om rekening mee te houden, zijn de volgende signalen:
+Veelvoorkomende signalen waarmee voorwaardelijke toegang rekening kan houden bij het nemen van een beleidsbeslissing, zijn de volgende signalen:
 
-- Gebruiker of groepslid maatschap
-   - Beleids regels kunnen worden gericht op specifieke gebruikers en groepen die beheerders een nauw keurige controle over toegang geven.
-- IP-locatie gegevens
-   - Organisaties kunnen vertrouwde IP-adresbereiken maken die kunnen worden gebruikt bij het maken van beleids beslissingen. 
-   - Beheerders kunnen het gehele IP-bereik van landen opgeven om verkeer van te blok keren of toe te staan.
+- Gebruikers- of groepslidmaatschap
+   - Beleid kan worden gericht op specifieke gebruikers en groepen die beheerders een fijnmazige controle geven over de toegang.
+- IP-locatie-informatie
+   - Organisaties kunnen vertrouwde IP-adresbereiken maken die kunnen worden gebruikt bij het nemen van beleidsbeslissingen. 
+   - Beheerders kunnen ip-bereiken in hele landen opgeven om verkeer te blokkeren of toe te staan.
 - Apparaat
-   - Gebruikers met apparaten van specifieke platformen of gemarkeerd met een specifieke status kunnen worden gebruikt bij het afdwingen van beleid voor voorwaardelijke toegang.
+   - Gebruikers met apparaten van specifieke platforms of gemarkeerd met een specifieke status kunnen worden gebruikt bij het afdwingen van beleid voor voorwaardelijke toegang.
 - Toepassing
-   - Gebruikers die toegang proberen te krijgen tot specifieke toepassingen, kunnen verschillende beleids regels voor voorwaardelijke toegang activeren. 
-- Real-time en berekende risico detectie
-   - Hiermee wordt de integratie met Azure AD Identity Protection toegestaan beleids regels voor voorwaardelijke toegang om Risk ante aanmeldings gedrag te identificeren. Beleid kan gebruikers vervolgens dwingen om wachtwoord wijzigingen of multi-factor Authentication uit te voeren om het risico niveau te verminderen of om toegang te blok keren totdat een beheerder hand matige actie onderneemt.
+   - Gebruikers die toegang proberen te krijgen tot specifieke toepassingen, kunnen verschillende beleid voor voorwaardelijke toegang activeren. 
+- Real-time en berekende risicodetectie
+   - Dankzij de integratie van signalen met Azure AD Identity Protection kan het beleid voor voorwaardelijke toegang worden geïdentificeerd om risicovol aanmeldingsgedrag te identificeren. Beleidsregels kunnen gebruikers vervolgens dwingen wachtwoordwijzigingen of meervoudige verificatie uit te voeren om hun risiconiveau te verlagen of worden geblokkeerd van toegang totdat een beheerder handmatige actie onderneemt.
 - Microsoft Cloud App Security (MCAS)
-   - Hiermee kunnen toegang en sessies van gebruikers toepassingen in realtime worden bewaakt en beheerd, waardoor de zicht baarheid en controle van de toegang tot en activiteiten in uw cloud omgeving worden verhoogd.
+   - Hiermee kunnen gebruikerstoegang en sessies in realtime worden gecontroleerd en gecontroleerd, waardoor de zichtbaarheid en controle over de toegang tot en activiteiten die binnen uw cloudomgeving worden uitgevoerd, worden vergroot.
 
-## <a name="common-decisions"></a>Algemene beslissingen
+## <a name="common-decisions"></a>Gemeenschappelijke besluiten
 
-- Toegang blok keren
-   - Meest beperkend besluit
+- Toegang blokkeren
+   - Meest beperkende beslissing
 - Toegang verlenen
-   - Er kunnen nog steeds een of meer van de volgende opties worden vereist:
-      - Multi-factor Authentication vereisen
-      - Vereisen dat het apparaat wordt gemarkeerd als compatibel
-      - Hybride Azure AD-aangesloten apparaat vereisen
-      - Goedgekeurde client-apps vereisen
-      - Beveiligings beleid voor apps vereisen (preview-versie)
+   - Het minst beperkende besluit kan nog steeds een of meer van de volgende opties vereisen:
+      - Meervoudige verificatie vereisen
+      - Apparaat vereisen dat het als compatibel is gemarkeerd
+      - Hybride Azure AD-apparaat vereisen
+      - Goedgekeurde client-app vereisen
+      - Beleid voor app-beveiliging vereisen (voorbeeld)
 
 ## <a name="commonly-applied-policies"></a>Algemeen toegepast beleid
 
-Veel organisaties hebben algemene toegangs problemen die het beleid voor voorwaardelijke toegang kunnen helpen bij het volgende:
+Veel organisaties hebben gemeenschappelijke toegangsproblemen waarmee beleid voor voorwaardelijke toegang kan helpen, zoals:
 
-- Multi-factor Authentication vereisen voor gebruikers met beheerders rollen
-- Multi-factor Authentication vereisen voor Azure-beheer taken
-- Aanmeldingen blok keren voor gebruikers die verouderde verificatie protocollen willen gebruiken
-- Vertrouwde locaties voor registratie van Azure-Multi-Factor Authentication vereisen
-- Toegang vanaf specifieke locaties blok keren of verlenen
-- Risk ante aanmeldingen blok keren
-- Door de organisatie beheerde apparaten vereisen voor specifieke toepassingen
+- Multifactorauthenticatie vereisen voor gebruikers met een administratieve rol
+- Multifactorauthenticatie vereisen voor Azure-beheertaken
+- Aanmeldingen blokkeren voor gebruikers die verouderde verificatieprotocollen proberen te gebruiken
+- Vertrouwde locaties vereisen voor Azure Multi-Factor Authentication-registratie
+- Blokkeren of toegang verlenen vanaf specifieke locaties
+- Riskant aanmeldingsgedrag blokkeren
+- Apparaten die door de organisatie worden beheerd voor specifieke toepassingen vereisen
 
 ## <a name="customer-case-studies"></a>Casestudy's van klanten
 
-Ontdek hoe andere organisaties voorwaardelijke toegang van Azure AD gebruiken voor het definiëren en implementeren van geautomatiseerde beslissingen voor toegangs beheer. De volgende verhalen laten zien hoe deze klant aan deze behoeften voldoet.
+Ontdek hoe andere organisaties Azure AD Conditional Access gebruiken om geautomatiseerde toegangscontrolebeslissingen te definiëren en te implementeren. De volgende uitgelichte verhalen laten zien hoe aan deze behoeften van de klant wordt voldaan.
 
-* [Wipro verstuurt mobiele productiviteit met micro soft Cloud security tools om klant afspraken te verbeteren.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Het beleid voor voorwaardelijke toegang in azure AD heeft het bedrijf in staat gesteld om documenten, resources en toepassingen te delen met behulp van vertrouwde externe entiteiten---die hun eigen referenties kunnen gebruiken---met behoud van de controle over de eigen bedrijfs gegevens.
-* [Aramex Delivery Limited-wereld wijd logistiek en transport bedrijf maakt met de Cloud verbonden Office met identiteits-en toegangs beheer oplossing](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Het garanderen van beveiligde toegang is met name lastig bij de externe werk nemers van Aramex. Het bedrijf past nu voorwaardelijke toegang toe om deze externe werk nemers toegang te geven tot hun SaaS-toepassingen van buiten het netwerk. De regel voor voorwaardelijke toegang bepaalt of Multi-Factor Authentication moet worden afgedwongen, zodat alleen de juiste personen de juiste toegang geven.
+* [Wipro stimuleert de productiviteit van mobiele apparaten met Microsoft-cloudbeveiligingstools om de betrokkenheid van klanten te verbeteren.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Met het beleid voor voorwaardelijke toegang in Azure AD kan het bedrijf documenten, resources en toepassingen delen met vertrouwde externe entiteiten---die hun eigen referenties kunnen gebruiken--- terwijl het bedrijf de controle over zijn eigen bedrijfsgegevens behoudt.
+* [Aramex delivery limited - Global logistics and transportation company creëert cloud-connected office met identity and access management oplossing.](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en) Het waarborgen van veilige toegang was vooral moeilijk met de externe medewerkers van Aramex. Het bedrijf past nu Voorwaardelijke toegang toe om deze externe werknemers toegang te geven tot hun SaaS-toepassingen van buiten het netwerk. De regel Voorwaardelijke toegang bepaalt of multifactorauthenticatie wordt afgedwongen, waardoor alleen de juiste mensen de juiste toegang krijgen.
 
 ## <a name="license-requirements"></a>Licentievereisten
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-Klanten met [Microsoft 365 Business licenties](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot functies voor voorwaardelijke toegang. 
+Klanten met [Microsoft 365 Business-licenties](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot voorwaardelijke toegangsfuncties. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een beleid voor voorwaardelijke toegang op stuk bouwen](concept-conditional-access-policies.md)
+[Een beleid voor voorwaardelijke toegang stukje voor stuk bouwen](concept-conditional-access-policies.md)
 
-Zie [de implementatie van voorwaardelijke toegang plannen in azure Active Directory](plan-conditional-access.md)voor meer informatie over het implementeren van voorwaardelijke toegang in uw omgeving.
+Zie [Uw voorwaardelijke toegangsimplementatie](plan-conditional-access.md)plannen in Azure Active Directory voor meer informatie over het implementeren van voorwaardelijke toegang in uw omgeving.
 
-[Meer informatie over identiteits beveiliging](../identity-protection/overview-v2.md)
+[Meer informatie over identiteitsbescherming](../identity-protection/overview-v2.md)
 
 [Meer informatie over Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 

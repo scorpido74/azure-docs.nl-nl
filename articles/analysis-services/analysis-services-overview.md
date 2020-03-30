@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure Analysis Services | Microsoft Docs
-description: Meer informatie over Azure Analysis Services, een volledig beheerd platform as a Service (PaaS) dat zakelijke gegevens modellen in de Cloud biedt.
+description: Meer informatie over Azure Analysis Services, een volledig beheerd platform as a service (PaaS) dat bedrijfsgegevensmodellen op bedrijfsniveau in de cloud biedt.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
@@ -8,17 +8,17 @@ ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240602"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services is een volledig beheerd platform als een service (PaaS) dat gegevensmodellen van ondernemingsklasse in de cloud levert. Gebruik geavanceerde mashup- en modelleringsfuncties om gegevens uit meerdere gegevensbronnen te verfijnen en te combineren, metrische gegevens te definiëren, en uw gegevens te beveiligen in één vertrouwd tabellarisch semantisch gegevensmodel. Het gegevens model biedt gebruikers een gemakkelijke en snellere manier om te zoeken naar enorme hoeveel heden gegevens voor ad-hoc gegevens analyse.
+Azure Analysis Services is een volledig beheerd platform als een service (PaaS) dat gegevensmodellen van ondernemingsklasse in de cloud levert. Gebruik geavanceerde mashup- en modelleringsfuncties om gegevens uit meerdere gegevensbronnen te verfijnen en te combineren, metrische gegevens te definiëren, en uw gegevens te beveiligen in één vertrouwd tabellarisch semantisch gegevensmodel. Het gegevensmodel biedt gebruikers een eenvoudigere en snellere manier om door enorme hoeveelheden gegevens te bladeren voor ad hoc gegevensanalyse.
 
 ![Gegevensbronnen](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -34,7 +34,7 @@ Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Altijd de juiste laag
 
-Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke laag zijn de plan kosten afhankelijk van de verwerkings kracht, Query's verwerkings eenheden (Qpu's) en geheugen grootte. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
+Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke laag variëren de abonnementskosten afhankelijk van verwerkingskracht, Query Processing Units (QUS' s) en geheugengrootte. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
 
 ### <a name="developer-tier"></a>Developer-laag
 
@@ -47,7 +47,7 @@ Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. E�
 
 ### <a name="basic-tier"></a>Basislaag
 
-Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. Het uitbreiden van de query replica *is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
+Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. De scale-out van *queryreplica's is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
 
 |Plannen  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
@@ -138,7 +138,7 @@ Azure Analysis Services is compatibel met veel geweldige functies die al deel ui
 
 Tabellarische modellen in zowel in-memory- als DirectQuery-modi worden ondersteund. In de in-memory-modus (standaard) ondersteunen tabellarische modellen meerdere gegevensbronnen. Omdat modelgegevens in hoge mate worden gecomprimeerd en in het geheugen worden gecachet, biedt deze modus de snelste queryrespons op grote hoeveelheden gegevens. Deze modus biedt ook de meeste flexibiliteit voor complexe gegevenssets en query's. Partitionering maakt incrementele belastingen mogelijk, verhoogt de parallellisatie en vermindert het geheugenverbruik. Andere geavanceerde functies voor gegevensmodellering, zoals berekende tabellen, en alle DAX-functies worden ondersteund. Geheugenmodellen moeten worden vernieuwd (verwerkt) om gecachete gegevens uit gegevensbronnen bij te werken. Dankzij Azure-service-principal-ondersteuning bieden onbeheerde vernieuwingsbewerkingen met PowerShell, TOM, TMSL en REST flexibiliteit om ervoor te zorgen dat uw modelgegevens altijd up-to-date zijn. 
 
-DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Zeer grote gegevens sets in één SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure Synapse Analytics (SQL Data Warehouse), Oracle en Teradata-gegevens bronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevens bron typen, beperkingen van DAX-formules en sommige geavanceerde functies voor gegevens modellering worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
+DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Extreem grote gegevenssets in afzonderlijke SQL Server-, SQL Server Data Warehouse, Azure SQL Database, Azure Synapse Analytics (SQL Data Warehouse), Oracle en Teradata-gegevensbronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevensbrontypen, DAX-formulebeperkingen en sommige geavanceerde gegevensmodelleringsfuncties worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
 
 \* Welke functies beschikbaar zijn hangt af van de laag.
 
@@ -148,7 +148,7 @@ Tabellarische modellen in Azure Analysis Services ondersteunen een breed scala a
 
 ## <a name="compatibility-level"></a>Compatibiliteitsniveau
 
-Compatibiliteits niveau verwijst naar een release-specifiek gedrag in de Analysis Services-engine. Azure Analysis Services ondersteunt modellen in tabel vorm met de compatibiliteits niveaus 1200 en hoger. Zie [compatibiliteits niveau voor tabellaire modellen voor](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)meer informatie.
+Compatibiliteitsniveau verwijst naar release-specifiek gedrag in de Analysis Services-engine. Azure Analysis Services ondersteunt tabellarische modellen met het compatibiliteitsniveau 1200 of hoger. Zie [Compatibiliteitsniveau voor tabelmodellen voor](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)meer informatie.
 
 
 ## <a name="your-data-is-secure"></a>Gegevens zijn beveiligd
@@ -161,13 +161,13 @@ Op serverniveau biedt Analysis Services firewall, Azure-verificatie, serverbehee
 
 De firewall van Azure Analysis Services blokkeert alle clientverbindingen behalve die met IP-adressen die zijn opgegeven in regels. Firewall-beveiliging is standaard niet ingeschakeld voor nieuwe servers. Het verdient aanbeveling om onmiddellijk nadat de server is gemaakt de firewallbeveiliging in te schakelen en de regels te configureren als onderdeel van een serverinrichtingsscript of in de portal. Configureer regels voor toegestane IP-adressen als individuele client-IP-adressen of als een bereik. Verbindingen van Power BI (service) kunnen ook worden toegestaan of geblokkeerd. Configureer de firewall en regels in de portal of met behulp van PowerShell. Zie [Configure a server firewall](analysis-services-qs-firewall.md) (een serverfirewall configureren) voor meer informatie.
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Gebruikersverificatie wordt afgehandeld door [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Bij het inloggen gebruiken gebruikers de identiteit van een organisatie-account met op rollen gebaseerde toegang tot de database. Gebruikers-id's moeten lid zijn van de standaard Azure Active Directory voor het abonnement waarin de server is ondergebracht. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Gegevensbeveiliging
 
-Azure Analysis Services maakt gebruik van Azure Blob-opslag om opslag en metagegevens voor Analysis Services-databases persistent te maken. Gegevensbestanden in Blob worden versleuteld met behulp van [Azure Blob Server Side Encryption (SSE)](../storage/common/storage-service-encryption.md). Wanneer de Direct Query-modus wordt gebruikt, worden alleen metagegevens opgeslagen. De werkelijke gegevens worden op het moment van uitvoering van de query via een versleuteld protocol opgehaald uit de gegevensbron.
+Azure Analysis Services maakt gebruik van Azure Blob-opslag om opslag en metagegevens voor Analysis Services-databases persistent te maken. Gegevensbestanden in Blob worden versleuteld met [Azure Blob Server Side Encryption (SSE).](../storage/common/storage-service-encryption.md) Wanneer de Direct Query-modus wordt gebruikt, worden alleen metagegevens opgeslagen. De werkelijke gegevens worden op het moment van uitvoering van de query via een versleuteld protocol opgehaald uit de gegevensbron.
 
 Beveiligde toegang tot on-premises gegevens binnen uw organisatie wordt gerealiseerd door een [on-premises gegevensgateway](analysis-services-gateway.md) te installeren en te configureren. Gateways bieden toegang tot gegevens voor zowel de DirectQuery-modus als de in-memory-modus.
 
@@ -200,9 +200,9 @@ Ga naar het [Microsoft Vertrouwenscentrum](https://www.microsoft.com/trustcenter
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Ontwikkel en implementeer modellen met Visual Studio met Analysis Services-projecten. De uitbrei ding Analysis Services projecten bevat sjablonen en wizards waarmee u snel aan de slag kunt gaan. De model bewerkings omgeving in Visual Studio bevat nu de moderne Get data source-query en de mashup-functionaliteit voor modellen in tabel 1400 en hoger. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
+Ontwikkelen en implementeren van modellen met Visual Studio met Analysis Services-projecten. De uitbreiding van Analysis Services-projecten bevat sjablonen en wizards die u snel op de been brengen. De modelontwerpomgeving in Visual Studio bevat nu de moderne query met gegevensbron ophalen gegevens en mashup-functionaliteit voor tabel100 en hogere modellen. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
 
-Micro soft Analysis Services Projects is beschikbaar als een gratis Installeer bare VSIX-pakket. [Downloaden van Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). De uitbrei ding werkt met elke versie van Visual Studio 2017 en hoger, met inbegrip van de gratis Community Edition.
+Microsoft Analysis Services Projects is beschikbaar als een gratis installeerbaar VSIX-pakket. [Downloaden van Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). De extensie werkt met elke versie van Visual Studio 2017 en hoger, inclusief de gratis Community-editie.
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
@@ -222,7 +222,7 @@ De tabellaire modellen kunnen snel worden ontwikkeld en zijn in hoge mate aanpas
 
 Moderne hulpprogramma's voor het verkennen en visualiseren van gegevens, zoals Power BI, Excel, Reporting Services en hulpprogramma's van derden, bieden gebruikers interactieve en visueel aantrekkelijke inzichten in de gegevens van uw model. 
 
-## <a name="monitoring-and-diagnostics"></a>Bewaking en diagnose
+## <a name="monitoring-and-diagnostics"></a>Controle en diagnose
 
 Azure Analysis Services is geïntegreerd met metrische gegevens van Azure en biedt een groot aantal resourcespecifieke metrische gegevens waarmee u de prestaties en de status van uw servers kunt volgen. Zie [Monitor server metrics](analysis-services-monitor.md) (Metrische servergegevens bewaken) voor meer informatie. Leg metrische gegevens vast met [diagnostische logboeken van Azure-resources](../azure-monitor/platform/platform-logs-overview.md). Bewaak en verzend logbestanden naar [Azure Storage](https://azure.microsoft.com/services/storage/), stream ze naar [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)en exporteer ze naar [Azure Monitor-logboeken](https://azure.microsoft.com/services/log-analytics/), een service van [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Zie [Registratie in diagnoselogboek instellen](analysis-services-logging.md) voor meer informatie.
 
@@ -232,7 +232,7 @@ Azure Analysis Services ondersteunt ook het gebruik van [DMV's (dynamische behee
 
 Specifieke documentatie bij Azure Analysis Services is hier opgenomen. Gebruik de inhoudsopgave aan de linkerkant van uw browserscherm om artikelen te zoeken. 
 
-Omdat Azure Analysis Services tabellaire modellen veel hetzelfde zijn als tabellaire modellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met zelf studies, concepten, procedures, ontwikkel aars en naslag informatie over gedeelde gegevens modellering in [SQL Server Analysis Services documentatie](https://docs.microsoft.com/analysis-services/analysis-services-overview). Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
+Omdat tabelmodellen van Azure Analysis Services vrijwel hetzelfde zijn als tabelmodellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met handleidingen voor gedeelde gegevensmodellering, conceptuele, procedurele, ontwikkelaars- en referentieartikelen in [SQL Server Analysis Services-documentatie.](https://docs.microsoft.com/analysis-services/analysis-services-overview) Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
 
 ![Gedeelde documentatie](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -248,7 +248,7 @@ In de documentatie van Azure Analysis Services wordt ook gebruikgemaakt van [Git
 
 ## <a name="blogs"></a>Blogs
 
-Er veranderen nog veel dingen. Ontvang de meest recente informatie over de [Power bi blog](https://powerbi.microsoft.com/blog/category/analysis-services/) en [Azure-blog](https://azure.microsoft.com/blog/).
+Er veranderen nog veel dingen. Ontvang de laatste informatie over het [Power BI-blog](https://powerbi.microsoft.com/blog/category/analysis-services/) en [Azure-blog](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Community
 

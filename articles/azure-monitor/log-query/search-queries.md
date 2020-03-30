@@ -1,35 +1,35 @@
 ---
-title: Zoek query's in Azure Monitor logs | Microsoft Docs
-description: Dit artikel bevat een zelf studie om aan de slag te gaan met zoeken in Azure Monitor-logboek query's.
+title: Zoekopdrachten in Azure Monitor-logboeken | Microsoft Documenten
+description: In dit artikel vindt u een zelfstudie voor het gebruik van zoekopdrachten in Azure Monitor-logboekquery's.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660237"
 ---
-# <a name="search-queries-in-azure-monitor-logs"></a>Zoek query's in Azure Monitor-logboeken
-Azure Monitor-logboek query's kunnen beginnen met een tabel naam of een zoek opdracht. In deze zelf studie worden Zoek query's behandeld. Er zijn voor delen van elke methode.
+# <a name="search-queries-in-azure-monitor-logs"></a>Zoekopdrachten in Azure Monitor-logboeken
+Azure Monitor-logboekquery's kunnen beginnen met een tabelnaam of een zoekopdracht. Deze zelfstudie heeft betrekking op zoekopdrachten. Er zijn voordelen aan elke methode.
 
-Query's op basis van een tabel worden gestart door de query te bereiken en zijn daarom meestal efficiënter dan zoek query's. Zoek query's zijn minder gestructureerd, waardoor ze beter kunnen worden gekozen bij het zoeken naar een specifieke waarde in kolommen of tabellen. met **zoeken** kunt u alle kolommen in een bepaalde tabel of in alle tabellen scannen voor de opgegeven waarde. De hoeveelheid gegevens die wordt verwerkt, kan enorm zijn, wat betekent dat deze query's langer kunnen duren en mogelijk zeer grote resultaten sets kunnen retour neren.
+Query's in tabelen beginnen met het doorzoeken van de query en zijn daarom meestal efficiënter dan zoekopdrachten. Zoekopdrachten zijn minder gestructureerd, waardoor ze de betere keuze zijn bij het zoeken naar een specifieke waarde in kolommen of tabellen. **zoeken** kan alle kolommen in een bepaalde tabel of in alle tabellen scannen op de opgegeven waarde. De hoeveelheid gegevens die worden verwerkt kan enorm zijn, dat is de reden waarom deze query's langer kunnen duren om te voltooien en kunnen zeer grote resultaatsets retourneren.
 
 ## <a name="search-a-term"></a>Een term zoeken
-De **Zoek** opdracht wordt doorgaans gebruikt om een specifieke term te doorzoeken. In het volgende voor beeld worden alle kolommen in alle tabellen gescand op de term ' fout ':
+De **zoekopdracht** wordt meestal gebruikt om een specifieke term te zoeken. In het volgende voorbeeld worden alle kolommen in alle tabellen gescand op de term "fout":
 
 ```Kusto
 search "error"
 | take 100
 ```
 
-Hoewel ze gemakkelijk te gebruiken zijn, zijn onbereikbare query's, zoals hierboven aangegeven, niet efficiënt en kunnen ze veel irrelevante resultaten retour neren. Het is raadzaam om te zoeken in de relevante tabel of zelfs een specifieke kolom.
+Hoewel ze gemakkelijk te gebruiken zijn, zijn niet-scoped query's zoals hierboven getoond niet efficiënt en zullen ze waarschijnlijk veel irrelevante resultaten opleveren. Een betere praktijk zou zijn om te zoeken in de relevante tabel, of zelfs een specifieke kolom.
 
-### <a name="table-scoping"></a>Bereik van tabel
-Als u een term in een specifieke tabel wilt doorzoeken, voegt u `in (table-name)` toe, net na de **Zoek** operator:
+### <a name="table-scoping"></a>Tabelscoping
+Als u een term in `in (table-name)` een bepaalde tabel wilt doorzoeken, voegt u vlak na de **zoekoperator** toe:
 
 ```Kusto
 search in (Event) "error"
@@ -42,8 +42,8 @@ search in (Event, SecurityEvent) "error"
 | take 100
 ```
 
-### <a name="table-and-column-scoping"></a>Bereik tabel en kolom
-Standaard **worden alle** kolommen in de gegevensset geëvalueerd. Als u alleen in een specifieke kolom ( *met de naam in* het onderstaande voor beeld) wilt zoeken, gebruikt u de volgende syntaxis:
+### <a name="table-and-column-scoping"></a>Tabel- en kolomscoping
+Standaard **evalueert zoeken** alle kolommen in de gegevensset. Als u alleen een specifieke kolom *wilt* zoeken (bron in het onderstaande voorbeeld), gebruikt u de onderstaande syntaxis:
 
 ```Kusto
 search in (Event) Source:"error"
@@ -51,75 +51,75 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Als u `==` gebruikt in plaats van `:`, bevatten de resultaten records waarin de *bron* kolom de exacte waarde ' fout ' heeft en in dit exacte geval. Using ': ' bevat records waarbij de *bron* waarden heeft, zoals ' fout code 404 ' of ' fout '.
+> Als u `==` in `:`plaats van , de resultaten zou bevatten records waarin de kolom *Bron* heeft de exacte waarde "fout", en in dit exacte geval. Het gebruik van ':' omvat records waarin *de bron* waarden heeft zoals 'foutcode 404' of 'Fout'.
 
-## <a name="case-sensitivity"></a>Hoofdletter gevoeligheid
-De term zoek opdracht is standaard hoofdletter gevoelig, dus het zoeken naar ' DNS ' kan resulteren in resultaten zoals ' DNS ', ' DNS ' of ' DNS '. Als u de zoek actie gevoelig wilt maken, gebruikt u de optie `kind`:
+## <a name="case-sensitivity"></a>Hoofdlettergevoeligheid
+Standaard is term search case-ongevoelig, dus zoeken naar "dns" kan resultaten opleveren zoals "DNS", "dns" of "Dns". Gebruik de `kind` optie om de zoekcase gevoelig te maken:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
 
-## <a name="use-wild-cards"></a>Joker tekens gebruiken
-De **Zoek** opdracht ondersteunt joker tekens, aan het begin of in het midden van een term.
+## <a name="use-wild-cards"></a>Jokerkaarten gebruiken
+Het **zoekcommando** ondersteunt wildcards, aan het begin, einde of midden van een term.
 
-Zoek termen die beginnen met ' win ':
+Ga als u op zoek gaan naar termen die beginnen met 'winnen':
 ```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
-Zoek termen die eindigen op '. com ':
+Ga als u op zoek gaat naar termen die eindigen met ".com":
 ```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
-Zoek termen die ' www ' bevatten:
+Ga als een zoekfunctie op zoek naar termen die "www" bevatten:
 ```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
-Zoek termen die beginnen met "Corp" en eindigen op ". com", zoals "corp.mydomain.com" "
+Om termen te zoeken die beginnen met "corp" en eindigt op ".com", zoals "corp.mydomain.com""
 
 ```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
 
-U kunt ook alles in een tabel ophalen met behulp van een Joker teken: `search in (Event) *`, maar dit is hetzelfde als het schrijven van alleen `Event`.
+U ook alles in een tabel met `search in (Event) *`behulp van slechts een wild `Event`card:, maar dat zou hetzelfde zijn als het schrijven van gewoon.
 
 > [!TIP]
-> Hoewel u `search *` kunt gebruiken om elke kolom uit elke tabel op te halen, is het raadzaam om altijd uw query's op specifieke tabellen te bereiken. Het kan enige tijd duren voordat query's zonder bereik zijn voltooid en mogelijk te veel resultaten retour neren.
+> Hoewel u `search *` kunt gebruiken om elke kolom uit elke tabel te halen, wordt aanbevolen dat u uw query's altijd naar specifieke tabellen houdt. Het kan even duren voordat niet-scopedquery's zijn voltooid en dat er mogelijk te veel resultaten zijn.
 
-## <a name="add-and--or-to-search-queries"></a>Query's toevoegen *en* / *of* zoeken
-Gebruiken **en** zoeken naar records die meerdere termen bevatten:
+## <a name="add-and--or-to-search-queries"></a>Query's toevoegen *en* / *of* aan zoeken
+Gebruik **en** zoek naar records die meerdere termen bevatten:
 
 ```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
-Gebruik **of** om records te verkrijgen die ten minste één van de voor waarden bevatten:
+Gebruik **of** om records op te halen die ten minste één van de termen bevatten:
 
 ```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
-Als u meerdere zoek voorwaarden hebt, kunt u deze combi neren in dezelfde query met behulp van haakjes:
+Als u meerdere zoekvoorwaarden hebt, u deze combineren tot dezelfde query met haakjes:
 
 ```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
 
-De resultaten van dit voor beeld zijn records die de term ' error ' bevatten en ook ' registreren ' bevatten of iets dat begint met ' Mars '.
+De resultaten van dit voorbeeld zijn records die de term "fout" bevatten en ook "registreren" of iets dat begint met "marshal".
 
-## <a name="pipe-search-queries"></a>Zoek query's voor pipes
-Net als elke andere opdracht kan de **Zoek** opdracht worden gepiped zodat Zoek resultaten kunnen worden gefilterd, gesorteerd en geaggregeerd. Als u bijvoorbeeld het aantal *gebeurtenis* records wilt ophalen dat "win" bevat:
+## <a name="pipe-search-queries"></a>Zoekopdrachten voor leidingen
+Net als elke andere opdracht kan **zoeken** worden gepipeteerd, zodat zoekresultaten kunnen worden gefilterd, gesorteerd en samengevoegd. Bijvoorbeeld om het aantal *gebeurtenisrecords* te krijgen dat 'winnen' bevat:
 
 ```Kusto
 search in (Event) "win"
@@ -131,4 +131,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie verdere zelf studies op de [Kusto query language-site](/azure/kusto/query/).
+- Zie verdere tutorials op de [Kusto query taal site](/azure/kusto/query/).

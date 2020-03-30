@@ -1,6 +1,6 @@
 ---
-title: Grootte limieten en uitsluitings lijsten voor Web Application firewall in Azure-toepassing gateway-Azure Portal
-description: In dit artikel vindt u informatie over de maximale grootte van de Web Application firewall-aanvraag en de configuratie van uitsluitings lijsten in Application Gateway met de Azure Portal.
+title: Groottelimieten voor webtoepassingen aanvragen en uitsluitingslijsten in Azure Application Gateway - Azure-portal
+description: In dit artikel vindt u informatie over de groottelimieten van webtoepassingsfirewallaanvragen en worden uitsluitingslijsten geconfigureerd in Application Gateway met de Azure-portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,61 +8,61 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526787"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Maximale grootte van de Web Application firewall-aanvraag en uitsluitings lijsten
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Groottelimieten en uitsluitingslijsten voor Web Application Firewall-aanvragen
 
-De Azure-toepassing gateway Web Application firewall (WAF) biedt beveiliging voor webtoepassingen. In dit artikel worden de configuratie van de WAF-aanvraag grootte en de uitsluitings lijsten beschreven. Deze instellingen bevinden zich in het WAF-beleid dat aan uw Application Gateway is gekoppeld. Voor meer informatie over WAF-beleid raadpleegt u [Azure Web Application firewall op Azure-toepassing gateway](ag-overview.md) en [maakt u Web Application firewall-beleid voor Application Gateway](create-waf-policy-ag.md)
+De Azure Application Gateway Web Application Firewall (WAF) biedt bescherming voor webtoepassingen. In dit artikel worden waf-aanvraaggroottelimieten en uitsluitingslijsten beschreven. Deze instellingen bevinden zich in het WAF-beleid dat is gekoppeld aan uw toepassingsgateway. Zie [Azure Web Application Firewall op Azure Application Gateway](ag-overview.md) en Web Application [Firewall-beleid voor Application Gateway voor](create-waf-policy-ag.md) meer informatie over WAF-beleid voor meer informatie over WAF-beleid
 
-## <a name="waf-exclusion-lists"></a>WAF uitsluitings lijsten
+## <a name="waf-exclusion-lists"></a>WAF-uitsluitingslijsten
 
-![Limieten voor aanvraag grootte](../media/application-gateway-waf-configuration/waf-policy.png)
+![Limieten voor de grootte aanvragen](../media/application-gateway-waf-configuration/waf-policy.png)
 
-Met WAF-uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen van een WAF-evaluatie weglaten. Een gemeen schappelijk voor beeld is Active Directory ingevoegde tokens die worden gebruikt voor verificatie-of wachtwoord velden. Dergelijke kenmerken zijn gevoelig voor speciale tekens die een onjuiste positieve waarde van de WAF-regels kunnen veroorzaken. Zodra een kenmerk is toegevoegd aan de uitsluitings lijst WAF, wordt dit niet door de geconfigureerde en actieve WAF-regel beschouwd. Uitsluitings lijsten zijn globaal binnen het bereik.
+Met waf-uitsluitingslijsten u bepaalde aanvraagkenmerken weglaten uit een WAF-evaluatie. Een veelvoorkomend voorbeeld is Active Directory-ingevoegde tokens die worden gebruikt voor verificatie- of wachtwoordvelden. Dergelijke kenmerken zijn gevoelig voor speciale tekens die een vals-positief van de WAF-regels kunnen activeren. Zodra een kenmerk is toegevoegd aan de WAF-uitsluitingslijst, wordt het niet beschouwd als een geconfigureerde en actieve WAF-regel. Uitsluitingslijsten zijn globaal van opzet.
 
-De volgende kenmerken kunnen worden toegevoegd aan de uitsluitings lijsten op naam. De waarden van het gekozen veld worden niet geëvalueerd op basis van WAF-regels, maar hun namen zijn nog steeds (Zie voor beeld 1 hieronder wordt de waarde van de header van de gebruiker-Agent uitgesloten van WAF-evaluatie). De uitsluitings lijsten verwijderen de inspectie van de veld waarde.
+De volgende kenmerken kunnen op naam aan uitsluitingslijsten worden toegevoegd. De waarden van het gekozen veld worden niet beoordeeld aan de hand van waf-regels, maar hun namen wel (zie voorbeeld 1 hieronder, de waarde van de header User-Agent is uitgesloten van WAF-evaluatie). De uitsluitingslijsten verwijderen de inspectie van de waarde van het veld.
 
 * Aanvraagheaders
 * Cookies aanvragen
-* De naam van het aanvraag kenmerk (args) kan worden toegevoegd als een uitsluitings element, zoals:
+* De naam van het kenmerk Aanvragen (args) kan worden toegevoegd als uitsluitingselement, zoals:
 
-   * Naam van het formulier veld
+   * Naam van formulierveld
    * XML-entiteit
    * JSON-entiteit
-   * Query teken reeks argumenten voor URL
+   * ARGSvan URL-querytekenreeksen
 
-U kunt een exacte overeenkomst voor de aanvraag header, hoofd tekst, cookie of query teken reeks kenmerken opgeven.  Of u kunt eventueel gedeeltelijke overeenkomsten opgeven. Uitsluitings regels zijn globaal in bereik en gelden voor alle pagina's en alle regels.
+U een exacte aanvraagkop-, hoofdtekst-, cookie- of querytekenreekskenmerkovereenkomst opgeven.  U ook optioneel gedeeltelijke overeenkomsten opgeven. Uitsluitingsregels zijn globaal van opzet en zijn van toepassing op alle pagina's en alle regels.
 
-De volgende Opera tors worden ondersteund:
+Hieronder volgen de operatoren voor ondersteunde wedstrijdcriteria:
 
-- **Is gelijk aan**: deze operator wordt gebruikt voor een exacte overeenkomst. Als voor beeld voor het selecteren van een header met de naam **bearerToken**, gebruikt u de operator equals met de selector ingesteld als **bearerToken**.
-- **Begint met**: deze operator komt overeen met alle velden die beginnen met de opgegeven selector-waarde.
-- **Eindigt op**: deze operator komt overeen met alle aanvraag velden die eindigen op de opgegeven selector-waarde.
-- **Contains**: deze operator komt overeen met alle aanvraag velden die de opgegeven selector-waarde bevatten.
-- **Is gelijk aan**: deze operator komt overeen met alle aanvraag velden. * de waarde selector is.
+- **Gelijk aan**: Deze operator wordt gebruikt voor een exacte overeenkomst. Als voorbeeld, voor het selecteren van een koptekst met de naam **bearerToken,** gebruikt u de gelijken operator met de selector set als **bearerToken**.
+- **Begin met**: Deze operator komt overeen met alle velden die beginnen met de opgegeven selectorwaarde.
+- **Eindigt met**: Deze operator komt overeen met alle aanvraagvelden die eindigen met de opgegeven selectorwaarde.
+- **Bevat:** deze operator komt overeen met alle aanvraagvelden die de opgegeven selectorwaarde bevatten.
+- **Is gelijk aan elk**: Deze operator komt overeen met alle aanvraagvelden. * zal de selector waarde.
 
-In alle gevallen die overeenkomen, is hoofdletter gevoelig en reguliere expressies niet toegestaan als selecters.
+In alle gevallen is matching geval ongevoelig en reguliere expressie zijn niet toegestaan als selectors.
 
 > [!NOTE]
-> Zie [WAF Troubleshooting](web-application-firewall-troubleshoot.md)(Engelstalig) voor meer informatie en hulp bij het oplossen van problemen.
+> Zie [WAF-probleemoplossing](web-application-firewall-troubleshoot.md)voor meer informatie en hulp bij het oplossen van problemen met problemen.
 
 ### <a name="examples"></a>Voorbeelden
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In de volgende voor beelden ziet u hoe u uitsluitingen kunt gebruiken.
+De volgende voorbeelden tonen het gebruik van uitsluitingen aan.
 
 #### <a name="example-1"></a>Voorbeeld 1
 
-In dit voor beeld wilt u de header van de User-agent uitsluiten. De header van de aanvraag van de gebruikers agent bevat een karakteristieke teken reeks waarmee het netwerk protocol peers het toepassings type, het besturings systeem, de software leverancier of de software versie van de aanvragende software-gebruikers agent kunnen identificeren. Zie [User-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent)(Engelstalig) voor meer informatie.
+In dit voorbeeld wilt u de header van de gebruikersagent uitsluiten. De user-agent request header bevat een karakteristieke tekenreeks waarmee de peers van het netwerkprotocol het toepassingstype, het besturingssysteem, de softwareleverancier of de softwareversie van de gebruikersagent van de aanvragende software kunnen identificeren. Zie [User-Agent voor](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent)meer informatie.
 
-Er kunnen verschillende redenen zijn om de evaluatie van deze koptekst uit te scha kelen. Er kan een teken reeks zijn die de WAF ziet en ervan uitgaat dat deze schadelijk is. Bijvoorbeeld, de klassieke SQL-aanval x = x in een teken reeks. In sommige gevallen kan dit een betrouwbaar verkeer zijn. Daarom moet u deze koptekst mogelijk uitsluiten van de evaluatie van WAF.
+Er kunnen verschillende redenen zijn om de evaluatie van deze header uit te schakelen. Er kan een string die de WAF ziet en gaat ervan uit dat het kwaadaardig. Bijvoorbeeld de klassieke SQL-aanval "x=x" in een tekenreeks. In sommige gevallen kan dit legitiem verkeer zijn. Het kan dus nodig zijn om deze header uit te sluiten van WAF evaluatie.
 
-Met de volgende Azure PowerShell cmdlet wordt de header van de agent van de gebruiker uitgesloten van de evaluatie:
+Met de volgende Azure PowerShell-cmdlet wordt de header van de gebruikersagent uitgesloten van evaluatie:
 
 ```azurepowershell
 $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -72,9 +72,9 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 ```
 #### <a name="example-2"></a>Voorbeeld 2
 
-In dit voor beeld wordt de waarde in de *gebruikers* parameter die in de aanvraag is door gegeven via de URL, uitgesloten. Stel dat het gebruikers veld in uw omgeving gebruikelijk is om een teken reeks te bevatten die de WAF weergeeft als schadelijke inhoud, zodat deze wordt geblokkeerd.  U kunt de para meter gebruiker in dit geval uitsluiten, zodat de WAF niets in het veld kan evalueren.
+In dit voorbeeld wordt de waarde in de *gebruikersparameter* die in de aanvraag wordt doorgegeven via de URL, uitgesloten. Stel dat het in uw omgeving gebruikelijk is dat het gebruikersveld een tekenreeks bevat die de WAF als schadelijke inhoud weergeeft, zodat deze wordt geblokkeerd.  U de gebruikersparameter in dit geval uitsluiten, zodat de WAF niets in het veld evalueert.
 
-Met de volgende Azure PowerShell cmdlet wordt de para meter van de gebruiker uitgesloten van de evaluatie:
+Met de volgende Azure PowerShell-cmdlet wordt de gebruikersparameter uitgesloten van evaluatie:
 
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
@@ -82,25 +82,25 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Dus als de URL `http://www.contoso.com/?user%281%29=fdafdasfda` wordt door gegeven aan de WAF, wordt de teken reeks **fdafdasfda**niet geëvalueerd, maar wordt nog wel de parameter naam **gebruiker %281 %29**geëvalueerd. 
+Dus als `http://www.contoso.com/?user%281%29=fdafdasfda` de URL wordt doorgegeven aan de WAF, zal het niet evalueren van de string **fdafdasfda**, maar het zal nog steeds evalueren van de parameter naam **gebruiker%281%29**. 
 
-## <a name="waf-request-size-limits"></a>Limieten voor WAF-aanvraag grootte
+## <a name="waf-request-size-limits"></a>WAF-aanvraaggroottelimieten
 
 
 
-Met Web Application firewall kunt u limieten voor aanvraag grootte configureren binnen lagere en bovengrens. De volgende twee limieten voor de grootte zijn beschikbaar:
+Met Web Application Firewall u limieten voor aanvraaggrootte smaken binnen de onder- en bovengrenzen. De volgende configuraties met twee groottelimieten zijn beschikbaar:
 
-- Het veld maximale grootte van aanvraag hoofdtekst wordt opgegeven in kilo bytes en bepaalt de totale limiet voor aanvraag grootte, exclusief het uploaden van bestanden. Dit veld kan variëren van 1 tot Maxi maal 128 KB maximum waarde. De standaard waarde voor de grootte van de aanvraag hoofdtekst is 128 KB.
-- Het veld upload limiet is opgegeven in MB en de Maxi maal toegestane grootte voor het uploaden van bestanden wordt bepaald. Dit veld kan een minimum waarde van 1 MB en de volgende maximum waarden hebben:
+- Het veld maximale doelgrootte wordt opgegeven in kilobytes en regelt de totale limiet voor de aanvraaggrootte, exclusief eventuele bestandsuploads. Dit veld kan variëren van minimaal 1-KB tot 128 KB maximale waarde. De standaardwaarde voor de grootte van de hoofdtekst van aanvragen is 128 KB.
+- Het veld limiet voor het uploaden van bestanden is opgegeven in MB en regelt de maximaal toegestane bestandsuploadgrootte. Dit veld kan een minimumwaarde van 1 MB en de volgende maxima hebben:
 
-   - 100 MB voor v1-media met WAF-gateways
-   - 500 MB voor v1 grote WAF-gateways
+   - 100 MB voor v1 Medium WAF-gateways
+   - 500 MB voor v1 Grote WAF-gateways
    - 750 MB voor v2 WAF-gateways 
 
- De standaard waarde voor de upload limiet voor bestanden is 100 MB.
+ De standaardwaarde voor de uploadlimiet van bestanden is 100 MB.
 
-WAF biedt ook een Configureer bare knop om de controle van de hoofd tekst van de aanvraag in of uit te scha kelen. De controle van de hoofd tekst van de aanvraag is standaard ingeschakeld. Als de controle van de hoofd tekst van de aanvraag is uitgeschakeld, wordt de inhoud van de HTTP-bericht tekst niet geëvalueerd door WAF. In dergelijke gevallen blijft WAF WAF regels afdwingen voor headers, cookies en URI. Als de controle van de hoofd tekst van de aanvraag is uitgeschakeld, is de maximum grootte van het aanvraag hoofdtekst veld niet van toepassing en kan het niet worden ingesteld. Als u de controle van de hoofd tekst van de aanvraag uitschakelt, kunnen berichten die groter zijn dan 128 KB worden verzonden naar WAF, maar de bericht tekst niet wordt gecontroleerd op beveiligings problemen.
+WAF biedt ook een configureerbare knop om de aanvraag body inspectie in of uit te schakelen. Standaard is de inspectie van de aanvraaginstantie ingeschakeld. Als de inspectie van de aanvraaginstantie is uitgeschakeld, evalueert WAF de inhoud van de HTTP-berichtenbody niet. In dergelijke gevallen blijft WAF de WAF-regels afdwingen voor headers, cookies en URI. Als de inspectie van de aanvraaginstantie is uitgeschakeld, is het veld maximale aanvraaginstantiegrootte niet van toepassing en kan deze niet worden ingesteld. Het uitschakelen van de aanvraag lichaam inspectie maakt het mogelijk voor berichten groter dan 128 KB worden verzonden naar WAF, maar het bericht lichaam is niet geïnspecteerd op kwetsbaarheden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw WAF-instellingen hebt geconfigureerd, kunt u leren hoe u uw WAF-Logboeken weergeeft. Zie [Application Gateway Diagnostics (diagnostische](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)gegevens) voor meer informatie.
+Nadat u uw WAF-instellingen hebt geconfigureerd, u leren hoe u uw WAF-logboeken bekijken. Zie [Application Gateway diagnostics](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)voor meer informatie.

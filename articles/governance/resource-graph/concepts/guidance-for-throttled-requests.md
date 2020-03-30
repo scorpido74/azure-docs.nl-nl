@@ -1,47 +1,47 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
-description: Meer informatie over Group, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
+description: Leer parallel groeperen, spreiden, pagina's en query's om te voorkomen dat aanvragen worden beperkt door Azure Resource Graph.
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259849"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richtlijnen voor geweigerde aanvragen in Azure Resource Graph
 
-Bij het maken van een programma en veelvuldig gebruik van gegevens van Azure-resource grafiek, moet u rekening houden met de manier waarop beperking invloed heeft op de resultaten van de query's. Het wijzigen van de manier waarop gegevens worden aangevraagd, kan u helpen om te voor komen dat uw organisatie wordt beperkt en de stroom van gegevens van uw Azure-resources behouden.
+Bij het maken van programmatische en veelvuldig gebruik van Azure Resource Graph-gegevens moet rekening worden gehouden met de invloed van beperking op de resultaten van de query's. Als u de manier waarop gegevens wordt opgevraagd, u en uw organisatie voorkomen dat u wordt beperkt en de stroom van tijdige gegevens over uw Azure-bronnen behouden.
 
-In dit artikel worden vier gebieden en patronen besproken die betrekking hebben op het maken van query's in azure resource Graph:
+In dit artikel worden vier gebieden en patronen bewerkt die betrekking hebben op het maken van query's in Azure Resource Graph:
 
-- Informatie over beperkings headers
+- Informatie over headers voor bandbreedtebeperking
 - Query's groeperen
-- Sprong query's
-- De impact van de paginering
+- Query's spreiden
+- De impact van pagination
 
-## <a name="understand-throttling-headers"></a>Informatie over beperkings headers
+## <a name="understand-throttling-headers"></a>Informatie over headers voor bandbreedtebeperking
 
-In azure resource Graph wordt een quotum nummer toegewezen voor elke gebruiker op basis van een tijd venster. Een gebruiker kan bijvoorbeeld Maxi maal 15 query's verzenden binnen elk 5-seconde venster zonder dat dit wordt beperkt. De quotum waarde wordt bepaald door een groot aantal factoren en kan worden gewijzigd.
+Azure Resource Graph kent quotanummer toe voor elke gebruiker op basis van een tijdvenster. Een gebruiker kan bijvoorbeeld maximaal 15 query's binnen elk venster van 5 seconden verzenden zonder te worden beperkt. De quotumwaarde wordt bepaald door vele factoren en kan worden gewijzigd.
 
-In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
+In elk queryantwoord voegt Azure Resource Graph twee beperkingskoppen toe:
 
-- `x-ms-user-quota-remaining` (int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
-- `x-ms-user-quota-resets-after` (UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
+- `x-ms-user-quota-remaining`(int): het resterende resourcequotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
+- `x-ms-user-quota-resets-after`(hh:mm:ss): de tijdsduur totdat het quotumverbruik van een gebruiker wordt gereset.
 
-Voor een demonstratie van de manier waarop de headers werken, bekijken we een antwoord op de query met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03`.
+Als u wilt illustreren hoe de kopteksten werken, bekijken we `x-ms-user-quota-remaining: 10` een `x-ms-user-quota-resets-after: 00:00:03`queryantwoord met de koptekst en waarden van en .
 
-- Binnen de komende 3 seconden kunnen Maxi maal 10 query's worden verzonden zonder te zijn beperkt.
-- In 3 seconden worden de waarden van `x-ms-user-quota-remaining` en `x-ms-user-quota-resets-after` teruggezet naar respectievelijk `15` en `00:00:05`.
+- Binnen de volgende 3 seconden kunnen ten hoogste 10 query's worden ingediend zonder te worden beperkt.
+- In 3 seconden, `x-ms-user-quota-remaining` de `x-ms-user-quota-resets-after` waarden van `15` `00:00:05` en zal worden gereset naar en respectievelijk.
 
-Als u een voor beeld wilt van het gebruik van de kopteksten voor _uitstel_ op query aanvragen, raadpleegt u het voor beeld in [query parallel](#query-in-parallel).
+Zie het voorbeeld in [Query in Parallel](#query-in-parallel)als u een voorbeeld wilt zien van het gebruik van de kopteksten om queryaanvragen te _back-offen._
 
 ## <a name="grouping-queries"></a>Query's groeperen
 
-Het groeperen van query's op het abonnement, de resource groep of de afzonderlijke resource is efficiënter dan gelijktijdig query's. De quota kosten van een grotere query zijn vaak lager dan de quota kosten van veel kleine en doel query's. De groeps grootte wordt aanbevolen om minder dan _300_te zijn.
+Het groeperen van query's op de abonnementsgroep, resourcegroep of afzonderlijke resource is efficiënter dan het parallelmetten van query's. De quotakosten van een grotere query zijn vaak lager dan de quotakosten van veel kleine en gerichte query's. De groepsgrootte wordt aanbevolen om minder dan _300_te zijn.
 
-- Voor beeld van een slecht geoptimaliseerde benadering
+- Voorbeeld van een slecht geoptimaliseerde aanpak
 
   ```csharp
   // NOT RECOMMENDED
@@ -62,7 +62,7 @@ Het groeperen van query's op het abonnement, de resource groep of de afzonderlij
   }
   ```
 
-- Voor beeld #1 van een geoptimaliseerde groeperings benadering
+- Voorbeeld #1 van een geoptimaliseerde groeperingsaanpak
 
   ```csharp
   // RECOMMENDED
@@ -85,7 +85,7 @@ Het groeperen van query's op het abonnement, de resource groep of de afzonderlij
   }
   ```
 
-- Voor beeld #2 van een geoptimaliseerde groeperings benadering voor het ophalen van meerdere resources in één query
+- Voorbeeld #2 van een geoptimaliseerde groeperingsbenadering voor het verkrijgen van meerdere resources in één query
 
   ```kusto
   Resources | where id in~ ({resourceIdGroup}) | project name, type
@@ -113,23 +113,23 @@ Het groeperen van query's op het abonnement, de resource groep of de afzonderlij
   }
   ```
 
-## <a name="staggering-queries"></a>Sprong query's
+## <a name="staggering-queries"></a>Query's spreiden
 
-Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt aangeraden query's te spreiden. Dat wil zeggen, in plaats van 60 query's tegelijkertijd te verzenden naar vier 5-Second Windows-vensters:
+Vanwege de manier waarop beperking wordt afgedwongen, raden we query's aan om te worden gespreid. Dat wil zeggen, in plaats van het verzenden van 60 query's op hetzelfde moment, wankelen de query's in vier 5-seconden vensters:
 
-- Niet-gespreide query planning
+- Niet-gespreide queryplanning
 
   | Aantal query's         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | Tijds interval (sec.) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Tijdsinterval (sec) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- Verspringend query schema
+- Gespreidqueryschema
 
   | Aantal query's         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
-  | Tijds interval (sec.) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Tijdsinterval (sec) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Hieronder ziet u een voor beeld van het respecteren van beperkings koppen bij het uitvoeren van query's in azure resource Graph:
+Hieronder vindt u een voorbeeld van het respecteren van throttling-headers bij het opvragen van Azure Resource Graph:
 
 ```csharp
 while (/* Need to query more? */)
@@ -151,9 +151,9 @@ while (/* Need to query more? */)
 }
 ```
 
-### <a name="query-in-parallel"></a>Parallelle query
+### <a name="query-in-parallel"></a>Query in Parallel
 
-Hoewel groepering wordt aanbevolen voor parallel Lise ring, zijn er momenten waarop query's niet eenvoudig kunnen worden gegroepeerd. In dergelijke gevallen kunt u een query uitvoeren op Azure resource Graph door meerdere query's op parallelle wijze te verzenden. Hieronder ziet u een voor beeld van hoe u _uitstel_ op basis van het beperken van headers in dergelijke scenario's:
+Hoewel groepering wordt aanbevolen via parallelisatie, zijn er momenten waarop query's niet gemakkelijk kunnen worden gegroepeerd. In deze gevallen u Azure Resource Graph opvragen door meerdere query's op een parallelle manier te verzenden. Hieronder vindt u een voorbeeld van hoe _u back-off_ op basis van throttling headers in dergelijke scenario's:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -187,11 +187,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>Paginering
 
-Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord retourneert, moet u mogelijk uw query's [pagineren](./work-with-data.md#paging-results) om de volledige gegevensset te verkrijgen die u zoekt. Sommige Azure-resource grafiek-clients verwerken de paginering echter anders dan andere.
+Aangezien Azure Resource Graph maximaal 1000 vermeldingen retourneert in één queryantwoord, moet u mogelijk uw query's [pagina's](./work-with-data.md#paging-results) geven om de volledige gegevensset te krijgen die u zoekt. Sommige Azure Resource Graph-clients gaan echter anders om met pagina's dan andere.
 
 - C# SDK
 
-  Wanneer u de ResourceGraph-SDK gebruikt, moet u de paginering afhandelen door het Skip-token door te geven dat wordt geretourneerd door de vorige query respons naar de volgende gepagineerde query. Dit ontwerp houdt in dat u de resultaten van alle gepagineerde aanroepen moet verzamelen en samen aan het eind kunt combi neren. In dit geval neemt elke gepagineerde query die u verzendt één query quotum:
+  Wanneer u ResourceGraph SDK gebruikt, moet u paginatie afhandelen door het overslaan-token dat wordt geretourneerd van het vorige queryantwoord door te geven aan de volgende pagina-query. Dit ontwerp betekent dat u resultaten van alle gebelde oproepen moet verzamelen en deze aan het einde samen moet combineren. In dit geval heeft elke paginated query die u verzendt één queryquotum nodig:
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +214,9 @@ Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord r
   }
   ```
 
-- Azure CLI/Azure PowerShell
+- Azure CLI / Azure PowerShell
 
-  Wanneer u Azure CLI of Azure PowerShell gebruikt, worden query's naar Azure resource Graph automatisch gepagineerd om Maxi maal 5000 vermeldingen op te halen. De query resultaten retour neren een gecombineerde lijst met vermeldingen van alle gepagineerde aanroepen. In dit geval, afhankelijk van het aantal items in het query resultaat, kan één gepagineerde query meer dan één query quotum verbruiken. In het onderstaande voor beeld kan één uitvoering van de query bijvoorbeeld tot vijf query quota verbruiken:
+  Wanneer u Azure CLI of Azure PowerShell gebruikt, worden query's naar Azure Resource Graph automatisch weergegeven om maximaal 5000 vermeldingen op te halen. De queryresultaten retourneren een gecombineerde lijst met items van alle pagina's. In dit geval kan, afhankelijk van het aantal vermeldingen in het queryresultaat, één query met pagina's meer dan één queryquotum verbruiken. In het onderstaande voorbeeld kan bijvoorbeeld één enkele run van de query maximaal vijf queryquota verbruiken:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -226,19 +226,19 @@ Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord r
   Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
-## <a name="still-get-throttled"></a>Nog steeds beperkt?
+## <a name="still-get-throttled"></a>Nog steeds gewurgd?
 
-Neem contact op met het team op [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)als u een beperking krijgt na de bovenstaande aanbevelingen.
+Als je na het uitoefenen van de bovenstaande aanbevelingen [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)wordt gewurgd, neem dan contact op met het team op .
 
-Geef de volgende gegevens op:
+Geef deze gegevens op:
 
-- Uw specifieke gebruiks voorbeeld-en Business-stuur programma moeten een hogere beperkings limiet hebben.
-- Hoeveel resources hebt u toegang tot? Hoeveel van de retour neren van één query
-- Van welke typen resources bent u geïnteresseerd?
-- Wat is uw query patroon? X query's per Y seconden etc.
+- Uw specifieke use-case en business driver heeft behoefte aan een hogere beperkingslimiet.
+- Tot hoeveel bronnen heb je toegang? Hoeveel van de worden geretourneerd van een enkele query?
+- In welke soorten bronnen bent u geïnteresseerd?
+- Wat is je patroon? X query's per Y seconden etc.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie geavanceerde toepassingen in [Geavanceerde query's](../samples/advanced.md).
+- Meer informatie over het [verkennen van bronnen.](explore-resources.md)

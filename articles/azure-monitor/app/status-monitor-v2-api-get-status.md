@@ -1,35 +1,35 @@
 ---
-title: API-naslag informatie over Azure-toepassing Insights-agent
-description: Application Insights agent API-verwijzing. Get-ApplicationInsightsMonitoringStatus. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-web-apps die on-premises worden gehost, die in virtuele machines worden gehost en die via Azure worden gehost.
+title: Api-verwijzing naar Azure Application Insights Agent-api
+description: Api-referentie van Application Insights Agent. Get-ApplicationInsightsMonitoringStatus. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-web-apps die on-premises worden gehost, die in virtuele machines worden gehost en die via Azure worden gehost.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671253"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights agent-API: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights Agent API: Get-ApplicationInsightsMonitoringStatus
 
-In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+In dit artikel wordt een cmdlet beschreven die lid is van de [Az.ApplicationMonitor PowerShell-module.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)
 
 ## <a name="description"></a>Beschrijving
 
-Deze cmdlet biedt informatie over het oplossen van problemen met Status Monitor.
-Gebruik deze cmdlet om de bewakings status, versie van de Power shell-module te onderzoeken en het actieve proces te controleren.
-Met deze cmdlet worden versie-informatie en informatie over de vereiste sleutel bestanden voor bewaking gerapporteerd.
+Deze cmdlet geeft informatie over probleemoplossing over statusmonitor.
+Gebruik deze cmdlet om de bewakingsstatus, versie van de PowerShell Module, te onderzoeken en om het loopproces te inspecteren.
+Deze cmdlet rapporteert versie-informatie en informatie over belangrijke bestanden die nodig zijn voor monitoring.
 
 > [!IMPORTANT] 
-> Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen vereist.
+> Deze cmdlet vereist een PowerShell-sessie met beheerdersmachtigingen.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="example-application-status"></a>Voor beeld: toepassings status
+### <a name="example-application-status"></a>Voorbeeld: Toepassingsstatus
 
-Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus` om de bewakings status van websites weer te geven.
+Voer de `Get-ApplicationInsightsMonitoringStatus` opdracht uit om de bewakingsstatus van websites weer te geven.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -65,17 +65,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-In dit voor beeld;
-- **Machine-id** is een anonieme id die wordt gebruikt om uw server uniek te identificeren. Als u een ondersteunings aanvraag maakt, hebt u deze ID nodig om logboeken voor uw server te vinden.
-- De **standaard website** is gestopt in IIS
-- **DemoWebApp111** is gestart in IIS, maar heeft geen aanvragen ontvangen. Dit rapport geeft aan dat er geen proces kan worden uitgevoerd (ProcessId: niet gevonden).
-- **DemoWebApp222** wordt uitgevoerd en wordt bewaakt (instrumented: True). Op basis van de gebruikers configuratie is de instrumentatie sleutel XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxx123 overeenkomt met deze site.
-- **DemoWebApp333** is hand matig geinstrumenteerd met behulp van de Application Insights SDK. De SDK is Status Monitor gedetecteerd en de site wordt niet bewaakt.
+In dit voorbeeld;
+- **Machine Identifier** is een anonieme id die wordt gebruikt om uw server op unieke wijze te identificeren. Als u een ondersteuningsverzoek maakt, hebben we deze id nodig om logboeken voor uw server te vinden.
+- **Standaardwebsite** wordt gestopt in IIS
+- **DemoWebApp111** is gestart in IIS, maar heeft geen verzoeken ontvangen. Dit rapport laat zien dat er geen lopend proces is (ProcessId: niet gevonden).
+- **DemoWebApp222** is actief en wordt gemonitord (Instrumented: true). Op basis van de gebruikersconfiguratie werd Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx123 gematcht voor deze site.
+- **DemoWebApp333** is handmatig uitgerust met de Application Insights SDK. Status monitor gedetecteerd de SDK en zal niet controleren van deze site.
 
 
-### <a name="example-powershell-module-information"></a>Voor beeld: Power shell-module gegevens
+### <a name="example-powershell-module-information"></a>Voorbeeld: PowerShell-module-informatie
 
-Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` om informatie weer te geven over de huidige module:
+Voer de `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` opdracht uit om informatie over de huidige module weer te geven:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -127,11 +127,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Voor beeld: runtime status
+### <a name="example-runtime-status"></a>Voorbeeld: Runtime-status
 
-U kunt het proces op de geinstrumenteerde computer controleren om te controleren of alle Dll's zijn geladen. Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
+U het proces op de geinstrumenteerde computer inspecteren om te zien of alle DLL's zijn geladen. Als de bewaking werkt, moeten ten minste 12 DLL's worden geladen.
 
-Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Voer de `Get-ApplicationInsightsMonitoringStatus -InspectProcess`opdracht uit:
 
 
 ```
@@ -167,35 +167,35 @@ listdlls64.exe -accepteula w3wp
 
 ## <a name="parameters"></a>Parameters
 
-### <a name="no-parameters"></a>(Geen para meters)
+### <a name="no-parameters"></a>(Geen parameters)
 
-Met deze cmdlet wordt standaard de bewakings status van webtoepassingen gerapporteerd.
-Gebruik deze optie om te controleren of uw toepassing is geinstrumenteerd.
-U kunt ook controleren welke instrumentatie sleutel is afgestemd op uw site.
+Standaard rapporteert deze cmdlet de bewakingsstatus van webapplicaties.
+Gebruik deze optie om te controleren of uw aanvraag is uitgevoerd.
+U ook bekijken welke instrumentatiesleutel is gekoppeld aan uw site.
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-**Optioneel**. Gebruik deze schakel optie om de versie nummers en paden te rapporteren van DLL-bestanden die vereist zijn voor bewaking.
-Gebruik deze optie als u de versie van een DLL-bestand, inclusief de Application Insights SDK, moet identificeren.
+**Optioneel**. Gebruik deze schakelaar om de versienummers en paden van DLL's te rapporteren die nodig zijn voor controle.
+Gebruik deze optie als u de versie van een DLL wilt identificeren, inclusief de Application Insights SDK.
 
-### <a name="-inspectprocess"></a>-InspectProcess
+### <a name="-inspectprocess"></a>-Inspecteerproces
 
-**Optioneel**. Gebruik deze schakel optie om te rapporteren of IIS wordt uitgevoerd.
-Ook worden er externe hulpprogram ma's gedownload om te bepalen of de benodigde DLL-bestanden in de IIS-runtime worden geladen.
+**Optioneel**. Gebruik deze schakelaar om te melden of IIS wordt uitgevoerd.
+Het zal ook externe tools downloaden om te bepalen of de benodigde DLL's in de IIS-runtime worden geladen.
 
 
-Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig uitvoeren:
-- IISReset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights"
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
+Als dit proces om welke reden dan ook mislukt, u deze opdrachten handmatig uitvoeren:
+- iisreset.exe /status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
 
 
 ### <a name="-force"></a>-Force
 
-**Optioneel**. Wordt alleen gebruikt met InspectProcess. Gebruik deze schakel optie om de prompt van de gebruiker over te slaan die wordt weer gegeven voordat extra hulpprogram ma's worden gedownload.
+**Optioneel**. Alleen gebruikt met InspectProcess. Gebruik deze schakelaar om de gebruikersprompt over te slaan die wordt weergegeven voordat extra hulpprogramma's worden gedownload.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Meer doen met Application Insights agent:
- - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
+ Doe meer met Application Insights Agent:
+ - Gebruik onze gids om application insights agent op te [lossen.](status-monitor-v2-troubleshoot.md)

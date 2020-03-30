@@ -1,7 +1,7 @@
 ---
-title: Fouten opsporen in uw model
+title: Uw model debuggen
 titleSuffix: ML Studio (classic) - Azure
-description: Fout opsporing van fouten die worden gegenereerd door de modules Train model en score model in Azure Machine Learning Studio (klassiek).
+description: Fouten van treinmodel- en scoremodelmodules in Azure Machine Learning Studio (klassiek) opsporen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,63 +11,63 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
 ms.openlocfilehash: 910e788830ec55b610a9234a8c8ac75dda1ea189
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218106"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Fouten opsporen in uw model in Azure Machine Learning Studio (klassiek)
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Uw model debuggen in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Bij het uitvoeren van een model kunt u de volgende fouten uitvoeren:
+Wanneer u een model uitvoert, u de volgende fouten tegenkomen:
 
-* Er treedt een fout op in de module [Train model][train-model] 
-* de module [score model][score-model] levert onjuiste resultaten op 
+* de [module Treinmodel][train-model] produceert een fout 
+* de module [Model score][score-model] produceert onjuiste resultaten 
 
 In dit artikel worden mogelijke oorzaken voor deze fouten uitgelegd.
 
 
-## <a name="train-model-module-produces-an-error"></a>Module Train-Model, treedt een fout
+## <a name="train-model-module-produces-an-error"></a>Train Model Module produceert een fout
 
 ![image1](./media/debug-models/train_model-1.png)
 
-Voor de module [Train model][train-model] worden twee invoer waarden verwacht:
+De [Train Model][train-model] Module verwacht twee ingangen:
 
-1. Het type machine learning model uit de verzameling van modellen die door Azure Machine Learning Studio (klassiek) worden gegeven.
-2. De opleidings gegevens met een opgegeven label kolom waarmee de variabele wordt opgegeven die moet worden voor speld (de andere kolommen worden verondersteld functies te zijn).
+1. Het type machine learning-model uit de verzameling modellen van Azure Machine Learning Studio (klassiek).
+2. De trainingsgegevens met een opgegeven kolom Label die de te voorspellen variabele opgeeft (de andere kolommen worden verondersteld Eigenschappen te zijn).
 
-Deze module kunt treedt er een fout in de volgende gevallen:
+Deze module kan in de volgende gevallen een fout veroorzaken:
 
-1. De kolom Label is onjuist opgegeven. Dit kan gebeuren als meer dan één kolom is geselecteerd als het Label of een onjuiste kolomindex is geselecteerd. Zo zou het tweede geval van toepassing zijn als een kolom index van 30 wordt gebruikt met een invoer gegevensset die slechts 25 kolommen bevat.
+1. De kolom Label is onjuist opgegeven. Dit kan gebeuren als er meer dan één kolom is geselecteerd als label of als een onjuiste kolomindex is geselecteerd. Het tweede geval is bijvoorbeeld van toepassing als een kolomindex van 30 wordt gebruikt met een invoergegevensset met slechts 25 kolommen.
 
-2. De gegevensset bevat geen functie-kolommen. Bijvoorbeeld, als de invoergegevensset slechts één kolom, dat is gemarkeerd als de kolom Label heeft, wordt er zijn geen functies waarmee het-model bouwt. In dit geval treedt er een fout op in de module [Train model][train-model] .
+2. De gegevensset bevat geen functiekolommen. Als de invoergegevensset bijvoorbeeld slechts één kolom heeft, die is gemarkeerd als de kolom Label, zijn er geen functies waarmee u het model bouwen. In dit geval produceert de module [Treinmodel][train-model] een fout.
 
-3. De invoergegevensset (functies of Label) bevat oneindig als een waarde.
+3. De invoergegevensset (Features of Label) bevat Oneindigheid als waarde.
 
-## <a name="score-model-module-produces-incorrect-results"></a>Score Model-Module oplevert onjuiste resultaten
+## <a name="score-model-module-produces-incorrect-results"></a>Scoremodelmodule levert onjuiste resultaten op
 
 ![image2](./media/debug-models/train_test-2.png)
 
-In een typisch voor beeld-en test experiment voor het leren op Super visie splitst de module [Split data][split] de oorspronkelijke gegevensset in twee delen: één deel wordt gebruikt om het model te trainen en één deel wordt gebruikt om te bepalen hoe goed het getrainde model werkt. Het getrainde model wordt vervolgens gebruikt om de testgegevens, waarna de resultaten worden geëvalueerd om te bepalen van de nauwkeurigheid van het model te beoordelen.
+In een typisch trainings-/testexperiment voor begeleid leren verdeelt de module [Split Data][split] de oorspronkelijke gegevensset in twee delen: een onderdeel wordt gebruikt om het model te trainen en een onderdeel wordt gebruikt om te scoren hoe goed het getrainde model presteert. Het getrainde model wordt vervolgens gebruikt om de testgegevens te scoren, waarna de resultaten worden geëvalueerd om de nauwkeurigheid van het model te bepalen.
 
-Voor de module [score model][score-model] zijn twee invoer waarden vereist:
+De module [Scoremodel][score-model] vereist twee ingangen:
 
-1. Een getrainde model uitvoer van de module [Train model][train-model] .
-2. Een scoring gegevensset die verschilt van de gegevensset die wordt gebruikt voor het model te trainen.
+1. Een getrainde modeloutput van de [Train Model][train-model] module.
+2. Een scoregegevensset die verschilt van de gegevensset die wordt gebruikt om het model te trainen.
 
-Het is mogelijk dat zelfs als het experiment slaagt, de module [score model][score-model] onjuiste resultaten oplevert. Dit probleem kan worden veroorzaakt door verschillende scenario's:
+Het is mogelijk dat, hoewel het experiment slaagt, de module [Scoremodel][score-model] onjuiste resultaten oplevert. Verschillende scenario's kunnen dit probleem veroorzaken:
 
-1. Als het opgegeven label categorische is en een regressie model wordt getraind op de gegevens, wordt er een onjuiste uitvoer gemaakt door de module [score model][score-model] . Dit is omdat regressie een continue antwoord-variabele vereist. In dit geval is het beter geschikt om te gebruiken een model voor classificatie. 
+1. Als het opgegeven label categorisch is en een regressiemodel is getraind op de gegevens, wordt een onjuiste uitvoer geproduceerd door de module [Scoremodel.][score-model] Dit komt omdat regressie een continue responsvariabele vereist. In dit geval zou het beter zijn om een classificatiemodel te gebruiken. 
 
-2. Op dezelfde manier als een classificatie-model wordt getraind op een gegevensset met getallen met drijvende komma in de kolom Label, kan er ongewenste resultaten opleveren. Dit komt omdat de classificatie een discrete reactie variabele vereist die alleen waarden toestaat die zijn toegestaan voor een eindige, en kleine set klassen.
+2. Als een classificatiemodel is getraind op een gegevensset met zwevende puntennummers in de kolom Label, kan dit ongewenste resultaten opleveren. Dit komt omdat classificatie een discrete responsvariabele vereist die alleen waarden toestaat die variëren over een eindige en kleine reeks klassen.
 
-3. Als de Score-gegevensset niet alle functies bevat die worden gebruikt om het model te trainen, genereert het [score model][score-model] een fout.
+3. Als de scoregegevensset niet alle functies bevat die worden gebruikt om het model te trainen, produceert het [scoremodel][score-model] een fout.
 
-4. Als een rij in de Score-gegevensset een ontbrekende waarde of een oneindige waarde voor een van de functies bevat, produceert het [score model][score-model] geen uitvoer die overeenkomt met die rij.
+4. Als een rij in de gegevensset voor het scoren een ontbrekende waarde of een oneindige waarde bevat voor een van de functies, produceert het [scoremodel][score-model] geen uitvoer die overeenkomt met die rij.
 
-5. Het [score model][score-model] kan identieke uitvoer genereren voor alle rijen in de gegevensset van de score. Dit kan bijvoorbeeld gebeuren wanneer wordt geprobeerd classificatie met behulp van de beslissing Forests als het minimale aantal steekproeven per leaf-knooppunt is gekozen moet meer zijn dan het aantal voorbeelden van training beschikbaar.
+5. Het [scoremodel][score-model] kan identieke uitvoer produceren voor alle rijen in de scoregegevensset. Dit kan bijvoorbeeld gebeuren bij een poging tot classificatie met behulp van Decision Forests als het minimumaantal monsters per bladknooppunt wordt gekozen om meer te zijn dan het aantal beschikbare opleidingsvoorbeelden.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

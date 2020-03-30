@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560101"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Aan de slag met Service Bus-onderwerpen
@@ -32,13 +32,13 @@ Deze zelfstudie bestaat uit de volgende stappen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voor delen voor Visual Studio of MSDN Subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
-    1. Maak een Service Bus **naam ruimte**.
-    2. Haal de **Connection String**op.
-    3. Maak een **onderwerp** in de naam ruimte.
-    4. Maak **één abonnement** op het onderwerp in de naam ruimte.
-3. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U uw [Visual Studio- of MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+2. Volg stappen in de [Quickstart: gebruik de Azure-portal om een ServiceBus-onderwerp en abonnementen op het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
+    1. Een **naamruimte**voor servicebus maken .
+    2. Haal de **verbindingstekenreeks**.
+    3. Maak een **onderwerp** in de naamruimte.
+    4. Maak **één abonnement op** het onderwerp in de naamruimte.
+3. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
  
 ## <a name="send-messages-to-the-topic"></a>Berichten naar het onderwerp verzenden
@@ -47,7 +47,7 @@ Maak een C#-consoletoepassing met Visual Studio om berichten naar het onderwerp 
 
 ### <a name="create-a-console-application"></a>Een consoletoepassing maken
 
-Start Visual Studio en maak een nieuwe **consoletoepassing (.NET Core)** .
+Start Visual Studio en maak een nieuwe **consoletoepassing (.NET Core)**.
 
 ### <a name="add-the-service-bus-nuget-package"></a>Het Service Bus NuGet-pakket toevoegen
 
@@ -75,7 +75,7 @@ Start Visual Studio en maak een nieuwe **consoletoepassing (.NET Core)** .
     static ITopicClient topicClient;
     ``` 
 
-3. Vervang de `Main()`-methode door de volgende **async** -`Main` methode waarmee berichten asynchroon worden verzonden met de methode SendMessagesAsync die u in de volgende stap gaat toevoegen. 
+3. Vervang `Main()` de methode door de volgende **async-methode** `Main` die berichten asynchroon verzendt met de methode SendMessagesAsync die u in de volgende stap toevoegt. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -188,7 +188,7 @@ Start Visual Studio en maak een nieuwe **consoletoepassing (.NET Core)** .
 
 ## <a name="receive-messages-from-the-subscription"></a>Berichten ontvangen van het abonnement
 
-Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET core-console toepassing en installeert u het pakket **micro soft. Azure. ServiceBus** NuGet, zoals in de vorige toepassing van de afzender.
+Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET Core-consoletoepassing en installeert u het **Microsoft.Azure.ServiceBus** NuGet-pakket, vergelijkbaar met de vorige afzendertoepassing.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Schrijven van code voor het ontvangen van berichten van het abonnement
 
@@ -210,7 +210,7 @@ Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET 
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Vervang de `Main()`-methode door de volgende **async** -`Main` methode. Hiermee wordt de `RegisterOnMessageHandlerAndReceiveMessages()` methode aangeroepen die u in de volgende stap gaat toevoegen. 
+3. Vervang `Main()` de methode door de volgende **asyncmethode.** `Main` Het roept `RegisterOnMessageHandlerAndReceiveMessages()` de methode aan die u in de volgende stap zult toevoegen. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -364,14 +364,14 @@ Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET 
         }
     }
     ```
-9. Voer het programma uit en controleer de portal opnieuw. De waarden voor **Aantal berichten** en **Huidige** moeten nu **0** zijn.
+9. Voer het programma uit en controleer de portal opnieuw. Merk op dat het **aantal berichten** en **de huidige** waarden nu **0**zijn .
    
     ![Lengte van het onderwerp][topic-message-receive]
 
 Gefeliciteerd! Met de standaard .NET-bibliotheek, hebt u nu een onderwerp en abonnement gemaakt, 10 berichten verzonden en die berichten ontvangen.
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

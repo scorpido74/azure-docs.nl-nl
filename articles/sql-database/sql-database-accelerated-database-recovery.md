@@ -1,6 +1,6 @@
 ---
 title: Versneld databaseherstel
-description: De Azure SQL Database heeft een nieuwe functie waarmee u snel en consistent database herstel, momentane trans actie terugdraaien en een agressieve afkap ping van Logboeken voor afzonderlijke data bases en gepoolde data bases in Azure SQL Database en data bases in Azure SQL-gegevens kunt maken. Uitslag.
+description: De Azure SQL Database heeft een nieuwe functie die snel en consistent databaseherstel, onmiddellijke transactierollback en agressieve logboekafvloeiing voor afzonderlijke databases en samengevoegde databases in Azure SQL Database en databases in Azure SQL Data biedt Magazijn.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -9,121 +9,121 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: eff81693ff4c34dc00f66e9e5ea22e56d3ff9d77
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/24/2020
+ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808088"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238666"
 ---
-# <a name="accelerated-database-recovery"></a>Versneld database herstel
+# <a name="accelerated-database-recovery"></a>Versneld databaseherstel
 
-**Versneld database herstel (ADR)** is een nieuwe functie van SQL database engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name als er langlopende trans acties worden uitgevoerd, door het herstel proces van de SQL database-engine opnieuw te ontwerpen. ADR is momenteel beschikbaar voor afzonderlijke data bases en gepoolde data bases in Azure SQL Database, en in de data bases in Azure SQL Data Warehouse (momenteel in open bare preview). De belangrijkste voor delen van ADR zijn:
+**Accelerated Database Recovery (ADR)** is een SQL-databaseenginefunctie die de beschikbaarheid van database aanzienlijk verbetert, vooral in aanwezigheid van langlopende transacties, door het sql-databaseengineherstelproces opnieuw te ontwerpen. ADR is momenteel beschikbaar voor Azure SQL Database single, elastic pool en managed instance, en databases in Azure SQL Data Warehouse (momenteel in preview). De belangrijkste voordelen van ADR zijn:
 
-- **Snel en consistent herstel van de data base**
+- **Snel en consistent databaseherstel**
 
-  Met ADR hebben langlopende trans acties geen invloed op de algehele herstel tijd, waardoor snel en consistent herstel van de data base mogelijk is, ongeacht het aantal actieve trans acties in het systeem of de grootte ervan.
+  Met ADR hebben langlopende transacties geen invloed op de totale hersteltijd, waardoor snel en consistent databaseherstel mogelijk is, ongeacht het aantal actieve transacties in het systeem of de grootte ervan.
 
-- **Momentane trans actie terugdraaien**
+- **Momentane transactieterugdraaiing**
 
-  Met ADR is het terugdraaien van trans acties onmiddellijk, ongeacht het tijdstip waarop de trans actie actief is of het aantal updates dat is uitgevoerd.
+  Met ADR is het terugdraaien van transacties onmiddellijk, ongeacht het tijdstip waarop de transactie actief is geweest of het aantal updates dat heeft uitgevoerd.
 
-- **Afkap ping van agressief logboek**
+- **Agressieve logtruncation**
 
-  Met ADR wordt het transactie logboek agressief afgekapt, zelfs in de aanwezigheid van actieve langlopende trans acties, waardoor het niet mogelijk is om de controle uit te voeren.
+  Met ADR wordt het transactielogboek agressief afgekapt, zelfs in aanwezigheid van actieve langlopende transacties, waardoor het niet uit de hand loopt.
 
-## <a name="the-current-database-recovery-process"></a>Het huidige herstel proces van de data base
+## <a name="the-current-database-recovery-process"></a>Het huidige databaseherstelproces
 
-Het herstel van de data base in SQL Server volgt het [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) -herstel model en bestaat uit drie fasen, die in het volgende diagram worden geïllustreerd en uitvoeriger worden beschreven in het diagram.
+Databaseherstel in SQL Server volgt het [ARIES-herstelmodel](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) en bestaat uit drie fasen, die in het volgende diagram worden geïllustreerd en nader worden toegelicht naar aanleiding van het diagram.
 
-![huidig herstel proces](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
+![huidig herstelproces](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
 
-- **Analyse fase**
+- **Analysefase**
 
-  Voorwaartse scan van het transactie logboek vanaf het begin van het laatste geslaagde controle punt (of het oudste wegge schreven pagina-LSN) tot aan het eind, om de status van elke trans actie op het moment te bepalen SQL Server gestopt.
+  De scan van het transactielogboek doorsturen vanaf het begin van het laatste succesvolle controlepunt (of de oudste vuile pagina LSN) tot het einde, om de status van elke transactie te bepalen op het moment dat SQL Server is gestopt.
 
-- **Fase opnieuw uitvoeren**
+- **Opnieuw doen fase**
 
-  Voorwaartse scan van het transactie logboek van de oudste niet-doorgevoerde trans actie tot het eind, om de data base te verplaatsen naar de status die het was op het moment van de crash door alle doorgevoerde bewerkingen opnieuw uit te voeren.
+  De scan van het transactielogboek van de oudste niet-vastgelegde transactie tot het einde doorsturen om de database naar de status te brengen die het was op het moment van de crash door alle vastgelegde bewerkingen opnieuw uit te voeren.
 
 - **Fase ongedaan maken**
 
-  Voor elke trans actie die actief was op het moment van de crash, doorloopt het logboek achterwaarts, waardoor de bewerkingen die deze trans actie hebben uitgevoerd, worden ongedaan gemaakt.
+  Voor elke transactie die actief was vanaf het moment van de crash, doorloopt u het logboek achteruit en maakt u de bewerkingen ongedaan die deze transactie heeft uitgevoerd.
 
-Op basis van dit ontwerp is de tijd die het SQL database-programma nodig heeft om te herstellen na een onverwachte herstart (ruwweg) evenredig met de grootte van de langste actieve trans actie in het systeem op het moment van de crash. Voor het herstel moeten alle onvolledige trans acties worden teruggedraaid. De vereiste hoeveelheid tijd is evenredig met het werk dat de trans actie heeft uitgevoerd en de tijd die het is actief. Het SQL Server herstel proces kan daarom veel tijd in beslag nemen in de aanwezigheid van langlopende trans acties (zoals grote bewerkingen voor bulksgewijs invoegen of het samen stellen van index voor een grote tabel).
+Op basis van dit ontwerp is de tijd die de SQL-databaseengine nodig heeft om te herstellen van een onverwachte herstart (ongeveer) evenredig met de grootte van de langste actieve transactie in het systeem op het moment van de crash. Herstel vereist een terugdraaiing van alle onvolledige transacties. De benodigde tijd is evenredig aan het werk dat de transactie heeft uitgevoerd en de tijd die de transactie heeft uitgevoerd. Daarom kan het SQL Server-herstelproces lang duren in aanwezigheid van langlopende transacties (zoals grote bulkinsertbewerkingen of indexbuildbewerkingen tegen een grote tabel).
 
-Het annuleren/terugdraaien van een grote trans actie op basis van dit ontwerp kan ook lang duren omdat deze dezelfde fase voor het ongedaan maken van de herstel bewerking gebruikt, zoals hierboven wordt beschreven.
+Ook het annuleren/ terugdraaien van een grote transactie op basis van dit ontwerp kan ook lang duren omdat het dezelfde herstelfase ongedaan maken zoals hierboven beschreven, wordt gebruikt.
 
-Daarnaast kan de SQL database-engine het transactie logboek niet afkappen wanneer er langlopende trans acties zijn, omdat de bijbehorende logboek records nodig zijn voor de herstel-en terugdraai processen. Als gevolg van dit ontwerp van de SQL database-engine, hebben sommige klanten het probleem geruimen dat de omvang van het transactie logboek erg groot wordt en veel schijf ruimte verbruikt.
+Bovendien kan de SQL-databaseengine het transactielogboek niet afkappen wanneer er langlopende transacties zijn, omdat de bijbehorende logboekrecords nodig zijn voor de herstel- en terugdraaiprocessen. Als gevolg van dit ontwerp van de SQL-databaseengine, sommige klanten gebruikt om het probleem dat de grootte van de transactie log groeit zeer groot en verbruikt enorme hoeveelheden schijfruimte gezicht.
 
-## <a name="the-accelerated-database-recovery-process"></a>Het herstel proces voor versneld data base
+## <a name="the-accelerated-database-recovery-process"></a>Het versnelde databaseherstelproces
 
-ADR behandelt de bovenstaande problemen door het herstel proces van de SQL database-engine volledig opnieuw te ontwerpen voor:
+ADR lost bovenstaande problemen op door het SQL-databaseengineherstelproces volledig te herontwerpen naar:
 
-- Maak deze constant tijd/direct door te voor komen dat u het logboek van/naar het begin van de oudste actieve trans actie moet scannen. Met ADR wordt het transactie logboek alleen verwerkt vanaf het laatste geslaagde controle punt (of het oudste LSN (Dirty page log Sequence Number)). Als gevolg hiervan worden de herstel tijd niet beïnvloed door langlopende trans acties.
-- Minimaliseer de vereiste transactie logboek ruimte, omdat het logboek voor de hele trans actie niet meer hoeft te worden verwerkt. Als gevolg hiervan kan het transactie logboek agressief worden afgekapt als controle punten en back-ups worden uitgevoerd.
+- Maak het constant tijd / direct door te voorkomen dat het logboek van / naar het begin van de oudste actieve transactie te scannen. Met ADR wordt het transactielogboek alleen verwerkt vanaf het laatste succesvolle controlepunt (of oudste vuile pagina Logboeknummer (LSN)). Als gevolg hiervan wordt de hersteltijd niet beïnvloed door langlopende transacties.
+- Minimaliseer de vereiste transactielogboekruimte, omdat het logboek voor de hele transactie niet langer hoeft te worden verwerkt. Als gevolg hiervan kan het transactielogboek agressief worden afgekapt als controlepunten en back-ups optreden.
 
-Op hoog niveau verkrijgt ADR snelle herstel van de data base door versie beheer van alle fysieke database wijzigingen en alleen ongedaan maken van logische bewerkingen, die beperkt zijn en bijna onmiddellijk ongedaan kunnen worden gemaakt. Alle trans acties die actief waren op het moment van een crash, worden gemarkeerd als afgebroken en daarom kunnen alle door deze trans acties gegenereerde versies worden genegeerd door gelijktijdige gebruikers query's.
+Op hoog niveau bereikt ADR snel databaseherstel door alle fysieke databasewijzigingen te versionen en alleen logische bewerkingen ongedaan te maken, die beperkt zijn en vrijwel direct ongedaan kunnen worden gemaakt. Elke transactie die actief was vanaf het moment van een crash, wordt gemarkeerd als afgebroken en daarom kunnen alle versies die door deze transacties worden gegenereerd, worden genegeerd door gelijktijdige gebruikersquery's.
 
-Het proces voor het herstellen van ADR heeft dezelfde drie fasen als het huidige herstel proces. Hoe deze fasen met ADR worden gebruikt, worden in het volgende diagram geïllustreerd en uitvoerig beschreven in het diagram.
+Het ADR-herstelproces kent dezelfde drie fasen als het huidige herstelproces. Hoe deze fasen werken met ADR wordt geïllustreerd in het volgende diagram en in meer detail uitgelegd naar aanleiding van het diagram.
 
-![ADR-herstel proces](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
+![ADR-herstelproces](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
 
-- **Analyse fase**
+- **Analysefase**
 
-  Het proces blijft hetzelfde als vandaag, met toevoeging van het reconstrueren van sLog en het kopiëren van logboek records voor niet-versie bewerkingen.
+  Het proces blijft hetzelfde als voorheen met de toevoeging van het reconstrueren van sLog en het kopiëren van logboekrecords voor niet-versiebeheer.
   
-- Fase **opnieuw uitvoeren**
+- **Opnieuw** doen fase
 
-  Onderverdeeld in twee fasen (P)
+  In twee fasen opgesplitst (P)
   - Fase 1
 
-      Voer de bewerking opnieuw uit vanaf sLog (oudste niet-doorgevoerde trans actie tot het laatste controle punt). Opnieuw is een snelle bewerking, omdat alleen enkele records uit de sLog moeten worden verwerkt.
+      Opnieuw uitvoeren van sLog (oudste niet-vastgelegde transactie tot laatste controlepunt). Redo is een snelle bewerking omdat het slechts een paar records uit de sLog hoeft te verwerken.
       
   - Fase 2
 
-     Opnieuw uitvoeren vanuit het transactie logboek vanaf het laatste controle punt (in plaats van de oudste niet-doorgevoerde trans actie)
+     Opnieuw uitvoeren van transactielogboek begint bij het laatste controlepunt (in plaats van de oudste niet-vastgelegde transactie)
      
 - **Fase ongedaan maken**
 
-   De fase voor het ongedaan maken met ADR wordt bijna onmiddellijk voltooid met behulp van sLog om bewerkingen zonder versie ongedaan te maken en de persistente versie van PVS
+   De ongedaan maken fase met ADR wordt vrijwel onmiddellijk voltooid met behulp van sLog om niet-versiebewerkingen ongedaan te maken en Persisted Version Store (PVS) met Logical Revert om op rijniveau gebaseerde versie ongedaan maken uit te voeren.
 
-## <a name="adr-recovery-components"></a>ADR-herstel onderdelen
+## <a name="adr-recovery-components"></a>ADR-terugwinningscomponenten
 
 De vier belangrijkste onderdelen van ADR zijn:
 
-- **Permanente versie opslag (PVS)**
+- **Persisted Version Store (PVS)**
 
-  De permanente versie opslag is een nieuw SQL database engine-mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in plaats van de traditionele `tempdb` versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
+  Het aanhoudende versiearchief is een nieuw SQL-databaseenginemechanisme voor het voortbestaan van `tempdb` de rijversies die in de database zelf worden gegenereerd in plaats van het traditionele versiearchief. PVS maakt resourceisolatie mogelijk en verbetert de beschikbaarheid van leesbare secondaries.
 
-- **Logische terugzet actie**
+- **Logische terugzetten**
 
-  Logische herverteren is het asynchrone proces dat verantwoordelijk is voor het uitvoeren van ongedaan maken op basis van een op rijniveau gebaseerde, direct terugdraaiende trans actie en ongedaan maken voor alle bewerkingen met een versie. Logische terugzet actie wordt uitgevoerd door:
+  Logische terugval is het asynchrone proces dat verantwoordelijk is voor het uitvoeren van versiegebaseerde ongedaan maken op rijniveau - het bieden van directe terugdraaiing en ongedaan maken voor alle versies. Logische terugkeer wordt bereikt door:
 
-  - Alle afgebroken trans acties bijhouden en deze onzichtbaar maken voor andere trans acties. 
-  - Terugdraai actie uitvoeren met behulp van PVS voor alle gebruikers transacties in plaats van het transactie logboek fysiek te scannen en wijzigingen een voor een ongedaan te maken.
-  - Alle vergren delingen direct na het afbreken van de trans actie worden vrijgegeven. Omdat het afbreken vereist dat wijzigingen in het geheugen worden gemarkeerd, is het proces zeer efficiënt en kunnen vergren delingen gedurende een lange periode niet worden bewaard.
+  - Het bijhouden van alle afgebroken transacties en markeren ze onzichtbaar voor andere transacties. 
+  - Het uitvoeren van terugdraaiing door PVS te gebruiken voor alle gebruikerstransacties, in plaats van het transactielogboek fysiek te scannen en wijzigingen één voor één ongedaan te maken.
+  - Het vrijgeven van alle sloten onmiddellijk na het afbreken van de transactie. Aangezien afbreken gaat gewoon markeren veranderingen in het geheugen, het proces is zeer efficiënt en daarom sloten niet hoeft te worden gehouden voor een lange tijd.
 
-- **sLog**
+- **sLog (log)**
 
-  sLog is een secundaire logboek stroom in het geheugen waarin logboek records worden opgeslagen voor niet-verwerkte bewerkingen (zoals meta gegevens cache, vergren delen, enzovoort). De sLog is:
+  sLog is een secundaire logboekstream in het geheugen die logboekrecords opslaat voor bewerkingen met niet-versies (zoals ongeldigheid van metagegevenscache, vergrendelingsacquisities, enzovoort). De sLog is:
 
-  - Laag volume en in-Memory
-  - Bewaard op schijf door geserialiseerd tijdens het controlepunt proces
-  - Periodiek afgekapt tijdens het door voeren van trans acties
-  - Versnelt opnieuw en ongedaan maken door alleen de niet-geversiete bewerkingen te verwerken  
-  - Maakt agressieve afkap ping van transactie logboeken mogelijk door alleen de vereiste logboek records te behouden
+  - Laag volume en geheugen
+  - Duurde voort op schijf door serialized te worden tijdens het controlepuntproces
+  - Periodiek afgekapt als transacties plegen
+  - Versnelt opnieuw doen en ongedaan maken door alleen de niet-versies te verwerken  
+  - Maakt agressieve transactielogboektrunatie mogelijk door alleen de vereiste logboekrecords te bewaren
 
-- **Schone**
+- **Schoner**
 
-  De Removal is het asynchrone proces dat periodiek wordt geactiveerd en dat er geen pagina versies worden opgeschoond die niet nodig zijn.
+  De reiniger is het asynchrone proces dat periodiek wakker wordt en paginaversies reinigt die niet nodig zijn.
 
-## <a name="who-should-consider-accelerated-database-recovery"></a>Wie moet versneld database herstel overwegen
+## <a name="accelerated-database-recovery-patterns"></a>Herstelpatronen voor versnelde database
 
-De volgende typen klanten moeten overwegen om ADR in te scha kelen:
+De volgende typen workloads profiteren het meest van ADR:
 
-- Klanten die werk belastingen met langlopende trans acties hebben.
-- Klanten die gevallen hebben gezien dat het transactie logboek aanzienlijk groeit door actieve trans acties.  
-- Klanten die lange Peri Oden niet beschik baarheid hebben ondervonden omdat SQL Server langdurige herstel bewerking wordt uitgevoerd (zoals onverwacht SQL Server opnieuw opstarten of het terugdraaien van hand matige trans acties).
+- Workloads met langlopende transacties.
+- Workloads die gevallen hebben gezien waarin actieve transacties ervoor zorgen dat het transactielogboek aanzienlijk toalde.  
+- Workloads die lange perioden van database-onbeschikbaarheid hebben ondervonden als gevolg van sql server langlopend herstel (zoals onverwachte SQL Server opnieuw opstarten of handmatige transactierollback).
 

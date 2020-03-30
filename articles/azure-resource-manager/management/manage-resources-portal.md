@@ -1,124 +1,124 @@
 ---
-title: Resources beheren-Azure Portal
-description: Gebruik de Azure Portal en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
+title: Resources beheren - Azure-portal
+description: Gebruik de Azure-portal en Azure Resource Manager om uw resources te beheren. Hier ziet u hoe u resources implementeert en verwijdert.
 author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248344"
 ---
-# <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
+# <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure-portal
 
-Meer informatie over het gebruik van de [Azure Portal](https://portal.azure.com) met [Azure Resource Manager](overview.md) voor het beheren van uw Azure-resources. Zie [Azure-resource groepen beheren met behulp van de Azure portal voor het](manage-resource-groups-portal.md)beheren van resource groepen.
+Meer informatie over het gebruik van de [Azure-portal](https://portal.azure.com) met [Azure Resource Manager](overview.md) om uw Azure-bronnen te beheren. Zie [Azure-brongroepen beheren door de Azure-portal](manage-resource-groups-portal.md)te beheren voor het beheren van resourcegroepen.
 
 Andere artikelen over het beheren van resources:
 
 - [Azure-resources beheren met Azure CLI](manage-resources-cli.md)
-- [Azure-resources beheren met behulp van Azure PowerShell](manage-resources-powershell.md)
+- [Azure-resources beheren met Azure PowerShell](manage-resources-powershell.md)
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="deploy-resources-to-a-resource-group"></a>Resources implementeren in een resource groep
+## <a name="deploy-resources-to-a-resource-group"></a>Resources implementeren voor een resourcegroep
 
-Nadat u een resource manager-sjabloon hebt gemaakt, kunt u de Azure Portal gebruiken om uw Azure-resources te implementeren. Zie [Snelstartgids: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](../templates/quickstart-create-templates-use-the-portal.md)voor het maken van een sjabloon. Zie [resources implementeren met Resource Manager-sjablonen en Azure Portal](../templates/deploy-portal.md)voor meer informatie over het implementeren van een sjabloon met behulp van de portal.
+Nadat u een Resource Manager-sjabloon hebt gemaakt, u de Azure-portal gebruiken om uw Azure-resources te implementeren. Zie [Snelstart: Azure Resource Manager-sjablonen maken en implementeren met behulp van de Azure-portal](../templates/quickstart-create-templates-use-the-portal.md)voor het maken van een sjabloon. Zie Resources implementeren met Resource [Manager-sjablonen en Azure-portal](../templates/deploy-portal.md)voor het implementeren van een sjabloon met de portal.
 
-## <a name="open-resources"></a>Open bronnen
+## <a name="open-resources"></a>Bronnen openen
 
-Azure-resources zijn georganiseerd door Azure-Services en resource groepen. De volgende procedures laten zien hoe u een opslag account met de naam **mystorage0207**opent. De virtuele machine bevindt zich in een resource groep met de naam **mystorage0207rg**.
+Azure-resources worden georganiseerd door Azure-services en door resourcegroepen. De volgende procedures laten zien hoe u een opslagaccount opent met de naam **mystorage0207**. De virtuele machine bevindt zich in een resourcegroep genaamd **mystorage0207rg**.
 
-Een resource openen met het Service type:
+Ga als lid van het servicetype als u een resource opent op basis van het servicetype:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer de Azure-service in het linkerdeel venster. In dit geval **opslag accounts**.  Als de service niet wordt weer gegeven, selecteert u **alle services**en selecteert u vervolgens het Service type.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer in het linkerdeelvenster de Azure-service. In dit geval **opslagaccounts**.  Als u de service niet ziet, selecteert u **Alle services**en selecteert u het servicetype.
 
-    ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
+    ![azure-bron openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
 3. Selecteer de resource die u wilt openen.
 
-    ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![azure-bron openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
-    Een opslag account ziet er als volgt uit:
+    Een opslagaccount ziet eruit als volgt:
 
-    ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![azure-bron openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
-Een resource openen per resource groep:
+Een resource openen op resourcegroep:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **resource groepen** in het linkerdeel venster om de resource in de groep weer te geven.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer **resourcegroepen** in het linkerdeelvenster om de resource in de groep weer te geven.
 3. Selecteer de resource die u wilt openen. 
 
 ## <a name="manage-resources"></a>Resources beheren
 
-Bij het weer geven van een resource in de portal ziet u de opties voor het beheren van die specifieke resource.
+Wanneer u een resource in de portal bekijkt, ziet u de opties voor het beheren van die specifieke bron.
 
-![Azure-resources beheren](./media/manage-resources-portal/manage-azure-resources-portal-manage-resource.png)
+![Azure-bronnen beheren](./media/manage-resources-portal/manage-azure-resources-portal-manage-resource.png)
 
-In de scherm afbeelding ziet u de beheer opties voor een virtuele Azure-machine. U kunt bewerkingen uitvoeren, zoals het starten, opnieuw opstarten en het stoppen van een virtuele machine.
+De schermafbeelding toont de beheeropties voor een virtuele Azure-machine. U bewerkingen uitvoeren, zoals het starten, opnieuw starten en stoppen van een virtuele machine.
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **Verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
+1. Open de bron in de portal. Zie [Resources openen voor](#open-resources)de stappen .
+2. Selecteer **Verwijderen**. De volgende schermafbeelding toont de beheeropties voor een virtuele machine.
 
-    ![Azure-resource verwijderen](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. Typ de naam van de resource om het verwijderen te bevestigen en selecteer vervolgens **verwijderen**.
+    ![azure-bron verwijderen](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
+3. Typ de naam van de bron om de verwijdering te bevestigen en selecteer **Verwijderen**.
 
-Zie [Azure Resource Manager resource groep verwijderen](delete-resource-group.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
+Zie het verwijderen van [azure resource manager-bronnen](delete-resource-group.md)voor meer informatie over hoe Azure Resource Manager de verwijdering van resources bestelt.
 
 ## <a name="move-resources"></a>Resources verplaatsen
 
-1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **verplaatsen**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
+1. Open de bron in de portal. Zie [Resources openen voor](#open-resources)de stappen .
+2. Selecteer **Verplaatsen**selecteren . In de volgende schermafbeelding worden de beheeropties voor een opslagaccount weergegeven.
 
-    ![Azure-resource verplaatsen](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
-3. Selecteer **verplaatsen naar een andere resource groep** of **Ga naar een ander abonnement** , afhankelijk van uw behoeften.
+    ![Azure-bron verplaatsen](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
+3. Selecteer **Verplaatsen naar een andere resourcegroep** of Ga naar een ander **abonnement,** afhankelijk van uw behoeften.
 
 Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](move-resource-group-and-subscription.md).
 
 ## <a name="lock-resources"></a>Resources vergrendelen
 
-Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
+Vergrendeling voorkomt dat andere gebruikers in uw organisatie per ongeluk kritieke bronnen verwijderen of wijzigen, zoals Azure-abonnement, resourcegroep of resource. 
 
-1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **vergren delingen**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
+1. Open de bron in de portal. Zie [Resources openen voor](#open-resources)de stappen .
+2. Selecteer **Sloten**. In de volgende schermafbeelding worden de beheeropties voor een opslagaccount weergegeven.
 
-    ![Azure-resource vergren delen](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. Selecteer **toevoegen**en geef vervolgens de eigenschappen voor de vergren deling op.
+    ![azure-bron vergrendelen](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
+3. Selecteer **Toevoegen**en geef vervolgens de vergrendelingseigenschappen op.
 
 Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](lock-resources.md).
 
 ## <a name="tag-resources"></a>Resources taggen
 
-Door labels kunt u de resource groep en resources logisch ordenen. 
+Tagging helpt bij het logisch organiseren van uw resourcegroep en resources. 
 
-1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **Tags**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.
+1. Open de bron in de portal. Zie [Resources openen voor](#open-resources)de stappen .
+2. Selecteer **Tags**. In de volgende schermafbeelding worden de beheeropties voor een opslagaccount weergegeven.
 
-    ![Label Azure-resource](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. Geef de label eigenschappen op en selecteer vervolgens **Opslaan**.
+    ![azure-bron taggen](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
+3. Geef de tageigenschappen op en selecteer **Opslaan**.
 
-Zie [Tags gebruiken om uw Azure-resources te organiseren](tag-resources.md#portal)voor meer informatie.
+Zie Tags [gebruiken om uw Azure-bronnen te ordenen](tag-resources.md#portal)voor meer informatie.
 
 ## <a name="monitor-resources"></a>Resources controleren
 
-Wanneer u een resource opent, presenteert de portal standaard grafieken en tabellen voor het bewaken van het resource type. De volgende scherm afbeelding toont de grafieken voor een virtuele machine:
+Wanneer u een resource opent, worden in de portal standaardgrafieken en tabellen weergegeven voor het bewaken van dat resourcetype. De volgende screenshot toont de grafieken voor een virtuele machine:
 
-![Azure-resource bewaken](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
+![azure-bron controleren](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
 
-U kunt het speld pictogram in de rechter bovenhoek van de grafieken selecteren om de grafiek aan het dash board vast te maken. Zie [Dash boards maken en delen in de Azure Portal](../../azure-portal/azure-portal-dashboards.md)voor meer informatie over het werken met Dash boards.
+U het pictogram van de pin in de rechterbovenhoek van de grafieken selecteren om de grafiek aan het dashboard vast te maken. Zie [Dashboards maken en delen in de Azure-portal](../../azure-portal/azure-portal-dashboards.md)voor meer informatie over het werken met dashboards.
 
-## <a name="manage-access-to-resources"></a>Toegang tot resources beheren
+## <a name="manage-access-to-resources"></a>Toegang tot bronnen beheren
 
-[Op rollen gebaseerde toegangsbeheer (RBAC)](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in Azure beheert. Zie [Toegang beheren met behulp van RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+[RBAC (Role-based access control)](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot bronnen in Azure beheert. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [overzicht van Azure Resource Manager](overview.md)voor meer informatie Azure Resource Manager.
-- Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](../templates/template-syntax.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
-- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
-- Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.
+- Zie Overzicht azure [resource manager](overview.md)voor azure resource manager.
+- Zie [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen](../templates/template-syntax.md)voor de syntaxis van de resourcemanagersjabloon .
+- Zie de [stapsgewijze zelfstudies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [sjabloonverwijzing](/azure/templates/)voor het weergeven van de sjabloonschema's van Azure Resource Manager .

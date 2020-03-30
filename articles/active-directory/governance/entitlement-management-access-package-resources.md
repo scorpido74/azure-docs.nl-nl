@@ -1,6 +1,6 @@
 ---
-title: Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD-Azure Active Directory
-description: Meer informatie over het wijzigen van de resource rollen voor een bestaand toegangs pakket in Azure Active Directory rechten beheer.
+title: Bronrollen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer - Azure Active Directory
+description: Meer informatie over het wijzigen van de resourcerollen voor een bestaand toegangspakket in Azure Active Directory-rechtenbeheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,171 +17,171 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261890"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resourcerollen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer
 
-Als toegangs pakket beheer kunt u de resources in een toegangs pakket op elk gewenst moment wijzigen zonder dat u zich zorgen hoeft te maken over het inrichten van de toegang van de gebruiker tot de nieuwe resources of het verwijderen van de toegang tot de vorige resources. In dit artikel wordt beschreven hoe u de resource rollen voor een bestaand toegangs pakket wijzigt.
+Als toegangspakketbeheerder u de bronnen in een toegangspakket op elk gewenst moment wijzigen zonder dat u zich zorgen hoeft te maken over het inrichten van de toegang van de gebruiker tot de nieuwe bronnen of het verwijderen van de toegang uit de vorige bronnen. In dit artikel wordt beschreven hoe u de resourcerollen voor een bestaand toegangspakket wijzigen.
 
-In deze video vindt u een overzicht van hoe u een toegangs pakket wijzigt.
+In deze video vindt u een overzicht van het wijzigen van een toegangspakket.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3LD4Z]
 
-## <a name="check-catalog-for-resources"></a>Catalogus controleren op resources
+## <a name="check-catalog-for-resources"></a>Catalogus controleren op bronnen
 
-Als u resources aan een toegangs pakket moet toevoegen, moet u controleren of de resources die nodig zijn in de catalogus beschikbaar zijn. Als u een Access package manager bent, kunt u geen resources toevoegen aan een catalogus, zelfs niet als u ze bezit. U bent beperkt tot het gebruik van de beschik bare resources in de catalogus.
+Als u resources aan een toegangspakket wilt toevoegen, moet u controleren of de bronnen die u nodig hebt beschikbaar zijn in de catalogus. Als u een toegangspakketbeheerder bent, u geen bronnen toevoegen aan een catalogus, zelfs niet als u deze eigenaar bent. U bent beperkt tot het gebruik van de bronnen die beschikbaar zijn in de catalogus.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **catalogus** en open vervolgens de catalogus.
+1. Klik in het linkermenu op **Catalogus** en open de catalogus.
 
-1. Klik in het linkermenu op **resources** om de lijst met resources in deze catalogus weer te geven.
+1. Klik in het linkermenu op **Bronnen** om de lijst met bronnen in deze catalogus weer te geven.
 
-    ![Lijst met resources in een catalogus](./media/entitlement-management-access-package-resources/catalog-resources.png)
+    ![Lijst met bronnen in een catalogus](./media/entitlement-management-access-package-resources/catalog-resources.png)
 
-1. Als u een Access package manager bent en u resources aan de catalogus wilt toevoegen, kunt u de eigenaar van de catalogus vragen om ze toe te voegen.
+1. Als u een toegangspakketbeheerder bent en u resources aan de catalogus moet toevoegen, u de eigenaar van de catalogus vragen deze toe te voegen.
 
-## <a name="add-resource-roles"></a>Resource rollen toevoegen
+## <a name="add-resource-roles"></a>Resourcerollen toevoegen
 
-Een resource-rol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar maakt voor gebruikers, is door resource rollen toe te voegen aan uw toegangs pakket. U kunt resource rollen toevoegen voor groepen, teams, toepassingen en share point-sites.
+Een resourcerol is een verzameling machtigingen die zijn gekoppeld aan een resource. De manier waarop u resources beschikbaar stelt voor gebruikers om te vragen, is door resourcerollen toe te voegen aan uw toegangspakket. U resourcerollen toevoegen voor groepen, teams, toepassingen en SharePoint-sites.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik in het linkermenu op **resource rollen**.
+1. Klik in het linkermenu op **Resourcerollen**.
 
-1. Klik op **resource rollen toevoegen** om de pagina Resource rollen toevoegen voor toegang tot het pakket te openen.
+1. Klik **op Resourcerollen toevoegen** om de pagina Resourcerollen toevoegen te openen om toegang te krijgen tot pakketpagina.
 
-    ![Toegangs pakket-resource rollen toevoegen](./media/entitlement-management-access-package-resources/resource-roles-add.png)
+    ![Toegangspakket - Resourcerollen toevoegen](./media/entitlement-management-access-package-resources/resource-roles-add.png)
 
-1. Afhankelijk van of u een groep, team, toepassing of share point-site wilt toevoegen, voert u de stappen uit in een van de volgende secties van de resource-rol.
+1. Afhankelijk van of u een groep, team, toepassing of SharePoint-site wilt toevoegen, voert u de stappen uit in een van de volgende resourcerolsecties.
 
-## <a name="add-a-group-or-team-resource-role"></a>Een resource functie voor een groep of team toevoegen
+## <a name="add-a-group-or-team-resource-role"></a>Een groeps- of teamresourcerol toevoegen
 
-U kunt met het rechten beheer automatisch gebruikers toevoegen aan een groep of een team in micro soft teams wanneer ze een toegangs pakket toewijzen. 
+U het beheer van de rechten automatisch gebruikers toevoegen aan een groep of een team in Microsoft Teams wanneer ze een toegangspakket toegewezen krijgen. 
 
-- Wanneer een groep of team deel uitmaakt van een toegangs pakket en een gebruiker aan dat toegangs pakket is toegewezen, wordt de gebruiker toegevoegd aan die groep of dit team, als deze nog niet aanwezig is.
-- Wanneer de toewijzing van een toegangs pakket voor een gebruiker verloopt, worden deze verwijderd uit de groep of het team, tenzij ze momenteel een toewijzing hebben aan een ander toegangs pakket dat dezelfde groep of hetzelfde team bevat.
+- Wanneer een groep of team deel uitmaakt van een toegangspakket en een gebruiker aan dat toegangspakket is toegewezen, wordt de gebruiker toegevoegd aan die groep of team, zo niet al aanwezig.
+- Wanneer de toewijzing van het toegangspakket van een gebruiker verloopt, worden ze uit de groep of het team verwijderd, tenzij ze momenteel een toewijzing hebben voor een ander toegangspakket dat dezelfde groep of team bevat.
 
-U kunt elke [Azure AD-beveiligings groep of Office 365-groep](../fundamentals/active-directory-groups-create-azure-portal.md)selecteren. Beheerders kunnen een groep toevoegen aan een catalogus. Catalog-eigen aren kunnen een wille keurige groep toevoegen aan de catalogus als ze eigenaar van de groep zijn. Houd bij het selecteren van een groep de volgende Azure AD-beperkingen in acht:
+U een [Azure AD-beveiligingsgroep of Office 365-groep selecteren.](../fundamentals/active-directory-groups-create-azure-portal.md) Beheerders kunnen elke groep aan een catalogus toevoegen. cataloguseigenaren kunnen elke groep aan de catalogus toevoegen als ze eigenaar zijn van de groep. Houd rekening met de volgende Azure AD-beperkingen bij het selecteren van een groep:
 
-- Wanneer een gebruiker, inclusief een gast, wordt toegevoegd als een lid aan een groep of team, kunnen ze alle andere leden van die groep of dit team zien.
-- Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met Azure AD Connect of die in Exchange Online is gemaakt als distributie groep niet wijzigen.  
-- Het lidmaatschap van dynamische groepen kan niet worden bijgewerkt door een lid toe te voegen of te verwijderen, zodat dynamische groepslid maatschappen niet geschikt zijn voor gebruik met rechten beheer.
+- Wanneer een gebruiker, inclusief een gast, als lid aan een groep of team wordt toegevoegd, kan hij of zij alle andere leden van die groep of team zien.
+- Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met Azure AD Connect of die is gemaakt in Exchange Online als een distributiegroep, niet wijzigen.  
+- Het lidmaatschap van dynamische groepen kan niet worden bijgewerkt door het toevoegen of verwijderen van een lid, zodat dynamische groepslidmaatschappen niet geschikt zijn voor gebruik met het beheer van rechten.
 
-Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.com/microsoftteams/office-365-groups) [vergelijken](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) voor meer informatie.
+Zie [Groepen vergelijken](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) en [Office 365-groepen en Microsoft Teams](https://docs.microsoft.com/microsoftteams/office-365-groups)voor meer informatie.
 
-1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **groepen en teams** om het deel venster groepen selecteren te openen.
+1. Klik op de pagina **Resourcerollen toevoegen om toegang te krijgen tot pakketpagina** op **Groepen en Teams** om het deelvenster Groepen selecteren te openen.
 
-1. Selecteer de groepen en teams die u wilt toevoegen in het toegangs pakket.
+1. Selecteer de groepen en teams die u wilt opnemen in het toegangspakket.
 
-    ![Toegangs pakket-resource rollen toevoegen-groepen selecteren](./media/entitlement-management-access-package-resources/group-select.png)
+    ![Toegangspakket - Resourcerollen toevoegen - Groepen selecteren](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. Klik op **Selecteren**.
+1. Klik **op Selecteren**.
 
-    Wanneer u de groep of het team selecteert, wordt in de kolom **subtype** een van de volgende subtypen weer geven:
+    Zodra u de groep of het team hebt geselecteerd, wordt in de kolom **Subtype** een van de volgende subtypen weergegeven:
 
     |  |  |
     | --- | --- |
-    | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot resources. |
-    | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep personen. |
-    | O365 | Office 365-groep waarvoor geen teams zijn ingeschakeld. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
-    | Stellen | Office 365-groep die teams ondersteunt. Wordt gebruikt voor samen werking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
+    | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot bronnen. |
+    | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep mensen. |
+    | O365 | Office 365-groep die niet is ingeschakeld voor Teams. Wordt gebruikt voor samenwerking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
+    | Team | Office 365-groep die is ingeschakeld voor Teams. Wordt gebruikt voor samenwerking tussen gebruikers, zowel binnen als buiten uw bedrijf. |
 
-1. Selecteer in de lijst **rol** de optie **eigenaar** of **lid**.
+1. Selecteer **Eigenaar** of **Lid**in de lijst **Met rollen** .
 
-    Doorgaans selecteert u de leden rol. Als u de rol eigenaar selecteert, kunnen gebruikers andere leden of eigen aren toevoegen of verwijderen.
+    U selecteert meestal de rol lid. Als u de rol Eigenaar selecteert, kunnen gebruikers andere leden of eigenaren toevoegen of verwijderen.
 
-    ![Toegangs pakket-resource functie toevoegen voor een groep of team](./media/entitlement-management-access-package-resources/group-role.png)
+    ![Toegangspakket - Resourcerol toevoegen voor een groep of team](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op**toevoegen**.
 
-    Gebruikers met een bestaande toewijzing aan het toegangs pakket worden automatisch lid van deze groep of dit team wanneer ze worden toegevoegd.
+    Gebruikers met bestaande toewijzingen aan het toegangspakket worden automatisch lid van deze groep of team wanneer deze wordt toegevoegd.
 
-## <a name="add-an-application-resource-role"></a>Een toepassings resource functie toevoegen
+## <a name="add-an-application-resource-role"></a>Een toepassingsbronrol toevoegen
 
-U kunt Azure AD automatisch gebruikers toegang geven tot een Azure AD-bedrijfs toepassing, met inbegrip van zowel SaaS-toepassingen als de toepassingen van uw organisatie die federatieve zijn voor Azure AD, wanneer aan een gebruiker een toegangs pakket is toegewezen. Voor toepassingen die worden geïntegreerd met Azure AD via federatieve eenmalige aanmelding, worden door Azure AD Federatie tokens uitgegeven voor gebruikers die zijn toegewezen aan de toepassing.
+U Azure AD gebruikers automatisch toegang laten geven tot een Azure AD-bedrijfstoepassing, inclusief zowel SaaS-toepassingen als de toepassingen van uw organisatie die worden gefedereerd naar Azure AD, wanneer een gebruiker een toegangspakket toegewezen krijgt. Voor toepassingen die met Azure AD worden geïntegreerd via federatieve enkele aanmelding, geeft Azure AD federatietokens uit voor gebruikers die aan de toepassing zijn toegewezen.
 
-Toepassingen kunnen meerdere rollen hebben. Wanneer u een toepassing toevoegt aan een toegangs pakket en deze toepassing meer dan één rol heeft, moet u de juiste rol voor deze gebruikers opgeven. Als u toepassingen ontwikkelt, kunt u meer lezen over hoe deze functies worden toegevoegd aan uw toepassingen in [How to: configure the Role claim die is uitgegeven in het SAML-token voor zakelijke toepassingen](../develop/active-directory-enterprise-app-role-management.md).
+Toepassingen kunnen meerdere rollen hebben. Wanneer u een toepassing toevoegt aan een toegangspakket, moet u de juiste rol voor die gebruikers opgeven als die toepassing meer dan één rol heeft. Als u toepassingen ontwikkelt, u meer lezen over hoe deze rollen aan uw toepassingen worden toegevoegd in [Hoe de rolclaim te configureren die is uitgegeven in het SAML-token voor bedrijfstoepassingen.](../develop/active-directory-enterprise-app-role-management.md)
 
-Zodra een toepassingsrol deel uitmaakt van een toegangs pakket:
+Zodra een toepassingsrol deel uitmaakt van een toegangspakket:
 
-- Wanneer een gebruiker dat toegangs pakket toewijst, wordt de gebruiker toegevoegd aan die toepassingsrol, indien deze nog niet aanwezig is.
-- Wanneer de toewijzing van een toegangs pakket van een gebruiker verloopt, wordt hun toegang verwijderd uit de toepassing, tenzij ze een toewijzing hebben aan een ander toegangs pakket dat die toepassingsrol bevat.
+- Wanneer een gebruiker dat toegangspakket toegewezen krijgt, wordt de gebruiker aan die toepassingsrol toegevoegd, zo niet al aanwezig.
+- Wanneer de toewijzing van het toegangspakket van een gebruiker verloopt, wordt de toegang uit de toepassing verwijderd, tenzij deze een toewijzing heeft voor een ander toegangspakket dat die toepassingsrol bevat.
 
 Hier volgen enkele overwegingen bij het selecteren van een toepassing:
 
-- Toepassingen kunnen ook groepen hebben die zijn toegewezen aan hun rollen.  U kunt ervoor kiezen om een groep toe te voegen in plaats van een toepassingsrol in een toegangs pakket, maar de toepassing is echter niet zichtbaar voor de gebruiker als onderdeel van het toegangs pakket in de portal mijn toegang.
+- Toepassingen kunnen ook groepen toegewezen aan hun rollen ook.  U ervoor kiezen om een groep toe te voegen in plaats van een toepassingsrol in een toegangspakket, maar dan is de toepassing niet zichtbaar voor de gebruiker als onderdeel van het toegangspakket in de My Access-portal.
 
-1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **toepassingen** om het deel venster toepassingen selecteren te openen.
+1. Klik op de pagina **Resourcerollen toevoegen om toegang te krijgen tot pakketpagina** op **Toepassingen** om het deelvenster Toepassingen selecteren te openen.
 
-1. Selecteer de toepassingen die u wilt toevoegen in het toegangs pakket.
+1. Selecteer de toepassingen die u wilt opnemen in het toegangspakket.
 
-    ![Toegangs pakket-resource rollen toevoegen-toepassingen selecteren](./media/entitlement-management-access-package-resources/application-select.png)
+    ![Toegangspakket - Resourcerollen toevoegen - Toepassingen selecteren](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. Klik op **Selecteren**.
+1. Klik **op Selecteren**.
 
-1. Selecteer een toepassingsrol in de lijst met **rollen** .
+1. Selecteer **in** de lijst Rol een toepassingsrol.
 
-    ![Toegangs pakket-resource functie toevoegen voor een toepassing](./media/entitlement-management-access-package-resources/application-role.png)
+    ![Toegangspakket - Resourcerol toevoegen voor een toepassing](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op**toevoegen**.
 
-    Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze toepassing wanneer ze worden toegevoegd.
+    Alle gebruikers met bestaande toewijzingen aan het toegangspakket krijgen automatisch toegang tot deze toepassing wanneer deze wordt toegevoegd.
 
-## <a name="add-a-sharepoint-site-resource-role"></a>Een resource functie voor een share point-site toevoegen
+## <a name="add-a-sharepoint-site-resource-role"></a>Een SharePoint-sitebronrol toevoegen
 
-Azure AD kan gebruikers automatisch toegang geven tot een share point online-site of share point online-site verzameling wanneer ze een toegangs pakket toewijzen.
+Azure AD kan gebruikers automatisch toegang geven tot een SharePoint Online-site of SharePoint Online-siteverzameling wanneer ze een toegangspakket toegewezen krijgen.
 
-1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **share point-sites** om het deel venster share point online-sites selecteren te openen.
+1. Klik op de pagina **Resourcerollen toevoegen om toegang te krijgen tot pakketpagina** op **SharePoint-sites** om het deelvenster SharePoint Online-sites selecteren te openen.
 
-1. Selecteer de share point online-sites die u wilt toevoegen in het toegangs pakket.
+1. Selecteer de SharePoint Online-sites die u in het toegangspakket wilt opnemen.
 
-    ![Toegangs pakket-resource rollen toevoegen-share point online-sites selecteren](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
+    ![Toegangspakket - Resourcerollen toevoegen - SharePoint Online-sites selecteren](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. Klik op **Selecteren**.
+1. Klik **op Selecteren**.
 
-1. Selecteer in de lijst **rol** een share point online-site functie.
+1. Selecteer **in** de lijst Rol een SharePoint Online-siterol.
 
-    ![Toegangs pakket-resource functie toevoegen voor een share point online-site](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
+    ![Toegangspakket - Bronrol toevoegen voor een SharePoint Online-site](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op**toevoegen**.
 
-    Gebruikers met bestaande toewijzingen aan het toegangs pakket krijgen automatisch toegang tot deze share point online-site wanneer ze worden toegevoegd.
+    Alle gebruikers met bestaande toewijzingen aan het toegangspakket krijgen automatisch toegang tot deze SharePoint Online-site wanneer deze wordt toegevoegd.
 
-## <a name="remove-resource-roles"></a>Resource rollen verwijderen
+## <a name="remove-resource-roles"></a>Resourcerollen verwijderen
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik in het linkermenu op **resource rollen**.
+1. Klik in het linkermenu op **Resourcerollen**.
 
-1. Zoek in de lijst met resource rollen de resource functie die u wilt verwijderen.
+1. Zoek in de lijst met resourcerollen de resourcerol die u wilt verwijderen.
 
-1. Klik op het weglatings teken ( **...** ) en klik vervolgens op **resource functie verwijderen**.
+1. Klik op de ellips (**... )** en klik vervolgens op **Bronrol verwijderen**.
 
-    Gebruikers met bestaande toewijzingen aan het toegangs pakket hebben automatisch hun toegang tot deze resource functie ingetrokken wanneer deze wordt verwijderd.
+    Gebruikers met bestaande toewijzingen tot het toegangspakket hebben automatisch hun toegang tot deze bronrol ingetrokken wanneer deze wordt verwijderd.
 
 ## <a name="when-changes-are-applied"></a>Wanneer wijzigingen worden toegepast
 
-In het recht op beheer worden bulksgewijs wijzigingen in de toewijzing en resources in uw toegangs pakketten enkele keren per dag verwerkt door Azure AD. Als u dus een toewijzing maakt of de resource rollen van uw toegangs pakket wijzigt, kan het tot 24 uur duren voordat deze wijziging wordt doorgevoerd in azure AD, plus de hoeveelheid tijd die nodig is om deze wijzigingen door te geven aan andere micro soft Online Services of verbonden SaaS-toepassing z. Als uw wijziging van invloed is op slechts enkele objecten, duurt het waarschijnlijk slechts enkele minuten om toe te passen in azure AD, waarna andere onderdelen van Azure AD vervolgens detecteren dat de SaaS-toepassingen worden gewijzigd en bijgewerkt. Als uw wijziging gevolgen heeft voor duizenden objecten, neemt de wijziging langer in beslag. Als u bijvoorbeeld een toegangs pakket hebt met 2 toepassingen en 100 gebruikers toewijzingen en u besluit een share point-siterol toe te voegen aan het toegangs pakket, kan er een vertraging optreden totdat alle gebruikers deel uitmaken van die share point-siterol. U kunt de voortgang bewaken via het Azure AD-controle logboek, het Azure AD-inrichtings logboek en de audit logboeken van de share point-site.
+In het beheer van rechten verwerkt Azure AD bulkwijzigingen voor toewijzing en resources in uw toegangspakketten meerdere keren per dag. Als u dus een toewijzing maakt of de resourcerollen van uw toegangspakket wijzigt, kan het tot 24 uur duren voordat die wijziging is aangebracht in Azure AD, plus de hoeveelheid tijd die nodig is om deze wijzigingen te verspreiden naar andere Microsoft Online Services of verbonden SaaS Toepassingen. Als uw wijziging slechts een paar objecten beïnvloedt, duurt het waarschijnlijk slechts enkele minuten voordat de wijziging is toegepast in Azure AD, waarna andere Azure AD-componenten die wijziging detecteren en de SaaS-toepassingen bijwerken. Als de wijziging van invloed is op duizenden objecten, duurt de wijziging langer. Als u bijvoorbeeld een toegangspakket hebt met 2 toepassingen en 100 gebruikerstoewijzingen en u besluit een SharePoint-siterol toe te voegen aan het toegangspakket, kan dit vertraging oplopen totdat alle gebruikers deel uitmaken van die SharePoint-siterol. U de voortgang controleren via het Azure AD-controlelogboek, het Azure AD-inrichtingslogboek en de sharepoint-sitecontrolelogboeken.
 
-Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [Groepslidmaatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een basis groep maken en leden toevoegen met behulp van Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md)
-- [Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen](../develop/active-directory-enterprise-app-role-management.md)
-- [Inleiding tot share point online](/sharepoint/introduction)
+- [Een basisgroep maken en leden toevoegen met Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [How to: De rolclaim configureren die is uitgegeven in het SAML-token voor bedrijfstoepassingen](../develop/active-directory-enterprise-app-role-management.md)
+- [Inleiding tot SharePoint Online](/sharepoint/introduction)

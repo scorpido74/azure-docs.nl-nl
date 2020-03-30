@@ -1,6 +1,6 @@
 ---
-title: Scenario's identificeren voor Azure Machine Learning - Team Data Science Process
-description: Selecteer de juiste scenario's voor geavanceerde voorspellende analyses met het Team Data Science Process.
+title: Scenario's voor Azure Machine Learning - Team Data Science Process identificeren
+description: Selecteer de juiste scenario's voor het uitvoeren van geavanceerde voorspellende analyses met het Team Data Science Process.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,235 +12,235 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251620"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenario's voor geavanceerde analyses in Azure Machine Learning
-In dit artikel vindt u een overzicht van de verschillende voorbeeld gegevens bronnen en doel scenario's die kunnen worden verwerkt door het [team data Science process (TDSP)](overview.md). De TDSP biedt een systematische benadering voor teams kunnen samenwerken op het bouwen van intelligente toepassingen. De scenario's die hier wordt gepresenteerd illustreren opties beschikbaar zijn in de werkstroom gegevensverwerking die afhankelijk van de gegevenskenmerken, bronlocaties en doel-opslagplaatsen in Azure zijn.
+In dit artikel wordt een overzicht gegeven van de verscheidenheid aan voorbeeldgegevensbronnen en doelscenario's die kunnen worden behandeld door het [Team Data Science Process (TDSP).](overview.md) Het TDSP biedt teams een systematische aanpak om samen te werken aan het bouwen van intelligente toepassingen. De hier gepresenteerde scenario's illustreren opties die beschikbaar zijn in de werkstroom voor gegevensverwerking die afhankelijk zijn van de gegevenskenmerken, bronlocaties en doelopslagplaatsen in Azure.
 
-De **beslissings structuur** voor het selecteren van de voorbeeld scenario's die geschikt zijn voor uw gegevens en doel stellingen wordt weer gegeven in de laatste sectie.
+De **beslissingsstructuur** voor het selecteren van de voorbeeldscenario's die geschikt zijn voor uw gegevens en doelstelling wordt in de laatste sectie weergegeven.
 
-Elk van de volgende secties geeft een voorbeeldscenario. Voor elk scenario, een mogelijke data science of geavanceerde analyses stroom en de ondersteunende Azure-resources worden weergegeven.
+Elk van de volgende secties presenteert een voorbeeldscenario. Voor elk scenario worden een mogelijke gegevenswetenschaps- of geavanceerde analysestroom en ondersteunende Azure-bronnen weergegeven.
 
 > [!NOTE]
-> **Voor alle volgende scenario's moet u:**
+> **Voor alle volgende scenario's moet u het volgende doen:**
 > <br/>
 > 
 > * [Een opslagaccount maken](../../storage/common/storage-account-create.md)
 >   <br/>
-> * [Een Azure Machine Learning-werk ruimte maken](../studio/create-workspace.md)
+> * [Een Azure Machine Learning-werkruimte maken](../studio/create-workspace.md)
 > 
 > 
 
-## <a name="smalllocal"></a>Scenario \#1: gegevensset in tabel vorm van klein naar gemiddeld in lokale bestanden
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>Scenario \#1: Kleine tot middelgrote tabelgegevensset in lokale bestanden
 ![Kleine tot middelgrote lokale bestanden][1]
 
-#### <a name="additional-azure-resources-none"></a>Extra Azure-resources: geen
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
+#### <a name="additional-azure-resources-none"></a>Aanvullende Azure-bronnen: Geen
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
 1. Upload een gegevensset.
-1. Een Azure Machine Learning-experiment-stroom vanaf geüploade gegevensset (s) maken.
+1. Een Azure Machine Learning-experimentstroom bouwen die begint met geüploade gegevenssets.
 
-## <a name="smalllocalprocess"></a>Scenario \#2: een gegevensset van kleine tot middel groot aantal lokale bestanden die moeten worden verwerkt
-![Kleine tot middelgrote lokale bestanden met verwerking in][2]
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>Scenario \#2: Kleine tot middelgrote gegevensset van lokale bestanden waarvoor verwerking vereist is
+![Kleine tot middelgrote lokale bestanden met verwerking][2]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (IPython Notebook-server)
-1. Maak een virtuele Machine van Azure IPython Notebook.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (IPython Notebook-server)
+1. Maak een Azure Virtual Machine met IPython-notitieblok.
 1. Gegevens uploaden naar een Azure Storage-container.
-1. Gegevens vooraf verwerken en opschonen in IPython notebook, toegang krijgen tot gegevens uit Azure Storage container.
-1. Gegevens transformeren naar een gereinigd tabellaire formulier.
-1. Getransformeerde gegevens opslaan in Azure-blobs.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. De gegevens uit Azure-blobs lezen met de module [gegevens importeren][import-data] .
-1. Een Azure Machine Learning-experiment-stroom vanaf opgenomen gegevensset (s) maken.
+1. Verwerk en verschoon gegevens in IPython Notebook en krijg toegang tot gegevens uit de Azure Storage-container.
+1. Gegevens omzetten in een gereinigde tabelvorm.
+1. Transformeerde gegevens opslaan in Azure-blobs.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens van Azure blobs met de module [Gegevens importeren.][import-data]
+1. Bouw een Azure Machine Learning-experimentstroom te beginnen met ingenomen gegevenssets.
 
-## <a name="largelocal"></a>Scenario \#3: grote gegevensset van lokale bestanden, met als doel Azure blobs
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>Scenario \#3: Grote gegevensset van lokale bestanden, gericht op Azure Blobs
 ![Grote lokale bestanden][3]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (IPython Notebook-server)
-1. Maak een virtuele Machine van Azure IPython Notebook.
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (IPython Notebook-server)
+1. Maak een Azure Virtual Machine met IPython-notitieblok.
 1. Gegevens uploaden naar een Azure Storage-container.
-1. Voorverwerken en opschonen van gegevens in IPython Notebook, toegang tot gegevens uit Azure-blobs.
-1. Transformeer gegevens naar een gereinigd tabellaire formulier, indien nodig.
-1. Gegevens verkennen en functies maken indien nodig.
-1. Een voorbeeld van kleine tot middelgrote gegevens extraheren.
-1. De sample gegevens opslaan in Azure-blobs.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. De gegevens uit Azure-blobs lezen met de module [gegevens importeren][import-data] .
-1. Azure Machine Learning-experiment stroom beginnen met opgenomen gegevensset (s) maken.
+1. Verwerk en verschoon gegevens in IPython Notebook en krijg toegang tot gegevens van Azure blobs.
+1. Gegevens zo nodig omzetten in een gereinigde tabelvorm.
+1. Verken gegevens en maak functies waar nodig.
+1. Haal een klein tot medium gegevensvoorbeeld.
+1. Sla de gesamplede gegevens op in Azure-blobs.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens van Azure blobs met de module [Gegevens importeren.][import-data]
+1. Bouw azure Machine Learning-experimentstroom te beginnen met ingenomen gegevenssets.
 
-## <a name="smalllocaltodb"></a>Scenario \#4: kleine tot gemiddelde gegevensset van lokale bestanden, gericht op SQL Server op een virtuele machine van Azure
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>Scenario \#4: Kleine tot middelgrote gegevensset van lokale bestanden, gericht op SQL Server in een Azure Virtual Machine
 ![Kleine tot middelgrote lokale bestanden naar SQL DB in Azure][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (SQL Server / IPython Notebook-server)
-1. Maak een virtuele Machine van Azure SQL-Server + IPython Notebook.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (SQL Server / IPython Notebook-server)
+1. Maak een Azure Virtual Machine met SQL Server + IPython-notitieblok.
 1. Gegevens uploaden naar een Azure Storage-container.
-1. Gegevens vooraf verwerken en opschonen in Azure Storage container met behulp van IPython notebook.
-1. Transformeer gegevens naar een gereinigd tabellaire formulier, indien nodig.
-1. Gegevens opslaan naar VM-local-bestanden (IPython Notebook op de virtuele machine wordt uitgevoerd, lokale stations verwijzen naar de VM-schijven).
-1. Gegevens laden in SQL Server-database die wordt uitgevoerd op een Azure-VM.
+1. Vooraf verwerken en schone gegevens in Azure Storage-container met IPython Notebook.
+1. Gegevens zo nodig omzetten in een gereinigde tabelvorm.
+1. Gegevens opslaan in VM-lokale bestanden (IPython Notebook wordt uitgevoerd op VM, lokale stations verwijzen naar VM-stations).
+1. Gegevens laden naar SQL Server-database die wordt uitgevoerd op een Azure-vm.
    
-   Optie \#1: met behulp van SQL Server Management Studio.
+   Optie \#1: SQL Server Management Studio gebruiken.
    
-   * Meld u aan bij SQL Server VM
-   * Voer SQL Server Management Studio.
-   * Database- en doel-tabellen maken.
-   * Gebruik een van de bulksgewijs importeren methoden voor het laden van de gegevens uit de VM-lokale bestanden.
+   * Inloggen bij SQL Server VM
+   * SQL Server Management Studio uitvoeren.
+   * Maak database- en doeltabellen.
+   * Gebruik een van de methoden voor het importeren in bulk om de gegevens uit VM-lokale bestanden te laden.
    
-   Optie \#2: het gebruik van IPython notebook: niet aanbevolen voor middel grote en grotere gegevens sets
+   Optie \#2: IPython Notebook gebruiken – niet aan te raden voor middelgrote en grotere datasets
    
    <!-- -->    
-   * ODBC-verbindingsreeks gebruiken voor toegang tot SQL Server op virtuele machine.
-   * Database- en doel-tabellen maken.
-   * Gebruik een van de bulksgewijs importeren methoden voor het laden van de gegevens uit de VM-lokale bestanden.
-1. Gegevens verkennen, functies maken die nodig is. De functies hoeven niet te worden gerealiseerd in de database tabellen. Alleen Houd er rekening mee de query die nodig zijn om deze te maken.
-1. Beslissen over een steekproefomvang gegevens als nodig is en/of gewenst is.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. Lees de gegevens rechtstreeks vanuit het SQL Server met behulp van de module [gegevens importeren][import-data] . Plak de benodigde query waarmee velden worden geëxtraheerd, maakt functies en voor beelden van gegevens, indien dit rechtstreeks nodig is in de query [gegevens importeren][import-data] .
-1. Azure Machine Learning-experiment stroom beginnen met opgenomen gegevensset (s) maken.
+   * Gebruik ODBC-verbindingstekenreeks om toegang te krijgen tot SQL Server op VM.
+   * Maak database- en doeltabellen.
+   * Gebruik een van de methoden voor het importeren in bulk om de gegevens uit VM-lokale bestanden te laden.
+1. Verken gegevens, maak functies waar nodig. De functies hoeven niet te worden gematerialiseerd in de databasetabellen. Noteer alleen de benodigde query om ze te maken.
+1. Bepaal de som grootte van een gegevenssteekproef, indien nodig en/of gewenst.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens rechtstreeks van de SQL Server met behulp van de module [Gegevens importeren.][import-data] Plak de benodigde query die velden uitextraheert, functies maakt en gegevens, indien nodig, indien nodig rechtstreeks in de query [Gegevens importeren.][import-data]
+1. Bouw azure Machine Learning-experimentstroom te beginnen met ingenomen gegevenssets.
 
-## <a name="largelocaltodb"></a>Scenario \#5: grote gegevensset in lokale bestanden, doel SQL Server in azure VM
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>Scenario \#5: Grote gegevensset in lokale bestanden, target SQL Server in Azure VM
 ![Grote lokale bestanden naar SQL DB in Azure][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (SQL Server / IPython Notebook-server)
-1. Maak een Azure-virtuele Machine met SQL Server en IPython Notebook-server.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (SQL Server / IPython Notebook-server)
+1. Maak een Azure Virtual Machine met SQL Server en IPython Notebook server.
 1. Gegevens uploaden naar een Azure Storage-container.
-1. (Optioneel) Voorverwerken en opschonen van gegevens.
+1. (Optioneel) Pre-proces en schone gegevens.
    
-    a.  Voorverwerken en opschonen van gegevens in IPython Notebook, toegang tot gegevens uit Azure-blobs.
+    a.  Verwerk en verschoon gegevens in IPython Notebook en krijg toegang tot gegevens van Azure blobs.
    
-    b.  Transformeer gegevens naar een gereinigd tabellaire formulier, indien nodig.
+    b.  Gegevens zo nodig omzetten in een gereinigde tabelvorm.
    
-    c.  Gegevens opslaan naar VM-local-bestanden (IPython Notebook op de virtuele machine wordt uitgevoerd, lokale stations verwijzen naar de VM-schijven).
-1. Gegevens laden in SQL Server-database die wordt uitgevoerd op een Azure-VM.
+    c.  Gegevens opslaan in VM-lokale bestanden (IPython Notebook wordt uitgevoerd op VM, lokale stations verwijzen naar VM-stations).
+1. Gegevens laden naar SQL Server-database die wordt uitgevoerd op een Azure-vm.
    
     a.  Meld u aan bij SQL Server VM.
    
-    b.  Als er nog geen gegevens zijn opgeslagen, downloadt u de gegevens bestanden van de Azure-opslag container naar de map Local-VM.
+    b.  Als gegevens nog niet zijn opgeslagen, downloadt u gegevensbestanden van de Azure-opslagcontainer naar de map lokaal-VM.
    
-    c.  Voer SQL Server Management Studio.
+    c.  SQL Server Management Studio uitvoeren.
    
-    d.  Database- en doel-tabellen maken.
+    d.  Maak database- en doeltabellen.
    
-    e.  Gebruik een van de bulksgewijs importeren methoden om de gegevens te laden.
+    e.  Gebruik een van de methoden voor het importeren in bulk om de gegevens te laden.
    
-    f.  Als tabelsamenvoegingen vereist zijn, maakt u indexen joins versnellen.
-   
-   > [!NOTE]
-   > Voor het sneller laden van grote gegevenshoeveelheden verdient het aanbeveling dat u gepartitioneerde tabellen maken en grote hoeveelheden gegevens parallel importeren. Zie voor meer informatie [parallelle gegevens importeren naar SQL-gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md).
-   > 
-   > 
-1. Gegevens verkennen, functies maken die nodig is. De functies hoeven niet te worden gerealiseerd in de database tabellen. Alleen Houd er rekening mee de query die nodig zijn om deze te maken.
-1. Beslissen over een steekproefomvang gegevens als nodig is en/of gewenst is.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. Lees de gegevens rechtstreeks vanuit het SQL Server met behulp van de module [gegevens importeren][import-data] . Plak de benodigde query waarmee velden worden geëxtraheerd, maakt functies en voor beelden van gegevens, indien dit rechtstreeks nodig is in de query [gegevens importeren][import-data] .
-1. Eenvoudige stroom met Azure Machine Learning-experiment beginnen met geüploade gegevensset
-
-## <a name="largedbtodb"></a>Scenario \#6: grote gegevensset in een SQL Server-data base on-premises, gericht op SQL Server in een virtuele machine van Azure
-![Grote SQL DB on-premises naar SQL DB in Azure][6]
-
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (SQL Server / IPython Notebook-server)
-1. Maak een Azure-virtuele Machine met SQL Server en IPython Notebook-server.
-1. Gebruik een van de gegevens exporteren methoden om de gegevens exporteren uit SQL Server naar dumpbestanden.
+    f.  Als tabeljoins vereist zijn, maakt u indexen om joins te versnellen.
    
    > [!NOTE]
-   > Als u besluit alle gegevens van de on-premises data base te verplaatsen, een alternatieve (snellere) methode om de volledige data base te verplaatsen naar het SQL Server-exemplaar in Azure. Sla de stappen voor het exporteren van gegevens, -database maken en laden/importeren van gegevens naar de doeldatabase en volgt u de alternatieve methode.
+   > Voor een snellere belasting van grote gegevensformaten wordt aanbevolen dat u partitietabellen maakt en de gegevens in bulk parallel importeert. Zie [Parallelle gegevens importeren naar SQL-partitietabellen](parallel-load-sql-partitioned-tables.md)voor meer informatie.
    > 
    > 
-1. Upload dump bestanden naar Azure Storage-container.
-1. De gegevens laden in een SQL Server-database op een Azure-machine.
+1. Verken gegevens, maak functies waar nodig. De functies hoeven niet te worden gematerialiseerd in de databasetabellen. Noteer alleen de benodigde query om ze te maken.
+1. Bepaal de som grootte van een gegevenssteekproef, indien nodig en/of gewenst.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens rechtstreeks van de SQL Server met behulp van de module [Gegevens importeren.][import-data] Plak de benodigde query die velden uitextraheert, functies maakt en gegevens, indien nodig, indien nodig rechtstreeks in de query [Gegevens importeren.][import-data]
+1. Eenvoudige Azure Machine Learning-experimentstroom die begint met geüploade gegevensset
+
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>Scenario \#6: Grote gegevensset in een SQL Server-database op locatie, gericht op SQL Server in een Azure Virtual Machine
+![Grote SQL DB on-prem naar SQL DB in Azure][6]
+
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (SQL Server / IPython Notebook-server)
+1. Maak een Azure Virtual Machine met SQL Server en IPython Notebook server.
+1. Gebruik een van de methoden voor het exporteren van gegevens om de gegevens van SQL Server te exporteren naar het dumpen van bestanden.
+   
+   > [!NOTE]
+   > Als u besluit om alle gegevens uit de on-premises database te verplaatsen, een alternatieve (snellere) methode om de volledige database te verplaatsen naar de SQL Server-instantie in Azure. Sla de stappen over om gegevens te exporteren, database te maken en gegevens te laden/importeren naar de doeldatabase en volg de alternatieve methode.
+   > 
+   > 
+1. Dumpbestanden uploaden naar de Azure Storage-container.
+1. Laad de gegevens naar een SQL Server-database die wordt uitgevoerd op een Azure Virtual Machine.
    
    a.  Meld u aan bij de SQL Server VM.
    
-   b.  Down load gegevens bestanden van een Azure Storage-container naar de map Local-VM.
+   b.  Download gegevensbestanden uit een Azure Storage-container naar de map lokaal-VM.
    
-   c.  Voer SQL Server Management Studio.
+   c.  SQL Server Management Studio uitvoeren.
    
-   d.  Database- en doel-tabellen maken.
+   d.  Maak database- en doeltabellen.
    
-   e.  Gebruik een van de bulksgewijs importeren methoden om de gegevens te laden.
+   e.  Gebruik een van de methoden voor het importeren in bulk om de gegevens te laden.
    
-   f.  Als tabelsamenvoegingen vereist zijn, maakt u indexen joins versnellen.
+   f.  Als tabeljoins vereist zijn, maakt u indexen om joins te versnellen.
    
    > [!NOTE]
-   > Voor sneller laden van grote gegevenshoeveelheden, gepartitioneerde tabellen maken en grote hoeveelheden gegevens parallel importeren. Zie voor meer informatie [parallelle gegevens importeren naar SQL-gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md).
+   > Voor het sneller laden van grote gegevensformaten maakt u partitietabellen en importeert u de gegevens in bulk parallel. Zie [Parallelle gegevens importeren naar SQL-partitietabellen](parallel-load-sql-partitioned-tables.md)voor meer informatie.
    > 
    > 
-1. Gegevens verkennen, functies maken die nodig is. De functies hoeven niet te worden gerealiseerd in de database tabellen. Alleen Houd er rekening mee de query die nodig zijn om deze te maken.
-1. Beslissen over een steekproefomvang gegevens als nodig is en/of gewenst is.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. Lees de gegevens rechtstreeks vanuit het SQL Server met behulp van de module [gegevens importeren][import-data] . Plak de benodigde query waarmee velden worden geëxtraheerd, maakt functies en voor beelden van gegevens, indien dit rechtstreeks nodig is in de query [gegevens importeren][import-data] .
-1. Eenvoudige Azure Machine Learning-experiment stroom beginnen met geüploade gegevensset.
+1. Verken gegevens, maak functies waar nodig. De functies hoeven niet te worden gematerialiseerd in de databasetabellen. Noteer alleen de benodigde query om ze te maken.
+1. Bepaal de som grootte van een gegevenssteekproef, indien nodig en/of gewenst.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens rechtstreeks van de SQL Server met behulp van de module [Gegevens importeren.][import-data] Plak de benodigde query die velden uitextraheert, functies maakt en gegevens, indien nodig, indien nodig rechtstreeks in de query [Gegevens importeren.][import-data]
+1. Eenvoudige Azure Machine Learning-experimentstroom die begint met geüploade gegevensset.
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternatieve methode om te kopiëren van een volledige database uit een on-premises SQL Server naar Azure SQL Database
-![Lokale DB loskoppelen en koppelen aan SQL-database in Azure][7]
+### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternatieve methode om een volledige database te kopiëren van een on-premises SQL Server naar Azure SQL Database
+![Lokale DB loskoppelen en koppelen aan SQL DB in Azure][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Extra Azure-resources: Azure virtuele Machine (SQL Server / IPython Notebook-server)
-Als u wilt repliceren van de volledige SQL Server-database in uw SQL Server-VM, u moet een database kopiëren vanaf één locatie of de server naar een andere, uitgaande van de database kan worden gehouden die tijdelijk offline. U kunt SQL Server Management Studio Objectverkenner gebruiken of gebruikmaken van de equivalente Transact-SQL-opdrachten.
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure Virtual Machine (SQL Server / IPython Notebook-server)
+Als u de volledige SQL Server-database in uw SQL Server VM wilt repliceren, moet u een database van de ene locatie/server naar de andere kopiëren, ervan uitgaande dat de database tijdelijk offline kan worden gehaald. U SQL Server Management Studio Object Explorer gebruiken of de gelijkwaardige Transact-SQL-opdrachten gebruiken.
 
-1. Ontkoppel de database op de bronlocatie. Zie [een Data Base loskoppelen](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)voor meer informatie.
-1. In Windows Explorer- of Windows-opdrachtprompt venster, kopieert u de losgekoppelde databasebestand of de bestanden en het logboekbestand of de bestanden naar de doellocatie op de SQL Server-VM in Azure.
-1. De gekopieerde bestanden toevoegen aan de doel-SQL Server-exemplaar. Zie [een Data Base koppelen](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)voor meer informatie.
+1. Maak de database los op de bronlocatie. Zie [Een database loskoppelen](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)voor meer informatie.
+1. Kopieer in het venster Windows Verkenner of Windows Opdrachtprompt het losgekoppelde databasebestand of -bestanden en logboekbestanden naar de doellocatie op de SQL Server VM in Azure.
+1. Voeg de gekopieerde bestanden toe aan de doelSQL Server-instantie. Zie [Een database bijvoegen](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)voor meer informatie.
 
-[Een Data Base verplaatsen met Detach en attach (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[Een database verplaatsen met losmaken en koppelen (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>Scenario \#7: Big data in lokale bestanden, doel Hive-data base in Azure HDInsight Hadoop clusters
-![BIG data in lokale doel Hive][9]
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>Scenario \#7: Big data in lokale bestanden, target Hive-database in Azure HDInsight Hadoop-clusters
+![Big data in lokaal doel Hive][9]
 
-#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Extra Azure-resources: Azure HDInsight Hadoop-Cluster en virtuele Azure-Machine (IPython Notebook-server)
-1. Maak een virtuele Machine van Azure IPython Notebook-server.
+#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Aanvullende Azure-bronnen: Azure HDInsight Hadoop-cluster en Azure Virtual Machine (IPython-laptopserver)
+1. Maak een Azure Virtual Machine met IPython Notebook-server.
 1. Maak een Azure HDInsight Hadoop-cluster.
-1. (Optioneel) Voorverwerken en opschonen van gegevens.
+1. (Optioneel) Pre-proces en schone gegevens.
    
-   a.  Voorverwerken en opschonen van gegevens in IPython Notebook, toegang tot gegevens van Azure
+   a.  Gegevens vooraf verwerken en schoonmaken in IPython-notitieblok en toegang krijgen tot gegevens uit Azure
    
        blobs.
    
-   b.  Transformeer gegevens naar een gereinigd tabellaire formulier, indien nodig.
+   b.  Gegevens zo nodig omzetten in een gereinigde tabelvorm.
    
-   c.  Gegevens opslaan naar VM-local-bestanden (IPython Notebook op de virtuele machine wordt uitgevoerd, lokale stations verwijzen naar de VM-schijven).
-1. Gegevens uploaden naar de standaardcontainer van de Hadoop-cluster dat is geselecteerd in stap 2.
-1. Gegevens laden in Hive-database in Azure HDInsight Hadoop-cluster.
+   c.  Gegevens opslaan in VM-lokale bestanden (IPython Notebook wordt uitgevoerd op VM, lokale stations verwijzen naar VM-stations).
+1. Gegevens uploaden naar de standaardcontainer van het Hadoop-cluster geselecteerd in stap 2.
+1. Gegevens laden naar Hive-database in azure HDInsight Hadoop-cluster.
    
-   a.  Meld u aan bij het hoofdknooppunt van het Hadoop-cluster
+   a.  Log in op het hoofdknooppunt van het Hadoop-cluster
    
-   b.  Open de Hadoop-opdrachtregel.
+   b.  Open de Hadoop-commandolijn.
    
-   c.  Voer de hoofd directory van de Hive in met de opdracht `cd %hive_home%\bin` in de Hadoop-opdracht regel.
+   c.  Voer de hoofdmap `cd %hive_home%\bin` Van Hive in op opdracht in Hadoop Command Line.
    
-   d.  Voer de Hive-query's voor het maken van de database en tabellen en gegevens uit blob-opslag laden in Hive-tabellen.
+   d.  Voer de Hive-query's uit om database- en tabellen te maken en gegevens te laden van blobopslag naar Hive-tabellen.
    
    > [!NOTE]
-   > Als de gegevens groot is, kunnen gebruikers de Hive-tabel maken met partities. Vervolgens kunnen gebruikers een `for`-lus gebruiken in de Hadoop-opdracht regel op het hoofd knooppunt om gegevens te laden in de Hive-tabel die is gepartitioneerd per partitie.
+   > Als de gegevens groot zijn, kunnen gebruikers de Hive-tabel met partities maken. Vervolgens kunnen gebruikers `for` een lus gebruiken in de Hadoop-opdrachtregel op het hoofdknooppunt om gegevens te laden in de Hive-tabel die is verdeeld door partitie.
    > 
    > 
-1. Gegevens verkennen en functies maken indien nodig in Hadoop vanaf de opdrachtregel. De functies hoeven niet te worden gerealiseerd in de database tabellen. Alleen Houd er rekening mee de query die nodig zijn om deze te maken.
+1. Verken gegevens en maak functies waar nodig in Hadoop Command Line. De functies hoeven niet te worden gematerialiseerd in de databasetabellen. Noteer alleen de benodigde query om ze te maken.
    
-   a.  Meld u aan bij het hoofdknooppunt van het Hadoop-cluster
+   a.  Log in op het hoofdknooppunt van het Hadoop-cluster
    
-   b.  Open de Hadoop-opdrachtregel.
+   b.  Open de Hadoop-commandolijn.
    
-   c.  Voer de hoofd directory van de Hive in met de opdracht `cd %hive_home%\bin` in de Hadoop-opdracht regel.
+   c.  Voer de hoofdmap `cd %hive_home%\bin` Van Hive in op opdracht in Hadoop Command Line.
    
-   d.  In het Hadoop-opdrachtregels de Hive-query's in te voeren op het hoofdknooppunt van het Hadoop-cluster voor de gegevens verkennen en functies maken indien nodig.
-1. Als nodig is en/of gewenst is, voorbeeld van de gegevens naar wens aanpassen in Azure Machine Learning Studio.
-1. Meld u aan bij de [Azure machine learning Studio](https://studio.azureml.net/).
-1. Lees de gegevens rechtstreeks vanuit het `Hive Queries` met behulp van de module [gegevens importeren][import-data] . Plak de benodigde query waarmee velden worden geëxtraheerd, maakt functies en voor beelden van gegevens, indien dit rechtstreeks nodig is in de query [gegevens importeren][import-data] .
-1. Eenvoudige Azure Machine Learning-experiment stroom beginnen met geüploade gegevensset.
+   d.  Voer de Hive-query's uit in hadoop-opdrachtregel op het hoofdknooppunt van het Hadoop-cluster om de gegevens te verkennen en functies te maken waar nodig.
+1. Indien nodig en/of gewenst, u de gegevens gebruiken die passen in Azure Machine Learning Studio.
+1. Meld u aan bij de [Azure Machine Learning Studio](https://studio.azureml.net/).
+1. Lees de gegevens `Hive Queries` rechtstreeks vanuit de module [Gegevens importeren.][import-data] Plak de benodigde query die velden uitextraheert, functies maakt en gegevens, indien nodig, indien nodig rechtstreeks in de query [Gegevens importeren.][import-data]
+1. Eenvoudige Azure Machine Learning-experimentstroom die begint met geüploade gegevensset.
 
-## <a name="decisiontree"></a>Beslissings structuur voor scenario selectie
+## <a name="decision-tree-for-scenario-selection"></a><a name="decisiontree"></a>Beslissingsstructuur voor scenarioselectie
 ---
-Het volgende diagram geeft een overzicht van de scenario's die hierboven worden beschreven en de Advanced Analytics Process and technologiekeuzes die u voor elk van de gespecificeerde scenario's kunt uitvoeren. Gegevens verwerking, exploratie, functie techniek en-bemonstering kunnen plaatsvinden in een of meer methoden/omgevingen, op bron-, tussen-en/of doel omgevingen, en kan zo nodig worden voortgezet. Het diagram alleen fungeert als een afbeelding van een aantal mogelijke stromen en biedt een volledige inventarisatie.
+In het volgende diagram worden de hierboven beschreven scenario's en de hierboven gemaakte geavanceerde analyseprocessen en -technologiedie u naar elk van de gespecificeerde scenario's brengen. Gegevensverwerking, exploratie, functieengineering en sampling kunnen plaatsvinden in een of meer methoden/omgevingen - bij de bron-, intermediaire en/of doelomgevingen - en kunnen indien nodig iteratief verlopen. Het diagram dient slechts als illustratie van enkele mogelijke stromen en biedt geen uitputtende opsomming.
 
-![Voorbeeldscenario's DS proces scenario][8]
+![Voorbeeld van DS-scenario's voor het doorlopen van ds-processen][8]
 
-### <a name="advanced-analytics-in-action-examples"></a>Advanced Analytics in actie voorbeelden
-Zie voor end-to-end Azure Machine Learning-scenario's die gebruikmaken van de Advanced Analytics Process and Technology met behulp van openbare gegevenssets:
+### <a name="advanced-analytics-in-action-examples"></a>Geavanceerde analytics in actie Voorbeelden
+Zie voor end-to-end Azure Machine Learning-walkthroughs die gebruikmaken van het Advanced Analytics-proces en -technologie met behulp van openbare gegevenssets:
 
-* [Team data Science process in actie: met behulp van SQL Server](sql-walkthrough.md).
-* [Proces voor team data Science in actie: HDInsight Hadoop-clusters gebruiken](hive-walkthrough.md).
+* [Team Data Science Process in actie: sql server gebruiken](sql-walkthrough.md).
+* [Team Data Science Process in actie: met HDInsight Hadoop clusters](hive-walkthrough.md).
 
 [1]: ./media/plan-sample-scenarios/dsp-plan-small-in-aml.png
 [2]: ./media/plan-sample-scenarios/dsp-plan-local-with-processing.png

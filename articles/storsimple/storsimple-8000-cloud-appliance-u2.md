@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267987"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Een StorSimple-cloudapparaat implementeren en beheren in Azure (Update 3 en hoger)
@@ -46,13 +46,13 @@ Het StorSimple-cloudapparaat is beschikbaar in twee modellen: de Standard 8010 (
 | --- | --- | --- |
 | **Maximale capaciteit** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 kerngeheugens, 7 GB geheugen)| Standard_DS3 (4 kerngeheugens, 14 GB geheugen)|
-| **Beschikbaarheid in regio's** |Alle Azure-regio's |Azure-regio's waar ondersteuning wordt geboden voor Premium Storage en Azure-VM’s met DS3<br></br>Gebruik [deze lijst](https://azure.microsoft.com/regions/services/) om te kijken of zowel **Virtuele Machines > DS-serie** als **Opslag > Schijfruimte** beschikbaar is in uw regio. |
+| **Beschikbaarheid in regio’s** |Alle Azure-regio's |Azure-regio's waar ondersteuning wordt geboden voor Premium Storage en Azure-VM’s met DS3<br></br>Gebruik [deze lijst](https://azure.microsoft.com/regions/services/) om te kijken of zowel **Virtuele Machines > DS-serie** als **Opslag > Schijfruimte** beschikbaar is in uw regio. |
 | **Opslagtype** |Maakt gebruik van Azure Standard-opslag voor lokale schijven<br></br> Ontdek hoe u [een Standard-opslagaccount maakt](../storage/common/storage-create-storage-account.md) |Maakt gebruik van Azure Premium Storage voor lokale schijven<sup>2</sup> <br></br> |
 | **Richtlijnen voor de workload** |Bestanden ophalen uit back-ups op itemniveau |Ontwikkelings- en testscenario’s voor cloudapparaten <br></br>Lage latentie en workloads met hogere prestaties<br></br>Secundair apparaat voor herstel na noodgevallen |
 
-<sup>1</sup> *voorheen bekend als de 1100*.
+<sup>1</sup> *Voorheen bekend als de 1100*.
 
-<sup>2</sup> *zowel de 8010 als de 8020 gebruiken de Azure Standard-opslag voor de Cloud-laag. Het verschil bestaat alleen in de lokale laag in het apparaat*.
+<sup>2</sup> *Zowel de 8010 als de 8020 maken gebruik van Azure Standard Storage voor de cloudlaag. Het verschil bestaat alleen in de lokale laag binnen het apparaat.*
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Hoe het cloudapparaat verschilt van het fysieke apparaat
 

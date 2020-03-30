@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.openlocfilehash: 55f40e8f22b39caa3527a378f33982276bed597d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240182"
 ---
-# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Quick Start: een .NET-Web-app maken met behulp van de API van Azure Cosmos DB voor MongoDB 
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Snelstart: een .NET-web-app maken met de API van Azure Cosmos DB voor MongoDB 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "79240182"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB. 
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB. 
 
 In deze snelstart ziet u hoe u een Cosmos-account kunt maken met de [API van Azure Cosmos DB voor MongoDB](mongodb-introduction.md). Vervolgens ontwikkelt en implementeert u een web-app voor taaklijsten die met behulp van het [MongoDB .NET-stuurprogramma](https://docs.mongodb.com/ecosystem/drivers/csharp/) is gemaakt.
 
@@ -34,7 +34,7 @@ In deze snelstart ziet u hoe u een Cosmos-account kunt maken met de [API van Azu
 
 Als u het voorbeeld wilt uitvoeren, hebt u [Visual Studio](https://www.visualstudio.com/downloads/) en een geldig Azure Cosmos DB-account nodig.
 
-Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de **ASP.net-en Web Development** -werk belasting die is geïnstalleerd met Setup.
+Als je Visual Studio nog niet hebt, download je [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de ASP.NET en **webdevelopment-workload** geïnstalleerd met setup.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -43,7 +43,7 @@ Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edi
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-Het voorbeeld dat in dit artikel wordt beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
+Het voorbeeld dat in dit artikel is beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
 
 ## <a name="clone-the-sample-app"></a>De voorbeeld-app klonen
 
@@ -71,7 +71,7 @@ Als u niet git wilt gebruiken, kunt u ook [het project als een ZIP-bestand downl
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsgegevens bijwerken](#update-your-connection-string). 
+Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
 
 De volgende codefragmenten zijn alle overgenomen uit het bestand Dal.cs in de map DAL.
 
@@ -150,7 +150,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 
 3. Installeer de bibliotheek **MongoDB.Driver** uit de lijst met resultaten. Hiermee wordt het MongoDB.Driver-pakket geïnstalleerd, met alle vereiste onderdelen.
 
-4. Klik op Ctrl+F5 om de toepassing uit te voeren. Uw app wordt in uw browser weergegeven. 
+4. Klik op CTRL+F5 om de toepassing te starten. Uw app wordt in uw browser weergegeven. 
 
 5. Klik op **Maken** in de browser en maak een paar nieuwe taken in uw taaklijst-app.
 
@@ -164,7 +164,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u geleerd hoe u een Cosmos DB-account kunt maken, hoe u een verzameling kunt maken en hoe u een console-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos database importeren. 
+In deze snelstart hebt u geleerd hoe u een Cosmos DB-account kunt maken, hoe u een verzameling kunt maken en hoe u een console-app kunt uitvoeren. Nu kunt u aanvullende gegevens in uw Cosmos-database importeren. 
 
 > [!div class="nextstepaction"]
 > [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)

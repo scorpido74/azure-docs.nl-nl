@@ -1,177 +1,177 @@
 ---
-title: Een referentie gids voor de tegels van de weergave ontwerper in Azure Monitor | Microsoft Docs
-description: Met behulp van View designer in Azure Monitor kunt u aangepaste weer gaven maken die worden weer gegeven in de Azure Portal en een verscheidenheid aan visualisaties op gegevens in de werk ruimte Log Analytics bevatten. Dit artikel bevat een Naslag Gids voor de instellingen voor de tegels die beschikbaar zijn in uw aangepaste weer gaven.
+title: Een naslaggids voor de tegels Designer weergeven in Azure Monitor | Microsoft Documenten
+description: Met View Designer in Azure Monitor u aangepaste weergaven maken die worden weergegeven in de Azure-portal en verschillende visualisaties bevatten over gegevens in de werkruimte Log Analytics. Dit artikel is een referentiegids voor de instellingen voor de tegels die beschikbaar zijn in uw aangepaste weergaven.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658503"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Naslag Gids voor het weer geven van ontwerp tegels in Azure Monitor
-Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een Naslag Gids voor de instellingen voor de tegels die beschikbaar zijn in uw aangepaste weer gaven.
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Naslaggids voor designertegels weergeven in Azure-monitor
+Door View Designer in Azure Monitor te gebruiken, u verschillende aangepaste weergaven maken in de Azure-portal waarmee u gegevens in uw werkruimte Log Analytics visualiseren. Dit artikel is een referentiegids voor de instellingen voor de tegels die beschikbaar zijn in uw aangepaste weergaven.
 
-Zie voor meer informatie over de ontwerp functie voor weer gaven:
+Zie voor meer informatie over View Designer:
 
-* [Weer gave Designer](view-designer.md): bevat een overzicht van de ontwerp weergave en procedures voor het maken en bewerken van aangepaste weer gaven.
-* [Naslag informatie over visualisatie onderdelen](view-designer-parts.md): hierin vindt u een Naslag Gids voor de instellingen voor de visualisatie onderdelen die beschikbaar zijn in uw aangepaste weer gaven.
+* [Weergaveontwerper:](view-designer.md)biedt een overzicht van View Designer en procedures voor het maken en bewerken van aangepaste weergaven.
+* [Verwijzing naar visualisatieonderdelen:](view-designer-parts.md)biedt een referentiehandleiding voor de instellingen voor de visualisatieonderdelen die beschikbaar zijn in uw aangepaste weergaven.
 
 
-De beschik bare weer gave Designer-tegels worden in de volgende tabel beschreven:  
+De beschikbare View Designer-tegels worden beschreven in de volgende tabel:  
 
 | Tegel | Beschrijving |
 |:--- |:--- |
-| [Number](#number-tile) |Het aantal records van een query. |
+| [Nummer](#number-tile) |Het aantal records uit een query. |
 | [Twee getallen](#two-numbers-tile) |Het aantal records van twee verschillende query's. |
-| [Ring](#donut-tile) | Een grafiek op basis van een query, met een samenvattings waarde in het midden. |
-| Lijn diagram en bijschrift | Een lijn diagram dat is gebaseerd op een query en een toelichting met een samenvattings waarde. |
-| [Lijn diagram](#line-chart-tile) |Een lijn diagram dat is gebaseerd op een query. |
-| [Twee tijd lijnen](#two-timelines-tile) | Een kolom diagram met twee reeksen, elk op basis van een afzonderlijke query. |
+| [Ringdiagram](#donut-tile) | Een grafiek die is gebaseerd op een query, met een overzichtswaarde in het midden. |
+| Lijndiagram en -uitroep | Een lijndiagram dat is gebaseerd op een query en een afroep met een overzichtswaarde. |
+| [Lijndiagram](#line-chart-tile) |Een lijndiagram dat is gebaseerd op een query. |
+| [Twee tijdlijnen](#two-timelines-tile) | Een kolomdiagram met twee reeksen, elk op basis van een afzonderlijke query. |
 
-In de volgende secties worden de tegel typen en de bijbehorende eigenschappen uitvoerig beschreven.
+In de volgende secties worden de tegeltypen en hun eigenschappen in detail beschreven.
 
 > [!NOTE]
-> Tegels in weer gaven zijn gebaseerd op [logboek query's](../log-query/log-query-overview.md) in uw log Analytics-werk ruimte. Dit biedt momenteel geen ondersteuning voor [Cross-resource query's](../log-query/cross-workspace-query.md) om gegevens op te halen uit Application Insights.
+> Tegels in weergaven zijn gebaseerd op [logboekquery's](../log-query/log-query-overview.md) in uw werkruimte Log Analytics. Ze ondersteunen momenteel geen [kruisbronquery's](../log-query/cross-workspace-query.md) om gegevens uit Application Insights op te halen.
 
-## <a name="number-tile"></a>Nummer tegel
-Op de tegel **getal** wordt zowel het aantal records uit een logboek query als een label weer gegeven.
+## <a name="number-tile"></a>Tegel Getal
+Op de tegel **Getal** wordt zowel het aantal records van een logboekquery als een label weergegeven.
 
-![Nummer tegel](media/view-designer-tiles/tile-number.png)
+![Tegel Getal](media/view-designer-tiles/tile-number.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
 | **Tegel** | |
-| Labels |De tekst die wordt weer gegeven onder de waarde. |
-| Query's uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weer gegeven. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
+| Legenda |De tekst die onder de waarde wordt weergegeven. |
+| Query’s uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weergegeven. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
 
 
-## <a name="two-numbers-tile"></a>Tegel met twee getallen
-Deze tegel toont het aantal records uit twee verschillende logboek query's en een label voor elke record.
+## <a name="two-numbers-tile"></a>Tegel Twee getallen
+Met deze tegel wordt het aantal records van twee verschillende logboekquery's en een label voor elk weergegeven.
 
-![Tegel met twee getallen](media/view-designer-tiles/tile-two-numbers.png)
+![Tegel Twee getallen](media/view-designer-tiles/tile-two-numbers.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
 | **Eerste tegel** | |
-| Labels |De tekst die wordt weer gegeven onder de waarde. |
-| Query's uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weer gegeven. |
+| Legenda |De tekst die onder de waarde wordt weergegeven. |
+| Query’s uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weergegeven. |
 | **Tweede tegel** | |
-| Labels |De tekst die wordt weer gegeven onder de waarde. |
-| Query's uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weer gegeven. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
+| Legenda |De tekst die onder de waarde wordt weergegeven. |
+| Query’s uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weergegeven. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
 
 
-## <a name="donut-tile"></a>Donut tegel
-De **ring** tegel geeft één getal weer dat een kolom waarde in een logboek query samenvatten. In de ring worden de resultaten van de bovenste drie records grafisch weer gegeven.
+## <a name="donut-tile"></a>Donuttegel
+De **tegel Donut** geeft één getal weer dat een waardekolom in een logboekquery samenvat. De donut geeft op grafische plaats de resultaten van de top drie records weer.
 
-![Donut tegel](media/view-designer-tiles/tile-donut.png)
-
-| Instelling | Beschrijving |
-|:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
-| **Ring** | |
-| Query's uitvoeren |De query die wordt uitgevoerd voor de ring. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. |
-| **Ring** |**> Center** |
-| Tekst |De tekst die wordt weer gegeven onder de waarde in de ring. |
-| Bewerking |De bewerking die wordt uitgevoerd voor de eigenschap Value om deze als één waarde samen te vatten.<ul><li>Sum: Voeg de waarden van alle records toe met de waarde van de eigenschap.</li><li>Percentage: percentage van de opgetelde waarden van records met de eigenschaps waarde vergeleken met de opgetelde waarden van alle records.</li></ul> |
-| Resultaat waarden die worden gebruikt in de middelste bewerking |Selecteer desgewenst het plus teken (+) om een of meer waarden toe te voegen. De resultaten van de query zijn beperkt tot records met de eigenschaps waarden die u opgeeft. Als er geen waarden worden toegevoegd, worden alle records opgenomen in de query. |
-| **Ring** |**> Extra opties** |
-| Kleuren |De kleur die wordt weer gegeven voor elk van de drie eigenschappen top. Gebruik *geavanceerde kleur toewijzing*om alternatieve kleuren voor specifieke eigenschaps waarden op te geven. |
-| Geavanceerde kleur toewijzing |Hiermee wordt een kleur weer gegeven die specifieke eigenschaps waarden vertegenwoordigt. Als de waarde die u opgeeft in de bovenste drie is, wordt de alternatieve kleur weer gegeven in plaats van de standaard kleur. Als de eigenschap zich niet in de bovenste drie bevindt, wordt de kleur niet weer gegeven. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
-
-
-## <a name="line-chart-tile"></a>Tegel lijn diagram
-Deze tegel is een lijn diagram dat gedurende een bepaalde periode meerdere reeksen uit een logboek query weergeeft. 
-
-![Tegel met lijn diagrammen en bijschriften](media/view-designer-tiles/tile-line-chart.png)
+![Donuttegel](media/view-designer-tiles/tile-donut.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
-| **Lijn diagram** | |
-| Query's uitvoeren |De query die wordt uitgevoerd voor het lijn diagram. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. Als de query het gereserveerde woord *interval* gebruikt, gebruikt de x-as dit tijds interval. Als de query geen gebruik maakt van het *interval* sleutelwoord, gebruikt de x-as uur intervallen. |
-| **Lijn diagram** |**> Y-as** |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
+| **Ringdiagram** | |
+| Query’s uitvoeren |De query die wordt uitgevoerd voor de donut. De eerste eigenschap is een tekstwaarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt gewoonlijk het *zoekwoord meten* om de resultaten samen te vatten. |
+| **Ringdiagram** |**> Centrum** |
+| Tekst |De tekst die wordt weergegeven onder de waarde in de donut. |
+| Bewerking |De bewerking die wordt uitgevoerd op de eigenschap value om deze samen te vatten als één waarde.<ul><li>Som: Voeg de waarden van alle records toe aan de eigenschapswaarde.</li><li>Percentage: Percentage van de samengevatte waarden uit records met de eigenschapswaarde in vergelijking met de samengevatte waarden van alle records.</li></ul> |
+| Resultaatwaarden die worden gebruikt in de centerbewerking |Selecteer optioneel het plusteken (+) om een of meer waarden toe te voegen. De resultaten van de query zijn beperkt tot records met de eigenschapswaarden die u opgeeft. Als er geen waarden worden toegevoegd, worden alle records in de query opgenomen. |
+| **Ringdiagram** |**> Extra opties** |
+| Kleuren |De kleur die wordt weergegeven voor elk van de drie bovenste eigenschappen. Als u alternatieve kleuren voor specifieke eigenschapswaarden wilt opgeven, gebruikt u *Geavanceerde kleurtoewijzing*. |
+| Geavanceerde kleurtoewijzing |Hiermee geeft u een kleur weer die specifieke eigenschapswaarden vertegenwoordigt. Als de opgegeven waarde in de top drie staat, wordt de alternatieve kleur weergegeven in plaats van de standaardkleur. Als de eigenschap niet in de top drie staat, wordt de kleur niet weergegeven. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
+
+
+## <a name="line-chart-tile"></a>Lijndiagramtegel
+Deze tegel is een lijndiagram dat meerdere reeksen uit een logboekquery in de loop van de tijd weergeeft. 
+
+![Lijndiagram en uitroepquet](media/view-designer-tiles/tile-line-chart.png)
+
+| Instelling | Beschrijving |
+|:--- |:--- |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
+| **Lijndiagram** | |
+| Query’s uitvoeren |De query die wordt uitgevoerd voor het lijndiagram. De eerste eigenschap is een tekstwaarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt gewoonlijk het *zoekwoord meten* om de resultaten samen te vatten. Als de query het *intervaltrefwoord* gebruikt, wordt in de x-as dit tijdsinterval gebruikt. Als de query het *intervaltrefwoord* niet gebruikt, gebruikt de x-as uurintervallen. |
+| **Lijndiagram** |**> Y-as** |
 | Logaritmische schaal gebruiken |Selecteer deze koppeling om een logaritmische schaal voor de y-as te gebruiken. |
-| Eenheden |Geef de eenheden op voor de waarden die door de query worden geretourneerd. Deze informatie wordt gebruikt om labels in de grafiek weer te geven die de waardetypen en optioneel voor het converteren van de waarden aangeven. Het **eenheids type** specificeert de categorie van de eenheid en definieert de huidige waarden van het **type eenheid** die beschikbaar zijn. Als u een waarde selecteert in **converteren naar** , worden de numerieke waarden geconverteerd van het **huidige eenheids** type naar het type **converteren naar** . |
-| Aangepast label |De tekst die wordt weer gegeven voor de y-as naast het label voor het *eenheids* type. Als er geen label is opgegeven, wordt alleen het *eenheids* type weer gegeven. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
+| Eenheden |Geef de eenheden op voor de waarden die door de query worden geretourneerd. Deze informatie wordt gebruikt om labels in de grafiek weer te geven die de waardetypen aangeven en optioneel voor het converteren van de waarden. Het **eenheidstype** geeft de categorie van de eenheid op en definieert de huidige **eenheidstypewaarden** die beschikbaar zijn. Als u een waarde selecteert in **Converteren naar,** worden de numerieke waarden geconverteerd van het type **Huidige eenheid** naar het type **Converteren naar** tekst. |
+| Aangepast label |De tekst die wordt weergegeven voor de y-as naast het label voor het *type Eenheid.* Als er geen label is opgegeven, wordt alleen het type *Eenheid* weergegeven. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
 
 
-## <a name="line-chart-and-callout-tile"></a>Tegel met lijn diagrammen en bijschriften
-Deze tegel heeft een lijn diagram dat meerdere reeksen uit een logboek query in de loop van de tijd en een toelichting met een samenvatte waarde weergeeft. 
+## <a name="line-chart-and-callout-tile"></a>Lijndiagram en uitroepquet
+Deze tegel heeft zowel een lijndiagram dat meerdere reeksen uit een logboekquery in de loop van de tijd weergeeft als een uitroep met een samengevatte waarde. 
 
-![Tegel met lijn diagrammen en bijschriften](media/view-designer-tiles/tile-line-chart-callout.png)
+![Lijndiagram en uitroepquet](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
-| **Lijn diagram** | |
-| Query's uitvoeren |De query die wordt uitgevoerd voor het lijn diagram. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. Als de query het gereserveerde woord *interval* gebruikt, gebruikt de x-as dit tijds interval. Als de query geen gebruik maakt van het *interval* sleutelwoord, gebruikt de x-as uur intervallen. |
-| **Lijn diagram** |**> Bijschrift** |
-| Titel van bijschrift | De tekst die boven de waarde van de toelichting wordt weer gegeven. |
-| Reeks naam |De waarde van de reeks eigenschap die moet worden gebruikt als de waarde van de toelichting. Als er geen reeks wordt gegeven, worden alle records uit de query gebruikt. |
-| Bewerking |De bewerking die wordt uitgevoerd voor de eigenschap Value om deze samen te vatten als één waarde voor de toelichting.<ul><li>Gemiddelde: het gemiddelde van de waarden van alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voor beeld: de waarde van het laatste interval dat is opgenomen in de grafiek.</li><li>Max: de maximum waarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Min: de minimum waarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Sum: de som van de waarden van alle records.</li></ul> |
-| **Lijn diagram** |**> Y-as** |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
+| **Lijndiagram** | |
+| Query’s uitvoeren |De query die wordt uitgevoerd voor het lijndiagram. De eerste eigenschap is een tekstwaarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt gewoonlijk het *zoekwoord meten* om de resultaten samen te vatten. Als de query het *intervaltrefwoord* gebruikt, wordt in de x-as dit tijdsinterval gebruikt. Als de query het *intervaltrefwoord* niet gebruikt, gebruikt de x-as uurintervallen. |
+| **Lijndiagram** |**> Roepout** |
+| Titel van het uitroepuroep | De tekst die boven de afroepwaarde wordt weergegeven. |
+| De naam van de reeks |De waarde van de eigenschap serie die moet worden gebruikt als de afroepwaarde. Als er geen reeks wordt opgegeven, worden alle records uit de query gebruikt. |
+| Bewerking |De bewerking die wordt uitgevoerd op de eigenschap value om deze samen te vatten als één waarde voor het uitroep.<ul><li>Gemiddelde: het gemiddelde van de waarden uit alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voorbeeld: de waarde van het laatste interval dat in de grafiek is opgenomen.</li><li>Max: de maximale waarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Min: De minimumwaarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Som: de som van de waarden uit alle records.</li></ul> |
+| **Lijndiagram** |**> Y-as** |
 | Logaritmische schaal gebruiken |Selecteer deze koppeling om een logaritmische schaal voor de y-as te gebruiken. |
-| Eenheden |Geef de eenheden op voor de waarden die door de query moeten worden geretourneerd. Deze informatie wordt gebruikt om grafieklabels weer te geven die de waardetypen aangeven en, eventueel, om de waarden te converteren. Het *eenheids* type specificeert de categorie van de eenheid en definieert de beschik bare waarden van het *huidige eenheids* type. Als u een waarde selecteert in *converteren naar*, worden de numerieke waarden geconverteerd van het *huidige eenheids* type naar het type *converteren naar* . |
-| Aangepast label |De tekst die wordt weer gegeven voor de y-as naast het label voor het *eenheids* type. Als er geen label is opgegeven, wordt alleen het *eenheids* type weer gegeven. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
+| Eenheden |Geef de eenheden op voor de waarden die door de query moeten worden geretourneerd. Deze informatie wordt gebruikt om grafieklabels weer te geven die de waardetypen aangeven en, optioneel, de waarden om te zetten. Het *type eenheid* geeft de categorie van de eenheid op en definieert de beschikbare *typewaarden huidige eenheid.* Als u een waarde selecteert in *Converteren naar*, worden de numerieke waarden geconverteerd van het type *Huidige eenheid* naar het type *Converteren naar* tekst. |
+| Aangepast label |De tekst die wordt weergegeven voor de y-as naast het label voor het *type Eenheid.* Als er geen label is opgegeven, wordt alleen het type *Eenheid* weergegeven. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
 
 
-## <a name="two-timelines-tile"></a>Tegel twee tijd lijnen
-In de tegel **twee tijd lijnen** worden de resultaten van twee logboek query's in de loop van de tijd weer gegeven als kolom diagrammen. Voor elke reeks wordt een toelichting weer gegeven. 
+## <a name="two-timelines-tile"></a>Tegel Twee tijdlijnen
+De tegel **Twee tijdlijnen** geeft de resultaten van twee logboekquery's in de loop van de tijd weer als kolomdiagrammen. Voor elke serie wordt een uitroep weergegeven. 
 
-![Tegel twee tijd lijnen](media/view-designer-tiles/tile-two-timelines.png)
+![Tegel Twee tijdlijnen](media/view-designer-tiles/tile-two-timelines.png)
 
 | Instelling | Beschrijving |
 |:--- |:--- |
-| Name |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Name |De tekst die boven aan de tegel wordt weergegeven. |
+| Beschrijving |De tekst die wordt weergegeven onder de tegelnaam. |
 | Eerste grafiek | |
-| Labels |De tekst die wordt weer gegeven onder de toelichting voor de eerste reeks. |
+| Legenda |De tekst die wordt weergegeven onder de oproep voor de eerste serie. |
 | Kleur |De kleur die wordt gebruikt voor de kolommen in de eerste reeks. |
-| Grafiek query |De query die wordt uitgevoerd voor de eerste reeks. Het aantal records voor elk tijds interval wordt weer gegeven in de grafiek kolommen. |
-| Bewerking |De bewerking die wordt uitgevoerd voor de eigenschap Value om deze samen te vatten als één waarde voor de toelichting.<ul><li>Gemiddelde: het gemiddelde van de waarden van alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voor beeld: de waarde van het laatste interval dat is opgenomen in de grafiek.</li><li>Max: de maximum waarde van de intervallen die in de grafiek zijn opgenomen.</li></ul> |
+| Grafiekquery |De query die wordt uitgevoerd voor de eerste reeks. Het aantal records over elk tijdsinterval wordt weergegeven door de grafiekkolommen. |
+| Bewerking |De bewerking die wordt uitgevoerd op de eigenschap value om deze samen te vatten als één waarde voor het uitroep.<ul><li>Gemiddelde: het gemiddelde van de waarden uit alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voorbeeld: de waarde van het laatste interval dat in de grafiek is opgenomen.</li><li>Max: de maximale waarde van de intervallen die in de grafiek zijn opgenomen.</li></ul> |
 | **Tweede grafiek** | |
-| Labels |De tekst die wordt weer gegeven onder de toelichting voor de tweede reeks. |
+| Legenda |De tekst die wordt weergegeven onder de oproep voor de tweede reeks. |
 | Kleur |De kleur die wordt gebruikt voor de kolommen in de tweede reeks. |
-| Grafiek query |De query die wordt uitgevoerd voor de tweede reeks. Het aantal records voor elk tijds interval wordt weer gegeven in de grafiek kolommen. |
-| Bewerking |De bewerking die wordt uitgevoerd voor de eigenschap Value om deze samen te vatten als één waarde voor de toelichting.<ul><li>Gemiddelde: het gemiddelde van de waarden van alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voor beeld: de waarde van het laatste interval dat is opgenomen in de grafiek.</li><li>Max: de maximum waarde van de intervallen die in de grafiek zijn opgenomen. |
-| **Gevanceerde** |**Verificatie van de gegevens stroom >** |
-| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevens stroom moet worden ingeschakeld voor de tegel. Deze methode biedt een alternatief bericht als er geen gegevens beschikbaar zijn. Normaal gesp roken gebruikt u de methode om een bericht op te geven tijdens de tijdelijke periode wanneer de weer gave is geïnstalleerd en de gegevens beschikbaar worden. |
-| Query's uitvoeren |De query die wordt uitgevoerd om te bepalen of er gegevens beschikbaar zijn voor de weer gave. Als de query geen resultaten retourneert, wordt een bericht weer gegeven in plaats van de waarde van de hoofd query. |
-| Bericht |Het bericht dat wordt weer gegeven als de query voor verificatie van de gegevens stroom geen gegevens retourneert. Als u geen bericht ontvangt, wordt een status bericht over de *beoordeling* weer gegeven. |
+| Grafiekquery |De query die wordt uitgevoerd voor de tweede reeks. Het aantal records over elk tijdsinterval wordt weergegeven door de grafiekkolommen. |
+| Bewerking |De bewerking die wordt uitgevoerd op de eigenschap value om deze samen te vatten als één waarde voor het uitroep.<ul><li>Gemiddelde: het gemiddelde van de waarden uit alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voorbeeld: de waarde van het laatste interval dat in de grafiek is opgenomen.</li><li>Max: de maximale waarde van de intervallen die in de grafiek zijn opgenomen. |
+| **Geavanceerde** |**> Verificatie van de gegevensstroom** |
+| Ingeschakeld |Selecteer deze koppeling als verificatie van de gegevensstroom moet zijn ingeschakeld voor de tegel. Deze benadering biedt een alternatief bericht als gegevens niet beschikbaar zijn. U gebruikt de aanpak gewoonlijk om een bericht te geven tijdens de tijdelijke periode waarin de weergave is geïnstalleerd en de gegevens beschikbaar komen. |
+| Query’s uitvoeren |De query die wordt uitgevoerd om te bepalen of gegevens beschikbaar zijn voor de weergave. Als de query geen resultaten oplevert, wordt een bericht weergegeven in plaats van de waarde van de hoofdquery. |
+| Bericht |Het bericht dat wordt weergegeven als de verificatiequery voor gegevensstromen geen gegevens retourneert. Als u geen bericht geeft, wordt een statusbericht *uitvoeren* weergegeven. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor de ondersteuning van query's in tegels.
-* [Visualisatie onderdelen](view-designer-parts.md) toevoegen aan uw aangepaste weer gave.
+* Meer informatie over [logboekquery's](../log-query/log-query-overview.md) om de query's in tegels te ondersteunen.
+* [Visualisatieonderdelen](view-designer-parts.md) toevoegen aan uw aangepaste weergave.

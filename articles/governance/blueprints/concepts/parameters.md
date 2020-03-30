@@ -1,83 +1,83 @@
 ---
-title: Gebruik para meters voor het maken van dynamische blauw drukken
-description: Meer informatie over statische en dynamische para meters en hoe u deze kunt gebruiken om veilig en dynamisch blauw drukken te maken.
+title: Parameters gebruiken om dynamische blauwdrukken te maken
+description: Leer meer over statische en dynamische parameters en hoe u deze gebruiken om veilige en dynamische blauwdrukken te maken.
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264711"
 ---
-# <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
+# <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauwdrukken maken door middel van parameters
 
-Een volledig gedefinieerde blauw druk met verschillende artefacten (zoals resource groepen, Resource Manager-sjablonen,-beleid of roltoewijzingen) biedt een snelle en consistente creatie van objecten in Azure. Azure-blauw drukken ondersteunt para meters om flexibel gebruik van deze herbruikbare ontwerp patronen en containers mogelijk te maken. De para meter maakt flexibiliteit, zowel tijdens de definitie als toewijzing, om eigenschappen te wijzigen van de artefacten die door de blauw druk worden geïmplementeerd.
+Een volledig gedefinieerde blauwdruk met verschillende artefacten (zoals resourcegroepen, Resource Manager-sjablonen, beleidsregels of roltoewijzingen) biedt de snelle creatie en consistente creatie van objecten binnen Azure. Azure Blueprints ondersteunt parameters om flexibel gebruik van deze herbruikbare ontwerppatronen en containers mogelijk te maken. De parameter creëert flexibiliteit, zowel tijdens definitie als toewijzing, om eigenschappen te wijzigen op de artefacten die door de blauwdruk worden geïmplementeerd.
 
-Een eenvoudig voor beeld is het artefact van een resource groep. Wanneer een resource groep wordt gemaakt, heeft deze twee vereiste waarden die moeten worden opgegeven: naam en locatie. Als er geen para meters bestaan, definieert u bij het toevoegen van een resource groep aan uw blauw druk de naam en locatie voor elk gebruik van de blauw druk. Deze herhaling zou elk gebruik van de blauw druk kunnen veroorzaken om artefacten in dezelfde resource groep te maken. Resources in die resource groep worden gedupliceerd en veroorzaken een conflict.
+Een eenvoudig voorbeeld is het artefact van de brongroep. Wanneer een resourcegroep wordt gemaakt, heeft deze twee vereiste waarden die moeten worden opgegeven: naam en locatie. Wanneer u een resourcegroep toevoegt aan uw blauwdruk, als er geen parameters bestonden, definieert u die naam en locatie voor elk gebruik van de blauwdruk. Deze herhaling zou ertoe leiden dat elk gebruik van de blauwdruk artefacten in dezelfde brongroep maakt. Resources binnen die resourcegroep worden gedupliceerd en veroorzaken een conflict.
 
 > [!NOTE]
-> Het is geen probleem voor twee verschillende blauw drukken om een resource groep met dezelfde naam te gebruiken.
-> Als er al een resource groep bestaat die is opgenomen in een blauw druk, blijft de blauw druk de gerelateerde artefacten in die resource groep maken. Dit kan een conflict veroorzaken omdat twee resources met dezelfde naam en hetzelfde bron type niet in een abonnement kunnen bestaan.
+> Het is geen probleem voor twee verschillende blauwdrukken om een resourcegroep met dezelfde naam op te nemen.
+> Als er al een resourcegroep in een blauwdruk bestaat, blijft de blauwdruk de gerelateerde artefacten in die resourcegroep maken. Dit kan leiden tot een conflict omdat er geen twee resources met dezelfde naam en resourcetype kunnen bestaan binnen een abonnement.
 
-De oplossing voor dit probleem is para meters. Met blauw drukken kunt u de waarde voor elke eigenschap van het artefact definiëren tijdens toewijzing aan een abonnement. Met de para meter kunt u een blauw druk gebruiken om een resource groep en andere resources binnen één abonnement te maken zonder dat er sprake is van een conflict.
+De oplossing voor dit probleem zijn parameters. Met blauwdrukken u de waarde voor elke eigenschap van het artefact definiëren tijdens de toewijzing aan een abonnement. De parameter maakt het mogelijk om een blauwdruk opnieuw te gebruiken die een resourcegroep en andere bronnen binnen één abonnement maakt zonder conflict.
 
 ## <a name="blueprint-parameters"></a>Blauwdrukparameters
 
-Via de REST API kunnen para meters op de blauw druk zelf worden gemaakt. Deze para meters verschillen van de para meters voor elk van de ondersteunde artefacten. Wanneer een para meter op de blauw druk wordt gemaakt, kan deze worden gebruikt door de artefacten in die blauw druk. Een voor beeld hiervan is het voor voegsel voor de naam van de resource groep. Het artefact kan de para meter blauw drukken gebruiken om een ' grotendeels dynamische ' para meter te maken. Aangezien de para meter ook kan worden gedefinieerd tijdens de toewijzing, biedt dit patroon een consistentie die kan voldoen aan de naamgevings regels. Zie voor stappen [statische para meters instellen-para meter op blauw niveau](#blueprint-level-parameter).
+Via de REST API kunnen parameters worden gemaakt op de blauwdruk zelf. Deze parameters zijn anders dan de parameters op elk van de ondersteunde artefacten. Wanneer een parameter wordt gemaakt op de blauwdruk, kan deze worden gebruikt door de artefacten in die blauwdruk. Een voorbeeld hiervan is het voorvoegsel voor het benoemen van de resourcegroep. Het artefact kan de blauwdrukparameter gebruiken om een "meestal dynamische" parameter te maken. Aangezien de parameter ook tijdens de toewijzing kan worden gedefinieerd, zorgt dit patroon voor een consistentie die kan voldoen aan naamgevingsregels. Zie voor stappen [statische parameters instellen - parameter op blauwdrukniveau](#blueprint-level-parameter).
 
-### <a name="using-securestring-and-secureobject-parameters"></a>SecureString-en secureObject-para meters gebruiken
+### <a name="using-securestring-and-secureobject-parameters"></a>SecureString- en secureObject-parameters gebruiken
 
-Hoewel een resource manager-sjabloon _artefact_ para meters van de typen **secureString** en **SecureObject** ondersteunt, moeten voor Azure-blauw drukken worden verbonden met een Azure Key Vault.
-Deze veiligheids maatregel voor komt de onveilige prak tijken van het opslaan van geheimen samen met de blauw druk en moedigt werk gelegenheid van beveiligde patronen aan. Azure-blauw drukken ondersteunt deze beveiligings maatregel en detecteert de opname van een veilige para meter in een resource manager-sjabloon _artefact_. De service vraagt vervolgens tijdens de toewijzing naar de volgende Key Vault eigenschappen per gedetecteerde beveiligde para meter:
+Terwijl een Resource _artifact_ Manager-sjabloonartefact parameters van de **secureString-** en **secureObject-typen** ondersteunt, vereist Azure Blueprints dat elk van deze typen is verbonden met een Azure Key Vault.
+Deze veiligheidsmaatregel voorkomt de onveilige praktijk van het opslaan van geheimen samen met de Blauwdruk en moedigt de werkgelegenheid van veilige patronen. Azure Blueprints ondersteunt deze beveiligingsmaatregel en detecteert de opname van een beveiligde parameter in een _resourcemanager-sjabloonartefact._ De service vraagt vervolgens tijdens toewijzing naar de volgende Key Vault-eigenschappen per gedetecteerde beveiligde parameter:
 
-- Resource-ID Key Vault
-- Key Vault geheime naam
+- Key Vault-bron-id
+- Geheime naam Key Vault
 - Key Vault geheime versie
 
-Als de blauw druk toewijzing gebruikmaakt van een door het **systeem toegewezen beheerde identiteit**, _moet_ de Key Vault waarnaar wordt verwezen in hetzelfde abonnement bestaan, de definitie van de blauw druk wordt toegewezen aan.
+Als de blauwdruktoewijzing een **door het systeem toegewezen beheerde identiteit**gebruikt, moet de sleutelkluis _waarnaar wordt_ verwezen, bestaan in hetzelfde abonnement waaraan de blauwdrukdefinitie is toegewezen.
 
-Als de blauw druk toewijzing gebruikmaakt van een door de **gebruiker toegewezen beheerde identiteit**, _kan_ de Key Vault waarnaar wordt verwezen, bestaan in een gecentraliseerd abonnement. Voor de beheerde identiteit moeten de juiste rechten worden verleend op de Key Vault voorafgaande aan de toewijzing van de blauw druk.
+Als de blauwdruktoewijzing een **door de gebruiker toegewezen beheerde identiteit**gebruikt, _kan_ de sleutelkluis waarnaar wordt verwezen, bestaan in een gecentraliseerd abonnement. De beheerde identiteit moet de juiste rechten op de Sleutelkluis krijgen voordat de blauwdrukwordt toegewezen.
 
 > [!IMPORTANT]
-> In beide gevallen moet de Key Vault **toegang inschakelen tot Azure Resource Manager voor sjabloon implementatie die** is geconfigureerd op de pagina **toegangs beleid** . Zie [Key Vault-sjabloon implementatie inschakelen](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)voor instructies over het inschakelen van deze functie.
+> In beide gevallen moet de Key Vault toegang tot Azure Resource Manager hebben **voor sjabloonimplementatie** die is geconfigureerd op de pagina **Access-beleid.** Zie [Key Vault - Sjabloonimplementatie inschakelen](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)voor een routebeschrijving over het inschakelen van deze functie.
 
-Zie [Key Vault Overview](../../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
+Zie [Overzicht van Key Vault](../../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
 
-## <a name="parameter-types"></a>Parameter typen
+## <a name="parameter-types"></a>Parametertypen
 
-### <a name="static-parameters"></a>Statische para meters
+### <a name="static-parameters"></a>Statische parameters
 
-Een parameter waarde die in de definitie van een blauw druk is gedefinieerd, wordt een **statische para meter**genoemd, omdat bij elk gebruik van de blauw druk het artefact wordt geïmplementeerd met die statische waarde. In het voor beeld van de resource groep is het niet logisch voor de naam van de resource groep. Dit kan zinvol zijn voor de locatie. Vervolgens wordt bij elke toewijzing van de blauw druk de resource groep gemaakt, ongeacht hoe deze wordt aangeroepen tijdens de toewijzing, op dezelfde locatie. Met deze flexibiliteit kunt u selectief selecteren in wat u definieert als vereist en wat kan worden gewijzigd tijdens de toewijzing.
+Een parameterwaarde die is gedefinieerd in de definitie van een blauwdruk wordt een **statische parameter**genoemd, omdat elk gebruik van de blauwdruk het artefact implementeert met behulp van die statische waarde. In het voorbeeld van de resourcegroep heeft dit geen zin voor de naam van de resourcegroep, maar is het zinvol voor de locatie. Vervolgens maakt elke toewijzing van de blauwdruk de resourcegroep, hoe deze ook wordt genoemd tijdens de toewijzing, op dezelfde locatie. Deze flexibiliteit stelt u in staat om selectief te zijn in wat u definieert als vereist, versus wat kan worden gewijzigd tijdens de toewijzing.
 
-#### <a name="setting-static-parameters-in-the-portal"></a>Statische para meters instellen in de portal
+#### <a name="setting-static-parameters-in-the-portal"></a>Statische parameters instellen in de portal
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. Klik op een bestaande blauw druk en klik vervolgens op **blauw drukken bewerken** of klik op **+ blauw druk maken** en vul de informatie in op het tabblad **basis beginselen** .
+1. Klik op een bestaande blauwdruk en klik vervolgens op **Blauwdruk bewerken** OF klik + **Blueprint maken** en vul de informatie in op het tabblad **Basisbeginselen.**
 
-1. Klik op **volgende: artefacten** of klik op het tabblad **artefacten** .
+1. Klik **op Volgende: Artefacten** of klik op het tabblad **Artefacten.**
 
-1. Artefacten die zijn toegevoegd aan de blauw druk met parameter opties, worden **X van Y-para meters** weer gegeven in de kolom **para meters** . Klik op de rij artefacten om de artefact parameters te bewerken.
+1. Artefacten die aan de blauwdruk zijn toegevoegd en met parameteropties, geven **X van Y-parameters weer die zijn ingevuld** in de kolom **Parameters.** Klik op de artefactrij om de artefactparameters te bewerken.
 
-   ![Blauw druk-para meters voor een definitie van een blauw druk](../media/parameters/parameter-column.png)
+   ![Blauwdrukparameters voor een blauwdrukdefinitie](../media/parameters/parameter-column.png)
 
-1. Op de pagina **artefact bewerken** worden de opties weer gegeven die geschikt zijn voor het artefact waarop is geklikt. Elke para meter op het artefact heeft een titel, een waarde box en een selectie vakje. Stel het selectie vakje in op uitgeschakeld om er een **statische para meter**van te maken. In het onderstaande voor beeld is alleen _locatie_ een **statische para meter** als deze is uitgeschakeld en de _naam van de resource groep_ is ingeschakeld.
+1. Op de pagina **Artefact bewerken** worden waardeopties weergegeven die geschikt zijn voor het artefact waarop is geklikt. Elke parameter op het artefact heeft een titel, een waardevak en een selectievakje. Stel het vak in op onaangevinkt om er een **statische parameter**van te maken. In het onderstaande voorbeeld is alleen _locatie_ een **statische parameter** omdat deze niet is aangevinkt en de naam van _de resourcegroep_ is ingeschakeld.
 
-   ![Statische blauw druk-para meters op een blauw druk artefact](../media/parameters/static-parameter.png)
+   ![Statische parameters voor blauwdruk op een blauwdrukartefact](../media/parameters/static-parameter.png)
 
-#### <a name="setting-static-parameters-from-rest-api"></a>Statische para meters instellen van REST API
+#### <a name="setting-static-parameters-from-rest-api"></a>Statische parameters instellen vanuit REST API
 
 In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die u moet vervangen door uw eigen waarden:
 
 - Vervang `{YourMG}` door de naam van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-##### <a name="blueprint-level-parameter"></a>Para meter op blauw niveau
+##### <a name="blueprint-level-parameter"></a>Parameter Blauwdrukniveau
 
-Wanneer u een blauw druk via REST API maakt, is het mogelijk om blauw drukken- [para meters](#blueprint-parameters)te maken. Gebruik hiervoor de volgende REST API URI en de indeling van de hoofd tekst:
+Bij het maken van een blauwdruk via REST API is het mogelijk om [blauwdrukparameters](#blueprint-parameters)te maken. Gebruik hiervoor de volgende REST API URI- en hoofdindeling:
 
 - REST API-URI
 
@@ -109,8 +109,8 @@ Wanneer u een blauw druk via REST API maakt, is het mogelijk om blauw drukken- [
   }
   ```
 
-Zodra de para meter voor het niveau van de blauw druk is gemaakt, kan deze worden gebruikt voor artefacten die aan die blauw drukken worden toegevoegd.
-In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaakt op de blauw druk en wordt de para meter blauw niveau gebruikt.
+Zodra een parameter op blauwdrukniveau is gemaakt, kan deze worden gebruikt op artefacten die aan die blauwdruk zijn toegevoegd.
+In het volgende voorbeeld VAN REST API wordt een artefact voor roltoewijzing op de blauwdruk gemaakt en wordt de parameter blauwdrukniveau gebruikt.
 
 - REST API-URI
 
@@ -131,11 +131,11 @@ In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaa
   }
   ```
 
-In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met behulp van een waarde van `[parameters('owners')]`. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
+In dit voorbeeld gebruikt de eigenschap **principalIds** de parameter `[parameters('owners')]` **blauwdrukkenniveau** van eigenaren met behulp van een waarde van . Het instellen van een parameter op een artefact met behulp van een parameter op blauwdrukniveau is nog steeds een voorbeeld van een **statische parameter.** De parameter blauwdrukniveau kan niet worden ingesteld tijdens de blauwdruktoewijzing en heeft dezelfde waarde voor elke toewijzing.
 
-##### <a name="artifact-level-parameter"></a>Para meter voor artefact niveau
+##### <a name="artifact-level-parameter"></a>Parameter Artefact-niveau
 
-Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde in plaats van de functie `parameters()`. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
+Het maken van **statische parameters** op een artefact is `parameters()` vergelijkbaar, maar neemt een rechte waarde in plaats van het gebruik van de functie. In het volgende voorbeeld worden twee statische parameters, **tagName** en tagValue , aan elkaar **gelabelt.** De waarde op elk wordt direct opgegeven en maakt geen gebruik van een functieaanroep.
 
 - REST API-URI
 
@@ -165,23 +165,23 @@ Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar
 
 ### <a name="dynamic-parameters"></a>Dynamische parameters
 
-Het tegenovergestelde van een statische para meter is een **dynamische para meter**. Deze para meter is niet gedefinieerd op de blauw druk, maar wordt in plaats daarvan gedefinieerd tijdens elke toewijzing van de blauw druk. In het voor beeld van een resource groep is het gebruik van een **dynamische para meter** zinvol voor de naam van de resource groep. Het biedt een andere naam voor elke toewijzing van de blauw druk. Zie de naslag informatie voor [blauw](../reference/blueprint-functions.md) drukken voor een lijst met functies van blauw drukken.
+Het tegenovergestelde van een statische parameter is een **dynamische parameter**. Deze parameter wordt niet gedefinieerd op de blauwdruk, maar wordt in plaats daarvan gedefinieerd tijdens elke toewijzing van de blauwdruk. In het voorbeeld van de resourcegroep is het gebruik van een **dynamische parameter** zinvol voor de naam van de resourcegroep. Het geeft een andere naam voor elke opdracht van de blauwdruk. Zie de verwijzing [naar blauwdrukfuncties](../reference/blueprint-functions.md) voor een lijst met blauwdrukfuncties.
 
-#### <a name="setting-dynamic-parameters-in-the-portal"></a>Dynamische para meters instellen in de portal
+#### <a name="setting-dynamic-parameters-in-the-portal"></a>Dynamische parameters instellen in de portal
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Selecteer **Blauwdrukdefinities** op de pagina aan de linkerkant.
 
-1. Klik met de rechter muisknop op de blauw druk die u wilt toewijzen. Selecteer **blauw druk toewijzen** of klik op de blauw druk die u wilt toewijzen en klik vervolgens op de knop **blauw** drukken.
+1. Klik met de rechtermuisknop op de blauwdruk die u wilt toewijzen. Selecteer **Blauwdruk toewijzen** OF klik op de blauwdruk die u wilt toewijzen en klik vervolgens op de knop Blauwdruk **toewijzen.**
 
-1. Zoek de sectie **artefact parameters** op de pagina **blauw** drukken. Elk artefact met ten minste één **dynamische para meter** geeft het artefact en de configuratie opties weer. Geef de vereiste waarden voor de para meters op voordat u de blauw druk toewijst. In het onderstaande voor beeld is _name_ een **dynamische para meter** die moet worden gedefinieerd voor het volt ooien van de blauw druk-toewijzing.
+1. Zoek op de pagina **Blauwdruk toewijzen** de sectie **Artefact-parameters.** Elk artefact met ten minste één **dynamische parameter** geeft het artefact en de configuratieopties weer. Geef de vereiste waarden op aan de parameters voordat u de blauwdruk toewijs. In het onderstaande voorbeeld is _Naam_ een **dynamische parameter** die moet worden gedefinieerd om de blauwdruktoewijzing te voltooien.
 
-   ![De dynamische blauw druk-para meter tijdens het toewijzen van blauw drukken](../media/parameters/dynamic-parameter.png)
+   ![Dynamische parameter Blauwdruk tijdens blauwdruktoewijzing](../media/parameters/dynamic-parameter.png)
 
-#### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische para meters instellen van REST API
+#### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische parameters instellen vanuit REST API
 
-Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd in **para meters** met een **\<naam\>** en een sleutel paar **waarde** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
+Het instellen **van dynamische parameters** tijdens de toewijzing gebeurt door de waarde direct in te voeren. In plaats van een functie te gebruiken, zoals [parameters(),](../reference/blueprint-functions.md#parameters)is de opgegeven waarde een geschikte tekenreeks. Artefacten voor een resourcegroep worden gedefinieerd met een sjabloonnaam, **naam**en **locatie-eigenschappen.** Alle andere parameters voor opgenomen artefact worden gedefinieerd onder **parameters** met een ** \<naam\> ** en **waardesleutelpaar.** Als de blauwdruk is geconfigureerd voor een dynamische parameter die niet wordt geleverd tijdens de toewijzing, mislukt de toewijzing.
 
 - REST API-URI
 
@@ -234,9 +234,9 @@ Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de lijst met [blauw](../reference/blueprint-functions.md)drukken-functies.
-- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
-- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](resource-locking.md).
+- Zie de lijst met [blauwdrukfuncties](../reference/blueprint-functions.md).
+- Meer informatie over de [levenscyclus van de blauwdruk](lifecycle.md).
+- Leer de volgorde van de [blauwdrukvolgorde](sequencing-order.md)aan te passen.
+- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](resource-locking.md)
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).
+- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)

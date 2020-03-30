@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop MSIX-app koppelen-Azure
-description: MSIX-app-koppeling instellen voor het virtuele bureau blad van Windows.
+title: Windows Virtual Desktop MSIX-app koppelen - Azure
+description: MSIX-app koppelen instellen voor Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,52 +9,52 @@ ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128314"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
 > [!IMPORTANT]
-> MSIX app attach is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> MSIX app attach is momenteel in openbare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 
-In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeling in een virtueel-bureaublad omgeving van Windows.
+In dit onderwerp u meelopen hoe u MSIX-app-bijlage in een Windows Virtual Desktop-omgeving instellen.
 
 ## <a name="requirements"></a>Vereisten
 
-Voordat u aan de slag gaat, hebt u het volgende nodig om de MSIX-app-koppeling te configureren:
+Voordat u aan de slag gaat, moet u het koppelen van de MSIX-app configureren:
 
-- Toegang tot de Windows Insider-portal voor het verkrijgen van de versie van Windows 10 met ondersteuning voor de MSIX app attach-Api's.
-- Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in virtueel bureau blad van Windows](tenant-setup-azure-active-directory.md)voor meer informatie.
-- Het MSIX-verpakkings programma
-- Een netwerk share in uw Windows-implementatie voor virtueel bureau blad waar het MSIX-pakket wordt opgeslagen
+- Toegang tot de Windows Insider-portal om de versie van Windows 10 te verkrijgen met ondersteuning voor de MSIX-app bevestig-API's.
+- Een goed werkende Windows Virtual Desktop-implementatie. Zie Een [tenant maken in Windows Virtueel bureaublad](tenant-setup-azure-active-directory.md)voor meer informatie.
+- Het MSIX verpakkingsgereedschap
+- Een netwerkaandeel in uw Windows Virtual Desktop-implementatie waarbij het MSIX-pakket wordt opgeslagen
 
-## <a name="get-the-os-image"></a>De installatie kopie van het besturings systeem ophalen
+## <a name="get-the-os-image"></a>De afbeelding van het besturingssysteem weergeven
 
-Eerst moet u de installatie kopie van het besturings systeem ophalen die u voor de MSIX-app gaat gebruiken. De installatie kopie van het besturings systeem ophalen:
+Eerst moet je de OS-afbeelding krijgen die je voor de MSIX-app gebruikt. Ga als u de os-afbeelding bekijken:
 
-1. Open de [Windows Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) en meld u aan.
+1. Open de [Windows Insider-portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) en meld u aan.
 
      >[!NOTE]
-     >U moet lid zijn van het Windows Insider-programma om toegang te krijgen tot de Windows Insider-Portal. Raadpleeg onze [Windows Insider-documentatie](/windows-insider/at-home/)voor meer informatie over het Windows Insider-programma.
+     >U moet lid zijn van het Windows Insider-programma om toegang te krijgen tot de Windows Insider-portal. Bekijk onze [Windows Insider-documentatie](/windows-insider/at-home/)voor meer informatie over het Windows Insider-programma.
 
-2. Schuif omlaag naar de sectie **Select Edition** en selecteer **Windows 10 Insider preview Enter prise (Fast) – Build 19035** of hoger.
+2. Blader omlaag naar de sectie **Editie selecteren** en selecteer **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** of hoger.
 
-3. Selecteer **bevestigen**, selecteer de taal die u wilt gebruiken en selecteer vervolgens opnieuw **bevestigen** .
+3. Selecteer **Bevestigen**, selecteer vervolgens de taal die u wilt gebruiken en selecteer **Opnieuw bevestigen.**
     
      >[!NOTE]
-     >Op het moment is Engels de enige taal die met de functie is getest. U kunt andere talen selecteren, maar deze kunnen niet worden weer gegeven zoals bedoeld.
+     >Op dit moment is Engels de enige taal die is getest met de functie. U andere talen selecteren, maar deze worden mogelijk niet weergegeven zoals bedoeld.
     
-4. Wanneer de download koppeling is gegenereerd, selecteert u de **64-bits downloaden** en slaat u deze op de lokale harde schijf op.
+4. Wanneer de downloadkoppeling wordt gegenereerd, selecteert u de **64-bits download** en slaat u deze op uw lokale harde schijf op.
 
-## <a name="prepare-the-vhd-image-for-azure"></a>De VHD-installatie kopie voorbereiden voor Azure 
+## <a name="prepare-the-vhd-image-for-azure"></a>De VHD-afbeelding voorbereiden op Azure 
 
-Voordat u aan de slag gaat, moet u een installatie kopie van een hoofd-VHD maken. Als u nog geen installatie kopie van de hoofd-VHD hebt gemaakt, gaat u naar voor [bereiding en past u een installatie kopie van een virtuele harde schijf](set-up-customize-master-image.md) aan en volgt u de instructies. 
+Voordat u aan de slag gaat, moet u een master VHD-afbeelding maken. Als u uw master VHD-afbeelding nog niet hebt gemaakt, gaat u naar [Een master VHD-afbeelding voorbereiden en aanpassen](set-up-customize-master-image.md) en de instructies daar volgen. 
 
-Nadat u de installatie kopie van de hoofd-VHD hebt gemaakt, moet u automatische updates voor MSIX app attach-toepassingen uitschakelen. Als u automatische updates wilt uitschakelen, moet u de volgende opdrachten uitvoeren in een opdracht prompt met verhoogde bevoegdheid:
+Nadat u uw hoofdVHD-afbeelding hebt gemaakt, moet u automatische updates voor Toepassingen voor het koppelen van MSIX-apps uitschakelen. Als u automatische updates wilt uitschakelen, moet u de volgende opdrachten uitvoeren in een opdrachtprompt met verhoogde bevoegdheid:
 
 ```cmd
 rem Disable Store auto update:
@@ -74,36 +74,36 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Bereid vervolgens de VM-VHD voor Azure voor en upload de resulterende VHD-schijf naar Azure. Zie [een VHD-master installatie kopie voorbereiden en aanpassen](set-up-customize-master-image.md)voor meer informatie.
+Bereid vervolgens de VM VHD voor Azure voor en upload de resulterende VHD-schijf naar Azure. Zie [Een hoofd VHD-afbeelding voorbereiden en aanpassen](set-up-customize-master-image.md)voor meer informatie.
 
-Nadat u de VHD naar Azure hebt geüpload, maakt u een hostgroep die is gebaseerd op deze nieuwe installatie kopie door de instructies in de [groep een host maken te volgen met behulp van de zelf studie voor Azure Marketplace](create-host-pools-azure-marketplace.md) .
+Zodra u de VHD naar Azure hebt geüpload, maakt u een hostgroep die is gebaseerd op deze nieuwe afbeelding door de instructies in de [groep Een hostgroep maken](create-host-pools-azure-marketplace.md) te volgen met behulp van de zelfstudie Azure Marketplace.
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>De toepassing voorbereiden voor de MSIX-app attach 
+## <a name="prepare-the-application-for-msix-app-attach"></a>De toepassing voorbereiden voor het koppelen van de MSIX-app 
 
-Als u al een MSIX-pakket hebt, gaat u verder met het configureren van een [virtuele bureau blad-infra structuur voor Windows](#configure-windows-virtual-desktop-infrastructure). Als u oudere toepassingen wilt testen, volgt u de instructies in een [MSIX-pakket maken op basis van een installatie programma van een desktop computer op een virtuele machine](/windows/msix/packaging-tool/create-app-package-msi-vm/) om de verouderde toepassing te converteren naar een MSIX-pakket.
+Als u al een MSIX-pakket hebt, gaat u verder [met Windows Virtual Desktop-infrastructuur configureren.](#configure-windows-virtual-desktop-infrastructure) Als u oudere toepassingen wilt testen, volgt u de instructies in [Een MSIX-pakket maken van een desktopinstallatieprogramma op een VM](/windows/msix/packaging-tool/create-app-package-msi-vm/) om de verouderde toepassing om te zetten in een MSIX-pakket.
 
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Een VHD-of VHDX-pakket voor MSIX genereren
+## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Een VHD- of VHDX-pakket genereren voor MSIX
 
-Pakketten bevinden zich in VHD-of VHDX-indeling om de prestaties te optimaliseren. MSIX vereist dat de VHD-of VHDX-pakketten goed werken.
+Pakketten zijn in VHD- of VHDX-formaat om de prestaties te optimaliseren. MSIX vereist dat VHD- of VHDX-pakketten goed werken.
 
-Een VHD-of VHDX-pakket genereren voor MSIX:
+Ga als lid van MSIX naar een VHD- of VHDX-pakket:
 
-1. [Down load het msixmgr-hulp programma](https://aka.ms/msixmgr) en sla de zip-map op in een map in een sessie-host-VM.
+1. [Download het msixmgr-gereedschap](https://aka.ms/msixmgr) en sla de .zip-map op in een map binnen een vm van sessiehost.
 
-2. Pak de map msixmgr. zip.
+2. Rits de msixmgr-map .zip uit.
 
-3. Plaats het bron MSIX-pakket in dezelfde map waarin u het msixmgr-hulp programma hebt uitgepakt.
+3. Zet de bron MSIX pakket in dezelfde map waar je de msixmgr tool uitgepakt.
 
-4. Voer de volgende cmdlet uit in Power shell om een VHD te maken:
+4. Voer de volgende cmdlet uit in PowerShell om een VHD te maken:
 
     ```powershell
     New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
     ```
 
     >[!NOTE]
-    >Zorg ervoor dat de grootte van de VHD groot genoeg is voor de uitgevouwen MSIX. *
+    >Zorg ervoor dat de grootte van VHD groot genoeg is om de uitgebreide MSIX vast te houden.*
 
-5. Voer de volgende cmdlet uit om de zojuist gemaakte VHD te koppelen:
+5. Voer de volgende cmdlet uit om de nieuw gecreëerde VHD te monteren:
 
     ```powershell
     $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
@@ -121,97 +121,97 @@ Een VHD-of VHDX-pakket genereren voor MSIX:
     $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
     ```
 
-8. Voer deze cmdlet uit om de partitie te Format teren:
+8. Voer deze cmdlet uit om de partitie op te maken:
 
     ```powershell
     Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
     ```
 
-9. Maak een bovenliggende map op de gekoppelde VHD. Deze stap is verplicht omdat voor het koppelen van de MSIX-app een bovenliggende map is vereist. U kunt de naam van de bovenliggende map, ongeacht u dat wilt.
+9. Maak een bovenliggende map op de gemonteerde VHD. Deze stap is verplicht omdat de MSIX-app-bijlage een bovenliggende map vereist. U de bovenliggende map een naam geven wat u maar wilt.
 
-### <a name="expand-msix"></a>MSIX uitvouwen
+### <a name="expand-msix"></a>MSIX uitbreiden
 
-Daarna moet u de MSIX-installatie kopie uitbreiden door deze uit te pakken. De MSIX-installatie kopie uitpakken:
+Daarna moet je de MSIX-afbeelding "uitbreiden" door het uit te pakken. Ga als het gaat om het uitpakken van de MSIX-afbeelding:
 
-1. Open een opdracht prompt als beheerder en navigeer naar de map waar u het hulp programma msixmgr hebt gedownload en uitgepakt.
+1. Open een opdrachtprompt als administrator en navigeer naar de map waar u het msixmgr-gereedschap hebt gedownload en uitgepakt.
 
-2. Voer de volgende cmdlet uit om de MSIX uit te pakken naar de VHD die u in de vorige sectie hebt gemaakt en gekoppeld.
+2. Voer de volgende cmdlet uit om de MSIX uit te pakken in de VHD die u in de vorige sectie hebt gemaakt en gemonteerd.
 
     ```powershell
     msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
     ```
 
-    Het volgende bericht moet worden weer gegeven wanneer het uitpakken is voltooid:
+    Het volgende bericht moet worden weergegeven nadat het uitpakken is gedaan:
 
     `Successfully unpacked and applied ACLs for package: <package name>.msix`
 
     >[!NOTE]
-    > Als u pakketten gebruikt van de Microsoft Store voor bedrijven (of onderwijs) in uw netwerk of op apparaten die niet zijn verbonden met internet, moet u de pakket licenties verkrijgen uit de Store en deze installeren om de app uit te voeren. Zie [pakketten offline gebruiken](#use-packages-offline).
+    > Als u pakketten uit de Microsoft Store for Business (of Onderwijs) gebruikt binnen uw netwerk of op apparaten die niet met internet zijn verbonden, moet u de pakketlicenties uit de Store verkrijgen en installeren om de app met succes uit te voeren. Zie [Pakketten offline gebruiken](#use-packages-offline).
 
-3. Ga naar de gekoppelde VHD en open de map app en bevestig dat de inhoud van het pakket aanwezig is.
+3. Navigeer naar de gemonteerde VHD en open de app-map en bevestig dat de inhoud van het pakket aanwezig is.
 
 4. Ontkoppel de VHD.
 
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>De Windows-infra structuur voor virtueel bureau blad configureren
+## <a name="configure-windows-virtual-desktop-infrastructure"></a>Windows Virtual Desktop-infrastructuur configureren
 
-Standaard kan één uitgevouwen MSIX-pakket (de VHD die u hebt gemaakt in de vorige sectie) worden gedeeld tussen meerdere host-Vm's voor hosts wanneer de virtuele harde schijven zijn gekoppeld in de modus alleen-lezen.
+Door het ontwerp kan één MSIX-uitgebreid pakket (de VHD die u in de vorige sectie hebt gemaakt) worden gedeeld tussen meerdere vm's van sessiehost, omdat de VHD's in de alleen-lezenmodus zijn gekoppeld.
 
-Voordat u begint, moet u ervoor zorgen dat uw netwerk share aan de volgende vereisten voldoet:
+Controleer voordat u begint of uw netwerkaandeel aan deze vereisten voldoet:
 
-- De share is met SMB compatibel.
-- De virtuele machines die deel uitmaken van de Session Host-groep hebben NTFS-machtigingen voor de share.
+- Het aandeel is compatibel met het MKB.
+- De VM's die deel uitmaken van de sessiehostgroep hebben NTFS-machtigingen voor het aandeel.
 
-### <a name="set-up-an-msix-app-attach-share"></a>Een koppelings share voor een MSIX-app instellen 
+### <a name="set-up-an-msix-app-attach-share"></a>Een MSIX-app koppelen instellen 
 
-Maak in uw Windows Virtual Desktop-omgeving een netwerk share en verplaats het pakket daar.
+Maak in uw Windows Virtual Desktop-omgeving een netwerkshare en verplaats het pakket daar.
 
 >[!NOTE]
-> De best practice voor het maken van MSIX-netwerk shares is het instellen van de netwerk share met NTFS-machtigingen voor alleen-lezen.
+> De beste praktijk voor het maken van MSIX-netwerkshares is het instellen van het netwerkaandeel met NTFS-alleen-lezen machtigingen.
 
 ## <a name="install-certificates"></a>Certificaten installeren
 
-Als uw app gebruikmaakt van een certificaat dat niet openbaar of zelfondertekend is, kunt u dit als volgt installeren:
+Als uw app een certificaat gebruikt dat niet vertrouwd is of zelf is ondertekend, u het als geen ander installeren:
 
-1. Klik met de rechter muisknop op het pakket en selecteer **Eigenschappen**.
-2. In het venster dat wordt weer gegeven, selecteert u het tabblad **digitale hand tekeningen** . Er mag slechts één item in de lijst staan op het tabblad, zoals wordt weer gegeven in de volgende afbeelding. Selecteer het item dat u wilt markeren en selecteer vervolgens **Details**.
-3. Wanneer het venster Details van digitale hand tekening wordt weer gegeven, selecteert u het tabblad **Algemeen** en selecteert u **certificaat installeren**.
-4. Wanneer het installatie programma wordt geopend, selecteert u **lokale computer** als uw opslag locatie en selecteert u vervolgens **volgende**.
-5. Als het installatie programma u vraagt of u wilt toestaan dat de app wijzigingen in uw apparaat aanbrengt, selecteert u **Ja**.
-6. Selecteer **alle certificaten in het onderstaande archief opslaan**en selecteer vervolgens **Bladeren**.
-7. Wanneer het venster certificaat archief selecteren wordt weer gegeven, selecteert u **vertrouwde personen**en selecteert u **OK**.
-8. Selecteer **Voltooien**.
+1. Klik met de rechtermuisknop op het pakket en selecteer **Eigenschappen**.
+2. Selecteer in het venster dat wordt weergegeven het tabblad **Digitale handtekeningen.** Er mag slechts één item in de lijst op het tabblad staan, zoals in de volgende afbeelding wordt weergegeven. Selecteer dat item om het item te markeren en selecteer **Details**.
+3. Wanneer het venster met gegevens voor digitale handtekeningen wordt weergegeven, selecteert u het tabblad **Algemeen** en selecteert u **Certificaat installeren**.
+4. Wanneer het installatieprogramma wordt geopend, selecteert u **de lokale machine** als opslaglocatie en selecteert u **Volgende**.
+5. Als het installatieprogramma u vraagt of u de app wilt toestaan wijzigingen aan te brengen in uw apparaat, selecteert u **Ja**.
+6. Selecteer **Alle certificaten plaatsen in het volgende archief**en selecteer **Bladeren**.
+7. Wanneer het venster voor het geselecteerde certificaatopslag wordt weergegeven, selecteert u **Vertrouwde personen**en selecteert u **OK**.
+8. Selecteer **Finish**.
 
-## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Power shell-scripts voorbereiden voor MSIX-app attach
+## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-scripts voorbereiden voor het koppelen van de MSIX-app
 
-Het koppelen van de MSIX-app heeft vier afzonderlijke fasen die in de volgende volg orde moeten worden uitgevoerd:
+MSIX app attach heeft vier verschillende fasen die in de volgende volgorde moeten worden uitgevoerd:
 
 1. Fase
 2. Registreren
-3. Registratie
+3. Uitschrijven
 4. Destage
 
-Elke fase maakt een Power shell-script. Voorbeeld scripts voor elke fase zijn [hier](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)beschikbaar.
+Elke fase maakt een PowerShell-script. Voorbeeldscripts voor elke fase zijn [hier](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)beschikbaar.
 
-### <a name="stage-the-powershell-script"></a>Het Power shell-script faseren
+### <a name="stage-the-powershell-script"></a>Het PowerShell-script fase
 
-Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-GUID van het volume in de VHD hebt. De volume-GUID ophalen:
+Voordat u de PowerShell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-GUID van het volume in de VHD hebt. Ga als u op het volume GUID:
 
-1.  Open de netwerk share waar de VHD zich bevindt in de virtuele machine waarop u het script wilt uitvoeren.
+1.  Open het netwerkdeel waar de VHD zich in de VM bevindt, waar u het script uitvoert.
 
-2.  Klik met de rechter muisknop op de VHD en selecteer **koppelen**. Hiermee wordt de VHD gekoppeld aan een stationsletter.
+2.  Klik met de rechtermuisknop op de VHD en selecteer **Monteren**. Dit zal de VHD monteren op een drive letter.
 
-3.  Nadat u de VHD hebt gekoppeld, wordt het venster **bestanden Verkenner** geopend. De bovenliggende map vastleggen en de **$parentFolder** variabele bijwerken
+3.  Nadat u de VHD hebt gemonteerd, wordt het venster **Verkenner** geopend. De bovenliggende map vastleggen en de **$parentFolder** variabele bijwerken
 
     >[!NOTE]
-    >Als u geen bovenliggende map ziet, betekent dit dat de MSIX niet goed is uitgevouwen. Voer de vorige sectie opnieuw uit en probeer het opnieuw.
+    >Als u geen bovenliggende map ziet, betekent dit dat de MSIX niet goed is uitgebreid. Doe de vorige sectie opnieuw en probeer het opnieuw.
 
-4.  Open de bovenliggende map. Als het pakket correct is uitgevouwen, ziet u een map met dezelfde naam als het Pack. Werk de **$packageName** variabele bij zodat deze overeenkomt met de naam van deze map.
+4.  Open de bovenliggende map. Als deze correct is uitgevouwen, ziet u een map met dezelfde naam als het pakket. Werk de **$packageName** variabele bij om de naam van deze map te evenaren.
 
     Bijvoorbeeld `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Open een opdracht prompt en voer **mountvol**in. Met deze opdracht wordt een lijst met volumes en de bijbehorende GUID'S weer gegeven. Kopieer de GUID van het volume waar de stationsletter overeenkomt met het station waarnaar u uw VHD hebt gekoppeld in stap 2.
+5.  Open een opdrachtprompt en voer **mountvol in**. Met deze opdracht wordt een lijst met volumes en hun GUID's weergegeven. Kopieer de GUID van het volume waar de drive letter overeenkomt met het station waarop u uw VHD hebt gemonteerd in stap 2.
 
-    Bijvoorbeeld, in dit voor beeld van de uitvoer van de opdracht mountvol als u uw VHD hebt gekoppeld aan station C, wilt u de bovenstaande waarde kopiëren `C:\`:
+    In dit voorbeeld uitvoer bijvoorbeeld voor de opdracht mountvol, als u uw VHD op Station `C:\`C hebt gemonteerd, wilt u de bovenstaande waarde kopiëren:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -230,7 +230,7 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
 6.  Werk de **$volumeGuid** variabele bij met de volume-GUID die u zojuist hebt gekopieerd.
 
-7. Open een Power shell-prompt voor beheerders en werk het volgende Power shell-script bij met de variabelen die van toepassing zijn op uw omgeving.
+7. Open een PowerShell-prompt voor beheerders en werk het volgende PowerShell-script bij met de variabelen die van toepassing zijn op uw omgeving.
 
     ```powershell
     #MSIX app attach staging sample
@@ -321,9 +321,9 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
     #endregion
     ```
 
-### <a name="register-powershell-script"></a>Power shell-script registreren
+### <a name="register-powershell-script"></a>PowerShell-script registreren
 
-Als u het REGI ster wilt uitvoeren, voert u de volgende Power shell-cmdlets uit met de waarden voor de tijdelijke aanduiding die zijn vervangen door instellingen die van toepassing zijn op uw omgeving.
+Als u het registerscript wilt uitvoeren, voert u de volgende PowerShell-cmdlets uit met de tijdelijke aanduidingswaarden die zijn vervangen door waarden die van toepassing zijn op uw omgeving.
 
 ```powershell
 #MSIX app attach registration sample
@@ -343,9 +343,9 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #endregion
 ```
 
-### <a name="deregister-powershell-script"></a>Het Power shell-script deregistreren
+### <a name="deregister-powershell-script"></a>PowerShell-script uitschrijven
 
-Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen.
+Vervang voor dit script de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u test.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -363,9 +363,9 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #endregion
 ```
 
-### <a name="destage-powershell-script"></a>Power shell-script destage
+### <a name="destage-powershell-script"></a>PowerShell-script destage
 
-Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen.
+Vervang voor dit script de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u test.
 
 ```powershell
 #MSIX app attach de staging sample
@@ -389,30 +389,30 @@ rmdir $packageName -Force -Verbose
 #endregion
 ```
 
-## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Simulatie scripts instellen voor de MSIX-agent voor het koppelen van apps
+## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Simulatiescripts instellen voor de MSIX-app attach agent
 
-Nadat u de scripts hebt gemaakt, kunnen gebruikers deze hand matig uitvoeren of instellen dat ze automatisch worden uitgevoerd als opstart-, aanmeldings-, afmeldings-en afsluit scripts. Zie [opstart-, afsluit-, aanmeldings-en afmeldings scripts gebruiken in Groepsbeleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)voor meer informatie over deze soorten scripts.
+Nadat u de scripts hebt gemaakt, kunnen gebruikers ze handmatig uitvoeren of instellen dat ze automatisch worden uitgevoerd als scripts opstarten, aanmelden, afmelden en afsluiten. Zie [Opstart-, afsluit-, aanmeldings- en afmeldscripts gebruiken in Groepsbeleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)voor meer informatie over dit soort scripts .
 
-Met elk van deze automatische scripts wordt één fase van de app gekoppelde scripts uitgevoerd:
+Elk van deze automatische scripts voert een fase van de app attach scripts:
 
-- Het opstart script voert het fase script uit.
-- Het aanmeldings script voert het registratie script uit.
-- Het afmeldings script voert het registratie script uit.
-- Het afsluit script voert het destage-script uit.
+- In het opstartscript wordt het werkscript uitgevoerd.
+- In het aanmeldingsscript wordt het registerscript uitgevoerd.
+- In het afmeldscript wordt het uitschrijfscript uitgevoerd.
+- In het afsluitscript wordt het script van destage uitgevoerd.
 
 ## <a name="use-packages-offline"></a>Pakketten offline gebruiken
 
-Als u pakketten gebruikt van de [Microsoft Store voor bedrijven](https://businessstore.microsoft.com/) of de [Microsoft Store voor onderwijs](https://educationstore.microsoft.com/) binnen uw netwerk of op apparaten die niet zijn verbonden met internet, moet u de pakket licenties van de Microsoft Store ophalen en op uw apparaat installeren om de app te kunnen uitvoeren. Als uw apparaat online is en verbinding kan maken met de Microsoft Store voor bedrijven, moeten de vereiste licenties automatisch worden gedownload, maar als u offline bent, moet u de licenties hand matig instellen. 
+Als u pakketten uit de [Microsoft Store voor Bedrijven](https://businessstore.microsoft.com/) of de Microsoft Store for [Education](https://educationstore.microsoft.com/) binnen uw netwerk of op apparaten die niet met internet zijn verbonden, gebruikt, moet u de pakketlicenties uit de Microsoft Store ophalen en installeren op uw apparaat om de app uit te voeren. Als uw apparaat online is en verbinding kan maken met de Microsoft Store voor Bedrijven, moeten de vereiste licenties automatisch worden gedownload, maar als u offline bent, moet u de licenties handmatig instellen. 
 
-Als u de licentie bestanden wilt installeren, moet u een Power shell-script gebruiken dat de MDM_EnterpriseModernAppManagement_StoreLicenses02_01-klasse aanroept in de WMI Bridge-provider.  
+Als u de licentiebestanden wilt installeren, moet u een PowerShell-script gebruiken dat de MDM_EnterpriseModernAppManagement_StoreLicenses02_01 klasse aanroept in de WMI Bridge Provider.  
 
-U kunt als volgt de licenties instellen voor offline gebruik: 
+U de licenties als een van de redenen instellen voor offline gebruik: 
 
-1. Down load het app-pakket, de licenties en de vereiste Frameworks van de Microsoft Store voor bedrijven. U hebt zowel de versleutelde als niet-versleutelde licentie bestanden nodig. Gedetailleerde Download instructies vindt u [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
-2. Werk de volgende variabelen bij in het script voor stap 3:
-      1. `$contentID` is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
-      2. `$licenseBlob` is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze. 
-3. Voer het volgende script uit vanuit een Power shell-prompt voor beheerders. Er is een goede plaats om de licentie-installatie uit te voeren aan het einde van het [faserings script](#stage-the-powershell-script) dat ook moet worden uitgevoerd vanaf een beheerders prompt.
+1. Download het app-pakket, licenties en vereiste frameworks uit de Microsoft Store voor Bedrijven. Je hebt zowel de gecodeerde als ongecodeerde licentiebestanden nodig. Gedetailleerde download instructies zijn [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)te vinden.
+2. Werk de volgende variabelen in het script bij voor stap 3:
+      1. `$contentID`is de ContentID-waarde van het ongecodeerde licentiebestand (.xml). U het licentiebestand openen in een teksteditor naar keuze.
+      2. `$licenseBlob`is de volledige tekenreeks voor de licentieblob in het gecodeerde licentiebestand (.bin). U het gecodeerde licentiebestand openen in een teksteditor naar keuze. 
+3. Voer het volgende script uit vanuit een PowerShell-prompt voor beheerders. Een goede plek om licentie-installatie uit te voeren is aan het einde van de [faseringsscript](#stage-the-powershell-script) dat ook moet worden uitgevoerd vanaf een admin prompt.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -450,6 +450,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze functie wordt momenteel niet ondersteund, maar u kunt vragen stellen aan de community op het [virtuele bureau blad van Windows TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Deze functie wordt momenteel niet ondersteund, maar u vragen stellen aan de community op de [Windows Virtual Desktop TechCommunity.](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 
-U kunt ook feedback geven voor het virtuele bureau blad van Windows op de [Windows Virtual Desktop-feedback-hub](https://aka.ms/MRSFeedbackHub), of feedback geven voor de MSIX-app en het hulp programma voor het inpakken van de [MSIX-app](https://aka.ms/msixappattachfeedback) en de [MSIX](https://aka.ms/msixtoolfeedback).
+U ook feedback geven voor Windows Virtual Desktop op de [Feedbackhub van Windows Virtual Desktop](https://aka.ms/MRSFeedbackHub)of feedback geven voor de MSIX-app en -verpakkingstool op de Feedbackhub van de [MSIX-app en](https://aka.ms/msixappattachfeedback) de [feedbackhub voor msix-verpakkingen.](https://aka.ms/msixtoolfeedback)

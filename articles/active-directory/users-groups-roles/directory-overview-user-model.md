@@ -1,5 +1,5 @@
 ---
-title: Overzicht van gebruikers, groepen, licenties en functies-Azure AD | Microsoft Docs
+title: Overzicht van gebruikers, groepen, licenties en rollen - Azure AD | Microsoft Documenten
 description: De relatie tussen gebruikers en toegewezen licenties, beheerdersrollen, groepslidmaatschap in Azure Active Directory
 keywords: ''
 author: curtand
@@ -15,10 +15,10 @@ services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77046327"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Gebruikers, groepen, licentieverlening en rollen voor grote organisaties
@@ -31,7 +31,7 @@ In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belan
 
 ## <a name="assign-users-to-groups"></a>Gebruikers toewijzen aan groepen
 
-U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U kunt groepen gebruiken om alle beheerders rollen toe te wijzen, met uitzonde ring van globale beheerder in azure AD, of u kunt toegang verlenen tot externe bronnen, zoals SaaS-toepassingen of share point-sites.
+U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U groepen gebruiken om alle beheerdersrollen toe te wijzen, behalve globale beheerder in Azure AD, of u toegang verlenen tot externe bronnen, zoals SaaS-toepassingen of SharePoint-sites.
 
 Voor meer flexibiliteit en om de hoeveelheid werk voor het beheer van groepslidmaatschappen te verminderen, kunt u [dynamische groepen](groups-create-rule.md) in Azure AD gebruiken om groepslidmaatschappen automatisch uit te breiden of te beperken. U hebt een Azure AD Premium P1-licentie nodig voor elke unieke gebruiker die lid is van een of meer dynamische groepen.
 
@@ -52,7 +52,7 @@ Veel grote organisaties willen opties om hun gebruikers voldoende bevoegdheden t
 
  Rolnaam | Overzicht van bevoegdheden
  --------- | -------------------
- **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Toepassings beheerders kunnen beleids regels voor voorwaardelijke toegang en apparaten weer geven, maar niet beheren.
+ **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Toepassingsbeheerders kunnen beleid en apparaten voor voorwaardelijke toegang weergeven, maar deze niet beheren.
  **Beheerder van de cloudtoepassing** | Kan bedrijfstoepassingen en bedrijfsapp-registraties toevoegen en beheren. Deze rol heeft alle bevoegdheden van de toepassingsbeheerder behalve dat een gebruiker met deze rol geen instellingen van de toepassingsproxy kan beheren.
 **Toepassingsontwikkelaar** | Kan toepassingsregistraties toevoegen en beheren maar kan geen bedrijfstoepassingen beheren of de proxyinstellingen van een toepassing configureren.
 

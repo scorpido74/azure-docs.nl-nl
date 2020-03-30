@@ -1,7 +1,7 @@
 ---
 title: Python-scripts uitvoeren
 titleSuffix: ML Studio (classic) - Azure
-description: Meer informatie over het gebruik van de script module python uitvoeren voor het gebruik van python-code in Machine Learning Studio (klassiek) experimenten en webservices.
+description: Meer informatie over het gebruik van de Python Script-module uitvoeren om Python-code te gebruiken in Machine Learning Studio (klassieke) experimenten en webservices.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,93 +11,93 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218087"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning-scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Python is een waardevol hulp middel in de hulp middelen van veel gegevens wetenschappers. Deze wordt gebruikt in elke fase van typische machine learning werk stromen, inclusief gegevens exploratie, extractie van functies, model training en-implementatie.
+Python is een waardevol hulpmiddel in de gereedschapskist van veel gegevenswetenschappers. Het wordt gebruikt in elke fase van typische machine learning-workflows, waaronder gegevensverkenning, functieextractie, modeltraining en -validatie en implementatie.
 
-In dit artikel wordt beschreven hoe u de script module python uitvoeren kunt gebruiken voor het gebruik van python-code in uw Azure Machine Learning Studio (klassieke) experimenten en Web Services.
+In dit artikel wordt beschreven hoe u de Python Script-module uitvoeren gebruiken om Python-code te gebruiken in uw Azure Machine Learning Studio (klassieke) experimenten en webservices.
 
-## <a name="using-the-execute-python-script-module"></a>De script module python uitvoeren gebruiken
+## <a name="using-the-execute-python-script-module"></a>De module Python Script uitvoeren gebruiken
 
-De primaire interface naar python in Studio (klassiek) is via de [script][execute-python-script] module voor het uitvoeren van python. Het accepteert Maxi maal drie invoer en produceert Maxi maal twee uitvoer, vergelijkbaar met de script module voor het [uitvoeren van R][execute-r-script] . Python-code wordt ingevoerd in het vak para meter via een benoemde ingangs punt functie met de naam `azureml_main`.
+De primaire interface naar Python in Studio (klassiek) is via de [Execute Python Script][execute-python-script] module. Het accepteert maximaal drie ingangen en produceert maximaal twee uitgangen, vergelijkbaar met de [Script-module uitvoeren.][execute-r-script] Python-code wordt ingevoerd in het parametervak via `azureml_main`een speciaal genoemde entry-point-functie genaamd .
 
-![Python-script module uitvoeren](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
+![Python Script-module uitvoeren](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
-![Voor beeld van python-code in het vak module parameter](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
+![Voorbeeld python-code in parametervak module](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
-### <a name="input-parameters"></a>Invoer parameters
+### <a name="input-parameters"></a>Invoerparameters
 
-Invoer voor de python-module worden weer gegeven als Panda DataFrames. De functie `azureml_main` accepteert Maxi maal twee optionele Panda DataFrames als para meters.
+Ingangen naar de Python-module worden weergegeven als Pandas DataFrames. De `azureml_main` functie accepteert maximaal twee optionele Pandas DataFrames als parameters.
 
-De toewijzing tussen invoer poorten en functie parameters is positioneel:
+De toewijzing tussen invoerpoorten en functieparameters is positioneel:
 
-- De eerste verbonden invoer poort wordt toegewezen aan de eerste para meter van de functie.
-- De tweede invoer (indien verbonden) wordt toegewezen aan de tweede para meter van de functie.
-- De derde invoer wordt gebruikt voor het [importeren van aanvullende python-modules](#import-modules).
+- De eerste verbonden invoerpoort wordt toegewezen aan de eerste parameter van de functie.
+- De tweede invoer (indien verbonden) wordt toegewezen aan de tweede parameter van de functie.
+- De derde invoer wordt gebruikt om [extra Python-modules](#import-modules)te importeren.
 
-Meer gedetailleerde semantiek van de manier waarop de invoer poorten worden toegewezen aan para meters van de functie `azureml_main`, worden hieronder weer gegeven.
+Meer gedetailleerde semantiek van hoe de invoerpoorten `azureml_main` worden toegewezen aan parameters van de functie worden hieronder weergegeven.
 
-![Tabel met invoer poort configuraties en resulterende python-hand tekening](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
+![Tabel met invoerpoortconfiguraties en resulterende Python-handtekening](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
-### <a name="output-return-values"></a>Uitvoer retour waarden
+### <a name="output-return-values"></a>Rendementswaarden voor uitvoer
 
-De functie `azureml_main` moet een enkele Panda-data frame retour neren die is verpakt in een python- [reeks](https://docs.python.org/2/c-api/sequence.html) , zoals een tuple-, lijst-of numpy-matrix. Het eerste element van deze reeks wordt geretourneerd naar de eerste uitvoer poort van de module. De tweede uitvoer poort van de module wordt gebruikt voor [Visualisaties](#visualizations) en vereist geen retour waarde. Dit schema wordt hieronder weer gegeven.
+De `azureml_main` functie moet een enkele Panda's DataFrame retourneren die is verpakt in een [Python-reeks,](https://docs.python.org/2/c-api/sequence.html) zoals een tuple-, lijst- of NumPy-array. Het eerste element van deze reeks wordt teruggezet naar de eerste uitvoerpoort van de module. De tweede uitvoerpoort van de module wordt gebruikt voor [visualisaties](#visualizations) en vereist geen retourwaarde. Deze regeling wordt hieronder weergegeven.
 
-![Invoer poorten toewijzen aan para meters en retour waarde naar uitvoer poort](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
+![Invoerpoorten toewijzen aan parameters en retourwaarde naar uitvoerpoort](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
-## <a name="translation-of-input-and-output-data-types"></a>Omzetting van gegevens typen voor invoer en uitvoer
+## <a name="translation-of-input-and-output-data-types"></a>Vertaling van invoer- en uitvoergegevenstypen
 
-Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hiervan worden invoer gegevens sets in Studio (klassiek) geconverteerd naar Panda data frame en worden uitvoer DataFrames weer geconverteerd naar Studio-gegevens sets (klassiek). Tijdens dit conversie proces worden ook de volgende vertalingen uitgevoerd:
+Studio datasets zijn niet hetzelfde als Panda DataFrames. Als gevolg hiervan worden invoergegevenssets in Studio (klassiek) geconverteerd naar Pandas DataFrame en worden uitvoerdataframes teruggezet naar Studio (klassieke) datasets. Tijdens dit conversieproces worden ook de volgende vertalingen uitgevoerd:
 
- **Python-gegevens type** | **Studio-Vertaal procedure** |
+ **Python-gegevenstype** | **Studio vertaalprocedure** |
 | --- | --- |
-| Teken reeksen en cijfers| Vertaald als is |
-| Panda ' N.V.T. ' | Vertaald als ontbrekende waarde |
-| Index vectoren | Niet-ondersteunde |
-| Niet-teken reeks kolom namen | `str` aanroepen voor kolom namen |
-| Dubbele kolom namen | Voeg een numeriek achtervoegsel toe: (1), (2), (3), enzovoort.
+| Tekenreeksen en numerieke gegevens| Vertaald zoals het is |
+| Panda's 'NA' | Vertaald als 'Ontbrekende waarde' |
+| Indexvectoren | Niet ondersteund* |
+| Niet-tekenreekskolomnamen | Oproep `str` aan kolomnamen |
+| Kolomnamen dupliceren | Voeg numeriek achtervoegsel toe: (1), (2), (3), enzovoort.
 
-**alle invoer gegevens frames in de python-functie hebben altijd een 64-bits numerieke index van 0 tot het aantal rijen min 1*
+**Alle invoergegevensframes in de Functie Python hebben altijd een 64-bits numerieke index van 0 tot het aantal rijen min 1*
 
-## <a id="import-modules"></a>Bestaande python-script modules importeren
+## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>Bestaande Python-scriptmodules importeren
 
-De back-end die wordt gebruikt om python uit te voeren, is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte weten schappelijke python-distributie. Het wordt geleverd met dicht bij 200 van de meest voorkomende Python-pakketten die worden gebruikt in gegevens gerichte werk belastingen. Studio (klassiek) biedt momenteel geen ondersteuning voor het gebruik van pakket beheer systemen zoals PIP of Conda voor het installeren en beheren van externe bibliotheken.  Als u meer bibliotheken nodig hebt, moet u het volgende scenario gebruiken als richt lijn.
+De backend die wordt gebruikt om Python uit te voeren is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte wetenschappelijke Python-distributie. Het wordt geleverd met bijna 200 van de meest voorkomende Python-pakketten die worden gebruikt in datacentrische workloads. Studio (klassiek) ondersteunt momenteel geen gebruik van package management systemen zoals Pip of Conda voor het installeren en beheren van externe bibliotheken.  Als u de noodzaak vindt om extra bibliotheken op te nemen, gebruikt u het volgende scenario als leidraad.
 
-Een veelvoorkomend gebruik van cases is het opnemen van bestaande python-scripts in Studio-experimenten (klassiek). De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met de functie voor het `azureml_main`-toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
+Een veelgebruikte use-case is om bestaande Python-scripts op te nemen in Studio (klassieke) experimenten. De [Module Python Script uitvoeren][execute-python-script] accepteert een zip-bestand met Python-modules bij de derde invoerpoort. Het bestand wordt uitgepakt door het uitvoeringskader tijdens runtime en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-tolk. De `azureml_main` entry point-functie kan deze modules vervolgens rechtstreeks importeren. 
 
-Bekijk een voor beeld van het bestand Hello.py dat een eenvoudige ' Hello, World '-functie bevat.
+Als voorbeeld, overweeg het bestand Hello.py met een eenvoudige "Hallo, Wereld" functie.
 
-![Door de gebruiker gedefinieerde functie in het Hello.py-bestand](./media/execute-python-scripts/figure4.png)
+![Door de gebruiker gedefinieerde functie in Hello.py bestand](./media/execute-python-scripts/figure4.png)
 
-Vervolgens maken we een bestand hello. zip dat Hello.py bevat:
+Vervolgens maken we een bestand Hello.zip dat Hello.py bevat:
 
-![Zip-bestand met door de gebruiker gedefinieerde python-code](./media/execute-python-scripts/figure5.png)
+![Zip-bestand met door de gebruiker gedefinieerde Python-code](./media/execute-python-scripts/figure5.png)
 
-Upload het zip-bestand als een gegevensset in Studio (klassiek). Maak en voer vervolgens een experiment uit dat gebruikmaakt van de python-code in het bestand hello. zip door deze te koppelen aan de derde invoer poort van de script module voor het **uitvoeren van python** , zoals weer gegeven in de volgende afbeelding.
+Upload het zip-bestand als gegevensset naar Studio (klassiek). Maak en voer vervolgens een experiment uit dat de Python-code in het Hello.zip-bestand gebruikt door deze te koppelen aan de derde invoerpoort van de **Module Python Script uitvoeren,** zoals in de volgende afbeelding wordt weergegeven.
 
-![Voorbeeld experiment met Hello. zip als invoer voor een python-script module uitvoeren](./media/execute-python-scripts/figure6a.png)
+![Voorbeeldexperiment met Hello.zip als invoer voor een Python Script-module uitvoeren](./media/execute-python-scripts/figure6a.png)
 
-![Door de gebruiker gedefinieerde python-code die is geüpload als een zip-bestand](./media/execute-python-scripts/figure6b.png)
+![Door de gebruiker gedefinieerde Python-code geüpload als zip-bestand](./media/execute-python-scripts/figure6b.png)
 
-In de module-uitvoer ziet u dat het zip-bestand is uitgepakt en dat de functie `print_hello` is uitgevoerd.
+De module-uitvoer geeft aan dat het zip-bestand is onverpakt en dat de functie `print_hello` is uitgevoerd.
 
-![Module-uitvoer met door de gebruiker gedefinieerde functie](./media/execute-python-scripts/figure7.png)
+![Moduleuitvoer met door de gebruiker gedefinieerde functie](./media/execute-python-scripts/figure7.png)
 
-## <a name="accessing-azure-storage-blobs"></a>Toegang tot Azure Storage blobs
+## <a name="accessing-azure-storage-blobs"></a>Toegang tot Azure Storage Blobs
 
-Met de volgende stappen kunt u toegang krijgen tot gegevens die zijn opgeslagen in een Azure Blob Storage-account:
+U hebt met de volgende stappen toegang tot gegevens die zijn opgeslagen in een Azure Blob Storage-account:
 
-1. Down load het [Azure Blob Storage-pakket voor python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) lokaal.
-1. Upload het zip-bestand naar uw studio-werk ruimte (klassiek) als een gegevensset.
-1. Uw BlobService-object maken met `protocol='http'`
+1. Download het [Azure Blob Storage-pakket voor Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) lokaal.
+1. Upload het zip-bestand naar uw Studio (klassieke) werkruimte als een gegevensset.
+1. Uw BlobService-object maken met`protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService
@@ -106,80 +106,80 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. Schakel **beveiligde overdracht** uit die is vereist op het tabblad instellingen van opslag **configuratie**
+1. Veilige overdracht uitschakelen **die vereist is** op het tabblad **Opslagconfiguratie**
 
-![Schakel beveiligde overdracht uit die vereist is voor de Azure Portal](./media/execute-python-scripts/disable-secure-transfer-required.png)
+![Secure-overdracht uitschakelen die vereist is in de Azure-portal](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
-## <a name="operationalizing-python-scripts"></a>Inzet python-scripts
+## <a name="operationalizing-python-scripts"></a>Python-scripts operationaliseren
 
-Alle [script][execute-python-script] modules voor het uitvoeren van python die worden gebruikt in een score experiment, worden aangeroepen wanneer deze worden gepubliceerd als een webservice. In de onderstaande afbeelding ziet u bijvoorbeeld een score experiment met de code voor het evalueren van één python-expressie.
+Alle [Python Script-modules uitvoeren][execute-python-script] die in een scoreexperiment worden gebruikt, worden aangeroepen wanneer ze worden gepubliceerd als een webservice. In de onderstaande afbeelding wordt bijvoorbeeld een scoreexperiment weergegeven dat de code bevat om één Python-expressie te evalueren.
 
-![Studio-werk ruimte voor een webservice](./media/execute-python-scripts/figure3a.png)
+![Studiowerkruimte voor een webservice](./media/execute-python-scripts/figure3a.png)
 
-![Python-Panda-expressie](./media/execute-python-scripts/python-script-with-python-pandas.png)
+![Python Panda's expressie](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
-Een webservice die is gemaakt op basis van dit experiment, onderneemt de volgende acties:
+Een webservice die met dit experiment is gemaakt, neemt de volgende acties op zich:
 
-1. Een python-expressie maken als invoer (als een teken reeks)
-1. De python-expressie verzenden naar de Python-interpreter
-1. Retourneert een tabel die zowel de expressie als het geëvalueerde resultaat bevat.
+1. Een Python-expressie als invoer (als tekenreeks)
+1. De Python-expressie naar de Python-tolk verzenden
+1. Retourneert een tabel met zowel de expressie als het geëvalueerde resultaat.
 
-## <a id="visualizations"></a>Werken met visualisaties
+## <a name="working-with-visualizations"></a><a id="visualizations"></a>Werken met visualisaties
 
-Grafieken die zijn gemaakt met MatplotLib kunnen worden geretourneerd door het [script python uitvoeren][execute-python-script]. Grafieken worden echter niet automatisch omgeleid naar afbeeldingen wanneer u R gebruikt. De gebruiker moet dus expliciet elke wille keurige grafiek opslaan in PNG-bestanden.
+Plots die zijn gemaakt met MatplotLib kunnen worden geretourneerd door het [Python Script uitvoeren.][execute-python-script] Plots worden echter niet automatisch doorgestuurd naar afbeeldingen zoals ze zijn bij het gebruik van R. Dus de gebruiker moet expliciet opslaan van percelen om PNG-bestanden.
 
-Als u installatie kopieën van MatplotLib wilt genereren, moet u de volgende stappen uitvoeren:
+Als u afbeeldingen van MatplotLib wilt genereren, moet u de volgende stappen ondernemen:
 
-1. Schakel de back-end over op AGG in de standaard weer gave op basis van qt.
-1. Maak een nieuw afbeeldings object.
-1. De as ophalen en alle uitstaande grafieken genereren.
-1. Sla de afbeelding op in een PNG-bestand.
+1. Schakel de backend over naar "AGG" van de standaard Qt-gebaseerde renderer.
+1. Een nieuw figuurobject maken.
+1. Haal de as en het genereren van alle percelen in.
+1. Sla de figuur op in een PNG-bestand.
 
-Dit proces wordt geïllustreerd in de volgende afbeeldingen die een spreidings plot matrix maken met behulp van de functie scatter_matrix in Pandas.
+Dit proces wordt geïllustreerd in de volgende afbeeldingen die een scatter plot matrix maken met behulp van de scatter_matrix functie in Panda's.
 
-![Code voor het opslaan van MatplotLib-cijfers in afbeeldingen](./media/execute-python-scripts/figure-v1-8.png)
+![Code om MatplotLib-figuren op te slaan in afbeeldingen](./media/execute-python-scripts/figure-v1-8.png)
 
-![Klik op visualiseren in de script module voor het uitvoeren van een python om de cijfers weer te geven](./media/execute-python-scripts/figure-v2-9a.png)
+![Klik op visualiseren op een Python Script-module uitvoeren om de cijfers weer te geven](./media/execute-python-scripts/figure-v2-9a.png)
 
-![Grafieken visualiseren voor een voor beeld van een experiment met behulp van python-code](./media/execute-python-scripts/figure-v2-9b.png)
+![Plots visualiseren voor een voorbeeldexperiment met Python-code](./media/execute-python-scripts/figure-v2-9b.png)
 
-Het is mogelijk om meerdere cijfers te retour neren door ze op te slaan in verschillende installatie kopieën. Studio (klassiek) runtime haalt alle installatie kopieën op en voegt deze samen voor visualisatie.
+Het is mogelijk om meerdere cijfers terug te sturen door ze op te slaan in verschillende afbeeldingen. Studio (klassieke) runtime pikt alle beelden op en concatenates ze voor visualisatie.
 
-## <a name="advanced-examples"></a>Geavanceerde voor beelden
+## <a name="advanced-examples"></a>Geavanceerde voorbeelden
 
-De Anaconda-omgeving die in Studio (klassiek) is geïnstalleerd, bevat algemene pakketten zoals NumPy, SciPy en scikits-leer. Deze pakketten kunnen effectief worden gebruikt voor de verwerking van gegevens in een machine learning-pijp lijn.
+De Anaconda-omgeving die in Studio (klassiek) is geïnstalleerd, bevat veelvoorkomende pakketten zoals NumPy, SciPy en Scikits-Learn. Deze pakketten kunnen effectief worden gebruikt voor gegevensverwerking in een machine learning-pijplijn.
 
-Het volgende experiment en script illustreren bijvoorbeeld het gebruik van ensemble-kennissen in scikits-Leer hoe u de prioriteits scores van functies voor een gegevensset kunt berekenen. De scores kunnen worden gebruikt om de functie selectie onder Super visie uit te voeren voordat deze in een ander model wordt ingevoerd.
+Het volgende experiment en script illustreren bijvoorbeeld het gebruik van ensembleleerlingen in Scikits-Learn om functiebelangscores voor een gegevensset te berekenen. De scores kunnen worden gebruikt om onder toezicht functieselectie uit te voeren voordat ze in een ander model worden ingevoerd.
 
-Hier volgt de python-functie die wordt gebruikt voor het berekenen van de prioriteits scores en het rangschikken van de functies op basis van de scores:
+Hier is de Python-functie die wordt gebruikt om de belangscores te berekenen en de functies te ordenen op basis van de scores:
 
-![Functie voor het rangschikken van functies op scores](./media/execute-python-scripts/figure8.png)
+![Functie om functies te rangschikken op scores](./media/execute-python-scripts/figure8.png)
 
-Het volgende experiment berekent en retourneert de prioriteits scores van functies in de gegevensset ' Pima Indiase diabetes ' in Azure Machine Learning Studio (klassiek):
+Het volgende experiment berekent en retourneert vervolgens de belangscores van functies in de gegevensset "Pima Indian Diabetes" in Azure Machine Learning Studio (klassiek):
 
-![Experimenteer met het rangschikken van functies in de Pima Indiase diabetes-gegevensset met behulp van python](./media/execute-python-scripts/figure9a.png)
+![Experimenteer om functies te rangschikken in de Pima Indian Diabetes-gegevensset met Behulp van Python](./media/execute-python-scripts/figure9a.png)
 
-![Visualisatie van de uitvoer van de script module voor het uitvoeren van python](./media/execute-python-scripts/figure9b.png)
+![Visualisatie van de uitvoer van de Python Script-module uitvoeren](./media/execute-python-scripts/figure9b.png)
 
 ## <a name="limitations"></a>Beperkingen
 
-De [script][execute-python-script] module voor het uitvoeren van python heeft de volgende beperkingen:
+De [Module Python Script uitvoeren][execute-python-script] heeft momenteel de volgende beperkingen:
 
 ### <a name="sandboxed-execution"></a>Sandbox-uitvoering
 
-De python-runtime is momenteel in de sandbox opgeslagen en staat geen toegang tot het netwerk of het lokale bestands systeem op een blijvende manier toe. Alle bestanden die lokaal zijn opgeslagen, worden geïsoleerd en verwijderd zodra de module is voltooid. De python-code heeft geen toegang tot de meeste mappen op de machine waarop deze wordt uitgevoerd. de uitzonde ring is de huidige map en de bijbehorende submappen.
+De Python-runtime is momenteel sandboxed en biedt geen toegang tot het netwerk of het lokale bestandssysteem op een permanente manier. Alle bestanden die lokaal zijn opgeslagen, worden geïsoleerd en verwijderd zodra de module is voltooid. De Python-code heeft geen toegang tot de meeste mappen op de machine waarop deze wordt uitgevoerd, met uitzondering de huidige map en de submappen.
 
-### <a name="lack-of-sophisticated-development-and-debugging-support"></a>Geen geavanceerde ondersteuning voor ontwikkeling en fout opsporing
+### <a name="lack-of-sophisticated-development-and-debugging-support"></a>Gebrek aan geavanceerde ondersteuning voor ontwikkeling en debuggen
 
-De python-module biedt momenteel geen ondersteuning voor IDE-functies, zoals IntelliSense en fout opsporing. Als de module tijdens runtime mislukt, is de volledige python-Stack tracering beschikbaar. Maar dit moet worden weer gegeven in het uitvoer logboek voor de module. Het wordt momenteel aangeraden python-scripts te ontwikkelen en op te sporen in een omgeving zoals IPython en de code vervolgens te importeren in de module.
+De Python-module ondersteunt momenteel geen IDE-functies zoals intellisense en foutopsporing. Als de module bij runtime uitvalt, is ook de volledige Python-stacktracering beschikbaar. Maar het moet worden bekeken in de output log voor de module. We raden u momenteel aan Python-scripts te ontwikkelen en te debuggen in een omgeving zoals IPython en de code vervolgens in de module te importeren.
 
-### <a name="single-data-frame-output"></a>Uitvoer van één gegevens frame
+### <a name="single-data-frame-output"></a>Uitvoer van één gegevensframe
 
-Het python-invoer punt is alleen toegestaan om één gegevens frame als uitvoer te retour neren. Het is momenteel niet mogelijk om wille keurige python-objecten, zoals getrainde modellen, rechtstreeks terug te sturen naar de Studio-Runtime (klassiek). Net als bij het uitvoeren van een [R-script][execute-r-script], dat dezelfde beperking heeft, is het mogelijk dat in veel gevallen objecten worden ingedrukt in een byte matrix en dat deze vervolgens in een gegevens frame worden geretourneerd.
+Het invoerpunt Python is slechts toegestaan om één gegevensframe als uitvoer terug te sturen. Het is momenteel niet mogelijk om willekeurige Python-objecten zoals getrainde modellen direct terug te sturen naar de Studio (klassieke) runtime. Net als [Execute R Script][execute-r-script], die dezelfde beperking heeft, is het mogelijk in veel gevallen om objecten pickle in een byte array en vervolgens terug te keren dat binnenkant van een dataframe.
 
-### <a name="inability-to-customize-python-installation"></a>Kan de python-installatie niet aanpassen
+### <a name="inability-to-customize-python-installation"></a>Onvermogen om Python-installatie aan te passen
 
-Op dit moment is de enige manier om aangepaste python-modules toe te voegen via het zip-bestand dat eerder is beschreven. Hoewel dit haalbaar is voor kleine modules, is het lastig voor grote modules (met name voor modules met systeem eigen Dll's) of een groot aantal modules.
+Momenteel is de enige manier om aangepaste Python-modules toe te voegen via het zip-bestandsmechanisme dat eerder is beschreven. Hoewel dit haalbaar is voor kleine modules, is het omslachtig voor grote modules (vooral modules met native DLL's) of een groot aantal modules.
 
 ## <a name="next-steps"></a>Volgende stappen
 

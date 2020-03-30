@@ -1,6 +1,6 @@
 ---
-title: Toewijzing & Security Alert-Azure Security Center voor bedreigings informatie
-description: Meer informatie over het gebruik van de functie voor het toewijzen van beveiligings waarschuwingen en bedreigings informatie in Azure Security Center om mogelijke dreigingen in uw Vm's en computers te identificeren.
+title: Waarschuwingskaart voor bedreigingsinformatie & beveiliging - Azure Security Center
+description: Meer informatie over het gebruik van de beveiligingskaart kaart en threat intelligence mogelijkheden in Azure Security Center om potentiële bedreigingen in uw VM's en computers te identificeren.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603432"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Overzicht beveiligingswaarschuwingen en informatie over bedreigingen
-Dit artikel helpt u bij het gebruik van de Azure Security Center Security Alerts en beveiliging op basis van bedreigings informatie die betrekking heeft op beveiligings problemen.
+Met dit artikel u de map beveiligingswaarschuwingen van Azure Security Center en de kaart voor beveiligingsgebeurtenissen op basis van bedreigingsinformatie gebruiken om beveiligingsgerelateerde problemen op te lossen.
 
 > [!NOTE]
-> De knop voor de toewijzing van beveiligings *gebeurtenissen* is op 31 juli 2019 ingetrokken. Zie voor meer informatie en alternatieve Services de [buiten gebruiks telling van Security Center-functies (2019 juli)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
+> De kaartknop *Beveiligingsevenementen* is op 31 juli 2019 met pensioen gegaan. Zie Functies van het [Pension of Security Center (juli 2019) voor](security-center-features-retirement-july2019.md#menu_securityeventsmap)meer informatie en alternatieve diensten.
 
 
-## <a name="how-the-security-alerts-map-works"></a>Hoe de toewijzing van beveiligings waarschuwingen werkt
-Security Center biedt u een kaart waarmee u beveiligings Risico's voor de omgeving kunt identificeren. U kunt bijvoorbeeld bepalen of een bepaalde computer deel uitmaakt van een botnet en waar de dreiging van afkomstig is. Computers kunnen knoop punten worden in een botnet wanneer aanvallers schadelijke software installeren die op een geheime wijze communiceert met opdracht en beheer waarmee het botnet wordt beheerd. 
+## <a name="how-the-security-alerts-map-works"></a>Hoe de kaart met beveiligingswaarschuwingen werkt
+Security Center biedt u een kaart waarmee u beveiligingsbedreigingen voor de omgeving identificeren. U bijvoorbeeld bepalen of een bepaalde computer deel uitmaakt van een botnet en waar de dreiging vandaan komt. Computers kunnen knooppunten in een botnet worden wanneer aanvallers illegaal malware installeren die in het geheim communiceert met commando en controle die het botnet beheren. 
 
-Security Center maakt gebruik van gegevens die afkomstig zijn uit meerdere bronnen in micro soft om deze kaart samen te stellen. Security Center gebruikt deze gegevens om mogelijke dreigingen toe te wijzen aan uw omgeving. 
+Om deze kaart te bouwen, gebruikt Security Center gegevens die afkomstig zijn van meerdere bronnen binnen Microsoft. Security Center gebruikt deze gegevens om potentiële bedreigingen voor uw omgeving in kaart te brengen. 
 
 Een van de stappen van de [procedure om te reageren op een beveiligingsincident](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response) is het identificeren van de ernst van het aangevallen systeem. In deze fase moet u de volgende taken uitvoeren:
 
@@ -41,19 +41,19 @@ Een van de stappen van de [procedure om te reageren op een beveiligingsincident]
 - Stel vast welke systemen zijn aangevallen.
 - Stel vast welke bestanden zijn geopend en bepaal de gevoeligheid van die bestanden.
 
-U kunt de toewijzing van beveiligings waarschuwingen in Security Center gebruiken om te helpen bij deze taken.
+U de kaart Beveiligingswaarschuwingen in Beveiligingscentrum gebruiken om u te helpen bij deze taken.
 
-## <a name="access-the-security-alerts-map"></a>De toewijzing van de beveiligings waarschuwingen openen
-Als u de huidige bedreigingen voor uw omgeving wilt visualiseren, opent u de map met beveiligings waarschuwingen:
+## <a name="access-the-security-alerts-map"></a>Toegang tot de kaart met beveiligingswaarschuwingen
+Als u de huidige bedreigingen in uw omgeving wilt visualiseren, opent u de kaart Beveiligingswaarschuwingen:
 
 1. Open het dashboard van **Security Center**.
-2. Selecteer in het linkerdeel venster onder **bedreigingen beveiliging** de optie **beveiligings waarschuwingen toewijzen**. De kaart wordt geopend.
-3. Als u meer informatie wilt over de waarschuwing en de stappen voor herbemiddeling wilt ontvangen, klikt u op de waarschuwings stip op de kaart en volgt u de instructies. 
+2. Selecteer in het linkerdeelvenster onder **Bedreigingsbeveiliging** de **optie Beveiligingswaarschuwingenkaart**. De kaart gaat open.
+3. Klik op de waarschuwingspunt op de kaart en volg de instructies om meer informatie over de waarschuwing te krijgen en herstelstappen te ontvangen. 
  
-De toewijzing van beveiligings waarschuwingen is gebaseerd op waarschuwingen. Deze waarschuwingen zijn gebaseerd op activiteiten waarvoor netwerk communicatie is gekoppeld aan een IP-adres dat is omgezet, ongeacht of het IP-adres een bekend riskant IP-adres is (bijvoorbeeld een bekend cryptominer) of een IP-adres dat niet wordt herkend voorheen als riskant. De kaart biedt waarschuwingen over alle abonnementen die u eerder hebt geselecteerd in Azure. 
+De kaart met beveiligingswaarschuwingen is gebaseerd op waarschuwingen. Deze waarschuwingen zijn gebaseerd op activiteiten waarvoor netwerkcommunicatie is gekoppeld aan een IP-adres dat met succes is opgelost, ongeacht of het IP-adres een bekend riskant IP-adres is (bijvoorbeeld een bekende cryptominer) of een IP-adres dat niet wordt herkend voorheen als riskant. De kaart bevat waarschuwingen voor alle abonnementen die u eerder in Azure hebt geselecteerd. 
 
-De waarschuwingen op de kaart worden weer gegeven op basis van de geografische locatie waar ze worden gedetecteerd als afkomstig van, en ze zijn in kleur gecodeerd op Ernst. 
-    ![informatie over Threat Intelligence](./media/security-center-threat-intel/security-center-alert-map.png)
+De waarschuwingen op de kaart worden weergegeven op basis van de geografische locatie waar ze worden gedetecteerd als afkomstig van, en ze zijn kleur gecodeerd door de ernst. 
+    ![Bedreigingsinformatie](./media/security-center-threat-intel/security-center-alert-map.png)
 
 
 
@@ -61,6 +61,6 @@ De waarschuwingen op de kaart worden weer gegeven op basis van de geografische l
 In dit artikel hebt u geleerd hoe u bedreigingsinformatie in Security Center gebruikt om u te helpen bij het identificeren van verdachte activiteiten. Zie de volgende artikelen voor meer informatie over Security Center:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
-* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
+* [Bewaking van de beveiligingsstatus in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Meer informatie over de verschillende typen beveiligingswaarschuwingen.
 * [Handleiding voor het oplossen van problemen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Informatie over het oplossen van veelvoorkomende problemen met Security Center.

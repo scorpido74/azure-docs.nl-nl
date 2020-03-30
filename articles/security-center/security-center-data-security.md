@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604174"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
@@ -43,15 +43,15 @@ Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in 
 
 ## <a name="data-location"></a>Gegevenslocatie
 
-**Uw werkruimte(n)** : er wordt een werkruimte opgegeven voor de volgende geografische gebieden, en gegevens die worden verzameld van uw virtuele machines in Azure, waaronder crashdumps en bepaalde typen waarschuwingsgegevens, worden opgeslagen in de dichtstbijzijnde werkruimte.
+**Uw werkruimte(n)**: er wordt een werkruimte opgegeven voor de volgende geografische gebieden, en gegevens die worden verzameld van uw virtuele machines in Azure, waaronder crashdumps en bepaalde typen waarschuwingsgegevens, worden opgeslagen in de dichtstbijzijnde werkruimte.
 
 | Geografisch gebied van virtuele machine                              | Geografisch gebied van werkruimte |
 |-------------------------------------|---------------|
 | Verenigde Staten, Brazilië, Zuid-Afrika | Verenigde Staten |
 | Canada                              | Canada        |
-| Europa (exclusief Verenigd Konink rijk)   | Europa        |
+| Europa (exclusief Verenigd Koninkrijk)   | Europa        |
 | Verenigd Koninkrijk                      | Verenigd Koninkrijk |
-| Azië (exclusief India, Japan, Korea, China)   | Azië en Stille Oceaan  |
+| Azië (met uitzondering van India, Japan, Korea, China)   | Azië en Stille Oceaan  |
 | Korea                              | Azië en Stille Oceaan  |
 | India                               | India         |
 | Japan                               | Japan         |
@@ -80,8 +80,8 @@ Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamele
 
 Klanten kunnen gegevens die verband houden met Security Center gebruiken uit verschillende gegevensstromen, zoals hieronder weergegeven:
 
-* **Azure activity**: alle beveiligings waarschuwingen, goedgekeurd Security Center [just-in-time-](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) aanvragen en alle waarschuwingen die worden gegenereerd door [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Azure monitor-logboeken**: alle beveiligings waarschuwingen.
+* **Azure Activity:** alle beveiligingswaarschuwingen, goedgekeurde [Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) aanvragen van het Beveiligingscentrum en alle waarschuwingen die worden gegenereerd door [adaptieve toepassingsbesturingselementen.](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* **Azure Monitor-logboeken:** alle beveiligingswaarschuwingen.
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Klanten kunnen gegevens die verband houden met Security Center gebruiken uit ver
 ## <a name="see-also"></a>Zie ook
 In dit document hebt u geleerd hoe gegevens worden beheerd en beveiligd in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
-* [Plannings- en bedieningsgids voor het Azure Beveiligingscentrum](security-center-planning-and-operations-guide.md): leer de ontwerpoverwegingen kennen en plan hiervoor bij de overstap naar Azure Security Center.
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md) (Beveiligingsstatus controleren in Azure Security Center): meer informatie over het controleren van de status van uw Azure-resources
-* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md): leer hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren
+* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Meer informatie over het plannen en begrijpen van de ontwerpoverwegingen om Azure Security Center te implementeren en te begrijpen.
+* [Bewaking van de beveiligingsstatus in Azure Security Center](security-center-monitoring.md) — Meer informatie over het bewaken van de status van uw Azure-resources
+* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center](security-center-managing-and-responding-alerts.md) — Meer informatie over het beheren en reageren op beveiligingswaarschuwingen
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure
+* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) — Blogberichten over Azure-beveiliging en -naleving zoeken

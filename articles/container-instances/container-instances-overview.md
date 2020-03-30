@@ -1,14 +1,14 @@
 ---
-title: Serverloze containers in azure
+title: Serverloze containers in Azure
 description: De Azure Container Instances-service is de snelste en eenvoudigste methode voor het uitvoeren van geïsoleerde containers in Azure. Hierbij hoeft u geen virtuele machines te beheren of een orchestrator op een hoger niveau te gebruiken.
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240252"
 ---
 # <a name="what-is-azure-container-instances"></a>Wat is Azure Container Instances?
@@ -21,14 +21,14 @@ Azure Container Instances is een ideale oplossing voor elk scenario dat kan werk
 
 Containers bieden aanzienlijke opstartvoordelen ten opzichte van virtuele machines (VM’s). Met Azure Container Instances kunnen containers in Azure in enkele seconden worden gestart, zonder dat u VM’s hoeft in te richten en te beheren.
 
-## <a name="container-access"></a>Toegang tot container
+## <a name="container-access"></a>Toegang tot containers
 
-Met Azure Container Instances kunnen uw container groepen rechtstreeks op internet worden weer gegeven met een IP-adres en een Fully Qualified Domain Name (FQDN). Wanneer u een containerexemplaar maakt, kunt u een aangepast DNS-naamlabel opgeven, zodat uw toepassing bereikbaar is via *aangepastlabel*.*azureregio*.azurecontainer.io.
+Azure Container Instances maakt het mogelijk om uw containergroepen rechtstreeks bloot te stellen aan het internet met een IP-adres en een volledig gekwalificeerde domeinnaam (FQDN). Wanneer u een containerexemplaar maakt, kunt u een aangepast DNS-naamlabel opgeven, zodat uw toepassing bereikbaar is via *aangepastlabel*.*azureregio*.azurecontainer.io.
 
-Azure Container Instances biedt ook ondersteuning voor het uitvoeren van een opdracht in een actieve container door een interactieve shell te bieden die u helpt bij het ontwikkelen en oplossen van toepassingen. Toegang vindt plaats via HTTPS, met behulp van TLS om client verbindingen te beveiligen.
+Azure Container Instances ondersteunt ook het uitvoeren van een opdracht in een lopende container door een interactieve shell te bieden om te helpen bij het ontwikkelen en oplossen van problemen met toepassingen. Toegang vindt plaats via HTTPS, met TLS om clientverbindingen te beveiligen.
 
 > [!IMPORTANT]
-> Vanaf 13 januari 2020 moeten voor Azure Container Instances alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
+> Vanaf 13 januari 2020 vereisen Azure Container Instances alle beveiligde verbindingen van servers en toepassingen om TLS 1.2 te gebruiken. Ondersteuning voor TLS 1.0 en 1.1 wordt buiten gebruik gesteld.
 
 ## <a name="hypervisor-level-security"></a>Beveiliging op hypervisorniveau
 
@@ -43,7 +43,7 @@ Voor rekenintensieve taken zoals machine learning kunnen met Azure Container Ins
 
 ## <a name="persistent-storage"></a>Permanente opslag
 
-Als u de status wilt ophalen en persistent wilt maken met Azure Container Instances, bieden we direct [koppelen van Azure files-shares](container-instances-mounting-azure-files-volume.md) die door Azure Storage worden ondersteund.
+Als u de status met Azure Container Instances wilt ophalen en behouden, bieden we directe [montage van Azure Files-shares](container-instances-mounting-azure-files-volume.md) die worden ondersteund door Azure Storage.
 
 ## <a name="linux-and-windows-containers"></a>Linux- en Windows-containers
 
@@ -52,23 +52,23 @@ Met Azure Container Instances kunt u Windows- en Linux-containers met dezelfde A
 Sommige functies zijn momenteel beperkt tot Linux-containers:
 
 * Meerdere containers per containergroep
-* Volume koppeling ([Azure files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [geheim](container-instances-volume-secret.md))
-* [Metrische gegevens over resource gebruik](container-instances-monitor.md) met Azure monitor
-* [Implementatie van virtueel netwerk](container-instances-vnet.md)
-* [GPU-bronnen](container-instances-gpu.md) (preview-versie)
+* Volumemontage ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [geheim](container-instances-volume-secret.md))
+* [Statistieken voor resourcegebruik](container-instances-monitor.md) met Azure Monitor
+* [Virtuele netwerkimplementatie](container-instances-vnet.md)
+* [GPU-bronnen](container-instances-gpu.md) (voorbeeld)
 
-Gebruik installatie kopieën op basis van algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported)voor implementaties van Windows-containers.
+Voor Windows-containerimplementaties gebruikt u afbeeldingen op basis van algemene [Windows-basisafbeeldingen.](container-instances-faq.md#what-windows-base-os-images-are-supported)
 
 > [!NOTE]
-> Het gebruik van installatie kopieën op basis van Windows Server 2019 in Azure Container Instances is in de preview-versie.
+> Het gebruik van op Windows Server 2019 gebaseerde afbeeldingen in Azure Container Instances is in preview.Use of Windows Server 2019-based images in Azure Container Instances is in preview.
 
 ## <a name="co-scheduled-groups"></a>Samen geplande groepen
 
 Azure Container Instances biedt ondersteuning voor planning van [meerdere containergroepen](container-instances-container-groups.md) die een hostmachine, lokaal netwerk, opslag en levenscyclus delen. Hierdoor kunt u uw hoofdtoepassingscontainer combineren met andere ondersteunende rolcontainers, zoals het in een logboek vastleggen van sidecars.
 
-## <a name="virtual-network-deployment"></a>Implementatie van virtueel netwerk
+## <a name="virtual-network-deployment"></a>Virtuele netwerkimplementatie
 
-Momenteel beschikbaar voor productie werkbelastingen in een subset van Azure-regio's kunt u met deze functie van Azure Container Instances [container instanties implementeren in een virtueel Azure-netwerk](container-instances-vnet.md). Als u containerinstanties in een subnet binnen uw virtuele netwerk implementeert, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, met inbegrip van on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
+Deze functie van Azure Container Instances is momenteel beschikbaar voor productieworkloads in een subset van Azure-regio's en maakt [implementatie van containerexemplaren in een virtueel Azure-netwerk mogelijk.](container-instances-vnet.md) Als u containerinstanties in een subnet binnen uw virtuele netwerk implementeert, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, met inbegrip van on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Volgende stappen
 

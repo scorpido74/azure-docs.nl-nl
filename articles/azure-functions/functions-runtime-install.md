@@ -1,135 +1,135 @@
 ---
-title: Installatie van Azure Functions-runtime
-description: De Azure Functions-runtime Preview 2 installeren
+title: Runtime-installatie van Azure-functies
+description: De voorbeeldfunctie van Azure Functions installeren 2
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226723"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>De Azure Functions-runtime Preview 2 installeren
+# <a name="install-the-azure-functions-runtime-preview-2"></a>De voorbeeldvan Azure Functions Runtime Preview 2 installeren
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Als u de Azure Functions-runtime Preview 2 wilt installeren, voert u de volgende stappen uit:
+Als u het voorbeeld 2 van Azure Functions Runtime wilt installeren, voert u de volgende stappen uit:
 
-1. Zorg ervoor dat uw computer voldoet aan de minimale vereisten.
-1. Down load het [installatie programma voor de Azure functions-runtime preview](https://aka.ms/azafrv2).
-1. Verwijder de Azure Functions-runtime preview 1.
-1. Installeer de Azure Functions-runtime Preview 2.
-1. Voltooi de configuratie van de Azure Functions-runtime Preview 2.
-1. Uw eerste functie maken in Azure Functions-runtime preview
+1. Zorg ervoor dat uw machine aan de minimumeisen voldoet.
+1. Download het [Installatieprogramma Voor runtime preview van Azure-functies](https://aka.ms/azafrv2).
+1. Verwijder de Azure Functions Runtime preview 1.
+1. Installeer de Azure Functions Runtime preview 2.
+1. Voltooi de configuratie van de Azure Functions Runtime preview 2.
+1. Uw eerste functie maken in Azure Functions Runtime Preview
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de preview-versie van Azure Functions-runtime installeert, moet u de volgende resources beschikbaar hebben:
+Voordat u het voorbeeld van Azure Functions Runtime installeert, moet u over de volgende bronnen beschikken:
 
-1. Een computer met micro soft Windows Server 2016 of micro soft Windows 10 Crea tors update (Professional of ENTER prise Edition).
-1. Een SQL Server exemplaar dat wordt uitgevoerd in uw netwerk.  De vereiste minimum versie van de editie is SQL Server Express.
+1. Een machine met Microsoft Windows Server 2016 of Microsoft Windows 10 Creators Update (Professional of Enterprise Edition).
+1. Een SQL Server-exemplaar dat binnen uw netwerk wordt uitgevoerd.  Minimale editie vereist is SQL Server Express.
 
 ## <a name="uninstall-previous-version"></a>Vorige versie verwijderen
 
-Als u de Azure Functions-runtime preview eerder hebt geïnstalleerd, moet u de installatie ongedaan maken voordat u de nieuwste versie installeert.  Verwijder de Azure Functions-runtime preview door het programma te verwijderen in het onderdeel Software van Windows.
+Als u eerder de voorbeeldversie azure functions Runtime hebt geïnstalleerd, moet u de installatie verwijderen voordat u de nieuwste versie installeert.  Verwijder de voorbeeldpreview Azure Functions Runtime door het programma te verwijderen in Programma's toevoegen/verwijderen in Windows.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>De Azure Functions-runtime Preview installeren
+## <a name="install-the-azure-functions-runtime-preview"></a>De Runtime Preview voor Azure Functions installeren
 
-Het Azure Functions-runtime preview-installatie programma begeleidt u bij de installatie van het Azure Functions-runtime preview-beheer en de werk rollen.  Het is mogelijk om de rol management en worker op dezelfde computer te installeren.  Bij het toevoegen van meer functie-apps moet u echter meer werk rollen implementeren op extra machines zodat u uw functies kunt schalen op meerdere werk nemers.
+The Azure Functions Runtime Preview Installer guides you through the installation of the Azure Functions Runtime preview Management and Worker Roles.  Het is mogelijk om de rol Beheer en werknemer op dezelfde machine te installeren.  Als u echter meer functie-apps toevoegt, moet u meer werknemersrollen op extra machines implementeren om uw functies op meerdere werknemers te kunnen schalen.
 
-## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>De rol management en worker op dezelfde computer installeren
+## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>De rol Beheer en werknemer op dezelfde machine installeren
 
-1. Voer het installatie programma voor de Azure Functions-runtime Preview uit.
+1. Voer het installatieprogramma Azure Functions Runtime Preview uit.
 
-    ![Installatie programma voor Azure Functions-runtime preview][1]
+    ![Installatieprogramma voor runtime-voorbeeld azure-functies][1]
 
 1. Klik op **Volgende**.
-1. Wanneer u de voor waarden van de **gebruiksrecht overeenkomst**hebt gelezen, **schakelt u het selectie vakje** in om de voor waarden te accepteren en klikt u op **volgende** om door te gaan.
-1. Selecteer de functies die u wilt installeren op deze computer **functions Role** en/of **functions worker** en klik op **volgende**.
+1. Zodra u de voorwaarden van de **EULA**hebt gelezen, **schakelt u het selectievakje** in om de voorwaarden te accepteren en klik op **Volgende** om verder te gaan.
+1. Selecteer de rollen die u wilt installeren op deze **functiefunctie voor functiesbeheer** en/of **functierol functies** en klik op **Volgende**.
 
-    ![Preview-versie van Azure Functions-runtime-installatie programma-rol selecteren][3]
-
-    > [!NOTE]
-    > U kunt de **functie Workers** op veel andere computers installeren. Volg hiervoor deze instructies en selecteer in het installatie programma alleen **functies werk rollen** .
-
-1. Klik op **volgende** om de installatie van de **wizard Azure functions-runtime** -installatie op uw computer te starten.
-1. Zodra de wizard is voltooid, wordt het **Azure functions-runtime** configuratie programma gestart.
-
-    ![Installatie programma voor Azure Functions-runtime preview is voltooid][6]
+    ![Installatieprogramma voor azure Functions Runtime Preview - rolselectie][3]
 
     > [!NOTE]
-    > Als u installeert op **Windows 10** en de **container** functie nog niet is ingeschakeld, wordt u door de **Azure functions-runtime Setup** gevraagd om de computer opnieuw op te starten om de installatie te volt ooien.
+    > U de **functie Functies werknemer op** veel andere machines installeren. Volg hiervoor deze instructies en selecteer alleen **Functiefunctie functie** in het installatieprogramma.
 
-## <a name="configure-the-azure-functions-runtime"></a>De Azure Functions-runtime configureren
+1. Klik **op Volgende** om de wizard **Runtime Setup voor Azure-functies** te starten met het installatieproces op uw machine.
+1. Zodra de wizard Setup is voltooid, wordt het configuratiehulpprogramma **voor Azure Functions Runtime** gestart.
 
-U moet de configuratie volt ooien om de Azure Functions-runtime-installatie te volt ooien.
+    ![Installatieprogramma voor runtime-voorbeeld azure-functies is voltooid][6]
 
-1. Het hulp programma **Azure functions-runtime** configuratie laat zien welke rollen op uw computer zijn geïnstalleerd.
+    > [!NOTE]
+    > Als u installeert op **Windows 10** en de **containerfunctie** niet eerder is ingeschakeld, wordt u met de **Azure Functions Runtime Setup** gevraagd om uw machine opnieuw op te starten om de installatie te voltooien.
 
-    ![Preview-configuratie programma Azure Functions-runtime][7]
+## <a name="configure-the-azure-functions-runtime"></a>De runtime van Azure-functies configureren
 
-1. Klik op het tabblad **Data Base** , voer de verbindings gegevens voor uw SQL Server-exemplaar in, inclusief het opgeven van een [database hoofd sleutel](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), en klik op **Toep assen**.  Er is een verbinding met een SQL Server-exemplaar vereist om de Azure Functions-runtime een Data Base te maken voor de ondersteuning van de runtime.
+Als u de runtime-installatie azure-functies wilt voltooien, moet u de configuratie voltooien.
 
-    ![Voorbeeld database configuratie Azure Functions-runtime][8]
+1. Met het configuratiehulpprogramma **Voor runtime van Azure Functions** ziet u welke rollen op uw machine zijn geïnstalleerd.
 
-1. Klik op het tabblad **referenties** .  Hier moet u twee nieuwe referenties maken voor gebruik met een bestands share voor het hosten van al uw functie-apps.  Geef combi Naties van **gebruikers naam** en **wacht woord** op voor de **Bestands share-eigenaar** en de **Bestands share gebruiker**en klik vervolgens op **Toep assen**.
+    ![Configuratieprogramma voor azure-functies runtime-voorbeeld][7]
 
-    ![Preview-referenties Azure Functions-runtime][9]
+1. Klik op het tabblad **Database,** voer de verbindingsgegevens in voor uw SQL Server-exemplaar, inclusief het opgeven van een [databasehoofdsleutel](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)en klik op **Toepassen**.  Connectiviteit met een SQL Server-exemplaar is vereist om de Runtime van Azure-functies een database te maken ter ondersteuning van de runtime.
 
-1. Klik op het tabblad **Bestands share** .  Hier moet u de details van de bestands share locatie opgeven.  U kunt de bestands share voor u maken, maar u kunt ook een bestaande bestands share gebruiken en op **Toep assen**klikken.  Als u een nieuwe locatie voor de bestands share selecteert, moet u een map opgeven die door de Azure Functions-runtime wordt gebruikt.
+    ![Azure Functions Runtime preview-databaseconfiguratie][8]
 
-    ![Preview-bestands share Azure Functions-runtime][10]
+1. Klik op het tabblad **Referenties.**  Hier moet u twee nieuwe referenties maken voor gebruik met een bestandsshare voor het hosten van al uw functie-apps.  Geef **combinaties gebruikersnaam** en **wachtwoord** op voor de eigenaar van **de bestandsshare** en voor de gebruiker van **bestandsshare**klikt u op **Toepassen**.
 
-1. Klik op het tabblad **IIS** .  Dit tabblad bevat de details van de websites in IIS die worden gemaakt door het Azure Functions-runtime-configuratie hulpprogramma.  U kunt hier een aangepaste DNS-naam opgeven voor de Azure Functions-runtime preview-Portal.  Klik op **Toep assen** om te volt ooien.
+    ![Azure Functions Runtime preview-referenties][9]
 
-    ![Azure Functions-runtime preview-versie van IIS][11]
+1. Klik op het tabblad **Bestandsdelen.**  Hier moet u de details van de locatie van de bestandsshare opgeven.  De bestandsshare kan voor u worden gemaakt of u een bestaande bestandsshare gebruiken en op **Toepassen klikken.**  Als u een nieuwe locatie voor bestandsshare selecteert, moet u een map opgeven voor gebruik door de runtime van Azure Functions.
 
-1. Klik op het tabblad **Services** .  Op dit tabblad wordt de status weer gegeven van de services in uw Azure Functions-runtime-configuratie programma.  Als de **Azure functions host Activation-Service** niet wordt uitgevoerd na de initiële configuratie, klikt u op **service starten**.
+    ![Bestandsshare van Azure Functions Runtime-voorbeeld][10]
 
-    ![Azure Functions-runtime preview-configuratie voltooid][12]
+1. Klik op het tabblad **IIS.**  Op dit tabblad worden de details weergegeven van de websites in IIS die het configuratiehulpprogramma voor runtime-functies azure-functies maakt.  U hier een aangepaste DNS-naam opgeven voor de Azure Functions Runtime preview-portal.  Klik **op Toepassen** om te voltooien.
 
-1. Ga naar de **Azure functions-runtime Portal** als `https://<machinename>.<domain>/`.
+    ![Azure Functions Runtime preview IIS][11]
 
-    ![Preview-Portal Azure Functions-runtime][13]
+1. Klik op het tabblad **Services.**  Op dit tabblad ziet u de status van de services in uw configuratiehulpprogramma voor Runtime van Azure Functions.  Als de **Azure Functions Host Activation Service** niet wordt uitgevoerd na de eerste configuratie, klikt u op Service **starten**.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Uw eerste functie maken in Azure Functions-runtime preview
+    ![Configuratie van de Runtime-voorvertoning van Azure Functions is voltooid][12]
 
-Uw eerste functie maken in Azure Functions-runtime preview
+1. Blader naar de **Runtime Portal voor Azure-functies** als `https://<machinename>.<domain>/`.
 
-1. Ga naar de **Azure functions-runtime Portal** als `https://<machinename>.<domain>` bijvoorbeeld `https://mycomputer.mydomain.com`.
+    ![Voorbeeldportal voor Runtime van Azure Functions][13]
 
-1. U wordt gevraagd om u aan te **melden**als de implementatie in een domein gebruikmaakt van uw gebruikers naam en wacht woord voor het domein account. anders gebruikt u de gebruikers naam en het wacht woord van uw lokale account om u aan te melden bij de portal.
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Uw eerste functie maken in de runtime-voorvertoning van Azure Functions
 
-    ![Azure Functions-runtime preview-Portal aanmelden][14]
+Uw eerste functie maken in de runtime-voorvertoning van Azure Functions
 
-1. Als u functie-Apps wilt maken, moet u een abonnement maken.  Klik in de linkerbovenhoek van de portal op de optie **+** naast de abonnementen.
+1. Blader bijvoorbeeld `https://<machinename>.<domain>` `https://mycomputer.mydomain.com`naar de **Runtime Portal voor Azure-functies** .
 
-    ![Preview-versie van portal-abonnementen Azure Functions-runtime][15]
+1. U wordt gevraagd om u aan te **melden,** als u wordt geïmplementeerd in een domein uw gebruikersnaam en wachtwoord van uw domeinaccount te gebruiken, anders gebruikt u uw gebruikersnaam en wachtwoord voor uw lokale account om in te loggen op de portal.
 
-1. Kies **DefaultPlan**, voer een naam in voor uw abonnement en klik op **maken**.
+    ![Inloggen voor Azure Functions Runtime preview-portal][14]
 
-    ![Azure Functions-runtime preview-abonnement en-naam van de portal][16]
+1. Als u functie-apps wilt maken, moet u een abonnement maken.  Klik in de linkerbovenhoek van de **+** portal op de optie naast de abonnementen.
 
-1. Al uw functie-apps worden weer gegeven in het linkerdeel venster van de portal.  Als u een nieuwe functie-app wilt maken, selecteert u de **functie apps** en klikt u op de optie **+** .
+    ![Azure Functions Runtime preview portal abonnementen][15]
 
-1. Voer een naam in voor de functie-app, selecteer het juiste abonnement, Kies welke versie van de Azure Functions runtime u wilt Program meren en klik op **maken**
+1. Kies **DefaultPlan,** voer een naam voor uw abonnement in en klik op **Maken**.
 
-    ![Nieuwe functie-app voor Azure Functions-runtime preview-Portal][17]
+    ![Abonnement en naam van azure Functions Runtime Preview-portal][16]
 
-1. De nieuwe functie-app wordt weer gegeven in het linkerdeel venster van de portal.  Selecteer functies en klik boven aan het middelste deel venster van de portal op **nieuwe functie** .
+1. Al uw functie-apps staan in het linkerdeelvenster van de portal.  Als u een nieuwe functie-app wilt maken, selecteert u de kop **Functie-apps** en klikt u op de **+** optie.
 
-    ![Preview-sjablonen Azure Functions-runtime][18]
+1. Voer een naam in voor uw functie-app, selecteer het juiste abonnement, kies welke versie van de Azure Functions-runtime waarmee u wilt **programmeren** en klik op Maken
 
-1. Selecteer de functie Timer trigger en wijzig de planning in `*/5 * * * * *`. (deze cron-expressie zorgt ervoor dat uw timer functie elke vijf seconden wordt uitgevoerd) en klik op **maken**
+    ![Nieuwe functie-app Azure Functions Runtime preview-portal][17]
 
-    ![Azure Functions-runtime voor beeld van nieuwe configuratie van de timer functie][19]
+1. De nieuwe functie-app wordt weergegeven in het linkerdeelvenster van de portal.  Selecteer Functies en klik boven aan het middelste deelvenster in de portal op **Nieuwe functie.**
 
-1. De functie is nu gemaakt.  U kunt het uitvoerings logboek van uw functie-app weer geven door het deel venster **logboek** aan de onderkant van de portal uit te vouwen.
+    ![Voorbeeldsjablonen voor Azure Functions Runtime-voorbeeld][18]
 
-    ![Azure Functions-runtime preview-functie uitvoeren][20]
+1. Selecteer de functie Timertrigger, plaats in de juiste flyout `*/5 * * * * *` naam van uw functie en wijzig de planning in (deze cron-expressie zorgt ervoor dat uw timerfunctie elke vijf seconden wordt uitgevoerd) en klik op **Maken**
+
+    ![Azure Functions Runtime preview nieuwe timerfunctie configuratie][19]
+
+1. Uw functie is nu gemaakt.  U het uitvoeringslogboek van uw functie-app bekijken door het **logboekvenster** onderaan de portal uit te breiden.
+
+    ![Uitvoer van de functie Runtime preview van Azure Functions][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png
