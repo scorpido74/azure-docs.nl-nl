@@ -1,5 +1,5 @@
 ---
-title: App Service configureren met Power shell
+title: App-service configureren met PowerShell
 titleSuffix: Azure Application Gateway
 description: In dit artikel biedt richtlijnen voor het configureren van web-apps (als back-endhosts) voor een bestaande of nieuwe application gateway.
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74089518"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>App Service met Application Gateway configureren met behulp van Power shell
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>App-service configureren met application gateway met PowerShell
 
-Met Application Gateway kunt u een App Service-app of een andere multi tenant-service als lid van een back-end-groep hebben. In dit artikel leert u hoe u een App Service-app kunt configureren met Application Gateway. In het eerste voorbeeld ziet u hoe u een bestaande toepassingsgateway configureert voor het gebruik van een web-app als lid van een back-endpool. In het tweede voorbeeld ziet u hoe u een nieuwe toepassingsgateway maakt met een web-app als lid van een back-endpool.
+Met toepassingsgateway u een App Service-app of een andere multi-tenantservice hebben als back-endpoollid. In dit artikel leert u een App Service-app configureren met Application Gateway. In het eerste voorbeeld ziet u hoe u een bestaande toepassingsgateway configureert voor het gebruik van een web-app als lid van een back-endpool. In het tweede voorbeeld ziet u hoe u een nieuwe toepassingsgateway maakt met een web-app als lid van een back-endpool.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -160,9 +160,9 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Toegang beperken
 
-In de web-apps die in deze voor beelden zijn geïmplementeerd, worden open bare IP-adressen gebruikt die rechtstreeks via internet toegankelijk zijn. Dit helpt bij het oplossen van problemen met een nieuwe functie en nieuwe dingen. Maar als u van plan bent een functie in productie te implementeren, wilt u meer beperkingen toevoegen.
+De web-apps die in deze voorbeelden worden geïmplementeerd, gebruiken openbare IP-adressen die rechtstreeks vanaf internet toegankelijk zijn. Dit helpt bij het oplossen van problemen wanneer u meer te weten komt over een nieuwe functie en nieuwe dingen probeert. Maar als u van plan bent een functie in productie te nemen, wilt u meer beperkingen toevoegen.
 
-Een manier om de toegang tot uw web-apps te beperken, is door [Azure app service statische IP-beperkingen](../app-service/app-service-ip-restrictions.md)te gebruiken. Zo kunt u de Web-App zodanig beperken dat alleen verkeer van de toepassings gateway wordt ontvangen. Gebruik de functie IP-beperking van app service om de Application Gateway-VIP weer te geven als het enige adres met Access.
+Een manier waarop u de toegang tot uw web-apps beperken, is door [statische IP-beperkingen](../app-service/app-service-ip-restrictions.md)van Azure App Service te gebruiken. U bijvoorbeeld de web-app beperken zodat deze alleen verkeer van de toepassingsgateway ontvangt. Gebruik de IP-beperkingsfunctie voor app-service om de VIP-gateway van de toepassing als het enige adres met toegang te vermelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

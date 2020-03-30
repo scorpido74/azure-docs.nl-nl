@@ -1,6 +1,6 @@
 ---
-title: Verzamelingen maken voor mijn apps-portals in Azure Active Directory | Microsoft Docs
-description: Gebruik mijn apps-verzamelingen om mijn apps pagina's aan te passen voor een eenvoudiger mijn apps-ervaring voor uw eind gebruikers. Organiseer toepassingen in groepen met afzonderlijke tabbladen.
+title: Verzamelingen maken voor mijn apps-portals in Azure Active Directory | Microsoft Documenten
+description: Gebruik Mijn apps-verzamelingen om mijn apps-pagina's aan te passen voor een eenvoudigere Ervaring met Mijn apps voor uw eindgebruikers. Organiseer toepassingen in groepen met afzonderlijke tabbladen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120093"
 ---
-# <a name="create-collections-on-the-my-apps-portal"></a>Verzamelingen maken in de portal mijn apps
+# <a name="create-collections-on-the-my-apps-portal"></a>Collecties maken op de portal Mijn apps
 
-Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te bekijken en te starten waartoe ze toegang hebben. Standaard worden alle toepassingen die een gebruiker kan openen, op één pagina weer gegeven. Als u een Azure AD Premium P1-of P2-licentie hebt, kunt u deze pagina beter indelen voor uw gebruikers en verzamelingen instellen. Met een verzameling kunt u toepassingen die verwant zijn (bijvoorbeeld op basis van de functie, taak of project) groeperen en weer geven op een afzonderlijk tabblad. Een verzameling past in feite een filter toe op de toepassingen waartoe een gebruiker al toegang heeft, zodat de gebruiker alleen de toepassingen ziet in de verzameling die aan hen zijn toegewezen.
-
-> [!NOTE]
-> In dit artikel wordt beschreven hoe een beheerder verzamelingen kan inschakelen en maken. Zie voor informatie over het gebruik van de portals en verzamelingen van mijn apps [Access en verzamelingen gebruiken](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
-
-## <a name="enable-the-latest-my-apps-features"></a>De nieuwste functies van mijn apps inschakelen
-
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als gebruikers beheerder of globale beheerder.
-
-2. Ga naar **Azure Active Directory** instellingen voor > **gebruiker**.
-
-3. Onder preview- **functies voor gebruikers onderdelen**selecteert u de **voor beeld-instellingen voor gebruikers onderdelen beheren**.
-
-4. Onder **gebruikers kunnen preview-functies voor mijn apps gebruiken**. Kies een van de volgende opties:
-   * **Geselecteerd** : Hiermee schakelt u de functies voor een specifieke groep in. Gebruik de optie **een groep selecteren** om de groep te selecteren waarvoor u de functies wilt inschakelen.  
-   * **Alle** : Hiermee schakelt u de functies voor alle gebruikers in.
+Uw gebruikers kunnen de mijn apps-portal gebruiken om de cloudgebaseerde toepassingen waartoe ze toegang hebben te bekijken en te starten. Standaard worden alle toepassingen die een gebruiker kan openen samen op één pagina weergegeven. Als u een Azure AD Premium P1- of P2-licentie hebt, u verzamelingen instellen als u een Azure AD Premium P1- of P2-licentie hebt. Met een verzameling u toepassingen die gerelateerd zijn (bijvoorbeeld op functie, taak of project) groeperen en deze weergeven op een apart tabblad. Een verzameling past in wezen een filter toe op de toepassingen waartoe een gebruiker al toegang heeft, zodat de gebruiker alleen die toepassingen in de verzameling ziet die aan hen zijn toegewezen.
 
 > [!NOTE]
-> Voor het openen van de portal mijn apps kunnen gebruikers de koppeling `https://myapps.microsoft.com` gebruiken, of de aangepaste koppeling voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`. Nadat u de nieuwe ervaring voor mijn apps hebt ingeschakeld, wordt de banner **update mijn toepassingen is beschikbaar** weer gegeven aan de bovenkant van de pagina mijn apps en kunnen gebruikers **proberen** de nieuwe ervaring weer te geven. Gebruikers kunnen de nieuwe ervaring niet meer gebruiken door **Ja** te selecteren in het vaandel nieuwe ervaring aan de bovenkant van de pagina te **laten staan** .
+> In dit artikel wordt uitgelegd hoe een beheerder verzamelingen kan in- en mogelijk maken. Zie [Verzamelingen](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces)voor openen en gebruiken voor de eindgebruiker over het gebruik van de mijn apps-portal en verzamelingen.
+
+## <a name="enable-the-latest-my-apps-features"></a>De nieuwste functies van Mijn apps inschakelen
+
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als gebruikersbeheerder of globale beheerder.
+
+2. Ga naar Azure Active > **Directory-gebruikersinstellingen**. **Azure Active Directory**
+
+3. Selecteer **onder Previews van gebruikersfuncties**de **optie Preview-instellingen voor gebruikersfuncties beheren**.
+
+4. Kies **onder Gebruikers preview-functies voor Mijn apps**een van de volgende opties:
+   * **Geselecteerd** - Hiermee worden de functies voor een specifieke groep ingeschakeld. Gebruik de optie **Een groep selecteren** om de groep te selecteren waarvoor u de functies wilt inschakelen.  
+   * **Alles** - Hiermee kunnen de functies voor alle gebruikers worden ingezien.
+
+> [!NOTE]
+> Als u de mijn apps-portal `https://myapps.microsoft.com` wilt openen, kunnen gebruikers de `https://myapps.microsoft.com/contoso.com`koppeling of de aangepaste koppeling voor uw organisatie gebruiken, zoals . Nadat u de nieuwe Ervaring Mijn apps hebt ingeschakeld, wordt de **banner Met bijgewerkte mijn toepassingen boven** aan de pagina Mijn apps weergegeven en kunnen gebruikers **Proberen** selecteren om de nieuwe ervaring weer te geven. Als u de nieuwe ervaring niet meer wilt gebruiken, kunnen gebruikers Boven aan de pagina **Ja** selecteren in de banner **Nieuwe ervaring** verlaten.
 
 ## <a name="create-a-collection"></a>Een verzameling maken
 
-Als u een verzameling wilt maken, moet u een Azure AD Premium P1 of P2-licentie hebben.
+Als u een verzameling wilt maken, moet u over een Azure AD Premium P1- of P2-licentie beschikken.
 
-1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als beheerder met een Azure AD Premium P1-of P2-licentie.
+1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als beheerder met een Azure AD Premium P1- of P2-licentie.
 
-2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen**.
+2. Ga naar **Azure Active Directory** > **Enterprise-toepassingen**.
 
-3. Selecteer onder **beheren**de optie **verzamelingen**.
+3. Selecteer **Onder Beheren**de optie **Verzamelingen**.
 
-4. Selecteer **nieuwe verzameling**. Voer op de pagina **nieuwe verzameling** een **naam** in voor de verzameling (we raden u aan om ' Collection ' niet in de naam te gebruiken. Voer vervolgens een **Beschrijving**in.
+4. Selecteer **Nieuwe verzameling**. Voer op de pagina **Nieuwe verzameling** een **naam** voor de verzameling in (we raden u aan geen 'verzameling' in de naam te gebruiken. Voer vervolgens een **beschrijving in**.
 
-   ![Pagina nieuwe verzameling](media/acces-panel-collections/new-collection.png)
+   ![Nieuwe verzamelingspagina](media/acces-panel-collections/new-collection.png)
 
-5. Selecteer het tabblad **toepassingen** . Selecteer **+ toepassing**en selecteer vervolgens op de pagina **toepassingen toevoegen** alle toepassingen die u aan de verzameling wilt toevoegen, of gebruik het **zoekvak** om toepassingen te zoeken.
+5. Selecteer het tabblad **Toepassingen.** Selecteer **+ Toepassing toevoegen**en selecteer vervolgens op de pagina Toepassingen **toevoegen** alle toepassingen die u aan de verzameling wilt toevoegen of gebruik het vak **Zoeken** om toepassingen te zoeken.
 
    ![Een toepassing toevoegen aan de verzameling](media/acces-panel-collections/add-applications.png)
 
-6. Wanneer u klaar bent met het toevoegen van toepassingen, selecteert u **toevoegen**. De lijst met geselecteerde toepassingen wordt weer gegeven. U kunt de pijl-omhoog gebruiken om de volg orde van de toepassingen in de lijst te wijzigen. Als u een toepassing wilt verplaatsen of verwijderen uit de verzameling, selecteert u het menu **meer** ( **...** ).
+6. Wanneer u klaar bent met het toevoegen van toepassingen, selecteert u **Toevoegen**. De lijst met geselecteerde toepassingen wordt weergegeven. U de pijl-omhoog gebruiken om de volgorde van toepassingen in de lijst te wijzigen. Als u een toepassing naar beneden wilt verplaatsen of uit de verzameling wilt verwijderen, selecteert u het menu **Meer** (**... ).**
 
-7. Selecteer het tabblad **eigen aars** . Selecteer **+ gebruikers en groepen toevoegen**en selecteer op de pagina **gebruikers en groepen toevoegen** de gebruikers of groepen aan wie u het eigendom wilt toewijzen. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest u **selecteren**.
+7. Selecteer het tabblad **Eigenaren.** Selecteer **+ Gebruikers en groepen toevoegen**en selecteer vervolgens op de pagina Gebruikers en groepen **toevoegen** de gebruikers of groepen waaraan u eigendom wilt toewijzen. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest **u Selecteren**.
 
-9. Selecteer de tab **gebruikers en groepen** . Selecteer **+ gebruikers en groepen toevoegen**en selecteer op de pagina **gebruikers en groepen toevoegen** de gebruikers of groepen aan wie u de verzameling wilt toewijzen. Of gebruik het **zoekvak** om gebruikers of groepen te zoeken. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest u **selecteren**.
+9. Selecteer het tabblad **Gebruikers en groepen.** Selecteer **+ Gebruikers en groepen toevoegen**en selecteer vervolgens op de pagina Gebruikers en groepen **toevoegen** de gebruikers of groepen waaraan u de verzameling wilt toewijzen. Of gebruik het vak **Zoeken** om gebruikers of groepen te vinden. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest **u Selecteren**.
 
    ![Gebruikers en groepen toevoegen](media/acces-panel-collections/add-users-and-groups.png)
 
-11. Selecteer **Controleren + maken**. De eigenschappen voor de nieuwe verzameling worden weer gegeven.
+11. Selecteer **Controleren + maken**. De eigenschappen voor de nieuwe collectie worden weergegeven.
 
 
 ## <a name="view-audit-logs"></a>Auditlogboeken weergeven
 
-In de audit logboeken worden de verzamelings bewerkingen van mijn apps vastgelegd, inclusief acties voor het maken van eind gebruikers. De volgende gebeurtenissen worden gegenereerd vanuit mijn apps:
+De controlelogboeken registreren mijn apps-verzamelingenbewerkingen, inclusief acties voor het maken van eindgebruikers. De volgende gebeurtenissen worden gegenereerd vanuit Mijn apps:
 
 * Verzameling maken
 * Verzameling bewerken
 * Verzameling verwijderen
-* Een toepassing starten (eind gebruiker)
-* Self-service toepassing toevoegen (eind gebruiker)
-* Self-service toepassing verwijderen (eind gebruiker)
+* Een toepassing starten (eindgebruiker)
+* Selfservice-toepassing toevoegen (eindgebruiker)
+* Selfservice-toepassing verwijderen (eindgebruiker)
 
-U kunt de controle Logboeken openen in de [Azure Portal](https://portal.azure.com) door **Azure Active Directory** > **bedrijfs toepassingen** > **audit logboeken** te selecteren in de sectie activiteit. Voor de **service**selecteert u **mijn apps**.
+U controlelogboeken openen in de [Azure-portal](https://portal.azure.com) door **Azure Active Directory** > **Enterprise Applications** > **Audit-logboeken** te selecteren in de sectie Activiteit. Selecteer Mijn **apps**voor **Service**.
 
-## <a name="get-support-for-my-account-pages"></a>Ondersteuning voor mijn account pagina's ophalen
+## <a name="get-support-for-my-account-pages"></a>Ondersteuning krijgen voor mijn accountpagina's
 
-Op de pagina mijn apps kan een gebruiker **mijn** account selecteren > **Mijn account weer te geven** om de account instellingen te openen. Op de pagina Azure AD- **Mijn account** kunnen gebruikers hun beveiligings gegevens, apparaten, wacht woorden en meer beheren. Ze hebben ook toegang tot hun Office-account instellingen.
+Op de pagina Mijn apps kan een gebruiker **Mijn account** > **mijn account weergeven** selecteren om de accountinstellingen te openen. Op de pagina Azure AD **Mijn account** kunnen gebruikers hun beveiligingsgegevens, apparaten, wachtwoorden en meer beheren. Ze hebben ook toegang tot hun Office-accountinstellingen.
 
-Als u een ondersteunings aanvraag wilt indienen voor een probleem met de pagina Azure AD-account of de pagina Office-account, voert u de volgende stappen uit zodat uw aanvraag correct wordt gerouteerd: 
+Als u een ondersteuningsaanvraag moet indienen voor een probleem met de Azure AD-accountpagina of de Pagina Office-account, voert u de volgende stappen uit zodat uw aanvraag correct is gerouteerd: 
 
-* Open een ondersteunings aanvraag in het Azure Portal voor problemen met de pagina **Mijn account van Azure AD** . Ga naar **Azure Portal** > **Azure Active Directory** > **nieuwe ondersteunings aanvraag**.
+* Open een ondersteuningsaanvraag vanuit de Azure-portal voor problemen met de pagina **'Mijn account'** van Azure AD. Ga naar **Azure portal** > **Azure Active Directory** > **Nieuwe ondersteuningsaanvraag**.
 
-* Voor problemen met de pagina **Mijn account in Office** opent u een ondersteunings aanvraag vanuit het Microsoft 365-beheer centrum. Ga naar **Microsoft 365 beheer centrum** > **ondersteuning**. 
+* Open een ondersteuningsverzoek vanuit het Microsoft 365-beheercentrum voor problemen met de pagina **'Mijn account'** van Office. Ga naar **Microsoft 365-beheercentrumondersteuning** > **Support**. 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory](end-user-experiences.md)
+[Ervaringen van eindgebruikers voor toepassingen in Azure Active Directory](end-user-experiences.md)

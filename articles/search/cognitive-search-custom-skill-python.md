@@ -1,7 +1,7 @@
 ---
-title: Voor beeld van aangepaste vaardigheid (python)
+title: Voorbeeld van aangepaste vaardigheid (Python)
 titleSuffix: Azure Cognitive Search
-description: Voor python-ontwikkel aars leert u de hulpprogram ma's en technieken voor het bouwen van een aangepaste vaardigheid met behulp van Azure Functions en Visual Studio. Aangepaste vaardig heden bevatten door de gebruiker gedefinieerde modellen of logica die u kunt toevoegen aan een AI-verrijkte index pijplijn in azure Cognitive Search.
+description: Voor Python-ontwikkelaars leert u de hulpprogramma's en technieken voor het bouwen van een aangepaste vaardigheid met Azure-functies en Visual Studio. Aangepaste vaardigheden bevatten door de gebruiker gedefinieerde modellen of logica die u toevoegen aan een met AI verrijkte indexeringspijplijn in Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,55 +9,55 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210462"
 ---
-# <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
+# <a name="example-create-a-custom-skill-using-python"></a>Voorbeeld: Een aangepaste vaardigheid maken met Python
 
-In dit voor beeld van Azure Cognitive Search vaardig heden leert u hoe u een aangepaste web-API maakt met behulp van python en Visual Studio code. In het voor beeld wordt een [Azure-functie](https://azure.microsoft.com/services/functions/) gebruikt waarmee de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md)wordt geïmplementeerd.
+In dit azure cognitive search-vaardigheidssetvoorbeeld leert u hoe u een aangepaste web-API-vaardigheid maakt met Python en Visual Studio Code. In het voorbeeld wordt een [Azure-functie](https://azure.microsoft.com/services/functions/) gebruikt die de [aangepaste vaardigheidsinterface](cognitive-search-custom-skill-interface.md)implementeert.
 
-De aangepaste vaardigheid is eenvoudig in het ontwerp (het voegt twee teken reeksen samen) zodat u zich kunt concentreren op de hulpprogram ma's en technologieën die worden gebruikt voor het ontwikkelen van aangepaste vaardig heden in python. Als u een eenvoudige vaardigheid hebt voltooid, kunt u deze uitbreiden met complexere scenario's.
+De aangepaste vaardigheid is eenvoudig door het ontwerp (het concatenates twee snaren) zodat u zich concentreren op de tools en technologieën die worden gebruikt voor aangepaste vaardigheid ontwikkeling in Python. Zodra u slaagt met een eenvoudige vaardigheid, u vertakken met meer complexe scenario's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Bekijk de [aangepaste vaardigheids interface](cognitive-search-custom-skill-interface.md) voor een inleiding in de invoer-en uitvoer interface waarvoor een aangepaste vaardigheid moet worden geïmplementeerd.
++ Bekijk de [aangepaste vaardigheidsinterface](cognitive-search-custom-skill-interface.md) voor een introductie in de invoer-/uitvoerinterface die een aangepaste vaardigheid moet implementeren.
 
-+ Stel uw omgeving in. We hebben [de end-to-end-zelf studie](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) gevolgd om een Serverloze Azure-functie in te stellen met behulp van Visual Studio code en python-extensies. De zelf studie leidt u door de installatie van de volgende hulpprogram ma's en onderdelen: 
++ Stel uw omgeving in. We hebben [deze zelfstudie end-to-end](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) gevolgd om de Azure-functie zonder server in te stellen met behulp van Visual Studio Code- en Python-extensies. De zelfstudie leidt u door de installatie van de volgende gereedschappen en componenten: 
 
-  + [Python 3,75](https://www.python.org/downloads/release/python-375/)
-  + [Visual Studio Code](https://code.visualstudio.com/)
-  + [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Python 3.75](https://www.python.org/downloads/release/python-375/)
+  + [Visual Studio-code](https://code.visualstudio.com/)
+  + [Python-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+  + [Core-hulpprogramma's voor Azure-functies](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
   + [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) (Azure Functions-extensie voor Visual Studio Code)
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-In dit voor beeld wordt een Azure-functie gebruikt om het concept van het hosten van een web-API te demonstreren, maar andere benaderingen zijn mogelijk. Als u voldoet aan de [Interface vereisten voor een cognitieve vaardigheid](cognitive-search-custom-skill-interface.md), is de aanpak die u uitvoert, niet van belang. Met Azure Functions kunt u echter eenvoudig een aangepaste vaardigheid maken.
+In dit voorbeeld wordt een Azure-functie gebruikt om het concept van het hosten van een web-API aan te tonen, maar andere benaderingen zijn mogelijk. Zolang je voldoet aan de [interface-eisen voor een cognitieve vaardigheid,](cognitive-search-custom-skill-interface.md)de aanpak die u neemt is onbelangrijk. Azure Functions maakt het echter eenvoudig om een aangepaste vaardigheid te maken.
 
 ### <a name="create-a-function-app"></a>Een functie-app maken
 
 De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat kan worden gepubliceerd in een functie-app in Azure. Met een functie-app kunt u functies groeperen in een logische eenheid, zodat u resources kunt beheren, implementeren en delen.
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Create new project...`.
+1. Druk in Visual Studio Code op F1 om het opdrachtpalet te openen. Zoek en selecteer `Azure Functions: Create new project...`in het opdrachtpalet .
 
-1. Kies een maplocatie voor de Project werkruimte en kies **selecteren**.
+1. Kies een maplocatie voor uw projectwerkruimte en kies **Selecteren**.
 
     > [!NOTE]
-    > Deze stappen zijn zodanig ontworpen dat ze buiten een werk ruimte worden uitgevoerd. Daarom moet u geen projectmap selecteren die deel uitmaakt van een werk ruimte.
+    > Deze stappen zijn ontworpen om buiten een werkruimte te worden voltooid. Selecteer daarom geen projectmap die deel uitmaakt van een werkruimte.
 
-1. Selecteer een taal voor uw functie-app-project. Voor deze zelf studie selecteert u **python**.
-1. Selecteer de python-versie, (versie 3.7.5 wordt ondersteund door Azure Functions)
-1. Selecteer een sjabloon voor de eerste functie van uw project. Selecteer **http-trigger** om een door http geactiveerde functie in de nieuwe functie-app te maken.
-1. Geef een functie naam op. In dit geval gebruiken we **samen voegen** 
-1. Selecteer **functie** als autorisatie niveau. Dit betekent dat we een [functie sleutel](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) zullen opgeven om het http-eind punt van de functie aan te roepen. 
-1. Selecteer hoe u uw project wilt openen. Voor deze stap selecteert u **toevoegen aan werk ruimte** om de functie-app in de huidige werk ruimte te maken.
+1. Selecteer een taal voor uw functie-app-project. Selecteer Voor deze zelfstudie **Python**.
+1. Selecteer de Python-versie (versie 3.7.5 wordt ondersteund door Azure-functies)
+1. Selecteer een sjabloon voor de eerste functie van uw project. Selecteer **HTTP-trigger** om een HTTP-geactiveerde functie te maken in de nieuwe functie-app.
+1. Geef een functienaam op. In dit geval, laten we gebruik maken **van Concatenator** 
+1. Selecteer **Functie** als machtigingsniveau. Dit betekent dat we een [functiesleutel](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) bieden om het HTTP-eindpunt van de functie aan te roepen. 
+1. Selecteer hoe u uw project wilt openen. Selecteer voor deze stap **Toevoegen aan werkruimte om** de functie-app in de huidige werkruimte te maken.
 
 Het functie-appproject wordt in een nieuwe werkruimte gemaakt. Het project bevat de configuratiebestanden [host.json](../azure-functions/functions-host-json.md) en [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), plus eventuele taalspecifieke projectbestanden. 
 
-Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **samen voegen** van het functie-app-project. Hierin wordt een bestand met de naam '\_\_init__. py ' weer met deze inhoud:
+Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **Concatenator** van het functie-app-project. Binnen in het zal er\_\_een bestand genaamd " init__.py", met deze inhoud:
 
 ```py
 import logging
@@ -87,7 +87,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ```
 
-Nu gaan we die code wijzigen om de [aangepaste vaardigheden interface](cognitive-search-custom-skill-interface.md)te volgen. Wijzig de code met de volgende inhoud:
+Laten we nu die code aanpassen om de [aangepaste vaardigheidsinterface](cognitive-search-custom-skill-interface.md)te volgen). Wijzig de code met de volgende inhoud:
 
 ```py
 import logging
@@ -167,41 +167,41 @@ def transform_value(value):
             })
 ```
 
-Met de methode **transform_value** wordt een bewerking uitgevoerd op één record. U kunt de methode wijzigen zodat deze voldoet aan uw specifieke behoeften. Vergeet niet om de benodigde invoer validatie uit te voeren en eventuele fouten en waarschuwingen te retour neren die zijn gegenereerd als de bewerking niet kan worden voltooid voor de record.
+De **transform_value** methode voert een bewerking uit op één record. U de methode aanpassen om aan uw specifieke behoeften te voldoen. Vergeet niet om de benodigde invoervalidatie uit te voeren en eventuele fouten en waarschuwingen die zijn geproduceerd als de bewerking niet voor de record kon worden voltooid, terug te sturen.
 
-### <a name="debug-your-code-locally"></a>Fout opsporing voor uw code lokaal
+### <a name="debug-your-code-locally"></a>Uw code lokaal debuggen
 
-Met Visual Studio code kunt u eenvoudig fouten opsporen in de code. Druk op F5 of ga naar het menu **fout opsporing** en selecteer **fout opsporing starten**.
+Visual Studio Code maakt het gemakkelijk om de code te debuggen. Druk op 'F5' of ga naar het menu **Foutopsporing** en selecteer **Foutopsporing starten**.
 
-U kunt onderbrekings punten voor de code instellen door op F9 te drukken op de gewenste regel.
+U alle breekpunten op de code door te raken 'F9' op de lijn van belang.
 
-Wanneer u de fout opsporing hebt gestart, wordt de functie lokaal uitgevoerd. U kunt een hulp programma zoals postman of Fiddler gebruiken om de aanvraag te verzenden naar localhost. Noteer de locatie van het lokale eind punt in het Terminal venster. 
+Zodra u bent begonnen met debuggen, wordt uw functie lokaal uitgevoerd. U een tool zoals Postman of Fiddler gebruiken om het verzoek aan localhost uit te geven. Let op de locatie van uw lokale eindpunt in het terminalvenster. 
 
 ## <a name="publish-your-function"></a>Uw functie publiceren
 
-Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
+Wanneer u tevreden bent met het functiegedrag, u het publiceren.
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert **u implementeren naar functie-app...** . 
+1. Druk in Visual Studio Code op F1 om het opdrachtpalet te openen. Zoek en selecteer In het opdrachtpalet **Deploy naar functie-app...**. 
 
 1. Selecteer het Azure-abonnement waar u uw toepassing wilt implementeren.
 
-1. Selecteer **+ nieuwe functie-app maken in azure**
+1. Selecteren **+ Nieuwe functie-app maken in Azure**
 
-1. Voer een wereld wijd unieke naam in voor de functie-app.
+1. Voer een wereldwijd unieke naam in voor uw functie-app.
 
-1. Selecteer python-versie (python 3.7. x werkt voor deze functie).
+1. Selecteer Python-versie (Python 3.7.x werkt voor deze functie).
 
-1. Selecteer een locatie voor de nieuwe resource (bijvoorbeeld VS-West 2).
+1. Selecteer een locatie voor de nieuwe resource (bijvoorbeeld West US 2).
 
-Op dit moment worden de benodigde resources in uw Azure-abonnement gemaakt om de nieuwe Azure-functie in azure te hosten. Wacht totdat de installatie is voltooid. In het uitvoer venster ziet u de status van het implementatie proces.
+Op dit moment worden de benodigde resources gemaakt in uw Azure-abonnement om de nieuwe Azure-functie op Azure te hosten. Wacht totdat de installatie is voltooid. In het uitvoervenster ziet u de status van het implementatieproces.
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar **alle resources** en zoek naar de functie die u hebt gepubliceerd met behulp van de naam. Als u IT- **samen voeging**heet, selecteert u de resource.
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar **Alle bronnen** en zoek naar de functie die u onder de naam hebt gepubliceerd. Als u de **concatenator**hebt genoemd, selecteert u de resource.
 
-1. Klik op de knop **</> functie-URL ophalen** . Zo kunt u de URL kopiëren om de functie aan te roepen.
+1. Klik op de knop URL van **de functie</> ophalen.** Hiermee u de URL kopiëren om de functie aan te roepen.
 
-## <a name="test-the-function-in-azure"></a>De functie in azure testen
+## <a name="test-the-function-in-azure"></a>De functie testen in Azure
 
-Nu u de standaardhostcode hebt, moet u de functie als volgt testen:
+Nu u de standaardhostsleutel hebt, test u uw functie als volgt:
 
 ```http
 POST [Function URL you copied above]
@@ -227,11 +227,11 @@ POST [Function URL you copied above]
 }
 ```
 
-In dit voor beeld moet u hetzelfde resultaat opleveren dat u eerder hebt gezien bij het uitvoeren van de functie in de lokale omgeving.
+In dit voorbeeld moet hetzelfde resultaat worden opgeleverd dat u eerder hebt gezien bij het uitvoeren van de functie in de lokale omgeving.
 
-## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijp lijn
+## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijplijn
 
-Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardig heden. In het onderstaande voor beeld ziet u hoe u de vaardigheid aanroept om de titel en de auteur van het document samen te voegen in één veld dat wordt aangeroepen merged_title_author. Vervang `[your-function-url-here]` door de URL van de nieuwe Azure-functie.
+Nu je een nieuwe aangepaste vaardigheid hebt, kun je deze toevoegen aan je vaardigheden. In het onderstaande voorbeeld ziet u hoe u de vaardigheid aanroepen om de titel en de auteur van het document samen te stellen tot één veld dat we merged_title_author noemen. Vervang `[your-function-url-here]` door de URL van uw nieuwe Azure-functie.
 
 ```json
 {
@@ -264,10 +264,10 @@ Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd. U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
+Gefeliciteerd! Je hebt je eerste aangepaste vaardigheid gemaakt. Nu u hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende links voor meer informatie.
 
-+ [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)
++ [Power Skills: een opslagplaats van aangepaste vaardigheden](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Een aangepaste vaardigheid toevoegen aan een AI-verrijkingspijplijn](cognitive-search-custom-skill-interface.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Skillset (REST) maken](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Verrijkte velden in kaart brengen](cognitive-search-output-field-mapping.md)

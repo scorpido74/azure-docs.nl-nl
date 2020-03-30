@@ -1,6 +1,6 @@
 ---
-title: Gedeelde VM-installatie kopieën maken met Azure PowerShell
-description: Meer informatie over het gebruik van Azure PowerShell voor het maken van een installatie kopie van een gedeelde virtuele machine in azure
+title: Gedeelde VM-afbeeldingen maken met Azure PowerShell
+description: Meer informatie over het gebruik van Azure PowerShell om een gedeelde virtuele machineafbeelding in Azure te maken
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,45 +16,45 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74066243"
 ---
-# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Een galerie met gedeelde afbeeldingen maken met Azure PowerShell 
+# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Een gedeelde afbeeldingsgalerie maken met Azure PowerShell 
 
-Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatie kopieën kunnen worden gebruikt om implementatie taken te Boots trapn, zoals het vooraf laden van toepassingen, toepassings configuraties en andere besturingssysteem configuraties. 
+Een [gedeelde afbeeldingsgalerie](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw hele organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste afbeeldingen kunnen worden gebruikt om implementatietaken op te start zetten, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere OS-configuraties. 
 
-Met de galerie voor gedeelde afbeeldingen kunt u uw aangepaste VM-installatie kopieën delen met anderen in uw organisatie, binnen of tussen verschillende regio's binnen een AAD-Tenant. Kies welke installatie kopieën u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u wilt delen. U kunt meerdere galerieën maken zodat u gedeelde installatie kopieën logisch kunt groeperen. 
+Met de gedeelde afbeeldingsgalerie u uw aangepaste VM-afbeeldingen delen met anderen in uw organisatie, binnen of tussen regio's, binnen een AAD-tenant. Kies in welke afbeeldingen u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u ze wilt delen. U meerdere galerieën maken, zodat u op logischmogelijke wijze gedeelde afbeeldingen groeperen. 
 
-De galerie is een resource op het hoogste niveau die volledige op rollen gebaseerd toegangs beheer (RBAC) biedt. Installatie kopieën kunnen versie nummer hebben en u kunt ervoor kiezen om elke installatie kopie versie te repliceren naar een andere set Azure-regio's. De galerie werkt alleen met beheerde installatie kopieën.
+De galerie is een bron op het hoogste niveau die volledige role-based access control (RBAC) biedt. Afbeeldingen kunnen worden geversioneerd en u ervoor kiezen om elke afbeeldingsversie te repliceren naar een andere set Azure-regio's. De galerie werkt alleen met Beheerde afbeeldingen.
 
-De functie gedeelde installatie kopie galerie heeft meerdere bron typen. We gebruiken of maken deze in dit artikel:
+De functie Gedeelde afbeeldingsgalerie heeft meerdere resourcetypen. We zullen deze gebruiken of bouwen in dit artikel:
 
 | Resource | Beschrijving|
 |----------|------------|
-| **Beheerde installatie kopie** | Dit is een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van gegeneraliseerde Vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
-| **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
-| **Definitie van installatie kopie** | Installatie kopieën worden in een galerie gedefinieerd en bevatten informatie over de installatie kopie en de vereisten voor het intern gebruik. Dit betekent of de installatie kopie Windows of Linux, release opmerkingen en minimale en maximale geheugen vereisten is. Het is een definitie van een type installatie kopie. |
-| **Versie van installatie kopie** | Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Net als bij een beheerde installatie kopie wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine wanneer u een **installatie kopie** gebruikt voor het maken van een virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt. |
+| **Beheerde afbeelding** | Dit is een basisafbeelding die alleen kan worden gebruikt of kan worden gebruikt om een **afbeeldingsversie** in een afbeeldingsgalerie te maken. Beheerde afbeeldingen worden gemaakt op gealgemene VM's. Een beheerde afbeelding is een speciaal type VHD dat kan worden gebruikt om meerdere VM's te maken en kan nu worden gebruikt om versies van gedeelde afbeeldingen te maken. |
+| **Afbeeldingsgalerie** | Net als de Azure Marketplace is een **afbeeldingsgalerie** een opslagplaats voor het beheren en delen van afbeeldingen, maar u bepaalt wie toegang heeft. |
+| **Afbeeldingsdefinitie** | Afbeeldingen worden gedefinieerd in een galerie en bevatten informatie over de afbeelding en vereisten voor het intern gebruiken ervan. Dit omvat of de afbeelding Windows of Linux is, release notes en minimale en maximale geheugenvereisten. Het is een definitie van een type beeld. |
+| **Versie van installatiekopie** | Een **afbeeldingsversie** is wat u gebruikt om een vm te maken wanneer u een galerie gebruikt. U meerdere versies van een afbeelding hebben als dat nodig is voor uw omgeving. Net als een beheerde afbeelding wordt de afbeeldingsversie gebruikt om nieuwe schijven voor de virtuele machine te maken wanneer u een **afbeeldingsversie** gebruikt om een afbeeldingsversie te maken. Afbeeldingsversies kunnen meerdere keren worden gebruikt. |
 
-Voor elke 20 Vm's die u gelijktijdig maakt, raden we u aan één replica te blijven gebruiken. Als u 120 Vm's gelijktijdig maakt met behulp van dezelfde installatie kopie in een regio, wordt u aangeraden minstens 6 replica's van uw installatie kopie te gebruiken. Zie [schalen](/azure/virtual-machines/windows/shared-image-galleries#scaling)voor meer informatie.
+Voor elke 20 VM's die u gelijktijdig maakt, raden we u aan één replica te bewaren. Als u bijvoorbeeld tegelijkertijd 120 VM's maakt met dezelfde afbeelding in een regio, raden we u aan ten minste 6 replica's van uw afbeelding te bewaren. Zie [Schalen voor](/azure/virtual-machines/windows/shared-image-galleries#scaling)meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Om het voor beeld in dit artikel te volt ooien, moet u een bestaande beheerde installatie kopie hebben. U kunt [zelf studie volgen: Maak een aangepaste installatie kopie van een Azure-VM met Azure PowerShell](tutorial-custom-images.md) om er een te maken, indien nodig. Als de beheerde installatie kopie een gegevens schijf bevat, kan de grootte van de gegevens schijf niet groter zijn dan 1 TB.
+Als u het voorbeeld in dit artikel wilt voltooien, moet u een bestaande beheerde afbeelding hebben. U [Zelfstudie volgen: maak een aangepaste afbeelding van een Azure VM met Azure PowerShell](tutorial-custom-images.md) om er indien nodig een te maken. Als de beheerde afbeelding een gegevensschijf bevat, mag de grootte van de gegevensschijf niet meer dan 1 TB bedragen.
 
-Wanneer u dit artikel doorwerkt, moet u de namen van de resource groep en de VM vervangen, indien nodig.
+Wanneer u dit artikel doorloopt, vervangt u de resourcegroep en VM-namen waar nodig.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
 
  
-## <a name="create-vms-from-an-image"></a>Vm's maken op basis van een installatie kopie
+## <a name="create-vms-from-an-image"></a>VM's maken op basis van een afbeelding
 
-Zodra de versie van de installatie kopie is voltooid, kunt u een of meer nieuwe virtuele machines maken. Met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . 
+Zodra de afbeeldingsversie is voltooid, u een of meer nieuwe VM's maken. Met behulp van de [Nieuw-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet. 
 
-In dit voor beeld wordt een VM gemaakt met de naam *myVMfromImage*in de *MyResourceGroup* in het *Zuid-Centraal* -Data Center.
+In dit voorbeeld wordt een VM met de naam *myVMfromImage*gemaakt in de *myResourceGroup* in het datacenter in South *Central US.*
 
 
 ```azurepowershell-interactive
@@ -97,14 +97,14 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Met [Azure Image Builder (preview)](image-builder-overview.md) kunt u het maken van de installatie kopie versie automatiseren, maar u kunt deze zelfs gebruiken om [een nieuwe installatie kopie versie te maken op basis van een bestaande versie van de installatie kopie](image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (preview)](image-builder-overview.md) kan helpen bij het automatiseren van het maken van afbeeldingsversies, u het zelfs gebruiken om een nieuwe afbeeldingsversie bij te werken en [te maken vanuit een bestaande afbeeldingsversie.](image-builder-gallery-update-image-version.md) 
 
-U kunt ook een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure Quick Start-sjablonen beschikbaar: 
+U ook bronnen voor Shared Image Gallery maken met sjablonen. Er zijn verschillende Azure Quickstart-sjablonen beschikbaar: 
 
-- [Een galerie met gedeelde afbeeldingen maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Een definitie van een installatie kopie maken in een galerie met gedeelde afbeeldingen](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Een installatie kopie versie maken in een galerie met gedeelde afbeeldingen](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Een VM maken op basis van de installatie kopie versie](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Een gedeelde afbeeldingsgalerie maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Een afbeeldingsdefinitie maken in een gedeelde afbeeldingsgalerie](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Een afbeeldingsversie maken in een gedeelde afbeeldingsgalerie](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Een VM maken op basis van afbeeldingsversie](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën. Als u problemen ondervindt, raadpleegt u [problemen met de galerie met gedeelde afbeeldingen oplossen](troubleshooting-shared-images.md).
+Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde galerieën. Zie [Problemen oplossen met gedeelde afbeeldingsgalerieën](troubleshooting-shared-images.md)als u problemen ondervindt.
 

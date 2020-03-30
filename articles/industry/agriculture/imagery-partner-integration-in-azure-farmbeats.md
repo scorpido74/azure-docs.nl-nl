@@ -1,64 +1,64 @@
 ---
 title: Partnerintegratie voor afbeeldingen
-description: In dit artikel wordt de installatie kopie van de partner beschreven.
+description: In dit artikel wordt beschreven dat de partnerintegratie van afbeeldingen wordt beschreven.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131858"
 ---
 # <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
 
-In dit artikel wordt beschreven hoe u het onderdeel Azure FarmBeats Translator gebruikt om afbeeldings gegevens naar FarmBeats te verzenden. Gegevens over agrarische beelden kunnen worden gegenereerd op basis van verschillende bronnen, zoals MultiSpectral-camera's, satellieten en drones. Agrarische installatie kopieën kunnen worden geïntegreerd met FarmBeats om klanten met aangepaste, gegenereerde kaarten voor hun farms te voorzien.
+In dit artikel wordt beschreven hoe u de component Azure FarmBeats Translator gebruiken om afbeeldingen naar FarmBeats te verzenden. Agrarische beelden kunnen worden gegenereerd uit verschillende bronnen, zoals multispectrale camera's, satellieten en drones. Agrarische beeldenpartners kunnen integreren met FarmBeats om klanten op maat gemaakte kaarten voor hun boerderijen te bieden.
 
-Gegevens, die beschikbaar zijn, kunnen worden gevisualiseerd via de FarmBeats-Accelerator en mogelijk worden gebruikt voor gegevens fusie en het model van machine learning/kunst matige intelligentie (ML/AI) dat is gebaseerd op agrarische ondernemingen of integrators van klant systemen.
+Gegevens, eenmaal beschikbaar, kunnen worden gevisualiseerd via de FarmBeats Accelerator en mogelijk worden gebruikt voor data fusion en machine learning/artificial intelligence (ML/AI) modelbuilding door agrarische bedrijven of systeemintegratoren van klanten.
 
-FarmBeats biedt de mogelijkheid om het volgende te doen:
+FarmBeats biedt de mogelijkheid om:
 
-- Definieer aangepaste afbeeldings typen, bron en bestands indeling met behulp van/ExtendedType-Api's.
-- Opname gegevens uit verschillende bronnen opnemen via de/scene-en/SceneFile-Api's.
+- Definieer aangepaste afbeeldingstypen, bron- en bestandsindeling met behulp van /ExtendedType API's.
+- Opname beelden gegevens uit verschillende bronnen via de /Scene en / SceneFile API's.
 
-De volgende informatie is gericht op het ophalen van een wille keurige vorm van installatie kopieën in het FarmBeats-systeem.
+De volgende informatie is gericht op het verkrijgen van elke vorm van beeldmateriaal in het FarmBeats-systeem.
 
-Wanneer u de sectie **drone installatie kopie** selecteert, wordt er een pop-up geopend met een afbeelding met een hoge resolutie van de drone-orthomosaic. U hebt toegang tot de partner software, die helpt om drone vluchten te plannen en onbewerkte gegevens op te halen. U kunt de software van de partner blijven gebruiken voor het plannen van paden en orthomosaic-installatie kopieën.
+Wanneer u de sectie **Drone-beelden** selecteert, wordt een pop-up geopend om een afbeelding met hoge resolutie van het droneorthomozaïek weer te geven. U hebt toegang tot de partnersoftware, die helpt bij het plannen van dronevluchten en het krijgen van ruwe gegevens. U blijft de software van de partner gebruiken voor padplanning en orthomozaïekbeeldstiksels.
 
-Drone-partners moeten klanten in staat stellen hun klant account te koppelen aan hun FarmBeats-exemplaar in Azure.
+Drone-partners moeten klanten in staat stellen hun klantenaccount te koppelen aan hun FarmBeats-exemplaar op Azure.
 
-U moet de volgende referenties in de drone-partner software gebruiken om FarmBeats te koppelen:
+U moet de volgende referenties in de dronepartnersoftware gebruiken om FarmBeats te koppelen:
 
-- API-eind punt
+- API-eindpunt
 - Tenant-id
 - Client-id
 - Clientgeheim
 
 ## <a name="api-development"></a>API-ontwikkeling
 
-De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over de api's en bijbehorende aanvragen of antwoorden.
+De API's bevatten technische documentatie van Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor informatie over de API's en bijbehorende verzoeken of antwoorden.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
-FarmBeats maakt gebruik van Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
+FarmBeats maakt gebruik van Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service biedt ingebouwde verificatie- en autorisatieondersteuning. 
 
 Zie [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)voor meer informatie over Azure AD.   
 
-FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
+FarmBeats Datahub maakt gebruik van verificatie aan toonder, waarvoor de volgende referenties nodig zijn:
 
 - Client-id
 - Clientgeheim
 - Tenant-id
 
-Met behulp van de voor gaande referenties kan de aanroeper een toegangs token aanvragen dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:
+Met behulp van de vorige referenties kan de beller een toegangstoken aanvragen, dat in de volgende API-aanvragen in de sectie header moet worden verzonden:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-Het volgende python-code voorbeeld haalt het toegangs token op. U kunt vervolgens het token gebruiken voor de volgende API-aanroepen naar FarmBeats.
+In het volgende voorbeeld van python-code wordt het toegangstoken opgehaald. U het token vervolgens gebruiken voor volgende API-aanroepen naar FarmBeats.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials 
@@ -77,29 +77,29 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 access_token = token_response.get('accessToken') 
 ```
 
-## <a name="http-request-headers"></a>HTTP-aanvraag headers
+## <a name="http-request-headers"></a>HTTP-aanvraagkoppen
 
-Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep maakt naar FarmBeats Datahub.
+Dit zijn de meest voorkomende aanvraagkoppen die moeten worden opgegeven wanneer u een API-aanroep naar FarmBeats Datahub maakt.
 
-**Header** | **Beschrijving en voor beeld**
+**Header** | **Beschrijving en voorbeeld**
 --- | ---
-Content-Type  | De aanvraag indeling (content-type: Application/<format>). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
-Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer < Access-token >
-Accepteren  | De antwoord indeling. Voor FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
+Content-Type  | De aanvraagindeling (Inhoudstype:<format>toepassing/ ). Voor FarmBeats Datahub API's is de indeling JSON. Inhoudstype: toepassing/json
+Autorisatie | Hiermee geeft u het toegangstoken op dat nodig is om een API-aanroep te maken. Autorisatie:> van Access-Token aan touw <
+Accepteren  | De antwoordnotatie. Voor FarmBeats Datahub API's is de indeling JSON. Accepteren: toepassing/json
 
 
 ## <a name="api-requests"></a>API-aanvragen
 
-Als u een REST API aanvraag wilt maken, moet u het volgende combi neren:
+Als u een REST API-aanvraag wilt indienen, combineert u:
 
 - De HTTP-methode (GET, POST en PUT).
-- De URL van de API-service.
-- De resource-URI (om gegevens op te vragen, in te dienen, bij te werken of te verwijderen).
-- Een of meer HTTP-aanvraag headers.
+- De URL naar de API-service.
+- De resource URI (om gegevens op te vragen, in te dienen, bij te werken of te verwijderen).
+- Een of meer HTTP-aanvraagkoppen.
 
-U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
+Optioneel u queryparameters opnemen in GET-oproepen om te filteren, de grootte van de gegevens te beperken en de gegevens in de antwoorden te sorteren.
 
-De volgende voorbeeld aanvraag is om de lijst met apparaten op te halen:
+De volgende voorbeeldaanvraag is om de lijst met apparaten op te halen:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
@@ -107,9 +107,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-Voor de meeste GET-, POST-en PUT-aanroepen is een JSON-aanvraag tekst vereist.
+De meeste GET, POST, en PUT oproepen vereisen een JSON aanvraag lichaam.
 
-De volgende voorbeeld aanvraag is het maken van een apparaat. Dit voor beeld heeft een invoer-JSON met de aanvraag tekst.
+De volgende voorbeeldaanvraag is het maken van een apparaat. Dit monster heeft een input JSON met de aanvraaginstantie.
 
 
 ```bash
@@ -122,34 +122,34 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>Gegevensindeling
 
-JSON is een gemeen schappelijke taal onafhankelijke gegevens indeling die een eenvoudige tekst weergave bevat van wille keurige gegevens structuren. Zie [JSON org](https://JSON.org)(Engelstalig) voor meer informatie.
+JSON is een veelgebruikte taalonafhankelijke gegevensindeling die een eenvoudige tekstweergave van willekeurige gegevensstructuren biedt. Zie [JSON org](https://JSON.org)voor meer informatie.
 
-## <a name="ingest-imagery-into-farmbeats"></a>Afbeeldingen opnemen in FarmBeats
+## <a name="ingest-imagery-into-farmbeats"></a>Afbeeldingen innemen in FarmBeats
 
-Nadat de partner referenties heeft om verbinding te maken met FarmBeats Datahub, voert de partner de volgende stappen uit in het onderdeel Translator.
+Nadat de partner referenties heeft om verbinding te maken met FarmBeats Datahub, neemt de partner de volgende stappen in de component Translator.
 
-1.  Maak een nieuw uitgebreid type voor de volgende velden, in overeenstemming met het type afbeelding dat moet worden geüpload:
+1.  Maak een nieuw uitgebreid type voor de volgende velden, in overeenstemming met het type afbeeldingen dat moet worden geüpload:
 
-    - **Scène bron**: bijvoorbeeld drone_partner_name
-    - **Type scène**: bijvoorbeeld Drone
-    - **Type scène bestand**: bijvoorbeeld Chlorophyll index
-    - **Type inhoud van scène bestand**: bijvoorbeeld afbeelding/TIFF
+    - **Scènebron**: drone_partner_name
+    - **Scènetype:** bijvoorbeeld drone
+    - **Scènebestandstype:** bijvoorbeeld chlorofylindex
+    - **Scènebestandsinhoudstype:** bijvoorbeeld afbeelding/tiff
 
-2.  Roep de/Farms-API aan om de lijst met Farms op te halen in het Azure FarmBeats-systeem.
-3.  Geef de klant de mogelijkheid om één farm te kiezen uit de lijst met farms.
+2.  Bel de API /Farms om de lijst met farms binnen het Azure FarmBeats-systeem te krijgen.
+3.  Geef de klant de mogelijkheid om één bedrijf te kiezen uit de lijst van boerderijen.
 
-    Het partner systeem moet de farm binnen de partner software weer geven om de drone-vlucht en-installatie kopie verzameling uit te voeren.
+    Het partnersysteem moet de boerderij binnen de partnersoftware tonen om de padplanning en dronevlucht en beeldverzameling te doen.
 
-4.  Roep de/scene-API aan en geef de vereiste gegevens op om een nieuwe scène te maken met een unieke scène-ID.
-5.  Ontvang een BLOB SAS-URL voor het uploaden van de vereiste installatie kopieën in FarmBeats Datahub, in de context van de gekozen Farm, in het FarmBeats-systeem.
+4.  Bel de /Scene API en geef vereiste details om een nieuwe scène te maken met een unieke scène-ID.
+5.  Ontvang een blob SAS URL om de vereiste afbeeldingen te uploaden naar FarmBeats Datahub, in de context van de gekozen farm, in het FarmBeats-systeem.
 
-Hier volgt een gedetailleerde stroom van de API-aanroepen.
+Hier is een gedetailleerde stroom over de API-aanroepen.
 
-### <a name="step-1-extendedtype"></a>Stap 1: Extended type
+### <a name="step-1-extendedtype"></a>Stap 1: ExtendedType
 
-Raadpleeg de/ExtendedType-API om te zien of het type en de bestands bron beschikbaar zijn op FarmBeats. Als u dit wilt doen, roept u de/ExtendedType-API aan.
+Schakel de /ExtendedType API in om te zien of het type en de bestandsbron beschikbaar zijn op FarmBeats. Roep hiervoor een GET aan op de /ExtendedType API.
 
-Dit zijn de door het systeem gedefinieerde waarden:
+Hier zijn de systeemgedefinieerde waarden:
 
 ```json
 {
@@ -331,9 +331,9 @@ Dit zijn de door het systeem gedefinieerde waarden:
 }
 ```
 
-Deze stap is een eenmalige installatie. Het bereik van dit nieuwe type scène is beperkt tot het abonnement waarin de Azure-FarmBeats is geïnstalleerd.
+Deze stap is een eenmalige installatie. Het bereik van dit nieuwe scènetype is beperkt tot het abonnement waarin de Azure FarmBeats is geïnstalleerd.
 
-Bijvoorbeeld, om SceneSource toe te voegen: "SlantRange", voert u een PUT uit op de ID van de/ExtendedType-API met de sleutel "SceneSource" invoer payload.
+Als u bijvoorbeeld SceneSource: "SlantRange" wilt toevoegen, doet u een PUT op de ID van de /ExtendedType API met de belangrijkste invoerpayload 'SceneSource'.
 
 ```json
 {
@@ -351,13 +351,13 @@ Bijvoorbeeld, om SceneSource toe te voegen: "SlantRange", voert u een PUT uit op
 
 ```
 
-Het groene veld is de nieuwe toevoeging aan de door het systeem gedefinieerde scène bron waarden.
+Het groene veld is de nieuwe toevoeging aan de door het systeem gedefinieerde scènebronwaarden.
 
-### <a name="step-2-get-farm-details"></a>Stap 2: Farm Details ophalen
+### <a name="step-2-get-farm-details"></a>Stap 2: Meer informatie over de boerderij
 
-De scènes (TIFF-of CSV-bestanden) bevinden zich in de context van een farm. U moet de gegevens van de farm ophalen met behulp van de/farm-API. De API retourneert de lijst met Farms die beschikbaar zijn in FarmBeats. U kunt de farm selecteren waarvoor u de gegevens wilt opnemen.
+De scènes (.tiff- of CSV-bestanden) bevinden zich in de context van een farm. Je moet de boerderij details te krijgen door het doen van een GET op de / Farm API. De API retourneert de lijst met farms die beschikbaar zijn in FarmBeats. U de farm selecteren waarvoor u de gegevens wilt innemen.
 
-/Farm-antwoord ophalen:
+GET /Farm reactie:
 
 ```json
 {
@@ -403,13 +403,13 @@ De scènes (TIFF-of CSV-bestanden) bevinden zich in de context van een farm. U m
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>Stap 3: een scène-ID maken (POST-aanroep)
+### <a name="step-3-create-a-scene-id-post-call"></a>Stap 3: Een scène-id maken (post-oproep)
 
-Maak een nieuw scène-(TIFF-of CSV-bestand) met de opgegeven informatie, die de datum, de volg orde en de farm-ID bevat waarmee de scène is gekoppeld. De meta gegevens die aan de scène zijn gekoppeld, kunnen worden gedefinieerd onder eigenschappen, die de duur en het type meting bevatten.
+Maak een nieuwe scène (.tiff of CSV-bestand) met de opgegeven informatie, die de datum, volgorde en farm-id biedt waaraan de scène is gekoppeld. De metagegevens die aan de scène zijn gekoppeld, kunnen worden gedefinieerd onder eigenschappen, waaronder de duur en het type meting.
 
-Als u een nieuwe scène maakt, wordt er een nieuwe scène-ID gemaakt, die is gekoppeld aan de farm. Nadat de scène-ID is gemaakt, kan de gebruiker dezelfde gebruiken om een nieuw bestand (. TIFF of. CSV) te maken en de inhoud van het bestand op te slaan.
+Als u een nieuwe scène maakt, wordt een nieuwe scène-id gemaakt, die is gekoppeld aan de farm. Nadat de scène-id is gemaakt, kan de gebruiker hetzelfde gebruiken om een nieuw bestand (.tiff of .csv) te maken en de inhoud van het bestand op te slaan.
 
-Voor beeld van een nettolading voor de POST-aanroep van de/scene-API:
+Voorbeeld van invoerpayload voor de POST-aanroep op de /Scene API:
 
 ```json
 {
@@ -426,7 +426,7 @@ Voor beeld van een nettolading voor de POST-aanroep van de/scene-API:
 }
 ```
 
-API-antwoord:
+API-respons:
 
 ```json
 {
@@ -445,13 +445,13 @@ API-antwoord:
 
 ```
 
-**Een scène bestand maken**
+**Een scènebestand maken**
 
-De scène-ID die u in stap 3 hebt geretourneerd, is de invoer voor het scène bestand. Het scène bestand retourneert een SAS-URL-token dat 24 uur geldig is.
+De scène-ID die in stap 3 is geretourneerd, is de invoer voor het scènebestand. Het scènebestand retourneert een SAS URL-token, dat 24 uur geldig is.
 
-Als de gebruiker een gegevens stroom van installatie kopieën op een programmatische manier moet uploaden, kan de SDK voor Blob Storage worden gebruikt voor het definiëren van een methode met behulp van de ID, locatie en URL van het scène bestand.
+Als de gebruiker een programmatische manier nodig heeft om een stroom afbeeldingen te uploaden, kan de SDK voor blobopslag worden gebruikt om een methode te definiëren met behulp van de scènebestands-id, locatie en URL.
 
-Voor beeld van een nettolading voor de POST-aanroep van de/SceneFile-API:
+Voorbeeld van invoerpayload voor de POST-aanroep op de /SceneFile API:
 
 ```json
 {
@@ -467,7 +467,7 @@ Voor beeld van een nettolading voor de POST-aanroep van de/SceneFile-API:
   }
 }
 ```
-API-antwoord:
+API-respons:
 
 ```json
 {
@@ -487,9 +487,9 @@ API-antwoord:
 
 ```
 
-De POST-aanroep van de/SceneFile-API retourneert een SAS-upload-URL, die kan worden gebruikt om het. CSV-of. TIFF-bestand te uploaden met behulp van de Azure Blob Storage-client of-bibliotheek.
+De POST-aanroep naar de /SceneFile-API retourneert een URL voor het uploaden van SAS, die kan worden gebruikt om het CSV- of .tiff-bestand te uploaden met behulp van de Azure Blob-opslagclient of -bibliotheek.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [rest API](rest-api-in-azure-farmbeats.md)voor meer informatie over op rest API gebaseerde integratie Details.
+Zie [REST API](rest-api-in-azure-farmbeats.md)voor meer informatie over rest api-gebaseerde integratiegegevens.

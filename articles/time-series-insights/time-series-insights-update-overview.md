@@ -1,6 +1,6 @@
 ---
-title: 'Overzicht: wat is Azure Time Series Insights preview? -Azure Time Series Insights | Microsoft Docs'
-description: Meer informatie over wijzigingen, verbeteringen en functies in Azure Time Series Insights preview.
+title: 'Overzicht: Wat is De Voorvertoning van Inzichten van Azure Time Series? - Azure Time Series Insights | Microsoft Documenten'
+description: Meer informatie over wijzigingen, verbeteringen en functies in Azure Time Series Insights Preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,86 +11,86 @@ ms.topic: overview
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77014416"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
-Azure Time Series Insights preview is een end-to-end PaaS-aanbieding (platform-as-a-Service). U kunt dit gebruiken om gegevens te verzamelen, verwerken, op te slaan, te analyseren en op te vragen bij Internet of Things (IoT)-schaal: gegevens die zeer worden begrensd en geoptimaliseerd voor tijd reeksen. 
+Azure Time Series Insights Preview is een end-to-end platform-as-a-service (PaaS) aanbod. U het gebruiken voor het verzamelen, verwerken, opslaan, analyseren en querygegevens op Internet of Things (IoT) schaal - gegevens die sterk gecontextualiseerd en geoptimaliseerd voor tijdreeksen. 
 
-Time Series Insights is ontworpen voor het verkennen van ad hoc gegevens en operationele analyses. Het is een uitbreid bare en aangepaste service aanbieding die voldoet aan de uitgebreide behoeften van industriële IoT-implementaties.
+Time Series Insights is ontworpen voor ad hoc data-exploratie en operationele analyse. Het is een uitbreidbaar en op maat gemaakt serviceaanbod dat voldoet aan de brede behoeften van industriële IoT-implementaties.
 
 ## <a name="video"></a>Video
 
-Meer informatie over Azure Time Series Insights preview.
+Meer informatie over Azure Time Series Insights Preview.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="definition-of-iot-data"></a>Definitie van IoT-gegevens
 
-Industriële IoT-gegevens in Asset-intensieve organisaties hebben vaak geen structurele consistentie als gevolg van de verschillende aard van apparaten en Sens oren in een industriële instelling. Gegevens uit deze stromen worden gekenmerkt door grote leemtes en soms beschadigde berichten en onwaare leesingen. IoT-gegevens zijn vaak zinvol in de context van extra invoer gegevens die afkomstig zijn van de eerste of derde bron, zoals CRM of ERP die context toevoegen aan end-to-end werk stromen. Invoer van gegevens bronnen van derden, zoals weer gegevens, kan helpen bij het uitbreiden van telemetriegegevens in een bepaalde installatie. 
+Industriële IoT-gegevens in asset-intensieve organisaties missen vaak structurele consistentie vanwege het gevarieerde karakter van apparaten en sensoren in een industriële omgeving. Gegevens uit deze stromen worden gekenmerkt door aanzienlijke hiaten, en soms beschadigde berichten en valse metingen. IoT-gegevens zijn vaak zinvol in de context van aanvullende gegevensinvoer die afkomstig zijn van eerste of derde bronnen, zoals CRM of ERP die context toevoegen voor end-to-end workflows. Ingangen van gegevensbronnen van derden, zoals weergegevens, kunnen helpen bij het vergroten van telemetriestromen in een bepaalde installatie. 
 
-Dit houdt in dat slechts een fractie van de gegevens wordt gebruikt voor operationele en zakelijke doel einden, en dat de analyse contextualization vereist. Industriële gegevens worden vaak historisch uitgedrukt op diep gaande analyses over langere tijd om trends te begrijpen en te correleren. Voor het omzetten van verzamelde IoT-gegevens in bruikbare inzichten zijn de volgende zaken nodig: 
+Dit alles impliceert dat slechts een fractie van de gegevens wordt gebruikt voor operationele en zakelijke doeleinden, en analyse vereist contextualisatie. Industriële gegevens worden vaak gehistoriciseerd voor diepgaande analyse over langere tijdspannes om trends te begrijpen en te correleren. Voor het omzetten van verzamelde IoT-gegevens in bruikbare inzichten zijn de volgende zaken nodig: 
 
 * Gegevensverwerking voor het opschonen, filteren, interpoleren, transformeren en voorbereiden van gegevens voor analyse.
-* Een structuur om te navigeren en inzicht te krijgen in de gegevens, dat wil zeggen, voor het normaliseren en waarmee van de gegevens.
-* Rendabele opslag voor een lange of oneindige retentie van verwerkte (of afgeleide) gegevens en onbewerkte gegevens.
+* Een structuur om door de gegevens te navigeren en te begrijpen, dat wil zeggen om de gegevens te normaliseren en te contextualiseren.
+* Kosteneffectieve opslag voor lange of oneindige bewaring van verwerkte (of afgeleide) gegevens en ruwe gegevens.
 
-Dergelijke gegevens bieden consistente, allesomvattende, actuele en correcte informatie voor bedrijfs analyse en-rapportage.
+Dergelijke gegevens bieden consistente, uitgebreide, actuele en correcte informatie voor bedrijfsanalyse en -rapportage.
 
-In de volgende afbeelding ziet u een typische IoT-gegevens stroom.
+De volgende afbeelding toont een typische IoT-gegevensstroom.
 
-[IoT-gegevens stroom ![](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
+[![IoT-gegevensstroom](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights voor industriële IoT
 
-IoT liggend is gevarieerder met klanten die een groot aantal branche segmenten omspannen, waaronder productie, automobiel, energie, NUTS bedrijven, Smart-gebouwen en Consulting. In dit brede assortiment van industriële IoT-markt kunnen Cloud-systeem eigen oplossingen die uitgebreide analyse gericht op grootschalige IoT-gegevens, nog steeds verder in ontwikkeling zijn. 
+Het IoT-landschap is divers met klanten verspreid over verschillende industriesegmenten, waaronder productie, automotive, energie, nutsbedrijven, slimme gebouwen en consulting. In dit brede scala aan industriële IoT-markt zijn cloud-native oplossingen die uitgebreide analyses bieden die gericht zijn op grootschalige IoT-gegevens nog steeds in ontwikkeling. 
 
-Azure Time Series Insights is gericht op deze markt, door een kant-en-klare oplossing voor IoT Analytics te bieden met een rijke semantische model lering voor contextualization van tijd reeksen, op asset gebaseerde inzichten en de beste ervaring op het niveau van de gebruiker voor detectie, trending, anomalie detectie en operationele informatie. 
+Azure Time Series Insights speelt in op deze marktbehoefte door een kant-en-klare IoT-analyseoplossing te bieden met rijke semantische modellering voor contextualisatie van tijdreeksgegevens, op activa gebaseerde inzichten en de beste gebruikerservaring voor detectie, trending, anomaliedetectie en operationele intelligentie. 
 
-Een uitgebreid operationeel analyse platform in combi natie met onze interactieve mogelijkheden voor het verkennen van gegevens kunt u Time Series Insights gebruiken om meer waarde te verkrijgen ten opzichte van de gegevens die zijn verzameld uit IoT-assets. De preview-versie biedt ondersteuning voor: 
+Een rijk operationeel analyseplatform in combinatie met onze interactieve mogelijkheden voor gegevensverkenning, u Time Series Insights gebruiken om meer waarde te halen uit gegevens die zijn verzameld uit IoT-assets. De preview-versie biedt ondersteuning voor: 
 
-* Multi-layered opslag oplossing met warme en koud Analytics ondersteunt klanten de mogelijkheid om gegevens te routeren tussen warme en koude voor interactieve analyses via warme gegevens en operationele informatie over tien tallen historische gegevens. 
+* Multi-layered storage oplossing met warme en koude analytics ondersteuning die klanten de mogelijkheid biedt om gegevens te routeren tussen warm en koud voor interactieve analyses via warme data en operationele intelligentie gedurende tientallen jaren historische gegevens. 
 
-    *   Een zeer interactieve oplossing voor warme analyse om veelvuldig en grote hoeveel heden query's te verrichten in korte tijd gegevens 
-    *   Een schaal bare, krachtige en kosten geoptimaliseerde time series data Lake op basis van Azure Storage om klanten te laten werken tot trend jaren in enkele seconden. 
+    *   Een zeer interactieve oplossing voor warme analyses om frequente en grote hoeveelheden query's uit te voeren over kortere tijdspannegegevens 
+    *   Een schaalbaar, performant en kostengeoptimaliseerd e-outdatalake op basis van Azure Storage, zodat klanten in enkele seconden tijdreeksgegevens kunnen trendjaren. 
 
-* Ondersteuning van semantisch model waarin het domein en de meta gegevens worden beschreven die zijn gekoppeld aan de afgeleide en onbewerkte signalen van assets en apparaten.
+* Ondersteuning voor het semantische model dat het domein en de metagegevens beschrijft die zijn gekoppeld aan de afgeleide en ruwe signalen van assets en apparaten.
 
-* Flexibel analyse platform voor het opslaan van historische tijdreeks gegevens in het Azure Storage-account van de klant, waardoor klanten eigenaar kunnen zijn van hun IoT-gegevens. Gegevens worden opgeslagen in een open source Apache Parquet-indeling die connectiviteit en Interop mogelijk maakt in diverse gegevens scenario's, waaronder predictive analytics, machine learning en andere aangepaste berekeningen die worden uitgevoerd met behulp van bekende technologieën, waaronder Spark, Databricks en Jupyter.
+* Flexibel analyseplatform om historische tijdreeksgegevens op te slaan in het Azure Storage-account dat eigendom is van klanten, waardoor klanten eigenaar kunnen worden van hun IoT-gegevens. Gegevens worden opgeslagen in open source Apache Parket-indeling die connectiviteit en interop mogelijk maakt in een verscheidenheid van datascenario's, waaronder voorspellende analyses, machine learning en andere aangepaste berekeningen gedaan met behulp van bekende technologieën, waaronder Spark, Databricks en Jupyter.
 
-* Uitgebreide analyse met verbeterde query-Api's en gebruikers ervaring waarbij gegevens inzichten op basis van assets worden gecombineerd met uitgebreide, ad hoc gegevens analyse met ondersteuning voor interpolatie, scalaire en statistische functies, Categorische variabelen, spreidings grafieken en tijd verschuivings tijd reeks signalen voor uitgebreide analyse.
+* Uitgebreide analyses met verbeterde query-API's en gebruikerservaring die op activa gebaseerde gegevensinzichten combineert met uitgebreide, ad hoc gegevensanalyses met ondersteuning voor interpolatie, scalaire en geaggregeerde functies, categorische variabelen, spreidingsplots en tijdsverschuivende tijd seriesignalen voor diepgaande analyse.
 
-*   Enter prise-platform ter ondersteuning van de behoeften van de schaal, prestaties, beveiliging en betrouw baarheid van onze Enter prise IoT-klanten.
+*   Enterprise grade-platform ter ondersteuning van de behoeften op het gebied van schaal, prestaties, beveiliging en betrouwbaarheid van onze zakelijke IoT-klanten.
 
-* Ondersteuning voor uitbreid baarheid en integratie voor end-to-end-analyses. Time Series Insights biedt een uitbreidbaar analyse platform voor diverse gegevens scenario's. Met Time Series Insights Power BI-connector kunnen klanten de query's die ze in Time Series Insights rechtstreeks in Power BI uitvoeren om een uniforme weer gave van hun BI-en time series-analyses in één deel venster te krijgen.
+* Extensibility en integratie ondersteuning voor end-to-end analytics. Time Series Insights biedt een uitbreidbaar analyseplatform voor verschillende datascenario's. Met De Power BI-connector van Time Series Insights kunnen klanten de query's die ze in Time Series Insights uitvoeren, rechtstreeks naar Power BI brengen om een uniform overzicht te krijgen van hun BI- en tijdreeksanalyses in één ruit.
 
-In het volgende diagram ziet u de gegevens stroom op hoog niveau.
+In het volgende diagram ziet u de gegevensstroom op hoog niveau.
 
-  [Belangrijkste mogelijkheden ![](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
+  [![Belangrijkste mogelijkheden](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
-Azure Time Series Insights biedt een schaalbaar prijs model voor betalen per gebruik voor gegevens verwerking, opslag (gegevens en meta gegevens) en query, zodat klanten hun gebruik kunnen afstemmen op hun bedrijfs behoeften. 
+Azure Time Series Insights biedt een schaalbaar pay-as-you-go-prijsmodel voor gegevensverwerking, opslag (gegevens en metagegevens) en query' s, zodat klanten hun gebruik kunnen afstemmen op hun bedrijfsbehoeften. 
  
-Met de introductie van deze essentiële industriële IoT-mogelijkheden biedt Time Series Insights ook de volgende belang rijke voor delen.  
+Met de introductie van deze belangrijke industriële IoT-mogelijkheden biedt Time Series Insights ook de volgende belangrijke voordelen.  
 
 | | |
 | ---| ---|
-| Opslag met meerdere lagen voor IoT-schaal van Time Series-gegevens | Met een pijp lijn voor gedeelde gegevens verwerking voor het opnemen van gegevens kunt u gegevens indelen in zowel warme als koude opslag. Gebruik warme Store voor interactieve query's en koude opslag voor het opslaan van grote hoeveel heden gegevens. Zie [query's](./time-series-insights-update-tsq.md)voor meer informatie over hoe u gebruik kunt maken van hoogwaardige query's op basis van een activum. |
-| Time Series-model voor het waarmee van ruwe telemetrie en het afleiden van inzichten op basis van assets | U kunt het time series-model gebruiken om instanties, hiërarchieën, typen en variabelen te maken voor uw time series-gegevens. Zie [Time Series model](./time-series-insights-update-tsm.md)voor meer informatie over time series-modellen.  |
-| Soepele en doorlopende integratie met andere gegevens oplossingen | Gegevens in Time Series Insights koel opslagplaats worden [opgeslagen](./time-series-insights-update-storage-ingress.md) in open-source Apache Parquet-bestanden. Dit maakt gegevens integratie mogelijk met andere gegevens oplossingen, 1e of derde partij, voor scenario's waarin business intelligence, geavanceerde machine learning en predictive analytics zijn. |
-| Gegevens worden bijna in realtime verkend | De [verkenner van Azure Time Series Insights (preview)](./time-series-insights-update-explorer.md) biedt gebruikers visualisatie voor alle gegevens die door de opnamepijplijn worden geleid. Nadat u verbinding hebt gemaakt met een gebeurtenis bron, kunt u gebeurtenis gegevens weer geven, verkennen en er query's op uitvoeren. Op deze manier kunt u nagaan of een apparaat gegevens naar verwachting verzendt. U kunt IoT-apparaten ook controleren op status, productiviteit en algehele effectiviteit. | 
-| Uitbreid baarheid en integratie | De integratie van de Azure Time Series Insights Power BI-connector is rechtstreeks beschikbaar in de tijd reeks Verkenner-gebruikers ervaring via de optie **exporteren** , zodat klanten de tijdreeks query's die ze in onze gebruikers ervaring maken rechtstreeks naar Power bi het bureau blad kunnen exporteren en hun tijd reeks grafieken naast andere BI Analytics bekijken. Hiermee opent u de deur van een nieuwe klasse van scenario's voor industriële IoT-ondernemingen die in Power BI hebben geïnvesteerd door één deel venster van glas te bieden over analyses van verschillende gegevens bronnen, waaronder IoT-tijd reeksen. | 
-| Aangepaste toepassingen die zijn gebouwd op het Time Series Insights platform | Time Series Insights biedt ondersteuning voor de [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). De SDK biedt uitgebreide besturingselementen en vereenvoudigde toegang tot query's. Gebruik de SDK om aangepaste IoT-toepassingen op Time Series Insights te bouwen die aansluiten op uw bedrijfs behoeften. U kunt de [query-API's](./time-series-insights-update-tsq.md) van Time Series Insights ook rechtstreeks gebruiken om gegevens naar aangepaste IoT-toepassingen te sturen. |
+| Meerlaagse opslag voor gegevens over tijdreeksen met IoT-schaal | Met een gedeelde gegevensverwerkingspijplijn voor het innemen van gegevens, u gegevens opnemen in zowel warme als koude winkels. Gebruik warme winkel voor interactieve query's en koelhuis voor het opslaan van grote hoeveelheden gegevens. Zie [query's](./time-series-insights-update-tsq.md)voor meer informatie over hoe u profiteren van hoogpresterende query's op basis van activa. |
+| Time Series-model voor het contextualiseren van onbewerkte telemetriegegevens en het afleiden van inzichten op basis van assets | U het tijdreeksmodel gebruiken om instanties, hiërarchieën, typen en variabelen voor uw tijdreeksgegevens te maken. Zie Time Series Model voor meer informatie over timeseries [model.](./time-series-insights-update-tsm.md)  |
+| Probleemloze en continue integratie met andere gegevensoplossingen | Data in Time Series Insights cold store wordt [opgeslagen](./time-series-insights-update-storage-ingress.md) in open-source Apache Parket bestanden. Dit maakt gegevensintegratie met andere gegevensoplossingen mogelijk, 1e of 3rd party, voor scenario's zoals business intelligence, geavanceerde machine learning en voorspellende analyses. |
+| Gegevens worden bijna in realtime verkend | De [verkenner van Azure Time Series Insights (preview)](./time-series-insights-update-explorer.md) biedt gebruikers visualisatie voor alle gegevens die door de opnamepijplijn worden geleid. Nadat u een gebeurtenisbron hebt verbonden, u gebeurtenisgegevens bekijken, verkennen en opvragen. Op deze manier kunt u nagaan of een apparaat gegevens naar verwachting verzendt. U kunt IoT-apparaten ook controleren op status, productiviteit en algehele effectiviteit. | 
+| Uitbreidbaarheid en integratie | De Azure Time Series Insights Power BI Connector-integratie is rechtstreeks beschikbaar in de gebruikerservaring van Time Series Explorer via de optie **Exporteren,** zodat klanten de tijdreeksquery's die ze in onze gebruikerservaring maken rechtstreeks naar het Power BI-bureaublad kunnen exporteren en hun tijdreeksgrafieken naast andere BI-analyses kunnen bekijken. Dit opent de deur naar een nieuwe klasse van scenario's voor industriële IoT-ondernemingen die hebben geïnvesteerd in Power BI door het verstrekken van een enkel glas over analytics uit verschillende gegevensbronnen, waaronder IoT-tijdreeksen. | 
+| Aangepaste toepassingen gebouwd op het Time Series Insights-platform | Time Series Insights biedt ondersteuning voor de [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). De SDK biedt uitgebreide besturingselementen en vereenvoudigde toegang tot query's. Gebruik de SDK om aangepaste IoT-toepassingen te bouwen bovenop Time Series Insights die aan uw bedrijfsbehoeften voldoen. U kunt de [query-API's](./time-series-insights-update-tsq.md) van Time Series Insights ook rechtstreeks gebruiken om gegevens naar aangepaste IoT-toepassingen te sturen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Aan de slag met Azure Time Series Insights Preview:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids](./time-series-insights-update-quickstart.md)
+> [Quickstart](./time-series-insights-update-quickstart.md)
 
 Informatie over use cases:
 

@@ -1,6 +1,6 @@
 ---
-title: Meerdere Azure Monitor Application Insights resources samen voegen | Microsoft Docs
-description: In dit artikel vindt u informatie over het gebruik van een functie in Azure Monitor logboeken voor het opvragen van meerdere Application Insights resources en het visualiseren van die gegevens.
+title: Meerdere Azure Monitor Application Insights-bronnen verenigen | Microsoft Documenten
+description: In dit artikel vindt u informatie over het gebruik van een functie in Azure Monitor Logs om meerdere Toepassingsinzichtenbronnen op te vragen en die gegevens te visualiseren.
 author: bwren
 ms.author: bwren
 ms.workload: na
@@ -8,28 +8,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77137502"
 ---
-# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Meerdere Azure Monitor Application Insights resources samen voegen 
-In dit artikel wordt beschreven hoe u al uw Application Insights logboek gegevens op één plek kunt opvragen en weer geven, zelfs wanneer ze zich in verschillende Azure-abonnementen bevinden, als vervanging voor de afschaffing van de Application Insights-connector. Het aantal Application Insights resources dat u in één query kunt toevoegen, is beperkt tot 100.
+# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Meerdere Azure Monitor Application Insights-bronnen verenigen 
+In dit artikel wordt beschreven hoe u al uw loggegevens van Application Insights op één plaats opvragen en weergeven, zelfs wanneer ze zich in verschillende Azure-abonnementen bevinden, als vervanging voor de afschrijving van de Application Insights Connector. Het aantal toepassingsinzichten dat u in één query opnemen, is beperkt tot 100.
 
-## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Aanbevolen benadering voor het opvragen van meerdere Application Insights resources 
-Het weer geven van meerdere Application Insights resources in een query kan lastig en moeilijk te onderhouden zijn. In plaats daarvan kunt u gebruikmaken van de functie voor het scheiden van de query logica van de scopes van de toepassing.  
+## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Aanbevolen aanpak voor het opvragen van meerdere Resources voor Application Insights 
+Het aanbieden van meerdere Toepassingsinsights-bronnen in een query kan omslachtig en moeilijk te onderhouden zijn. In plaats daarvan u de functie gebruiken om de querylogica te scheiden van de scoping van toepassingen.  
 
-In dit voor beeld ziet u hoe u meerdere Application Insights resources kunt bewaken en het aantal mislukte aanvragen op toepassings naam visualiseren.
+In dit voorbeeld wordt uitgelegd hoe u meerdere resources voor Application Insights controleren en het aantal mislukte aanvragen visualiseren op naam van de toepassing.
 
-Maak een functie met behulp van de operator Union met de lijst met toepassingen en sla de query vervolgens op in uw werk ruimte als functie met de alias *applicationsScoping*. 
+Maak een functie met de union operator met de lijst met toepassingen en sla de query op in uw werkruimte als functie met de alias *applicationsScoping*. 
 
-U kunt de vermelde toepassingen op elk gewenst moment in de portal wijzigen door te navigeren naar query Explorer in uw werk ruimte en de functie te selecteren die u wilt bewerken en vervolgens op te slaan, of door de `SavedSearch` Power shell-cmdlet te gebruiken. 
+U de vermelde toepassingen op elk gewenst moment in de portal wijzigen door naar Query explorer in uw `SavedSearch` werkruimte te navigeren en de functie te selecteren voor het bewerken en vervolgens opslaan of met de PowerShell-cmdlet. 
 
 >[!NOTE]
->Deze methode kan niet worden gebruikt met logboek waarschuwingen omdat de toegangs validatie van de resources van de waarschuwings regel, inclusief werk ruimten en toepassingen, wordt uitgevoerd tijdens het maken van de waarschuwing. Het toevoegen van nieuwe resources aan de functie nadat het maken van de waarschuwing niet wordt ondersteund. Als u de functie voor het bereik van resources in logboek waarschuwingen wilt gebruiken, moet u de waarschuwings regel in de portal of met een resource manager-sjabloon bewerken om de resources binnen het bereik bij te werken. U kunt ook de lijst met resources opnemen in de waarschuwings query voor Logboeken.
+>Deze methode kan niet worden gebruikt met logboekwaarschuwingen omdat de toegangsvalidatie van de bronnen met de waarschuwingsregel, inclusief werkruimten en toepassingen, wordt uitgevoerd op het maken van waarschuwingen. Het toevoegen van nieuwe resources aan de functie na het maken van de waarschuwing wordt niet ondersteund. Als u de functie liever gebruikt voor resourcescoping in logboekwaarschuwingen, moet u de waarschuwingsregel in de portal of met een resourcemanagersjabloon bewerken om de scoped resources bij te werken. U ook de lijst met bronnen opnemen in de waarschuwingsquery voor logboeken.
 
-De `withsource= SourceApp` opdracht voegt een kolom toe aan de resultaten die de toepassing aanduidt die het logboek heeft verzonden. De operator parse is optioneel in dit voor beeld en wordt gebruikt om de toepassings naam op te halen uit de eigenschap SourceApp. 
+De `withsource= SourceApp` opdracht voegt een kolom toe aan de resultaten die de toepassing aanduidt die het logboek heeft verzonden. De parse operator is optioneel in dit voorbeeld en gebruikt om de naam van de toepassing uit de eigenschap SourceApp te extraheren. 
 
 ```
 union withsource=SourceApp 
@@ -41,7 +41,7 @@ app('Contoso-app5').requests
 | parse SourceApp with * "('" applicationName "')" *  
 ```
 
-U bent nu klaar om de functie applicationsScoping in de cross-resource query te gebruiken:  
+U bent nu klaar om de functie ApplicationsScoping te gebruiken in de cross-resource query:  
 
 ```
 applicationsScoping 
@@ -52,64 +52,64 @@ applicationsScoping
 | render timechart
 ```
 
-De query maakt gebruik van Application Insights schema, hoewel de query wordt uitgevoerd in de werk ruimte, omdat de functie applicationsScoping de Application Insights gegevens structuur retourneert. De functie alias retourneert de samen voeging van de aanvragen van alle gedefinieerde toepassingen. De query filtert vervolgens op mislukte aanvragen en visualiseert de trends op basis van de toepassing.
+De query maakt gebruik van het Application Insights-schema, hoewel de query wordt uitgevoerd in de werkruimte omdat de functie applicationsScoping de gegevensstructuur Application Insights retourneert. De functiealias retourneert de samenvoeging van de aanvragen van alle gedefinieerde toepassingen. De query filtert vervolgens op mislukte aanvragen en visualiseert de trends per toepassing.
 
-![Voor beeld van resultaten van cross-query](media/unify-app-resource-data/app-insights-query-results.png)
+![Voorbeeld van resultaten voor kruisquery's](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->Er wordt een [query voor meerdere resources](../log-query/cross-workspace-query.md) in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](../platform/api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van [VERouderde API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor [meerdere resources](../log-query/cross-workspace-query.md) maken zonder de switch te maken met behulp van de [arm-sjabloon voor de scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
+>Logboekwaarschuwingen voor [cross-resourcequery's](../log-query/cross-workspace-query.md) worden ondersteund in de nieuwe [api voor geplandeQueryregels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor gebruikt standaard de [verouderde Log Analytics Alert API](../platform/api-alerts.md) voor het maken van nieuwe logboekwaarschuwingsregels vanuit Azure portal, tenzij u overstapt van de verouderde Api voor [logboekwaarschuwingen.](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) Na de switch wordt de nieuwe API de standaardvoor nieuwe waarschuwingsregels in azure-portal en u regels voor waarschuwingen voor querylogboeken met meerdere resources maken. U [waarschuwingsregels voor querylogboeken met meerdere bronnen](../log-query/cross-workspace-query.md) maken zonder de overstap te maken met de [ARM-sjabloon voor de geplande QueryRules-API,](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) maar deze waarschuwingsregel is beheersbaar via [de GeplandeQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit azure-portal.
 
-## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Verschillen in schema Application Insights en Log Analytics van werk ruimten
-In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Application Insights.  
+## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Schemaverschillen in toepassingsinzichten en logboekanalysewerkruimte
+In de volgende tabel worden de schemaverschillen tussen Log Analytics en Application Insights weergegeven.  
 
-| Eigenschappen van Log Analytics werk ruimte| Eigenschappen van Application Insights-bron|
+| Eigenschappen van log Analytics-werkruimte| Resourceeigenschappen van Application Insights|
 |------------|------------| 
-| AnonUserId | user_id|
+| AnonUserId (AnonUserId) | user_id|
 | ApplicationId | appId|
-| ApplicationName | Toepassings|
-| ApplicationTypeVersion | application_Version |
-| AvailabilityCount | itemCount |
-| AvailabilityDuration | duration |
-| AvailabilityMessage | message |
-| AvailabilityRunLocation | locatie |
-| AvailabilityTestId | id |
-| AvailabilityTestName | naam |
-| AvailabilityTimestamp | tijdstempel |
+| ApplicationName | Appname|
+| Toepassingstypeversie | application_Version |
+| BeschikbaarheidAantal | ItemAantal |
+| BeschikbaarheidDuur | duur |
+| BeschikbaarheidMessage | message |
+| BeschikbaarheidRunLocatie | location |
+| BeschikbaarheidTestId | id |
+| BeschikbaarheidTestName | name |
+| BeschikbaarheidTimestamp | tijdstempel |
 | Browser | client_browser |
 | Plaats | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
 | Land | client_CountryOrRegion | 
-| CustomEventCount | itemCount | 
-| CustomEventDimensions | customDimensions |
-| CustomEventName | naam | 
+| AangepastEventAantal | ItemAantal | 
+| AangepasteAfmetingen voor gebeurtenissen | aangepaste afmetingen |
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
-| Apparaattype | client_Type | 
-| ExceptionCount | itemCount | 
-| ExceptionHandledAt | handledAt |
+| DeviceType | client_Type | 
+| Aantal uitzonderingen | ItemAantal | 
+| Exceptionhandledat | behandeldOp |
 | ExceptionMessage | message | 
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
-| PageViewCount | itemCount |
-| PageViewDuration | duration | 
-| PageViewName | naam | 
+| PageViewCount PageViewCount PageViewCount PageView | ItemAantal |
+| PageViewDuur | duur | 
+| PageViewName PageViewName | name | 
 | ParentOperationID | operation_Id | 
-| RequestCount | itemCount | 
-| RequestDuration | duration | 
+| Aantal aanvragen | ItemAantal | 
+| AanvraagDuur | duur | 
 | RequestID | id | 
-| RequestName | naam | 
-| RequestSuccess | voltooid | 
-| ResponseCode | resultCode | 
+| RequestName | name | 
+| VerzoekSucces | voltooid | 
+| ResponseCode | resultaatCode | 
 | Rol | cloud_RoleName |
-| RoleInstance | cloud_RoleInstance |
-| sessie-id | session_Id | 
+| Rolinstantie | cloud_RoleInstance |
+| Sessionid | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetrieTYpe | type |
 | URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik [Zoeken in Logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie weer te geven voor uw Application Insights-apps.
+Gebruik [Logboekzoeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie voor uw Application Insights-apps weer te geven.

@@ -1,6 +1,6 @@
 ---
-title: Connect ExtraHop Reveal (x) to Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van ExtraHop Reveal (x) met Azure Sentinel.
+title: ExtraHop Reveal(x) verbinden met Azure Sentinel| Microsoft Documenten
+description: Meer informatie over het verbinden van ExtraHop Reveal(x) met Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588294"
 ---
 # <a name="connect-extrahop-revealx"></a>Verbinding maken met ExtraHop Reveal(x)
 
-Met de ExtraHop Reveal (x) Data Connector kunt u eenvoudig uw Reveal (x)-systeem met Azure Sentinel aansluiten voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van het onderzoek. Deze integratie biedt u de mogelijkheid om inzicht te krijgen in het netwerk van uw organisatie en de mogelijkheden voor beveiligings bewerkingen te verbeteren.
+Met de extrahopreveal(x)-gegevensconnector u uw Reveal(x)-systeem eenvoudig verbinden met Azure Sentinel om dashboards te bekijken, aangepaste waarschuwingen te maken en het onderzoek te verbeteren. Deze integratie geeft u de mogelijkheid om inzicht te krijgen in het netwerk van uw organisatie en uw beveiligingsmogelijkheden te verbeteren.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte.
+- Lees- en schrijfmachtigingen voor de Azure Sentinel-werkruimte.
 
-- ExtraHop Discover of Command-apparaat met firmware versie 7,8 of hoger met een gebruikers account met onbeperkte bevoegdheden (Administrator).
+- ExtraHop Discover of Command toestel met firmware versie 7.8 of hoger met een gebruikersaccount dat unlimited (administrator) privileges heeft.
 
-## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Azure Sentinel verbinden met ExtraHop Reveal (x)
+## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Azure Sentinel verbinden met ExtraHop Reveal(x)
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de **ExtraHop Reveal (x)-** connector.
+1. Navigeer in de **Azure-portal** > naar Azure**Sentinel-gegevensconnectors** en selecteer vervolgens de **ExtraHop Reveal(x)-connector.**
 
-2. Selecteer de **pagina connector openen**.
+2. Selecteer **Connectorpagina openen**.
 
-3. Volg de instructies op de pagina **ExtraHop Reveal (x)** .
+3. Volg de instructies op de **extrahopreveal(x)** pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u ExtraHop Reveal (x) met Azure Sentinel verbindt. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
+In dit document hebt u geleerd hoe u ExtraHop Reveal(x) verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
+- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te controleren.
 
 

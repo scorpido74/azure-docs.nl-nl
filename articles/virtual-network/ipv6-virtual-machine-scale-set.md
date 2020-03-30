@@ -1,7 +1,7 @@
 ---
-title: Schaal sets voor virtuele machines implementeren met IPv6 in azure
+title: Virtuele machineschaalsets implementeren met IPv6 in Azure
 titlesuffix: Azure Virtual Network
-description: In dit artikel wordt beschreven hoe u schaal sets voor virtuele machines met IPv6 kunt implementeren in een virtueel Azure-netwerk.
+description: In dit artikel ziet u hoe u virtuele machineschaalsets implementeert met IPv6 in een virtueel Azure-netwerk.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: kumud
 ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73164989"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Schaal sets voor virtuele machines implementeren met IPv6 in azure (preview)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Virtuele machineschaalsets implementeren met IPv6 in Azure (Voorbeeld)
 
-In dit artikel wordt beschreven hoe u een virtuele-machine Schaalset met dubbele stack (IPv4 + IPv6) implementeert met een externe load balancer met dubbele stack in een virtueel Azure-netwerk. Het proces voor het maken van een schaalset voor virtuele machines die met IPv6 kan worden uitgevoerd, is bijna identiek aan het proces voor het maken van afzonderlijke Vm's die [hier](ipv6-configure-standard-load-balancer-template-json.md)worden beschreven. U begint met de stappen die vergelijkbaar zijn met die van afzonderlijke Vm's:
-1.  Open bare IPv4-en IPv6-Ip's maken.
-2.  Maak een dual stack-load balancer.  
-3.  Maak regels voor netwerk beveiligings groepen (NSG).  
+In dit artikel ziet u hoe u een dual stack (IPv4 + IPv6) Virtual Machine Scale Set implementeert met een externe load balancer met twee stapels in een virtueel Azure-netwerk. Het proces om een IPv6-geschikte virtuele machine schaal set te maken is bijna identiek aan het proces voor het maken van individuele VM's [hier](ipv6-configure-standard-load-balancer-template-json.md)beschreven. U begint met de stappen die vergelijkbaar zijn met de stappen die zijn beschreven voor afzonderlijke VM's:
+1.  IPv4- en IPv6-ip's maken.
+2.  Maak een dual stack load balancer.  
+3.  NSG-regels (Network Security Group) maken.  
 
-De enige stap die verschilt van afzonderlijke Vm's is het maken van de netwerk interface configuratie (NIC) die gebruikmaakt van de virtuele-machine Scale set resource: networkProfile/Networkinterfaceconfigurations schaalset. De JSON-structuur is vergelijkbaar met die van het object micro soft. Network/networkInterfaces dat wordt gebruikt voor afzonderlijke Vm's, waarbij het instellen van de NIC en de IPv4 IpConfiguration als primaire interface wordt gebruikt, zoals wordt weer gegeven **in de** volgende voor beeld:
+De enige stap die verschilt van afzonderlijke VM's is het maken van de NIC-configuratie (network interface) die gebruikmaakt van de bron voor de virtuele machineschaalset: networkProfile/networkInterfaceConfigurations. De JSON-structuur is vergelijkbaar met die van het object Microsoft.Network/networkInterfaces dat wordt gebruikt voor afzonderlijke VM's met de toevoeging van het instellen van de NIC en de IPv4 IpConfiguration als primaire interface met behulp van het **kenmerk "primair": true** attribute zoals te zien in het volgende voorbeeld:
 
 ```json
           "networkProfile": {
@@ -89,9 +89,9 @@ De enige stap die verschilt van afzonderlijke Vm's is het maken van de netwerk i
 ```
 
 
-## <a name="sample-virtual-machine-scale-set-template-json"></a>Voor beeld van een JSON-sjabloon voor virtuele-machine schaal sets
+## <a name="sample-virtual-machine-scale-set-template-json"></a>Voorbeeld van sjabloon JSON voor virtuele machineschaalset
 
-Voor het implementeren van een virtuele-machine Schaalset met dubbele stack (IPv4 + IPv6) met dubbele stack externe Load Balancer en de [voorbeeld sjabloon virtuele](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)netwerk weergave.
+Een dual stack (IPv4 + IPv6) Virtual Machine Scale Set implementeren met dual stack externe Load Balancer en virtuele netwerkweergave sample template [hier.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is IPv6 voor azure Virtual Network?](ipv6-overview.md)voor meer informatie over IPv6-ondersteuning in azure Virtual Networks.
+Zie [Wat is IPv6 voor Azure Virtual Network?](ipv6-overview.md).

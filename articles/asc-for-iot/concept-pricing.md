@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over Azure Security Center voor IoT-kosten | Microsoft Docs
-description: Meer informatie over de kosten van Azure Security Center voor IoT en hoe u deze kunt beheren.
+title: Inzicht in Azure Security Center voor IoT-kosten| Microsoft Documenten
+description: Meer informatie over de kosten die zijn gekoppeld aan Azure Security Center voor IoT en hoe u deze beheren.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,69 +16,69 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71348515"
 ---
 # <a name="pricing-and-associated-costs"></a>Prijs en bijbehorende kosten
 
-In dit artikel wordt uitgelegd Azure Security Center voor IoT-prijs model, worden alle gekoppelde kosten samenvatten en wordt uitgelegd hoe u deze kunt beheren.
+In dit artikel wordt uitgelegd hoe azure security center voor IoT-prijsmodel, een overzicht van alle bijbehorende kosten en wordt uitgelegd hoe u deze beheren.
 
 ## <a name="pricing"></a>Prijzen
 
-Het prijs model Azure Security Center voor IoT bestaat uit twee delen en wordt gefactureerd wanneer een IoT Hub is [ingeschakeld](quickstart-onboard-iot-hub.md) in azure Security Center voor IOT:
+Het Azure Security Center for IoT-prijsmodel bestaat uit twee delen en wordt gefactureerd zodra een IoT-hub is [ingeschakeld](quickstart-onboard-iot-hub.md) in Azure Security Center for IoT:
 
-- Kosten per apparaat-ingebouwde beveiligings mogelijkheden op basis van de analyse van IoT Hub Logboeken.
+- Kosten per apparaat - ingebouwde beveiligingsmogelijkheden op basis van analyse van IoT Hub-logboeken.
 
-- Kosten per bericht: Verbeterde beveiligings mogelijkheden op basis van beveiligings berichten van IoT Edge of blad apparaten.
-
-
-Zie [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie.
-
-## <a name="associated-costs"></a>Gekoppelde kosten
-
-Er zijn kosten verbonden aan Azure Security Center voor IoT, die geen deel uitmaken van de rechtstreekse prijzen:
+- Kosten per bericht - verbeterde beveiligingsmogelijkheden op basis van beveiligingsberichten van IoT Edge- of leaf-apparaten.
 
 
-- Opslag kosten Log Analytics
+Zie [De prijzen van het Beveiligingscentrum](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie .
 
-U kunt de gekoppelde kosten verlagen door te kiezen voor bepaalde oplossings functies. Afmelden door uw instellingen te wijzigen.
+## <a name="associated-costs"></a>Bijbehorende kosten
 
-Uw instellingen wijzigen:
+Azure Security Center for IoT heeft bijbehorende kosten, die geen deel uitmaken van de directe prijzen:
+
+
+- Opslagkosten log Analytics
+
+U de bijbehorende kosten verlagen door u af te melden voor bepaalde oplossingsfuncties. Opt-out door uw instellingen te wijzigen.
+
+Ga als instellen om uw instellingen te wijzigen:
 
 1. Open IoT Hub.
 
-2. Klik onder **beveiliging**op **overzicht**.
+2. Klik **onder Beveiliging**op **Overzicht**.
 
 3. Klik op **Instellingen**.
 
-De volgende tabel bevat een samen vatting van de bijbehorende kosten en implicaties van elke optie.
+In de volgende tabel vindt u een overzicht van de bijbehorende kosten en implicaties van elke optie.
 
 |     | Gebruik | Opmerking |
 | --- | --- | --- |
-| **Opslag Log Analytics** |  |
-| Aanbeveling en waarschuwingen van het apparaat| Beveiligings aanbeveling en waarschuwingen die worden gegenereerd door de service | Niet optioneel |
-| Onbewerkte beveiligings gegevens| Onbewerkte beveiligings gegevens van IoT-apparaten, verzameld door beveiligings agenten | _Beveiligings gebeurtenissen voor het opslaan van onbewerkte apparaten_ uitschakelen |
+| **Log Analytics-opslag** |  |
+| Apparaataanbeveling en waarschuwingen| Beveiligingsaanbeveling en waarschuwingen gegenereerd door de service | Niet optioneel |
+| Ruwe beveiligingsgegevens| Ruwe beveiligingsgegevens van IoT-apparaten, verzameld door beveiligingsagenten | Beveiligingsgebeurtenissen _voor apparaten_ voor winkels uitschakelen |
 |
 
 >[!Important]
-> Uitbellen heeft ernstige gevolgen voor de Azure Security Center voor de beschik baarheid van IoT-beveiligings functies. 
+> Opt-out heeft ernstige gevolgen voor de beschikbaarheid van Azure Security Center voor IoT-beveiligingsfuncties. 
   
 | Afmelden | Gevolgen |
 | --- | --- |
-| _Verzameling van dubbele meta gegevens_ | [Aangepaste waarschuwingen](quickstart-create-custom-alerts.md) uitschakelen |
-| | Aanbevelingen van IoT Edge-manifest uitschakelen |
-| | Aanbevelingen en waarschuwingen op basis van apparaat-id's uitschakelen |
-| _Beveiligings gebeurtenissen voor onbewerkte apparaten opslaan_ | Details van de algemene aanbevelingen voor het besturings systeem van het apparaat zijn niet beschikbaar |
-| | Er zijn geen gegevens over [waarschuwingen](concept-security-alerts.md) en [aanbevelings](concept-recommendations.md) onderzoeken beschikbaar |
+| _Dubbele metagegevensverzameling_ | [Aangepaste waarschuwingen uitschakelen](quickstart-create-custom-alerts.md) |
+| | Manifestaanbevelingen van IoT Edge uitschakelen |
+| | Aanbevelingen en waarschuwingen op basis van apparaatidentiteit uitschakelen |
+| _Beveiligingsgebeurtenissen voor raw-apparaten opslaan_ | Details over basislijnaanbevelingen van apparaatbesturingssysteem zijn niet beschikbaar |
+| | Details over [waarschuwings-](concept-security-alerts.md) en [aanbevelingsonderzoeken](concept-recommendations.md) zijn niet beschikbaar |
 |
 
 
 ## <a name="see-also"></a>Zie ook
 
-- Toegang tot uw [onbewerkte beveiligings gegevens](how-to-security-data-access.md)
+- Toegang tot uw [ruwe beveiligingsgegevens](how-to-security-data-access.md)
 - [Een apparaat onderzoeken](how-to-investigate-device.md)
-- [Beveiligings aanbevelingen](concept-recommendations.md) begrijpen en verkennen
-- [Beveiligings waarschuwingen](concept-security-alerts.md) begrijpen en verkennen
+- [Beveiligingsaanbevelingen](concept-recommendations.md) begrijpen en verkennen
+- [Beveiligingswaarschuwingen](concept-security-alerts.md) begrijpen en verkennen

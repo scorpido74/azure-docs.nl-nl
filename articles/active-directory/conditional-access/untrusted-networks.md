@@ -1,6 +1,6 @@
 ---
-title: MFA vereisen van niet-vertrouwde netwerken-Azure Active Directory
-description: Meer informatie over het configureren van een beleid voor voorwaardelijke toegang in Azure Active Directory (Azure AD) voor toegang tot pogingen van niet-vertrouwde netwerken.
+title: MFA vereisen van niet-vertrouwde netwerken - Azure Active Directory
+description: Meer informatie over het configureren van een beleid voor voorwaardelijke toegang in Azure Active Directory (Azure AD) voor toegangspogingen van niet-vertrouwde netwerken.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74379993"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Procedure: MFA vereisen voor toegang vanaf niet-vertrouwde netwerken met voorwaardelijke toegang   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Hoe: MFA vereisen voor toegang van niet-vertrouwde netwerken met voorwaardelijke toegang   
 
-Met Azure Active Directory (Azure AD) kunt u eenmalige aanmelding voor apparaten, apps en services vanaf elke locatie. Uw gebruikers hebben niet alleen toegang tot uw Cloud-apps vanuit het netwerk van uw organisatie, maar ook vanaf een niet-vertrouwde Internet locatie. Een veelvoorkomende best practice voor toegang vanuit niet-vertrouwde netwerken is multi-factor Authentication (MFA) vereist.
+Azure Active Directory (Azure AD) maakt single sign-on op apparaten, apps en services overal mogelijk. Uw gebruikers hebben toegang tot uw cloud-apps, niet alleen vanuit het netwerk van uw organisatie, maar ook vanaf elke niet-vertrouwde internetlocatie. Een gangbare aanbevolen toepassing voor toegang via niet-vertrouwde netwerken is het vereisen van multi-factor authenticatie (MFA).
 
-In dit artikel vindt u de informatie die u nodig hebt om een beleid voor voorwaardelijke toegang te configureren waarvoor MFA is vereist voor toegang vanuit niet-vertrouwde netwerken. 
+In dit artikel vindt u de informatie die u nodig hebt om een beleid voor voorwaardelijke toegang te configureren waarvoor MFA vereist is voor toegang van niet-vertrouwde netwerken. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u bekend bent met: 
 
-- De [basis concepten](overview.md) van voorwaardelijke toegang tot Azure AD 
-- De [Aanbevolen procedures](best-practices.md) voor het configureren van beleid voor voorwaardelijke toegang in de Azure Portal
+- De [basisconcepten](overview.md) van Azure AD Conditional Access 
+- De [aanbevolen procedures](best-practices.md) voor het configureren van beleid voor voorwaardelijke toegang in de Azure-portal
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-Om het evenwicht tussen beveiliging en productiviteit mogelijk te maken, kan het voldoende zijn om alleen een wacht woord voor aanmeldingen vanuit het netwerk van uw organisatie in te stellen. Voor toegang vanaf een niet-vertrouwde netwerk locatie is er echter een verhoogd risico dat aanmeldingen niet worden uitgevoerd door legitieme gebruikers. Om dit probleem op te lossen, kunt u de toegang tot niet-vertrouwde netwerken blok keren. U kunt ook multi-factor Authentication (MFA) vereisen om extra zekerheid te krijgen dat er een poging is gedaan door de rechtmatige eigenaar van het account. 
+Om de balans tussen beveiliging en productiviteit onder de knie te krijgen, kan het voldoende zijn dat u alleen een wachtwoord nodig hebt voor aanmeldingen uit het netwerk van uw organisatie. Voor toegang vanaf een niet-vertrouwde netwerklocatie is er echter een verhoogd risico dat aanmeldingen niet worden uitgevoerd door legitieme gebruikers. Om deze zorg aan te pakken, u de toegang van niet-vertrouwde netwerken blokkeren. U ook multi-factor authenticatie (MFA) vereisen om extra zekerheid terug te krijgen dat een poging is gedaan door de rechtmatige eigenaar van het account. 
 
-Met voorwaardelijke toegang van Azure AD kunt u deze vereiste aanpakken met één beleid dat toegang verleent: 
+Met Voorwaardelijke toegang tot Azure AD u deze vereiste beantwoorden met één enkel beleid dat toegang verleent: 
 
-- Naar geselecteerde Cloud-apps
+- Naar geselecteerde cloud-apps
 - Voor geselecteerde gebruikers en groepen  
-- Multi-factor Authentication vereisen 
-- Wanneer de toegang afkomstig is: 
+- Multifactorauthenticatie vereisen 
+- Wanneer de toegang afkomstig is van: 
    - Een locatie die niet wordt vertrouwd
 
 ## <a name="implementation"></a>Implementatie
 
-De uitdaging van dit scenario is het vertalen *van de toegang vanaf een niet-vertrouwde netwerk locatie* naar een voorwaardelijke toegangs voorwaarde. In een beleid voor voorwaardelijke toegang kunt u de [locatie voorwaarde](location-condition.md) configureren voor het oplossen van scenario's die betrekking hebben op netwerk locaties. Met de voor waarde voor locaties kunt u benoemde locaties selecteren. Dit zijn logische groeperingen van IP-adresbereiken, landen en regio's.  
+De uitdaging van dit scenario is om *toegang vanaf een niet-vertrouwde netwerklocatie* te vertalen naar een voorwaarde voor voorwaardelijke toegang. In een beleid voor voorwaardelijke toegang u de [locatievoorwaarde](location-condition.md) configureren om scenario's aan te pakken die gerelateerd zijn aan netwerklocaties. Met de locatievoorwaarde u benoemde locaties selecteren, logische groeperingen van IP-adresbereiken, landen en regio's.  
 
-Normaal gesp roken bezit uw organisatie een of meer adresbereiken, bijvoorbeeld 199.30.16.0-199.30.16.15.
-U kunt een benoemde locatie als volgt configureren:
+Uw organisatie bezit doorgaans een of meer adresbereiken, bijvoorbeeld 199.30.16.0 - 199.30.16.15.
+U een benoemde locatie configureren op:
 
 - Dit bereik opgeven (199.30.16.0/28) 
-- Een beschrijvende naam toewijzen, zoals **bedrijfs netwerk** 
+- Een beschrijvende naam toewijzen, zoals **Bedrijfsnetwerk** 
 
-In plaats van te bepalen welke locaties niet worden vertrouwd, kunt u het volgende doen:
+In plaats van te proberen te definiëren wat alle locaties zijn die niet worden vertrouwd, u:
 
-- Een wille keurige locatie toevoegen 
+- Elke locatie opnemen 
 
    ![Voorwaardelijke toegang](./media/untrusted-networks/02.png)
 
@@ -65,8 +65,8 @@ In plaats van te bepalen welke locaties niet worden vertrouwd, kunt u het volgen
 
 ## <a name="policy-deployment"></a>Implementatie van beleid
 
-Met de aanpak die in dit artikel wordt beschreven, kunt u nu een beleid voor voorwaardelijke toegang configureren voor niet-vertrouwde locaties. Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is het aanbevolen best practice het te testen voordat u het in productie neemt. In het ideale geval gebruikt u een test Tenant om te controleren of uw nieuwe beleid werkt zoals bedoeld. Zie [een nieuw beleid implementeren](best-practices.md#how-should-you-deploy-a-new-policy)voor meer informatie. 
+Met de in dit artikel beschreven aanpak u nu een beleid voor voorwaardelijke toegang configureren voor niet-vertrouwde locaties. Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is de aanbevolen best practice om het te testen voordat u het uitrolt in productie. Gebruik in het ideale idealiter een testtenant om te controleren of uw nieuwe beleid werkt zoals bedoeld. Zie [Een nieuw beleid implementeren](best-practices.md#how-should-you-deploy-a-new-policy)voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is voorwaardelijke toegang in azure Active Directory?](../active-directory-conditional-access-azure-portal.md) voor meer informatie over voorwaardelijke toegang.
+Zie Wat is voorwaardelijke toegang in [Azure Active Directory als](../active-directory-conditional-access-azure-portal.md) u meer wilt weten over voorwaardelijke toegang?

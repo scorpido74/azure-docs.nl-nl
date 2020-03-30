@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure IoT Hub Device apparaatdubbels (Java) | Microsoft Docs
-description: Azure IoT Hub Device apparaatdubbels gebruiken om labels toe te voegen en vervolgens een IoT Hub query te gebruiken. U gebruikt de Azure IoT Device SDK voor Java voor het implementeren van de apparaat-app en de Azure IoT Service SDK voor Java om een service-app te implementeren waarmee de tags worden toegevoegd en de IoT Hub-query wordt uitgevoerd.
+title: Aan de slag met Azure IoT Hub-apparaattweeling (Java) | Microsoft Documenten
+description: Azure IoT Hub-apparaattweelingen gebruiken om tags toe te voegen en vervolgens een IoT Hub-query te gebruiken. U gebruikt de Azure IoT-apparaat SDK voor Java om de apparaat-app en de Azure IoT-service SDK voor Java te implementeren om een service-app te implementeren die de tags toevoegt en de IoT Hub-query uitvoert.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,33 +10,33 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: e0114c37b2204a7ad1d7b0cf9c7f336dcd85883a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110485"
 ---
-# <a name="get-started-with-device-twins-java"></a>Aan de slag met Device apparaatdubbels (Java)
+# <a name="get-started-with-device-twins-java"></a>Aan de slag met apparaattweelingen (Java)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-In deze zelf studie maakt u twee Java Console-apps:
+In deze zelfstudie maakt u twee Java-console-apps:
 
-* **Add-Tags-query**, een Java-back-end-app waarmee Tags en apparaatdubbels worden toegevoegd.
-* **gesimuleerd: apparaat**, een Java-apparaat-app die verbinding maakt met uw IOT-hub en de verbindings voorwaarde rapporteert met behulp van een gerapporteerde eigenschap.
+* **add-tags-query**, een Java back-end app die tags en query's apparaat tweelingen toevoegt.
+* **gesimuleerd-apparaat**, een Java-apparaat app die verbinding maakt met uw IoT-hub en rapporteert de connectiviteit voorwaarde met behulp van een gerapporteerde eigenschap.
 
 > [!NOTE]
-> Het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) bevat informatie over de Azure IOT-sdk's die u kunt gebruiken om zowel apparaat-als back-end-apps te bouwen.
+> Het artikel [Azure IoT SDKs](iot-hub-devguide-sdks.md) bevat informatie over de Azure IoT SDK's die u gebruiken om zowel apparaat- als back-end-apps te bouwen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder ondersteuning op **lange termijn** om naar downloads voor JDK 8 te gaan.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+* Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -46,7 +46,7 @@ In deze zelf studie maakt u twee Java Console-apps:
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
+## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
@@ -54,19 +54,19 @@ In deze zelf studie maakt u twee Java Console-apps:
 
 ## <a name="create-the-service-app"></a>De service-app maken
 
-In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie worden toegevoegd als een tag aan het apparaat dubbele in IoT Hub gekoppeld aan **myDeviceId**. De app vraagt eerst IoT hub op voor apparaten die zich in de VS bevinden en vervolgens naar apparaten die een mobiele netwerk verbinding rapporteren.
+In deze sectie maakt u een Java-app die locatiemetagegevens als tag toevoegt aan de apparaattweeling in IoT Hub die is gekoppeld aan **myDeviceId.** De app stelt eerst een IoT-hub op voor apparaten in de VS en vervolgens voor apparaten die een mobiele netwerkverbinding rapporteren.
 
-1. Maak op de ontwikkel computer een lege map met de naam **IOT-Java-dubbele-getstarted**.
+1. Maak op je ontwikkelmachine een lege map met de naam **iot-java-twin-getstarted.**
 
-2. Maak in de map **IOT-Java-dubbele-getstarted** een Maven-project met de naam **Add-Tags-query** met behulp van de volgende opdracht bij de opdracht prompt:
+2. Maak in de map **iot-java-twin-getstarted** een Maven-project met de naam **add-tags-query** met de volgende opdracht op uw opdrachtprompt:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-3. Ga bij de opdracht prompt naar de map **Add-Tags-query** .
+3. Navigeer bij de opdrachtprompt naar de map **add-tags-query.**
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **Add-Tags-query** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
+4. Open het **bestand pom.xml** met een teksteditor in de map **add-tags-query** en voeg de volgende afhankelijkheid toe aan het **knooppunt van afhankelijkheden.** Met deze afhankelijkheid u het **iot-service-clientpakket** in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
@@ -78,9 +78,9 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     ```
 
     > [!NOTE]
-    > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > U vindt de meest recente versie van **iot-service-client** met [Maven zoeken](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen.
+5. Voeg het volgende **buildknooppunt** toe na het knooppunt **van afhankelijkheden.** Deze configuratie instrueert Maven om Java 1.8 te gebruiken om de app te bouwen.
 
     ```xml
     <build>
@@ -98,9 +98,9 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     </build>
     ```
 
-6. Sla het bestand **pom. XML** op en sluit het.
+6. Sla het bestand **pom.xml** op en sluit het.
 
-7. Open het **Add-Tags-query\src\main\java\com\mycompany\app\App.java** -bestand met behulp van een tekst editor.
+7. Open met behulp van een teksteditor het bestand **add-tags-query\src\main\java\com\mycompany\app\App.java.**
 
 8. Voeg de volgende **import**instructies toe aan het bestand:
 
@@ -113,7 +113,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     import java.util.Set;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IoT hub-connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` de IoT-hubverbindingstekenreeks die u hebt gekopieerd in [De verbindingstekenreeks voor iot-hub opbrengen](#get-the-iot-hub-connection-string).
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -123,13 +123,13 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     public static final String plant = "Redmond43";
     ```
 
-10. Werk de hand tekening van de **hoofd** methode bij om de volgende `throws`-component op te genomen:
+10. Werk de handtekening van de `throws` **hoofdmethode** bij om de volgende clausule op te nemen:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-11. Vervang de code in de methode **Main** door de volgende code om de **DeviceTwin** -en **DeviceTwinDevice** -objecten te maken. Het **DeviceTwin** -object verwerkt de communicatie met uw IOT-hub. Het **DeviceTwinDevice** -object vertegenwoordigt het apparaat dubbele met de eigenschappen en Tags:
+11. Vervang de code in de **hoofdmethode** door de volgende code om de objecten **DeviceTwin** en **DeviceTwinDevice** te maken. Het **DeviceTwin-object** verzorgt de communicatie met uw IoT-hub. Het object **DeviceTwinDevice** vertegenwoordigt de apparaattweeling met zijn eigenschappen en tags:
 
     ```java
     // Get the DeviceTwin and DeviceTwinDevice objects
@@ -137,7 +137,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-12. Voeg het volgende `try/catch`-blok toe aan de methode **Main** :
+12. Voeg het `try/catch` volgende blok toe aan de **hoofdmethode:**
 
     ```java
     try {
@@ -149,7 +149,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     }
     ```
 
-13. Als u de dubbele labels van de **regio** en het **centrale** apparaat in het dubbele apparaat wilt bijwerken, voegt u de volgende code toe in het `try` blok:
+13. Als u de dubbele tags van het **gebied** en het `try` **apparaat** in uw apparaattwee wilt bijwerken, voegt u de volgende code toe in het blok:
 
     ```java
     // Get the device twin from IoT Hub
@@ -178,7 +178,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     System.out.println(device);
     ```
 
-14. Als u een query wilt uitvoeren voor het apparaat apparaatdubbels in IoT hub, voegt u de volgende code toe aan het `try` blok na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert een maximum van 100 apparaten.
+14. Als u de apparaattweeling wilt opvragen in `try` de IoT-hub, voegt u de volgende code toe aan het blok na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert maximaal 100 apparaten.
 
     ```java
     // Query the device twins in IoT Hub
@@ -207,9 +207,9 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     }
     ```
 
-15. Het **Add-Tags-query\src\main\java\com\mycompany\app\App.java** -bestand opslaan en sluiten
+15. Het **add-tags-query\src\main\java\com\mycompany\app\App.java-bestand** opslaan en sluiten
 
-16. Bouw de app **Add-Tags-query** op en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map **Add-Tags-query** en voer de volgende opdracht uit:
+16. Bouw de **add-tags-query-app** en corrigeer eventuele fouten. Navigeer bij de opdrachtprompt naar de map **add-tags-query** en voer de volgende opdracht uit:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -217,17 +217,17 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
 
 ## <a name="create-a-device-app"></a>Een apparaat-app maken
 
-In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenschaps waarde wordt ingesteld die wordt verzonden naar IoT Hub.
+In deze sectie maakt u een Java-console-app die een gerapporteerde eigenschapswaarde instelt die naar IoT Hub wordt verzonden.
 
-1. Maak in de map **IOT-Java-dubbele-getstarted** een Maven-project met de naam **gesimuleerd apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
+1. Maak in de map **iot-java-twin-getstarted** een Maven-project met de naam **gesimuleerd apparaat** met de volgende opdracht op uw opdrachtprompt:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Ga bij de opdracht prompt naar de map **met gesimuleerde apparaten** .
+2. Navigeer bij de opdrachtprompt naar de **map met gesimuleerdapparaat.**
 
-3. Open met een tekst editor het bestand **pom. XML** in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-apparaat-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub.
+3. Open het **bestand pom.xml** met een teksteditor in de map **met gesimuleerdapparaat** en voeg de volgende afhankelijkheden toe aan het **knooppunt van afhankelijkheden.** Met deze afhankelijkheid u het **iot-apparaat-clientpakket** in uw app gebruiken om te communiceren met uw IoT-hub.
 
     ```xml
     <dependency>
@@ -238,9 +238,9 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     ```
 
     > [!NOTE]
-    > U kunt de meest recente versie van **IOT-Device-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > U vindt de meest recente versie van **iot-device-client** met [Maven zoeken](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
+4. Voeg de volgende afhankelijkheid toe aan het knooppunt **van afhankelijkheden.** Deze afhankelijkheid configureert een NOP voor de Apache [SLF4J-kapgevel,](https://www.slf4j.org/) die door de sdk van de apparaatclient wordt gebruikt om logboekregistratie te implementeren. Deze configuratie is optioneel, maar als u deze weglaat, ziet u mogelijk een waarschuwing in de console wanneer u de app uitvoert. Zie [Logboekregistratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de voorbeelden voor het *Azure IoT-apparaat SDK voor Java-leesmijbestand voor* meer informatie over het inloggen in de SDK van het apparaat.
 
     ```xml
     <dependency>
@@ -250,7 +250,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     </dependency>
     ```
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **buildknooppunt** toe na het knooppunt **van afhankelijkheden.** Deze configuratie instrueert Maven om Java 1.8 te gebruiken om de app te bouwen:
 
     ```xml
     <build>
@@ -268,9 +268,9 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     </build>
     ```
 
-6. Sla het bestand **pom. XML** op en sluit het.
+6. Sla het bestand **pom.xml** op en sluit het.
 
-7. Open het **simulated-device\src\main\java\com\mycompany\app\App.java** -bestand met behulp van een tekst editor.
+7. Open met behulp van een teksteditor het **bestand simulated-device\src\main\java\com\mycompany\app\App.java.**
 
 8. Voeg de volgende **import**instructies toe aan het bestand:
 
@@ -283,7 +283,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     import java.util.Scanner;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat dat connection string u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` de tekenreeks voor apparaatverbinding die u hebt gekopieerd in [Een nieuw apparaat registreren in de IoT-hub.](#register-a-new-device-in-the-iot-hub)
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -293,7 +293,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
 
     Deze voorbeeld-app gebruikt de **protocol**-variabele bij het maken van een **DeviceClient**-object.
 
-10. Voeg de volgende methode toe aan de **app** -klasse om informatie over dubbele updates af te drukken:
+10. Voeg de volgende methode toe aan de klasse **App** om informatie over twee updates af te drukken:
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -304,7 +304,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
       }
     ```
 
-11. Vervang de code in de methode **Main** door de volgende code in:
+11. Vervang de code in de **hoofdmethode** door de volgende code om:
 
     * Maak een apparaatclient om te communiceren met IoT Hub.
 
@@ -323,7 +323,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     };
     ```
 
-12. Voeg de volgende code toe aan de methode **Main** om een **connectivityType** -gerapporteerde eigenschap te maken en deze te verzenden naar IOT hub:
+12. Voeg de volgende code toe aan de **hoofdmethode** om een **door ConnectivityType** gerapporteerde eigenschap te maken en deze naar IoT Hub te verzenden:
 
     ```java
     try {
@@ -343,7 +343,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     }
     ```
 
-13. Voeg de volgende code toe aan het einde van de methode **Main** . Als u op de **Enter** -toets wacht, kan de IOT hub de status van de dubbele bewerkingen van het apparaat rapporteren.
+13. Voeg de volgende code toe aan het einde van de **hoofdmethode.** Wachten op de **Enter-toets** geeft IoT Hub de tijd om de status van de twee bewerkingen van het apparaat te rapporteren.
 
     ```java
     System.out.println("Press any key to exit...");
@@ -361,9 +361,9 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
      public static void main(String[] args) throws URISyntaxException, IOException
      ```
 
-15. Sla het **simulated-device\src\main\java\com\mycompany\app\App.java** -bestand op en sluit het.
+15. Sla het **gesimuleerde apparaat\src\main\java\com\mycompany\app\App.java-bestand** op en sluit deze.
 
-16. Bouw de **gesimuleerde apparaat-** app op en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map **gesimuleerd apparaat** en voer de volgende opdracht uit:
+16. Bouw de **app voor gesimuleerd apparaat** en corrigeer eventuele fouten. Navigeer op uw opdrachtprompt naar de **map gesimuleerd apparaat** en voer de volgende opdracht uit:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -373,40 +373,40 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
 
 U bent nu klaar om de console-apps uit te voeren.
 
-1. Voer bij een opdracht prompt in de map **Add-Tags-query** de volgende opdracht uit om de **Add-Tags-query service-** app uit te voeren:
+1. Voer bij een opdrachtprompt in de map **add-tags-query** de volgende opdracht uit om de app **add-tags-queryservice** uit te voeren:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Service-app van Java IoT Hub om label waarden bij te werken en query's uit te voeren](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Java IoT Hub-service-app om tagwaarden bij te werken en apparaatquery's uit te voeren](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
-    U kunt de **fabrieks** -en **regio** Tags zien die zijn toegevoegd aan het apparaat dubbele. De eerste query retourneert uw apparaat, maar de tweede niet.
+    U de **plant-** en **regiotags** zien die aan de apparaattweeling zijn toegevoegd. De eerste query retourneert uw apparaat, maar de tweede niet.
 
-2. Voer bij een opdracht prompt in de map met **gesimuleerde apparaten** de volgende opdracht uit om de gerapporteerde eigenschap **connectivityType** toe te voegen aan het apparaat dubbele:
-
-    ```cmd/sh
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
-    ```
-
-    ![De apparaatclient voegt de gerapporteerde eigenschap * * connectivityType * * toe](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
-
-3. Voer bij een opdracht prompt in de map **Add-Tags-query** de volgende opdracht uit om een tweede keer de app **Add-Tags-query** service uit te voeren:
+2. Voer bij een opdrachtprompt in de **map gesimuleerd apparaat** de volgende opdracht uit om de eigenschap **connectivityType** gerapporteerd e.a.p.m. toe te voegen aan de apparaattweeling:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Service-app van Java IoT Hub om label waarden bij te werken en query's uit te voeren](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+    ![De apparaatclient voegt de gerapporteerde eigenschap **connectivityType** toe](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
-    Nu het apparaat de eigenschap **connectivityType** naar IOT hub heeft verzonden, retourneert de tweede query uw apparaat.
+3. Voer bij een opdrachtprompt in de map **add-tags-query** de volgende opdracht uit om de app **add-tags-queryservice** een tweede keer uit te voeren:
+
+    ```cmd/sh
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
+
+    ![Java IoT Hub-service-app om tagwaarden bij te werken en apparaatquery's uit te voeren](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+
+    Nu uw apparaat de eigenschap **connectivityType** naar IoT Hub heeft verzonden, retourneert de tweede query uw apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze handleiding hebt u een nieuwe IoT-hub geconfigureerd in Azure Portal en vervolgens een apparaat-id gemaakt in het id-register van de IoT-hub. U hebt meta gegevens van apparaten toegevoegd als tags van een back-end-app en u hebt een apparaat-app geschreven om connectiviteits gegevens van apparaten te rapporteren in het dubbele apparaat. U hebt ook geleerd hoe u een query kunt uitvoeren op het apparaat dubbele informatie met behulp van de SQL-achtige IoT Hub query taal.
+In deze handleiding hebt u een nieuwe IoT-hub geconfigureerd in Azure Portal en vervolgens een apparaat-id gemaakt in het id-register van de IoT-hub. U hebt apparaatmetagegevens toegevoegd als tags van een back-end-app en een apparaat-app geschreven om informatie over apparaatconnectiviteit in de apparaattweeling te rapporteren. U hebt ook geleerd hoe u de dubbele informatie van het apparaat opvragen met de SQL-achtige IoT Hub-querytaal.
 
-Gebruik de volgende bronnen voor meer informatie over:
+Gebruik de volgende bronnen om te leren hoe u:
 
-* Verzend telemetrie van apparaten met de zelf studie [aan de slag met IOT hub](quickstart-send-telemetry-java.md) .
+* Verstuur telemetrie vanaf apparaten met de [zelfstudie Aan de slag met IoT Hub.](quickstart-send-telemetry-java.md)
 
-* Apparaten interactief beheren (bijvoorbeeld door een ventilator in te scha kelen vanuit een door de gebruiker beheerde app) met de zelf studie [directe methoden gebruiken](quickstart-control-device-java.md) .
+* Bedien apparaten interactief (zoals het inschakelen van een ventilator vanuit een door de gebruiker bestuurde app) met de zelfstudie [Direct Methoden](quickstart-control-device-java.md) gebruiken.

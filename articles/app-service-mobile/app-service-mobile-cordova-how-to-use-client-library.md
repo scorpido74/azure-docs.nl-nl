@@ -1,44 +1,44 @@
 ---
-title: Apache Cordova-invoeg toepassing gebruiken
-description: Apache Cordova-invoeg toepassing voor Azure Mobile Apps gebruiken
+title: Hoe Apache Cordova Plugin gebruiken
+description: Apache Cordova-plug-in gebruiken voor Azure Mobile Apps
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: cafeea8afe571fc81548833952eee72a695fed41
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459358"
 ---
-# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Apache Cordova-client bibliotheek gebruiken voor Azure Mobile Apps
+# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Apache Cordova-clientbibliotheek gebruiken voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Overzicht
-Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Apache Cordova-invoeg toepassing voor Azure Mobile apps]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken, een tabel te maken en een vooraf gebouwd Apache Cordova-project te downloaden. In deze hand leiding richten we ons op de client-side Apache Cordova-invoeg toepassing.
+In deze handleiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Apache Cordova-plug-in voor Azure Mobile Apps.] Als u nieuw bent in Azure Mobile Apps, voltooit u Azure [Mobile Apps Snel aan de slag] om een backend te maken, een tabel te maken en een vooraf gebouwd Apache Cordova-project te downloaden. In deze gids richten we ons op de client-side Apache Cordova Plugin.
 
 ## <a name="supported-platforms"></a>Ondersteunde platforms
-Deze SDK ondersteunt Apache Cordova v 6.0.0 en hoger op iOS-, Android-en Windows-apparaten.  De ondersteuning voor het platform is als volgt:
+Deze SDK ondersteunt Apache Cordova v6.0.0 en hoger op iOS-, Android- en Windows-apparaten.  De platformondersteuning is als volgt:
 
 * Android API 19-24 (KitKat via Nougat).
-* iOS-versies 8,0 en hoger.
-* Windows Phone 8,1.
+* iOS-versies 8.0 en hoger.
+* Windows Phone 8.1.
 * Universeel Windows-platform.
 
-## <a name="Setup"></a>Installatie en vereisten
-In deze hand leiding wordt ervan uitgegaan dat u een back-end hebt gemaakt met een tabel. In deze hand leiding wordt ervan uitgegaan dat de tabel hetzelfde schema heeft als de tabellen in deze zelf studies. In deze hand leiding wordt ook ervan uitgegaan dat u de Apache Cordova-invoeg toepassing aan uw code hebt toegevoegd.  Als u dit nog niet hebt gedaan, kunt u de Apache Cordova-invoeg toepassing toevoegen aan uw project op de opdracht regel:
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>Instellingen en vereisten
+In deze handleiding wordt ervan uitgegaan dat u een back-end met een tabel hebt gemaakt. In deze handleiding wordt ervan uitgegaan dat de tabel hetzelfde schema heeft als de tabellen in die zelfstudies. Deze handleiding gaat er ook van uit dat u de Apache Cordova Plugin aan uw code hebt toegevoegd.  Als u dit niet hebt gedaan, u de Plug-in Apache Cordova toevoegen aan uw project op de opdrachtregel:
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Raadpleeg de documentatie voor meer informatie over het maken van [uw eerste Apache Cordova-app].
+Voor meer informatie over het maken van [uw eerste Apache Cordova app,]zie hun documentatie.
 
-## <a name="ionic"></a>Een ionogene v2-app instellen
+## <a name="setting-up-an-ionic-v2-app"></a><a name="ionic"></a>Een Ionic v2-app instellen
 
-Als u een ionogene v2-project correct wilt configureren, maakt u eerst een eenvoudige app en voegt u de Cordova-invoeg toepassing toe:
+Als u een Ionic v2-project goed wilt configureren, maakt u eerst een basis-app en voegt u de Cordova-plug-in toe:
 
 ```
 ionic start projectName --v2
@@ -46,78 +46,78 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Voeg de volgende regels toe aan `app.component.ts` om het client object te maken:
+Voeg de volgende `app.component.ts` regels toe om het clientobject te maken:
 
 ```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
 
-U kunt nu het project maken en uitvoeren in de browser:
+U het project nu bouwen en uitvoeren in de browser:
 
 ```
 ionic platform add browser
 ionic run browser
 ```
 
-De Azure Mobile Apps Cordova-invoeg toepassing ondersteunt zowel ionogene v1-als v2-apps.  Alleen voor de ionogene v2-apps is de extra declaratie vereist voor het `WindowsAzure`-object.
+De Azure Mobile Apps Cordova-plug-in ondersteunt zowel Ionische v1- als v2-apps.  Alleen de Ionische v2-apps `WindowsAzure` vereisen de extra verklaring voor het object.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Procedure: gebruikers verifiëren
-Azure App Service ondersteunt het verifiëren en autoriseren van app-gebruikers met behulp van verschillende externe ID-providers: Facebook, Google, micro soft-account en Twitter. U kunt machtigingen voor tabellen instellen om de toegang tot specifieke bewerkingen te beperken tot alleen geverifieerde gebruikers. U kunt ook de identiteit van geverifieerde gebruikers gebruiken voor het implementeren van autorisatie regels in Server scripts. Zie voor meer informatie de zelf studie [aan de slag met verificatie] .
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>Hoe: Gebruikers verifiëren
+Azure App Service ondersteunt het authenticeren en autoriseren van app-gebruikers met behulp van verschillende externe identiteitsproviders: Facebook, Google, Microsoft-account en Twitter. U machtigingen voor tabellen instellen om de toegang voor specifieke bewerkingen te beperken tot alleen geverifieerde gebruikers. U ook de identiteit van geverifieerde gebruikers gebruiken om autorisatieregels in serverscripts te implementeren. Zie de [zelfstudie Aan de slag met verificatie] voor meer informatie.
 
-Wanneer u verificatie gebruikt in een Apache Cordova-app, moeten de volgende Cordova-invoeg toepassingen beschikbaar zijn:
+Bij het gebruik van verificatie in een Apache Cordova-app moeten de volgende Cordova-plug-ins beschikbaar zijn:
 
-* [Cordova-invoeg toepassing-apparaat]
-* [Cordova-invoeg toepassing-inappbrowser]
+* [cordova-plugin-apparaat]
+* [cordova-plugin-inappbrowser]
 
-Twee verificatie stromen worden ondersteund: een server stroom en een client stroom.  De server stroom biedt de eenvoudigste verificatie-ervaring, omdat deze afhankelijk is van de webauthenticatie interface van de provider. De client stroom maakt een diep gaande integratie mogelijk met apparaatspecifieke mogelijkheden, zoals eenmalige aanmelding, afhankelijk van specifieke Sdk's voor een apparaat.
+Twee verificatiestromen worden ondersteund: een serverstroom en een clientstroom.  De serverstroom biedt de eenvoudigste verificatie-ervaring, omdat deze is gebaseerd op de webverificatie-interface van de provider. De clientflow zorgt voor een diepere integratie met apparaatspecifieke mogelijkheden, zoals single-sign-on, omdat deze afhankelijk is van providerspecifieke apparaatspecifieke SDK's.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Procedure: uw mobiele App Service configureren voor externe omleidings-Url's.
-Verschillende typen Apache Cordova-toepassingen gebruiken een loop back-mogelijkheid voor het verwerken van OAuth-gebruikers interface stromen.  OAuth-UI-stromen op localhost veroorzaken problemen omdat de verificatie service alleen weet hoe u uw service standaard moet gebruiken.  Voor beelden van problematische OAuth-UI-stromen zijn:
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>How to: Configureer uw mobiele app-service voor externe omleidings-URL's.
+Verschillende soorten Apache Cordova-toepassingen gebruiken een loopback-mogelijkheid om OAuth UI-stromen te verwerken.  OAuth UI-stromen op localhost veroorzaken problemen, omdat de verificatieservice alleen weet hoe u uw service standaard gebruiken.  Voorbeelden van problematische OAuth UI-stromen zijn:
 
-* De rimpel-emulator.
-* Live opnieuw laden met ionogene.
-* De mobiele back-end lokaal uitvoeren
-* De mobiele back-end wordt uitgevoerd in een andere Azure App Service dan die waarvoor een verificatie wordt geboden.
+* De Ripple emulator.
+* Live Reload met Ionic.
+* De mobiele backend lokaal uitvoeren
+* De mobiele backend uitvoeren in een andere Azure App-service dan de back-end die verificatie biedt.
 
 Volg deze instructies om uw lokale instellingen toe te voegen aan de configuratie:
 
-1. Meld u aan bij [Azure Portal].
-2. Selecteer **alle resources** of **app Services** Klik op de naam van uw mobiele app.
-3. Klik op **extra**
-4. Klik op **resource Verkenner** in het menu observeren en klik vervolgens op **Go**.  Er wordt een nieuw venster of tabblad geopend.
-5. Vouw de **configuratie**-, **authsettings** -knoop punten voor uw site uit in de linkernavigatiebalk.
-6. Klik op **bewerken**
-7. Zoek het element ' allowedExternalRedirectUrls '.  Deze kan worden ingesteld op null of op een matrix met waarden.  Wijzig de waarde in de volgende waarde:
+1. Inloggen bij de [Azure-portal]
+2. Selecteer **Alle bronnen** of **App-services** klik vervolgens op de naam van uw mobiele app.
+3. Klik **op Extra**
+4. Klik op **Resourceexplorer** in het menu OBSERVEREN en klik vervolgens op **Start**.  Er wordt een nieuw venster of tabblad geopend.
+5. Vouw de **config,** **authsettings-knooppunten** voor uw site uit in de linkernavigatie.
+6. Klik **op Bewerken**
+7. Zoek naar het element 'toegestaanExternalRedirectUrls'.  Het kan worden ingesteld op null of een array van waarden.  Wijzig de waarde in de volgende waarde:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Vervang de Url's door de Url's van uw service.  Voor beelden zijn `http://localhost:3000` (voor de voor beeld-service van node. js) of `http://localhost:4400` (voor de rimpel-service).  Deze Url's zijn echter voor beelden: uw situatie, met inbegrip van de services die in de voor beelden worden genoemd, kunnen afwijken.
-8. Klik op de knop **lezen/schrijven** in de rechter bovenhoek van het scherm.
-9. Klik op de knop groene **plaats** .
+    Vervang de URL's door de URL's van uw service.  Voorbeelden hiervan `http://localhost:3000` zijn (voor de voorbeeldservice `http://localhost:4400` Node.js) of (voor de Ripple-service).  Deze URL's zijn echter voorbeelden - uw situatie, ook voor de services die in de voorbeelden worden genoemd, kan verschillen.
+8. Klik op de knop **Lezen/schrijven** in de rechterbovenhoek van het scherm.
+9. Klik op **PUT** de groene PUT-knop.
 
-De instellingen worden op dit moment opgeslagen.  Sluit het browser venster pas nadat de instellingen zijn opgeslagen.
-Voeg deze loop back-Url's ook toe aan de CORS-instellingen voor uw App Service:
+De instellingen worden op dit moment opgeslagen.  Sluit het browservenster niet totdat de instellingen zijn opgeslagen.
+Voeg deze loopback-URL's ook toe aan de CORS-instellingen voor uw app-service:
 
-1. Meld u aan bij [Azure Portal].
-2. Selecteer **alle resources** of **app Services** Klik op de naam van uw mobiele app.
-3. De Blade instellingen wordt automatisch geopend.  Als dat niet het geval is, klikt u op **alle instellingen**.
+1. Inloggen bij de [Azure-portal]
+2. Selecteer **Alle bronnen** of **App-services** klik vervolgens op de naam van uw mobiele app.
+3. Het mes Instellingen wordt automatisch geopend.  Als dit niet het zo is, klikt u op **Alle instellingen**.
 4. Klik op **CORS** onder het API-menu.
-5. Voer de URL in die u wilt toevoegen in het meegeleverde vak en druk op ENTER.
-6. Voer indien nodig aanvullende Url's in.
+5. Voer de URL in die u wilt toevoegen in het opgegeven vak en druk op Enter.
+6. Voer indien nodig extra URL's in.
 7. Klik op **Opslaan** om de instellingen op te slaan.
 
 Het duurt ongeveer 10-15 seconden voordat de nieuwe instellingen van kracht worden.
 
-## <a name="register-for-push"></a>Procedure: registreren voor push meldingen
-Installeer de [PhoneGap-invoeg toepassing-push] om Push meldingen te verwerken.  Deze invoeg toepassing kan eenvoudig worden toegevoegd met behulp van de `cordova plugin add` opdracht op de opdracht regel of via het installatie programma voor de Git-invoeg toepassing in Visual Studio.  Met de volgende code in uw Apache Cordova-app wordt uw apparaat voor push meldingen geregistreerd:
+## <a name="how-to-register-for-push-notifications"></a><a name="register-for-push"></a>Hoe: Registreren voor pushmeldingen
+Installeer de [phonegap-plugin-push] om pushmeldingen te verwerken.  Deze plugin kan eenvoudig `cordova plugin add` worden toegevoegd met behulp van de opdracht op de command line, of via de Git plugin installer binnen Visual Studio.  De volgende code in uw Apache Cordova-app registreert uw apparaat op pushmeldingen:
 
 ```javascript
 var pushOptions = {
@@ -156,22 +156,22 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-Gebruik de Notification Hubs SDK om Push meldingen van de server te verzenden.  Nooit push meldingen rechtstreeks vanuit clients verzenden. Dit kan worden gebruikt om een DOS-aanval (Denial of service) te activeren voor Notification Hubs of de PNS.  De PNS kan uw verkeer als gevolg van dergelijke aanvallen verleiden.
+Gebruik de Notification Hubs SDK om pushmeldingen vanaf de server te verzenden.  Verstuur nooit pushmeldingen rechtstreeks van clients. Dit kan worden gebruikt om een denial of service-aanval op Notification Hubs of de PNS te activeren.  De PNS kan uw verkeer te verbieden als gevolg van dergelijke aanvallen.
 
 ## <a name="more-information"></a>Meer informatie
 
-In onze [API-documentatie](https://azure.github.io/azure-mobile-apps-js-client/)vindt u gedetailleerde informatie over de API.
+U vindt gedetailleerde API-details in onze [API-documentatie.](https://azure.github.io/azure-mobile-apps-js-client/)
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com
-[Azure Mobile Apps Quick Start]: app-service-mobile-cordova-get-started.md
+[Azure-portal]: https://portal.azure.com
+[Snel aan de slag met Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Aan de slag met verificatie]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Apache Cordova-invoeg toepassing voor Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[uw eerste Apache Cordova-app]: https://cordova.apache.org/#getstarted
+[Apache Cordova-plug-in voor Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
+[uw eerste Apache Cordova app]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[PhoneGap-invoeg toepassing-push]: https://www.npmjs.com/package/phonegap-plugin-push
-[Cordova-invoeg toepassing-apparaat]: https://www.npmjs.com/package/cordova-plugin-device
-[Cordova-invoeg toepassing-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
+[phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
+[cordova-plugin-apparaat]: https://www.npmjs.com/package/cordova-plugin-device
+[cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

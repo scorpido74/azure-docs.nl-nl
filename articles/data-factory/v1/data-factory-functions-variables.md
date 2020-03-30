@@ -1,6 +1,6 @@
 ---
-title: Data Factory functies en systeem variabelen
-description: Geeft een lijst van Azure Data Factory functies en systeem variabelen
+title: Data Factory-functies en systeemvariabelen
+description: Biedt een lijst met Azure Data Factory-functies en systeemvariabelen
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
@@ -11,33 +11,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73667653"
 ---
-# <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory-functies en systeem variabelen
+# <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - Functies en systeemvariabelen
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [systeem variabelen in Data Factory](../control-flow-system-variables.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Systeemvariabelen in Gegevensfabriek](../control-flow-system-variables.md)als u de huidige versie van de service Data Factory gebruikt.
 
-Dit artikel bevat informatie over functies en variabelen die door Azure Data Factory worden ondersteund.
+In dit artikel vindt u informatie over functies en variabelen die worden ondersteund door Azure Data Factory.
 
-## <a name="data-factory-system-variables"></a>Data Factory systeem variabelen
+## <a name="data-factory-system-variables"></a>Data Factory-systeemvariabelen
 
-| Naam variabele | Beschrijving | Object bereik | JSON-bereik en use cases |
+| Naam variabele | Beschrijving | Objectbereik | JSON-scope- en use cases |
 | --- | --- | --- | --- |
-| WindowStart |Begin van tijds interval voor het venster huidige activiteit uitvoeren |faxgebeurtenissen |<ol><li>Geef query's voor gegevens selectie op. Zie connector artikelen waarnaar wordt verwezen in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) .</li> |
-| WindowEnd |Einde van het tijds interval voor het venster huidige activiteit uitvoeren |faxgebeurtenissen |hetzelfde als WindowStart. |
-| Slice start |Begin van het tijds interval voor het gegevens segment dat wordt geproduceerd |faxgebeurtenissen<br/>Sets |<ol><li>Paden en bestands namen voor dynamische mappen opgeven tijdens het werken met [Azure Blob](data-factory-azure-blob-connector.md) en [File System-gegevens sets](data-factory-onprem-file-system-connector.md).</li><li>Geef invoer afhankelijkheden op met data factory functies in de verzameling activiteits ingangen.</li></ol> |
-| SliceEnd |Het einde van het tijds interval voor het huidige gegevens segment. |faxgebeurtenissen<br/>Sets |hetzelfde als slice start. |
+| WindowStart |Begin van het tijdsinterval voor het huidige activiteitsrunvenster |activiteit |<ol><li>Geef query's voor gegevensselectie op. Zie connectorartikelen waarnaar wordt verwezen in het artikel [Gegevensverplaatsingsactiviteiten.](data-factory-data-movement-activities.md)</li> |
+| WindowEnd |Einde van het tijdsinterval voor het huidige activiteitsrunvenster |activiteit |hetzelfde als WindowStart. |
+| SliceStart |Begin van het tijdsinterval voor de productie van gegevenssegment |activiteit<br/>Dataset |<ol><li>Geef dynamische mappaden en bestandsnamen op tijdens het werken met [Azure Blob-](data-factory-azure-blob-connector.md) en [Bestandssysteemgegevenssets.](data-factory-onprem-file-system-connector.md)</li><li>Geef invoerafhankelijkheden op met gegevensfabrieksfuncties in het verzamelen van activiteitsinvoer.</li></ol> |
+| SliceEnd |Einde van het tijdsinterval voor het huidige gegevenssegment. |activiteit<br/>Dataset |hetzelfde als SliceStart. |
 
 > [!NOTE]
-> Het is momenteel data factory vereist dat het schema dat is opgegeven in de activiteit exact overeenkomt met het schema dat is opgegeven in de beschik baarheid van de uitvoer gegevensset. Daarom worden WindowStart, WindowEnd en slice start en SliceEnd altijd toegewezen aan dezelfde tijds periode en één uitvoer segment.
+> Momenteel vereist de gegevensfabriek dat het schema dat in de activiteit is opgegeven, precies overeenkomt met het schema dat is opgegeven in de beschikbaarheid van de uitvoergegevensset. Daarom worden WindowStart, WindowEnd en SliceStart en SliceEnd altijd toegewezen aan dezelfde periode en één uitvoersegment.
 > 
 
-### <a name="example-for-using-a-system-variable"></a>Voor beeld van het gebruik van een systeem variabele
-In het volgende voor beeld worden jaar, maand, dag en tijd van **slice start** geëxtraheerd in afzonderlijke variabelen die worden gebruikt door **FolderPath** en **filename** -eigenschappen.
+### <a name="example-for-using-a-system-variable"></a>Voorbeeld voor het gebruik van een systeemvariabele
+In het volgende voorbeeld worden jaar, maand, dag en tijd van **SliceStart** geëxtraheerd in afzonderlijke variabelen die worden gebruikt door **mapPath-** en **fileName-eigenschappen.**
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -51,17 +51,17 @@ In het volgende voor beeld worden jaar, maand, dag en tijd van **slice start** g
 ],
 ```
 
-## <a name="data-factory-functions"></a>Data Factory functies
-U kunt functies in data factory samen met systeem variabelen gebruiken voor de volgende doel einden:
+## <a name="data-factory-functions"></a>Data Factory-functies
+U functies in de gegevensfabriek gebruiken, samen met systeemvariabelen voor de volgende doeleinden:
 
-1. Het opgeven van query's voor gegevens selectie (Zie connector artikelen waarnaar wordt verwezen door het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) .
+1. Query's voor gegevensselectie opgeven (zie verbindingsartikelen waarnaar wordt verwezen in het artikel [Activiteiten gegevensverplaatsing.](data-factory-data-movement-activities.md)
    
-   De syntaxis voor het aanroepen van een data factory functie is: **$$\<functie >** voor gegevens selectie query's en andere eigenschappen in de activiteit en gegevens sets.  
-2. Het opgeven van invoer afhankelijkheden met data factory functies in de verzameling activiteiten ingangen.
+   De syntaxis om een gegevensfabriekfunctie aan te roepen is: ** $$ \<functie>** voor gegevensselectiequery's en andere eigenschappen in de activiteit en gegevenssets.  
+2. Het opgeven van invoerafhankelijkheden met gegevensfabrieksfuncties in het verzamelen van activiteitsinvoer.
    
-    $ $ is niet nodig voor het opgeven van invoer afhankelijke expressies.     
+    $$ is niet nodig voor het opgeven van invoerafhankelijkheidsexpressies.     
 
-In het volgende voor beeld wordt de eigenschap **sqlReaderQuery** in een JSON-bestand toegewezen aan een waarde die wordt geretourneerd door de functie `Text.Format`. In dit voor beeld wordt ook een systeem variabele met de naam **WindowStart**gebruikt. Dit is de start tijd van het venster voor het uitvoeren van de activiteit.
+In het volgende voorbeeld wordt de eigenschap **sqlReaderQuery** in een `Text.Format` JSON-bestand toegewezen aan een waarde die door de functie wordt geretourneerd. In dit voorbeeld wordt ook gebruik gemaakt van een systeemvariabele met de naam **WindowStart**, die de begintijd van het venster activiteitsrun vertegenwoordigt.
 
 ```json
 {
@@ -70,37 +70,37 @@ In het volgende voor beeld wordt de eigenschap **sqlReaderQuery** in een JSON-be
 }
 ```
 
-Zie het onderwerp [aangepaste datum-en tijd notatie reeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx) waarin de verschillende opmaak opties worden beschreven die u kunt gebruiken (bijvoorbeeld: ay vs. jjjj). 
+Zie onderwerp [Tekenreeksen voor aangepaste datum- en tijdnotatie](https://msdn.microsoft.com/library/8kb3ddd4.aspx) waarin verschillende opmaakopties worden beschreven die u gebruiken (bijvoorbeeld: ay vs. yyyy). 
 
 ### <a name="functions"></a>Functions
-De volgende tabellen geven een lijst van alle functies in Azure Data Factory:
+In de volgende tabellen worden alle functies in Azure Data Factory weergegeven:
 
-| Category | Functie | Parameters | Beschrijving |
+| Categorie | Functie | Parameters | Beschrijving |
 | --- | --- | --- | --- |
-| Time |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Voegt Y-uren toe aan de opgegeven tijd X. <br/><br/>Voorbeeld: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |Voegt Y minuten toe aan X.<br/><br/>Voorbeeld: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour (X) |X: datetime |Hiermee wordt de begin tijd voor het uur opgehaald dat wordt vertegenwoordigd door de uur component van X. <br/><br/>Voorbeeld: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| Date |AddDays (X, Y) |X: DateTime<br/><br/>Y: int |Voegt Y-dagen toe aan X. <br/><br/>Voor beeld: 9/15/2013 12:00:00 uur + 2 dagen = 9/17/2013 12:00:00 PM.<br/><br/>U kunt de dagen ook aftrekken door Y als een negatief getal op te geven.<br/><br/>Voor beeld: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| Date |AddMonths (X, Y) |X: DateTime<br/><br/>Y: int |Voegt Y-maanden toe aan X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>U kunt ook maanden aftrekken door Y als een negatief getal op te geven.<br/><br/>Voor beeld: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Date |AddQuarters (X, Y) |X: DateTime <br/><br/>Y: int |Voegt Y * 3 maanden toe aan X.<br/><br/>Voorbeeld: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| Date |AddWeeks (X, Y) |X: DateTime<br/><br/>Y: int |Voegt Y * 7 dagen toe aan X<br/><br/>Voor beeld: 9/15/2013 12:00:00 uur + 1 week = 9/22/2013 12:00:00 uur<br/><br/>U kunt ook weken aftrekken door Y als een negatief getal op te geven.<br/><br/>Voor beeld: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| Date |AddYears (X, Y) |X: DateTime<br/><br/>Y: int |Voegt Y-jaren toe aan X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>U kunt ook jaren aftrekken door Y als een negatief getal op te geven.<br/><br/>Voor beeld: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| Date |Dag (X) |X: DateTime |Hiermee wordt het dag gedeelte van X opgehaald.<br/><br/>Voor beeld: `Day of 9/15/2013 12:00:00 PM is 9`. |
-| Date |DayOfWeek (X) |X: DateTime |Hiermee wordt het onderdeel dag van de week van X opgehaald.<br/><br/>Voor beeld: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| Date |DayOfYear (X) |X: DateTime |Hiermee wordt de dag in het jaar opgehaald die wordt vertegenwoordigd door het jaar gedeelte van X.<br/><br/>Voorbeelden:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| Date |DaysInMonth (X) |X: DateTime |Hiermee worden de dagen in de maand opgehaald die worden vertegenwoordigd door het onderdeel month van para meter X.<br/><br/>Voor beeld: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| Date |EndOfDay (X) |X: DateTime |Hiermee wordt de datum/tijd opgehaald die het einde van de dag vertegenwoordigt (dag van het onderdeel) van X.<br/><br/>Voor beeld: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| Date |EndOfMonth (X) |X: DateTime |Hiermee wordt het einde van de maand opgehaald die wordt vertegenwoordigd door het onderdeel maand van para meter X. <br/><br/>Voor beeld: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datum/tijd die het einde van de maand september aangeeft) |
-| Date |StartOfDay (X) |X: DateTime |Hiermee wordt het begin van de dag opgehaald die wordt vertegenwoordigd door het onderdeel dag van para meter X.<br/><br/>Voor beeld: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |Van (X) |X: teken reeks |Teken reeks X naar een datum tijd parseren. |
-| DateTime |Maten (X) |X: DateTime |Hiermee wordt de eigenschap Ticks van de para meter X opgehaald. Eén streepje is gelijk aan 100 nano seconden. De waarde van deze eigenschap vertegenwoordigt het aantal maat streepjes dat sinds 12:00:00 middernacht, 1 januari 0001 is verstreken. |
-| Tekst |Indeling (X) |X: teken reeks variabele |Hiermee wordt de tekst opgemaakt (`\\'` combi natie gebruiken om `'` teken te escapen).|
+| Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Voegt Y-uren toe aan de opgegeven tijd X. <br/><br/>Voorbeeld: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |Voegt Y-minuten toe aan X.<br/><br/>Voorbeeld: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Time |StartOfHour(x) |X: Datumtijd |Hier wordt de begintijd voor het uur weergegeven door de uurcomponent van X. <br/><br/>Voorbeeld: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Date |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |Voegt Y-dagen toe aan X. <br/><br/>Voorbeeld: 9/15/2013 12:00:00 uur + 2 dagen = 9/17/2013 12:00:00 uur.<br/><br/>U ook dagen aftrekken door Y als een negatief getal op te geven.<br/><br/>Bijvoorbeeld: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| Date |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |Voegt Y-maanden toe aan X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>U ook maanden aftrekken door Y als een negatief getal op te geven.<br/><br/>Bijvoorbeeld: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Date |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Voegt Y * 3 maanden toe aan X.<br/><br/>Voorbeeld: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Date |AddWeeks(X,Y) |X: DateTime<br/><br/>Y: int |Voegt Y * 7 dagen toe aan X<br/><br/>Voorbeeld: 9/15/2013 12:00:00 uur + 1 week = 9/22/2013 12:00:00 pm<br/><br/>U ook weken aftrekken door Y als een negatief getal op te geven.<br/><br/>Bijvoorbeeld: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Date |AddYears(X,Y) |X: DateTime<br/><br/>Y: int |Voegt Y-jaren toe aan X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>U ook jaren aftrekken door Y als een negatief getal op te geven.<br/><br/>Bijvoorbeeld: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| Date |Dag(X) |X: DateTime |Krijgt de dagcomponent van X.<br/><br/>Bijvoorbeeld: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Date |DayOfWeek(x) |X: DateTime |Krijgt de dag van de week component van X.<br/><br/>Bijvoorbeeld: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| Date |DayOfYear(X) |X: DateTime |Krijgt de dag in het jaar vertegenwoordigd door het jaar onderdeel van X.<br/><br/>Voorbeelden:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Date |DaysinMonth(X) |X: DateTime |Wordt de dagen in de maand weergegeven door de maandcomponent van parameter X.<br/><br/>Bijvoorbeeld: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| Date |Eindevan de dag(X) |X: DateTime |Hiermee wordt de datumtijd die het einde van de dag (dagcomponent) van X vertegenwoordigt.<br/><br/>Bijvoorbeeld: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| Date |Eindemaand(X) |X: DateTime |Wordt het einde van de maand weergegeven door maandcomponent van parameter X. <br/><br/>Voorbeeld: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datumtijd die het einde van de maand september vertegenwoordigt) |
+| Date |StartOfDay(x) |X: DateTime |Wordt het begin van de dag weergegeven door de dagcomponent van parameter X.<br/><br/>Bijvoorbeeld: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| DateTime |Van(X) |X: Tekenreeks |Parse string X tot een datumtijd. |
+| DateTime |Teken(X) |X: DateTime |Krijgt de eigenschap teken van parameter X. Eén teek is gelijk aan 100 nanoseconden. De waarde van deze eigenschap vertegenwoordigt het aantal teken dat is verstreken sinds 12:00:00 middernacht, 1 januari 0001. |
+| Tekst |Opmaak(X) |X: Tekenreeks, variabele |Hiermee maakt u `\\'` de `'` tekst op (gebruik combinatie om aan het teken te ontsnappen).|
 
 > [!IMPORTANT]
-> Wanneer u een functie binnen een andere functie gebruikt, hoeft u geen **$$** voor voegsel voor de binnenste functie te gebruiken. Bijvoorbeeld: $ $Text. Format (' PartitionKey EQ \\' my_pkey_filter_value\\' en RowKey ge \\' {0: JJJJ-MM-DD uu: mm: SS}\\' ', time. AddHours (slice start,-6)). In dit voor beeld ziet u dat **$$** voor voegsel niet wordt gebruikt voor de functie **time. AddHours** . 
+> Wanneer u een functie binnen een andere **$$** functie gebruikt, hoeft u geen voorvoegsel te gebruiken voor de innerlijke functie. Bijvoorbeeld: $$Text.Format('PartitionKey \\eq\\'my_pkey_filter_value' en \\RowKey ge '{0: yyyy-MM-dd\\HH:mm:ss} '', Time.AddHours(SliceStart, -6)). Let in dit **$$** voorbeeld op dat voorvoegsel niet wordt gebruikt voor de functie **Time.AddHours.** 
 
 #### <a name="example"></a>Voorbeeld
-In het volgende voor beeld worden de para meters voor invoer en uitvoer voor de Hive-activiteit bepaald met behulp van de `Text.Format`-functie en de systeem variabele slice start. 
+In het volgende voorbeeld worden invoer- en uitvoerparameters `Text.Format` voor de Hive-activiteit bepaald met behulp van de functie en de variabele van het SliceStart-systeem. 
 
 ```json  
 {
@@ -139,9 +139,9 @@ In het volgende voor beeld worden de para meters voor invoer en uitvoer voor de 
 }
 ```
 
-### <a name="example-2"></a>Voor beeld 2
+### <a name="example-2"></a>Voorbeeld 2
 
-In het volgende voor beeld wordt de DateTime-para meter voor de opgeslagen procedure activiteit bepaald met behulp van de tekst. De functie Format en de variabele slice start. 
+In het volgende voorbeeld wordt de parameter DateTime voor de activiteit Opgeslagen procedure bepaald met behulp van de tekst. Opmaak, functie en de variabele SliceStart. 
 
 ```json
 {
@@ -175,8 +175,8 @@ In het volgende voor beeld wordt de DateTime-para meter voor de opgeslagen proce
 }
 ```
 
-### <a name="example-3"></a>Voor beeld 3
-Als u gegevens wilt lezen van de vorige dag in plaats van de dag die wordt vertegenwoordigd door de slice start, gebruikt u de functie AddDays zoals weer gegeven in het volgende voor beeld: 
+### <a name="example-3"></a>Voorbeeld 3
+Als u gegevens van de vorige dag wilt lezen in plaats van de dag die wordt weergegeven door de SliceStart, gebruikt u de functie AddDays zoals weergegeven in het volgende voorbeeld: 
 
 ```json
 {
@@ -227,5 +227,5 @@ Als u gegevens wilt lezen van de vorige dag in plaats van de dag die wordt verte
 }
 ```
 
-Zie het onderwerp [aangepaste datum-en tijd notatie reeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx) waarin de verschillende opmaak opties worden beschreven die u kunt gebruiken (bijvoorbeeld: JJ versus. jjjj). 
+Zie onderwerp [Tekenreeksen voor aangepaste datum- en tijdnotatie](https://msdn.microsoft.com/library/8kb3ddd4.aspx) waarin verschillende opmaakopties worden beschreven die u gebruiken (bijvoorbeeld: yy vs. yyyy). 
 

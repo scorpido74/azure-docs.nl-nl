@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen-Azure Web Application firewall
-description: Dit artikel bevat informatie over het oplossen van problemen met Web Application firewall (WAF) voor Azure-toepassing gateway
+title: Problemen oplossen - Azure Web Application Firewall
+description: In dit artikel vindt u informatie over probleemoplossing voor WAF (Web Application Firewall) voor Azure Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,27 +8,27 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74046196"
 ---
-# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problemen met Web Application firewall (WAF) voor Azure-toepassing gateway oplossen
+# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problemen met Web Application Firewall (WAF) voor Azure Application Gateway oplossen
 
-Er zijn enkele dingen die u kunt doen als aanvragen die worden door gegeven via uw Web Application firewall (WAF), worden geblokkeerd.
+Er zijn een paar dingen die u doen als verzoeken die moeten passeren uw Web Application Firewall (WAF) worden geblokkeerd.
 
-Zorg er eerst voor dat u het [WAF-overzicht](ag-overview.md) en de [WAF-configuratie](application-gateway-waf-configuration.md) documenten hebt gelezen. Zorg er ook voor dat u [WAF-bewaking](../../application-gateway/application-gateway-diagnostics.md) hebt ingeschakeld in deze artikelen wordt uitgelegd hoe de WAF-functies, hoe de WAF-regel sets werken en hoe u toegang krijgt tot WAF-Logboeken.
+Zorg er eerst voor dat u het [WAF-overzicht](ag-overview.md) en de [WAF-configuratiedocumenten](application-gateway-waf-configuration.md) hebt gelezen. Zorg er ook voor dat u [WAF-bewaking](../../application-gateway/application-gateway-diagnostics.md) hebt ingeschakeld In deze artikelen wordt uitgelegd hoe de WAF-regelfuncties werken en hoe u waf-logboeken openen.
 
-## <a name="understanding-waf-logs"></a>Informatie over WAF-logboeken
+## <a name="understanding-waf-logs"></a>WAF-logboeken begrijpen
 
-Het doel van WAF-Logboeken is om elke aanvraag weer te geven die overeenkomt met of wordt geblokkeerd door de WAF. Het is een groot boek van alle geëvalueerde aanvragen die overeenkomen of worden geblokkeerd. Als u ziet dat de WAF een aanvraag blokkeert die niet (een fout-positief) is, kunt u enkele dingen doen. Eerst beperkt u de specifieke aanvraag en zoekt u deze. Bekijk de logboeken om de specifieke URI, het tijds tempel of de trans actie-ID van de aanvraag te vinden. Wanneer u de bijbehorende logboek vermeldingen vindt, kunt u beginnen met de fout-positieven.
+Het doel van WAF logs is om elk verzoek weer te geven dat wordt geëvenaard of geblokkeerd door de WAF. Het is een grootboek van alle geëvalueerde aanvragen die worden gematcht of geblokkeerd. Als u merkt dat de WAF blokkeert een verzoek dat het niet moet (een vals positief), u een paar dingen doen. Eerst, beperken, en vind de specifieke aanvraag. Bekijk de logboeken om de specifieke URI-, tijdstempel- of transactie-id van het verzoek te vinden. Wanneer u de bijbehorende logboekvermeldingen vindt, u beginnen te handelen op de valse positieven.
 
-Stel bijvoorbeeld dat u een geldig verkeer hebt met de teken reeks *1 = 1* die u wilt door geven aan uw WAF. Als u de aanvraag probeert, blokkeert de WAF het verkeer dat uw reeks van *1 = 1* in een para meter of veld bevat. Dit is een teken reeks die vaak is gekoppeld aan een SQL-injectie aanval. U kunt de logboeken bekijken en de tijds tempel van de aanvraag bekijken en de regels die zijn geblokkeerd/overeenkomen.
+Stel dat u een legitiem verkeer hebt dat de tekenreeks *1=1* bevat die u door uw WAF wilt doorstaan. Als u het verzoek probeert, blokkeert de WAF het verkeer dat uw *1=1-tekenreeks* in een parameter of veld bevat. Dit is een tekenreeks die vaak wordt geassocieerd met een SQL-injectieaanval. U door de logboeken kijken en de tijdstempel van het verzoek bekijken en de regels die zijn geblokkeerd/gematched.
 
-In het volgende voor beeld ziet u dat er vier regels worden geactiveerd tijdens dezelfde aanvraag (met behulp van het veld TransactionId). De eerste geeft aan dat deze overeenkomt, omdat de gebruiker een numerieke/IP-URL voor de aanvraag heeft gebruikt, waardoor de afwijkings Score door drie is verhoogd, omdat er een waarschuwing is. De volgende regel die overeenkomt, is 942130, wat u zoekt. U ziet de *1 = 1* in het veld `details.data`. Hierdoor wordt de afwijkings Score nog verder verhoogd, omdat het ook een waarschuwing is. Over het algemeen verhoogt elke regel met de actie die **overeenkomt met** de afwijkende Score, en op dit moment is de afwijkende Score zes. Zie [afwijkende Score modus](ag-overview.md#anomaly-scoring-mode)voor meer informatie.
+In het volgende voorbeeld u zien dat vier regels worden geactiveerd tijdens hetzelfde verzoek (met behulp van het veld TransactionId). De eerste zegt dat het overeenkomt omdat de gebruiker een numerieke / IP-URL voor het verzoek heeft gebruikt, waardoor de anomaliescore met drie wordt verhoogd omdat het een waarschuwing is. De volgende regel die overeenkomt is 942130, dat is degene die je zoekt. U de 1 = `details.data` *1* in het veld zien. Dit verhoogt de anomalie score met drie weer, want het is ook een waarschuwing. Over het algemeen verhoogt elke regel die de actie **Matched** heeft de anomaliescore, en op dit punt zou de anomaliescore zes zijn. Zie [De scoringsmodus Anomalie](ag-overview.md#anomaly-scoring-mode)voor meer informatie .
 
-De laatste twee logboek vermeldingen geven aan dat de aanvraag is geblokkeerd, omdat de afwijkende score hoog genoeg is. Deze vermeldingen hebben een andere actie dan de twee andere. Ze laten zien dat ze de aanvraag daad werkelijk hebben *geblokkeerd* . Deze regels zijn verplicht en kunnen niet worden uitgeschakeld. Ze mogen niet worden beschouwd als regels, maar ook als basis infrastructuur van de WAF-interne.
+De laatste twee logboekvermeldingen tonen dat het verzoek is geblokkeerd omdat de anomaliescore hoog genoeg was. Deze vermeldingen hebben een andere actie dan de andere twee. Ze laten zien dat ze het verzoek *hebben geblokkeerd.* Deze regels zijn verplicht en kunnen niet worden uitgeschakeld. Ze moeten niet worden gezien als regels, maar meer als kerninfrastructuur van de WAF internals.
 
 ```json
 { 
@@ -133,56 +133,56 @@ De laatste twee logboek vermeldingen geven aan dat de aanvraag is geblokkeerd, o
 }
 ```
 
-## <a name="fixing-false-positives"></a>Herstellen van valse positieven
+## <a name="fixing-false-positives"></a>Fout-positieven oplossen
 
-Met deze informatie en de kennis waarvan regel 942130 de teken reeks is die overeenkomt met *1 = 1* , kunt u een aantal dingen doen om te voor komen dat uw verkeer wordt geblokkeerd:
+Met deze informatie, en de kennis die regel 942130 is degene die overeenkomt met de *1 = 1* string, u een paar dingen doen om dit te stoppen van het blokkeren van uw verkeer:
 
-- Een uitsluitings lijst gebruiken
+- Een uitsluitingslijst gebruiken
 
-   Zie [WAF-configuratie](application-gateway-waf-configuration.md#waf-exclusion-lists) voor meer informatie over uitsluitings lijsten.
+   Zie [WAF-configuratie](application-gateway-waf-configuration.md#waf-exclusion-lists) voor meer informatie over uitsluitingslijsten.
 - Schakel de regel uit.
 
-### <a name="using-an-exclusion-list"></a>Een uitsluitings lijst gebruiken
+### <a name="using-an-exclusion-list"></a>Een uitsluitingslijst gebruiken
 
-Als u een weloverwogen beslissing wilt nemen over het afhandelen van een vals-positief, is het belang rijk om vertrouwd te raken met de technologieën die uw toepassing gebruikt. Stel bijvoorbeeld dat er geen SQL-Server is in uw technologie stack en dat er valse positieven worden ontvangen die aan deze regels zijn gerelateerd. Als u deze regels uitschakelt, wordt uw beveiliging niet noodzakelijkerwijs verzwakt.
+Om een weloverwogen beslissing te nemen over het omgaan met een vals-positief, is het belangrijk om vertrouwd te raken met de technologieën die uw toepassing gebruikt. Stel dat er geen SQL-server in uw technologiestack zit en dat u false positives krijgt met betrekking tot die regels. Het uitschakelen van die regels verzwakt niet per se je veiligheid.
 
-Een voor deel van het gebruik van een uitsluitings lijst is dat alleen een specifiek deel van een aanvraag wordt uitgeschakeld. Dit betekent echter dat een specifieke uitsluiting van toepassing is op alle verkeer dat via uw WAF wordt door gegeven, omdat het een globale instelling is. Dit kan bijvoorbeeld leiden tot een probleem als *1 = 1* een geldige aanvraag is in de hoofd tekst van een bepaalde app, maar niet voor andere. Een ander voor deel is dat u kunt kiezen tussen hoofd tekst, kopteksten en cookies die moeten worden uitgesloten als aan een bepaalde voor waarde wordt voldaan, in plaats van de hele aanvraag uit te sluiten.
+Een voordeel van het gebruik van een uitsluitingslijst is dat slechts een specifiek deel van een aanvraag wordt uitgeschakeld. Dit betekent echter dat een specifieke uitsluiting van toepassing is op al het verkeer dat door uw WAF gaat, omdat het een globale instelling is. Dit kan bijvoorbeeld leiden tot een probleem als *1=1* een geldig verzoek in de instantie is voor een bepaalde app, maar niet voor anderen. Een ander voordeel is dat u kiezen tussen body, headers en cookies die moeten worden uitgesloten als aan een bepaalde voorwaarde wordt voldaan, in tegenstelling tot het uitsluiten van het hele verzoek.
 
-Soms zijn er gevallen waarin specifieke para meters worden door gegeven aan de WAF op een manier die mogelijk niet intuïtief is. Er is bijvoorbeeld een token dat wordt door gegeven wanneer wordt geverifieerd met behulp van Azure Active Directory. Dit token *__RequestVerificationToken*, meestal worden door gegeven als een aanvraag cookie. In sommige gevallen waarin cookies zijn uitgeschakeld, wordt dit token ook door gegeven als een aanvraag kenmerk of "ARG". Als dit het geval is, moet u ervoor zorgen dat *__RequestVerificationToken* wordt toegevoegd aan de uitsluitings lijst ook als **aanvraag kenmerk naam** .
+Af en toe zijn er gevallen waarin specifieke parameters worden doorgegeven in de WAF op een manier die mogelijk niet intuïtief is. Er is bijvoorbeeld een token dat wordt doorgegeven wanneer u azure Active Directory gebruikt. Dit token, *__RequestVerificationToken,* wordt meestal doorgegeven als een Request Cookie. In sommige gevallen waarin cookies zijn uitgeschakeld, wordt dit token echter ook doorgegeven als een aanvraagkenmerk of "arg". Als dit gebeurt, moet u ervoor zorgen dat *__RequestVerificationToken* ook als naam van het **kenmerk Request** aan de uitsluitingslijst wordt toegevoegd.
 
-![Uitzonderingen](../media/web-application-firewall-troubleshoot/exclusion-list.png)
+![Uitsluitingen](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-In dit voor beeld wilt u de naam van het **aanvraag kenmerk** uitsluiten die gelijk is aan *text1*. Dit is duidelijk omdat u de naam van het kenmerk in de firewall Logboeken kunt zien: **gegevens: overeenkomende gegevens: 1 = 1 gevonden binnen de argumenten: text1:1 = 1**. Het kenmerk is **text1**. U kunt deze kenmerk naam ook op een aantal andere manieren vinden. Zie [aanvraag kenmerk namen zoeken](#finding-request-attribute-names).
+In dit voorbeeld wilt u de naam van het **kenmerk Request** uitsluiten die gelijk is aan *tekst1*. Dit is duidelijk omdat u de kenmerknaam zien in de firewalllogboeken: **gegevens: Overeenkomende gegevens: 1=1 gevonden in ARGS:text1: 1=1**. Het kenmerk is **text1**. U deze kenmerknaam ook op een aantal andere manieren vinden, zie [Namen van het kenmerk zoeken zoeken](#finding-request-attribute-names).
 
-![WAF uitsluitings lijsten](../media/web-application-firewall-troubleshoot/waf-config.png)
+![WAF-uitsluitingslijsten](../media/web-application-firewall-troubleshoot/waf-config.png)
 
 ### <a name="disabling-rules"></a>Regels uitschakelen
 
-Een andere manier om te zien wat een fout positief is, is door de regel uit te scha kelen die overeenkomt met de ingevoerde invoer die schadelijk is voor WAF. Omdat u de WAF-Logboeken hebt geparseerd en de regel omlaag hebt geverfijn tot 942130, kunt u deze uitschakelen in de Azure Portal. Zie [Web Application firewall regels aanpassen via de Azure Portal](application-gateway-customize-waf-rules-portal.md).
+Een andere manier om rond een vals positief is het uitschakelen van de regel die overeenkomen met de input van de WAF dacht dat was kwaadaardig. Aangezien u de WAF-logboeken hebt ontleed en de regel hebt verkleind tot 942130, u deze uitschakelen in de Azure-portal. Zie [Firewallregels voor webtoepassingen aanpassen via de Azure-portal](application-gateway-customize-waf-rules-portal.md).
 
-Een voor deel van het uitschakelen van een regel is dat als u al het verkeer weet dat een bepaalde voor waarde bevat die normaal gesp roken geblokkeerd is, u de regel voor de hele WAF kunt uitschakelen. Als het echter alleen geldig verkeer is in een specifieke use-case, opent u een beveiligingslek door de regel voor de hele WAF uit te scha kelen, omdat het een globale instelling is.
+Een voordeel van het uitschakelen van een regel is dat als u weet dat al het verkeer dat een bepaalde voorwaarde die normaal zal worden geblokkeerd is geldig verkeer, u uitschakelen die regel voor de gehele WAF. Als het echter alleen geldig verkeer in een specifieke use case is, opent u een beveiligingslek door die regel voor de hele WAF uit te schakelen omdat het een algemene instelling is.
 
-Als u Azure PowerShell wilt gebruiken, raadpleegt u [Web Application firewall regels aanpassen via Power shell](application-gateway-customize-waf-rules-powershell.md). Als u Azure CLI wilt gebruiken, raadpleegt u [Web Application firewall-regels aanpassen via de Azure cli](application-gateway-customize-waf-rules-cli.md).
+Zie [Firewallregels voor webtoepassingen aanpassen via PowerShell](application-gateway-customize-waf-rules-powershell.md)als u Azure PowerShell wilt gebruiken. Zie [Firewallregels voor webtoepassingen aanpassen via de Azure CLI](application-gateway-customize-waf-rules-cli.md)als u Azure CLI wilt gebruiken.
 
 ![WAF-regels](../media/web-application-firewall-troubleshoot/waf-rules.png)
 
-## <a name="finding-request-attribute-names"></a>Kenmerk namen van aanvragen zoeken
+## <a name="finding-request-attribute-names"></a>Namen van het aanvraagkenmerk zoeken
 
-Met de hulp van [Fiddler](https://www.telerik.com/fiddler)kunt u afzonderlijke aanvragen controleren en bepalen welke specifieke velden van een webpagina worden genoemd. Dit kan helpen om bepaalde velden uit te sluiten van inspectie met behulp van uitsluitings lijsten.
+Met behulp van [Fiddler](https://www.telerik.com/fiddler)inspecteert u individuele aanvragen en bepaalt u welke specifieke velden van een webpagina worden genoemd. Dit kan helpen om bepaalde velden uit te sluiten van inspectie met behulp van uitsluitingslijsten.
 
-In dit voor beeld ziet u dat het veld waarin de teken reeks van *1 = 1* is ingevoerd **text1**heet.
+In dit voorbeeld u zien dat het veld waar de *1=1-tekenreeks* is **ingevoerd, text1**wordt genoemd.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
 
-Dit is een veld dat u kunt uitsluiten. Zie voor meer informatie over uitsluitings lijsten [Web Application firewall-aanvraag grootte limieten en uitsluitings lijsten](application-gateway-waf-configuration.md#waf-exclusion-lists). U kunt de evaluatie in dit geval uitsluiten door de volgende uitzonde ring te configureren:
+Dit is een veld dat u uitsluiten. Zie [Groottelimieten voor webtoepassingen en uitsluitingslijsten](application-gateway-waf-configuration.md#waf-exclusion-lists)voor meer informatie over uitsluitingslijsten . U de evaluatie in dit geval uitsluiten door de volgende uitsluiting te configureren:
 
 ![WAF-uitsluiting](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-U kunt ook de logboeken van de firewall bekijken om de informatie op te halen om te zien wat u moet toevoegen aan de uitsluitings lijst. Als u logboek registratie wilt inschakelen, raadpleegt u de status van de [back-end, Diagnostische logboeken en metrische gegevens voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
+U ook de firewalllogboeken onderzoeken om de informatie te krijgen om te zien wat u aan de uitsluitingslijst moet toevoegen. Zie [Back-endstatus, diagnostische logboeken en metrische gegevens voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md)voor het inschakelen van logboeken.
 
-Bekijk het firewall logboek en Bekijk het bestand PT1H. json voor het uur dat de aanvraag die u wilt controleren, heeft plaatsgevonden.
+Bestudeer het firewalllogboek en bekijk het PT1H.json-bestand voor het uur dat het verzoek dat u wilt inspecteren heeft plaatsgevonden.
 
-In dit voor beeld ziet u dat u vier regels met dezelfde TransactionID hebt en dat deze allemaal op exact dezelfde tijd hebben plaatsgevonden:
+In dit voorbeeld u zien dat u vier regels met dezelfde TransactionID hebt en dat ze allemaal op exact hetzelfde moment zijn opgetreden:
 
 ```json
 -   {
@@ -287,51 +287,51 @@ In dit voor beeld ziet u dat u vier regels met dezelfde TransactionID hebt en da
 -   }
 ```
 
-Met uw kennis van de manier waarop de CRS-regel sets werken en dat de CRS-ruleset 3,0 werkt met een afwijkend score systeem (Zie [Web Application Firewall voor Azure-toepassing gateway](ag-overview.md)) weet u dat de onderste twee regels met de **actie:** de eigenschap geblokkeerd worden geblokkeerd op basis van de totale afwijkings Score. De regels voor het richten op zijn de bovenste twee.
+Met uw kennis van hoe de CRS-regelsets werken en dat de CRS-regelset 3.0 werkt met een anomaliescoresysteem (zie [Web Application Firewall voor Azure Application Gateway),](ag-overview.md)weet u dat de onderste twee regels met de **actie: Geblokkeerde** eigenschap blokkeren op basis van de totale anomaliescore. De regels om zich op te concentreren zijn de top twee.
 
-De eerste vermelding wordt geregistreerd omdat de gebruiker een numeriek IP-adres heeft gebruikt om naar de Application Gateway te navigeren, die in dit geval kan worden genegeerd.
+Het eerste bericht wordt geregistreerd omdat de gebruiker een numeriek IP-adres heeft gebruikt om naar de Toepassingsgateway te navigeren, wat in dit geval kan worden genegeerd.
 
-De tweede (regel 942130) is de interessante versie. U kunt in de details zien dat deze overeenkomt met een patroon (1 = 1), en het veld heet **text1**. Volg dezelfde vorige stappen om de naam van het **aanvraag kenmerk** uit te sluiten die **gelijk is aan** **1 = 1**.
+De tweede (regel 942130) is de interessante. U in de details zien dat het overeenkomt met een patroon (1=1) en het veld wordt **tekst1**genoemd. Volg dezelfde vorige stappen om de **naam van het kenmerk aanvragen** uit te sluiten dat gelijk is **aan** **1=1**.
 
-## <a name="finding-request-header-names"></a>Namen van aanvraag headers zoeken
+## <a name="finding-request-header-names"></a>Namen van de voorkoppen zoeken
 
-Fiddler is opnieuw een handig hulp programma om namen van aanvraag headers te vinden. In de volgende scherm afbeelding ziet u de kopteksten voor deze GET-aanvraag, waaronder *Content-type*, *User-agent*, enzovoort.
+Fiddler is opnieuw een handig hulpmiddel om namen van de aanvraagkoptekst te vinden. In de volgende schermafbeelding ziet u de kopteksten voor dit GET-verzoek, waaronder *Content-Type,* *User-Agent,* enzovoort.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-Een andere manier om aanvraag-en reactie headers weer te geven, is door te kijken in de ontwikkel tools van Chrome. Druk op F12 of klik met de rechter muisknop > -> **Ontwikkelhulpprogramma's**te **controleren** en selecteer het tabblad **netwerk** . Laad een webpagina en klik op de aanvraag die u wilt inspecteren.
+Een andere manier om aanvraag- en antwoordkoppen te bekijken, is door in de ontwikkelaarstools van Chrome te kijken. U op F12 drukken of met de rechtermuisknop op ->**Extra ontwikkelaars** **inspecteren** -> en het tabblad **Netwerk** selecteren. Een webpagina laden en op het verzoek klikken dat u wilt inspecteren.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
-## <a name="finding-request-cookie-names"></a>Cookie namen van aanvragen zoeken
+## <a name="finding-request-cookie-names"></a>Namen van de aanvraagcookie zoeken
 
-Als de aanvraag cookies bevat, kan het tabblad **cookies** worden geselecteerd om ze weer te geven in Fiddler.
+Als het verzoek cookies bevat, kan het tabblad **Cookies** worden geselecteerd om ze in Fiddler te bekijken.
 
-## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Algemene para meters beperken om fout-positieven te elimineren
+## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Globale parameters beperken om fout-positieven te elimineren
 
-- Inspectie van aanvraag hoofdtekst uitschakelen
+- Inspectie aanvraaginstantie uitschakelen
 
-   Door controle van de **aanvraag tekst** in te stellen op uit, worden de aanvraag teksten van al het verkeer niet geëvalueerd door uw WAF. Dit kan handig zijn als u weet dat de aanvraag teksten niet schadelijk zijn voor uw toepassing.
+   Door **de instantie van de aanvraag van Inspect** in te stellen om uit te schakelen, worden de aanvraaginstanties van al het verkeer niet beoordeeld door uw WAF. Dit kan handig zijn als u weet dat de verzoekende instanties niet kwaadaardig zijn voor uw toepassing.
 
-   Als u deze optie uitschakelt, wordt alleen de hoofd tekst van de aanvraag gecontroleerd. De kopteksten en cookies blijven geïnspecteerd, tenzij afzonderlijke personen worden uitgesloten met de uitsluitings lijst functionaliteit.
+   Door deze optie uit te schakelen, wordt alleen de aanvraaginstantie niet geïnspecteerd. De headers en cookies blijven geïnspecteerd, tenzij afzonderlijke headers worden uitgesloten met behulp van de functionaliteit van de uitsluitingslijst.
 
-- Maximale bestands grootte
+- Limieten voor bestandsgrootte
 
-   Door de bestands grootte voor uw WAF te beperken, kunt u de kans op aanvallen op uw webservers beperken. Doordat grote bestanden kunnen worden geüpload, neemt het risico van uw back-end toe. Het beperken van de bestands grootte voor een normale use-case voor uw toepassing is een andere manier om aanvallen te voor komen.
+   Door de bestandsgrootte voor uw WAF te beperken, beperkt u de mogelijkheid dat er een aanval op uw webservers gebeurt. Door het uploaden van grote bestanden neemt het risico toe dat je backend wordt overstelpt. Het beperken van de bestandsgrootte tot een normale use case voor uw toepassing is gewoon een andere manier om aanvallen te voorkomen.
 
    > [!NOTE]
-   > Als u weet dat voor uw app nooit een bestand moet worden geüpload boven een bepaalde grootte, kunt u dit beperken door een limiet in te stellen.
+   > Als u weet dat uw app nooit een bestandsupload boven een bepaalde grootte nodig heeft, u dat beperken door een limiet in te stellen.
 
-## <a name="firewall-metrics-waf_v1-only"></a>Metrics van de firewall (alleen WAF_v1)
+## <a name="firewall-metrics-waf_v1-only"></a>Firewallstatistieken (alleen WAF_v1)
 
-Voor v1 Web Application firewalls zijn de volgende metrische gegevens nu beschikbaar in de portal: 
+Voor v1 Web Application Firewalls zijn de volgende statistieken nu beschikbaar in de portal: 
 
-1. Aantal geblokkeerde aanvragen voor Web Application firewall het aantal verzoeken dat is geblokkeerd
-2. Aantal geblokkeerde regels van de firewall voor webtoepassingen, alle regel die overeenkomen **en** de aanvraag is geblokkeerd
-3. Totale regel distributie Web Application firewall alle regels die overeenkomen tijdens de evaluatie
+1. Aantal geblokkeerde aanvragen voor webtoepassingfirewall het aantal aanvragen dat is geblokkeerd
+2. Aantal geblokkeerde regels voor webtoepassingsfirewall Alle regels die zijn overeenkomen **en** het verzoek zijn geblokkeerd
+3. Totale regelverdeling van webtoepassingsfirewall Alle regels die tijdens de evaluatie zijn overeenkomen
      
-Als u metrische gegevens wilt inschakelen, selecteert u het tabblad **metrische gegevens** in de portal en selecteert u een van de drie meet waarden.
+Als u statistieken wilt inschakelen, selecteert u het tabblad **Statistieken** in de portal en selecteert u een van de drie statistieken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Web Application firewall op Application Gateway configureren voor meer informatie](tutorial-restrict-web-traffic-powershell.md).
+Zie [Firewall voor webtoepassingen configureren op Application Gateway](tutorial-restrict-web-traffic-powershell.md).

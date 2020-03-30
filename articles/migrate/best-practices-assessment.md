@@ -1,70 +1,70 @@
 ---
-title: Aanbevolen procedures evalueren in Azure Migrate server-evaluatie
-description: Tips voor het maken van evaluaties met Azure Migrate server-evaluatie.
+title: Assessment best practices in Azure Migrate Server Assessment
+description: Tips voor het maken van beoordelingen met Azure Migrate Server Assessment.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185986"
 ---
-# <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
+# <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van beoordelingen
 
-[Azure migrate](migrate-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden.
+[Azure Migrate](migrate-overview.md) biedt een hub met hulpprogramma's waarmee u apps, infrastructuur en workloads ontdekken, beoordelen en migreren naar Microsoft Azure. De hub bevat Azure Migrate-hulpprogramma's en isv-aanbiedingen (independent software vendor) van derden.
 
-Dit artikel bevat een overzicht van de aanbevolen procedures voor het maken van evaluaties met behulp van het hulp programma Azure Migrate server Assessment.
+In dit artikel worden aanbevolen procedures samengevat bij het maken van beoordelingen met behulp van het hulpprogramma azure migrate server assessment.
 
-## <a name="about-assessments"></a>Over evaluaties
+## <a name="about-assessments"></a>Over beoordelingen
 
-Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties in Azure Migrate.
+Beoordelingen die u maakt met Azure Migrate Server Assessment zijn een point-in-time momentopname van gegevens. Er zijn twee typen beoordelingen in Azure Migrate.
 
-**Beoordelings type** | **Details** | **Gegevens**
+**Beoordelingstype** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | Aanbeveling voor VM-grootte is gebaseerd op gegevens van CPU en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.
-**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.
+**Op prestaties gebaseerd** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatiegegevens | Vm-grootte aanbeveling is gebaseerd op CPU en geheugen gebruik gegevens.<br/><br/> Schijftypeaanbeveling (standaard HDD/SSD of premium-managed schijven) is gebaseerd op het IOPS en de doorvoer van de on-premises schijven.
+**As-is on-premises** | Beoordelingen die geen prestatiegegevens gebruiken om aanbevelingen te doen. | Vm-grootteaanbeveling is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijftype is gebaseerd op wat u selecteert in de instelling voor opslagtype voor de beoordeling.
 
 ### <a name="example"></a>Voorbeeld
-Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en geheugen van 8 GB met 10% gebruik, zijn de evaluaties als volgt:
+Als u bijvoorbeeld een on-premises VM hebt met vier cores bij een gebruik van 20% en geheugen van 8 GB met 10% gebruik, zijn de beoordelingen als volgt:
 
-- **Evaluatie op basis van prestaties**:
-    - Identificeert effectief kernen en geheugen op basis van core (4 x 0,20 = 0,8) en geheugen (8 GB x 0,10 = 0,8) gebruik.
-    - Past de comfort factor toe die is opgegeven in de eigenschappen van de beoordeling (stel 1,3 x in) om de waarden op te halen die moeten worden gebruikt voor het aanpassen van de grootte. 
-    - Hiermee wordt de dichtstbijzijnde VM-grootte in azure aanbevolen die ondersteuning biedt voor meer dan ~ 1,04 kernen (0,8 x 1,3) en ~ 1,04 GB (0,8 x 1,3) geheugen.
+- **Prestatiegebaseerde beoordeling**:
+    - Identificeert effectieve kernen en geheugen op basis van kerngebruik (4 x 0,20 = 0,8) en geheugen (8 GB x 0,10 = 0,8) gebruik.
+    - Hiermee past u de comfortfactor toe die is opgegeven in beoordelingseigenschappen (laten we zeggen 1,3x) om de waarden te krijgen die moeten worden gebruikt voor het dimensioneren. 
+    - Beveelt de dichtstbijzijnde VM-grootte in Azure aan die ~ 1,04-cores (0,8 x 1,3) en ~ 1,04 GB (0,8 x 1,3) geheugen kan ondersteunen.
 
-- **As-is (zoals on-premises) evaluatie**:
-    -  Raadt een VM aan met vier kernen; 8 GB geheugen.
+- **As-is (als on-premises) beoordeling**:
+    -  Beveelt een VM met vier cores aan; 8 GB geheugen.
 
-## <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
+## <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van beoordelingen
 
-Het Azure Migrate apparaat doorlopend uw on-premises omgeving profileert en verstuurt meta gegevens en prestatie gegevens naar Azure. Volg deze aanbevolen procedures voor evaluaties van servers die zijn gedetecteerd met een apparaat:
+Het Azure Migrate-toestel profileert continu uw on-premises omgeving en verzendt metagegevens en prestatiegegevens naar Azure. Volg deze aanbevolen procedures voor beoordelingen van servers die met een toestel zijn ontdekt:
 
-- **Evaluaties maken als-is**: u kunt de evaluatie van de as-out onmiddellijk maken zodra uw computers in de Azure migrate Portal worden weer gegeven.
-- Een **evaluatie op basis van prestaties maken**: na het instellen van de detectie wordt u aangeraden minstens een dag te wachten voordat u een evaluatie op basis van prestaties uitvoert:
-    - Het verzamelen van prestatie gegevens kost tijd. Als u op minstens een dag wacht, zorgt u ervoor dat er voldoende prestatie gegevens punten zijn voordat u de evaluatie uitvoert.
-    - Wanneer u evaluaties op basis van prestaties uitvoert, moet u ervoor zorgen dat u uw omgeving voor de evaluatie duur profileert. Als u bijvoorbeeld een beoordeling maakt waarbij de duur van de prestatie is ingesteld op één week, moet u na het starten van de detectie worden gewacht totdat alle gegevens punten zijn verzameld. Als u dit niet doet, krijgt de evaluatie van de beoordeling geen vijf sterren.
-- **Evaluaties opnieuw berekenen**: aangezien beoordelingen moment opnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente gegevens wilt bijwerken, moet u deze opnieuw berekenen.
+- **As-is-assessments maken:** U as-is-beoordelingen maken zodra uw machines worden weergegeven in de Azure Migrate-portal.
+- **Prestatiegebaseerde beoordeling maken:** Na het instellen van detectie raden we u aan ten minste een dag te wachten voordat u een prestatiegebaseerde beoordeling uitvoert:
+    - Het verzamelen van prestatiegegevens kost tijd. Het wachten op ten minste een dag zorgt ervoor dat er voldoende prestatiegegevenspunten zijn voordat u de beoordeling uitvoert.
+    - Wanneer u prestatiegebaseerde beoordelingen uitvoert, moet u ervoor zorgen dat u uw omgeving profileert voor de beoordelingsduur. Als u bijvoorbeeld een beoordeling maakt met een prestatieduur ingesteld op één week, moet u ten minste een week na de detectie wachten op alle gegevenspunten die moeten worden verzameld. Als je dat niet doet, krijgt de beoordeling geen beoordeling van vijf sterren.
+- **Beoordelingen opnieuw berekenen:** Aangezien beoordelingen point-in-time-momentopnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een beoordeling wilt bijwerken met de meest recente gegevens, moet u deze opnieuw berekenen.
 
-Volg deze aanbevolen procedures voor evaluaties van servers die in Azure Migrate worden geïmporteerd via. CSV-bestand:
+Volg deze aanbevolen procedures voor beoordelingen van servers die via . CSV-bestand:
 
-- **Evaluaties maken als-is**: u kunt de evaluatie van de as-out onmiddellijk maken zodra uw computers in de Azure migrate Portal worden weer gegeven.
-- Een **evaluatie op basis van prestaties maken**: Hiermee krijgt u een betere schatting van de kosten, met name als u lokale server capaciteit hebt overingericht. De nauw keurigheid van de analyse op basis van prestaties is echter afhankelijk van de prestatie gegevens die u voor de servers hebt opgegeven. 
-- **Evaluaties opnieuw berekenen**: aangezien beoordelingen moment opnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente geïmporteerde gegevens wilt bijwerken, moet u deze opnieuw berekenen.
+- **As-is-assessments maken:** U as-is-beoordelingen maken zodra uw machines worden weergegeven in de Azure Migrate-portal.
+- **Prestatiegebaseerde beoordeling maken:** dit helpt om een betere kostenraming te krijgen, vooral als u overprovisioneerde servercapaciteit on-premises hebt. De nauwkeurigheid van de prestatiegebaseerde beoordeling is echter afhankelijk van de prestatiegegevens die door u voor de servers zijn opgegeven. 
+- **Beoordelingen opnieuw berekenen:** Aangezien beoordelingen point-in-time-momentopnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een beoordeling wilt bijwerken met de meest recente geïmporteerde gegevens, moet u deze opnieuw berekenen.
 
-## <a name="best-practices-for-confidence-ratings"></a>Aanbevolen procedures voor betrouwbaarheids classificaties
+## <a name="best-practices-for-confidence-ratings"></a>Aanbevolen procedures voor vertrouwensbeoordelingen
 
-Wanneer u evaluaties op basis van prestaties uitvoert, wordt een betrouwbaarheids classificatie van 1 ster (laagste) tot 5 sterren (hoogst) toegekend aan de evaluatie. Vertrouwens classificaties effectief gebruiken:
-- Voor de analyse van Azure Migrate server zijn de gebruiks gegevens voor de CPU/het geheugen van de virtuele machine nodig.
-- Voor elke schijf die aan de on-premises VM is gekoppeld, is de IOPS/doorvoer gegevens lezen/schrijven vereist.
-- Voor elke netwerk adapter die aan de VM is gekoppeld, is het netwerk in/uit-gegevens nodig.
+Wanneer u prestatiegebaseerde beoordelingen uitvoert, wordt een betrouwbaarheidsbeoordeling toegekend van 1-ster (laagste) tot 5-sterren (hoogste) aan de beoordeling. Ga als het gaat om een effectieve gebruik smaken de seinen:
+- Azure Migrate Server Assessment heeft de gebruiksgegevens nodig voor VM CPU/Memory.
+- Voor elke schijf die aan de on-premises VM is gekoppeld, heeft deze de lees-/schrijf-IOPS/doorvoergegevens nodig.
+- Voor elke netwerkadapter die aan de VM is gekoppeld, heeft deze de in/out-gegevens van het netwerk nodig.
 
-Afhankelijk van het percentage beschik bare gegevens punten voor de geselecteerde duur, wordt de betrouwbaarheids classificatie voor een evaluatie gegeven, zoals beschreven in de volgende tabel.
+Afhankelijk van het percentage beschikbare gegevenspunten voor de geselecteerde duur wordt de betrouwbaarheidsbeoordeling voor een beoordeling gegeven zoals samengevat in de volgende tabel.
 
-   **Beschik baarheid van gegevens punt** | **Betrouwbaarheidsclassificatie**
+   **Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
    --- | ---
    0%-20% | 1 ster
    21%-40% | 2 sterren
@@ -73,23 +73,23 @@ Afhankelijk van het percentage beschik bare gegevens punten voor de geselecteerd
    81%-100% | 5 sterren
 
 
-## <a name="common-assessment-issues"></a>Algemene evaluatie problemen
+## <a name="common-assessment-issues"></a>Gemeenschappelijke beoordelingskwesties
 
-Hier vindt u informatie over het oplossen van enkele veelvoorkomende omgevings problemen die van invloed zijn op evaluaties.
+U als u een aantal veelvoorkomende omgevingsproblemen aanpakken die van invloed zijn op beoordelingen.
 
-###  <a name="out-of-sync-assessments"></a>Evaluaties buiten de synchronisatie
+###  <a name="out-of-sync-assessments"></a>Out-of-sync-beoordelingen
 
-Als u computers toevoegt aan of verwijdert uit een groep nadat u een evaluatie hebt gemaakt, wordt de door u gemaakte evaluatie gemarkeerd als **out-of-Sync**. Voer de evaluatie opnieuw uit (**herberekening**) om de groeps wijzigingen weer te geven.
+Als u machines uit een groep toevoegt of verwijdert nadat u een beoordeling hebt gemaakt, wordt de beoordeling die u hebt **gemaakt, out-of-sync**gemarkeerd. Voer de beoordeling opnieuw uit (**Herberekening**) om de groepswijzigingen weer te geven.
 
-### <a name="outdated-assessments"></a>Verouderde evaluaties
+### <a name="outdated-assessments"></a>Verouderde beoordelingen
 
-Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd, wordt de evaluatie gemarkeerd als **verouderd**. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
+Als er on-premises wijzigingen in VM's zijn die deel uitmaken van een beoordeelde groep, wordt de beoordeling **gemarkeerd als verouderd**. Voer de beoordeling opnieuw uit om de wijzigingen weer te geven.
 
-### <a name="low-confidence-rating"></a>Beoordeling met lage betrouw baarheid
+### <a name="low-confidence-rating"></a>Lage betrouwbaarheidsscore
 
-Een evaluatie heeft mogelijk niet alle gegevens punten om een aantal redenen:
+Een beoordeling heeft mogelijk niet alle gegevenspunten om een aantal redenen:
 
-- U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een *evaluatie op basis van prestaties* maakt waarbij de duur van de prestaties is ingesteld op een week, moet u een periode van minstens een week wachten nadat u de detectie hebt gestart voor alle gegevens punten die u wilt verzamelen. U kunt altijd op **herberekenen** klikken om de meest recente beoordeling van het vertrouwen te bekijken. De vertrouwens classificatie is alleen van toepassing wanneer u een evaluatie *op basis van prestaties* maakt.
+- U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een *prestatiegebaseerde beoordeling* maakt waarbij de prestatieduur is ingesteld op één week, moet u ten minste een week wachten nadat u de detectie hebt gestart voor alle gegevenspunten die moeten worden verzameld. U altijd op **Opnieuw berekenen** klikken om de meest recente betrouwbaarheidsclassificatie te bekijken. Betrouwbaarheidsbeoordeling is alleen van toepassing wanneer u een *prestatiegebaseerde* beoordeling maakt.
 
 - Er zijn enkele VM's uitgeschakeld geweest in de periode waarover de evaluatie wordt berekend. Als bepaalde VM's gedurende een tijdje uitgeschakeld zijn geweest, kunnen er voor deze periode geen prestatiegegevens worden verzameld.
 
@@ -98,5 +98,5 @@ Een evaluatie heeft mogelijk niet alle gegevens punten om een aantal redenen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie](concepts-assessment-calculation.md) over hoe beoordelingen worden berekend.
-- [Meer informatie](how-to-modify-assessment.md) over het aanpassen van een evaluatie.
+- [Meer informatie over](concepts-assessment-calculation.md) hoe beoordelingen worden berekend.
+- [Meer informatie over](how-to-modify-assessment.md) het aanpassen van een beoordeling.

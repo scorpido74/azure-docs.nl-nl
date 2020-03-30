@@ -1,7 +1,7 @@
 ---
-title: Activiteitsbeheer
-description: Beschrijft de activiteiten concepten op de VMware-oplossing per AVS
-titleSuffix: Azure VMware Solutions (AVS)
+title: CloudSimple-activiteitenbeheer
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschrijft activiteitsconcepten op VMware Solution by CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,33 +9,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ca20413b4f21ddfcf01021f8b003b30ad2195579
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025092"
 ---
-# <a name="activity-management-overview"></a>Overzicht activiteiten beheer
+# <a name="activity-management-overview"></a>Overzicht van activiteitenbeheer
 
-AVS houdt alle activiteiten bij die van invloed kunnen zijn op de werking van uw cloud omgeving in de Privécloud. Activiteiten zijn waarschuwingen, gebeurtenissen, taken en controle activiteiten. Op de [activiteiten pagina's](monitor-activity.md) wordt een overzicht gegeven van alle huidige activiteiten en kunt u inzoomen op aanvullende informatie.
+CloudSimple houdt alle activiteiten bij die van invloed kunnen zijn op de werking van uw Private Cloud-omgeving. Activiteiten omvatten waarschuwingen, gebeurtenissen, taken en controleactiviteiten. Op [de pagina's Activiteit](monitor-activity.md) vat u alle huidige activiteit samen en u inzoomen op meer informatie.
 
-## <a name="events"></a>Evenements
+## <a name="events"></a>Gebeurtenissen
 
-Gebeurtenissen volgen gebruikers-en systeem activiteiten in de AVS-Portal. Gebeurtenissen tonen de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.  U kunt de gebeurtenissen in de AVS-Portal bekijken.
+Gebeurtenissen volgen gebruikers- en systeemactiviteiten op de CloudSimple-portal. Gebeurtenissen tonen de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.  U de gebeurtenissen bekijken via de CloudSimple-portal.
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Waarschuwingen zijn meldingen van belang rijke activiteiten in uw AVS-omgeving. Gebeurtenissen die van invloed zijn op facturering of gebruikers toegang, worden weer gegeven als waarschuwingen. U kunt waarschuwingen vanuit de AVS-Portal bevestigen.
+Waarschuwingen zijn meldingen van significante activiteiten in uw CloudSimple-omgeving. Gebeurtenissen die van invloed zijn op facturering of gebruikerstoegang worden weergegeven als waarschuwingen.  U waarschuwingen van de CloudSimple-portal bevestigen.
 
 ## <a name="tasks"></a>Taken
 
-Taken volgen een wille keurige gebruikers bewerking die meer dan 30 seconden in beslag neemt. U kunt de voortgang van een taak in de AVS-Portal bewaken. Voor voltooide taken bevat de informatie de totale tijd voor het volt ooien van de gegevens.
+Taken houden elke gebruikersbewerking bij die meer dan 30 seconden in beslag neemt. U de voortgang van een taak volgen via de CloudSimple-portal.  Voor voltooide taken bevat de informatie de totale tijd voor voltooiing.
 
 ## <a name="audit"></a>Controleren
 
-Controle logboeken houden gebruikers bewerkingen bij. Audit logboeken bevatten de para meters die door de gebruiker zijn opgegeven voor de bewerking. U kunt controle Logboeken gebruiken om de gebruikers activiteit voor alle gebruikers te bewaken.
+Controlelogboeken houden de gebruikersbewerkingen bij. Controlelogboeken bevatten de parameters die door de gebruiker voor de bewerking zijn opgegeven.  U controlelogboeken gebruiken om de gebruikersactiviteit voor alle gebruikers te controleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Het account overzicht weer geven](account.md)
+* [Accountsamenvatting weergeven](account.md)

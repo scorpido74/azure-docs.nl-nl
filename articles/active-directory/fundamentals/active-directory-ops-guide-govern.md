@@ -1,6 +1,6 @@
 ---
-title: Naslag Gids voor Azure Active Directory governance-bewerkingen
-description: In deze Naslag Gids voor bewerkingen worden de controles en acties beschreven die u moet uitvoeren om beheer te beveiligen
+title: Naslaginformatieover de verwijzingen naar beheerbeheervan Azure Active Directory
+description: Deze handleiding voor bewerkingen beschrijft de controles en acties die u moet ondernemen om het beheer van de governance te beveiligen
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,135 +12,135 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74535455"
 ---
-# <a name="azure-active-directory-governance-operations-reference-guide"></a>Naslag Gids voor Azure Active Directory governance-bewerkingen
+# <a name="azure-active-directory-governance-operations-reference-guide"></a>Naslaginformatieover de verwijzingen naar beheerbeheervan Azure Active Directory
 
-In deze sectie van de [Naslag Gids voor Azure AD-bewerkingen](active-directory-ops-guide-intro.md) worden de controles en acties beschreven die u moet uitvoeren om de toegang tot niet-privilegede en geprivilegieerde identiteiten, controles en controle wijzigingen in de omgeving te beoordelen en te controleren.
+In dit gedeelte van de [naslaggids voor Azure AD-bewerkingen](active-directory-ops-guide-intro.md) worden de controles en acties beschreven die u moet uitvoeren om de toegekende niet-bevoorrechte en bevoorrechte identiteiten, audit en controlewijzigingen in de omgeving te beoordelen en te bevestigen.
 
 > [!NOTE]
-> Deze aanbevelingen zijn actueel vanaf de datum van publicatie, maar kunnen worden gewijzigd in de loop van de tijd. Organisaties moeten voortdurend hun beheer procedures evalueren naarmate micro soft-producten en-services zich in de loop van de tijd ontwikkelen.
+> Deze aanbevelingen zijn actueel vanaf de publicatiedatum, maar kunnen in de loop van de tijd veranderen. Organisaties moeten hun governancepraktijken voortdurend evalueren naarmate Microsoft-producten en -services in de loop van de tijd evolueren.
 
 ## <a name="key-operational-processes"></a>Belangrijkste operationele processen
 
-### <a name="assign-owners-to-key-tasks"></a>Eigen aren toewijzen aan belang rijke taken
+### <a name="assign-owners-to-key-tasks"></a>Eigenaren toewijzen aan belangrijke taken
 
-Voor het beheren van Azure Active Directory is de continue uitvoering van belang rijke operationele taken en-processen vereist, die mogelijk geen deel uitmaken van een implementatie project. Het is nog belang rijk dat u deze taken instelt om uw omgeving te optimaliseren. De belangrijkste taken en de aanbevolen eigen aren zijn onder andere:
+Voor het beheren van Azure Active Directory is de continue uitvoering van belangrijke operationele taken en processen vereist, die mogelijk geen deel uitmaken van een implementatieproject. Het is nog steeds belangrijk dat u deze taken instelt om uw omgeving te optimaliseren. De belangrijkste taken en de aanbevolen eigenaren zijn:
 
 | Taak | Eigenaar |
 | :- | :- |
-| Azure AD-audit logboeken archiveren in het SIEM-systeem | InfoSec Operations-team |
-| Toepassingen detecteren die niet meer compatibel zijn | IAM Operations-team |
-| De toegang tot toepassingen regel matig controleren | Team van InfoSec-architectuur |
-| De toegang tot externe identiteiten regel matig controleren | Team van InfoSec-architectuur |
-| Regel matig controleren wie geprivilegieerde rollen heeft | Team van InfoSec-architectuur |
-| Beveiligings poorten definiëren om geprivilegieerde rollen te activeren | Team van InfoSec-architectuur |
-| Regel matige subsidies voor toestemming controleren | Team van InfoSec-architectuur |
-| Ontwerpen van catalogi en toegangs pakketten voor toepassingen en resources op basis van werk nemers in de organisatie | App-eigen aren |
-| Beveiligings beleid definiëren om gebruikers toe te wijzen voor toegangs pakketten | InfoSec team + app-eigen aren |
-| Als beleids regels goedkeurings werk stromen bevatten, lees dan regel matig workflowgoedkeuring | App-eigen aren |
-| Uitzonde ringen in beveiligings beleid bekijken, zoals beleids regels voor voorwaardelijke toegang, met behulp van toegangs beoordelingen | InfoSec Operations-team |
+| Azure AD-controlelogboeken archiveren in SIEM-systeem | InfoSec Operations Team |
+| Ontdek toepassingen die buiten de naleving worden beheerd | IAM Operations Team |
+| Controleer regelmatig de toegang tot aanvragen | InfoSec-architectuurteam |
+| Controleer regelmatig de toegang tot externe identiteiten | InfoSec-architectuurteam |
+| Controleer regelmatig wie bevoorrechte rollen heeft | InfoSec-architectuurteam |
+| Beveiligingspoorten definiëren om bevoorrechte rollen te activeren | InfoSec-architectuurteam |
+| Regelmatig toestemmingssubsidies herzien | InfoSec-architectuurteam |
+| Ontwerpcatalogi en toegangspakketten voor toepassingen en resources op basis van werknemers in de organisatie | App-eigenaren |
+| Beveiligingsbeleid definiëren om gebruikers toegang te geven tot pakketten | InfoSec-team + app-eigenaren |
+| Als beleidsregels goedkeuringswerkstromen bevatten, controleert u regelmatig werkstroomgoedkeuringen | App-eigenaren |
+| Uitzonderingen in beveiligingsbeleid controleren, zoals beleid voor voorwaardelijke toegang, met behulp van toegangsbeoordelingen | InfoSec Operations Team |
 
-Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken waarvoor een eigenaar ontbreekt of het eigendom van taken met eigen aars aanpassen die niet zijn afgestemd op de bovenstaande aanbevelingen.
+Als u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken die een eigenaar missen of het eigendom aanpassen voor taken met eigenaren die niet zijn afgestemd op de bovenstaande aanbevelingen.
 
-#### <a name="owner-recommended-reading"></a>Door eigenaar aanbevolen lezen
+#### <a name="owner-recommended-reading"></a>Eigenaar aanbevolen lezen
 
 - [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-### <a name="configuration-changes-testing"></a>Testen van configuratie wijzigingen
+### <a name="configuration-changes-testing"></a>Configuratiewijzigingen testen
 
-Er zijn wijzigingen die speciale overwegingen vereisen tijdens het testen, van eenvoudige technieken, zoals het uitrollen van een doel subset van gebruikers, voor het implementeren van een wijziging in een parallelle test Tenant. Als u geen test strategie hebt geïmplementeerd, moet u een test benadering definiëren op basis van de richt lijnen in de volgende tabel:
+Er zijn wijzigingen die speciale overwegingen vereisen bij het testen, van eenvoudige technieken zoals het uitrollen van een doelsubset van gebruikers tot het implementeren van een wijziging in een parallelle testtenant. Als u geen teststrategie hebt geïmplementeerd, moet u een testbenadering definiëren op basis van de richtlijnen in de onderstaande tabel:
 
 | Scenario| Aanbeveling |
 |-|-|
-|Wijzig het verificatie type van federatieve naar PHS/PTA of vice versa| Gebruik [gefaseerde implementatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) om de impact van het wijzigen van het verificatie type te testen.|
-|Een nieuw beleid voor voorwaardelijke toegang (CA) of beleid voor identiteits beveiliging implementeren|Maak een nieuw CA-beleid en wijs dit toe aan gebruikers testen.|
-|Een test omgeving van een toepassing onboarden|Voeg de toepassing toe aan een productie omgeving, verberg deze in het deel venster MyApps en wijs deze toe aan test gebruikers tijdens de Quality Assurance (QA)-fase.|
-|Wijzigen van synchronisatie regels|Voer de wijzigingen in een test Azure AD Connect uit met dezelfde configuratie die momenteel in productie is, ook wel de faserings modus genoemd, en analyseer CSExport-resultaten. Als u tevreden bent, kunt u overgaan naar productie wanneer u klaar bent.|
-|Huis stijl wijzigen|Test in een afzonderlijke test Tenant.|
-|Een nieuwe functie implementeren|Als de functie ondersteuning biedt voor het implementeren van een doel groep gebruikers, identificeert u de test gebruikers en bouwt u deze op. De selfservice voor wachtwoord herstel en multi-factor Authentication kunnen bijvoorbeeld worden gericht op specifieke gebruikers of groepen.|
-|Cutover een toepassing van een on-premises ID-provider (IdP), bijvoorbeeld Active Directory, naar Azure AD|Als de toepassing meerdere IdP-configuraties ondersteunt, bijvoorbeeld Sales Force, configureren en Azure AD testen tijdens een wijzigings venster (in het geval dat de toepassing de HRD-pagina introduceert). Als de toepassing niet meerdere id ondersteunt, plant u de test tijdens een wijzigings controle venster en wordt de uitval tijd van het programma gepland.|
-|Dynamische groeps regels bijwerken|Maak een parallelle dynamische groep met de nieuwe regel. Vergelijkt met het berekende resultaat, bijvoorbeeld Power shell uitvoeren met dezelfde voor waarde.<br>Als de test is geslaagd, kunt u de plaatsen waar de oude groep is gebruikt, wisselen (indien mogelijk).|
-|Product licenties migreren|Raadpleeg [de licentie voor één gebruiker in een gelicentieerde groep in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses).|
-|AD FS regels wijzigen zoals autorisatie, uitgifte, MFA|Groeps claim gebruiken om de subset van gebruikers te bereiken.|
-|AD FS-verificatie-ervaring of soort gelijke wijzigingen in de hele farm wijzigen|Maak een parallelle farm met dezelfde hostnaam, implementeer configuratie wijzigingen, test van clients met een HOSTS-bestand, NLB-routerings regels of een vergelijk bare route ring.<br>Als het doel platform geen HOSTS-bestanden (bijvoorbeeld mobiele apparaten) ondersteunt, wijzigt u de wijziging van het besturings element.|
+|Het verificatietype wijzigen van federatief naar PHS/PTA of vice versa| Gebruik [gefaseerde implementatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) om de impact van het wijzigen van het verificatietype te testen.|
+|Een nieuw CA-beleid (voorwaardelijke toegang) of beleid voor identiteitsbescherming uitrollen|Maak een nieuw CA-beleid en wijs gebruikers toe.|
+|Onboarding een testomgeving van een toepassing|Voeg de toepassing toe aan een productieomgeving, verberg deze voor het deelvenster MyApps en wijs deze toe aan testgebruikers tijdens de QA-fase.|
+|Synchronisatieregels wijzigen|Voer de wijzigingen uit in een test Azure AD Connect met dezelfde configuratie die momenteel in productie is, ook wel staging-modus genoemd, en analyseer CSExport-resultaten. Indien tevreden, swap naar productie wanneer klaar.|
+|Verandering van branding|Test in een aparte testtenant.|
+|Een nieuwe functie uitrollen|Als de functie ondersteuning biedt voor de uitrol naar een doelset gebruikers, identificeert u pilootgebruikers en bouwt u uit. Self-service wachtwoordreset en multi-factor authenticatie kunnen zich bijvoorbeeld richten op specifieke gebruikers of groepen.|
+|Een toepassing overknippen van een on-premises identiteitsprovider (IdP), bijvoorbeeld Active Directory, naar Azure AD|Als de toepassing meerdere IdP-configuraties ondersteunt, bijvoorbeeld Salesforce, configureert u beide en test azure AD tijdens een wijzigingsvenster (in het geval de toepassing HRD-pagina introduceert). Als de toepassing geen ondersteuning biedt voor meerdere IdP's, plant u de tests tijdens een wijzigingscontrolevenster en programmadowntime.|
+|Dynamische groepsregels bijwerken|Maak een parallelle dynamische groep met de nieuwe regel. Vergelijk met het berekende resultaat, bijvoorbeeld, voer PowerShell uit met dezelfde voorwaarde.<br>Als de test geslaagd is, verwisselt u de plaatsen waar de oude groep is gebruikt (indien mogelijk).|
+|Productlicenties migreren|Raadpleeg [De licentie wijzigen voor één gebruiker in een gelicentieerde groep in Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses)|
+|AD FS-regels wijzigen, zoals Autorisatie, Uitgifte, MFA|Groepsclaim gebruiken om subset van gebruikers te targeten.|
+|De ervaring met AD FS-verificatie of vergelijkbare wijzigingen in de hele boerderij wijzigen|Maak een parallelle farm met dezelfde hostnaam, implementeer config-wijzigingen, test van clients met hosts-bestand, NLB-routeringsregels of vergelijkbare routering.<br>Als het doelplatform geen HOSTS-bestanden (bijvoorbeeld mobiele apparaten) ondersteunt, bedien je de wijziging.|
 
-## <a name="access-reviews"></a>Toegangscontroles
+## <a name="access-reviews"></a>Toegangsbeoordelingen
 
-### <a name="access-reviews-to-applications"></a>Toegangs Beoordelingen voor toepassingen
+### <a name="access-reviews-to-applications"></a>Toegang tot beoordelingen tot toepassingen
 
-Na verloop van tijd kunnen gebruikers de toegang tot resources verzamelen wanneer ze over verschillende teams en posities heen gaan. Het is belang rijk dat resource-eigen aren de toegang tot toepassingen regel matig bekijken en bevoegdheden verwijderen die niet langer nodig zijn voor de levens cyclus van gebruikers. Met Azure AD- [toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) kunnen organisaties efficiënt groepslid maatschappen, toegang tot bedrijfs toepassingen en roltoewijzingen beheren. Resource-eigen aren moeten regel matig de toegang van gebruikers controleren om ervoor te zorgen dat alleen de juiste personen toegang hebben. In het ideale geval kunt u het gebruik van Azure AD-toegangs Beoordelingen voor deze taak overwegen.
+Na verloop van tijd kunnen gebruikers toegang tot bronnen verzamelen terwijl ze zich door verschillende teams en posities verplaatsen. Het is belangrijk dat resource-eigenaren de toegang tot toepassingen regelmatig controleren en bevoegdheden verwijderen die niet langer nodig zijn gedurende de levenscyclus van gebruikers. Met Azure [AD-toegangsbeoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) kunnen organisaties groepslidmaatschappen, toegang tot bedrijfstoepassingen en roltoewijzingen efficiënt beheren. Eigenaren van resources moeten de toegang van gebruikers regelmatig controleren om ervoor te zorgen dat alleen de juiste mensen toegang hebben. Idealiter u overwegen Azure AD-toegangsbeoordelingen voor deze taak te gebruiken.
 
-![Start pagina toegangs beoordelingen](./media/active-directory-ops-guide/active-directory-ops-img15.png)
-
-> [!NOTE]
-> Elke gebruiker die communiceert met toegangs beoordelingen moet beschikken over een betaalde Azure AD Premium P2-licentie.
-
-### <a name="access-reviews-to-external-identities"></a>Toegangs beoordelingen naar externe identiteiten
-
-Het is van cruciaal belang om de toegang tot de externe identiteiten te beperken die alleen gelden voor bronnen die nodig zijn tijdens de tijd die nodig is. Stel een regel matig geautomatiseerd toegangs beoordelings proces in voor alle externe identiteiten en toegang tot toepassingen met behulp van Azure AD- [toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview). Als er al een proces on-premises bestaat, kunt u de Azure AD-toegangs beoordelingen gebruiken. Wanneer een toepassing buiten gebruik is gesteld of niet meer wordt gebruikt, verwijdert u alle externe identiteiten die toegang tot de toepassing hebben.
+![Startpagina voor beoordelingen openen](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
 > [!NOTE]
-> Elke gebruiker die communiceert met toegangs beoordelingen moet beschikken over een betaalde Azure AD Premium P2-licentie.
+> Elke gebruiker die interactie heeft met toegangsbeoordelingen, moet een betaalde Azure AD Premium P2-licentie hebben.
 
-## <a name="privileged-account-management"></a>Privileged account management
+### <a name="access-reviews-to-external-identities"></a>Toegang tot beoordelingen naar externe identiteiten
 
-### <a name="privileged-account-usage"></a>Gebruik van een privileged account
+Het is van cruciaal belang om de toegang tot externe identiteiten beperkt te houden tot resources die nodig zijn, gedurende de tijd die nodig is. Stel een regelmatig geautomatiseerd toegangscontroleproces op voor alle externe identiteiten en toepassingstoegang met Azure [AD-toegangsbeoordelingen.](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) Als er al een proces on-premises bestaat, u Azure AD-toegangsbeoordelingen gebruiken. Zodra een toepassing is uitgeschakeld of niet meer wordt gebruikt, verwijdert u alle externe identiteiten die toegang hadden tot de toepassing.
 
-Hackers richten vaak beheerders accounts en andere elementen van geprivilegieerde toegang om snel toegang te krijgen tot gevoelige gegevens en systemen. Omdat gebruikers met geprivilegieerde rollen meestal in de loop van de tijd verzamelen, is het belang rijk om regel matig beheerders toegang te controleren en te beheren en om toegang te bieden tot Azure AD en Azure-resources.
+> [!NOTE]
+> Elke gebruiker die interactie heeft met toegangsbeoordelingen, moet een betaalde Azure AD Premium P2-licentie hebben.
 
-Als er in uw organisatie geen proces is voor het beheren van geprivilegieerde accounts of als u momenteel beheerders hebt die hun reguliere gebruikers accounts gebruiken om services en resources te beheren, moet u onmiddellijk beginnen met het gebruik van afzonderlijke accounts, bijvoorbeeld een voor een reguliere dag activiteiten de andere voor bevoegde toegang en geconfigureerd met MFA. Als uw organisatie echter een Azure AD Premium P2-abonnement heeft, moet u [Azure AD privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements) (PIM) direct implementeren. In hetzelfde token moet u ook deze geprivilegieerde accounts bekijken en [minder geprivilegieerde rollen toewijzen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) , indien van toepassing.
+## <a name="privileged-account-management"></a>Geprivilegieerd accountbeheer
 
-Een ander aspect van privileged account management dat moet worden geïmplementeerd, is het definiëren van [toegangs beoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) voor deze accounts, hetzij hand matig of [automatisch via PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review).
+### <a name="privileged-account-usage"></a>Gebruik van geprivilegieerde accounts
 
-#### <a name="privileged-account-management-recommended-reading"></a>Aanbevolen account beheer voor lezen
+Hackers richten zich vaak op beheerdersaccounts en andere elementen van bevoorrechte toegang om snel toegang te krijgen tot gevoelige gegevens en systemen.Aangezien gebruikers met bevoorrechte rollen in de loop van de tijd vaak accumuleren, is het belangrijk om beheerderstoegang regelmatig te controleren en te beheren en just-in-time bevoorrechte toegang te bieden tot Azure AD- en Azure-bronnen.
+
+Als er geen proces bestaat in uw organisatie om bevoegde accounts te beheren, of als u momenteel beheerders hebt die hun reguliere gebruikersaccounts gebruiken om services en resources te beheren, moet u onmiddellijk beginnen met het gebruik van afzonderlijke accounts, bijvoorbeeld een voor gewone dagelijkse activiteiten; de andere voor bevoorrechte toegang en geconfigureerd met MFA. Beter nog, als uw organisatie een Azure AD Premium P2-abonnement heeft, moet u Azure [AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements) (PIM) onmiddellijk implementeren. In dezelfde token moet u ook deze bevoorrechte accounts controleren en [minder bevoorrechte rollen toewijzen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) indien van toepassing.
+
+Een ander aspect van geprivilegieerd accountbeheer dat moet worden geïmplementeerd, is het definiëren van [toegangsbeoordelingen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) voor die accounts, handmatig of [geautomatiseerd via PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review).
+
+#### <a name="privileged-account-management-recommended-reading"></a>Aanbevolen accountbeheer voor bevoegde accounts
 
 - [Rollen in Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-roles)
 
-### <a name="emergency-access-accounts"></a>Accounts voor toegang in nood gevallen
+### <a name="emergency-access-accounts"></a>Accounts voor noodtoegang
 
-Organisaties moeten [nood accounts](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) maken die moeten worden voor bereid om Azure ad te beheren, zoals verificatie-uitval zoals:
+Organisaties moeten [noodaccounts](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) maken om Azure AD te beheren voor gevallen zoals verificatieonderbrekingen zoals:
 
-- Uitval onderdelen van verificatie-infra structuren (AD FS, on-premises AD, MFA-service)
-- Omzet van administratieve mede werkers
+- Onderdelen van verificatie-infrastructuren uitval (AD FS, On-premises AD, MFA-service)
+- Verloop van administratief personeel
 
-Als u wilt voor komen dat uw Tenant per ongeluk wordt vergrendeld omdat u zich niet kunt aanmelden of een bestaand account van een individuele gebruiker als beheerder wilt activeren, moet u twee of meer nood accounts maken en ervoor zorgen dat ze worden geïmplementeerd en afgestemd met [de best practices](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) en [afbreek glazen procedures](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)van micro soft.
+Om te voorkomen dat u per ongeluk wordt uitgesloten van uw tenant omdat u zich niet aanmelden of het account van een bestaande individuele gebruiker als beheerder activeren, moet u twee of meer noodaccounts maken en ervoor zorgen dat deze zijn geïmplementeerd en afgestemd op [de aanbevolen procedures van Microsoft](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure) en glazen procedures [breken.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)
 
-### <a name="privileged-access-to-azure-ea-portal"></a>Privileged Access to Azure EA-Portal
+### <a name="privileged-access-to-azure-ea-portal"></a>Bevoorrechte toegang tot Azure EA-portal
 
-Met de [azure Enterprise Agreement-Portal (Azure EA)](https://azure.microsoft.com/blog/create-enterprise-subscription-experience-in-azure-portal-public-preview/) kunt u Azure-abonnementen maken op basis van een hoofd Enterprise Agreement. Dit is een krachtige rol binnen de onderneming. Het is gebruikelijk om het maken van deze portal te Boots trappen voordat u Azure AD hebt geïmplementeerd. u moet dus Azure AD-identiteiten gebruiken om het te vergren delen, persoonlijke accounts uit de portal te verwijderen, ervoor te zorgen dat de juiste delegering is geïmplementeerd en het risico van vergren deling verminderen .
+Met de [Azure Enterprise Agreement-portal (Azure Enterprise Agreement)](https://azure.microsoft.com/blog/create-enterprise-subscription-experience-in-azure-portal-public-preview/) u Azure-abonnementen maken tegen een hoofdovereenkomst voor onderneming, wat een krachtige rol binnen de onderneming is. Het is gebruikelijk om de creatie van deze portal op te start's voordat u Azure AD op zijn plaats krijgt, dus het is noodzakelijk om Azure AD-identiteiten te gebruiken om het te vergrendelen, persoonlijke accounts van de portal te verwijderen, ervoor te zorgen dat de juiste delegatie aanwezig is en het risico op uitsluiting te beperken .
 
-Als u dit wilt doen, moet u, als het verificatie niveau van de EA-Portal op dit moment is ingesteld op ' gemengde modus ', een [micro soft-account](https://support.skype.com/en/faq/FA12059/what-is-a-microsoft-account) verwijderen van alle bevoegde toegang in de EA-Portal en de EA-Portal configureren voor het gebruik van Azure AD-accounts. Als de EA-Portal gedelegeerde rollen niet zijn geconfigureerd, moet u ook gedelegeerde rollen voor afdelingen en accounts zoeken en implementeren.
+Als het autorisatieniveau voor EA-portalmomenteel is ingesteld op 'gemengde modus', moet u [microsoft-accounts](https://support.skype.com/en/faq/FA12059/what-is-a-microsoft-account) verwijderen uit alle bevoorrechte toegangen in de EA-portal en de EA-portal configureren om alleen Azure AD-accounts te gebruiken. Als de gedelegeerde rollen van de EA-portal niet zijn geconfigureerd, moet u ook gedelegeerde rollen voor afdelingen en accounts zoeken en implementeren.
 
-#### <a name="privileged-access-recommended-reading"></a>Bevoegde toegang aanbevolen lezen
+#### <a name="privileged-access-recommended-reading"></a>Aanbevolen lezen voor bevoegde toegang
 
 - [Machtigingen voor beheerrol in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
 
 ## <a name="entitlement-management"></a>Rechtenbeheer
 
-Met het [rechten beheer (em)](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) kunnen app-eigen resources bronnen bundelen en toewijzen aan specifieke personen in de organisatie (zowel intern als extern). EM maakt het mogelijk om zich aan te melden en te delegeren aan zakelijke eigen aren, terwijl het beheer beleid wordt gehandhaafd om toegang te verlenen, toegangs duur in te stellen en goedkeurings werk stromen toe te staan. 
+[Met Entitlement management (EM)](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) kunnen app-eigenaren resources bundelen en toewijzen aan specifieke persona's in de organisatie (zowel intern als extern). EM maakt selfservice-aanmelding en overdracht mogelijk naar bedrijfseigenaren, terwijl het governancebeleid wordt behouden om toegang te verlenen, toegangsduur in te stellen en goedkeuringswerkstromen toe te staan. 
 
 > [!NOTE]
-> Voor het beheer van rechten van Azure AD zijn Azure AD Premium P2-licenties vereist.
+> Azure AD Entitlement Management vereist Azure AD Premium P2-licenties.
 
 ## <a name="summary"></a>Samenvatting
 
-Er zijn acht aspecten van een beveiligd identiteits bestuur. Deze lijst helpt u bij het identificeren van de acties die u moet uitvoeren om de toegang tot niet-privilegede en geprivilegieerde identiteiten, controles en controle wijzigingen in de omgeving te beoordelen en te controleren.
+Er zijn acht aspecten aan een veilig identiteitsbestuur. Met deze lijst u bepalen welke acties u moet ondernemen om de toegang tot niet-bevoorrechte en bevoorrechte identiteiten te beoordelen en te bevestigen, te controleren en wijzigingen in de omgeving te beheren.
 
-- Eigen aren toewijzen aan belang rijke taken.
-- Implementeer een test strategie.
-- Gebruik Azure AD-toegangs beoordelingen om groepslid maatschappen, de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren.
-- Stel een regel matig, geautomatiseerd toegangs controle proces in voor alle typen externe identiteiten en toegang tot de toepassing.
-- Stel een toegangs beoordelings proces in om regel matig beheerders toegang te controleren en te beheren en de toegang tot Azure AD en Azure-resources just-in-time te bieden.
-- Stel nood accounts in die moeten worden voor bereid om Azure AD te beheren voor onverwachte storingen.
-- Vergrendel de toegang tot de Azure EA-Portal.
-- Implementeer het rechten beheer om beheerde toegang te bieden tot een verzameling resources.
+- Eigenaren toewijzen aan belangrijke taken.
+- Implementeer een teststrategie.
+- Gebruik Azure AD Access-recensies om groepslidmaatschappen, toegang tot bedrijfstoepassingen en roltoewijzingen efficiënt te beheren.
+- Stel een regelmatig, geautomatiseerd toegangscontroleproces op voor alle soorten externe identiteiten en toepassingstoegang.
+- Stel een toegangsbeoordelingsproces op om de beheerderstoegang regelmatig te controleren en te beheren en just-in-time bevoorrechte toegang te bieden tot Azure AD- en Azure-bronnen.
+- Noodaccounts inrichten om Azure AD te beheren voor onverwachte storingen.
+- De toegang tot de Azure EA-portal vergrendelen.
+- Implementeren Van het rechtbeheer om geregelde toegang tot een verzameling resources te bieden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met de [operationele controles en acties van Azure AD](active-directory-ops-guide-ops.md).
+Ga aan de slag met de operationele controles en acties van [Azure AD.](active-directory-ops-guide-ops.md)

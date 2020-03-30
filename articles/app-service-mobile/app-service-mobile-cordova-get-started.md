@@ -8,10 +8,10 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 99fb4a4b07ecbd4a85abbc62ec52a0f5960654c5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461569"
 ---
 # <a name="create-an-apache-cordova-app"></a>Een Apache Cordova-app maken
@@ -34,7 +34,7 @@ U kunt Visual Studio ook omzeilen en de Apache Cordova-opdrachtregel rechtstreek
 ## <a name="create-an-azure-mobile-app-backend"></a>Een back-end voor mobiele apps van Azure maken
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een database verbinding maken en het client-en server project configureren
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een databaseverbinding maken en het client- en serverproject configureren
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-apache-cordova-app"></a>De Apache Cordova-app downloaden en uitvoeren
@@ -44,4 +44,4 @@ U kunt Visual Studio ook omzeilen en de Apache Cordova-opdrachtregel rechtstreek
 [Azure portal]: https://portal.azure.com/
 
 [Visual Studio Community 2017]: https://www.visualstudio.com/
-[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Visual Studio Tools voor Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx

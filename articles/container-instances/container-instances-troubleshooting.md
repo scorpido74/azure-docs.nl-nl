@@ -1,39 +1,39 @@
 ---
-title: Algemene problemen oplossen
-description: Meer informatie over het oplossen van veelvoorkomende problemen wanneer u Azure Container Instances implementeert, uitvoert of beheert
+title: Algemene problemen
+description: Meer informatie over het oplossen van veelvoorkomende problemen bij het implementeren, uitvoeren of beheren van Azure Container Instances
 ms.topic: article
 ms.date: 09/25/2019
 ms.custom: mvc
 ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533382"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
-In dit artikel wordt beschreven hoe u veelvoorkomende problemen oplost voor het beheren of implementeren van containers in Azure Container Instances. Zie ook [Veelgestelde vragen](container-instances-faq.md).
+In dit artikel ziet u hoe u veelvoorkomende problemen oplost voor het beheren of implementeren van containers naar Azure Container Instances. Zie ook [veelgestelde vragen.](container-instances-faq.md)
 
-Als u aanvullende ondersteuning nodig hebt, raadpleegt u de beschik bare **Help en ondersteunings** opties in de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Als u extra ondersteuning nodig hebt, raadpleegt u de beschikbare **Help + ondersteuningsopties** in de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
-## <a name="issues-during-container-group-deployment"></a>Problemen tijdens de implementatie van de container groep
+## <a name="issues-during-container-group-deployment"></a>Problemen tijdens de implementatie van containergroep
 ### <a name="naming-conventions"></a>Naamconventies
 
-Bij het definiëren van de container specificatie, moeten bepaalde para meters worden uitgebreid tot naamgevings beperkingen. Hieronder ziet u een tabel met specifieke vereisten voor container groep eigenschappen. Zie [naamgevings conventies][azure-name-restrictions] in de Azure Architecture Center voor meer informatie over Azure-naamgevings conventies.
+Bij het definiëren van uw containerspecificatie vereisen bepaalde parameters naleving van naamgevingsbeperkingen. Hieronder vindt u een tabel met specifieke vereisten voor eigenschappen van containergroepen. Zie [Naamgevingsconventies][azure-name-restrictions] in het Azure Architecture Center voor meer informatie over Azure-naamgevingsconventies.
 
-| Scope | Lengte | Hoofdlettergebruik | Geldige tekens | Voorgesteld patroon | Voorbeeld |
+| Bereik | Lengte | Hoofdlettergebruik | Geldige tekens | Voorgesteld patroon | Voorbeeld |
 | --- | --- | --- | --- | --- | --- |
-| Naam van container groep | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Containernaam | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Container poorten | Tussen 1 en 65535 |Geheel getal |Geheel getal tussen 1 en 65535 |`<port-number>` |`443` |
-| Label voor de DNS-naam | 5-63 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>` |`frontend-site1` |
-| Omgevingsvariabele | 1-63 |Niet hoofdlettergevoelig |Alfanumerieke tekens en onderstrepings tekens (_) overal behalve het eerste of laatste teken |`<name>` |`MY_VARIABLE` |
-| Volume naam | 5-63 |Niet hoofdlettergevoelig |Kleine letters en cijfers en wille keurige streepjes, behalve het eerste of laatste teken. Kan niet twee opeenvolgende afbreek streepjes bevatten. |`<name>` |`batch-output-volume` |
+| Naam containergroep | 1-64 |Niet hoofdlettergevoelig |Alfanumeriek en koppelteken overal behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Containernaam | 1-64 |Niet hoofdlettergevoelig |Alfanumeriek en koppelteken overal behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Containerpoorten | Tussen 1 en 65535 |Geheel getal |Geheel getal tussen 1 en 65535 |`<port-number>` |`443` |
+| DNS-naamlabel | 5-63 |Niet hoofdlettergevoelig |Alfanumeriek en koppelteken overal behalve het eerste of laatste teken |`<name>` |`frontend-site1` |
+| Omgevingsvariabele | 1-63 |Niet hoofdlettergevoelig |Alfanumerieke en onderstrepen (_) overal behalve het eerste of laatste teken |`<name>` |`MY_VARIABLE` |
+| Volumenaam | 5-63 |Niet hoofdlettergevoelig |Kleine letters en cijfers en koppeltekens overal behalve het eerste of laatste teken. Kan niet twee opeenvolgende koppeltekens bevatten. |`<name>` |`batch-output-volume` |
 
-### <a name="os-version-of-image-not-supported"></a>De versie van het besturings systeem van de installatie kopie wordt niet ondersteund
+### <a name="os-version-of-image-not-supported"></a>OS-versie van afbeelding niet ondersteund
 
-Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ondersteund, wordt een `OsVersionNotSupported` fout geretourneerd. De fout is vergelijkbaar met de volgende, waarbij `{0}` de naam is van de installatie kopie die u probeert te implementeren:
+Als u een afbeelding opgeeft die Azure `OsVersionNotSupported` Container Instances niet ondersteunt, wordt een fout geretourneerd. De fout is vergelijkbaar `{0}` met volgende, waar is de naam van de afbeelding die u hebt geprobeerd te implementeren:
 
 ```json
 {
@@ -44,15 +44,15 @@ Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ond
 }
 ```
 
-Deze fout treedt meestal op bij het implementeren van Windows-installatie kopieën die zijn gebaseerd op semi-Annual-kanaal release 1709 of 1803, wat niet wordt ondersteund. Zie [Veelgestelde vragen](container-instances-faq.md#what-windows-base-os-images-are-supported)voor ondersteunde Windows-installatie kopieën in azure container instances.
+Deze fout wordt het vaakst aangetroffen bij het implementeren van Windows-afbeeldingen die zijn gebaseerd op semi-jaarlijkse kanaalrelease 1709 of 1803, die niet worden ondersteund. Zie Veelgestelde vragen voor ondersteunde [Windows-afbeeldingen](container-instances-faq.md#what-windows-base-os-images-are-supported)in Azure Container Instances.
 
-### <a name="unable-to-pull-image"></a>Kan de installatie kopie niet ophalen
+### <a name="unable-to-pull-image"></a>Kan afbeelding niet trekken
 
-Als Azure Container Instances in eerste instantie de afbeelding niet kan ophalen, wordt er gedurende een periode een nieuwe poging gedaan. Als de pull-bewerking van de installatie kopie blijft mislukken, mislukt ACI de implementatie en ziet u mogelijk een `Failed to pull image` fout.
+Als Azure Container Instances in eerste instantie niet in staat is om uw afbeelding op te vragen, wordt deze gedurende een bepaalde periode opnieuw geprobeerd. Als de bewerking voor het trekken van afbeeldingen blijft mislukken, mislukt ACI uiteindelijk de implementatie en ziet u mogelijk een `Failed to pull image` fout.
 
-U kunt dit probleem oplossen door het container exemplaar te verwijderen en de implementatie opnieuw uit te voeren. Zorg ervoor dat de installatie kopie in het REGI ster bestaat en dat u de naam van de installatie kopie correct hebt getypt.
+Als u dit probleem wilt oplossen, verwijdert u de containerinstantie en probeert u uw implementatie opnieuw. Controleer of de afbeelding in het register bestaat en dat u de naam van de afbeelding correct hebt getypt.
 
-Als de installatie kopie niet kan worden opgehaald, worden gebeurtenissen zoals de volgende weer gegeven in de uitvoer van [AZ container show][az-container-show]:
+Als de afbeelding niet kan worden getrokken, worden gebeurtenissen zoals de volgende weergegeven in de uitvoer van [de AZ-container:][az-container-show]
 
 ```bash
 "events": [
@@ -82,25 +82,25 @@ Als de installatie kopie niet kan worden opgehaald, worden gebeurtenissen zoals 
   }
 ],
 ```
-### <a name="resource-not-available-error"></a>Fout bericht bron niet beschikbaar
+### <a name="resource-not-available-error"></a>Fout resource niet beschikbaar
 
-Als gevolg van verschillende regionale resource belasting in azure, wordt mogelijk de volgende fout weer gegeven bij het implementeren van een container exemplaar:
+Als gevolg van de wisselende regionale resourcebelasting in Azure, ontvangt u mogelijk de volgende fout wanneer u een containerinstantie probeert te implementeren:
 
 `The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
 
-Deze fout geeft aan dat de resources die zijn opgegeven voor de container niet op dat moment kunnen worden toegewezen vanwege een zware belasting in de regio waarin u wilt implementeren. Gebruik een of meer van de volgende beperkings stappen om het probleem op te lossen.
+Deze fout geeft aan dat als gevolg van zware belasting in het gebied waarin u probeert te implementeren, de resources die zijn opgegeven voor uw container op dat moment niet kunnen worden toegewezen. Gebruik een of meer van de volgende beperkende stappen om het probleem op te lossen.
 
-* Controleer of de implementatie-instellingen van de container vallen binnen de para meters die zijn gedefinieerd in de [regio beschikbaarheid voor Azure container instances](container-instances-region-availability.md)
-* Lagere CPU-en geheugen instellingen voor de container opgeven
+* Controleren of de instellingen voor containerimplementatie binnen de parameters vallen die zijn gedefinieerd in [de beschikbaarheid van regio's voor Azure Container Instances](container-instances-region-availability.md)
+* Lagere CPU- en geheugeninstellingen voor de container opgeven
 * Implementeren naar een andere Azure-regio
 * Op een later tijdstip implementeren
 
-## <a name="issues-during-container-group-runtime"></a>Problemen tijdens runtime van container groep
-### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Container wordt voortdurend afgesloten en opnieuw gestart (geen langlopend proces)
+## <a name="issues-during-container-group-runtime"></a>Problemen tijdens runtime containergroep
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Container wordt voortdurend afgesloten en opnieuw opgestart (geen langlopend proces)
 
-Container groepen worden standaard ingesteld op het beleid **voor** [opnieuw opstarten](container-instances-restart-policy.md) , zodat containers in de container groep altijd opnieuw worden opgestart nadat ze zijn uitgevoerd om te worden voltooid. Mogelijk moet u dit wijzigen in **OnFailure** of **nooit** als u van plan bent om op taken gebaseerde containers uit te voeren. Als u **OnFailure** opgeeft en nog steeds voortdurend opnieuw wordt opgestart, is er mogelijk een probleem met de toepassing of het script dat in uw container wordt uitgevoerd.
+Containergroepen worden standaard gestart met een [herstartbeleid](container-instances-restart-policy.md) van **Altijd,** zodat containers in de containergroep altijd opnieuw worden gestart nadat ze zijn voltooid. Mogelijk moet u dit wijzigen in **OnFailure** of **Nooit** als u van plan bent op taakgebaseerde containers uit te voeren. Als u **OnFailure** opgeeft en nog steeds continu opnieuw wordt opgestart, is er mogelijk een probleem met de toepassing of het script dat in uw container is uitgevoerd.
 
-Bij het uitvoeren van container groepen zonder langlopende processen ziet u mogelijk herhaalde afsluit bewerkingen en wordt de computer opnieuw opgestart met installatie kopieën zoals Ubuntu of Alpine. Het maken van een verbinding via [exec](container-instances-exec.md) werkt niet omdat de container geen proces heeft dat deze actief houdt. Als u dit probleem wilt oplossen, voegt u een start opdracht toe, zoals in het volgende voor de container groeps implementatie, om ervoor te zorgen dat de container wordt uitgevoerd.
+Bij het uitvoeren van containergroepen zonder langlopende processen u herhaalde uitgangen en opnieuw opstarten zien met afbeeldingen zoals Ubuntu of Alpine. Verbinding maken via [EXEC](container-instances-exec.md) werkt niet omdat de container geen proces heeft om hem in leven te houden. Als u dit probleem wilt oplossen, neemt u een opdracht start als de volgende op met de implementatie van uw containergroep om de container draaiende te houden.
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -113,7 +113,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-De Container Instances-API en Azure Portal bevatten een `restartCount`-eigenschap. Als u het aantal herstartingen voor een container wilt controleren, kunt u de opdracht [AZ container show][az-container-show] gebruiken in de Azure cli. In de volgende voorbeeld uitvoer (die is afgekapt voor de boog), ziet u de eigenschap `restartCount` aan het einde van de uitvoer.
+De API voor containerinstanties `restartCount` en de Azure-portal bevat een eigenschap. Als u het aantal opnieuw opstartenvoor een container wilt controleren, u de opdracht [AZ-containershow gebruiken][az-container-show] in de Azure CLI. In het volgende voorbeeld uitvoer (die is afgekapt voor beknoptheid), u de `restartCount` eigenschap aan het einde van de uitvoer te zien.
 
 ```json
 ...
@@ -154,23 +154,23 @@ De Container Instances-API en Azure Portal bevatten een `restartCount`-eigenscha
 ```
 
 > [!NOTE]
-> De meeste container installatie kopieën voor Linux-distributies stellen een shell, zoals bash, in als de standaard opdracht. Omdat een shell op zichzelf geen langlopende service is, worden deze containers onmiddellijk afgesloten en in een restart-lus gezet wanneer deze is geconfigureerd met het standaard beleid voor **altijd** opnieuw opstarten.
+> De meeste containerafbeeldingen voor Linux-distributies stellen een shell in, zoals bash, als de standaardopdracht. Aangezien een shell op zichzelf geen langlopende service is, worden deze containers onmiddellijk afgesloten en vallen ze in een herstartlus wanneer deze is geconfigureerd met het **standaardbeleid Altijd** opnieuw opstarten.
 
-### <a name="container-takes-a-long-time-to-start"></a>Het starten van de container duurt lang
+### <a name="container-takes-a-long-time-to-start"></a>Container duurt lang om te beginnen
 
-De drie primaire factoren die bijdragen aan de opstart tijd van de container in Azure Container Instances zijn:
+De drie belangrijkste factoren die bijdragen aan de opstarttijd van containers in Azure Container Instances zijn:
 
-* [Afbeeldings grootte](#image-size)
-* [Locatie van installatie kopie](#image-location)
+* [Afbeeldingsgrootte](#image-size)
+* [Afbeeldingslocatie](#image-location)
 * [Afbeeldingen in cache](#cached-images)
 
-Windows-installatie kopieën hebben [extra overwegingen](#cached-images).
+Windows-afbeeldingen hebben [aanvullende overwegingen.](#cached-images)
 
-#### <a name="image-size"></a>Afbeeldings grootte
+#### <a name="image-size"></a>Afbeeldingsgrootte
 
-Als uw container veel tijd in beslag neemt, maar uiteindelijk is geslaagd, gaat u eerst naar de grootte van uw container installatie kopie. Omdat Azure Container Instances uw container installatie kopie op aanvraag ophaalt, is de opstart tijd die u ziet direct gerelateerd aan de grootte.
+Als het lang duurt voordat uw container is gestart, maar uiteindelijk slaagt, moet u eerst kijken naar de grootte van uw containerafbeelding. Omdat Azure Container Instances uw containerafbeelding op aanvraag optrekt, is de opstarttijd die u ziet direct gerelateerd aan de grootte ervan.
 
-U kunt de grootte van uw container installatie kopie weer geven met behulp van de `docker images` opdracht in de docker-CLI:
+U de grootte van uw `docker images` containerafbeelding bekijken met de opdracht docker-CLI:
 
 ```console
 $ docker images
@@ -178,45 +178,45 @@ REPOSITORY                                    TAG       IMAGE ID        CREATED 
 mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
-De sleutel voor het bewaren van afbeeldings grootten zorgt ervoor dat de uiteindelijke afbeelding niets hoeft te bevatten die tijdens runtime niet is vereist. Een manier om dit te doen is met [meerdere fase builds][docker-multi-stage-builds]. Met meerdere fasen kunt u ervoor zorgen dat de uiteindelijke installatie kopie alleen de artefacten bevat die u nodig hebt voor uw toepassing, en niet een van de extra inhoud die tijdens het bouwen was vereist.
+De sleutel om de afbeeldingsformaten klein te houden, is ervoor te zorgen dat uw uiteindelijke afbeelding niets bevat dat niet vereist is tijdens runtime. Een manier om dit te doen is met [multi-stage builds][docker-multi-stage-builds]. Multi-stage builds maken het gemakkelijk om ervoor te zorgen dat de uiteindelijke afbeelding alleen de artefacten bevat die u nodig hebt voor uw toepassing, en niet een van de extra inhoud die nodig was tijdens het bouwen.
 
-#### <a name="image-location"></a>Locatie van installatie kopie
+#### <a name="image-location"></a>Afbeeldingslocatie
 
-Een andere manier om de impact van de installatie kopie op de opstart tijd van de container te verminderen, is door de container installatie kopie te hosten in [Azure container Registry](/azure/container-registry/) in dezelfde regio waarin u container instanties wilt implementeren. Hiermee verkort u het netwerkpad dat de container installatie kopie moet reizen, waardoor de download tijd aanzienlijk verkort.
+Een andere manier om de impact van de afbeeldingstoename op de opstarttijd van uw container te verminderen, is door de containerafbeelding te hosten in [Azure Container Registry](/azure/container-registry/) in dezelfde regio waar u containerexemplaren wilt implementeren. Dit verkort het netwerkpad dat de containerafbeelding moet afleggen, waardoor de downloadtijd aanzienlijk wordt verkort.
 
 #### <a name="cached-images"></a>Afbeeldingen in cache
 
-Azure Container Instances gebruikt een cache mechanisme om de opstart tijd van de container te versnellen voor installatie kopieën die zijn gebaseerd op algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported), waaronder `nanoserver:1809`, `servercore:ltsc2019`en `servercore:1809`. Veelgebruikte Linux-installatie kopieën, zoals `ubuntu:1604` en `alpine:3.6`, worden ook in de cache opgeslagen. Voor een bijgewerkte lijst met afbeeldingen en tags in de cache gebruikt u de API-afbeelding van de [lijst in cache][list-cached-images] .
+Azure Container Instances maakt gebruik van een caching-mechanisme om de opstarttijd `servercore:1809`van containers te versnellen voor afbeeldingen die zijn gebouwd op algemene [Windows-basisafbeeldingen](container-instances-faq.md#what-windows-base-os-images-are-supported), waaronder `nanoserver:1809`, `servercore:ltsc2019`en . Veelgebruikte Linux-afbeeldingen `ubuntu:1604` `alpine:3.6` zoals en worden ook in de cache opgeslagen. Gebruik de API Voor een up-to-date lijst met afbeeldingen en tags in de cache gebruikt u de API [Voor afbeeldingen in de cache.][list-cached-images]
 
 > [!NOTE]
-> Het gebruik van installatie kopieën op basis van Windows Server 2019 in Azure Container Instances is in de preview-versie.
+> Het gebruik van op Windows Server 2019 gebaseerde afbeeldingen in Azure Container Instances is in preview.Use of Windows Server 2019-based images in Azure Container Instances is in preview.
 
-#### <a name="windows-containers-slow-network-readiness"></a>Windows-containers langzaam netwerk gereedheid
+#### <a name="windows-containers-slow-network-readiness"></a>Windows-containers vertragen netwerkgereedheid
 
-Na het maken van de eerste keer is het mogelijk dat Windows-containers tot 30 seconden (of langer) in zeldzame gevallen geen binnenkomende of uitgaande connectiviteit hebben. Als uw container toepassing een Internet verbinding nodig heeft, voegt u vertraging toe en voert u de logica opnieuw uit om 30 seconden een Internet verbinding tot stand te brengen. Na de initiële installatie moet de container netwerken op de juiste manier worden hervat.
+Bij de eerste creatie hebben Windows-containers mogelijk geen inkomende of uitgaande connectiviteit voor maximaal 30 seconden (of langer, in zeldzame gevallen). Als uw containertoepassing een internetverbinding nodig heeft, voegt u vertraging toe en probeert u de logica opnieuw om 30 seconden toe te staan om de internetverbinding tot stand te brengen. Na de eerste installatie moet containernetwerken op de juiste manier worden hervat.
 
-### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Kan geen verbinding maken met de onderliggende docker-API of er worden geprivilegieerde containers uitgevoerd
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Kan geen verbinding maken met de onderliggende Docker API of bevoegde containers uitvoeren
 
-Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende infra structuur die als host fungeert voor container groepen. Dit geldt ook voor toegang tot de docker-API die wordt uitgevoerd op de host van de container en het uitvoeren van geprivilegieerde containers. Als u docker-interactie nodig hebt, raadpleegt u de [rest-referentie documentatie](https://aka.ms/aci/rest) om te zien wat de ACI API ondersteunt. Als er iets ontbreekt, dient u een aanvraag in te dienen bij de forums over de [ACI-feedback](https://aka.ms/aci/feedback).
+Azure Container Instances geeft geen directe toegang tot de onderliggende infrastructuur die containergroepen host. Dit omvat toegang tot de Docker-API die wordt uitgevoerd op de host van de container en bevoorrechte containers uitvoert. Als u de interactie met Docker nodig hebt, raadpleegt u de [REST-referentiedocumentatie](https://aka.ms/aci/rest) om te zien wat de ACI-API ondersteunt. Als er iets ontbreekt, dient u een verzoek in op de [ACI feedbackforums.](https://aka.ms/aci/feedback)
 
-### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de container groep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Ip-adres van containergroep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
 
-Azure Container Instances biedt nog geen ondersteuning voor poort toewijzing, zoals bij normale docker-configuratie. Als u het IP-adres van een container groep niet toegankelijk hebt wanneer u denkt dat dit het geval is, moet u ervoor zorgen dat u de container installatie kopie hebt geconfigureerd om te Luis teren naar dezelfde poorten die u in uw container groep weergeeft met de eigenschap `ports`.
+Azure Container Instances ondersteunt nog geen poorttoewijzing zoals bij reguliere dockerconfiguratie. Als u merkt dat het IP-adres van een containergroep niet toegankelijk is wanneer u denkt dat dit zou moeten zijn, moet u ervoor zorgen dat u uw containerafbeelding hebt geconfigureerd om naar dezelfde poorten te luisteren die u in uw containergroep met de `ports` eigenschap blootstelt.
 
-Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort die u in de container installatie kopie hebt geconfigureerd, test u een implementatie van de `aci-helloworld` installatie kopie waarmee de poort wordt weer gegeven. Voer ook de `aci-helloworld`-app uit zodat deze op de poort luistert. `aci-helloworld` accepteert een optionele omgevings variabele `PORT` voor het overschrijven van de standaard poort 80 die wordt geluisterd. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevings variabele](container-instances-environment-variables.md) in wanneer u de container groep maakt:
+Als u wilt bevestigen dat Azure Container Instances kunnen luisteren op de poort die `aci-helloworld` u in uw containerafbeelding hebt geconfigureerd, test u een implementatie van de afbeelding die de poort blootlegt. Voer de `aci-helloworld` app ook zo uit dat deze op de poort luistert. `aci-helloworld`accepteert een optionele `PORT` omgevingsvariabele om de standaardpoort 80 te overschrijven waarop deze luistert. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevingsvariabele](container-instances-environment-variables.md) in wanneer u de containergroep maakt:
 
-1. Stel de container groep in om poort 9000 beschikbaar te maken en geef het poort nummer door als de waarde van de omgevings variabele. Het voor beeld is opgemaakt voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzing van de variabele dienovereenkomstig aanpassen.
+1. Stel de containergroep in om poort 9000 bloot te leggen en geef het poortnummer door als de waarde van de omgevingsvariabele. Het voorbeeld is opgemaakt voor de Bash-shell. Als u de voorkeur geeft aan een andere shell, zoals PowerShell of Opdrachtprompt, moet u variabele toewijzing dienovereenkomstig aanpassen.
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Zoek het IP-adres van de container groep in de opdracht uitvoer van `az container create`. Zoek de waarde van **IP**. 
-1. Nadat de container is ingericht, bladert u naar het IP-adres en de poort van de container-app in uw browser, bijvoorbeeld: `192.0.2.0:9000`. 
+1. Zoek het IP-adres van de containergroep in de opdrachtuitvoer van `az container create`. Kijk voor de waarde van **ip**. 
+1. Nadat de container is ingericht, bladert u naar het IP-adres en `192.0.2.0:9000`de poort van de container-app in uw browser, bijvoorbeeld: . 
 
-    U ziet de ' Welkom bij Azure Container Instances! ' het bericht dat wordt weer gegeven door de web-app.
-1. Wanneer u klaar bent met de container, verwijdert u deze met behulp van de `az container delete` opdracht:
+    U ziet de 'Welkom bij Azure Container Instances!' bericht dat wordt weergegeven door de web-app.
+1. Wanneer u klaar bent met de container, verwijdert u deze met de `az container delete` opdracht:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
@@ -224,7 +224,7 @@ Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [ophalen van container logboeken en-gebeurtenissen](container-instances-get-logs.md) voor het opsporen van fouten in uw containers.
+Meer informatie over het [ophalen van containerlogboeken en gebeurtenissen](container-instances-get-logs.md) om uw containers te debuggen.
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources

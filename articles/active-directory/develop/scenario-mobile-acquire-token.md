@@ -1,7 +1,7 @@
 ---
-title: Een token verkrijgen om een web-API (Mobile apps) aan te roepen | Azure
+title: Een token aanschaffen om een web-API aan te roepen (mobiele apps) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept. (Een Token ophalen voor de app.)
+description: Meer informatie over het bouwen van een mobiele app die web-API's aanroept. (Ontvang een token voor de app.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,21 +17,21 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 9427235f47a31da75426559a4285634ab2837577
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132449"
 ---
-# <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Een Token ophalen voor een mobiele app die web-Api's aanroept
+# <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Een token aanvragen voor een mobiele app die web-API's aanroept
 
-Voordat uw app beveiligde web-Api's kan aanroepen, heeft deze een toegangs token nodig. Dit artikel begeleidt u bij het proces voor het verkrijgen van een token met behulp van micro soft Authentication Library (MSAL).
+Voordat uw app beveiligde web-API's kan aanroepen, heeft deze een toegangstoken nodig. In dit artikel u het proces doorlopen om een token te krijgen met behulp van Microsoft Authentication Library (MSAL).
 
 ## <a name="define-a-scope"></a>Een bereik definiëren
 
-Wanneer u een token aanvraagt, moet u een bereik definiëren. Het bereik bepaalt welke gegevens uw app kan gebruiken.  
+Wanneer u een token aanvraagt, moet u een bereik definiëren. Het bereik bepaalt welke gegevens uw app kan openen.  
 
-De eenvoudigste manier om een bereik te definiëren is het combi neren van de `App ID URI` van de gewenste Web-API met het bereik `.default`. Deze definitie vertelt micro soft Identity platform dat uw app alle scopes vereist die in de portal zijn ingesteld.
+De eenvoudigste manier om een scope te definiëren is `App ID URI` door `.default`de gewenste web API's te combineren met de scope. Deze definitie vertelt Microsoft identity platform dat uw app alle scopes vereist die zijn ingesteld in de portal.
 
 ### <a name="android"></a>Android
 ```Java
@@ -48,11 +48,11 @@ let scopes = ["https://graph.microsoft.com/.default"]
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="get-tokens"></a>Tokens ophalen
+## <a name="get-tokens"></a>Tokens ontvangen
 
 ### <a name="acquire-tokens-via-msal"></a>Tokens verkrijgen via MSAL
 
-MSAL staat apps toe om tokens op de achtergrond en interactief te verkrijgen. Wanneer u `AcquireTokenSilent()` of `AcquireTokenInteractive()`aanroept, retourneert MSAL een toegangs token voor de aangevraagde bereiken. Het juiste patroon is het maken van een Silent-aanvraag en terugvallen op een interactieve aanvraag.
+MSAL stelt apps in staat om tokens in stilte en interactief te verwerven. Wanneer u `AcquireTokenSilent()` `AcquireTokenInteractive()`belt of MSAL een toegangstoken retourneert voor de gevraagde scopes. Het juiste patroon is om een stille aanvraag te doen en vervolgens terug te vallen op een interactief verzoek.
 
 #### <a name="android"></a>Android
 
@@ -86,7 +86,7 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 #### <a name="ios"></a>iOS
 
-Probeer eerst een token op de achtergrond te verkrijgen:
+Probeer eerst in stilte een token te verkrijgen:
 
 ```objc
 
@@ -148,7 +148,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-Als MSAL retourneert `MSALErrorInteractionRequired`, kunt u tokens interactief ophalen:
+Als MSAL `MSALErrorInteractionRequired`terugkeert, probeer dan het verwerven van tokens interactief:
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
@@ -182,14 +182,14 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 })
 ```
 
-MSAL voor iOS en macOS ondersteunt diverse aanpassingen om een token interactief of op de achtergrond te verkrijgen:
-* [Algemene para meters voor het ophalen van een token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
-* [Para meters voor het ophalen van een interactief token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
-* [Para meters voor het ophalen van een Silent token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
+MSAL voor iOS en macOS ondersteunt verschillende modifiers om een token interactief of geruisloos te krijgen:
+* [Algemene parameters voor het verkrijgen van een token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
+* [Parameters voor het verkrijgen van een interactief token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
+* [Parameters voor het verkrijgen van een stille token](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
 
 #### <a name="xamarin"></a>Xamarin
 
-In het volgende voor beeld wordt de minimale code weer gegeven om een token interactief op te halen. In het voor beeld wordt Microsoft Graph gebruikt voor het lezen van het profiel van de gebruiker.
+In het volgende voorbeeld ziet u de minimale code om een token interactief te krijgen. In het voorbeeld wordt Microsoft Graph gebruikt om het profiel van de gebruiker te lezen.
 
 ```csharp
 string[] scopes = new string[] {"user.read"};
@@ -208,47 +208,47 @@ catch(MsalUiRequiredException)
 }
 ```
 
-#### <a name="mandatory-parameters-in-msalnet"></a>Verplichte para meters in MSAL.NET
+#### <a name="mandatory-parameters-in-msalnet"></a>Verplichte parameters in MSAL.NET
 
-`AcquireTokenInteractive` heeft slechts één verplichte para meter: `scopes`. Met de para meter `scopes` worden teken reeksen opgesomd waarmee de bereiken worden gedefinieerd waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunt u de vereiste bereiken vinden in de API-verwijzing van elke Microsoft Graph-API. Ga in de verwijzing naar de sectie ' machtigingen '. 
+`AcquireTokenInteractive`heeft slechts één `scopes`verplichte parameter: . De `scopes` parameter somt tekenreeksen op die de scopes definiëren waarvoor een token vereist is. Als het token voor Microsoft Graph is, u de vereiste scopes vinden in de API-verwijzing van elke Microsoft Graph-API. Ga in de verwijzing naar de sectie Machtigingen. 
 
-Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts), gebruikt u de scope ' gebruiker. read ', ' Contacts. read '. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
+Als u bijvoorbeeld de contactpersonen van de gebruiker wilt [aanbieden,](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)gebruikt u het bereik 'User.Read', 'Contacts.Read'. Zie [Verwijzing naar microsoft graph-machtigingen voor](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)meer informatie .
 
-Op Android kunt u de bovenliggende activiteit opgeven wanneer u de app maakt met behulp van `PublicClientApplicationBuilder`. Als u de bovenliggende activiteit op dat moment niet opgeeft, kunt u deze later opgeven met behulp van `.WithParentActivityOrWindow` zoals in de volgende sectie. Als u bovenliggende activiteit opgeeft, wordt het token na de interactie teruggestuurd naar die bovenliggende activiteit. Als u deze niet opgeeft, genereert de `.ExecuteAsync()`-aanroep een uitzonde ring.
+Op Android u bovenliggende activiteit opgeven `PublicClientApplicationBuilder`wanneer u de app maakt met behulp van. Als u de bovenliggende activiteit op dat moment niet opgeeft, u deze later opgeven door te gebruiken `.WithParentActivityOrWindow` zoals in de volgende sectie. Als u bovenliggende activiteit opgeeft, wordt het token na de interactie teruggezet naar die bovenliggende activiteit. Als u dit niet opgeeft, wordt er met het `.ExecuteAsync()` gesprek een uitzondering gemaakt.
 
-#### <a name="specific-optional-parameters-in-msalnet"></a>Specifieke optionele para meters in MSAL.NET
+#### <a name="specific-optional-parameters-in-msalnet"></a>Specifieke optionele parameters in MSAL.NET
 
-In de volgende secties worden de optionele para meters in MSAL.NET uitgelegd. 
+In de volgende secties worden de optionele parameters in MSAL.NET. 
 
-##### <a name="withprompt"></a>WithPrompt
+##### <a name="withprompt"></a>MetPrompt
 
-De `WithPrompt()` para meter bepaalt de interactiviteit met de gebruiker door een prompt op te geven.
+De `WithPrompt()` parameter regelt de interactiviteit met de gebruiker door een prompt op te geven.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 De klasse definieert de volgende constanten:
 
-- `SelectAccount` dwingt de Security Token Service (STS) af om het dialoog venster voor het selecteren van accounts weer te geven. Het dialoog venster bevat de accounts waarvoor de gebruiker een sessie heeft. U kunt deze optie gebruiken als u wilt dat de gebruiker uit verschillende identiteiten kan kiezen. Deze optie verstuurt MSAL om `prompt=select_account` te verzenden naar de ID-provider. 
+- `SelectAccount`hiermee wordt de beveiligingstokenservice (STS) naar het dialoogvenster accountselectie dwingt. Het dialoogvenster bevat de accounts waarvoor de gebruiker een sessie heeft. U deze optie gebruiken wanneer u de gebruiker wilt laten kiezen uit verschillende identiteiten. Met deze optie wordt `prompt=select_account` MSAL naar de identiteitsprovider gestuurd. 
     
-    De `SelectAccount` constante is de standaard waarde en levert de best mogelijke ervaring op basis van de beschik bare informatie. De beschik bare informatie kan bestaan uit account, aanwezigheid van een sessie voor de gebruiker, enzovoort. Wijzig deze standaard instelling alleen als u er een goede reden voor hebt.
-- met `Consent` kunt u de gebruiker om toestemming vragen, zelfs als toestemming is verleend. In dit geval stuurt MSAL `prompt=consent` naar de ID-provider. 
+    De `SelectAccount` constante is de standaard, en het biedt effectief de best mogelijke ervaring op basis van de beschikbare informatie. De beschikbare informatie kan bestaan uit account, aanwezigheid van een sessie voor de gebruiker, enzovoort. Wijzig deze standaard niet, tenzij u een goede reden hebt om het te doen.
+- `Consent`stelt u in staat om de gebruiker om toestemming te vragen, zelfs als er al eerder toestemming is verleend. In dit geval stuurt `prompt=consent` MSAL naar de identiteitsprovider. 
 
-    U kunt de `Consent` constante gebruiken in toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat gebruikers het dialoog venster toestemming zien telkens wanneer ze de toepassing gebruiken.
-- `ForceLogin` kan de service de gebruiker vragen om referenties, zelfs als de prompt niet nodig is. 
+    U de `Consent` constante gebruiken in beveiligingsgerichte toepassingen waarbij gebruikers het dialoogvenster toestemming moeten zien telkens wanneer ze de toepassing gebruiken.
+- `ForceLogin`stelt de service in staat om de gebruiker om referenties te vragen, zelfs als de prompt niet nodig is. 
 
-    Deze optie kan nuttig zijn als het ophalen van het token mislukt en u de gebruiker opnieuw wilt aanmelden. In dit geval stuurt MSAL `prompt=login` naar de ID-provider. U kunt deze optie gebruiken in toepassingen met een eigen beveiliging waarbij de gebruiker zich bij het beheer van de organisatie moet aanmelden elke keer dat ze toegang hebben tot specifieke delen van de toepassing.
-- `Never` is alleen voor .NET 4,5 en Windows Runtime (WinRT). Met deze constante wordt de gebruiker niet gevraagd, maar wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie [Using Web browsers with MSAL.net](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)(Engelstalig) voor meer informatie.
+    Deze optie kan handig zijn als de tokenacquisitie mislukt en u de gebruiker opnieuw wilt laten inloggen. In dit geval stuurt `prompt=login` MSAL naar de identiteitsprovider. U deze optie gebruiken in beveiligingsgerichte toepassingen waarbij de organisatiegovernance vereist dat de gebruiker zich aanmeldt telkens wanneer hij toegang heeft tot specifieke delen van de toepassing.
+- `Never`is voor alleen .NET 4.5 en Windows Runtime (WinRT). Deze constante zal de gebruiker niet vragen, maar het zal proberen om de cookie te gebruiken die is opgeslagen in de verborgen ingesloten webweergave. Zie [Webbrowsers gebruiken met MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)voor meer informatie.
 
-    Als deze optie mislukt, wordt door `AcquireTokenInteractive` een uitzonde ring gegenereerd zodat u wordt gewaarschuwd dat er een UI-interactie nodig is. Vervolgens moet u een andere `Prompt`-para meter gebruiken.
-- `NoPrompt` stuurt geen prompt naar de ID-provider. 
+    Als deze optie `AcquireTokenInteractive` mislukt, wordt er met een uitzondering gesmeerd om u te laten weten dat er een ui-interactie nodig is. Dan moet je `Prompt` een andere parameter gebruiken.
+- `NoPrompt`stuurt geen prompt naar de identiteitsprovider. 
 
-    Deze optie is alleen nuttig voor beleid voor het bewerken van profielen in Azure Active Directory B2C. Zie [B2C-specifiek](https://aka.ms/msal-net-b2c-specificities)voor meer informatie.
+    Deze optie is alleen handig voor bewerkprofielbeleid in Azure Active Directory B2C. Zie [B2C-bijzonderheden](https://aka.ms/msal-net-b2c-specificities)voor meer informatie.
 
-##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
+##### <a name="withextrascopetoconsent"></a>MetExtraScopeToConsent
 
-Gebruik de `WithExtraScopeToConsent` modificator in een geavanceerd scenario waar u de gebruiker vooraf toestemming wilt geven voor verschillende resources. U kunt deze optie gebruiken als u geen incrementele toestemming wilt gebruiken, die normaal gesp roken wordt gebruikt met MSAL.NET of micro soft Identity platform 2,0. Zie voor meer informatie [de gebruiker toestemming geven vóór verschillende bronnen](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Gebruik `WithExtraScopeToConsent` de modifier in een geavanceerd scenario waarbij u wilt dat de gebruiker vooraf toestemming geeft voor verschillende bronnen. U deze modifier gebruiken wanneer u geen incrementele toestemming wilt gebruiken, die normaal gesproken wordt gebruikt met MSAL.NET of Microsoft-identiteitsplatform 2.0. Zie [Toestemming van de gebruiker vooraf voor verschillende bronnen voor](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)meer informatie .
 
-Hier volgt een code voorbeeld: 
+Hier is een codevoorbeeld: 
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -256,20 +256,20 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-##### <a name="other-optional-parameters"></a>Andere optionele para meters
+##### <a name="other-optional-parameters"></a>Andere optionele parameters
 
-Zie de [referentie documentatie voor AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)voor meer informatie over de andere optionele para meters voor `AcquireTokenInteractive`.
+Zie de `AcquireTokenInteractive` [referentiedocumentatie voor AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)voor meer informatie over de andere optionele parameters voor .
 
-### <a name="acquire-tokens-via-the-protocol"></a>Tokens verkrijgen via het Protocol
+### <a name="acquire-tokens-via-the-protocol"></a>Tokens verkrijgen via het protocol
 
-Het is niet raadzaam om het protocol direct te gebruiken voor het ophalen van tokens. Als u dat wel doet, worden in de app geen scenario's ondersteund die betrekking hebben op eenmalige aanmelding (SSO), Apparaatbeheer en voorwaardelijke toegang.
+We raden niet aan om het protocol direct te gebruiken om tokens te krijgen. Als u dit wel doet, ondersteunt de app geen scenario's waarbij eenmalige aanmelding (SSO), apparaatbeheer en voorwaardelijke toegang zijn.
 
-Wanneer u het protocol gebruikt om tokens voor mobiele apps op te halen, moet u twee aanvragen doen: 
+Wanneer u het protocol gebruikt om tokens voor mobiele apps te ontvangen, voert u twee verzoeken in: 
 
-* Een autorisatie code ophalen.
-* De code voor een token uitwisselen.
+* Zorg voor een autorisatiecode.
+* Ruil de code in voor een token.
 
-#### <a name="get-an-authorization-code"></a>Een autorisatie code ophalen
+#### <a name="get-an-authorization-code"></a>Een autorisatiecode aanvragen
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

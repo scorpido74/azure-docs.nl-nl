@@ -1,6 +1,6 @@
 ---
-title: Verklarende woorden lijst-preview-versie van IoT Plug en Play | Microsoft Docs
-description: 'Concepten: een woorden lijst met algemene termen met betrekking tot IoT Plug en Play preview.'
+title: Woordenlijst van termen - IoT Plug and Play Preview | Microsoft Documenten
+description: Concepten - een woordenlijst van veelvoorkomende termen met betrekking tot IoT Plug and Play Preview.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/23/2019
@@ -10,195 +10,195 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025636"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
+# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Woordenlijst met termen voor IoT Plug and Play Preview
 
-Definities van algemene termen die worden gebruikt in de IoT Plug en Play-artikelen.
+Definities van algemene termen zoals gebruikt in de IoT Plug and Play artikelen.
 
-## <a name="azure-certified-for-iot-portal"></a>Azure Certified voor IoT-Portal
+## <a name="azure-certified-for-iot-portal"></a>Azure-gecertificeerd voor IoT-portal
 
-U kunt de [Azure Certified voor IOT-Portal](https://aka.ms/ACFI) website gebruiken voor het volgende:
+U de azure [certified voor IoT-portalwebsite](https://aka.ms/ACFI) gebruiken om:
 
-- Voltooi het [certificerings proces](#device-certification) voor uw [IOT Plug en Play-apparaat](#iot-plug-and-play-device).
-- [Hulp modellen voor apparaten](#device-capability-model)zoeken.
-- Een mogelijkheidsprofiel naar de [open bare model opslagplaats](#public-model-repository)publiceren.
+- Voltooi het [certificeringsproces](#device-certification) voor uw [IoT Plug and Play-apparaat.](#iot-plug-and-play-device)
+- Modelvoor [apparaatcapaciteit zoeken](#device-capability-model).
+- Publiceer een apparaatcapaciteitsmodel naar de [openbare modelopslagplaats](#public-model-repository).
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-De Azure CLI is een platform, opdracht regel programma voor het beheer van Azure-resources. De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van [IoT Plug en Play-apparaten](#iot-plug-and-play-device). U kunt de extensie gebruiken voor het volgende:
+De Azure CLI is een cross-platform, command-line tool voor het beheer van Azure resources. De Azure IoT-extensie voor de Azure CLI is een opdrachtregelhulpmiddel voor het communiceren met en testen van [IoT Plug and Play-apparaten.](#iot-plug-and-play-device) U de extensie gebruiken om:
 
-- Verbinding maken met een IoT Plug en Play-apparaat.
-- De [telemetrie](#telemetry) weer geven die het apparaat verzendt.
-- Werken met apparaateigenschappen [.](#properties)
-- Roep de [opdrachten](#commands)van het apparaat aan.
-- [Model opslagplaatsen](#model-repository), [interfaces](#interface)en [Capability-modellen](#device-capability-model)beheren.
+- Maak verbinding met een IoT Plug and Play-apparaat.
+- Bekijk de [telemetrie die](#telemetry) het apparaat verzendt.
+- Werken met [apparaateigenschappen](#properties).
+- Opdrachten voor [oproepapparaten](#commands).
+- [Modelrepositories,](#model-repository) [interfaces](#interface)en [apparaatcapaciteitsmodellen](#device-capability-model)beheren .
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 
-Azure IoT Central is een volledig beheerde software-as-a-service-oplossing waarmee u uw [IoT Plug en Play-apparaten](#iot-plug-and-play-device)eenvoudig kunt verbinden, bewaken en beheren. U kunt [apparaatfuncties](#device-capability-model) gebruiken om automatisch een IOT Central toepassing te configureren om uw apparaten te bewaken en te beheren.
+Azure IoT Central is een volledig beheerde software-as-a-service-oplossing die het eenvoudig maakt om uw [IoT Plug and Play-apparaten](#iot-plug-and-play-device)aan te sluiten, te controleren en te beheren. U [apparaatcapaciteitsmodellen](#device-capability-model) gebruiken om automatisch een IoT Central-toepassing te configureren om uw apparaten te controleren en te beheren.
 
-## <a name="azure-iot-certification-service"></a>Azure IoT-certificerings service
+## <a name="azure-iot-certification-service"></a>Azure IoT-certificeringsservice
 
-De Azure IoT-certificerings service voert een reeks certificerings tests uit wanneer u een [IoT Plug en Play-apparaat](#iot-plug-and-play-device) verzendt voor certificering via de [Azure Certified voor IOT-Portal](#azure-certified-for-iot-portal). Voordat u een apparaat kunt toevoegen aan de [certificerings catalogus voor IOT-apparaten](#certified-for-iot-device-catalog), moet het apparaat worden gecertificeerd.
+De Azure IoT-certificeringsservice voert een reeks certificeringstests uit wanneer u een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) indient voor certificering via de [Azure Certified for IoT-portal.](#azure-certified-for-iot-portal) Voordat u een apparaat toevoegen aan de [catalogus van Certified for IoT-apparaten,](#certified-for-iot-device-catalog)moet het apparaat zijn gecertificeerd.
 
-## <a name="azure-iot-tools-extension"></a>Uitbrei ding Azure IoT-Hulpprogram Ma's
+## <a name="azure-iot-tools-extension"></a>Azure IoT-hulpprogramma's-extensie
 
-Azure IoT-Hulpprogram Ma's is een verzameling van uitbrei dingen in [Visual Studio code](#visual-studio-code) die u helpen bij het werken met IOT hub en IOT-apparaten te ontwikkelen. Voor IoT Plug en Play Device Development kunt u het volgende doen:
+Azure IoT Tools is een verzameling extensies in [Visual Studio-code](#visual-studio-code) waarmee u communiceren met IoT Hub en IoT-apparaten ontwikkelen. Voor de ontwikkeling van IoT Plug and Play-apparaten helpt het u om:
 
-- [Hulp modellen](#device-capability-model) en [interfaces](#interface)voor het ontwikkelen van apparaten.
-- Publiceren naar [model opslagplaatsen](#model-repository).
-- Genereer een skelet code om de apparaat-app te implementeren.
+- Ontwerp [apparaat mogelijkheden modellen](#device-capability-model) en [interfaces](#interface).
+- Publiceren naar [modelrepositories](#model-repository).
+- Skeletcode genereren om de apparaattoepassing te implementeren.
 
-## <a name="azure-iot-explorer-tool"></a>Hulp programma Azure IoT Explorer
+## <a name="azure-iot-explorer-tool"></a>Azure IoT explorer, gereedschap
 
-Azure IoT Explorer is een grafisch hulp programma dat u kunt gebruiken om te communiceren met uw [IoT Plug en Play-apparaten](#iot-plug-and-play-device)en deze te testen. Nadat u het hulp programma hebt geïnstalleerd op uw lokale computer, kunt u het gebruiken voor het volgende:
+De Azure IoT explorer is een grafisch hulpmiddel waarmee u communiceren en uw [IoT Plug and Play-apparaten](#iot-plug-and-play-device)testen. Nadat u het gereedschap op uw lokale machine hebt geïnstalleerd, u het gebruiken om:
 
-- Bekijk de apparaten die zijn verbonden met uw [IOT-hub](#azure-iot-hub).
-- Verbinding maken met een IoT Plug en Play-apparaat.
-- De [telemetrie](#telemetry) weer geven die het apparaat verzendt.
-- Werken met apparaateigenschappen [.](#properties)
-- Roep de [opdrachten](#commands)van het apparaat aan.
+- Bekijk de apparaten die zijn aangesloten op uw [IoT-hub.](#azure-iot-hub)
+- Maak verbinding met een IoT Plug and Play-apparaat.
+- Bekijk de [telemetrie die](#telemetry) het apparaat verzendt.
+- Werken met [apparaateigenschappen](#properties).
+- Opdrachten voor [oproepapparaten](#commands).
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-IoT Hub is een beheerde service die wordt gehost in de cloud en die fungeert als een centrale berichtenhub voor bidirectionele communicatie tussen uw IoT-toepassing en de apparaten die hiermee worden beheerd. [Iot Plug en Play-apparaten](#iot-plug-and-play-device) kunnen verbinding maken met een IOT-hub. Een IoT-oplossing maakt gebruik van een IoT-hub om het volgende in te scha kelen:
+IoT Hub is een beheerde service die wordt gehost in de cloud en die fungeert als een centrale berichtenhub voor bidirectionele communicatie tussen uw IoT-toepassing en de apparaten die hiermee worden beheerd. [IoT Plug and Play-apparaten](#iot-plug-and-play-device) kunnen verbinding maken met een IoT-hub. Een IoT-oplossing maakt gebruik van een IoT-hub om:
 
-- Apparaten voor het verzenden van telemetrie naar een Cloud oplossing.
-- Een Cloud oplossing voor het beheren van verbonden apparaten.
+- Apparaten om telemetrie naar een cloudoplossing te verzenden.
+- Een cloudgebaseerde oplossing voor het beheren van verbonden apparaten.
 
-## <a name="azure-iot-device-sdk"></a>Azure IoT Device SDK
+## <a name="azure-iot-device-sdk"></a>Azure IoT-apparaat SDK
 
-Er zijn apparaat-Sdk's voor meerdere talen die u kunt gebruiken voor het bouwen van IoT Plug en Play Device-client toepassingen. Een van de vereisten voor het [certificeren van apparaten](#device-certification) is dat de client code van het apparaat gebruikmaakt van een van de Azure IOT-apparaat-sdk's.
+Er zijn apparaat-SDK's voor meerdere talen die u gebruiken om Clienttoepassingen voor IoT-stekker en play-apparaten te bouwen. Een van de vereisten voor [apparaatcertificering](#device-certification) is dat de clientcode van het apparaat een van de Azure IoT-apparaat-SDK's gebruikt.
 
-## <a name="certified-for-iot-device-catalog"></a>Gecertificeerd voor IoT-Apparaatbeheer
+## <a name="certified-for-iot-device-catalog"></a>Gecertificeerd voor De apparaatcatalogus van IoT
 
-Het [Certified for IOT-apparaat Catalog](https://catalog.azureiotsolutions.com/) geeft [IOT Plug en Play-apparaten](#iot-plug-and-play-device) weer die de certificatie tests van het [apparaat](#device-certification) hebben door lopen. De [mogelijkheden](#device-capability-model) van het apparaat voor de IOT Plug en Play-apparaten in de catalogus en worden gepubliceerd in de open bare model opslagplaats.
+De [catalogus voor gecertificeerd voor IoT-apparaten](https://catalog.azureiotsolutions.com/) bevat [IoT Plug and Play-apparaten](#iot-plug-and-play-device) die de [apparaatcertificeringstests](#device-certification) hebben doorstaan. De [apparaatmogelijkheidmodellen](#device-capability-model) voor de IoT Plug and Play-apparaten in de catalogus en gepubliceerd in de openbare modelopslagplaats.
 
 ## <a name="commands"></a>Opdrachten
 
-Opdrachten die in een [Interface](#interface) zijn gedefinieerd, vertegenwoordigen methoden die kunnen worden uitgevoerd op het [digitale dubbele](#digital-twin). Bijvoorbeeld een opdracht om een apparaat opnieuw op te starten.
+Opdrachten die zijn gedefinieerd in een [interface](#interface) vertegenwoordigen methoden die kunnen worden uitgevoerd op de [digitale tweeling.](#digital-twin) Bijvoorbeeld een opdracht om een apparaat opnieuw op te starten.
 
 ## <a name="common-interface"></a>Algemene interface
 
-Alle [IoT Plug en Play-apparaten](#iot-plug-and-play-device) worden verwacht een aantal algemene [interfaces](#interface)te implementeren. De apparaatgegevens interface definieert bijvoorbeeld informatie over de hardware en het besturings systeem van het apparaat. Voor de [certificering van apparaten](#device-certification) moet uw apparaat verschillende algemene interfaces implementeren. U kunt algemene interface definities ophalen uit de open bare model opslagplaats.
+Van [alle IoT Plug and Play-apparaten](#iot-plug-and-play-device) wordt verwacht dat ze een aantal algemene [interfaces](#interface)implementeren. De informatie-interface van het apparaat definieert bijvoorbeeld hardware- en besturingssysteeminformatie over het apparaat. [Apparaatcertificering](#device-certification) vereist dat uw apparaat verschillende algemene interfaces implementeert. U algemene interfacedefinities ophalen uit de openbare modelopslagplaats.
 
-## <a name="company-model-repository"></a>Bedrijfs model opslagplaats
+## <a name="company-model-repository"></a>Repository van bedrijfsmodel
 
-Een organisatie kan gebruikmaken van een bedrijfs [model opslagplaats](#model-repository) als een privé-archief voor de [hulp modellen](#device-capability-model) en [interfaces](#interface)voor apparaten.
+Een organisatie kan een [bedrijfsmodelrepository](#model-repository) gebruiken als een privéwinkel voor [apparaatcapaciteitsmodellen](#device-capability-model) en [-interfaces.](#interface)
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
-Een connection string de gegevens die nodig zijn om verbinding te maken met een eind punt, worden ingekapseld. Een connection string bevat normaal gesp roken het adres van het eind punt en de beveiligings gegevens, maar connection string indelingen variëren in verschillende services. Er zijn twee soorten connection string gekoppeld aan de IoT Hub-service:
+Een verbindingstekenreeks bevat de informatie die nodig is om verbinding te maken met een eindpunt. Een verbindingstekenreeks bevat doorgaans het adres van het eindpunt en de beveiligingsgegevens, maar verbindingstekenreeksindelingen verschillen per services. Er zijn twee typen verbindingstekenreeksen die zijn gekoppeld aan de IoT Hub-service:
 
-- Met verbindings reeksen voor apparaten kunnen [iot Plug en Play-apparaten](#iot-plug-and-play-device) verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub. Client code op een apparaat gebruikt de connection string om een beveiligde verbinding met een IoT-hub tot stand te brengen.
-- IoT Hub verbindings reeksen kunnen back-end-oplossingen en hulpprogram ma's gebruiken om veilig verbinding te maken met de service gerichte eind punten op een IoT-hub. Deze oplossingen en hulpprogram ma's beheren de IoT-hub en de apparaten die ermee zijn verbonden.
-- De verbindings reeksen voor bedrijfs model opslagplaatsen bieden back-end-oplossingen en hulpprogram ma's om veilig verbinding te maken met een [bedrijfs model opslagplaats](#company-model-repository). Deze oplossingen en hulpprogram ma's gebruiken of beheren de hulp modellen en [interfaces](#interface) van het [apparaat](#device-capability-model) in de opslag plaats.
+- Met apparaatverbindingstekenreeksen kunnen [IoT-plug- en play-apparaten](#iot-plug-and-play-device) verbinding maken met de apparaatgerichte eindpunten op een IoT-hub. Clientcode op een apparaat gebruikt de verbindingstekenreeks om een beveiligde verbinding met een IoT-hub tot stand te brengen.
+- IoT Hub-verbindingstekenreeksen maken back-endoplossingen en -hulpprogramma's mogelijk om veilig verbinding te maken met de servicegerichte eindpunten op een IoT-hub. Deze oplossingen en tools beheren de IoT-hub en de apparaten die erop zijn aangesloten.
+- De repository-verbindingstekenreeksen van bedrijfsmodellen maken back-endoplossingen en hulpprogramma's mogelijk om veilig verbinding te maken met een [bedrijfsmodelrepository.](#company-model-repository) Deze oplossingen en hulpprogramma's verbruiken of beheren de [apparaatcapaciteitsmodellen](#device-capability-model) en [-interfaces](#interface) in de repository.
 
-## <a name="device-capability-model"></a>Mogelijkheidsprofiel
+## <a name="device-capability-model"></a>Apparaatcapaciteitsmodel
 
-Een mogelijkheidsprofiel beschrijft een IOT- [Plug en Play apparaat](#iot-plug-and-play-device) en definieert de set [interfaces](#interface) die door het apparaat worden geïmplementeerd. Een mogelijkheidsprofiel komt doorgaans overeen met een fysiek apparaat, product of SKU. U gebruikt de [Digital-dubbele definitie taal](#digital-twin-definition-language) om een mogelijkheidsprofiel te definiëren.
+Een apparaatmogelijkheidsmodel beschrijft een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) en definieert de set [interfaces](#interface) die door het apparaat worden geïmplementeerd. Een apparaatcapaciteitsmodel komt meestal overeen met een fysiek apparaat, product of SKU. U gebruikt de [Digital Twin Definition Language](#digital-twin-definition-language) om een apparaatcapaciteitsmodel te definiëren.
 
-## <a name="device-certification"></a>Apparaat certificering
+## <a name="device-certification"></a>Apparaatcertificering
 
-Apparaat-certificering is het proces van het certificeren van een [IoT Plug en Play-apparaat](#iot-plug-and-play-device) , zodat het kan worden toegevoegd aan de certificerings instantie [voor IOT-apparaten](#certified-for-iot-device-catalog) en het [functionaliteits model](#device-capability-model) van het apparaat en [interfaces](#interface) die zijn toegevoegd aan de [open bare model opslagplaats](#public-model-repository).
+Apparaatcertificering is het proces van het certificeren van een [IoT Plug and Play-apparaat,](#iot-plug-and-play-device) zodat het kan worden toegevoegd aan de [catalogus van certified for IoT-apparaten](#certified-for-iot-device-catalog) en het [apparaatcapaciteitsmodel](#device-capability-model) en [de interfaces](#interface) die zijn toegevoegd aan de [openbare modelopslagplaats.](#public-model-repository)
 
 ## <a name="device-developer"></a>Ontwikkelaar apparaat
 
-Een ontwikkelaar van een apparaat maakt gebruik van een [mogelijkheidsprofiel](#device-capability-model), [interfaces](#interface)en een [Azure IOT Device SDK](#azure-iot-device-sdk) om code te implementeren om uit te voeren op een [IOT Plug en Play-apparaat](#iot-plug-and-play-device).
+Een apparaatontwikkelaar gebruikt een [apparaatcapaciteitsmodel,](#device-capability-model) [interfaces](#interface)en een [Azure IoT-apparaatSDK](#azure-iot-device-sdk) om code te implementeren die wordt uitgevoerd op een [IoT Plug and Play-apparaat.](#iot-plug-and-play-device)
 
-## <a name="device-modeling"></a>Apparaats modellen
+## <a name="device-modeling"></a>Apparaatmodellering
 
-[Ontwikkel aars](#device-developer) van een apparaat gebruiken de [Digital-dubbele definitie taal](#digital-twin-definition-language) om de mogelijkheden van een [IOT Plug en Play-apparaat](#iot-plug-and-play-device)te model leren. Het model kan worden gedeeld met behulp van een model opslagplaats. Een ontwikkelaar van een apparaat kan een skelet apparaatcode uit het model genereren. Een [oplossings ontwikkelaar](#solution-developer) kan een IOT-oplossing van het model configureren.
+Een [apparaatontwikkelaar](#device-developer) gebruikt de [Digital Twin Definition Language](#digital-twin-definition-language) om de mogelijkheden van een [IoT Plug and Play-apparaat](#iot-plug-and-play-device)te modelleren. Het model kan worden gedeeld met behulp van een modelrepository. Een apparaatontwikkelaar kan skeletapparaatcode van het model genereren. Een [ontwikkelaar van een oplossing](#solution-developer) kan een IoT-oplossing configureren vanuit het model.
 
-## <a name="device-provisioning-service"></a>Device Provisioning Service
+## <a name="device-provisioning-service"></a>Service voor inrichting van apparaten
 
-[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/core/concepts-get-connected.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
+[Azure IoT Central](#azure-iot-central) gebruikt de Service Voor het inrichten van apparaten om alle apparaatregistratie en -verbinding te beheren. Zie [Apparaatconnectiviteit in Azure IoT Central](../iot-central/core/concepts-get-connected.md)voor meer informatie. U de Service Apparaatinrichting ook gebruiken om apparaatregistratie en -verbinding met uw IoT Hub-gebaseerde IoT-oplossing te beheren. Zie [Apparaten inrichten met Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
 
 ## <a name="device-registration"></a>Apparaatregistratie
 
-Voordat een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) verbinding kan maken met een IOT-oplossing, moet het zijn geregistreerd bij de oplossing. [Azure IOT Central](#azure-iot-central) maakt gebruik van de [Device Provisioning Service](#device-provisioning-service) om apparaatregistratie te beheren. In een aangepaste IoT-oplossing kunt u apparaten registreren bij uw IoT-hub in de Azure Portal of via een programma.
+Voordat een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) verbinding kan maken met een IoT-oplossing, moet het worden geregistreerd bij de oplossing. [Azure IoT Central](#azure-iot-central) gebruikt de [Apparaatinrichtingsservice](#device-provisioning-service) om apparaatregistratie te beheren. In een aangepaste IoT-oplossing u apparaten registreren met uw IoT-hub in de Azure-portal of programmatisch.
 
 ## <a name="device-first"></a>Apparaat-eerst
 
-[Azure IOT Central](#azure-iot-central) ondersteunt een scenario voor het eerst registreren en verbinden van apparaten. In dit scenario kan een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) verbinding maken met een IOT Central toepassing zonder vooraf te worden geregistreerd. Registratie gebeurt automatisch wanneer een apparaat voor het eerst verbinding maakt met de toepassing.
+[Azure IoT Central](#azure-iot-central) ondersteunt een apparaat-eerste registratie- en verbindingsscenario. In dit scenario kan een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) verbinding maken met een IoT Central-toepassing zonder vooraf te zijn geregistreerd. Registratie gebeurt automatisch wanneer een apparaat voor het eerst verbinding maakt met de toepassing.
 
-## <a name="digital-twin"></a>Digitale dubbele
+## <a name="digital-twin"></a>Digitale tweeling
 
-Een digitale dubbele is een model van een [IOT-Plug en Play apparaat](#iot-plug-and-play-device). Een digitaal twee is gemodelleerd met behulp van de [Digital-taal voor dubbele definitie](#digital-twin-definition-language). U kunt de Sdk's van het [Azure IOT-apparaat](#azure-iot-device-sdk) gebruiken om te communiceren met Digital apparaatdubbels tijdens de uitvoering. U kunt bijvoorbeeld een eigenschaps waarde instellen in een digitaal, twee op een apparaat en de SDK communiceert deze wijziging naar uw IoT-oplossing in de Cloud.
+Een digitale tweeling is een model van een [IoT Plug and Play-apparaat.](#iot-plug-and-play-device) Een digitale tweeling wordt gemodelleerd met behulp van de [Digital Twin Definition Language](#digital-twin-definition-language). U de [Azure IoT-apparaat SDK's](#azure-iot-device-sdk) gebruiken om te communiceren met digitale tweelingen tijdens het uitvoeren van de looptijd. U bijvoorbeeld een eigenschapswaarde instellen in een digitale tweeling op een apparaat en de SDK communiceert deze wijziging naar uw IoT-oplossing in de cloud.
 
-## <a name="digital-twin-change-events"></a>Digitale dubbele wijzigings gebeurtenissen
+## <a name="digital-twin-change-events"></a>Digitale twin change events
 
-Wanneer een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) is verbonden met een [IOT-hub](#azure-iot-hub), kan de hub de route ring gebruiken om meldingen van digitale dubbele wijzigingen te verzenden. Wanneer bijvoorbeeld een [eigenschaps](#properties) waarde op een apparaat wordt gewijzigd, kan IOT hub een melding verzenden naar een eind punt, zoals een service bus wachtrij.
+Wanneer een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) is verbonden met een [IoT-hub,](#azure-iot-hub)kan de hub zijn routeringsmogelijkheden gebruiken om meldingen van digitale tweelingwijzigingen te verzenden. Wanneer een [eigenschapswaarde](#properties) bijvoorbeeld verandert op een apparaat, kan IoT Hub een melding verzenden naar een eindpunt, zoals een wachtrij voor servicebus.
 
-## <a name="digital-twin-definition-language"></a>Digital-dubbele definitie taal
+## <a name="digital-twin-definition-language"></a>Digitale Twin Definition Taal
 
-Een taal voor het beschrijven van modellen en interfaces voor [IoT Plug en Play-apparaten](#iot-plug-and-play-device). Gebruik de [Digital-dubbele definitie taal](https://aka.ms/DTDL) om een [digitale twee](#digital-twin) mogelijkheden te beschrijven en het IoT-platform en IOT-oplossingen in te scha kelen om de semantiek van de entiteit te benutten.
+Een taal voor het beschrijven van modellen en interfaces voor [IoT Plug and Play-apparaten.](#iot-plug-and-play-device) Gebruik de [Digital Twin Definition Language](https://aka.ms/DTDL) om de mogelijkheden van een digitale [tweeling](#digital-twin) te beschrijven en het IoT-platform en IoT-oplossingen in staat te stellen gebruik te maken van de semantiek van de entiteit.
 
-## <a name="digital-twin-route"></a>Digitale dubbele route
+## <a name="digital-twin-route"></a>Digitale tweelingroute
 
-Een route die is ingesteld in een [IOT-hub](#azure-iot-hub) voor het leveren van [digitale dubbele wijzigings gebeurtenissen](#digital-twin-change-events) aan en eind punt, zoals een service bus wachtrij.
+Een route die is ingesteld in een [IoT-hub](#azure-iot-hub) om [digitale twin change-gebeurtenissen](#digital-twin-change-events) naar en eindpunt te leveren, zoals een wachtrij voor servicebussen.
 
 ## <a name="interface"></a>Interface
 
-Een interface beschrijft gerelateerde mogelijkheden die worden geïmplementeerd door een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) of [digitale dubbele](#digital-twin). U kunt interfaces opnieuw gebruiken in verschillende [apparaatfuncties](#device-capability-model).
+Een interface beschrijft gerelateerde mogelijkheden die worden geïmplementeerd door een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) of [digitale tweeling.](#digital-twin) U interfaces opnieuw gebruiken voor verschillende [apparaatcapaciteitsmodellen.](#device-capability-model)
 
-## <a name="iot-hub-query-language"></a>Query taal IoT Hub
+## <a name="iot-hub-query-language"></a>Taal van IoT Hub-query
 
-De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbeeld de taal gebruiken om te zoeken naar apparaten die zijn [geregistreerd](#device-registration) bij uw IOT-hub of om het [digitale dubbele routerings](#digital-twin-route) gedrag te verfijnen.
+De IoT Hub-querytaal wordt voor meerdere doeleinden gebruikt. U de taal bijvoorbeeld gebruiken om te zoeken naar [apparaten die zijn geregistreerd](#device-registration) bij uw IoT-hub of om het digitale probleem van de [routering van twee personen](#digital-twin-route) te verfijnen.
 
-## <a name="iot-plug-and-play-device"></a>IoT Plug en Play-apparaat
+## <a name="iot-plug-and-play-device"></a>IoT-stekker en afspelen-apparaat
 
-Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [mogelijkheidsprofiel](#device-capability-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen. Het [Azure Certified for IOT-apparaat Catalog](#certified-for-iot-device-catalog) bevat een lijst met beschik bare IoT-Plug en Play apparaten. Elk IoT Plug en Play-apparaat in de catalogus is gevalideerd en heeft een [functionaliteits model voor apparaten](#device-capability-model).
+Een IoT Plug and Play-apparaat is meestal een kleinschalig, zelfstandig computerapparaat dat gegevens verzamelt of andere apparaten bestuurt, en dat software of firmware uitvoert die een [apparaatcapaciteitsmodel](#device-capability-model)implementeert.  Een IoT Plug and Play-apparaat kan bijvoorbeeld een milieubewakingsapparaat zijn of een controller voor een irrigatiesysteem voor slimme landbouw. U een door de cloud gehoste IoT-oplossing schrijven om gegevens van IoT Plug and Play-apparaten te bevelen, te bedienen en te ontvangen. De [Azure Certified for IoT-apparaatcatalogus](#certified-for-iot-device-catalog) bevat beschikbare IoT-plug- en play-apparaten. Elk IoT Plug and Play-apparaat in de catalogus is gevalideerd en heeft een [apparaatcapaciteitsmodel.](#device-capability-model)
 
-## <a name="microsoft-partner-center"></a>Micro soft partner centrum
+## <a name="microsoft-partner-center"></a>Microsoft Partnercentrum
 
-[Micro soft Partner Center](https://docs.microsoft.com/partner-center/) is de plek waar uw organisatie zijn end-to-end-relatie beheert met micro soft. U hebt een micro soft Partner Center-account nodig voordat u uw [IoT Plug en Play-apparaat](#iot-plug-and-play-device) kunt certificeren in de [Azure Certified voor IOT-Portal](#azure-certified-for-iot-portal).
+[Microsoft Partner Center](https://docs.microsoft.com/partner-center/) is de plaats waar uw organisatie de end-to-end relatie met Microsoft beheert. U hebt een Microsoft Partner Center-account nodig voordat u uw [IoT Plug and Play-apparaat](#iot-plug-and-play-device) certificeren in de [Azure Certified for IoT-portal.](#azure-certified-for-iot-portal)
 
 ## <a name="model-discovery"></a>Modeldetectie
 
-Wanneer een [iot Plug en Play-apparaat](#iot-plug-and-play-device) verbinding maakt met een IOT-oplossing, kan de oplossing de mogelijkheden van het apparaat detecteren door het [functionaliteits model](#device-capability-model)van het apparaat te zoeken. Een apparaat kan zijn functionaliteits model naar de oplossing verzenden of de oplossing kan een mogelijkheidsprofiel in een [model opslagplaats](#model-repository)vinden.
+Wanneer een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) verbinding maakt met een IoT-oplossing, kan de oplossing de mogelijkheden van het apparaat ontdekken door het [apparaatcapaciteitsmodel te](#device-capability-model)vinden. Een apparaat kan het capaciteitsmodel naar de oplossing sturen of de oplossing kan een apparaatcapaciteitsmodel vinden in een [modelopslagplaats.](#model-repository)
 
-## <a name="model-repository"></a>Model opslagplaats
+## <a name="model-repository"></a>Modelopslagplaats
 
-Een model opslagplaats slaat [modellen](#device-capability-model) en [interfaces](#interface)voor het apparaat op. Er is één [opslag plaats voor open bare modellen](#public-model-repository). Organisaties kunnen hun eigen opslag plaatsen voor organisatie modellen maken.
+Een model repository slaat [apparaatmogelijkheden modellen](#device-capability-model) en [interfaces](#interface). Er is één [openbare modelopslagplaats.](#public-model-repository) Organisaties kunnen hun eigen organisatiemodelrepositories maken.
 
-## <a name="model-repository-rest-api"></a>REST API van model opslagplaats
+## <a name="model-repository-rest-api"></a>REST-API voor modelopslagplaats
 
-Een API voor het beheren en communiceren met model opslagplaatsen. U kunt bijvoorbeeld de API gebruiken om [hulp modellen voor apparaten](#device-capability-model) toe te voegen en te zoeken naar bekwaamheids modellen.
+Een API voor het beheren en interactie met modelrepositories. U de API bijvoorbeeld gebruiken om [apparaatcapaciteitsmodellen](#device-capability-model) toe te voegen en te zoeken naar capaciteitsmodellen.
 
 ## <a name="properties"></a>Eigenschappen
 
-Eigenschappen zijn gegevens velden die zijn gedefinieerd in een [Interface](#interface) die een status van een digitale dubbele waarde vertegenwoordigt. U kunt eigenschappen declareren als alleen-lezen of beschrijfbaar. Alleen-lezen eigenschappen, zoals serie nummer, worden ingesteld door code die wordt uitgevoerd op de [IOT-Plug en Play apparaat](#iot-plug-and-play-device) zelf.  Beschrijf bare eigenschappen, zoals een alarm drempel, worden doorgaans ingesteld vanuit de in de cloud gebaseerde IoT-oplossing.
+Eigenschappen zijn gegevensvelden die zijn gedefinieerd in een [interface](#interface) die een bepaalde status van een digitale tweeling vertegenwoordigt. U eigenschappen declareren als alleen-lezen of beschrijfbaar. Alleen-lezen eigenschappen, zoals serienummer, worden ingesteld op code die wordt uitgevoerd op het [IoT Plug and Play-apparaat](#iot-plug-and-play-device) zelf.  Beschrijfbare eigenschappen, zoals een alarmdrempel, worden meestal ingesteld vanuit de cloudgebaseerde IoT-oplossing.
 
-## <a name="public-model-repository"></a>Open bare model opslagplaats
+## <a name="public-model-repository"></a>Opslagplaats voor openbaar model
 
-Er is één open bare model opslagplaats waarmee [modellen](#device-capability-model) en [interfaces](#interface) voor apparaten worden opgeslagen voor [gecertificeerde apparaten](#device-certification). De open bare model opslagplaats bevat ook [algemene interface](#common-interface) definities.
+Er is één openbare modelopslagplaats die [apparaatcapaciteitsmodellen](#device-capability-model) en [-interfaces](#interface) voor [gecertificeerde apparaten opslaat.](#device-certification) De openbare modelrepository slaat ook [gemeenschappelijke interfacedefinities](#common-interface) op.
 
-## <a name="registration-id"></a>Registratie-ID
+## <a name="registration-id"></a>Registratie-id
 
-Een registratie-ID is een unieke aanduiding van een apparaat in de [Device Provisioning Service](#device-provisioning-service). Deze ID is niet hetzelfde als de apparaat-ID die een unieke id is voor een apparaat in een [IOT-hub](#azure-iot-hub).
+Een registratie-id identificeert op unieke wijze een apparaat in de [Apparaatinrichtingsservice](#device-provisioning-service). Deze ID is niet hetzelfde als de apparaat-id die een unieke id is voor een apparaat in een [IoT-hub.](#azure-iot-hub)
 
 ## <a name="scope-id"></a>Bereik-ID
 
-Het bereik van de scope-ID is een unieke aanduiding van een [Device Provisioning Service](#device-provisioning-service) -exemplaar.
+In het scope-id-bereik wordt op unieke wijze een [apparaatinrichtingsservice-instantie](#device-provisioning-service) geïdentificeerd.
 
-## <a name="shared-access-signature"></a>Shared Access Signature
+## <a name="shared-access-signature"></a>Handtekening voor gedeelde toegang
 
-Shared Access Signatures zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Verificatie van de hand tekening van gedeelde toegang bestaat uit twee onderdelen: een beleid voor gedeelde toegang en een hand tekening voor gedeelde toegang (ook wel een token genoemd). Een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) gebruikt een Shared Access Signature om te verifiëren bij een [IOT-hub](#azure-iot-hub).
+Gedeelde toegangshandtekeningen zijn een verificatiemechanisme op basis van SHA-256 beveiligde hashes of URI's. Verificatie van handtekening voor gedeelde toegang bestaat uit twee onderdelen: een beleid voor gedeelde toegang en een handtekening voor gedeelde toegang (vaak een token genoemd). Een [IoT Plug and Play-apparaat](#iot-plug-and-play-device) gebruikt een handtekening voor gedeelde toegang om te verifiëren met een [IoT-hub.](#azure-iot-hub)
 
-## <a name="solution-developer"></a>Oplossings ontwikkelaar
+## <a name="solution-developer"></a>Oplossingsontwikkelaar
 
-Een oplossings ontwikkelaar maakt de back-end van de oplossing. Een oplossings ontwikkelaar werkt meestal met Azure-resources, zoals [IOT hub](#azure-iot-hub) en [model opslagplaatsen](#model-repository), of werkt met [IOT Central](#azure-iot-central).
+Een ontwikkelaar van oplossingen creëert de back-end van de oplossing. Een oplossingsontwikkelaar werkt doorgaans met Azure-bronnen zoals [IoT Hub](#azure-iot-hub) en [modelrepositories](#model-repository)of werkt met [IoT Central.](#azure-iot-central)
 
 ## <a name="telemetry"></a>Telemetrie
 
-Telemetrie-velden die in een [Interface](#interface) zijn gedefinieerd, vertegenwoordigen metingen. Deze metingen zijn doorgaans waarden zoals sensor aflezingen die door de [IoT Plug en Play-apparaat](#iot-plug-and-play-device) als een gegevens stroom worden verzonden.
+Telemetrievelden die in een [interface](#interface) zijn gedefinieerd, vertegenwoordigen metingen. Deze metingen zijn meestal waarden zoals sensormetingen die door het [IoT Plug and Play-apparaat](#iot-plug-and-play-device) worden verzonden als een stroom van gegevens.
 
-## <a name="visual-studio-code"></a>Visual Studio code
+## <a name="visual-studio-code"></a>Visual Studio-code
 
-Visual Studio code is een moderne code-editor die beschikbaar is voor meerdere platforms. Uitbrei dingen, zoals die in het [Azure IOT tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Pack, bieden u de mogelijkheid om de editor aan te passen ter ondersteuning van een breed scala aan ontwikkelings scenario's.
+Visual Studio-code is een moderne code-editor die beschikbaar is voor meerdere platforms. Met extensies, zoals die in het [Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Tools-pakket, u de editor aanpassen om een breed scala aan ontwikkelingsscenario's te ondersteunen.

@@ -1,6 +1,6 @@
 ---
-title: Migratie activiteit bewaken-Azure Database Migration Service
-description: Meer informatie over het gebruik van de Azure Database Migration Service voor het bewaken van migratie activiteiten.
+title: Migratieactiviteit bewaken - Azure Database Migration Service
+description: Meer informatie over het gebruik van de Azure Database Migration Service om migratieactiviteit te controleren.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,30 +12,30 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77648509"
 ---
-# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Migratie activiteiten bewaken met behulp van de Azure Database Migration Service
-In dit artikel leert u hoe u de voortgang van een migratie kunt controleren op database niveau en op tabel niveau.
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Migratieactiviteit bewaken met de Azure Database Migration Service
+In dit artikel leert u hoe u de voortgang van een migratie controleren op zowel databaseniveau als tabelniveau.
 
-## <a name="monitor-at-the-database-level"></a>Bewaken op database niveau
-Als u de activiteit op database niveau wilt bewaken, bekijkt u de Blade op database niveau:
+## <a name="monitor-at-the-database-level"></a>Controleren op databaseniveau
+Als u de activiteit op databaseniveau wilt controleren, bekijkt u het blad op databaseniveau:
 
-![Blade op database niveau](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
+![Blad op databaseniveau](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
-> Als u de database hyperlink selecteert, wordt de lijst met tabellen en de voortgang van de migratie weer gegeven.
+> Als u de databasehyperlink selecteert, ziet u de lijst met tabellen en de voortgang van de migratie.
 
-De volgende tabel bevat de velden op de Blade op database niveau en beschrijft de verschillende status waarden die zijn gekoppeld aan elk.
+In de volgende tabel worden de velden op het blad op databaseniveau weergegeven en worden de verschillende statuswaarden beschreven die aan elk blad zijn gekoppeld.
 
 <table id='overview' class='overview'>
   <thead>
     <tr>
       <th class="x-hidden-focus"><strong>Veldnaam</strong></th>
-      <th><strong>Veld substatus</strong></th>
+      <th><strong>Veldsubstatus</strong></th>
       <th><strong>Beschrijving</strong></th>
     </tr>
   </thead>
@@ -43,103 +43,103 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Activiteitsstatus</strong></td>
       <td>In uitvoering</td>
-      <td>De migratie activiteit wordt uitgevoerd.</td>
+      <td>Migratieactiviteit wordt uitgevoerd.</td>
     </tr>
     <tr>
       <td>Geslaagd</td>
-      <td>De migratie activiteit is zonder problemen voltooid.</td>
+      <td>Migratieactiviteit slaagde zonder problemen.</td>
     </tr>
     <tr>
-      <td>Mislukte</td>
-      <td>De migratie is mislukt. Selecteer de koppeling ' Zie Fout Details ' onder migratie Details voor het volledige fout bericht.</td>
+      <td>Fout</td>
+      <td>Migratie is mislukt. Selecteer de koppeling Foutgegevens weergeven onder migratiegegevens voor het volledige foutbericht.</td>
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Status</strong></td>
       <td>Initialiseren</td>
-      <td>DMS is het instellen van de migratie pijplijn.</td>
+      <td>DMS is bezig met het opzetten van de migratiepijplijn.</td>
     </tr>
     <tr>
       <td>In uitvoering</td>
-      <td>De DMS-pijp lijn wordt uitgevoerd en er wordt gemigreerd.</td>
+      <td>DMS-pijplijn wordt uitgevoerd en voert migratie uit.</td>
     </tr>
     <tr>
-      <td>Complete</td>
-      <td>De migratie is voltooid.</td>
+      <td>Voltooien</td>
+      <td>Migratie voltooid.</td>
     </tr>
     <tr>
       <td>Mislukt</td>
-      <td>De migratie is mislukt. Klik op migratie gegevens voor een overzicht van de migratie fouten.</td>
+      <td>Migratie is mislukt. Klik op migratiegegevens om migratiefouten te zien.</td>
     </tr>
     <tr>
-      <td rowspan="5" class="migration-details"><strong>Migratie Details</strong></td>
-      <td>De migratie pijplijn starten</td>
-      <td>DMS is het instellen van de migratie pijplijn.</td>
+      <td rowspan="5" class="migration-details"><strong>Details van de migratie</strong></td>
+      <td>De migratiepijplijn starten</td>
+      <td>DMS is bezig met het opzetten van de migratiepijplijn.</td>
     </tr>
     <tr>
-      <td>Volledige gegevens worden geladen</td>
-      <td>Het DMS voert de initiële belasting uit.</td>
+      <td>Volledige gegevensbelasting in uitvoering</td>
+      <td>DMS voert de initiële belasting uit.</td>
     </tr>
     <tr>
-      <td>Gereed voor Cutover</td>
-      <td>Wanneer de initiële belasting is voltooid, markeert DMS de Data Base als gereed voor cutover. De gebruiker moet controleren of de gegevens zijn gedetecteerd op doorlopende synchronisatie.</td>
+      <td>Klaar voor cutover</td>
+      <td>Nadat de eerste belasting is voltooid, markeert DMS de database als klaar voor cutover. De gebruiker moet controleren of de gegevens de continue synchronisatie hebben ingehaald.</td>
     </tr>
     <tr>
-      <td>Alle wijzigingen zijn toegepast</td>
-      <td>Initiële belasting en doorlopende synchronisatie zijn voltooid. Deze status vindt ook plaats nadat de data base is cutover.</td>
+      <td>Alle wijzigingen toegepast</td>
+      <td>De initiële belasting en continue synchronisatie zijn voltooid. Deze status treedt ook op nadat de database is gecutover met succes.</td>
     </tr>
     <tr>
-      <td>Fout details weer geven</td>
-      <td>Klik op de koppeling om de fout gegevens weer te geven.</td>
+      <td>Foutgegevens bekijken</td>
+      <td>Klik op de link om foutgegevens weer te geven.</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Hebben</strong></td>
+      <td rowspan="1" class="duration"><strong>Duur</strong></td>
       <td>N.v.t.</td>
-      <td>Totale tijd van de migratie activiteit die wordt geïnitialiseerd voor de migratie is voltooid of de migratie is mislukt.</td>
+      <td>Totale tijd van migratieactiviteit die wordt geïnitialiseerd tot migratie voltooid of migratie defect.</td>
     </tr>
      </tbody>
 </table>
 
-## <a name="monitor-at-table-level--quick-summary"></a>Bewaken op tabel niveau – snelle samen vatting
-Als u de activiteit op tabel niveau wilt bewaken, bekijkt u de Blade op tabel niveau. In het bovenste gedeelte van de Blade ziet u het gedetailleerde aantal rijen dat is gemigreerd in volledige belasting en incrementele updates. 
+## <a name="monitor-at-table-level--quick-summary"></a>Monitor op tabelniveau – Snel overzicht
+Als u de activiteit op tafelniveau wilt controleren, bekijkt u het blad op tafelniveau. Het bovenste gedeelte van het blad toont het gedetailleerde aantal rijen gemigreerd in volledige belasting en incrementele updates. 
 
-Het onderste gedeelte van de Blade bevat de tabellen en toont een snelle samen vatting van de voortgang van de migratie.
+Het onderste gedeelte van het blad bevat de tabellen en toont een snel overzicht van de voortgang van de migratie.
 
-![Blade op tabel niveau-snelle samen vatting](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
+![Mes op tafelniveau - snelle samenvatting](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
-In de volgende tabel worden de velden beschreven die worden weer gegeven in de details op tabel niveau.
+In de volgende tabel worden de velden beschreven die worden weergegeven in de details op tabelniveau.
 
 | Veldnaam        | Beschrijving       |
 | ------------- | ------------- |
-| **Volledige belasting voltooid**      | Het aantal tabellen heeft volledige belasting van de gegevens voltooid. |
-| **Volledige belasting in wachtrij**      | Aantal tabellen dat in de wachtrij staat voor volledige belasting.      |
+| **Volledige belasting voltooid**      | Aantal tabellen voltooid volledige gegevensbelasting. |
+| **Volledige lading in de wachtrij**      | Aantal tabellen dat in de wachtrij staat voor volledige belasting.      |
 | **Volledige belasting laden** | Aantal tabellen is mislukt.      |
-| **Incrementele updates**      | Aantal change data capture-updates (CDC) in rijen die op het doel zijn toegepast. |
-| **Incrementele invoeg bladen**      | Aantal CDC-invoeg bewerkingen in rijen die op het doel zijn toegepast.      |
-| **Incrementele verwijderingen** | Aantal verwijderde CDC in rijen die op het doel zijn toegepast.      |
-| **Wijzigingen in behandeling**      | Het aantal CDC in rijen dat nog steeds wacht om toe te passen op het doel. |
-| **Toegepaste wijzigingen**      | Totaal van CDC-updates,-invoegen en-verwijderen in rijen die op het doel zijn toegepast.      |
-| **Tabellen met de fout status** | Aantal tabellen met de status ' error ' tijdens de migratie. Sommige voor beelden die tabellen kunnen bevatten in de fout status zijn wanneer er dubbele waarden zijn geïdentificeerd in het doel of omdat gegevens niet compatibel zijn met laden in de doel tabel.      |
+| **Incrementele updates**      | Aantal cdc-updates (change data capture) in rijen die op doel worden toegepast. |
+| **Incrementele inzetstukken**      | Aantal CDC-inserts in rijen toegepast op doel.      |
+| **Incrementele verwijderingen** | Aantal CDC-verwijderingen in rijen die op doel zijn toegepast.      |
+| **Wijzigingen in behandeling**      | Aantal CDC in rijen die nog wachten om toegepast te worden op doel. |
+| **Toegepaste wijzigingen**      | Totaal van CDC-updates, inserts en verwijderingen in rijen die op doel zijn toegepast.      |
+| **Tabellen in foutstatus** | Aantal tabellen dat tijdens de migratie in de status 'fout' staat. Enkele voorbeelden die tabellen in de foutstatus kunnen gaan, zijn wanneer er duplicaten in het doel zijn geïdentificeerd of gegevens niet compatibel zijn met laden in de doeltabel.      |
 
-## <a name="monitor-at-table-level--detailed-summary"></a>Bewaken op tabel niveau – gedetailleerde samen vatting
-Er zijn twee tabbladen waarin de voortgang van de migratie wordt weer gegeven in volledige belasting en incrementele gegevens synchronisatie.
+## <a name="monitor-at-table-level--detailed-summary"></a>Monitor op tabelniveau – Gedetailleerd overzicht
+Er zijn twee tabbladen die de voortgang van de migratie weergeven in Volledige belasting en Incrementele gegevenssynchronisatie.
     
-![Tabblad volledig laden](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
+![Tabblad Volledige belasting](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Het tabblad incrementele gegevens synchronisatie](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
+![Tabblad Incrementele gegevenssynchronisatie](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
-In de volgende tabel worden de velden beschreven die worden weer gegeven in voortgang van migratie op tabel niveau.
+In de volgende tabel worden de velden beschreven die worden weergegeven in de migratievoortgang op tabelniveau.
 
 | Veldnaam        | Beschrijving       |
 | ------------- | ------------- |
-| **Status-synchroniseren**      | Doorlopende synchronisatie wordt uitgevoerd. |
-| **Invoegen**      | Aantal CDC-invoeg bewerkingen in rijen die op het doel zijn toegepast.      |
-| **Bijwerken** | Aantal CDC-updates in rijen die op het doel zijn toegepast.      |
-| **Verwijderen**      | Aantal verwijderde CDC in rijen die op het doel zijn toegepast. |
-| **Totaal toegepast**      | Totaal van CDC-updates,-invoegen en-verwijderen in rijen die op het doel zijn toegepast. |
-| **Gegevens fouten** | Het aantal gegevens fouten in deze tabel is opgetreden. Enkele voor beelden van de fouten zijn *511: kan geen rij van grootte% d maken die groter is dan de toegestane maximale rijgrootte van% d, 8114: fout bij het converteren van het gegevens type% LS naar% ls.*  De klant moet een query uitvoeren uit dms_apply_exceptions tabel in het Azure-doel om de fout gegevens weer te geven.    |
+| **Status - Synchroniseren**      | Continue synchronisatie wordt uitgevoerd. |
+| **Invoegen**      | Aantal CDC-inserts in rijen toegepast op doel.      |
+| **Update** | Aantal CDC-updates in rijen toegepast op doel.      |
+| **Verwijderen**      | Aantal CDC-verwijderingen in rijen die op doel zijn toegepast. |
+| **Totaal toegepast**      | Totaal van CDC-updates, inserts en verwijderingen in rijen die op doel zijn toegepast. |
+| **Gegevensfouten** | Het aantal gegevensfouten is in deze tabel opgetreden. Enkele voorbeelden van de fouten zijn *511: Kan geen rij van grootte %d maken die groter is dan de toegestane maximale rijgrootte van %d, 8114: Fout die gegevenstype %ls omzet naar %ls.*  De klant moet vanuit dms_apply_exceptions tabel in Azure-doel vragen om de foutgegevens te bekijken.    |
 
 > [!NOTE]
-> De CDC-waarden van INSERT, update en DELETE en Total toegepast kunnen afnemen wanneer de data base cutover of de migratie opnieuw wordt gestart.
+> CDC-waarden van Invoegen, Bijwerken en Verwijderen en Totaal toegepast kunnen afnemen wanneer de database wordt gecutoverd of migratie opnieuw wordt gestart.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk de richt lijnen voor migratie in de micro soft- [Data Base-migratie handleiding](https://datamigration.microsoft.com/).
+- Bekijk de migratierichtlijnen in de [Migratiehandleiding voor Microsoft-database](https://datamigration.microsoft.com/).

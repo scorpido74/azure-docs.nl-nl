@@ -1,95 +1,95 @@
 ---
 title: Azure Monitor Application Insights NuGet-pakketten
-description: Azure Monitor Application Insights NuGet-pakket lijsten voor ASP.NET, ASP.NET Core, python
+description: Azure Monitor Application Insights NuGet-pakkettenlijsten voor ASP.NET, ASP.NET Core, Python
 ms.topic: reference
 ms.date: 10/16/2018
 ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669995"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-pakketten
 
-Hieronder ziet u de huidige lijst met stabiele release NuGet-pakketten voor Application Insights.
+Hieronder vindt u de huidige lijst met stabiele release NuGet-pakketten voor Application Insights.
 
-## <a name="common-packages-for-aspnet"></a>Algemene pakketten voor ASP.NET
+## <a name="common-packages-for-aspnet"></a>Gemeenschappelijke pakketten voor ASP.NET
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights | 2.12.0 | Biedt kern functionaliteit voor het verzenden van alle Application Insights Telemetry typen en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
-|Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Hiermee schakelt u de interceptie van methode aanroepen in | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights afhankelijkheids verzamelaar voor .NET-toepassingen. Dit is een afhankelijk pakket voor Application Insights platformspecifieke pakketten en biedt automatische verzameling van afhankelijkheids-telemetrie. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Met Application Insights prestatie meters Collector kunt u gegevens die zijn verzameld door prestatie meter items verzenden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.12.0 | Application Insights voor .NET-webtoepassingen | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet-pakket biedt automatische verzameling van Application Insights-telemetrie voor .NET-toepassingen. Dit pakket kan worden gebruikt als een afhankelijk pakket voor Application Insights platformspecifieke pakketten of als een zelfstandig pakket voor .NET-toepassingen die niet worden gedekt door platformspecifieke pakketten (zoals voor .NET-werk rollen). | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Voorziet in een telemetrie-kanaal om een Windows Server-SDK te Application Insights die telemetrie in offline scenario's zal behouden. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Biedt kernfunctionaliteit voor de overdracht van alle telemetrietypen van Application Insights en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+|Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Maakt onderschepping van methodeaanroepen mogelijk | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights Dependency Collector voor .NET-toepassingen. Dit is een afhankelijk pakket voor Application Insights platform-specifieke pakketten en biedt automatische verzameling van afhankelijkheid telemetrie. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Met Application Insights Performance Counters Collector u gegevens die door prestatiemeteritems zijn verzameld, naar Application Insights sturen. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.Web | 2.12.0 | Application Insights voor .NET-webtoepassingen | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet-pakket biedt automatische verzameling van telemetrie van toepassingsinzichten voor .NET-toepassingen. Dit pakket kan worden gebruikt als een afhankelijk pakket voor Application Insights-platformspecifieke pakketten of als een standalone pakket voor .NET-toepassingen die niet worden gedekt door platformspecifieke pakketten (zoals voor .NET-werknemersrollen). | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Biedt een telemetriekanaal naar Application Insights Windows Server SDK dat telemetrie in offline scenario's behoudt. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-aspnet-core"></a>Algemene pakketten voor ASP.NET Core
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights voor ASP.NET Core webtoepassingen. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
-| Microsoft.ApplicationInsights | 2.12.0 | Dit pakket biedt kern functionaliteit voor het verzenden van alle Application Insights Telemetry typen en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights afhankelijkheids verzamelaar voor .NET-toepassingen. Dit is een afhankelijk pakket voor Application Insights platformspecifieke pakketten en biedt automatische verzameling van afhankelijkheids-telemetrie. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Met Application Insights prestatie meters Collector kunt u gegevens die zijn verzameld door prestatie meter items verzenden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet-pakket biedt automatische verzameling van Application Insights-telemetrie voor .NET-toepassingen. Dit pakket kan worden gebruikt als een afhankelijk pakket voor Application Insights platformspecifieke pakketten of als een zelfstandig pakket voor .NET-toepassingen die niet worden gedekt door platformspecifieke pakketten (zoals voor .NET-werk rollen). | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Voorziet in een telemetrie-kanaal om een Windows Server-SDK te Application Insights die telemetrie in offline scenario's zal behouden. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights voor ASP.NET Core webapplicaties. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
+| Microsoft.ApplicationInsights | 2.12.0 | Dit pakket biedt kernfunctionaliteit voor de overdracht van alle Telemetrietypen van Application Insights en is een afhankelijk pakket voor alle andere Application Insights-pakketten | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | Application Insights Dependency Collector voor .NET-toepassingen. Dit is een afhankelijk pakket voor Application Insights platform-specifieke pakketten en biedt automatische verzameling van afhankelijkheid telemetrie. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Met Application Insights Performance Counters Collector u gegevens die door prestatiemeteritems zijn verzameld, naar Application Insights sturen. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet-pakket biedt automatische verzameling van telemetrie van toepassingsinzichten voor .NET-toepassingen. Dit pakket kan worden gebruikt als een afhankelijk pakket voor Application Insights-platformspecifieke pakketten of als een standalone pakket voor .NET-toepassingen die niet worden gedekt door platformspecifieke pakketten (zoals voor .NET-werknemersrollen). | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Biedt een telemetriekanaal naar Application Insights Windows Server SDK dat telemetrie in offline scenario's behoudt. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
-## <a name="common-packages-for-python-using-opencensus"></a>Algemene pakketten voor python met opentellingen
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+## <a name="common-packages-for-python-using-opencensus"></a>Algemene pakketten voor Python met OpenCensus
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| opentelling-ext-Azure | 1.0.0 | Application Insights voor python-toepassingen onder Azure Monitor via opentellingen. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-azure/) |
-| opentelling-ext-django | 0.7.2 | Dit pakket biedt integratie met de python [Django](https://pypi.org/project/django/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-django/) |
-| opentelling-ext-kolf | 0.7.3 | Dit pakket biedt integratie met de python- [fles](https://pypi.org/project/flask/) bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-flask/) |
-| opentelling-ext-httplib | 0.7.2 | Dit pakket biedt integratie met de python [http. client](https://docs.python.org/3/library/http.client.html) bibliotheek voor Python3 en [httplib](https://docs.python.org/2/library/httplib.html) voor Python2. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-httplib/) |
-| opentelling-ext-logboek registratie | 0.1.0 | Met dit pakket worden logboek records met tracerings gegevens verrijkt. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-logging/) |
-| opentelling-ext-mysql | 0.1.2 | Dit pakket biedt integratie met de python [mysql-connector-](https://pypi.org/project/mysql-connector/) bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-mysql/) |
-| opentelling-ext-postgresql | 0.1.2 | Dit pakket biedt integratie met de python [psycopg2](https://pypi.org/project/psycopg2/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-postgresql/) |
-| opentelling-ext-pymongo | 0.7.1 | Dit pakket biedt integratie met de python [pymongo](https://pypi.org/project/pymongo/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-pymongo/) |
-| opentelling-ext-pymysql | 0.1.2 | Dit pakket biedt integratie met de python [PyMySQL](https://pypi.org/project/PyMySQL/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-pymysql/) |
-| opentelling-ext-piramide | 0.7.1 | Dit pakket biedt integratie met de python- [piramide](https://pypi.org/project/pyramid/) bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-pyramid/) |
-| opentelling-uitbrei ding van aanvragen | 0.7.2 | Dit pakket biedt integratie met de bibliotheek met python- [aanvragen](https://pypi.org/project/requests/) . | [Pakket downloaden](https://pypi.org/project/opencensus-ext-requests/) |
-| opentelling-ext-sqlalchemy | 0.1.2 | Dit pakket biedt integratie met de python [sqlalchemy](https://pypi.org/project/SQLAlchemy/) -bibliotheek. | [Pakket downloaden](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
+| opencensus-ext-azure | 1.0.0 | Toepassingsinzichten voor Python-toepassingen onder Azure Monitor via OpenCensus. | [Downloadpakket](https://pypi.org/project/opencensus-ext-azure/) |
+| opencensus-ext-django | 0.7.2 | Dit pakket biedt integratie met de Python [django](https://pypi.org/project/django/) bibliotheek. | [Downloadpakket](https://pypi.org/project/opencensus-ext-django/) |
+| opencensus-ext-kolf | 0.7.3 | Dit pakket biedt integratie met de [Python-kolfbibliotheek.](https://pypi.org/project/flask/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-flask/) |
+| opencensus-ext-httplib | 0.7.2 | Dit pakket biedt integratie met de Python [http.client](https://docs.python.org/3/library/http.client.html) bibliotheek voor Python3 en [httplib](https://docs.python.org/2/library/httplib.html) voor Python2. | [Downloadpakket](https://pypi.org/project/opencensus-ext-httplib/) |
+| opencensus-ext-logging | 0.1.0 | Dit pakket verrijkt logboekrecords met traceergegevens. | [Downloadpakket](https://pypi.org/project/opencensus-ext-logging/) |
+| opencensus-ext-mysql | 0.1.2 | Dit pakket biedt integratie met de Python [mysql-connector-bibliotheek.](https://pypi.org/project/mysql-connector/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-mysql/) |
+| opencensus-ext-postgresql | 0.1.2 | Dit pakket biedt integratie met de Python [psycopg2](https://pypi.org/project/psycopg2/) bibliotheek. | [Downloadpakket](https://pypi.org/project/opencensus-ext-postgresql/) |
+| opencensus-ext-pymongo | 0.7.1 | Dit pakket biedt integratie met de Python [pymongo-bibliotheek.](https://pypi.org/project/pymongo/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-pymongo/) |
+| opencensus-ext-pymysql | 0.1.2 | Dit pakket biedt integratie met de Python [PyMySQL-bibliotheek.](https://pypi.org/project/PyMySQL/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-pymysql/) |
+| opencensus-ext-piramide | 0.7.1 | Dit pakket biedt integratie met de [Python-piramidebibliotheek.](https://pypi.org/project/pyramid/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-pyramid/) |
+| opencensus-ext-requests | 0.7.2 | Dit pakket biedt integratie met de [Python-aanvragenbibliotheek.](https://pypi.org/project/requests/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-requests/) |
+| opencensus-ext-sqlalchemy | 0.1.2 | Dit pakket biedt integratie met de Python [SQLAlchemy-bibliotheek.](https://pypi.org/project/SQLAlchemy/) | [Downloadpakket](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
 
-## <a name="listenerscollectorsappenders"></a>Listeners/Verzamel aars/toevoegers
+## <a name="listenerscollectorsappenders"></a>Luisteraars/verzamelaars/appenders
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  Hiermee is het door sturen van gebeurtenissen van DiagnosticSource naar Application Insights toegestaan. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
-| Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Met Application Insights EventSourceListener kunnen gegevens van Event source-gebeurtenissen worden verzonden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
-| Microsoft.ApplicationInsights.EtwCollector | 2.7.2 | Met Application Insights EtwCollector kan het verzenden van gegevens van Event Tracing for Windows (ETW) naar Application Insights worden verzonden. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) |
-| Microsoft.ApplicationInsights.TraceListener | 2.7.2 | Een aangepaste TraceListener waarmee u traceer logboek berichten kunt verzenden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) |
-| Microsoft.ApplicationInsights.Log4NetAppender | 2.7.2 | Een aangepaste toevoegder waarmee u Log4Net-logboek berichten kunt verzenden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-| Microsoft.ApplicationInsights.NLogTarget | 2.7.2 |  een aangepast doel waarmee u NLog-logboek berichten kunt verzenden naar Application Insights. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-| Microsoft.ApplicationInsights.SnapshotCollector | 1.3.1 | Hiermee worden uitzonde ringen in uw toepassing gecontroleerd en worden automatisch moment opnamen voor offline analyse verzameld. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/)
+| Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  Hiermee u gebeurtenissen doorsturen van DiagnosticSource naar Application Insights. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
+| Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Application Insights EventSourceListener maakt het mogelijk om gegevens van EventSource-gebeurtenissen naar Application Insights te verzenden. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
+| Microsoft.ApplicationInsights.EtwCollector | 2.7.2 | Application Insights EtwCollector maakt het mogelijk om gegevens van Event Tracing for Windows (ETW) naar Application Insights te verzenden. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/) |
+| Microsoft.ApplicationInsights.TraceListener | 2.7.2 | Een aangepaste TraceListener waarmee u tracelogberichten naar Application Insights verzenden. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/) |
+| Microsoft.ApplicationInsights.Log4NetAppender | 2.7.2 | Een aangepaste appender waarmee u Log4Net-logboekberichten naar Application Insights verzenden. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+| Microsoft.ApplicationInsights.NLogTarget | 2.7.2 |  een aangepast doel waarmee u NLog-logboekberichten naar Application Insights verzenden. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+| Microsoft.ApplicationInsights.SnapshotCollector | 1.3.1 | Controleert uitzonderingen in uw toepassing en verzamelt automatisch momentopnamen voor offline analyse. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/)
 
-## <a name="service-fabric"></a>Infrastructuur van service
+## <a name="service-fabric"></a>Service Fabric
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | Dit pakket biedt automatische decoratie van telemetrie met de service Fabric-context waarin de toepassing wordt uitgevoerd. Gebruik deze NuGet niet voor systeem eigen Service Fabric-toepassingen. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
-| Microsoft.ApplicationInsights.ServiceFabric.Native | 2.2.0 | Application Insights module voor service Fabric-toepassingen. Gebruik deze NuGet alleen voor systeem eigen Service Fabric-toepassingen. Voor toepassingen die in containers worden uitgevoerd, gebruikt u het pakket micro soft. ApplicationInsights. ServiceFabric. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
+| Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | Dit pakket biedt automatische decoratie van telemetrie met de service fabric context waarin de toepassing wordt uitgevoerd. Gebruik deze NuGet niet voor Native Service Fabric-toepassingen. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
+| Microsoft.ApplicationInsights.ServiceFabric.native | 2.2.0 | Application Insights-module voor servicefabrictoepassingen. Gebruik deze NuGet alleen voor Native Service Fabric-toepassingen. Voor toepassingen die in containers worden uitgevoerd, gebruikt u het Microsoft.ApplicationInsights.ServiceFabric-pakket. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
-## <a name="status-monitor"></a>Status monitor
+## <a name="status-monitor"></a>Statusmonitor
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Hiermee wordt het verzamelen van runtime gegevens voor x64-toepassingen ingeschakeld | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
-| Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Hiermee wordt het verzamelen van runtime gegevens voor x86-toepassingen ingeschakeld. | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
+| Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Runtime-gegevensverzameling voor x64-toepassingen mogelijk maken | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
+| Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Hiermee u runtime-gegevens verzamelen voor x86-toepassingen. | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Deze pakketten vormen een deel van de kern functionaliteit van de runtime bewaking in [status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md). U hoeft deze pakketten niet rechtstreeks te downloaden. gebruik gewoon het Status Monitor-installatie programma. Als u meer wilt weten over hoe deze pakketten werken onder de motorkap, kan dit [blog bericht](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) van een van onze ontwikkel aars goed worden gestart.
+Deze pakketten maken deel uit van de kernfunctionaliteit van de runtime monitoring in [Status Monitor.](../../azure-monitor/app/monitor-performance-live-website-now.md) U hoeft deze pakketten niet direct te downloaden, gebruik gewoon de Status Monitor installer. Als u meer wilt begrijpen over hoe deze pakketten werken onder de motorkap deze [blog post](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) van een van onze ontwikkelaars is een goed begin.
 
 ## <a name="additional-packages"></a>Aanvullende pakketten
 
-| Pakket naam | Stabiele versie | Beschrijving | Downloaden |
+| Pakketnaam | Stabiele versie | Beschrijving | Download |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Met deze extensie wordt de Application Insights bewaking op een Azure App Service ingeschakeld. SDK-versie 2.6.1. Instructies: Voeg de toepassings instellingen APPINSIGHTS_INSTRUMENTATIONKEY toe aan uw iKey en start de webapp opnieuw om een effect te krijgen.| [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
-| Microsoft.ApplicationInsights.Injector | 2.6.7 | Dit pakket bevat bestanden die vereist zijn voor codeloze Application Insights injectie | [Pakket downloaden](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
+| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Met deze extensie u de monitor Application Insights op een Azure App-service inschakelen. SDK versie 2.6.1. Instructies: Voeg 'APPINSIGHTS_INSTRUMENTATIONKEY' toepassingsinstellingen toe met je ikey en start de webapp opnieuw om effect te sorteren.| [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
+| Microsoft.ApplicationInsights.Injector | 2.6.7 | Dit pakket bevat bestanden die nodig zijn voor codeloze Application Insights-injectie | [Downloadpakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [ASP.net core](../../azure-monitor/app/asp-net-core.md)bewaken.
-- Profiel ASP.NET Core [Azure Linux-web-apps](../../azure-monitor/app/profiler-aspnetcore-linux.md).
-- Debug ASP.NET- [moment opnamen](../../azure-monitor/app/snapshot-debugger.md).
+- Monitor [ASP.NET Kern](../../azure-monitor/app/asp-net-core.md).
+- Profiel ASP.NET Core [Azure Linux-webapps](../../azure-monitor/app/profiler-aspnetcore-linux.md).
+- Foutopsporing ASP.NET [momentopnamen](../../azure-monitor/app/snapshot-debugger.md).

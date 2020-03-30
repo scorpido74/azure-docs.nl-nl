@@ -1,6 +1,6 @@
 ---
-title: Uitvoerings weergave vertex in Data Lake-Hulpprogram Ma's voor Visual Studio
-description: In dit artikel wordt beschreven hoe u de vertex-uitvoerings weergave kunt gebruiken om Data Lake Analytics taken te examenen.
+title: Vertex Execution View in Data Lake Tools voor Visual Studio
+description: In dit artikel wordt beschreven hoe u de Vertex-uitvoeringsweergave gebruiken om Gegevens Lake Analytics-taken te bekijken.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -9,47 +9,47 @@ ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
 ms.openlocfilehash: f5adbb75e6852551976aa040a1a1c723d2e3f59b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309714"
 ---
-# <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>De vertex Execution View gebruiken in Data Lake-Hulpprogram Ma's voor Visual Studio
-Meer informatie over het gebruik van de vertex-uitvoerings weergave om Data Lake Analytics taken te examen.
+# <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Gebruik de Vertex Execution View in Data Lake Tools voor Visual Studio
+Meer informatie over het gebruik van de Vertex-uitvoeringsweergave om Data Lake Analytics-taken te bekijken.
 
 
-## <a name="open-the-vertex-execution-view"></a>De vertex Execution View openen
-Open een U-SQL-taak in Data Lake-Hulpprogram Ma's voor Visual Studio. Klik in de linkerbenedenhoek op **vertex Execution View** . U wordt mogelijk gevraagd om eerst profielen te laden. Dit kan enige tijd duren, afhankelijk van de netwerk verbinding.
+## <a name="open-the-vertex-execution-view"></a>De uitvoeringsweergave van Vertex openen
+Open een U-SQL-taak in Data Lake Tools voor Visual Studio. Klik op **De uitvoeringsweergave van Vertex** in de linkerbenedenhoek. Mogelijk wordt u gevraagd om eerst profielen te laden en het kan enige tijd duren, afhankelijk van uw netwerkverbinding.
 
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![Weergave van de uitvoering van Data Lake Analytics-tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
-## <a name="understand-vertex-execution-view"></a>Meer informatie over vertex Execution View
-De uitvoerings weergave van het vertex bestaat uit drie delen:
+## <a name="understand-vertex-execution-view"></a>Vertex-uitvoeringsweergave begrijpen
+De Vertex Execution View bestaat uit drie delen:
 
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![Weergave van de uitvoering van Data Lake Analytics-tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
-Met de **hoek punt kiezer** links kunt u hoek punten selecteren op basis van functies (zoals de Top 10 van gegevens lezen of kiezen op werk gebied). Een van de meest gebruikte filters is het weer geven van de **hoek punten op het kritieke pad**. Het **kritieke pad** is de langste keten van hoek punten van een U-SQL-taak. Meer informatie over het kritieke pad is handig voor het optimaliseren van uw taken door te controleren welk hoek punt de langste tijd kost.
+Met de **Vertex-kiezer** aan de linkerkant u vertices selecteren op basis van functies (zoals top 10 gelezen gegevens of per fase kiezen). Een van de meest gebruikte filters is om de **hoekjes op kritieke paden**te zien. Het **kritieke pad** is de langste keten van vertices van een U-SQL-taak. Inzicht in het kritieke pad is handig voor het optimaliseren van uw taken door te controleren welke hoekpunt het langst duurt.
   
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+![Weergave van de uitvoering van Data Lake Analytics-tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
-In het bovenste middelste deel venster wordt de **uitvoerings status van alle hoek punten**weer gegeven.
+Het bovenste middelste deelvenster toont de **lopende status van alle hoekpunten.**
   
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![Weergave van de uitvoering van Data Lake Analytics-tools](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
-Het onderste middelste deel venster toont informatie over elk hoek punt:
-* Proces naam: De naam van het vertex exemplaar. Het bestaat uit verschillende onderdelen in de naam van de fase | Hoek punt | VertexRunInstance. De SV7_Split [62]. v1 hoekpunt staat bijvoorbeeld voor het tweede uitgevoerde exemplaar (. v1, index vanaf 0) van het hoekpunt nummer 62 in fase SV7_Split.
-* Totaal aantal gelezen/geschreven gegevens: De gegevens zijn door dit hoek punt gelezen/geschreven.
-* Status/afsluiten: De uiteindelijke status wanneer het hoek punt is beëindigd.
-* Afsluit code/type fout: De fout wanneer het hoek punt is mislukt.
-* Reden voor maken: Waarom het hoek punt is gemaakt.
-* Vertraging van resource latentie/verwerkings latentie/PN-wachtrij: de tijd die nodig is om te wachten op resources, het verwerken van gegevens en het blijven van de wachtrij.
-* GUID van proces/maker: GUID voor het huidige actieve hoek punt of de maker.
-* Versie: het N-ste exemplaar van het knoop punt dat wordt uitgevoerd (het systeem kan om verschillende redenen nieuwe exemplaren van een hoek punt plannen, bijvoorbeeld failover, reken redundantie, enzovoort)
-* Tijdstip waarop de versie is gemaakt.
-* Begin tijd/proces van het proces voor het maken van de tijd/het proces in de wachtrij geplaatst/begin tijd/proces is voltooid: wanneer het vertex proces wordt gemaakt. Wanneer het vertex proces begint met de wachtrij; Wanneer het bepaalde vertex proces wordt gestart; Wanneer het bepaalde hoek punt is voltooid.
+In het onderste middelste deelvenster vindt u informatie over elk hoekpunt:
+* Procesnaam: de naam van de hoekpuntinstantie. Het bestaat uit verschillende delen in StageName| VertexName| VertexRunInstance. Zo staat de SV7_Split[62].v1 vertex voor de tweede lopende instantie (.v1, index vanaf 0) van Vertex nummer 62 in Stage SV7_Split.
+* Total Data Read/Written: De gegevens zijn gelezen/geschreven door dit vertex.
+* Status van status/uitgang: de uiteindelijke status wanneer het hoekpunt is beëindigd.
+* Code/fouttype afsluiten: de fout wanneer het hoekpunt is mislukt.
+* Scheppingreden: waarom het hoekpunt is gemaakt.
+* Resourcelatentie/Proceslatentie/PN-wachtrijlatentie: de tijd die nodig is om te wachten op resources, om gegevens te verwerken en in de wachtrij te blijven.
+* Guid proces/maker: GUID voor het huidige draaiende hoekpunt of de maker ervan.
+* Versie: het N-th-exemplaar van het draaiende hoekpunt (het systeem kan nieuwe exemplaren van een hoekpunt plannen om vele redenen, bijvoorbeeld failover, compute redundantie, enz.)
+* Versie Gemaakt Tijd.
+* Proces Begintijd/proceswachtrijtijd/procesbegintijd/procesvolledige tijd: wanneer het vertexproces wordt gestart met het maken; wanneer het hoekpuntproces in de wachtrij begint te staan; wanneer het bepaalde hoekpuntproces begint; wanneer het bepaalde hoekpunt is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Diagnostische logboeken openen voor Azure Data Lake Analytics) voor logboekregistratie van diagnostische informatie.
 * Zie [Websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) voor een complexere query.
-* Zie [taak browser en taak weergave gebruiken voor Azure data Lake Analytics-taken voor](data-lake-analytics-data-lake-tools-view-jobs.md) meer informatie over het weer geven van taken
+* Zie [Taakbrowser en taakweergave gebruiken voor Azure Data lake Analytics-taken](data-lake-analytics-data-lake-tools-view-jobs.md) als u taakgegevens wilt weergeven.

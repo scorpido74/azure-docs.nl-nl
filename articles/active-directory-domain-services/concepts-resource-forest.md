@@ -1,6 +1,6 @@
 ---
-title: Concepten van resource-forests voor Azure AD Domain Services | Microsoft Docs
-description: Meer informatie over wat een resource-forest is in Azure Active Directory Domain Services en hoe ze uw organisatie in hybride omgevingen voor delen met beperkte gebruikers verificatie opties of beveiligings problemen.
+title: Resourceforestconcepten voor Azure AD-domeinservices | Microsoft Documenten
+description: Lees wat een bronforest is in Azure Active Directory Domain Services en hoe deze uw organisatie ten goede komen in een hybride omgeving met beperkte gebruikersverificatieopties of beveiligingsproblemen.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,112 +11,112 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: a583e32cbc3d58d5dfc5616335b2f38ad20fac14
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233608"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies voor resourceforest voor Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties bieden die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
+Azure Active Directory Domain Services (AD DS) biedt een aanmeldingservaring voor verouderde, on-premises, bedrijfstoepassingen. Gebruikers, groepen en wachtwoordhashes van on-premises en cloudgebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wachtwoordhashes zijn wat gebruikers één set referenties geeft die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
 
-Hoewel beveiligde en extra beveiligings voordelen bieden, kunnen sommige organisaties die gebruikers wachtwoorden hashes niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie hebben het wacht woord mogelijk niet kennen, omdat ze alleen smartcard verificatie gebruiken. Deze beperkingen verhinderen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tilleren en te verplaatsen.
+Hoewel ze veilig zijn en extra beveiligingsvoordelen bieden, kunnen sommige organisaties deze gebruikerswachtwoorden niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie weten mogelijk hun wachtwoord niet omdat ze alleen smartcardverificatie gebruiken. Deze beperkingen voorkomen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tillen en te verplaatsen.
 
-Als u deze behoeften en beperkingen wilt aanpakken, kunt u een door Azure AD DS beheerd domein maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
+Als u aan deze behoeften en beperkingen wilt voldoen, u een door Azure AD DS beheerd domein maken dat een bronforest gebruikt. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze op andere bronnen vertrouwen om een veilige verificatiemethode te bieden. Azure AD DS-bronforests zijn momenteel in preview.
 
 > [!IMPORTANT]
-> Azure HDInsight of Azure Files wordt momenteel niet ondersteund voor de resource forests van AD DS De standaard gebruikers forests van Azure AD DS ondersteunen beide extra services.
+> Azure AD DS-bronforests ondersteunen momenteel geen Azure HDInsight of Azure Files. De standaard Azure AD DS-gebruikersforests ondersteunen beide aanvullende services.
 
-## <a name="what-are-forests"></a>Wat zijn forests?
+## <a name="what-are-forests"></a>Wat zijn bossen?
 
-Een *forest* is een logische constructie die door Active Directory Domain Services (AD DS) wordt gebruikt om een of meer *domeinen*te groeperen. De domeinen slaan objecten vervolgens op voor gebruikers of groepen en bieden verificatie services.
+Een *forest* is een logische constructie die wordt gebruikt door AD DS (Active Directory Domain Services) om een of meer *domeinen*te groeperen. De domeinen slaan vervolgens objecten op voor gebruikers of groepen en bieden verificatieservices.
 
-In azure AD DS bevat het forest slechts één domein. On-premises AD DS bossen bevatten vaak veel domeinen. In grote organisaties, met name na fusies en acquisities, kunt u meerdere on-premises forests gebruiken die elk meerdere domeinen bevatten.
+In Azure AD DS bevat het forest slechts één domein. On-premises AD DS-forests bevatten vaak veel domeinen. In grote organisaties, vooral na fusies en overnames, u eindigen met meerdere on-premises forests die vervolgens meerdere domeinen bevatten.
 
-Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein van Azure AD DS, bijvoorbeeld om zich aan te melden bij een VM die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
+Standaard wordt een door Azure AD DS beheerd domein gemaakt als *gebruikersforest.* Dit type forest synchroniseert alle objecten uit Azure AD, inclusief gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. Gebruikersaccounts kunnen rechtstreeks verifiëren tegen het door Azure AD DS beheerde domein, bijvoorbeeld om u aan te melden bij een vm die is verbonden aan een domein. Een gebruikersforest werkt wanneer de wachtwoordhashes kunnen worden gesynchroniseerd en gebruikers geen exclusieve aanmeldingsmethoden zoals smartcardverificatie gebruiken.
 
-In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
+In een Azure AD *DS-bronforest* verifiëren gebruikers zich via een eenrichtingsforestvertrouwensrelatie van hun on-premises AD DS. *trust* Met deze benadering worden de gebruikersobjecten en wachtwoordhashes niet gesynchroniseerd met Azure AD DS. De gebruikersobjecten en -referenties bestaan alleen in de on-premises AD DS. Met deze aanpak kunnen ondernemingen resources en toepassingsplatforms in Azure hosten die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatieproblemen of -problemen worden verwijderd. Azure AD DS-bronforests zijn momenteel in preview.
 
-Resource forests bieden ook de mogelijkheid om uw toepassingen één onderdeel tegelijk uit te voeren. Veel oudere on-premises toepassingen zijn meerdere lagen, vaak met een webserver of front-end en veel data base-gerelateerde onderdelen. Deze lagen maken het moeilijk om in één stap de volledige toepassing naar de cloud te tillen en te verplaatsen. Met resource-forests kunt u uw toepassing in gefaseerde benadering optillen, waardoor het eenvoudiger wordt om uw toepassing naar Azure te verplaatsen.
+Resourceforests bieden ook de mogelijkheid om uw toepassingen één component tegelijk op te tillen en te verschuiven. Veel verouderde on-premises toepassingen zijn met meerdere lagen, vaak met behulp van een webserver of front-end en veel databasegerelateerde componenten. Deze lagen maken het moeilijk om de hele toepassing in één stap naar de cloud te tillen en te verschuiven. Met resourceforests u uw toepassing gefaseerd naar de cloud tillen, waardoor u uw toepassing gemakkelijker naar Azure verplaatsen.
 
-## <a name="what-are-trusts"></a>Wat zijn vertrouwens relaties?
+## <a name="what-are-trusts"></a>Wat zijn vertrouwen?
 
-Organisaties met meer dan één domein hebben vaak gebruikers nodig om toegang te krijgen tot gedeelde bronnen in een ander domein. Voor toegang tot deze gedeelde bronnen moeten gebruikers in het ene domein worden geverifieerd bij een ander domein. Als u deze verificatie-en autorisatie mogelijkheden wilt bieden tussen clients en servers in verschillende domeinen, moet er een *vertrouwens relatie* tussen de twee domeinen zijn.
+Organisaties die meer dan één domein hebben, hebben vaak gebruikers nodig om toegang te krijgen tot gedeelde bronnen in een ander domein. Toegang tot deze gedeelde bronnen vereist dat gebruikers in het ene domein zich verifiëren naar een ander domein. Als u deze verificatie- en autorisatiemogelijkheden wilt bieden tussen clients en servers in verschillende domeinen, moet er een *vertrouwensrelatie* zijn tussen de twee domeinen.
 
-Met vertrouwens relaties tussen domeinen, vertrouwen de verificatie mechanismen voor elk domein de verificaties die afkomstig zijn uit het andere domein. Vertrouwens relaties helpen beheerde toegang tot gedeelde bronnen in een bron domein (het *vertrouwende* domein) te bieden door te controleren of binnenkomende verificatie aanvragen afkomstig zijn van een vertrouwde instantie (het *vertrouwde* domein). Vertrouwens relaties fungeren als bruggen waarmee alleen gevalideerde verificatie aanvragen kunnen worden getransporteerd tussen domeinen.
+Bij domeinvertrouwensrelaties vertrouwen de verificatiemechanismen voor elk domein op de verificaties die afkomstig zijn van het andere domein. Vertrouwensrelaties bieden gecontroleerde toegang tot gedeelde bronnen in een resourcedomein (het *vertrouwende* domein) door te controleren of binnenkomende verificatieaanvragen afkomstig zijn van een vertrouwde autoriteit (het *vertrouwde* domein). Vertrouwensrelaties fungeren als bruggen die alleen gevalideerde verificatieverzoeken toestaan om tussen domeinen te reizen.
 
-Hoe een vertrouwens relatie verificatie aanvragen doorgeeft, is afhankelijk van de configuratie. Vertrouwens relaties kunnen op een van de volgende manieren worden geconfigureerd:
+Hoe een vertrouwensrelatie verificatieaanvragen doorgeeft, is afhankelijk van de manier waarop deze is geconfigureerd. Vertrouwensrelaties kunnen op een van de volgende manieren worden geconfigureerd:
 
-* **Eén richting** : biedt toegang vanuit het vertrouwde domein aan bronnen in het vertrouwende domein.
-* **Twee richtingen** : Hiermee geeft u toegang tot resources in het andere domein.
+* **One-way** - biedt toegang vanuit het vertrouwde domein tot bronnen in het vertrouwende domein.
+* **Tweerichtings** - biedt toegang vanuit elk domein tot bronnen in het andere domein.
 
-Vertrouwens relaties worden ook zo geconfigureerd dat er op een van de volgende manieren aanvullende vertrouwens relatie wordt verwerkt:
+Vertrouwensrelaties worden ook geconfigureerd om aanvullende vertrouwensrelaties op een van de volgende manieren te verwerken:
 
-* Niet- **transitief** : de vertrouwens relatie bestaat alleen tussen de twee vertrouwens partner domeinen.
-* **Transitieve** vertrouwens relaties worden automatisch uitgebreid naar andere domeinen die een van de partners vertrouwt.
+* **Niet-transitief** - De vertrouwensrelatie bestaat alleen tussen de twee domeinen van de vertrouwenspartner.
+* **Transitief** - Vertrouwen strekt zich automatisch uit tot alle andere domeinen die een van de partners vertrouwt.
 
-In sommige gevallen worden vertrouwens relaties automatisch ingesteld wanneer er domeinen worden gemaakt. Andere keren, moet u een vertrouwens type kiezen en expliciet de juiste relaties instellen. De specifieke typen vertrouwens relaties en de structuur van deze vertrouwens relatie zijn afhankelijk van de manier waarop de Active Directory Directory service is georganiseerd en of er verschillende versies van Windows naast elkaar worden gebruikt in het netwerk.
+In sommige gevallen worden vertrouwensrelaties automatisch vastgesteld wanneer domeinen worden gemaakt. Andere keren moet u een type vertrouwensrelatie kiezen en expliciet de juiste relaties tot stand brengen. De specifieke typen vertrouwensrelaties die worden gebruikt en de structuur van die vertrouwensrelaties zijn afhankelijk van de manier waarop de Directory-service van Active Directory is georganiseerd en of verschillende versies van Windows naast elkaar bestaan op het netwerk.
 
-## <a name="trusts-between-two-forests"></a>Vertrouwens relaties tussen twee forests
+## <a name="trusts-between-two-forests"></a>Vertrouwen tussen twee bossen
 
-U kunt domein vertrouwen in één forest uitbreiden naar een ander forest door hand matig een eenrichtings-of twee richtings vertrouwensrelatie voor het forest te maken. Een forest-vertrouwens relatie is een transitieve vertrouwens relatie die alleen bestaat tussen een foresthoofddomein en een tweede forest-hoofd domein.
+U domeinvertrouwensrelaties binnen één forest uitbreiden naar een ander forest door handmatig een forestvertrouwensrelatie in één of twee richtingen te maken. Een forestvertrouwensrelatie is een transitieve vertrouwensrelatie die alleen bestaat tussen een foresthoofddomein en een tweede foresthoofddomein.
 
-* Met een eenrichtings vertrouwensrelatie voor forests kunnen alle gebruikers in het ene forest alle domeinen in het andere forest vertrouwen.
-* Een twee richtings relatie tussen forests vormt een transitieve vertrouwens relatie tussen elk domein in beide forests.
+* Met een eenrichtingsforestvertrouwensrelatie kunnen alle gebruikers in één forest alle domeinen in het andere forest vertrouwen.
+* Een tweerichtingsforestvertrouwensrelatie vormt een transitieve vertrouwensrelatie tussen elk domein in beide forests.
 
-De transitiviteit van forestvertrouwensrelaties is beperkt tot de twee forest-partners. De vertrouwens relatie tussen forests en andere forests die door een van de partners worden vertrouwd, wordt niet uitgebreid.
+De transitiviteit van bostrusts is beperkt tot de twee bospartners. Het forestvertrouwen strekt zich niet uit tot extra forests die door een van de partners worden vertrouwd.
 
-![Diagram van forestvertrouwensrelatie van Azure AD DS op on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram van forestvertrouwensrelatie van Azure AD DS naar on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-U kunt verschillende configuraties voor domein-en forest-vertrouwens relaties maken, afhankelijk van de Active Directory structuur van de organisatie. Azure AD DS ondersteunt alleen een eenrichtings vertrouwensrelatie voor forests. In deze configuratie kunnen resources in azure AD DS alle domeinen in een on-premises forest vertrouwen.
+U verschillende domein- en forestvertrouwensconfiguraties maken, afhankelijk van de Active Directory-structuur van de organisatie. Azure AD DS ondersteunt alleen een eenrichtingsforestvertrouwensrelatie. In deze configuratie kunnen resources in Azure AD DS alle domeinen in een on-premises forest vertrouwen.
 
-## <a name="supporting-technology-for-trusts"></a>Ondersteunende technologie voor vertrouwens relaties
+## <a name="supporting-technology-for-trusts"></a>Ondersteunende technologie voor trusts
 
-Vertrouwens relaties gebruiken verschillende services en functies, zoals DNS, om domein controllers te vinden in partner forests. Vertrouwens relaties zijn ook afhankelijk van NTLM-en Kerberos-verificatie protocollen en op Windows gebaseerde autorisatie-en toegangs beheer mechanismen om een beveiligde communicatie-infra structuur te bieden tussen Active Directory domeinen en forests. De volgende services en functies helpen u bij het ondersteunen van succes volle vertrouwens relaties.
+Vertrouwensrelaties gebruiken verschillende services en functies, zoals DNS om domeincontrollers te vinden in partneringforests. Vertrouwensrelaties zijn ook afhankelijk van NTLM- en Kerberos-verificatieprotocollen en van windows-gebaseerde autorisatie- en toegangscontrolemechanismen om een beveiligde communicatie-infrastructuur te bieden in Active Directory-domeinen en -forests. De volgende services en functies ondersteunen succesvolle vertrouwensrelaties.
 
 ### <a name="dns"></a>DNS
 
-AD DS moet DNS zijn voor de locatie en naam van de domein controller (DC). De volgende ondersteuning van DNS wordt geboden om AD DS te kunnen werken:
+AD DS heeft DNS nodig voor locatie en naamgeving van de domeincontroller (DC). De volgende ondersteuning van DNS is beschikbaar voor AD DS om succesvol te werken:
 
-* Een service voor naam omzetting die netwerk-hosts en-services toestaat om Dc's te vinden.
-* Een naamgevings structuur waarmee een onderneming zijn organisatie structuur kan weer spie gelen in de namen van de domein Directory-service domeinen.
+* Een naamomzettingsservice waarmee netwerkhosts en -services DC's kunnen vinden.
+* Een naamgevingsstructuur waarmee een onderneming haar organisatiestructuur kan weergeven in de namen van de directoryservicedomeinen.
 
-Een naam ruimte van een DNS-domein wordt meestal geïmplementeerd die overeenkomt met de naam ruimte AD DS domein. Als er vóór de implementatie van de AD DS een bestaande DNS-naam ruimte is, wordt de DNS-naam ruimte doorgaans gepartitioneerd voor Active Directory en wordt een DNS-subdomein en delegering voor de hoofdmap van Active Directory forest gemaakt. Extra DNS-domein namen worden vervolgens toegevoegd voor elk Active Directory onderliggende domein.
+Een DNS-domeinnaamruimte wordt meestal geïmplementeerd die de AD DS-domeinnaamruimte weerspiegelt. Als er een bestaande DNS-naamruimte is vóór de AD DS-implementatie, wordt de DNS-naamruimte meestal verdeeld voor Active Directory en wordt een DNS-subdomein en -delegatie voor de Forestroot van Active Directory gemaakt. Voor elk Active Directory-onderliggend domein worden vervolgens extra DNS-domeinnamen toegevoegd.
 
-DNS wordt ook gebruikt om de locatie van Active Directory Dc's te ondersteunen. De DNS-zones worden gevuld met DNS-bron records waarmee netwerk-hosts en-services Active Directory Dc's kunnen vinden.
+DNS wordt ook gebruikt om de locatie van Active Directory DC's te ondersteunen. De DNS-zones worden gevuld met DNS-bronrecords waarmee netwerkhosts en -services Active Directory DC's kunnen vinden.
 
-### <a name="applications-and-net-logon"></a>Toepassingen en Net Logon
+### <a name="applications-and-net-logon"></a>Toepassingen en netaanmelding
 
-Zowel toepassingen als de Net Logon-service zijn onderdelen van het Windows-model voor gedistribueerde beveiliging. Toepassingen die zijn geïntegreerd met Windows Server en Active Directory authenticatie protocollen gebruiken om te communiceren met de Net Logon-service zodat een beveiligd pad kan worden ingesteld waarover verificatie kan optreden.
+Beide toepassingen en de Net Logon-service zijn onderdelen van het Windows distributed security channel-model. Toepassingen die zijn geïntegreerd met Windows Server en Active Directory gebruiken verificatieprotocollen om te communiceren met de Net Logon-service, zodat een beveiligd pad kan worden vastgesteld waarover verificatie kan plaatsvinden.
 
 ### <a name="authentication-protocols"></a>Verificatieprotocollen
 
-Active Directory Dc's gebruikers en toepassingen verifiëren met behulp van een van de volgende protocollen:
+Active Directory DC's verifiëren gebruikers en toepassingen met behulp van een van de volgende protocollen:
 
-* **Kerberos versie 5-verificatie Protocol**
-    * Het protocol Kerberos versie 5 is het standaard verificatie protocol dat wordt gebruikt door on-premises computers waarop Windows wordt uitgevoerd en die besturings systemen van derden ondersteunen. Dit protocol is opgegeven in RFC 1510 en is volledig geïntegreerd met Active Directory, SMB (Server Message Block), HTTP en Remote Procedure Call (RPC), evenals de client-en server toepassingen die gebruikmaken van deze protocollen.
-    * Wanneer het Kerberos-protocol wordt gebruikt, hoeft de server geen contact te maken met de domein controller. In plaats daarvan krijgt de client een ticket voor een server door een aanvraag te doen van een domein controller in het Server account domein. De server valideert vervolgens het ticket zonder dat hiervoor een andere instantie wordt geraadpleegd.
-    * Als een computer die deel uitmaakt van een trans actie, niet het Kerberos versie 5-protocol ondersteunt, wordt het NTLM-protocol gebruikt.
+* **Kerberos-verificatieprotocol voor versie 5**
+    * Het Kerberos-versie 5-protocol is het standaardverificatieprotocol dat wordt gebruikt door on-premises computers met Windows en ondersteunende besturingssystemen van derden. Dit protocol is opgegeven in RFC 1510 en is volledig geïntegreerd met Active Directory, servermessage block (SMB), HTTP en remote procedure call (RPC), evenals de client- en servertoepassingen die deze protocollen gebruiken.
+    * Wanneer het Kerberos-protocol wordt gebruikt, hoeft de server geen contact op te nemen met de DC. In plaats daarvan krijgt de client een ticket voor een server door er een aan te vragen bij een DC in het serveraccountdomein. De server valideert vervolgens het ticket zonder enige andere autoriteit te raadplegen.
+    * Als een computer die betrokken is bij een transactie het Kerberos versie 5-protocol niet ondersteunt, wordt het NTLM-protocol gebruikt.
 
-* **NTLM-verificatie Protocol**
-    * Het NTLM-protocol is een klassiek netwerk verificatie protocol dat wordt gebruikt door oudere besturings systemen. Om compatibiliteits redenen wordt het door Active Directory domeinen gebruikt voor het verwerken van netwerk verificatie aanvragen die afkomstig zijn van toepassingen die zijn ontworpen voor eerdere Windows-clients en-servers en besturings systemen van derden.
-    * Wanneer het NTLM-protocol tussen een client en een server wordt gebruikt, moet de server contact opnemen met een domein authenticatie service op een DC om de client referenties te controleren. De server verifieert de client door de client referenties door te sturen naar een domein controller in het account domein van de client.
-    * Wanneer twee Active Directory domeinen of forests door een vertrouwens relatie zijn verbonden, kunnen verificatie aanvragen die gebruikmaken van deze protocollen, worden gerouteerd om toegang te bieden tot bronnen in beide forests.
+* **NTLM-verificatieprotocol**
+    * Het NTLM-protocol is een klassiek netwerkverificatieprotocol dat wordt gebruikt door oudere besturingssystemen. Om compatibiliteitsredenen wordt het door Active Directory-domeinen gebruikt om netwerkverificatieaanvragen te verwerken die afkomstig zijn van toepassingen die zijn ontworpen voor eerdere Windows-clients en -servers en besturingssystemen van derden.
+    * Wanneer het NTLM-protocol wordt gebruikt tussen een client en een server, moet de server contact opnemen met een domeinverificatieservice op een DC om de clientreferenties te verifiëren. De server verifieert de client door de clientreferenties door te sturen naar een DC in het domein van het clientaccount.
+    * Wanneer twee Active Directory-domeinen of -forests zijn verbonden door een vertrouwensrelatie, kunnen verificatieverzoeken die met behulp van deze protocollen worden ingediend, worden doorgestuurd om toegang te bieden tot bronnen in beide forests.
 
-## <a name="authorization-and-access-control"></a>Autorisatie en toegangs beheer
+## <a name="authorization-and-access-control"></a>Autorisatie- en toegangscontrole
 
-Verificatie-en vertrouwens technologieën werken samen om een beveiligde communicatie-infra structuur in Active Directory domeinen of forests te bieden. Autorisatie bepaalt welk niveau van toegang een gebruiker heeft tot resources in een domein. Vertrouwens relaties vergemakkelijken interdomein-autorisatie van gebruikers door een pad op te geven voor de verificatie van gebruikers in andere domeinen, zodat hun aanvragen voor gedeelde bronnen in die domeinen kunnen worden geautoriseerd.
+Autorisatie- en vertrouwenstechnologieën werken samen om een beveiligde communicatie-infrastructuur te bieden in Active Directory-domeinen of -forests. Autorisatie bepaalt welk toegangsniveau een gebruiker heeft om resources in een domein. Vertrouwensrelaties vergemakkelijken cross-domain autorisatie van gebruikers door het verstrekken van een pad voor het verifiëren van gebruikers in andere domeinen, zodat hun verzoeken om gedeelde bronnen in die domeinen kunnen worden geautoriseerd.
 
-Wanneer een verificatie aanvraag in een vertrouwende domein is gevalideerd door het vertrouwde domein, wordt deze door gegeven aan de doel bron. De doel resource bepaalt vervolgens of de specifieke aanvraag door de gebruiker, de service of de computer in het vertrouwde domein moet worden geautoriseerd op basis van de toegangs beheer configuratie.
+Wanneer een verificatieverzoek in een vertrouwensdomein wordt gevalideerd door het vertrouwde domein, wordt deze doorgegeven aan de doelbron. De doelbron bepaalt vervolgens of de specifieke aanvraag van de gebruiker, service of computer in het vertrouwde domein moet worden geautoriseerd op basis van de configuratie van het toegangscontrolebeheer.
 
-Vertrouwens relaties bieden dit mechanisme voor het valideren van verificatie aanvragen die worden door gegeven aan een vertrouwend domein. Toegangs beheer mechanismen op de bron computer bepalen het uiteindelijke niveau van toegang dat is verleend aan de aanvrager in het vertrouwde domein.
+Vertrouwensrelaties bieden dit mechanisme om verificatieaanvragen te valideren die worden doorgegeven aan een vertrouwend domein. Toegangsbeheermechanismen op de resourcecomputer bepalen het uiteindelijke toegangsniveau dat wordt verleend aan de aanvrager in het vertrouwde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Hoe kunnen forest-vertrouwens relaties werken in Azure AD DS?][concepts-trust] voor meer informatie over vertrouwens relaties.
+Zie [Hoe werken forestvertrouwensrelaties in Azure AD DS voor][concepts-trust] meer informatie over vertrouwensrelaties?
 
-Zie [een door azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een Azure AD DS beheerd domein met een resource-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein (preview-versie)][create-forest-trust].
+Zie Een beheerd [Azure AD DS-beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een door Azure AD DS beheerd domein met een resourceforest. U vervolgens [een uitgaande forestvertrouwensrelatie maken naar een on-premises domein (voorbeeld).][create-forest-trust]
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

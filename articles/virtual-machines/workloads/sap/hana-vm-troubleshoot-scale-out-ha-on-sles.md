@@ -1,6 +1,6 @@
 ---
-title: SAP HANA scale-out HSR-pacemaker met SLES op Azure Vm's Troubleshooting | Microsoft Docs
-description: Gids voor het controleren en oplossen van problemen met een complexe SAP HANA scale-out configuratie met hoge Beschik baarheid op basis van SAP HANA System Replication (HSR) en pacemaker op SLES 12 SP3 dat wordt uitgevoerd op Azure virtual machines
+title: SAP HANA scale-out HSR-Pacemaker with SLES on Azure VM's troubleshooting| Microsoft Documenten
+description: Handleiding voor het controleren en oplossen van een complexe SAP HANA scale-out configuratie met hoge beschikbaarheid op basis van SAP HANA System Replication (HSR) en Pacemaker op SLES 12 SP3 die wordt uitgevoerd op virtuele Azure-machines
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617125"
 ---
-# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Controleren en problemen oplossen SAP HANA scale-out instellingen voor hoge Beschik baarheid in SLES 12 SP3 
+# <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Sap HANA scale-out-installatie met hoge beschikbaarheid verifiëren en oplossen op SLES 12 SP3 
 
 [sles-pacemaker-ha-guide]:high-availability-guide-suse-pacemaker.md
 [sles-hana-scale-out-ha-paper]:https://www.suse.com/documentation/suse-best-practices/singlehtml/SLES4SAP-hana-scaleOut-PerfOpt-12/SLES4SAP-hana-scaleOut-PerfOpt-12.html
@@ -34,75 +34,75 @@ ms.locfileid: "77617125"
 [sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 
 
-Dit artikel helpt u bij het controleren van de pacemaker-cluster configuratie voor SAP HANA scale-out die wordt uitgevoerd op Azure virtual machines (Vm's). De Cluster installatie is uitgevoerd in combi natie met SAP HANA System Replication (HSR) en de SUSE RPM package SAPHanaSR-Uitschalen. Alle tests zijn uitgevoerd op SUSE SLES 12 SP3. De secties van het artikel hebben betrekking op verschillende gebieden en bevatten voorbeeld opdrachten en fragmenten uit configuratie bestanden. Deze voor beelden worden aangeraden als methode om de hele cluster installatie te controleren en te controleren.
+Met dit artikel u de clusterconfiguratie pacemaker controleren op SAP HANA-scale-out die wordt uitgevoerd op virtuele Azure-machines (VM's). De clustersetup is uitgevoerd in combinatie met SAP HANA System Replication (HSR) en het SUSE RPM-pakket SAPHanaSR-ScaleOut. Alle tests werden gedaan op SUSE SLES 12 SP3 alleen. De secties van het artikel bestrijken verschillende gebieden en bevatten voorbeeldopdrachten en fragmenten uit config-bestanden. We raden deze monsters aan als een methode om de hele clusterinstelling te controleren en te controleren.
 
 
 
-## <a name="important-notes"></a>Belang rijke opmerkingen
+## <a name="important-notes"></a>Belangrijke opmerkingen
 
-Alle tests voor SAP HANA scale-out in combi natie met SAP HANA systeem replicatie en pacemaker zijn alleen uitgevoerd met SAP HANA 2,0. De versie van het besturings systeem is SUSE Linux Enterprise Server 12 SP3 voor SAP-toepassingen. Het nieuwste RPM-pakket, SAPHanaSR-Uitschalen van SUSE, is gebruikt voor het instellen van het pacemaker-cluster.
-SUSE heeft een [gedetailleerde beschrijving gepubliceerd van deze instellingen die zijn geoptimaliseerd voor de prestaties][sles-hana-scale-out-ha-paper].
+Alle testen voor SAP HANA scale-out in combinatie met SAP HANA System Replication and Pacemaker werden alleen met SAP HANA 2.0 uitgevoerd. De versie van het besturingssysteem was SUSE Linux Enterprise Server 12 SP3 voor SAP-toepassingen. Het nieuwste RPM-pakket, SAPHanaSR-ScaleOut van SUSE, werd gebruikt om het Pacemaker-cluster in te stellen.
+SUSE publiceerde een [gedetailleerde beschrijving van deze prestatiegeoptimaliseerde setup.][sles-hana-scale-out-ha-paper]
 
-Voor virtuele-machine typen die worden ondersteund voor SAP HANA scale-out, controleert u de [SAP Hana Certified IaaS Directory][sap-hana-iaas-list].
+Voor virtuele machinetypen die worden ondersteund voor SAP HANA-scale-out, raadpleegt u de [SAP HANA-gecertificeerde IaaS-directory.][sap-hana-iaas-list]
 
-Er is een technisch probleem met SAP HANA scale-out in combi natie met meerdere subnetten en Vnic's en het instellen van HSR. Het is verplicht om de nieuwste SAP HANA 2,0-patches te gebruiken waarbij dit probleem is opgelost. De volgende SAP HANA versies worden ondersteund: 
+Er was een technisch probleem met SAP HANA scale-out in combinatie met meerdere subnetten en vNIC's en het opzetten van HSR. Het is verplicht om de nieuwste SAP HANA 2.0 patches te gebruiken waar dit probleem is opgelost. De volgende SAP HANA-versies worden ondersteund: 
 
-* Rev 2.00.024.04 of hoger 
-* Rev 2.00.032 of hoger
+* rev2.00.024.04 of hoger 
+* rev2.00.032 of hoger
 
-Als u ondersteuning van SUSE nodig hebt, volgt u deze [hand leiding][suse-pacemaker-support-log-files]. Verzamel alle informatie over het cluster met SAP HANA hoge Beschik baarheid (HA) zoals beschreven in het artikel. SUSE-ondersteuning heeft deze informatie nodig voor verdere analyse.
+Als u ondersteuning van SUSE nodig hebt, volgt u deze [handleiding.][suse-pacemaker-support-log-files] Verzamel alle informatie over het SAP HANA-cluster (HA) zoals beschreven in het artikel. SUSE-ondersteuning heeft deze informatie nodig voor verdere analyse.
 
-Tijdens interne tests wordt de installatie van het cluster tijdens het Azure Portal met een normale, gewende VM afgesloten. Daarom raden we u aan een failover van een cluster op andere manieren te testen. Gebruik methoden zoals het forceren van een kernel of het uitschakelen van de netwerken of het migreren van de **MSL** -resource. Zie de details in de volgende secties. De veronderstelling is dat een standaard afsluiting plaatsvindt met de bedoeling. Het beste voor beeld van een opzettelijk afsluiten is voor onderhoud. Zie de details in [gepland onderhoud](#planned-maintenance).
+Tijdens interne tests raakte de clusterconfiguratie in de war door een normale gracieuze VM-uitschakeling via de Azure-portal. Daarom raden we u aan een clusterfailover te testen op andere methoden. Gebruik methoden zoals het forceren van een kernel panic, of het afsluiten van de netwerken of het migreren van de **msl-bron.** Zie details in de volgende secties. De veronderstelling is dat een standaard shutdown gebeurt met de bedoeling. Het beste voorbeeld van een opzettelijke shutdown is voor onderhoud. Zie details in [Gepland onderhoud](#planned-maintenance).
 
-Tijdens interne tests is de installatie van het cluster tijdens de onderhouds modus geverwarrend na een hand matige SAP HANA overname. U kunt het beste hand matig overschakelen voordat u de onderhouds modus van het cluster beëindigt. Een andere optie is om een failover te activeren voordat u het cluster in de onderhouds modus plaatst. Zie [gepland onderhoud](#planned-maintenance)voor meer informatie. De documentatie van SUSE beschrijft hoe u het cluster op deze manier opnieuw kunt instellen met behulp van de **CRM** -opdracht. Maar de eerder genoemde benadering was tijdens interne tests krachtig en nooit onverwachte neven effecten weer gegeven.
+Ook tijdens interne testen raakte de clusteropstelling in de war na een handmatige SAP HANA-overname terwijl het cluster in onderhoudsmodus was. We raden u aan deze handmatig terug te schakelen voordat u de clusteronderhoudsmodus beëindigt. Een andere optie is om een failover te activeren voordat u het cluster in de onderhoudsmodus plaatst. Zie [Gepland onderhoud](#planned-maintenance)voor meer informatie. De documentatie van SUSE beschrijft hoe u het cluster op deze manier resetten met behulp van de **crm-opdracht.** Maar de eerder genoemde aanpak was robuust tijdens interne tests en toonde nooit onverwachte bijwerkingen.
 
-Wanneer u de opdracht **CRM migreren** gebruikt, moet u ervoor zorgen dat u de cluster configuratie opschoont. Er worden locatie beperkingen toegevoegd waarvan u mogelijk niet op de hoogte bent. Deze beperkingen zijn van invloed op het gedrag van het cluster. Meer informatie vindt u in [gepland onderhoud](#planned-maintenance).
-
-
-
-## <a name="test-system-description"></a>Beschrijving van test systeem
-
- Voor SAP HANA scale-out HA-verificatie en-certificering werd een installatie gebruikt. Het bestaat uit twee systemen met drie SAP HANA knoop punten: één master en twee werk rollen. De volgende tabel bevat de namen van virtuele machines en interne IP-adressen. Alle verificatie voorbeelden die volgen, zijn uitgevoerd op deze Vm's. Door gebruik te maken van deze VM-namen en IP-adressen in de voor beelden van de opdracht, kunt u beter inzicht krijgen in de opdrachten en de bijbehorende uitvoer:
+Wanneer u de **crm-migratieopdracht gebruikt,** moet u de clusterconfiguratie opschonen. Het voegt locatiebeperkingen toe waarvan u zich mogelijk niet bewust bent. Deze beperkingen hebben invloed op het clustergedrag. Zie meer details in [Gepland onderhoud](#planned-maintenance).
 
 
-| Knooppunt type | VM-naam | IP-adres |
+
+## <a name="test-system-description"></a>Beschrijving van het testsysteem
+
+ Voor SAP HANA scale-out HA-verificatie en -certificering werd een setup gebruikt. Het bestond uit twee systemen met elk drie SAP HANA-knooppunten: één master en twee werknemers. In de volgende tabel worden VM-namen en interne IP-adressen weergegeven. Alle verificatiemonsters die volgen, werden uitgevoerd op deze VM's. Door deze VM-namen en IP-adressen in de opdrachtvoorbeelden te gebruiken, u de opdrachten en de uitvoer ervan beter begrijpen:
+
+
+| Knooppunttype | VM-naam | IP-adres |
 | --- | --- | --- |
-| Hoofd knooppunt op site 1 | hso-hana-vm-s1-0 | 10.0.0.30 |
-| Worker-knoop punt 1 op site 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
-| Worker-knoop punt 2 op site 1 | hso-hana-vm-s1-2 | 10.0.0.32 |
+| Master node on site 1 | hso-hana-vm-s1-0 | 10.0.0.30 |
+| Worker node 1 op site 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
+| Worker node 2 op site 1 | hso-hana-vm-s1-2 | 10.0.0.32 |
 | | | |
-| Hoofd knooppunt op site 2 | hso-hana-vm-s2-0 | 10.0.0.40 |
-| Worker-knoop punt 1 op site 2 | hso-hana-vm-s2-1 | 10.0.0.41 |
-| Worker-knoop punt 2 op site 2 | hso-hana-vm-s2-2  | 10.0.0.42 |
+| Master node on site 2 | hso-hana-vm-s2-0 | 10.0.0.40 |
+| Worker node 1 op site 2 | hso-hana-vm-s2-1 | 10.0.0.41 |
+| Worker node 2 op site 2 | hso-hana-vm-s2-2  | 10.0.0.42 |
 | | | |
-| Hoofd knooppunt van Maker | HSO-Hana-DM | 10.0.0.13 |
-| SBD-apparaatinterface | HSO-Hana-SBD | 10.0.0.19 |
+| Meerderheid maker knooppunt | hso-hana-dm | 10.0.0.13 |
+| SBD-apparaatserver | hso-hana-sbd | 10.0.0.19 |
 | | | |
 | NFS-server 1 | hso-nfs-vm-0 | 10.0.0.15 |
-| NFS-server 2 | HSO-NFS-VM-1 | 10.0.0.14 |
+| NFS-server 2 | hso-nfs-vm-1 | 10.0.0.14 |
 
 
 
-## <a name="multiple-subnets-and-vnics"></a>Meerdere subnetten en Vnic's
+## <a name="multiple-subnets-and-vnics"></a>Meerdere subnetten en vNIC's
 
-De volgende SAP HANA netwerk aanbevelingen zijn drie subnetten gemaakt binnen één virtueel Azure-netwerk. SAP HANA scale-out op Azure moet worden geïnstalleerd in de niet-gedeelde modus. Dit betekent dat elk knoop punt lokale schijf volumes gebruikt voor **/Hana/data** en **/Hana/log**. Omdat de knoop punten alleen lokale schijf volumes gebruiken, is het niet nodig om een afzonderlijk subnet voor opslag te definiëren:
+Na sap HANA-netwerkaanbevelingen zijn er drie subnetten gemaakt binnen één virtueel Azure-netwerk. SAP HANA-scale-out op Azure moet in de niet-gedeelde modus worden geïnstalleerd. Dat betekent dat elk knooppunt lokale schijfvolumes gebruikt voor **/hana/data** en **/hana/log.** Omdat de knooppunten alleen lokale schijfvolumes gebruiken, is het niet nodig om een afzonderlijk subnet voor opslag te definiëren:
 
-- 10.0.2.0/24 voor de communicatie tussen SAP HANA tussen knoop punten
-- 10.0.1.0/24 voor SAP HANA-systeem replicatie (HSR)
-- 10.0.0.0/24 voor alle andere zaken
+- 10.0.2.0/24 voor SAP HANA internode communicatie
+- 10.0.1.0/24 voor SAP HANA-systeemreplicatie (HSR)
+- 10.0.0.0/24 voor al het andere
 
-Zie [SAP Hana Global. ini](#sap-hana-globalini)(Engelstalig) voor informatie over SAP Hana configuratie met betrekking tot het gebruik van meerdere netwerken.
+Zie [SAP HANA global.ini](#sap-hana-globalini)voor informatie over SAP HANA-configuratie met betrekking tot het gebruik van meerdere netwerken.
 
-Elke VM in het cluster heeft drie Vnic's die overeenkomen met het aantal subnetten. [Het maken van een virtuele Linux-machine in azure met meerdere netwerk interface kaarten][azure-linux-multiple-nics] beschrijft een mogelijke routerings probleem in azure bij het implementeren van een virtuele Linux-machine. Dit specifieke routerings artikel is alleen van toepassing op het gebruik van meerdere Vnic's. Het probleem wordt door SUSE per standaard in SLES 12 SP3 opgelost. Zie voor meer informatie [multi-NIC met Cloud-netconfig in EC2 en Azure][suse-cloud-netconfig].
+Elke VM in het cluster heeft drie vNIC's die overeenkomen met het aantal subnetten. [Hoe u een Virtuele Linux-machine in Azure maakt met meerdere netwerkinterfacekaarten,][azure-linux-multiple-nics] wordt een mogelijk routeringsprobleem op Azure beschreven bij het implementeren van een Linux-vm. Dit specifieke routeringsartikel is alleen van toepassing op het gebruik van meerdere vNIC's. Het probleem wordt opgelost door SUSE per standaard in SLES 12 SP3. Zie [Multi-NIC met cloud-netconfig in EC2 en Azure][suse-cloud-netconfig]voor meer informatie.
 
 
-Voer de volgende opdrachten uit om te controleren of SAP HANA correct is geconfigureerd voor het gebruik van meerdere netwerken. Controleer eerst op het niveau van het besturings systeem dat alle drie de interne IP-adressen voor alle drie de subnetten actief zijn. Als u de subnetten met verschillende IP-adresbereiken hebt gedefinieerd, moet u de opdrachten aanpassen:
+Voer de volgende opdrachten uit om te controleren of SAP HANA correct is geconfigureerd om meerdere netwerken te gebruiken. Controleer eerst op het OS-niveau of alle drie de interne IP-adressen voor alle drie de subnetten actief zijn. Als u de subnetten met verschillende IP-adresbereiken hebt gedefinieerd, moet u de opdrachten aanpassen:
 
 <pre><code>
 ifconfig | grep "inet addr:10\."
 </code></pre>
 
-De volgende voorbeeld uitvoer is afkomstig uit het tweede worker-knoop punt op site 2. U kunt drie verschillende interne IP-adressen zien van ETH0, eth1 en eth2:
+De volgende voorbeelduitvoer is van het tweede werkknooppunt op locatie 2. U drie verschillende interne IP-adressen van eth0, eth1 en eth2 zien:
 
 <pre><code>
 inet addr:10.0.0.42  Bcast:10.0.0.255  Mask:255.255.255.0
@@ -111,25 +111,25 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 </code></pre>
 
 
-Controleer vervolgens de SAP HANA poorten voor de naam server en de HSR. SAP HANA moet worden geluisterd naar de bijbehorende subnetten. Afhankelijk van het SAP HANA-exemplaar nummer, moet u de opdrachten aanpassen. Het exemplaar nummer voor het test systeem is **00**. Er zijn verschillende manieren om erachter te komen welke poorten er worden gebruikt. 
+Controleer vervolgens de SAP HANA-poorten voor de naamserver en HSR. SAP HANA moet luisteren op de overeenkomstige subnetten. Afhankelijk van het SAP HANA-instantienummer moet u de opdrachten aanpassen. Voor het testsysteem was het instantienummer **00**. Er zijn verschillende manieren om erachter te komen welke poorten worden gebruikt. 
 
-De volgende SQL-instructie retourneert de exemplaar-ID, het exemplaar nummer en andere informatie:
+Met de volgende SQL-instructie worden de instantie-id, het instantienummer en andere informatie geretourneerd:
 
 <pre><code>
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-Als u de juiste poort nummers zoekt, kunt u bijvoorbeeld in HANA studio onder **configuratie** of via een SQL-instructie zoeken:
+Als u de juiste poortnummers wilt vinden, u bijvoorbeeld in HANA Studio zoeken onder **Configuratie** of via een SQL-instructie:
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-Als u wilt zoeken naar elke poort die wordt gebruikt in de SAP-software stack, inclusief SAP HANA, zoekt u naar [TCP/IP-poorten van alle SAP-producten][sap-list-port-numbers].
+Om elke poort te vinden die wordt gebruikt in de SAP-softwarestack, inclusief SAP HANA, zoekt [u tcp/IP-poorten van alle SAP-producten.][sap-list-port-numbers]
 
-Gezien het exemplaar nummer **00** in het test systeem van SAP Hana 2,0 is het poort nummer voor de naam server **30001**. Het poort nummer voor HSR-meta gegevens communicatie is **40002**. U kunt zich ook aanmelden bij een worker-knoop punt en vervolgens de master node-Services controleren. Voor dit artikel hebben we gekeken dat worker Node 2 op site 2 probeert verbinding te maken met het hoofd knooppunt op site 2.
+Gezien het instantienummer **00** in het SAP HANA 2.0-testsysteem is het poortnummer voor de naamserver **30001.** Het poortnummer voor HSR-metagegevenscommunicatie is **40002.** Een optie is om je aan te melden bij een werknemersknooppunt en vervolgens de hoofdknooppuntservices te controleren. Voor dit artikel hebben we worker node 2 op site 2 gecontroleerd om verbinding te maken met het hoofdknooppunt op site 2.
 
-Controleer de naam server poort:
+Controleer de naamserverpoort:
 
 <pre><code>
 nc -vz 10.0.0.40 30001
@@ -137,8 +137,8 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-Als u wilt bewijzen dat de communicatie tussen knoop punten gebruikmaakt van subnet **10.0.2.0/24**, zou het resultaat eruitzien als in de volgende voorbeeld uitvoer.
-Alleen de verbinding via het subnet **10.0.2.0/24** moet slagen:
+Om te bewijzen dat de internode-communicatie subnet **10.0.2.0/24**gebruikt, moet het resultaat er uitzien als de volgende monsteruitvoer.
+Alleen de verbinding via subnet **10.0.2.0/24** mag slagen:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 30001 (tcp) failed: Connection refused
@@ -146,7 +146,7 @@ nc: connect to 10.0.1.40 port 30001 (tcp) failed: Connection refused
 Connection to 10.0.2.40 30001 port [tcp/pago-services1] succeeded!
 </code></pre>
 
-Controleer nu op HSR-poort **40002**:
+Controleer nu op HSR-poort **40002:**
 
 <pre><code>
 nc -vz 10.0.0.40 40002
@@ -154,8 +154,8 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-Als u wilt bewijzen dat de HSR-communicatie gebruikmaakt van subnet **10.0.1.0/24**, zou het resultaat eruitzien als in de volgende voorbeeld uitvoer.
-Alleen de verbinding via het subnet **10.0.1.0/24** moet slagen:
+Om te bewijzen dat de HSR-communicatie subnet **10.0.1.0/24**gebruikt, moet het resultaat er uitzien als de volgende monsteruitvoer.
+Alleen de verbinding via subnet **10.0.1.0/24** mag slagen:
 
 <pre><code>
 nc: connect to 10.0.0.40 port 40002 (tcp) failed: Connection refused
@@ -168,11 +168,11 @@ nc: connect to 10.0.2.40 port 40002 (tcp) failed: Connection refused
 ## <a name="corosync"></a>Corosync
 
 
-Het **corosync** -configuratie bestand moet correct zijn op elk knoop punt in het cluster, met inbegrip van het hoofd knooppunt van de maker. Als de cluster koppeling van een knoop punt niet werkt zoals verwacht, maakt of kopieert u **/etc/corosync/corosync.conf** hand matig op alle knoop punten en start u de service opnieuw. 
+Het **corosync** config-bestand moet correct zijn op elk knooppunt in het cluster, inclusief het medewerkerpunt van de maker. Als de clusterkoppeling van een knooppunt niet werkt zoals verwacht, maakt of kopieert u **/etc/corosync/corosync.conf** handmatig naar alle knooppunten en start u de service opnieuw. 
 
-De inhoud van **corosync. conf** van het test systeem is een voor beeld.
+De inhoud van **corosync.conf** van het testsysteem is een voorbeeld.
 
-De eerste sectie is **totem**, zoals beschreven in [cluster installatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), stap 11. U kunt de waarde voor **mcastaddr**negeren. U hoeft alleen maar de bestaande vermelding te gebruiken. De vermeldingen voor **token** en **consensus** moeten worden ingesteld volgens [Microsoft Azure SAP Hana documentatie][sles-pacemaker-ha-guide].
+De eerste sectie is **totem**, zoals beschreven in [cluster installatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), stap 11. U de waarde voor **mcastaddr**negeren. Hou gewoon de bestaande ingang. De vermeldingen voor **token** en **consensus** moeten worden ingesteld op basis van [Microsoft Azure SAP HANA-documentatie.][sles-pacemaker-ha-guide]
 
 <pre><code>
 totem {
@@ -202,7 +202,7 @@ totem {
 }
 </code></pre>
 
-De tweede sectie, logboek registratie, is niet gewijzigd ten **opzichte**van de opgegeven standaard waarden:
+Het tweede deel, **logging,** is niet gewijzigd ten opzichte van de opgegeven standaardwaarden:
 
 <pre><code>
 logging {
@@ -220,7 +220,7 @@ logging {
 }
 </code></pre>
 
-In het derde gedeelte wordt de **nodelist**weer gegeven. Alle knoop punten van het cluster moeten worden weer gegeven met hun **nodeId**:
+Het derde deel toont de **lijst.** Alle knooppunten van het cluster moeten worden weergegeven met hun **nodeid:**
 
 <pre><code>
 nodelist {
@@ -255,7 +255,7 @@ nodelist {
 }
 </code></pre>
 
-In de laatste sectie **quorum**is het belang rijk om de waarde voor **expected_votes** correct in te stellen. Dit moet het aantal knoop punten zijn met inbegrip van het hoofd knooppunt van de maker. En de waarde voor **two_node** moet **0**zijn. Verwijder de vermelding niet volledig. Stel de waarde in op **0**.
+In het laatste gedeelte, **quorum,** is het belangrijk om de waarde voor **expected_votes** correct in te stellen. Het moet het aantal knooppunten, waaronder de meerderheid maker knooppunt. En de waarde voor **two_node** moet **0**zijn. Verwijder de vermelding niet volledig. Stel de waarde in op **0**.
 
 <pre><code>
 quorum {
@@ -268,7 +268,7 @@ quorum {
 </code></pre>
 
 
-Start de service opnieuw via **systemctl**:
+Start de service opnieuw op via **systemctl:**
 
 <pre><code>
 systemctl restart corosync
@@ -279,9 +279,9 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD-apparaat
 
-Het instellen van een SBD-apparaat op een virtuele Azure-machine wordt beschreven in [SBD omheining](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+Het instellen van een SBD-apparaat op een Azure VM wordt beschreven in [SBD-schermen.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)
 
-Controleer eerst op de SBD Server-VM of er ACL-vermeldingen zijn voor elk knoop punt in het cluster. Voer de volgende opdracht uit op de SBD Server-VM:
+Controleer eerst de VM van de SBD-server of er ACL-vermeldingen zijn voor elk knooppunt in het cluster. Voer de volgende opdracht uit op de VM van de SBD-server:
 
 
 <pre><code>
@@ -289,7 +289,7 @@ targetcli ls
 </code></pre>
 
 
-Op het test systeem ziet de uitvoer van de opdracht eruit als in het volgende voor beeld. ACL-namen, zoals **IQN. 2006-04. HSO-DB-0. local: HSO-DB-0** , moeten worden ingevoerd als de bijbehorende initiator namen op de vm's. Elke VM moet een ander abonnement hebben.
+Op het testsysteem ziet de uitvoer van de opdracht eruit als het volgende voorbeeld. ACL-namen zoals **iqn.2006-04.hso-db-0.local:hso-db-0** moeten worden ingevoerd als de bijbehorende initiatornamen op de VM's. Elke VM heeft een andere nodig.
 
 <pre><code>
  | | o- sbddbhso ................................................................... [/sbd/sbddbhso (50.0MiB) write-thru activated]
@@ -316,13 +316,13 @@ Op het test systeem ziet de uitvoer van de opdracht eruit als in het volgende vo
   |     | o- iqn.2006-04.hso-db-6.local:hso-db-6 .................................................................. [Mapped LUNs: 1]
 </code></pre>
 
-Controleer vervolgens of de namen van de initia tors op alle Vm's verschillend zijn en overeenkomen met de eerder vermelde vermeldingen. Dit voor beeld is van worker Node 1 op site 1:
+Controleer vervolgens of de namen van de initiator op alle VM's verschillend zijn en overeenkomen met de eerder weergegeven vermeldingen. Dit voorbeeld is van worker node 1 op site 1:
 
 <pre><code>
 cat /etc/iscsi/initiatorname.iscsi
 </code></pre>
 
-De uitvoer ziet eruit als in het volgende voor beeld:
+De uitvoer lijkt op het volgende voorbeeld:
 
 <pre><code>
 ##
@@ -338,31 +338,31 @@ De uitvoer ziet eruit als in het volgende voor beeld:
 InitiatorName=iqn.2006-04.hso-db-1.local:hso-db-1
 </code></pre>
 
-Controleer vervolgens of de **detectie** goed werkt. Voer de volgende opdracht uit op elk cluster knooppunt met behulp van het IP-adres van de SBD-Server-VM:
+Controleer vervolgens of de **detectie** correct werkt. Voer de volgende opdracht uit op elk clusterknooppunt met het IP-adres van de VM van de SBD-server:
 
 <pre><code>
 iscsiadm -m discovery --type=st --portal=10.0.0.19:3260
 </code></pre>
 
-De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
+De uitvoer moet er uitzien als de volgende steekproef:
 
 <pre><code>
 10.0.0.19:3260,1 iqn.2006-04.dbhso.local:dbhso
 </code></pre>
 
-Het volgende bewijs punt is om te controleren of het knoop punt het SDB-apparaat ziet. Controleer de service op elk knoop punt, met inbegrip van het hoofd knooppunt van de maker:
+Het volgende bewijspunt is om te controleren of het knooppunt het SDB-apparaat ziet. Controleer het op elk knooppunt met inbegrip van de meerderheid maker knooppunt:
 
 <pre><code>
 lsscsi | grep dbhso
 </code></pre>
 
-De uitvoer moet er ongeveer uitzien als in het volgende voor beeld. De namen kunnen echter verschillen. De naam van het apparaat kan ook worden gewijzigd nadat de virtuele machine opnieuw is opgestart:
+De uitvoer moet er uitzien als het volgende voorbeeld. De namen kunnen echter verschillen. De naam van het apparaat kan ook veranderen nadat de VM opnieuw is opgestart:
 
 <pre><code>
 [6:0:0:0]    disk    LIO-ORG  sbddbhso         4.0   /dev/sdm
 </code></pre>
 
-Afhankelijk van de status van het systeem helpt het soms de iSCSI-services opnieuw te starten om problemen op te lossen. Voer vervolgens de volgende opdrachten uit:
+Afhankelijk van de status van het systeem helpt het soms om de iSCSI-services opnieuw op te starten om problemen op te lossen. Voer vervolgens de volgende opdrachten uit:
 
 <pre><code>
 systemctl restart iscsi
@@ -370,13 +370,13 @@ systemctl restart iscsid
 </code></pre>
 
 
-U kunt vanuit een wille keurig knoop punt controleren of alle knoop punten **duidelijk**zijn. Zorg ervoor dat u de juiste naam voor het apparaat gebruikt op een specifiek knoop punt:
+Vanaf elk knooppunt u controleren of alle knooppunten **duidelijk**zijn. Zorg ervoor dat u de juiste apparaatnaam op een specifiek knooppunt gebruikt:
 
 <pre><code>
 sbd -d /dev/sdm list
 </code></pre>
 
-De uitvoer moet **duidelijk** weer geven voor elk knoop punt in het cluster:
+De uitvoer moet **duidelijk** zijn voor elk knooppunt in het cluster:
 
 <pre><code>
 0       hso-hana-vm-s1-0        clear
@@ -389,13 +389,13 @@ De uitvoer moet **duidelijk** weer geven voor elk knoop punt in het cluster:
 </code></pre>
 
 
-Een andere SBD-controle is de **dump** optie van de **SBD** -opdracht. In dit voor beeld van een opdracht en uitvoer van het hoofd knooppunt van de maker is de naam van het apparaat **SDD**, niet **SDM**:
+Een andere SBD-controle is de **dumpoptie** van de **sbd-opdracht.** In deze voorbeeldopdracht en -uitvoer van het meerderheidsknooppunt werd de naam van het apparaat **sdd**, niet **sdm**:
 
 <pre><code>
 sbd -d /dev/sdd dump
 </code></pre>
 
-De uitvoer, naast de naam van het apparaat, moet er op alle knoop punten hetzelfde uitzien:
+De uitvoer moet er, afgezien van de naam van het apparaat, op alle knooppunten hetzelfde uitzien:
 
 <pre><code>
 ==Dumping header on disk /dev/sdd
@@ -410,21 +410,21 @@ Timeout (msgwait)  : 120
 ==Header on disk /dev/sdd is dumped
 </code></pre>
 
-Een meer controle voor SBD is de mogelijkheid om een bericht naar een ander knoop punt te verzenden. Als u een bericht wilt verzenden naar worker-knoop punt 2 op site 2, voert u de volgende opdracht uit op worker-knoop punt 1 op site 2:
+Nog een controle op SBD is de mogelijkheid om een bericht te sturen naar een ander knooppunt. Als u een bericht wilt verzenden naar werknemersknooppunt 2 op site 2, voert u de volgende opdracht uit op worker node 1 op site 2:
 
 <pre><code>
 sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 </code></pre>
 
-Op de doel-VM zijde, **HSO-Hana-VM-S2-2** in dit voor beeld, kunt u de volgende vermelding vinden in **/var/log/messages**:
+Aan de doel-VM-kant, **hso-hana-vm-s2-2** in dit voorbeeld, vindt u de volgende vermelding in **/var/log/berichten:**
 
 <pre><code>
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Controleer of de vermeldingen in **/etc/sysconfig/SBD** overeenkomen met de beschrijving bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Controleer of de opstart instelling in **/etc/iscsi/iscsid.conf** is ingesteld op automatisch.
+Controleer of de vermeldingen in **/etc/sysconfig/sbd** overeenkomen met de beschrijving in [Pacemaker instellen op SUSE Linux Enterprise Server in Azure.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) Controleer of de opstartinstelling in **/etc/iscsi/iscsid.conf** is ingesteld op automatisch.
 
-De volgende vermeldingen zijn belang rijk in **/etc/sysconfig/SBD**. Pas de **id-** waarde indien nodig aan:
+De volgende vermeldingen zijn belangrijk in **/etc/sysconfig/sbd**. Pas indien nodig de **id-waarde** aan:
 
 <pre><code>
 SBD_DEVICE="/dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68;"
@@ -434,45 +434,45 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-Controleer de opstart instelling in **/etc/iscsi/iscsid.conf**. De vereiste instelling zou moeten zijn gebeurd met de volgende **iscsiadm** -opdracht, zoals beschreven in de documentatie. Controleer en pas deze hand matig aan met **VI** als het verschilt.
+Controleer de opstartinstelling in **/etc/iscsi/iscsid.conf**. De vereiste instelling moet zijn gebeurd met de volgende **iscsiadm-opdracht,** beschreven in de documentatie. Controleer en pas het handmatig aan met **vi** als het anders is.
 
-Met deze opdracht wordt het opstart gedrag ingesteld:
+Met deze opdracht wordt opstartgedrag ingesteld:
 
 <pre><code>
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Dit item in **/etc/iscsi/iscsid.conf**maken:
+Maak deze vermelding in **/etc/iscsi/iscsid.conf:**
 
 <pre><code>
 node.startup = automatic
 </code></pre>
 
-Tijdens het testen en verifiëren na het opnieuw opstarten van een virtuele machine is het SBD-apparaat in sommige gevallen niet meer zichtbaar. Er is een discrepantie tussen de opstart instelling en de weer gegeven YaST2. Voer de volgende stappen uit om de instellingen te controleren:
+Tijdens het testen en verifiëren, na het opnieuw opstarten van een VM, was het SBD-apparaat in sommige gevallen niet meer zichtbaar. Er was een discrepantie tussen de opstartinstelling en wat YaST2 liet zien. Ga als volgt te werk om de instellingen te controleren:
 
-1. YaST2 starten.
-2. Selecteer **Network Services** aan de linkerkant.
-3. Schuif omlaag naar **iSCSI-initiator** en selecteer deze.
-4. Op het volgende scherm onder het tabblad **service** ziet u de unieke naam van de initiator voor het knoop punt.
-5. Controleer boven de naam van de initiator of de start waarde van de **service** is ingesteld op **tijdens het opstarten**.
-6. Als dat niet het geval is, stelt u deze in op wanneer u in plaats van **hand matig** **opstart** .
-7. Vervolgens schakelt u het bovenste tabblad naar **verbonden doelen**.
-8. Op het scherm **verbonden doelen** ziet u een vermelding voor het SBD-apparaat, zoals in dit voor beeld: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
-9. Controleer **of de opstart** waarde is ingesteld **op tijdens het opstarten**.
-10. Als dat niet het geval is, kiest u **bewerken** en wijzigt u deze.
+1. Start YaST2.
+2. Selecteer **Netwerkservices** aan de linkerkant.
+3. Schuif omlaag aan de rechterkant naar **iSCSI Initiator** en selecteer deze.
+4. Op het volgende scherm onder het tabblad **Service** ziet u de unieke naam van de initiator voor het knooppunt.
+5. Controleer boven de naam van de initiator of de waarde **Servicestart** is ingesteld **op Bij het opstarten**.
+6. Als dit niet het is, stelt u deze in **op Bij het opstarten** in plaats van **handmatig.**
+7. Schakel vervolgens het bovenste tabblad in op **Verbonden doelen**.
+8. Op het scherm **Verbonden doelen** ziet u een vermelding voor het SBD-apparaat zoals dit voorbeeld: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+9. Controleer of de **opstartwaarde** is ingesteld **op opstarten.**
+10. Zo niet, kies **dan Bewerken** en wijzig deze.
 11. Sla de wijzigingen op en sluit YaST2 af.
 
 
 
 ## <a name="pacemaker"></a>Pacemaker
 
-Nadat alles correct is ingesteld, kunt u de volgende opdracht uitvoeren op elk knoop punt om de status van de pacemaker-service te controleren:
+Nadat alles correct is ingesteld, u de volgende opdracht op elk knooppunt uitvoeren om de status van de Pacemaker-service te controleren:
 
 <pre><code>
 systemctl status pacemaker
 </code></pre>
 
-De bovenkant van de uitvoer moet er ongeveer uitzien als in het volgende voor beeld. Het is belang rijk dat de status na **actief** wordt weer gegeven als **geladen** en **actief (wordt uitgevoerd)** . De status na **laden** moet worden weer gegeven als **ingeschakeld**.
+De bovenkant van de uitvoer moet er uitzien als het volgende voorbeeld. Het is belangrijk dat de status na **Actief** wordt weergegeven als **geladen** en **actief (actief)**. De status na **Loaded** moet worden weergegeven als **ingeschakeld**.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -492,19 +492,19 @@ De bovenkant van de uitvoer moet er ongeveer uitzien als in het volgende voor be
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-Als de instelling nog steeds is **uitgeschakeld**, voert u de volgende opdracht uit:
+Als de instelling nog steeds is **uitgeschakeld,** voert u de volgende opdracht uit:
 
 <pre><code>
 systemctl enable pacemaker
 </code></pre>
 
-Voer de volgende opdracht uit om alle geconfigureerde resources in pacemaker weer te geven:
+Voer de volgende opdracht uit om alle geconfigureerde resources in Pacemaker weer te geven:
 
 <pre><code>
 crm status
 </code></pre>
 
-De uitvoer moet er ongeveer uitzien als in het volgende voor beeld. Het is prima dat de **cln** -en **MSL** -bronnen worden weer gegeven als gestopt op de meerderheid van de VM van de maker, **HSO-Hana-DM**. Er is geen SAP HANA installatie op het hoofd knooppunt van de maker. De **cln** -en **MSL** -bronnen worden dus als gestopt weer gegeven. Het is belang rijk dat het juiste totale aantal Vm's, **7**, wordt weer gegeven. Alle virtuele machines die deel uitmaken van het cluster, moeten worden weer gegeven met de status **online**. Het huidige primaire hoofd knooppunt moet correct worden herkend. In dit voor beeld is het **HSO-Hana-VM-S1-0**:
+De uitvoer moet er uitzien als het volgende voorbeeld. Het is prima dat de **cln** en **msl** middelen worden getoond als gestopt op de meerderheid maker VM, **hso-hana-dm**. Er is geen SAP HANA installatie op de meerderheid maker node. Dus de **cln** en **msl** middelen worden weergegeven als gestopt. Het is belangrijk dat het toont het juiste totale aantal VM's, **7**. Alle VM's die deel uitmaken van het cluster moeten worden vermeld met de status **Online**. Het huidige primaire hoofdknooppunt moet correct worden herkend. In dit voorbeeld is het **hso-hana-vm-s1-0:**
 
 <pre><code>
 Stack: corosync
@@ -532,14 +532,14 @@ Full list of resources:
      rsc_nc_HSO_HDB00   (ocf::heartbeat:anything):      Started hso-hana-vm-s1-0
 </code></pre>
 
-Een belang rijk onderdeel van pacemaker is onderhouds modus. In deze modus kunt u wijzigingen aanbrengen zonder dat u een onmiddellijke cluster actie hoeft te maken. Een voor beeld is het opnieuw opstarten van de VM. Een typische use-case zou gepland zijn voor het besturings systeem of het onderhoud van Azure-infra structuur. Zie [gepland onderhoud](#planned-maintenance). Gebruik de volgende opdracht om pacemaker in te stellen in de onderhouds modus:
+Een belangrijk kenmerk van Pacemaker is de onderhoudsmodus. In deze modus u wijzigingen aanbrengen zonder een onmiddellijke clusteractie uit te lokken. Een voorbeeld is een VM-reboot. Een typische use case zou zijn gepland OS of Azure-infrastructuur onderhoud. Zie [Gepland onderhoud](#planned-maintenance). Gebruik de volgende opdracht om Pacemaker in de onderhoudsmodus te zetten:
 
 <pre><code>
 crm configure property maintenance-mode=true
 </code></pre>
 
-Wanneer u de **status van CRM**controleert, ziet u in de uitvoer dat alle resources zijn gemarkeerd als **onbeheerd**. In deze status reageert het cluster niet op wijzigingen zoals het starten of stoppen van SAP HANA.
-In het volgende voor beeld ziet u de uitvoer van de opdracht **CRM-status** terwijl het cluster zich in de onderhouds modus bevindt:
+Wanneer u de **crm-status controleert,** ziet u in de uitvoer dat alle resources zijn gemarkeerd als **onbeheerd**. In deze toestand reageert het cluster niet op wijzigingen zoals het starten of stoppen van SAP HANA.
+In het volgende voorbeeld wordt de uitvoer van de opdracht **crm-status** weergegeven terwijl het cluster in de onderhoudsmodus staat:
 
 <pre><code>
 Stack: corosync
@@ -579,20 +579,20 @@ Full list of resources:
 </code></pre>
 
 
-Dit opdracht voorbeeld laat zien hoe u de onderhouds modus van het cluster kunt beëindigen:
+In dit opdrachtvoorbeeld ziet u hoe u de clusteronderhoudsmodus beëindigen:
 
 <pre><code>
 crm configure property maintenance-mode=false
 </code></pre>
 
 
-Een andere **CRM** -opdracht haalt de volledige cluster configuratie op in een editor, zodat u deze kunt bewerken. Nadat de wijzigingen zijn opgeslagen, start het cluster de juiste acties:
+Een andere **crm-opdracht** krijgt de volledige clusterconfiguratie in een editor, zodat u deze bewerken. Nadat de wijzigingen zijn opgeslagen, start het cluster de juiste acties:
 
 <pre><code>
 crm configure edit
 </code></pre>
 
-Als u de volledige configuratie van het cluster wilt bekijken, gebruikt u de optie **CRM-weer gave** :
+Als u de volledige clusterconfiguratie wilt bekijken, gebruikt u de optie **crm-show:**
 
 <pre><code>
 crm configure show
@@ -600,7 +600,7 @@ crm configure show
 
 
 
-Na storingen in cluster bronnen wordt met de opdracht **CRM-status** een lijst met **mislukte acties**weer gegeven. Zie het volgende voor beeld van deze uitvoer:
+Na fouten in clusterbronnen wordt in de opdracht **crm-status** een lijst met **mislukte acties**weergegeven. Zie het volgende voorbeeld van deze uitvoer:
 
 
 <pre><code>
@@ -633,13 +633,13 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-U moet na storingen een cluster opschonen. Gebruik de **CRM** -opdracht opnieuw en gebruik de opdracht optie **opruimen** om deze mislukte actie vermeldingen op te halen. Geef de overeenkomstige cluster bron de volgende naam:
+Het is noodzakelijk om een cluster op te schonen na fouten. Gebruik de **crm-opdracht** opnieuw en gebruik de **opschoning** van de opdrachtoptie om deze mislukte actievermeldingen te verwijderen. Noem de bijbehorende clusterbron als volgt:
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-De opdracht moet uitvoer retour neren zoals in het volgende voor beeld:
+De opdracht moet de uitvoer retourneren, zoals het volgende voorbeeld:
 
 <pre><code>
 Cleaned up rsc_SAPHanaCon_HSO_HDB00:0 on hso-hana-dm
@@ -656,9 +656,9 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Failover of overname
 
-Zoals beschreven in [belang rijke opmerkingen](#important-notes), mag u geen standaard zonder problemen gebruiken om de failover van het cluster of SAP Hana HSR-overname te testen. In plaats daarvan raden we u aan een kernel in te scha kelen, een bron migratie af te dwingen of om alle netwerken op het niveau van het besturings systeem van een virtuele machine af te sluiten. Een andere methode is de **CRM-\<knoop punt\> de stand-by** -opdracht. Zie het [SuSE-document][sles-12-ha-paper]. 
+Zoals besproken in [Belangrijke notities,](#important-notes)moet je niet gebruik maken van een standaard sierlijke shutdown om het cluster failover of SAP HANA HSR overname te testen. In plaats daarvan raden we u aan een kernelpanic te activeren, een bronmigratie af te dwingen of mogelijk alle netwerken op het OS-niveau van een VM af te sluiten. Een andere methode is de **crm-node \<\> stand-by** opdracht. Zie het [SUSE-document][sles-12-ha-paper]. 
 
-De volgende drie voorbeeld opdrachten kunnen een clusterfailover geforceerd:
+Met de volgende drie voorbeeldopdrachten u een clusterfailover forceren:
 
 <pre><code>
 echo c &gt /proc/sysrq-trigger
@@ -672,24 +672,24 @@ wicked ifdown eth2
 wicked ifdown eth&ltn&gt
 </code></pre>
 
-Zoals beschreven in [gepland onderhoud](#planned-maintenance), is een goede manier om de cluster activiteiten te controleren door **SAPHanaSR-showAttr** uit te voeren met de opdracht **Watch** :
+Zoals beschreven in [Gepland onderhoud,](#planned-maintenance)een goede manier om de cluster activiteiten te controleren is om **SAPHanaSR-showAttr** uit te voeren met de **horloge** opdracht:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Het helpt ook de SAP HANA landschaps status te bekijken die afkomstig is van een SAP python-script. De Cluster installatie zoekt naar deze status waarde. Het wordt duidelijk wanneer u denkt dat er een fout is opgetreden in het worker-knoop punt. Als een worker-knoop punt uitvalt, wordt SAP HANA niet onmiddellijk een fout geretourneerd voor de status van het hele scale-out systeem. 
+Het helpt ook om te kijken naar de SAP HANA-landschapsstatus afkomstig van een SAP Python-script. De clusterinstelling is op zoek naar deze statuswaarde. Het wordt duidelijk wanneer u denkt aan een werknemer knooppunt falen. Als een werknemersknooppunt naar beneden gaat, geeft SAP HANA niet meteen een fout voor de gezondheid van het hele scale-outsysteem. 
 
-Er zijn enkele nieuwe pogingen om onnodige failovers te voor komen. Het cluster reageert alleen als de status wordt gewijzigd van **OK**, retour waarde **4**, naar **fout**, retour waarde **1**. Het is dus correct als de uitvoer van **SAPHanaSR-showAttr** een virtuele machine met de status **offline**weergeeft. Maar er is nog geen activiteit om de primaire en secundaire te scha kelen. Er wordt geen cluster activiteit geactiveerd, zolang SAP HANA geen fout retourneert.
+Er zijn een aantal pogingen om onnodige failovers te voorkomen. Het cluster reageert alleen als de status verandert van **Ok**, retourwaarde **4**, naar **fout**, retourwaarde **1**. Dus het is juist als de output van **SAPHanaSR-showAttr** toont een VM met de staat **offline**. Maar er is nog geen activiteit om van primair en secundair te wisselen. Er wordt geen clusteractiviteit geactiveerd zolang SAP HANA geen fout retourneert.
 
-U kunt de SAP HANA liggende status controleren als gebruiker **\<Hana SID\>adm** door het SAP python-script aan te roepen als volgt. Mogelijk moet u het pad aanpassen:
+U de STATUS van SAP HANA-landschap als gebruiker ** \<HANA SID\>adm** controleren door het SAP Python-script als volgt te noemen. Misschien moet u het pad aanpassen:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-De uitvoer van deze opdracht moet eruitzien als in het volgende voor beeld. De kolom Status van de **host** en de **algehele status** van de host zijn beide belang rijk. De werkelijke uitvoer is breder, met aanvullende kolommen.
-Als u de uitvoer tabel beter leesbaar wilt maken in dit document, zijn de meeste kolommen aan de rechter kant verwijderd:
+De uitvoer van deze opdracht moet er uitzien als het volgende voorbeeld. De kolom **Hoststatus** en de **algehele hoststatus** zijn beide belangrijk. De werkelijke uitvoer is breder, met extra kolommen.
+Om de uitvoertabel in dit document leesbaarder te maken, zijn de meeste kolommen aan de rechterkant gestript:
 
 <pre><code>
 | Host             | Host   | Host   | Failover | Remove | 
@@ -704,7 +704,7 @@ overall host status: ok
 </code></pre>
 
 
-Er is een andere opdracht voor het controleren van de huidige cluster activiteiten. Bekijk de volgende opdracht en de uitvoer staart nadat het hoofd knooppunt van de primaire site is afgebroken. U kunt de lijst met overgangs acties zien, zoals het **promo veren** van het voormalige secundaire hoofd knooppunt, **HSO-Hana-VM-S2-0**, als de nieuwe primaire master. Als alles goed is en alle activiteiten zijn voltooid, moet deze lijst met **overgangs overzichten** leeg zijn.
+Er is nog een opdracht om huidige clusteractiviteiten te controleren. Zie de volgende opdracht en de uitvoerstaart nadat het hoofdknooppunt van de primaire site is gedood. U de lijst met overgangsacties zoals **het promoten van** het voormalige secundaire hoofdknooppunt, **hso-hana-vm-s2-0**, zien als de nieuwe primaire master. Als alles in orde is en alle activiteiten klaar zijn, moet deze **lijst met overgangsoverzichten** leeg zijn.
 
 <pre><code>
  crm_simulate -Ls
@@ -724,36 +724,36 @@ Transition Summary:
 
 ## <a name="planned-maintenance"></a>Gepland onderhoud 
 
-Er zijn verschillende use-cases voor gepland onderhoud. Eén vraag is of het nu gewoon onderhoud van de infra structuur is, zoals wijzigingen op het niveau van het besturings systeem en de schijf configuratie of een HANA-upgrade.
-U kunt aanvullende informatie vinden in documenten van SUSE, zoals een [downtime van nul][sles-zero-downtime-paper] of [SAP Hana scenario met SR-prestaties geoptimaliseerd][sles-12-for-sap]. Deze documenten bevatten ook voor beelden die laten zien hoe u hand matig een primaire migreert.
+Er zijn verschillende use cases als het gaat om gepland onderhoud. Een vraag is of het gewoon onderhoud van de infrastructuur, zoals wijzigingen op het OS-niveau en schijfconfiguratie of een HANA-upgrade.
+U aanvullende informatie vinden in documenten van SUSE zoals [Towards Zero Downtime][sles-zero-downtime-paper] of SAP [HANA SR Performance Optimized Scenario.][sles-12-for-sap] Deze documenten bevatten ook voorbeelden die laten zien hoe u een primaire handmatig migreert.
 
-Er zijn intensieve interne tests uitgevoerd om het gebruik van de infra structuur te controleren. Om te voor komen dat er problemen zijn die te maken hebben met de migratie van de primaire, hebben we besloten om altijd een primaire te migreren voordat u een cluster in de onderhouds modus plaatst. Op deze manier is het niet nodig om het cluster te verg eten over de voormalige situatie: de zijde is primair en de secundaire.
+Er zijn intensieve interne tests uitgevoerd om de use case voor onderhoud van de infrastructuur te verifiëren. Om problemen met betrekking tot het migreren van de primaire te voorkomen, hebben we besloten om altijd een primaire te migreren voordat we een cluster in de onderhoudsmodus zetten. Op deze manier is het niet nodig om het cluster te laten vergeten over de voormalige situatie: welke kant was primair en welke secundair.
 
-Er zijn twee verschillende situaties in dit opzicht:
+Er zijn twee verschillende situaties in dit verband:
 
-- **Gepland onderhoud op de huidige secundaire**. In dit geval kunt u het cluster gewoon in de onderhouds modus plaatsen en het op het secundaire werk doen zonder dat dit van invloed is op het cluster.
+- **Gepland onderhoud aan de huidige secundaire**. In dit geval u het cluster gewoon in de onderhoudsmodus zetten en het werk aan de secundaire modus doen zonder dat dit gevolgen heeft voor het cluster.
 
-- **Gepland onderhoud op de huidige primaire**. Zodat gebruikers tijdens onderhoud kunnen blijven werken, moet u een failover afdwingen. Met deze methode moet u de failover van het cluster activeren op pacemaker en niet alleen op het niveau van de SAP HANA HSR. De pacemaker-configuratie activeert automatisch de SAP HANA overname. U moet ook de failover uitvoeren voordat u het cluster in de onderhouds modus plaatst.
+- **Gepland onderhoud aan de huidige primaire**. Om ervoor te zorgen dat gebruikers tijdens het onderhoud kunnen blijven werken, moet u een failover forceren. Met deze aanpak moet u de clusterfailover door Pacemaker activeren en niet alleen op SAP HANA HSR-niveau. De Pacemaker setup activeert automatisch de SAP HANA overname. U moet ook de failover uitvoeren voordat u het cluster in de onderhoudsmodus plaatst.
 
-De procedure voor onderhoud op de huidige secundaire site is als volgt:
+De procedure voor het onderhoud op de huidige secundaire locatie is als volgt:
 
-1. Plaats het cluster in de onderhouds modus.
-2. Het werk volt ooien op de secundaire site. 
-3. De onderhouds modus van het cluster beëindigen.
+1. Zet het cluster in de onderhoudsmodus.
+2. Het werk op de secundaire site uitvoeren. 
+3. Beëindig de clusteronderhoudsmodus.
 
-De procedure voor onderhoud op de huidige primaire site is complexer:
+De procedure voor onderhoud op de huidige primaire locatie is complexer:
 
-1. Activeer een failover of SAP HANA overname hand matig via een pacemaker-resource migratie. Bekijk de details die volgen.
-2. SAP HANA op de voormalige primaire site wordt afgesloten door de Cluster installatie.
-3. Plaats het cluster in de onderhouds modus.
-4. Nadat het onderhouds werk is uitgevoerd, registreert u de eerste primaire locatie als de nieuwe secundaire site.
-5. De cluster configuratie opschonen. Bekijk de details die volgen.
-6. De onderhouds modus van het cluster beëindigen.
+1. Handmatig leiden tot een failover of SAP HANA overname via een Pacemaker resource migratie. Zie de details die volgen.
+2. SAP HANA op de voormalige primaire site wordt afgesloten door de clustersetup.
+3. Zet het cluster in de onderhoudsmodus.
+4. Nadat de onderhoudswerkzaamheden zijn uitgevoerd, registreert u de voormalige primaire als de nieuwe secundaire site.
+5. De clusterconfiguratie opschonen. Zie de details die volgen.
+6. Beëindig de clusteronderhoudsmodus.
 
 
-Bij het migreren van een resource wordt een vermelding toegevoegd aan de cluster configuratie. Een voor beeld is een failover afgedwongen. U moet deze vermeldingen opschonen voordat u de onderhouds modus beëindigt. Zie het volgende voor beeld.
+Als u een resource migreert, wordt een vermelding toegevoegd aan de clusterconfiguratie. Een voorbeeld is het forceren van een failover. Je moet deze items opte schonen voordat je de onderhoudsmodus beëindigt. Zie het volgende voorbeeld.
 
-Eerst moet u een clusterfailover afdwingen door de **MSL** -resource te migreren naar het huidige secundaire hoofd knooppunt. Met deze opdracht geeft u een waarschuwing dat een **verplaatsings beperking** is gemaakt:
+Forceer eerst een clusterfailover door de **msl-bron** te migreren naar het huidige secundaire hoofdknooppunt. Met deze opdracht wordt gewaarschuwd dat er een **verplaatsingsbeperking** is gemaakt:
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -762,13 +762,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-Controleer het failoverproces via de opdracht **SAPHanaSR-showAttr**. Als u de cluster status wilt controleren, opent u een speciaal shell venster en start u de opdracht met **Watch**:
+Controleer het failoverproces via de opdracht **SAPHanaSR-showAttr.** Als u de clusterstatus wilt controleren, opent u een speciaal shellvenster en start u de opdracht met **horloge:**
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-In de uitvoer moet de hand matige failover worden weer gegeven. Het voormalige secundaire hoofd knooppunt is **gepromoveerd**, in dit voor beeld **HSO-Hana-VM-S2-0**. De voormalige primaire site is gestopt, **LSS** waarde **1** voor het voormalige primaire hoofd knooppunt **HSO-Hana-VM-S1-0**: 
+De uitvoer moet de handmatige failover weergeven. De voormalige secundaire master node kreeg **bevorderd**, in deze steekproef, **hso-hana-vm-s2-0**. De voormalige primaire site werd gestopt, **lss** waarde **1** voor de voormalige primaire master node **hso-hana-vm-s1-0:** 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -793,21 +793,21 @@ hso-hana-vm-s2-1 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS
 hso-hana-vm-s2-2 DEMOTED     online     slave:slave:worker:slave     -10000 HSOS2
 </code></pre>
 
-Na de failover van het cluster en SAP HANA overname, plaatst u het cluster in de onderhouds modus zoals beschreven in [pacemaker](#pacemaker).
+Na de clusterfailover en sap HANA overname, zet het cluster in de onderhoudsmodus zoals beschreven in [Pacemaker](#pacemaker).
 
-De opdrachten **SAPHanaSR-showAttr** en **CRM-status** geven niets over de beperkingen die zijn gemaakt door de resource migratie. Een optie om deze beperkingen zichtbaar te maken, is het weer geven van de volledige cluster bron configuratie met de volgende opdracht:
+De opdrachten **SAPHanaSR-showAttr** en **crm-status** geven niets aan over de beperkingen die zijn gemaakt door de bronmigratie. Een optie om deze beperkingen zichtbaar te maken, is om de volledige clusterbronconfiguratie weer te geven met de volgende opdracht:
 
 <pre><code>
 crm configure show
 </code></pre>
 
-Binnen de cluster configuratie vindt u een nieuwe locatie beperking die is veroorzaakt door de voormalige hand matige resource migratie. Dit voor beeld begint met **locatie-cli**:
+Binnen de clusterconfiguratie vindt u een nieuwe locatiebeperking die wordt veroorzaakt door de voormalige handmatige bronmigratie. Dit voorbeeld item begint met **locatie cli-**:
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Helaas kunnen dergelijke beperkingen van invloed zijn op het algehele gedrag van het cluster. Daarom is het verplicht om ze opnieuw te verwijderen voordat u het hele systeem back-up brengt. Met de opdracht **unmigrate** kunt u de locatie beperkingen opschonen die eerder zijn gemaakt. De naam kan enigszins verwarrend zijn. De resource wordt niet opnieuw gemigreerd naar de oorspronkelijke VM van waaruit deze is gemigreerd. Alleen de locatie beperkingen worden verwijderd en ook de bijbehorende informatie wordt geretourneerd wanneer u de opdracht uitvoert:
+Helaas kunnen dergelijke beperkingen van invloed zijn op het algemene clustergedrag. Dus het is verplicht om ze opnieuw te verwijderen voordat u het hele systeem weer omhoog brengt. Met de opdracht **Emigreren** is het mogelijk om de locatiebeperkingen op te schonen die eerder zijn gemaakt. De naamgeving kan een beetje verwarrend zijn. Het probeert niet om de bron terug te migreren naar de oorspronkelijke VM van waaruit deze is gemigreerd. Het verwijdert alleen de locatiebeperkingen en retourneert ook overeenkomstige informatie wanneer u de opdracht uitvoert:
 
 
 <pre><code>
@@ -816,32 +816,32 @@ crm resource unmigrate msl_SAPHanaCon_HSO_HDB00
 INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
-Aan het einde van het onderhouds werk stopt u de onderhouds modus van het cluster zoals wordt weer gegeven in [pacemaker](#pacemaker).
+Aan het einde van de onderhoudswerkzaamheden stopt u de clusteronderhoudsmodus zoals weergegeven in [Pacemaker.](#pacemaker)
 
 
 
-## <a name="hb_report-to-collect-log-files"></a>hb_report voor het verzamelen van logboek bestanden
+## <a name="hb_report-to-collect-log-files"></a>hb_report logboekbestanden te verzamelen
 
-Voor het analyseren van problemen met pacemaker-clusters is het handig en wordt u gevraagd door SUSE-ondersteuning om het **hb_report** -hulp programma uit te voeren. Alle belang rijke logboek bestanden die u nodig hebt om te analyseren wat er is gebeurd, worden verzameld. In deze voorbeeld aanroep wordt gebruikgemaakt van een begin-en eind tijd waarop een specifiek incident heeft plaatsgevonden. Zie ook [belang rijke opmerkingen](#important-notes):
+Om problemen met pacemakers te analyseren, is het handig en wordt het ook gevraagd door SUSE-ondersteuning om het **hb_report-hulpprogramma** uit te voeren. Het verzamelt alle belangrijke logbestanden die u nodig hebt om te analyseren wat er gebeurd is. In deze voorbeeldoproep wordt een begin- en eindtijd gebruikt waarin een specifiek incident heeft plaatsgevonden. Zie ook [Belangrijke nota's:](#important-notes)
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
 </code></pre>
 
-De opdracht geeft aan waar de gecomprimeerde logboek bestanden worden geplaatst:
+De opdracht vertelt u waar de gecomprimeerde logboekbestanden zijn geplaatst:
 
 <pre><code>
 The report is saved in /tmp/hb_report_log.tar.bz2
 Report timespan: 09/13/18 07:36:00 - 09/13/18 08:00:00
 </code></pre>
 
-U kunt de afzonderlijke bestanden vervolgens extra heren met behulp van de standaard **tar** -opdracht:
+U vervolgens de afzonderlijke bestanden extraheren via de standaard **teeropdracht:**
 
 <pre><code>
 tar -xvf hb_report_log.tar.bz2
 </code></pre>
 
-Wanneer u de uitgepakte bestanden bekijkt, vindt u alle logboek bestanden. De meeste hiervan zijn in afzonderlijke directory's geplaatst voor elk knoop punt in het cluster:
+Als je kijkt naar de uitgepakte bestanden, vindt u alle logbestanden. De meeste van hen werden in aparte mappen voor elk knooppunt in het cluster:
 
 <pre><code>
 -rw-r--r-- 1 root root  13655 Sep 13 09:01 analysis.txt
@@ -860,7 +860,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-Binnen het opgegeven tijds bereik is het huidige hoofd knooppunt **HSO-Hana-VM-S1-0** afgebroken. In het **logboek. log**vindt u vermeldingen die betrekking hebben op deze gebeurtenis:
+Binnen het opgegeven tijdsbereik werd het huidige masternode **hso-hana-vm-s1-0** gedood. U items met betrekking tot deze gebeurtenis vinden in het **journal.log:**
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -882,7 +882,7 @@ Binnen het opgegeven tijds bereik is het huidige hoofd knooppunt **HSO-Hana-VM-S
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-Een ander voor beeld is het pacemaker-logboek bestand op de secundaire master, die de nieuwe primaire master geworden. Dit fragment toont aan dat de status van het afgebroken primaire hoofd knooppunt is ingesteld op **offline**:
+Een ander voorbeeld is het Pacemaker-logboekbestand op de secundaire master, dat de nieuwe primaire master werd. Dit fragment toont aan dat de status van de gedode primaire master node werd ingesteld op **offline:**
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -900,10 +900,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-De volgende fragmenten zijn afkomstig uit het SAP HANA **Global. ini** -bestand op cluster site 2. In dit voor beeld ziet u de hostnamen-omzettings vermeldingen voor het gebruik van verschillende netwerken voor SAP HANA interknooppunt communicatie en HSR:
+De volgende fragmenten zijn afkomstig uit het SAP HANA **global.ini-bestand** op clustersite 2. In dit voorbeeld worden de hostname-resolutievermeldingen weergegeven voor het gebruik van verschillende netwerken voor SAP HANA-internodecommunicatie en HSR:
 
 <pre><code>
 [communication]
@@ -944,39 +944,39 @@ listeninterface = .internal
 
 ## <a name="hawk"></a>Hawk
 
-De cluster-oplossing biedt een browser interface die een GUI biedt voor gebruikers die de voor keur geven aan menu's en afbeeldingen om alle opdrachten op het shell niveau te krijgen.
-Als u de browser interface wilt gebruiken, vervangt u **\<knoop punt\>** door een werkelijk SAP Hana knoop punt in de volgende URL. Voer vervolgens de referenties in van het cluster (gebruikers **cluster**):
+De clusteroplossing biedt een browserinterface die een GUI biedt voor gebruikers die menu's en afbeeldingen verkiezen boven het hebben van alle opdrachten op shell-niveau.
+Als u de browserinterface wilt gebruiken, vervangt u ** \<knooppunt\> ** met een daadwerkelijk SAP HANA-knooppunt in de volgende URL. Voer vervolgens de referenties van het cluster **(gebruikerscluster) in:**
 
 <pre><code>
 https://&ltnode&gt:7630
 </code></pre>
 
-Deze scherm afbeelding toont het cluster Dashboard:
+In deze schermafbeelding wordt het clusterdashboard weergegeven:
 
 
-![Hawk-cluster dashboard](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
+![Hawk-clusterdashboard](media/hana-vm-scale-out-HA-troubleshooting/hawk-1.png)
 
 
-In dit voor beeld worden de locatie beperkingen weer gegeven die zijn veroorzaakt door een migratie van een cluster bron, zoals wordt uitgelegd in [gepland onderhoud](#planned-maintenance):
+In dit voorbeeld worden de locatiebeperkingen weergegeven die worden veroorzaakt door een clusterbronmigratie zoals uitgelegd in [Gepland onderhoud:](#planned-maintenance)
 
 
-![Hawk-lijst beperkingen](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
+![Hawk lijst beperkingen](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-U kunt ook de **hb_report** uitvoer uploaden in Hawk onder **geschiedenis**, zoals hieronder wordt weer gegeven. Zie hb_report voor het verzamelen van logboek bestanden: 
+U ook de **hb_report-uitvoer** uploaden in Hawk onder **Geschiedenis**, weergegeven als volgt. Zie hb_report om logboekbestanden te verzamelen: 
 
-![Hawk-upload hb_report uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Hawk uploadt hb_report uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Met de **geschiedenis Verkenner**kunt u vervolgens alle cluster overgangen door lopen die zijn opgenomen in de **hb_report** uitvoer:
+Met de **History Explorer**u vervolgens alle clusterovergangen doorlopen die in de **hb_report** uitvoer zijn opgenomen:
 
-![Hawk overgangen in de hb_report uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hawk overgangen in de hb_report output](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-Deze laatste scherm afbeelding toont de sectie **Details** van één overgang. Het cluster is gereageerd op een primair hoofd knooppunt crash, knoop punt **HSO-Hana-VM-S1-0**. Nu wordt het secundaire knoop punt bevorderd als de nieuwe Master, **HSO-Hana-VM-S2-0**:
+Deze laatste screenshot toont de sectie **Details** van een enkele overgang. Het cluster reageerde op een primaire master node crash, knooppunt **hso-hana-vm-s1-0**. Het is nu het bevorderen van de secundaire knooppunt als de nieuwe meester, **hso-hana-vm-s2-0:**
 
-![Hawk enkele overgang](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
+![Havik enkele overgang](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding wordt een hoge Beschik baarheid voor SAP HANA in een scale-out configuratie beschreven. Naast de-data base is een ander belang rijk onderdeel in een SAP-landschap de SAP net-Weaver-stack. Meer informatie over [hoge Beschik baarheid voor SAP NetWeaver op Azure virtual machines die gebruikmaken van de SuSE Enter prise Linux-server][sap-nw-ha-guide-sles].
+Deze handleiding voor probleemoplossing beschrijft de hoge beschikbaarheid voor SAP HANA in een scale-outconfiguratie. Naast de database is een ander belangrijk onderdeel in een SAP-landschap de SAP NetWeaver-stack. Meer informatie over [hoge beschikbaarheid voor SAP NetWeaver op virtuele Azure-machines die Gebruikmaken van SUSE Enterprise Linux Server.][sap-nw-ha-guide-sles]
 

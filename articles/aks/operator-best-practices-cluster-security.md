@@ -1,66 +1,66 @@
 ---
-title: Operator aanbevolen procedures - beveiliging-clusters in Azure Kubernetes Services (AKS)
-description: Meer over de best practices uit de cluster-operator voor informatie over het beheren van beveiliging van clusters en -upgrades in Azure Kubernetes Service (AKS)
+title: Aanbevolen procedures voor operatoren - Clusterbeveiliging in Azure Kubernetes Services (AKS)
+description: Lees de aanbevolen procedures voor de clusteroperator voor het beheren van clusterbeveiliging en -upgrades in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f02f6588946e2b63a1a092aba15603d1685e8207
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594801"
 ---
-# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor beveiliging van clusters en upgrades in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor clusterbeveiliging en -upgrades in Azure Kubernetes Service (AKS)
 
-Wanneer u clusters in Azure Kubernetes Service (AKS) beheert, is de beveiliging van uw workloads en gegevens een van de belangrijkste factoren. Met name wanneer u meerdere tenants clusters met behulp van de logische isolatie uitvoert, moet u voor het beveiligen van toegang tot resources en workloads. Om te beperken het risico van aanvallen, moet u ook om te controleren of dat u de meest recente Kubernetes en knooppunt OS beveiligingsupdates toepassen.
+Terwijl u clusters beheert in Azure Kubernetes Service (AKS), is de beveiliging van uw workloads en gegevens een belangrijke overweging. Vooral wanneer u multi-tenant clusters uitvoert met logische isolatie, moet u de toegang tot resources en workloads beveiligen. Om het risico op aanvallen te minimaliseren, moet u er ook voor zorgen dat u de nieuwste beveiligingsupdates van Kubernetes en knooppuntOS toepast.
 
-In dit artikel richt zich op het beveiligen van uw AKS-cluster. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel wordt gespitst op het beveiligen van uw AKS-cluster. Procedures voor:
 
 > [!div class="checklist"]
-> * Azure Active Directory en op rollen gebaseerd toegangsbeheer gebruiken voor het beveiligen van toegang tot de API-server
-> * Beveiligde container-toegang tot resources van knooppunt
-> * Een AKS-cluster upgraden naar de nieuwste versie van Kubernetes
-> * Knoop punten up-to-date houden en automatisch beveiligings patches Toep assen
+> * Azure Active Directory- en op rollen gebaseerde toegangsbesturingselementen gebruiken om api-servertoegang te beveiligen
+> * Beveiligde containertoegang tot knooppuntbronnen
+> * Een AKS-cluster upgraden naar de nieuwste Kubernetes-versie
+> * Nodes up-to-date houden en automatisch beveiligingspatches toepassen
 
-U kunt ook de aanbevolen procedures voor [container Image Management][best-practices-container-image-management] en voor [pod-beveiliging][best-practices-pod-security]lezen.
+U ook de aanbevolen procedures voor [het beheer van containerafbeeldingen][best-practices-container-image-management] en voor [podbeveiliging][best-practices-pod-security]lezen.
 
-U kunt ook [integratie van Azure Kubernetes Services met Security Center][security-center-aks] gebruiken om bedreigingen te detecteren en aanbevelingen voor het beveiligen van uw AKS-clusters te bekijken.
+U azure [Kubernetes Services-integratie met Security Center][security-center-aks] ook gebruiken om bedreigingen te detecteren en aanbevelingen te bekijken voor het beveiligen van uw AKS-clusters.
 
-## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Beveiligde toegang tot de API-server en cluster-knooppunten
+## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Beveiligde toegang tot de API-server en clusterknooppunten
 
-**Best Practice-richt lijnen** voor het beveiligen van de toegang tot de Kubernetes API-server is een van de belangrijkste dingen die u kunt doen om uw cluster te beveiligen. Kubernetes-op rollen gebaseerd toegangsbeheer (RBAC) integreren met Azure Active Directory voor het beheren van toegang tot de API-server. Deze besturingselementen kunnen u AKS dezelfde manier dat u veilige toegang tot uw Azure-abonnementen beveiligen.
+**Richtlijnen voor aanbevolen procedures** - Het beveiligen van toegang tot de Kubernetes API-Server is een van de belangrijkste dingen die u doen om uw cluster te beveiligen. Integreer Kubernetes role-based access control (RBAC) met Azure Active Directory om de toegang tot de API-server te beheren. Met deze besturingselementen u AKS op dezelfde manier beveiligen als wanneer u de toegang tot uw Azure-abonnementen beveiligen.
 
-De Kubernetes API-server biedt een één-verbinding voor aanvragen voor het uitvoeren van acties binnen een cluster. Als u wilt beveiligen en controle van toegang tot de API-server, de toegang beperken en bieden de laagst mogelijke machtigingen vereist. Deze benadering is niet uniek is voor Kubernetes, maar is vooral belangrijk wanneer het AKS-cluster logisch geïsoleerd voor meerdere tenants gebruikt is.
+De Kubernetes API-server biedt één verbindingspunt voor aanvragen om acties binnen een cluster uit te voeren. Als u de toegang tot de API-server wilt beveiligen en controleren, beperkt u de toegang en verstrekt u de minst bevoorrechte toegangsmachtigingen die nodig zijn. Deze aanpak is niet uniek voor Kubernetes, maar is vooral belangrijk wanneer het AKS-cluster logisch geïsoleerd is voor gebruik met meerdere tenants.
 
-Azure Active Directory (AD) biedt een bedrijfsklare identity management-oplossing die kan worden geïntegreerd met AKS-clusters. Als Kubernetes geen een oplossing voor identiteitsbeheer biedt, kan het anders zijn moeilijk te bieden van een zorgvuldige manier toegang te beperken tot de API-server. Met Azure AD geïntegreerde clusters in AKS kunt u uw bestaande gebruikers- en groepsaccounts verifiëren voor toegang tot de API-server.
+Azure Active Directory (AD) biedt een bedrijfsklare oplossing voor identiteitsbeheer die integreert met AKS-clusters. Aangezien Kubernetes geen oplossing voor identiteitsbeheer biedt, kan het anders moeilijk zijn om een gedetailleerde manier te bieden om de toegang tot de API-server te beperken. Met azure AD-geïntegreerde clusters in AKS gebruikt u uw bestaande gebruikers- en groepsaccounts om gebruikers te verifiëren naar de API-server.
 
-![Azure Active Directory-integratie voor clusters met AKS](media/operator-best-practices-cluster-security/aad-integration.png)
+![Azure Active Directory-integratie voor AKS-clusters](media/operator-best-practices-cluster-security/aad-integration.png)
 
-Gebruik RBAC Kubernetes en Azure AD-integratie voor het beveiligen van de API-server en bieden de minste aantal vereiste machtigingen voor een bereik instellen van resources, zoals een enkele naamruimte. Verschillende gebruikers of groepen in Azure AD kunnen verschillende RBAC-rollen worden verleend. Deze gedetailleerde machtigingen kunnen u toegang tot de API-server beperken en bieden een duidelijke audittrail van acties die worden uitgevoerd.
+Gebruik Kubernetes RBAC en Azure AD-integratie om de API-server te beveiligen en het minste aantal machtigingen te bieden dat nodig is voor een scopeset resources, zoals één naamruimte. Verschillende gebruikers of groepen in Azure AD kunnen verschillende RBAC-rollen krijgen. Met deze gedetailleerde machtigingen u de toegang tot de API-server beperken en een duidelijk controlespoor van uitgevoerde acties bieden.
 
-De aanbevolen best practice is groepen te gebruiken om toegang te bieden tot bestanden en mappen en afzonderlijke identiteiten, Azure AD- *groepslid* maatschap te gebruiken om gebruikers te verbinden met RBAC-rollen in plaats van afzonderlijke *gebruikers*. Als de wijzigingen van een gebruiker groepslidmaatschap, zou de toegangsmachtigingen voor het AKS-cluster dienovereenkomstig wijzigen. Als u de gebruiker rechtstreeks aan een rol bindt, kan de functie kan worden gewijzigd. Het lidmaatschap van de Azure AD-groepen wilt bijwerken, maar dat zou niet overeen met machtigingen voor het AKS-cluster. In dit scenario van de gebruiker eindigt meer machtigingen dan vereist dat een gebruiker wordt verleend.
+De aanbevolen aanbevolen best practice is om groepen te gebruiken om toegang te bieden tot bestanden en mappen ten opzichte van individuele identiteiten, azure *AD-groepslidmaatschap* te gebruiken om gebruikers te binden aan RBAC-rollen in plaats van individuele *gebruikers.* Naarmate het groepslidmaatschap van een gebruiker verandert, zouden de toegangsmachtigingen voor het AKS-cluster dienovereenkomstig veranderen. Als u de gebruiker rechtstreeks aan een rol bindt, kan de functie veranderen. De Azure AD-groepslidmaatschappen worden bijgewerkt, maar machtigingen voor het AKS-cluster zouden dat niet weerspiegelen. In dit scenario krijgt de gebruiker uiteindelijk meer machtigingen dan een gebruiker nodig heeft.
 
-Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][aks-best-practices-identity]voor meer informatie over Azure AD-integratie en RBAC.
+Zie Aanbevolen procedures voor verificatie en [autorisatie in AKS voor][aks-best-practices-identity]meer informatie over Azure AD-integratie en RBAC.
 
-## <a name="secure-container-access-to-resources"></a>Beveiligde container toegang tot resources
+## <a name="secure-container-access-to-resources"></a>Beveiligde containertoegang tot resources
 
-**Richt lijnen voor best practices** : Beperk de toegang tot acties die door containers kunnen worden uitgevoerd. Bieden van de minste machtigingen, het aantal en te voorkomen dat het gebruik van root / escalatie in beschermde modus.
+**Richtlijnen voor aanbevolen procedures** - Beperk de toegang tot acties die containers kunnen uitvoeren. Geef het minste aantal machtigingen op en vermijd het gebruik van root/privileged escalation.
 
-Op dezelfde manier dat gebruikers of groepen de minste Verleen aantal bevoegdheden vereist, containers moeten ook worden beperkt tot alleen de acties en processen die ze nodig hebben. Niet configureren om te beperken het risico van aanvallen, toepassingen en containers die geëscaleerde bevoegdheden is vereist of de hoofd-toegang. Stel bijvoorbeeld `allowPrivilegeEscalation: false` in het Pod-manifest. Deze *pod-beveiligings contexten* zijn ingebouwd in Kubernetes en stellen u in staat om aanvullende machtigingen te definiëren, zoals de gebruiker of groep die moet worden uitgevoerd als, of welke Linux-mogelijkheden er beschikbaar moeten zijn. Zie [beveiligde pod-toegang tot resources][pod-security-contexts]voor meer aanbevolen procedures.
+Op dezelfde manier dat u gebruikers of groepen het minste aantal vereiste bevoegdheden moet verlenen, moeten containers ook worden beperkt tot alleen de acties en processen die ze nodig hebben. Om het risico op aanvallen te minimaliseren, configureer t u geen toepassingen en containers waarvoor geëscaleerde bevoegdheden of hoofdtoegang vereist zijn. Stel bijvoorbeeld `allowPrivilegeEscalation: false` in het podmanifest. Deze *pod beveiligingscontexten* zijn ingebouwd in Kubernetes en u extra machtigingen definiëren, zoals de gebruiker of groep om te draaien als, of welke Linux-mogelijkheden bloot te leggen. Zie Toegang tot de [pod beveiligen tot bronnen voor][pod-security-contexts]meer aanbevolen procedures.
 
-Voor een gedetailleerdere controle van container acties, kunt u ook ingebouwde Linux-beveiligings functies gebruiken, zoals *AppArmor* en *seccomp*. Deze functies zijn gedefinieerd op het knooppuntniveau van het en vervolgens is geïmplementeerd via een pod-manifest. Ingebouwde Linux-beveiligings functies zijn alleen beschikbaar voor Linux-knoop punten en van peulen.
+Voor meer gedetailleerde controle van containeracties u ook ingebouwde Linux-beveiligingsfuncties zoals *AppArmor* en *seccomp*gebruiken. Deze functies worden gedefinieerd op knooppuntniveau en vervolgens geïmplementeerd via een podmanifest. Ingebouwde Linux-beveiligingsfuncties zijn alleen beschikbaar op Linux-knooppunten en -pods.
 
 > [!NOTE]
-> Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. Aanvullende beveiligings functies, zoals *AppArmor*, *Seccomp*, *pod Security Policies*of meer fijnere op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
+> Kubernetes-omgevingen, in AKS of elders, zijn niet helemaal veilig voor vijandig multi-tenant gebruik. Extra beveiligingsfuncties zoals *AppArmor,* *seccomp,* *Pod Security Policies*, of meer fijnmazige role-based access controls (RBAC) voor knooppunten maken exploits moeilijker. Echter, voor echte beveiliging bij het uitvoeren van vijandige multi-tenant workloads, een hypervisor is het enige niveau van beveiliging die u moet vertrouwen. Het beveiligingsdomein voor Kubernetes wordt het hele cluster, geen individueel knooppunt. Voor dit soort vijandige multi-tenant workloads moet u fysiek geïsoleerde clusters gebruiken.
 
-### <a name="app-armor"></a>App-chassis
+### <a name="app-armor"></a>App Armor
 
-Als u de acties wilt beperken die containers kunnen uitvoeren, kunt u de [AppArmor][k8s-apparmor] Linux kernel Security-module gebruiken. AppArmor is beschikbaar als onderdeel van het onderliggende knooppunt met AKS-besturingssysteem hebt, en is standaard ingeschakeld. U maakt AppArmor profielen die beperken van acties zoals lezen, schrijven of uitvoeren of systeemfuncties zoals het koppelen van bestandssystemen. Standaard AppArmor-profielen beperken de toegang tot verschillende `/proc` en `/sys` locaties en bieden een manier om containers logisch te isoleren van het onderliggende knoop punt. AppArmor werkt voor elke toepassing die wordt uitgevoerd op Linux, niet alleen Kubernetes-schillen.
+Om de acties die containers kunnen uitvoeren te beperken, u de [AppArmor][k8s-apparmor] Linux kernel security module gebruiken. AppArmor is beschikbaar als onderdeel van het onderliggende AKS-knooppuntBEsturingssysteem en is standaard ingeschakeld. U maakt AppArmor-profielen die acties zoals lezen, schrijven of uitvoeren of systeemfuncties zoals het monteren van bestandssystemen beperken. Standaard AppArmor-profielen beperken `/proc` `/sys` de toegang tot verschillende en locaties en bieden een middel om containers logisch te isoleren van het onderliggende knooppunt. AppArmor werkt voor elke toepassing die draait op Linux, niet alleen Kubernetes pods.
 
-![AppArmor-profielen gebruikt in een AKS-cluster om te beperken containeracties](media/operator-best-practices-container-security/apparmor.png)
+![AppArmor-profielen die worden gebruikt in een AKS-cluster om containeracties te beperken](media/operator-best-practices-container-security/apparmor.png)
 
-Als u wilt zien AppArmor in actie, wordt het volgende voorbeeld een profiel waarmee wordt voorkomen het schrijven naar bestanden dat. [SSH][aks-ssh] naar een AKS-knoop punt en maak een bestand met de naam *Deny-write. profile* en plak de volgende inhoud:
+Om AppArmor in actie te zien, maakt het volgende voorbeeld een profiel dat het schrijven naar bestanden voorkomt. [SSH][aks-ssh] naar een AKS-knooppunt, maak vervolgens een bestand met de naam *deny-write.profile* en plak de volgende inhoud:
 
 ```
 #include <tunables/global>
@@ -73,15 +73,15 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 }
 ```
 
-AppArmor profielen worden toegevoegd met behulp van de opdracht `apparmor_parser`. Voeg het profiel toe aan AppArmor en geef de naam van het profiel in de vorige stap hebt gemaakt:
+AppArmor profielen worden `apparmor_parser` toegevoegd met behulp van de opdracht. Voeg het profiel toe aan AppArmor en geef de naam op van het profiel dat in de vorige stap is gemaakt:
 
 ```console
 sudo apparmor_parser deny-write.profile
 ```
 
-Er is geen uitvoer die wordt geretourneerd als het profiel is juist geparseerd en op AppArmor toegepast. U bent weer terug naar de opdrachtprompt.
+Er is geen uitvoer geretourneerd als het profiel correct is ontleed en toegepast op AppArmor. Je wordt teruggebracht naar de opdrachtprompt.
 
-Maak nu een pod-manifest van uw lokale computer met de naam *AKS-apparmor. yaml* en plak de volgende inhoud. Dit manifest definieert een aantekening voor `container.apparmor.security.beta.kubernetes` toevoegen verwijst naar het *Deny-write-* profiel dat u in de vorige stappen hebt gemaakt:
+Maak vanaf uw lokale machine nu een podmanifest met de naam *aks-apparmor.yaml* en plak de volgende inhoud. In dit manifest wordt `container.apparmor.security.beta.kubernetes` een annotatie gedefinieerd voor het toevoegen van verwijzingen naar het *deny-write-profiel* dat in de vorige stappen is gemaakt:
 
 ```yaml
 apiVersion: v1
@@ -97,13 +97,13 @@ spec:
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
-Implementeer de voor beeld-pod met behulp van de opdracht [kubectl apply][kubectl-apply] :
+De voorbeeldpod implementeren met de opdracht [kubectl toepassen:][kubectl-apply]
 
 ```console
 kubectl apply -f aks-apparmor.yaml
 ```
 
-Als de Pod is geïmplementeerd, gebruikt u de opdracht [kubectl exec][kubectl-exec] om naar een bestand te schrijven. De opdracht kan niet worden uitgevoerd, zoals wordt weergegeven in de volgende voorbeelduitvoer:
+Als de pod is geïmplementeerd, gebruikt u de [opdracht kubectl exec][kubectl-exec] om naar een bestand te schrijven. De opdracht kan niet worden uitgevoerd, zoals in de volgende voorbeelduitvoer wordt weergegeven:
 
 ```
 $ kubectl exec hello-apparmor touch /tmp/test
@@ -114,11 +114,11 @@ command terminated with exit code 1
 
 Zie [AppArmor-profielen in Kubernetes][k8s-apparmor]voor meer informatie over AppArmor.
 
-### <a name="secure-computing"></a>Beveiligde computers
+### <a name="secure-computing"></a>Veilig computergebruik
 
-Hoewel AppArmor werkt voor een Linux-toepassing, werkt [seccomp (*SEC*ureren *comp*uting)][seccomp] op proces niveau. Seccomp is ook een Linux-kernel security module en wordt systeemeigen worden ondersteund door de Docker-runtime die wordt gebruikt door AKS-knooppunten. Met seccomp geldt de proces-aanroepen die containers kunnen uitvoeren. U definieert u welke acties wilt toestaan of weigeren filters maken en vervolgens aantekeningen in een schil YAML-manifest gebruiken om te koppelen aan het filter seccomp. Dit Framework sluit aan de aanbevolen procedures van alleen de minimaal vereiste machtigingen die nodig zijn om uit te voeren voor de container toekennen en mag niet meer.
+Terwijl AppArmor werkt voor elke Linux-applicatie, [seccomp *(sec*ure *comp*uting)][seccomp] werkt op procesniveau. Seccomp is ook een Linux kernel security module, en wordt native ondersteund door de Docker runtime gebruikt door AKS nodes. Met seccomp zijn de procesoproepen die containers kunnen uitvoeren beperkt. U maakt filters die bepalen welke acties u wilt toestaan of weigeren en gebruikt vervolgens annotaties in een YAML-manifest van een pod om te associëren met het seccomp-filter. Dit sluit aan bij de beste praktijk van alleen het verlenen van de container de minimale machtigingen die nodig zijn om uit te voeren, en niet meer.
 
-Als wilt seccomp in actie zien, maakt u een filter waarmee wordt voorkomen dat het wijzigen van machtigingen voor een bestand. [SSH][aks-ssh] naar een AKS-knoop punt en maak vervolgens een seccomp-filter met de naam */var/lib/kubelet/seccomp/Prevent-chmod* en plak de volgende inhoud:
+Als u seccomp in actie wilt zien, maakt u een filter dat voorkomt dat machtigingen voor een bestand worden gewijzigd. [SSH][aks-ssh] naar een AKS-knooppunt, maak vervolgens een seccomp filter met de naam */var/lib/kubelet/seccomp/prevent-chmod* en plak de volgende inhoud:
 
 ```
 {
@@ -132,7 +132,7 @@ Als wilt seccomp in actie zien, maakt u een filter waarmee wordt voorkomen dat h
 }
 ```
 
-Maak nu een pod-manifest van uw lokale computer met de naam *AKS-seccomp. yaml* en plak de volgende inhoud. Dit manifest definieert een aantekening voor `seccomp.security.alpha.kubernetes.io` en verwijst naar het *chmod-filter dat* in de vorige stap is gemaakt:
+Maak nu vanuit uw lokale machine een podmanifest met de naam *aks-seccomp.yaml* en plak de volgende inhoud. Dit manifest definieert een `seccomp.security.alpha.kubernetes.io` annotatie voor en verwijst naar het *prevent-chmod-filter* dat in de vorige stap is gemaakt:
 
 ```yaml
 apiVersion: v1
@@ -153,13 +153,13 @@ spec:
   restartPolicy: Never
 ```
 
-Implementeer de voor beeld-pod met behulp van de opdracht [kubectl apply][kubectl-apply] :
+De voorbeeldpod implementeren met de opdracht [kubectl toepassen:][kubectl-apply]
 
 ```console
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-Bekijk de status van het peul met de opdracht [kubectl Get peul][kubectl-get] . De schil meldt een fout. De `chmod` opdracht kan niet worden uitgevoerd door het seccomp-filter, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+Bekijk de status van de pods met de opdracht [kubectl get pods.][kubectl-get] De pod meldt een fout. De `chmod` opdracht wordt niet uitgevoerd door het secondecomp-filter, zoals in de volgende voorbeelduitvoer wordt weergegeven:
 
 ```
 $ kubectl get pods
@@ -168,51 +168,51 @@ NAME                      READY     STATUS    RESTARTS   AGE
 chmod-prevented           0/1       Error     0          7s
 ```
 
-Zie [Seccomp-beveiligings profielen voor docker][seccomp]voor meer informatie over beschik bare filters.
+Zie [Seccomp-beveiligingsprofielen voor Docker voor][seccomp]meer informatie over beschikbare filters.
 
-## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Regelmatig bij te werken naar de nieuwste versie van Kubernetes
+## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Regelmatig updaten naar de nieuwste versie van Kubernetes
 
-**Richt lijnen voor best practices** : om op de hoogte te blijven van nieuwe functies en probleem oplossingen, voert u regel matig een upgrade uit naar de Kubernetes-versie in uw AKS-cluster.
+**Richtlijnen voor aanbevolen procedures** - Om op de hoogte te blijven van nieuwe functies en bugfixes, wordt u regelmatig geüupgradet naar de Kubernetes-versie in uw AKS-cluster.
 
-Kubernetes-releases nieuwe functies in een tempo sneller dan de meer traditionele infrastructuurplatformen. Kubernetes-updates bevatten nieuwe functies en verbeteringen bug of beveiliging. Nieuwe functies passeren meestal een *alpha* en vervolgens de *bèta* status voordat ze *stabiel* worden en zijn algemeen beschikbaar en worden aanbevolen voor productie gebruik. De releasecyclus van deze kunt u Kubernetes bijwerken zonder dat regelmatig er belangrijke wijzigingen of het aanpassen van uw implementaties en sjablonen.
+Kubernetes brengt nieuwe functies in een sneller tempo uit dan meer traditionele infrastructuurplatforms. Kubernetes-updates bevatten nieuwe functies en bug- of beveiligingsoplossingen. Nieuwe functies gaan meestal door een *alfa-* en *bètastatus* voordat ze *stabiel* worden en zijn algemeen beschikbaar en aanbevolen voor productiegebruik. Met deze releasecyclus u Kubernetes bijwerken zonder regelmatig wijzigingen door te maken of uw implementaties en sjablonen aan te passen.
 
-AKS ondersteunt vier secundaire versies van Kubernetes. Dit betekent dat wanneer een nieuwe versie van de secundaire-patch is geïntroduceerd, de oudste secundaire versie en patch-versies ondersteund zijn buiten gebruik gesteld. Kleine updates naar Kubernetes gebeuren op periodieke basis. Zorg ervoor dat u hebt een governance-proces om te controleren en een upgrade uit als nodig is, zodat u ondersteuning niet nakomen. Zie [ondersteunde Kubernetes-versies AKS][aks-supported-versions] voor meer informatie.
+AKS ondersteunt vier kleine versies van Kubernetes. Dit betekent dat wanneer een nieuwe kleine patchversie wordt geïntroduceerd, de oudste secundaire versie en patchreleases die worden ondersteund, worden teruggetrokken. Kleine updates voor Kubernetes gebeuren op een periodieke basis. Zorg ervoor dat u een governance-proces om te controleren en te upgraden als dat nodig is, zodat u niet uit de ondersteuning vallen. Zie [Ondersteunde Kubernetes-versies AKS][aks-supported-versions] voor meer informatie
 
-Als u de beschik bare versies voor uw cluster wilt controleren, gebruikt u de opdracht [AZ AKS Get-upgrades][az-aks-get-upgrades] , zoals wordt weer gegeven in het volgende voor beeld:
+Als u wilt controleren welke versies beschikbaar zijn voor uw cluster, gebruikt u de opdracht [az aks-upgrades][az-aks-get-upgrades] zoals weergegeven in het volgende voorbeeld:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-U kunt vervolgens een upgrade uitvoeren van uw AKS-cluster met behulp van de opdracht [AZ AKS upgrade][az-aks-upgrade] . Het upgradeproces veilig cordons en verkeer naar één knooppunt tegelijk, schillen in de resterende knooppunten plant en implementeert vervolgens een nieuw knooppunt met de meest recente OS en Kubernetes-versies.
+Vervolgens u uw AKS-cluster upgraden met de [upgradeopdracht az aks.][az-aks-upgrade] Het upgradeproces maakt veilig een node tegelijk vast, plant pods op resterende knooppunten en implementeert vervolgens een nieuw knooppunt met de nieuwste OS- en Kubernetes-versies.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
-Zie [ondersteunde Kubernetes-versies in AKS][aks-supported-versions] en [een AKS-cluster upgraden][aks-upgrade]voor meer informatie over upgrades in AKS.
+Zie [Ondersteunde Kubernetes-versies in AKS][aks-supported-versions] en [Upgrade een AKS-cluster][aks-upgrade]voor meer informatie over upgrades in AKS.
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Updates voor Linux-knoop punten verwerken en opnieuw opstarten met behulp van kured
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Linux-knooppuntupdates en reboots verwerken met kured
 
-**Richt lijnen voor best practices** : aks downloadt en installeert automatisch beveiligingsfixes op elke Linux-knoop punten, maar wordt niet automatisch opnieuw opgestart als dat nodig is. Gebruik `kured` om te controleren of opnieuw opstarten in behandeling is, en druk het knoop punt veilig af en af om het knoop punt opnieuw op te starten, de updates toe te passen en zo veilig mogelijk te maken met betrekking tot het besturings systeem. Voor Windows Server-knoop punten (momenteel in de preview-versie van AKS) voert u regel matig een AKS-upgrade bewerking uit om het werk op veilige wijze te Cordon en af te zuigen.
+**Richtlijnen voor beste praktijken** - AKS downloadt en installeert automatisch beveiligingsoplossingen op elke Linux-knooppunten, maar start niet automatisch opnieuw op indien nodig. Gebruik `kured` om te kijken voor in afwachting van reboots, dan veilig cordon en afvoer van het knooppunt om het knooppunt opnieuw op te starten, de updates toe te passen en zo veilig mogelijk met betrekking tot het OS. Voor Windows Server-knooppunten (momenteel in preview in AKS) voert u regelmatig een AKS-upgradebewerking uit om pods veilig te verbinden en af te voeren en bijgewerkte knooppunten te implementeren.
 
-Elke avond halen Linux-knoop punten in AKS beveiligings patches op die beschikbaar zijn via het distributie-update kanaal. Dit gedrag wordt automatisch geconfigureerd wanneer de knooppunten in een AKS-cluster worden geïmplementeerd. Om te beperken wordt onderbroken en mogelijke impact op actieve werkbelastingen, knooppunten worden niet automatisch opnieuw opgestart als een beveiligingspatch of kernel-update vereist is.
+Elke avond krijgen Linux-knooppunten in AKS beveiligingspatches beschikbaar via hun distro-updatekanaal. Dit gedrag wordt automatisch geconfigureerd omdat de knooppunten worden geïmplementeerd in een AKS-cluster. Om verstoring en mogelijke impact op het uitvoeren van workloads te minimaliseren, worden knooppunten niet automatisch opnieuw opgestart als een beveiligingspatch of kernelupdate dit vereist.
 
-Het project van de open-source- [kured (KUbernetes start daemon)][kured] door Weaveworks houdt in dat het knoop punt opnieuw wordt opgestart. Wanneer een Linux-knoop punt updates toepast waarvoor opnieuw moet worden opgestart, is het knoop punt veilig afgebakend en verwerkte om het peul te verplaatsen en te plannen op andere knoop punten in het cluster. Wanneer het knooppunt opnieuw wordt opgestart, wordt deze toegevoegd in het cluster en de Kubernetes-hervat schillen op deze planning. Om onderbrekingen te minimaliseren, mag er slechts één knoop punt tegelijk worden opgestart door `kured`.
+De open-source [kured (KUbernetes REboot Daemon)][kured] project door Weaveworks horloges voor lopende node reboots. Wanneer een Linux-knooppunt updates toepast waarvoor een herstart vereist is, wordt het knooppunt veilig aangesloten en afgevoerd om de pods op andere knooppunten in het cluster te verplaatsen en te plannen. Zodra het knooppunt opnieuw is opgestart, wordt het weer toegevoegd aan het cluster en kubernetes hervat het plannen van pods op het. Om verstoring te minimaliseren, mag slechts één knooppunt tegelijk `kured`opnieuw worden opgestart door .
 
-![Het proces AKS knooppunt opnieuw opstarten met behulp van kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
+![De AKS node reboot proces met kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
-Als u de nauw keurigheid van het besturings element wilt bepalen wanneer het opnieuw opstarten plaatsvindt, kan `kured` worden geïntegreerd met Prometheus om het opnieuw opstarten te voor komen als er andere onderhouds gebeurtenissen of cluster problemen worden uitgevoerd. Deze integratie minimaliseert de aanvullende problemen door knooppunten opnieuw wordt opgestart terwijl u actief andere problemen wilt oplossen.
+Als u fijnere korrelcontrole wilt `kured` over wanneer opnieuw wordt opgestart, u met Prometheus worden geïntegreerd om opnieuw opstarten te voorkomen als er andere onderhoudsgebeurtenissen of clusterproblemen aan de gang zijn. Deze integratie minimaliseert extra complicaties door knooppunten opnieuw op te starten terwijl u actief andere problemen oplost.
 
-Zie [beveiliging en kernel-updates Toep assen op knoop punten in AKS][aks-kured]voor meer informatie over het opnieuw opstarten van knoop punten.
+Zie [Beveiligings- en kernelupdates toepassen op knooppunten in AKS voor][aks-kured]meer informatie over het verwerken van opnieuw opstarten van knooppunten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is gericht op over het beveiligen van uw AKS-cluster. Voor het implementeren van sommige van deze gebieden, Zie de volgende artikelen:
+Dit artikel richtte zich op het beveiligen van uw AKS-cluster. Zie de volgende artikelen om een aantal van deze gebieden te implementeren:
 
 * [Azure Active Directory integreren met AKS][aks-aad]
 * [Een AKS-cluster upgraden naar de nieuwste versie van Kubernetes][aks-upgrade]
-* [Beveiligings updates en het opnieuw opstarten van knoop punten verwerken met kured][aks-kured]
+* [Beveiligingsupdates verwerken en knooppunt opnieuw opstarten met kured][aks-kured]
 
 <!-- EXTERNAL LINKS -->
 [kured]: https://github.com/weaveworks/kured

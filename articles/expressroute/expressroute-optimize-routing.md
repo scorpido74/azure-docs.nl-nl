@@ -1,5 +1,5 @@
 ---
-title: 'Azure-ExpressRoute: route ring optimaliseren'
+title: 'Azure ExpressRoute: routering optimaliseren'
 description: Deze pagina bevat gedetailleerde informatie over het optimaliseren van routering wanneer u meerdere ExpressRoute-circuits hebt die Microsoft verbinden met uw bedrijfsnetwerk.
 services: expressroute
 author: charwen
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74080135"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute-routering optimaliseren
 Als u meerdere ExpressRoute-circuits hebt, hebt u meer dan één pad om verbinding te maken met Microsoft. Dat betekent dat suboptimale routering kan plaatsvinden, met andere woorden, dat verkeer soms een langer pad aflegt om Microsoft te bereiken en Microsoft om uw netwerk te bereiken. Hoe langer het netwerkpad, hoe groter de latentie. Latentie heeft een directe invloed op toepassingsprestaties en gebruikerservaring. In dit artikel wordt dit probleem geïllustreerd en wordt uitgelegd hoe u routering optimaliseert met behulp van de standaardrouteringstechnologieën.
 
-## <a name="path-selection-on-microsoft-and-public-peerings"></a>Padselectie op micro soft en open bare peerings
-Het is belang rijk om ervoor te zorgen dat bij gebruik van micro soft of open bare peering dat verkeer over het gewenste pad loopt als u een of meer ExpressRoute-circuits hebt, evenals paden naar het Internet via een Internet Exchange (IX) of Internet service provider (ISP). BGP gebruikt een selectie algoritme voor het beste pad op basis van een aantal factoren, waaronder de langste voorvoegsel overeenkomst (LPM). Klanten moeten het *lokale voorkeurs* kenmerk implementeren om ervoor te zorgen dat verkeer dat is bestemd voor Azure via micro soft of open bare peering over het ExpressRoute-pad, zodat het pad altijd de voor keur heeft voor ExpressRoute. 
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Padselectie op Microsoft- en openbare peerings
+Het is belangrijk om ervoor te zorgen dat bij het gebruik van Microsoft of Public peering dat het verkeer stroomt over het gewenste pad als je een of meer ExpressRoute circuits, evenals paden naar het internet via een Internet Exchange (IX) of Internet Service Provider (ISP). BGP maakt gebruik van een algoritme voor de selectie van het beste pad op basis van een aantal factoren, waaronder de langste voorvoegselovereenkomst (LPM). Om ervoor te zorgen dat verkeer dat is bestemd voor Azure via Microsoft of Openbare peering het ExpressRoute-pad doorkruist, moeten klanten het kenmerk *Lokale voorkeur* implementeren om ervoor te zorgen dat het pad altijd de voorkeur heeft op ExpressRoute. 
 
 > [!NOTE]
-> De standaard lokale voor keur is doorgaans 100. Hogere lokale voor keuren zijn meer voor keur. 
+> De standaardvoorkeur lokale voorkeur is meestal 100. Hogere lokale voorkeuren hebben meer voorkeur. 
 >
 >
 
-Bekijk het volgende voorbeeld scenario:
+Overweeg het volgende voorbeeldscenario:
 
 ![Probleem ExpressRoute casus 1: Suboptimale routering van klant naar Microsoft](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
-In het bovenstaande voor beeld kunt u de lokale voor keur als volgt configureren in ExpressRoute-paden. 
+In het bovenstaande voorbeeld wilt u de voorkeur geven aan ExpressRoute-paden als volgt lokale voorkeur configureren. 
 
-**Cisco IOS-XE-configuratie van R1-perspectief:**
+**Cisco IOS-XE-configuratie vanuit R1-perspectief:**
 
     R1(config)#route-map prefer-ExR permit 10
     R1(config-route-map)#set local-preference 150
@@ -41,7 +41,7 @@ In het bovenstaande voor beeld kunt u de lokale voor keur als volgt configureren
     R1(config-router)#neighbor 1.1.1.2 activate
     R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
-**Junos-configuratie van R1 perspectief:**
+**Junos-configuratie vanuit R1-perspectief:**
 
     user@R1# set protocols bgp group ibgp type internal
     user@R1# set protocols bgp group ibgp local-preference 150
@@ -54,7 +54,7 @@ We gaan het routeringsprobleem bekijken aan de hand van een voorbeeld. Stel, u h
 ![Probleem ExpressRoute casus 1: Suboptimale routering van klant naar Microsoft](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Oplossing: gebruik BGP-community's
-Om routering te optimaliseren voor de gebruikers op beide kantoren, moet u weten welk voorvoegsel van Azure US - west is en welk van Azure US - oost. Deze informatie wordt versleuteld met [BGP-communitywaarden](expressroute-routing.md). We hebben een unieke waarde voor de BGP-Community toegewezen voor elke Azure-regio, bijvoorbeeld ' 12076:51004 ' voor VS Oost, ' 12076:51006 ' voor VS West. Nu u weet welk voorvoegsel bij welke Azure-regio hoort, kunt u configureren welk ExpressRoute-circuit de voorkeur heeft. Omdat we het BGP gebruiken om routeringsinformatie uit te wisselen, kunt u de routering beïnvloeden met de lokale voorkeur van het BGP. In ons voorbeeld kunt u in US - west aan 13.100.0.0/16 een hogere lokale-voorkeurswaarde toekennen dan in US - oost, en in US - oost kunt u aan 23.100.0.0/16 een hogere lokale-voorkeurswaarde toekennen dan in US - west. Als beide paden naar Microsoft beschikbaar zijn, zorgt deze configuratie ervoor dat uw gebruikers in Los Angeles het ExpressRoute-circuit in US - west gebruiken om verbinding te maken met Azure US - west, en uw gebruikers in New York de ExpressRoute in US - oost nemen naar Azure US - oost. Routering is nu aan beide zijden geoptimaliseerd. 
+Om routering te optimaliseren voor de gebruikers op beide kantoren, moet u weten welk voorvoegsel van Azure US - west is en welk van Azure US - oost. Deze informatie wordt versleuteld met [BGP-communitywaarden](expressroute-routing.md). We hebben een unieke BGP-communitywaarde toegewezen aan elke Azure-regio, bijvoorbeeld '12076:51004' voor US East, '12076:51006' voor US West. Nu u weet welk voorvoegsel bij welke Azure-regio hoort, kunt u configureren welk ExpressRoute-circuit de voorkeur heeft. Omdat we het BGP gebruiken om routeringsinformatie uit te wisselen, kunt u de routering beïnvloeden met de lokale voorkeur van het BGP. In ons voorbeeld kunt u in US - west aan 13.100.0.0/16 een hogere lokale-voorkeurswaarde toekennen dan in US - oost, en in US - oost kunt u aan 23.100.0.0/16 een hogere lokale-voorkeurswaarde toekennen dan in US - west. Als beide paden naar Microsoft beschikbaar zijn, zorgt deze configuratie ervoor dat uw gebruikers in Los Angeles het ExpressRoute-circuit in US - west gebruiken om verbinding te maken met Azure US - west, en uw gebruikers in New York de ExpressRoute in US - oost nemen naar Azure US - oost. Routering is nu aan beide zijden geoptimaliseerd. 
 
 ![Oplossing Expressroute casus 1: BGP-community's gebruiken](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 
@@ -74,7 +74,7 @@ Er zijn twee oplossingen voor het probleem. Voor de eerste oplossing adverteert 
 Voor de tweede oplossing blijft u beide voorvoegsels op beide ExpressRoute-circuits adverteren en geeft u daarnaast aan welk voorvoegsel zich het dichtst bij welk kantoor bevindt. Omdat we BGP AS-padtoevoeging ondersteunen, kunt u het AS-pad voor uw voorvoegsel configureren om routering te beïnvloeden. In dit voorbeeld kunt u het AS-pad voor 172.2.0.0/31 in US - oost verlengen zodat het ExpressRoute-circuit in US - west de voorkeur krijgt voor verkeer dat is bestemd voor dit voorvoegsel (omdat ons netwerk 'denkt' dat het pad naar dit voorvoegsel korter is in het westen). En zo verlengt u ook het AS-pad voor 172.2.0.2/31 in US - west, zodat het ExpressRoute-circuit in US - oost de voorkeur krijgt. Routering is geoptimaliseerd voor beide kantoren. Als bij dit ontwerp één ExpressRoute-circuit wordt verbroken, kan Exchange Online u nog steeds bereiken via een ander ExpressRoute-circuit en uw WAN. 
 
 > [!IMPORTANT]
-> We verwijderen persoonlijke AS-nummers in het AS-pad voor de voor voegsels die worden ontvangen op micro soft-peering wanneer peering gebruikmaakt van een privé AS-nummer. U moet een peer met een openbaar systeem hebben en openbaar als nummers toevoegen in het AS-pad om de route ring voor micro soft-peering te beïnvloeden.
+> We verwijderen privé-AS-nummers in het AS-pad voor de voorvoegsels die op Microsoft Peering zijn ontvangen bij peering met een privé-AS-nummer. U moet peeren met een openbare AS en openbare AS-nummers toevoegen in het AS-pad om de routering voor Microsoft Peering te beïnvloeden.
 > 
 > 
 

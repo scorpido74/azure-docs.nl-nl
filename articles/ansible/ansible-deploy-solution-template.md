@@ -1,17 +1,17 @@
 ---
-title: Quick Start-de Ansible-oplossings sjabloon voor Azure implementeren op CentOS
-description: In deze Quick Start leert u hoe u de oplossings sjabloon Ansible implementeert op een virtuele CentOS-machine die wordt gehost op Azure, samen met hulpprogram ma's die zijn geconfigureerd voor gebruik met Azure.
+title: Snelstart - De ansible-oplossingssjabloon voor Azure implementeren in CentOS
+description: In deze quickstart leert u hoe u de ansible-oplossingssjabloon implementeert op een virtuele CentOS-machine die op Azure wordt gehost, samen met hulpprogramma's die zijn geconfigureerd om met Azure te werken.
 keywords: ansible, azure, devops, solution template, virtual machine, managed identities for azure resources, centos, red hat
 ms.topic: quickstart
 ms.date: 04/30/2019
 ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193783"
 ---
-# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Snelstartgids: de Ansible-oplossings sjabloon voor Azure implementeren op CentOS
+# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Snelstart: de ansible-oplossingssjabloon voor Azure implementeren in CentOS
 
 De Ansible-oplossingssjabloon voor Azure is ontworpen voor het configureren van een Ansible-exemplaar op een CentOS virtuele machine, samen met Ansible en een reeks hulpprogramma's die is geconfigureerd om te werken met Azure. Tot de hulpmiddelen behoren:
 
@@ -23,11 +23,11 @@ De Ansible-oplossingssjabloon voor Azure is ontworpen voor het configureren van 
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
-## <a name="deploy-the-ansible-solution-template"></a>De oplossings sjabloon Ansible implementeren
+## <a name="deploy-the-ansible-solution-template"></a>De sjabloon Ansible-oplossing implementeren
 
 1. Blader naar de [Ansible-oplossingssjabloon in Azure Marketplace](https://azuremarketplace.microsoft.com/en-%20%20us/marketplace/apps/azure-oss.ansible?tab=Overview).
 
-1. Selecteer **GET IT NOW**.
+1. Selecteer **Nu ophalen**.
 
 1. Er verschijnt een venster met de gebruiksrechtovereenkomst, het privacybeleid en de gebruiksvoorwaarden voor Azure Marketplace. Selecteer **Doorgaan**.
 
@@ -85,4 +85,4 @@ De Ansible-oplossingssjabloon voor Azure is ontworpen voor het configureren van 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Snelstartgids: een virtuele Linux-machine configureren in azure met behulp van Ansible](./ansible-create-vm.md)
+> [Snelstart: een virtuele Linux-machine configureren in Azure met Ansible](./ansible-create-vm.md)

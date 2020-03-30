@@ -1,6 +1,6 @@
 ---
-title: Galerie-installatie kopieën delen via tenants in azure
-description: Meer informatie over het delen van VM-installatie kopieën in azure-tenants met behulp van de galerie met gedeelde afbeeldingen.
+title: Galerijafbeeldingen delen tussen tenants in Azure
+description: Meer informatie over het delen van VM-afbeeldingen in Azure-tenants met gedeelde galerieën.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -11,25 +11,25 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
 ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065518"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galerie-VM-installatie kopieën delen in azure-tenants
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>GalerieVM-afbeeldingen delen in Azure-tenants
 
-Met de galerie met gedeelde afbeeldingen kunt u afbeeldingen delen met RBAC. U kunt RBAC gebruiken om installatie kopieën te delen binnen uw Tenant, en zelfs voor personen buiten uw Tenant. Zie de [Galerie delen](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)voor meer informatie over deze eenvoudige optie voor delen.
+Met Gedeelde galerijen u afbeeldingen delen met RBAC. U RBAC gebruiken om afbeeldingen te delen binnen uw tenant, en zelfs met personen buiten uw huurder. Zie [de galerie Delen](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)voor meer informatie over deze eenvoudige optie voor delen.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> U kunt de portal niet gebruiken om een virtuele machine te implementeren op basis van een installatie kopie in een andere Azure-Tenant. Als u een virtuele machine wilt maken op basis van een installatie kopie die tussen tenants wordt gedeeld, moet u de [Azure cli](../linux/share-images-across-tenants.md) of Power shell gebruiken.
+> U de portal niet gebruiken om een VM te implementeren vanuit een afbeelding in een andere azure-tenant. Als u een VM wilt maken op basis van een afbeelding die wordt gedeeld tussen tenants, moet u azure [cli](../linux/share-images-across-tenants.md) of Powershell gebruiken.
 
-## <a name="create-a-vm-using-powershell"></a>Een virtuele machine maken met behulp van Power shell
+## <a name="create-a-vm-using-powershell"></a>Een VM maken met PowerShell
 
-Meld u aan bij beide tenants met behulp van de toepassings-ID, het geheim en de Tenant-ID. 
+Log in op beide tenants met behulp van de applicatie-ID, geheim en tenant-ID. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -42,7 +42,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Maak de virtuele machine in de resource groep die gemachtigd is voor de app-registratie. Vervang de informatie in dit voor beeld door uw eigen gegevens.
+Maak de VM in de resourcegroep met toestemming voor de app-registratie. Vervang de informatie in dit voorbeeld door uw eigen informatie.
 
 
 
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook resources van de galerie met gedeelde afbeeldingen maken met behulp van de [Azure Portal](shared-images-portal.md).
+U ook bronnen voor gedeelde afbeeldingengaleriemaken met de [Azure-portal](shared-images-portal.md).

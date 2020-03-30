@@ -1,6 +1,6 @@
 ---
-title: Hybride machines op schaal aansluiten op Azure
-description: In dit artikel leert u hoe u met behulp van een Service-Principal computers kunt verbinden met Azure met behulp van Azure Arc voor servers (preview).
+title: Hybride machines op schaal verbinden met Azure
+description: In dit artikel leert u hoe u machines met Azure verbinden met Azure Arc voor servers (preview) met behulp van een serviceprincipal.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,35 +9,35 @@ ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192270"
 ---
-# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
+# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal verbinden met Azure
 
-U kunt Azure Arc voor servers (preview) inschakelen voor meerdere Windows-of Linux-computers in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met het sjabloon script dat we bieden, kunt u elke stap van de installatie automatiseren, met inbegrip van het tot stand brengen van de verbinding met Azure Arc. U moet dit script echter interactief uitvoeren met een account dat verhoogde machtigingen heeft op de doel computer en in Azure. Als u de computers wilt verbinden met Azure Arc voor servers, kunt u een Azure Active Directory [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw bevoorrechte identiteit te gebruiken om [interactief verbinding te maken met de computer](onboard-portal.md). Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mini maal vereiste machtigingen krijgt om computers te verbinden met Azure met behulp van de `azcmagent` opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegdheden, zoals een Tenant Administrator, gevolgd door de aanbevolen procedures voor het beheren van de toegangs beveiliging. De service-principal wordt alleen gebruikt tijdens onboarding en wordt niet voor andere doel einden gebruikt.  
+U Azure Arc inschakelen voor servers (preview) voor meerdere Windows- of Linux-machines in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met behulp van het sjabloonscript dat we leveren, u elke stap van de installatie automatiseren, inclusief het tot stand brengen van de verbinding met Azure Arc. U bent echter verplicht om dit script interactief uit te voeren met een account met verhoogde machtigingen op de doelmachine en in Azure. Als u de machines wilt verbinden met Azure Arc voor servers, u een Azure Active [Directory-serviceprincipal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw geprivilegieerde identiteit te gebruiken om de machine interactief met elkaar te [verbinden.](onboard-portal.md) Een serviceprincipal is een speciale beperkte beheeridentiteit die alleen de minimale `azcmagent` toestemming krijgt die nodig is om machines met Azure te verbinden met de opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegde waarde zoals een tenantbeheerder en volgt onze best practices voor toegangsbeveiliging. De service principal wordt alleen gebruikt tijdens het onboardingen, het wordt niet gebruikt voor andere doeleinden.  
 
-De installatie methoden voor het installeren en configureren van de verbonden machine agent vereist dat de geautomatiseerde methode die u gebruikt, beheerders rechten heeft op de computers. Op Linux, met behulp van het hoofd account en in Windows als lid van de lokale groep Administrators.
+De installatiemethoden voor het installeren en configureren van de agent Connected Machine vereisen dat de geautomatiseerde methode die u gebruikt beheerdersmachtigingen op de machines heeft. Op Linux, door het root-account en op Windows te gebruiken, als lid van de groep Lokale beheerders.
 
-Voordat u aan de slag gaat, moet u de [vereisten](overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
+Voordat u aan de slag gaat, moet u de [vereisten](overview.md#prerequisites) bekijken en controleren of uw abonnement en resources aan de vereisten voldoen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-Aan het einde van dit proces hebt u uw hybride computers verbonden met Azure Arc voor servers.
+Aan het einde van dit proces hebt u uw hybride machines met succes verbonden met Azure Arc voor servers.
 
-## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een service-principal maken voor onboarding op schaal
+## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een serviceprincipal maken voor onboarding op schaal
 
-U kunt [Azure PowerShell](/powershell/azure/install-az-ps) gebruiken om een service-principal te maken met de cmdlet [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) . U kunt ook de stappen volgen die worden vermeld onder [een service-principal maken met behulp van de Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) om deze taak te volt ooien.
+U [Azure PowerShell](/powershell/azure/install-az-ps) gebruiken om een serviceprincipal te maken met de cmdlet [Nieuw-AzADServicePrincipal.](/powershell/module/Az.Resources/New-AzADServicePrincipal) U de stappen volgen die worden vermeld onder [Een serviceprincipal maken met behulp van de Azure-portal](../../active-directory/develop/howto-create-service-principal-portal.md) om deze taak te voltooien.
 
 > [!NOTE]
-> Wanneer u een Service-Principal maakt, moet uw account een eigenaar of beheerder van de gebruikers toegang zijn in het abonnement dat u wilt gebruiken voor onboarding. Als u niet over de juiste machtigingen beschikt om roltoewijzingen te maken, wordt de Service-Principal mogelijk gemaakt, maar kan de machine niet op de onboarding worden uitgevoerd.
+> Wanneer u een serviceprincipal maakt, moet uw account een eigenaar of gebruikerstoegangsbeheerder zijn in het abonnement dat u wilt gebruiken voor onboarding. Als u niet over voldoende machtigingen beschikt om roltoewijzingen te maken, wordt de serviceprincipal mogelijk gemaakt, maar kan deze niet aan boord van machines.
 >
 
-Voer het volgende uit om de service-principal te maken met behulp van Power shell.
+Voer het volgende uit om de serviceprincipal te maken met PowerShell.
 
-1. Voer de volgende opdracht uit. U moet de uitvoer van de cmdlet [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) opslaan in een variabele, of u kunt het wacht woord dat u in een latere stap nodig hebt, niet ophalen.
+1. Voer de volgende opdracht uit. U moet de uitvoer [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) van de cmdlet opslaan in een variabele, anders u het wachtwoord dat nodig is in een latere stap niet ophalen.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -54,43 +54,43 @@ Voer het volgende uit om de service-principal te maken met behulp van Power shel
     Type                  :
     ```
 
-2. Voer de volgende opdracht uit om het wacht woord op te halen dat is opgeslagen in de variabele `$sp`:
+2. Voer de volgende opdracht `$sp` uit om het wachtwoord op te halen dat in de variabele is opgeslagen:
 
     ```azurepowershell-interactive
     $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
     $credential.GetNetworkCredential().password
     ```
 
-3. In de uitvoer vindt u de wachtwoord waarde onder het veld **wacht woord** en kopieert u deze. Zoek ook de waarde onder het veld **ApplicationId** en kopieer deze ook. Bewaar ze later op een veilige plaats. Als u het wacht woord van de Service-Principal vergeet of kwijtraakt, kunt u het opnieuw instellen met behulp van de cmdlet [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) .
+3. Zoek in de uitvoer de wachtwoordwaarde onder het **veldwachtwoord** en kopieer deze. Zoek ook de waarde onder het veld **ApplicationId** en kopieer het ook. Bewaar ze voor later op een veilige plaats. Als u uw servicehoofdwachtwoord vergeet of verliest, [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) u het opnieuw instellen met behulp van de cmdlet.
 
-De waarden van de volgende eigenschappen worden gebruikt met para meters die worden door gegeven aan de `azcmagent`:
+De waarden van de volgende eigenschappen worden `azcmagent`gebruikt met parameters die worden doorgegeven aan :
 
-* De waarde van de eigenschap **ApplicationId** wordt gebruikt voor de waarde van de `--service-principal-id`-para meter
-* De waarde van de eigenschap **Password** wordt gebruikt voor de para meter `--service-principal-secret` die wordt gebruikt om verbinding te maken met de agent.
+* De waarde van de eigenschap **ApplicationId** wordt gebruikt voor de `--service-principal-id` parameterwaarde
+* De waarde **password** van de eigenschap `--service-principal-secret` wachtwoord wordt gebruikt voor de parameter die wordt gebruikt om de agent te verbinden.
 
 > [!NOTE]
-> Zorg ervoor dat u de Service Principal **ApplicationId** -eigenschap gebruikt, niet de eigenschap **id** .
+> Zorg ervoor dat u de eigenschap **ApplicationId** van de serviceprincipal gebruikt, niet de eigenschap **Id.**
 >
 
-De rol van de voor bereide **Azure connected-computer** bevat alleen de vereiste machtigingen voor het onboarden van een computer. U kunt de machtiging Service-Principal toewijzen zodat het bereik een resource groep of een abonnement kan bevatten. Zie roltoewijzingen [toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md) of [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)om roltoewijzing toe te voegen.
+De rol **Azure Connected Machine Onboarding** bevat alleen de machtigingen die nodig zijn om aan boord van een machine te gaan. U de serviceprincipal-machtiging toewijzen om het bereik ervan toe te staan een resourcegroep of een abonnement op te nemen. Als u roltoewijzing wilt toevoegen, [raadpleegt u Roltoewijzingen toevoegen of verwijderen met Azure RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md) of [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>De agent installeren en verbinding maken met Azure
 
-Met de volgende stappen wordt de verbonden machine agent op uw hybride computers geïnstalleerd en geconfigureerd met behulp van de-script sjabloon, waarmee vergelijk bare stappen worden uitgevoerd die worden beschreven in de [hybride computers verbinden met Azure vanuit het Azure Portal](onboard-portal.md) -artikel. Het verschil bevindt zich in de laatste stap waarin u de verbinding met Azure Arc tot stand brengt met behulp van de service-principal met behulp van de `azcmagent` opdracht. 
+De volgende stappen installeren en configureren van de agent Verbonden machine op uw hybride machines met behulp van de scriptsjabloon, die vergelijkbare stappen uitvoert die zijn beschreven in de [hybride machines verbinden met Azure in het Azure-portalartikel.](onboard-portal.md) Het verschil zit in de laatste stap waarin u `azcmagent` de verbinding met Azure Arc tot stand brengen met behulp van de opdracht met behulp van de serviceprincipal. 
 
-Hieronder vindt u de instellingen die u configureert voor de `azcmagent` opdracht die moet worden gebruikt voor de Service-Principal.
+Hieronder volgen de instellingen die `azcmagent` u configureert voor de serviceprincipal.
 
-* `tenant-id`: de unieke id (GUID) die staat voor uw toegewezen exemplaar van Azure AD.
-* `subscription-id`: de abonnements-ID (GUID) van uw Azure-abonnement waarvoor u de computers wilt.
-* `resource-group`: de naam van de resource groep waaraan u de verbonden computers wilt koppelen.
-* `location`: Zie [ondersteunde Azure-regio's](overview.md#supported-regions). Deze locatie kan hetzelfde of hetzelfde zijn als de locatie van de resource groep.
-* `resource-name`: (*optioneel*) gebruikt voor de Azure resource-representatie van uw on-premises machine. Als u deze waarde niet opgeeft, wordt de hostnaam van de computer gebruikt.
+* `tenant-id`: De unieke id (GUID) die uw specifieke exemplaar van Azure AD vertegenwoordigt.
+* `subscription-id`: De abonnements-ID (GUID) van uw Azure-abonnement waarin u de machines wilt hebben.
+* `resource-group`: De naam van de resourcegroep waartoe u wilt dat uw aangesloten machines behoren.
+* `location`: Bekijk [ondersteunde Azure-regio's](overview.md#supported-regions). Deze locatie kan hetzelfde of anders zijn als de locatie van de resourcegroep.
+* `resource-name`:*( Optioneel*) Gebruikt voor de Azure-bronweergave van uw on-premises machine. Als u deze waarde niet opgeeft, wordt de hostnaam van de machine gebruikt.
 
-Meer informatie over het `azcmagent` opdracht regel programma kunt u vinden in de [Azcmagent-verwijzing](azcmagent-reference.md).
+U meer `azcmagent` informatie krijgen over het opdrachtregelgereedschap door de [Verwijzing naar azcmagent](azcmagent-reference.md)te bekijken.
 
-### <a name="windows-installation-script"></a>Windows-installatie script
+### <a name="windows-installation-script"></a>Windows-installatiescript
 
-Hier volgt een voor beeld van het installatie script van de verbonden machine agent voor Windows dat is gewijzigd om de service-principal te gebruiken om een volledig geautomatiseerde, niet-interactieve installatie van de agent te ondersteunen.
+Het volgende is een voorbeeld van de agent Connected Machine voor Windows-installatiescript dat is gewijzigd om de serviceprincipal te gebruiken om een volledig geautomatiseerde, niet-interactieve installatie van de agent te ondersteunen.
 
 ```
  # Download the package
@@ -110,9 +110,9 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
-### <a name="linux-installation-script"></a>Linux-installatie script
+### <a name="linux-installation-script"></a>Linux installatiescript
 
-Hier volgt een voor beeld van het gekoppelde installatie script van de computer agent voor Linux dat is gewijzigd om de service-principal te gebruiken voor de ondersteuning van een volledig geautomatiseerde, niet-interactieve installatie van de agent.
+Het volgende is een voorbeeld van de Connected Machine-agent voor Linux-installatiescript dat is gewijzigd om de serviceprincipal te gebruiken om een volledig geautomatiseerde, niet-interactieve installatie van de agent te ondersteunen.
 
 ```
 # Download the installation package
@@ -131,12 +131,12 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in de [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (voorbeeld), gaat u naar de Azure-portal om te controleren of de server is verbonden. Bekijk uw machines in de [Azure-portal.](https://aka.ms/hybridmachineportal)
 
-![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
+![Een geslaagde serververbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)en nog veel meer.
+- Lees hoe u uw machine beheert met [Azure Policy](../../governance/policy/overview.md), voor zaken als [vm-gastconfiguratie,](../../governance/policy/concepts/guest-configuration.md)het verifiëren van de machine naar de verwachte Log Analytics-werkruimte, het inschakelen van bewaking [met Azure Monitor met VM's](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturings systeem en de workloads die worden uitgevoerd op de machine proactief wilt bewaken, beheren met Automation-runbooks of-oplossingen, zoals Updatebeheer, of andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)gebruiken.
+- Meer informatie over de [log analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De agent Logboekanalyse voor Windows en Linux is vereist wanneer u het besturingssysteem en de workloads die op de machine worden uitgevoerd proactief wilt controleren, deze wilt beheren met behulp van automatiseringsrunboeken of oplossingen zoals Updatebeheer of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md)wilt gebruiken.

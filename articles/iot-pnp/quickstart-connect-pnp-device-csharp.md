@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van een IoT Plug en Play preview-apparaat code verbinden met IoT Hub | Microsoft Docs
-description: Gebruik C# (.net) om IOT Plug en Play preview-voorbeeld code te bouwen en uit te voeren die verbinding maakt met een IOT-hub. Gebruik het hulp programma Azure IoT Explorer om de informatie weer te geven die door het apparaat wordt verzonden naar de hub.
+title: IoT Plug and Play Preview-voorbeeldapparaatcode verbinden met IoT-hub | Microsoft Documenten
+description: Met C# (.NET) kun je IoT Plug and Play Preview-voorbeeldapparaatcode bouwen en uitvoeren die verbinding maakt met een IoT-hub. Gebruik het hulpprogramma voor Azure IoT explorer om de informatie weer te geven die door het apparaat naar de hub wordt verzonden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/27/2019
@@ -9,37 +9,37 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77121014"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Quick Start: een voor beeld van een IoT Plug en Play preview-apparaatC#toepassing verbinden met IOT hub ()
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Snelstart: een voorbeeld van een IoT-stekker en play-apparaattoepassing verbinden met IoT Hub (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-In deze Quick start ziet u hoe u een voor beeld van een IoT-voorbeeld Plug en Play kunt maken, hoe u het kunt verbinden met uw IoT-hub en hoe u het hulp programma Azure IoT Explorer kunt gebruiken om de informatie weer te geven die wordt verzonden naar de hub. De voorbeeld toepassing is geschreven in C# (met .net) en wordt meegeleverd als onderdeel van de Azure IOT-voor beelden C# voor (.net)-verzameling. Een oplossings ontwikkelaar kan het hulp programma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT-Plug en Play apparaat zonder dat er toestel code hoeft te worden weer gegeven.
+Met deze quickstart u zien hoe u een voorbeeld van IoT Plug and Play-apparaattoepassing maken, deze aansluiten op uw IoT-hub en het azure IoT explorer-hulpprogramma gebruiken om de informatie te bekijken die naar de hub wordt verzendt. De voorbeeldtoepassing is geschreven in C# (met .NET) en wordt geleverd als onderdeel van de Azure IoT-verzameling voor C#-verzameling (.NET). Een ontwikkelaar van een oplossing kan het Azure IoT explorer-hulpprogramma gebruiken om inzicht te krijgen in de mogelijkheden van een IoT Plug and Play-apparaat zonder dat er apparaatcode hoeft te worden bekeken.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze Quick Start te volt ooien, moet u .NET Core 3,0 installeren op uw ontwikkel computer. U kunt deze versie van de .NET Core SDK voor meerdere platformen downloaden van [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
+Om deze quickstart te voltooien, moet u .NET Core 3.0 op uw ontwikkelmachine installeren. U deze versie van de .NET Core SDK downloaden voor meerdere platforms van [Download .NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
-U kunt de versie van .NET controleren die zich op uw ontwikkel computer bevindt door de volgende opdracht uit te voeren in een lokaal Terminal venster: 
+U de versie van .NET die op uw ontwikkelingsmachine staat verifiëren door de volgende opdracht in een lokaal terminalvenster uit te voeren: 
 
 ```cmd/sh
 dotnet --version
 ```
 
-### <a name="install-the-azure-iot-explorer"></a>De Azure IoT Explorer installeren
+### <a name="install-the-azure-iot-explorer"></a>De Azure IoT-verkenner installeren
 
-Down load en installeer de nieuwste versie van **Azure IOT Explorer** vanaf de [bibliotheek](https://github.com/Azure/azure-iot-explorer/releases) pagina van het hulp programma door het MSI-bestand te selecteren onder ' assets ' voor de meest recente update.
+Download en installeer de nieuwste versie van **Azure IoT explorer** van de [repository-pagina](https://github.com/Azure/azure-iot-explorer/releases) van de tool door het MSI-bestand onder 'Assets' te selecteren voor de meest recente update.
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Voer de volgende opdracht uit om de _IOT hub-Connection String_ voor uw hub op te halen (Let op later gebruik):
+Voer de volgende opdracht uit om de _IoT-hubverbindingstekenreeks_ voor uw hub te krijgen (opmerking voor later gebruik):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
@@ -47,45 +47,45 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
-In deze Quick Start maakt u een ontwikkel omgeving die u kunt gebruiken om de Azure IoT-voor beelden voor C# (.net) te klonen en te maken.
+In deze quickstart bereidt u een ontwikkelomgeving voor die u gebruiken om de Azure IoT-voorbeelden voor C# (.NET) te klonen en te bouwen.
 
-Open een opdracht prompt in de gewenste map. Voer de volgende opdracht uit om de [Azure IOT-voor C# beelden voor (.net)](https://github.com/Azure-Samples/azure-iot-samples-csharp) github-opslag plaats naar deze locatie te klonen:
+Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de [GitHub-opslagplaats Azure IoT-samples voor C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) op deze locatie te klonen:
 
 ```cmd/sh
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
 ```
 
-Het volt ooien van deze bewerking kan enkele minuten duren.
+Deze bewerking kan enkele minuten in beslag nemen.
 
-## <a name="run-the-device-sample"></a>Het voor beeld van het apparaat uitvoeren
+## <a name="run-the-device-sample"></a>Het voorbeeld van het apparaat uitvoeren
 
-U gebruikt de gekloonde voorbeeld code voor het bouwen van een toepassing die een apparaat simuleert dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
+U gebruikt de gekloonde voorbeeldcode om een toepassing te bouwen die een apparaat simuleert dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Ga in een lokaal Terminal venster naar de map van uw gekloonde opslag plaats en navigeer naar de map **Azure-IOT-samples-csharp/digitaltwin/samples/Device/EnvironmentalSensorSample** . 
+1. Ga in een lokaal terminalvenster naar de map van uw gekloonde opslagplaats en navigeer naar de map **azure-iot-samples-csharp/digitaltwin/Samples/device/EnvironmentalSensorSample.** 
 
-1. De connection string van het _apparaat_configureren:
+1. De _tekenreeks voor apparaatverbinding_configureren:
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Voer een voorbeeld toepassing uit om een IoT Plug en Play-apparaat te simuleren dat telemetrie verzendt naar uw IoT-hub. Gebruik in hetzelfde Terminal venster de volgende opdracht om de benodigde pakketten te bouwen en de voorbeeld toepassing uit te voeren:
+1. Voer een voorbeeldtoepassing uit om een IoT Plug and Play-apparaat te simuleren dat telemetrie naar uw IoT-hub verzendt. Gebruik in hetzelfde terminalvenster de volgende opdracht om de benodigde pakketten te bouwen en de voorbeeldtoepassing uit te voeren:
 
     ```cmd\sh
     dotnet run --framework=netcoreapp3.0
     ```
 
-Er worden berichten weer gegeven met de melding dat het apparaat is geregistreerd en wacht op updates vanuit de Cloud. Dit geeft aan dat het apparaat nu gereed is om opdrachten en updates van eigenschappen te ontvangen en dat er telemetriegegevens worden verzonden naar de hub. Laat het voor beeld uitvoeren tijdens het uitvoeren van de volgende stappen.
+U ziet berichten waarin staat dat het apparaat met succes is geregistreerd en wacht op updates vanuit de cloud. Dit geeft aan dat het apparaat nu klaar is om opdrachten en eigenschapsupdates te ontvangen en is begonnen met het verzenden van telemetriegegevens naar de hub. Houd het voorbeeld actief terwijl u de volgende stappen uitvoert.
 
-## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>De Azure IoT Explorer gebruiken om de code te valideren
+## <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>De Azure IoT-verkenner gebruiken om de code te valideren
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. Selecteer **instellingen**om ervoor te zorgen dat het hulp programma de interface model definities van uw apparaat kan lezen. In het menu instellingen **op het verbonden apparaat** wordt mogelijk al weer gegeven in de Plug en Play configuraties. Als dat niet het geval is, selecteert u **+ module-definitie bron toevoegen** en vervolgens **op het aangesloten apparaat** om het toe te voegen.
+4. Selecteer **Instellingen**om ervoor te zorgen dat het hulpprogramma de definities van het interfacemodel van uw apparaat kan lezen. In het menu Instellingen wordt **op het aangesloten apparaat** mogelijk al weergegeven in de plug-en play-configuraties. Als dit niet het zo is, selecteert u **+ Moduledefinitiebron toevoegen** en vervolgens **op het aangesloten apparaat** om deze toe te voegen.
 
-1. Ga terug naar de overzichts pagina **apparaten** en zoek de apparaat-id die u eerder hebt gemaakt. Wanneer de toepassing nog steeds wordt uitgevoerd in de opdracht prompt, controleert u of de **verbindings status** van het apparaat in azure IOT Explorer wordt gerapporteerd als _verbonden_ (als dat niet het geval is, kunt u op **vernieuwen** drukken totdat dit is). Selecteer het apparaat om meer details weer te geven.
+1. Zoek terug op de **overzichtspagina Apparaten** de apparaatidentiteit die u eerder hebt gemaakt. Controleer of de **verbindingsstatus** van het apparaat in Azure IoT-verkenner wordt gemeld als _Verbonden_ (zo niet, druk op **Vernieuwen** totdat dit het geval is). Selecteer het apparaat om meer details weer te geven.
 
-1. Vouw de interface met de ID **urn: csharp_sdk_sample: EnvironmentalSensor: 1** uit om de interface en IOT Plug en Play primitieven, eigenschappen, opdrachten en telemetrie, weer te geven.
+1. Breid de interface uit met **ID-urn:csharp_sdk_sample:EnvironmentalSensor:1** om de interface en IoT Plug and Play-primitieven te onthullen: eigenschappen, opdrachten en telemetrie.
 
 [!INCLUDE [iot-pnp-iot-explorer-2.md](../../includes/iot-pnp-iot-explorer-2.md)]
 
@@ -93,7 +93,7 @@ Er worden berichten weer gegeven met de melding dat het apparaat is geregistreer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat verbindt met een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten:
+In deze quickstart heb je geleerd hoe je een IoT Plug and Play-apparaat aansluiten op een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug and Play-apparaten:
 
 > [!div class="nextstepaction"]
-> [Instructies: verbinding maken met en werken met een IoT Plug en Play preview-apparaat](howto-develop-solution.md)
+> [How-to: Verbinding maken met en communiceren met een IoT Plug and Play Preview-apparaat](howto-develop-solution.md)

@@ -1,175 +1,175 @@
 ---
-title: Azure-bestands shares herstellen
-description: Informatie over het gebruik van de Azure Portal om een volledige bestands share of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door Azure Backup.
+title: Azure-bestandsshares herstellen
+description: Meer informatie over het gebruik van de Azure-portal om een volledige bestandsshare of specifieke bestanden te herstellen vanaf een herstelpunt dat is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586846"
 ---
-# <a name="restore-azure-file-shares"></a>Azure-bestands shares herstellen
+# <a name="restore-azure-file-shares"></a>Azure-bestandsshares herstellen
 
-In dit artikel wordt uitgelegd hoe u de Azure Portal kunt gebruiken om een volledige bestands share of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview).
+In dit artikel wordt uitgelegd hoe u de Azure-portal gebruiken om een volledige bestandsshare of specifieke bestanden te herstellen vanaf een herstelpunt dat is gemaakt door [Azure Backup.](https://docs.microsoft.com/azure/backup/backup-overview)
 
-In dit artikel leert u het volgende:
+In dit artikel leer je hoe je:
 
-* Een volledige Azure-bestands share herstellen.
+* Een volledig Azure-bestandsshare herstellen.
 * Afzonderlijke bestanden of mappen herstellen.
-* Volg de status van de herstel bewerking.
+* Houd de status van herstelbewerking bij.
 
-## <a name="steps-to-perform-a-restore-operation"></a>Stappen voor het uitvoeren van een herstel bewerking
+## <a name="steps-to-perform-a-restore-operation"></a>Stappen om een herstelbewerking uit te voeren
 
-Voer de volgende stappen uit om een herstel bewerking uit te voeren.
+Voer deze stappen uit om een herstelbewerking uit te voeren.
 
-### <a name="select-the-file-share-to-restore"></a>Selecteer de bestands share die u wilt herstellen
+### <a name="select-the-file-share-to-restore"></a>Selecteer de bestandsshare die u wilt herstellen
 
-1. Open in de [Azure Portal](https://portal.azure.com/)de Recovery Services kluis die u hebt gebruikt voor het configureren van de back-up voor de bestands share.
+1. Open in de [Azure-portal](https://portal.azure.com/)de kluis Recovery Services die u hebt gebruikt om back-ups voor het bestandsaandeel te configureren.
 
-1. Selecteer in het deel venster Overzicht de optie **Back-upitems** onder de sectie **beveiligde items** .
+1. Selecteer **back-upitems** in het overzichtsvenster onder de sectie **Beveiligde items.**
 
     ![Back-upitems selecteren](./media/restore-afs/backup-items.png)
 
-1. Nadat u **Back-upitems**hebt geselecteerd, wordt er een nieuw deel venster met alle typen back-upbeheer weer gegeven naast het deel venster Overzicht.
+1. Nadat u **Back-upitems**hebt geselecteerd, wordt een nieuw deelvenster met alle typen back-upbeheer naast het overzichtsvenster geopend.
 
-    ![Typen back-upbeheer](./media/restore-afs/backup-management.png)
+    ![Back-upbeheertypen](./media/restore-afs/backup-management.png)
 
-1. In het deel venster **Back-upitems** , onder **type back-upbeheer**, selecteert u **Azure Storage (Azure files)** . U ziet een lijst met alle bestands shares en bijbehorende opslag accounts waarvan een back-up is gemaakt met behulp van deze kluis.
+1. Selecteer **Azure Storage (Azure Files)** in het deelvenster **Back-upitems** onder **Type Back-upbeheer**. U ziet een lijst met alle bestandsshares en de bijbehorende opslagaccounts waarvan een back-up wordt gemaakt met behulp van deze kluis.
 
-    ![Lijst met alle bestands shares](./media/restore-afs/file-shares.png)
+    ![Lijst van alle bestandsaandelen](./media/restore-afs/file-shares.png)
 
-1. Selecteer in de lijst met Azure-bestands shares de bestands share waarvoor u de herstel bewerking wilt uitvoeren.
+1. Selecteer in de lijst met Azure-bestandsshares de bestandsshare waarvoor u de herstelbewerking wilt uitvoeren.
 
-### <a name="full-share-recovery"></a>Herstel van volledige share
+### <a name="full-share-recovery"></a>Volledig herstel van het aandeel
 
-U kunt deze terugzet optie gebruiken om de volledige bestands share te herstellen op de oorspronkelijke locatie of op een andere locatie.
+U deze hersteloptie gebruiken om de volledige bestandsshare op de oorspronkelijke locatie of een alternatieve locatie te herstellen.
 
-1. Selecteer de optie **share terugzetten** in het deel venster **back-upitem** dat wordt weer gegeven nadat u de bestands share hebt geselecteerd om te herstellen in stap 5 van de sectie [Selecteer de bestands share die u wilt terugzetten](#select-the-file-share-to-restore) .
+1. Selecteer de optie **Delen herstellen** in het deelvenster **Back-upitem** dat wordt weergegeven nadat u de bestandsshare hebt geselecteerd om te herstellen in stap 5 van de sectie [Het bestand delen selecteren om te herstellen.](#select-the-file-share-to-restore)
 
-   ![Share terugzetten selecteren](./media/restore-afs/restore-share.png)
+   ![Aandeel herstellen selecteren](./media/restore-afs/restore-share.png)
 
-1. Nadat u **share terugzetten**hebt geselecteerd, wordt het deel venster **herstellen** geopend met een **herstel punt** menu dat een lijst met beschik bare herstel punten voor de geselecteerde bestands share weergeeft.
+1. Nadat u **Delen herstellen hebt**geselecteerd, wordt het deelvenster **Herstel** geopend met een menu **Herstelpunt** met een lijst met herstelpunten die beschikbaar zijn voor de geselecteerde bestandsshare.
 
-1. Selecteer het herstel punt dat u wilt gebruiken om de herstel bewerking uit te voeren en selecteer **OK**.
+1. Selecteer het herstelpunt dat u wilt gebruiken om de herstelbewerking uit te voeren en selecteer **OK**.
 
-    ![Herstel punt selecteren](./media/restore-afs/restore-point.png)
+    ![Herstelpunt selecteren](./media/restore-afs/restore-point.png)
 
-1. Nadat u **OK**hebt geselecteerd, wordt in het menu van het deel venster **herstellen** de **locatie voor terugzetten**weer geactiveerd. Geef bij **herstel locatie**op waar of hoe de gegevens moeten worden hersteld. Selecteer een van de volgende twee opties:
+1. Nadat u **OK hebt**geselecteerd, schakelt het menu Van het deelvenster **Herstellen** over naar Locatie **herstellen**. Geef **in Locatie herstellen**op waar of hoe u de gegevens herstellen. Selecteer een van de volgende twee opties:
 
-    * **Oorspronkelijke locatie**: herstel de volledige bestands share naar dezelfde locatie als de oorspronkelijke bron.
-    * **Alternatieve locatie**: herstel de volledige bestands share naar een andere locatie en behoud de oorspronkelijke bestands share.
+    * **Oorspronkelijke locatie:** het volledige bestandsaandeel herstellen naar dezelfde locatie als de oorspronkelijke bron.
+    * **Alternatieve locatie:** herstel de volledige bestandsshare naar een alternatieve locatie en houd de oorspronkelijke bestandsshare zoals het is.
 
 #### <a name="restore-to-the-original-location"></a>Herstellen naar de oorspronkelijke locatie
 
-1. Selecteer **oorspronkelijke locatie** als **herstel doel**en selecteer of u wilt overs Laan of overschrijven als er conflicten zijn. Nadat u de gewenste selectie hebt gemaakt, selecteert u **OK**.
+1. Selecteer **Oorspronkelijke locatie** als **herstelbestemming**en selecteer of u wilt overslaan of overschrijven als er conflicten zijn. Nadat u de juiste selectie hebt gemaakt, selecteert u **OK**.
 
     ![Oorspronkelijke locatie selecteren](./media/restore-afs/original-location.png)
 
-1. Selecteer **herstellen** om de herstel bewerking te starten.
+1. Selecteer **Herstellen** om de herstelbewerking te starten.
 
-    ![Selecteer herstellen om te starten](./media/restore-afs/click-restore.png)
+    ![Herstellen selecteren om te starten](./media/restore-afs/click-restore.png)
 
 #### <a name="restore-to-an-alternate-location"></a>Herstellen naar een alternatieve locatie
 
-1. Selecteer **alternatieve locatie** als **herstel bestemming**.
-1. Selecteer het doel-opslag account waar u de inhoud waarvan een back-up is gemaakt, wilt herstellen uit de vervolg keuzelijst **opslag account** .
-1. In de vervolg keuzelijst **Bestands share selecteren** worden de bestands shares weer gegeven die aanwezig zijn in het opslag account dat u in stap 2 hebt geselecteerd. Selecteer de bestands share waar u de inhoud van de back-up wilt terugzetten.
-1. Geef in het vak **mapnaam** de naam op van de map die u in de doel bestands share wilt maken met de herstelde inhoud.
-1. Selecteer of u wilt overs Laan of overschrijven als er conflicten zijn.
-1. Nadat u de juiste waarden in alle vakken hebt opgegeven, selecteert u **OK**.
+1. Selecteer **Alternatieve locatie** als **herstelbestemming**.
+1. Selecteer het doelopslagaccount waar u de back-upinhoud wilt herstellen in de vervolgkeuzelijst **Opslagaccount.**
+1. In de vervolgkeuzelijst **Bestandsaandeel selecteren** worden de bestandsshares weergegeven die aanwezig zijn in het opslagaccount dat u in stap 2 hebt geselecteerd. Selecteer de bestandsshare waar u de inhoud met een back-up wilt herstellen.
+1. Geef in het vak **Mapnaam** een mapnaam op die u wilt maken in het doelbestand delen met de herstelde inhoud.
+1. Selecteer of u wilt overslaan of overschrijven als er conflicten zijn.
+1. Nadat u de juiste waarden in alle vakken hebt ingevoerd, selecteert u **OK**.
 
     ![Alternatieve locatie selecteren](./media/restore-afs/alternate-location.png)
 
-1. Selecteer **herstellen** om de herstel bewerking te starten.
+1. Selecteer **Herstellen** om de herstelbewerking te starten.
 
-    ![Selecteer herstellen om te starten](./media/restore-afs/click-restore.png)
+    ![Herstellen selecteren om te starten](./media/restore-afs/click-restore.png)
 
-### <a name="item-level-recovery"></a>Herstel op item niveau
+### <a name="item-level-recovery"></a>Herstel op itemniveau
 
-U kunt deze terugzet optie gebruiken om afzonderlijke bestanden of mappen op de oorspronkelijke locatie of op een andere locatie te herstellen.
+U deze hersteloptie gebruiken om afzonderlijke bestanden of mappen op de oorspronkelijke locatie of een alternatieve locatie te herstellen.
 
-1. Selecteer de optie **bestands herstel** in het deel venster **back-upitem** dat wordt weer gegeven nadat u de bestands share hebt geselecteerd die u wilt herstellen in stap 5 van de sectie [Selecteer de bestands share die u wilt terugzetten](#select-the-file-share-to-restore) .
+1. Selecteer de optie **Bestandsherstel** in het deelvenster **Back-upitem** dat wordt weergegeven nadat u de bestandsshare hebt geselecteerd om te herstellen in stap 5 van de sectie [Het bestand delen selecteren om te herstellen.](#select-the-file-share-to-restore)
 
-    ![Bestands herstel selecteren](./media/restore-afs/file-recovery.png)
+    ![Bestandherstel selecteren](./media/restore-afs/file-recovery.png)
 
-1. Nadat u **bestands herstel**hebt geselecteerd, wordt het deel venster **herstellen** geopend met een **herstel punt** menu dat een lijst met beschik bare herstel punten voor de geselecteerde bestands share weergeeft.
+1. Nadat u **Bestandsherstel**hebt geselecteerd, wordt het deelvenster **Herstel** geopend met een menu **Herstelpunt** met een lijst met herstelpunten die beschikbaar zijn voor de geselecteerde bestandsshare.
 
-1. Selecteer het herstel punt dat u wilt gebruiken om de herstel bewerking uit te voeren en selecteer **OK**.
+1. Selecteer het herstelpunt dat u wilt gebruiken om de herstelbewerking uit te voeren en selecteer **OK**.
 
-    ![Herstel punt selecteren](./media/restore-afs/restore-point.png)
+    ![Herstelpunt selecteren](./media/restore-afs/restore-point.png)
 
-1. Nadat u **OK**hebt geselecteerd, wordt in het menu van het deel venster herstellen de **locatie voor terugzetten**weer geactiveerd. Geef bij **herstel locatie**op waar of hoe de gegevens moeten worden hersteld. Selecteer een van de volgende twee opties:
+1. Nadat u **OK hebt**geselecteerd, schakelt het menu van het herstelvenster over naar Locatie **herstellen**. Geef **in Locatie herstellen**op waar of hoe u de gegevens herstellen. Selecteer een van de volgende twee opties:
 
-    * **Oorspronkelijke locatie**: Zet geselecteerde bestanden of mappen terug naar dezelfde bestands share als de oorspronkelijke bron.
-    * **Alternatieve locatie**: geselecteerde bestanden of mappen terugzetten op een andere locatie en de oorspronkelijke bestands share-inhoud blijven gebruiken.
+    * **Oorspronkelijke locatie:** herstel geselecteerde bestanden of mappen naar dezelfde bestandsshare als de oorspronkelijke bron.
+    * **Alternatieve locatie:** herstel geselecteerde bestanden of mappen naar een alternatieve locatie en bewaar de oorspronkelijke inhoud van bestandsshare zoals die is.
 
 #### <a name="restore-to-the-original-location"></a>Herstellen naar de oorspronkelijke locatie
 
-1. Selecteer **oorspronkelijke locatie** als **herstel doel**en selecteer of u wilt overs Laan of overschrijven als er conflicten zijn.
+1. Selecteer **Oorspronkelijke locatie** als **herstelbestemming**en selecteer of u wilt overslaan of overschrijven als er conflicten zijn.
 
-    ![Oorspronkelijke locatie voor herstel op item niveau](./media/restore-afs/original-location-item-level.png)
+    ![Oorspronkelijke locatie voor itemniveauherstel](./media/restore-afs/original-location-item-level.png)
 
-1. Kies **bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
+1. Kies **Bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
 
-    ![Kies bestand selecteren](./media/restore-afs/select-file.png)
+    ![Selecteer Bestand selecteren](./media/restore-afs/select-file.png)
 
-1. Nadat u **bestand selecteren**hebt gekozen, wordt in een deel venster bestands share de inhoud weer gegeven van het bestands share-herstel punt dat u hebt geselecteerd voor herstel.
+1. Nadat u **Bestand selecteren**hebt gekozen , wordt in een deelvenster voor bestandsshare de inhoud weergegeven van het herstelpunt voor bestandsdelen dat u hebt geselecteerd voor herstel.
 
-1. Schakel het selectie vakje in dat overeenkomt met het bestand dat of de map die u wilt herstellen en kies **selecteren**.
+1. Schakel het selectievakje in dat overeenkomt met het bestand of de map die u wilt herstellen en kies **Selecteren**.
 
     ![Bestand of map selecteren](./media/restore-afs/select-file-folder.png)
 
-1. Herhaal stap 2 tot en met 4 om meerdere bestanden of mappen te selecteren die u wilt herstellen.
+1. Herhaal stap 2 tot en met 4 om meerdere bestanden of mappen te selecteren om te herstellen.
 1. Nadat u alle items hebt geselecteerd die u wilt herstellen, selecteert u **OK**.
 
-    ![Selecteer OK nadat u alle items hebt geselecteerd die u wilt herstellen](./media/restore-afs/after-selecting-items.png)
+    ![Nadat u alle items hebt geselecteerd die u wilt herstellen, selecteert u OK](./media/restore-afs/after-selecting-items.png)
 
-1. Selecteer **herstellen** om de herstel bewerking te starten.
+1. Selecteer **Herstellen** om de herstelbewerking te starten.
 
-    ![Selecteer herstellen om te starten](./media/restore-afs/click-restore.png)
+    ![Herstellen selecteren om te starten](./media/restore-afs/click-restore.png)
 
 #### <a name="restore-to-an-alternate-location"></a>Herstellen naar een alternatieve locatie
 
-1. Selecteer **alternatieve locatie** als **herstel bestemming**.
-1. Selecteer het doel-opslag account waar u de inhoud waarvan een back-up is gemaakt, wilt herstellen uit de vervolg keuzelijst **opslag account** .
-1. In de vervolg keuzelijst **Bestands share selecteren** worden de bestands shares weer gegeven die aanwezig zijn in het opslag account dat u in stap 2 hebt geselecteerd. Selecteer de bestands share waar u de inhoud van de back-up wilt terugzetten.
-1. Geef in het vak **mapnaam** de naam op van de map die u in de doel bestands share wilt maken met de herstelde inhoud.
-1. Selecteer of u wilt overs Laan of overschrijven als er conflicten zijn.
-1. Kies **bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
+1. Selecteer **Alternatieve locatie** als **herstelbestemming**.
+1. Selecteer het doelopslagaccount waar u de back-upinhoud wilt herstellen in de vervolgkeuzelijst **Opslagaccount.**
+1. In de vervolgkeuzelijst **Bestandsaandeel selecteren** worden de bestandsshares weergegeven die aanwezig zijn in het opslagaccount dat u in stap 2 hebt geselecteerd. Selecteer de bestandsshare waar u de inhoud met een back-up wilt herstellen.
+1. Geef in het vak **Mapnaam** een mapnaam op die u wilt maken in het doelbestand delen met de herstelde inhoud.
+1. Selecteer of u wilt overslaan of overschrijven als er conflicten zijn.
+1. Kies **Bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
 
-    ![Selecteer items om terug te zetten naar een alternatieve locatie](./media/restore-afs/restore-to-alternate-location.png)
+    ![Items selecteren die u wilt herstellen naar alternatieve locatie](./media/restore-afs/restore-to-alternate-location.png)
 
-1. Wanneer u **bestand selecteren selecteert**, wordt in een deel venster bestands share de inhoud weer gegeven van het bestands share-herstel punt dat u hebt geselecteerd voor herstel.
-1. Schakel het selectie vakje in dat overeenkomt met het bestand dat of de map die u wilt herstellen en kies **selecteren**.
+1. Wanneer u **Bestand selecteren**kiest , wordt in een deelvenster voor bestandsshare de inhoud weergegeven van het herstelpunt voor bestandsshare dat u hebt geselecteerd voor herstel.
+1. Schakel het selectievakje in dat overeenkomt met het bestand of de map die u wilt herstellen en kies **Selecteren**.
 
-    ![Herstel bestemming selecteren](./media/restore-afs/recovery-destination.png)
+    ![Herstelbestemming selecteren](./media/restore-afs/recovery-destination.png)
 
-1. Herhaal stap 6 tot en met 8 om meerdere bestanden of mappen te selecteren die u wilt herstellen.
+1. Herhaal stap 6 tot en met 8 om meerdere bestanden of mappen te selecteren om te herstellen.
 1. Nadat u alle items hebt geselecteerd die u wilt herstellen, selecteert u **OK**.
 
-    ![Selecteer OK nadat u alle bestanden hebt geselecteerd](./media/restore-afs/after-selecting-all-items.png)
+    ![Ok selecteren nadat u alle bestanden hebt geselecteerd](./media/restore-afs/after-selecting-all-items.png)
 
-1. Selecteer **herstellen** om de herstel bewerking te starten.
+1. Selecteer **Herstellen** om de herstelbewerking te starten.
 
-## <a name="track-a-restore-operation"></a>Een terugzet bewerking volgen
+## <a name="track-a-restore-operation"></a>Een herstelbewerking bijhouden
 
-Nadat u de herstel bewerking hebt geactiveerd, maakt de back-upservice een taak voor tracering. Azure Backup worden meldingen over de taak weer gegeven in de portal. Selecteer de Hyper Link meldingen om de bewerkingen voor de taak weer te geven.
+Nadat u de herstelbewerking hebt geactiveerd, maakt de back-upservice een taak voor het bijhouden. Azure Backup geeft meldingen weer over de taak in de portal. Als u bewerkingen voor de taak wilt weergeven, selecteert u de hyperlink met meldingen.
 
-![Hyper Link meldingen selecteren](./media/restore-afs/notifications-link.png)
+![Hyperlink voor meldingen selecteren](./media/restore-afs/notifications-link.png)
 
-U kunt de voortgang van de herstel bewerking ook controleren vanuit de Recovery Services kluis:
+U ook de herstelvoortgang vanuit de kluis Van Herstelservices controleren:
 
-1. Open de Recovery Services kluis van waaruit u de herstel bewerking hebt geactiveerd.
-1. Selecteer in het deel venster overzicht **back-uptaken** onder het gedeelte **bewaking** om de status van de bewerkingen die worden uitgevoerd op verschillende werk belastingen weer te geven.
+1. Open de kluis Recovery Services van waaruit u de herstelbewerking hebt geactiveerd.
+1. Selecteer **back-uptaken** in het overzichtsvenster onder de sectie **Controle** om de status te zien van bewerkingen die worden uitgevoerd tegen verschillende workloads.
 
     ![Back-uptaken selecteren](./media/restore-afs/backup-jobs.png)
 
-1. Selecteer de naam van de werk belasting die overeenkomt met uw bestands share om meer informatie over de herstel bewerking weer te geven, zoals **overgedragen gegevens** en het **aantal herstelde bestanden**.
+1. Selecteer de werkbelastingnaam die overeenkomt met uw bestandsshare om meer details over de herstelbewerking weer te geven, zoals **gegevens overdracht** en **aantal herstelde bestanden**.
 
-    ![Details van hersteld weer geven](./media/restore-afs/restore-details.png)
+    ![Bekijk herstelde details](./media/restore-afs/restore-details.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [beheren van back-ups van Azure-bestands shares](manage-afs-backup.md).
+* Meer informatie over het [beheren van back-ups voor azure-bestanden](manage-afs-backup.md).

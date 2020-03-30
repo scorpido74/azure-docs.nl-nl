@@ -1,5 +1,5 @@
 ---
-title: Azure Write Accelerator
+title: Azure Schrijfversneller
 description: Documentatie over het inschakelen en gebruiken van Write Accelerator
 services: virtual-machines-windows
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.author: raiye
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
 ms.openlocfilehash: ddc5075409c2b940830ec32e4433262556c38002
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038608"
 ---
-# <a name="enable-write-accelerator"></a>Write Accelerator inschakelen
+# <a name="enable-write-accelerator"></a>Schrijfversneller inschakelen
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

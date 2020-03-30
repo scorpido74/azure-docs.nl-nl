@@ -1,6 +1,6 @@
 ---
-title: Horizon taal schalen van cluster beheren (uitschalen) om te voldoen aan de vraag in azure Data Explorer
-description: In dit artikel worden de stappen beschreven voor het uitschalen en schalen in een Azure Data Explorer-cluster op basis van het wijzigen van de vraag.
+title: Clusterhorizontale schaling (uitschalen) beheren om aan de vraag in Azure Data Explorer te voldoen
+description: In dit artikel worden stappen beschreven om uit te schalen en te schalen in een Azure Data Explorer-cluster op basis van veranderende vraag.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,129 +8,129 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664130"
 ---
-# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Clusterhorizontale schaling (uitschalen) beheren in Azure Data Explorer om aan de veranderende vraag te voldoen
 
-Het formaat van een cluster op de juiste wijze is essentieel voor de prestaties van Azure Data Explorer. De grootte van een statisch cluster kan leiden tot minder gebruik of over meer gebruiks mogelijkheden. Omdat de vraag naar een cluster niet met absolute nauw keurigheid kan worden voor speld, is het beter om een cluster te *schalen* , capaciteit en CPU-resources toe te voegen en te verwijderen met veranderende vraag. 
+Het op de juiste manier aanpassen van het formaat van een cluster is van cruciaal belang voor de prestaties van Azure Data Explorer. Een statische clustergrootte kan leiden tot onderbenutting of overmatig gebruik, waarvan geen van beide ideaal is. Omdat de vraag op een cluster niet met absolute nauwkeurigheid kan worden voorspeld, is het beter om een cluster te *schalen,* capaciteit en CPU-resources toe te voegen en te verwijderen met veranderende vraag. 
 
-Er zijn twee werk stromen voor het schalen van een Azure Data Explorer-cluster: 
-* Horizon taal schalen, ook wel in-en uitschalen genoemd.
-* [Verticaal schalen](manage-cluster-vertical-scaling.md), ook wel omhoog en omlaag schalen genoemd.
-In dit artikel wordt de werk stroom voor Horizon taal schalen uitgelegd.
+Er zijn twee werkstromen voor het schalen van een Azure Data Explorer-cluster: 
+* Horizontale schaling, ook wel schalen in en uit genoemd.
+* [Verticale schaling](manage-cluster-vertical-scaling.md), ook wel op en neer schalen genoemd.
+In dit artikel wordt de horizontale schalingswerkstroom uitgelegd.
 
-## <a name="configure-horizontal-scaling"></a>Horizon taal schalen configureren
+## <a name="configure-horizontal-scaling"></a>Horizontale schaling configureren
 
-Als u horizon taal schalen gebruikt, kunt u het aantal exemplaren automatisch schalen op basis van vooraf gedefinieerde regels en schema's. De instellingen voor automatisch schalen voor uw cluster opgeven:
+Door horizontale schaling te gebruiken, u het aantal instance's automatisch schalen op basis van vooraf gedefinieerde regels en schema's. Ga als volgt te werk om de instellingen voor automatisch schalen voor uw cluster op te geven:
 
-1. Ga in het Azure Portal naar de cluster bron van Azure Data Explorer. Onder **instellingen**selecteert u **uitschalen**. 
+1. Ga in de Azure-portal naar uw Azure Data Explorer-clusterbron. Selecteer **onder Instellingen**De optie **Uitschalen**. 
 
-2. Selecteer in het venster **uitschalen** de gewenste methode voor automatisch schalen: **hand matig schalen**, **geoptimaliseerd**automatisch schalen of **aangepast automatisch schalen**.
+2. Selecteer **in het** venster Uitschalen de gewenste methode voor automatisch schalen: **Handmatigschalen,** **Geoptimaliseerde automatische schaal**of Aangepaste automatische **schaal**.
 
-### <a name="manual-scale"></a>Hand matig schalen
+### <a name="manual-scale"></a>Handmatigschalen
 
-Hand matig schalen is de standaard instelling tijdens het maken van het cluster. Het cluster heeft een statische capaciteit die niet automatisch wordt gewijzigd. U selecteert de statische capaciteit met behulp van de **instantie aantal exemplaren** . De schaal van het cluster blijft in die instelling totdat u een andere wijziging aanbrengt.
+Handmatigschalen is de standaardinstelling tijdens het maken van het cluster. Het cluster heeft een statische capaciteit die niet automatisch verandert. U selecteert de statische capaciteit met de **telbalk van de instantie.** De schaling van het cluster blijft op die instelling totdat u een andere wijziging aanbrengt.
 
-   ![Methode hand matig schalen](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
+   ![Handmatige schaalmethode](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale-preview"></a>Geoptimaliseerd automatisch schalen (preview)
+### <a name="optimized-autoscale-preview"></a>Geoptimaliseerde automatische schaal (voorbeeld)
 
-Geoptimaliseerd automatisch schalen is de aanbevolen methode voor automatisch schalen. Deze methode optimaliseert de prestaties en kosten van het cluster. Als het cluster de status onder gebruik nadert, wordt het geschaald in. Deze actie verlaagt de kosten, maar houdt het prestatie niveau bij. Als het cluster de status over het gebruik nadert, wordt het uitgeschaald om optimale prestaties te behouden. Geoptimaliseerde automatisch schalen configureren:
+Geoptimaliseerde automatische schaal is de aanbevolen methode voor automatisch schalen. Deze methode optimaliseert de clusterprestaties en -kosten. Als het cluster een status van onderbenutting nadert, wordt het ingeschaald. Deze actie verlaagt de kosten, maar houdt het prestatieniveau. Als het cluster een status van overgebruik nadert, wordt het uitgekopt om optimale prestaties te behouden. Ga als u de automatische schaal voor geoptimaliseerde instellingen wilt configureren:
 
-1. Selecteer **geoptimaliseerde automatisch schalen**. 
+1. Selecteer **Geoptimaliseerde automatische schaal**. 
 
-1. Selecteer een minimum aantal instanties en een maximum aantal exemplaren. De automatische schaal aanpassing van het cluster tussen de twee getallen, op basis van de belasting.
+1. Selecteer een minimum aantal instanties en een maximaal aantal instanties. De clusterschaalbereiken tussen deze twee getallen, op basis van belasting.
 
 1. Selecteer **Opslaan**.
 
-   ![Geoptimaliseerde methode voor automatisch schalen](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
+   ![Geoptimaliseerde automatische schaalmethode](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Geoptimaliseerd automatisch schalen wordt gestart. De bijbehorende acties zijn nu zichtbaar in het Azure-activiteiten logboek van het cluster.
+Geoptimaliseerde automatische schaal begint te werken. De acties zijn nu zichtbaar in het Azure-activiteitenlogboek van het cluster.
 
-#### <a name="logic-of-optimized-autoscale"></a>Logica van geoptimaliseerd automatisch schalen 
+#### <a name="logic-of-optimized-autoscale"></a>Logica van geoptimaliseerde automatische schaal 
 
 **Uitschalen**
 
-Wanneer uw cluster de status over het gebruik benadert, kunt u uitschalen om optimale prestaties te behouden. Uitschalen vindt plaats wanneer:
-* Het aantal cluster exemplaren ligt onder het maximum aantal exemplaren dat door de gebruiker is gedefinieerd.
-* Het cache gebruik is gedurende een uur hoog.
-* De CPU is gedurende een uur hoog.
-* Het gebruik van de opname is gedurende een uur hoog.
+Wanneer uw cluster een staat van overmatig gebruik nadert, schaalt u uit om optimale prestaties te behouden. Scale out zal plaatsvinden wanneer:
+* Het aantal clusterexemplaren ligt onder het maximum aantal exemplaren dat door de gebruiker is gedefinieerd.
+* Het cachegebruik is meer dan een uur hoog.
+* De CPU is hoog voor meer dan een uur.
+* Het innamegebruik is meer dan een uur hoog.
 
 > [!NOTE]
-> De schaal van de logica voor het opschalen van gegevens neemt momenteel geen rekening met de metrische opname capaciteit. Als deze waarde belang rijk is voor uw use-case, gebruikt u [aangepaste automatisch schalen](#custom-autoscale).
+> De schaal-outlogica houdt momenteel geen rekening met de statistiek van het innamegebruik. Als deze statistiek belangrijk is voor uw use case, gebruikt u [aangepaste automatische schaal](#custom-autoscale).
 
-**Schalen in**
+**Inschalen**
 
-Als uw cluster de status onder gebruik nadert, kunt u inschalen om de kosten te verlagen, maar de prestaties te behouden. Er worden meerdere metrische gegevens gebruikt om te controleren of het veilig is om in het cluster te schalen. De volgende regels worden elk uur geëvalueerd voor 6 uur voordat de schaal in wordt uitgevoerd:
-* Het aantal exemplaren ligt boven 2 en hoger dan het minimum aantal exemplaren dat is gedefinieerd.
-* Om ervoor te zorgen dat resources niet overbelast zijn, moeten de volgende metrische gegevens worden gecontroleerd voordat de schaal in wordt uitgevoerd: 
-    * Cache gebruik is niet hoog
-    * CPU is lager dan gemiddeld 
-    * Het gebruik van opname is lager dan het gemiddelde 
-    * Het gebruik van streaming-opname (als het opnemen van gegevens stromen wordt gebruikt) is niet hoog
-    * Keep Alive-gebeurtenissen bevinden zich boven een gedefinieerd minimum, worden correct verwerkt en op tijd.
-    * Geen query beperking 
+Wanneer uw cluster een staat van onderbenutting nadert, schaalt u in om de kosten te verlagen, maar de prestaties te behouden. Er worden meerdere statistieken gebruikt om te controleren of het veilig is om te schalen in het cluster. De volgende regels worden elk uur geëvalueerd gedurende 6 uur voordat de schaal wordt uitgevoerd:
+* Het aantal exemplaren ligt boven 2 en hoger dan het minimumaantal gedefinieerde exemplaren.
+* Om ervoor te zorgen dat resources niet overbelast raken, moeten de volgende statistieken worden geverifieerd voordat de schaal wordt uitgevoerd: 
+    * Het cachegebruik is niet hoog
+    * CPU is onder het gemiddelde 
+    * Inname gebruik is onder het gemiddelde 
+    * Streaming ingest gebruik (als streaming ingest wordt gebruikt) is niet hoog
+    * Keep alive gebeurtenissen zijn boven een bepaald minimum, goed verwerkt, en op tijd.
+    * Geen querybeperking 
     * Het aantal mislukte query's ligt onder een gedefinieerd minimum.
 
 > [!NOTE]
-> Voor de schaal van logica is momenteel een evaluatie van zeven dagen vereist voordat de implementatie van een geoptimaliseerde schaal in kan worden geïmplementeerd. Deze evaluatie vindt één keer per 24 uur plaats. Als er een snelle wijziging nodig is, gebruikt u [hand matig schalen](#manual-scale).
+> De schaal in logica vereist momenteel een evaluatie van 7 dagen voordat de optimale schaal wordt geïmplementeerd. Deze evaluatie vindt eens in de 24 uur plaats. Als een snelle wijziging nodig is, gebruikt u [handmatige schaal.](#manual-scale)
 
-### <a name="custom-autoscale"></a>Aangepaste automatisch schalen
+### <a name="custom-autoscale"></a>Aangepaste automatische schaal
 
-Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis van de metrische gegevens die u opgeeft. In de volgende afbeelding ziet u de stroom en de stappen voor het configureren van aangepaste automatisch schalen. Raadpleeg de afbeelding voor meer informatie.
+Met aangepaste automatische schaal u uw cluster dynamisch schalen op basis van statistieken die u opgeeft. In de volgende afbeelding ziet u de stroom en stappen om aangepaste automatische schaal te configureren. Meer details volgen de afbeelding.
 
-1. Voer in het vak **instellings naam automatisch schalen** een naam in, zoals *uitschalen: cache gebruik*. 
+1. Voer in het **vak Naam van de instelling Automatisch schalen** een naam in, zoals *Uitschalen: cachegebruik*. 
 
-   ![Schaal regel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Schaalregel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
-2. Voor **schaal modus**selecteert u **schalen op basis van een metriek**. Deze modus biedt dynamische schaling. U kunt ook **schalen naar een specifiek aantal instanties**selecteren.
+2. Selecteer **Bij Schaalmodus**de optie **Schalen op basis van een statistiek**. Deze modus zorgt voor dynamische schaling. U ook Schalen selecteren **naar een specifiek aantal instanties.**
 
-3. Selecteer **+ een regel toevoegen**.
+3. Selecteer **+ Voeg een regel toe**.
 
-4. Voer in de sectie **schaal regel** aan de rechter kant waarden in voor elke instelling.
+4. Voer in de sectie **Schaalregel** aan de rechterkant waarden in voor elke instelling.
 
     **Criteria**
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Tijd aggregatie** | Selecteer een aggregatie criterium, zoals **gemiddeld**. |
-    | **Metrische naam** | Selecteer de metrische gegevens waarop u de schaal bewerking wilt baseren, zoals het **cache gebruik**. |
-    | **Statistieken voor tijd korrels** | Kies een **gemiddelde**, een **minimum**, een **maximum**en een **som**. |
-    | **And** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
-    | **Spreek** | Kies een geschikte waarde. Bijvoorbeeld: voor cache gebruik is 80 procent een goed uitgangs punt. |
-    | **Duur (in minuten)** | Kies een geschikte hoeveelheid tijd om het systeem terug te laten kijken bij het berekenen van metrische gegevens. Begin met de standaard waarde van 10 minuten. |
+    | **Tijdverzameling** | Selecteer een aggregatiecriteria, zoals **Gemiddeld**. |
+    | **Naam van meetwaarde** | Selecteer de statistiek waarop de schaalbewerking moet worden gebaseerd, zoals **Cachegebruik.** |
+    | **Tijdsintervalstatistieken** | Kies tussen **Gemiddeld**, **Minimum**, **Maximum**en **Som**. |
+    | **Operator** | Kies de juiste optie, zoals **Groter dan of gelijk aan**. |
+    | **Drempel** | Kies een geschikte waarde. Voor cachegebruik is 80 procent bijvoorbeeld een goed uitgangspunt. |
+    | **Duur (in minuten)** | Kies een geschikte hoeveelheid tijd voor het systeem om terug te kijken bij het berekenen van statistieken. Begin met de standaardwaarde van 10 minuten. |
     |  |  |
 
     **Actie**
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Bewerking** | Kies de gewenste optie om in of uit te schalen. |
-    | **Aantal exemplaren** | Kies het aantal knoop punten of exemplaren dat u wilt toevoegen of verwijderen wanneer aan een voor waarde voor een metriek wordt voldaan. |
-    | **Afkoelen (minuten)** | Kies een geschikt tijds interval om te wachten tussen schaal bewerkingen. Begin met de standaard waarde van vijf minuten. |
+    | **Bewerking** | Kies de juiste optie om in of uit te schalen. |
+    | **Instantietelling** | Kies het aantal knooppunten of instanties dat u wilt toevoegen of verwijderen wanneer aan een metrische voorwaarde is voldaan. |
+    | **Afkoelen (minuten)** | Kies een geschikt tijdsinterval om te wachten tussen schaalbewerkingen. Begin met de standaardinstelling van vijf minuten. |
     |  |  |
 
 5. Selecteer **Toevoegen**.
 
-6. Voer in de sectie **limieten** van het exemplaar aan de linkerkant waarden in voor elke instelling.
+6. Voer in de sectie **Instantielimieten** aan de linkerkant waarden in voor elke instelling.
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Maal** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
-    | **Gehalte** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
-    | **Standaard** | Het standaard aantal exemplaren. Deze instelling wordt gebruikt als er problemen zijn met het lezen van de metrische gegevens van de resource. |
+    | **Minimum** | Het aantal exemplaren dat uw cluster hieronder niet schaalt, ongeacht het gebruik. |
+    | **Maximum** | Het aantal exemplaren dat uw cluster niet hierboven schaalt, ongeacht het gebruik. |
+    | **Standaard** | Het standaardaantal exemplaren. Deze instelling wordt gebruikt als er problemen zijn met het lezen van de resourcestatistieken. |
     |  |  |
 
 7. Selecteer **Opslaan**.
 
-U hebt nu horizon taal schalen geconfigureerd voor uw Azure Data Explorer-cluster. Voeg nog een regel toe voor verticaal schalen. Als u hulp nodig hebt bij problemen met cluster schaal, [opent u een ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in de Azure Portal.
+U hebt nu horizontale schaling geconfigureerd voor uw Azure Data Explorer-cluster. Voeg een andere regel toe voor verticaal schalen. Als u hulp nodig hebt bij clusterschalingsproblemen, [opent u een ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in de Azure-portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Prestaties, status en gebruik van Azure Data Explorer controleren met metrische gegevens](using-metrics.md)
-* [Verticaal schalen van clusters beheren](manage-cluster-vertical-scaling.md) voor de juiste grootte van een cluster.
+* [Prestaties, status en gebruik van Azure Data Explorer bewaken met statistieken](using-metrics.md)
+* [Clusterverticale schaling beheren](manage-cluster-vertical-scaling.md) voor de juiste grootte van een cluster.

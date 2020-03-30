@@ -1,6 +1,6 @@
 ---
-title: Afschaffing van Azure Site Recovery-functie voor gegevens versleuteling | Microsoft Docs
-description: Details regarig Azure Site Recovery gegevens versleutelings functie
+title: Afschrijving van azure site recovery-gegevensversleutelingsfunctie | Microsoft Documenten
+description: Details regarig Azure Site Recovery data encryptie functie
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -9,39 +9,39 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
 ms.openlocfilehash: 5e74466891a5926d8ae8feb3c1c48348ecf3cfe6
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74134994"
 ---
-# <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Afschaffing van Site Recovery-functie voor gegevens versleuteling
+# <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Afschrijving van de versleutelingsfunctie siteherstelgegevens
 
-In dit document worden de details van de afschaffing en de herstel actie beschreven die u moet uitvoeren als u de functie voor gegevens versleuteling van Site Recovery gebruikt tijdens het configureren van herstel na nood geval voor virtuele Hyper-V-machines naar Azure. 
+In dit document worden de afschrijvingsgegevens en de herstelactie beschreven die u moet uitvoeren als u de functie siteherstelgegevensversleuteling gebruikt terwijl u het herstel van hyper-v-virtuele machines naar Azure configureert. 
 
-## <a name="deprecation-information"></a>Gegevens van afschaffing
-
-
-De functie voor gegevens versleuteling van Site Recovery is beschikbaar voor klanten die virtuele Hyper-V-machines beveiligen om ervoor te zorgen dat de gerepliceerde gegevens worden beschermd tegen beveiligings Risico's. deze functie wordt op **30 December 2019**afgeschaft. Het wordt vervangen door de geavanceerde functie [versleuteling op rest](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) , die gebruikmaakt van [Storage service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE). Met SSE worden gegevens versleuteld voordat ze persistent worden gemaakt en ontsleuteld op het moment dat ze worden opgehaald. bij een failover naar Azure worden uw Vm's uitgevoerd vanaf de versleutelde opslag accounts, waardoor een verbeterde herstel tijd (RTO) mogelijk is.
-
-Als u een bestaande klant bent die gebruikmaakt van deze functie, hebt u communicatie ontvangen met de details van de afschaffing en de herstels tappen. 
+## <a name="deprecation-information"></a>Afschaffingsinformatie
 
 
-## <a name="what-are-the-implications"></a>Wat zijn de gevolgen?
+De siteherstelgegevensversleutelingsfunctie was beschikbaar voor klanten die Hyper-V vms beschermen om ervoor te zorgen dat de gerepliceerde gegevens werden beschermd tegen beveiligingsbedreigingen. deze functie wordt voor **30 december 2019**afgeschaft. Het wordt vervangen door de meer geavanceerde [Encryption at Rest-functie,](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) die gebruik maakt van Storage Service [Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE). Met SSE worden gegevens versleuteld voordat ze blijven opslaan en gedecodeerd bij het ophalen, en bij failover naar Azure worden uw VM's uitgevoerd vanaf de versleutelde opslagaccounts, waardoor een verbeterde hersteltijddoelstelling (RTO) mogelijk is.
 
-Na **30 December 2019**kunnen vm's die nog steeds gebruikmaken van de buiten gebruik gestelde versleutelings functie, geen failover uitvoeren. 
+Houd er rekening mee dat als u een bestaande klant bent die deze functie gebruikt, u communicatie zou hebben ontvangen met de afschrijvingsgegevens en herstelstappen. 
+
+
+## <a name="what-are-the-implications"></a>Wat zijn de implicaties?
+
+Na **30 december 2019**mogen vm's die nog steeds gebruik maken van de gepensioneerde versleutelingsfunctie, geen failover uitvoeren. 
 
 ## <a name="required-action"></a>Vereiste actie
-Voer de volgende stappen uit om geslaagde failover-bewerkingen voort te zetten:
+Als u de succesvolle failoverbewerkingen wilt voortzetten en replicaties de onderstaande stappen volgen:
 
-Volg deze stappen voor elke virtuele machine: 
-1.  [Schakel replicatie uit](https://docs.microsoft.com/azure/site-recovery/site-recovery-manage-registration-and-protection#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
-2.  [Maak een nieuw replicatie beleid](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-a-replication-policy).
-3.  [Schakel replicatie in](https://docs.microsoft.com/azure/site-recovery/hyper-v-vmm-azure-tutorial#enable-replication) en selecteer een opslag account waarvoor SSE is ingeschakeld.
+Volg de volgende stappen voor elke virtuele machine: 
+1.  [Replicatie uitschakelen](https://docs.microsoft.com/azure/site-recovery/site-recovery-manage-registration-and-protection#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
+2.  [Een nieuw replicatiebeleid maken](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-a-replication-policy).
+3.  [Schakel replicatie in](https://docs.microsoft.com/azure/site-recovery/hyper-v-vmm-azure-tutorial#enable-replication) en selecteer een opslagaccount waarmee SSE is ingeschakeld.
 
-Na het volt ooien van de initiële replicatie naar opslag accounts waarvoor SSE is ingeschakeld, wordt voor uw virtuele machines versleuteling in rust gebruikt met Azure Site Recovery.
+Nadat de eerste replicatie naar opslagaccounts is voltooid, met SSE-ingeschakeld, gebruiken uw VM's Versleuteling in rust met Azure Site Recovery.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Plan voor het uitvoeren van de herstels tappen en voer deze zo snel mogelijk uit. Als u query's hebt over deze afschaffing, neemt u contact op met Microsoft Ondersteuning. Zie [hier](hyper-v-vmm-architecture.md)voor meer informatie over Hyper-V naar Azure scenario.
+Plan voor het uitvoeren van de herstelstappen, en deze op zijn vroegst uit te voeren. Als u vragen heeft over deze afschrijving, neem dan contact op met Microsoft Support. Voor meer informatie over Hyper-V naar Azure-scenario verwijzen we [hier](hyper-v-vmm-architecture.md)naar .
 

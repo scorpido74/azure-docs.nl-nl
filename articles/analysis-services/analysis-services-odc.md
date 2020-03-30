@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Analysis Services met een. ODC-bestand | Microsoft Docs
-description: Meer informatie over hoe u een Office-gegevens verbindings bestand maakt om verbinding te maken met en gegevens op te halen van een Analysis Services-server in Azure.
+title: Verbinding maken met Azure Analysis Services met een .odc-bestand | Microsoft Documenten
+description: Meer informatie over het maken van een Office Data Connection-bestand om verbinding te maken en gegevens te ophalen van een Analysis Services-server in Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,34 +8,34 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572675"
 ---
-# <a name="create-an-office-data-connection-file"></a>Een Office-gegevens verbindings bestand maken
+# <a name="create-an-office-data-connection-file"></a>Een Office-gegevensverbindingsbestand maken
 
-In dit artikel wordt beschreven hoe u een Office-gegevens verbindings bestand maakt om verbinding te maken met een Azure Analysis Services-server vanuit Excel 2016-versie nummer 16.0.7369.2117 of eerder of Excel 2013. Er is ook een bijgewerkte [Msolap. 7-provider](analysis-services-data-providers.md) vereist.
-
-
-1. Kopieer het onderstaande voorbeeld verbindings bestand en plak het in een tekst editor. 
-
-2. Wijzig de volgende eigenschappen in `odc:ConnectionString`:
-
-    *   In `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` wijzigen in de regio van uw Analysis Services-server en `<servername>` aan de naam van uw server.
-
-    *   In `Initial Catalog=<database>;` `<database>` wijzigen in de naam van uw data base.
-
-3. In `<odc:CommandText>Model</odc:CommandText>` `Model` wijzigen in de naam van uw model of perspectief. 
-
-4. Sla het bestand met een `.odc`-extensie op in de map C:\Users\\*username*\Documents\My data sources.
-
-5. Klik met de rechter muisknop op het bestand en klik vervolgens op **openen in Excel**. Of Klik in Excel op het lint met **gegevens** op **bestaande verbindingen**, selecteer het bestand en klik vervolgens op **openen**.
+In dit artikel wordt beschreven hoe u een Office Data Connection-bestand maken om verbinding te maken met een Azure Analysis Services-server vanuit Excel 2016-versienummer 16.0.7369.2117 of eerder of Excel 2013. Een bijgewerkte [MSOLAP.7 provider](analysis-services-data-providers.md) is ook vereist.
 
 
+1. Kopieer het onderstaande voorbeeldverbindingsbestand en plak in een teksteditor. 
 
-**Voorbeeld verbindings bestand**
+2. Wijzig `odc:ConnectionString`in de volgende eigenschappen:
+
+    *   Bij `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` wijziging in het gebied van `<servername>` uw Analysis Services-server en in de naam van uw server.
+
+    *   In `Initial Catalog=<database>;` `<database>` wijziging van de naam van uw database.
+
+3. In `<odc:CommandText>Model</odc:CommandText>` `Model` verandering in de naam van uw model of perspectief. 
+
+4. Sla het bestand `.odc` op met een\\extensie voor de map C:\Gebruikersgebruikersnaam \Documents\My Data Sources.*username*
+
+5. Klik met de rechtermuisknop op het bestand en klik vervolgens op **Openen in Excel**. Of klik in Excel op het lint **Gegevens** op **Bestaande verbindingen,** selecteer het bestand en klik op **Openen**.
+
+
+
+**Voorbeeldverbindingsbestand**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="https://www.w3.org/TR/REC-html40">

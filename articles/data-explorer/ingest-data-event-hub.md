@@ -1,6 +1,6 @@
 ---
 title: gegevens uit Event Hub opnemen in Azure Data Explorer
-description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer vanuit Event hub.
+description: In dit artikel leert u hoe u gegevens inneemt (laden) in Azure Data Explorer vanuit Gebeurtenishub.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,40 +8,40 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188192"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Event Hubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een Event Hub, maakt u er verbinding mee vanuit Azure Data Explorer en ziet u de gegevens stroom via het systeem.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Gebeurtenishubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een gebeurtenishub, maakt u verbinding met deze hub vanuit Azure Data Explorer en ziet u de gegevensstroom door het systeem.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een test cluster en data base](create-cluster-database-portal.md).
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* [Een testcluster en -database](create-cluster-database-portal.md).
 * [Een voorbeeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) die gegevens genereert en deze verzendt naar een event hub. Download de voorbeeld-app naar uw systeem.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) voor het uitvoeren van de voor beeld-app.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) om de voorbeeld-app uit te voeren.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
-In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hub. De eerste stap is het maken van een Event Hub. U doet dit door in de Azure Portal een Azure Resource Manager-sjabloon te gebruiken.
+In dit artikel genereert u voorbeeldgegevens en verzendt u deze naar een gebeurtenishub. De eerste stap is het maken van een Event Hub. U doet dit door in de Azure Portal een Azure Resource Manager-sjabloon te gebruiken.
 
 1. Als u een Event Hub wilt maken, gebruikt u de volgende knop om de implementatie te starten. Klik met de rechtermuisknop en selecteer **In nieuw venster openen**, zodat u de rest van de stappen in dit artikel kunt volgen.
 
-    [![Implementeren in Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Implementeren naar Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     Als u op de knop **Implementeren in Azure** klikt, wordt u naar de Azure-portal geleid om een implementatieformulier in te vullen.
 
@@ -51,17 +51,17 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     ![Een resourcegroep maken](media/ingest-data-event-hub/create-resource-group.png)
 
-1. Vul het formulier in met de volgende gegevens.
+1. Vul in het formulier de volgende gegevens in.
 
     ![Implementatieformulier](media/ingest-data-event-hub/deployment-form.png)
 
     Gebruik de standaardwaarden voor alle instellingen die niet zijn vermeld in de volgende tabel.
 
-    **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
+    **Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**
     |---|---|---|
     | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor de Event Hub.|
     | Resourcegroep | *test-hub-rg* | Maak een nieuwe resourcegroep. |
-    | Locatie | *US - west* | Selecteer *VS-West* voor dit artikel. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften. Voor de beste prestaties maakt u de Event Hub-naamruimte op dezelfde locatie als het Kusto-cluster (dit is met name belangrijk voor Event Hub-naamruimten met een hoge doorvoer).
+    | Locatie | *West-VS* | Selecteer *West US* voor dit artikel. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften. Voor de beste prestaties maakt u de Event Hub-naamruimte op dezelfde locatie als het Kusto-cluster (dit is met name belangrijk voor Event Hub-naamruimten met een hoge doorvoer).
     | Naam van naamruimte | Een unieke naam voor de naamruimte | Kies een unieke naam waarmee de naamruimte kan worden geïdentificeerd. Bijvoorbeeld *mijntestnaamruimte*. De domeinnaam *servicebus.windows.net* wordt toegevoegd aan de naam die u opgeeft. De naam mag alleen letters, cijfers en afbreekstreepjes bevatten. De naam moet beginnen met een letter en moet eindigen met een letter of een cijfer. De waarde moet minimaal 6 en maximaal 50 tekens lang zijn.
     | Naam van Event Hub | *test-hub* | De Event Hub bevindt zich onder de naamruimte, wat een unieke bereikcontainer biedt. De naam van de Event Hub moet uniek zijn binnen de naamruimte. |
     | Naam van consumentengroep | *test-group* | Met consumentengroepen kunnen meerdere gebruikstoepassingen elk een afzonderlijke weergave van de gebeurtenisstroom hebben. |
@@ -109,35 +109,35 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
 
     ![Event Hub-verbinding](media/ingest-data-event-hub/event-hub-connection.png)
 
-    **Gegevens Bron:**
+    **Gegevensbron:**
 
-    **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
+    **Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**
     |---|---|---|
     | Naam van gegevensverbinding | *test-hub-connection* | De naam van de verbinding die u wilt maken in Azure Data Explorer.|
     | Event hub-naamruimte | Een unieke naam voor de naamruimte | De naam die u eerder hebt gekozen om de naamruimte te identificeren. |
     | Event Hub | *test-hub* | De Event Hub die u hebt gemaakt. |
     | Consumentengroep | *test-group* | De consumentengroep die u hebt gedefinieerd in de gemaakte Event Hub. |
-    | Eigenschappen van gebeurtenis systeem | Relevante eigenschappen selecteren | De [Event hub-systeem eigenschappen](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Als er meerdere records per gebeurtenis bericht zijn, worden de systeem eigenschappen aan de eerste toegevoegd. Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/create-table-command) of [bijwerken](/azure/kusto/management/alter-table-command) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. |
-    | Compressie | *Geen* | Het compressie type van de nettolading van de Event hub-berichten. Ondersteunde compressie typen: *geen, gzip*.|
+    | Eigenschappen van gebeurtenissysteem | Relevante eigenschappen selecteren | De [eigenschappen van het Event Hub-systeem](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Als er meerdere records per gebeurtenisbericht zijn, worden de systeemeigenschappen toegevoegd aan het eerste bericht. Wanneer u systeemeigenschappen toevoegt, maakt of [updatet u](/azure/kusto/management/alter-table-command) tabelschema's en toewijzing en [voegt u deze samen](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te nemen. [create](/azure/kusto/management/create-table-command) |
+    | Compressie | *Geen* | Het compressietype van het payload van de Gebeurtenishub-berichten. Ondersteunde compressietypen: *Geen, GZip*.|
     | | |
 
-    **Doel tabel:**
+    **Doeltabel:**
 
-    Er zijn twee opties voor het routeren van de opgenomen gegevens: *statisch* en *dynamisch*. 
-    Voor dit artikel gebruikt u statische route ring, waar u de tabel naam, gegevens indeling en toewijzing opgeeft. Laat **Mijn gegevens omvatten routeringsgegevens** daarom uitgeschakeld.
+    Er zijn twee opties voor het routeren van de ingenomen gegevens: *statisch* en *dynamisch.* 
+    Voor dit artikel gebruikt u statische routering, waarbij u de tabelnaam, gegevensindeling en toewijzing opgeeft. Laat **Mijn gegevens omvatten routeringsgegevens** daarom uitgeschakeld.
 
-     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
+     **Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**
     |---|---|---|
     | Tabel | *TestTable* | De tabel die u hebt gemaakt in **TestDatabase**. |
-    | Gegevensindeling | *JSON* | Ondersteunde indelingen zijn AVRO, CSV, JSON, MEERREGELIGE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC en PARQUET. |
-    | Toewijzen van kolommen | *TestMapping* | De [toewijzing](/azure/kusto/management/mappings) die u hebt gemaakt in **TestDatabase**, waarmee inkomende JSON-gegevens worden toegewezen aan de kolom namen en gegevens typen van **TestTable**. Vereist voor JSON-of MEERREGELIGE JSON en optioneel voor andere indelingen.|
+    | Gegevensindeling | *Json* | Ondersteunde formaten zijn Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC en PARQUET. |
+    | Toewijzen van kolommen | *TestMapping* | De [toewijzing die](/azure/kusto/management/mappings) u hebt gemaakt in **TestDatabase**, waarmee binnenkomende JSON-gegevens worden toegewezen aan de kolomnamen en gegevenstypen **van TestTable**. Vereist voor JSON of MULTILINE JSON en optioneel voor andere indelingen.|
     | | |
 
     > [!NOTE]
-    > * Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
-    > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
-    > * U kunt het compressie type ook instellen via dynamische eigenschappen, zoals wordt weer gegeven in de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
-    > * AVRO-, ORC-en PARQUET-indelingen, evenals gebeurtenis systeem eigenschappen worden niet ondersteund voor de payload-compressie van GZip.
+    > * Selecteer **Mijn gegevens bevat routeringsgegevens** om dynamische routering te gebruiken, waarbij uw gegevens de benodigde routeringsinformatie bevatten zoals te zien is in de opmerkingen van de [voorbeeld-app.](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) Als zowel statische als dynamische eigenschappen zijn ingesteld, overschrijven de dynamische eigenschappen de statische eigenschappen. 
+    > * Alleen gebeurtenissen die in de wachtrij staan nadat u de gegevensverbinding hebt gemaakt, worden ingenomen.
+    > * U het compressietype ook instellen via dynamische eigenschappen zoals te zien in de [voorbeeld-app.](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+    > * Avro-, ORC- en PARQUET-formaten en eigenschappen van gebeurtenissystemen worden niet ondersteund op GZip-compressiepayload.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
@@ -149,7 +149,7 @@ Wanneer u de [voorbeeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-
 
     ![Gedeeld toegangsbeleid](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. Kopieer **Verbindingsreeks - primaire sleutel**. U plak deze in de volgende sectie.
+1. Verbindingstekenreeks **kopiëren - primaire toets**. U plak deze in de volgende sectie.
 
     ![Verbindingsreeks](media/ingest-data-event-hub/connection-string.png)
 
@@ -197,9 +197,9 @@ Nu de app gegevens genereert, kunt u de stroom van die gegevens vanuit de event 
     ![Berichtresultatenset](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer heeft een aggregatiebeleid (batchverwerking) voor gegevensopname, dat is ontworpen om de gegevensopname te optimaliseren. Het beleid is standaard ingesteld op 5 minuten of 500 MB aan gegevens, zodat er een latentie kan optreden. Zie [batch beleid](/azure/kusto/concepts/batchingpolicy) voor aggregatie opties. 
-    > * Event hub-opname bevat reactie tijd van de Event hub van 10 seconden of 1 MB. 
-    > * Configureer uw tabel ter ondersteuning van streaming en verwijder de vertraging in reactie tijd. Zie [streaming-beleid](/azure/kusto/concepts/streamingingestionpolicy). 
+    > * Azure Data Explorer heeft een aggregatiebeleid (batchverwerking) voor gegevensopname, dat is ontworpen om de gegevensopname te optimaliseren. Het beleid is standaard geconfigureerd tot 5 minuten of 500 MB aan gegevens, zodat u een latentie ervaren. Zie [batchingbeleid](/azure/kusto/concepts/batchingpolicy) voor aggregatieopties. 
+    > * Event Hub opname omvat Event Hub responstijd van 10 seconden of 1 MB. 
+    > * Configureer uw tabel om streaming te ondersteunen en verwijder de vertraging in reactietijd. Zie [streamingbeleid](/azure/kusto/concepts/streamingingestionpolicy). 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -207,7 +207,7 @@ Als u niet van plan bent de Event Hub opnieuw te gebruiken, wist u de **test-hub
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 
@@ -217,4 +217,4 @@ Als u niet van plan bent de Event Hub opnieuw te gebruiken, wist u de **test-hub
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Query's uitvoeren op gegevens in azure Data Explorer](web-query-data.md)
+* [Query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)

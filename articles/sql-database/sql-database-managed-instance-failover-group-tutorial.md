@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een beheerd exemplaar toevoegen aan een failovergroep'
-description: Meer informatie over het configureren van een failovergroep voor uw Azure SQL Database Managed instance.
+title: 'Zelfstudie: Een beheerde instantie toevoegen aan een failovergroep'
+description: Meer informatie over het configureren van een failovergroep voor uw Azure SQL Database-beheerde exemplaar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -13,25 +13,25 @@ ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
 ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462646"
 ---
-# <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
+# <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelfstudie: Een SQL-databasebeheerexemplaar toevoegen aan een failovergroep
 
-Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep. In dit artikel leert u hoe u:
+Een SQL Database beheerde instantie toevoegen aan een failovergroep. In dit artikel leert u hoe u:
 
 > [!div class="checklist"]
-> - Een primair beheerd exemplaar maken
-> - Maak een secundair beheerd exemplaar als onderdeel van een [failovergroep](sql-database-auto-failover-group.md). 
+> - Een primair beheerde instantie maken
+> - Maak een secundairbeheerde instantie als onderdeel van een [failovergroep](sql-database-auto-failover-group.md). 
 > - Testfailover
 
   > [!NOTE]
-  > - Wanneer u deze zelf studie doorloopt, moet u ervoor zorgen dat u uw resources configureert met de [vereisten voor het instellen van failover-groepen voor een beheerd exemplaar](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
-  > - Het maken van een beheerd exemplaar kan een aanzienlijke hoeveelheid tijd in beslag nemen. Als gevolg hiervan kan het enkele uren duren voordat deze zelf studie is voltooid. Zie [Managed instance Management Operations](sql-database-managed-instance.md#managed-instance-management-operations)(Engelstalig) voor meer informatie over het inrichten van tijden. 
-  > - Voor beheerde instanties die deel uitmaken van een failovergroep zijn [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) of twee verbonden VPN-gateways vereist. Deze zelf studie bevat stappen voor het maken en koppelen van de VPN-gateways. Sla deze stappen over als u ExpressRoute al hebt geconfigureerd. 
+  > - Wanneer u deze zelfstudie doorloopt, moet u ervoor zorgen dat u uw resources configureert met de [vereisten voor het instellen van failovergroepen voor beheerde bijvoorbeeld.](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets) 
+  > - Het maken van een beheerde instantie kan een aanzienlijke hoeveelheid tijd in beslag nemen. Als gevolg hiervan kan deze tutorial enkele uren in beslag nemen. Zie [beheervan beheervan beheervan beheerstijden voor](sql-database-managed-instance.md#managed-instance-management-operations)meer informatie over de inprovisioningstijden . 
+  > - Beheerde exemplaren die deelnemen aan een failovergroep vereisen [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) of twee verbonden VPN-gateways. Deze zelfstudie bevat stappen voor het maken en verbinden van de VPN-gateways. Sla deze stappen over als u ExpressRoute al hebt geconfigureerd. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -39,45 +39,45 @@ Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep. In dit 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien: 
 
-- Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
+- Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Als u de zelfstudie wilt voltooien, controleert u of u de volgende items hebt:
 
-- Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
+- Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) aan als je nog geen account hebt.
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 ---
 
 
-## <a name="1---create-resource-group-and-primary-managed-instance"></a>1-resource groep en primair beheerd exemplaar maken
-In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor uw failover-groep met behulp van de Azure Portal of Power shell. 
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1 - Resourcegroep en primaire beheerde instantie maken
+In deze stap maakt u de resourcegroep en het primaire beheerde exemplaar voor uw failovergroep met behulp van de Azure-portal of PowerShell. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Maak de resource groep en het primaire beheerde exemplaar met behulp van de Azure Portal. 
+Maak de resourcegroep en uw primaire beheerde instantie met behulp van de Azure-portal. 
 
-1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
-1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+1. Selecteer **Azure SQL** in het linkermenu van de Azure-portal. Als **Azure SQL** niet in de lijst staat, selecteert u Alle **services**en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en voeg deze toe als een item in de linkernavigatie. 
+1. Selecteer **+ Toevoegen** om de **optiepagina SQL-implementatie selecteren** te openen. U aanvullende informatie over de verschillende databases weergeven door Details weergeven op de tegel Databases te selecteren.
+1. Selecteer **Maken** op de tegel **SQL managed instances.** 
 
-    ![Beheerd exemplaar selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+    ![Beheerde instantie selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
-1. Op het tabblad **basis beginselen** op de pagina **Azure SQL database beheerde instantie maken**
-    1. Selecteer uw **abonnement** in de vervolg keuzelijst onder **Project Details**en kies vervolgens nieuwe resource groep **maken** . Typ een naam voor de resource groep, zoals `myResourceGroup`. 
-    1. Geef onder **Details van beheerd exemplaar**de naam op van uw beheerde exemplaar en de regio waar u uw beheerde exemplaar wilt implementeren. De **berekening en opslag** op standaard waarden behouden. 
-    1. Geef bij **Administrator-account**een beheerders aanmelding op, zoals `azureuser`, en een complex beheerders wachtwoord. 
+1. Op de pagina **Azure SQL Database Managed Instance** maken, op het tabblad **Basisbeginselen**
+    1. Selecteer **onder Projectdetails**uw **abonnement** in de vervolgkeuzelijst en kies vervolgens voor Nieuwe resourcegroep **maken.** Typ een naam voor uw resourcegroep, zoals `myResourceGroup`. 
+    1. Geef onder **Beheerde instantiegegevens**de naam van uw beheerde instantie op en het gebied waar u uw beheerde instantie wilt implementeren. Laat de **Compute + storage** op standaardwaarden. 
+    1. Geef **onder Administratoraccount**een beheerdersaanmelding op, zoals `azureuser`, en een complex beheerderswachtwoord. 
 
     ![Primaire MI maken](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
 
-1. Laat de overige instellingen op de standaard waarden staan en selecteer **controleren + maken** om de instellingen van het beheerde exemplaar te controleren. 
-1. Selecteer **maken** om uw primaire beheerde instantie te maken. 
+1. Laat de rest van de instellingen op standaardwaarden staan en selecteer **Controleren + maken** om de beheerde instantie-instellingen te controleren. 
+1. Selecteer **Maken** om uw primaire beheerde instantie te maken. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Maak de resource groep en het primaire beheerde exemplaar met behulp van Power shell. 
+Maak uw resourcegroep en de primaire beheerde instantie met PowerShell. 
 
    ```powershell-interactive
    # Connect-AzAccount
@@ -380,111 +380,111 @@ Maak de resource groep en het primaire beheerde exemplaar met behulp van Power s
    Write-host "Primary managed instance created successfully."
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een Azure-resourcegroep.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnet configuratie toe aan een virtueel netwerk. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie toe aan een virtueel netwerk. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet in een virtueel netwerk opgehaald. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Krijgt een subnet in een virtueel netwerk. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een route tabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een Azure SQL Database beheerd exemplaar.  |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Werkt een subnetconfiguratie voor een virtueel netwerk bij.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Werkt een virtueel netwerk bij.  |
+| [Get-azNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Krijgt een netwerkbeveiligingsgroep. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van de netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-azNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Werkt een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Set-azroutetabel](/powershell/module/az.network/set-azroutetable) | Hiermee wordt een routetabel bijgewerkt.  |
+| [Nieuw-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een azure SQL Database-beheerde instantie.  |
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2-secundair virtueel netwerk maken
-Als u de Azure Portal gebruikt om uw beheerde exemplaar te maken, moet u het virtuele netwerk afzonderlijk maken, omdat er een vereiste is dat het subnet van het primaire en het secundaire beheerde exemplaar geen overlappende bereiken hebben. Als u Power shell gebruikt om uw beheerde exemplaar te configureren, gaat u verder met stap 3. 
+## <a name="2---create-secondary-virtual-network"></a>2 - Secundair virtueel netwerk maken
+Als u de Azure-portal gebruikt om uw beheerde instantie te maken, moet u het virtuele netwerk afzonderlijk maken omdat er een vereiste is dat het subnet van de primaire en secundaire beheerde instantie geen overlappende bereiken heeft. Als u PowerShell gebruikt om uw beheerde instantie te configureren, gaat u verder naar stap 3. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
-Voer de volgende stappen uit om het subnet-bereik van het primaire virtuele netwerk te controleren:
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar de resource groep en selecteer het virtuele netwerk voor uw primaire exemplaar. 
-1. Selecteer **subnetten** onder **instellingen** en noteer het **adres bereik**. Het adres bereik van het subnet van het virtuele netwerk voor het secundaire beheerde exemplaar kan dit niet overlappen. 
+Voer de volgende stappen uit om het subnetbereik van uw primaire virtuele netwerk te verifiëren:
+1. Navigeer in de [Azure-portal](https://portal.azure.com)naar uw brongroep en selecteer het virtuele netwerk voor uw primaire instantie. 
+1. Selecteer **Subnetten** onder **Instellingen** en noteer het **adresbereik**. Het subnetadresbereik van het virtuele netwerk voor de secundaire beheerde instantie kan dit niet overlappen. 
 
 
    ![Primair subnet](media/sql-database-managed-instance-failover-group-tutorial/verify-primary-subnet-range.png)
 
 Voer de volgende stappen uit om een virtueel netwerk te maken:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** en zoek naar *virtueel netwerk*. 
-1. Selecteer de **Virtual Network** -optie die door micro soft is gepubliceerd en selecteer vervolgens **maken** op de volgende pagina. 
-1. Vul de vereiste velden in om het virtuele netwerk voor uw secundaire beheerde exemplaar te configureren en selecteer vervolgens **maken**. 
+1. Selecteer in de [Azure-portal](https://portal.azure.com)De optie **Een bron maken** en zoeken naar een virtueel *netwerk*. 
+1. Selecteer de optie **Virtueel netwerk** dat door Microsoft is gepubliceerd en selecteer **Maken** op de volgende pagina. 
+1. Vul de vereiste velden in om het virtuele netwerk voor uw secundaire beheerde instantie te configureren en selecteer **Vervolgens Maken**. 
 
-   In de volgende tabel ziet u de waarden die nodig zijn voor het secundaire virtuele netwerk:
+   In de volgende tabel worden de waarden weergegeven die nodig zijn voor het secundaire virtuele netwerk:
 
     | **Veld** | Waarde |
     | --- | --- |
-    | **Naam** |  De naam van het virtuele netwerk dat moet worden gebruikt door het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary`. |
-    | **Adresruimte** | De adres ruimte voor het virtuele netwerk, zoals `10.128.0.0/16`. | 
-    | **Abonnement** | Het abonnement waar uw primaire beheerde instantie en resource groep zich bevinden. |
-    | **Regio** | De locatie waar u uw secundaire beheerde exemplaar gaat implementeren. |
-    | **Subnet** | De naam voor het subnet. `default` is standaard voor u bestemd. |
-    | **Adresbereik**| Het adres bereik voor uw subnet. Dit moet verschillen van het adres bereik van het subnet dat wordt gebruikt door het virtuele netwerk van uw primaire beheerde instantie, zoals `10.128.0.0/24`.  |
+    | **Naam** |  De naam voor het virtuele netwerk dat moet worden `vnet-sql-mi-secondary`gebruikt door de secundaire beheerde instantie, zoals . |
+    | **Adresruimte** | De adresruimte voor uw virtuele `10.128.0.0/16`netwerk, zoals . | 
+    | **Abonnement** | Het abonnement waarbij uw primaire beheerde instantie en resourcegroep zich bevinden. |
+    | **Regio** | De locatie waar u uw secundaire beheerde instantie implementeert. |
+    | **Subnet** | De naam voor je subnet. `default`is standaard voor u beschikbaar. |
+    | **Adresbereik**| Het adresbereik voor uw subnet. Dit moet anders zijn dan het subnetadresbereik dat wordt gebruikt `10.128.0.0/24`door het virtuele netwerk van uw primaire beheerde instantie, zoals .  |
     | &nbsp; | &nbsp; |
 
-    ![Secundaire waarden van virtueel netwerk](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
+    ![Secundaire virtuele netwerkwaarden](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Deze stap is alleen nodig als u de Azure Portal gebruikt voor het implementeren van uw beheerde exemplaar. Ga verder met stap 3 als u Power shell gebruikt. 
+Deze stap is alleen nodig als u de Azure-portal gebruikt om uw beheerde instantie te implementeren. Ga door naar stap 3 als u PowerShell gebruikt. 
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3-een secundair beheerd exemplaar maken
-In deze stap maakt u een tweede beheerde instantie in de Azure Portal, waarmee ook de netwerken tussen de twee beheerde instanties worden geconfigureerd. 
+## <a name="3---create-a-secondary-managed-instance"></a>3 - Een secundair beheerde instantie maken
+In deze stap maakt u een secundairbeheerde instantie in de Azure-portal, waarmee u ook de netwerken tussen de twee beheerde instanties configureert. 
 
-Uw tweede beheerde exemplaar moet:
-- Leeg zijn. 
-- Hebben een ander subnet en IP-bereik dan het primaire beheerde exemplaar. 
+Uw tweede beheerde instantie moet:
+- Wees leeg. 
+- Hebben een ander subnet en IP-bereik dan de primaire beheerde instantie. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Maak het secundaire beheerde exemplaar met behulp van de Azure Portal. 
+Maak de secundaire beheerde instantie met behulp van de Azure-portal. 
 
-1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
-1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+1. Selecteer **Azure SQL** in het linkermenu van de Azure-portal. Als **Azure SQL** niet in de lijst staat, selecteert u Alle **services**en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en voeg deze toe als een item in de linkernavigatie. 
+1. Selecteer **+ Toevoegen** om de **optiepagina SQL-implementatie selecteren** te openen. U aanvullende informatie over de verschillende databases weergeven door Details weergeven op de tegel Databases te selecteren.
+1. Selecteer **Maken** op de tegel **SQL managed instances.** 
 
-    ![Beheerd exemplaar selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+    ![Beheerde instantie selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
-1. Vul de vereiste velden in op het tabblad **basis principes** van de pagina **Azure SQL database beheerde instantie maken** om uw secundaire beheerde exemplaar te configureren. 
+1. Vul op het tabblad **Basisbeginselen** van de pagina **Beheerde instantie van Azure SQL Database Managed Instance** de vereiste velden in om uw secundaire beheerde instantie te configureren. 
 
-   In de volgende tabel ziet u de waarden die nodig zijn voor het secundaire beheerde exemplaar:
+   In de volgende tabel worden de waarden weergegeven die nodig zijn voor de secundaire beheerde instantie:
  
     | **Veld** | Waarde |
     | --- | --- |
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
-    | **Resourcegroep**| De resource groep waar uw primaire beheerde instantie zich bevindt. |
-    | **Naam van het beheerde exemplaar** | De naam van het nieuwe, secundaire beheerde exemplaar, zoals `sql-mi-secondary`  | 
-    | **Regio**| De locatie voor uw secundaire beheerde exemplaar.  |
-    | **Beheerdersaanmeldgegevens voor het beheerde exemplaar** | De aanmelding die u wilt gebruiken voor uw nieuwe, secundaire beheerde exemplaar, zoals `azureuser`. |
-    | **Wachtwoord** | Een complex wacht woord dat wordt gebruikt door de beheerders aanmelding voor het nieuwe secundaire beheerde exemplaar.  |
+    | **Resourcegroep**| De resourcegroep waar uw primaire beheerde instantie zich bevindt. |
+    | **Naam van het beheerde exemplaar** | De naam van uw nieuwe secundaire beheerde instantie, zoals`sql-mi-secondary`  | 
+    | **Regio**| De locatie voor uw secundaire beheerde instantie.  |
+    | **Beheerdersaanmeldgegevens voor het beheerde exemplaar** | De login die u wilt gebruiken voor uw `azureuser`nieuwe secundaire beheerde instantie, zoals . |
+    | **Wachtwoord** | Een complex wachtwoord dat wordt gebruikt door de beheerder login voor de nieuwe secundaire beheerde instantie.  |
     | &nbsp; | &nbsp; |
 
-1. Selecteer op het tabblad **netwerken** , voor de **Virtual Network**, het virtuele netwerk dat u hebt gemaakt voor het secundaire beheerde exemplaar in de vervolg keuzelijst.
+1. Selecteer onder het tabblad **Netwerken** voor het **virtuele netwerk**het virtuele netwerk dat u hebt gemaakt voor de secundaire beheerde instantie in de vervolgkeuzelijst.
 
    ![Secundaire MI-netwerken](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. Klik op het tabblad **extra instellingen** voor **geo-replicatie**op **Ja** als u een _secundaire failover wilt gebruiken_. Selecteer de primaire beheerde instantie in de vervolg keuzelijst. 
-    1. Zorg ervoor dat de sortering en tijd zone overeenkomen met die van het primaire beheerde exemplaar. Het primaire beheerde exemplaar dat in deze zelf studie wordt gemaakt, gebruikt de standaard waarde van `SQL_Latin1_General_CP1_CI_AS` collatie en de `(UTC) Coordinated Universal Time` tijd zone. 
+1. Kies onder het tabblad **Extra instellingen** voor **Geo-replicatie**de optie **Ja** om te gebruiken _als secundaire failover_. Selecteer de primaire beheerde instantie in de vervolgkeuzelijst. 
+    1. Zorg ervoor dat de collatie en tijdzone overeenkomen met die van de primaire beheerde instantie. De primaire beheerde instantie die in `SQL_Latin1_General_CP1_CI_AS` deze zelfstudie is gemaakt, heeft de standaardcollatie en de `(UTC) Coordinated Universal Time` tijdzone gebruikt. 
 
    ![Secundaire MI-netwerken](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
 
-1. Selecteer **controleren + maken** om de instellingen voor uw secundaire beheerde exemplaar te controleren. 
-1. Selecteer **maken** om uw secundaire beheerde instantie te maken. 
+1. Selecteer **Controleren + maken** om de instellingen voor uw secundaire beheerde instantie te controleren. 
+1. Selecteer **Maken** om uw secundaire beheerde instantie te maken. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Maak het secundaire beheerde exemplaar met behulp van Power shell. 
+Maak de secundaire beheerde instantie met PowerShell. 
 
    ```powershell-interactive
    # Configure secondary virtual network
@@ -706,76 +706,76 @@ Maak het secundaire beheerde exemplaar met behulp van Power shell.
    Write-host "Secondary managed instance created successfully."
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een Azure-resourcegroep.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnet configuratie toe aan een virtueel netwerk. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie toe aan een virtueel netwerk. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet in een virtueel netwerk opgehaald. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Krijgt een subnet in een virtueel netwerk. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een route tabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een Azure SQL Database beheerd exemplaar.  |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Werkt een subnetconfiguratie voor een virtueel netwerk bij.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Werkt een virtueel netwerk bij.  |
+| [Get-azNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Krijgt een netwerkbeveiligingsgroep. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van de netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-azNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Werkt een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Set-azroutetabel](/powershell/module/az.network/set-azroutetable) | Hiermee wordt een routetabel bijgewerkt.  |
+| [Nieuw-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een azure SQL Database-beheerde instantie.  |
 
 ---
 
-## <a name="4---create-primary-gateway"></a>4-primaire gateway maken 
-Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een ExpressRoute of een gateway zijn geconfigureerd tussen de virtuele netwerken van de twee beheerde instanties om netwerk communicatie toe te staan. Als u ervoor kiest om [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways te verbinden, gaat u verder met [stap 7](#7---create-a-failover-group).  
+## <a name="4---create-primary-gateway"></a>4 - Primaire gateway maken 
+Voor twee beheerde exemplaren die deelnemen aan een failovergroep, moet er ExpressRoute of een gateway zijn geconfigureerd tussen de virtuele netwerken van de twee beheerde instanties om netwerkcommunicatie mogelijk te maken. Als u ervoor kiest [expressroute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways aan te sluiten, gaat u verder naar [stap 7.](#7---create-a-failover-group)  
 
-In dit artikel worden de stappen beschreven voor het maken van de twee VPN-gateways en het verbinden ervan, maar u kunt door gaan met het maken van de failovergroep als u in plaats daarvan ExpressRoute hebt geconfigureerd. 
+In dit artikel vindt u stappen om de twee VPN-gateways te maken en deze te verbinden, maar u doorgaan met het maken van de failovergroep als u ExpressRoute hebt geconfigureerd. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met behulp van de Azure Portal. 
+Maak de gateway voor het virtuele netwerk van uw primaire beheerde instantie met behulp van de Azure-portal. 
 
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de resource groep en selecteer de **virtuele netwerk** resource voor uw primaire beheerde exemplaar. 
-1. Selecteer **subnetten** onder **instellingen** en selecteer vervolgens om een nieuw **Gateway-subnet**toe te voegen. De standaard waarden behouden. 
+1. Ga in de [Azure-portal](https://portal.azure.com)naar uw resourcegroep en selecteer de **virtuele netwerkbron** voor uw primaire beheerde instantie. 
+1. Selecteer **Subnetten** onder **Instellingen** en selecteer vervolgens om een nieuw **gateway-subnet**toe te voegen. Laat de standaardwaarden achter. 
 
-   ![Gateway toevoegen voor primair beheerde exemplaar](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![Gateway toevoegen voor primaire beheerde instantie](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Nadat de subnet gateway is gemaakt, selecteert u **een resource maken** in het navigatie deel venster links en typt u `Virtual network gateway` in het zoekvak. Selecteer de bron van de **virtuele netwerk gateway** die is gepubliceerd door **micro soft**. 
+1. Zodra de subnetgateway is gemaakt, selecteert u Een resource `Virtual network gateway` **maken** in het linkernavigatiedeelvenster en typt u vervolgens het zoekvak in. Selecteer de **virtuele netwerkgatewaybron** die door **Microsoft is**gepubliceerd. 
 
-   ![Een nieuwe gateway voor het virtuele netwerk maken](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
+   ![Een nieuwe virtuele netwerkgateway maken](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. Vul de vereiste velden in om de gateway te configureren voor uw primaire beheerde exemplaar. 
+1. Vul de vereiste velden in om de gateway te configureren van uw primaire beheerde instantie. 
 
-   In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het primaire beheerde exemplaar:
+   In de volgende tabel worden de waarden weergegeven die nodig zijn voor de gateway voor de primaire beheerde instantie:
  
     | **Veld** | Waarde |
     | --- | --- |
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
-    | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `primary-mi-gateway`. | 
-    | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
-    | **Gateway type** | Selecteer **VPN**. |
-    | **VPN-type** | **Op route gebaseerd** selecteren |
-    | **SKU**| De standaard waarde van `VpnGw1`blijven. |
-    | **Locatie**| De locatie waar uw primaire beheerde instantie en primair virtuele netwerk zich bevindt.   |
-    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary`. |
+    | **Naam** | De naam voor uw virtuele `primary-mi-gateway`netwerkgateway, zoals . | 
+    | **Regio** | Het gebied waar uw secundaire beheerde instantie zich bevindt. |
+    | **Gatewaytype** | Selecteer **VPN**. |
+    | **VPN-type** | Selecteer **Route-gebaseerd** |
+    | **Sku**| Standaard laten `VpnGw1`staan van . |
+    | **Locatie**| De locatie waar uw primaire beheerde instantie en het primaire virtuele netwerk zich bevinden.   |
+    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt `vnet-sql-mi-primary`in sectie 2, zoals . |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `primary-gateway-IP`. |
+    | **Naam van openbaar IP-adres**| Voer een naam in voor `primary-gateway-IP`uw IP-adres, zoals . |
     | &nbsp; | &nbsp; |
 
-1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
+1. Laat de andere waarden als standaard staan en selecteer **Controleren + maken** om de instellingen voor uw virtuele netwerkgateway te controleren.
 
    ![Primaire gateway-instellingen](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. Selecteer **maken** om de nieuwe virtuele netwerk gateway te maken. 
+1. Selecteer **Maken** om uw nieuwe virtuele netwerkgateway te maken. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met behulp van Power shell. 
+Maak de gateway voor het virtuele netwerk van uw primaire beheerde instantie met PowerShell. 
 
    ```powershell-interactive
    # Create primary gateway
@@ -808,52 +808,52 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met
    $primaryGateway
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnet configuratie toe aan een virtueel netwerk. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet in een virtueel netwerk opgehaald. |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie toe aan een virtueel netwerk. | 
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Werkt een virtueel netwerk bij.  |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Krijgt een subnet in een virtueel netwerk. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een Virtual Network gateway |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een Virtual Network gateway |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Maakt een IP-configuratie voor een virtuele netwerkgateway |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Maakt een virtuele netwerkgateway |
 
 
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5-secundaire gateway maken 
-In deze stap maakt u de gateway voor het virtuele netwerk van uw secundaire beheerde exemplaar met behulp van de Azure Portal. 
+## <a name="5---create-secondary-gateway"></a>5 - Secundaire gateway maken 
+Maak in deze stap de gateway voor het virtuele netwerk van uw secundaire beheerde instantie met behulp van de Azure-portal, 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en de gateway voor het secundaire beheerde exemplaar te maken met behulp van de Azure Portal. Vul de vereiste velden in om de gateway te configureren voor uw secundaire beheerde exemplaar. 
+Herhaal met de Azure-portal de stappen in de vorige sectie om het virtuele netwerksubnet en de gateway voor de secundaire beheerde instantie te maken. Vul de vereiste velden in om de gateway voor uw secundaire beheerde instantie te configureren. 
 
-   In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het secundaire beheerde exemplaar:
+   In de volgende tabel worden de waarden weergegeven die nodig zijn voor de gateway voor de secundaire beheerde instantie:
 
    | **Veld** | Waarde |
    | --- | --- |
-   | **Abonnement** |  Het abonnement waar uw secundaire beheerde instantie zich bevindt. |
-   | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway`. | 
-   | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
-   | **Gateway type** | Selecteer **VPN**. |
-   | **VPN-type** | **Op route gebaseerd** selecteren |
-   | **SKU**| De standaard waarde van `VpnGw1`blijven. |
-   | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
-   | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary`. |
+   | **Abonnement** |  Het abonnement waarbij uw secundaire beheerde instantie zich bevindt. |
+   | **Naam** | De naam voor uw virtuele `secondary-mi-gateway`netwerkgateway, zoals . | 
+   | **Regio** | Het gebied waar uw secundaire beheerde instantie zich bevindt. |
+   | **Gatewaytype** | Selecteer **VPN**. |
+   | **VPN-type** | Selecteer **Route-gebaseerd** |
+   | **Sku**| Standaard laten `VpnGw1`staan van . |
+   | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundair virtueel netwerk zich bevinden.   |
+   | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt `vnet-sql-mi-secondary`in sectie 2, zoals . |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP`. |
+   | **Naam van openbaar IP-adres**| Voer een naam in voor `secondary-gateway-IP`uw IP-adres, zoals . |
    | &nbsp; | &nbsp; |
 
-   ![Instellingen van secundaire gateway](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
+   ![Secundaire gateway-instellingen](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Maak de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar met behulp van Power shell. 
+Maak de gateway voor het virtuele netwerk van de secundaire beheerde instantie met PowerShell. 
 
    ```powershell-interactive
    # Create the secondary gateway
@@ -889,53 +889,53 @@ Maak de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar 
    $secondaryGateway
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnet configuratie toe aan een virtueel netwerk. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet in een virtueel netwerk opgehaald. |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie toe aan een virtueel netwerk. | 
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Werkt een virtueel netwerk bij.  |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Krijgt een subnet in een virtueel netwerk. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een Virtual Network gateway |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een Virtual Network gateway |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Maakt een IP-configuratie voor een virtuele netwerkgateway |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Maakt een virtuele netwerkgateway |
 
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6-de gateways verbinden
-In deze stap maakt u een bidirectionele verbinding tussen de twee gateways van de twee virtuele netwerken. 
+## <a name="6---connect-the-gateways"></a>6 - Sluit de gateways aan
+Maak in deze stap een bidirectionele verbinding tussen de twee gateways van de twee virtuele netwerken. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Verbind de twee gateways met behulp van de Azure Portal. 
+Sluit de twee gateways aan via de Azure-portal. 
 
 
-1. Selecteer **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
-1. Typ `connection` in het zoekvak en druk vervolgens op ENTER om te zoeken, waarmee u naar de **verbindings** bron, gepubliceerd door micro soft.
-1. Selecteer **maken** om uw verbinding te maken. 
-1. Selecteer op het tabblad **basis beginselen** de volgende waarden en selecteer vervolgens **OK**. 
-    1. Selecteer `VNet-to-VNet` voor het **verbindings type**. 
+1. Selecteer **Een resource maken** vanuit de [Azure-portal](https://portal.azure.com).
+1. Typ `connection` in het zoekvak en druk op Enter om te zoeken, waardoor u naar de **verbindingsbron** gaat, gepubliceerd door Microsoft.
+1. Selecteer **Maken** om uw verbinding te maken. 
+1. Selecteer op het tabblad **Basisbeginselen** de volgende waarden en selecteer **OK**. 
+    1. Selecteer `VNet-to-VNet` voor het **type Verbinding**. 
     1. Selecteer uw abonnement in de vervolgkeuzelijst. 
-    1. Selecteer de resource groep voor uw beheerde instantie in de vervolg keuzelijst. 
-    1. Selecteer de locatie van uw primaire beheerde instantie in de vervolg keuzelijst 
-1. Op het tabblad **instellingen** selecteert of voert u de volgende waarden in en selecteert u **OK**:
-    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `Primary-Gateway`.  
-    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `Secondary-Gateway`. 
-    1. Schakel het selectie vakje in naast **bidirectionele connectiviteit instellen**. 
-    1. Wijzig de standaard naam van de primaire verbinding of geef deze de gewenste waarde. 
-    1. Geef een **gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk`. 
+    1. Selecteer de resourcegroep voor uw beheerde instantie in de vervolgkeuzelijst. 
+    1. De locatie van uw primaire beheerde instantie selecteren in de vervolgkeuzelijst 
+1. Selecteer of voer op het tabblad **Instellingen** de volgende waarden in en selecteer **OK:**
+    1. Kies de primaire netwerkgateway voor de eerste `Primary-Gateway`virtuele **netwerkgateway,** zoals .  
+    1. Kies de secundaire netwerkgateway voor de `Secondary-Gateway`tweede virtuele **netwerkgateway,** zoals . 
+    1. Schakel het selectievakje naast **Bidirectionele connectiviteit instellen**in. 
+    1. Laat de standaardnaam van de primaire verbinding over of wijzig deze tot een waarde naar keuze. 
+    1. Geef een **gedeelde sleutel (PSK)** op `mi1m2psk`voor de verbinding, zoals . 
 
-   ![Gateway verbinding maken](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
+   ![Gatewayverbinding maken](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. Controleer op het tabblad **samen vatting** de instellingen voor uw bidirectionele verbinding en selecteer vervolgens **OK** om de verbinding te maken. 
+1. Controleer op het tabblad **Overzicht** de instellingen voor uw bidirectionele verbinding en selecteer **OK** om uw verbinding te maken. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Verbind de twee gateways met behulp van Power shell. 
+Sluit de twee gateways aan met PowerShell. 
 
    ```powershell-interactive
    # Connect the primary to secondary gateway
@@ -954,38 +954,38 @@ Verbind de twee gateways met behulp van Power shell.
    $secondaryGWConnection
    ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt de volgende PowerShell-cmdlet gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerk gateways.   |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerkgateways.   |
 
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7-een failovergroep maken
-In deze stap maakt u de failovergroep en voegt u beide beheerde exemplaren toe aan de groep. 
+## <a name="7---create-a-failover-group"></a>7 - Een failovergroep maken
+In deze stap maakt u de failovergroep en voegt u beide beheerde instanties toe. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Maak de failover-groep met behulp van de Azure Portal. 
+Maak de failovergroep met behulp van de Azure-portal. 
 
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer de primaire beheerde instantie die u in de eerste sectie hebt gemaakt, zoals `sql-mi-primary`. 
-1. Ga onder **instellingen**naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen. 
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure-portal.](https://portal.azure.com) Als **Azure SQL** niet in de lijst staat, selecteert u Alle **services**en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en voeg deze toe als een item in de linkernavigatie. 
+1. Selecteer de primaire beheerde instantie die u `sql-mi-primary`in de eerste sectie hebt gemaakt, zoals . 
+1. Navigeer **onder Instellingen**naar **Instantiefailovergroepen** en kies vervolgens de **groep Toevoegen** om de pagina **Failovergroep instantie** te openen. 
 
    ![Een failovergroep toevoegen](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. Typ op de pagina **failovergroep voor instanties** de naam van de failovergroep, zoals `failovergrouptutorial`, en kies vervolgens het secundaire beheerde exemplaar, zoals `sql-mi-secondary` uit de vervolg keuzelijst. Selecteer **maken** om uw failovergroep te maken. 
+1. Typ op de pagina **Failovergroep instance** de naam van `failovergrouptutorial` uw failovergroep, zoals `sql-mi-secondary` en kies vervolgens de secundaire beheerde instantie, zoals in de vervolgkeuzelijst. Selecteer **Maken** om de failovergroep te maken. 
 
    ![Failovergroep maken](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **failover-groep** . 
+1. Zodra de implementatie van failovergroepen is voltooid, wordt u teruggezet naar de **groeppagina Failover.** 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Maak de failover-groep met behulp van Power shell. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Maak de failovergroep met PowerShell. 
 
    ```powershell-interactive
    Write-host "Creating the failover group..."
@@ -996,39 +996,39 @@ Maak de failover-groep met behulp van Power shell.
    $failoverGroup
    ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt de volgende PowerShell-cmdlet gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe Azure SQL Database failover-groep voor een beheerd exemplaar.  |
+| [Nieuw-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failovergroep met Azure SQL Database beheerde instantie.  |
 
 
 ---
 
 
-## <a name="8---test-failover"></a>8-testfailover
-In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal. 
+## <a name="8---test-failover"></a>8 - Test failover
+In deze stap mislukt u uw failovergroep naar de secundaire server en mislukt u vervolgens terug met de Azure-portal. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Testfailover met behulp van de Azure Portal. 
+Test failover met behulp van de Azure-portal. 
 
 
-1. Navigeer naar uw _secundaire_ beheerde exemplaar binnen de [Azure Portal](https://portal.azure.com) en selecteer **failover-groepen voor instanties** onder instellingen. 
-1. Controleer welk beheerde exemplaar het primaire is en welk Managed instance het secundaire exemplaar is. 
-1. Selecteer **failover** en selecteer vervolgens **Ja** in de waarschuwing over TDS-sessies die worden losgekoppeld. 
+1. Navigeer naar uw _secundaire_ beheerde instantie in de [Azure-portal](https://portal.azure.com) en selecteer **Instantiefailovergroepen** onder instellingen. 
+1. Controleer welke beheerde instantie de primaire instantie is en welke beheerde instantie de secundaire instantie is. 
+1. Selecteer **Failover** en selecteer **Vervolgens Ja** op de waarschuwing dat de verbinding met TDS-sessies wordt verbroken. 
 
-   ![Failover-groep](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
+   ![Fail over de failovergroep](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
-1. Controleer welk beheerd-exemplaar het primaire is en welk exemplaar het secundaire is. Als failover is geslaagd, moeten de twee exemplaren geschakelde rollen hebben. 
+1. Controleer welke manged instantie de primaire is en welke instantie de secundaire is. Als het niet lukt, moeten de twee instanties van rol zijn gewisseld. 
 
-   ![Beheerde instanties hebben geswitcheerde rollen na een failover](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
+   ![Beheerde exemplaren zijn van rol gewisseld na failover](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Ga naar het nieuwe _secundaire_ beheerde exemplaar en selecteer eenmalig **failover** opnieuw om de primaire instantie terug te laten werken naar de primaire rol. 
+1. Ga naar de nieuwe _secundaire_ beheerde instantie en selecteer **Failover** nogmaals om de primaire instantie terug naar de primaire rol te laten mislukken. 
 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Testfailover met behulp van Power shell. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Test failover met PowerShell. 
 
    ```powershell-interactive
     
@@ -1044,7 +1044,7 @@ Testfailover met behulp van Power shell.
    ```
 
 
-Herstel de failovergroep terug naar de primaire server:
+Failovergroep terugzetten naar de primaire server:
 
    ```powershell-interactive
    # Verify the current primary role
@@ -1062,30 +1062,30 @@ Herstel de failovergroep terug naar de primaire server:
        -Location $location -Name $failoverGroupName
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden de failover-groepen van een beheerd exemplaar opgehaald of weer gegeven.| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover uitgevoerd van een failovergroep voor een beheerd exemplaar. | 
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden beheerde failovergroepen voor verschillende instantie weergegeven of vermeldt.| 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover van een beheerde failovergroep uitgevoerd. | 
 
 ---
 
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-U kunt resources opschonen door eerst het beheerde exemplaar te verwijderen, vervolgens het virtuele cluster, vervolgens de resterende resources en ten slotte de resource groep. 
+Ruim resources op door eerst de beheerde instantie te verwijderen, vervolgens het virtuele cluster, vervolgens de resterende resources en ten slotte de resourcegroep. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Navigeer naar uw resource groep in de [Azure Portal](https://portal.azure.com). 
-1. Selecteer een of meer beheerde exemplaren en selecteer vervolgens **verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. Dit proces kan enige tijd in beslag nemen en totdat het is voltooid, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer het verwijderen op het tabblad activiteit om te bevestigen dat uw beheerde exemplaar is verwijderd. 
-1. Wanneer het beheerde exemplaar is verwijderd, verwijdert u het *virtuele cluster* door het te selecteren in de resource groep en vervolgens **verwijderen**te kiezen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. 
-1. Alle resterende resources verwijderen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. 
-1. Verwijder de resource groep door **resource groep verwijderen**te selecteren, typ de naam van de resource groep `myResourceGroup`en selecteer vervolgens **verwijderen**. 
+1. Navigeer naar uw brongroep in de [Azure-portal.](https://portal.azure.com) 
+1. Selecteer de beheerde instantie(s) en selecteer **Verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de bron wilt verwijderen en selecteer **Verwijderen**. Dit proces kan enige tijd in beslag nemen op de achtergrond en totdat het klaar is, u het *virtuele cluster* of andere afhankelijke bronnen niet verwijderen. Controleer de verwijdering op het tabblad Activiteit om te bevestigen dat uw beheerde instantie is verwijderd. 
+1. Zodra de beheerde instantie is verwijderd, verwijdert u het *virtuele cluster* door het te selecteren in uw brongroep en vervolgens **Verwijderen**te kiezen . Typ `yes` in het tekstvak om te bevestigen dat u de bron wilt verwijderen en selecteer **Verwijderen**. 
+1. Verwijder de resterende bronnen. Typ `yes` in het tekstvak om te bevestigen dat u de bron wilt verwijderen en selecteer **Verwijderen**. 
+1. Verwijder de brongroep door **resourcegroep verwijderen**te selecteren, `myResourceGroup`de naam van de resourcegroep in te typen en vervolgens **Verwijderen**te selecteren . 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-U moet de resource groep twee keer verwijderen. Als u de resource groep de eerste keer verwijdert, worden het beheerde exemplaar en de virtuele clusters verwijderd, maar mislukt het fout bericht `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`. Voer de opdracht Remove-AzResourceGroup een tweede keer uit om eventuele resterende resources en de resource groep te verwijderen.
+U moet de brongroep twee keer verwijderen. Als u de resourcegroep de eerste keer verwijdert, worden de beheerde instantie en virtuele clusters verwijderd, maar wordt deze vervolgens mislukt met het foutbericht `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`. Voer de opdracht Verwijderen-AzResourceGroep een tweede keer uit om resterende resources en de resourcegroep te verwijderen.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1094,67 +1094,67 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-host "Removing residual resources and resouce group..."
 ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt de volgende PowerShell-cmdlet gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep. |
 
 ---
 
 ## <a name="full-script"></a>Volledige script
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een Azure-resourcegroep.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnet configuratie toe aan een virtueel netwerk. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie toe aan een virtueel netwerk. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet in een virtueel netwerk opgehaald. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Krijgt een subnet in een virtueel netwerk. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een route tabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een Azure SQL Database beheerd exemplaar.  |
-| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Retourneert informatie over Azure SQL Managed data base instance. |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Werkt een subnetconfiguratie voor een virtueel netwerk bij.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Werkt een virtueel netwerk bij.  |
+| [Get-azNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Krijgt een netwerkbeveiligingsgroep. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van de netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-azNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Werkt een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Set-azroutetabel](/powershell/module/az.network/set-azroutetable) | Hiermee wordt een routetabel bijgewerkt.  |
+| [Nieuw-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een azure SQL Database-beheerde instantie.  |
+| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Retourneert informatie over Azure SQL Managed Database Instance. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een Virtual Network gateway |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een Virtual Network gateway |
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerk gateways.   |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe Azure SQL Database failover-groep voor een beheerd exemplaar.  |
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden de failover-groepen van een beheerd exemplaar opgehaald of weer gegeven.| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover uitgevoerd van een failovergroep voor een beheerd exemplaar. | 
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep. | 
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Maakt een IP-configuratie voor een virtuele netwerkgateway |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Maakt een virtuele netwerkgateway |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerkgateways.   |
+| [Nieuw-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failovergroep met Azure SQL Database beheerde instantie.  |
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden beheerde failovergroepen voor verschillende instantie weergegeven of vermeldt.| 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover van een beheerde failovergroep uitgevoerd. | 
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep. | 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Er zijn geen scripts beschikbaar voor de Azure Portal.
+Er zijn geen scripts beschikbaar voor de Azure-portal.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een failovergroep geconfigureerd tussen twee beheerde exemplaren. U hebt geleerd hoe u:
+In deze zelfstudie hebt u een failovergroep geconfigureerd tussen twee beheerde exemplaren. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> - Een primair beheerd exemplaar maken
-> - Maak een secundair beheerd exemplaar als onderdeel van een [failovergroep](sql-database-auto-failover-group.md). 
+> - Een primair beheerde instantie maken
+> - Maak een secundairbeheerde instantie als onderdeel van een [failovergroep](sql-database-auto-failover-group.md). 
 > - Testfailover
 
-Ga naar de volgende Snelstartgids over hoe u verbinding maakt met uw beheerde exemplaar en hoe u een Data Base kunt herstellen naar uw beheerde exemplaar: 
+Ga naar de volgende snelle start over hoe u verbinding maken met uw beheerde instantie en hoe u een database herstellen naar uw beheerde instantie: 
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met uw beheerde exemplaar](sql-database-managed-instance-configure-vm.md)
-> [een Data Base te herstellen naar een beheerd exemplaar](sql-database-managed-instance-get-started-restore.md)
+> [Verbinding maken met uw beheerde instantie](sql-database-managed-instance-configure-vm.md)
+> [Een database herstellen naar een beheerde instantie](sql-database-managed-instance-get-started-restore.md)
 
 

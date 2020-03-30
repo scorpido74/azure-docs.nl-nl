@@ -1,6 +1,6 @@
 ---
-title: Configuratie scripts voor VPN-apparaten voor S2S VPN-verbindingen downloaden
-description: In dit artikel wordt stapsgewijs uitgelegd hoe u configuratie scripts voor VPN-apparaten voor S2S VPN-verbindingen met Azure VPN-gateways kunt downloaden met behulp van Azure Resource Manager.
+title: Vpn-apparaatconfiguratiescripts downloaden voor S2S VPN-verbindingen
+description: In dit artikel u vpn-apparaatconfiguratiescripts downloaden voor S2S VPN-verbindingen met Azure VPN-gateways met Azure Resource Manager.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
@@ -10,77 +10,77 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162133"
 ---
-# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Configuratie scripts voor VPN-apparaten voor S2S VPN-verbindingen downloaden
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Vpn-apparaatconfiguratiescripts downloaden voor S2S VPN-verbindingen
 
-In dit artikel wordt stapsgewijs uitgelegd hoe u configuratie scripts voor VPN-apparaten voor S2S VPN-verbindingen met Azure VPN-gateways kunt downloaden met behulp van Azure Resource Manager. In het volgende diagram ziet u de werk stroom op hoog niveau.
+In dit artikel u vpn-apparaatconfiguratiescripts downloaden voor S2S VPN-verbindingen met Azure VPN-gateways met Azure Resource Manager. In het volgende diagram ziet u de werkstroom op hoog niveau.
 
-![downloaden-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
-De volgende apparaten hebben scripts die beschikbaar zijn:
+De volgende apparaten hebben beschikbare scripts:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>Over configuratie scripts voor VPN-apparaten
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>Over VPN-apparaatconfiguratiescripts
 
-Een cross-premises VPN-verbinding bestaat uit een Azure VPN-gateway, een on-premises VPN-apparaat en een IPsec S2S VPN-tunnel die de twee verbindt. De typische werk stroom omvat de volgende stappen:
+Een cross-premises VPN-verbinding bestaat uit een Azure VPN-gateway, een on-premises VPN-apparaat en een IPsec S2S VPN-tunnel die de twee verbindt. De typische werkstroom bevat de volgende stappen:
 
-1. Een Azure VPN-gateway maken en configureren (virtuele netwerk gateway)
-2. Een lokale Azure-netwerk gateway maken en configureren die uw on-premises netwerk en VPN-apparaat vertegenwoordigt
-3. Een Azure VPN-verbinding tussen de Azure VPN-gateway en de lokale netwerk gateway maken en configureren
-4. Configureer het on-premises VPN-apparaat dat wordt weer gegeven door de lokale netwerk gateway om de daad werkelijke S2S VPN-tunnel met de Azure VPN-gateway in te stellen
+1. Een Azure VPN-gateway maken en configureren (virtuele netwerkgateway)
+2. Een lokale Azure-netwerkgateway maken en configureren die uw on-premises netwerk en VPN-apparaat vertegenwoordigt
+3. Een Azure VPN-verbinding maken en configureren tussen de Azure VPN-gateway en de lokale netwerkgateway
+4. Configureer het on-premises VPN-apparaat dat wordt vertegenwoordigd door de lokale netwerkgateway om de werkelijke S2S VPN-tunnel te maken met de Azure VPN-gateway
 
-U kunt de stappen 1 tot en met 3 volt ooien met behulp van Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [Power shell](vpn-gateway-create-site-to-site-rm-powershell.md)of [cli](vpn-gateway-howto-site-to-site-resource-manager-cli.md). De laatste stap omvat het configureren van de on-premises VPN-apparaten buiten Azure. Met deze functie kunt u een configuratie script voor uw VPN-apparaat downloaden met de overeenkomstige waarden van de Azure VPN-gateway, het virtuele netwerk en on-premises netwerk adres voorvoegsels en VPN-verbindings eigenschappen, enzovoort. U kunt het script als uitgangs punt gebruiken of het script rechtstreeks Toep assen op uw on-premises VPN-apparaten via de configuratie console.
+U stap 1 tot en met 3 uitvoeren met de [Azure-portal,](vpn-gateway-howto-site-to-site-resource-manager-portal.md) [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)of [CLI.](vpn-gateway-howto-site-to-site-resource-manager-cli.md) De laatste stap is het configureren van de on-premises VPN-apparaten buiten Azure. Met deze functie u een configuratiescript voor uw VPN-apparaat downloaden met de bijbehorende waarden van uw Azure VPN-gateway, virtueel netwerk en on-premises netwerkadresvoorvoegsels en VPN-verbindingseigenschappen, enz. U het script als uitgangspunt gebruiken of het script rechtstreeks toepassen op uw on-premises VPN-apparaten via de configuratieconsole.
 
 > [!IMPORTANT]
-> * De syntaxis voor elk configuratie script voor VPN-apparaten wijkt af en is sterk afhankelijk van de modellen en firmware versies. U kunt het model van uw apparaat en de versie gegevens van de beschik bare sjablonen best Eden.
-> * Sommige parameter waarden moeten uniek zijn op het apparaat en kunnen niet worden bepaald zonder toegang tot het apparaat. De door Azure gegenereerde configuratie scripts vullen deze waarden vooraf in, maar u moet ervoor zorgen dat de gegeven waarden geldig zijn op het apparaat. Voor voor beelden:
->    * Interface nummers
->    * Toegangs beheer lijst nummers
->    * Beleids namen of-nummers, enzovoort.
-> * Zoek naar het tref woord '**replace**', Inge sloten in het script om de para meters te vinden die u moet controleren voordat u het script toepast.
-> * Sommige sjablonen bevatten een sectie '**opschonen**' die u kunt Toep assen om de configuraties te verwijderen. De opschoon secties worden standaard in een opmerkingen opgenomen.
+> * De syntaxis voor elk configuratiescript van elk VPN-apparaat is anders en is sterk afhankelijk van de modellen en firmwareversies. Besteed speciale aandacht aan uw apparaatmodel en versie-informatie aan de beschikbare sjablonen.
+> * Sommige parameterwaarden moeten uniek zijn op het apparaat en kunnen niet worden bepaald zonder toegang tot het apparaat. De door Azure gegenereerde configuratiescripts vullen deze waarden vooraf op, maar u moet ervoor zorgen dat de opgegeven waarden geldig zijn op uw apparaat. Voor voorbeelden:
+>    * Interfacenummers
+>    * Lijstnummers van toegangsbeheer
+>    * Beleidsnamen of -nummers, enz.
+> * Zoek naar het trefwoord "**REPLACE**", ingebed in het script om de parameters te vinden die u moet verifiëren voordat u het script toepast.
+> * Sommige sjablonen bevatten een sectie '**OPSCHONEn'** die u toepassen om de configuraties te verwijderen. De opschoningssecties worden standaard weergegeven.
 
-## <a name="download-the-configuration-script-from-azure-portal"></a>Down load het configuratie script van Azure Portal
+## <a name="download-the-configuration-script-from-azure-portal"></a>Het configuratiescript downloaden van Azure-portal
 
-Maak een Azure VPN-gateway, een lokale netwerk gateway en een verbindings bron die de twee verbindt. Op de volgende pagina vindt u instructies voor het uitvoeren van de stappen:
+Maak een Azure VPN-gateway, lokale netwerkgateway en een verbindingsbron die de twee verbindt. Op de volgende pagina leidt u de stappen door:
 
-* [Een site-naar-site-verbinding maken in de Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Een site-naar-site-verbinding maken in Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-Zodra de verbindings bron is gemaakt, volgt u de onderstaande instructies om de configuratie scripts voor VPN-apparaten te downloaden:
+Zodra de verbindingsbron is gemaakt, volgt u de onderstaande instructies om de configuratiescripts van het VPN-apparaat te downloaden:
 
-1. Ga in een browser naar de [Azure Portal](https://portal.azure.com) en meld u indien nodig aan met uw Azure-account
-2. Ga naar de verbindings bron die u hebt gemaakt. U kunt de lijst met alle verbindings resources vinden door te klikken op alle services en vervolgens op ' netwerk ' en ' verbindingen '.
+1. Navigeer vanuit een browser naar de [Azure-portal](https://portal.azure.com) en meld u indien nodig aan met uw Azure-account
+2. Ga naar de verbindingsbron die u hebt gemaakt. U de lijst met alle verbindingsbronnen vinden door op 'Alle services' te klikken, vervolgens op NETWERKEN en 'Verbindingen'.
 
-    ![verbinding-lijst](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
+    ![lijst met verbinding](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
 
 3. Klik op de verbinding die u wilt configureren.
 
-    ![verbinding-overzicht](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+    ![verbindingsoverzicht](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
 
-4. Klik op de koppeling ' configuratie downloaden ' zoals gemarkeerd in rood op de overzichts pagina voor verbindingen. Hiermee opent u de pagina configuratie downloaden.
+4. Klik op de link 'Configuratie downloaden' zoals gemarkeerd in het rood op de pagina Verbindingsoverzicht; hiermee wordt de pagina 'Downloadconfiguratie' geopend.
 
     ![download-script-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
-5. Selecteer de model familie en firmware versie voor uw VPN-apparaat en klik vervolgens op de knop configuratie downloaden.
+5. Selecteer de modelfamilie en firmwareversie voor uw VPN-apparaat en klik op de knop 'Configuratie downloaden'.
 
     ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
-6. U wordt gevraagd het gedownloade script (een tekst bestand) op te slaan in uw browser.
-7. Nadat u het configuratie script hebt gedownload, opent u het met een tekst editor en zoekt u naar het tref woord ' REPLACE ' om de para meters te identificeren en te controleren die mogelijk moeten worden vervangen.
+6. U wordt gevraagd het gedownloade script (een tekstbestand) op te slaan in uw browser.
+7. Zodra u het configuratiescript hebt gedownload, opent u het met een teksteditor en zoekt u naar het zoekwoord "VERVANGEN" om de parameters te identificeren en te onderzoeken die mogelijk moeten worden vervangen.
 
     ![bewerken-script](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
-## <a name="download-the-configuration-script-using-azure-powershell"></a>Down load het configuratie script met behulp van Azure PowerShell
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Het configuratiescript downloaden met Azure PowerShell
 
 
 
-U kunt het configuratie script ook downloaden met behulp van Azure PowerShell, zoals wordt weer gegeven in het volgende voor beeld:
+U het configuratiescript ook downloaden met Azure PowerShell, zoals in het volgende voorbeeld wordt weergegeven:
 
 ```azurepowershell-interactive
 $RG          = "TestRG1"
@@ -94,10 +94,10 @@ Get-AzVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $
 Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
 ```
 
-## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Het configuratie script Toep assen op uw VPN-apparaat
+## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Het configuratiescript toepassen op uw VPN-apparaat
 
-Nadat u het configuratie script hebt gedownload en gevalideerd, is de volgende stap het script op uw VPN-apparaat toe te passen. De daad werkelijke procedure is afhankelijk van het maken en modellen van uw VPN-apparaat. Raadpleeg de bewerkings handleidingen of de instructie pagina's voor uw VPN-apparaten.
+Nadat u het configuratiescript hebt gedownload en gevalideerd, is de volgende stap het toepassen van het script op uw VPN-apparaat. De werkelijke procedure varieert op basis van uw VPN-apparaat maakt en modellen. Raadpleeg de handleidingen of de instructiepagina's voor uw VPN-apparaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met het configureren van de [site-naar-site-verbinding](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Doorgaan met het configureren van uw [site-naar-site-verbinding](vpn-gateway-howto-site-to-site-resource-manager-portal.md).

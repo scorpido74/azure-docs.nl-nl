@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Azure Resource Manager implementatie Guardrails
-description: Dit artikel bevat een overzicht van veelvoorkomende fouten bij het implementeren van een Service Fabric cluster via Azure Resource Manager en hoe u dit kunt voor komen.
+title: Service Fabric Azure Resource Manager-implementatievangrails
+description: In dit artikel vindt u een overzicht van veelvoorkomende fouten die zijn gemaakt bij het implementeren van een Cluster Servicefabric via Azure Resource Manager en hoe u deze voorkomen.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368579"
 ---
-# <a name="service-fabric-guardrails"></a>Service Fabric Guardrails 
-Bij het implementeren van een Service Fabric cluster worden Guardrails geplaatst, waardoor een Azure Resource Manager implementatie in het geval van een ongeldige cluster configuratie mislukt. In de volgende secties vindt u een overzicht van algemene problemen met de cluster configuratie en de stappen die nodig zijn om deze problemen te verhelpen. 
+# <a name="service-fabric-guardrails"></a>Service Fabric vangrails 
+Bij het implementeren van een Cluster Servicefabric worden vangrails geplaatst, waardoor een Azure Resource Manager-implementatie mislukt in het geval van een ongeldige clusterconfiguratie. In de volgende secties vindt u een overzicht van de algemene clusterconfiguratieproblemen en de stappen die nodig zijn om deze problemen te beperken. 
 
-## <a name="durability-mismatch"></a>Duurzaamheid komt niet overeen
+## <a name="durability-mismatch"></a>Mismatch bij duurzaamheid
 ### <a name="overview"></a>Overzicht
-De duurzaamheids waarde voor een Service Fabric knooppunt type wordt gedefinieerd in twee verschillende secties van een Azure Resource Manager sjabloon. Het gedeelte extensie van de virtuele-machine Schaalset van de resource voor de Schaalset van de virtuele machine en de sectie type knoop punt van de Service Fabric cluster bron. Het is een vereiste dat de duurzaamheids waarde in deze secties overeenkomt, anders mislukt de implementatie van de resource.
+De duurzaamheidswaarde voor een knooppunttype ServiceFabric wordt gedefinieerd in twee verschillende secties van een Azure Resource Manager-sjabloon. De sectie Extensie virtuele machineschaalset van de resource Virtuele machineschaalset en het gedeelte Knooppunttype van de clusterbron Servicefabric. Het is een vereiste dat de duurzaamheidswaarde in deze secties overeenkomt, anders mislukt de implementatie van de resource.
 
-De volgende sectie bevat een voor beeld van een duurzaamheid die niet overeenkomt tussen de instelling duurzaamheid van de Schaalset voor virtuele machines en de instelling duurzaamheid van het Service Fabric knooppunt type:  
+In de volgende sectie vindt u een voorbeeld van een duurzaamheidsmismatch tussen de duurzaamheidsinstelling voor de extensie Van de Virtuele Machine schaalset en de duurzaamheidsinstelling servicefabric-knooppunt:  
 
-**Duurzaamheids instelling voor virtuele-machine schaal sets**
+**Duurzaamheidsinstelling virtuele machineschaalset**
 ```json 
 {
   "extensions": [
@@ -41,7 +41,7 @@ De volgende sectie bevat een voor beeld van een duurzaamheid die niet overeenkom
 }
 ```
 
-**Instelling duurzaamheid van Service Fabric knooppunt type** 
+**Duurzaamheidsinstelling voor servicefabric-knooppunt** 
 ```json
 {
   "nodeTypes": [
@@ -56,32 +56,32 @@ De volgende sectie bevat een voor beeld van een duurzaamheid die niet overeenkom
 ```
 
 ### <a name="error-messages"></a>Foutberichten
-* De duurzaamheid van de Schaalset van de virtuele machine komt niet overeen met het huidige niveau van de duurzaamheid van het Service Fabric knooppunt type
-* Duurzaamheid van de Schaalset van de virtuele machine komt niet overeen met het doel Service Fabric duurzaamheids niveau van het knooppunt type
-* De duurzaamheid van de virtuele-machine Schaalset komt overeen met het huidige Service Fabric duurzaamheids niveau of het doel type duurzaamheids niveau van het Service Fabric knooppunt 
+* De duurzaamheidsmismatch van de Virtual Machine Scale Set komt niet overeen met het huidige duurzaamheidsniveau van het Service Fabric-knooppunt
+* De duurzaamheid van de Virtual Machine Scale Set komt niet overeen met het duurzaamheidsniveau van het doelservicestructuurknooppunt
+* Virtual Machine Scale Set duurzaamheid komt overeen met het huidige Service Fabric duurzaamheidsniveau of het duurzaamheidsniveau van het doelservicestructuurknooppunt 
 
 ### <a name="mitigation"></a>Oplossing
-Het oplossen van een niet-overeenkomend duurzaamheid, dat wordt aangegeven door een van de bovenstaande fout berichten:
-1. Werk het duurzaamheids niveau bij in de uitbrei ding voor de virtuele-machine Schaalset of het gedeelte Service Fabric knooppunt type van de Azure Resource Manager sjabloon om ervoor te zorgen dat de waarden overeenkomen.
-2. Implementeer de Azure Resource Manager sjabloon opnieuw met de bijgewerkte waarden.
+Ga als bedoeld als gevolg van een oplossing voor een duurzaamheidsmismatch, die wordt aangegeven door een van de bovenstaande foutmeldingen:
+1. Werk het duurzaamheidsniveau bij in de extensie Virtuele machineschaalset of sectie Service Fabric Node Type van de azure resource manager-sjabloon om ervoor te zorgen dat de waarden overeenkomen.
+2. Implementeer de sjabloon Azure Resource Manager opnieuw met de bijgewerkte waarden.
 
 
-## <a name="seed-node-deletion"></a>Seed-knoop punt verwijderen 
+## <a name="seed-node-deletion"></a>Zaadknooppunt verwijderen 
 ### <a name="overview"></a>Overzicht
-Een Service Fabric cluster heeft een eigenschap van een [betrouwbaarheids categorie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) die wordt gebruikt om te bepalen hoeveel replica's van systeem services worden uitgevoerd op het primaire knooppunt type van het cluster. Het aantal vereiste replica's bepaalt het minimum aantal knoop punten dat moet worden onderhouden in het primaire knooppunt type van het cluster. Als het aantal knoop punten in het primaire knooppunt type onder het vereiste minimum voor de betrouwbaarheids categorie komt, wordt het cluster Insta Biel.  
+Een cluster servicestructuur heeft een eigenschap [van de betrouwbaarheidslaag](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) die wordt gebruikt om het aantal replica's van systeemservices te bepalen die worden uitgevoerd op het primaire knooppunttype van het cluster. Het aantal vereiste replica's bepaalt het minimumaantal knooppunten dat moet worden gehandhaafd in het primaire knooppunttype van het cluster. Als het aantal knooppunten in het primaire knooppunttype onder het vereiste minimum voor de betrouwbaarheidslaag gaat, wordt het cluster instabiel.  
 
 ### <a name="error-messages"></a>Foutberichten 
-Er is een bewerking voor het verwijderen van een Seed-knoop punt gedetecteerd en deze wordt geweigerd. 
-* Deze bewerking zou ertoe leiden dat er maar {0} potentiële Seed-knoop punten in het cluster blijven, terwijl {1} mini maal nodig zijn.
-* Het verwijderen van {0} Seed-knoop punten van {1} zou leiden tot het cluster wegens verlies van het Seed-knooppunt quorum. Het maximum aantal Seed-knoop punten dat tegelijk kan worden verwijderd, is {2}.
+Zaadknooppunt verwijdering operatie is gedetecteerd, en zal worden afgewezen. 
+* Deze bewerking zou {0} resulteren in alleen potentiële zaadknooppunten {1} om in het cluster te blijven, terwijl dit minimaal nodig is.
+* Het {0} verwijderen van {1} zaadknooppunten uit zou resulteren in de cluster naar beneden als gevolg van verlies van zaad knooppunt quorum. Maximum aantal zaadknooppunten dat tegelijk kan {2}worden verwijderd is .
  
 ### <a name="mitigation"></a>Oplossing 
-Zorg ervoor dat het type van het primaire knoop punt voldoende Virtual Machines heeft voor de betrouw baarheid die is opgegeven op uw cluster. U kunt een virtuele machine niet verwijderen als hiermee de Schaalset voor virtuele machines onder het minimum aantal knoop punten voor de opgegeven betrouwbaarheids categorie wordt ingesteld.
-* Als de betrouwbaarheids laag correct is opgegeven, moet u ervoor zorgen dat u over voldoende knoop punten in het primaire knooppunt type beschikt als dat nodig is voor de betrouwbaarheids categorie. 
-* Als de betrouwbaarheids laag onjuist is, initieert u een wijziging op de Service Fabric resource om eerst het betrouwbaarheids niveau te verlagen voordat u bewerkingen voor de Schaalset van virtuele machines initieert, en wacht u totdat het is voltooid.
-* Als de betrouwbaarheids categorie brons is, volgt u deze [stappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) om uw cluster op de juiste wijze te schalen.
+Zorg ervoor dat uw primaire knooppunttype voldoende virtuele machines heeft voor de betrouwbaarheid die op uw cluster is opgegeven. U een virtuele machine niet verwijderen als de virtuele machineschaalset onder het minimumaantal knooppunten voor de opgegeven betrouwbaarheidslaag wordt geplaatst.
+* Als de betrouwbaarheidslaag correct is opgegeven, controleert u of u voldoende knooppunten in het primaire knooppunttype hebt als dat nodig is voor de betrouwbaarheidslaag. 
+* Als de betrouwbaarheidslaag onjuist is, start u een wijziging op de resource Service Fabric om eerst het betrouwbaarheidsniveau te verlagen voordat u een virtuele machineschaalsetbewerkingen start en wacht tot deze is voltooid.
+* Als de betrouwbaarheidslaag Brons is, volgt u deze [stappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) om uw cluster gracieus af te schalen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)
-* Een cluster maken op Vm's of computers met Linux: [een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md)
-* Problemen oplossen Service Fabric: [richt lijnen voor probleem oplossing](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Een cluster maken op VM's of computers met Windows Server: [clustercreatie van servicefabric voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* Een cluster maken op VM's of computers met Linux: [een Linux-cluster maken](service-fabric-cluster-creation-via-portal.md)
+* Problemen met de servicefabric: [handleidingen voor het oplossen van problemen oplossen](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

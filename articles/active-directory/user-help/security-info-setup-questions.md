@@ -1,6 +1,6 @@
 ---
-title: Beveiligings vragen instellen als uw verificatie methode-Azure AD
-description: Hoe u de pagina beveiligings gegevens (preview) instelt om uw identiteit te verifiëren met vooraf gedefinieerde beveiligings vragen als verificatie methode.
+title: Beveiligingsvragen instellen als verificatiemethode - Azure AD
+description: Uw pagina Beveiligingsgegevens (voorbeeld) instellen om uw identiteit te verifiëren met vooraf gedefinieerde beveiligingsvragen als verificatiemethode.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,98 +12,98 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063965"
 ---
-# <a name="set-up-security-questions-as-your-verification-method"></a>Beveiligings vragen instellen als verificatie methode
+# <a name="set-up-security-questions-as-your-verification-method"></a>Beveiligingsvragen instellen als verificatiemethode
 
-U kunt deze stappen volgen om de methode voor het opnieuw instellen van een wacht woord toe te voegen. Nadat u dit de eerste keer hebt ingesteld, kunt u terugkeren naar de pagina met **beveiligings** gegevens om uw beveiligings gegevens toe te voegen, bij te werken of te verwijderen.
+U deze stappen volgen om uw methode voor het opnieuw instellen van wachtwoorden toe te voegen. Nadat u dit de eerste keer hebt ingesteld, u terugkeren naar de pagina **Beveiligingsgegevens** om uw beveiligingsgegevens toe te voegen, bij te werken of te verwijderen.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Als u de optie beveiligings vragen niet ziet, is het mogelijk dat uw organisatie deze optie niet kan gebruiken voor de methode voor het opnieuw instellen van uw wacht woord. In dit geval moet u een andere methode kiezen of contact opnemen met de Help Desk van uw organisatie voor meer informatie.
+>Als u de optie beveiligingsvragen niet ziet, is het mogelijk dat uw organisatie u niet toestaat deze optie te gebruiken voor uw methode voor het opnieuw instellen van wachtwoorden. In dit geval moet u een andere methode kiezen of contact opnemen met de helpdesk van uw organisatie voor meer hulp.
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligings verificatie versus wachtwoord herstel verificatie
+## <a name="security-verification-versus-password-reset-authentication"></a>Verificatie van beveiliging versus verificatie voor het opnieuw instellen van wachtwoorden
 
-Beveiligings informatie methoden worden gebruikt voor verificatie met twee factoren en voor het opnieuw instellen van wacht woorden. Niet elke methode kan echter voor beide worden gebruikt.
+Beveiligingsinformatiemethoden worden gebruikt voor zowel tweestapsbeveiligingsverificatie als voor het opnieuw instellen van wachtwoorden. Niet elke methode kan echter voor beide worden gebruikt.
 
 | Methode | Gebruikt voor |
 | ------ | -------- |
 | Authenticator-app | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | Sms-berichten | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | Telefoonoproep | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
-| Beveiligings sleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Beveiligingssleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
 | E-mailaccount | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 | Beveiligingsvragen | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 
-## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Uw beveiligings vragen instellen op de pagina met beveiligings gegevens
+## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Uw beveiligingsvragen instellen op de pagina Beveiligingsgegevens
 
-Afhankelijk van de instellingen van uw organisatie kunt u mogelijk een aantal beveiligings vragen kiezen en beantwoorden als een van de methoden voor beveiligings gegevens. Uw beheerder stelt het aantal beveiligings vragen in dat u nodig hebt om te kiezen en te beantwoorden.
+Afhankelijk van de instellingen van uw organisatie u mogelijk een aantal beveiligingsvragen kiezen en beantwoorden als een van uw beveiligingsgegevensmethoden. Uw beheerder stelt het aantal beveiligingsvragen in dat u moet kiezen en beantwoorden.
 
-Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi natie met een andere methode. Beveiligings vragen kunnen minder veilig zijn dan andere methoden omdat sommige mensen de antwoorden op uw vragen kunnen kennen.
+Als u beveiligingsvragen gebruikt, raden we u aan deze te gebruiken in combinatie met een andere methode. Beveiligingsvragen kunnen minder veilig zijn dan andere methoden, omdat sommige mensen de antwoorden op uw vragen kennen.
 
 > [!Note]
-> Beveiligings vragen worden privé opgeslagen en beveiligd op een gebruikers object in de Directory en kunnen tijdens de registratie alleen door u worden beantwoord. De beheerder kan uw vragen of antwoorden op geen enkele manier lezen of wijzigen.
+> Beveiligingsvragen worden privé en veilig opgeslagen op een gebruikersobject in de directory en kunnen alleen door u worden beantwoord tijdens de registratie. Uw beheerder kan uw vragen of antwoorden niet lezen of wijzigen.
 >
-> Als u de optie beveiligings vragen niet ziet, is het mogelijk dat uw organisatie geen beveiligings vragen mag gebruiken voor verificatie. Als dit het geval is, moet u een andere methode kiezen of contact opnemen met de beheerder voor meer informatie.
+> Als u de optie beveiligingsvragen niet ziet, is het mogelijk dat u met uw organisatie geen beveiligingsvragen gebruiken voor verificatie. Als dit het geval is, moet u een andere methode kiezen of contact opnemen met uw beheerder voor meer hulp.
 >
-> Beheerders accounts mogen geen beveiligings vragen gebruiken als een methode voor het opnieuw instellen van een wacht woord. Als u bent aangemeld als account voor het beheer niveau, worden deze opties niet weer geven.
+> Beheerdersaccounts mogen beveiligingsvragen niet gebruiken als methode voor het opnieuw instellen van wachtwoorden. Als u bent ingelogd als een account op beheerdersniveau, ziet u deze opties niet.
 
-### <a name="to-set-up-your-security-questions"></a>Uw beveiligings vragen instellen
+### <a name="to-set-up-your-security-questions"></a>Uw beveiligingsvragen instellen
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
+1. Meld u aan bij uw werk- https://myprofile.microsoft.com/ of schoolaccount en ga vervolgens naar uw pagina.
 
-    ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
+    ![Mijn profielpagina met gemarkeerde koppelingen naar beveiligingsgegevens](media/security-info/securityinfo-myprofile-page.png)
 
-2. Selecteer **beveiligings gegevens** in het navigatie deel venster links of op de koppeling in het blok met **beveiligings gegevens** en selecteer vervolgens **methode toevoegen** op de pagina **beveiligings gegevens** .
+2. Selecteer **Beveiligingsgegevens** in het linkernavigatiedeelvenster of in de koppeling in het blok **Beveiligingsgegevens** en selecteer **vervolgens Methode toevoegen** op de pagina **Beveiligingsgegevens.**
 
-    ![Pagina met beveiligings gegevens met de gemarkeerde optie methode toevoegen](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Pagina Beveiligingsgegevens met gemarkeerde optie Methode toevoegen](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Selecteer op de pagina **een methode toevoegen** de optie **beveiligings vragen** in de vervolg keuzelijst en selecteer vervolgens **toevoegen**.
+3. Selecteer **op** de pagina Een methode toevoegen de optie **Beveiligingsvragen** in de vervolgkeuzelijst en selecteer **Vervolgens Toevoegen**.
 
-    ![Het vak methode toevoegen met geselecteerde beveiligings vragen](media/security-info/securityinfo-myprofile-addquestions.png)
+    ![Het vakmethode toevoegen, met beveiligingsvragen geselecteerd](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. Op de pagina **beveiligings vragen** klikt u op en beantwoordt u de beveiligings vragen en selecteert u vervolgens **Opslaan**.
+4. Kies en beantwoord uw beveiligingsvragen op de pagina **Beveiligingsvragen** en selecteer **Opslaan**.
 
-    ![Telefoon nummer toevoegen en telefoon gesprekken kiezen](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![Telefoonnummer toevoegen en telefoongesprekken kiezen](media/security-info/securityinfo-myprofile-securityquestions.png)
 
-    Je beveiligings gegevens worden bijgewerkt en je kunt je beveiligings vragen gebruiken om je identiteit te verifiëren bij het gebruik van wacht woord opnieuw instellen.
+    Uw beveiligingsgegevens worden bijgewerkt en u uw beveiligingsvragen gebruiken om uw identiteit te verifiëren bij het opnieuw instellen van het wachtwoord.
 
-## <a name="delete-security-questions-from-your-security-info-methods"></a>Beveiligings vragen verwijderen uit uw beveiligings info-methoden
+## <a name="delete-security-questions-from-your-security-info-methods"></a>Beveiligingsvragen verwijderen uit uw beveiligingsgegevensmethoden
 
-Als u uw beveiligings vragen niet meer wilt gebruiken als een beveiligings gegevens methode, kunt u deze verwijderen van de pagina met **beveiligings gegevens** .
+Als u uw beveiligingsvragen niet langer als beveiligingsinformatiemethode wilt gebruiken, u deze verwijderen van de pagina **Beveiligingsgegevens.**
 
 >[!Important]
->Als u de beveiligings vragen per ongeluk verwijdert, is het niet mogelijk om deze ongedaan te maken. U moet de methode opnieuw toevoegen door de stappen in de sectie [uw beveiligings vragen instellen](#set-up-your-security-questions-from-the-security-info-page) van dit artikel te volgen.
+>Als u uw beveiligingsvragen per ongeluk verwijdert, is er geen manier om deze ongedaan te maken. U moet de methode opnieuw toevoegen, volgens de stappen in het gedeelte [Uw beveiligingsvragen instellen](#set-up-your-security-questions-from-the-security-info-page) van dit artikel.
 
-### <a name="to-delete-your-security-questions"></a>Uw beveiligings vragen verwijderen
+### <a name="to-delete-your-security-questions"></a>Uw beveiligingsvragen verwijderen
 
-1. Selecteer op de pagina **beveiligings gegevens** de koppeling **verwijderen** naast de optie **beveiligings vragen** .
+1. Selecteer op de pagina **Beveiligingsinfo** de koppeling **Verwijderen** naast de optie **Beveiligingsvragen.**
 
-    ![Koppeling voor het verwijderen van de telefoon methode vanuit beveiligings gegevens](media/security-info/securityinfo-myprofile-questionsdelete.png)
+    ![Koppeling om de telefoonmethode uit beveiligingsgegevens te verwijderen](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. Selecteer **Ja** in het bevestigings venster om uw **beveiligings vragen**te verwijderen. Nadat uw beveiligings vragen zijn verwijderd, wordt de methode verwijderd uit de beveiligings gegevens en verdwijnt deze van de pagina met **beveiligings gegevens** .
+2. Selecteer **Ja** in het bevestigingsvak om uw **beveiligingsvragen**te verwijderen. Nadat uw beveiligingsvragen zijn verwijderd, wordt de methode uit uw beveiligingsgegevens verwijderd en verdwijnt deze van de pagina **Beveiligingsgegevens.**
 
-## <a name="additional-security-info-methods"></a>Aanvullende beveiligings gegevens methoden
+## <a name="additional-security-info-methods"></a>Aanvullende beveiligingsinformatiemethoden
 
-U hebt extra opties voor het controleren van uw identiteit door uw organisatie, op basis van wat you're u probeert te doen. De opties zijn:
+U hebt extra opties voor de manier waarop uw organisatie contact met u opneemt om uw identiteit te verifiëren, op basis van wat u probeert te doen. De opties zijn:
 
-- **Verificator-app.** Down load en gebruik een verificator-app om een goedkeurings melding of een wille keurig gegenereerde goedkeurings code te verkrijgen voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een verificator-app](security-info-setup-auth-app.md)voor stapsgewijze instructies voor het instellen en gebruiken van de app Microsoft Authenticator.
+- **Authenticator app.** Download en gebruik een authenticator-app om een goedkeuringsmelding of een willekeurig gegenereerde goedkeuringscode te krijgen voor verificatie in twee stappen of wachtwoordreset. Zie [Beveiligingsgegevens instellen om een authenticator-app te gebruiken voor](security-info-setup-auth-app.md)stapsgewijze instructies over het instellen en gebruiken van de Microsoft Authenticator-app.
 
-- **Tekst van mobiel apparaat.** Voer het nummer van uw mobiele apparaat in en ontvang een tekst die u gebruikt voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Voor stapsgewijze instructies over het verifiëren van uw identiteit met een SMS-bericht, Zie [beveiligings informatie instellen voor het gebruik van tekst berichten (SMS)](security-info-setup-text-msg.md).
+- **Sms voor mobiele apparaten.** Voer uw mobiele apparaatnummer in en ontvang een tekst die u gebruikt voor verificatie in twee stappen of wachtwoordopnieuw instellen. Zie [Beveiligingsgegevens instellen om sms'jes te gebruiken](security-info-setup-text-msg.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een sms.
 
-- **Mobiel apparaat of telefoon nummer van werk.** Voer het nummer van uw mobiele apparaat in en ontvang een telefoon oproep voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van telefoon gesprekken](security-info-setup-phone-number.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een telefoon nummer.
+- **Mobiel apparaat of werktelefoongesprek.** Voer uw mobiele apparaatnummer in en ontvang een telefoongesprek voor verificatie in twee stappen of wachtwoordopnieuw instellen. Zie [Beveiligingsgegevens instellen om telefoongesprekken te gebruiken voor](security-info-setup-phone-number.md)stapsgewijze instructies over het verifiëren van uw identiteit met een telefoonnummer.
 
-- **Beveiligings sleutel.** Registreer uw door micro soft compatibele beveiligings sleutel en gebruik deze samen met een pincode voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een beveiligings sleutel](security-info-setup-security-key.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een beveiligings sleutel.
+- **Beveiligingssleutel.** Registreer uw microsoft-compatibele beveiligingssleutel en gebruik deze samen met een pincode voor verificatie in twee stappen of wachtwoordreset. Zie [Beveiligingsgegevens instellen om een beveiligingssleutel te gebruiken](security-info-setup-security-key.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een beveiligingssleutel.
 
-- **E-mail adres.** Voer het e-mail adres van uw werk of school in om een e-mail te ontvangen voor het opnieuw instellen van wacht woorden. Deze optie is niet beschikbaar voor verificatie in twee stappen. Zie [beveiligings informatie instellen voor het gebruik van e-mail](security-info-setup-email.md)voor stapsgewijze instructies voor het instellen van uw e-mail adres.
+- **E-mailadres.** Voer uw e-mailadres op het werk of de school in om een e-mail te ontvangen voor het opnieuw instellen van het wachtwoord. Deze optie is niet beschikbaar voor verificatie in twee stappen. Zie [Beveiligingsgegevens instellen om e-mail te gebruiken](security-info-setup-email.md)voor stapsgewijze instructies over het instellen van uw e-mail.
 
     >[!Note]
-    >Als sommige van deze opties ontbreken, is het waarschijnlijk dat uw organisatie deze methoden niet toestaat. Als dit het geval is, moet u een beschik bare methode kiezen of contact opnemen met de beheerder voor meer hulp.
+    >Als sommige van deze opties ontbreken, is dit waarschijnlijk omdat uw organisatie deze methoden niet toestaat. Als dit het geval is, moet u een beschikbare methode kiezen of contact opnemen met uw beheerder voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

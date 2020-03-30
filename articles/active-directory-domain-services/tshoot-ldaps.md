@@ -1,6 +1,6 @@
 ---
-title: Problemen met de beveiliging van LDAP in Azure AD Domain Services oplossen | Microsoft Docs
-description: Meer informatie over het oplossen van problemen met secure LDAP (LDAPS) voor een Azure Active Directory Domain Services beheerd domein
+title: Problemen met beveiligde LDAP in Azure AD Domain Services oplossen | Microsoft Documenten
+description: Informatie over het oplossen van problemen met beveiligde LDAP (LDAPS) voor een beheerd Azure Active Directory Domain Services-domein
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,36 +12,36 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132170"
 ---
-# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met de beveiliging van de LDAP-verbinding met een Azure Active Directory Domain Services beheerd domein oplossen
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met beveiligde LDAP-connectiviteit oplossen voor een beheerd Beheerd Azure Directory Domain Services-domein
 
-Toepassingen en services die gebruikmaken van Lightweight Directory Access Protocol (LDAP) om te communiceren met Azure Active Directory Domain Services (Azure AD DS) kunnen worden [geconfigureerd voor het gebruik van secure LDAP](tutorial-configure-ldaps.md). Er moet een geschikt certificaat en de vereiste netwerk poorten zijn geopend voor een goede werking van de beveiliging van LDAP.
+Toepassingen en services die ldap (Lightweight Directory Access Protocol) gebruiken om te communiceren met Azure Active Directory Domain Services (Azure AD DS) kunnen worden [geconfigureerd om veilige LDAP te gebruiken.](tutorial-configure-ldaps.md) Een geschikt certificaat en vereiste netwerkpoorten moeten open staan om een veilige LDAP correct te laten werken.
 
-Dit artikel helpt u bij het oplossen van problemen met beveiligde LDAP-toegang in azure AD DS.
+Met dit artikel u problemen met beveiligde LDAP-toegang in Azure AD DS oplossen.
 
-## <a name="common-connection-issues"></a>Veelvoorkomende verbindings problemen
+## <a name="common-connection-issues"></a>Veelvoorkomende verbindingsproblemen
 
-Raadpleeg de volgende stappen voor probleem oplossing als u problemen ondervindt bij het maken van verbinding met een met Azure AD DS beheerd domein met behulp van secure LDAP. Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met het Azure AD DS beheerde domein:
+Als u problemen ondervindt bij het maken van verbinding met een door Azure AD DS beheerd domein met behulp van beveiligde LDAP, controleert u de volgende stappen voor het oplossen van problemen. Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met het beheerde Azure AD DS-domein:
 
-* De uitgevers keten van het beveiligde LDAP-certificaat moet worden vertrouwd op de client. U kunt de basis certificerings instantie (CA) toevoegen aan het vertrouwde basis certificaat archief op de client om de vertrouwens relatie tot stand te brengen.
-    * Zorg ervoor dat u [het certificaat exporteert en toepast op client computers][client-cert].
-* Controleer of het beveiligde LDAP-certificaat voor uw beheerde domein de DNS-naam in het *onderwerp* of het kenmerk *alternatieve namen voor onderwerp* bevat.
-    * Bekijk de [vereisten voor het beveiligde LDAP-certificaat][certs-prereqs] en maak indien nodig een vervangend certificaat.
-* Controleer of de LDAP-client, zoals *Ldp. exe* , verbinding maakt met het beveiligde LDAP-eind punt met behulp van een DNS-naam, niet op het IP-adres.
-    * Het certificaat dat wordt toegepast op de Azure AD DS Managed Domain bevat niet de IP-adressen van de service, alleen de DNS-namen.
-* Controleer de DNS-naam waarmee de LDAP-client verbinding maakt. Het moet worden omgezet in het open bare IP-adres voor beveiligde LDAP op het door Azure AD DS beheerde domein.
-    * Als de DNS-naam wordt omgezet naar het interne IP-adres, werkt u de DNS-record bij om om te zetten naar het externe IP-adres.
-* Voor externe connectiviteit moet de netwerk beveiligings groep een regel bevatten waarmee het verkeer naar de TCP-poort 636 van Internet wordt toegestaan.
-    * Als u verbinding kunt maken met het Azure AD DS beheerde domein met behulp van beveiligde LDAP van resources die rechtstreeks zijn verbonden met het virtuele netwerk, maar niet met externe verbindingen, moet u [een regel voor de netwerk beveiligings groep maken om beveiligd LDAP-verkeer toe te staan][ldaps-nsg].
+* De emittentketen van het beveiligde LDAP-certificaat moet op de client worden vertrouwd. U de Root-certificeringsinstantie (CA) toevoegen aan het vertrouwde basiscertificaatarchief op de client om de vertrouwensrelatie vast te stellen.
+    * Zorg ervoor dat u [het certificaat exporteert en toepast op clientcomputers.][client-cert]
+* Controleer of het beveiligde LDAP-certificaat voor uw beheerde domein de DNS-naam heeft in het kenmerk *Onderwerp* of het kenmerk *Alternatieve namen onderwerp.*
+    * Controleer de [veilige LDAP-certificaatvereisten][certs-prereqs] en maak indien nodig een vervangend certificaat.
+* Controleer of de LDAP-client, zoals *ldp.exe,* verbinding maakt met het beveiligde LDAP-eindpunt met behulp van een DNS-naam en niet met het IP-adres.
+    * Het certificaat dat is toegepast op het beheerde Azure AD DS-domein bevat niet de IP-adressen van de service, alleen de DNS-namen.
+* Controleer de DNS-naam waartoe de LDAP-client verbinding maakt. Het moet worden opgelost naar het openbare IP-adres voor beveiligde LDAP op het beheerde Azure AD DS-domein.
+    * Als de DNS-naam wordt opgelost naar het interne IP-adres, werkt u de DNS-record bij om het externe IP-adres op te lossen.
+* Voor externe connectiviteit moet de netwerkbeveiligingsgroep een regel bevatten waarmee het verkeer naar TCP-poort 636 vanaf het internet kan worden beveiligd.
+    * Als u verbinding maken met het beheerde Azure AD DS-domein met behulp van beveiligde LDAP van bronnen die rechtstreeks zijn verbonden met het virtuele netwerk, maar niet met externe verbindingen, moet u [een regel voor netwerkbeveiligingmaken om veilig LDAP-verkeer toe te staan.][ldaps-nsg]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds problemen ondervindt, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij het oplossen van problemen.
+Als u nog steeds problemen hebt, [opent u een Azure-ondersteuningsaanvraag][azure-support] voor extra hulp bij het oplossen van problemen.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

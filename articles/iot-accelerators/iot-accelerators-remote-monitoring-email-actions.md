@@ -1,6 +1,6 @@
 ---
-title: E-mail actie binnen externe controle-Azure | Microsoft Docs
-description: In deze hand leiding wordt uitgelegd hoe u een e-mail actie kunt toevoegen aan een nieuwe of bestaande regel.
+title: E-mailactie binnen bewaking op afstand - Azure | Microsoft Documenten
+description: In deze handleiding ziet u hoe u een e-mailactie toevoegt aan een nieuwe of bestaande regel.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -9,169 +9,169 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168359"
 ---
-# <a name="add-an-email-action"></a>Een e-mail actie toevoegen
+# <a name="add-an-email-action"></a>Een e-mailactie toevoegen
 
-Met e-mail acties kunt u ervoor zorgen dat u nooit meldingen mist. U kunt een e-mail actie toevoegen aan een bestaande regel of wanneer u een nieuwe regel maakt.
+E-mailacties zorgen ervoor dat u waarschuwingen nooit mist. U een e-mailactie toevoegen aan een bestaande regel of wanneer u een nieuwe regel maakt.
 
-Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een geïmplementeerd exemplaar van de Accelerator voor externe controle in uw Azure-abonnement nodig.
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u een geïmplementeerd exemplaar van de remote monitoring-oplossingsversneller in uw Azure-abonnement nodig.
 
-Als u een regel wilt maken of wijzigen, moet u een [ **beheerder**zijn of de juiste machtigingen hebben](iot-accelerators-remote-monitoring-rbac.md).
+Als u een regel wilt maken of wijzigen, moet u beheerder zijn [ **Administrator**of over de juiste machtigingen beschikken.](iot-accelerators-remote-monitoring-rbac.md)
 
 ## <a name="edit-an-existing-rule"></a>Een bestaande rol bewerken
 
-Volg deze stappen om een e-mail actie toe te voegen aan een bestaande regel:
+Volg de volgende stappen om een e-mailactie toe te voegen aan een bestaande regel:
 
-1. Navigeer naar uw oplossing voor externe controle.
+1. Navigeer naar uw oplossing voor externe bewaking.
 
-1. Ga in het **dash board**naar de pagina **regels** :
+1. Navigeer in het **dashboard**naar de pagina **Regels:**
 
-    ![Pagina regels](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
+    ![Pagina Regels](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Klik op het selectie vakje naast de bestaande regel die u wilt wijzigen en klik vervolgens bovenaan op **bewerken** . Een Bewerk bare **regel** paneel wordt weer gegeven.
+1. Klik op het selectievakje naast de bestaande regel om te wijzigen en klik bovenaan op **Bewerken.** Er verschijnt een bewerkbaar **regelpaneel.**
 
-1. Schakel in de sectie **actie** de optie **e-mail** in **op aan in**.
+1. Schakel in de sectie **Actie** **e-mail in ingeschakeld** voor **Aan**.
 
-1. De eerste keer dat u een e-mail actie in de oplossings versneller inschakelt, moet u [zich aanmelden bij Outlook](#outlook).
+1. De eerste keer dat u een e-mailactie inschakelt in de oplossingsversneller, moet u [zich aanmelden bij Outlook.](#outlook)
 
-1. Voer een e-mail adres in het vak ontvanger in en druk op **Enter** voor elk e-mail adres dat u wilt toevoegen:
+1. Voer een e-mailadres in het vak geadresseerde in en druk op **de** enter-toets voor elk e-mailadres om toe te voegen:
 
-    ![Adres item](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Adresvermelding](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
-1. Voer een onderwerp in voor het e-mail bericht.
+1. Voer een onderwerp in voor de e-mail.
 
-1. Voer eventuele aanvullende notities voor de e-mail ontvangers in als tekst zonder opmaak. U kunt HTML-opmaak gebruiken als u [de e-mail sjabloon bewerkt](#htmledit).
+1. Voer eventuele aanvullende notities voor de e-mailontvangers in als platte tekst. U HTML-opmaak gebruiken als u [de e-mailsjabloon bewerkt.](#htmledit)
 
-1. Zorg ervoor dat de **regel status** is ingesteld op **ingeschakeld**.
+1. Controleer of de **regelstatus** is ingesteld op **Ingeschakeld**.
 
 1. Klik op **Toepassen**.
 
 ## <a name="create-a-new-rule"></a>Een nieuwe regel maken
 
-Volg deze stappen om een e-mail actie toe te voegen wanneer u een nieuwe regel maakt:
+Volg deze stappen om een e-mailactie toe te voegen wanneer u een nieuwe regel maakt:
 
-1. Navigeer naar uw oplossing voor externe controle.
+1. Navigeer naar uw oplossing voor externe bewaking.
 
-1. Ga in het **dash board**naar de pagina **regels** :
+1. Navigeer in het **dashboard**naar de pagina **Regels:**
 
-    ![Pagina regels](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
+    ![Pagina Regels](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. Volg de stappen in de [sectie een regel maken](iot-accelerators-remote-monitoring-automate.md#create-a-rule). Volg de stappen in de sectie [een geavanceerde regel maken](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) tot het punt waar u een **Ernst niveau**hebt ingesteld. Klik nog niet op **Toep assen** .
+1. Volg de stappen in de [sectie Een regel maken](iot-accelerators-remote-monitoring-automate.md#create-a-rule). De stappen volgen in de [sectie Een geavanceerde regel maken](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) tot het punt waarop u een **ernstniveau instelt.** Klik nog niet op **Toepassen.**
 
-1. Schakel in de sectie **actie** de optie **e-mail** in **op aan in**.
+1. Schakel in de sectie **Actie** **e-mail in ingeschakeld** voor **Aan**.
 
-1. De eerste keer dat u een e-mail actie in de oplossings versneller inschakelt, moet u [zich aanmelden bij Outlook](#outlook).
+1. De eerste keer dat u een e-mailactie inschakelt in de oplossingsversneller, moet u [zich aanmelden bij Outlook.](#outlook)
 
-1. Voer een e-mail adres in het vak ontvanger in en druk op **Enter** voor elk e-mail adres dat u wilt toevoegen:
+1. Voer een e-mailadres in het vak geadresseerde in en druk op **de** enter-toets voor elk e-mailadres om toe te voegen:
 
-    ![Adres item](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
+    ![Adresvermelding](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
-1. Voer een onderwerp in voor het e-mail bericht.
+1. Voer een onderwerp in voor de e-mail.
 
-1. Voer eventuele aanvullende notities voor de e-mail ontvangers in als tekst zonder opmaak. U kunt HTML-opmaak gebruiken als u [de e-mail sjabloon bewerkt](#htmledit).
+1. Voer eventuele aanvullende notities voor de e-mailontvangers in als platte tekst. U HTML-opmaak gebruiken als u [de e-mailsjabloon bewerkt.](#htmledit)
 
-1. Zorg ervoor dat de **regel status** is ingesteld op **ingeschakeld**.
+1. Controleer of de **regelstatus** is ingesteld op **Ingeschakeld**.
 
 1. Klik op **Toepassen**.
 
-Uw regel met een e-mail actie is nu ingeschakeld. Telkens wanneer de actie wordt geactiveerd, wordt er een nieuw e-mail bericht naar de ontvangers verzonden.
+Uw regel met een e-mailactie is nu ingeschakeld. Telkens wanneer de actie wordt geactiveerd, wordt een nieuwe e-mail naar de ontvangers verzonden.
 
-## Aanmelden bij Outlook<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Aanmelden bij Outlook<a name="outlook"></a>
 
-De eerste keer dat u een e-mail actie in uw oplossings versneller inschakelt, moet u zich aanmelden bij Outlook. Met deze actie wordt het e-mail account ingesteld waarmee de e-mail meldingen worden verzonden.
+De eerste keer dat u een e-mailactie inschakelt in uw oplossingsversneller, moet u zich aanmelden bij Outlook. Met deze actie wordt het e-mailaccount ingesteld dat de e-mailmeldingen verzendt.
 
 > [!NOTE]
-> U moet alleen een specifiek Outlook-account maken voor meldingen van de oplossings versnelling en dat account gebruiken wanneer u uw eerste e-mail actie inschakelt.
+> U moet een specifiek Outlook-account maken alleen voor meldingen van oplossingsversnellers en dat account gebruiken wanneer u uw eerste e-mailactie inschakelt.
 
-### <a name="contributor-role-outlook-setup"></a>Outlook-installatie van rol van Inzender
+### <a name="contributor-role-outlook-setup"></a>Outlook-instelling voor inzenderrol
 
-Als iemand in de rol **Inzender** in het abonnement de oplossings versneller heeft geïmplementeerd, is de toepassing niet gemachtigd om e-mail acties in te stellen en te controleren via de webgebruikersinterface.
+Als iemand in de **rol van bijdragers** in het abonnement de oplossingsversneller heeft geïmplementeerd, beschikt de toepassing niet over voldoende machtigingen om e-mailacties in te stellen en te verifiëren via de webgebruikersinterface.
 
-Voordat u begint, moet u een Outlook-account maken dat u kunt gebruiken om e-mail meldingen van uw oplossings versneller te verzenden.
+Maak voordat u begint een Outlook-account om e-mailmeldingen te verzenden vanaf uw oplossingsversneller.
 
-De volgende stappen laten zien hoe u de e-mail acties hand matig kunt instellen en verifiëren:
+In de volgende stappen ziet u hoe u de e-mailacties handmatig instellen en verifiëren:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
+1. Navigeer naar de [Azure-portal](https://portal.azure.com).
 
-1. Navigeer naar de resource groep voor uw oplossings versneller.
+1. Navigeer naar de resourcegroep voor uw oplossingsversneller.
 
-1. Klik op de **office365-connector**:
+1. Klik op de **office365-connector:**
 
     ![API-verbinding](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
-1. Klik op de banner om het autorisatie proces te starten:
+1. Klik op de banner om het autorisatieproces te starten:
 
     ![autoriseren](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. Klik op **autoriseren**. U wordt gevraagd om u aan te melden. Het account waarmee u zich aanmeldt, moet het e-mail adres zijn dat de toepassing gebruikt voor het verzenden van e-mail meldingen:
+1. Klik **op Autoriseren**. Je wordt gevraagd je aan te melden. Het account dat u gebruikt om u aan te melden, moet het e-mailadres zijn dat de toepassing gebruikt om e-mailmeldingen te verzenden:
 
-    ![Knop autoriseren](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
+    ![Knop Autoriseren](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. Klik onderaan op **Opslaan** . Uw autorisatie slaagt als de banner is verdwenen.
+1. Klik onderaan op **Opslaan.** Uw autorisatie zal succesvol zijn als de banner is verdwenen.
 
-1. Als u het e-mail adres wilt wijzigen van waaruit de meldingen worden verzonden, klikt u op **API-verbinding bewerken**.
+1. Als u het e-mailadres wilt wijzigen van waaruit de meldingen worden verzonden, klikt u op **API-verbinding bewerken**.
 
     ![e-mail wijzigen](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
-### <a name="owner-role-outlook-setup"></a>Outlook-installatie van de rol van eigenaar
+### <a name="owner-role-outlook-setup"></a>Outlook-instelling voor eigenaarrol
 
-Als iemand in de rol **eigenaar** van het abonnement de oplossings versneller heeft geïmplementeerd, kan de toepassing controleren of e-mail acties correct zijn ingesteld via de webgebruikersinterface.
+Als iemand in de **eigenaarrol** in het abonnement de oplossingsversneller heeft geïmplementeerd, kan de toepassing controleren of e-mailacties correct zijn ingesteld via de webgebruikersinterface.
 
-Voordat u begint, moet u een Outlook-account maken dat u kunt gebruiken om e-mail meldingen van uw oplossings versneller te verzenden.
+Maak voordat u begint een Outlook-account om e-mailmeldingen te verzenden vanaf uw oplossingsversneller.
 
-Met de volgende stappen kunt u zich aanmelden en e-mail acties instellen:
+Met de volgende stappen u zich aanmelden en e-mailacties instellen:
 
-1. Klik om u aan te melden bij Outlook. U gaat naar de Azure Portal:
+1. Klik hier om u aan te melden bij Outlook. U wordt naar de Azure-portal gebracht:
 
    ![Aanmelden bij Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. Klik op **autoriseren**. U wordt gevraagd om u aan te melden. Het account waarmee u zich aanmeldt, moet het e-mail adres zijn dat de toepassing gebruikt voor het verzenden van e-mail meldingen:
+1. Klik **op Autoriseren**. Je wordt gevraagd je aan te melden. Het account dat u gebruikt om u aan te melden, moet het e-mailadres zijn dat de toepassing gebruikt om e-mailmeldingen te verzenden:
 
-1. Klik op **Opslaan**. Ga terug naar de oplossings versneller en vernieuw de pagina.
+1. Klik op **Opslaan**. Ga terug naar uw oplossingsversneller en vernieuw de pagina.
 
-1. Als u de e-mail melding hebt geconfigureerd, ziet u dit bericht:
+1. Als u de e-mailmelding hebt geconfigureerd, ziet u dit bericht:
 
-   ![Geslaagde aanmelding bij Outlook](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![Succesvol Outlook-aanmelding](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## De HTML-e-mail aanpassen<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>De e-mail-HTML aanpassen<a name="htmledit"></a>
 
-Out-of-the-box biedt de oplossings versneller voor externe controle een eenvoudige HTML-sjabloon voor actie-e-mails. De e-mail sjabloon gebruikt waarden uit de instellingen voor de e-mail actie. Hier volgt een voor beeld van een e-mail bericht:
+De Remote Monitoring-oplossingsversneller biedt een eenvoudige HTML-sjabloon voor actie-e-mails. De e-mailsjabloon gebruikt waarden uit de instellingen voor e-mailactie. Hier is een voorbeeld e-mail:
 
-![voor beeld van e-mail](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
+![voorbeeld van e-mail](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
-De volgende stappen laten zien hoe u de HTML-e-mail sjabloon kunt bewerken. U kunt bijvoorbeeld meer informatie bevatten of aangepaste installatie kopieën toevoegen:
+In de volgende stappen ziet u hoe u de HTML-e-mailsjabloon bewerkt. U bijvoorbeeld meer informatie opnemen of aangepaste afbeeldingen toevoegen:
 
-1. Kloon de Java-of .NET-GitHub-opslag plaats voor externe bewaking:
+1. Kloon de Java- of .NET Remote Monitoring GitHub-repository:
 
-1. Ga naar de locatie van de e-mail sjabloon:
+1. Navigeer naar de locatie van de e-mailsjabloon:
   
     `Dotnet: device-telemetry\ActionsAgent\data\EmailTemplate.html`
   
     `Java device-telemetry/app/resources/data/EmailTemplate.html`
 
-1. U kunt de para meters in deze sjabloon toevoegen of verwijderen om het bericht aan te passen. U kunt indien nodig ook aanroepen toevoegen, verwijderen of vervangen:
+1. U parameters in deze sjabloon toevoegen of verwijderen om het bericht aan te passen. U oproepen ook toevoegen, verwijderen of vervangen als dat nodig is:
 
-    Bijvoorbeeld in de .NET-code: `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Bijvoorbeeld in de .NET-code:`emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Bijvoorbeeld in de Java-code: `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Bijvoorbeeld in de Java-code:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. De para meters in de sjabloon hebben de vorm van `${...}`. Als u een para meter wilt verwijderen, moet u de vereiste regel verwijderen. Als u een para meter wilt toevoegen, voegt u een regel toe met de waarde die u wilt invoegen.
+1. Parameters in de sjabloon `${...}`hebben de vorm van . Als u een parameter wilt verwijderen, verwijdert u de vereiste regel. Als u een parameter wilt toevoegen, voegt u een regel toe met de waarde die u wilt invoegen.
 
-1. Als u afbeeldingen of aangepaste tekst wilt toevoegen, moet u het bestand email template. HTML rechtstreeks bijwerken.
+1. Als u afbeeldingen of aangepaste tekst wilt toevoegen, werkt u het bestand EmailTemplate.HTML rechtstreeks bij.
 
 ## <a name="throttling"></a>Beperking
 
-De oplossings versneller voor externe controle gebruikt Outlook voor het verzenden van e-mail meldingen. Outlook beperkt het aantal e-mails dat wordt verzonden naar [30 e-mails per 1 minuut](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailclients die de e-mail berichten ontvangen, kunnen ook het aantal e-mails dat per minuut wordt ontvangen, beperken. Neem contact op met uw specifieke e-mailclient voor beperkingen. Wanneer u een e-mail melding voor een regel instelt, moet de regel gemiddelde waarden berekenen gedurende een periode van ten minste één minuut, en geen directe waarden gebruiken:
+De oplossingsversneller voor externe bewaking gebruikt Outlook om e-mailmeldingen te verzenden. Outlook beperkt het aantal e-mails dat wordt verzonden tot [30 e-mails per 1 minuut.](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits) E-mailclients die de e-mails ontvangen, kunnen ook het aantal ontvangen e-mails per minuut beperken. Neem contact op met uw specifieke e-mailclient op beperkingen. Wanneer u e-mailmelding instelt voor een regel, moet de regel de gemiddelde waarden over een periode van ten minste één minuut berekenen en geen directe waarden gebruiken:
 
 ![Gemiddelde berekening](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze hand leiding wordt uitgelegd hoe u een e-mail actie kunt toevoegen aan een nieuwe of bestaande regel in een oplossing voor externe controle. De hand leiding heeft ook geleerd hoe u de HTML-code die de bericht indeling definieert, kunt bewerken.
+In deze handleiding ziet u hoe u een e-mailactie toevoegt aan een nieuwe of bestaande regel binnen een oplossing voor externe bewaking. De handleiding liet u ook zien en hoe u de HTML bewerken die de berichtindeling definieert.
 
-De voorgestelde volgende stap is informatie over [het gebruik van waarschuwingen en het oplossen van problemen met apparaten](iot-accelerators-remote-monitoring-maintain.md).
+De voorgestelde volgende stap is om te leren [hoe u waarschuwingen gebruiken en apparaatproblemen oplossen.](iot-accelerators-remote-monitoring-maintain.md)

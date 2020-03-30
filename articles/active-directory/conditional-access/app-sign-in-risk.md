@@ -1,6 +1,6 @@
 ---
-title: Risico detecties gebruiken met voorwaardelijke toegang Azure Active Directory
-description: In deze Quick Start leert u hoe u een beleid voor voorwaardelijke toegang van Azure Active Directory (Azure AD) kunt configureren om aanmeldingen te blok keren op basis van sessie Risico's.
+title: Risicodetecties gebruiken met voorwaardelijke toegang tot Azure Active Directory
+description: In deze snelstart leert u hoe u een Azure Active Directory (Azure AD) conditional access-beleid configureren om aanmeldingen te blokkeren op basis van sessierisico's.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,170 +12,170 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77186617"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Quick Start: toegang blok keren wanneer er een sessie risico wordt gedetecteerd met Azure Active Directory voorwaardelijke toegang  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Snelstart: toegang blokkeren wanneer een sessierisico wordt gedetecteerd met voorwaardelijke toegang tot Azure Active Directory  
 
-Als u uw omgeving wilt beveiligen, wilt u mogelijk verdachte gebruikers blok keren om zich aan te melden. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyseert elke aanmelding en berekent de kans dat een aanmeldings poging niet is uitgevoerd door de rechtmatige eigenaar van een gebruikers account. De kans (laag, gemiddeld, hoog) wordt aangegeven in de vorm van een berekende waarde met de naam [aanmeldings risico niveaus](concept-conditional-access-conditions.md#sign-in-risk). Door de aanmeldings risico voorwaarde in te stellen, kunt u een beleid voor voorwaardelijke toegang configureren om te reageren op specifieke risico niveaus.
+Als u uw omgeving beschermd wilt houden, u verdachte gebruikers blokkeren om zich aan te melden. [Azure Active Directory (Azure AD) Identiteitsbeveiliging](../active-directory-identityprotection.md) analyseert elke aanmelding en berekent de waarschijnlijkheid dat een aanmeldingspoging niet is uitgevoerd door de rechtmatige eigenaar van een gebruikersaccount. De waarschijnlijkheid (laag, gemiddeld, hoog) wordt aangegeven in de vorm van een berekende waarde die [aanmeldingsrisiconiveaus](concept-conditional-access-conditions.md#sign-in-risk)wordt genoemd . Door de aanmeldingsrisicovoorwaarde in te stellen, u een beleid voor voorwaardelijke toegang configureren om te reageren op specifieke aanmeldingsrisiconiveaus.
 
-In deze Quick start ziet u hoe u een [beleid voor voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) kunt configureren dat een aanmelding blokkeert wanneer een geconfigureerd risico niveau voor aanmelden is gedetecteerd.
+In deze snelstart ziet u hoe u een [beleid voor voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) configureert dat een aanmelding blokkeert wanneer een geconfigureerd aanmeldingsrisiconiveau is gedetecteerd.
 
 ![Beleid maken](./media/app-sign-in-risk/1000.png)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van het scenario in deze zelfstudie hebt u het volgende nodig:
 
-- **Toegang tot een Azure AD Premium P2-editie** : Hoewel voorwaardelijke toegang een Azure AD Premium P1-mogelijkheid is, hebt u een P2-editie nodig, omdat het scenario in deze Snelstartgids identiteits beveiliging vereist.
-- **Identiteits beveiliging** : voor het scenario in deze Snelstartgids moet identiteits beveiliging zijn ingeschakeld. Als u niet weet hoe u identiteits beveiliging kunt inschakelen, raadpleegt u [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)in te scha kelen.
-- **Tor** -browser: de [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) is ontworpen om u te helpen uw privacy online te bewaren. Identiteits beveiliging detecteert een aanmelding vanuit een Tor-browser als aanmeldingen vanaf anonieme IP-adressen, die een gemiddeld risico niveau hebben. Zie [Azure Active Directory-risico detectie](../reports-monitoring/concept-risk-events.md)voor meer informatie.  
-- **Een test account met de naam Alain Charon** : als u niet weet hoe u een test account moet maken, raadpleegt u [Cloud gebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Toegang tot een Azure AD Premium P2-editie** - Hoewel voorwaardelijke toegang een Azure AD Premium P1-mogelijkheid is, hebt u een P2-editie nodig omdat het scenario in deze quickstart identiteitsbescherming vereist.
+- **Identiteitsbescherming** - Het scenario in deze quickstart vereist dat identiteitsbescherming wordt ingeschakeld. Zie [Azure Active Directory Identity Protection inschakelen](../identity-protection/overview-identity-protection.md)als u niet weet hoe u identiteitsbeveiliging inschakelen.
+- **Tor Browser** - De [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) is ontworpen om u te helpen uw privacy online te behouden. Identiteitsbeveiliging detecteert een aanmelding vanuit een Tor-browser als aanmeldingen van anonieme IP-adressen, die een gemiddeld risiconiveau hebben. Zie [Azure Active Directory-risicodetecties](../reports-monitoring/concept-risk-events.md)voor meer informatie .  
+- **Een testaccount genaamd Alain Charon** - Als u niet weet hoe u een testaccount moet maken, raadpleegt u [Cloudgebruikers toevoegen.](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)
 
 ## <a name="test-your-sign-in"></a>Uw aanmelding testen
 
-Het doel van deze stap is om ervoor te zorgen dat uw test account toegang heeft tot uw Tenant met behulp van de Tor-browser.
+Het doel van deze stap is ervoor te zorgen dat uw testaccount toegang heeft tot uw tenant via de Tor-browser.
 
-**Uw aanmelding testen:**
+**Ga als bedoeld als het gaat om uw aanmelding te testen:**
 
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als **Alain Charon**.
+1. Meld u aan bij uw [Azure-portal](https://portal.azure.com) als **Alain Charon**.
 1. Meld u af.
 
-## <a name="create-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang maken
+## <a name="create-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang maken
 
-In het scenario in deze Snelstartgids wordt een aanmelding van een Tor-browser gebruikt om een gedetecteerde **aanmeldingen te genereren op basis van een risico detectie voor anonieme IP-adressen** . Het risico niveau van deze risico detectie is gemiddeld. Als u wilt reageren op deze risico detectie, stelt u de risico voorwaarde voor aanmelden in op gemiddeld. In een productie omgeving moet u de risico voorwaarde voor het aanmelden instellen op hoog of op gemiddeld en hoog.
+Het scenario in deze quickstart maakt gebruik van een aanmelding van een Tor-browser om een gedetecteerde **aanmelding van anonieme IP-adressen** risicodetectie te genereren. Het risiconiveau van deze risicodetectie is gemiddeld. Om op deze risicodetectie te reageren, stelt u de aanmeldingsrisicovoorwaarde in op medium. In een productieomgeving moet u de aanmeldingsrisicovoorwaarde instellen op hoog of gemiddeld en hoog.
 
-In deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maakt. Stel in uw beleid het volgende in:
+In deze sectie ziet u hoe u het vereiste beleid voor voorwaardelijke toegang maakt. Stel in uw beleid het als:
 
 | Instelling | Waarde |
 | --- | --- |
 | Gebruikers en groepen | Alain Charon  |
-| Cloud-apps | Alle Cloud-apps |
-| Aanmeldings risico | Middelgroot |
-| Geef | Toegang blok keren |
+| Cloud-apps | Alle cloud-apps |
+| Aanmeldingsrisico | Middelgroot |
+| Verlenen | Toegang blokkeren |
 
 ![Beleid maken](./media/app-sign-in-risk/130.png)
 
-**Het beleid voor voorwaardelijke toegang configureren:**
+**Ga als u uw beleid voor voorwaardelijke toegang configureert:**
 
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder, beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
-1. Klik in het Azure Portal op de linkernavigatiebalk op **Azure Active Directory**.
+1. Meld u aan bij uw [Azure-portal](https://portal.azure.com) als globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
+1. Klik in de Azure-portal op de linkernavigatiebalk op **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
-1. Klik op de pagina **Azure Active Directory** in de sectie **beveiliging** op **voorwaardelijke toegang**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **Beveiliging** op **Voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/app-sign-in-risk/03.png)
 
-1. Klik op de pagina **voorwaardelijke toegang** in de werk balk aan de bovenkant op **toevoegen**.
+1. Klik op de pagina **Voorwaardelijke toegang** op de werkbalk bovenaan op **Toevoegen**.
 
-   ![Naam](./media/app-sign-in-risk/108.png)
+   ![Name](./media/app-sign-in-risk/108.png)
 
-1. Typ op de pagina **Nieuw** , in het tekstvak **naam** , **toegang blok keren voor gemiddeld risico niveau**.
+1. Typ Op de pagina **Nieuw** in het tekstvak **Naam** de **teksttoegang blokkeren voor een gemiddeld risiconiveau**.
 
-   ![Naam](./media/app-sign-in-risk/104.png)
+   ![Name](./media/app-sign-in-risk/104.png)
 
-1. Klik in de sectie **toewijzing** op **gebruikers en groepen**.
+1. Klik **in** de sectie Toewijzing op **Gebruikers en groepen**.
 
    ![Gebruikers en groepen](./media/app-sign-in-risk/06.png)
 
-1. Op de pagina **gebruikers en groepen** :
+1. Op de pagina **Gebruikers en groepen:**
 
    ![Voorwaardelijke toegang](./media/app-sign-in-risk/107.png)
 
-   1. Klik op **gebruikers en groepen selecteren**en selecteer vervolgens **gebruikers en groepen**.
-   1. Klik op **Selecteren**.
-   1. Selecteer op de pagina **selecteren** de optie **Alain Charon**en klik vervolgens op **selecteren**.
-   1. Klik op de pagina **gebruikers en groepen** op **gereed**.
+   1. Klik **op Gebruikers en groepen selecteren**en selecteer Gebruikers en **groepen**.
+   1. Klik **op Selecteren**.
+   1. Selecteer **alain Charon**op de pagina **Selecteren** en klik op **Selecteren**.
+   1. Klik op de pagina **Gebruikers en groepen** op **Gereed**.
 1. Klik op **Cloud-apps**.
 
    ![Cloud-apps](./media/app-sign-in-risk/08.png)
 
-1. Op de pagina **Cloud-apps** :
+1. Op de pagina **Cloud-apps:**
 
    ![Voorwaardelijke toegang](./media/app-sign-in-risk/109.png)
 
-   1. Klik op **alle Cloud-apps**.
+   1. Klik op **Alle cloud-apps**.
    1. Klik op **Gereed**.
-1. Klik op **voor waarden**.
+1. Klik **op Voorwaarden**.
 
-   ![Toegangs beheer](./media/app-sign-in-risk/19.png)
+   ![Besturingselementen voor toegang](./media/app-sign-in-risk/19.png)
 
-1. Op de pagina **voor waarden** :
+1. Op de pagina **Voorwaarden:**
 
-   ![Risico niveau voor aanmelden](./media/app-sign-in-risk/21.png)
+   ![Niveau van aanmeldingsrisico's](./media/app-sign-in-risk/21.png)
 
-   1. Klik op **aanmeldings risico**.
-   1. Als **configureren**, klikt u op **Ja**.
-   1. Selecteer **gemiddeld**als aanmeldings risico niveau.
-   1. Klik op **Selecteren**.
-   1. Klik op **gereed**op de pagina **voor waarden** .
-1. Klik in de sectie **toegangs beheer** op **verlenen**.
+   1. Klik **op Aanmeldingsrisico**.
+   1. Als **configureren**klikt u op **Ja.**
+   1. Selecteer **Gemiddeld**als aanmeldingsrisiconiveau .
+   1. Klik **op Selecteren**.
+   1. Klik **op** de pagina Voorwaarden op **Gereed**.
+1. Klik in de sectie **Toegangsbesturingselementen** op **Verlenen**.
 
-   ![Toegangs beheer](./media/app-sign-in-risk/10.png)
+   ![Besturingselementen voor toegang](./media/app-sign-in-risk/10.png)
 
-1. Op de pagina **Grant** :
+1. Op de **grant** pagina:
 
    ![Voorwaardelijke toegang](./media/app-sign-in-risk/105.png)
 
-   1. Selecteer **toegang blok keren**.
-   1. Klik op **Selecteren**.
-1. Klik in de sectie **beleid inschakelen** op **aan**.
+   1. Selecteer **Bloktoegang**.
+   1. Klik **op Selecteren**.
+1. Klik **in** de sectie Beleid inschakelen op **Op .**
 
    ![Beleid inschakelen](./media/app-sign-in-risk/18.png)
 
-1. Klik op **Create**.
+1. Klik **op Maken**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelding evalueren
 
-Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de functie voor voorwaardelijke toegang **Wat als-beleid** voor het simuleren van een aanmelding van uw test gebruiker. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.  
+Nu u uw beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u het beleid Voor voorwaardelijke toegang **als als het beleid** om een aanmelding van uw testgebruiker te simuleren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.  
 
-Wanneer u het **hulp programma What if-beleid** uitvoert voor dit scenario, moet het **niveau toegang blok keren voor gemiddeld risico** worden vermeld onder het **beleid dat van toepassing is**.
+Wanneer u het **beleidsinstrument wat als** voor dit scenario uitvoert, moet de **toegang tot het blokkeren voor een gemiddeld risiconiveau** worden weergegeven onder **Beleid dat van toepassing is.**
 
 ![Gebruiker](./media/app-sign-in-risk/117.png)
 
-**Het beleid voor voorwaardelijke toegang evalueren:**
+**Ga als een temeer doen met het beleid voor voorwaardelijke toegang:**
 
-1. Klik op de pagina [voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenkant op **What if**.  
+1. Klik op de pagina [Voorwaardelijke toegang - Beleid](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu bovenaan op Wat **als**.  
 
-   ![Wat als](./media/app-sign-in-risk/14.png)
+   ![What If](./media/app-sign-in-risk/14.png)
 
-1. Klik op **gebruiker**, selecteer **Alan Charon** op de pagina **gebruikers** en klik vervolgens op **selecteren**.
+1. Klik **op Gebruiker,** selecteer **Alan Charon** op de pagina **Gebruikers** en klik vervolgens op **Selecteren**.
 
    ![Gebruiker](./media/app-sign-in-risk/116.png)
 
-1. Selecteer **gemiddeld**als **aanmeldings risico**.
+1. Selecteer **Gemiddeld**als **aanmeldingsrisico**.
 
    ![Gebruiker](./media/app-sign-in-risk/119.png)
 
-1. Klik op **What if**.
+1. Klik op **Wat als**.
 
-## <a name="test-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang testen
+## <a name="test-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang testen
 
-In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelding kunt evalueren. Naast een simulatie moet u ook het beleid voor voorwaardelijke toegang testen om er zeker van te zijn dat het werkt zoals verwacht.
+In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelding evalueren. Naast een simulatie moet u ook uw beleid voor voorwaardelijke toegang testen om ervoor te zorgen dat het werkt zoals verwacht.
 
-Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure Portal](https://portal.azure.com) als **Alan Charon** met behulp van de Tor-browser. Uw aanmeldings poging moet worden geblokkeerd door het beleid voor voorwaardelijke toegang.
+Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure-portal](https://portal.azure.com) als **Alan Charon** met behulp van de Tor-browser. Uw aanmeldingspoging moet worden geblokkeerd door uw beleid voor voorwaardelijke toegang.
 
 ![Multi-Factor Authentication](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, verwijdert u de test gebruiker, de Tor-browser en het beleid voor voorwaardelijke toegang:
+Verwijder de testgebruiker, de Tor-browser en het beleid Voorwaardelijke toegang wanneer dit niet meer nodig is:
 
-- Zie [gebruikers uit Azure ad verwijderen](../fundamentals/add-users-azure-active-directory.md#delete-a-user)als u niet weet hoe u een Azure AD-gebruiker verwijdert.
-- Als u uw beleid wilt verwijderen, selecteert u uw beleid en klikt u vervolgens op **verwijderen** op de werk balk snelle toegang.
+- Zie [Gebruikers verwijderen uit Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user)als u niet weet hoe u een Azure AD-gebruiker verwijderen.
+- Als u uw beleid wilt verwijderen, selecteert u uw beleid en klikt u op **Verwijderen** op de werkbalk Snelle toegang.
 
    ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
-- Zie [installatie ongedaan maken](https://tb-manual.torproject.org/uninstalling/)voor instructies voor het verwijderen van de Tor-browser.
+- Zie [Verwijderen voor](https://tb-manual.torproject.org/uninstalling/)instructies voor het verwijderen van de Tor-browser .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Vereisen dat gebruiks voorwaarden worden geaccepteerd](require-tou.md)
-> [MFA vereisen voor specifieke apps](app-based-mfa.md)
+> [Gebruiksvoorwaarden vereisen om geaccepteerd te worden](require-tou.md)
+> [Vereisen MFA voor specifieke apps](app-based-mfa.md)

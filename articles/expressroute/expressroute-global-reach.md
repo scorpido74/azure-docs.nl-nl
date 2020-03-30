@@ -1,6 +1,6 @@
 ---
-title: 'Azure-ExpressRoute: verbinding maken met Microsoft Cloud met behulp van Global Reach'
-description: In dit artikel wordt uitgelegd ExpressRoute globaal bereik.
+title: 'Azure ExpressRoute: verbinding maken met Microsoft Cloud met global reach'
+description: In dit artikel wordt ExpressRoute Global Reach uitgelegd.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: cherylmc
 ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538501"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
-ExpressRoute is een privé- en flexibele manier om uw on-premises netwerken verbinden met Microsoft Cloud. U hebt toegang tot veel micro soft-Cloud Services, zoals Azure, en Office 365 vanuit uw privé Data Center of uw bedrijfs netwerk. Bijvoorbeeld, wellicht u een filiaal in San Francisco met een ExpressRoute-circuit in Silicon Valley en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde stad. Beide filialen kunnen zeer snelle verbindingen met Azure-resources in VS West en UK-Zuid hebben. Echter kunnen geen de filialen uitwisselen van gegevens met elkaar. Met andere woorden, 10.0.1.0/24 die gegevens kan verzenden, 10.0.3.0/24 en 10.0.4.0/24, maar niet aan 10.0.2.0/24.
+ExpressRoute is een privé- en veerkrachtige manier om uw on-premises netwerken aan te sluiten op Microsoft Cloud. U hebt toegang tot veel Microsoft-cloudservices, zoals Azure en Office 365, vanuit uw privédatacenter of uw bedrijfsnetwerk. U bijvoorbeeld een bijkantoor in San Francisco hebben met een ExpressRoute-circuit in Silicon Valley en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde stad. Beide filialen kunnen snelle connectiviteit hebben met Azure-bronnen in het westen van de VS en het verenigd Koninkrijk. De filialen kunnen echter niet rechtstreeks met elkaar gegevens uitwisselen. Met andere woorden, 10.0.1.0/24 kan gegevens verzenden naar 10.0.3.0/24 en 10.0.4.0/24, maar NIET naar 10.0.2.0/24.
 
-![gewijzigd][1]
+![Zonder][1]
 
-Met **ExpressRoute Global Reach**kunt u ExpressRoute-circuits samen koppelen om een particulier netwerk tussen uw on-premises netwerken te maken. In het bovenstaande voorbeeld wordt met de toevoeging van ExpressRoute globaal bereik, kan uw kantoor in San Francisco (10.0.1.0/24) rechtstreeks uitwisselen van gegevens met uw Londen office (10.0.2.0/24) via de bestaande ExpressRoute-circuits en via het wereldwijde netwerk van Microsoft. 
+Met **ExpressRoute Global Reach**u ExpressRoute-circuits met elkaar verbinden om een privénetwerk te maken tussen uw on-premises netwerken. In het bovenstaande voorbeeld, met de toevoeging van ExpressRoute Global Reach, kan uw kantoor in San Francisco (10.0.1.0/24) rechtstreeks gegevens uitwisselen met uw kantoor in Londen (10.0.2.0/24) via de bestaande ExpressRoute-circuits en via het wereldwijde netwerk van Microsoft. 
 
-![met][2]
+![Met][2]
 
-## <a name="use-case"></a>Use-case
-ExpressRoute globaal bereik is ontworpen om een aanvulling vormen op de WAN-implementatie van de serviceprovider en verbinding maken met uw filialen over de hele wereld. Bijvoorbeeld, als uw serviceprovider voornamelijk werkt in de Verenigde Staten en al uw vertakkingen in de VS is gekoppeld, maar de service-provider niet in Japan en Hong Kong werkt, met globaal bereik van ExpressRoute kunt u werken met een lokale service-provider en Microsoft maakt uw vertakkingen er verbinding met de namen in de Verenigde Staten met behulp van ExpressRoute en ons wereldwijde netwerk.
+## <a name="use-case"></a>Gebruiksvoorbeeld
+ExpressRoute Global Reach is ontworpen om de WAN-implementatie van uw serviceprovider aan te vullen en uw filialen over de hele wereld met elkaar te verbinden. Als uw serviceprovider bijvoorbeeld voornamelijk actief is in de Verenigde Staten en al uw vestigingen in de VS heeft gekoppeld, maar de serviceprovider niet actief is in Japan en Hong Kong, u met ExpressRoute Global Reach samenwerken met een lokale serviceprovider en Microsoft zal uw vestigingen daar verbinden met die in de VS via ExpressRoute en ons wereldwijde netwerk.
 
-![use-case][3]
+![use case][3]
 
 ## <a name="availability"></a>Beschikbaarheid 
-ExpressRoute globaal bereik wordt op dat moment ondersteund in de volgende locaties.
+ExpressRoute Global Reach wordt momenteel op de volgende plaatsen ondersteund.
 
 * Australië
 * Canada
@@ -46,15 +46,15 @@ ExpressRoute globaal bereik wordt op dat moment ondersteund in de volgende locat
 * Verenigd Koninkrijk
 * Verenigde Staten
 
-Uw ExpressRoute-circuits moeten worden gemaakt op de [ExpressRoute-peering locaties](expressroute-locations.md) in de bovenstaande landen of regio's. Om ExpressRoute Global Reach te scha kelen tussen [verschillende geopolitieke regio's](expressroute-locations.md), moeten uw circuits een Premium-SKU zijn.
+Uw ExpressRoute-circuits moeten worden gemaakt op de [topeerlocaties van ExpressRoute](expressroute-locations.md) in de bovengenoemde landen of regio.Your ExpressRoute circuits must be created at the ExpressRoute peering locaties in the above countries or region. Om ExpressRoute Global Reach tussen [verschillende geopolitieke regio's](expressroute-locations.md)mogelijk te maken, moeten uw circuits Premium SKU zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 1. [Meer informatie over ExpressRoute Global Reach](expressroute-faqs.md)
-2. [ExpressRoute inschakelen Global Reach](expressroute-howto-set-global-reach.md)
-3. [ExpressRoute-circuit koppelen aan een virtueel Azure-netwerk](expressroute-howto-linkvnet-arm.md)
+2. [ExpressRoute Global Reach inschakelen](expressroute-howto-set-global-reach.md)
+3. [ExpressRoute-circuit koppelen aan virtueel Azure-netwerk](expressroute-howto-linkvnet-arm.md)
 
 
 <!--Image References-->
 [1]: ./media/expressroute-global-reach/1.png "diagram zonder globaal bereik"
-[2]: ./media/expressroute-global-reach/2.png "diagram met wereld wijd bereik"
-[3]: ./media/expressroute-global-reach/3.png "gebruik van wereld wijd bereik"
+[2]: ./media/expressroute-global-reach/2.png "diagram met globaal bereik"
+[3]: ./media/expressroute-global-reach/3.png "use case van wereldwijd bereik"

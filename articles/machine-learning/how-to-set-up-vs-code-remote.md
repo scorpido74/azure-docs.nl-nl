@@ -1,7 +1,7 @@
 ---
-title: 'Interactieve fout opsporing: VS code & ML reken instanties'
+title: 'Interactieve foutopsporing: VS-code & ML-rekeninstanties'
 titleSuffix: Azure Machine Learning
-description: U kunt met behulp van Azure Machine Learning uw code op een externe wijze met de code in-en uitzetten.
+description: Stel VS Code Remote in om uw code interactief te debuggen met Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,37 +10,37 @@ ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
 ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77169755"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met externe versus code
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Foutopsporing interactief op een Azure Machine Learning Compute Instance met VS Code Remote
 
-In dit artikel leert u hoe u de externe Visual Studio code kunt instellen op een Azure Machine Learning Compute-exemplaar, zodat u uw code op een andere manier op een andere manier kan **debuggen** vanuit VS code. 
+In dit artikel leert u hoe u Visual Studio Code Remote instelt op een Azure Machine Learning Compute Instance, zodat u uw code interactief **debuggen** vanuit VS-code. 
 
-+ Een [Azure machine learning Compute-exemplaar](concept-compute-instance.md) is een volledig beheerd werk station in de Cloud voor gegevens wetenschappers en biedt beheer-en Enter prise-gereedheids mogelijkheden voor IT-beheerders. 
++ Een [Azure Machine Learning Compute Instance](concept-compute-instance.md) is een volledig beheerd cloudgebaseerd werkstation voor gegevenswetenschappers en biedt beheer- en bedrijfsgereedheidsmogelijkheden voor IT-beheerders. 
 
 
-+ [Visual Studio code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Met ontwikkeling kunt u een container, een externe computer of het Windows-subsysteem voor Linux (WSL) gebruiken als een ontwikkel omgeving met volledige functionaliteit. 
++ [Visual Studio-code op afstand](https://code.visualstudio.com/docs/remote/remote-overview) Met ontwikkeling u een container, externe machine of het Windows-subsysteem voor Linux (WSL) gebruiken als een volledige ontwikkelomgeving. 
 
 ## <a name="prerequisite"></a>Vereiste  
 
-Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) als deze nog niet aanwezig is. 
+Op Windows-platforms moet u [een SSH-client met OpenSSH-compatibele SSH installeren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) als deze nog niet aanwezig is. 
 
 > [!Note]
-> PuTTy wordt niet ondersteund in Windows omdat de SSH-opdracht zich in het pad moet bevinden. 
+> PuTTY wordt niet ondersteund op Windows, omdat de ssh-opdracht op het pad moet zijn. 
 
-## <a name="get-ip-and-ssh-port"></a>IP-en SSH-poort ophalen 
+## <a name="get-ip-and-ssh-port"></a>Ip- en SSH-poort 
 
-1. Ga naar de Azure Machine Learning Studio op https://ml.azure.com/.
+1. Ga naar de Azure https://ml.azure.com/Machine Learning-studio op .
 
-2. Selecteer uw [werk ruimte](concept-workspace.md).
-1. Klik op het tabblad **Compute instances** .
-1. Klik in de kolom **toepassings-URI** op de **SSH** -koppeling van het reken exemplaar dat u wilt gebruiken als een externe compute. 
-1. Noteer het IP-adres en de SSH-poort in het dialoog venster. 
-1. Sla uw persoonlijke sleutel op in de map ~/.SSH/op de lokale computer. Open bijvoorbeeld een editor voor een nieuw bestand en plak de sleutel in: 
+2. Selecteer uw [werkruimte](concept-workspace.md).
+1. Klik op het tabblad **Rekeninstanties.**
+1. Klik in de kolom **ToepassingsURI** op de **SSH-koppeling** van de rekeninstantie die u als externe compute wilt gebruiken. 
+1. Neem in het dialoogvenster nota van het IP-adres en de SSH-poort. 
+1. Sla uw privésleutel op in de map ~/.ssh/ op uw lokale computer; Open bijvoorbeeld een editor voor een nieuw bestand en plak de sleutel in: 
 
    **Linux**: 
    ```sh
@@ -52,7 +52,7 @@ Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren]
    notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa 
    ```
 
-   De persoonlijke sleutel ziet er ongeveer als volgt uit:
+   De private key ziet er een beetje als volgt uit:
    ```
    -----BEGIN RSA PRIVATE KEY----- 
 
@@ -63,14 +63,14 @@ Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren]
    -----END RSA PRIVATE KEY----- 
    ```
 
-1. Wijzig de machtigingen voor het bestand om er zeker van te zijn dat alleen u het bestand kunt lezen.  
+1. Wijzig machtigingen in het bestand om ervoor te zorgen dat alleen u het bestand lezen.  
    ```sh
    chmod 600 ~/.ssh/id_azmlcitest_rsa   
    ```
 
-## <a name="add-instance-as-a-host"></a>Exemplaar als host toevoegen 
+## <a name="add-instance-as-a-host"></a>Instantie toevoegen als host 
 
-Open het bestand `~/.ssh/config` (Linux) of `C:\Users<username>.ssh\config` (Windows) in een editor en voeg een nieuwe vermelding toe die er ongeveer als volgt uitziet:
+Open het `~/.ssh/config` bestand (Linux) of `C:\Users<username>.ssh\config` (Windows) in een editor en voeg een nieuw item toe dat vergelijkbaar is met dit:
 
 ```
 Host azmlci1 
@@ -84,34 +84,34 @@ Host azmlci1
     IdentityFile ~/.ssh/id_azmlcitest_rsa   
 ```
 
-Hier vindt u enkele details over de velden: 
+Hier enkele details over de velden: 
 
 |Veld|Beschrijving|
 |----|---------|
-|Host|Een wille keurige steno gebruiken voor het reken exemplaar |
-|Hostnaam|Dit is het IP-adres van het reken exemplaar |
-|Poort|Dit is de poort die wordt weer gegeven in het bovenstaande SSH-dialoog venster |
-|Gebruiker|Dit moet worden `azureuser` |
-|IdentityFile|Moet verwijzen naar het bestand waarin u de persoonlijke sleutel hebt opgeslagen |
+|Host|Gebruik wat steno u wilt voor de compute-instantie |
+|HostName|Dit is het IP-adres van de rekeninstantie |
+|Poort|Dit is de poort die wordt weergegeven in het bovenstaande SSH-dialoogvenster |
+|Gebruiker|Dit moet `azureuser` |
+|Identiteitsbestand|Moet naar het bestand wijzen waar u de privésleutel hebt opgeslagen |
 
-Nu moet u uw reken exemplaar SSHen met behulp van de steno die u hierboven hebt gebruikt, `ssh azmlci1`. 
+Nu moet je in staat zijn om ssh naar uw `ssh azmlci1`rekeninstantie met behulp van de steno die u hierboven gebruikt, . 
 
-## <a name="connect-vs-code-to-the-instance"></a>VERSUS code verbinden met het exemplaar 
+## <a name="connect-vs-code-to-the-instance"></a>VS-code verbinden met de instantie 
 
-1. [Installeer Visual Studio code](https://code.visualstudio.com/).
+1. [Visual Studio-code installeren](https://code.visualstudio.com/).
 
-1. [Installeer de externe SSH-extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
+1. [Installeer de Remote SSH-extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh). 
 
-1. Klik op het pictogram extern-SSH aan de linkerkant om uw SSH-configuraties weer te geven.
+1. Klik op het pictogram Remote-SSH aan de linkerkant om uw SSH-configuraties weer te geven.
 
-1. Klik met de rechter muisknop op de SSH-hostconfiguratie die u zojuist hebt gemaakt.
+1. Klik met de rechtermuisknop op de SSH-hostconfiguratie die u zojuist hebt gemaakt.
 
-1. Selecteer **verbinding maken met host in het huidige venster**. 
+1. Selecteer **Verbinding maken met host in huidig venster**. 
 
-Vanaf hier kunt u zich helemaal op het reken proces bevinden en nu bewerken, fouten opsporen, Git gebruiken, uitbrei dingen, enzovoort, net als bij uw lokale Visual Studio-code. 
+Vanaf nu werk je volledig aan de compute instance en kun je nu bewerken, debuggen, git gebruiken, extensies gebruiken, enz. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u Visual Studio code Remote hebt ingesteld, kunt u een reken instantie gebruiken als externe Compute van Visual Studio code om uw code interactief te debuggen. 
+Nu u Visual Studio Code Remote hebt ingesteld, u een rekeninstantie gebruiken als externe compute van Visual Studio Code om uw code interactief te debuggen. 
 
-[Zelf studie: uw eerste ml-model trainen](tutorial-1st-experiment-sdk-train.md) laat zien hoe u een reken instantie met een geïntegreerde notebook kunt gebruiken.
+[Zelfstudie: Train uw eerste ML-model](tutorial-1st-experiment-sdk-train.md) laat zien hoe u een rekeninstantie gebruiken met een geïntegreerd notitieblok.

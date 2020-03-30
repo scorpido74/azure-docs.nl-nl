@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-beleid instellen of bewerken | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u Azure API Management-beleid instelt of bewerkt.
+title: Azure API-beheerbeleid instellen of bewerken | Microsoft Documenten
+description: In dit onderwerp wordt uitgelegd hoe u Azure API Management-beleidsregels instelt of bewerkt.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70071705"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-beleid instellen of bewerken
 
-De beleids definitie is een XML-document dat een reeks van binnenkomende en uitgaande instructies beschrijft. De XML kan rechtstreeks worden bewerkt in het definitie venster. U kunt ook een vooraf gedefinieerd beleid selecteren in de lijst die aan de rechter kant van het venster beleid is opgegeven. De instructies die van toepassing zijn op het huidige bereik, worden ingeschakeld en gemarkeerd. Als u op een ingeschakelde instructie klikt, wordt de juiste XML toegevoegd aan de locatie van de cursor in de definitie weergave. 
+De beleidsdefinitie is een XML-document dat een reeks inkomende en uitgaande instructies beschrijft. De XML kan rechtstreeks in het definitievenster worden bewerkt. U ook een vooraf gedefinieerd beleid selecteren in de lijst die rechts van het beleidsvenster wordt weergegeven. De instructies die van toepassing zijn op het huidige bereik worden ingeschakeld en gemarkeerd. Als u op een ingeschakelde instructie klikt, wordt de juiste XML toegevoegd op de locatie van de cursor in de definitieweergave. 
 
-Zie [beleid in Azure API Management](api-management-howto-policies.md)voor gedetailleerde informatie over beleid.
+Zie [Beleid in Azure API Management](api-management-howto-policies.md)voor meer informatie over beleidsregels.
 
-## <a name="set-or-edit-a-policy"></a>Beleid instellen of bewerken
+## <a name="set-or-edit-a-policy"></a>Een beleid instellen of bewerken
 
 Voer de volgende stappen uit om een beleid in te stellen of te bewerken:
 
-1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 2. Blader naar de APIM-instantie.
 3. Klik op het tabblad **API's**.
 
@@ -37,9 +37,9 @@ Voer de volgende stappen uit om een beleid in te stellen of te bewerken:
 
 4. Selecteer een van de API's die u eerder hebt geïmporteerd.
 5. Selecteer het tabblad **Ontwerpen**.
-6. Selecteer een bewerking waarop u het beleid wilt Toep assen. Als u het beleid wilt Toep assen op alle bewerkingen, selecteert u **alle bewerkingen**.
-7. Selecteer het **</>** pictogram (code-editor) in de sectie **binnenkomende verwerking** of **uitgaande verwerking** .
-8. Plak de gewenste beleids code in een van de juiste blokken.
+6. Selecteer een bewerking waarop u het beleid wilt toepassen. Als u het beleid op alle bewerkingen wilt toepassen, selecteert u **Alle bewerkingen**.
+7. Selecteer **</>** het pictogram (codeeditor) in de sectie **Inkomende verwerking** of **Uitgaande verwerking.**
+8. Plak de gewenste beleidscode in een van de juiste blokken.
 
     ```XML
     <policies>
@@ -60,80 +60,80 @@ Voer de volgende stappen uit om een beleid in te stellen of te bewerken:
  
 ## <a name="configure-scope"></a>Bereik configureren
 
-Beleids regels kunnen globaal of op het bereik van een product, API of bewerking worden geconfigureerd. Als u een beleid wilt configureren, moet u eerst het bereik selecteren waarop het beleid van toepassing moet zijn.
+Beleidsregels kunnen wereldwijd of binnen het bereik van een product, API of bewerking worden geconfigureerd. Als u wilt beginnen met het configureren van een beleid, moet u eerst het bereik selecteren waarop het beleid moet worden toegepast.
 
-Beleids bereiken worden in de volgende volg orde geëvalueerd:
+Beleidsscopes worden in de volgende volgorde geëvalueerd:
 
-1. Globaal bereik
-2. Product bereik
+1. Wereldwijde scope
+2. Productbereik
 3. API-bereik
-4. Bewerkings bereik
+4. Werkingsgebied
 
-De instructies binnen het beleid worden geëvalueerd op basis van de plaatsing `base` van het element, indien aanwezig. Globaal beleid heeft geen bovenliggend beleid en gebruikt het `<base>` element hierin geen effect.
+De verklaringen binnen beleid worden geëvalueerd `base` op basis van de plaatsing van het element, als het aanwezig is. Globaal beleid heeft geen bovenliggend `<base>` beleid en het gebruik van het element daarin heeft geen effect.
 
-Als u het beleid in het huidige bereik in de beleids editor wilt zien, klikt u op **effectief beleid opnieuw berekenen voor geselecteerd bereik**.
+Als u het beleid in het huidige bereik in de beleidseditor wilt bekijken, klikt u op **Effectief beleid voor geselecteerde scope opnieuw berekenen**.
 
-### <a name="global-scope"></a>Globaal bereik
+### <a name="global-scope"></a>Wereldwijde scope
 
-Het globale bereik is geconfigureerd voor **alle api's** in uw APIM-exemplaar.
+Globale scope is geconfigureerd voor **alle API's** in uw APIM-exemplaar.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer naar uw APIM-exemplaar.
-2. Klik op **alle api's**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en navigeer naar uw APIM-exemplaar.
+2. Klik op **Alle API's**.
 
-    ![Globaal bereik](./media/api-management-howto-policies/global-scope.png)
+    ![Wereldwijde scope](./media/api-management-howto-policies/global-scope.png)
 
-3. Klik op het pictogram drie hoek.
+3. Klik op het driehoekspictogram.
 4. Selecteer **Code-editor**.
-5. Beleids regels toevoegen of bewerken.
+5. Beleid toevoegen of bewerken.
 6. Klik op **Opslaan**. 
 
-    De wijzigingen worden onmiddellijk door gegeven aan de API Management Gateway.
+    De wijzigingen worden onmiddellijk doorgevoerd naar de API Management-gateway.
 
-### <a name="product-scope"></a>Product bereik
+### <a name="product-scope"></a>Productbereik
 
-Het product bereik is geconfigureerd voor het geselecteerde product.
+De productscope is geconfigureerd voor het geselecteerde product.
 
-1. Klik op **producten**.
+1. Klik op **Producten**.
 
-    ![Product bereik](./media/api-management-howto-policies/product-scope.png)
+    ![Productbereik](./media/api-management-howto-policies/product-scope.png)
 
-2. Selecteer het product waarvoor u beleids regels wilt Toep assen.
-3. Klik op **beleids regels**.
-4. Beleids regels toevoegen of bewerken.
+2. Selecteer het product waarop u beleid wilt toepassen.
+3. Klik **op Beleid**.
+4. Beleid toevoegen of bewerken.
 5. Klik op **Opslaan**. 
 
 ### <a name="api-scope"></a>API-bereik
 
-Het API-bereik is geconfigureerd voor **alle bewerkingen** van de geselecteerde API.
+API-scope is geconfigureerd voor **alle bewerkingen** van de geselecteerde API.
 
-1. Selecteer de **API** waarop u beleids regels wilt Toep assen.
+1. Selecteer de **API** waarop u beleid wilt toepassen.
 
     ![API-bereik](./media/api-management-howto-policies/api-scope.png)
 
 2. Selecteer **Alle bewerkingen**
-3. Klik op het pictogram drie hoek.
+3. Klik op het driehoekspictogram.
 4. Selecteer **Code-editor**.
-5. Beleids regels toevoegen of bewerken.
+5. Beleid toevoegen of bewerken.
 6. Klik op **Opslaan**. 
 
-### <a name="operation-scope"></a>Bewerkings bereik 
+### <a name="operation-scope"></a>Werkingsgebied 
 
-Het bewerkings bereik is geconfigureerd voor de geselecteerde bewerking.
+Het bereik van de bewerking is geconfigureerd voor de geselecteerde bewerking.
 
 1. Selecteer een **API**.
-2. Selecteer de bewerking waarvoor u beleid wilt Toep assen.
+2. Selecteer de bewerking waarop u beleid wilt toepassen.
 
-    ![Bewerkings bereik](./media/api-management-howto-policies/operation-scope.png)
+    ![Werkingsgebied](./media/api-management-howto-policies/operation-scope.png)
 
-3. Klik op het pictogram drie hoek.
+3. Klik op het driehoekspictogram.
 4. Selecteer **Code-editor**.
-5. Beleids regels toevoegen of bewerken.
+5. Beleid toevoegen of bewerken.
 6. Klik op **Opslaan**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende Verwante onderwerpen:
+Zie de volgende gerelateerde onderwerpen:
 
-+ [Api's transformeren](transform-api.md)
-+ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [API's transformeren](transform-api.md)
++ [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
++ [Beleidsvoorbeelden](policy-samples.md)

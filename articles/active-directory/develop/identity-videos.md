@@ -1,6 +1,6 @@
 ---
-title: Video's over micro soft Identity-platform | Azure
-description: Een lijst met Video's over het micro soft-identiteits platform
+title: Video's van microsoft-identiteitsplatform | Azure
+description: Een lijst met video's over het Microsoft-identiteitsplatform
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085189"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft Identity Platform-video's
 
-Meer informatie over het micro soft-identiteits platform en de micro soft-verificatie bibliotheken (MSAL). Ze zijn meestal 1-2 minuten lang.
+Meer informatie over het Microsoft-identiteitsplatform en de Microsoft Authentication-bibliotheken (MSAL). Ze zijn meestal 1-2 minuten lang.
 
-## <a name="microsoft-identity-platform-basics"></a>Basis beginselen van micro soft Identity platform
+## <a name="microsoft-identity-platform-basics"></a>Basisbeginselen van het Microsoft-identiteitsplatform
 
-**Meer informatie over de basis beginselen van het micro soft Identity-platform**
+**Meer informatie over basisconcepten van microsoft-identiteitsplatformen**
 
 :::row:::
     :::column:::
-        Overzicht van micro soft Identity platform
+        Overzicht van microsoft-identiteitsplatform
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -47,7 +47,7 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        Hoe MSAL verificatie eenvoudiger maakt
+        Hoe MSAL authenticatie eenvoudiger maakt
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -55,13 +55,13 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
 :::row-end:::
 :::row:::
     :::column:::
-        Uitleg van scopes
+        Scopes uitgelegd
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        Wat zijn makelaars?
+        Wat zijn makelaars
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -69,13 +69,13 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
 :::row-end:::
 :::row:::
     :::column:::
-        Wat doen omleidings-Uri's?
+        Wat omleiding URI's doen
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        Door tenants verklaard
+        Huurders uitgelegd
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -83,13 +83,13 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
 :::row-end:::
 :::row:::
     :::column:::
-        De rol van Azure AD
+        Rol van Azure AD
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
     :::column:::
-        De rol van Azure AD-App-objecten
+        Rol van Azure AD-app-objecten
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
@@ -97,32 +97,32 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
 :::row-end:::
 :::row:::
     :::column:::
-        Verschillen tussen organisatie en persoonlijk Microsoft-account
+        Organisatorische en persoonlijke verschillen in Microsoft-account
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        Verschillen in beveiligd-wachtwoord verificatie en web-apps
+        SPA en web app verschillen
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>Migreren van v 1.0 naar v 2.0
+## <a name="migrate-from-v10-to-v20"></a>Migreren van v1.0 naar v2.0
 
-**Meer informatie over het migreren naar de nieuwste versie van het micro soft Identity-platform**
+**Meer informatie over migreren naar de nieuwste versie van het Microsoft-identiteitsplatform**
 
 :::row:::
     :::column:::
-        Eind punten en de voor delen van overstappen op v 2.0
+        Eindpunten en de voordelen van de overstap naar v2.0
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Uw ADAL-code base migreren naar MSAL
+        Uw ADAL-codebase migreren naar MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -136,7 +136,7 @@ Meer informatie over het micro soft-identiteits platform en de micro soft-verifi
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Voor delen van MSAL via ADAL
+        Voordelen van MSAL ten opzichte van ADAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]

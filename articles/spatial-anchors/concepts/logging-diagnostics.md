@@ -1,6 +1,6 @@
 ---
 title: Logboekregistratie en diagnostische gegevens
-description: Uitgebreide uitleg over het genereren en ophalen van logboek registratie en diagnostische gegevens in ruimtelijke ankers van Azure.
+description: Uitgebreide uitleg over het genereren en ophalen van logboekregistratie en diagnostische gegevens in Azure Spatial Anchors.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,21 +9,21 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270130"
 ---
-# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Logboek registratie en diagnose in ruimtelijke beankeringen van Azure
+# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Logboekregistratie en diagnostische gegevens in Azure Spatial Anchors
 
-Ruimtelijke ankers van Azure bieden een standaard logboek registratie mechanisme dat nuttig is voor het ontwikkelen van apps. De logboek registratie modus ruimtelijk ankers is handig als u meer informatie nodig hebt voor fout opsporing. Met logboek registratie van diagnostische gegevens worden installatie kopieën van de omgeving opgeslagen.
+Azure Spatial Anchors biedt een standaard registratiemechanisme dat handig is voor app-ontwikkeling. De diagnostische logboekmodus Ruimtelijke Ankers is handig wanneer u meer informatie nodig hebt voor foutopsporing. Diagnostische logboekregistratie slaat afbeeldingen van de omgeving op.
 
-## <a name="standard-logging"></a>Standaard logboek registratie
-In de spatiale-ankers API kunt u zich abonneren op het logboek registratie mechanisme om nuttige logboeken te krijgen voor de ontwikkeling en fout opsporing van toepassingen. De standaard logboek registratie-Api's slaan geen afbeeldingen van de omgeving op de schijf van het apparaat op. De SDK biedt deze logboeken als gebeurtenis-Call Backs. U kunt deze logboeken integreren in het logboek registratie mechanisme van de toepassing.
+## <a name="standard-logging"></a>Standaardlogboekregistratie
+In de API Voor ruimtelijke ankers u zich abonneren op het logboekregistratiemechanisme om nuttige logboeken te krijgen voor het ontwikkelen en debuggen van toepassingen. De standaard logging API's slaan geen afbeeldingen van de omgeving op de apparaatschijf op. De SDK biedt deze logboeken als gebeurteniscallbacks. Het is aan jou om deze logboeken te integreren in het loggingmechanisme van de toepassing.
 
-### <a name="configuration-of-log-messages"></a>Configuratie van logboek berichten
-Er zijn twee retour aanroepen die van belang zijn voor de gebruiker. In het volgende voor beeld ziet u hoe u de sessie kunt configureren.
+### <a name="configuration-of-log-messages"></a>Configuratie van logboekberichten
+Er zijn twee callbacks van belang voor de gebruiker. In het volgende voorbeeld ziet u hoe u de sessie configureert.
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
@@ -40,25 +40,25 @@ Er zijn twee retour aanroepen die van belang zijn voor de gebruiker. In het volg
 
 ### <a name="events-and-properties"></a>Gebeurtenissen en eigenschappen
 
-Deze gebeurtenis-Call backs worden geleverd om logboeken en fouten uit de sessie te verwerken:
+Deze callbacks voor gebeurtenissen worden verstrekt om logboeken en fouten uit de sessie te verwerken:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Hiermee geeft u het detail niveau op voor de gebeurtenissen die moeten worden ontvangen uit de runtime.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): biedt standaard logboek gebeurtenissen voor fout opsporing.
-- [Fout](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): bevat logboek gebeurtenissen die in de runtime worden beschouwd als fouten.
+- [LogLevel:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)hiermee geeft u het detailniveau op dat de gebeurtenissen van de runtime moeten ontvangen.
+- [OnLogDebug:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)Biedt standaard foutopsporingslogboekgebeurtenissen.
+- [Fout:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)geeft logboekgebeurtenissen op die door de runtime als fouten worden beschouwt.
 
-## <a name="diagnostics-logging"></a>Logboek registratie van diagnostische gegevens
+## <a name="diagnostics-logging"></a>Logboekregistratie voor diagnostiek
 
-Naast de standaard modus van voor logboek registratie, heeft ruimtelijke ankers ook een diagnostische modus. In de diagnostische modus worden installatie kopieën van de omgeving vastgelegd en op de schijf vastgelegd. U kunt deze modus gebruiken om bepaalde soorten problemen op te lossen, zoals het niet zoals verwacht een anker te vinden. Schakel logboek registratie van diagnostische gegevens alleen in om een specifiek probleem te reproduceren. Schakel deze vervolgens uit. Schakel diagnostische gegevens niet in wanneer u uw apps normaal uitvoert.
+Naast de standaard modus van de werking voor logging, Spatial Anchors heeft ook een diagnostische modus. De diagnostische modus legt afbeeldingen van de omgeving vast en registreert ze op de schijf. U deze modus gebruiken om bepaalde soorten problemen te debuggen, zoals het niet voorspelbaar vinden van een anker. Schakel diagnostische logboekregistratie alleen in om een specifiek probleem te reproduceren. Schakel het dan uit. Schakel geen diagnose in wanneer u uw apps normaal uitvoert.
 
-Tijdens een ondersteunings interactie met micro soft kan een micro soft-vertegenwoordiger vragen of u een diagnostische bundel moet indienen voor verder onderzoek. In dit geval kunt u ervoor kiezen om diagnostische gegevens in te scha kelen en het probleem te reproduceren zodat u de diagnostische bundel kunt indienen.
+Tijdens een ondersteuningsinteractie met Microsoft kan een Microsoft-vertegenwoordiger vragen of u bereid bent een diagnostische bundel in te dienen voor verder onderzoek. In dit geval u besluiten om diagnostische gegevens in te schakelen en het probleem te reproduceren, zodat u de diagnostische bundel indienen.
 
-Als u een diagnostische logboek naar micro soft verzendt zonder voorafgaande bevestiging van een micro soft-vertegenwoordiger, wordt de inzending niet beantwoord.
+Als u een diagnoselogboek bij Microsoft indient zonder voorafgaande bevestiging van een Microsoft-vertegenwoordiger, blijft de indiening onbeantwoord.
 
-In de volgende secties ziet u hoe u de diagnostische modus inschakelt en hoe u Diagnostische logboeken naar micro soft verzendt.
+In de volgende secties wordt uitgelegd hoe u de diagnostische modus inschakelt en hoe u diagnostische logboeken bij Microsoft indienen.
 
 ### <a name="enable-diagnostics-logging"></a>Diagnostische logboekregistratie inschakelen
 
-Wanneer u een sessie voor diagnostische logboek registratie inschakelt, hebben alle bewerkingen in de sessie corresponderende diagnostische logboek registratie in het lokale bestands systeem. Tijdens het vastleggen worden installatie kopieën van de omgeving op de schijf opgeslagen.
+Wanneer u een sessie inschakelt voor het registreren van diagnostiek, hebben alle bewerkingen in de sessie de bijbehorende diagnostische logboekregistratie in het lokale bestandssysteem. Tijdens het loggen worden afbeeldingen van de omgeving opgeslagen op de schijf.
 
 ```csharp
 private void ConfigureSession()
@@ -86,9 +86,9 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submit-the-diagnostics-bundle"></a>De diagnostische bundel verzenden
+### <a name="submit-the-diagnostics-bundle"></a>De diagnosebundel indienen
 
-Het volgende code fragment laat zien hoe u een diagnostische bundel naar micro soft verzendt. Deze bundel bevat installatie kopieën van de omgeving die is vastgelegd door de sessie nadat u Diagnostische gegevens hebt ingeschakeld.
+In het volgende codefragment ziet u hoe u een diagnostische bundel indient bij Microsoft. Deze bundel bevat afbeeldingen van de omgeving die door de sessie is vastgelegd nadat u diagnose hebt ingeschakeld.
 
 ```csharp
 // method to handle the diagnostics bundle submission
@@ -104,9 +104,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="parts-of-a-diagnostics-bundle"></a>Onderdelen van een diagnose bundel
-De diagnostische bundel kan de volgende informatie bevatten:
+### <a name="parts-of-a-diagnostics-bundle"></a>Delen van een diagnosebundel
+De diagnostische bundel bevat mogelijk de volgende informatie:
 
-- **Keyframes**: installatie kopieën van de omgeving die tijdens de sessie is vastgelegd terwijl diagnostische gegevens zijn ingeschakeld.
-- **Logboeken**: logboek gebeurtenissen vastgelegd door de runtime.
-- **Meta gegevens van sessie**: meta gegevens die de sessie identificeren.
+- **Hoofdframeafbeeldingen**: Afbeeldingen van de omgeving die tijdens de sessie zijn vastgelegd terwijl de diagnose is ingeschakeld.
+- **Logboeken**: Logboekgebeurtenissen die zijn geregistreerd door de runtime.
+- **Metagegevens van de sessie:** metagegevens die de sessie identificeren.

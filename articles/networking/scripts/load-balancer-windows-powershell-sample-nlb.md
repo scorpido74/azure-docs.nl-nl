@@ -1,6 +1,6 @@
 ---
-title: Taak verdeling van verkeer naar Vm's voor HA-Azure PowerShell
-description: "Azure PowerShell-voorbeeld script: taak verdeling verkeer naar Vm's voor hoge Beschik baarheid"
+title: Load balance verkeer naar VM's voor HA - Azure PowerShell
+description: Azure PowerShell Script-voorbeeld - Load balance-verkeer naar VM's voor hoge beschikbaarheid
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
 ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74067072"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid
 
-Met dit script voorbeeld maakt u alles wat u nodig hebt om meerdere virtuele Windows-machines uit te voeren, geconfigureerd in een configuratie met hoge Beschik baarheid en taak verdeling. Nadat het script is uitgevoerd, beschikt u over drie virtuele machines, die gekoppeld zijn aan een Azure-beschikbaarheidsset en toegankelijk zijn via een Azure Load Balancer.
+Dit scriptvoorbeeld maakt alles wat nodig is om verschillende Virtuele Windows-machines uit te voeren die zijn geconfigureerd in een zeer beschikbare en laadgebalanceerde configuratie. Nadat het script is uitgevoerd, beschikt u over drie virtuele machines, die gekoppeld zijn aan een Azure-beschikbaarheidsset en toegankelijk zijn via een Azure Load Balancer.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

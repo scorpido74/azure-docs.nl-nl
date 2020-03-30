@@ -1,6 +1,6 @@
 ---
-title: Een verwijderd dash board herstellen in de Azure Portal | Microsoft Docs
-description: Als u een gepubliceerd dash board in de Azure Portal verwijdert, kunt u het dash board herstellen.
+title: Een verwijderd dashboard herstellen in de Azure-portal | Microsoft Documenten
+description: Als u een gepubliceerd dashboard in de Azure-portal verwijdert, u het dashboard herstellen.
 services: azure-portal
 author: mgblythe
 ms.author: mblythe
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77133292"
 ---
-# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Een verwijderd dash board in het Azure Portal herstellen
+# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Een verwijderd dashboard herstellen in de Azure-portal
 
-Als u zich in de open bare Azure-Cloud bevindt en u een _gepubliceerd_ dash board in de Azure Portal verwijdert, kunt u dat dash board binnen 14 dagen na de verwijdering herstellen. Als u zich in een Azure Government-Cloud bevindt of als het dash board niet is gepubliceerd, kunt u het niet herstellen en moet u het opnieuw bouwen. Zie [dash board publiceren](azure-portal-dashboard-share-access.md#publish-dashboard)voor meer informatie over het publiceren van een dash board. Volg deze stappen om een gepubliceerd dash board te herstellen:
+Als u zich in de openbare Azure-cloud bevindt en u een _gepubliceerd_ dashboard in de Azure-portal verwijdert, u dat dashboard binnen 14 dagen na de verwijdering herstellen. Als u zich in een Azure-overheidscloud bevindt of als het dashboard niet is gepubliceerd, u deze niet herstellen en moet u deze opnieuw opbouwen. Zie [Dashboard publiceren](azure-portal-dashboard-share-access.md#publish-dashboard)voor meer informatie over het publiceren van een dashboard . Volg de volgende stappen om een gepubliceerd dashboard te herstellen:
 
-1. Selecteer **resource groepen**in het menu Azure Portal en selecteer vervolgens de resource groep waar u het dash board hebt gepubliceerd (standaard **Dash boards**genoemd).
+1. Selecteer **resourcegroepen**in het menu Azure portal en selecteer vervolgens de resourcegroep waar u het dashboard hebt gepubliceerd (standaard worden **dashboards**genoemd).
 
-1. Vouw onder **activiteiten logboek**de bewerking **dash board verwijderen** uit. Selecteer het tabblad **wijzigings overzicht** en selecteer vervolgens **\<verwijderde resource\>** .
+1. Vouw **onder het logboek Activiteit**de bewerking Dashboard **verwijderen** uit. Selecteer het tabblad **Geschiedenis wijzigen** en selecteer ** \<verwijderde\>bron**.
 
-    ![Scherm afbeelding van het tabblad wijzigings overzicht](media/recover-shared-deleted-dashboard/change-history-tab.png)
+    ![Schermafbeelding van het tabblad Geschiedenis wijzigen](media/recover-shared-deleted-dashboard/change-history-tab.png)
 
-1. Selecteer en kopieer de inhoud van het linkerdeel venster en sla deze op in een tekst bestand met de extensie _. json_ . De portal maakt gebruik van het JSON-bestand om het dash board opnieuw te maken.
+1. Selecteer en kopieer de inhoud van het linkerdeelvenster en sla vervolgens op in een tekstbestand met een _.json-bestandsextensie._ De portal gebruikt het JSON-bestand om het dashboard opnieuw te maken.
 
-    ![Scherm afbeelding van het verschil met wijzigings geschiedenis](media/recover-shared-deleted-dashboard/change-history-diff.png)
+    ![Schermafbeelding van de diff wijzigingsgeschiedenis](media/recover-shared-deleted-dashboard/change-history-diff.png)
 
-1. Selecteer in het menu Azure Portal de optie **Dash boards**en selecteer vervolgens **uploaden**.
+1. Selecteer **dashboards**in het menu Azure portal en selecteer **Uploaden**.
 
-    ![Scherm afbeelding van het uploaden van het dash board](media/recover-shared-deleted-dashboard/dashboard-upload.png)
+    ![Schermafbeelding van het uploaden van dashboard](media/recover-shared-deleted-dashboard/dashboard-upload.png)
 
-1. Selecteer het JSON-bestand dat u hebt opgeslagen. De portal maakt het dash board opnieuw met dezelfde naam en elementen als het verwijderde dash board.
+1. Selecteer het JSON-bestand dat u hebt opgeslagen. De portal maakt het dashboard opnieuw met dezelfde naam en elementen als het verwijderde dashboard.
 
-1. Selecteer **delen** om het dash board te publiceren en het juiste toegangs beheer te herstellen.
+1. Selecteer **Delen** om het dashboard te publiceren en het juiste toegangscontrolebeheer opnieuw in te stellen.
 
-    ![Scherm opname van de dashboard share](media/recover-shared-deleted-dashboard/dashboard-share.png)
+    ![Schermafbeelding van dashboardshare](media/recover-shared-deleted-dashboard/dashboard-share.png)

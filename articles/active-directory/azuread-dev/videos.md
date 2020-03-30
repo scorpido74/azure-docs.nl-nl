@@ -1,6 +1,6 @@
 ---
-title: Migratie Video's voor Azure ADAL naar MSAL | Azure
-description: Video's die u helpen bij het migreren van het Azure Active Directory ontwikkel platform naar het micro soft Identity-platform
+title: Azure ADAL naar MSAL-migratievideo's | Azure
+description: Video's waarmee u migreren van het Azure Active Directory-ontwikkelaarsplatform naar het Microsoft-identiteitsplatform
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
 ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77202058"
 ---
-# <a name="azure-active-directory-developer-platform-videos"></a>Video's over het Azure Active Directory-ontwikkelaars platform
+# <a name="azure-active-directory-developer-platform-videos"></a>Video's van Azure Active Directory-ontwikkelaarsplatform
 
-Meer informatie over het nieuwe micro soft-identiteits platform en hoe u het kunt migreren van het Azure Active Directory-ontwikkel platform (Azure AD). De Video's zijn meestal 1-2 minuten lang.
+Meer informatie over het nieuwe Microsoft-identiteitsplatform en hoe u ernaar migreert vanuit het Azure Active Directory-ontwikkelaarsplatform (Azure Active Directory). De video's zijn meestal 1-2 minuten lang.
 
-## <a name="migrate-from-v10-to-v20"></a>Migreren van v 1.0 naar v 2.0
+## <a name="migrate-from-v10-to-v20"></a>Migreren van v1.0 naar v2.0
 
-**Meer informatie over het migreren naar de nieuwste versie van het micro soft Identity-platform**
+**Meer informatie over migreren naar de nieuwste versie van het Microsoft-identiteitsplatform**
 
 :::row:::
     :::column:::
-        Overzicht van nieuw micro soft Identity platform
+        Nieuw overzicht van microsoft-identiteitsplatform
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -44,13 +44,13 @@ Meer informatie over het nieuwe micro soft-identiteits platform en hoe u het kun
 :::row-end:::
 :::row:::
     :::column:::
-        Eind punten en de voor delen van overstappen op v 2.0
+        Eindpunten en de voordelen van de overstap naar v2.0
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Uw ADAL-code base migreren naar MSAL
+        Uw ADAL-codebase migreren naar MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -64,7 +64,7 @@ Meer informatie over het nieuwe micro soft-identiteits platform en hoe u het kun
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Voor delen van MSAL via ADAL
+        Voordelen van MSAL ten opzichte van ADAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
@@ -73,4 +73,4 @@ Meer informatie over het nieuwe micro soft-identiteits platform en hoe u het kun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het nieuwe [micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop)
+Meer informatie over het nieuwe [Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop)

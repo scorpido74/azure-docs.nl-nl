@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures voor beveiligde PaaS-implementaties-Microsoft Azure
-description: Leer de aanbevolen procedures voor het ontwerpen, bouwen en beheren van veilige Cloud toepassingen op Azure en inzicht te krijgen in de beveiligings voordelen van PaaS tegenover andere Cloud service modellen.
+title: Aanbevolen procedures voor beveiligde PaaS-implementaties - Microsoft Azure
+description: Lees best practices voor het ontwerpen, bouwen en beheren van beveiligde cloudtoepassingen op Azure en verkrijg de beveiligingsvoordelen van PaaS ten opzichte van andere cloudservicemodellen.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,142 +16,142 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138023"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
-Dit artikel bevat informatie waarmee u het volgende kunt doen:
+In dit artikel vindt u informatie die u helpt:
 
-- Meer informatie over de beveiligings voordelen van het hosten van toepassingen in de Cloud
-- Evalueer de beveiligings voordelen van platform as a Service (PaaS) versus andere Cloud service modellen
-- Wijzig de beveiligings focus van een netwerk gericht naar een identiteits gerichte perimeter beveiligings aanpak
-- Aanbevelingen voor best practices voor algemene PaaS-beveiliging implementeren
+- Inzicht in de beveiligingsvoordelen van hostingtoepassingen in de cloud
+- De beveiligingsvoordelen van platform as a service (PaaS) ten opzichte van andere cloudservicemodellen evalueren
+- Verander uw beveiligingsfocus van een netwerkgerichte naar een identiteitsgerichte perimeterbeveiligingsaanpak
+- Algemene aanbevolen procedures voor PaaS-beveiliging implementeren
 
-Het [ontwikkelen van beveiligde toepassingen op Azure](abstract-develop-secure-apps.md) is een algemene hand leiding voor de beveiligings vragen en-besturings elementen die u moet overwegen bij elke fase van de levens cyclus van software ontwikkeling bij het ontwikkelen van toepassingen voor de Cloud.
+[Het ontwikkelen van veilige toepassingen op Azure](abstract-develop-secure-apps.md) is een algemene handleiding voor de beveiligingsvragen en -besturingselementen die u in elke fase van de levenscyclus van softwareontwikkeling moet overwegen bij het ontwikkelen van toepassingen voor de cloud.
 
-## <a name="cloud-security-advantages"></a>Voor delen van Cloud beveiliging
-Het is belang rijk om inzicht te krijgen in de [verantwoordelijkheid](shared-responsibility.md) tussen u en micro soft. On-premises is het eigendom van de hele stack, maar wanneer u overstapt naar de Cloud, worden sommige verantwoordelijkheden overgedragen naar micro soft.
+## <a name="cloud-security-advantages"></a>Voordelen voor cloudbeveiliging
+Het is belangrijk om de verdeling van de [verantwoordelijkheid](shared-responsibility.md) tussen u en Microsoft te begrijpen. On-premises bent u eigenaar van de hele stack, maar als u naar de cloud gaat, worden sommige verantwoordelijkheden overgedragen aan Microsoft.
 
-Er zijn [beveiligings voordelen die zich in de Cloud](shared-responsibility.md#cloud-security-advantages)bevinden. In een on-premises omgeving hebben organisaties waarschijnlijk unmet verantwoordelijkheden en beperkte bronnen die beschikbaar zijn om te investeren in beveiliging, waardoor een omgeving wordt gemaakt waarin aanvallers zwakke plekken op alle lagen kunnen exploiteren.
+Er zijn [beveiligingsvoordelen aan het zijn in de cloud.](shared-responsibility.md#cloud-security-advantages) In een on-premises omgeving hebben organisaties waarschijnlijk onvervulde verantwoordelijkheden en beperkte middelen beschikbaar om te investeren in beveiliging, waardoor een omgeving ontstaat waarin aanvallers kwetsbaarheden in alle lagen kunnen misbruiken.
 
-Organisaties kunnen hun detectie en reactie tijden voor bedreigingen verbeteren door gebruik te maken van de Cloud beveiligings mogelijkheden van een provider en Cloud Intelligence.  Door verantwoordelijkheden te verplaatsen naar de Cloud provider, kunnen organisaties meer beveiligings dekking krijgen, waardoor ze beveiligings bronnen en budget opnieuw aan andere zakelijke prioriteiten kan toewijzen.
+Organisaties zijn in staat om hun detectie- en reactietijden voor bedreigingen te verbeteren door gebruik te maken van de cloudgebaseerde beveiligingsmogelijkheden en cloudintelligence van een provider.  Door verantwoordelijkheden te verschuiven naar de cloudprovider, kunnen organisaties meer beveiligingsdekking krijgen, waardoor ze beveiligingsresources en budget kunnen herverdelen naar andere zakelijke prioriteiten.
 
-## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Beveiligings voordelen van een PaaS-Cloud service model
-Laten we eens kijken naar de beveiligings voordelen van een Azure PaaS-implementatie versus on-premises.
+## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Beveiligingsvoordelen van een PaaS-cloudservicemodel
+Laten we eens kijken naar de beveiligingsvoordelen van een Azure PaaS-implementatie versus on-premises.
 
-![Voor delen van de beveiliging van PaaS](./media/paas-deployments/advantages-of-paas.png)
+![Beveiligingsvoordelen van PaaS](./media/paas-deployments/advantages-of-paas.png)
 
-Onder aan de stack, de fysieke infra structuur, verkleint micro soft de algemene Risico's en verantwoordelijkheden. Omdat de micro soft-Cloud voortdurend wordt bewaakt door micro soft, is het moeilijk om een aanval uit te proberen. Het is niet zinvol dat een aanvaller de micro soft-Cloud als doel kan uitvoeren. Tenzij de aanvaller veel geld en resources heeft, gaat de aanvaller waarschijnlijk over naar een ander doel.  
+Beginnend aan de onderkant van de stack, de fysieke infrastructuur, beperkt Microsoft veelvoorkomende risico's en verantwoordelijkheden. Omdat de Microsoft-cloud voortdurend wordt gecontroleerd door Microsoft, is het moeilijk aan te vallen. Het heeft geen zin voor een aanvaller om de Microsoft-cloud als doelwit na te streven. Tenzij de aanvaller heeft veel geld en middelen, de aanvaller is waarschijnlijk om door te gaan naar een ander doel.  
 
-In het midden van de stack is er geen verschil tussen een PaaS-implementatie en on-premises. Op de toepassingslaag en de account-en toegangs beheer laag zijn er vergelijk bare Risico's. In het gedeelte volgende stappen van dit artikel wordt u begeleid bij de aanbevolen procedures voor het elimineren of minimaliseren van deze Risico's.
+In het midden van de stack is er geen verschil tussen een PaaS-implementatie en on-premises. Op de toepassingslaag en de account- en toegangsbeheerlaag heb je vergelijkbare risico's. In de volgende stappen sectie van dit artikel, zullen we u begeleiden naar best practices voor het elimineren of minimaliseren van deze risico's.
 
-Boven aan de stack, data governance en Rights Management, neemt u een risico dat kan worden verholpen door sleutel beheer. (Sleutel beheer wordt besproken in Aanbevolen procedures.) Hoewel sleutel beheer een extra verantwoordelijkheid is, hebt u gebieden in een PaaS-implementatie die u niet meer hoeft te beheren, zodat u resources kunt verplaatsen naar sleutel beheer.
+Aan de bovenkant van de stack, data governance en rights management, neemt u een risico dat kan worden beperkt door key management. (Sleutelbeheer wordt behandeld in best practices.) Hoewel sleutelbeheer een extra verantwoordelijkheid is, hebt u gebieden in een PaaS-implementatie die u niet meer hoeft te beheren, zodat u resources verschuiven naar sleutelbeheer.
 
-Het Azure-platform biedt u ook een krachtige DDoS-bescherming met behulp van verschillende technologieën op basis van het netwerk. Alle typen op het netwerk gebaseerde DDoS-beveiligings methoden hebben echter hun limieten per koppeling en per Data Center. Om de impact van grote DDoS-aanvallen te voor komen, kunt u profiteren van de belangrijkste Cloud mogelijkheden van Azure, zodat u snel en automatisch uitschaalt om DDoS-aanvallen te verdedigen. Meer informatie over hoe u dit kunt doen in de aanbevolen procedures artikelen.
+Het Azure-platform biedt u ook sterke DDoS-bescherming door gebruik te maken van verschillende netwerkgebaseerde technologieën. Alle soorten netwerkgebaseerde DDoS-beveiligingsmethoden hebben echter hun grenzen op basis van per link en per datacenter. Om de impact van grote DDoS-aanvallen te voorkomen, u profiteren van de kerncloudmogelijkheden van Azure om u in staat te stellen snel en automatisch uit te schalen om zich te verdedigen tegen DDoS-aanvallen. We gaan meer in detail in op hoe u dit doen in de aanbevolen praktijken artikelen.
 
-## <a name="modernizing-the-defenders-mindset"></a>De uitgangspunt van het Defender moderniseren
-Met PaaS-implementaties kunt u uw algemene benadering van beveiliging verschuiven. U hoeft alleen maar te bepalen wat u nodig hebt om de verantwoordelijkheid van micro soft te delen.
+## <a name="modernizing-the-defenders-mindset"></a>Modernisering van de mentaliteit van de verdediger
+Met PaaS-implementaties komt een verschuiving in uw algemene benadering van beveiliging. U verschuift van het nodig hebben om alles zelf te controleren naar het delen van verantwoordelijkheid met Microsoft.
 
-Een ander belang rijk verschil tussen PaaS en traditionele on-premises implementaties is een nieuwe weer gave van wat het primaire beveiligings netwerk definieert. In het verleden was de primaire on-premises beveiligings verbinding uw netwerk en de meeste on-premises beveiligings ontwerpen gebruiken het netwerk als de primaire beveiligings draaiing. Voor PaaS-implementaties kunt u beter worden geholpen door de identiteit te beschouwen als de primaire beveiligings verbinding.
+Een ander belangrijk verschil tussen PaaS en traditionele on-premises implementaties, is een nieuwe weergave van wat de primaire beveiligingsperimeter definieert. Historisch gezien was de primaire on-premises beveiligingsperimeter uw netwerk en de meeste on-premises beveiligingsontwerpen gebruiken het netwerk als primaire beveiligingsspil. Voor PaaS-implementaties u beter worden bediend door als identiteit de primaire beveiligingsperimeter te beschouwen.
 
-## <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Een beleid met identiteit als de primaire beveiligings verbinding aannemen
-Een van de vijf essentiële kenmerken van Cloud Computing is brede netwerk toegang, waardoor het netwerk gericht lijkt op minder relevant. Het doel van de meeste Cloud Computing is gebruikers toe te staan om toegang te krijgen tot bronnen, ongeacht de locatie. De locatie van de meeste gebruikers gaat ergens op internet.
+## <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Een identiteitsbeleid aannemen als primaire beveiligingsperimeter
+Een van de vijf essentiële kenmerken van cloud computing is brede netwerktoegang, waardoor netwerkgericht denken minder relevant is. Het doel van veel van cloud computing is om gebruikers toegang te geven tot bronnen, ongeacht de locatie. Voor de meeste gebruikers, hun locatie gaat ergens op het internet.
 
-In de volgende afbeelding ziet u hoe de beveiligings verbinding van een netwerk perimeter naar een identiteits perimeter is ontwikkeld. De beveiliging wordt verminderd met het beschermen van uw netwerk en het beschermen van uw gegevens, en het beheren van de beveiliging van uw apps en gebruikers. Het belangrijkste verschil is dat u de beveiliging dichter bij het belang van uw bedrijf wilt pushen.
+De volgende afbeelding laat zien hoe de beveiligingsperimeter is geëvolueerd van een netwerkperimeter naar een identiteitsperimeter. Beveiliging wordt minder over het verdedigen van uw netwerk en meer over het verdedigen van uw gegevens, evenals het beheren van de veiligheid van uw apps en gebruikers. Het belangrijkste verschil is dat u de beveiliging dichter bij uw bedrijf wilt brengen.
 
-![Identiteit als nieuwe beveiligings perimeter](./media/paas-deployments/identity-perimeter.png)
+![Identiteit als nieuwe beveiligingsperimeter](./media/paas-deployments/identity-perimeter.png)
 
-In eerste instantie hebben Azure PaaS-Services (bijvoorbeeld webrollen en Azure SQL) weinig of geen traditionele netwerk aantekening. Het is vastgesteld dat het doel van het element moet worden blootgesteld aan Internet (webrole) en dat verificatie de nieuwe verbinding biedt (bijvoorbeeld BLOB of Azure SQL).
+In eerste instantie leverden Azure PaaS-services (bijvoorbeeld webrollen en Azure SQL) weinig of geen traditionele netwerkperimeterverdediging. Het was duidelijk dat het doel van het element was om te worden blootgesteld aan het internet (webrol) en dat verificatie de nieuwe perimeter biedt (bijvoorbeeld BLOB of Azure SQL).
 
-Bij moderne beveiligings procedures wordt ervan uitgegaan dat de kwaadwillende persoon de netwerk verbinding heeft geschonden. Daarom zijn moderne veiligheids procedures verplaatst naar de identiteit. Organisaties moeten een op identiteit gebaseerde beveiligings verbinding met sterke authenticatie-en autorisatie hygiëne (aanbevolen procedures) tot stand brengen.
+Moderne beveiligingspraktijken gaan ervan uit dat de tegenstander de netwerkperimeter heeft geschonden. Daarom zijn moderne verdedigingspraktijken verplaatst naar identiteit. Organisaties moeten een identiteitsgebaseerde beveiligingsperimeter instellen met sterke verificatie- en autorisatiehygiëne (best practices).
 
-De principes en patronen voor de netwerk verbinding zijn tien tallen beschikbaar. Daarentegen heeft de branche relatief minder ervaring met het gebruik van identiteit als de primaire beveiligings verbinding. We hebben hiervoor voldoende ervaring opgedaan om enkele algemene aanbevelingen te bieden die in het veld zijn bewezen en die van toepassing zijn op bijna alle PaaS-Services.
+Principes en patronen voor de netwerkperimeter zijn al tientallen jaren beschikbaar. In tegenstelling, de industrie heeft relatief minder ervaring met het gebruik van identiteit als de primaire beveiligingsperimeter. Met dat gezegd hebben we genoeg ervaring opgebouwd om een aantal algemene aanbevelingen te doen die in het veld zijn bewezen en van toepassing zijn op bijna alle PaaS-services.
 
-Hieronder volgen de aanbevolen procedures voor het beheren van het identiteits perimeter netwerk.
+De volgende zijn aanbevolen procedures voor het beheren van de identiteitsperimeter.
 
-**Best Practice**: Beveilig uw sleutels en referenties voor het beveiligen van uw PaaS-implementatie.   
-**Details**: verlies van sleutels en referenties is een veelvoorkomend probleem. U kunt een gecentraliseerde oplossing gebruiken waarbij sleutels en geheimen kunnen worden opgeslagen in Hardware Security modules (Hsm's). [Azure Key Vault](../../key-vault/key-vault-overview.md) beveiligt uw sleutels en geheimen door verificatie sleutels, opslag account sleutels, gegevens versleutelings sleutels, pfx-bestanden en wacht woorden te versleutelen met behulp van sleutels die worden beveiligd door hsm's.
+**Aanbevolen procedures**: beveilig uw sleutels en referenties om uw PaaS-implementatie te beveiligen.   
+**Detail:** Het verliezen van sleutels en referenties is een veel voorkomend probleem. U een gecentraliseerde oplossing gebruiken waar sleutels en geheimen kunnen worden opgeslagen in hardwarebeveiligingsmodules (HSM's). [Azure Key Vault](../../key-vault/key-vault-overview.md) beschermt uw sleutels en geheimen door verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels, .pfx-bestanden en wachtwoorden te versleutelen met sleutels die door HSM's worden beschermd.
 
-**Best Practice**: plaats geen referenties en andere geheimen in de bron code of het github.   
-**Details**: het enige wat u nog ergert dan het verlies van uw sleutels en referenties is dat een niet-gemachtigde partij er toegang toe heeft. Aanvallers kunnen gebruikmaken van bot-technologieën om sleutels en geheimen te vinden die zijn opgeslagen in code opslagplaatsen, zoals GitHub. Plaats geen sleutel en geheimen in deze open bare code opslagplaatsen.
+**Aanbevolen procedures**: Plaats geen referenties en andere geheimen in de broncode of GitHub.   
+**Detail:** Het enige wat erger is dan het verliezen van uw sleutels en referenties is het hebben van een onbevoegde partij toegang krijgen tot hen. Aanvallers kunnen profiteren van bottechnologieën om sleutels en geheimen te vinden die zijn opgeslagen in coderepositories zoals GitHub. Plaats geen sleutel en geheimen in deze openbare code repositories.
 
-**Best Practice**: Beveilig uw VM-beheer interfaces op hybride Paas-en IaaS-Services met behulp van een beheer interface waarmee u de virtuele machines rechtstreeks op afstand kunt beheren.   
-**Details**: protocollen voor extern beheer, zoals [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)en [externe communicatie met Power shell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) , kunnen worden gebruikt. Over het algemeen is het raadzaam dat u geen rechtstreekse externe toegang tot virtuele machines inschakelt via internet.
+**Aanbevolen procedures**: Bescherm uw VM-beheerinterfaces op hybride PaaS- en IaaS-services met behulp van een beheerinterface waarmee u deze VM's rechtstreeks op afstand beheren.   
+**Detail**: Remote management protocollen zoals [SSH,](https://en.wikipedia.org/wiki/Secure_Shell) [RDP](https://support.microsoft.com/kb/186607)en [PowerShell remoting](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) kunnen worden gebruikt. In het algemeen raden we u aan geen directe toegang op afstand tot VM's vanaf het internet in te schakelen.
 
-Gebruik, indien mogelijk, alternatieve benaderingen zoals het gebruik van virtuele particuliere netwerken in een virtueel Azure-netwerk. Als er geen alternatieve benaderingen beschikbaar zijn, moet u ervoor zorgen dat u complexe wachtwoordzins en twee ledige verificatie gebruikt (zoals [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
+Gebruik indien mogelijk alternatieve benaderingen zoals het gebruik van virtuele privénetwerken in een virtueel Azure-netwerk. Als er geen alternatieve benaderingen beschikbaar zijn, moet u ervoor zorgen dat u complexe wachtwoordzinnen en tweestapsverificatie gebruikt (zoals [Azure Multi-Factor Authentication).](/azure/active-directory/authentication/multi-factor-authentication)
 
-**Best Practice**: gebruik platforms met sterke verificatie en autorisatie.   
-**Details**: gebruik federatieve identiteiten in azure AD in plaats van aangepaste gebruikers archieven. Wanneer u federatieve identiteiten gebruikt, profiteert u van een op platform gebaseerde benadering en delegeert u het beheer van geautoriseerde identiteiten aan uw partners. Een federatieve identiteits benadering is vooral belang rijk wanneer werk nemers worden beëindigd en deze informatie moet worden weer spie geld via meerdere identiteits-en autorisatie systemen.
+**Aanbevolen procedures**: Gebruik sterke verificatie- en autorisatieplatforms.   
+**Detail:** Gebruik federatieve identiteiten in Azure AD in plaats van aangepaste gebruikersarchieven. Wanneer u federatieve identiteiten gebruikt, maakt u gebruik van een platformgebaseerde aanpak en delegert u het beheer van geautoriseerde identiteiten aan uw partners. Een federatieve identiteitsbenadering is vooral belangrijk wanneer werknemers worden beëindigd en die informatie moet worden weerspiegeld door middel van meerdere identiteits- en autorisatiesystemen.
 
-Gebruik platform verificatie-en autorisatie mechanismen in plaats van aangepaste code. De reden hiervoor is dat het ontwikkelen van aangepaste verificatie code fout gevoelig is. De meeste ontwikkel aars zijn geen beveiligings experts en zijn waarschijnlijk niet op de hoogte van de finesses en de nieuwste ontwikkelingen in verificatie en autorisatie. Commerciële code (bijvoorbeeld van micro soft) wordt vaak uitgebreid gecontroleerd.
+Gebruik door platforms geleverde verificatie- en autorisatiemechanismen in plaats van aangepaste code. De reden hiervoor is dat het ontwikkelen van aangepaste verificatiecode foutgevoelig kan zijn. De meeste van uw ontwikkelaars zijn geen beveiligingsexperts en zijn waarschijnlijk niet op de hoogte van de subtiliteiten en de nieuwste ontwikkelingen op het gebied van authenticatie en autorisatie. Commerciële code (bijvoorbeeld van Microsoft) wordt vaak uitgebreid gecontroleerd op beveiliging.
 
-Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige standaard voor verificatie en autorisatie, omdat het voor komt dat de zwakke plekken in de beveiliging van gebruikers naam en wacht woord worden geauthenticeerd. Toegang tot de interfaces van Azure Management (Portal/Remote Power shell) en klant gerichte services moeten zijn ontworpen en geconfigureerd voor het gebruik van [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
+Gebruik tweestapsverificatie. Tweestapsverificatie is de huidige standaard voor verificatie en autorisatie omdat hiermee de beveiligingsproblemen die inherent zijn aan gebruikersnamen- en wachtwoordtypen van verificatie worden vermeden. Toegang tot zowel de Azure-beheerinterfaces (portal/remote PowerShell) als klantgerichte services moeten worden ontworpen en geconfigureerd om [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)te gebruiken.
 
-Gebruik standaard verificatie protocollen, zoals OAuth2 en Kerberos. Deze protocollen zijn uitgebreid gecontroleerd en zijn waarschijnlijk geïmplementeerd als onderdeel van uw platform bibliotheken voor verificatie en autorisatie.
+Gebruik standaardverificatieprotocollen, zoals OAuth2 en Kerberos. Deze protocollen zijn uitgebreid peer reviewed en zijn waarschijnlijk geïmplementeerd als onderdeel van uw platform bibliotheken voor authenticatie en autorisatie.
 
-## <a name="use-threat-modeling-during-application-design"></a>Threatisatie modellen gebruiken tijdens het ontwerpen van toepassingen
-De levens cyclus van micro soft [Security Development](https://www.microsoft.com/en-us/sdl) geeft aan dat teams tijdens de ontwerp fase een proces moeten uitvoeren met de naam bedreigingen modellering. Om dit proces te vereenvoudigen, heeft micro soft de [sdl-Threat Modeling tool](/azure/security/azure-security-threat-modeling-tool)gemaakt. Het model leren van het ontwerp van de toepassing en het opsommen van [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) -bedreigingen voor alle vertrouwens grenzen kunnen ontwerp fouten vroegtijdig op.
+## <a name="use-threat-modeling-during-application-design"></a>Threat modeling gebruiken tijdens het ontwerpen van toepassingen
+De [Levenscyclus van](https://www.microsoft.com/en-us/sdl) Microsoft Security Development bepaalt dat teams tijdens de ontwerpfase een proces moeten uitvoeren dat threat modeling wordt genoemd. Om dit proces te vergemakkelijken, heeft Microsoft de [SDL Threat Modeling Tool](/azure/security/azure-security-threat-modeling-tool)gemaakt. Het modelleren van het ontwerp van de toepassing en het opsommen van [STRIDE-bedreigingen](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) over alle vertrouwensgrenzen heen kan ontwerpfouten al vroeg opvangen.
 
-De volgende tabel geeft een overzicht van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van Azure-functies. Deze oplossingen werken niet in elke situatie.
+In de volgende tabel worden de STRIDE-bedreigingen weergegeven en worden enkele voorbeelden gegeven van oplossingen die Azure-functies gebruiken. Deze oplossingen werken niet in elke situatie.
 
-| Bedreiging | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
+| Bedreiging | Beveiligingseigenschap | Mogelijke azure-platformmitigaties |
 | --- | --- | --- |
-| Spoofing | Verificatie | HTTPS-verbindingen vereisen. |
+| Adresvervalsing (spoofing) | Authentication | Https-verbindingen vereisen. |
 | Knoeien | Gegevensintegriteit | SSL-certificaten valideren. |
-| Ging | Niet-afwijzing | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
-| Vrijgeven van informatie | Aard | Versleutel gevoelige gegevens op rest door gebruik te maken van [service certificaten](/rest/api/appservice/certificates). |
-| Denial of service | Beschikbaarheid | Bewaak de prestatie gegevens voor mogelijke denial-of-service-voor waarden. Verbindings filters implementeren. |
-| Uitbrei ding van bevoegdheden | Autorisatie | Gebruik [privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
+| Verwerping | Niet-verwerping | [Azure-bewaking en -diagnose inschakelen](/azure/architecture/best-practices/monitoring). |
+| Openbaarmaking van informatie | Vertrouwelijkheid | Versleutel gevoelige gegevens in rust met behulp van [servicecertificaten.](/rest/api/appservice/certificates) |
+| Denial of Service | Beschikbaarheid | Monitor prestatiestatistieken voor mogelijke denial-of-service-omstandigheden. Verbindingsfilters implementeren. |
+| Verhoging van het voorrecht | Autorisatie | [Gebruik Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
 
 ## <a name="develop-on-azure-app-service"></a>Ontwikkelen op Azure App Service
-[Azure app service](/azure/app-service/overview) is een Paas-Aanbieding waarmee u web-en mobiele apps kunt maken voor elk platform of apparaat en overal verbinding kunt maken met gegevens, in de Cloud of on-premises. App Service bevat de web-en mobiele mogelijkheden die eerder afzonderlijk zijn geleverd als Azure-websites en Azure Mobile Services. Deze service bevat ook nieuwe mogelijkheden voor het automatiseren van bedrijfsprocessen en het hosten van cloud-API's. Als één geïntegreerde service biedt App Service een uitgebreide set mogelijkheden voor web-, mobiele en integratie scenario's.
+[Azure App Service](/azure/app-service/overview) is een PaaS-aanbod waarmee u web- en mobiele apps maken voor elk platform of apparaat en overal, in de cloud of on-premises verbinding maken met gegevens. App Service omvat de web- en mobiele mogelijkheden die voorheen afzonderlijk werden geleverd als Azure Websites en Azure Mobile Services. Deze service bevat ook nieuwe mogelijkheden voor het automatiseren van bedrijfsprocessen en het hosten van cloud-API's. Als één geïntegreerde service biedt App Service een uitgebreide reeks mogelijkheden voor web-, mobiele en integratiescenario's.
 
-Hieronder vindt u aanbevolen procedures voor het gebruik van App Service.
+Hieronder volgen de aanbevolen procedures voor het gebruik van App Service.
 
-**Best Practice**: [Verifieer door Azure Active Directory](/azure/app-service/overview-authentication-authorization).   
-**Details**: app service biedt een OAuth 2,0-Service voor uw ID-provider. OAuth 2,0 richt zich op de vereenvoudiging van client ontwikkelaars en biedt specifieke autorisatie stromen voor webtoepassingen, desktop toepassingen en mobiele telefoons. Azure AD maakt gebruik van OAuth 2,0 zodat u toegang tot mobiele en webtoepassingen kunt autoriseren.
+**Aanbevolen procedures**: [Verifiëren via Azure Active Directory](/azure/app-service/overview-authentication-authorization).   
+**Detail:** App Service biedt een OAuth 2.0-service voor uw identiteitsprovider. OAuth 2.0 richt zich op de eenvoud van clientontwikkelaars en biedt specifieke autorisatiestromen voor webtoepassingen, desktoptoepassingen en mobiele telefoons. Azure AD gebruikt OAuth 2.0 om u in staat te stellen toegang tot mobiele en webtoepassingen te autoriseren.
 
-**Best Practice**: toegang beperken op basis van de beveiligings principes van de nood zaak om te kennen en te voldoen aan de minimale bevoegdheden.   
-**Details**: het beperken van de toegang is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. U kunt RBAC gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Zie aan de [slag met toegangs beheer](/azure/role-based-access-control/overview)voor meer informatie over het verlenen van gebruikers toegang tot toepassingen.
+**Aanbevolen procedures**: Beperk de toegang op basis van de noodzaak om beveiligingsprincipes te kennen en de minste bevoegdheden te kennen.   
+**Detail:** Het beperken van de toegang is noodzakelijk voor organisaties die beveiligingsbeleid voor gegevenstoegang willen afdwingen. U RBAC gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen op een bepaald bereik. Zie [Aan de slag met toegangsbeheer](/azure/role-based-access-control/overview)voor meer informatie over het verlenen van gebruikers toegang tot toepassingen.
 
-**Aanbevolen procedure**: Beveilig uw sleutels.   
-**Details**: Azure Key Vault helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-overview) voor meer informatie. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
+**Aanbevolen :** Bescherm uw sleutels.   
+**Detail:** Azure Key Vault helpt cryptografische sleutels en geheimen te beveiligen die cloudtoepassingen en -services gebruiken. Met Key Vault u sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels,. PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-overview) voor meer informatie. U Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
 
-**Best Practice**: IP-adressen van binnenkomende bronnen beperken.   
-**Details**: [app service Environment](/azure/app-service/environment/intro) heeft een functie voor de integratie van virtuele netwerken waarmee u binnenkomende bron-IP-adressen kunt beperken via netwerk beveiligings groepen. Met virtuele netwerken kunt u Azure-resources in een niet-Internet Routeer bare netwerk plaatsen waartoe u de toegang beheert. Zie [uw app integreren met een virtueel Azure-netwerk](/azure/app-service/web-sites-integrate-with-vnet)voor meer informatie.
+**Aanbevolen procedures**: Ip-adressen van binnenkomende bronnen beperken.   
+**Detail:** [App Service Environment](/azure/app-service/environment/intro) heeft een virtuele netwerkintegratiefunctie waarmee u inkomende bron-IP-adressen beperken via netwerkbeveiligingsgroepen. Met virtuele netwerken u Azure-bronnen plaatsen in een niet-internet, routeerbaar netwerk waarop u de toegang tot beheert. Zie Uw [app integreren met een virtueel Azure-netwerk](/azure/app-service/web-sites-integrate-with-vnet)voor meer informatie.
 
-**Best Practice**: Controleer de beveiligings status van uw app service omgevingen.   
-**Details**: gebruik Azure Security Center om uw app service omgevingen te bewaken. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](../../security-center/security-center-virtual-machine-protection.md) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden.
+**Aanbevolen procedures:** controleer de beveiligingsstatus van uw App-serviceomgevingen.   
+**Detail:** Gebruik Azure Security Center om uw App Service-omgevingen te bewaken. Wanneer Security Center potentiële beveiligingsproblemen identificeert, worden [er aanbevelingen](../../security-center/security-center-virtual-machine-protection.md) gemaakt die u begeleiden bij het configureren van de benodigde besturingselementen.
 
 > [!NOTE]
-> Bewakings App Service is in de preview-fase en is alleen beschikbaar voor de [standaard-laag](/azure/security-center/security-center-pricing) van Security Center.
+> Monitoring App Service is in preview en alleen beschikbaar op de [standaardlaag](/azure/security-center/security-center-pricing) van Security Center.
 >
 >
 
-## <a name="install-a-web-application-firewall"></a>Een Web Application Firewall installeren
+## <a name="install-a-web-application-firewall"></a>Een firewall voor webtoepassingen installeren
 Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veelvoorkomende aanvallen zijn hierbij onder andere aanvallen met SQL-injecties en aanvallen via scripting op meerdere sites. Het kan een hele uitdaging zijn om dergelijke aanvallen in toepassingscode te voorkomen en dit kan tevens veel onderhoud, patching en controle vereisen op meerdere lagen van de toepassingstopologie. Een gecentraliseerde firewall voor webtoepassingen maakt het beveiligingsbeheer veel eenvoudiger en biedt toepassingsbeheerders meer veiligheid tegen bedreigingen of aanvallen. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
 
-[Web Application firewall (WAF)](/azure/frontdoor/waf-overview) is een functie van Application Gateway waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen. WAF is gebaseerd op regels van de kern regel sets 3,0 of 2.2.9 van het [Open Web Application Security project (OWASP)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) .
+[Web application firewall (WAF)](/azure/frontdoor/waf-overview) is een functie van Application Gateway die gecentraliseerde bescherming van uw webapplicaties biedt tegen veelvoorkomende exploits en kwetsbaarheden. WAF is gebaseerd op regels uit de Kernregel 3.0 of 2.2.9 van het [Open Web Application Security Project (OWASP).](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)
 
 ## <a name="monitor-the-performance-of-your-applications"></a>De prestaties van uw toepassingen bewaken
-Bewaking is de handeling van het verzamelen en analyseren van gegevens om de prestaties, de status en beschik baarheid van uw toepassing te bepalen. Een effectieve bewakingsstrategie helpt u de gedetailleerde werking van de onderdelen van uw toepassing te begrijpen. Zo kunt u uw uptime verg Roten door u op de hoogte te stellen van kritieke problemen zodat u deze kunt oplossen voordat ze problemen ondervinden. Het helpt u ook bij het detecteren van afwijkingen die mogelijk betrekking hebben op beveiliging.
+Monitoring is de handeling van het verzamelen en analyseren van gegevens om de prestaties, status en beschikbaarheid van uw toepassing te bepalen. Een effectieve bewakingsstrategie helpt u de gedetailleerde werking van de onderdelen van uw toepassing te begrijpen. Het helpt u uw uptime te verhogen door u op de hoogte te stellen van kritieke problemen, zodat u ze oplossen voordat ze problemen worden. Het helpt u ook bij het detecteren van afwijkingen die mogelijk verband houden met de beveiliging.
 
-Gebruik [Azure-toepassing inzichten](https://azure.microsoft.com/documentation/services/application-insights) om de beschik baarheid, prestaties en het gebruik van uw toepassing te bewaken, ongeacht of deze in de Cloud of on-premises worden gehost. U kunt met behulp van Application Insights snel fouten in uw toepassing identificeren en onderzoeken zonder te hoeven wachten tot een gebruiker deze rapporteert. Met de informatie die u verzamelt, kunt u weloverwogen keuzes maken over het onderhoud en de verbeteringen van uw toepassing.
+Gebruik [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) om de beschikbaarheid, prestaties en het gebruik van uw toepassing te controleren, of deze nu wordt gehost in de cloud of on-premises. Door Application Insights te gebruiken, u snel fouten in uw toepassing identificeren en diagnosticeren zonder te wachten tot een gebruiker deze rapporteert. Met de informatie die u verzamelt, kunt u weloverwogen keuzes maken over het onderhoud en de verbeteringen van uw toepassing.
 
-Application Insights heeft uitgebreide hulpmiddelen voor interactie met de gegevens die worden verzameld. Application Insights slaat zijn gegevens op in een gemeenschappelijke opslagplaats. Het kan profiteren van gedeelde functionaliteit zoals waarschuwingen, Dash boards en diepe analyse met de Kusto-query taal.
+Application Insights heeft uitgebreide hulpmiddelen voor interactie met de gegevens die worden verzameld. Application Insights slaat zijn gegevens op in een gemeenschappelijke opslagplaats. Het kan profiteren van gedeelde functionaliteit, zoals waarschuwingen, dashboards en diepgaande analyse met de Kusto-querytaal.
 
-## <a name="perform-security-penetration-testing"></a>Beveiligings indringings tests uitvoeren
-Het valideren van beveiligings beveiliging is net zo belang rijk als het testen van andere functies. Zorg voor [indringings test](pen-testing.md) een standaard onderdeel van uw build-en implementatie proces. Plan regel matige beveiligings tests en beveiligings problemen met het scannen van geïmplementeerde toepassingen en controleer op open poorten, eind punten en aanvallen.
+## <a name="perform-security-penetration-testing"></a>Beveiligingspenetratietesten uitvoeren
+Het valideren van beveiligingsbeveiligingen is net zo belangrijk als het testen van andere functionaliteit. Maak [penetratietesten](pen-testing.md) een standaardonderdeel van uw build- en implementatieproces. Plan regelmatig beveiligingstests en het scannen van kwetsbaarheden op geïmplementeerde toepassingen en controleer op open poorten, eindpunten en aanvallen.
 
-Fuzz testen is een methode voor het vinden van programma fouten (code fouten) door onjuiste invoer gegevens op te geven voor programma-interfaces (ingangs punten) die deze gegevens parseren en gebruiken. [Micro soft beveiligings risico detectie](https://www.microsoft.com/en-us/security-risk-detection/) is een cloud-gebaseerd hulp programma dat u kunt gebruiken om te zoeken naar fouten en andere beveiligings problemen in uw software voordat u deze implementeert in Azure. Het hulp programma is ontworpen om beveiligings problemen te ondervangen voordat u software implementeert, zodat u geen bug hoeft op te lossen, met crashes kunt omgaan of op een aanval kunt reageren nadat de software is uitgebracht.
+Fuzz testen is een methode voor het vinden van programmafouten (codefouten) door het leveren van misvormde invoergegevens aan programma-interfaces (entry points) die deze gegevens ontleden en consumeren. [Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/) is een cloudtool die u gebruiken om te zoeken naar bugs en andere beveiligingsproblemen in uw software voordat u deze implementeert in Azure. De tool is ontworpen om kwetsbaarheden te vangen voordat u software implementeert, zodat u geen bug hoeft te patchen, crashes hoeft aan te pakken of op een aanval hoeft te reageren nadat de software is vrijgegeven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel zijn we gericht op beveiligings voordelen van een Azure PaaS-implementatie en aanbevolen beveiligings procedures voor Cloud toepassingen. Vervolgens leert u aanbevolen procedures voor het beveiligen van uw PaaS-webtoepassingen en mobiele oplossingen met behulp van specifieke Azure-Services. We beginnen met Azure App Service, Azure SQL Database en Azure SQL Data Warehouse en Azure Storage. Wanneer artikelen over aanbevolen procedures voor andere Azure-Services beschikbaar worden, worden koppelingen in de volgende lijst weer gegeven:
+In dit artikel hebben we ons gericht op beveiligingsvoordelen van een azure PaaS-implementatie en aanbevolen procedures voor beveiliging voor cloudtoepassingen. Lees vervolgens aanbevolen procedures voor het beveiligen van uw PaaS-web- en mobiele oplossingen met specifieke Azure-services. We beginnen met Azure App Service, Azure SQL Database en Azure SQL Data Warehouse en Azure Storage. Als artikelen over aanbevolen praktijken voor andere Azure-services beschikbaar komen, worden koppelingen weergegeven in de volgende lijst:
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database en Azure SQL Data Warehouse](paas-applications-using-sql.md)
@@ -160,10 +160,10 @@ In dit artikel zijn we gericht op beveiligings voordelen van een Azure PaaS-impl
 - Azure Service Bus
 - Firewalls voor webtoepassingen
 
-Zie voor het ontwikkelen van [beveiligde toepassingen op Azure](abstract-develop-secure-apps.md) voor beveiligings vragen en-besturings elementen kunt u overwegen in elke fase van de levens cyclus van software ontwikkeling bij het ontwikkelen van toepassingen voor de Cloud.
+Zie [Het ontwikkelen van veilige toepassingen op Azure](abstract-develop-secure-apps.md) voor beveiligingsvragen en -besturingselementen die u in elke fase van de levenscyclus van softwareontwikkeling moet overwegen bij het ontwikkelen van toepassingen voor de cloud.
 
-Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-and-patterns.md) voor meer aanbevolen procedures voor beveiliging bij het ontwerpen, implementeren en beheren van uw cloud oplossingen met behulp van Azure.
+Zie [aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-and-patterns.md) voor meer aanbevolen procedures voor beveiliging die u gebruiken bij het ontwerpen, implementeren en beheren van uw cloudoplossingen met Azure.
 
-De volgende resources zijn beschikbaar om meer algemene informatie te geven over Azure-beveiliging en gerelateerde micro soft-Services:
-* [Blog van het Azure-beveiligings team](https://blogs.msdn.microsoft.com/azuresecurity/) : voor actuele informatie over de nieuwste Azure-beveiliging
-* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail naar secure@microsoft.com
+De volgende bronnen zijn beschikbaar om meer algemene informatie te verstrekken over Azure-beveiliging en gerelateerde Microsoft-services:
+* [Azure Security Team Blog](https://blogs.msdn.microsoft.com/azuresecurity/) - voor up-to-date informatie over de nieuwste azure security
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) - waar beveiligingsproblemen van Microsoft, waaronder problemen met Azure, kunnen worden gemeld of via e-mail naarsecure@microsoft.com

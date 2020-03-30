@@ -1,65 +1,65 @@
 ---
 title: CI/CD configureren met GitHub-acties
-description: Leer hoe u uw code kunt implementeren in Azure App Service van een CI/CD-pijp lijn met GitHub-acties. Pas de bouw taken aan en Voer complexe implementaties uit.
+description: Meer informatie over het implementeren van uw code naar Azure App Service vanuit een CI/CD-pijplijn met GitHub Actions. Pas de buildtaken aan en voer complexe implementaties uit.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562204"
 ---
-# <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
+# <a name="deploy-to-app-service-using-github-actions"></a>Implementeren in App-service met GitHub-acties
 
-[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. Met de Azure App Service acties voor GitHub kunt u uw werk stroom automatiseren en implementeren in [Azure app service](overview.md) met behulp van github-acties.
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) biedt u de flexibiliteit om een workflow voor geautomatiseerde softwareontwikkeling te bouwen. Met de Azure App Service Actions voor GitHub u uw werkstroom automatiseren om te implementeren in [Azure App Service](overview.md) met GitHub Actions.
 
 > [!IMPORTANT]
-> GitHub-acties zijn momenteel in een bèta versie. U moet [zich eerst aanmelden om lid te worden van het voor beeld](https://github.com/features/actions) met behulp van uw github-account.
+> GitHub Actions is momenteel in bèta. Je moet je eerst [aanmelden om deel te nemen aan de preview](https://github.com/features/actions) met je GitHub-account.
 > 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.github/workflows/` in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
+Een werkstroom wordt gedefinieerd door een YAML-bestand `/.github/workflows/` (.yml) in het pad in uw opslagplaats. Deze definitie bevat de verschillende stappen en parameters die deel uitmaken van de werkstroom.
 
-Voor een Azure App Service werk stroom heeft het bestand drie secties:
+Voor een Azure App Service-werkstroom bevat het bestand drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
-|**Verificatie** | 1. een Service-Principal definiëren <br /> 2. een GitHub-geheim maken |
-|**PE** | 1. de omgeving instellen <br /> 2. de web-app bouwen |
-|**Implementeren** | 1. de web-app implementeren |
+|**Verificatie** | 1. Definieer een serviceprincipal <br /> 2. Maak een GitHub-geheim |
+|**Ontwikkelen** | 1. Het milieu instellen <br /> 2. De web-app bouwen |
+|**Implementeren** | 1. De web-app implementeren |
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-U kunt een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met behulp van de opdracht [AZ AD SP create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure cli](https://docs.microsoft.com/cli/azure/). U kunt deze opdracht uitvoeren met behulp van [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
+U een [serviceprincipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met de opdracht [AZ Ad SP create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure CLI.](https://docs.microsoft.com/cli/azure/) U deze opdracht uitvoeren met [Azure Cloud Shell](https://shell.azure.com/) in de Azure-portal of door de knop Uitproberen **te** selecteren.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door de abonnements-ID, naam van de resource groep en de naam van de app. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw App Service-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
+Vervang in dit voorbeeld de tijdelijke aanduidingen in de bron door uw abonnements-id, de naam van de brongroep en de naam van de app. De uitvoer is de referenties voor roltoewijzing die toegang bieden tot uw App Service-app. Kopieer dit JSON-object, dat u gebruiken om te verifiëren vanaf GitHub.
 
 > [!NOTE]
-> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
+> U hoeft geen serviceprincipal te maken als u besluit het publicatieprofiel te gebruiken voor verificatie.
 
 > [!IMPORTANT]
-> Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke App Service-app en niet de hele resource groep.
+> Het is altijd een goede gewoonte om minimale toegang te verlenen. Daarom is het bereik in het vorige voorbeeld beperkt tot de specifieke App Service-app en niet tot de hele resourcegroep.
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-U kunt ook referenties op app-niveau gebruiken, dat wil zeggen, het profiel publiceren voor implementatie. Volg de stappen voor het configureren van het geheim:
+U ook referenties op app-niveau gebruiken, d.w.z. profiel publiceren voor implementatie. Volg de stappen om het geheim te configureren:
 
-1. Down load het publicatie profiel voor de App App Service vanuit de portal met behulp van de optie **publicatie profiel ophalen** .
+1. Download het publicatieprofiel voor de App Service-app van de portal met de optie **Profiel publiceren ophalen.**
 
-2. In [github](https://github.com/)gaat u naar uw opslag plaats, selecteert u **instellingen > geheimen > een nieuw geheim toevoegen**
+2. In [GitHub](https://github.com/)door bladeren door uw opslagplaats, selecteert u **Instellingen > Geheimen > Een nieuw geheim toevoegen**
 
     ![geheimen](media/app-service-github-actions/secrets.png)
 
-3. Plak de inhoud van het gedownloade bestand met het publicatie profiel in het veld waarde van het geheim.
+3. Plak de inhoud van het gedownloade publicatieprofielbestand in het waardeveld van het geheim.
 
-4. Nu in het werk stroom bestand in uw vertakking: `.github/workflows/workflow.yml` het geheim vervangen door de invoer `publish-profile` van de actie Azure web app implementeren.
+4. Nu in het werkstroombestand `.github/workflows/workflow.yml` in uw branch: vervang het geheim voor de invoer `publish-profile` van de actie Azure Web App implementeren.
     
     ```yaml
         - uses: azure/webapps-deploy@v1
@@ -67,24 +67,24 @@ U kunt ook referenties op app-niveau gebruiken, dat wil zeggen, het profiel publ
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
-5. Het geheim wordt weer gegeven, zoals hieronder is gedefinieerd.
+5. U ziet het geheim zoals hieronder eens gedefinieerd.
 
     ![geheimen](media/app-service-github-actions/app-service-secrets.png)
 
 ## <a name="set-up-the-environment"></a>De omgeving instellen
 
-Het instellen van de omgeving kan worden uitgevoerd met behulp van een van de installatie acties.
+Het instellen van de omgeving kan worden gedaan met behulp van een van de setup-acties.
 
-|**Taal**  |**Installatie actie**  |
+|**Language**  |**Setup-actie**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
-|**JavaScript** | `actions/setup-node` |
+|**Javascript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
-In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgeving voor de verschillende ondersteunde talen wordt ingesteld:
+In de volgende voorbeelden wordt het deel van de werkstroom weergegeven dat de omgeving voor de verschillende ondersteunde talen instelt:
 
-**JavaScript**
+**Javascript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -123,11 +123,11 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
 
 ## <a name="build-the-web-app"></a>De web-app bouwen
 
-Dit is afhankelijk van de taal en voor talen die door Azure App Service worden ondersteund. dit gedeelte moet de standaard stappen voor het bouwen van elke taal zijn.
+Dit is afhankelijk van de taal en voor talen die worden ondersteund door Azure App Service, moet deze sectie de standaardbouwstappen van elke taal zijn.
 
-In de volgende voor beelden ziet u het deel van de werk stroom dat de web-app bouwt, in de verschillende ondersteunde talen.
+In de volgende voorbeelden wordt het deel van de werkstroom weergegeven dat de web-app bouwt, in de verschillende ondersteunde talen.
 
-**JavaScript**
+**Javascript**
 
 ```yaml
     - name: 'Run npm'
@@ -182,18 +182,18 @@ In de volgende voor beelden ziet u het deel van de werk stroom dat de web-app bo
 ```
 ## <a name="deploy-to-app-service"></a>Implementeren naar App Service
 
-Als u uw code wilt implementeren in een App Service-app, gebruikt u de `azure/webapps-deploy@v1 ` actie. Deze actie heeft vier para meters:
+Als u uw code wilt implementeren `azure/webapps-deploy@v1 ` in een App Service-app, gebruikt u de actie. Deze actie heeft vier parameters:
 
-| **Bepaalde**  | **Uitleg**  |
+| **Parameter**  | **Uitleg**  |
 |---------|---------|
-| **app-naam** | Lang De naam van de App Service-app | 
-| **publicatie profiel** | Beschrijving Inhoud van profiel bestand publiceren met Web Deploy-geheimen |
-| **pakket** | Beschrijving Het pad naar het pakket of de map. *. zip, *. War, *. jar of een map om te implementeren |
-| **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
+| **app-naam** | (Vereist) Naam van de App Service-app | 
+| **publicatieprofiel** | (Optioneel) Inhoud van profielbestanden publiceren met webdeploy-geheimen |
+| **Pakket** | (Optioneel) Pad naar pakket of map. *.zip, *.war, *.jar of een map die moet worden geïmplementeerd |
+| **sleufnaam** | (Optioneel) Voer een andere bestaande sleuf in dan de productiesleuf |
 
-### <a name="deploy-using-publish-profile"></a>Implementeren met een publicatie profiel
+### <a name="deploy-using-publish-profile"></a>Implementeren met publicatieprofiel
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app in azure met behulp van een publicatie profiel.
+Hieronder vindt u de voorbeeldwerkstroom voor het bouwen en implementeren van een Node.js-app naar Azure met behulp van publicatieprofiel.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -225,9 +225,9 @@ jobs:
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
 ```
 
-### <a name="deploy-using-azure-service-principal"></a>Implementeren met behulp van de service-principal van Azure
+### <a name="deploy-using-azure-service-principal"></a>Implementeren met Azure-serviceprincipal
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app in azure met behulp van een Azure-Service-Principal.
+Hieronder vindt u de voorbeeldwerkstroom voor het bouwen en implementeren van een Node.js-app naar Azure met behulp van een Azure-serviceprincipal.
 
 ```yaml
 on: [push]
@@ -270,9 +270,9 @@ jobs:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt onze set acties die zijn gegroepeerd in verschillende opslag plaatsen op GitHub, elk met documentatie en voor beelden die u kunnen helpen bij het gebruik van GitHub voor CI/CD en uw apps te implementeren in Azure.
+U onze set acties vinden die zijn gegroepeerd in verschillende opslagplaatsen op GitHub, elk met documentatie en voorbeelden om u te helpen GitHub voor CI/CD te gebruiken en uw apps te implementeren in Azure.
 
-- [Werk stroom acties die moeten worden geïmplementeerd in azure](https://github.com/Azure/actions-workflow-samples)
+- [Werkstroom acties die moet worden geïmplementeerd in Azure](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure-aanmelding](https://github.com/Azure/login)
 
@@ -280,10 +280,10 @@ U vindt onze set acties die zijn gegroepeerd in verschillende opslag plaatsen op
 
 - [Azure WebApp voor containers](https://github.com/Azure/webapps-container-deploy)
 
-- [Aanmelden/afmelden bij docker](https://github.com/Azure/docker-login)
+- [Inloggen/afmelden docker](https://github.com/Azure/docker-login)
 
-- [Gebeurtenissen waarmee werk stromen worden geactiveerd](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Gebeurtenissen die werkstromen activeren](https://help.github.com/en/articles/events-that-trigger-workflows)
 
-- [K8s implementeren](https://github.com/Azure/k8s-deploy)
+- [K8's implementeren](https://github.com/Azure/k8s-deploy)
 
-- [Starter-werk stromen](https://github.com/actions/starter-workflows)
+- [Startwerk](https://github.com/actions/starter-workflows)

@@ -1,7 +1,7 @@
 ---
-title: Zones voor reverse lookup configureren voor een SMTP-banner controle
+title: Omgekeerde opzoekzones configureren voor een SMTP-bannercontrole
 titlesuffix: Azure Virtual Network
-description: Hierin wordt beschreven hoe u zones voor reverse lookup configureert voor een SMTP-banner controle in azure
+description: Beschrijft hoe u omgekeerde opzoekzones configureert voor een SMTP-bannercontrole in Azure
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
@@ -14,34 +14,34 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201693"
 ---
-# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Zones voor reverse lookup configureren voor een SMTP-banner controle
+# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Omgekeerde opzoekzones configureren voor een SMTP-bannercontrole
 
-In dit artikel wordt beschreven hoe u een zone voor reverse lookup gebruikt in Azure DNS en een reverse DNS-record (PTR) maakt voor de controle van de SMTP-banner.
+In dit artikel wordt beschreven hoe u een omgekeerde zone in Azure DNS gebruikt en een Reverse DNS-record (PTR) maakt voor SMTP-bannercontrole.
 
 ## <a name="symptom"></a>Symptoom
 
-Als u een SMTP-server in Microsoft Azure host, wordt mogelijk het volgende fout bericht weer gegeven wanneer u een bericht verzendt of ontvangt van externe e-mail servers:
+Als u een SMTP-server host in Microsoft Azure, ontvangt u mogelijk het volgende foutbericht wanneer u een bericht verzendt of ontvangt van externe e-mailservers:
 
-**554: geen PTR-record**
+**554: Geen PTR-record**
 
 ## <a name="solution"></a>Oplossing
 
-Voor een virtueel IP-adres in Azure worden de omgekeerde records gemaakt in micro soft-domein zones in eigendom, geen aangepaste domein zones.
+Voor een virtueel IP-adres in Azure worden de omgekeerde records gemaakt in domeinzones die eigendom zijn van Microsoft, niet in aangepaste domeinzones.
 
-Als u PTR-records in micro soft-zones in eigendom wilt configureren, gebruikt u de eigenschap-ReverseFqdn in de PublicIpAddress-resource. Zie [Reverse DNS configureren voor services die worden gehost in azure](../dns/dns-reverse-dns-for-azure-services.md)voor meer informatie.
+Als u PTR-records wilt configureren in zones die eigendom zijn van Microsoft, gebruikt u de eigenschap -ReverseFqdn op de PublicIpAddress-bron. Zie [Reverse DNS configureren voor services die worden gehost in Azure](../dns/dns-reverse-dns-for-azure-services.md)voor meer informatie.
 
-Wanneer u de PTR-records configureert, moet u ervoor zorgen dat het IP-adres en de omgekeerde FQDN eigendom zijn van het abonnement. Als u probeert een omgekeerde FQDN in te stellen die niet bij het abonnement hoort, wordt het volgende fout bericht weer gegeven:
+Wanneer u de PTR-records configureert, moet u ervoor zorgen dat het IP-adres en de omgekeerde FQDN eigendom zijn van het abonnement. Als u een omgekeerde FQDN probeert in te stellen die niet tot het abonnement behoort, ontvangt u het volgende foutbericht:
 
     Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
                         
-    1) ReverseFqdn komt overeen met de FQDN van een open bare IP-resource onder het abonnement;
-    2) ReverseFqdn wordt omgezet naar de FQDN (via de CName-record keten) van een open bare IP-resource onder het abonnement.
-    3) Het wordt omgezet in het IP-adres (via CName en een record keten) van een statische open bare IP-resource onder het abonnement.
+    1) ReverseFqdn komt overeen met fqdn van een openbare ip-bron onder het abonnement;
+    2) ReverseFqdn lost de fqdn (via CName-recordsketen) op van een openbare ip-bron onder het abonnement;
+    3) Het besluit tot het ip-adres (via CName en A records chain) van een statische openbare ip-bron onder het abonnement.
 
-Als u uw SMTP-banner hand matig wijzigt zodat deze overeenkomt met onze standaard omgekeerde FQDN, kan de externe e-mail server nog steeds mislukken omdat de host van de SMTP-banner mogelijk overeenkomt met de MX-record voor het domein.
+Als u uw SMTP-banner handmatig wijzigt om aan onze standaard omgekeerde FQDN te voldoen, kan de externe e-mailserver nog steeds mislukken omdat de SMTP-bannerhost mogelijk overeenkomt met de MX-record voor het domein.

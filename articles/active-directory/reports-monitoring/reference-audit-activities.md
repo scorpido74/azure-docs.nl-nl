@@ -18,25 +18,25 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007752"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referentie voor auditactiviteiten van Azure AD
 
-Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u nodig hebt om te bepalen hoe uw omgeving wordt uitgevoerd.
+Met Azure AD-rapporten (Azure Directory) u de informatie krijgen die u nodig hebt om te bepalen hoe het met uw omgeving gaat.
 
 De rapportstructuur in Azure AD bestaat uit de volgende onderdelen:
 
 - **Activiteitsrapporten** 
-    - [Aanmeldingen](concept-sign-ins.md) : bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers
+    - [Aanmeldingsprogramma's](concept-sign-ins.md) – Biedt informatie over het gebruik van beheerde toepassingen en aanmeldingsactiviteiten voor gebruikers
     - [Auditlogboeken](concept-audit-logs.md): traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. 
     
 - **Beveiligingsrapporten** 
     - [Riskante aanmeldingen](concept-risky-sign-ins.md) - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
-    - [Gebruikers van wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
+    - [Gebruikers voor wie wordt aangegeven dat ze risico lopen](concept-user-at-risk.md) - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
 In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunnen worden geregistreerd.
 
@@ -64,12 +64,12 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Toegangsbeoordelingen|Aanvraag voor goedkeuring aanvraag beoordelen|
 |Toegangsbeoordelingen|Programmabeheer ontkoppelen|
 |Toegangsbeoordelingen|Toegangsbeoordeling bijwerken|
-|Toegangsbeoordelingen|Status van de onboarding van Azure AD-toegangs beoordelingen bijwerken|
+|Toegangsbeoordelingen|Onboarding-status azure AD Access-recensies bijwerken|
 |Toegangsbeoordelingen|Instellingen voor de e-mailmelding van de toegangsbeoordeling bijwerken|
-|Toegangsbeoordelingen|Instelling voor aantal herhalingen van de toegangs beoordeling bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangs beoordeling duur van terugkeer patroon in dagen bijwerken|
-|Toegangsbeoordelingen|Instelling van eind type van terugkeer patroon van toegangs beoordeling bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangs beoordeling van type terugkeer patroon bijwerken|
+|Toegangsbeoordelingen|Instelling voor het aantal herhalingsgegevens bijwerken van de toegangscontrole|
+|Toegangsbeoordelingen|Herhalingsduur van toegangscontrole bijwerken in dagen instelling|
+|Toegangsbeoordelingen|Instelling voor het opnieuw instellen van het opnieuw ontvangen weerseinde bijwerken|
+|Toegangsbeoordelingen|Instelling voor het opnieuw ontvangen van herhalingscontrole bijwerken|
 |Toegangsbeoordelingen|Herinneringsinstellingen toegangsbeoordeling bijwerken|
 |Toegangsbeoordelingen|Programma bijwerken|
 |Toegangsbeoordelingen|Aanvraaggoedkeuring bijwerken|
@@ -169,7 +169,7 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Autorisatie|V1-toepassingen ophalen|
 |Autorisatie|V2-toepassing ophalen|
 |Autorisatie|V2-toepassingen ophalen|
-|Autorisatie|Een B2C-Directory resource ophalen|
+|Autorisatie|Een B2C-mapbron|
 |Autorisatie|Een lijst met aangepaste domeinen in de tenant ophalen|
 |Autorisatie|Een gebruikersbeleving ophalen|
 |Autorisatie|Toegestane toepassingsclaims voor gebruikersbeleving ophalen|
@@ -348,10 +348,10 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Administratieve eenheden beheren|Een enkel type risico detectie downloaden|
+|Administratieve eenheden beheren|Download één type risicodetectie|
 |Administratieve eenheden beheren|Beheerders en status van aanmelding voor wekelijkse samenvatting downloaden|
-|Administratieve eenheden beheren|Alle typen risico detectie downloaden|
-|Administratieve eenheden beheren|Beschik bare risico detecties voor gebruikers downloaden|
+|Administratieve eenheden beheren|Alle typen risicodetectie downloaden|
+|Administratieve eenheden beheren|Download gratis gebruikersrisicodetecties|
 |Administratieve eenheden beheren|Gebruikers voor wie wordt aangegeven dat ze risico lopen downloaden|
 |Beheer van toepassingen|Verwerkte batchuitnodigingen|
 |Beheer van toepassingen|Geüploade batchuitnodigingen|
@@ -398,7 +398,7 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Mapbeheer|B2C-mapresources in een abonnement ophalen|
 |Mapbeheer|Aangepaste IDP ophalen|
 |Mapbeheer|IDP ophalen|
-|Mapbeheer|Een B2C-Directory resource ophalen|
+|Mapbeheer|Een B2C-mapbron|
 |Mapbeheer|Een gebruikersbeleving ophalen|
 |Mapbeheer|Toegestane toepassingsclaims voor gebruikersbeleving ophalen|
 |Mapbeheer|Toegestane zelf-gecontroleerde claims voor gebruikersbeleving ophalen|
@@ -408,14 +408,14 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Mapbeheer|IDP's voor een specifieke beheerstroom ophalen|
 |Mapbeheer|Lijst van alle beheerstromen ophalen|
 |Mapbeheer|Lijst met labels voor alle beheerstromen voor alle gebruikers ophalen|
-|Groepsbeheer|Groeps leden bulksgewijs downloaden-gestart|
-|Groepsbeheer|Groeps leden bulksgewijs downloaden-voltooid|
-|Groepsbeheer|Groeps leden voor bulk import-gestart|
-|Groepsbeheer|Groeps leden Bulk Import-voltooid|
-|Groepsbeheer|Groeps leden bulksgewijs verwijderen-gestart|
-|Groepsbeheer|Groeps leden bulksgewijs verwijderen-voltooid|
-|Groepsbeheer|Bulksgewijs downloaden van groepen-gestart|
-|Groepsbeheer|Groepen voor bulksgewijs downloaden-voltooid|
+|Groepsbeheer|Bulk Download groepsleden - gestart|
+|Groepsbeheer|Groepleden bulkdownloaden - klaar|
+|Groepsbeheer|Leden van bulkimportgroepen - gestart|
+|Groepsbeheer|Leden van bulkimportgroepen - voltooid|
+|Groepsbeheer|Bulk verwijderen groepsleden - gestart|
+|Groepsbeheer|Groepleden bulk verwijderen - voltooid|
+|Groepsbeheer|Bulk downloadgroepen - gestart|
+|Groepsbeheer|Bulk downloadgroepen - voltooid|
 |Groepsbeheer|Lijst met tenants voor een gebruiker ophalen|
 |Groepsbeheer|Zelf-gecontroleerde claims voor lokale accounts ophalen|
 |Groepsbeheer|Gelokaliseerde resource-json ophalen|
@@ -475,16 +475,16 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Gebruikersbeheer|Scoped lid aan rol toevoegen|
 |Gebruikersbeheer|Toegevoegd|
 |Gebruikersbeheer|Toewijzen|
-|Gebruikersbeheer|Bulksgewijs gemaakte gebruikers maken-gestart|
-|Gebruikersbeheer|Gebruikers bulksgewijs maken-voltooid|
-|Gebruikersbeheer|Gebruikers bulksgewijs verwijderen-gestart|
-|Gebruikersbeheer|Gebruikers bulksgewijs verwijderen-voltooid|
-|Gebruikersbeheer|Gebruikers met massale down load-gestart|
-|Gebruikersbeheer|Gebruikers bulksgewijs downloaden-voltooid|
-|Gebruikersbeheer|Verwijderde gebruikers bulksgewijs herstellen-gestart|
-|Gebruikersbeheer|Verwijderde gebruikers bulksgewijs herstellen-voltooid|
-|Gebruikersbeheer|Gebruikers met massale uitnodiging-gestart|
-|Gebruikersbeheer|Bulk-uitnodiging voor gebruikers-voltooid|
+|Gebruikersbeheer|Bulk maken gebruikers - gestart|
+|Gebruikersbeheer|Bulk maken gebruikers - klaar|
+|Gebruikersbeheer|Bulk verwijderen gebruikers - gestart|
+|Gebruikersbeheer|Bulk verwijderen gebruikers - klaar|
+|Gebruikersbeheer|Bulk download gebruikers - gestart|
+|Gebruikersbeheer|Bulk download gebruikers - klaar|
+|Gebruikersbeheer|Bulk herstel verwijderde gebruikers - gestart|
+|Gebruikersbeheer|Bulk herstel verwijderde gebruikers - klaar|
+|Gebruikersbeheer|Bulk nodiggebruikers uit - gestart|
+|Gebruikersbeheer|Bulk nodiggebruikers uit - klaar|
 |Gebruikersbeheer|Geregistreerde eigenaar van apparaat verwijderen|
 |Gebruikersbeheer|Geregistreerde gebruikers van apparaat verwijderen|
 |Gebruikersbeheer|In aanmerking komen lid uit rol verwijderen|
@@ -540,10 +540,10 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Groepsbeheer|Aanvraag voor goedkeuring aanvraag beoordelen|
 |Groepsbeheer|Toegangsbeoordeling bijwerken|
 |Groepsbeheer|Instellingen voor de e-mailmelding van de toegangsbeoordeling bijwerken|
-|Groepsbeheer|Instelling voor aantal herhalingen van de toegangs beoordeling bijwerken|
-|Groepsbeheer|Instelling voor toegangs beoordeling duur van terugkeer patroon in dagen bijwerken|
-|Gebruikersbeheer|Instelling van eind type van terugkeer patroon van toegangs beoordeling bijwerken|
-|Gebruikersbeheer|Instelling voor toegangs beoordeling van type terugkeer patroon bijwerken|
+|Groepsbeheer|Instelling voor het aantal herhalingsgegevens bijwerken van de toegangscontrole|
+|Groepsbeheer|Herhalingsduur van toegangscontrole bijwerken in dagen instelling|
+|Gebruikersbeheer|Instelling voor het opnieuw instellen van het opnieuw ontvangen weerseinde bijwerken|
+|Gebruikersbeheer|Instelling voor het opnieuw ontvangen van herhalingscontrole bijwerken|
 
 
 
@@ -554,21 +554,21 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
 |PIM|ActivationCanceled|
-|PIM|ActivationDenied|
+|PIM|Activeringgeweigerd|
 |PIM|ActivationRequested|
 |PIM|Toegevoegd|
-|PIM|AddedOutsidePIM|
+|PIM|ToegevoegdOutsidePIM|
 |PIM|Toewijzen|
-|PIM|DismissAlert|
+|PIM|Waarschuwing afwijzen|
 |PIM|Verhogen|
-|PIM|ReactivateAlert|
+|PIM|Opnieuw activerenWaarschuwing|
 |PIM|Verwijderd|
-|PIM|RemovedOutsidePIM|
+|PIM|RemovedOutsidePIM RemovedOutsidePIM|
 |PIM|Stoppen beoordeling aanvragen|
 |PIM|Wijzigingen van de rolinstelling|
 |PIM|ScanAlertsNow|
 |PIM|Registreren|
-|PIM|Toewijzing|
+|PIM|Intrekken|
 |PIM|Bevoegdheden verlagen|
 |PIM|UpdateAlertSettings|
 |PIM|UpdateCurrentState|
@@ -615,8 +615,8 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Gebruiksvoorwaarden|Toestemming verwijderen|
 |Gebruiksvoorwaarden|Gebruiksvoorwaarden verwijderen|
 |Gebruiksvoorwaarden|Gebruiksvoorwaarden bewerken|
-|Gebruiksvoorwaarden|Gebruiks voorwaarden verlopen|
-|Gebruiksvoorwaarden|Gebruiks voorwaarden voor hard verwijderen|
+|Gebruiksvoorwaarden|Gebruiksvoorwaarden verlopen|
+|Gebruiksvoorwaarden|Gebruiksvoorwaarden hard verwijderen|
 |Gebruiksvoorwaarden|Gebruiksvoorwaarden publiceren|
 |Gebruiksvoorwaarden|Publicatie van gebruiksvoorwaarden ongedaan maken|
 
@@ -624,5 +624,5 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure AD-rapporten](overview-reports.md).
-- [Rapport controle logboeken](concept-audit-logs.md). 
+- [Rapport controlelogboeken](concept-audit-logs.md). 
 - [Programmatische toegang tot Azure AD-rapporten](concept-reporting-api.md)

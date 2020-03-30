@@ -1,5 +1,5 @@
 ---
-title: De Table-API en Java gebruiken om een app te bouwen-Azure Cosmos DB
+title: De tabel-API en Java gebruiken om een app te bouwen - Azure Cosmos DB
 description: In deze quickstart ziet u hoe u de Table-API in Azure Cosmos DB gebruikt om een toepassing te maken met Azure Portal en Java
 author: SnehaGunda
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77212864"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Quick Start: een Java-app bouwen om Azure Cosmos DB Table-API gegevens te beheren
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Snelstart: een Java-app bouwen om Azure Cosmos DB Table API-gegevens te beheren
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -25,14 +25,14 @@ ms.locfileid: "77212864"
 > * [Python](create-table-python.md)
 > 
 
-In deze Quick Start maakt u een Azure Cosmos DB Table-API-account en gebruikt u Data Explorer en een Java-app die is gekloond van GitHub om tabellen en entiteiten te maken. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
+In deze quickstart maakt u een Azure Cosmos DB Table API-account en gebruikt u Data Explorer en een Java-app die is gekloond uit GitHub om tabellen en entiteiten te maken. Azure Cosmos DB is een databaseservice met meerdere modellen waarmee u snel document-, tabel-, sleutelwaarde- en grafiekdatabases maken en opvragen met globale distributie- en horizontale schaalmogelijkheden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
-- [Jdk 8 (Java Development Kit)](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Verwijs uw `JAVA_HOME` omgevings variabele naar de map waarin de JDK is geïnstalleerd.
-- Een [binair maven-archief](https://maven.apache.org/download.cgi). 
-- [Git](https://www.git-scm.com/downloads). 
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U ook de [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel. `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Wijs `JAVA_HOME` uw omgevingsvariabele op de map waar de JDK is geïnstalleerd.
+- Een [Maven binair archief](https://maven.apache.org/download.cgi). 
+- [Git.](https://www.git-scm.com/downloads) 
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -76,13 +76,13 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Selecteer in uw Azure Cosmos DB-account [](https://portal.azure.com/)in de Azure Portal **verbindings reeks**. 
+1. Selecteer **Verbindingstekenreeks**in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/). 
 
-   ![De connection string-informatie in het deel venster verbindings reeks weer geven](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
+   ![De verbindingstekenreeksgegevens weergeven in het deelvenster Verbindingstekenreeks](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. Kopieer de PRIMARY CONNECTION STRING met behulp van de knop Kopiëren aan de rechterkant.
 
-3. Open *config. Properties* vanuit de map *C:\git-samples\storage-Table-Java-Getting-started\src\main\resources* . 
+3. Open *config.properties* uit de map *C:\git-samples\storage-table-java-getting-started\src\main\resources.* 
 
 5. De volgende stap is het uitcommentariëren van regel 1, waarna u het commentaar van regel 2 verwijdert. De eerste twee regels moeten er nu als volgt uitzien.
 
@@ -97,11 +97,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     > Als uw eindpunt documents.azure.com gebruikt, hebt u een preview-account en moet u een [nieuw Table-API-account](#create-a-database-account) maken om te kunnen werken met de algemeen beschikbare SDK voor Table- API.
     >
 
-7. Sla het bestand *config. Properties* op.
+7. Sla het bestand *config.properties* op.
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 1. `cd` in het git-terminalvenster naar de map storage-table-java-getting-started.
 
@@ -109,7 +109,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
     cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
-2. Voer in het git-Terminal venster de volgende opdrachten uit om de Java-toepassing uit te voeren.
+2. Voer in het venster git-terminal de volgende opdrachten uit om de Java-toepassing uit te voeren.
 
     ```git
     mvn compile exec:java 
@@ -129,7 +129,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, een tabel maakt met behulp van de Data Explorer en een Java-app uitvoert om tabel gegevens toe te voegen.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
+In deze snelstart hebt u geleerd hoe u een Azure Cosmos DB-account maakt, een tabel maakt met de Gegevensverkenner en een Java-app uitvoert om tabelgegevens toe te voegen.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
 
 > [!div class="nextstepaction"]
 > [Tabelgegevens importeren in de Table-API](table-import.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall implementeren in een hybride netwerk met behulp van Power shell & configureren
-description: In dit artikel vindt u informatie over het implementeren en configureren van Azure Firewall met behulp van Azure PowerShell.
+title: Azure Firewall in hybride netwerk & configureren implementeren met PowerShell
+description: In dit artikel vindt u informatie over het implementeren en configureren van Azure Firewall met Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -9,10 +9,10 @@ ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471751"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
@@ -25,7 +25,7 @@ Voor dit artikel maakt u drie virtuele netwerken:
 
 - **VNet-Hub**: de firewall bevindt zich in dit virtuele netwerk.
 - **VNet-spoke**: het virtuele spoke-netwerk vertegenwoordigt de workload die zich bevindt in Azure.
-- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een daad werkelijke implementatie kan het worden verbonden door een VPN-of ExpressRoute-verbinding. Ter vereenvoudiging maakt dit artikel gebruik van een VPN-gateway verbinding en wordt een virtueel netwerk met Azure-locatie gebruikt om een on-premises netwerk aan te duiden.
+- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een daadwerkelijke implementatie kan het worden verbonden via een VPN- of ExpressRoute-verbinding. Voor de eenvoud maakt dit artikel gebruik van een VPN-gatewayverbinding en wordt een virtueel netwerk dat is gevestigd in Azure gebruikt om een on-premises netwerk te vertegenwoordigen.
 
 ![Firewall in een hybride netwerk](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -43,39 +43,39 @@ In dit artikel leert u het volgende:
 > * De virtuele machines maken
 > * De firewall testen
 
-Zie [zelf studie: Azure firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal](tutorial-hybrid-portal.md)als u in plaats daarvan Azure Portal wilt gebruiken om deze zelf studie te volt ooien.
+Zie [Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure-portal](tutorial-hybrid-portal.md)als u azure-portal wilt gebruiken om deze zelfstudie te voltooien.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor dit artikel moet u Power shell lokaal uitvoeren. U moet de module Azure PowerShell hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+In dit artikel moet u PowerShell lokaal uitvoeren. U moet de Azure PowerShell-module hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
 
 Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
 
-- Een door de gebruiker gedefinieerde route (UDR) in het spoke-subnet die verwijst naar het IP-adres van Azure Firewall als de standaardgateway. De route doorgifte van de virtuele netwerk gateway moet worden **uitgeschakeld** voor deze route tabel.
+- Een door de gebruiker gedefinieerde route (UDR) in het spoke-subnet die verwijst naar het IP-adres van Azure Firewall als de standaardgateway. De verspreiding van virtuele netwerkgatewayroutes moet in deze routetabel worden **uitgeschakeld.**
 - Een door de gebruiker gedefinieerde route (UDR) in het subnet van de hubgateway moet verwijzen naar het IP-adres van de firewall als de volgende hop naar de spoke-netwerken.
 
    Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
 - Zorg dat u **AllowGatewayTransit** instelt voor de peering van VNet-Hub naar VNet-Spoke en **UseRemoteGateways** voor de peering van VNet-Spoke naar VNet-Hub.
 
-Zie de sectie [routes maken](#create-the-routes) in dit artikel om te zien hoe deze routes worden gemaakt.
+Zie de sectie [Routes maken](#create-the-routes) in dit artikel om te zien hoe deze routes worden gemaakt.
 
 >[!NOTE]
->Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
+>Azure Firewall moet een directe internetverbinding hebben. Als uw AzureFirewallSubnet via BGP een standaardroute naar uw on-premises netwerk leert, moet u dit overschrijven met een 0.0.0.0/0 UDR met de **NextHopType-waarde** ingesteld als **internet** om directe internetverbinding te behouden.
 >
->Azure Firewall kunnen worden geconfigureerd voor de ondersteuning van geforceerde tunneling. Zie [Azure firewall geforceerde tunneling](forced-tunneling.md)voor meer informatie.
+>Azure Firewall kan worden geconfigureerd ter ondersteuning van gedwongen tunneling. Zie [Azure Firewall forced tunneling](forced-tunneling.md)voor meer informatie.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.
 
 Zie [Naslagdocumentatie voor Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall) om de gerelateerde naslaginformatie voor Azure PowerShell te bekijken.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="declare-the-variables"></a>De variabelen declareren
 
-In het volgende voor beeld worden de variabelen gedeclareerd met de waarden voor dit artikel. In sommige gevallen moet u mogelijk bepaalde waarden vervangen door uw eigen waarden om in uw abonnement te kunnen werken. Wijzig de variabelen als dat nodig is en kopieer en plak ze vervolgens in uw PowerShell-console.
+In het volgende voorbeeld worden de variabelen declareert met behulp van de waarden voor dit artikel. In sommige gevallen moet u mogelijk bepaalde waarden vervangen door uw eigen waarden om in uw abonnement te kunnen werken. Wijzig de variabelen als dat nodig is en kopieer en plak ze vervolgens in uw PowerShell-console.
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -119,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Het virtuele hub-netwerk voor de firewall maken
 
-Maak eerst de resource groep die de resources voor dit artikel bevat:
+Maak eerst de resourcegroep met de bronnen voor dit artikel:
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -139,7 +139,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Vraag een openbaar IP-adres aan dat moet worden toegewezen aan de VPN-gateway die u voor uw virtuele netwerk maakt. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw VPN-gateway.
+Vraag een openbaar IP-adres aan om te worden toegewezen aan de VPN-gateway die u voor uw virtuele netwerk maakt. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw VPN-gateway.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -178,7 +178,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Vraag een openbaar IP-adres aan dat moet worden toegewezen aan de gateway die u voor het virtuele netwerk gaat maken. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw gateway.
+Vraag een openbaar IP-adres aan om te worden toegewezen aan de gateway die u maakt voor het virtuele netwerk. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw gateway.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -293,7 +293,7 @@ Maak de verbinding van het on-premises virtuele netwerk naar het virtuele hub-ne
 
 #### <a name="verify-the-connection"></a>De verbinding controleren
 
-U kunt een geslaagde verbinding controleren met behulp van de cmdlet *Get-AzVirtualNetworkGatewayConnection* , met of zonder *-debug*. Gebruik het volgende cmdlet-voorbeeld om de waarden aan te passen aan uw eigen waarden. Selecteer **A** als dit wordt gevraagd om **alles** uit te voeren. In het voorbeeld verwijst *-Name* naar de naam van de verbinding die u wilt testen.
+U een geslaagde verbinding verifiëren met de cmdlet *Get-AzVirtualNetworkConnectionConnection,* met of zonder *foutopsporing*. Gebruik het volgende cmdlet-voorbeeld om de waarden aan te passen aan uw eigen waarden. Selecteer **A** als dit wordt gevraagd om **alles** uit te voeren. In het voorbeeld verwijst *-Naam* naar de naam van de verbinding die u wilt testen.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -472,7 +472,7 @@ Maak vanaf **VM-Onprem** met Extern bureaublad verbinding met **VM-spoke-01** op
 
 Deze verbinding moet worden gemaakt en u moet zich kunnen aanmelden met uw gekozen gebruikersnaam en wachtwoord.
 
-Nu hebt u gecontroleerd of de firewall regels werken:
+Dus nu heb je geverifieerd dat de firewall regels werken:
 
 <!---- You can ping the server on the spoke VNet.--->
 - U kunt de bladeren op de webserver in het virtuele spoke-netwerk.

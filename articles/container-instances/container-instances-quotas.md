@@ -1,20 +1,20 @@
 ---
-title: Service quota's en beschik baarheid van regio's
+title: Servicequota en beschikbaarheid van regio's
 description: Quota, limieten en beschikbaarheid in regio's van de Azure Container Instances-service.
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117899"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Quota en limieten voor Azure Container Instances
 
-Alle Azure-services bevatten bepaalde standaardlimieten en -quota voor resources en functies. In dit artikel worden de standaard quota en-limieten voor Azure Container Instances beschreven.
+Alle Azure-services bevatten bepaalde standaardlimieten en -quota voor resources en functies. In dit artikel worden de standaardquota en limieten voor Azure Container Instances beschreven.
 
-De beschik baarheid van compute-, geheugen-en opslag resources voor Azure Container Instances varieert per regio en besturings systeem. Zie [Beschik baarheid van resources voor Azure container instances](container-instances-region-availability.md)voor meer informatie.
+De beschikbaarheid van reken-, geheugen- en opslagbronnen voor Azure Container Instances verschilt per regio en besturingssysteem. Zie [Resourcebeschikbaarheid voor Azure Container Instances voor](container-instances-region-availability.md)meer informatie.
 
 ## <a name="service-quotas-and-limits"></a>Servicequota en -limieten
 
@@ -22,7 +22,7 @@ De beschik baarheid van compute-, geheugen-en opslag resources voor Azure Contai
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als u een verhoging wilt aanvragen van een of meer resources die een dergelijke verhoging ondersteunen, dient u een [ondersteunings aanvraag voor Azure][azure-support] in te dienen (Selecteer quotum voor **probleem type**).
+Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als u een verhoging wilt aanvragen voor een of meer resources die een dergelijke verhoging ondersteunen, dient u een [Azure-ondersteuningsaanvraag][azure-support] in (selecteer Quota bij **Type probleem**).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

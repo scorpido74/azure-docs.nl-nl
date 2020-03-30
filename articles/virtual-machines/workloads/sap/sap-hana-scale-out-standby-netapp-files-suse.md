@@ -1,6 +1,6 @@
 ---
-title: SAP HANA uitschalen met stand-by met Azure NetApp Files op SLES | Microsoft Docs
-description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
+title: SAP HANA scale-out met stand-by met Azure NetApp Files op SLES | Microsoft Documenten
+description: Handleiding voor hoge beschikbaarheid voor SAP NetWeaver op SUSE Linux Enterprise Server met Azure NetApp-bestanden voor SAP-toepassingen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
 ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565805"
 ---
-# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server 
+# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Een SAP HANA-scale-outsysteem met stand-by node op Azure VM's implementeren met Azure NetApp-bestanden op SUSE Linux Enterprise Server 
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -33,17 +33,17 @@ ms.locfileid: "77565805"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
-[1900823]: https://launchpad.support.sap.com/#/notes/1900823
+[1900823]:https://launchpad.support.sap.com/#/notes/1900823
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -55,211 +55,211 @@ ms.locfileid: "77565805"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-In dit artikel wordt beschreven hoe u een Maxi maal beschikbaar SAP HANA systeem kunt implementeren in een scale-out configuratie met stand-by op Azure virtual machines (Vm's) met behulp van [Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) voor de gedeelde opslag volumes.  
+In dit artikel wordt beschreven hoe u een zeer beschikbaar SAP HANA-systeem implementeert in een scale-outconfiguratie met stand-by op Virtuele Azure-machines (VM's) door [Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) te gebruiken voor de gedeelde opslagvolumes.  
 
-In de voorbeeld configuraties, installatie opdrachten, enzovoort, is de HANA-instantie **03** en de Hana-systeem-id **HN1**. De voor beelden zijn gebaseerd op HANA 2,0 SP4 en SUSE Linux Enterprise Server voor SAP 12 SP4. 
+In de voorbeeldconfiguraties, installatieopdrachten, enzovoort, is de HANA-instantie **03** en is de HANA-systeem-ID **HN1**. De voorbeelden zijn gebaseerd op HANA 2.0 SP4 en SUSE Linux Enterprise Server voor SAP 12 SP4. 
 
-Raadpleeg voordat u begint de volgende SAP-opmerkingen en-documenten:
+Raadpleeg voordat u begint de volgende SAP-notities en -documenten:
 
-* [Documentatie over Azure NetApp Files][anf-azure-doc] 
-* SAP-opmerking [1928533] omvat:  
-  * Een lijst met Azure-VM-grootten die worden ondersteund voor de implementatie van SAP-software
-  * Informatie over belang rijke capaciteit voor Azure VM-grootten
-  * Ondersteunde SAP-software en besturings systemen (OS) en database combinaties
-  * De vereiste versie van de SAP-kernel voor Windows en Linux op Microsoft Azure
-* SAP-opmerking [2015553]: bevat vereisten voor SAP-ondersteunde SAP-software-implementaties in azure
-* SAP-opmerking [2205917]: bevat aanbevolen instellingen voor het besturings systeem voor SuSE Linux Enterprise Server SAP-toepassingen
-* SAP-opmerking [1944799]: bevat SAP-richt lijnen voor SuSE Linux Enterprise Server voor SAP-toepassingen
-* SAP-opmerking [2178632]: bevat gedetailleerde informatie over alle bewakings gegevens die zijn gerapporteerd voor SAP in azure
-* SAP-opmerking [2191498]: bevat de vereiste SAP host agent-versie voor Linux in azure
-* SAP-opmerking [2243692]: bevat informatie over SAP-licentie verlening op Linux in azure
-* SAP-opmerking [1984787]: bevat algemene informatie over SuSE Linux Enterprise Server 12
-* SAP-opmerking [1999351]: bevat aanvullende informatie voor het oplossen van problemen met de uitgebreide bewakings extensie van Azure voor SAP
-* SAP-opmerking [1900823]: bevat informatie over SAP Hana opslag vereisten
-* [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): bevat alle vereiste SAP-notities voor Linux
+* [Azure NetApp-bestandendocumentatie][anf-azure-doc] 
+* SAP Note [1928533] bevat:  
+  * Een lijst met Azure VM-formaten die worden ondersteund voor de implementatie van SAP-software
+  * Belangrijke capaciteitsinformatie voor Azure VM-formaten
+  * Ondersteunde SAP-software en besturingssysteem- en databasecombinaties
+  * De vereiste SAP-kernelversie voor Windows en Linux op Microsoft Azure
+* SAP Note [2015553]: Bevat vereisten voor SAP-ondersteunde SAP-softwareimplementaties in Azure
+* SAP Note [2205917]: Bevat aanbevolen OS-instellingen voor SUSE Linux Enterprise Server voor SAP-toepassingen
+* SAP Note [1944799]: Bevat SAP-richtlijnen voor SUSE Linux Enterprise Server voor SAP-toepassingen
+* SAP Note [2178632]: Bevat gedetailleerde informatie over alle monitoringstatistieken die voor SAP in Azure worden gerapporteerd
+* SAP Note [2191498]: Bevat de vereiste SAP Host Agent-versie voor Linux in Azure
+* SAP Note [2243692]: Bevat informatie over SAP-licenties op Linux in Azure
+* SAP Note [1984787]: Bevat algemene informatie over SUSE Linux Enterprise Server 12
+* SAP Note [1999351]: Bevat aanvullende informatie over probleemoplossing voor de Azure Enhanced Monitoring Extension voor SAP
+* SAP Note [1900823]: Bevat informatie over sap HANA-opslagvereisten
+* [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Bevat alle vereiste SAP notes voor Linux
 * [Azure Virtual Machines planning en implementatie voor SAP op Linux][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP op Linux][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
-* [Hand leidingen voor best practices van SuSE SAP ha][suse-ha-guide]: bevat alle vereiste informatie voor het instellen van een hoge Beschik baarheid van netweave en SAP Hana systeem replicatie on-premises (wordt gebruikt als algemene basis lijn; ze bieden veel meer gedetailleerde informatie)
-* [Release opmerkingen voor de SUSE-extensie voor hoge Beschik baarheid van 12 SP3][suse-ha-12sp3-relnotes]
-* [NetApp SAP-toepassingen op Microsoft Azure met behulp van Azure NetApp Files][anf-sap-applications-azure]
-* [SAP Hana op NetApp-systemen met NFS (Network File System)](https://www.netapp.com/us/media/tr-4435.pdf): een configuratie handleiding die informatie bevat over het instellen van SAP Hana met behulp van Azure NFS by NetApp
+* [SUSE SAP HA Best Practice Guides][suse-ha-guide]: Bevat alle benodigde informatie voor het instellen van NetWeaver High Availability en SAP HANA System Replication on-premises (te gebruiken als algemene basislijn; ze bieden veel meer gedetailleerde informatie)
+* [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes]
+* [NetApp SAP-toepassingen op Microsoft Azure met Azure NetApp-bestanden][anf-sap-applications-azure]
+* [SAP HANA op NetApp Systems with Network File System (NFS)](https://www.netapp.com/us/media/tr-4435.pdf): Een configuratiehandleiding met informatie over het instellen van SAP HANA met behulp van Azure NFS by NetApp
 
 
 ## <a name="overview"></a>Overzicht
 
-Eén methode voor het bereiken van HANA hoge Beschik baarheid is door automatische failover van de host te configureren. Als u de automatische failover van de host wilt configureren, voegt u een of meer virtuele machines toe aan het HANA-systeem en configureert u deze als stand-by-knoop punten. Wanneer het actieve knoop punt mislukt, neemt een stand-by-knoop punt automatisch over. In de gepresenteerde configuratie met Azure virtual machines behaalt u automatische failover door gebruik te maken [van NFS op Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).  
+Een methode voor het bereiken van HANA hoge beschikbaarheid is door het configureren van host auto failover. Als u hostautomatische failover wilt configureren, voegt u een of meer virtuele machines toe aan het HANA-systeem en configureert u deze als stand-byknooppunten. Wanneer het actieve knooppunt uitvalt, neemt een stand-by knooppunt het automatisch over. In de gepresenteerde configuratie met virtuele Azure-machines bereikt u automatische failover door NFS te gebruiken [op Azure NetApp-bestanden.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)  
 
 > [!NOTE]
-> Het knoop punt stand-by moet toegang hebben tot alle database volumes. De HANA-volumes moeten worden gekoppeld als NFSv4-volumes. Het verbeterde vergrendelings mechanisme op basis van bestands leases in het NFSv4-protocol wordt gebruikt voor `I/O` omheining. 
+> Het stand-by knooppunt heeft toegang nodig tot alle databasevolumes. De HANA volumes moeten worden gemonteerd als NFSv4 volumes. Het verbeterde file lease-gebaseerde vergrendelingsmechanisme in `I/O` het NFSv4-protocol wordt gebruikt voor het schermen. 
 
 > [!IMPORTANT]
-> Als u de ondersteunde configuratie wilt maken, moet u de HANA-gegevens en logboek volumes als NFSv 4.1-volumes implementeren en koppelen met behulp van het NFSv 4.1-protocol. De configuratie van de automatische failover van de HANA-host met het stand-by-knoop punt wordt niet ondersteund met NFSv3.
+> Als u de ondersteunde configuratie wilt bouwen, moet u de HANA-gegevens en logboekvolumes implementeren als NFSv4.1-volumes en deze monteren met behulp van het NFSv4.1-protocol. De HANA host auto-failover configuratie met stand-by node wordt niet ondersteund met NFSv3.
 
-![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
+![Overzicht van SAP NetWeaver Hoge beschikbaarheid](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
-In het voor gaande diagram, dat volgt SAP HANA netwerk aanbevelingen, worden drie subnetten weer gegeven in één virtueel Azure-netwerk: 
-* Voor client communicatie
-* Voor communicatie met het opslag systeem
-* Voor interne HANA-communicatie tussen knoop punten
+In het voorgaande diagram, dat de aanbevelingen van het SAP HANA-netwerk volgt, worden drie subnetten weergegeven binnen één virtueel Azure-netwerk: 
+* Voor klantcommunicatie
+* Voor communicatie met het opslagsysteem
+* Voor interne HANA inter-node communicatie
 
-De Azure NetApp-volumes bevinden zich in een afzonderlijk subnet, [gedelegeerd aan Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+De Azure NetApp-volumes bevinden zich in een afzonderlijk subnet, [gedelegeerd aan Azure NetApp-bestanden.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)  
 
-Voor deze voorbeeld configuratie zijn de subnetten:  
+Voor deze voorbeeldconfiguratie zijn de subnetten:  
 
-  - `client` 10.23.0.0/24  
-  - `storage` 10.23.2.0/24  
-  - `hana` 10.23.3.0/24  
-  - `anf` 10.23.1.0/26  
+  - `client`10.23.0.0/24  
+  - `storage`10.23.2.0/24  
+  - `hana`10.23.3.0/24  
+  - `anf`10.23.1.0/26  
 
-## <a name="set-up-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur instellen 
+## <a name="set-up-the-azure-netapp-files-infrastructure"></a>De Infrastructuur voor Azure NetApp-bestanden instellen 
 
-Voordat u verdergaat met de installatie van Azure NetApp Files-infra structuur, moet u vertrouwd raken met de [Azure NetApp files-documentatie][anf-azure-doc]. 
+Voordat u verder gaat met de installatie voor Azure NetApp Files-infrastructuur, moet u vertrouwd raken met de [documentatie van Azure NetApp-bestanden.][anf-azure-doc] 
 
-Azure NetApp Files is beschikbaar in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Controleer of de geselecteerde Azure-regio Azure NetApp Files bevat.  
+Azure NetApp-bestanden zijn beschikbaar in verschillende [Azure-regio's.](https://azure.microsoft.com/global-infrastructure/services/?products=netapp) Controleer of uw geselecteerde Azure-regio Azure NetApp-bestanden biedt.  
 
-Zie [Azure NetApp files Beschik baarheid per Azure][anf-avail-matrix]-regio voor meer informatie over de beschik baarheid van Azure NetApp files per Azure-regio.  
+Zie [Azure NetApp-bestandenbeschikbaarheid per Azure-regio voor][anf-avail-matrix]informatie over de beschikbaarheid van Azure NetApp-bestanden per Azure-regio.  
 
-Voordat u Azure NetApp Files implementeert, vraagt u om onboarding naar Azure NetApp Files door te gaan met de [registratie voor Azure NetApp files instructies][anf-register]. 
+Voordat u Azure NetApp-bestanden implementeert, moet u onboarding aanvragen bij Azure NetApp-bestanden door naar [Instructies voor Azure NetApp-bestanden][anf-register]te gaan. 
 
-### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files-resources implementeren  
+### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp-bestandenresources implementeren  
 
-Bij de volgende instructies wordt ervan uitgegaan dat u uw [virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)al hebt geïmplementeerd. De Azure NetApp Files resources en virtuele machines, waarbij de Azure NetApp Files resources worden gekoppeld, moeten worden geïmplementeerd in hetzelfde virtuele Azure-netwerk of in peered virtuele netwerken van Azure.  
+De volgende instructies gaan ervan uit dat u uw [virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)al hebt geïmplementeerd. De bronnen en VM's van Azure NetApp Files, waar de Azure NetApp-bestandenbronnen worden gemonteerd, moeten worden geïmplementeerd in hetzelfde virtuele Azure-netwerk of in gepeerde Virtuele Netwerken van Azure.  
 
-1. Als u de resources nog niet hebt geïmplementeerd, vraagt u [om onboarding naar Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Als u de resources nog niet hebt geïmplementeerd, vraagt u [onboarding aan bij Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
-2. Maak een NetApp-account in uw geselecteerde Azure-regio door de instructies in [een NetApp-account maken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)te volgen.  
+2. Maak een NetApp-account in uw geselecteerde Azure-regio door de instructies in [Een NetApp-account maken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)te volgen.  
 
-3. Stel een Azure NetApp Files capaciteits groep in door de instructies in [een Azure NetApp files-capaciteits groep instellen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)te volgen.  
+3. Stel een capaciteitsgroep voor Azure NetApp-bestanden in door de instructies in [een capaciteitsgroep voor Azure NetApp-bestanden in te stellen.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)  
 
-   De HANA-architectuur die in dit artikel wordt gepresenteerd, maakt gebruik van één Azure NetApp Files capaciteits groep op het *Ultra service* -niveau. Voor HANA-workloads in azure kunt u het beste een Azure NetApp Files *Ultra* -of *Premium* - [service niveau](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)gebruiken.  
+   De HANA-architectuur die in dit artikel wordt gepresenteerd, maakt gebruik van één Azure NetApp-capaciteitsgroep op *Ultra-serviceniveau.* Voor HANA-workloads op Azure raden we u aan een Azure NetApp Files *Ultra-* of [Premium-serviceniveau te](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)gebruiken. *Premium*  
 
-4. Delegeer een subnet aan Azure NetApp Files, zoals beschreven in de instructies in [een subnet overdragen aan Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+4. Delegeren van een subnet aan Azure NetApp Files, zoals beschreven in de instructies in [Een subnet delegeren aan Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Implementeer Azure NetApp Files volumes door de instructies in [een NFS-volume maken voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)te volgen.  
+5. Azure NetApp-bestandenvolumes implementeren door de instructies te volgen in [Een NFS-volume maken voor Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
 
-   Wanneer u de volumes implementeert, moet u ervoor zorgen dat u de **nfsv 4.1** -versie selecteert. De toegang tot NFSv 4.1 vereist momenteel extra white list. Implementeer de volumes in het aangewezen Azure NetApp Files [subnet](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). 
+   Wanneer u de volumes implementeert, moet u de **NFSv4.1-versie** selecteren. Op dit moment vereist toegang tot NFSv4.1 extra whitelisting. Implementeer de volumes in het aangewezen [subnet](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)Azure NetApp Files . 
    
-   Houd er rekening mee dat de Azure NetApp Files resources en de virtuele Azure-machines zich in hetzelfde virtuele Azure-netwerk moeten bevinden of in een Peerd Azure Virtual Network. Bijvoorbeeld: **HN1**-data-Mnt00001, **HN1**-log-mnt00001, enzovoort, zijn de volume namen en NFS://10.23.1.5/**HN1**-data-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001, enzovoort, de bestands paden voor de Azure NetApp files volumes.  
+   Houd er rekening mee dat de Azure NetApp Files-bronnen en de Azure VM's zich in hetzelfde azure virtuele netwerk of in gepeerde Azure-virtuele netwerken moeten bevinden. **Bijvoorbeeld, HN1**-data-mnt00001, **HN1**-log-mnt00001, enzovoort, zijn de volumenamen en nfs://10.23.1.5/**HN1**-data-mnt00001, nfs://10.23.1.4/**HN1**-log-mnt00001, enzovoort, zijn de bestandspaden voor de Azure NetApp Files-volumes.  
 
-   * volume **HN1**-data-mnt00001 (NFS://10.23.1.5/**HN1**-data-mnt00001)
-   * volume **HN1**-data-mnt00002 (NFS://10.23.1.6/**HN1**-data-mnt00002)
-   * volume **HN1**-log-mnt00001 (NFS://10.23.1.4/**HN1**-log-mnt00001)
-   * volume **HN1**-log-mnt00002 (NFS://10.23.1.6/**HN1**-log-mnt00002)
-   * volume **HN1**-shared (NFS://10.23.1.4/**HN1**-Shared)
+   * volume **HN1**-data-mnt00001 (nfs://10.23.1.5/**HN1**-data-mnt00001)
+   * volume **HN1**-data-mnt00002 (nfs://10.23.1.6/**HN1**-data-mnt00002)
+   * volume **HN1**-log-mnt00001 (nfs://10.23.1.4/**HN1**-log-mnt00001)
+   * volume **HN1**-log-mnt00002 (nfs://10.23.1.6/**HN1**-log-mnt00002)
+   * volume **HN1**-gedeeld (nfs://10.23.1.4/**HN1**-gedeeld)
    
-   In dit voor beeld hebben we een afzonderlijke Azure NetApp Files-volume gebruikt voor elk HANA-gegevens-en logboek volume. Voor een kosten geoptimaliseerde configuratie op kleinere of niet-productieve systemen is het mogelijk om alle gegevens koppelingen en alle logboeken te koppelen aan één volume.  
+   In dit voorbeeld gebruikten we een afzonderlijk Azure NetApp Files-volume voor elk HANA-gegevens- en logboekvolume. Voor een meer kostengeoptimaliseerde configuratie op kleinere of niet-productieve systemen is het mogelijk om alle gegevensbevestigingen en alle logboeken op één volume te plaatsen.  
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
-Houd bij het maken van uw Azure NetApp Files voor SAP NetWeaver op SUSE-architectuur met hoge Beschik baarheid rekening met de volgende belang rijke overwegingen:
+Houd tijdens het maken van uw Azure NetApp-bestanden voor SAP NetWeaver op de SUSE-architectuur voor hoge beschikbaarheid rekening met de volgende belangrijke overwegingen:
 
-- De minimale capaciteits pool is 4 tebibytes (TiB).  
-- De minimale volume grootte is 100 gibibytes (GiB).
-- Azure NetApp Files en alle virtuele machines waar de Azure NetApp Files volumes worden gekoppeld, moeten zich in hetzelfde virtuele Azure-netwerk of in gekoppelde [virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio bevinden.  
-- Het geselecteerde virtuele netwerk moet een subnet hebben dat is overgedragen aan Azure NetApp Files.
-- De door Voer van een Azure NetApp Files volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Wanneer u het formaat van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.  
-- Met de Azure NetApp Files [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)kunt u de toegestane clients, het toegangs type (lezen-schrijven, alleen-lezen, enzovoort) beheren. 
-- De functie Azure NetApp Files is nog geen zone-bewust. Op dit moment wordt de functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's.  
+- De minimale capaciteitspool is 4 tebibytes (TiB).  
+- De minimale volumegrootte is 100 gibibytes (GiB).
+- Azure NetApp-bestanden en alle virtuele machines waar de Azure NetApp-bestandenvolumes worden gemonteerd, moeten zich in hetzelfde virtuele Azure-netwerk bevinden of in [peered virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio.  
+- Het geselecteerde virtuele netwerk moet een subnet hebben dat is gedelegeerd aan Azure NetApp-bestanden.
+- De doorvoer van een Azure NetApp Files-volume is een functie van het volumequotum en serviceniveau, zoals gedocumenteerd in [Serviceniveau voor Azure NetApp-bestanden.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) Wanneer u de HANA Azure NetApp-volumes in de maat maakt, moet u ervoor zorgen dat de resulterende doorvoer voldoet aan de HANA-systeemvereisten.  
+- Met het [exportbeleid voor](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)Azure NetApp-bestanden u de toegestane clients, het toegangstype (lezen, lezen alleen, enzovoort) beheren. 
+- De functie Azure NetApp-bestanden is nog niet zonebewust. Momenteel wordt de functie niet geïmplementeerd in alle beschikbaarheidszones in een Azure-gebied. Wees je bewust van de mogelijke latentie-implicaties in sommige Azure-regio's.  
 -  
 
 > [!IMPORTANT]
-> Voor SAP HANA werk belastingen is lage latentie van cruciaal belang. Werk samen met uw micro soft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp Files-volumes dicht bij elkaar worden geïmplementeerd.  
+> Voor SAP HANA-workloads is lage latentie van cruciaal belang. Werk samen met uw Microsoft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp-bestanden in de nabijheid worden geïmplementeerd.  
 
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Grootte van HANA-Data Base op Azure NetApp Files
+### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Grootte voor HANA-database op Azure NetApp-bestanden
 
-De door Voer van een Azure NetApp Files volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). 
+De doorvoer van een Azure NetApp Files-volume is een functie van de volumegrootte en het serviceniveau, zoals gedocumenteerd in [Serviceniveau voor Azure NetApp-bestanden.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 
 
-Bij het ontwerpen van de infra structuur voor SAP in azure, moet u rekening houden met een minimum aan vereisten voor opslag door SAP, dat wordt omgezet in kenmerken met minimale door Voer:
+Wanneer u de infrastructuur voor SAP in Azure ontwerpt, moet u rekening houden met een aantal minimale opslagvereisten van SAP, wat zich vertaalt in minimale doorvoerkenmerken:
 
-- Schakel lezen/schrijven in op/Hana/log van 250 mega bytes per seconde (MB/s) met 1 MB I/O-grootten.  
-- Schakel lezen-activiteit van ten minste 400 MB/s voor/Hana/data in voor de I/O-grootten van 16 MB en 64 MB.  
-- Schakel schrijf activiteit van ten minste 250 MB/s in voor/Hana/data met 16 MB en 64-MB I/O-grootten. 
+- Lees-schrijven op /hana/log van 250 megabyte per seconde (MB/s) met 1 MB I/O-formaten.  
+- Leesactiviteit van ten minste 400 MB/s inschakelen voor /hana/gegevens voor 16 MB en 64 MB I/O-formaten.  
+- Schrijfactiviteit van ten minste 250 MB/s inschakelen voor /hana/gegevens met 16 MB en 64 MB I/O-formaten. 
 
-De [Azure NetApp files doorvoer limieten](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) per 1 TIB volume quota zijn:
-- Premium Storage-laag-64-MiB/s  
-- Ultra Storage-laag-128 MiB/s  
+De [doorvoerlimieten voor Azure NetApp-bestanden](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) per volumequotum van 1 TiB zijn:
+- Premium Storage tier - 64 MiB/s  
+- Ultra-opslaglaag - 128 MiB/s  
 
-Om te voldoen aan de vereisten voor de minimum doorvoer van SAP voor gegevens en logboeken en de richt lijnen voor/Hana/Shared, zijn de aanbevolen grootten:
+Om te voldoen aan de SAP minimale doorvoervereisten voor gegevens en logboek, en de richtlijnen voor /hana/shared, zijn de aanbevolen maten:
 
-| Volume | Grootte van<br>Laag Premium Storage | Grootte van<br>Ultra Storage-laag | Ondersteund NFS-protocol |
+| Volume | Grootte van<br>Premium opslaglaag | Grootte van<br>Ultraopslaglaag | Ondersteund NFS-protocol |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
-| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /hana/shared | Max. (512 GB, 1xRAM) per 4 worker-knoop punten | Max. (512 GB, 1xRAM) per 4 worker-knoop punten | v3 of v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v4.1 |
+| /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
+| /hana/gedeeld | Max (512 GB, 1xRAM) per 4 werkknooppunten | Max (512 GB, 1xRAM) per 4 werkknooppunten | v3 of v4.1 |
 
-De configuratie van de SAP HANA voor de lay-out die in dit artikel wordt weer gegeven, met behulp van Azure NetApp Files Ultra Storage-laag, is als volgt:
+De SAP HANA-configuratie voor de lay-out die in dit artikel wordt gepresenteerd, met behulp van Azure NetApp Files Ultra Storage-laag, zou zijn:
 
-| Volume | Grootte van<br>Ultra Storage-laag | Ondersteund NFS-protocol |
+| Volume | Grootte van<br>Ultraopslaglaag | Ondersteund NFS-protocol |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TiB | v 4.1 |
-| /hana/log/mnt00002 | 2 TiB | v 4.1 |
-| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
-| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TiB | v3 of v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | v4.1 |
+| /hana/log/mnt00002 | 2 TiB | v4.1 |
+| /hana/data/mnt00001 | 3.2 TiB | v4.1 |
+| /hana/data/mnt00002 | 3.2 TiB | v4.1 |
+| /hana/gedeeld | 2 TiB | v3 of v4.1 |
 
 > [!NOTE]
-> De aanbevelingen voor Azure NetApp Files formaat die hier worden vermeld, zijn bedoeld om te voldoen aan de minimale vereisten die door SAP wordt aanbevolen voor hun infrastructuur providers. In echte klant implementaties en werkbelasting scenario's zijn deze grootten mogelijk niet voldoende. U kunt deze aanbevelingen als uitgangs punt gebruiken en aanpassen op basis van de vereisten van uw specifieke werk belasting.  
+> De aanbevelingen voor het dimensioneren van Azure NetApp Files die hier worden vermeld, zijn bedoeld om te voldoen aan de minimale vereisten die SAP aanbeveelt voor hun infrastructuurproviders. In echte klantimplementaties en werkbelastingscenario's zijn deze groottes mogelijk niet voldoende. Gebruik deze aanbevelingen als uitgangspunt en pas deze aan op basis van de vereisten van uw specifieke werkbelasting.  
 
 > [!TIP]
-> U kunt het formaat van Azure NetApp Files volumes dynamisch aanpassen, zonder dat u de volumes hoeft te *ontkoppelen* , de virtuele machines te stoppen of SAP Hana stop te zetten. Deze benadering biedt flexibiliteit om te voldoen aan de verwachte en onvoorziene doorvoer vereisten van uw toepassing.
+> U het formaat van Azure NetApp-bestandenvolumes dynamisch wijzigen, zonder dat u de volumes hoeft los te *maken,* de virtuele machines te stoppen of SAP HANA te stoppen. Deze aanpak biedt flexibiliteit om te voldoen aan zowel de verwachte als onvoorziene doorvoervereisten van uw toepassing.
 
-## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Virtuele Linux-machines implementeren via de Azure Portal
+## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Linux virtuele machines implementeren via de Azure-portal
 
-Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende stappen uit:
-1. Maak de [subnetten van het virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) in uw [virtuele Azure-netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). 
-1. Implementeer de Vm's. 
-1. Maak de extra netwerk interfaces en koppel de netwerk interfaces aan de bijbehorende Vm's.  
+Eerst moet u de Azure NetApp Files-volumes maken. Voer vervolgens de volgende stappen uit:
+1. Maak de [subnetten van het Azure-virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) in uw [virtuele Azure-netwerk.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 
+1. Implementeer de VM's. 
+1. Maak de extra netwerkinterfaces en koppel de netwerkinterfaces aan de bijbehorende VM's.  
 
-   Elke virtuele machine heeft drie netwerk interfaces, die overeenkomen met de drie subnetten van het virtuele netwerk van Azure (`client`, `storage` en `hana`). 
+   Elke virtuele machine heeft drie netwerkinterfaces, die overeenkomen met`client`de `storage` `hana`drie Azure virtuele netwerksubnetten ( , en ). 
 
-   Zie [een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)voor meer informatie.  
+   Zie [Een virtuele Linux-machine maken in Azure met meerdere netwerkinterfacekaarten](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)voor meer informatie.  
 
 > [!IMPORTANT]
-> Voor SAP HANA werk belastingen is lage latentie van cruciaal belang. Werk samen met uw micro soft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp Files volumes dicht bij elkaar worden geïmplementeerd. Wanneer u een [nieuw SAP Hana systeem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) wilt maken dat SAP Hana Azure NetApp files gebruikt, dient u de benodigde gegevens in te dienen. 
+> Voor SAP HANA-workloads is lage latentie van cruciaal belang. Om een lage latentie te bereiken, werkt u samen met uw Microsoft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp-bestanden in de nabijheid worden geïmplementeerd. Wanneer u een [nieuw SAP HANA-systeem invoert](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) dat SAP HANA Azure NetApp Files gebruikt, dient u de benodigde informatie in. 
  
-In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het virtuele netwerk van Azure en de drie subnetten van het virtuele netwerk van Azure hebt gemaakt: `client`, `storage` en `hana`. Wanneer u de Vm's implementeert, selecteert u het subnet van de client, zodat de client netwerk interface de primaire interface op de Vm's is. U moet ook een expliciete route naar het Azure NetApp Files gedelegeerde subnet configureren via de gateway van het opslag subnet. 
+In de volgende instructies wordt ervan uitgegaan dat u de brongroep, het virtuele Azure-netwerk en de drie azure-virtuele netwerksubnetten al hebt gemaakt: `client`, `storage` en `hana`. Wanneer u de VM's implementeert, selecteert u het clientsubnet, zodat de clientnetwerkinterface de primaire interface op de VM's is. U moet ook een expliciete route configureren naar het gedelegeerde subnet van Azure NetApp Files via de subnetgateway voor opslag. 
 
 > [!IMPORTANT]
-> Zorg ervoor dat het besturings systeem dat u selecteert, SAP-gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. Ga naar de site [SAP Hana Certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) voor een lijst met SAP Hana gecertificeerde VM-typen en versies van besturings systemen voor deze typen. Klik in de details van het vermelde VM-type om de volledige lijst met door SAP HANA ondersteunde versies van besturings systemen voor dat type op te halen.  
+> Zorg ervoor dat het besturingssysteem dat u selecteert SAP-gecertificeerd is voor SAP HANA op de specifieke VM-typen die u gebruikt. Ga voor een lijst met SAP HANA-gecertificeerde VM-typen en OS-releases voor die typen naar de [SAP HANA-gecertificeerde IaaS-platformssite.](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) Klik op de details van het vermelde VM-type om de volledige lijst met SAP HANA-ondersteunde OS-releases voor dat type te krijgen.  
 
-1. Maak een beschikbaarheidsset voor SAP HANA. Zorg ervoor dat u het maximale update domein instelt.  
+1. Maak een beschikbaarheidsset voor SAP HANA. Zorg ervoor dat u het domein voor maximale updates instelt.  
 
-2. Maak drie virtuele machines (**hanadb1**, **hanadb2**, **hanadb3**) door de volgende stappen uit te voeren:  
+2. Maak drie virtuele machines (**hanadb1**, **hanadb2**, **hanadb3**) door het doen van de volgende stappen:  
 
-   a. Gebruik een SLES4SAP-installatie kopie in de Azure-galerie die wordt ondersteund voor SAP HANA. In dit voor beeld hebben we een installatie kopie van SLES4SAP 12 SP4 gebruikt.  
+   a. Gebruik een SLES4SAP-afbeelding in de Azure-galerie die wordt ondersteund voor SAP HANA. We gebruikten een SLES4SAP 12 SP4 afbeelding in dit voorbeeld.  
 
    b. Selecteer de beschikbaarheidsset die u eerder hebt gemaakt voor SAP HANA.  
 
-   c. Selecteer het subnet van het virtuele Azure-netwerk. Selecteer [versneld netwerk](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
+   c. Selecteer het subnet van het client Azure-netwerk. Selecteer [Versneld netwerk](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
 
-   Wanneer u de virtuele machines implementeert, wordt de naam van de netwerk interface automatisch gegenereerd. In deze instructies voor de eenvoud verwijzen we naar de automatisch gegenereerde netwerk interfaces, die zijn gekoppeld aan het subnet van het virtuele netwerk van Azure, als **hanadb1-client**, **hanadb2-client**en **hanadb3-client**. 
+   Wanneer u de virtuele machines implementeert, wordt de naam van de netwerkinterface automatisch gegenereerd. In deze instructies voor eenvoud verwijzen we naar de automatisch gegenereerde netwerkinterfaces, die zijn gekoppeld aan het virtuele netwerksubnet van de client Azure, als **hanadb1-client,** **hanadb2-client**en **hanadb3-client.** 
 
-3. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `storage` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Storage**, **hanadb2-Storage**en **hanadb3-Storage**).  
+3. Maak drie netwerkinterfaces, één voor elke `storage` virtuele machine, voor het virtuele netwerksubnet (in dit voorbeeld **hanadb1-storage,** **hanadb2-storage**en **hanadb3-storage).**  
 
-4. Maak drie netwerk interfaces, één voor elke virtuele machine, voor de `hana` subnet van het virtuele netwerk (in dit voor beeld **hanadb1-Hana**, **hanadb2-Hana**en **hanadb3-Hana**).  
+4. Maak drie netwerkinterfaces, een voor elke `hana` virtuele machine, voor het virtuele netwerk subnet (in dit voorbeeld, **hanadb1-hana**, **hanadb2-hana**, en **hanadb3-hana**).  
 
-5. Koppel de zojuist gemaakte virtuele netwerk interfaces aan de bijbehorende virtuele machines door de volgende stappen uit te voeren:  
+5. Koppel de nieuw gemaakte virtuele netwerkinterfaces aan de bijbehorende virtuele machines door de volgende stappen uit te voeren:  
 
-    a. Ga naar de virtuele machine in de [Azure Portal](https://portal.azure.com/#home).  
+    a. Ga naar de virtuele machine in de [Azure-portal.](https://portal.azure.com/#home)  
 
-    b. Selecteer **virtual machines**in het linkerdeel venster. Filter op de naam van de virtuele machine (bijvoorbeeld **hanadb1**) en selecteer vervolgens de virtuele machine.  
+    b. Selecteer **virtuele machines**in het linkerdeelvenster . Filter op de naam van de virtuele machine (bijvoorbeeld **hanadb1)** en selecteer vervolgens de virtuele machine.  
 
-    c. Selecteer in het deel venster **overzicht** de optie **stoppen** om de toewijzing van de virtuele machine ongedaan te maken.  
+    c. Selecteer In het deelvenster **Overzicht** de optie **Stoppen** om de virtuele machine uit te wijzen.  
 
-    d. Selecteer **netwerken**en koppel vervolgens de netwerk interface. Selecteer in de vervolg keuzelijst **netwerk interface koppelen** de al gemaakte netwerk interfaces voor de `storage` en `hana` subnetten.  
+    d. Selecteer **Netwerken**en voeg de netwerkinterface toe. Selecteer in de vervolgkeuzelijst **Netwerkinterface koppelen** de reeds `storage` `hana` gemaakte netwerkinterfaces voor de en subnetten.  
     
     e. Selecteer **Opslaan**. 
  
-    f. Herhaal stap b tot en met e voor de resterende virtuele machines (in het voor beeld **hanadb2** en **hanadb3**).
+    f. Herhaal stappen b door e voor de resterende virtuele machines (in ons voorbeeld, **hanadb2** en **hanadb3**).
  
-    g. Zorg ervoor dat de virtuele machines met de status gestopt nu actief zijn. Vervolgens wordt [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) ingeschakeld voor alle nieuw gekoppelde netwerk interfaces.  
+    g. Laat de virtuele machines in gestopte staat voor nu. Vervolgens maken we [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) mogelijk voor alle nieuw aangesloten netwerkinterfaces.  
 
-6. Schakel de volgende stappen uit om versnelde netwerken in te scha kelen voor de extra netwerk interfaces voor de `storage` en `hana` subnetten:  
+6. Schakel versnelde netwerken in voor de `storage` `hana` extra netwerkinterfaces voor de extra netwerkinterfaces voor de extra netwerkinterfaces voor de en subnetten door de volgende stappen uit te voeren:  
 
-    a. Open [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/) in het [Azure Portal](https://portal.azure.com/#home).  
+    a. Open [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) in de [Azure-portal](https://portal.azure.com/#home).  
 
-    b. Voer de volgende opdrachten uit om versneld netwerken in te scha kelen voor de extra netwerk interfaces die zijn gekoppeld aan de `storage` en `hana` subnetten.  
+    b. Voer de volgende opdrachten uit om versnelde netwerken in te schakelen `storage` voor `hana` de extra netwerkinterfaces, die zijn gekoppeld aan de en subnetten.  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -274,21 +274,21 @@ In de volgende instructies wordt ervan uitgegaan dat u de resource groep, het vi
 
 7. Start de virtuele machines door de volgende stappen uit te voeren:  
 
-    a. Selecteer **virtual machines**in het linkerdeel venster. Filter op de naam van de virtuele machine (bijvoorbeeld **hanadb1**) en selecteer deze.  
+    a. Selecteer **virtuele machines**in het linkerdeelvenster . Filter op de naam van de virtuele machine (bijvoorbeeld **hanadb1)** en selecteer deze vervolgens.  
 
-    b. Selecteer **Start**in het deel venster **overzicht** .  
+    b. Selecteer **Start**in het deelvenster **Overzicht** .  
 
-## <a name="operating-system-configuration-and-preparation"></a>Configuratie en voor bereiding van het besturings systeem
+## <a name="operating-system-configuration-and-preparation"></a>Configuratie en voorbereiding van het besturingssysteem
 
-De instructies in de volgende secties worden voorafgegaan door een van de volgende:
-* **[A]** : van toepassing op alle knoop punten
-* **[1]** : alleen van toepassing op knoop punt 1
-* **[2]** : alleen van toepassing op knoop punt 2
-* **[3]** : alleen van toepassing op knoop punt 3
+De instructies in de volgende secties zijn vooraf bevestigd met een van de volgende:
+* **[A]**: Van toepassing op alle knooppunten
+* **[1]**: Alleen van toepassing op knooppunt 1
+* **[2]**: Alleen van toepassing op knooppunt 2
+* **[3]**: Alleen van toepassing op knooppunt 3
 
-Configureer en bereid uw besturings systeem uit door de volgende stappen uit te voeren:
+Configureer en bereid uw besturingssysteem voor door de volgende stappen uit te voeren:
 
-1. **[A]** de host-bestanden op de virtuele machines onderhouden. Neem vermeldingen op voor alle subnetten. De volgende vermeldingen zijn toegevoegd aan `/etc/hosts` voor dit voor beeld.  
+1. **[A]** Onderhoud de hostbestanden op de virtuele machines. Neem vermeldingen op voor alle subnetten. Voor dit voorbeeld zijn `/etc/hosts` de volgende vermeldingen toegevoegd.  
 
     <pre><code>
     # Storage
@@ -305,9 +305,9 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A]** Wijzig de DHCP-en Cloud configuratie-instellingen voor de netwerk interface voor opslag om te voor komen dat er onbedoelde hostnamen worden gewijzigd.  
+2. **[A]** Dhcp- en cloudconfig-instellingen voor de netwerkinterface voor opslag wijzigen om onbedoelde hostnamewijzigingen te voorkomen.  
 
-    Bij de volgende instructies wordt ervan uitgegaan dat de opslag netwerk interface is `eth1`. 
+    De volgende instructies gaan ervan `eth1`uit dat de interface van het opslagnetwerk . 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
@@ -319,9 +319,9 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
 
-2. **[A]** Voeg een netwerk route toe zodat de communicatie met de Azure NetApp files via de netwerk interface van de opslag.  
+2. **[A]** Voeg een netwerkroute toe, zodat de communicatie naar de Azure NetApp-bestanden via de opslagnetwerkinterface verloopt.  
 
-    Bij de volgende instructies wordt ervan uitgegaan dat de opslag netwerk interface is `eth1`.  
+    De volgende instructies gaan ervan `eth1`uit dat de interface van het opslagnetwerk .  
 
     <pre><code>
     vi /etc/sysconfig/network/ifroute-<b>eth1</b>
@@ -334,7 +334,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
 
     Start de VM opnieuw op om de wijzigingen te activeren.  
 
-3. **[A]** bereid het besturings systeem voor op het uitvoeren van SAP Hana op NetApp-systemen met NFS, zoals beschreven in [SAP Hana op NetApp aff-systemen met NFS-configuratie handleiding](https://www.netapp.com/us/media/tr-4435.pdf). Maak een */etc/sysctl.d/NetApp-Hana.conf* voor het configuratie bestand voor de configuratie-instellingen van NetApp.  
+3. **[A]** Bereid het besturingssysteem voor op het uitvoeren van SAP HANA op NetApp-systemen met NFS, zoals beschreven in [SAP HANA op NetApp AFF-systemen met NFS-configuratiegids](https://www.netapp.com/us/media/tr-4435.pdf). Maak configuratiebestand */etc/sysctl.d/netapp-hana.conf* voor de NetApp-configuratie-instellingen.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -355,7 +355,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     net.ipv4.tcp_sack = 1
     </code></pre>
 
-4. **[A] Maak een** configuratie bestand */etc/sysctl.d/MS-AZ.conf* met micro soft voor Azure-configuratie-instellingen.  
+4. **[A]** Maak configuratiebestand */etc/sysctl.d/ms-az.conf* met Microsoft voor Azure-configuratie-instellingen.  
 
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
@@ -368,7 +368,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     vm.swappiness=10
     </code></pre>
 
-4. **[A]** Wijzig de sunrpc-instellingen, zoals aanbevolen in de [SAP Hana op NetApp aff-systemen met NFS-configuratie handleiding](https://www.netapp.com/us/media/tr-4435.pdf).  
+4. **[A]** Pas de sunrpc-instellingen aan, zoals aanbevolen in de [SAP HANA op NetApp AFF-systemen met NFS-configuratiehandleiding.](https://www.netapp.com/us/media/tr-4435.pdf)  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -376,9 +376,9 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     options sunrpc tcp_max_slot_table_entries=128
     </code></pre>
 
-## <a name="mount-the-azure-netapp-files-volumes"></a>De Azure NetApp Files volumes koppelen
+## <a name="mount-the-azure-netapp-files-volumes"></a>De Azure NetApp-bestandenvolumes monteren
 
-1. **[A]** koppel punten maken voor de Hana-database volumes.  
+1. **[A]** Maak bevestigingspunten voor de HANA-databasevolumes.  
 
     <pre><code>
     mkdir -p /hana/data/<b>HN1</b>/mnt00001
@@ -389,7 +389,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     mkdir -p /usr/sap/<b>HN1</b>
     </code></pre>
 
-2. **[1]** Maak knoop punt-specifieke directory's voor/usr/sap op **HN1**-Shared.  
+2. **[1]** Maak node-specifieke mappen voor /usr/sap op **HN1**-gedeeld.  
 
     <pre><code>
     # Create a temporary directory to mount <b>HN1</b>-shared
@@ -402,10 +402,10 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** Controleer de NFS-domein instelling. Zorg ervoor dat het domein is geconfigureerd als standaard Azure NetApp Files domein, dat wil zeggen **`defaultv4iddomain.com`** en dat de toewijzing is ingesteld op **niemand**.  
+3. **[A]** Controleer de NFS-domeininstelling. Zorg ervoor dat het domein is geconfigureerd als het standaard Azure **`defaultv4iddomain.com`** NetApp Files-domein, d.w.z. en dat de toewijzing op **niemand**is ingesteld.  
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u het NFS-domein in `/etc/idmapd.conf` op de virtuele machine zo instelt dat deze overeenkomt met de standaard domein configuratie op Azure NetApp Files: **`defaultv4iddomain.com`** . Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de virtuele machines zijn gekoppeld, weer gegeven als `nobody`.  
+    > Zorg ervoor dat het NFS-domein in de VM wordt ingesteld `/etc/idmapd.conf` op **`defaultv4iddomain.com`** de standaarddomeinconfiguratie op Azure NetApp-bestanden: . Als er een mismatch is tussen de domeinconfiguratie op de NFS-client (d.w.z. de VM) en de NFS-server, d.w.z. de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de VM's zijn gemonteerd, weergegeven als `nobody`.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -419,7 +419,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A] Controleer de** `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de opdracht Mount uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
+4. **[A]** `nfs4_disable_idmapping`Verifiëren . Het moet worden ingesteld op **Y**. Als u de `nfs4_disable_idmapping` mapstructuur wilt maken waar zich zich bevindt, voert u de opdracht monteren uit. U de map niet handmatig maken onder /sys/modules, omdat de toegang is gereserveerd voor de kernel/drivers.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -433,7 +433,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** maak de SAP Hana groep en de gebruiker hand matig. De Id's voor de groep sapsys en de gebruiker **HN1**adm moeten worden ingesteld op dezelfde id's die tijdens het voorbereiden worden opgegeven. (In dit voor beeld zijn de Id's ingesteld op **1001**.) Als de Id's niet juist zijn ingesteld, hebt u geen toegang tot de volumes. De Id's voor de groeps-sapsys en gebruikers accounts **HN1**adm en sapadm moeten op alle virtuele machines hetzelfde zijn.  
+5. **[A]** Maak de SAP HANA-groep en gebruiker handmatig. De id's voor groepssapsys en gebruiker **hn1**adm moeten worden ingesteld op dezelfde id's, die worden verstrekt tijdens de onboarding. (In dit voorbeeld zijn de id's ingesteld op **1001**.) Als de id's niet correct zijn ingesteld, hebt u geen toegang tot de volumes. De id's voor groepssapsys en gebruikersaccounts **hn1**adm en sapadm moeten hetzelfde zijn op alle virtuele machines.  
 
     <pre><code>
     # Create user group 
@@ -446,7 +446,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     sudo passwd sapadm
     </code></pre>
 
-6. **[A]** Hiermee koppelt u de gedeelde Azure NetApp files volumes.  
+6. **[A]** Monteer de gedeelde Azure NetApp-bestandenvolumes.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -460,7 +460,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     sudo mount -a 
     </code></pre>
 
-7. **[1]** koppel de knooppunt-specifieke volumes op **hanadb1**.  
+7. **[1]** Monteer de node-specifieke volumes op **hanadb1**.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -470,7 +470,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     sudo mount -a 
     </code></pre>
 
-8. **[2]** koppel de knooppunt-specifieke volumes op **hanadb2**.  
+8. **[2]** Monteer de node-specifieke volumes op **hanadb2**.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -480,7 +480,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     sudo mount -a 
     </code></pre>
 
-9. **[3]** koppel de knooppunt-specifieke volumes op **hanadb3**.  
+9. **[3]** Monteer de node-specifieke volumes op **hanadb3**.  
 
     <pre><code>
     sudo vi /etc/fstab
@@ -490,7 +490,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     sudo mount -a 
     </code></pre>
 
-10. **[A]** Controleer of alle Hana-volumes zijn gekoppeld met de NFS-protocol versie **NFSv4**.  
+10. **[A]** Controleer of alle HANA-volumes zijn gemonteerd met NFS-protocolversie **NFSv4**.  
 
     <pre><code>
     sudo nfsstat -m
@@ -510,28 +510,28 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
      Flags: rw,noatime,vers=<b>4.1</b>,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.23.2.4,local_lock=none,addr=10.23.1.4
     </code></pre>
 
-## <a name="installation"></a>Installatie  
+## <a name="installation"></a>Installeren  
 
-In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie met een stand-by-knoop punt met Azure, hebben we HANA 2,0 SP4 gebruikt.  
+In dit voorbeeld voor het implementeren van SAP HANA in scale-outconfiguratie met stand-by node met Azure, hebben we HANA 2.0 SP4 gebruikt.  
 
-### <a name="prepare-for-hana-installation"></a>Voor bereiding voor HANA-installatie
+### <a name="prepare-for-hana-installation"></a>Voorbereiden op HANA-installatie
 
-1. **[A]** vóór de Hana-installatie stelt u het hoofd wachtwoord in. U kunt het hoofd wachtwoord uitschakelen nadat de installatie is voltooid. Uitvoeren als `root` opdracht `passwd`.  
+1. **[A]** Voor de HANA-installatie stelt u het hoofdwachtwoord in. U het hoofdwachtwoord uitschakelen nadat de installatie is voltooid. Uitvoeren `root` als `passwd`opdracht .  
 
-2. **[1]** Controleer of u zich kunt aanmelden via SSH naar **hanadb2** en **hanadb3**, zonder dat u wordt gevraagd om een wacht woord.  
+2. **Controleer** of u via SSH inloggen op **hanadb2** en **hanadb3,** zonder dat u om een wachtwoord wordt gevraagd.  
 
     <pre><code>
     ssh root@<b>hanadb2</b>
     ssh root@<b>hanadb3</b>
     </code></pre>
 
-3. **[A]** aanvullende pakketten installeren die vereist zijn voor Hana 2,0 SP4. Zie SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824)voor meer informatie. 
+3. **[A]** Installeer extra pakketten, die nodig zijn voor HANA 2.0 SP4. Zie SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824)voor meer informatie. 
 
     <pre><code>
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2], [3]** Wijzig het eigendom van SAP HANA `data` en `log` directory's in **HN1**adm.   
+4. **[2], [3]** Verander eigenaar schap `data` van `log` SAP HANA en mappen naar **hn1**adm.   
 
     <pre><code>
     # Execute as root
@@ -541,9 +541,9 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
 
 ### <a name="hana-installation"></a>HANA-installatie
 
-1. **[1]** installeer SAP Hana door de instructies in de [SAP Hana 2,0-installatie en de update gids](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)te volgen. In dit voor beeld installeren we SAP HANA scale-out met Master, één werk nemer en één stand-by-knoop punt.  
+1. **[1]** Installeer SAP HANA door de instructies in de [SAP HANA 2.0-installatie- en updatehandleiding op te volgen.](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html) In dit voorbeeld installeren we SAP HANA scale-out met master, één werknemer en één stand-by node.  
 
-   a. Start het **hdblcm** -programma vanuit de map Hana-installatie software. Gebruik de para meter `internal_network` en geef de adres ruimte door voor het subnet, dat wordt gebruikt voor de interne HANA-communicatie tussen knoop punten.  
+   a. Start het **hdblcm-programma** vanuit de HANA-installatiesoftwaremap. Gebruik `internal_network` de parameter en geef de adresruimte door voor subnet, dat wordt gebruikt voor de interne HANA internodecommunicatie.  
 
     <pre><code>
     ./hdblcm --internal_network=10.23.3.0/24
@@ -551,41 +551,41 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
 
    b. Voer bij de prompt de volgende waarden in:
 
-     * Voor **Kies een actie**: Voer **1** (voor installatie) in
-     * Voor **aanvullende onderdelen voor installatie**: Voer **2, 3** in
-     * Voor installatiepad: druk op ENTER (standaard ingesteld op/Hana/Shared)
-     * Voor de naam van de **lokale host**: druk op ENTER om de standaard instelling te accepteren
-     * Onder wilt **u hosts toevoegen aan het systeem?** : Voer **y** in
-     * Voor **het toevoegen door komma's gescheiden hostnamen**: Voer **hanadb2 in, hanadb3**
-     * Voor **root-gebruikers naam** [root]: druk op ENTER om de standaard instelling te accepteren
-     * Voor **hoofd gebruikers wachtwoord**: Voer het wacht woord van de hoofd gebruiker in
-     * Voor rollen voor host hanadb2: Voer **1** (voor werk nemer) in
-     * Voor **host-failovergroep** voor host hanadb2 [standaard]: druk op ENTER om de standaard instelling te accepteren
-     * Voor het **partitie nummer** van de host hanadb2 [<<assign automatically>>]: druk op ENTER om de standaard waarde te accepteren
-     * Voor de **werk groep** voor host hanadb2 [standaard]: druk op ENTER om de standaard instelling te accepteren
-     * Voor **Select rollen** voor host hanadb3: Voer **2** in (voor stand-by)
-     * Voor **host-failovergroep** voor host hanadb3 [standaard]: druk op ENTER om de standaard instelling te accepteren
-     * Voor de **werk groep** voor host hanadb3 [standaard]: druk op ENTER om de standaard instelling te accepteren
-     * Voer voor **SAP Hana systeem-id**: **HN1**
-     * Voor **instantie nummer** [00]: Voer **03** in
-     * Voor de **lokale host-werk groep** [standaard]: druk op ENTER om de standaard instelling te accepteren
-     * Voor **Selecteer systeem gebruik/Voer index [4]** : Voer **4** in (voor aangepast)
-     * Voor **locatie van gegevens volumes** [/Hana/data/HN1]: druk op ENTER om de standaard instelling te accepteren
-     * Voor de **locatie van de logboek volumes** [/Hana/log/HN1]: druk op ENTER om de standaard instelling te accepteren
-     * Voor **maximale geheugen toewijzing beperken?** [n]: Voer **n** in
-     * Voor de naam van het **certificaat voor host hanadb1** [hanadb1]: druk op ENTER om de standaard waarde te accepteren
-     * Voor de naam van het **certificaat voor host hanadb2** [hanadb2]: druk op ENTER om de standaard waarde te accepteren
-     * Voor de naam van het **certificaat voor host hanadb3** [hanadb3]: druk op ENTER om de standaard waarde te accepteren
-     * Voor het **wacht woord van de systeem beheerder (hn1adm)** : Voer het wacht woord in
-     * Voor **systeem database gebruikers (systeem) wacht woord**: Voer het systeem wachtwoord in
-     * Voor het bevestigen van het **wacht woord van de systeem database gebruiker (systeem)** : Voer het systeem wachtwoord in
-     * **Systeem opnieuw opstarten na** het opnieuw opstarten van de computer? [n]: Voer **n** in 
-     * Voor wilt **u door gaan (j/n)** : de samen vatting valideren en als alles goed lijkt, voert u **y** in
+     * Voor **Een actie kiezen:** voer **1** in (voor installatie)
+     * Voor **extra onderdelen voor installatie**: voer **2, 3 in**
+     * Voor installatiepad: druk op Enter (standaard ingesteld op /hana/gedeeld)
+     * Voor **lokale hostnaam:** druk op Enter om de standaardinstelling te accepteren
+     * Onder **Wilt u hosts toevoegen aan het systeem?**: voer **y**
+     * Voor **komma-gescheiden host namen toe te voegen**: voer **hanadb2, hanadb3**
+     * Voor **rootgebruikersnaam** [root]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Root-gebruikerswachtwoord:** voer het wachtwoord van de hoofdgebruiker in
+     * Voor rollen voor gastheer hanadb2: voer **1** in (voor werknemer)
+     * Voor **Host Failover Group** voor host hanadb2 [default]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **opslagpartitienummer** voor hosthanadb2 [<<assign automatically>>]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Werknemersgroep** voor host hanadb2 [standaard]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Selecteer rollen** voor host hanadb3: voer **2** in (voor stand-by)
+     * Voor **Host Failover Group** voor host hanadb3 [default]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Werknemersgroep** voor host hanadb3 [standaard]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **SAP HANA System ID**: voer **HN1** in
+     * **Bijvoorbeeld nummer** [00]: voer **03** in
+     * Voor **lokale hostworkergroep** [standaard]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Systeemgebruik selecteren / Index invoeren [4]**: voer **4** in (voor aangepast)
+     * Voor **locatie van gegevensvolumes** [/hana/data/HN1]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **locatie van logboekvolumes** [/hana/log/HN1]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **Maximale geheugentoewijzing beperken?** [n]: voer **n** in
+     * Voor **certificate host name voor host hanadb1** [hanadb1]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **certificate host name voor host hanadb2** [hanadb2]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **certificate host name voor host hanadb3** [hanadb3]: druk op Enter om de standaardinstelling te accepteren
+     * Voor **systeembeheerder (hn1adm) wachtwoord:** voer het wachtwoord in
+     * **Wachtwoord voor systeemdatabasegebruiker (systeem) :** voer het wachtwoord van het systeem in
+     * Wachtwoord **voor Systeemdatabasegebruiker (systeem) bevestigen:** voer het wachtwoord van het systeem in
+     * Voor **Opnieuw opstarten systeem na machine reboot?** [n]: voer **n** in 
+     * Want **Wilt u doorgaan (y/n)**: de samenvatting valideren en als alles er goed uitziet, voert u **y**
 
 
-2. **[1]** globale. ini controleren  
+2. **[1]** Verify global.ini  
 
-   Geef Global. ini weer en zorg ervoor dat de configuratie voor de interne communicatie tussen knoop punten van SAP HANA is geïmplementeerd. Controleer het **communicatie** gedeelte. Deze moet de adres ruimte voor het `hana` subnet hebben en `listeninterface` moet worden ingesteld op `.internal`. Controleer de sectie **internal_hostname_resolution** . Deze moet de IP-adressen hebben voor de HANA-virtuele machines die deel uitmaken van het `hana` subnet.  
+   Geef global.ini weer en zorg ervoor dat de configuratie voor de interne SAP HANA internodecommunicatie aanwezig is. Controleer de **communicatiesectie.** Het moet de adresruimte `hana` voor het `listeninterface` subnet `.internal`hebben, en moet worden ingesteld op . Controleer de **sectie internal_hostname_resolution.** Het moet de IP-adressen voor de HANA `hana` virtuele machines die behoren tot het subnet.  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -600,7 +600,7 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     <b>10.23.3.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** toewijzing van hosts toevoegen om ervoor te zorgen dat de client-IP-adressen worden gebruikt voor client communicatie. Voeg sectie `public_host_resolution`toe en voeg de bijbehorende IP-adressen uit het subnet van de client toe.  
+3. **[1]** Voeg hosttoewijzing toe om ervoor te zorgen dat de IP-adressen van de client worden gebruikt voor clientcommunicatie. Voeg `public_host_resolution`sectie toe en voeg de bijbehorende IP-adressen toe uit het subnet van de client.  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -611,14 +611,14 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     map_<b>hanadb3</b> = <b>10.23.0.7</b>
    </code></pre>
 
-4. **[1]** Start SAP Hana opnieuw op om de wijzigingen te activeren.  
+4. **[1]** Start SAP HANA opnieuw op om de wijzigingen te activeren.  
 
    <pre><code>
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StopSystem HDB
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
    </code></pre>
 
-5. **[1]** Controleer of de client interface de IP-adressen uit het `client` subnet gebruikt voor communicatie.  
+5. **[1]** Controleer of de clientinterface de IP-adressen van het `client` subnet gebruikt voor communicatie.  
 
    <pre><code>
     sudo -u hn1adm /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "<b>password</b>" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
@@ -628,34 +628,34 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     "<b>hanadb1</b>","net_publicname","<b>10.23.0.5</b>"
    </code></pre>
 
-   Zie SAP Note [2183363-configuratie van SAP Hana intern netwerk](https://launchpad.support.sap.com/#/notes/2183363)voor meer informatie over het controleren van de configuratie.  
+   Zie SAP Note [2183363 - Configuratie van het interne netwerk VAN SAP HANA](https://launchpad.support.sap.com/#/notes/2183363)voor informatie over het verifiëren van de configuratie.  
 
-6. Als u SAP HANA voor de onderliggende Azure NetApp Files opslag wilt optimaliseren, stelt u de volgende SAP HANA para meters in:
+6. Als u SAP HANA wilt optimaliseren voor de onderliggende Azure NetApp-bestandenopslag, stelt u de volgende SAP HANA-parameters in:
 
-   - `max_parallel_io_requests` **128**
-   - `async_read_submit` **op**
-   - `async_write_submit_active` **op**
-   - **alles** `async_write_submit_blocks`
+   - `max_parallel_io_requests`**128**
+   - `async_read_submit`**op**
+   - `async_write_submit_active`**op**
+   - `async_write_submit_blocks`**alle**
 
-   Zie voor meer informatie [SAP Hana op NETAPP aff Systems met NFS-configuratie handleiding](https://www.netapp.com/us/media/tr-4435.pdf). 
+   Zie [SAP HANA op NetApp AFF Systems met NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf)voor meer informatie. 
 
-   Vanaf SAP HANA 2,0-systemen kunt u de para meters instellen in `global.ini`. Zie SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930)voor meer informatie.  
+   Vanaf SAP HANA 2.0-systemen u `global.ini`de parameters instellen in. Zie SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930)voor meer informatie.  
    
-   Voor SAP HANA 1,0-systemen SPS12 en eerder, kunnen deze para meters tijdens de installatie worden ingesteld, zoals beschreven in SAP Note [2267798](https://launchpad.support.sap.com/#/notes/2267798).  
+   Voor SAP HANA 1.0-systeemversies SPS12 en eerder kunnen deze parameters tijdens de installatie worden ingesteld, zoals beschreven in SAP Note [2267798](https://launchpad.support.sap.com/#/notes/2267798).  
 
-7. De opslag die wordt gebruikt door Azure NetApp Files heeft een maximale bestands grootte van 16 terabytes (TB). SAP HANA is niet impliciet op de hoogte van de opslag beperking en maakt niet automatisch een nieuw gegevens bestand wanneer de maximale bestands grootte van 16 TB is bereikt. Als SAP HANA probeert het bestand groter dan 16 TB uit te breiden, zullen deze pogingen tot fouten leiden en uiteindelijk in een index server vastlopen. 
+7. De opslag die wordt gebruikt door Azure NetApp Files heeft een bestandsgroottebeperking van 16 terabyte (TB). SAP HANA is zich niet impliciet bewust van de opslagbeperking en maakt niet automatisch een nieuw gegevensbestand wanneer de limiet voor bestandsgrootte van 16 TB is bereikt. Als SAP HANA probeert om het bestand te groeien dan 16 TB, die poging zal resulteren in fouten en, uiteindelijk, in een index server crash. 
 
    > [!IMPORTANT]
-   > Als u wilt voor komen dat SAP HANA probeert gegevens bestanden te verg Roten buiten de [limiet van 16 TB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) van het opslag subsysteem, stelt u de volgende para meters in `global.ini`in.  
-   > - datavolume_striping = True
+   > Stel de volgende parameters in `global.ini`om te voorkomen dat SAP HANA gegevensbestanden buiten de [16 TB-limiet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) van het subsysteem voor opslag probeert te laten groeien.  
+   > - datavolume_striping = waar
    > - datavolume_striping_size_gb = 15000 Zie SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005)voor meer informatie.
-   > Houd rekening met SAP Note [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
+   > Wees je bewust van SAP Note [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
 
-## <a name="test-sap-hana-failover"></a>SAP HANA failover testen 
+## <a name="test-sap-hana-failover"></a>Test SAP HANA failover 
 
-1. Een knoop punt crash simuleren op een SAP HANA worker-knoop punt. Ga als volgt te werk: 
+1. Een knooppuntcrash simuleren op een SAP HANA-werknemersknooppunt. Ga als volgt te werk: 
 
-   a. Voordat u het knooppunt crash simuleert, voert u de volgende opdrachten uit als **HN1**adm om de status van de omgeving vast te leggen:  
+   a. Voer voordat u de knooppuntcrash simuleert de volgende opdrachten uit als **hn1**adm om de status van de omgeving vast te leggen:  
 
    <pre><code>
     # Check the landscape status
@@ -677,13 +677,13 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
    </code></pre>
 
-   b. Als u een knoop punt crash wilt simuleren, voert u de volgende opdracht uit als basis op het worker-knoop punt, dat in dit geval **hanadb2** is:  
+   b. Als u een knooppuntcrash wilt simuleren, voert u de volgende opdracht als hoofd op het werkknooppunt uit, dat in dit geval **hanadb2** is:  
    
    <pre><code>
     echo b > /proc/sysrq-trigger
    </code></pre>
 
-   c. Controleer het systeem op voltooiing van de failover. Wanneer de failover is voltooid, moet u de status vastleggen, die er ongeveer als volgt uitziet:  
+   c. Controleer het systeem op failovervoltooiing. Wanneer de failover is voltooid, legt u de status vast, die er als volgt moet uitzien:  
 
     <pre><code>
     # Check the instance status
@@ -706,11 +706,11 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
    </code></pre>
 
    > [!IMPORTANT]
-   > Wanneer een knoop punt kernel-paniek kan worden, kunt u vertragingen met SAP HANA failover voor komen door `kernel.panic` op een waarde van 20 seconden op *alle* Hana virtuele machines in te stellen. De configuratie wordt uitgevoerd in `/etc/sysctl`. Start de virtuele machines opnieuw op om de wijziging te activeren. Als deze wijziging niet wordt uitgevoerd, kan de failover 10 of meer minuten duren wanneer een knoop punt zich in de kernel bevindt.  
+   > Wanneer een knooppunt kernelpaniek ondervindt, voorkom dan vertragingen met SAP HANA-failover door op 20 seconden in te stellen `kernel.panic` op *alle* virtuele HANA-machines. De configuratie wordt `/etc/sysctl`uitgevoerd in . Start de virtuele machines opnieuw op om de wijziging te activeren. Als deze wijziging niet wordt uitgevoerd, kan failover 10 of meer minuten duren wanneer een knooppunt kernelpaniek ondervindt.  
 
-2. Beëindig de naam server door het volgende te doen:
+2. Dood de naamserver door het volgende te doen:
 
-   a. Voordat u de test uitvoert, controleert u de status van de omgeving door de volgende opdrachten uit te voeren als **HN1**adm:  
+   a. Controleer voorafgaand aan de test de status van de omgeving door de volgende opdrachten uit te voeren als **hn1**adm:  
 
    <pre><code>
     #Landscape status 
@@ -732,13 +732,13 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. Voer de volgende opdrachten uit als **HN1**adm op het actieve hoofd knooppunt, dat in dit geval **hanadb1** is:  
+   b. Voer de volgende opdrachten uit als **hn1**adm op het actieve masterknooppunt, dat in dit geval **hanadb1** is:  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
     </code></pre>
     
-    Het **hanadb3** van het stand-by-knoop punt gaat over als hoofd knooppunt. Dit is de status van de resource nadat de testfailover is voltooid:  
+    De stand-by node **hanadb3** zal overnemen als master node. Hier is de resourcestatus nadat de failovertest is voltooid:  
 
     <pre><code>
         # Check the instance status
@@ -760,13 +760,13 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
         | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
     </code></pre>
 
-   c. Start het HANA-exemplaar op **hanadb1** (dat wil zeggen, op dezelfde virtuele machine, waarbij de naam server is afgebroken). Het **hanadb1** -knoop punt wordt opnieuw lid van de omgeving en blijft de functie stand-by.  
+   c. Start de HANA-instantie opnieuw op **hanadb1** (dat wil zeggen op dezelfde virtuele machine, waar de naamserver werd gedood). Het **hanadb1-knooppunt** zal zich weer aansluiten bij het milieu en zijn stand-byrol behouden.  
 
    <pre><code>
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Nadat SAP HANA op **hanadb1**is gestart, wordt de volgende status verwacht:  
+   Na SAP HANA is begonnen op **hanadb1**, verwachten de volgende status:  
 
    <pre><code>
     # Check the instance status
@@ -788,13 +788,13 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   d. Beëindig opnieuw de naam server op het huidige actieve hoofd knooppunt (op het knoop punt **hanadb3**).  
+   d. Nogmaals, dood de naam server op de momenteel actieve master node (dat wil zeggen, op node **hanadb3**).  
    
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
    </code></pre>
 
-   De rol van het hoofd knooppunt wordt hervat met het knoop punt **hanadb1** . Nadat de testfailover is voltooid, ziet de status er als volgt uit:
+   Node **hanadb1** zal de rol van master node hervatten. Nadat de failovertest is voltooid, ziet de status er als volgt uit:
 
    <pre><code>
     # Check the instance status
@@ -819,13 +819,13 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   e. Start SAP HANA op **hanadb3**, dat klaar is om te fungeren als stand-by-knoop punt.  
+   e. Start SAP HANA op **hanadb3**, die klaar zal zijn om te dienen als een stand-by node.  
 
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Nadat SAP HANA op **hanadb3**is gestart, ziet de status er als volgt uit:  
+   Nadat SAP HANA is gestart op **hanadb3,** ziet de status er als volgt uit:  
 
    <pre><code>
     # Check the instance status
@@ -855,5 +855,5 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
 * [Azure Virtual Machines planning en implementatie voor SAP][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP][deployment-guide]
 * [Azure Virtual Machines DBMS-implementatie voor SAP][dbms-guide]
-* Zie [SAP Hana (grote instanties) hoge Beschik baarheid en herstel na nood gevallen op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het tot stand brengen van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure (grote exemplaren).
-* Zie [hoge Beschik baarheid van SAP Hana op azure virtual machines (vm's)][sap-hana-ha]voor meer informatie over het instellen van hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure-vm's.
+* Zie [SAP HANA (grote exemplaren) hoge beschikbaarheid en noodherstel op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het instellen van hoge beschikbaarheid en het plannen van noodherstel van SAP HANA op Azure.
+* Zie [Hoge beschikbaarheid van SAP HANA op Azure Virtual Machines (VM's)][sap-hana-ha]voor meer informatie over het instellen van hoge beschikbaarheid en het plannen van noodherstel van SAP HANA op Azure VM's.

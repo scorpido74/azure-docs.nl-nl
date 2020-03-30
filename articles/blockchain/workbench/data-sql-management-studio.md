@@ -1,20 +1,20 @@
 ---
-title: Query's uitvoeren op Azure Block Chain Workbench-gegevens met behulp van SQL Server Management Studio
+title: Azure Blockchain Workbench-gegevens opvragen met SQL Server Management Studio
 description: Leer hoe u vanuit SQL Server Management Studio verbinding maakt met een SQL-database van Azure Blockchain Workbench.
 ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326039"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Gegevens van Azure Blockchain Workbench gebruiken met SQL Server Management Studio
 
-Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's op basis van Azure Blockchain Workbench SQL DB te schrijven en te testen. In deze sectie vindt u stapsgewijze instructies voor het maken van verbinding met de SQL Database van Azure Block Chain Workbench vanuit SQL Server Management Studio.
+Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's te schrijven en te testen tegen SQL DB van Azure Blockchain Workbench. Deze sectie bevat een stapsgewijze walkthrough van hoe u verbinding maken met de SQL Database van Azure Blockchain Workbench vanuit SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's op 
       ![Databaselijst](./media/data-sql-management-studio/db-list.png)
 
 5. Als u de gegevens wilt bekijken die aan een databaseweergave zijn gekoppeld, kunt u met de volgende stappen automatisch een select-instructie genereren.
-6. Klik met de rechtermuisknop op een van de databaseweergaven in Object Explorer.
+6. Klik met de rechtermuisknop op een van de databaseweergaven in de Object Explorer.
 7. Selecteer **Script View as**.
 8. Kies **SELECT to**.
 9. Selecteer **New Query Editor Window**.

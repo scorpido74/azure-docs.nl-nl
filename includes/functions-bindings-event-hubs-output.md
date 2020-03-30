@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1e25656b58fe675cfbe87fef75af4fcb174b7f55
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589738"
 ---
-Gebruik de Event Hubs uitvoer binding om gebeurtenissen naar een gebeurtenis stroom te schrijven. U moet een machtiging voor verzenden hebben voor een Event Hub om gebeurtenissen te kunnen schrijven.
+Gebruik de uitvoerbinding Gebeurtenishubs om gebeurtenissen naar een gebeurtenisstream te schrijven. U moet een verzendmachtiging voor een Event Hub hebben om er gebeurtenissen naar te kunnen schrijven.
 
-Zorg ervoor dat de vereiste pakket verwijzingen aanwezig zijn voordat u een uitvoer binding implementeert.
+Zorg ervoor dat de vereiste pakketreferenties aanwezig zijn voordat u een uitvoerbinding probeert te implementeren.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In het volgende voor beeld ziet u een [ C# functie](../articles/azure-functions/functions-dotnet-class-library.md) die een bericht naar een event hub schrijft, met behulp van de retour waarde van de methode als uitvoer:
+In het volgende voorbeeld wordt een [C#-functie](../articles/azure-functions/functions-dotnet-class-library.md) weergegeven die een bericht naar een gebeurtenishub schrijft, met de retourwaarde van de methode als uitvoer:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-In het volgende voor beeld ziet u hoe u de `IAsyncCollector`-interface gebruikt om een batch berichten te verzenden. Dit scenario is gebruikelijk bij het verwerken van berichten die afkomstig zijn van een event hub en het verzenden van het resultaat naar een andere Event hub.
+In het volgende voorbeeld `IAsyncCollector` ziet u hoe u de interface gebruiken om een batch berichten te verzenden. Dit scenario komt vaak voor wanneer u berichten verwerkt die afkomstig zijn van de ene gebeurtenishub en het resultaat naar een andere gebeurtenishub verzendt.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -51,11 +51,11 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van een event hub trigger in een *Function. json* -bestand en een [ C# script functie](../articles/azure-functions/functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft een bericht naar een Event Hub.
+In het volgende voorbeeld ziet u een gebeurtenishubtriggerbinding in een *function.json-bestand* en een [C#-scriptfunctie](../articles/azure-functions/functions-reference-csharp.md) die de binding gebruikt. De functie schrijft een bericht naar een gebeurtenishub.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* . Het eerste voor beeld is voor functions 2. x en hoger, en de tweede is voor functions 1. x. 
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.* Het eerste voorbeeld is voor functies 2.x en hoger, en de tweede is voor functies 1.x. 
 
 ```json
 {
@@ -77,7 +77,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is C# de script code voor het maken van één bericht:
+Hier is C#-scriptcode die één bericht maakt:
 
 ```cs
 using System;
@@ -91,7 +91,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-Hier volgen enkele redenen C#-script-code die wordt gemaakt van meerdere berichten:
+Hier is C#-scriptcode die meerdere berichten maakt:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -103,11 +103,11 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Event Hub trigger binding in een *Function. json* -bestand en een [Java script-functie](../articles/azure-functions/functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft een bericht naar een Event Hub.
+In het volgende voorbeeld wordt een gebeurtenishubtriggerbinding weergegeven in een *function.json-bestand* en een [JavaScript-functie](../articles/azure-functions/functions-reference-node.md) die de binding gebruikt. De functie schrijft een bericht naar een gebeurtenishub.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* . Het eerste voor beeld is voor functions 2. x en hoger, en de tweede is voor functions 1. x. 
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.* Het eerste voorbeeld is voor functies 2.x en hoger, en de tweede is voor functies 1.x. 
 
 ```json
 {
@@ -129,7 +129,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is de Java script-code waarmee één bericht wordt verzonden:
+Hier is JavaScript-code die één bericht verzendt:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -140,7 +140,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Dit is de Java script-code waarmee meerdere berichten worden verzonden:
+Hier is JavaScript-code die meerdere berichten verzendt:
 
 ```javascript
 module.exports = function(context) {
@@ -157,9 +157,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een binding van Event Hub trigger in een *Function. json* -bestand en een [python-functie](../articles/azure-functions/functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een bericht naar een Event Hub.
+In het volgende voorbeeld ziet u een gebeurtenishubtriggerbinding in een *function.json-bestand* en een [Python-functie](../articles/azure-functions/functions-reference-python.md) die de binding gebruikt. De functie schrijft een bericht naar een gebeurtenishub.
 
-In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *Function. json* .
+In de volgende voorbeelden worden bindende gegevens van gebeurtenishubs weergegeven in het *bestand function.json.*
 
 ```json
 {
@@ -171,7 +171,7 @@ In de volgende voor beelden ziet u Event Hubs bindings gegevens in het bestand *
 }
 ```
 
-Dit is de python-code voor het verzenden van één bericht:
+Hier is Python-code die één bericht verzendt:
 
 ```python
 import datetime
@@ -187,7 +187,7 @@ def main(timer: func.TimerRequest) -> str:
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een Java-functie die een bericht schrijft met de huidige tijd naar een event hub.
+In het volgende voorbeeld wordt een Java-functie weergegeven die een bericht met de huidige tijd naar een gebeurtenishub schrijft.
 
 ```java
 @FunctionName("sendTime")
@@ -198,17 +198,17 @@ public String sendTime(
  }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@EventHubOutput` annotatie voor para meters waarvan de waarde zou worden gepubliceerd in Event hub.  De para meter moet van het type `OutputBinding<T>` zijn, waarbij T een POJO of een systeem eigen Java-type is.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de annotatie op parameters waarvan de `@EventHubOutput` waarde zou worden gepubliceerd in Event Hub.  De parameter moet `OutputBinding<T>` van het type zijn, waarbij T een POJO of een native Java-type is.
 
 ---
 
-## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
+## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Gebruik voor [ C# class-bibliotheken](../articles/azure-functions/functions-dotnet-class-library.md)het kenmerk [EventHubAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) .
+Voor [c#-klassebibliotheken](../articles/azure-functions/functions-dotnet-class-library.md)gebruikt u het kenmerk [EventHubAttribute.](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs)
 
-De constructor van het kenmerk neemt de naam van de Event Hub en de naam van een app-instelling die de connection string bevat. Zie [output-Configuration (](#configuration)Engelstalig) voor meer informatie over deze instellingen. Hier volgt een voor beeld van een `EventHub`-kenmerk:
+De constructor van het kenmerk neemt de naam van de gebeurtenishub en de naam van een app-instelling die de verbindingstekenreeks bevat. Zie [Uitvoer - configuratie](#configuration)voor meer informatie over deze instellingen. Hier is `EventHub` een kenmerkvoorbeeld:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -219,70 +219,70 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#example).
+Zie Voorbeeld uitvoer [- C#](#example)voor een volledig voorbeeld .
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# het script.
+Kenmerken worden niet ondersteund door C# Script.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)de [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) -aantekening voor para meters waarvan de waarde zou worden gepubliceerd in Event hub. De para meter moet van het type `OutputBinding<T>` zijn, waarbij `T` een POJO of een systeem eigen Java-type is.
+Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)de [EventHubOutput-annotatie](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) op parameters waarvan de waarde zou worden gepubliceerd in Gebeurtenishub. De parameter moet `OutputBinding<T>` van `T` het type zijn, waar is een POJO of een native Java-type.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `EventHub`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `EventHub` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op ' eventHub '. |
-|**direction** | N.v.t. | Moet worden ingesteld op 'out'. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
-|**path** |**EventHubName** | Functions 1. x. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
-|**eventHubName** |**EventHubName** | Functions 2. x en hoger. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
-|**Combi** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de *naam ruimte*, niet op de Event hub zelf. Deze connection string moet de machtiging verzenden hebben om het bericht naar de gebeurtenis stroom te verzenden.|
+|**Type** | N.v.t. | Moet worden ingesteld op "eventHub". |
+|**direction** | N.v.t. | Moet worden ingesteld op "out". Deze parameter wordt automatisch ingesteld wanneer u de binding maakt in de Azure-portal. |
+|**Naam** | N.v.t. | De variabele naam die wordt gebruikt in de functiecode die de gebeurtenis vertegenwoordigt. |
+|**Pad** |**EventHubName** | Functies alleen 1.x. De naam van de gebeurtenishub. Wanneer de naam van de gebeurtenishub ook aanwezig is in de verbindingstekenreeks, overschrijft die waarde deze eigenschap tijdens runtime. |
+|**eventHubName** |**EventHubName** | Functies 2.x en hoger. De naam van de gebeurtenishub. Wanneer de naam van de gebeurtenishub ook aanwezig is in de verbindingstekenreeks, overschrijft die waarde deze eigenschap tijdens runtime. |
+|**verbinding** |**Verbinding** | De naam van een app-instelling die de verbindingstekenreeks bevat met de naamruimte van de gebeurtenishub. Kopieer deze verbindingstekenreeks door op de knop **Verbindingsgegevens** voor de *naamruimte*te klikken, niet op de gebeurtenishub zelf. Deze verbindingstekenreeks moet machtigingen hebben om het bericht naar de gebeurtenisstream te verzenden.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Berichten verzenden met behulp van een methode parameter, zoals `out string paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<string>` of `IAsyncCollector<string>` gebruiken in plaats van `out string`.
+Berichten verzenden met behulp van `out string paramName`een methodeparameter zoals . In het script `paramName` C# is `name` de waarde die is opgegeven in de eigenschap *function.json*. Als u meerdere berichten wilt `ICollector<string>` `IAsyncCollector<string>` schrijven, `out string`kunt u .
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Berichten verzenden met behulp van een methode parameter, zoals `out string paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<string>` of `IAsyncCollector<string>` gebruiken in plaats van `out string`.
+Berichten verzenden met behulp van `out string paramName`een methodeparameter zoals . In het script `paramName` C# is `name` de waarde die is opgegeven in de eigenschap *function.json*. Als u meerdere berichten wilt `ICollector<string>` `IAsyncCollector<string>` schrijven, `out string`kunt u .
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Open de uitvoer gebeurtenis met behulp van `context.bindings.<name>` waarbij `<name>` de waarde is die is opgegeven in de eigenschap `name` van *Function. json*.
+Toegang tot de `context.bindings.<name>` uitvoergebeurtenis met behulp van waar `<name>` is de waarde opgegeven in de `name` eigenschap van *function.json*.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie:
+Er zijn twee opties voor het uitplaatsen van een Gebeurtenishub-bericht vanuit een functie:
 
-- **Retour waarde**: Stel de eigenschap `name` in *Function. json* in op `$return`. Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als een event hub-bericht.
+- **Retourwaarde:** Stel `name` de eigenschap in `$return` *function.json* in op . Met deze configuratie blijft de retourwaarde van de functie bestaan als een gebeurtenishubbericht.
 
-- Verplicht **: Geef**een waarde door aan de methode [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die aan `set` is door gegeven, wordt persistent gemaakt als een event hub-bericht.
+- **Noodzakelijk:** Geef een waarde door aan de [ingestelde](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) methode van de parameter die is opgegeven als [een uit-type.](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) De waarde `set` die wordt doorgegeven aan wordt gehandhaafd als een Gebeurtenishub-bericht.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie met behulp van de [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) -aantekening:
+Er zijn twee opties voor het uitplaatsen van een Gebeurtenishub-bericht vanuit een functie met de [gebeurtenishub-annotatie:](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)
 
-- **Retour waarde**: door de aantekening toe te passen op de functie zelf, wordt de geretourneerde waarde van de functie persistent gemaakt als een event hub-bericht.
+- **Retourwaarde:** Door de annotatie toe te passen op de functie zelf, blijft de retourwaarde van de functie bestaan als een gebeurtenishubbericht.
 
-- **Absoluut**: als u de bericht waarde expliciet wilt instellen, past u de aantekening toe op een specifieke para meter van het type [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), waarbij `T` een Pojo of een systeem eigen Java-type is. Met deze configuratie wordt door het door geven van een waarde aan de `setValue`-methode de waarde persistent gemaakt als een event hub-bericht.
+- **Noodzakelijk:** Als u de berichtwaarde expliciet wilt instellen, past u [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)de `T` aantekening toe op een specifieke parameter van het type , waar een POJO of een native Java-type is. Met deze configuratie blijft het `setValue` doorgeven van een waarde aan de methode de waarde als een gebeurtenishubbericht behouden.
 
 ---
 
@@ -290,16 +290,16 @@ Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie
 
 | Binding | Naslaginformatie |
 |---|---|
-| Event Hub | [Bedienings handleiding](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Event Hub | [Handleiding voor bewerkingen](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>instellingen voor host.JSON
+## <a name="hostjson-settings"></a>host.json-instellingen
 
-In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](../articles/azure-functions/functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versies 2.x en hoger. Het voorbeeld host.json-bestand hieronder bevat alleen de instellingen van versie 2.x+ voor deze binding. Zie [host.json-verwijzing naar Azure-functies voor](../articles/azure-functions/functions-host-json.md)meer informatie over algemene configuratie-instellingen in versies 2.x en verder.
 
 > [!NOTE]
-> Zie [host. json Reference voor Azure functions 1. x](../articles/azure-functions/functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Zie [host.json-verwijzing naar Azure-functies 1.x voor](../articles/azure-functions/functions-host-json-v1.md)een verwijzing naar host.json in Functies 1.x .
 
 ```json
 {
@@ -318,6 +318,6 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|`maxBatchSize`|10|Het maximum aantal gebeurtenissen dat per receive-lus is ontvangen.|
-|`prefetchCount`|300|Het standaard aantal vooraf opgehaald dat door de onderliggende `EventProcessorHost`wordt gebruikt.|
-|`batchCheckpointFrequency`|1|Het aantal gebeurtenis batches dat moet worden verwerkt voordat een EventHub-cursor controlepunt wordt gemaakt.|
+|`maxBatchSize`|10|Het maximale aantal gebeurtenissen per ontvangen lus.|
+|`prefetchCount`|300|Het standaard aantal voorhaalde dat `EventProcessorHost`wordt gebruikt door de onderliggende .|
+|`batchCheckpointFrequency`|1|Het aantal gebeurtenisbatches dat moet worden verwerkt voordat u een EventHub-cursorcontrolepunt maakt.|

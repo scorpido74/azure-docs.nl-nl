@@ -1,36 +1,36 @@
 ---
-title: Frequentie limiet voor SMS, e-mails, Azure-app push meldingen en webhooks
-description: Krijg inzicht in de manier waarop Azure het aantal mogelijke SMS-, e-mail-, Azure-app push-of webhook-meldingen beperkt van een actie groep.
+title: Beperking van de snelheid voor sms, e-mails, pushmeldingen van Azure App en webhooks
+description: Begrijpen hoe Azure het aantal mogelijke sms-, e-mail-, Azure-app-push- of webhookmeldingen van een actiegroep beperkt.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
 ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665524"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Frequentie limiet voor spraak, SMS, e-mails Azure-app push meldingen en webhook-berichten
-Frequentie beperking is het opschorten van meldingen die optreden wanneer te veel wordt verzonden naar een bepaald telefoon nummer, e-mail adres of apparaat. Als u de frequentie beperkt, zorgt u ervoor dat waarschuwingen kunnen worden beheerd en wat actie kan worden uitgevoerd.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Beperking van de snelheid voor spraak-, sms-berichten, e-mails, pushmeldingen van Azure-apps en webhook-berichten
+Tariefbeperking is een opschorting van meldingen die optreedt wanneer er te veel naar een bepaald telefoonnummer, e-mailadres of apparaat worden verzonden. Tariefbeperking zorgt ervoor dat waarschuwingen beheersbaar en bruikbaar zijn.
 
-De drempel waarden voor frequentie limieten zijn:
+De drempelwaarden voor de tariefgrens zijn:
 
-- **SMS**: niet meer dan 1 SMS om de vijf minuten.
-- **Voice**: Maxi maal 1 telefoon oproep om de vijf minuten.
-- **E-mail**: maxi maal 100 e-mail berichten in een uur.
+- **SMS**: Niet meer dan 1 SMS per 5 minuten.
+- **Stem**: Niet meer dan 1 spraakoproep om de 5 minuten.
+- **E-mail:** Niet meer dan 100 e-mails in een uur.
  
-  Andere acties zijn geen tarieven beperkt.
+  Andere acties zijn niet beperkt.
 
-## <a name="rate-limit-rules"></a>Frequentie limiet regels
-- Een bepaald telefoon nummer of e-mail adres is beperkt wanneer er meer berichten worden ontvangen dan de drempel waarde toestaat.
-- Een telefoon nummer of e-mail adres kan deel uitmaken van actie groepen in veel abonnementen. De frequentie beperking is van toepassing op alle abonnementen. Deze is van toepassing zodra de drempel waarde is bereikt, zelfs als berichten worden verzonden vanuit meerdere abonnementen.
-- Wanneer een e-mail adres een beperkt aantal is, wordt er een extra melding verzonden om de frequentie limiet te communiceren. De e-mail status wanneer de frequentie limiet verloopt.
+## <a name="rate-limit-rules"></a>Regels voor tarieflimiet
+- Een bepaald telefoonnummer of e-mail is beperkt wanneer het meer berichten ontvangt dan de drempelwaarde toestaat.
+- Een telefoonnummer of e-mail kan deel uitmaken van actiegroepen voor veel abonnementen. Tariefbeperking geldt voor alle abonnementen. Het is van toepassing zodra de drempel is bereikt, zelfs als berichten worden verzonden vanaf meerdere abonnementen.
+- Wanneer een e-mailadres beperkt is, wordt een extra melding verzonden om de tariefbeperking te communiceren. In de e-mail wordt vermeld wanneer de tariefbeperking verloopt.
 
 ## <a name="next-steps"></a>Volgende stappen ##
-* Meer informatie over het [gedrag van SMS-waarschuwingen](alerts-sms-behavior.md).
-* Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
-* Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Meer informatie over [sms-waarschuwingsgedrag](alerts-sms-behavior.md).
+* Krijg een [overzicht van waarschuwingen voor activiteitenlogboeken](alerts-overview.md)en ontdek hoe u waarschuwingen ontvangt.  
+* Meer informatie over het [configureren van waarschuwingen wanneer een servicestatusmelding wordt geplaatst.](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 

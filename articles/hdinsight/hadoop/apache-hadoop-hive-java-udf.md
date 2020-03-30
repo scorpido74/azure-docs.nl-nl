@@ -1,6 +1,6 @@
 ---
-title: Door de gebruiker gedefinieerde Java-functie (UDF) met Apache Hive Azure HDInsight
-description: Meer informatie over het maken van een op Java gebaseerde, door de gebruiker gedefinieerde functie (UDF) die samenwerkt met Apache Hive. In dit voor beeld wordt een tabel met tekst teken reeksen omgezet in kleine letters.
+title: Java-gebruikersgedefinieerde functie (UDF) met Apache Hive Azure HDInsight
+description: Meer informatie over het maken van een op Java gebaseerde gebruikersfunctie (UDF) die werkt met Apache Hive. In dit voorbeeld converteert UDF een tabel met teksttekenreeksen naar kleine letters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327199"
 ---
-# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Een Java UDF gebruiken met Apache Hive in HDInsight
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Gebruik een Java UDF met Apache Hive in HDInsight
 
-Meer informatie over het maken van een op Java gebaseerde, door de gebruiker gedefinieerde functie (UDF) die samenwerkt met Apache Hive. Met de Java UDF in dit voor beeld wordt een tabel met tekst teken reeksen geconverteerd naar alle-kleine letters.
+Meer informatie over het maken van een op Java gebaseerde gebruikersfunctie (UDF) die werkt met Apache Hive. De Java UDF in dit voorbeeld converteert een tabel met teksttekenreeksen naar tekens met alle kleine letters.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks)
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, wordt de URI `wasbs://`.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Een Hadoop cluster op HDInsight. Zie [Aan de slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks)
+* [Apache Maven](https://maven.apache.org/download.cgi) goed [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project build systeem voor Java projecten.
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit zou wasb:// zijn voor Azure Storage, abfs:// voor Azure Data Lake Storage Gen2 of adl:// voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure `wasbs://`Storage, is de URI .  Zie ook, [veilige overdracht](../../storage/common/storage-require-secure-transfer.md).
 
-* Een tekst editor of Java IDE
+* Een teksteditor of Java IDE
 
     > [!IMPORTANT]  
-    > Als u de python-bestanden op een Windows-client maakt, moet u een editor gebruiken die gebruikmaakt van LF als een lijn die eindigt. Als u niet zeker weet of uw editor LF of CRLF gebruikt, raadpleegt u de sectie [probleem oplossing](#troubleshooting) voor de stappen voor het verwijderen van het CR-teken.
+    > Als u de Python-bestanden op een Windows-client maakt, moet u een editor gebruiken die LF als einde van de regel gebruikt. Als u niet zeker weet of uw editor LF of CRLF gebruikt, raadpleegt u de sectie [Probleemoplossing](#troubleshooting) voor stappen bij het verwijderen van het CR-teken.
 
-## <a name="test-environment"></a>Test omgeving
+## <a name="test-environment"></a>Testomgeving
 
-De omgeving die voor dit artikel wordt gebruikt, is een computer met Windows 10.  De opdrachten zijn uitgevoerd in een opdracht prompt en de verschillende bestanden zijn bewerkt met Klad blok. Wijzig dienovereenkomstig voor uw omgeving.
+De omgeving die voor dit artikel wordt gebruikt, was een computer met Windows 10.  De opdrachten werden uitgevoerd in een opdrachtprompt en de verschillende bestanden zijn bewerkt met Kladblok. Dienovereenkomstig aanpassen voor uw omgeving.
 
-Voer vanaf een opdracht prompt de onderstaande opdrachten in om een werk omgeving te maken:
+Voer in een opdrachtprompt de onderstaande opdrachten in om een werkomgeving te maken:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-an-example-java-udf"></a>Een voor beeld maken Java UDF
+## <a name="create-an-example-java-udf"></a>Een voorbeeld van Java UDF maken
 
 1. Maak een nieuw Maven-project door de volgende opdracht in te voeren:
 
@@ -50,22 +50,22 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Met deze opdracht maakt u een map met de naam `exampleudf`, die het project maven bevat.
+    Met deze opdracht `exampleudf`wordt een map gemaakt met de naam , die het Maven-project bevat.
 
-2. Wanneer het project is gemaakt, verwijdert u de `exampleudf/src/test` Directory die is gemaakt als onderdeel van het project door de volgende opdracht in te voeren:
+2. Zodra het project is gemaakt, verwijdert u de `exampleudf/src/test` map die is gemaakt als onderdeel van het project door de volgende opdracht in te voeren:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. Open `pom.xml` door de volgende opdracht in te voeren:
+3. Open `pom.xml` door onderstaande opdracht in te voeren:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Vervang vervolgens de bestaande `<dependencies>` vermelding door de volgende XML:
+    Vervang vervolgens `<dependencies>` de bestaande vermelding door de volgende XML:
 
     ```xml
     <dependencies>
@@ -84,9 +84,9 @@ cd C:\HDI
     </dependencies>
     ```
 
-    Deze vermeldingen geven de versie van Hadoop en Hive op die is opgenomen in HDInsight 3,6. Informatie over de versies van Hadoop en Hive in HDInsight vindt u in het document [versie van hdinsight-onderdelen](../hdinsight-component-versioning.md) .
+    Deze vermeldingen geven de versie van Hadoop en Hive vermeld die bij HDInsight 3.6 zijn inbegrepen. U vindt informatie over de versies van Hadoop en Hive voorzien van HDInsight uit het [HDInsight component versioning](../hdinsight-component-versioning.md) document.
 
-    Voeg een `<build>` sectie toe vóór de `</project>` lijn aan het einde van het bestand. Deze sectie moet de volgende XML bevatten:
+    Voeg `<build>` een sectie `</project>` toe voor de regel aan het einde van het bestand. Deze sectie moet de volgende XML bevatten:
 
     ```xml
     <build>
@@ -140,17 +140,17 @@ cd C:\HDI
     </build>
     ```
 
-    Deze vermeldingen bepalen hoe het project moet worden gebouwd. Met name de versie van Java die het project gebruikt en hoe u een uberjar maakt voor implementatie naar het cluster.
+    Deze vermeldingen bepalen hoe het project moet worden gebouwd. Met name de versie van Java die het project gebruikt en hoe u een uberjar bouwen voor implementatie naar het cluster.
 
-    Sla het bestand op nadat de wijzigingen zijn aangebracht.
+    Sla het bestand op zodra de wijzigingen zijn aangebracht.
 
-4. Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `ExampleUDF.java`:
+4. Voer de onderstaande opdracht in `ExampleUDF.java`om een nieuw bestand te maken en te openen:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    Kopieer en plak de Java-code hieronder in het nieuwe bestand. Sluit het bestand.
+    Kopieer en plak vervolgens de javacode hieronder in het nieuwe bestand. Sluit vervolgens het bestand.
 
     ```java
     package com.microsoft.examples;
@@ -177,39 +177,39 @@ cd C:\HDI
     }
     ```
 
-    Met deze code wordt een UDF geïmplementeerd die een teken reeks waarde accepteert, en wordt een kleine versie van de teken reeks geretourneerd.
+    Deze code implementeert een UDF die een tekenreekswaarde accepteert en retourneert een kleine versie van de tekenreeks.
 
-## <a name="build-and-install-the-udf"></a>De UDF maken en installeren
+## <a name="build-and-install-the-udf"></a>De UDF bouwen en installeren
 
-Vervang in de onderstaande opdrachten `sshuser` door de daad werkelijke gebruikers naam als deze anders is. Vervang `mycluster` door de daad werkelijke cluster naam.
+Vervang in de onderstaande opdrachten `sshuser` de werkelijke gebruikersnaam als deze anders is. Vervang `mycluster` door de werkelijke clusternaam.
 
-1. Compileer de UDF en verpak deze door de volgende opdracht in te voeren:
+1. Compileren en verpakken van de UDF door de volgende opdracht in te voeren:
 
     ```cmd
     mvn compile package
     ```
 
-    Met deze opdracht bouwt en verpakt de UDF in het `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`-bestand.
+    Met deze opdracht wordt de UDF in het `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` bestand gebouwd en verpakt.
 
-2. Gebruik de `scp` opdracht om het bestand te kopiëren naar het HDInsight-cluster door de volgende opdracht in te voeren:
+2. Gebruik `scp` de opdracht om het bestand naar het HDInsight-cluster te kopiëren door de volgende opdracht in te voeren:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. Maak verbinding met het cluster via SSH door de volgende opdracht in te voeren:
+3. Maak verbinding met het cluster met SSH door de volgende opdracht in te voeren:
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. Kopieer vanuit de open SSH-sessie het jar-bestand naar HDInsight-opslag.
+4. Kopieer het jar-bestand vanaf de open SSH-sessie naar HDInsight-opslag.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>De UDF van Hive gebruiken
+## <a name="use-the-udf-from-hive"></a>Gebruik de UDF van Hive
 
 1. Start de Beeline-client vanuit de SSH-sessie door de volgende opdracht in te voeren:
 
@@ -217,22 +217,22 @@ Vervang in de onderstaande opdrachten `sshuser` door de daad werkelijke gebruike
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    Bij deze opdracht wordt ervan uitgegaan dat u de standaard **beheerder** hebt gebruikt voor het aanmeldings account voor uw cluster.
+    Met deze opdracht wordt ervan uitgegaan dat u de standaardbeheerder **hebt** gebruikt voor het aanmeldingsaccount voor uw cluster.
 
-2. Zodra u de `jdbc:hive2://localhost:10001/>` prompt hebt ontvangen, voert u het volgende in om de UDF toe te voegen aan Hive en deze beschikbaar te maken als een functie.
+2. Zodra u bij `jdbc:hive2://localhost:10001/>` de prompt aankomt, voert u het volgende in om de UDF aan Hive toe te voegen en deze als functie bloot te stellen.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
-3. Gebruik de UDF om waarden die zijn opgehaald uit een tabel te converteren naar kleine letters.
+3. Gebruik de UDF om waarden die uit een tabel zijn opgehaald, om te zetten in kleine letterstekenreeksen.
 
     ```hiveql
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    Met deze query wordt de status uit de tabel geselecteerd, wordt de teken reeks geconverteerd naar kleine letters en vervolgens weer gegeven samen met de naam die niet is gewijzigd. De uitvoer ziet er ongeveer als volgt uit:
+    Met deze query selecteert u de status in de tabel, converteert u de tekenreeks naar kleine letters en geeft u deze weer samen met de ongewijzigde naam. De uitvoer lijkt op de volgende tekst:
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -251,13 +251,13 @@ Vervang in de onderstaande opdrachten `sshuser` door de daad werkelijke gebruike
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Bij het uitvoeren van de Hive-taak kan er een fout melding worden weer gegeven die vergelijkbaar is met de volgende tekst:
+Wanneer u de korftaak uitvoert, u een fout tegenkomen die vergelijkbaar is met de volgende tekst:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
-Dit probleem kan worden veroorzaakt door de regel die in het python-bestand wordt beëindigd. Veel Windows-editors maken standaard gebruik van CRLF als lijn einde, maar Linux-toepassingen verwachten meestal LF.
+Dit probleem kan worden veroorzaakt door de regeleinde in het Python-bestand. Veel Windows-editors standaard met behulp van CRLF als de lijn eindigt, maar Linux-toepassingen verwachten meestal LF.
 
-U kunt de volgende Power shell-instructies gebruiken om de CR-tekens te verwijderen voordat u het bestand uploadt naar HDInsight:
+U de volgende PowerShell-instructies gebruiken om de CR-tekens te verwijderen voordat u het bestand uploadt naar HDInsight:
 
 ```PowerShell
 # Set $original_file to the python file path
@@ -267,6 +267,6 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Apache Hive gebruiken met HDInsight](hdinsight-use-hive.md)voor andere manieren om met hive te werken.
+Zie [Apache Hive gebruiken met HDInsight](hdinsight-use-hive.md)voor andere manieren om met Hive te werken.
 
-Zie [Apache Hive Opera tors en door de gebruiker gedefinieerde functies](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) van de Hive-wiki op Apache.org voor meer informatie over door de gebruiker gedefinieerde Hive-functies.
+Zie Apache Hive Operators [and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) van de hive wiki op apache.org voor meer informatie over hive-gebruikersgedefinieerde functies.

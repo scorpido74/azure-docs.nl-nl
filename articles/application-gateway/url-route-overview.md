@@ -1,6 +1,6 @@
 ---
 title: Overzicht van routering van op URL gebaseerde inhoud van Azure Application Gateway
-description: Dit artikel bevat een overzicht van de Azure-toepassing gateway-URL-gebaseerde inhouds routering, UrlPathMap-configuratie en PathBasedRouting-regel.
+description: In dit artikel vindt u een overzicht van de op URL gebaseerde inhoudsroutering op basis van Azure Application Gateway, urlpathmap-configuratie en pathbasedrouteregel.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251835"
 ---
 # <a name="url-path-based-routing-overview"></a>Overzicht van op URL-pad gebaseerde routering
@@ -24,10 +24,10 @@ In het volgende voorbeeld verzorgt de toepassingsgateway het verkeer voor contos
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Aanvragen voor http-\://contoso.com/video/* worden doorgestuurd naar video server pool en http-\://contoso.com/images/* worden doorgestuurd naar image server pool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
+Aanvragen voor\:http -contoso.com/video/* worden doorgestuurd naar\:VideoServerPool en http -contoso.com/images/* worden doorgestuurd naar ImageServerPool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
 
 > [!IMPORTANT]
-> Voor de V1-SKU worden regels verwerkt in de volg orde waarin ze worden weer gegeven in de portal. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt. Voor de v2-SKU hebben exacte overeenkomsten een hogere prioriteit. Het wordt echter nadrukkelijk aanbevolen om eerst multi-site listeners te configureren voordat u een eenvoudige listener gaat configureren. Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid.
+> Voor de v1 SKU worden regels verwerkt in de volgorde waarin ze in de portal worden vermeld. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt. Voor de v2 SKU hebben exacte overeenkomsten een hogere prioriteit. Het is echter sterk aanbevolen om multi-site listeners eerst te configureren voordat u een basislistener configureert. Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid.
 
 ## <a name="urlpathmap-configuration-element"></a>Configuratie-element UrlPathMap
 
@@ -62,17 +62,17 @@ Het element UrlPathMap wordt gebruikt om padpatronen op te geven voor back-endse
 }]
 ```
 
-### <a name="pathpattern"></a>PathPattern
+### <a name="pathpattern"></a>PathPatroon
 
-PathPattern is een lijst met paden die moeten worden gevonden. Elk hiervan moet beginnen met / en de enige plaats waar een * is toegestaan, is aan het einde na een /. De teken reeks die wordt gevoederd naar het pad naar de overeenkomst bevat geen tekst na de eerste? of #, en deze tekens zijn hier niet toegestaan. Anders zijn de tekens toegestaan in een URL toegestaan in PathPattern.
+PathPattern is een lijst met padpatronen die overeenkomen. Elk hiervan moet beginnen met / en de enige plaats waar een * is toegestaan, is aan het einde na een /. De tekenreeks die aan de padmatcher wordt gevoerd, bevat geen tekst na de eerste? of #, en die chars zijn hier niet toegestaan. Anders zijn alle tekens die in een URL zijn toegestaan, toegestaan in PathPattern.
 
-De ondersteunde patronen zijn afhankelijk van of u Application Gateway v1 of v2 implementeert:
+De ondersteunde patronen zijn afhankelijk van het feit of u Application Gateway v1 of v2 implementeert:
 
 #### <a name="v1"></a>v1
 
-Padregels zijn niet hoofdletter gevoelig.
+Padregels zijn hoofdletters ongevoelig.
 
-|v1-pad patroon  |Wordt ondersteund?  |
+|v1-padpatroon  |Wordt ondersteund?  |
 |---------|---------|
 |`/images/*`     |ja|
 |`/images*`     |nee|
@@ -83,9 +83,9 @@ Padregels zijn niet hoofdletter gevoelig.
 
 #### <a name="v2"></a>v2
 
-Padregels zijn niet hoofdletter gevoelig.
+Padregels zijn hoofdletters ongevoelig.
 
-|patroon van v2-pad  |Wordt ondersteund?  |
+|v2-padpatroon  |Wordt ondersteund?  |
 |---------|---------|
 |`/images/*`     |ja|
 |`/images*`     |ja|
