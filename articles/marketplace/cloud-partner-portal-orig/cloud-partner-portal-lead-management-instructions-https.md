@@ -1,111 +1,110 @@
 ---
-title: HTTPS-eind punt | Azure Marketplace
-description: Beheer van leads configureren voor een HTTPS-eind punt.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: HTTPS-eindpunt | Azure Marketplace
+description: Leadbeheer configureren voor een HTTPS-eindpunt.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pabutler
-ms.openlocfilehash: 817e431f5386b10345d414190e8bda0954ef2aca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825218"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288594"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>Beheer van potentiële klanten configureren met behulp van een HTTPS-eind punt
+# <a name="configure-lead-management-using-an-https-endpoint"></a>Leadbeheer configureren met behulp van een HTTPS-eindpunt
 
-U kunt een HTTPS-eind punt gebruiken voor het afhandelen van Azure Marketplace-en AppSource-leads. Deze leads kunnen naar worden geschreven naar een CRM-systeem (Customer Relationship Management) of als e-mail melding worden verzonden. In dit artikel wordt beschreven hoe u beheer van leads configureert met behulp van de [Microsoft flow](https://powerapps.microsoft.com/automate-processes/) Automation-Service.
+U een HTTPS-eindpunt gebruiken om Azure Marketplace- en AppSource-leads te verwerken. Deze leads kunnen worden geschreven naar die kan worden geschreven naar een Customer Relationship Management (CRM) systeem of verzonden als een e-mail melding. In dit artikel wordt beschreven hoe u leadbeheer configureert met de [automatiseringsservice Microsoft Flow.](https://powerapps.microsoft.com/automate-processes/)
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Een stroom maken met behulp van Microsoft Flow
+## <a name="create-a-flow-using-microsoft-flow"></a>Een stroom maken met Microsoft Flow
 
-1. Open de pagina [stroom](https://flow.microsoft.com/) . Selecteer **Aanmelden** of selecteer **gratis registreren** om een gratis stroom account te maken.
+1. Open de webpagina [Flow.](https://flow.microsoft.com/) Selecteer **Aanmelden** of selecteer **Aanmelden om een** gratis Flow-account aan te maken.
 
-2. Meld u aan en selecteer **mijn stromen** in de menu balk.
+2. Log in en selecteer **Mijn flows** op de menubalk.
 
     ![Mijn stromen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-3. Selecteer **+ leeg item maken**.
+3. Selecteer **+ Maken van leeg**.
 
-    ![leeg item maken](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Leeg item maken](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-4. Selecteer **leeg item maken**.
+4. Selecteer **Maken van leeg**.
 
-    ![leeg item maken](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    ![Leeg item maken](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
 
-5. Typ ' aanvraag ' in het veld **connectors en triggers zoeken** om de aanvraag connector te vinden.
-6. Onder **Triggers**selecteert u **Wanneer een HTTP-aanvraag wordt ontvangen**. 
+5. Typ 'verzoek' in het veld **Zoeken en activeert** om de connector Verzoek te zoeken.
+6. Selecteer **onder Triggers**de optie Wanneer een **HTTP-aanvraag wordt ontvangen**. 
 
-    ![Selecteer de trigger voor ontvangen HTTP-aanvragen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Selecteer de HTTP-aanvraagontvangen trigger](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. Gebruik een van de volgende stappen om het JSON-schema van de **aanvraag tekst**te configureren:
+7. Gebruik een van de volgende stappen om het **JSON-schema voor aanvraagbeheer**te configureren:
 
-   - Kopieer het [JSON-schema](#json-schema) aan het einde van dit artikel in het tekstvak aanvraag tekst voor **JSON-schema** .
-   - Selecteer **Voorbeeldnettolading om een schema te genereren**. Plak in het tekstvak **een voor beeld van een JSON-nettolading invoeren of plakken** in het [JSON-voor beeld](#json-example). Selecteer **gereed** om het schema te maken.
+   - Kopieer het [JSON-schema](#json-schema) aan het einde van dit artikel naar het tekstvak **Json-schema van aanvraag.**
+   - Selecteer **Voorbeeldnettolading om een schema te genereren**. Plak in het tekstvak **Json-payload van een voorbeeld een** voorbeeld van JSON in het voorbeeld [JSON](#json-example). Selecteer **Gereed** om het schema te maken.
 
    >[!Note]
-   >Op dit punt in de stroom kunt u verbinding maken met een CRM-systeem of een e-mail melding configureren.
+   >Op dit punt in de flow u verbinding maken met een CRM-systeem of een e-mailmelding configureren.
 
 ### <a name="to-connect-to-a-crm-system"></a>Verbinding maken met een CRM-systeem
 
-1. Selecteer **+ nieuwe stap**.
-2. Kies het CRM-systeem van uw keuze met de actie om een nieuwe record te maken. In de volgende scherm opname wordt **Dynamics 365-een nieuwe record gemaakt** als voor beeld.
+1. Selecteer **+ Nieuwe stap**.
+2. Kies het CRM-systeem van uw keuze met de actie om een nieuwe record te maken. De volgende schermopname toont **Dynamics 365 - Maak een nieuwe record** als voorbeeld.
 
     ![Een nieuwe record maken](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
 
-3. Geef de **naam** van de organisatie op die de verbindings invoer voor uw connector is. Selecteer **leads** in de vervolg keuzelijst **entiteits naam** .
+3. Geef de **organisatienaam** op die de verbindingsingangen voor uw connector zijn. Selecteer **Leads** in de vervolgkeuzelijst **Entiteitsnaam.**
 
     ![Leads selecteren](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. Flow toont een formulier voor het leveren van lead gegevens. U kunt items van de invoer aanvraag toewijzen door dynamische inhoud toe te voegen. In de volgende scherm opname wordt **OfferTitle** weer gegeven als een voor beeld.
+4. Flow toont een formulier voor het verstrekken van leadinformatie. U items uit het invoerverzoek toewijzen door te kiezen voor het toevoegen van dynamische inhoud. In de volgende schermopname ziet **U's OfferTitle** als voorbeeld.
 
     ![Dynamische inhoud toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. Wijs de gewenste velden toe en selecteer **Opslaan** om uw stroom op te slaan.
+5. Breng de gewenste velden in kaart en selecteer **Opslaan** om uw stroom op te slaan.
 
-6. Er wordt een HTTP POST-URL in de aanvraag gemaakt. Kopieer deze URL en gebruik deze als het HTTPS-eind punt.
+6. Er wordt een HTTP-POST-URL gemaakt in de aanvraag. Kopieer deze URL en gebruik deze als https-eindpunt.
 
-    ![HTTP post-URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP-bericht-URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-### <a name="to-set-up-email-notification"></a>E-mail meldingen instellen
+### <a name="to-set-up-email-notification"></a>E-mailmelding instellen
 
-1. Selecteer **+ nieuwe stap**.
-2. Onder **Kies een actie**selecteert u **acties**.
+1. Selecteer **+ Nieuwe stap**.
+2. Selecteer **Acties** **onder Een actie kiezen**.
 3. Selecteer **Een e-mail verzenden** onder **Acties**.
 
-    ![Een e-mail actie toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
+    ![Een e-mailactie toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
-4. Configureer in **E-mail verzenden**de volgende vereiste velden:
+4. Configureer in **Een e-mail verzenden**de volgende vereiste velden:
 
-   - Om ten minste één geldig e-mail adres **in te** voeren.
-   - **Met de** optie stroom kunt u dynamische inhoud toevoegen, zoals **LeadSource** in de volgende scherm opname.
+   - **Om** - Voer ten minste één geldig e-mailadres in.
+   - **Onderwerp** - Flow geeft je de mogelijkheid om Dynamische inhoud toe te voegen, zoals **LeadSource** in de volgende schermopname.
 
-     ![Een e-mail actie toevoegen met behulp van dynamische inhoud](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Een e-mailactie toevoegen met dynamische inhoud](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
-   - **Hoofd tekst** : Voeg in de lijst met dynamische inhoud de gewenste informatie toe aan de hoofd tekst van het e-mail bericht. Voor beeld: LastName, FirstName, email en Company.
+   - **Hoofdtekst** - Voeg in de lijst Dynamische inhoud de gewenste informatie toe in de hoofdtekst van de e-mail. Bijvoorbeeld Achternaam, Voornaam, E-mail en Bedrijf.
 
-   Wanneer u klaar bent met het instellen van de e-mail melding, ziet u in het voor beeld in de volgende scherm opname.
+   Wanneer u klaar bent met het instellen van de e-mailmelding, ziet deze eruit als het voorbeeld in de volgende schermopname.
 
-   ![Een e-mail actie toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
+   ![Een e-mailactie toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
-5. Selecteer **Opslaan** om de stroom te volt ooien.
-6. Er wordt een HTTP POST-URL in de aanvraag gemaakt. Kopieer deze URL en gebruik deze als het HTTPS-eind punt.
+5. Selecteer **Opslaan** om de stroom te voltooien.
+6. Er wordt een HTTP-POST-URL gemaakt in de aanvraag. Kopieer deze URL en gebruik deze als https-eindpunt.
 
-    ![HTTP post-URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP-bericht-URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Uw aanbieding configureren om leads naar het HTTPS-eind punt te verzenden
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Uw aanbieding configureren om leads naar het HTTPS-eindpunt te verzenden
 
-Wanneer u de Lead beheer gegevens voor uw aanbieding configureert, selecteert u **https-eind punt** voor de **doel bestemming** en PLAKT u de http post-URL die u tijdens de vorige stap hebt gekopieerd.  
+Wanneer u de leadbeheergegevens voor uw aanbieding configureert, selecteert u **HTTPS-eindpunt** voor de **leadbestemming** en plakt u in de HTTP-POST-URL die u in de vorige stap hebt gekopieerd.  
 
 ![Dynamische inhoud toevoegen](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Wanneer leads worden gegenereerd, stuurt micro soft leads naar de stroom die worden doorgestuurd naar het CRM-systeem of e-mail adres dat u hebt geconfigureerd.
+Wanneer leads worden gegenereerd, stuurt Microsoft leads naar de stroom, die worden doorgestuurd naar het CRM-systeem of e-mailadres dat u hebt geconfigureerd.
 
-## <a name="json-schema-and-example"></a>JSON-schema en-voor beeld
+## <a name="json-schema-and-example"></a>JSON-schema en voorbeeld
 
-In het voor beeld van de JSON-test wordt het volgende schema gebruikt:
+In het voorbeeld van de JSON-test wordt het volgende schema gebruikt:
 
 ### <a name="json-schema"></a>JSON-schema
 
@@ -166,9 +165,9 @@ In het voor beeld van de JSON-test wordt het volgende schema gebruikt:
 }
 ```
 
-U kunt het volgende JSON-voor beeld kopiëren en bewerken om te gebruiken als test in uw MS flow.
+U het volgende JSON-voorbeeld kopiëren en bewerken om als test in uw MS Flow te gebruiken.
 
-### <a name="json-example"></a>JSON-voor beeld
+### <a name="json-example"></a>Json voorbeeld
 
 ```json
 {
@@ -188,4 +187,4 @@ U kunt het volgende JSON-voor beeld kopiëren en bewerken om te gebruiken als te
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan, configureert u [leads](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) van klanten in de Cloud Partner-Portal.
+Als u dit nog niet hebt gedaan, configureert u [klantleads](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) in de Cloud Partner Portal.

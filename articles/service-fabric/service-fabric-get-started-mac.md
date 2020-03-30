@@ -1,15 +1,15 @@
 ---
-title: Uw ontwikkel omgeving instellen op macOS
-description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Nadat u deze installatie hebt voltooid, kunt u toepassingen bouwen op macOS.
+title: Uw dev-omgeving instellen op macOS
+description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Nadat je deze installatie hebt voltooid, ben je klaar om applicaties te bouwen op macOS.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722574"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Uw ontwikkelomgeving instellen in Mac OS X
@@ -44,11 +44,11 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    U kunt deze instellingen rechtstreeks in het bestand daemon.json in uw Docker-installatiepad bijwerken. U kunt de configuratie-instellingen van de daemon rechtstreeks wijzigen in docker. Selecteer de **Docker-pictogram**, en selecteer vervolgens **voorkeuren** > **Daemon** > **Geavanceerd**.
+    U kunt deze instellingen rechtstreeks in het bestand daemon.json in uw Docker-installatiepad bijwerken. U de configuratie-instellingen van daemons in Docker direct wijzigen. Selecteer de **Docker-pictogram**, en selecteer vervolgens **voorkeuren** > **Daemon** > **Geavanceerd**.
     
     >[!NOTE]
     >
-    >Het is raadzaam om de daemon rechtstreeks in docker aan te passen omdat de locatie van het bestand daemon. json kan variëren van computer naar machine. Bijvoorbeeld, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Het wijzigen van de daemon direct in Docker wordt aanbevolen omdat de locatie van het daemon.json-bestand van machine tot machine kan verschillen. Bijvoorbeeld, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -76,7 +76,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
     >Bijvoorbeeld: het toevoegen van `RUN apt-get install nodejs -y` biedt ondersteuning voor `nodejs`-toepassingen als uitvoerbare gastbestanden.
     
     >[!TIP]
-    > Standaard wordt hierdoor de installatiekopie met de nieuwste versie van Service Fabric opgehaald. Ga naar de [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)-pagina als u een bepaalde revisie wilt ophalen
+    > Standaard wordt hierdoor de installatiekopie met de nieuwste versie van Service Fabric opgehaald. Ga voor bepaalde revisies naar de [dockerhubpagina](https://hub.docker.com/r/microsoft/service-fabric-onebox/)
 
 3. Als u uw herbruikbare installatiekopie wilt bouwen vanaf `Dockerfile`, opent u een terminal en gaat u met de opdracht `cd` naar de map met uw `Dockerfile`. Voer vervolgende de volgende opdracht uit:
 
@@ -101,7 +101,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Het kan even duren voordat het cluster is gestart. Wanneer deze wordt uitgevoerd, kunt u logboeken weer geven met de volgende opdracht of naar het dash board gaan om de status van de clusters te bekijken [http://localhost:19080](http://localhost:19080):
+5. Het cluster zal even duren om te beginnen. Wanneer deze wordt uitgevoerd, u logboeken bekijken met de volgende [http://localhost:19080](http://localhost:19080)opdracht of naar het dashboard gaan om de status van de clusters weer te geven:
 
     ```bash 
     docker logs sftestcluster
@@ -109,7 +109,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
 
 
 
-6. Gebruik de volgende opdracht om de container te stoppen en op te schonen. We zullen deze container echter in de volgende stap gebruiken.
+6. Als u de container wilt stoppen en opruimen, gebruikt u de volgende opdracht. Echter, we zullen deze container gebruiken in de volgende stap.
 
     ```bash 
     docker rm -f sftestcluster
@@ -166,7 +166,7 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit de terminal een Service Fa
     ```
 
     > [!IMPORTANT]
-    > Met de huidige versies van `brew cask install java` kan een recentere versie van de JDK worden geïnstalleerd.
+    > Huidige versies `brew cask install java` van kan een meer recente versie van de JDK installeren.
     > Zorg ervoor dat u JDK 8 installeert.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Toepassingen implementeren op uw Mac vanuit de terminal

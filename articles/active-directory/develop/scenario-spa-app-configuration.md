@@ -1,6 +1,6 @@
 ---
-title: Een app met één pagina configureren-micro soft Identity-platform | Azure
-description: Meer informatie over het bouwen van een toepassing met één pagina (de code configuratie van de app)
+title: App voor één pagina configureren - Microsoft-identiteitsplatform | Azure
+description: Meer informatie over het maken van een toepassing met één pagina (de codeconfiguratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,30 +15,30 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160080"
 ---
-# <a name="single-page-application-code-configuration"></a>Toepassing met één pagina: code configuratie
+# <a name="single-page-application-code-configuration"></a>Toepassing met één pagina: codeconfiguratie
 
-Meer informatie over het configureren van de code voor een toepassing met één pagina (SPA).
+Meer informatie over het configureren van de code voor uw toepassing op één pagina (SPA).
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>MSAL-bibliotheken die ondersteuning bieden voor impliciete stroom
+## <a name="msal-libraries-that-support-implicit-flow"></a>MSAL-bibliotheken die impliciete stroom ondersteunen
 
-Het micro soft Identity-platform biedt de volgende MSAL-bibliotheken (micro soft Authentication Library) ter ondersteuning van impliciete stroom door gebruik te maken van door de branche aanbevolen beveiligings procedures:  
+Het Microsoft-identiteitsplatform biedt de volgende MSAL-bibliotheken (Microsoft Authentication Library) om impliciete stroom te ondersteunen door gebruik te maken van door de industrie aanbevolen beveiligingspraktijken:  
 
 | MSAL-bibliotheek | Beschrijving |
 |--------------|--------------|
-| ![MSAL. js](media/sample-v2-code/logo_js.png) <br/> [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Een gewone Java script-bibliotheek voor gebruik in een webtoepassing aan de client zijde die is gebouwd via Java script-of SPA-frameworks, zoals hoek, vue. js en reageren. js. |
-| ![hoek van MSAL](media/sample-v2-code/logo_angular.png) <br/> [MSAL hoek](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper van de core MSAL. JS-bibliotheek om gebruik te vereenvoudigen in apps met één pagina die zijn gebouwd met behulp van het hoek kader. Deze bibliotheek is beschikbaar als preview-versie en heeft [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) met bepaalde hoek versies en browsers. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Eenvoudige JavaScript-bibliotheek voor gebruik in elke web-app aan de clientzijde die is gebouwd via JavaScript- of SPA-frameworks zoals Angular, Vue.js en React.js. |
+| ![MSAL Hoekig](media/sample-v2-code/logo_angular.png) <br/> [MSAL Hoekig](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper van de kern MSAL.js bibliotheek om het gebruik te vereenvoudigen in single-page apps die zijn gebouwd via de Hoekige kader. Deze bibliotheek is in preview en heeft [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) met bepaalde Angular versies en browsers. |
 
-## <a name="application-code-configuration"></a>Configuratie van de toepassings code
+## <a name="application-code-configuration"></a>Configuratie van toepassingscode
 
-In een MSAL-bibliotheek worden de registratie gegevens van de toepassing door gegeven als configuratie tijdens de initialisatie van de bibliotheek.
+In een MSAL-bibliotheek wordt de registratiegegevens van de toepassing doorgegeven als configuratie tijdens de initialisatie van de bibliotheek.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -53,9 +53,9 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-Zie voor meer informatie over de Configureer bare opties [toepassing initialiseren met MSAL. js](msal-js-initializing-client-applications.md).
+Zie [Initialiseren toepassing met MSAL.js](msal-js-initializing-client-applications.md)voor meer informatie over de configureerbare opties.
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts

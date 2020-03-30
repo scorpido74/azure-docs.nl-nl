@@ -1,6 +1,6 @@
 ---
-title: Incrementeel kopiëren van nieuwe bestanden op basis van een gepartitioneerde bestands naam
-description: Maak een Azure-data factory en gebruik vervolgens het hulp programma Gegevens kopiëren om nieuwe bestanden op basis van een gepartitioneerde bestands naam stapsgewijs te laden.
+title: Stapsgewijs nieuwe bestanden kopiëren op basis van tijdpartitiebestandsnaam
+description: Maak een Azure-gegevensfabriek en gebruik vervolgens het gereedschap Gegevens kopiëren om nieuwe bestanden alleen op basis van tijdpartitiebestandsnaam te laden.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 1/24/2019
-ms.openlocfilehash: 38e0028efd7fbda8aa5bee497836ce1161109e03
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/17/2020
+ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501655"
 ---
-# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Kopieer incrementeel nieuwe bestanden op basis van een gepartitioneerde bestands naam met behulp van het Gegevens kopiëren-hulp programma
+# <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Stapsgewijs nieuwe bestanden kopiëren op basis van tijdpartitiebestandsnaam met het gereedschap Gegevens kopiëren
 
-In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Vervolgens gebruikt u het hulp programma Gegevens kopiëren om een pijp lijn te maken waarmee nieuwe bestanden incrementeel worden gekopieerd op basis van een gepartitioneerde bestands naam van Azure Blob-opslag naar Azure Blob-opslag.
+In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Vervolgens gebruikt u het gereedschap Gegevens kopiëren om een pijplijn te maken die stapsgewijs nieuwe bestanden kopieert op basis van tijdpartitiebestandsnaam van Azure Blob-opslag naar Azure Blob-opslag.
 
 > [!NOTE]
 > Zie [Inleiding tot Azure Data Factory](introduction.md) als u niet bekend bent met Azure Data Factory.
@@ -37,168 +37,141 @@ In deze zelfstudie voert u de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslag account**: Blob Storage gebruiken als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
+* **Azure-opslagaccount:** gebruik Blob-opslag als _bron-_ en _sinkgegevensarchief._ Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 
-### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
+### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob-opslag
 
-Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voeren.
+Bereid uw Blob-opslag voor op de zelfstudie door deze stappen uit te voeren.
 
-1. Maak een container met de naam **Source**.  Maak een mappad als **2019/02/26/14** in uw container. Maak een leeg tekst bestand en noem het als **bestand1. txt**. Upload het bestand Bestand1. txt naar het mappad **Source/2019/02/26/14** in uw opslag account.  U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
+1. Een container met de naam **bron maken**.  Maak een mappad als **2020/03/17/03** in uw container. Maak een leeg tekstbestand en noem het als **file1.txt**. Upload het bestand1.txt naar de **mappadbron/2020/03/17/03** in uw opslagaccount.  U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
     ![bestanden uploaden](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
 
     > [!NOTE]
-    > Wijzig de mapnaam met uw UTC-tijd.  Als de huidige UTC-tijd bijvoorbeeld 2:03 PM is op februari 26, 2019, kunt u het mappad maken als **bron/2019/02/26/14/** door de regel van de **bron/{year}/{month}/{Day}/{Hour}/** .
+    > Pas de mapnaam aan met uw UTC-tijd.  Als de huidige UTC-tijd bijvoorbeeld op 17 maart 2020 3:38 AM is, u het mappad maken als **bron/2020/03/17/03/** volgens de regel van **bron/{Year}/{Month}/{Day}/{Hour}/**.
 
-2. Maak een container met de naam **Destination**. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
+2. Een container met de naam **bestemming maken**. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**:
+1. Selecteer links in het menu **Een brongegevens** > **maken + Analytics** > **Data Factory:**
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
+2. Voer op de pagina **Nieuwe data factory****ADFTutorialDataFactory** in bij **Naam**.
 
     De naam van de data factory moet _wereldwijd uniek_ zijn. Mogelijk wordt het volgende foutbericht weergegeven:
 
    ![Foutbericht nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
-   Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_ **ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_**ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 3. Selecteer het Azure-**abonnement** waarin u de nieuwe data factory wilt maken.
 4. Voer een van de volgende stappen uit voor **Resourcegroep**:
 
-    a. Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
+    a. Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
 
-    b. Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
+    b. Selecteer **Nieuw maken**en voer de naam van een resourcegroep in. 
          
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.
 
 5. Selecteer bij **Versie** de optie **V2** als de versie.
-6. Selecteer bij **Locatie** de locatie voor de data factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensarchieven (bijvoorbeeld Azure Storage en SQL Database) en -berekeningen (bijvoorbeeld Azure HDInsight) die door uw data factory worden gebruikt, kunnen zich in andere locaties of regio's bevinden.
-7. Selecteer **Vastmaken aan dashboard**.
-8. Selecteer **Maken**.
-9. Op het dashboard wordt op de tegel **Data Factory implementeren** de processtatus weergegeven.
-
-    ![Tegel Data Factory implementeren](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. Nadat de data factory is gemaakt, wordt de startpagina **Data Factory** weergegeven.
+6. Selecteer **onder locatie**de locatie voor de gegevensfabriek. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensarchieven (bijvoorbeeld Azure Storage en SQL Database) en -berekeningen (bijvoorbeeld Azure HDInsight) die door uw data factory worden gebruikt, kunnen zich in andere locaties of regio's bevinden.
+7. Selecteer **Maken**.
+8. Nadat de data factory is gemaakt, wordt de startpagina **Data Factory** weergegeven.
+9. Selecteer de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
 
     ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
-11. Selecteer de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
+
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Het hulpprogramma Copy Data gebruiken om een pijplijn te maken
 
-1. Selecteer op de pagina **aan de slag** de **gegevens kopiëren** titel om het gegevens kopiëren-hulp programma te starten.
+1. Selecteer op de pagina **Laten we aan de slag** de titel Gegevens **kopiëren** om het gereedschap Gegevens kopiëren te starten.
 
    ![De tegel Copy Data-hulpprogramma](./media/doc-common-process/get-started-page.png)
 
-2. Voer de volgende stappen uit op de pagina **Eigenschappen** :
+2. Ga op de pagina **Eigenschappen** de volgende stappen uit:
 
-    a. Voer onder **taak naam** **DeltaCopyFromBlobPipeline**in.
+    a. Voer **onder Taaknaam** **DeltaCopyFromBlobPipeline in**.
 
-    b. Selecteer onder **taak uitgebracht of taak planning** **regel matig uitvoeren volgens schema**.
+    b. Selecteer Onder **Taakcadans of Taakplanning**de optie **Regelmatig uitvoeren op schema**.
 
-    c. Onder **trigger type**selecteert u **tumblingvenstertriggers-venster**.
+    c. Selecteer **Tumbling Window**onder **Triggertype**.
 
-    d. Voer **1 uur**in onder **terugkeer patroon**.
+    d. Voer **onder Herhaling**1 **uur(en)** in .
 
-    e. Selecteer **Next**.
+    e. Selecteer **Volgende**.
 
     De gebruikersinterface van Data Factory maakt een pijplijn met de opgegeven taaknaam.
 
     ![De pagina Eigenschappen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. Voltooi op de pagina **Brongegevensarchief** de volgende stappen:
 
-    a. Klik op **+ nieuwe verbinding maken**om een verbinding toe te voegen.
-
-    ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page.png)
-
-    b. Selecteer **Azure-Blob Storage** in de galerie en klik vervolgens op **door gaan**.
-
-    ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
-
-    c. Selecteer op de pagina **nieuwe gekoppelde service** uw opslag account in de lijst **naam van het opslag account** en klik vervolgens op **volt ooien**.
+    a. Klik op **+ Nieuwe verbinding maken** om een verbinding toe te voegen
+    
+    b. Selecteer Azure Blob Storage in de galerie en selecteer Doorgaan.
+    
+    c. Voer op de pagina **New Linked Service (Azure Blob Storage)** een naam in voor de gekoppelde service. Selecteer uw Azure-abonnement en selecteer uw opslagaccount in de lijst **Met naam van het opslagaccount.** Test verbinding en selecteer **Vervolgens Maken**.
 
     ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
 
-    d. Selecteer de zojuist gemaakte gekoppelde service en klik vervolgens op **volgende**.
+    d. Selecteer de nieuw gemaakte gekoppelde service op de pagina **Brongegevensarchief** en klik op **Volgende**.
 
-   ![De pagina Brongegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. Voer op de pagina **Het invoerbestand of de invoermap kiezen** de volgende stappen uit:
 
-    a. Blader en selecteer de **bron** container en selecteer vervolgens **kiezen**.
+    a. Blader en selecteer de **broncontainer** en selecteer **Vervolgens Kiezen**.
 
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
-    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: gepartitioneerde map/bestands namen**.
+    b. Selecteer **onder gedrag voor het laden van**bestanden de optie **Incrementele belasting: map/bestandsnamen met tijdsverdeling**.
 
-    ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
-
-    c. Schrijf het pad naar de dynamische map als **bron/{Year}/{maand}/{Day}/{Hour}/** en wijzig de notatie als volgt:
-
-    ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
-
-    d. Controleer de **binaire kopie** en klik op **volgende**.
+    c. Schrijf het dynamische mappad als **bron/{year}/{month}/{day}/{hour}/** en wijzig de indeling zoals weergegeven in de volgende schermafbeelding. Controleer **Binaire kopie** en klik op **Volgende**.
 
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
-5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage**, die hetzelfde opslag account als gegevens bron archief is, en klik vervolgens op **volgende**.
+
+5. Selecteer op de pagina **Doelgegevensarchief** de **AzureBlobStorage**, hetzelfde opslagaccount als het gegevensbronarchief, en klik op **Volgende**.
 
     ![De pagina Doelgegevensarchief](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
-6. Voer op de pagina **het uitvoer bestand of de map kiezen** de volgende stappen uit:
+6. Ga op de pagina **Het uitvoerbestand of de map kiezen** de volgende stappen uit:
 
-    a. Blader en selecteer de **doelmap** en klik vervolgens op **kiezen**.
+    a. Blader en selecteer de **doelmap** en klik op **Kiezen**.
 
-    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)
+    b. Schrijf het dynamische mappad op als **bestemming/{year}/{month}/{day}/{hour}/** en wijzig de notatie als volgt:
 
-    b. Schrijf het pad naar de dynamische map als **bron/{Year}/{maand}/{Day}/{Hour}/** en wijzig de notatie als volgt:
-
-    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)
+    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
     c. Klik op **Volgende**.
 
     ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. Selecteer op de pagina **Instellingen** de optie **Volgende**.
 
-    ![De pagina Instellingen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/settings-page.png)
 8. Bekijk op de **Overzichtspagina** de waarden voor alle instellingen en selecteer vervolgens **Volgende**.
 
     ![Overzichtspagina](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
 
 9. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren.
-    ![implementatie pagina](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    ![De pagina Implementatie](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
 
-10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd.  U moet wachten op de uitvoering van de pijp lijn wanneer deze automatisch wordt geactiveerd (ongeveer na één uur).  Wanneer de kolom **acties** wordt uitgevoerd, bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** .
+10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd.  U moet wachten op de pijplijn draaien wanneer deze automatisch wordt geactiveerd (ongeveer na een uur). Wanneer deze wordt uitgevoerd, klikt u op de koppeling deltacopy van de **pijplijnnaam DeltaCopyFromBlobPipeline** om de activiteitsgegevens weer te geven of de pijplijn opnieuw uit te voeren. Selecteer **Vernieuwen** om de lijst te vernieuwen.
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. U kunt zien dat het bron bestand (bestand1. txt) is gekopieerd van **bron-2019/02/26/14/** naar **doel/2019/02/26/14** /met dezelfde bestands naam.  
+11. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. Pas de kolombreedte van de **bron-** en **doelkolommen** aan (indien nodig) om meer details weer te geven, u zien dat het bronbestand (bestand1.txt) is gekopieerd van *bron/2020/03/17/03/* naar *bestemming/2020/03/17/03/* met dezelfde bestandsnaam. 
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
-    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer (https://storageexplorer.com/) om de bestanden te scannen.
+    U hetzelfde ook verifiëren doorhttps://storageexplorer.com/) Azure Storage Explorer te gebruiken ( om de bestanden te scannen.
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Maak nog een leeg tekst bestand met de nieuwe naam als **bestand2. txt**. Upload het bestand bestand2. txt naar het mappad **Source/2019/02/26/15** in uw opslag account.   U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
+12. Maak nog een leeg tekstbestand met de nieuwe naam als **file2.txt**. Upload het bestand bestandbestand2.txt naar de **mappadbron/2020/03/17/04** in uw opslagaccount. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
     > [!NOTE]
-    > Mogelijk weet u dat er een nieuw mappad moet worden gemaakt. Wijzig de mapnaam met uw UTC-tijd.  Als de huidige UTC-tijd bijvoorbeeld 3:20 uur is op februari 26, 2019, kunt u het mappad maken als **bron-2019/02/26/15/** door de regel **{year}/{month}/{Day}/{Hour}/** .
+    > U weet mogelijk dat er een nieuw mappad moet worden gemaakt. Pas de mapnaam aan met uw UTC-tijd.  Als de huidige UTC-tijd bijvoorbeeld 4:20 uur is op 17 maart 2020, u het mappad maken als **bron/2020/03/17/04/** volgens de regel van **{Year}/{Month}/{Day}/{Hour}/**.
 
-13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijp lijnen worden uitgevoerd**en wacht u tot dezelfde pijp lijn opnieuw wordt geactiveerd na een uur.  
+13. Als u terug wilt gaan naar de weergave **Pijplijnuitvoeringen,** selecteert u **Alle pijplijnen uitvoert**en wacht u tot dezelfde pijplijn na nog een uur weer automatisch wordt geactiveerd.  
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. Selecteer **uitvoering van activiteit weer geven** voor de tweede pijplijn uitvoering wanneer deze wordt geleverd en doe hetzelfde om de details te bekijken.  
-
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs6.png)
-
-    U kunt zien dat het bron bestand (bestand2. txt) is gekopieerd van **bron-2019/02/26/15/** naar **doel/2019/02/26/15** /met dezelfde bestands naam.
-
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png)
-
-    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer (https://storageexplorer.com/) de bestanden in de **doel** container scannen
-
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
+14. Selecteer de nieuwe **DeltaCopyFromBlobPipeline-koppeling** voor de tweede pijplijnuitvoering wanneer deze aankomt en doe hetzelfde om details te bekijken. U ziet dat het bronbestand (file2.txt) is gekopieerd van **bron/2020/03/17/04/** naar **destination/2020/03/17/04/** met dezelfde bestandsnaam. U hetzelfde ook verifiëren doorhttps://storageexplorer.com/) Azure Storage Explorer te gebruiken ( om de bestanden in **de doelcontainer** te scannen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,6 +1,6 @@
 ---
-title: Werk stroom automatisering (preview) in Azure Security Center | Microsoft Docs
-description: Meer informatie over het maken en automatiseren van werk stromen in Azure Security Center
+title: Werkstroomautomatisering in Azure Security Center | Microsoft Documenten
+description: Meer informatie over het maken en automatiseren van werkstromen in Azure Security Center
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,97 +8,100 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462435"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384939"
 ---
-# <a name="workflow-automation-preview"></a>Werk stroom automatisering (preview-versie)
+# <a name="workflow-automation"></a>Werkstroomautomatisering
 
-Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead. Het kan ook de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
+Elk beveiligingsprogramma bevat meerdere workflows voor incidentrespons. Deze processen kunnen bestaan uit het informeren van relevante belanghebbenden, het starten van een change management proces en het toepassen van specifieke herstelstappen. Beveiligingsexperts raden u aan zoveel mogelijk stappen van deze procedures te automatiseren. Automatisering vermindert de overhead. Het kan ook uw beveiliging verbeteren door ervoor te zorgen dat de processtappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
 
-In dit artikel wordt de functie werk stroom automatisering (preview) van Azure Security Center beschreven. Deze preview-functie kan Logic Apps activeren over beveiligings waarschuwingen en aanbevelingen. U kunt bijvoorbeeld Security Center een e-mail bericht verzenden wanneer er een waarschuwing wordt weer gegeven. U leert ook hoe u Logic Apps maakt met behulp van [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+In dit artikel wordt de functie voor workflowautomatisering van Azure Security Center beschreven. Deze functie kan Logic Apps activeren op beveiligingswaarschuwingen en aanbevelingen. U wilt bijvoorbeeld dat Beveiligingscentrum een specifieke gebruiker e-mailt wanneer er een waarschuwing optreedt. U leert ook hoe u Logische apps maakt met [Azure Logic Apps.](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 
 > [!NOTE]
-> Als u eerder de weer gave Playbooks (preview) op de zijbalk hebt gebruikt, kunt u dezelfde functies vinden in combi natie met de uitgebreide functionaliteit op de pagina nieuwe werk stroom automatisering (preview).
+> Als u eerder de weergave Playbooks (Preview) op de zijbalk hebt gebruikt, vindt u dezelfde functies samen met de uitgebreide functionaliteit op de nieuwe pagina met werkstroomautomatisering.
 
 
 ## <a name="requirements"></a>Vereisten
 
-* Als u met Azure Logic Apps werk stromen wilt werken, moet u over de volgende Logic Apps-rollen/-machtigingen beschikken:
+* Als u wilt werken met Azure Logic Apps-werkstromen, moet u de volgende rollen/machtigingen voor Logische Apps hebben:
 
-    * De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )
+    * [Logic App Operator-machtigingen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of Logic App-lees-/triggertoegang (deze rol kan geen logische apps maken of bewerken; alleen bestaande apps *uitvoeren)*
 
-    * De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps
+    * [Machtigingen voor logic-app-inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische app-bijdragen
 
-* Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)
+* Als u Logic App-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectievelijke services (bijvoorbeeld uw Outlook/Teams/Slack-exemplaren)
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Een logische app maken en definiëren wanneer deze automatisch moet worden uitgevoerd 
 
-1. Selecteer op de zijbalk van Security Center **werk stroom automatisering (preview-versie)** .
+1. Selecteer **workflowautomatisering**in de zijbalk van Security Center.
 
-    [Lijst met werk stroom Automatiseringen ![](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    [![Lijst met werkstroomautomatiseringen](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Op deze pagina kunt u nieuwe Automation-regels maken, maar ook bestaande voor het inschakelen, uitschakelen of verwijderen.  
-1. Als u een nieuwe werk stroom wilt definiëren, klikt u op **werk stroom automatisering toevoegen**. 
+    Op deze pagina u nieuwe automatiseringsregels maken en bestaande regels in- en uitschakelen of verwijderen.  
+1. Als u een nieuwe werkstroom wilt definiëren, klikt u op **Werkstroomautomatisering toevoegen**. 
 
-    Er wordt een deel venster met de opties voor uw nieuwe automatisering weer gegeven. Hier kunt u het volgende invoeren:
+    Er verschijnt een deelvenster met de opties voor uw nieuwe automatisering. Hier u deelnemen aan:
     1. Een naam en beschrijving voor de automatisering.
-    1. De triggers waarmee deze automatische werk stroom wordt gestart. U wilt bijvoorbeeld dat uw logische app wordt uitgevoerd wanneer er een beveiligings waarschuwing wordt gegenereerd die ' SQL ' bevat.
-    1. De logische app die wordt uitgevoerd wanneer aan de voor waarden van de trigger wordt voldaan. 
+    1. De triggers die deze automatische workflow starten. U wilt bijvoorbeeld dat uw Logic App wordt uitgevoerd wanneer een beveiligingswaarschuwing met 'SQL' wordt gegenereerd.
+    1. De Logic-app die wordt uitgevoerd wanneer aan de triggervoorwaarden is voldaan. 
 
-        [Lijst met werk stroom Automatiseringen ![](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        [![Lijst met werkstroomautomatiseringen](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
 
-1. Klik in de sectie acties op **een nieuw item maken** om het proces voor het maken van de logische app te starten.
+1. Klik in de sectie Acties op **Een nieuw** maken om het proces voor het maken van logische apps te starten.
 
-    U wordt geAzure Logic Apps.
+    U wordt naar Azure Logic Apps gebracht.
 
-    [![een nieuwe logische app maken](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
+    [![Een nieuwe Logische app maken](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Voer een naam, resource groep en locatie in en klik op **maken**.
+1. Voer een naam, resourcegroep en locatie in en klik op **Maken**.
 
-1. In de nieuwe logische app kunt u kiezen uit ingebouwde, vooraf gedefinieerde sjablonen uit de beveiligings categorie. U kunt ook een aangepaste stroom van gebeurtenissen definiëren die moeten worden uitgevoerd wanneer dit proces wordt geactiveerd.
+1. In uw nieuwe Logic App u kiezen uit ingebouwde, vooraf gedefinieerde sjablonen uit de beveiligingscategorie. U ook een aangepaste stroom van gebeurtenissen definiëren die moeten optreden wanneer dit proces wordt geactiveerd.
 
-    In de ontwerp functie voor logische apps worden de volgende triggers van de Security Center-connectors ondersteund:
+    In de logic-app-ontwerper worden de volgende triggers van de Connectors voor beveiligingscentrum ondersteund:
 
-    * **Wanneer een Azure Security Center aanbeveling wordt gemaakt of geactiveerd (preview-versie)**
-    * **Wanneer een Azure Security Center waarschuwing wordt gemaakt of geactiveerd (preview-versie)**
+    * **Wanneer een Aanbeveling voor Azure Security Center wordt gemaakt of geactiveerd**
+    * **Wanneer een Azure Security Center Alert wordt gemaakt of geactiveerd** 
+    
+    > [!TIP]
+    > U de trigger zo aanpassen dat deze alleen betrekking heeft op waarschuwingen met de ernstniveaus die u interesseren.
     
     > [!NOTE]
-    > Als u de verouderde trigger gebruikt wanneer een reactie op een Azure Security Center waarschuwing wordt geactiveerd, wordt uw Logic Apps niet gestart door de functie werk stroom automatisering. Gebruik in plaats daarvan een van de hierboven genoemde triggers. 
+    > Als u de verouderde trigger 'Wanneer een reactie op een Azure Security Center-waarschuwing wordt geactiveerd, gebruikt, worden uw Logic Apps niet gestart met de functie Workflowautomatisering. In plaats daarvan, gebruik maken van een van de hierboven genoemde triggers. 
 
-    [voor beeld van logische app ![](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
+    [![Voorbeeldlogica-app](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
-1. Nadat u uw logische app hebt gedefinieerd, keert u terug naar het deel venster definitie van werk stroom automatisering ("werk stroom automatisering toevoegen"). Klik op **vernieuwen** om ervoor te zorgen dat de nieuwe logische app beschikbaar is voor selectie.
+1. Nadat u uw Logic App hebt gedefinieerd, gaat u terug naar het definitievenster voor de definitie van werkstroomautomatisering ('Werkstroomautomatisering toevoegen'). Klik **op Vernieuwen** om ervoor te zorgen dat uw nieuwe Logic App beschikbaar is voor selectie.
 
     ![Vernieuwen](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Selecteer uw logische app en sla de automatisering op. Houd er rekening mee dat in de vervolg keuzelijst voor logische apps alleen Logic Apps worden weer gegeven met ondersteunende Security Center Connect oren die hierboven worden genoemd.
+1. Selecteer uw Logic App en sla de automatisering op. Houd er rekening mee dat in de vervolgkeuzelijst Logic App alleen Logic Apps met eerder genoemde ondersteuningsconnectors voor beveiligingscentrum worden weergegeven.
 
 
-## <a name="manually-trigger-a-logic-app"></a>Een logische app hand matig activeren
+## <a name="manually-trigger-a-logic-app"></a>Handmatig een Logische App activeren
 
-U kunt Logic Apps ook hand matig uitvoeren wanneer u een beveiligings aanbeveling bekijkt.
+U Logic Apps ook handmatig uitvoeren wanneer u een beveiligingswaarschuwing bekijkt of een aanbeveling die [quick fix-herstel biedt.](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation)
 
-Als u een logische app hand matig wilt uitvoeren, opent u een aanbeveling en klikt u op logische app activeren (preview):
+Als u een Logische App handmatig wilt uitvoeren, opent u een waarschuwing of een aanbeveling die quick fix-herstel ondersteunt en klikt u op **Trigger Logic App:**
 
-[een logische app ![hand matig activeren](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+[![Handmatig een Logische App activeren](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
-## <a name="data-types-schemas"></a>Gegevens type schema's
+## <a name="data-types-schemas"></a>Gegevenstypenschema's
 
-Als u de onbewerkte gebeurtenis schema's wilt bekijken van de beveiligings waarschuwingen of aanbevelingen die zijn door gegeven aan de logische app-instantie, gaat u naar de [schema gegevens typen werk stroom automatisering](https://aka.ms/ASCAutomationSchemas). Dit kan handig zijn in gevallen waarin u geen gebruik maakt van Security Center ingebouwde logische app-connectors die hierboven worden genoemd. in plaats daarvan kunt u het JSON-schema van de logische app gebruiken om dit hand matig te parseren.
+Als u de schema's voor ruwe gebeurtenissen van de beveiligingswaarschuwingen of aanbevelingen wilt weergeven die naar de instantie Logic App zijn doorgegeven, gaat u naar de [schema's voor gegevenstypen voor gegevenstypen voor werkstroomautomatisering](https://aka.ms/ASCAutomationSchemas). Dit kan handig zijn in gevallen waarin u de hierboven genoemde Logic App-connectors van Security Center niet gebruikt, maar in plaats daarvan de generieke HTTP-connector van Logic App gebruikt - u het JSON-schema van de gebeurtenis gebruiken om het handmatig te ontleden zoals u dat wilt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Logic Apps maakt, deze hand matig uitvoert in Security Center en hoe u de uitvoering ervan automatiseert. 
+In dit artikel leerde u over het maken van Logische Apps, het handmatig uitvoeren ervan in Security Center en het automatiseren van de uitvoering ervan. 
 
-Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
+Zie voor ander gerelateerd materiaal de volgende artikelen: 
 
 - [Aanbevelingen voor beveiliging in Azure Security Center](security-center-recommendations.md)
 - [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 - [Over Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps-connectors](https://docs.microsoft.com/connectors/)
-- [Schema's van werk stroom automatiserings gegevens typen](https://aka.ms/ASCAutomationSchemas)
+- [Gegevenstypen voor werkstroomautomatisering](https://aka.ms/ASCAutomationSchemas)

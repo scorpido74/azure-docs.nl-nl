@@ -1,6 +1,6 @@
 ---
 title: Gegevens opnemen met behulp van de Node-bibliotheek voor Azure Data Explorer
-description: In dit artikel leert u hoe u voor het opnemen van gegevens (laden) in Azure Data Explorer met behulp van Node.js.
+description: In dit artikel leert u hoe u gegevens inneemt (laden) in Azure Data Explorer met Behulp van Node.js.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,21 +8,21 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494481"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Gegevens opnemen met behulp van de Node-bibliotheek voor Azure Data Explorer
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer biedt twee clientbibliotheken voor Node: een [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) en een [data library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data) (beide Engelstalig). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en de gegevenstoewijzing van de in een testcluster. Vervolgens plaatst u op te nemen gegevens in de wachtrij en valideert u de resultaten.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt twee clientbibliotheken voor Node: een [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) en een [data library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data) (beide Engelstalig). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en gegevenstoewijzing in een testcluster. Vervolgens plaatst u op te nemen gegevens in de wachtrij en valideert u de resultaten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Naast een Azure-abonnement moet u het volgende om te voltooien in dit artikel:
+Naast een Azure-abonnement hebt u het volgende nodig om dit artikel te voltooien:
 
 * [Een cluster en database voor testdoeleinden](create-cluster-database-portal.md)
 
@@ -63,7 +63,7 @@ const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net:44
 const kustoDatabase  = "Weather";
 ```
 
-Stel nu de verbindingsreeks samen. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een Azure Active Directory-toepassingscertificaat, een Azure Active Directory-toepassingssleutel en een Azure Active Directory-gebruiker en -wachtwoord gebruiken.
+Nu maakt u de verbindingsreeks. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een Azure Active Directory-toepassingscertificaat, een Azure Active Directory-toepassingssleutel en een Azure Active Directory-gebruiker en -wachtwoord gebruiken.
 
 U maakt de doeltabel en toewijzing in een latere stap.
 
@@ -76,7 +76,7 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 
 ## <a name="set-source-file-information"></a>Gegevens van bronbestand instellen
 
-Importeer aanvullende klassen en stel constanten in voor het gegevensbronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De set met voorbeeldgegevens **StormEvents** bevat gegevens van het weer afkomstig van de [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Importeer aanvullende klassen en stel constanten in voor het gegevensbronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De **StormEvents-gegevensset** bevat weergerelateerde gegevens van de [National Centers for Environmental Information.](https://www.ncdc.noaa.gov/stormevents/)
 
 ```javascript
 const container = "samplefiles";
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Een tabel maken in het testcluster
 
-Maak een tabel die overeenkomt met het schema van de gegevens in het bestand `StormEvents.csv`. Wanneer deze code wordt uitgevoerd, wordt een bericht als het volgende geretourneerd: *Als u zich wilt aanmelden, opent u de pagina https://microsoft.com/devicelogin met een webbrowser. Voer de code XXXXXXXXX in om te verifiëren*. Volg de stappen om u aan te melden en ga vervolgens terug om het volgende codeblok uit te voeren. Als volgende codeblokken verbinding moeten maken, moet u zich opnieuw aanmelden.
+Maak een tabel die overeenkomt met het schema van de gegevens in het bestand `StormEvents.csv`. Wanneer deze code wordt uitgevoerd, wordt er een bericht als het volgende geretourneerd: *Als u zich wilt aanmelden, opent u de pagina https://microsoft.com/devicelogin met een webbrowser. Voer de code XXXXXXXXX in om te verifiëren*. Volg de stappen om u aan te melden en ga vervolgens terug om het volgende codeblok uit te voeren. Als volgende codeblokken verbinding moeten maken, moet u zich opnieuw aanmelden.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
@@ -141,7 +141,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="run-troubleshooting-queries"></a>Query's voor probleemoplossing uitvoeren
 
-Meld u aan bij [https://dataexplorer.azure.com](https://dataexplorer.azure.com) en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
+Meld u [https://dataexplorer.azure.com](https://dataexplorer.azure.com) aan en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
     
 ```Kusto
 .show ingestion failures
@@ -158,7 +158,7 @@ Voer de volgende opdracht uit om de status op te vragen van alle bewerkingen voo
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om te volgen van onze andere artikelen, moet u de resources die u hebt gemaakt. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
+Als u van plan bent onze andere artikelen te volgen, behoudt u de resources die u hebt gemaakt. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
 
 ```Kusto
 .drop table StormEvents

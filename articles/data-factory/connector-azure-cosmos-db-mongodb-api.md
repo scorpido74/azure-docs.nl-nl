@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van de API van Azure Cosmos DB voor MongoDB
-description: Informatie over het kopiëren van gegevens van ondersteunde brongegevens archieven naar of van de Azure Cosmos DB-API voor MongoDB naar ondersteunde Sink-archieven met behulp van Data Factory.
+title: Gegevens uit de API van Azure Cosmos DB voor MongoDB kopiëren
+description: Meer informatie over het kopiëren van gegevens uit ondersteunde brongegevensopslag naar of van de API van Azure Cosmos DB voor MongoDB naar ondersteunde sinkstores met behulp van Data Factory.
 services: data-factory, cosmosdb
 ms.author: jingwang
 author: linda33wj
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: 9b13920252b3a5626fd192c6e899154efd31a3de
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75893243"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van de Azure Cosmos DB-API voor MongoDB met behulp van Azure Data Factory
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Gegevens kopiëren naar of vanuit de API voor MongoDB van Azure Cosmos DB met behulp van Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar de API van Azure Cosmos DB voor MongoDB. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
+In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar de API van Azure Cosmos DB voor MongoDB. Het artikel bouwt voort op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), dat een algemeen overzicht van Kopieeractiviteit weergeeft.
 
 >[!NOTE]
->Deze connector ondersteunt alleen het kopiëren van gegevens van/naar de API van Azure Cosmos DB voor MongoDB. Raadpleeg [Cosmos DB SQL API connector](connector-azure-cosmos-db.md)voor SQL API. Andere API-typen worden momenteel niet ondersteund.
+>Deze connector ondersteunt alleen kopieergegevens van/naar de API van Azure Cosmos DB voor MongoDB. Raadpleeg voor SQL API [Cosmos DB SQL API-connector](connector-azure-cosmos-db.md). Andere API-typen worden nu niet ondersteund.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U kunt gegevens van Azure Cosmos DB-API voor MongoDB kopiëren naar een ondersteunde Sink-gegevens opslag of gegevens uit een ondersteund gegevens archief kopiëren naar de API van Azure Cosmos DB voor MongoDB. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+U gegevens uit de API van Azure Cosmos DB voor MongoDB kopiëren naar een ondersteund sink data store of gegevens kopiëren van een ondersteunde brongegevensopslag naar de API van Azure Cosmos DB voor MongoDB. Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die Activiteit kopiëren als bronnen en sinks ondersteunt.
 
-U kunt de API van de Azure Cosmos DB voor MongoDB-connector gebruiken voor het volgende:
+U de API van Azure Cosmos DB voor MongoDB-connector gebruiken om:
 
-- Gegevens kopiëren van en naar de [API van de Azure Cosmos DB voor MongoDb](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
-- Schrijven naar Azure Cosmos DB als **invoegen** of **upsert**.
-- Importeren en exporteren van JSON-documenten als-is, of gegevens te kopiëren van of naar een gegevensset in tabelvorm. Voorbeelden zijn een SQL-database en een CSV-bestand. Zie JSON-documenten importeren of exporteren als u documenten wilt kopiëren naar of van JSON-bestanden of naar of van een andere Azure Cosmos DB verzameling.
+- Kopieer gegevens van en naar de [API van Azure Cosmos DB voor MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
+- Schrijf naar Azure Cosmos DB als **insert** of **upsert**.
+- Json-documenten importeren en exporteren als is of gegevens kopiëren van of naar een tabelgegevensset. Voorbeelden hiervan zijn een SQL-database en een CSV-bestand. Zie JSON-documenten importeren of exporteren als u documenten wilt kopiëren naar of van JSON-bestanden of van of naar of van een andere Azure Cosmos DB-verzameling.
 
 ## <a name="get-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de API van Azure Cosmos DB voor MongoDB.
+In de volgende secties vindt u informatie over eigenschappen die u gebruiken om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de API van Azure Cosmos DB voor MongoDB.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor de API van de Azure Cosmos DB voor MongoDB gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de API van Azure Cosmos DB voor gekoppelde mongoDB-service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **CosmosDbMongoDbApi**. | Ja |
-| connectionString |Geef de connection string op voor de API van uw Azure Cosmos DB voor MongoDB. U kunt deze vinden in de Azure Portal-> uw Cosmos DB-Blade-> primaire of secundaire connection string, met het patroon van `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md) met meer informatie.|Ja |
-| database | De naam van de data base die u wilt openen. | Ja |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. U kunt de Azure Integration Runtime of een zelf-hostende integratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
+| type | De **eigenschap type** moet worden ingesteld op **CosmosDbMongoDbApi**. | Ja |
+| Connectionstring |Geef de verbindingstekenreeks op voor de API van uw Azure Cosmos DB voor MongoDB. U het vinden in de Azure-portal -> uw Cosmos DB-blad `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`-> primaire of secundaire verbindingstekenreeks, met het patroon van. <br/><br />U ook een wachtwoord in Azure `password` Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen.Raadpleeg [storereferenties in Azure Key Vault](store-credentials-in-key-vault.md) met meer details.|Ja |
+| database | Naam van de database die u wilt openen. | Ja |
+| connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. U de runtime azure-integratie of een zelfgehoste nawerking van de integratie gebruiken (als uw gegevensarchief zich in een privénetwerk bevindt). Als deze eigenschap niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld**
 
@@ -73,12 +73,12 @@ De volgende eigenschappen worden ondersteund voor de API van de Azure Cosmos DB 
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets en gekoppelde services](concepts-datasets-linked-services.md). De volgende eigenschappen worden ondersteund voor de API van Azure Cosmos DB voor MongoDB-gegevensset:
+Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. De volgende eigenschappen worden ondersteund voor de API voor MongoDB-gegevensset van Azure Cosmos DB:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **CosmosDbMongoDbApiCollection**. |Ja |
-| collectionName |De naam van de verzameling Azure Cosmos DB. |Ja |
+| type | De **eigenschap type** van de gegevensset moet worden ingesteld op **CosmosDbMongoDbApiCollection**. |Ja |
+| collectionNaam |De naam van de Azure Cosmos DB-verzameling. |Ja |
 
 **Voorbeeld**
 
@@ -99,28 +99,28 @@ Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het def
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
 
-In deze sectie vindt u een lijst met eigenschappen die de API van de Azure Cosmos DB voor MongoDB-bron-en Sink-ondersteuning.
+In deze sectie vindt u een lijst met eigenschappen die de API van Azure Cosmos DB voor MongoDB-bron- en sinkondersteuning biedt.
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van activiteiten en secties, [pijplijnen](concepts-pipelines-activities.md).
+Zie [Pijplijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten.
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>De API van Azure Cosmos DB voor MongoDB als bron
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Azure Cosmos DB's API voor MongoDB als bron
 
-De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** sectie:
+De volgende eigenschappen worden ondersteund in de sectie Activiteit **kopiëren:**
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **CosmosDbMongoDbApiSource**. |Ja |
-| filter | Hiermee geeft u selectie filter op met behulp van query operators. Als u alle documenten in een verzameling wilt retour neren, laat u deze para meter weg of geeft u een leeg document door ({}). | Nee |
-| cursorMethods.project | Hiermee geeft u de velden op die moeten worden geretourneerd in de documenten voor projectie. Als u alle velden in de overeenkomende documenten wilt retour neren, laat u deze para meter weg. | Nee |
-| cursorMethods.sort | Hiermee geeft u de volg orde waarin de query overeenkomende documenten retourneert. Raadpleeg [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nee |
-| cursorMethods.limit | Hiermee geeft u het maximum aantal documenten op dat door de server wordt geretourneerd. Raadpleeg [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nee | 
-| cursorMethods.skip | Hiermee geeft u het aantal documenten op dat moet worden overgeslagen en waar MongoDB begint met het retour neren van resultaten. Raadpleeg [cursor. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nee |
-| batchSize | Hiermee geeft u het aantal documenten op dat moet worden geretourneerd in elke batch van het antwoord van de MongoDB-instantie. In de meeste gevallen heeft het wijzigen van de Batch grootte geen invloed op de gebruiker of de toepassing. Cosmos DB limieten voor elke batch kan niet groter zijn dan 40MB. Dit is de som van de grootte van het batchSize aantal documenten. Verlaag deze waarde dus als de grootte van het document groot is. | Nee<br/>(de standaard waarde is **100**) |
+| type | De **eigenschap type** van de bron van de kopieeractiviteit moet zijn ingesteld op **CosmosDbMongoDbApiSource**. |Ja |
+| filter | Hiermee geeft u het selectiefilter op met queryoperatoren. Als u alle documenten in een verzameling wilt retourneren, laat u deze parameter weg of geeft u een leeg document door ({}). | Nee |
+| cursorMethods.project | Hiermee geeft u de velden op die moeten worden teruggevonden in de documenten voor projectie. Als u alle velden in de overeenkomende documenten wilt retourneren, laat u deze parameter weg. | Nee |
+| cursorMethoden.sorteren | Hiermee geeft u de volgorde op waarin de query overeenkomende documenten retourneert. Raadpleeg [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nee |
+| cursorMethods.limit | Hiermee geeft u het maximumaantal documenten op dat de server retourneert. Raadpleeg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nee | 
+| cursorMethoden.overslaan | Hiermee geeft u het aantal documenten op dat moet worden overgeslagen en van waar MongoDB resultaten begint terug te sturen. Raadpleeg [cursor.overslaan()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nee |
+| batchSize | Hiermee geeft u het aantal documenten op dat moet worden retourneren in elke batch van het antwoord van de instantie MongoDB. In de meeste gevallen heeft het wijzigen van de batchgrootte geen invloed op de gebruiker of de toepassing. Cosmos DB beperkt elke batch mag niet groter zijn dan 40 MB, wat de som is van het batchSize-aantal documenten, dus verlaag deze waarde als de grootte van uw document groot is. | Nee<br/>(de standaardinstelling is **100**) |
 
 >[!TIP]
->ADF-ondersteuning die BSON-document verbruikt in de **strikte modus**. Zorg ervoor dat uw filter query in de strikte modus in plaats van in de shell modus is. Meer beschrijving vindt u in [MongoDb hand matig](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>ADF-ondersteuning voor het consumeren van BSON-document in **de strikte modus**. Zorg ervoor dat uw filterquery in de modus Strikt staat in plaats van in de Shell-modus. Meer beschrijving is te vinden op [MongoDB handleiding](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Voorbeeld**
 
@@ -160,19 +160,19 @@ De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **bron** se
 ]
 ```
 
-### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>De API van Azure Cosmos DB voor MongoDB als Sink
+### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Azure Cosmos DB's API voor MongoDB als gootsteen
 
-De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **sink** sectie:
+De volgende eigenschappen worden ondersteund in de sectie Activiteit **kopiëren:**
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **CosmosDbMongoDbApiSink**. |Ja |
-| writeBehavior |Beschrijft hoe u gegevens naar Azure Cosmos DB te schrijven. Toegestane waarden: **invoegen** en **upsert**.<br/><br/>Het gedrag van **upsert** is het vervangen van het document als er al een document met dezelfde `_id` bestaat. Als dat niet het geval is, voegt u het document in.<br /><br />**Opmerking**: Data Factory genereert automatisch een `_id` voor een document als er geen `_id` in het oorspronkelijke document of op kolom toewijzing is opgegeven. Dit betekent dat u moet ervoor zorgen dat voor **upsert** om te werken zoals verwacht, heeft uw document een ID. |Nee<br />(de standaardwaarde is **invoegen**) |
-| writeBatchSize | De eigenschap **writeBatchSize** bepaalt de grootte van documenten die in elke batch moeten worden geschreven. U kunt proberen de waarde voor **writeBatchSize** te verhogen om de prestaties te verbeteren en de waarde te verlagen als de grootte van uw document groot is. |Nee<br />(de standaardwaarde is **10.000**) |
-| writeBatchTimeout | De wacht tijd waarna de batch INSERT-bewerking moet worden voltooid voordat er een time-out optreedt. De toegestane waarde is time span. | Nee<br/>(de standaard waarde is **00:30:00** -30 minuten) |
+| type | De **eigenschap type** van de groep Copy Activity moet worden ingesteld op **CosmosDbMongoDbApiSink**. |Ja |
+| writeBehavior |Beschrijft hoe u gegevens schrijven naar Azure Cosmos DB. Toegestane waarden: **invoegen** en **upsert**.<br/><br/>Het gedrag van **upsert** is om het document `_id` te vervangen als een document met hetzelfde al bestaat; anders voegt u het document in.<br /><br />**Opmerking:** Data Factory genereert `_id` automatisch een `_id` voor een document als een document niet is opgegeven in het oorspronkelijke document of in kolomtoewijzing. Dit betekent dat u ervoor moet zorgen dat uw document een id heeft om ervoor te zorgen dat **upsert** werkt zoals verwacht. |Nee<br />(de standaardinstelling is **invoegen)** |
+| writeBatchSize | De eigenschap **writeBatchSize** bepaalt de grootte van documenten die in elke batch moeten worden geschreven. U proberen de waarde voor **writeBatchSize** te verhogen om de prestaties te verbeteren en de waarde te verlagen als de grootte van uw document groot is. |Nee<br />(de standaardinstelling is **10.000**) |
+| writeBatchTimeout | De wachttijd voor de batch invoegen bewerking te voltooien voordat het time-out. De toegestane waarde is tijdspanne. | Nee<br/>(de standaardinstelling is **00:30:00** - 30 minuten) |
 
 >[!TIP]
->Als u JSON-documenten wilt importeren als-is, raadpleegt u de sectie [JSON-documenten importeren of exporteren](#import-and-export-json-documents) . Zie [schema toewijzing](#schema-mapping)voor informatie over het kopiëren van gegevens in tabel vorm.
+>Als u JSON-documenten wilt importeren als is, verwijst u naar de sectie [JSON-documenten importeren of exporteren;](#import-and-export-json-documents) om te kopiëren van tabelvormige gegevens, verwijzen naar [Schema mapping](#schema-mapping).
 
 **Voorbeeld**
 
@@ -206,28 +206,28 @@ De volgende eigenschappen worden ondersteund in de Kopieeractiviteit **sink** se
 ]
 ```
 
-## <a name="import-and-export-json-documents"></a>JSON-documenten importeren en exporteren
+## <a name="import-and-export-json-documents"></a>Json-documenten importeren en exporteren
 
-U kunt eenvoudig deze Azure Cosmos DB-connector te gebruiken:
+U deze Azure Cosmos DB-connector eenvoudig gebruiken:
 
-* Documenten tussen twee Azure Cosmos DB-verzamelingen als kopiëren-is.
-* Importeer JSON-documenten uit verschillende bronnen naar Azure Cosmos DB, met inbegrip van MongoDB, Azure Blob Storage, Azure Data Lake Store en andere op bestanden gebaseerde archieven die door Azure Data Factory worden ondersteund.
-* JSON-documenten uit een Azure Cosmos DB-verzameling exporteren naar verschillende winkels op basis van bestanden.
+* Kopieer documenten tussen twee Azure Cosmos DB-verzamelingen as-is.
+* Json-documenten uit verschillende bronnen importeren in Azure Cosmos DB, waaronder van MongoDB, Azure Blob-opslag, Azure Data Lake Store en andere bestanden die Azure Data Factory ondersteunt.
+* Exporteer JSON-documenten uit een Azure Cosmos DB-verzameling naar verschillende bestandswinkels.
 
-Voor een schema-agnostische kopiëren:
+Ga als lid van het schema over een kopie van het schema:
 
-* Wanneer u het hulpprogramma Copy Data gebruiken, selecteert u de **als exporteren-JSON-bestanden of Cosmos DB-verzameling** optie.
-* Wanneer u de functie voor het ontwerpen van activiteiten gebruikt, kiest u JSON-indeling met de bijbehorende bestands opslag voor de bron of sink.
+* Wanneer u het gereedschap Gegevens kopiëren gebruikt, selecteert u de optie **Exporteren naar JSON-bestanden of Cosmos DB-verzameling.**
+* Wanneer u activiteitsontwerpen gebruikt, kiest u JSON-indeling met het bijbehorende bestandsarchief voor bron of gootsteen.
 
 ## <a name="schema-mapping"></a>Schematoewijzing
 
-Als u gegevens wilt kopiëren van de API van Azure Cosmos DB voor MongoDB naar tabellaire sink of omgekeerd, raadpleegt u [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Als u gegevens uit de API van Azure Cosmos DB voor MongoDB wilt kopiëren naar tabelgoot of omgekeerd, raadpleegt u [schematoewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-Om ervoor te zorgen dat u Cosmos DB met de juiste object-ID van de bron gegevens, bijvoorbeeld, een kolom ' id ' in SQL database tabel hebt en u de waarde wilt gebruiken als de document-ID in MongoDB voor INSERT/upsert, moet u de juiste schema toewijzing instellen volgens MongoDB strict mode definition (`_id.$oid`) als volgt: Cosmos DB
+Specifiek voor het schrijven in Cosmos DB, om ervoor te zorgen dat u Cosmos DB bevolken met de juiste object-ID van uw brongegevens, bijvoorbeeld, hebt u een "id" kolom in SQL database tabel en wilt u`_id.$oid`de waarde van dat te gebruiken als het document-ID in MongoDB voor insert / upsert, moet u de juiste schema mapping in te stellen volgens MongoDB strikte modus definitie ( ) als volgt:
 
-![Toewijzings-ID in MongoDB-Sink](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
+![Kaart-ID in MongoDB-gootsteen](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
 
-Nadat de Kopieer activiteit is uitgevoerd, wordt de onderstaande BSON ObjectId gegenereerd in Sink:
+Na de uitvoering van kopieeractiviteiten wordt onder BSON ObjectId gegenereerd in gootsteen:
 
 ```json
 {
@@ -237,4 +237,4 @@ Nadat de Kopieer activiteit is uitgevoerd, wordt de onderstaande BSON ObjectId g
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een lijst met gegevensarchieven die Kopieeractiviteit ondersteunt als bronnen en sinks in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensopslag die Activiteit kopiëren ondersteunt als bronnen en sinks in Azure Data Factory.

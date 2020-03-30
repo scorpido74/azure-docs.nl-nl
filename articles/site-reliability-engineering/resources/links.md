@@ -1,38 +1,38 @@
 ---
-title: SRE-koppelings verzamelingen en-samen vattingen | Microsoft Docs
-description: Breid uw kennis van de site betrouwbaarheids techniek uit met deze resources
+title: SRE link collecties en digesten | Microsoft Documenten
+description: Breid uw kennis van site reliability engineering uit met deze resources
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
-ms.openlocfilehash: be6e00ba0d20d11f75954d3b9c6b056160a5016b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599000"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471248"
 ---
-# <a name="sources-for-site-reliability-engineering-information"></a>Bronnen voor informatie over de technische betrouw baarheid van site
+# <a name="sources-for-site-reliability-engineering-information"></a>Bronnen voor informatie over de betrouwbaarheid van de site
 
-Er zijn veel, veel bronnen voor SRE-informatie (site betrouwbaarheids techniek) op het web.
+Er zijn vele, vele bronnen voor site reliability engineering (SRE) informatie op het web.
 
-## <a name="curated-link-lists"></a>Lijst met gecuratore koppelingen
+## <a name="curated-link-lists"></a>Samengestelde linklijsten
 
-Hier vindt u een aantal goede lijsten met koppelingen voor SRE-en SRE-onderwerpen:
+Hier zijn een aantal goede samengestelde lijsten van links voor SRE en SRE-gerelateerde onderwerpen:
 
-* [Site voor betrouwbaarheids techniek van meester](https://github.com/dastergon/awesome-sre)
-* [Bijzonder site betrouw bare technische hulp middelen](https://github.com/squadcastHQ/awesome-sre-tools)
-* [De patronen van schaal bare, betrouw bare en hoogwaardige grootschalige systemen](http://awesome-scalability.com)
-* [meester-gedistribueerde systemen](https://github.com/theanalyst/awesome-distributed-systems)
-* [Meester consensus](https://github.com/dgryski/awesome-consensus)
-* [meester bewaken](https://github.com/crazy-canux/awesome-monitoring)
-* [Bijzonder waarneembaar](https://github.com/adriannovegil/awesome-observability)
+* [Awesome Site Reliability Engineering](https://github.com/dastergon/awesome-sre)
+* [Geweldige hulpprogramma's voor het verbeteren van de site](https://github.com/SquadcastHub/awesome-sre-tools)
+* [De patronen van schaalbare, betrouwbare en performante grootschalige systemen](http://awesome-scalability.com)
+* [geweldig gedistribueerde systemen](https://github.com/theanalyst/awesome-distributed-systems)
+* [Geweldige consensus](https://github.com/dgryski/awesome-consensus)
+* [awesome-monitoring](https://github.com/crazy-canux/awesome-monitoring)
+* [Ontzagwekkende waarneembaarheid](https://github.com/adriannovegil/awesome-observability)
 
-## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Wekelijkse samen vattingen van belang voor site betrouwbaarheids technici
+## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Wekelijkse samenvattingen van belang voor de site betrouwbaarheid ingenieurs
 
-* [SRE wekelijks](https://sreweekly.com) : ' SRE wekelijks is een nieuws brief die is gericht op alles wat betreft een consistent onderhoud van een site of service. '
-* [Devops wekelijks](https://www.devopsweekly.com) : "een wekelijks deel van Devops News dat door Gareth Rushgrove is ingediend."
-* [Deze week in DevOps](https://thisweekindevops.com) -"DevOps News zonder de hele hype."
-* [KubeWeekly](https://kubeweekly.io) : "de wekelijkse nieuws brieven voor alle zaken Kubernetes."
+* [SRE Weekly](https://sreweekly.com) - "SRE Weekly is een nieuwsbrief gewijd aan alles wat met betrekking tot het houden van een site of dienst beschikbaar zo consequent mogelijk."
+* [Devops Weekly](https://www.devopsweekly.com) - "Een wekelijks stukje devops nieuws gebracht door Gareth Rushgrove."
+* [Deze week in DevOps](https://thisweekindevops.com) - "DevOps nieuws zonder de hype."
+* [KubeWeekly](https://kubeweekly.io) - "De wekelijkse nieuwsbrieven voor alle dingen Kubernetes."

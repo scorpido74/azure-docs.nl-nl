@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: zoomen configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts om in te zoomen.
+title: 'Zelfstudie: Zoom configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het automatisch inrichten en de-provisionen van gebruikersaccounts van Azure AD naar Zoom.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,159 +14,151 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: cd832a9dfec4680222d2c985f49aba499a56aaac
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062742"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384072"
 ---
-# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelf studie: zoomen configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelfstudie: Zoom configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden uitgevoerd in zoomen en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen om in te zoomen.
+In deze zelfstudie worden de stappen beschreven die u moet uitvoeren in zowel Zoom- als Azure Active Directory (Azure AD) om automatische gebruikersinrichting te configureren. Wanneer azure AD is geconfigureerd, worden gebruikers en groepen automatisch ingericht en de-bepalingen ingericht om in te [zoomen](https://zoom.us/pricing/) met behulp van de Azure AD Provisioning-service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
->
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken in Zoom
+> * Gebruikers verwijderen in Zoom wanneer ze geen toegang meer nodig hebben
+> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en Zoom
+> * [Eén aanmelding bij](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) Zoom (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een zoom-Tenant](https://zoom.us/pricing)
-* Een gebruikers account in-/uitzoomen met beheerders machtigingen
+* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Een gebruikersaccount in Azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) om provisioning te configureren (bijvoorbeeld toepassingsbeheerder, cloudtoepassingsbeheerder, toepassingseigenaar of globale beheerder). 
+* [Een Zoomtenant](https://zoom.us/pricing).
+* Een gebruikersaccount in Zoom met beheerdersmachtigingen.
 
-## <a name="add-zoom-from-the-gallery"></a>Zoomen toevoegen vanuit de galerie
+## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtingsimplementatie plannen
+1. Meer informatie over [hoe de inprovisioningservice werkt.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+2. Bepaal wie in de ruimte voor [de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)zal zijn .
+3. Bepaal welke gegevens u wilt [toewijzen tussen Azure AD en Zoom](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Voordat u inzoomen configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u inzoomen van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Stap 2. Zoom configureren om provisioning met Azure AD te ondersteunen
 
-**Als u inzoomen wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u de volgende stappen uit:**
+1. Meld u aan bij uw [zoombeheerconsole](https://zoom.us/signin). Navigeer naar **Geavanceerde > Zoom voor ontwikkelaars** in het linkernavigatiedeelvenster.
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+    ![Zoom-integraties](media/zoom-provisioning-tutorial/zoom01.png)
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+2. Navigeer naar **Beheren** in de rechterbovenhoek van de pagina. 
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+    ![Zoominstallatie](media/zoom-provisioning-tutorial/zoom02.png)
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
-
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
-
-4. Typ in het zoekvak **zoomen**, selecteer **Inzoomen** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
-
-    ![Zoom in de lijst met resultaten](common/search-new-app.png)
-
-## <a name="assign-users-to-zoom"></a>Gebruikers toewijzen om in te zoomen
-
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
-
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD toegang nodig hebben om in te zoomen. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan inzoomen door de volgende instructies te volgen:
-
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-zoom"></a>Belang rijke tips voor het toewijzen van gebruikers aan zoomen
-
-* U wordt aangeraden één Azure AD-gebruiker aan te zoomen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
-
-* Wanneer u een gebruiker toewijst om in te zoomen, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
-
-## <a name="configure-automatic-user-provisioning-to-zoom"></a>Automatische gebruikers inrichting configureren om in te zoomen 
-
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers of groepen in-/uitzoomen te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
-
-> [!TIP]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor inzoomen in te scha kelen, gevolgd door de instructies in de [zelf studie voor het zoomen van eenmalige aanmelding](zoom-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
-
-### <a name="configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor inzoomen in azure AD
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-2. Selecteer in de lijst toepassingen de optie **Inzoomen**.
-
-    ![De koppeling Zoom in de lijst met toepassingen](common/all-applications.png)
-
-3. Selecteer het tabblad **inrichten** .
-
-    ![Tabblad inrichten](common/provisioning.png)
-
-4. Stel de **inrichtings modus** in op **automatisch**.
-
-    ![Tabblad inrichten](common/provisioning-automatic.png)
-
-5. Voer in de sectie **beheerders referenties** de `https://api.zoom.us/scim` in de **Tenant-URL**in. Als u het **geheime token** van uw zoom account wilt ophalen, volgt u de procedure zoals beschreven in stap 6.
-
-6. Meld u aan bij de [Zoom-beheer console](https://zoom.us/signin). Navigeer naar **geavanceerd > zoomen voor ontwikkel aars** in het navigatie deel venster links.
-
-    ![Zoom integraties](media/zoom-provisioning-tutorial/zoom01.png)
-
-    Navigeer naar **beheren** in de rechter bovenhoek van de pagina. 
-
-    ![Zoom installatie](media/zoom-provisioning-tutorial/zoom02.png)
-
-    Navigeer naar uw Azure AD-app die u hebt gemaakt. 
+3. Navigeer naar de gemaakte Azure AD-app. 
     
     ![Zoom-app](media/zoom-provisioning-tutorial/zoom03.png)
 
-    Selecteer **app-referenties** in het navigatie deel venster links.
+4. Selecteer **App-referenties** in het linkernavigatiedeelvenster.
 
     ![Zoom-app](media/zoom-provisioning-tutorial/zoom04.png)
 
-    Haal de hieronder weer gegeven JWT-token waarde op en voer deze in het veld **geheime token** in azure AD. Als u een nieuw niet-verlopend token nodig hebt, moet u de verval tijd opnieuw configureren waarmee automatisch een nieuw token wordt gegenereerd. 
+5. Kopieer en sla het **JWT-token op.** Deze waarde wordt ingevoerd in het veld **Geheim token** op het tabblad Provisioning van uw Zoom-toepassing in de Azure-portal. Als u een nieuw niet-verlopend token nodig hebt, moet u de vervaldatum opnieuw configureren die automatisch een nieuw token genereert. 
 
-    ![Zoom installatie](media/zoom-provisioning-tutorial/zoom05.png)
+    ![Zoominstallatie](media/zoom-provisioning-tutorial/zoom05.png)
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Inzoomen. Als de verbinding mislukt, zorg er dan voor dat uw zoom account beheerders machtigingen heeft en probeer het opnieuw.
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>Stap 3. Zoom toevoegen vanuit de Azure AD-toepassingsgalerie
 
-    ![Token](common/provisioning-testconnection-tenanturltoken.png)
+Zoom toevoegen vanuit de Azure AD-toepassingsgalerie om de inrichting in Zoom te beheren. Als u zoomvoor SSO eerder hebt ingesteld, u dezelfde toepassing gebruiken. Het wordt echter aanbevolen om een aparte app te maken bij het testen van de integratie in eerste instantie. Meer informatie over het toevoegen van een toepassing uit de galerie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Bepalen wie in het vermogen van de inrichting 
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+Met de Azure AD-inrichtingsservice u scopen die worden ingericht op basis van toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker /groep. Als u ervoor kiest om het bereik te bepalen wie op basis van toewijzing aan uw app wordt toegewezen, u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om scope die zal worden ingericht uitsluitend op basis van attributen van de gebruiker of groep, u gebruik maken van een scoping filter zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)beschreven. 
 
-9. Klik op **Opslaan**.
+* Wanneer u gebruikers en groepen aan Zoomen toewijst, moet u een andere rol dan **Standaardtoegang**selecteren. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten en worden gemarkeerd als niet effectief gerechtigd in de inrichtingslogboeken. Als de enige rol die beschikbaar is in de toepassing de standaardtoegangsrol is, u [het toepassingsmanifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-10. Selecteer in de sectie **toewijzingen** de optie **synchroniseren Azure Active Directory gebruikers om in te zoomen**.
+* Begin klein. Test met een kleine set gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer de inrichtingsruimte is ingesteld op toegewezen gebruikers en groepen, u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, u een [op kenmerken gebaseerd scopingfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-    ![Zoom gebruikers toewijzingen](media/zoom-provisioning-tutorial/zoom-user-mapping.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD om in te zoomen in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in zoomen voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
-    
-     ![Zoom gebruikers toewijzingen](media/zoom-provisioning-tutorial/zoom-user-attributes.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-zoom"></a>Stap 5. Automatische gebruikersinrichting configureren in Zoom 
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
-13. Als u de Azure AD-inrichtings service voor inzoomen wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
-    
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Ga als een automatisch beheer van de gebruiker voor Zoomen in Azure AD:
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten om in te zoomen door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+2. Selecteer **Zoomen**in de lijst met toepassingen .
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![De koppeling Zoom in de lijst met toepassingen](common/all-applications.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. Hiermee worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service bij inzoomen.
+3. Selecteer het tabblad **Inrichten.**
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+    ![Tabblad Inrichten](common/provisioning.png)
 
-## <a name="connector-limitations"></a>Connector beperkingen
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-* Inzoomen biedt geen ondersteuning voor het inrichten van groepen.
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-## <a name="additional-resources"></a>Aanvullende resources
+5. Voer onder de sectie `https://api.zoom.us/scim` **Beheerdersreferenties** de **URL van tenant**in . Voer de **waarde JWT-token** in die eerder in **Secret Token**is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Zoom. Als de verbinding mislukt, moet u ervoor zorgen dat uw Zoom-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+    ![Zoominrichting](./media/zoom-provisioning-tutorial/provisioning.png)
+
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt.**
+
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
+
+7. Selecteer **Opslaan**.
+
+8. Selecteer azure **Active Directory-gebruikers synchroniseren om in te zoomen**onder de sectie **Toewijzingen** .
+
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd vanuit Azure AD naar Zoomen in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de gebruikersaccounts in Zoom te matchen voor updatebewerkingen. Als u ervoor kiest het [overeenkomende doelkenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de Zoom-API filteringgebruikers ondersteunt op basis van dat kenmerk. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+
+   |Kenmerk|Type|
+   |---|---|
+   |userName|Tekenreeks|
+   |actief|Booleaans|
+   |name.givenName|Tekenreeks|
+   |name.familyName|Tekenreeks|
+   |e-mails[type eq "werk"]|Tekenreeks|
+   |urn:ietf:params:scim:schema's:extension:enterprise:2.0:User:department|Tekenreeks|
+
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)
+
+11. Als u de Azure AD-inrichtingsservice voor Zoom wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
+
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+
+12. Definieer de gebruikers en/of groepen die u wilt inrichten om in te zoomen door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
+
+    ![Inrichtingskader](common/provisioning-scope.png)
+
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste cyclus duurt langer om uit te voeren dan de volgende cycli, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
+
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Zodra u de inrichting hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te controleren:
+
+1. Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers met succes of zonder succes zijn ingericht
+2. Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus te bekijken en hoe dicht deze bij voltooiing is
+3. Als de inrichtingsconfiguratie in een ongezonde status lijkt te zijn, wordt de toepassing in quarantaine geplaatst. Meer informatie over quarantainestaten [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="connector-limitations"></a>Verbindingsbeperkingen
+* Zoom staat vandaag de dag maximaal 9.999 basisgebruikers toe.
+
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../manage-apps/check-status-user-account-provisioning.md)

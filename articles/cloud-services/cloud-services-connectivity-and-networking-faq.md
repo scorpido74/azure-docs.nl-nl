@@ -1,7 +1,7 @@
 ---
-title: Verbindings-en netwerk problemen
+title: Verbindings-en netwerkproblemen
 titleSuffix: Azure Cloud Services
-description: In dit artikel vindt u de veelgestelde vragen over connectiviteit en netwerken voor Microsoft Azure Cloud Services.
+description: In dit artikel worden de veelgestelde vragen over connectiviteit en netwerken voor Microsoft Azure Cloud Services weergegeven.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -16,63 +16,63 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019397"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: veelgestelde vragen (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Verbindings- en netwerkproblemen voor Azure Cloud Services: veelgestelde vragen (veelgestelde vragen)
 
-In dit artikel vindt u veelgestelde vragen over verbindings-en netwerk problemen voor [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Zie de [pagina Cloud Services VM-grootte](cloud-services-sizes-specs.md)voor informatie over de grootte.
+Dit artikel bevat veelgestelde vragen over verbindings- en netwerkproblemen voor [Azure Cloud Services.](https://azure.microsoft.com/services/cloud-services) Zie de pagina [VM-grootte van Cloud Services voor](cloud-services-sizes-specs.md)informatie over de grootte van de grootte van Cloud Services .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Ik kan geen IP-adres reserveren in een Cloud service met meerdere VIP'S.
-Zorg er eerst voor dat het exemplaar van de virtuele machine waarvoor u het IP-adres wilt reserveren, is ingeschakeld. Ten tweede moet u ervoor zorgen dat u gereserveerde Ip's gebruikt voor zowel de fase ring als de productie-implementatie. Wijzig de instellingen *niet* wanneer de implementatie wordt bijgewerkt.
+## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Ik kan geen IP reserveren in een multi-VIP cloud service.
+Zorg er eerst voor dat de virtuele machine-instantie waarvoor u het IP-adres probeert te reserveren, is ingeschakeld. Ten tweede moet u ervoor zorgen dat u gereserveerde IP's gebruikt voor zowel de faserings- als productie-implementaties. *Wijzig* de instellingen niet tijdens het upgraden van de implementatie.
 
-## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>Hoe kan ik gebruiken Extern bureaublad wanneer ik een NSG heb?
-Voeg regels toe aan de NSG die verkeer toestaan op de poorten **3389** en **20000**. Extern bureaublad maakt gebruik van poort **3389**. Cloud service-exemplaren worden gelijkmatig verdeeld, zodat u niet rechtstreeks kunt bepalen met welk exemplaar verbinding moet worden gemaakt. De *RemoteForwarder* -en *remoteaccess* -agents beheren Remote Desktop Protocol verkeer (RDP) en toestaan dat de client een RDP-cookie verzendt en een afzonderlijk exemplaar opgeeft waarmee verbinding moet worden gemaakt. Voor de *RemoteForwarder* -en *remoteaccess* -agents moet het poort **20000** open zijn. Dit kan worden geblokkeerd als u een NSG hebt.
+## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>Hoe gebruik ik Extern bureaublad als ik een NSG heb?
+Voeg regels toe aan de NSG die verkeer op havens **3389** en **20000**mogelijk maken. Extern bureaublad maakt gebruik van poort **3389**. Cloudservice-exemplaren zijn load balanced, dus u niet direct bepalen met welke instantie u verbinding wilt maken. De *RemoteForwarder-* en *RemoteAccess-agents* beheren RDP-verkeer (Remote Desktop Protocol) en stellen de client in staat om een RDP-cookie te verzenden en een afzonderlijke instantie op te geven waarmee verbinding moet worden gemaakt. De *RemoteForwarder-* en *RemoteAccess-agents* vereisen dat poort **20000** is geopend, die kan worden geblokkeerd als u een NSG hebt.
 
-## <a name="can-i-ping-a-cloud-service"></a>Kan ik een Cloud service pingen?
+## <a name="can-i-ping-a-cloud-service"></a>Kan ik een cloudservice pingen?
 
-Nee, niet met behulp van het normale ' ping '/ICMP-protocol. Het ICMP-protocol is niet toegestaan via de Azure-load balancer.
+Nee, niet met behulp van het normale "ping"/ICMP protocol. Het ICMP-protocol is niet toegestaan via de Azure load balancer.
 
-Als u de connectiviteit wilt testen, raden we u aan een poort ping uit te voeren. Terwijl ping. exe ICMP gebruikt, kunt u andere hulpprogram ma's, zoals PSPing, nmap en Telnet, gebruiken om de connectiviteit met een specifieke TCP-poort te testen.
+Om de connectiviteit te testen, raden we u aan een poortping te doen. Terwijl Ping.exe ICMP gebruikt, u andere hulpprogramma's, zoals PSPing, Nmap en telnet, gebruiken om de connectiviteit met een specifieke TCP-poort te testen.
 
-Zie voor meer informatie [poort pingen gebruiken in plaats van ICMP om Azure VM-connectiviteit te testen](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
+Zie [Poortpingen gebruiken in plaats van ICMP gebruiken om Azure VM-connectiviteit te testen](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)voor meer informatie.
 
-## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Hoe kan ik geen duizenden treffers ontvangen van onbekende IP-adressen die kunnen wijzen op een schadelijke aanval van de Cloud service?
-Azure implementeert een netwerk beveiliging met meerdere lagen om de platform services te beschermen tegen gedistribueerde Denial-of-service-aanvallen (DDoS). Het Azure DDoS-verdedigings systeem maakt deel uit van het doorlopende bewakings proces van Azure, dat voortdurend wordt verbeterd door indringings tests. Dit DDoS-verdedigings systeem is zodanig ontworpen dat het niet alleen aanvallen van de buiten kant is, maar ook van andere Azure-tenants. Zie [Azure-netwerk beveiliging](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)voor meer informatie.
+## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Hoe voorkom ik het ontvangen van duizenden hits van onbekende IP-adressen die kunnen wijzen op een kwaadaardige aanval op de cloudservice?
+Azure implementeert een meerlaagse netwerkbeveiliging om zijn platformservices te beschermen tegen ddos-aanvallen (distributed denial-of-service). Het Azure DDoS-beveiligingssysteem maakt deel uit van het continue bewakingsproces van Azure, dat voortdurend wordt verbeterd door middel van penetratietests. Dit DDoS-verdedigingssysteem is ontworpen om niet alleen aanvallen van buitenaf te weerstaan, maar ook van andere Azure-tenants. Zie [Azure-netwerkbeveiliging](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)voor meer informatie.
 
-U kunt ook een opstart taak maken om specifieke IP-adressen selectief te blok keren. Zie [een specifiek IP-adres blok keren](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)voor meer informatie.
+U ook een opstarttaak maken om bepaalde specifieke IP-adressen selectief te blokkeren. Zie [Een specifiek IP-adres blokkeren](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)voor meer informatie .
 
-## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>Wanneer ik RDP naar mijn Cloud service-exemplaar probeer, krijg ik het bericht ' de gebruikers account is verlopen '.
-Mogelijk wordt het fout bericht ' dit gebruikers account is verlopen ' weer gegeven wanneer u de verloop datum die in uw RDP-instellingen is geconfigureerd, omzeilt. U kunt de verval datum wijzigen via de portal door de volgende stappen uit te voeren:
+## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>Wanneer ik rdp naar mijn cloudservice-instantie probeer te maken, krijg ik het bericht 'Het gebruikersaccount is verlopen'.
+Mogelijk krijgt u het foutbericht 'Dit gebruikersaccount is verlopen' wanneer u de vervaldatum omzeilt die is geconfigureerd in uw RDP-instellingen. U de vervaldatum van de portal wijzigen door de volgende stappen te volgen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com), ga naar uw Cloud service en selecteer het tabblad **extern bureaublad** .
+1. Meld u aan bij de [Azure-portal,](https://portal.azure.com)ga naar uw cloudservice en selecteer het tabblad **Extern bureaublad.**
 
-2. Selecteer de implementatie site voor **productie** of **fase ring** .
+2. Selecteer de **implementatiesleuf Productie** **of Fasering.**
 
-3. Wijzig de **verloopt op** datum en sla de configuratie vervolgens op.
+3. Wijzig de **datum verloopt op** en sla de configuratie op.
 
-U moet nu RDP-verbinding met uw computer kunnen maken.
+U moet nu in staat zijn om RDP naar uw machine.
 
-## <a name="why-is-azure-load-balancer-not-balancing-traffic-equally"></a>Waarom wordt het verkeer niet gelijkmatig verdeeld Azure Load Balancer?
-Zie [Azure Load Balancer nieuwe distributie modus](https://azure.microsoft.com/blog/azure-load-balancer-new-distribution-mode/)voor meer informatie over de werking van een interne Load Balancer.
+## <a name="why-is-azure-load-balancer-not-balancing-traffic-equally"></a>Waarom wordt het verkeer niet gelijkmatig verdeeld met Azure Load Balancer?
+Zie de nieuwe distributiemodus van [Azure Load Balancer](https://azure.microsoft.com/blog/azure-load-balancer-new-distribution-mode/)voor informatie over hoe een interne load balancer werkt.
 
-Het gebruikte distributie algoritme is een hash van 5-tuple (bron-IP, bron poort, doel-IP, doel poort en protocol type) om verkeer toe te wijzen aan beschik bare servers. Het biedt persistentie alleen binnen een transport sessie. Pakketten in dezelfde TCP-of UDP-sessie worden omgeleid naar dezelfde instantie van het Data Center IP (DIP) achter het eind punt met gelijke taak verdeling. Wanneer de client de verbinding sluit en opnieuw opent of een nieuwe sessie van hetzelfde bron-IP-adres start, wordt de bron poort gewijzigd en wordt het verkeer naar een ander DIP-eind punt gegaan.
+Het gebruikte distributiealgoritme is een 5-tuple (bron-IP, bronpoort, bestemmings-IP, doelpoort en protocoltype) hash om verkeer naar beschikbare servers in kaart te brengen. Het biedt plakkerigheid alleen binnen een transportsessie. Pakketten in dezelfde TCP- of UDP-sessie worden naar hetzelfde DATACENTER IP-exemplaar (DIP) geleid achter het load-balanced endpoint. Wanneer de client de verbinding sluit en heropent of een nieuwe sessie start vanaf hetzelfde bron-IP, verandert de bronpoort en wordt het verkeer naar een ander DIP-eindpunt gebracht.
 
-## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service omleiden naar een aangepaste URL?
+## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hoe kan ik binnenkomend verkeer omleiden naar de standaard-URL van mijn cloudservice naar een aangepaste URL?
 
-De module voor het herschrijven van URL'S van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud service (bijvoorbeeld \*. cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web. config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten of terugzetten van de installatie kopieën. Zie voor meer informatie:
+De URL Rewrite-module van IIS kan worden gebruikt om verkeer dat naar \*de standaard-URL voor de cloudservice (bijvoorbeeld cloudapp.net) komt, om te leiden naar een aangepaste naam/URL. Omdat de URL Rewrite-module standaard is ingeschakeld op webrollen en de regels ervan zijn geconfigureerd in de web.config van de toepassing, is deze altijd beschikbaar op de VM, ongeacht het opnieuw opstarten/opnieuw afbeeldingen. Zie voor meer informatie:
 
-- [Herschrijf regels maken voor de module voor het herschrijven van URL'S](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
-- [Een standaard koppeling verwijderen](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
+- [Herschrijfregels maken voor de MODULE URL Herschrijven](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [Een standaardkoppeling verwijderen](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
-## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service blok keren/uitschakelen?
+## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hoe kan ik binnenkomend verkeer blokkeren/uitschakelen naar de standaard-URL van mijn cloudservice?
 
-U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Cloud service (bijvoorbeeld \*. cloudapp.net). Stel de host-header in op een aangepaste DNS-naam (bijvoorbeeld www\.MyCloudService.com) onder site bindings configuratie in het bestand met de Cloud service definition (*. csdef), zoals aangegeven:
+U binnenkomend verkeer naar de standaard URL/naam van \*uw cloudservice voorkomen (bijvoorbeeld .cloudapp.net). Stel de hostkop op een aangepaste DNS-naam (bijvoorbeeld www\.MyCloudService.com) in onder sitebindingsconfiguratie in het bestand van de cloudservicedefinitie (*.csdef), zoals aangegeven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -95,27 +95,27 @@ U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Clo
 </ServiceDefinition>
 ```
 
-Omdat deze host-header binding wordt afgedwongen via het csdef-bestand, is de service alleen toegankelijk via de aangepaste naam ' www.MyCloudService.com '. Alle binnenkomende aanvragen naar het domein ' *. cloudapp.net ' zijn altijd mislukt. Als u een aangepaste SLB-test of een interne load balancer in de service gebruikt, kan het blok keren van de standaard-URL/naam van de service leiden tot problemen met het gedrag van de bewerking.
+Omdat deze hostheaderbinding wordt afgedwongen via het csdef-bestand, is de service alleen toegankelijk via de aangepaste naam 'www.MyCloudService.com'. Alle binnenkomende aanvragen voor het domein "*.cloudapp.net" mislukken altijd. Als u een aangepaste SLB-sonde of een interne load balancer in de service gebruikt, kan het blokkeren van de standaard URL/naam van de service het indringende gedrag verstoren.
 
-## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Hoe kan ik ervoor zorgen dat het open bare IP-adres van een Cloud service nooit verandert?
+## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Hoe kan ik ervoor zorgen dat het openbare IP-adres van een cloudservice nooit verandert?
 
-Om ervoor te zorgen dat het open bare IP-adres van uw Cloud service (ook wel een VIP genoemd) nooit wordt gewijzigd, zodat deze white list kan worden door enkele specifieke clients, wordt u aangeraden een gereserveerde IP te koppelen. Anders wordt de toewijzing van het virtuele IP-adres van Azure ongedaan gemaakt voor uw abonnement als u de implementatie verwijdert. Voor een geslaagde VIP-wissel bewerking hebt u afzonderlijke gereserveerde IP-adressen nodig voor productie-en staging-sleuven. Zonder deze, mislukt de wissel bewerking. Als u een IP-adres wilt reserveren en dit aan uw Cloud service wilt koppelen, raadpleegt u de volgende artikelen:
+Om ervoor te zorgen dat het openbare IP-adres van uw cloudservice (ook wel VIP genoemd) nooit verandert, zodat het gewoonlijk op de witte lijst kan worden gebracht door een paar specifieke clients, raden we u aan er een gereserveerd IP-adres aan te hebben. Anders wordt het virtuele IP-adres van Azure vanuit uw abonnement verdeeld als u de implementatie verwijdert. Voor een succesvolle VIP-swapbewerking hebt u afzonderlijke gereserveerde IP's nodig voor zowel productie- als faseringsruimten. Zonder hen mislukt de swapoperatie. Zie de volgende artikelen om een IP-adres te reserveren en te koppelen aan uw cloudservice:
 
-- [Het IP-adres van een bestaande Cloud service reserveren](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Het IP-adres van een bestaande cloudservice reserveren](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Een gereserveerd IP koppelen aan een cloudservice met behulp van een serviceconfiguratiebestand](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Als u meer dan één exemplaar voor uw rollen hebt, kan het koppelen van RIP met uw Cloud service geen uitval tijd veroorzaken. U kunt ook het IP-adres bereik van uw Azure-Data Center toevoegen aan een acceptatie lijst. U kunt alle Azure IP-bereiken vinden in het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Als u meer dan één exemplaar voor uw rollen hebt, mag het koppelen van RIP aan uw cloudservice geen downtime veroorzaken. U ook het IP-bereik van uw Azure-datacenter toevoegen aan een lijst met toegestane services. U alle Azure IP-bereiken vinden in het [Microsoft Download Center.](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
 
-Dit bestand bevat de IP-adresbereiken (met inbegrip van compute-, SQL-en opslag bereik) die worden gebruikt in azure-data centers. Er wordt wekelijks een bijgewerkt bestand geplaatst met de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken. Nieuwe bereiken die in het bestand worden weer gegeven, worden gedurende ten minste één week niet gebruikt in de data centers. Down load elke week het nieuwe. XML-bestand en voer de benodigde wijzigingen op uw site uit om de services die in Azure worden uitgevoerd correct te identificeren. Gebruikers van Azure ExpressRoute kunnen merken dat dit bestand wordt gebruikt om de BGP-advertisement van Azure Space bij te werken in de eerste week van elke maand.
+Dit bestand bevat de IP-adresbereiken (inclusief compute, SQL en opslagbereiken) die worden gebruikt in Azure-datacenters. Er wordt wekelijks een bijgewerkt bestand geplaatst dat de momenteel geïmplementeerde bereiken en eventuele komende wijzigingen in de IP-bereiken weergeeft. Nieuwe bereiken die in het bestand worden weergegeven, worden gedurende ten minste één week niet in de datacenters gebruikt. Download het nieuwe .xml-bestand elke week en voer de nodige wijzigingen op uw site uit om de services die in Azure worden uitgevoerd, correct te identificeren. Azure ExpressRoute-gebruikers kunnen er rekening mee houden dat dit bestand wordt gebruikt om de BGP-advertentie van Azure-ruimte in de eerste week van elke maand bij te werken.
 
-## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Hoe kan ik Azure Resource Manager virtuele netwerken met Cloud Services gebruiken?
+## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Hoe kan ik virtuele netwerken van Azure Resource Manager gebruiken met cloudservices?
 
-Cloud Services kunnen niet in Azure Resource Manager virtuele netwerken worden geplaatst. Virtuele netwerken van Resource Manager en klassieke implementatie kunnen worden verbonden via peering. Zie [peering van virtuele netwerken](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
+Cloudservices kunnen niet worden geplaatst in virtuele azure-netwerken voor Azure Resource Manager. Virtual Networks van Resource Manager en virtuele netwerken met klassieke implementatie kunnen worden verbonden via peering. Zie [Virtueel netwerkpeeren](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
 
-## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Hoe krijg ik de lijst met open bare IP-adressen die worden gebruikt door mijn Cloud Services?
+## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Hoe krijg ik de lijst met openbare IP's die door mijn Cloud Services worden gebruikt?
 
-U kunt het volgende PS-script gebruiken om de lijst met open bare IP-adressen voor Cloud Services te verkrijgen onder uw abonnement
+U het volgende PS-script gebruiken om de lijst met openbare IP's voor cloudservices onder uw abonnement te krijgen
 
 ```powershell
 $services = Get-AzureService  | Group-Object -Property ServiceName

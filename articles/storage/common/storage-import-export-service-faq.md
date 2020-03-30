@@ -1,161 +1,158 @@
 ---
-title: Veelgestelde vragen over Azure import/export-service | Microsoft Docs
-description: Lees de antwoorden op veelgestelde vragen over de export service van Azure import.
+title: Veelgestelde vragen voor azure import/exportservice | Microsoft Documenten
+description: Lees antwoorden op veelgestelde vragen over azure import exportservice.
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282423"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export-service: veelgestelde vragen 
-Hieronder vindt u vragen en antwoorden die u mogelijk hebt wanneer u uw Azure import/export-service gebruikt om gegevens over te dragen naar Azure Storage. De vragen en antwoorden zijn in de volgende categorieën onderverdeeld:
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-service: veelgestelde vragen
 
-- Over import/export-service
-- De schijven voorbereiden voor importeren/exporteren
-- Import/export-taken
-- Verzend schijven
-- Diversen 
+Hieronder volgen vragen en antwoorden die u hebben wanneer u uw Azure Import/Export-service gebruikt om gegevens over te dragen naar Azure-opslag. De vragen en antwoorden zijn in de volgende categorieën onderverdeeld:
 
-## <a name="about-importexport-service"></a>Over import/export-service
+- Over import/exportservice
+- De schijven voorbereiden op import/export
+- Taken importeren/exporteren
+- Verzendschijven
+- Diversen
 
-### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Kan ik Azure File Storage kopiëren met behulp van de Azure import/export-service?
+## <a name="about-importexport-service"></a>Over import/exportservice
 
-Ja. De Azure import/export-service ondersteunt importeren in azure File Storage. Het exporteren van Azure Files op dit moment wordt niet ondersteund.
+### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>Kan ik Azure File-opslag kopiëren met de Azure Import/Export-service?
 
-### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Is de Azure import/export-service beschikbaar voor CSP-abonnementen?
+Ja. De Azure Import/Export-service ondersteunt import in Azure File Storage. Het ondersteunt op dit moment geen export van Azure Files.
 
-Ja. Azure import/export-service ondersteunt Cloud Solution Providers (CSP)-abonnementen.
+### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Is de Azure Import/Export-service beschikbaar voor CSP-abonnementen?
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Kan ik de Azure import/export-service gebruiken om PST-post vakken en share point-gegevens naar O365 te kopiëren?
+Ja. Azure Import/Export-service ondersteunt CSP-abonnementen (Cloud Solution Providers).
 
-Ja. Ga voor meer informatie naar [PST-bestanden of share point-gegevens importeren in Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Kan ik de Azure Import/Export-service gebruiken om PST-postvakken en SharePoint-gegevens naar O365 te kopiëren?
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Kan ik de Azure import/export-service gebruiken om mijn back-ups offline te kopiëren naar de Azure Backup-Service?
+Ja. Ga voor meer informatie naar [PST-bestanden of SharePoint-gegevens importeren in Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
 
-Ja. Ga naar de [werk stroom offline back-up in azure backup](../../backup/backup-azure-backup-import-export.md)voor meer informatie.
+### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Kan ik de Azure Import/Export-service gebruiken om mijn back-ups offline te kopiëren naar de Azure Backup Service?
 
-### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Kan ik stations kopen voor import/export-taken van micro soft?
+Ja. Ga voor meer informatie naar [de offline back-upwerkstroom in Azure Backup.](../../backup/backup-azure-backup-import-export.md)
 
-Nee. U moet uw eigen schijven verzenden voor het importeren en exporteren van taken.
+### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Kan ik schijven kopen voor import-/exporttaken van Microsoft?
 
+Nee. U moet uw eigen schijven verzenden voor import- en exporttaken.
 
-## <a name="preparing-disks-for-importexport"></a>Schijven voorbereiden voor importeren/exporteren
+## <a name="preparing-disks-for-importexport"></a>Schijven voorbereiden op import/export
 
-### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Kan ik de stap voor bereiding van het station voor een import taak overs Laan? Kan ik een station voorbereiden zonder te kopiëren?
+### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Kan ik de stap voor het voorbereiden van een schijf voor een importtaak overslaan? Kan ik een station voorbereiden zonder te kopiëren?
 
-Nee. Elk station dat wordt gebruikt voor het importeren van gegevens moet worden voor bereid met behulp van het Azure WAImportExport-hulp programma. Gebruik het hulp programma om ook gegevens naar het station te kopiëren.
+Nee. Elk station dat wordt gebruikt om gegevens te importeren, moet worden voorbereid met het azure WAImportExport-hulpprogramma. Gebruik de tool om ook gegevens naar het station te kopiëren.
 
-### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Moet ik schijf voorbereiding uitvoeren bij het maken van een export taak?
+### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Moet ik schijfvoorbereiding uitvoeren bij het maken van een exporttaak?
 
-Nee. Sommige voor spellingen worden aanbevolen. Als u het aantal vereiste schijven wilt controleren, gebruikt u de opdracht PreviewExport van het WAImportExport-hulp programma. Zie voor meer informatie [het voor beeld van het gebruik van een schijf voor een export taak bekijken](https://msdn.microsoft.com/library/azure/dn722414.aspx). Met deze opdracht kunt u het gebruik van het station voor de geselecteerde blobs bekijken op basis van de grootte van de stations die u gaat gebruiken. Controleer ook of u kunt lezen uit en schrijven naar de vaste schijf die voor de export taak wordt verzonden.
+Nee. Sommige voorcontroles worden aanbevolen. Als u het aantal vereiste schijven wilt controleren, gebruikt u de opdracht Voorbeeldexport van het gereedschap WAImportExport. Zie Voor meer informatie [het gebruik van stations voor een exporttaak bekijken](https://msdn.microsoft.com/library/azure/dn722414.aspx). Met de opdracht u een voorbeeld bekijken van het gebruik van de stations voor de geselecteerde blobs, op basis van de grootte van de stations die u gaat gebruiken. Controleer ook of u lezen van en schrijven naar de harde schijf die wordt verzonden voor de export taak.
 
-## <a name="importexport-jobs"></a>Import/export-taken
+## <a name="importexport-jobs"></a>Taken importeren/exporteren
 
-### <a name="can-i-cancel-my-job"></a>Kan ik mijn taak annuleren?
-Ja. U kunt een taak annuleren wanneer de status het **maken** of **verzenden**heeft. Na deze fasen kan de taak niet worden geannuleerd en wordt deze tot de laatste fase voortgezet.
+### <a name="can-i-cancel-my-job"></a>Kan ik mijn baan opzeggen?
 
-### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Hoe lang kan ik de status van voltooide taken in het Azure Portal weer geven?
-U kunt de status voor voltooide taken weer geven tot 90 dagen. Voltooide taken worden na 90 dagen verwijderd.
+Ja. U een taak annuleren wanneer de status **Maken** of **verzenden is.** Buiten deze fasen kan de taak niet worden geannuleerd en gaat deze door tot de laatste fase.
 
-### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Wat moet ik doen als ik meer dan 10 stations wil importeren of exporteren?
-Een import-of export taak kan verwijzen naar slechts 10 schijven in één taak. Als u meer dan 10 schijven wilt verzenden, moet u meerdere taken maken. Schijven die zijn gekoppeld aan dezelfde taak, moeten samen in hetzelfde pakket worden verzonden. Neem contact op met Microsoft Ondersteuning voor meer informatie en richt lijnen wanneer de gegevens capaciteit meerdere taken voor het importeren van schijven omvat. 
+### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Hoe lang kan ik de status van voltooide taken in de Azure-portal bekijken?
 
-### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>De geüploade BLOB toont de status "Lease verlopen". Wat moet ik doen?
-U kunt het veld Lease verlopen negeren. Bij het importeren/exporteren wordt tijdens het uploaden lease voor de BLOB gebruikt om ervoor te zorgen dat er geen ander proces is om de BLOB parallel bij te werken. De lease is verlopen houdt in dat import/export niet meer wordt geüpload naar deze en dat de BLOB beschikbaar is voor uw gebruik. 
+U de status voor voltooide taken maximaal 90 dagen bekijken. Voltooide taken worden na 90 dagen verwijderd.
 
-## <a name="shipping-disks"></a>Verzend schijven
+### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Wat moet ik doen als ik meer dan 10 schijven wil importeren of exporteren?
 
-### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Wat is het maximum aantal harde schijven voor in één zending?
-Er is geen limiet voor het aantal Hdd's in één verzen ding. Als de schijven tot meerdere taken behoren, raden we u aan: 
-- Voorzie de schijven van de bijbehorende taak namen.
-- werk de taken bij met een tracerings nummer dat is geachtervoegseld met-1,-2, enzovoort.
+Een import- of exporttaak kan slechts 10 stations in één taak verwijzen. Als u meer dan 10 schijven wilt verzenden, moet u meerdere taken maken. Schijven die aan dezelfde taak zijn gekoppeld, moeten samen in hetzelfde pakket worden verzonden.
+Neem contact op met Microsoft Support voor meer informatie en richtlijnen wanneer de gegevenscapaciteit meerdere schijfimporttaken omvat.
 
-### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Moet ik iets anders dan de HDD in mijn pakket toevoegen?
-Alleen uw harde schijven in het verzend pakket verzenden. Neem geen items op zoals voedings kabels of USB-kabels.
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>De geüploade blob geeft de status weer als 'Lease verlopen'. Wat moet ik doen?
 
-### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Moet ik mijn stations verzenden met FedEx of DHL?
-U kunt stations verzenden naar het Azure-Data Center met behulp van een bekende Carrier zoals FedEx, DHL, UPS of US Postal Service. Voor retour zending van stations naar u in het Data Center moet u echter het volgende opgeven:
+U het veld 'Verlopen lease' negeren. Import/Export neemt lease op de blob tijdens het uploaden om ervoor te zorgen dat geen enkel ander proces de blob parallel kan bijwerken. Lease verlopen houdt in dat Import/export niet meer uploadt en de blob beschikbaar is voor gebruik.
 
-- Een FedEx-account nummer in de Verenigde Staten en de EU, of
-- Een DHL-account nummer in de regio's Azië en Australië.
+## <a name="shipping-disks"></a>Verzendschijven
+
+### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>Wat is het maximum aantal HDD voor in een zending?
+
+Er is geen limiet aan het aantal HDD's in één zending. Als de schijven tot meerdere taken behoren, raden we u aan:
+
+- de schijven met bijbehorende taaknamen labelen.
+- update de taken met een tracking nummer achterblijver met -1, -2 etc.
+
+### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>Moet ik iets anders dan de HDD in mijn pakket?
+
+Verzend alleen uw harde schijven in het verzendpakket. Neem geen items zoals voedingskabels of USB-kabels.
+
+### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>Moet ik mijn schijven verzenden via FedEx of DHL?
+
+U schijven verzenden naar het Azure-datacenter via een bekende vervoerder zoals FedEx, DHL, UPS of US Postal Service. Voor het retourneren van retourzendingen van schijven vanuit het datacenter moet u echter het als belangrijkste opgeven:
+
+- Een FedEx-rekeningnummer in de VS en de EU, of
+- Een DHL-rekeningnummer in de regio's Azië en Australië.
 
 > [!NOTE]
-> De data centers in India vereisen een declaratie brief in uw brief hoofd (Delivery Challan) om de stations te retour neren. Als u de vereiste vermelding wilt ordenen, moet u ook de ophaal bewerking met de geselecteerde transporteur boeken en de gegevens met het Data Center delen.
+> De datacenters in India vereisen een verklaring brief op uw briefhoofd (levering challan) om de stations terug te keren. Om de vereiste toegangspas te regelen, moet u ook de pick-up boeken bij de geselecteerde provider en de details delen met het datacenter.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Zijn er beperkingen met betrekking tot het internationaal verzenden van mijn station?
-Houd er rekening mee dat de fysieke media die u verzendt mogelijk internationale grenzen moeten passeren. U bent verantwoordelijk om ervoor te zorgen dat uw fysieke media en gegevens worden geïmporteerd en/of geëxporteerd overeenkomstig de toepasselijke wetgeving. Voordat u de fysieke media verzendt, raadpleegt u uw adviseurs om te controleren of uw media en gegevens juridisch kunnen worden verzonden naar het geïdentificeerde Data Center. Zo kunt u ervoor zorgen dat micro soft tijdig op de tijd komt.
+### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Zijn er beperkingen bij het internationaal verzenden van mijn schijf?
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Zijn er speciale vereisten voor het leveren van mijn schijven aan een Data Center?
+Houd er rekening mee dat de fysieke media die u verzendt mogelijk internationale grenzen moeten overschrijden. U bent verantwoordelijk voor het importeren en/of exporteren van uw fysieke media en gegevens in overeenstemming met de geldende wetgeving. Neem contact op met uw adviseurs voordat u de fysieke media verzendt om te controleren of uw media en gegevens legaal naar het geïdentificeerde datacenter kunnen worden verzonden. Dit zal helpen om ervoor te zorgen dat het Microsoft bereikt in een tijdige wijze.
 
-De vereisten zijn afhankelijk van de specifieke beperkingen van het Azure-Data Center.
-- Er zijn enkele sites waarvoor een inkomend ID-nummer van micro soft Data Center moet worden geschreven om veiligheids redenen. Voordat u uw stations of schijven naar het Data Center verzendt, neemt u contact opadbops@microsoft.commet Azure DataBox Operations () om dit aantal op te halen. Zonder dit nummer wordt het pakket geweigerd.
-- De data centers in India vereisen de persoonlijke details van het stuur programma, zoals de Government ID-kaart of het bewijs nummer. (bijvoorbeeld PAN, AADHAR, DL), naam, contact en het nummer van de auto plaat om een doorgifte van de poort vermelding te verkrijgen. Informeer uw telecom bedrijf over deze vereisten om de bezorgings vertraging te voor komen.
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Zijn er speciale vereisten voor het leveren van mijn schijven aan een datacenter?
 
+De vereisten zijn afhankelijk van de specifieke Azure-datacenterbeperkingen.
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bij het maken van een taak is het verzend adres een andere locatie dan de locatie van mijn opslag account. Wat moet ik doen?
+- Er zijn een paar sites waarvoor om veiligheidsredenen een Microsoft-datacenter-inbound ID-nummer op het pakket moet worden geschreven. Voordat u uw schijven of schijven naar het datacenteradbops@microsoft.comverzendt, neemt u contact op met Azure DataBox Operations ( ) om dit nummer op te halen. Zonder dit nummer wordt het pakket afgewezen.
+- De datacenters in India vereisen de persoonlijke gegevens van de bestuurder, zoals de Government ID Card of Proof No. (bijvoorbeeld PAN, AADHAR, DL), naam, contact en het kenteken van de auto om een toegangspas voor de poort te krijgen. Om vertragingen bij de levering te voorkomen, moet u uw provider informeren over deze vereisten.
 
-Sommige locaties van opslag accounts worden toegewezen aan alternatieve verzend locaties. Eerder beschik bare verzend locaties kunnen ook tijdelijk worden toegewezen aan alternatieve locaties. Controleer altijd het verzend adres dat wordt vermeld tijdens het maken van de taak voordat u uw stations verzendt.
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bij het maken van een taak is het verzendadres een locatie die verschilt van mijn opslagaccountlocatie. Wat moet ik doen?
 
-### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Bij het verzenden van mijn station vraagt de provider om het adres en telefoon nummer van de contact persoon van het Data Center. Wat moet ik bieden?
+Sommige opslagaccountlocaties zijn toegewezen aan alternatieve verzendlocaties. Eerder beschikbare verzendlocaties kunnen ook tijdelijk worden toegewezen aan alternatieve locaties. Controleer altijd het verzendadres dat wordt opgegeven tijdens het maken van een taak voordat u uw schijven verzendt.
 
-Het telefoon nummer en het DC-adres zijn beschikbaar als onderdeel van het maken van een taak.
+### <a name="when-shipping-my-drive-the-carrier-asks-for-the-data-center-contact-address-and-phone-number-what-should-i-provide"></a>Bij het verzenden van mijn schijf, de vervoerder vraagt om het datacenter contactadres en telefoonnummer. Wat moet ik bieden?
 
+Het telefoonnummer en het DC-adres worden opgegeven als onderdeel van het scheppen van banen.
 
 ## <a name="miscellaneous"></a>Diversen
 
-### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Wat gebeurt er als ik per ongeluk een HDD verzend die niet voldoet aan de ondersteunde vereisten?
+### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Wat gebeurt er als ik per ongeluk een HDD stuur die niet voldoet aan de ondersteunde vereisten?
 
-Het Azure-Data Center retourneert de schijf die niet voldoet aan de ondersteunde vereisten voor u. Als slechts een deel van de stations in het pakket voldoet aan de ondersteunings vereisten, worden die stations verwerkt en worden de stations die niet aan de vereisten voldoen, naar u teruggestuurd.
+Het Azure-datacenter retourneert het station dat niet aan de ondersteunde vereisten voldoet. Als slechts een deel van de schijven in het pakket voldoet aan de ondersteuningsvereisten, worden deze schijven verwerkt en worden de schijven die niet aan de vereisten voldoen, aan u geretourneerd.
 
-### <a name="does-the-service-format-the-drives-before-returning-them"></a>Formatteert de service de stations voordat ze worden geretourneerd?
+### <a name="does-the-service-format-the-drives-before-returning-them"></a>Maakt de service de stations voordat u ze retourt?
 
-Nee. Alle stations zijn versleuteld met BitLocker.
+Nee. Alle schijven zijn versleuteld met BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Hoe kan ik toegang krijgen tot gegevens die door deze service worden geïmporteerd?
 
-Gebruik Azure portal of [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) om toegang te krijgen tot de gegevens in uw Azure Storage-account.  
+Gebruik de Azure-portal of [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) om toegang te krijgen tot de gegevens onder uw Azure-opslagaccount.  
 
-### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Waar worden mijn gegevens weer gegeven in het opslag account nadat het importeren is voltooid? Is mijn Directory-hiërarchie behouden?
+### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Hoe zien mijn gegevens eruit nadat de import is voltooid in het opslagaccount? Is mijn directoryhiërarchie behouden?
 
-Wanneer u een harde schijf voor een import taak voorbereidt, wordt het doel opgegeven door het veld DstBlobPathOrPrefix in het CSV-bestand van de gegevensset. Dit is de doel container in het opslag account waarnaar de gegevens van de harde schijf worden gekopieerd. Binnen deze doel container worden virtuele mappen gemaakt voor mappen van de harde schijf en worden er blobs gemaakt voor bestanden. 
+Wanneer u een harde schijf voorbereidt op een importtaak, wordt de bestemming opgegeven door het veld DstBlobPathOrPrefix in de csv-gegevensset. Dit is de doelcontainer in het opslagaccount waarnaar gegevens van de harde schijf worden gekopieerd. Binnen deze doelcontainer worden virtuele mappen gemaakt voor mappen van de harde schijf en blobs voor bestanden.
 
-### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Als een station bestanden bevat die al bestaan in mijn opslag account, worden bestaande blobs of bestanden overschreven door de service?
+### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>Als een station bestanden heeft die al bestaan in mijn opslagaccount, overschrijft de service dan bestaande blobs of bestanden?
 
-Is afhankelijk van. Wanneer u het station voorbereidt, kunt u opgeven of de doel bestanden moeten worden overschreven of moeten worden genegeerd met behulp van het veld in het CSV-bestand van de gegevensset met de naam deposition: < NaamWijzigen | zonder overschrijven | overschrijven >. De naam van de nieuwe bestanden wordt standaard door de service gewijzigd in plaats van bestaande blobs of bestanden te overschrijven.
+Hangt. Bij het voorbereiden van het station u opgeven of de doelbestanden moeten worden overschreven of genegeerd met behulp van het veld in het CSV-bestand met de naam Disposition:<herschrijven|niet-overschrijven|overschrijven>. Standaard hernoemt de service de nieuwe bestanden in plaats van bestaande blobs of bestanden te overschrijven.
 
-### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Is het WAImportExport-hulp programma compatibel met 32-bits besturings systemen?
-Nee. Het hulp programma WAImportExport is alleen compatibel met 64-bits Windows-besturings systemen. Ga naar [ondersteunde besturings systemen](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)voor een volledige lijst met ondersteunde versies van het besturings systeem. 
+### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Is de WAImportExport tool compatibel met 32-bits besturingssystemen?
 
+Nee. De WAImportExport tool is alleen compatibel met 64-bits Windows-besturingssystemen. Ga voor een volledige lijst met ondersteunde besturingssysteem naar [ondersteunde besturingssystemen](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
 
-### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Wat is de maximum grootte van een blok-Blob en een pagina-blob die wordt ondersteund door Azure import/export?
+### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Wat is de maximale blokblob- en paginablobgrootte die wordt ondersteund door Azure Import/Export?
 
-De maximale grootte van een blok-blob is ongeveer 4.768 TB of 5.000.000 MB.
-De maximale grootte van de pagina-blob is 8TB.
+- De maximale blokblobgrootte is ongeveer 4.768 TB of 5.000.000 MB.
+- Max Page Blob grootte is 8TB.
 
+### <a name="does-azure-importexport-support-aes-256-encryption"></a>Ondersteunt Azure Import/Export AES-256-versleuteling?
 
-### <a name="does-azure-importexport-support-aes-256-encryption"></a>Ondersteunt Azure import/export AES-256-versleuteling?
-De Azure import/export-service maakt standaard gebruik van AES-128 BitLocker-versleuteling. U kunt dit wijzigen in AES-256 door hand matig te versleutelen met BitLocker voordat de gegevens worden gekopieerd. 
-
-- Als u [WAImportExport v1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)gebruikt, is hieronder een voorbeeld opdracht
-    ```
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
-    ```
-- Als het gebruik van [WAImportExport v2](https://www.microsoft.com/download/details.aspx?id=55280) ' AlreadyEncrypted ' opgeeft en de sleutel opgeeft in het CSV-bestand van de schijfset.
-    ```
-    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
-    ```
+Nee. Azure Import/Export-service maakt gebruik van AES-128 BitLocker-versleuteling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure import/export?](storage-import-export-service.md)
-
-
+* [Wat is Azure Import/Export?](storage-import-export-service.md)

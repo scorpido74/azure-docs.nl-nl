@@ -1,107 +1,109 @@
 ---
-title: Azure Backup beveiligde werk belastingen bewaken
-description: In dit artikel vindt u informatie over de bewakings-en meldings mogelijkheden voor Azure Backup werk belastingen met behulp van de Azure Portal.
+title: Beveiligde azure-back-upworkloads bewaken
+description: Lees in dit artikel meer over de bewakings- en meldingsmogelijkheden voor Azure Backup-workloads met behulp van de Azure-portal.
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273369"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294925"
 ---
-# <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
+# <a name="monitoring-azure-backup-workloads"></a>Azure Backup-workloads bewaken
 
-Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er in alle oplossingen gebeurt en naar verwachting in belang rijke scenario's wordt gewaarschuwd. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
+Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuurtopologie (On-premises vs Azure). Elke back-upgebruiker of beheerder moet zien wat er gaande is in alle oplossingen en naar verwachting worden gemeld in belangrijke scenario's. In dit artikel worden de bewakings- en meldingsmogelijkheden van azure backup-service beschreven.
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>Back-uptaken in Recovery Services kluis
+## <a name="backup-jobs-in-recovery-services-vault"></a>Back-uptaken in de kluis Van Herstelservices
 
-Azure Backup biedt ingebouwde bewakings-en waarschuwings functies voor werk belastingen die worden beveiligd door Azure Backup. In de Recovery Services kluis instellingen bevat de sectie **bewaking** ingebouwde taken en waarschuwingen.
+Azure Backup biedt ingebouwde bewakings- en waarschuwingsmogelijkheden voor workloads die worden beschermd door Azure Backup. In de kluisinstellingen van Recovery Services biedt de sectie **Monitoring** ingebouwde taken en waarschuwingen.
 
-![Ingebouwde RS-kluis bewaking](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
+![RS-kluis ingebouwde bewaking](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
 
-Taken worden gegenereerd wanneer bewerkingen, zoals het configureren van back-ups, back-ups maken, herstellen, verwijderen van back-ups, enzovoort, worden uitgevoerd.
+Taken worden gegenereerd wanneer bewerkingen zoals het configureren van back-up, back-up, herstel, back-up, enzovoort, worden uitgevoerd.
 
-Taken van de volgende Azure Backup oplossingen worden hier weer gegeven:
+Taken van de volgende Azure Backup-oplossingen worden hier weergegeven:
 
 - Azure VM Backup
-- Back-up van Azure-bestand
-- Back-up van Azure-workloads, zoals SQL
+- Azure-bestandsback-up
+- Azure-workloadback-up, zoals SQL en SAP HANA
 - Azure Backup-agent (MAB)
 
-Taken van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden niet weer gegeven.
+Taken van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) worden NIET weergegeven.
 
 > [!NOTE]
-> Azure-workloads, zoals SQL-back-ups in azure Vm's, hebben een groot aantal back-uptaken. Logboek back-ups kunnen bijvoorbeeld elke 15 minuten worden uitgevoerd. Voor dergelijke DB-workloads worden dus alleen door de gebruiker geactiveerde bewerkingen weer gegeven. Geplande back-upbewerkingen worden niet weer gegeven.
+> Azure-workloads zoals SQL- en SAP HANA-back-ups binnen Azure VM's hebben een enorm aantal back-uptaken. Logback-ups kunnen bijvoorbeeld elke 15 minuten worden uitgevoerd. Daarom worden voor dergelijke DB-workloads alleen door de gebruiker geactiveerde bewerkingen weergegeven. Geplande back-upbewerkingen worden NIET weergegeven.
 
-## <a name="backup-alerts-in-recovery-services-vault"></a>Back-upwaarschuwingen in Recovery Services kluis
+## <a name="backup-alerts-in-recovery-services-vault"></a>Back-upwaarschuwingen in de kluis Van Herstelservices
 
-Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvangen dat ze relevante actie kunnen ondernemen. In het gedeelte **back-upwaarschuwingen** worden waarschuwingen weer gegeven die zijn gegenereerd door Azure backup service. Deze waarschuwingen worden gedefinieerd door de service en de gebruiker kan geen waarschuwingen maken.
+Waarschuwingen zijn voornamelijk scenario's waarin gebruikers worden gewaarschuwd, zodat ze relevante actie kunnen ondernemen. In de sectie **Back-upwaarschuwingen** worden waarschuwingen weergegeven die zijn gegenereerd door de Azure Backup-service. Deze waarschuwingen worden gedefinieerd door de service en de gebruiker kan geen waarschuwingen maken.
 
-### <a name="alert-scenarios"></a>Waarschuwings scenario's
+### <a name="alert-scenarios"></a>Waarschuwingsscenario's
 
-De volgende scenario's worden door de service gedefinieerd als scenario's met waarschuwingen.
+De volgende scenario's worden door service gedefinieerd als waarschuwingsscenario's.
 
 - Back-up-/herstelfouten
 - Back-up is voltooid met waarschuwingen voor Azure Backup-Agent (MAB)
-- Beveiliging stoppen met het bewaren van gegevens of beveiliging tegen stoppen met gegevens verwijderen
+- Stop bescherming met gegevens behouden/Stop-beveiliging met gegevens verwijderen
 
-### <a name="exceptions-when-an-alert-is-not-raised"></a>Uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd
-
-Er zijn enkele uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd bij een fout:
-
-- De gebruiker heeft de actieve taak expliciet geannuleerd
-- De taak is mislukt omdat er een andere back-uptaak wordt uitgevoerd (er is niets om te handelen omdat we er gewoon op moeten wachten tot de vorige taak is voltooid)
-- De back-uptaak van de VM is mislukt omdat de back-up van de virtuele machine van Azure niet meer bestaat
-
-De bovenstaande uitzonde ringen zijn ontworpen op basis van de uitleg dat het resultaat van deze bewerkingen (voornamelijk door de gebruiker geactiveerd) direct wordt weer gegeven op de portal-of PS/CLI-clients. Daarom is de gebruiker onmiddellijk op de hoogte en heeft deze geen melding nodig.
-
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Waarschuwingen van de volgende Azure Backup oplossingen worden hier weer gegeven
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Waarschuwingen van de volgende Azure Backup-oplossingen worden hier weergegeven
 
 - Back-ups van Azure-VM's
 - Azure-bestandsback-ups
-- Back-ups van Azure-workloads, zoals SQL
+- Azure-workloadbacks zoals SQL, SAP HANA
 - Azure Backup-agent (MAB)
 
 > [!NOTE]
-> Waarschuwingen van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden hier niet weer gegeven.
+> Waarschuwingen van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) worden hier NIET weergegeven.
+
+### <a name="consolidated-alerts"></a>Geconsolideerde waarschuwingen
+
+Voor Azure-workloadbackbackoplossingen zoals SQL en SAP HANA kunnen logboekback-ups zeer vaak worden gegenereerd (tot elke 15 minuten volgens het beleid). Dus het is ook mogelijk dat de log back-up fouten zijn ook zeer frequent (tot elke 15 minuten). In dit scenario wordt de eindgebruiker overweldigd als er een waarschuwing wordt gegenereerd voor elke foutgebeurtenis. Er wordt dus een waarschuwing verzonden voor de eerste gebeurtenis en als de volgende fouten zijn vanwege dezelfde hoofdoorzaak, worden er geen verdere waarschuwingen gegenereerd. De eerste waarschuwing wordt bijgewerkt met het aantal fouten. Maar als de waarschuwing wordt geïnactiveerd door de gebruiker, zal de volgende gebeurtenis een andere waarschuwing activeren en dit zal worden behandeld als de eerste waarschuwing voor die gebeurtenis. Zo voert Azure Backup waarschuwingsconsolidatie uit voor SQL- en SAP HANA-back-ups.
+
+### <a name="exceptions-when-an-alert-is-not-raised"></a>Uitzonderingen wanneer een waarschuwing niet wordt gegenereerd
+
+Er zijn enkele uitzonderingen wanneer een waarschuwing niet wordt gegenereerd op een fout. Dit zijn:
+
+- Gebruiker heeft de lopende taak expliciet geannuleerd
+- De taak mislukt omdat een andere back-up baan is in uitvoering (niets om op te werken hier, omdat we gewoon moeten wachten tot de vorige taak te voltooien)
+- De VM-back-uptaak mislukt omdat de back-up van Azure VM niet meer bestaat
+- [Geconsolideerde waarschuwingen](#consolidated-alerts)
+
+De bovenstaande uitzonderingen zijn ontworpen met dien verstande dat het resultaat van deze bewerkingen (voornamelijk user triggered) onmiddellijk wordt weergegeven op portal/PS/CLI-clients. De gebruiker is zich dus onmiddellijk bewust en heeft geen melding nodig.
 
 ### <a name="alert-types"></a>Waarschuwingstypen
 
-Waarschuwingen zijn gebaseerd op ernst van waarschuwingen en kunnen worden gedefinieerd in drie typen:
+Op basis van de ernst van de waarschuwing kunnen waarschuwingen in drie typen worden gedefinieerd:
 
-- **Kritiek**: in principe zou elke back-up-of herstel fout (gepland of door de gebruiker geactiveerd) leiden tot het genereren van een waarschuwing en worden weer gegeven als een kritieke waarschuwing en ook destructieve bewerkingen, zoals het verwijderen van back-ups.
-- **Waarschuwing**: als de back-upbewerking is geslaagd, maar met weinig waarschuwingen, worden deze weer gegeven als waarschuwings meldingen.
-- **Ter informatie**: vanaf vandaag wordt er geen informatieve waarschuwing gegenereerd door Azure backup service.
+- **Kritiek:** In principe zou een back-up- of herstelfout (gepland of geactiveerddoor gebruiker) leiden tot het genereren van een waarschuwing en zou worden weergegeven als een kritieke waarschuwing en ook destructieve bewerkingen zoals back-ups verwijderen.
+- **Waarschuwing:** Als de back-upbewerking slaagt, maar met weinig waarschuwingen, worden ze weergegeven als Waarschuwingswaarschuwingen.
+- **Informatief:** Vanaf vandaag wordt er geen informatieve waarschuwing gegenereerd door azure backup service.
 
-## <a name="notification-for-backup-alerts"></a>Melding voor back-upwaarschuwingen
-
-> [!NOTE]
-> De configuratie van de melding kan alleen worden gedaan via Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager-sjablonen wordt niet ondersteund.
-
-Zodra een waarschuwing is gegenereerd, worden gebruikers hiervan op de hoogte gebracht. Azure Backup biedt een ingebouwd meldings mechanisme via e-mail. Een kan afzonderlijke e-mail adressen of distributie lijsten opgeven die moeten worden gewaarschuwd wanneer er een waarschuwing wordt gegenereerd. U kunt ook kiezen of u wilt worden gewaarschuwd voor elke afzonderlijke waarschuwing of ze wilt groeperen in een samen vatting per uur en vervolgens een melding ontvangen.
-
-![E-mail melding door RS-kluis inbouwen](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+## <a name="notification-for-backup-alerts"></a>Melding voor back-upmeldingen
 
 > [!NOTE]
-> De waarschuwingen voor SQL-back-ups worden geconsolideerd en het e-mail bericht wordt alleen voor de eerste keer verzonden. Maar als de waarschuwing wordt gedeactiveerd door de gebruiker, wordt door de volgende instantie een andere e-mail geactiveerd.
+> Configuratie van de melding kan alleen worden gedaan via Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager Template wordt niet ondersteund.
 
-Wanneer de melding is geconfigureerd, ontvangt u een welkomst-of inkomend e-mail bericht. Hiermee wordt bevestigd dat Azure Backup e-mail berichten naar deze adressen kunt verzenden wanneer er een waarschuwing wordt gegenereerd.<br>
+Zodra een waarschuwing is gegenereerd, worden gebruikers op de hoogte gebracht. Azure Backup biedt een ingebouwd meldingsmechanisme via e-mail. Men kan afzonderlijke e-mailadressen of distributielijsten opgeven die moeten worden aangemeld wanneer een waarschuwing wordt gegenereerd. U er ook voor kiezen om een melding te ontvangen voor elke afzonderlijke waarschuwing of om ze te groeperen in een samenvatting per uur en vervolgens een melding te ontvangen.
 
-Als de frequentie is ingesteld op een samen vatting per uur en er binnen een uur een waarschuwing is gegenereerd en opgelost, zal deze geen deel uitmaken van het komende uur overzicht.
+![RS Vault ingebouwde e-mailmelding](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+
+Wanneer de melding is geconfigureerd, ontvangt u een welkomst- of inleidende e-mail. Dit bevestigt dat Azure Backup e-mails naar deze adressen kan verzenden wanneer een waarschuwing wordt gegenereerd.<br>
+
+Als de frequentie is ingesteld op een uursamenvatting en een waarschuwing werd verhoogd en opgelost binnen een uur, zal het geen deel uitmaken van de komende uurverteren.
 
 > [!NOTE]
 >
-> - Als er een destructieve bewerking wordt uitgevoerd, zoals het **stoppen van de beveiliging bij het verwijderen van gegevens** , wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de herstel service-kluis.
-> - Gebruik [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)voor het configureren van een melding voor geslaagde taken.
+> - Als een destructieve bewerking zoals **stopbeveiliging met verwijderingsgegevens** wordt uitgevoerd, wordt een waarschuwing gegenereerd en wordt een e-mail verzonden naar abonnementseigenaren, beheerders en medebeheerders, zelfs als meldingen NIET zijn geconfigureerd voor de kluis Service herstellen.
+> - Als u de melding wilt configureren voor geslaagde taken, gebruikt u [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="inactivating-alerts"></a>Waarschuwingen inactiveren
 
-Als u een actieve waarschuwing wilt inactief maken/oplossen, klikt u op het lijst item dat overeenkomt met de waarschuwing die u wilt deactiveren. Hiermee opent u een scherm waarin gedetailleerde informatie over de waarschuwing wordt weer gegeven, met de knop ' inactief ' bovenaan. Als u op deze knop klikt, wordt de status van de waarschuwing gewijzigd in inactief. U kunt ook een waarschuwing inactief maken door met de rechter muisknop te klikken op het item in de lijst dat overeenkomt met die waarschuwing en ' inactief ' te selecteren.
+Als u een actieve waarschuwing wilt inactiveren/oplossen, u op het lijstitem klikken dat overeenkomt met de waarschuwing die u wilt inactiveren. Hiermee wordt een scherm geopend dat gedetailleerde informatie over de waarschuwing weergeeft, met een knop 'Inactiveren' bovenaan. Als u op deze knop klikt, wordt de status van de waarschuwing gewijzigd in 'Inactief'. U ook een waarschuwing inactiveren door met de rechtermuisknop op het lijstitem te klikken dat overeenkomt met die waarschuwing en 'Inactiveren' te selecteren.
 
-![Waarschuwing voor RS-kluis inactivering](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+![INactivering van RS Vault-waarschuwingen](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure backup-workloads bewaken met behulp van Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)
+[Azure-back-upworkloads bewaken met Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)

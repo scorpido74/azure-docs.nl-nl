@@ -1,6 +1,6 @@
 ---
-title: LINKS in Azure Cosmos DB query taal
-description: Meer informatie over de functie van SQL-systeem links in Azure Cosmos DB.
+title: LINKS in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie LEFT in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303746"
 ---
-# <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
+# <a name="left-azure-cosmos-db"></a>LINKS (Azure Cosmos DB)
  Retourneert het linkerdeel van een tekenreeks met het opgegeven aantal tekens.  
   
 ## <a name="syntax"></a>Syntaxis
@@ -26,24 +26,24 @@ LEFT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is de teken reeks expressie waaruit tekens moeten worden geëxtraheerd.  
+   Is de tekenreeksexpressie om tekens uit te extraheren.  
   
 *num_expr*  
-   Is een numerieke expressie waarmee het aantal tekens wordt opgegeven.  
+   Is een numerieke expressie die het aantal tekens opgeeft.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
   Retourneert een tekenreeksexpressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  Het volgende voorbeeld wordt het linkerdeel van "abc" voor verschillende waarden voor lengte.  
+  In het volgende voorbeeld wordt het linkergedeelte van "abc" geretourneerd voor verschillende lengtewaarden.  
   
 ```sql
 SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2 
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"l1": "a", "l2": "ab"}]  
@@ -51,10 +51,10 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
+Deze systeemfunctie zal profiteren van een [bereikindex](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een beveiligings module voor Azure Security Center maken voor IoT'
-description: In deze Quick Start leert u hoe u een Azure Security Center maakt voor IoT-module, die u kunt gebruiken met Azure Security Center voor IoT.
+title: 'Snelstart: een beveiligingsmoduletwee maken voor Azure Security Center voor IoT'
+description: In deze snelle start leert u hoe u een Azure Security Center for IoT-moduletwee maakt voor gebruik met Azure Security Center for IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,63 +16,63 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904163"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Quick Start: een azureiotsecurity-module maken dubbele
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Snelstart: maak een azureiotsecurity module twin
 
-In deze Quick Start wordt uitgelegd hoe u een afzonderlijke _azureiotsecurity_ -module maakt voor nieuwe apparaten of een batch module apparaatdubbels maakt voor alle apparaten in een IOT hub.  
+In deze quickstart wordt uitgelegd hoe u afzonderlijke _azureiotsecurity-moduletwins_ maken voor nieuwe apparaten of hoe batchmoduletwins maken voor alle apparaten in een IoT-hub.  
 
-## <a name="understanding-azureiotsecurity-module-twins"></a>Informatie over azureiotsecurity-module apparaatdubbels 
+## <a name="understanding-azureiotsecurity-module-twins"></a>Inzicht in azureiotsecurity module tweelingen 
 
-Voor IoT-oplossingen die zijn ingebouwd in azure, speelt apparaatdubbels een belang rijke rol in Apparaatbeheer en proces automatisering. 
+Voor IoT-oplossingen die in Azure zijn ingebouwd, spelen apparaattweelingen een belangrijke rol in zowel apparaatbeheer als procesautomatisering. 
 
-Azure Security Center voor IoT biedt volledige integratie met uw bestaande IoT Device Management-platform, zodat u de beveiligings status van uw apparaat kunt beheren en ook de mogelijkheden van bestaande apparaten beheert.
-Azure Security Center voor IoT-integratie wordt bereikt door gebruik te maken van het IoT Hub dubbele mechanisme.  
+Azure Security Center for IoT biedt volledige integratie met uw bestaande IoT-apparaatbeheerplatform, zodat u de beveiligingsstatus van uw apparaat beheren en gebruik maken van bestaande apparaatbeheermogelijkheden.
+Azure Security Center voor IoT-integratie wordt bereikt door gebruik te maken van het IoT Hub twin-mechanisme.  
 
-Zie [IOT hub module apparaatdubbels](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) voor meer informatie over het algemene concept van module Apparaatdubbels in azure IOT hub. 
+Zie [IoT Hub-moduletweelingen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) voor meer informatie over het algemene concept van moduletweelingen in Azure IoT Hub. 
  
-Azure Security Center voor IoT maakt gebruik van het dubbel mechanisme van de module en onderhoudt een beveiligings module met de naam _azureiotsecurity_ voor elk van uw apparaten.
+Azure Security Center for IoT maakt gebruik van het tweepersoonsmechanisme voor de module en onderhoudt een beveiligingsmodule met de naam _azureiotsecurity_ voor elk van uw apparaten.
 
-De beveiligings module heeft betrekking op alle informatie die relevant is voor de beveiliging van apparaten voor elk apparaat. 
+De beveiligingsmodule twee bevat alle informatie die relevant is voor de beveiliging van apparaten voor elk van uw apparaten. 
  
-Als u optimaal gebruik wilt maken van Azure Security Center voor IoT-functies, moet u deze beveiligings module apparaatdubbels voor elk apparaat in de service maken, configureren en gebruiken.  
+Als u volledig gebruik wilt maken van Azure Security Center for IoT-functies, moet u deze beveiligingsmoduletwins maken, configureren en gebruiken voor elk apparaat in de service.  
 
-## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity-module maken dubbele 
+## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity module twin maken 
 
-_azureiotsecurity_ module apparaatdubbels kan op twee manieren worden gemaakt:
-1. [Module batch script](https://aka.ms/iot-security-github-create-module) : maakt automatisch een module voor nieuwe apparaten of apparaten zonder een module die de standaard configuratie gebruikt.
-2. Hand matig bewerken van elke module dubbele afzonderlijk met specifieke configuraties voor elk apparaat.
+_azureiotsecurity_ module twins kunnen op twee manieren worden gemaakt:
+1. [Module batch script](https://aka.ms/iot-security-github-create-module) - maakt automatisch module twin voor nieuwe apparaten of apparaten zonder een module twin met behulp van de standaard configuratie.
+2. Het handmatig bewerken van elke module twin individueel met specifieke configuraties voor elk apparaat.
 
 >[!NOTE] 
-> Als u de batch-methode gebruikt, wordt de bestaande azureiotsecurity-module apparaatdubbels niet overschreven. Met de batch-methode maakt u alleen nieuwe module apparaatdubbels voor apparaten die nog geen beveiligings module hebben. 
+> Met behulp van de batchmethode zal niet overschrijven bestaande azureiotsecurity module tweelingen. Met behulp van de batch methode alleen creëert nieuwe module tweelingen voor apparaten die nog niet over een beveiligingsmodule twin. 
 
-Zie [agent configuratie](how-to-agent-configuration.md) voor meer informatie over het wijzigen of wijzigen van de configuratie van een bestaande module, twee. 
+Zie [agentconfiguratie](how-to-agent-configuration.md) voor meer informatie over het wijzigen of wijzigen van de configuratie van een bestaande moduletwee. 
 
-Gebruik de volgende instructies om hand matig een nieuwe _azureiotsecurity_ -module te maken voor een apparaat: 
+Gebruik de volgende instructies om handmatig een nieuwe _azureiotsecuritymoduletwin_ voor een apparaat te maken: 
 
-1. Zoek en selecteer in uw IoT Hub het apparaat waarvoor u een beveiligings module wilt maken.
-1. Klik op uw apparaat en vervolgens op **module identiteit toevoegen**.
-1. Voer **azureiotsecurity**in het veld **naam van module-id** in.
+1. Zoek en selecteer in uw IoT-hub het apparaat waarvoor u een beveiligingsmoduletwin wilt maken.
+1. Klik op uw apparaat en vervolgens op **Module-identiteit toevoegen**.
+1. Voer **azureiotsecurity**in in het veld **Naam van moduleidentiteit** .
 
 1. Klik op **Opslaan**. 
 
-## <a name="verify-creation-of-a-module-twin"></a>Het maken van een module twee controleren
+## <a name="verify-creation-of-a-module-twin"></a>De creatie van een moduletwee controleren
 
-Controleren of er sprake is van een beveiligings module voor een specifiek apparaat:
+Ga als volgt te werk om te controleren of er een beveiligingsmoduletwee bestaat voor een specifiek apparaat:
 
-1. Selecteer in uw Azure IoT Hub **IOT-apparaten** in het menu **Explorers** .    
-1. Voer de apparaat-ID in of selecteer een optie in het **veld query apparaat** en klik op **query apparaten**. 
-    ![query apparaten](./media/quickstart/verify-security-module-twin.png)
-1. Selecteer het apparaat of dubbel klik erop om de pagina met details van het apparaat te openen. 
-1. Selecteer het menu **module-identiteiten** en bevestig dat de module **azureiotsecurity** aanwezig is in de lijst met module-identiteiten die zijn gekoppeld aan het apparaat. 
-    ![-modules die zijn gekoppeld aan een apparaat](./media/quickstart/verify-security-module-twin-3.png)
+1. Selecteer **IoT-apparaten** in uw Azure IoT-hub in het menu **Explorers.**    
+1. Voer de apparaat-id in of selecteer een optie in het **veld Queryapparaat** en klik op **Queryapparaten**. 
+    ![Queryapparaten](./media/quickstart/verify-security-module-twin.png)
+1. Selecteer het apparaat of dubbelklik erop om de pagina Apparaatdetails te openen. 
+1. Selecteer het menu **Identiteiten module** en bevestig het bestaan van de **azureiotsecurity-module** in de lijst met moduleidentiteiten die aan het apparaat zijn gekoppeld. 
+    ![Modules die aan een apparaat zijn gekoppeld](./media/quickstart/verify-security-module-twin-3.png)
 
 
-Zie [agent configuratie](how-to-agent-configuration.md)voor meer informatie over het aanpassen van eigenschappen van Azure Security Center voor IOT-module apparaatdubbels.
+Zie [Agent-configuratie](how-to-agent-configuration.md)voor meer informatie over het aanpassen van eigenschappen van Azure Security Center voor IoT-moduletwins.
 
 ## <a name="next-steps"></a>Volgende stappen
 

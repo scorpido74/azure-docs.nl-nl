@@ -1,6 +1,6 @@
 ---
-title: Managed instance-in-time Restore (PITR)
-description: Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip.
+title: Beheerde instantie - Point-in-time restore (PITR)
+description: Een SQL-database in een beheerde instantie herstellen naar een eerder tijdstip.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,62 +12,62 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268806"
 ---
-# <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
+# <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL-database in een beheerde instantie herstellen naar een eerder tijdstip
 
-Gebruik PITR (Point-in-time Restore) om een Data Base van enige tijd in het verleden te maken als een kopie van een andere data base. In dit artikel wordt beschreven hoe u een herstel bewerking op een bepaald tijdstip van een data base in een Azure SQL Database beheerde instantie doet.
+Gebruik point-in-time restore (PITR) om een database te maken als een kopie van een andere database uit enige tijd in het verleden. In dit artikel wordt beschreven hoe u een point-in-time-herstel van een database in een azure SQL Database-beheerde instantie uitvoeren.
 
-Herstel naar een bepaald tijdstip is handig in herstel scenario's, zoals incidenten die worden veroorzaakt door fouten, onjuist geladen gegevens of het verwijderen van cruciale gegevens. U kunt het ook alleen voor testen of controleren gebruiken. Back-upbestanden worden 7 tot 35 dagen bewaard, afhankelijk van de instellingen van uw data base.
+Point-in-time restore is handig in herstelscenario's, zoals incidenten veroorzaakt door fouten, onjuist geladen gegevens of verwijdering van cruciale gegevens. U het ook gewoon gebruiken voor het testen of controleren. Back-upbestanden worden 7 tot 35 dagen bewaard, afhankelijk van uw database-instellingen.
 
-Herstel naar een bepaald tijdstip kan een Data Base herstellen:
+Point-in-time restore kan een database herstellen:
 
-- uit een bestaande data base.
-- uit een verwijderde data base.
-- naar hetzelfde beheerde exemplaar of naar een ander beheerd exemplaar. 
+- uit een bestaande database.
+- uit een verwijderde database.
+- naar dezelfde beheerde instantie of naar een andere beheerde instantie. 
 
 ## <a name="limitations"></a>Beperkingen
 
-Herstel naar een beheerd exemplaar van een bepaald tijdstip heeft de volgende beperkingen:
+Point in time restore to a managed instance has the following limitations:
 
-- Wanneer u van het ene beheerde exemplaar naar het andere herstelt, moeten beide exemplaren zich in hetzelfde abonnement en dezelfde regio bevinden. Herstel van meerdere regio's en meerdere abonnementen wordt momenteel niet ondersteund.
-- Herstel naar een bepaald tijdstip van een volledig beheerd exemplaar is niet mogelijk. In dit artikel wordt alleen uitgelegd wat er mogelijk is: herstel naar een bepaald tijdstip van een Data Base die wordt gehost op een beheerd exemplaar.
+- Wanneer u van de ene beheerde instantie naar de andere herstelt, moeten beide instanties zich in hetzelfde abonnement en dezelfde regio bevinden. Herstel van verschillende regio's en kruisabonnementen worden momenteel niet ondersteund.
+- Point-in-time herstel van een hele beheerde instantie is niet mogelijk. In dit artikel wordt alleen uitgelegd wat mogelijk is: point-in-time herstellen van een database die wordt gehost op een beheerde instantie.
 
 > [!WARNING]
-> Houd rekening met de opslag grootte van uw beheerde exemplaar. Afhankelijk van de grootte van de gegevens die moeten worden hersteld, kunt u mogelijk geen exemplaar van de opslag uitvoeren. Als er onvoldoende ruimte is voor de herstelde gegevens, gebruikt u een andere methode.
+> Wees je bewust van de opslaggrootte van je beheerde exemplaar. Afhankelijk van de grootte van de te herstellen gegevens, u geen instantieopslag meer hebben. Als er niet genoeg ruimte is voor de herstelde gegevens, gebruikt u een andere aanpak.
 
-De volgende tabel toont scenario's voor herstel naar een bepaald tijdstip voor beheerde instanties:
+In de volgende tabel worden point-in-time herstelscenario's voor beheerde instanties weergegeven:
 
-|           |Bestaande Data Base naar hetzelfde beheerde exemplaar herstellen| Een bestaande data base herstellen naar een ander beheerd exemplaar|Verwijderde data base naar hetzelfde beheerde exemplaar herstellen|Verwijderde data base herstellen naar een ander beheerd exemplaar|
+|           |Bestaande DB terugzetten naar dezelfde beheerde instantie| Bestaande DB terugzetten naar een ander beheerd exemplaar|Herstel van de neergedaalde DB naar hetzelfde beheerde exemplaar|Herstel van gedaaldDB naar een andere beheerde instantie|
 |:----------|:----------|:----------|:----------|:----------|
 |**Azure-portal**| Ja|Nee |Ja|Nee|
-|**Azure CLI**|Ja |Ja |Nee|Nee|
-|**PowerShell**| Ja|Ja |Ja|Ja|
+|**Azure-CLI**|Ja |Ja |Nee|Nee|
+|**Powershell**| Ja|Ja |Ja|Ja|
 
-## <a name="restore-an-existing-database"></a>Een bestaande data base herstellen
+## <a name="restore-an-existing-database"></a>Een bestaande database herstellen
 
-Een bestaande data base herstellen naar hetzelfde exemplaar met behulp van de Azure Portal, Power shell of de Azure CLI. Als u een Data Base naar een ander exemplaar wilt herstellen, gebruikt u Power shell of de Azure CLI zodat u de eigenschappen voor het beheerde exemplaar van het doel en de resource groep kunt opgeven. Als u deze para meters niet opgeeft, wordt de data base standaard teruggezet naar het bestaande exemplaar. Het Azure Portal biedt momenteel geen ondersteuning voor het herstellen naar een ander exemplaar.
+Een bestaande database herstellen naar dezelfde instantie met behulp van de Azure-portal, PowerShell of Azure CLI. Als u een database wilt herstellen naar een andere instantie, gebruikt u PowerShell of de Azure CLI, zodat u de eigenschappen voor de doelbeheerde instantie en resourcegroep opgeven. Als u deze parameters niet opgeeft, wordt de database standaard hersteld naar de bestaande instantie. De Azure-portal ondersteunt momenteel geen herstel naar een andere instantie.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
-2. Ga naar uw beheerde exemplaar en selecteer de data base die u wilt herstellen.
-3. Selecteer **herstellen** op de pagina Data Base:
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+2. Ga naar uw beheerde instantie en selecteer de database die u wilt herstellen.
+3. Selecteer **Herstellen** op de databasepagina:
 
-    ![Een Data Base herstellen met behulp van de Azure Portal](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
+    ![Een database herstellen met behulp van de Azure-portal](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
 
-4. Selecteer op de pagina **herstellen** het punt voor de datum en tijd waarop u de Data Base wilt terugzetten.
-5. Selecteer **bevestigen** om uw data base te herstellen. Met deze actie wordt het herstel proces gestart, waarmee een nieuwe Data Base wordt gemaakt en gevuld met gegevens uit de oorspronkelijke Data Base op het opgegeven tijdstip. Zie [herstel tijd](sql-database-recovery-using-backups.md#recovery-time)voor meer informatie over het herstel proces.
+4. Selecteer **op** de pagina Herstellen het punt voor de datum en tijd waarop u de database wilt herstellen.
+5. Selecteer **Bevestigen** om uw database te herstellen. Met deze actie wordt het herstelproces gestart, waarbij een nieuwe database wordt gemaakt en deze wordt gevuld met gegevens uit de oorspronkelijke database op het opgegeven tijdstip. Zie [Hersteltijd](sql-database-recovery-using-backups.md#recovery-time)voor meer informatie over het herstelproces.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Als Azure PowerShell nog niet is geïnstalleerd, raadpleegt u [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)als u Azure PowerShell nog niet hebt geïnstalleerd.
 
-Als u de Data Base wilt herstellen met behulp van Power shell, geeft u de waarden voor de para meters op in de volgende opdracht. Voer vervolgens de opdracht uit:
+Als u de database wilt herstellen met PowerShell, geeft u uw waarden op voor de parameters in de volgende opdracht. Voer vervolgens de opdracht uit:
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -88,7 +88,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-Als u de Data Base wilt herstellen naar een ander beheerd exemplaar, geeft u ook de namen op van de doel resource groep en het beheerde exemplaar van het doel:  
+Als u de database wilt herstellen naar een andere beheerde instantie, geeft u ook de namen op van de doelgroep en doelbeheerde instantie:  
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -104,20 +104,20 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-Zie [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)voor meer informatie.
+Zie [Restore-AzSqlInstanceDatabase voor](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)meer informatie.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)als u de Azure CLI nog niet hebt geïnstalleerd.
 
-Als u de Data Base wilt herstellen met behulp van de Azure CLI, geeft u de waarden voor de para meters op in de volgende opdracht. Voer vervolgens de opdracht uit:
+Als u de database wilt herstellen met de Azure CLI, geeft u uw waarden op voor de parameters in de volgende opdracht. Voer vervolgens de opdracht uit:
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename |
 -n mymanageddbname --dest-name targetmidbname --time "2018-05-20T05:34:22"
 ```
 
-Als u de Data Base wilt herstellen naar een ander beheerd exemplaar, geeft u ook de namen van de doel resource groep en het beheerde exemplaar op:  
+Als u de database wilt herstellen naar een andere beheerde instantie, geeft u ook de namen van de doelgroep en beheerde instantie op:  
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
@@ -126,24 +126,24 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Zie de [cli-documentatie voor het herstellen van een data base in een beheerd exemplaar](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)voor een gedetailleerde uitleg van de beschik bare para meters.
+Zie de [CLI-documentatie voor het herstellen](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)van een database in een beheerde instantie voor een gedetailleerde uitleg van de beschikbare parameters.
 
 ---
 
 ## <a name="restore-a-deleted-database"></a>Een verwijderde database herstellen
 
-Het herstellen van een verwijderde data base kan worden uitgevoerd met behulp van Power shell of Azure Portal. Als u een verwijderde data base naar hetzelfde exemplaar wilt herstellen, gebruikt u de Azure Portal of Power shell. Gebruik Power shell om een verwijderde data base te herstellen naar een ander exemplaar. 
+Het herstellen van een verwijderde database kan met PowerShell of Azure portal. Als u een verwijderde database wilt herstellen naar dezelfde instantie, gebruikt u de Azure-portal of PowerShell. Als u een verwijderde database wilt herstellen naar een andere instantie, gebruikt u PowerShell. 
 
 ### <a name="portal"></a>Portal 
 
 
-Als u een beheerde Data Base wilt herstellen met behulp van de Azure Portal, opent u de overzichts pagina van het beheerde exemplaar en selecteert u **Verwijderde data bases**. Kies een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
+Als u een beheerde database wilt herstellen met de Azure-portal, opent u de overzichtspagina beheerde instantie en selecteert u **Verwijderde databases**. Kies een verwijderde database die u wilt herstellen en typ de naam voor de nieuwe database die wordt gemaakt met gegevens die zijn hersteld vanuit de back-up.
 
-  ![Scherm opname van verwijderde Azure SQL-exemplaar database](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+  ![Schermafbeelding van de verwijderde Azure SQL-instantiedatabase herstellen](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="powershell"></a>PowerShell
 
-Als u een Data Base naar hetzelfde exemplaar wilt herstellen, werkt u de parameter waarden bij en voert u vervolgens de volgende Power shell-opdracht uit: 
+Als u een database naar dezelfde instantie wilt herstellen, werkt u de parameterwaarden bij en voert u de volgende PowerShell-opdracht uit: 
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -166,7 +166,7 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
    -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-Als u de Data Base wilt herstellen naar een ander beheerd exemplaar, geeft u ook de namen op van de doel resource groep en het beheerde exemplaar van het doel:
+Als u de database wilt herstellen naar een andere beheerde instantie, geeft u ook de namen op van de doelgroep en doelbeheerde instantie:
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -182,38 +182,38 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
    -TargetInstanceName $targetInstanceName 
 ```
 
-## <a name="overwrite-an-existing-database"></a>Een bestaande data base overschrijven
+## <a name="overwrite-an-existing-database"></a>Een bestaande database overschrijven
 
-Als u een bestaande Data Base wilt overschrijven, moet u het volgende doen:
+Als u een bestaande database wilt overschrijven, moet u het:
 
-1. Verwijder de bestaande data base die u wilt overschrijven.
-2. Wijzig de naam van de herstelde data base naar een Data Base die u hebt verwijderd.
+1. Laat de bestaande database vallen die u wilt overschrijven.
+2. Wijzig de naam van de point-in-time-herstelde database naar de naam van de database die u hebt laten vallen.
 
-### <a name="drop-the-original-database"></a>De oorspronkelijke data base verwijderen
+### <a name="drop-the-original-database"></a>De oorspronkelijke database laten vallen
 
-U kunt de data base verwijderen met behulp van de Azure Portal, Power shell of de Azure CLI.
+U de database laten vallen met behulp van de Azure-portal, PowerShell of Azure CLI.
 
-U kunt de data base ook verwijderen door rechtstreeks verbinding te maken met het beheerde exemplaar, te beginnen met SQL Server Management Studio (SSMS) en vervolgens de volgende Transact-SQL-opdracht (T-SQL) uit te voeren:
+U de database ook laten vallen door rechtstreeks verbinding te maken met de beheerde instantie, SQL Server Management Studio (SSMS) te starten en vervolgens de volgende opdracht Transact-SQL (T-SQL) uit te voeren:
 
 ```sql
 DROP DATABASE WorldWideImporters;
 ```
 
-Gebruik een van de volgende methoden om verbinding te maken met uw data base in het beheerde exemplaar:
+Gebruik een van de volgende methoden om verbinding te maken met uw database in het beheerde exemplaar:
 
-- [SSMS/Azure Data Studio via een virtuele machine van Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
+- [SSMS/Azure Data Studio via een virtuele Azure-machine](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Punt-naar-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Openbaar eind punt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Openbaar eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Selecteer in de Azure Portal de data base uit het beheerde exemplaar en selecteer vervolgens **verwijderen**.
+Selecteer in de Azure-portal de database in de beheerde instantie en selecteer **Verwijderen**.
 
-   ![Een Data Base verwijderen met behulp van de Azure Portal](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
+   ![Een database verwijderen met behulp van de Azure-portal](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Gebruik de volgende Power shell-opdracht om een bestaande Data Base uit een beheerd exemplaar te verwijderen:
+Gebruik de volgende PowerShell-opdracht om een bestaande database uit een beheerde instantie te laten vallen:
 
 ```powershell
 $resourceGroupName = "<Resource group name>"
@@ -223,9 +223,9 @@ $databaseName = "<Source database>"
 Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroupName
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Gebruik de volgende Azure CLI-opdracht om een bestaande Data Base uit een beheerd exemplaar te verwijderen:
+Gebruik de volgende opdracht Azure CLI om een bestaande database uit een beheerde instantie te laten vallen:
 
 ```azurecli-interactive
 az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
@@ -233,20 +233,20 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 
 ---
 
-### <a name="alter-the-new-database-name-to-match-the-original-database-name"></a>Wijzig de naam van de nieuwe data base zodat deze overeenkomt met de naam van de oorspronkelijke data base
+### <a name="alter-the-new-database-name-to-match-the-original-database-name"></a>De nieuwe databasenaam wijzigen in de oorspronkelijke databasenaam
 
-Maak rechtstreeks verbinding met het beheerde exemplaar en start SQL Server Management Studio. Voer vervolgens de volgende Transact-SQL-query (T-SQL) uit. De query wijzigt de naam van de herstelde data base in die van de verwijderde data base die u wilt overschrijven.
+Maak rechtstreeks verbinding met de beheerde instantie en start SQL Server Management Studio. Voer vervolgens de volgende Transact-SQL -query (T-SQL) uit. De query wijzigt de naam van de herstelde database in die van de database die u wilt overschrijven.
 
 ```sql
 ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
-Gebruik een van de volgende methoden om verbinding te maken met uw data base in het beheerde exemplaar:
+Gebruik een van de volgende methoden om verbinding te maken met uw database in het beheerde exemplaar:
 
-- [Virtuele Azure-machine](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
+- [Azure virtuele machine](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Punt-naar-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Openbaar eind punt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Openbaar eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [automatische back-ups](sql-database-automated-backups.md).
+Meer informatie over [geautomatiseerde back-ups](sql-database-automated-backups.md).

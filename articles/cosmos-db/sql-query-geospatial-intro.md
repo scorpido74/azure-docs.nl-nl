@@ -1,51 +1,51 @@
 ---
-title: Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
-description: Meer informatie over het maken van ruimtelijke objecten met Azure Cosmos DB en de SQL-API.
+title: Geospatiale en GeoJSON-locatiegegevens in Azure Cosmos DB
+description: Begrijpen hoe u ruimtelijke objecten maakt met Azure Cosmos DB en de SQL API.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367581"
 ---
-# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
+# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Geospatiale en GeoJSON-locatiegegevens in Azure Cosmos DB
 
-In dit artikel bevat een inleiding tot de functionaliteit van georuimtelijke in Azure Cosmos DB. Het opslaan en openen van georuimtelijke gegevens wordt momenteel alleen ondersteund door Azure Cosmos DB SQL-API-accounts. Nadat u onze documentatie voor georuimtelijk indexeren hebt gelezen, kunt u de volgende vragen beantwoorden:
+Dit artikel is een inleiding tot de georuimtelijke functionaliteit in Azure Cosmos DB. Momenteel wordt het opslaan en openen van georuimtelijke gegevens alleen ondersteund door Azure Cosmos DB SQL API-accounts. Na het lezen van onze documentatie over georuimtelijke indexering u de volgende vragen beantwoorden:
 
-* Hoe kan ik ruimtelijke gegevens opslaan in Azure Cosmos DB?
-* Hoe kan ik georuimtelijke gegevens in Azure Cosmos DB in SQL en LINQ op te vragen?
-* Hoe ik in- of uitschakelen ruimtelijke indexering in Azure Cosmos DB?
+* Hoe sla ik ruimtelijke gegevens op in Azure Cosmos DB?
+* Hoe kan ik georuimtelijke gegevens opvragen in Azure Cosmos DB in SQL en LINQ?
+* Hoe kan ik ruimtelijke indexering in Azure Cosmos DB in- of uitschakelen?
 
 ## <a name="introduction-to-spatial-data"></a>Inleiding tot ruimtelijke gegevens
 
-Ruimtelijke gegevens beschrijft de positie en de vorm van objecten in de ruimte. In de meeste toepassingen, deze komen overeen met de objecten op de aarde en georuimtelijke gegevens. Ruimtelijke gegevens kunnen worden gebruikt om weer te geven van de locatie van een persoon, een plaats van belang of de grens van een plaats of een meer. Veelgebruikte toepassingsgebieden vaak betrekking hebben op nabijheidsquery's, bijvoorbeeld, "alle in internetcafés vinden in de buurt van mijn huidige locatie."
+Ruimtelijke gegevens beschrijven de positie en vorm van objecten in de ruimte. In de meeste toepassingen komen deze overeen met objecten op aarde en georuimtelijke gegevens. Ruimtelijke gegevens kunnen worden gebruikt om de locatie van een persoon, een plaats van belang, of de grens van een stad, of een meer weer te geven. Veelvoorkomende gebruiksgevallen hebben vaak betrekking op nabijheidsvragen, bijvoorbeeld 'vind alle coffeeshops in de buurt van mijn huidige locatie'.
 
-De SQL-API van Azure Cosmos DB ondersteunt twee ruimtelijke gegevens typen: het gegevens type **geometrie** en het gegevens type **geografie** .
+De SQL API van Azure Cosmos DB ondersteunt twee ruimtelijke gegevenstypen: het **gegevenstype geometrie** en het **gegevenstype geografie.**
 
-- Het type **geometrie** vertegenwoordigt gegevens in een Euclidean-coördinaten systeem (plat)
-- Het **geografie** type staat voor gegevens in een coördinaten systeem met round-Earth.
+- Het **geometrietype** vertegenwoordigt gegevens in een Euclidisch (plat) coördinatensysteem
+- Het **aardrijkskundetype** vertegenwoordigt gegevens in een round-earth coördinaatsysteem.
 
-## <a name="supported-data-types"></a>Ondersteunde gegevens typen
+## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
-Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke punt gegevens die worden weer gegeven met de [GEOjson-specificatie](https://tools.ietf.org/html/rfc7946). GeoJSON-gegevensstructuren zijn altijd geldig JSON-objecten, zodat ze kunnen worden opgeslagen en opgevraagd met behulp van Azure Cosmos DB zonder speciale hulpprogramma's of bibliotheken.
+Azure Cosmos DB ondersteunt indexering en query's van georuimtelijke puntgegevens die worden weergegeven met behulp van de [GeoJSON-specificatie.](https://tools.ietf.org/html/rfc7946) GeoJSON-gegevensstructuren zijn altijd geldige JSON-objecten, zodat ze kunnen worden opgeslagen en opgevraagd met Azure Cosmos DB zonder gespecialiseerde hulpprogramma's of bibliotheken.
 
-Azure Cosmos DB ondersteunt de volgende ruimtelijke gegevens typen:
+Azure Cosmos DB ondersteunt de volgende ruimtelijke gegevenstypen:
 
-- Spreek
-- Lines Tring
-- Polygoon
-- MultiPolygon
+- Punt
+- Lijntekenreeks
+- Veelhoek
+- Multipolygoon
 
-### <a name="points"></a>Verwijst
+### <a name="points"></a>Punten
 
-Een **punt** geeft aan dat er één positie in de ruimte is. Een punt vertegenwoordigt in georuimtelijke gegevens, de exacte locatie, wat erop kan een adres van een winkelketen, een kiosk, een auto of een plaats.  Een punt wordt weergegeven in de combinatie van GeoJSON (en de Azure Cosmos DB) met behulp van de coördinaat of lengtegraad en breedtegraad.
+Een **punt** geeft één positie in de ruimte aan. In georuimtelijke gegevens geeft een punt de exacte locatie weer, wat een adres van een supermarkt, een kiosk, een auto of een stad kan zijn.  Een punt wordt weergegeven in GeoJSON (en Azure Cosmos DB) met behulp van het coördinatenpaar of lengte- en breedtegraad.
 
-Hier volgt een voor beeld van een JSON voor een punt:
+Hier is een voorbeeld JSON voor een punt:
 
 **Punten in Azure Cosmos DB**
 
@@ -56,9 +56,9 @@ Hier volgt een voor beeld van een JSON voor een punt:
 }
 ```
 
-Ruimtelijke gegevens typen kunnen worden inge sloten in een Azure Cosmos DB-document, zoals wordt weer gegeven in dit voor beeld van een gebruikers profiel dat locatie gegevens bevat:
+Ruimtelijke gegevenstypen kunnen worden ingesloten in een Azure Cosmos DB-document, zoals in dit voorbeeld wordt weergegeven van een gebruikersprofiel met locatiegegevens:
 
-**Profiel gebruiken met de locatie die is opgeslagen in Azure Cosmos DB**
+**Profiel gebruiken met locatie die is opgeslagen in Azure Cosmos DB**
 
 ```json
 {
@@ -73,21 +73,21 @@ Ruimtelijke gegevens typen kunnen worden inge sloten in een Azure Cosmos DB-docu
 }
 ```
 
-### <a name="points-in-a-geometry-coordinate-system"></a>Punten in een geometrie coördinaten systeem
+### <a name="points-in-a-geometry-coordinate-system"></a>Punten in een coördinatensysteem voor geometrie
 
-Voor het gegevens type **Geometry** specificeert geojson-specificatie de horizontale as en de verticale as seconde.
+Voor het **gegevenstype geometrie** geeft de GeoJSON-specificatie eerst de horizontale as en de verticale as op de tweede.
 
-### <a name="points-in-a-geography-coordinate-system"></a>Punten in een geografisch coördinaten systeem
+### <a name="points-in-a-geography-coordinate-system"></a>Punten in een aardrijkskundecoördinatensysteem
 
-Voor het **geografische** gegevens type geeft de geojson-specificatie de lengte graad en de tweede breedte aan. Net als in andere toepassingen toewijzing lengtegraad en breedtegraad zijn hoeken en weergegeven in termen van graden. Waarden voor lengtegraad van de nulmeridiaan worden gemeten en tussen-180 graden en 180.0 graden en waarden voor breedtegraad van de evenaar worden gemeten en tussen-90.0 graden en 90.0 graden zijn.
+Voor het **gegevenstype geografie** geeft de GeoJSON-specificatie eerst lengte- en breedtegraad op. Net als in andere mapping toepassingen, lengte en breedte zijn hoeken en vertegenwoordigd in termen van graden. Lengtewaarden worden gemeten vanaf de Prime Meridian en liggen tussen -180 graden en 180,0 graden, en breedtewaarden worden gemeten vanaf de evenaar en liggen tussen -90,0 graden en 90,0 graden.
 
-Azure Cosmos DB interpreteert coördinaten zoals voorgesteld per de referentiesysteem WGS 84. Zie hieronder voor meer informatie over de coördinaat referentiesystemen.
+Azure Cosmos DB interpreteert coördinaten zoals vertegenwoordigd volgens het WGS-84-referentiesysteem. Zie hieronder voor meer informatie over coördinatenreferentiesystemen.
 
-### <a name="linestrings"></a>Line strings toe
+### <a name="linestrings"></a>Linetekenreeksen
 
-**Line strings toe** vertegenwoordigen een reeks van twee of meer punten in ruimte en de lijn segmenten waarmee ze zijn verbonden. Georuimtelijke gegevens, worden de LineStrings veelvuldig gebruikt om snelwegen of rivieren vertegenwoordigen.
+**LineStrings** vertegenwoordigen een reeks van twee of meer punten in de ruimte en de lijnsegmenten die deze verbinden. In georuimtelijke gegevens worden LineStrings vaak gebruikt om snelwegen of rivieren weer te geven.
 
-**Line strings toe in geojson**
+**LineStrings in GeoJSON**
 
 ```json
     "type":"LineString",
@@ -97,11 +97,11 @@ Azure Cosmos DB interpreteert coördinaten zoals voorgesteld per de referentiesy
     ] ]
 ```
 
-### <a name="polygons"></a>Polygonen
+### <a name="polygons"></a>Veelhoeken
 
-Een **veelhoek** is een grens van verbonden punten die een gesloten Lines Tring vormen. Veelhoeken worden veelvuldig gebruikt om natuurlijke ontstaan wachtrijen zoals meren of politieke jurisdicties zoals plaatsen en Staten vertegenwoordigen. Hier volgt een voor beeld van een veelhoek in Azure Cosmos DB:
+Een **Veelhoek** is een grens van verbonden punten die een gesloten linestring vormt. Polygonen worden vaak gebruikt om natuurlijke formaties zoals meren of politieke jurisdicties zoals steden en staten te vertegenwoordigen. Hier is een voorbeeld van een Veelhoek in Azure Cosmos DB:
 
-**Veelhoeken in geojson**
+**Polygonen in GeoJSON**
 
 ```json
 {
@@ -117,17 +117,17 @@ Een **veelhoek** is een grens van verbonden punten die een gesloten Lines Tring 
 ```
 
 > [!NOTE]
-> De GeoJSON-specificatie is vereist dat voor geldige veelhoeken, het laatste coördinaat paar opgegeven moet hetzelfde zijn als de eerste pagina, om een gesloten vorm te maken.
+> De GeoJSON-specificatie vereist dat voor geldige Polygonen het laatste meegeleverde coördinatenpaar hetzelfde moet zijn als het eerste, om een gesloten vorm te maken.
 >
-> Punten in een Polygoon moeten worden opgegeven in volgorde van linksom draaien. Een veelhoek in rechtsom volgorde opgegeven vertegenwoordigt de omgekeerde waarde van de regio binnen het.
+> Punten binnen een Veelhoek moeten tegen de klok in worden opgegeven. Een veelhoek die in de volgorde met de klok mee is opgegeven, vertegenwoordigt het omgekeerde van het gebied erin.
 >
 >
 
-### <a name="multipolygons"></a>Point
+### <a name="multipolygons"></a>MultiPolygonen
 
-Een **multiveelhoek** is een matrix met nul of meer veelhoeken. **Multiveelhoeken** kunnen geen zijden overlappen of een gemeen schappelijk gebied hebben. Ze kunnen op een of meer punten raken.
+Een **MultiPolygon** is een array van nul of meer Polygonen. **MultiPolygons** kunnen geen kanten overlappen of een gemeenschappelijke ruimte hebben. Ze kunnen aanraken op een of meer punten.
 
-**Multiveelhoeken in geojson**
+**MultiPolygons in GeoJSON**
 
 ```json
 {
@@ -149,16 +149,16 @@ Een **multiveelhoek** is een matrix met nul of meer veelhoeken. **Multiveelhoeke
 }
 ```
 
-## <a name="coordinate-reference-systems"></a>Coördinaat referentiesystemen
+## <a name="coordinate-reference-systems"></a>Referentiesystemen coördineren
 
-Omdat de vorm van de aarde onregelmatig is, worden coördinaten van georuimtelijke gegevens weer gegeven in veel coördinaten referentie systemen (CRS), elk met hun eigen frames van referentie-en meet eenheden. Bijvoorbeeld, de 'nationale raster van Brittannië' is een referentiesysteem juist is voor het Verenigd Koninkrijk, maar niet daarbuiten wordt weergegeven.
+Aangezien de vorm van de aarde onregelmatig is, worden de coördinaten van georuimtelijke gegevens van de geografie vertegenwoordigd in vele coördinatenreferentiesystemen (CRS), elk met hun eigen referentiekaders en meeteenheden. Het "National Grid of Britain" is bijvoorbeeld een referentiesysteem dat juist is voor het Verenigd Koninkrijk, maar niet daarbuiten.
 
-Het populairste CRS dat momenteel wordt gebruikt, is de World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Gebruik WGS 84 GPS-apparaten en veel toewijzing diensten, waaronder Google Maps en Bing Maps-API's. Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke gegevens op geografische locatie alleen met behulp van de WGS-84-CRS.
+De meest populaire CRS in gebruik vandaag is de World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS-apparaten en veel kaartservices, waaronder Google Maps en Bing Maps API's, maken gebruik van WGS-84. Azure Cosmos DB ondersteunt het indexeren en opvragen van georuimtelijke gegevens in geografie met alleen de WGS-84 CRS.
 
-## <a name="creating-documents-with-spatial-data"></a>Het maken van documenten met ruimtelijke gegevens
-Bij het maken van documenten die de GeoJSON-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexeringsbeleid van de container. Als u met een Azure Cosmos DB SDK in een dynamisch getypeerde taal, zoals Python of Node.js werkt, moet u geldige GeoJSON maken.
+## <a name="creating-documents-with-spatial-data"></a>Documenten maken met ruimtelijke gegevens
+Wanneer u documenten maakt die GeoJSON-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexeringsbeleid van de container. Als u werkt met een Azure Cosmos DB SDK in een dynamisch getypte taal zoals Python of Node.js, moet u geldige GeoJSON maken.
 
-**Document maken met georuimtelijke gegevens in node. js**
+**Document maken met georuimtelijke gegevens in Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,7 +174,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Als u met de SQL-Api's werkt, kunt u de klassen `Point`, `LineString`, `Polygon`en `MultiPolygon` binnen de naam ruimte `Microsoft.Azure.Cosmos.Spatial` gebruiken om locatie-informatie in uw toepassings objecten in te sluiten. Deze klassen te vereenvoudigen de serialisatie en deserialisatie van ruimtelijke gegevens in GeoJSON.
+Als u met de SQL-API's werkt, `LineString` `Polygon`kunt `MultiPolygon` u de `Point` `Microsoft.Azure.Cosmos.Spatial` klassen , , en klassen binnen de naamruimte gebruiken om locatiegegevens in uw toepassingsobjecten in te sluiten. Deze klassen helpen de serialisatie en deserialisatie van ruimtelijke gegevens in GeoJSON te vereenvoudigen.
 
 **Document maken met georuimtelijke gegevens in .NET**
 
@@ -199,12 +199,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Als u niet beschikt over de breedte graad en lengte graad, maar de fysieke adressen of locatie naam als plaats of land/regio hebt, kunt u de werkelijke coördinaten opzoeken met behulp van een geocoderings service zoals Bing Maps REST services. Lees [hier](https://msdn.microsoft.com/library/ff701713.aspx)meer over de geocodering van Bing Maps.
+Als u niet beschikt over de breedte- en lengtegraad-informatie, maar de fysieke adressen of locatienaam hebt, zoals stad of land/regio, u de werkelijke coördinaten opzoeken met behulp van een geocoderingsservice zoals Bing Maps REST Services. Lees [hier](https://msdn.microsoft.com/library/ff701713.aspx)meer over de geocodering van Bing Maps.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u aan de slag met georuimtelijke ondersteuning in Azure Cosmos DB, naast kunt u:
+Nu u hebt geleerd hoe u aan de slag met georuimtelijke ondersteuning in Azure Cosmos DB, u vervolgens:
 
-* Meer informatie over [Azure Cosmos DB query](sql-query-getting-started.md)
-* Meer informatie over het [opvragen van ruimtelijke gegevens met Azure Cosmos DB](sql-query-geospatial-query.md)
-* Meer informatie over [ruimtelijke gegevens in index met Azure Cosmos DB](sql-query-geospatial-index.md)
+* Meer informatie over [Azure Cosmos DB Query](sql-query-getting-started.md)
+* Meer informatie over [het opvragen van ruimtelijke gegevens met Azure Cosmos DB](sql-query-geospatial-query.md)
+* Meer informatie over [ruimtelijke gegevens indexen met Azure Cosmos DB](sql-query-geospatial-index.md)

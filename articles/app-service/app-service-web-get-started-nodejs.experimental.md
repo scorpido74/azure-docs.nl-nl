@@ -1,26 +1,26 @@
 ---
-title: 'Snelstartgids: een node. js-web-app maken'
-description: Implementeer in enkele minuten uw eerste node. js-Hallo wereld naar Azure App Service. U implementeert met behulp van een ZIP-pakket, dat een van de vele manieren is om te implementeren in App Service.
+title: 'Snelstart: een web-app Node.js maken'
+description: Implementeer uw eerste Node.js Hello World binnen enkele minuten naar Azure App Service. U implementeert met behulp van een ZIP-pakket, een van de vele manieren om te implementeren in App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.custom: seodec18
+ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 84953c79093ebd4e53e7e7feef5ab72b8afce002
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247623"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047532"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een Node.js-web-app maken en implementeren in Azure App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-nodejs.md).
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js-web-app maken en implementeren in Azure App Service onder Linux ](./containers/quickstart-nodejs.md) om een app te implementeren in App Service onder _Linux_.
 >
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U gaat de web-app in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) maken, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli). U implementeert de Node.js-voorbeeldcode naar de web-app met de opdracht [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
+[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U gaat de web-app in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) maken, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli). U implementeert de Node.js-voorbeeldcode naar de web-app met de opdracht [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -32,7 +32,7 @@ U kunt de onderstaande stappen volgen met behulp van een Mac-, Windows- of Linux
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
+Maak een map 'snelstart' in de Cloud Shell en ga er vervolgens naartoe.
 
 ```console
 mkdir quickstart
@@ -40,7 +40,7 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'quickstart'.
+Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'snelstart'.
 
 ```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
 
-Maak in Cloud Shell een web-app in het App Service-plan van `myAppServicePlan` met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
+Maak in de Cloud Shell een web-app in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
 
 Vervang in het volgende voorbeeld `<app_name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`).
 
@@ -93,7 +93,7 @@ Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in he
 
 ### <a name="set-nodejs-runtime"></a>Node.js-runtime instellen
 
-Stel de Node-runtime in op 10.14.1. Voer [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit als u alle ondersteunde runtimes wilt zien.
+Stel de Node-runtime in op 10.14.1. Voer alle ondersteunde runtimes [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)uit om alle ondersteunde runtimes te bekijken.
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -106,7 +106,7 @@ Blader naar uw nieuwe web-app. Vervang `<app_name>` door een unieke app-naam.
 http://<app_name>.azurewebsites.net
 ```
 
-De nieuwe web-app moet er als volgt uitzien: ![lege web-app-pagina](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Zo moet je nieuwe web-app ![eruit zien: Lege webpagina](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Het ZIP-bestand implementeren
 

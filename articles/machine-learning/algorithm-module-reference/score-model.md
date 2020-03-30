@@ -1,7 +1,7 @@
 ---
-title: 'Score model: module verwijzing'
+title: 'Scoremodel: modulereferentie'
 titleSuffix: Azure Machine Learning
-description: Leer hoe u de module score model in Azure Machine Learning kunt gebruiken om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
+description: Meer informatie over het gebruik van de module Scoremodel in Azure Machine Learning om voorspellingen te genereren met behulp van een getraind classificatie- of regressiemodel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,47 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138178"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364177"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
+Gebruik deze module om voorspellingen te genereren met behulp van een getraind classificatie- of regressiemodel.
 
 ## <a name="how-to-use"></a>Gebruiksinstructies
 
-1. Voeg de module **score model** toe aan de pijp lijn.
+1. Voeg de module **Scoremodel** toe aan uw pijplijn.
 
-2. Koppel een getraind model en een gegevensset die nieuwe invoer gegevens bevat. 
+2. Voeg een getraind model en een gegevensset met nieuwe invoergegevens toe. 
 
-    De gegevens moeten een indeling hebben die compatibel is met het type getrainde model dat u gebruikt. Het schema van de invoer gegevensset moet ook algemeen overeenkomen met het schema van de gegevens die worden gebruikt om het model te trainen.
+    De gegevens moeten in een formaat zijn dat compatibel is met het type getraind model dat u gebruikt. Het schema van de invoergegevensset moet over het algemeen ook overeenkomen met het schema van de gegevens die worden gebruikt om het model te trainen.
 
-3. Voer de pijplijn uit.
+3. Verzend de pijplijn.
 
 ## <a name="results"></a>Resultaten
 
-Nadat u een set scores hebt gegenereerd met het [score model](./score-model.md):
+Nadat u een reeks scores hebt gegenereerd met [scoremodel:](./score-model.md)
 
-+ Genereren van een set metrische gegevens die worden gebruikt voor het evalueren van de nauw keurigheid van het model (prestaties).  u kunt de gescoorde gegevensset verbinden om het [model te evalueren](./evaluate-model.md). 
-+ Klik met de rechter muisknop op de module en selecteer **visualiseren** om een voor beeld van de resultaten weer te geven.
-+ Sla de resultaten op in een gegevensset.
++ Als u een set statistieken wilt genereren die worden gebruikt voor het evalueren van de nauwkeurigheid (prestaties) van het model, u de gescoorde gegevensset verbinden met [Model evalueren,](./evaluate-model.md) 
++ Klik met de rechtermuisknop op de module en selecteer **Visualiseren** om een voorbeeld van de resultaten te bekijken.
+<!-- + To Save the results to a dataset. -->
 
-De Score of voorspelde waarde kan in veel verschillende indelingen worden opgegeven, afhankelijk van het model en uw invoer gegevens:
+De score, of voorspelde waarde, kan in veel verschillende formaten, afhankelijk van het model en uw invoergegevens:
 
-- Voor classificatie modellen voert het [score model](./score-model.md) een voorspelde waarde uit voor de klasse, evenals de waarschijnlijkheid van de voorspelde waarde.
-- Voor regressie modellen genereert het [score model](./score-model.md) alleen de voorspelde numerieke waarde.
+- Voor classificatiemodellen [levert Score Model](./score-model.md) een voorspelde waarde voor de klasse en de waarschijnlijkheid van de voorspelde waarde.
+- Voor regressiemodellen genereert [Score Model](./score-model.md) alleen de voorspelde numerieke waarde.
 
 
 ## <a name="publish-scores-as-a-web-service"></a>Scores publiceren als een webservice
 
-Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie deze zelf studie over het maken van een webservice op basis van een pijp lijn in Azure Machine Learning:
+Een veelvoorkomend gebruik van scoren is om de uitvoer terug te keren als onderdeel van een voorspellende webservice. Zie [deze zelfstudie](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) over het implementeren van een realtime eindpunt op basis van een pijplijn in Azure Machine Learning designer voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

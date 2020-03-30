@@ -1,6 +1,6 @@
 ---
-title: Een Azure Data Explorer-cluster maken & DB met behulp vanC#
-description: Meer informatie over het maken van een Azure Data Explorer-cluster en-data base met behulp van deC#
+title: 'Een Azure Data Explorer-cluster & DB maken met C #'
+description: 'Meer informatie over het maken van een Azure Data Explorer-cluster en -database met behulp van de C #'
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,37 +8,37 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246407"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Een Azure Data Explorer-cluster en-data base maken met behulp vanC#
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Een Azure Data Explorer-cluster en -database maken met C #
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Azure Resource Manager-sjabloon](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In dit artikel maakt u een cluster en een Data Base met behulp C#van.
+Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In dit artikel maakt u een cluster en een database met C#.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Als u Visual Studio 2019 niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-## <a name="authentication"></a>Verificatie
-Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen.
+## <a name="authentication"></a>Authentication
+Voor het uitvoeren van de voorbeelden in dit artikel hebben we een Azure AD-toepassing en serviceprincipal nodig die toegang heeft tot bronnen. Schakel [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnementsbereik. Het laat ook zien `Directory (tenant) ID` `Application ID`hoe `Client Secret`je de , , en .
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken
 
-1. Maak uw cluster met behulp van de volgende code:
+1. Maak uw cluster met de volgende code:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -67,16 +67,16 @@ Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toe
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
-   |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+   |**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
    |---|---|---|
    | clusterName | *mykustocluster* | De gewenste naam van uw cluster.|
    | skuName | *Standard_D13_v2* | De SKU die wordt gebruikt voor uw cluster. |
-   | laag | *Standard* | De SKU-laag. |
-   | capacity | *Telwoord* | Het aantal exemplaren van het cluster. |
+   | laag | *Standaard* | De SKU-laag. |
+   | capacity | *Nummer* | Het aantal exemplaren van het cluster. |
    | resourceGroupName | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
 
     > [!NOTE]
-    > Het **maken van een cluster** is een langlopende bewerking. Daarom is het raadzaam om CreateOrUpdateAsync te gebruiken in plaats van CreateOrUpdate. 
+    > **Een cluster maken** is een langdurige bewerking, dus het is ten zeerste aan te raden om CreateOrUpdateAsync te gebruiken in plaats van CreateOrUpdate. 
 
 1. Voer de volgende opdracht uit om te controleren of het cluster is gemaakt:
 
@@ -88,7 +88,7 @@ Als het resultaat `ProvisioningState` met waarde `Succeeded` bevat, is het maken
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>De database in het Azure Data Explorer-cluster maken
 
-1. Maak uw data base met behulp van de volgende code:
+1. Maak uw database met de volgende code:
 
     ```csharp
     var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
@@ -102,13 +102,13 @@ Als het resultaat `ProvisioningState` met waarde `Succeeded` bevat, is het maken
         [!NOTE]
         If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
 
-   |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+   |**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
    |---|---|---|
    | clusterName | *mykustocluster* | De naam van het cluster waar de database wordt gemaakt.|
-   | databaseName | *mykustodatabase* | De naam van uw database.|
+   | Databasenaam | *mykustodatabase* | De naam van uw database.|
    | resourceGroupName | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
-   | softDeletePeriod | *3650:00:00:00* | Hoe lang gegevens worden opgeslagen om query's erop te kunnen uitvoeren. |
-   | hotCachePeriod | *3650:00:00:00* | Hoe lang gegevens worden opgeslagen in de cache. |
+   | softDeletePeriod softDeletePeriod softDeletePeriod softDelete | *3650:00:00:00* | Hoe lang gegevens worden opgeslagen om query's erop te kunnen uitvoeren. |
+   | hotCachePeriode | *3650:00:00:00* | Hoe lang gegevens worden opgeslagen in de cache. |
 
 2. Voer de volgende opdracht uit om de database te bekijken die u hebt gemaakt:
 
@@ -120,7 +120,7 @@ U hebt nu een cluster en een database.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-* Als u van plan bent om onze andere artikelen te volgen, moet u de resources die u hebt gemaakt, blijven gebruiken.
+* Als u van plan bent onze andere artikelen te volgen, behoudt u de resources die u hebt gemaakt.
 * Als u resources wilt opschonen, moet u het cluster verwijderen. Wanneer u een cluster verwijdert, worden alle databases hierin ook verwijderd. Gebruik de volgende opdracht om uw cluster te verwijderen:
 
     ```csharp
@@ -129,4 +129,4 @@ U hebt nu een cluster en een database.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)](net-standard-ingest-data.md)
+* [Gegevens opnemen met de Azure Data Explorer .NET Standard SDK (Preview)](net-standard-ingest-data.md)

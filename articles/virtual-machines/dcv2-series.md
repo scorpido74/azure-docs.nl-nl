@@ -1,53 +1,53 @@
 ---
-title: DC-serie-Azure Virtual Machines
-description: Specificaties voor de Vm's van de DC-serie.
+title: DC-serie - Azure Virtual Machines
+description: Specificaties voor de VM's uit de DC-serie.
 services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205922"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256926"
 ---
-# <a name="preview-dcv2-series"></a>Voor beeld: DCv2-serie
+# <a name="preview-dcsv2-series"></a>Preview: DCsv2-serie
 
 
-De DCv2-serie kan u helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de open bare Cloud. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G-processor met SGX-technologie. Met de Intel Turbo Boost-technologie kunnen deze machines tot wel 5.0 GHz gaan. Met DCv2-serie-instanties kunnen klanten veilige, op enclave gebaseerde toepassingen bouwen om hun code en gegevens te beschermen terwijl ze worden gebruikt.
+De DCsv2-serie kan helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen terwijl deze in de openbare cloud worden verwerkt. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G Processor met SGX-technologie. Met de Intel Turbo Boost Technology kunnen deze machines tot 5,0 GHz gaan. DCsv2-serie exemplaren stellen klanten in staat om veilige enclave-gebaseerde applicaties te bouwen om hun code en gegevens te beschermen terwijl deze in gebruik zijn.
 
-Voor beelden van use cases zijn onder meer het vertrouwelijk delen van gegevens, het opsporen van fraude, het witwassen van anti geld, het block Chain, het gebruik van analyse, de intelligentie en de vertrouwelijke machine learning.
+Voorbeelden hiervan zijn vertrouwelijke meerpartijengegevens, fraudedetectie, anti-witwaspraktijken, blockchain, analyse van vertrouwelijk gebruik, intelligentieanalyse en vertrouwelijke machine learning.
 
-Premium Storage: ondersteund *
+Premium opslag: ondersteund*
 
-Premium Storage caching: ondersteund *
+Premium Storage-cache: ondersteund*
 
-Livemigratie: niet ondersteund
+Live migratie: niet ondersteund
 
-Updates voor het behouden van geheugen: niet ondersteund
+Updates voor geheugenbehoud: niet ondersteund
 
-\* Met uitzonde ring van Standard_DC8_v2
+*Behalve Standard_DC8_v2
 
 
 
-| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (MBps) |
+| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Max NIC's / Verwachte netwerkbandbreedte (MBps) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
-- Vm's uit de DCv2-serie zijn [twee vm's van de tweede generatie](./linux/generation-2.md#creating-a-generation-2-vm) en ondersteunen alleen `Gen2` installatie kopieën.
-- Momenteel alleen beschikbaar in UK-zuid.
-- Vorige generatie van vertrouwelijk Compute-Vm's: [gelijkstroom reeks](sizes-previous-gen.md)
-- DCv2 Vm's maken met behulp van Azure Portal [virtuele machine maken-Portal](./linux/quick-create-portal.md)
+- Vm's uit de DCsv2-serie zijn `Gen2` generatie 2 [VM's](./linux/generation-2.md#creating-a-generation-2-vm) en ondersteunen alleen afbeeldingen.
+- Momenteel alleen beschikbaar in het Verenigd Koninkrijk Zuid en Canada Central.
+- Vorige generatie vertrouwelijke Compute VM's: [DC-serie](sizes-previous-gen.md)
+- Dcsv2 VM's maken met Azure Portal [Create VM - Portal](./linux/quick-create-portal.md)
 
 
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes"></a>Andere maten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -58,4 +58,4 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.

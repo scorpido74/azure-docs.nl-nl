@@ -1,6 +1,6 @@
 ---
-title: Informatie over Azure Security Center voor de IoT-beveiligings module voor IoT Edge | Microsoft Docs
-description: Meer informatie over de architectuur en mogelijkheden van Azure Security Center voor IoT Security module voor IoT Edge.
+title: Azure Security Center for IoT-beveiligingsmodule voor IoT Edge| Microsoft Documenten
+description: Inzicht in de architectuur en mogelijkheden van azure security center voor IoT-beveiligingsmodule voor IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,52 +16,52 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315896"
 ---
-# <a name="azure-iot-edge-security-module"></a>Beveiligings module Azure IoT Edge
+# <a name="azure-iot-edge-security-module"></a>Azure IoT Edge-beveiligingsmodule
 
-[Azure IOT Edge](https://docs.microsoft.com/azure/iot-edge/) biedt krachtige mogelijkheden voor het beheren en uitvoeren van zakelijke werk stromen aan de rand.
-Het belangrijkste deel dat IoT Edge speelt in IoT-omgevingen, maakt het bijzonder aantrekkelijk voor kwaad aardige actors.
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) biedt krachtige mogelijkheden voor het beheren en uitvoeren van zakelijke workflows aan de rand.
+Het belangrijkste onderdeel dat IoT Edge speelt in IoT-omgevingen maken het bijzonder aantrekkelijk voor kwaadwillende actoren.
 
-Azure Security Center voor IoT Security module biedt een uitgebreide beveiligings oplossing voor uw IoT Edge-apparaten.
-Azure Security Center voor IoT-module verzamelt, aggregeert en analyseert onbewerkte beveiligings gegevens van uw besturings systeem en container systeem in aanbevelingen voor beveiliging en waarschuwingen.
+Azure Security Center for IoT-beveiligingsmodule biedt een uitgebreide beveiligingsoplossing voor uw IoT Edge-apparaten.
+Azure Security Center for IoT-module verzamelt, verzamelt en analyseert ruwe beveiligingsgegevens van uw besturingssysteem en containersysteem tot bruikbare beveiligingsaanbevelingen en waarschuwingen.
 
-Net als Azure Security Center voor IOT-beveiligings agenten voor IoT-apparaten is de Azure Security Center voor IoT Edge module zeer aanpasbaar via de module twee.
-Zie [uw agent configureren](how-to-agent-configuration.md) voor meer informatie.
+Net als bij Azure Security Center voor IoT-beveiligingsagents voor IoT-apparaten is de Azure Security Center for IoT Edge-module zeer aanpasbaar via de moduletwee.
+Zie [Uw agent configureren](how-to-agent-configuration.md) voor meer informatie.
 
-Azure Security Center voor de IoT-beveiligings module voor IoT Edge biedt de volgende functies:
+Azure Security Center for IoT-beveiligingsmodule voor IoT Edge biedt de volgende functies:
 
-- Hiermee worden onbewerkte beveiligings gebeurtenissen van het onderliggende besturings systeem (Linux) en de IoT Edge container systemen verzameld.
+- Verzamelt onbewerkte beveiligingsgebeurtenissen van het onderliggende besturingssysteem (Linux) en de IoT Edge Container-systemen.
   
-  Zie [Azure Security Center voor IOT-agent configuratie](how-to-agent-configuration.md) voor meer informatie over beschik bare beveiligings gegevens verzamelaars.
+  Zie [azure security center voor iot-agentconfiguratie](how-to-agent-configuration.md) voor meer informatie over beschikbare beveiligingsgegevensverzamelaars.
 
-- Analyse van IoT Edge implementatie manifesten.
+- Analyse van IoT Edge-implementatiemanifesten.
 
-- Voegt onbewerkte beveiligings gebeurtenissen samen in berichten die via [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)worden verzonden.
+- Verzamelt onbewerkte beveiligingsgebeurtenissen in berichten die via [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)worden verzonden.
 
-- Verwijder de configuratie door middel van het gebruik van de beveiligings module dubbele.
+- Verwijder de configuratie door het gebruik van de beveiligingsmodule twin.
 
-  Zie [Configure an Azure Security Center voor IOT-agent](how-to-agent-configuration.md) voor meer informatie.
+  Zie [Een Azure Security Center configureren voor IoT-agent](how-to-agent-configuration.md) voor meer informatie.
 
-Azure Security Center voor de IoT-beveiligings module voor IoT Edge wordt uitgevoerd in een beschermde modus onder IoT Edge.
-De modus Privileged is vereist om de module toe te staan het besturings systeem en andere IoT Edge modules te bewaken.
+Azure Security Center for IoT-beveiligingsmodule voor IoT Edge wordt uitgevoerd in een bevoorrechte modus onder IoT Edge.
+De bevoorrechte modus is vereist om de module in staat te stellen het besturingssysteem en andere IoT Edge-modules te bewaken.
 
-## <a name="module-supported-platforms"></a>Door module ondersteunde platforms
+## <a name="module-supported-platforms"></a>Door de module ondersteunde platforms
 
-Azure Security Center voor de IoT-beveiligings module voor IoT Edge is momenteel alleen beschikbaar voor Linux. 
+Azure Security Center for IoT-beveiligingsmodule voor IoT Edge is momenteel alleen beschikbaar voor Linux. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de architectuur en mogelijkheden van Azure Security Center voor IoT Security module voor IoT Edge.
+In dit artikel leert u over de architectuur en mogelijkheden van azure security center voor IoT-beveiligingsmodule voor IoT Edge.
 
-Als u aan de slag wilt gaan met Azure Security Center voor IoT-implementatie, gebruikt u de volgende artikelen:
+Gebruik de volgende artikelen om verder te gaan met Azure Security Center for IoT-implementatie:
 
-- [Beveiligings module voor IOT Edge](how-to-deploy-edge.md) implementeren
-- Meer informatie over [het configureren van uw beveiligings module](how-to-agent-configuration.md)
-- Bekijk de Azure Security Center voor vereisten voor IoT- [Services](service-prerequisites.md)
-- Meer informatie over het [inschakelen van Azure Security Center voor IOT-service in uw IOT hub](quickstart-onboard-iot-hub.md)
-- Meer informatie over de service vindt u in de [Veelgestelde vragen over Azure Security Center voor IOT](resources-frequently-asked-questions.md)
+- Beveiligingsmodule [implementeren voor IoT Edge](how-to-deploy-edge.md)
+- Meer informatie over het [configureren van uw beveiligingsmodule](how-to-agent-configuration.md)
+- De vereisten van het Azure Security Center voor [IoT-service controleren](service-prerequisites.md)
+- Meer informatie over het [inschakelen van Azure Security Center voor IoT-service in uw IoT-hub](quickstart-onboard-iot-hub.md)
+- Meer informatie over de service vindt u van de veelgestelde vragen over [azure security center voor IoT](resources-frequently-asked-questions.md)

@@ -1,64 +1,66 @@
 ---
-title: Afhankelijkheid bijhouden van het Azure Application Insights | Microsoft Docs
-description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
+title: Afhankelijkheidstracking in Azure-toepassingsinzichten | Microsoft Documenten
+description: Controleer afhankelijkheidsoproepen vanuit uw on-premises of Microsoft Azure-webtoepassing met Application Insights.
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292129"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheidstracking in Azure-toepassingsinzichten 
 
-Een *afhankelijkheid* is een extern onderdeel dat wordt aangeroepen door uw toepassing. Het is doorgaans een service die wordt aangeroepen met behulp van HTTP, of een database of een bestandssysteem. [Application Insights](../../azure-monitor/app/app-insights-overview.md) meet de duur van afhankelijkheids aanroepen, of het nu niet lukt, samen met aanvullende informatie, zoals de naam van de afhankelijkheid, enzovoort. U kunt specifieke afhankelijkheids aanroepen onderzoeken en deze correleren aan aanvragen en uitzonde ringen.
+Een *afhankelijkheid* is een externe component die door uw toepassing wordt aangeroepen. Het is meestal een service genaamd met behulp van HTTP, of een database, of een bestandssysteem. [Application Insights](../../azure-monitor/app/app-insights-overview.md) meet de duur van afhankelijkheidsoproepen, ongeacht of deze zijn mislukt of niet, samen met aanvullende informatie zoals de naam van afhankelijkheid enzovoort. U specifieke afhankelijkheidsoproepen onderzoeken en deze correleren met aanvragen en uitzonderingen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch bijgehouden afhankelijkheden
 
-Application Insights Sdk's voor .NET en .NET core worden geleverd met `DependencyTrackingTelemetryModule` dat een telemetrie-module is die automatisch afhankelijkheden verzamelt. Deze afhankelijkheids verzameling wordt automatisch ingeschakeld voor [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) -en [ASP.net core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) -toepassingen, wanneer deze zijn geconfigureerd volgens de gekoppelde officiële docs. `DependencyTrackingTelemetryModule` wordt verzonden als [Dit](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-pakket en wordt automatisch gebracht wanneer een van de NuGet-pakketten `Microsoft.ApplicationInsights.Web` of `Microsoft.ApplicationInsights.AspNetCore`gebruikt.
+Application Insights SDKs voor .NET- `DependencyTrackingTelemetryModule` en .NET Core-schepen waarmee een telemetriemodule wordt verzonden die automatisch afhankelijkheden verzamelt. Deze afhankelijkheidsverzameling wordt automatisch ingeschakeld voor [ASP.NET-](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) en [ASP.NET Core-toepassingen,](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) wanneer deze zijn geconfigureerd volgens de gekoppelde officiële documenten. `DependencyTrackingTelemetryModule` wordt verzonden als [dit](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) NuGet-pakket en wordt automatisch gebracht `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore`bij het gebruik van een van de NuGet-pakketten of .
 
- `DependencyTrackingTelemetryModule` worden momenteel de volgende afhankelijkheden automatisch bijgehouden:
+ `DependencyTrackingTelemetryModule`houdt momenteel automatisch de volgende afhankelijkheden bij:
 
 |Afhankelijkheden |Details|
 |---------------|-------|
-|Http/https | Lokale of externe http/https-aanroepen |
-|WCF-aanroepen| Wordt alleen automatisch bijgehouden als op http gebaseerde bindingen worden gebruikt.|
-|SQL | Aanroepen met `SqlClient`. Zie [dit voor het](#advanced-sql-tracking-to-get-full-sql-query) vastleggen van SQL-query's.  |
-|[Azure Storage (BLOB, tabel, wachtrij)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Aanroepen van Azure Storage-client. |
-|[EventHub-client-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Versie 1.1.0 en hoger. |
-|[ServiceBus-client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Versie 3.0.0 en hoger. |
-|Azure Cosmos DB | Wordt alleen automatisch bijgehouden als HTTP/HTTPS wordt gebruikt. De TCP-modus wordt niet door Application Insights worden vastgelegd. |
+|Http/https | Lokale of externe http/https-oproepen |
+|WCF-gesprekken| Alleen automatisch bijgehouden als op Http gebaseerde bindingen worden gebruikt.|
+|SQL | Gesprekken gemaakt `SqlClient`met . Zie [dit](#advanced-sql-tracking-to-get-full-sql-query) voor het vastleggen van SQL-query.  |
+|[Azure-opslag (Blob, Tabel, Wachtrij)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Gesprekken met Azure Storage Client. |
+|[EventHub-client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Versie 1.1.0 en hoger. |
+|[ServiceBus-client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Versie 3.0.0 en hoger. |
+|Azure Cosmos DB | Alleen automatisch bijgehouden als HTTP/HTTPS wordt gebruikt. De TCP-modus wordt niet vastgelegd door Application Insights. |
 
-Als u een afhankelijkheid mist of een andere SDK gebruikt, moet u ervoor zorgen dat deze is opgenomen in de lijst met [automatisch verzamelde afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Als de afhankelijkheid niet automatisch wordt verzameld, kunt u deze nog steeds hand matig bijhouden met een aanroep voor het [bijhouden van afhankelijkheden](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+Als u een afhankelijkheid mist of als u een andere SDK gebruikt, moet u ervoor zorgen dat deze in de lijst met [automatisch verzamelde afhankelijkheden staat.](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) Als de afhankelijkheid niet automatisch wordt verzameld, u deze nog steeds handmatig bijhouden met een [oproep voor spoorafhankelijkheid](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatische tracking van afhankelijkheden instellen in console-apps
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatische afhankelijkheidstracking instellen in Console-apps
 
-Als u de afhankelijkheden van .NET/.NET core-console-apps automatisch wilt bijhouden, installeert u het Nuget-pakket `Microsoft.ApplicationInsights.DependencyCollector`en initialiseert u `DependencyTrackingTelemetryModule` als volgt:
+Als u afhankelijkheden van .NET-console-apps automatisch `Microsoft.ApplicationInsights.DependencyCollector`wilt bijhouden, installeert u het Nuget-pakket en initialiseert u `DependencyTrackingTelemetryModule` het volgende:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-### <a name="how-automatic-dependency-monitoring-works"></a>Hoe werkt automatische afhankelijkheid controleren?
+Voor .NET Core-console-apps telemetrieconfiguratie.active is verouderd. Raadpleeg de richtlijnen in de documentatie van de [werknemersservice](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) en de [ASP.NET Core-documentatie voor monitoring](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
+
+### <a name="how-automatic-dependency-monitoring-works"></a>Hoe werkt automatische afhankelijkheidsbewaking?
 
 Afhankelijkheden worden automatisch verzameld met behulp van een van de volgende technieken:
 
-* Het gebruik van byte code instrumentatie rondom Select-methoden. (InstrumentationEngine van StatusMonitor of extensie van Azure-web-app)
-* Call backs van Event source
-* DiagnosticSource-retour aanroepen (in de nieuwste Sdk's voor .NET/.NET core)
+* Met behulp van byte code instrumentatie rond geselecteerde methoden. (InstrumentationEngine, van StatusMonitor of Azure Web App Extension)
+* EventSource-terugroepen
+* DiagnosticSource callbacks (in de nieuwste .NET/.NET Core SDKs)
 
-## <a name="manually-tracking-dependencies"></a>Afhankelijkheden hand matig bijhouden
+## <a name="manually-tracking-dependencies"></a>Afhankelijkheden handmatig bijhouden
 
-Hier volgen enkele voor beelden van afhankelijkheden die niet automatisch worden verzameld, en waarvoor hand matige tracering is vereist.
+De volgende zijn enkele voorbeelden van afhankelijkheden, die niet automatisch worden verzameld, en vereisen dus handmatige tracking.
 
-* Azure Cosmos DB wordt alleen automatisch bijgehouden als [http/https](../../cosmos-db/performance-tips.md#networking) wordt gebruikt. De TCP-modus wordt niet door Application Insights worden vastgelegd.
+* Azure Cosmos DB wordt alleen automatisch bijgehouden als [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) wordt gebruikt. De TCP-modus wordt niet vastgelegd door Application Insights.
 * Redis
 
-Voor de afhankelijkheden die niet automatisch door SDK worden verzameld, kunt u ze hand matig bijhouden met behulp van de [TrackDependency-API](api-custom-events-metrics.md#trackdependency) die wordt gebruikt door de standaard modules voor automatisch verzamelen.
+Voor afhankelijkheden die niet automatisch door SDK worden verzameld, u ze handmatig volgen met behulp van de [TrackDependency API](api-custom-events-metrics.md#trackdependency) die wordt gebruikt door de standaard modules voor automatische verzameling.
 
-Als u uw code met een assembly die u niet zelf schrijft maken, kunt u bijvoorbeeld alle aanroepen naar deze, om erachter te komen wat de bijdrage van voor uw reactietijden wordt tijd. Als u wilt dat deze gegevens worden weer gegeven in de afhankelijkheids grafieken in Application Insights, verzendt u deze met behulp van `TrackDependency`.
+Als u bijvoorbeeld uw code bouwt met een vergadering die u zelf niet hebt geschreven, u alle oproepen naar deze code timen om erachter te komen welke bijdrage het levert aan uw reactietijden. Als u deze gegevens wilt weergeven in de afhankelijkheidsgrafieken in Application Insights, verzendt u deze met behulp van `TrackDependency`.
 
 ```csharp
 
@@ -76,88 +78,88 @@ Als u uw code met een assembly die u niet zelf schrijft maken, kunt u bijvoorbee
     }
 ```
 
-`TelemetryClient` biedt ook uitbreidings methoden `StartOperation` en `StopOperation` die kunnen worden gebruikt voor het hand matig bijhouden van afhankelijkheden, zoals [hier](custom-operations-tracking.md#outgoing-dependencies-tracking) wordt weer gegeven
+U kunt `TelemetryClient` ook `StartOperation` uitbreidingsmethoden `StopOperation` bieden en die kunnen worden gebruikt om afhankelijkheden handmatig bij te houden, zoals [hier](custom-operations-tracking.md#outgoing-dependencies-tracking) wordt weergegeven
 
-Als u de standaard tracerings module voor afhankelijkheden wilt uitschakelen, verwijdert u de verwijzing naar DependencyTrackingTelemetryModule in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) voor ASP.NET-toepassingen. Volg [de instructies in](asp-net-core.md#configuring-or-removing-default-telemetrymodules)voor ASP.net core toepassingen.
+Als u de standaardmodule voor het bijhouden van afhankelijkheid wilt uitschakelen, verwijdert u de verwijzing naar DependencyTrackingTelemetryModule in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) voor ASP.NET toepassingen. Voor ASP.NET Core-toepassingen, volg [hier](asp-net-core.md#configuring-or-removing-default-telemetrymodules)de instructies .
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>AJAX-aanroepen bijhouden vanaf webpagina's
+## <a name="tracking-ajax-calls-from-web-pages"></a>Ajax-oproepen volgen vanaf webpagina's
 
-Voor webpagina's worden Application Insights java script SDK automatisch AJAX-aanroepen verzameld als afhankelijkheden.
+Voor webpagina's verzamelt Application Insights JavaScript SDK automatisch AJAX-aanroepen als afhankelijkheden.
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Geavanceerde SQL-tracking voor het verkrijgen van een volledige SQL-query
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Geavanceerde SQL-tracking om volledige SQL-query te krijgen
 
-Voor SQL-aanroepen wordt de naam van de server en data base altijd verzameld en opgeslagen als de naam van de verzamelde `DependencyTelemetry`. Er is een extra veld met de naam ' gegevens ', dat de volledige SQL-query tekst kan bevatten.
+Voor SQL-aanroepen wordt de naam van de server en `DependencyTelemetry`database altijd verzameld en opgeslagen als naam van de verzamelde . Er is een extra veld genaamd 'data', dat de volledige SQL-querytekst kan bevatten.
 
-Voor ASP.NET Core toepassingen is er geen extra stap vereist voor het ophalen van de volledige SQL-query.
+Voor ASP.NET Core-toepassingen is er geen extra stap nodig om de volledige SQL Query te krijgen.
 
-Voor ASP.NET-toepassingen wordt volledige SQL-query verzameld met behulp van byte code Instrumentation, waarvoor instrumentatie-engine vereist is. Aanvullende,, zoals hieronder beschreven, specifieke platformspecifieke stappen zijn vereist.
+Voor ASP.NET toepassingen wordt volledige SQL-query verzameld met behulp van bytecode-instrumentatie, waarvoor instrumentatie-engine vereist is. Aanvullende platformspecifieke stappen, zoals hieronder beschreven, zijn vereist.
 
-| Platform | Er zijn een of meer stappen nodig om een volledige SQL-query te verkrijgen |
+| Platform | Stap(en) nodig om volledige SQL-query te krijgen |
 | --- | --- |
-| Azure Web App |Open in het configuratie scherm van uw web-app [de blade Application Insights](../../azure-monitor/app/azure-web-apps.md) en Schakel SQL-opdrachten in onder .net |
-| IIS-server (Azure VM, on-premises, enzovoort) | Gebruik de Status Monitor Power shell-module om [de instrumentatie-engine te installeren](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) en IIS opnieuw te starten. |
-| Azure Cloud Service | [Opstart taak toevoegen om StatusMonitor te installeren](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uw app moet worden uitgevoerd tot ApplicationInsights SDK tijdens het bouwen door NuGet-pakketten te installeren voor [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) -of [ASP.net core-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
+| Azure Web App |Open in het configuratiescherm van uw web-app [het Blade Application Insights](../../azure-monitor/app/azure-web-apps.md) en schakel SQL-opdrachten in onder .NET |
+| IIS Server (Azure VM, on-prem, enzovoort.) | Gebruik de PowerShell-module statusmonitor om [de instrumentatieengine](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) te installeren en IIS opnieuw te starten. |
+| Azure Cloud Service | Opstarttaak toevoegen [om StatusMonitor te installeren](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uw app moet op tijd worden aangesloten op ApplicationInsights SDK door NuGet-pakketten te installeren voor [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) of [ASP.NET Core-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | IIS Express | Niet ondersteund
 
-In de bovenstaande gevallen wordt de juiste methode voor het valideren van de instrumentatie-engine correct geïnstalleerd door te controleren of de SDK-versie van verzamelde `DependencyTelemetry` ' rddp ' is. ' rdddsd ' of ' rddf ' geeft aan dat afhankelijkheden worden verzameld via DiagnosticSource of event source-retour aanroepen, en daarom wordt volledige SQL-query niet vastgelegd.
+In de bovenstaande gevallen is de juiste manier om te valideren dat instrumentatie-engine correct `DependencyTelemetry` is geïnstalleerd door te valideren dat de SDK-versie van de verzamelde is 'rddp'. 'rdddsd' of 'rddf' geeft aan dat afhankelijkheden worden verzameld via DiagnosticSource of EventSource callbacks, en dus volledige SQL-query wordt niet vastgelegd.
 
-## <a name="where-to-find-dependency-data"></a>Waar vind ik afhankelijkheidsgegevens
+## <a name="where-to-find-dependency-data"></a>Waar vindt u afhankelijkheidsgegevens
 
-* [Toepassings toewijzing](app-map.md) visualeert afhankelijkheden tussen uw app en naburige onderdelen.
-* In [transactie diagnostiek](transaction-diagnostics.md) worden Unified, gecorreleerde Server gegevens weer gegeven.
-* Op het [tabblad browsers](javascript.md) worden Ajax-aanroepen weer gegeven in de browser van uw gebruikers.
-* Klik van trage of mislukte aanvragen om de afhankelijkheids aanroepen te controleren.
-* [Analyses](#logs-analytics) kunnen worden gebruikt voor het opvragen van afhankelijkheids gegevens.
+* [Toepassingskaart](app-map.md) visualiseert afhankelijkheden tussen uw app en aangrenzende componenten.
+* [Transaction Diagnostics](transaction-diagnostics.md) toont uniforme, gecorreleerde servergegevens.
+* [Tabblad Browsers](javascript.md) toont AJAX-oproepen vanuit de browsers van uw gebruikers.
+* Klik door van langzame of mislukte aanvragen om hun afhankelijkheidsoproepen te controleren.
+* [Analytics](#logs-analytics) kan worden gebruikt om afhankelijkheidsgegevens op te vragen.
 
-## <a name="diagnosis"></a>Langzame aanvragen diagnosticeren
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnose van trage aanvragen
 
-Elke aanvraag gebeurtenis is gekoppeld aan de afhankelijkheids aanroepen, uitzonde ringen en andere gebeurtenissen die worden bijgehouden terwijl uw app de aanvraag verwerkt. Als sommige aanvragen niet goed worden uitgevoerd, kunt u nagaan of het gaat om een trage reactie van een afhankelijkheid.
+Elke aanvraaggebeurtenis is gekoppeld aan de afhankelijkheidsoproepen, uitzonderingen en andere gebeurtenissen die worden bijgehouden terwijl uw app de aanvraag verwerkt. Dus als sommige aanvragen het slecht doen, u erachter komen of dit komt door trage reacties van een afhankelijkheid.
 
 ### <a name="tracing-from-requests-to-dependencies"></a>Tracering van aanvragen naar afhankelijkheden
 
-Open het tabblad **prestaties** en navigeer naar het tabblad **afhankelijkheden** boven naast bewerkingen.
+Open het tabblad **Prestaties** en navigeer naar het tabblad **Afhankelijkheden** bovenaan naast bewerkingen.
 
-Klik onder algemeen op een **afhankelijkheids naam** . Nadat u een afhankelijkheid hebt geselecteerd, wordt aan de rechter kant een grafiek weer gegeven met de verdeling van de duur van de afhankelijkheid.
+Klik op een **afhankelijkheidsnaam** onder overall. Nadat u een afhankelijkheid hebt geselecteerd, wordt rechts een grafiek weergegeven van de verdeling van de duur van die afhankelijkheid.
 
-![Klik op het tabblad prestaties op het tabblad afhankelijkheid aan de bovenkant en vervolgens op de naam van de afhankelijkheid in de grafiek](./media/asp-net-dependencies/2-perf-dependencies.png)
+![Klik op het tabblad Prestaties op het tabblad Afhankelijkheid bovenaan en vervolgens op een afhankelijkheidsnaam in de grafiek](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Klik op de knop met blauwe **steek proeven** aan de rechter kant en klik vervolgens op een voor beeld om de end-to-end-transactie details te bekijken.
+Klik op de blauwe **knop Voorbeelden** rechtsonder en vervolgens op een voorbeeld om de end-to-end transactiedetails te bekijken.
 
-![Klik op een voor beeld om de details van de end-to-end-trans actie te bekijken](./media/asp-net-dependencies/3-end-to-end.png)
+![Klik op een voorbeeld om de end-to-end transactiegegevens te bekijken](./media/asp-net-dependencies/3-end-to-end.png)
 
-### <a name="profile-your-live-site"></a>Profileren van uw live site
+### <a name="profile-your-live-site"></a>Profiel van uw live site
 
-Er is geen idee waar de tijd komt? De [Application Insights Profiler](../../azure-monitor/app/profiler.md) traceert http-aanroepen naar uw live-site en toont u de functies in uw code die de langste tijd hebben geduurd.
+Geen idee waar de tijd gaat? De [Application Insights profiler](../../azure-monitor/app/profiler.md) traceert HTTP-oproepen naar uw live site en toont u de functies in uw code die het langst heeft geduurd.
 
 ## <a name="failed-requests"></a>Mislukte aanvragen
 
-Mislukte aanvragen kunnen ook zijn gekoppeld aan de mislukte aanroepen van afhankelijkheden.
+Mislukte aanvragen kunnen ook worden gekoppeld aan mislukte oproepen naar afhankelijkheden.
 
-Ga naar het tabblad **fouten** aan de linkerkant en klik vervolgens op het tabblad **afhankelijkheden** bovenaan.
+We kunnen naar het tabblad **Fouten** aan de linkerkant gaan en vervolgens bovenaan op het tabblad **afhankelijkheden** klikken.
 
-![Klik op de grafiek van mislukte aanvragen](./media/asp-net-dependencies/4-fail.png)
+![Klik op het diagram met mislukte aanvragen](./media/asp-net-dependencies/4-fail.png)
 
-Hier ziet u het aantal mislukte afhankelijkheden. Als u meer informatie wilt over een mislukt voorval, klikt u op de naam van een afhankelijkheid in de onderste tabel. U kunt op de knop met blauwe **afhankelijkheden** rechtsonder aan de rechter kant klikken om de end-to-end-transactie gegevens op te halen.
+Hier u het aantal mislukte afhankelijkheidzien. Voor meer informatie over een mislukte gebeurtenis waarin u probeert te klikken op een afhankelijkheidsnaam in de onderste tabel. U rechtsonder op de blauwe **knop Afhankelijkheden** klikken om de end-to-end transactiegegevens te krijgen.
 
 ## <a name="logs-analytics"></a>Logboeken (Analytics)
 
-U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hier volgen enkele voorbeelden.
+U afhankelijkheden bijhouden in de [Kusto-querytaal.](/azure/kusto/query/) Hier volgen enkele voorbeelden.
 
-* Alle mislukte afhankelijkheidsaanroepen zoeken:
+* Zoek mislukte afhankelijkheidsoproepen:
 
 ``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
-* AJAX-aanroepen zoeken:
+* Zoek AJAX-oproepen:
 
 ``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
-* Afhankelijkheidsaanroepen die zijn gekoppeld aan aanvragen zoeken:
+* Zoek afhankelijkheidsoproepen die zijn gekoppeld aan aanvragen:
 
 ``` Kusto
 
@@ -168,7 +170,7 @@ U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hi
 ```
 
 
-* Zoeken naar AJAX-aanroepen die zijn gekoppeld aan paginaweergaven:
+* Zoek AJAX-oproepen in verband met paginaweergaven:
 
 ``` Kusto 
 
@@ -180,15 +182,15 @@ U kunt afhankelijkheden volgen in de [Kusto-query taal](/azure/kusto/query/). Hi
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hoe werkt het automatisch rapport van een afhankelijkheids verzamelaar bij het aanroepen van afhankelijkheden niet?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hoe rapporteert automatische afhankelijkheidsverzamelaar mislukte oproepen naar afhankelijkheden?*
 
-* Voor mislukte afhankelijkheids aanroepen is het veld geslaagd ingesteld op ONWAAR. `DependencyTrackingTelemetryModule` rapporteert `ExceptionTelemetry`niet. Het volledige gegevens model voor afhankelijkheid wordt [hier](data-model-dependency-telemetry.md)beschreven.
+* Mislukte afhankelijkheidsoproepen hebben het veld 'succes' ingesteld op False. `DependencyTrackingTelemetryModule`meldt `ExceptionTelemetry`niet . Het volledige gegevensmodel voor afhankelijkheid wordt [hier](data-model-dependency-telemetry.md)beschreven.
 
-## <a name="open-source-sdk"></a>Open-Source-SDK
-Net als elke Application Insights SDK is de module afhankelijkheids verzameling ook open-source. Lees en bijdragen aan de code of Meld problemen bij [de officiële github-opslag plaats](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+## <a name="open-source-sdk"></a>Open-source SDK
+Zoals elke Application Insights SDK is ook de afhankelijkheidsverzamelingsmodule open-source. Lees en draag bij aan de code, of rapporteer problemen op [de officiële GitHub repo.](https://github.com/Microsoft/ApplicationInsights-dotnet-server)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md)
-* [Pagina gegevens van gebruiker &](../../azure-monitor/app/javascript.md)
+* [Gebruikers& paginagegevens](../../azure-monitor/app/javascript.md)
 * [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
