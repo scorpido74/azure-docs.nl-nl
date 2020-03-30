@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435712"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>MapReduce gebruiken in Apache Hadoop in HDInsight
@@ -21,13 +21,13 @@ Meer informatie over het uitvoeren van MapReduce-taken op HDInsight-clusters.
 
 ## <a name="example-data"></a>Voorbeeldgegevens
 
-HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen in de map `/example/data` en `/HdiSamples`. Deze directory's bevinden zich in de standaard opslag voor uw cluster. In dit document gebruiken we het `/example/data/gutenberg/davinci.txt`-bestand. Dit bestand bevat de notebooks van Leonardo da Vinci.
+HDInsight biedt verschillende voorbeeldgegevenssets, die `/example/data` `/HdiSamples` zijn opgeslagen in de en directory. Deze mappen bevinden zich in de standaardopslag voor uw cluster. In dit document gebruiken `/example/data/gutenberg/davinci.txt` we het bestand. Dit bestand bevat de notitieboekjes van Leonardo da Vinci.
 
-## <a name="example-mapreduce"></a>Voor beeld MapReduce
+## <a name="example-mapreduce"></a>Voorbeeld mapReduce
 
-Het HDInsight-cluster bevat een voor beeld van een toepassing met het aantal woorden MapReduce. Dit voor beeld bevindt zich op `/example/jars/hadoop-mapreduce-examples.jar` in de standaard opslag voor uw cluster.
+Een voorbeeld MapReduce word count-toepassing is opgenomen in uw HDInsight-cluster. Dit voorbeeld bevindt zich op `/example/jars/hadoop-mapreduce-examples.jar` de standaardopslag voor uw cluster.
 
-De volgende Java-code is de bron van de MapReduce-toepassing in het `hadoop-mapreduce-examples.jar`-bestand:
+De volgende Java-code is de bron van `hadoop-mapreduce-examples.jar` de mapreduce-toepassing in het bestand:
 
 ```java
 package org.apache.hadoop.examples;
@@ -101,22 +101,22 @@ public class WordCount {
 }
 ```
 
-Zie [Java MapReduce-toepassingen voor HDInsight ontwikkelen](apache-hadoop-develop-deploy-java-mapreduce-linux.md)voor instructies voor het schrijven van uw eigen MapReduce-toepassingen.
+Zie [Java MapReduce-toepassingen voor HDInsight ontwikkelen voor](apache-hadoop-develop-deploy-java-mapreduce-linux.md)instructies om uw eigen MapReduce-toepassingen te schrijven.
 
-## <a name="run-the-mapreduce"></a>De MapReduce uitvoeren
+## <a name="run-the-mapreduce"></a>De map reduceeren uitvoeren
 
-HDInsight kan HiveQL-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te bepalen welke methode het meest geschikt is voor u en volg de koppeling voor een overzicht.
+HDInsight kan HiveQL-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te beslissen welke methode geschikt is voor u en volg vervolgens de koppeling voor een walkthrough.
 
-| **Gebruik dit**... | **...om hiervoor** |  ...from dit **clientbesturingssysteem** |
+| **Gebruik deze**... | **... om dit te doen** |  ... van dit **besturingssysteem** van de client |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |De Hadoop-opdracht via **SSH** gebruiken |Linux, UNIX, Mac OS X of Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |De taak extern verzenden met behulp van **rest** |Linux, UNIX, Mac OS X of Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |De taak extern verzenden met behulp van **Windows Power shell**  |Windows |
+| [Ssh](apache-hadoop-use-mapreduce-ssh.md) |Gebruik de opdracht Hadoop via **SSH** |Linux, Unix, Mac OS X of Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |Stuur de taak op afstand in met **REST** |Linux, Unix, Mac OS X of Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |De taak op afstand verzenden met **Windows PowerShell**  |Windows |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende documenten voor meer informatie over het werken met gegevens in HDInsight:
+Zie de volgende documenten voor meer informatie over het werken met gegevens in HDInsight:
 
-* [Java MapReduce-Program ma's ontwikkelen voor HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Java MapOntwikkelenVerlaag programma's voor HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
 * [Apache Hive gebruiken met HDInsight](./hdinsight-use-hive.md)

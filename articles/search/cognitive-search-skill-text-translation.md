@@ -1,7 +1,7 @@
 ---
-title: Tekst vertaling cognitieve vaardigheid
+title: Tekst Vertaling cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Evalueert tekst en retourneert voor elke record tekst die wordt vertaald naar de opgegeven doel taal in een AI-verrijkings pijplijn in azure Cognitive Search.
+description: Evalueert tekst en retourneert voor elke record tekst die is vertaald naar de opgegeven doeltaal in een AI-verrijkingspijplijn in Azure Cognitive Search.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
@@ -9,58 +9,58 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460767"
 ---
-#   <a name="text-translation-cognitive-skill"></a>Tekst vertaling cognitieve vaardigheid
+#   <a name="text-translation-cognitive-skill"></a>Tekst Vertaling cognitieve vaardigheid
 
-De **tekst Vertaal** vaardigheid evalueert tekst en retourneert voor elke record de tekst die wordt vertaald naar de opgegeven doel taal. Deze vaardigheid maakt gebruik van de [Translator text-API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) beschikbaar in cognitive Services.
+De **vaardigheid Tekstvertaling** evalueert tekst en retourneert voor elke record de vertaalde tekst naar de opgegeven doeltaal. Deze vaardigheid maakt gebruik van de [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) beschikbaar in Cognitive Services.
 
-Deze mogelijkheid is handig als u verwacht dat uw documenten niet allemaal in één taal zijn opgenomen. in dat geval kunt u de tekst voor het indexeren in één taal normaliseren voordat u de zoek opdracht vertaalt.  Het is ook handig voor lokalisatie van gebruiks voorbeelden, waar u mogelijk kopieën wilt hebben van dezelfde tekst die beschikbaar is in meerdere talen.
+Deze mogelijkheid is handig als u verwacht dat uw documenten mogelijk niet allemaal in één taal zijn, in welk geval u de tekst normaliseren tot één taal voordat u indexeert voor zoekopdrachten door deze te vertalen.  Het is ook handig voor het lokaliseren van use cases, waarbij u mogelijk kopieën van dezelfde tekst beschikbaar wilt hebben in meerdere talen.
 
-De [Translator text-API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) is een niet-regionale cognitieve service, wat betekent dat uw gegevens niet worden gegarandeerd in dezelfde regio als uw Azure Cognitive Search of Cognitive Services resource zijn gekoppeld.
+De [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) is een niet-regionale cognitieve service, wat betekent dat uw gegevens niet gegarandeerd in dezelfde regio blijven als uw Azure Cognitive Search of gekoppelde Cognitive Services-bron.
 
 > [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
+> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. Text. TranslationSkill
+Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de tekst Vertaal vaardigheid verzendt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de tekstvertaalvaardigheid stuurt, u overwegen de [vaardigheid Text Split te](cognitive-search-skill-textsplit.md)gebruiken.
 
-## <a name="skill-parameters"></a>Vaardigheids parameters
+## <a name="skill-parameters"></a>Vaardigheidsparameters
 
 Parameters zijn hoofdlettergevoelig.
 
 | Invoer                | Beschrijving |
 |---------------------|-------------|
-| defaultToLanguageCode | Lang De taal code voor het vertalen van documenten in voor documenten die de naar-taal niet expliciet opgeven. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
-| defaultFromLanguageCode | Beschrijving De taal code voor het vertalen van documenten uit voor documenten die niet expliciet zijn opgegeven in de taal van.  Als de defaultFromLanguageCode niet is opgegeven, wordt de automatische taal detectie die is opgegeven door de Translator Text-API, gebruikt om de van-taal te bepalen. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
-| suggestedFrom | Beschrijving De taal code voor het vertalen van documenten vanaf wanneer noch de fromLanguageCode-invoer noch de defaultFromLanguageCode-para meter worden opgegeven, en de automatische taal detectie is mislukt.  Als de taal suggestedFrom niet is opgegeven, wordt Engels (en) gebruikt als de suggestedFrom taal. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
+| defaultToLanguageCode | (Vereist) De taalcode om documenten in te vertalen voor documenten die de taal niet expliciet specificeren. <br/> Zie [Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
+| defaultFromLanguageCode | (Optioneel) De taalcode om documenten te vertalen van documenten die niet expliciet de taal opgeven.  Als de standaardFromLanguageCode niet is opgegeven, wordt de automatische taaldetectie van de Translator Text API gebruikt om de taal te bepalen. <br/> Zie [Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
+| voorgesteldUit | (Optioneel) De taalcode om documenten te vertalen van wanneer noch de invoer van FromLanguageCode, noch de standaardparameterFromLanguageCode zijn opgegeven en de automatische taaldetectie mislukt.  Als de voorgesteldeTaal niet is opgegeven, wordt Engels (nl) gebruikt als de voorgesteldeTaal. <br/> Zie [Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
 
-## <a name="skill-inputs"></a>Vaardigheids invoer
+## <a name="skill-inputs"></a>Vaardigheidsingangen
 
-| Invoer naam     | Beschrijving |
+| Invoernaam     | Beschrijving |
 |--------------------|-------------|
-| tekst | De tekst die moet worden vertaald.|
-| toLanguageCode    | Een teken reeks die de taal aangeeft waarnaar de tekst moet worden vertaald. Als deze invoer niet is opgegeven, wordt de defaultToLanguageCode gebruikt om de tekst te vertalen. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) weer geven|
-| fromLanguageCode  | Een teken reeks die de huidige taal van de tekst aangeeft. Als deze para meter niet is opgegeven, wordt de defaultFromLanguageCode (of automatische taal detectie als de defaultFromLanguageCode niet is opgegeven) gebruikt voor het vertalen van de tekst. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) weer geven|
+| tekst | De te vertalen tekst.|
+| toLanguageCode    | Een tekenreeks die aangeeft naar welke taal de tekst moet worden vertaald. Als deze invoer niet is opgegeven, wordt de standaardToLanguageCode gebruikt om de tekst te vertalen. <br/>Zie [Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
+| fromLanguageCode  | Een tekenreeks die de huidige taal van de tekst aangeeft. Als deze parameter niet is opgegeven, wordt de standaardTaalcode (of automatische taaldetectie als de standaardFromLanguageCode niet wordt opgegeven) gebruikt om de tekst te vertalen. <br/>Zie [Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
+## <a name="skill-outputs"></a>Vaardigheidsuitvoer
 
-| Uitvoer naam    | Beschrijving |
+| Uitvoernaam    | Beschrijving |
 |--------------------|-------------|
-| translatedText | Het teken reeks resultaat van de tekst omzetting van de translatedFromLanguageCode naar de translatedToLanguageCode.|
-| translatedToLanguageCode  | Een teken reeks die de taal code aangeeft waarnaar de tekst is vertaald. Dit is handig als u vertaalt naar meerdere talen en u wilt bijhouden welke tekst de taal is.|
-| translatedFromLanguageCode    | Een teken reeks die de taal code aangeeft waarin de tekst is vertaald. Het is handig als u hebt gekozen voor de optie automatische taal detectie, omdat deze uitvoer het resultaat van die detectie oplevert.|
+| translatedText | Het tekenreeksresultaat van de tekstvertaling van de vertaaldeFromLanguageCode naar de vertaaldeToLanguageCode.|
+| translatedToLanguageCode  | Een tekenreeks die de taalcode aangeeft waarnaar de tekst is vertaald. Handig als u naar meerdere talen vertaalt en wilt kunnen bijhouden welke tekst welke taal is.|
+| vertaaldFromLanguageCode    | Een tekenreeks die de taalcode aangeeft waaruit de tekst is vertaald. Handig als u hebt gekozen voor de automatische taaldetectieoptie, omdat deze uitvoer u het resultaat van die detectie geeft.|
 
-##  <a name="sample-definition"></a>Voorbeeld definitie
+##  <a name="sample-definition"></a>Voorbeelddefinitie
 
 ```json
  {
@@ -91,7 +91,7 @@ Parameters zijn hoofdlettergevoelig.
   }
 ```
 
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -144,11 +144,11 @@ Parameters zijn hoofdlettergevoelig.
 
 
 ## <a name="errors-and-warnings"></a>Fouten en waarschuwingen
-Als u een niet-ondersteunde taal code opgeeft voor de van-of-naar-taal, wordt er een fout gegenereerd en wordt tekst niet vertaald.
-Als uw tekst leeg is, wordt er een waarschuwing gegenereerd.
+Als u een niet-ondersteunde taalcode opgeeft voor de van of de taal, wordt er een fout gegenereerd en wordt tekst niet vertaald.
+Als uw tekst leeg is, wordt er een waarschuwing weergegeven.
 Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens vertaald en wordt er een waarschuwing gegeven.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
++ [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)

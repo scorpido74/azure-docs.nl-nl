@@ -1,7 +1,7 @@
 ---
-title: Overzicht van Azure-toepassings beveiligings groepen
+title: Overzicht van azure-toepassingsbeveiligingsgroepen
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het gebruik van toepassings beveiligings groepen.
+description: Meer informatie over het gebruik van toepassingsbeveiligingsgroepen.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,10 +14,10 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274708"
 ---
 # <a name="application-security-groups"></a>Toepassingsbeveiligingsgroepen
@@ -32,7 +32,7 @@ In de vorige afbeelding zijn *NIC1* en *NIC2* leden van de toepassingsbeveiligin
 
 Deze regel is vereist om verkeer van internet naar de webservers te laten lopen. Binnenkomend verkeer van internet wordt geweigerd door de standaardbeveiligingsregel **DenyAllInbound**. Daarom is er geen extra regel nodig voor de toepassingsbeveiligingsgroepen *AsgLogic* of *AsgDb*.
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Toestaan |
 
@@ -40,7 +40,7 @@ Deze regel is vereist om verkeer van internet naar de webservers te laten lopen.
 
 De standaardbeveiligingsregel **AllowVNetInBound** staat communicatie toe tussen resources in hetzelfde virtuele netwerk. Daarom is deze regel vereist voor het weigeren van verkeer dat van een willekeurige resource afkomstig is.
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Alle | Weigeren |
 
@@ -48,7 +48,7 @@ De standaardbeveiligingsregel **AllowVNetInBound** staat communicatie toe tussen
 
 Deze regel staat verkeer toe van de toepassingsbeveiligingsgroep *AsgLogic* naar de toepassingsbeveiligingsgroep *AsgDb*. De prioriteit voor deze regel is hoger dan de prioriteit voor de regel *Deny-Database-All*. Als gevolg hiervan wordt deze regel verwerkt vóór de regel *Deny-Database-All*, zodat verkeer van de toepassingsbeveiligingsgroep *AsgLogic* wordt toegestaan, terwijl al het andere verkeer wordt geblokkeerd.
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Toestaan |
 

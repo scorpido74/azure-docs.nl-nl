@@ -1,6 +1,6 @@
 ---
-title: Gegevens eenvoudig kopiëren met de wizard kopiëren-Azure
-description: Meer informatie over het gebruik van de wizard voor het Data Factory kopiëren om gegevens te kopiëren van ondersteunde gegevens bronnen naar Sinks.
+title: Gegevens eenvoudig kopiëren met Wizard Kopiëren - Azure
+description: Meer informatie over het gebruik van de wizard Gegevensfabriekkopiëren om gegevens uit ondersteunde gegevensbronnen te kopiëren naar putten.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,83 +14,83 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927058"
 ---
-# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Gegevens eenvoudig kopiëren of verplaatsen met Azure Data Factory wizard kopiëren
+# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Gegevens eenvoudig kopiëren of verplaatsen met de wizard Kopiëren van Azure Data Factory
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md). 
 
 
-De wizard kopiëren Azure Data Factory is het proces van het opnemen van gegevens, meestal een eerste stap in een scenario met een end-to-end gegevens integratie. Wanneer u de wizard kopiëren van Azure Data Factoryt, hoeft u geen JSON-definities te begrijpen voor gekoppelde services, gegevens sets en pijp lijnen. Nadat u alle stappen in de wizard hebt voltooid, maakt de wizard echter automatisch een pijp lijn om gegevens van de geselecteerde gegevens bron naar de geselecteerde bestemming te kopiëren. Daarnaast helpt de wizard kopiëren u bij het valideren van de gegevens die worden opgenomen op het moment van ontwerpen, waardoor veel van uw tijd wordt bespaard, vooral wanneer u gegevens voor de eerste keer opneemt uit de gegevens bron. Als u de wizard kopiëren wilt starten, klikt u op de tegel **gegevens kopiëren** op de start pagina van uw Data Factory.
+De wizard Azure Data Factory Copy is bedoeld om het proces van het innemen van gegevens te vergemakkelijken, wat meestal een eerste stap is in een end-to-end scenario voor gegevensintegratie. Wanneer u de wizard Azure Data Factory Copy doorloopt, hoeft u geen JSON-definities te begrijpen voor gekoppelde services, gegevenssets en pijplijnen. Nadat u echter alle stappen in de wizard hebt voltooid, maakt de wizard automatisch een pijplijn om gegevens van de geselecteerde gegevensbron naar de geselecteerde bestemming te kopiëren. Bovendien helpt de wizard Kopiëren u bij het valideren van de gegevens die worden ingenomen op het moment van schrijven, wat een groot deel van uw tijd bespaart, vooral wanneer u gegevens voor het eerst uit de gegevensbron inneemt. Als u de wizard Kopiëren wilt starten, klikt u op de tegel **Gegevens kopiëren** op de startpagina van uw gegevensfabriek.
 
 ![De wizard Kopiëren](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
 ## <a name="an-intuitive-wizard-for-copying-data"></a>Een intuïtieve wizard voor het kopiëren van gegevens
-Met deze wizard kunt u eenvoudig gegevens van een groot aantal bronnen naar bestemmingen verplaatsen binnen enkele minuten. Nadat u de wizard hebt door lopen, wordt er automatisch een pijp lijn met een Kopieer activiteit voor u gemaakt samen met afhankelijke Data Factory entiteiten (gekoppelde services en gegevens sets). Er zijn geen extra stappen vereist om de pijp lijn te maken.   
+Met deze wizard u eenvoudig gegevens van een breed scala aan bronnen naar bestemmingen in enkele minuten verplaatsen. Nadat u de wizard hebt doorlopen, wordt er automatisch een pijplijn met een kopieeractiviteit voor u gemaakt, samen met afhankelijke entiteiten van Data Factory (gekoppelde services en gegevenssets). Er zijn geen extra stappen nodig om de pijplijn te maken.   
 
 ![Gegevensbron selecteren](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
-> Zie het artikel [zelf studie kopiëren wizard](data-factory-copy-data-wizard-tutorial.md) voor stapsgewijze instructies voor het maken van een voorbeeld pijplijn voor het kopiëren van gegevens van een Azure-Blob naar een Azure SQL database tabel. 
+> Zie [Zelfstudieartikel Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor stapsgewijze instructies om een voorbeeldpijplijn te maken om gegevens van een Azure-blob naar een Azure SQL Database-tabel te kopiëren. 
 > 
 > 
 
-De wizard is ontworpen met big data in het begin. Het is eenvoudig en efficiënt om Data Factory pijp lijnen te schrijven waarmee honderden mappen, bestanden of tabellen worden verplaatst met behulp van de Gegevens kopiëren wizard. De wizard ondersteunt de volgende drie functies: automatische gegevens voorbeeld, schema's vastleggen en toewijzen en gegevens filteren. 
+De wizard is ontworpen met big data in het achterhoofd vanaf het begin. Het is eenvoudig en efficiënt om datafactory-pijplijnen te maken die honderden mappen, bestanden of tabellen verplaatsen met de wizard Gegevens kopiëren. De wizard ondersteunt de volgende drie functies: Automatische gegevensvoorbeeld, schemavastleggen en toewijzen en filteren van gegevens. 
 
-## <a name="automatic-data-preview"></a>Automatische gegevens voorbeeld
-Met de wizard kopiëren kunt u een deel van de gegevens van de geselecteerde gegevens bron controleren, zodat u kunt controleren of de gegevens de juiste gegevens zijn die u wilt kopiëren. Als de bron gegevens zich in een tekst bestand bevinden, parseert de wizard kopiëren ook het tekst bestand om de rij-en kolom scheidings tekens en het schema automatisch te leren. 
+## <a name="automatic-data-preview"></a>Automatische gegevensvoorbeeld
+Met de wizard Kopiëren u een deel van de gegevens uit de geselecteerde gegevensbron bekijken om te valideren of de gegevens de juiste gegevens zijn die u wilt kopiëren. Als de brongegevens zich in een tekstbestand bevindt, onteert de wizard kopiëren bovendien het tekstbestand om rij- en kolomscheidingstekens te leren en automatisch schema. 
 
 ![Pagina Instellingen bestandsindelingen](./media/data-factory-copy-wizard/file-format-settings.png)
 
-## <a name="schema-capture-and-mapping"></a>Schema's vastleggen en toewijzen
-Het schema van invoer gegevens komt mogelijk niet overeen met het schema van de uitvoer gegevens in sommige gevallen. In dit scenario moet u kolommen uit het bron schema toewijzen aan kolommen uit het doel schema. 
+## <a name="schema-capture-and-mapping"></a>Schema vastleggen en toewijzen
+Het schema van invoergegevens komt in sommige gevallen mogelijk niet overeen met het schema van uitvoergegevens. In dit scenario moet u kolommen van het bronschema toewijzen aan kolommen uit het doelschema. 
 
-De wizard kopiëren wijst automatisch kolommen in het bron schema toe aan kolommen in het doel schema. U kunt de toewijzingen negeren met behulp van de vervolg keuzelijsten (of) Hiermee geeft u op of een kolom moet worden overgeslagen bij het kopiëren van de gegevens.   
+De wizard Kopiëren brengt kolommen in het bronschema automatisch in het bronschema in het doelschema. U de toewijzingen overschrijven met behulp van de vervolgkeuzelijsten (of) opgeven of een kolom moet worden overgeslagen tijdens het kopiëren van de gegevens.   
 
 ![Schematoewijzing](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Gegevens filteren
-Met de wizard kunt u Bron gegevens filteren om alleen de gegevens te selecteren die moeten worden gekopieerd naar het gegevens archief doel/sink. Filteren vermindert het volume van de gegevens die moeten worden gekopieerd naar de Sink-gegevens opslag en verhoogt daarom de door Voer van de Kopieer bewerking. Het biedt een flexibele manier om gegevens in een relationele data base te filteren met behulp van de SQL-query taal (of) bestanden in een Azure Blob-map door gebruik te maken van [Data Factory-functies en-variabelen](data-factory-functions-variables.md).   
+Met de wizard u brongegevens filteren om alleen de gegevens te selecteren die naar het gegevensarchief bestemming/gootsteen moeten worden gekopieerd. Filteren vermindert het volume van de gegevens die naar het gootsteengegevensarchief moeten worden gekopieerd en verbetert daarom de doorvoer van de kopieerbewerking. Het biedt een flexibele manier om gegevens in een relationele database te filteren met SQL-querytaal (of) bestanden in een Azure blob-map met behulp van [datafactory-functies en variabelen.](data-factory-functions-variables.md)   
 
-### <a name="filtering-of-data-in-a-database"></a>Filteren van gegevens in een Data Base
-In het voor beeld gebruikt de SQL-query de functie `Text.Format` en `WindowStart` variabele. 
+### <a name="filtering-of-data-in-a-database"></a>Gegevens filteren in een database
+In het voorbeeld gebruikt de `Text.Format` SQL-query de functie en `WindowStart` variabele. 
 
 ![Expressies valideren](./media/data-factory-copy-wizard/validate-expressions.png)
 
-### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filteren van gegevens in een Azure Blob-map
-U kunt variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeem variabelen](data-factory-functions-variables.md#data-factory-system-variables). De ondersteunde variabelen zijn: **{Year}** , **{Month}** , **{Day}** , **{Hour}** , **{Minute}** en **{Custom}** . Voor beeld: inputfolder/{year}/{month}/{Day}.
+### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Gegevens filteren in een Azure blob-map
+U variabelen in het mappad gebruiken om gegevens te kopiëren uit een map die wordt bepaald tijdens runtime op basis van [systeemvariabelen.](data-factory-functions-variables.md#data-factory-system-variables) De ondersteunde variabelen zijn: **{year}**, **{month}**, **{day}**, **{hour}**, **{minute}**, en **{custom}**. Voorbeeld: invoermap/{year}/{month}/{day}.
 
-Stel dat u een invoer mappen hebt met de volgende indeling:
+Stel dat u invoermappen in de volgende indeling hebt:
 
     2016/03/01/01
     2016/03/01/02
     2016/03/01/03
     ...
 
-Klik op de knop **Bladeren** voor **bestand of map**, blader naar een van deze mappen (bijvoorbeeld 2016-> 03-> 01-> 02) en klik op **kiezen**. In het tekstvak ziet u `2016/03/01/02`. Vervang nu **2016** door **{Year}** , **03** met **{Month}** , **01** met **{Day}** en **02** met **{Hour}** en druk op tab. Er moeten vervolg keuzelijsten worden weer gegeven om de indeling voor deze vier variabelen te selecteren:
+Klik **op de** knop Bladeren voor **Bestand of map,** blader naar een van deze mappen (bijvoorbeeld 2016->03->01->02) en klik op **Kiezen**. Je zou `2016/03/01/02` het in het tekstvak moeten zien. Vervang **2016** nu door **{jaar}**, **03** met **{maand}**, **01** met **{day}** en **02** met **{hour}** en druk op Tab. U ziet vervolgkeuzelijsten om de indeling voor deze vier variabelen te selecteren:
 
-![Systeem variabelen gebruiken](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
+![Systeemvariabelen gebruiken](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Zoals in de volgende scherm afbeelding wordt weer gegeven, kunt u ook een **aangepaste** variabele en [ondersteunde opmaak teken reeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren** . Vervang vervolgens een waarde door **{Custom}** en druk op TAB om het tekstvak weer te geven waarin u de notatie teken reeks kunt invoeren.     
+Zoals in de volgende schermafbeelding wordt weergegeven, u ook een **aangepaste** variabele en eventuele [ondersteunde indelingstekenreeksen](https://msdn.microsoft.com/library/8kb3ddd4.aspx)gebruiken. Als u een map met die structuur wilt selecteren, gebruikt u eerst de knop **Bladeren.** Vervang vervolgens een waarde door **{custom}** en druk op Tab om het tekstvak te zien waar u de opmaaktekenreeks typen.     
 
 ![Aangepaste variabele gebruiken](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
-## <a name="support-for-diverse-data-and-object-types"></a>Ondersteuning voor diverse typen gegevens en objecten
-Met de wizard kopiëren kunt u op efficiënte wijze honderden mappen, bestanden of tabellen verplaatsen.
+## <a name="support-for-diverse-data-and-object-types"></a>Ondersteuning voor diverse gegevens- en objecttypen
+Met de wizard Kopiëren u op efficiënte wijze honderden mappen, bestanden of tabellen verplaatsen.
 
-![Tabellen selecteren waaruit de gegevens moeten worden gekopieerd](./media/data-factory-copy-wizard/select-tables-to-copy-data.png)
+![Tabellen selecteren waaruit u gegevens wilt kopiëren](./media/data-factory-copy-wizard/select-tables-to-copy-data.png)
 
-## <a name="scheduling-options"></a>Plannings opties
-U kunt de Kopieer bewerking eenmaal of volgens een schema uitvoeren (elk uur, dagelijks, enzovoort). Beide opties kunnen worden gebruikt voor de breedte van de connectors op alle locaties op locatie, in de Cloud en lokaal bureau blad.
+## <a name="scheduling-options"></a>Planningsopties
+U de kopieerbewerking één keer of volgens een schema uitvoeren (per uur, per dag, enzovoort). Beide opties kunnen worden gebruikt voor de breedte van de connectors in on-premises, cloud en lokale desktopkopie.
 
-Een eenmalige Kopieer bewerking maakt het verplaatsen van gegevens van een bron naar een bestemming slechts één keer mogelijk. Dit is van toepassing op gegevens van elke grootte en een ondersteunde indeling. Met de geplande kopie kunt u gegevens kopiëren naar een voorgeschreven terugkeer patroon. U kunt uitgebreide instellingen (zoals nieuwe poging, time-out en waarschuwingen) gebruiken om de geplande kopie te configureren.
+Een eenmalige kopieerbewerking maakt gegevensverkeer van een bron naar een bestemming slechts één keer mogelijk. Het is van toepassing op gegevens van elke grootte en elke ondersteunde indeling. Met de geplande kopie u gegevens over een voorgeschreven herhaling kopiëren. U uitgebreide instellingen (zoals opnieuw proberen, time-out en waarschuwingen) gebruiken om de geplande kopie te configureren.
 
-![Plannings eigenschappen](./media/data-factory-copy-wizard/scheduling-properties.png)
+![Eigenschappen plannen](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle beschrijving van het gebruik van de wizard voor het kopiëren van Data Factory om een pijp lijn te maken met de Kopieer activiteit.
+Zie [Zelfstudie: Een pijplijn maken met de wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)kopiëren voor een snelle doorloop van het gebruik van de wizard Gegevensfabriekkopiëren om een pijplijn met Kopieeractiviteit te maken.
 

@@ -9,38 +9,38 @@ ms.date: 11/07/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: a55653c0f23be594fe65e7a322c11edc37ee1ce6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175997"
 ---
-## <a name="shared-image-management"></a>Beheer van gedeelde installatiekopieën 
+## <a name="shared-image-management"></a>Beheer van gedeelde afbeeldingen 
 
-Hier volgen enkele voorbeelden van algemene beheertaken en hoe u deze kunt uitvoeren met behulp van PowerShell.
+Hier volgen enkele voorbeelden van algemene beheertaken en hoe u deze voltooien met PowerShell.
 
-Lijst met alle galerieën met de naam.
+Vermeld alle galeries op naam.
 
 ```azurepowershell-interactive
 $galleries = Get-AzResource -ResourceType Microsoft.Compute/galleries
 $galleries.Name
 ```
 
-Lijst met alle definities van de installatiekopie met de naam.
+Vermeld alle afbeeldingsdefinities op naam.
 
 ```azurepowershell-interactive
 $imageDefinitions = Get-AzResource -ResourceType Microsoft.Compute/galleries/images
 $imageDefinitions.Name
 ```
 
-Lijst met alle versies van een installatiekopie met de naam.
+Vermeld alle afbeeldingsversies op naam.
 
 ```azurepowershell-interactive
 $imageVersions = Get-AzResource -ResourceType Microsoft.Compute/galleries/images/versions
 $imageVersions.Name
 ```
 
-De versie van een installatiekopie verwijderen. In dit voorbeeld wordt de versie van de installatiekopie met de naam *1.0.0*.
+Een afbeeldingsversie verwijderen. In dit voorbeeld wordt de afbeeldingsversie met de naam *1.0.0*verwijderd.
 
 ```azurepowershell-interactive
 Remove-AzGalleryImageVersion `

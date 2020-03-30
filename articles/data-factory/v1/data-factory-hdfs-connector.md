@@ -13,66 +13,66 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924352"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Gegevens verplaatsen van on-premises HDFS met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-hdfs-connector.md)
 > * [Versie 2 (huidige versie)](../connector-hdfs.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [HDFS-connector in v2](../connector-hdfs.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [HDFS-connector in V2](../connector-hdfs.md)als u de huidige versie van de service Data Factory gebruikt.
 
-In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een on-premises HDFS te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
+In dit artikel wordt uitgelegd hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van een on-premises HDFS te verplaatsen. Het bouwt voort op het artikel [Data Movement Activities,](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met de kopieeractiviteit.
 
-U kunt gegevens van HDFS kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory biedt momenteel alleen ondersteuning voor het verplaatsen van gegevens van een on-premises HDFS naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een on-premises HDFS.
+U gegevens van HDFS kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die als sinks worden ondersteund door de kopieeractiviteit. Datafabriek ondersteunt momenteel alleen het verplaatsen van gegevens van een on-premises HDFS naar andere gegevensopslag, maar niet voor het verplaatsen van gegevens van andere gegevensopslag naar een on-premises HDFS.
 
 > [!NOTE]
-> Met de Kopieer activiteit wordt het bron bestand niet verwijderd nadat het is gekopieerd naar de bestemming. Als u het bron bestand na een geslaagde kopie moet verwijderen, maakt u een aangepaste activiteit om het bestand te verwijderen en de activiteit in de pijp lijn te gebruiken. 
+> Copy Activity verwijdert het bronbestand niet nadat het naar de bestemming is gekopieerd. Als u het bronbestand na een geslaagde kopie moet verwijderen, maakt u een aangepaste activiteit om het bestand te verwijderen en de activiteit in de pijplijn te gebruiken. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Connectiviteit inschakelen
-Data Factory-service ondersteunt het gebruik van de Data Management Gateway om verbinding te maken met on-premises HDFS. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway. Gebruik de gateway om verbinding te maken met HDFS, zelfs als deze wordt gehost in een Azure IaaS-VM.
+Data Factory-service ondersteunt het maken van verbinding met on-premises HDFS met behulp van de Data Management Gateway. Bekijk [het verplaatsen van gegevens tussen on-premises locaties en een cloudartikel](data-factory-move-data-between-onprem-and-cloud.md) voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway. Gebruik de gateway om verbinding te maken met HDFS, zelfs als deze wordt gehost in een Azure IaaS VM.
 
 > [!NOTE]
-> Zorg ervoor dat de Data Management Gateway toegang heeft tot **alle** [naam knooppunt server]: [naam knooppunt poort] en [gegevens knooppunt Servers]: [Data knoop punt poort] van het Hadoop-cluster. De standaard poort voor [naam knooppunt] is 50070 en de standaard poort van het gegevens knooppunt is 50075.
+> Zorg ervoor dat de Data Management Gateway toegang heeft tot **ALLE** server [naamknooppuntserver]:[naamknooppuntpoort] en [gegevensknooppuntservers]:[datanodepoort] van het Hadoop-cluster. Standaard [naamknooppuntpoort] is 50070 en standaard [poort van het gegevensknooppunt] is 50075.
 
-Hoewel u de gateway op dezelfde on-premises computer of de Azure VM kunt installeren als de HDFS, raden we u aan de gateway te installeren op een afzonderlijke machine/Azure IaaS VM. Het hebben van een gateway op een afzonderlijke computer vermindert bron conflicten en verbetert de prestaties. Wanneer u de gateway op een afzonderlijke computer installeert, moet de computer toegang hebben tot de computer met de HDFS.
+Hoewel u gateway installeren op dezelfde on-premises machine of de Azure VM als de HDFS, raden we u aan de gateway te installeren op een aparte machine/Azure IaaS VM. Het hebben van gateway op een aparte machine vermindert de onenigheid tussen bronnen en verbetert de prestaties. Wanneer u de gateway op een aparte machine installeert, moet de machine toegang hebben tot de machine met de HDFS.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een HDFS-bron met behulp van verschillende hulpprogram ma's/Api's.
+U een pijplijn maken met een kopieeractiviteit die gegevens van een HDFS-bron verplaatst met behulp van verschillende hulpprogramma's/API's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
+De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Azure-portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Azure-portal,** **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon**, **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
+1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven.
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt.
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beeld: gegevens kopiëren van on-premises hdfs naar Azure Blob](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een HDFS-gegevens archief.
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie JSON-voorbeeld voor een voorbeeld met JSON-definities voor entiteiten in gegevensfabriek die worden gebruikt om gegevens uit een HDFS-gegevensarchief te [kopiëren: Gegevens kopiëren van on-premises HDFS naar](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) azure blob.
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor HDFS:
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in gegevensfabriek die specifiek zijn voor HDFS te definiëren:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-Een gekoppelde service koppelt een gegevens archief aan een data factory. U maakt een gekoppelde service van het type **hdfs** om een on-premises Hdfs te koppelen aan uw Data Factory. De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de gekoppelde service van HDFS.
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+Een gekoppelde service koppelt een gegevensarchief aan een gegevensfabriek. U maakt een gekoppelde service van type **Hdfs** om een on-premises HDFS aan uw gegevensfabriek te koppelen. In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor hdfs-gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Hdfs** |Ja |
-| url |URL naar HDFS |Ja |
-| authenticationType |Anoniem of Windows. <br><br> Als u **Kerberos-verificatie** wilt gebruiken voor HDFS-connector, raadpleegt u [deze sectie](#use-kerberos-authentication-for-hdfs-connector) om uw on-premises omgeving dienovereenkomstig in te stellen. |Ja |
-| userName |Gebruikers naam voor Windows-verificatie. Geef voor Kerberos-verificatie `<username>@<domain>.com`op. |Ja (voor Windows-verificatie) |
-| wachtwoord |Wacht woord voor Windows-verificatie. |Ja (voor Windows-verificatie) |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de HDFS. |Ja |
-| encryptedCredential |[New-AzDataFactoryEncryptValue-](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) uitvoer van de toegangs referentie. |Nee |
+| type |De eigenschap type moet zijn ingesteld op: **Hdfs** |Ja |
+| url |URL naar de HDFS |Ja |
+| authenticationType |Anoniem, of Windows. <br><br> Als u **Kerberos-verificatie** voor HDFS-connector wilt gebruiken, raadpleegt u [deze sectie](#use-kerberos-authentication-for-hdfs-connector) om uw on-premises omgeving dienovereenkomstig in te stellen. |Ja |
+| userName |Gebruikersnaam voor Windows-verificatie. Geef voor Kerberos-verificatie op `<username>@<domain>.com`. |Ja (voor Windows-verificatie) |
+| wachtwoord |Wachtwoord voor Windows-verificatie. |Ja (voor Windows-verificatie) |
+| gatewayNaam |Naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de HDFS. |Ja |
+| versleuteldCredential |[Nieuw-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) uitvoer van de toegangsreferenties. |Nee |
 
 ### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
@@ -113,27 +113,27 @@ Een gekoppelde service koppelt een gegevens archief aan een data factory. U maak
 }
 ```
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
+Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).
 
-De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **file share** (inclusief HDFS-gegevensset) heeft de volgende eigenschappen:
+De sectie **typeEigenschappen** is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie typeEigenschappen voor de gegevensset van type **FileShare** (inclusief HDFS-gegevensset) heeft de volgende eigenschappen
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u map\\\\submap en voor d:\samplefolder geeft u d:\\\\SampleFolder.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld:: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
-| partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Voor beeld: folderPath para meters voor elk uur aan gegevens. |Nee |
-| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **GZip**, **Deflate**, **BZip2**, en **ZipDeflate**. Ondersteunde niveaus: **optimale** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Gebruik escape character ' \ ' voor speciale tekens in de tekenreeks. Geef bijvoorbeeld voor map\submap\\\\de submap map op en geef\\\\voor d:\samplemap d: samplemap op.<br/><br/>U deze eigenschap combineren met **partitieDoor** mappaden te hebben op basis van begin- en einddatums van segmenten. |Ja |
+| fileName |Geef de naam op van het bestand in de **mapPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, verwijst de tabel naar alle bestanden in de map.<br/><br/>Wanneer bestandsnaam niet is opgegeven voor een uitvoergegevensset, wordt de naam van het gegenereerde bestand in de volgende deze indeling weergegeven: <br/><br/>`Data.<Guid>.txt`(bijvoorbeeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
+| partitionedBy |partitionedBy kan worden gebruikt om een dynamische mapPath op te geven, bestandsnaam voor tijdreeksgegevens. Voorbeeld: mapPath parameterized voor elk uur aan gegevens. |Nee |
+| formaat | De volgende formattypes worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **eigenschap type** onder opmaak in op een van deze waarden. Zie [Secties Tekstformaat](data-factory-supported-file-and-compression-formats.md#text-format), [Json Format](data-factory-supported-file-and-compression-formats.md#json-format), Avro [Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u **bestanden** wilt kopiëren tussen bestandsopslag (binaire kopie), slaat u de sectie opmaak over in definities van zowel invoer- als uitvoergegevenssets. |Nee |
+| compressie | Geef het type en het compressieniveau voor de gegevens op. Ondersteunde typen zijn: **GZip,** **Deflate,** **BZip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelste**. Zie [Bestands- en compressieindelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 > [!NOTE]
-> bestands naam en file filter kunnen niet tegelijkertijd worden gebruikt.
+> bestandsnaam en fileFilter kunnen niet tegelijkertijd worden gebruikt.
 
-### <a name="using-partionedby-property"></a>De eigenschap partionedBy gebruiken
-Zoals vermeld in de vorige sectie, kunt u een dynamische folderPath en-bestands naam opgeven voor tijdreeks gegevens met de eigenschap **partitionedBy** , [Data Factory functies en de systeem variabelen](data-factory-functions-variables.md).
+### <a name="using-partionedby-property"></a>PartionedBy gebruiken, eigenschap
+Zoals in de vorige sectie is vermeld, u een dynamische mapPath en bestandsnaam opgeven voor tijdreeksgegevens met de eigenschap **partitionedBy,** [de functies Gegevensfabriek en de systeemvariabelen](data-factory-functions-variables.md).
 
-Zie [gegevens sets maken](data-factory-create-datasets.md), [& uitvoering plannen](data-factory-scheduling-and-execution.md)en [pijplijn artikelen maken](data-factory-create-pipelines.md) voor meer informatie over tijdreeks gegevens sets, planningen en segmenten.
+Zie [Gegevenssets maken,](data-factory-create-datasets.md) [plannen & uitvoeren](data-factory-scheduling-and-execution.md)en [Pijplijnen maken](data-factory-create-pipelines.md) voor meer informatie over gegevenssets voor tijdreeksen, planning en segmenten.
 
-#### <a name="sample-1"></a>Voor beeld 1:
+#### <a name="sample-1"></a>Voorbeeld 1:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -142,9 +142,9 @@ Zie [gegevens sets maken](data-factory-create-datasets.md), [& uitvoering planne
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-In dit voor beeld wordt {segment} vervangen door de waarde van Data Factory systeem variabele slice start in de opgegeven notatie (YYYYMMDDHH). De slice start verwijst naar de begin tijd van het segment. De folderPath verschilt voor elk segment. Bijvoorbeeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
+In dit voorbeeld wordt {Slice} vervangen door de waarde van Data Factory-systeemvariabele SliceStart in de opgegeven indeling (YYYYMMDDHH). De SliceStart verwijst naar de begintijd van het segment. De mapPath is verschillend voor elk segment. Bijvoorbeeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>Voor beeld 2:
+#### <a name="sample-2"></a>Voorbeeld 2:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -157,40 +157,40 @@ In dit voor beeld wordt {segment} vervangen door de waarde van Data Factory syst
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-In dit voor beeld worden jaar, maand, dag en tijd van slice start geëxtraheerd in afzonderlijke variabelen die worden gebruikt door folderPath en fileName-eigenschappen.
+In dit voorbeeld worden jaar, maand, dag en tijd van SliceStart geëxtraheerd in afzonderlijke variabelen die worden gebruikt door mapPath- en fileName-eigenschappen.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten.
+Zie het artikel [Pijplijnmaken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleidsregels zijn beschikbaar voor alle soorten activiteiten.
 
-Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
+Overwegende dat de eigenschappen die beschikbaar zijn in de sectie typeEigenschappen van de activiteit per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-Voor kopieer activiteit, wanneer bron van het type **FileSystemSource** de volgende eigenschappen zijn beschikbaar in de sectie typeProperties:
+Voor Kopieeractiviteit zijn, wanneer de bron van type **FileSystemSource** is, de volgende eigenschappen beschikbaar in de sectie typeEigenschappen:
 
 **FileSystemSource** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| recursive |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. |True, False (standaard) |Nee |
+| Recursieve |Hiermee geeft u aan of de gegevens recursief worden gelezen vanuit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
-## <a name="supported-file-and-compression-formats"></a>Ondersteunde bestands-en compressie-indelingen
-Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
+## <a name="supported-file-and-compression-formats"></a>Ondersteunde indelingen voor bestanden en compressie
+Zie [Bestands- en compressie-indelingen in](data-factory-supported-file-and-compression-formats.md) het artikel van Azure Data Factory over details.
 
-## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van on-premises HDFS naar Azure Blob
-In dit voor beeld ziet u hoe u gegevens kopieert van een on-premises HDFS naar Azure Blob Storage. Gegevens kunnen echter **rechtstreeks** naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks worden gekopieerd met behulp van de Kopieer activiteit in azure Data Factory.  
+## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON-voorbeeld: gegevens van on-premises HDFS kopiëren naar Azure Blob
+In dit voorbeeld ziet u hoe u gegevens van een on-premises HDFS naar Azure Blob Storage kopieert. Gegevens kunnen echter **rechtstreeks** worden gekopieerd naar een van de putten die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) zijn vermeld met behulp van de kopieeractiviteit in Azure Data Factory.  
 
-Het voor beeld bevat JSON-definities voor de volgende Data Factory entiteiten. U kunt deze definities gebruiken om een pijp lijn te maken voor het kopiëren van gegevens van HDFS naar Azure Blob Storage met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).
+Het voorbeeld bevat JSON-definities voor de volgende entiteiten in gegevensfabrieken. U deze definities gebruiken om een pijplijn te maken om gegevens van HDFS naar Azure Blob Storage te kopiëren met [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md)
 
 1. Een gekoppelde service van het type [OnPremisesHdfs](#linked-service-properties).
-2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type bestands [share](#dataset-properties).
-4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [FileSystemSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een [invoergegevensset](data-factory-create-datasets.md) van het type [FileShare](#dataset-properties).
+4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [Bestandssysteembron](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
 
-In het voor beeld worden elk uur gegevens van een on-premises HDFS gekopieerd naar een Azure-Blob. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
+Het voorbeeld kopieert elk uur gegevens van een on-premises HDFS naar een Azure-blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
 
-De eerste stap is het instellen van de Data Management Gateway. De instructies voor het [verplaatsen van gegevens tussen on-premises locaties en het Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel.
+Stel als eerste stap de datamanagementgateway in. De instructies in de [verhuisgegevens tussen on-premises locaties en cloudartikelen.](data-factory-move-data-between-onprem-and-cloud.md)
 
-**Gekoppelde service van HDFS:** In dit voor beeld wordt de Windows-verificatie gebruikt. Zie de sectie [gekoppelde koppelings services van HDFS](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
+**HDFS gekoppelde service:** In dit voorbeeld wordt de Windows-verificatie gebruikt. Zie [hdfs-gekoppelde servicesectie](#linked-service-properties) voor verschillende soorten verificatie die u gebruiken.
 
 ```JSON
 {
@@ -210,7 +210,7 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies v
 }
 ```
 
-**Azure Storage gekoppelde service:**
+**Gekoppelde Azure Storage-service:**
 
 ```JSON
 {
@@ -224,9 +224,9 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies v
 }
 ```
 
-**HDFS-invoer gegevensset:** Deze gegevensset verwijst naar de HDFS-map DataTransfer/UnitTest/. Met de pijp lijn worden alle bestanden in deze map naar het doel gekopieerd.
+**HDFS-invoergegevensset:** Deze gegevensset verwijst naar de HDFS-map DataTransfer/UnitTest/. De pijplijn kopieert alle bestanden in deze map naar de bestemming.
 
-Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
+Als u "extern" instelt: "true" informeert de datafabriekservice dat de gegevensset zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```JSON
 {
@@ -246,9 +246,9 @@ Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset 
 }
 ```
 
-**Azure Blob-uitvoer gegevensset:**
+**Azure Blob-uitvoergegevensset:**
 
-Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
+Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interval: 1). Het mappad voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van de begintijd van jaar, maand, dag en uur.
 
 ```JSON
 {
@@ -306,9 +306,9 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
 }
 ```
 
-**Een Kopieer activiteit in een pijp lijn met File System-bron en BLOB-Sink:**
+**Een kopieeractiviteit in een pijplijn met bestandssysteembron en Blob-sink:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van deze invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **FileSystemSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
+De pijplijn bevat een kopieeractiviteit die is geconfigureerd om deze invoer- en uitvoergegevenssets te gebruiken en die elk uur moet worden uitgevoerd. In de JSON-definitie van pijplijn is het **brontype** ingesteld op **FileSystemSource** en is **het sinktype** ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **eigenschap query** selecteert de gegevens in het afgelopen uur die u wilt kopiëren.
 
 ```JSON
 {
@@ -349,30 +349,30 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 ```
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Kerberos-verificatie gebruiken voor HDFS-connector
-Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-verificatie kunt gebruiken in HDFS-connector. U kunt kiezen welk het beste past bij uw situatie.
-* Optie 1: [koppelen van Gateway computer in Kerberos-realm](#kerberos-join-realm)
-* Optie 2: [wederzijdse vertrouwens relatie tussen Windows-domein en Kerberos-realm inschakelen](#kerberos-mutual-trust)
+Er zijn twee opties om de on-premises omgeving in te stellen om Kerberos Authentication in HDFS-connector te gebruiken. U kiezen voor de een beter past bij uw zaak.
+* Optie 1: [Word lid van gateway machine in Kerberos rijk](#kerberos-join-realm)
+* Optie 2: [Wederzijds vertrouwen tussen Windows-domein en Kerberos-realm inschakelen](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>Optie 1: koppelen van Gateway computer in Kerberos-realm
+### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Optie 1: Word lid van gateway machine in Kerberos rijk
 
-#### <a name="requirement"></a>Regel
+#### <a name="requirement"></a>Vereiste:
 
-* De gateway computer moet lid worden van de Kerberos-realm en kan niet worden toegevoegd aan een Windows-domein.
+* De gatewaymachine moet lid worden van het Kerberos-rijk en kan niet deelnemen aan een Windows-domein.
 
 #### <a name="how-to-configure"></a>Configureren:
 
-**Op de gateway computer:**
+**Op gateway machine:**
 
-1.  Voer het hulp programma **Ksetup** uit om de Kerberos KDC-server en-realm te configureren.
+1.  Voer het **Ksetup-hulpprogramma** uit om de Kerberos KDC-server en -realm te configureren.
 
-    De machine moet worden geconfigureerd als lid van een werk groep, omdat een Kerberos-realm afwijkt van een Windows-domein. Dit kan worden bereikt door de Kerberos-realm in te stellen en een KDC-server als volgt toe te voegen. Vervang *realm.com* door uw eigen respectieve realm als dat nodig is.
+    De machine moet zijn geconfigureerd als lid van een werkgroep, omdat een Kerberos-realm verschilt van een Windows-domein. Dit kan worden bereikt door het Kerberos-rijk in te stellen en een KDC-server als volgt toe te voegen. Vervang *REALM.COM* met je eigen eigen rijk als dat nodig is.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    **Start** de computer opnieuw op nadat u deze twee opdrachten hebt uitgevoerd.
+    **Start** de machine opnieuw op na het uitvoeren van deze 2 opdrachten.
 
-2.  Controleer de configuratie met de opdracht **Ksetup** . De uitvoer moet er als volgt uitzien:
+2.  Controleer de configuratie met de opdracht **Ksetup.** De uitvoer moet zijn als:
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -381,22 +381,22 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
 
 **In Azure Data Factory:**
 
-* Configureer de HDFS-connector met behulp van **Windows-verificatie** samen met uw Principal-naam en-wacht woord voor Kerberos om verbinding te maken met de HDFS-gegevens bron. Raadpleeg de sectie eigenschappen van koppelen aan de [gekoppelde service](#linked-service-properties) in configuratie details.
+* Configureer de HDFS-connector met **Windows-verificatie** samen met uw Kerberos-hoofdnaam en wachtwoord om verbinding te maken met de HDFS-gegevensbron. Controleer de sectie [HDFS Linked Service-eigenschappen](#linked-service-properties) op configuratiegegevens.
 
-### <a name="kerberos-mutual-trust"></a>Optie 2: wederzijdse vertrouwens relatie tussen Windows-domein en Kerberos-realm inschakelen
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Optie 2: Wederzijds vertrouwen tussen Windows-domein en Kerberos-realm inschakelen
 
-#### <a name="requirement"></a>Regel
-*   De gateway computer moet lid worden van een Windows-domein.
-*   U moet gemachtigd zijn om de instellingen van de domein controller bij te werken.
+#### <a name="requirement"></a>Vereiste:
+*   De gatewaymachine moet lid worden van een Windows-domein.
+*   U hebt toestemming nodig om de instellingen van de domeincontroller bij te werken.
 
 #### <a name="how-to-configure"></a>Configureren:
 
 > [!NOTE]
-> Vervang REALM.COM en AD.COM in de volgende zelf studie met uw eigen respectievelijke realm en domein controller naar behoefte.
+> Vervang REALM.COM en AD.COM in de volgende zelfstudie naar eigen huis en domeincontroller.
 
-**Op KDC-server:**
+**Op de KDC-server:**
 
-1. Bewerk de KDC-configuratie in het bestand **krb5. conf** zodat het Windows-domein KDC kan vertrouwen naar de volgende configuratie sjabloon. De configuratie bevindt zich standaard op **/etc/krb5.conf**.
+1. Bewerk de KDC-configuratie in **het krb5.conf-bestand** om KDC te laten vertrouwen op Windows Domain, verwijzend naar de volgende configuratiesjabloon. Standaard bevindt de configuratie zich op **/etc/krb5.conf.**
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -432,65 +432,65 @@ Er zijn twee opties om de on-premises omgeving in te stellen, zodat u Kerberos-v
              REALM.COM = .
             }
 
-   **Start** de KDC-service na de configuratie opnieuw.
+   **Start** de KDC-service opnieuw na configuratie.
 
-2. Bereid een principal met de naam **krbtgt/realm. COM\@AD.com** in KDC-server met de volgende opdracht:
+2. Bereid een hoofdmet de naam **\@krbtgt/REALM.COM AD.COM** in de KDC-server voor met de volgende opdracht:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. Voeg `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`toe in **Hadoop. Security. auth_to_local** HDFS-service configuratie bestand.
+3. Voeg in **hadoop.security.auth_to_local** HDFS-serviceconfiguratiebestand . `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`
 
-**Op domein controller:**
+**Op domeincontroller:**
 
-1.  Voer de volgende **Ksetup** -opdrachten uit om een realm-vermelding toe te voegen:
+1.  Voer de volgende **Ksetup-opdrachten** uit om een realm-item toe te voegen:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Een vertrouwens relatie tot stand brengen tussen Windows-domein en Kerberos-realm. [wacht woord] is het wacht woord voor de principal **krbtgt/realm. COM\@AD.com**.
+2.  Vestig vertrouwen van Windows Domain naar Kerberos Realm. [wachtwoord] is het wachtwoord voor de belangrijkste **\@krbtgt/REALM.COM AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Selecteer het versleutelings algoritme dat in Kerberos wordt gebruikt.
+3.  Selecteer versleutelingsalgoritme dat wordt gebruikt in Kerberos.
 
-    1. Ga naar Serverbeheer > groepsbeleid beheer > domein >-Groepsbeleid objecten > het standaard beleid of het actieve domein en bewerk.
+    1. Ga naar Serverbeheer > Groepsbeleidsbeheer > Domein > groepsbeleidsobjecten > standaard- of actief domeinbeleid en Bewerken.
 
-    2. Ga in het pop-upvenster **Groepsbeleidsbeheer-editor** naar Computer Configuratie > beleid > Windows-instellingen > beveiligings instellingen > lokale beleids regels > beveiligings opties en configureer **netwerk beveiliging: Configureer versleutelings typen die zijn toegestaan voor Kerberos**.
+    2. Ga in het pop-upvenster van de **groepsbeleidsbeheereditor** naar > Beleid voor computerconfiguratie > Windows-instellingen > beveiligingsinstellingen > lokale beleidsopties > beveiligingsopties **configureren: Coderingstypen configureren die zijn toegestaan voor Kerberos**.
 
-    3. Selecteer de versleutelings algoritme die u wilt gebruiken bij het maken van verbinding met KDC. Normaal gesp roken hoeft u alleen maar alle opties te selecteren.
+    3. Selecteer het versleutelingsalgoritme dat u wilt gebruiken wanneer u verbinding maakt met KDC. Vaak u gewoon alle opties selecteren.
 
-        ![Configuratie versleutelings typen voor Kerberos](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+        ![Config-versleutelingstypen voor Kerberos](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Gebruik de opdracht **Ksetup** om de versleutelings algoritme op te geven die moet worden gebruikt voor de specifieke realm.
+    4. Gebruik de opdracht **Ksetup** om het versleutelingsalgoritme op te geven dat op de specifieke REALM moet worden gebruikt.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Maak de toewijzing tussen het domein account en de Kerberos-principal, zodat u Kerberos principal in het Windows-domein kunt gebruiken.
+4.  Maak de toewijzing tussen het domeinaccount en kerberos-principal om Kerberos principal in Windows Domain te gebruiken.
 
-    1. Start de beheer Programma's > **Active Directory gebruikers en computers**.
+    1. Start de hulpprogramma's voor beheer > **Active Directory: gebruikers en computers**.
 
-    2. Configureer geavanceerde functies door te klikken op **weer gave** > **geavanceerde functies**.
+    2. Geavanceerde functies configureren door op**Geavanceerde functies** **weergeven** > te klikken.
 
-    3. Zoek het account waaraan u toewijzingen wilt maken en klik met de rechter muisknop om **naam toewijzingen** weer te geven > op het tabblad **Kerberos-namen** .
+    3. Zoek het account waarop u toewijzingen wilt maken en klik met de rechtermuisknop om **naamtoewijzingen** weer te geven > klik op het tabblad **Kerberos-namen.**
 
-    4. Voeg een principal uit de realm toe.
+    4. Voeg een opdrachtgever van het rijk toe.
 
-        ![Beveiligings identiteit toewijzen](media/data-factory-hdfs-connector/map-security-identity.png)
+        ![Identiteit kaartbeveiliging](media/data-factory-hdfs-connector/map-security-identity.png)
 
-**Op de gateway computer:**
+**Op gateway machine:**
 
-* Voer de volgende **Ksetup** -opdrachten uit om een realm-vermelding toe te voegen.
+* Voer de volgende **Ksetup-opdrachten** uit om een realm-item toe te voegen.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
 **In Azure Data Factory:**
 
-* Configureer de HDFS-connector met behulp van **Windows-verificatie** samen met uw domein account of Kerberos-principal om verbinding te maken met de HDFS-gegevens bron. Raadpleeg de sectie eigenschappen van koppelen aan de [gekoppelde service](#linked-service-properties) in configuratie details.
+* Configureer de HDFS-connector met **Windows-verificatie** samen met uw domeinaccount of Kerberos Principal om verbinding te maken met de HDFS-gegevensbron. Controleer de sectie [HDFS Linked Service-eigenschappen](#linked-service-properties) op configuratiegegevens.
 
 > [!NOTE]
-> Als u kolommen van de bron-gegevensset wilt toewijzen aan kolommen uit Sink-gegevensset, raadpleegt u [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md).
+> Zie Kolommen van [gegevensset toewijzing in Azure Data Factory](data-factory-map-columns.md)als u kolommen wilt toewijzen van brongegevensset naar kolommen uit de sink-gegevensset.
 
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemming
-Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en tuning
+Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.

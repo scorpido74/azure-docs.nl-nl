@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175740"
 ---
 1. De Azure Site Recovery UnifiedSetup.exe starten
@@ -19,7 +19,7 @@ ms.locfileid: "67175740"
 3. Bij **Configuration Server Details** (Serverconfiguratiedetails) geeft u het IP-adres van de configuratieserver en de wachtwoordzin op.
 
    ![Processerver 2 toevoegen](./media/site-recovery-add-process-server/ps-page-2.png)
-4. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery.
+4. Geef in **internetinstellingen**op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding maakt met Azure Site Recovery.
 
    ![Processerver 3 toevoegen](./media/site-recovery-add-process-server/ps-page-3.png)
 

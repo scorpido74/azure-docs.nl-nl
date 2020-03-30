@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over het Azure AD-schema en de aangepaste expressies
-description: In dit artikel worden het Azure AD-schema beschreven, de kenmerken die worden verstrekt door de agent van de inrichting en aangepaste expressies.
+title: Het Azure AD-schema en aangepaste expressies begrijpen
+description: In dit artikel worden het Azure AD-schema, de kenmerken die de inrichtingsagent stroomt en aangepaste expressies beschreven.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,67 +16,67 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299326"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
-Een object in Azure Active Directory (Azure AD), zoals elke directory, is een programmatische gegevens constructie op hoog niveau waarmee items worden aangeduid als gebruikers, groepen en contact personen. Wanneer u een nieuwe gebruiker of contact persoon in azure AD maakt, maakt u een nieuw exemplaar van dat object. Deze instanties kunnen worden gedifferentieerd op basis van hun eigenschappen.
+Een object in Azure Active Directory (Azure AD), zoals elke map, is een programmatische gegevensconstructie op hoog niveau die zaken als gebruikers, groepen en contactpersonen vertegenwoordigt. Wanneer u een nieuwe gebruiker of contactpersoon maakt in Azure AD, maakt u een nieuw exemplaar van dat object. Deze exemplaren kunnen worden gedifferentieerd op basis van hun eigenschappen.
 
-Eigenschappen in azure AD zijn de elementen die verantwoordelijk zijn voor het opslaan van informatie over een exemplaar van een object in azure AD.
+Eigenschappen in Azure AD zijn de elementen die verantwoordelijk zijn voor het opslaan van informatie over een instantie van een object in Azure AD.
 
-Het Azure AD-schema definieert de regels waarvoor eigenschappen kunnen worden gebruikt in een item, de soorten waarden die deze eigenschappen hebben en hoe gebruikers met deze waarden kunnen werken. 
+Het Azure AD-schema definieert de regels waarvoor eigenschappen in een item kunnen worden gebruikt, welke waarden deze eigenschappen kunnen hebben en hoe gebruikers met die waarden kunnen communiceren. 
 
-Azure AD heeft twee soorten eigenschappen:
-- **Ingebouwde eigenschappen**: eigenschappen die zijn gedefinieerd door het Azure AD-schema. Deze eigenschappen bieden verschillende toepassingen en zijn mogelijk wel of niet toegankelijk.
-- **Directory-extensies**: eigenschappen die worden gegeven, zodat u Azure AD kunt aanpassen voor eigen gebruik. Als u bijvoorbeeld uw on-premises Active Directory hebt uitgebreid met een bepaald kenmerk en u dat kenmerk wilt debiet, kunt u een van de aangepaste eigenschappen gebruiken die worden gegeven. 
+Azure AD heeft twee typen eigenschappen:
+- **Ingebouwde eigenschappen:** eigenschappen die vooraf zijn gedefinieerd door het Azure AD-schema. Deze eigenschappen bieden verschillende toepassingen en zijn mogelijk wel of niet toegankelijk.
+- **Directory-extensies:** eigenschappen die worden geleverd, zodat u Azure AD voor eigen gebruik aanpassen. Als u bijvoorbeeld uw on-premises Active Directory hebt uitgebreid met een bepaald kenmerk en dat kenmerk wilt doorstromen, u een van de aangepaste eigenschappen gebruiken die zijn opgegeven. 
 
 ## <a name="attributes-and-expressions"></a>Kenmerken en expressies
-Wanneer een object zoals een gebruiker is ingericht voor Azure AD, wordt er een nieuw exemplaar van het gebruikers object gemaakt. Deze maken bevat de eigenschappen van dat object, ook wel bekend als kenmerken. In eerste instantie heeft het zojuist gemaakte object de kenmerken ingesteld op waarden die worden bepaald door de synchronisatie regels. Deze kenmerken worden vervolgens up-to-date gehouden via de Cloud-inrichtings agent.
+Wanneer een object zoals een gebruiker is ingericht in Azure AD, wordt een nieuw exemplaar van het gebruikersobject gemaakt. Deze creatie omvat de eigenschappen van dat object, die ook bekend staan als kenmerken. In eerste instantie heeft het nieuw gemaakte object zijn kenmerken ingesteld op waarden die worden bepaald door de synchronisatieregels. Deze kenmerken worden vervolgens up-to-date gehouden via de cloud provisioning agent.
 
-![Object inrichting](media/concept-attributes/attribute1.png)
+![Objectinrichting](media/concept-attributes/attribute1.png)
 
-Een gebruiker kan bijvoorbeeld deel uitmaken van een marketing afdeling. Het kenmerk van de Azure AD-afdeling wordt in eerste instantie gemaakt wanneer ze worden ingericht en de waarde is ingesteld op marketing. Zes maanden later als ze worden gewijzigd in verkoop, wordt het on-premises Active Directory afdelings kenmerk gewijzigd in verkoop. Deze wijziging wordt gesynchroniseerd met Azure AD en wordt weer gegeven in hun Azure AD-gebruikers object.
+Een gebruiker kan bijvoorbeeld deel uitmaken van een marketingafdeling. Het kenmerk azure AD-afdeling wordt in eerste instantie gemaakt wanneer ze zijn ingericht en de waarde is ingesteld op Marketing. Zes maanden later, als ze overstappen op Verkoop, wordt het kenmerk van de on-premises Active Directory-afdeling gewijzigd in Verkoop. Deze wijziging synchroniseert met Azure AD en wordt weergegeven in het Azure AD-gebruikersobject.
 
-Kenmerk synchronisatie kan direct worden ingeschakeld, waarbij de waarde in azure AD rechtstreeks wordt ingesteld op de waarde van het on-premises kenmerk. Een programmatische expressie kan de synchronisatie ook afhandelen. Er is een programmatische expressie nodig in gevallen waarin een bepaalde logica of een bepaling moet worden gemaakt om de waarde in te vullen.
+Kenmerksynchronisatie kan direct zijn, waarbij de waarde in Azure AD rechtstreeks is ingesteld op de waarde van het on-premises kenmerk. Een programmatische expressie kan de synchronisatie ook verwerken. Een programmatische expressie is nodig in gevallen waarin enige logica of een bepaling moet worden gemaakt om de waarde te vullen.
 
-Als u bijvoorbeeld het e-mail kenmerk 'john.smith@contoso.com' had en u het gedeelte '@contoso.com' wilt verwijderen en alleen de waarde ' John. Smit ' wilt gebruiken, gebruikt u een van de volgende opties:
+Als u bijvoorbeeld het e-mailattribuut "john.smith@contoso.com" had@contoso.comen het gedeelte " " moest uitkleden en alleen de waarde "john.smith" moest doorstromen, zou u zoiets als dit gebruiken:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer** (mail): "john.smith@contoso.com"
-* **Uitvoer**: "Jan. Smit"
+* **INPUT** (e-mail): "john.smith@contoso.com
+* **OUTPUT**: "John.smith"
 
-Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)voor meer informatie over het schrijven van aangepaste expressies en de syntaxis.
+Zie [Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)meer informatie over het schrijven van aangepaste expressies en de syntaxis.
 
-De volgende tabel bevat algemene kenmerken en hoe deze worden gesynchroniseerd met Azure AD.
+In de volgende tabel worden veelvoorkomende kenmerken weergegeven en hoe ze zijn gesynchroniseerd met Azure AD.
 
 
-|On-premises Active Directory|Toewijzings type|Azure AD|
+|On-premises Active Directory|Toewijzingstype|Azure AD|
 |-----|-----|-----|
-|algemene naam|Direct|commonName
-|countryCode|Direct|countryCode|
+|Cn|Direct|commonName
+|landCode|Direct|landCode|
 |displayName|Direct|displayName|
 |givenName|Expressie|givenName|
 |objectGUID|Direct|sourceAnchorBinary|  
 |userprincipalName|Direct|userPrincipalName|
-|ProxyAdress|Direct|ProxyAddress attribuut|
+|ProxyAdress ProxyAdress|Direct|ProxyAdres|
 
-## <a name="view-the-schema"></a>Het schema weer geven
+## <a name="view-the-schema"></a>Het schema weergeven
 > [!WARNING]
-> De configuratie van de Cloud inrichting maakt een service-principal. De Service-Principal is zichtbaar in de Azure Portal. Wijzig de kenmerk toewijzingen niet met behulp van de Service-Principal-ervaring in de Azure Portal.  Dit wordt niet ondersteund.
+> De configuratie voor het inrichten van de cloud maakt een serviceprincipal. De serviceprincipal is zichtbaar in de Azure-portal. U moet de kenmerktoewijzingen niet wijzigen met behulp van de hoofdervaring van de service in de Azure-portal.  Dit wordt niet ondersteund.
 
-Volg deze stappen om het schema weer te geven en te controleren.
+Voer de volgende stappen uit om het schema te bekijken en te verifiëren.
 
-1.  Ga naar [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
-1.  Meld u aan met het account van uw globale beheerder.
-1.  Selecteer aan de linkerkant de optie **machtigingen wijzigen** en zorg ervoor dat **map. readwrite. all** is *gezonden*.
-1.  Voer de query `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`uit. Deze query retourneert een gefilterde lijst met Service-principals.
-1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer de waarde voor `"id"`.
+1.  Ga naar [Grafiekverkenner](https://developer.microsoft.com/graph/graph-explorer).
+1.  Meld u aan met uw wereldwijde beheerdersaccount.
+1.  Selecteer aan de linkerkant **machtigingen wijzigen** en zorg ervoor dat **Directory.ReadWrite.All** is *goedgekeurd*.
+1.  Voer de `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`query uit . Met deze query wordt een gefilterde lijst met serviceprincipals geretourneerd.
+1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer `"id"`de waarde voor .
     ```
     "value": [
             {
@@ -149,8 +149,8 @@ Volg deze stappen om het schema weer te geven en te controleren.
                 "passwordCredentials": []
             },
     ```
-1. Vervang `{Service Principal id}` door uw waarde en voer de query uit `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`.
-1. Zoek `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` en noteer de waarde voor `"id"`.
+1. Vervang `{Service Principal id}` de waarde en voer `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`de query uit .
+1. Zoek `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` en noteer `"id"`de waarde voor .
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,17 +241,17 @@ Volg deze stappen om het schema weer te geven en te controleren.
                 ]
             }
     ```
-1. Voer nu de query `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`uit.
+1. Voer nu `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`de query uit .
  
     Voorbeeld: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   Vervang `{Service Principal Id}` en `{AD2ADD Provisioning Id}` door uw waarden.
+   Vervang `{Service Principal Id}` `{AD2ADD Provisioning Id}` en met uw waarden.
 
-1. Deze query retourneert het schema.
+1. Met deze query wordt het schema geretourneerd.
 
    ![Geretourneerd schema](media/concept-attributes/schema1.png)
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is inrichten?](what-is-provisioning.md)
-- [Wat is Azure AD Connect Cloud inrichting?](what-is-cloud-provisioning.md)
+- [Wat is inrichting?](what-is-provisioning.md)
+- [Wat is Azure AD Connect-cloudinrichting?](what-is-cloud-provisioning.md)

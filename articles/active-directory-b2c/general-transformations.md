@@ -1,7 +1,7 @@
 ---
-title: Algemene voor beelden van claim transformatie voor aangepaste beleids regels
+title: Voorbeelden van algemene claimstransformatie voor aangepast beleid
 titleSuffix: Azure AD B2C
-description: Algemene voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
+description: Algemene voorbeelden van claimtransformatie voor het IEF-schema (Identity Experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,28 +12,28 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188542"
 ---
-# <a name="general-claims-transformations"></a>Algemene claim transformaties
+# <a name="general-claims-transformations"></a>Algemene claims transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel vindt u voor beelden van het gebruik van algemene claim transformaties van het Framework-schema voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
+In dit artikel vindt u voorbeelden voor het gebruik van algemene claimstransformaties van het Identity Experience Framework-schema in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie .
 
-## <a name="copyclaim"></a>CopyClaim
+## <a name="copyclaim"></a>CopyClaim (CopyClaim)
 
 Kopieer de waarde van een claim naar een andere. Beide claims moeten van hetzelfde type zijn.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | teken reeks, int | Het claim type dat moet worden gekopieerd. |
-| OutputClaim | outputClaim | teken reeks, int | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| Invoerclaim | inputClaim | tekenreeks, int | Het claimtype dat moet worden gekopieerd. |
+| Uitvoerclaim | outputClaim | tekenreeks, int | Het ClaimType dat wordt geproduceerd nadat deze ClaimTransformation is ingeroepen. |
 
-Gebruik deze claim transformatie om een waarde van een teken reeks of numerieke claim naar een andere claim te kopiëren. In het volgende voor beeld wordt de claim waarde externalEmail naar een e-mail claim gekopieerd.
+Gebruik deze claimtransformatie om een waarde van een tekenreeks of numerieke claim naar een andere claim te kopiëren. In het volgende voorbeeld wordt de externe claimwaarde e-mail naar e-mailclaim overgemaakt.
 
 ```XML
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
@@ -48,21 +48,21 @@ Gebruik deze claim transformatie om een waarde van een teken reeks of numerieke 
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
-    - **input claim**: bob@contoso.com
-- Uitvoer claims:
-    - **output claim**: bob@contoso.com
+- Invoerclaims:
+    - **inputClaim**:bob@contoso.com
+- Output claims:
+    - **outputClaim**:bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Controleert of de **input claim** bestaat of niet en stelt **output claim** in op waar of onwaar dienovereenkomstig.
+Controleert of de **inputClaim** bestaat of niet en stelt **outputClaim** in op waar of onwaar dienovereenkomstig.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |Alle | De invoer claim waarvan het bestaan moet worden geverifieerd. |
-| OutputClaim | outputClaim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| Invoerclaim | inputClaim |Alle | De inputclaim waarvan het bestaan moet worden geverifieerd. |
+| Uitvoerclaim | outputClaim | booleaans | Het ClaimType dat wordt geproduceerd nadat deze ClaimTransformation is ingeroepen. |
 
-Gebruik deze claim transformatie om te controleren of een claim bestaat of een wille keurige waarde bevat. De geretourneerde waarde is een Boolean die aangeeft of de claim bestaat. In het volgende voor beeld wordt gecontroleerd of het e-mail adres bestaat.
+Gebruik deze claimtransformatie om te controleren of er een claim bestaat of waarde bevat. De retourwaarde is een booleaan die aangeeft of de claim bestaat. Na voorbeeld wordt gecontroleerd of het e-mailadres bestaat.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
@@ -77,21 +77,21 @@ Gebruik deze claim transformatie om te controleren of een claim bestaat of een w
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
-  - **input claim**: someone@contoso.com
-- Uitvoer claims:
-  - **output claim**: True
+- Invoerclaims:
+  - **inputClaim**:someone@contoso.com
+- Output claims:
+  - **outputClaim**: waar
 
 ## <a name="hash"></a>Hash
 
-Hash de meegeleverde tekst zonder opmaak met het zout en een geheim. Het hash-algoritme dat wordt gebruikt, is SHA-256.
+Hash de verstrekte platte tekst met behulp van het zout en een geheim. Het gebruikte hashing algoritme is SHA-256.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | sleutel | tekenreeks | De invoer claim die moet worden versleuteld |
-| InputClaim | Salt | tekenreeks | De Salt-para meter. U kunt een wille keurige waarde maken met behulp van `CreateRandomString` claims trans formatie. |
-| InputParameter | randomizerSecret | tekenreeks | Verwijst naar een bestaande Azure AD B2C **Policy Key**. Een nieuwe beleids sleutel maken: Selecteer in uw Azure AD B2C-Tenant onder **beheren**de optie **identiteits ervaring-Framework**. Selecteer **beleids sleutels** om de sleutels weer te geven die beschikbaar zijn in uw Tenant. Selecteer **Toevoegen**. Voor **Opties**selecteert u **hand matig**. Geef een naam op (de prefix *B2C_1A_* kan automatisch worden toegevoegd.) Voer in het tekstvak **geheim** een geheim in dat u wilt gebruiken, bijvoorbeeld 1234567890. Selecteer voor **sleutel gebruik** **hand tekening**. Selecteer **Maken**. |
-| OutputClaim | eigenaar | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. De claim die is geconfigureerd in de `plaintext` input claim. |
+| Invoerclaim | Leesbare | tekenreeks | De invoerclaim is versleuteld |
+| Invoerclaim | Zout | tekenreeks | De zoutparameter. U een willekeurige `CreateRandomString` waarde maken met behulp van claimtransformatie. |
+| Inputparameter | randomizerSecret randomizerSecret randomizerSecret randomizer | tekenreeks | Wijst naar een bestaande Azure AD **B2C-beleidssleutel**. Een nieuwe beleidssleutel maken: selecteer in uw Azure AD B2C-tenant onder **Beheren**de optie **Identity Experience Framework**. Selecteer **Beleidssleutels** om de sleutels weer te geven die beschikbaar zijn in uw tenant. Selecteer **Toevoegen**. Selecteer **Handmatig** **voor opties**. Geef een naam op (het voorvoegsel *B2C_1A_* kan automatisch worden toegevoegd.). Voer in het tekstvak **Geheim** elk geheim in dat u wilt gebruiken, zoals 1234567890. Selecteer **Handtekening**voor **Sleutelgebruik**. Selecteer **Maken**. |
+| Uitvoerclaim | hash | tekenreeks | Het ClaimType dat wordt geproduceerd nadat deze claimtransformatie is ingeschakeld. De claim geconfigureerd `plaintext` in de inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -110,9 +110,9 @@ Hash de meegeleverde tekst zonder opmaak met het zout en een geheim. Het hash-al
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
-  - **tekst zonder opmaak**: MyPass@word1
-  - **Salt**: 487624568
+- Invoerclaims:
+  - **plaintext**:MyPass@word1
+  - **zout**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Uitvoer claims:
-  - **output claim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =
+- Output claims:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

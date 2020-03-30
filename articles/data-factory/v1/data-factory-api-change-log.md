@@ -1,6 +1,6 @@
 ---
-title: Data Factory-.NET API-wijzigings logboek
-description: Beschrijft de belang rijke wijzigingen, functie toevoegingen, fout oplossingen, enzovoort, in een specifieke versie van .NET API voor de Azure Data Factory.
+title: Gegevensfabriek - .NET API-wijzigingslogboek
+description: Beschrijft het breken van wijzigingen, functietoevoegingen, bugfixes, enzovoort, in een specifieke versie van .NET API voor de Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,130 +13,130 @@ ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
 ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978999"
 ---
-# <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API-wijzigings logboek
+# <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API-wijzigingslogboek
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. 
 
-Dit artikel bevat informatie over wijzigingen in Azure Data Factory SDK in een specifieke versie. U kunt [hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) het meest recente NuGet-pakket voor Azure Data Factory vinden
+In dit artikel vindt u informatie over wijzigingen in Azure Data Factory SDK in een specifieke versie. U vindt [hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) het nieuwste NuGet-pakket voor Azure Data Factory
 
 ## <a name="version-4110"></a>Versie 4.11.0
-Toevoegingen van functies:
+Functietoevoegingen:
 
-* De volgende gekoppelde service typen zijn toegevoegd:
+* De volgende gekoppelde servicetypen zijn toegevoegd:
   * [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
   * [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
   * [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
-* De volgende typen gegevensset zijn toegevoegd:
+* De volgende gegevenssettypen zijn toegevoegd:
   * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
-  * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
-* De volgende Kopieer bron typen zijn toegevoegd:
-  * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
+  * [AmazonS3Dataset AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
+* De volgende typen kopieerbronnen zijn toegevoegd:
+  * [MongoDbBron](https://msdn.microsoft.com/library/mt765123.aspx)
 
 ## <a name="version-4100"></a>Versie 4.10.0
 * De volgende optionele eigenschappen zijn toegevoegd aan TextFormat:
   * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
   * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
   * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
-* De volgende gekoppelde service typen zijn toegevoegd:
-  * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
+* De volgende gekoppelde servicetypen zijn toegevoegd:
+  * [OnpremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
   * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
-* De volgende typen gegevensset zijn toegevoegd:
-  * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
-* De volgende Kopieer bron typen zijn toegevoegd:
-  * [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-* Eigenschap [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) toevoegen aan AzureMLBatchExecutionActivity
-  * Inschakelen van meerdere web service-ingangen naar een Azure Machine Learning experiment
+* De volgende gegevenssettypen zijn toegevoegd:
+  * [OnpremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
+* De volgende typen kopieerbronnen zijn toegevoegd:
+  * [CassandraBron CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
+* De eigenschap [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) toevoegen aan AzureMLBatchExecutionActivity
+  * Meerdere webservice-ingangen doorschakelen naar een Azure Machine Learning-experiment
 
 ## <a name="version-491"></a>Versie 4.9.1
-### <a name="bug-fix"></a>Bug oplossen
-* WebApi-verificatie op basis van [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)op te afschaffing.
+### <a name="bug-fix"></a>Bug fix
+* WebApi-gebaseerde verificatie voor [WebLinkedService deprecate](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx).
 
 ## <a name="version-490"></a>Versie 4.9.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* Voeg de eigenschappen [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) en [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) toe aan CopyActivity. Zie [gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over de functie.
+### <a name="feature-additions"></a>Functietoevoegingen
+* Eigenschappen [van EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) en [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) toevoegen aan CopyActivity. Zie [Gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over de functie.
 
-### <a name="bug-fix"></a>Bug oplossen
-* Een overbelasting van de methode [ActivityWindowOperationExtensions. list](https://msdn.microsoft.com/library/mt767915.aspx) introduceren, die een [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) -exemplaar gebruikt.
+### <a name="bug-fix"></a>Bug fix
+* Introduceer een overbelasting van [activityWindowOperationExtensions.List-methode,](https://msdn.microsoft.com/library/mt767915.aspx) waarbij een instantie [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) wordt uitgevoerd.
 * Mark [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) en [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) als optioneel in CopySink.
 
 ## <a name="version-480"></a>Versie 4.8.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* De volgende optionele eigenschappen zijn toegevoegd aan het type Kopieer activiteit om het afstemmen van de Kopieer prestaties mogelijk te maken:
-  * [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+### <a name="feature-additions"></a>Functietoevoegingen
+* De volgende optionele eigenschappen zijn toegevoegd aan het type activiteit kopiëren om het afstemmen van kopieerprestaties mogelijk te maken:
+  * [Parallelle kopieën](https://msdn.microsoft.com/library/mt767910.aspx)
   * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
 ## <a name="version-470"></a>Versie 4.7.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* Het nieuwe StorageFormat type [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) -type is toegevoegd om bestanden te kopiëren in de indeling van de geoptimaliseerde rij in kolommen (Orc).
-* Voeg de eigenschappen [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) en PolyBaseSettings toe aan SqlDWSink.
-  * Hiermee schakelt u het gebruik van poly base in voor het kopiëren van gegevens naar SQL Data Warehouse.
+### <a name="feature-additions"></a>Functietoevoegingen
+* Toegevoegd nieuwe StorageFormat type [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) type om bestanden te kopiëren in geoptimaliseerde rij columnar (ORC) formaat.
+* Eigenschappen [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) en PolyBaseSettings toevoegen aan SqlDWSink.
+  * Hiermee u het gebruik van PolyBase gebruiken om gegevens naar SQL Data Warehouse te kopiëren.
 
 ## <a name="version-461"></a>Versie 4.6.1
 ### <a name="bug-fixes"></a>Opgeloste fouten
-* Hiermee wordt HTTP-aanvraag voor Windows-aanbiedings activiteit opgelost.
-  * Hiermee verwijdert u de naam van de resource groep en de naam van het data factory uit de aanvraag lading.
+* Hiermee worden HTTP-aanvragen voor activiteitsvensters verholpen.
+  * Hiermee verwijdert u de naam van de resourcegroep en de naam van de gegevensfabriek uit de laadlading van het verzoek.
 
 ## <a name="version-460"></a>Versie 4.6.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* De volgende eigenschappen zijn toegevoegd aan [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx):
+### <a name="feature-additions"></a>Functietoevoegingen
+* De volgende eigenschappen zijn toegevoegd aan [PipelineProperties:](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)
   * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
   * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
   * [Gegevenssets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-* De volgende eigenschappen zijn toegevoegd aan [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx):
+* De volgende eigenschappen zijn toegevoegd aan [PipelineRuntimeInfo:](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)
   * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-* Het nieuwe [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) type [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) -type is toegevoegd voor het definiëren van gegevens sets met een JSON-indeling.
+* Het nieuwe [type JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) van [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) toegevoegd om gegevenssets te definiëren waarvan de gegevens in JSON-indeling zijn.
 
 ## <a name="version-450"></a>Versie 4.5.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* [Lijst bewerkingen toegevoegd voor het activiteiten venster](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
-  * Er zijn methoden toegevoegd om activiteiten Vensters op te halen met filters op basis van de entiteits typen (dat wil zeggen, gegevens fabrieken, data sets, pijp lijnen en activiteiten).
-* De volgende gekoppelde service typen zijn toegevoegd:
+### <a name="feature-additions"></a>Functietoevoegingen
+* [Lijstbewerkingen toegevoegd voor het activiteitenvenster](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
+  * Toegevoegde methoden om activiteitsvensters op te halen met filters op basis van de entiteitstypen (dat wil zeggen gegevensfabrieken, gegevenssets, pijplijnen en activiteiten).
+* De volgende gekoppelde servicetypen zijn toegevoegd:
   * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
-* De volgende typen gegevensset zijn toegevoegd:
+* De volgende gegevenssettypen zijn toegevoegd:
   * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
-* De volgende Kopieer bron typen zijn toegevoegd:     
+* De volgende typen kopieerbronnen zijn toegevoegd:     
   * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## <a name="version-440"></a>Versie 4.4.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* Het volgende gekoppelde service type is toegevoegd als gegevens bronnen en sinks voor kopieer activiteiten:
-  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Zie [Azure Storage gekoppelde SAS-service](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) voor conceptuele informatie en voor beelden.
+### <a name="feature-additions"></a>Functietoevoegingen
+* Het volgende gekoppelde servicetype is toegevoegd als gegevensbronnen en -putten voor kopieeractiviteiten:
+  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Zie [Azure Storage SAS Linked Service](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) voor conceptuele informatie en voorbeelden.
 
 ## <a name="version-430"></a>Versie 4.3.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* De volgende gekoppelde service typen recent zijn toegevoegd als gegevens bronnen voor kopieer activiteiten:
-  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Zie [gegevens verplaatsen van HDFS met Data Factory](data-factory-hdfs-connector.md) voor conceptuele informatie en voor beelden.
-  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Zie [gegevens verplaatsen van ODBC-gegevens archieven met behulp van Azure Data Factory](data-factory-odbc-connector.md) voor conceptuele informatie en voor beelden.
+### <a name="feature-additions"></a>Functietoevoegingen
+* De volgende gekoppelde servicetypen zijn toegevoegd als gegevensbronnen voor kopieeractiviteiten:
+  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Zie [Gegevens van HDFS verplaatsen met Gegevensfabriek](data-factory-hdfs-connector.md) voor conceptuele informatie en voorbeelden.
+  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Zie [Gegevens verplaatsen van ODBC-gegevensarchieven met Azure Data Factory](data-factory-odbc-connector.md) voor conceptuele informatie en voorbeelden.
 
 ## <a name="version-420"></a>Versie 4.2.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* Het volgende nieuwe type activiteit is toegevoegd: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Zie [Azure ml-modellen bijwerken met de activiteit resource bijwerken](data-factory-azure-ml-batch-execution-activity.md)voor meer informatie over de activiteit.
-* Er is een nieuwe optionele eigenschap [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) toegevoegd aan de [klasse AzureMLLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx).
-* De eigenschappen [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) en [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) zijn toegevoegd aan de klasse [datafactorymanagementclient te maken](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) .
-* Configuratie van de time-outs voor client aanroepen naar de Data Factory-Service toestaan.
+### <a name="feature-additions"></a>Functietoevoegingen
+* Het volgende nieuwe activiteitstype is toegevoegd: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Zie [Azure ML-modellen bijwerken met de resourceactiviteit bijwerken](data-factory-azure-ml-batch-execution-activity.md)voor meer informatie over de activiteit .
+* Er is een nieuwe optionele [eigenschapupdateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) toegevoegd aan de [klasse AzureMLLinkedService.](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)
+* [LongRunningOperationInitialTimeout-](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) en [LongRunningOperationRetryTimeout-eigenschappen](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) zijn toegevoegd aan de klasse [DataFactoryManagementClient.](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx)
+* De configuratie van de time-outs voor clientgesprekken toestaan voor de Service Data Factory.
 
 ## <a name="version-410"></a>Versie 4.1.0
-### <a name="feature-additions"></a>Functie toevoegingen
-* De volgende gekoppelde service typen zijn toegevoegd:
+### <a name="feature-additions"></a>Functietoevoegingen
+* De volgende gekoppelde servicetypen zijn toegevoegd:
   * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
   * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
-* De volgende typen activiteiten zijn toegevoegd:
-  * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
-* De volgende typen gegevensset zijn toegevoegd:
+* De volgende activiteitstypen zijn toegevoegd:
+  * [DataLakeAnalyticsUSQLActiviteit](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
+* De volgende gegevenssettypen zijn toegevoegd:
   * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
-* De volgende bron-en Sink-typen voor kopieer activiteiten zijn toegevoegd:
+* De volgende bron- en gootsteentypen voor Kopieeractiviteit zijn toegevoegd:
   * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>Versie 4.0.1
 ### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
-De naam van de volgende klassen is gewijzigd. De nieuwe namen bevinden zich in de oorspronkelijke namen van klassen vóór de release van 4.0.0.
+De volgende klassen zijn hernoemd. De nieuwe namen waren de originele namen van klassen vóór 4.0.0 versie.
 
 | Naam in 4.0.0 | Naam in 4.0.1 |
 |:--- |:--- |
@@ -144,26 +144,26 @@ De naam van de volgende klassen is gewijzigd. De nieuwe namen bevinden zich in d
 | AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
 | AzureDataset |[AzureTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuretabledataset.aspx) |
 | OracleDataset |[OracleTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.oracletabledataset.aspx) |
-| RelationalDataset |[RelationalTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
-| SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
+| Relationelegegevensset |[Relationele tabeldataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
+| SqlServerDataset SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>Versie 4.0.0
 ### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
-* De naam van de volgende klassen/interfaces is gewijzigd.
+* De volgende klassen/interfaces zijn hernoemd.
 
 | Oude naam | Nieuwe naam |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
 | Tabel |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
-| TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
-| TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
-| TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
-| TableCreateOrUpdateResponse |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
-| TableGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
-| TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
+| Tabeleigenschappen |[GegevenssetEigenschappen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
+| TabelTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
+| TabelParameters voor createorupdate |[Parameters voor het maken van gegevens](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
+| TabelCreateOrUpdate-reactie |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
+| TabelGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
+| TabellistResponse |[Reactie van datasetlist](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* De **lijst** methoden retour neren nu pagina resultaten. Als het antwoord een niet-lege eigenschap **Nextlink** bevat, moet de client toepassing de volgende pagina blijven ophalen totdat alle pagina's zijn geretourneerd.  Hier volgt een voorbeeld:
+* De **methoden Lijst** geven nu paginaresultaten terug. Als het antwoord een niet-lege **NextLink-eigenschap** bevat, moet de clienttoepassing doorgaan met het ophalen van de volgende pagina totdat alle pagina's zijn geretourneerd.  Hier volgt een voorbeeld:
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -178,8 +178,8 @@ De naam van de volgende klassen is gewijzigd. De nieuwe namen bevinden zich in d
         nextLink = nextResponse.NextLink;
     }
     ```
-* **Lijst** PIJPLIJN-API retourneert alleen de samen vatting van een pijp lijn in plaats van volledige details. Bijvoorbeeld: activiteiten in een pijp lijn-samen vatting bevatten alleen naam en type.
+* **Lijstpijplijn-API** retourneert alleen de samenvatting van een pijplijn in plaats van volledige details. Activiteiten in een pijplijnoverzicht bevatten bijvoorbeeld alleen naam en type.
 
-### <a name="feature-additions"></a>Functie toevoegingen
-* De klasse [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) ondersteunt twee nieuwe eigenschappen, **SliceIdentifierColumnName** en **SqlWriterCleanupScript**, ter ondersteuning van idempotent kopiëren naar Azure SQL Data Warehouse. Raadpleeg het [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) artikel voor meer informatie over deze eigenschappen.
-* We ondersteunen nu het uitvoeren van een opgeslagen procedure voor Azure SQL Database en Azure SQL Data Warehouse bronnen als onderdeel van de Kopieer activiteit. De klassen [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) en [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) hebben de volgende eigenschappen: **SqlReaderStoredProcedureName** en **StoredProcedureParameters**. Zie de [Azure SQL database](data-factory-azure-sql-connector.md#sqlsource) -en [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) artikelen op Azure.com voor meer informatie over deze eigenschappen.  
+### <a name="feature-additions"></a>Functietoevoegingen
+* De klasse [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) ondersteunt twee nieuwe eigenschappen, **SliceIdentifierColumnName** en **SqlWriterCleanupScript**, om idempotent-kopie naar Azure SQL Data Warehouse te ondersteunen. Zie het artikel [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) voor meer informatie over deze eigenschappen.
+* We ondersteunen nu het uitvoeren van opgeslagen procedures tegen Azure SQL Database en Azure SQL Data Warehouse-bronnen als onderdeel van de kopieeractiviteit. De [sqlsource-](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) en [SqlDWSource-klassen](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) hebben de volgende eigenschappen: **SqlReaderStoredProcedureName** en **StoredProcedureParameters**. Zie de artikelen [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) en Azure SQL Data [Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) op Azure.com voor meer informatie over deze eigenschappen.  

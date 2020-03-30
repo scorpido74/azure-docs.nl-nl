@@ -1,6 +1,6 @@
 ---
-title: Data base-principals voor Azure Data Explorer toevoegen met behulp vanC#
-description: In dit artikel leert u hoe u databaseprincipal kunt toevoegen voor Azure Data Explorer met behulp C#van.
+title: 'Databaseprincipals voor Azure Data Explorer toevoegen met C #'
+description: In dit artikel leert u hoe u databaseprincipals voor Azure Data Explorer toevoegt met C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,37 +8,37 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 797d1253d44739f2026563e3df72bc85a8ef382e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965032"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>Data base-principals voor Azure Data Explorer toevoegen met behulp vanC#
+# <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>Databaseprincipals voor Azure Data Explorer toevoegen met C #
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager-sjabloon](database-principal-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel voegt u de data base-principals voor Azure Data Explorer C#toe met behulp van.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel voegt u databaseprincipals voor Azure Data Explorer toe met C#.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een cluster en data base maken](create-cluster-database-csharp.md).
+* Als u Visual Studio 2019 niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* [Maak een cluster en database](create-cluster-database-csharp.md).
 
-## <a name="install-c-nuget"></a>NuGet C# installeren
+## <a name="install-c-nuget"></a>C# NuGet installeren
 
-* Installeer [micro soft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Installeer [micro soft. rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) voor authenticatie.
+* Installeer [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Installeer [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) voor verificatie.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
 ## <a name="add-a-database-principal"></a>Een databaseprincipal toevoegen
 
-In het volgende voor beeld ziet u hoe u een Data Base-Principal kunt toevoegen via een programma.
+In het volgende voorbeeld ziet u hoe u een hoofdbestandman van een database programmatisch toevoegen.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -66,21 +66,21 @@ var databasePrincipalAssignment = new DatabasePrincipalAssignment(principalId, r
 await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, principalAssignmentName, databasePrincipalAssignment);
 ```
 
-|**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+|**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
 |---|---|---|
-| tenantId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | Uw Tenant-ID. Ook bekend als Directory-ID.|
-| subscriptionId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
-| clientId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
-| resourceGroupName | *testrg* | De naam van de resource groep die het cluster bevat.|
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Je pacht-id. Ook wel directory ID genoemd.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De client-id van de toepassing die toegang heeft tot bronnen in uw tenant.|
+| clientGeheim | *xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | Het clientgeheim van de toepassing die toegang heeft tot bronnen in uw tenant. |
+| resourceGroupName | *testrg* | De naam van de resourcegroep die uw cluster bevat.|
 | clusterName | *mykustocluster* | De naam van uw cluster.|
-| databaseName | *mykustodatabase* | De naam van uw database.|
-| principalAssignmentName | *databasePrincipalAssignment1* | De naam van de principal-resource van uw data base.|
-| principalId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De principal-ID, die gebruikers-e-mail, toepassings-ID of naam van beveiligings groep kan zijn.|
-| role | *Beheerder* | De rol van de databaseprincipal, die ' admin, ' opname functie ', ' Monitor ', ' gebruiker ', ' UnrestrictedViewers ', ' Viewer ' kan zijn.|
-| tenantIdForPrincipal | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De Tenant-ID van de principal.|
-| principalType | *App* | Het type Principal, dat ' gebruiker ', ' app ' of ' Group ' kan zijn|
+| Databasenaam | *mykustodatabase* | De naam van uw database.|
+| principalAssignmentName | *databasePrincipalAssignment1* | De naam van uw database hoofdbron.|
+| principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De hoofd-ID, die kan worden gebruiker e-mail, applicatie-id, of beveiligingsgroep naam.|
+| role | *Beheerder* | De rol van uw databaseprincipal, die 'Admin', 'Ingestor', 'Monitor', 'User', 'UnrestrictedViewers', 'Viewer' kan zijn.|
+| huurderIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De huurder ID van de opdrachtgever.|
+| principalType | *App* | Het type principal, dat 'Gebruiker', 'App' of 'Groep' kan zijn|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gegevens opnemen met behulp van de knoop punt bibliotheek van Azure Data Explorer](node-ingest-data.md)
+* [Gegevens opnemen met behulp van de Node-bibliotheek voor Azure Data Explorer](node-ingest-data.md)

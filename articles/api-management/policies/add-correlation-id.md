@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld-API-beheer beleid: een kop met de correlatie-id toevoegen'
+title: Voorbeeld-API-beheerbeleid - Een koptekst toevoegen met correlatie-id
 titleSuffix: Azure API Management
-description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u een koptekst met een correlatie-id aan de inkomende aanvraag kunt toevoegen.'
+description: Voorbeeld van azure API-beheerbeleid - toont aan hoe u een koptekst met een correlatie-id toevoegt aan de binnenkomende aanvraag.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422257"
 ---
-# <a name="add-a-header-containing-a-correlation-id"></a>Een koptekst met een correlatie-id toevoegen
+# <a name="add-a-header-containing-a-correlation-id"></a>Een header met een correlatie-id toevoegen
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u een koptekst met een correlatie-id toevoegt aan de inkomende aanvraag. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voorbeeld van een Azure API-beheerbeleidsvoorbeeld weergegeven waarin wordt uitgelegd hoe u een koptekst met een correlatie-id toevoegt aan de binnenkomende aanvraag. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,5 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
++ [Beleidsvoorbeelden](../policy-samples.md)
 

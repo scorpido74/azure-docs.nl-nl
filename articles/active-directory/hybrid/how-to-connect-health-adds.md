@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897310"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Azure AD Connect Health gebruiken met AD DS
@@ -49,19 +49,19 @@ Dit dashboard geeft een overzicht van de replicatiestatus en -topologie van uw b
 
 ![Replicatiestatus](./media/how-to-connect-health-adds/aadconnect-health-adds-replication.png)
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 Deze functie biedt grafische trends van verschillende prestatiemeters, die voortdurend worden verzameld van elke bewaakte domeincontroller. Prestaties van een domeincontroller kunnen eenvoudig worden vergeleken met andere bewaakte domeincontrollers in uw forest. Bovendien ziet u verschillende prestatiemeters naast elkaar, dit is nuttig bij probleemoplossing in uw omgeving.
 
-![Controleren](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
+![Bewaking](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
 
 Standaard hebben we vier prestatiemeters vooraf geselecteerd; u kunt echter andere meters opnemen door op de filteropdracht te klikken en de gewenste meters te (de)selecteren. Als u klikt op de grafiek van een prestatiemeter, wordt een nieuwe blade geopend. Deze bevat de gegevenspunten voor elke bewaakte domeincontroller.
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)
-* [Azure AD Connect Health Operations](how-to-connect-health-operations.md) (Azure AD Connect Health-bewerkingen)
+* [Azure AD Connect-statusbewerkingen](how-to-connect-health-operations.md)
 * [Azure AD Connect Health gebruiken met AD FS](how-to-connect-health-adfs.md)
-* [Azure AD Connect Health for Sync gebruiken](how-to-connect-health-sync.md)
+* [Azure AD Connect-status gebruiken voor synchronisatie](how-to-connect-health-sync.md)
 * [Veelgestelde vragen over Azure AD Connect Health](reference-connect-health-faq.md)
-* [Versiegeschiedenis van Azure AD Connect Health](reference-connect-health-version-history.md)
+* [Versiegeschiedenis van Azure AD Connect-status](reference-connect-health-version-history.md)
 

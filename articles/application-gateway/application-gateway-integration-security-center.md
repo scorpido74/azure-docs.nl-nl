@@ -1,6 +1,6 @@
 ---
-title: Application Gateway integratie met Azure Security Center | Microsoft Docs
-description: Deze pagina bevat informatie over de integratie van Application Gateway in Azure Security Center.
+title: Application Gateway-integratie met Azure Security Center | Microsoft Documenten
+description: Op deze pagina vindt u informatie over de integratie van Application Gateway in Azure Security Center.
 services: application-gateway
 author: vhorne
 ms.author: victorh
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277195"
 ---
-# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Overzicht van de integratie tussen Application Gateway en Azure Security Center
+# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Overzicht van integratie tussen Application Gateway en Azure Security Center
 
-Lees hoe u met Application Gateway en Security Center uw webtoepassingen kunt beveiligen. Application Gateway Web Application Firewall (WAF) integreert met [Security Center](../security-center/security-center-intro.md) om een naadloze weer gave te bieden voor het voor komen, detecteren en reageren op bedreigingen voor onbeveiligde webtoepassingen in uw omgeving.
+Ontdek hoe Application Gateway en Security Center uw bronnen van webtoepassingen helpen beschermen. Application gateway web application firewall (WAF) integreert met [Security Center](../security-center/security-center-intro.md) om een naadloze weergave te bieden om bedreigingen voor onbeveiligde webapplicaties in uw omgeving te voorkomen, detecteren en erop te reageren.
 
 ## <a name="overview"></a>Overzicht
 
-Application Gateway WAF is een aanbeveling in Security Center voor het beveiligen van webtoepassingen tegen aanvallen en beveiligings problemen. Webingeschakelde resources die niet worden beveiligd door WAF, worden weer gegeven in het Security Center als aanbevelingen met hoge urgentie. Aanbevelingen voor Web Application firewalls worden weer gegeven op de pagina **overzicht** onder **toepassingen**.
+Application Gateway WAF is een aanbeveling in Security Center voor het beschermen van webapplicaties tegen exploits en kwetsbaarheden. Web-enabled resources die niet worden beschermd door WAF worden weergegeven in het beveiligingscentrum als aanbevelingen met hoge ernst. Aanbevelingen voor firewalls voor webtoepassingen worden weergegeven op de pagina **Overzicht** onder **Toepassingen**.
 
-![integratie met Security Center][1]
+![integratie met security center][1]
 
-Als u op aanbevelingen met betrekking tot Web Application Firewall klikt, wordt een nieuwe pagina geopend met de details van de aanbeveling.
+Als u op aanbevelingen met betrekking tot de firewall van de webtoepassing klikt, wordt een nieuwe pagina geopend met de details van de aanbeveling.
 
-## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Een Web Application Firewall toevoegen aan een bestaande resource
+## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Een firewall voor webtoepassingen toevoegen aan een bestaande bron
 
-Ga naar **alle services** > **beveiliging en identiteit** > **Security Center** en op **Security Center-overzicht**en klik op **toepassingen**. In **Security Center-toepassingen**bevat de tabel een lijst met toepassingen die Security Center gedetecteerd in uw abonnement.
+Navigeer naar **Beveiliging van alle services** > + het**identiteitsbeveiligingscentrum** **Security + Identity** > en in **het beveiligingscentrum - Overzicht**, klik op **Toepassingen**. In **Beveiligingscentrum - Toepassingen**bevat de tabel een lijst met toepassingen die Security Center in uw abonnement heeft gedetecteerd.
 
 ![webtoepassingen][3]
 
-Als u op een webtoepassing met een kritiek probleem klikt, wordt de pagina **beveiligings status** van de toepassing weer geven. In de onderstaande afbeelding wordt de webtoepassing die niet wordt beveiligd door een Web Application Firewall. 
+Door op een webtoepassing met een kritiek probleem te klikken, krijgt u de pagina **Beveiligingsstatus toepassing.** In de afbeelding hieronder wordt de webtoepassing die niet wordt beschermd door een firewall voor webtoepassingen. 
 
-![niet-beveiligde webbronnen][2]
+![webbronnen niet beveiligd][2]
 
-Klik op **een Web Application firewall toevoegen** onder **aanbevelingen** om de pagina **een Web Application firewall toevoegen** te openen.
+Klik **op Een firewall voor webtoepassingen toevoegen** onder **Aanbevelingen** om de pagina **Firewall voor webtoepassingen toevoegen** te openen.
 
-Als u geen bestaande Application Gateway hebt of een nieuwe wilt maken, klikt u op **Nieuw** en **maakt u een nieuwe Web Application firewall**en klikt u op **micro soft-Application Gateway**. U gaat dan door de stappen voor het maken van een toepassings gateway. Op dit moment wordt uw webtoepassing toegevoegd als een beveiligde resource. Security Center nu volgt dat deze bron wordt beveiligd door een Web Application Firewall. Dit voegt deze niet toe als lid van een back-end-groep.
+Als u geen bestaande toepassingsgateway hebt of een nieuwe wilt maken, klikt u op **Nieuw maken** en klikt u op Firewall **voor webtoepassingen maken**en klikt u op Microsoft - Application **Gateway**. Dit neemt u mee door de stappen om een toepassingsgateway te maken. Op dit moment wordt uw webtoepassing toegevoegd als een beveiligde bron, Security Center houdt nu bij dat deze bron wordt beschermd door een firewall voor webtoepassingen. Dit voegt het niet toe als een backend pool lid.
 
-Als u een bestaande toepassings gateway hebt, kunt u deze kiezen onder **bestaande oplossing gebruiken**
+Als u een bestaande toepassingsgateway hebt, u deze kiezen onder **Bestaande oplossing gebruiken**
 
-![Pagina om een Web Application Firewall toe te voegen][4]
+![Pagina om een firewall voor webtoepassingen toe te voegen][4]
 
-Als u een webtoepassing toevoegt aan een toepassings gateway via Security Center, wordt de resource niet toegevoegd als lid van een back-end-groep. Dit moet rechtstreeks op de toepassings gateway resource worden uitgevoerd.
+Als u een webtoepassing toevoegt aan een toepassingsgateway via Security Center, wordt de bron niet toegevoegd als backendpoollid. Dit moet rechtstreeks worden gedaan op de gatewaybron van de toepassing.
 
-## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Een resource toevoegen aan een bestaande Web Application Firewall
+## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Een bron toevoegen aan een bestaande firewall voor webtoepassingen
 
-Ga naar **alle services** > **beveiliging en identiteit** > **Security Center** en op **Security Center-overzicht**en klik op **partner oplossingen**. Bestaande Security Center-compatibele toepassings gateways worden weer gegeven op de pagina **partner oplossingen** .
+Navigeer naar **Alle services** > **Security + Identity** > **Security Center** en op Security Center - **Overzicht**, klik op **Partneroplossingen**. Bestaande beveiligingscentrumbewuste toepassingsgateways worden weergegeven op de pagina **Partneroplossingen.**
 
-![partner oplossingen][7]
+![partneroplossingen][7]
 
-Klik op **App koppelen** om **koppelings toepassingen**te openen. hier ziet u de opties voor het selecteren van bestaande toepassingen. Kies de toepassingen die u wilt beveiligen en klik op **OK**. Hiermee wordt de webtoepassing niet toegevoegd aan de back-end-groep van de toepassings gateway. Hiermee stelt u de resources in als een beveiligde resource, zodat Security Center deze kunt volgen. Als u de resource als lid van een back-endadresgroep wilt toevoegen, moet u dit doen op de Application Gateway vanaf de huidige pagina. u **kunt klikken op** de toepassings gateway-resource waar u de webtoepassing kunt toevoegen aan de back-end-groep.
+Klik **op Koppeling-app** om **Koppelingstoepassingen**te openen, hier krijgt u de opties om bestaande toepassingen te selecteren. Kies de toepassingen die u wilt beveiligen en klik op **OK**. Dit voegt de webtoepassing niet toe aan de backendpool van de toepassingsgateway. Hiermee worden de resources ingesteld als een beveiligde bron, zodat Security Center deze kan volgen. Als u de bron wilt toevoegen als backendpoollid, moet dit worden gedaan op de toepassingsgateway, vanaf de huidige pagina u op **Oplossingsconsole** klikken om naar de bron van de toepassingsgateway te worden geleid waar u de webtoepassing toevoegen aan de backendgroep.
 
-![toepassingen voor partner oplossingen][6]
+![partneroplossingen toepassingen][6]
 
-## <a name="finalize-configuration"></a>Configuratie volt ooien
+## <a name="finalize-configuration"></a>Configuratie afronden
 
-Security Center houdt toepassingen bij die zijn toegevoegd aan een toepassings gateway als een beveiligde resource.  Hiermee wordt de status van deze resource gecontroleerd en wordt gegarandeerd dat deze wordt beveiligd door een toepassings gateway. De volgende stap is het toevoegen van het privé-IP-adres, het open bare IP-adres of de NIC van uw virtuele machine aan de back-end-groep van de toepassings gateway. Tot dit is gebeurd, wordt een extra aanbeveling van het **volt ooien** van de beveiliging van de toepassing weer gegeven totdat de resource is toegevoegd.
+Security Center traceert toepassingen die zijn toegevoegd aan een toepassingsgateway als een beveiligde bron.  Het controleert de status van deze bron en zorgt ervoor dat deze wordt beschermd door een toepassingsgateway. De volgende stap is het toevoegen van de private IP, openbare IP of NIC van uw virtuele machine aan de backend pool van de toepassingsgateway. Totdat dit is gedaan, wordt een aanvullende aanbeveling **voor toepassingsbeveiliging afronden** weergegeven totdat de bron is toegevoegd.
 
-![Pagina om een Web Application Firewall toe te voegen][5]
+![Pagina om een firewall voor webtoepassingen toe te voegen][5]
 
 ## <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
-In Security Center gaat u naar **detectie** > **beveiligings waarschuwingen**.  Hier vindt u WAF-waarschuwingen voor uw toepassings gateways. Waarschuwingen worden opgesplitst op WAF regel.
+Navigeer binnen beveiligingscentrum naar > **detectiebeveiligingswaarschuwingen.** **DETECTION**  Hier vindt u WAF-waarschuwingen voor uw toepassingsgateways. Waarschuwingen worden opgesplitst op WAF-regel.
 
-![beveiligings waarschuwingen][8]
+![beveiligingswaarschuwingen][8]
 
-Als u een regel selecteert, wordt er een lijst met waarschuwingen voor deze specifieke WAF-regel weer geven. Elke waarschuwing bevat aanvullende details over het zoeken. De details bieden een koppeling naar de toepassings gateway.
+Als u een regel selecteert, wordt een lijst met waarschuwingen voor die specifieke WAF-regel weergegeven. Elke waarschuwing toont aanvullende details over de bevinding. De details bieden een link naar de toepassingsgateway.
  
-![waarschuwings Details][9]
+![waarschuwingsgegevens][9]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over het inschakelen van Web Application Firewall op een bestaande toepassings gateway naar [een Azure-toepassing gateway maken of bijwerken met Web Application firewall](application-gateway-web-application-firewall-portal.md).
+Ga voor meer informatie over het inschakelen van firewall van webtoepassingen op een bestaande toepassingsgateway naar [Een Azure Application Gateway maken of bijwerken met firewall voor webtoepassingen.](application-gateway-web-application-firewall-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

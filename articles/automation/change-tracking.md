@@ -1,55 +1,55 @@
 ---
 title: Wijzigingen bijhouden met Azure Automation
-description: De Wijzigingen bijhouden oplossing helpt u bij het identificeren van de software-en Windows-service wijzigingen die zich in uw omgeving voordoen.
+description: Met de oplossing Voor het bijhouden van wijzigingen u software- en Windows-servicewijzigingen identificeren die zich in uw omgeving voordoen.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844799"
 ---
-# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de oplossing Voor het bijhouden van wijzigingen
 
-Dit artikel helpt u bij het gebruik van de Wijzigingen bijhouden-oplossing om eenvoudig wijzigingen in uw omgeving te identificeren. De oplossing houdt de volgende configuratie wijzigingen bij om u te helpen bij het lokaliseren van operationele problemen:
+In dit artikel u de oplossing Voor het bijhouden van wijzigingen gebruiken om eenvoudig wijzigingen in uw omgeving te identificeren. De oplossing houdt de volgende configuratiewijzigingen bij om u te helpen operationele problemen op te sporen:
 
 - Windows-software
-- Linux-software (pakketten)
+- Linux software (pakketten)
 
     >[!NOTE]
-    >Wijzigingen bijhouden houdt alleen software bij die wordt beheerd met package manager van de distributie.
+    >Change Tracking houdt alleen software bij die wordt beheerd met de package manager van de distributie.
 
-- Windows-en Linux-bestanden
-- Windows-register sleutels
+- Windows- en Linux-bestanden
+- Windows-registersleutels
 - Windows-services
-- Linux-daemons
+- Linux daemons
 
-Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-bestanden en Linux-daemons op de bewaakte servers worden verzonden naar de Azure Monitor-service in de Cloud voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice. Met behulp van de informatie op het Wijzigingen bijhouden dash board kunt u eenvoudig de wijzigingen zien die zijn aangebracht in uw server infrastructuur.
+Wijzigingen in geïnstalleerde software, Windows-services, Windows-register en bestanden en Linux-daemons op de bewaakte servers worden verzonden naar de Azure Monitor-service in de cloud voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice. Door de informatie op het dashboard Wijzigingstracking te gebruiken, u eenvoudig de wijzigingen zien die zijn aangebracht in uw serverinfrastructuur.
 
 > [!NOTE]
-> Azure Automation Wijzigingen bijhouden houdt wijzigingen in de virtuele machines bij. Zie de [wijzigings geschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van de Azure-resource grafiek om de wijzigingen in de Azure Resource Manager-eigenschappen bij te houden.
+> Azure Automation Change Tracking houdt wijzigingen in virtuele machines bij. Zie de [wijzigingsgeschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van Azure Resource Graph als u wijzigingen in de eigenschap Azure Resource Manager wilt bijhouden.
 
 ## <a name="supported-windows-operating-systems"></a>Ondersteunde Windows-besturingssystemen
 
 De volgende versies van het Windows-besturingssysteem worden officieel ondersteund voor de Windows-agent:
 
-* Windows Server 2008 R2 of hoger
+* Windows Server 2008 R2 of later
 
 ## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturingssystemen
 
-De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan echter ook worden uitgevoerd op andere distributies die niet worden vermeld. Tenzij anders vermeld, worden alle secundaire releases ondersteund voor elke primaire versie die wordt vermeld.
+De volgende Linux distributies worden officieel ondersteund. Echter, de Linux-agent kan ook draaien op andere distributies niet vermeld. Tenzij anders vermeld, worden alle kleine releases ondersteund voor elke belangrijke versie die wordt vermeld.
 
 ### <a name="64-bit"></a>64-bits
 
 * CentOS 6 en 7
-* Amazon Linux 2017,09
+* Amazon Linux 2017.09
 * Oracle Linux 6 en 7
 * Red Hat Enterprise Linux Server 6 en 7
 * Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
+* Ubuntu Linux 14.04 LTS, 16.04 LTS en 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
 ### <a name="32-bit"></a>32-bits
@@ -58,273 +58,273 @@ De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan 
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
 * Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14,04 LTS en 16,04 LTS
+* Ubuntu Linux 14.04 LTS en 16.04 LTS
 
-## <a name="onboard"></a>Wijzigingen bijhouden en inventaris inschakelen
+## <a name="enable-change-tracking-and-inventory"></a><a name="onboard"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
-Als u wijzigingen wilt bijhouden, moet u de Wijzigingen bijhouden-en inventaris oplossing inschakelen. Er zijn veel manieren om machines op Wijzigingen bijhouden en inventaris te voorbereiden. Hieronder vindt u de aanbevolen en ondersteunde manieren om de oplossing vrij te maken.
+Als u wijzigingen wilt bijhouden, moet u de oplossing Voor het bijhouden en inventaris wijzigen inschakelen. Er zijn veel manieren om machines aan boord te gaan om tracking en voorraad te wijzigen. De volgende zijn de aanbevolen en ondersteunde manieren om aan boord van de oplossing.
 
 * [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
-* [Van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
-* [Vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
-* [Met een Azure Automation runbook](automation-onboard-solutions.md)
+* [Van het browsen op meerdere machines](automation-onboard-solutions-from-browse.md)
+* [Vanaf uw Automatiseringsaccount](automation-onboard-solutions-from-automation-account.md)
+* [Met een Azure Automation-runbook](automation-onboard-solutions.md)
 
-## <a name="configuring-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris configureren
+## <a name="configuring-change-tracking-and-inventory"></a>Wijzigingstracking en -voorraad configureren
 
-Ga voor meer informatie over het onboarden van computers naar de oplossing naar: [onboarding Automation-oplossingen](automation-onboard-solutions-from-automation-account.md). Wanneer u een computer hebt met de Wijzigingen bijhouden-en inventaris oplossing, kunt u de items configureren die moeten worden gevolgd. Wanneer u een nieuw bestand of register sleutel inschakelt om bij te houden, wordt deze ingeschakeld voor zowel Wijzigingen bijhouden als inventarisatie.
+Voor meer informatie over het aan boord nemen van computers voor de oplossing bezoek: [Onboarding Automation oplossingen](automation-onboard-solutions-from-automation-account.md). Zodra u een machine onboarding met de change tracking en inventaris oplossing, u de items te volgen. Wanneer u een nieuw bestand of registersleutel inschakelt om bij te houden, is deze ingeschakeld voor zowel Change Tracking als Inventory.
 
-Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, worden MD5-hashes van de bestanden gebruikt. Deze hashes worden vervolgens gebruikt om te detecteren of er sinds de laatste inventarisatie een wijziging is aangebracht.
+Voor het bijhouden van wijzigingen in bestanden op zowel Windows als Linux, md5 hashes van de bestanden worden gebruikt. Deze hashes worden vervolgens gebruikt om te detecteren of er een wijziging is aangebracht sinds de laatste voorraad.
 
-### <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
+### <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
 
-Azure Security Center heeft FIM (File Integrity Monitoring) op basis van Azure Wijzigingen bijhouden toegevoegd. Hoewel FIM alleen bestanden en registers bewaakt, omvat de volledige Wijzigingen bijhouden-oplossing ook:
+Azure Security Center heeft FiM (File Integrity Monitoring) toegevoegd op Azure Change Tracking. Hoewel FIM alleen bestanden en registers controleert, bevat de volledige oplossing voor het bijhouden van wijzigingen ook:
 
-- Software wijzigingen
-- Windows-Services
-- Linux-daemons
+- Softwarewijzigingen
+- Windows-services
+- Linux Daemons
 
-Als u FIM al hebt ingeschakeld en de volledige Wijzigingen bijhouden-oplossing wilt uitproberen, moet u de volgende stappen uitvoeren. De instellingen worden niet verwijderd door dit proces.
+Als u FIM al hebt ingeschakeld en de volledige oplossing voor het bijhouden van wijzigingen wilt uitproberen, moet u de volgende stappen uitvoeren. U instellingen worden niet verwijderd door dit proces.
 
 > [!NOTE]
-> Als u de volledige Wijzigingen bijhouden-oplossing inschakelt, kunnen er extra kosten in rekening worden gebracht. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
+> Het inschakelen van de volledige oplossing voor het bijhouden van wijzigingen kan extra kosten met zich meebrengen, zie [Automatiseringsprijzen](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
 
-1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
-2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op verwijderen, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Schakel de oplossing opnieuw in door naar het Automation-account te gaan en **Wijzigingen bijhouden** te selecteren in het menu resource onder **configuratie beheer**.
-4. Bevestig de details van de werk ruimte-instelling en klik op **inschakelen**.
+1. Verwijder de bewakingsoplossing door naar de werkruimte te navigeren en deze te vinden in de [lijst met geïnstalleerde bewakingsoplossingen.](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)
+2. Klik op de naam van de oplossing om de overzichtspagina te openen en klik vervolgens op Verwijderen, zoals beschreven in [Een bewakingsoplossing verwijderen.](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)
+3. Schakel de oplossing opnieuw in door naar het automatiseringsaccount te navigeren en **Bijhouden van wijzigingen** te selecteren in het resourcemenu onder **Configuratiebeheer**.
+4. Bevestig de details van de instelling van uw werkruimte en klik op **Inschakelen**.
 
 ### <a name="configure-linux-files-to-track"></a>Linux-bestanden configureren om bij te houden
 
-Gebruik de volgende stappen om bestands tracering op Linux-computers te configureren:
+Gebruik de volgende stappen om bestandstracking op Linux-computers te configureren:
 
-1. Selecteer in uw Automation-account de optie **Wijzigingen bijhouden** onder **configuratie beheer**. Klik op **Instellingen bewerken** (het tandwiel symbool).
-2. Selecteer op de pagina **Wijzigingen bijhouden** **Linux-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen aan de tracering.
-3. Voer op het **Linux-bestand voor wijzigingen bijhouden toevoegen**de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan**.
+1. Selecteer in uw automatiseringsaccount De optie **Tracking wijzigen** onder **CONFIGURATIEBEHEER**. Klik **op Instellingen bewerken** (het tandwielsymbool).
+2. Selecteer op de pagina **Bijhouden wijzigen** de optie **Linux-bestanden**en klik op **+ Toevoegen** om een nieuw bestand toe te voegen dat u wilt bijhouden.
+3. Voer in het **Add Linux-bestand voor het bijhouden van wijzigingen**de gegevens voor het bestand of de map in om bij te houden en op Opslaan te **klikken**.
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
-|Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
-|Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
-|Pad invoeren     | Het pad om het bestand te controleren. Bijvoorbeeld: "/etc/*. conf"       |
-|Padtype     | Type item dat moet worden bijgehouden, mogelijke waarden zijn bestand en Directory.        |
+|Ingeschakeld     | Hiermee bepaalt u of de instelling wordt toegepast.        |
+|Itemnaam     | Vriendelijke naam van het bestand dat moet worden bijgehouden.        |
+|Groep     | Een groepsnaam voor het logisch groeperen van bestanden.        |
+|Pad invoeren     | Het pad om te controleren op het bestand. Bijvoorbeeld: "/etc/*.conf"       |
+|Padtype     | Type item dat moet worden bijgehouden, mogelijke waarden zijn Bestand en Directory.        |
 |Recursie     | Bepaalt of recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden.        |
 |Sudo gebruiken     | Deze instelling bepaalt of sudo wordt gebruikt bij het controleren op het item.         |
-|Koppelingen     | Deze instelling bepaalt hoe symbolische koppelingen worden afgehandeld bij het doorlopen van mappen.<br> **Negeren** : Hiermee worden symbolische koppelingen genegeerd en worden de bestanden/mappen waarnaar wordt verwezen, niet meegenomen.<br>**Follow** -volgt de symbolische koppelingen tijdens recursie en bevat ook de bestanden/mappen waarnaar wordt verwezen.<br>**Beheren** : volgt de symbolische koppelingen en staat het wijzigen van geretourneerde inhoud toe.     |
+|Koppelingen     | Deze instelling bepaalt hoe symbolische koppelingen worden afgehandeld bij het doorlopen van mappen.<br> **Negeren** - Negeert symbolische koppelingen en bevat niet de bestanden / mappen waarnaar wordt verwezen.<br>**Follow** - Volgt de symbolische links tijdens de recursie en bevat ook de bestanden / mappen waarnaar wordt verwezen.<br>**Manage** - Volgt de symbolische links en maakt het wijzigen van geretourneerde inhoud mogelijk.     |
 |Bestandsinhoud uploaden voor alle instellingen| Schakelt uploaden van bestandsinhoud bij bijgehouden wijzigingen in of uit. Beschikbare opties: **Waar** of **Onwaar**.|
 
 > [!NOTE]
 > Het gebruik van de optie 'Beheren' voor koppelingen wordt niet aanbevolen. Het ophalen van bestandsinhoud wordt niet ondersteund.
 
-### <a name="configure-windows-files-to-track"></a>Windows-bestanden configureren voor het bijhouden van
+### <a name="configure-windows-files-to-track"></a>Windows-bestanden configureren om bij te houden
 
 Gebruik de volgende stappen om het bijhouden van bestanden op Windows-computers te configureren:
 
-1. Selecteer in uw Automation-account de optie **Wijzigingen bijhouden** onder **configuratie beheer**. Klik op **Instellingen bewerken** (het tandwiel symbool).
-2. Selecteer op de pagina **Wijzigingen bijhouden** **Windows-bestanden**en klik vervolgens op **toevoegen** om een nieuw bestand toe te voegen om bij te houden.
-3. Voer op het **Windows-bestand voor wijzigingen bijhouden toevoegen**de informatie in voor het bestand dat u wilt bijhouden en klik op **Opslaan**.
+1. Selecteer in uw automatiseringsaccount De optie **Tracking wijzigen** onder **CONFIGURATIEBEHEER**. Klik **op Instellingen bewerken** (het tandwielsymbool).
+2. Selecteer op de pagina **Bijhouden wijzigen** de optie **Windows-bestanden**en klik op **+ Toevoegen** om een nieuw bestand toe te voegen dat u wilt bijhouden.
+3. Voer in het **Windows-bestand voor bijhouden van wijzigingen**de gegevens in voor het bestand dat u wilt bijhouden en klik op **Opslaan**.
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
-|Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden.        |
-|Groep     | Een groeps naam voor het logisch groeperen van bestanden.        |
+|Ingeschakeld     | Hiermee bepaalt u of de instelling wordt toegepast.        |
+|Itemnaam     | Vriendelijke naam van het bestand dat moet worden bijgehouden.        |
+|Groep     | Een groepsnaam voor het logisch groeperen van bestanden.        |
 |Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "C:\temp\\\*.txt"<br>U kunt ook omgevingsvariabelen gebruiken zoals ' %winDir%\System32\\\*. * "       |
 |Recursie     | Bepaalt of recursie wordt gebruikt bij het zoeken naar het item dat moet worden bijgehouden.        |
 |Bestandsinhoud uploaden voor alle instellingen| Schakelt uploaden van bestandsinhoud bij bijgehouden wijzigingen in of uit. Beschikbare opties: **Waar** of **Onwaar**.|
 
-## <a name="wildcard-recursion-and-environment-settings"></a>Joker tekens, recursie en omgevings instellingen
+## <a name="wildcard-recursion-and-environment-settings"></a>Wildcard-, recursie- en omgevingsinstellingen
 
-Met recursie kunt u Joker tekens opgeven om het bijhouden van alle directory's en omgevings variabelen te vereenvoudigen, zodat u bestanden in verschillende omgevingen met meerdere of dynamische stations kunt bijhouden. De volgende lijst bevat algemene informatie die u moet kennen bij het configureren van recursie:
+Met Recursion u wildcards opgeven om het bijhouden van mappen en omgevingsvariabelen te vereenvoudigen, zodat u bestanden bijhouden in verschillende omgevingen met meerdere of dynamische schijfnamen. In de volgende lijst worden algemene gegevens weergegeven die u moet weten bij het configureren van recursie:
 
-* Joker tekens zijn vereist voor het bijhouden van meerdere bestanden
-* Als u Joker tekens gebruikt, kunnen ze alleen worden gebruikt in het laatste segment van een pad. (zoals `c:\folder\*file*` of `/etc/*.conf`)
-* Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar wordt het pad mislukt wanneer de inventarisatie wordt uitgevoerd.
-* Vermijd algemene paden zoals `c:\*.*` bij het instellen van het pad, omdat dit ertoe leidt dat er te veel mappen worden gepasseerd.
+* Wildcards zijn vereist voor het bijhouden van meerdere bestanden
+* Als ze jokertekens gebruiken, kunnen ze alleen worden gebruikt in het laatste segment van een pad. (zoals `c:\folder\*file*` of `/etc/*.conf`)
+* Als een omgevingsvariabele een ongeldig pad heeft, wordt de validatie geslaagd, maar dat pad mislukt wanneer de voorraad wordt uitgevoerd.
+* Vermijd algemene paden, zoals `c:\*.*` bij het instellen van het pad, omdat dit zou resulteren in te veel mappen worden doorkruist.
 
-## <a name="configure-file-content-tracking"></a>Tracering van bestands inhoud configureren
+## <a name="configure-file-content-tracking"></a>Tracking van bestandsinhoud configureren
 
-U kunt de inhoud voor en na een wijziging van een bestand met bestands inhoud weer geven Wijzigingen bijhouden. Dit is beschikbaar voor Windows-en Linux-bestanden voor elke wijziging van het bestand wordt de inhoud van het bestand opgeslagen in een opslag account en wordt het bestand voor en na de wijziging, inline of naast elkaar weer gegeven. Zie [de inhoud van een bijgehouden bestand weer geven](change-tracking-file-contents.md)voor meer informatie.
+U de inhoud voor en na een wijziging van een bestand bekijken met Het bijhouden van bestandsinhoudswijzigingen. Dit is beschikbaar voor Windows- en Linux-bestanden, voor elke wijziging in het bestand wordt de inhoud van het bestand opgeslagen in een opslagaccount en wordt het bestand voor en na de wijziging, inline of naast elkaar weergegeven. Zie [De inhoud van een bijgehouden bestand weergeven](change-tracking-file-contents.md)voor meer informatie.
 
-![wijzigingen in een bestand weer geven](./media/change-tracking-file-contents/view-file-changes.png)
+![wijzigingen in een bestand weergeven](./media/change-tracking-file-contents/view-file-changes.png)
 
-### <a name="configure-windows-registry-keys-to-track"></a>Windows-register sleutels configureren voor het bijhouden van
+### <a name="configure-windows-registry-keys-to-track"></a>Windows-registersleutels configureren om bij te houden
 
-Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-computers te configureren:
+Gebruik de volgende stappen om registersleuteltracking op Windows-computers te configureren:
 
-1. Selecteer in uw Automation-account de optie **Wijzigingen bijhouden** onder **configuratie beheer**. Klik op **Instellingen bewerken** (het tandwiel symbool).
-2. Selecteer op de pagina **Wijzigingen bijhouden** **Windows-REGI ster**en klik vervolgens op **toevoegen** om een nieuwe register sleutel toe te voegen die u wilt bijhouden.
-3. Voer in het **Windows-REGI ster voor wijzigingen bijhouden toevoegen**de informatie in voor de sleutel die u wilt bijhouden en klik op **Opslaan**.
+1. Selecteer in uw automatiseringsaccount De optie **Tracking wijzigen** onder **CONFIGURATIEBEHEER**. Klik **op Instellingen bewerken** (het tandwielsymbool).
+2. Selecteer op de pagina **Bijhouden wijzigen** de optie **Windows-register**en klik op **+ Toevoegen** om een nieuwe registersleutel toe te voegen om bij te houden.
+3. Voer in het **Windows-register toevoegen voor bijhouden van wijzigingen**de gegevens in voor de sleutel om bij te houden en klik op **Opslaan**.
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-|Ingeschakeld     | Hiermee wordt bepaald of de instelling wordt toegepast.        |
-|Itemnaam     | Beschrijvende naam van de register sleutel die moet worden bijgehouden.        |
-|Groep     | Een groeps naam voor het logisch groeperen van register sleutels.        |
-|Windows-registersleutel   | Het pad om de register sleutel te controleren. Bijvoorbeeld: "HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User shell Folders\Common opstarten"      |
+|Ingeschakeld     | Hiermee bepaalt u of de instelling wordt toegepast.        |
+|Itemnaam     | Vriendelijke naam van de registersleutel die moet worden bijgehouden.        |
+|Groep     | Een groepsnaam voor het logisch groeperen van registersleutels.        |
+|Windows-registersleutel   | Het pad om te controleren op de registersleutel. Bijvoorbeeld: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Beperkingen
 
-De Wijzigingen bijhouden-oplossing biedt momenteel geen ondersteuning voor de volgende items:
+De oplossing Voor het bijhouden van wijzigingen ondersteunt momenteel niet de volgende items:
 
-* Recursie voor het bijhouden van Windows-REGI ster
-* Netwerk bestands systemen
-* Andere installatie methoden worden niet bijgehouden
-* *. exe-bestanden worden niet bijgehouden voor Windows
+* Recursion voor Windows-registertracking
+* Netwerkbestandssystemen
+* Verschillende installatiemethoden worden niet bijgehouden
+* *.exe-bestanden worden niet bijgehouden voor Windows
 
 Andere beperkingen:
 
-* De kolom en waarden voor de **maximale bestands grootte** worden niet gebruikt in de huidige implementatie.
-* Als u meer dan 2500 bestanden in de verzamelings cyclus van 30 minuten verzamelt, kunnen de prestaties van de oplossing afnemen.
-* Wanneer het netwerk verkeer hoog is, kan het tot zes uur duren voordat wijzigings records worden weer gegeven.
-* Als u de configuratie wijzigt terwijl een computer is uitgeschakeld, kan het zijn dat de computer wijzigingen post die bij de vorige configuratie horen.
+* De kolom En waarden **van de maximale bestandsgrootte** worden niet gebruikt in de huidige implementatie.
+* Als u meer dan 2500 bestanden verzamelt in de verzamelingscyclus van 30 minuten, kunnen de prestaties van de oplossing worden aangetast.
+* Wanneer het netwerkverkeer hoog is, kan het tot zes uur duren voordat wijzigingsrecords worden weergegeven.
+* Als u de configuratie wijzigt terwijl een computer wordt afgesloten, kan de computer wijzigingen plaatsen die bij de vorige configuratie behoorden.
 
 ## <a name="known-issues"></a>Bekende problemen
 
-De Wijzigingen bijhouden oplossing ondervindt momenteel de volgende problemen:
+De oplossing Voor het bijhouden van wijzigingen ondervindt momenteel de volgende problemen:
 
-* Hotfix-updates worden niet verzameld op computers met Windows Server 2016 core RS3.
-* Linux-daemons kunnen een gewijzigde status tonen, zelfs als er geen wijzigingen zijn. Dit komt door de manier waarop het `SvcRunLevels` veld wordt vastgelegd.
+* Hotfix-updates worden niet verzameld op Windows Server 2016 Core RS3-machines.
+* Linux Daemons kunnen een veranderde status laten zien, ook al is er geen verandering. Dit is te `SvcRunLevels` wijten aan hoe het veld wordt vastgelegd.
 
-## <a name="change-tracking-data-collection-details"></a>Details van het verzamelen van Wijzigingen bijhouden gegevens
+## <a name="change-tracking-data-collection-details"></a>Gegevensover het bijhouden van gegevensverzameling wijzigen
 
-In de volgende tabel wordt de frequentie van gegevens verzameling voor de typen wijzigingen weer gegeven. Voor elk type wordt de moment opname van de huidige status ook ten minste elke 24 uur vernieuwd:
+In de volgende tabel ziet u de frequentie van het verzamelen van gegevens voor de typen wijzigingen. Voor elk type wordt de gegevensmomentopname van de huidige status ook ten minste om de 24 uur vernieuwd:
 
 | **Type wijzigen** | **Frequentie** |
 | --- | --- |
-| Windows-REGI ster | 50 minuten |
+| Windows-register | 50 minuten |
 | Windows-bestand | 30 minuten |
 | Linux-bestand | 15 minuten |
 | Windows-services | 10 seconden tot 30 minuten</br> Standaard: 30 minuten |
-| Linux-daemons | 5 minuten |
+| Linux daemons | 5 minuten |
 | Windows-software | 30 minuten |
 | Linux-software | 5 minuten |
 
-De volgende tabel bevat de limieten voor het bijgehouden item per computer voor Wijzigingen bijhouden.
+In de volgende tabel worden de bijgehouden itemlimieten per machine voor Het bijhouden van wijzigingen weergegeven.
 
 | **Resource** | **Limiet**| **Opmerkingen** |
 |---|---|---|
-|Bestand|500||
+|File|500||
 |Register|250||
-|Windows-software|250|Bevat geen software-hotfixes|
-|Linux-pakketten|1250||
+|Windows-software|250|Bevat geen softwarehotfixes|
+|Linux pakketten|1250||
 |Services|250||
 |Daemon|250||
 
-Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40MB per maand. Deze waarde is alleen een benadering en kan worden gewijzigd op basis van uw omgeving. Het is raadzaam om uw omgeving te controleren om precies het gebruik te zien dat u hebt.
+Het gemiddelde gegevensgebruik van Log Analytics voor een machine met behulp van Change Tracking en Inventory is ongeveer 40 MB per maand. Deze waarde is slechts een benadering en kan worden gewijzigd op basis van uw omgeving. Het wordt aanbevolen dat u uw omgeving controleert om het exacte gebruik te zien dat u hebt.
 
-### <a name="windows-service-tracking"></a>Windows-service bijhouden
+### <a name="windows-service-tracking"></a>Windows-servicetracking
 
-De standaard frequentie voor het verzamelen van Windows-Services is 30 minuten. Als u de frequentie wilt configureren, gaat u naar **Wijzigingen bijhouden**. Onder **Instellingen bewerken** op het tabblad **Windows-Services** ziet u een schuif regelaar waarmee u de verzamelings frequentie voor Windows-Services kunt wijzigen van 10 seconden tot 30 minuten. Verplaats de schuif regelaar naar de gewenste frequentie, waarna deze automatisch wordt opgeslagen.
+De standaardverzamelingsfrequentie voor Windows-services is 30 minuten. Als u de frequentie wilt configureren, gaat u naar **Bijhouden wijzigen**. Onder **Instellingen bewerken** op het tabblad Windows **Services** is er een schuifregelaar waarmee u de verzamelfrequentie voor Windows-services wijzigen van 10 seconden tot wel 30 minuten. Verplaats de schuifbalk naar de gewenste frequentie en deze slaat deze automatisch op.
 
-![Schuif regelaar voor Windows-Services](./media/change-tracking/windowservices.png)
+![Schuifregelaar windows-services](./media/change-tracking/windowservices.png)
 
-De agent traceert alleen wijzigingen, Hiermee optimaliseert u de prestaties van de agent. Als een hoge drempel waarde wordt ingesteld, kunnen wijzigingen verloren gaan als de oorspronkelijke status van de service is hersteld. Door de frequentie in te stellen op een lagere waarde, kunt u wijzigingen ondervangen die anders kunnen worden gemist.
+De agent houdt alleen wijzigingen bij, dit optimaliseert de prestaties van de agent. Als u een hoge drempelwaarde instelt, kunnen wijzigingen ontbreken als de service is teruggezet naar de oorspronkelijke status. Als u de frequentie instelt op een kleinere waarde, u wijzigingen opvangen die anders mogelijk worden gemist.
 
 > [!NOTE]
-> Hoewel de agent wijzigingen kan bijhouden in een interval van 10 seconden, duurt het enkele minuten voordat de gegevens worden weer gegeven in de portal. Wijzigingen tijdens de tijd die in de portal worden weer gegeven, worden nog steeds bijgehouden en geregistreerd.
+> Hoewel de agent wijzigingen kan bijhouden tot een interval van 10 seconden, duurt het nog enkele minuten voordat de gegevens in de portal worden weergegeven. Wijzigingen gedurende de tijd die u in de portal wilt weergeven, worden nog steeds bijgehouden en geregistreerd.
 
-### <a name="registry-key-change-tracking"></a>Register sleutel wijzigingen bijhouden
+### <a name="registry-key-change-tracking"></a>Registersleutelwijziging bijhouden
 
-Het doel van het bewaken van wijzigingen in register sleutels is het lokaliseren van uitbreidings punten waarbij code en malware van derden kunnen worden geactiveerd. De volgende lijst bevat de lijst met vooraf geconfigureerde register sleutels. Deze sleutels zijn geconfigureerd, maar niet ingeschakeld. Als u deze register sleutels wilt bijhouden, moet u deze inschakelen.
+Het doel van het bewaken van wijzigingen in registersleutels is het lokaliseren van uitbreidbaarheidspunten waar code en malware van derden kunnen worden geactiveerd. In de volgende lijst ziet u de lijst met vooraf geconfigureerde registersleutels. Deze sleutels zijn geconfigureerd, maar niet ingeschakeld. Als u deze registersleutels wilt bijhouden, moet u ze allemaal inschakelen.
 
 > [!div class="mx-tdBreakAll"]
 > |Registersleutel | Doel |
 > |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Bewaakt de scripts die worden uitgevoerd bij het opstarten.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Bewaakt veelvoorkomende auto start-vermeldingen die rechtstreeks in Windows Verkenner zijn aangesloten en die meestal in-process worden uitgevoerd met Explorer. exe.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van het pictogram-overlay-handler.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van pictogram-overlaysoftware-handler voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot de Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt voor toegang tot de Document Object Model (DOM) van de huidige pagina en voor het beheren van de navigatie voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals menu's voor aangepaste gereedschappen en aangepaste werkbalk knoppen.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals aangepaste hulpprogramma menu's en aangepaste werkbalk knoppen voor 32-bits Program ma's die worden uitgevoerd op 64-bits computers.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-Program ma's die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het systeem. INI-bestand.
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Hiermee wordt de lijst met bekende of veelgebruikte systeem-Dll's gecontroleerd. Dit systeem voor komt dat gebruikers zwakke machtigingen voor de toepassingsmap kunnen exploiteren door de Trojaanse paarden-versies van systeem-Dll's te verwijderen.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen van Winlogon kunnen ontvangen, het interactieve aanmeldings model voor ondersteuning voor het Windows-besturings systeem.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Controleert veelvoorkomende automatischestartvermeldingen die rechtstreeks in Windows Verkenner worden aangesloten en worden meestal uitgevoerd met Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Controleert scripts die worden uitgevoerd bij het opstarten.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Controleert scripts die worden uitgevoerd bij afsluiten.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Controleert sleutels die worden geladen voordat de gebruiker zich aanmeldt bij zijn Windows-account. De sleutel wordt gebruikt voor 32-bits programma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in de toepassingsinstellingen bewaakt.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Controleert veelvoorkomende automatischestartvermeldingen die rechtstreeks in Windows Verkenner worden aangesloten en worden meestal uitgevoerd met Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Controleert veelvoorkomende automatischestartvermeldingen die rechtstreeks in Windows Verkenner worden aangesloten en worden meestal uitgevoerd met Explorer.exe.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitors voor registratie van pictogramoverlayhandlers.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitors voor registratie van pictogramoverlayhandlers voor 32-bits programma's die worden uitgevoerd op 64-bits computers.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Controleert op nieuwe plug-ins voor browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot het Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Controleert op nieuwe plug-ins voor browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot het Document Object Model (DOM) van de huidige pagina en om de navigatie te regelen voor 32-bits programma's die op 64-bits computers worden uitgevoerd.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Beeldschermen voor nieuwe Internet Explorer-extensies, zoals aangepaste gereedschapsmenu's en aangepaste werkbalkknoppen.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Beeldschermen voor nieuwe Internet Explorer-extensies, zoals aangepaste gereedschapsmenu's en aangepaste werkbalkknoppen voor 32-bits programma's die op 64-bits computers worden uitgevoerd.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits drivers in verband met wavemapper, wave1 en wave2, msacm.imaadpcm, .msadpcm, .msgsm610 en vidc. Vergelijkbaar met de [drivers] sectie in het systeem. INI-bestand.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt de 32-bits drivers die worden geassocieerd met wavemapper, wave1 en wave2, msacm.imaadpcm, .msadpcm, .msgsm610 en vidc voor 32-bits programma's die op 64-bits computers worden uitgevoerd. Vergelijkbaar met de [drivers] sectie in het systeem. INI-bestand.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Controleert de lijst met bekende of veelgebruikte systeemdllen; dit systeem voorkomt dat mensen van het exploiteren van zwakke applicatie directory machtigingen door te laten vallen in Trojaans paard versies van systeem DLL's.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenismeldingen kunnen ontvangen van Winlogon, het interactieve ondersteuningsmodel voor aanmelding voor het Windows-besturingssysteem.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
-De volgende adressen zijn specifiek vereist voor Wijzigingen bijhouden. De communicatie met deze adressen geschiedt via poort 443.
+De volgende adressen zijn specifiek vereist voor Change Tracking. Communicatie naar deze adressen gebeurt via poort 443.
 
-|Open bare Azure  |Azure Government  |
+|Openbare Azure-peering  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.azure-automation.net|*.azure-automation.us|
 
-## <a name="use-change-tracking"></a>Wijzigingen bijhouden gebruiken
+## <a name="use-change-tracking"></a>Wijzigingstracking gebruiken
 
-Nadat de oplossing is ingeschakeld, kunt u het overzicht van de wijzigingen voor uw bewaakte computers bekijken door **Wijzigingen bijhouden** te selecteren onder **configuratie beheer** in uw Automation-account.
+Nadat de oplossing is ingeschakeld, u het overzicht van wijzigingen voor uw bewaakte computers bekijken door **Wijzigingstracking** te selecteren onder **CONFIGURATIEBEHEER** in uw automatiseringsaccount.
 
-U kunt wijzigingen in uw computers bekijken en vervolgens Details inzoomen voor elke gebeurtenis. Er zijn vervolg keuzelijsten aan de bovenkant van de grafiek beschikbaar om het diagram en gedetailleerde informatie te beperken op basis van het wijzigings type en de peri Oden. U kunt ook op het diagram klikken en slepen om een aangepast tijds bereik te selecteren. **Het wijzigings type** is een van de volgende waarden: **gebeurtenissen**, **daemons**, **bestanden**, **REGI ster**, **Software**, **Windows-Services**. Categorie toont u het type wijziging en kan worden **toegevoegd**, **gewijzigd**of **verwijderd**.
+U wijzigingen in uw computers weergeven en vervolgens details inzoomen voor elke gebeurtenis. Vervolgkeuzewaarden zijn beschikbaar boven aan de grafiek om de grafiek te beperken en gedetailleerde informatie op basis van het type wijziging en de tijdbereiken. U ook op de grafiek klikken en slepen om een aangepast tijdsbereik te selecteren. **Type wijzigen** is een van de volgende waarden **Gebeurtenissen**, **Daemons**, **Bestanden**, **Register**, **Software**, **Windows Services**. Categorie toont u het type wijziging en kan worden **toegevoegd,** **gewijzigd**of **verwijderd**.
 
-![afbeelding van Wijzigingen bijhouden dash board](./media/change-tracking/change-tracking-dash01.png)
+![afbeelding van het dashboard Wijzigingsbijhouden](./media/change-tracking/change-tracking-dash01.png)
 
-Als u op een wijziging of gebeurtenis klikt, wordt gedetailleerde informatie over die wijziging beschreven. Zoals u in het voor beeld kunt zien, is het opstart type van de service gewijzigd van hand matig in auto.
+Als u op een wijziging of gebeurtenis klikt, wordt de gedetailleerde informatie over die wijziging weergegeven. Zoals u in het voorbeeld zien, is het opstarttype van de service gewijzigd van Handmatig naar Automatisch.
 
-![afbeelding van Details van het bijhouden van wijzigingen](./media/change-tracking/change-tracking-details.png)
+![afbeelding van details voor het bijhouden van wijzigingen](./media/change-tracking/change-tracking-details.png)
 
 ## <a name="search-logs"></a>Logboeken zoeken
 
-Naast de details die in de portal zijn opgenomen, kunnen Zoek opdrachten worden uitgevoerd op basis van de logboeken. Klik op **log Analytics**op de pagina **Wijzigingen bijhouden** om de pagina **Logboeken** te openen.
+Naast de details die in de portal worden verstrekt, kunnen zoekopdrachten worden uitgevoerd tegen de logboeken. Als de pagina **Bijhouden wijzigen** is geopend, klikt u op **Logboekanalyse**, hiermee wordt de pagina **Logboeken** geopend.
 
 ### <a name="sample-queries"></a>Voorbeeldquery's
 
-De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzigings records die door deze oplossing worden verzameld:
+In de volgende tabel vindt u voorbeeldlogboekzoekopdrachten voor wijzigingsrecords die door deze oplossing zijn verzameld:
 
-|Query  |Beschrijving  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|ConfigurationData<br>&#124;Where ConfigDataType = = "WindowsServices" and SvcStartupType = = "auto"<br>&#124;Where SvcState = = "stopped"<br>&#124;arg_max (TimeGenerated, *) samenvatten op software naam, computer         | Toont de meest recente inventaris records voor Windows-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt<br>De resultaten zijn beperkt tot de meest recente record voor die software naam en computer      |
-|ConfigurationChange<br>&#124;waarbij ConfigChangeType = = "software" en ChangeCategory = = "verwijderd"<br>&#124;order by TimeGenerated desc|Toont de wijzigings records voor verwijderde software|
+|ConfiguratieGegevens<br>&#124; waar ConfigDataType == "WindowsServices" en SvcStartupType == "Auto"<br>&#124; waar SvcState == "Gestopt"<br>&#124; arg_max(TimeGenerated, *) samenvatten op SoftwareName, Computer         | Toont de meest recente voorraadrecords voor Windows Services die zijn ingesteld op Automatisch, maar die zijn gerapporteerd als gestopt<br>Resultaten zijn beperkt tot de meest recente record voor die SoftwareName en Computer      |
+|Configuratiewijzigen<br>&#124; waar ConfigChangeType == "Software" en ChangeCategory == "Removed"<br>&#124; order door TimeGenerated desc|Toont de wijzigingsrecords voor verwijderde software|
 
-## <a name="alert-on-changes"></a>Waarschuwing bij wijzigingen
+## <a name="alert-on-changes"></a>Waarschuwing over wijzigingen
 
-Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventaris is de mogelijkheid om een waarschuwing te sturen over de configuratie status en eventuele wijzigingen in de configuratie status van uw hybride omgeving.
+Een belangrijke mogelijkheid van Change Tracking en Inventory is de mogelijkheid om te waarschuwen voor de configuratiestatus en eventuele wijzigingen in de configuratiestatus van uw hybride omgeving.
 
-In het volgende voor beeld ziet u in de scherm opname dat de bestands `C:\windows\system32\drivers\etc\hosts` op een machine is gewijzigd. Dit bestand is belang rijk omdat het hosts-bestand door Windows wordt gebruikt voor het omzetten van hostnamen naar IP-adressen en voor rang heeft boven zelfs DNS, wat kan leiden tot verbindings problemen of het omleiden van verkeer naar kwaad aardige of anderszins gevaarlijke websites.
+In het volgende voorbeeld laat de `C:\windows\system32\drivers\etc\hosts` schermafbeelding zien dat het bestand is gewijzigd op een machine. Dit bestand is belangrijk omdat het hosts-bestand door Windows wordt gebruikt om hostnamen op te lossen naar IP-adressen en voorrang heeft op zelfs DNS, wat kan leiden tot verbindingsproblemen of de omleiding van verkeer naar schadelijke of anderszins gevaarlijke websites.
 
-![Een grafiek met de wijziging van het bestand hosts](./media/change-tracking/changes.png)
+![Een grafiek met de wijziging van het hosts-bestand](./media/change-tracking/changes.png)
 
-Ga naar zoeken in Logboeken om deze wijziging verder te analyseren en klik op **log Analytics**. Zoek in logboek zoeken naar inhoud wijzigingen in het bestand hosts met de query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Deze query zoekt naar wijzigingen die een wijziging van de bestands inhoud bevatten voor bestanden waarvan het volledige pad het woord hosts bevat. U kunt ook een specifiek bestand vragen door het pad naar het volledige formulier (zoals `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`) te wijzigen.
+Als u deze wijziging verder wilt analyseren, gaat u naar Zoeken aanmelden door op **Logboekanalyse**te klikken . Zoek in De query `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`naar inhoudswijzigingen in het hosts-bestand. In deze query wordt gezocht naar wijzigingen die een wijziging van de bestandsinhoud bevatten voor bestanden waarvan het volledig gekwalificeerde pad het woord 'hosts' bevat. U ook om een specifiek bestand vragen door het padgedeelte te wijzigen in de volledig gekwalificeerde vorm (zoals `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
-Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op de knop **nieuwe waarschuwings regel** in de zoek functie voor Logboeken om de pagina voor het maken van een waarschuwing te openen. U kunt ook naar deze ervaring navigeren via **Azure monitor** in de Azure Portal. Controleer bij het maken van de waarschuwing de query opnieuw en wijzig de logica van de waarschuwing. In dit geval moet de waarschuwing worden geactiveerd als er zelfs één wijziging wordt gedetecteerd op alle computers in de omgeving.
+Nadat de query de gewenste resultaten heeft geretourneerd, klikt u op de knop **Nieuwe waarschuwingsregel** in de zoekervaring Logboek om de pagina met het maken van waarschuwingen te openen. U ook naar deze ervaring navigeren via **Azure Monitor** in de Azure-portal. Controleer in de ervaring voor het maken van waarschuwingen onze query opnieuw en wijzigt de waarschuwingslogica. In dit geval wilt u dat de waarschuwing wordt geactiveerd als er zelfs één wijziging wordt gedetecteerd voor alle machines in de omgeving.
 
-![Een afbeelding waarin de wijzigings query wordt weer gegeven voor het bijhouden van wijzigingen aan het hosts-bestand](./media/change-tracking/change-query.png)
+![Een afbeelding met de wijzigingsquery voor het bijhouden van wijzigingen in het hosts-bestand](./media/change-tracking/change-query.png)
 
-Nadat de logica van de voor waarde is ingesteld, wijst u actie groepen toe om acties uit te voeren als reactie op de waarschuwing die wordt geactiveerd. In dit geval moet ik e-mail berichten laten verzenden en een ITSM-ticket maken.  Er kunnen ook veel andere nuttige acties worden uitgevoerd, zoals het activeren van een Azure-functie, Automation-runbook, webhook of logische app.
+Nadat de voorwaardelogica is ingesteld, wijst u actiegroepen toe om acties uit te voeren als reactie op de waarschuwing die wordt geactiveerd. In dit geval heb ik het opzetten van e-mails worden verzonden en een ITSM ticket worden gemaakt.  Er kunnen ook veel andere nuttige acties worden uitgevoerd, zoals het activeren van een Azure-functie, automatiseringsrunbook, webhook of logische app.
 
-![Een installatie kopie die een actie groep configureert voor waarschuwing over de wijziging](./media/change-tracking/action-groups.png)
+![Een afbeelding die een actiegroep configureert om te waarschuwen voor de wijziging](./media/change-tracking/action-groups.png)
 
-Nadat alle para meters en logica zijn ingesteld, kunnen we de waarschuwing Toep assen op de omgeving.
+Nadat alle parameters en logica zijn ingesteld, kunnen we de waarschuwing toepassen op de omgeving.
 
-### <a name="alert-suggestions"></a>Waarschuwings suggesties
+### <a name="alert-suggestions"></a>Waarschuwingssuggesties
 
-Het is een goede toepassing van waarschuwingen voor Wijzigingen bijhouden-of inventaris gegevens, maar er zijn veel meer scenario's voor waarschuwingen, waaronder de cases die zijn gedefinieerd samen met hun voorbeeld query's in de onderstaande sectie.
+Hoewel het waarschuwen voor wijzigingen in het hosts-bestand een goede toepassing is van waarschuwingen voor wijzigingstracking- of voorraadgegevens, zijn er veel meer scenario's voor waarschuwingen, waaronder de aanvragen die samen met hun voorbeeldquery's in de sectie hieronder zijn gedefinieerd.
 
-|Query  |Beschrijving  |
+|Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
-|ConfigurationChange <br>&#124;waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c:\\Windows\\System32\\Stuur Programma's\\"|Handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem|
-|ConfigurationChange <br>&#124;waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = ' c:\\Windows\\System32\\Stuur Programma's\\etc\\hosts '|Handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden|
-|ConfigurationChange <br>&#124;Where ConfigChangeType = = "WindowsServices" en SvcName bevat "W3SVC" en SvcState = "gestopt"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
-|ConfigurationChange <br>&#124;Where ConfigChangeType = = "daemons" en SvcName bevat "SSH" en SvcState! = "running"|Handig voor het bijhouden van wijzigingen in essentiële systeem services|
-|ConfigurationChange <br>&#124;Where ConfigChangeType = = "software" and ChangeCategory = = "Added"|Handig voor omgevingen waarvoor software configuraties moeten worden vergrendeld|
-|ConfigurationData <br>&#124;waarbij softwarenaam "Monitoring Agent" en CurrentVersion! = "8.0.11081.0" bevat|Nuttig als u wilt zien op welke computers een verouderde of niet-compatibele software versie is geïnstalleerd. Het rapporteert de laatst gerapporteerde configuratie status, niet de wijzigingen.|
-|ConfigurationChange <br>&#124;waar RegistryKey = = @ "HKEY_LOCAL_MACHINE\\SOFTWARE\\micro soft\\Windows\\CurrentVersion\\QualityCompat"| Handig voor het bijhouden van wijzigingen in essentiële anti-virus sleutels|
-|ConfigurationChange <br>&#124;waarbij RegistryKey HKEY_LOCAL_MACHINE\\systeem bevat\\CurrentControlSet\\Services\\SharedAccess\\para meters\\FirewallPolicy "| Handig voor het bijhouden van wijzigingen in Firewall-instellingen|
+|Configuratiewijzigen <br>&#124; waar ConfigChangeType == "Files" en FileSystemPath "\\\\c:\\windows\\system32 drivers " bevat|Handig voor het bijhouden van wijzigingen in systeemkritieke bestanden|
+|Configuratiewijzigen <br>&#124; waar FieldsChanged "FileContentChecksum" en FileSystemPath\\== "c:\\windows system32\\drivers\\etc\\hosts" bevat|Handig voor het bijhouden van wijzigingen in belangrijke configuratiebestanden|
+|Configuratiewijzigen <br>&#124; waar ConfigChangeType == "WindowsServices" en SvcName "w3svc" en SvcState == "Gestopt" bevat|Handig voor het bijhouden van wijzigingen in systeemkritieke services|
+|Configuratiewijzigen <br>&#124; waar ConfigChangeType == "Daemons" en SvcName "ssh" en SvcState bevat != "Running"|Handig voor het bijhouden van wijzigingen in systeemkritieke services|
+|Configuratiewijzigen <br>&#124; waar ConfigChangeType == "Software" en ChangeCategory == "Toegevoegd"|Handig voor omgevingen waarvoor vergrendelde softwareconfiguraties nodig zijn|
+|ConfiguratieGegevens <br>&#124; waar SoftwareName "Monitoring Agent" en CurrentVersion bevat != "8.0.11081.0"|Handig om te zien welke machines een verouderde of niet-conforme softwareversie hebben geïnstalleerd. Het rapporteert de laatst gerapporteerde configuratiestatus, geen wijzigingen.|
+|Configuratiewijzigen <br>&#124; waar RegistryKey ==\\\\@"HKEY_LOCAL_MACHINE SOFTWARE Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Handig voor het bijhouden van wijzigingen in cruciale antivirustoetsen|
+|Configuratiewijzigen <br>&#124; waarbij RegistryKey\\@"HKEY_LOCAL_MACHINE SYSTEM\\\\\\\\\\CurrentControlSet Services SharedAccess Parameters FirewallPolicy" bevat| Handig voor het bijhouden van wijzigingen in firewall-instellingen|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de zelf studie over Wijzigingen bijhouden voor meer informatie over het gebruik van de oplossing:
+Ga naar de zelfstudie over Change Tracking voor meer informatie over het gebruik van de oplossing:
 
 > [!div class="nextstepaction"]
 > [Problemen met wijzigingen in uw omgeving oplossen](automation-tutorial-troubleshoot-changes.md)
 
-* [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde gegevens voor het bijhouden van wijzigingen weer te geven.
+* Gebruik [Logboekzoekopdrachten in Azure Monitor-logboeken](../log-analytics/log-analytics-log-searches.md) om gedetailleerde gegevens voor het bijhouden van wijzigingen weer te geven.

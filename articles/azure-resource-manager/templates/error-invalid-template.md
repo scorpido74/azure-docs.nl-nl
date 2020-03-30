@@ -1,60 +1,60 @@
 ---
-title: Ongeldige sjabloon fouten
-description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
+title: Ongeldige sjabloonfouten
+description: Beschrijft hoe u ongeldige sjabloonfouten oplossen bij het implementeren van Azure Resource Manager-sjablonen.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154054"
 ---
-# <a name="resolve-errors-for-invalid-template"></a>Fouten voor ongeldige sjabloon oplossen
+# <a name="resolve-errors-for-invalid-template"></a>Fouten met een ongeldige sjabloon oplossen
 
-In dit artikel wordt beschreven hoe u ongeldige sjabloon fouten kunt oplossen.
+In dit artikel wordt beschreven hoe u ongeldige sjabloonfouten oplossen.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u een sjabloon implementeert, wordt er een fout bericht weer gegeven met de volgende strekking:
+Bij het implementeren van een sjabloon ontvangt u een foutmelding dat aangeeft:
 
 ```
 Code=InvalidTemplate
 Message=<varies>
 ```
 
-Het fout bericht is afhankelijk van het type fout.
+Het foutbericht is afhankelijk van het type fout.
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout kan worden veroorzaakt door verschillende soorten fouten. Normaal gesp roken is er sprake van een syntaxis-of structureel fout in de sjabloon.
+Deze fout kan het gevolg zijn van verschillende soorten fouten. Er is meestal sprake van een syntaxis of structurele fout in de sjabloon.
 
 <a id="syntax-error" />
 
-## <a name="solution-1---syntax-error"></a>Oplossing 1: syntaxis fout
+## <a name="solution-1---syntax-error"></a>Oplossing 1 - syntaxisfout
 
-Als er een fout bericht wordt weer gegeven dat aangeeft dat de validatie van de sjabloon is mislukt, hebt u mogelijk een syntaxis probleem in uw sjabloon.
+Als u een foutbericht ontvangt dat aangeeft dat de sjabloon is mislukt, hebt u mogelijk een syntaxisprobleem in uw sjabloon.
 
 ```
 Code=InvalidTemplate
 Message=Deployment template validation failed
 ```
 
-Deze fout kan eenvoudig worden gemaakt omdat sjabloon expressies complex kunnen zijn. De volgende naam toewijzing voor een opslag account heeft bijvoorbeeld één set haken, drie functies, drie sets haakjes, één set met enkele aanhalings tekens en één eigenschap:
+Deze fout is eenvoudig te maken omdat sjabloonexpressies ingewikkeld kunnen zijn. De volgende naamtoewijzing voor een opslagaccount bevat bijvoorbeeld één set haakjes, drie functies, drie sets haakjes, één set afzonderlijke aanhalingstekens en één eigenschap:
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 ```
 
-Als u de overeenkomende syntaxis niet opgeeft, produceert de sjabloon een waarde die afwijkt van uw voor nemen.
+Als u de overeenkomende syntaxis niet verstrekt, produceert de sjabloon een waarde die anders is dan de bedoeling.
 
-Wanneer u dit type fout ontvangt, controleert u de syntaxis van de expressie zorgvuldig. U kunt een JSON-editor gebruiken, zoals [Visual Studio](create-visual-studio-deployment-project.md) of [Visual Studio code](use-vs-code-to-create-template.md), die u kan waarschuwen over syntaxis fouten.
+Wanneer u dit type fout ontvangt, controleert u zorgvuldig de syntaxis van expressie. Overweeg een JSON-editor te gebruiken, zoals [Visual Studio](create-visual-studio-deployment-project.md) of [Visual Studio Code,](use-vs-code-to-create-template.md)die u kan waarschuwen voor syntaxisfouten.
 
 <a id="incorrect-segment-lengths" />
 
-## <a name="solution-2---incorrect-segment-lengths"></a>Oplossing 2: onjuiste segment lengten
+## <a name="solution-2---incorrect-segment-lengths"></a>Oplossing 2 - onjuiste segmentlengtes
 
-Er treedt een andere ongeldige sjabloon fout op wanneer de resource naam niet de juiste indeling heeft.
+Een andere ongeldige sjabloonfout treedt op wanneer de resourcenaam niet in de juiste indeling is.
 
 ```
 Code=InvalidTemplate
@@ -62,7 +62,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-Een resource op hoofd niveau moet een kleiner segment hebben in de naam van het resource type. Elk segment wordt onderscheiden door een slash. In het volgende voor beeld heeft het type twee segmenten en de naam heeft één segment, dus is het een **geldige naam**.
+Een resource op basisniveau moet één segment minder in de naam hebben dan in het resourcetype. Elk segment wordt onderscheiden door een slash. In het volgende voorbeeld heeft het type twee segmenten en de naam één segment, dus het is een **geldige naam.**
 
 ```json
 {
@@ -72,7 +72,7 @@ Een resource op hoofd niveau moet een kleiner segment hebben in de naam van het 
 }
 ```
 
-Het volgende voor beeld is echter **geen geldige naam** omdat het hetzelfde aantal segmenten bevat als het type.
+Maar het volgende voorbeeld is **geen geldige naam** omdat het hetzelfde aantal segmenten heeft als het type.
 
 ```json
 {
@@ -82,7 +82,7 @@ Het volgende voor beeld is echter **geen geldige naam** omdat het hetzelfde aant
 }
 ```
 
-Voor onderliggende resources hebben het type en de naam hetzelfde aantal segmenten. Dit aantal segmenten is zinvol omdat de volledige naam en het type voor het onderliggende item de naam en het type van het bovenliggende item bevatten. De volledige naam heeft dus nog steeds één kleiner segment dan het volledige type.
+Voor onderliggende bronnen hebben het type en de naam hetzelfde aantal segmenten. Dit aantal segmenten is zinvol omdat de volledige naam en het volledige type voor het kind de bovenliggende naam en het bovenliggende type bevatten. Daarom heeft de volledige naam nog steeds een segment minder dan het volledige type.
 
 ```json
 "resources": [
@@ -101,7 +101,7 @@ Voor onderliggende resources hebben het type en de naam hetzelfde aantal segment
 ]
 ```
 
-Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worden toegepast op alle resource providers. Voor het Toep assen van een resource vergrendeling op een website is bijvoorbeeld een type met vier segmenten vereist. De naam is daarom drie segmenten:
+Als u de segmenten goed krijgt, kan dit lastig zijn met resourcebeheertypen die worden toegepast op resourceproviders. Voor het toepassen van een resourcevergrendeling op een website is bijvoorbeeld een type met vier segmenten vereist. Daarom is de naam drie segmenten:
 
 ```json
 {
@@ -113,9 +113,9 @@ Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worde
 
 <a id="parameter-not-valid" />
 
-## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3-para meter is niet geldig
+## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3 - parameter is niet geldig
 
-Als u een parameter waarde opgeeft die niet van de toegestane waarden is, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:
+Als u een parameterwaarde opgeeft die niet een van de toegestane waarden is, ontvangt u een bericht dat vergelijkbaar is met de volgende fout:
 
 ```
 Code=InvalidTemplate;
@@ -124,40 +124,40 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Controleer de toegestane waarden in de sjabloon en geef er een op tijdens de implementatie. Zie [para meters in het gedeelte met Azure Resource Manager sjablonen](template-syntax.md#parameters)voor meer informatie over toegestane parameter waarden.
+Controleer de toegestane waarden in de sjabloon en geef er een tijdens de implementatie. Zie Parameters sectie van Azure [Resource Manager-sjablonen](template-syntax.md#parameters)voor meer informatie over toegestane parameterwaarden.
 
 <a id="too-many-resource-groups" />
 
-## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4: te veel doel resource groepen
+## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4 - Te veel doelgroepen
 
-Als u meer dan vijf doel resource groepen in één implementatie opgeeft, wordt deze fout weer gegeven. U kunt het aantal resource groepen in uw implementatie consolideren, of een aantal sjablonen implementeren als afzonderlijke implementaties. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
+Als u meer dan vijf doelgroepen in één implementatie opgeeft, ontvangt u deze fout. Overweeg het aantal resourcegroepen in uw implementatie te consolideren of een aantal sjablonen als afzonderlijke implementaties te implementeren. Zie [Azure-resources implementeren voor meer dan één abonnement of resourcegroep voor](cross-resource-group-deployment.md)meer informatie.
 
 <a id="circular-dependency" />
 
-## <a name="solution-5---circular-dependency-detected"></a>Oplossing 5-circulaire afhankelijkheid gedetecteerd
+## <a name="solution-5---circular-dependency-detected"></a>Oplossing 5 - circulaire afhankelijkheid gedetecteerd
 
-U ontvangt deze fout melding wanneer de resources van elkaar afhankelijk zijn op een manier die verhindert dat de implementatie wordt gestart. Een combi natie van onderlinge afhankelijkheden zorgt ervoor dat twee of meer bronnen wachten op andere resources die ook wachten. Resource1 is bijvoorbeeld afhankelijk van Resource3, Resource2 is afhankelijk van Resource1 en Resource3 is afhankelijk van Resource2. U kunt dit probleem doorgaans oplossen door overbodige afhankelijkheden te verwijderen.
+U ontvangt deze fout wanneer resources van elkaar afhankelijk zijn op een manier die voorkomt dat de implementatie wordt gestart. Een combinatie van onderlinge afhankelijkheden zorgt ervoor dat twee of meer resources wachten op andere resources die ook wachten. Resource1 is bijvoorbeeld afhankelijk van resource3, resource2 is afhankelijk van resource1 en resource3 is afhankelijk van resource2. U dit probleem meestal oplossen door onnodige afhankelijkheden te verwijderen.
 
-Een circulaire afhankelijkheid oplossen:
+Ga als lid van de kringloopafhankelijkheid met de andere:
 
-1. Zoek in uw sjabloon de resource die in de circulaire afhankelijkheid is geïdentificeerd.
-2. Bekijk voor die resource de eigenschap **dependsOn** en het gebruik van de functie **Reference** om te zien op welke resources deze is gebaseerd.
-3. Bekijk deze bronnen om te zien van welke bronnen ze afhankelijk zijn. Volg de afhankelijkheden totdat u een bron ziet die afhankelijk is van de oorspronkelijke resource.
-5. Voor de resources die deel uitmaken van de circulaire afhankelijkheid, onderzoekt zorgvuldig alle toepassingen van de eigenschap **dependsOn** om eventuele afhankelijkheden te identificeren die niet nodig zijn. Verwijder deze afhankelijkheden. Als u niet zeker weet of een afhankelijkheid nodig is, kunt u deze verwijderen.
-6. Implementeer de sjabloon opnieuw.
+1. Zoek in uw sjabloon de resource die is geïdentificeerd in de kringafhankelijkheid.
+2. Voor die resource onderzoekt u de eigenschap **dependsOn** en het gebruik van de **referentiefunctie** om te zien van welke resources deze afhankelijk is.
+3. Bekijk deze bronnen om te zien van welke bronnen ze afhankelijk zijn. Volg de afhankelijkheden totdat u een resource ziet die afhankelijk is van de oorspronkelijke resource.
+5. Voor de resources die betrokken zijn bij de kringafhankelijkheid, zorgvuldig onderzoeken alle toepassingen van de **eigenschap dependsOn** om eventuele afhankelijkheden die niet nodig zijn te identificeren. Verwijder deze afhankelijkheden. Als u niet zeker weet of een afhankelijkheid nodig is, probeert u deze te verwijderen.
+6. De sjabloon opnieuw implementeren.
 
-Het verwijderen van waarden van de eigenschap **dependsOn** kan fouten veroorzaken tijdens het implementeren van de sjabloon. Als er een fout optreedt, voegt u de afhankelijkheid weer toe aan de sjabloon.
+Het verwijderen van waarden uit de eigenschap **dependsOn** kan fouten veroorzaken wanneer u de sjabloon implementeert. Als er een fout optreedt, voegt u de afhankelijkheid weer toe aan de sjabloon.
 
-Als deze aanpak de circulaire afhankelijkheid niet oplost, kunt u overwegen om een deel van uw implementatie logica te verplaatsen naar onderliggende resources (zoals extensies of configuratie-instellingen). Configureer deze onderliggende resources om te implementeren na de resources die bij de circulaire afhankelijkheid betrokken zijn. Stel bijvoorbeeld dat u twee virtuele machines implementeert, maar u moet eigenschappen instellen voor elke machine die naar de andere verwijzen. U kunt deze in de volgende volg orde implementeren:
+Als die benadering de kringafhankelijkheid niet oplost, u overwegen een deel van uw implementatielogica over te zetten naar onderliggende resources (zoals extensies of configuratie-instellingen). Configureer deze onderliggende resources om te implementeren na de resources die betrokken zijn bij de kringafhankelijkheid. Stel dat u twee virtuele machines implementeert, maar dat u eigenschappen moet instellen op elk machines die naar de andere verwijzen. U ze in de volgende volgorde implementeren:
 
 1. vm1
 2. vm2
-3. De uitbrei ding van VM1 is afhankelijk van VM1 en VM2. De uitbrei ding stelt waarden in voor VM1 die worden opgehaald uit VM2.
-4. De uitbrei ding van VM2 is afhankelijk van VM1 en VM2. De uitbrei ding stelt waarden in voor VM2 die worden opgehaald uit VM1.
+3. Uitbreiding op vm1 is afhankelijk van vm1 en vm2. De extensie stelt waarden in op vm1 die het krijgt van vm2.
+4. Uitbreiding op vm2 is afhankelijk van vm1 en vm2. De extensie stelt waarden in op vm2 die het krijgt van vm1.
 
-Dezelfde benadering werkt voor App Service-apps. Overweeg configuratie waarden te verplaatsen naar een onderliggende resource van de app-resource. U kunt in de volgende volg orde twee Web-Apps implementeren:
+Dezelfde aanpak werkt voor App Service-apps. Overweeg configuratiewaarden te verplaatsen naar een onderliggende bron van de app-bron. U twee web-apps in de volgende volgorde implementeren:
 
 1. webapp1
 2. webapp2
-3. de configuratie voor webapp1 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden van webapp2.
-4. de configuratie voor webapp2 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden van webapp1.
+3. config voor webapp1 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden van webapp2.
+4. config voor webapp2 is afhankelijk van webapp1 en webapp2. Het bevat app-instellingen met waarden uit webapp1.

@@ -1,6 +1,6 @@
 ---
-title: Leverings-en nieuwe Azure Event Grid IoT Edge | Microsoft Docs
-description: Levering en probeer het opnieuw in Event Grid op IoT Edge.
+title: Levering en opnieuw proberen - Azure Event Grid IoT Edge | Microsoft Documenten
+description: Levering en opnieuw proberen in Gebeurtenisraster op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,63 +10,63 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841709"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
 
-Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk bericht ten minste één keer te leveren voor elk overeenkomend abonnement. Als het eind punt van een abonnee de ontvangst van een gebeurtenis niet bevestigt of als er een fout is opgetreden, Event Grid nieuwe pogingen op basis van een vast **schema voor opnieuw proberen** en **beleid voor opnieuw proberen**.  Standaard levert de module Event Grid één gebeurtenis tegelijk naar de abonnee. De payload is echter een matrix met één gebeurtenis. U kunt de module meer dan één gebeurtenis tegelijk leveren door de functie output batching in te scha kelen. Zie [output batching](delivery-output-batching.md)voor meer informatie over deze functie.  
+Event Grid biedt duurzame levering. Het probeert om elk bericht minstens één keer voor elk het bijpassende abonnement onmiddellijk te leveren. Als het eindpunt van een abonnee de ontvangst van een gebeurtenis niet bevestigt of als er een storing optreedt, worden gebeurtenisrastersopnieuw geleverd op basis van een vast **schema voor nieuwe pogingen** en een nieuw **gebruiksbeleid**.  Standaard levert de module Gebeurtenisraster één gebeurtenis tegelijk aan de abonnee. De payload is echter een array met een enkele gebeurtenis. U de module meer dan één gebeurtenis tegelijk laten leveren door de functie uitvoerbatching in te schakelen. Zie [uitvoerbatching](delivery-output-batching.md)voor meer informatie over deze functie.  
 
 > [!IMPORTANT]
->Er is geen ondersteuning voor persistentie voor gebeurtenis gegevens. Dit betekent dat het opnieuw implementeren of opnieuw opstarten van de module Event Grid ertoe leidt dat u gebeurtenissen kwijtraakt die nog niet zijn geleverd.
+>Er is geen persistentieondersteuning voor gebeurtenisgegevens. Dit betekent dat u gebeurtenissen die nog niet zijn geleverd, opnieuw implementeren of opnieuw starten.
 
-## <a name="retry-schedule"></a>Schema voor opnieuw proberen
+## <a name="retry-schedule"></a>Schema opnieuw proberen
 
-Event Grid wacht een reactie van 60 seconden nadat een bericht is afgeleverd. Als het eind punt van de abonnee niet het antwoord stuurt, wordt het bericht in een van onze back-upwachtrijen voor volgende pogingen in de wachtrij geplaatst.
+Event Grid wacht tot 60 seconden op een antwoord na het verzenden van een bericht. Als het eindpunt van de abonnee het antwoord niet ackt, wordt het bericht in een van onze back-off wachtrijen geplaatst voor volgende nieuwe pogingen.
 
-Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dit zijn:
+Er zijn twee vooraf geconfigureerde back-off wachtrijen die bepalen welk schema een nieuwe poging zal worden geprobeerd. Dit zijn:
 
 | Planning | Beschrijving |
 | ---------| ------------ |
-| 1 minuut | Berichten die hier worden beëindigd, worden elke minuut geprobeerd.
-| 10 minuten | Berichten die hier worden beëindigd, worden elke tien minuten geprobeerd.
+| 1 minuut | Berichten die hier terechtkomen, worden elke minuut geprobeerd.
+| 10 minuten | Berichten die hier terechtkomen, worden elke 10e minuut geprobeerd.
 
-### <a name="how-it-works"></a>Het werkt als volgt
+### <a name="how-it-works"></a>Hoe werkt het?
 
-1. Bericht binnenkomt in de Event Grid-module. Er wordt geprobeerd deze direct te leveren.
-1. Als er een fout optreedt, wordt het bericht in de wachtrij van 1 minuut in de wacht gezet en na een minuut opnieuw geprobeerd.
-1. Als de levering blijft mislukken, wordt het bericht in de wachtrij van 10 minuten geplaatst en wordt elke 10 minuten opnieuw geprobeerd.
-1. De leveringen worden uitgevoerd tot het slagen of het opnieuw proberen van beleids limieten is bereikt.
+1. Bericht komt binnen in de module Gebeurtenisraster. Er wordt geprobeerd om het onmiddellijk te leveren.
+1. Als de levering mislukt, wordt het bericht in de wachtrij van 1 minuut geplaatst en na een minuut opnieuw geprobeerd.
+1. Als de levering blijft mislukken, wordt het bericht in de wachtrij van 10 minuten geplaatst en elke 10 minuten opnieuw geprobeerd.
+1. Leveringen worden geprobeerd totdat de beleidslimieten succesvol zijn bereikt of opnieuw worden geprobeerd.
 
-## <a name="retry-policy-limits"></a>Limieten voor beleid opnieuw proberen
+## <a name="retry-policy-limits"></a>Beleidslimieten opnieuw proberen
 
 Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dit zijn:
 
 * Maximum aantal pogingen
-* Time-to-Live (TTL) van gebeurtenis
+* Event time-to-live (TTL)
 
-Er wordt een gebeurtenis verwijderd als een van de limieten van het beleid voor opnieuw proberen is bereikt. Het schema voor nieuwe pogingen is beschreven in de sectie schema opnieuw proberen. De configuratie van deze limieten kan worden uitgevoerd voor alle abonnees of per abonnement. In de volgende sectie vindt u meer informatie.
+Een gebeurtenis wordt verwijderd als een van de grenzen van het nieuwe beleid wordt bereikt. Het nieuwe schema zelf is beschreven in de sectie Opnieuw proberen schema. Configuratie van deze limieten kan worden gedaan voor alle abonnees of per abonnementsbasis. De volgende sectie beschrijft elk is verder detail.
 
-## <a name="configuring-defaults-for-all-subscribers"></a>Standaard instellingen voor alle abonnees configureren
+## <a name="configuring-defaults-for-all-subscribers"></a>Standaardinstellingen configureren voor alle abonnees
 
-Er zijn twee eigenschappen: `brokers__defaultMaxDeliveryAttempts` en `broker__defaultEventTimeToLiveInSeconds` die kunnen worden geconfigureerd als onderdeel van de Event Grid-implementatie, waarmee de standaard instellingen voor het beleid voor opnieuw proberen voor alle abonnees worden beheerd.
+Er zijn twee `brokers__defaultMaxDeliveryAttempts` `broker__defaultEventTimeToLiveInSeconds` eigenschappen: en die kunnen worden geconfigureerd als onderdeel van de implementatie van gebeurtenisraster, waarmee de standaardinstellingen voor het opnieuw proberen van beleid voor alle abonnees worden geregeld.
 
-| De naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. Standaard waarde: 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Gebeurtenis-TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. Standaard waarde: **7200** seconden
+| `broker__defaultMaxDeliveryAttempts` | Maximaal aantal pogingen om een gebeurtenis te leveren. Standaardwaarde: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Gebeurtenis TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt geleverd. Standaardwaarde: **7200** seconden
 
-## <a name="configuring-defaults-per-subscriber"></a>Standaard instellingen per abonnee configureren
+## <a name="configuring-defaults-per-subscriber"></a>Standaardwaarden per abonnee configureren
 
-U kunt ook limieten voor het beleid voor opnieuw proberen opgeven op basis van elk abonnement.
-Zie onze [API-documentatie](api.md) voor informatie over het configureren van standaard instellingen per abonnee. Standaard instellingen op abonnements niveau overschrijven de module configuraties.
+U ook beleidslimieten per abonnement opnieuw proberen.
+Zie onze [API-documentatie](api.md) voor informatie over het configureren van standaardinstellingen per abonnee. Standaardinstellingen op abonnementsniveau overschrijven de configuraties op moduleniveau.
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld wordt het beleid voor opnieuw proberen ingesteld in de module Event Grid met maxNumberOfAttempts = 3 en gebeurtenis-TTL van 30 minuten
+In het volgende voorbeeld wordt het beleid voor opnieuw proberen ingesteld in de module Gebeurtenisraster met maxNumberOfAttempts = 3 en Gebeurtenis TTL van 30 minuten
 
 ```json
 {
@@ -86,7 +86,7 @@ In het volgende voor beeld wordt het beleid voor opnieuw proberen ingesteld in d
 }
 ```
 
-In het volgende voor beeld wordt een web Hook-abonnement met maxNumberOfAttempts = 3 en Event TTL van 30 minuten ingesteld
+In het volgende voorbeeld wordt een webhaakabonnement ingesteld met maxNumberOfAttempts = 3 en Event TTL van 30 minuten
 
 ```json
 {

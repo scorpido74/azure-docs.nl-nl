@@ -1,7 +1,7 @@
 ---
-title: Cognitieve vaardigheid van document extractie (preview-versie)
+title: Cognitieve vaardigheid voor documentextractie (voorbeeld)
 titleSuffix: Azure Cognitive Search
-description: Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Deze vaardigheid is momenteel beschikbaar als open bare preview.
+description: Haalt inhoud uit een bestand in de verrijkingspijplijn. Deze vaardigheid is momenteel in openbare preview.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
 ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76837728"
 ---
-# <a name="document-extraction-cognitive-skill"></a>Cognitieve vaardigheid van document extractie
+# <a name="document-extraction-cognitive-skill"></a>Cognitieve vaardigheid voor documentextractie
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Deze vaardigheid is momenteel in openbare preview. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. Er is momenteel geen portal of .NET SDK-ondersteuning.
 
-De vaardigheid van **document extractie** extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Zo kunt u gebruikmaken van de stap voor document extractie die normaal gesp roken plaatsvindt voordat de vaardig heden-uitvoering wordt uitgevoerd op bestanden die door andere vaardig heden kunnen worden gegenereerd.
+Met **de vaardigheid Documentextractie** haalt u inhoud uit een bestand in de verrijkingspijplijn. Hierdoor u profiteren van de stap voor het extraheren van documenten die normaal gesproken plaatsvindt vóór de uitvoering van de skillset met bestanden die kunnen worden gegenereerd door andere vaardigheden.
 
 > [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in indexering. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
+> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten gegenereerd bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten bij indexering. Er zijn geen kosten voor tekstextractie uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor afbeeldingsextractie worden beschreven op de [prijspagina](https://go.microsoft.com/fwlink/?linkid=2042400).
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. util. DocumentExtractionSkill
+Microsoft.Skills.Util.DocumentExtractionSkill
 
-## <a name="skill-parameters"></a>Vaardigheids parameters
+## <a name="skill-parameters"></a>Vaardigheidsparameters
 
-Para meters zijn hoofdletter gevoelig.
+Parameters zijn hoofdlettergevoelig.
 
 | Invoer            | Toegestane waarden | Beschrijving |
 |-----------------|----------------|-------------|
-| `parsingMode`   | `default` <br/> `text` <br/> `json`  | Ingesteld op `default` voor document extractie van bestanden die geen zuivere tekst of JSON zijn. Ingesteld op `text` om de prestaties van tekst bestanden te verbeteren. Stel deze waarde in op `json` om gestructureerde inhoud uit json-bestanden op te halen. Als `parsingMode` niet expliciet is gedefinieerd, wordt deze ingesteld op `default`. |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Stel deze waarde in op `contentAndMetadata` om alle meta gegevens en tekst inhoud van elk bestand uit te pakken. Stel deze waarde in op `allMetadata` om alleen de [meta gegevens](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) van het inhoudtype te extra heren (bijvoorbeeld meta gegevens die uniek zijn voor PNG-bestanden). Als `dataToExtract` niet expliciet is gedefinieerd, wordt deze ingesteld op `contentAndMetadata`. |
-| `configuration` | Zie onder. | Een woorden lijst met optionele para meters die aanpassen hoe de document extractie wordt uitgevoerd. Zie de onderstaande tabel voor beschrijvingen van ondersteunde configuratie-eigenschappen. |
+| `parsingMode`   | `default` <br/> `text` <br/> `json`  | Instellen `default` op voor documentextractie uit bestanden die geen zuivere tekst of json zijn. Ingesteld `text` om de prestaties van platte tekstbestanden te verbeteren. Ingesteld `json` op het extraheren van gestructureerde inhoud uit json-bestanden. Als `parsingMode` deze niet expliciet wordt gedefinieerd, `default`wordt deze ingesteld op . |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Stel `contentAndMetadata` in om alle metagegevens en tekstuele inhoud uit elk bestand te extraheren. Ingesteld `allMetadata` om alleen de [specifieke metagegevens van het inhoudstype](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) te extraheren (bijvoorbeeld metagegevens die uniek zijn voor alleen png-bestanden). Als `dataToExtract` deze niet expliciet wordt gedefinieerd, `contentAndMetadata`wordt deze ingesteld op . |
+| `configuration` | Zie hieronder. | Een woordenboek met optionele parameters die de manier waarop de documentextractie wordt uitgevoerd aanpassen. Zie de onderstaande tabel voor beschrijvingen van ondersteunde configuratie-eigenschappen. |
 
-| Configuratie parameter   | Toegestane waarden | Beschrijving |
+| Configuratieparameter   | Toegestane waarden | Beschrijving |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Ingesteld op `none` om Inge sloten afbeeldingen of afbeeldings bestanden in de gegevensset te negeren. Dit is de standaard instelling. <br/>Voor het [analyseren van afbeeldingen met behulp van cognitieve vaardig heden](cognitive-search-concept-image-scenarios.md), stelt u in `generateNormalizedImages` om ervoor te hebben dat de kwalificatie een matrix van genormaliseerde installatie kopieën maakt als onderdeel van het kraken van documenten. Voor deze actie moet `parsingMode` zijn ingesteld op `default` en `dataToExtract` is ingesteld op `contentAndMetadata`. Een genormaliseerde installatie kopie verwijst naar extra verwerking, wat resulteert in een uniforme afbeeldings uitvoer, formaat en roteert om een consistente rendering te bevorderen wanneer u afbeeldingen opneemt in visuele Zoek resultaten (bijvoorbeeld Foto's met dezelfde grootte in een besturings element van de [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Deze informatie wordt voor elke installatie kopie gegenereerd wanneer u deze optie gebruikt.  <br/>Als u instelt op `generateNormalizedImagePerPage`, worden PDF-bestanden anders behandeld in plaats van Inge sloten afbeeldingen te extra heren, wordt elke pagina weer gegeven als een afbeelding en genormaliseerd.  Niet-PDF-bestands typen worden op dezelfde manier behandeld als `generateNormalizedImages` is ingesteld.
-| `normalizedImageMaxWidth` | Wille keurig geheel getal tussen 50-10000 | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. | 
-| `normalizedImageMaxHeight` | Wille keurig geheel getal tussen 50-10000 | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. |
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Instellen `none` op ingesloten afbeeldingen of afbeeldingsbestanden in de gegevensset te negeren. Dit is de standaardinstelling. <br/>Voor [beeldanalyse met behulp van cognitieve vaardigheden,](cognitive-search-concept-image-scenarios.md)ingesteld op `generateNormalizedImages` de vaardigheid maken van een array van genormaliseerde beelden als onderdeel van document kraken. Deze actie `parsingMode` vereist dat `default` `dataToExtract` is ingesteld `contentAndMetadata`op en is ingesteld op . Een genormaliseerde afbeelding verwijst naar extra verwerking wat resulteert in uniforme beelduitvoer, formaat en gedraaid om consistente weergave te bevorderen wanneer u afbeeldingen opneemt in visuele zoekresultaten (bijvoorbeeld foto's van dezelfde grootte in een grafiekbesturingselement zoals te zien in de [JFK-demo).](https://github.com/Microsoft/AzureSearch_JFK_Files) Deze informatie wordt voor elke afbeelding gegenereerd wanneer u deze optie gebruikt.  <br/>Als u `generateNormalizedImagePerPage`instelt op , PDF-bestanden zullen anders worden behandeld in dat in plaats van het extraheren van ingesloten afbeeldingen, zal elke pagina worden weergegeven als een afbeelding en dienovereenkomstig genormaliseerd.  Niet-PDF-bestandstypen worden hetzelfde `generateNormalizedImages` behandeld als wanneer deze is ingesteld.
+| `normalizedImageMaxWidth` | Elk geheel getal tussen 50-10000 | De maximale breedte (in pixels) voor genormaliseerde gegenereerde afbeeldingen. De standaardwaarde is 2000. | 
+| `normalizedImageMaxHeight` | Elk geheel getal tussen 50-10000 | De maximale hoogte (in pixels) voor genormaliseerde gegenereerde afbeeldingen. De standaardwaarde is 2000. |
 
 > [!NOTE]
-> De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximum limiet verhoogt, kan de verwerking op grotere afbeeldingen mislukken, afhankelijk van de definitie van uw vaardig heden en de taal van de documenten. 
-## <a name="skill-inputs"></a>Vaardigheids invoer
+> De standaardwaarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de [vaardigheid voor beeldanalyse.](cognitive-search-skill-image-analysis.md) De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximale limieten verhoogt, kan de verwerking mislukken bij grotere afbeeldingen, afhankelijk van uw skillset-definitie en de taal van de documenten. 
+## <a name="skill-inputs"></a>Vaardigheidsingangen
 
-| Invoer naam     | Beschrijving |
+| Invoernaam     | Beschrijving |
 |--------------------|-------------|
-| file_data | Het bestand waaruit de inhoud moet worden opgehaald. |
+| file_data | Het bestand waaruit inhoud moet worden geëxtraheerd. |
 
-De invoer file_data moet een object zijn dat als volgt is gedefinieerd:
+De "file_data"-invoer moet een als volgt gedefinieerd voorwerp zijn:
 
 ```json
 {
@@ -62,22 +62,22 @@ De invoer file_data moet een object zijn dat als volgt is gedefinieerd:
 }
 ```
 
-Dit bestands referentie object kan op een van de volgende drie manieren worden gegenereerd:
+Dit bestandsverwijzingsobject kan op drie manieren worden gegenereerd:
 
- - De para meter `allowSkillsetToReadFileData` in te stellen voor de definitie van de Indexeer functie op ' True '.  Hiermee maakt u een pad `/document/file_data` dat een object vertegenwoordigt met de oorspronkelijke bestands gegevens die zijn gedownload uit de BLOB-gegevens bron. Deze para meter is alleen van toepassing op gegevens in Blob Storage.
+ - De `allowSkillsetToReadFileData` parameter op de definitie van uw indexer inte stellen op 'waar'.  Hiermee wordt een `/document/file_data` pad gemaakt dat een object is dat de oorspronkelijke bestandsgegevens vertegenwoordigt die zijn gedownload van uw blobgegevensbron. Deze parameter is alleen van toepassing op gegevens in Blob-opslag.
 
- - Als u de para meter `imageAction` op de definitie van de Indexeer functie instelt op een andere waarde dan `none`.  Hiermee maakt u een matrix met installatie kopieën die de vereiste Conventie voor invoer naar deze vaardigheid volgen, indien deze afzonderlijk wordt door gegeven (bijvoorbeeld `/document/normalized_images/*`).
+ - De `imageAction` parameter op de definitie van uw `none`indexer instellen op een andere waarde dan .  Dit creëert een reeks afbeeldingen die de vereiste conventie voor invoer aan deze `/document/normalized_images/*`vaardigheid volgt als ze individueel worden doorgegeven (d.w.z. ).
 
- - Als u een aangepaste vaardigheid hebt, retourneert u een JSON-object dat precies zo is gedefinieerd als hierboven.  De para meter `$type` moet worden ingesteld op exact `file` en de `data` para meter moet de basis 64 gecodeerde byte-matrix gegevens van de bestands inhoud zijn.
+ - Het hebben van een aangepaste vaardigheid terug te keren een json object gedefinieerd precies zoals hierboven.  De `$type` parameter moet precies `file` zijn `data` ingesteld en de parameter moet de basis 64 gecodeerde bytearraygegevens van de bestandsinhoud zijn.
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
+## <a name="skill-outputs"></a>Vaardigheidsuitvoer
 
-| Uitvoer naam    | Beschrijving |
+| Uitvoernaam    | Beschrijving |
 |--------------|-------------|
-| content | De tekst inhoud van het document. |
-| normalized_images | Wanneer de `imageAction` is ingesteld op een andere waarde dan `none`, bevat het veld New *normalized_images* een matrix met installatie kopieën. Raadpleeg [de documentatie voor de extractie van afbeeldingen](cognitive-search-concept-image-scenarios.md) voor meer informatie over de uitvoer indeling van elke afbeelding. |
+| content | De tekstuele inhoud van het document. |
+| normalized_images | Wanneer `imageAction` de is ingesteld op `none`een andere waarde dan, zal de nieuwe *normalized_images* veld een array van afbeeldingen bevatten. Zie [de documentatie voor het extraheren van afbeeldingen](cognitive-search-concept-image-scenarios.md) voor meer informatie over de uitvoerindeling van elke afbeelding. |
 
-##  <a name="sample-definition"></a>Voorbeeld definitie
+##  <a name="sample-definition"></a>Voorbeelddefinitie
 
 ```json
  {
@@ -109,7 +109,7 @@ Dit bestands referentie object kan op een van de volgende drie manieren worden g
   }
 ```
 
-##  <a name="sample-input"></a>Voorbeeld invoer
+##  <a name="sample-input"></a>Voorbeeldinvoer
 
 ```json
 {
@@ -147,6 +147,6 @@ Dit bestands referentie object kan op een van de volgende drie manieren worden g
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Informatie over het verwerken en extra heren van afbeeldingen in cognitieve Zoek scenario's](cognitive-search-concept-image-scenarios.md)
++ [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
++ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Informatie verwerken en extraheren uit afbeeldingen in cognitieve zoekscenario's](cognitive-search-concept-image-scenarios.md)

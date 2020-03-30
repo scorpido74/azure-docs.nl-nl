@@ -1,7 +1,7 @@
 ---
 title: Experimenten visualiseren met TensorBoard
 titleSuffix: Azure Machine Learning
-description: Start TensorBoard om de geschiedenis van experimentele uitvoeringen te visualiseren en mogelijke gebieden te identificeren voor het afstemmen en opnieuw trainen van afstemming.
+description: Start TensorBoard om experimentrungeschiedenissen te visualiseren en potentiële gebieden te identificeren voor hyperparametertuning en omscholing.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,56 +10,56 @@ author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
 ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78195376"
 ---
-# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentele uitvoeringen en metrische gegevens visualiseren met TensorBoard en Azure Machine Learning
+# <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentruns en -statistieken visualiseren met TensorBoard en Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u de uitvoeringen van uw experiment en metrische gegevens in TensorBoard kunt weer geven met behulp van [het `tensorboard`-pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de hoofd Azure machine learning-SDK. Wanneer u de experimentele uitvoeringen hebt geïnspecteerd, kunt u uw machine learning modellen beter afstemmen en opnieuw trainen.
+In dit artikel leert u hoe u uw experimentuitvoeringen en -statistieken in TensorBoard weergeven met behulp van [het `tensorboard` pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de belangrijkste Azure Machine Learning SDK. Zodra u uw experiment hebt geïnspecteerd, u uw machine learning-modellen beter afstemmen en omscholen.
 
-[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) is een suite van webtoepassingen voor het inspecteren en leren van uw experiment structuur en prestaties.
+[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) is een suite van webapplicaties voor het inspecteren en begrijpen van uw experimentstructuur en prestaties.
 
-Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk van het type experiment:
-+ Als uw experiment systeem eigen logboek bestanden uitvoert die kunnen worden gebruikt door TensorBoard, zoals PyTorch, Chainer en tensor flow experimenten, kunt u [TensorBoard rechtstreeks](#direct) vanuit de uitvoerings geschiedenis van het experiment starten. 
+Hoe u TensorBoard start met Azure Machine Learning-experimenten, is afhankelijk van het type experiment:
++ Als uw experiment standaard logboekbestanden uitvoert die door TensorBoard worden verbruikt, zoals PyTorch, Chainer en TensorFlow-experimenten, u [TensorBoard rechtstreeks starten](#direct) vanuit de rungeschiedenis van het experiment. 
 
-+ Voor experimenten waarbij geen systeem eigen uitvoer bare TensorBoard-bestanden worden uitgevoerd, zoals Scikit-leer-of Azure Machine Learning experimenten, gebruikt u [de methode `export_to_tensorboard()`](#export) om de run-runs te exporteren als TensorBoard-logboeken en TensorBoard van daaruit te starten. 
++ Voor experimenten die niet native TensorBoard-verbruiksbestanden uitvoeren, zoals Scikit-learn of Azure Machine Learning-experimenten, gebruikt u [de `export_to_tensorboard()` methode](#export) om de run-geschiedenissen te exporteren als TensorBoard-logboeken en vanaf daar TensorBoard te starten. 
 
 > [!TIP]
-> De informatie in dit document is voornamelijk bedoeld voor gegevens wetenschappers en ontwikkel aars die het model trainings proces willen bewaken. Als u een beheerder bent die geïnteresseerd is in het bewaken van het resource gebruik en gebeurtenissen van Azure machine learning, zoals quota's, voltooide trainings uitvoeringen of voltooide model implementaties, raadpleegt u [bewaking Azure machine learning](monitor-azure-machine-learning.md).
+> De informatie in dit document is voornamelijk bedoeld voor gegevenswetenschappers en ontwikkelaars die het modeltrainingsproces willen volgen. Zie Azure [Machine Learning](monitor-azure-machine-learning.md)controleren als u een beheerder bent die het gebruik van resources en gebeurtenissen van Azure Machine Learning wil controleren, zoals quota, voltooide trainingsuitvoeringen of voltooide modelimplementaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor het starten van TensorBoard en het weer geven van de geschiedenis van uw experiment, moeten uw experimenten eerder logboek registratie hebben ingeschakeld om de metrische gegevens en prestaties bij te houden.  
+* Als u TensorBoard wilt starten en de uitvoering geschiedenissen van uw experiment wilt bekijken, moeten uw experimenten logboekregistratie eerder hebben ingeschakeld om de statistieken en prestaties bij te houden.  
 
 * De code in dit document kan worden uitgevoerd in een van de volgende omgevingen: 
 
-    * Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
+    * Azure Machine Learning rekeninstantie - geen downloads of installatie nodig
 
-        * Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
+        * De [zelfstudie: installatieomgeving en werkruimte](tutorial-1st-experiment-sdk-setup.md) voltooien om een speciale notebookserver te maken die vooraf is geladen met de SDK en de voorbeeldopslagplaats.
 
-        * Zoek in de map met voor beelden op de notebook server twee voltooide en uitgevouwen notitie blokken door te navigeren naar deze directory's:
-            * **instructies voor het gebruik van azureml > training-met-diep Learning > Export-run-out-to-tensorboard > Export-run-history-to-tensorboard. ipynb**
+        * Zoek in de map met voorbeelden op de notitieblokserver twee voltooide en uitgebreide notitieblokken door naar deze mappen te navigeren:
+            * **how-to-use-azureml > training-with-deep-learning > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
 
-            * **instructies voor het gebruik van azureml > track-and-monitor-experimenten > tensorboard. ipynb**
+            * **how-to-use-azureml > track-and-monitor-experimenten > tensorboard.ipynb**
 
-    * Uw eigen Juptyer-notebook server
-       * [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) met de `tensorboard` extra
-        * [Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md).  
-        * [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
+    * Uw eigen Juptyer-notebookserver
+       * [Installeer de Azure Machine](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) `tensorboard` Learning SDK met de extra
+        * [Maak een Azure Machine Learning-werkruimte](how-to-manage-workspace.md).  
+        * [Een configuratiebestand voor werkruimtes maken](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
 
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Optie 1: uitvoerings geschiedenis rechtstreeks weer geven in TensorBoard
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Optie 1: Run history direct bekijken in TensorBoard
 
-Deze optie werkt voor experimenten waarbij logboek bestanden met de eigen TensorBoard worden uitgevoerd, zoals PyTorch, Chainer en tensor flow experimenten. Als dat niet het geval is, gebruikt u in plaats daarvan [de `export_to_tensorboard()` methode](#export) .
+Deze optie werkt voor experimenten die logboekbestanden die door TensorBoard worden verbruikt, zoals PyTorch- en Chainer- en TensorFlow-experimenten, native uitvoeruitvoeren. Als dat niet het geval is bij uw experiment, gebruikt u [de `export_to_tensorboard()` methode](#export) in plaats daarvan.
 
-De volgende voorbeeld code maakt gebruik van het [MNIST-demo experiment](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) van de opslag plaats van tensor flow in een extern Compute-doel Azure machine learning compute. We trainen ons model met de aangepaste [tensor flow-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)van de SDK en starten vervolgens TensorBoard op basis van dit tensor flow experiment, dat wil zeggen, een experiment waarbij TensorBoard-gebeurtenis bestanden systeem eigen worden uitgevoerd.
+In de volgende voorbeeldcode wordt het [MNIST-demo-experiment](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) uit de repository van TensorFlow gebruikt in een extern rekendoel, Azure Machine Learning Compute. Vervolgens trainen we ons model met de aangepaste [TensorFlow-schatter van](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)de SDK en starten we TensorBoard tegen dit TensorFlow-experiment, dat wil zeggen een experiment dat native TensorBoard-gebeurtenisbestanden uitvoert.
 
-### <a name="set-experiment-name-and-create-project-folder"></a>De naam van het experiment instellen en de projectmap maken
+### <a name="set-experiment-name-and-create-project-folder"></a>De naam van het experiment instellen en projectmap maken
 
 Hier noemen we het experiment en maken we de map. 
  
@@ -75,9 +75,9 @@ if not path.exists(exp_dir):
 
 ```
 
-### <a name="download-tensorflow-demo-experiment-code"></a>Tensor flow-demo-experiment code downloaden
+### <a name="download-tensorflow-demo-experiment-code"></a>StudentenorFlow-demo-experimentcode downloaden
 
-De opslag plaats van tensor flow heeft een MNIST-demo met uitgebreide TensorBoard-instrumentatie. Het is niet nodig om de code van deze demo te wijzigen zodat deze werkt met Azure Machine Learning. In de volgende code wordt de MNIST-code gedownload en in de zojuist gemaakte map experiment opgeslagen.
+TensorFlow's repository heeft een MNIST demo met uitgebreide TensorBoard instrumentatie. We hoeven de code van deze demo niet te wijzigen om te kunnen werken met Azure Machine Learning. In de volgende code downloaden we de MNIST-code en slaan deze op in onze nieuw gemaakte experimentmap.
 
 ```python
 import requests
@@ -87,14 +87,14 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-In het MNIST-code bestand, mnist_with_summaries. py, ziet u dat er regels zijn die `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` enzovoort aanroepen. Deze methoden groeperen, registreren en labelen de metrische gegevens van uw experimenten in uitvoerings geschiedenis. De `tf.summary.FileWriter()` is met name belang rijk omdat de gegevens worden geserialiseerd in de metrische waarden van uw vastgelegde experiment, waardoor TensorBoard er visualisaties uit kan genereren.
+In het MNIST-codebestand mnist_with_summaries.py, merk op `tf.summary.scalar()` `tf.summary.histogram()`dat `tf.summary.FileWriter()` er lijnen zijn die aanroepen, enz. Deze methoden groeperen, registreren en taggen belangrijke statistieken van uw experimenten in rungeschiedenis. Het `tf.summary.FileWriter()` is vooral belangrijk omdat het de gegevens van uw geregistreerde experimentstatistieken serialiseert, waardoor TensorBoard visualisaties van hen kan genereren.
 
- ### <a name="configure-experiment"></a>Configureren van experiment
+ ### <a name="configure-experiment"></a>Experiment configureren
 
-In het volgende worden we het experiment geconfigureerd en mappen voor logboeken en gegevens ingesteld. Deze logboeken worden geüpload naar de artefact service, waar TensorBoard later toegang toe hebt.
+In het volgende configureren we ons experiment en stellen we mappen in voor logboeken en gegevens. Deze logboeken worden geüpload naar de Artefact-service, waar TensorBoard later toegang toe heeft.
 
 >[!Note]
-> Voor dit tensor flow-voor beeld moet u tensor flow installeren op uw lokale computer. De TensorBoard-module (dat wil zeggen, het onderdeel dat deel uitmaakt van tensor flow), moet toegankelijk zijn voor de kernel van dit notebook, omdat de lokale machine de TensorBoard uitvoert.
+> Voor dit tensorflow-voorbeeld moet u TensorFlow op uw lokale machine installeren. Verder moet de TensorBoard-module (dat wil zeggen de module die bij TensorFlow is meegeleverd) toegankelijk zijn voor de kernel van deze notebook, omdat de lokale machine is wat TensorBoard draait.
 
 ```Python
 import azureml.core
@@ -121,7 +121,7 @@ exp = Experiment(ws, experiment_name)
 ```
 
 ### <a name="create-a-cluster-for-your-experiment"></a>Een cluster maken voor uw experiment
-We maken een AmlCompute-cluster voor dit experiment, maar uw experimenten kunnen in elke omgeving worden gemaakt en u kunt TensorBoard nog steeds starten met de geschiedenis van het experiment. 
+We maken een AmlCompute-cluster voor dit experiment, maar uw experimenten kunnen in elke omgeving worden gemaakt en u TensorBoard nog steeds starten tegen de rungeschiedenis van het experiment. 
 
 ```Python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -148,9 +148,9 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 # print(compute_target.get_status().serialize())
 ```
 
-### <a name="submit-run-with-tensorflow-estimator"></a>Run verzenden met tensor flow estimator
+### <a name="submit-run-with-tensorflow-estimator"></a>Run verzenden met TensorFlow-schatter
 
-De tensor flow Estimator biedt een eenvoudige manier om een tensor flow-trainings taak te starten op een compute-doel. Het wordt geïmplementeerd via de algemene [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasse, die kan worden gebruikt voor de ondersteuning van elk Framework. Voor meer informatie over trainings modellen die gebruikmaken van de algemene Estimator, raadpleegt [u modellen met Azure machine learning met behulp van Estimator](how-to-train-ml-models.md)
+De TensorFlow-schatter biedt een eenvoudige manier om een TensorFlow-trainingstaak te starten op een compute target. Het wordt geïmplementeerd via [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) de generieke klasse, die kan worden gebruikt om elk framework te ondersteunen. Zie [treinmodellen met Azure Machine Learning met behulp van schatter](how-to-train-ml-models.md) voor meer informatie over trainingsmodellen met behulp van de generieke schatter
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -164,11 +164,11 @@ tf_estimator = TensorFlow(source_directory=exp_dir,
 run = exp.submit(tf_estimator)
 ```
 
-### <a name="launch-tensorboard"></a>TensorBoard starten
+### <a name="launch-tensorboard"></a>Start TensorBoard
 
-U kunt TensorBoard starten tijdens het uitvoeren of nadat het is voltooid. In het volgende voor beeld maken we een exemplaar van het TensorBoard-object, `tb`, dat de geschiedenis van het experiment wordt geladen in de `run`, waarna TensorBoard wordt gestart met de methode `start()`. 
+U TensorBoard starten tijdens het hardlopen of nadat deze is voltooid. In het volgende maken we een TensorBoard object instance, `tb`dat de `run`experiment run geschiedenis geladen `start()` in de , en lanceert vervolgens TensorBoard met de methode. 
   
-De [TensorBoard-constructor](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) neemt een matrix van uitvoeringen, dus zorg ervoor dat u deze in als een matrix met één element doorgeeft.
+De [TensorBoard constructor](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) neemt een scala aan runs, dus zorg ervoor dat en geef het in als een single-element array.
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -183,18 +183,18 @@ tb.stop()
 ```
 
 >[!Note]
- Hoewel in dit voor beeld tensor flow wordt gebruikt, kan TensorBoard net zo gemakkelijk worden gebruikt met PyTorch-of Chainer-modellen. Tensor flow moet beschikbaar zijn op de machine waarop TensorBoard wordt uitgevoerd, maar is niet nodig op de machine die PyTorch of keten berekeningen uitvoert. 
+ Terwijl dit voorbeeld TensorFlow gebruikte, kan TensorBoard net zo gemakkelijk worden gebruikt met PyTorch- of Chainer-modellen. TensorFlow moet beschikbaar zijn op de machine met TensorBoard, maar is niet nodig op de machine die PyTorch- of Chainer-berekeningen uitvoert. 
 
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>Optie 2: Geschiedenis exporteren als logboek om weer te geven in TensorBoard
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>Optie 2: Geschiedenis exporteren als logboek om te bekijken in TensorBoard
 
-Met de volgende code wordt een voor beeld van een experiment ingesteld, wordt het logboek registratie gestart met behulp van de Api's van de Azure Machine Learning-uitvoerings geschiedenis en wordt de geschiedenis van het experiment uitgevoerd naar logboeken die kunnen worden gebruikt door TensorBoard voor visualisatie. 
+Met de volgende code wordt een voorbeeldexperiment ingesteld, wordt het logboekregistratieproces gestart met de Azure Machine Learning-runhistory API's en wordt de runsgeschiedenis van het experiment geëxporteerd naar logboeken die door TensorBoard worden verbruikt voor visualisatie. 
 
 ### <a name="set-up-experiment"></a>Experiment instellen
 
-Met de volgende code wordt een nieuw experiment ingesteld en wordt de `root_run`voor het uitvoeren van de Directory een naam. 
+Met de volgende code wordt een nieuw `root_run`experiment ingesteld en wordt de run directory genoemd. 
 
 ```python
 from azureml.core import Workspace, Experiment
@@ -207,7 +207,7 @@ exp = Experiment(ws, experiment_name)
 root_run = exp.start_logging()
 ```
 
-Hier laden we de diabetes-gegevensset: een ingebouwde kleine gegevensset die wordt geleverd met scikit-Learn en deze opsplitsen in test-en trainings sets.
+Hier laden we de diabetesdataset, een ingebouwde kleine dataset die wordt geleverd met scikit-learn, en splitsen deze op in test- en trainingssets.
 
 ```Python
 from sklearn.datasets import load_diabetes
@@ -223,9 +223,9 @@ data = {
 }
 ```
 
-### <a name="run-experiment-and-log-metrics"></a>Experiment-en logboek metrieken uitvoeren
+### <a name="run-experiment-and-log-metrics"></a>Metgegevens voor experimenten en logboeken uitvoeren
 
-Voor deze code trainen we een lineair regressie model en de metrische gegevens van de sleutel in de logboeken, de Alfa coëfficiënt, het `alpha`en het gemiddelde van de fout, het `mse`in de uitvoerings geschiedenis.
+Voor deze code trainen we een lineair regressiemodel en `alpha`registreren we sleutelstatistieken, `mse`de alfacoëfficiënt en gemiddelde kwadraatfout, in de rungeschiedenis.
 
 ```Python
 from tqdm import tqdm
@@ -247,11 +247,11 @@ for alpha in tqdm(alphas):
    root_run.log("mse", mse)
 ```
 
-### <a name="export-runs-to-tensorboard"></a>Exporteren wordt uitgevoerd naar TensorBoard
+### <a name="export-runs-to-tensorboard"></a>Export loopt naar TensorBoard
 
-Met de [export_to_tensorboard-](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) methode van de SDK kunt u de uitvoerings geschiedenis van onze Azure machine learning-experiment exporteren naar tensorboard-logboeken, zodat we deze kunnen bekijken via tensorboard.  
+Met de [export_to_tensorboard()-methode](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) van de SDK kunnen we de rungeschiedenis van ons Azure machine learning-experiment exporteren naar TensorBoard-logboeken, zodat we ze kunnen bekijken via TensorBoard.  
 
-In de volgende code maken we de map `logdir` in onze huidige werkmap. In deze map worden onze experimentele uitvoerings geschiedenis en logboeken van `root_run` geëxporteerd en wordt de uitvoering als voltooid gemarkeerd. 
+In de volgende code maken `logdir` we de map in onze huidige werkmap. In deze map exporteren we onze experimentrungeschiedenis en logboeken van `root_run` en markeren we die run als voltooid. 
 
 ```Python
 from azureml.tensorboard.export import export_to_tensorboard
@@ -272,10 +272,10 @@ root_run.complete()
 ```
 
 >[!Note]
- U kunt ook een bepaalde uitvoering exporteren naar TensorBoard door de naam van de run-`export_to_tensorboard(run_name, logdir)` op te geven
+ U een bepaalde run ook exporteren naar TensorBoard door de naam van de run op te geven`export_to_tensorboard(run_name, logdir)`
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard starten en stoppen
-Zodra de uitvoerings geschiedenis van dit experiment is geëxporteerd, kunnen we TensorBoard starten met de methode [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) . 
+Zodra onze run geschiedenis voor dit experiment is geëxporteerd, kunnen we TensorBoard starten met de [start()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) methode. 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -287,7 +287,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-Wanneer u klaar bent, moet u ervoor zorgen dat u de methode [stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--) aanroept voor het object TensorBoard. Anders blijft TensorBoard actief totdat u de notebook-kernel afsluit. 
+Wanneer u klaar bent, moet u de [methode stop()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#stop--) van het object TensorBoard aanroepen. Anders blijft TensorBoard draaien totdat u de notebookkernel afsluit. 
 
 ```python
 tb.stop()
@@ -295,7 +295,7 @@ tb.stop()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebben we twee experimenten gemaakt en geleerd hoe u TensorBoard kunt starten op basis van hun uitvoerings geschiedenis om gebieden te identificeren voor potentiële afstemming en retraining. 
+In deze how-to you, creëerde twee experimenten en geleerd hoe TensorBoard te lanceren tegen hun run geschiedenissen om gebieden voor potentiële tuning en omscholing te identificeren. 
 
-* Als u tevreden bent met uw model, gaat u naar onze [informatie over het implementeren van een model](how-to-deploy-and-where.md) artikel. 
-* Meer informatie over het [afstemmen van afstemming](how-to-tune-hyperparameters.md). 
+* Als u tevreden bent met uw model, ga dan naar ons [modelartikel implementeren.](how-to-deploy-and-where.md) 
+* Meer informatie over [hyperparametertuning](how-to-tune-hyperparameters.md). 

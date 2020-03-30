@@ -1,6 +1,6 @@
 ---
-title: StringToObject in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie StringToObject in Azure Cosmos DB.
+title: StringToObject in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie StringToObject in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296378"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
- Retourneert een expressie die is vertaald naar een object. Als expressie niet kan worden vertaald, retourneert ongedefinieerd.  
+ Retourneert expressie die naar een object is vertaald. Als expressie niet kan worden vertaald, wordt niet gedefinieerd geretourneerd.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,17 +26,17 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is een teken reeks expressie die moet worden geparseerd als een JSON-object expressie. Houd er rekening mee dat geneste teken reeks waarden moeten worden geschreven met dubbele aanhalings tekens die geldig zijn. Zie [JSON.org](https://json.org/) voor meer informatie over de JSON-indeling.  
+   Is een tekenreeksexpressie die moet worden ontleed als een JSON-objectexpressie. Houd er rekening mee dat geneste tekenreekswaarden moeten worden geschreven met dubbele aanhalingstekens om geldig te zijn. Zie [json.org](https://json.org/)  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een object expressie of een niet-gedefinieerde waarde.  
+  Geeft als resultaat een objectexpressie of niet gedefinieerd.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u hoe `StringToObject` zich gedraagt in verschillende typen. 
+  In het volgende `StringToObject` voorbeeld ziet u hoe zich zich gedraagt voor verschillende typen. 
   
- Hier volgen enkele voor beelden met geldige invoer.
+ Hieronder volgen voorbeelden met geldige invoer.
 
 ```sql
 SELECT 
@@ -46,7 +46,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{"obj1": {}, 
@@ -55,38 +55,38 @@ Hier volgt de resultatenset.
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Hier volgen enkele voor beelden met ongeldige invoer.
-Hoewel ze geldig zijn binnen een query, worden ze niet geparseerd naar geldige objecten. Teken reeksen binnen de teken reeks moeten worden voorafgegaan door {\\een\\:\\"Str\\"} "of de omliggende aanhaling moet één ' {" a ":" str "} ' zijn.
+ Hieronder volgen voorbeelden met ongeldige invoer.
+Hoewel ze geldig zijn binnen een query, zullen ze niet ontlopen tot geldige objecten. Tekenreeksen binnen de tekenreeks van het\\object\\moeten\\worden\\ontsnapt "{ "a ": "str "}" of het omringende citaat moet single zijn "{"a": "str"}".
 
-Enkele aanhalings tekens rond eigenschapnamen zijn geen geldige JSON-namen.
+Enkele aanhalingstekens rond eigenschapnamen zijn niet geldig JSON.
 
 ```sql
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{}]
 ```  
 
-Eigenschaps namen zonder omringende aanhalings tekens zijn geen geldige JSON.
+Eigendomsnamen zonder omliggende offertes zijn niet geldig JSON.
 
 ```sql
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{}]
 ``` 
 
-Hier volgen enkele voor beelden met ongeldige invoer.
+Hieronder volgen voorbeelden met ongeldige invoer.
 
- De door gegeven expressie wordt geparseerd als een JSON-object. deze invoer levert geen object op en retourneert dus niet-gedefinieerd.
+ De doorgegeven expressie wordt ontleed als een JSON-object; deze ingangen evalueren niet om object te typen en keren dus ongedefinieerd terug.
 
 ```sql
 SELECT 
@@ -98,7 +98,7 @@ SELECT
     StringToObject(undefined)
 ``` 
  
- Hier volgt de resultatenset.
+ Hier is het resultaat ingesteld.
 
 ```json
 [{}]
@@ -106,10 +106,10 @@ SELECT
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeemfunctie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

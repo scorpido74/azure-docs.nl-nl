@@ -1,44 +1,44 @@
 ---
 title: Knooppunttypen en virtuele-machineschaalsets
-description: Meer informatie over hoe Azure Service Fabric knooppunt typen betrekking hebben op schaal sets voor virtuele machines en hoe extern verbinding kan worden gemaakt met een exemplaar van een schaalset of cluster knooppunt.
+description: Lees hoe typen Azure Service Fabric-knooppunttypen zich verhouden tot virtuele machineschaalsets en hoe u op afstand verbinding maken met een instantie of clusterknooppunt voor een schaalset.
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199713"
 ---
-# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
+# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typen Azure Service Fabric-knooppunttypen en virtuele machineschaalsets
 
-[Virtuele-machine schaal sets](/azure/virtual-machine-scale-sets) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk type knoop punt dat u in een Azure Service Fabric-cluster definieert, stelt precies één schaalset in: meerdere knooppunt typen kunnen niet worden ondersteund door dezelfde schaalset en het ene knooppunt type mag niet (in de meeste gevallen) worden ondersteund door meerdere schaal sets. Een uitzonde ring hierop is in de zeldzame situatie van het [verticaal schalen](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) van een knooppunt type, wanneer u tijdelijk twee schaal sets met dezelfde `nodeTypeRef` waarde hebt terwijl replica's worden gemigreerd van het origineel naar de bijgewerkte schaalset.
+[Virtuele machineschaalsets](/azure/virtual-machine-scale-sets) zijn een Azure-compute resource. U schaalsets gebruiken om een verzameling virtuele machines als set te implementeren en te beheren. Elk knooppunttype dat u definieert in een Azure Service Fabric-cluster stelt precies één schaalset in: meerdere knooppunttypen kunnen niet worden ondersteund door dezelfde schaalset en één knooppunttype mag (in de meeste gevallen) niet worden ondersteund door meerdere schaalsets. Een uitzondering hierop is in de zeldzame situatie van [verticale schaling](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) een knooppunttype, wanneer u tijdelijk twee schaalsets met dezelfde `nodeTypeRef` waarde hebt terwijl replica's worden gemigreerd van het origineel naar de bijgewerkte schaalset.
 
-De Service Fabric runtime wordt geïnstalleerd op elke virtuele machine in de schaalset met de extensie *micro soft. Azure. ServiceFabric* virtual machine. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken.
+De runtime van Service Fabric wordt op elke virtuele machine geïnstalleerd in de schaal die is ingesteld door de *Microsoft.Azure.ServiceFabric* Virtual Machine-extensie. U elk knooppunttype zelfstandig omhoog of omlaag schalen, de OS SKU wijzigen die op elk clusterknooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteitsstatistieken gebruiken.
 
-In de volgende afbeelding ziet u een cluster met twee knooppunt typen, front- *End* en *back-end*. Elk knooppunt type heeft vijf knoop punten.
+De volgende afbeelding toont een cluster met twee knooppunttypen, *frontend* en *backend genaamd.* Elk knooppunttype heeft vijf knooppunten.
 
-![Een cluster met twee knooppunt typen][NodeTypes]
+![Een cluster met twee knooppunttypen][NodeTypes]
 
-## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Instanties van schaal sets voor virtuele machines toewijzen aan knoop punten
+## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Virtuele machineschaalstelinstanties toewijzen aan knooppunten
 
-Zoals in de voor gaande afbeelding wordt weer gegeven, beginnen de schaalset-instanties bij instantie 0 en nemen ze vervolgens toe met 1. De nummering wordt weer gegeven in de namen van knoop punten. Zo is het BackEnd_0 van knoop punt instantie 0 van de back-upschaalset. Deze schaalset heeft vijf instanties, met de naam BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 en BackEnd_4.
+Zoals in de vorige figuur wordt weergegeven, beginnen schaalset-instanties bij instantie 0 en nemen deze vervolgens toe met 1. De nummering wordt weergegeven in de knooppuntnamen. Knooppunt BackEnd_0 is bijvoorbeeld instantie 0 van de backend-schaalset. Deze specifieke schaalset heeft vijf exemplaren, genaamd BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 en BackEnd_4.
 
-Wanneer u een schaalset opschaalt, wordt er een nieuw exemplaar gemaakt. De nieuwe instantie naam van de schaalset is doorgaans de naam van de schaalset plus het volgende exemplaar nummer. In ons voor beeld is het BackEnd_5.
+Wanneer u een schaalset opschaalt, wordt een nieuwe instantie gemaakt. De nieuwe naam van de schaalsetinstantie is meestal de naam van de schaalset plus het volgende instantienummer. In ons voorbeeld is het BackEnd_5.
 
-## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Load balancers instellen voor de kaart schaal voor knooppunt typen en schaal sets
+## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Kaartschaal stelt load balancers in op knooppunttypen en schaalsets
 
-Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: **lb-&lt;knooppunt type naam&gt;** . Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
+Als u uw cluster hebt geïmplementeerd in de Azure-portal of de voorbeeldsjabloon Azure Resource Manager hebt gebruikt, worden alle resources onder een brongroep weergegeven. U de load balancers zien voor elke schaalset of knooppunttype. De naam van de load balancer gebruikt de volgende indeling: **LB-&lt;node type name&gt;**. Een voorbeeld is LB-sfcluster4doc-0, zoals in de volgende afbeelding wordt weergegeven:
 
-![Bronnen][Resources]
+![Resources][Resources]
 
-## <a name="service-fabric-virtual-machine-extension"></a>Extensie van de virtuele machine Service Fabric
+## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric Virtual Machine Extension
 
-Service Fabric extensie van de virtuele machine wordt gebruikt om Service Fabric naar Azure Virtual Machines te bootslen en de knooppunt beveiliging te configureren.
+Virtual Machine Extension voor servicestructuur wordt gebruikt om servicefabric op te startzetten voor Virtuele Azure-machines en de knooppuntbeveiliging te configureren.
 
-Hier volgt een fragment van Service Fabric extensie van de virtuele machine:
+Het volgende is een fragment van Service Fabric Virtual Machine extensie:
 
 ```json
 "extensions": [
@@ -70,31 +70,31 @@ Hier volgt een fragment van Service Fabric extensie van de virtuele machine:
    },
 ```
 
-Hier volgen de eigenschaps beschrijvingen:
+Hieronder volgen de beschrijvingen van de eigendommen:
 
-| **Naam** | **Toegestane waarden** | **Uitleg of korte beschrijving** |
+| **Naam** | **Toegestane waarden** | **Richtlijnen of korte beschrijving** |
 | --- | --- | --- | --- |
-| naam | tekenreeks | Unieke naam voor extensie |
-| type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
-| autoUpgradeMinorVersion | true of false | Automatische upgrade van secundaire versies van SF runtime inschakelen |
-| publisher | Microsoft.Azure.ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
-| clusterEndpont | tekenreeks | URI: poort voor beheer eindpunt |
+| name | tekenreeks | Unieke naam voor uitbreiding |
+| type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Identificeert OS Service Fabric is bootstrapping aan |
+| autoUpgradeMinorVersion | waar of onwaar | Automatische upgrade van SF Runtime-secundaire versies inschakelen |
+| uitgever | Microsoft.Azure.ServiceFabric | Naam van de uitgever van de extensie Service Fabric |
+| clusterEndpont | tekenreeks | URI:POORT naar Eindpunt Beheer |
 | nodeTypeRef | tekenreeks | Naam van nodeType |
-| durabilityLevel | bronze, silver, gold, platinum | Tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
-| enableParallelJobs | true of false | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
-| nicPrefixOverride | tekenreeks | Subnetvoorvoegsel zoals "10.0.0.0/24" |
-| commonNames | string[] | Algemene namen van geïnstalleerde cluster certificaten |
-| x509StoreName | tekenreeks | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
-| typeHandlerVersion | 1.1 | De versie van de extensie. 1,0 de klassieke versie van de uitbrei ding wordt aanbevolen om te upgraden naar 1,1 |
-| dataPath | tekenreeks | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan.
+| duurzaamheidNiveau | brons, zilver, goud, platina | Tijd om onveranderlijke Azure-infrastructuur te pauzeren |
+| paralleljobs inschakelen | waar of onwaar | Compute ParallelJobs inschakelen, zoals VM verwijderen en VM opnieuw opstarten in dezelfde schaalset parallel |
+| nicPrefixOverride | tekenreeks | Subnetvoorvoegsel als "10.0.0.0/24" |
+| algemene namen | tekenreeks[] | Algemene namen van geïnstalleerde clustercertificaten |
+| x509StoreName | tekenreeks | Naam van store waar het geïnstalleerde clustercertificaat zich bevindt |
+| typeHandlerVersie | 1.1 | Versie van Extensie. 1.0 klassieke versie van extensie wordt aanbevolen om te upgraden naar 1.1 |
+| dataPath | tekenreeks | Pad naar het station dat wordt gebruikt om status op te slaan voor servicefabric-systeemservices en toepassingsgegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie het [overzicht van de functie overal implementeren en een vergelijking met door Azure beheerde clusters](service-fabric-deploy-anywhere.md).
-* Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
-* [Externe verbinding maken](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) met een specifiek exemplaar van een schaalset
-* [De waarden voor het RDP-poort bereik bijwerken na de](./scripts/service-fabric-powershell-change-rdp-port-range.md) implementatie van cluster-vm's
-* [De gebruikers naam en het wacht woord van de beheerder](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) voor cluster-vm's wijzigen
+* Bekijk het [overzicht van de functie 'Overal implementeren' en een vergelijking met door Azure beheerde clusters.](service-fabric-deploy-anywhere.md)
+* Meer informatie over [clusterbeveiliging](service-fabric-cluster-security.md).
+* [Verbinding op afstand met](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) een specifieke schaalsetinstantie
+* [De RDP-poortbereikwaarden](./scripts/service-fabric-powershell-change-rdp-port-range.md) na implementatie bijwerken
+* [De gebruikersnaam en het wachtwoord van de beheerder voor](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) clusterVM's wijzigen
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png

@@ -1,6 +1,6 @@
 ---
-title: Overwegingen voor het inrichten van Azure-bestands shares.
-description: Een Azure-bestands share inrichten voor gebruik met Azure File Sync. Een gemeen schappelijk tekst blok, gedeeld tussen migratie documenten.
+title: Overwegingen voor het inrichten van Azure-bestandsshares.
+description: Azure-bestandsshares inrichten voor gebruik met Azure File Sync. Een gemeenschappelijk tekstblok, gedeeld tussen migratiedocumenten.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,33 +8,33 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 8cb398d1b1ec14f52d9c5fa5c122dc2e4ba4376d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209426"
 ---
-Een Azure-bestands share wordt opgeslagen in de cloud in een Azure-opslag account.
-Er is een andere mate van prestatie overwegingen.
+Een Azure-bestandsshare wordt opgeslagen in de cloud in een Azure-opslagaccount.
+Er is een ander niveau van prestatieoverwegingen hier.
 
-Als u beschikt over zeer actieve shares-shares die worden gebruikt door veel gebruikers en/of toepassingen, kunnen de prestatie limiet van een opslag account worden bereikt door twee Azure-bestands shares.
+Als u zeer actieve aandelen hebt - aandelen die door veel gebruikers en/of toepassingen worden gebruikt, kunnen twee Azure-bestandsshares de prestatielimiet van een opslagaccount bereiken.
 
-De aanbevolen procedure is om opslag accounts te implementeren met één bestands share.
-U kunt meerdere Azure-bestands shares in hetzelfde opslag account poolen, voor het geval u archiverings shares hebt of u verwacht een goedkope activiteit.
+Het beste is om opslagaccounts te implementeren met elk één bestandsshare.
+U meerdere Azure-bestandsshares bundelen in hetzelfde opslagaccount, voor het geval u archiveringsshares hebt of u verwacht dat er weinig dagelijkse activiteiten in zitten.
 
-Deze overwegingen zijn van toepassing op directe Cloud toegang (via een Azure VM) dan die van toepassing is op Azure File Sync. Als u van plan bent om alleen Azure File Sync op deze shares te gebruiken, kunt u in één Azure Storage-account verschillende groepen groeperen.
+Deze overwegingen zijn meer van toepassing op directe cloudtoegang (via een Azure VM) dan op Azure File Sync. Als u alleen Azure File Sync voor deze shares wilt gebruiken, is het prima om meerdere te groeperen in één Azure-opslagaccount.
 
-Als u een lijst met shares hebt gemaakt, wijst u elke share toe aan het opslag account waarin ze zich bevinden.
+Als u een lijst van uw aandelen hebt gemaakt, moet u elk aandeel toewijzen aan het opslagaccount waarin ze zich bevinden.
 
-In de vorige fase hebt u het juiste aantal shares bepaald. In deze stap hebt u een toewijzing van opslag accounts gemaakt aan bestands shares. Implementeer het nu juiste aantal Azure Storage-accounts met het juiste aantal Azure-bestands shares.
+In de vorige fase hebt u het juiste aantal aandelen bepaald. In deze stap hebt u een toewijzing van opslagaccounts gemaakt om aandelen in te dienen. Implementeer het nu juiste aantal Azure-opslagaccounts met het juiste aantal Azure-bestandsshares erin.
 
-Zorg ervoor dat de regio van elk van uw opslag accounts hetzelfde is en overeenkomt met de regio van de opslag synchronisatie service resource die u al hebt geïmplementeerd.
+Zorg ervoor dat de regio van elk van uw opslagaccounts hetzelfde is en overeenkomt met het gebied van de storage sync service-bron die u al hebt geïmplementeerd.
 
 > [!CAUTION]
-> Als u een 100 TiB limiet van Azure file share maakt, kan die share alleen lokale redundante opslag of zone redundantie opties voor opslag gebruiken. Houd rekening met de vereisten voor opslag redundantie voordat u 100 TiB-bestands shares gebruikt.
+> Als u een Azure-bestandsshare van 100 TiB-limiet maakt, kan dat aandeel alleen lokaal redundante opslag- of zoneredundantieredundantieopties gebruiken. Houd rekening met uw redundantiebehoeften voor opslag voordat u 100 TiB-bestandsshares gebruikt.
 
-Azure-bestands shares worden nog steeds gemaakt met een limiet van 5 TiB. Omdat u nieuwe opslag accounts maakt, moet u de [richt lijnen volgen voor het maken van opslag accounts waarmee Azure-bestands shares met 100 TIB-limieten zijn toegestaan](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+Azure-bestandsshares worden standaard nog steeds gemaakt met een 5 TiB-limiet. Aangezien u nieuwe opslagaccounts maakt, moet u de richtlijnen volgen [om opslagaccounts te maken waarmee Azure-bestandsshares met 100 TiB-limieten kunnen worden toegestaan.](../articles/storage/files/storage-files-how-to-create-large-file-share.md)
 
-Een andere overweging bij het implementeren van een opslag account is de redundantie van uw Azure-opslag. Zie: [Azure Storage redundantie opties](../articles/storage/common/storage-redundancy.md).
+Een andere overweging bij het implementeren van een opslagaccount is de redundantie van uw Azure-opslag. Zie: [Redundantieopties voor Azure Storage](../articles/storage/common/storage-redundancy.md).
 
-De namen van uw resources zijn ook belang rijk. Als u bijvoorbeeld meerdere shares voor de HR-afdeling in een Azure-opslag account groepeert, moet u het opslag account op de juiste wijze benoemen. Wanneer u uw Azure-bestands shares een naam geeft, moet u ook namen gebruiken die vergelijkbaar zijn met die van hun on-premises equivalenten.
+De namen van uw bronnen zijn ook belangrijk. Als u bijvoorbeeld meerdere aandelen voor de HR-afdeling groepeert in een Azure-opslagaccount, moet u het opslagaccount op de juiste naam geven. Als u uw Azure-bestandsshares een naam geeft, moet u ook namen gebruiken die vergelijkbaar zijn met die welke worden gebruikt voor hun on-premises tegenhangers.

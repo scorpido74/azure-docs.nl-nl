@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: mblythe
 ms.openlocfilehash: 9624856841ec7473543575c31928c6eefd1404c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175776"
 ---
 Nu u gegevens in Power BI Desktop hebt, kunt u rapporten maken op basis van die gegevens. U maakt een eenvoudig rapport met een kolomdiagram dat de schade aan het gewas per staat laat zien.
@@ -25,7 +25,7 @@ Nu u gegevens in Power BI Desktop hebt, kunt u rapporten maken op basis van die 
 
     ![Leeg diagram](media/data-explorer-power-bi-visualize-basic/blank-chart.png)
 
-1. Selecteer in de lijst **VELDEN** **DamageCrops** en **State**.
+1. Selecteer in de lijst **VELDEN****DamageCrops** en **State**.
 
     ![Velden selecteren](media/data-explorer-power-bi-visualize-basic/select-fields.png)
 

@@ -1,6 +1,6 @@
 ---
 title: bestand opnemen
-description: bestand insluiten voor vertrouwelijke client scenario landings pagina's (daemon, Web-app, Web-API)
+description: bestand opnemen voor bestemmingspagina's voor vertrouwelijke clientscenario's (daemon, web-app, web-API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,32 +15,32 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773394"
 ---
 ## <a name="register-secrets-or-certificates"></a>Geheimen of certificaten registreren
 
-Net als bij elke vertrouwelijke client toepassing moet u een geheim of certificaat registreren. U kunt uw toepassings geheimen registreren via de interactieve ervaring in het [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) of door gebruik te maken van opdracht regel programma's (zoals Power shell).
+Zoals voor elke vertrouwelijke client aanvraag, moet u een geheim of certificaat te registreren. U uw toepassingsgeheimen registreren via de interactieve ervaring in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) of met behulp van command-line-hulpprogramma's (zoals PowerShell).
 
-### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Client geheimen registreren met behulp van de portal voor toepassings registratie
+### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Clientgeheimen registreren met behulp van de applicatieregistratieportal
 
-Het beheer van client referenties vindt plaats op de pagina **certificaten & geheimen** voor een toepassing:
+Het beheer van clientreferenties gebeurt op de pagina **Certificaten & geheimen** voor een toepassing:
 
-![Pagina certificaten & geheimen](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+![Pagina Certificaten & geheimen](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Het toepassings geheim (ook wel het client geheim genoemd) wordt gegenereerd door Azure AD tijdens de registratie van de vertrouwelijke client toepassing. Deze generatie gebeurt wanneer u **Nieuw client geheim**selecteert. Op dat moment moet u de geheime teken reeks naar het klem bord kopiëren voor gebruik in uw app, voordat u **Opslaan**selecteert. Deze teken reeks wordt niet meer weer gegeven.
-- Tijdens de registratie van de toepassing gebruikt u de knop **certificaat uploaden** om het certificaat te uploaden. Azure AD ondersteunt alleen certificaten die rechtstreeks zijn geregistreerd bij de toepassing en die niet voldoen aan de certificaat ketens.
+- Het toepassingsgeheim (ook wel het clientgeheim genoemd) wordt gegenereerd door Azure AD tijdens de registratie van de vertrouwelijke clienttoepassing. Deze generatie gebeurt wanneer u **Nieuw klantgeheim**selecteert. Op dat moment moet u de geheime tekenreeks naar het klembord kopiëren voor gebruik in uw app, voordat u **Opslaan**selecteert. Deze string zal niet langer worden gepresenteerd.
+- Tijdens de registratie van de aanvraag gebruikt u de knop **Certificaat uploaden** om het certificaat te uploaden. Azure AD ondersteunt alleen certificaten die rechtstreeks op de toepassing zijn geregistreerd en geen certificaatketens volgen.
 
-Voor meer informatie raadpleegt [u Quick Start: een client toepassing configureren voor toegang tot Web-api's | Voeg referenties toe aan uw toepassing](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+Zie [Snelstart: Een clienttoepassing configureren om toegang te krijgen tot web-API's | Referenties toevoegen aan uw toepassing.](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)
 
 
 
-### <a name="register-client-secrets-by-using-powershell"></a>Client geheimen registreren met behulp van Power shell
+### <a name="register-client-secrets-by-using-powershell"></a>Klantgeheimen registreren met PowerShell
 
-U kunt uw toepassing ook registreren bij Azure AD met behulp van opdracht regel Programma's. Het voor beeld van de [Active-Directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe u een toepassings geheim of certificaat kunt registreren bij een Azure AD-toepassing:
+U uw toepassing ook registreren bij Azure AD met behulp van opdrachtregelgereedschappen. Het voorbeeld [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe u een toepassingsgeheim of certificaat registreert bij een Azure AD-toepassing:
 
-- Zie [AppCreationScripts/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)voor meer informatie over het registreren van een toepassings geheim.
-- Zie [AppCreationScripts-withCert/configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)voor meer informatie over het registreren van een certificaat bij een toepassing.
+- Zie [AppCreationScripts/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)voor meer informatie over het registreren van een toepassingsgeheim.
+- Zie [AppCreationScripts-withCert/Configure.ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)voor meer informatie over het registreren van een certificaat bij een toepassing.

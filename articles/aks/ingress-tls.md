@@ -1,51 +1,51 @@
 ---
-title: Een HTTPS-ingang maken met het Azure Kubernetes service-cluster (AKS)
-description: Meer informatie over het installeren en configureren van een NGINX ingress-controller die wordt gebruikt voor het automatisch genereren van TLS-certificaten in een Azure Kubernetes service-cluster (AKS).
+title: Een HTTPS-binnendringen maken met het AKS-cluster (Azure Kubernetes Service)
+description: Meer informatie over het installeren en configureren van een NGINX-ingress-controller die Let's Encrypt gebruikt voor het genereren van automatische TLS-certificaten in een AKS-cluster (Azure Kubernetes Service).
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
 ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78191313"
 ---
-# <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Een HTTPS ingress-controller maken in azure Kubernetes service (AKS)
+# <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Een HTTPS-ingress-controller maken op Azure Kubernetes Service (AKS)
 
 Een controller voor inkomend verkeer is een stukje software dat omgekeerde proxy’s, configureerbare verkeersroutering en TLS-beëindiging voor Kubernetes-services biedt. Kubernetes-resources voor inkomend verkeer worden gebruikt om de regels en routes voor uitgaand verkeer worden geconfigureerd voor individuele Kubernetes-services. Met behulp van een controller en regels voor inkomend verkeer kan er één enkel IP-adres worden gebruikt voor het routeren van verkeer naar meerdere services in een Kubernetes-cluster.
 
-In dit artikel wordt beschreven hoe u de [NGINX ingress-controller][nginx-ingress] implementeert in een Azure Kubernetes service-cluster (AKS). Het [CERT-beheer][cert-manager] project wordt gebruikt om certificaten automatisch te genereren en [te configureren.][lets-encrypt] Ten slotte worden er twee toepassingen uitgevoerd in het AKS-cluster, die allemaal toegankelijk zijn via één IP-adres.
+In dit artikel ziet u hoe u de [NGINX-ingress-controller implementeert][nginx-ingress] in een AKS-cluster (Azure Kubernetes Service). Het [cert-manager-project][cert-manager] wordt gebruikt om [Let's Encrypt-certificaten][lets-encrypt] automatisch te genereren en te configureren. Ten slotte worden twee toepassingen uitgevoerd in het AKS-cluster, die elk toegankelijk zijn via één IP-adres.
 
 U kunt ook het volgende doen:
 
-- [Een eenvoudige ingangs controller met externe netwerk verbinding maken][aks-ingress-basic]
-- [De invoeg toepassing voor het routeren van HTTP-toepassingen inschakelen][aks-http-app-routing]
-- [Een ingangs controller maken die gebruikmaakt van een intern, privé netwerk en IP-adres][aks-ingress-internal]
-- [Een ingangs controller maken die gebruikmaakt van uw eigen TLS-certificaten][aks-ingress-own-tls]
-- [Een ingangs controller maken die gebruikmaakt van de code ring om automatisch TLS-certificaten te genereren met een statisch openbaar IP-adres][aks-ingress-static-tls]
+- [Een basis-ingress-controller maken met externe netwerkconnectiviteit][aks-ingress-basic]
+- [De invoegtoepassing HTTP-toepassingsroutering inschakelen][aks-http-app-routing]
+- [Een invallende controller maken die een intern, privénetwerk en IP-adres gebruikt][aks-ingress-internal]
+- [Een ingress-controller maken die uw eigen TLS-certificaten gebruikt][aks-ingress-own-tls]
+- [Een invallende controller maken die Let's Encrypt gebruikt om automatisch TLS-certificaten te genereren met een statisch openbaar IP-adres][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
 
-In dit artikel wordt ervan uitgegaan dat u [een aangepast domein][custom-domain] hebt met een [DNS-zone][dns-zone] in dezelfde resource groep als uw AKS-cluster.
+In dit artikel wordt ook ervan uitgegaan dat u [een aangepast domein][custom-domain] hebt met een [DNS-zone][dns-zone] in dezelfde brongroep als uw AKS-cluster.
 
-In dit artikel wordt gebruikgemaakt van helm voor het installeren van de NGINX ingress-controller, CERT-Manager en een voor beeld-web-app. Zorg ervoor dat u de nieuwste versie van helm gebruikt. Zie [helm install docs][helm-install](Engelstalig) voor upgrade-instructies. Zie [Installing Applications with helm in azure Kubernetes service (AKS) (Engelstalig)][use-helm]voor meer informatie over het configureren en gebruiken van helm.
+In dit artikel wordt Helm gebruikt om de NGINX-ingress-controller, cert-manager en een voorbeeldweb-app te installeren. Zorg ervoor dat u de nieuwste versie van Helm gebruikt. Zie De [installatiedocumenten van Het helm voor][helm-install]upgrade-instructies . Zie [Toepassingen installeren met Helm in Azure Kubernetes Service (AKS) voor][use-helm]meer informatie over het configureren en gebruiken van Helm.
 
-Voor dit artikel moet u ook de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+In dit artikel moet u ook de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
-## <a name="create-an-ingress-controller"></a>Een ingangs controller maken
+## <a name="create-an-ingress-controller"></a>Een invallende controller maken
 
-Als u de ingangs controller wilt maken, gebruikt u de opdracht `helm` om *nginx*te installeren. Voor toegevoegde redundantie worden twee replica's van de NGINX ingress-controllers geïmplementeerd met de para meter `--set controller.replicaCount`. Om volledig te profiteren van het uitvoeren van replica's van de ingangs controller, moet u ervoor zorgen dat er meer dan één knoop punt in uw AKS-cluster is.
+Als u de insteekcontroller `helm` wilt maken, gebruikt u de opdracht om *nginx-ingress*te installeren. Voor toegevoegde redundantie worden er twee replica's van de NGINX-ingangscontrollers geïmplementeerd met de parameter `--set controller.replicaCount`. Als u optimaal wilt profiteren van het uitvoeren van replica's van de invallende controller, moet u ervoor zorgen dat er meer dan één knooppunt in uw AKS-cluster is.
 
-De ingangs controller moet ook worden gepland op een Linux-knoop punt. Windows Server-knoop punten (momenteel in de preview-versie van AKS) mogen de ingangs controller niet uitvoeren. Een knooppunt kiezer wordt opgegeven met behulp van de para meter `--set nodeSelector` om de Kubernetes scheduler te laten weten dat de NGINX ingangs controller moet worden uitgevoerd op een Linux-knoop punt.
-
-> [!TIP]
-> In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving.
+De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Server-knooppunten (momenteel in preview in AKS) mogen de invallende controller niet uitvoeren. Er wordt een knooppuntselector opgegeven met behulp van de parameter `--set nodeSelector` om de Kubernetes-planner te laten weten dat de NGINX-ingangscontroller moet worden uitgevoerd op een Linux-knooppunt.
 
 > [!TIP]
-> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt u `--set controller.service.externalTrafficPolicy=Local` toe aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
+> In het volgende voorbeeld wordt een Kubernetes-naamruimte voor de invallende resources met de naam *ingress-basic.* Geef indien nodig een naamruimte op voor uw eigen omgeving.
+
+> [!TIP]
+> Als u [IP-behoud van clientbron][client-source-ip] wilt inschakelen voor `--set controller.service.externalTrafficPolicy=Local` aanvragen voor containers in uw cluster, voegt u de installatieopdracht Helm toe. Het IP-adres van de clientbron wordt opgeslagen in de aanvraagkoptekst onder *X-Forwarded-For*. Wanneer een inbinnendringen-controller wordt gebruikt waarbij clientsource IP-behoud is ingeschakeld, werkt SSL-doorgeefservice niet.
 
 ```console
 # Create a namespace for your ingress resources
@@ -62,9 +62,9 @@ helm install nginx stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Tijdens de installatie wordt een openbaar IP-adres van Azure gemaakt voor de ingangs controller. Dit open bare IP-adres is statisch voor de levens duur van de ingangs controller. Als u de ingangs controller verwijdert, gaat de toewijzing van het open bare IP-adres verloren. Als u vervolgens een extra ingangs controller maakt, wordt er een nieuw openbaar IP-adres toegewezen. Als u het gebruik van het open bare IP-adres wilt behouden, kunt u in plaats daarvan [een ingangs controller met een statisch openbaar IP-adres maken][aks-ingress-static-tls].
+Tijdens de installatie wordt een Openbaar IP-adres van Azure gemaakt voor de invallende controller. Dit openbare IP-adres is statisch voor de levensduur van de invallende controller. Als u de invallende controller verwijdert, gaat de toewijzing van het openbare IP-adres verloren. Als u vervolgens een extra invallende controller maakt, wordt een nieuw openbaar IP-adres toegewezen. Als u het gebruik van het openbare IP-adres wilt behouden, u in plaats daarvan [een invallende controller maken met een statisch openbaar IP-adres.][aks-ingress-static-tls]
 
-Als u het open bare IP-adres wilt ophalen, gebruikt u de opdracht `kubectl get service`. Het duurt enkele minuten voordat het IP-adres is toegewezen aan de service.
+Als u het openbare IP-adres wilt krijgen, gebruikt u de `kubectl get service` opdracht. Het duurt enkele minuten voordat het IP-adres aan de service is toegewezen.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -74,11 +74,11 @@ nginx-ingress-controller                         LoadBalancer   10.0.182.160   M
 nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
-Er zijn nog geen inkomende regels gemaakt. Als u naar het open bare IP-adres bladert, wordt de standaard 404-pagina van de NGINX ingress-controller weer gegeven.
+Er zijn nog geen invallenregels gemaakt. Als u naar het openbare IP-adres bladert, wordt de standaard 404-pagina van de NGINX-ingress-controller weergegeven.
 
 ## <a name="add-an-a-record-to-your-dns-zone"></a>Een A-record toevoegen aan uw DNS-zone
 
-Voeg een *A* -record toe aan uw DNS-zone met het externe IP-adres van de NGINX-service met [AZ Network DNS record-set A add-record][az-network-dns-record-set-a-add-record].
+Voeg een *A-record* toe aan uw DNS-zone met het externe IP-adres van de NGINX-service met behulp van [dns-record van het AZ-netwerk.][az-network-dns-record-set-a-add-record]
 
 ```console
 az network dns record-set a add-record \
@@ -89,7 +89,7 @@ az network dns record-set a add-record \
 ```
 
 > [!NOTE]
-> Optioneel kunt u een FQDN configureren voor het IP-adres van de ingangs controller in plaats van een aangepast domein. Houd er rekening mee dat dit voor beeld is voor een bash-shell.
+> Optioneel u een FQDN configureren voor het IP-adres van de invallende controller in plaats van een aangepast domein. Houd er rekening mee dat dit monster is voor een Bash shell.
 > 
 > ```azurecli-interactive
 > # Public IP address of your ingress controller
@@ -108,11 +108,11 @@ az network dns record-set a add-record \
 > az network public-ip show --ids $PUBLICIPID --query "[dnsSettings.fqdn]" --output tsv
 > ```
 
-## <a name="install-cert-manager"></a>Certificaat beheerder installeren
+## <a name="install-cert-manager"></a>Certificaatbeheer installeren
 
-De NGINX ingress-controller ondersteunt TLS-beëindiging. Er zijn verschillende manieren om certificaten voor HTTPS op te halen en te configureren. In dit artikel wordt gedemonstreerd met behulp van [CERT-beheer][cert-manager], waarmee automatisch de functionaliteit voor het genereren en beheren van certificaten [kan worden versleuteld][lets-encrypt] .
+De NGINX-ingangscontroller ondersteunt TLS-beëindiging. Er zijn verschillende manieren om certificaten voor HTTPS op te halen en te configureren. Dit artikel toont het gebruik van [cert-manager][cert-manager], die automatische [Lets Encrypt][lets-encrypt] certificaat generatie en beheer functionaliteit biedt.
 
-Installeren van de CERT-Manager-controller:
+Ga als u de cert-managercontroller installeren:
 
 ```console
 # Install the CustomResourceDefinition resources separately
@@ -135,13 +135,13 @@ helm install \
   jetstack/cert-manager
 ```
 
-Zie het [project certificaat beheer][cert-manager]voor meer informatie over de configuratie van certificaat beheer.
+Zie voor meer informatie over de configuratie van cert-manager het [cert-manager project.][cert-manager]
 
-## <a name="create-a-ca-cluster-issuer"></a>Een certificerings instantie voor een CA-cluster maken
+## <a name="create-a-ca-cluster-issuer"></a>Een CA-clusteruitgever maken
 
-Voordat certificaten kunnen worden verleend, vereist CERT-Manager een [verlener][cert-manager-issuer] -of [ClusterIssuer][cert-manager-cluster-issuer] -resource. Deze Kubernetes-resources zijn identiek in de functionaliteit, maar `Issuer` werkt in één naam ruimte en `ClusterIssuer` werkt in alle naam ruimten. Zie de documentatie van de [certificaat beheerder][cert-manager-issuer] voor meer informatie.
+Voordat certificaten kunnen worden uitgegeven, heeft cert-manager een [emittent][cert-manager-issuer] of [clusterissuer-bron][cert-manager-cluster-issuer] nodig. Deze Kubernetes-bronnen zijn identiek `Issuer` in functionaliteit, werken echter `ClusterIssuer` in één naamruimte en werken in alle naamruimten. Zie voor meer informatie de documentatie van de [cert-manager-emittent.][cert-manager-issuer]
 
-Maak een cluster Uitgever, zoals `cluster-issuer.yaml`, met behulp van het volgende voor beeld-manifest. Werk het e-mail adres bij met een geldig adres van uw organisatie:
+Maak een clusteruitgever, `cluster-issuer.yaml`zoals , met behulp van het volgende voorbeeldmanifest. Werk het e-mailadres bij met een geldig adres van uw organisatie:
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -160,29 +160,29 @@ spec:
           class: nginx
 ```
 
-Gebruik de opdracht `kubectl apply` om de certificaat verlener te maken.
+Als u de uitgever `kubectl apply` wilt maken, gebruikt u de opdracht.
 
 ```console
 kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-## <a name="run-demo-applications"></a>Demo toepassingen uitvoeren
+## <a name="run-demo-applications"></a>Demotoepassingen uitvoeren
 
-Er is een ingangs controller en een oplossing voor certificaat beheer geconfigureerd. We gaan nu twee demonstratie toepassingen uitvoeren in uw AKS-cluster. In dit voor beeld wordt helm gebruikt om twee exemplaren van een eenvoudige *Hello World* -toepassing te implementeren.
+Een invallende controller en een certificaatbeheeroplossing zijn geconfigureerd. Laten we nu twee demotoepassingen uitvoeren in uw AKS-cluster. In dit voorbeeld wordt Helm gebruikt om twee exemplaren van een eenvoudige *Hello-wereldtoepassing* te implementeren.
 
-Voordat u de voor beelden van helm-grafieken kunt installeren, moet u de opslag plaats Azure samples toevoegen aan uw helm-omgeving.
+Voordat u de voorbeeldgrafieken van helm installeren, voegt u de Azure-objectschatarchief toe aan uw Helm-omgeving.
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-Maak een demo toepassing met de naam *AKS-HelloWorld* met behulp van de grafiek *Azure-samples/AKS-HelloWorld* helm.
+Maak een demo-applicatie met de naam *aks-helloworld* met behulp van de *azure-samples/aks-helloworld* Helm grafiek.
 
 ```console
 helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-Maak een tweede exemplaar van de demo toepassing met de naam *AKS-HelloWorld-twee*. Geef een nieuwe titel en een unieke service naam op, zodat de twee toepassingen visueel onderscheiden met *--set*.
+Maak een tweede instantie van de demo-applicatie met de naam *aks-helloworld-two*. Geef een nieuwe titel en unieke servicenaam op, zodat de twee toepassingen visueel verschillend zijn met behulp van *--set*.
 
 ```console
 helm install aks-helloworld-two azure-samples/aks-helloworld \
@@ -191,13 +191,13 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
     --set serviceName="aks-helloworld-two"
 ```
 
-## <a name="create-an-ingress-route"></a>Een ingangs route maken
+## <a name="create-an-ingress-route"></a>Een invallende route maken
 
-Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster. Ze zijn echter wel geconfigureerd met een service van het type `ClusterIP` en zijn niet toegankelijk via internet. Als u ze openbaar beschikbaar wilt maken, maakt u een Kubernetes-ingangs bron. De ingangs resource configureert de regels die verkeer routeren naar een van de twee toepassingen.
+Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster. Ze zijn echter geconfigureerd met een `ClusterIP` service van het type en zijn niet toegankelijk vanaf het internet. Maak een Kubernetes-ingress-bron om ze openbaar te maken. De binnenkomende bron configureert de regels die verkeer doorsturen naar een van de twee toepassingen.
 
-In het volgende voor beeld wordt verkeer naar het adres *Hello-World-ingress. MY_CUSTOM_DOMAIN* wordt doorgestuurd naar de *AKS-HelloWorld-* service. Verkeer naar het adres *Hello-World-ingress. MY_CUSTOM_DOMAIN/Hello-World-Two* wordt doorgestuurd naar de *AKS-HelloWorld-twee-* service. Verkeer naar *Hallo wereld. MY_CUSTOM_DOMAIN/static* wordt doorgestuurd naar de service met de naam *AKS-HelloWorld* voor statische activa.
+In het volgende voorbeeld gaat u naar het adres *hello-world-ingress. MY_CUSTOM_DOMAIN* wordt doorgestuurd naar de *aks-helloworld* service. Verkeer naar het adres *hello-world-ingress. MY_CUSTOM_DOMAIN/hello-world-two* wordt doorgestuurd naar de *aks-helloworld-twee* service. Verkeer naar *hello-world-ingress. MY_CUSTOM_DOMAIN/statisch* wordt doorgestuurd naar de service met de naam *aks-helloworld* voor statische assets.
 
-Maak een bestand met de naam `hello-world-ingress.yaml` met behulp van het onderstaande voor beeld YAML. Werk de *hosts* en *host* bij naar de DNS-naam die u in een vorige stap hebt gemaakt.
+Maak een `hello-world-ingress.yaml` bestand met de naam met de onderstaande voorbeeld YAML. Werk de *hosts* en *host* bij naar de DNS-naam die u in een vorige stap hebt gemaakt.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -249,17 +249,17 @@ spec:
         path: /static(/|$)(.*)
 ```
 
-Maak de ingangs resource met behulp van de opdracht `kubectl apply`.
+Maak de binnenkomende `kubectl apply` bron met de opdracht.
 
 ```console
 kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-## <a name="verify-a-certificate-object-has-been-created"></a>Controleren of een certificaat object is gemaakt
+## <a name="verify-a-certificate-object-has-been-created"></a>Controleren of er een certificaatobject is gemaakt
 
-Vervolgens moet er een certificaat bron worden gemaakt. De certificaat resource definieert het gewenste X. 509-certificaat. Zie [certificaten certificaat beheer][cert-manager-certificates]voor meer informatie. CERT-Manager heeft automatisch een certificaat object voor u gemaakt met behulp van ingress-Shim, dat automatisch wordt geïmplementeerd met CERT-Manager sinds v 0.2.2. Zie de documentatie van de inkomende [shim][ingress-shim]voor meer informatie.
+Vervolgens moet een certificaatbron worden gemaakt. De certificaatbron definieert het gewenste X.509-certificaat. Zie [cert-manager certificaten][cert-manager-certificates]voor meer informatie. Cert-manager heeft automatisch een certificaatobject voor u gemaakt met invallen, dat sinds v0.2.2 automatisch wordt geïmplementeerd bij cert-manager. Zie voor meer informatie de [documentatie van de ingress-shim.][ingress-shim]
 
-Als u wilt controleren of het certificaat is gemaakt, gebruikt u de opdracht `kubectl get certificate --namespace ingress-basic` en controleert u of *ready* is ingesteld op *True*. Dit kan enkele minuten duren.
+Als u wilt controleren of het `kubectl get certificate --namespace ingress-basic` certificaat is gemaakt, gebruikt u de opdracht en controleert *u dat READY* true is *,* wat enkele minuten kan duren.
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -268,23 +268,23 @@ NAME         READY   SECRET       AGE
 tls-secret   True    tls-secret   11m
 ```
 
-## <a name="test-the-ingress-configuration"></a>De ingangs configuratie testen
+## <a name="test-the-ingress-configuration"></a>De insi-configuratie testen
 
-Open een webbrowser om *Hallo werelden te openen. MY_CUSTOM_DOMAIN* van uw Kubernetes ingangs controller. U wordt omgeleid om HTTPS te gebruiken en het certificaat wordt vertrouwd en de demo toepassing wordt weer gegeven in de webbrowser. Voeg het */Hello-World-Two* -pad toe en Let op dat de tweede demo toepassing met de aangepaste titel wordt weer gegeven.
+Open een webbrowser voor *hello-world-ingress. MY_CUSTOM_DOMAIN* van uw Kubernetes ingress controller. Merk op dat u https wilt gebruiken en het certificaat wordt vertrouwd en de demo-toepassing wordt weergegeven in de webbrowser. Voeg het */hello-world-two pad* toe en let op dat de tweede demotoepassing met de aangepaste titel wordt weergegeven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In dit artikel wordt helm gebruikt om de ingangs onderdelen, certificaten en voor beeld-apps te installeren. Wanneer u een helm-grafiek implementeert, worden er een aantal Kubernetes-resources gemaakt. Deze resources omvatten peulen, implementaties en services. Als u deze resources wilt opschonen, kunt u de volledige voorbeeld naam ruimte of de afzonderlijke resources verwijderen.
+In dit artikel is Helm gebruikt om de binnenkomende componenten, certificaten en voorbeeld-apps te installeren. Wanneer u een Helm-diagram implementeert, worden een aantal Kubernetes-bronnen gemaakt. Deze bronnen omvatten pods, implementaties en services. Als u deze resources wilt opschonen, u de volledige naamruimte van het voorbeeld of de afzonderlijke resources verwijderen.
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>De voorbeeld naam ruimte en alle resources verwijderen
+### <a name="delete-the-sample-namespace-and-all-resources"></a>De voorbeeldnaamruimte en alle bronnen verwijderen
 
-Als u de volledige voorbeeld naam ruimte wilt verwijderen, gebruikt u de opdracht `kubectl delete` en geeft u de naam van de naam ruimte op. Alle resources in de naam ruimte worden verwijderd.
+Als u de volledige voorbeeldnaamruimte wilt verwijderen, gebruikt u de `kubectl delete` opdracht en geeft u de naam naam van de naamruimte op. Alle bronnen in de naamruimte worden verwijderd.
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-Verwijder vervolgens de helm-opslag plaats voor de AKS Hallo wereld-app:
+Verwijder vervolgens de Helm repo voor de AKS hello world app:
 
 ```console
 helm repo remove azure-samples
@@ -292,13 +292,13 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>Resources afzonderlijk verwijderen
 
-U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Verwijder eerst de bronnen van de cluster Uitgever:
+Een meer gedetailleerde benadering is ook het verwijderen van de afzonderlijke bronnen die zijn gemaakt. Verwijder eerst de bronnen van de clusteruitgevende instelling:
 
 ```console
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Vermeld de helm-releases met de opdracht `helm list`. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld*, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+Lijst van de `helm list` Helm releases met de opdracht. Zoek naar grafieken met de naam *nginx-ingress* en *aks-helloworld,* zoals weergegeven in de volgende voorbeelduitvoer:
 
 ```
 $ helm list --namespace ingress-basic
@@ -310,7 +310,7 @@ cert-manager            ingress-basic   1               2020-01-15 10:23:36.5155
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
-Verwijder de releases met de opdracht `helm delete`. In het volgende voor beeld worden de implementaties van NGINX-inkomend en de twee voor beelden van de AKS Hello World-apps verwijderd.
+Verwijder de releases `helm delete` met de opdracht. In het volgende voorbeeld wordt de NGINX-implementatie verwijderd en worden de twee voorbeeld-AKS hello world-apps verwijderd.
 
 ```
 $ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
@@ -321,19 +321,19 @@ release "cert-manager" uninstalled
 release "nginx" uninstalled
 ```
 
-Verwijder vervolgens de helm-opslag plaats voor de AKS Hallo wereld-app:
+Verwijder vervolgens de Helm repo voor de AKS hello world app:
 
 ```console
 helm repo remove azure-samples
 ```
 
-Verwijder de ingangs route die het verkeer naar de voor beeld-apps doorstuurt:
+Verwijder de invallende route die verkeer naar de voorbeeld-apps leidde:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml --namespace ingress-basic
 ```
 
-Ten slotte kunt u de zelf naam ruimte verwijderen. Gebruik de `kubectl delete` opdracht en geef de naam van de naam ruimte op:
+Ten slotte u de naamruimte zelf verwijderen. Gebruik `kubectl delete` de opdracht en geef de naam naam van de naamruimte op:
 
 ```console
 kubectl delete namespace ingress-basic
@@ -341,19 +341,19 @@ kubectl delete namespace ingress-basic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel zijn enkele externe onderdelen opgenomen in AKS. Zie de volgende project pagina's voor meer informatie over deze onderdelen:
+Dit artikel bevat een aantal externe componenten van AKS. Zie de volgende projectpagina's voor meer informatie over deze onderdelen:
 
 - [Helm CLI][helm-cli]
-- [NGINX ingress-controller][nginx-ingress]
-- [CERT-beheerder][cert-manager]
+- [NGINX-ingress-controller][nginx-ingress]
+- [cert-manager][cert-manager]
 
 U kunt ook het volgende doen:
 
-- [Een eenvoudige ingangs controller met externe netwerk verbinding maken][aks-ingress-basic]
-- [De invoeg toepassing voor het routeren van HTTP-toepassingen inschakelen][aks-http-app-routing]
-- [Een ingangs controller maken die gebruikmaakt van een intern, privé netwerk en IP-adres][aks-ingress-internal]
-- [Een ingangs controller maken die gebruikmaakt van uw eigen TLS-certificaten][aks-ingress-own-tls]
-- [Een ingangs controller maken die gebruikmaakt van de code ring om automatisch TLS-certificaten te genereren met een statisch openbaar IP-adres][aks-ingress-static-tls]
+- [Een basis-ingress-controller maken met externe netwerkconnectiviteit][aks-ingress-basic]
+- [De invoegtoepassing HTTP-toepassingsroutering inschakelen][aks-http-app-routing]
+- [Een invallende controller maken die een intern, privénetwerk en IP-adres gebruikt][aks-ingress-internal]
+- [Een ingress-controller maken die uw eigen TLS-certificaten gebruikt][aks-ingress-own-tls]
+- [Een invallende controller maken die Let's Encrypt gebruikt om automatisch TLS-certificaten te genereren met een statisch openbaar IP-adres][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record

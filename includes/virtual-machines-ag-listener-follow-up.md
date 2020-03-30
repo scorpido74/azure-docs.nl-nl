@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8ae22ec7f75b9cd0d7958977dfd97169706c9389
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175982"
 ---
-Nadat u de beschikbaarheidsgroep-listener maakt, kan het nodig zijn om aan te passen van de parameters van de cluster RegisterAllProvidersIP en HostRecordTTL voor de listener-resource zijn. Deze parameters kunnen opnieuw verbinden tijd na een failover, waardoor verbindingstime-outs mogelijk beperken. Zie voor meer informatie over deze parameters, evenals voorbeeldcode [maken of configureren van een beschikbaarheidsgroep-listener](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
+Nadat u de listener voor de beschikbaarheidsgroep hebt gemaakt, kan het nodig zijn om de clusterparameters RegisterAllProvidersIP en HostRecordTTL voor de listenerbron aan te passen. Deze parameters kunnen de herverbindingstijd na een failover verkorten, waardoor time-outs van de verbinding kunnen worden voorkomen. Zie [Een authenticiteitsgroeplistener maken of configureren](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)voor meer informatie over deze parameters en voorbeeldcode.
 

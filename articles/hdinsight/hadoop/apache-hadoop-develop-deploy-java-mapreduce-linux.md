@@ -1,6 +1,6 @@
 ---
-title: Java-MapReduce maken voor Apache Hadoop-Azure HDInsight
-description: Leer hoe u Apache Maven gebruikt om een op Java gebaseerde MapReduce-toepassing te maken en deze vervolgens uit te voeren met Hadoop op Azure HDInsight.
+title: Java MapReduce maken voor Apache Hadoop - Azure HDInsight
+description: Meer informatie over het gebruik van Apache Maven om een op Java gebaseerde MapReduce-toepassing te maken en deze vervolgens uit te voeren met Hadoop op Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76311951"
 ---
-# <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-Program ma's ontwikkelen voor Apache Hadoop op HDInsight
+# <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-programma's ontwikkelen voor Apache Hadoop in HDInsight
 
-Leer hoe u Apache Maven gebruikt om een op Java gebaseerde MapReduce-toepassing te maken en deze vervolgens uit te voeren met Apache Hadoop op Azure HDInsight.
+Meer informatie over het gebruik van Apache Maven om een op Java gebaseerde MapReduce-toepassing te maken en deze vervolgens uit te voeren met Apache Hadoop op Azure HDInsight.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks).
 
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
+* [Apache Maven](https://maven.apache.org/download.cgi) goed [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project build systeem voor Java projecten.
 
 ## <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
-De omgeving die voor dit artikel wordt gebruikt, is een computer met Windows 10. De opdrachten zijn uitgevoerd in een opdracht prompt en de verschillende bestanden zijn bewerkt met Klad blok. Wijzig dienovereenkomstig voor uw omgeving.
+De omgeving die voor dit artikel wordt gebruikt, was een computer met Windows 10. De opdrachten werden uitgevoerd in een opdrachtprompt en de verschillende bestanden zijn bewerkt met Kladblok. Dienovereenkomstig aanpassen voor uw omgeving.
 
-Voer vanaf een opdracht prompt de onderstaande opdrachten in om een werk omgeving te maken:
+Voer in een opdrachtprompt de onderstaande opdrachten in om een werkomgeving te maken:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -44,13 +44,13 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    Met deze opdracht maakt u een map met de naam die is opgegeven door de para meter `artifactID` (**wordcountjava** in dit voor beeld). Deze map bevat de volgende items:
+    Met deze opdracht wordt een map `artifactID` gemaakt met de naam die is opgegeven door de parameter **(wordcountjava** in dit voorbeeld.) Deze map bevat de volgende items:
 
-    * `pom.xml`-het [object model van het project (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) met informatie en configuratie details die zijn gebruikt om het project te bouwen.
-    * src\main\java\org\apache\hadoop\examples: bevat de code van uw toepassing.
-    * src\test\java\org\apache\hadoop\examples: bevat tests voor uw toepassing.
+    * `pom.xml`- Het [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) dat informatie en configuratiedetails bevat die worden gebruikt om het project te bouwen.
+    * src\main\java\org\apache\hadoop\examples: Bevat uw toepassingscode.
+    * src\test\java\org\apache\hadoop\examples: Bevat tests voor uw toepassing.
 
-1. Verwijder de gegenereerde voorbeeld code. Verwijder de gegenereerde test-en toepassings bestanden `AppTest.java`en `App.java` door de onderstaande opdrachten in te voeren:
+1. Verwijder de gegenereerde voorbeeldcode. Verwijder de gegenereerde `AppTest.java`test- `App.java` en toepassingsbestanden en voer de onderstaande opdrachten in:
 
     ```cmd
     cd wordcountjava
@@ -58,9 +58,9 @@ cd C:\HDI
     DEL src\test\java\org\apache\hadoop\examples\AppTest.java
     ```
 
-## <a name="update-the-project-object-model"></a>Het object model van het project bijwerken
+## <a name="update-the-project-object-model"></a>Het projectobjectmodel bijwerken
 
-Zie https://maven.apache.org/pom.html voor een volledige referentie van het bestand pom. XML. Open `pom.xml` door de volgende opdracht in te voeren:
+Zie https://maven.apache.org/pom.htmlvoor een volledige verwijzing naar het pom.xml-bestand . Open `pom.xml` door onderstaande opdracht in te voeren:
 
 ```cmd
 notepad pom.xml
@@ -68,7 +68,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-In `pom.xml`voegt u de volgende tekst toe aan de sectie `<dependencies>`:
+Voeg `pom.xml`in de volgende `<dependencies>` tekst in de sectie toe:
 
 ```xml
 <dependency>
@@ -91,18 +91,18 @@ In `pom.xml`voegt u de volgende tekst toe aan de sectie `<dependencies>`:
 </dependency>
 ```
 
-Hiermee definieert u de vereiste bibliotheken (vermeld in &lt;artifactId\>) met een specifieke versie (vermeld in &lt;versie\>). Tijdens het compileren worden deze afhankelijkheden gedownload uit de standaard-maven-opslag plaats. U kunt de [maven-opslag plaats zoeken](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) gebruiken om meer weer te geven.
+Dit definieert vereiste bibliotheken &lt;(vermeld\>in artefactId) met &lt;een\>specifieke versie (vermeld in versie). Op het moment van compileren worden deze afhankelijkheden gedownload van de standaard Maven-repository. U de [maven repository zoeken](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) gebruiken om meer te bekijken.
 
-De `<scope>provided</scope>` vertelt maven dat deze afhankelijkheden niet moeten worden ingepakt bij de toepassing, omdat ze tijdens runtime worden geleverd door het HDInsight-cluster.
+De `<scope>provided</scope>` vertelt Maven dat deze afhankelijkheden niet moeten worden verpakt met de toepassing, omdat ze worden geleverd door de HDInsight cluster op run-time.
 
 > [!IMPORTANT]
-> De versie die wordt gebruikt, moet overeenkomen met de versie van de Hadoop aanwezig in uw cluster. Zie het document [versie van HDInsight-onderdeel](../hdinsight-component-versioning.md) voor meer informatie over versies.
+> De gebruikte versie moet overeenkomen met de versie van Hadoop aanwezig op uw cluster. Zie het document voor [versieversie van HDInsight](../hdinsight-component-versioning.md) voor meer informatie over versies.
 
-### <a name="build-configuration"></a>Configuratie maken
+### <a name="build-configuration"></a>Configuratie bouwen
 
-Met maven-invoeg toepassingen kunt u de build-fasen van het project aanpassen. Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configuratie opties voor het maken van een toepassing toe te voegen.
+Met Maven-plug-ins u de bouwfasen van het project aanpassen. Deze sectie wordt gebruikt om plug-ins, resources en andere buildconfiguratieopties toe te voegen.
 
-Voeg de volgende code toe aan het `pom.xml`-bestand, sla het bestand op en sluit het. Deze tekst moet zich in de `<project>...</project>` Tags in het bestand bevindt, bijvoorbeeld tussen `</dependencies>` en `</project>`.
+Voeg de volgende `pom.xml` code toe aan het bestand en sla het bestand op en sluit deze. Deze tekst moet `<project>...</project>` zich in de tags in `</dependencies>` `</project>`het bestand bevinden, bijvoorbeeld tussen en .
 
 ```xml
 <build>
@@ -139,21 +139,21 @@ Voeg de volgende code toe aan het `pom.xml`-bestand, sla het bestand op en sluit
 </build>
 ```
 
-In deze sectie worden de invoeg toepassing Apache Maven compiler en Apache Maven Shad geconfigureerd. De compiler-invoeg toepassing wordt gebruikt voor het compileren van de topologie. De arcerings-invoeg toepassing wordt gebruikt om te voor komen dat licentie duplicatie in het JAR-pakket dat is gebouwd door maven. Deze invoeg toepassing wordt gebruikt om te voor komen dat een ' dubbele licentie bestanden ' tijdens runtime op het HDInsight-cluster wordt uitgevoerd. Als u maven-Shad-plugin met de `ApacheLicenseResourceTransformer`-implementatie gebruikt, wordt de fout verhinderd.
+In deze sectie worden de Apache Maven Compiler Plugin en Apache Maven Shade Plugin geconfigureerd. De compilerplug-in wordt gebruikt om de topologie samen te stellen. De schaduwplug-in wordt gebruikt om licentieduplicatie te voorkomen in het JAR-pakket dat door Maven is gebouwd. Deze plug-in wordt gebruikt om een fout met "dubbele licentiebestanden" te voorkomen tijdens het uitvoeren van de looptijd op het HDInsight-cluster. Het gebruik van maven-shade-plugin met de `ApacheLicenseResourceTransformer` implementatie voorkomt de fout.
 
-De Maven-Shade-invoeg toepassing produceert ook een uber jar dat alle afhankelijkheden bevat die vereist zijn voor de toepassing.
+De maven-shade-plugin produceert ook een uber-pot die alle afhankelijkheden bevat die nodig zijn voor de toepassing.
 
 Sla het bestand `pom.xml` op.
 
-## <a name="create-the-mapreduce-application"></a>De MapReduce-toepassing maken
+## <a name="create-the-mapreduce-application"></a>De toepassing MapReduce maken
 
-1. Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `WordCount.java`. Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
+1. Voer de onderstaande opdracht in `WordCount.java`om een nieuw bestand te maken en te openen. Selecteer **Ja** bij de prompt om een nieuw bestand te maken.
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java
     ```
 
-2. Kopieer en plak de Java-code hieronder in het nieuwe bestand. Sluit het bestand.
+2. Kopieer en plak vervolgens de javacode hieronder in het nieuwe bestand. Sluit vervolgens het bestand.
 
     ```java
     package org.apache.hadoop.examples;
@@ -226,54 +226,54 @@ Sla het bestand `pom.xml` op.
     }
     ```
 
-    U ziet dat de pakket naam `org.apache.hadoop.examples` is en dat de naam van de klasse `WordCount`is. U gebruikt deze namen wanneer u de MapReduce-taak verzendt.
+    Let op de `org.apache.hadoop.examples` naam van `WordCount`het pakket is en de klassenaam is . U gebruikt deze namen wanneer u de taak MapReduce indient.
 
-## <a name="build-and-package-the-application"></a>De toepassing bouwen en inpakken
+## <a name="build-and-package-the-application"></a>De toepassing bouwen en verpakken
 
-Gebruik in de `wordcountjava`-map de volgende opdracht om een JAR-bestand te maken dat de toepassing bevat:
+Gebruik `wordcountjava` in de map de volgende opdracht om een JAR-bestand te maken dat de toepassing bevat:
 
 ```cmd
 mvn clean package
 ```
 
-Met deze opdracht worden eerdere builds artefacten opgeschoond, worden eventuele afhankelijkheden gedownload die nog niet zijn geïnstalleerd en wordt de toepassing vervolgens gebouwd en verpakt.
+Met deze opdracht worden eerdere buildartefacten gereinigd, alle afhankelijkheden gedownload die nog niet zijn geïnstalleerd en vervolgens de toepassing gebouwd en verpakt.
 
-Zodra de opdracht is voltooid, bevat de `wordcountjava/target` map een bestand met de naam `wordcountjava-1.0-SNAPSHOT.jar`.
+Zodra de opdracht is `wordcountjava/target` voltooid, bevat `wordcountjava-1.0-SNAPSHOT.jar`de map een bestand met de naam .
 
 > [!NOTE]
-> Het `wordcountjava-1.0-SNAPSHOT.jar` bestand is een uberjar die niet alleen de WordCount-taak bevat, maar ook afhankelijkheden die de taak vereist tijdens runtime.
+> Het `wordcountjava-1.0-SNAPSHOT.jar` bestand is een uberjar, die niet alleen de Functie WordCount bevat, maar ook afhankelijkheden die de taak vereist tijdens runtime.
 
-## <a name="upload-the-jar-and-run-jobs-ssh"></a>De JAR en run Jobs uploaden (SSH)
+## <a name="upload-the-jar-and-run-jobs-ssh"></a>De JAR uploaden en taken uitvoeren (SSH)
 
-De volgende stappen gebruiken `scp` om het JAR te kopiëren naar het primaire hoofd knooppunt van uw Apache HBase in HDInsight-cluster. De opdracht `ssh` wordt vervolgens gebruikt om verbinding te maken met het cluster en het voor beeld rechtstreeks op het hoofd knooppunt uit te voeren.
+De volgende `scp` stappen worden gebruikt om de JAR te kopiëren naar het primaire hoofdknooppunt van uw Apache HBase op het HDInsight-cluster. De `ssh` opdracht wordt vervolgens gebruikt om verbinding te maken met het cluster en het voorbeeld rechtstreeks op het hoofdknooppunt uit te voeren.
 
-1. Upload het jar naar het cluster. Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en voer de volgende opdracht in:
+1. Upload de pot naar het cluster. Vervang `CLUSTERNAME` de naam van uw HDInsight-cluster en voer de volgende opdracht in:
 
     ```cmd
     scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Maak verbinding met het cluster. Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en voer de volgende opdracht in:
+1. Maak verbinding met het cluster. Vervang `CLUSTERNAME` de naam van uw HDInsight-cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Gebruik in de SSH-sessie de volgende opdracht om de MapReduce-toepassing uit te voeren:
+1. Gebruik vanuit de SSH-sessie de volgende opdracht om de toepassing MapReduce uit te voeren:
 
    ```bash
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
 
-    Met deze opdracht start u de WordCount MapReduce-toepassing. Het invoer bestand is `/example/data/gutenberg/davinci.txt`en de uitvoermap is `/example/data/wordcountout`. Zowel het invoer bestand als de uitvoer worden opgeslagen in de standaard opslag voor het cluster.
+    Met deze opdracht wordt de toepassing WordCount MapReduce gestart. Het invoerbestand `/example/data/gutenberg/davinci.txt`is en de `/example/data/wordcountout`uitvoermap is . Zowel het invoerbestand als de uitvoer worden opgeslagen in de standaardopslag voor het cluster.
 
-1. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de resultaten weer te geven:
+1. Zodra de taak is voltooid, gebruikt u de volgende opdracht om de resultaten weer te geven:
 
    ```bash
    hdfs dfs -cat /example/data/wordcountout/*
    ```
 
-    U ontvangt een lijst met woorden en aantallen met waarden die vergelijkbaar zijn met de volgende tekst:
+    U ontvangt een lijst met woorden en tellingen, met waarden die lijken op de volgende tekst:
 
     ```output
     zeal    1
@@ -283,7 +283,7 @@ De volgende stappen gebruiken `scp` om het JAR te kopiëren naar het primaire ho
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u een Java MapReduce-taak kunt ontwikkelen. Raadpleeg de volgende documenten voor andere manieren om met HDInsight te werken.
+In dit document hebt u geleerd hoe u een Java MapReduce-taak ontwikkelen. Bekijk de volgende documenten voor andere manieren om met HDInsight te werken.
 
 * [Apache Hive gebruiken met HDInsight](hdinsight-use-hive.md)
 * [MapReduce gebruiken met HDInsight](hdinsight-use-mapreduce.md)

@@ -1,7 +1,7 @@
 ---
-title: Microsoft Threat Modeling Tool versie 11/1/2018
+title: Microsoft Threat Modeling Tool release 11/1/2018
 titleSuffix: Azure
-description: De release opmerkingen voor het hulp programma voor het maken van bedreigingen vastleggen
+description: Het documenteren van de releasenotes voor het hulpprogramma voor bedreigingsmodellering
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -9,23 +9,23 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: 3d6057c729b2f3f9d7157e91656db1912422f168
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269757"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool-updaterelease 7.1.51023.1 - 11/1/2018
 
-Zoals oorspronkelijk vermeld in de informatie over de [release](threat-modeling-tool-releases-71509112.md), hebben we een update (7.1.51023.1) uitgebracht voor de Microsoft Threat Modeling tool waarvoor gebruikers van de preview-versie (preview-clients met versie < 7.1.50911.2) moeten worden bijgewerkt naar de ondersteunde Ga-versie. Deze release bevat geen nieuwe functionaliteit of oplossingen.
+Zoals oorspronkelijk vermeld in de [GA release notes](threat-modeling-tool-releases-71509112.md), hebben we een update (7.1.51023.1) naar de Microsoft Threat Modeling Tool die gebruikers van de Preview-versie (preview clients met versie < 7.1.50911.2) zal vereisen om te upgraden naar de ondersteunde GA-release. Deze release bevat geen nieuwe functionaliteit of fixes.
 
-- Gebruikers van de preview-versie downloaden automatisch de upgrade wanneer de-client wordt geopend. Als u ervoor kiest om de nieuwe update niet te installeren, wordt de preview-versie van het hulp programma gesloten.
-- Gebruikers van de GA-versie van het hulp programma wordt gevraagd om te kiezen of ze een upgrade willen uitvoeren.
-- Gebruikers van de 2016-versie van het hulp programma worden niet beïnvloed.
+- Gebruikers van de Preview-versie downloaden de upgrade automatisch wanneer de client wordt geopend. Als u ervoor kiest de nieuwe update niet te installeren, wordt de preview-versie van het hulpprogramma gesloten.
+- Gebruikers van de GA-versie van de tool wordt gevraagd te kiezen of ze wel of niet willen upgraden.
+- Gebruikers van de 2016-versie van de tool worden niet beïnvloed.
 
-## <a name="feature-changes"></a>Functie wijzigingen
+## <a name="feature-changes"></a>Functiewijzigingen
 
-- None
+- Geen
 
 ## <a name="system-requirements"></a>Systeemvereisten
 
@@ -34,12 +34,12 @@ Zoals oorspronkelijk vermeld in de informatie over de [release](threat-modeling-
 - .NET-versie vereist
   - .NET 3.5.2
 - Aanvullende vereisten
-  - Er is een Internet verbinding vereist voor het ontvangen van updates voor het hulp programma en voor sjablonen.
+  - Er is een internetverbinding vereist om updates van de tool en sjablonen te ontvangen.
 
 ## <a name="documentation-and-feedback"></a>Documentatie en feedback
 
-- Documentatie voor de Threat Modeling Tool bevindt zich op [docs.Microsoft.com](threat-modeling-tool.md)en bevat informatie [over het gebruik van het hulp programma](threat-modeling-tool-getting-started.md).
+- Documentatie voor de Threat Modeling Tool bevindt zich op [docs.microsoft.com](threat-modeling-tool.md)en bevat informatie [over het gebruik van de tool.](threat-modeling-tool-getting-started.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Down load de nieuwste versie van de [Microsoft Threat Modeling tool](https://aka.ms/threatmodelingtool).
+Download de nieuwste versie van de [Microsoft Threat Modeling Tool.](https://aka.ms/threatmodelingtool)

@@ -1,6 +1,6 @@
 ---
-title: Key Vault ondersteuning toevoegen aan uw ASP.NET-project met behulp van Visual Studio-Azure Key Vault | Microsoft Docs
-description: Gebruik deze zelf studie om te leren hoe u Key Vault ondersteuning kunt toevoegen aan een ASP.NET-of ASP.NET Core-webtoepassing.
+title: Key Vault-ondersteuning toevoegen aan uw ASP.NET project met Visual Studio - Azure Key Vault | Microsoft Documenten
+description: Gebruik deze zelfstudie om te leren hoe u Key Vault-ondersteuning toevoegen aan een ASP.NET of ASP.NET Core-webtoepassing.
 services: key-vault
 author: ghogen
 manager: jillfra
@@ -10,64 +10,64 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456994"
 ---
-# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
+# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw webtoepassing met Visual Studio Connected Services
 
-In deze zelf studie leert u hoe u eenvoudig alles kunt toevoegen wat u nodig hebt om Azure Key Vault te gaan gebruiken voor het beheren van uw geheimen voor webprojecten in Visual Studio, ongeacht of u ASP.NET Core of een wille keurig type ASP.NET-project gebruikt. Met de functie voor verbonden services in Visual Studio kunt u Visual Studio automatisch alle NuGet-pakketten en configuratie-instellingen laten toevoegen die u nodig hebt om verbinding te maken met Key Vault in Azure.
+In deze zelfstudie leert u hoe u eenvoudig alles toevoegen wat u nodig hebt om Azure Key Vault te gebruiken om uw geheimen voor webprojecten in Visual Studio te beheren, of u nu ASP.NET Core of elk type ASP.NET project gebruikt. Door de functie Verbonden services in Visual Studio te gebruiken, u Visual Studio automatisch alle NuGet-pakketten en configuratie-instellingen laten toevoegen die u nodig hebt om verbinding te maken met Key Vault in Azure.
 
-Voor meer informatie over de wijzigingen die verbonden services in uw project maken om Key Vault in te scha kelen, raadpleegt u [Key Vault verbonden service: wat is er gebeurd met mijn ASP.net 4.7.1-project](#how-your-aspnet-framework-project-is-modified) of [Key Vault verbonden service: wat is er gebeurd met mijn ASP.net core-project](#how-your-aspnet-core-project-is-modified).
+Zie Key Vault Connected Service - Wat is er [is gebeurd met mijn ASP.NET 4.7.1-project](#how-your-aspnet-framework-project-is-modified) of Key Vault Connected Service - Wat is er gebeurd met mijn ASP.NET 4.7.1-project of [Key Vault Connected Service - Wat is er gebeurd met mijn ASP.NET Core-project.](#how-your-aspnet-core-project-is-modified)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Een Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- **Visual studio 2019 versie 16,3** of hoger, of **Visual studio 2017 versie 15,7** met de werk belasting voor **Web Development** geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Voor ASP.NET (niet kern geheugens) met Visual Studio 2017 hebt u de ontwikkel Hulpprogramma's van .NET Framework 4.7.1 of hoger nodig, die niet standaard worden geïnstalleerd. Als u deze wilt installeren, opent u het installatie programma van Visual Studio, kiest u **wijzigen**en kiest u vervolgens **afzonderlijke onderdelen**. Vouw vervolgens aan de rechter kant **ASP.net en web development**uit en kies **.NET Framework 4.7.1 Development tools**.
-- Een ASP.NET-4.7.1 of hoger, of ASP.NET Core 2,0 of hoger web-project geopend.
+- **Een Azure-abonnement**. Als je nog geen abonnement hebt, meld je dan aan voor een [gratis account.](https://azure.microsoft.com/pricing/free-trial/)
+- **Visual Studio 2019 versie 16.3** of hoger, of **Visual Studio 2017 versie 15.7** met de **Web Development-workload** geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Voor ASP.NET (niet Core) met Visual Studio 2017 hebt u de .NET Framework 4.7.1 of hoger Development Tools nodig, die niet standaard zijn geïnstalleerd. Als u ze wilt installeren, start u de Visual Studio Installer, kiest u **Wijzigen**en kiest u **vervolgens Afzonderlijke componenten**, vervolgens aan de rechterkant, breidt u ASP.NET en **webontwikkeling**uit en kiest **u .NET Framework 4.7.1 Development Tools**.
+- Een ASP.NET 4.7.1 of hoger, of ASP.NET Core 2.0 of hoger webproject geopend.
 
-## <a name="add-key-vault-support-to-your-project"></a>Key Vault ondersteuning toevoegen aan uw project
+## <a name="add-key-vault-support-to-your-project"></a>Key Vault-ondersteuning toevoegen aan uw project
 
-Voordat u begint, moet u ervoor zorgen dat u bent aangemeld bij Visual Studio. Meld u aan met hetzelfde account dat u gebruikt voor uw Azure-abonnement. Open vervolgens een ASP.NET-4.7.1 of hoger of ASP.NET Core 2,0-webproject en voer de volgende stappen uit:
+Voordat u begint, moet u ervoor zorgen dat u bent aangemeld bij Visual Studio. Meld u aan met hetzelfde account dat u gebruikt voor uw Azure-abonnement. Open vervolgens een ASP.NET 4.7.1 of hoger of ASP.NET Core 2.0-webproject en voer de volgende stappen uit:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project waaraan u de Key Vault ondersteuning wilt toevoegen en kies > **verbonden service** **toevoegen** .
+1. Klik in **Solution Explorer**met de rechtermuisknop op het project waaraan u de Key Vault-ondersteuning wilt toevoegen en kies Verbonden**service** **toevoegen** > .
    De Connected Service-pagina wordt weergegeven met services die u aan uw project kunt toevoegen.
-1. Kies in het menu met beschik bare Services **beveiligde geheimen met Azure Key Vault**.
+1. Kies secure secrets with **Azure Key Vault**in het menu met beschikbare services.
 
-   ![Kies beveiligde geheimen met Azure Key Vault](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
+   ![Kies 'Geheimen beveiligen met Azure Key Vault'](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-1. Selecteer het abonnement dat u wilt gebruiken en kies vervolgens een nieuwe of bestaande Key Vault. Als u de nieuwe Key Vault selecteert, wordt een koppeling **bewerken** weer gegeven. Selecteer deze optie om uw nieuwe Key Vault te configureren.
+1. Selecteer het abonnement dat u wilt gebruiken en kies vervolgens een nieuwe of bestaande Key Vault. Als u de nieuwe Key Vault kiest, wordt er een **koppeling Bewerken** weergegeven. Selecteer deze optie om uw nieuwe Key Vault te configureren.
 
    ![Selecteer uw abonnement](media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
-1. In **Azure Key Vault bewerken**voert u de naam in die u wilt gebruiken voor de Key Vault.
+1. Voer in **Azure Key Vault bewerken**de naam in die u wilt gebruiken voor de Key Vault.
 
-1. Selecteer een bestaande **resource groep**of kies ervoor om een nieuwe te maken met een automatisch gegenereerde unieke naam.  Als u een nieuwe groep met een andere naam wilt maken, kunt u de [Azure Portal](https://portal.azure.com)gebruiken, en vervolgens de pagina sluiten en opnieuw opstarten om de lijst met resource groepen opnieuw te laden.
-1. Kies de **locatie** waar u de Key Vault wilt maken. Als uw webtoepassing wordt gehost in azure, kiest u de regio die als host fungeert voor de webtoepassing voor optimale prestaties.
-1. Kies een **prijs categorie**. Zie [Key Vault prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie.
-1. Kies **OK** om de configuratie opties te accepteren.
-1. Nadat u een bestaand Key Vault hebt geselecteerd of een nieuwe Key Vault hebt geconfigureerd, selecteert u op het tabblad **Azure Key Vault** van Visual Studio **toevoegen** om de verbonden service toe te voegen.
-1. Selecteer de koppeling **geheimen beheren die zijn opgeslagen op deze key Vault** om de pagina **geheimen** te openen voor uw Key Vault. Als u de pagina of het project hebt gesloten, kunt u ernaar navigeren in het [Azure Portal](https://portal.azure.com) door **alle services** te kiezen en vervolgens onder **beveiliging**te kiezen **Key Vault**en vervolgens uw Key Vault te kiezen.
-1. Kies in het gedeelte Key Vault voor de Key Vault die u hebt gemaakt, de optie **geheimen**en **Genereer/Importeer**vervolgens.
+1. Selecteer een bestaande **resourcegroep**of kies ervoor om een nieuwe groep te maken met een automatisch gegenereerde unieke naam.  Als u een nieuwe groep met een andere naam wilt maken, u de [Azure-portal](https://portal.azure.com)gebruiken en de pagina sluiten en opnieuw starten om de lijst met brongroepen opnieuw te laden.
+1. Kies de **locatie** waar u de sleutelkluis wilt maken. Als uw webtoepassing wordt gehost in Azure, kiest u de regio die de webtoepassing host voor optimale prestaties.
+1. Kies een **prijscategorie**. Zie Key [Vault Pricing voor](https://azure.microsoft.com/pricing/details/key-vault/)meer informatie.
+1. Kies **OK** om de configuratiekeuzes te accepteren.
+1. Nadat u een bestaande Key Vault hebt geselecteerd of een nieuwe Key Vault hebt geconfigureerd, selecteert u op het tabblad **Azure Key Vault** van Visual Studio de optie **Toevoegen** om de verbonden service toe te voegen.
+1. Selecteer de **geheimen beheren die zijn opgeslagen in deze key vault-koppeling** om de pagina **Geheimen** voor uw sleutelkluis te openen. Als u de pagina of het project hebt gesloten, u ernaar navigeren in de [Azure-portal](https://portal.azure.com) door **Alle services** te kiezen en, onder **Beveiliging,** **Key Vault**te kiezen, kies je sleutelkluis.
+1. Kies in de sectie Sleutelkluis voor de sleutelkluis die u hebt gemaakt de optie **Geheimen**en **vervolgens Genereren/importeren.**
 
    ![Een geheim genereren/importeren](media/vs-key-vault-add-connected-service/azure-generate-secrets.png)
 
-1. Voer een geheim in, zoals *MySecret* en geef het een wille keurige teken reeks waarde als test en selecteer vervolgens de knop **maken** .
+1. Voer een geheim in, zoals *MySecret* en geef het als test een tekenreekswaarde en selecteer vervolgens de knop **Maken.**
 
    ![Een geheim maken](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
 
-1. Beschrijving Geef een ander geheim op, maar deze keer wordt in een categorie geplaatst door de naam geheimen te noemen *--MySecret*. Met deze syntaxis geeft u een categorie geheimen op die een geheim ' MySecret ' bevat.
+1. (facultatief) Voer een ander geheim, maar deze keer zet het in een categorie door het benoemen *van geheimen - MySecret*. Deze syntaxis geeft een categorie "Geheimen" op die een geheim "MySecret" bevat.
 
-Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschillen, afhankelijk van of u ASP.NET 4.7.1 of ASP.NET Core gebruikt.
+Nu heb je toegang tot je geheimen in code. De volgende stappen zijn verschillend, afhankelijk van of u ASP.NET 4.7.1 of ASP.NET Core gebruikt.
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>Toegang tot uw geheimen in code (ASP.NET Core)
 
-1. Klik in Solution Explorer met de rechter muisknop op uw project en selecteer **NuGet-pakketten beheren**. Op het tabblad **Bladeren** zoekt en installeert u deze twee NuGet-pakketten: [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en voor .net Core 2, voegt u [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) de sleutel kluis of voor .net Core 3 toe. Voeg[micro soft. Azure.-kluis. core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)toe.
+1. Klik in Solution Explorer met de rechtermuisknop op uw project en selecteer **NuGet-pakketten beheren.** Zoek en installeer op het tabblad **Bladeren** deze twee NuGet-pakketten: [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en voor .NET Core 2, voeg [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) of voor .NET Core 3 toe voeg[Microsoft.Azure.KeyVault.Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)toe.
 
-1. Voor .NET Core 2 selecteert u het tabblad `Program.cs` en wijzigt u de `BuildWebHost` definitie in de programma klasse in het volgende:
+1. Selecteer voor .NET Core `Program.cs` 2 het `BuildWebHost` tabblad en wijzig de definitie in de klasse Programma als volgt:
 
    ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -91,7 +91,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
     }
    ```
 
-   Gebruik de volgende code voor .NET Core 3.
+   Voor .NET Core 3 gebruikt u de volgende code.
 
    ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -115,20 +115,20 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
-1. Open vervolgens een van de pagina bestanden, zoals *index.cshtml.cs* en schrijf de volgende code:
-   1. Voeg met behulp van de instructie een verwijzing naar `Microsoft.Extensions.Configuration` toe:
+1. Open vervolgens een van de paginabestanden, zoals *Index.cshtml.cs* en schrijf de volgende code:
+   1. Vermeld in `Microsoft.Extensions.Configuration` deze richtlijn een verwijzing naar:
 
        ```csharp
        using Microsoft.Extensions.Configuration;
        ```
 
-   1. Voeg de configuratie variabele toe.
+   1. Voeg de configuratievariabele toe.
 
       ```csharp
       private static readonly IConfiguration _configuration;
       ```
 
-   1. Voeg deze constructor toe of vervang de bestaande constructor door de volgende:
+   1. Voeg deze constructor toe of vervang de bestaande constructeur met de opdracht:
 
        ```csharp
        public IndexModel(IConfiguration configuration)
@@ -137,7 +137,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
        }
        ```
 
-   1. Werk de `OnGet`-methode bij. Werk de waarde van de tijdelijke aanduiding die hier wordt weer gegeven bij met de geheime naam die u in de bovenstaande opdrachten hebt gemaakt.
+   1. Werk de `OnGet`-methode bij. Werk de tijdelijke aanduidingswaarde bij die hier wordt weergegeven met de geheime naam die u in de bovenstaande opdrachten hebt gemaakt.
 
        ```csharp
        public void OnGet()
@@ -146,25 +146,25 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
        }
        ```
 
-   1. Als u de waarde tijdens runtime wilt bevestigen, voegt u code toe om `ViewData["Message"]` weer te geven in het *cshtml* -bestand om het geheim in een bericht weer te geven.
+   1. Als u de waarde bij runtime `ViewData["Message"]` wilt bevestigen, voegt u code toe die moet worden weergegeven aan het *.cshtml-bestand* om het geheim in een bericht weer te geven.
 
       ```cshtml
           <p>@ViewData["Message"]</p>
       ```
 
-U kunt de app lokaal uitvoeren om te controleren of het geheim van de Key Vault is opgehaald.
+U de app lokaal uitvoeren om te controleren of het geheim is verkregen uit de Key Vault.
 
-## <a name="access-your-secrets-aspnet"></a>Toegang tot uw geheimen (ASP.NET)
+## <a name="access-your-secrets-aspnet"></a>Krijg toegang tot je geheimen (ASP.NET)
 
-U kunt de configuratie zo instellen dat het bestand Web. config een dummy waarde bevat in het `appSettings`-element dat tijdens runtime wordt vervangen door de waarde waar. U kunt dit vervolgens openen via de gegevens structuur van `ConfigurationManager.AppSettings`.
+U de configuratie zo instellen dat het bestand web.config een dummywaarde heeft in het `appSettings` element dat wordt vervangen door de werkelijke waarde bij runtime. U dit vervolgens `ConfigurationManager.AppSettings` openen via de gegevensstructuur.
 
-1. Bewerk het bestand Web. config.  Zoek de tag appSettings, voeg een kenmerk toe `configBuilders="AzureKeyVault"`en voeg een regel toe:
+1. Bewerk uw web.config-bestand.  Zoek de appInstellingen-tag, `configBuilders="AzureKeyVault"`voeg een kenmerk toe en voeg een regel toe:
 
    ```xml
       <add key="mysecret" value="dummy"/>
    ```
 
-1. Bewerk de `About` methode in *HomeController.cs*om de waarde voor de bevestiging weer te geven.
+1. Bewerk `About` de methode in *HomeController.cs*om de waarde voor bevestiging weer te geven.
 
    ```csharp
    public ActionResult About()
@@ -172,54 +172,54 @@ U kunt de configuratie zo instellen dat het bestand Web. config een dummy waarde
        ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["mysecret"];
    }
    ```
-1. Voer de app lokaal uit onder het fout opsporingsprogramma, schakel over naar het tabblad **about** en controleer of de waarde van de Key Vault wordt weer gegeven.
+1. Voer de app lokaal uit onder de foutopsporing, ga naar het tabblad **Informatie** en controleer of de waarde uit de sleutelkluis wordt weergegeven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de resourcegroep als u deze niet meer nodig hebt. Hiermee worden de Key Vault en gerelateerde resources verwijderd. De resourcegroep verwijderen via de portal:
+Verwijder de resourcegroep als u deze niet meer nodig hebt. Hiermee worden de Key Vault en gerelateerde bronnen verwijderd. De resourcegroep verwijderen via de portal:
 
 1. Voer de naam van uw resourcegroep in het vak Zoeken bovenaan de portal in. Wanneer u de in deze snelstart gebruikte resourcegroep in de zoekresultaten ziet, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer in het vak **Typ de naam van de resource groep:** de naam van de resource groep in en selecteer **verwijderen**.
+3. Voer in **het vak NAAM VAN DE RESOURCEGROEP:** de naam van de resourcegroep in en selecteer **Verwijderen**.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als uw Key Vault wordt uitgevoerd op een andere Microsoft-account dan die waarvan u bent aangemeld bij Visual Studio (de Key Vault wordt uitgevoerd op uw werk account, maar Visual Studio gebruikt uw privé-account), wordt er een fout weer gegeven in uw Program.cs-bestand , dat Visual Studio geen toegang kan krijgen tot de Key Vault. Dit probleem oplossen:
+Als uw Key Vault wordt uitgevoerd op een ander Microsoft-account dan het account waarop u bent aangemeld bij Visual Studio (de Key Vault wordt bijvoorbeeld uitgevoerd op uw werkaccount, maar Visual Studio uw privé-account gebruikt) krijgt u een foutmelding in uw Program.cs-bestand , dat Visual Studio geen toegang kan krijgen tot de Key Vault. Dit probleem oplossen:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) en open uw Key Vault.
+1. Ga naar de [Azure-portal](https://portal.azure.com) en open uw Key Vault.
 
-1. Kies **toegangs beleid**, vervolgens **toegangs beleid toevoegen**en kies het account waarmee u bent aangemeld als principal.
+1. Kies **Toegangsbeleid**en **voeg toegangsbeleid toe**en kies het account waarmee u bent aangemeld als principal.
 
-1. Kies in Visual Studio de instellingen voor **bestands** > **accounts**.
-Selecteer **een account toevoegen** in het gedeelte **alle accounts** . Meld u aan met het account dat u hebt gekozen als principal van uw toegangs beleid.
+1. Kies in Visual Studio **Accountinstellingen** > **bestand**.
+Selecteer **Een account toevoegen** in de sectie Alle **account.** Meld u aan met het account dat u hebt gekozen als opdrachtgever van uw toegangsbeleid.
 
-1. Kies **extra** > **Opties**en zoek naar **Azure-service verificatie**. Selecteer vervolgens het account dat u zojuist hebt toegevoegd aan Visual Studio.
+1. Kies > **Extra-opties**en zoek naar **Azure Service Authentication**. **Tools** Selecteer vervolgens het account dat u zojuist aan Visual Studio hebt toegevoegd.
 
-Wanneer u nu fouten opspoort in uw toepassing, maakt Visual Studio verbinding met het account waarop uw Key Vault zich bevindt.
+Wanneer u uw toepassing debugt, maakt Visual Studio nu verbinding met het account waarop uw Key Vault zich bevindt.
 
-## <a name="how-your-aspnet-core-project-is-modified"></a>Hoe uw ASP.NET Core project wordt gewijzigd
+## <a name="how-your-aspnet-core-project-is-modified"></a>Hoe uw ASP.NET Core-project wordt gewijzigd
 
-In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentificeerd wanneer u de Key Vault verbonden service toevoegt met behulp van Visual Studio.
+In deze sectie worden de exacte wijzigingen in een ASP.NET project aangegeven bij het toevoegen van de Key Vault-verbonden service met Behulp van Visual Studio.
 
-### <a name="added-references-for-aspnet-core"></a>Er zijn verwijzingen toegevoegd voor ASP.NET Core
+### <a name="added-references-for-aspnet-core"></a>Referenties toegevoegd voor ASP.NET Core
 
-Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzingen.
+Is van invloed op het projectbestand .NET-verwijzingen en NuGet-pakketreferenties.
 
-| Type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
-### <a name="added-files-for-aspnet-core"></a>Toegevoegde bestanden voor ASP.NET Core
+### <a name="added-files-for-aspnet-core"></a>Bestanden toegevoegd voor ASP.NET Core
 
-- `ConnectedService.json` toegevoegd, waarmee gegevens over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
+- `ConnectedService.json`toegevoegd, die bepaalde informatie over de Verbonden leverancier van de Dienst, versie, en een verbinding de documentatie registreert.
 
-### <a name="project-file-changes-for-aspnet-core"></a>Wijzigingen in het project bestand voor ASP.NET Core
+### <a name="project-file-changes-for-aspnet-core"></a>Wijzigingen in projectbestand voor ASP.NET Core
 
-- Het ItemGroup-en `ConnectedServices.json`-bestand van de verbonden services zijn toegevoegd.
+- Added the Connected Services `ConnectedServices.json` ItemGroup and file.
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>wijzigingen in launchsettings. json voor ASP.NET Core
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>launchsettings.json wijzigingen voor ASP.NET Core
 
-- De volgende omgevings variabele-vermeldingen zijn toegevoegd aan het IIS Express profiel en het profiel dat overeenkomt met de naam van uw webproject:
+- De volgende omgevingsvariabele vermeldingen toevoegen aan zowel het IIS Express-profiel als het profiel dat overeenkomt met de naam van uw webproject:
 
     ```json
       "environmentVariables": {
@@ -228,38 +228,38 @@ Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzinge
       }
     ```
 
-### <a name="changes-on-azure-for-aspnet-core"></a>Wijzigingen in azure voor ASP.NET Core
+### <a name="changes-on-azure-for-aspnet-core"></a>Wijzigingen in Azure voor ASP.NET Core
 
-- Een resource groep gemaakt (of een bestaande gebruikt).
-- Er is een Key Vault gemaakt in de opgegeven resource groep.
+- Een resourcegroep gemaakt (of een bestaande groep gebruikt).
+- Een sleutelkluis gemaakt in de opgegeven resourcegroep.
 
 ## <a name="how-your-aspnet-framework-project-is-modified"></a>Hoe uw ASP.NET Framework-project wordt gewijzigd
 
-In deze sectie worden de exacte wijzigingen in een ASP.NET-project geïdentificeerd wanneer u de Key Vault verbonden service toevoegt met behulp van Visual Studio.
+In deze sectie worden de exacte wijzigingen in een ASP.NET project aangegeven bij het toevoegen van de Key Vault-verbonden service met Behulp van Visual Studio.
 
-### <a name="added-references-for-aspnet-framework"></a>Er zijn verwijzingen toegevoegd voor ASP.NET Framework
+### <a name="added-references-for-aspnet-framework"></a>Referenties toegevoegd voor ASP.NET Framework
 
-Heeft betrekking op het project bestand .NET-verwijzingen en `packages.config` (NuGet references).
+Beïnvloedt het projectbestand .NET-verwijzingen en `packages.config` (NuGet-verwijzingen).
 
-| Type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
-| .NET; NuGet | Microsoft.Azure.KeyVault |
-| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
-| .NET; NuGet | Microsoft.Rest.ClientRuntime |
-| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| .net; NuGet (NuGet) | Microsoft.Azure.KeyVault |
+| .net; NuGet (NuGet) | Microsoft.Azure.KeyVault.WebKey |
+| .net; NuGet (NuGet) | Microsoft.Rest.ClientRuntime |
+| .net; NuGet (NuGet) | Microsoft.Rest.ClientRuntime.Azure |
 
 ### <a name="added-files-for-aspnet-framework"></a>Bestanden toegevoegd voor ASP.NET Framework
 
-- `ConnectedService.json` toegevoegd, waarmee gegevens over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
+- `ConnectedService.json`toegevoegd, die bepaalde informatie over de Verbonden Leverancier van de Dienst, versie, en een verbinding aan de documentatie registreert.
 
-### <a name="project-file-changes-for-aspnet-framework"></a>Wijzigingen in het project bestand voor ASP.NET Framework
+### <a name="project-file-changes-for-aspnet-framework"></a>Wijzigingen in projectbestanden voor ASP.NET Framework
 
-- Het Connected Services ItemGroup-en ConnectedServices. JSON-bestand zijn toegevoegd.
-- Verwijzingen naar de .NET-assembly's die worden beschreven in de sectie [toegevoegde verwijzingen](#added-references-for-aspnet-framework) .
+- Added the Connected Services ItemGroup and ConnectedServices.json file.
+- Verwijzingen naar de .NET-assemblages die zijn beschreven in de sectie [Toegevoegde verwijzingen.](#added-references-for-aspnet-framework)
 
-### <a name="webconfig-or-appconfig-changes"></a>wijzigingen in web. config of app. config
+### <a name="webconfig-or-appconfig-changes"></a>web.config of app.config wijzigingen
 
-- De volgende configuratie vermeldingen zijn toegevoegd:
+- De volgende configuratievermeldingen toegevoegd:
 
     ```xml
     <configSections>
@@ -280,13 +280,13 @@ Heeft betrekking op het project bestand .NET-verwijzingen en `packages.config` (
     </configBuilders>
     ```
 
-### <a name="changes-on-azure-for-aspnet-framework"></a>Wijzigingen in azure voor ASP.NET Framework
+### <a name="changes-on-azure-for-aspnet-framework"></a>Wijzigingen op Azure voor ASP.NET Framework
 
-- Een resource groep gemaakt (of een bestaande gebruikt).
-- Er is een Key Vault gemaakt in de opgegeven resource groep.
+- Een resourcegroep gemaakt (of een bestaande groep gebruikt).
+- Een sleutelkluis gemaakt in de opgegeven resourcegroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u deze zelf studie hebt gevolgd, worden uw Key Vault machtigingen ingesteld om te worden uitgevoerd met uw eigen Azure-abonnement, maar dit is mogelijk niet wenselijk voor een productie scenario. U kunt een beheerde identiteit maken om Key Vault toegang voor uw app te beheren. Zie [Key Vault verificatie bieden met een beheerde identiteit](/azure/key-vault/managed-identity).
+Als u deze zelfstudie hebt gevolgd, zijn uw Key Vault-machtigingen ingesteld om met uw eigen Azure-abonnement uit te voeren, maar dat is mogelijk niet wenselijk voor een productiescenario. U een beheerde identiteit maken om Key Vault-toegang voor uw app te beheren. Zie [Key Vault-verificatie bieden met een beheerde identiteit](/azure/key-vault/managed-identity).
 
-Lees de [Key Vault ontwikkelaars handleiding](key-vault-developers-guide.md)voor meer informatie over het ontwikkelen van Key Vault.
+Lees meer over de ontwikkeling van Key Vault door de [Sleutelkluishandleiding te](key-vault-developers-guide.md)lezen.

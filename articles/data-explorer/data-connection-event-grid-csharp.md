@@ -1,6 +1,6 @@
 ---
-title: Een Event Grid gegevens verbinding maken voor Azure Data Explorer met behulp vanC#
-description: In dit artikel leert u hoe u een Event Grid gegevens verbinding voor Azure Data Explorer maakt met behulp C#van.
+title: 'Een gebeurtenisrastergegevensverbinding voor Azure Data Explorer maken met C #'
+description: In dit artikel leert u hoe u een gebeurtenisrastergegevensverbinding voor Azure Data Explorer maakt met C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,39 +8,39 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 03963f60cc364dd36ad55c0a28e92e3b585bb38d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255083"
 ---
-# <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>Een Event Grid gegevens verbinding maken voor Azure Data Explorer met behulp vanC#
+# <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>Een gebeurtenisrastergegevensverbinding voor Azure Data Explorer maken met C #
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
-> * [C#](data-connection-event-grid-csharp.md)
+> * [C #](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-event-grid-resource-manager.md)
 
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt opname (gegevens laden) van Event Hubs, IoT hubs en blobs die zijn geschreven naar BLOB-containers. In dit artikel maakt u een Event Grid gegevens verbinding voor Azure Data Explorer met behulp C#van.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevensladen) van gebeurtenishubs, IoT-hubs en blobs die zijn geschreven naar blobcontainers. In dit artikel maakt u een eventgridgegevensverbinding voor Azure Data Explorer met C#.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een cluster en data base](create-cluster-database-csharp.md) maken
-* [Tabel-en kolom toewijzing](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) maken
-* [Data Base-en tabel beleid](database-table-policies-csharp.md) instellen (optioneel)
-* Maak een [opslag account met een event grid-abonnement](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
+* Als u Visual Studio 2019 niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* Een [cluster en database maken](create-cluster-database-csharp.md)
+* Tabel- [en kolomtoewijzing maken](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [Database- en tabelbeleid](database-table-policies-csharp.md) instellen (optioneel)
+* Maak een [opslagaccount aan met een Event Grid-abonnement](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-event-grid-data-connection"></a>Een Event Grid gegevens verbinding toevoegen
+## <a name="add-an-event-grid-data-connection"></a>Een gegevensverbinding voor gebeurtenisraster toevoegen
 
-In het volgende voor beeld ziet u hoe u een Event Grid gegevens verbinding programmatisch kunt toevoegen. Zie [een event grid gegevens verbinding maken in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) voor het toevoegen van een event grid gegevens verbinding met behulp van de Azure Portal.
+In het volgende voorbeeld ziet u hoe u een gebeurtenisrastergegevensverbinding programmatisch toevoegt. Zie [een eventgrid-gegevensverbinding maken in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) voor het toevoegen van een gebeurtenisrastergegevensverbinding via de Azure-portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -77,29 +77,29 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
 ```
 
-|**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+|**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
 |---|---|---|
-| tenantId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | Uw Tenant-ID. Ook bekend als Directory-ID.|
-| subscriptionId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
-| clientId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
-| resourceGroupName | *testrg* | De naam van de resource groep die het cluster bevat.|
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Je pacht-id. Ook wel directory ID genoemd.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De client-id van de toepassing die toegang heeft tot bronnen in uw tenant.|
+| clientGeheim | *xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | Het clientgeheim van de toepassing die toegang heeft tot bronnen in uw tenant. |
+| resourceGroupName | *testrg* | De naam van de resourcegroep die uw cluster bevat.|
 | clusterName | *mykustocluster* | De naam van uw cluster.|
-| databaseName | *mykustodatabase* | De naam van de doel database in uw cluster.|
-| dataConnection | *myeventhubconnect* | De gewenste naam van uw gegevens verbinding.|
-| tableName | *StormEvents* | De naam van de doel tabel in de doel database.|
-| mappingRuleName | *StormEvents_CSV_Mapping* | De naam van de kolom toewijzing die is gerelateerd aan de doel tabel.|
-| dataFormat | *bestand* | De gegevens indeling van het bericht.|
-| eventHubResourceId | *Resource-ID* | De resource-ID van uw event hub waar de Event Grid is geconfigureerd voor het verzenden van gebeurtenissen. |
-| storageAccountResourceId | *Resource-ID* | De resource-ID van uw opslag account dat de gegevens bevat voor opname. |
-| consumerGroup | *$Default* | De consumenten groep van uw event hub.|
-| locatie | *VS - centraal* | De locatie van de bron van de gegevens verbinding.|
+| Databasenaam | *mykustodatabase* | De naam van de doeldatabase in uw cluster.|
+| gegevensConnectionName | *myeventhubconnect* | De gewenste naam van uw gegevensverbinding.|
+| tableName | *StormEvenementen* | De naam van de doeltabel in de doeldatabase.|
+| mappingRuleName | *StormEvents_CSV_Mapping* | De naam van uw kolomtoewijzing met betrekking tot de doeltabel.|
+| gegevensOpmaken | *Csv* | De gegevensindeling van het bericht.|
+| eventHubResourceId | *Resource-id* | De resource-id van uw gebeurtenishub waar het gebeurtenisraster is geconfigureerd om gebeurtenissen te verzenden. |
+| storageAccountResourceId | *Resource-id* | De bron-ID van uw opslagaccount die de gegevens bevat voor opname. |
+| consumerGroup | *$Default* | De consumentengroep van uw Event Hub.|
+| location | *VS - centraal* | De locatie van de bron voor gegevensverbindingen.|
 
 ## <a name="generate-sample-data"></a>Voorbeeldgegevens genereren
 
-Nu Azure Data Explorer en het opslag account zijn verbonden, kunt u voorbeeld gegevens maken en deze uploaden naar de Blob-opslag.
+Nu Azure Data Explorer en het opslagaccount zijn verbonden, u voorbeeldgegevens maken en uploaden naar de blob-opslag.
 
-Met dit script maakt u een nieuwe container in uw opslag account, uploadt u een bestaand bestand (als een blob) naar die container en vervolgens worden de blobs in de container weer gegeven.
+Met dit script wordt een nieuwe container in uw opslagaccount gemaakt, wordt een bestaand bestand (als blob) naar die container geüpload en worden de blobs in de container weergegeven.
 
 ```csharp
 var azureStorageAccountConnectionString=<storage_account_connection_string>;
@@ -125,6 +125,6 @@ var blobs = container.ListBlobs();
 ```
 
 > [!NOTE]
-> In azure Data Explorer worden de blobs na opname niet verwijderd. Behoud de blobs gedurende drie tot vijf dagen met behulp van de [Azure Blob Storage-levens cyclus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) voor het verwijderen van BLOB-verwijdering.
+> Azure Data Explorer verwijdert de blobs na inname niet. Bewaar de blobs drie tot vijf dagen met behulp van de levenscyclus van [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) om blobverwijdering te beheren.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

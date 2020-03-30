@@ -1,6 +1,6 @@
 ---
-title: De beheerder-werk stroom voor het beheer van toestemming configureren-Azure Active Directory | Microsoft Docs
-description: Informatie over het configureren van een manier voor eind gebruikers om toegang aan te vragen voor toepassingen waarvoor beheerders toestemming nodig is.
+title: De werkstroom voor beheerderstoestemming configureren - Azure Active Directory | Microsoft Documenten
+description: Meer informatie over het configureren van een manier voor eindgebruikers om toegang te vragen tot toepassingen waarvoor beheerderstoestemming vereist is.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,150 +13,150 @@ ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430202"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>De beheerder toestemming werk stroom configureren (preview-versie)
+# <a name="configure-the-admin-consent-workflow-preview"></a>De werkstroom voor beheerderstoestemming configureren (voorbeeld)
 
-In dit artikel wordt beschreven hoe u de functie voor het beheer van toestemming werk stroom (preview) inschakelt, waarmee eind gebruikers toegang kunnen aanvragen tot toepassingen waarvoor beheerders toestemming nodig is.
+In dit artikel wordt beschreven hoe u de functie voor de werkstroom (preview) van beheerderstoestemming inschakelen, zodat eindgebruikers toegang kunnen vragen tot toepassingen waarvoor beheerderstoestemming vereist is.
 
-Zonder een beheerder toestemming werk stroom, een gebruiker in een Tenant waarbij toestemming van de gebruiker is uitgeschakeld, wordt geblokkeerd wanneer ze proberen toegang te krijgen tot apps die machtigingen nodig hebben om toegang te krijgen tot de organisatie gegevens. De gebruiker ziet een algemeen fout bericht met de melding dat ze niet zijn gemachtigd om toegang te krijgen tot de app en ze moeten hun beheerder vragen om hulp. Maar vaak is de gebruiker niet bekend met wie u contact moet opnemen, zodat ze een nieuw lokaal account in de toepassing kunnen opgeven of maken. Zelfs wanneer een beheerder een melding krijgt, is er geen gestroomlijnd proces om de beheerder te helpen bij het verlenen van toegang en het melden van de gebruikers.
+Zonder een werkstroom voor beheerderstoestemming wordt een gebruiker in een tenant waarin de toestemming van de gebruiker is uitgeschakeld, geblokkeerd wanneer hij toegang probeert te krijgen tot een app waarvoor machtigingen zijn vereist om toegang te krijgen tot organisatiegegevens. De gebruiker ziet een algemene foutmelding waarin staat dat hij onbevoegd is om toegang te krijgen tot de app en dat hij of zij zijn beheerder om hulp moet vragen. Maar vaak weet de gebruiker niet met wie hij contact moet opnemen, dus ze geven het op of maken een nieuw lokaal account in de toepassing. Zelfs wanneer een beheerder hiervan op de hoogte wordt gesteld, is er niet altijd een gestroomlijnd proces om de beheerder te helpen toegang te verlenen en hun gebruikers hiervan op de hoogte te stellen.
  
-De beheerder toestemming werk stroom biedt beheerders een veilige manier om toegang te verlenen tot toepassingen waarvoor de beheerder goed keuring nodig heeft. Wanneer een gebruiker toegang probeert te krijgen tot een toepassing, maar geen toestemming kan geven, kan deze een aanvraag indienen voor goed keuring door de beheerder. De aanvraag wordt via e-mail verzonden naar beheerders die zijn aangewezen als revisors. Een revisor onderneemt actie voor de aanvraag en de gebruiker wordt op de hoogte gesteld van de actie.
+De werkstroom voor beheerderstoestemming biedt beheerders een veilige manier om toegang te verlenen tot toepassingen waarvoor beheerdersgoedkeuring nodig zijn. Wanneer een gebruiker toegang probeert te krijgen tot een toepassing, maar geen toestemming kan geven, kan hij of zij een verzoek om goedkeuring van de beheerder verzenden. Het verzoek wordt via e-mail verzonden naar beheerders die zijn aangewezen als revisoren. Een revisor onderneemt actie op de aanvraag en de gebruiker wordt op de hoogte gebracht van de actie.
 
-Voor het goed keuren van aanvragen moet een revisor een globale beheerder, Cloud toepassings beheerder of toepassings beheerder zijn. De revisor moet al een van deze beheerders rollen hebben toegewezen. Als u deze niet aanwijst als revisor, worden de bevoegdheden niet verhoogd.
+Als u aanvragen wilt goedkeuren, moet een revisor een globale beheerder, beheerder van een cloudtoepassing of toepassingsbeheerder zijn. De revisor moet al een van deze beheerdersrollen toegewezen hebben. gewoon aanwijzen ze als een recensent niet verheffen hun privileges.
 
-## <a name="enable-the-admin-consent-workflow"></a>De beheerder toestemming werk stroom inschakelen
+## <a name="enable-the-admin-consent-workflow"></a>De werkstroom voor beheerderstoestemming inschakelen
 
-De beheerder toestemming werk stroom inschakelen en revisoren kiezen:
+Ga als volgt te werk om de werkstroom voor beheerderstoestemming in te schakelen en revisoren te kiezen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder.
-2. Klik op **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding Azure Active Directory** wordt geopend.
-3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u **het Azure Active Directory** item.
-4. Klik in het navigatie menu op **bedrijfs toepassingen**. 
-5. Selecteer onder **beheren**de optie **gebruikers instellingen**.
-6. Stel gebruikers in het geval van **beheerders toestemming (preview)** in om de toestemming van de **beheerder in te stellen voor apps die niet kunnen worden geinstemming** met **Ja**.
+2. Klik op **Alle services** boven aan het navigatiemenu aan de linkerkant. De **Azure Active Directory Extension** wordt geopend.
+3. Typ in het zoekvak van het filter "**Azure Active Directory**" en selecteer het Azure Active **Directory-item.**
+4. Klik in het navigatiemenu op **Enterprise-toepassingen**. 
+5. Selecteer **onder Beheren**de optie **Gebruikersinstellingen**.
+6. Stel **onder toestemmingsverzoeken voor beheerders (voorbeeld)** instellen **gebruikers kunnen beheerderstoestemming vragen voor apps waarvoor ze geen toestemming kunnen geven voor** **Ja**.
 
-   ![Werk stroom instellingen voor de beheerder toestemming configureren](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
+   ![Werkstroominstellingen voor beheerderstoestemming configureren](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
 6. Configureer de volgende instellingen:
 
-   * **Selecteer gebruikers om aanvragen voor beheerders toestemmingen te bekijken**. Selecteer controleurs voor deze werk stroom uit een set gebruikers die de rollen globale beheerder, Cloud toepassings beheerder en toepassings beheerder hebben.
-   * **Geselecteerde gebruikers ontvangen e-mail meldingen voor aanvragen**. E-mail meldingen naar de revisoren in-of uitschakelen wanneer een aanvraag wordt ingediend.  
-   * **Geselecteerde gebruikers ontvangen herinneringen voor de verval datum van aanvragen**. E-mail meldingen voor herinneringen aan de revisoren in-of uitschakelen wanneer een aanvraag bijna verloopt.  
-   * De **aanvraag voor toestemming verloopt na (dagen)** . Opgeven hoelang aanvragen geldig blijven.
+   * **Selecteer gebruikers om toestemmingsverzoeken voor beheerders te controleren.** Selecteer revisoren voor deze werkstroom uit een reeks gebruikers met de algemene beheerders-, cloudtoepassingsbeheerder en toepassingsbeheerdersrollen.
+   * **Geselecteerde gebruikers ontvangen e-mailmeldingen voor verzoeken.** E-mailmeldingen in- of uitschakelen aan de revisoren wanneer een verzoek wordt ingediend.  
+   * **Geselecteerde gebruikers ontvangen herinneringen voor het verlopen van aanvragen.** Herinneringen e-mailmeldingen in- of uitschakelen aan de revisoren wanneer een verzoek bijna verloopt.  
+   * **Toestemmingsaanvraag verloopt na (dagen)**. Geef op hoe lang aanvragen geldig blijven.
 
-7. Selecteer **Opslaan**. Het kan een uur duren voordat de functie is ingeschakeld.
+7. Selecteer **Opslaan**. Het kan tot een uur duren voordat de functie is ingeschakeld.
 
 > [!NOTE]
-> U kunt revisoren voor deze werk stroom toevoegen of verwijderen door de lijst **beheerders toestemming aanvragen selecteren** te wijzigen. Houd er rekening mee dat de huidige beperking van deze functie is dat de controleurs de mogelijkheid tot het controleren van aanvragen die zijn ingediend als revisor, kunnen bewaren.
+> U revisoren voor deze werkstroom toevoegen of verwijderen door de lijst **met revisoren met machtigingen voor beheerders** selecteren te wijzigen. Houd er rekening mee dat een huidige beperking van deze functie is dat revisoren de mogelijkheid kunnen behouden om aanvragen te controleren die zijn uitgevoerd terwijl ze zijn aangewezen als een revisor.
 
-## <a name="how-users-request-admin-consent"></a>Hoe gebruikers toestemming van een beheerder aanvragen
+## <a name="how-users-request-admin-consent"></a>Hoe gebruikers toestemming van de beheerder vragen
 
-Nadat de beheerder toestemming werk stroom is ingeschakeld, kunnen gebruikers goed keuring van de beheerder aanvragen voor een toepassing die niet is gemachtigd om toestemming te geven. De volgende stappen beschrijven de gebruikers ervaring bij het aanvragen van goed keuring. 
+Nadat de werkstroom voor beheerderstoestemming is ingeschakeld, kunnen gebruikers beheerdersgoedkeuring aanvragen voor een toepassing waarvoor ze geen toestemming hebben gegeven. In de volgende stappen wordt de ervaring van de gebruiker beschreven bij het aanvragen van goedkeuring. 
 
 1. De gebruiker probeert zich aan te melden bij de toepassing.
 
-2. Het bericht **goed keuring is vereist** wordt weer gegeven. De gebruiker typt een reden voor het verkrijgen van toegang tot de app en selecteert vervolgens **goed keuring aanvragen**.
+2. Het vereiste bericht **Voor goedkeuring** wordt weergegeven. De gebruiker typt een rechtvaardiging voor het nodig hebben van toegang tot de app en selecteert vervolgens **Goedkeuring aanvragen**.
 
-   ![Gebruikers aanvraag en motivering van de beheerder](media/configure-admin-consent-workflow/end-user-justification.png)
+   ![Gebruikerverzoek en motivering van beheerderstoestemming](media/configure-admin-consent-workflow/end-user-justification.png)
 
-3. Een bericht **verzonden aanvragen** bevestigt dat de aanvraag is ingediend bij de beheerder. Als de gebruiker meerdere aanvragen verzendt, wordt alleen de eerste aanvraag verzonden naar de beheerder.
+3. Een **verzonden bericht met aanvraag** bevestigt dat de aanvraag is ingediend bij de beheerder. Als de gebruiker meerdere aanvragen verzendt, wordt alleen de eerste aanvraag ingediend bij de beheerder.
 
-   ![Gebruikers aanvraag en motivering van de beheerder](media/configure-admin-consent-workflow/end-user-sent-request.png)
+   ![Gebruikerverzoek en motivering van beheerderstoestemming](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
- 4. De gebruiker ontvangt een e-mail melding wanneer de aanvraag is goedgekeurd, geweigerd of geblokkeerd. 
+ 4. De gebruiker ontvangt een e-mailmelding wanneer zijn verzoek wordt goedgekeurd, geweigerd of geblokkeerd. 
 
-## <a name="review-and-take-action-on-admin-consent-requests"></a>Controleren en actie ondernemen op aanvragen voor het beheer van toestemming
+## <a name="review-and-take-action-on-admin-consent-requests"></a>Verzoeken om toestemming van beheerders controleren en uitvoeren
 
-De beheerders toestemmings aanvragen controleren en actie ondernemen:
+Ga als u de toestemmingsverzoeken van beheerders bekijken en onderneem:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een van de geregistreerde revisoren van de werk stroom voor het beheer van toestemming.
-2. Selecteer **alle services** boven aan het navigatie menu aan de linkerkant. De **uitbrei ding Azure Active Directory** wordt geopend.
-3. In het zoekvak filteren typt u '**Azure Active Directory**' en selecteert u het **Azure Active Directory** item.
-4. Klik in het navigatie menu op **bedrijfs toepassingen**.
-5. Selecteer onder **activiteit**de optie **beheerders toestemming aanvragen (preview)** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als een van de geregistreerde revisoren van de werkstroom voor beheerderstoestemming.
+2. Selecteer **Alle services** boven aan het navigatiemenu aan de linkerkant. De **Azure Active Directory Extension** wordt geopend.
+3. Typ in het zoekvak van het filter "**Azure Active Directory**" en selecteer het Azure Active **Directory-item.**
+4. Klik in het navigatiemenu op **Enterprise-toepassingen**.
+5. Selecteer **onder Activiteit**de optie **Toestemmingsaanvragen voor beheerders (voorbeeld)**.
 
    > [!NOTE]
-   > Revisoren krijgen alleen beheerders aanvragen te zien die zijn gemaakt nadat ze zijn aangewezen als revisor.
+   > Revisoren zien alleen beheerdersverzoeken die zijn gemaakt nadat ze zijn aangewezen als revisor.
 
 1. Selecteer de toepassing die wordt aangevraagd.
-2. Bekijk de details van de aanvraag:  
+2. Bekijk de details over de aanvraag:  
 
-   * Als u wilt zien wie toegang vraagt en waarom, selecteert u het tabblad **aangevraagd door** .
-   * Selecteer **controle machtigingen en toestemming**om te zien welke machtigingen door de toepassing worden aangevraagd.
+   * Als u wilt zien wie toegang aanvraagt en waarom, selecteert u het **tabblad Opgevraagd.**
+   * Als u wilt zien welke machtigingen door de toepassing worden aangevraagd, selecteert **u Machtigingen en toestemming controleren**.
 
-8. Evalueer de aanvraag en onderneem de juiste actie:
+8. Evalueer het verzoek en onderneem de juiste actie:
 
-   * **De aanvraag goed keuren**. Als u een aanvraag wilt goed keuren, moet u de beheerder toestemming geven voor de toepassing. Zodra een aanvraag is goedgekeurd, worden alle aanvragers hiervan op de hoogte gesteld dat ze toegang hebben gekregen.  
-   * **De aanvraag wordt geweigerd**. Als u een aanvraag wilt weigeren, moet u een reden opgeven die aan alle aanvragers wordt verstrekt. Zodra een aanvraag is geweigerd, worden alle aanvragers hiervan op de hoogte gesteld dat ze geen toegang tot de toepassing hebben. Als u een aanvraag weigert, kunnen gebruikers zich in de toekomst niet meer aanmelden bij de app.  
-   * **De aanvraag blok keren**. Als u een aanvraag wilt blok keren, moet u een reden opgeven die aan alle aanvragers wordt verstrekt. Zodra een aanvraag is geblokkeerd, worden alle aanvragers hiervan op de hoogte gesteld dat ze geen toegang tot de toepassing hebben. Als u een aanvraag blokkeert, wordt een Service-Principal-object voor de toepassing in de Tenant met de status uitgeschakeld gemaakt. Gebruikers kunnen in de toekomst geen beheerder om toestemming vragen voor de toepassing.
+   * **Keur het verzoek goed**. Als u een aanvraag wilt goedkeuren, verleent u toestemming van de beheerder voor de toepassing. Zodra een verzoek is goedgekeurd, worden alle aanvragers meegedeeld dat ze toegang hebben gekregen.  
+   * **Weiger het verzoek.** Als u een verzoek wilt weigeren, moet u een motivering geven die aan alle aanvragers wordt verstrekt. Zodra een verzoek is afgewezen, worden alle aanvragers op de hoogte gebracht dat hun de toegang tot de aanvraag is ontzegd. Het weigeren van een verzoek belet gebruikers niet om in de toekomst opnieuw toestemming te vragen voor de app.  
+   * **Blokkeer het verzoek**. Als u een verzoek wilt blokkeren, moet u een motivering geven die aan alle aanvragers wordt verstrekt. Zodra een aanvraag is geblokkeerd, krijgen alle aanvragers een melding dat ze de toegang tot de toepassing is ontzegd. Als u een aanvraag blokkeert, wordt een hoofdobject voor de service voor de toepassing in uw tenant in een uitgeschakelde status gemaakt. Gebruikers kunnen in de toekomst geen toestemming van de beheerder voor de toepassing aanvragen.
  
 ## <a name="email-notifications"></a>E-mailmeldingen
  
-Indien geconfigureerd, worden alle revisoren e-mail meldingen ontvangen wanneer:
+Als deze is geconfigureerd, ontvangen alle revisoren e-mailmeldingen wanneer:
 
 * Er is een nieuwe aanvraag gemaakt
 * Een aanvraag is verlopen
-* De verval datum van een aanvraag is bijna bereikt  
+* Een aanvraag nadert de vervaldatum  
  
-Aanvragers ontvangen e-mail meldingen wanneer:
+Aanvragers ontvangen e-mailmeldingen wanneer:
 
-* Ze verzenden een nieuwe aanvraag voor toegang
-* Hun aanvraag is verlopen
-* Hun aanvraag is geweigerd of geblokkeerd
-* Hun aanvraag is goedgekeurd
+* Zij dienen een nieuw verzoek om toegang in
+* Hun verzoek is verlopen
+* Hun verzoek is afgewezen of geblokkeerd
+* Hun verzoek is goedgekeurd
  
 ## <a name="audit-logs"></a>Auditlogboeken 
  
-In de onderstaande tabel ziet u een overzicht van de scenario's en controle waarden die beschikbaar zijn voor de beheerder toestemming werk stroom. 
+In de onderstaande tabel worden de scenario's en controlewaarden beschreven die beschikbaar zijn voor de werkstroom voor beheerderstoestemming. 
 
 > [!NOTE]
-> De gebruikers context van de audit actor ontbreekt momenteel in alle scenario's. Dit is een bekende beperking in de preview-versie.
+> De gebruikerscontext van de auditactor ontbreekt momenteel in alle scenario's. Dit is een bekende beperking in de preview-versie.
 
 
-|Scenario  |Audit service  |Controlecategorie  |Controle activiteit  |Actor controleren  |Beperkingen van het controle logboek  |
+|Scenario  |Auditservice  |Controlecategorie  |Controleactiviteit  |Controleactor  |Beperkingen van controlelogboeken  |
 |---------|---------|---------|---------|---------|---------|
-|Beheerder die de werk stroom voor de toestemming aanvraag inschakelt        |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon maken          |App-context            |U kunt de gebruikers context momenteel niet vinden            |
-|Beheerder schakelt de werk stroom voor de toestemming aanvraag uit       |Toegangsbeoordelingen           |UserManagement           |Governance-beleids sjabloon verwijderen          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Beheerder de configuraties voor de toestemming werk stroom bij te werken        |Toegangsbeoordelingen           |UserManagement           |Beleids sjabloon governance bijwerken          |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Eind gebruiker heeft een aanvraag voor een beheerders vergunning gemaakt voor een app       |Toegangsbeoordelingen           |Beleid         |Aanvraag maken           |App-context            |U kunt de gebruikers context momenteel niet vinden           |
-|Revisoren die een aanvraag voor beheerders toestemming goed keuren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            |Op dit moment kunt u de gebruikers context of de App-ID die door de beheerder toestemming is verleend, niet vinden.           |
-|Revisoren die een aanvraag voor beheerders toestemming weigeren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen goed keuren in bedrijfs stroom          |App-context            | Momenteel kunt u de gebruikers context niet vinden van de actor die een aanvraag voor een beheerder heeft geweigerd          |
+|Beheerder die de werkstroom voor toestemmingsaanvragen inschakelt        |Toegangsbeoordelingen           |UserManagement           |Sjabloon voor governancebeleid maken          |App-context            |Op dit moment u de gebruikerscontext niet vinden            |
+|Beheerder die de werkstroom voor toestemmingsaanvragen uitschakelt       |Toegangsbeoordelingen           |UserManagement           |Sjabloon voor governancebeleid verwijderen          |App-context            |Op dit moment u de gebruikerscontext niet vinden           |
+|Beheerder die de configuratie van de toestemmingswerkstroom bijwerkt        |Toegangsbeoordelingen           |UserManagement           |Sjabloon voor governancebeleid bijwerken          |App-context            |Op dit moment u de gebruikerscontext niet vinden           |
+|Eindgebruiker die een verzoek tot toestemming van beheerders maakt voor een app       |Toegangsbeoordelingen           |Beleid         |Aanvraag maken           |App-context            |Op dit moment u de gebruikerscontext niet vinden           |
+|Revisoren die een verzoek om toestemming voor beheerders goedkeuren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen in de bedrijfsstroom goedkeuren          |App-context            |Op dit moment u de gebruikerscontext of de app-id die admin toestemming heeft gekregen, niet vinden.           |
+|Revisoren die een toestemmingsverzoek voor beheerders weigeren       |Toegangsbeoordelingen           |UserManagement           |Alle aanvragen in de bedrijfsstroom goedkeuren          |App-context            | Op dit moment u de gebruikerscontext van de actor die een verzoek tot toestemming van beheerders heeft geweigerd, niet vinden          |
 
 ## <a name="faq"></a>Veelgestelde vragen 
 
-**Ik heb deze werk stroom ingeschakeld, maar bij het testen van de functionaliteit kan ik de nieuwe vraag ' goed keuring is vereist ' niet zien zodat ik toegang kan aanvragen?**
+**Ik heb deze workflow ingeschakeld, maar waarom kan ik bij het testen van de functionaliteit niet de nieuwe prompt 'Vereiste goedkeuring' zien waarmee ik toegang kan aanvragen?**
 
-Nadat de functie is ingeschakeld, kan het tot 60 minuten duren voordat eind gebruikers de update zien. U kunt controleren of de configuratie correct is uitgevoerd door de waarde **EnableAdminConsentRequests** in de `https://graph.microsoft.com/beta/settings`-API weer te geven.
+Na het inschakelen van de functie kan het tot 60 minuten duren voordat eindgebruikers de update kunnen zien. U controleren of de configuratie juist is uitgevoerd door `https://graph.microsoft.com/beta/settings` de waarde **EnableAdminConsentRequests** in de API weer te geven.
 
-**Als revisor, waarom kan ik niet alle aanvragen zien die in behandeling zijn?**
+**Waarom kan ik als recensent niet alle aanvragen in behandeling zien?**
 
-Revisoren kunnen alleen beheerders aanvragen zien die zijn gemaakt nadat ze zijn aangewezen als revisor. Als u onlangs als revisor hebt toegevoegd, ziet u geen aanvragen die zijn gemaakt voor de toewijzing.
+Revisoren kunnen alleen beheerdersverzoeken zien die zijn gemaakt nadat ze zijn aangewezen als revisor. Als u dus onlangs als revisor bent toegevoegd, ziet u geen aanvragen die vóór uw toewijzing zijn gemaakt.
 
-**Als revisor, waarom worden er meerdere aanvragen voor dezelfde toepassing weer gegeven?**
+**Waarom zie ik als revisor meerdere aanvragen voor dezelfde toepassing?**
   
-Als een toepassings ontwikkelaar de app heeft geconfigureerd voor het gebruik van statische en dynamische toestemming voor het aanvragen van toegang tot de gegevens van de eind gebruiker, worden er twee aanvragen voor beheerders toestemming weer gegeven. De ene aanvraag vertegenwoordigt de statische machtigingen en de andere voor de dynamische machtigingen.
+Als een toepassingsontwikkelaar zijn app heeft geconfigureerd om statische en dynamische toestemming te gebruiken om toegang te vragen tot de gegevens van de eindgebruiker, ziet u twee toestemmingsverzoeken voor beheerders. Het ene verzoek vertegenwoordigt de statische machtigingen en de andere voor de dynamische machtigingen.
 
-**Als aanvrager kan ik de status van mijn aanvraag controleren?**  
+**Kan ik als aanvrager de status van mijn verzoek controleren?**  
 
-Nee, voor de aanvragers kunnen alleen updates worden ontvangen via e-mail meldingen.
+Nee, voor nu kunnen aanvragers alleen updates ontvangen via e-mailmeldingen.
 
-**Als revisor is het mogelijk om de toepassing goed te keuren, maar niet voor iedereen?**
+**Is het als recensent mogelijk om de toepassing goed te keuren, maar niet voor iedereen?**
  
-Als u zich zorgen maakt over het verlenen van beheerders toestemming en het toestaan van alle gebruikers in de Tenant om de toepassing te gebruiken, kunt u het beste de aanvraag weigeren. Ken de beheerder vervolgens hand matig toestemming door de toegang tot de toepassing te beperken door de gebruikers toewijzing te vereisen en gebruikers of groepen toe te wijzen aan de toepassing. Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
+Als u zich zorgen maakt over het verlenen van toestemming van de beheerder en het toestaan van alle gebruikers in de tenant om de toepassing te gebruiken, raden we u aan het verzoek te weigeren. Geef vervolgens handmatig toestemming voor beheerders door de toegang tot de toepassing te beperken door gebruikerstoewijzing te vereisen en gebruikers of groepen aan de toepassing toe te kennen. Zie [Methoden voor het toewijzen van gebruikers en groepen voor](methods-for-assigning-users-and-groups.md)meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.md)voor meer informatie over het inzenden van toepassingen.
+Zie Azure Active Directory Consent [Framework](../develop/consent-framework.md)voor meer informatie over het toestaan van toepassingen.
 
-[Configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+[Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
 
-[Toestemming van de beheerder voor de hele Tenant verlenen aan een toepassing](grant-admin-consent.md)
+[Toestemming voor een tenantbeheerder verlenen voor een toepassing](grant-admin-consent.md)
 
-[Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
+[Machtigingen en toestemming in het Microsoft-identiteitsplatform](../develop/active-directory-v2-scopes.md)
 
-[Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD op StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

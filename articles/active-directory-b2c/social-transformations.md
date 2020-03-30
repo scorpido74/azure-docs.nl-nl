@@ -1,7 +1,7 @@
 ---
-title: Voor beelden van claim transformatie voor een sociaal account voor aangepast beleid
+title: Voorbeelden van transformatie van sociale accountclaims voor aangepast beleid
 titleSuffix: Azure AD B2C
-description: Voor beelden van claim transformatie voor een sociaal account voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
+description: Voorbeelden van transformatievan sociale accountclaims voor het IEF-schema (Identity Experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183751"
 ---
-# <a name="social-accounts-claims-transformations"></a>Sociale accounts claim transformaties
+# <a name="social-accounts-claims-transformations"></a>Sociale accounts claimt transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory B2C (Azure AD B2C) worden identiteiten van sociale accounts opgeslagen in een `userIdentities` kenmerk van een claim type **alternativeSecurityIdCollection** . Elk item in de **alternativeSecurityIdCollection** specificeert de verlener (ID-provider naam, zoals Facebook.com) en de `issuerUserId`, een unieke gebruikers-id voor de verlener.
+In Azure Active Directory B2C (Azure AD B2C) `userIdentities` worden identiteiten van sociale accounts opgeslagen in een kenmerk van een **alternatief beveiligingsclaimtype.** Elk item in de **alternatieve SecurityIdCollection** geeft de uitgever (naam `issuerUserId`van de identiteitsprovider, zoals facebook.com) en de , die een unieke gebruikers-id voor de emittent.
 
 ```JSON
 "userIdentities": [{
@@ -35,19 +35,19 @@ In Azure Active Directory B2C (Azure AD B2C) worden identiteiten van sociale acc
   }]
 ```
 
-In dit artikel vindt u voor beelden van het gebruik van de claim transformaties van het account voor de identiteits ervaring in Azure AD B2C. Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
+In dit artikel vindt u voorbeelden voor het gebruik van de transformaties van sociale accountclaims van het Identity Experience Framework-schema in Azure AD B2C. Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie .
 
-## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
+## <a name="createalternativesecurityid"></a>Alternatieve beveiligingsid maken
 
-Hiermee maakt u een JSON-weer gave van de eigenschap alternativeSecurityId van de gebruiker die kan worden gebruikt in de aanroepen van Azure Active Directory. Zie het [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) -schema voor meer informatie.
+Hiermee maakt u een JSON-weergave van de alternatieve Beveiligingsid-eigenschap van de gebruiker die kan worden gebruikt in de aanroepen naar Azure Active Directory. Zie het [AlternativeSecurityId-schema](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) voor meer informatie.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | sleutel | tekenreeks | Het claim type dat de unieke gebruikers-id specificeert die wordt gebruikt door de ID-provider voor sociale netwerken. |
-| InputClaim | identityProvider | tekenreeks | Het claim type dat de naam van de ID-provider van de sociale account opgeeft, zoals facebook.com. |
-| OutputClaim | alternativeSecurityId | tekenreeks | Het claim type dat is geproduceerd nadat de ClaimsTransformation is aangeroepen. Bevat informatie over de identiteit van een gebruiker van een sociaal account. De **Uitgever** is de waarde van de `identityProvider` claim. De **issuerUserId** is de waarde van de `key` claim in Base64-indeling. |
+| Invoerclaim | sleutel | tekenreeks | Het ClaimType dat de unieke gebruikers-id opgeeft die wordt gebruikt door de aanbieder van sociale identiteit. |
+| Invoerclaim | identityProvider | tekenreeks | Het ClaimType dat de naam van de sociale accountidentiteitprovider opgeeft, zoals facebook.com. |
+| Uitvoerclaim | alternatiefSecurityId | tekenreeks | Het ClaimType dat wordt geproduceerd nadat de claimtransformatie is ingeroepen. Bevat informatie over de identiteit van een gebruiker van een sociaal account. De **emittent** is de `identityProvider` waarde van de vordering. De **issuerUserId** is de `key` waarde van de claim in base64-formaat. |
 
-Gebruik deze claim transformatie om een `alternativeSecurityId` claim type te genereren. Dit wordt gebruikt door alle technische profielen van de sociale ID-provider, zoals `Facebook-OAUTH`. De volgende claims transformatie ontvangt de gebruikers-ID en de naam van de ID-provider. De uitvoer van dit technische profiel is een JSON-teken reeks indeling die kan worden gebruikt in azure AD Directory Services.
+Gebruik deze claimtransformatie `alternativeSecurityId` om een ClaimType te genereren. Het wordt gebruikt door alle technische profielen `Facebook-OAUTH`van sociale identiteitsaanbieders, zoals . De volgende claimtransformatie ontvangt de gebruikersnaam voor gebruikersen en de naam van de identiteitsprovider. De uitvoer van dit technische profiel is een JSON-tekenreeksindeling die kan worden gebruikt in Azure AD-directoryservices.
 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
@@ -63,28 +63,28 @@ Gebruik deze claim transformatie om een `alternativeSecurityId` claim type te ge
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
+- Invoerclaims:
     - **sleutel**: 12334
-    - **Identity provider**: Facebook.com
-- Uitvoer claims:
-    - **alternativeSecurityId**: {"verlener": "Facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
+    - **identityProvider**: Facebook.com
+- Output claims:
+    - **alternativeSecurityId**: { "emittent": "facebook.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
-Hiermee voegt u een `AlternativeSecurityId` toe aan een `alternativeSecurityIdCollection` claim.
+Hiermee `AlternativeSecurityId` voegt `alternativeSecurityIdCollection` u een claim toe.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | tekenreeks | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
-| InputClaim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden gebruikt door de claim transformatie, indien beschikbaar in het beleid. Als u deze opgeeft, voegt de claim transformatie de `item` toe aan het einde van de verzameling. |
-| OutputClaim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. De nieuwe verzameling die zowel de items van de invoer `collection` als de `item`bevat. |
+| Invoerclaim | item | tekenreeks | Het ClaimType dat aan de uitvoerclaim moet worden toegevoegd. |
+| Invoerclaim | verzameling | alternatiefSecurityIdCollection | De ClaimTypes die worden gebruikt door de claimtransformatie indien beschikbaar in het beleid. Indien verstrekt, voegt de `item` schadetransformatie het aan het eind van de inzameling toe. |
+| Uitvoerclaim | verzameling | alternatiefSecurityIdCollection | De ClaimTypes die na deze ClaimTransformation worden geproduceerd, zijn ingeroepen. De nieuwe collectie die zowel `collection` de `item`items van input als . |
 
-In het volgende voor beeld wordt een nieuwe sociale identiteit gekoppeld aan een bestaand account. Een nieuwe sociale identiteit koppelen:
-1. Voer in de technische profielen **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserReadUsingObjectId** de **alternativeSecurityIds** -claim van de gebruiker uit.
-1. Vraag de gebruiker zich aan te melden met een van de id-providers die niet aan deze gebruiker zijn gekoppeld.
-1. Maak met behulp van de **CreateAlternativeSecurityId** -claim transformatie een nieuw **alternativeSecurityId** -claim type met de naam `AlternativeSecurityId2`
-1. Roep de **AddItemToAlternativeSecurityIdCollection** -claim transformatie aan om de **AlternativeSecurityId2** -claim toe te voegen aan de bestaande **AlternativeSecurityIds** -claim.
-1. De **alternativeSecurityIds** claim naar het gebruikers account behouden
+In het volgende voorbeeld wordt een nieuwe sociale identiteit gekoppeld aan een bestaand account. Een nieuwe sociale identiteit koppelen:
+1. In de **aad-userreadusingAlternativeSecurityId** en **AAD-UserReadUsingObjectId** technische profielen, output van de gebruiker **alternatieveSecurityIds** claim.
+1. Vraag de gebruiker om in te loggen bij een van de identiteitsproviders die niet aan deze gebruiker zijn gekoppeld.
+1. Met de transformatie **van CreateAlternativeSecurityId-claims** maakt u een nieuw **alternatief Beveiligingsid-claimtype** met een naam van`AlternativeSecurityId2`
+1. Bel de **AddItemToAlternativeSecurityIdCollection** claimt transformatie om de **AlternativeSecurityId2-claim** toe te voegen aan de bestaande **AlternativeSecurityIds-claim.**
+1. Blijf de **alternatieve SecurityIds** claimen op het gebruikersaccount
 
 ```XML
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
@@ -100,22 +100,22 @@ In het volgende voor beeld wordt een nieuwe sociale identiteit gekoppeld aan een
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
-    - **item**: {"verlener": "Facebook.com", "issuerUserId": "MTIzNDU ="}
-    - **verzameling**: [{"verlener": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
-- Uitvoer claims:
-    - **verzameling**: [{"verlener": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
+- Invoerclaims:
+    - **object**: { "emittent": "facebook.com", "issuerUserId": "MTIzNDU=" }
+    - **collectie**: [ { "emittent": "live.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw" } ]
+- Output claims:
+    - **collectie**: [ { "emittent": "live.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw" }, { "emittent": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
-Retourneert een lijst met verleners van de claim **alternativeSecurityIdCollection** naar een nieuwe **stringCollection** -claim.
+Retourneert lijst van emittenten uit de **alternatieve SecurityIdCollection-claim** in een nieuwe **stringCollection-claim.**
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Het claim type dat moet worden gebruikt om de lijst met id-providers (verlener) op te halen. |
-| OutputClaim | identityProvidersCollection | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Lijst met id-providers die zijn gekoppeld aan de invoer claim alternativeSecurityIdCollection |
+| Invoerclaim | alternatiefSecurityIdCollection | alternatiefSecurityIdCollection | Het ClaimType dat moet worden gebruikt om de lijst van identiteitsproviders (uitgever) te krijgen. |
+| Uitvoerclaim | identityProvidersCollectie | tekenreeksVerzameling | De ClaimTypes die na deze ClaimTransformation worden geproduceerd, zijn ingeroepen. Lijst van identiteitsproviders associëren met de alternatieveSecurityIdCollection-invoerclaim |
 
-De volgende claim transformatie leest de claim van de gebruiker **alternativeSecurityIds** en extraheert de lijst met namen van id-providers die aan dat account zijn gekoppeld. Gebruik uitvoer **identityProvidersCollection** om de lijst met id-providers weer te geven die aan het account zijn gekoppeld. Of filter op de pagina identiteits provider selecteren de lijst met id-providers op basis van de **identityProvidersCollection** claim van de uitvoer. De gebruiker kan dus kiezen om een nieuwe sociale identiteit te koppelen die nog niet aan het account is gekoppeld.
+De volgende claims transformatie leest de gebruiker **alternativeSecurityIds** claim en haalt de lijst van namen van identiteitsprovideren die zijn gekoppeld aan dat account. Gebruik **uitvoeridentiteitProvidersCollection** om de gebruiker de lijst weer te geven van identiteitsproviders die aan het account zijn gekoppeld. Of filter op de selectiepagina van de identiteitsprovider de lijst met identiteitsproviders op basis van de claim van Output **IdentityProvidersCollection.** De gebruiker kan er dus voor kiezen om een nieuwe sociale identiteit te koppelen die nog niet aan het account is gekoppeld.
 
 ```XML
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
@@ -128,26 +128,26 @@ De volgende claim transformatie leest de claim van de gebruiker **alternativeSec
 </ClaimsTransformation>
 ```
 
-- Invoer claims:
-    - **alternativeSecurityIdCollection**: [{"verlener": "Google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
-- Uitvoer claims:
-    - **identityProvidersCollection**: ["Facebook.com", "Google.com"]
+- Invoerclaims:
+    - **alternativeSecurityIdCollection**: [ { "emittent": "google.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw" }, { "emittent": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+- Output claims:
+    - **identityProvidersCollection**: [ "facebook.com", "google.com" ]
 
-## <a name="removealternativesecurityidbyidentityprovider"></a>RemoveAlternativeSecurityIdByIdentityProvider
+## <a name="removealternativesecurityidbyidentityprovider"></a>AlternativeSecurityidByIdentityProvider verwijderen
 
-Hiermee verwijdert u een **AlternativeSecurityId** van een **alternativeSecurityIdCollection** -claim.
+Hiermee verwijdert u een **AlternativeSecurityId** uit een **alternatieve SecurityIdCollection-claim.**
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | tekenreeks | Het claim type dat de naam van de identiteits provider bevat die uit de verzameling moet worden verwijderd. |
-| InputClaim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden gebruikt door de claim transformatie. De claim transformatie verwijdert de Identity provider uit de verzameling. |
-| OutputClaim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. De nieuwe verzameling, nadat de Identity provider is verwijderd uit de verzameling. |
+| Invoerclaim | identityProvider | tekenreeks | Het ClaimType dat de naam van de identiteitsprovider bevat die uit de verzameling moet worden verwijderd. |
+| Invoerclaim | verzameling | alternatiefSecurityIdCollection | De ClaimTypes die worden gebruikt door de claimtransformatie. De claimtransformatie verwijdert de identityProvider uit de collectie. |
+| Uitvoerclaim | verzameling | alternatiefSecurityIdCollection | De ClaimTypes die na deze ClaimTransformation worden geproduceerd, zijn ingeroepen. De nieuwe collectie, nadat de identityProvider uit de collectie is verwijderd. |
 
-In het volgende voor beeld wordt een van de sociale identiteiten ontkoppeld met een bestaand account. Een sociale identiteit ontkoppelen:
-1. Voer in de technische profielen **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserReadUsingObjectId** de **alternativeSecurityIds** -claim van de gebruiker uit.
-2. Vraag de gebruiker welk sociaal account moet worden verwijderd uit de lijst met id-providers die aan deze gebruiker zijn gekoppeld.
-3. Een technisch profiel voor het transformeren van claims aanroepen dat de **RemoveAlternativeSecurityIdByIdentityProvider** -claim transformatie aanroept, waarbij de geselecteerde sociale identiteit is verwijderd met behulp van de naam van de identiteits provider.
-4. Behoud de **alternativeSecurityIds** -claim naar het gebruikers account.
+In het volgende voorbeeld wordt een van de sociale identiteit en een bestaand account losgemaakt. Een sociale identiteit ontkoppelen:
+1. In de **aad-userreadusingAlternativeSecurityId** en **AAD-UserReadUsingObjectId** technische profielen, output van de gebruiker **alternatieveSecurityIds** claim.
+2. Vraag de gebruiker welk sociaal account moet worden verwijderd uit de lijstidentiteitsproviders die aan deze gebruiker zijn gekoppeld.
+3. Noem een technisch profiel voor claimtransformatie dat de **RemoveAlternativeSecurityIdByIdentityProvider-claimtransformatie** aanroept, die de geselecteerde sociale identiteit heeft verwijderd met de naam van de identiteitsprovider.
+4. Blijf de **alternatieveSecurityIds** claimen op het gebruikersaccount.
 
 ```XML
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -164,8 +164,8 @@ In het volgende voor beeld wordt een van de sociale identiteiten ontkoppeld met 
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoer claims:
-    - **Identity provider**: Facebook.com
-    - **verzameling**: [{"verlener": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
-- Uitvoer claims:
-    - **verzameling**: [{"verlener": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
+- Invoerclaims:
+    - **identityProvider**: facebook.com
+    - **collectie**: [ { "emittent": "live.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw" }, { "emittent": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+- Output claims:
+    - **collectie**: [ { "emittent": "live.com", "issuerUserId": "MTA4MTQ2MdgyOTI3MDUyNTYzMjcw" } ]

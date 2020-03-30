@@ -9,15 +9,15 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76159594"
 ---
-## <a name="os-config"></a>IP-adressen toevoegen aan een VM-besturingssysteem
+## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>IP-adressen toevoegen aan een VM-besturingssysteem
 
-Maak verbinding met en meld u aan bij een virtuele machine die u hebt gemaakt met meerdere privé-IP-adressen. U moet alle privé-IP-adressen (met inbegrip van het primaire) die u aan de virtuele machine hebt toegevoegd, handmatig toevoegen. Voer de stappen uit die volgen voor uw VM-besturings systeem.
+Maak verbinding en meld u aan bij een vm die u hebt gemaakt met meerdere privé-IP-adressen. U moet alle privé-IP-adressen (met inbegrip van het primaire) die u aan de virtuele machine hebt toegevoegd, handmatig toevoegen. Voer de volgende stappen uit voor uw VM-besturingssysteem.
 
 ### <a name="windows"></a>Windows
 
@@ -30,16 +30,16 @@ Maak verbinding met en meld u aan bij een virtuele machine die u hebt gemaakt me
     * **IP-adres**: voer het *primaire* privé-IP-adres in
     * **Subnetmasker**: stel dit in op basis van uw subnet. Als het subnet bijvoorbeeld een /24 subnet is, is het subnetmasker 255.255.255.0.
     * **Standaardgateway**: het eerste IP-adres in het subnet. Als uw subnet 10.0.0.0/24 is, is het IP-adres van de gateway 10.0.0.1.
-    * Selecteer **de volgende DNS-server adressen gebruiken** en voer de volgende waarden in:
+    * Selecteer **De volgende DNS-serveradressen gebruiken** en voer de volgende waarden in:
         * **DNS-voorkeursserver**: als u niet uw eigen DNS-server gebruikt, voert u 168.63.129.16 in.  Als u uw eigen DNS-server gebruikt, voert u het IP-adres voor de server in.
-    * Selecteer de knop **Geavanceerd** en voeg extra IP-adressen toe. Voeg elk van de secundaire privé-IP-adressen die u in een vorige stap hebt toegevoegd aan de Azure-netwerk interface toe aan de Windows-netwerk interface waaraan het primaire IP-adres is toegewezen dat is toegewezen aan de Azure-netwerk interface.
+    * Selecteer de knop **Geavanceerd** en voeg extra IP-adressen toe. Voeg elk van de secundaire privé-IP-adressen, die u in een vorige stap aan de Azure-netwerkinterface hebt toegevoegd, toe aan de Windows-netwerkinterface waaraan het primaire IP-adres is toegewezen dat is toegewezen aan de Azure-netwerkinterface.
 
-        U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen. Wanneer u het IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) . Wijs nooit een openbaar IP-adres van Azure toe binnen het besturings systeem.
+        U mag nooit handmatig het openbare IP-adres toewijzen dat is toegewezen aan een virtuele Azure-machine in het besturingssysteem van de virtuele machine. Wanneer u het IP-adres handmatig instelt in het besturingssysteem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de [Azure-netwerkinterface,](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)of u de verbinding met de virtuele machine verliezen. Meer informatie over [instellingen voor privé-IP-adres.](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) U moet nooit een openbaar IP-adres van Azure toewijzen in het besturingssysteem.
 
     * Klik op **OK** om de TCP/IP-instellingen te sluiten en vervolgens nogmaals op **OK** om de instellingen van de netwerkadapter te sluiten. Uw RDP-verbinding wordt opnieuw tot stand gebracht.
 
 6. Typ vanaf een opdrachtprompt *ipconfig /all*. Alle IP-adressen die u hebt toegevoegd, worden weergegeven en DHCP is uitgeschakeld.
-7. Configureer Windows voor het gebruik van het privé IP-adres van de primaire IP-configuratie in azure als primair IP-adres voor Windows. Zie [geen Internet toegang vanaf een Azure Windows-VM met meerdere IP-adressen](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) voor meer informatie. 
+7. Configureer Windows om het privé-IP-adres van de primaire IP-configuratie in Azure te gebruiken als het primaire IP-adres voor Windows. Zie [Geen internettoegang van Azure Windows VM met meerdere IP-adressen](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) voor meer informatie. 
 
 ### <a name="validation-windows"></a>Validatie (Windows)
 
@@ -49,11 +49,11 @@ Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt ma
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
+>Voor secundaire IP-configuraties u alleen pingen naar internet als er een openbaar IP-adres aan is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist om te pingen naar het internet.
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
-We raden u aan de meest recente documentatie te bekijken voor uw Linux-distributie. 
+We raden u aan de nieuwste documentatie voor uw Linux-distributie te bekijken. 
 
 1. Open een terminalvenster.
 2. Controleer of u de hoofdgebruiker bent. Voer de volgende opdracht in als u niet de hoofdgebruiker bent:
@@ -112,9 +112,9 @@ We raden u aan de meest recente documentatie te bekijken voor uw Linux-distribut
 
    Het IP-adres dat u hebt toegevoegd, moet nu in de lijst staan.
 
-### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
 
-Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk beheer. We raden u aan de meest recente documentatie te bekijken voor uw Linux-distributie. 
+Ubuntu 18.04 en hoger `netplan` zijn gewijzigd in voor OS-netwerkbeheer. We raden u aan de nieuwste documentatie voor uw Linux-distributie te bekijken. 
 
 1. Open een terminalvenster.
 2. Controleer of u de hoofdgebruiker bent. Voer de volgende opdracht in als u niet de hoofdgebruiker bent:
@@ -123,13 +123,13 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
     sudo -i
     ```
 
-3. Maak een bestand voor de tweede interface en open het in een tekst editor:
+3. Maak een bestand voor de tweede interface en open het in een teksteditor:
 
     ```bash
     vi /etc/netplan/60-static.yaml
     ```
 
-4. Voeg de volgende regels toe aan het bestand en vervang `10.0.0.6/24` door uw IP-netmasker:
+4. Voeg de volgende regels toe `10.0.0.6/24` aan het bestand en vervang uw IP/netmask:
 
     ```bash
     network:
@@ -146,16 +146,16 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
     :wq
     ```
 
-6. De wijzigingen testen met [netplan proberen](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) syntaxis te bevestigen:
+6. Test de wijzigingen met [netplan probeer](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) syntaxis te bevestigen:
 
     ```bash
     netplan try
     ```
 
 > [!NOTE]
-> `netplan try` worden de wijzigingen tijdelijk toegepast en worden de wijzigingen na 120 seconden teruggezet. Als de verbinding is verbroken, wacht u 120 seconden en maakt u opnieuw verbinding. Op dat moment worden de wijzigingen teruggedraaid.
+> `netplan try`zal de wijzigingen tijdelijk toepassen en de wijzigingen na 120 seconden terugdraaien. Als er een verlies van connectiviteit is, wacht dan 120 seconden en maak vervolgens opnieuw verbinding. Op dat moment zijn de wijzigingen teruggedraaid.
 
-7. Als er geen problemen zijn met `netplan try`, past u de configuratie wijzigingen toe:
+7. Als u `netplan try`geen problemen met , de configuratiewijzigingen toepassen:
 
     ```bash
     netplan apply
@@ -186,7 +186,7 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
         valid_lft forever preferred_lft forever
     ```
     
-### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS en andere)
+### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS, en anderen)
 
 1. Open een terminalvenster.
 2. Controleer of u de hoofdgebruiker bent. Voer de volgende opdracht in als u niet de hoofdgebruiker bent:
@@ -254,7 +254,7 @@ Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt ma
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
+>Voor secundaire IP-configuraties u alleen pingen naar internet als er een openbaar IP-adres aan is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist om te pingen naar het internet.
 
 Voor virtuele Linux-machines moet u mogelijk geschikte routes toevoegen wanneer u probeert uitgaande verbindingen te valideren vanaf een secundaire NIC. Er zijn meerdere manieren om dit te doen. Zie de relevante documentatie voor uw Linux-distributie. Hieronder staat één van de mogelijke manieren:
 

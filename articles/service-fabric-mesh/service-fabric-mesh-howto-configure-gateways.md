@@ -1,38 +1,38 @@
 ---
-title: Een gateway configureren om aanvragen te routeren
-description: Informatie over het configureren van de gateway die inkomend verkeer afhandelt voor uw toepassingen die worden uitgevoerd op Service Fabric net.
+title: Een gateway configureren voor routeaanvragen
+description: Meer informatie over het configureren van de gateway die binnenkomend verkeer voor uw toepassing(en) verwerkt dat wordt uitgevoerd op Service Fabric Mesh.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461965"
 ---
-# <a name="configure-a-gateway-resource-to-route-requests"></a>Een gateway bron configureren om aanvragen te routeren
+# <a name="configure-a-gateway-resource-to-route-requests"></a>Een gatewaybron configureren om aanvragen te routeren
 
-Een gateway resource wordt gebruikt om binnenkomend verkeer te routeren naar het netwerk dat uw toepassing bevat. Configureer het om regels op te geven waarmee aanvragen worden omgeleid naar specifieke services of eind punten op basis van de structuur van de aanvraag. Zie [Inleiding tot netwerken in service Fabric mesh](service-fabric-mesh-networks-and-gateways.md) voor meer informatie over netwerken en gateways in net. 
+Een Gateway-bron wordt gebruikt om binnenkomend verkeer te routeren naar het netwerk waarin uw toepassing is. Configureer het om regels op te geven via welke aanvragen worden gericht op specifieke services of eindpunten op basis van de structuur van de aanvraag. Zie [Inleiding tot netwerken in Service Fabric Mesh](service-fabric-mesh-networks-and-gateways.md) voor meer informatie over netwerken en gateways in Mesh. 
 
-Gateway resources moeten worden gedeclareerd als onderdeel van uw implementatie sjabloon (JSON of YAML) en zijn afhankelijk van een netwerk bron. In dit document vindt u een overzicht van de verschillende eigenschappen die kunnen worden ingesteld voor uw gateway en wordt een voor beeld van een gateway configuratie beschreven.
+Gatewayresources moeten worden gedeclareerd als onderdeel van uw implementatiesjabloon (JSON of yaml) en zijn afhankelijk van een netwerkbron. In dit document worden de verschillende eigenschappen beschreven die voor uw gateway kunnen worden ingesteld en wordt een voorbeeldgatewayconfig.
 
-## <a name="options-for-configuring-your-gateway-resource"></a>Opties voor het configureren van uw gateway bron
+## <a name="options-for-configuring-your-gateway-resource"></a>Opties voor het configureren van uw Gateway-bron
 
-Omdat de gateway resource fungeert als een brug tussen het netwerk van uw toepassing en het netwerk van de onderliggende infra structuur (het `open` netwerk). U hoeft slechts één te configureren (in de preview-versie van het net-voor beeld is er een limiet van één gateway per app). De declaratie voor de resource bestaat uit twee hoofd onderdelen: de meta gegevens van de bron en de eigenschappen. 
+Aangezien de Gateway-bron dient als een brug tussen het netwerk van `open` uw toepassing en het netwerk van de onderliggende infrastructuur (het netwerk). U hoeft er slechts één te configureren (in de mesh-preview is er een limiet van één gateway per app). De declaratie voor de resource bestaat uit twee hoofdonderdelen: resourcemetadata en de eigenschappen. 
 
-### <a name="gateway-resource-metadata"></a>Meta gegevens van Gateway bron
+### <a name="gateway-resource-metadata"></a>Metagegevens gatewaybron
 
-Een gateway is gedeclareerd met de volgende meta gegevens:
-* `apiVersion`-moet worden ingesteld op 2018-09-01-Preview (of later in de toekomst)
-* `name`-een teken reeks naam voor deze gateway
-* `type`-' micro soft. ServiceFabricMesh/gateways '
-* `location`-moet worden ingesteld op de locatie van uw app/netwerk. doorgaans is dit een verwijzing naar de locatie parameter in uw implementatie
-* `dependsOn`-het netwerk waarvoor deze gateway fungeert als ingangs punt voor
+Een gateway wordt gedeclareerd met de volgende metagegevens:
+* `apiVersion`- moet worden ingesteld op "2018-09-01-preview" (of later, in de toekomst)
+* `name`- een tekenreeksnaam voor deze gateway
+* `type`- "Microsoft.ServiceFabricMesh/gateways"
+* `location`- moet worden ingesteld op de locatie van uw app / netwerk; meestal zal een verwijzing naar de locatie parameter in uw implementatie
+* `dependsOn`- het netwerk waarvoor deze gateway zal dienen als een ingress point voor
 
-Hier ziet u hoe deze wordt weer gegeven in een Azure Resource Manager-implementatie sjabloon (JSON): 
+Zo ziet het eruit in een JSON-implementatiesjabloon (Azure Resource Manager): 
 
 ```json
 {
@@ -51,11 +51,11 @@ Hier ziet u hoe deze wordt weer gegeven in een Azure Resource Manager-implementa
 
 ### <a name="gateway-properties"></a>Gateway-eigenschappen
 
-De sectie eigenschappen wordt gebruikt voor het definiëren van de netwerken waartussen de gateway zich bevindt en de regels voor het routeren van aanvragen. 
+De sectie Eigenschappen wordt gebruikt om de netwerken te definiëren waartussen de gateway zich bevindt en de regels voor routeringsaanvragen. 
 
-#### <a name="source-and-destination-network"></a>Bron-en doelnet netwerk 
+#### <a name="source-and-destination-network"></a>Bron- en bestemmingsnetwerk 
 
-Elke gateway vereist een `sourceNetwork` en `destinationNetwork`. Het bron netwerk wordt gedefinieerd als het netwerk van waaruit uw app binnenkomende aanvragen ontvangt. De eigenschap name moet altijd worden ingesteld op open. Het doelnet netwerk is het netwerk waarop de aanvragen zijn gericht. De naam waarde voor dit moet worden ingesteld op de resource naam van het lokale netwerk van uw app (moet volledige verwijzing naar de resource bevatten). Hieronder vindt u een voor beeld van een configuratie in een netwerk met de naam ' myNetwork '.
+Elke gateway `sourceNetwork` vereist `destinationNetwork`een en . Het bronnetwerk wordt gedefinieerd als het netwerk van waaruit uw app binnenkomende aanvragen ontvangt. De naam eigenschap moet altijd worden ingesteld op "Open". Het doelnetwerk is het netwerk waarop de aanvragen zijn gericht. De naamwaarde hiervoor moet worden ingesteld op de resourcenaam van het lokale netwerk van uw app (moet volledige verwijzing naar de bron bevatten). Zie hieronder voor een voorbeeld config van hoe dit eruit ziet voor een implementatie in een netwerk genaamd "myNetwork".
 
 ```json 
 "properties": {
@@ -72,18 +72,18 @@ Elke gateway vereist een `sourceNetwork` en `destinationNetwork`. Het bron netwe
 
 #### <a name="rules"></a>Regels 
 
-Een gateway kan meerdere routerings regels hebben die bepalen hoe binnenkomend verkeer wordt verwerkt. Een routerings regel definieert de relatie tussen de luisterende poort en het doel eindpunt voor een bepaalde toepassing. Voor TCP-routerings regels is er een 1:1-toewijzing tussen poort: eind punt. Voor HTTP-routerings regels kunt u complexere routerings regels instellen om het pad van de aanvraag en eventueel headers te controleren om te bepalen hoe de aanvraag wordt doorgestuurd. 
+Een gateway kan meerdere routeringsregels hebben die aangeven hoe binnenkomend verkeer wordt verwerkt. Een routeringsregel definieert de relatie tussen de luisterpoort en het doeleindpunt voor een bepaalde toepassing. Voor TCP-routeringsregels is er een 1:1-toewijzing tussen Poort:Eindpunt. Voor HTTP-routeringsregels u complexere routeringsregels instellen die het pad van de aanvraag en optioneel kopteksten onderzoeken om te bepalen hoe de aanvraag wordt gerouteerd. 
 
-Routerings regels worden opgegeven per poort. Elke ingangs poort heeft een eigen matrix met regels in de sectie eigenschappen van uw gateway configuratie. 
+Routeringsregels worden per poort opgegeven. Elke inkomende poort heeft zijn eigen reeks regels binnen het eigenschappengedeelte van uw gatewayconfig. 
 
-#### <a name="tcp-routing-rules"></a>TCP-routerings regels 
+#### <a name="tcp-routing-rules"></a>TCP-routeringsregels 
 
-Een TCP-routerings regel bestaat uit de volgende eigenschappen: 
-* `name`: verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
-* `port`-poort voor het Luis teren naar binnenkomende aanvragen 
-* `destination`-endpoint-specificatie die `applicationName`, `serviceName`en `endpointName`bevat, voor waar de aanvragen moeten worden doorgestuurd
+Een TCP-routeringsregel bestaat uit de volgende eigenschappen: 
+* `name`- verwijzing naar de regel die elke tekenreeks van uw keuze kan zijn 
+* `port`- poort om te luisteren naar binnenkomende aanvragen 
+* `destination`- eindpuntspecificatie die `applicationName` `serviceName`omvat `endpointName`, en , voor wanneer de aanvragen moeten worden doorgestuurd naar
 
-Hier volgt een voor beeld van een TCP-routerings regel:
+Hier volgt een voorbeeld van TCP-routeringsregel:
 
 ```json
 "properties": {
@@ -103,21 +103,21 @@ Hier volgt een voor beeld van een TCP-routerings regel:
 ```
 
 
-#### <a name="http-routing-rules"></a>HTTP-routerings regels 
+#### <a name="http-routing-rules"></a>HTTP-routeringsregels 
 
-Een HTTP-routerings regel bestaat uit de volgende eigenschappen: 
-* `name`: verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
-* `port`-poort voor het Luis teren naar binnenkomende aanvragen 
-* `hosts`: een matrix met beleids regels die van toepassing zijn op aanvragen die worden verzonden naar de verschillende ' hosts ' op de hierboven opgegeven poort. Hosts zijn de set toepassingen en services die in het netwerk kunnen worden uitgevoerd en die inkomende aanvragen kan verwerken, dat wil zeggen een web-app. Hostbeleid worden in de aangegeven volg orde geïnterpreteerd. u moet het volgende in aflopende mate van specificiteit maken
-    * `name`: de DNS-naam van de host waarvoor de volgende routerings regels zijn opgegeven. Door ' * ' te gebruiken, worden er routerings regels voor alle hosts gemaakt.
-    * `routes`-een matrix met beleids regels voor deze specifieke host
-        * `match`-specificatie van de structuur van de binnenkomende aanvraag voor deze regel die moet worden toegepast op basis van een `path`
-            * `path`-bevat een `value` (binnenkomende URI), `rewrite` (hoe u de aanvraag wilt door sturen) en een `type` (kan momenteel alleen ' prefix ' zijn)
-            * `header`-is een optionele matrix met koptekst waarden die overeenkomen in de koptekst van de aanvraag, wanneer de aanvraag overeenkomt met de padspecificatie (hierboven).
-              * elke vermelding bevat `name` (teken reeks naam van de header die moet worden gevonden), `value` (teken reeks waarde van de koptekst in de aanvraag) en een `type` (dit kan momenteel alleen ' exact ' zijn)
-        * `destination`: als de aanvraag overeenkomt, wordt deze doorgestuurd naar deze bestemming, die wordt opgegeven met behulp van een `applicationName`, `serviceName`en `endpointName`
+Een HTTP-routeringsregel bestaat uit de volgende eigenschappen: 
+* `name`- verwijzing naar de regel die elke tekenreeks van uw keuze kan zijn 
+* `port`- poort om te luisteren naar binnenkomende aanvragen 
+* `hosts`- een reeks beleidsregels die van toepassing zijn op aanvragen die naar de verschillende "hosts" op de hierboven vermelde poort komen. Hosts zijn de set toepassingen en services die mogelijk in het netwerk worden uitgevoerd en kunnen binnenkomende aanvragen, d.w.z. een web-app, weergeven. Hostbeleid wordt in volgorde geïnterpreteerd, dus u moet het volgende maken in aflopende specificiteitsniveaus
+    * `name`- de DNS-naam van de host waarvoor de volgende routeringsregels zijn opgegeven. Met behulp van "*" hier zou leiden regels voor alle hosts.
+    * `routes`- een scala aan beleidsregels voor deze specifieke host
+        * `match`- specificatie van de inkomende aanvraagstructuur voor de toepassing van deze regel op basis van een`path`
+            * `path`- bevat `value` een (inkomende URI), `rewrite` (hoe u wilt dat `type` het verzoek wordt doorgestuurd), en een (kan momenteel alleen worden "Prefix")
+            * `header`- is een optionele array met koptekstwaarden die overeenkomen met de koptekst van het verzoek, zodat als de aanvraag overeenkomt met de padspecificatie (hierboven).
+              * elk item `name` bevat (tekenreeksnaam van `value` de koptekst die overeenkomt), (tekenreekswaarde van de koptekst in de aanvraag) en een `type` (kan momenteel alleen 'Exact' zijn)
+        * `destination`- indien het verzoek overeenkomt, wordt het naar deze bestemming `applicationName` `serviceName`gerouteerd, die is aangegeven met behulp van een , en`endpointName`
 
-Hier volgt een voor beeld van een HTTP-routerings regel die van toepassing zou zijn op aanvragen die afkomstig zijn van poort 80, naar alle hosts die worden aangeboden door apps in dit netwerk. Als de aanvraag-URL een structuur heeft die overeenkomt met de padspecificatie, d.w.z. `<IPAddress>:80/pickme/<requestContent>`, wordt deze omgeleid naar het `myListener` eind punt.  
+Hier volgt een voorbeeld http-routeringsregel die van toepassing is op aanvragen die op poort 80 worden weergegeven, op alle hosts die worden bediend door apps in dit netwerk. Als de URL van het verzoek een structuur heeft `<IPAddress>:80/pickme/<requestContent>`die overeenkomt met de `myListener` padspecificatie, d.w.z. , wordt deze naar het eindpunt geleid.  
 
 ```json
 "properties": {
@@ -152,9 +152,9 @@ Hier volgt een voor beeld van een HTTP-routerings regel die van toepassing zou z
 }
 ```
 
-## <a name="sample-config-for-a-gateway-resource"></a>Voorbeeld configuratie voor een gateway bron 
+## <a name="sample-config-for-a-gateway-resource"></a>Voorbeeldconfig voor een Gateway-bron 
 
-Hier ziet u hoe een volledige gateway bron configuratie eruitziet (dit is gebaseerd op het voor beeld van de ingang in de mesh-voor [beelden opslag plaats](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
+Hier is wat een volledige Gateway resource config eruit ziet (dit is aangepast van de inbinnendringen monster beschikbaar in de [Mesh monsters repo):](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)
 
 ```json
 {
@@ -218,9 +218,9 @@ Hier ziet u hoe een volledige gateway bron configuratie eruitziet (dit is gebase
 }
 ```
 
-Deze gateway is geconfigureerd voor een Linux-toepassing, ' meshAppLinux ', die bestaat uit ten minste twee services, ' helloWorldService ' en ' counterService ', die luistert op poort 80. Afhankelijk van de URL-structuur van de binnenkomende aanvraag, stuurt de aanvraag door naar een van deze services. 
-* "\<IPAddress >: 80/helloWorld/\<aanvraag\>" zou ertoe leiden dat een aanvraag wordt doorgestuurd naar de "helloWorldListener" in de helloWorldService. 
-* "\<IPAddress >: 80/Counter/\<aanvraag\>" zou ertoe leiden dat een aanvraag wordt doorgestuurd naar de "counterListener" in de counterService. 
+Deze gateway is geconfigureerd voor een Linux applicatie, "meshAppLinux", die bestaat uit ten minste twee diensten, "helloWorldService" en "counterService", die luistert op poort 80. Afhankelijk van de URL-structuur van de binnenkomende aanvraag wordt het verzoek doorgestuurd naar een van deze services. 
+* "\<IPAddress>:80/helloWorld/\<request\>" zou resulteren in een verzoek dat wordt gericht aan de "helloWorldListener" in de helloWorldService. 
+* "\<IPAddress>:80/counter/\<request\>" zou resulteren in een verzoek dat wordt gericht aan de "counterListener" in de counterService. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Het voor [beeld](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) van de ingang implementeren om gateways in actie te zien
+* Het [voorbeeld Van Ingress implementeren](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) om gateways in actie te zien

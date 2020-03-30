@@ -1,6 +1,6 @@
 ---
-title: DevTest Labs-concepten | Microsoft Docs
-description: Meer informatie over de basis concepten van DevTest Labs en hoe u Azure virtual machines eenvoudig kunt maken, beheren en bewaken
+title: DevTest Labs concepten | Microsoft Documenten
+description: Leer de basisconcepten van DevTest Labs en hoe het eenvoudig kan zijn om virtuele Azure-machines te maken, te beheren en te controleren
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,79 +15,79 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75428921"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-concepten
 ## <a name="overview"></a>Overzicht
-De volgende lijst bevat de belangrijkste concepten en definities van Key DevTest Labs:
+De volgende lijst bevat de belangrijkste DevTest Labs concepten en definities:
 
 ## <a name="labs"></a>Labs
-Een Lab is de infra structuur die een groep resources omvat, zoals Virtual Machines (Vm's), waarmee u deze resources beter kunt beheren door limieten en quota's op te geven.
+Een lab is de infrastructuur die een groep resources omvat, zoals Virtuele machines (VM's), waarmee u deze resources beter beheren door limieten en quota op te geven.
 
 ## <a name="virtual-machine"></a>Virtuele machine
-Een Azure-VM is een van de verschillende soorten [schaal bare computer bronnen op aanvraag](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Met Azure Vm's beschikt u over de flexibiliteit van virtualisatie zonder dat u de fysieke hardware hoeft te kopen en onderhouden, hoewel u de virtuele machine nog steeds moet onderhouden door bepaalde taken uit te voeren, zoals het configureren, patchen en installeren van de software die wordt uitgevoerd op ,.
+Een Azure VM is een van de verschillende soorten [on-demand, schaalbare computerbronnen](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Azure VM's bieden u de flexibiliteit van virtualisatie zonder de fysieke hardware die deze uitvoert te hoeven kopen en onderhouden, hoewel u de VM nog steeds moet onderhouden door bepaalde taken uit te voeren, zoals het configureren, patchen en installeren van de software waarop wordt uitgevoerd Het.
 
-[Overzicht van virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) geeft u informatie over wat u moet overwegen voordat u een virtuele machine maakt, hoe u deze maakt en hoe u deze beheert.
+[Overzicht van virtuele Windows-machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) geeft u informatie over wat u moet overwegen voordat u een VM maakt, hoe u deze maakt en hoe u deze beheert.
 
-## <a name="claimable-vm"></a>Claim bare VM
-Een Azure-claim bare VM is een virtuele machine die beschikbaar is voor gebruik door een test gebruiker met machtigingen. Een test beheerder kan Vm's voorbereiden met specifieke basis installatie kopieën en artefacten en deze opslaan in een gedeelde groep. Een test gebruiker kan vervolgens een werkende VM op basis van de pool claimen wanneer ze deze nodig hebben met die specifieke configuratie.
+## <a name="claimable-vm"></a>Claimable VM
+Een Azure Claimable VM is een virtuele machine die beschikbaar is voor gebruik door elke labgebruiker met machtigingen. Een labbeheerder kan VM's voorbereiden met specifieke basisafbeeldingen en artefacten en deze opslaan in een gedeelde groep. Een labgebruiker kan vervolgens een werkende VM uit de groep claimen wanneer deze met die specifieke configuratie nodig heeft.
 
-Een virtuele machine die claimbaar is, wordt in eerste instantie niet toegewezen aan een bepaalde gebruiker, maar wordt weer gegeven in de lijst van elke gebruiker onder ' claim bare virtuele machines '. Nadat een virtuele machine door een gebruiker is geclaimd, wordt deze naar het gebied mijn virtuele machines verplaatst en is deze niet langer claimbaar voor een andere gebruiker.
+Een VM die claimbaar is, wordt in eerste instantie niet toegewezen aan een bepaalde gebruiker, maar wordt weergegeven in de lijst van elke gebruiker onder "Claimable virtual machines". Nadat een VM door een gebruiker is geclaimd, wordt deze verplaatst naar het gebied 'Mijn virtuele machines' en is deze niet langer te claimen door een andere gebruiker.
 
 ## <a name="environment"></a>Omgeving
-In DevTest Labs verwijst een omgeving naar een verzameling Azure-resources in een lab. In [dit blog bericht](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) wordt beschreven hoe u multi-VM-omgevingen maakt op basis van uw Azure Resource Manager sjablonen.
+In DevTest Labs verwijst een omgeving naar een verzameling Azure-bronnen in een lab. [In dit blogbericht](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) wordt beschreven hoe u multi-VM-omgevingen maakt op basis van uw Azure Resource Manager-sjablonen.
 
 ## <a name="base-images"></a>Basisinstallatiekopieën
-Basis kopieën zijn VM-installatie kopieën met alle hulpprogram ma's en instellingen die vooraf zijn geïnstalleerd en geconfigureerd om snel een virtuele machine te maken. U kunt een virtuele machine inrichten door een bestaande basis te kiezen en een artefact toe te voegen om uw test agent te installeren. U kunt de ingerichte virtuele machine vervolgens als basis opslaan, zodat de basis kan worden gebruikt zonder dat de test agent opnieuw moet worden geïnstalleerd voor elke inrichting van de virtuele machine.
+Basisafbeeldingen zijn VM-afbeeldingen met alle tools en instellingen die vooraf zijn geïnstalleerd en geconfigureerd om snel een VM te maken. U een VM inrichten door een bestaande basis te kiezen en een artefact toe te voegen om uw testagent te installeren. U de ingerichte VM vervolgens opslaan als basis, zodat de basis kan worden gebruikt zonder dat de testagent voor elke inrichting van de VM opnieuw hoeft te worden geïnstalleerd.
 
-## <a name="artifacts"></a>Artifacts
-Artefacten worden gebruikt voor het implementeren en configureren van uw toepassing nadat een virtuele machine is ingericht. Artefacten kunnen het volgende zijn:
+## <a name="artifacts"></a>Artefacten
+Artefacten worden gebruikt om uw toepassing te implementeren en te configureren nadat een VM is ingericht. Artefacten kunnen zijn:
 
-* Hulpprogram ma's die u wilt installeren op de VM, zoals agents, Fiddler en Visual Studio.
-* Acties die u wilt uitvoeren op de VM, zoals het klonen van een opslag plaats.
-* Programma's die u wilt testen.
+* Hulpprogramma's die u op de VM wilt installeren, zoals agents, Fiddler en Visual Studio.
+* Acties die u op de VM wilt uitvoeren, zoals het klonen van een repo.
+* Toepassingen die u wilt testen.
 
-Artefacten worden [Azure Resource Manager](../azure-resource-manager/management/overview.md) json-bestanden die instructies bevatten voor het uitvoeren van implementatie en het Toep assen van de configuratie.
+Artefacten zijn Json-bestanden van [Azure Resource Manager](../azure-resource-manager/management/overview.md) die instructies bevatten om implementatie uit te voeren en configuratie toe te passen.
 
-## <a name="artifact-repositories"></a>Artefact opslagplaatsen
-Artefact opslagplaatsen zijn Git-opslag plaatsen waar artefacten worden ingecheckt. Artefact opslagplaatsen kunnen worden toegevoegd aan meerdere Labs in uw organisatie, waardoor hergebruik en delen mogelijk zijn.
+## <a name="artifact-repositories"></a>Artefact-opslagplaatsen
+Artefact-repositories zijn git-repositories waar artefacten worden ingecheckt. Artefact-opslagplaatsen kunnen worden toegevoegd aan meerdere laboratoria in uw organisatie, waardoor hergebruik en delen mogelijk zijn.
 
-## <a name="formulas"></a>formules
-Formules, naast basis installatie kopieën, bieden een mechanisme voor snelle VM-inrichting. Een formule in DevTest Labs is een lijst met standaard eigenschaps waarden die worden gebruikt voor het maken van een Lab-VM.
-Met formules kunnen Vm's met dezelfde set eigenschappen, zoals basis installatie kopie, VM-grootte, virtueel netwerk en artefacten, worden gemaakt zonder dat ze elke keer deze eigenschappen moeten opgeven. Wanneer u een virtuele machine maakt op basis van een formule, kunnen de standaard waarden worden gebruikt als-is of gewijzigd.
+## <a name="formulas"></a>Formules
+Formules bieden, naast basisafbeeldingen, een mechanisme voor snelle VM-provisioning. Een formule in DevTest Labs is een lijst met standaardeigenschapwaarden die worden gebruikt om een lab-vm te maken.
+Met formules kunnen VM's met dezelfde set eigenschappen - zoals basisafbeelding, VM-grootte, virtueel netwerk en artefacten - worden gemaakt zonder dat deze eigenschappen telkens hoeven op te geven. Bij het maken van een VM uit een formule kunnen de standaardwaarden worden gebruikt als is of gewijzigd.
 
-## <a name="policies"></a>Beleid
-Met beleids regels kunt u de kosten in uw Lab beheren. U kunt bijvoorbeeld een beleid maken om Vm's automatisch af te sluiten op basis van een gedefinieerd schema.
+## <a name="policies"></a>Beleidsregels
+Beleid helpt bij het beheersen van de kosten in uw lab. U bijvoorbeeld een beleid maken om VM's automatisch af te sluiten op basis van een gedefinieerd schema.
 
 ## <a name="caps"></a>Petjes
-Caps is een mechanisme voor het minimaliseren van afval in uw Lab. U kunt bijvoorbeeld een cap instellen om het aantal Vm's te beperken dat per gebruiker of in een Lab kan worden gemaakt.
+Caps is een mechanisme om afval in uw lab te minimaliseren. U bijvoorbeeld een limiet instellen om het aantal VM's dat per gebruiker of in een lab kan worden gemaakt, te beperken.
 
-## <a name="security-levels"></a>Beveiligings niveaus
-Beveiligings toegang wordt bepaald door op Azure Role gebaseerde Access Control (RBAC). Om te begrijpen hoe Access werkt, is het handig om te begrijpen wat de verschillen zijn tussen een machtiging, een rol en een bereik zoals gedefinieerd door RBAC.
+## <a name="security-levels"></a>Beveiligingsniveaus
+Beveiligingstoegang wordt bepaald door RBAC (Azure Role-Based Access Control). Om te begrijpen hoe toegang werkt, helpt het om de verschillen tussen een machtiging, een rol en een bereik zoals gedefinieerd door RBAC te begrijpen.
 
-* Machtiging: een machtiging is een gedefinieerde toegang tot een specifieke actie (bijvoorbeeld lees toegang tot alle virtuele machines).
-* Rol: een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. De rol van *abonnements eigenaar* heeft bijvoorbeeld toegang tot alle resources in een abonnement.
-* Bereik: een bereik is een niveau in de hiërarchie van een Azure-resource, zoals een resource groep, één Lab of het hele abonnement.
+* Machtiging - Een machtiging is een gedefinieerde toegang tot een specifieke actie (bijvoorbeeld leestoegang tot alle virtuele machines).
+* Rol - Een rol is een set machtigingen die kunnen worden gegroepeerd en toegewezen aan een gebruiker. De rol *van* de eigenaar van het abonnement heeft bijvoorbeeld toegang tot alle bronnen binnen een abonnement.
+* Bereik : een bereik is een niveau binnen de hiërarchie van een Azure-bron, zoals een resourcegroep, één lab of het hele abonnement.
 
-Binnen het bereik van DevTest Labs zijn er twee soorten rollen om gebruikers machtigingen te definiëren: Lab-eigenaar en Lab-gebruiker.
+Binnen het bereik van DevTest Labs zijn er twee soorten rollen om gebruikersmachtigingen te definiëren: labeigenaar en labgebruiker.
 
-* Eigenaar van het lab-een Lab-eigenaar heeft toegang tot alle resources in het lab. Daarom kan een eigenaar van het lab beleids regels wijzigen, Vm's lezen en schrijven, het virtuele netwerk wijzigen, enzovoort.
-* Lab-gebruiker: een Lab-gebruiker kan alle Lab-bronnen weer geven, zoals Vm's, beleids regels en virtuele netwerken, maar kunnen geen beleids regels of Vm's wijzigen die door andere gebruikers zijn gemaakt.
+* Lab Owner - Een lab eigenaar heeft toegang tot alle middelen in het lab. Daarom kan een labeigenaar beleid wijzigen, vm's lezen en schrijven, het virtuele netwerk wijzigen, enzovoort.
+* Lab-gebruiker - Een labgebruiker kan alle labbronnen bekijken, zoals VM's, beleidsregels en virtuele netwerken, maar kan geen beleid of VM's wijzigen die door andere gebruikers zijn gemaakt.
 
-Raadpleeg het artikel, [gebruikers machtigingen verlenen aan specifieke Lab-beleids regels](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)voor meer informatie over het maken van aangepaste rollen in DevTest Labs.
+Als u wilt zien hoe u aangepaste rollen in DevTest Labs maakt, raadpleegt u het [artikel, Verleent u gebruikersmachtigingen voor specifiek labbeleid](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Aangezien de scopes hiërarchisch zijn, worden deze machtigingen automatisch verleend wanneer een gebruiker machtigingen heeft voor een bepaald bereik. dit bereik is ook toegestaan op elke lagere bereik. Als een gebruiker bijvoorbeeld is toegewezen aan de rol van eigenaar van het abonnement, hebben ze toegang tot alle resources in een abonnement, die alle virtuele machines, alle virtuele netwerken en alle Labs omvat. Daarom neemt de eigenaar van het abonnement automatisch de rol van de Lab-eigenaar over. Het tegenovergestelde is echter niet waar. Een Lab-eigenaar heeft toegang tot een lab. Dit is een lager bereik dan het abonnements niveau. Daarom kan een Lab-eigenaar geen virtuele machines of virtuele netwerken of bronnen die zich buiten het lab bevinden, zien.
+Aangezien scopes hiërarchisch zijn, krijgen deze machtigingen automatisch op elk bereik dat op een lager niveau is, wanneer een gebruiker machtigingen heeft op een bepaald bereik. Als een gebruiker bijvoorbeeld is toegewezen aan de rol van abonnementseigenaar, hebben ze toegang tot alle bronnen in een abonnement, waaronder alle virtuele machines, alle virtuele netwerken en alle labs. Daarom neemt een abonnementeigenaar automatisch de rol van labeigenaar over. Het tegendeel is echter niet waar. Een labeigenaar heeft toegang tot een lab, wat een lager bereik is dan het abonnementsniveau. Daarom kan een labeigenaar geen virtuele machines of virtuele netwerken of bronnen zien die zich buiten het lab bevinden.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
-Alle concepten die in dit artikel worden besproken, kunnen worden geconfigureerd met behulp van Azure Resource Manager sjablonen, waarmee u de infra structuur/configuratie van uw Azure-oplossing kunt definiëren en deze herhaaldelijk in een consistente status implementeert.
+Alle concepten die in dit artikel worden besproken, kunnen worden geconfigureerd met Azure Resource Manager-sjablonen, waarmee u de infrastructuur/configuratie van uw Azure-oplossing definiëren en herhaaldelijk in een consistente status implementeren.
 
-[Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) beschrijft de structuur van een Azure Resource Manager sjabloon en de eigenschappen die beschikbaar zijn in de verschillende secties van een sjabloon.
+[Begrijp de structuur en syntaxis van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) beschrijft de structuur van een Azure Resource Manager-sjabloon en de eigenschappen die beschikbaar zijn in de verschillende secties van een sjabloon.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-[Een lab maken in DevTest Labs](devtest-lab-create-lab.md)
+[Maak een lab in DevTest Labs](devtest-lab-create-lab.md)

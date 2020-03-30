@@ -1,47 +1,47 @@
 ---
-title: Consul installeren in azure Kubernetes service (AKS)
-description: Meer informatie over het installeren en gebruiken van consul voor het maken van een service-net in een Azure Kubernetes service-cluster (AKS)
+title: Consul installeren in Azure Kubernetes Service (AKS)
+description: Meer informatie over het installeren en gebruiken van Consul om een servicemesh te maken in een AKS-cluster (Azure Kubernetes Service)
 author: dstrebel
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273738"
 ---
-# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in azure Kubernetes service (AKS)
+# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in Azure Kubernetes Service (AKS)
 
-[Consul][consul-github] is een open-source service-net dat een belang rijke set functionaliteit biedt voor de micro Services in een Kubernetes-cluster. Deze functies omvatten service detectie, status controle, service segmentatie en waarneembaarheid. Zie voor meer informatie over consul de officiële [What is consul?][consul-docs-concepts] -documentatie.
+[Consul][consul-github] is een open-source service mesh die een belangrijke set functionaliteit biedt voor de microservices in een Kubernetes-cluster. Deze functies omvatten servicedetectie, statuscontrole, servicesegmentatie en waarneembaarheid. Zie voor meer informatie over consul de officiële [Wat is Consul?][consul-docs-concepts] documentatie.
 
-In dit artikel wordt beschreven hoe u consul installeert. De consul-onderdelen worden in een Kubernetes-cluster op AKS geïnstalleerd.
+In dit artikel ziet u hoe u Consul installeert. De Consul-componenten worden geïnstalleerd in een Kubernetes-cluster op AKS.
 
 > [!NOTE]
-> Deze instructies verwijzen naar consul versie `1.6.0`en gebruiken ten minste helm versie `2.14.2`.
+> Deze instructies verwijzen `1.6.0`consul versie, en `2.14.2`gebruik ten minste Helm versie .
 >
-> De consul-`1.6.x` releases kunnen worden uitgevoerd op Kubernetes-versies `1.13+`. U kunt aanvullende consul-versies vinden op [github-consul releases][consul-github-releases] en informatie over elk van de releases op [consul-release opmerkingen][consul-release-notes].
+> De `1.6.x` Consul-releases kunnen worden `1.13+`uitgevoerd tegen Kubernetes-versies. U vindt aanvullende Consul-versies op [GitHub - Consul Releases][consul-github-releases] en informatie over elk van de releases op [Consul- Release Notes][consul-release-notes].
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * De consul-onderdelen installeren op AKS
-> * De consul-installatie valideren
-> * Consul verwijderen uit AKS
+> * Installeer de Consul-componenten op AKS
+> * De Consul-installatie valideren
+> * Consul van AKS verwijderen
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor de stappen die in dit artikel worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt (Kubernetes `1.13` en hoger, waarbij RBAC is ingeschakeld) en een `kubectl`-verbinding met het cluster heeft gemaakt. Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart]start. Zorg ervoor dat uw cluster ten minste drie knoop punten in de Linux-knooppunt groep bevat.
+De stappen in dit artikel gaan ervan uit dat `1.13` u een AKS-cluster hebt gemaakt (Kubernetes en hoger, met RBAC ingeschakeld) en een `kubectl` verbinding met het cluster hebt gemaakt. Als u hulp nodig hebt met een van deze items, zie dan de [AKS snelstart][aks-quickstart]. Zorg ervoor dat uw cluster ten minste 3 knooppunten in de Linux-knooppuntpool heeft.
 
-U hebt [helm][helm] nodig om deze instructies te volgen en consul te installeren. Het is raadzaam dat u de nieuwste stabiele versie correct hebt geïnstalleerd en geconfigureerd in uw cluster. Als u hulp nodig hebt bij het installeren van helm, raadpleegt u de [AKS helm Installation guidance][helm-install](Engelstalig). Alle consul-peulen moeten ook worden gepland om te worden uitgevoerd op Linux-knoop punten.
+Je hebt [Helm][helm] nodig om deze instructies op te volgen en Consul te installeren. Het wordt aanbevolen dat u de nieuwste stabiele versie correct hebt geïnstalleerd en geconfigureerd in uw cluster. Als u hulp nodig hebt bij het installeren van Helm, raadpleegt u de [AKS Helm installatiebegeleiding.][helm-install] Alle Consul pods moeten ook worden gepland om te draaien op Linux-knooppunten.
 
-In dit artikel worden de consul-installatie richtlijnen gescheiden in verschillende afzonderlijke stappen. Het eind resultaat is hetzelfde als de officiële consul-installatie [richtlijnen][consul-install-k8].
+Dit artikel scheidt de consul installatiebegeleiding in verscheidene afzonderlijke stappen. Het eindresultaat is hetzelfde in structuur als de officiële Consul installatie [begeleiding][consul-install-k8].
 
-### <a name="install-the-consul-components-on-aks"></a>De consul-onderdelen installeren op AKS
+### <a name="install-the-consul-components-on-aks"></a>Installeer de Consul-componenten op AKS
 
-We beginnen met het downloaden van versie `v0.10.0` van het consul helm-diagram. Deze versie van de grafiek bevat consul-versie `1.6.0`.
+We beginnen met het `v0.10.0` downloaden van de versie van de Consul Helm grafiek. Deze versie van de `1.6.0`grafiek bevat Consul versie .
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,20 +61,20 @@ We beginnen met het downloaden van versie `v0.10.0` van het consul helm-diagram.
 
 ::: zone-end
 
-Gebruik helm en de gedownloade `consul-helm` grafiek om de consul-onderdelen te installeren in de naam ruimte `consul` in uw AKS-cluster. 
+Gebruik Helm en `consul-helm` de gedownloade grafiek om `consul` de Consul-componenten te installeren in de naamruimte in uw AKS-cluster. 
 
 > [!NOTE]
-> **Installatie opties**
+> **Installatieopties**
 > 
 > We gebruiken de volgende opties als onderdeel van onze installatie:
-> - `connectInject.enabled=true`-proxy's inschakelen die moeten worden geïnjecteerd in peul
-> - `client.enabled=true`: inschakelen dat consul-clients worden uitgevoerd op elk knoop punt
-> - `client.grpc=true`-gRPC-listener inschakelen voor connectInject
-> - `syncCatalog.enabled=true`-Kubernetes-en consul-Services
+> - `connectInject.enabled=true`- proxies in te injecteren in peulen
+> - `client.enabled=true`- consulcliënten in staat stellen om op elk knooppunt te draaien
+> - `client.grpc=true`- gRPC-listener inschakelen voor connectInject
+> - `syncCatalog.enabled=true`- kubernetes- en consul-services synchroniseren
 >
-> **Knooppunt selecties**
+> **Knooppuntselecties**
 >
-> Consul moet momenteel worden ingepland om te worden uitgevoerd op Linux-knoop punten. Als u Windows Server-knoop punten in uw cluster hebt, moet u ervoor zorgen dat de consul van de peulen enkel worden uitgevoerd op Linux-knoop punten. We gebruiken [knooppunt selecties][kubernetes-node-selectors] om ervoor te zorgen dat de juiste knoop punten van peulen worden gepland.
+> Consul moet momenteel worden gepland om te draaien op Linux-knooppunten. Als u Windows Server-knooppunten in uw cluster hebt, moet u ervoor zorgen dat de Consul-pods alleen op Linux-knooppunten worden uitgevoerd. We gebruiken [knooppuntselecties][kubernetes-node-selectors] om ervoor te zorgen dat pods zijn gepland op de juiste knooppunten.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -94,20 +94,20 @@ Gebruik helm en de gedownloade `consul-helm` grafiek om de consul-onderdelen te 
 
 ::: zone-end
 
-In het helm-diagram van `Consul` wordt een aantal objecten geïmplementeerd. U kunt de lijst weer geven uit de uitvoer van uw `helm install`-opdracht hierboven. Het volt ooien van de implementatie van de consul-onderdelen kan drie minuten duren, afhankelijk van uw cluster omgeving.
+In `Consul` de grafiek Helm worden een aantal objecten geïmplementeerd. U de lijst zien `helm install` in de uitvoer van uw opdracht hierboven. De implementatie van de Consul-componenten kan ongeveer 3 minuten in beslag nemen, afhankelijk van uw clusteromgeving.
 
-Op dit moment hebt u consul geïmplementeerd op uw AKS-cluster. Om ervoor te zorgen dat we een geslaagde implementatie van consul hebben, gaan we verder met de volgende sectie om de consul-installatie te valideren.
+Op dit moment hebt u Consul ingezet op uw AKS-cluster. Om ervoor te zorgen dat we een succesvolle inzet van Consul hebben, gaan we naar de volgende sectie om de consul-installatie te valideren.
 
-## <a name="validate-the-consul-installation"></a>De consul-installatie valideren
+## <a name="validate-the-consul-installation"></a>De Consul-installatie valideren
 
-Controleer of de resources zijn gemaakt. Gebruik de opdrachten [kubectl Get SVC][kubectl-get] en [kubectl Get pod][kubectl-get] om de `consul` naam ruimte op te vragen, waarbij de consul onderdelen zijn geïnstalleerd met de `helm install` opdracht:
+Controleer of de resources zijn gemaakt. Gebruik de [kubectl get svc][kubectl-get] en [kubectl][kubectl-get] `consul` get pod-opdrachten om de naamruimte op te vragen, waar de Consul-componenten door de `helm install` opdracht zijn geïnstalleerd:
 
 ```console
 kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-In de volgende voorbeeld uitvoer ziet u de services en het Peul (gepland op Linux-knoop punten) die nu moeten worden uitgevoerd:
+In de volgende voorbeelduitvoer worden de services en pods weergegeven (gepland op Linux-knooppunten) die nu moeten worden uitgevoerd:
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -128,28 +128,28 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Alle peulen moeten de status van `Running`weer geven. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
+Alle pods moeten een status `Running`van . Als uw pods deze statussen niet hebben, wacht dan een minuut of twee tot ze dat doen. Als een pods een probleem melden, gebruikt u de opdracht [kubectl describe pod][kubectl-describe] om hun uitvoer en status te controleren.
 
-## <a name="accessing-the-consul-ui"></a>Toegang tot de consul-gebruikers interface
+## <a name="accessing-the-consul-ui"></a>Toegang tot de Consul UI
 
-De consul-gebruikers interface is in onze installatie hierboven geïnstalleerd en biedt configuratie op basis van de gebruikers interface voor consul. De gebruikers interface voor consul wordt niet openbaar weer gegeven via een extern IP-adres. Als u toegang wilt krijgen tot de consul-gebruikers interface, gebruikt u de opdracht [kubectl-doorstuur poort][kubectl-port-forward] . Met deze opdracht maakt u een beveiligde verbinding tussen uw client computer en de relevante pod in uw AKS-cluster.
+De Consul UI is geïnstalleerd in onze setup hierboven en biedt ui gebaseerde configuratie voor Consul. De gebruikersinterface voor consul wordt niet openbaar gemaakt via een extern ip-adres. Als u toegang wilt krijgen tot de gebruikersinterface van Consul, gebruikt u de opdracht [kubectl port forward.][kubectl-port-forward] Met deze opdracht wordt een beveiligde verbinding gemaakt tussen uw clientmachine en de relevante pod in uw AKS-cluster.
 
 ```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-U kunt nu een browser openen en deze naar `http://localhost:8080/ui` verwijzen om de consul-gebruikers interface te openen. Wanneer u de gebruikers interface opent, ziet u het volgende:
+U nu een browser `http://localhost:8080/ui` openen en deze aanwijzen om de Consul UI te openen. U ziet het volgende wanneer u de gebruikersinterface opent:
 
-![Consul-gebruikers interface](./media/servicemesh/consul/consul-ui.png)
+![Consul UI](./media/servicemesh/consul/consul-ui.png)
 
-## <a name="uninstall-consul-from-aks"></a>Consul verwijderen uit AKS
+## <a name="uninstall-consul-from-aks"></a>Consul van AKS verwijderen
 
 > [!WARNING]
-> Het verwijderen van consul van een actief systeem kan leiden tot problemen met verkeer tussen uw services. Zorg ervoor dat u voor het systeem nog steeds goed werkt zonder consul voordat u doorgaat.
+> Het verwijderen van Consul uit een lopend systeem kan leiden tot verkeersgerelateerde problemen tussen uw services. Zorg ervoor dat u voorzieningen hebt getroffen om uw systeem nog steeds correct te laten functioneren zonder Consul voordat u verdergaat.
 
-### <a name="remove-consul-components-and-namespace"></a>Consul-onderdelen en naam ruimte verwijderen
+### <a name="remove-consul-components-and-namespace"></a>Consul-onderdelen en naamruimte verwijderen
 
-Gebruik de volgende opdrachten om consul te verwijderen uit uw AKS-cluster. Met de `helm delete` opdrachten wordt de `consul` grafiek verwijderd en met de `kubectl delete namespace` opdracht wordt de `consul` naam ruimte verwijderd.
+Als u Consul uit uw AKS-cluster wilt verwijderen, gebruikt u de volgende opdrachten. De `helm delete` opdrachten verwijderen `consul` de grafiek `kubectl delete namespace` en de `consul` opdracht verwijdert de naamruimte.
 
 ```console
 helm delete --purge consul
@@ -158,14 +158,14 @@ kubectl delete namespace consul
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer wilt weten over de installatie-en configuratie opties voor consul, raadpleegt u de volgende officiële consul-artikelen:
+Zie de volgende officiële consul-artikelen voor meer installatie- en configuratieopties voor Consul:
 
-- [Installatie handleiding voor consul-helm][consul-install-k8]
-- [Installatie opties voor consul-helm][consul-install-helm-options]
+- [Consul - Helm installatiegids][consul-install-k8]
+- [Consul - Helm installatiemogelijkheden][consul-install-helm-options]
 
-U kunt ook aanvullende scenario's volgen met behulp van:
+U ook aanvullende scenario's volgen met:
 
-- [Voorbeeld toepassing consul][consul-app-example]
+- [Consul Voorbeeld aanvraag][consul-app-example]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com

@@ -1,32 +1,32 @@
 ---
-title: Uw Azure Service Fabric-Services container plaatsen in Windows
-description: Meer informatie over het container plaatsen van uw Service Fabric Reliable Services en Reliable Actors Services in Windows.
+title: Uw Azure Service Fabric-services containeriseren op Windows
+description: Meer informatie over het containeriseren van uw Service Fabric Reliable Services en Reliable Actors-services op Windows.
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466181"
 ---
-# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Container plaatsen uw Service Fabric Reliable Services en Reliable Actors in Windows
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Uw Reliable Services en Reliable Actors van Service Fabric in Windows in een container plaatsen
 
-Service Fabric ondersteunt waarmee Service Fabric micro Services (Reliable Services en reliable actor-Services). Zie [service Fabric-containers](service-fabric-containers-overview.md)voor meer informatie.
+Service Fabric ondersteunt containerizing Service Fabric microservices (Reliable Services, and Reliable Actor based services). Zie voor meer informatie [de containers van de servicestof](service-fabric-containers-overview.md).
 
-In dit document vindt u informatie over het uitvoeren van uw service in een Windows-container.
+Dit document biedt richtlijnen om uw service in een Windows-container te laten werken.
 
 > [!NOTE]
-> Deze functie werkt momenteel alleen voor Windows. Om containers uit te voeren, moet het cluster worden uitgevoerd op Windows Server 2016 met containers.
+> Momenteel werkt deze functie alleen voor Windows. Als u containers wilt uitvoeren, moet het cluster worden uitgevoerd op Windows Server 2016 met containers.
 
-## <a name="steps-to-containerize-your-service-fabric-application"></a>Stappen voor het container plaatsen van uw Service Fabric-toepassing
+## <a name="steps-to-containerize-your-service-fabric-application"></a>Stappen om uw Service Fabric-toepassing te containeriseren
 
 1. Open uw Service Fabric-toepassing in Visual Studio.
 
-2. Voeg Class [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) toe aan uw project. De code in deze klasse is een helper om de binaire bestanden van Service Fabric runtime in uw toepassing correct te laden wanneer ze binnen een container worden uitgevoerd.
+2. Voeg klasse [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) toe aan uw project. De code in deze klasse is een helper om de runtimebinaries van Service Fabric in uw toepassing correct te laden wanneer u in een container wordt uitgevoerd.
 
-3. Voor elk code pakket dat u wilt container plaatsen, initialiseert u het laad programma op het toegangs punt van het programma. Voeg de statische constructor die wordt weer gegeven in het volgende code fragment toe aan het bestand van het programma-toegangs punt.
+3. Voor elk codepakket dat u wilt containeriseren, initialiseren van de lader op het programma entry point. Voeg de statische constructor in het volgende codefragment toe aan het itembestand van het programma.
 
    ```csharp
    namespace MyApplication
@@ -45,11 +45,11 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
           {
    ```
 
-4. Bouw en [verpak](service-fabric-package-apps.md#Package-App) uw project. Als u een pakket wilt bouwen en maken, klikt u met de rechter muisknop op het toepassings project in Solution Explorer en kiest u de **pakket** opdracht.
+4. Bouw en [verpak](service-fabric-package-apps.md#Package-App) uw project. Als u een pakket wilt maken en maken, klikt u met de rechtermuisknop op het toepassingsproject in Solution Explorer en kiest u de opdracht **Pakket.**
 
-5. Voer voor elk code pakket dat u nodig hebt container plaatsen het Power shell-script [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)uit. Het gebruik is als volgt:
+5. Voer voor elk codepakket dat u moet containeriseren het PowerShell-script [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)uit. Het gebruik is als volgt:
 
-    Volledige .NET
+    Volledig .NET
       ```powershell
         $codePackagePath = 'Path to the code package to containerize.'
         $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
@@ -63,11 +63,11 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Met het script maakt u een map met docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig de gegenereerde Dockerfile om poorten te `expose`, Voer installatie scripts uit, enzovoort. op basis van uw behoeften.
+      Het script maakt een map met Docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig het gegenereerde `expose` Dockerfile in alle poorten, voer installatiescripts uit en ga zo maar door. gebaseerd op uw behoeften.
 
-6. Vervolgens moet u uw docker-container pakket [bouwen](service-fabric-get-started-containers.md#Build-Containers) en [pushen](service-fabric-get-started-containers.md#Push-Containers) naar uw opslag plaats.
+6. Vervolgens moet je je Docker containerpakket [bouwen](service-fabric-get-started-containers.md#Build-Containers) en naar je repository [duwen.](service-fabric-get-started-containers.md#Push-Containers)
 
-7. Wijzig ApplicationManifest. XML en ServiceManifest. XML om uw container installatie kopie, informatie over de opslag plaats, register verificatie en poort-naar-host-toewijzing toe te voegen. Zie [een Azure service Fabric-container toepassing maken](service-fabric-get-started-containers.md)voor het wijzigen van de manifesten. De code pakket definitie in het service manifest moet worden vervangen door de bijbehorende container installatie kopie. Zorg ervoor dat u het toegangs punt wijzigt in een ContainerHost-type.
+7. Wijzig de ApplicationManifest.xml en ServiceManifest.xml om uw containerafbeelding, repository-informatie, registerverificatie en port-to-host-toewijzing toe te voegen. Zie [Een containertoepassing voor Azure Service Fabric maken](service-fabric-get-started-containers.md)voor het wijzigen van de manifesten. De definitie van het codepakket in het servicemanifest moet worden vervangen door de bijbehorende containerafbeelding. Zorg ervoor dat u het EntryPoint wijzigt in een ContainerHost-type.
 
    ```xml
    <!-- Code package is your service executable. -->
@@ -82,7 +82,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
    </CodePackage>
    ```
 
-8. Voeg de poort-naar-host-toewijzing voor uw Replicator en service-eind punt toe. Omdat deze poorten zijn toegewezen tijdens runtime door Service Fabric, wordt ContainerPort ingesteld op nul om de toegewezen poort voor toewijzing te gebruiken.
+8. Voeg de port-to-host-toewijzing toe voor uw replicator- en serviceeindpunt. Aangezien beide poorten tijdens runtime door Service Fabric zijn toegewezen, is de ContainerPort ingesteld op nul om de toegewezen poort te gebruiken voor toewijzing.
 
    ```xml
    <Policies>
@@ -93,7 +93,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
    </Policies>
    ```
 
-9. Zie [isolatie modus configureren]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)voor meer informatie over het configureren van de isolatie modus voor containers. Windows ondersteunt twee isolatiemodi voor containers: proces en Hyper-V. De volgende fragmenten laten zien hoe de isolatie modus is opgegeven in het manifest bestand van de toepassing.
+9. Zie [Isolatiemodus configureren]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)voor het configureren van de containerisolatiemodus . Windows ondersteunt twee isolatiemodi voor containers: proces en Hyper-V. In de volgende fragmenten ziet u hoe de isolatiemodus is opgegeven in het manifestbestand van de toepassing.
 
    ```xml
    <Policies>
@@ -111,7 +111,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
    ```
 
 > [!NOTE] 
-> Standaard hebben Service Fabric-toepassingen toegang tot de Service Fabric runtime, in de vorm van een eind punt dat toepassingsspecifieke aanvragen accepteert. Overweeg deze toegang uit te scha kelen wanneer de toepassing niet-vertrouwde code host. Zie [Aanbevolen procedures voor beveiliging in service Fabric](service-fabric-best-practices-security.md#platform-isolation)voor meer informatie. Als u de toegang tot de Service Fabric runtime wilt uitschakelen, voegt u de volgende instelling toe in de sectie beleid van het toepassings manifest dat overeenkomt met het geïmporteerde service manifest, als volgt:
+> Standaard hebben Service Fabric-toepassingen toegang tot de runtime van Service Fabric, in de vorm van een eindpunt dat toepassingsspecifieke aanvragen accepteert. Overweeg deze toegang uit te schakelen wanneer de toepassing niet-vertrouwde code host. Zie aanbevolen procedures [voor beveiliging in Service Fabric](service-fabric-best-practices-security.md#platform-isolation)voor meer informatie. Als u de toegang tot de runtime van de ServiceFabric wilt uitschakelen, voegt u de volgende instelling toe in het gedeelte Beleid van het toepassingsmanifest dat overeenkomt met het geïmporteerde servicemanifest als volgt:
 >
 ```xml
   <Policies>
@@ -120,7 +120,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
 ```
 >
 
-10. Als u deze toepassing wilt testen, moet u deze implementeren in een cluster waarop versie 5,7 of hoger wordt uitgevoerd. Voor runtime versie 6,1 of lager moet u de cluster instellingen bewerken en bijwerken om deze preview-functie in te scha kelen. Volg de stappen in dit [artikel](service-fabric-cluster-fabric-settings.md) om de instelling toe te voegen die hierna wordt weer gegeven.
+10. Als u deze toepassing wilt testen, moet u deze implementeren in een cluster waarop versie 5.7 of hoger wordt uitgevoerd. Voor runtime-versies 6.1 of lager moet u de clusterinstellingen bewerken en bijwerken om deze voorbeeldfunctie in te schakelen. Volg de stappen in dit [artikel](service-fabric-cluster-fabric-settings.md) om de volgende instelling toe te voegen.
     ```
       {
         "name": "Hosting",
@@ -133,9 +133,9 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
       }
     ```
 
-11. [Implementeer](service-fabric-deploy-remove-applications.md) daarna het bewerkte toepassings pakket naar dit cluster.
+11. Implementeer [vervolgens](service-fabric-deploy-remove-applications.md) het bewerkte toepassingspakket in dit cluster.
 
-U hebt nu een container Service Fabric toepassing die uw cluster uitvoert.
+U moet nu een containerized Service Fabric-toepassing hebben waarop uw cluster wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het uitvoeren van [containers in Service Fabric](service-fabric-get-started-containers.md).

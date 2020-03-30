@@ -1,35 +1,35 @@
 ---
-title: Azure Service Fabric CLI-sfctl mesh
-description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van Service Fabric-mesh-toepassingen.
+title: Azure Service Fabric CLI- sfctl-mesh
+description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het beheren van Service Fabric Mesh-toepassingen.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 40d0f70b0dabdc02434fa662663a2fd105431f0a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905889"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
-Service Fabric-mesh-toepassingen verwijderen en beheren.
+Service Fabric Mesh-toepassingen verwijderen en beheren.
 
 ## <a name="subgroups"></a>Subgroepen
-|Subgroep|Beschrijving|
+|Deelgroep|Beschrijving|
 | --- | --- |
-| [app](service-fabric-sfctl-mesh-app.md) | Toepassings resources ophalen en verwijderen. |
-| [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | De logboeken ophalen voor de container van het opgegeven code pakket voor de opgegeven service replica. |
-| [inhoudsdistributiepad](service-fabric-sfctl-mesh-deployment.md) | Service Fabric netresources maken. |
-| [gateway](service-fabric-sfctl-mesh-gateway.md) | Netgateway-resources ophalen en verwijderen. |
-| [netwerk](service-fabric-sfctl-mesh-network.md) | Net-netwerk resources ophalen en verwijderen. |
-| [secret](service-fabric-sfctl-mesh-secret.md) | Geheim bronnen van het net ophalen en verwijderen. |
-| [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Net secretvalue-resources ophalen en verwijderen. |
-| [service](service-fabric-sfctl-mesh-service.md) | Haal service Details en lijst Services van een toepassings bron op. |
-| [service-replica](service-fabric-sfctl-mesh-service-replica.md) | Replica Details ophalen en replica's van een bepaalde service in een toepassings bron weer geven. |
-| [volumebitmap](service-fabric-sfctl-mesh-volume.md) | Volume bronnen ophalen en verwijderen. |
+| [App](service-fabric-sfctl-mesh-app.md) | Toepassingsbronnen in- en verwijderen. |
+| [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | Download de logboeken voor de container van het opgegeven codepakket voor de opgegeven servicereplica. |
+| [implementatie](service-fabric-sfctl-mesh-deployment.md) | Maak mesh-bronnen voor servicefabric.Create Service Fabric Mesh resources. |
+| [Gateway](service-fabric-sfctl-mesh-gateway.md) | Mesh-gatewaybronnen inpakken en verwijderen. |
+| [Netwerk](service-fabric-sfctl-mesh-network.md) | Netwerkbronnen voor mesh-netwerken oppakken en verwijderen. |
+| [geheim](service-fabric-sfctl-mesh-secret.md) | Krijg en verwijder mesh geheime bronnen. |
+| [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Netwerkgeheime bronnen verwijderen en verwijderen. |
+| [Service](service-fabric-sfctl-mesh-service.md) | Ontvang servicegegevens en lijstservices van een toepassingsbron. |
+| [servicereplica](service-fabric-sfctl-mesh-service-replica.md) | Download replicadetails en lijstreplica's van een bepaalde service in een toepassingsbron. |
+| [Volume](service-fabric-sfctl-mesh-volume.md) | Volumebronnen oppakken en verwijderen. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Stel de SERVICE Fabric CLI [in.](service-fabric-cli.md)
+- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

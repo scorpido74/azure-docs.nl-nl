@@ -1,7 +1,7 @@
 ---
-title: Voor beeld-API management-beleid-de duur van de antwoord cache instellen
+title: Voorbeeld-API-beheerbeleid - Duur van de antwoordcache instellen
 titleSuffix: Azure API Management
-description: 'Voor beeld van Azure API management-beleid: laat zien hoe u de respons cache duur instelt met behulp van de maxAge-waarde in de cache-Control-header die door de back-end wordt verzonden.'
+description: Voorbeeld van azure API-beheerbeleid - toont aan hoe u de duur van de antwoordcache instelt met de maximumwaarde in de header Cache-Control die door de backend wordt verzonden..
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442399"
 ---
-# <a name="set-response-cache-duration"></a>De respons cache duur instellen
+# <a name="set-response-cache-duration"></a>Duur antwoordcache instellen
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u de respons cache duur instelt met behulp van de maxAge-waarde in de cache-Control-header die door de back-end Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voorbeeld van een Azure API-beheerbeleidsvoorbeeld weergegeven waarin wordt uitgelegd hoe de duur van de antwoordcache wordt ingesteld met de maximumwaarde in de header Cache-Control die door de backend wordt verzonden. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
 
 ## <a name="policy"></a>Beleid
 
@@ -35,5 +35,5 @@ Plak de code in het **binnenkomende** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
++ [Beleidsvoorbeelden](../policy-samples.md)
 

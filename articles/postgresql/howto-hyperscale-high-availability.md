@@ -1,35 +1,35 @@
 ---
-title: Hoge Beschik baarheid configureren-grootschalige (Citus)-Azure Database for PostgreSQL
-description: Hoge Beschik baarheid in-of uitschakelen
+title: Hoge beschikbaarheid configureren - Hyperscale (Citus) - Azure Database voor PostgreSQL
+description: Hoge beschikbaarheid in- of uitschakelen
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: a8d4b5949b34d16191e9ec10a1dd39faff3660dc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977648"
 ---
-# <a name="configure-hyperscale-citus-high-availability"></a>Hoge Beschik baarheid van grootschalige (Citus) configureren
+# <a name="configure-hyperscale-citus-high-availability"></a>Hyperscale (Citus) hoge beschikbaarheid configureren
 
-Azure Database for PostgreSQL-grootschalige (Citus) biedt hoge Beschik baarheid (HA) om uitval tijd van de data base te voor komen. Als HA is ingeschakeld, ontvangt elk knoop punt in een server groep een stand-by. Als het oorspronkelijke knoop punt een slechte status krijgt, wordt de stand-by wordt gepromoveerd om het te vervangen.
+Azure Database voor PostgreSQL - Hyperscale (Citus) biedt hoge beschikbaarheid (HA) om downtime van de database te voorkomen. Met HA ingeschakeld, krijgt elk knooppunt in een servergroep een stand-by. Als het oorspronkelijke knooppunt ongezond wordt, wordt de stand-by gepromoot om het te vervangen.
 
 > [!IMPORTANT]
-> Omdat HA het aantal servers in de groep verdubbelt, worden ook de kosten verdubbeld.
+> Omdat HA het aantal servers in de groep verdubbelt, zal het ook de kosten verdubbelen.
 
-Het inschakelen van HA kan tijdens het maken van de Server groep, of later op het tabblad **configureren** voor uw server groep in de Azure Portal. De gebruikers interface ziet er in beide gevallen ongeveer als volgt uit. Sleep de schuif regelaar voor **hoge Beschik baarheid** naar Ja:
+Het inschakelen van HA is mogelijk tijdens het maken van servergroepen of daarna op het tabblad **Configureren** voor uw servergroep in de Azure-portal. De gebruikersinterface ziet er in beide gevallen hetzelfde uit. Sleep de schuifregelaar voor **hoge beschikbaarheid** naar JA:
 
-![ha-schuif regelaar](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+![ha schuifregelaar](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 
-Klik op de knop **Opslaan** om uw selectie toe te passen. Het inschakelen van HA kan enige tijd in beslag nemen, omdat de Server groep stand-by staat en gegevens streamt naar deze.
+Klik **op de** knop Opslaan om uw selectie toe te passen. Het inschakelen van HA kan enige tijd duren als de servergroep stand-bys standbys en stromen gegevens naar hen.
 
-Op het tabblad Overzicht voor de Server groep worden alle knoop punten en de bijbehorende stand-by weer **gegeven** , samen met een kolom met **hoge Beschik baarheid** , die aangeeft of ha voor elk knoop punt is ingeschakeld.
+Op het tabblad **Overzicht** voor de servergroep worden alle knooppunten en stand-bys weergegeven, samen met een kolom **met hoge beschikbaarheid** die aangeeft of HA voor elk knooppunt is ingeschakeld.
 
-![de kolom ha in het overzicht van de Server groep](./media/howto-hyperscale-high-availability/02-ha-column.png)
+![de ha-kolom in het overzicht van de servergroep](./media/howto-hyperscale-high-availability/02-ha-column.png)
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [hoge Beschik baarheid](concepts-hyperscale-high-availability.md).
+Meer informatie over [hoge beschikbaarheid](concepts-hyperscale-high-availability.md).

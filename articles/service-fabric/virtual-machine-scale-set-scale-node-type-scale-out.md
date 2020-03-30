@@ -1,22 +1,22 @@
 ---
-title: Een knooppunt type toevoegen aan een Azure Service Fabric-cluster
-description: Meer informatie over het uitschalen van een Service Fabric cluster door een Schaalset voor virtuele machines toe te voegen.
+title: Een knooppunttype toevoegen aan een Azure Service Fabric-cluster
+description: Meer informatie over het uitschalen van een cluster van Servicefabric door een virtuele machineschaalset toe te voegen.
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463970"
 ---
-# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Een Service Fabric cluster uitschalen door een schaalset voor virtuele machines toe te voegen
-In dit artikel wordt beschreven hoe u een Azure Service Fabric cluster kunt schalen door een nieuw knooppunt type toe te voegen aan een bestaand cluster. Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u horizon taal een cluster schalen door een nieuw knooppunt type (virtuele-machine schaalset) toe te voegen aan een bestaand cluster.  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
+# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Een cluster van servicefabric schalen door een virtuele machineschaalset toe te voegen
+In dit artikel wordt beschreven hoe u een Azure Service Fabric-cluster schalen door een nieuw knooppunttype toe te voegen aan een bestaand cluster. Een Service Fabric-cluster is een met het netwerk verbonden set virtuele of fysieke machines waarin uw microservices worden geïmplementeerd en beheerd. Een machine of VM die deel uitmaakt van een cluster wordt een knooppunt genoemd. Virtuele machineschaalsets zijn een Azure-compute resource die u gebruikt om een verzameling virtuele machines als set te implementeren en te beheren. Elk knooppunttype dat is gedefinieerd in een Azure-cluster, is [ingesteld als een afzonderlijke schaalset.](service-fabric-cluster-nodetypes.md) Elk knooppunttype kan vervolgens afzonderlijk worden beheerd. Nadat u een cluster servicestructuur hebt gemaakt, u een cluster horizontaal schalen door een nieuw knooppunttype (virtuele machineschaalset) toe te voegen aan een bestaand cluster.  U het cluster op elk gewenst moment schalen, zelfs wanneer workloads op het cluster worden uitgevoerd.  Naarmate het cluster schaalt, schalen uw toepassingen ook automatisch.
 
 ## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Een extra schaalset toevoegen aan een bestaand cluster
-Het toevoegen van een nieuw knooppunt type (dat wordt ondersteund door een virtuele-machine schaalset) naar een bestaand cluster, is vergelijkbaar met het [upgraden van het primaire knooppunt type](service-fabric-scale-up-node-type.md), behalve dat u niet dezelfde NodeTypeRef gebruikt. u kunt natuurlijk geen actieve virtuele-machine schaal sets uitschakelen en de beschik baarheid van het cluster niet verliezen als u het primaire knooppunt type niet bijwerkt. 
+Het toevoegen van een nieuw knooppunttype (dat wordt ondersteund door een virtuele machineschaalset) aan een bestaand cluster is vergelijkbaar met [het upgraden van het primaire knooppunttype,](service-fabric-scale-up-node-type.md)behalve dat u niet dezelfde NodeTypeRef gebruikt; uiteraard zal niet worden uitgeschakeld een actief gebruikte virtuele machine schaal sets, en je zult niet verliezen cluster beschikbaarheid als u niet het primaire knooppunt type bij te werken. 
 
-De eigenschap NodeTypeRef is gedeclareerd in de virtuele-machine schaalset Service Fabric extensie-eigenschappen:
+De eigenschap NodeTypeRef wordt gedeclareerd binnen de eigenschappen van de virtuele machineschaalset Service Fabric-extensie:
 ```json
 <snip>
 "publisher": "Microsoft.Azure.ServiceFabric",
@@ -28,7 +28,7 @@ De eigenschap NodeTypeRef is gedeclareerd in de virtuele-machine schaalset Servi
 <snip>
 ```
 
-U moet dit nieuwe knooppunt type ook toevoegen aan uw Service Fabric cluster Bron:
+Bovendien moet u dit nieuwe knooppunttype toevoegen aan uw clusterbron servicestructuur:
 
 ```json
 <snip>
@@ -53,9 +53,9 @@ U moet dit nieuwe knooppunt type ook toevoegen aan uw Service Fabric cluster Bro
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het schalen van het primaire knooppunt type](service-fabric-scale-up-node-type.md)
-* Meer informatie over [schaal baarheid van toepassingen](service-fabric-concepts-scalability.md).
-* [Een Azure-cluster in-of uitschalen](service-fabric-tutorial-scale-cluster.md).
-* [Schaal een Azure-cluster programmatisch](service-fabric-cluster-programmatic-scaling.md) met behulp van de Fluent Azure Compute SDK.
-* [Een zelfstandige cluster in-of uitschalen](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* Meer informatie over het [opschalen van het primaire knooppunttype](service-fabric-scale-up-node-type.md)
+* Meer informatie over [schaalbaarheid van toepassingen](service-fabric-concepts-scalability.md).
+* [Een Azure-cluster in- of uitchecken](service-fabric-tutorial-scale-cluster.md).
+* [Schaal een Azure-cluster programmatisch](service-fabric-cluster-programmatic-scaling.md) met de vloeiende Azure compute SDK.
+* [Een zelfstandig cluster in- of uitchecken](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

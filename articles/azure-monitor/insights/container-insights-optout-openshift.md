@@ -1,28 +1,28 @@
 ---
-title: Stoppen met het bewaken van uw Azure Red Hat open Shift-cluster | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
+title: Stoppen met het bewaken van uw Azure Red Hat OpenShift-cluster | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u stoppen met het bewaken van uw Azure Red Hat OpenShift-cluster met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: eff5203aeedd3c7ad283b55ba12f0e45a556460d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250720"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Het bewaken van uw Azure Red Hat open Shift-cluster stoppen met Azure Monitor voor containers
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Stoppen met het bewaken van uw Azure Red Hat OpenShift-cluster met Azure Monitor voor containers
 
-Nadat u de bewaking van uw Azure Red Hat open Shift-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster als u besluit dat u het niet meer wilt bewaken. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de meegeleverde Azure Resource Manager sjablonen.  
+Nadat u de bewaking van uw Azure Red Hat OpenShift-cluster hebt ingeschakeld, u stoppen met het bewaken van het cluster als u besluit dat u het niet langer wilt controleren. In dit artikel ziet u hoe u dit uitvoeren met de meegeleverde Azure Resource Manager-sjablonen.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-Gegeven worden twee Azure Resource Manager-sjabloon voor de ondersteuning van de resources van de oplossing consistent en herhaaldelijk in de resourcegroep te verwijderen. Een JSON-sjabloon geeft u de configuratie voor het stoppen van de controle en de andere bevat parameter waarden die u configureert om de open Shift-cluster resource-ID en Azure-regio op te geven waarin het cluster is geïmplementeerd.
+Provided are two Azure Resource Manager template to support removing the solution resources consistent and repeatedly in your resource group. Een daarvan is een JSON-sjabloon waarin de configuratie wordt opgegeven om de bewaking te stoppen en de andere parameterwaarden die u configureert om de OpenShift-clusterbron-id en het Azure-gebied op te geven waarin het cluster is geïmplementeerd.
 
-Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
+Zie als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon:
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+* [Resources implementeren met Resource Manager-sjablonen en de Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit om `az --version`uw versie te identificeren. Zie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren als u de Azure CLI moet installeren of upgraden.
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -65,7 +65,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-2. Sla dit bestand op als **OptOutTemplate. json** naar een lokale map.
+2. Sla dit bestand op als **OptOutTemplate.json** in een lokale map.
 
 3. Plak de volgende JSON-syntaxis in het bestand:
 
@@ -84,17 +84,17 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-4. Bewerk de waarden voor **aroResourceId** en **aroResourceLocation** met behulp van de waarden van het open Shift-cluster, dat u kunt vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
+4. Bewerk de waarden voor **aroResourceId** en **aroResourceLocation** met behulp van de waarden van het OpenShift-cluster, die u vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
 
-    ![De eigenschappenpagina van container](media/container-insights-optout-openshift/cluster-properties-page.png)
+    ![Pagina Containereigenschappen](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Sla dit bestand op als **OptOutParam. json** naar een lokale map.
+5. Sla dit bestand op als **OptOutParam.json** in een lokale map.
 
 6. U kunt deze sjabloon nu implementeren.
 
-### <a name="remove-the-solution-using-azure-cli"></a>Verwijderen van de oplossing met behulp van Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>De oplossing verwijderen met Azure CLI
 
-Voer de volgende opdracht uit met Azure CLI in Linux om de oplossing te verwijderen en de configuratie op uw cluster op te schonen.
+Voer de volgende opdracht uit met Azure CLI op Linux om de oplossing te verwijderen en de configuratie op uw cluster op te schonen.
 
 ```azurecli
 az login   
@@ -102,17 +102,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
+Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht dat vergelijkbaar is met het volgende dat het resultaat bevat, geretourneerd:
 
 ```output
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Verwijderen van de oplossing met behulp van PowerShell
+### <a name="remove-the-solution-using-powershell"></a>De oplossing verwijderen met PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Voer de volgende Power shell-opdrachten uit in de map met de sjabloon om de oplossing te verwijderen en de configuratie op te schonen van uw cluster.    
+Voer de volgende PowerShell-opdrachten uit in de map met de sjabloon om de oplossing te verwijderen en de configuratie uit uw cluster op te schonen.    
 
 ```powershell
 Connect-AzAccount
@@ -120,7 +120,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
+Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht dat vergelijkbaar is met het volgende dat het resultaat bevat, geretourneerd:
 
 ```output
 ProvisioningState       : Succeeded
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de werkruimte alleen ter ondersteuning van de bewaking van het cluster is gemaakt en deze niet meer nodig hebt, hebt u deze handmatig te verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.
+Als de werkruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het is niet langer nodig, moet u het handmatig verwijderen. Zie [Een Azure Log Analytics-werkruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werkruimte.

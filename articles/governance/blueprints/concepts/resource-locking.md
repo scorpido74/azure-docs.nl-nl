@@ -1,52 +1,52 @@
 ---
-title: Bron vergrendeling begrijpen
-description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
+title: Inzicht in resourcevergrendeling
+description: Meer informatie over de vergrendelingsopties in Azure Blueprints om resources te beschermen bij het toewijzen van een blauwdruk.
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199696"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Inzicht in bronvergrendeling in Azure Blueprints
 
-Het maken van consistente omgevingen op schaal is alleen echt waardevol als er een mechanisme is om die consistentie te hand haven. In dit artikel wordt uitgelegd hoe resource vergrendeling werkt in azure-blauw drukken. Zie de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) voor een voor beeld van het vergren delen van resources en het Toep assen van _toewijzingen weigeren_.
+Het creëren van consistente omgevingen op schaal is alleen echt waardevol als er een mechanisme is om die consistentie te behouden. In dit artikel wordt uitgelegd hoe resourcevergrendeling werkt in Azure Blueprints. Zie de zelfstudie [voor het beveiligen](../tutorials/protect-new-resources.md) van nieuwe resources voor een voorbeeld van resourcevergrendeling en toepassing van _weigeringstoewijzingen._
 
-## <a name="locking-modes-and-states"></a>Vergrendelings modi en statussen
+## <a name="locking-modes-and-states"></a>Vergrendelingsmodi en -statussen
 
-Vergrendelings modus is van toepassing op de blauw druk-toewijzing en er zijn drie opties: **niet vergren delen**, **alleen-lezen**of **niet verwijderen**. De vergrendelings modus wordt tijdens de toewijzing van een blauw druk geconfigureerd tijdens de implementatie van artefacten. Een andere vergrendelings modus kan worden ingesteld door de toewijzing van de blauw druk bij te werken.
-Vergrendelings modi kunnen echter niet buiten blauw drukken worden gewijzigd.
+De vergrendelingsmodus is van toepassing op de blauwdruktoewijzing en heeft drie opties: **Niet vergrendelen,** **alleen lezen**of **niet verwijderen.** De vergrendelingsmodus wordt geconfigureerd tijdens de implementatie van artefacten tijdens een blauwdruktoewijzing. Een andere vergrendelingsmodus kan worden ingesteld door de blauwdruktoewijzing bij te werken.
+Vergrendelingsmodi kunnen echter niet buiten Blauwdrukken worden gewijzigd.
 
-Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **niet vergrendeld**, **alleen-lezen**, **niet bewerken/verwijderen**of **kan niet verwijderen**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
+Resources die zijn gemaakt door artefacten in een blauwdruktoewijzing hebben vier statussen: **Niet vergrendeld**, **alleen lezen**, kan niet bewerken **/ verwijderen**of kan niet **worden verwijderd**. Elk artefacttype kan zich in de **status Niet vergrendeld bevindt.** De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
 
-|Modus|Bron type voor artefacten|Status|Beschrijving|
+|Modus|Artefact-brontype|Status|Beschrijving|
 |-|-|-|-|
-|Niet vergren delen|*|Niet vergrendeld|Bronnen worden niet beveiligd door blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
-|Alleen-lezen|Resourcegroep|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
-|Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd: geen wijzigingen en kan niet worden verwijderd.|
-|Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
+|Niet vergrendelen|*|Niet vergrendeld|Resources worden niet beschermd door Blauwdrukken. Deze status wordt ook gebruikt voor resources die zijn toegevoegd aan een artefact voor **alleen-lezen** of **niet-verwijderen** van een brongroep van buiten een blauwdruktoewijzing.|
+|Alleen-lezen|Resourcegroep|Kan niet bewerken / verwijderen|De brongroep wordt alleen gelezen en tags in de resourcegroep kunnen niet worden gewijzigd. **Niet vergrendelde** resources kunnen uit deze brongroep worden toegevoegd, verplaatst, gewijzigd of verwijderd.|
+|Alleen-lezen|Niet-resourcegroep|Alleen-lezen|De bron kan op geen enkele manier worden gewijzigd, er worden geen wijzigingen aangebracht en kan niet worden verwijderd.|
+|Niet verwijderen|*|Kan niet verwijderen|De bronnen kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet vergrendelde** resources kunnen uit deze brongroep worden toegevoegd, verplaatst, gewijzigd of verwijderd.|
 
-## <a name="overriding-locking-states"></a>Vergrendelings status negeren
+## <a name="overriding-locking-states"></a>Dwingende vergrendelingstoestanden
 
-Het is doorgaans mogelijk dat iemand met het juiste op [rollen gebaseerde toegangs beheer](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol ' eigenaar ', toestemming mag geven om een resource te wijzigen of te verwijderen. Deze toegang is niet het geval wanneer blauw drukken wordt toegepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **alleen-lezen** of **niet verwijderen** , niet zelfs de eigenaar van het abonnement kan de geblokkeerde actie uitvoeren op de beveiligde bron.
+Het is meestal mogelijk dat iemand met het juiste [op rollen gebaseerde toegangscontrole](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol 'Eigenaar', een resource kan wijzigen of verwijderen. Deze toegang is niet het geval wanneer Blauwdrukken vergrendeling toepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **Alleen lezen** of **Niet verwijderen,** kan zelfs de eigenaar van het abonnement de geblokkeerde actie op de beveiligde bron niet uitvoeren.
 
-Deze beveiligings maatregel beveiligt de consistentie van de gedefinieerde blauw druk en de omgeving die is ontworpen om te worden gemaakt op basis van per ongeluk of programmatische verwijdering of wijziging.
+Deze beveiligingsmaatregel beschermt de consistentie van de gedefinieerde blauwdruk en de omgeving die is ontworpen om te maken van toevallige of programmatische verwijdering of wijziging.
 
-### <a name="assign-at-management-group"></a>Toewijzen aan beheer groep
+### <a name="assign-at-management-group"></a>Toewijzen aan beheergroep
 
-Een extra optie om te voor komen dat abonnements eigenaren een blauw druk-toewijzing verwijderen, is het toewijzen van de blauw druk aan een beheer groep. In dit scenario hebben alleen **eigen aars** van de beheer groep de benodigde machtigingen voor het verwijderen van de blauw druk-toewijzing.
+Een extra optie om te voorkomen dat eigenaren van abonnementen een blauwdruktoewijzing verwijderen, is om de blauwdruk toe te wijzen aan een beheergroep. In dit scenario hebben alleen **eigenaren** van de beheergroep de machtigingen die nodig zijn om de blauwdruktoewijzing te verwijderen.
 
-Als u de blauw druk wilt toewijzen aan een beheer groep in plaats van een abonnement, verandert de REST API aanroepen als volgt:
+Als u de blauwdruk wilt toewijzen aan een beheergroep in plaats van een abonnement, wordt de REST API-aanroep als volgt gewijzigd:
 
 ```http
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-De beheer groep die door `{assignmentMG}` is gedefinieerd, moet zich binnen de beheer groeps hiërarchie bevindt of dezelfde beheer groep zijn als de definitie van de blauw druk is opgeslagen.
+De beheergroep gedefinieerd `{assignmentMG}` door moet ofwel binnen de hiërarchie van de beheergroep of dezelfde beheergroep zijn waar de blauwdrukdefinitie wordt opgeslagen.
 
-De aanvraag tekst van de blauw druk-toewijzing ziet er als volgt uit:
+De aanvraagtekst van de blauwdrukopdracht ziet er als volgt uit:
 
 ```json
 {
@@ -82,39 +82,39 @@ De aanvraag tekst van de blauw druk-toewijzing ziet er als volgt uit:
 }
 ```
 
-Het belangrijkste verschil in deze aanvraag tekst en een wordt toegewezen aan een abonnement is de eigenschap `properties.scope`. Deze vereiste eigenschap moet worden ingesteld op het abonnement waarop de blauw druk-toewijzing van toepassing is. Het abonnement moet een direct onderliggend element zijn van de beheer groeps hiërarchie waarin de blauw druk-toewijzing wordt opgeslagen.
+Het belangrijkste verschil in deze aanvraaginstantie en een `properties.scope` die aan een abonnement wordt toegewezen, is de eigenschap. Deze vereiste eigenschap moet worden ingesteld op het abonnement waarop de blauwdruktoewijzing van toepassing is. Het abonnement moet een direct onderliggend eis zijn van de hiërarchie van de beheergroep waarin de blauwdruktoewijzing is opgeslagen.
 
 > [!NOTE]
-> Een blauw druk die is toegewezen aan het beheer groeps bereik, blijft de toewijzing van een blauw druk op abonnements niveau. Het enige verschil is waar de blauw druk toewijzing wordt opgeslagen om te voor komen dat abonnements eigenaren de toewijzing en de bijbehorende vergren delingen verwijderen.
+> Een blauwdruk die is toegewezen aan het bereik van de beheergroep, werkt nog steeds als een blauwdruktoewijzing op abonnementsniveau. Het enige verschil is waar de blauwdruktoewijzing wordt opgeslagen om te voorkomen dat abonnementseigenaren de toewijzing en bijbehorende vergrendelingen verwijderen.
 
-## <a name="removing-locking-states"></a>Vergrendelings status verwijderen
+## <a name="removing-locking-states"></a>Vergrendelingstoestanden verwijderen
 
-Als het nodig is om een resource die wordt beveiligd door een toewijzing, te wijzigen of te verwijderen, kunt u dit op twee manieren doen.
+Als het nodig wordt om een resource die door een toewijzing wordt beschermd, te wijzigen of te verwijderen, zijn er twee manieren om dit te doen.
 
-- De blauw druk-toewijzing bijwerken naar een vergrendelings modus **zonder vergren deling**
-- De blauw druk-toewijzing verwijderen
+- De blauwdruktoewijzing bijwerken naar een vergrendelingsmodus van **Niet vergrendelen**
+- De blauwdruktoewijzing verwijderen
 
-Wanneer de toewijzing wordt verwijderd, worden de vergren delingen die zijn gemaakt door blauw drukken verwijderd. De resource blijft echter achter en moet worden verwijderd via normale manier.
+Wanneer de toewijzing wordt verwijderd, worden de vergrendelingen die door Blauwdrukken zijn gemaakt, verwijderd. De bron blijft echter achter en moet op normale wijze worden verwijderd.
 
-## <a name="how-blueprint-locks-work"></a>Hoe blauw drukken werkt
+## <a name="how-blueprint-locks-work"></a>Hoe blauwdrukvergrendelingen werken
 
-Een RBAC-actie voor het weigeren van [toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefact resources tijdens de toewijzing van een blauw druk als de toewijzing de optie **alleen-lezen** of **niet verwijderen** is geselecteerd. De actie voor weigeren wordt toegevoegd door de beheerde identiteit van de blauw druk toewijzing en kan alleen worden verwijderd uit de artefact resources met dezelfde beheerde identiteit. Deze beveiligings meting dwingt het vergrendelings mechanisme af en voor komt het verwijderen van de blauw druk buiten blauw drukken.
+Een [weigeringsactie voor RBAC-toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefactbronnen tijdens de toewijzing van een blauwdruk als de toewijzing de optie **Alleen lezen** of niet **verwijderen heeft** geselecteerd. De weigeringsactie wordt toegevoegd door de beheerde identiteit van de blauwdruktoewijzing en kan alleen met dezelfde beheerde identiteit uit de artefactbronnen worden verwijderd. Deze veiligheidsmaatregel dwingt het vergrendelingsmechanisme af en voorkomt het verwijderen van het blauwdrukslot buiten Blauwdrukken.
 
-![Blauw druk weigeren toewijzing voor resource groep](../media/resource-locking/blueprint-deny-assignment.png)
+![Toewijzing voor blueprint weigeren op resourcegroep](../media/resource-locking/blueprint-deny-assignment.png)
 
-De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) voor het weigeren van toewijzingen van elke modus zijn als volgt:
+De [eigenschappen van de toewijzing weigeren](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) van elke modus zijn als volgt:
 
-|Modus |Machtigingen. acties |Machtigingen. intact |Principals [i]. Voert |ExcludePrincipals [i]. Id | DoNotApplyToChildScopes |
+|Modus |Machtigingen.Acties |Permissions.NotActions |Opdrachtgevers[i]. Type |Uitgesloten Principals[i]. Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Alleen-lezen |**\*** |**\*/Read** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
-|Niet verwijderen |**\*/Delete** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Alleen-lezen |**\*** |**\*/lezen** |SystemDefined (Iedereen) |blauwdruktoewijzing en door de gebruiker gedefinieerd in **uitgesloten Principals** |Resourcegroep - _waar_; Resource - _false_ |
+|Niet verwijderen |**\*/verwijderen** | |SystemDefined (Iedereen) |blauwdruktoewijzing en door de gebruiker gedefinieerd in **uitgesloten Principals** |Resourcegroep - _waar_; Resource - _false_ |
 
 > [!IMPORTANT]
-> Met Azure Resource Manager worden de gegevens van de roltoewijzing Maxi maal 30 minuten in de cache opgeslagen. Als gevolg hiervan is het weigeren van de toewijzingen voor het weigeren van een actie op blauw drukken-resources mogelijk niet onmiddellijk volledig van kracht. Tijdens deze periode is het mogelijk om een resource te verwijderen die is bedoeld om te worden beveiligd door de vergren delingen van blauw drukken.
+> Azure Resource Manager caches roltoewijzing details voor maximaal 30 minuten. Als gevolg hiervan is het mogelijk dat weigeren toewijzingen actie weigeren op blauwdrukbronnen niet onmiddellijk volledig effect hebben. Gedurende deze periode is het mogelijk om een bron te verwijderen die bedoeld is om te worden beschermd door blauwdrukvergrendelingen.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Een principal uitsluiten van een weiger toewijzing
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Een opdrachtgever uitsluiten van een weigeringsopdracht
 
-In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principal uit te sluiten van de [toewijzing weigeren](../../../role-based-access-control/deny-assignments.md) die door de toewijzing van blauw drukken wordt gemaakt. Deze stap wordt uitgevoerd in REST API door Maxi maal vijf waarden toe te voegen aan de **excludedPrincipals** -matrix **bij het** [maken van de toewijzing](/rest/api/blueprints/assignments/createorupdate). De volgende toewijzings definitie is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
+In sommige ontwerp- of beveiligingsscenario's kan het nodig zijn om een opdrachtgever uit te sluiten van de [weigeringstoewijzing](../../../role-based-access-control/deny-assignments.md) die de blauwdruktoewijzing maakt. Deze stap wordt uitgevoerd in DE REST API door maximaal vijf waarden toe te voegen aan de array **excludedPrincipals** in de eigenschap **locks** bij [het maken van de toewijzing.](/rest/api/blueprints/assignments/createorupdate) De volgende **toewijzingsdefinitie**is een voorbeeld van een aanvraaginstantie die uitgesloten Principals omvat:
 
 ```json
 {
@@ -156,9 +156,9 @@ In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principa
 }
 ```
 
-## <a name="exclude-an-action-from-a-deny-assignment"></a>Een actie uitsluiten van een weiger toewijzing
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Een actie uitsluiten van een weigeringstoewijzing
 
-Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-assignment) op een [toekennings toewijzing](../../../role-based-access-control/deny-assignments.md) in een blauw druk-toewijzing, kunt u specifieke [RBAC-bewerkingen](../../../role-based-access-control/resource-provider-operations.md)uit te sluiten. Binnen het blok **Properties. Locks** , op dezelfde locatie die **excludedPrincipals** is, kan een **excludedActions** worden toegevoegd:
+Net als [bij het uitsluiten van een principal](#exclude-a-principal-from-a-deny-assignment) voor een [weigeringstoewijzing](../../../role-based-access-control/deny-assignments.md) in een blauwdruktoewijzing, u specifieke [RBAC-bewerkingen](../../../role-based-access-control/resource-provider-operations.md)uitsluiten. Binnen het blok **properties.locks** kan op dezelfde plaats als **Principals zijn uitgesloten,** een **uitgesloten Acties** worden toegevoegd:
 
 ```json
 "locks": {
@@ -174,13 +174,13 @@ Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-
 },
 ```
 
-Hoewel **excludedPrincipals** moet expliciet zijn, kunnen **excludedActions** -vermeldingen gebruikmaken van `*` voor het vergelijken van het Joker teken van RBAC-bewerkingen.
+Hoewel uitgeslotenPrincipals expliciet moeten zijn, kunnen **uitgeslotenacties** `*` gebruik maken van wildcardmatching van RBAC-bewerkingen. **excludedPrincipals**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Volg de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) .
-- Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.
+- Volg de zelfstudie [voor nieuwe bronnen beveiligen.](../tutorials/protect-new-resources.md)
+- Meer informatie over de [levenscyclus van de blauwdruk](lifecycle.md).
+- Begrijpen hoe [statische en dynamische parameters](parameters.md)te gebruiken.
+- Leer de volgorde van de [blauwdrukvolgorde](sequencing-order.md)aan te passen.
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md).
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md).
+- Los problemen op tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing.](../troubleshoot/general.md)

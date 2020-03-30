@@ -1,36 +1,36 @@
 ---
 title: Werken met datums in Azure Cosmos DB
-description: Meer informatie over het opslaan, indexeren en doorzoeken van datum/tijd-objecten in Azure Cosmos DB
+description: Informatie over het opslaan, indexeren en opvragen van DataTime-objecten in Azure Cosmos DB
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273191"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Werken met datums in Azure Cosmos DB
 
-Azure Cosmos DB biedt flexibiliteit en uitgebreide indexeringen voor het schema via een systeem eigen [JSON](https://www.json.org) -gegevens model. Alle Azure Cosmos DB-resources, zoals databases, containers, documenten en opgeslagen procedures worden gemodelleerd en opgeslagen als JSON-documenten. Als een vereiste voor draagbare wordt JSON (en Azure Cosmos DB) ondersteunt een kleine set basistypen: tekenreeks, getal, Booleaanse waarde, matrix, Object en Null. Echter, JSON is flexibel en kunnen ontwikkelaars en frameworks voor complexere typen met behulp van deze primitieven en samenstellen van deze objecten of-matrices.
+Azure Cosmos DB biedt schemaflexibiliteit en uitgebreide indexering via een native [JSON-gegevensmodel.](https://www.json.org) Alle Azure Cosmos DB-bronnen, waaronder databases, containers, documenten en opgeslagen procedures, worden gemodelleerd en opgeslagen als JSON-documenten. Json (en Azure Cosmos DB) ondersteunen als vereiste dat json (en Azure Cosmos DB) slechts een kleine set basistypen ondersteunen: Tekenreeks, Getal, Boolean, Array, Object en Null. Json is echter flexibel en stelt ontwikkelaars en frameworks in staat om complexere typen weer te geven met behulp van deze primitieven en ze samen te stellen als objecten of arrays.
 
-Naast de basis typen hebben veel toepassingen het type datum/tijd nodig om datums en tijds tempels weer te geven. Dit artikel wordt beschreven hoe ontwikkelaars kunnen opslaan, ophalen en query uitvoeren op datums in Azure Cosmos DB met behulp van de .NET SDK.
+Naast de basistypen hebben veel toepassingen het Type DateTime nodig om datums en tijdstempels weer te geven. In dit artikel wordt beschreven hoe ontwikkelaars datums kunnen opslaan, ophalen en query's in Azure Cosmos DB kunnen opslaan, ophalen en opvragen met behulp van de .NET SDK.
 
-## <a name="storing-datetimes"></a>Opslaan van datum/tijd
+## <a name="storing-datetimes"></a>Datumtijd opslaan
 
-Azure Cosmos DB ondersteunt JSON-typen zoals-String, Number, Boolean, null, array en object. Het biedt geen rechtstreekse ondersteuning voor het type datum/tijd. Op dit moment biedt Azure Cosmos DB geen ondersteuning voor lokalisatie van datums. U moet dus DateTimes opslaan als teken reeksen. De aanbevolen notatie voor datum-en tijd teken reeksen in Azure Cosmos DB is `YYYY-MM-DDThh:mm:ss.sssZ` die volgt op de norm ISO 8601 UTC. Het is raadzaam om alle datums in Azure Cosmos DB op te slaan als UTC. Als de datum teken reeksen naar deze indeling worden geconverteerd, kunnen de sorteer datums lexicographically worden gewijzigd. Als er niet-UTC-datums worden opgeslagen, moet de logica aan de client zijde worden afgehandeld. Voor het converteren van een lokale datum-/tijdwaarde naar UTC moet de offset bekend/opgeslagen zijn als een eigenschap in de JSON en de client kan de offset gebruiken om de waarde voor de UTC-datum/tijd te berekenen.
+Azure Cosmos DB ondersteunt JSON-typen zoals - tekenreeks, getal, booleaan, null, array, object. Het ondersteunt niet direct een DateTime-type. Azure Cosmos DB ondersteunt momenteel geen lokalisatie van datums. U moet DateTimes dus als tekenreeksen opslaan. De aanbevolen indeling voor DateTime-tekenreeksen `YYYY-MM-DDThh:mm:ss.sssZ` in Azure Cosmos DB is die de ISO 8601 UTC-standaard volgt. Het wordt aanbevolen om alle datums in Azure Cosmos DB op te slaan als UTC. Als u de datumtekenreeksen naar deze indeling converteert, kunnen de sorteerdatums lexicografisch worden gesorteerd. Als niet-UTC-datums worden opgeslagen, moet de logica aan de clientzijde worden verwerkt. Als u een lokale DateTime wilt converteren naar UTC, moet de verschuiving bekend/opgeslagen staan als een eigenschap in de JSON en kan de client de verschuiving gebruiken om de UTC DateTime-waarde te berekenen.
 
-De meeste toepassingen kunnen de tekenreeksweergave van standaard gebruiken voor datum/tijd voor de volgende redenen:
+De meeste toepassingen kunnen de standaardtekenreeksweergave voor DateTime gebruiken om de volgende redenen:
 
-* Tekenreeksen kunnen worden vergeleken, en de relatieve positie van de datum/tijd-waarden behouden blijft wanneer ze worden getransformeerd in tekenreeksen.
-* Deze aanpak zijn vereist om een aangepaste code of kenmerken voor JSON-conversie.
-* De datums die is opgeslagen in JSON zijn mens leesbaar is.
-* Deze benadering kunt profiteren van Azure Cosmos DB-index voor de prestaties van snelle query's.
+* Tekenreeksen kunnen worden vergeleken en de relatieve volgorde van de DatumTime-waarden blijft behouden wanneer ze worden omgezet in tekenreeksen.
+* Voor deze aanpak zijn geen aangepaste code of kenmerken vereist voor JSON-conversie.
+* De data zoals opgeslagen in JSON zijn menselijk leesbaar.
+* Deze aanpak kan profiteren van de azure cosmos DB-index voor snelle queryprestaties.
 
-In het volgende code fragment wordt bijvoorbeeld een `Order`-object met twee DateTime-eigenschappen opgeslagen, `ShipDate` en `OrderDate` als een document met behulp van de .NET SDK:
+In het volgende fragment `Order` wordt bijvoorbeeld een object `ShipDate` opgeslagen `OrderDate` dat twee DateTime-eigenschappen bevat en als document met de .NET SDK:
 
 ```csharp
     public class Order
@@ -52,7 +52,7 @@ In het volgende code fragment wordt bijvoorbeeld een `Order`-object met twee Dat
         });
 ```
 
-Dit document is opgeslagen in Azure Cosmos DB als volgt:
+Dit document wordt als volgt opgeslagen in Azure Cosmos DB:
 
 ```json
     {
@@ -63,11 +63,11 @@ Dit document is opgeslagen in Azure Cosmos DB als volgt:
     }
 ```  
 
-U kunt ook kunt u de datum/tijd als Unix tijdstempels, dat wil zeggen, opslaan als een getal dat het aantal verstreken seconden sinds 1 januari 1970 vertegenwoordigt. De eigenschap Internal Time Stamp (`_ts`) van Azure Cosmos DB volgt deze methode. U kunt de [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) -klasse gebruiken om datetimes als getallen te serialiseren.
+U DateTimes ook opslaan als Unix-tijdstempels, dat wil zeggen als een getal dat het aantal verstreken seconden sinds 1 januari 1970 vertegenwoordigt. De interne eigenschap Timestamp`_ts`() van Azure Cosmos DB volgt deze aanpak. U de klasse [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) gebruiken om DateTimes als getallen te serialiseren.
 
-## <a name="querying-datetimes-in-linq"></a>Een query uitvoeren op datum/tijd in LINQ
+## <a name="querying-datetimes-in-linq"></a>DateTimes opvragen in LINQ
 
-De SQL-SDK voor .NET ondersteunt automatisch het opvragen van gegevens die zijn opgeslagen in Azure Cosmos DB via LINQ. Het volgende code fragment toont bijvoorbeeld een LINQ-query waarmee orders worden gefilterd die in de afgelopen drie dagen zijn verzonden:
+De SQL .NET SDK ondersteunt automatisch querygegevens die via LINQ zijn opgeslagen in Azure Cosmos DB. In het volgende fragment wordt bijvoorbeeld een LINQ-query weergegeven waarin orders worden gefilterd die in de afgelopen drie dagen zijn verzonden:
 
 ```csharp
     IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
@@ -79,16 +79,16 @@ Vertaald naar de volgende SQL-instructie en uitgevoerd op Azure Cosmos DB:
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 ```
 
-Meer informatie over de SQL-query taal van Azure Cosmos DB en de LINQ-provider vindt u bij het [opvragen van Cosmos db in LINQ](sql-query-linq-to-sql.md).
+Meer informatie over de SQL-querytaal van Azure Cosmos DB en de LINQ-provider vindt u [in LINQ.](sql-query-linq-to-sql.md)
 
-## <a name="indexing-datetimes-for-range-queries"></a>Datum/tijd voor de bereik-query's indexeren
+## <a name="indexing-datetimes-for-range-queries"></a>Datumtimes indexeren voor bereikquery's
 
-Query's zijn gebruikelijk met datum/tijd-waarden. Als u deze query's efficiënt wilt uitvoeren, moet u een index hebben gedefinieerd voor alle eigenschappen in het filter van de query.
+Query's komen vaak voor met DatumTime-waarden. Als u deze query's efficiënt wilt uitvoeren, moet u een index hebben gedefinieerd op alle eigenschappen in het filter van de query.
 
-Meer informatie over het configureren van het indexerings beleid in [Azure Cosmos DB indexerings beleid](index-policy.md). 
+Meer informatie over het configureren van indexeringsbeleid vindt u in [Azure Cosmos DB-indexeringsbeleid](index-policy.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De code voorbeelden downloaden en uitvoeren [op github](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* De codevoorbeelden downloaden en uitvoeren [op GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
 * Meer informatie over [SQL-query's](sql-query-getting-started.md)
-* Meer informatie over [Azure Cosmos DB indexerings beleid](index-policy.md)
+* Meer informatie over [Azure Cosmos DB-indexeringsbeleid](index-policy.md)

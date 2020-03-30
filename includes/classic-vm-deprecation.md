@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cynthn
 ms.openlocfilehash: 7e70b8c789dbabb9075cd9d69c44bbfed916f153
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911782"
 ---
 > [!IMPORTANT]
-> Klassieke virtuele machines zullen worden ingetrokken op 1 maart 2023.
+> De klassieke VM's worden op 1 maart 2023 met pensioen gegaan.
 >
-> Als u IaaS-resources van ASM gebruikt, voltooit u de migratie op 1 maart 2023. We raden u aan de switch sneller te laten profiteren van de vele functie verbeteringen in Azure Resource Manager.
+> Als u IaaS-bronnen van ASM gebruikt, moet u uw migratie v.m. 1 maart 2023 voltooien. We raden u aan om eerder over te stappen om te profiteren van de vele functieverbeteringen in Azure Resource Manager.
 >
-> Zie voor meer informatie [uw IaaS-Resources migreren naar Azure Resource Manager op 1 maart 2023](../articles/virtual-machines/classic-vm-deprecation.md).
+> Zie [Uw IaaS-resources voor 1 maart 2023 migreren naar Azure Resource Manager voor](../articles/virtual-machines/classic-vm-deprecation.md)meer informatie.
 > 

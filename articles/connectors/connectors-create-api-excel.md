@@ -1,6 +1,6 @@
 ---
-title: Gegevens, werk bladen en tabellen in Excel online beheren
-description: Gegevens beheren in werk bladen en tabellen in Excel online voor bedrijven of Excel online voor OneDrive met behulp van Azure Logic Apps
+title: Gegevens, werkbladen en tabellen beheren in Excel Online
+description: Gegevens beheren in werkbladen en tabellen in Excel Online voor Bedrijven of Excel Online voor OneDrive met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445870"
 ---
-# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
+# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online-gegevens beheren met Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Excel online voor bedrijven](/connectors/excelonlinebusiness/) -connector of [Excel online voor OneDrive](/connectors/excelonline/) -connector kunt u geautomatiseerde taken en werk stromen maken op basis van uw gegevens in Excel online voor bedrijven of OneDrive. Deze connector bevat acties die u helpen bij het werken met uw gegevens en voor het beheren van spread sheets, bijvoorbeeld:
+Met [Azure Logic Apps](../logic-apps/logic-apps-overview.md) en de Excel Online for [Business-connector](/connectors/excelonlinebusiness/) of Excel Online [voor OneDrive-connector](/connectors/excelonline/) u geautomatiseerde taken en werkstromen maken op basis van uw gegevens in Excel Online voor Bedrijven of OneDrive. Deze connector biedt acties waarmee u werken met uw gegevens en spreadsheets beheren, bijvoorbeeld:
 
-* Nieuwe werk bladen en tabellen maken.
-* Werk bladen, tabellen en rijen ophalen en beheren.
-* Voeg enkele rijen en sleutel kolommen toe.
+* Nieuwe werkbladen en tabellen maken.
+* Werkbladen, tabellen en rijen oppakken en beheren.
+* Voeg enkele rijen en sleutelkolommen toe.
 
-Vervolgens kunt u de uitvoer van deze acties gebruiken met acties voor andere services. Als u bijvoorbeeld een actie gebruikt waarmee werk bladen per week worden gemaakt, kunt u een andere actie gebruiken waarmee een e-mail met een bevestiging wordt verzonden met behulp van de Office 365 Outlook-Connector.
+U vervolgens de uitvoer van deze acties gebruiken met acties voor andere services. Als u bijvoorbeeld elke week een actie gebruikt waarmee werkbladen worden gemaakt, u een andere actie gebruiken die bevestigingse-mail verzendt met behulp van de Office 365 Outlook-connector.
 
-Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> De [Excel online voor bedrijven](/connectors/excelonlinebusiness/) en [Excel online voor OneDrive](/connectors/excelonline/) -connectors werken met Azure Logic apps en verschillen van de [Excel-connector voor PowerApps](/connectors/excel/).
+> De [Excel Online voor Bedrijven-](/connectors/excelonlinebusiness/) en Excel Online voor [OneDrive-connectors](/connectors/excelonline/) werken met Azure Logic Apps en verschillen van de [Excel-connector voor PowerApps.](/connectors/excel/)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [Office 365-account](https://www.office.com/) voor uw werk account of persoonlijke Microsoft-account
+* Een [Office 365-account](https://www.office.com/) voor uw werkaccount of persoonlijk Microsoft-account
 
-  Uw Excel-gegevens kunnen bestaan als een CSV-bestand (Comma-Separated Value) in een opslagmap, bijvoorbeeld in OneDrive. 
-  U kunt ook hetzelfde CSV-bestand gebruiken met de [Connector voor platte bestanden](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+  Uw Excel-gegevens kunnen bestaan als een CSV-bestand (comma-separated value) in een opslagmap, bijvoorbeeld in OneDrive. 
+  U ook hetzelfde CSV-bestand gebruiken met de [flat-file connector.](../logic-apps/logic-apps-enterprise-integration-flatfile.md)
 
-* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basiskennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang wilt krijgen tot uw Excel online-gegevens. Deze connector biedt alleen acties, dus als u uw logische app wilt starten, selecteert u een afzonderlijke trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
+* De logische app waar u toegang wilt krijgen tot uw Excel Online-gegevens. Deze connector biedt alleen acties, dus om uw logische app te starten, selecteert u een aparte trigger, bijvoorbeeld de **recidieftrigger.**
 
 ## <a name="add-excel-action"></a>Excel-actie toevoegen
 
-1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
+1. Open uw logische app in de Logic App Designer in de [Azure-portal](https://portal.azure.com)als deze nog niet is geopend.
 
-1. Kies **nieuwe stap**onder de trigger.
+1. Kies Onder de trigger De optie **Nieuwe stap**.
 
-1. Voer in het zoekvak ' Excel ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
+1. Voer in het zoekvak 'excel' in als filter. Selecteer onder de lijst met acties de gewenste actie.
 
    > [!NOTE]
-   > Met de ontwerp functie voor logische apps kunnen geen tabellen worden geladen die 100 of meer kolommen hebben. Als dat mogelijk is, vermindert u het aantal kolommen in de geselecteerde tabel zodat de ontwerper de tabel kan laden.
+   > De Logic App Designer kan geen tabellen met 100 of meer kolommen laden. Verlaag indien mogelijk het aantal kolommen in de geselecteerde tabel, zodat de ontwerper de tabel kan laden.
 
-1. Meld u aan bij uw Office 365-account als u hierom wordt gevraagd.
+1. Meld u desgevraagd aan bij uw Office 365-account.
 
-   Met uw referenties wordt uw logische app geautoriseerd om een verbinding met Excel online te maken en toegang te krijgen tot uw gegevens.
+   Uw referenties geven toestemming voor uw logische app om een verbinding met Excel Online te maken en toegang te krijgen tot uw gegevens.
 
-1. Blijf de benodigde Details voor de geselecteerde actie opgeven en de werk stroom van uw logische app bouwen.
+1. Blijf de nodige details geven voor de geselecteerde actie en de workflow van uw logische app opbouwen.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische details, zoals triggers, acties en limieten, zoals wordt beschreven door de OpenAPI (voorheen Swagger)-bestanden van de connector, raadpleegt u deze referentie pagina's voor Connectors:
+Zie deze referentiepagina's voor connectoren, acties en limieten, zoals beschreven in de OpenAPI-bestanden (voorheen Swagger)-bestanden van de connector:
 
-* [Excel online voor bedrijven](/connectors/excelonlinebusiness/)
-* [Excel online voor OneDrive](/connectors/excelonline/)
+* [Excel Online voor Bedrijven](/connectors/excelonlinebusiness/)
+* [Excel Online voor OneDrive](/connectors/excelonline/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)

@@ -1,6 +1,6 @@
 ---
-title: End-to-end-BLOB-opname in azure Data Explorer via python
-description: In dit artikel leert u hoe u blobs kunt opnemen in azure Data Explorer met een end-to-end-voor beeld dat gebruikmaakt van python.
+title: End-to-end blob opname in Azure Data Explorer via Python
+description: In dit artikel leert u hoe u blobs inneemt in Azure Data Explorer met een end-to-end voorbeeld dat Python gebruikt.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,30 +8,30 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964294"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>End-to-end-BLOB-opname in azure Data Explorer via python
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>End-to-end blob opname in Azure Data Explorer via Python
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Data Explorer is een snelle en schaal bare service voor gegevens exploratie voor logboek-en telemetriegegevens. In dit artikel vindt u een end-to-end-voor beeld van het opnemen van gegevens uit Azure Blob Storage in azure Data Explorer. 
+Azure Data Explorer is een snelle en schaalbare gegevensverkenningsservice voor logboek- en telemetriegegevens. In dit artikel vindt u een end-to-end voorbeeld van het innemen van gegevens uit Azure Blob-opslag in Azure Data Explorer. 
 
-U leert hoe u via programma code een resource groep, een opslag account en een container, een Event Hub en een Azure Data Explorer-cluster en-data base maakt. U leert ook hoe u Azure Data Explorer programmatisch kunt configureren om gegevens op te nemen uit het nieuwe opslag account.
+U leert hoe u programmatisch een resourcegroep, een opslagaccount en een container, een gebeurtenishub en een Azure Data Explorer-cluster en -database maken. U leert ook hoe u Azure Data Explorer programmatisch configureert om gegevens uit het nieuwe opslagaccount in te nemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="install-the-python-package"></a>Het Python-pakket installeren
 
-Als u het python-pakket voor Azure Data Explorer (Kusto) wilt installeren, opent u een opdracht prompt met python in het pad. Voer deze opdrachten uit:
+Als u het Python-pakket voor Azure Data Explorer (Kusto) wilt installeren, opent u een opdrachtprompt met Python op zijn pad. Voer deze opdrachten uit:
 
 ```
 pip install azure-common
@@ -47,9 +47,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>Voorbeeld van code 
 
-Het volgende code voorbeeld geeft u een stapsgewijs proces dat resulteert in de opname van gegevens in azure Data Explorer. 
+In het volgende codevoorbeeld ziet u een stapsgewijs proces dat resulteert in het innemen van gegevens in Azure Data Explorer. 
 
-U maakt eerst een resource groep. U maakt ook Azure-resources, zoals een opslag account en een container, een Event Hub, een Azure Data Explorer cluster en data base, en toevoegen van principals. Vervolgens maakt u een Azure Event Grid-abonnement, samen met een tabel-en kolom toewijzing, in de Azure Data Explorer-data base. Ten slotte maakt u de gegevens verbinding om Azure Data Explorer te configureren voor het opnemen van gegevens van het nieuwe opslag account.
+U maakt eerst een resourcegroep. U maakt ook Azure-bronnen, zoals een opslagaccount en een container, een gebeurtenishub en een Azure Data Explorer-cluster en -database en voegt principals toe. Vervolgens maakt u een Azure Event Grid-abonnement, samen met een tabel- en kolomtoewijzing, in de Azure Data Explorer-database. Ten slotte maakt u de gegevensverbinding om Azure Data Explorer te configureren om gegevens uit het nieuwe opslagaccount in te nemen.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -190,16 +190,16 @@ poller = data_connections.create_or_update(resource_group_name=resource_group_na
                                                                               event_hub_resource_id=event_hub_resource_id, consumer_group="$Default", location=location, table_name=kusto_table_name, mapping_rule_name=kusto_column_mapping_name, data_format="csv"))
 poller.wait()
 ```
-|**Instelling** | **Beschrijving van veld**|
+|**Instelling** | **Veldbeschrijving**|
 |---|---|---|
-| tenant_id | Uw Tenant-ID. Het wordt ook wel een directory-ID genoemd.|
+| tenant_id | Je pacht-id. Het is ook bekend als een directory-ID.|
 | subscription_id | De abonnements-ID die u gebruikt voor het maken van resources.|
-| client_id | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
-| client_secret | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
+| client_id | De client-id van de toepassing die toegang heeft tot bronnen in uw tenant.|
+| client_secret | Het clientgeheim van de toepassing die toegang heeft tot bronnen in uw tenant. |
 
-## <a name="test-the-code-example"></a>Het code voorbeeld testen
+## <a name="test-the-code-example"></a>Het codevoorbeeld testen
 
-1. Upload een bestand naar het opslag account.
+1. Upload een bestand naar het opslagaccount.
 
     ```python
     account_key = "xxxxxxxxxxxxxx"
@@ -209,11 +209,11 @@ poller.wait()
     2007-01-01 00:00:00.0000000,4171,Winter Storm"""
     block_blob_service.create_blob_from_text(container_name=storage_container_name, blob_name=blob_name, text=blob_content)
     ```
-    |**Instelling** | **Beschrijving van veld**|
+    |**Instelling** | **Veldbeschrijving**|
     |---|---|---|
-    | account_key | De toegangs sleutel van het programmatisch gemaakte opslag account.|
+    | account_key | De toegangssleutel van het programmatisch gemaakte opslagaccount.|
 
-2. Voer een test query uit in azure Data Explorer.
+2. Voer een testquery uit in Azure Data Explorer.
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -226,7 +226,7 @@ poller.wait()
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resource groep wilt verwijderen en resources wilt opschonen, gebruikt u de volgende opdracht:
+Als u de brongroep wilt verwijderen en resources wilt opschonen, gebruikt u de volgende opdracht:
 
 ```python
 #Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
@@ -236,7 +236,7 @@ poller.wait()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*  Zie [een Azure Data Explorer-cluster en-data base maken](create-cluster-database-python.md)voor meer informatie over andere manieren om een cluster en Data Base te maken.
-* Zie voor meer informatie over opname methoden [Azure Data Explorer gegevens opname](ingest-data-overview.md).
-* Voor meer informatie over de webtoepassing raadpleegt u [Quick Start: Query's uitvoeren in de Web-UI van Azure Data Explorer](web-query-data.md).
-* [Schrijf query's](write-queries.md) met een Kusto-query taal.
+*  Zie [Een Azure Data Explorer-cluster en -database maken](create-cluster-database-python.md)voor meer informatie over andere manieren om een cluster en database te maken.
+* Zie [Azure Data Explorer-gegevensopname](ingest-data-overview.md)voor meer informatie over innamemethoden.
+* Zie [Snelstart: Querygegevens in de webgebruikersinterface van Azure Data Explorer voor](web-query-data.md)meer informatie over de webtoepassing.
+* [Query's schrijven](write-queries.md) met Kusto Query Language.

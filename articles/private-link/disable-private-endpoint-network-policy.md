@@ -1,6 +1,6 @@
 ---
-title: Netwerk beleid voor privé-eind punten in azure uitschakelen
-description: Meer informatie over het uitschakelen van netwerk beleid voor privé-eind punten.
+title: Netwerkbeleid uitschakelen voor privéeindpunten in Azure
+description: Meer informatie over het uitschakelen van netwerkbeleid voor privéeindpunten.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: b5ab62e7ab57d32a11a45713519633034deb6a5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453020"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Netwerk beleid voor privé-eind punten uitschakelen
+# <a name="disable-network-policies-for-private-endpoints"></a>Netwerkbeleid voor privéeindpunten uitschakelen
 
-Netwerk beleid zoals netwerk beveiligings groepen (NSG) wordt niet ondersteund voor privé-eind punten. Voor het implementeren van een persoonlijk eind punt op een bepaald subnet is een expliciete instelling uitschakelen vereist voor dat subnet. Deze instelling is alleen van toepassing op het persoonlijke eind punt. Voor andere bronnen in het subnet wordt de toegang beheerd op basis van de definitie van beveiligings regels voor netwerk beveiligings groepen (NSG). 
+Netwerkbeleid zoals netwerkbeveiligingsgroepen (NSG) wordt niet ondersteund voor privéeindpunten. Om een privéeindpunt op een bepaald subnet te implementeren, is een expliciete instelling voor uitschakelen vereist op dat subnet. Deze instelling is alleen van toepassing op het privéeindpunt. Voor andere bronnen in het subnet wordt de toegang beheerd op basis van de definitie van de beveiligingsregels (Network Security Groups) (NSG). 
  
-Wanneer u de portal gebruikt voor het maken van een persoonlijk eind punt, wordt deze instelling automatisch uitgeschakeld als onderdeel van het proces maken. Voor de implementatie met behulp van andere clients is een extra stap vereist om deze instelling te wijzigen. U kunt de instelling uitschakelen met Cloud shell vanuit de Azure Portal, of lokale installaties van Azure PowerShell, Azure CLI of Azure Resource Manager-sjablonen gebruiken.  
+Wanneer u de portal gebruikt om een privéeindpunt te maken, wordt deze instelling automatisch uitgeschakeld als onderdeel van het maakproces. Implementatie met andere clients vereist een extra stap om deze instelling te wijzigen. U de instelling uitschakelen met behulp van cloudshell vanuit de Azure-portal of lokale installaties van Azure PowerShell, Azure CLI of Azure Resource Manager-sjablonen gebruiken.  
  
-In de volgende voor beelden wordt beschreven hoe u `PrivateEndpointNetworkPolicies` uitschakelt voor een virtueel netwerk met de naam *myVirtualNetwork* met een *standaard* subnet dat wordt gehost in een resource groep met de naam *myResourceGroup*.
+In de volgende voorbeelden `PrivateEndpointNetworkPolicies` wordt beschreven hoe u een virtueel netwerk met de naam *myVirtualNetwork* uitschakelen met een *standaardsubnet* dat wordt gehost in een resourcegroep met de naam *myResourceGroup.*
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
-In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet kunt uitschakelen met behulp van Azure PowerShell.
+In deze sectie wordt beschreven hoe subnet privéeindpuntbeleid wordt uitgeschakeld met Azure PowerShell.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Azure CLI gebruiken
-In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet uitschakelen met behulp van Azure CLI.
+In deze sectie wordt beschreven hoe subnet privéeindpuntbeleid wordt uitgeschakeld met Azure CLI.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-endpoint-network-policies true
 ```
 ## <a name="using-a-template"></a>Een sjabloon gebruiken
-In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet kunt uitschakelen met Azure Resource Manager sjabloon.
+In deze sectie wordt beschreven hoe subnet privéeindpuntbeleid wordt uitgeschakeld met Azure Resource Manager-sjabloon.
 ```json
 { 
           "name": "myVirtualNetwork", 
@@ -70,5 +70,5 @@ In deze sectie wordt beschreven hoe u beleid voor privé-eind punten van subnet 
 } 
 ```
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [persoonlijk Azure-eind punt](private-endpoint-overview.md)
+- Meer informatie over [privéeindpunt voor Azure](private-endpoint-overview.md)
  
