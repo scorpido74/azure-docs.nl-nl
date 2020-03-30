@@ -1,28 +1,28 @@
 ---
-title: PublicIpAddressCombo UI-element
-description: Hierin wordt het element micro soft. Network. PublicIpAddressCombo UI voor Azure Portal beschreven.
+title: Gebruikersinterface-element PublicIpAddressCombo
+description: Beschrijft het Microsoft.Network.PublicIpAddressCombo UI-element voor Azure-portal.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651915"
 ---
-# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
+# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI-element
 
-Een groep besturings elementen voor het selecteren van een nieuw of bestaand openbaar IP-adres.
+Een groep besturingselementen voor het selecteren van een nieuw of bestaand openbaar IP-adres.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Als de gebruiker geen selecteert voor het open bare IP-adres, wordt het tekstvak domeinnaam label verborgen.
-- Als de gebruiker een bestaand openbaar IP-adres selecteert, wordt het tekstvak domeinnaam label uitgeschakeld. De waarde is het domein naam label van het geselecteerde IP-adres.
-- Het achtervoegsel voor de domein naam (bijvoorbeeld westus.cloudapp.azure.com) wordt automatisch bijgewerkt op basis van de geselecteerde locatie.
+- Als de gebruiker 'Geen' selecteert voor een openbaar IP-adres, wordt het tekstvak voor het domeinnaamlabel verborgen.
+- Als de gebruiker een bestaand openbaar IP-adres selecteert, wordt het tekstvak voor het domeinnaamlabel uitgeschakeld. De waarde is het domeinnaamlabel van het geselecteerde IP-adres.
+- Het achtervoegsel van de domeinnaam (bijvoorbeeld westus.cloudapp.azure.com) wordt automatisch bijgewerkt op basis van de geselecteerde locatie.
 
 ## <a name="schema"></a>Schema
 
@@ -59,7 +59,7 @@ Een groep besturings elementen voor het selecteren van een nieuw of bestaand ope
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
-Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturings element de volgende uitvoer:
+Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturingselement de volgende uitvoer:
 
 ```json
 {
@@ -67,7 +67,7 @@ Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturings e
 }
 ```
 
-Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het besturings element de volgende uitvoer:
+Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het besturingselement de volgende uitvoer:
 
 ```json
 {
@@ -80,18 +80,18 @@ Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het best
 }
 ```
 
-- Als `options.hideNone` als **waar**is opgegeven, heeft `newOrExistingOrNone` alleen de waarde **Nieuw** of **bestaande**.
-- Als `options.hideDomainNameLabel` als **waar**is opgegeven, wordt `domainNameLabel` niet-gedeclareerd.
+- Wanneer `options.hideNone` wordt opgegeven `newOrExistingOrNone` als **waar,** heeft alleen een waarde van **nieuw** of **bestaand**.
+- Wanneer `options.hideDomainNameLabel` is opgegeven `domainNameLabel` als **waar,** is niet aangegeven.
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Als `constraints.required.domainNameLabel` is ingesteld op **waar**, moet de gebruiker een domein naam label opgeven bij het maken van een nieuw openbaar IP-adres. Bestaande open bare IP-adressen zonder label zijn niet beschikbaar voor selectie.
-- Als `options.hideNone` is ingesteld op **True**, wordt de optie voor het selecteren van **geen** voor het open bare IP-adres verborgen. De standaardwaarde is **false**.
-- Als `options.hideDomainNameLabel` is ingesteld op **True**, wordt het tekstvak voor het domein naam label verborgen. De standaardwaarde is **false**.
-- Als `options.hideExisting` is ingesteld op True, kan de gebruiker geen bestaand openbaar IP-adres kiezen. De standaardwaarde is **false**.
-- Voor `zone`zijn alleen de open bare IP-adressen voor de opgegeven zone of zone flexibele open bare IP-adressen beschikbaar.
+- Als `constraints.required.domainNameLabel` deze is ingesteld op **true,** moet de gebruiker een domeinnaamlabel opgeven bij het maken van een nieuw openbaar IP-adres. Bestaande openbare IP-adressen zonder label zijn niet beschikbaar voor selectie.
+- Als `options.hideNone` dit is ingesteld op **true,** wordt de optie om **Geen** voor het openbare IP-adres te selecteren verborgen. De standaardwaarde is **onwaar**.
+- Als `options.hideDomainNameLabel` dit is ingesteld op **true,** wordt het tekstvak voor het label domeinnaam verborgen. De standaardwaarde is **onwaar**.
+- Als `options.hideExisting` dit waar is, kan de gebruiker geen bestaand openbaar IP-adres kiezen. De standaardwaarde is **onwaar**.
+- Voor `zone`zijn alleen openbare IP-adressen voor de opgegeven zone of zone veerkrachtige openbare IP-adressen beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

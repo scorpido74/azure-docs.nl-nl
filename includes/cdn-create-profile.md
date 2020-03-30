@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593996"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Nieuwe CDN-profielen maken
@@ -27,17 +27,17 @@ Een CDN-profiel is een container voor CDN-eindpunten waarmee een prijscategorie 
    
     ![CDN-resource selecteren](./media/cdn-create-profile/cdn-new-resource.png)
 
-    Het deelvenster **CDN-profiel** verschijnt.
+    Het **cdn-profielvenster** wordt weergegeven.
 
 3. Gebruik voor de CDN-profielinstellingen de waarden die in de volgende tabel zijn opgegeven:
    
     | Instelling  | Waarde |
     | -------- | ----- |
-    | **Name** | Voer *my-cdn-profile-123* in als profielnaam. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. |
+    | **Naam** | Voer *my-cdn-profile-123* in als profielnaam. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. |
     | **Abonnement** | Kies een Azure-abonnement in de vervolgkeuzelijst. |
     | **Resourcegroep** | Selecteer **Nieuwe maken** en voer *my-resource-group-123* in als naam voor de resourcegroep. Als deze al in gebruik is, kunt u een andere naam invoeren of **Bestaande gebruiken** selecteren en **my-resource-group-123** in de vervolgkeuzelijst selecteren. | 
-    | **Resourcegroeplocatie** | Selecteer **US - centraal** in de vervolgkeuzelijst. |
-    | **Prijscategorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
+    | **Resourcegroeplocatie** | Selecteer **VS - centraal** in de vervolgkeuzelijst. |
+    | **Prijslaag** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
     | **Nu een nieuw CDN-eindpunt maken** | Laat het selectievakje uitgeschakeld. |  
    
     ![Nieuw CDN-profiel](./media/cdn-create-profile/cdn-new-profile.png)

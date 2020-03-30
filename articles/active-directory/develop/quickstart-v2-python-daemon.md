@@ -1,6 +1,6 @@
 ---
-title: Micro soft Identity platform python daemon | Azure
-description: Meer informatie over hoe een python-proces een toegangs token kan ophalen en een API aanroept die wordt beveiligd door het micro soft Identity platform-eind punt, met behulp van de eigen identiteit van de app
+title: Microsoft-identiteitsplatform Python daemon | Azure
+description: Meer informatie over hoe een Python-proces een toegangstoken kan krijgen en een API kan aanroepen die is beschermd door het eindpunt van het Microsoft-identiteitsplatform, met behulp van de eigen identiteit van de app
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,50 +12,50 @@ ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
 ms.openlocfilehash: c0967c411aa10d046caee13441b046bf0f462442
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78274332"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een python-console-app met behulp van de identiteit van de app
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Snelstart: een token en aanroepen van Microsoft Graph API vanuit een Python-console-app met behulp van de identiteit van de app
 
-In deze Quick Start schrijft u een python-toepassing die een toegangs token ophaalt met behulp van de identiteit van de app. Vervolgens roept u de Microsoft Graph-API op om een [lijst met gebruikers](https://docs.microsoft.com/graph/api/user-list) in de map weer te geven. Dit scenario is nuttig in situaties waar een headless taak zonder toezicht of een Windows-service moet worden uitgevoerd met een toepassings-id in plaats van de identiteit van een gebruiker.
+Schrijf in deze quickstart een Python-toepassing die een toegangstoken krijgt met de identiteit van de app en roept vervolgens de Microsoft Graph API aan om een [lijst met gebruikers](https://docs.microsoft.com/graph/api/user-list) in de directory weer te geven. Dit scenario is nuttig in situaties waar een headless taak zonder toezicht of een Windows-service moet worden uitgevoerd met een toepassings-id in plaats van de identiteit van een gebruiker.
 
 > [!div renderon="docs"]
-> ![laat zien hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Laat zien hoe de voorbeeld-app die door deze quickstart wordt gegenereerd, werkt](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
+Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
-- [Python 2.7 +](https://www.python.org/downloads/release/python-2713) of [python 3 +](https://www.python.org/downloads/release/python-364/)
-- [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
+- [Python 2.7+](https://www.python.org/downloads/release/python-2713) of [Python 3+](https://www.python.org/downloads/release/python-364/)
+- [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1 hieronder) en hand matig (optie 2)
+> Je hebt twee opties om je snelle starttoepassing te starten: Express (optie 1 hieronder) en Manual (optie 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
-> 1. Ga naar het deel venster nieuwe [Azure Portal-app-registraties](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs) .
+> 1. Ga naar de nieuwe [Azure-portal - deelvenster App-registraties.](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs)
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
-> 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
-> 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
-> 1. Selecteer **nieuwe registratie**.
-> 1. Wanneer de pagina **een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in. 
+> 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
+> 1. Selecteer **Nieuwe registratie**.
+> 1. Wanneer de pagina **Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in. 
 > 1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die wordt weergegeven voor gebruikers van de app, zoals `Daemon-console`. Selecteer vervolgens **Registreren** om de toepassing te maken.
 > 1. Na het registreren opent u het menu **Certificaten en geheimen**.
 > 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. U hebt dit nodig voor gebruik in uw code.
@@ -74,13 +74,13 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-netcore-daemon/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken.
 
-#### <a name="step-2-download-your-python-project"></a>Stap 2: uw python-project downloaden
+#### <a name="step-2-download-your-python-project"></a>Stap 2: Download je Python-project
 
 > [!div renderon="docs"]
-> [Het python daemon-project downloaden](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [Download het Python daemon project](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -88,11 +88,11 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-python-project"></a>Stap 3: uw python-project configureren
+> #### <a name="step-3-configure-your-python-project"></a>Stap 3: Uw Python-project configureren
 > 
 > 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
-> 1. Ga naar de submap **1-call-MSGraph-WithSecret**.
-> 1. Bewerk **para meters. json** en vervang de waarden van de velden `authority`, `client_id`en `secret` met het volgende code fragment:
+> 1. Navigeer naar de submap **1-Call-MsGraph-WithSecret"**.
+> 1. **Parameters.json** bewerken en de waarden `authority`van `client_id`de `secret` velden vervangen en het volgende fragment:
 >
 >    ```json
 >    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
@@ -101,19 +101,19 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >    ```
 >    Waar:
 >    - `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
->    - `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>    - `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
 >    - `Enter_the_Client_Secret_Here`: vervang deze waarde door het clientgeheim dat is gemaakt in stap 1.
 >
 > > [!TIP]
 > > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
     
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-admin-consent"></a>Stap 3: toestemming van de beheerder
+> #### <a name="step-3-admin-consent"></a>Stap 3: Toestemming van de beheerder
 
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>Stap 4: Toestemming van de beheerder
 
-Als u de toepassing op dit moment probeert uit te voeren, ontvangt u *HTTP 403-verboden* fout: `Insufficient privileges to complete the operation`. Deze fout treedt op omdat de *machtiging alleen* door de beheerder is vereist: een globale beheerder van uw directory moet toestemming geven aan uw toepassing. Selecteer een van de onderstaande opties, afhankelijk van uw rol:
+Als u de toepassing op dit punt probeert uit te voeren, ontvangt u *HTTP 403 - Verboden* fout: `Insufficient privileges to complete the operation`. Deze fout treedt op omdat voor elke *app-only toestemming* toestemming vereist: een globale beheerder van uw directory moet toestemming geven voor uw toepassing. Selecteer een van de onderstaande opties, afhankelijk van uw rol:
 
 ##### <a name="global-tenant-administrator"></a>Globale tenantbeheerder
 
@@ -127,7 +127,7 @@ Als u de toepassing op dit moment probeert uit te voeren, ontvangt u *HTTP 403-v
 
 ##### <a name="standard-user"></a>Standaardgebruiker
 
-Als u een standaard gebruiker bent van uw Tenant, moet u een globale beheerder vragen om toestemming van de beheerder voor uw toepassing te verlenen. Daarvoor verstrekt u de volgende URL aan uw beheerder:
+Als u een standaardgebruiker van uw tenant bent, moet u een globale beheerder vragen om beheerderstoestemming te verlenen voor uw toepassing. Daarvoor verstrekt u de volgende URL aan uw beheerder:
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -135,39 +135,39 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Waar:
->> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
 >> * `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-4-run-the-application"></a>Stap 4: de toepassing uitvoeren
+> #### <a name="step-4-run-the-application"></a>Stap 4: De toepassing uitvoeren
 
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
 
-U moet de afhankelijkheden van dit voor beeld één keer installeren
+U moet de afhankelijkheden van dit voorbeeld één keer installeren
 
 ```console
 pip install -r requirements.txt
 ```
 
-Voer vervolgens de toepassing uit via de opdracht prompt of de-console:
+Voer de toepassing vervolgens uit via opdrachtprompt of console:
 
 ```console
 python confidential_client_secret_sample.py parameters.json
 ```
 
-U ziet in de console-uitvoer een bepaald JSON-fragment dat een lijst met gebruikers in uw Azure AD-Directory weergeeft.
+U moet op de console-uitvoer een aantal Json-fragment zien dat een lijst met gebruikers vertegenwoordigt in uw Azure AD-map.
 
 > [!IMPORTANT]
-> Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie voor meer informatie over het gebruik van een certificaat [deze instructies](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) in dezelfde github-opslag plaats voor dit voor beeld, maar in de tweede map **2-Call-MSGraph-WithCertificate**
+> Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [deze instructies](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) in dezelfde GitHub-repository voor dit voorbeeld, maar in de tweede map **2-Call-MsGraph-WithCertificate** voor meer informatie over het gebruik van een certificaat.
 
 ## <a name="more-information"></a>Meer informatie
 
-### <a name="msal-python"></a>MSAL python
+### <a name="msal-python"></a>MSAL Python
 
-[MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python) is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt om toegang te krijgen tot een API die wordt beveiligd door micro soft Identity platform. Zoals beschreven, verzoekt deze Quick Start tokens met behulp van de eigen identiteit van de toepassing in plaats van gedelegeerde machtigingen. De verificatiestroom die in dit voorbeeld wordt gebruikt, staat bekend als de *[oauth-stroom voor clientreferenties](v2-oauth2-client-creds-grant-flow.md)* . Zie [dit artikel](scenario-daemon-overview.md)voor meer informatie over het gebruik van MSAL python met daemon-apps.
+[MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) is de bibliotheek die wordt gebruikt om gebruikers aan te melden en tokens aan te vragen die worden gebruikt om toegang te krijgen tot een API die wordt beschermd door het identiteitsplatform van Microsoft. Zoals beschreven, vraagt deze quickstart tokens aan met behulp van de eigen identiteit van de toepassing in plaats van gedelegeerde machtigingen. De verificatiestroom die in dit voorbeeld wordt gebruikt, staat bekend als de *[oauth-stroom voor clientreferenties](v2-oauth2-client-creds-grant-flow.md)*. Zie [dit artikel](scenario-daemon-overview.md)voor meer informatie over het gebruik van MSAL Python met daemon-apps.
 
- U kunt MSAL python installeren door de volgende PIP-opdracht uit te voeren.
+ U MSAL Python installeren door de volgende pip-opdracht uit te voeren.
 
 ```powershell
 pip install msal
@@ -220,15 +220,15 @@ Zie de [naslagdocumentatie voor `AcquireTokenForClient`](https://msal-python.rea
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over daemon-toepassingen raadpleegt u de pagina scenario overloop
+Zie de bestemmingspagina voor scenario's voor meer informatie over daemon-toepassingen
 
 > [!div class="nextstepaction"]
-> [Daemon-toepassing die web-Api's aanroept](scenario-daemon-overview.md)
+> [Daemon-toepassing die web-API's aanroept](scenario-daemon-overview.md)
 
-Voor de zelf studie over de daemon-toepassing raadpleegt u:
+Zie voor de zelfstudie van de daemon-toepassing:
 
 > [!div class="nextstepaction"]
-> [Zelf studie voor de daemon python-console](https://github.com/Azure-Samples/ms-identity-python-daemon)
+> [Zelfstudie van Daemon Python-console](https://github.com/Azure-Samples/ms-identity-python-daemon)
 
 Meer informatie over machtigingen en toestemming:
 
@@ -240,7 +240,7 @@ Zie de Oauth 2.0-clientreferentiestroom voor meer informatie over de auth-stroom
 > [!div class="nextstepaction"]
 > [Oauth-clientreferentiestroom](v2-oauth2-client-creds-grant-flow.md)
 
-Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien.
+Help ons het Microsoft-identiteitsplatform te verbeteren. Vertel ons wat u ervan vindt door een korte enquête met twee vragen in te vullen.
 
 > [!div class="nextstepaction"]
-> [Micro soft Identity platform-enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Enquête van microsoft-identiteitsplatform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

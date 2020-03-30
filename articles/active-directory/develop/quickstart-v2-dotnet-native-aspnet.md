@@ -1,6 +1,6 @@
 ---
-title: Een ASP.NET-Web-API aanroepen die wordt beveiligd door micro soft Identity platform
-description: In deze Quick Start leert u hoe u een ASP.NET-Web-API aanroept die wordt beveiligd door micro soft Identity platform van een Windows Desktop-toepassing (WPF). De WPF-client verifieert een gebruiker, vraagt een toegangs token aan en roept de Web-API aan.
+title: Een ASP.NET Web API aanroepen die is beveiligd door het identiteitsplatform van Microsoft
+description: In deze quickstart leert u hoe u een ASP.NET web-API aanroept die is beveiligd door microsoft-identiteitsplatform en een WPF-toepassing (Windows Desktop). De WPF-client verifieert een gebruiker, vraagt een toegangstoken aan en roept de web-API aan.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,153 +12,153 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76703470"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Quick Start: een ASP.NET-Web-API aanroepen die wordt beveiligd door micro soft Identity platform
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Snelstart: een ASP.NET web-API aanroepen die is beveiligd door het identiteitsplatform van Microsoft
 
-In deze Quick Start maakt u een web-API beschikbaar en kunt u deze beveiligen zodat alleen geverifieerde gebruikers er toegang toe hebben. Dit voor beeld laat zien hoe u een ASP.NET-Web-API beschikbaar maakt, zodat deze tokens kan accepteren die worden uitgegeven door persoonlijke accounts (inclusief outlook.com, live.com en anderen), evenals werk-en school accounts van elk bedrijf of organisatie dat is geïntegreerd met micro soft Identity onafhankelijk.
+In deze quickstart stelt u een web-API bloot en beschermt u deze zodat alleen geverifieerde gebruikers er toegang toe hebben. In dit voorbeeld wordt uitgelegd hoe u een ASP.NET Web API blootleggen, zodat deze tokens kan accepteren die zijn uitgegeven door persoonlijke accounts (waaronder outlook.com, live.com en anderen) en werk- en schoolaccounts van elk bedrijf of organisatie dat is geïntegreerd met de Identiteit van Microsoft Platform.
 
-Het voor beeld omvat ook een WPF-client (Windows Desktop Application) die laat zien hoe u een toegangs token kunt aanvragen om toegang te krijgen tot een web-API.
+Het voorbeeld bevat ook een WPF-client (Windows Desktop-toepassing) die laat zien hoe u een toegangstoken aanvragen om toegang te krijgen tot een web-API.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
+Als u dit voorbeeld wilt uitvoeren, hebt u het volgende nodig:
 
-* Visual Studio 2017 of 2019.  Down load [Visual Studio gratis](https://www.visualstudio.com/downloads/).
+* Visual Studio 2017 of 2019.  Download [Visual Studio gratis.](https://www.visualstudio.com/downloads/)
 
-* Een [Microsoft-account](https://www.outlook.com) -of [Office 365-ontwikkelaars programma](/office/developer-program/office-365-developer-program)
+* Een [Microsoft-account](https://www.outlook.com) of [een Office 365 Developer Program](/office/developer-program/office-365-developer-program)
 
-## <a name="download-or-clone-this-sample"></a>Dit voor beeld downloaden of klonen
+## <a name="download-or-clone-this-sample"></a>Dit voorbeeld downloaden of klonen
 
-U kunt dit voor beeld klonen vanuit de shell of de opdracht regel:
+U dit voorbeeld klonen vanuit uw shell- of opdrachtregel:
 
   ```console
   git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
   ```
 
-Of u kunt [het voor beeld downloaden als een zip-bestand](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip).
+U [het voorbeeld ook downloaden als ZIP-bestand.](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)
 
-## <a name="register-your-web-api-in-the-application-registration-portal"></a>De Web-API registreren in de portal voor toepassings registratie
+## <a name="register-your-web-api-in-the-application-registration-portal"></a>Uw web-API registreren in de portal voor toepassingsregistratie
 
-### <a name="choose-the-azure-ad-tenant-where-you-want-to-create-your-applications"></a>Kies de Azure AD-Tenant waar u uw toepassingen wilt maken
+### <a name="choose-the-azure-ad-tenant-where-you-want-to-create-your-applications"></a>Kies de Azure AD-tenant waar u uw toepassingen wilt maken
 
-Als u uw apps hand matig wilt registreren, moet u eerst het volgende doen:
+Als u uw apps handmatig wilt registreren, moet u als eerste stap:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als uw account zich in meer dan één Azure AD-Tenant bevindt, selecteert u uw profiel in de rechter bovenhoek in het menu boven aan de pagina en **gaat u naar de map**.
-   Wijzig uw portal sessie in de gewenste Azure AD-Tenant.
+1. Als uw account aanwezig is in meer dan één Azure AD-tenant, selecteert u uw profiel rechtsboven in het menu boven aan de pagina en schakelt u **van map**.
+   Wijzig uw portalsessie in de gewenste Azure AD-tenant.
 
 ### <a name="register-the-service-app-todolistservice"></a>De service-app registreren (TodoListService)
 
-1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Selecteer **nieuwe registratie**.
-1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
+1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
+1. Selecteer **Nieuwe registratie**.
+1. Wanneer de **pagina Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in:
    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `AppModelv2-NativeClient-DotNet-TodoListService`.
-   - Wijzig **ondersteunde account typen** **in accounts in elke organisatie Directory**.
+   - **Ondersteunde accounttypen** wijzigen in **accounts in een organisatiemap.**
    - Selecteer **Registreren** om de toepassing te maken.
 
-1. Zoek op de pagina app- **overzicht** de waarde van de **toepassing (client)** en noteer deze voor later. U hebt deze nodig voor het configureren van het Visual Studio-configuratie bestand voor dit project (`ClientId` in `TodoListService\Web.config`).
-1. Selecteer de sectie **een API beschikbaar** maken en:
-   - Selecteer **een bereik toevoegen**
-   - Accepteer de voorgestelde URI voor de toepassings-ID (API://{clientId}) door **opslaan en door gaan** te selecteren.
-   - Voer de volgende para meters in:
-     - `access_as_user` voor **bereik naam** gebruiken
-     - Zorg ervoor dat de optie **beheerders en gebruikers** is geselecteerd voor **wie toestemming kan** geven
-     - type **weergave naam in beheerders toestemming** `Access TodoListService as a user`
-     - Typ `Accesses the TodoListService Web API as a user` van beschrijving van het **beheerders toestemming**
-     - in het weergave naam type van de **gebruikers toestemming** `Access TodoListService as a user`
-     - Typ `Accesses the TodoListService Web API as a user` van beschrijving van de **gebruikers toestemming**
-     - **Status** als **ingeschakeld** blijven
-     - **Bereik toevoegen** selecteren
+1. Zoek op de pagina **Overzicht** van de app de waarde van de **id-toepassing (client)** en leg deze vast voor later. U hebt het nodig om het configuratiebestand visual`ClientId` `TodoListService\Web.config`studio voor dit project (in) te configureren.
+1. Selecteer de sectie **Een API blootleggen** en:
+   - Een **bereik toevoegen selecteren**
+   - accepteer de voorgestelde Application ID URI (api://{clientId}) door **Opslaan en doorgaan te** selecteren
+   - Voer de volgende parameters in:
+     - voor het gebruik **van de naam scope**`access_as_user`
+     - Ervoor zorgen dat de optie **Beheerders en gebruikers** is geselecteerd voor Wie toestemming kan **geven**
+     - in het **weergavetype beheerderstoestemming**`Access TodoListService as a user`
+     - in het **type beschrijving van beheerderstoestemming**`Accesses the TodoListService Web API as a user`
+     - in **het weergavenaamtype gebruikerstoestemming**`Access TodoListService as a user`
+     - in type **beschrijving van gebruikerstoestemming**`Accesses the TodoListService Web API as a user`
+     - **Status behouden** als **ingeschakeld**
+     - Bereik **toevoegen selecteren**
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Het service project configureren zodat dit overeenkomt met de geregistreerde Web-API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Het serviceproject configureren op de geregistreerde web-API 
 
-1. Open de oplossing in Visual Studio en open vervolgens het bestand **Web. config** in de hoofdmap van **TodoListService** -project.
-1. Vervang de waarde van `ida:ClientId` para meter door de **client-id (toepassings-id)** van de toepassing die u zojuist hebt geregistreerd in de portal voor toepassings registratie.
+1. Open de oplossing in Visual Studio en open het **web.config-bestand** onder de hoofdmap van het **TodoListService-project.**
+1. Vervang de `ida:ClientId` waarde van de parameter door de **client-id (toepassings-id)** van de toepassing die u zojuist hebt geregistreerd in de Portal voor toepassingsregistratie.
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>De nieuwe scope toevoegen aan de app. config van de *TodoListClient*
+### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Voeg het nieuwe bereik toe aan de app.config van *De TodoListClient*
 
-1. Open het bestand **app. config** dat zich in de hoofdmap van het **TodoListClient** -project bevindt en plak vervolgens **toepassings-id** uit de toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder `TodoListServiceScope` para meter, waarbij de teken reeks wordt vervangen `{Enter the Application ID of your TodoListService from the app registration portal}`.
+1. Open het **app.config-bestand** in de hoofdmap van **het TodoListClient-project** en plak vervolgens **toepassings-id** uit de `{Enter the Application ID of your TodoListService from the app registration portal}`toepassing die u zojuist hebt geregistreerd voor uw *TodoListService* onder `TodoListServiceScope` parameter, ter vervanging van de tekenreeks.
 
-   > Opmerking: Zorg ervoor dat deze gebruikmaakt van de volgende indeling:
+   > Opmerking: Controleer of de volgende indeling wordt gebruikt:
    >
    > `api://{TodoListService-Application-ID}/access_as_user` 
    >
-   >(waarbij {TodoListService-Application-ID} de GUID voor de toepassings-ID voor uw TodoListService is).
+   >(waarbij {TodoListService-Application-ID} de GUID is die de toepassings-id voor uw TodoListService vertegenwoordigt).
 
 ## <a name="register-the-client-app-todolistclient"></a>De client-app registreren (TodoListClient)
 
-In deze stap configureert u uw *TodoListClient* -project door een nieuwe toepassing te registreren in de portal voor toepassings registratie. In de gevallen waarin de-client en-server worden beschouwd als *dezelfde toepassing* , kunt u ook gewoon dezelfde toepassing die is geregistreerd in de stap 2. opnieuw gebruiken. Het gebruik van dezelfde toepassing is nodig als u wilt dat gebruikers zich aanmelden met persoonlijke micro soft-accounts
+In deze stap configureert u uw *TodoListClient-project* door een nieuwe toepassing te registreren in de toepassingsregistratieportal. In de gevallen waarin de client en server als *dezelfde toepassing* worden beschouwd, u dezelfde toepassing die is geregistreerd in de 'Stap 2'. Dezelfde toepassing gebruiken is nodig als u wilt dat gebruikers zich aanmelden met persoonlijke Microsoft-accounts
 
-### <a name="register-the-todolistclient-application-in-the-application-registration-portal"></a>De *TodoListClient* -toepassing registreren in de *Portal voor toepassings registratie*
+### <a name="register-the-todolistclient-application-in-the-application-registration-portal"></a>De *Toepassing TodoListClient* registreren in de *portal voor toepassingsregistratie*
 
-1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Selecteer **nieuwe registratie**.
-1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
+1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
+1. Selecteer **Nieuwe registratie**.
+1. Wanneer de **pagina Een aanvraag registreren** wordt weergegeven, voert u de registratiegegevens van uw aanvraag in:
    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `NativeClient-DotNet-TodoListClient`.
-   - Wijzig **ondersteunde account typen** **in accounts in elke organisatie Directory**.
+   - **Ondersteunde accounttypen** wijzigen in **accounts in een organisatiemap.**
    - Selecteer **Registreren** om de toepassing te maken.
-1. Selecteer de sectie **verificatie** op de pagina overzicht van de app.
-   - Controleer in de sectie **omleidings-uri's** | **voorgestelde omleidings-uri's voor open bare clients (Mobile, Desktop)** **https://login.microsoftonline.com/common/oauth2/nativeclient**
+1. Selecteer op de pagina Overzicht van de app de sectie **Verificatie**.
+   - Controleer in de sectie **URL's** | die worden voorgesteld om**te leiden voor openbare clients (mobiel, desktop)****https://login.microsoftonline.com/common/oauth2/nativeclient**
    - Selecteer **Opslaan**.
 1. De sectie **API-machtigingen** selecteren
-   - Klik op de knop **een machtiging toevoegen** en vervolgens op
-   - Selecteer het tabblad **mijn api's** .
-   - Selecteer in de lijst met Api's de `AppModelv2-NativeClient-DotNet-TodoListService API`of de naam die u hebt ingevoerd voor de Web-API.
-   - Controleer de **access_as_user** machtiging als deze nog niet is ingeschakeld. Gebruik het zoekvak als dat nodig is.
-   - Selecteer de knop **machtigingen toevoegen**
+   - Klik **op** de knop Een machtiging toevoegen en vervolgens op de knop Een machtiging toevoegen en vervolgens
+   - Selecteer het tabblad **Mijn API's.**
+   - Selecteer in de lijst met `AppModelv2-NativeClient-DotNet-TodoListService API`API's de naam of de naam die u voor de web-API hebt ingevoerd.
+   - Controleer de **access_as_user** toestemming als deze nog niet is gecontroleerd. Gebruik indien nodig het zoekvak.
+   - De knop **Machtigingen toevoegen selecteren**
 
-### <a name="configure-your-todolistclient-project"></a>Uw *TodoListClient* -project configureren
+### <a name="configure-your-todolistclient-project"></a>Uw *TodoListClient-project* configureren
 
-1. In de *Portal voor toepassings registratie*op de pagina **overzicht** kopieert u de waarde van de **toepassings-id (client)**
-1. Open het bestand **app. config** dat zich in de hoofdmap van het **TodoListClient** -project bevindt en plak de waarde in de waarde van de `ida:ClientId` parameter
-
-## <a name="run-your-project"></a>Uw project uitvoeren
-
-1. Druk op `<F5>` om het project uit te voeren. Uw *TodoListClient* moet worden geopend.
-1. Selecteer **in** de rechter bovenhoek de optie aanmelden en meld u aan met dezelfde gebruiker die u hebt gebruikt om uw toepassing te registreren, of een gebruiker in dezelfde map.
-1. Als u zich voor de eerste keer aanmeldt, wordt u mogelijk gevraagd om toestemming te geven voor *TodoListService* Web API.
-1. De aanmelding vraagt het toegangs token ook aan het *access_as_user* bereik om toegang te krijgen tot de *TodoListService* -Web-API en de *taken* lijst te bewerken.
-
-## <a name="pre-authorize-your-client-application"></a>Uw client toepassing vooraf autoriseren
-
-Een van de manieren om gebruikers uit andere directory's toegang te geven tot uw web-API is door de client toepassingen *vooraf te autoriseren* voor toegang tot uw web-API door de toepassings-id's van client toepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor uw web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u geen toestemming te geven voor het gebruik van uw web-API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
-
-1. Ga terug naar de *Portal voor toepassings registratie* en open de eigenschappen van uw **TodoListService**.
-1. Klik in de sectie **een API beschikbaar** maken op **een client toepassing toevoegen** onder de sectie *geautoriseerde client toepassingen* .
-1. Plak in het veld *client-id* de toepassings-id van de `TodoListClient` toepassing.
-1. Selecteer in de sectie *gemachtigde bereiken* het bereik voor deze web-API `api://<Application ID>/access_as_user`.
-1. Klik onder aan de pagina op de knop **toepassing toevoegen** .
+1. Kopieer in de *portal Voor toepassingsregistratie*op de **pagina Overzicht** de waarde van de **id (toepassing)**
+1. Open het **app.config-bestand** in de hoofdmap van het **TodoListClient-project** en plak de waarde in de `ida:ClientId` parameterwaarde
 
 ## <a name="run-your-project"></a>Uw project uitvoeren
 
-1. Druk op `<F5>` om het project uit te voeren. Uw *TodoListClient* moet worden geopend.
-1. Selecteer aan de rechter kant **Aanmelden** (of cache/aanmelden wissen) en meld u vervolgens aan met behulp van een persoonlijke Microsoft-account (live.com of Hotmail.com) of werk-of school account.
+1. Druk `<F5>` op om uw project uit te voeren. Uw *TodoListClient* moet worden geopend.
+1. Selecteer **Rechtsboven inloggen** en meld u aan bij dezelfde gebruiker die u hebt gebruikt om uw toepassing te registreren, of een gebruiker in dezelfde map.
+1. Als u zich op dit moment voor het eerst aanmeldt, wordt u mogelijk gevraagd toestemming te geven voor *de TodoListService* Web Api.
+1. De aanmelding vraagt ook het toegangstoken tot het *access_as_user-scope* om toegang te krijgen tot *TodoListService* Web Api en de *to-do-lijst te* manipuleren.
 
-## <a name="optional-restrict-sign-in-access-to-your-application"></a>Optioneel: aanmeldings toegang tot uw toepassing beperken
+## <a name="pre-authorize-your-client-application"></a>Uw clienttoepassing vooraf autoriseren
 
-Wanneer u dit code voorbeeld downloadt en de toepassing configureert voor gebruik van het Azure Active Directory v2-eind punt volgens de voor gaande stappen, worden persoonlijke accounts, zoals outlook.com, live.com en anderen, evenals werk-of school accounts van elke organisaties die zijn geïntegreerd met Azure AD kunnen tokens aanvragen en toegang krijgen tot uw web-API. 
+Een van de manieren om gebruikers van andere mappen toegang te geven tot uw Web API is door de clienttoepassingen *vooraf toestemming* te geven om toegang te krijgen tot uw Web-API door de toepassings-id's van clienttoepassingen toe te voegen aan de lijst met *vooraf geautoriseerde* toepassingen voor uw web-API. Door een vooraf geautoriseerde client toe te voegen, hoeft u de gebruiker geen toestemming te geven voor het gebruik van uw Web API. Volg de onderstaande stappen om uw webtoepassing vooraf te autoriseren::
 
-Als u wilt beperken wie zich kan aanmelden bij uw toepassing, gebruikt u een van de volgende opties:
+1. Ga terug naar de *portal voor toepassingsregistratie* en open de eigenschappen van uw **TodoListService.**
+1. Klik **in de** sectie Een API bloot leggen op **Een clienttoepassing toevoegen** onder de sectie Geautoriseerde *clienttoepassingen.*
+1. Plak in het veld *Client-id* `TodoListClient` de toepassings-id van de toepassing.
+1. Selecteer in de sectie *Geautoriseerde scopes* het `api://<Application ID>/access_as_user`bereik voor deze web-API .
+1. Druk onder aan de pagina op de knop **Toepassing toevoegen.**
 
-### <a name="option-1-restrict-access-to-a-single-organization-single-tenant"></a>Optie 1: de toegang tot één organisatie beperken (één Tenant)
+## <a name="run-your-project"></a>Uw project uitvoeren
 
-U kunt aanmeldings toegang voor uw toepassing beperken tot alleen gebruikers accounts die zich in één Azure AD-Tenant bevinden, waaronder *Gast accounts* van die Tenant. Dit scenario is gebruikelijk voor *line-of-business-toepassingen*:
+1. Druk `<F5>` op om uw project uit te voeren. Uw *TodoListClient* moet worden geopend.
+1. Selecteer **Rechtsboven** inloggen (of Cache/Aanmelding wissen) en meld u aan via een persoonlijk Microsoft-account (live.com of hotmail.com) of werk- of schoolaccount.
 
-1. Open het **\Startup.auth** -bestand van de App_Start en wijzig de waarde van het eind punt voor meta gegevens dat is door gegeven aan de `OpenIdConnectSecurityTokenProvider` naar `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (u kunt ook de naam van de Tenant gebruiken, bijvoorbeeld `contoso.onmicrosoft.com`).
-2. Stel in hetzelfde bestand de eigenschap `ValidIssuer` op de `TokenValidationParameters` in `"https://sts.windows.net/{Tenant ID}/"` en het argument `ValidateIssuer` in op `true`.
+## <a name="optional-restrict-sign-in-access-to-your-application"></a>Optioneel: aanmeldingstoegang tot uw toepassing beperken
 
-### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Optie 2: een aangepaste methode gebruiken om verleners te valideren
+Wanneer u dit voorbeeld van deze code downloadt en de toepassing configureert om het Azure Active Directory v2-eindpunt volgens de voorgaande stappen te gebruiken, zijn zowel persoonlijke accounts - zoals outlook.com, live.com en anderen - als Werk- of schoolaccounts van alle organisaties die zijn geïntegreerd met Azure AD, kunnen tokens aanvragen en toegang krijgen tot uw web-API. 
 
-U kunt een aangepaste methode implementeren om verleners te valideren met behulp van de para meter **IssuerValidator** . Meer informatie over het gebruik van deze para meter vindt u in de [TokenValidationParameters-klasse](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters?view=azure-dotnet).
+Als u wilt beperken wie zich bij uw toepassing kan aanmelden, gebruikt u een van de opties:
+
+### <a name="option-1-restrict-access-to-a-single-organization-single-tenant"></a>Optie 1: Toegang tot één organisatie beperken (één tenant)
+
+U de aanmeldingstoegang voor uw toepassing beperken tot alleen gebruikersaccounts die zich in één Azure AD-tenant bevinden, inclusief *gastaccounts* van die tenant. Dit scenario is een veelvoorkomende voor *bedrijfstoepassingen:*
+
+1. Open het **bestand App_Start\Startup.Auth** en wijzig de waarde van het `OpenIdConnectSecurityTokenProvider` metagegevenseindpunt dat is doorgegeven aan `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (u ook de tenantnaam gebruiken, zoals `contoso.onmicrosoft.com`).
+2. Stel in hetzelfde `ValidIssuer` bestand de `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` eigenschap `ValidateIssuer` op `true`de aan en het argument in op .
+
+### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Optie 2: Een aangepaste methode gebruiken om emittenten te valideren
+
+U een aangepaste methode implementeren om emittenten te valideren met behulp van de parameter **IssuerValidator.** Lees voor meer informatie over het gebruik van deze parameter de [klasse TokenValidationParameters.](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters?view=azure-dotnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het scenario voor de beveiligde web-API dat het micro soft Identity-platform ondersteunt:
+Meer informatie over het beveiligde web-API-scenario dat het Microsoft-identiteitsplatform ondersteunt:
 > [!div class="nextstepaction"]
-> [Beveiligd web API-scenario](scenario-protected-web-api-overview.md)
+> [Beveiligd web-API-scenario](scenario-protected-web-api-overview.md)

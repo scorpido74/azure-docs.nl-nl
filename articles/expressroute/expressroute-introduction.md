@@ -1,5 +1,5 @@
 ---
-title: 'Overzicht van Azure ExpressRoute: verbinding maken via een particuliere verbinding'
+title: 'Overzicht azure ExpressRoute: verbinding maken via een privéverbinding'
 description: In het technische overzicht van ExpressRoute wordt uitgelegd hoe een ExpressRoute-verbinding kan worden gebruikt om uw on-premises netwerk via een persoonlijke verbinding uit te breiden naar Azure.
 services: expressroute
 author: mialdrid
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
 ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75770948"
 ---
 # <a name="expressroute-overview"></a>Overzicht van ExpressRoute
 Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft-cloudservices, zoals Microsoft Azure en Office 365.
 
-Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding. ExpressRoute-verbindingen gaan niet via het openbare internet. Hierdoor kunnen ExpressRoute-verbindingen meer betrouw baarheid, hogere snelheden, consistente latenties en betere beveiliging dan gewone verbindingen via internet bieden. Zie [ExpressRoute connectivity models](expressroute-connectivity-models.md) (ExpressRoute-connectiviteitsmodellen) voor meer informatie over verbinding maken tussen uw netwerk en Microsoft met behulp van ExpressRoute.
+Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding. ExpressRoute-verbindingen gaan niet via het openbare internet. Hierdoor kunnen ExpressRoute-verbindingen meer betrouwbaarheid, hogere snelheden, consistente latencies en hogere beveiliging bieden dan typische verbindingen via internet. Zie [ExpressRoute connectivity models](expressroute-connectivity-models.md) (ExpressRoute-connectiviteitsmodellen) voor meer informatie over verbinding maken tussen uw netwerk en Microsoft met behulp van ExpressRoute.
 
 ![Overzicht van ExpressRoute-verbindingen](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -39,7 +39,7 @@ Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer i
 Microsoft maakt gebruik van BGP, een standaardprotocol voor dynamische routering, voor het uitwisselen van routes tussen uw on-premises netwerk, uw exemplaren in Azure en openbare Microsoft-adressen. We stellen meerdere BGP-sessies met uw netwerk in voor verschillende verkeersprofielen. Meer informatie vindt u in het artikel [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuit en -routeringsdomeinen).
 
 ### <a name="redundancy"></a>Redundantie
-Elk ExpressRoute-circuit bestaat uit twee verbindingen met twee micro soft Enter prise Edge-routers (Msee's) op een [ExpressRoute locatie](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) van de connectiviteits provider/uw netwerk rand. Microsoft vereist een dubbele BGP-verbinding van de connectiviteitsprovider/uw netwerkkant; één voor elke MSEE. U kunt ervoor kiezen om geen redundante apparaten/Ethernet-circuits aan uw kant te implementeren. Connectiviteitsproviders gebruiken redundante apparaten echter om ervoor te zorgen dat uw verbindingen op een redundante manier worden doorgegeven aan Microsoft. Onze [SLA](https://azure.microsoft.com/support/legal/sla/) is alleen geldig als er een redundante Laag-3-connectiviteit is geconfigureerd.
+Elk ExpressRoute-circuit bestaat uit twee verbindingen met twee Microsoft Enterprise edge routers (MEEs) op een [ExpressRoute-locatie](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) van de connectiviteitsprovider/uw netwerkrand. Microsoft vereist een dubbele BGP-verbinding van de connectiviteitsprovider/uw netwerkkant; één voor elke MSEE. U kunt ervoor kiezen om geen redundante apparaten/Ethernet-circuits aan uw kant te implementeren. Connectiviteitsproviders gebruiken redundante apparaten echter om ervoor te zorgen dat uw verbindingen op een redundante manier worden doorgegeven aan Microsoft. Onze [SLA](https://azure.microsoft.com/support/legal/sla/) is alleen geldig als er een redundante Laag-3-connectiviteit is geconfigureerd.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Connectiviteit met Microsoft Cloud-services
 ExpressRoute-verbindingen maken toegang mogelijk tot de volgende services:
@@ -57,11 +57,11 @@ U kunt verbinding maken met Microsoft op een van onze [peeringlocaties](expressr
 
 Als u bijvoorbeeld via ExpressRoute verbinding maakt met Microsoft in Amsterdam, hebt u toegang tot alle Microsoft-cloudservices die worden gehost in Noord- en West-Europa. Voor een overzicht van de geopolitieke regio's, bijbehorende Microsoft-cloudregio's en bijbehorende ExpressRoute-peeringlocaties, raadpleegt u het artikel [Partners en peeringlocaties voor ExpressRoute](expressroute-locations.md).
 
-### <a name="global-connectivity-with-expressroute-premium"></a>Wereld wijde connectiviteit met ExpressRoute Premium
-U kunt [ExpressRoute Premium](expressroute-faqs.md) inschakelen om connectiviteit uit te breiden tussen de geopolitieke grenzen. Als u bijvoorbeeld via ExpressRoute verbinding maakt met Microsoft in Amsterdam, hebt u toegang tot alle Microsoft Cloud-services die worden gehost in alle regio's van de wereld (uitgezonderd nationale clouds). U hebt op dezelfde manier toegang tot services die zijn geïmplementeerd in Zuid-Amerika of Australië als waarop u toegang hebt tot regio's in Noord- en West-Europa.
+### <a name="global-connectivity-with-expressroute-premium"></a>Wereldwijde connectiviteit met ExpressRoute Premium
+U [ExpressRoute Premium](expressroute-faqs.md) inschakelen om connectiviteit uit te breiden over geopolitieke grenzen heen. Als u bijvoorbeeld via ExpressRoute verbinding maakt met Microsoft in Amsterdam, hebt u toegang tot alle Microsoft Cloud-services die worden gehost in alle regio's van de wereld (uitgezonderd nationale clouds). U hebt op dezelfde manier toegang tot services die zijn geïmplementeerd in Zuid-Amerika of Australië als waarop u toegang hebt tot regio's in Noord- en West-Europa.
 
-### <a name="local-connectivity-with-expressroute-local"></a>Lokale verbinding met ExpressRoute Local
-U kunt gegevens kosten effectief overdragen door de [lokale SKU](expressroute-faqs.md) in te scha kelen als u uw gegevens naar een ExpressRoute-locatie in de buurt van uw gewenste Azure-regio kunt brengen. Met lokale gegevens overdracht is opgenomen in de kosten voor de ExpressRoute-poort. 
+### <a name="local-connectivity-with-expressroute-local"></a>Lokale connectiviteit met ExpressRoute Local
+U gegevens kosteneffectief overdragen door de [lokale SKU](expressroute-faqs.md) in te schakelen als u uw gegevens naar een ExpressRoute-locatie in de buurt van uw gewenste Azure-regio brengen. Bij Local is gegevensoverdracht inbegrepen in de ExpressRoute-havenkosten. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Overal on-premises connectiviteit met ExpressRoute Global Reach
 U kunt ExpressRoute Global Reach inschakelen zodat er gegevens tussen al uw on-premises sites kunnen worden uitgewisseld, door uw ExpressRoute-circuits met elkaar te verbinden. Als u een privédatacenter in Californië hebt dat is verbonden met ExpressRoute in Silicon Valley en een ander privédatacenter in Texas dat is verbonden met ExpressRoute in Dallas, kunt u met ExpressRoute Global Reach uw privédatacenters met elkaar verbinden via twee ExpressRoute-circuits. Het verkeer tussen datacenters verplaatst zich via het netwerk van Microsoft.
@@ -106,7 +106,7 @@ U kunt een factureringsmodel selecteren dat voor u het meest geschikt is. Kies e
 * **Naar gebruik**. De facturering is gebaseerd op een maandtarief; alle binnenkomende gegevensoverdracht is gratis. Uitgaande gegevensoverdracht wordt in rekening gebracht per GB aan gegevensoverdracht. De tarieven voor gegevensoverdracht verschillen per regio.
 * **Premium-invoegtoepassing voor ExpressRoute**. ExpressRoute Premium is een invoegtoepassing voor het ExpressRoute-circuit. De Premium-invoegtoepassing voor ExpressRoute biedt de volgende mogelijkheden: 
   * Ruimere routelimieten voor openbare en persoonlijke Azure-peering van 4000 routes naar 10.000 routes.
-  * Wereldwijde connectiviteit voor services. Een ExpressRoute-circuit, gemaakt in een willekeurige regio (met uitzondering van nationale clouds), hebben toegang tot resources in elke andere regio ter wereld. Een virtueel netwerk dat bijvoorbeeld is gemaakt in Europa - west, is toegankelijk via een ExpressRoute-circuit ingericht in Silicon Valley.
+  * Globale connectiviteit voor services. Een ExpressRoute-circuit, gemaakt in een willekeurige regio (met uitzondering van nationale clouds), hebben toegang tot resources in elke andere regio ter wereld. Zo is een virtueel netwerk, gemaakt in Europa - west, toegankelijk via een ExpressRoute-circuit dat is ingericht in Silicon Valley.
   * Aantal VNet-koppelingen per ExpressRoute-circuit verhoogd van 10 tot een hogere limiet, afhankelijk van de bandbreedte van het circuit.
 
 ## <a name="faq"></a>Veelgestelde vragen

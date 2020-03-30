@@ -1,89 +1,89 @@
 ---
-title: Azure Data Catalog terminologie
-description: Dit artikel bevat een inleiding tot de concepten en termen die worden gebruikt in Azure Data Catalog documentatie.
+title: Azure-gegevenscatalogusterminologie
+description: In dit artikel vindt u een inleiding tot concepten en termen die worden gebruikt in de documentatie van Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736290"
 ---
-# <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
+# <a name="azure-data-catalog-terminology"></a>Azure-gegevenscatalogusterminologie
 
-Dit artikel bevat een inleiding tot de concepten en termen die worden gebruikt in Azure Data Catalog documentatie.
+In dit artikel vindt u een inleiding tot concepten en termen die worden gebruikt in de documentatie van Azure Data Catalog.
 
 ## <a name="catalog"></a>Catalogus
 
-De Azure Data Catalog is een op de cloud gebaseerde opslag voor meta gegevens waarin gegevens bronnen en gegevens assets kunnen worden geregistreerd. De catalogus fungeert als centrale opslag locatie voor de structurele meta gegevens die zijn geëxtraheerd uit gegevens bronnen en voor beschrijvende meta gegevens die worden toegevoegd door gebruikers.
+De Azure Data Catalog is een cloudgebaseerde metagegevensopslagplaats waarin gegevensbronnen en gegevenselementen kunnen worden geregistreerd. De catalogus dient als een centrale opslaglocatie voor structurele metagegevens geëxtraheerd uit gegevensbronnen en voor beschrijvende metagegevens die door gebruikers zijn toegevoegd.
 
 ## <a name="data-source"></a>Gegevensbron
 
-Een gegevens bron is een systeem of container die gegevensassets beheert. Voor beelden zijn SQL Server-data bases, Oracle-data bases, SQL Server Analysis Services-data bases (tabellaire of multidimensionale) en SQL Server Reporting Services servers.
+Een gegevensbron is een systeem of container die gegevenselementen beheert. Voorbeelden hiervan zijn SQL Server-databases, Oracle-databases, SQL Server Analysis Services-databases (tabelvormig of multidimensionaal) en SQL Server Reporting Services-servers.
 
-## <a name="data-asset"></a>Gegevens Asset
+## <a name="data-asset"></a>Gegevensasset
 
-Gegevensassets zijn objecten die zijn opgenomen in gegevens bronnen die kunnen worden geregistreerd bij de catalogus. Voor beelden zijn SQL Server tabellen en weer gaven, Oracle-tabellen en-weer gaven, SQL Server Analysis Services metingen, dimensies en Kpi's en SQL Server Reporting Services rapporten.
+Gegevenselementen zijn objecten in gegevensbronnen die kunnen worden geregistreerd bij de catalogus. Voorbeelden hiervan zijn SQL Server-tabellen en -weergaven, Oracle-tabellen en -weergaven, SQL Server Analysis Services-metingen, dimensies en KPI's en SQL Server Reporting Services-rapporten.
 
-## <a name="data-asset-location"></a>Locatie van gegevens activum
+## <a name="data-asset-location"></a>Locatie van gegevensactiva
 
-De catalogus slaat de locatie van een gegevens bron of gegevensasset op, die kan worden gebruikt om verbinding te maken met de bron met behulp van een client toepassing. De indeling en Details van de locatie variëren afhankelijk van het type gegevens bron. Een SQL Server tabel kan bijvoorbeeld worden geïdentificeerd aan de hand van de vier onderdeel naam: Server naam, database naam, schema naam, object naam, terwijl een SQL Server Reporting Services rapport kan worden geïdentificeerd met behulp van de URL.
+De catalogus slaat de locatie van een gegevensbron of gegevensasset op, die kan worden gebruikt om verbinding te maken met de bron met behulp van een clienttoepassing. De indeling en details van de locatie variëren afhankelijk van het gegevensbrontype. Een SQL Server-tabel kan bijvoorbeeld worden geïdentificeerd aan de andere kant van de naam van vier delen – servernaam, databasenaam, schemanaam, objectnaam – terwijl een SQL Server Reporting Services-rapport kan worden geïdentificeerd aan de URL.
 
-## <a name="structural-metadata"></a>Structurele meta gegevens
+## <a name="structural-metadata"></a>Structurele metagegevens
 
-Structured meta data is de meta gegevens die worden geëxtraheerd uit een gegevens bron waarmee de structuur van een gegevensasset wordt beschreven. Dit omvat de locatie van de activa, de object naam en het bijbehorende type en aanvullende specifieke kenmerken. De structurele meta gegevens voor tabellen en weer gaven bevatten bijvoorbeeld de namen en gegevens typen voor de kolommen van het object.
+Structurele metagegevens zijn de metagegevens die zijn geëxtraheerd uit een gegevensbron die de structuur van een gegevenselement beschrijft. Dit omvat de locatie van de activa, de objectnaam en het type en aanvullende typespecifieke kenmerken. De structurele metagegevens voor tabellen en weergaven bevatten bijvoorbeeld de namen en gegevenstypen voor de kolommen van het object.
 
-## <a name="descriptive-metadata"></a>Beschrijvende meta gegevens
+## <a name="descriptive-metadata"></a>Beschrijvende metagegevens
 
-Beschrijvende meta gegevens zijn meta gegevens waarmee het doel of de bedoeling van een gegevensasset wordt beschreven. Meestal worden beschrijvende meta gegevens toegevoegd door catalogus gebruikers met behulp van de Azure Data Catalog Portal, maar ze kunnen ook worden geëxtraheerd uit de gegevens bron tijdens de registratie. Het hulp programma voor het registreren van Azure Data Catalog haalt bijvoorbeeld beschrijvingen op uit de eigenschap Description in SQL Server Analysis Services en SQL Server Reporting Services, en van de [uitgebreide eigenschap ms_description](https://technet.microsoft.com/library/ms190243.aspx) in SQL server-data bases, als deze eigenschappen zijn gevuld met waarden.
+Beschrijvende metagegevens zijn metagegevens die het doel of de bedoeling van een gegevenselement beschrijven. Doorgaans worden beschrijvende metagegevens toegevoegd door catalogusgebruikers die de Azure Data Catalog-portal gebruiken, maar deze kunnen ook tijdens de registratie uit de gegevensbron worden geëxtraheerd. Met het hulpprogramma voor azure-gegevenscataloguswordt bijvoorbeeld beschrijvingen geëxtraheerd uit de eigenschap Beschrijving in SQL Server Analysis Services en SQL Server Reporting Services en uit de [ms_description uitgebreide eigenschap](https://technet.microsoft.com/library/ms190243.aspx) in SQL Server-databases, als deze eigenschappen zijn gevuld met waarden.
 
 ## <a name="request-access"></a>Toegang aanvragen
 
-De beschrijvende meta gegevens van een gegevens activum kunnen informatie bevatten over het aanvragen van toegang tot de gegevens Asset of gegevens bron. Deze informatie wordt weer gegeven met de locatie van de gegevens Asset en kan een of meer van de volgende opties bevatten:
+De beschrijvende metagegevens van een gegevensitem kunnen informatie bevatten over het aanvragen van toegang tot het gegevensitem of de gegevensbron. Deze informatie wordt gepresenteerd met de locatie van het gegevensactief en kan een of meer van de volgende opties bevatten:
 
-* Het e-mail adres van de gebruiker of het team dat verantwoordelijk is voor het verlenen van toegang tot de gegevens bron.
-* De URL van het gedocumenteerde proces dat gebruikers moeten volgen om toegang te krijgen tot de gegevens bron.
-* De URL van een hulp programma voor identiteits-en toegangs beheer (zoals Microsoft Identity Manager) dat kan worden gebruikt om toegang te krijgen tot de gegevens bron.
-* Een vermelding in een vrije tekst die beschrijft hoe gebruikers toegang kunnen krijgen tot de gegevens bron.
+* Het e-mailadres van de gebruiker of het team dat verantwoordelijk is voor het verlenen van toegang tot de gegevensbron.
+* De URL van het gedocumenteerde proces dat gebruikers moeten volgen om toegang te krijgen tot de gegevensbron.
+* De URL van een hulpprogramma voor identiteits- en toegangsbeheer (zoals Microsoft Identity Manager) die kan worden gebruikt om toegang te krijgen tot de gegevensbron.
+* Een gratis tekstvermelding waarin wordt beschreven hoe gebruikers toegang kunnen krijgen tot de gegevensbron.
 
 ## <a name="preview"></a>Preview
 
-Een preview in Azure Data Catalog is een moment opname van Maxi maal twintig records die tijdens de registratie kunnen worden opgehaald uit de gegevens bron en worden opgeslagen in de catalogus met de meta gegevens van de gegevensasset. Met de preview-versie kunt u gebruikers die een gegevens Asset ontdekken, de functie en het doel beter begrijpen. Met andere woorden, het bekijken van voorbeeld gegevens kan waardevoler zijn dan alleen de kolom namen en gegevens typen.
-Previews worden alleen ondersteund voor tabellen en weer gaven en moeten door de gebruiker expliciet worden geselecteerd tijdens de registratie.
+Een voorbeeld in Azure Data Catalog is een momentopname van maximaal 20 records die tijdens de registratie uit de gegevensbron kunnen worden gehaald en in de catalogus kunnen worden opgeslagen met de metagegevens van gegevensactiva. De preview kan gebruikers die een gegevensitem ontdekken, helpen de functie en het doel ervan beter te begrijpen. Met andere woorden, het zien van voorbeeldgegevens kan waardevoller zijn dan alleen de kolomnamen en gegevenstypen te zien.
+Previews worden alleen ondersteund voor tabellen en weergaven en moeten expliciet worden geselecteerd door de gebruiker tijdens de registratie.
 
 ## <a name="data-profile"></a>Gegevensprofiel
 
-Een gegevens profiel in Azure Data Catalog is een moment opname van meta gegevens op tabel-en kolom niveau over een geregistreerde gegevens Asset die tijdens de registratie kunnen worden opgehaald uit de gegevens bron en worden opgeslagen in de catalogus met de meta gegevens van de gegevensasset. Het gegevens profiel kan gebruikers helpen bij het ontdekken van een gegevens activum en de functie en het doel ervan beter begrijpen. Net als voor vertoningen moeten gegevens profielen tijdens de registratie expliciet worden geselecteerd door de gebruiker.
+Een gegevensprofiel in Azure Data Catalog is een momentopname van metagegevens op tabelniveau en kolomniveau over een geregistreerd gegevensitem dat tijdens de registratie uit de gegevensbron kan worden geëxtraheerd en in de catalogus kan worden opgeslagen met de metagegevens van gegevensactiva. Het gegevensprofiel kan gebruikers die een gegevensasset ontdekken, helpen de functie en het doel ervan beter te begrijpen. Net als bij previews moeten gegevensprofielen expliciet worden geselecteerd door de gebruiker tijdens de registratie.
 
 > [!NOTE]
-> Het uitpakken van een gegevens profiel kan een kost bare bewerking zijn voor grote tabellen en weer gaven, en kan de tijd die nodig is voor het registreren van een gegevens bron aanzienlijk verhogen.
+> Het extraheren van een gegevensprofiel kan een kostbare bewerking zijn voor grote tabellen en weergaven en kan de tijd die nodig is om een gegevensbron te registreren aanzienlijk verhogen.
 
 
-## <a name="user-perspective"></a>Gebruikers perspectief
+## <a name="user-perspective"></a>Gebruikersperspectief
 
-In Azure Data Catalog kan elke gebruiker beschrijvende meta gegevens voor een geregistreerde gegevensasset opgeven. Elke gebruiker heeft een verschillend perspectief over de gegevens en het gebruik ervan. De beheerder die verantwoordelijk is voor een-server kan bijvoorbeeld de details van de service level agreement (SLA) of de back-upvensters van Windows geven. een data steward kan koppelingen bevatten naar documentatie voor de bedrijfs processen die door de gegevens worden ondersteund. en een analist kan een beschrijving bieden in de voor waarden die het meest relevant zijn voor andere analisten en die het nuttigst kan zijn voor gebruikers die de gegevens moeten ontdekken en begrijpen.
+In Azure Data Catalog kan elke gebruiker beschrijvende metagegevens voor een geregistreerd gegevensitem verstrekken. Elke gebruiker heeft een duidelijk perspectief op de gegevens en het gebruik ervan. De beheerder die verantwoordelijk is voor een server kan bijvoorbeeld de details van de SLA of back-upvensters (Service Level Agreement) of back-upvensters opgeven. een gegevensbeheerder kan links naar documentatie verstrekken voor de bedrijfsprocessen die de gegevens ondersteunen; en een analist kan een beschrijving geven in de termen die het meest relevant zijn voor andere analisten en die het meest waardevol kunnen zijn voor gebruikers die de gegevens moeten ontdekken en begrijpen.
 
-Elk van deze perspectieven is opzettelijk waardevol en met Azure Data Catalog elke gebruiker de informatie kan leveren die relevant voor hen is, terwijl alle gebruikers die informatie kunnen gebruiken om inzicht te krijgen in de gegevens en het doel ervan.
+Elk van deze perspectieven is inherent waardevol en met Azure Data Catalog kan elke gebruiker de informatie verstrekken die voor hen relevant is, terwijl alle gebruikers die informatie kunnen gebruiken om de gegevens en het doel ervan te begrijpen.
 
 ## <a name="expert"></a>Expert
 
-Een expert is een gebruiker die is geïdentificeerd als een "expert"-perspectief voor een gegevensasset. Elke gebruiker kan zichzelf of een andere gebruiker toevoegen als een expert voor een Asset. Als een expert wordt vermeld, worden er geen aanvullende bevoegdheden in Azure Data Catalog overgedragen. Hiermee kunnen gebruikers eenvoudig deze perspectieven vinden die handig zijn bij het controleren van de beschrijvende meta gegevens van een activum.
+Een expert is een gebruiker die is geïdentificeerd als met een geïnformeerde "expert" perspectief voor een data-asset. Elke gebruiker kan zichzelf of een andere gebruiker toevoegen als expert voor een asset. Als u als expert wordt vermeld, worden er geen extra bevoegdheden in Azure Data Catalog weergegeven. het stelt gebruikers in staat om gemakkelijk die perspectieven te vinden die waarschijnlijk nuttig zijn bij het bekijken van de beschrijvende metadata van een asset.
 
 ## <a name="owner"></a>Eigenaar
 
-Een eigenaar is een gebruiker met aanvullende bevoegdheden voor het beheren van een gegevensasset in Azure Data Catalog. Gebruikers kunnen eigenaar worden van geregistreerde gegevensassets en eigen aren kunnen andere gebruikers toevoegen als mede-eigen aars. Zie [gegevens assets beheren](data-catalog-how-to-manage.md) voor meer informatie  
+Een eigenaar is een gebruiker die extra bevoegdheden heeft voor het beheren van een gegevensitem in Azure Data Catalog. Gebruikers kunnen eigenaar worden van geregistreerde gegevensactiva en eigenaren kunnen andere gebruikers toevoegen als mede-eigenaars. Zie [Gegevensassets beheren voor](data-catalog-how-to-manage.md) meer informatie  
 
 > [!NOTE]
-> Eigendom en beheer zijn alleen beschikbaar in de Standard-editie van Azure Data Catalog.
+> Eigendom en beheer zijn alleen beschikbaar in de Standaardeditie van Azure Data Catalog.
 
 ## <a name="registration"></a>Registratie
 
-Registratie is de handeling van het ophalen van meta gegevens van gegevensassets uit een gegevens bron en het kopiëren naar de Azure Data Catalog-service. Geregistreerde gegevensassets kunnen vervolgens worden aantekend en gedetecteerd.
+Registratie is de handeling van het extraheren van gegevensasset metadata uit een gegevensbron en kopiëren naar de Azure Data Catalog service. Gegevensactiva die zijn geregistreerd, kunnen vervolgens worden geannoteerd en ontdekt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstart: Een Azure Data Catalog maken](data-catalog-get-started.md) 
+[Snelstart: een Azure-gegevenscatalogus maken](data-catalog-get-started.md) 

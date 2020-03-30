@@ -1,22 +1,22 @@
 ---
-title: UserNameTextBox UI-element
-description: Hierin wordt het UI-element micro soft. compute. UserNameTextBox voor Azure Portal beschreven. Hiermee kunnen gebruikers Windows-of Linux-gebruikers namen opgeven.
+title: GebruikersnaamTextBox-element UI-element
+description: Beschrijft het Microsoft.Compute.UserNameTextBox-gebruikersinterface-element voor Azure-portal. Hiermee kunnen gebruikers windows- of Linux-gebruikersnamen verstrekken.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651902"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Micro soft. compute. UserNameTextBox UI-element
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox-element UI-element
 
-Een besturings element tekstvak met ingebouwde validatie voor Windows-en Linux-gebruikers namen.
+Een tekstvakbesturingselement met ingebouwde validatie voor Windows- en Linux-gebruikersnamen.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
 
@@ -47,13 +47,13 @@ Een besturings element tekstvak met ingebouwde validatie voor Windows-en Linux-g
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaard waarde is **True**.
-- `osPlatform` moet worden opgegeven, en dit kan **Windows** of **Linux**zijn.
-- `constraints.regex` is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
-- `constraints.validationMessage` is een teken reeks die moet worden weer gegeven wanneer de waarde van het tekstvak niet voldoet aan de validatie die is opgegeven door `constraints.regex`. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
-- Dit element heeft ingebouwde validatie die is gebaseerd op de waarde die is opgegeven voor `osPlatform`. De ingebouwde validatie kan worden gebruikt in combi natie met een aangepaste reguliere expressie. Als er een waarde voor `constraints.regex` is opgegeven, worden de ingebouwde en aangepaste validaties geactiveerd.
+- Als `constraints.required` dit is ingesteld op **true,** moet het tekstvak een waarde hebben om te valideren. De standaardwaarde is **waar**.
+- `osPlatform`moet worden opgegeven, en kan **windows** of **Linux**.
+- `constraints.regex`is een JavaScript-regelmatig expressiepatroon. Als dit is opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon dat met succes moet worden gevalideerd. De standaardwaarde is **null**.
+- `constraints.validationMessage`is een tekenreeks die moet worden weergegeven wanneer de `constraints.regex`waarde van het tekstvak niet voldoet aan de validatie die is opgegeven door . Als dit niet is opgegeven, worden de ingebouwde validatieberichten van het tekstvak gebruikt. De standaardwaarde is **null**.
+- Dit element heeft een ingebouwde validatie die `osPlatform`is gebaseerd op de opgegeven waarde voor . De ingebouwde validatie kan worden gebruikt samen met een aangepaste reguliere expressie. Als een `constraints.regex` waarde is opgegeven, worden zowel de ingebouwde als de aangepaste validaties geactiveerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

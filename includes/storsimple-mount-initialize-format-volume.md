@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176090"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Een volume koppelen, initialiseren en formatteren
@@ -18,7 +18,7 @@ ms.locfileid: "67176090"
 4. Ga in het venster **Eigenschappen iSCSI-initiator** op het tabblad **Doelen** naar **Gedetecteerde doelen**. De status van het apparaat moet worden weergegeven als **Inactief**.
 5. Selecteer het doelapparaat en klik vervolgens op **Verbinden**. Nadat het apparaat is verbonden, moet de status zijn gewijzigd in **Verbonden**. (Zie [Installing and Configuring Microsoft iSCSI Initiator][1] (Microsoft iSCSI-initiator installeren en configureren) voor meer informatie over het gebruik van de Microsoft iSCSI-initiator.)
 6. Druk op uw Windows-hots op de Windows-toets + X en klik vervolgens op **Uitvoeren**. 
-7. Typ in het dialoogvenster **Uitvoeren** **Diskmgmt.msc**. Klik op **OK**. Het dialoogvenster **Schijfbeheer** wordt weergegeven. In het rechterdeelvenster worden de volumes op uw host weergeven.
+7. Typ in het dialoogvenster **Uitvoeren****Diskmgmt.msc**. Klik op **OK**. Het dialoogvenster **Schijfbeheer** wordt weergegeven. In het rechterdeelvenster worden de volumes op uw host weergeven.
 8. In het venster **Schijfbeheer** worden de gekoppelde volumes weergegeven zoals in de volgende afbeelding. Klik met de rechtermuisknop op het gedetecteerde volume (klik op de naam van de schijf) en klik vervolgens op **Online**.
    
      ![Opmaakvolume initialiseren](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png) 
@@ -30,7 +30,7 @@ ms.locfileid: "67176090"
     3. Geef een clustergrootte van 64 kB op. Deze clustergrootte werkt goed samen met de ontdubbelingsalgoritmen die worden gebruikt in de StorSimple-oplossing.
     4. Voer een snelle formattering uit.
 
-![Video beschikbaar](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Video beschikbaar**
+![Video](./media/storsimple-mount-initialize-format-volume/Video_icon.png) beschikbaar **Video beschikbaar**
 
 Als u een video wilt bekijken over het koppelen, initialiseren en formatteren van een StorSimple-oplossing, klikt u [hier](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 

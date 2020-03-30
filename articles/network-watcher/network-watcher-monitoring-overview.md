@@ -15,19 +15,19 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844986"
 ---
 # <a name="what-is-azure-network-watcher"></a>Wat is Azure Network Watcher?
 
-Azure Network Watcher biedt hulpprogramma's voor het bewaken, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerk status van IaaS-producten (Infrastructure-as-a-Service) te controleren en te herstellen, waaronder Virtual Machines, virtuele netwerken, toepassings gateways, load balancers, enzovoort. Opmerking: het is niet bedoeld voor en werkt niet voor PaaS-bewaking of Web Analytics. 
+Azure Network Watcher biedt hulpprogramma's voor het controleren, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerkstatus van IaaS -producten (Infrastructure-as-a-Service) te bewaken en te herstellen, waaronder virtuele machines, virtuele netwerken, application gateways, load balancers, enz. Opmerking: het is niet bedoeld voor en werkt niet voor PaaS-monitoring of webanalyses. 
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
-### <a name = "connection-monitor"></a>De communicatie tussen een virtuele machine en een eindpunt bewaken
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>De communicatie tussen een virtuele machine en een eindpunt bewaken
 
 Eindpunten kunnen een andere virtuele machine (VM), een volledig gekwalificeerde domeinnaam (FQDN), een uniform resource identifier (URI) of een IPv4-adres zijn. De *verbindingsmonitor* controleert regelmatig de communicatie en informeert u over wijzigingen in bereikbaarheid, latentie en de netwerktopologie tussen de virtuele machine en het eindpunt. U hebt bijvoorbeeld een webserver-VM die communiceert met een databaseserver-VM. Iemand in uw organisatie kan zonder dat u het weet een aangepaste route of netwerkbeveiligingsregel toepassen op de webserver- of databaseserver-VM of het subnet.
 
@@ -45,7 +45,7 @@ Wanneer resources worden toegevoegd aan een virtueel netwerk, kan het moeilijker
 
 U kunt een bewerkbare versie van de afbeelding in SVG-indeling downloaden. Meer informatie over [topologieweergave](view-network-topology.md).
 
-## <a name="diagnostics"></a>Diagnostics
+## <a name="diagnostics"></a>Diagnostiek
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Problemen diagnosticeren met het filteren van netwerkverkeer naar of vanaf een VM
 
@@ -55,7 +55,7 @@ Wanneer u een VM implementeert, past Azure standaard beveiligingsregels toe op d
 
 Wanneer u een virtueel netwerk maakt, maakt Azure verschillende standaard uitgaande routes voor netwerkverkeer. Het uitgaande verkeer van alle resources, zoals virtuele machines, geïmplementeerd in een virtueel netwerk worden gerouteerd op basis van de Azure-standaardroutes. U kunt Azure-standaardroutes overschrijven of zelf extra routes maken. Het is mogelijk dat een VM niet meer met andere resources kan communiceren vanwege een specifieke route. Met de mogelijkheid *Volgende hop* kunt u een IPv4-adres van een bron en een bestemming opgeven. Volgende hop test vervolgens de communicatie en informeert u welk type volgende hop wordt gebruikt voor het routeren van verkeer. U kunt vervolgens een route verwijderen, wijzigen of toevoegen om een routeringsprobleem op te lossen. Meer informatie over de mogelijkheid [Volgende hop](diagnose-vm-network-routing-problem.md).
 
-### <a name="connection-troubleshoot"></a>Problemen met uitgaande verbindingen vanaf een VM diagnosticeren
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Problemen met uitgaande verbindingen vanaf een VM diagnosticeren
 
 Met *Verbindingsproblemen oplossen* kunt u een verbinding tussen een VM en een andere VM, een FQDN-naam, een URI of een IPv4-adres testen. De test retourneert vergelijkbare gegevens als bij het gebruik van de [verbindingsmonitor](#connection-monitor), maar test de verbinding op een bepaald tijdstip in plaats van de verbinding in de loop van de tijd te controleren, zoals het geval is bij de verbindingsmonitor. Meer informatie over het oplossen van verbindingen met [Verbindingsproblemen oplossen](network-watcher-connectivity-overview.md).
 

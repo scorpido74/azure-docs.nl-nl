@@ -1,5 +1,5 @@
 ---
-title: Een app configureren om Web-Api's weer te geven-micro soft-identiteits platform | Azure
+title: Een app configureren om web-API's bloot te leggen - Microsoft-identiteitsplatform | Azure
 description: Leer hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuwe machtiging/nieuw bereik en een nieuwe rol, om de toepassing beschikbaar te maken voor clienttoepassingen.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76704218"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Snelstartgids: een toepassing configureren voor het beschikbaar maken van web-Api's
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Snelstart: een toepassing configureren om web-API's bloot te leggen
 
 U kunt een web-API ontwikkelen en deze beschikbaar maken voor clienttoepassingen door [machtigingen/bereiken](developer-glossary.md#scopes) en [rollen](developer-glossary.md#roles) beschikbaar te maken. Een correct geconfigureerde web-API wordt net als de andere Microsoft web-API's beschikbaar gesteld, met inbegrip van de Graph API en de Office 365-API's.
 
@@ -39,7 +39,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
-1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory-service** en selecteer **app-registraties**.
 1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u het **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Kies welke methode u wilt gebruiken - een gebruikersinterface of een toepassingsmanifest - om een nieuw bereik beschikbaar te maken:
     * [Een nieuw bereik beschikbaar maken via de gebruikersinterface](#expose-a-new-scope-through-the-ui)
@@ -47,7 +47,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Een nieuw bereik beschikbaar maken via de gebruikersinterface
 
-[![laat zien hoe u een API beschikbaar maakt met behulp van de gebruikers interface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Laat zien hoe u een API blootstelt met de gebruikersinterface](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
@@ -79,7 +79,7 @@ Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Een nieuw bereik of nieuwe rol beschikbaar maken via het toepassingsmanifest
 
-[![Een nieuw bereik beschikbaar maken met behulp van de verzameling oauth2Permissions in het manifest](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+[![Een nieuw bereik blootleggen met behulp van de verzameling oauth2Permissions in het manifest](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
 Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
 
@@ -111,9 +111,9 @@ Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Controleren of de web-API beschikbaar is gemaakt voor andere toepassingen
 
 1. Ga terug naar de Azure Active Directory-tenant, selecteer **App-registraties** en zoek en selecteer de clienttoepassing die u wilt configureren.
-1. Herhaal de stappen die worden beschreven in [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md).
-1. Wanneer u naar de stap gaat om [een API te selecteren](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-), selecteert u uw resource. U ziet nu het nieuwe bereik, dat beschikbaar is voor machtigingsaanvragen voor clients.
+1. Herhaal de stappen die zijn beschreven in [Een clienttoepassing configureren om toegang te krijgen tot web-API's](quickstart-configure-app-access-web-apis.md).
+1. Wanneer u bij de stap komt om een API te [selecteren,](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+)selecteert u uw bron. U ziet nu het nieuwe bereik, dat beschikbaar is voor machtigingsaanvragen voor clients.
 
 ## <a name="more-on-the-application-manifest"></a>Meer informatie over het toepassingsmanifest
 

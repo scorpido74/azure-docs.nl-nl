@@ -1,142 +1,142 @@
 ---
-title: De apparaten in uw Azure IoT Central-toepassing beheren | Microsoft Docs
-description: Als operator vindt u informatie over het beheren van apparaten in uw Azure IoT Central-toepassing.
+title: De apparaten beheren in uw Azure IoT Central-toepassing | Microsoft Documenten
+description: Lees als operator hoe u apparaten in uw Azure IoT Central-toepassing beheert.
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dfbfd65223ddad5e8a20958d62ef86b5aa16af43
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271575"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157939"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
 
 
 
-In dit artikel wordt beschreven hoe u als een operator apparaten beheert in uw Azure IoT Central-toepassing. Als operator kunt u het volgende doen:
+In dit artikel wordt beschreven hoe u als operator apparaten in uw Azure IoT Central-toepassing beheren. Als operator u:
 
-- Gebruik de pagina **apparaten** om apparaten weer te geven, toe te voegen en te verwijderen die zijn verbonden met uw Azure IOT Central-toepassing.
-- Onderhoud van een actuele inventaris van uw apparaten.
-- De meta gegevens van uw apparaat up-to-date houden door de waarden die zijn opgeslagen in de eigenschappen van het apparaat te wijzigen in uw weer gaven.
-- U bepaalt het gedrag van uw apparaten door een instelling op een specifiek apparaat in uw weer gaven bij te werken.
+- Gebruik de pagina **Apparaten** om apparaten die zijn verbonden met uw Azure IoT Central-toepassing weer te geven, toe te voegen en te verwijderen.
+- Houd een up-to-date voorraad van uw apparaten bij.
+- Houd de metagegevens van uw apparaat up-to-date door de waarden die zijn opgeslagen in de apparaateigenschappen te wijzigen vanuit uw weergaven.
+- Bedien het gedrag van uw apparaten door een instelling op een specifiek apparaat bij te werken vanuit uw weergaven.
 
 ## <a name="view-your-devices"></a>Uw apparaten weergeven
 
-Een afzonderlijk apparaat weer geven:
+Ga als een mogelijk overzicht van een afzonderlijk apparaat:
 
-1. Kies **apparaten** in het linkerdeel venster. Hier ziet u een lijst met alle apparaten en de sjablonen van uw apparaten.
+1. Kies **Apparaten** in het linkerdeelvenster. Hier ziet u een lijst met alle apparaten en van uw apparaatsjablonen.
 
-1. Kies een sjabloon voor het apparaat.
+1. Kies een apparaatsjabloon.
 
-1. In het rechterdeel venster van de pagina **apparaten** ziet u een lijst met apparaten die zijn gemaakt op basis van die apparaataccount. Kies een afzonderlijk apparaat om de pagina met details van het apparaat voor dat apparaat weer te geven:
+1. In het rechterdeelvenster van de pagina **Apparaten** ziet u een lijst met apparaten die zijn gemaakt met die apparaatsjabloon. Kies een afzonderlijk apparaat om de pagina met apparaatgegevens voor dat apparaat te bekijken:
 
-    ![Pagina Details van apparaat](./media/howto-manage-devices/devicelist.png)
+    ![Pagina Apparaatgegevens](./media/howto-manage-devices/devicelist.png)
 
 
 ## <a name="add-a-device"></a>Een apparaat toevoegen
 
-Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
+Ga als lid van het nieuwe bedrijf naar een apparaat toe aan uw Azure IoT Central-toepassing:
 
-1. Kies **apparaten** in het linkerdeel venster.
+1. Kies **Apparaten** in het linkerdeelvenster.
 
-1. Kies de sjabloon van het apparaat waaruit u een apparaat wilt maken.
+1. Kies de apparaatsjabloon waaruit u een apparaat wilt maken.
 
 1. Kies + **Nieuw**.
 
-1. Schakel de **gesimuleerde** wissel knop **in of** **uit**. Een echt apparaat is voor een fysiek apparaat waarmee u verbinding maakt met uw Azure IoT Central-toepassing. Voor een gesimuleerd apparaat zijn voorbeeld gegevens gegenereerd door Azure IoT Central.
+1. Schakel de **gesimuleerde** schakelin in **op In-** of **Uit.** Een echt apparaat is voor een fysiek apparaat dat u verbinding maakt met uw Azure IoT Central-toepassing. Op een gesimuleerd apparaat worden voorbeeldgegevens gegenereerd door Azure IoT Central.
 
-1. Klik op **Create**.
+1. Klik **op Maken**.
 
-1. Dit apparaat wordt nu weer gegeven in de lijst met apparaten voor deze sjabloon. Selecteer het apparaat om de detail pagina van het apparaat weer te geven die alle weer gaven voor het apparaat bevat.
+1. Dit apparaat wordt nu weergegeven in de lijst met apparaten voor deze sjabloon. Selecteer het apparaat om de pagina met apparaatdetails te zien die alle weergaven voor het apparaat bevat.
 
 ## <a name="import-devices"></a>Apparaten importeren
 
-Als u een groot aantal apparaten wilt verbinden met uw toepassing, kunt u apparaten bulksgewijs importeren uit een CSV-bestand. Het CSV-bestand moet de volgende kolommen en kopteksten hebben:
+Als u een groot aantal apparaten met uw toepassing wilt verbinden, u apparaten uit een CSV-bestand bulkimporteren. Het CSV-bestand moet de volgende kolommen en kopteksten bevatten:
 
-* **IOTC_DeviceID** -de apparaat-id moet allemaal kleine letters zijn.
-* **IOTC_DeviceName** : deze kolom is optioneel.
+* **IOTC_DeviceID** - de apparaat-ID moet alle kleine letters.
+* **IOTC_DeviceName** - deze kolom is optioneel.
 
-Apparaten in uw toepassing bulksgewijs registreren:
+Apparaten in uw toepassing in bulk registreren:
 
-1. Kies **apparaten** in het linkerdeel venster.
+1. Kies **Apparaten** in het linkerdeelvenster.
 
-1. Kies in het linkerdeel venster de sjabloon voor het apparaat waarvoor u de apparaten bulksgewijs wilt maken.
+1. Kies in het linkerdeelvenster de apparaatsjabloon waarvoor u de apparaten wilt maken.
 
     > [!NOTE]
-    > Als u nog geen sjabloon voor het apparaat hebt, kunt u apparaten onder **alle apparaten** importeren en ze zonder een sjabloon registreren. Nadat de apparaten zijn geïmporteerd, kunt u deze migreren naar een sjabloon.
+    > Als u nog geen apparaatsjabloon hebt, u apparaten importeren onder **Alle apparaten** en deze registreren zonder sjabloon. Nadat apparaten zijn geïmporteerd, u ze vervolgens migreren naar een sjabloon.
 
-1. Selecteer **importeren**.
+1. Selecteer **Importeren**.
 
-    ![Import actie](./media/howto-manage-devices/bulkimport1a.png)
-
-
-1. Selecteer het CSV-bestand met de lijst met apparaat-Id's die moeten worden geïmporteerd.
-
-1. Het importeren van apparaten wordt gestart zodra het bestand is geüpload. U kunt de import status volgen in het deel venster apparaten. Dit paneel verschijnt automatisch nadat het importeren is gestart of u kunt het openen via het klok pictogram in de rechter bovenhoek.
-
-1. Zodra het importeren is voltooid, wordt een bericht weer gegeven in het deel venster apparaten.
-
-    ![Import geslaagd](./media/howto-manage-devices/bulkimport3a.png)
+    ![Actie importeren](./media/howto-manage-devices/bulkimport1a.png)
 
 
-Als de Importeer bewerking van het apparaat mislukt, wordt er een fout bericht weer gegeven in het paneel voor het apparaat. Een logboek bestand waarin alle fouten worden vastgelegd, wordt gegenereerd dat u kunt downloaden.
+1. Selecteer het CSV-bestand met de lijst met apparaat-id's die moeten worden geïmporteerd.
 
-**Apparaten naar een sjabloon migreren**
+1. Het importeren van apparaten wordt gestart nadat het bestand is geüpload. U de importstatus bijhouden in het deelvenster Apparaatbewerkingen. Dit paneel verschijnt automatisch nadat de import is gestart of u het openen via het belpictogram in de rechterbovenhoek.
 
-Als u apparaten registreert door het importeren te starten onder **alle apparaten**, worden de apparaten gemaakt zonder een sjabloon koppeling van het apparaat. Apparaten moeten worden gekoppeld aan een sjabloon om de gegevens en andere details over het apparaat te kunnen verkennen. Volg deze stappen om apparaten te koppelen aan een sjabloon:
+1. Zodra de import is voltooid, wordt een succesbericht weergegeven in het deelvenster Apparaatbewerkingen.
 
-1. Kies **apparaten** in het linkerdeel venster.
+    ![Succes importeren](./media/howto-manage-devices/bulkimport3a.png)
 
-1. Kies in het linkerdeel venster **alle apparaten**:
+
+Als de bewerking voor het importeren van het apparaat mislukt, ziet u een foutbericht in het deelvenster Apparaatbewerkingen. Een logbestand dat alle fouten vastlegt, wordt gegenereerd die u downloaden.
+
+**Apparaten migreren naar een sjabloon**
+
+Als u apparaten registreert door de import te starten onder **Alle apparaten,** worden de apparaten gemaakt zonder dat er een apparaatsjabloonwordt associatie. Apparaten moeten worden gekoppeld aan een sjabloon om de gegevens en andere details over het apparaat te verkennen. Volg deze stappen om apparaten aan een sjabloon te koppelen:
+
+1. Kies **Apparaten** in het linkerdeelvenster.
+
+1. Kies op het linkerdeelvenster **Alle apparaten:**
 
     ![Niet-gekoppelde apparaten](./media/howto-manage-devices/unassociateddevices1a.png)
 
 
-1. Gebruik het filter op het raster om te bepalen of de waarde in de kolom **device Temp late** ' Unlinked ' is voor uw apparaten.
+1. Gebruik het filter op het raster om te bepalen of de waarde in de kolom **Apparaatsjabloon** 'Niet-gekoppeld' is voor een van uw apparaten.
 
-1. Selecteer de apparaten die u wilt koppelen aan een sjabloon:
+1. Selecteer de apparaten die u aan een sjabloon wilt koppelen:
 
-1. Selecteer **migreren**:
+1. Selecteer **Migreren:**
 
     ![Apparaten koppelen](./media/howto-manage-devices/unassociateddevices2a.png)
 
 
-1. Kies de sjabloon in de lijst met beschik bare sjablonen en selecteer **migreren**.
+1. Kies de sjabloon in de lijst met beschikbare sjablonen en selecteer **Migreren**.
 
-1. De geselecteerde apparaten zijn gekoppeld aan de apparaatprofiel die u hebt gekozen.
+1. De geselecteerde apparaten zijn gekoppeld aan de apparaatsjabloon die u hebt gekozen.
 
 
-## <a name="export-devices"></a>Apparaten exporteren
+## <a name="export-devices"></a>Exportapparaten
 
-Als u een echt apparaat wilt verbinden met IoT Central, hebt u het connection string. U kunt de details van het apparaat in bulk exporteren om de informatie te verkrijgen die u nodig hebt om verbindings reeksen voor apparaten te maken. Het export proces maakt een CSV-bestand met de apparaat-id, de apparaatnaam en de sleutels voor alle geselecteerde apparaten.
+Als u een echt apparaat wilt aansluiten op IoT Central, hebt u de verbindingstekenreeks nodig. U apparaatgegevens in bulk exporteren om de informatie te krijgen die u nodig hebt om apparaatverbindingstekenreeksen te maken. Met het exportproces wordt een CSV-bestand met de apparaatidentiteit, de apparaatnaam en de sleutels voor alle geselecteerde apparaten.
 
-Apparaten bulksgewijs exporteren vanuit uw toepassing:
+Ga als een bulkexportapparaat uit uw toepassing:
 
-1. Kies **apparaten** in het linkerdeel venster.
+1. Kies **Apparaten** in het linkerdeelvenster.
 
-1. Kies in het linkerdeel venster de sjabloon voor het apparaat waaruit u de apparaten wilt exporteren.
+1. Kies in het linkerdeelvenster de apparaatsjabloon waaruit u de apparaten wilt exporteren.
 
-1. Selecteer de apparaten die u wilt exporteren en selecteer vervolgens de **export** actie.
+1. Selecteer de apparaten die u wilt exporteren en selecteer vervolgens de actie **Exporteren.**
 
     ![Exporteren](./media/howto-manage-devices/export1a.png)
 
 
-1. Het export proces wordt gestart. U kunt de status bijhouden met behulp van het deel venster apparaten.
+1. Het exportproces begint. U de status bijhouden via het deelvenster Apparaatbewerkingen.
 
-1. Wanneer het exporteren is voltooid, wordt een bericht weer gegeven samen met een koppeling om het gegenereerde bestand te downloaden.
+1. Wanneer de export is voltooid, wordt een succesbericht weergegeven, samen met een link om het gegenereerde bestand te downloaden.
 
-1. Selecteer de koppeling **bestand downloaden** om het bestand te downloaden naar een lokale map op de schijf.
+1. Selecteer de koppeling **Bestand downloaden** om het bestand te downloaden naar een lokale map op de schijf.
 
-    ![Het exporteren is voltooid](./media/howto-manage-devices/export2a.png)
+    ![Export succes](./media/howto-manage-devices/export2a.png)
 
 
-1. Het geëxporteerde CSV-bestand bevat de volgende kolommen: apparaat-ID, apparaatnaam, Apparaatsets en x509-certificaat vingerafdrukken:
+1. Het geëxporteerde CSV-bestand bevat de volgende kolommen: apparaat-id, apparaatnaam, apparaatsleutels en duimafdrukken met X509-certificaat:
 
     * IOTC_DEVICEID
     * IOTC_DEVICENAME
@@ -145,38 +145,38 @@ Apparaten bulksgewijs exporteren vanuit uw toepassing:
     * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
 
-Zie [connectiviteit van apparaten in Azure IOT Central](concepts-get-connected.md)voor meer informatie over verbindings reeksen en het verbinden van echte apparaten met uw IOT Central-toepassing.
+Zie [Apparaatconnectiviteit in Azure IoT Central](concepts-get-connected.md)voor meer informatie over verbindingstekenreeksen en het verbinden van echte apparaten met uw IoT Central-toepassing.
 
 ## <a name="delete-a-device"></a>Een apparaat verwijderen
 
-Een echt of gesimuleerd apparaat verwijderen uit uw Azure IoT Central-toepassing:
+Ga als lid van uw Azure IoT Central-toepassing als lid van uw Azure IoT Central-toepassing:
 
-1. Kies **apparaten** in het linkerdeel venster.
+1. Kies **Apparaten** in het linkerdeelvenster.
 
-1. Kies de sjabloon van het apparaat dat u wilt verwijderen.
+1. Kies de apparaatsjabloon van het apparaat dat u wilt verwijderen.
 
-1. Gebruik de filter hulpprogramma's om uw apparaten te filteren en te zoeken. Schakel het selectie vakje in naast de apparaten die u wilt verwijderen.
+1. Gebruik de filtergereedschappen om uw apparaten te filteren en te zoeken. Schakel het selectievakje naast de apparaten in om te verwijderen.
 
-1. Kies **verwijderen**. U kunt de status van deze verwijdering volgen in het deel venster van het apparaat.
+1. Kies **Verwijderen**. U de status van deze verwijdering bijhouden in het deelvenster Apparaatbewerkingen.
 
 ## <a name="change-a-property"></a>Een eigenschap wijzigen
 
-Cloud eigenschappen zijn de meta gegevens van het apparaat die zijn gekoppeld aan het apparaat, zoals City en serie nummer. Beschrijf bare eigenschappen bepalen het gedrag van een apparaat. Met andere woorden, ze stellen u in staat om invoer te bieden aan uw apparaat.  Apparaateigenschappen worden ingesteld door het apparaat en zijn alleen-lezen in IoT Central. U kunt eigenschappen weer geven en bijwerken op de details van het **apparaat** voor uw apparaat.
+Cloudeigenschappen zijn de apparaatmetagegevens die aan het apparaat zijn gekoppeld, zoals de plaats en het serienummer. Schrijfbare eigenschappen bepalen het gedrag van een apparaat. Met andere woorden, ze stellen u in staat om ingangen aan uw apparaat te leveren.  Apparaateigenschappen worden ingesteld door het apparaat en zijn alleen-lezen binnen IoT Central. U eigenschappen weergeven en bijwerken in de weergaven **Apparaatdetails** voor uw apparaat.
 
-1. Kies **apparaten** in het linkerdeel venster.
+1. Kies **Apparaten** in het linkerdeelvenster.
 
-1. Kies de Device-sjabloon van het apparaat waarvan u de eigenschappen wilt wijzigen en selecteer het doel apparaat.
+1. Kies de apparaatsjabloon van het apparaat waarvan u de eigenschappen wilt wijzigen en selecteer het doelapparaat.
 
-1. Kies de weer gave met de eigenschappen van het apparaat. in deze weer gave kunt u waarden invoeren en boven aan de pagina **Opslaan** selecteren. Hier ziet u de eigenschappen van uw apparaat en de huidige waarden. Eigenschappen van de Cloud en de Beschrijf bare eigenschappen hebben bewerkte velden, terwijl de apparaateigenschappen alleen-lezen zijn. Voor schrijf bare eigenschappen ziet u de synchronisatie status onder aan het veld. 
+1. Kies de weergave die eigenschappen voor uw apparaat bevat, met deze weergave u waarden invoeren en **Opslaan** boven aan de pagina selecteren. Hier ziet u de eigenschappen die uw apparaat heeft en hun huidige waarden. Cloudeigenschappen en schrijfbare eigenschappen hebben bewerkbare velden, terwijl apparaateigenschappen alleen-lezen zijn. Voor schrijfbare eigenschappen u hun synchronisatiestatus onder aan het veld zien. 
 
-1. Wijzig de eigenschappen in de gewenste waarden. U kunt meerdere eigenschappen tegelijk wijzigen en deze allemaal tegelijk bijwerken.
+1. Wijzig de eigenschappen in de waarden die u nodig hebt. U meerdere eigenschappen tegelijk wijzigen en ze allemaal tegelijk bijwerken.
 
-1. Kies **Opslaan**. Als u schrijf bare eigenschappen hebt opgeslagen, worden de waarden naar uw apparaat verzonden. Wanneer het apparaat de wijziging voor de Beschrijf bare eigenschap bevestigt, keert de status terug naar **gesynchroniseerd**. Als u een Cloud eigenschap hebt opgeslagen, wordt de waarde bijgewerkt.
+1. Kies **Opslaan**. Als u schrijfbare eigenschappen hebt opgeslagen, worden de waarden naar uw apparaat verzonden. Wanneer het apparaat de wijziging voor de eigenschap schrijfbaar bevestigt, keert de status terug naar **gesynchroniseerd**. Als u een cloudeigenschap hebt opgeslagen, wordt de waarde bijgewerkt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u apparaten beheert in uw Azure IoT Central-toepassing, is dit de voorgestelde volgende stap:
+Nu u hebt geleerd hoe u apparaten in uw Azure IoT Central-toepassing beheren, volgt de volgende stap:
 
 > [!div class="nextstepaction"]
 > [Apparaatgroepen gebruiken](tutorial-use-device-groups.md)

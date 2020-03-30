@@ -1,6 +1,6 @@
 ---
-title: Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
-description: In dit artikel wordt beschreven hoe u in Azure Stream Analytics-Hulpprogram Ma's voor Visual Studio fouten opspoort met behulp van het taak diagram.
+title: Azure Stream Analytics-query's lokaal opsporen met taakdiagram in Visual Studio
+description: In dit artikel wordt beschreven hoe u query's lokaal opsporen met behulp van taakdiagram in Azure Stream Analytics-hulpprogramma's voor Visual Studio.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,121 +8,121 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76847197"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics-query's lokaal opsporen met taakdiagram in Visual Studio
 
-Taken waarvoor geen resultaten of onverwachte resultaten optreden, zijn veelvoorkomende scenario's voor het oplossen van problemen met het streamen van query's. U kunt het taak diagram gebruiken tijdens het lokaal testen van uw query in Visual Studio om de tussenliggende resultatenset en metrische gegevens voor elke stap te controleren. Taak diagrammen kunnen u helpen bij het snel isoleren van de bron van een probleem bij het oplossen van problemen.
+Taken die geen resultaat of onverwachte resultaten uitvoeren, zijn veelvoorkomende probleemoplossingsscenario's voor streamingquery's. U het taakdiagram gebruiken terwijl u uw query lokaal test in Visual Studio om de tussentijdse resultaatset en statistieken voor elke stap te onderzoeken. Taakdiagrammen kunnen u helpen de bron van een probleem snel te isoleren wanneer u problemen oplost.
 
-## <a name="debug-a-query-using-job-diagram"></a>Fouten opsporen in een query met behulp van taak diagram
+## <a name="debug-a-query-using-job-diagram"></a>Een query debuggen met een taakdiagram
 
-Een Azure Stream Analytics script wordt gebruikt om invoer gegevens naar uitvoer gegevens te transformeren. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die is gedefinieerd in het script met behulp van een `WITH`-instructie. U kunt de gegevens weer geven, evenals de metrieken van elke query stap in elke tussenliggende resultatenset om de bron van een probleem te vinden.
+Een Azure Stream Analytics-script wordt gebruikt om invoergegevens om te zetten in uitvoergegevens. Het taakdiagram laat zien hoe gegevens stromen uit invoerbronnen (Gebeurtenishub, IoT Hub, enz.) via meerdere querystappen en, ten slotte, naar uitvoergootstenen. Elke querystap wordt toegewezen aan een tijdelijke resultaatset `WITH` die in het script is gedefinieerd met behulp van een instructie. U de gegevens en statistieken van elke querystap in elke tussenliggende resultatenset bekijken om de bron van een probleem te vinden.
 
 > [!NOTE]
-> In dit taak diagram worden alleen de gegevens en statistieken voor lokale tests in één knoop punt weer gegeven. Het mag niet worden gebruikt voor het afstemmen van de prestaties en het oplossen van problemen.
+> In dit taakdiagram worden alleen de gegevens en statistieken voor lokale tests in één knooppunt weergegeven. Het mag niet worden gebruikt voor het afstemmen van de prestaties en het oplossen van problemen.
 
 ### <a name="start-local-testing"></a>Lokale tests starten
 
-Gebruik deze [Quick](stream-analytics-quick-create-vs.md) start om te leren hoe u met Visual Studio een stream Analytics taak maakt of [een bestaande taak naar een lokaal project exporteert](stream-analytics-vs-tools.md#export-jobs-to-a-project). Als u de query wilt testen met lokale invoer gegevens, volgt u deze [instructies](stream-analytics-live-data-local-testing.md). Als u met Live-invoer wilt testen, gaat u naar de volgende stap.
+Gebruik deze [Quickstart](stream-analytics-quick-create-vs.md) om te leren hoe u een Stream Analytics-taak maakt met Visual Studio of [een bestaande taak exporteert naar een lokaal project.](stream-analytics-vs-tools.md#export-jobs-to-a-project) Als u de query wilt testen met lokale invoergegevens, volgt u deze [instructies](stream-analytics-live-data-local-testing.md). Als u wilt testen met live-invoer, gaat u naar de volgende stap.
 
 > [!NOTE]
-> Als u een taak exporteert naar een lokaal project en wilt testen op een live invoer stroom, moet u de referenties voor alle invoer opnieuw opgeven.  
+> Als u een taak exporteert naar lokaal project en wilt testen tegen een live invoerstream, moet u de referenties voor alle invoer opnieuw opgeven.  
 
-Kies de invoer-en uitvoer bron van de script editor en selecteer **lokaal uitvoeren**. Het taak diagram wordt aan de rechter kant weer gegeven.
+Kies de invoer- en uitvoerbron in de scripteditor en selecteer **Lokaal uitvoeren**. Het taakdiagram wordt aan de rechterkant weergegeven.
 
-### <a name="view-the-intermediate-result-set"></a>De tussenliggende resultatenset weer geven  
+### <a name="view-the-intermediate-result-set"></a>Bekijk de tussenliggende resultaatset  
 
-1. Selecteer de query stap om naar het script te navigeren. U wordt automatisch omgeleid naar het bijbehorende script in de editor aan de linkerkant.
+1. Selecteer de querystap om naar het script te navigeren. U wordt automatisch doorverwezen naar het bijbehorende script in de editor aan de linkerkant.
 
-   ![Taak diagram navigatie script](./media/debug-locally-using-job-diagram/navigate-script.png)
+   ![Het navigerenscript van het taakdiagram](./media/debug-locally-using-job-diagram/navigate-script.png)
 
-2. Selecteer de query stap en selecteer **voor beeld** in het dialoog venster omhoog. De resultatenset wordt weer gegeven op een tabblad in het onderste resultaat venster.
+2. Selecteer de querystap en selecteer **Voorbeeld** in het dialoogvenster opgedoken. De resultaatset wordt weergegeven op een tabblad in het onderste resultaatvenster.
 
-   ![Resultaat van voor beeld van taak diagram](./media/debug-locally-using-job-diagram/preview-result.png)
+   ![Voorbeeld van het voorbeeld van het taakdiagram](./media/debug-locally-using-job-diagram/preview-result.png)
 
-### <a name="view-step-metrics"></a>Metrische stap waarden weer geven
+### <a name="view-step-metrics"></a>Stapstatistieken weergeven
 
-In deze sectie bekijkt u de metrische gegevens die beschikbaar zijn voor elk deel van het diagram.
+In deze sectie verkent u de statistieken die beschikbaar zijn voor elk deel van het diagram.
 
-#### <a name="input-sources-live-stream"></a>Invoer bronnen (Live Stream)
+#### <a name="input-sources-live-stream"></a>Invoerbronnen (livestream)
 
-![Taak diagram Live-invoer bronnen](./media/debug-locally-using-job-diagram/live-input.png)
+![Taakdiagram live-invoerbronnen](./media/debug-locally-using-job-diagram/live-input.png)
 
 |Gegevens|Beschrijving|
 |-|-|
-|**TaxiRide**| De naam van de invoer.|
-|**Event Hub** | Invoer bron type.|
+|**TaxiRide TaxiRide**| De naam van de invoer.|
+|**Gebeurtenishub** | Type invoerbron.|
 |**Gebeurtenissen**|Het aantal gelezen gebeurtenissen.|
-|**Reserve gebeurtenis bronnen**|Hoeveel meer berichten moeten worden gelezen voor Event Hubs en IoT Hub invoer.|
+|**Backlogged EventBronnen**|Hoeveel berichten moeten nog worden gelezen voor gebeurtenishubs en IoT Hub-ingangen.|
 |**Gebeurtenissen in bytes**|Het aantal gelezen bytes.|
-| **Gedegradeerde gebeurtenissen**|Het aantal gebeurtenissen waarvoor een probleem is opgetreden, anders dan bij deserialisatie.|
-|**Vroege gebeurtenissen**| Het aantal gebeurtenissen met een tijds tempel van de toepassing voor de bovengrens.|
-|**Late gebeurtenissen**| Het aantal gebeurtenissen met een tijds tempel van een toepassing na de bovengrens.|
-|**Gebeurtenis bronnen**| Het aantal gelezen gegevens eenheden. Bijvoorbeeld het aantal blobs.|
+| **Gedegradeerde gebeurtenissen**|De telling van gebeurtenissen die een ander probleem hadden dan met deserialisatie.|
+|**Vroege gebeurtenissen**| Het aantal gebeurtenissen met een toepassingstijdstempel vóór het hoge watermerk.|
+|**Late evenementen**| Het aantal gebeurtenissen met een toepassingstijdstempel na het hoge watermerk.|
+|**Gebeurtenisbronnen**| Het aantal gelezen gegevenseenheden. Bijvoorbeeld het aantal blobs.|
 
-#### <a name="input-sources-local-input"></a>Invoer bronnen (lokale invoer)
+#### <a name="input-sources-local-input"></a>Invoerbronnen (lokale invoer)
 
-![Taak diagram lokale invoer bronnen](./media/debug-locally-using-job-diagram/local-input.png)
+![Lokale invoerbronnen voor taakdiagram](./media/debug-locally-using-job-diagram/local-input.png)
 
 |Gegevens|Beschrijving|
 |-|-|
-|**TaxiRide**| De naam van de invoer.|
-|**Aantal rijen**| Het aantal rijen dat is gegenereerd op basis van de stap.|
-|**Gegevens grootte**| De grootte van de gegevens die uit deze stap zijn gegenereerd.|
+|**TaxiRide TaxiRide**| De naam van de invoer.|
+|**Aantal rijen**| Het aantal rijen dat uit de stap wordt gegenereerd.|
+|**Gegevensgrootte**| De grootte van de gegevens die uit deze stap worden gegenereerd.|
 |**Lokale invoer**| Gebruik lokale gegevens als invoer.|
 
-#### <a name="query-steps"></a>Query stappen
+#### <a name="query-steps"></a>Querystappen
 
-![Query stap taak diagram](./media/debug-locally-using-job-diagram/query-step.png)
+![Stappen voor queryquery](./media/debug-locally-using-job-diagram/query-step.png)
 
 |Gegevens|Beschrijving|
 |-|-|
-|**Trip data**|De naam van de tijdelijke resultatenset.|
-|**Aantal rijen**| Het aantal rijen dat is gegenereerd op basis van de stap.|
-|**Gegevens grootte**| De grootte van de gegevens die uit deze stap zijn gegenereerd.|
+|**TripData TripData**|De naam van de tijdelijke resultatenset.|
+|**Aantal rijen**| Het aantal rijen dat uit de stap wordt gegenereerd.|
+|**Gegevensgrootte**| De grootte van de gegevens die uit deze stap worden gegenereerd.|
   
-#### <a name="output-sinks-live-output"></a>Uitvoer-Sinks (live uitvoer)
+#### <a name="output-sinks-live-output"></a>Uitvoerputten (Live-uitvoer)
 
-![Taak diagram lokale uitvoer-sinks](./media/debug-locally-using-job-diagram/live-output.png)
-
-|Gegevens|Beschrijving|
-|-|-|
-|**regionaggEH**|De naam van de uitvoer.|
-|**Gebeurtenissen**|Het aantal gebeurtenissen uitvoer naar Sinks.|
-
-#### <a name="output-sinks-local-output"></a>Uitvoer-Sinks (lokale uitvoer)
-
-![Taak diagram lokale uitvoer-sinks](./media/debug-locally-using-job-diagram/local-output.png)
+![Lokale uitvoersinks van taakdiagram](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Gegevens|Beschrijving|
 |-|-|
 |**regionaggEH**|De naam van de uitvoer.|
-|**Lokale uitvoer**| Uitvoer van resultaten naar een lokaal bestand.|
-|**Aantal rijen**| Het aantal rijen uitvoer naar het lokale bestand.|
-|**Gegevens grootte**| De grootte van de gegevens uitvoer naar het lokale bestand.|
+|**Gebeurtenissen**|Het aantal gebeurtenissen dat naar sinks gaat.|
 
-### <a name="close-job-diagram"></a>Taak diagram sluiten
+#### <a name="output-sinks-local-output"></a>Uitvoerputten (lokale uitvoer)
 
-Als u het taak diagram niet meer nodig hebt, selecteert u **sluiten** in de rechter bovenhoek. Nadat het diagram venster is gesloten, moet u de lokale tests opnieuw starten om het weer te geven.
+![Lokale uitvoersinks van taakdiagram](./media/debug-locally-using-job-diagram/local-output.png)
 
-### <a name="view-job-level-metrics-and-stop-running"></a>Metrische gegevens van taak niveau weer geven en stoppen met uitvoeren
+|Gegevens|Beschrijving|
+|-|-|
+|**regionaggEH**|De naam van de uitvoer.|
+|**Lokale uitvoer**| Resultaatuitvoer naar een lokaal bestand.|
+|**Aantal rijen**| Het aantal rijen dat wordt uitgevoerd naar het lokale bestand.|
+|**Gegevensgrootte**| De grootte van de gegevensuitvoer naar het lokale bestand.|
 
-Andere metrieken op taak niveau worden weer gegeven in de pop up-console. Druk op **CTRL + C** in de-console als u de taak wilt stoppen.
+### <a name="close-job-diagram"></a>Taakdiagram sluiten
 
-![Taak diagram stoppen taak](./media/debug-locally-using-job-diagram/stop-job.png)
+Als u het taakdiagram niet meer nodig hebt, selecteert u **Sluiten** in de rechterbovenhoek. Nadat u het diagramvenster hebt gesloten, moet u opnieuw beginnen met lokale tests om het te kunnen zien.
+
+### <a name="view-job-level-metrics-and-stop-running"></a>Statistieken op taakniveau weergeven en stoppen met uitvoeren
+
+Andere statistieken op taakniveau worden weergegeven in de pop-upconsole. Druk **op Ctrl+C** in de console als u de taak wilt stoppen.
+
+![Taak stoppen met taak](./media/debug-locally-using-job-diagram/stop-job.png)
 
 ## <a name="limitations"></a>Beperkingen
 
-* Power BI-en Azure Data Lake Storage Gen1-uitvoer-sinks worden niet ondersteund vanwege beperkingen van het verificatie model.
+* Power BI- en Azure Data Lake Storage Gen1-uitvoersinks worden niet ondersteund vanwege beperkingen van het verificatiemodel.
 
-* Alleen cloud invoer opties hebben [tijd beleid](stream-analytics-out-of-order-and-late-events.md) ondersteunen, maar niet voor lokale invoer opties.
+* Alleen opties voor cloudinvoer hebben [ondersteuning voor tijdbeleid,](stream-analytics-out-of-order-and-late-events.md) terwijl lokale invoeropties dat niet doen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: een Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
+* [Snelstart: een functie Stream Analytics maken met Visual Studio](stream-analytics-quick-create-vs.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)
-* [Live-gegevens lokaal testen met Azure Stream Analytics-hulpprogram ma's voor Visual Studio (preview)](stream-analytics-live-data-local-testing.md)
+* [Live gegevens lokaal testen met Azure Stream Analytics-hulpprogramma's voor Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)

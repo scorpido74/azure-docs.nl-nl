@@ -9,16 +9,16 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: ef19abf1da1bb2fb94109f614e7ebb0e208c1e16
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176512"
 ---
 [!INCLUDE [Open SSH session in browser](app-service-web-ssh-connect-no-h.md)]
 
 > [!NOTE]
-> Alle wijzigingen die buiten de */home* directory worden opgeslagen in de container zelf en buiten de app opnieuw moet niet behouden.
+> Alle wijzigingen die u buiten de */home* directory aanbrengt, worden opgeslagen in de container zelf en blijven niet bestaan na een app-herstart.
 >
 
-Zie voor informatie over het openen van een externe SSH-sessie op uw lokale machine [Open SSH-sessie vanuit externe shell](../articles/app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell).
+Zie [SSH-sessie](../articles/app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)openen vanaf externe schaal om een externe SSH-sessie te openen vanuit uw lokale machine.

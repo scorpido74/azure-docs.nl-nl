@@ -1,16 +1,16 @@
 ---
 title: Veelgestelde vragen over Azure SignalR Service
-description: Snelle toegang tot veelgestelde vragen over de Azure signalerings service, informatie over probleem oplossing en typische gebruiks scenario's.
+description: Heb snel toegang tot veelgestelde vragen over Azure SignalR Service, over probleemoplossing en typische gebruiksscenario's.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75891255"
 ---
 # <a name="azure-signalr-service-faq"></a>Veelgestelde vragen over Azure SignalR Service

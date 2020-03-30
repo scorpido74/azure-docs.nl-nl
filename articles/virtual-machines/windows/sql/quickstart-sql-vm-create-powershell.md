@@ -14,10 +14,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790908"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Snelstartgids: een virtuele SQL Server-machine voor Windows maken met Azure PowerShell
@@ -28,12 +28,12 @@ In deze snelstartgids gaat u een virtuele SQL Server-machine maken met Azure Pow
 > - Deze snelstartgids biedt een pad voor het snel inrichten van en verbinding maken met een SQL-VM. Zie de [Handleiding over de inrichting van SQL Server-VM's met Azure PowerShell](virtual-machines-windows-ps-sql-create.md) voor meer informatie over andere Azure PowerShell-opties voor het maken van virtuele SQL-machines.
 > - Als u vragen hebt over virtuele machines met SQL Server, raadpleegt u [Veelgestelde vragen](virtual-machines-windows-sql-server-iaas-faq.md).
 
-## <a id="subscription"></a> Een Azure-abonnement nemen
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Een Azure-abonnement aanschaffen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 
-## <a id="powershell"></a> Azure PowerShell downloaden
+## <a name="get-azure-powershell"></a><a id="powershell"></a> Azure PowerShell downloaden
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -190,7 +190,7 @@ U kunt ook alle resources die aan de virtuele machine zijn gekoppeld, definitief
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een virtuele SQL Server 2017-machine gemaakt met behulp van Azure PowerShell. Raadpleeg het volgende artikel voor meer informatie over hoe u uw gegevens migreert naar de nieuwe SQL-server.
+In deze snelstartgids hebt u een virtuele SQL Server 2017-machine gemaakt met behulp van Azure PowerShell. Raadpleeg het volgende artikel voor meer informatie over hoe u uw gegevens naar de nieuwe SQL-server migreert.
 
 > [!div class="nextstepaction"]
 > [Een database migreren naar een SQL-VM](virtual-machines-windows-migrate-sql.md)

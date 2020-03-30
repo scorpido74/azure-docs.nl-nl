@@ -1,6 +1,6 @@
 ---
-title: Snelstartgids-docker-container implementeren naar container exemplaar-Azure CLI
-description: In deze Quick Start gebruikt u de Azure CLI om snel een container web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
+title: Snelstart - Dockercontainer implementeren in containerinstantie - Azure CLI
+description: In deze quickstart gebruikt u de Azure CLI om snel een gecontaineriseerde webapp te implementeren die wordt uitgevoerd in een geïsoleerde Azure-containerinstantie
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom:
@@ -8,31 +8,31 @@ ms.custom:
 - seodec18
 - mvc
 ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252190"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstartgids: een container exemplaar implementeren in azure met behulp van Azure CLI
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstart: een containerinstantie implementeren in Azure met de Azure CLI
 
-Gebruik Azure Container Instances om serverloze docker-containers in azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een container exemplaar op aanvraag wanneer u geen volledig container Orchestration-platform zoals Azure Kubernetes service nodig hebt.
+Gebruik Azure Container Instances om serverloze Docker-containers in Azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een containerexemplaar on-demand wanneer u geen volledig containerorchestration-platform zoals Azure Kubernetes Service nodig hebt.
 
-In deze Quick Start gebruikt u de Azure CLI voor het implementeren van een geïsoleerde docker-container en maakt u de toepassing beschikbaar met een Fully Qualified Domain Name (FQDN). Een paar seconden nadat u één implementatie opdracht hebt uitgevoerd, kunt u bladeren naar de toepassing die in de container wordt uitgevoerd:
+In deze quickstart gebruikt u de Azure CLI om een geïsoleerde Docker-container te implementeren en de toepassing ervan beschikbaar te maken met een volledig gekwalificeerde domeinnaam (FQDN). Enkele seconden nadat u één implementatieopdracht hebt uitgevoerd, u naar de toepassing bladeren die in de container wordt uitgevoerd:
 
-![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
+![Een app weergeven die is geïmplementeerd in Azure Container Instances in de browser][aci-app-browser]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account][azure-account] voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u het lokaal wilt gebruiken, wordt versie 2.0.55 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u het lokaal wilt gebruiken, wordt versie 2.0.55 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Azure Container Instances, zoals alle Azure-resources, moeten worden geïmplementeerd in een resourcegroep. Met resourcegroepen kunt u gerelateerde Azure-resources ordenen en beheren.
+Azure Container Instances moeten, zoals alle Azure-resources, worden geïmplementeerd in een resourcegroep. Met resourcegroepen kunt u gerelateerde Azure-resources organiseren en beheren.
 
-Maak eerst een resource groep met de naam *myResourceGroup* in de *oostelijke* locatie met de volgende opdracht [AZ Group Create][az-group-create] :
+Maak eerst een resourcegroep met de naam *myResourceGroup* op de locatie *eastus* met behulp van de volgende [az group create][az-group-create]-opdracht:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -40,17 +40,17 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Een container maken
 
-Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een container exemplaar met de Azure CLI wilt maken, geeft u de naam van de resource groep, de naam van het container exemplaar en de docker-container installatie kopie op in de opdracht [AZ container Create][az-container-create] . In deze Quick Start gebruikt u de open bare installatie kopie van `mcr.microsoft.com/azuredocs/aci-helloworld`. Deze installatiekopie bevat een kleine web-app geschreven in Node.js die een statische HTML-pagina levert.
+Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een containerinstantie met de Azure CLI wilt maken, geeft u de naam van een resourcegroep, de naam van een containerinstantie en een Docker-containerinstallatiekopie op voor de opdracht [az container create][az-container-create]. In deze quickstart gebruikt `mcr.microsoft.com/azuredocs/aci-helloworld` u de openbare afbeelding. Deze installatiekopie bevat een kleine web-app die is geschreven in Node.js en die een statische HTML-pagina dient.
 
 Als u uw containers beschikbaar wilt maken op internet, moet u een of meer poorten om te openen of een DNS-naamlabel opgeven, of beide. In deze quickstart implementeert u een container met een DNS-naamlabel zodat de web-app openbaar bereikbaar is.
 
-Voer een opdracht uit die vergelijkbaar is met de volgende om een container exemplaar te starten. Stel een `--dns-name-label` waarde in die uniek is binnen de Azure-regio waar u het exemplaar maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
+Voer een opdracht uit die vergelijkbaar is met de volgende opdracht om een containerinstantie te starten. Stel `--dns-name-label` een waarde in die uniek is binnen het Azure-gebied waar u de instantie maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status met de opdracht [AZ container show][az-container-show] :
+Binnen enkele seconden krijgt u een reactie van de Azure-CLI die aangeeft dat de implementatie is voltooid. Controleer de status ervan met de opdracht [az container show][az-container-show]:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -64,9 +64,9 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Als de `ProvisioningState` van de container is **voltooid**, gaat u naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
+Als de container `ProvisioningState` is **geslaagd,** ga dan naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
 
-![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
+![Een app weergeven die is geïmplementeerd in Azure Container Instances in de browser][aci-app-browser]
 
 Als de toepassing niet meteen wordt weergegeven, moet u mogelijk een paar seconden wachten terwijl DNS wordt doorgegeven. Probeer vervolgens de browser te vernieuwen.
 
@@ -74,7 +74,7 @@ Als de toepassing niet meteen wordt weergegeven, moet u mogelijk een paar second
 
 Wanneer u problemen moet oplossen voor een container of de toepassing die daarmee wordt uitgevoerd, of als u alleen de uitvoer wilt zien, kunt u eerst de logboeken van de containerinstantie bekijken.
 
-Haal de logboeken van de container instantie op met de opdracht [AZ container logs][az-container-logs] :
+Haal de logboeken van de containerinstantie op met de opdracht [az container logs][az-container-logs]:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -93,7 +93,7 @@ listening on port 80
 
 Behalve het bekijken van de logboeken kunt u ook uw lokale standaarduitvoer- en standaardgegevensstromen met fouten koppelen aan die van de container.
 
-Voer eerst de opdracht [AZ container attach][az-container-attach] uit om uw lokale console te koppelen aan de uitvoer stromen van de container:
+Voer eerst de opdracht [az container attach][az-container-attach] uit om uw lokale console aan de uitvoerstromen van de container te koppelen:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -120,7 +120,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met de container, verwijdert u deze met behulp van de opdracht [AZ container delete][az-container-delete] :
+Wanneer u klaar bent met de container, verwijdert u deze met de opdracht [az container delete][az-container-delete]:
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -134,7 +134,7 @@ az container list --resource-group myResourceGroup --output table
 
 De container **mycontainer** mag dan niet worden weergegeven in de uitvoer van de opdracht. Als u geen andere containers in de resourcegroep hebt, wordt er geen uitvoer weergegeven.
 
-Als u klaar bent met de resource groep *myResourceGroup* en alle resources die deze bevat, verwijdert u deze met de opdracht [AZ Group delete][az-group-delete] :
+Als u klaar bent met de *myResourceGroup*-resourcegroep en alle resources die deze bevat, verwijdert u deze met de opdracht [az group delete][az-group-delete]:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -142,12 +142,12 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Azure-container exemplaar gemaakt met behulp van een open bare micro soft-installatie kopie. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
+In deze quickstart hebt u een Azure-containerinstantie gemaakt met behulp van een openbare Microsoft-afbeelding. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-Zie de Snelstartgids voor [Azure Kubernetes service (AKS)][container-service] als u opties wilt uitproberen voor het uitvoeren van containers in een Orchestration-systeem op Azure.
+Zie de quickstarts voor [Azure Kubernetes Service (AKS)][container-service] als u opties wilt uitproberen voor het uitvoeren van containers in een orchestration-systeem op Azure.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png

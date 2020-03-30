@@ -1,6 +1,6 @@
 ---
-title: IllegalArgumentException-fout voor Apache Spark-Azure HDInsight
-description: IllegalArgumentException voor Apache Spark-activiteit in azure HDInsight voor Azure Data Factory
+title: IllegalArgumentException-fout voor Apache Spark - Azure HDInsight
+description: IllegalArgumentException voor Apache Spark-activiteit in Azure HDInsight voor Azure Data Factory
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: df62dbd8db7d41eb11207c7741aed76cec0ac7a8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894386"
 ---
-# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>Scenario: IllegalArgumentException for Apache Spark-activiteit in azure HDInsight
+# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>Scenario: IllegalArgumentException for Apache Spark activity in Azure HDInsight
 
-In dit artikel worden probleemoplossings stappen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-onderdelen in azure HDInsight-clusters.
+In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-componenten in Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-U ontvangt de volgende uitzonde ring bij het uitvoeren van een Spark-activiteit in een Azure Data Factory-pijp lijn:
+U ontvangt de volgende uitzondering wanneer u een Spark-activiteit probeert uit te voeren in een Azure Data Factory-pijplijn:
 
 ```error
 Exception in thread "main" java.lang.IllegalArgumentException:
@@ -29,22 +29,22 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 ## <a name="cause"></a>Oorzaak
 
-Een Spark-taak mislukt als het jar-bestand zich niet in de standaard-of primaire opslag ruimte van het Spark-cluster bevindt.
+Een Spark-taak mislukt als het bestand met de toepassingspot zich niet bevindt in de standaard/primaire opslag van het Spark-cluster.
 
-Dit is een bekend probleem met het open-source-framework dat wordt bijgehouden in deze bug: [Spark-taak mislukt als FS. defaultFS en Application jar een andere URL zijn](https://issues.apache.org/jira/browse/SPARK-22587).
+Dit is een bekend probleem met de Spark open-source framework bijgehouden in deze bug: [Spark taak mislukt als fs.defaultFS en application jar zijn verschillende url](https://issues.apache.org/jira/browse/SPARK-22587).
 
 Dit probleem is opgelost in Spark 2.3.0.
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat de toepassing jar is opgeslagen op de standaard/primaire opslag voor het HDInsight-cluster. In het geval van Azure Data Factory moet u ervoor zorgen dat de gekoppelde ADF-service wordt verwezen naar de standaard-HDInsight-container in plaats van een secundaire container.
+Controleer of de toepassingspot is opgeslagen in de standaard/primaire opslag voor het HDInsight-cluster. Controleer in het geval van Azure Data Factory of de ADF-gekoppelde service wordt gericht op de standaardcontainer HDInsight in plaats van naar een secundaire container.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).

@@ -1,61 +1,64 @@
 ---
-title: Verbinding maken met Windows Virtual Desktop Windows 10 of 7-Azure
-description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de Windows-desktop-client.
+title: Verbinding maken met Windows Virtual Desktop Windows 10 of 7 - Azure
+description: Verbinding maken met Windows Virtual Desktop met de Windows Desktop-client.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1fb9ef702de4cec2a655aadebe0bc4d69f583ff7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6436059cc8b3637edfc2a146d0aab3e2beae6a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154335"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
-> Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
+> Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enterprise
 
-U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient.
+U hebt toegang tot Windows Virtual Desktop-bronnen op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enterprise met de Windows Desktop-client.
 
 > [!IMPORTANT]
-> Windows virtueel bureau blad biedt geen ondersteuning voor de client RemoteApp-en bureaublad verbindingen (RADC) of de Verbinding met extern bureaublad-client (MSTSC).
+> Windows Virtual Desktop biedt geen ondersteuning voor de RADC-client (RemoteApp- en Desktop Connections) of de MSTSC-client (Remote Desktop Connection).
 
-## <a name="install-the-windows-desktop-client"></a>De Windows-Desktop-Client installeren
+> [!IMPORTANT]
+> Windows Virtual Desktop ondersteunt momenteel de Extern bureaublad-client niet vanuit de Windows Store. Ondersteuning voor deze client zal worden toegevoegd in een toekomstige release.
+
+## <a name="install-the-windows-desktop-client"></a>De Windows Desktop-client installeren
 
 Kies de client die overeenkomt met uw versie van Windows:
 
 - [Windows 64-bits](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32-bits](https://go.microsoft.com/fwlink/?linkid=2098960)
-- [Windows-ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
+- [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-U kunt de client installeren voor de huidige gebruiker, waarvoor geen beheerders rechten zijn vereist, of uw beheerder kan de client installeren en configureren zodat alle gebruikers op het apparaat toegang hebben.
+U de client installeren voor de huidige gebruiker, waarvoor geen beheerdersrechten nodig zijn, of uw beheerder kan de client installeren en configureren zodat alle gebruikers op het apparaat er toegang toe hebben.
 
-Nadat de client is geïnstalleerd, kan deze vanuit het menu Start worden gestart door te zoeken naar **extern bureaublad**.
+Na installatie kan de client vanuit het menu Start worden gestart door te zoeken naar **Extern bureaublad.**
 
-## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
+## <a name="subscribe-to-a-feed"></a>Abonneer u op een feed
 
-Haal de lijst van beheerde beschik bare bronnen op door u te abonneren op de feed die door uw beheerder wordt aangeboden. Als u een abonnement maakt, worden de resources beschikbaar op uw lokale PC.
+Download de lijst met beheerde bronnen die voor u beschikbaar zijn door u te abonneren op de feed die door uw beheerder wordt verstrekt. Door u te abonneren, zijn de bronnen beschikbaar op uw lokale pc.
 
-Abonneren op een feed:
+Je abonneren op een feed:
 
-1. Open de Windows-desktop-client.
-2. Selecteer **Abonneren** op de hoofd pagina om verbinding te maken met de service en uw resources op te halen.
-3. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
+1. Open de Windows Desktop-client.
+2. Selecteer **Abonneren** op de hoofdpagina om verbinding te maken met de service en uw bronnen op te halen.
+3. Meld u aan met uw gebruikersaccount wanneer u daarom wordt gevraagd.
 
-Nadat u zich hebt aangemeld, ziet u een lijst met de resources die u kunt openen.
+Nadat u zich hebt aangemeld, ziet u een lijst met de bronnen die u openen.
 
-U kunt resources op een van de volgende twee manieren starten.
+U resources op een van de twee methoden starten.
 
-- Dubbel klik op de hoofd pagina van de client op een resource om deze te starten.
-- Start een resource op dezelfde manier als andere apps in het menu Start.
-  - U kunt ook zoeken naar de apps in de zoek balk.
+- Dubbelklik vanaf de hoofdpagina van de client op een resource om deze te starten.
+- Start een bron zoals andere apps in het startmenu normaal gesproken zouden worden gebruikt.
+  - U ook zoeken naar de apps in de zoekbalk.
 
-Zodra u bent geabonneerd op een feed, wordt de inhoud van de feed regel matig automatisch bijgewerkt. Resources kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die zijn aangebracht door de beheerder.
+Eenmaal geabonneerd op een feed, wordt de inhoud van de feed regelmatig automatisch bijgewerkt. Bronnen kunnen worden toegevoegd, gewijzigd of verwijderd op basis van wijzigingen die door uw beheerder zijn aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over het gebruik van de Windows-desktop-client naar [aan de slag met de Windows desktop-client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+Ga aan de slag met de Windows [Desktop-client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)voor meer informatie over het gebruik van de Windows Desktop-client.

@@ -1,6 +1,6 @@
 ---
-title: Schaal baarheid voor de resource provider van Azure Storage
-description: Schaalbaarheids-en prestatie doelen voor bewerkingen voor de resource provider van Azure Storage. De resource provider implementeert Azure Resource Manager voor Azure Storage.
+title: Schaalbaarheid voor de Azure Storage-bronprovider
+description: Schaalbaarheids- en prestatiedoelen voor bewerkingen ten opzichte van de Azure Storage-bronprovider. De resourceprovider implementeert Azure Resource Manager voor Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,21 +9,21 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e7fb118dbc53b36e01c8188b9013a3f739bf0c59
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75747790"
 ---
-# <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage
+# <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Schaalbaarheids- en prestatiedoelen voor de Azure Storage-bronprovider
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
-## <a name="scale-targets-for-the-resource-provider"></a>Schaal doelen voor de resource provider
+## <a name="scale-targets-for-the-resource-provider"></a>Schaaldoelen voor de resourceprovider
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## <a name="see-also"></a>Zie ook
 
-- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md)
-- [Limieten en quota voor Azure-abonnementen](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+- [Schaalbaarheid en prestatiedoelen voor standaardopslagaccounts](scalability-targets-standard-account.md)
+- [Azure-abonnementslimieten en -quota](../../azure-resource-manager/management/azure-subscription-service-limits.md)

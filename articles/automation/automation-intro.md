@@ -8,15 +8,15 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76930400"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
-Azure Automation voorziet in een cloudautomatiserings- en -configuratieservice voor consistent beheer in uw Azure- en niet-Azure-omgevingen. De service omvat procesautomatisering, updatebeheer en configuratie van onderdelen. Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werkbelastingen en bronnen.
+Azure Automation biedt een cloud-gebaseerde automatiserings- en configuratieservice die voor consistent beheer in uw Azure- en niet-Azure-omgevingen zorgt. De service omvat procesautomatisering, updatebeheer en configuratie van onderdelen. Azure Automation biedt volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van werkbelastingen en bronnen.
 In dit artikel wordt een kort overzicht gegeven van Azure Automation en worden enkele veelgestelde vragen beantwoord. Gebruik de koppelingen in dit overzicht voor meer informatie over de verschillende mogelijkheden.
 
 ## <a name="azure-automation-capabilities"></a>Mogelijkheden van Azure Automation
@@ -37,20 +37,20 @@ U kunt de inventarisatie opvragen van in-guest resources voor zichtbaarheid van 
 
 Windows-en Linux bijwerken in hybride omgevingen met Azure Automation. U krijgt een beeld van de updatevereisten in Azure, on-premises en andere clouds. U kunt planningsimplementaties maken voor het organiseren van de installatie van updates binnen een gedefinieerd onderhoudsvenster. Als een update niet op een computer moet worden geïnstalleerd, kunt u die updates uitsluiten van een implementatie.
 
-### <a name="shared-resources"></a>Gedeelde resources
+### <a name="shared-resources"></a><a name="shared-resources"></a>Gedeelde resources
 
 Azure Automation bestaat uit een set gedeelde bronnen waarmee u uw omgevingen eenvoudiger op schaal kunt automatiseren en configureren.
 
-* **[Schema's](automation-schedules.md)** : worden gebruikt in de service om automatisering op vooraf gedefinieerde tijden te activeren.
-* **[Modules](automation-integration-modules.md)** : modules worden gebruikt voor het beheren van Azure en andere systemen. Importeer gegevens in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, of voor aangepaste gedefinieerde cmdlets en DSC-resources.
-* **[Modulegalerie](automation-runbook-gallery.md)** : systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account.
-* **[Python 2-pakketten](python-packages.md)** : voeg Python 2-pakketten toe aan uw automation-account om deze te gebruiken in uw Python-runbooks.
-* **[Referenties](automation-credentials.md)** : hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
-* **[Verbindingen](automation-connections.md)** : sla een naam of waardepaar met informatie op waarin algemene informatie is opgenomen wanneer u verbinding maakt met systemen in verbindingsresources. Verbindingen worden gedefinieerd door de module-auteur voor gebruik tijdens runtime in runbooks en configuraties.
-* **[Certificaten](automation-certificates.md)** : deze kunt u opslaan en beschikbaar stellen tijdens runtime, zodat ze kunnen worden gebruikt voor verificatie en beveiliging van geïmplementeerde resources.
-* **[Variabelen](automation-variables.md)** : deze bieden een manier om inhoud te gebruiken die kan worden gebruikt in runbooks en configuraties. U kunt waarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
+* **[Schema's](automation-schedules.md)**: worden gebruikt in de service om automatisering op vooraf gedefinieerde tijden te activeren.
+* **[Modules](automation-integration-modules.md)**: modules worden gebruikt voor het beheren van Azure en andere systemen. Importeer gegevens in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, of voor aangepaste gedefinieerde cmdlets en DSC-resources.
+* **[Modulegalerie](automation-runbook-gallery.md)**: systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account.
+* **[Python 2-pakketten](python-packages.md)**: voeg Python 2-pakketten toe aan uw automation-account om deze te gebruiken in uw Python-runbooks.
+* **[Referenties](automation-credentials.md)**: hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
+* **[Verbindingen](automation-connections.md)**: sla een naam of waardepaar met informatie op waarin algemene informatie is opgenomen wanneer u verbinding maakt met systemen in verbindingsresources. Verbindingen worden gedefinieerd door de module-auteur voor gebruik tijdens runtime in runbooks en configuraties.
+* **[Certificaten](automation-certificates.md)**: deze kunt u opslaan en beschikbaar stellen tijdens runtime, zodat ze kunnen worden gebruikt voor verificatie en beveiliging van geïmplementeerde resources.
+* **[Variabelen](automation-variables.md)**: deze bieden een manier om inhoud te gebruiken die kan worden gebruikt in runbooks en configuraties. U kunt waarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
 
-### <a name="source-control-integration"></a>Bronbeheerintegratie
+### <a name="source-control-integration"></a>Integratie van bronbeheer
 
 Azure Automation kan worden [geïntegreerd met broncodebeheer](source-control-integration.md), zodat de configuratie als code kan worden toegepast wanneer runbooks of configuraties in een broncodebeheersysteem kunnen worden ingecheckt.
 
@@ -85,5 +85,5 @@ U kunt de prijs voor Azure Automation bekijken op de pagina [Prijzen](https://az
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een Automation-account maken](automation-quickstart-create-account.md)
+> [Een automatiseringsaccount maken](automation-quickstart-create-account.md)
 

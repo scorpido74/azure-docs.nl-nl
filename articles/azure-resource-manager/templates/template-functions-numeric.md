@@ -1,28 +1,28 @@
 ---
-title: Sjabloon functies-numeriek
-description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met getallen.
+title: Sjabloonfuncties - numeriek
+description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om met getallen te werken.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156341"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerieke functies voor Azure Resource Manager sjablonen
+# <a name="numeric-functions-for-arm-templates"></a>Numerieke functies voor ARM-sjablonen
 
-Resource Manager biedt de volgende functies voor het werken met gehele getallen:
+Resourcebeheer biedt de volgende functies voor het werken met gehele getallen in uw Azure Resource Manager-sjabloon (ARM):
 
-* [add](#add)
-* [Functie copyindex](#copyindex)
+* [Toevoegen](#add)
+* [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
-* [int](#int)
-* [max](#max)
-* [min](#min)
-* [mod](#mod)
-* [mul](#mul)
+* [Int](#int)
+* [Max](#max)
+* [Min](#min)
+* [Mod](#mod)
+* [Mul](#mul)
 * [sub](#sub)
 
 <a id="add" />
@@ -32,22 +32,22 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 ## <a name="add"></a>add
 `add(operand1, operand2)`
 
-Retourneert de som van de twee door gegeven gehele getallen.
+Geeft als resultaat de som van de twee verstrekte gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
-|:--- |:--- |:--- |:--- | 
-|operand1 |Ja |int |Het eerste nummer dat moet worden toegevoegd. |
-|operand2 |Ja |int |Het tweede nummer dat moet worden toegevoegd. |
+|:--- |:--- |:--- |:--- |
+|operand1 |Ja |int |Eerste nummer toe te voegen. |
+|operand2 |Ja |int |Tweede nummer toe te voegen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de som van de para meters bevat.
+Een geheel getal dat de som van de parameters bevat.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) worden twee para meters toegevoegd.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) worden twee parameters toegevoegd.
 
 ```json
 {
@@ -80,22 +80,22 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
@@ -103,38 +103,38 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Retourneert de index van een herhalings lus. 
+Geeft als resultaat de index van een iteratielus.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| lusinstructie | Nee | tekenreeks | De naam van de lus voor het ophalen van de iteratie. |
-| offset |Nee |int |Het getal dat moet worden toegevoegd aan de op nul gebaseerde iteratie waarde. |
+| loopNaam | Nee | tekenreeks | De naam van de lus voor het verkrijgen van de iteratie. |
+| offset |Nee |int |Het getal dat moet worden toegevoegd aan de iteratiewaarde op basis van nul. |
 
 ### <a name="remarks"></a>Opmerkingen
 
-Deze functie wordt altijd gebruikt met een **Kopieer** object. Als er geen waarde wordt opgegeven voor **Offset**, wordt de huidige iteratie waarde geretourneerd. De iteratie waarde begint bij nul. U kunt herhalings lussen gebruiken wanneer u resources of variabelen definieert.
+Deze functie wordt altijd gebruikt met een **kopieerobject.** Als er geen waarde is opgegeven voor **compensatie,** wordt de huidige iteratiewaarde geretourneerd. De iteratiewaarde begint bij nul. U iteratielussen gebruiken bij het definiëren van resources of variabelen.
 
-Met de eigenschap **lusinstructie** kunt u opgeven of functie copyindex verwijst naar een resource herhaling of eigenschaps herhaling. Als er geen waarde wordt gegeven voor de **lusinstructie**, wordt het huidige bron type herhaling gebruikt. Geef een waarde voor de **lusinstructie** op wanneer u een eigenschap wilt herhalen. 
- 
-Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor een volledige beschrijving van de manier waarop u **functie copyindex**gebruikt.
+Met de eigenschap **loopName** u opgeven of copyIndex verwijst naar een resourceiteratie of eigenschapsiteratie. Als er geen waarde is opgegeven voor **loopName,** wordt de huidige iteratie van het resourcetype gebruikt. Geef een waarde op voor **loopName** wanneer u een eigenschap wijzigt.
 
-Zie [variabelen](template-syntax.md#variables)voor een voor beeld van het gebruik van **functie copyindex** bij het definiëren van een variabele.
+Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)voor een volledige beschrijving van hoe u **copyIndex**gebruikt.
+
+Zie [Variabelen](template-syntax.md#variables)voor een voorbeeld van het gebruik van **copyIndex** bij het definiëren van een variabele.
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld ziet u een lus Copy en de index waarde die is opgenomen in de naam. 
+In het volgende voorbeeld ziet u een kopieerlus en de indexwaarde die in de naam is opgenomen.
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -142,29 +142,29 @@ In het volgende voor beeld ziet u een lus Copy en de index waarde die is opgenom
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de huidige index van de herhaling vertegenwoordigt.
+Een geheel getal dat de huidige index van de iteratie vertegenwoordigt.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Retourneert de deling van het gehele getal van de twee door gegeven gehele getallen.
+Geeft als resultaat de gehele verdeling van de twee verstrekte gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het getal dat wordt verdeeld. |
-| operand2 |Ja |int |Het getal dat wordt gebruikt om te delen. Mag niet 0 zijn. |
+| operand1 |Ja |int |Het aantal wordt verdeeld. |
+| operand2 |Ja |int |Het getal dat wordt gebruikt om te verdelen. Kan niet 0 zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de deling vertegenwoordigt.
+Een geheel getal dat de divisie vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) deelt één para meter door een andere para meter.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) wordt de ene parameter door een andere parameter verdeeld.
 
 ```json
 {
@@ -197,22 +197,22 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| divResult | Int | 2 |
+| divResult divResult | Int | 2 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -220,20 +220,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-Zet de waarde om in een getal met drijvende komma. U kunt deze functie alleen gebruiken bij het door geven van aangepaste para meters aan een toepassing, zoals een logische app.
+Hiermee converteert u de waarde naar een zwevend puntnummer. U gebruikt deze functie alleen wanneer u aangepaste parameters doorgeeft aan een toepassing, zoals een Logische App.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een getal met een drijvende komma. |
+| arg1 |Ja |tekenreeks of int |De waarde die moet worden omgezet naar een zwevend puntnummer. |
 
 ### <a name="return-value"></a>Retourwaarde
-Een drijvende-komma waarde.
+Een zwevend puntnummer.
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld ziet u hoe float wordt gebruikt om para meters door te geven aan een logische app:
+In het volgende voorbeeld ziet u hoe u float gebruikt om parameters door te geven aan een Logic App:
 
 ```json
 {
@@ -254,28 +254,28 @@ In het volgende voor beeld ziet u hoe float wordt gebruikt om para meters door t
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Hiermee wordt de opgegeven waarde geconverteerd naar een geheel getal.
+Hiermee converteert u de opgegeven waarde naar een geheel getal.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een geheel getal. |
+| valueToConvert |Ja |tekenreeks of int |De waarde die moet worden omgezet in een geheel getal. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal van de geconverteerde waarde.
+Een geheel van de geconverteerde waarde.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) de door de gebruiker ingevoerde parameter waarde geconverteerd naar een geheel getal.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) wordt de door de gebruiker opgegeven parameterwaarde geconverteerd naar een geheel getal.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -291,19 +291,19 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
@@ -311,24 +311,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>max.
+## <a name="max"></a>Max
 `max (arg1)`
 
-Retourneert de maximum waarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
+Geeft als resultaat de maximale waarde van een matrix van gehele getallen of een door komma's gescheiden lijst met gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de maximum waarde op te halen. |
+| arg1 |Ja |array van gehele getallen, of door komma's gescheiden lijst van gehele getallen |De collectie om de maximale waarde te krijgen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de maximum waarde uit de verzameling voor stelt.
+Een geheel getal dat de maximale waarde uit de verzameling vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ziet u hoe u Max kunt gebruiken met een matrix en een lijst met gehele getallen:
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ziet u hoe u max gebruikt met een array en een lijst met gehele getallen:
 
 ```json
 {
@@ -354,20 +354,20 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -378,21 +378,21 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="min"></a>min.
 `min (arg1)`
 
-Retourneert de minimum waarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
+Geeft als resultaat de minimumwaarde van een matrix van gehele getallen of een door komma's gescheiden lijst met gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de minimum waarde op te halen. |
+| arg1 |Ja |array van gehele getallen, of door komma's gescheiden lijst van gehele getallen |De collectie om de minimale waarde te krijgen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de minimum waarde uit de verzameling voor stelt.
+Een geheel getal dat de minimumwaarde uit de verzameling vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ziet u hoe min met een matrix en een lijst met gehele getallen moet worden gebruikt:
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ziet u hoe u min gebruikt met een array en een lijst met gehele getallen:
 
 ```json
 {
@@ -418,20 +418,20 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -439,24 +439,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>mod
+## <a name="mod"></a>Mod
 `mod(operand1, operand2)`
 
-Retourneert de rest van de deling van het gehele getal met behulp van de twee door gegeven gehele getallen.
+Geeft als resultaat de rest van de gehele verdeling met behulp van de twee verstrekte gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het getal dat wordt verdeeld. |
-| operand2 |Ja |int |Het getal dat wordt gebruikt om te delen, mag niet 0 zijn. |
+| operand1 |Ja |int |Het aantal wordt verdeeld. |
+| operand2 |Ja |int |Het getal dat wordt gebruikt om te verdelen, kan niet 0 zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
-Een geheel getal dat het restant voor stelt.
+Een geheel getal dat de rest vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) retourneert het restant van het delen van één para meter door een andere para meter.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) wordt de rest van het delen van de ene parameter door een andere parameter geretourneerd.
 
 ```json
 {
@@ -489,19 +489,19 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modResult modResult | Int | 1 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
@@ -509,17 +509,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mul" />
 
-## <a name="mul"></a>mul
+## <a name="mul"></a>Mul
 `mul(operand1, operand2)`
 
-Retourneert de vermenigvuldiging van de twee door gegeven gehele getallen.
+Geeft als resultaat de vermenigvuldiging van de twee verstrekte gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het eerste getal dat moet worden vermenigvuldigd. |
-| operand2 |Ja |int |Het tweede getal dat moet worden vermenigvuldigd. |
+| operand1 |Ja |int |Eerste getal dat zich vermenigvuldigt. |
+| operand2 |Ja |int |Tweede getal om te vermenigvuldigen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -527,7 +527,7 @@ Een geheel getal dat de vermenigvuldiging vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) vermenigvuldigt één para meter met een andere para meter.
+Met de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) wordt de ene parameter vermenigvuldigd met een andere parameter.
 
 ```json
 {
@@ -560,19 +560,19 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| mulResult | Int | 15 |
+| mulResultaat | Int | 15 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
@@ -583,7 +583,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
-Retourneert de aftrekking van de twee door gegeven gehele getallen.
+Geeft als resultaat de aftrekking van de twee verstrekte gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
@@ -597,7 +597,7 @@ Een geheel getal dat de aftrekking vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) een para meter van een andere para meter afgetrokken.
+In de volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) wordt één parameter van een andere parameter afgetrokken.
 
 ```json
 {
@@ -630,27 +630,27 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+De uitvoer van het voorgaande voorbeeld met de standaardwaarden is:
 
-| Naam | Type | Waarde |
+| Name | Type | Waarde |
 | ---- | ---- | ----- |
-| subresultaat | Int | 4 |
+| subResultaat | Int | 4 |
 
-In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
+Als u deze voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
+Gebruik het als volgt om deze voorbeeldsjabloon met PowerShell te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
-* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
-* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
+* Zie [Sjablonen voor Azure Resource Manager ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager-sjabloon.
+* Zie [Gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)als u meerdere sjablonen wilt samenvoegen.
+* Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)als u een bepaald aantal keren wilt herhalen bij het maken van een type resource.
+* Zie Een toepassing implementeren met Azure [Resource Manager-sjabloon](deploy-powershell.md)als u wilt zien hoe u de sjabloon implementeren die u hebt gemaakt.
 

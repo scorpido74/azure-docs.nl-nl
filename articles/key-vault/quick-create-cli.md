@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een geheim instellen en ophalen uit Azure Key Vault'
+title: 'Snelstart: een geheim instellen en ophalen uit Azure Key Vault'
 description: Snelstart waarin wordt getoond hoe u een geheim uit Azure Key Vault instelt en ophaalt met behulp van Azure CLI
 services: key-vault
 author: msmbaldwin
@@ -12,17 +12,17 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6f71dd0f928f75deff0a483dda0aed621d6ead19
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78197603"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Snelstart: een geheim uit Azure Key Vault instellen en ophalen met behulp van Azure CLI
 
-In deze Quick Start maakt u een sleutel kluis in Azure Key Vault met Azure CLI. Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](key-vault-overview.md) raadplegen voor meer informatie over Key Vault. Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources met behulp van opdrachten of scripts. Nadat u dat hebt gedaan, gaat u een geheim opslaan.
+In deze quickstart maakt u een sleutelkluis in Azure Key Vault met Azure CLI. Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](key-vault-overview.md) raadplegen voor meer informatie over Key Vault. Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources met behulp van opdrachten of scripts. Nadat u dat hebt gedaan, gaat u een geheim opslaan.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +50,7 @@ az group create --name "ContosoResourceGroup" --location eastus
 Vervolgens maakt u een sleutelkluis in de resourcegroep die u in de vorige stap hebt gemaakt. U moet enkele gegevens verstrekken:
 
 - Voor deze snelstart gebruiken we **Contoso-vault2**. U moet in de test een unieke naam opgeven.
-- Naam van resourcegroep **ContosoResourceGroup**.
+- Resourcegroepnaam **ContosoResourceGroup**.
 - De locatie **VS - oost**.
 
 ```azurecli
@@ -60,7 +60,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
 
 - **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Key Vault-opdrachten.
-- **Kluis-URI**: in het voorbeeld is dat https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+- **Vault URI**: In het voorbeeld is dit https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 
@@ -74,7 +74,7 @@ Typ de onderstaande opdrachten om een geheim te maken in de sleutelkluis met de 
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-U kunt nu verwijzen naar dit wachtwoord dat u aan Azure Key Vault hebt toegevoegd met behulp van de bijbehorende URI. Gebruik **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** om de huidige versie op te halen. 
+U kunt nu verwijzen naar dit wachtwoord dat u aan Azure Key Vault hebt toegevoegd met behulp van de bijbehorende URI. Gebruik **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** om de huidige versie te krijgen. 
 
 Als u de waarde in het geheim als tekst zonder opmaak wilt weergeven:
 
@@ -95,9 +95,9 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+In deze quickstart heb je een Key Vault gemaakt en er een geheim in opgeslagen. Ga verder naar de onderstaande artikelen voor meer informatie over Key Vault en hoe u deze integreren met uw toepassingen.
 
-- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
-- Zie de naslag informatie voor de [Azure cli AZ](/cli/azure/keyvault?view=azure-cli-latest) -sleutel kluis-opdrachten
+- Lees een [overzicht van Azure Key Vault](key-vault-overview.md)
+- Zie de referentie voor de [Azure CLI az keyvault-opdrachten](/cli/azure/keyvault?view=azure-cli-latest)
 - Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
-- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren
+- Aanbevolen [procedures voor Azure Key Vault bekijken](key-vault-best-practices.md)

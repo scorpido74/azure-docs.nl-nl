@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.openlocfilehash: f542c07456d60572dc70692a1ab0111acc9103f5
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675571"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en lees het met een back-end-toepassing (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Snelstart: telemetrie verzenden van een apparaat naar een IoT-hub en lezen met een back-end applicatie (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -27,7 +27,7 @@ In de snelstartgids worden twee vooraf geschreven C#-toepassingen gebruikt, éé
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ Gebruik de volgende opdracht om de huidige versie van C# op uw ontwikkelcomputer
 dotnet --version
 ```
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt specifieke opdrachten voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) toe aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -49,9 +49,9 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Down load de Azure C# IOT-voor beelden van [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak het zip-archief uit.
+Download de Azure IoT [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) C#-voorbeelden uit en haal het ZIP-archief uit.
 
-Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze Snelstartgids maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in deze quickstart maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -61,17 +61,17 @@ Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het app
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
+1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaatidentiteit te maken.
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyDotnetDevice**: dit is de naam van het apparaat dat u wilt registreren. Het is raadzaam om **MyDotnetDevice** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
+   **MyDotnetDevice**: Dit is de naam van het apparaat dat u registreert. Het wordt aanbevolen om **MyDotnetDevice** te gebruiken zoals getoond. Als u een andere naam voor uw apparaat kiest, moet u die naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
-2. Voer de volgende opdracht uit in Azure Cloud Shell om het _apparaat Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
+2. Voer de volgende opdracht uit in Azure Cloud Shell om de _tekenreeks voor apparaatverbinding_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
@@ -79,13 +79,13 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
-    Noteer de apparaatverbindingsreeks, die er ongeveer zo uitziet:
+    Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    U gebruikt deze waarde later in de Quick Start.
+    U gebruikt deze waarde later in de snelstart.
 
-3. U hebt ook het _Event hubs-compatibele eind punt_, _Event hubs compatibel pad_en de _primaire sleutel_ van de service van uw IOT-hub nodig om de back-endtoepassing in staat te stellen verbinding te maken met uw IOT-hub en de berichten op te halen. Met de volgende opdrachten worden deze waarden opgehaald voor uw IoT-hub:
+3. U hebt ook het _eindpunt,_ het pad dat compatibel is met _gebeurtenishubs_en _de primaire servicesleutel_ van uw IoT-hub nodig om de back-endtoepassing in staat te stellen verbinding te maken met uw IoT-hub en de berichten op te halen. Met de volgende opdrachten worden deze waarden opgehaald voor uw IoT-hub:
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
@@ -97,7 +97,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    Noteer deze drie waarden, die u later in de Quick Start gebruikt.
+    Noteer deze drie waarden, die u later in de quickstart gebruikt.
 
 ## <a name="send-simulated-telemetry"></a>Gesimuleerde telemetrie verzenden
 
@@ -107,7 +107,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 2. Open het bestand **SimulatedDevice.cs** in een teksteditor van uw keuze.
 
-    Vervang de waarde van de variabele `s_connectionString` door het apparaat connection string u eerder een notitie hebt gemaakt. Sla de wijzigingen vervolgens op in **SimulatedDevice.cs**.
+    Vervang de waarde `s_connectionString` van de variabele door de verbindingstekenreeks van het apparaat waar u eerder een notitie van hebt gemaakt. Sla uw wijzigingen vervolgens op **in SimulatedDevice.cs.**
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste pakketten te installeren voor de toepassing voor het gesimuleerde apparaat:
 
@@ -135,9 +135,9 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
     | Variabele | Waarde |
     | -------- | ----------- |
-    | `s_eventHubsCompatibleEndpoint` | Vervang de waarde van de variabele door het Event Hubs-compatibele eind punt dat u eerder een notitie hebt gemaakt. |
-    | `s_eventHubsCompatiblePath`     | Vervang de waarde van de variabele door het Event Hubs compatibele pad dat u eerder hebt genoteerd. |
-    | `s_iotHubSasKey`                | Vervang de waarde van de variabele door de primaire sleutel van de service die u eerder hebt genoteerd. |
+    | `s_eventHubsCompatibleEndpoint` | Vervang de waarde van de variabele door het eindpunt dat u eerder hebt notitie van het eindpunt dat u eerder hebt gemaakt. |
+    | `s_eventHubsCompatiblePath`     | Vervang de waarde van de variabele door het pad dat compatibel is met gebeurtenishubs waarop u eerder een notitie hebt gemaakt. |
+    | `s_iotHubSasKey`                | Vervang de waarde van de variabele door de primaire servicesleutel waar u eerder een notitie van hebt gemaakt. |
 
 3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken voor de back-endtoepassing te installeren:
 
@@ -153,7 +153,7 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de back-endtoepassing telemetriegegevens ontvangt die door het gesimuleerde apparaat naar de hub zijn verzonden:
 
-    ![Het hulpprogramma uitvoeren](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![De back-endtoepassing uitvoeren](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -161,7 +161,7 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start kunt u een IoT-hub instellen, een apparaat registreren, gesimuleerde telemetrie naar de hub C# verzenden met behulp van een toepassing en de telemetrie van de hub lezen met behulp van een eenvoudige back-end-toepassing.
+In deze quickstart stelt u een IoT-hub in, registreerde u een apparaat, verzondu gesimuleerde telemetrie naar de hub met behulp van een C#-toepassing en leest u de telemetrie van de hub met behulp van een eenvoudige back-endtoepassing.
 
 Ga verder met de volgende snelstartgids als u wilt weten hoe u een gesimuleerd apparaat beheert vanuit een back-endtoepassing.
 

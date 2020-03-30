@@ -11,37 +11,37 @@ ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
 ms.openlocfilehash: 5a912199869cb2cce690a3502345ec6f9ca43d22
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675677"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Quickstart: Een apparaat beheren dat is verbonden met een IoT-hub (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-In deze Quick Start gebruikt u een directe methode voor het beheren van een gesimuleerd apparaat dat is verbonden met Azure IoT Hub. IoT Hub is een Azure-service waarmee u uw IoT-apparaten kunt beheren vanuit de Cloud en grote hoeveel heden apparaat-telemetrie kunt opnemen in de Cloud voor opslag of verwerking. U kunt directe methoden gebruiken om het gedrag van een apparaat dat is verbonden met uw IoT-hub, op afstand te wijzigen. In deze Quick Start worden twee toepassingen gebruikt: een gesimuleerde apparaat-app die reageert op directe methoden die worden aangeroepen vanuit een back-end-service toepassing en een service toepassing die de directe methode op het Android-apparaat aanroept.
+In deze quickstart gebruikt u een directe methode om een gesimuleerd apparaat te bedienen dat is verbonden met Azure IoT Hub. IoT Hub is een Azure-service waarmee u uw IoT-apparaten vanuit de cloud beheren en grote hoeveelheden apparaattelemetrie naar de cloud innemen voor opslag of verwerking. U kunt directe methoden gebruiken om het gedrag van een apparaat dat is verbonden met uw IoT-hub, op afstand te wijzigen. Deze quickstart maakt gebruik van twee toepassingen: een gesimuleerde apparaattoepassing die reageert op directe methoden die worden aangeroepen vanuit een back-endservicetoepassing en een servicetoepassing die de directe methode op het Android-apparaat aanroept.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Android Studio met ANDROID SDK 27](https://developer.android.com/studio/). Zie [Install Android Studio](https://developer.android.com/studio/install)(Engelstalig) voor meer informatie.
+* [Android Studio met Android SDK 27](https://developer.android.com/studio/). Zie [Android Studio installeren](https://developer.android.com/studio/install)voor meer informatie.
 
-* [Git](https://git-scm.com/download/).
+* [Git.](https://git-scm.com/download/)
 
-* [Device SDK-voor beeld Android-toepassing](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample), opgenomen in [Azure IOT-voor beelden (Java)](https://github.com/Azure-Samples/azure-iot-samples-java).
+* [Device SDK-voorbeeld Android-toepassing](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample), opgenomen in [Azure IoT-voorbeelden (Java).](https://github.com/Azure-Samples/azure-iot-samples-java)
 
-* [Service SDK-voor beeld Android-toepassing](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample), opgenomen in azure IOT-voor beelden (Java).
+* [Service SDK-voorbeeld Android-toepassing](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample), opgenomen in Azure IoT Samples (Java).
 
-* Poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in deze Snelstartgids maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Poort 8883 wordt geopend in uw firewall. Het apparaatvoorbeeld in deze quickstart maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-extensie toevoegen
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt specifieke opdrachten voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) toe aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -61,11 +61,11 @@ Als u de vorige [Quickstart: Telemetrie vanaf een apparaat verzenden naar een Io
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
+1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaatidentiteit te maken.
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **MyAndroidDevice**: dit is de naam van het apparaat dat u wilt registreren. Het is raadzaam om **MyAndroidDevice** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
+   **MyAndroidDevice:** Dit is de naam van het apparaat dat u registreert. Het wordt aanbevolen om **MyAndroidDevice** te gebruiken zoals getoond. Als u een andere naam voor uw apparaat kiest, moet u die naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -83,7 +83,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
       --output table
     ```
 
-    Noteer de apparaatverbindingsreeks, die er ongeveer zo uitziet:
+    Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -99,47 +99,47 @@ U hebt ook een _serviceverbindingsreeks_ nodig, zodat de servicetoepassingen ver
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
-Noteer de serviceverbindingsreeks, die er ongeveer zo uitziet:
+Noteer de serviceverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-U gebruikt deze waarde verderop in de snelstartgids. Deze service connection string wijkt af van het apparaat connection string dat u in de vorige stap hebt genoteerd.
+U gebruikt deze waarde verderop in de snelstartgids. Deze tekenreeks voor serviceverbinding verschilt van de tekenreeks van de apparaatverbinding die u in de vorige stap hebt opgemerkt.
 
 ## <a name="listen-for-direct-method-calls"></a>Luisteren naar aanroepen van directe methoden
 
-Beide voor beelden voor deze Quick start zijn onderdeel van de opslag plaats Azure-IOT-samples-Java op GitHub. Download of kloon de opslagplaats [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java).
+Beide voorbeelden voor deze quickstart maken deel uit van de azure-iot-samples-java repository op GitHub. Download of kloon de opslagplaats [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java).
 
-De Device SDK-voorbeeldtoepassing kan worden uitgevoerd op een fysiek Android-apparaat of op een Android-emulator. De voorbeeldtoepassing maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat verzendt een bevestiging terug naar uw hub nadat de directe methode is uitgevoerd.
+De Device SDK-voorbeeldtoepassing kan worden uitgevoerd op een fysiek Android-apparaat of op een Android-emulator. De voorbeeldtoepassing maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat stuurt een bevestiging terug naar uw hub nadat de directe methode is uitgevoerd.
 
 1. Open het GitHub-voorbeeldproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. Open *gradle. Properties* voor het voorbeeld project in Android Studio en vervang de tijdelijke aanduiding **Device_Connection_String** door het apparaat Connection String u eerder een notitie hebt gemaakt.
+2. Open in Android Studio *gradle.properties* voor het voorbeeldproject en vervang de **Device_Connection_String** tijdelijke aanduiding door de tekenreeks voor apparaatverbinding waar u eerder een notitie van hebt gemaakt.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Klik in Android Studio op **Bestand** > **Project synchroniseren met Gradle-bestanden**. Controleer of de build is voltooid.
+3. Klik in Android Studio op **Project voor** > synchroniseren van bestanden**met Gradle-bestanden**. Controleer of de build is voltooid.
 
    > [!NOTE]
-   > Als de project synchronisatie mislukt, kan dit een van de volgende oorzaken hebben:
+   > Als de projectsynchronisatie mislukt, kan dit om een van de volgende redenen zijn:
    >
-   > * De versies van de Android Gradle-invoeg toepassing en Gradle waarnaar in het project wordt verwezen, zijn verouderd voor uw versie van Android Studio. Volg [deze instructies](https://developer.android.com/studio/releases/gradle-plugin) om de juiste versies van de invoeg toepassing en Gradle voor uw installatie te raadplegen en te installeren.
-   > * De licentie overeenkomst voor de Android SDK is niet ondertekend. Volg de instructies in de uitvoer van de build om de licentie overeenkomst te ondertekenen en de SDK te downloaden.
+   > * De versies van de Android Gradle-plug-in en Gradle waarnaar in het project wordt verwezen, zijn verouderd voor uw versie van Android Studio. Volg [deze instructies](https://developer.android.com/studio/releases/gradle-plugin) om de juiste versies van de plugin en Gradle voor uw installatie te verwijzen en te installeren.
+   > * De licentieovereenkomst voor de Android SDK is niet ondertekend. Volg de instructies in de Build-uitvoer om de licentieovereenkomst te ondertekenen en download de SDK.
 
-4. Zodra de build is voltooid, klikt u op **Uitvoeren** > **App uitvoeren**. Configureer de app om te worden uitgevoerd op een fysiek Android-apparaat of een Android-emulator. Zie [Uw app uitvoeren](https://developer.android.com/training/basics/firstapp/running-app) voor meer informatie over het uitvoeren van een Android-app op een fysiek apparaat of een emulator.
+4. Zodra de build is voltooid, klikt u op **'app** > **uitvoeren' uitvoeren.** Configureer de app om te worden uitgevoerd op een fysiek Android-apparaat of een Android-emulator. Zie [Uw app uitvoeren](https://developer.android.com/training/basics/firstapp/running-app) voor meer informatie over het uitvoeren van een Android-app op een fysiek apparaat of een emulator.
 
 5. Zodra de app wordt geladen, klikt u op de knop **Start** om telemetrie te verzenden naar de IoT-hub:
 
-    ![Voorbeeld scherm opname van de Android-app van het client apparaat](media/quickstart-control-device-android/sample-screenshot.png)
+    ![Voorbeeld schermafbeelding van de Android-app voor clientapparaten](media/quickstart-control-device-android/sample-screenshot.png)
 
-Deze app moet actief zijn op een fysiek apparaat of een emulator terwijl u het voor beeld van de Service-SDK uitvoert om het telemetrische interval tijdens runtime bij te werken.
+Deze app moet worden overgelaten aan het uitvoeren van een fysiek apparaat of emulator terwijl u het SDK-voorbeeld van de service uitvoert om het telemetrie-interval tijdens de uitvoering bij te werken.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>De telemetrie van uw hub lezen
 
-In deze sectie gebruikt u de Azure Cloud Shell met de IOT- [extensie](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) voor het bewaken van de berichten die worden verzonden door het Android-apparaat.
+In deze sectie gebruikt u de Azure Cloud Shell met de [IoT-extensie](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) om de berichten te controleren die door het Android-apparaat worden verzonden.
 
 1. Voer met de Azure Cloud Shell de volgende opdracht uit om te verbinden en berichten te lezen uit uw IoT-hub:
 
@@ -153,36 +153,36 @@ In deze sectie gebruikt u de Azure Cloud Shell met de IOT- [extensie](https://do
 
       ![Lees de apparaatberichten met de Azure CLI](media/quickstart-control-device-android/read-data.png)
 
-Standaard verzendt de telemetrie-app elke vijf seconden telemetrie van het Android-apparaat. In de volgende sectie gebruikt u de aanroep van de directe methode om het telemetrie-interval voor het Android IoT-apparaat bij te werken.
+Standaard verstuurt de telemetrie-app elke vijf seconden telemetrie vanaf het Android-apparaat. In de volgende sectie gebruikt u de aanroep van de directe methode om het telemetrie-interval voor het Android IoT-apparaat bij te werken.
 
 ## <a name="call-the-direct-method"></a>De directe methode aanroepen
 
-De servicetoepassing maakt verbinding met een eindpunt aan de servicezijde van de IoT-hub. De toepassing maakt directe methode aanroepen naar een apparaat via uw IoT-hub en luistert naar bevestigingen.
+De servicetoepassing maakt verbinding met een eindpunt aan de servicezijde van de IoT-hub. De toepassing voert rechtstreeks door dat u een apparaat aanbelt via uw IoT-hub en luistert naar bevestigingen.
 
 Voer deze app uit op een afzonderlijk fysiek Android-apparaat of een Android-emulator.
 
-Een IoT Hub back-end-service toepassing wordt doorgaans uitgevoerd in de Cloud, waar het eenvoudiger is om de Risico's te verhelpen die zijn gekoppeld aan de gevoelige connection string waarmee alle apparaten in een IoT Hub worden beheerd. In dit voorbeeld wordt deze servicetoepassing alleen ter demonstratie uitgevoerd als een Android-app. De overige-taal versies van deze Snelstartgids bieden voor beelden die nauw keuriger worden uitgelijnd met een standaard back-end-service toepassing.
+Een IoT Hub back-end servicetoepassing wordt meestal uitgevoerd in de cloud, waarbij het eenvoudiger is om de risico's te beperken die verbonden zijn aan de gevoelige verbindingstekenreeks die alle apparaten op een IoT Hub aanstuurt. In dit voorbeeld wordt deze servicetoepassing alleen ter demonstratie uitgevoerd als een Android-app. De andere taalversies van deze quickstart bieden voorbeelden die beter aansluiten bij een typische back-endservicetoepassing.
 
 1. Open het GitHub-serviceproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
 
         \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
 
-2. Open *gradle. Properties* voor het voorbeeld project in Android Studio. Werk de waarden voor de eigenschappen **Connections Tring** en **DeviceID** bij met de Service Connection String u eerder hebt genoteerd en de Android-apparaat-id die u hebt geregistreerd.
+2. Open in Android Studio *gradle.properties* voor het voorbeeldproject. Werk de waarden voor de eigenschappen **ConnectionString** en **DeviceId bij** met de tekenreeks serviceverbinding die u eerder hebt opgemerkt en de Android-apparaat-id die u hebt geregistreerd.
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
-3. Klik in Android Studio op **Bestand** > **Project synchroniseren met Gradle-bestanden**. Controleer of de build is voltooid.
+3. Klik in Android Studio op **Project voor** > synchroniseren van bestanden**met Gradle-bestanden**. Controleer of de build is voltooid.
 
    > [!NOTE]
-   > Als de project synchronisatie mislukt, kan dit een van de volgende oorzaken hebben:
+   > Als de projectsynchronisatie mislukt, kan dit om een van de volgende redenen zijn:
    >
-   > * De versies van de Android Gradle-invoeg toepassing en Gradle waarnaar in het project wordt verwezen, zijn verouderd voor uw versie van Android Studio. Volg [deze instructies](https://developer.android.com/studio/releases/gradle-plugin) om de juiste versies van de invoeg toepassing en Gradle voor uw installatie te raadplegen en te installeren.
-   > * De licentie overeenkomst voor de Android SDK is niet ondertekend. Volg de instructies in de uitvoer van de build om de licentie overeenkomst te ondertekenen en de SDK te downloaden.
+   > * De versies van de Android Gradle-plug-in en Gradle waarnaar in het project wordt verwezen, zijn verouderd voor uw versie van Android Studio. Volg [deze instructies](https://developer.android.com/studio/releases/gradle-plugin) om de juiste versies van de plugin en Gradle voor uw installatie te verwijzen en te installeren.
+   > * De licentieovereenkomst voor de Android SDK is niet ondertekend. Volg de instructies in de Build-uitvoer om de licentieovereenkomst te ondertekenen en download de SDK.
 
-4. Zodra de build is voltooid, klikt u op **Uitvoeren** > **App uitvoeren**. Configureer de app om te worden uitgevoerd op een afzonderlijk fysiek Android-apparaat of een Android-emulator. Zie [Uw app uitvoeren](https://developer.android.com/training/basics/firstapp/running-app) voor meer informatie over het uitvoeren van een Android-app op een fysiek apparaat of een emulator.
+4. Zodra de build is voltooid, klikt u op **'app** > **uitvoeren' uitvoeren.** Configureer de app om te worden uitgevoerd op een afzonderlijk fysiek Android-apparaat of een Android-emulator. Zie [Uw app uitvoeren](https://developer.android.com/training/basics/firstapp/running-app) voor meer informatie over het uitvoeren van een Android-app op een fysiek apparaat of een emulator.
 
 5. Zodra de app wordt geladen, werkt u de waarde **Berichtinterval instellen** bij naar **1000** en klikt u op **Aanroepen**.
 
@@ -190,9 +190,9 @@ Een IoT Hub back-end-service toepassing wordt doorgaans uitgevoerd in de Cloud, 
 
     ![Telemetrie-interval invoeren](media/quickstart-control-device-android/enter-telemetry-interval.png)
 
-6. De app ontvangt een bevestiging die aangeeft of de methode is uitgevoerd of niet.
+6. De app ontvangt een bevestiging dat de methode is uitgevoerd of niet.
 
-    ![Directe bevestigings methode](media/quickstart-control-device-android/direct-method-ack.png)
+    ![Directe methodebevestiging](media/quickstart-control-device-android/direct-method-ack.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,38 +1,38 @@
 ---
-title: Overzicht van Azure-status | Microsoft Docs
-description: Een globale weer gave van de status van Azure-Services
+title: Overzicht van azure-status | Microsoft Documenten
+description: Een globale weergave van de status van Azure-services
 ms.topic: overview
 ms.date: 06/11/2019
 ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78898344"
 ---
 # <a name="azure-status-overview"></a>Overzicht van Azure-status
 
-[Azure-status](https://status.azure.com/status/) geeft u een wereld wijd overzicht van de status van Azure-Services en-regio's. Met de Azure-status kunt u informatie krijgen over de beschik baarheid van de service. De Azure-status is beschikbaar voor iedereen voor het weer geven van alle services die de service status rapporteren, evenals incidenten met een grote invloed op de impact. Als u een huidige Azure-gebruiker bent, raden we u echter aan om de persoonlijke ervaring van [Azure service Health](https://aka.ms/azureservicehealth)te gebruiken. Azure Service Health omvat alle storingen, toekomstige geplande onderhouds activiteiten en service Advisor.
+[Azure-status](https://status.azure.com/status/) biedt u een globaal overzicht van de status van Azure-services en -regio's. Met de Azure-status u informatie krijgen over de beschikbaarheid van services. Azure-status is beschikbaar voor iedereen om alle services te bekijken die hun servicestatus rapporteren, evenals incidenten met een brede impact. Als u echter een huidige Azure-gebruiker bent, raden we u ten zeerste aan om de gepersonaliseerde ervaring in [Azure Service Health](https://aka.ms/azureservicehealth)te gebruiken. Azure Service Health omvat alle storingen, geplande onderhoudsactiviteiten en serviceadviezen.
 
 ![Azure-statuspagina](./media/azure-status-overview/azure-status.PNG)
 
-## <a name="azure-status-updates"></a>Status updates van Azure
+## <a name="azure-status-updates"></a>Azure-statusupdates
 
-De Azure-status pagina wordt in realtime bijgewerkt als de status van Azure-Services wordt gewijzigd. Als u de Azure-status pagina opent, kunt u de snelheid bepalen waarmee de pagina wordt vernieuwd met nieuwe gegevens. Bovenaan ziet u de laatste keer dat de pagina is bijgewerkt.
+De Azure-statuspagina wordt in realtime bijgewerkt naarmate de status van Azure-services verandert. Als u de Azure-statuspagina open laat staan, u de snelheid bepalen waarmee de pagina wordt vernieuwd met nieuwe gegevens. Bovenaan u zien wanneer de pagina voor het laatst is bijgewerkt.
 
 ![Azure-status vernieuwen](./media/azure-status-overview/update.PNG)
 
-## <a name="azure-status-history"></a>Status geschiedenis van Azure
+## <a name="azure-status-history"></a>Azure-statusgeschiedenis
 
-Terwijl de Azure-status pagina altijd de meest recente status informatie bevat, kunt u oudere gebeurtenissen weer geven met behulp van de [pagina status geschiedenis van Azure](https://status.azure.com/status/history/).
+Terwijl op de statuspagina van Azure altijd de meest recente statusgegevens worden weergegeven, u oudere gebeurtenissen weergeven met behulp van de [pagina Azure-statusgeschiedenis](https://status.azure.com/status/history/).
 
-Als u begint met gebeurtenissen die zijn gepubliceerd in november 2019, worden in de status geschiedenis pagina gebeurtenissen weer gegeven tot 365 dagen in het verleden, met inbegrip van een voorlopige hoofd oorzaak, oplossing en volgende stappen voor Azure.
+Vanaf gebeurtenissen die in november 2019 zijn gepubliceerd, worden gebeurtenissen tot 365 dagen in het verleden op de statusgeschiedenis weergegeven, waaronder een voorlopige hoofdoorzaak, mitigatie en volgende stappen voor Azure.
 
 ## <a name="rss-feed"></a>RSS-feed
 
-De Azure-status biedt ook [een RSS-feed](https://status.azure.com/status/feed/) van wijzigingen in de status van Azure-Services waarop u zich kunt abonneren.
+Azure-status biedt ook [een RSS-feed](https://status.azure.com/status/feed/) van wijzigingen in de status van Azure-services waarop u zich abonneren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over hoe u een persoonlijke weer gave kunt verkrijgen in azure Health met [service Health](./service-health-overview.md).
-* Meer informatie over hoe u een gedetailleerdere weer gave kunt krijgen in de status van uw specifieke Azure-resources met [resource Health](./resource-health-overview.md).
+* Meer informatie over hoe u een meer gepersonaliseerde weergave van azure-status krijgen met [Servicestatus.](./service-health-overview.md)
+* Meer informatie over hoe u een gedetailleerder beeld krijgen van de status van uw specifieke Azure-bronnen met [resourcestatus.](./resource-health-overview.md)

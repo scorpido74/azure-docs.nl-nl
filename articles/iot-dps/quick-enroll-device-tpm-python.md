@@ -1,6 +1,6 @@
 ---
-title: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van python
-description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van de python inrichtings service-SDK. In deze quickstart wordt gebruikgemaakt van afzonderlijke registraties.'
+title: TPM-apparaat inschrijven voor Azure Device Provisioning Service met Python
+description: Snelstart - TPM-apparaat inschrijven voor Azure IoT Hub Device Provisioning Service (DPS) met python-service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,28 +10,28 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77920617"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de python inrichtings service-SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Snelstart: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met Python-service SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-In deze Quick Start maakt u programmatisch een afzonderlijke inschrijving voor een TPM-apparaat in de Azure IoT Hub Device Provisioning Service, met behulp van de python inrichtings service-SDK met behulp van een python-voorbeeld toepassing.
+In deze quickstart maakt u programmatisch een individuele inschrijving voor een TPM-apparaat in de Azure IoT Hub Device Provisioning Service, met behulp van de Python Provisioning Service SDK met behulp van een voorbeeld python-toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Volt ooien van [het instellen van de IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md).
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python 2. x of 3. x](https://www.python.org/downloads/). In deze Quick Start wordt de [python inrichtings service-SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) hieronder geïnstalleerd.
-- [PIP](https://pip.pypa.io/en/stable/installing/), indien niet opgenomen in uw distributie van python.
-- Goedkeuringssleutel. Gebruik de stappen in [een gesimuleerd apparaat maken en inrichten](quick-create-simulated-device.md) of de goedkeurings sleutel gebruiken die is opgegeven bij de SDK, zoals hieronder wordt beschreven.
+- Voltooiing van het instellen van [de IoT Hub Device Provisioning Service met de Azure-portal.](./quick-setup-auto-provision.md)
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Python 2.x of 3.x](https://www.python.org/downloads/). Deze quickstart installeert hieronder de [Python Provisioning Service SDK.](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)
+- [Pip,](https://pip.pypa.io/en/stable/installing/)zo niet inbegrepen bij uw distributie van Python.
+- Goedkeuringssleutel. Gebruik de stappen in [Een gesimuleerd apparaat maken en inrichten](quick-create-simulated-device.md) of gebruik de goedkeuringssleutel die bij de SDK wordt geleverd, zoals hieronder beschreven.
 
 > [!IMPORTANT]
-> Dit artikel is alleen van toepassing op de afgeschafte v1 python SDK. Apparaat-en service clients voor de IoT Hub Device Provisioning Service zijn nog niet beschikbaar in v2. Het team is momenteel hard werk om v2 te voorzien van functie pariteit.
+> Dit artikel is alleen van toepassing op de afgeschafte V1 Python SDK. Apparaat- en serviceclients voor de IoT Hub Device Provisioning Service zijn nog niet beschikbaar in V2. Het team is momenteel hard aan het werk om V2 te brengen om pariteit te kenmerken.
 
 <a id="prepareenvironment"></a>
 
@@ -39,7 +39,7 @@ In deze Quick Start maakt u programmatisch een afzonderlijke inschrijving voor e
 
 1. [Download en installeer Python 2.x of 3.x](https://www.python.org/downloads/). Zorg ervoor dat u de 32-bits of 64-bits installatie gebruikt, zoals vereist door uw configuratie. Zorg ervoor dat u Python toevoegt aan uw platformspecifieke omgevingsvariabelen als u hierom wordt gevraagd tijdens de installatie. 
 
-1. Kies een van de volgende opties voor de [python inrichtings service-SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client):
+1. Kies voor de [Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)een van de volgende opties:
 
     - Bouw en compileer de **Azure IoT Python SDK**. Volg [deze instructies](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) voor het bouwen van de Python-pakketten. Als u een Windows-besturingssysteem hebt, gebruikt dan ook het [herdistribueerbare pakket van Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) om het gebruik van systeemeigen DLL's van Python mogelijk te maken.
 
@@ -62,7 +62,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
 1. Start een teksteditor en maak een nieuw bestand **TpmEnrollment.py**.
 
-1. Voeg de volgende `import` -instructies en -variabelen aan het begin van het bestand **TpmEnrollment.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks die te vinden is onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** in **Azure Portal**. Vervang `endorsementKey` door de waarde die u eerder hebt genoteerd toen u [de omgeving voorbereidde](quick-enroll-device-tpm-python.md#prepareenvironment). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
+1. Voeg de volgende `import` -instructies en -variabelen aan het begin van het bestand **TpmEnrollment.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks, te vinden onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** op de **Azure-portal**. Vervang `endorsementKey` door de waarde die u eerder hebt genoteerd toen u [de omgeving voorbereidde](quick-enroll-device-tpm-python.md#prepareenvironment). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -113,15 +113,15 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent het Java service-voor beeld te verkennen, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+Als u van plan bent het voorbeeld van de Java-service te verkennen, moet u de bronnen die in deze quickstart zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle bronnen die door deze quickstart zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het Python-voorbeeld op de computer.
 1. Als u een gesimuleerd TPM-apparaat hebt gemaakt, sluit u het venster van de TPM-simulator.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Schakel het selectie vakje in naast de *registratie-id* voor de inschrijvings vermelding die u hebt gemaakt met behulp van deze Quick Start. Klik vervolgens op de knop **verwijderen** boven aan het deel venster.
+1. Navigeer naar de service Apparaatinrichting in de Azure-portal, selecteer Inschrijvingen beheren en schakel het tabblad **Individuele inschrijvingen** in. Schakel het selectievakje in naast de *registratie-id* voor het **inschrijvingsitem**dat u met deze quickstart hebt gemaakt en druk op de knop **Verwijderen** boven aan het deelvenster.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u programmatisch een afzonderlijke inschrijvings vermelding gemaakt voor een TPM-apparaat en kunt u desgewenst een door de TPM gesimuleerd apparaat op uw computer maken en dit inrichten voor uw IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal.
+In deze quickstart hebt u programmatisch een afzonderlijke inschrijvingsvermelding voor een TPM-apparaat gemaakt en optioneel een TPM-gesimuleerd apparaat op uw machine gemaakt en deze op uw IoT-hub ingericht met behulp van de Azure IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal.
 
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

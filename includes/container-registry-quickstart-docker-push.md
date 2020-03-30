@@ -9,21 +9,21 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67176591"
 ---
 ## <a name="push-image-to-registry"></a>Installatiekopie pushen naar register
 
-Als u een installatiekopie naar een Azure Container Registry wilt pushen, moet u eerst over een installatiekopie beschikken. Als u nog geen lokale container installatie kopieën hebt, voert u de volgende opdracht [docker pull][docker-pull] uit om een bestaande installatie kopie van docker hub te halen. Haal voor dit voorbeeld de installatiekopie `hello-world` op.
+Als u een installatiekopie naar een Azure Container Registry wilt pushen, moet u eerst over een installatiekopie beschikken. Als u nog geen lokale containerinstallatiekopieën hebt, voert u de volgende [docker pull][docker-pull]-opdracht uit om een bestaande installatiekopie op te halen uit Docker Hub. Haal voor dit voorbeeld de installatiekopie `hello-world` op.
 
 ```
 docker pull hello-world
 ```
 
-Voordat u een installatiekopie naar het register kunt pushen, moet u deze taggen met de volledige gekwalificeerde naam van de ACR-aanmeldingsserver. De naam van de aanmeldingsserver heeft de notatie *\<registernaam\>.azurecr.io* (in kleine letters), bijvoorbeeld *mijncontainerregister007.azurecr.io*.
+Voordat u een installatiekopie naar het register kunt pushen, moet u deze taggen met de volledige gekwalificeerde naam van de ACR-aanmeldingsserver. De naam van de inlogserver staat in de * \<opmaaknaam\>.azurecr.io* (alle kleine letters), bijvoorbeeld *mycontainerregistry007.azurecr.io*.
 
 Label de installatiekopie met de opdracht [docker tag][docker-tag]. Vervang `<acrLoginServer>` door de aanmeldingsnaam van het ACR-exemplaar.
 
@@ -37,7 +37,7 @@ Gebruik ten slotte [docker push][docker-push] om de installatiekopie naar de ACR
 docker push <acrLoginServer>/hello-world:v1
 ```
 
-Nadat u de installatiekopie naar uw containerregister hebt gepusht, verwijdert u de `hello-world:v1`-installatiekopie uit uw lokale Docker-omgeving. (Houd er rekening mee dat met deze [docker RMI][docker-rmi] -opdracht de installatie kopie niet wordt verwijderd uit de opslag plaats **Hallo wereld** in uw Azure container Registry.)
+Nadat u de installatiekopie naar uw containerregister hebt gepusht, verwijdert u de `hello-world:v1`-installatiekopie uit uw lokale Docker-omgeving. (Merk op dat deze [docker rmi][docker-rmi]-opdracht de installatiekopie niet verwijdert uit de **hello-world**-opslagplaats in uw Azure-containerregister.)
 
 ```
 docker rmi <acrLoginServer>/hello-world:v1

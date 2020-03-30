@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Blob Storage-client bibliotheek voor .NET'
-description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek voor .NET gebruikt om een container en een BLOB in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
+title: 'Snelstart: Azure Blob-opslagclientbibliotheek voor .NET'
+description: In deze snelstart leert u hoe u de Azure Blob-opslagclientbibliotheek voor .NET gebruiken om een container en een blob in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/20/2019
@@ -8,50 +8,50 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: b243d05619642e1dd3ad8dfe2bbe1d0a9661b773
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75351306"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V11 voor .NET
+# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Snelstart: Azure Blob-opslagclientbibliotheek v11 voor .NET
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V11 voor .NET. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+Aan de slag met de Azure Blob Storage-clientbibliotheek v11 voor .NET. Azure Blob Storage is de objectopslagoplossing van Microsoft voor de cloud. Volg stappen om het pakket te installeren en probeer voorbeeldcode uit voor basistaken. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
 
-Gebruik de Azure Blob Storage-client bibliotheek voor .NET voor het volgende:
+Gebruik de Azure Blob Storage-clientbibliotheek voor .NET om:
 
 * Een container maken
-* Machtigingen voor een container instellen
-* Een BLOB maken in Azure Storage
-* De BLOB downloaden naar uw lokale computer
-* Alle blobs in een container weer geven
+* Machtigingen instellen voor een container
+* Een blob maken in Azure Storage
+* De blob downloaden naar uw lokale computer
+* Alle blobs in een container weergeven
 * Een container verwijderen
 
-[API-referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | -voor [beelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+[API-naslagdocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [Bibliotheekbroncodepakket](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Voorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Huidige [.net core SDK](https://dotnet.microsoft.com/download/dotnet-core) voor uw besturings systeem. Zorg ervoor dat u de SDK en niet de runtime ophaalt.
+* Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
+* Azure Storage-account - [een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Huidige [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) voor uw besturingssysteem. Zorg ervoor dat u de SDK en niet de runtime.
 
 ## <a name="setting-up"></a>Instellen
 
-In deze sectie wordt uitgelegd hoe u een project voorbereidt voor gebruik met de Azure Blob Storage-client bibliotheek voor .NET.
+In deze sectie u een project voorbereiden om te werken met de Azure Blob Storage-clientbibliotheek voor .NET.
 
 ### <a name="create-the-project"></a>Het project maken
 
-Maak eerst een .NET core-toepassing met de naam *BLOB-Quick*start.
+Maak eerst een .NET Core-toepassing met de naam *blob-quickstart*.
 
-1. Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam *BLOB-Quick*start. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: *Program.cs*.
+1. Gebruik de `dotnet new` opdracht om in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe console-app te maken met de naam *blob-quickstart.* Met deze opdracht wordt een eenvoudig "Hello World" C#-project gemaakt met één bronbestand: *Program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
    ```
 
-2. Ga naar de zojuist gemaakte map *BLOB-Quick* start en bouw de app om te controleren of alles goed is.
+2. Schakel over naar de nieuw gemaakte *blob-quickstartmap* en bouw de app om te controleren of alles in orde is.
 
    ```console
    cd blob-quickstart
@@ -61,7 +61,7 @@ Maak eerst een .NET core-toepassing met de naam *BLOB-Quick*start.
    dotnet build
    ```
 
-De verwachte uitvoer van de build moet er ongeveer als volgt uitzien:
+De verwachte output van de build moet er ongeveer zo uitzien:
 
 ```output
 C:\QuickStarts\blob-quickstart> dotnet build
@@ -80,23 +80,23 @@ Time Elapsed 00:00:03.08
 
 ### <a name="install-the-package"></a>Het pakket installeren
 
-Terwijl u nog steeds in de toepassingsmap, installeert u de Azure Blob Storage-client bibliotheek voor .NET-pakket met behulp van de `dotnet add package` opdracht.
+Installeer de Azure Blob Storage-clientbibliotheek voor .NET-pakket met `dotnet add package` behulp van de opdracht terwijl u zich nog in de toepassingsmap bevindt.
 
 ```console
 dotnet add package Microsoft.Azure.Storage.Blob
 ```
 
-### <a name="set-up-the-app-framework"></a>Het app-Framework instellen
+### <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
-Vanuit de projectmap:
+In de projectmap:
 
-1. Open het *Program.cs* -bestand in de editor
-2. De `Console.WriteLine`-instructie verwijderen
-3. `using`-instructies toevoegen
-4. Een `ProcessAsync` methode maken waarbij de hoofd code van het voor beeld wordt opgeslagen
-5. De `ProcessAsync` methode asynchroon aanroepen vanuit `Main`
+1. Het *Program.cs-bestand* openen in uw editor
+2. De `Console.WriteLine` instructie verwijderen
+3. Richtlijnen `using` toevoegen
+4. Een `ProcessAsync` methode maken waarbij de hoofdcode voor het voorbeeld zich zal bevinden
+5. Asynchroon aanroepen `ProcessAsync` van de methode uit`Main`
 
-Hier volgt de code:
+Hier is de code:
 
 ```csharp
 using System;
@@ -129,9 +129,9 @@ namespace blob_quickstart
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieer uw referenties van de Azure Portal
 
-Wanneer de voorbeeld toepassing een aanvraag indient om Azure Storage, moet deze worden geautoriseerd. Als u een aanvraag wilt autoriseren, voegt u de referenties van uw opslag account toe aan de toepassing als een connection string. U kunt de referenties van het opslagaccount weergeven door de volgende stappen te volgen:
+Wanneer de voorbeeldtoepassing een aanvraag voor Azure Storage indient, moet deze zijn geautoriseerd. Als u een aanvraag wilt autoriseren, voegt u uw opslagaccountreferenties toe aan de toepassing als verbindingstekenreeks. U kunt de referenties van het opslagaccount weergeven door de volgende stappen te volgen:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
+1. Navigeer naar de [Azure-portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
 3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. Hier worden de toegangssleutels van uw account weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
 4. Zoek de waarde van de **Verbindingsreeks** onder **key1** en selecteer de knop **Kopiëren** om de verbindingsreeks te kopiëren. U gaat in de volgende stap de waarde voor de verbinding toevoegen aan een omgevingsvariabele.
@@ -140,7 +140,7 @@ Wanneer de voorbeeld toepassing een aanvraag indient om Azure Storage, moet deze
 
 ### <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 
-Nadat u de verbindingsreeks hebt gekopieerd, schrijft u deze naar een nieuwe omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een consolevenster en volgt u de aanwijzingen voor uw besturingssysteem. Vervang `<yourconnectionstring>` door de daad werkelijke connection string.
+Nadat u de verbindingsreeks hebt gekopieerd, schrijft u deze naar een nieuwe omgevingsvariabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een consolevenster en volgt u de aanwijzingen voor uw besturingssysteem. Vervang `<yourconnectionstring>` door uw werkelijke verbindingstekenreeks.
 
 #### <a name="windows"></a>Windows
 
@@ -148,7 +148,7 @@ Nadat u de verbindingsreeks hebt gekopieerd, schrijft u deze naar een nieuwe omg
 setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 ```
 
-Nadat u de omgevings variabele in Windows hebt toegevoegd, moet u een nieuw exemplaar van het opdracht venster starten.
+Nadat u de omgevingsvariabele in Windows hebt toegevoegd, moet u een nieuwe instantie van het opdrachtvenster starten.
 
 #### <a name="linux"></a>Linux
 
@@ -162,44 +162,44 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ```
 
-Nadat u de omgevings variabele hebt toegevoegd, start u alle actieve Program ma's die moeten worden gelezen van de omgevings variabele opnieuw. Start uw ontwikkel omgeving of editor bijvoorbeeld opnieuw op voordat u doorgaat.
+Nadat u de omgevingsvariabele hebt toegevoegd, start u alle lopende programma's opnieuw die de omgevingsvariabele moeten lezen. Start bijvoorbeeld uw ontwikkelomgeving of editor opnieuw voordat u verdergaat.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-Azure Blob-opslag is geoptimaliseerd voor het opslaan van enorme hoeveel heden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
+Azure Blob-opslag is geoptimaliseerd voor het opslaan van enorme hoeveelheden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
 
-* Het opslag account.
-* Een container in het opslag account
-* Een BLOB in een container
+* Het opslagaccount.
+* Een container in het opslagaccount
+* Een blob in een container
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
 ![Diagram van de blobopslagarchitectuur](./media/storage-quickstart-blobs-dotnet/blob1.png)
 
-Gebruik de volgende .NET-klassen om te communiceren met deze resources:
+Gebruik de volgende .NET-klassen om met deze bronnen te communiceren:
 
-* [Cloud Storage account](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): de klasse `CloudStorageAccount` vertegenwoordigt uw Azure-opslag account. Gebruik deze klasse om toegang te verlenen tot Blob Storage met behulp van de toegangs sleutels van uw account.
-* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): de klasse `CloudBlobClient` biedt een toegangs punt voor de BLOB service in uw code.
-* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): de klasse `CloudBlobContainer` vertegenwoordigt een BLOB-container in uw code.
-* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): het `CloudBlockBlob`-object vertegenwoordigt een blok-Blob in uw code. Blok-blobs bestaan uit blokken met gegevens die afzonderlijk kunnen worden beheerd.
+* [CloudStorageAccount:](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) `CloudStorageAccount` de klasse vertegenwoordigt uw Azure-opslagaccount. Gebruik deze klasse om toegang tot Blob-opslag te autoriseren met uw accounttoegangssleutels.
+* [CloudBlobClient:](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) `CloudBlobClient` de klasse biedt een toegangspunt tot de Blob-service in uw code.
+* [CloudBlobContainer:](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) `CloudBlobContainer` de klasse vertegenwoordigt een blobcontainer in uw code.
+* [CloudBlockBlob:](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) `CloudBlockBlob` het object vertegenwoordigt een blokblob in uw code. Blok-blobs bestaan uit blokken met gegevens die afzonderlijk kunnen worden beheerd.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor .NET:
+In deze voorbeeldcodefragmenten ziet u hoe u het volgende uitvoeren met de Azure Blob-opslagclientbibliotheek voor .NET:
 
    * [De client verifiëren](#authenticate-the-client)
    * [Een container maken](#create-a-container)
-   * [Machtigingen voor een container instellen](#set-permissions-on-a-container)
+   * [Machtigingen instellen voor een container](#set-permissions-on-a-container)
    * [Blobs uploaden naar een container](#upload-blobs-to-a-container)
-   * [De blobs in een container weer geven](#list-the-blobs-in-a-container)
+   * [De blobs in een container in een lijst weergeven](#list-the-blobs-in-a-container)
    * [Blobs downloaden](#download-blobs)
-   * [Container verwijderen](#delete-a-container)
+   * [Een container verwijderen](#delete-a-container)
 
 ### <a name="authenticate-the-client"></a>De client verifiëren
 
-Met de onderstaande code wordt gecontroleerd of de omgevings variabele een connection string bevat die kan worden geparseerd voor het maken van een [Cloud Storage account](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) -object dat verwijst naar het opslag account. Gebruik de [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-methode om te controleren of de verbindingsreeks geldig is. Als `TryParse` is geslaagd, wordt de `storageAccount`-variabele geïnitialiseerd en wordt `true`geretourneerd.
+In de onderstaande code wordt gecontroleerd of de omgevingsvariabele een verbindingstekenreeks bevat die kan worden ontleed om een [CloudStorageAccount-object](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) te maken dat naar het opslagaccount wijst. Gebruik de [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet)-methode om te controleren of de verbindingsreeks geldig is. Als `TryParse` dit lukt, worden `storageAccount` de variabele `true`en het rendement geinitialiseerd.
 
-Voeg deze code toe in de `ProcessAsync` methode:
+Voeg deze code `ProcessAsync` toe in de methode:
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage 
@@ -231,13 +231,13 @@ else
 ```
 
 > [!NOTE]
-> Als u de rest van de bewerkingen in dit artikel wilt uitvoeren, vervangt u `// ADD OTHER OPERATIONS HERE` in de bovenstaande code door de code fragmenten in de volgende secties.
+> Als u de rest van de `// ADD OTHER OPERATIONS HERE` bewerkingen in dit artikel wilt uitvoeren, vervangt u in de bovenstaande code de codefragmenten in de volgende secties.
 
 ### <a name="create-a-container"></a>Een container maken
 
 Maak om de container te maken eerst een instantie van het object [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient), dat naar de Blob-opslag in uw opslagaccount wijst. Maak vervolgens een instantie van het object [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) en maak de container.
 
-In dit geval roept de code de [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) -methode aan om de container te maken. Er wordt een GUID-waarde toegevoegd aan de containernaam om ervoor te zorgen dat deze uniek is. In een productie omgeving is het vaak beter om de methode [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) te gebruiken om een container te maken als deze nog niet bestaat.
+In dit geval roept de code de [createAsync-methode](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) aan om de container te maken. Er wordt een GUID-waarde toegevoegd aan de containernaam om ervoor te zorgen dat deze uniek is. In een productieomgeving heeft het vaak de voorkeur om de [createIfNotExistsAsync-methode](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) alleen te gebruiken om een container te maken als deze nog niet bestaat.
 
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens een naam geven en hiernaar verwijderen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de naamgeving van containers en blobs.
@@ -255,9 +255,9 @@ CloudBlobContainer cloudBlobContainer =
 await cloudBlobContainer.CreateAsync();
 ```
 
-### <a name="set-permissions-on-a-container"></a>Machtigingen voor een container instellen
+### <a name="set-permissions-on-a-container"></a>Machtigingen instellen voor een container
 
-Stel machtigingen in voor de container zodat alle blobs in de container openbaar zijn. Als een blob openbaar is, is deze anoniem toegankelijk voor elke client.
+Machtigingen voor de container instellen, zodat blobs in de container openbaar zijn. Als een blob openbaar is, is deze anoniem toegankelijk voor elke client.
 
 ```csharp
 // Set the permissions so the blobs are public.
@@ -270,7 +270,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-a-container"></a>Blobs uploaden naar een container
 
-Het volgende code fragment haalt een verwijzing op naar een `CloudBlockBlob`-object door de methode [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) aan te roepen in de container die in de vorige sectie is gemaakt. Vervolgens wordt het geselecteerde lokale bestand geüpload naar de BLOB door de methode [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
+In het volgende codefragment `CloudBlockBlob` wordt een verwijzing naar een object weergegeven door de [methode GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) aan te roepen op de container die in de vorige sectie is gemaakt. Vervolgens wordt het geselecteerde lokale bestand naar de blob geüpload door de [methode UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -291,9 +291,9 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Vermeld de blobs in de container met behulp van de methode [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) . In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
+Lijst van de blobs in de container met behulp van de [methode ListBlobsSegmentedAsync.](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) In dit geval is er slechts één blob aan de container toegevoegd, zodat de lijstbewerking alleen die ene blob retourneert.
 
-Als er te veel blobs zijn om in één aanroep te retour neren (standaard meer dan 5000), retourneert de methode `ListBlobsSegmentedAsync` een segment van de totale resultatenset en een vervolg token. Om het volgende segment met blobs op te halen, geeft u het vervolgtoken op dat door de vorige aanroep is geretourneerd, enzovoort, totdat het vervolgtoken null is. Een null-vervolgtoken geeft aan dat alle blobs zijn opgehaald. De code laat zien hoe u het vervolg token kunt gebruiken voor de beste prak tijken.
+Als er te veel blobs zijn om in één aanroep terug te `ListBlobsSegmentedAsync` keren (standaard meer dan 5000), retourneert de methode een segment van de totale resultaatset en een vervolgtoken. Om het volgende segment met blobs op te halen, geeft u het vervolgtoken op dat door de vorige aanroep is geretourneerd, enzovoort, totdat het vervolgtoken null is. Een null-vervolgtoken geeft aan dat alle blobs zijn opgehaald. De code laat zien hoe u het vervolgtoken gebruiken omwille van best practices.
 
 ```csharp
 // List the blobs in the container.
@@ -314,7 +314,7 @@ do
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de blob die u eerder hebt gemaakt voor uw lokale bestands systeem met behulp van de methode [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) . De voorbeeld code voegt het achtervoegsel ' _DOWNLOADED ' toe aan de naam van de blob, zodat u beide bestanden in het lokale bestands systeem kunt zien.
+Download de blob die eerder is gemaakt naar uw lokale bestandssysteem met behulp van de [methode DownloadToFileAsync.](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) De voorbeeldcode voegt een achtervoegsel van '_DOWNLOADED' toe aan de blobnaam, zodat u beide bestanden in het lokale bestandssysteem zien.
 
 ```csharp
 // Download the blob to a local file, using the reference created earlier.
@@ -327,7 +327,7 @@ await cloudBlockBlob.DownloadToFileAsync(destinationFile, FileMode.Create);
 
 ### <a name="delete-a-container"></a>Een container verwijderen
 
-Met de volgende code wordt de resources die de app heeft gemaakt opgeschoond door de volledige container te verwijderen met [CloudBlobContainer. DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync). U kunt ook de lokale bestanden verwijderen als u dat wilt.
+Met de volgende code worden de resources die de app heeft gemaakt door de hele container te verwijderen met [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync), opschonen. U kunt ook de lokale bestanden verwijderen als u dat wilt.
 
 ```csharp
 Console.WriteLine("Press the 'Enter' key to delete the example files, " +
@@ -346,9 +346,9 @@ File.Delete(destinationFile);
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-Met deze app wordt een test bestand gemaakt in de lokale map *MyDocuments* en geüpload naar Blob Storage. In het voor beeld worden de blobs in de container weer gegeven en wordt het bestand met een nieuwe naam gedownload, zodat u de oude en nieuwe bestanden kunt vergelijken.
+Deze app maakt een testbestand in de lokale *Map MyDocuments* en uploadt het naar Blob-opslag. In het voorbeeld worden vervolgens de blobs in de container weergegeven en wordt het bestand gedownload met een nieuwe naam, zodat u de oude en nieuwe bestanden vergelijken.
 
-Ga naar de toepassingsmap en bouw en voer de toepassing uit.
+Navigeer naar uw toepassingsmap en bouw en voer de toepassing uit.
 
 ```console
 dotnet build
@@ -358,7 +358,7 @@ dotnet build
 dotnet run
 ```
 
-De uitvoer van de app is vergelijkbaar met het volgende voor beeld:
+De uitvoer van de app is vergelijkbaar met het volgende voorbeeld:
 
 ```output
 Azure Blob storage - .NET Quickstart example
@@ -388,10 +388,10 @@ Nadat u de bestanden hebt gecontroleerd, drukt u op een willekeurige toets om de
 
 In deze snelstart hebt u geleerd hoe u blobs kunt uploaden, downloaden en er een lijst van maken met behulp van .NET.
 
-Ga verder met het volgende voor informatie over het maken van een web-app die een afbeelding uploadt naar Blob-opslag:
+Ga verder met:
 
 > [!div class="nextstepaction"]
-> [Een installatie kopie uploaden en verwerken](storage-upload-process-images.md)
+> [Een installatiekopie uploaden en verwerken](storage-upload-process-images.md)
 
 * Zie voor meer informatie over .NET Core [Aan de slag met .NET in 10 minuten](https://www.microsoft.com/net/learn/get-started/).
 * Zie [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/) voor meer informatie over een voorbeeld van een toepassing die u kunt implementeren vanuit Visual Studio voor Windows.

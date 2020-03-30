@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273026"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integreren met de door Azure beheerde services met behulp van Open Service Broker for Azure (OSBA)
@@ -19,19 +19,19 @@ Net als [Kubernetes Service Catalog][kubernetes-service-catalog] stelt Open Serv
 ## <a name="prerequisites"></a>Vereisten
 * Een Azure-abonnement
 
-* Azure CLI: [Installeer het lokaal][azure-cli-install]of gebruik het in de [Azure Cloud shell][azure-cloud-shell].
+* Azure CLI: [installeer deze lokaal ][azure-cli-install] of gebruik deze in [Azure Cloud Shell][azure-cloud-shell].
 
-* Helm CLI 2.7 +: [Installeer het lokaal][helm-cli-install]of gebruik het in de [Azure Cloud shell][azure-cloud-shell].
+* Helm CLI 2.7+: [installeer deze lokaal ][helm-cli-install] of gebruik deze in [Azure Cloud Shell][azure-cloud-shell].
 
 * Machtigingen voor het maken van een service-principal met de rol Inzender in uw Azure-abonnement
 
-* Een bestaand AKS-cluster (Azure Kubernetes Service). Als u een cluster AKS nodig hebt, volgt u de quickstart [Een AKS-cluster maken][create-aks-cluster].
+* Een bestaand AKS-cluster (Azure Kubernetes Service). Als u een cluster AKS nodig hebt, volgt u de snelstartgids [Een AKS-cluster maken][create-aks-cluster].
 
 ## <a name="install-service-catalog"></a>Service Catalog installeren
 
 De eerste stap bestaat uit het installeren van Service Catalog in uw Kubernetes-cluster met behulp van een Helm-diagram.
 
-Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
+Ga [https://shell.azure.com](https://shell.azure.com) naar Cloud Shell openen in uw browser.
 
 Upgrade uw Tiller-installatie (Helm-server) in het cluster met:
 

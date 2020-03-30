@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit micro soft Access-bronnen kopiëren
-description: Informatie over het kopiëren van gegevens uit micro soft Access-bronnen naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+title: Gegevens uit Microsoft Access-bronnen kopiëren
+description: Meer informatie over het kopiëren van gegevens uit Microsoft Access-bronnen naar ondersteunde sink-gegevensarchieven met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,54 +12,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892547"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar micro soft Access-gegevens archieven met behulp van Azure Data Factory
+# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Gegevens van en naar Microsoft Access-gegevensarchieven kopiëren met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een micro soft Access-gegevens archief te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een Microsoft Access-gegevensarchief te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze micro soft Access-connector wordt ondersteund voor de volgende activiteiten:
+Deze Microsoft Access-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-U kunt gegevens uit de micro soft Access-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U gegevens uit de Microsoft Access-bron kopiëren naar een ondersteund sink-gegevensarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze micro soft Access-connector wilt gebruiken, moet u het volgende doen:
+Als u deze Microsoft Access-connector wilt gebruiken, moet u het:
 
-- Stel een zelf-hostende Integration Runtime in. Zie [zelfgehoste Cloudintegratieruntime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
-- Installeer het ODBC-stuur programma voor micro soft Access voor het gegevens archief op de Integration Runtime computer.
+- Stel een Self-hosted Integration Runtime in. Zie [artikel Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) voor meer informatie.
+- Installeer het Microsoft Access ODBC-stuurprogramma voor het gegevensarchief op de machine Integration Runtime.
 
 >[!NOTE]
->De versie van het ODBC-stuur programma voor micro soft Access 2016 werkt niet met deze connector. Gebruik in plaats daarvan stuur programma versie 2013 of 2010.
+>Microsoft Access 2016-versie van ODBC-stuurprogramma werkt niet met deze connector. Gebruik in plaats daarvan stuurprogrammaversie 2013 of 2010.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor micro soft Access connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de Microsoft Access-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde service van micro soft Access:
+De volgende eigenschappen worden ondersteund voor de gekoppelde Microsoft Access-service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **MicrosoftAccess** | Ja |
-| connectionString | De ODBC-connection string het referentie deel niet uitsluiten. U kunt de connection string opgeven of de systeem-DSN (gegevens bron naam) gebruiken die u op de Integration Runtime machine hebt ingesteld (u moet nog steeds het referentie deel opgeven in de gekoppelde service).<br> U kunt ook een wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de connection string halen. Raadpleeg [referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md) met meer informatie.| Ja |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het micro soft Access-gegevens archief.<br/>Toegestane waarden zijn: **Basic** en **Anonymous**. | Ja |
-| userName | Geef de gebruikers naam op als u basis verificatie gebruikt. | Nee |
-| wachtwoord | Geeft het wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de userName. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| referenties | Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Dit veld markeren als SecureString. | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
+| type | De eigenschap type moet zijn ingesteld op: **MicrosoftAccess** | Ja |
+| Connectionstring | De ODBC-verbindingstekenreeks met uitzondering van het referentiegedeelte. U de verbindingstekenreeks opgeven of de systeemnaam DSN (Gegevensbronnaam) gebruiken die u instelt op de integratieruntime-machine (u moet nog steeds het referentiegedeelte in de gekoppelde service opgeven).<br> U ook een wachtwoord in Azure `password` Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen.Raadpleeg [storereferenties in Azure Key Vault](store-credentials-in-key-vault.md) met meer details.| Ja |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met het Microsoft Access-gegevensarchief.<br/>Toegestane waarden zijn: **Basic** en **Anonymous**. | Ja |
+| userName | Geef de gebruikersnaam op als u Basisverificatie gebruikt. | Nee |
+| wachtwoord | Geef een wachtwoord op voor het gebruikersaccount dat u voor de userName hebt opgegeven. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
+| referenties | Het gedeelte toegangsreferenties van de verbindingstekenreeks die is opgegeven in de waardenotatie van stuurprogramma's. Markeer dit veld als een SecureString. | Nee |
+| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Een Self-hosted Integration Runtime is vereist zoals vermeld in [Voorwaarden](#prerequisites). |Ja |
 
 **Voorbeeld:**
 
@@ -87,14 +87,14 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van micr
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door micro soft Access DataSet worden ondersteund.
+Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de microsoft Access-gegevensset.
 
-Als u gegevens wilt kopiëren vanuit micro soft Access, worden de volgende eigenschappen ondersteund:
+Als u gegevens uit Microsoft Access wilt kopiëren, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **MicrosoftAccessTable** | Ja |
-| tableName | De naam van de tabel in micro soft Access. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
+| type | De eigenschap type van de gegevensset moet zijn ingesteld op: **MicrosoftAccessTable** | Ja |
+| tableName | Naam van de tabel in microsoft access. | Nee voor bron (als 'query' in activiteitsbron is opgegeven);<br/>Ja voor gootsteen |
 
 **Voorbeeld**
 
@@ -116,16 +116,16 @@ Als u gegevens wilt kopiëren vanuit micro soft Access, worden de volgende eigen
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de micro soft Access-bron.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Microsoft Access-bron.
 
-### <a name="microsoft-access-as-source"></a>Micro soft Access als bron
+### <a name="microsoft-access-as-source"></a>Microsoft Access als bron
 
-Als u gegevens wilt kopiëren uit een micro soft Access-compatibel gegevens archief, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+Als u gegevens uit het gegevensarchief van Microsoft Access wilt kopiëren, worden de volgende eigenschappen ondersteund in de **sectie** bron van kopieeractiviteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MicrosoftAccessSource** | Ja |
-| query | Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron voor kopieeractiviteit moet zijn ingesteld op: **MicrosoftAccessSource** | Ja |
+| query | Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -159,9 +159,9 @@ Als u gegevens wilt kopiëren uit een micro soft Access-compatibel gegevens arch
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

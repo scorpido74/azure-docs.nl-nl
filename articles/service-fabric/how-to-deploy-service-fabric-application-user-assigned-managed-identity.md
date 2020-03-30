@@ -1,33 +1,33 @@
 ---
-title: Een app implementeren met een door de gebruiker toegewezen beheerde identiteit
-description: In dit artikel wordt beschreven hoe u Service Fabric-toepassing implementeert met een door de gebruiker toegewezen beheerde identiteit
+title: App implementeren met een door de gebruiker toegewezen beheerde identiteit
+description: In dit artikel ziet u hoe u servicefabric-toepassing implementeert met een door de gebruiker toegewezen beheerde identiteit
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610332"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit (preview)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Servicefabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit (voorbeeld)
 
-Als u een Service Fabric toepassing wilt implementeren met beheerde identiteit, moet de toepassing worden geïmplementeerd via Azure Resource Manager, meestal met een Azure Resource Manager-sjabloon. Zie [toepassingen en services beheren als Azure Resource Manager bronnen](service-fabric-application-arm-resource.md)voor meer informatie over het implementeren van service Fabric-toepassing via Azure Resource Manager.
+Als u een Service Fabric-toepassing met beheerde identiteit wilt implementeren, moet de toepassing worden geïmplementeerd via Azure Resource Manager, meestal met een Azure Resource Manager-sjabloon. Zie Toepassingen en services beheren als Azure Resource [Manager-bronnen](service-fabric-application-arm-resource.md)voor meer informatie over het implementeren van Service Fabric-toepassingen via Azure Resource Manager.
 
 > [!NOTE] 
 > 
-> Toepassingen die niet zijn geïmplementeerd als een Azure-resource, **kunnen** geen beheerde identiteiten hebben. 
+> Toepassingen die niet als Azure-bron zijn geïmplementeerd, **kunnen geen** beheerde identiteiten hebben. 
 >
-> Service Fabric toepassings implementatie met beheerde identiteit wordt ondersteund met API-versie `"2019-06-01-preview"`. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen.
+> Service Fabric-toepassingsimplementatie met Managed Identity `"2019-06-01-preview"`wordt ondersteund met API-versie. U dezelfde API-versie ook gebruiken voor toepassingstype, toepassingstypeversie en servicebronnen.
 >
 
-## <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
+## <a name="user-assigned-identity"></a>Door de gebruiker toegewezen identiteit
 
-Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe aan de sectie **Eigenschappen** van de **toepassings** resource die een lijst met beschrijvende namen bevat voor principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)voor meer informatie over door de gebruiker toegewezen identiteiten.
+Als u toepassing met door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de **identiteitseigenschap** toe aan de toepassingsbron met de **gebruiker toegewezen** tekst en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe in de sectie **eigenschappen** voor de **toepassingsbron** die een lijst met vriendelijke naam bevat aan principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten. Zie [Een door de gebruiker toegewezen beheerde identiteit maken, aanbieden of verwijderen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)voor meer informatie over door gebruikers toegewezen identiteiten .
 
 ### <a name="application-template"></a>Toepassingsjabloon
 
-Als u de toepassing met de door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten en voegt u vervolgens een **managedIdentities** -object toe aan de sectie **Eigenschappen** die een lijst met beschrijvende namen bevat waarmee de door de gebruiker toegewezen identiteiten worden principalId.
+Als u toepassing met door gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst **identiteitseigenschap** toe aan de toepassingsbron met door **de gebruiker Toegewezen** en de door de gebruiker toegewezen identiteiten, en voegt u vervolgens een object **managedIdentities** toe in de sectie **eigenschappen** dat een lijst met vriendelijke naam bevat aan de toewijzing van principalId voor elk van de door de gebruiker toegewezen identiteiten.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -58,13 +58,13 @@ Als u de toepassing met de door de gebruiker toegewezen identiteit wilt inschake
       }
     }
 
-In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker toegewezen identiteit gebruikt als beschrijvende naam van de beheerde identiteit voor de toepassing. In de volgende voor beelden wordt ervan uitgegaan dat de daad werkelijke beschrijvende naam ' AdminUser ' is.
+In het bovenstaande voorbeeld wordt de bronnaam van de door de gebruiker toegewezen identiteit gebruikt als de vriendelijke naam van de beheerde identiteit voor de toepassing. In de volgende voorbeelden wordt ervan uitgegaan dat de werkelijke vriendelijke naam "AdminUser" is.
 
 ### <a name="application-package"></a>Toepassingspakket
 
-1. Voeg voor elke identiteit die is gedefinieerd in de sectie `managedIdentities` van de sjabloon Azure Resource Manager een `<ManagedIdentity>`-tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met de eigenschap `name` die is gedefinieerd in de sectie `managedIdentities`.
+1. Voeg voor elke identiteit `managedIdentities` die is gedefinieerd in de `<ManagedIdentity>` sectie in de sjabloon Azure Resource Manager een tag toe in het toepassingsmanifest onder sectie **Principals.** Het `Name` kenmerk moet `name` overeenkomen met de `managedIdentities` eigenschap die in de sectie is gedefinieerd.
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
       <Principals>
@@ -74,9 +74,9 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
       </Principals>
     ```
 
-2. Voeg in de sectie **ServiceManifestImport** een **IdentityBindingPolicy** toe voor de service die gebruikmaakt van de beheerde identiteit. Dit beleid wijst de `AdminUser` identiteit toe aan een servicespecifieke identiteits naam die later aan het service manifest moet worden toegevoegd.
+2. Voeg in de sectie **ServiceManifestImport** een **identiteitsbindingsbeleid** toe voor de service die de beheerde identiteit gebruikt. Dit beleid `AdminUser` brengt de identiteit in kaart met een servicespecifieke identiteitsnaam die later in het servicemanifest moet worden toegevoegd.
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
       <ServiceManifestImport>
@@ -86,9 +86,9 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
       </ServiceManifestImport>
     ```
 
-3. Werk het service manifest bij om een **ManagedIdentity** toe te voegen aan de sectie **resources** met de naam die overeenkomt met de `ServiceIdentityRef` in de `IdentityBindingPolicy` van het toepassings manifest:
+3. Werk het servicemanifest bij om een **ManagedIdentity** toe `ServiceIdentityRef` te `IdentityBindingPolicy` voegen in de sectie **Resources** met de naam die overeenkomt met het in de toepassingsmanifest:
 
-    **ServiceManifest. XML**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -101,5 +101,5 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Beheerde identiteit gebruiken in Service Fabric toepassings code](how-to-managed-identity-service-fabric-app-code.md)
-* [Toegang tot Service Fabric toepassing verlenen aan andere Azure-resources](how-to-grant-access-other-resources.md)
+* [Beheerde identiteit gebruiken in de toepassingscode van Service Fabric](how-to-managed-identity-service-fabric-app-code.md)
+* [Service Fabric-toepassingstoegang verlenen tot andere Azure-bronnen](how-to-grant-access-other-resources.md)

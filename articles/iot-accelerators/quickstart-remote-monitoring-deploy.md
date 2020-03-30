@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
 ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "60890038"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Quickstart: Een externe bewakingsoplossing in de cloud proberen
@@ -22,11 +22,11 @@ In deze quickstart ziet u hoe u de Azure IoT-verbetering voor de externe bewakin
 
 Met de eerste implementatie wordt de oplossingsverbetering geconfigureerd voor een bedrijf met de naam Contoso. Als operator bij Contoso beheert u een selectie met verschillende typen apparaten, zoals koelunits, geïmplementeerd in verschillende fysieke omgevingen. Vanaf een koelunit worden telemetriegegevens over de temperatuur, vochtigheid en druk verzonden naar de verbetering van de externe bewakingsoplossing.
 
-In deze quickstart implementeert een **Basic** versie van de oplossingsversneller voor test-en demonstratiedoeleinden die kosten minimaliseert. Zie voor meer informatie over de verschillende versies kunt u implementeren, [Basic en standard-implementaties](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
+Deze quickstart implementeert een **Basisversie** van de oplossingsversneller voor test- en demonstratiedoeleinden die de kosten minimaliseert. Zie [Basisimplementaties en standaardimplementaties](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments)voor meer informatie over de verschillende versies die u implementeren.
 
 U hebt een actief Azure-abonnement nodig om deze snelstart te voltooien.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
@@ -34,15 +34,15 @@ Wanneer u de oplossingsverbetering implementeert in uw Azure-abonnement, moet u 
 
 Meld u aan bij [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) met behulp van de referenties van uw Azure-account.
 
-Klik op de tegel **Externe bewaking**. Klik op de pagina **Externe bewaking**  op **Nu proberen**:
+Klik op de tegel **Externe bewaking**. Klik op de pagina **Externe bewaking ** op **Nu proberen**:
 
 ![Externe controle kiezen](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Kies  **C# Microservices** als de **implementatieopties**. De Java en C# implementaties hebben de dezelfde functies.
+Kies **C# Microservices** als **implementatieopties**. De Java- en C#-implementaties hebben dezelfde functies.
 
 Voer een unieke **Oplossingsnaam** in voor de verbetering voor de externe bewakingsoplossing. Voor deze quickstart noemen we die van ons **contoso-rm**.
 
-Selecteer het **Abonnement** en de **Regio** die u wilt gebruiken om de oplossingsverbetering te implementeren. U kiest meestal de regio die zich het meest in uw buurt bevindt. Voor deze quickstart maken we gebruik van **US - oost**.
+Selecteer het **Abonnement** en de **Regio** die u wilt gebruiken om de oplossingsverbetering te implementeren. U kiest meestal de regio die zich het meest in uw buurt bevindt. Voor deze quickstart maken we gebruik van **VS - oost**.
 U kunt **Visual Studio Enterprise** kiezen, maar u moet een [globale beheerder of gebruiker](iot-accelerators-permissions.md) zijn om dit te doen.
 
 Klik op **Maken** om de implementatie te starten. Het duurt minstens vijf minuten om dit proces uit te voeren:
@@ -87,13 +87,13 @@ Als operator bij Contoso kunt u uw apparaten controleren vanaf het oplossingsdas
 
 Op de **Dashboardpagina**, in het deelvenster **Waarschuwingen**, ziet u de waarschuwing: **Druk van koelunit te hoog**. De koelunit heeft een rode pin op de kaart (mogelijk moet u de kaart pannen en zoomen):
 
-[![Op het dashboard wordt een drukwaarschuwing en het apparaat weergegeven op de kaart](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
+[![Dashboard toont drukwaarschuwing en apparaat op de kaart](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
-Klik in het deelvenster **Waarschuwingen**, in de kolom **Verkennen** naast de regel **Druk van koelunit te hoog** op **...** . Hiermee wordt u naar de **Onderhoudspagina** geleid waar u de details kunt bekijken van de regel op basis waarvan de waarschuwing is geactiveerd.
+Klik in het deelvenster **Waarschuwingen**, in de kolom **Verkennen** naast de regel **Druk van koelunit te hoog** op **...**. Hiermee wordt u naar de **Onderhoudspagina** geleid waar u de details kunt bekijken van de regel op basis waarvan de waarschuwing is geactiveerd.
 
 Op de onderhoudspagina **Druk van koelunit te hoog** worden details weergegeven van de regel op basis waarvan de waarschuwingen zijn geactiveerd. Op deze pagina wordt ook vermeld wanneer de waarschuwingen hebben plaatsgevonden en voor welk apparaat ze zijn geactiveerd:
 
-[![Onderhoudspagina geeft een lijst met waarschuwingen weer die zijn geactiveerd](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
+[![Onderhoudspagina toont lijst met waarschuwingen die zijn geactiveerd](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
 U hebt het probleem waardoor de waarschuwing is geactiveerd, en het bijbehorende apparaat nu geïdentificeerd. De volgende stap voor u als operator is om de waarschuwing te accepteren en het probleem op te lossen.
 
@@ -101,7 +101,7 @@ U hebt het probleem waardoor de waarschuwing is geactiveerd, en het bijbehorende
 
 Als u andere operators wilt laten weten dat u bezig bent met de waarschuwing, selecteert u deze en wijzigt u de **Waarschuwingsstatus** in **Geaccepteerd**:
 
-[![De waarschuwing selecteren en accepteren](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
+[![De waarschuwing selecteren en bevestigen](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
 De waarde in de statuskolom wordt gewijzigd in **Geaccepteerd**.
 
@@ -111,15 +111,15 @@ Als u wilt reageren op de koelunit, schuift u omlaag naar **Verwante informatie*
 
 Kies in het deelvenster **Taken** de optie **Methode uitvoeren** en vervolgens de methode **EmergencyValveRelease**. Voeg de taaknaam **ChillerPressureRelease** toe en klik op **Toepassen**. Met deze instellingen wordt een taak voor u gemaakt die onmiddellijk wordt uitgevoerd.
 
-Als u de taakstatus wilt bekijken, gaat u terug naar de **Onderhoudspagina** en bekijkt u de lijst met taken in de weergave **Taken**. U moet mogelijk Wacht een paar seconden voordat u ziet dat de taak is uitgevoerd:
+Als u de taakstatus wilt bekijken, gaat u terug naar de **Onderhoudspagina** en bekijkt u de lijst met taken in de weergave **Taken**. Het kan nodig zijn om een paar seconden te wachten voordat u zien dat de taak is uitgevoerd:
 
-[![De status van de taken in de weergave Taken](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
+[![De status van de taken in de weergave Vacatures](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 
 ### <a name="check-the-pressure-is-back-to-normal"></a>Controleren of de druk weer normaal is
 
 Als u de druktelemetrie voor de koelunit wilt bekijken, gaat u naar de **Dashboardpagina**, selecteert u **Druk** in het deelvenster Telemetrie, en kijkt u of de druk voor **koelunit-02.0** weer normaal is:
 
-[![Druk is weer normaal](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
+[![Druk terug naar normaal](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
 
 Als u het incident wilt sluiten, gaat u naar de **Onderhoudspagina**, selecteert u de waarschuwing en stelt u de status in op **Gesloten**:
 
@@ -131,7 +131,7 @@ De waarde in de statuskolom wordt gewijzigd in **Gesloten**.
 
 Als u van plan bent verder te gaan met de zelfstudies, laat u de verbetering voor de externe bewakingsoplossing geïmplementeerd.
 
-Als u de oplossingsverbetering niet meer nodig hebt, verwijdert u deze op de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door de oplossingsverbetering te selecteren en op **Oplossing verwijderen** te klikken:
+Als u de oplossingsversneller niet meer nodig hebt, verwijdert u deze van de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door deze te selecteren en vervolgens op **Oplossing verwijderen:**
 
 ![Oplossing verwijderen](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
@@ -145,4 +145,4 @@ In de quickstart hebt u de verbetering voor de externe bewakingsoplossing geïmp
 Ga verder naar de volgende zelfstudie voor meer informatie over de oplossingsverbetering die gebruikmaakt van gesimuleerde apparaten.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: uw IoT-apparaten bewaken](iot-accelerators-remote-monitoring-monitor.md)
+> [Zelfstudie: Uw IoT-apparaten controleren](iot-accelerators-remote-monitoring-monitor.md)

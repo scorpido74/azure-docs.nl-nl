@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een server maken-Azure CLI-Azure Database for MySQL'
+title: 'Snelstart: een server maken - Azure CLI - Azure Database voor MySQL'
 description: In deze Quick Start wordt beschreven hoe u Azure CLI gebruikt om een Azure-database voor MySQL-server in een Azure-resourcegroep te maken.
 author: ajlam
 ms.author: andrela
@@ -9,24 +9,24 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74773501"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Snelstartgids: een Azure Database for MySQL-server maken met behulp van Azure CLI
+# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Snelstart: een Azure-database voor MySQL-server maken met Azure CLI
 
 > [!TIP]
-> Overweeg het gebruik van de eenvoudiger [AZ mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) -opdracht van Azure cli (momenteel als preview-versie). Probeer de [Snelstartgids](./quickstart-create-server-up-azure-cli.md)uit.
+> Overweeg de eenvoudigere [opdracht az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI te gebruiken (momenteel in preview). Probeer de [quickstart.](./quickstart-create-server-up-azure-cli.md)
 
 In deze Quick Start wordt beschreven hoe u Azure CLI gebruikt om binnen ongeveer vijf minuten een Azure-database voor MySQL-server in een Azure-resourcegroep te maken. De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 Als u meerdere abonnementen hebt, kiest u het abonnement waarin de resource is opgenomen of wordt gefactureerd. Selecteer een specifiek abonnements-ID in uw account met de opdracht [az account set](/cli/azure/account#az-account-set).
 ```azurecli-interactive
@@ -43,7 +43,7 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
-Maak een Azure Database for MySQL-server met de opdracht **[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)** . Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
+Maak een Azure Database for MySQL-server met de opdracht **[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)**. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
 **Instelling** | **Voorbeeldwaarde** | **Beschrijving**
 ---|---|---
@@ -67,7 +67,7 @@ De parameterwaarde voor de sku-naam volgt de conventie {prijscategorie} \_{compu
 
 Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en categorie te begrijpen.
 
-In het volgende voorbeeld wordt een MySQL 5.7-server in US - west gemaakt met de naam `mydemoserver` in uw resourcegroep `myresourcegroup` met aanmeldgegevens van de serverbeheerder `myadmin`. Dit is een **Gen 4**-server voor **Algemeen gebruik** met **twee vCores**. Vervang het `<server_admin_password>` door uw eigen waarde.
+In het volgende voorbeeld wordt een MySQL 5.7-server in VS - west gemaakt met de naam `mydemoserver` in uw resourcegroep `myresourcegroup` met aanmeldgegevens van de serverbeheerder `myadmin`. Dit is een **Gen 4-server voor ** **Algemeen gebruik** met **twee vCores**. Vervang het `<server_admin_password>` door uw eigen waarde.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -78,7 +78,7 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --l
 > 
 
 ## <a name="configure-firewall-rule"></a>Firewallregel configureren
-Maak een Azure Database for MySQL-firewallregel op serverniveau met de opdracht **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)** . Een firewallregel op serverniveau maakt een externe toepassing mogelijk, zoals het opdrachtregelprogramma **mysql.exe** of MySQL Workbench om verbinding te maken met uw server via de MySQL-servicefirewall van Azure. 
+Maak een Azure Database for MySQL-firewallregel op serverniveau met de opdracht **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)**. Een firewallregel op serverniveau maakt een externe toepassing mogelijk, zoals het opdrachtregelprogramma **mysql.exe** of MySQL Workbench om verbinding te maken met uw server via de MySQL-servicefirewall van Azure. 
 
 In het volgende voorbeeld wordt een firewallregel met de naam `AllowMyIP` gemaakt, die verbindingen van een specifiek IP-adres, 192.168.0.1, toestaat. Vervang dit adres door het IP-adres of de reeks IP-adressen die overeenkomen met het IP-adres waarmee u verbinding gaat maken. 
 
@@ -209,7 +209,7 @@ mysql>
 |   Verbindingsnaam | Mijn verbinding | Geef een label op voor deze verbinding (dit kan van alles zijn) |
 | Verbindingsmethode | kies Standard (TCP/IP) | TCP/IP-protocol gebruiken om verbinding te maken met Azure Database voor MySQL> |
 | Hostnaam | mydemoserver.mysql.database.azure.com | De servernaam die u eerder hebt genoteerd. |
-| Port | 3306 | De standaardpoort voor MySQL wordt gebruikt. |
+| Poort | 3306 | De standaardpoort voor MySQL wordt gebruikt. |
 | Gebruikersnaam | myadmin@mydemoserver | De aanmeldgegevens van een serverbeheerder die u eerder hebt genoteerd. |
 | Wachtwoord | **** | Gebruik het wachtwoord voor het beheerdersaccount dat u eerder hebt geconfigureerd. |
 

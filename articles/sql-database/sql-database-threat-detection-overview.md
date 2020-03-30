@@ -1,6 +1,6 @@
 ---
 title: Advanced Threat Protection
-description: Geavanceerde bedreigingen beveiliging detecteert afwijkende database activiteiten die duiden op mogelijke beveiligings Risico's in Azure SQL Database.
+description: Advanced Threat Protection detecteert afwijkende databaseactiviteiten die potentiële beveiligingsbedreigingen in Azure SQL Database aangeven.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,33 +12,33 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 17ca8cbb7a55e9c0d44af099f4884f71b1cd457a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194084"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124758"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection voor Azure Database
 
-Advanced Threat Protection voor [Azure SQL database](sql-database-technical-overview.md) en [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detecteert afwijkende activiteiten die duiden op ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
+Geavanceerde bedreigingsbeveiliging voor [Azure SQL Database](sql-database-technical-overview.md) en Azure [Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detecteert afwijkende activiteiten die ongebruikelijke en mogelijk schadelijke pogingen wijzen om databases te openen of te exploiteren.
 
-Advanced Threat Protection maakt deel uit van de aanbieding voor [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md) (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Geavanceerde beveiliging tegen bedreigingen kan worden geopend en beheerd via de centrale SQL ADS-Portal.
+Advanced Threat Protection maakt deel uit van het Advanced [Data Security](sql-database-advanced-data-security.md) (ADS) aanbod, dat is een uniform pakket voor geavanceerde SQL-beveiligingsmogelijkheden. Advanced Threat Protection kan worden geopend en beheerd via de centrale SQL ADS-portal.
 
 > [!NOTE]
-> Dit onderwerp is van toepassing op Azure SQL Server en op zowel SQL Database als Azure Synapse die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud.
+> Dit onderwerp is van toepassing op Azure SQL-server en op zowel SQL Database als Azure Synapse die zijn gemaakt op de Azure SQL-server. Voor de eenvoud wordt SQL Database gebruikt bij het verwijzen naar zowel SQL Database als Azure Synapse.
 
-## <a name="what-is-advanced-threat-protection"></a>Wat is Advanced Threat Protection?
+## <a name="what-is-advanced-threat-protection"></a>Wat is Geavanceerde bedreigingsbescherming
 
- Advanced Threat Protection biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop reageren zodra ze zich voordoen door beveiligings waarschuwingen te geven over afwijkende activiteiten. Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten, potentiële kwetsbaar heden en SQL-injectie aanvallen, evenals afwijkende database toegang en query patronen. Advanced Threat Protection integreert waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/), waaronder Details van verdachte activiteiten en aanbevolen actie voor het onderzoeken en oplossen van de dreiging. Geavanceerde beveiliging tegen bedreigingen maakt het eenvoudig om mogelijke bedreigingen te verhelpen voor de data base zonder dat u een beveiligings expert hoeft te zijn of om geavanceerde beveiligings bewakings systemen te beheren.
+ Advanced Threat Protection biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop kunnen reageren wanneer ze zich voordoen door beveiligingswaarschuwingen te geven over afwijkende activiteiten. Gebruikers ontvangen een waarschuwing over verdachte databaseactiviteiten, potentiële kwetsbaarheden en SQL-injectieaanvallen, evenals afwijkende databasetoegang en querypatronen. Advanced Threat Protection integreert waarschuwingen met [Azure Security Center,](https://azure.microsoft.com/services/security-center/)die details van verdachte activiteiten bevatten en aanbevelen actie te ondernemen om de dreiging te onderzoeken en te beperken. Advanced Threat Protection maakt het eenvoudig om potentiële bedreigingen voor de database aan te pakken zonder dat u beveiligingsexpert hoeft te zijn of geavanceerde beveiligingsbewakingssystemen hoeft te beheren.
 
-Voor een volledige onderzoek is het raadzaam om [SQL database controle](sql-database-auditing.md)in te scha kelen, waarmee database gebeurtenissen worden geschreven naar een audit logboek in uw Azure Storage-account.  
+Voor een volledige onderzoekservaring wordt aanbevolen [SQL Database Auditing](sql-database-auditing.md)in te schakelen, waarbij databasegebeurtenissen worden geschreven naar een controlelogboek in uw Azure-opslagaccount.  
 
-## <a name="advanced-threat-protection-alerts"></a>Geavanceerde beveiligings waarschuwingen
+## <a name="advanced-threat-protection-alerts"></a>Waarschuwingen voor geavanceerde bedreigingsbescherming
 
-Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases en de volgende waarschuwingen kunnen activeren:
+Advanced Threat Protection for Azure SQL Database detecteert afwijkende activiteiten die ongebruikelijke en mogelijk schadelijke pogingen aangeven om databases te openen of te exploiteren en het kan de volgende waarschuwingen activeren:
 
-- **Beveiligings probleem met SQL-injectie**: deze waarschuwing wordt geactiveerd wanneer een toepassing een mislukte SQL-instructie in de data base genereert. Deze waarschuwing kan duiden op een mogelijk beveiligingsprobleem met SQL-injectieaanvallen. Er zijn twee mogelijke redenen voor het genereren van een foutieve instructie:
+- **Kwetsbaarheid voor SQL-injectie:** deze waarschuwing wordt geactiveerd wanneer een toepassing een defecte SQL-instructie in de database genereert. Deze waarschuwing kan duiden op een mogelijk beveiligingsprobleem met SQL-injectieaanvallen. Er zijn twee mogelijke redenen voor het genereren van een foutieve instructie:
 
   - Een fout in de toepassingscode die de foutieve SQL-instructie maakt
   - Toepassingscode of opgeslagen procedures schonen gebruikersinvoer niet op tijdens het construeren van de foutieve SQL-instructie, dit kan worden misbruikt voor SQL-injectie
@@ -49,37 +49,37 @@ Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activit
 - **Toegang tot een toepassing die mogelijk schadelijk is**: deze waarschuwing wordt geactiveerd wanneer een mogelijk schadelijke toepassing wordt gebruikt voor toegang tot de database. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een aanval met behulp van gebruikelijk aanvalsprogramma’s.
 - **Brute Force SQL-referenties**: deze waarschuwing wordt geactiveerd wanneer er een abnormaal groot aantal mislukte aanmeldingen met andere referenties is. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een Brute Force-aanval.
 
-## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Afwijkende database activiteiten verkennen na detectie van een verdachte gebeurtenis
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Ontdek afwijkende databaseactiviteiten bij detectie van een verdachte gebeurtenis
 
-U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden gedetecteerd. Het e-mail bericht bevat informatie over de verdachte beveiligings gebeurtenis, inclusief de aard van de afwijkende activiteiten, de database naam, de server naam, de toepassings naam en de tijd van de gebeurtenis. Daarnaast bevat het e-mail bericht informatie over mogelijke oorzaken en aanbevolen acties voor het onderzoeken en oplossen van de mogelijke bedreiging voor de data base.
+U ontvangt een e-mailmelding bij detectie van afwijkende databaseactiviteiten. De e-mail bevat informatie over de verdachte beveiligingsgebeurtenis, inclusief de aard van de afwijkende activiteiten, de naam van de database, de naam van de server, de naam van de toepassing en de gebeurtenistijd. Bovendien biedt de e-mail informatie over mogelijke oorzaken en aanbevolen acties om de potentiële bedreiging voor de database te onderzoeken en te beperken.
 
-![Rapport afwijkende activiteiten](./media/sql-database-threat-detection/anomalous_activity_report.png)
+![Afwijkend activiteitenrapport](./media/sql-database-threat-detection/anomalous_activity_report.png)
 
-1. Klik op de koppeling **recente SQL-waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
+1. Klik op de koppeling **Recente SQL-waarschuwingen weergeven** in de e-mail om de Azure-portal te starten en de pagina Azure Security Center-waarschuwingen weer te geven, die een overzicht biedt van actieve bedreigingen die zijn gedetecteerd in de SQL-database.
 
-   ![Bedreigingen voor activiteit](./media/sql-database-threat-detection/active_threats.png)
+   ![Activiteitsbedreigingen](./media/sql-database-threat-detection/active_threats.png)
 
-2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
+2. Klik op een specifieke waarschuwing om aanvullende details en acties te krijgen voor het onderzoeken van deze bedreiging en het herstellen van toekomstige bedreigingen.
 
-   SQL-injectie is bijvoorbeeld een van de meest voorkomende beveiligings problemen voor webtoepassingen op Internet die wordt gebruikt om gegevensgestuurde toepassingen aan te vallen. Aanvallers profiteren van toepassings lekken om schadelijke SQL-instructies in te voeren in velden voor toepassings invoer, de gegevens in de data base te schenden of te wijzigen. Voor SQL-injectie waarschuwingen bevat de details van de waarschuwing de kwets bare SQL-instructie die is misbruikt.
+   SQL-injectie is bijvoorbeeld een van de meest voorkomende beveiligingsproblemen voor webtoepassingen op internet die worden gebruikt om gegevensgestuurde toepassingen aan te vallen. Aanvallers maken gebruik van kwetsbaarheden in toepassingen om kwaadaardige SQL-instructies te injecteren in toepassingsinvoervelden, gegevens in de database te schenden of te wijzigen. Voor SQL Injection-waarschuwingen bevatten de details van de waarschuwing de kwetsbare SQL-instructie die is misbruikt.
 
    ![Specifieke waarschuwing](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Geavanceerde beveiligings waarschuwingen voor bedreigingen voor uw data base verkennen in de Azure Portal
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Advanced Threat Protection-waarschuwingen voor uw database verkennen in de Azure-portal
 
-Geavanceerde bedreigings beveiliging integreert de waarschuwingen met [Azure Security Center](https://azure.microsoft.com/services/security-center/). Live SQL Advanced Threat Protection-tegels in de data base en SQL ADS-blades in de Azure Portal de status van actieve bedreigingen bijhouden.
+Advanced Threat Protection integreert de waarschuwingen met [Azure security center.](https://azure.microsoft.com/services/security-center/) Live SQL Advanced Threat Protection-tegels in de database en SQL ADS-blades in de Azure-portal volgen de status van actieve bedreigingen.
 
-Klik op **Geavanceerde bedreigings beveiliging waarschuwing** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
+Klik **op De waarschuwing voor Geavanceerde bedreigingsbeveiliging** om de pagina Waarschuwingen van azure security center te starten en een overzicht te krijgen van actieve SQL-bedreigingen die in de database worden gedetecteerd.
 
-   ![Waarschuwing geavanceerde bedreigings beveiliging](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![Waarschuwing voor geavanceerde bedreigingsbeveiliging](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Advanced Threat Protection alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Waarschuwing voor geavanceerde bedreigingsbeveiliging2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [geavanceerde bedreigingen beveiliging in één en gegroepeerde Data bases](sql-database-threat-detection.md).
-- Meer informatie over [geavanceerde bedreigingen beveiliging in het beheerde exemplaar](sql-database-managed-instance-threat-detection.md).
-- Meer informatie over [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md).
-- Meer informatie over het [controleren van Azure SQL database](sql-database-auditing.md)
-- Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Zie de [pagina met prijzen voor SQL database](https://azure.microsoft.com/pricing/details/sql-database/) voor meer informatie over prijzen.  
+- Meer informatie over [geavanceerde bedreigingsbeveiliging in afzonderlijke en gepoolde databases](sql-database-threat-detection.md).
+- Meer informatie over [Geavanceerde bedreigingsbeveiliging in beheerde instantie](sql-database-managed-instance-threat-detection.md).
+- Meer informatie over [geavanceerde gegevensbeveiliging](sql-database-advanced-data-security.md).
+- Meer informatie over [Azure SQL Database auditing](sql-database-auditing.md)
+- Meer informatie over [Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Zie de [prijspagina van SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) voor meer informatie over prijzen  

@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175836"
 ---
-In dit voorbeeld maakt gebruik van de [Twilio](https://www.twilio.com/) service SMS-berichten te verzenden naar een mobiele telefoon. Azure Functions biedt al ondersteuning voor Twilio via de [Twilio binding](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), en het voorbeeld maakt gebruik van deze functie.
+Dit voorbeeld omvat het gebruik van de [Twilio-service](https://www.twilio.com/) om sms-berichten naar een mobiele telefoon te verzenden. Azure Functions heeft al ondersteuning voor Twilio via de [Twilio-binding](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)en het voorbeeld maakt gebruik van die functie.
 
-Het eerste wat dat u nodig hebt is een Twilio-account. U kunt een gratis bij maken https://www.twilio.com/try-twilio. Wanneer u een account hebt, toevoegen de volgende drie **app-instellingen** aan uw functie-app.
+Het eerste wat je nodig hebt is een Twilio account. U er https://www.twilio.com/try-twilioeen gratis maken op. Zodra je een account hebt, voeg je de volgende drie **app-instellingen** toe aan je functie-app.
 
-| Naam van de App-instelling | Waardebeschrijving |
+| Naam van app-instelling | Waardebeschrijving |
 | - | - |
-| **TwilioAccountSid**  | De beveiligings-id voor uw Twilio-account |
-| **TwilioAuthToken**   | Het verificatietoken voor uw Twilio-account |
-| **TwilioPhoneNumber** | Het telefoonnummer dat is gekoppeld aan uw Twilio-account. Dit wordt gebruikt voor het verzenden van SMS-berichten. |
+| **TwilioAccountSid**  | De SID voor uw Twilio-account |
+| **TwilioAuthToken**   | Het Auth-token voor uw Twilio-account |
+| **TwilioPhoneNummer** | Het telefoonnummer dat is gekoppeld aan uw Twilio-account. Dit wordt gebruikt om sms-berichten te verzenden. |

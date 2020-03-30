@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure cache gebruiken voor redis met .NET Core-Apps'
+title: 'Snelstart: Azure-cache gebruiken voor Redis met .NET Core-apps'
 description: In deze snelstart leest u hoe u toegang hebt tot Azure Cache voor Redis in uw .NET Core-apps
 author: yegu-ms
 ms.author: yegu
@@ -9,21 +9,21 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75413059"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Snelstartgids: Azure cache gebruiken voor redis met een .NET core-app
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Snelstart: Azure-cache gebruiken voor Redis met een .NET Core-app
 
-In deze Snelstartgids neemt u Azure cache voor redis op in een .NET core-app om toegang te hebben tot een beveiligde, toegewezen cache die toegankelijk is vanuit elke toepassing in Azure. U gebruikt de [stack Exchange. redis](https://github.com/StackExchange/StackExchange.Redis) -client specifiek C# met code in een .net Core-Console-app.
+In deze quickstart neemt u Azure Cache voor Redis op in een .NET Core-app om toegang te hebben tot een beveiligde, speciale cache die toegankelijk is vanuit elke toepassing binnen Azure. U gebruikt specifiek de [StackExchange.Redis-client](https://github.com/StackExchange/StackExchange.Redis) met C#-code in een .NET Core-console-app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
 - [.NET Core-SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is voor de client StackEdchange. redis.
+- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is door de StackEdchange.Redis client.
 
 ## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -289,15 +289,15 @@ dotnet run
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en opnieuw gebruiken.
 
-Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
+Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
 
 > [!IMPORTANT]
-> Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...**. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
 ![Verwijderen](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 

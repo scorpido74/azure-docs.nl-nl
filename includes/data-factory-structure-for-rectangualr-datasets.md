@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176705"
 ---
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Structuurdefinitie opgeven voor rechthoekige gegevenssets
-De sectie structuur in de gegevenssets JSON wordt een **optionele** sectie voor rechthoekige tabellen (met rijen en kolommen) en bevat een verzameling van kolommen voor de tabel. U gebruikt de sectie structuur voor beide met type-informatie voor typeconversies of kolomtoewijzingen doen. De volgende secties worden deze functies in detail beschreven. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Structuurdefinitie voor rechthoekige gegevenssets opgeven
+De structuursectie in de setssets JSON is een **optionele** sectie voor rechthoekige tabellen (met rijen & kolommen) en bevat een verzameling kolommen voor de tabel. U gebruikt de structuursectie voor het verstrekken van tekstinformatie voor typeconversies of het uitvoeren van kolomtoewijzingen. In de volgende secties worden deze functies in detail beschreven. 
 
 Elke kolom bevat de volgende eigenschappen:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | name |Naam van de kolom. |Ja |
-| type |Het gegevenstype van de kolom. Zie type conversies hieronder voor meer informatie met betrekking tot wanneer moet u informatie opgeven |Nee |
-| culture |.NET gebaseerde cultuur moet worden gebruikt wanneer het type is opgegeven en .NET-type datum/tijd- of Datetimeoffset. De standaardwaarde is "en-us '. |Nee |
-| format |Tekenreeks die moet worden gebruikt bij het type is opgegeven en .NET-type datum/tijd- of Datetimeoffset-indeling. |Nee |
+| type |Gegevenstype van de kolom. Zie hieronder de sectie tekstconversies voor meer informatie over wanneer u tekstgegevens moet opgeven |Nee |
+| Cultuur |.NET-gebaseerde cultuur die moet worden gebruikt wanneer tekst is opgegeven en .NET-type Datetime of Datetimeoffset is. Standaard is "en-us". |Nee |
+| formaat |Tekenreeks Opmaak die moet worden gebruikt wanneer tekst is opgegeven en .NET-type Datumtijd of Datumtijdverschuiving is. |Nee |
 
-Het volgende voorbeeld toont de sectie met de structuur JSON voor een tabel met drie kolommen gebruikers-id, naam en lastlogindate.
+In het volgende voorbeeld wordt de structuursectie JSON weergegeven voor een tabel met drie kolommen met gebruiks-, naam- en laatsteinlogdatum.
 
 ```json
 "structure": 
@@ -34,31 +34,31 @@ Het volgende voorbeeld toont de sectie met de structuur JSON voor een tabel met 
 ],
 ```
 
-Gebruik de volgende richtlijnen voor wanneer 'structureren' informatie op te nemen en wat u wilt opnemen de **structuur** sectie.
+Gebruik de volgende richtlijnen voor het opnemen van "structuur" informatie en wat op te nemen in de **structuur** sectie.
 
-* **Voor gestructureerde gegevensbronnen** dat store-schema en het type gegevens, samen met de gegevens zelf (bronnen, zoals Azure-tabel van SQL Server, Oracle, enzovoort), moet u de sectie 'structuur' alleen als u wilt kolomtoewijzing van specifieke bron doen kolommen met specifieke kolommen in de sink- en hun namen zijn niet hetzelfde zijn (Zie de informatie in de kolom koppeling hieronder). 
+* **Voor gestructureerde gegevensbronnen** die gegevensschema opslaan en informatie typen samen met de gegevens zelf (bronnen zoals SQL Server, Oracle, Azure-tabel enz.), moet u de sectie 'structuur' alleen opgeven als u kolomtoewijzing van specifieke bronkolommen wilt doen naar specifieke kolommen in gootsteen en hun namen niet hetzelfde zijn (zie details in kolomtoewijzing hieronder). 
   
-    Zoals eerder vermeld, is de informatie is optioneel in de sectie "structuur". Voor gestructureerde gegevensbronnen, informatie over het type is al beschikbaar als onderdeel van de definitie van de gegevensset in het gegevensarchief, dus u moet geen informatie over het type wanneer u de sectie "structuur" opgeeft.
-* **Voor het schema op lezen gegevensbronnen (name Azure blob)** kunt u voor het opslaan van gegevens zonder een schema of het type informatie met de gegevens op te slaan. Voor deze typen gegevensbronnen moet u "structuur" opnemen in de volgende gevallen 2:
-  * Wilt u doen in de kolomtoewijzing.
-  * Als de gegevensset een bron in een kopieeractiviteit is, kunt u informatie in "structuur" en data factory wordt deze informatie worden gebruikt voor conversie naar native-typen voor de sink. Zie [gegevens van en naar Azure Blob verplaatsen](../articles/data-factory/v1/data-factory-azure-blob-connector.md) artikel voor meer informatie.
+    Zoals hierboven vermeld, is de typeinformatie optioneel in de sectie "structuur". Voor gestructureerde bronnen is tekstinformatie al beschikbaar als onderdeel van de definitie van gegevenssets in het gegevensarchief, dus u moet geen tekstinformatie opnemen wanneer u de sectie 'structuur' opneemt.
+* **Voor schema's op leesgegevensbronnen (met name Azure blob)** u ervoor kiezen om gegevens op te slaan zonder schema of typegegevens op te slaan met de gegevens. Voor dit soort gegevensbronnen moet u in de volgende 2 gevallen "structuur" opnemen:
+  * U wilt kolomtoewijzing doen.
+  * Wanneer de gegevensset een bron is in een kopieeractiviteit, u tekstgegevens in 'structuur' verstrekken en gebruikt de gegevensfabriek deze tekstgegevens voor conversie naar native typen voor de gootsteen. Zie [Gegevens verplaatsen van en naar het Azure Blob-artikel](../articles/data-factory/v1/data-factory-azure-blob-connector.md) voor meer informatie.
 
-### <a name="supported-net-based-types"></a>Ondersteund. Op basis van de NET typen
-Data factory ondersteunt de volgende CLS compatibele .NET op basis van typewaarden voor het ontwikkelen van type informatie in "structuur" voor het schema op meer gegevensbronnen, zoals Azure blob.
+### <a name="supported-net-based-types"></a>Ondersteund. OP NETTEN gebaseerde typen
+Gegevensfabriek ondersteunt de volgende CLS-compatibele .NET-gebaseerde typewaarden voor het verstrekken van tekstinformatie in 'structuur' voor schema op leesgegevensbronnen zoals Azure blob.
 
 * Int16
 * Int32 
 * Int64
-* Single
+* Enkel
 * Double
 * Decimal
-* Byte[]
-* Bool
-* String 
-* Guid
-* Datetime
-* Datetimeoffset
+* Byte
+* Booleaanse waarde
+* Tekenreeks 
+* GUID
+* Datum/tijd
+* Datumtijdverschuiving
 * Periode 
 
-U kunt eventueel ook 'Cultuur' & '-indeling'-tekenreeks in het kader van uw aangepaste datum/tijd-tekenreeks parseren voor datum/tijd & Datetimeoffset opgeven. Zie het voorbeeld voor conversie van onderstaande.
+Voor Datetime & Datetimeoffset u ook optioneel 'cultuur' & tekenreeks 'opmaak' opgeven om het ontken en maken van uw aangepaste Datetime-tekenreeks te vergemakkelijken. Zie voorbeeld voor typeconversie hieronder.
 

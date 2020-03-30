@@ -9,75 +9,75 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67476259"
 ---
-## <a name="create-one-or-more-access-reviews"></a>Maken van een of meer toegangsbeoordelingen
+## <a name="create-one-or-more-access-reviews"></a>Een of meer toegangsbeoordelingen maken
 
-1. Klik op **nieuw** naar een nieuwe toegangsbeoordeling maken.
+1. Klik **op Nieuw** om een nieuwe toegangsbeoordeling te maken.
 
-1. De naam van de toegangsbeoordeling. (Optioneel) Geef de beoordeling van een beschrijving. De naam en beschrijving worden weergegeven aan de revisoren.
+1. Geef de toegangsbeoordeling een naam. Geef eventueel een beschrijving van de beoordeling. De naam en beschrijving worden getoond aan de revisoren.
 
-    ![Een toegangsbeoordeling - naam van de beoordeling en een beschrijving maken](./media/active-directory-privileged-identity-management-access-reviews/name-description.png)
+    ![Een toegangsbeoordeling maken - Naam en beschrijving bekijken](./media/active-directory-privileged-identity-management-access-reviews/name-description.png)
 
-1. Stel de **begindatum**. Standaard een toegangsbeoordeling gebeurt eenmaal, hetzelfde moment die wordt deze gemaakt begint en eindigt in één maand. Kunt u het begin en einddatum hebben een toegang controleren start in de toekomst en laatste hoeveel dagen u dat wilt.
+1. Stel de **begindatum in**. Standaard vindt een toegangscontrole één keer plaats, wordt gestart op hetzelfde moment dat deze wordt gemaakt en eindigt deze in één maand. U de begin- en einddatum wijzigen om in de toekomst een toegangscontrole te laten starten en hoeveel dagen u maar wilt.
 
-    ![Datum, de frequentie, duur, einde, aantal keren starten en de einddatum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Begindatum, frequentie, duur, einde, aantal keren en einddatum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
-1. Als u de toegang tot revisie terugkerende, wijzigen de **frequentie** instellen op basis van **één keer** naar **wekelijkse**, **maandelijkse**,  **Elk kwartaal**, **jaarlijks**, of **semi annually**. Gebruik de **duur** schuifregelaar of tekst in om te bepalen hoeveel dagen elk onderzoek van de reeks terugkerende is geopend voor invoer van de revisoren. Bijvoorbeeld, is de maximale duur die u voor een maandelijkse revisie instellen kunt 27 dagen, om te voorkomen dat overlappende beoordelingen.
+1. Als u de toegangscontrole wilt herhalen, wijzigt u de **instelling Frequentie** van **Eenmalig** naar **Wekelijks**, **Maandelijks**, **Kwartaal ,** **Jaarlijks**of **Halfjaarlijks**. Gebruik de schuifregelaar **Duur** of het tekstvak om te bepalen hoeveel dagen elke revisie van de terugkerende reeks wordt geopend voor invoer van revisoren. De maximale duur die u instellen voor een maandelijkse beoordeling is bijvoorbeeld 27 dagen, om overlappende beoordelingen te voorkomen.
 
-1. Gebruik de **End** instelling kunt u opgeven hoe de toegang tot de terugkerende beëindigen serie bekijken. De reeks kunt op drie manieren beëindigen: deze continu wordt uitgevoerd voor het starten van beoordelingen voor onbepaalde tijd, tot een bepaalde datum of na een opgegeven aantal exemplaren is voltooid. U, Gebruikerbeheerder van een andere of een ander algemeen beheerder kunt stoppen de reeks na het maken van door het veranderen van de datum in de **instellingen**, zodat deze wordt beëindigd op die datum.
+1. Gebruik de instelling **Einde** om op te geven hoe u de reeks terugkerende toegangscontrole beëindigen. De serie kan op drie manieren eindigen: het wordt continu uitgevoerd om beoordelingen voor onbepaalde tijd te starten, tot een specifieke datum of nadat een bepaald aantal gebeurtenissen is voltooid. U, een andere gebruiker beheerder, of een andere globale beheerder de reeks na het maken tegenhouden door de datum in **Montages**te veranderen, zodat het op die datum beëindigt.
 
-1. In de **gebruikers** sectie, selecteer een of meer rollen die u wilt bekijken van het lidmaatschap van.
+1. Selecteer in de sectie **Gebruikers** een of meer rollen waarvan u het lidmaatschap wilt bekijken.
 
-    ![Scope om te controleren van lidmaatschap van de rol van gebruikers](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Gebruikers scope om rol lidmaatschap van](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Meer dan één rol selecteren maakt meerdere toegangsbeoordelingen. Bijvoorbeeld, u vijf afzonderlijke toegangsbeoordelingen maken vijf rollen selecteren.
+    > Als u meer dan één rol selecteert, worden meerdere toegangsbeoordelingen gemaakt. Als u bijvoorbeeld vijf rollen selecteert, worden vijf afzonderlijke toegangsbeoordelingen gemaakt.
 
-    Als u een toegangsbeoordeling van Azure AD-rollen maakt, wordt het volgende toont een voorbeeld van de beoordeling ledenlijst wordt weergegeven.
+    Als u een toegangscontrole van Azure AD-rollen maakt, wordt in het volgende een voorbeeld van de lijst met lidmaatschapsoverzicht en beoordeling weergegeven.
 
-    ![Controleer het lidmaatschap deelvenster aanbieding van Azure AD-rollen die u kunt selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Overzicht van het lidmaatschapsvenster met Azure AD-rollen die u selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Als u een toegangsbeoordeling van Azure-resourcerollen maakt, wordt het volgende toont een voorbeeld van de beoordeling ledenlijst wordt weergegeven.
+    Als u een toegangscontrole van Azure-bronrollen maakt, wordt in het volgende een voorbeeld van de lijst met lidmaatschapsoverzicht controleren weergegeven.
 
-    ![Controleer het lidmaatschap deelvenster aanbieding van Azure-resourcerollen die u kunt selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Overzicht van het lidmaatschapsvenster met Azure-bronrollen die u selecteren](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
-1. In de **revisoren** sectie, selecteer een of meer mensen te bekijken van alle gebruikers. Of u kunt selecteren om de leden hun eigen toegang beoordelen.
+1. Selecteer in de sectie **Revisoren** een of meer personen om alle gebruikers te controleren. U er ook voor kiezen dat de leden hun eigen toegang bekijken.
 
-    ![Revisoren van lijst met geselecteerde gebruikers of leden (zelf)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Lijst met revisoren met geselecteerde gebruikers of leden (zelf)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
-    - **Geselecteerde gebruikers** -Gebruik deze optie als u niet weet die toegang nodig heeft. Met deze optie kunt u de controle toewijzen aan een resource-eigenaar of groepmanager om te voltooien.
-    - **Leden (zelf)** -Gebruik deze optie om de gebruikers hun eigen roltoewijzingen bekijken.
+    - **Geselecteerde gebruikers** - Gebruik deze optie als u niet weet wie toegang nodig heeft. Met deze optie u de beoordeling toewijzen aan een resourceeigenaar of groepsmanager om te voltooien.
+    - **Leden (zelf)** - Gebruik deze optie om de gebruikers hun eigen roltoewijzingen te laten bekijken.
 
-### <a name="upon-completion-settings"></a>Na voltooiing van de instellingen
+### <a name="upon-completion-settings"></a>Na voltooiingsinstellingen
 
-1. Om op te geven wat gebeurt er wanneer een beoordeling is voltooid, vouw de **na voltooiing van de instellingen** sectie.
+1. Als u wilt opgeven wat er gebeurt nadat een beoordeling is voltooid, vouwt u de sectie **Instellingen voor voltooiing na.**
 
-    ![Na voltooiing instellingen automatisch toegepast en moet revisie niet reageert](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Na voltooiing instellingen om automatisch toe te passen en moet controleren niet reageren](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
-1. Als u automatisch de toegang verwijderen voor gebruikers die zijn geweigerd wilt, stelt u **automatisch resultaten toepassen op resource** naar **inschakelen**. Als u de resultaten handmatig toepassen wilt als de controle is voltooid, stelt u de switch op **uitschakelen**.
+1. Als u de toegang voor gebruikers die zijn geweigerd automatisch wilt verwijderen, stelt u **De resultaten automatisch toe te passen op resource** op **Inschakelen**. Als u de resultaten handmatig wilt toepassen wanneer de beoordeling is voltooid, stelt u de schakelaar **in op Uitschakelen**.
 
-1. Gebruik de **moet revisor niet reageert** lijst om op te geven wat er gebeurt met gebruikers die niet zijn beoordeeld door de revisor binnen de controleperiode. Deze instelling heeft geen invloed op gebruikers die handmatig door de revisoren zijn gecontroleerd. Als de laatste revisor besluit weigeren, wordt de toegang van de gebruiker worden verwijderd.
+1. Gebruik de **lijst Moet-revisor niet reageren** om op te geven wat er gebeurt voor gebruikers die niet worden beoordeeld door de revisor binnen de beoordelingsperiode. Deze instelling heeft geen invloed op gebruikers die handmatig door de beoordelaars zijn beoordeeld. Als de beslissing van de uiteindelijke beoordelaar Weigeren is, wordt de toegang van de gebruiker verwijderd.
 
-    - **Er is geen wijziging** -gebruikerstoegang, ongewijzigd laten
-    - **Toegang verwijderen** -van de gebruiker toegang verwijderen
-    - **Toegang goedkeuren** -van de gebruiker toegang goedkeuren
-    - **Aanbevelingen ophalen** - nemen van het systeem de aanbeveling weigeren of goedkeuring van de gebruiker de blijvende toegang
+    - **Geen wijziging** - Laat de toegang van de gebruiker ongewijzigd
+    - **Toegang verwijderen** - Toegang van de gebruiker verwijderen
+    - **Toegang goedkeuren** - Toegang van de gebruiker goedkeuren
+    - **Neem aanbevelingen** - Neem de aanbeveling van het systeem over het weigeren of goedkeuren van de voortdurende toegang van de gebruiker
 
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-1. Als u aanvullende instellingen, vouw de **geavanceerde instellingen** sectie.
+1. Als u extra instellingen wilt opgeven, vouwt u de sectie **Geavanceerde instellingen** uit.
 
-    ![Geavanceerde instellingen voor aanbevelingen weergeven, vereisen reden bij goedkeuring, e-mailmeldingen en herinneringen](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![Geavanceerde instellingen voor aanbevelingen weergeven, reden vereisen voor goedkeuring, e-mailmeldingen en herinneringen](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
-1. Stel **aanbevelingen weergeven** naar **inschakelen** om weer te geven de revisoren van het systeem aanbevelingen op basis van de gebruiker toegang tot informatie.
+1. **Stel Aanbevelingen weergeven** **in om** de revisoren de systeemaanbevelingen weer te geven op basis van de toegangsgegevens van de gebruiker.
 
-1. Stel **reden vereisen bij goedkeuring** naar **inschakelen** naar de revisor moet een reden voor goedkeuring opgeven.
+1. Stel **Reden vereisen bij goedkeuring** in **om** de revisor te verplichten een reden voor goedkeuring te geven.
 
-1. Stel **e-mailmeldingen** naar **inschakelen** dat Azure AD e-mailmeldingen naar revisoren verzenden wanneer een toegangsbeoordeling wordt gestart, en naar beheerders wanneer een beoordeling is voltooid.
+1. Mailmeldingen instellen **op Inschakelen** om Azure AD e-mailmeldingen te laten verzenden naar revisoren wanneer een toegangscontrole wordt gestart en naar beheerders wanneer een beoordeling is voltooid. **Mail notifications**
 
-1. Stel **herinneringen** naar **inschakelen** om in Azure AD herinneringen stuurt van toegangsbeoordelingen wordt uitgevoerd naar de revisors die de beoordeling nog niet hebben voltooid.
+1. **Stel Herinneringen** **in om** Azure AD te laten verzenden met herinneringen over toegangsbeoordelingen die worden uitgevoerd naar revisoren die hun beoordeling nog niet hebben voltooid.

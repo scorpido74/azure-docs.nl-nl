@@ -1,20 +1,20 @@
 ---
 title: Azure VM-schijven uitsluiten van replicatie met Azure Site Recovery en Azure PowerShell
-description: Meer informatie over het uitsluiten van schijven van virtuele Azure-machines tijdens het Azure Site Recovery met behulp van Azure PowerShell.
+description: Meer informatie over het uitsluiten van schijven van virtuele Azure-machines tijdens Azure Site Recovery met Azure PowerShell.
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973677"
 ---
-# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Schijven uitsluiten van de Power shell-replicatie van virtuele Azure-machines
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Schijven uitsluiten van PowerShell-replicatie van Azure VM's
 
-In dit artikel wordt beschreven hoe u schijven uitsluit wanneer u virtuele Azure-machines repliceert. U kunt schijven uitsluiten voor het optimaliseren van de verbruikte replicatie bandbreedte of de bronnen op de doel zijde die door die schijven worden gebruikt. Deze mogelijkheid is momenteel alleen beschikbaar via Azure PowerShell.
+In dit artikel wordt beschreven hoe u schijven uitsluiten wanneer u Azure VM's nabootst. U schijven uitsluiten om de verbruikte replicatiebandbreedte of de doelbronnen die deze schijven gebruiken, te optimaliseren. Momenteel is deze mogelijkheid alleen beschikbaar via Azure PowerShell.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -23,26 +23,26 @@ In dit artikel wordt beschreven hoe u schijven uitsluit wanneer u virtuele Azure
 
 Voordat u begint:
 
-- Zorg ervoor dat u bekend bent met de [nood herstel architectuur en-onderdelen](azure-to-azure-architecture.md).
+- Zorg ervoor dat u de [architectuur en componenten voor noodherstel](azure-to-azure-architecture.md)begrijpt.
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
-- Zorg ervoor dat u de AzureRm-module AZ van Power shell hebt. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om Power shell te installeren of bij te werken.
-- Zorg ervoor dat u ten minste één keer een Recovery Services-kluis en beveiligde virtuele machines hebt gemaakt. Als u deze dingen nog niet hebt gedaan, volgt u het proces [voor het instellen van herstel na nood geval voor virtuele Azure-machines met behulp van Azure PowerShell](azure-to-azure-powershell.md).
-- [Lees dit artikel](azure-to-azure-enable-replication-added-disk.md)als u informatie zoekt over het toevoegen van schijven aan een Azure VM die is ingeschakeld voor replicatie.
+- Zorg ervoor dat u de AzureRm PowerShell-module "Az" hebt. Zie [PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)als u PowerShell wilt installeren of bijwerken.
+- Zorg ervoor dat u ten minste één keer een kluis voor herstelservices hebt gemaakt en virtuele virtuele machines hebt beschermd. Als u deze dingen nog niet hebt gedaan, volgt u het proces bij [Het instellen van noodherstel voor virtuele Azure-machines met Azure PowerShell.](azure-to-azure-powershell.md)
+- Als u op zoek bent naar informatie over het toevoegen van schijven aan een Azure VM die is ingeschakeld voor replicatie, [controleert u dit artikel](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Waarom schijven uitsluiten van replicatie
 Mogelijk moet u schijven uitsluiten van replicatie omdat:
 
-- De virtuele machine heeft [Azure site Recovery limieten bereikt voor het repliceren van gegevens wijzigings tarieven](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+- Uw virtuele machine heeft [azure siteherstellimieten bereikt om gegevenswijzigingssnelheden te repliceren.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
 
-- De gegevens die op de uitgesloten schijf zijn achtergelaten, zijn niet belang rijk of hoeven niet te worden gerepliceerd.
+- De gegevens die op de uitgesloten schijf worden gechurn, zijn niet belangrijk of hoeven niet te worden gerepliceerd.
 
-- U wilt opslag-en netwerk bronnen opslaan door de gegevens niet te repliceren.
+- U wilt opslag- en netwerkbronnen opslaan door de gegevens niet te repliceren.
 
 ## <a name="how-to-exclude-disks-from-replication"></a>Schijven uitsluiten van replicatie
 
-In ons voor beeld repliceert u een virtuele machine met één besturings systeem en drie gegevens schijven in de regio VS-Oost naar de regio vs-West 2. De naam van de virtuele machine is *AzureDemoVM*. We sluiten schijf 1 uit en houden schijven 2 en 3.
+In ons voorbeeld repliceren we een virtuele machine met één besturingssysteem en drie gegevensschijven in de regio Oost-VS naar de regio West US 2. De naam van de virtuele machine is *AzureDemoVM*. We sluiten schijf 1 uit en houden schijven 2 en 3.
 
-## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Details ophalen van de virtuele machines die moeten worden gerepliceerd
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Informatie over de virtuele machines om te repliceren
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -67,18 +67,18 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Details over de schijven van de virtuele machine ophalen. Deze informatie wordt later gebruikt bij het starten van de replicatie van de virtuele machine.
+Meer informatie over de schijven van de virtuele machine. Deze informatie wordt later gebruikt wanneer u de replicatie van de vm start.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-an-azure-virtual-machine"></a>Een virtuele machine van Azure repliceren
+## <a name="replicate-an-azure-virtual-machine"></a>Een virtuele Azure-machine repliceren
 
-In het volgende voor beeld wordt ervan uitgegaan dat u al beschikt over een cache-opslag account, een replicatie beleid en toewijzingen. Als u deze dingen niet hebt, volgt u het proces bij het [instellen van herstel na nood geval voor virtuele Azure-machines met behulp van Azure PowerShell](azure-to-azure-powershell.md).
+In het volgende voorbeeld gaan we ervan uit dat u al een cacheopslagaccount, replicatiebeleid en toewijzingen hebt. Als u deze dingen niet hebt, volgt u het proces bij [Noodherstel instellen voor virtuele Azure-machines met Azure PowerShell.](azure-to-azure-powershell.md)
 
-Een virtuele machine van Azure repliceren met *Managed disks*.
+Een virtuele Azure-machine repliceren met *beheerde schijven*.
 
 ```azurepowershell
 
@@ -126,13 +126,13 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Wanneer de bewerking voor het starten van de replicatie slaagt, worden de VM-gegevens gerepliceerd naar de herstel regio.
+Wanneer de beginreplicatiebewerking slaagt, worden de VM-gegevens gerepliceerd naar het herstelgebied.
 
-U kunt naar de Azure Portal gaan en de gerepliceerde Vm's bekijken onder gerepliceerde items.
+U naar de Azure-portal gaan en de gerepliceerde VM's bekijken onder 'gerepliceerde items'.
 
-Het replicatie proces begint met het seeden van een kopie van de replicerende schijven van de virtuele machine in de herstel regio. Deze fase wordt de initiële replicatie fase genoemd.
+Het replicatieproces begint met het inzaaien van een kopie van de replicerende schijven van de virtuele machine in het herstelgebied. Deze fase wordt de eerste replicatiefase genoemd.
 
-Wanneer de initiële replicatie is voltooid, wordt de replicatie verplaatst naar de fase differentiële synchronisatie. Op dit moment wordt de virtuele machine beveiligd. Selecteer de beveiligde virtuele machine om te zien of er schijven zijn uitgesloten.
+Nadat de eerste replicatie is voltooid, gaat replicatie door naar de differentiële synchronisatiefase. Op dit punt is de virtuele machine beschermd. Selecteer de beveiligde virtuele machine om te zien of schijven zijn uitgesloten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

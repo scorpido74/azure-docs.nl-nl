@@ -3,89 +3,89 @@ title: Veelgestelde vragen over Azure Resource Health
 description: Overzicht van Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f626dc4366cbdd9215704de97bb03fad19422eb
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912773"
 ---
 # <a name="azure-resource-health-faq"></a>Veelgestelde vragen over Azure Resource Health
 Meer informatie over de antwoorden op veelgestelde vragen over Azure Resource Health.
 
 ## <a name="what-is-azure-resource-health"></a>Wat is Azure Resource Health?
-Resource Health helpt u bij het diagnosticeren en krijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw resources. U wordt geïnformeerd over de huidige en eerdere status van uw resources zodat u problemen kunt beperken. Resource Health biedt technische ondersteuning als u hulp nodig hebt bij problemen met Azure-services.  
+Resource Health helpt u bij het diagnosticeren en krijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw resources. Het biedt u informatie over de huidige en eerdere status van uw resources en helpt u problemen verhelpen. Resource Health biedt technische ondersteuning als u hulp nodig heeft bij problemen met Azure-services.  
 
-## <a name="what-is-the-resource-health-intended-for"></a>Wat is de Resource Health bedoeld voor?
-Als er een probleem met een bron is gedetecteerd, kunt u met Resource Health u de hoofd oorzaak van de fout vaststellen. Het biedt hulp bij het oplossen van het probleem en technische ondersteuning als u meer hulp nodig hebt bij problemen met Azure-Services.
+## <a name="what-is-the-resource-health-intended-for"></a>Waar is de Resource Health voor bedoeld?
+Zodra een probleem met een resource is gedetecteerd, kan Resource Health u helpen bij het diagnosticeren van de hoofdoorzaak. Het biedt hulp om het probleem en de technische ondersteuning te beperken wanneer u meer hulp nodig hebt bij Azure-serviceproblemen.
 
-## <a name="what-health-checks-are-performed-by-resource-health"></a>Welke status controles worden uitgevoerd door Resource Health?
-Resource Health voert verschillende controles uit op basis van het [resource type](resource-health-checks-resource-types.md). Deze controles zijn ontworpen om drie soorten problemen te implementeren: 
-- Niet-geplande gebeurtenissen, bijvoorbeeld een onverwachte host opnieuw opstarten
-- Geplande gebeurtenissen, zoals geplande updates van host-besturings systemen
-- Gebeurtenissen die worden geactiveerd door gebruikers acties, bijvoorbeeld een gebruiker die een virtuele machine opnieuw opstart
+## <a name="what-health-checks-are-performed-by-resource-health"></a>Welke gezondheidscontroles worden uitgevoerd door Resource Health?
+Resourcestatus voert verschillende controles uit op basis van het [resourcetype](resource-health-checks-resource-types.md). Deze controles zijn bedoeld om drie soorten kwesties te implementeren: 
+- Ongeplande gebeurtenissen, bijvoorbeeld een onverwachte herstart van de host
+- Geplande gebeurtenissen, zoals geplande updates van host-bes
+- Gebeurtenissen die worden geactiveerd door acties van gebruikers, bijvoorbeeld een gebruiker die een virtuele machine opnieuw opstart
 
-## <a name="what-does-each-of-the-health-status-mean"></a>Wat betekent elk van de integriteits status?
-Er zijn drie verschillende statussen:
-- Beschikbaar: er zijn geen bekende problemen in het Azure-platform die van invloed kunnen zijn op deze resource
-- Niet beschikbaar: resource status heeft problemen gedetecteerd die van invloed zijn op de resource
-- Onbekend: de resource status kan de status van een resource niet bepalen omdat deze geen informatie meer ontvangt. 
+## <a name="what-does-each-of-the-health-status-mean"></a>Wat betekent elk van de gezondheidstoestand?
+Er zijn drie verschillende gezondheidstoestanden:
+- Beschikbaar: er zijn geen bekende problemen in het Azure-platform die van invloed kunnen zijn op deze bron
+- Niet beschikbaar: resourcestatus heeft problemen gedetecteerd die van invloed zijn op de bron
+- Onbekend: resourcestatus kan de status van een resource niet bepalen omdat deze is gestopt met het ontvangen van informatie over een resource. 
 
-## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Wat betekent de onbekende status? Is er iets mis met mijn resource?
-De status wordt ingesteld op onbekend wanneer Resource Health stopt met het ontvangen van informatie over een specifieke resource. Hoewel deze status geen definitieve indicatie is van de status van de resource, in gevallen waarin u problemen ondervindt, kan dit erop wijzen dat er een probleem is met Azure.
+## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Wat betekent de onbekende status? Is er iets mis met mijn bron?
+De status is ingesteld op onbekend wanneer Resourcehealth geen informatie meer ontvangt over een specifieke bron. Hoewel deze status geen definitieve indicatie is van de status van de resource, kan dit in gevallen waarin u problemen ondervindt, erop wijzen dat er een Azure-probleem is.
 
-## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hoe kan ik hulp krijgen bij een resource die niet beschikbaar is?
-U kunt een ondersteunings aanvraag indienen via de Blade Resource Health. U hebt geen ondersteunings overeenkomst met micro soft nodig om een aanvraag te openen wanneer de resource niet beschikbaar is omdat er platform gebeurtenissen zijn.
+## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hoe kan ik hulp krijgen voor een resource die niet beschikbaar is?
+U een ondersteuningsverzoek indienen via het blade resourcestatus. U hebt geen ondersteuningsovereenkomst met Microsoft nodig om een aanvraag te openen wanneer de bron niet beschikbaar is omdat platformgebeurtenissen.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Is Resource Health onderscheid gemaakt tussen niet-beschik baarheid door platform problemen versus wat ik heb gedaan?
-Ja, wanneer een bron niet beschikbaar is, Resource Health de hoofd oorzaak in een van deze categorieën identificeren: 
--   Door gebruiker gestarte actie
+## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Maakt Resource Health onderscheid tussen onbeschikbaarheid door platformproblemen ten opzichte van iets wat ik heb gedaan?
+Ja, wanneer een resource niet beschikbaar is, identificeert Resource Health de hoofdoorzaak binnen een van de volgende categorieën: 
+-   Door de gebruiker gestarte actie
 -   Geplande gebeurtenis 
--   Niet-geplande gebeurtenis
+-   Ongeplande gebeurtenis
 
-In de portal worden door de gebruiker gestarte acties weer gegeven met behulp van een blauw meldings pictogram, terwijl geplande en niet-geplande gebeurtenissen worden weer gegeven met een rood waarschuwings pictogram. Meer informatie vindt u in het [overzicht van resource Health](Resource-health-overview.md).  
+In de portal worden door gebruikers geïnitieerde acties weergegeven met behulp van een blauw meldingspictogram, terwijl geplande en ongeplande gebeurtenissen worden weergegeven met behulp van een rood waarschuwingspictogram. Meer details zijn te vinden in het [overzicht Resourcehealth](Resource-health-overview.md).  
 
-## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kan Ik Resource Health integreren met mijn controle hulpprogramma's?
-De resource status biedt [ondersteuning](resource-health-alert-arm-template-guide.md) voor waarschuwingen op basis van activiteiten Logboeken. Waarschuwingen voor activiteiten Logboeken gebruiken [actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) om gebruikers ervan op de hoogte te stellen dat een waarschuwing is geactiveerd. Actie groepen bieden ondersteuning voor diverse meldings kanalen, zoals e-mail, SMS-, webhook-en ITSM-acties.
+## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kan ik Resource Health integreren met mijn monitoringtools?
+Resourcestatus heeft [preview-ondersteuning](resource-health-alert-arm-template-guide.md) voor waarschuwingen op basis van activiteitslogboeken. Waarschuwingen voor activiteitenlogboeken gebruiken [actiegroepen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) om gebruikers te laten weten dat er een waarschuwing is geactiveerd. Actiegroepen ondersteunen verschillende meldingskanalen, zoals e-mail, sms, webhook en ITSM-acties.
 
-## <a name="where-do-i-find-resource-health"></a>Waar vind Ik Resource Health?
-Nadat u zich hebt aangemeld bij de Azure Portal, zijn er meerdere manieren om toegang te krijgen tot Resource Health:
-- Navigeer naar uw resource. Selecteer in de navigatie balk aan de linkerkant de optie **resource status**
-- Ga naar de Blade Azure Service Health.  Selecteer in de navigatie balk aan de linkerkant de optie **resource status**.
-- Open de Blade **Help en ondersteuning** door het vraag teken in de rechter bovenhoek van de portal te selecteren en vervolgens **Help en ondersteuning**te selecteren. Zodra de Blade is geopend, selecteert u **resource status**
+## <a name="where-do-i-find-resource-health"></a>Waar vind ik Resource Health?
+Nadat u zich hebt aangemeld bij de Azure-portal, zijn er meerdere manieren waarop u toegang hebt tot Resourcestatus:
+- Navigeer naar uw bron. Selecteer **resourcestatus** in de linkernavigatie
+- Ga naar het azure servicestatusblad.  Selecteer **resourcestatus**in de linkernavigatie .
+- Open het **mes Help + Ondersteuning** door het vraagteken in de rechterbovenhoek van de portal te selecteren en vervolgens **Help + ondersteuning te**selecteren. Zodra het blad wordt geopend, selecteert u **Resourcestatus**
 
-U kunt ook de Resource Health-API gebruiken om informatie te verkrijgen over de status van uw resources.
+U de API voor resourcestatus ook gebruiken om informatie te verkrijgen over de status van uw resources.
 
-## <a name="is-resource-health-available-for-all-resource-types"></a>Is Resource Health beschikbaar voor alle resource typen?
-De lijst met status controles en resource typen die via Resource Health worden ondersteund, kunt u [hier](resource-health-checks-resource-types.md)vinden.
+## <a name="is-resource-health-available-for-all-resource-types"></a>Is resourcestatus beschikbaar voor alle resourcetypen?
+De lijst met gezondheidscontroles en resourcetypen die worden ondersteund door resourcestatus is [hier](resource-health-checks-resource-types.md)te vinden.
 
-## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Wat moet ik doen als mijn resource beschikbaar wordt weer gegeven, maar ik geloof het niet? "
-Bij het controleren van de status van een resource kunt u met de rechter muisknop op **rapporteren onjuiste**status. Voordat u het rapport verzendt, hebt u de mogelijkheid om aanvullende informatie te verstrekken over waarom u denkt dat de huidige status onjuist is.
+## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Wat moet ik doen als mijn resource beschikbaar wordt weergegeven, maar ik geloof dat dit niet het is?"
+Wanneer u de status van een resource controleert, klikt u onder de status van de status **op Onjuiste status melden**. Voordat u het rapport indient, u aanvullende gegevens verstrekken over waarom u van mening bent dat de huidige status onjuist is.
 
-## <a name="is-resource-health-available-for-all-azure-regions"></a>Is Resource Health beschikbaar voor alle Azure-regio's? 
-De resource status is beschikbaar in alle Azure-geografische gebieden.
+## <a name="is-resource-health-available-for-all-azure-regions"></a>Is resourcestatus beschikbaar voor alle Azure-regio's? 
+Resourcestatus is beschikbaar in alle Azure-geo's.
 
-## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Hoe wijkt Resource Health af van de Azure-status of het Service Health-dash board?
-De gegevens die worden verstrekt door Resource Health, zijn specifieker dan de status van Azure of het dash board Service Health.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Hoe verschilt resourcestatus van de Azure-status of het dashboard Servicestatus?
+De informatie van Resource Health is specifieker dan wat wordt geleverd door de Azure-status of het dashboard Servicestatus.
 
-Terwijl de [Azure-status](https://status.azure.com) en het service Health-dash board u informeren over Service problemen die van invloed zijn op een breed scala aan klanten (bijvoorbeeld een Azure-regio), worden er door resource Health meer gedetailleerde gebeurtenissen weer gegeven die alleen relevant zijn voor de specifieke resource. Als een host bijvoorbeeld onverwacht opnieuw wordt opgestart, wordt door Resource Health alleen de klanten gewaarschuwd waarvan de virtuele machines op die host werden uitgevoerd.
+Terwijl [de Azure-status](https://status.azure.com) en het dashboard Servicestatus u informeren over serviceproblemen die van invloed zijn op een brede set klanten (bijvoorbeeld een Azure-regio), worden met Resource Health gedetailleerdere gebeurtenissen weergegeven die alleen relevant zijn voor de specifieke bron. Als een host bijvoorbeeld onverwacht opnieuw wordt opgestart, waarschuwt Resource Health alleen die klanten waarvan de virtuele machines op die host actief waren.
 
-Het is belang rijk om te zien dat u de zicht baarheid van gebeurtenissen die van invloed zijn op uw resources, Resource Health ook de Opper vlakken die in het dash board van Service Health zijn gepubliceerd, kunt volt ooien.
+Het is belangrijk op te merken dat om u volledige zichtbaarheid te bieden van gebeurtenissen die van invloed zijn op uw resources, Resource Health ook gebeurtenissen weergeeft die zijn gepubliceerd in het dashboard Servicestatus.
 
-## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Moet Ik Resource Health voor elke resource activeren?
-Nee, status informatie is beschikbaar voor alle resource typen die beschikbaar zijn via Resource Health. 
+## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Moet ik ResourceHealth activeren voor elke resource?
+Nee, gezondheidsinformatie is beschikbaar voor alle resourcetypen die beschikbaar zijn via Resourcestatus. 
 
-## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Moeten we Resource Health voor mijn organisatie inschakelen?
-Nee.  Azure Resource Health is toegankelijk binnen de Azure Portal zonder installatie vereisten.
+## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Moeten we Resource Health inschakelen voor mijn organisatie?
+Nee.  Azure Resource Health is toegankelijk binnen de Azure-portal zonder installatievereisten.
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Is Resource Health gratis beschikbaar?
 Ja.  Azure Resource Health is gratis.
 
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Wat zijn de aanbevelingen die Resource Health biedt?
-Op basis van de status Resource Health biedt u aanbevelingen met betrekking tot het verminderen van de tijd die u hebt besteed aan het oplossen van problemen. De aanbevelingen voor beschik bare bronnen zijn gericht op het oplossen van de meest voorkomende problemen die klanten tegen komen. Als de resource niet beschikbaar is vanwege een niet-geplande Azure-gebeurtenis, wordt u geholpen tijdens en na het herstel proces. 
+Op basis van de status biedt Resource Health u aanbevelingen met als doel de tijd die u hebt besteed aan het oplossen van problemen te verminderen. Voor beschikbare resources zijn de aanbevelingen gericht op het oplossen van de meest voorkomende problemen die klanten tegenkomen. Als de resource niet beschikbaar is vanwege een niet-geplande azure-gebeurtenis, ligt de focus op het assisteren tijdens en na het herstelproces. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Resource Health:
+Meer informatie over resourcestatus:
 -  [Overzicht van Azure Resource Health](Resource-health-overview.md)
 -  [Resourcetypen en statuscontroles die beschikbaar zijn via Azure Resource Health](resource-health-checks-resource-types.md)

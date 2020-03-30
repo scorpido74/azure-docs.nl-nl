@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156052"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -22,7 +22,7 @@ Ja. U kunt per abonnement maximaal 500 Recovery Services-kluizen maken, per onde
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Zijn er beperkingen met betrekking tot het aantal servers/machines dat kan worden geregistreerd voor elke kluis?
 
-U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Microsoft Azure Backup-agent gebruikt, kunt u per kluis maximaal 50 MAB-agents registreren. En u kunt 50 MAB-servers/DPM-servers registreren voor een kluis.
+U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Microsoft Azure Backup Agent gebruikt, u maximaal 50 MARS-agents per kluis registreren. En u 50 MABS-servers/DPM-servers registreren bij een kluis.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Hoeveel gegevensbronnen/items kunnen worden beveiligd in een kluis?
 
@@ -75,14 +75,14 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **SKU** | **Details**
+**Besturingssysteem** | **Sku** | **Details**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-Server | |
+server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -123,7 +123,7 @@ BMR/systeemstatus |Elke afzonderlijke kopie van de BMR of systeemstatus van de m
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Is er een limiet voor de hoeveelheid gegevens waarvan een back-up wordt gemaakt met een Recovery Services-kluis?
 
-Er is geen limiet voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken met behulp van een Recovery Services kluis. De afzonderlijke gegevens bronnen (met uitzonde ring van virtuele machines van Azure) kunnen Maxi maal 54.400 GB groot zijn. Zie de [sectie kluis limieten in de ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)voor meer informatie over limieten.
+Er is geen limiet aan de totale hoeveelheid gegevens die u back-ups maken met behulp van een vault van Recovery Services. De afzonderlijke gegevensbronnen (met andere dan Azure VM's) kunnen maximaal 54.400 GB groot zijn. Zie de [sectie kluislimieten in de ondersteuningsmatrix voor](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)meer informatie over limieten.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Waarom is de omvang van de gegevens die worden overgebracht naar de Recovery Services-kluis, kleiner dan de hoeveelheid gegevens die zijn geselecteerd voor een back-up?
 

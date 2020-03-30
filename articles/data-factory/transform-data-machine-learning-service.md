@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning pijp lijnen uitvoeren
-description: Meer informatie over het uitvoeren van uw Azure Machine Learning-pijp lijnen in uw Azure Data Factory pijp lijnen.
+title: Azure Machine Learning-pijplijnen uitvoeren
+description: Meer informatie over het uitvoeren van uw Azure Machine Learning-pijplijnen in uw Azure Data Factory-pijplijnen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,17 +11,17 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155160"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning pijp lijnen uitvoeren in Azure Data Factory
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning-pijplijnen uitvoeren in Azure Data Factory
 
-Voer uw Azure Machine Learning-pijp lijnen uit als een stap in uw Azure Data Factory pijp lijnen. Met de activiteit pijp lijn uitvoeren Machine Learning kunt u batch Voorspellings scenario's maken, zoals het identificeren van mogelijke standaard waarden voor leningen, het bepalen van sentiment en het analyseren van gedrags patronen van klanten.
+Voer uw Azure Machine Learning-pijplijnen uit als een stap in uw Azure Data Factory-pijplijnen. Met de machine learning-uitvoerpijplijnactiviteit kunnen batchvoorspellingsscenario's worden ingeschakeld, zoals het identificeren van mogelijke leenstandaardinstellingen, het bepalen van het sentiment en het analyseren van gedragspatronen van klanten.
 
-De onderstaande video bevat een inleiding en demonstratie van zes minuten voor deze functie.
+De onderstaande video bevat een zes minuten durende introductie en demonstratie van deze functie.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -46,28 +46,28 @@ De onderstaande video bevat een inleiding en demonstratie van zes minuten voor d
 
 ```
 
-## <a name="type-properties"></a>Type-eigenschappen
+## <a name="type-properties"></a>Eigenschappen typen
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de activiteit in de pijp lijn | Tekenreeks | Ja
-type | Type activiteit is ' AzureMLExecutePipeline ' | Tekenreeks | Ja
-linkedServiceName | Gekoppelde service aan Azure Machine Learning | Verwijzing naar gekoppelde service | Ja
-mlPipelineId | ID van de gepubliceerde Azure Machine Learning pijp lijn | Teken reeks (of expressie met het resultType van de teken reeks) | Ja
-Experimentnaam | Naam van het experiment met de uitvoerings geschiedenis van de Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
-mlPipelineParameters | Sleutel-, waardeparen die moeten worden door gegeven aan het gepubliceerde eind punt van Azure Machine Learning pijplijn. Sleutels moeten overeenkomen met de namen van de pijplijn parameters die in de gepubliceerde Machine Learning pijp lijn zijn gedefinieerd | Object met sleutel waarde-paren (of expressie met het resultType-object) | Nee
-mlParentRunId | De ID van de bovenliggende Azure Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
-continueOnStepFailure | Of de uitvoering van andere stappen in de Machine Learning pijplijn uitvoering moet worden voortgezet als een stap is mislukt | booleaans | Nee
+name | Naam van de activiteit in de pijplijn | Tekenreeks | Ja
+type | Type activiteit is 'AzureMLExecutePipeline' | Tekenreeks | Ja
+linkedServiceName | Gekoppelde service aan Azure Machine Learning | Gekoppelde serviceverwijzing | Ja
+mlPipelineId | ID van de gepubliceerde Azure Machine Learning-pijplijn | Tekenreeks (of expressie met resultaatType van tekenreeks) | Ja
+experimentNaam | De naam van het geschiedenisexperiment van de machine learning-pijplijn uitvoeren | Tekenreeks (of expressie met resultaatType van tekenreeks) | Nee
+mlPipelineParameters | Sleutel, Waardeparen die moeten worden doorgegeven aan het gepubliceerde eindpunt van de Azure Machine Learning-pijplijn. Sleutels moeten overeenkomen met de namen van pijplijnparameters die zijn gedefinieerd in de gepubliceerde Machine Learning-pijplijn | Object met sleutelwaardeparen (of Expressie met resultaatType-object) | Nee
+mlParentRunId | De bovenliggende Azure Machine Learning-pijplijn run-id | Tekenreeks (of expressie met resultaatType van tekenreeks) | Nee
+continueOnStepFailure | Of u de uitvoering van andere stappen in de Machine Learning-pijplijn wilt voortzetten als een stap mislukt | booleaans | Nee
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert:
+Bekijk de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeren:
 
-* [Activiteit gegevens stroom uitvoeren](control-flow-execute-data-flow-activity.md)
+* [Gegevensstroomactiviteit uitvoeren](control-flow-execute-data-flow-activity.md)
 * [U-SQL-activiteit](transform-data-using-data-lake-analytics.md)
-* [Hive-activiteit](transform-data-using-hadoop-hive.md)
-* [Pig-activiteit](transform-data-using-hadoop-pig.md)
-* [MapReduce-activiteit](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
-* [Spark-activiteit](transform-data-using-spark.md)
+* [Hive activiteit](transform-data-using-hadoop-hive.md)
+* [Varkensactiviteit](transform-data-using-hadoop-pig.md)
+* [Activiteit verkleinen](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop Streaming activiteit](transform-data-using-hadoop-streaming.md)
+* [Vonkactiviteit](transform-data-using-spark.md)
 * [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)
+* [Opgeslagen procedureactiviteit](transform-data-using-stored-procedure.md)

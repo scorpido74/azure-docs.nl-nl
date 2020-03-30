@@ -1,5 +1,5 @@
 ---
-title: Console-app met behulp van de API van Azure Cosmos DB voor MongoDB en Golang SDK
+title: Console-app met API van Azure Cosmos DB voor MongoDB en Golang SDK
 description: Biedt een voorbeeld van Golang-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API's voor MongoDB en er query's op uit te voeren.
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75441952"
 ---
-# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstartgids: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstart: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "75441952"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB.
 
 In deze snelstart ziet u hoe u een bestaande, in [Golang](https://golang.org/) geschreven MongoDB-app met behulp van de API van Azure Cosmos DB voor MongoDB kunt verbinden met uw Cosmo-database.
 
@@ -33,7 +33,7 @@ Met andere woorden, uw Golang-toepassing weet alleen dat deze wordt verbonden me
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free) aan voordat u begint. 
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 

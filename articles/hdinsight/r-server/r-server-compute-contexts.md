@@ -1,6 +1,6 @@
 ---
-title: Opties voor Compute-context voor MILLILITERs Services in HDInsight-Azure
-description: Meer informatie over de verschillende berekenings context opties die beschikbaar zijn voor gebruikers met ML Services in HDInsight
+title: Contextopties voor gegevens berekenen voor ML-services op HDInsight - Azure
+description: Meer informatie over de verschillende rekencontextopties die beschikbaar zijn voor gebruikers met ML Services op HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75660253"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Opties voor Compute-context voor MILLILITERs Services in HDInsight
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Contextopties berekenen voor ML Services op HDInsight
 
-De services van ML van Azure HDInsight bepalen hoe aanroepen worden uitgevoerd door de compute-context in te stellen. In dit artikel vindt u een overzicht van de opties die beschikbaar zijn om aan te geven of en hoe uitvoering wordt geevenwijdigd verdeeld over kernen van het Edge-knoop punt of HDInsight-cluster.
+ML Services op Azure HDInsight bepaalt hoe oproepen worden uitgevoerd door de rekencontext in te stellen. In dit artikel worden de opties beschreven die beschikbaar zijn om aan te geven of en hoe de uitvoering wordt parallellopen tussen kernen van het edge-node- of HDInsight-cluster.
 
-Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallel gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server met het Edge-knoop punt. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van RevoScaleR of Apache Spark reken contexten.
+Het randknooppunt van een cluster biedt een handige plek om verbinding te maken met het cluster en uw R-scripts uit te voeren. Met een randknooppunt hebt u de mogelijkheid om de parallelle gedistribueerde functies van RevoScaleR over de kernen van de edge node-server uit te voeren. U ze ook uitvoeren op de knooppunten van het cluster met behulp van RevoScaleR's Hadoop Map Reduce of Apache Spark compute contexten.
 
-## <a name="ml-services-on-azure-hdinsight"></a>ML Services in azure HDInsight
+## <a name="ml-services-on-azure-hdinsight"></a>ML-services op Azure HDInsight
 
-[Ml Services in azure HDInsight](r-server-overview.md) biedt de nieuwste mogelijkheden voor R-gebaseerde analyses. Het kan gebruikmaken van gegevens die zijn opgeslagen in een Apache Hadoop HDFS-container in uw [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") -opslag account, een Data Lake Store of het lokale Linux-bestands systeem. Omdat de services van ML zijn gebouwd op open source R, kunnen de op R gebaseerde toepassingen die u bouwt, een van de 8000 + open source R-pakketten Toep assen. Ze kunnen ook gebruikmaken van de routines in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), het Big Data Analytics-pakket van micro soft dat deel uitmaakt van ml Services.  
+[ML Services op Azure HDInsight](r-server-overview.md) biedt de nieuwste mogelijkheden voor R-gebaseerde analyses. Het kan gegevens gebruiken die zijn opgeslagen in een Apache Hadoop HDFS-container in uw [Azure Blob-opslagaccount,](../../storage/common/storage-introduction.md "Azure Blob Storage") een Data Lake Store of het lokale Linux-bestandssysteem. Aangezien ML Services is gebouwd op open-source R, kunnen de R-gebaseerde applicaties die u bouwt een van de meer dan 8000 open-source R-pakketten toepassen. Ze kunnen ook gebruik maken van de routines in [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), Microsoft's big data analytics pakket dat is opgenomen in ML Services.  
 
-## <a name="compute-contexts-for-an-edge-node"></a>Contexten berekenen voor een Edge-knoop punt
+## <a name="compute-contexts-for-an-edge-node"></a>Contexten berekenen voor een randknooppunt
 
-In het algemeen wordt een R-script dat wordt uitgevoerd in het cluster met MILLILITER Services op het Edge-knoop punt uitgevoerd in de R-interpreter op dat knoop punt. De uitzonde ringen zijn de stappen die de functie RevoScaleR aanroepen. De RevoScaleR-aanroepen worden uitgevoerd in een compute-omgeving die wordt bepaald door de manier waarop u de RevoScaleR-Compute-context instelt.  Wanneer u uw R-script uitvoert vanuit een Edge-knoop punt, zijn de mogelijke waarden van de compute-context:
+In het algemeen wordt een R-script uitgevoerd in het ML Services-cluster op het randknooppunt binnen de R-interpreter op dat knooppunt. De uitzonderingen zijn de stappen die een RevoScaleR-functie aanroepen. De RevoScaleR-aanroepen worden uitgevoerd in een compute-omgeving die wordt bepaald door de manier waarop u de rekencontext RevoScaleR instelt.  Wanneer u uw R-script uitvoert vanaf een randknooppunt, zijn de mogelijke waarden van de rekencontext:
 
-- lokaal sequentieel (*lokaal*)
-- lokaal parallel (*localpar*)
-- Toewijzing verminderen
+- lokale sequentiële (*lokale*)
+- lokale parallel *(localpar)*
+- Kaart verkleinen
 - Spark
 
-De opties *lokaal* en *localpar* zijn alleen van invloed op de manier waarop **rxExec** -aanroepen worden uitgevoerd. Ze voeren beide andere RX-functie aanroepen op parallelle wijze uit voor alle beschik bare kernen, tenzij anders is aangegeven met behulp van de RevoScaleR **numCoresToUse** optie, bijvoorbeeld `rxOptions(numCoresToUse=6)`. Opties voor parallelle uitvoering bieden optimale prestaties.
+De *lokale* en *localpar-opties* verschillen alleen in de manier waarop **rxExec-gesprekken** worden uitgevoerd. Ze voeren beide andere rx-functie aanroepen op een parallelle manier uit in alle beschikbare kernen, tenzij `rxOptions(numCoresToUse=6)`anders gespecificeerd door gebruik te maken van de revoScaleR **numCoresToUse-optie,** bijvoorbeeld . Parallelle uitvoeringsopties bieden optimale prestaties.
 
-De volgende tabel bevat een overzicht van de verschillende opties voor de compute-context om in te stellen hoe aanroepen worden uitgevoerd:
+In de volgende tabel worden de verschillende opties voor de compute-context samengevat om in te stellen hoe oproepen worden uitgevoerd:
 
-| Compute-context  | Hoe instellen                      | Context voor uitvoering                        |
+| Compute-context  | Instellen                      | Context voor uitvoering                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Lokaal sequentieel | rxSetComputeContext('local')    | Parallelle uitvoering in de kernen van de Edge-knooppunt server, met uitzonde ring van rxExec-aanroepen, die serieel worden uitgevoerd |
-| Lokaal parallel   | rxSetComputeContext('localpar') | Parallelle uitvoering in de kernen van de Edge-knooppunt server |
-| Spark            | RxSpark()                       | Gesplitste gedistribueerde uitvoering via Spark over de knoop punten van het HDI-cluster |
-| Toewijzing verminderen       | RxHadoopMR()                    | Gesplitste gedistribueerde uitvoering via kaart reductie over de knoop punten van het HDI-cluster |
+| Lokale sequentiële | rxSetComputeContext('lokaal')    | Parallelle uitvoering over de kernen van de edge node-server, met uitzondering van rxExec-aanroepen, die serieel worden uitgevoerd |
+| Lokale parallel   | rxSetComputeContext('localpar') | Parallelle uitvoering over de kernen van de edge-nodeserver |
+| Spark            | RxSpark()                       | Parallelle gedistribueerde uitvoering via Spark over de knooppunten van het HDI-cluster |
+| Kaart verkleinen       | RxHadoopMR()                    | Parallelle gedistribueerde uitvoering via Map Reduce over de knooppunten van het HDI-cluster |
 
-## <a name="guidelines-for-deciding-on-a-compute-context"></a>Richt lijnen voor het kiezen van een compute-context
+## <a name="guidelines-for-deciding-on-a-compute-context"></a>Richtlijnen voor het bepalen van een rekencontext
 
-Welke van de drie opties die u kiest voor parallelle uitvoering, is afhankelijk van de aard van uw analyse werkzaamheden, de grootte en de locatie van uw gegevens. Er is geen eenvoudige formule die aangeeft welke reken context u moet gebruiken. Er zijn echter enkele leidende principes die u kunnen helpen bij het kiezen van de juiste keuze, of om uw keuzes te beperken voordat u een bench Mark uitvoert. Deze richt lijnen zijn onder andere:
+Welke van de drie opties die u kiest voor parallelle uitvoering, is afhankelijk van de aard van uw analysewerk, de grootte en de locatie van uw gegevens. Er is geen eenvoudige formule die je vertelt welke rekencontext je moet gebruiken. Er zijn echter een aantal leidende principes die u kunnen helpen de juiste keuze te maken, of, op zijn minst, u helpen uw keuzes te beperken voordat u een benchmark uitvoert. Deze leidende principes omvatten:
 
-- Het lokale Linux-bestands systeem is sneller dan HDFS.
+- Het lokale Linux-bestandssysteem is sneller dan HDFS.
 - Herhaalde analyses zijn sneller als de gegevens lokaal zijn en als deze zich in XDF bevinden.
-- Het is raadzaam om kleine hoeveel heden gegevens uit een tekst gegevens bron te streamen. Als de hoeveelheid gegevens groter is, converteert u deze naar XDF vóór analyse.
-- De overhead voor het kopiëren of streamen van gegevens naar het Edge-knoop punt voor analyse wordt onbeheerbaar voor zeer grote hoeveel heden gegevens.
-- ApacheSpark is sneller dan toewijzings reductie voor analyse in Hadoop.
+- Het is beter om kleine hoeveelheden gegevens te streamen van een tekstgegevensbron. Als de hoeveelheid gegevens groter is, converteert u deze naar XDF voordat deze wordt geanalyseerd.
+- De overhead van het kopiëren of streamen van de gegevens naar het randknooppunt voor analyse wordt onhandelbaar voor zeer grote hoeveelheden gegevens.
+- ApacheSpark is sneller dan Map Reduce voor analyse in Hadoop.
 
-Op basis van deze principes bieden de volgende secties enkele algemene vuist regels voor het selecteren van een compute-context.
+Gezien deze principes bieden de volgende secties een aantal algemene vuistregels voor het selecteren van een rekencontext.
 
 ### <a name="local"></a>Lokaal
 
-- Als de hoeveelheid gegevens die moet worden geanalyseerd klein is en er geen herhaalde analyse nodig is, kunt u deze rechtstreeks naar de analyse routine streamen met behulp van *lokale* of *localpar*.
-- Als de hoeveelheid gegevens die moet worden geanalyseerd, klein of middel groot is en herhaalde analyse vereist is, kopieert u deze naar het lokale bestands systeem, importeert u het naar XDF en analyseert u deze via *lokale* of *localpar*.
+- Als de hoeveelheid te analyseren gegevens klein is en geen herhaalde analyse vereist, stream deze dan rechtstreeks naar de analyseroutine met behulp van *lokale* of *localpar.*
+- Als de hoeveelheid gegevens die moet worden geanalyseerd klein of middelgroot is en herhaalde analyse vereist, kopieert u deze naar het lokale bestandssysteem, importeert u deze naar XDF en analyseert u deze via *lokale* of *lokale par.*
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Als de hoeveelheid gegevens die moet worden geanalyseerd groot is, kunt u deze in een Spark-data frame importeren met **RxHiveData** of **RxParquetData**, of naar XDF in HDFS (tenzij opslag een probleem is) en deze analyseren met behulp van de Spark-Compute-context.
+- Als de hoeveelheid te analyseren gegevens groot is, importeer deze dan naar een Spark DataFrame met **RxHiveData** of **RxParquetData**of naar XDF in HDFS (tenzij opslag een probleem is) en analyseer deze met behulp van de Spark-compute-context.
 
-### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop toewijzing verminderen
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Kaart verminderen
 
-- Gebruik de alleen Compute-context van de kaart als u een insurmountable-probleem ondervindt met de Spark Compute-context, omdat deze in het algemeen langzamer is.  
+- Gebruik de map Reduce compute context alleen als u een onoverkomelijk probleem tegenkomt met de Spark compute-context, omdat deze over het algemeen langzamer is.  
 
-## <a name="inline-help-on-rxsetcomputecontext"></a>Inline-Help op rxSetComputeContext
-Voor meer informatie en voor beelden van RevoScaleR Compute-contexten, zie de inline-Help in R in de rxSetComputeContext-methode, bijvoorbeeld:
+## <a name="inline-help-on-rxsetcomputecontext"></a>Inline help op rxSetComputeContext
+Zie voor meer informatie en voorbeelden van RevoScaleR-rekencontexten de inline help in R op de rxSetComputeContext-methode, bijvoorbeeld:
 
     > ?rxSetComputeContext
 
-U kunt ook het overzicht van [gedistribueerde computers](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in [machine learning Server documentatie](https://docs.microsoft.com/machine-learning-server/)raadplegen.
+U ook verwijzen naar het [overzicht van Distributed computing](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in machine learning [server-documentatie.](https://docs.microsoft.com/machine-learning-server/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de beschik bare opties om op te geven of en hoe uitvoering wordt geevenwijdigd verdeeld over kernen van het Edge-knoop punt of HDInsight-cluster. Zie de volgende onderwerpen voor meer informatie over het gebruik van ML-Services met HDInsight-clusters:
+In dit artikel hebt u meer te weten gekomen over de opties die beschikbaar zijn om aan te geven of en hoe de uitvoering wordt parallellopen tussen kernen van het cluster randknooppunt of HDInsight. Zie de volgende onderwerpen voor meer informatie over het gebruik van ML-services met HDInsight-clusters:
 
 - [Overzicht van ML Services voor Apache Hadoop](r-server-overview.md)
-- [Azure Storage opties voor de services van MILLILITERs in HDInsight](r-server-storage.md)
+- [Azure-opslagopties voor ML-services op HDInsight](r-server-storage.md)

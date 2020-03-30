@@ -10,10 +10,10 @@ ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
 ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76122199"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Kiezen tussen berichtenservices van Azure - Event Grid, Event Hubs en Service Bus
@@ -21,8 +21,8 @@ ms.locfileid: "76122199"
 Azure beschikt over drie services die u helpen met het bezorgen van de gebeurtenisberichten binnen een oplossing. Deze services zijn:
 
 * [Event Grid](/azure/event-grid/)
-* [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Gebeurtenishubs](/azure/event-hubs/)
+* [Servicebus](/azure/service-bus-messaging/)
 
 Hoewel ze een aantal overeenkomsten hebben, is elke service ontworpen voor specifieke scenario's. In dit artikel worden de verschillen tussen deze services beschreven en wordt uitgelegd welke voor uw toepassing het meest geschikt is. In veel gevallen zijn de berichtenservices aanvullend en kunnen ze samen worden gebruikt.
 
@@ -58,7 +58,7 @@ Event Grid is in grote mate geïntegreerd met Azure-services en kan worden geïn
 
 Event Grid biedt ondersteuning voor plaatsing in wachtrij voor onbestelbare berichten voor gebeurtenissen die niet zijn bezorgd bij een eindpunt.
 
-Deze functie heeft de volgende kenmerken:
+Het heeft de volgende kenmerken:
 
 * dynamisch schaalbaar
 * lage kosten
@@ -69,7 +69,7 @@ Deze functie heeft de volgende kenmerken:
 
 Azure Event Hubs is een Big Data-pijplijn. Het vereenvoudigt het vastleggen, bewaren en opnieuw afspelen van telemetrie- en gebeurtenisstroomgegevens. De gegevens kunnen afkomstig zijn van veel gelijktijdige bronnen. Dankzij Event Hubs kunnen telemetrie- en gebeurtenisgegevens beschikbaar worden gesteld aan diverse stroomverwerkingsinfrastructuren en analyseservices. De gegevens zijn beschikbaar als gegevensstromen of gebundelde gebeurtenisbatches. Deze service biedt één oplossing waarmee u snel gegevens kunt ophalen voor realtime verwerking, maar ook voor het herhaaldelijk afspelen van opgeslagen onbewerkte gegevens. Hiermee kunnen de streaminggegevens voor verwerking en analyse worden vastgelegd in een bestand.
 
-Deze functie heeft de volgende kenmerken:
+Het heeft de volgende kenmerken:
 
 * lage latentie
 * kan miljoenen gebeurtenissen per seconde ontvangen en verwerken
@@ -77,11 +77,11 @@ Deze functie heeft de volgende kenmerken:
 
 ### <a name="service-bus"></a>Service Bus
 
-Service Bus is bedoeld voor traditionele bedrijfstoepassingen. Deze bedrijfstoepassingen hebben transacties, bestellingen, detectie van duplicaten en onmiddellijk consistentie nodig. Met Service Bus kunnen [cloudsysteemeigen](https://azure.microsoft.com/overview/cloudnative/) toepassingen betrouwbaar statusovergangsbeheer bieden voor bedrijfsprocessen. Gebruik Azure Service Bus bij de afhandeling van hoogwaardige berichten die niet verloren mogen gaan of gedupliceerd mogen worden. Service Bus vergemakkelijkt ook uitermate beveiligde communicatie tussen hybride cloudoplossingen en kan bestaande on-premises systemen verbinden met cloudoplossingen.
+Service Bus is bedoeld voor traditionele bedrijfstoepassingen. Deze bedrijfstoepassingen hebben transacties, bestellingen, detectie van duplicaten en onmiddellijk consistentie nodig. Service Bus stelt [cloud-native](https://azure.microsoft.com/overview/cloudnative/) applicaties in staat om betrouwbaar state transition management te bieden voor bedrijfsprocessen. Gebruik Azure Service Bus bij de afhandeling van hoogwaardige berichten die niet verloren mogen gaan of gedupliceerd mogen worden. Service Bus vergemakkelijkt ook uitermate beveiligde communicatie tussen hybride cloudoplossingen en kan bestaande on-premises systemen verbinden met cloudoplossingen.
 
 Service Bus is een Brokered Messaging-systeem. Het slaat berichten op in een 'broker' (bijvoorbeeld een wachtrij) tot de ontvangende partij gereed is om ze te ontvangen.
 
-Deze functie heeft de volgende kenmerken:
+Het heeft de volgende kenmerken:
 
 * betrouwbare asynchrone levering van berichten (enterprise messaging als een service) waarvoor polling is vereist
 * geavanceerde berichtfuncties, zoals FIFO, batchverwerking/sessies, transacties, verwerking van onbestelbare berichten, tijdelijke controle, doorsturen en filteren en detectie van duplicaten
@@ -90,7 +90,7 @@ Deze functie heeft de volgende kenmerken:
 
 ## <a name="use-the-services-together"></a>De services samen gebruiken
 
-In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Een e-commerce-site kan bijvoorbeeld Service Bus gebruiken om de volg orde te verwerken, Event Hubs voor het vastleggen van de telemetrie van de site en Event Grid om te reageren op gebeurtenissen zoals een item dat is verzonden.
+In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Een e-commercesite kan bijvoorbeeld Service Bus gebruiken om de bestelling te verwerken, Gebeurtenishubs om sitetelemetrie vast te leggen en Event Grid om te reageren op gebeurtenissen zoals een item is verzonden.
 
 In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te vormen. U gebruikt Event Grid om te reageren op gebeurtenissen in de andere services. Zie [Stream big data into a data warehouse](event-grid-event-hubs-integration.md) (Big Data streamen naar een data warehouse) voor een voorbeeld van het gebruik van Event Grid met Event Hubs om gegevens te migreren naar een datawarehouse. In de volgende afbeelding ziet u de werkstroom voor het streamen van de gegevens.
 
@@ -98,7 +98,7 @@ In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
-- [Opties voor asynchrone berichten in azure](/azure/architecture/guide/technology-choices/messaging)
+- [Asynchrone berichtenopties in Azure](/azure/architecture/guide/technology-choices/messaging)
 - [Gebeurtenissen, gegevenspunten en berichten - De juiste Azure-berichtenservice voor uw gegevens kiezen](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Storage Queues and Service Bus Queues - Compared and Contrasted](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) (Storage-wachtrijen en Service Bus-wachtrijen: overeenkomsten en verschillen)
 - Zie [Aangepaste gebeurtenissen maken en routeren met behulp van Azure Event Grid](custom-event-quickstart.md) om aan de slag te gaan met Event Grid.

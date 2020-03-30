@@ -1,5 +1,5 @@
 ---
-title: Wat is B2B-samen werking in Azure Active Directory?
+title: Wat is B2B-samenwerking in Azure Active Directory?
 description: Azure Active Directory B2B-samenwerking ondersteunt gastgebruikerstoegang, zodat u veilig resources kunt delen en samenwerken met externe partners.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ccfb4719d14d0ce73caf093c5fe63631eda2a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195212"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050728"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Wat is gastgebruikerstoegang in Azure Active Directory B2B?
 
@@ -29,6 +29,9 @@ De volgende video biedt een handig overzicht.
 
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
+   > [!IMPORTANT]
+   > **Vanaf 31 maart 2021**ondersteunt Microsoft niet langer het inwisselen van uitnodigingen door onbeheerde Azure AD-accounts en tenants te maken voor B2B-samenwerkingsscenario's. Ter voorbereiding moedigen we klanten aan om te kiezen voor [eenmalige wachtwoordverificatie voor e-mail.](one-time-passcode.md) We zijn blij met uw feedback over deze openbare preview-functie en zijn verheugd om nog meer manieren te creëren om samen te werken.
+
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Samenwerken met een partner met behulp van hun identiteit
 
 Met Azure AD B2B gebruikt de partner hun eigen oplossing voor identiteitsbeheer, zonder externe administratieve overhead voor uw organisatie.
@@ -37,7 +40,7 @@ Met Azure AD B2B gebruikt de partner hun eigen oplossing voor identiteitsbeheer,
 - U hoeft te beheren externe accounts of wachtwoorden.
 - U hoeft accounts niet te synchroniseren of account levenscycli niet te beheren.  
 
-![Scherm opname met de pagina leden toevoegen](media/what-is-b2b/add-member.png)
+![Schermafbeelding van de pagina Leden toevoegen](media/what-is-b2b/add-member.png)
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Uitnodigen van gastgebruikers met een eenvoudige uitnodiging en inwisselproces
 
@@ -47,17 +50,17 @@ Gastgebruikers melden zich met hun eigen werk-, school- of sociale identiteiten 
 - Stuur een directe koppeling naar een app of een uitnodiging naar het toegangsvenster van de gastgebruiker.
 - Gastgebruikers volgen een paar eenvoudige inwisselstappen om zich aan te melden.
 
-![Scherm opname met de pagina Machtigingen controleren](media/what-is-b2b/consentscreen.png)
+![Schermafbeelding van de pagina Machtigingen controleren](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Gebruik beleidsrichtlijnen voor het veilig delen van uw apps en services
 
-U kunt autorisatie beleid gebruiken om uw bedrijfs inhoud te beschermen. Beleids regels voor voorwaardelijke toegang, zoals multi-factor Authentication, kunnen worden afgedwongen:
+U autorisatiebeleid gebruiken om uw bedrijfsinhoud te beschermen. Beleid voor voorwaardelijke toegang, zoals meervoudige verificatie, kan worden afgedwongen:
 
 - Op tenantniveau.
 - Op toepassingsniveau.
 - Voor specifieke gastgebruikers om zakelijke apps en gegevens te beschermen.
 
-![Scherm afbeelding van de optie voorwaardelijke toegang](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![Schermafbeelding van de optie Voorwaardelijke toegang](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Gastgebruikers eenvoudig toevoegen in de Azure AD portal
@@ -68,7 +71,7 @@ Als beheerder kunt u eenvoudig gastgebruikers toevoegen aan uw organisatie in de
 - De gastgebruiker ontvangt onmiddellijk een aangepaste uitnodiging waarmee ze aanmelden bij hun Toegangsvenster.
 - Gastgebruikers in de map kunnen aan apps of groepen worden toegewezen.  
 
-![Scherm opname van de pagina met de nieuwe uitnodiging voor gast gebruikers](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
+![Schermafbeelding van de pagina Uitnodiging voor nieuwe gastgebruiker](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Toepassings- en groepseigenaars toestaan om hun eigen gastgebruikers te beheren
 
@@ -77,14 +80,14 @@ U kunt beheer van gastgebruikers overdragen aan toepassingseigenaars zodat ze ga
 - Administrators stellen selfservice app en groepsbeheer in.
 - Niet-administrators gebruiken hun [Toegangsvenster](https://myapps.microsoft.com) om gastgebruikers aan toepassingen of groepen toe te voegen.
 
-![Scherm opname van het toegangs venster voor een gast gebruiker](media/what-is-b2b/access-panel-manage-app.png)
+![Schermafbeelding van het deelvenster Access voor een gastgebruiker](media/what-is-b2b/access-panel-manage-app.png)
 
-## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>De voorbereidings ervaring voor B2B-gast gebruikers aanpassen
+## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>Pas de onboarding-ervaring aan voor B2B-gastgebruikers
 
 Breng uw externe partners aan boord op manieren die zijn aangepast aan de behoeften van uw organisatie.
 
-- Gebruik het [beheer recht van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) om beleids regels te configureren die [toegang beheren voor externe gebruikers](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
-- Gebruik de [api's voor B2B-samen werking](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) om uw onboarding-ervaringen aan te passen.
+- Gebruik [Azure AD-rechtenbeheer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) om beleidsregels te configureren waarmee [de toegang voor externe gebruikers wordt beheerd.](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)
+- Gebruik de [APU's voor uitnodigingen voor B2B-samenwerkingsuitnodigingen](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) om uw onboarding-ervaringen aan te passen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

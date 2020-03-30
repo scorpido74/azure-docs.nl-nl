@@ -1,6 +1,6 @@
 ---
-title: On-premises AlwaysOn-beschikbaarheids groepen uitbreiden naar Azure | Microsoft Docs
-description: In deze zelf studie wordt gebruikgemaakt van resources die zijn gemaakt met het klassieke implementatie model, en wordt beschreven hoe u de wizard replica toevoegen in SQL Server Management Studio (SSMS) gebruikt om een AlwaysOn-beschikbaarheids groep replica in azure toe te voegen.
+title: On-premises always on availability-groepen uitbreiden naar Azure | Microsoft Documenten
+description: In deze zelfstudie worden resources gebruikt die zijn gemaakt met het klassieke implementatiemodel en wordt beschreven hoe u de wizard Replica toevoegen in SQL Server Management Studio (SSMS) gebruiken om een replica voor beschikbaarheid always on beschikbaarheid toe te voegen in Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,82 +15,82 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978050"
 ---
-# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>On-premises AlwaysOn-beschikbaarheids groepen uitbreiden naar Azure
-AlwaysOn-beschikbaarheids groepen bieden een hoge Beschik baarheid voor groepen data base door secundaire replica's toe te voegen. Met deze replica's kunnen data bases mislukken bij een storing. Daarnaast kunnen ze worden gebruikt voor het offloaden van Lees-workloads of back-uptaken.
+# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>On-premises AlwaysOn-beschikbaarheidsgroepen uitbreiden naar Azure
+Always On Availability Groepen bieden een hoge beschikbaarheid voor groepen database door secundaire replica's toe te voegen. Deze replica's kunnen mislukken over databases in het geval van een storing. Daarnaast kunnen ze worden gebruikt om leesworkloads of back-uptaken te ontladen.
 
-U kunt on-premises beschikbaarheids groepen uitbreiden naar Microsoft Azure door een of meer virtuele Azure-machines in te richten met SQL Server en ze vervolgens als replica's toe te voegen aan uw on-premises beschikbaarheids groepen.
+U on-premises beschikbaarheidsgroepen uitbreiden naar Microsoft Azure door een of meer Azure VM's in te richten op SQL Server en deze vervolgens toe te voegen als replica's aan uw on-premises beschikbaarheidsgroepen.
 
-In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
+In deze zelfstudie wordt ervan uitgegaan dat u het volgende hebt:
 
-* Een actief Azure-abonnement. U kunt [zich registreren voor een gratis proef versie](https://azure.microsoft.com/pricing/free-trial/).
-* Een bestaande AlwaysOn-beschikbaarheids groep on-premises. Zie AlwaysOn [Availability groups](https://msdn.microsoft.com/library/hh510230.aspx)(AlwaysOn-beschikbaarheids groepen) voor meer informatie over beschikbaarheids groepen.
-* Connectiviteit tussen het on-premises netwerk en uw virtuele Azure-netwerk. Zie [een site-naar-site-verbinding maken met behulp van de Azure Portal (klassiek)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)voor meer informatie over het maken van dit virtuele netwerk.
+* Een actief Azure-abonnement. U [zich aanmelden voor een gratis proefperiode.](https://azure.microsoft.com/pricing/free-trial/)
+* Een bestaande Always On Availability Group on-premises. Zie Beschikbaarheidsgroepen altijd op beschikbaarheid voor meer informatie over [beschikbaarheidsgroepen.](https://msdn.microsoft.com/library/hh510230.aspx)
+* Connectiviteit tussen het on-premises netwerk en uw virtuele Azure-netwerk. Zie [Een site-to-site-verbinding maken met de Azure-portal (klassiek)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)voor meer informatie over het maken van dit virtuele netwerk.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatiemodellen voor het maken en werken met resources: [Resource Manager en Classic.](../../../azure-resource-manager/management/deployment-models.md) In dit artikel wordt het implementatiemodel Classic gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
-## <a name="add-azure-replica-wizard"></a>Wizard Azure replica toevoegen
-In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebruikt om uw oplossing voor AlwaysOn-beschikbaarheids groepen uit te breiden om Azure-replica's te omvatten.
+## <a name="add-azure-replica-wizard"></a>Wizard Azure Replica toevoegen
+In deze sectie ziet u hoe u de **wizard Azure Replica toevoegen** gebruiken om de oplossing Always On Availability Group uit te breiden met Azure-replica's.
 
 > [!IMPORTANT]
-> De **wizard Azure replica toevoegen** ondersteunt alleen virtuele machines die zijn gemaakt met het klassieke implementatie model. Nieuwe VM-implementaties moeten het nieuwere Resource Manager-model gebruiken. Als u Vm's gebruikt met Resource Manager, moet u de secundaire Azure-replica hand matig toevoegen met behulp van Transact-SQL-opdrachten (deze worden hier niet weer gegeven). Deze wizard werkt niet in het Resource Manager-scenario.
+> De **wizard Azure replica toevoegen** ondersteunt alleen virtuele machines die zijn gemaakt met het klassieke implementatiemodel. Nieuwe VM-implementaties moeten het nieuwere Resource Manager-model gebruiken. Als u VM's met Resource Manager gebruikt, moet u de secundaire Azure-replica handmatig toevoegen met transact-SQL-opdrachten (hier niet weergegeven). Deze wizard werkt niet in het resourcebeheerscenario.
 
-1. Vouw in SQL Server Management Studio altijd > **beschikbaarheids groepen** met **hoge beschik baarheid** >  **[naam van uw beschikbaarheids groep]** uit.
-2. Klik met de rechter muisknop op **beschikbaarheids replica's**en klik vervolgens op **replica toevoegen**.
-3. Standaard wordt de **wizard replica toevoegen aan beschikbaarheids groep** weer gegeven. Klik op **Volgende**.  Als u de optie **Deze pagina niet opnieuw weer geven** onder aan de pagina hebt geselecteerd tijdens een vorige keer dat deze wizard wordt gestart, wordt dit scherm niet weer gegeven.
+1. Vanuit SQL Server Management Studio u **always on high availability** > **groups** > **[Name of your Availability Group]** uitbreiden.
+2. Klik met de rechtermuisknop op **Replica's voor beschikbaarheid**en klik vervolgens op **Replica toevoegen**.
+3. Standaard wordt de **wizard Replica toevoegen aan beschikbaarheidsgroep** weergegeven. Klik op **Volgende**.  Als u de optie **Deze pagina niet opnieuw weergeven** onder aan de pagina hebt geselecteerd tijdens een eerdere lancering van deze wizard, wordt dit scherm niet weergegeven.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
-4. U moet verbinding maken met alle bestaande secundaire replica's. U kunt klikken op **verbinden...** naast elke replica kunt u klikken op **verbinding maken...** onder aan het scherm. Klik na de verificatie op **volgende** om naar het volgende scherm te gaan.
-5. Op de pagina **Replica's opgeven** worden meerdere tabbladen bovenaan weer gegeven: **replica's**, **eind punten**, **back-upvoorkeuren**en **listener**. Klik op het tabblad **replica's** op **Azure replica toevoegen...** om de wizard Azure replica toevoegen te starten.
+4. U moet verbinding maken met alle bestaande secundaire replica's. U klikken op **Connect...** naast elke replica of u klikken **Op Alle verbinden ...** aan de onderkant van het scherm. Klik na verificatie op **Volgende** om door te gaan naar het volgende scherm.
+5. Op de pagina **Replica's opgeven** worden meerdere tabbladen bovenaan weergegeven: **replica's,** **eindpunten,** **back-upvoorkeuren**en **listener**. Klik op het tabblad **Replica's** op **Azure Replica toevoegen...** om de wizard Azure replica toevoegen te starten.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
-6. Selecteer een bestaand Azure-beheer certificaat in het lokale Windows-certificaat archief als u er een hebt geïnstalleerd. Selecteer of typ de id van een Azure-abonnement als u er een hebt gebruikt. U kunt klikken op downloaden om een Azure-beheer certificaat te downloaden en te installeren en de lijst met abonnementen te downloaden met behulp van een Azure-account.
+6. Selecteer een bestaand Azure Management Certificate in het lokale Windows-certificaatarchief als u er al eerder een hebt geïnstalleerd. Selecteer of voer de id van een Azure-abonnement in als u er al eerder een hebt gebruikt. U op Downloaden klikken om een Azure Management Certificate te downloaden en te installeren en de lijst met abonnementen te downloaden met een Azure-account.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
-7. U vult elk veld op de pagina met waarden die worden gebruikt voor het maken van de virtuele Azure-machine (VM) die als host moet fungeren voor de replica.
+7. U vult elk veld op de pagina met waarden die worden gebruikt om de Azure Virtual Machine (VM) te maken die de replica host.
    
    | Instelling | Beschrijving |
    | --- | --- |
-   | **Installatiekopie** |Selecteer de gewenste combi natie van besturings systeem en SQL Server |
-   | **VM-grootte** |Selecteer de grootte van de virtuele machine die het beste past bij uw bedrijfs behoeften |
-   | **VM-naam** |Geef een unieke naam op voor de nieuwe virtuele machine. De naam moet tussen de 3 en 15 tekens bevatten, mag alleen letters, cijfers en afbreek streepjes bevatten en moet beginnen met een letter en eindigen op een letter of cijfer. |
-   | **VM-gebruikers naam** |Geef een gebruikers naam op die het Administrator-account wordt op de VM |
-   | **Beheerders wachtwoord voor de VM** |Geef een wacht woord op voor het nieuwe account |
-   | **Wacht woord bevestigen** |Bevestig het wacht woord van het nieuwe account |
-   | **Virtueel netwerk** |Geef het virtuele netwerk van Azure op dat door de nieuwe virtuele machine moet worden gebruikt. Zie [Virtual Network Overview](../../../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele netwerken. |
-   | **Virtual Network subnet** |Geef het subnet van het virtuele netwerk op dat door de nieuwe virtuele machine moet worden gebruikt |
-   | **Domein** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
-   | **Domein gebruikers naam** |Geef een account op dat zich in de lokale groep Administrators op de knoop punten van het lokale cluster bevindt |
-   | **Wachtwoord** |Geef het wacht woord voor de gebruikers naam van het domein op |
+   | **Afbeelding** |Selecteer de gewenste combinatie van OS en SQL Server |
+   | **VM-grootte** |Selecteer de grootte van VM die het beste past bij uw bedrijfsbehoeften |
+   | **VM-naam** |Geef een unieke naam op voor de nieuwe virtuele machine. De naam moet tussen de 3 en 15 tekens bevatten, mag alleen letters, cijfers en koppeltekens bevatten en moet beginnen met een letter en eindigen met een letter of getal. |
+   | **VM-gebruikersnaam** |Een gebruikersnaam opgeven die het beheerdersaccount op de VM wordt |
+   | **VM-beheerderswachtwoord** |Een wachtwoord opgeven voor het nieuwe account |
+   | **Wachtwoord bevestigen** |Het wachtwoord van het nieuwe account bevestigen |
+   | **Virtueel netwerk** |Geef het virtuele Azure-netwerk op dat de nieuwe virtuele machine moet gebruiken. Zie Overzicht van virtueel [netwerk voor](../../../virtual-network/virtual-networks-overview.md)meer informatie over virtuele netwerken. |
+   | **Subnet voor virtueel netwerk** |Specify the virtual network subnet that the new VM should use |
+   | **Domain** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
+   | **Domeinnaam domein** |Een account opgeven dat zich in de groep lokale beheerders op de lokale clusterknooppunten bevindt |
+   | **Wachtwoord** |Het wachtwoord voor de domeinnaam opgeven |
 8. Klik op **OK** om de implementatie-instellingen te valideren.
-9. De juridische voor waarden worden weer gegeven volgende. Lees en klik op **OK** als u akkoord gaat met deze voor waarden.
-10. De pagina **Replica's opgeven** wordt opnieuw weer gegeven. Controleer de instellingen voor de nieuwe Azure-replica op de tabbladen **replica's**, **eind punten**en **back-up** . Wijzig de instellingen om te voldoen aan uw bedrijfs vereisten.  Zie voor meer informatie over de para meters op deze tabbladen de [pagina Replica's opgeven (wizard Nieuwe beschikbaarheids groep/add replica)](https://msdn.microsoft.com/library/hh213088.aspx). Houd er rekening mee dat listeners niet kunnen worden gemaakt met behulp van het tabblad listener voor beschikbaarheids groepen die Azure-replica's bevatten. Als er al een listener is gemaakt voordat de wizard werd gestart, ontvangt u een bericht dat aangeeft dat het niet wordt ondersteund in Azure. We gaan kijken hoe u listeners maakt in het gedeelte **een listener voor een beschikbaarheids groep maken** .
+9. De volgende wettelijke voorwaarden worden weergegeven. Lees en klik op **OK** als u akkoord gaat met deze voorwaarden.
+10. De pagina **Replica's opgeven** wordt opnieuw weergegeven. Controleer de instellingen voor de nieuwe Azure-replica op de tabbladen **Replica's,** **Eindpunten**en **Back-upvoorkeuren.** Wijzig instellingen om aan uw bedrijfsvereisten te voldoen.  Zie [Replicapagina opgeven (wizard Nieuwe beschikbaarheidsgroep/replica toevoegen) voor](https://msdn.microsoft.com/library/hh213088.aspx)meer informatie over de parameters op deze tabbladen. Houd er rekening mee dat listeners niet kunnen worden gemaakt met het tabblad Listener voor beschikbaarheidsgroepen die Azure-replica's bevatten. Als er bovendien al een listener is gemaakt voordat de wizard wordt gestart, ontvangt u een bericht dat deze niet wordt ondersteund in Azure. We bekijken hoe we luisteraars kunnen maken in de sectie **Een beschikbaarheidsgroeplistener maken.**
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. Klik op **Volgende**.
-12. Selecteer de gegevens synchronisatie methode die u wilt gebruiken op de pagina **eerste gegevens synchronisatie selecteren** en klik op **volgende**. Selecteer voor de meeste scenario's **volledige gegevens synchronisatie**. Zie voor meer informatie over de methoden voor gegevens synchronisatie de [optie eerste gegevens synchronisatie selecteren (AlwaysOn wizards voor beschikbaarheids groepen)](https://msdn.microsoft.com/library/hh231021.aspx).
-13. Bekijk de resultaten op de pagina **validatie** . Corrigeer openstaande problemen en voer indien nodig de validatie opnieuw uit. Klik op **Volgende**.
+12. Selecteer de methode voor gegevenssynchronisatie die u wilt gebruiken op de pagina **Initiële gegevenssynchronisatie selecteren** en klik op **Volgende**. Selecteer voor de meeste scenario's **Volledige gegevenssynchronisatie**. Zie [Pagina Voor initiële gegevenssynchronisatieselecteren (Wizards Altijd op beschikbaarheidgroep) voor](https://msdn.microsoft.com/library/hh231021.aspx)meer informatie over gegevenssynchronisatiemethoden.
+13. Bekijk de resultaten op de **pagina Validatie.** Corrigeer openstaande problemen en voer de validatie indien nodig opnieuw uit. Klik op **Volgende**.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
-14. Controleer de instellingen op de pagina **samen vatting** en klik vervolgens op **volt ooien**.
-15. Het inrichtings proces begint. Wanneer de wizard is voltooid, klikt u op **sluiten** om de wizard af te sluiten.
+14. Controleer de instellingen op de **pagina Overzicht** en klik op **Voltooien**.
+15. Het inrichtingsproces begint. Wanneer de wizard is voltooid, klikt u op **Sluiten** om de wizard af te sluiten.
 
 > [!NOTE]
-> Met de wizard Azure replica toevoegen maakt u een logboek bestand in Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. Dit logboek bestand kan worden gebruikt om problemen met mislukte Azure replica-implementaties op te lossen. Als de wizard geen actie uitvoert, worden alle vorige bewerkingen teruggedraaid, inclusief het verwijderen van de ingerichte VM.
+> Met de wizard Azure Replica toevoegen wordt een logboekbestand gemaakt in Gebruikers\Gebruikersnaam\AppData\Lokaal\SQL Server\AddReplicaWizard. Dit logboekbestand kan worden gebruikt om mislukte Azure-replica-implementaties op te lossen. Als de wizard geen actie uitvoert, worden alle eerdere bewerkingen teruggedraaid, inclusief het verwijderen van de ingerichte vm.
 > 
 > 
 
-## <a name="create-an-availability-group-listener"></a>Een listener voor een beschikbaarheids groep maken
-Nadat de beschikbaarheids groep is gemaakt, maakt u een listener voor clients om verbinding te maken met de replica's. Listeners sturen binnenkomende verbindingen naar de primaire of een alleen-lezen secundaire replica. Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](../classic/ps-sql-int-listener.md)voor meer informatie over listeners.
+## <a name="create-an-availability-group-listener"></a>Een authenticiteitsgroeplistener maken
+Nadat de beschikbaarheidsgroep is gemaakt, moet u een listener maken voor clients om verbinding te maken met de replica's. Listeners sturen binnenkomende verbindingen naar de primaire of een alleen-lezen secundaire replica. Zie [Een ILB-listener configureren voor Always On Availability Groups in Azure](../classic/ps-sql-int-listener.md)voor meer informatie over luisteraars.
 
 ## <a name="next-steps"></a>Volgende stappen
-Naast het gebruik van de **wizard Azure replica toevoegen** om uw AlwaysOn-beschikbaarheids groep uit te breiden naar Azure, kunt u ook enkele SQL Server workloads volledig naar Azure verplaatsen. Zie [een SQL Server virtuele machine inrichten in azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)om aan de slag te gaan.
+Naast het gebruik van de **wizard Azure Replica toevoegen** om uw groep voor beschikbaarheid always on uit te breiden naar Azure, u sommige SQL Server-workloads ook volledig naar Azure verplaatsen. Zie [Een SQL Server Virtual Machine inrichten op Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)om aan de slag te gaan.
 
-Zie [SQL Server op azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
+Zie [SQL Server op Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in Azure VM's.
 

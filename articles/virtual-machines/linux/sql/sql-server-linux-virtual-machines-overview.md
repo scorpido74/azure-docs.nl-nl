@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70081955"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
@@ -29,14 +29,14 @@ Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server
 
 Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen.
 
-## <a id="create"></a>Aan de slag met VM's voor SQL
+## <a name="get-started-with-sql-vms"></a><a id="create"></a>Aan de slag met SQL VM's
 
 Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine voor SQL Server met de vereiste versie, de vereiste editie en het vereiste besturingssysteem. De volgende gedeelten bevatten directe koppelingen naar Azure Portal voor de galerie met installatiekopieën van virtuele SQL Server-machines.
 
 > [!TIP]
 > Zie [de prijzenpagina voor virtuele Linux-machines met SQL Server](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) voor informatie over de prijzen voor SQL-installatiekopieën.
 
-| Version | Besturingssysteem | Editie |
+| Versie | Besturingssysteem | Editie |
 | --- | --- | --- |
 | **SQL Server 2017** | Red Hat Enterprise Linux (RHEL) 7.4 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74) |
 | **SQL Server 2017** | SUSE Linux Enterprise Server (SLES) v12 SP2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2) |
@@ -45,7 +45,7 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 > [!NOTE]
 > Zie [Overzicht van SQL Server op virtuele Azure-machines (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) voor de beschikbare installatiekopieën van SQL Server voor virtuele Windows-machines.
 
-## <a id="packages"></a> Geïnstalleerde pakketten
+## <a name="installed-packages"></a><a id="packages"></a> Geïnstalleerde pakketten
 
 Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pakket en vervolgens verschillende optionele pakketten afhankelijk van uw vereisten. De installatiekopieën van SQL Server voor de virtuele Linux-machines installeren de meeste pakketten automatisch voor u. De volgende tabel laat zien welke pakketten zijn geïnstalleerd voor elke distributie.
 
@@ -67,7 +67,7 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 
 ### <a name="networking"></a>Netwerken
 
-* [Overzicht van Virtual Network](../../../virtual-network/virtual-networks-overview.md)
+* [Overzicht van virtueel netwerk](../../../virtual-network/virtual-networks-overview.md)
 * [IP-adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](../portal-create-fqdn.md)
 

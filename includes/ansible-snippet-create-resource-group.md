@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: 3b2faa3fe095366e0868937220d464b76b1f070d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67176052"
 ---
 1. Maak in Cloud Shell een bestand met de naam `rg.yml`.
@@ -35,13 +35,13 @@ ms.locfileid: "67176052"
 
 1. Sla het bestand op en sluit de editor af.
 
-1. Voer de playbook met behulp de `ansible-playbook` opdracht:
+1. Voer de playbook `ansible-playbook` uit met de opdracht:
 
    ```bash
    ansible-playbook rg.yml
    ```
 
-Nadat de playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```output
 PLAY [localhost] *********************************************************************************

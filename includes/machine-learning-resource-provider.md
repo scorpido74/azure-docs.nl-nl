@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: larryfr
 ms.openlocfilehash: 8fd774f8a3a73ceaffa7902b35e1b1dff12ef5af
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75893977"
 ---
-Wanneer u een Azure Machine Learning werk ruimte maakt of een resource die wordt gebruikt door de werk ruimte, wordt er mogelijk een fout bericht weer gegeven die vergelijkbaar is met de volgende berichten:
+Wanneer u een Azure Machine Learning-werkruimte maakt of een resource die door de werkruimte wordt gebruikt, ontvangt u mogelijk een fout die vergelijkbaar is met de volgende berichten:
 
 * `No registered resource provider found for location {location}`
 * `The subscription is not registered to use namespace {resource-provider-namespace}`
 
-De meeste resource providers worden automatisch geregistreerd, maar niet alle. Als dit bericht wordt weer gegeven, moet u de vermelde provider registreren.
+De meeste resourceproviders worden automatisch geregistreerd, maar niet alle. Als u dit bericht ontvangt, moet u de genoemde provider registreren.
 
-Zie [fouten voor de registratie van de resource provider oplossen](../articles/azure-resource-manager/templates/error-register-resource-provider.md)voor meer informatie over het registreren van resource providers.
+Zie Fouten oplossen voor [de registratie van resourceproviders](../articles/azure-resource-manager/templates/error-register-resource-provider.md)voor informatie over het registreren van resourceproviders.

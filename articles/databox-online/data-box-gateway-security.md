@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway beveiliging | Microsoft Docs
-description: Hierin worden de beveiligings-en privacyfuncties beschreven voor het beveiligen van uw Azure Data Box Gateway virtuele apparaten, services en gegevens, on-premises en in de Cloud.
+title: Azure Data Box Gateway-beveiliging | Microsoft Documenten
+description: Beschrijft de beveiligings- en privacyfuncties die uw virtuele apparaat, service en gegevens van Azure Data Box Gateway beschermen, on-premises en in de cloud.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,88 +9,88 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900598"
 ---
-# <a name="azure-data-box-gateway-security-and-data-protection"></a>Beveiligings-en gegevens beveiliging Azure Data Box Gateway
+# <a name="azure-data-box-gateway-security-and-data-protection"></a>Beveiliging en gegevensbescherming van Azure Data Box Gateway
 
-Beveiliging is een belang rijk probleem bij het aannemen van een nieuwe technologie, met name als de technologie wordt gebruikt met vertrouwelijke of bedrijfs eigen gegevens. Azure Data Box Gateway helpt u ervoor te zorgen dat alleen geautoriseerde entiteiten uw gegevens kunnen bekijken, wijzigen of verwijderen.
+Beveiliging is een grote zorg wanneer u een nieuwe technologie gebruikt, vooral als de technologie wordt gebruikt met vertrouwelijke of bedrijfseigen gegevens. Azure Data Box Gateway helpt u ervoor te zorgen dat alleen geautoriseerde entiteiten uw gegevens kunnen bekijken, wijzigen of verwijderen.
 
-In dit artikel worden de Azure Data Box Gateway beveiligings functies beschreven waarmee u elk van de oplossings onderdelen en de gegevens die erin zijn opgeslagen, kunt beveiligen.
+In dit artikel worden de beveiligingsfuncties van Azure Data Box Gateway beschreven die elk van de oplossingsonderdelen en de gegevens die daarin zijn opgeslagen, helpen beschermen.
 
-De Data Box Gateway oplossing bestaat uit vier hoofd onderdelen die met elkaar communiceren:
+De Data Box Gateway-oplossing bestaat uit vier hoofdcomponenten die met elkaar communiceren:
 
-- **Data Box Gateway-Service, gehost in azure**. De beheer resource die u gebruikt om de volg orde van apparaten te maken, het apparaat te configureren en de volg orde bij te werken.
-- **Data Box gateway apparaat**. Het virtuele apparaat dat u inricht in de Hyper Visor van het systeem dat u opgeeft. Dit virtuele apparaat wordt gebruikt voor het importeren van uw on-premises gegevens in Azure.
-- **Clients/hosts die zijn verbonden met het apparaat**. De clients in uw infra structuur die verbinding maken met het Data Box Gateway apparaat en gegevens bevatten die moeten worden beveiligd.
-- **Cloud opslag**. De locatie in het Azure-Cloud platform waar gegevens worden opgeslagen. Deze locatie is doorgaans het opslag account dat is gekoppeld aan de Data Box Gateway bron die u maakt.
+- **Data Box Gateway-service, gehost in Azure.** De beheerbron die u gebruikt om de apparaatvolgorde te maken, het apparaat te configureren en vervolgens de volgorde bij te houden tot de voltooiing.
+- **Data Box Gateway-apparaat**. Het virtuele apparaat dat u inde inde hypervisor van het systeem dat u levert. Dit virtuele apparaat wordt gebruikt om uw on-premises gegevens in Azure te importeren.
+- **Clients/hosts die zijn verbonden met het apparaat.** De clients in uw infrastructuur die verbinding maken met het Data Box Gateway-apparaat en gegevens bevatten die moeten worden beschermd.
+- **Cloudopslag.** De locatie in het Azure-cloudplatform waar gegevens worden opgeslagen. Deze locatie is meestal het opslagaccount dat is gekoppeld aan de Data Box Gateway-bron die u maakt.
 
 
-## <a name="data-box-gateway-service-protection"></a>Data Box Gateway Service beveiliging
+## <a name="data-box-gateway-service-protection"></a>Bescherming van de Data Box Gateway-service
 
-De Data Box Gateway-Service is een beheer service die wordt gehost in Azure. De service wordt gebruikt om het apparaat te configureren en te beheren.
+De Data Box Gateway-service is een beheerservice die wordt gehost in Azure. De service wordt gebruikt om het apparaat te configureren en te beheren.
 
 [!INCLUDE [data-box-edge-gateway-service-protection](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-gateway-device-protection"></a>Beveiliging van Data Box Gateway apparaat
+## <a name="data-box-gateway-device-protection"></a>Gegevensbox gateway-apparaatbeveiliging
 
-Het Data Box Gateway apparaat is een virtueel apparaat dat is ingericht in de Hyper Visor van een on-premises systeem dat u opgeeft. Het apparaat helpt bij het verzenden van gegevens naar Azure. Uw apparaat:
+Het Data Box Gateway-apparaat is een virtueel apparaat dat is ingericht in de hypervisor van een on-premises systeem dat u levert. Het apparaat helpt bij het verzenden van gegevens naar Azure. Uw apparaat:
 
-- Er is een activerings sleutel nodig om toegang te krijgen tot de Data Box Edge/Data Box Gateway-Service.
-- Is te allen tijde beveiligd door een apparaatwachtwoord.
+- Heeft een activeringssleutel nodig om toegang te krijgen tot de Data Box Edge/Data Box Gateway-service.
+- Is te allen tijde beveiligd met een apparaatwachtwoord.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
 
-### <a name="protect-the-device-via-activation-key"></a>Het apparaat beveiligen via de activerings sleutel
+### <a name="protect-the-device-via-activation-key"></a>Het apparaat beveiligen via activeringssleutel
 
-Alleen een geautoriseerd Data Box Gateway apparaat mag lid worden van de Data Box Gateway-Service die u in uw Azure-abonnement hebt gemaakt. Als u een apparaat wilt autoriseren, moet u een activerings sleutel gebruiken om het apparaat te activeren met de Data Box Gateway-Service.
+Alleen een geautoriseerd Data Box Gateway-apparaat mag lid worden van de Data Box Gateway-service die u in uw Azure-abonnement maakt. Als u een apparaat wilt autoriseren, moet u een activeringssleutel gebruiken om het apparaat te activeren met de Data Box Gateway-service.
 
 [!INCLUDE [data-box-edge-gateway-activation-key](../../includes/data-box-edge-gateway-activation-key.md)]
 
-Zie [een activerings sleutel ophalen](data-box-gateway-deploy-prep.md#get-the-activation-key)voor meer informatie.
+Zie [Een activeringssleutel opvragen voor](data-box-gateway-deploy-prep.md#get-the-activation-key)meer informatie.
 
-### <a name="protect-the-device-via-password"></a>Het apparaat beveiligen via wacht woord
+### <a name="protect-the-device-via-password"></a>Het apparaat beveiligen via wachtwoord
 
-Wacht woorden zorgen ervoor dat alleen geautoriseerde gebruikers toegang hebben tot uw gegevens. Data Box Gateway apparaten worden opgestart met een vergrendelde status.
+Wachtwoorden zorgen ervoor dat alleen geautoriseerde gebruikers toegang hebben tot uw gegevens. Data Box Gateway-apparaten starten op in een vergrendelde status.
 
 U kunt:
 
-- Verbinding maken met de lokale web-UI van het apparaat via een browser en vervolgens een wacht woord opgeven om zich aan te melden bij het apparaat.
-- Extern verbinding maken met de Power shell-interface van het apparaat via HTTP. Extern beheer is standaard ingeschakeld. Vervolgens kunt u het wacht woord van het apparaat opgeven om u aan te melden bij het apparaat. Zie [extern verbinding maken met uw data Box gateway apparaat](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)voor meer informatie.
+- Maak verbinding met de lokale webgebruikersinterface van het apparaat via een browser en geef vervolgens een wachtwoord op om u aan te melden bij het apparaat.
+- Maak op afstand verbinding met de PowerShell-interface van het apparaat via HTTP. Extern beheer is standaard ingeschakeld. U vervolgens het apparaatwachtwoord opgeven om u bij het apparaat aan te melden. Zie [Op afstand verbinding maken met uw Data Box Gateway-apparaat](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)voor meer informatie.
 
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- Gebruik de lokale web-UI om [het wacht woord te wijzigen](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Als u het wacht woord wijzigt, moet u alle RAS-gebruikers hiervan op de hoogte stellen, zodat er geen problemen zijn bij het aanmelden.
+- Gebruik de lokale web-gebruikersinterface om het wachtwoord te [wijzigen.](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access) Als u het wachtwoord wijzigt, moet u alle gebruikers met externe toegang hiervan op de hoogte stellen, zodat ze geen problemen hebben met aanmelden.
 
 
-## <a name="protect-your-data"></a>Beveilig uw gegevens
+## <a name="protect-your-data"></a>Uw gegevens beveiligen
 
-In deze sectie worden de Data Box Gateway beveiligings functies beschreven die in-transit en opgeslagen gegevens beveiligen.
+In deze sectie worden de beveiligingsfuncties van De Data Box Gateway beschreven die binnenkomende en opgeslagen gegevens beschermen.
 
-### <a name="protect-data-at-rest"></a>Data-at-rest beveiligen
+### <a name="protect-data-at-rest"></a>Data-at-rest beschermen
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
 
-### <a name="protect-data-in-flight"></a>Gegevens in Flight beveiligen
+### <a name="protect-data-in-flight"></a>Gegevens tijdens de vlucht beveiligen
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Gegevens beveiligen via opslag accounts
+### <a name="protect-data-via-storage-accounts"></a>Gegevens beveiligen via opslagaccounts
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Roteer en [Synchroniseer vervolgens uw opslag account sleutels](data-box-gateway-manage-shares.md#sync-storage-keys) regel matig om uw opslag account te beschermen tegen onbevoegde gebruikers.
+- Draai en synchroniseer vervolgens regelmatig [uw opslagaccountsleutels](data-box-gateway-manage-shares.md#sync-storage-keys) om uw opslagaccount te beschermen tegen onbevoegde gebruikers.
 
 ## <a name="manage-personal-information"></a>Persoonlijke gegevens beheren
 
-De Data Box Gateway-Service verzamelt persoonlijke gegevens in de volgende scenario's:
+De Data Box Gateway-service verzamelt persoonlijke gegevens in de volgende scenario's:
 
 [!INCLUDE [data-box-edge-gateway-manage-personal-data](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-Volg de stappen in [shares beheren op het data Box gateway](data-box-gateway-manage-shares.md)om de lijst weer te geven met gebruikers die een share kunnen openen of verwijderen.
+Als u de lijst met gebruikers wilt bekijken die een aandeel kunnen openen of verwijderen, voert u de stappen uit in [Shares beheren op de Data Box Gateway.](data-box-gateway-manage-shares.md)
 
-Raadpleeg het privacybeleid van micro soft in het [vertrouwens centrum](https://www.microsoft.com/trustcenter)voor meer informatie.
+Bekijk het privacybeleid van Microsoft in het [Vertrouwenscentrum](https://www.microsoft.com/trustcenter)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

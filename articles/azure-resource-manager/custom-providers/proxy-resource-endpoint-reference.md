@@ -1,26 +1,26 @@
 ---
 title: Referentiemateriaal voor aangepaste resource-proxy
-description: Aangepaste resource proxy referentie voor aangepaste Azure-resource providers. In dit artikel worden de vereisten beschreven voor eind punten die aangepaste proxy resources implementeren.
+description: Aangepaste resourceproxyverwijzing voor Azure Custom Resource Providers. Dit artikel gaat door de vereisten voor eindpunten implementeren proxy aangepaste resources.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650459"
 ---
-# <a name="custom-resource-proxy-reference"></a>Naslag informatie voor de aangepaste resource proxy
+# <a name="custom-resource-proxy-reference"></a>Naslaginformatie over aangepaste resourceproxy
 
-In dit artikel worden de vereisten beschreven voor eind punten die aangepaste proxy resources implementeren. Als u niet bekend bent met aangepaste Azure-resource providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
+Dit artikel gaat door de vereisten voor eindpunten implementeren proxy aangepaste resources. Als u niet bekend bent met Azure Custom Resource Providers, raadpleegt u [het overzicht over aangepaste resourceproviders.](overview.md)
 
-## <a name="how-to-define-a-proxy-resource-endpoint"></a>Een proxy-resource-eind punt definiëren
+## <a name="how-to-define-a-proxy-resource-endpoint"></a>Een eindpunt van een proxyresource definiëren
 
-U kunt een proxy bron maken door de **routingType** op ' proxy ' op te geven.
+Er kan een proxybron worden gemaakt door de **routingType** naar 'Proxy' op te geven.
 
-Voor beeld van aangepaste resource provider:
+Voorbeeld van aangepaste resourceprovider:
 
 ```JSON
 {
@@ -40,14 +40,14 @@ Voor beeld van aangepaste resource provider:
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>Resource-eind punt van de proxy bouwen
+## <a name="building-proxy-resource-endpoint"></a>Eindpunt van proxyresource
 
-Een **eind punt** dat een ' proxy ' resource- **eind punt** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API voor `PUT`, `GET`en `DELETE` voor het uitvoeren van ruw op één resource, evenals `GET` om alle bestaande resources op te halen.
+Een **eindpunt** dat een **eindpunt** voor de resource 'Proxy' implementeert, moet de aanvraag en het antwoord voor de nieuwe API in Azure verwerken. In dit geval genereert **de resourceType** een `PUT`nieuwe `GET`Azure-bron-API voor , en `DELETE` om `GET` CRUD uit te voeren op één resource, en om alle bestaande resources op te halen.
 
 > [!NOTE]
-> De velden `id`, `name`en `type` zijn niet vereist, maar zijn nodig voor de integratie van de aangepaste resource met het bestaande Azure-ecosysteem.
+> De `id` `name`velden `type` en velden zijn niet vereist, maar zijn nodig om de aangepaste bron te integreren met het bestaande Azure-ecosysteem.
 
-Voorbeeld resource:
+Voorbeeldbron:
 
 ``` JSON
 {
@@ -63,17 +63,17 @@ Voorbeeld resource:
 }
 ```
 
-Parameter verwijzing:
+Parameterreferentie:
 
 Eigenschap | Voorbeeld | Beschrijving
 ---|---|---
-name | '{myCustomResourceName}' | De naam van de aangepaste resource.
-type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | De naam ruimte van het resource type.
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | De resource-ID.
+name | {myCustomResourceName}' | De naam van de aangepaste resource.
+type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | De naamruimte van het resourcetype.
+id | '/abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | De resource-id.
 
 ### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 
-Inkomende Azure API-aanvraag:
+Inkomende aanvraag voor Azure API:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resource-provider-name}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -107,12 +107,12 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
+Op dezelfde manier wordt het antwoord van het **eindpunt** vervolgens doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
 
-- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
-- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
+- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
+- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
 
-**Eind punt** Beantwoord
+**Eindpunt** Reactie:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -131,7 +131,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Reactie van de aangepaste Azure-resource provider:
+Reactie van Azure Custom Resource Provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -152,7 +152,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>Een aangepaste resource verwijderen
 
-Inkomende Azure API-aanvraag:
+Inkomende aanvraag voor Azure API:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -160,7 +160,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -168,19 +168,19 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
+Ook wordt het antwoord van het **eindpunt** doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
 
-- Geldig document van het JSON-object. Alle matrices en teken reeksen moeten worden genest onder een top-object.
-- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
+- Geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
+- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
 
-**Eind punt** Beantwoord
+**Eindpunt** Reactie:
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Reactie van de aangepaste Azure-resource provider:
+Reactie van Azure Custom Resource Provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -189,7 +189,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="retrieve-a-custom-resource"></a>Een aangepaste resource ophalen
 
-Inkomende Azure API-aanvraag:
+Inkomende aanvraag voor Azure API:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -197,7 +197,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -205,12 +205,12 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
+Op dezelfde manier wordt het antwoord van het **eindpunt** vervolgens doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
 
-- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
-- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
+- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
+- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
 
-**Eind punt** Beantwoord
+**Eindpunt** Reactie:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -229,7 +229,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Reactie van de aangepaste Azure-resource provider:
+Reactie van Azure Custom Resource Provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -250,7 +250,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="enumerate-all-custom-resources"></a>Alle aangepaste resources opsommen
 
-Inkomende Azure API-aanvraag:
+Inkomende aanvraag voor Azure API:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -258,7 +258,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -266,13 +266,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources
 ```
 
-Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
+Op dezelfde manier wordt het antwoord van het **eindpunt** vervolgens doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
 
-- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
-- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
-- De lijst met resources moet worden geplaatst onder de eigenschap `value` op het hoogste niveau.
+- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
+- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
+- De lijst met resources moet onder `value` de eigenschap op het hoogste niveau worden geplaatst.
 
-**Eind punt** Beantwoord
+**Eindpunt** Reactie:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -295,7 +295,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Reactie van de aangepaste Azure-resource provider:
+Reactie van Azure Custom Resource Provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -320,8 +320,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van aangepaste Azure-resource providers](overview.md)
-- [Snelstartgids: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
-- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Verwijzing: verwijzing naar aangepaste resource-cache](proxy-cache-resource-endpoint-reference.md)
+- [Overzicht van Azure Custom Resource Providers](overview.md)
+- [Snelstart: Azure Custom Resource Provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
+- [How To: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Naslaginformatie: Verwijzing naar aangepaste cachebronnen](proxy-cache-resource-endpoint-reference.md)

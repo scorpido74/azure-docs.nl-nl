@@ -1,218 +1,236 @@
 ---
-title: Evaluaties in Azure Migrate
-description: Meer informatie over evaluaties in Azure Migrate.
+title: Beoordelingen in Azure Migrate Server Assessment
+description: Meer informatie over beoordelingen in Azure Migrate Server Assessment
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127781"
 ---
-# <a name="about-assessments-in-azure-migrate"></a>Over evaluaties in Azure Migrate
+# <a name="assessments-in-azure-migrateserver-assessment"></a>Beoordelingen in Azure Migreren:Serverbeoordeling
 
-In dit artikel wordt beschreven hoe beoordelingen worden berekend in [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool). U voert evaluaties uit op groepen on-premises machines om te bepalen of ze gereed zijn voor migratie naar Azure Migrate.
+In dit artikel vindt u een overzicht van beoordelingen in het hulpprogramma [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Het hulpprogramma Serverbeoordeling kan on-premises Vm's vMware, Hyper-V VM's en fysieke servers beoordelen op migratie naar Azure.
 
-## <a name="how-do-i-run-an-assessment"></a>Hoe kan ik een evaluatie uit te voeren?
-U kunt een evaluatie uitvoeren met behulp van Azure Migrate: Server evaluatie of een ander hulp programma van Azure of derden. Nadat u een Azure Migrate project hebt gemaakt, voegt u het hulp programma toe dat u nodig hebt. [Meer informatie](how-to-add-tool-first-time.md)
+## <a name="whats-an-assessment"></a>Wat is een beoordeling?
 
-### <a name="collect-compute-data"></a>Reken gegevens verzamelen
+Een beoordeling met het hulpprogramma Serverbeoordeling meet de gereedheid en schat de impact van het migreren van on-premises servers naar Azure.
 
-Prestatie gegevens voor reken instellingen worden als volgt verzameld:
+## <a name="types-of-assessments"></a>Soorten beoordelingen
 
-1. Het [Azure migrate apparaat](migrate-appliance.md) verzamelt een real-time voorbeeld punt:
+Beoordelingen die u maakt met ServerAssessment zijn een point-in-time momentopname van gegevens. Server Assessment biedt twee soorten beoordelingen.
 
-    - **VMware-vm's**: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
-    - **Virtuele Hyper-v-machines**: voor virtuele Hyper-v-machines wordt het realtime-voorbeeld punt verzameld bij elk interval van dertig seconden.
-    - **Fysieke servers**: voor fysieke servers wordt het realtime-voorbeeld punt verzameld tijdens elke interval van vijf minuten. 
-    
-2. Het apparaat rolt de voorbeeld punten (20 seconden, 30 seconden, vijf minuten) samen om één gegevens punt om de 10 minuten te maken. Als u het ene gegevens punt wilt maken, selecteert het apparaat de piek waarde van alle voor beelden en verzendt deze vervolgens naar Azure.
-3. In de server beoordeling worden de voorbeeld punten van 10 minuten voor de afgelopen maand opgeslagen.
-4. Wanneer u een evaluatie maakt, identificeert server assessment het juiste gegevens punt dat moet worden gebruikt voor de juiste grootte, op basis van de percentiel waarden voor de *prestatie geschiedenis* en het *percentiel gebruik*.
-
-    - Als de prestatie geschiedenis bijvoorbeeld is ingesteld op één week en het percentiel gebruik het 95e percentiel is, sorteert server beoordeling de 10-minuten steekproef punten voor de afgelopen week in oplopende volg orde en wordt de waarde van het 95e percentiel voor de juiste grootte gepickt. 
-    - De 95e percentiel waarde zorgt ervoor dat u alle uitschieters negeert, die mogelijk worden opgenomen als u het 99e percentiel selecteert.
-    - Als u het piek gebruik voor de periode wilt kiezen en u geen uitschieters wilt missen, selecteert u het 99e percentiel voor percentiel gebruik.
-
-5. Deze waarde wordt vermenigvuldigd met de comfort factor om de effectief prestatie gebruiks gegevens te verkrijgen voor elke metriek (CPU-gebruik, geheugen gebruik, schijf-IOPS (lezen en schrijven), schijf doorvoer (lezen en schrijven) en netwerk doorvoer (in en uit) die de apparaat verzamelt.
-
-Voor het uitvoeren van analyses in Server evaluatie, bereid u voor op on-premises en in azure, en stelt u het Azure Migrate apparaat in om voortdurend on-premises machines te detecteren. Nadat de computers zijn gedetecteerd, verzamelt u deze in groepen om ze te beoordelen. Voor gedetailleerde en hoge betrouw baarheid kunt u afhankelijkheden tussen computers visualiseren en toewijzen, om erachter te gaan hoe u ze migreert.
-
-- Meer informatie over het uitvoeren van evaluaties voor [virtuele VMware-machines](tutorial-prepare-vmware.md), [virtuele Hyper-V-machines](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md).
-- Meer informatie over het beoordelen van servers [die zijn geïmporteerd met een CSV-bestand](tutorial-assess-import.md).
-- Meer informatie over het instellen van de [visualisatie van afhankelijkheden](concepts-dependency-visualization.md).
-
-## <a name="assessments-in-server-assessment"></a>Evaluaties in Server evaluatie 
-
-Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Het hulp programma Server evaluatie biedt twee soorten evaluaties.
-
-**Beoordelings type** | **Details** | **Gegevens**
+**Beoordelingstype** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | Aanbeveling voor VM-grootte is gebaseerd op gegevens van CPU en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.
-**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op het geselecteerde opslag type voor de evaluatie.
+**Op prestaties gebaseerd** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatiegegevens | Vm-grootte aanbeveling is gebaseerd op CPU en geheugen gebruik gegevens.<br/><br/> Schijftypeaanbeveling (standaard HDD/SSD of premium-managed schijven) is gebaseerd op het IOPS en de doorvoer van de on-premises schijven.
+**As-is on-premises** | Beoordelingen die geen prestatiegegevens gebruiken om aanbevelingen te doen. | Vm-grootteaanbeveling is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijftype is gebaseerd op het geselecteerde opslagtype voor de beoordeling.
 
-## <a name="collecting-performance-data"></a>Prestatie gegevens verzamelen
+## <a name="how-do-i-run-an-assessment"></a>Hoe voer ik een assessment uit?
 
-Prestatie gegevens worden als volgt verzameld:
+Er zijn een paar manieren om een beoordeling uit te voeren:
 
-1. Het [Azure migrate apparaat](migrate-appliance.md) verzamelt een real-time voorbeeld punt:
+- Beoordeel machines met behulp van servermetadata die zijn verzameld door een lichtgewicht Azure Migrate-toestel. Het toestel detecteert on-premises machines en stuurt machinemetagegevens/prestatiegegevens naar Azure Migrate.
+- Beoordeel machines met behulp van servermetagegevens die worden geïmporteerd in een CSV-indeling (comma-separated values).
 
-    - **VMware-vm's**: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
-    - **Virtuele Hyper-v-machines**: voor virtuele Hyper-v-machines wordt het realtime-voorbeeld punt verzameld bij elk interval van dertig seconden.
-    - **Fysieke servers**: voor fysieke servers wordt het realtime-voorbeeld punt verzameld tijdens elke interval van vijf minuten. 
+## <a name="how-do-i-assess-with-the-appliance"></a>Hoe beoordeel ik met het apparaat?
+
+Als u een Azure Migrate-toestel implementeert om on-premises servers te detecteren, gaat u als volgt te werk:
+
+1. U stelt Azure en uw on-premises omgeving in om te werken met serverbeoordeling.
+2. Voor uw eerste beoordeling maakt u een Azure-project en voegt u het hulpprogramma serverbeoordeling toe.
+3. U implementeert een lichtgewicht Azure Migrate-toestel. Het toestel detecteert continu on-premises machines en stuurt machinemetadata en prestatiegegevens naar Azure Migrate. Het apparaat wordt geïmplementeerd als een VM of een fysieke machine. Het is niet nodig om iets te installeren op machines die u wilt beoordelen.
+4. Nadat het apparaat met machinedetectie is begonnen, u machines verzamelen die u in een groep wilt beoordelen en een beoordeling voor de groep uitvoeren.
+
+U onze tutorials voor [VMware,](tutorial-prepare-vmware.md) [Hyper-V](tutorial-prepare-hyper-v.md)of [fysieke servers](tutorial-prepare-physical.md) volgen om deze stappen uit te proberen.
+
+## <a name="how-do-i-assess-with-imported-data"></a>Hoe beoordeel ik met geïmporteerde gegevens?
+
+Als u servers beoordeelt met een CSV-bestand, hebt u geen toestel nodig. In plaats daarvan gaat u als volgt te werk:
+
+1. U stelt Azure in voor het werken met serverbeoordeling.
+2. Voor uw eerste beoordeling maakt u een Azure-project en voegt u het hulpprogramma serverbeoordeling toe.
+3. U downloadt een CSV-sjabloon en voegt er servergegevens aan toe.
+4. U importeert de sjabloon in Serverbeoordeling.
+5. U ontdekt servers die bij de import zijn toegevoegd, verzamelt vervolgens in een groep en voert een beoordeling uit voor de groep.
+
+## <a name="what-data-does-the-appliance-collect"></a>Welke gegevens verzamelt het toestel?
+
+Als u het Azure Migrate-toestel gebruikt voor beoordeling, leest u meer over de metagegevens en prestatiegegevens die zijn verzameld voor [VMware](migrate-appliance.md#collected-data---vmware) en [Hyper-V.](migrate-appliance.md#collected-data---hyper-v)
+
+## <a name="how-does-the-appliance-calculate-performance-data"></a>Hoe berekent het toestel prestatiegegevens?
+
+Als u het toestel voor detectie gebruikt, worden prestatiegegevens voor rekeninstellingen als volgt verzameld:
+
+1. Het apparaat verzamelt een real-time monsterpunt:
+
+    - **VMware VM's**: Het apparaat verzamelt een real-time monsterpunt bij elk interval van 20 seconden.
+    - **Hyper-V VM's**: Het real-time monsterpunt wordt verzameld bij elk interval van 30 seconden.
+    - **Fysieke servers**: Het real-time monsterpunt wordt verzameld bij elk interval van vijf minuten. 
     
-2. Het apparaat rolt de voorbeeld punten (20 seconden, 30 seconden, vijf minuten) samen om één gegevens punt om de 10 minuten te maken. Als u het ene gegevens punt wilt maken, selecteert het apparaat de piek waarde van alle voor beelden en verzendt deze vervolgens naar Azure.
-3. In de server beoordeling worden de voorbeeld punten van 10 minuten voor de afgelopen maand opgeslagen.
-4. Wanneer u een evaluatie maakt, identificeert server assessment het juiste gegevens punt dat moet worden gebruikt voor de juiste grootte, op basis van de percentiel waarden voor de *prestatie geschiedenis* en het *percentiel gebruik*.
+2. Het apparaat rolt de monsterpunten op (20 seconden, 30 seconden, vijf minuten) om elke 10 minuten één gegevenspunt te creëren. Als u het ene punt wilt maken, selecteert het toestel de piekwaarde uit alle voorbeelden en verzendt het vervolgens naar Azure.
+3. Server assessment slaat alle voorbeeldpunten van 10 minuten van de afgelopen maand op.
+4. Wanneer u een beoordeling maakt, identificeert Serverassessment het juiste gegevenspunt dat moet worden gebruikt voor de juiste grootte, op basis van de percentielwaarden voor *prestatiegeschiedenis* *en percentielgebruik.*
 
-    - Als de prestatie geschiedenis bijvoorbeeld is ingesteld op één week en het percentiel gebruik het 95e percentiel is, sorteert server beoordeling de 10-minuten steekproef punten voor de afgelopen week in oplopende volg orde en wordt de waarde van het 95e percentiel voor de juiste grootte gepickt. 
-    - De 95e percentiel waarde zorgt ervoor dat u alle uitschieters negeert, die mogelijk worden opgenomen als u het 99e percentiel selecteert.
-    - Als u het piek gebruik voor de periode wilt kiezen en u geen uitschieters wilt missen, selecteert u het 99e percentiel voor percentiel gebruik.
+    - Als de prestatiegeschiedenis bijvoorbeeld is ingesteld op één week en het percentielgebruik het 95e percentiel is, sorteert Serverassessment de 10-minutenmonsterpunten voor de laatste week in oplopende volgorde en kiest u de 95e percentielwaarde voor de juiste grootte. 
+    - De 95e percentielwaarde zorgt ervoor dat u uitschieters negeert, die kunnen worden opgenomen als u het 99e percentiel kiest.
+    - Als u het piekgebruik voor de periode wilt kiezen en geen uitschieters wilt missen, moet u het 99e percentiel voor percentielgebruik selecteren.
 
-5. Deze waarde wordt vermenigvuldigd met de comfort factor om de effectief prestatie gebruiks gegevens te verkrijgen voor elke metriek (CPU-gebruik, geheugen gebruik, schijf-IOPS (lezen en schrijven), schijf doorvoer (lezen en schrijven) en netwerk doorvoer (in en uit) die de apparaat verzamelt.
+5. Deze waarde wordt vermenigvuldigd met de comfortfactor om de effectieve prestatiegebruiksgegevens voor elke statistiek (CPU-gebruik, geheugengebruik, schijf-IOPS (lezen en schrijven), schijfdoorvoer (lezen en schrijven) en netwerkdoorvoer (in en uit) te krijgen apparaat verzamelt.
+
+
+
+## <a name="how-are-assessments-calculated"></a>Hoe worden beoordelingen berekend? 
+
+Beoordelingen in serverbeoordeling worden berekend met behulp van metagegevens/prestatiegegevens voor de on-premises machines. Als u het Azure Migrate-toestel implementeert, wordt de beoordeling uitgevoerd met behulp van de gegevens die door het toestel zijn verzameld. Als u een beoordeling uitvoert voor machines die zijn geïmporteerd met een . CSV-bestand, geeft u de metagegevens voor de berekening. Berekeningen vinden plaats in drie fasen:
+
+1. **Azure-gereedheid berekenen:** beoordeel of machines geschikt zijn voor migratie naar Azure.
+2. **Grootteaanbevelingen berekenen:** schat rekenkracht, opslag en netwerkgrootte. 
+2. **Maandelijkse kosten berekenen:** bereken de geschatte maandelijkse reken- en opslagkosten voor het uitvoeren van de machines in Azure na migratie.
+
+Berekeningen zijn in orde, en een machine server beweegt mee naar een later stadium alleen als het de vorige passeert. Als een server bijvoorbeeld de Azure-gereedheid niet haalt, is deze gemarkeerd als ongeschikt voor Azure en wordt de grootte en kosten niet voor die server uitgevoerd.
+
+
 ## <a name="whats-in-an-assessment"></a>Waaruit bestaat een evaluatie?
 
-Hier volgt een beoordeling in Azure Migrate: Server Assessment.
+Dit is wat er in een beoordeling is opgenomen in Serverassessment.
 
 **Eigenschap** | **Details**
 --- | ---
-**Doellocatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord VS-centraal, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, westelijke VS en West-VS2.
-*Doel opslag schijf (in grootte)* * | Het type schijven dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard SSD beheerd of standaard HDD beheerd.
-**Doel opslag schijf (op basis van de grootte van de prestaties)** | Geef het type doel opslag schijf op als automatische, Premium beheerde, standaard HDD beheerd of standaard SSD beheerd.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven (de invoer/uitvoer-bewerkingen per seconde (IOPS) en door Voer).<br/><br/>**Premium/Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM-SLA met één exemplaar van 99,9% wilt maken, overweeg dan om Premium Managed disks te gebruiken. Dit zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate biedt voor migratiebeoordeling alleen ondersteuning voor beheerde schijven.
-**Gereserveerde instanties (RIs)** | Geef [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) op in azure, zodat de kosten ramingen in de evaluatie van de RI-kortingen in rekening worden gebracht.<br/><br/> RIs wordt momenteel alleen ondersteund voor aanbiedingen met betalen naar gebruik in Azure Migrate.
-**Grootte criteria** | Wordt gebruikt om de grootte van de virtuele machine in azure naar rechts te wijzigen.<br/><br/> Gebruiken als de grootte van het formaat of op basis van de prestaties.
-**Prestatiegeschiedenis** | Wordt gebruikt met een grootte op basis van prestaties. Geef de duur op die wordt gebruikt bij het evalueren van prestatie gegevens.
-**Percentiel gebruik** | Wordt gebruikt met een grootte op basis van prestaties. Hiermee geeft u de percentiel waarde van het voor beeld van de prestaties op die moet worden gebruikt voor de juiste grootte. 
-**VM-reeks** | Geef de Azure VM-serie op die u wilt overwegen voor een juiste grootte. Als u bijvoorbeeld geen productie omgeving hebt die virtuele machines van de A-serie nodig heeft in azure, kunt u een-serie uitsluiten van de lijst of reeks.
-**Comfortfactor** | Buffer die wordt gebruikt tijdens de evaluatie. Wordt toegepast boven op de machine gebruiks gegevens voor Vm's (CPU, geheugen, schijf en netwerk). IT-accounts voor problemen zoals seizoen gebruik, korte prestatie geschiedenis en waarschijnlijke toename van toekomstig gebruik.<br/><br/> Zo resulteert een virtuele machine met 10 kern met 20% gebruik doorgaans in een virtuele machine met twee kernen. Met een comfort factor van 2,0 x is het resultaat een virtuele machine met vier kernen.
-**Aanbieding** | Hier wordt de [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) weer gegeven waarin u bent Inge schreven. De server beoordeling schat de kosten dienovereenkomstig.
-**Valuta** | De facturerings valuta voor uw account.
-**Korting (%)** | Een lijst met alle abonnements kortingen die boven op de Azure-aanbieding worden weer gegeven. De standaardinstelling is 0%.
-**VM tijd actief** | Als Azure-Vm's niet 24 uur per dag, 7 dagen per week worden uitgevoerd, kunt u de duur (dagen per maand en uur per dag) opgeven. deze worden uitgevoerd. Kosten ramingen worden dienovereenkomstig afgehandeld.<br/><br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
-**Azure Hybrid Benefit** | Hiermee geeft u op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als deze optie is ingesteld op Ja (de standaard instelling), worden niet-Windows Azure-prijzen in rekening gehouden voor Windows-Vm's.
+**Doellocatie** | De locatie waarnaar u wilt migreren. Serverassessment ondersteunt momenteel deze doelazure-regio's:<br/><br/> Australië Oost, Australië Zuidoost, Brazilië Zuid, Canada Centraal, Canada Oost, Centraal-India, Centraal-VS, China Oost, China Noord, Oost-Azië, Oost-VS, Oost-VS2, Duitsland Centraal, Duitsland Noordoost, Japan Oost, Japan West, Korea Centraal, Korea Zuid, Noord-Noord Centraal VS, Noord-Europa, Zuid-Centraal VS, Zuidoost-Azië, Zuid-India, Uk South, UK West, US Gov Arizona, US Gov Texas, US Gov Virginia, West Central US, West-Europa, West-India, West US en West US2.
+*Doelopslagschijf (as-is-sizing)** | Het type schijven dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doelopslagschijf op als premium managed, standard SSD managed of standard HDD managed.
+**Doelopslagschijf (prestatiegebaseerde grootte)** | Geef het type doelopslagschijf op als automatisch, premium beheerd, standaard HDD beheerd of standaard SSD beheerd.<br/><br/> **Automatisch**: De schijfaanbeveling is gebaseerd op de prestatiegegevens van de schijven (de invoer-/uitvoerbewerkingen per seconde (IOPS) en doorvoer).<br/><br/>**Premium/standaard**: De beoordeling beveelt een schijf SKU aan binnen het geselecteerde opslagtype.<br/><br/> Als u één VM-SLA van 99,9% in één instantie wilt bereiken, overweegt u premium beheerde schijven te gebruiken. Dit zorgt ervoor dat alle schijven in de beoordeling worden aanbevolen als schijven met een premium beheerde schijf.<br/><br/> Azure Migrate biedt voor migratiebeoordeling alleen ondersteuning voor beheerde schijven.
+**Gereserveerde instanties (RI's)** | Geef [gereserveerde exemplaren](https://azure.microsoft.com/pricing/reserved-vm-instances/) op in Azure, zodat kostenschattingen in de beoordeling rekening houden met RI-kortingen.<br/><br/> RI's worden momenteel alleen ondersteund voor Pay-As-You-Go-aanbiedingen in Azure Migrate.
+**Groottecriteria** | Wordt gebruikt om de vm op de juiste grootte in Azure te vergroten.<br/><br/> Gebruik as-is-maatvoering of prestatiegebaseerde grootte.
+**Prestatiegeschiedenis** | Gebruikt met prestatiegebaseerde maatvoering. Geef de duur op die wordt gebruikt bij het evalueren van prestatiegegevens.
+**Percentiel gebruik** | Gebruikt met prestatiegebaseerde maatvoering. Hiermee geeft u de percentielwaarde op van het prestatievoorbeeld dat moet worden gebruikt voor de juiste grootte. 
+**VM-reeks** | Geef de Azure VM-reeks op die u wilt overwegen voor de juiste grootte. Als u bijvoorbeeld geen productieomgeving hebt waarvoor VM's uit de A-serie in Azure nodig zijn, u A-reeksen uitsluiten van de lijst of reeksen.
+**Comfortfactor** | Buffer gebruikt tijdens de beoordeling. Toegepast bovenop machinegebruiksgegevens voor VM's (CPU, geheugen, schijf en netwerk). Het is goed voor problemen zoals seizoensgebonden gebruik, korte prestatiegeschiedenis en waarschijnlijke toename van toekomstig gebruik.<br/><br/> Een 10-core VM met 20% gebruik resulteert bijvoorbeeld normaal gesproken in een tweecore VM. Met een comfortfactor van 2,0x is het resultaat een vier-core VM in plaats daarvan.
+**Bieden** | Hiermee geeft u de [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) weer waarin u bent ingeschreven. Server assessment schat de kosten dienovereenkomstig.
+**Valuta** | Factureringsvaluta voor uw account.
+**Korting (%)** | Geeft een overzicht van alle abonnementsspecifieke kortingen die u ontvangt bovenop de Azure-aanbieding. De standaardinstelling is 0%.
+**VM tijd actief** | Als Azure VM's niet 24 uur per dag, 7 dagen per week worden uitgevoerd, u de duur opgeven (dagen per maand en uren per dag) die ze uitvoeren. Kostenramingen worden dienovereenkomstig behandeld.<br/><br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
+**Azure Hybrid Benefit** | Hiermee geeft u op of u softwarezekerheid hebt en in aanmerking komt voor [Azure Hybrid Benefit.](https://azure.microsoft.com/pricing/hybrid-use-benefit/) Als u bent ingesteld op Ja (de standaardinstelling), worden niet-Windows Azure-prijzen in aanmerking genomen voor Windows VM's.
 
-[Bekijk de aanbevolen procedures voor het](best-practices-assessment.md) maken van evaluatie met server evaluatie.
-
-## <a name="how-are-assessments-calculated"></a>Hoe worden evaluaties berekend? 
-
-Evaluaties in Azure Migrate: de evaluatie van de server wordt berekend met behulp van de meta gegevens die zijn verzameld over de on-premises machines. Als u een evaluatie uitvoert op machines die worden geïmporteerd met behulp van een. CSV-bestand, geeft u de meta gegevens voor de berekening op. Berekeningen worden in drie fasen uitgevoerd:
-
-1. **Azure-gereedheid berekenen**: Bepaal of computers geschikt zijn voor migratie naar Azure.
-2. **Aanbevelingen voor de grootte berekenen**: schatting van de berekenings-, opslag-en netwerk grootte. 
-2. **Bereken de maandelijkse kosten**: Bereken de geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de machines in azure na de migratie.
-
-Berekeningen worden op volg orde gezet en een machine server wordt alleen naar een latere fase verplaatst als deze de voor gaande wordt door gegeven. Als een server bijvoorbeeld uitvalt op de Azure-gereedheid, wordt deze gemarkeerd als ongeschikt voor Azure, en wordt de grootte en de kosten voor de server niet meer in rekening gebracht.
-
+[Bekijk de aanbevolen procedures](best-practices-assessment.md) voor het maken van beoordeling met serverbeoordeling.
 
 
 ## <a name="calculate-readiness"></a>Gereedheid berekenen
 
-Niet alle machines zijn geschikt om te worden uitgevoerd in Azure. Server evaluatie evalueert elke on-premises computer en wijst deze toe aan een gereedheids categorie. 
-- **Gereed voor Azure**: de machine kan zonder wijzigingen worden gemigreerd naar Azure. Het wordt gestart in azure met volledige ondersteuning voor Azure.
-- **Voorwaardelijk gereed voor Azure**: de machine kan worden gestart in azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld: een machine waarop een oudere versie van Windows Server wordt uitgevoerd, wordt niet ondersteund in Azure. U moet voorzichtig zijn voordat u deze machines naar Azure migreert. Volg de richt lijnen voor herstel in de evaluatie om de gereedheids problemen op te lossen.
-- **Niet gereed voor Azure**: de computer start niet in Azure. Als een on-premises machine schijf bijvoorbeeld meer is dan 64-TBs, kan deze niet worden gehost in Azure. Volg de richt lijnen voor herstel om het probleem op te lossen voordat u de migratie uitvoert. 
-- **Gereedheid onbekend**: Azure migrate kan de gereedheid van een machine niet bepalen vanwege onvoldoende meta gegevens.
+Niet alle machines zijn geschikt om in Azure te draaien. Server Assessment beoordeelt elke on-premises machine en wijst deze een gereedheidscategorie toe. 
+- **Klaar voor Azure**: de machine kan worden gemigreerd naar Azure zonder wijzigingen. Het begint in Azure met volledige Azure-ondersteuning.
+- **Voorwaardelijk klaar voor Azure:** de machine start mogelijk in Azure, maar heeft mogelijk geen volledige Azure-ondersteuning. Een machine waarop een oudere versie van Windows Server wordt uitgevoerd, wordt bijvoorbeeld niet ondersteund in Azure. U moet voorzichtig zijn voordat u deze machines migreert naar Azure. Volg de herstelrichtlijnen die in de beoordeling worden voorgesteld om de gereedheidsproblemen op te lossen.
+- **Niet klaar voor Azure**: De machine start niet in Azure. Als een on-premises machineschijf bijvoorbeeld meer dan 64-tv's is, kan deze niet worden gehost in Azure. Volg de herstelrichtlijnen om het probleem op te lossen voordat u de migratie aangaat. 
+- **Gereedheid onbekend**: Azure Migrate kon de gereedheid van een machine niet bepalen, vanwege onvoldoende metagegevens.
 
-Voor de berekening van de gereedheid controleert server assessment de computer eigenschappen en de instellingen van het besturings systeem in de volgende tabellen. 
+Om de gereedheid te berekenen, controleert Server Assessment de machine-eigenschappen en de instellingen van het besturingssysteem die zijn samengevat in de volgende tabellen. 
 
-### <a name="machine-properties"></a>Computer eigenschappen
+### <a name="machine-properties"></a>Machine-eigenschappen
 
-Server beoordeling controleert de volgende eigenschappen van de on-premises virtuele machine om te bepalen of deze kan worden uitgevoerd op Azure.
+Serverassessment controleert de volgende eigenschappen van de on-premises VM om te bepalen of deze op Azure kan worden uitgevoerd.
 
-**Eigenschap** | **Details** | **Status van Azure-gereedheid**
+**Eigenschap** | **Details** | **Azure-gereedheidsstatus**
 --- | --- | ---
-**Opstart type** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is.
-**Kernen** | Het aantal kernen op de computers moet gelijk zijn aan of kleiner zijn dan het maximum aantal kernen (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, worden de gebruikte kernen Azure Migrate beschouwd als vergelijking. Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
-**Geheugenmetabase** | De grootte van het computer geheugen moet gelijk zijn aan of kleiner zijn dan het maximum geheugen (3892 gigabytes [GB] op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) dat is toegestaan voor een Azure-VM. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt het gebruikte geheugen in Azure Migrate beschouwd als vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt zonder de comfort factor toe te passen.<br/><br/> | Gereed indien binnen de limieten.
-**Opslag schijf** | De toegewezen grootte van een schijf moet 32 TB of minder zijn. Azure biedt ondersteuning voor 64-TB schijven met Ultra-SSD schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf wordt beperkt, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
-**Netwerken** | Aan een machine moeten 32 of minder netwerk interfaces (Nic's) zijn gekoppeld. | Gereed indien binnen de limieten.
+**Opstarttype** | Azure ondersteunt VM's met een opstarttype BIOS, niet Met UEFI. | Voorwaardelijk klaar als het opstarttype UEFI is.
+**Kernen** | Het aantal cores in de machines moet gelijk zijn aan of kleiner zijn dan het maximum aantal cores (128) dat wordt ondersteund voor een Azure VM.<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met de gebruikte kernen ter vergelijking. Als een comfortfactor wordt opgegeven in de beoordelingsinstellingen, wordt het aantal gebruikte kernen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen prestatiegeschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfortfactor toe te passen. | Klaar als minder dan of gelijk aan grenzen.
+**Geheugen** | De grootte van het machinegeheugen moet gelijk zijn aan of kleiner zijn dan het&nbsp;maximale geheugen (3892 gigabyte [GB] op azure m-serie Standard_M128m<sup>2)</sup>die is toegestaan voor een Azure VM. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met het gebruikte geheugen ter vergelijking. Als een comfortfactor wordt opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt zonder de comfortfactor toe te passen.<br/><br/> | Klaar als binnen de grenzen.
+**Opslagschijf** | Toegewezen grootte van een schijf moet 32 TB of minder. Hoewel Azure 64-TB schijven met Ultra SSD-schijven ondersteunt, controleert Azure Migrate: Server Assessment momenteel op 32 TB als de schijfgroottelimieten omdat het ultra SSD nog niet ondersteunt. <br/><br/> Het aantal schijven dat aan de machine is gekoppeld, moet 65 of minder zijn, inclusief de os-schijf. | Klaar als binnen de grenzen.
+**Networking** | Aan een machine moeten 32 of minder netwerkinterfaces (NIC's) zijn gekoppeld. | Klaar als binnen de grenzen.
 
-### <a name="guest-operating-system"></a>Gast besturingssysteem
-Naast de VM-eigenschappen controleert de server evaluatie op het gast besturingssysteem van de computers om te bepalen of het op Azure kan worden uitgevoerd.
+### <a name="guest-operating-system"></a>Gastbesturingssysteem
+Samen met VM-eigenschappen kijkt Server Assessment naar het gastbesturingssysteem van de machines om te bepalen of het op Azure kan worden uitgevoerd.
 
 > [!NOTE]
-> Voor virtuele VMware-machines gebruikt server assessment het besturings systeem dat is opgegeven voor de virtuele machine in vCenter Server voor het afhandelen van de analyse van het gast besturingssysteem. Voor Linux-Vm's die worden uitgevoerd op VMware, wordt momenteel niet de exacte kernel-versie van het gast besturingssysteem geïdentificeerd.
+> Voor VMware VM's gebruikt Server Assessment het besturingssysteem dat is opgegeven voor de VM in vCenter Server om de analyse van het gastbesturingssysteem af te handelen. Voor Linux VM's die op VMware draaien, identificeert het momenteel niet de exacte kernelversie van het gastbesturingssysteem.
 
-De volgende logica wordt gebruikt door server evaluatie om de Azure-gereedheid op basis van het besturings systeem te identificeren.
+De volgende logica wordt door Server Assessment gebruikt om azure-gereedheid te identificeren op basis van het besturingssysteem.
 
-**Besturingssysteem** | **Details** | **Status van Azure-gereedheid**
+**Besturingssysteem** | **Details** | **Azure-gereedheidsstatus**
 --- | --- | ---
-Windows Server 2016 & alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2012 R2 & alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2012 & alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2008 R2 met alle SPs | Azure biedt volledige ondersteuning.| Gereed voor Azure
-Windows Server 2008 (32-bits en 64 bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2003, 2003 R2 | Deze besturings systemen hebben hun end-of-support-datum door lopen en hebben een [aangepaste ondersteunings overeenkomst (CSA)](https://aka.ms/WSosstatement) nodig voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem te upgraden voordat u naar Azure migreert.
-Windows 2000, 98, 95, NT, 3.1, MS-DOS | Deze besturings systemen hebben hun end-of-support-datum door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning voor een [abonnement op Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Voorwaardelijk gereed voor Azure
-Windows 10 Pro Desktop | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Voorwaardelijk gereed voor Azure
-Windows Vista, XP Professional | Deze besturings systemen hebben hun end-of-support-datum door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Linux | Azure bevestigt deze [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md). Andere Linux-besturings systemen kunnen worden gestart in azure, maar we raden u aan het besturings systeem bij te werken naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
-Andere besturings systemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple macOS etc., FreeBSD, enzovoort. | Deze besturings systemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
-Besturings systeem opgegeven als een **andere** in vCenter Server | Azure Migrate kan het besturings systeem in dit geval niet identificeren. | Onbekende gereedheid. Zorg ervoor dat het besturings systeem dat wordt uitgevoerd in de virtuele machine wordt ondersteund in Azure.
-32-bits besturings systemen | De machine kan worden gestart in azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem van de machine te upgraden van 32-bits besturings systeem naar 64-bits besturings systeem voordat u naar Azure migreert.
+Windows Server 2016 & alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2012 R2 & alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2012 & alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2008 R2 met alle SP's | Azure biedt volledige ondersteuning.| Gereed voor Azure
+Windows Server 2008 (32-bits en 64-bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2003, 2003 R2 | Deze besturingssystemen hebben hun einddatum van ondersteuning overschreden en hebben een [Aangepaste Ondersteuningsovereenkomst (CSA)](https://aka.ms/WSosstatement) nodig voor ondersteuning in Azure. | Voorwaardelijk klaar voor Azure. Overweeg het besturingssysteem te upgraden voordat u migreert naar Azure.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Deze besturingssystemen hebben hun einddatum van de ondersteuning verstreken. De machine kan starten in Azure, maar Azure biedt geen OS-ondersteuning. | Voorwaardelijk klaar voor Azure. We raden u aan het besturingssysteem te upgraden voordat u migreert naar Azure.
+Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning met [een Visual Studio-abonnement.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Voorwaardelijk gereed voor Azure
+Windows 10 Pro-bureaublad | Azure biedt ondersteuning met [Multitenant Hosting Rights.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Voorwaardelijk gereed voor Azure
+Windows Vista, XP Professional | Deze besturingssystemen hebben hun einddatum van de ondersteuning verstreken. De machine kan starten in Azure, maar Azure biedt geen OS-ondersteuning. | Voorwaardelijk klaar voor Azure. We raden u aan het besturingssysteem te upgraden voordat u migreert naar Azure.
+Linux | Azure onderschrijft deze [Linux-besturingssystemen.](../virtual-machines/linux/endorsed-distros.md) Andere Linux-besturingssystemen starten mogelijk in Azure, maar we raden u aan het besturingssysteem te upgraden naar een goedgekeurde versie voordat u naar Azure migreert. | Klaar voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk klaar als de versie niet wordt goedgekeurd.
+Andere besturingssystemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple macOS etc., FreeBSD, enz. | Azure onderschrijft deze besturingssystemen niet. De machine kan starten in Azure, maar Azure biedt geen OS-ondersteuning. | Voorwaardelijk klaar voor Azure. We raden u aan een ondersteund besturingssysteem te installeren voordat u naar Azure migreert.  
+BE opgegeven als **Ander** in vCenter Server | Azure Migrate kan het besturingssysteem in dit geval niet identificeren. | Onbekende bereidheid. Controleer of het besturingssysteem dat in de VM wordt uitgevoerd, wordt ondersteund in Azure.
+32-bits besturingssystemen | De machine start mogelijk in Azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk klaar voor Azure. Overweeg het besturingssysteem van de machine te upgraden van 32-bits besturingssysteem naar 64-bits besturingssysteem voordat u overstapt naar Azure.
 
-## <a name="calculate-sizing-as-is-on-premises"></a>Grootte berekenen (as-on-premises)
-
-Nadat de computer is gemarkeerd als gereed voor Azure, maakt de server evaluatie aanbevelingen voor het identificeren van de Azure VM en schijf-SKU. Als u de on-premises grootte op locatie gebruikt, wordt de prestatie geschiedenis van de Vm's en schijven niet door de server bepaling beschouwd.
-
-**Berekenings grootte**: er wordt een Azure VM-SKU toegewezen op basis van de grootte die on-premises is toegekend.
-**Grootte van opslag/schijf**: Server evaluatie bekijkt het opslag type dat is opgegeven in de eigenschappen van de evaluatie (standaard HDD/SSD/Premium) en beveelt het schijf type aan. Het standaard opslag type is Premium-schijven.
-**Netwerk grootte**: Server evaluatie beschouwt de netwerk adapter op de on-premises computer.
+## <a name="calculating-sizing"></a>Het berekenen van de grootte
 
 
-## <a name="calculate-sizing-performance-based"></a>Grootte berekenen (op basis van prestaties)
+Nadat de machine is gemarkeerd als klaar voor Azure, doet Server Assessment maataanbevelingen om de Azure VM en disk SKU te identificeren. Grootteberekeningen zijn afhankelijk van de vraag of u as-is on-premises grootte gebruikt of op prestaties gebaseerde grootte.
 
-Als u een computer hebt gemarkeerd als gereed voor Azure, kunt u als volgt de opties voor het aanpassen van de grootte van de server evalueren:
+### <a name="calculate-sizing-as-is-on-premises"></a>Grootte berekenen (on-premises)
 
-- De evaluatie van de server houdt rekening met de prestatie geschiedenis van de machine om de VM-grootte en het schijf type in azure te identificeren.
-- Als servers zijn geïmporteerd met behulp van een CSV-bestand, worden de waarden gebruikt die u opgeeft. Deze methode is vooral nuttig als u de on-premises machine hebt toegewezen, het gebruik in werkelijkheid laag is en u de grootte van de virtuele machine in azure op de juiste manier wilt besparen. 
-- Als u de prestatie gegevens niet wilt gebruiken, stelt u de grootte van de insluitings criteria in op on-premises, zoals beschreven in de vorige sectie.
+ Als u on-premises grootte sizing gebruikt, houdt Server Assessment geen rekening met de prestatiegeschiedenis van de VM's en schijven.
 
-### <a name="calculate-storage-sizing"></a>Opslag grootte berekenen
+- **Compute-grootte:** het wijst een Azure VM SKU toe op basis van de toegewezen grootte on-premises.
+- **Opslag/schijfgrootte**: Serverassessment kijkt naar het opslagtype dat is opgegeven in beoordelingseigenschappen (standaard HDD/SSD/premium) en raadt het schijftype dienovereenkomstig aan. Het standaardopslagtype is premium schijven.
+- **Netwerkgrootte**: Serverassessment houdt rekening met de netwerkadapter op de on-premises machine.
 
-Voor opslag grootte Azure Migrate elke schijf die aan de computer is gekoppeld, toewijzen aan een schijf in Azure en werkt als volgt:
 
-1. De server analyse voegt de IOPS voor lezen en schrijven van een schijf toe om het totale aantal IOPS dat is vereist te verkrijgen. Op dezelfde manier worden de doorvoer-en schrijf waarden toegevoegd om de totale door Voer van elke schijf te verkrijgen.
-2. Als u opslag type hebt opgegeven als automatisch, op basis van de ingangs waarden voor IOPS en door Voer, bepaalt de server bepaling of de schijf moet worden toegewezen aan een standaard HDD, standaard SSD of een Premium-schijf in Azure. Als het opslag type is ingesteld op Standard-HDD/SSD/Premium, probeert de server evaluatie een schijf-SKU te vinden binnen het geselecteerde opslag type (Standard-HDD/SSD/Premium-schijven).
+### <a name="calculate-sizing-performance-based"></a>Grootte berekenen (op basis van prestaties)
+
+Als u prestatiegebaseerde maatvoering gebruikt, doet Server Assessment als volgt maatadviezen:
+
+- Serverbeoordeling houdt rekening met de prestatiegeschiedenis van de machine om de VM-grootte en het schijftype in Azure te identificeren.
+- Als servers zijn geïmporteerd met een CSV-bestand, worden de opgegeven waarden gebruikt. Deze methode is vooral handig als u de on-premises machine te veel hebt toegewezen, het gebruik eigenlijk laag is en u de VM in Azure naar de juiste grootte wilt maken om kosten te besparen. 
+- Als u de prestatiegegevens niet wilt gebruiken, stelt u de groottecriteria opnieuw in op de on-premises as-is, zoals beschreven in de vorige sectie.
+
+#### <a name="calculate-storage-sizing"></a>Opslaggrootte berekenen
+
+Voor het formaat van de opslag probeert Azure Migrate elke schijf die aan de machine is gekoppeld, in te richten op een schijf in Azure en werkt het als volgt:
+
+1. Server Assessment voegt de lees- en schrijf-IOPS van een schijf toe om de totale Vereiste IOPS te krijgen. Op dezelfde manier worden de lees- en schrijfdoorvoerwaarden toegevoegd om de totale doorvoer van elke schijf te krijgen.
+2. Als u opslagtype als automatisch hebt opgegeven, op basis van de effectieve IOPS- en doorvoerwaarden, bepaalt serverbeoordeling of de schijf moet worden toegewezen aan een standaard HDD, standaard SSD of een premium schijf in Azure. Als het opslagtype is ingesteld op Standaard HDD/SSD/Premium, probeert Server Assessment een schijf-SKU te vinden binnen het geselecteerde opslagtype (Standard HDD/SSD/Premium-schijven).
 3. Schijven worden als volgt geselecteerd:
-    - Als met de server bepaling geen schijf met de vereiste IOPS en door Voer wordt gevonden, wordt de machine als niet geschikt voor Azure gemarkeerd.
-    - Als server evaluatie een set geschikte schijven vindt, worden de schijven geselecteerd die ondersteuning bieden voor de locatie die is opgegeven in de instellingen voor evaluatie.
-    - Als er meerdere in aanmerking komende schijven zijn, selecteert de server bepaling de schijf met de laagste kosten.
-    - Als de prestatie gegevens voor schijven niet beschikbaar zijn, worden de configuratie gegevens van de schijf (schijf grootte) gebruikt om een standaard SSD-schijf in azure te vinden.
+    - Als Server Assessment geen schijf met de vereiste IOPS en doorvoer kan vinden, wordt de machine als ongeschikt voor Azure beschouwd.
+    - Als serverbeoordeling een set geschikte schijven vindt, selecteert u de schijven die de locatie ondersteunen die is opgegeven in de beoordelingsinstellingen.
+    - Als er meerdere in aanmerking komende schijven zijn, selecteert Serverassessment de schijf met de laagste kosten.
+    - Als prestatiegegevens voor een schijf niet beschikbaar zijn, worden de configuratiegegevens van de schijf (schijfgrootte) gebruikt om een standaard SSD-schijf in Azure te vinden.
 
-### <a name="calculate-network-sizing"></a>Netwerk grootte berekenen
+#### <a name="calculate-network-sizing"></a>Netwerkgrootte berekenen
 
-De server beoordeling probeert een virtuele machine van Azure te vinden die het aantal netwerk adapters kan ondersteunen dat is gekoppeld aan de on-premises machine en de prestaties die zijn vereist voor deze netwerk adapters.
-- Om de effectief netwerk prestaties van de on-premises virtuele machine te verkrijgen, worden de gegevens die per seconde (MBps) van de computer (netwerk uitgaan) door de server bepaling geaggregeerd op alle netwerk adapters en wordt de comfort factor toegepast. Dit nummer wordt gebruikt om een virtuele machine van Azure te zoeken die de vereiste netwerk prestaties kan ondersteunen.
-- Naast de netwerk prestaties is server evaluatie ook van oordeel of de virtuele machine van Azure het vereiste aantal netwerk adapters kan ondersteunen.
-- Als er geen netwerk prestatie gegevens beschikbaar zijn, is voor de server evaluatie alleen het aantal netwerk adapters voor de VM-grootte in rekening gebracht.
+Server assessment probeert een Azure VM te vinden die het aantal netwerkadapters kan ondersteunen dat is gekoppeld aan de on-premises machine en de prestaties die door deze netwerkadapters worden vereist.
+- Om de effectieve netwerkprestaties van de on-premises VM te krijgen, verzamelt Server Assessment de gegevens die per seconde (MBps) worden verzonden vanuit de machine (netwerk uit), over alle netwerkadapters en past de comfortfactor toe. Het gebruikt dit nummer om een Azure VM te vinden die de vereiste netwerkprestaties kan ondersteunen.
+- Naast de netwerkprestaties wordt bij Server Assessment ook gekeken of de Azure VM het vereiste aantal netwerkadapters kan ondersteunen.
+- Als er geen netwerkprestatiegegevens beschikbaar zijn, houdt Server Assessment rekening met alleen het aantal netwerkadapters voor vm-grootte.
 
 
-### <a name="calculate-compute-sizing"></a>Reken grootte berekenen
+#### <a name="calculate-compute-sizing"></a>Compute-grootte berekenen
 
-Nadat de opslag-en netwerk vereisten zijn berekend, beschouwt de server evaluatie aan de vereisten voor de CPU en het geheugen om een geschikte VM-grootte in azure te vinden.
-- Azure Migrate zoekt naar de effectief gebruikte kernen en het geheugen om een geschikte VM-grootte in azure te vinden.
-- Als er geen geschikte grootte wordt gevonden, wordt de computer gemarkeerd als niet geschikt voor Azure.
-- Als er een geschikte grootte wordt gevonden, past Azure Migrate de opslag-en netwerk berekeningen toe. Vervolgens worden de instellingen voor locatie en prijs categorie toegepast voor de laatste aanbeveling van de VM-grootte.
+Nadat de opslag- en netwerkvereisten zijn berekend, houdt Server Assessment rekening met CPU- en geheugenvereisten om een geschikte VM-grootte in Azure te vinden.
+- Azure Migrate kijkt naar de effectieve gebruikte kernen en geheugen om een geschikte VM-grootte in Azure te vinden.
+- Als er geen geschikte grootte wordt gevonden, wordt de machine gemarkeerd als ongeschikt voor Azure.
+- Als er een geschikte grootte wordt gevonden, past Azure Migrate de opslag- en netwerkberekeningen toe. Vervolgens worden locatie- en prijsniveauinstellingen voor de uiteindelijke aanbeveling voor vm-grootte van toepassing.
 - Als er meer Azure VM-grootten in aanmerking komen, wordt de grootte met de laagste kosten aanbevolen.
 
 
-### <a name="calculate-confidence-ratings"></a>Betrouwbaarheids classificaties berekenen
+## <a name="confidence-ratings-performance-based"></a>Vertrouwensbeoordelingen (op basis van prestaties)
 
-Elke evaluatie op basis van prestaties in Azure Migrate is gekoppeld aan een betrouwbaarheids classificatie die van één (laagste) tot vijf sterren (hoogst) ligt.
+Elke prestatiegebaseerde beoordeling in Azure Migrate is gekoppeld aan een betrouwbaarheidsclassificatie die varieert van één (laagste) tot vijf sterren (hoogste). Met de betrouwbaarheidsclassificatie u de betrouwbaarheid schatten van de grootteaanbevelingen van Azure Migrate.
+
 - De betrouwbaarheidsclassificatie wordt aan een evaluatie toegewezen op basis van de beschikbaarheid van de gegevenspunten die nodig zijn om de evaluatie te berekenen.
-- De betrouwbaarheidsclassificatie van een evaluatie helpt u om de betrouwbaarheid in te schatten van de aanbevelingen voor de grootte die Azure Migrate geeft.
-- Betrouwbaarheids classificaties zijn niet van toepassing *op de on-premises* evaluaties.
-- Voor een hoge grootte op basis van prestaties moet de server beoordeling:
-    - De gebruiks gegevens voor de CPU en het geheugen van de virtuele machine.
-    - De schijf-IOPS en doorvoer gegevens voor elke schijf die aan de VM is gekoppeld.
-    - De netwerk-I/O voor het afhandelen van de grootte van de prestaties voor elke netwerk adapter die is gekoppeld aan een virtuele machine.
+- Voor prestatiegebaseerde grootte, serverbeoordeling behoeften:
+    - De gebruiksgegevens voor CPU- en VM-geheugen.
+    - De schijf-IOPS- en doorvoergegevens voor elke schijf die aan de VM is gekoppeld.
+    - De netwerk-I/O voor het verwerken van prestatiegebaseerde grootte voor elke netwerkadapter die is gekoppeld aan een vm.
+    - Als een van deze gebruiksnummers niet beschikbaar is, zijn de aanbevelingen voor grootte mogelijk niet betrouwbaar.
 
-   Als een van deze gebruiks nummers niet beschikbaar is in vCenter Server, is de aanbeveling voor de grootte mogelijk niet betrouwbaar.
+> [!NOTE]
+> Vertrouwensclassificaties worden niet toegewezen voor servers die zijn beoordeeld met een geïmporteerd . CSV-bestand. Beoordelingen zijn ook niet van toepassing op on-premises beoordeling.
+   
+### <a name="ratings"></a>Waarderingen
 
-Afhankelijk van het percentage beschik bare gegevens punten, gaat de betrouwbaarheids classificatie voor de evaluatie als volgt.
+Afhankelijk van het percentage beschikbare gegevenspunten gaat de betrouwbaarheidsbeoordeling voor de beoordeling als volgt.
 
    **Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
    --- | ---
@@ -222,34 +240,36 @@ Afhankelijk van het percentage beschik bare gegevens punten, gaat de betrouwbaar
    61-80% | 4 sterren
    81-100% | 5 sterren
 
-> [!NOTE]
-> Vertrouwens classificaties worden niet toegewezen aan beoordelingen van servers die worden geïmporteerd met. CSV-bestand in Azure Migrate. 
+### <a name="low-confidence-ratings"></a>Lage vertrouwensbeoordelingen
 
-#### <a name="low-confidence-ratings"></a>Classificaties met lage betrouw baarheid
+Hier zijn een paar redenen waarom een beoordeling een lage betrouwbaarheidsscore zou kunnen krijgen:
 
-Hier volgen enkele redenen waarom een evaluatie een lage betrouwbaarheids classificatie kan krijgen:
-
-- U hebt uw omgeving niet in het profiel voor de duur waarvoor u de evaluatie maakt. Als u bijvoorbeeld de beoordeling met de prestatie duur hebt ingesteld op één dag, moet u wachten tot minstens een dag nadat u de detectie hebt gestart voor alle gegevens punten die u wilt verzamelen.
-- Sommige Vm's zijn afgesloten tijdens de periode waarvoor de evaluatie is berekend. Als een virtuele machine gedurende enige tijd is uitgeschakeld, kan de server bepaling de prestatie gegevens voor die periode niet verzamelen.
-- Sommige Vm's zijn gemaakt tijdens de periode waarvoor de evaluatie is berekend. Als u bijvoorbeeld een evaluatie hebt gemaakt voor de prestatie geschiedenis van de afgelopen maand, maar sommige virtuele machines in de omgeving slechts een week geleden zijn gemaakt, bestaat de prestatie geschiedenis van de nieuwe Vm's niet voor de volledige duur.
+- Je hebt je omgeving niet geprofileerd voor de duur waarvoor je de beoordeling maakt. Als u bijvoorbeeld de beoordeling maakt waarbij de prestatieduur is ingesteld op één dag, moet u ten minste een dag wachten nadat u de detectie hebt gestart voordat alle gegevenspunten worden verzameld.
+- Sommige VM's werden stilgelegd in de periode waarvoor de beoordeling werd berekend. Als vm's voor enige tijd zijn uitgeschakeld, kan Server assessment de prestatiegegevens voor die periode niet verzamelen.
+- Sommige VM's werden gemaakt tijdens de periode waarvoor de beoordeling werd berekend. Als u bijvoorbeeld een beoordeling hebt gemaakt voor de prestatiegeschiedenis van de afgelopen maand, maar sommige VM's pas een week geleden in de omgeving zijn gemaakt, bestaat de prestatiegeschiedenis van de nieuwe VM's niet voor de volledige duur.
 
 > [!NOTE]
-> Als de betrouwbaarheids classificatie van een evaluatie van minder dan vijf sterren is, raden we u aan om ten minste een dag te wachten op het apparaat om de omgeving in te stellen en de evaluatie vervolgens opnieuw te berekenen. Als dat niet het geval is, is de grootte van de prestaties mogelijk niet betrouwbaar. In dat geval raden wij u aan de evaluatie over te scha kelen naar de on-premises grootte.
+> Als de betrouwbaarheidsbeoordeling van een beoordeling minder dan vijf sterren bedraagt, raden we u aan ten minste een dag te wachten voordat het apparaat de omgeving heeft geprofileerd en vervolgens de beoordeling opnieuw te berekenen. Als u dat niet doet, is prestatiegebaseerde maatvoering mogelijk niet betrouwbaar. In dat geval raden we u aan de beoordeling over te schakelen op on-premises dimensionering.
 
 ## <a name="calculate-monthly-costs"></a>Maandelijkse kosten berekenen
 
-Nadat de aanbevelingen voor de grootte zijn voltooid, berekent Azure Migrate reken-en opslag kosten voor na de migratie.
+Nadat de aanbevelingen voor het dimensioneren zijn voltooid, berekent Azure Migrate reken- en opslagkosten voor na migratie.
 
-- **Reken kosten**: met de aanbevolen Azure VM-grootte maakt Azure migrate gebruik van de facturerings-API voor het berekenen van de maandelijkse kosten voor de virtuele machine.
-    - Met de berekening worden het besturings systeem, Software Assurance, gereserveerde instanties, VM-uptime, locatie en valuta-instellingen in rekening gebracht.
-    - Hiermee worden de kosten op alle machines geaggregeerd om de totale maandelijkse reken kosten te berekenen.
-- **Opslag kosten**: de maandelijkse opslag kosten voor een machine worden berekend door het samen voegen van de maandelijkse kosten van alle schijven die aan de machine zijn gekoppeld, als volgt:
-    - Server beoordeling berekent de totale maandelijkse opslag kosten door het samen voegen van de opslag kosten van alle machines.
-    - Op dit moment worden voor de berekening geen aanbiedingen in de evaluatie-instellingen beschouwd.
+- **Rekenkosten:** Azure Migrate gebruikt de facturerings-API om de maandelijkse kosten voor de VM te berekenen met behulp van de aanbevolen Azure VM-grootte.
+    - Bij de berekening wordt rekening gehouden met het besturingssysteem, de softwarezekerheid, gereserveerde exemplaren, de uptime van de VM, de locatie en de valuta-instellingen.
+    - Het verzamelt de kosten voor alle machines om de totale maandelijkse rekenkosten te berekenen.
+- **Opslagkosten**: De maandelijkse opslagkosten voor een machine worden berekend door de maandelijkse kosten van alle schijven die aan de machine zijn gekoppeld, als volgt te aggregeren:
+    - Server assessment berekent de totale maandelijkse opslagkosten door de opslagkosten van alle machines te aggregeren.
+    - Momenteel houdt de berekening geen rekening met aanbiedingen die zijn opgegeven in de beoordelingsinstellingen.
 
-De kosten worden weer gegeven in de valuta die is opgegeven in de instellingen voor evaluatie.
+De kosten worden weergegeven in de valuta die is opgegeven in de beoordelingsinstellingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Bekijk](best-practices-assessment.md) de aanbevolen procedures voor het maken van evaluaties. 
+[Bekijk](best-practices-assessment.md) de aanbevolen procedures voor het maken van beoordelingen. 
+
+
+- Meer informatie over het uitvoeren van beoordelingen voor [Vm's van VMware,](tutorial-prepare-vmware.md) [Hyper-V VM's](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md).
+- Meer informatie over het beoordelen van servers [die zijn geïmporteerd met een CSV-bestand](tutorial-assess-import.md).
+- Meer informatie over het instellen van [afhankelijkheidsvisualisatie](concepts-dependency-visualization.md).

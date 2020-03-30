@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769180"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
@@ -26,7 +26,7 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 * Installeer [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Dit is een hulpprogramma dat u gebruikt om wachtrijberichten te onderzoeken die worden gemaakt met de uitvoerbinding.
 
-## <a name="add-binding"></a>Een uitvoerbinding toevoegen
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>Een uitvoerbinding toevoegen
 
 In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Storage-uitvoerbinding toe te voegen aan de functie die u eerder hebt gemaakt. Met deze binding kunt u minimale code schrijven om een bericht te maken in een wachtrij. U hoeft geen code te schrijven voor taken zoals het openen van een opslagverbinding, het maken van een wachtrij of het krijgen van een verwijzing naar een wachtrij. Deze taken worden voor u verwerkt via Azure Functions-runtime en Queue Storage-uitvoerbinding.
 
@@ -34,9 +34,9 @@ In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Stor
 
 1. Selecteer de functie die u in deze eerdere snelstartgids hebt gemaakt.
 
-1. Selecteer **> nieuwe uitvoer > Azure Queue Storage integreren**.
+1. Selecteer **> Nieuwe uitvoer > Azure Queue Storage integreren**.
 
-1. Klik op **Selecteren**.
+1. Klik **op Selecteren**.
 
     ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +66,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
 
 1. Werk de functiecode bij, afhankelijk van de functietaal:
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Voeg een parameter **outputQueueItem** toe aan de methodehandtekening zoals weergegeven in het volgende voorbeeld.
 
@@ -84,7 +84,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[Javascript](#tab/nodejs)
 
     Voeg code toe die gebruikmaakt van de uitvoerbinding voor het object `context.bindings` om een wachtrijbericht te maken. Voeg deze code toe vóór de instructie `context.done`.
 

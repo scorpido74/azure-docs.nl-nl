@@ -1,6 +1,6 @@
 ---
-title: Rij transformatie wijzigen in gegevens stroom toewijzen
-description: Data base-doel bijwerken met behulp van de trans formatie Alter Row in data flow toewijzen
+title: Rijtransformatie wijzigen in de toewijzingsgegevensstroom
+description: Databasedoel bijwerken met behulp van de transformatie van de gewijzigde rij in de toewijzingsgegevensstroom
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: 0798a3f9ab45ce68086681e7aea96deeb9639f94
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834541"
 ---
-# <a name="alter-row-transformation-in-mapping-data-flow"></a>Rij transformatie wijzigen in gegevens stroom toewijzen
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>Rijtransformatie wijzigen in de toewijzingsgegevensstroom
 
-Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid in te stellen op rijen. U kunt één-op-veel-voor waarden toevoegen als expressies. Deze voor waarden moeten in volg orde van prioriteit worden opgegeven, aangezien elke rij wordt gemarkeerd met het beleid dat overeenkomt met de eerste-overeenkomende expressie. Elk van deze voor waarden kan resulteren in een rij (of rijen) die wordt ingevoegd, bijgewerkt, verwijderd of upserted. Alter Row kan zowel DDL-& DML-acties op uw data base produceren.
+Gebruik de transformatie Rij wijzigen om het beleid voor invoegen, verwijderen, bijwerken en upsert in te stellen op rijen. U één op vele voorwaarden toevoegen als expressie. Deze voorwaarden moeten worden opgegeven in volgorde van prioriteit, omdat elke rij wordt gemarkeerd met het beleid dat overeenkomt met de eerste overeenkomende expressie. Elk van deze voorwaarden kan ertoe leiden dat een rij (of rijen) wordt ingevoegd, bijgewerkt, verwijderd of upserted. Alter Row kan beide DDL-& DML-acties tegen uw database produceren.
 
-![Rij-instellingen wijzigen](media/data-flow/alter-row1.png "Rij-instellingen wijzigen")
+![Rijinstellingen wijzigen](media/data-flow/alter-row1.png "Rijinstellingen wijzigen")
 
-Alter Row-trans formaties worden alleen toegepast op Data Base-of CosmosDB-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. Voer een activiteit gegevens stroom uitvoeren in een pijp lijn uit om het alter Row-beleid in uw database tabellen te bepalen.
+Alter Row-transformaties werken alleen op database of CosmosDB-sinks in uw gegevensstroom. De acties die u aan rijen toewijst (invoegen, bijwerken, verwijderen, upsert) vinden niet plaats tijdens foutopsporingssessies. Voer een activiteit Gegevensstroom uitvoeren uit in een pijplijn om het beleid voor gewijzigde rij in uw databasetabellen uit te voeren.
 
-## <a name="specify-a-default-row-policy"></a>Een standaard beleid voor rijen opgeven
+## <a name="specify-a-default-row-policy"></a>Een standaardrijbeleid opgeven
 
-Een alter Row trans formatie maken en een rij-beleid met een voor waarde van `true()`opgeven. Elke rij die niet overeenkomt met een van de eerder gedefinieerde expressies, wordt gemarkeerd voor het opgegeven Row-beleid. Standaard wordt elke rij die niet overeenkomt met een voorwaardelijke expressie gemarkeerd voor `Insert`.
+Een transformatie Van een rij wijzigen maken `true()`en een rijbeleid opgeven met een voorwaarde van . Elke rij die niet overeenkomt met een van de eerder gedefinieerde expressies wordt gemarkeerd voor het opgegeven rijbeleid. Elke rij die niet overeenkomt met een voorwaardelijke expressie, wordt standaard gemarkeerd voor `Insert`.
 
-![Alter Row Policy](media/data-flow/alter-row4.png "Alter Row Policy")
-
-> [!NOTE]
-> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de voor waarde als `true()`opgeven.
-
-## <a name="view-policies-in-data-preview"></a>Beleids regels weer geven in voor beeld van gegevens
-
-Gebruik de [foutopsporingsmodus](concepts-data-flow-debug-mode.md) om de resultaten van de Alter Row-beleids regels weer te geven in het deel venster voor gegevens voorbeeld. Een voor beeld van een gegevens van een alter Row trans formatie produceert geen DDL-of DML-acties op uw doel.
-
-![Alter Row policies](media/data-flow/alter-row3.png "Alter Row policies")
-
-Elk Alter Row-beleid wordt vertegenwoordigd door een pictogram dat aangeeft of een insert-, update-, upsert-of verwijderde actie wordt uitgevoerd. In de bovenste koptekst ziet u hoeveel rijen worden beïnvloed door elk beleid in de preview-versie.
-
-## <a name="allow-alter-row-policies-in-sink"></a>Alter Row Policies in Sink toestaan
-
-De gegevens stroom moet worden geschreven naar een Data Base of Cosmos Sink om het beleid voor het wijzigen van de rij te kunnen gebruiken. Schakel op het tabblad **instellingen** in de sink in welke Alter Row-beleids regels zijn toegestaan voor die sink.
-
-![Rij-Sink wijzigen](media/data-flow/alter-row2.png "Rij-Sink wijzigen")
-
- Het standaard gedrag is alleen invoegen toestaan. Als u updates, upsert of verwijderen wilt toestaan, schakelt u het selectie vakje in de sink in die overeenkomt met deze voor waarde. Als updates, upsert of, worden verwijderd, zijn ingeschakeld, moet u opgeven welke sleutel kolommen in de Sink moeten worden gevonden.
+![Rijbeleid wijzigen](media/data-flow/alter-row4.png "Rijbeleid wijzigen")
 
 > [!NOTE]
-> Als uw invoeg-, update-of upsert het schema van de doel tabel in de Sink wijzigt, mislukt de gegevens stroom. Als u het doel schema in uw Data Base wilt wijzigen, kiest u **tabel opnieuw maken** als tabel actie. Hiermee wordt de tabel verwijderd en opnieuw gemaakt met de nieuwe schema definitie.
+> Als u alle rijen met één beleid wilt markeren, `true()`u een voorwaarde voor dat beleid maken en de voorwaarde opgeven als.
+
+## <a name="view-policies-in-data-preview"></a>Beleid weergeven in een voorbeeld van gegevens
+
+Gebruik [de foutopsporingsmodus](concepts-data-flow-debug-mode.md) om de resultaten van het beleid voor gewijzigde rij weer te geven in het voorbeeldvenster voor gegevens. Een voorbeeld van gegevens van een gewijzigde rijtransformatie levert geen DDL- of DML-acties op tegen uw doel.
+
+![Rijbeleid wijzigen](media/data-flow/alter-row3.png "Rijbeleid wijzigen")
+
+Elk beleid voor gewijzigde rij wordt weergegeven door een pictogram dat aangeeft of er een actie voor invoegen, bijwerken, upsert of verwijderd wordt. De bovenste koptekst geeft aan hoeveel rijen worden beïnvloed door elk beleid in de preview.
+
+## <a name="allow-alter-row-policies-in-sink"></a>Wijzigen rijbeleid in gootsteen toestaan
+
+Als het rijbeleid wijzigen werkt, moet de gegevensstroom naar een database of Cosmos-sink worden geschreven. Schakel op het tabblad **Instellingen** in uw gootsteen in welke rijbeleidsregels voor die gootsteen zijn toegestaan.
+
+![Rijgootsteen wijzigen](media/data-flow/alter-row2.png "Rijgootsteen wijzigen")
+
+ Het standaardgedrag is om alleen inserts toe te staan. Als u updates, upserts of verwijderingen wilt toestaan, schakelt u het selectievakje in de gootsteen in dat overeenkomt met die voorwaarde. Als updates, upserts of, deletes zijn ingeschakeld, moet u opgeven op welke belangrijke kolommen in de gootsteen moeten worden gekoppeld.
+
+> [!NOTE]
+> Als uw invoegsels, updates of upserts het schema van de doeltabel in de gootsteen wijzigen, mislukt de gegevensstroom. Als u het doelschema in uw database wilt wijzigen, kiest **u Tabel opnieuw maken** als tabelactie. Hiermee wordt uw tabel opnieuw weergegeven met de nieuwe schemadefinitie.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -67,13 +67,13 @@ De gegevens stroom moet worden geschreven naar een Data Base of Cosmos Sink om h
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een alter Row trans formatie met de naam `CleanData` die een binnenkomende stream `SpecifyUpsertConditions` en drie Alter Row-voor waarden maakt. In de vorige trans formatie wordt een kolom met de naam `alterRowCondition` berekend die bepaalt of een rij wordt ingevoegd, bijgewerkt of verwijderd in de data base. Als de waarde van de kolom een teken reeks waarde heeft die overeenkomt met de regel Alter Row, wordt dat beleid toegewezen.
+Het onderstaande voorbeeld is `CleanData` een transformatie met `SpecifyUpsertConditions` een alter row met de naam die een binnenkomende stream neemt en drie gewijzigde rijvoorwaarden maakt. In de vorige transformatie `alterRowCondition` wordt een kolom met de naam berekend die bepaalt of een rij al dan niet in de database wordt ingevoegd, bijgewerkt of verwijderd. Als de waarde van de kolom een tekenreekswaarde heeft die overeenkomt met de regel van de gewijzigde rij, wordt dat beleid toegewezen.
 
-In de Data Factory UX ziet deze trans formatie er als volgt uit:
+In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
 
-![Voor beeld van rijen wijzigen](media/data-flow/alter-row4.png "Voor beeld van rijen wijzigen")
+![Voorbeeld van rij wijzigen](media/data-flow/alter-row4.png "Voorbeeld van rij wijzigen")
 
-Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
+Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
 
 ```
 SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
@@ -83,4 +83,4 @@ SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na de Alter Row trans formatie wilt u mogelijk [uw gegevens in een doel gegevens archief opvangen](data-flow-sink.md).
+Na de transformatie Rij wijzigen u [uw gegevens in een doelgegevensarchief laten zinken.](data-flow-sink.md)

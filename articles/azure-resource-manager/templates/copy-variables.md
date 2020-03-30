@@ -1,24 +1,24 @@
 ---
 title: Meerdere exemplaren van een variabele definiëren
-description: Kopieer bewerking in een Azure Resource Manager sjabloon gebruiken om meerdere keren te herhalen bij het maken van een variabele.
+description: Gebruik de kopieerbewerking in een Azure Resource Manager-sjabloon om meerdere keren te herhalen bij het maken van een variabele.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622870"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153298"
 ---
-# <a name="variable-iteration-in-azure-resource-manager-templates"></a>Variabele herhaling in Azure Resource Manager sjablonen
+# <a name="variable-iteration-in-arm-templates"></a>Variabele iteratie in ARM-sjablonen
 
-In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon meer dan één waarde voor een variabele maakt. Door het element **kopiëren** toe te voegen aan de sectie variabelen van uw sjabloon, kunt u het aantal items voor een variabele tijdens de implementatie dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
+In dit artikel ziet u hoe u meer dan één waarde maakt voor een variabele in uw Azure Resource Manager-sjabloon (ARM). Door het **kopieerelement** toe te voegen aan het gedeelte variabelen van uw sjabloon, u dynamisch het aantal items voor een variabele instellen tijdens de implementatie. U hoeft ook niet de syntaxis van de sjabloon te herhalen.
 
-U kunt ook kopiëren met [resources](copy-resources.md), [Eigenschappen in een resource](copy-properties.md)en [uitvoer](copy-outputs.md)gebruiken.
+U ook kopiëren met [resources,](copy-resources.md) [eigenschappen in een resource](copy-properties.md)en [uitvoer](copy-outputs.md)gebruiken.
 
-## <a name="variable-iteration"></a>Variabele herhaling
+## <a name="variable-iteration"></a>Variabele iteratie
 
-Het element Copy heeft de volgende algemene indeling:
+Het kopieerelement heeft de volgende algemene indeling:
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ Het element Copy heeft de volgende algemene indeling:
 ]
 ```
 
-De eigenschap **name** is een wille keurige waarde die de lus identificeert. De eigenschap **Count** geeft het aantal iteraties op dat u voor de variabele wilt.
+De **eigenschap naam** is een waarde die de lus identificeert. De eigenschap **aantal** geeft het aantal iteraties op dat u voor de variabele wilt hebben.
 
-De eigenschap **input** geeft de eigenschappen aan die u wilt herhalen. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap **input** . Dit kan één eigenschap zijn (zoals een teken reeks) of een object met verschillende eigenschappen.
+De **eigenschap invoer** geeft de eigenschappen op die u wilt herhalen. U maakt een array met elementen die zijn opgebouwd uit de waarde in de **eigenschap invoer.** Het kan een enkele eigenschap zijn (zoals een tekenreeks) of een object met meerdere eigenschappen.
 
-In het volgende voor beeld ziet u hoe u een matrix van teken reeks waarden maakt:
+In het volgende voorbeeld ziet u hoe u een array met tekenreekswaarden maakt:
 
 ```json
 {
@@ -65,7 +65,7 @@ In het volgende voor beeld ziet u hoe u een matrix van teken reeks waarden maakt
 }
 ```
 
-De vorige sjabloon retourneert een matrix met de volgende waarden:
+De voorgaande sjabloon retourneert een array met de volgende waarden:
 
 ```json
 [
@@ -77,7 +77,7 @@ De vorige sjabloon retourneert een matrix met de volgende waarden:
 ]
 ```
 
-In het volgende voor beeld ziet u hoe u een matrix met objecten maakt met drie eigenschappen: name, diskSizeGB en diskIndex.
+In het volgende voorbeeld ziet u hoe u een array met objecten maakt met drie eigenschappen: naam, diskSizeGB en diskIndex.
 
 ```json
 {
@@ -112,7 +112,7 @@ In het volgende voor beeld ziet u hoe u een matrix met objecten maakt met drie e
 }
 ```
 
-In het voor gaande voor beeld wordt een matrix met de volgende waarden geretourneerd:
+In het voorgaande voorbeeld wordt een array met de volgende waarden geretourneerd:
 
 ```json
 [
@@ -145,10 +145,10 @@ In het voor gaande voor beeld wordt een matrix met de volgende waarden geretourn
 ```
 
 > [!NOTE]
-> Variabele herhaling ondersteunt het argument Offset. De offset moet worden opgegeven na de naam van de iteratie, zoals functie copyindex (' diskNames ', 1). Als u geen offset waarde opgeeft, wordt het standaard ingesteld op 0 voor het eerste exemplaar.
+> Variabele iteratie ondersteunt een offsetargument. De verschuiving moet na de naam van de iteratie komen, zoals copyIndex('diskNames', 1). Als u geen verschuivingswaarde opgeeft, wordt deze standaard ingesteld op 0 voor de eerste instantie.
 >
 
-U kunt ook het element Copy binnen een variabele gebruiken. In het volgende voor beeld wordt een object gemaakt dat een matrix heeft als een van de waarden.
+U het kopieerelement ook binnen een variabele gebruiken. In het volgende voorbeeld wordt een object gemaakt dat een array als een van de waarden heeft.
 
 ```json
 {
@@ -186,7 +186,7 @@ U kunt ook het element Copy binnen een variabele gebruiken. In het volgende voor
 }
 ```
 
-In het voor gaande voor beeld wordt een object geretourneerd met de volgende waarden:
+In het voorgaande voorbeeld wordt een object met de volgende waarden geretourneerd:
 
 ```json
 {
@@ -221,7 +221,7 @@ In het voor gaande voor beeld wordt een object geretourneerd met de volgende waa
 }
 ```
 
-In het volgende voor beeld ziet u de verschillende manieren waarop u kopiëren met variabelen kunt gebruiken.
+In het volgende voorbeeld worden de verschillende manieren weergegeven waarop u kopiëren met variabelen gebruiken.
 
 ```json
 {
@@ -295,28 +295,28 @@ In het volgende voor beeld ziet u de verschillende manieren waarop u kopiëren m
 }
 ```
 
-## <a name="copy-limits"></a>Limieten kopiëren
+## <a name="copy-limits"></a>Kopieerlimieten
 
-De telling mag niet groter zijn dan 800.
+De telling mag niet hoger zijn dan 800.
 
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger, Azure CLI 2.0.74 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
+De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2.6 of hoger, Azure CLI 2.0.74 of hoger of REST **API-versie 2019-05-10** of hoger, u het aantal instellen op nul. Eerdere versies van PowerShell, CLI en de REST API ondersteunen geen nul voor telling.
 
 ## <a name="example-templates"></a>Voorbeeldsjablonen
 
-In de volgende voor beelden ziet u algemene scenario's voor het maken van meer dan één waarde voor een variabele.
+In de volgende voorbeelden worden veelvoorkomende scenario's weergegeven voor het maken van meer dan één waarde voor een variabele.
 
 |Template  |Beschrijving  |
 |---------|---------|
-|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Demonstreert de verschillende manieren om variabelen te herhalen. |
-|[Meerdere beveiligings regels](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Implementeert diverse beveiligings regels voor een netwerk beveiligings groep. Hiermee worden de beveiligings regels van een para meter gemaakt. Zie [meerdere NSG-parameter bestanden](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)voor de para meter. |
+|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Toont de verschillende manieren van herhalen op variabelen. |
+|[Meerdere beveiligingsregels](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Implementeert verschillende beveiligingsregels naar een netwerkbeveiligingsgroep. Het construeert de beveiligingsregels van een parameter. Zie [meerdere NSG-parameterbestand](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)voor de parameter . |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie: meerdere resource-instanties maken met behulp van Resource Manager-sjablonen](template-tutorial-create-multiple-instances.md)als u een zelf studie wilt door lopen.
-* Zie voor andere toepassingen van het element copy:
-  * [Resource iteratie in Azure Resource Manager sjablonen](copy-resources.md)
-  * [Eigenschaps herhaling in Azure Resource Manager sjablonen](copy-properties.md)
-  * [Uitvoer herhaling in Azure Resource Manager sjablonen](copy-outputs.md)
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor meer informatie over de secties van een sjabloon.
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
+* Zie [Zelfstudie: meerdere resource-exemplaren maken met ARM-sjablonen](template-tutorial-create-multiple-instances.md)voor het doorlopen van een zelfstudie.
+* Zie voor andere toepassingen van het kopieerelement:
+  * [Resourceiteratie in ARM-sjablonen](copy-resources.md)
+  * [Eigenschapiteratie in ARM-sjablonen](copy-properties.md)
+  * [Uitvoeriteratie in ARM-sjablonen](copy-outputs.md)
+* Zie [ARM-sjablonen ontwerpen](template-syntax.md)als u meer wilt weten over de secties van een sjabloon.
+* Zie [Een toepassing implementeren met ARM-sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
 

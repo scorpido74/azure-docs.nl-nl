@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Query uitvoeren op gegevens in Azure Data Explorer Web UI'
-description: In deze snelstartgids leert u hoe u query's uitvoeren en delen van gegevens in Azure Data Explorer Web-UI.
+title: 'Snelstart: querygegevens in azure data explorer-webgebruikers'
+description: In deze snelstart leert u hoe u gegevens opvragen en delen in de webgebruikersinterface van Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797192"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Quickstart: Query uitvoeren op gegevens in Azure Data Explorer Web UI
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Snelstart: querygegevens in azure data explorer-webgebruikers
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer is een webtoepassing voor het uitvoeren en delen van query's. De toepassing is beschikbaar in de Azure Portal en als een zelfstandige webtoepassing. In dit artikel werkt u in de zelfstandige versie, waarmee u verbinding kunt maken met meerdere clusters en dieptekoppelingen naar uw query's kunt delen.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer is een webtoepassing voor het uitvoeren en delen van query's. De toepassing is beschikbaar in de Azure Portal en als een zelfstandige webtoepassing. In dit artikel werkt u in de zelfstandige versie, waarmee u verbinding kunt maken met meerdere clusters en dieptekoppelingen naar uw query's kunt delen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +26,7 @@ Naast een Azure-abonnement hebt u een [cluster en database voor testdoeleinden](
 
 ## <a name="sign-in-to-the-application"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [de toepassing](https://dataexplorer.azure.com/).
+Log hier [the application](https://dataexplorer.azure.com/)in
 
 ## <a name="add-clusters"></a>Clusters toevoegen
 
@@ -38,11 +38,11 @@ U moet een verbinding voor ten minste één cluster toevoegen voordat u query's 
 
 1. Selecteer in de linkerbovenhoek van de toepassing **Add Cluster**.
 
-1. In de **toevoegen cluster** in het dialoogvenster, voer de URI en selecteer vervolgens **toevoegen**.
+1. Voer **in** het dialoogvenster Cluster toevoegen de URI in en selecteer **Toevoegen**.
 
-   U kunt het helpcluster URI, `https://help.kusto.windows.net`. Als u uw eigen cluster hebt, geeft u de URI van het cluster. Bijvoorbeeld, `https://mydataexplorercluster.westus.kusto.windows.net` zoals in de volgende afbeelding:
+   U het Help-cluster URI gebruiken, `https://help.kusto.windows.net`. Als u uw eigen cluster hebt, geeft u de URI van uw cluster op. Bijvoorbeeld, `https://mydataexplorercluster.westus.kusto.windows.net` zoals in de volgende afbeelding:
 
-    ![Server-URI in de Portal](media/web-query-data/server-uri.png)
+    ![Server URI in Portal](media/web-query-data/server-uri.png)
 
 1. In het linkerdeelvenster ziet u nu het cluster **help**. Vouw de database **Samples** uit, zodat u de voorbeeldtabellen ziet waartoe u toegang hebt.
 
@@ -151,7 +151,7 @@ Nu u hebt gezien hoe eenvoudige query's werken, gaan we kijken hoe u het tabelra
 
     Dit deelvenster is vergelijkbaar met de lijst met draaitabelvelden in Excel en stelt u in staat om aanvullende analyse uit te voeren in het raster zelf.
 
-1. Selecteer **Pivot Mode** en versleep de kolommen als volgt: **State** naar **Row Groups**, **DamageProperty** naar **Values** en **EventType** naar **Column labels**.  
+1. Select **Pivot Mode** en sleep als volgt kolommen: **State** naar **Row Groups**, **DamageProperty** naar **Values** en **EventType** naar **Column labels**.  
 
     ![Pivot Mode](media/web-query-data/pivot-mode.png)
 

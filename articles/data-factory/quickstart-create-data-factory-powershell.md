@@ -1,5 +1,5 @@
 ---
-title: Gegevens in Blob Storage kopiëren met behulp van Azure Data Factory
+title: Gegevens kopiëren in Blob-opslag met Azure Data Factory
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75440082"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstartgids: een Azure-data factory maken met behulp van Power shell
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstart: een Azure-gegevensfabriek maken met PowerShell
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-powershell.md)
 
-In deze snelstartgids wordt beschreven hoe u PowerShell kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md) voor meer informatie over het **transformeren** van gegevens met Azure Data Factory.
+In deze snelstartgids wordt beschreven hoe u PowerShell kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md)voor een zelfstudie over het transformeren **van** gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -55,13 +55,13 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     Get-AzSubscription
     ```
 
-4. Als u meerdere abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
+4. Als u meerdere abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) en voer de opdracht uit. Bijvoorbeeld: `"ADFQuickStartRG"`.
 
@@ -88,7 +88,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Als u de data factory wilt maken, voert u de volgende **set-AzDataFactoryV2** -cmdlet uit met behulp van de eigenschap Location en ResourceGroupName van de variabele $ResGrp:
+4. Als u de gegevensfabriek wilt maken, voert u de volgende cmdlet **Set-AzDataFactoryV2** uit met de eigenschap Locatie en ResourceGroupName van de variabele $ResGrp:
 
     ```powershell
     $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
@@ -138,7 +138,7 @@ Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureStorageLinkedService**.
+3. Voer de **cmdlet Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -157,10 +157,10 @@ Maak gekoppelde services in een data factory om uw gegevensarchieven en compute-
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-In deze procedure maakt u twee gegevenssets: **InputDataset** en **OutputDataset**. Deze gegevens sets zijn van het type **binary**. Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt.
+In deze procedure maakt u twee gegevenssets: **InputDataset** en **OutputDataset**. Deze gegevenssets zijn van het type **Binary**. Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt.
 De invoergegevensset vertegenwoordigt de brongegevens in de invoermap. In de definitie van de invoergegevensset geeft u de blob-container (**adftutorial**) en de map (**invoer**) op, en het bestand (**emp.txt**) dat de brongegevens bevat.
 De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de bestemming. In de definitie van de uitvoergegevensset geeft u de blob-container (**adftutorial**) en de map (**uitvoer**) op, en het bestand waarin de brongegevens zijn gekopieerd. 
-1. Maak een JSON-bestand met de naam **input DataSet. json** in de map **C:\ADFv2QuickStartPSH** met de volgende inhoud:
+1. Maak een JSON-bestand met de naam **InputDataset.json** in de map **C:\ADFv2QuickStartPSH,** met de volgende inhoud:
 
     ```json
     {
@@ -184,7 +184,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     }
     ```
 
-2. Als u de gegevensset wilt maken: **input dataset**, voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
+2. Als u de gegevensset wilt maken: **InputDataset,** voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -202,7 +202,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Herhaal de stappen om de uitvoergegevensset te maken. Maak een JSON-bestand met de naam **output DataSet. json** in de map **C:\ADFv2QuickStartPSH** met de volgende inhoud:
+3. Herhaal de stappen om de uitvoergegevensset te maken. Maak een JSON-bestand met de naam **OutputDataset.json** in de map **C:\ADFv2QuickStartPSH,** met de volgende inhoud:
 
     ```json
     {
@@ -225,7 +225,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     }
     ```
 
-4. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de **outgegevensset**te maken.
+4. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de **OutDataset**te maken.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -244,7 +244,7 @@ De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de
     ```
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-In deze procedure maakt u een pijp lijn met een Kopieer activiteit die gebruikmaakt van de invoer-en uitvoer gegevens sets. Met de kopieeractiviteit worden gegevens uit het bestand dat is opgegeven bij de instellingen voor de invoergegevensset gekopieerd naar het bestand dat is opgegeven in de instellingen voor de uitvoergegevensset.  
+In deze procedure maakt u een pijplijn met een kopieeractiviteit die gebruikmaakt van de invoer- en uitvoergegevenssets. Met de kopieeractiviteit worden gegevens uit het bestand dat is opgegeven bij de instellingen voor de invoergegevensset gekopieerd naar het bestand dat is opgegeven in de instellingen voor de uitvoergegevensset.  
 
 1. Maak een JSON-bestand met de naam **Adfv2QuickStartPipeline.json** in de map **C:\ADFv2QuickStartPSH**. Geef dit bestand de volgende inhoud:
 
@@ -300,7 +300,7 @@ In deze procedure maakt u een pijp lijn met een Kopieer activiteit die gebruikma
     }
     ```
 
-2. Als u de pijp lijn wilt maken: **Adfv2QuickStartPipeline**, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
+2. De pijplijn maken: **Adfv2QuickStartPipeline**, Voert de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `
@@ -312,9 +312,9 @@ In deze procedure maakt u een pijp lijn met een Kopieer activiteit die gebruikma
 
 ## <a name="create-a-pipeline-run"></a>Een pijplijnuitvoering maken
 
-In deze stap maakt u een pijplijn uitvoering.
+In deze stap maakt u een pijplijnrun.
 
-Voer de cmdlet **invoke-AzDataFactoryV2Pipeline** uit om een pijplijn uitvoering te maken. De cmdlet retourneert de id voor de pijplijnuitvoering voor toekomstige controle.
+Voer de cmdlet **Invoke-AzDataFactoryV2Pipeline** uit om een pijplijnrun te maken. De cmdlet retourneert de id voor de pijplijnuitvoering voor toekomstige controle.
 
   ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline `

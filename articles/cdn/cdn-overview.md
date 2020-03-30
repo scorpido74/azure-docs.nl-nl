@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75660627"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Wat is een netwerk voor contentlevering in Azure?
@@ -35,10 +35,10 @@ De voordelen van het gebruik van Azure CDN voor het leveren van websitemateriaal
 
 Zie [Azure CDN POP-locaties](cdn-pop-locations.md) om een lijst met de huidige CDN-knooppuntlocaties te bekijken.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>Hoe werkt het?
 ![Overzicht van CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Een gebruiker (Alice) gebruikt een URL met een speciale domeinnaam, zoals _&lt;endpoint name&gt;_ .azureedge.net, om een bestand (ook wel een asset genoemd) aan te vragen. Deze naam kan een hostnaam van een eindpunt of een aangepast domein zijn. De DNS stuurt de aanvraag door naar de best presterende POP-locatie, die meestal de POP is die zich geografisch gezien het dichtstbij de gebruiker bevindt.
+1. Een gebruiker (Alice) vraagt een bestand aan (ook wel een asset genoemd) met behulp van een URL met een speciale domeinnaam, zoals _ &lt;eindpuntnaam&gt;_.azureedge.net. Deze naam kan een hostnaam van een eindpunt of een aangepast domein zijn. De DNS stuurt de aanvraag door naar de best presterende POP-locatie, die meestal de POP is die zich geografisch gezien het dichtstbij de gebruiker bevindt.
     
 2. Als het bestand niet beschikbaar is in het cachegeheugen van de randservers in de POP, vraagt de POP het bestand aan bij de oorspronkelijke server. De oorspronkelijke server kan een Azure-web-app, Azure Cloud-service, Azure Storage-account of een openbaar toegankelijke webserver zijn.
    
@@ -67,7 +67,7 @@ Azure CDN biedt de volgende belangrijke functies:
 - [Dynamische siteversnelling](cdn-dynamic-site-acceleration.md)
 - [Regels voor CDN-caching](cdn-caching-rules.md)
 - [Ondersteuning voor aangepaste HTTPS-domeinen](cdn-custom-ssl.md)
-- [Diagnostische logboeken van Azure](cdn-azure-diagnostic-logs.md)
+- [Azure-diagnostische logboeken](cdn-azure-diagnostic-logs.md)
 - [Bestandscompressie](cdn-improve-performance.md)
 - [Geofilters](cdn-restrict-access-by-country.md)
 

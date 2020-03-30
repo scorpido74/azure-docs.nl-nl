@@ -6,50 +6,50 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76767972"
 ---
-# <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (preview-versie)
+# <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (voorbeeld)
 
-Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azure Marketplace. Hiermee worden aggregatie van agrarische gegevens sets in verschillende providers mogelijk. Met Azure FarmBeats kunt u modellen voor kunst matige intelligentie (AI) of machine learning (ML) maken op basis van gegevens sets met zekering. Door gebruik te maken van Azure FarmBeats kunnen de landbouw bedrijven zich richten op de belangrijkste waarde-toevoegen in plaats van de niet-gedifferentieerde zware opheffen van data engineering.
+Azure FarmBeats is een business-to-business-aanbod dat beschikbaar is in Azure Marketplace. Het maakt aggregatie van de landbouw gegevenssets tussen aanbieders. Azure FarmBeats stelt u in staat om kunstmatige intelligentie (AI) of machine learning (ML) modellen te bouwen op basis van gefuseerde gegevenssets. Door Azure FarmBeats te gebruiken, kunnen landbouwbedrijven zich richten op kernwaardetoevoegen in plaats van het ongedifferentieerde zware werk van data engineering.
 
 > [!NOTE]
-> Azure FarmBeats is momenteel beschikbaar als open bare preview. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Azure FarmBeats wordt zonder service level agreement gegeven. Gebruik het [Azure FarmBeats-forum](https://aka.ms/FarmBeatsMSDN ) voor ondersteuning.
+> Azure FarmBeats is momenteel in openbare preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. Azure FarmBeats wordt geleverd zonder servicelevelovereenkomst. Gebruik het [Azure FarmBeats-forum](https://aka.ms/FarmBeatsMSDN ) voor ondersteuning.
 
-![Maten van project-Farm](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Project Farm Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-Met de preview-versie van Azure FarmBeats kunt u het volgende doen:
+Met de preview van Azure FarmBeats u:
 
-- Evalueer de farm status met behulp van de vegetatie-index en de water index op basis van satelliet afbeelding.
-- Krijg aanbevelingen over het aantal vocht sensors dat moet worden gebruikt en waar ze moeten worden geplaatst.
-- Houd Farm voorwaarden bij door te visualiseren van de massa gegevens die door Sens oren van verschillende leveranciers zijn verzameld.
-- Kaart voor bodem vocht ophalen op basis van het fusie van satelliet-en sensor gegevens.
-- Krijg inzicht in de bewerkings acties door AI/ML-modellen boven op geaggregeerde gegevens sets te bouwen.
-- Bouw of verbeter uw oplossing voor digitale land bouwers door de farm status adviezen te bieden.
+- Beoordeel de gezondheid van de boerderij aan de hand van vegetatie-index en waterindex op basis van satellietbeelden.
+- Krijg aanbevelingen over hoeveel bodemvochtsensoren u moet gebruiken en waar u ze plaatsen.
+- Volg de omstandigheden van de boerderij door grondgegevens te visualiseren die zijn verzameld door sensoren van verschillende leveranciers.
+- Krijg bodemvocht kaart op basis van de fusie van satelliet-en sensorgegevens.
+- Krijg bruikbare inzichten door AI/ML-modellen te bouwen bovenop geaggregeerde gegevenssets.
+- Bouw of breid uw digitale landbouwoplossing uit door gezondheidsadviezen op de boerderij te bieden.
 
 ## <a name="datahub"></a>Datahub
 
-De Azure FarmBeats Datahub is een API-laag, waarmee aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets tussen providers worden ingeschakeld. U kunt Azure FarmBeats gebruiken om het volgende te krijgen:
-- **Sensor gegevens** van twee sensor-providers [Davis instrumenten](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [pessl-instrumenten](https://metos.at/)
-- **Satelliet afbeelding** van de missie van de [Sentinel-2-](https://sentinel.esa.int/web/sentinel/home) satelliet van het Euro pees ruimte-agentschap
-- **Drone image** uit drie drone-installatie kopie providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
+De Azure FarmBeats Datahub is een API-laag, die aggregatie, normalisatie en contextualisatie van verschillende landbouwgegevenssets tussen providers mogelijk maakt. U Azure FarmBeats gebruiken om:
+- **Sensorgegevens** van twee sensorproviders [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [Pessl Instruments](https://metos.at/)
+- **Satellietbeelden** van de [Sentinel-2-satellietmissie](https://sentinel.esa.int/web/sentinel/home) van de Europese Ruimtevaartorganisatie
+- **Drone beelden** van drie drone beelden providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
 
-Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer providers om te integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het bouwen van uw oplossing.
+Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer providers samen om te integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het bouwen van uw oplossing.
 
-## <a name="accelerator"></a>Snelle
+## <a name="accelerator"></a>Accelerator
 
-De Azure FarmBeats Accelerator is een voor beeld van een webtoepassing, die boven op Datahub is gebouwd. De Accelerator-Jump-Start uw gebruikers interface en model ontwikkeling. De Azure FarmBeats Accelerator maakt gebruik van Azure FarmBeats-Api's. Er worden opgenomen sensor gegevens gevisualiseerd als grafieken en model uitvoer als kaarten. U kunt de Accelerator bijvoorbeeld gebruiken om snel een farm te maken en een vegetatie-index toewijzing of een sensor plaatsings kaart voor die Farm te verkrijgen.
+De Azure FarmBeats Accelerator is een voorbeeldwebtoepassing die bovenop Datahub is gebouwd. De Accelerator start uw gebruikersinterface en modelontwikkeling. De Azure FarmBeats-versneller maakt gebruik van api's van Azure FarmBeats. Het visualiseert ingenomen sensorgegevens als grafieken en modeloutputs als kaarten. U de versneller bijvoorbeeld gebruiken om snel een boerderij te maken en gemakkelijk een vegetatie-indexkaart of een sensorplaatsingskaart voor die boerderij te krijgen.
 
 ## <a name="resources"></a>Resources
 
-Azure FarmBeats wordt zonder extra kosten aangeboden en u betaalt alleen voor de Azure-resources die u gebruikt. U kunt de onderstaande bronnen gebruiken voor meer informatie over de aanbieding:
+Azure FarmBeats wordt gratis aangeboden en u betaalt alleen voor de Azure-resources die u gebruikt. U de onderstaande bronnen gebruiken om meer te weten te komen over het aanbod:
 
-- Blijf op de hoogte van het nieuwste Azure FarmBeats News door de [Azure FarmBeats-blog](https://aka.ms/farmbeatsblog)te bezoeken.
-- Zoek hulp door een vraag te plaatsen op ons [ondersteunings forum voor Azure FarmBeats](https://aka.ms/farmbeatssupport).
-- Geef feedback door post of stem toe voor een functie idee op ons [Feedback forum van Azure FarmBeats](https://aka.ms/farmbeatsfeedback).
+- Blijf op de hoogte van het laatste Azure FarmBeats-nieuws door onze [Azure FarmBeats-blog te](https://aka.ms/farmbeatsblog)bezoeken.
+- Zoek hulp door een vraag te plaatsen op ons [Azure FarmBeats-ondersteuningsforum.](https://aka.ms/farmbeatssupport)
+- Geef feedback door een functieidee te plaatsen of te stemmen op ons [Azure FarmBeats-feedbackforum.](https://aka.ms/farmbeatsfeedback)
 
 ## <a name="next-steps"></a>Volgende stappen
 

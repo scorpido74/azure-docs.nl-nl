@@ -1,9 +1,9 @@
 ---
-title: Aanvragen voor een toegangs pakket in azure AD-rechts beheer weer geven-Azure Active Directory
-description: Meer informatie over het weer geven van aanvragen voor een toegangs pakket in Azure Active Directory rechten beheer.
+title: Aanvragen voor een toegangspakket weergeven in Azure AD-rechtenbeheer - Azure Active Directory
+description: Meer informatie over het weergeven van aanvragen voor een toegangspakket in Azure Active Directory-rechtenbeheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: addc7db2aa2f0f9ba16438d2a31d6c7cc6bfa49e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f210602817c03b73ca4c48da2c3dad5549777f47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128734"
 ---
-# <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Aanvragen voor een toegangs pakket weer geven in het beheer van rechten van Azure AD
+# <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Aanvragen voor een toegangspakket weergeven in Azure AD-rechtenbeheer
 
-In het beheer van rechten van Azure AD kunt u zien wie toegangs pakketten, hun beleid en status heeft aangevraagd. In dit artikel wordt beschreven hoe aanvragen voor een toegangs pakket worden weer gegeven.
+In Azure AD-rechtenbeheer u zien wie toegangspakketten, hun beleid en status heeft aangevraagd. In dit artikel wordt beschreven hoe u aanvragen voor een toegangspakket bekijken.
 
 ## <a name="view-requests"></a>Aanvragen weergeven
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
 
-1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
+1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
 
-1. Klik op **aanvragen**.
+1. Klik **op Aanvragen**.
 
-1. Klik op een specifieke aanvraag om aanvullende informatie weer te geven.
+1. Klik op een specifiek verzoek om meer details te bekijken.
 
-    ![Lijst met aanvragen voor een toegangs pakket](./media/entitlement-management-access-package-requests/requests-list.png)
+    ![Lijst met aanvragen voor een toegangspakket](./media/entitlement-management-access-package-requests/requests-list.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)
-- [Toewijzingen voor een toegangs pakket weer geven, toevoegen en verwijderen](entitlement-management-access-package-assignments.md)
+- [Aanvraag- en goedkeuringsinstellingen voor een toegangspakket wijzigen](entitlement-management-access-package-request-policy.md)
+- [Toewijzingen voor een toegangspakket weergeven, toevoegen en verwijderen](entitlement-management-access-package-assignments.md)
 - [Problemen met aanvragen oplossen](entitlement-management-troubleshoot.md#requests)

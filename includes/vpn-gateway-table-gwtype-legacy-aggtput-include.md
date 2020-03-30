@@ -9,13 +9,13 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175925"
 ---
-In de volgende tabel ziet u de gatewaytypen en de geschatte geaggregeerde doorvoer per gateway-SKU. Deze tabel is van toepassing op de resourcemanager en klassieke implementatiemodellen. 
+In de volgende tabel ziet u de gatewaytypen en de geschatte geaggregeerde doorvoer per gateway-SKU. Deze tabel is van toepassing op resourcebeheer en klassieke implementatiemodellen. 
 
 De prijzen zijn afhankelijk van de gateway-SKU's. Zie [Prijzen van VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) voor meer informatie.
 
@@ -38,4 +38,4 @@ De gateway-SKU UltraPerformance staat niet in deze tabel. Meer informatie over d
 
 (5) Actief-actief S2S VPN-gatewayverbindingen worden niet ondersteund voor deze SKU. Actief-actief wordt alleen ondersteund op de HighPerformance SKU.
 
-(6) basic SKU is afgeschaft voor gebruik met ExpressRoute.
+(6) Basic SKU is afgeschaft voor gebruik met ExpressRoute.

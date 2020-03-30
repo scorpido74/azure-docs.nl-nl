@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: Azure Analysis Services maken met behulp van Power shell-Azure Analysis Services | Microsoft Docs'
+title: Snelstart - Azure Analysis Services maken met PowerShell Azure Analysis Services | Microsoft Documenten
 description: Leer hoe u een Azure Analysis Services-server maakt met behulp van PowerShell
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442876"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Snelstart: Een server maken - PowerShell
@@ -44,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) is een logische container waarin Azure-resources worden geïmplementeerd en als groep beheerd. Wanneer u de server maakt, moet u een resourcegroep opgeven in uw abonnement. Als u nog geen resourcegroep hebt, maakt u een nieuwe met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt in de regio US - west.
+Een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) is een logische container waarin Azure-resources worden geïmplementeerd en als groep beheerd. Wanneer u de server maakt, moet u een resourcegroep opgeven in uw abonnement. Als u nog geen resourcegroep hebt, maakt u een nieuwe met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt in de regio VS - west.
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -72,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 In deze snelstart hebt u geleerd hoe u een server in uw Azure-abonnement maakt met behulp van PowerShell. Nu u een server hebt gemaakt, kunt u deze beveiligen door een serverfirewall te configureren. (Optioneel) U kunt ook rechtstreeks vanuit de portal een eenvoudig voorbeeldgegevensmodel toevoegen aan de server. Een voorbeeldmodel is handig als u meer wilt weten over het configureren van modeldatabaserollen en het testen van clientverbindingen. Als u meer wilt weten, gaat u verder met de zelfstudie waarin u leert een voorbeeldmodel toe te voegen.
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een serverfirewall configureren - Portal](analysis-services-qs-firewall.md)      
+> [Snelstart: serverfirewall configureren - Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Zelfstudie: Een voorbeeldmodel toevoegen aan uw server](analysis-services-create-sample-model.md)

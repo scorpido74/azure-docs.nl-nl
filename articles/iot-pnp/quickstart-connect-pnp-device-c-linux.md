@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van een IoT Plug en Play preview-apparaat code koppelen aan IoT Hub (Linux) | Microsoft Docs
-description: Maak IoT Plug en Play preview-voorbeeld code op Linux en voer deze uit om verbinding te maken met een IoT-hub. Gebruik de Azure CLI om de informatie weer te geven die door het apparaat naar de hub is verzonden.
+title: IoT Plug and Play Preview-voorbeeldapparaatcode verbinden met IoT Hub (Linux) | Microsoft Documenten
+description: IoT Plug and Play Preview-voorbeeldapparaatcode op Linux bouwen en uitvoeren die verbinding maakt met een IoT-hub. Gebruik de Azure CLI om de informatie weer te geven die door het apparaat naar de hub wordt verzonden.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/23/2019
@@ -9,34 +9,34 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 8134c0a97f6350cfa2cf616695c5990618455393
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75531246"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Quick Start: een voor beeld van een IoT Plug en Play preview-Device toepassing die op Linux wordt uitgevoerd, verbinden met IoT Hub (C Linux)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Snelstart: sluit een voorbeeld van IoT Plug and Play Preview-apparaattoepassing die op Linux wordt uitgevoerd, aan op IoT Hub (C Linux)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-In deze Quick start ziet u hoe u een voor beeld van een IoT Plug en Play Device-toepassing in Linux maakt, hoe u deze verbindt met uw IoT-Bub en hoe u de Azure CLI gebruikt om de informatie weer te geven die wordt verzonden naar de hub. De voorbeeld toepassing is geschreven in C en is opgenomen in de Azure IoT Device SDK voor C. Een oplossings ontwikkelaar kan de Azure CLI gebruiken om inzicht te krijgen in de mogelijkheden van een IoT-Plug en Play apparaat zonder dat er toestel code hoeft te worden weer gegeven.
+Deze quickstart laat u zien hoe u een voorbeeld van IoT Plug and Play-apparaattoepassing op Linux bouwen, deze aansluiten op uw IoT-bub en de Azure CLI gebruiken om de informatie te bekijken die naar de hub wordt verzendt. De voorbeeldtoepassing is geschreven in C en is opgenomen in de Azure IoT-apparaat SDK voor C. Een ontwikkelaar van een oplossing kan de Azure CLI gebruiken om inzicht te krijgen in de mogelijkheden van een IoT Plug and Play-apparaat zonder dat er apparaatcode hoeft te worden bekeken.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze Quick Start wordt ervan uitgegaan dat u Ubuntu Linux gebruikt. De stappen in deze zelf studie zijn getest met Ubuntu 18,04.
+Deze quickstart gaat ervan uit dat je Ubuntu Linux gebruikt. De stappen in deze tutorial zijn getest met Ubuntu 18.04.
 
-Om deze Quick Start te volt ooien, moet u de volgende software installeren op uw lokale Linux-computer:
+Om deze quickstart te voltooien, moet u de volgende software op uw lokale Linux-machine installeren:
 
-Installeer **gcc**, **Git**, **cmake**en alle afhankelijkheden met behulp van de `apt-get` opdracht:
+Installeer **GCC,** **Git,** **cmake**en alle `apt-get` afhankelijkheden met de opdracht:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Controleer of de versie van `cmake` hoger is dan **2.8.12** en of de versie van **gcc** hoger is dan **4.4.7**.
+Controleer of `cmake` de versie van is boven **2.8.12** en de versie van **GCC** is boven **4.4.7**.
 
 ```sh
 cmake --version
@@ -47,9 +47,9 @@ gcc --version
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
-In deze Quick start gaat u een ontwikkel omgeving voorbereiden die u kunt gebruiken om de Azure IoT Hub Device C SDK te klonen en te bouwen.
+In deze quickstart bereidt u een ontwikkelomgeving voor die u gebruiken om de Azure IoT Hub Device C SDK te klonen en te bouwen.
 
-Open een opdracht prompt in de gewenste map. Voer de volgende opdracht uit om de [Azure IOT C-sdk's en-bibliotheken](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen op deze locatie:
+Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de [GitHub-opslagplaats azure IoT C-sedk's en bibliotheken](https://github.com/Azure/azure-iot-sdk-c) op deze locatie te klonen:
 
 ```bash
 git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -59,9 +59,9 @@ Deze bewerking kan enkele minuten in beslag nemen.
 
 ## <a name="build-the-code"></a>De code bouwen
 
-U gebruikt de SDK van het apparaat om de opgenomen voorbeeld code te maken. De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
+U gebruikt de SDK van het apparaat om de meegeleverde voorbeeldcode te maken. De toepassing die u bouwt, simuleert een apparaat dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Maak een `cmake`-submap in de hoofdmap van de apparaat-SDK en navigeer naar die map:
+1. Maak `cmake` een submap in de hoofdmap van de apparaatSDK en navigeer naar die map:
 
     ```bash
     cd azure-iot-sdk-c
@@ -69,62 +69,62 @@ U gebruikt de SDK van het apparaat om de opgenomen voorbeeld code te maken. De t
     cd cmake
     ```
 
-1. Voer de volgende opdrachten uit om de SDK van het apparaat en de gegenereerde code-stub te maken:
+1. Voer de volgende opdrachten uit om de SDK van het apparaat en de gegenereerde code-stub te bouwen:
 
     ```bash
     cmake ..
     cmake --build .
     ```
 
-## <a name="update-your-model-repository"></a>Uw model opslagplaats bijwerken
+## <a name="update-your-model-repository"></a>Uw modelopslagplaats bijwerken
 
-Voordat u het voor beeld uitvoert, voegt u het functionaliteits model van het apparaat en de interface definities toe aan uw bedrijfs model opslagplaats:
+Voordat u het voorbeeld uitvoert, voegt u het apparaatcapaciteitsmodel en de interfacedefinities toe aan uw bedrijfsmodelopslagplaats:
 
-1. Meld u aan bij de [Portal van Azure Certified voor IOT](https://preview.catalog.azureiotsolutions.com) met uw werk-of school account van micro soft of uw micro soft-partner-id als u er een hebt.
+1. Meld u aan bij de [Azure Certified for IoT-portalportal](https://preview.catalog.azureiotsolutions.com) met uw Microsoft-werk- of schoolaccount of uw Microsoft Partner ID als u er een hebt.
 
-1. Selecteer **bedrijfs opslagplaats** en vervolgens **mogelijkheden modellen**.
+1. Selecteer **Bedrijfsopslagplaats** en vervolgens **Capaciteitsmodellen**.
 
-1. Selecteer **Nieuw** en **Upload**vervolgens.
+1. Selecteer **Nieuw** en **upload vervolgens**.
 
-1. Selecteer de bestands `SampleDevice.capabilitymodel.json` in de map `digitaltwin_client/samples` in de hoofdmap van de apparaat-SDK. Selecteer **openen** en vervolgens **Opslaan** om het model bestand te uploaden naar uw opslag plaats.
+1. Selecteer het `SampleDevice.capabilitymodel.json` bestand `digitaltwin_client/samples` in de map in de hoofdmap van de apparaatSDK. Selecteer **Openen** en vervolgens **Opslaan** om het modelbestand naar uw opslagplaats te uploaden.
 
-1. Selecteer **bedrijfs opslagplaats** en vervolgens de **interfaces**.
+1. Selecteer **Bedrijfsopslagplaats** en vervolgens **Interfaces**.
 
-1. Selecteer **Nieuw** en **Upload**vervolgens.
+1. Selecteer **Nieuw** en **upload vervolgens**.
 
-1. Selecteer de bestands `EnvironmentalSensor.interface.json` in de map `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` in de hoofdmap van de apparaat-SDK. Selecteer **openen** en vervolgens **Opslaan** om het interface bestand te uploaden naar de opslag plaats.
+1. Selecteer het `EnvironmentalSensor.interface.json` bestand `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` in de map in de hoofdmap van de apparaatSDK. Selecteer **Openen** en vervolgens **Opslaan** om het interfacebestand naar uw opslagplaats te uploaden.
 
-1. Selecteer **bedrijfs opslagplaats** en vervolgens **verbindings reeksen**. Noteer de eerste opslagplaats van het _bedrijfs model Connection String_, zoals u deze verderop in deze Quick Start gebruikt.
+1. Selecteer **Bedrijfsopslagplaats** en vervolgens **Verbindingstekenreeksen**. Maak een notitie van de eerste _bedrijfsmodel repository verbindingstekenreeks,_ zoals u deze later in deze quickstart gebruikt.
 
-## <a name="run-the-device-sample"></a>Het voor beeld van het apparaat uitvoeren
+## <a name="run-the-device-sample"></a>Het voorbeeld van het apparaat uitvoeren
 
-Voer een voorbeeld toepassing in de SDK uit om een IoT-Plug en Play apparaat te simuleren dat telemetrie verzendt naar uw IoT-hub. De voorbeeld toepassing uitvoeren:
+Voer een voorbeeldtoepassing uit in de SDK om een IoT Plug and Play-apparaat te simuleren dat telemetrie naar uw IoT-hub verzendt. Ga als volgende over de volgende toepassing:
 
-1. Navigeer in de map `cmake` naar de map met het uitvoer bare bestand:
+1. Navigeer `cmake` vanuit de map naar de map met het uitvoerbare bestand:
 
     ```bash
     cd digitaltwin_client/samples/digitaltwin_sample_device
     ```
 
-1. Voer het uitvoer bare bestand uit:
+1. Voer het uitvoerbare bestand uit:
 
     ```bash
     ./digitaltwin_sample_device "<YourDeviceConnectionString>"
     ```
 
-Het apparaat is nu gereed om opdrachten en updates van eigenschappen te ontvangen en is begonnen met het verzenden van telemetriegegevens naar de hub. Laat het voor beeld uitvoeren tijdens het uitvoeren van de volgende stappen.
+Het apparaat is nu klaar om opdrachten en eigendomsupdates te ontvangen en is begonnen met het verzenden van telemetriegegevens naar de hub. Houd het voorbeeld actief terwijl u de volgende stappen uitvoert.
 
-### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>De code valideren met behulp van de Azure IoT CLI
+### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>De Azure IoT CLI gebruiken om de code te valideren
 
-Nadat het voor beeld van de apparaatclient is gestart, controleert u of deze werkt met de Azure CLI.
+Nadat het voorbeeld van de apparaatclient is gestart, controleert u of het werkt met de Azure CLI.
 
-Gebruik de volgende opdracht om de telemetrie te bekijken waarvan het voor beeld-apparaat wordt verzonden. Mogelijk moet u een minuut of twee wachten voordat u een telemetrie in de uitvoer ziet:
+Gebruik de volgende opdracht om de telemetrie weer te geven die het voorbeeldapparaat verzendt. Het kan nodig zijn om een minuut of twee te wachten voordat u telemetrie in de uitvoer ziet:
 
 ```azurecli-interactive
 az iot dt monitor-events --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Gebruik de volgende opdracht om de eigenschappen weer te geven die zijn verzonden door het apparaat:
+Gebruik de volgende opdracht om de eigenschappen weer te geven die door het apparaat worden verzonden:
 
 ```azurecli-interactive
 az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID> --interface sensor --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
@@ -133,7 +133,7 @@ az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat verbindt met een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten:
+In deze quickstart heb je geleerd hoe je een IoT Plug and Play-apparaat aansluiten op een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug and Play-apparaten:
 
 > [!div class="nextstepaction"]
-> [Instructies: verbinding maken met en interactie met een apparaat](howto-develop-solution.md)
+> [How-to: Verbinding maken met en communiceren met een apparaat](howto-develop-solution.md)

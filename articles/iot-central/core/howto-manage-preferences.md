@@ -1,42 +1,42 @@
 ---
-title: Uw persoonlijke voor keuren beheren op IoT Central | Microsoft Docs
-description: Uw persoonlijke toepassings voorkeuren beheren, zoals de taal en het thema wijzigen in uw IoT Central-toepassing.
+title: Uw persoonlijke voorkeuren beheren op IoT Central | Microsoft Documenten
+description: Hoe beheert u uw persoonlijke toepassingsvoorkeuren, zoals het wijzigen van taal en thema in uw IoT Central-toepassing.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157888"
 ---
-# <a name="manage-your-personal-application-preferences"></a>Uw persoonlijke toepassings voorkeuren beheren
+# <a name="manage-your-personal-application-preferences"></a>Uw persoonlijke toepassingsvoorkeuren beheren
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
-IoT Central biedt u de flexibiliteit om uw toepassingen aan uw behoeften aan te passen. We bieden ook enige flexibiliteit per gebruiker om uw eigen weer gave aan te passen. In dit artikel worden de verschillende aanpassings opties beschreven die een gebruiker op het profiel kan Toep assen.
+IoT Central biedt de flexibiliteit om uw toepassingen aan te passen aan uw behoeften. We bieden ook enige flexibiliteit per gebruiker om uw eigen weergave aan te passen. In dit artikel worden de verschillende aanpassingsopties beschreven die een gebruiker op zijn profiel kan toepassen.
 
 ## <a name="changing-language"></a>Taal wijzigen
 
-IoT Central wordt ondersteund in meerdere talen. U kunt scha kelen tussen uw voorkeurs taal met behulp van de **taal kiezer** op het pictogram instellingen op de bovenste navigatie balk. Zodra u uw taal hebt gewijzigd, IoT Central u de selectie opnieuw door een van uw toepassingen te maken. Aanpassing in de toepassing, zoals de dashboard afbeeldingen, zijn niet gelokaliseerd.
+IoT Central wordt ondersteund in meerdere talen. U uw voorkeurstaal wijzigen door de **taalkiezer** te gebruiken op het instellingenpictogram op de bovenste navigatiebalk. Zodra u uw taal hebt gewijzigd, onthoudt IoT Central uw selectie en past deze toe op al uw toepassingen. Aanpassing binnen de toepassing dergelijke dashboardafbeeldingen zijn niet gelokaliseerd.
 
 ## <a name="changing-theme"></a>Thema wijzigen
 
-We bieden ondersteuning voor zowel het donkere thema als het licht thema. Hoewel het licht thema de standaard instelling is, kunt u het thema wijzigen door het pictogram instellingen op de bovenste navigatie balk te selecteren.
+We hebben ondersteuning voor zowel donker thema als licht thema. Hoewel het lichtthema de standaardinstelling is, u het thema wijzigen door het pictogram instellingen op de bovenste navigatiebalk te selecteren.
 
-![IoT Central thema kiezer](media/howto-manage-preferences/settings.png)
+![IoT Central themakiezer](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> De optie om te kiezen tussen lichte en donkere Thema's is niet beschikbaar als uw beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
+> De optie om te kiezen tussen lichte en donkere thema's is niet beschikbaar als uw beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u uw profiel kunt beheren in azure IoT Central, volgt u de voorgestelde volgende stap:
+Nu u hebt geleerd hoe u uw profiel beheren in Azure IoT Central, volgt de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Live Chat in-/uitschakelen](howto-show-hide-chat.md)
+> [Live chat in-/uitschakelen](howto-show-hide-chat.md)

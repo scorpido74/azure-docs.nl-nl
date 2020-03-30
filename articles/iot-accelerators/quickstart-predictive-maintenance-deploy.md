@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62106810"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Quickstart: een cloudoplossing proberen om een analyse voor predictief onderhoud uit te voeren op mijn verbonden apparaten
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Quickstart: Een cloudoplossing uitproberen om een analyse voor predictief onderhoud uit te voeren op mijn verbonden apparaten
 
 In deze quickstart ziet u hoe u de Azure IoT-oplossingsverbetering voor predictief onderhoud implementeert om een cloudsimulatie voor predictief onderhoud uit te voeren. Nadat u de oplossingsverbetering hebt geïmplementeerd, gebruikt u de pagina **Dashboard** van de oplossing om een analyse voor predictief onderhoud uit te voeren op gegevens uit een gesimuleerde vliegtuigmotor. U kunt deze oplossingsverbetering gebruiken als uitgangspunt voor uw eigen implementatie of als leermiddel.
 
@@ -26,7 +26,7 @@ De motoren van de vliegtuigen van Fabrikam zijn uitgerust met sensoren die de to
 
 U hebt een actief Azure-abonnement nodig om deze snelstart te voltooien.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
@@ -40,7 +40,7 @@ Klik op de tegel **Predictief onderhoud**. Klik op de pagina **Predictief onderh
 
 Voer op de pagina **Oplossing voor predictief onderhoud maken** een unieke **Oplossingsnaam** in voor de oplossingsverbetering voor predictief onderhoud. Voor deze quickstart gebruiken we **MijnPredictiefOnderhoud**.
 
-Selecteer het **Abonnement** en de **Regio** die u wilt gebruiken om de oplossingsverbetering te implementeren. U kiest meestal de regio die zich het meest in uw buurt bevindt. Voor deze snelstart gebruiken we **Visual Studio Enterprise** en **US - oost**. U moet een [globale beheerder of gebruiker](iot-accelerators-permissions.md) zijn in het abonnement.
+Selecteer het **Abonnement** en de **Regio** die u wilt gebruiken om de oplossingsverbetering te implementeren. U kiest meestal de regio die zich het meest in uw buurt bevindt. Voor deze snelstart gebruiken we **Visual Studio Enterprise** en **VS - oost**. U moet een [globale beheerder of gebruiker](iot-accelerators-permissions.md) zijn in het abonnement.
 
 Klik op **Maken** om de implementatie te starten. Het duurt minstens vijf minuten om dit proces uit te voeren:
 
@@ -80,7 +80,7 @@ U kunt de simulatie op elk punt stoppen, maar wanneer u op **Simulatie starten**
 
 Laat de oplossingsversneller voor predictief onderhoud geïmplementeerd als u de functie nog meer wilt verkennen.
 
-Als u de oplossingsverbetering niet meer nodig hebt, verwijdert u deze op de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door de oplossingsverbetering te selecteren en op **Oplossing verwijderen** te klikken:
+Als u de oplossingsversneller niet meer nodig hebt, verwijdert u deze van de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door deze te selecteren en vervolgens op **Oplossing verwijderen:**
 
 ![Oplossing verwijderen](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 

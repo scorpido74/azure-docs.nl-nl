@@ -1,6 +1,6 @@
 ---
-title: Integratie met App Service Mobile Apps Notification Hubs
-description: Meer informatie over de werking van Azure Notification Hubs met Azure App Service Mobile Apps.
+title: Integratie van Notification Hubs met mobiele apps van App Service
+description: Meer informatie over hoe Azure Notification Hubs werken met Mobiele Azure App Service Apps.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76264149"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integratie met App Service Mobile Apps
@@ -45,4 +45,4 @@ Hier zijn een aantal voordelen voor ontwikkelaars:
   - *Pushen naar apparaat*: de SDK's gebruiken de installatie-id van een mobiele app automatisch als GUID om te registreren bij Notification Hubs. Hierdoor is het niet meer nodig om meerdere service-GUID's bij te houden.
 - **Installatiemodel**: mobiele apps werken met het meest recente pushmodel van Notification Hubs. Hierdoor zijn alle pusheigenschappen beschikbaar die aan een apparaat zijn gekoppeld in een JSON-installatie, die aansluit op de Push Notification Services en eenvoudig te gebruiken is.
 - **Flexibiliteit**: ontwikkelaars kunnen altijd beslissen om rechtstreeks met Notification Hubs te werken, zelfs na integratie.
-- **Geïntegreerde ervaring in [Azure Portal](https://portal.azure.com)** : de pushfunctie in mobiele apps is zeer visueel en ontwikkelaars kunnen eenvoudig via mobiele apps met de bijbehorende meldingshub werken.
+- **Geïntegreerde ervaring in [Azure Portal](https://portal.azure.com)**: de pushfunctie in mobiele apps is zeer visueel en ontwikkelaars kunnen eenvoudig via mobiele apps met de bijbehorende meldingshub werken.

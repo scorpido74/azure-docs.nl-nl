@@ -1,15 +1,15 @@
 ---
-title: Quick Start-Hallo wereld implementeren op Azure Service Fabric net
+title: Snelstart - Hello World implementeren in Azure Service Fabric Mesh
 description: In deze snelstart ziet u hoe u een Service Fabric Mesh-toepassing in Azure Service Fabric Mesh implementeert.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75458970"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Snelstart: Hallo wereld implementeren in Service Fabric Mesh
@@ -93,7 +93,7 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent om de toepassing te verwijderen, voert u de opdracht [AZ Group delete][az-group-delete] uit om de resource groep en de toepassings-en netwerk resources daarin te verwijderen.
+Wanneer u zover bent dat u de toepassing wilt verwijderen, voert u de opdracht [az group delete][az-group-delete] uit om de resourcegroep evenals de toepassings- en netwerkresources te verwijderen die er deel van uitmaken.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

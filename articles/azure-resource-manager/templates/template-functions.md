@@ -1,22 +1,22 @@
 ---
 title: Sjabloonfuncties
-description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden op te halen, te werken met teken reeksen en cijfers en implementatie gegevens op te halen.
+description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden op te halen, met tekenreeksen en numerieke gegevens te werken en implementatiegegevens op te halen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156256"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager-sjabloon functies
+# <a name="arm-template-functions"></a>ARM-sjabloonfuncties
 
-In dit artikel worden alle functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon. Zie de [syntaxis van sjablonen](template-expressions.md)voor meer informatie over het gebruik van functies in uw sjabloon.
+In dit artikel worden alle functies beschreven die u gebruiken in een ARM-sjabloon (Azure Resource Manager). Zie [syntaxis van](template-expressions.md)de sjabloon voor informatie over het gebruik van functies in uw sjabloon.
 
-Zie door de [gebruiker gedefinieerde functies](template-syntax.md#functions)om uw eigen functies te maken.
+Zie [Door de gebruiker gedefinieerde functies](template-syntax.md#functions)als u uw eigen functies wilt maken.
 
-De meeste functies werken hetzelfde wanneer ze worden geïmplementeerd in een resource groep, een abonnement, een beheer groep of een Tenant. Een aantal functies kan niet worden gebruikt in alle bereiken. Deze worden vermeld in de onderstaande lijsten.
+De meeste functies werken hetzelfde wanneer ze worden geïmplementeerd in een resourcegroep, abonnement, beheergroep of tenant. Een paar functies kunnen niet in alle scopes worden gebruikt. Ze staan in de onderstaande lijsten.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -38,25 +38,25 @@ De meeste functies werken hetzelfde wanneer ze worden geïmplementeerd in een re
 
 ## <a name="array-and-object-functions"></a>Matrix- en objectfuncties
 
-Resource Manager biedt verschillende functies voor het werken met matrices en objecten.
+Resource Manager biedt verschillende functies voor het werken met arrays en objecten.
 
-* [array](template-functions-array.md#array)
-* [Voeg](template-functions-array.md#coalesce)
-* [concat](template-functions-array.md#concat)
-* [daarin](template-functions-array.md#contains)
+* [matrix](template-functions-array.md#array)
+* [samensmelten](template-functions-array.md#coalesce)
+* [Concat](template-functions-array.md#concat)
+* [Bevat](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [gelaten](template-functions-array.md#empty)
-* [instantie](template-functions-array.md#first)
-* [Snij punt](template-functions-array.md#intersection)
-* [json](template-functions-array.md#json)
-* [duren](template-functions-array.md#last)
-* [lange](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
-* [max](template-functions-array.md#max)
-* [bereik](template-functions-array.md#range)
-* [skip](template-functions-array.md#skip)
-* [Houd](template-functions-array.md#take)
-* [Réunion](template-functions-array.md#union)
+* [Lege](template-functions-array.md#empty)
+* [Eerste](template-functions-array.md#first)
+* [Snijpunt](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [Laatste](template-functions-array.md#last)
+* [Lengte](template-functions-array.md#length)
+* [Min](template-functions-array.md#min)
+* [Max](template-functions-array.md#max)
+* [Bereik](template-functions-array.md#range)
+* [Overslaan](template-functions-array.md#skip)
+* [Nemen](template-functions-array.md#take)
+* [Unie](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -68,24 +68,24 @@ Resource Manager biedt verschillende functies voor het werken met matrices en ob
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
-* [gelijk is aan](template-functions-comparison.md#equals)
-* [jonge](template-functions-comparison.md#less)
+* [equals](template-functions-comparison.md#equals)
+* [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [groter](template-functions-comparison.md#greater)
+* [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Implementatie waarden functies
+## <a name="deployment-value-functions"></a>Functies voor implementatiewaarde
 
-Resource Manager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die betrekking hebben op de implementatie:
+Resourcemanager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die verband houden met de implementatie:
 
-* [inhoudsdistributiepad](template-functions-deployment.md#deployment)
-* [variabelen](template-functions-deployment.md#environment)
+* [implementatie](template-functions-deployment.md#deployment)
+* [Milieu](template-functions-deployment.md#environment)
 * [parameters](template-functions-deployment.md#parameters)
-* [variabelen](template-functions-deployment.md#variables)
+* [Variabelen](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -95,13 +95,13 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden uit sec
 
 ## <a name="logical-functions"></a>Logische functies
 
-Resource Manager biedt de volgende functies voor het werken met logische voor waarden:
+Resource Manager biedt de volgende functies voor het werken met logische voorwaarden:
 
-* [maar](template-functions-logical.md#and)
+* [En](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [if](template-functions-logical.md#if)
-* [ten](template-functions-logical.md#not)
-* [or](template-functions-logical.md#or)
+* [Als](template-functions-logical.md#if)
+* [Niet](template-functions-logical.md#not)
+* [Of](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -116,17 +116,17 @@ Resource Manager biedt de volgende functies voor het werken met logische voor wa
 
 ## <a name="numeric-functions"></a>Numerieke functies
 
-Resource Manager biedt de volgende functies voor het werken met gehele getallen:
+Resource manager biedt de volgende functies voor het werken met gehele getallen:
 
-* [add](template-functions-numeric.md#add)
-* [Functie copyindex](template-functions-numeric.md#copyindex)
+* [Toevoegen](template-functions-numeric.md#add)
+* [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
-* [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
-* [max](template-functions-numeric.md#max)
-* [mod](template-functions-numeric.md#mod)
-* [mul](template-functions-numeric.md#mul)
+* [Int](template-functions-numeric.md#int)
+* [Min](template-functions-numeric.md#min)
+* [Max](template-functions-numeric.md#max)
+* [Mod](template-functions-numeric.md#mod)
+* [Mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
@@ -142,19 +142,19 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
 ## <a name="resource-functions"></a>Resourcefuncties
 
-Resource Manager biedt de volgende functies voor het ophalen van waarden van resources:
+Resourcemanager biedt de volgende functies voor het verkrijgen van resourcewaarden:
 
-* [extensionResourceId](template-functions-resource.md#extensionresourceid)
-* [listAccountSas](template-functions-resource.md#list)
-* [Listkeys ophalen](template-functions-resource.md#listkeys)
-* [listSecrets](template-functions-resource.md#list)
-* [orderverzamellijst](template-functions-resource.md#list)
-* [hardwareproviders](template-functions-resource.md#providers)
-* [referentielaag](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) -kan alleen worden gebruikt in implementaties van een resource groep.
-* [resourceId](template-functions-resource.md#resourceid) -kan in elk bereik worden gebruikt, maar de geldige para meters veranderen afhankelijk van het bereik.
-* [abonnement](template-functions-resource.md#subscription) : kan alleen worden gebruikt in implementaties van een resource groep of abonnement.
-* [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
+* [extensieResourceId](template-functions-resource.md#extensionresourceid)
+* [lijstAccountSas](template-functions-resource.md#list)
+* [lijstSleutels](template-functions-resource.md#listkeys)
+* [lijstGeheimen](template-functions-resource.md#list)
+* [lijst*](template-functions-resource.md#list)
+* [Providers](template-functions-resource.md#providers)
+* [Verwijzing](template-functions-resource.md#reference)
+* [resourceGroep](template-functions-resource.md#resourcegroup) - kan alleen worden gebruikt in implementaties naar een resourcegroep.
+* [resourceId](template-functions-resource.md#resourceid) - kan worden gebruikt op elk bereik, maar de geldige parameters veranderen afhankelijk van het bereik.
+* [abonnement](template-functions-resource.md#subscription) - kan alleen worden gebruikt in implementaties voor een resourcegroep of -abonnement.
+* [abonnementResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
 <a id="base64" aria-hidden="true" />
@@ -190,45 +190,45 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden van res
 
 ## <a name="string-functions"></a>Tekenreeksfuncties
 
-Resource Manager biedt de volgende functies voor het werken met teken reeksen:
+Resourcemanager biedt de volgende functies voor het werken met tekenreeksen:
 
 * [base64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
-* [concat](template-functions-string.md#concat)
-* [daarin](template-functions-string.md#contains)
+* [Concat](template-functions-string.md#concat)
+* [Bevat](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [gelaten](template-functions-string.md#empty)
-* [endsWith](template-functions-string.md#endswith)
-* [instantie](template-functions-string.md#first)
-* [Formatteer](template-functions-string.md#format)
-* [GPT](template-functions-string.md#guid)
-* [indexOf](template-functions-string.md#indexof)
-* [duren](template-functions-string.md#last)
+* [Lege](template-functions-string.md#empty)
+* [endsMet](template-functions-string.md#endswith)
+* [Eerste](template-functions-string.md#first)
+* [Formaat](template-functions-string.md#format)
+* [Guid](template-functions-string.md#guid)
+* [indexVan](template-functions-string.md#indexof)
+* [Laatste](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [lange](template-functions-string.md#length)
-* [newGuid](template-functions-string.md#newguid)
+* [Lengte](template-functions-string.md#length)
+* [nieuwGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
-* [vervangen](template-functions-string.md#replace)
-* [skip](template-functions-string.md#skip)
+* [Vervangen](template-functions-string.md#replace)
+* [Overslaan](template-functions-string.md#skip)
 * [split](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [tekenreeksexpressie](template-functions-string.md#string)
-* [subtekenreeks](template-functions-string.md#substring)
-* [Houd](template-functions-string.md#take)
+* [startMet](template-functions-string.md#startswith)
+* [tekenreeks](template-functions-string.md#string)
+* [Subtekenreeks](template-functions-string.md#substring)
+* [Nemen](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
-* [trim](template-functions-string.md#trim)
+* [Toupper](template-functions-string.md#toupper)
+* [Trim](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [URI](template-functions-string.md#uri)
+* [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
+* [utcNu](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md) voor een beschrijving van de secties in een Azure Resource Manager sjabloon
-* Zie voor het samen voegen van meerdere sjablonen [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)
-* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md) voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
+* Zie [Arm-sjablonen ontwerpen](template-syntax.md) voor een beschrijving van de secties in een ARM-sjabloon
+* Zie [Gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md) als u meerdere sjablonen wilt samenvoegen
+* Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)als u een bepaald aantal keren wilt herhalen bij het maken van een type resource.
+* Zie [Een toepassing implementeren met ARM-sjablonen](deploy-powershell.md) als u wilt zien hoe u de sjabloon implementeren die u hebt gemaakt,

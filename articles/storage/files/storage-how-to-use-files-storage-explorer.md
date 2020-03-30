@@ -1,5 +1,5 @@
 ---
-title: Azure-bestands shares beheren met Azure Storage Explorer
+title: Azure-bestandsshares beheren met Azure Storage Explorer
 description: In deze snelstart leert u hoe Azure Storage Explorer gebruikt om Azure-bestandsshares te beheren.
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431828"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Snelstart: Azure-bestandsshares maken en beheren met Azure Storage Explorer
@@ -19,12 +19,12 @@ In deze handleiding worden de basisbeginselen besproken van het werken met [Azur
 
 Azure Storage Explorer is een populair clienthulpprogramma dat beschikbaar is voor Windows, macOS en Linux. Met Azure Storage Explorer kunt u Azure-bestandsshares en andere opslagresources beheren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 Voor deze snelstartgids moet Azure Storage Explorer zijn geïnstalleerd. Ga naar [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om het te downloaden en te installeren.
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 U kunt Azure Storage Explorer niet gebruiken voor het maken van nieuwe resources. Voor deze demo maakt u het opslagaccount in [Azure Portal](https://portal.azure.com/). 
 
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
@@ -49,7 +49,7 @@ Ga als volgt te werk om uw eerste Azure-bestandsshare te maken in het `storageac
 
 3. Voer voor de bestandsshare *myshare* in en druk op Enter.
 
-De namen van shares mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten, maar mogen niet met een afbreekstreepje beginnen. Zie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de naamgeving van bestandsshares en bestanden.
+De namen van shares mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten, maar mogen niet met een afbreekstreepje beginnen. Zie [Aandelen, mappen, bestanden en metagegevens benoemen en verwijzen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)voor meer informatie over het benoemen van bestandsshares en bestanden.
 
 Nadat de bestandsshare is gemaakt, wordt er in het rechterdeelvenster een tabblad voor de bestandsshare geopend. 
 
