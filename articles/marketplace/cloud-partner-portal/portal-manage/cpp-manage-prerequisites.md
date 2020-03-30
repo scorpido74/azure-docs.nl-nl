@@ -1,20 +1,19 @@
 ---
-title: Vereisten voor het beheren van accounts op het Cloud Partner-portal | Azure Marketplace
-description: Afgeschafte CPP-artikel, gewijs naar PC-artikel; was "vereisten voor het beheren van Azure Marketplace-accounts op de Cloud Partner-portal."
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Voorwaarden voor het beheren van accounts op de Cloud Partner Portal | Azure Marketplace
+description: Afgeschaft CPP artikel, wees op PC artikel; was 'Voorwaarden voor het beheren van Azure Marketplace-accounts op de Cloud Partner Portal'.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 1b6e7df904b6c564935a3f34ca2da12bed459c4f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: b01c6fbf1d35c786338308debc1281fa943a6bf3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279892"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Vereisten voor het beheren van accounts op het Cloud Partner-portal
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Voorwaarden voor het beheren van accounts op de Cloud Partner Portal
 
-Deze functionaliteit is verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie [uw commerciële Marketplace-account beheren in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie.
+Deze functionaliteit is verplaatst naar de Microsoft [Partner Center-portal.](https://partner.microsoft.com/) Zie [Uw Commerciële Marketplace-account beheren in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie.

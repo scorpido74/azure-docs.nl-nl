@@ -1,25 +1,25 @@
 ---
-title: Azure-toepassing Insights standaard SDK-eind punten overschrijven
-description: Wijzig de standaard Azure Monitor Application Insights SDK-eind punten voor regio's als Azure Government.
+title: Azure Application Insights overschrijven standaard SDK-eindpunten
+description: Wijzig standaard AZURE Monitor Application Insights SDK-eindpunten voor regio's zoals Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298321"
 ---
-# <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
+# <a name="application-insights-overriding-default-endpoints"></a>Application Insights overschrijven standaardeindpunten
 
-Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen moeten de voorbeeld code aanpassen en de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`en `Profile_Query_Endpoint_address` vervangen door de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
+Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaardeindpuntadressen overschrijven. Elke SDK vereist iets andere wijzigingen, die allemaal worden beschreven in dit artikel. Deze wijzigingen vereisen het aanpassen van de voorbeeldcode `QuickPulse_Endpoint_Address` `TelemetryChannel_Endpoint_Address`en `Profile_Query_Endpoint_address` het vervangen van de tijdelijke aanduidingswaarden voor , en door de werkelijke eindpuntadressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpuntadressen voor regio's waar deze configuratie vereist is.
 
-## <a name="sdk-code-changes"></a>SDK-code wijzigingen
+## <a name="sdk-code-changes"></a>Wijzigingen in SDK-code
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET met applicationinsights. config
+### <a name="net-with-applicationinsightsconfig"></a>.NET met applicationinsights.config
 
 > [!NOTE]
-> Het bestand applicationinsights. config wordt automatisch overschreven wanneer een SDK-upgrade wordt uitgevoerd. Nadat u een SDK-upgrade hebt uitgevoerd, moet u de regio-specifieke eindpunt waarden opnieuw invoeren.
+> Het bestand applicationinsights.config wordt automatisch overschreven wanneer een SDK-upgrade wordt uitgevoerd. Zorg er na het uitvoeren van een SDK-upgrade voor dat u de regiospecifieke eindpuntwaarden opnieuw invoert.
 
 ```xml
 <ApplicationInsights>
@@ -43,7 +43,7 @@ Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, mo
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 
-Wijzig het bestand appSettings. json in uw project als volgt om het belangrijkste eind punt aan te passen:
+Wijzig het bestand appsettings.json in uw project als volgt om het hoofdeindpunt aan te passen:
 
 ```json
 "ApplicationInsights": {
@@ -54,7 +54,7 @@ Wijzig het bestand appSettings. json in uw project als volgt om het belangrijkst
   }
 ```
 
-De waarden voor dynamische metrische gegevens en het eind punt voor de profiel query kunnen alleen worden ingesteld via code. Als u de standaard waarden voor alle eindpunt waarden via code wilt overschrijven, moet u de volgende wijzigingen aanbrengen in de `ConfigureServices` methode van het `Startup.cs`-bestand:
+De waarden voor Live Metrics en het Eindpunt van profielquery's kunnen alleen via code worden ingesteld. Als u de standaardwaarden voor alle eindpuntwaarden via code `ConfigureServices` wilt `Startup.cs` overschrijven, voert u de volgende wijzigingen aan in de methode van het bestand:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -69,15 +69,15 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
 
-### <a name="azure-functions-v2x"></a>Azure Functions v2. x
+### <a name="azure-functions-v2x"></a>Azure-functies v2.x
 
-Installeer de volgende pakketten in uw functie project:
+Installeer de volgende pakketten in uw functieproject:
 
-- Micro soft. ApplicationInsights versie 2.10.0
-- Micro soft. ApplicationInsights. PerfCounterCollector versie 2.10.0
-- Micro soft. ApplicationInsights. WindowsServer. TelemetryChannel-versie 2.10.0
+- Microsoft.ApplicationInsights versie 2.10.0
+- Microsoft.ApplicationInsights.PerfCounterCollector versie 2.10.0
+- Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel versie 2.10.0
 
-Voeg vervolgens de opstart code voor uw functie toepassing toe (of wijzig deze):
+Voeg vervolgens de opstartcode voor uw functietoepassing toe (of wijzigt):
 
 ```csharp
 [assembly: WebJobsStartup(typeof(Example.Startup))]
@@ -122,7 +122,7 @@ namespace Example
 
 ### <a name="java"></a>Java
 
-Wijzig het applicationinsights. XML-bestand om het standaard eindpunt adres te wijzigen.
+Wijzig het bestand applicationinsights.xml om het standaardeindpuntadres te wijzigen.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -149,7 +149,7 @@ Wijzig het applicationinsights. XML-bestand om het standaard eindpunt adres te w
 
 ### <a name="spring-boot"></a>Spring Boot
 
-Wijzig het `application.properties`-bestand en voeg het volgende toe:
+Wijzig `application.properties` het bestand en voeg toe:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -166,7 +166,7 @@ appInsights.defaultClient.config.quickPulseHost = "QuickPulse_Endpoint_Address";
 appInsights.Configuration.start();
 ```
 
-De eind punten kunnen ook worden geconfigureerd via omgevings variabelen:
+De eindpunten kunnen ook worden geconfigureerd door middel van omgevingsvariabelen:
 
 ```
 Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
@@ -174,7 +174,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 <script type="text/javascript">
@@ -187,31 +187,35 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-## <a name="regions-that-require-endpoint-modification"></a>Regio's waarvoor wijziging van het eind punt is vereist
+### <a name="python"></a>Python
 
-Momenteel zijn de enige regio's waarvoor wijziging van het eind punt is vereist, [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) en [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+Raadpleeg de [opencensus-python repo](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py) voor advies over het wijzigen van het innameeindpunt voor de opencensus-python SDK.
 
-|Regio |  De naam van eindpunt | Waarde |
+## <a name="regions-that-require-endpoint-modification"></a>Regio's waarvoor eindpuntwijziging vereist is
+
+Momenteel zijn [azure-overheid](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) en [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide)de enige regio's die eindpuntwijzigingen vereisen.
+
+|Regio |  Eindpuntnaam | Waarde |
 |-----------------|:------------|:-------------|
-| Azure China | Telemetrie-kanaal | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure China | Profiel query |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Azure Government | Telemetrie-kanaal |`https://dc.applicationinsights.us/v2/track` |
-| Azure Government | QuickPulse (Live Metrics) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Azure Government | Profiel query |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure China | Telemetriekanaal | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure China | QuickPulse (live statistieken) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure China | Profielquery |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | Telemetriekanaal |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse (live statistieken) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | Profielquery |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-Als u momenteel de [Application Insights rest API](https://dev.applicationinsights.io/
-) gebruikt die normaal gesp roken wordt geopend via API.applicationinsights.io, moet u een eind punt gebruiken dat lokaal is voor uw regio:
+Als u momenteel de [Application Insights REST API](https://dev.applicationinsights.io/
+) gebruikt die normaal gesproken via 'api.applicationinsights.io' wordt geopend, moet u een eindpunt gebruiken dat lokaal is voor uw regio:
 
-|Regio |  De naam van eindpunt | Waarde |
+|Regio |  Eindpuntnaam | Waarde |
 |-----------------|:------------|:-------------|
-| Azure China | REST-API | `api.applicationinsights.azure.cn` |
-| Azure Government | REST-API | `api.applicationinsights.us`|
+| Azure China | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
-> Bewaking op basis van agent/uitbrei ding voor Azure-app Services wordt **momenteel niet ondersteund** in deze regio's. Zodra deze functionaliteit beschikbaar wordt, wordt dit artikel bijgewerkt.
+> Codeless agent/extensiegebaseerde bewaking voor Azure App Services **wordt momenteel niet ondersteund** in deze regio's. Zodra deze functionaliteit beschikbaar komt, wordt dit artikel bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de gedetailleerde richt lijnen voor [controle en beheer van Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)voor meer informatie over de aangepaste wijzigingen voor Azure Government.
-- Raadpleeg de [Azure China Playbook](https://docs.microsoft.com/azure/china/)voor meer informatie over Azure China.
+- Raadpleeg de gedetailleerde richtlijnen voor [Azure monitoring en beheer](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)voor meer informatie over de aangepaste wijzigingen voor Azure Government.
+- Raadpleeg het [Azure China Playbook](https://docs.microsoft.com/azure/china/)voor meer informatie over Azure China.

@@ -1,63 +1,64 @@
 ---
-title: 'Voorwaardelijke toegang: toegang blok keren op locatie-Azure Active Directory'
-description: Een aangepast beleid voor voorwaardelijke toegang maken om de toegang tot bronnen op basis van de IP-locatie te blok keren
+title: Voorwaardelijke toegang - Toegang blokkeren op locatie - Azure Active Directory
+description: Een aangepast beleid voor voorwaardelijke toegang maken om de toegang tot bronnen per IP-locatie te blokkeren
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295190"
 ---
-# <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
+# <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang per locatie blokkeren
 
-Met de voor waarde voor de locatie in voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beheren op basis van de netwerk locatie van een gebruiker. De locatie voorwaarde wordt doorgaans gebruikt om toegang te blok keren van landen waar uw organisatie geen verkeer mag zijn.
+Met de locatievoorwaarde in Voorwaardelijke toegang u de toegang tot uw cloud-apps beheren op basis van de netwerklocatie van een gebruiker. De locatievoorwaarde wordt vaak gebruikt om toegang te blokkeren vanuit landen waarvan uw organisatie weet dat verkeer niet afkomstig mag zijn.
 
 ## <a name="define-locations"></a>Locaties definiëren
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang** > **benoemde locaties**.
-1. Kies **nieuwe locatie**.
-1. Geef een naam op voor uw locatie.
-1. Kies **IP-adresbereiken** als u de specifieke, extern toegankelijke IPv4-adresbereiken die deze locatie of **landen/regio's**vormen, kent.
-   1. Geef het **IP-bereik** op of selecteer de **landen/regio's** voor de locatie die u opgeeft.
-      * Als u landen/regio's kiest, kunt u desgewenst ook onbekende gebieden opgeven.
-1. Kies **Opslaan**.
+1. Meld u aan bij de **Azure-portal** als globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
+1. Blader naar**locaties met**voorwaardelijke toegang met voorwaardelijke toegang voor Azure Active**Directory-beveiliging** > **Conditional Access** >  **Azure Active Directory** > .
+1. Kies **Nieuwe locatie**.
+1. Geef uw locatie een naam.
+1. Kies **IP-bereiken** als u de specifieke extern toegankelijke IPv4-adresbereiken kent die deel uitmaken van die locatie of **landen/regio's.**
+   1. Geef de **IP-bereiken op** of selecteer de **landen/regio's** voor de locatie die u opgeeft.
+      * Als u Landen/regio's kiest, u er optioneel voor kiezen om onbekende gebieden op te nemen.
+1. Opslaan **kiezen**
 
-Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in het artikel, [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang](location-condition.md)
+Meer informatie over de locatievoorwaarde in Voorwaardelijke toegang vindt u in het artikel, [Wat is de locatievoorwaarde in Voorwaardelijke toegang van Azure Active Directory](location-condition.md)
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Meld u aan bij de **Azure-portal** als globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
+1. Blader naar voorwaardelijke**toegang**voor Azure Active**Directory-beveiliging** >  **Azure Active Directory** > .
 1. Selecteer **Nieuw beleid**.
-1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
-1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
-   1. Onder **insluiten**selecteert u **alle gebruikers**.
+1. Geef uw polis een naam. We raden organisaties aan een zinvolle standaard te maken voor de namen van hun beleid.
+1. Selecteer **Gebruikers en groepen** onder **Toewijzingen**
+   1. Selecteer Alle **gebruikers** **onder Opnemen**.
    1. Selecteer **Done**.
-1. Selecteer onder **Cloud-apps of acties** > **bevatten** **alle Cloud-apps**en selecteer **gereed**.
-1. Onder **voor waarden** > **locatie**.
-   1. Stel **configureren** op **Ja** in
-   1. Selecteer **geselecteerde locaties** **toevoegen**
-   1. Selecteer de geblokkeerde locatie die u hebt gemaakt voor uw organisatie.
-   1. Klik **op** > **gereed** > **gereed**.
-1. Onder **toegangs elementen** > **blok keren**en selecteert **u selecteren**.
-1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-1. Selecteer **maken** om uw beleid in te stellen.
+1. Selecteer Onder **Cloud-apps of -acties** > **Opnemen** **alle cloud-apps**en selecteer **Gereed**.
+1. Onder **voorwaarden** > **locatie**.
+   1. **Configureren instellen** op **Ja**
+   1. **Geselecteerde** **locaties** opnemen
+   1. Selecteer de geblokkeerde locatie die u voor uw organisatie hebt gemaakt.
+   1. Klik **op Gereed** > **selecteren** > **Done**.
+1. Stel **Configureren** in op **Ja**en selecteer **Gereed**onder **Apps** > **voor client (voorbeeld)** instellen .
+1. Selecteer onder **Toegangsbesturingselementen** > **Blok**en selecteer **Selecteren**.
+1. Bevestig uw instellingen en stel **Beleid inschakelen** in **op Aan**.
+1. Selecteer **Maken** om te maken om uw beleid in te schakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+[Gemeenschappelijk beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Impact bepalen met de modus Alleen voor rapportvoorwaardelijke toegang](howto-conditional-access-report-only.md)
 
-[Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+[Aanmeldingsgedrag simuleren met het gereedschap Welke als voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

@@ -1,91 +1,91 @@
 ---
-title: Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
-description: Metrische gegevens en klassieke Api's automatisch schalen, ook wel Azure Service Management (ASM) of het implementatie model van RDFE buiten gebruik gesteld
+title: Azure Monitor met pensioen gaan van klassieke implementatiemodel API's voor statistieken en autoscale
+description: Statistieken en automatische schaal klassieke API's, ook wel Azure Service Management (ASM) of RDFE-implementatiemodel genoemd, worden buiten gebruik gesteld
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9dfa6b278587f4ed79b1c3cd9eff1defd09ec0bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663552"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294659"
 ---
-# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
+# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor met pensioen gaan van klassieke implementatiemodel API's voor statistieken en autoscale
 
-Azure Monitor (voorheen Azure Insights wanneer het eerst werd uitgebracht) biedt momenteel de mogelijkheid om instellingen voor automatisch schalen te maken en te beheren voor de klassieke Vm's en klassieke Cloud Services. De oorspronkelijke set klassieke implementatie model-Api's worden **na 30 juni 2019** in alle open bare en particuliere Clouds van Azure in alle regio's buiten gebruik gesteld.   
+Azure Monitor (voorheen Azure Insights toen deze voor het eerst werd uitgebracht) biedt momenteel de mogelijkheid om autoscale-instellingen te maken en te beheren voor en statistieken uit klassieke VM's en klassieke Cloud Services te gebruiken. De oorspronkelijke set op klassieke implementatiemodellen gebaseerde API's worden **na 30 juni 2019 in** alle openbare azure-clouds en privéclouds in alle regio's buiten gebruik gesteld.   
 
-Dezelfde bewerkingen worden gedurende een jaar ondersteund via een reeks Azure Resource Manager-Api's. De Azure Portal gebruikt de nieuwe REST Api's voor automatisch schalen en metrische gegevens. Er is ook een nieuwe SDK, Power shell en CLI beschikbaar op basis van deze resource manager-Api's. Onze partner services voor bewaking gebruiken de nieuwe op Resource Manager gebaseerde REST-Api's in Azure Monitor.  
+Dezelfde bewerkingen worden al meer dan een jaar ondersteund via een reeks API's op basis van Azure Resource Manager. De Azure-portal gebruikt de nieuwe REST API's voor zowel autoscale als metrics. Er zijn ook een nieuwe SDK, PowerShell en CLI op basis van deze Resource Manager API's beschikbaar. Onze partnerservices voor monitoring verbruiken de nieuwe REST API's op basis van Resource Manager in Azure Monitor.  
 
-## <a name="who-is-not-affected"></a>Wie wordt niet beïnvloed
+## <a name="who-is-not-affected"></a>Wie wordt er niet beïnvloed
 
-Als u automatisch schalen beheert via de Azure Portal, de [nieuwe Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), Power shell, CLI of Resource Manager-sjablonen, is geen actie nodig.  
+Als u automatisch schalen beheert via de Azure-portal, de [nieuwe Azure Monitor SDK-](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShell-, CLI- of Resource Manager-sjablonen, is er geen actie nodig.  
 
-Als u metrische gegevens gebruikt via de Azure Portal of via verschillende [bewakings partner services](../../azure-monitor/platform/partners.md), is er geen actie vereist. Micro soft werkt samen met het controleren van partners om te migreren naar de nieuwe Api's.
+Als u metrics consumeert via de Azure-portal of via verschillende [monitoringpartnerservices,](../../azure-monitor/platform/partners.md)is er geen actie nodig. Microsoft werkt samen met monitoringpartners om te migreren naar de nieuwe API's.
 
-## <a name="who-is-affected"></a>Die worden beïnvloed
+## <a name="who-is-affected"></a>Wie is getroffen
 
-Dit artikel is van toepassing op het gebruik van de volgende onderdelen:
+Dit artikel is op u van toepassing als u de volgende onderdelen gebruikt:
 
-- **Klassieke Azure Insights-SDK** : als u de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)gebruikt, schakelt u over naar de nieuwe Azure monitor-SDK voor [.net](https://github.com/azure/azure-libraries-for-net#download) of [Java](https://github.com/azure/azure-libraries-for-java#download). Down load het [Azure monitor SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
+- **Klassieke Azure Insights SDK** - Als u de [klassieke Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)gebruikt, schakelt u over op het gebruik van de nieuwe Azure Monitor SDK voor [.NET](https://github.com/azure/azure-libraries-for-net#download) of [Java](https://github.com/azure/azure-libraries-for-java#download). Download het [Azure Monitor SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
 
-- **Klassiek automatisch schalen** : als u de [klassieke instellingen voor automatisch schalen](https://msdn.microsoft.com/library/azure/mt348562.aspx) aanroept vanuit uw aangepaste hulpprogram ma's of met behulp van de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), moet u overschakelen naar het [Azure monitor rest API van Resource Manager](https://docs.microsoft.com/rest/api/monitor/autoscalesettings).
+- **Klassieke autoscale** - Als u de [klassieke API's](https://msdn.microsoft.com/library/azure/mt348562.aspx) voor automatische schaalinstellingen aanroept vanuit uw op maat gemaakte hulpprogramma's of de [klassieke Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)gebruikt, moet u overschakelen naar het gebruik van de Api voor Azure Monitor REST van [Resource Manager.](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)
 
-- **Klassieke metrische gegevens** : als u metrische gegevens gebruikt met behulp van de [klassieke rest-api's](https://msdn.microsoft.com/library/azure/dn510374.aspx) of de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van aangepaste hulpprogram ma's, moet u overschakelen naar het Azure monitor van [Resource Manager rest API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings). 
+- **Klassieke statistieken** - Als u statistieken gebruikt met behulp van de [klassieke REST API's](https://msdn.microsoft.com/library/azure/dn510374.aspx) of klassieke Azure Insights [SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van op maat gemaakte hulpprogramma's, moet u overschakelen naar het gebruik van de Resource Manager Azure Monitor [REST API.](https://docs.microsoft.com/rest/api/monitor/autoscalesettings) 
 
-Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's aanroepen, bekijkt u het volgende:
+Als u niet zeker weet of uw code of aangepaste hulpprogramma's de klassieke API's aanroepen, kijk dan op het volgende:
 
-- Controleer de URI waarnaar wordt verwezen in de code of het hulp programma. De klassieke Api's gebruiken de URI- https://management.core.windows.net. U moet de nieuwere URI gebruiken voor de op Resource Manager gebaseerde Api's begint met https://management.azure.com/.
+- Bekijk de URI waarnaar wordt verwezen in uw code of tool. De klassieke API's https://management.core.windows.netmaken gebruik van de URI. U moet de nieuwere URI gebruiken voor de API's op basis van Resource Manager, die begint met `https://management.azure.com/`.
 
-- Vergelijk de naam van de assembly op uw computer. De oudere klassieke assembly bevindt zich op https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Vergelijk de naam van de montage op uw machine. De oudere klassieke https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/montage is op .
 
-- Als u verificatie via certificaat gebruikt voor toegang tot metrische gegevens of Api's voor automatisch schalen, gebruikt u een klassiek eind punt en een bibliotheek. De nieuwere Resource Manager-Api's vereisen Azure Active Directory authenticatie via een service-principal of User Principal.
+- Als u certificaatverificatie gebruikt om toegang te krijgen tot statistieken of API's automatisch te schalen, gebruikt u een klassiek eindpunt en een klassieke bibliotheek. De nieuwere API's voor Resource Manager vereisen Azure Active Directory-verificatie via een serviceprincipal of gebruikersprincipal.
 
-- Als u met behulp van aanroepen in de documentatie naar een van de volgende koppelingen verwijst, gebruikt u de oudere klassieke Api's.
+- Als u oproepen gebruikt waarnaar wordt verwezen in de documentatie op een van de volgende koppelingen, gebruikt u de oudere klassieke API's.
 
-  - [Klassen bibliotheek van Windows. Azure. Management. monitoring](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Windows.Azure.Management.Monitoring Class Library](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
 
-  - [Bewaking (klassiek) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [Monitoring (klassiek) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations-interface](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [IMetricOperations Interface](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
-## <a name="why-you-should-switch"></a>Waarom u moet overschakelen
+## <a name="why-you-should-switch"></a>Waarom u moet overstappen
 
-De bestaande mogelijkheden voor automatisch schalen en metrische gegevens blijven werken via de nieuwe Api's.  
+Alle bestaande mogelijkheden voor autoscale en metrics blijven werken via de nieuwe API's.  
 
-Migratie naar nieuwere Api's wordt geleverd met mogelijkheden op basis van Resource Manager, zoals ondersteuning voor consistente op rollen gebaseerde Access Control (RBAC) in al uw bewakings Services. U krijgt ook extra functionaliteit voor metrische gegevens: 
+Migreren naar nieuwere API's worden geleverd met resourcebeheergebaseerde mogelijkheden, zoals ondersteuning voor consistente RBAC (Role-Based Access Control) voor al uw bewakingsservices. U krijgt ook extra functionaliteit voor statistieken: 
 
 - ondersteuning voor dimensies
-- consistente nauw keurigheid van metrische gegevens over 1 minuut voor alle services 
-- betere query's
-- hogere gegevens retentie (93 dagen met metrische cijfers versus 30 dagen) 
+- consistente metrische granulariteit van 1 minuut voor alle services 
+- beter opvragen
+- hogere gegevensbewaring (93 dagen statistieken vs. 30 dagen) 
 
-Over het algemeen, zoals alle andere services in azure, worden de prestaties, schaal baarheid en betrouw baarheid van de op Resource Manager gebaseerde Azure Monitor Api's verbeterd. 
+Over het algemeen bieden de op Resource Manager gebaseerde Azure Monitor API's, net als alle andere services in Azure, betere prestaties, schaalbaarheid en betrouwbaarheid. 
 
 ## <a name="what-happens-if-you-do-not-migrate"></a>Wat gebeurt er als u niet migreert
 
-### <a name="before-retirement"></a>Voor buiten gebruik stellen
+### <a name="before-retirement"></a>Voor zijn pensioen
 
-Er zijn geen directe gevolgen voor uw Azure-Services of hun werk belastingen.  
+Uw Azure-services of hun workloads hebben geen directe gevolgen.  
 
 ### <a name="after-retirement"></a>Na pensionering
 
-Aanroepen naar de klassieke Api's die eerder worden vermeld, mislukken en retour neren fout berichten die vergelijkbaar zijn met de volgende:
+Oproepen naar de eerder genoemde klassieke API's mislukken en sturen foutberichten terug die vergelijkbaar zijn met de volgende:
 
-Voor automatisch schalen: *deze API is afgeschaft. Gebruik de sjablonen Azure Portal, Azure Monitor SDK, Power shell, CLI of Resource Manager voor het beheren van instellingen voor automatisch schalen*.  
+Voor autoscale: *Deze API is afgeschaft. Gebruik de Azure-portal-, Azure Monitor SDK-, PowerShell-, CLI- of Resource Manager-sjablonen om instellingen voor automatisch schalen te beheren.*  
 
-Voor metrische gegevens: *deze API is afgeschaft. Gebruik de Azure Portal, Azure Monitor SDK, Power shell, CLI voor het opvragen van metrische gegevens*.
+Voor statistieken: *deze API is afgeschaft. Gebruik de Azure-portal, Azure Monitor SDK, PowerShell, CLI om statistieken op te vragen.*
 
 ## <a name="email-notifications"></a>E-mailmeldingen
 
-Er is een pensioen melding verzonden naar e-mail adressen voor de volgende account rollen: 
+Er is een pensioenmelding verzonden naar e-mailadressen voor de volgende accountrollen: 
 
-- Account-en service beheerders
-- Cobeheerders  
+- Account- en servicebeheerders
+- Medebeheerders  
 
-Als u vragen hebt, kunt u contact met ons opnemen op MonitorClassicAPIhelp@microsoft.com.  
+Mocht u vragen hebben, MonitorClassicAPIhelp@microsoft.comneem dan contact met ons op op.  
 
 ## <a name="references"></a>Verwijzingen
 
-- [Nieuwere REST-Api's voor Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
-- [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+- [Nieuwere REST-API's voor Azure-monitor](https://docs.microsoft.com/rest/api/monitor/) 
+- [Nieuwere Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

@@ -1,23 +1,22 @@
 ---
-title: Azure VHD-implementatie sjabloon | Azure Marketplace
-description: Hier wordt een lijst weer gegeven met de Azure Resource Manager sjabloon die is vereist om een nieuwe virtuele Azure-machine te implementeren vanaf een virtuele harde schijf van een gebruiker.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure VHD-implementatiesjabloon | Azure Marketplace
+description: Hiermee wordt de Azure Resource Manager-sjabloon weergegeven die nodig is om een nieuwe virtuele Azure-machine te implementeren vanaf een virtuele harde schijf van een gebruiker.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277868"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Implementatie sjabloon voor virtuele harde schijf 
+# <a name="virtual-hard-disk-deployment-template"></a>Sjabloon voor implementatie van virtuele harde schijf 
 
-Met de volgende Azure Resource Manager sjabloon wordt een nieuw exemplaar van de Azure virtual machine (VM) gedefinieerd, gemaakt op basis van een lokale virtuele harde schijf (VHD).  Deze sjabloon wordt in het artikel gebruikt om [een Azure VM te implementeren vanaf een gebruikers-VHD](./cpp-deploy-vm-user-image.md). 
+Met de volgende sjabloon Azure Resource Manager wordt een nieuwe VM-instantie (Azure Virtual Machine) gedefinieerd, gemaakt van lokale virtuele harde schijf (VHD).  Deze sjabloon wordt gebruikt in het artikel [Een Azure VM implementeren van een vhd-gebruiker.](./cpp-deploy-vm-user-image.md) 
 
 ```json
 {

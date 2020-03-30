@@ -1,52 +1,55 @@
 ---
-title: Door de klant beheerde sleutels configureren metC#
-description: In dit artikel wordt beschreven hoe u door de klant beheerde sleutels versleuteling configureert voor uw gegevens in azure Data Explorer.
+title: 'Door de klant beheerde sleutels configureren met C #'
+description: In dit artikel wordt beschreven hoe u versleuteling van door de klant beheerde sleutels op uw gegevens configureren in Azure Data Explorer.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a00b0876c4a188b932032129ed5a394e94198930
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280596"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297949"
 ---
-# <a name="configure-customer-managed-keys-using-c"></a>Door de klant beheerde sleutels configureren metC#
+# <a name="configure-customer-managed-keys-using-c"></a>Door de klant beheerde sleutels configureren met C #
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portal](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager-sjabloon](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
+
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Versleuteling configureren met door de klant beheerde sleutels
 
-In deze sectie wordt beschreven hoe u versleuteling van door de klant beheerde sleutels configureert met C# behulp van de Azure Data Explorer-client. 
+In deze sectie ziet u hoe u versleuteling met door de klant beheerde sleutels configureert met de Azure Data Explorer C#-client. 
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als u Visual Studio 2019 niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
-### <a name="install-c-nuget"></a>NuGet C# installeren
+### <a name="install-c-nuget"></a>C# NuGet installeren
 
-* Installeer het [Azure Data Explorer (Kusto) NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Installeer het [NuGet-pakket (Azure Data Explorer) (Kusto).](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
 
-* Installeer het [NuGet-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
+* Installeer het [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet-pakket](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
-Als u de voor beelden in dit artikel wilt uitvoeren, [maakt u een Azure AD-toepassing](/azure/active-directory/develop/howto-create-service-principal-portal) en service-principal die toegang hebben tot resources. U kunt roltoewijzing toevoegen aan het abonnements bereik en de vereiste `Directory (tenant) ID`, `Application ID`en `Client Secret`ophalen.
+Als u de voorbeelden in dit artikel wilt uitvoeren, [maakt u een Azure AD-toepassing](/azure/active-directory/develop/howto-create-service-principal-portal) en serviceprincipal die toegang heeft tot bronnen. U roltoewijzing toevoegen aan het `Directory (tenant) ID`abonnementsbereik en de vereiste `Application ID`, en `Client Secret`.
 
 ### <a name="configure-cluster"></a>Cluster configureren
 
-Data Explorer versleuteling van Azure maakt standaard gebruik van door micro soft beheerde sleutels. Configureer uw Azure Data Explorer-cluster voor het gebruik van door de klant beheerde sleutels en geef de sleutel op die u aan het cluster wilt koppelen.
+Standaard maakt Azure Data Explorer-versleuteling gebruik van door Microsoft beheerde sleutels. Configureer uw Azure Data Explorer-cluster om door de klant beheerde sleutels te gebruiken en geef de sleutel op die aan het cluster moet worden gekoppeld.
 
-1. Werk het cluster bij met de volgende code:
+1. Werk uw cluster bij met de volgende code:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -74,23 +77,23 @@ Data Explorer versleuteling van Azure maakt standaard gebruik van door micro sof
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
 
-1. Voer de volgende opdracht uit om te controleren of het cluster is bijgewerkt:
+1. Voer de volgende opdracht uit om te controleren of uw cluster is bijgewerkt:
 
     ```csharp
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Als het resultaat `ProvisioningState` met de `Succeeded` waarde bevat, is het cluster bijgewerkt.
+    Als het `ProvisioningState` resultaat `Succeeded` met de waarde wordt bevat, is uw cluster bijgewerkt.
 
-## <a name="update-the-key-version"></a>De sleutel versie bijwerken
+## <a name="update-the-key-version"></a>De belangrijkste versie bijwerken
 
-Wanneer u een nieuwe versie van een sleutel maakt, moet u het cluster bijwerken voor gebruik van de nieuwe versie. Roep eerst `Get-AzKeyVaultKey` aan om de nieuwste versie van de sleutel op te halen. Werk vervolgens de sleutel kluis eigenschappen van het cluster bij om de nieuwe versie van de sleutel te gebruiken, zoals wordt weer gegeven in [cluster configureren](#configure-cluster).
+Wanneer u een nieuwe versie van een sleutel maakt, moet u het cluster bijwerken om de nieuwe versie te gebruiken. Bel eerst `Get-AzKeyVaultKey` om de nieuwste versie van de sleutel te krijgen. Werk vervolgens de eigenschappen van de sleutelkluis van het cluster bij om de nieuwe versie van de sleutel te gebruiken, zoals weergegeven in [Cluster configureren](#configure-cluster).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Data Explorer-clusters beveiligen in azure](security.md)
-* [Beheerde identiteiten voor uw Azure Data Explorer-cluster configureren](managed-identities.md)
-* [Beveilig uw cluster in Azure Data Explorer-Azure Portal](manage-cluster-security.md) door versleuteling op rest in te scha kelen.
-* [Door de klant beheerde sleutels configureren met behulp van de Azure Resource Manager sjabloon](customer-managed-keys-resource-manager.md)
+* [Azure Data Explorer-clusters beveiligen in Azure](security.md)
+* [Beheerde identiteiten configureren voor uw Azure Data Explorer-cluster](managed-identities.md)
+* [Beveilig uw cluster in Azure Data Explorer - Azure-portal](manage-cluster-security.md) door versleuteling in rust in te schakelen.
+* [Door de klant beheerde sleutels configureren met de sjabloon Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 

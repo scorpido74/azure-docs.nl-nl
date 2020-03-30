@@ -1,23 +1,22 @@
 ---
-title: Veelgestelde vragen over micro soft Commercial Marketplace
-description: Antwoorden op veelgestelde vragen over Azure Marketplace en Microsoft AppSource
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Veelgestelde vragen over Microsoft Commercial Marketplace
+description: Antwoorden op veelgestelde vragen over de Azure Marketplace en Microsoft AppSource
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/4/2019
-ms.author: ellacroi
-ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.author: dsindona
+ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288458"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over Microsoft Commercial Marketplace
 
-Antwoorden op veelgestelde vragen over de Azure Marketplace en de Microsoft AppSource.
+Antwoorden op veelgestelde vragen over de Azure Marketplace en Microsoft AppSource.
 
 ## <a name="faq-for-customers"></a>Veelgestelde vragen voor klanten
 
@@ -25,241 +24,241 @@ Antwoorden op veelgestelde vragen over de Azure Marketplace en de Microsoft AppS
 
 **Wat is Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) biedt toegang en informatie over oplossingen en services die beschikbaar zijn bij micro soft en onze partners. Klanten kunnen cloud software oplossingen die zijn gebouwd op of voor Azure, detecteren, uitproberen of kopen. Onze catalogus van 8000 + vermeldingen biedt Azure-bouw stenen, zoals Virtual Machines (Vm's), Api's, Azure-apps, oplossings sjablonen en beheerde toepassingen, SaaS-apps, containers en advies Services.
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) biedt toegang en informatie over oplossingen en services die beschikbaar zijn bij Microsoft en onze partners. Klanten kunnen cloudsoftwareoplossingen ontdekken, uitproberen of kopen die zijn gebouwd op of voor Azure. Onze catalogus met meer dan 8000 vermeldingen biedt Azure-bouwstenen, zoals Virtuele Machines (VM's), API's, Azure-apps, oplossingssjablonen en beheerde toepassingen, SaaS-apps, containers en consultingservices.
 
-**Wie zijn klanten van Azure Marketplace?**
+**Wie zijn Azure Marketplace-klanten?**
 
-Azure Marketplace is ontworpen voor IT-professionals en Cloud ontwikkelaars die geïnteresseerd zijn in commerciële IT-software en-services.
+Azure Marketplace is ontworpen voor IT-professionals en cloudontwikkelaars die geïnteresseerd zijn in commerciële IT-software en -services.
 
-**Welk type producten is momenteel beschikbaar in azure Marketplace?**
+**Welk type producten zijn momenteel beschikbaar in de Azure Marketplace?**
 
-Azure Marketplace biedt technische oplossingen en services van Microsoft en partners die zijn gemaakt om Azure-producten en -services uit te breiden. De oplossings catalogus omvat verschillende categorieën, waaronder:
+De Azure Marketplace biedt technische oplossingen en services van Microsoft en partners die zijn gebouwd om Azure-producten en -services uit te breiden. De oplossingscatalogus omvat verschillende categorieën, waaronder:
 
-* basis besturingssystemen
+* basisbesturingssystemen
 * databases
 * security
 * identity
-* netwerken
-* Block Chain
-* ontwikkelhulpprogramma's
+* Networking
+* blockchain
+* hulpprogramma's voor ontwikkelaars
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace voor klanten
 
-**Hoe kan ik aan de slag met Azure Marketplace?**
+**Hoe ga ik aan de slag in Azure Marketplace?**
 
-U kunt een breed scala aan bedrijfs toepassingen en oplossingen vinden die zijn gecertificeerd en geoptimaliseerd voor uitvoering op Azure, door [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)te bezoeken. Azure Marketplace kan ook worden geopend via de [Azure Portal] wanneer u [**een resource maakt**](https://portal.azure.com/#create/hub).
+U een breed scala aan bedrijfstoepassingen en -oplossingen vinden die zijn gecertificeerd en geoptimaliseerd om op Azure te worden uitgevoerd door [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps)te bezoeken. Azure Marketplace is ook toegankelijk via de [Azure-portal] wanneer u [**een bron maakt.**](https://portal.azure.com/#create/hub)
 
-**Wat zijn de belangrijkste voor delen van Azure Marketplace?**
+**Wat zijn de belangrijkste voordelen van Azure Marketplace?**
 
-Met Azure Marketplace kunnen klanten technische toepassingen detecteren die zijn gebouwd voor of gebouwd op Azure. De oplossing combineert Microsoft Azure de markt van oplossingen en services in één uniform platform voor het detecteren, uitproberen, kopen of implementeren van oplossingen met slechts enkele muis klikken.
+Met Azure Marketplace kunnen klanten technische toepassingen ontdekken die zijn gebouwd voor of zijn gebouwd op Azure. Het combineert de markt van oplossingen en services van Microsoft Azure tot één uniform platform om oplossingen in slechts een paar klikken te ontdekken, uit te proberen, te kopen of te implementeren.
 
-**Hoe kan ik producten kopen via Azure Marketplace?**
+**Hoe koop ik producten via de Azure Marketplace?**
 
-Azure Marketplace-aanbiedingen kunnen worden aangeschaft via:
+Azure Marketplace-aanbiedingen kunnen worden gekocht via:
 
-* [De webgebaseerde webwinkel](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Het Azure Portal][Azure Portal]
-* [De Azure-opdracht regel interface (CLI)](/cli/azure/?view=azure-cli-latest)
+* [De web-based storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [De Azure-portal Azure-portal van Azure][Azure portal]
+* [De Azure Command Line Interface (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Vooruitbetaalde tegoeden en andere vormen van monetaire toezeg ging kunnen niet worden gebruikt voor het betalen van software licentie kosten, maar kunnen worden gebruikt om de bijbehorende Azure-gebruiks kosten te betalen. Uitzonde ringen worden vermeld in de [monetaire toezeg ging van Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+>Prepaidcredits en andere vormen van monetaire toezegging kunnen niet worden gebruikt om softwarelicentiekosten te betalen, maar kunnen worden gebruikt om bijbehorende Azure-gebruikskosten te betalen. Uitzonderingen worden vermeld in [Azure monetary commitment](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
-**Kan ik kiezen welke Azure-regio (s) mijn Azure Marketplace-aankoop wilt implementeren?**
+**Kan ik kiezen welke Azure-regio(s) mijn Azure Marketplace-aankoop wilt implementeren?**
 
-De klant kan de implementatie van een Azure Data Center-regio inschakelen. Het is raadzaam om de Data Center-locaties die het dichtst bij uw services liggen te selecteren om de prestaties en het beheer van budget te optimaliseren
+De klant heeft de mogelijkheid om te implementeren in een Azure-datacenterregio die ze inschakelen. We raden u aan de datacenterlocaties te selecteren die het dichtst bij uw services liggen om de prestaties en het controlebudget te optimaliseren.
 
-**Als ik een Azure Marketplace-aankoop per ongeluk verwijder, kan ik dan de actie *ongedaan maken* ?**
+**Als ik per ongeluk een Azure Marketplace-aankoop verwijder, kan ik de actie *ongedaan maken?***
 
-Nee, als u iets verwijdert, is dat definitief. Als een abonnement per ongeluk wordt verwijderd, kan dit opnieuw worden aangeschaft. Ongebruikte functionaliteit of Prepaid Services gaan verloren.
+Nee, verwijderingen zijn definitief. Als een abonnement per ongeluk wordt verwijderd, kan het opnieuw worden gekocht. Ongebruikte functionaliteit of prepaidservices gaan verloren.
 
-**Wordt ik gewaarschuwd als ik een Azure Marketplace-aankoop probeer te verwijderen die wordt gebruikt door een van mijn toepassingen?**
+**Ben ik gewaarschuwd als ik probeer een Azure Marketplace-aankoop te verwijderen die wordt gebruikt door een van mijn toepassingen?**
 
-Nee, Azure biedt geen waarschuwing bij het verwijderen van een aankoop, zelfs als deze momenteel in gebruik is of een toepassing afhankelijk is van.
+Nee, Azure biedt geen waarschuwing bij het verwijderen van een aankoop, zelfs als deze momenteel in gebruik is of als een toepassing afhankelijk is.
 
-**Als mijn Azure Marketplace-aankopen afhankelijk zijn van andere assets, zoals een Azure-website, moet ik deze dan beheren?**
+**Als mijn Azure Marketplace-aankoop afhankelijk is van andere elementen, zoals een Azure-website, moet ik deze beheren?**
 
-Afhankelijkheden voor Azure Marketplace-aankopen worden niet automatisch beheerd. Lees de beschrijving van de aankoop van Azure Marketplace aandachtig door voordat u deze gebruikt om te bepalen of er afhankelijkheden zijn die nodig zijn voordat u de oplossing implementeert.
+Afhankelijkheden worden niet automatisch beheerd voor Azure Marketplace-aanbiedingen. Controleer zorgvuldig de beschrijving van de aankoop van Azure Marketplace voordat u deze gebruikt om te bepalen of er afhankelijkheden nodig zijn voordat de oplossing wordt geïmplementeerd.
 
-**Kan ik Azure Marketplace-oplossingen kopen via een Azure Cloud Solution Provider?**
+**Kan ik Azure Marketplace-oplossingen kopen bij een Azure Cloud Solution Provider?**
 
-Als het aanbod van de uitgever is geconfigureerd om beschikbaar te zijn via het CSP-kanaal (Cloud Solution Provider), kunnen partners van de Cloud solution provider de mogelijkheid bieden om de oplossing opnieuw te verkopen.
+Als de uitgever zijn aanbod heeft geconfigureerd om beschikbaar te zijn via het CSP-kanaal (Cloud Solution Provider), hebben cloud solution provider-partners de mogelijkheid om de oplossing door te verkopen.
 
-**Welke landen/regio's worden ondersteund voor het kopen van toepassingen en services die zijn verkocht/ingericht via de Azure Marketplace?**
+**Welke landen/regio's worden ondersteund voor het kopen van toepassingen en services die via de Azure Marketplace worden verkocht/ingericht?**
 
-Azure Marketplace is beschikbaar voor Azure-klanten in de landen/regio's die worden vermeld in het [deelname beleid](/legal/marketplace/participation-policy).
+Azure Marketplace is beschikbaar voor Azure-klanten in de landen/regio's die worden vermeld in het [inspraakbeleid](/legal/marketplace/participation-policy).
 
 **Welke valuta's worden ondersteund door Azure Marketplace?**
 
-Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, kost, JPY, vermiljard, NOK, NZD, RUB, SEK, TWD, USD, RMB.
+Transacties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Een oplossing implementeren vanuit Azure Marketplace
 
-**Ik heb een Azure Marketplace virtual machine (VM) geïmplementeerd op een abonnement en ik wil het abonnement nu migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
+**Ik heb een Azure Marketplace Virtual Machine (VM) geïmplementeerd op een abonnement en ik wil het abonnement nu migreren van het ene Azure-account naar het andere. Wordt dit momenteel ondersteund?**
 
-Als u een Azure-abonnement wilt migreren, inclusief Azure Marketplace-Vm's en-services, verwijdert of annuleert u een eerder Azure-abonnement voordat u het nieuwe Azure-account koppelt. Zodra de migratie is voltooid, worden de resulterende gebruiks kosten in rekening gebracht met de nieuwe Betalings wijze van de geregistreerde account.
+Als u een Azure-abonnement wilt migreren, inclusief Azure Marketplace-VM's en -services, verwijdert of annuleert u een eerder Azure-abonnement voordat u zich aan het nieuwe Azure-account houdt. Zodra de migratie is voltooid, worden de resulterende gebruikskosten in rekening gebracht met behulp van de betalingsmethode van de nieuwe geregistreerde account.
 
-**Ik wil een Azure Marketplace virtual machine (VM)-abonnement migreren naar mijn Enterprise Agreement. Wordt dit momenteel ondersteund?**
+**Ik wil een VM-abonnement (Azure Marketplace Virtual Machine) migreren naar mijn Enterprise Agreement. Wordt dit momenteel ondersteund?**
 
-Als u een Azure Marketplace virtual machine (VM)-abonnement wilt migreren naar een Enterprise Agreement, moet u voorafgaand aan de migratie een eerder abonnement stoppen of annuleren. Zodra de migratie van uw Azure-account en de bijbehorende abonnementen is voltooid, kunt u de Azure Marketplace-VM of-service opnieuw aanschaffen.  De resulterende gebruiks kosten worden per kwar taal in rekening gebracht onder uw Enterprise Agreement.
+Als u een VM-abonnement (Azure Marketplace Virtual Machine) wilt migreren naar een Enterprise Agreement, stopt of annuleert u een eerder abonnement vóór de migratie. Zodra de migratie van uw Azure-account en gekoppelde abonnementen is voltooid, u de Azure Marketplace VM of -service opnieuw aanschaffen.  De resulterende gebruikskosten worden elk kwartaal in rekening gebracht onder uw Enterprise Agreement.
 
-### <a name="pricing-and-payment"></a>Prijs en betaling
+### <a name="pricing-and-payment"></a>Prijzen en betaling
 
-**Hoe zijn de prijzen voor Azure Marketplace-abonnementen?**
+**Hoe worden Azure Marketplace-abonnementen geprijsd?**
 
-Prijzen zijn afhankelijk van het producttype en de specificaties van de uitgever. Kosten voor softwarelicenties en Azure-gebruikskosten worden afzonderlijk in rekening gebracht via uw Azure-abonnement.
+Prijzen zijn afhankelijk van het producttype en de specificaties van de uitgever. Softwarelicentiekosten en Azure-gebruikskosten worden afzonderlijk in rekening gebracht via uw Azure-abonnement.
 
-*Niet gebundeld:*
+*Ontbundelde:*
 
-+ *Uw BYOL-model (your-own-License)* : wanneer u een software licentie rechtstreeks van de uitgever of een wederverkoper aanschaft, zijn er geen extra kosten of kosten voor software in rekening gebracht.
++ *Byol-model (Bring-your-own-license):* Bij het verkrijgen van een softwarelicentie rechtstreeks van de uitgever of een reseller, zijn er geen extra softwaregerelateerde kosten of kosten.
 
-*Gecombineerde*
+*Bundled:*
 
-Het Azure-abonnement is opgenomen in de prijzen van de ISV-oplossing (Independent Software Vendors) van de uitgever.
+Azure-abonnement is inbegrepen bij de serviceprijzen van de onafhankelijke softwareleveranciers (ISV).
 
-*Tarief*
+*Geladen:*
 
-+ *Gratis:* Gratis SKU. Er worden geen kosten in rekening gebracht voor software licentie kosten of het gebruik van de aanbieding.
++ *Gratis:* Gratis SKU. Er worden geen kosten in rekening gebracht voor softwarelicentiekosten of het gebruik van het aanbod.
 
-+ *Gratis proef versie van software:* Een aanbieding die een beperkte periode gratis is. Er worden geen kosten in rekening gebracht voor de software licentie kosten van de uitgever tijdens de proef periode. Na verloop van tijd wordt het automatisch omgezet in een betaald aanbod op basis van de standaard tarieven die zijn uitgegeven door de uitgever.
++ *Gratis software proefversie:* Een aanbieding die voor een beperkte periode gratis is. Er zijn geen kosten verbonden aan de softwarelicentiekosten van de uitgever voor gebruik tijdens de proefperiode. Na afloop wordt het automatisch omgezet naar een betaalde aanbieding op basis van standaardtarieven die door de uitgever zijn uitgegeven.
 
-+ *Op basis van gebruik:* Tarieven worden in rekening gebracht of gefactureerd op basis van het gebruik van de aanbieding. Voor Virtual Machines-installatie kopieën worden er kosten in rekening gebracht. Voor ontwikkelaars Services en Api's worden de kosten per meet eenheid in rekening gebracht, zoals gedefinieerd door de aanbieding.
++ *Op basis van gebruik:* Tarieven worden in rekening gebracht of gefactureerd op basis van de omvang van het gebruik van het aanbod. Voor Virtual Machines Images wordt het in rekening gebracht tegen een uurtarief. Voor ontwikkelaarsservices en API's wordt het in rekening gebracht per meeteenheid zoals gedefinieerd door het aanbod.
 
-+ *Vast bedrag:* SaaS-abonnementen kunnen worden geprijsd als een vast bedrag dat maandelijks of jaarlijks wordt gefactureerd. Dit kan ook extra facturerings dimensies omvatten die worden ingerekend op basis van verbruik (bijvoorbeeld band breedte, e-mails of tickets). 
++ *Vast bedrag:* SaaS-abonnementen kunnen worden geprijsd als een vast bedrag dat maandelijks of jaarlijks wordt gefactureerd. Dit kan ook extra factureringsdimensies zijn die in rekening worden gebracht op basis van het verbruik (bijvoorbeeld bandbreedte, e-mails of tickets). 
 
-+ *Per gebruiker:* SaaS-abonnementen kunnen worden geprijsd op basis van per gebruiker, die maandelijks of jaarlijks wordt gefactureerd. 
++ *Per gebruiker:* SaaS-abonnementen kunnen per gebruiker worden geprijsd en worden maandelijks of jaarlijks gefactureerd. 
 
-Prijs informatie voor aanbiedingen is te vinden op de pagina met details van de oplossing op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) of binnen de [Azure Portal].
+Aanbiedingsspecifieke prijsdetails zijn te vinden op [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) de pagina met oplossingsdetails op of binnen de [Azure-portal.]
 
 > [!Note]
-> Met uitzonde ring van de maandelijkse kosten zijn Azure-gebruiks kosten van toepassing op alle prijs modellen, tenzij anders vermeld.
+> Behalve voor maandelijkse kosten zijn Azure-gebruikskosten van toepassing op alle prijsmodellen, tenzij anders vermeld.
 
-**Hoe geef ik mijn software licentie sleutel op voor BYOL Marketplace-oplossingen en welke rol Azure Marketplace speelt?**
+**Hoe moet ik mijn softwarelicentiesleutel voor BYOL-marktplaatsoplossingen leveren en welke rol speelt Azure Marketplace?**
 
-Het verkrijgen en afdwingen van licentie referenties voor BYOL-oplossingen is de verantwoordelijkheid van de uitgever. Voor aanbiedingen van virtuele machines vindt de aanschaf van de licentie sleutel doorgaans plaats in de toepassing van de uitgever nadat de toepassing is gestart. Wanneer u een virtuele-machine aanbieding gebruikt die via een Azure-toepassing oplossings sjabloon is geïmplementeerd, kan de Resource Manager-sjabloon zo worden geconfigureerd dat de gebruiker wordt gevraagd een reeks invoer gegevens op te vragen, inclusief licentie referenties.
+Het verkrijgen en handhaven van licentiereferenties voor BYOL-oplossingen valt onder de verantwoordelijkheid van de uitgever. Voor aanbiedingen van Virtual Machine vindt de aankoop van de licentiesleutel meestal plaats in de toepassing van de uitgever nadat de toepassing is gestart. Wanneer u een virtuele machine-aanbieding gebruikt die is geïmplementeerd via een Azure Application Solution Template, kan de sjabloon Resourcebeheer worden geconfigureerd om de gebruiker te vragen om een reeks invoer, waaronder licentiereferenties.
 
-Dit zijn de meest voorkomende opties per aanbiedings type:
+Dit zijn de meest voorkomende opties per aanbiedingstype:
 
-*Aanbieding van virtuele machine:*
+*Virtuele machine aanbieding:*
 
-+ *Optie 1:* De aanschaf van de licentie sleutel vindt doorgaans plaats in de toepassing van de uitgever nadat de toepassing is gestart.
++ *Optie 1:* De aankoop van de licentiesleutel vindt meestal plaats in de toepassing van de uitgever nadat de toepassing is gestart.
 
-+ *Optie 2:* De licentie sleutel wordt ingevoerd door de eind gebruiker (via de opdracht regel/webinterface die is opgegeven door de aanbieding) na de implementatie van de VM-aanbieding in het geselecteerde abonnement. De licentie kan een sleutel en/of bestand zijn, zoals wordt bepaald door de uitgever.
++ *Optie 2:* De licentiesleutel wordt ingevoerd door de eindgebruiker (via opdrachtregel / webinterface die door de aanbieding wordt geleverd) na de implementatie van de VM-aanbieding in het geselecteerde abonnement. De licentie kan een sleutel en/of bestand zijn, zoals bepaald door de uitgever.
 
-*Azure-apps (oplossings sjabloon en beheerde apps):*
+*Azure Apps (oplossingssjabloon en beheerde apps):*
 
-+ *Optie 1:* De Resource Manager-sjabloon kan zo worden geconfigureerd dat u wordt gevraagd om een reeks invoer gegevens, inclusief licentie referenties. Dit kan worden gedaan als een licentie bestand (uploaden van bestanden) of een sleutel (tekstvak invoer), vóór de implementatie van de aanbieding in het eind gebruikers abonnement.
++ *Optie 1:* De sjabloon Resourcemanager kan worden geconfigureerd om u te vragen om een reeks invoer, waaronder licentiereferenties. Dit kan worden gedaan als een licentiebestand (Upload van bestanden) of als een sleutel (tekstvakinvoer), vóór de implementatie van de aanbieding, in het abonnement voor de eindgebruiker.
 
-+ *Optie 2:* U kunt de licentie code invoeren via de opdracht regel/webinterface van de aanbieding.  Dit wordt gedaan na de implementatie van de Azure apps-aanbieding in het geselecteerde abonnement. De licentie kan een sleutel en/of bestand zijn, zoals wordt bepaald door de uitgever.
++ *Optie 2:* U de licentiesleutel invoeren via de opdrachtregel /webinterface die door de aanbieding wordt geleverd.  Dit gebeurt na de implementatie van de Azure Apps-aanbieding in het geselecteerde abonnement. De licentie kan een sleutel en/of bestand zijn, zoals bepaald door de uitgever.
 
-**Welke soorten experimenten worden ondersteund?**
+**Welke soorten proeven worden ondersteund?**
 
-Uitgevers kunnen een gratis maand toevoegen voor betaalde SaaS-aanbiedingen en een of drie gratis maanden verbruik voor VM-installatie kopieën. Aanbiedingen met een gratis proef versie zijn aanbiedingen met een aanroep naar actie om een proef versie te initiëren. Deze leiden de klant naar een website die door de uitgever is gedefinieerd om de proef ervaring in te stellen. Experimenten kunnen ook worden toegevoegd aan betaalde aanbiedingen waarbij de eerste maand gratis is. 
+Uitgevers kunnen één gratis maand toevoegen voor betaalde SaaS-aanbiedingen en één of drie gratis maanden consumptie voor VM-afbeeldingen. Gratis proefaanbiedingen zijn aanbiedingen met een call-to-action om een proef te starten. Deze leiden de klant naar een website die door de uitgever is gedefinieerd om de proefervaring in te stellen. Proefversies kunnen ook worden toegevoegd aan betaalde aanbiedingen waarbij de eerste maand gratis is. 
 
-**Moet ik een betaal middel (bijvoorbeeld een credit card) in het bestand hebben om een gratis laag te implementeren of uw eigen licentie (BYOL) te bieden?**
+**Moet ik een betaalinstrument (bijvoorbeeld creditcard) in mijn bestand hebben om Free Tier te implementeren of uw eigen byol-aanbiedingen mee te nemen?**
 
-Nee. Een betalings instrument is niet vereist voor het implementeren van gratis laag-of BYOL-aanbiedingen. Voor producten uit de laag Gratis is echter een betaalmiddel vereist. Vermeldingen met de knoppen **nu downloaden** of **gratis proef versie van software** worden geïmplementeerd in het geselecteerde Azure-abonnement.  Deze aanbiedingen worden gefactureerd op basis van de geregistreerde Betalings wijze van het geselecteerde account. Azure-gebruiks kosten worden afzonderlijk in rekening gebracht op basis van software licentie kosten.
+Nee. Een betalingsinstrument is niet vereist om Free Tier- of BYOL-aanbiedingen te implementeren. Voor gratis proefversies is echter een betalingsinstrument vereist. Vermeldingen met de proefknoppen **Nu downloaden van de** software of Gratis **software** worden geïmplementeerd in het geselecteerde Azure-abonnement.  Deze aanbiedingen worden gefactureerd met behulp van de geregistreerde betalingsmethode van het geselecteerde account. Azure-gebruikskosten worden apart in rekening gebracht van softwarelicentiekosten.
 
-**Als ze vragen hebben over prijzen voor aanbiedingen die worden verkocht op de Azure Marketplace, wie heeft een Enterprise Agreement (EA) indirecte klant contact persoon?**
+**Als ze vragen hebben over de prijzen voor aanbiedingen die worden verkocht op de Azure Marketplace, wie heeft er dan indirect klantcontact met een Enterprise Agreement (EA)?**
 
-Enterprise Agreement (EA) indirecte klanten moeten contact opnemen met hun Licensing Solution Provider (LSP) voor alle vragen over prijzen voor Azure Marketplace.
+Indirecte klanten van Enterprise Agreement (EA) moeten contact opnemen met hun Licensing Solution Provider (LSP) voor alle prijsvragen van Azure Marketplace.
 
-**Kan ik de toegang van mijn werk nemers tot Azure Marketplace en de aanschaf van rechten beheren?**
+**Kan ik de toegang van mijn werknemers tot Azure Marketplace en aankooprechten beheren?**
 
-Ja, voor klanten met Enterprise Agreement (EA), kan de registratie beheerder de rechten voor het kopen uitschakelen voor alle accounts bij de inschrijving en deze vervolgens lang genoeg inschakelen om een aankoop te doen.
+Ja, voor EA-klanten (Enterprise Agreement) kan de inschrijvingsbeheerder aankooprechten voor alle accounts bij de inschrijving uitschakelen en deze lang genoeg inschakelen om een aankoop te doen.
 
-**Welke betalings methoden worden ondersteund voor commerciële Marketplace-aankopen?**
+**Welke betaalmethoden worden ondersteund voor commerciële marktplaatsaankopen?**
 
-Klanten kunnen aanbiedingen kopen vanuit Azure Marketplace en Microsoft AppSource met credit cards. Als u een bestaand Azure-abonnement hebt, zullen aankopen via Azure Marketplace gebruikmaken van de betalings wijze die op het account is geconfigureerd en op dezelfde factuur als een afzonderlijk regel item worden weer gegeven. Sommige aanbiedingen gebruiken de monetaire toezeg ging van Azure, maar de meeste aankopen in commerciële Marketplace worden niet afgetrokken Enterprise Agreement toezeg gingen, hoewel het gebruik van een Azure-infra structuur.
+Klanten kunnen aanbiedingen kopen via Azure Marketplace en Microsoft AppSource met creditcards. Als u een bestaand Azure-abonnement hebt, worden aankopen van Azure Marketplace gebruikt de betalingsmethode die is geconfigureerd voor het account en worden ze weergegeven op dezelfde factuur als een afzonderlijk regelitem. Sommige aanbiedingen verbruiken Azure monetary commitment, maar de meeste commerciële marktplaatsaankopen trekken geen toezeggingen voor enterprise-overeenkomsten, hoewel het verbruik van Azure-infrastructuur wel het hele leven wordt bepaald.
 
-**Kan ik tegoeden voor Azure-abonnementen of monetaire toezeggings fondsen in mijn account Toep assen op Azure Marketplace-aanbiedingen?**
+**Kan ik Azure-abonnementstegoeden of geldtoezeggingen in mijn account toepassen op Azure Marketplace-aanbiedingen?**
 
-Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor Azure-abonnementen of monetaire toezeggingen worden gebruikt. Zie dit [Financiële toezegging Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die in dit programma zijn opgenomen. Deze aanbiedingen bevatten geen opties voor BYOL of BYOS. Alle andere Azure Marketplace-aanbiedingen kunnen geen Azure-abonnements tegoeden of monetaire toezeg ging gebruiken: zoals de gratis proef versie van een maand, maandelijks MSDN-tegoed, tegoed van Azure promoties, monetaire toezeggings saldi en eventuele andere gratis tegoeden van Azure.
+Specifieke Azure Marketplace-aanbiedingen kunnen gebruik maken van Azure-abonnementskredieten of geldtoezeggingen. Zie dit [Financiële toezegging Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die in dit programma zijn opgenomen. Deze aanbiedingen bevatten geen BYOL- of BYOS-opties. Alle andere Azure Marketplace-aanbiedingen kunnen geen gebruik maken van Azure-abonnementskredieten of monetaire toezeggingen: zoals het gratis proefabonnement van één maand, maandelijkse MSDN-tegoeden, credits van Azure-promoties, geldtoezeggingsaldi en andere gratis credits die worden verstrekt uit Azure.
 
-**Zijn er volume licentie kortingen van toepassing op de aankopen van Azure Marketplace?**
+**Zijn volumelicentiekortingen van toepassing op Azure Marketplace-aankopen?**
 
-Nee. De uitgever die eigenaar is van oplossingen in azure Marketplace kan prijzen instellen.  Standaard micro soft-volume licentie kortingen zijn niet van toepassing op aankopen via Azure Marketplace.
+Nee. De uitgever die eigenaar is van oplossingen in Azure Marketplace kan prijzen instellen.  Standaard kortingen op Microsoft-volumelicenties zijn niet van toepassing op Azure Marketplace-aankopen.
 
-**Waar kan ik de abonnements Details en facturerings gegevens van mijn Azure Marketplace bekijken?**
+**Waar kan ik mijn Azure Marketplace-abonnementsgegevens en factureringsgegevens bekijken?**
 
-MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web direct)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van het gedeelte Cost Management en facturering van de [Azure Portal].
+MOSP - Klanten [van het Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web direct) kunnen de aankoopgegevens van Marketplace bekijken op het tabblad Facturen van het gedeelte Kostenbeheer + Facturering van de [Azure-portal].
 
-Enterprise Agreement (EA)-klanten kunnen Details van Marketplace-aankopen bekijken op het tabblad facturen van de sectie Cost Management + facturering van de [Azure Portal].
+EA-klanten (Enterprise Agreement) kunnen de aankoopgegevens van Marketplace bekijken op het tabblad Facturen van het gedeelte Kostenbeheer + Facturering van de [Azure-portal].
 
-Cloud Solution Provider (CSP)-partners kunnen Details van Marketplace-aankopen bekijken voor elke klant in het partner centrum, nadat u een bedrijf hebt geselecteerd in de weer gave klanten.
+CSP-partners (Cloud Solution Provider) kunnen marketplace-aankoopgegevens voor elke klant bekijken in partnercentrum op het tabblad Ordergeschiedenis nadat ze een bedrijf hebben geselecteerd in de weergave Klanten.
 
-**Hoe kan ik een Azure Marketplace-invoeg toepassing geannuleerd voor Azure VM?**
+**Hoe annuleer ik een Azure Marketplace-add-on voor Azure VM?**
 
-Omdat de invoeg toepassing is gekoppeld aan de virtuele machine van Azure, kunt u de Azure Marketplace-aankoop annuleren door de virtuele machine te verwijderen. Daarom stoppen we het gebruik en de kosten voor het abonnement op de Azure Marketplace-aankoop.
+Aangezien de add-on is gekoppeld aan de Virtuele Machine (Azure), stopt u eerst de VM om de aankoop van Azure Marketplace te annuleren door deze te verwijderen. Dus het stoppen van alle abonnementsgebruik en kosten op de Azure Marketplace aankoop.
 
-**Hoe vaak worden mijn Azure Marketplace-aankopen gefactureerd?**
+**Hoe vaak worden er kosten in rekening gebracht voor mijn Azure Marketplace-aankopen?**
 
-Alle Azure Marketplace-aanbiedingen die niet worden afgetrokken van de monetaire toezeg ging, worden maandelijks in rekening gebracht. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de services van een volledig jaar.
+Alle Azure Marketplace-aanbiedingen die niet worden afgetrokken van de monetaire toezegging, worden maandelijks achterstallig gefactureerd. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de diensten van een volledig jaar.
 
-MOSP: [micro soft online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web direct) wordt maandelijks in rekening gebracht op basis van dezelfde Credit Card als voor hun Azure-abonnements profiel. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de services van een volledig jaar.
+MOSP - Klanten [van het Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web Direct) betalen maandelijks dezelfde creditcard als in het bestand voor hun Azure-abonnementsprofiel. Jaarlijkse SaaS-abonnementen worden eenmaal gefactureerd voor de diensten van een volledig jaar.
 
-**Hoe kan ik mijn Azure Marketplace-aankopen verplaatsen van mijn MOSP-abonnement naar mijn direct Enterprise Agreement (EA)-abonnement?**
+**Hoe kan ik mijn Azure Marketplace-aankopen vanuit mijn MOSP-abonnement verplaatsen naar mijn directe Enterprise Agreement-abonnement (EA) ?**
 
-Hoewel de meeste micro soft-abonnementen eenvoudig kunnen worden omgezet naar een Enterprise Agreement, kunnen Azure Marketplace-aankopen binnen die abonnementen niet.
+Hoewel de meeste Microsoft-abonnementen eenvoudig kunnen worden omgezet in een Enterprise-overeenkomst, kunnen Azure Marketplace-aankopen binnen die abonnementen niet.
 
-Als u andere services die zijn gekocht op Azure Marketplace wilt migreren naar een EA-abonnement, annuleert u eerst de toepassingen vanuit het bestaande MOSP-abonnement en schaft u deze toepassingen opnieuw aan binnen het EA-abonnement. Als u dit doet, kunt u een krediet aanvraag indienen voor een teruggave tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-service abonnementen. Maak een [ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Als u andere services die vanuit de Azure Marketplace zijn aangeschaft, wilt migreren naar een EA-abonnement, annuleert u de toepassingen eerst vanuit het bestaande MOSP-abonnement en koopt u deze toepassingen opnieuw in het EA-abonnement. Door dit te doen, u een kredietaanvraag indienen voor een terugbetaling tijdens de mogelijke maand van overlappende dekking tussen de Marketplace-serviceabonnementen - een [ondersteuningsticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)maken.
 
-**Wat is het verschil tussen de *prijs*, de *Software prijs*en de *totale prijs* in de kosten structuur voor aanbiedingen van virtuele machines in de Azure Marketplace?**
+**Wat is het verschil tussen *prijs,* *softwareprijs*en *totale prijs* in de kostenstructuur voor virtuele machineaanbiedingen in de Azure Marketplace?**
 
-De *prijs* verwijst naar de kosten van de virtuele machine van Azure om de software uit te voeren. De *Software prijs* verwijst naar de kosten van de software van de Marketplace-uitgever die wordt uitgevoerd op een virtuele Azure-machine. De *totale prijs* verwijst naar de gecombineerde totale kosten van de virtuele Azure-machine en de software van de Marketplace-uitgever die wordt uitgevoerd op een virtuele Azure-machine.
+*Prijs* verwijst naar de kosten van de Azure Virtual Machine om de software uit te voeren. *De softwareprijs* verwijst naar de kosten van de software van de Marketplace-uitgever die op een Azure Virtual Machine draait. *De totale prijs* verwijst naar de gecombineerde totale kosten van de Azure Virtual Machine en de software van de Marketplace-uitgever die op een Azure Virtual Machine wordt uitgevoerd.
 
-**Hoe kan ik kom ik erachter welk deel van mijn Azure Marketplace-aankoop Ik heb gebruikt?**
+**Hoe kom ik erachter hoeveel van mijn Azure Marketplace-aankoop ik heb gebruikt?**
 
-Een geschatte gebruiks informatie vindt u in de [Azure Portal]. Dergelijke geschatte gebruiks gegevens bevatten mogelijk geen recente activiteiten en zijn mogelijk gebaseerd op projecties die zijn afgeleid van het verbruik in het verleden. Tijdens de open bare preview-periode is deze functie mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het product type.
+Een geschatte gebruiksinformatie is te vinden in de [Azure-portal.] Dergelijke geschatte gebruiksinformatie omvat mogelijk geen recente activiteiten en kan gebaseerd zijn op prognoses die zijn afgeleid van het verbruik in het verleden. Tijdens de openbare preview is deze mogelijkheid mogelijk niet beschikbaar voor alle aankopen en kan deze variëren op basis van het producttype.
 
 ### <a name="customer-support"></a>Klantondersteuning
 
-**Met wie moet ik contact opnemen voor algemene ondersteunings problemen met Azure Marketplace?**
+**Met wie kan ik contact opnemen voor problemen met algemene ondersteuning met Azure Marketplace?**
 
-Neem rechtstreeks contact op met de uitgever van de toepassing voor algemene toepassings ondersteuning met betrekking tot het gebruik of probleem oplossing.
+Neem rechtstreeks contact op met de uitgever van de toepassing voor algemene toepassingsondersteuning met betrekking tot gebruik of probleemoplossing.
 
-Neem contact op met [Azure-ondersteuning](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)voor facturerings-en abonnements problemen met uw Azure Marketplace-aankoop.
+Neem contact op met [Azure Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)voor facturerings- en abonnementsproblemen met uw Azure Marketplace-aankoop.
 
 **Met wie moet ik contact opnemen voor technische ondersteuning bij een oplossing die is gekocht op Azure Marketplace?**
 
-Neem contact op met de uitgever provider voor alle technische product ondersteuning. Contact gegevens van de uitgever en/of een koppeling naar de ondersteunings website vindt u op de pagina met details van de oplossing op Azure Marketplace.
+Neem contact op met de uitgever provider voor alle technische productondersteuning. Contactgegevens van uitgevers en/of een link naar de ondersteuningswebsite zijn te vinden op de pagina met oplossingsgegevens op Azure Marketplace.
 
-**Met wie neem ik contact op met ondersteuning voor facturering/vragen over een oplossing van derden die is aangeschaft via Marketplace?**
+**Met wie kan ik contact opnemen voor factureringsondersteuning/vragen over een oplossing van derden die bij Marketplace is gekocht?**
 
-Neem contact op met Microsoft Ondersteuning op [Azure Ondersteuning](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Neem contact op met Microsoft Support via [Azure Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
-**Met wie neem ik contact op als ik vragen heb over de prijzen of voor waarden voor partner oplossingen die worden verkocht op de Azure Marketplace?**
+**Met wie kan ik contact opnemen als ik vragen heb over prijzen of voorwaarden voor partneroplossingen die op de Azure Marketplace worden verkocht?**
 
-Neem contact op met de uitgever provider voor alle technische product ondersteuning. U vindt de contact gegevens van de uitgever en/of een koppeling naar de ondersteunings website op de pagina met details van de oplossing op Azure Marketplace.
+Neem contact op met de uitgever provider voor alle technische productondersteuning. Contactgegevens van uitgevers en/of een link naar de ondersteuningswebsite zijn te vinden op elke pagina met oplossingsgegevens op Azure Marketplace.
 
-**Als ik niet tevreden ben, kan ik dan een aankoop retour neren?**
+**Als ik niet tevreden ben, kan ik dan een aankoop retourneren?**
 
-Aankopen die zijn gedaan vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen niet worden geretourneerd, maar kunnen worden geannuleerd/verwijderd. Aanbiedingen op basis van verbruik worden gefactureerd op basis van het gebruik, dus wanneer het wordt gestopt, worden de kosten ook gestopt. Abonnementen worden geannuleerd en de huidige facturerings periode wordt niet in rekening gebracht. Als een abonnement kort na de aankoop is geannuleerd (24 uur per maand en 14 dagen voor jaarlijks), wordt een volledige restitutie gegeven.
+Aankopen via [Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen niet worden geretourneerd, maar kunnen worden geannuleerd/verwijderd. Op verbruik gebaseerde aanbiedingen worden gefactureerd op basis van het gebruik, dus wanneer deze stopt, stoppen ook de kosten. Abonnementen worden geannuleerd en worden niet in rekening gebracht na de huidige factureringsperiode. Als een abonnement kort na aankoop wordt opgezegd (24 uur voor maandelijks en 14 dagen voor jaarlijks), wordt een volledige terugbetaling verstrekt.
 
-Klanten moeten rechtstreeks contact opnemen met de uitgever voor technische problemen met betrekking tot hun Marketplace-service of-aankoop. Contact gegevens van de uitgever en/of een koppeling naar de ondersteunings website vindt u op de pagina met details van de oplossing op Azure Marketplace.
+Klanten moeten rechtstreeks contact opnemen met de uitgever voor technische problemen met betrekking tot hun Marketplace-service of aankoop. Contactgegevens van uitgevers en/of een link naar de ondersteuningswebsite zijn te vinden op de pagina met oplossingsgegevens op Azure Marketplace.
 
-**Hoe worden licentie toevoegingen afgehandeld bij een verhoogde middel lange termijn?**
+**Hoe worden licentietoevoegingen verwerkt wanneer deze tussentijds worden verhoogd?**
 
-Licenties die zijn toegevoegd aan een bestaand abonnement, worden Pro-beoordeeld voor de rest van de duur van het abonnement.
+Licenties die aan een bestaand abonnement zijn toegevoegd, worden naar rato berekend voor de rest van de abonnementsduur.
 
-**Hoe worden de licenties verwijderd wanneer de mid-term?**
+**Hoe worden licentieverwijderingen afgehandeld tijdens de looptijd?**
 
-Het terugbetalings beleid dat is gevonden in deze veelgestelde vragen, is onderhevig aan licenties die worden geannuleerd.  Alle licenties die worden geannuleerd, worden direct verwijderd uit uw account en kunnen niet meer worden gebruikt.
+Licenties die worden geannuleerd, zijn onderworpen aan het restitutiebeleid in deze veelgestelde vragen.  Alle licenties die worden geannuleerd, worden onmiddellijk uit uw account verwijderd en zijn niet langer beschikbaar voor gebruik.
 
-**Worden er restituties ondersteund voor aanbiedingen op basis van verbruik?**
+**Worden terugbetalingen ondersteund voor op consumptie gebaseerde aanbiedingen?**
 
-Kosten op basis van verbruik: of het per uur Vm's of aangepaste meters is, kan niet worden terugbetaald via annulering. Zodra het verbruik heeft plaatsgevonden, worden de kosten verwerkt door het commerce-platform van micro soft en eventuele geschillen met de kwaliteit van de service waarbij een restitutie wordt aangevraagd, worden buiten micro soft-systemen tussen de uitgever en de klant rechtstreeks afgehandeld. Aanbiedingen die ondersteuning bieden voor een vast tarief plus factuur met data limiet, volgen het standaard beleid voor restitutie voor de kosten met een vast tarief.
+Eventuele kosten op basis van verbruik - of het nu gaat om VM's per uur of aangepaste meters - worden niet terugbetaald door annulering. Zodra het verbruik heeft plaatsgevonden, worden de kosten verwerkt door het handelsplatform van Microsoft en elke kwaliteit van de service geschillen waar een terugbetaling wordt gevraagd zou worden behandeld buiten Microsoft-systemen tussen de uitgever en de klant rechtstreeks. Aanbiedingen die een vast tarief plus facturering met een gemeten gemeten ondersteunen, volgen het standaardrestitutiebeleid voor de vaste tariefkosten.
 
-**Is het mogelijk om de middel lange termijn van plannen te wijzigen?**
+**Is het mogelijk om plannen tussentijds te wijzigen?**
 
-Nee, het is niet mogelijk om tussen maandelijks en jaarlijks te scha kelen.
+Nee, het is niet mogelijk om over te stappen tussen maand- en jaarbasis.
 
-**Kan een klant twee plannen van dezelfde aanbieding aanschaffen?**
+**Kan een klant twee abonnementen van hetzelfde aanbod kopen?**
 
-Ja, het is mogelijk dat een klant twee plannen van dezelfde aanbieding tegelijk bezit.
+Ja, het is mogelijk voor een klant om twee abonnementen van hetzelfde aanbod tegelijkertijd te bezitten.
 
-**Is terugbetaling en beleid voor het wijzigen van de planning anders per winkel?**
+**Verschillen het beleid voor terugbetaling en wijziging van het plan per winkel?**
 
-Nee, het bedrijfs beleid is consistent op Azure Marketplace en Microsoft AppSource. Als een partner in het programma Cloud Solution levert, kan de partner een ander beleid voor hun klanten afdwingen.
+Nee, het bedrijfsbeleid is consistent in Azure Marketplace en Microsoft AppSource. Als de partner dooreen partner in het Cloud Solution Provide-programma wordt doorverkocht, kan hij een ander beleid voor zijn klanten afdwingen.
 
 
 ## <a name="faq-for-publishers"></a>Veelgestelde vragen voor uitgevers
@@ -268,213 +267,213 @@ Nee, het bedrijfs beleid is consistent op Azure Marketplace en Microsoft AppSour
 
 **Wat is Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) is een onlinemarkt voor toepassingen en services. Klanten (voornamelijk IT-professionals en ontwikkel aars) kunnen software oplossingen van Cloud detecteren en kopen die zijn gebouwd met of voor Azure. De catalogus bevat meer dan 8.000 vermeldingen, zoals Azure-bouw stenen zoals Virtual Machines (Vm's), Api's, oplossings sjablonen, SaaS-toepassingen en aanbiedingen voor advies Services.
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) is een online marktplaats voor toepassingen en services. Klanten (voornamelijk IT-professionals en ontwikkelaars) kunnen cloudsoftwareoplossingen ontdekken en kopen die zijn gebouwd met of voor Azure. De catalogus heeft meer dan 8.000 vermeldingen, zoals Azure-bouwstenen zoals Virtuele Machines (VM's), API's, oplossingssjablonen, SaaS-toepassingen en consultingserviceaanbiedingen.
 
-Azure Marketplace is het uitgangs punt voor alle joint micro Soft Go-to-Market-activiteiten.  We richten ons op het helpen van partners om meer klanten te bereiken. U kunt nieuwe vermeldingen publiceren en ook Azure Marketplace gebruiken om campagnes voor marketing en vraag te genereren, gezamenlijke verkoop-en marketing activiteiten met micro soft uit te voeren.
+Azure Marketplace is het startpunt voor alle gezamenlijke Microsoft Go-To-Market-activiteiten.  We richten ons op het helpen van partners om meer klanten te bereiken. U nieuwe vermeldingen publiceren en Azure Marketplace ook gebruiken om promotionele en vraaggeneratiecampagnes uit te voeren, gezamenlijke verkoop- en marketingactiviteiten uit te voeren met Microsoft.
 
-**Wie zijn klanten van Azure Marketplace?**
+**Wie zijn Azure Marketplace-klanten?**
 
-Azure Marketplace is ontworpen voor IT-professionals en Cloud ontwikkelaars die geïnteresseerd zijn in commerciële IT-software en-services.
+Azure Marketplace is ontworpen voor IT-professionals en cloudontwikkelaars, geïnteresseerd in commerciële IT-software en -services.
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace voor uitgevers
 
-**Waarom zou ik mijn toepassing op Azure Marketplace kunnen publiceren en hoe kan ik deze voor delen?**
+**Waarom zou ik mijn toepassing publiceren op Azure Marketplace en hoe komt dit mij ten goede?**
 
-Azure Marketplace biedt een markt voor micro soft-partners om producten en services te promoten en verkopen aan Azure-klanten. Uitgevers hebben direct toegang tot de wereld wijde markten van 140, onze 300000 en partners en het netwerk van ondernemingen van het bedrijf.  De Marketplace bevat meer dan 90% aan Fortune 500-bedrijven en veel van de toonaangevende ontwikkel aars ter wereld. Nieuwe partners in azure Marketplace krijgen automatisch een reeks [gratis go-to-Market-voor delen](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) om het bewustzijn van hun aanbiedingen in de Marketplace van Azure te verg Roten.
+Azure Marketplace biedt Microsoft Partners een markt om producten en services te promoten en te verkopen aan Azure-klanten. Uitgevers krijgen direct toegang tot 140 wereldwijde markten, onze meer dan 300.000 partners en het netwerk van zakelijke klanten van Azure.  De markt omvat meer dan 90% van de Fortune 500-bedrijven en veel van 's werelds toonaangevende ontwikkelaars. Nieuwe partners in Azure Marketplace krijgen automatisch een reeks [gratis Go-To-Market-voordelen](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) aangeboden om het bewustzijn van hun aanbiedingen in de marktplaats van Azure te vergroten.
 
-**Wat is de onderscheidings factor tussen Azure Marketplace en AppSource?**
+**Wat is de onderscheidende factor tussen Azure Marketplace en AppSource?**
 
-Micro soft-partners kunnen kiezen waar ze publiceren op basis van hun doel groep.
+Microsoft Partners kunnen kiezen waar ze willen publiceren op basis van hun doelgroep.
 
-Micro soft biedt twee afzonderlijke winkelen voor Cloud Marketplace-Azure Marketplace en AppSource. Klanten kunnen in deze webwinkels cloudtoepassingen en -services opzoeken, uitproberen en kopen. Elke winkel biedt unieke behoeften aan klanten en stelt micro soft-partners in staat hun oplossingen of services te richten op basis van de doel groep.
+Microsoft biedt twee verschillende cloudmarktplaatsen - Azure Marketplace en AppSource. Met deze storefronts kunnen klanten cloudtoepassingen en -services vinden, uitproberen en kopen. Elke storefront voldoet aan de unieke behoeften van klanten en stelt Microsoft Partners in staat om hun oplossingen of services te targeten op basis van de doelgroep.
 
-Selecteer [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) om IT-professionals en ontwikkel aars, of technische gebruikers, te richten.
+Selecteer [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) om IT-professionals en ontwikkelaars of technische gebruikers te targeten.
 
-Selecteer [AppSource](https://appsource.microsoft.com/) om de bedrijfstak en de zakelijke eigen aren van line-of-Business te richten.
+Selecteer [AppSource](https://appsource.microsoft.com/) om line-of-business beslissers en bedrijfseigenaren te targeten.
 
-Raadpleeg de [Publisher-hand leiding](marketplace-publishers-guide.md) voor meer informatie en voor delen van Azure Marketplace en AppSource.
+Bekijk de [Uitgeversgids](marketplace-publishers-guide.md) voor meer informatie en voordelen van Azure Marketplace en AppSource.
 
-**Moet ik lid zijn van de Microsoft Partner Network (MPN) om mijn toepassingen en services in de Azure Marketplace weer te geven?**
+**Moet ik lid zijn van het Microsoft Partner Network (MPN) om mijn toepassingen en services in de Azure Marketplace aan te bieden?**
 
-Ja, er is een MPN vereist om te publiceren in azure Marketplace. Ga naar [Microsoft Partner Network](https://partner.microsoft.com/membership) om aan de slag te gaan.
+Ja, een MPN is vereist om te publiceren in Azure Marketplace. Ga naar [Microsoft Partner Network](https://partner.microsoft.com/membership) om aan de slag te gaan.
 
-**Wat is het criterium voor het publiceren van een oplossing in azure Marketplace?**
+**Wat is het criterium om een oplossing in Azure Marketplace te publiceren?**
 
-Om te publiceren in azure Marketplace moeten partners aantonen dat hun toepassing Azure uitvoert of uitbreidt. Uitgevers zijn verplicht klanten een [Service Level Agreement](https://azure.microsoft.com/support/legal/sla/), [Privacybeleid](https://privacy.microsoft.com/privacystatement)en telefonische en online ondersteuning te bieden. Voor verschillende workloads gelden aanvullende vereisten. Bekijk het [deelname beleid voor Azure Marketplace](./marketplace-participation-policy.md) en de [Publisher-hand leiding](marketplace-publishers-guide.md) voor meer informatie.
+Als u wilt publiceren in Azure Marketplace, moeten partners aantonen dat hun toepassing op Azure wordt uitgevoerd of uitbreidt. Uitgevers zijn verplicht om klanten te voorzien van een [serviceniveauovereenkomst,](https://azure.microsoft.com/support/legal/sla/) [privacybeleid](https://privacy.microsoft.com/privacystatement)en telefonische en online ondersteuning. Verschillende workloads hebben aanvullende eisen. Bekijk de [Azure Marketplace-participatiebeleidsregels](./marketplace-participation-policy.md) en [uitgevershandleiding](marketplace-publishers-guide.md) voor verdere richtlijnen.
 
-**Zijn er kosten verbonden aan het publiceren in azure Marketplace?**
+**Zijn er kosten verbonden aan publicatie in Azure Marketplace?**
 
-Er zijn geen publicatie kosten voor het uploaden van een lijst, proef versie of BYOL (uw eigen licentie meenemen) via Azure Marketplace.
+Er zijn geen publicatiekosten bij het uploaden van een lijst-, proef- of BYOL-oplossing (Bring Your Own License) via Azure Marketplace.
 
-**Zijn er transactie kosten voor aankopen via Azure Marketplace?**
+**Zijn er transactiekosten voor aankopen via Azure Marketplace?**
 
-Wanneer de oplossings licentie wordt aangeschaft via Azure Marketplace, worden de inkomsten voor de software licentie gesplitst tussen de uitgever en micro soft.  Dit gebeurt in overeenstemming met de voor waarden in de Marketplace- [overeenkomst voor uitgevers](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Daarnaast maken oplossingen met BYOL (uw eigen licentie) geen transactie kosten.
+Wanneer de oplossingslicentie via Azure Marketplace wordt aangeschaft, worden de inkomsten voor de softwarelicentie verdeeld tussen de uitgever en Microsoft.  Dit gebeurt in overeenstemming met de algemene voorwaarden van de [Marketplace Publisher Agreement.](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) Bovendien kosten oplossingen met BYOL-uitgevers (Bring Your Own License) geen transactiekosten.
 
-**Wat is een Standard-contract?**
+**Wat is een standaardcontract?**
 
-Micro soft biedt standaard contract voorwaarden die een uitgever kan selecteren om gebruik te kunnen maken, zodat klanten een vereenvoudigd aankoop-en juridisch beoordelings proces hebben.
+Microsoft biedt standaardcontractvoorwaarden die een uitgever kan selecteren om hefboomwerking te gebruiken, zodat klanten een vereenvoudigd inkoop- en juridisch beoordelingsproces hebben.
 
-**Waar vind ik richt lijnen voor het integreren van mijn toepassing met Azure Active Directory (AAD)?**
+**Waar vind ik richtlijnen voor het integreren van mijn toepassing met Azure Active Directory (AAD)?**
 
-Micro soft verifieert alle Marketplace-gebruikers met AAD.  U kunt rechtstreeks in een proef versie worden ingericht, zonder dat u een extra aanmeldings stap hoeft te doen.  Een geverifieerde gebruiker klikt bijvoorbeeld op een proef lijst in Marketplace en wordt omgeleid naar een proef omgeving.
+Microsoft verifieert alle Marketplace-gebruikers met AAD.  U rechtstreeks worden ingericht in een proefversie zonder dat u een extra aanmeldingsstap nodig hebt.  Een geverifieerde gebruiker klikt bijvoorbeeld door een proefvermelding in Marketplace en wordt doorgestuurd naar een proefomgeving.
 
-Ga naar de [sectie Azure Active Directory in de Publisher-gids](enable-appsource-marketplace-using-azure-ad.md)voor meer informatie en om aan de slag te gaan met het inschakelen van een proef versie met Aad.
+Ga voor meer informatie en om aan de slag te gaan met het inschakelen van een proefversie met AAD naar de [sectie Azure Active Directory in de uitgevershandleiding.](enable-appsource-marketplace-using-azure-ad.md)
 
-**Hoe kan ik aan de slag met de registratie van het ontwikkelaars centrum?**
+**Hoe ga ik aan de slag met de registratie van Dev Center?**
 
-Om aan de slag te gaan, moeten uitgevers controleren of een [dev Center-account](deprecated/register-dev-center.md) nog niet is geregistreerd (om te voor komen dat er dubbele bewerkingen worden uitgevoerd). Nadat de volgende stap is bevestigd, moet u zich registreren door u aan te [melden](https://account.microsoft.com/account/) met een Microsoft-account, die wordt gekoppeld aan het ontwikkelaars account.
+Om aan de slag te gaan, moeten uitgevers controleren of een [Dev Center-account](deprecated/register-dev-center.md) nog niet is geregistreerd (om dubbel werk te voorkomen). Zodra dit is bevestigd, is de volgende stap om u te registreren door [u aan](https://account.microsoft.com/account/) te melden bij een Microsoft-account, dat wordt gekoppeld aan het ontwikkelaarsaccount.
 
-Als u nog geen Microsoft-account hebt, kunt u [een account maken](https://signup.live.com/) (bijvoorbeeld: contoso_marketplace@live.com).
+Als u nog geen Microsoft-account hebt, u een contoso_marketplace@live.comaccount [maken](https://signup.live.com/) (bijvoorbeeld: ).
 
-**Waarom is het ontwikkelaars centrum-account vereist?**
+**Waarom is Dev Center-account vereist?**
 
-Er is een ontwikkelaars centrum-account vereist om micro soft in staat te stellen klanten te factureren voor de typen van de uitgever voor Transact. Met de registratie van het ontwikkelaars centrum-account kunnen micro soft de juridische, belasting-en Bank gegevens valideren. Zie [registreren in dev Center](./partner-center-portal/create-account.md)voor meer informatie.
+Er is een Dev Center-account vereist om Microsoft in staat te stellen namens de uitgever klanten te factureren voor transact-vermeldingstypen. Met de registratie van Dev Center-accountkan Microsoft de juridische, fiscale en bankgegevens valideren. Zie [registreren in Dev Center](./partner-center-portal/create-account.md)voor meer informatie.
 
-**Wat zijn leads en waarom zijn deze belang rijk voor mij als een uitgever op Marketplace?**
+**Wat zijn leads en waarom zijn ze belangrijk voor mij als uitgever in Marketplace?**
 
-Leads zijn klanten die uw producten implementeren via Marketplace. Of uw product wordt vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com) of [AppSource](https://appsource.microsoft.com), u kunt leads ontvangen van klanten die geïnteresseerd zijn in uw product.  U kunt de doel locatie van de lead instellen in uw aanbieding. Zie [een Cloud Marketplace-uitgever worden](./partner-center-portal/create-account.md)voor meer informatie.
+Leads zijn klanten die uw producten implementeren via de Marketplace. Of uw product nu wordt vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com) of [AppSource,](https://appsource.microsoft.com)u leads ontvangen van klanten die geïnteresseerd zijn in uw product.  U de hoofdbestemming instellen op uw aanbieding. Zie [Een Cloud Marketplace-uitgever worden](./partner-center-portal/create-account.md)voor meer informatie.
 
-**Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?**
+**Waar kan ik hulp krijgen bij het instellen van mijn hoofdbestemming?**
 
-Meer informatie vindt u in [Partner Center: klanten leads-documentatie ophalen](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) of een ondersteunings ticket indienen via [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) door uw aanbiedings type en Lead beheer te selecteren.
+Lees meer in de documentatie [van Klantenleads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) van [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) het Partnercentrum of stuur een ondersteuningsticket door door uw aanbiedingstype en leadbeheer te selecteren.
 
-**Ben ik verplicht een lead bestemming te configureren voor het publiceren van een aanbieding op Marketplace?**
+**Moet ik een leadbestemming configureren om een aanbieding op Marketplace te publiceren?**
 
-Ja, als u een **contact persoon**, **SaaS-app**of **advies Services** -aanbod publiceert, moet u een lead bestemming configureren.
+Ja, als u een **Contact Mij,** **SaaS-app**of **adviesservices** aanbiedt, publiceert, moet u een leadbestemming configureren.
 
-**Hoe kan ik controleren of de lead configuratie juist is?**
+**Hoe kan ik bevestigen dat de leadconfiguratie correct is?**
 
-Na het volt ooien van de aanbieding en het instellen van een doel voor de lead, kan de vermelding op de juiste manier worden gepubliceerd in het [partner centrum](https://cloudpartner.azure.com/). Voordat de vermelding live gaat, kunt u valideren of de configuratie van de lead-instellingen correct werkt.  Een test-lead verzenden naar de doel locatie van de lead die in de aanbieding is geconfigureerd.
+Na het voltooien van de aanbieding en het instellen van een hoofdbestemming, kan de aanbieding correct worden gepubliceerd in [partnercentrum.](https://cloudpartner.azure.com/) Voordat de aanbieding live gaat, u valideren of de leadconfiguratieset-up correct werkt.  Stuur een testlead naar de hoofdbestemming die in de aanbieding is geconfigureerd.
 
-**Welke landen/regio's zijn Azure Marketplace beschikbaar voor de verkoop van uitgevers?**
+**In welke landen/regio's is Azure Marketplace beschikbaar voor uitgevers om uit te verkopen?**
 
-Uitgevers op basis van de volgende landen/regio's kunnen momenteel worden verkocht in de Azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oosten rijk, Azerbeidzjan, Bahrein, Bangladesh, Belarus, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Democratische Republiek Congo (DRC), Costa Rica, ivoor kust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji, Finland, Frank rijk, Georgië, Duitsland, Ghana, Grieken land, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Mongolië, Montenegro, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noor wegen, Oman, Pakistan, Panama, Paraguay, Peru, Filipijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saudi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitser land, Tadzjikistan, Tanzania, Thai land, Oost-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Uganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Konink rijk Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
+Uitgevers die zijn gevestigd in de volgende landen/regio's, kunnen momenteel worden verkocht in de Azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oostenrijk, Azerbeidzjan, Bahrein, Bangladesh, Wit-Rusland, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, Ivoorkust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji-eilanden, Finland, Frankrijk, Georgië, Duitsland, Ghana, Griekenland, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noorwegen, Oman, Pakistan, Panama, Paraguay, Peru, Filippijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitserland, Tadzjikistan, Tanzania, Thailand, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Oeganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Koninkrijk, Verenigd Koninkrijk Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
 
-**Hoe kan ik een vermelding verwijderen uit Azure Marketplace?**
+**Hoe verwijder ik een vermelding uit de Azure Marketplace?**
 
 *Virtuele machine & Azure-apps:*
 
 1. Meld u aan bij [Partner Center](https://cloudpartner.azure.com/).
-1. Selecteer de aanbieding op het tabblad **alle aanbiedingen** .
-1. Selecteer in het deel venster aan de linkerkant van het scherm het tabblad **sku's** .
-1. Selecteer de SKU die u wilt verwijderen en klik op de knop **verwijderen** voor die SKU.
+1. Selecteer de aanbieding op het tabblad **Alle aanbiedingen.**
+1. Selecteer in het deelvenster aan de linkerkant van het scherm het tabblad **SKU's.**
+1. Selecteer de SKU voor verwijdering en klik op de knop **Verwijderen** voor die SKU.
 1. [Publiceer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) de aanbieding opnieuw naar Azure Marketplace.
 
-Zie [een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)voor meer informatie.
+Zie [Een aanbieding verwijderen](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)voor meer informatie.
 
-*Web Apps (SaaS-apps, invoeg toepassingen) & Consulting Services:*
+*Web Apps (SaaS-apps, add-ons) & Consulting Services:*
 
-1. Selecteer in partner centrum het vraag teken en klik vervolgens op **ondersteuning**.
+1. Selecteer in Partnercentrum het vraagtekenpictogram en klik op **Ondersteuning**.
 1. Ga naar <https://go.microsoft.com/fwlink/?linkid=844975>.
-1. Selecteer op de pagina ondersteuning het type aanbieding.
-1. Selecteer een gepubliceerde aanbieding **verwijderen** .
-1. Een incident ticket maken.
+1. Selecteer op de ondersteuningspagina het aanbiedingstype.
+1. Selecteer **Een** gepubliceerde aanbieding verwijderen.
+1. Maak een incidentticket.
 1. Opslaan.
 
 *O365-apps:*
 
-1.  Meld u aan bij <https://sellerdashboard.microsoft.com> met uw dev-account.
-1.  De invoeg toepassing intrekken.
+1.  Meld je <https://sellerdashboard.microsoft.com> aan met je Dev-account.
+1.  Trek de invoegtoepassing in.
 
     > [!NOTE]
-    > Apps verdwijnen na 90 dagen van een bestaande vermelding.
+    > Apps verdwijnen na 90 dagen uit een bestaande vermelding.
 
-**Waarom worden mijn wijzigingen niet doorgevoerd in de aanbieding?**
+**Waarom worden mijn wijzigingen niet weergegeven in het aanbod?**
 
-Wijzigingen die in het partner centrum zijn aangebracht, worden alleen in het systeem bijgewerkt en opgeslagen voor raden zodra u de aanbieding opnieuw hebt gepubliceerd. Zorg ervoor dat u na elke wijziging de aanbieding voor de publicatie hebt verzonden.
+Wijzigingen die zijn aangebracht in het Partnercenter worden alleen bijgewerkt in het systeem en de fronten opslaan zodra u de aanbieding opnieuw hebt gepubliceerd. Zorg ervoor dat u de aanbieding voor publicatie na eventuele wijzigingen hebt ingediend.
 
-### <a name="benefits-and-go-to-market-gtm-resources"></a>Voor delen en go-to-Market (GTM)-resources
+### <a name="benefits-and-go-to-market-gtm-resources"></a>Voordelen en go-to-market (GTM) Resources
 
-**Wat zijn de voor delen van de go-to-Market voor uitgevers die worden vermeld op Azure Marketplace?**
+**Wat zijn enkele van de go-to-market voordelen die worden verstrekt voor uitgevers die op Azure Marketplace worden vermeld?**
 
-Azure Marketplace is het begin punt voor gezamenlijke go-to-Market-activiteiten met micro soft en de deur naar een kant-en-klare samenwerkings verband. Alle nieuwe vermeldingen in azure Marketplace worden automatisch aangeboden met een aantal [gratis go-to-Market-voor delen](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) om het voor deel te bieden aan de klanten van micro soft. Zodra een aanbieding is gepubliceerd, maakt het micro soft GTM-team contact met u en gaat u uw voor delen afleveren.
+Azure Marketplace is het startpunt voor gezamenlijke Go-To-Market-activiteiten met Microsoft en de deur naar een Co-Sell Ready-partnerschap. Alle nieuwe vermeldingen in Azure Marketplace worden automatisch aangeboden een reeks [gratis Go-To-Market-voordelen](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) om de bekendheid van aanbiedingen voor klanten van Microsoft te vergroten. Zodra een aanbieding is gepubliceerd, neemt het Microsoft GTM-team contact met u op en begint het uw voordelen te leveren.
 
-Ga naar [micro soft gtm Services](https://partner.microsoft.com/reach-customers/gtm) voor meer informatie over onze gtm-voor delen en manieren om uw bedrijf in Marketplace te verg Roten.
+Ga naar [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) voor meer informatie over onze GTM-voordelen en manieren om uw bedrijf op de markt te laten groeien.
 
-**Waar worden Azure Marketplace-oplossingen bevorderd in micro soft-webeigenschappen?**
+**Waar worden Azure Marketplace-oplossingen gepromoot binnen Microsoft-webeigenschappen?**
 
-Azure Marketplace-oplossingen zijn beschikbaar op de website micro soft [Azure Portal]en [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Cloud ontwikkelaars en IT-professionals die Azure gebruiken, hebben een risico op partner oplossingen wanneer ze zich aanmelden. Een subset van partner oplossingen wordt ook getoond en gedraaid op de [Azure Marketplace-start](https://azuremarketplace.microsoft.com/marketplace) pagina en de [Azure-oplossingenpagina](https://azure.microsoft.com/solutions/).
+Azure Marketplace-oplossingen zijn beschikbaar in de Microsoft [Azure-portal]en [de Azure Marketplace-website.](https://azuremarketplace.microsoft.com/marketplace/) Cloudontwikkelaars en IT-professionals die Azure gebruiken, hebben elke keer dat ze zich aanmelden blootstelling aan partneroplossingen. Een subset van partneroplossingen wordt ook getoond en gedraaid op de pagina [Azure Marketplace-startpagina](https://azuremarketplace.microsoft.com/marketplace) en [Azure-oplossingen.](https://azure.microsoft.com/solutions/)
 
 ### <a name="billing-and-payments"></a>Facturering en betalingen
 
-**Hoe kan ik ontvang ik de betaling voor mijn Azure Marketplace-omzet?**
+**Hoe ontvang ik betaling voor mijn Azure Marketplace-verkopen?**
 
-Alle betalingen van micro soft worden maandelijks verwerkt via PayPal of een EFT (Electronic Funds overdracht). De betaling wordt uitgevoerd binnen twee maanden na de datum waarop de klant de service heeft gebruikt, hoewel de exacte timing afhankelijk is van het betalings middel van de klant. Voor creditcardklanten geldt een borgstellingsperiode van 45 dagen.
+Alle betalingen van Microsoft worden maandelijks verwerkt via PayPal of Electronic Funds Transfer (EFT). De betaling vindt plaats binnen twee maanden na de datum waarop de klant de service heeft gebruikt, hoewel de exacte timing afhankelijk is van het betalingsinstrument van de klant. Voor creditcardklanten geldt een borgperiode van 45 dagen.
 
-**Voor oplossingen die zijn gebaseerd op gebruik op basis van een facturering, wanneer een klant de onderliggende virtuele machine up-to-size of verkleint, geldt de prijs van mijn software licentie?**
+**Voor virtual machine-gebaseerde oplossingen gekocht met gebruiksgebaseerde facturering, wanneer een klant up-sizes of downsizes van de onderliggende Virtual Machine, volgt de prijsstelling van mijn softwarelicentie?**
 
-Ja, de nieuwe prijs wordt direct in rekening gebracht.  De prijs wijzigingen worden aangebracht wanneer een klant de grootte van de virtuele machine wijzigt en de prijzen in de prijs tabel opgeeft, gebaseerd op de grootte van de virtuele machine.
+Ja, de nieuwe prijs wordt onmiddellijk gefactureerd.  Prijswijzigingen vinden plaats wanneer een klant de grootte van de virtuele machine wijzigt en verschillende prijzen opgeeft in de prijstabel, die zijn gebaseerd op de grootte van virtuele machines.
 
-**Is facturering per knoop punt beschikbaar voor Azure Marketplace?**
+**Is facturering per knooppunt beschikbaar voor Azure Marketplace?**
 
-Azure Marketplace biedt momenteel geen ondersteuning voor facturering per knoop punt met Virtual Machines. Uitgevers kunnen nog steeds een facturerings tarief per knoop punt bepalen met facturerings tarieven van micro soft VM'S.  De berekening is het bepalen van het aantal Vm's op basis van het aantal gebruikte uren en de frequentie per uur.
+Azure Marketplace biedt momenteel geen ondersteuning voor facturering per knooppunt met virtuele machines. Uitgevers kunnen nog steeds een factureringspercentage per knooppunt bepalen met factureringstarieven voor Microsoft VM.Publishers can still determine a per-node billing rate with Microsoft VM billing rates.  De berekening is om het aantal VM's te bepalen aan de doorudering van het aantal gebruikte uren en het tarief per uur.
 
-**Met wie neem ik contact op voor facturering of vragen over het beheer van aanbiedingen?**
+**Met wie kan ik contact opnemen voor facturering of managementvragen aanbieden?**
 
-Registreer een ticket met [Microsoft ondersteuning](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
+Log een ticket in met [Microsoft Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
 
-### <a name="publisher-support"></a>Ondersteuning voor Publisher
+### <a name="publisher-support"></a>Ondersteuning voor uitgevers
 
-**Met wie moet ik contact opnemen voor algemene ondersteunings problemen met Azure Marketplace?**
+**Met wie kan ik contact opnemen voor problemen met algemene ondersteuning met Azure Marketplace?**
 
-Neem contact op met de [ondersteuning van partners](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)voor algemene toepassings ondersteuning met betrekking tot bruikbaarheid of probleem oplossing.
+Neem contact op met [Partner Center Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)voor algemene toepassingsondersteuning met betrekking tot bruikbaarheid of probleemoplossing.
 
-Neem contact op met [Azure-ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)voor facturerings-en abonnements problemen met uw Azure Marketplace-aankoop.
+Neem contact op met [Azure Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)voor facturerings- en abonnementsproblemen met uw Azure Marketplace-aankoop.
 
-**Met wie kan ik contact opnemen met publicaties of vragen over het beheer van aanbiedingen?**
+**Met wie kan ik contact opnemen met het publiceren of managementvragen aanbieden?**
 
-Ga naar de [Publisher-hand leiding voor Azure Marketplace](marketplace-publishers-guide.md) voor actuele resources en documenten op veelgestelde vragen. Daarnaast kunt u een ticket vastleggen met [Microsoft ondersteuning in het partner centrum](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Ga naar de [Azure Marketplace Publisher Guide](marketplace-publishers-guide.md) voor actuele bronnen en documentatie over veelgestelde vragen. Bovendien u een ticket aanmelden bij [Microsoft Support in het Partnercentrum.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace voor uitgevers
 
-**Hoe kan ik mijn geografische Beschik baarheid definiëren voor het inschakelen van de verkoop in verschillende landen/regio's?**
+**Hoe definieer ik mijn geografische beschikbaarheid om verkopen in verschillende landen/regio's mogelijk te maken?**
 
-1.  Ga in het partner centrum naar de SKU waaraan u nieuwe landen/regio's wilt toevoegen.  Ga in de **SKU-Details**naar **land/regio Beschik baarheid** en klik op **regio's selecteren**.
+1.  Navigeer in Partnercentrum naar de SKU waaraan u nieuwe landen/regio's wilt toevoegen.  Navigeer in de **SKU-gegevens**naar **de beschikbaarheid van Land/regio** en klik op **Regio's selecteren**.
 
-    ![Regio’s selecteren](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+    ![Regio's selecteren](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Er wordt een lijst weer gegeven met alle beschik bare landen/regio's waarnaar moet worden verkocht.  Klik op het selectie vakje naast elk land of elke regio waarvoor u deze SKU beschikbaar wilt maken. Klik op **OK**.
+1.  Er verschijnt een lijst met alle beschikbare landen/regio's om aan te verkopen.  Klik op het selectievakje naast elk land/regio dat u beschikbaar wilt maken. Klik op **OK**.
 
-    ![Land/regio lijst selecteren](media/marketplace-publishers-guide/FAQ-select-countries.png)
+    ![Landen-/regiolijst selecteren](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
-1.  Als u de wijzigingen wilt Toep assen op uw Live-aanbieding, klikt u op **publiceren**.  
+1.  Klik tot slot voor de wijzigingen die moeten worden toegepast op uw live-aanbieding op **Publiceren**.  
 
     > [!Note]
     > Het duurt 24 uur voordat de wijzigingen van kracht worden.
 
 <!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
 
-**Hoe kan een uitgever de geografische Beschik baarheid wijzigen voor een bestaande aanbieding?**
+**Hoe kan een uitgever de geografische beschikbaarheid voor een bestaande aanbieding wijzigen?**
 
-De uitgever kan een bestaande aanbieding bewerken, de nieuwe landen/regio's selecteren en de functie voor het downloaden/uploaden van spread sheet gebruiken om prijzen in te stellen.
+De uitgever kan een bestaande aanbieding bewerken, de nieuwe landen/regio's selecteren en de functie voor het downloaden/upload van spreadsheets gebruiken om de prijzen in te stellen.
 
 **In welke landen/regio's kunnen klanten Azure Marketplace-aanbiedingen kopen?**
 
-Azure Marketplace ondersteunt 141 kopen van geografische gebieden zoals gedefinieerd door het facturerings adres van de klant. Zie [deelname beleid](/legal/marketplace/participation-policy) voor een lijst met landen/regio's.
+Azure Marketplace ondersteunt 141 buy-from-regio's zoals gedefinieerd door het factuuradres van de klant. Zie [het participatiebeleid](/legal/marketplace/participation-policy) voor een lijst van landen/regio's.
 
 **Welke valuta's worden ondersteund door Azure Marketplace?**
 
-Trans acties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, kost, JPY, vermiljard, NOK, NZD, RUB, SEK, TWD en USD.
+Transacties kunnen worden uitgevoerd in de volgende 17 valuta's: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD en USD.
 
-### <a name="pricing-and-payment"></a>Prijsbepaling en betaling
+### <a name="pricing-and-payment"></a>Prijzen en betaling
 
-**Wat is het verschil tussen de gratis laag en de gratis proef versie van de software?**
+**Wat is het verschil tussen Free Tier en Free Software Trial?**
 
-Een aanbieding met een gratis laag abonnement is permanent gratis.  Een gratis proef versie van een software test (nu uitproberen) is een betaald abonnement dat slechts voor een beperkte periode gratis is.
+Een gratis tier-abonnement is doorlopend gratis.  Een Gratis Software Trial (Try It Now) aanbod is een betaald abonnement, alleen gratis voor een beperkte periode.
 
-**Wat is het proces voor het valideren van de end-to-end-aankoop-en inrichtings stroom?**
+**Wat is het proces om de end-to-end aankoop- en provisioningstroom te valideren?**
 
-Tijdens het publicatie proces krijgt u toegang tot een preview van uw aanbieding. De toegang is beperkt tot gebruikers die u hebt opgegeven op het tabblad voor beeld en dit is een live-aanbieding die niet zichtbaar is voor iemand anders. U kunt dit doen en het proces testen. Er wordt echter wel het volledige bedrag in rekening gebracht volgens de configuratie van uw aanbieding.
+Tijdens het publicatieproces krijgt u toegang tot een preview van uw aanbieding. Toegang is beperkt tot gebruikers die u hebt opgegeven op het tabblad Voorbeeld, en dit is een live-aanbieding die niet zichtbaar is voor anderen. U dit kopen en het proces testen; U wordt echter het volledige bedrag in rekening gebracht volgens de configuratie van uw aanbieding.
 
-Voor het volt ooien van een aankoop tegen een zeer lage prijs, raadt micro soft aan een persoonlijk abonnement te publiceren dat is ingesteld op een prijs die u kunt accepteren als de kosten voor testen. Nul wordt ondersteund, maar weerspiegelt niet de volledige ervaring zoals een betaald abonnement.
+Om een aankoop tegen een zeer lage prijs te voltooien, stelt Microsoft voor om een privé-abonnement te publiceren dat is ingesteld tegen een prijs die u accepteren als de kosten van het testen. Zero wordt ondersteund, maar weerspiegelt niet de volledige ervaring zoals een betaald abonnement.
 
-**Biedt micro soft een restitutie buiten het standaard beleid?**
+**Biedt Microsoft een terugbetaling buiten het standaardbeleid?**
 
-Ja, bij uw aanvraag via de ondersteunings ticket verwerkt micro soft de tegoeden bij uw klant als dat nodig is.
+Ja, op uw verzoek via een ondersteuningsticket verwerkt Microsoft credits aan uw klant als u dit passend acht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](/azure/marketplace/marketplace-publishers-guide) .
+Ga naar de [gidspagina azure Marketplace en AppSource Publisher.](/azure/marketplace/marketplace-publishers-guide)
 
 
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

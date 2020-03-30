@@ -1,6 +1,6 @@
 ---
-title: Windows-hostgroep voor virtuele Bureau bladen Azure Resource Manager-Azure
-description: Het maken van een hostgroep in virtueel bureau blad van Windows met een Azure Resource Manager sjabloon.
+title: Windows Virtual Desktop-hostgroep Azure Resource Manager - Azure
+description: Een hostgroep maken in Windows Virtual Desktop met een Azure Resource Manager-sjabloon.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,68 +8,68 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f61319a1d2a5d5599a4745979f3c5abc0a713ac7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 9ce6440989cbf962c474de2a6c90db4c485bf4a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292333"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Een hostpool maken met een Azure Resource Manager-sjabloon
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+Hostpools zijn een verzameling van een of meer identieke virtuele machines binnen Windows Virtual Desktop-tenantomgevingen. Elke hostgroep kan een appgroep bevatten waarmee gebruikers kunnen communiceren zoals op een fysiek bureaublad.
 
-Volg de instructies in deze sectie voor het maken van een hostgroep voor een Windows Virtual Desktop-Tenant met een Azure Resource Manager-sjabloon die door micro soft wordt verschaft. In dit artikel leest u hoe u een hostgroep maakt in virtueel bureau blad van Windows, een resource groep maakt met virtuele machines in een Azure-abonnement, deze Vm's toevoegt aan het AD-domein en de Vm's registreert met behulp van virtueel bureau blad van Windows.
+Volg de instructies van deze sectie om een hostgroep te maken voor een Windows Virtual Desktop-tenant met een Azure Resource Manager-sjabloon van Microsoft. In dit artikel wordt uitgelegd hoe u een hostgroep maakt in Windows Virtual Desktop, een brongroep maakt met VM's in een Azure-abonnement, deze VM's aansluiten bij het AD-domein en de VM's registreren met Windows Virtual Desktop.
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Wat u nodig hebt om de Azure Resource Manager-sjabloon uit te voeren
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Wat u nodig hebt om de sjabloon Azure Resource Manager uit te voeren
 
-Zorg ervoor dat u de volgende zaken kent voordat u de Azure Resource Manager sjabloon uitvoert:
+Zorg ervoor dat u de volgende dingen weet voordat u de sjabloon Azure Resource Manager uitvoert:
 
-- Als de bron van de afbeelding die u wilt gebruiken, is. Is het van Azure Gallery of is het aangepast?
-- Referenties voor domein deelname.
-- Uw Windows-referenties voor virtueel bureau blad.
+- Waar de bron van de afbeelding die u wilt gebruiken is. Is het van Azure Gallery of is het aangepast?
+- Uw domein join referenties.
+- Uw Windows Virtual Desktop-referenties.
 
-Wanneer u een virtuele Windows-bureau blad-hostgroep maakt met de Azure Resource Manager sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, een beheerde installatie kopie of een niet-beheerde installatie kopie. Voor meer informatie over het maken van VM-installatie kopieën raadpleegt u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en [een beheerde installatie kopie te maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md).
+Wanneer u een Windows Virtual Desktop-hostgroep maakt met de sjabloon Azure Resource Manager, u een virtuele machine maken vanuit de Azure-galerie, een beheerde afbeelding of een niet-beheerde afbeelding. Zie [Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en Een [beheerde afbeelding van een gegeneraliseerde VM in Azure](../virtual-machines/windows/capture-image-resource.md)voor meer informatie over het maken van VM-afbeeldingen.
 
-## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>De Azure Resource Manager-sjabloon uitvoeren voor het inrichten van een nieuwe hostgroep
+## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>De sjabloon Azure Resource Manager uitvoeren voor het inrichten van een nieuwe hostgroep
 
-Ga naar [deze github-URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)om te starten.
+Om te beginnen gaat u naar [deze GitHub-URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
 
-### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in azure
+### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in Azure
 
-Als u in een bedrijfs abonnement implementeert, schuift u naar beneden en selecteert u **implementeren naar Azure**. Ga vervolgens verder met het invullen van de para meters op basis van uw installatie kopie bron.
+Als u een Enterprise-abonnement implementeert, schuift u omlaag en selecteert **u Implementeren naar Azure,** en vult u de parameters in op basis van uw afbeeldingsbron.
 
-Als u in een Cloud Solution Provider-abonnement implementeert, voert u de volgende stappen uit om te implementeren in Azure:
+Als u een abonnement in een Cloud Solution Provider-abonnement implementeert, voert u de volgende stappen uit om te implementeren in Azure:
 
-1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
-2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
-3. Direct na 'https://portal.azure.com/' en vóór de hashtag (#) voert u een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling die u moet gebruiken: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
-4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
-5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
+1. Schuif omlaag en klik met de rechtermuisknop op **Implementeren naar Azure**en selecteer Vervolgens **Koppelingslocatie kopiëren**.
+2. Open een teksteditor zoals Kladblok en plak de koppeling daar.
+3. Direct nahttps://portal.azure.com/" " en voordat de hashtag (#) een bij teken (@) invoert, gevolgd door de tenantdomeinnaam. Hier is een voorbeeld van het `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`formaat dat u moet gebruiken: .
+4. Meld u aan bij de Azure-portal als gebruiker met machtigingen voor beheerders/inzenderen bij het abonnement van de Cloud Solution Provider.
+5. Plak de koppeling die u naar de teksteditor hebt gekopieerd in de adresbalk.
 
-Zie het [Leesmij-bestand](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)van het Windows-virtueel bureau blad voor meer informatie over welke para meters u moet invoeren voor uw scenario. Het Leesmij-bestand wordt altijd bijgewerkt met de meest recente wijzigingen.
+Zie het Windows Virtual Desktop [Readme-bestand](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)voor richtlijnen over welke parameters u moet invoeren voor uw scenario. De Readme wordt altijd bijgewerkt met de laatste wijzigingen.
 
-## <a name="assign-users-to-the-desktop-application-group"></a>Gebruikers toewijzen aan de bureaublad toepassings groep
+## <a name="assign-users-to-the-desktop-application-group"></a>Gebruikers toewijzen aan de bureaubladtoepassingsgroep
 
-Nadat de GitHub-Azure Resource Manager sjabloon is voltooid, moet u gebruikers toegang toewijzen voordat u begint met het testen van de volledige sessie Desk tops op uw virtuele machines.
+Nadat de sjabloon GitHub Azure Resource Manager is voltooid, wijst u gebruikerstoegang toe voordat u de volledige sessiedesktops op uw virtuele machines gaat testen.
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+Download en importeer eerst [de Windows Virtual Desktop PowerShell-module](/powershell/windows-virtual-desktop/overview/) om te gebruiken in uw PowerShell-sessie als u dat nog niet hebt gedaan.
 
-Als u gebruikers wilt toewijzen aan de groep bureau blad-toepassing, opent u een Power shell-venster en voert u deze cmdlet uit om u aan te melden bij de virtuele Windows-bureaublad omgeving:
+Als u gebruikers wilt toewijzen aan de bureaubladtoepassingsgroep, opent u een PowerShell-venster en voert u deze cmdlet uit om u aan te melden bij de Windows Virtual Desktop-omgeving:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Daarna voegt u gebruikers toe aan de groep bureau blad-toepassing met deze cmdlet:
+Voeg daarna gebruikers toe aan de bureaubladtoepassingsgroep met deze cmdlet:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in Azure Active Directory (bijvoorbeeld user1@contoso.com). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
+Het UPN van de gebruiker moet overeenkomen met de identiteit user1@contoso.comvan de gebruiker in Azure Active Directory (bijvoorbeeld ). Als u meerdere gebruikers wilt toevoegen, moet u deze cmdlet voor elke gebruiker uitvoeren.
 
-Nadat u deze stappen hebt voltooid, kunnen gebruikers die zijn toegevoegd aan de groep bureau blad, zich aanmelden bij een virtueel bureau blad van Windows met ondersteunde Extern bureaublad clients en een resource voor een sessie bureau blad bekijken.
+Nadat u deze stappen hebt voltooid, kunnen gebruikers die zijn toegevoegd aan de bureaubladtoepassingsgroep zich aanmelden bij Windows Virtual Desktop met ondersteunde Extern bureaublad-clients en een bron voor een sessiebureaublad zien.
 
 >[!IMPORTANT]
->Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken.
+>Om uw Windows Virtual Desktop-omgeving in Azure te beveiligen, raden we u aan de binnenkomende poort 3389 niet op uw VM's te openen. Voor Windows Virtual Desktop is geen open inkomende poort 3389 vereist voor gebruikers om toegang te krijgen tot de VM's van de hostgroep. Als u poort 3389 moet openen voor probleemoplossingsdoeleinden, raden we u aan [just-in-time VM-toegang te](../security-center/security-center-just-in-time.md)gebruiken.

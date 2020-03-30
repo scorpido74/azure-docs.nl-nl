@@ -1,19 +1,19 @@
 ---
-title: Recovery Services kluizen maken
-description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin de back-ups en herstel punten worden opgeslagen.
+title: Vaults van Recovery Services maken
+description: In dit artikel leert u hoe u vaults van Recovery Services maakt die de back-ups en herstelpunten opslaan.
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 5eac302668c2f322390b38475860c77f1cd40d72
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295019"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Een Recovery Services kluis is een entiteit waarin de back-ups en herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt. De Recovery Services kluis bevat ook het back-upbeleid dat is gekoppeld aan de beveiligde virtuele machines.
+Een vault van Recovery Services is een entiteit die de back-ups en herstelpunten opslaat die in de loop van de tijd zijn gemaakt. De kluis Recovery Services bevat ook het back-upbeleid dat is gekoppeld aan de beveiligde virtuele machines.
 
 Een Recovery Services-kluis maken:
 
@@ -23,115 +23,127 @@ Een Recovery Services-kluis maken:
 
     ![Alle services selecteren](./media/backup-create-rs-vault/click-all-services.png)
 
-3. In het dialoogvenster **Alle services** voert u **Recovery Services** in. De lijst met resources filtert op basis van uw invoer. Selecteer **Recovery Services kluizen**in de lijst met resources.
+3. In het dialoogvenster **Alle services** voert u **Recovery Services** in. De lijst met bronnen filtert op basis van uw invoer. Selecteer in de lijst met bronnen de **optie Kluizen van Recovery Services**.
 
     ![Recovery Services-kluizen invoeren en kiezen](./media/backup-create-rs-vault/all-services.png)
 
     De lijst met Recovery Services-kluizen in het abonnement wordt weergeven.
 
-4. Selecteer **toevoegen**op het **Recovery Services kluizen** -dash board.
+4. Selecteer In het dashboard van de **vaults van Recovery Services** de optie **Toevoegen**.
 
-    ![Een Recovery Services kluis toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
+    ![Een kluis van Recovery Services toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Het dialoog venster **Recovery Services kluis** wordt geopend. Geef waarden op voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
+    Het **dialoogvenster Herstelservices wordt** geopend. Geef waarden op voor de **groep Naam**, **Abonnement**, **Resource**en **Locatie**.
 
-    ![De Recovery Services kluis configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![De kluis Recovery Services configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op met ten minste twee, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
-   - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaard abonnement (aanbevolen). Er zijn alleen meerdere opties als uw werk-of school account is gekoppeld aan meer dan één Azure-abonnement.
-   - **Resource groep**: gebruik een bestaande resource groep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u vervolgens een resource in de vervolg keuzelijst. Als u een nieuwe resource groep wilt maken, selecteert u **nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over resource groepen.
-   - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis **moet** zich in dezelfde regio bevinden als de virtuele machines om een kluis te maken om virtuele machines te beveiligen.
+   - **Naam:** Voer een vriendelijke naam in om de kluis te identificeren. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op met ten minste twee, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en alleen bestaan uit letters, cijfers en koppeltekens.
+   - **Abonnement**: Kies het te gebruiken abonnement. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u wilt gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere opties als uw werk- of schoolaccount is gekoppeld aan meer dan één Azure-abonnement.
+   - **Resourcegroep:** gebruik een bestaande resourcegroep of maak een nieuwe groep. Als u de lijst met beschikbare brongroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken**en selecteert u vervolgens een resource in de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuw maken** en voert u de naam in. Zie overzicht van Azure [Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor volledige informatie over resourcegroepen.
+   - **Locatie:** Selecteer het geografische gebied voor de kluis. Om een kluis te maken om virtuele machines te beschermen, **moet** de kluis zich in dezelfde regio bevinden als de virtuele machines.
 
       > [!IMPORTANT]
-      > Als u niet zeker bent van de locatie van de virtuele machine, sluit u het dialoog venster. Ga naar de lijst met virtuele machines in de portal. Als u virtuele machines in meerdere regio's hebt, moet u in elke regio een Recovery Services kluis maken. Maak de kluis op de eerste locatie voordat u de kluis voor een andere locatie maakt. U hoeft geen opslag accounts op te geven om de back-upgegevens op te slaan. De Recovery Services kluis en de Azure Backup service-handler die automatisch worden uitgevoerd.
+      > Als u niet zeker bent van de locatie van uw virtuele machine, sluit u het dialoogvenster. Ga naar de lijst met virtuele machines in het portaal. Als u virtuele machines in verschillende regio's hebt, maakt u in elke regio een kluis van Recovery Services. Maak de kluis op de eerste locatie, voordat u de kluis maakt voor een andere locatie. Het is niet nodig om opslagaccounts op te geven om de back-upgegevens op te slaan. De kluis Recovery Services en de Azure Backup-service verwerken dat automatisch.
       >
       >
 
-5. Wanneer u klaar bent om de Recovery Services kluis te maken, selecteert u **maken**.
+5. Wanneer u klaar bent om de kluis Recovery Services te maken, selecteert u **Maken**.
 
-    ![De Recovery Services kluis maken](./media/backup-create-rs-vault/click-create-button.png)
+    ![De kluis Recovery Services maken](./media/backup-create-rs-vault/click-create-button.png)
 
-    Het kan even duren om de Recovery Services kluis te maken. Bewaak de status meldingen in het gebied **meldingen** in de rechter bovenhoek van de portal. Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst met Recovery Services kluizen. Als uw kluis niet wordt weer geven, selecteert u **vernieuwen**.
+    Het kan even duren voordat de kluis Van Recovery Services is gemaakt. Controleer de statusmeldingen in het gebied **Meldingen** in de rechterbovenhoek van de portal. Nadat uw kluis is gemaakt, is deze zichtbaar in de lijst met kluizen van Recovery Services. Als u uw kluis niet ziet, selecteert u **Vernieuwen**.
 
      ![De lijst met back-upkluizen vernieuwen](./media/backup-create-rs-vault/refresh-button.png)
 
-## <a name="set-storage-redundancy"></a>Opslag redundantie instellen
+## <a name="set-storage-redundancy"></a>Opslagredundantie instellen
 
-Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die opslag wordt gerepliceerd.
+Azure Backup verwerkt automatisch de opslag voor de kluis. U moet opgeven hoe die opslag wordt gerepliceerd.
 
-1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis. Klik onder de sectie **instellingen** op **Eigenschappen**.
-2. In **Eigenschappen**, onder **back-upconfiguratie**, klikt u op **bijwerken**.
+1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis. Klik **onder** de sectie Instellingen op **Eigenschappen**.
+2. Klik in **Eigenschappen**onder **Back-upconfiguratie**op **Bijwerken**.
 
-3. Selecteer het type opslag replicatie en klik op **Opslaan**.
+3. Selecteer het type opslagreplicatie en klik op **Opslaan**.
 
      ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-   - Als u Azure als een primair eind punt voor back-upopslag gebruikt, wordt u aangeraden de standaard **geo-redundante** instelling te gebruiken.
+   - We raden u aan azure te blijven gebruiken als eindpunt voor primaire back-upopslag, en de **standaardinstelling Geo-redundant** blijft gebruiken.
    - Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt.
-   - Meer informatie over [geo](../storage/common/storage-redundancy-grs.md) en [lokale](../storage/common/storage-redundancy-lrs.md) redundantie.
+   - Meer informatie over [geo-](../storage/common/storage-redundancy-grs.md) en [lokale](../storage/common/storage-redundancy-lrs.md) redundantie.
 
 > [!NOTE]
-> Het wijzigen van het **type opslag replicatie** (lokaal redundante/geo-redundant) voor een Recovery Services-kluis moet worden uitgevoerd voordat u back-ups in de kluis configureert. Zodra u een back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld en kunt u het **type opslag replicatie**niet wijzigen.
+> Het **type opslagreplicatie** wijzigen (lokaal redundant/ Geo-redundant) voor een kluis van herstelservices moet worden uitgevoerd voordat back-ups in de kluis worden geconfigureerd. Zodra u een back-up hebt geconfigureerd, wordt de optie om te wijzigen uitgeschakeld en u het **type opslagreplicatie**niet wijzigen.
 
-## <a name="set-cross-region-restore"></a>Meerdere regio's herstellen instellen
+## <a name="set-cross-region-restore"></a>Regio-herstel instellen
 
-Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Met deze optie kunt u:
+Als een van de herstelopties u met CrR (Cross Region Restore) Azure VM's herstellen in een secundaire regio, een [gekoppeld eis voor Azure.](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Met deze optie u:
 
-- oefeningen uitvoeren als er een controle-of nalevings vereiste is
-- herstel de virtuele machine of de schijf als er sprake is van een nood geval in de primaire regio.
+- oefeningen uitvoeren wanneer er een audit- of nalevingsvereiste is
+- de VM of de schijf herstellen als er een ramp is in het primaire gebied.
 
-Als u deze functie wilt kiezen, selecteert u **herstel van meerdere regio's inschakelen** op de Blade van de **back-upconfiguratie** .
+Als u deze functie wilt kiezen, selecteert u **Cross Region Restore inschakelen** in het blade **Back-upconfiguratie.**
 
-Voor dit proces gelden de prijs implicaties voor het opslag niveau.
+Voor dit proces zijn er prijsimplicaties zoals het is op het opslagniveau.
 
 >[!NOTE]
 >Voordat u begint:
 >
->- Bekijk de [ondersteunings matrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
->- De functie voor het terugzetten van meerdere regio's (CRR) is momenteel alleen beschikbaar in de volgende regio's: 
+>- Bekijk de [ondersteuningsmatrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
+>- De functie Cross Region Restore (CRR) is momenteel alleen beschikbaar in de volgende regio's: 
 >    - VS - west-centraal
 >    - VS - west 2
+>    - VS - zuid-centraal
+>    - VS - oost
+>    - VS - oost 2
+>    - VS - noord-centraal
+>    - Canada - midden
+>    - Canada - oost
 >    - Australië - oost
 >    - Australië - zuidoost
+>    - India - centraal
+>    - India - zuid
 >    - Japan - oost
 >    - Japan - west
 >    - Azië - zuidoost
 >    - Verenigd Koninkrijk Zuid
->- CRR is een opt-in-functie op kluis niveau voor elke GRS-kluis (standaard uitgeschakeld).
->- Gebruik de volgende opdracht om uw abonnement voor deze functie voor te bereiden:<br>
+>    - Verenigd Koninkrijk West
+>    - Frankrijk - centraal
+>    - Korea - centraal
+>    - Korea - zuid
+>- CRR is een opt-in-functie voor een vault level voor elke GRS-kluis (standaard uitgeschakeld).
+>- Gebruik de volgende opdracht om aan boord te gaan van uw abonnement voor deze functie:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- Als u deze functie tijdens een open bare beperkte preview onbeschikbaar maakt, bevat het e-mail bericht over de goed keuring de prijs informatie.
->- Na het inbrengen kan het tot 48 uur duren voordat de back-upitems beschikbaar zijn in secundaire regio's.
->- Momenteel wordt CRR alleen ondersteund voor het type back-upbeheer. ARM Azure VM (klassieke Azure-VM wordt niet ondersteund).  Wanneer extra beheer typen ondersteuning bieden voor CRR, worden ze **automatisch** Inge schreven.
+>- Als u tijdens een openbare preview aan deze functie bent vastgemaakt, bevat de e-mail met goedkeuring van de beoordeling details van het prijsbeleid.
+>- Na het aanmelden kan het tot 48 uur duren voordat de back-upitems beschikbaar zijn in secundaire regio's.
+>- Momenteel wordt CRR alleen ondersteund voor Backup Management Type - ARM Azure VM (klassieke Azure VM wordt niet ondersteund).  Wanneer extra beheertypen CRR ondersteunen, worden ze **automatisch** ingeschreven.
 
-### <a name="configure-cross-region-restore"></a>Herstel van meerdere regio's configureren
+### <a name="configure-cross-region-restore"></a>Herstel van verschillende regio's configureren
 
-Een kluis die is gemaakt met GRS-redundantie bevat de optie voor het configureren van de functie voor het terugzetten van meerdere regio's. Elke GRS-kluis heeft een banner dat een koppeling naar de documentatie bevat. Als u CRR voor de kluis wilt configureren, gaat u naar de Blade back-upconfiguratie. Deze bevat de optie om deze functie in te scha kelen.
+Een kluis die is gemaakt met GRS-redundantie bevat de optie om de functie Cross Region Restore te configureren. Elke GRS-kluis heeft een banner, die wordt gekoppeld aan de documentatie. Als u CRR voor de kluis wilt configureren, gaat u naar het hoofd van de back-upconfiguratie, dat de optie bevat om deze functie in te schakelen.
 
- ![Banner back-upconfiguratie](./media/backup-azure-arm-restore-vms/banner.png)
+ ![Banner Back-upconfiguratie](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. Ga in de portal naar Recovery Services kluis > Instellingen > Eigenschappen.
-2. Klik op **Restore voor meerdere regio's inschakelen in deze kluis** om de functionaliteit in te scha kelen.
+1. Ga vanuit de portal naar Vault > Instellingen > Instellingen > Eigenschappen.
+2. Klik **op Cross Region Restore inschakelen in deze kluis** om de functionaliteit in te schakelen.
 
-   ![Voordat u op Restore voor meerdere regio's inschakelen in deze kluis klikt](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Voordat u in deze kluis op Cross Region restore inschakelen klikt](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Nadat u op de optie voor het herstellen van meerdere regio's in deze kluis hebt geklikt](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Nadat u op Cross Region restore inschakelen hebt geklikt in deze kluis](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
-Meer informatie over het [weer geven van back-upitems in de secundaire regio](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
+Meer informatie over het [weergeven van back-upitems in het secundaire gebied](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
-Meer informatie over [het herstellen van de secundaire regio](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
+Meer informatie over herstellen [in het secundaire gebied](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
 
-Meer informatie over het [bewaken van herstel taken van secundaire regio's](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+Meer informatie over het [controleren van hersteltaken in de secundaire regio.](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)
 
-## <a name="modifying-default-settings"></a>Standaard instellingen wijzigen
+## <a name="modifying-default-settings"></a>Standaardinstellingen wijzigen
 
-We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert.
+We raden u ten zeerste aan de standaardinstellingen voor **het type opslagreplicatie** en **beveiligingsinstellingen** te controleren voordat u back-ups in de kluis configureert.
 
-- **Type opslag replicatie** is standaard ingesteld op **geo-redundant**. Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
+- **Het type opslagreplicatie** is standaard ingesteld op **Geo-redundant**. Zodra u de back-up hebt geconfigureerd, wordt de optie om te wijzigen uitgeschakeld. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
 
-- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) om de instellingen te controleren en te wijzigen.
+- **Soft delete** is standaard **ingeschakeld** op nieuw gemaakte kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) om de instellingen te controleren en te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over](backup-azure-recovery-services-vault-overview.md) Recovery Services kluizen.
-[Meer informatie over](backup-azure-delete-vault.md) Recovery Services kluizen verwijderen.
+[Meer informatie over](backup-azure-recovery-services-vault-overview.md) Vaults van Recovery Services.
+[Meer informatie over](backup-azure-delete-vault.md) Vaults voor Herstelservices verwijderen.

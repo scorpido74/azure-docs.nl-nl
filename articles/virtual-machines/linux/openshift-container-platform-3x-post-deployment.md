@@ -1,6 +1,6 @@
 ---
-title: Open Shift container platform 3,11 in azure na implementatie taken
-description: Aanvullende taken voor nadat een open Shift container platform 3,11-cluster is geïmplementeerd.
+title: OpenShift Container Platform 3.11 in Azure-post-deploymenttaken
+description: Extra taken voor na een OpenShift Container Platform 3.11 cluster is geïmplementeerd.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294749"
 ---
-# <a name="post-deployment-tasks"></a>Taken na de implementatie
+# <a name="post-deployment-tasks"></a>Taken na implementatie
 
-Nadat u een open Shift-cluster hebt geïmplementeerd, kunt u aanvullende items configureren. In dit artikel komen de volgende onderwerpen aan bod:
+Nadat u een OpenShift-cluster hebt geïmplementeerd, u extra items configureren. Dit artikel behandelt:
 
-- Eenmalige aanmelding configureren met behulp van Azure Active Directory (Azure AD)
-- Azure Monitor logboeken configureren voor het bewaken van open Shift
-- Metrische gegevens en logboek registratie configureren
-- Open Service Broker voor Azure installeren (OSBA)
+- Eenmalige aanmelding configureren met Azure Active Directory (Azure AD)
+- Azure Monitor-logboeken configureren om OpenShift te controleren
+- Statistieken en logboekregistratie configureren
+- Open Service Broker voor Azure (OSBA) installeren
 
-## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Eenmalige aanmelding configureren met behulp van Azure Active Directory
+## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Eenmalige aanmelding configureren met Azure Active Directory
 
-Als u Azure Active Directory voor verificatie wilt gebruiken, moet u eerst een Azure AD-App-registratie maken. Dit proces bestaat uit twee stappen: het maken van de app-registratie en het configureren van machtigingen.
+Als u Azure Active Directory wilt gebruiken voor verificatie, moet u eerst een Azure AD-appregistratie maken. Dit proces omvat twee stappen: het maken van de app registratie, en het configureren van machtigingen.
 
 ### <a name="create-an-app-registration"></a>Een app-registratie maken
 
-In deze stappen wordt gebruikgemaakt van de Azure CLI om de app-registratie te maken en de gebruikers interface (Portal) om de machtigingen in te stellen. Als u de app-registratie wilt maken, hebt u de volgende vijf stukjes informatie nodig:
+Met deze stappen wordt de Azure CLI gebruikt om de app-registratie te maken en de GUI (portal) om de machtigingen in te stellen. Om de app-registratie te maken, heb je de volgende vijf stukjes informatie nodig:
 
-- Weergave naam: naam van de app-registratie (bijvoorbeeld OCPAzureAD)
-- Start pagina: URL van open Shift-console (bijvoorbeeld https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Id-URI: open Shift-console-URL (bijvoorbeeld https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Antwoord-URL: open bare URL voor Master en de naam van de app-registratie (bijvoorbeeld https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- Wacht woord: beveiligd wacht woord (gebruik een sterk wacht woord)
+- Weergavenaam: naam app-registratie (bijvoorbeeld OCPAzureAD)
+- Startpagina: URL van de OpenShift-console (bijvoorbeeld `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Id URI: URL van de `https://masterdns343khhde.westus.cloudapp.azure.com/console`OpenShift-console (bijvoorbeeld )
+- Url van antwoord: openbare URL en de `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`naam van de app-registratie masteren (bijvoorbeeld )
+- Wachtwoord: Veilig wachtwoord (gebruik een sterk wachtwoord)
 
-In het volgende voor beeld wordt een app-registratie gemaakt met behulp van de voor gaande informatie:
+In het volgende voorbeeld wordt een app-registratie gemaakt met behulp van de voorgaande gegevens:
 
 ```azurecli
 az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
-Als de opdracht is voltooid, krijgt u een JSON-uitvoer vergelijkbaar met:
+Als de opdracht succesvol is, krijgt u een JSON-uitvoer die vergelijkbaar is met:
 
 ```json
 {
@@ -70,39 +70,39 @@ Als de opdracht is voltooid, krijgt u een JSON-uitvoer vergelijkbaar met:
 }
 ```
 
-Noteer de eigenschap appId die wordt geretourneerd door de opdracht voor een latere stap.
+Neem nota van de eigenschap appId die van de opdracht voor een recentere stap wordt teruggekeerd.
 
 In Azure Portal:
 
-1. Selecteer **Azure Active Directory** > **app-registratie**.
-2. Zoek naar de registratie van uw app (bijvoorbeeld OCPAzureAD).
+1. Selecteer **Azure Active Directory** > **App Registration**.
+2. Zoek naar uw app-registratie (bijvoorbeeld OCPAzureAD).
 3. Klik in de resultaten op de app-registratie.
-4. Selecteer onder **instellingen**de optie **vereiste machtigingen**.
-5. Selecteer **toevoegen**onder **vereiste machtigingen**.
+4. Selecteer **onder Instellingen**Vereiste **machtigingen**.
+5. Selecteer Onder **Vereiste machtigingen**de optie **Toevoegen**.
 
    ![App-registratie](media/openshift-post-deployment/app-registration.png)
 
-6. Klik op stap 1: Selecteer API en klik vervolgens op **Windows Azure Active Directory (Microsoft. Azure. ActiveDirectory)** . Klik onderaan op **selecteren** .
+6. Klik op Stap 1: Selecteer API en klik vervolgens op **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory).** Klik onderin op **Selecteren.**
 
-   ![App-registratie selecteren-API](media/openshift-post-deployment/app-registration-select-api.png)
+   ![API voor app-registratie selecteren](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. Selecteer bij stap 2: machtigingen selecteren, **Aanmelden en gebruikers profiel lezen** onder **gedelegeerde machtigingen**en klik vervolgens op **selecteren**.
+7. In stap 2: Selecteer Machtigingen, selecteer **Aanmelden en lees gebruikersprofiel** onder **Gedelegeerde machtigingen**en klik vervolgens op **Selecteren**.
 
-   ![App-registratie toegang](media/openshift-post-deployment/app-registration-access.png)
+   ![Toegang tot app-registratie](media/openshift-post-deployment/app-registration-access.png)
 
 8. Selecteer **Done**.
 
-### <a name="configure-openshift-for-azure-ad-authentication"></a>Open Shift configureren voor Azure AD-verificatie
+### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift configureren voor Azure AD-verificatie
 
-Als u openshift wilt configureren voor het gebruik van Azure AD als een verificatie provider, moet het/etc/origin/master/Master-config.yaml-bestand worden bewerkt op alle hoofd knooppunten.
+Als u OpenShift wilt configureren om Azure AD als verificatieprovider te gebruiken, moet het bestand /etc/origin/master/master-config.yaml op alle hoofdknooppunten worden bewerkt.
 
-Zoek de Tenant-ID met behulp van de volgende CLI-opdracht:
+Zoek de tenant-id met de volgende opdracht CLI:
 
 ```azurecli
 az account show
 ```
 
-Zoek in het bestand yaml de volgende regels:
+Zoek in het yaml-bestand de volgende regels:
 
 ```yaml
 oauthConfig:
@@ -120,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Voeg de volgende regels toe direct na de voor gaande regels:
+De volgende regels direct na de voorgaande regels invoegen:
 
 ```yaml
   - name: <App Registration Name>
@@ -146,37 +146,37 @@ Voeg de volgende regels toe direct na de voor gaande regels:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Zorg ervoor dat de tekst correct wordt uitgelijnd onder identityProviders. Zoek de Tenant-ID met behulp van de volgende CLI-opdracht: ```az account show```
+Zorg ervoor dat de tekst correct wordt uitgelijnd onder identityProviders. Zoek de tenant-id met de volgende opdracht CLI:```az account show```
 
-Start de open Shift-Master services opnieuw op alle hoofd knooppunten:
+Start de OpenShift-hoofdservices opnieuw op alle hoofdknooppunten:
 
 ```bash
 sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-In de open Shift-console ziet u nu twee opties voor verificatie: htpasswd_auth en [app-registratie].
+In de OpenShift-console ziet u nu twee opties voor verificatie: htpasswd_auth en [Appregistratie].
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>Open SHIFT met Azure Monitor-logboeken bewaken
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>OpenShift bewaken met Azure Monitor-logboeken
 
-Er zijn drie manieren om de Log Analytics-agent toe te voegen aan open SHIFT.
-- De Log Analytics-agent voor Linux rechtstreeks op elk open Shift-knoop punt installeren
-- Azure Monitor VM-extensie inschakelen voor elk open Shift-knoop punt
-- De Log Analytics-agent installeren als een open Shift-daemon-set
+Er zijn drie manieren om de loganalytics-agent toe te voegen aan OpenShift.
+- Installeer de Log Analytics-agent voor Linux rechtstreeks op elk OpenShift-knooppunt
+- Azure Monitor VM-extensie inschakelen op elk OpenShift-knooppunt
+- De Log Analytics-agent installeren als een OpenShift-daemon-set
 
-Lees de volledige [instructies](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) voor meer informatie.
+Lees de volledige [instructies](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) voor meer details.
 
-## <a name="configure-metrics-and-logging"></a>Metrische gegevens en logboek registratie configureren
+## <a name="configure-metrics-and-logging"></a>Statistieken en logboekregistratie configureren
 
-Op basis van de vertakking kunnen de Azure Resource Manager sjablonen voor open Shift container platform en OKD invoer parameters bieden voor het inschakelen van metrische gegevens en logboek registratie als onderdeel van de installatie.
+Op basis van de branch kunnen de Azure Resource Manager-sjablonen voor OpenShift Container Platform en OKD invoerparameters bevatten voor het inschakelen van metrische gegevens en logboekregistratie als onderdeel van de installatie.
 
-De aanbieding open Shift container platform Marketplace biedt ook een optie voor het inschakelen van metrische gegevens en logboek registratie tijdens de Cluster installatie.
+Het OpenShift Container Platform Marketplace-aanbod biedt ook een optie om metrics en logging in te schakelen tijdens de installatie van het cluster.
 
-Als metrieken/logboek registratie niet is ingeschakeld tijdens de installatie van het cluster, kunnen ze na het feit eenvoudig worden ingeschakeld.
+Als metrics / logging niet is ingeschakeld tijdens de installatie van het cluster, kunnen ze gemakkelijk worden ingeschakeld na het feit.
 
-### <a name="azure-cloud-provider-in-use"></a>Azure-Cloud provider in gebruik
+### <a name="azure-cloud-provider-in-use"></a>Azure Cloud Provider in gebruik
 
-SSH naar het Bastion-knoop punt of het eerste hoofd knooppunt (op basis van de sjabloon en vertakking in gebruik) met behulp van de referenties die zijn verschaft tijdens de implementatie. Geef de volgende opdracht:
+SSH naar het bastionknooppunt of eerste hoofdknooppunt (op basis van sjabloon en vertakking in gebruik) met behulp van de referenties die tijdens de implementatie zijn verstrekt. Geef de volgende opdracht uit:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -188,7 +188,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>De Azure-Cloud provider wordt niet gebruikt
+### <a name="azure-cloud-provider-not-in-use"></a>Azure Cloud Provider niet in gebruik
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -198,14 +198,14 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-## <a name="install-open-service-broker-for-azure-osba"></a>Open Service Broker voor Azure installeren (OSBA)
+## <a name="install-open-service-broker-for-azure-osba"></a>Open Service Broker voor Azure (OSBA) installeren
 
-Met Service Broker openen voor Azure of OSBA kunt u Azure Cloud Services rechtstreeks inrichten vanuit open SHIFT. OSBA in een open Service Broker API-implementatie voor Azure. De open Service Broker-API is een specificatie die een gemeen schappelijke taal definieert voor cloud providers die native toepassingen in de Cloud kunnen gebruiken om Cloud Services zonder vergren deling te beheren.
+Met Open Service Broker voor Azure of OSBA u Azure Cloud Services rechtstreeks vanuit OpenShift inrichten. OSBA in een Open Service Broker API-implementatie voor Azure. De Open Service Broker API is een spec die een gemeenschappelijke taal definieert voor cloudproviders die cloudnative toepassingen kunnen gebruiken om cloudservices te beheren zonder lock-in.
 
-Als u OSBA in open Shift wilt installeren, volgt u de instructies die u hier vindt: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+Volg de instructies hier om OSBA op https://github.com/Azure/open-service-broker-azure#openshift-project-templateOpenShift te installeren: . 
 > [!NOTE]
-> Voer de stappen in het gedeelte open Shift-project sjabloon alleen uit en niet de volledige installatie sectie.
+> Voer alleen de stappen uit in de sectie OpenShift-projectsjabloon en niet de hele sectie Installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag met open Shift container platform](https://docs.openshift.com)
+- [Aan de slag met OpenShift Container Platform](https://docs.openshift.com)

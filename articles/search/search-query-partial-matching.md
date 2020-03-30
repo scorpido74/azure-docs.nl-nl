@@ -1,50 +1,50 @@
 ---
-title: Patronen en speciale tekens vergelijken
+title: Patronen en speciale tekens matchen
 titleSuffix: Azure Cognitive Search
-description: Gebruik joker tekens en voorvoegsel query's die overeenkomen met hele of gedeeltelijke voor waarden in een Azure Cognitive Search query-aanvraag. U kunt aan de hand van de volledige query syntaxis en aangepaste analyse functies gebruikmaken van de meest overeenkomende patronen die speciale tekens bevatten.
+description: Gebruik wildcard- en voorvoegquery's die overeenkomen met algemene of gedeeltelijke termen in een Azure Cognitive Search-queryaanvraag. Moeilijk te matchen patronen met speciale tekens kunnen worden opgelost met behulp van volledige querysyntaxis en aangepaste analysers.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ec1422d03cce78bdd8206f6687a78b63ddf989dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289308"
 ---
-# <a name="match-on-patterns-and-special-characters-dashes"></a>Zoeken op patronen en speciale tekens (streepjes)
+# <a name="match-on-patterns-and-special-characters-dashes"></a>Overeenkomen met patronen en speciale tekens (streepjes)
 
-Voor query's die speciale tekens bevatten (`-, *, (, ), /, \, =`) of voor query patronen op basis van gedeeltelijke termen binnen een grotere termijn, zijn er meestal extra configuratie stappen nodig om ervoor te zorgen dat de index de verwachte inhoud bevat, in de juiste indeling. 
+Voor query's die`-, *, (, ), /, \, =`speciale tekens bevatten ( ) of voor querypatronen op basis van gedeeltelijke termen binnen een grotere term, zijn doorgaans aanvullende configuratiestappen nodig om ervoor te zorgen dat de index de verwachte inhoud in de juiste indeling bevat. 
 
-Een telefoon nummer zoals `+1 (425) 703-6214` wordt standaard getokend als `"1"`, `"425"`, `"703"``"6214"`. Zoals u kunt Voorst Ellen, mislukt het zoeken op `"3-62"`, omdat de inhoud niet echt in de index voor komt. 
+Standaard wordt een telefoonnummer `+1 (425) 703-6214` als tokengemaakt `"425"` `"703"`als `"6214"` `"1"`, , , . Zoals u zich kunt `"3-62"`voorstellen, zal zoeken op , gedeeltelijke termen die een streepje bevatten, mislukken omdat die inhoud niet echt bestaat in de index. 
 
-Als u wilt zoeken op gedeeltelijke teken reeksen of speciale tekens, kunt u de standaard-Analyzer vervangen door een aangepaste analyse functie die onder eenvoudigere regels voor tokens wordt uitgevoerd, waarbij hele voor waarden worden behouden, wat nodig is wanneer query reeksen delen van een term bevatten of speciale aantal. Als u een stap terug neemt, ziet de benadering er als volgt uit:
+Wanneer u op gedeeltelijke tekenreeksen of speciale tekens moet zoeken, u de standaardanalyzer overschrijven met een aangepaste analyzer die werkt onder eenvoudigere tokenisatieregels, waarbij hele termen worden behouden, die nodig zijn wanneer querytekenreeksen delen van een term of speciale Tekens. Een stap terug, de aanpak ziet er als volgt uit:
 
-+ Een vooraf gedefinieerde analyse functie kiezen of een aangepaste Analyzer definiëren die de gewenste uitvoer produceert
-+ De analyse functie toewijzen aan het veld
-+ De index en test maken
++ Kies een vooraf gedefinieerde analyzer of definieer een aangepaste analyzer die de gewenste uitvoer produceert
++ De analyzer toewijzen aan het veld
++ De index en test samenstellen
 
-Dit artikel begeleidt u bij deze taken. De hier beschreven methode is nuttig in andere scenario's: met Joker tekens en reguliere expressie query's hebt u ook volledige voor waarden nodig als basis voor het vergelijken van patronen. 
+In dit artikel u deze taken uitvoeren. De hier beschreven aanpak is nuttig in andere scenario's: wildcard- en reguliere expressiequery's hebben ook hele termen nodig als basis voor patroonmatching. 
 
 > [!TIP]
-> Het evalueren van analyers is een iteratief proces dat veelvuldig opnieuw opgebouwde index vereist. U kunt deze stap eenvoudiger maken met behulp van Postman, de REST-Api's voor het maken van een [index](https://docs.microsoft.com/rest/api/searchservice/create-index), het verwijderen van een [index](https://docs.microsoft.com/rest/api/searchservice/delete-index), het[laden van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)en het zoeken van [documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents). Voor het laden van documenten moet de hoofd tekst van de aanvraag een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoon nummers of product codes). Met deze Api's in dezelfde postman-verzameling kunt u deze stappen snel door lopen.
+> Het evalueren van analyers is een iteratief proces dat frequente indexreconstructies vereist. U deze stap eenvoudiger maken door Postman, de REST API's voor [Index maken,](https://docs.microsoft.com/rest/api/searchservice/create-index) [Index maken,](https://docs.microsoft.com/rest/api/searchservice/delete-index)[Documenten laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)en [Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents). Voor Het laden van documenten moet de aanvraaginstantie een kleine representatieve gegevensset bevatten die u wilt testen (bijvoorbeeld een veld met telefoonnummers of productcodes). Met deze API's in dezelfde Postman-collectie u deze stappen snel doorlopen.
 
-## <a name="choosing-an-analyzer"></a>Een analyse functie kiezen
+## <a name="choosing-an-analyzer"></a>Een analyzer kiezen
 
-Bij het kiezen van een analyse functie die volledige-termijn tokens produceert, zijn de volgende analyse functies algemene keuzes:
+Bij het kiezen van een analyzer die langetermijntokens produceert, zijn de volgende analysers veelvoorkomende keuzes:
 
-| Procedures | Mogelijkheden |
+| Analyzer | Gedrag |
 |----------|-----------|
-| [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | De inhoud van het hele veld wordt als één periode getokend. |
-| [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Scheidt alleen op spaties. Voor waarden die streepjes of andere tekens bevatten, worden beschouwd als één token. |
-| [aangepaste analyse functie](index-add-custom-analyzers.md) | aanbevelingen Als u een aangepaste analyse functie maakt, kunt u zowel het tokenizer als het token filter opgeven. De vorige analyse functies moeten worden gebruikt als-is. Met een aangepaste analyse kunt u kiezen welke tokenizers-en Token filters u wilt gebruiken. <br><br>Een aanbevolen combi natie is het [tref woord tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) met een [token filter met een lagere Case](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). De vooraf gedefinieerde [trefwoord analyse](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) biedt geen kleine letters in hoofd letters, wat kan leiden tot het mislukken van query's. Een aangepaste analyse functie biedt u een mechanisme voor het toevoegen van het filter voor het laagste Case-token. |
+| [Trefwoord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Inhoud van het hele veld wordt tokenized als één term. |
+| [Whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Scheidt alleen op witte ruimten. Termen met streepjes of andere tekens worden behandeld als één token. |
+| [aangepaste analyzer](index-add-custom-analyzers.md) | (aanbevolen) Met het maken van een aangepaste analyzer u zowel de tokenizer als het tokenfilter opgeven. De vorige analysesystemen moeten worden gebruikt zoals het is. Met een aangepaste analyzer u kiezen welke tokenizers en tokenfilters u wilt gebruiken. <br><br>Een aanbevolen combinatie is de [keyword tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) met een [kleintokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Op zichzelf heeft de vooraf gedefinieerde [trefwoordanalyzer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) geen hoofdletters, waardoor query's kunnen mislukken. Een aangepaste analyzer geeft u een mechanisme voor het toevoegen van het kleine tokenfilter. |
 
-Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep van Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om de getokende uitvoer te controleren. Als u een bestaande index en een veld met streepjes of gedeeltelijke voor waarden hebt opgegeven, kunt u verschillende analyse functies op basis van specifieke termen uitproberen om te zien welke tokens worden verzonden.  
+Als u een web-API-testtool zoals Postman gebruikt, u de [TEST Analyzer REST-aanroep](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om tokenized output te inspecteren. Gezien een bestaande index en een veld met streepjes of gedeeltelijke termen, u verschillende analysers proberen over specifieke termen om te zien welke tokens worden uitgestoten.  
 
-1. Raadpleeg de Standard Analyzer om te zien hoe de termen standaard worden getokend.
+1. Controleer de standaardanalyzer om te zien hoe termen standaard worden tokenized.
 
    ```json
    {
@@ -53,7 +53,7 @@ Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep
    }
     ```
 
-1. Evalueer het antwoord om te zien hoe de tekst binnen de index wordt getokend. U ziet dat elke term in kleine letters en uitsplitsing is.
+1. Evalueer het antwoord om te zien hoe de tekst wordt tokenized in de index. Merk op hoe elke term is kleine letters en opgesplitst.
 
     ```json
     {
@@ -79,7 +79,7 @@ Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep
         ]
     }
     ```
-1. Wijzig de aanvraag om de `whitespace` of `keyword` Analyzer te gebruiken:
+1. Wijzig het verzoek `whitespace` om `keyword` de of analyzer te gebruiken:
 
     ```json
     {
@@ -88,7 +88,7 @@ Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep
     }
     ```
 
-1. Het antwoord bestaat nu uit één token, hoofd letters, met streepjes die als onderdeel van de teken reeks zijn bewaard. Als u op een patroon of gedeeltelijke term wilt zoeken, heeft de query-engine nu de basis voor het zoeken naar een overeenkomst.
+1. Nu bestaat het antwoord uit één token, hoofdletters, met streepjes behouden als onderdeel van de tekenreeks. Als u moet zoeken op een patroon of een gedeeltelijke term, heeft de queryengine nu de basis voor het vinden van een overeenkomst.
 
 
     ```json
@@ -105,15 +105,15 @@ Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep
     }
     ```
 > [!Important]
-> Houd er rekening mee dat query parsers vaak kleine letters in een zoek expressie bij het samen stellen van de query-structuur. Als u een analyse functie gebruikt die geen kleine letters bevat, en u niet de verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is het toevoegen van een lwower-Case filter.
+> Houd er rekening mee dat queryparsers vaak lagere termen in een zoekexpressie gebruiken bij het bouwen van de querystructuur. Als u een analyzer gebruikt die geen tekstingangen in kleine letters gebruikt en u geen verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is om een lwower-case token filter toe te voegen.
 
-## <a name="analyzer-definitions"></a>Analyse definities
+## <a name="analyzer-definitions"></a>Analyseerdefinities
  
-Of u analyse functies wilt evalueren of vooruit wilt gaan met een specifieke configuratie, u moet de analyse op de veld definitie opgeven en mogelijk de Analyzer zelf configureren als u geen gebruik maakt van een ingebouwde analyse functie. Bij het wisselen van analyse functies moet u doorgaans de index opnieuw samen stellen (verwijderen, opnieuw maken en opnieuw laden). 
+Of u nu analysers evalueert of verder gaat met een specifieke configuratie, u moet de analyzer op de velddefinitie opgeven en eventueel de analyzer zelf configureren als u geen ingebouwde analyzer gebruikt. Wanneer u analysers verwisselt, moet u de index meestal opnieuw opbouwen (neerzetten, opnieuw maken en opnieuw laden). 
 
-### <a name="use-built-in-analyzers"></a>Ingebouwde analyse functies gebruiken
+### <a name="use-built-in-analyzers"></a>Ingebouwde analysers gebruiken
 
-Ingebouwde of vooraf gedefinieerde analyse functies kunnen worden opgegeven met de naam van een `analyzer` eigenschap van een veld definitie, zonder dat er aanvullende configuratie vereist is in de index. In het volgende voor beeld ziet u hoe u de `whitespace` Analyzer kunt instellen voor een veld.
+Ingebouwde of vooraf gedefinieerde analysatoren kunnen op `analyzer` naam worden opgegeven op een eigenschap van een velddefinitie, zonder dat er extra configuratie in de index vereist is. In het volgende voorbeeld wordt `whitespace` uitgelegd hoe u de analyzer op een veld zou instellen.
 
 ```json
     {
@@ -125,18 +125,18 @@ Ingebouwde of vooraf gedefinieerde analyse functies kunnen worden opgegeven met 
       "analyzer": "whitespace"
     }
 ```
-Zie [vooraf gedefinieerde analyse lijsten](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)voor meer informatie over alle beschik bare ingebouwde analyse functies. 
+Zie Lijst met [vooraf gedefinieerde analysers voor](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)meer informatie over alle beschikbare ingebouwde analysers. 
 
-### <a name="use-custom-analyzers"></a>Aangepaste analyse functies gebruiken
+### <a name="use-custom-analyzers"></a>Aangepaste analysers gebruiken
 
-Als u een [aangepaste Analyzer](index-add-custom-analyzers.md)gebruikt, definieert u deze in de index met een door de gebruiker gedefinieerde combi natie van tokenizer, tokenfilter, met mogelijke configuratie-instellingen. Vervolgens verwijzen we naar de definitie van een veld, net zoals u een ingebouwde Analyzer zou hebben.
+Als u een [aangepaste analyzer](index-add-custom-analyzers.md)gebruikt, definieert u deze in de index met een door de gebruiker gedefinieerde combinatie van tokenizer, tokenfilter, met mogelijke configuratie-instellingen. Verwijs vervolgens naar een velddefinitie, net zoals een ingebouwde analyzer zou zijn.
 
-Wanneer het doel van de volledige-termijn tokening is, wordt een aangepaste analyse functie aanbevolen die bestaat uit een **sleutel woord tokenizer** en een filter voor een **laag hoofdletter gebruik** .
+Wanneer het doel tokenisatie voor de hele termijn is, wordt een aangepaste analyzer aanbevolen die bestaat uit een **trefwoordtokenizer** en **een kleintokenfilter.**
 
-+ Het tref woord tokenizer maakt één token voor de volledige inhoud van een veld.
-+ Met het token filter met kleine letters worden hoofd letters getransformeerd in tekst met een kleine letter. Query-parsers bevatten doorgaans kleine letters tekst invoer. Lowercasing homogenizes de invoer met de tokens-termen.
++ De trefwoordtokenizer maakt één token voor de volledige inhoud van een veld.
++ Het tokenfilter voor kleine letters transformeert hoofdletters in kleine letters. Queryparsers hebben doorgaans kleine hoofdletters voor hoofdletters. Lowercasing homogeniseert de ingangen met de tokenized termen.
 
-In het volgende voor beeld ziet u een aangepaste analyse functie die het tref woord tokenizer en een token filter voor kleine letters bevat.
+In het volgende voorbeeld wordt een aangepaste analyzer geïllustreerd die de trefwoordtokenizer en een kleine tokenfilter biedt.
 
 ```json
 {
@@ -151,7 +151,7 @@ In het volgende voor beeld ziet u een aangepaste analyse functie die het tref wo
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -168,15 +168,15 @@ In het volgende voor beeld ziet u een aangepaste analyse functie die het tref wo
 ```
 
 > [!NOTE]
-> `keyword_v2` het tokenizer-en `lowercase`-token filter zijn bekend bij het systeem en met behulp van de standaard configuraties. Daarom kunt u deze op naam noemen zonder ze eerst te definiëren.
+> De `keyword_v2` tokenizer `lowercase` en token filter zijn bekend bij het systeem en met behulp van hun standaard configuraties, dat is waarom je ze verwijzen op naam zonder ze eerst te definiëren.
 
 ## <a name="tips-and-best-practices"></a>Tips en best practices
 
 ### <a name="tune-query-performance"></a>Queryprestaties afstemmen
 
-Als u de aanbevolen configuratie implementeert die het keyword_v2 tokenizer-en het kleine-case-token filter bevat, ziet u mogelijk een afname in de query prestaties vanwege de extra token filter verwerking voor bestaande tokens in uw index. 
+Als u de aanbevolen configuratie implementeert die de keyword_v2 tokenizer en het kleine tokenfilter bevat, ziet u mogelijk een afname in queryprestaties als gevolg van de extra tokenfilterverwerking ten opzichte van bestaande tokens in uw index. 
 
-In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) toegevoegd om het voor voegsel sneller te laten overeenkomen. Er worden extra tokens gegenereerd voor de 2-25-teken combinaties die tekens bevatten: (niet alleen MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/VK, MSFT/SQL). Zoals u kunt Voorst Ellen, resulteert de extra tokening in een grotere index.
+In het volgende voorbeeld wordt een [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) toegevoegd om voorvoegselovereenkomsten sneller te maken. Er worden extra tokens gegenereerd voor in 2-25 tekencombinaties die tekens bevatten: (niet alleen MS, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). Zoals u zich voorstellen, resulteert de extra tokenization in een grotere index.
 
 ```json
 {
@@ -191,7 +191,7 @@ In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apach
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -215,13 +215,13 @@ In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apach
 ]
 ```
 
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Verschillende analyse functies gebruiken voor het verwerken van indexen en query's
+### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Verschillende analyseapparaten gebruiken voor indexering en queryverwerking
 
-Analyse functies worden aangeroepen tijdens het indexeren en tijdens de uitvoering van query's. Het is gebruikelijk om dezelfde Analyzer voor beide te gebruiken, maar u kunt voor elke werk belasting aangepaste analyse functies configureren. Analyzer-onderdrukkingen worden opgegeven in de [index definitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in een `analyzers` sectie en vervolgens naar specifieke velden wordt verwezen. 
+Analyzers worden aangeroepen tijdens het indexeren en tijdens queryuitvoering. Het is gebruikelijk om dezelfde analyzer voor beide te gebruiken, maar u aangepaste analysers configureren voor elke werkbelasting. Overschrijft van de analysator wordt `analyzers` opgegeven in de [indexdefinitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in een sectie en vervolgens verwezen naar specifieke velden. 
 
-Wanneer aangepaste analyse alleen is vereist tijdens het indexeren, kunt u de aangepaste Analyzer Toep assen om alleen de standaard-lucene Analyzer (of een andere analyse) voor query's te indexeren en te blijven gebruiken.
+Wanneer aangepaste analyse alleen vereist is tijdens het indexeren, u de aangepaste analyzer toepassen op alleen indexering en de standaard Lucene analyzer (of een andere analyzer) blijven gebruiken voor query's.
 
-Als u een Role-specifieke analyse wilt opgeven, kunt u voor elk veld eigenschappen instellen voor elke functie, `indexAnalyzer` en `searchAnalyzer` instellen in plaats van de standaard eigenschap `analyzer`.
+Als u rolspecifieke analyses wilt opgeven, u eigenschappen `indexAnalyzer` `searchAnalyzer` instellen op `analyzer` het veld voor elk veld, instellen en in plaats van de standaardeigenschap.
 
 ```json
 "name": "featureCode",
@@ -229,9 +229,9 @@ Als u een Role-specifieke analyse wilt opgeven, kunt u voor elk veld eigenschapp
 "searchAnalyzer":"standard",
 ```
 
-### <a name="duplicate-fields-for-different-scenarios"></a>Dubbele velden voor verschillende scenario's
+### <a name="duplicate-fields-for-different-scenarios"></a>Velden dupliceren voor verschillende scenario's
 
-Een andere optie maakt gebruik van de analyse toewijzing per veld om te optimaliseren voor verschillende scenario's. U kunt met name "featureCode" en "featureCodeRegex" definiëren voor het ondersteunen van normale Zoek opdrachten in volledige tekst op het eerste en geavanceerde patroon vergelijking op de tweede.
+Een andere optie maakt gebruik van de opdracht voor analyseper veld om te optimaliseren voor verschillende scenario's. In het bijzonder u featureCode en featureCodeRegex definiëren om regelmatig zoeken in volledige tekst op de eerste en geavanceerde patroonmatching op de tweede te ondersteunen.
 
 ```json
 {
@@ -252,9 +252,9 @@ Een andere optie maakt gebruik van de analyse toewijzing per veld om te optimali
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt uitgelegd hoe analyse functies beide bijdragen om problemen op te vragen en query problemen op te lossen. Ga als volgt te werk om de analyse-impact op indexering en query verwerking nader te bekijken. In het bijzonder kunt u overwegen de analyse tekst-API te gebruiken voor het retour neren van een tokenve uitvoer zodat u precies ziet wat een Analyzer is voor uw index.
+In dit artikel wordt uitgelegd hoe analysers zowel bijdragen aan queryproblemen als queryproblemen oplossen. Als volgende stap, neem een kijkje op analyzer impact op indexering en query verwerking. Overweeg in het bijzonder de API Tekst analyseren te gebruiken om tokenized output terug te sturen, zodat u precies zien wat een analyzer voor uw index maakt.
 
 + [Taalanalyse](search-language-support.md)
-+ [Analyse functies voor tekst verwerking in azure Cognitive Search](search-analyzers.md)
-+ [Tekst-API analyseren (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
-+ [Hoe zoeken in volledige tekst werkt (query architectuur)](search-lucene-query-architecture.md)
++ [Analysers voor tekstverwerking in Azure Cognitive Search](search-analyzers.md)
++ [Tekst-API (REST) analyseren](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Hoe zoeken in volledige tekst werkt (queryarchitectuur)](search-lucene-query-architecture.md)

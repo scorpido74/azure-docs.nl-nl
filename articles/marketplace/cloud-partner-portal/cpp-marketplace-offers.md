@@ -1,66 +1,65 @@
 ---
-title: Azure en AppSource Marketplace biedt
-description: Aanbiedingen van de Azure-en AppSource-markt plaatsen maken en beheren
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure- en AppSource Marketplace-aanbiedingen
+description: Aanbiedingen van de Azure- en AppSource-marktplaatsen maken en beheren
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pabutler
-ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7f6fd723355426a49cff032d51da0e09f13e295d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818763"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278481"
 ---
-# <a name="azure-and-appsource-marketplace-offers"></a>Azure en AppSource Marketplace biedt
+# <a name="azure-and-appsource-marketplace-offers"></a>Azure- en AppSource Marketplace-aanbiedingen
 
-In dit eerste deel van deze sectie worden de algemene bewerkingen geïntroduceerd voor het maken en beheren van aanbiedingen voor de Azure-en AppSource-markt plaatsen.  Dit gedeelte bevat de achtergrond die u moet begrijpen om specifieke aanbiedings typen te beheren, evenals technische informatie die gebruikelijk is voor alle typen aanbiedingen.  De meeste van deze sectie bevat gedetailleerde instructies voor het maken en beheren van specifieke aanbiedings typen.  
+In dit eerste deel van deze sectie worden de algemene bewerkingen geïntroduceerd die worden gebruikt voor het maken en beheren van aanbiedingen voor de Azure- en AppSource-marketplaces.  Dit deel biedt de achtergrond die u moet begrijpen om specifieke aanbiedingstypen te beheren, evenals technische informatie die gebruikelijk is voor alle aanbiedingstypen.  De meerderheid van deze sectie bevat gedetailleerde instructies over het maken en beheren van specifieke aanbiedingstypen.  
 
-De volgende video bevat een inleiding tot de verschillende mogelijkheden en verschillende aanbiedings typen die beschikbaar zijn in azure Marketplace of AppSource.  Het omvat ook belang rijke technische en zakelijke aspecten van het publiceren van een toepassing of service in deze markt plaatsen.
+De volgende video introduceert de verschillende mogelijkheden en verschillende aanbiedingstypen die beschikbaar zijn in Azure Marketplace of AppSource.  Het omvat ook belangrijke technische en zakelijke aspecten van het publiceren van een applicatie of dienst in deze marktplaatsen.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**Apps en services bouwen voor Azure Marketplace en AppSource-build 2018**
+**Apps en services bouwen voor Azure Marketplace en AppSource - Build 2018**
 
-Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../marketplace-publishers-guide.md)voor meer informatie over deze markt plaatsen.
+Zie [Azure Marketplace- en AppSource-publicatiehandleiding voor](../marketplace-publishers-guide.md)meer informatie over deze marktplaatsen.
 
 
-## <a name="common-offer-operations"></a>Algemene aanbiedings bewerkingen
+## <a name="common-offer-operations"></a>Transacties met een gemeenschappelijk aanbod
 
-Het proces voor het maken van een nieuwe aanbieding verschilt veel van de aanbiedings typen, bijvoorbeeld tussen een [Azure-toepassings aanbieding](./azure-applications/cpp-azure-app-offer.md) en een [advies service-aanbieding](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Daarentegen worden veel van de andere bewerkingen die u uitvoert op een aanbieding in het [Cloud Partner-Portal](https://cloudpartner.azure.com) , standaard op de verschillende soorten aanbiedingen.  Deze algemene bewerkingen, waaronder publiceren, weer geven status, bijwerken en verwijderen, worden behandeld in de sectie [aanbiedingen beheren](./manage-offers/cpp-manage-offers.md)
+Het proces van het maken van een nieuwe aanbieding verschilt sterk tussen aanbiedingstypen, bijvoorbeeld tussen een [Azure-toepassingsaanbieding](./azure-applications/cpp-azure-app-offer.md) en een [consultingserviceaanbieding.](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)  Veel van de andere bewerkingen die u uitvoert op een aanbieding in de [Cloud Partner Portal](https://cloudpartner.azure.com) zijn daarentegen vrij gestandaardiseerd voor alle aanbiedingstypen.  Deze veelvoorkomende bewerkingen, waaronder publiceren, bekijken status, bijwerken en verwijderen, worden behandeld in de sectie [Aanbiedingen beheren](./manage-offers/cpp-manage-offers.md)
 
 
 ## <a name="test-drive"></a>Test Drive
 
-*Test drive* is een Marketplace-functie waarmee klanten een demonstratie optie voor ' try voor u kopen ' bieden voor elke aanbieding die is ingeschakeld.  De capaciteit van het test station is beperkt tot de volgende subset van aanbiedings typen: [Azure-toepassingen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS toepassingen](./saas-app/cpp-saas-offer.md)en [virtuele machines](./virtual-machine/cpp-virtual-machine-offer.md).  Voor deze functie moet de uitgever een sjabloon voor het testen van een station maken, aangepast voor de aanbieding.  Zie de sectie [test station](./test-drive/what-is-test-drive.md)voor meer informatie.
+*Test Drive* is een marktplaatsfunctie die klanten een demonstratieoptie voor elke aanbieding biedt die voor elke aanbieding is ingeschakeld.  De testdrive-mogelijkheid is beperkt tot de volgende subset van aanbiedingstypen: [Azure-toepassingen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), Dynamics [365 voor customer engagement,](./dyn365ce/cpp-customer-engagement-offer.md) [Dynamics 365 voor financiën en bewerkingen,](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) [SaaS-toepassingen](./saas-app/cpp-saas-offer.md)en [virtuele machines](./virtual-machine/cpp-virtual-machine-offer.md).  Voor deze mogelijkheid moet de uitgever een teststationsjabloon maken, aangepast voor zijn aanbieding.  Zie de sectie [Proefrit voor](./test-drive/what-is-test-drive.md)meer informatie .
 
-U kunt door de bestaande Marketplace-aanbiedingen bladeren die een test drive demonstratie hebben door het [test drive-filter](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)toe te passen. 
+U bladeren door de bestaande marktplaatsaanbiedingen met Test Drive-demonstraties door het [filter voor teststations](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)toe te passen. 
 
 
-## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace-en AppSource-aanbiedings typen
+## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace- en AppSource-aanbiedingstypen
 
-De volgende tabel geeft een lijst van de huidige aanbiedings typen die door de [Cloud Partner-Portal](https://cloudpartner.azure.com)worden ondersteund.  Voor elk aanbiedings type wordt een lijst weer gegeven met de Marketplace ('s) waar de aanbieding kan worden vermeld, evenals een algemene beschrijving van de technologie van de aanbod oplossing.
+In de volgende tabel worden de huidige aanbiedingstypen weergegeven die worden ondersteund door de [Cloud Partner Portal.](https://cloudpartner.azure.com)  Voor elk aanbiedingstype worden de marktplaats(en) vermeld waar het aanbod kan worden vermeld, evenals een algemene beschrijving van de technologie voor de aanbiedingsoplossing.
 
-|                Type aanbieding                |  Marketplace  |   Beschrijving                                                           |
+|                Aanbiedingstype                |  Marketplace  |   Beschrijving                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
-| [Azure-toepassing](./azure-applications/cpp-azure-app-offer.md) | Azure | De oplossing bestaat uit een of meer virtuele machines (Vm's), optionele aangepaste Azure-code, geïmplementeerd via een Azure Resource Manager-sjabloon.  De implementatie kan door de klant worden door middel van een oplossings sjabloon of worden beheerd door de uitgever. Dit type wordt gebruikt om meer flexibiliteit te bieden dan het geleverde type voor de virtuele machine.  |
-| [Consulting Service](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | zowel | Micro soft-bevoegde consultants kunnen hun domeingebonden Services vermelden op Azure Marketplace of AppSource.  Hun expertise helpt klanten bij het beoordelen van hun problemen en het maken en implementeren van de juiste oplossingen om te voldoen aan de doel stellingen van hun bedrijf.  |
-| [Verpakking](./containers/cpp-containers-offer.md)  | Azure | De oplossing is een docker-container installatie kopie die is ingericht als een Kubernetes service of Azure container instances. |
-| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Een pakket dat deze Enter prise resource planning (ERP) en het beheer systeem voor bedrijven uitbreidt. |
-| [Dynamics 365 voor klant betrokkenheid](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Een pakket dat dit CRM-systeem (Customer Resource Management) uitbreidt via de modules Sales, service, project service en Field Service  |
-| [Dynamics 365 voor Financiën en bewerkingen](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Een pakket dat deze ERP-service (Enter prise resource planning) uitbreidt die ondersteuning biedt voor geavanceerde Financiën, bedrijfs activiteiten, productie en supply chain management |
-| [Module IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Een docker-compatibele container die wordt uitgevoerd op een IoT Edge apparaat.  Het bestaat uit kleine reken modules die gebruikmaken van een combi natie van aangepaste code, andere Azure-Services en services van derden. |
-| [App Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Een Power BI-app die aanpas bare Power BI inhoud verpakt, inclusief gegevens sets, rapporten en dash boards |
-| [SaaS-app](./saas-app/cpp-saas-offer.md) | Azure | De oplossing is een software-as-a-service-abonnement dat wordt beheerd door de uitgever, waarmee gebruikers zich aanmelden via een aangepaste interface die gebruikmaakt van Azure Active Directory. |
-| [Virtuele machine](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | De oplossing bevindt zich in één virtuele machine die is geïmplementeerd op het abonnement van de klant.  |
+| [Azure-toepassing](./azure-applications/cpp-azure-app-offer.md) | Azure | De oplossing bestaat uit een of meer virtuele machines (VM's), optionele aangepaste Azure-code, geïmplementeerd via een Azure Resource Manger-sjabloon.  Implementatie kan door de klant via een oplossingssjabloon worden beheerd of door de uitgever worden beheerd. Dit type wordt gebruikt om meer flexibiliteit te bieden dan voorzien virtuele machine aanbod type.  |
+| [Adviesservice](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | beide | Door Microsoft gekwalificeerde consultants kunnen hun domeinspecifieke services aanbieden op Azure Marketplace of AppSource.  Hun expertise helpt klanten bij het beoordelen van hun problemen en het creëren en implementeren van de juiste oplossingen om hun bedrijfsdoelstellingen te bereiken.  |
+| [Container](./containers/cpp-containers-offer.md)  | Azure | Oplossing is een Docker-containerafbeelding die is ingericht als een op Kubernetes gebaseerde service of Azure Container-exemplaren. |
+| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Een pakket dat dit ERP-systeem (Enterprise Resource Planning) en business management uitbreidt. |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Een pakket dat dit CRM-systeem (Customer Resource Management) uitbreidt via de modules verkoop, service, projectservice en fieldservice  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Een pakket dat deze ERP-service (Enterprise Resource Planning) uitbreidt die geavanceerde financiering, bedrijfsvoering, productie en supply chain-beheer ondersteunt |
+| [IoT Edge-module](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Een Docker-compatibele container die wordt uitgevoerd op een IoT Edge-apparaat.  Het bestaat uit kleine computermodules die een combinatie van aangepaste code, andere Azure-services en services van derden gebruiken. |
+| [Power BI-app](./power-bi/cpp-power-bi-offer.md) | AppSource | Een Power BI-app die aanpasbare Power BI-inhoud verpakt, inclusief gegevenssets, rapporten en dashboards |
+| [SaaS-app](./saas-app/cpp-saas-offer.md) | Azure | Oplossing is een software-as-a-service-abonnement, beheerd door de uitgever, dat gebruikers aanmelden via een aangepaste interface die Azure Active Directory gebruikt. |
+| [Virtuele machine](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Oplossing is opgenomen in een virtuele machine geïmplementeerd op het abonnement van de klant.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
-Zie voor meer informatie [publicatie handleiding per aanbiedings type](../publisher-guide-by-offer-type.md).
+Zie [Publicatiegids op aanbiedingstype voor](../publisher-guide-by-offer-type.md)meer informatie .
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt meer informatie over de algemene bewerkingen die u kunt uitvoeren op Marketplace-aanbiedingen en de algemene technische kenmerken en activa in het artikel [Managed aanbiedingen](./manage-offers/cpp-manage-offers.md).
+U leert over de algemene bewerkingen die u uitvoeren op marktplaatsaanbiedingen en hun algemene technische kenmerken en activa in het artikel [Aanbiedingen beheren.](./manage-offers/cpp-manage-offers.md)

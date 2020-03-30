@@ -1,128 +1,127 @@
 ---
-title: Gebruiks dashboard in commerciële Marketplace-analyses op partner centrum
-description: Meer informatie over het gebruik van toegang tot alle virtuele machines biedt metrische gegevens over facturering en data limieten.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: Gebruiksdashboard in Commercial Marketplace-analyses in partnercentrum
+description: Meer informatie over hoe u toegang krijgt tot alle vm-aanbiedingen en factureringsstatistieken met datameting.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: fb0e0e8f1a514ab7d21e97e1fb2aaed3ea39b088
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cd6614c1ccc51a2b25f115dccf0ee389075aa70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75481072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285126"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Gebruiks dashboard in commerciële Marketplace-analyse
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Gebruiksdashboard in Commerciële Marketplace-analyses
 
-Dit artikel bevat informatie over het gebruiks dashboard in partner centrum. In dit dash board worden alle virtuele machines gebruikt voor het gebruik en de metrische facturerings gegevens op twee afzonderlijke tabbladen: gebruik van VM'S en gefactureerd facturerings gebruik.
+In dit artikel vindt u informatie over het dashboard Gebruik in partnercentrum. In dit dashboard worden alle VM-factureringsstatistieken en factureringsstatistieken met datameting weergegeven in twee afzonderlijke tabbladen: VM-gebruik en factureringsgebruik met datameter.
 
-Open het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace om toegang te krijgen tot het gebruiks dashboard.
+Als u toegang wilt krijgen tot het dashboard Gebruik, opent u het dashboard **[Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële marktplaats.
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
+> Zie [Veelgestelde vragen en terminologie voor commerciële marketplace-analyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
 
 ## <a name="usage-dashboard"></a>Dashboard voor gebruik
 
-Het gebruiks Dashboard bevat de metrische gegevens voor alle virtuele machines (VM) die gebruikmaken van het gebruik en facturerings gebruik met data limiet. Deze zijn te vinden op twee afzonderlijke tabbladen: gebruik van VM'S en facturering in data limiet.
+Het gebruiksdashboard vertegenwoordigt de statistieken voor alle virtuele machine (VM) biedt gebruik en factureringsgebruik met datameting. Deze zijn te vinden in twee afzonderlijke tabbladen: VM-gebruik en factureringsgebruik met datameter.
 
-Op het tabblad gebruik van de virtuele machine worden grafische voors tellingen van de volgende items weer gegeven:
+Op het tabblad VM-gebruik staan grafische weergaven van de volgende items:
 
-- [Gebruiks overzicht](#usage-summary)
-- [Gebruik per Geografie](#usage-by-geography)
-- [Gebruik per aanbiedingen](#usage-by-offers)
-- [Gebruiks trend per aanbiedingen en Sku's](#usage-trend-by-offers-and-skus)
-- [Gebruik per aanbiedings type](#usage-by-offer-type)
+- [Gebruiksoverzicht](#usage-summary)
+- [Gebruik per geografie](#usage-by-geography)
+- [Gebruik door aanbiedingen](#usage-by-offers)
+- [Gebruikstrend door aanbiedingen en SKU's](#usage-trend-by-offers-and-skus)
+- [Gebruik per aanbiedingstype](#usage-by-offer-type)
 - [Gebruik op VM-grootte](#usage-by-vm-size)
-- [Gebruik per verkoop kanaal](#usage-by-sales-channel)
-- [Gedetailleerde gebruiks gegevens](#detailed-usage-data)
+- [Gebruik per verkoopkanaal](#usage-by-sales-channel)
+- [Gedetailleerde gebruiksgegevens](#detailed-usage-data)
 
 > [!NOTE]
-> Analyse rapporten worden anders weer gegeven in Cloud Partner-portal (CPP) en het partner centrum. De **verkoop inzichten** in cpp hebben het tabblad Orders en gebruik, die gegevens voor zowel op gebruik gebaseerde aanbiedingen als voor aanbiedingen op basis van gebruik worden weer gegeven. In Partner Center worden de metrische gegevens over het gebruik op een afzonderlijke pagina weer gegeven.
+> Analytics-rapporten worden anders weergegeven in Cloud Partner Portal (CPP) en Partner Center. **Verkopersinzichten** in CPP hebben een tabblad orders en gebruik, dat gegevens weergeeft voor zowel op gebruik gebaseerde aanbiedingen als aanbiedingen op basis van niet-gebruik. In Partnercentrum worden de gebruiksstatistieken op een aparte pagina weergegeven.
 
 ### <a name="usage-summary"></a>Overzicht van gebruik
 
-De tabel gebruiks overzicht bevat de gebruiks uren van de klant voor alle aanbiedingen die ze hebben gekocht.
+In de overzichtstabel voor het gebruik worden de openingstijden van het klantgebruik weergegeven voor alle aanbiedingen die ze hebben gekocht.
 
-- Genormaliseerde gebruiks uren worden gedefinieerd als het gebruik van uren die zijn genormaliseerd voor het aantal VM-kernen ([aantal VM-kernen] x [uur van onbewerkt gebruik]). Vm's die zijn aangewezen als "SHAREDCORE" gebruiken 1/6 (of 0,1666) als [aantal VM-kernen] vermenigvuldiger.
-- Onbewerkte gebruiks uren worden gedefinieerd als de hoeveelheid tijd waarop Vm's zijn uitgevoerd in het kader van uren.
-- De waarde percentage vertegenwoordigt wijziging van de gebruiks groei voor het geselecteerde datum bereik ([gebruik van de vorige maand – eerste maand gebruik])/het gebruik van de eerste maand).
-- Groene drie hoeken die omhoog wijzen, geven aan dat de groei is gewijzigd.
-- Rode drie hoek omlaag die omlaag wijst wijst op een negatieve groei wijziging ten opzichte van de vorige maand.
-- Micro staaf grafieken vertegenwoordigen maandelijkse waarden. U kunt de waarde voor elke maand weer geven door de muis aanwijzer boven de kolommen in de grafiek te plaatsen.
+- Genormaliseerde gebruiksuren worden gedefinieerd als de gebruiksuren die zijn genormaliseerd om rekening te houden met het aantal VM-kernen ([aantal VM-kernen] x [uren onberauw gebruik]). VM's die als "SHAREDCORE" zijn aangeduid, gebruiken 1/6 (of 0,1666) als de vermenigvuldiger van [aantal VM-kernen].
+- Onbewerkte gebruiksuren worden gedefinieerd als de hoeveelheid tijd die VM's hebben uitgevoerd in termen van uren.
+- De procentuele waarde vertegenwoordigt verandering in de gebruiksgroei voor het geselecteerde datumbereik ([gebruik van vorige maand – gebruik van de eerste maand])/ gebruik van de eerste maand).
+- Groene driehoeken die naar boven wijzen duiden op een groeiverandering.
+- Rode driehoek die naar beneden wijst duidt op een negatieve groeiverandering ten opzichte van de voorgaande maand.
+- Grafieken van microbalken vertegenwoordigen maandelijkse waarden. U de waarde voor elke maand weergeven door boven de kolommen in de grafiek te zweven.
 
-### <a name="usage-by-geography"></a>Gebruik per Geografie
+### <a name="usage-by-geography"></a>Gebruik per geografie
 
-**In het genormaliseerde gebruik van geografie** heatmap worden gebruiks tijden weer gegeven die zijn toegewezen op basis van het klant land. De kleur variatie voor het land vertegenwoordigt de genormaliseerde gebruiks concentratie. Keer terug naar de oorspronkelijke weer gave door op de knop **Start** op de kaart te drukken.
+Het **genormaliseerde gebruik per aardrijkskunde** heatmap geeft gebruiksuren weer die zijn toegewezen volgens het land van de klant. De kleurvariatie van het land vertegenwoordigt genormaliseerde gebruiksconcentratie. Keer terug naar de oorspronkelijke weergave door op de **startknop** op de kaart te drukken.
 
-### <a name="usage-by-offers"></a>Gebruik per aanbiedingen
+### <a name="usage-by-offers"></a>Gebruik door aanbiedingen
 
-- In het cirkel diagram **genormaliseerd gebruik per** wordt een uitsplitsing weer gegeven van genormaliseerde gebruiks uren per aanbiedingen volgens het geselecteerde datum bereik. De vijf belangrijkste aanbiedingen worden weer gegeven in de grafiek, terwijl de rest wordt gegroepeerd in de categorie ' rest all '.
-- In het staaf diagram ziet u een groei trend per maand voor het geselecteerde datum bereik. De maand kolommen vertegenwoordigen de gebruiks uren van de aanbiedingen met de hoogste gebruiks uren voor de betreffende maand. In het lijn diagram wordt de trend van het groei percentage weer gegeven die op de secundaire Y-as is getekend.
-- Gebruik de schuif regelaar aan de bovenkant van de grafiek om naar links te schuiven langs de x-as en/of focus op specifieke gegevens punten.
+- Het **genormaliseerde gebruik door biedt** cirkeldiagram geeft een uitsplitsing weer van genormaliseerde gebruiksuren op basis van aanbiedingen op basis van het geselecteerde datumbereik. De top 5 aanbiedingen worden weergegeven in de grafiek, terwijl de rest zijn gegroepeerd in de "rest all" categorie.
+- Het staafdiagram toont een groeitrend per maand voor het geselecteerde datumbereik. De maandkolommen geven gebruiksuren weer van de aanbiedingen met de hoogste gebruiksuren voor de betreffende maand. Het lijndiagram toont de groeipercentagetrend die is uitgezet op de secundaire Y-as.
+- Gebruik de schuifregelaar boven aan de grafiek om van rechts naar links te scrollen langs de x-as en/of te focussen op specifieke gegevenspunten.
 
-### <a name="usage-trend-by-offers-and-skus"></a>Gebruiks trend per aanbiedingen en Sku's
+### <a name="usage-trend-by-offers-and-skus"></a>Gebruikstrend door aanbiedingen en SKU's
 
-Dit diagram toont de trend van genormaliseerd gebruik voor de geselecteerde Sku's van een aanbieding. De aanbieding Leader Board geeft de Top 50 aanbiedingen met het hoogste gebruik weer en worden gesorteerd op gebruiks uren. De SKU Leader Board geeft de Top 50 Sku's weer met het hoogste gebruik voor de geselecteerde aanbieding.
+In deze grafiek wordt de trend van genormaliseerd gebruik voor de geselecteerde SKU's van een aanbieding weergegeven. Het aanbod leaderboard toont de top 50 aanbiedingen met het hoogste gebruik en worden gesorteerd op gebruik uren. Het SKU-leaderboard toont de top 50 SKU's met het hoogste gebruik voor de geselecteerde aanbieding.
 
-### <a name="usage-by-offer-type"></a>Gebruik per aanbiedings type
+### <a name="usage-by-offer-type"></a>Gebruik per aanbiedingstype
 
-- Het **type voor gebruik per aanbieding in** cirkel diagram organiseert het gebruik volgens het type aanbieding.
-- De beste aanbiedingen worden weer gegeven in de grafiek en de rest van de aanbiedingen worden gegroepeerd als ' rest all '.
-- In het **trend** diagram worden trends in de maand per maand weer gegeven. In de kolom maand staat het gebruik van de topaanbiedings typen in die maand.
+- Het **gebruik per aanbiedingstype** cirkeldiagram organiseert het gebruik op basis van het aanbiedingstype.
+- De topaanbiedingen worden weergegeven in de grafiek en de rest van de aanbiedingen zijn gegroepeerd als 'Rest All'.
+- Het **trenddiagram** toont groeitrends per maand. De kolom maand vertegenwoordigt het gebruik op de beste aanbiedingstypen in die maand.
 
 ### <a name="usage-by-vm-size"></a>Gebruik op VM-grootte
 
-Dit diagram vertegenwoordigt de gebruiks trend voor de geselecteerde VM-grootten (Maxi maal 5) van al uw aanbiedingen/Sku's. Het kolom diagram is gestapeld met de gebruiks uren van de geselecteerde VM-grootten.
+Deze grafiek geeft de gebruikstrend weer voor geselecteerde VM-formaten (max 5) van al uw aanbiedingen/SKU's. Het kolomdiagram wordt gestapeld met de gebruiksuren van de geselecteerde VM-grootten.
 
-De Leader Board geeft de hoogste 50 VM-grootten weer met het hoogste gebruik en worden gesorteerd op gebruiks uren.
+Het leaderboard toont de top 50 VM-formaten met het hoogste gebruik en gesorteerd op gebruiksuren.
 
-### <a name="usage-by-sales-channel"></a>Gebruik per verkoop kanaal
+### <a name="usage-by-sales-channel"></a>Gebruik per verkoopkanaal
 
-- Het cirkel diagram gebruik per verkoop kanaal organiseert het gebruik volgens het verkoop kanaal
-- Het bovenste verkoop kanaal met het hoogste gebruik wordt weer gegeven in de grafiek en de rest van het verkoop kanaal worden gegroepeerd als ' rest all '.
-- In de kolom maand staat het gebruik van het bovenste verkoop kanaal in die maand.
-- De functies van deze grafiek zijn hetzelfde als de grafiek gebruik per aanbiedingen
+- Het gebruik per verkoopkanaalcirkeldiagram organiseert het gebruik op basis van het verkoopkanaal
+- Het hoogste verkoopkanaal met het hoogste gebruik wordt weergegeven in de grafiek en de rest van het verkoopkanaal wordt gegroepeerd als 'Rest All'.
+- De kolom maand vertegenwoordigt het gebruik per topverkoopkanaal in die maand.
+- Kenmerken van deze grafiek zijn hetzelfde als de grafiek 'Gebruik door aanbiedingen'
 
-### <a name="detailed-usage-data"></a>Gedetailleerde gebruiks gegevens
+### <a name="detailed-usage-data"></a>Gedetailleerde gebruiksgegevens
 
-In de **tabel gebruiks gegevens** wordt een genummerde lijst weer gegeven met de bovenste 1000 gebruiks records gesorteerd op gebruik.
+In **de tabel met gebruiksgegevens** wordt een genummerde lijst weergegeven met de top 1000 gebruiksrecords gesorteerd op gebruik.
 
 - Elke kolom in het raster is sorteerbaar.
-- De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records kleiner is dan 1000.
-- Als aantal records groter is dan 1000, worden export gegevens asynchroon geplaatst op een pagina met Down loads die de volgende 30 dagen beschikbaar zullen zijn.
-- Filters kunnen worden toegepast op de **gedetailleerde gebruiks gegevens** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land, verkoop kanaal, Marketplace-licentie type, gebruiks type, naam van aanbieding, type aanbieding, gratis proef versies, abonnement-ID van Marketplace, klant-ID en bedrijfs naam.
+- De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records minder dan 1000 is.
+- Als het aantal records meer dan 1000 bedraagt, worden exportgegevens asynchroon geplaatst op een downloadspagina die de komende 30 dagen beschikbaar zal zijn.
+- Filters kunnen worden toegepast op de **gedetailleerde gebruiksgegevens** om alleen de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op land, verkoopkanaal, Marketplace-licentietype, gebruikstype, aanbiedingsnaam, aanbiedingstype, gratis proefversies, Marketplace-abonnements-ID, klant-id en bedrijfsnaam.
 
 > [!NOTE]
-> Selecteer het **gebruiks type** in het pagina filter om grafieken weer te geven op de pagina in de weer gave ' genormaliseerde weer gave ' of ' RAW '. De standaard weergave voor deze grafieken is ' genormaliseerde weer gave '.
+> Selecteer het **gebruikstype** in het paginafilter om grafieken op de pagina weer te geven in de 'Genormaliseerde weergave' of 'Ruwe weergave'. De standaardweergave voor deze grafieken is 'Genormaliseerde weergave'.
 
-De **gebruiks pagina filters** worden toegepast op pagina niveau. U kunt meerdere filters selecteren om de grafiek te genereren voor de criteria die u wilt weer geven en de gegevens die u wilt weer gegeven in het raster ' gedetailleerde gebruiks gegevens '. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevens bereik dat u hebt geselecteerd in de rechter bovenhoek van de pagina Orders.
+De **paginafilters voor gebruik** worden toegepast op paginaniveau. U meerdere filters selecteren om de grafiek weer te geven voor de criteria die u wilt weergeven en de gegevens die u wilt weergeven in het raster 'gedetailleerde gebruiksgegevens'/exporteren. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevensbereik dat u hebt geselecteerd in de rechterbovenhoek van de opdrachtpagina.
 
-- **Aanbiedings typen** en **aanbiedings namen** worden alleen vermeld voor de aanbiedingen die u hebt verkregen tijdens het geselecteerde datum bereik. Namen van aanbiedingen in de lijst worden weer gegeven voor aanbiedings typen die in de lijst zijn geselecteerd.
-- De standaard selectie is alle voor elk van de filter opties, met uitzonde ring van het **gebruiks type**. De standaard selectie voor het **gebruiks type** is genormaliseerd gebruik. Als u onbewerkt gebruik in de grafieken wilt weer geven, selecteert u onbewerkt gebruik.
-- Met toegepaste filters worden de selecties van aantal (en) weer gegeven voor de filters electies die zijn gemaakt. Toegepaste filters worden niet weer gegeven voor de standaard selecties.
-
-> [!NOTE]
-> Een gedetailleerde definitie van elk veld in het raster ' gedetailleerde order gegevens ', pagina filters en alle mogelijke selecties worden gedefinieerd in de sectie data dictionary van het artikel [Veelgestelde vragen en terminologie](link needed) .
-
-Op het tabblad **gebruik van facturering via data limiet** worden gebruiks gegevens weer gegeven voor aanbiedings typen waarbij gebruik wordt gemeten met per meter dimensie. SaaS-aanbieding type overschrijding wordt momenteel weer gegeven. Het tabblad geeft grafische voors tellingen van overschrijding-trends voor het gebruik van SaaS-data limieten:
-
-- **Overschrijding trend per meter dimensie**: geeft de maandelijkse overschrijding trend weer voor de geselecteerde meter dimensie van een aanbieding. De X-as vertegenwoordigt de maand en de Y-as vertegenwoordigt het gebruiks aantal. De meet eenheid van de aangepaste meter wordt ook weer gegeven op de Y-as.
-- **Overschrijding trend per SKU**: vertegenwoordigt de trend van het gebruiks aantal van de geselecteerde meter dimensie per sku's. De weer gegeven Sku's vertegenwoordigen de top 5 Sku's met de hoogste hoeveelheid gebruik voor de geselecteerde aanbieding.
-- **Overschrijding trend per top 50-klanten**: de Top 50 aanbiedingen met de hoogste gebruiks uren worden weer gegeven op een ***Leader Board*** en worden geclassificeerd op basis van het hoogste gebruik van de aangepaste meter. Selecteer een klant in de Leader Board om de gebruiks trend van een geselecteerde meter dimensie weer te geven.
-- **Overschrijding trend van belangrijkste klanten**: geeft de belangrijkste klant-percentiel (en) weer die bijdragen aan het percentage van het totale gebruik. Het bovenste klant percentiel wordt weer gegeven langs de X-as en wordt bepaald door de gebruiks hoeveelheid van de klant. Op de Y-as wordt het gebruiks aantal weer gegeven. U kunt details weer geven door boven punten in het lijn diagram te bewegen.
+- **Aanbiedingstypen** en **aanbiedingsnamen** worden alleen vermeld voor de aanbiedingen die u hebt verkregen tijdens het geselecteerde datumbereik. Aanbiedingsnamen in de lijst worden weergegeven voor aanbiedingstypen die in de lijst zijn geselecteerd.
+- De standaardselectie is 'Alles' voor elk van de filteropties, met uitzondering van **gebruikstype**. De standaardselectie voor **gebruikstype** is genormaliseerd gebruik. Als u het ruwe gebruik in de grafieken wilt weergeven, selecteert u 'onbewerkt gebruik'.
+- Toegepaste filters geven de aantalselecties(en) weer voor de filterselecties die zijn gemaakt. Toegepaste filters worden niet weergegeven voor de standaardselecties.
 
 > [!NOTE]
-> De details van het gebruik en alle grafieken op deze pagina worden weer gegeven voor welke meter dimensie is geselecteerd voor het pagina filter.
+> Een gedetailleerde definitie van elk van de velden in het raster 'gedetailleerde ordergegevens', paginafilters en alle mogelijke selecties worden gedefinieerd in het gedeelte gegevenswoordenboek van de [veelgestelde vragen en terminologieartikel.](link needed)
+
+Op het tabblad **Facturering met gegevens over facturering met gegevens over de facturering gemeten** wordt het gebruik van de aanbiedingstypen per meterdimensie weergegeven. SaaS aanbod type overschrijding wordt momenteel gepresenteerd. Het tabblad presenteert grafische weergaven van overschrijdingstrends voor factureringsgebruik met saas-gemeten:
+
+- **Overschrijdingstrend per meterdimensie**: geeft de maandelijkse overschrijdingstrend weer voor de geselecteerde meterafmeting van een aanbieding. De X-As vertegenwoordigt de maand en de Y-as vertegenwoordigt het gebruiksaantal. De meeteenheid van de aangepaste meter wordt ook weergegeven op de Y-as.
+- **Overschrijdingstrend door SKU**: Geeft de trend weer van de gebruikshoeveelheid van de geselecteerde meterdimensie door SKU's. De weergegeven SKU's vertegenwoordigen de top 5 SKU's met de hoogste hoeveelheid gebruik voor de geselecteerde aanbieding.
+- **Overschrijdingtrend door Top 50-klanten**: De top 50-aanbiedingen met de hoogste gebruiksuren worden weergegeven op een ***klassement*** en worden gerangschikt op basis van het hoogste gebruik van de aangepaste meter. Selecteer een klant in het leaderboard om de gebruikstrend van een geselecteerde meterdimensie te bekijken.
+- **Overage trend door top klanten**: Presenteert top klant percentiel (s) die bijdragen aan het % van het totale gebruik. Het bovenste klantpercentiel wordt weergegeven langs de X-as en wordt bepaald door het gebruikshoeveelheid van de klant. De Y-as geeft het gebruiksaantal weer. U details weergeven door over punten langs het lijndiagram te zweven.
+
+> [!NOTE]
+> De gebruiksgegevens en alle grafieken op deze pagina worden weergegeven voor de meterdimensie die is geselecteerd voor het paginafilter.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor een overzicht van analyse rapporten die beschikbaar zijn in de commerciële Marketplace van partner Center raadpleegt u [Analytics voor de commerciële Marketplace in Partner Center](./analytics.md).
-- Zie [Summary dash board in Commercial Marketplace Analytics](./summary-dashboard.md)voor grafieken, trends en waarden van statistische gegevens die de Marketplace-activiteiten voor uw aanbieding samenvatten.
-- Voor informatie over uw orders in een grafische en download bare indeling raadpleegt u het [dash board orders in Commercial Marketplace Analytics](./orders-dashboard.md).
-- Zie [klanten dashboard in Commercial Marketplace Analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, waaronder groei trends.
-- Zie [dash board downloaden in Commercial Marketplace Analytics](./downloads-dashboard.md)voor een lijst met Download aanvragen voor de afgelopen 30 dagen.
-- Voor een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource raadpleegt u het [dash board beoordelingen en beoordelingen in Commercial Marketplace Analytics](./ratings-reviews.md).
-- Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor veelgestelde vragen over commerciële Marketplace-analyses en voor een uitgebreid woorden boek met gegevens termen.
+- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)een overzicht van analyserapporten die beschikbaar zijn in het Partnercenter Commercial Marketplace.
+- Zie [Overzichtsdashboard in Commercial Marketplace-analyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
+- Zie [Orders Dashboard in Commercial Marketplace analytics](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
+- Zie Customer Dashboard in Commercial Marketplace [analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
+- Zie [Downloads Dashboard in Commercial Marketplace analytics](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
+- Zie [Dashboard Beoordelingen en beoordelingen in Commercial Marketplace-analyses](./ratings-reviews.md)voor ziet u in een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
+- Voor veelgestelde vragen over Commercial Marketplace analytics en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor Commercial Marketplace analytics.](./faq-terminology.md)

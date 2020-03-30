@@ -1,6 +1,6 @@
 ---
-title: De Azure IoT Device SDK voor C | Microsoft Docs
-description: Aan de slag met de Azure IoT Device SDK voor C en meer informatie over het maken van apps voor apparaten die communiceren met een IoT-hub.
+title: De Azure IoT-apparaat SDK voor C | Microsoft Documenten
+description: Ga aan de slag met de Azure IoT-apparaat SDK voor C en leer hoe u apparaatapps maakt die communiceren met een IoT-hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,109 +9,109 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
 ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813787"
 ---
-# <a name="azure-iot-device-sdk-for-c"></a>Azure IoT Device SDK voor C
+# <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-apparaat SDK voor C
 
-De **Azure IOT Device SDK** is een set bibliotheken die is ontworpen om het proces van het verzenden van berichten naar en het ontvangen van berichten van de **Azure IOT hub** -service te vereenvoudigen. Er zijn verschillende variaties van de SDK, die elk gericht zijn op een specifiek platform, maar in dit artikel wordt de **Azure IOT Device SDK voor C**beschreven.
+De **Azure IoT-apparaat SDK** is een set bibliotheken die zijn ontworpen om het proces van het verzenden van berichten naar en het ontvangen van berichten van de Azure **IoT Hub-service** te vereenvoudigen. Er zijn verschillende varianten van de SDK, die elk gericht zijn op een specifiek platform, maar in dit artikel wordt de **Azure IoT-apparaat SDK voor C beschreven.**
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-De Azure IoT Device SDK voor C is geschreven in ANSI C (C99) om de draag baarheid te maximaliseren. Met deze functie kunnen de bibliotheken goed worden gebruikt voor meerdere platforms en apparaten, met name voor het minimaliseren van schijf-en geheugen footprint een prioriteit.
+De Azure IoT-apparaat SDK voor C is geschreven in ANSI C (C99) om de draagbaarheid te maximaliseren. Deze functie maakt de bibliotheken zeer geschikt om te werken op meerdere platforms en apparaten, vooral waar het minimaliseren van schijf- en geheugenvoetafdruk een prioriteit is.
 
-Er is een breed scala aan platforms waarop de SDK is getest (Zie de [Azure Certified voor IOT-Apparaatbeheer](https://catalog.azureiotsolutions.com/) voor meer informatie). Hoewel dit artikel stapsgewijze instructies bevat voor voorbeeld code die wordt uitgevoerd op het Windows-platform, is de code die in dit artikel wordt beschreven, identiek in het bereik van ondersteunde platforms.
+Er zijn een breed scala aan platforms waarop de SDK is getest (zie de [Azure Certified for IoT-apparaatcatalogus](https://catalog.azureiotsolutions.com/) voor meer informatie). Hoewel dit artikel walkthroughs bevat van voorbeeldcode die wordt uitgevoerd op het Windows-platform, is de code die in dit artikel wordt beschreven identiek over het bereik van ondersteunde platforms.
 
-De volgende video biedt een overzicht van de Azure IoT SDK voor C:
+De volgende video bevat een overzicht van de Azure IoT SDK voor C:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-IoT-C-SDK-insights/Player]
 
-In dit artikel vindt u een inleiding tot de architectuur van de Azure IoT Device SDK voor C. Hierin ziet u hoe u de Apparaatbeheer initialiseert, gegevens naar IoT Hub verzendt en er berichten van ontvangt. De informatie in dit artikel moet voldoende zijn om aan de slag te gaan met de SDK, maar biedt ook verwijzingen naar aanvullende informatie over de bibliotheken.
+In dit artikel wordt u kennis laten maken met de architectuur van de Azure IoT-apparaat SDK voor C. Het laat zien hoe u de apparaatbibliotheek initialiseren, gegevens naar IoT Hub verzenden en er berichten van ontvangen. De informatie in dit artikel moet voldoende zijn om aan de slag te gaan met de SDK, maar biedt ook aanwijzingen voor aanvullende informatie over de bibliotheken.
 
 ## <a name="sdk-architecture"></a>SDK-architectuur
 
-U vindt de [**Azure IOT Device SDK voor c**](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats en Raadpleeg de details van de API in de [C API-referentie](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+U de [**Azure IoT-apparaat SDK voor C**](https://github.com/Azure/azure-iot-sdk-c) GitHub-repository vinden en details van de API weergeven in de C [API-verwijzing.](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
-De meest recente versie van de bibliotheken vindt u in de **hoofd** vertakking van de opslag plaats:
+De nieuwste versie van de bibliotheken is te vinden in de **hoofdvestiging** van de repository:
 
-  ![Scherm afbeelding van de hoofd vertakking van de opslag plaats](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
+  ![Schermafbeelding van de hoofdvertakking van de opslagplaats](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
-* De kern implementatie van de SDK bevindt zich in de **\_iothub-client** map die de implementatie van de laagste API-laag in de SDK bevat: de **IoTHubClient** -bibliotheek. De **IoTHubClient** -bibliotheek bevat api's die RAW Messa ging implementeren voor het verzenden van berichten naar IOT hub en het ontvangen van berichten van IOT hub. Wanneer u deze bibliotheek gebruikt, bent u verantwoordelijk voor het implementeren van bericht serialisatie, maar andere details van het communiceren met IoT Hub worden voor u afgehandeld.
+* De kernimplementatie van de SDK bevindt zich in de **iothub-clientmap\_** die de implementatie van de laagste API-laag in de SDK bevat: de **IoTHubClient-bibliotheek.** De **IoTHubClient-bibliotheek** bevat API's die raw messaging implementeren voor het verzenden van berichten naar IoT Hub en het ontvangen van berichten van IoT Hub. Wanneer u deze bibliotheek gebruikt, bent u verantwoordelijk voor het implementeren van berichtserialisatie, maar andere details over het communiceren met IoT Hub worden voor u behandeld.
 
-* De map **serializer** bevat hulp functies en voor beelden die laten zien hoe u gegevens kunt serialiseren voordat u deze naar Azure IOT hub verzendt met de-client bibliotheek. Het gebruik van de serialisatiefunctie is niet verplicht en is als gebruiks gemak opgegeven. Als u de **serialisatiefunctie** -bibliotheek wilt gebruiken, definieert u een model dat de gegevens bevat die moeten worden verzonden naar IOT hub en de berichten die u verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-Opper vlak waarmee u eenvoudig kunt werken met apparaat-naar-Cloud-en Cloud-naar-apparaat-berichten zonder dat u zich zorgen hoeft te maken over de details van de serialisatie. De bibliotheek is afhankelijk van andere open-source-bibliotheken die Trans Port implementeren met behulp van protocollen zoals MQTT en AMQP.
+* De **serialisatormap** bevat helperfuncties en voorbeelden die u laten zien hoe u gegevens serialiseren voordat u deze met de clientbibliotheek naar Azure IoT Hub verzendt. Het gebruik van de serialisator is niet verplicht en wordt verstrekt als een gemak. Als u de **serializer-bibliotheek wilt** gebruiken, definieert u een model dat de gegevens opgeeft die naar IoT Hub moeten worden verzonden en welke berichten u ervan verwacht te ontvangen. Zodra het model is gedefinieerd, biedt de SDK u een API-oppervlak waarmee u eenvoudig werken met berichten van apparaat tot cloud en cloud-to-device zonder u zorgen te hoeven maken over de serialisatiedetails. De bibliotheek is afhankelijk van andere open source-bibliotheken die transport implementeren met behulp van protocollen zoals MQTT en AMQP.
 
-* De **IoTHubClient** -bibliotheek is afhankelijk van andere open-source-bibliotheken:
+* De **IoTHubClient-bibliotheek** is afhankelijk van andere open source-bibliotheken:
 
-  * De bibliotheek met [gedeelde Azure c-hulpprogram ma's](https://github.com/Azure/azure-c-shared-utility) , waarmee algemene taken kunnen worden uitgevoerd (zoals teken reeksen, lijst bewerkingen en i/o) die nodig zijn voor meerdere aan Azure gerelateerde C-sdk's.
+  * De [azure C-gesynchroniseerde hulpprogrammabibliotheek,](https://github.com/Azure/azure-c-shared-utility) die algemene functionaliteit biedt voor basistaken (zoals tekenreeksen, lijstmanipulatie en IO) die nodig zijn voor verschillende Azure-gerelateerde Cd-s.Co
 
-  * De [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) -bibliotheek, een implementatie aan de client zijde van AMQP die is geoptimaliseerd voor apparaten die zijn beperkt tot een resource.
+  * De [Azure uAMQP-bibliotheek,](https://github.com/Azure/azure-uamqp-c) een client-side implementatie van AMQP geoptimaliseerd voor resource beperkte apparaten.
 
-  * De [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) -bibliotheek, een bibliotheek voor algemeen gebruik die het MQTT-protocol implementeert en geoptimaliseerd is voor apparaten die zijn beperkt.
+  * De [Azure uMQTT-bibliotheek,](https://github.com/Azure/azure-umqtt-c) een bibliotheek voor algemene doeleinden die het MQTT-protocol implementeert en is geoptimaliseerd voor apparaten met beperkte resources.
 
-Het gebruik van deze bibliotheken is gemakkelijker te begrijpen door voorbeeld code te bekijken. In de volgende secties vindt u een overzicht van de voorbeeld toepassingen die in de SDK zijn opgenomen. In dit overzicht vindt u een goede indruk van de verschillende mogelijkheden van de architectuur lagen van de SDK en een inleiding tot de werking van de Api's.
+Het gebruik van deze bibliotheken is gemakkelijker te begrijpen door te kijken naar voorbeeldcode. De volgende secties lopen u door een aantal van de voorbeeldtoepassingen die zijn opgenomen in de SDK. Deze walkthrough moet u een goed gevoel geven voor de verschillende mogelijkheden van de architecturale lagen van de SDK en een inleiding tot hoe de API's werken.
 
-## <a name="before-you-run-the-samples"></a>Voordat u de voor beelden uitvoert
+## <a name="before-you-run-the-samples"></a>Voordat u de monsters uitvoert
 
-Voordat u de voor beelden in de Azure IoT Device SDK voor C kunt uitvoeren, moet u [een exemplaar van de IOT hub-service](iot-hub-create-through-portal.md) in uw Azure-abonnement maken. Voer vervolgens de volgende taken uit:
+Voordat u de voorbeelden in de Azure IoT-apparaat SDK voor C uitvoeren, moet u [een instantie van de IoT Hub-service maken](iot-hub-create-through-portal.md) in uw Azure-abonnement. Voer vervolgens de volgende taken uit:
 
 * Uw ontwikkelomgeving voorbereiden
-* De referenties van het apparaat ophalen.
+* Apparaatreferenties verkrijgen.
 
 ### <a name="prepare-your-development-environment"></a>Uw ontwikkelomgeving voorbereiden
 
-Pakketten worden weer gegeven voor algemene platformen (zoals NuGet voor Windows of apt_get voor Debian en Ubuntu) en de voor beelden gebruiken deze pakketten wanneer deze beschikbaar zijn. In sommige gevallen moet u de SDK voor of op uw apparaat compileren. Als u de SDK wilt compileren, raadpleegt u [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de GitHub-opslag plaats.
+Pakketten worden verstrekt voor gemeenschappelijke platforms (zoals NuGet voor Windows of apt_get voor Debian en Ubuntu) en de monsters gebruiken deze pakketten indien beschikbaar. In sommige gevallen moet u de SDK voor of op uw apparaat compileren. Als u de SDK wilt compileren, [raadpleegt u Uw ontwikkelomgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de GitHub-repository.
 
-Down load een exemplaar van de SDK via GitHub om de voorbeeld toepassings code te verkrijgen. Haal uw kopie van de bron op uit de **hoofd** vertakking van de [github-opslag plaats](https://github.com/Azure/azure-iot-sdk-c).
+Download een kopie van de SDK van GitHub om de voorbeeldcode van de toepassing te verkrijgen. Haal uw exemplaar van de bron uit de **hoofdvestiging** van de [GitHub-repository.](https://github.com/Azure/azure-iot-sdk-c)
 
 
-### <a name="obtain-the-device-credentials"></a>De referenties van het apparaat ophalen
+### <a name="obtain-the-device-credentials"></a>De apparaatreferenties verkrijgen
 
-Nu u de voor beeld-bron code hebt, is het volgende te doen om een set apparaatgegevens te verkrijgen. Als een apparaat een IoT-hub kan openen, moet u het apparaat eerst toevoegen aan het IoT Hub-identiteits register. Wanneer u uw apparaat toevoegt, krijgt u een set apparaatspecifieke referenties die nodig zijn voor het apparaat om verbinding te kunnen maken met de IoT-hub. De voorbeeld toepassingen die in de volgende sectie worden beschreven, verwachten deze referenties in de vorm van een **apparaat Connection String**.
+Nu u de broncode van het voorbeeld hebt, moet u vervolgens een set apparaatreferenties krijgen. Als u een apparaat toegang wilt geven tot een IoT-hub, moet u het apparaat eerst toevoegen aan het identiteitsregister van de IoT Hub. Wanneer u uw apparaat toevoegt, krijgt u een set apparaatreferenties die u nodig hebt om het apparaat verbinding te kunnen maken met de IoT-hub. De voorbeeldtoepassingen die in de volgende sectie worden besproken, verwachten deze referenties in de vorm van een **tekenreeks voor apparaatverbinding.**
 
-Er zijn verschillende open source-hulpprogram ma's die u helpen bij het beheren van uw IoT-hub.
+Er zijn verschillende open source-tools om u te helpen uw IoT-hub te beheren.
 
-* Een Windows-toepassing met de naam [device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+* Een Windows-toepassing genaamd [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* Een platformoverschrijdende Visual Studio-code-uitbrei ding met de naam [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* Een cross-platform Visual Studio Code extensie genaamd [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
-* Een platformoverschrijdende python-CLI met [de naam IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
+* Een cross-platform Python CLI genaamd [de IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-Deze zelf studie maakt gebruik van het hulp programma voor grafische *apparaten* . U kunt de *Azure IOT-Hulpprogram ma's voor VS code* gebruiken als u in VS code ontwikkelt. U kunt ook het hulp programma *IOT-extensie voor Azure CLI 2,0* gebruiken als u liever een CLI-hulp programma gebruikt.
+Deze zelfstudie maakt gebruik van het grafische *hulpmiddel explorer.* U de *Azure IoT-hulpprogramma's voor VS-code* gebruiken als u zich ontwikkelt in VS-code. U de *IoT-extensie voor Azure CLI 2.0* ook gebruiken als u liever een CLI-tool gebruikt.
 
-Het hulp programma Device Explorer maakt gebruik van de Azure IoT-service bibliotheken voor het uitvoeren van verschillende functies op IoT Hub, waaronder het toevoegen van apparaten. Als u het hulp programma Device Explorer gebruikt om een apparaat toe te voegen, krijgt u een connection string voor uw apparaat. U hebt deze connection string nodig om de voorbeeld toepassingen uit te voeren.
+Het hulpprogramma voor apparaatverkenners gebruikt de Azure IoT-servicebibliotheken om verschillende functies uit te voeren op IoT Hub, waaronder het toevoegen van apparaten. Als u het gereedschap Apparaatverkenner gebruikt om een apparaat toe te voegen, krijgt u een verbindingstekenreeks voor uw apparaat. U hebt deze verbindingstekenreeks nodig om de voorbeeldtoepassingen uit te voeren.
 
-Als u niet bekend bent met het hulp programma Device Explorer, wordt in de volgende procedure beschreven hoe u het kunt gebruiken om een apparaat toe te voegen en een apparaat connection string te verkrijgen.
+Als u niet bekend bent met het apparaatverkenners, wordt in de volgende procedure beschreven hoe u het gebruiken om een apparaat toe te voegen en een tekenreeks voor apparaatverbinding te verkrijgen.
 
-1. Zie [de Device Explorer voor IOT Hub apparaten gebruiken](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)om het hulp programma Device Explorer te installeren.
+1. Zie De Device Explorer [voor IoT Hub-apparaten gebruiken](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)als u het gereedschap Device Explorer wilt installeren.
 
 1. Wanneer u het programma uitvoert, ziet u deze interface:
 
-   ![Dubbele scherm afbeelding van Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
+   ![Schermafbeelding van Device Explorer Twin](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-1. Voer uw **IOT hub verbindings reeks** in het eerste veld in en klik op **bijwerken**. Met deze stap configureert u het hulp programma zodat het kan communiceren met IoT Hub. 
+1. Voer uw **IoT Hub Connection String** in het eerste veld in en klik op **Bijwerken**. Met deze stap configureert u de tool zodat deze kan communiceren met IoT Hub. 
 
-De **verbindings reeks** vindt u onder **IOT hub service** > -**instellingen** > **beleid** > voor gedeelde toegang**iothubowner**.
+De **verbindingstekenreeks** is te vinden onder **IoT Hub Service** > **Settings** > **Shared Access Policy** > **iothubowner**.
 
-1. Wanneer de IoT Hub connection string is geconfigureerd, klikt u op het tabblad **beheer** :
+1. Wanneer de verbindingstekenreeks van de IoT-hub is geconfigureerd, klikt u op het tabblad **Beheer:**
 
-   ![Scherm afbeelding voor dubbele/beheer Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
+   ![Device Explorer Twin / Schermbeheer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
-Op dit tabblad kunt u de apparaten beheren die zijn geregistreerd in uw IoT-hub.
+Op dit tabblad beheert u de apparaten die zijn geregistreerd in uw IoT-hub.
 
-1. U maakt een apparaat door te klikken op de knop **maken** . Er wordt een dialoog venster weer gegeven met een set vooraf ingevulde sleutels (primair en secundair). Voer een **apparaat-id** in en klik vervolgens op **maken**.
+1. U maakt een apparaat door op de knop **Maken** te klikken. Een dialoogvenster wordt weergegeven met een set vooraf ingevulde toetsen (primair en secundair). Voer een **apparaat-id in** en klik op **Maken**.
 
-   ![Scherm opname van apparaat maken](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![Schermafbeelding apparaat maken](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-1. Wanneer het apparaat wordt gemaakt, worden de apparaten weer geven met alle geregistreerde apparaten, met inbegrip van het item dat u zojuist hebt gemaakt. Als u met de rechter muisknop op het nieuwe apparaat klikt, ziet u dit menu:
+1. Wanneer het apparaat wordt gemaakt, worden de apparaten lijst bijgewerkt met alle geregistreerde apparaten, met inbegrip van degene die u zojuist hebt gemaakt. Als u met de rechtermuisknop op uw nieuwe apparaat klikt, ziet u dit menu:
 
-   ![Het dubbele rechter klikken Device Explorer resultaat](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Met de rechtermuisknop op Device Explorer Twin](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-1. Als u **Connection String kopiëren kiest voor het geselecteerde apparaat**, wordt het apparaat Connection String gekopieerd naar het klem bord. Bewaar een kopie van de connection string van het apparaat. U hebt deze nodig bij het uitvoeren van de voorbeeld toepassingen die in de volgende secties worden beschreven.
+1. Als u **Verbindingstekenreeks kopiëren voor geselecteerd apparaat**kiest, wordt de tekenreeks voor apparaatverbinding naar het klembord gekopieerd. Bewaar een kopie van de tekenreeks van de apparaatverbinding. U hebt het nodig bij het uitvoeren van de voorbeeldtoepassingen die in de volgende secties zijn beschreven.
 
-Wanneer u de bovenstaande stappen hebt voltooid, kunt u beginnen met het uitvoeren van code. De meeste voor beelden hebben een constante boven aan het hoofd bron bestand waarmee u een connection string kunt invoeren. De bijbehorende regel van de **iothub_client\_-voor\_beelden iothub_convenience_sample** -toepassing wordt bijvoorbeeld als volgt weer gegeven.
+Wanneer u de bovenstaande stappen hebt voltooid, u beginnen met het uitvoeren van bepaalde code. De meeste voorbeelden hebben een constante boven aan het hoofdbronbestand waarmee u een verbindingstekenreeks invoeren. De bijbehorende regel uit de **iothub_client-monsters\_\_iothub_convenience_sample** toepassing wordt bijvoorbeeld als volgt weergegeven.
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -119,34 +119,34 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>De IoTHubClient-bibliotheek gebruiken
 
-In de **map\_iothub-client** in de [Azure-IOT-SDK-c-](https://github.com/azure/azure-iot-sdk-c) opslag plaats bevindt zich een map met voor **beelden** die een toepassing bevat met de naam **iothub\_client\_sample\_mqtt** .
+Binnen de **\_iothub-clientmap** in de [azure-iot-sdk-c-repository](https://github.com/azure/azure-iot-sdk-c) is er een **voorbeeldmap** die een toepassing bevat die **iothub-clientsample\_\_mqtt wordt\_** genoemd.
 
-De Windows-versie van **de\_iothub_client\_-voor beelden iothub_convenience_sample** -toepassing bevat de volgende Visual Studio-oplossing:
+De Windows-versie van de **iothub_client\_voorbeelden\_iothub_convenience_sample** toepassing bevat de volgende Visual Studio-oplossing:
 
-  ![Solution Explorer van Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
+  ![Visual Studio Solution Explorer](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> Als u in Visual Studio wordt gevraagd om het project opnieuw te richten op de meest recente versie, accepteert u de prompt.
+> Als Visual Studio u vraagt om het project te retargeten op de nieuwste versie, accepteert u de prompt.
 
 Deze oplossing bevat één project. Er zijn vier NuGet-pakketten geïnstalleerd in deze oplossing:
 
 * Microsoft.Azure.C.SharedUtility
 * Microsoft.Azure.IoTHub.MqttTransport
-* Microsoft.Azure.IoTHub.IoTHubClient
+* Microsoft.azure.iothub.iothubclient
 * Microsoft.Azure.umqtt
 
-U hebt altijd het pakket **micro soft. Azure. C. SharedUtility** nodig wanneer u met de SDK werkt. In dit voor beeld wordt het MQTT-protocol gebruikt. Daarom moet u de pakketten **micro soft. Azure. umqtt** en **micro soft. Azure. IoTHub. MqttTransport** gebruiken (er zijn equivalente pakketten voor AMQP en https). Omdat in het voor beeld de **IoTHubClient** -bibliotheek wordt gebruikt, moet u ook het pakket **micro soft. Azure. IoTHub. IoTHubClient** in uw oplossing toevoegen.
+U hebt altijd het **Microsoft.Azure.C.SharedUtility-pakket** nodig wanneer u met de SDK werkt. Dit voorbeeld maakt gebruik van het MQTT-protocol, daarom moet u de **Pakketten Microsoft.Azure.umqtt** en **Microsoft.Azure.IoTHub.MqttTransport** bevatten (er zijn gelijkwaardige pakketten voor AMQP en HTTPS). Omdat het voorbeeld de **IoTHubClient-bibliotheek** gebruikt, moet u ook het **Microsoft.Azure.IoTHub.IoTHubClient-pakket** in uw oplossing opnemen.
 
-U kunt de implementatie voor de voorbeeld toepassing vinden in het **bron\_bestand\_iothub_client samples iothub_convenience_sample** .
+U vindt de implementatie voor de voorbeeldtoepassing in de **iothub_client\_voorbeelden\_iothub_convenience_sample** bronbestand.
 
-In de volgende stappen wordt deze voorbeeld toepassing gebruikt om u te helpen bij wat u nodig hebt om de **IoTHubClient** -bibliotheek te gebruiken.
+In de volgende stappen wordt deze voorbeeldtoepassing gebruikt om u door te laten gaan wat nodig is om de **IoTHubClient-bibliotheek** te gebruiken.
 
 ### <a name="initialize-the-library"></a>De bibliotheek initialiseren
 
 > [!NOTE]
-> Voordat u aan de slag gaat met de Bibliotheken, moet u mogelijk bepaalde platformspecifieke initialisaties uitvoeren. Als u bijvoorbeeld van plan bent AMQP in Linux te gebruiken, moet u de OpenSSL-bibliotheek initialiseren. De voor beelden in de [github-opslag plaats](https://github.com/Azure/azure-iot-sdk-c) roepen de functie **platform\_init** van het hulp programma aan wanneer de client wordt gestart en roept de functie voor het **deinit van het platform\_** aan voordat deze wordt afgesloten. Deze functies worden gedeclareerd in het bestand platform. h header. Bekijk de definities van deze functies voor uw doel platform in de [opslag plaats](https://github.com/Azure/azure-iot-sdk-c) om te bepalen of u een platformspecifieke initialisatie code moet gebruiken in uw-client.
+> Voordat u met de bibliotheken gaat werken, moet u mogelijk een aantal platformspecifieke initialisatie uitvoeren. Als u bijvoorbeeld AMQP op Linux wilt gebruiken, moet u de OpenSSL-bibliotheek initialiseren. De samples in de [GitHub repository](https://github.com/Azure/azure-iot-sdk-c) roepen het utility function **platform\_init** wanneer de client start en bel de **platform\_deinit** functie voor het verlaten. Deze functies worden gedeclareerd in het headerbestand platform.h. Bekijk de definities van deze functies voor uw doelplatform in de [repository](https://github.com/Azure/azure-iot-sdk-c) om te bepalen of u een platformspecifieke initialisatiecode in uw client moet opnemen.
 
-Wijs eerst een IoT Hub client ingang toe om te gaan werken met de bibliotheken:
+Als u met de bibliotheken wilt gaan werken, wijst u eerst een IoT Hub-clientgreep toe:
 
 ```c
 if ((iotHubClientHandle = 
@@ -159,17 +159,17 @@ else
     ...
 ```
 
-U geeft een kopie van het apparaat door connection string u hebt verkregen van het hulp programma Device Explorer naar deze functie. U wijst ook het communicatie protocol aan dat moet worden gebruikt. In dit voor beeld wordt MQTT gebruikt, maar AMQP en HTTPS zijn ook opties.
+U geeft een kopie van de apparaatverbindingstekenreeks die u van het apparaatverkennerhebt verkregen, door aan deze functie. U wijst ook het te gebruiken communicatieprotocol aan. In dit voorbeeld wordt MQTT gebruikt, maar AMQP en HTTPS zijn ook opties.
 
-Wanneer u een geldige **\_IOTHUB-client\_ingang**hebt, kunt u beginnen met het aanroepen van de api's voor het verzenden en ontvangen van berichten van en naar IOT hub.
+Wanneer u een geldige **\_IOTHUB-CLIENTHANDLE\_hebt,** u de API's bellen om berichten van en naar IoT Hub te verzenden en te ontvangen.
 
 ### <a name="send-messages"></a>Berichten verzenden
 
-De voorbeeld toepassing stelt een lus in voor het verzenden van berichten naar uw IoT-hub. Het volgende code fragment:
+De voorbeeldtoepassing stelt een lus in om berichten naar uw IoT-hub te verzenden. Het volgende fragment:
 
 - Hiermee maakt u een bericht.
-- Hiermee wordt een eigenschap toegevoegd aan het bericht.
-- Hiermee wordt een bericht verzonden.
+- Hiermee voegt u een eigenschap toe aan het bericht.
+- Stuurt een bericht.
 
 Maak eerst een bericht:
 
@@ -211,7 +211,7 @@ do
 } while (g_continueRunning);
 ```
 
-Telkens wanneer u een bericht verzendt, geeft u een verwijzing op naar een call back-functie die wordt aangeroepen wanneer de gegevens worden verzonden. In dit voor beeld wordt de call back-functie **SendConfirmationCallback**genoemd. In het volgende code fragment wordt deze call back-functie weer gegeven:
+Elke keer dat u een bericht verzendt, geeft u een verwijzing op naar een terugbelfunctie die wordt aangeroepen wanneer de gegevens worden verzonden. In dit voorbeeld wordt de callback-functie **SendConfirmationCallback**genoemd. In het volgende fragment wordt deze functie voor terugbellen weergegeven:
 
 ```c
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
@@ -224,11 +224,11 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 }
 ```
 
-Let op de aanroep van de functie **IoTHubMessage\_Destroy** wanneer u klaar bent met het bericht. Met deze functie worden de resources vrijgegeven die zijn toegewezen tijdens het maken van het bericht.
+Let op de oproep naar de **functie\_IoTHubMessage Destroy** wanneer u klaar bent met het bericht. Met deze functie worden de resources vrijgegeven die zijn toegewezen aan het maken van het bericht.
 
 ### <a name="receive-messages"></a>Berichten ontvangen
 
-Het ontvangen van een bericht is een asynchrone bewerking. Eerst registreert u de retour aanroep om aan te roepen wanneer het apparaat een bericht ontvangt:
+Het ontvangen van een bericht is een asynchrone bewerking. Eerst registreert u de terugroep om aan te roepen wanneer het apparaat een bericht ontvangt:
 
 ```c
 if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext) != IOTHUB_CLIENT_OK)
@@ -241,9 +241,9 @@ else
     ...
 ```
 
-De laatste para meter is een ongeldige pointer naar de gewenste naam. In het voor beeld is het een verwijzing naar een geheel getal, maar dit kan een verwijzing naar een complexere gegevens structuur zijn. Met deze para meter kan de call back functie worden uitgevoerd in de gedeelde status met de aanroeper van deze functie.
+De laatste parameter is een nietige aanwijzer naar wat je wilt. In het voorbeeld is het een aanwijzer naar een geheel getal, maar het kan een aanwijzer zijn naar een complexere gegevensstructuur. Met deze parameter kan de terugbelfunctie op gedeelde status werken met de beller van deze functie.
 
-Wanneer het apparaat een bericht ontvangt, wordt de geregistreerde call back-functie aangeroepen. Deze call back-functie haalt het volgende op:
+Wanneer het apparaat een bericht ontvangt, wordt de geregistreerde terugroepfunctie aangeroepen. Met deze terugbelfunctie wordt het als volgt opgehaald:
 
 * De bericht-id en correlatie-id van het bericht.
 * De inhoud van het bericht.
@@ -314,50 +314,50 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Gebruik de **functie\_IoTHubMessage GetByteArray** om het bericht op te halen dat in dit voor beeld een teken reeks is.
+Gebruik de functie **IoTHubMessage GetByteArray\_** om het bericht op te halen, dat in dit voorbeeld een tekenreeks is.
 
-### <a name="uninitialize-the-library"></a>De initialisatie van de bibliotheek ongedaan te doen
+### <a name="uninitialize-the-library"></a>De bibliotheek ontinitialiseren
 
-Wanneer u klaar bent met het verzenden van gebeurtenissen en het ontvangen van berichten, kunt u de initialisatie van de IoT-bibliotheek ongedaan maken. U doet dit door de volgende functie aanroep uit te voeren:
+Wanneer u klaar bent met het verzenden van gebeurtenissen en het ontvangen van berichten, u de IE-bibliotheek ontzeggen. Geef hiervoor de volgende functieaanroep uit:
 
 ```c
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-Met deze aanroep worden de resources vrijgemaakt die eerder zijn toegewezen door de **IoTHubClient\_API createfromconnectionstring** -functie.
+Met deze oproep worden de resources vrijgemaakt die eerder zijn toegewezen door de functie **IoTHubClient\_CreateFromConnectionString.**
 
-Zoals u kunt zien, is het eenvoudig om berichten te verzenden en ontvangen met de **IoTHubClient** -bibliotheek. De bibliotheek verwerkt de details van de communicatie met IoT Hub, met inbegrip van het protocol dat moet worden gebruikt (vanuit het oogpunt van de ontwikkelaar is dit een eenvoudige configuratie optie).
+Zoals u zien, is het eenvoudig om berichten te verzenden en te ontvangen met de **IoTHubClient-bibliotheek.** De bibliotheek behandelt de details van de communicatie met IoT Hub, inclusief welk protocol te gebruiken (vanuit het perspectief van de ontwikkelaar, dit is een eenvoudige configuratie optie).
 
-De **IoTHubClient** -bibliotheek biedt ook een nauw keurige controle over het serialiseren van de gegevens die uw apparaat naar IOT hub stuurt. In sommige gevallen is dit controle niveau een voor deel, maar in andere situaties is het een implementatie details die u niet wilt gebruiken. Als dat het geval is, kunt u overwegen de **serialisatiefunctie** -bibliotheek te gebruiken, die in de volgende sectie wordt beschreven.
+De **IoTHubClient-bibliotheek** biedt ook nauwkeurige controle over hoe u de gegevens die uw apparaat naar IoT Hub verzendt, seriseren. In sommige gevallen is dit niveau van controle een voordeel, maar in andere is het een implementatie detail dat u niet wilt worden betrokken bij. Als dat het geval is, u overwegen de **serialisatorbibliotheek** te gebruiken, die in de volgende sectie wordt beschreven.
 
-## <a name="use-the-serializer-library"></a>De serialisatiefunctie-bibliotheek gebruiken
+## <a name="use-the-serializer-library"></a>De serializerbibliotheek gebruiken
 
-De **serializer** -bibliotheek bevindt zich boven aan de **IoTHubClient** -bibliotheek in de SDK. Er wordt gebruikgemaakt van de **IoTHubClient** -bibliotheek voor de onderliggende communicatie met IOT hub, maar er worden model functies toegevoegd waarmee de belasting van de verwerking van de bericht serialisatie van de ontwikkelaar wordt verwijderd. Hoe deze tape wisselaar het beste kan worden gedemonstreerd door een voor beeld.
+Conceptueel bevindt de **serializerbibliotheek** zich bovenop de **IoTHubClient-bibliotheek** in de SDK. Het maakt gebruik van de **IoTHubClient-bibliotheek** voor de onderliggende communicatie met IoT Hub, maar het voegt modelleringsmogelijkheden toe die de last van het omgaan met berichtserialisatie van de ontwikkelaar wegnemen. Hoe deze bibliotheek werkt, blijkt het best uit een voorbeeld.
 
-In de map **serializer** in de [Azure-IOT-SDK-c-opslag plaats](https://github.com/Azure/azure-iot-sdk-c)is een map met voor **beelden** die een toepassing bevat met de naam **simple sample\_mqtt**. De Windows-versie van dit voor beeld bevat de volgende Visual Studio-oplossing:
+In de **serializer** map in de [azure-iot-sdk-c repository](https://github.com/Azure/azure-iot-sdk-c), is een **samples** map die een applicatie genaamd **simplesample\_mqtt**bevat. De Windows-versie van dit voorbeeld bevat de volgende Visual Studio-oplossing:
 
-  ![Visual Studio-oplossing voor mqtt-voor beeld](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
+  ![Visual Studio-oplossing voor mqtt-voorbeeld](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> Als u in Visual Studio wordt gevraagd om het project opnieuw te richten op de meest recente versie, accepteert u de prompt.
+> Als Visual Studio u vraagt om het project te retargeten op de nieuwste versie, accepteert u de prompt.
 
-Net als bij het vorige voor beeld bevat dit een aantal NuGet-pakketten:
+Net als bij het vorige voorbeeld bevat deze verschillende NuGet-pakketten:
 
 * Microsoft.Azure.C.SharedUtility
 * Microsoft.Azure.IoTHub.MqttTransport
-* Microsoft.Azure.IoTHub.IoTHubClient
+* Microsoft.azure.iothub.iothubclient
 * Microsoft.Azure.IoTHub.Serializer
 * Microsoft.Azure.umqtt
 
-U hebt de meeste van deze pakketten in het vorige voor beeld gezien, maar **micro soft. Azure. IoTHub. serializer** is nieuw. Dit pakket is vereist wanneer u de **serialisatiefunctie** -bibliotheek gebruikt.
+U hebt de meeste van deze pakketten in het vorige voorbeeld gezien, maar **Microsoft.Azure.IoTHub.Serializer** is nieuw. Dit pakket is vereist wanneer u de **serializerbibliotheek** gebruikt.
 
-U kunt de implementatie van de voorbeeld toepassing vinden in het **iothub_client\_samples\_iothub_convenience_sample** -bestand.
+U vindt de implementatie van de voorbeeldtoepassing in de **iothub_client\_voorbeelden\_iothub_convenience_sample** bestand.
 
-In de volgende secties vindt u een overzicht van de belangrijkste onderdelen van dit voor beeld.
+De volgende secties lopen u door de belangrijkste delen van dit voorbeeld.
 
 ### <a name="initialize-the-library"></a>De bibliotheek initialiseren
 
-Roep de initialisatie-Api's aan om te gaan werken met de **serializer** -bibliotheek:
+Als u met de **serialisatorbibliotheek** wilt gaan werken, belt u de initialisatie-API's:
 
 ```c
 if (serializer_init(NULL) != SERIALIZER_OK)
@@ -386,13 +386,13 @@ else
 ...
 ```
 
-De aanroep van de **serialisatiefunctie serializer\_init** -functie is een eenmalige aanroep en initialiseert de onderliggende bibliotheek. Vervolgens roept u de **IoTHubClient\_ll\_API createfromconnectionstring** -functie aan. Dit is dezelfde API als in het **IoTHubClient** -voor beeld. Met deze aanroep wordt het apparaat ingesteld connection string (deze aanroep is ook het protocol dat u wilt gebruiken). In dit voor beeld wordt MQTT gebruikt als het Trans Port, maar kan AMQP of HTTPS gebruiken.
+De call naar de **serializer\_init-functie** is een eenmalige aanroep en initialiseert de onderliggende bibliotheek. Vervolgens belt u de functie **IoTHubClient\_\_LL CreateFromConnectionString** aan, dezelfde API als in het voorbeeld van **IoTHubClient.** Met deze oproep wordt de tekenreeks van de apparaatverbinding ingesteld (in dit gesprek kiest u ook het protocol dat u wilt gebruiken). Dit voorbeeld gebruikt MQTT als transport, maar kan AMQP of HTTPS gebruiken.
 
-Roep tot slot de **functie\_model\_exemplaar maken** aan. **WeatherStation** is de naam ruimte van het model en de **ContosoAnemometer** is de name van het model. Zodra het model exemplaar is gemaakt, kunt u het gebruiken om berichten te verzenden en te ontvangen. Het is echter belang rijk om te begrijpen wat een model is.
+Roep ten slotte de functie **MODEL-instantie\_\_MAKEN** aan. **WeatherStation** is de naamruimte van het model en **ContosoAnemometer** is de naam van het model. Zodra de modelinstantie is gemaakt, u deze gebruiken om berichten te verzenden en te ontvangen. Het is echter belangrijk om te begrijpen wat een model is.
 
 ### <a name="define-the-model"></a>Het model definiëren
 
-Een model in de **serialisatiefunctie** -bibliotheek definieert de berichten die uw apparaat naar IOT hub kan verzenden en de berichten, *acties* genoemd in de model taal, die kunnen worden ontvangen. U definieert een model met behulp van een set C-macro's, zoals in de voorbeeld toepassing **iothub_client\_samples\_iothub_convenience_sample** :
+Een model in de **serializer-bibliotheek** definieert de berichten die uw apparaat naar IoT Hub en de berichten kan verzenden, *acties* in de modeltaal, die het kan ontvangen. U definieert een model met een set C-macro's zoals in de **iothub_client\_iothub_convenience_sample\_** voorbeeldtoepassing:
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -408,22 +408,22 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-De **begin\_naam ruimte** -en **\_end-naam ruimte** -macro's nemen de naam ruimte van het model als een argument. Er wordt naar verwachting alles tussen deze macro's is de definitie van uw model of modellen en de gegevens structuren die de modellen gebruiken.
+De **\_macro's NAAMRUIMTE** BEGIN en **\_END NAMESPACE** nemen beide de naamruimte van het model als argument. De verwachting is dat alles tussen deze macro's is de definitie van uw model of modellen, en de gegevensstructuren die de modellen gebruiken.
 
-In dit voor beeld is er één model met de naam **ContosoAnemometer**. Dit model definieert twee stukjes gegevens die uw apparaat naar IoT Hub kan verzenden: **DeviceID** en **WindSpeed**. Er worden ook drie acties (berichten) gedefinieerd die uw apparaat kan ontvangen: **TurnFanOn**, **TurnFanOff**en **SetAirResistance**. Elk gegevens element heeft een type en elke actie heeft een naam (en optioneel een set para meters).
+In dit voorbeeld is er een enkel model genaamd **ContosoAnemometer**. Dit model definieert twee gegevens die uw apparaat naar IoT Hub kan verzenden: **DeviceId** en **WindSpeed.** Het definieert ook drie acties (berichten) die uw apparaat kan ontvangen: **TurnFanOn,** **TurnFanOff**en **SetAirResistance**. Elk gegevenselement heeft een type en elke actie heeft een naam (en optioneel een set parameters).
 
-De gegevens en acties die in het model zijn gedefinieerd, definiëren een API-Opper vlak dat u kunt gebruiken om berichten te verzenden naar IoT Hub en te reageren op berichten die naar het apparaat worden verzonden. Het gebruik van dit model wordt het best geïnterpreteerd door een voor beeld.
+De gegevens en acties die in het model zijn gedefinieerd, definiëren een API-oppervlak dat u gebruiken om berichten naar IoT Hub te verzenden en te reageren op berichten die naar het apparaat worden verzonden. Het gebruik van dit model is het best te begrijpen door middel van een voorbeeld.
 
 ### <a name="send-messages"></a>Berichten verzenden
 
-Het model definieert de gegevens die u naar IoT Hub kunt verzenden. In dit voor beeld betekent dit een van de twee gegevens items die zijn gedefinieerd met behulp van de **WITH_DATA** -macro. Er zijn verschillende stappen vereist voor het verzenden van **DeviceID** -en **WindSpeed** -waarden naar een IOT-hub. De eerste is het instellen van de gegevens die u wilt verzenden:
+Het model definieert de gegevens die u naar IoT Hub verzenden. In dit voorbeeld betekent dit een van de twee gegevensitems die zijn gedefinieerd met de **WITH_DATA** macro. Er zijn verschillende stappen nodig om **DeviceId-** en **WindSpeed-waarden** naar een IoT-hub te verzenden. De eerste is het instellen van de gegevens die u wilt verzenden:
 
 ```c
 myWeather->DeviceId = "myFirstDevice";
 myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
 ```
 
-Met het model dat u eerder hebt gedefinieerd, kunt u de waarden instellen door leden van een **struct**in te stellen. Serialiseren vervolgens het bericht dat u wilt verzenden:
+Met het model dat u eerder hebt gedefinieerd, u de waarden instellen door leden van een **struct**in te stellen. Serialiseer vervolgens het bericht dat u wilt verzenden:
 
 ```c
 unsigned char* destination;
@@ -439,7 +439,7 @@ else
 }
 ```
 
-Met deze code wordt de apparaat-naar-Cloud naar een buffer geserialiseerd (waarnaar wordt verwezen door de **bestemming**). De code roept vervolgens de **SendMessage** -functie aan om het bericht naar IOT hub te verzenden:
+Deze code serialiseert het apparaat-naar-cloud naar een buffer (waarnaar naar **bestemming**wordt verwezen). De code roept vervolgens de functie **sendMessage** aan om het bericht naar IoT Hub te verzenden:
 
 ```c
 static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -466,7 +466,7 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 }
 ```
 
-De tweede tot laatste para meter **van\_IoTHubClient\_ll SendEventAsync** is een verwijzing naar een call back-functie die wordt aangeroepen wanneer de gegevens zijn verzonden. Hier volgt de call back-functie in het voor beeld:
+De een-na-laatste parameter van **IoTHubClient\_\_LL SendEventAsync** is een verwijzing naar een callback-functie die wordt aangeroepen wanneer de gegevens met succes worden verzonden. Hier is de callback-functie in het voorbeeld:
 
 ```c
 void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
@@ -479,13 +479,13 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 }
 ```
 
-De tweede para meter is een verwijzing naar gebruikers context. dezelfde pointer is door **gegeven\_aan\_IoTHubClient ll SendEventAsync**. In dit geval is de context een eenvoudig item, maar dit kan alles wat u wilt.
+De tweede parameter is een aanwijzer naar de gebruikerscontext; dezelfde aanwijzer is doorgegeven aan **IoTHubClient\_\_LL SendEventAsync**. In dit geval is de context een eenvoudige teller, maar het kan alles zijn wat je wilt.
 
-Dat is alles wat u kunt doen om apparaat-naar-Cloud-berichten te verzenden. Het enige wat u kunt dekken, is het ontvangen van berichten.
+Dat is alles wat er is om device-to-cloud berichten te verzenden. Het enige wat overblijft is hoe je berichten ontvangen.
 
 ### <a name="receive-messages"></a>Berichten ontvangen
 
-Het ontvangen van een bericht werkt op een vergelijk bare manier als berichten in de **IoTHubClient** -bibliotheek. Eerst registreert u een call back-functie:
+Het ontvangen van een bericht werkt op dezelfde manier als de manier waarop berichten werken in de **IoTHubClient-bibliotheek.** Eerst registreert u een terugbelfunctie voor berichten:
 
 ```c
 if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, 
@@ -498,7 +498,7 @@ else
 ...
 ```
 
-Vervolgens schrijft u de call back-functie die wordt aangeroepen wanneer een bericht wordt ontvangen:
+Vervolgens schrijft u de terugbelfunctie die wordt aangeroepen wanneer een bericht wordt ontvangen:
 
 ```c
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -536,15 +536,15 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Deze code is standaard, maar is hetzelfde voor alle oplossingen. Deze functie ontvangt het bericht en zorgt ervoor dat het wordt doorgestuurd naar de juiste functie via de aanroep **naar\_Execute-opdracht**. De functie die op dit punt wordt aangeroepen, is afhankelijk van de definitie van de acties in uw model.
+Deze code is boilerplate -- het is hetzelfde voor elke oplossing. Deze functie ontvangt het bericht en zorgt ervoor dat het wordt geleid naar de juiste functie via de oproep om OPDRACHT UIT te **VOEREN.\_** De functie die op dit punt wordt aangeroepen, is afhankelijk van de definitie van de acties in uw model.
 
-Wanneer u een actie in uw model definieert, bent u verplicht een functie te implementeren die wordt aangeroepen wanneer het bijbehorende bericht wordt ontvangen op het apparaat. Als uw model bijvoorbeeld deze actie definieert:
+Wanneer u een actie in uw model definieert, moet u een functie implementeren die wordt aangeroepen wanneer uw apparaat het bijbehorende bericht ontvangt. Als uw model bijvoorbeeld deze actie definieert:
 
 ```c
 WITH_ACTION(SetAirResistance, int, Position)
 ```
 
-Definieer een functie met deze hand tekening:
+Definieer een functie met deze handtekening:
 
 ```c
 EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
@@ -555,13 +555,13 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 }
 ```
 
-U ziet hoe de naam van de functie overeenkomt met de naam van de actie in het model en dat de para meters van de functie overeenkomen met de para meters die zijn opgegeven voor de actie. De eerste para meter is altijd vereist en bevat een verwijzing naar het exemplaar van uw model.
+Merk op hoe de naam van de functie overeenkomt met de naam van de actie in het model en dat de parameters van de functie overeenkomen met de parameters die voor de actie zijn opgegeven. De eerste parameter is altijd vereist en bevat een aanwijzer naar de instantie van uw model.
 
-Wanneer het apparaat een bericht ontvangt dat overeenkomt met deze hand tekening, wordt de bijbehorende functie aangeroepen. Daarom hoeft u niet alleen de standaard code van **IoTHubMessage**op te nemen, maar het ontvangen van berichten is slechts een kwestie van het definiëren van een eenvoudige functie voor elke actie die in uw model is gedefinieerd.
+Wanneer het apparaat een bericht ontvangt dat overeenkomt met deze handtekening, wordt de bijbehorende functie aangeroepen. Daarom is het niet alleen een kwestie van de boilerplate-code van **IoTHubMessage**opnemen, maar ook het definiëren van een eenvoudige functie voor elke actie die in uw model wordt gedefinieerd.
 
-### <a name="uninitialize-the-library"></a>De initialisatie van de bibliotheek ongedaan te doen
+### <a name="uninitialize-the-library"></a>De bibliotheek ontinitialiseren
 
-Wanneer u klaar bent met het verzenden van gegevens en het ontvangen van berichten, kunt u de initialisatie van de IoT-bibliotheek ongedaan maken:
+Wanneer u klaar bent met het verzenden van gegevens en het ontvangen van berichten, u de IoT-bibliotheek ontzeggen:
 
 ```c
 ...
@@ -572,14 +572,14 @@ Wanneer u klaar bent met het verzenden van gegevens en het ontvangen van bericht
 serializer_deinit();
 ```
 
-Elk van deze drie functies wordt uitgelijnd met de drie initialisatie functies die eerder zijn beschreven. Door deze Api's aan te roepen, zorgt u ervoor dat u eerder toegewezen resources vrijmaakt.
+Elk van deze drie functies sluit aan bij de drie eerder beschreven initialisatiefuncties. Als u deze API's aanroept, u eerder toegewezen resources vrijmaken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel worden de basis beginselen besproken van het gebruik van de bibliotheken in de **Azure IOT Device SDK voor C**. U krijgt voldoende informatie om te begrijpen wat er is opgenomen in de SDK, de architectuur ervan en hoe u kunt werken met de Windows-voor beelden. In het volgende artikel wordt de beschrijving van de SDK voortgezet door meer te weten te komen [over de IoTHubClient-bibliotheek](iot-hub-device-sdk-c-iothubclient.md).
+Dit artikel ging over de basisprincipes van het gebruik van de bibliotheken in de **Azure IoT-apparaat SDK voor C.** Het gaf u voldoende informatie om te begrijpen wat er in de SDK, de architectuur en hoe u aan de slag met de Windows-voorbeelden. Het volgende artikel zet de beschrijving van de SDK voort door meer uit te leggen [over de IoTHubClient-bibliotheek.](iot-hub-device-sdk-c-iothubclient.md)
 
-Zie de [Azure IOT sdk's](iot-hub-devguide-sdks.md)voor meer informatie over het ontwikkelen van IOT hub.
+Zie de [Azure IoT SDKs](iot-hub-devguide-sdks.md)voor meer informatie over het ontwikkelen voor IoT Hub.
 
-Zie voor meer informatie over de mogelijkheden van IoT Hub:
+Zie:
 
-* [AI implementeren op edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [AI implementeren op Edge-apparaten met Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

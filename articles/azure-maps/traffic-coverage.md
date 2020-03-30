@@ -1,25 +1,25 @@
 ---
-title: Verkeers dekking | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over de dekking van verkeer in Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Verkeersdekking | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over de verkeersdekking in Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333947"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Dekking van Azure Maps verkeer
+# <a name="azure-maps-traffic-coverage"></a>Azure Maps-verkeersdekking
 
-Azure Maps biedt uitgebreide verkeers informatie in de vorm van verkeers **stromen** en **incidenten**. Deze gegevens kunnen worden gevisualiseerd op kaarten of worden gebruikt voor het genereren van slimmere routes die in de praktijk omstandigheden in handen zijn.
+Azure Maps biedt uitgebreide verkeersinformatie in de vorm van **verkeersstroom** en **incidenten.** Deze gegevens kunnen worden gevisualiseerd op kaarten of worden gebruikt om slimmere routes te genereren die rekening houden met echte rijomstandigheden.
 
-Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen of regio's. De volgende tabel bevat informatie over wat voor soort verkeers gegevens u kunt aanvragen vanuit elk land of elke regio: 
+Maps heeft echter niet hetzelfde niveau van informatie en nauwkeurigheid voor alle landen of regio's. In de volgende tabel vindt u informatie over wat voor verkeersinformatie u van elk land of regio opvragen: 
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
@@ -72,7 +72,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 |Denemarken     |✓         |✓         |
 |Estland     |         | ✓        |
 |Finland     |✓         |✓         |
-|\+ Åland      |✓         |✓         |
+|+Åland-eilanden      |✓         |✓         |
 |Frankrijk     |✓         |✓         |
 |Monaco     |✓         |✓         |
 |Duitsland     |✓         |✓         |
@@ -93,7 +93,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 |Noorwegen     |✓         |✓         |
 |Polen     |✓         |✓         |
 |Portugal     |✓         |✓         |
-|\+ Azoren en Madeira     |✓         |✓         |
+|+Azoren en Madeira     |✓         |✓         |
 |Roemenië     |✓         |✓         |
 |Russische Federatie     |✓         |✓         |
 |San Marino    |✓         |✓         |
@@ -102,17 +102,17 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 |Slovenië     |✓         |✓         |
 |Spanje     |✓         |✓         |
 |+Andorra     |✓         |✓         |
-|\+ Balearic-Eilanden     |✓         |✓         |
-|\+ Canarische eilanden     |✓         |✓         |
+|+Balearen     |✓         |✓         |
+|+Canarische Eilanden     |✓         |✓         |
 |Zweden     |✓         |✓         |
 |Zwitserland     |✓         |✓        |
 |Turkije     |✓         |✓         |
 |Oekraïne     |✓         |✓         |
 |Verenigd Koninkrijk     |✓         |✓         |
-|\+ Gibraltar     |✓         |✓         |
-|\+ Guernsey & Jersey     |✓         |✓         |
-|\+ Isle of man     |✓         |✓         |
-|Vaticaan stad   |✓         |✓         |
+|+Gibraltar     |✓         |✓         |
+|+Guernsey & Jersey     |✓         |✓         |
+|+Eiland man     |✓         |✓         |
+|Vaticaanstad   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
@@ -135,4 +135,4 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de pagina's met [verkeers](https://docs.microsoft.com/rest/api/maps/traffic) referenties voor meer informatie over Azure Maps verkeers gegevens.
+Zie de [pagina's Verkeer](https://docs.microsoft.com/rest/api/maps/traffic) voor meer informatie over de verkeersgegevens van Azure Maps.

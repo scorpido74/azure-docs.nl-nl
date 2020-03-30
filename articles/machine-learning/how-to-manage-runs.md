@@ -1,7 +1,7 @@
 ---
-title: Trainings uitvoeringen in python starten, controleren en annuleren
+title: Trainingsruns starten, controleren en annuleren in Python
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u begint, de status van het label instelt en uw machine learning-experimenten indeelt.
+description: Leer hoe u beginnen, de status van uw machine learning-experimenten instellen, taggen en organiseren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,34 +11,34 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296884"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
+# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainingsruns starten, controleren en annuleren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning cli](reference-azure-machine-learning-cli.md)en [Azure machine learning Studio](https://ml.azure.com) bieden verschillende methoden om uw uitvoeringen te controleren, te organiseren en te beheren voor training en experimenten.
+De [Azure Machine Learning SDK voor Python,](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)Machine Learning [CLI](reference-azure-machine-learning-cli.md)en Azure [Machine Learning-studio](https://ml.azure.com) bieden verschillende methoden om uw uitvoeringen te monitoren, te organiseren en te beheren voor training en experimenten.
 
-In dit artikel vindt u voor beelden van de volgende taken:
+In dit artikel worden voorbeelden van de volgende taken weergegeven:
 
-* Prestaties van uitvoering bewaken.
-* Annuleren of niet uitvoeren.
+* Monitor de prestaties van de uitvoering.
+* Annuleren of mislukken loopt.
 * Onderliggende uitvoeringen maken.
-* Uitvoeringen en zoeken.
+* Tag en vind runs.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig:
+Je hebt de volgende objecten nodig:
 
-* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning.](https://aka.ms/AMLFree)
 
-* Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
+* Een [Azure Machine Learning-werkruimte](how-to-manage-workspace.md).
 
-* De Azure Machine Learning SDK voor python (versie 1.0.21 of hoger). Zie [de SDK installeren of bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)om de nieuwste versie van de SDK te installeren of bij te werken.
+* De Azure Machine Learning SDK voor Python (versie 1.0.21 of hoger). Zie De SDK installeren of bijwerken als u de nieuwste versie van de SDK wilt installeren [of bijwerken.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 
     Als u uw versie van de Azure Machine Learning SDK wilt controleren, gebruikt u de volgende code:
 
@@ -46,13 +46,13 @@ U hebt de volgende items nodig:
     print(azureml.core.VERSION)
     ```
 
-* De [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -en [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
+* De [Azure CLI-](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) en [CLI-extensie voor Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
-## <a name="start-a-run-and-its-logging-process"></a>Een uitvoering en het bijbehorende logboek registratie proces starten
+## <a name="start-a-run-and-its-logging-process"></a>Een run en het registratieproces starten
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Stel uw experiment in door de klassen [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)en [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) te importeren vanuit het pakket [azureml. core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) .
+Stel uw experiment in door de klassen [Werkruimte,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) [Experiment,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [Uitvoeren](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)en [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) te importeren uit het [azureml.core-pakket.](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py)
 
 ```python
 import azureml.core
@@ -63,82 +63,84 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Start een run en het bijbehorende logboek registratie proces met de methode [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) .
+Start een run en het [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) registratieproces met de methode.
 
 ```python
 notebook_run = exp.start_logging()
 notebook_run.log(name="message", value="Hello from run!")
 ```
 
-### <a name="using-the-cli"></a>De CLI gebruiken
+### <a name="using-the-cli"></a>Met behulp van de CLI
 
-Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
+Voer de volgende stappen uit om een run van het experiment te starten:
 
-1. Gebruik vanuit een shell of opdracht prompt de Azure CLI om u te verifiëren bij uw Azure-abonnement:
+1. Gebruik vanuit een shell- of opdrachtprompt de Azure CLI om te verifiëren voor uw Azure-abonnement:
 
     ```azurecli-interactive
     az login
     ```
+    
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-1. Een werkruimte configuratie koppelen aan de map die uw trainings script bevat. Vervang `myworkspace` door de Azure Machine Learning-werk ruimte. Vervang `myresourcegroup` door de Azure-resource groep die uw werk ruimte bevat:
+1. Voeg een werkruimteconfiguratie toe aan de map die uw trainingsscript bevat. Vervang `myworkspace` door uw Azure Machine Learning-werkruimte. Vervang `myresourcegroup` de Azure-brongroep die uw werkruimte bevat:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Met deze opdracht maakt u een `.azureml` submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json`-bestand dat wordt gebruikt om te communiceren met uw Azure Machine Learning-werk ruimte.
+    Met deze `.azureml` opdracht wordt een submap gemaakt die voorbeeldrunconfig- en conda-omgevingbestanden bevat. Het bevat `config.json` ook een bestand dat wordt gebruikt om te communiceren met uw Azure Machine Learning-werkruimte.
 
-    Zie voor meer informatie [AZ ml map attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
+    Zie az [ml map attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
-2. Gebruik de volgende opdracht om de uitvoering te starten. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand (de tekst vóór \*. runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
+2. Als u de run wilt starten, gebruikt u de volgende opdracht. Wanneer u deze opdracht gebruikt, geeft u de naam \*van het runconfig-bestand (de tekst vóór .runconfig als u naar uw bestandssysteem kijkt) op tegen de parameter -c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > De `az ml folder attach`-opdracht heeft een `.azureml`-submap gemaakt die twee voor beelden van runconfig-bestanden bevat.
+    > De `az ml folder attach` opdracht `.azureml` heeft een submap gemaakt, die twee voorbeeldrunconfig-bestanden bevat.
     >
-    > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
+    > Als u een Python-script hebt dat een programmatisch uitgevoerd configuratieobject maakt, u [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als runconfig-bestand.
     >
-    > Zie [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)voor meer voor beelden van runconfig-bestanden.
+    > Zie voor meer voorbeeld runconfig-bestanden [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
 
-    Zie [AZ ml run-script uitvoeren](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)voor meer informatie.
+    Zie [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)voor meer informatie.
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning-studio gebruiken
 
-Gebruik de volgende stappen om een pijplijn uitvoering te starten in de ontwerp functie (preview):
+Voer de volgende stappen uit om een pijplijn in de ontwerper te verzenden (voorbeeld) om een pijplijn in te dienen:
 
-1. Stel een standaard computie doel in voor de pijp lijn.
+1. Stel een standaard gegevensdoel in voor uw pijplijn.
 
-1. Selecteer **uitvoeren** boven aan het pijp lijn-canvas.
+1. Selecteer **Uitvoeren** boven aan het pijplijncanvas.
 
 1. Selecteer een experiment om de pijplijn uitvoeringen te groeperen.
 
-## <a name="monitor-the-status-of-a-run"></a>De status van een uitvoering controleren
+## <a name="monitor-the-status-of-a-run"></a>De status van een run controleren
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-De status ophalen van een run met de methode [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) .
+Krijg de status van [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) een run met de methode.
 
 ```python
 print(notebook_run.get_status())
 ```
 
-Als u de uitvoerings-ID, uitvoerings tijd en aanvullende details over de uitvoering wilt ophalen, gebruikt u de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) methode.
+Als u de run-ID, uitvoeringstijd en aanvullende [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) details over de uitvoering wilt krijgen, gebruikt u de methode.
 
 ```python
 print(notebook_run.get_details())
 ```
 
-Wanneer de uitvoering is voltooid, gebruikt u de methode [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) om deze te markeren als voltooid.
+Wanneer uw run is voltooid, gebruikt u de methode om deze [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) als voltooid te markeren.
 
 ```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Als u het `with...as` ontwerp patroon van python gebruikt, wordt de uitvoering automatisch als voltooid gemarkeerd wanneer de uitvoering buiten het bereik valt. U hoeft de uitvoering niet hand matig te markeren als voltooid.
+Als u het `with...as` ontwerppatroon van Python gebruikt, wordt zichzelf automatisch als voltooid markeren wanneer de run buiten het bereik valt. U hoeft de run niet handmatig als voltooid te markeren.
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -148,51 +150,51 @@ with exp.start_logging() as notebook_run:
 print(notebook_run.get_status())
 ```
 
-### <a name="using-the-cli"></a>De CLI gebruiken
+### <a name="using-the-cli"></a>Met behulp van de CLI
 
-1. Gebruik de volgende opdracht om een lijst met uitvoeringen voor uw experiment weer te geven. Vervang `experiment` door de naam van uw experiment:
+1. Als u een lijst met uitvoeringen voor uw experiment wilt weergeven, gebruikt u de volgende opdracht. Vervang `experiment` de naam van uw experiment:
 
     ```azurecli-interactive
     az ml run list --experiment-name experiment
     ```
 
-    Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat over de uitvoeringen van dit experiment.
+    Met deze opdracht retourneert een JSON-document met informatie over uitvoeringen voor dit experiment.
 
-    Zie voor meer informatie [AZ ml experimenten List](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+    Zie voor meer informatie [de az ml-experimentlijst](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
 
-2. Als u informatie wilt weer geven over een specifieke uitvoering, gebruikt u de volgende opdracht. Vervang `runid` door de ID van de uitvoering:
+2. Als u informatie over een specifieke run wilt weergeven, gebruikt u de volgende opdracht. Vervang `runid` door de id van de run:
 
     ```azurecli-interactive
     az ml run show -r runid
     ```
 
-    Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat over de uitvoering.
+    Met deze opdracht wordt een JSON-document geretourneerd met informatie over de run.
 
-    Zie voor meer informatie [AZ ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
+    Zie voor meer informatie [de az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning-studio gebruiken
 
-Om het aantal actieve uitvoeringen voor uw experiment in de Studio weer te geven.
+Om het aantal actieve runs voor uw experiment in de studio te bekijken.
 
-1. Navigeer naar het gedeelte **experimenten** .. 
+1. Navigeer naar de sectie **Experimenten..** 
 
 1. Selecteer een experiment.
 
-    Op de pagina experiment ziet u het aantal actieve Compute-doelen en de duur van elke uitvoering. 
+    Op de experimentpagina ziet u het aantal actieve rekendoelen en de duur voor elke run. 
 
-1. Selecteer een specifiek uitvoerings nummer.
+1. Selecteer een specifiek runnummer.
 
-1. Op het tabblad **Logboeken** vindt u diagnostische en fout logboeken voor de pijplijn uitvoering.
+1. Op het tabblad **Logboeken** u diagnostische en foutlogboeken voor uw pijplijnuitvoeren vinden.
 
 
-## <a name="cancel-or-fail-runs"></a>Annuleren of mislukken wordt uitgevoerd
+## <a name="cancel-or-fail-runs"></a>Runs annuleren of mislukken
 
-Als u een fout melding krijgt of als de uitvoering te lang duurt om te volt ooien, kunt u de uitvoering annuleren.
+Als u een fout opmerkt of als het te lang duurt voordat uw run is voltooid, u de run annuleren.
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Als u een uitvoering met de SDK wilt annuleren, gebruikt u de methode [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) :
+Als u een run met [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) de SDK wilt annuleren, gebruikt u de methode:
 
 ```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -203,7 +205,7 @@ local_script_run.cancel()
 print(local_script_run.get_status())
 ```
 
-Als de uitvoering is voltooid, maar er een fout is opgetreden (bijvoorbeeld het onjuiste trainings script is gebruikt), kunt u de methode [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) gebruiken om deze te markeren als mislukt.
+Als uw run is voltooid, maar er een fout in bevat (bijvoorbeeld [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) het onjuiste trainingsscript is gebruikt), u de methode gebruiken om deze als mislukt te markeren.
 
 ```python
 local_script_run = exp.submit(run_config)
@@ -211,35 +213,35 @@ local_script_run.fail()
 print(local_script_run.get_status())
 ```
 
-### <a name="using-the-cli"></a>De CLI gebruiken
+### <a name="using-the-cli"></a>Met behulp van de CLI
 
-Als u een uitvoering wilt annuleren met de CLI, gebruikt u de volgende opdracht. `runid` vervangen door de ID van de uitvoering
+Als u een run wilt annuleren met de CLI, gebruikt u de volgende opdracht. Vervangen `runid` door de id van de run
 
 ```azurecli-interactive
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Zie voor meer informatie [AZ ml run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+Zie voor meer informatie [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning-studio gebruiken
 
-Als u een uitvoering in de Studio wilt annuleren, gebruikt u de volgende stappen:
+Ga als volgt te werk om een run in de studio te annuleren met de volgende stappen:
 
-1. Ga naar de actieve pijp lijn in de sectie **experimenten** of **pijp lijnen** . 
+1. Ga naar de lopende pijplijn in de sectie **Experimenten** of **Pijplijnen.** 
 
-1. Selecteer het nummer van de pijplijn uitvoering dat u wilt annuleren.
+1. Selecteer het pijplijnrunnummer dat u wilt annuleren.
 
-1. Selecteer op de werk balk **Annuleren**
+1. Selecteer **Annuleren op** de werkbalk
 
 
 ## <a name="create-child-runs"></a>Onderliggende uitvoeringen maken
 
-Onderliggende uitvoeringen maken om gerelateerde uitvoeringen samen te voegen, zoals voor verschillende afstemming-afstemmings herhalingen.
+Onderliggende runs maken om gerelateerde uitvoeringen samen te groeperen, bijvoorbeeld voor verschillende hyperparameter-tuning-iteraties.
 
 > [!NOTE]
-> Onderliggende uitvoeringen kunnen alleen worden gemaakt met de SDK.
+> Onderliggende uitvoeringen kunnen alleen worden gemaakt met behulp van de SDK.
 
-In dit code voorbeeld wordt het `hello_with_children.py` script gebruikt voor het maken van een batch van vijf onderliggende uitvoeringen vanuit een ingediende uitvoering met behulp van de [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) methode:
+In dit codevoorbeeld wordt het `hello_with_children.py` script gebruikt om een batch van [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) vijf onderliggende uitvoeringen te maken vanuit een ingediende uitvoering met behulp van de methode:
 
 ```python
 !more hello_with_children.py
@@ -256,15 +258,15 @@ with exp.start_logging() as parent_run:
 ```
 
 > [!NOTE]
-> Als ze buiten het bereik worden verplaatst, worden onderliggende uitvoeringen automatisch gemarkeerd als voltooid.
+> Als ze buiten het bereik vallen, worden onderliggende uitvoeringen automatisch gemarkeerd als voltooid.
 
-Als u veel onderliggende items efficiënt wilt maken, gebruikt u de [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) methode. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
+Als u veel onderliggende runs [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) efficiënt wilt maken, gebruikt u de methode. Omdat elke creatie resulteert in een netwerkaanroep, is het maken van een batch met uitvoeringen efficiënter dan ze één voor één maken.
 
 ### <a name="submit-child-runs"></a>Onderliggende uitvoeringen verzenden
 
-Onderliggende uitvoeringen kunnen ook worden verzonden vanuit een bovenliggende run. Hierdoor kunt u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken, die elk worden uitgevoerd op verschillende Compute-doelen, verbonden door de gemeen schappelijke run-ID.
+Onderliggende uitvoeringen kunnen ook worden ingediend vanaf een bovenliggende run. Hiermee u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken, die elk worden uitgevoerd op verschillende rekendoelen, verbonden door algemene bovenliggende run-ID.
 
-Gebruik de methode [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) voor het verzenden van een onderliggende uitvoering vanuit een bovenliggende run. Als u dit wilt doen in het bovenliggende run script, haalt u de uitvoerings context op en verzendt u de onderliggende run met behulp van de ``submit_child`` methode van het context exemplaar.
+Gebruik de methode ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) om een onderliggend e-mail uit te voeren vanuit een bovenliggende run. Als u dit wilt doen in het bovenliggende run-script, krijgt u de runcontext en verzendt u het onderliggende uitvoeren met behulp van de ``submit_child`` methode van de contextinstantie.
 
 ```python
 ## In parent run script
@@ -273,7 +275,7 @@ child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py
 parent_run.submit_child(child_run_config)
 ```
 
-Binnen een onderliggende run kunt u de bovenliggende run-ID bekijken:
+Binnen een onderliggende run u de bovenliggende run-ID bekijken:
 
 ```python
 ## In child run script
@@ -281,30 +283,30 @@ child_run = Run.get_context()
 child_run.parent.id
 ```
 
-### <a name="query-child-runs"></a>Query's uitvoeren op onderliggende items
+### <a name="query-child-runs"></a>Queryonderliggendvoert
 
-Als u een query wilt uitvoeren op de onderliggende uitvoeringen van een specifiek bovenliggend element, gebruikt u de methode [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Met het argument ``recursive = True`` kunt u een geneste structuur van onderliggende items en grandchildren opvragen.
+Als u de onderliggende uitvoeringen [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) van een specifieke ouder wilt opvragen, gebruikt u de methode. Met ``recursive = True`` het argument u een geneste boom van kinderen en kleinkinderen opvragen.
 
 ```python
 print(parent_run.get_children())
 ```
 
-## <a name="tag-and-find-runs"></a>Uitvoeringen coderen en zoeken
+## <a name="tag-and-find-runs"></a>Runs taggen en zoeken
 
-In Azure Machine Learning kunt u eigenschappen en tags gebruiken om uw uitvoeringen te organiseren en query's uit te voeren op belang rijke informatie.
+In Azure Machine Learning u eigenschappen en tags gebruiken om uw uitvoeringen te ordenen en op te vragen voor belangrijke informatie.
 
-### <a name="add-properties-and-tags"></a>Eigenschappen en Tags toevoegen
+### <a name="add-properties-and-tags"></a>Eigenschappen en tags toevoegen
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Gebruik de methode [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) om Doorzoek bare meta gegevens toe te voegen aan uw uitvoeringen. Met de volgende code wordt bijvoorbeeld de eigenschap `"author"` toegevoegd aan de run:
+Als u doorzoekbare metagegevens [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) wilt toevoegen aan uw uitvoeringen, gebruikt u de methode. Met de volgende code `"author"` wordt bijvoorbeeld de eigenschap aan de run toegevoegd:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Eigenschappen zijn onveranderbaar, zodat ze een permanente record voor controle doeleinden maken. In het volgende code voorbeeld wordt een fout veroorzaakt, omdat we `"azureml-user"` al hebben toegevoegd als de `"author"` eigenschaps waarde in de voor gaande code:
+Eigenschappen zijn onveranderlijk, dus ze maken een permanente record voor controledoeleinden. Het volgende codevoorbeeld resulteert in een `"azureml-user"` fout, `"author"` omdat we al als eigenschapswaarde in de voorgaande code zijn toegevoegd:
 
 ```Python
 try:
@@ -313,7 +315,7 @@ except Exception as e:
     print(e)
 ```
 
-In tegens telling tot eigenschappen zijn Tags onveranderbaar. Als u zoek bare en nuttige informatie voor gebruikers van uw experiment wilt toevoegen, gebruikt u de [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) methode.
+In tegenstelling tot eigenschappen zijn tags mutable. Als u doorzoekbare en zinvolle informatie wilt [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) toevoegen voor consumenten van uw experiment, gebruikt u de methode.
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -323,29 +325,29 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-U kunt ook eenvoudige teken reeks Tags toevoegen. Wanneer deze tags worden weer gegeven in de code woordenlijst als sleutels, hebben ze de waarde `None`.
+U ook eenvoudige tekenreekstags toevoegen. Wanneer deze tags in het tagwoordenboek als sleutels `None`worden weergegeven, hebben ze een waarde van .
 
 ```Python
 local_script_run.tag("worth another look")
 print(local_script_run.get_tags())
 ```
 
-#### <a name="using-the-cli"></a>De CLI gebruiken
+#### <a name="using-the-cli"></a>Met behulp van de CLI
 
 > [!NOTE]
-> Met de CLI kunt u alleen Tags toevoegen of bijwerken.
+> Met de CLI u alleen tags toevoegen of bijwerken.
 
-Gebruik de volgende opdracht om een tag toe te voegen of bij te werken:
+Als u een tag wilt toevoegen of bijwerken, gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az ml run update -r runid --add-tag quality='fantastic run'
 ```
 
-Zie [AZ ml run update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)(Engelstalig) voor meer informatie.
+Zie [az ml run update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)voor meer informatie.
 
-### <a name="query-properties-and-tags"></a>Query-eigenschappen en-labels
+### <a name="query-properties-and-tags"></a>Query-eigenschappen en -tags
 
-U kunt binnen een experiment een query uitvoeren om een lijst met uitvoeringen te retour neren die overeenkomen met specifieke eigenschappen en tags.
+U query's uitvoeren in een experiment om een lijst met uitvoeringen terug te sturen die overeenkomen met specifieke eigenschappen en tags.
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
 
@@ -354,9 +356,9 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantasti
 list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
 ```
 
-#### <a name="using-the-cli"></a>De CLI gebruiken
+#### <a name="using-the-cli"></a>Met behulp van de CLI
 
-De Azure CLI ondersteunt [JMESPath](http://jmespath.org) -query's, die kunnen worden gebruikt voor het filteren van uitvoeringen op basis van eigenschappen en labels. Als u een JMESPath-query wilt gebruiken met de Azure CLI, geeft u deze op met de para meter `--query`. In de volgende voor beelden ziet u eenvoudige query's met behulp van eigenschappen en Tags:
+De Azure CLI ondersteunt [JMESPath-query's,](http://jmespath.org) die kunnen worden gebruikt om uitvoeringen te filteren op basis van eigenschappen en tags. Als u een JMESPath-query wilt gebruiken `--query` met de Azure CLI, geeft u deze op met de parameter. In de volgende voorbeelden worden basisquery's weergegeven met eigenschappen en tags:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'
@@ -367,23 +369,23 @@ az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'wort
 az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
 ```
 
-Zie voor meer informatie over het uitvoeren van query's in azure CLI-resultaten query uitvoeren op [uitvoer van Azure cli-opdracht](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+Zie [Query Azure CLI-opdrachtuitvoer](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)voor meer informatie over het opvragen van Azure CLI-resultaten.
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning-studio gebruiken
 
-1. Navigeer naar het gedeelte **pijp lijnen** .
+1. Navigeer naar de sectie **Pijplijnen.**
 
-1. Gebruik de zoek balk om pijp lijnen te filteren met behulp van tags, beschrijvingen, namen van experimenten en naam indiener.
+1. Gebruik de zoekbalk om pijplijnen te filteren met tags, beschrijvingen, experimentnamen en de naam van de indiener.
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
+## <a name="example-notebooks"></a>Voorbeeldnotitieblokken
 
-De volgende notitie blokken illustreren de concepten in dit artikel:
+De volgende notitieblokken tonen de concepten in dit artikel:
 
-* Zie de [API-notebook voor logboek registratie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb)voor meer informatie over de logboek registratie-api's.
+* Zie het [logboekenAPI-notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb)voor meer informatie over de API's voor logboekregistratie .
 
-* Zie voor meer informatie over het beheren van uitvoeringen met de Azure Machine Learning SDK, het [notitie blok voor uitvoeringen beheren](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb).
+* Zie het [notitieblok Beheer uitvoeringen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)voor meer informatie over het beheren van uitvoeringen met de Azure Machine Learning SDK.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over het vastleggen van metrische gegevens voor uw experimenten, Zie [metrische logboek gegevens tijdens trainings uitvoeringen](how-to-track-experiments.md).
-* Zie [Azure machine learning bewaken](monitor-azure-machine-learning.md)voor meer informatie over het bewaken van resources en logboeken van Azure machine learning.
+* Zie [Logboekstatistieken tijdens trainingsruns](how-to-track-experiments.md)voor meer informatie over het registreren van statistieken voor uw experimenten.
+* Zie [Azure Machine Learning](monitor-azure-machine-learning.md)controleren voor meer informatie over het controleren van resources en logboeken vanuit Azure Machine Learning.

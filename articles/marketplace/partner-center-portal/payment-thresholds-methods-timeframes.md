@@ -1,46 +1,45 @@
 ---
-Description: De geschatte tijd voor het overdragen van betalingen, toepasselijke betalings drempels en micro soft-markt plaatsen van waaruit u betalingen kunt ontvangen, kan variëren, afhankelijk van uw land/regio en het account type voor de betaling.
-title: Betalings drempels, methoden en tijd frames in commerciële Marketplace | Azure Marketplace
+Description: De geschatte tijd om betalingen over te maken, toepasselijke betalingsdrempels en Microsoft-marktplaatsen van waaruit u betalingen ontvangen, kan variëren afhankelijk van uw land/regio en het type uitbetalingsaccount.
+title: Betalingsdrempels, methoden en termijnen in de commerciële markt | Azure Marketplace
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279722"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
 
-De geschatte tijd voor het overdragen van betalingen en micro soft-markt plaatsen van waaruit u betalingen kunt ontvangen, kan variëren, afhankelijk van uw land/regio en het account type voor de betaling. In dit onderwerp vindt u een overzicht van de betalings methoden die in elk land of elke regio worden ondersteund.
+De geschatte tijd om betalingen over te maken en Microsoft-marktplaatsen waarvan u betalingen ontvangen, kunnen variëren afhankelijk van uw land/regio en het type uitbetalingsaccount. In dit onderwerp worden de betalingsmethoden beschreven die in elk land/regio worden ondersteund.
 
-Voor een bepaald land/regio zullen we ACH/SEPA of overschrijving gebruiken om onze betalingen te leveren. Daarnaast ondersteunen sommige landen/regio's PayPal als betalings methode.
+Voor een bepaald land/regio gebruiken we ACH/SEPA of overschrijving om onze betalingen te leveren. Bovendien ondersteunen sommige landen/regio's PayPal als betalingsmethode.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Aantal dagen voor betalingen om het uitbetalings account te bereiken
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Aantal dagen voor betalingen om uitbetalingsaccount te bereiken
 
-Normaal gesp roken verstuurt de betaling in een bepaalde maand op de vijftiende dag van de maand, maar duurt het langer om uw account te bereiken. De hoeveelheid dagen is afhankelijk van de betalings wijze die we voor uw account gebruiken, zoals hieronder wordt beschreven.
+We sturen doorgaans elke betaling die binnen een bepaalde maand moet worden betaald op de 15e dag van die maand, maar het duurt extra tijd voordat de betaling uw account bereikt. Het aantal dagen is afhankelijk van de betaalmethode die we voor uw account gebruiken, zoals hieronder beschreven.
 
 > [!NOTE]
-> De dagen die hieronder worden weer gegeven, zijn ongeveer gelijk aan. een bepaalde uitbetaling kan een langere of korter tijd duren.
+> De onderstaande dagen zijn bij benadering; een bepaalde uitbetaling kan een langere of kortere hoeveelheid tijd in beslag nemen.
 
-| Betalingswijze     | Aantal dagen voor het bereiken van het uitbetalings account     |
+| Betalingswijze     | Aantal dagen om de uitbetalingsrekening te bereiken     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 werkdag                             |
-| ACH/SEPA           | 2-3 werk dagen                          |
-| Overschrijving      | 7-10 werk dagen                         |
+| ACH/SEPA           | 2-3 werkdagen                          |
+| Overschrijving      | 7-10 werkdagen                         |
 
-Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt voor elke Marketplace, raadpleegt u de onderstaande tabellen.
+Bekijk de onderstaande tabellen om de landen/regio's te bekijken waarin deze betalingsmethoden voor elke marktplaats worden gebruikt.
 
-## <a name="payment-methods-in-countriesregions"></a>Betalings wijzen in landen/regio's
+## <a name="payment-methods-in-countriesregions"></a>Betalingsmethoden in landen/regio's
 
 > [!NOTE]
-> De betalings drempels in alle regio's zijn $50 USD.
+> Betalingsdrempels in alle regio's bedragen $ 50 USD.
 
-| Land/regio                          | Azure Marketplace | Store, Advertising, mixer en Minecraft | Office | PayPal-betalingen |
+| Land                          | Azure Marketplace | Winkel, Reclame, Mixer en Minecraft | Office | PayPal-betalingen |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afghanistan                      | Ja               | Ja                                      | Nee     | Nee              |
 | Albanië                          | Ja               | Ja                                      | Ja    | Ja             |
@@ -55,7 +54,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Azerbeidzjan                       | Ja               | Ja                                      | Ja    | Nee              |
 | Bahrein                          | Ja               | Ja                                      | Ja    | Ja             |
 | Bangladesh                       | Ja               | Ja                                      | Ja    | Nee              |
-| Wit-Rusland                          | Ja               | Ja                                      | Ja    | Nee              |
+| Belarus                          | Ja               | Ja                                      | Ja    | Nee              |
 | België                          | Ja               | Ja                                      | Ja    | Ja             |
 | Benin                            | Ja               | Ja                                      | Ja    | Nee              |
 | Bolivia                          | Ja               | Ja                                      | Ja    | Nee              |
@@ -75,9 +74,9 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Colombia                         | Ja               | Ja                                      | Ja    | Ja             |
 | Comoren                          | Ja               | Ja                                      | Nee     | Nee              |
 | Congo (DRC)                      | Ja               | Ja                                      | Ja    | Nee              |
-| Congo, Republiek               | Ja               | Ja                                      | Ja    | Nee              |
+| Congo, Republiek Congo               | Ja               | Ja                                      | Ja    | Nee              |
 | Costa Rica                       | Ja               | Ja                                      | Ja    | Ja             |
-| Côte D'Ivoire                    | Ja               | Ja                                      | Ja    | Nee              |
+| Ivoorkust                    | Ja               | Ja                                      | Ja    | Nee              |
 | Kroatië                          | Ja               | Ja                                      | Ja    | Nee              |
 | Cyprus                           | Ja               | Ja                                      | Ja    | Ja             |
 | Tsjechië                   | Ja               | Ja                                      | Ja    | Ja             |
@@ -101,7 +100,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Guinee                           | Ja               | Ja                                      | Ja    | Nee              |
 | Haiti                            | Ja               | Ja                                      | Ja    | Nee              |
 | Honduras                         | Ja               | Ja                                      | Ja    | Ja             |
-| Hongkong SAR                        | Ja               | Ja                                      | Ja    | Ja             |
+| Hongkong                        | Ja               | Ja                                      | Ja    | Ja             |
 | Hongarije                          | Ja               | Ja                                      | Ja    | Ja             |
 | IJsland                          | Ja               | Ja                                      | Ja    | Nee              |
 | India                            | Ja               | Ja                                      | Ja    | Ja             |
@@ -125,7 +124,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Liechtenstein                    | Ja               | Ja                                      | Ja    | Ja             |
 | Litouwen                        | Ja               | Ja                                      | Ja    | Nee              |
 | Luxemburg                       | Ja               | Ja                                      | Ja    | Ja             |
-| Macedonië                        | Nee                | Ja                                      | Ja    | Nee              |
+| Macedonië (FYROM)                        | Nee                | Ja                                      | Ja    | Nee              |
 | Madagascar                       | Ja               | Ja                                      | Ja    | Nee              |
 | Malawi                           | Ja               | Ja                                      | Ja    | Ja             |
 | Maleisië                         | Ja               | Ja                                      | Ja    | Ja             |
@@ -139,7 +138,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Marokko                          | Ja               | Ja                                      | Ja    | Nee              |
 | Mozambique                       | Ja               | Ja                                      | Ja    | Ja             |
 | Nepal                            | Ja               | Ja                                      | Ja    | Nee              |
-| Nederland                 | Ja               | Ja                                      | Ja    | Ja             |
+| Nederland, De                 | Ja               | Ja                                      | Ja    | Ja             |
 | Nieuw-Zeeland                      | Ja               | Ja                                      | Ja    | Ja             |
 | Nicaragua                        | Ja               | Ja                                      | Ja    | Ja             |
 | Niger                            | Ja               | Ja                                      | Ja    | Nee              |
@@ -150,7 +149,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Panama                           | Ja               | Ja                                      | Ja    | Ja             |
 | Paraguay                         | Ja               | Ja                                      | Ja    | Nee              |
 | Peru                             | Ja               | Ja                                      | Ja    | Ja             |
-| Filippijnen                      | Ja               | Ja                                      | Ja    | Ja             |
+| Filipijnen                      | Ja               | Ja                                      | Ja    | Ja             |
 | Polen                           | Ja               | Ja                                      | Ja    | Ja             |
 | Portugal                         | Ja               | Ja                                      | Ja    | Ja             |
 | Puerto Rico                      | Nee                | Nee                                       | Ja    | Nee              |
@@ -183,7 +182,7 @@ Als u wilt zien in welke landen/regio's deze betalings wijzen worden gebruikt vo
 | Tunesië                          | Ja               | Ja                                      | Ja    | Nee              |
 | Turkije                           | Ja               | Ja                                      | Ja    | Nee              |
 | Turkmenistan                     | Ja               | Ja                                      | Nee     | Nee              |
-| Uganda                           | Ja               | Ja                                      | Ja    | Nee              |
+| Oeganda                           | Ja               | Ja                                      | Ja    | Nee              |
 | Oekraïne                          | Ja               | Ja                                      | Nee     | Nee              |
 | Verenigde Arabische Emiraten             | Ja               | Ja                                      | Ja    | Ja             |
 | Verenigd Koninkrijk                   | Ja               | Ja                                      | Ja    | Ja             |

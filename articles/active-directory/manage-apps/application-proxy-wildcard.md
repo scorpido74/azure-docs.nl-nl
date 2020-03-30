@@ -1,6 +1,6 @@
 ---
-title: Joker tekens voor toepassingen in de Azure AD-toepassingsproxy
-description: Informatie over het gebruik van Wildcard-toepassingen in de Azure Active Directory-toepassingsproxy.
+title: Wildcard-toepassingen in de Azure AD-toepassingsproxy
+description: Meer informatie over het gebruik van Wildcard-toepassingen in de proxy van azure Active Directory-toepassingen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,109 +16,109 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481242"
 ---
-# <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Wildcard-toepassingen in de Azure Active Directory-toepassingsproxy
+# <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Jokertekens in de proxy van Azure Active Directory-toepassing
 
-In Azure Active Directory (Azure AD), het configureren van een groot aantal on-premises toepassingen kunnen snel worden onbeheersbare en onnodige risico's op configuratiefouten introduceert als veel van deze nodig hebt met dezelfde instellingen. Met [Azure AD-toepassingsproxy](application-proxy.md)kunt u dit probleem oplossen met behulp van de functie voor het publiceren van joker tekens voor het publiceren en beheren van veel toepassingen tegelijk. Dit is een oplossing waarmee u kunt:
+In Azure Active Directory (Azure AD) kan het configureren van een groot aantal on-premises toepassingen snel onhandelbaar worden en onnodige risico's voor configuratiefouten met zich meebrengen als veel van hen dezelfde instellingen vereisen. Met [Azure AD Application Proxy](application-proxy.md)u dit probleem verhelpen door het publiceren van wildcard-toepassingen te gebruiken om veel toepassingen tegelijk te publiceren en te beheren. Dit is een oplossing waarmee u:
 
 - Vereenvoudig uw administratieve overhead
-- Verminder het aantal mogelijke fouten in de configuratie
-- Uw gebruikers veilig toegang krijgen tot meer resources
+- Het aantal potentiële configuratiefouten verminderen
+- Uw gebruikers in staat stellen veilig toegang te krijgen tot meer bronnen
 
-In dit artikel biedt u de informatie die u wilt configureren van jokertekens toepassing publiceren in uw omgeving.
+In dit artikel vindt u de informatie die u nodig hebt om het publiceren van wildcardtoepassingen in uw omgeving te configureren.
 
-## <a name="create-a-wildcard-application"></a>Een wildcard-toepassing maken
+## <a name="create-a-wildcard-application"></a>Een wildcardtoepassing maken
 
-U kunt een (*)-jokertekentoepassing maken als u een groep van toepassingen met dezelfde configuratie hebben. Mogelijke kandidaten zijn voor een jokertekentoepassing zijn toepassingen delen van de volgende instellingen:
+U een wildcardtoepassing (*) maken als u een groep toepassingen met dezelfde configuratie hebt. Potentiële kandidaten voor een wildcard-aanvraag zijn toepassingen die de volgende instellingen delen:
 
-- De groep gebruikers toegang hebben tot deze
-- De methode voor eenmalige aanmelding
-- De access-protocol (http, https)
+- De groep gebruikers die er toegang toe heeft
+- De SSO-methode
+- Het toegangsprotocol (http, https)
 
-U kunt toepassingen met jokertekens publiceren als zowel de interne en externe URL's in de volgende indeling:
+U toepassingen met jokertekens publiceren als beide interne en externe URL's in de volgende indeling staan:
 
-> http (s)://*.\<domein\>
+> http(s)://*. \<domein\>
 
 Bijvoorbeeld: `http(s)://*.adventure-works.com`.
 
-De interne en externe URL's kunnen verschillende domeinen gebruiken als een best practice, moeten ze niet hetzelfde zijn. Wanneer de toepassing publiceert, ziet u een fout als een van de URL's niet een jokerteken.
+Hoewel de interne en externe URL's verschillende domeinen kunnen gebruiken, moeten ze als best practice hetzelfde zijn. Bij het publiceren van de toepassing ziet u een fout als een van de URL's geen wildcard heeft.
 
-Als u aanvullende toepassingen met verschillende configuratie-instellingen hebt, moet u deze uitzonderingen publiceren als afzonderlijke toepassingen te overschrijven de standaardinstellingen voor het jokerteken. Toepassingen zonder een jokerteken altijd voorrang op wildcard-toepassingen. Dit zijn "net" reguliere toepassingen vanuit het perspectief configuratie.
+Als u extra toepassingen met verschillende configuratie-instellingen hebt, moet u deze uitzonderingen publiceren als afzonderlijke toepassingen om de standaardinstellingen voor de joker te overschrijven. Toepassingen zonder wildcard hebben altijd voorrang op wildcardtoepassingen. Vanuit het oogpunt van configuratie zijn dit "gewoon" reguliere toepassingen.
 
-Het maken van een Joker teken toepassing is gebaseerd op dezelfde [toepassings publicatie stroom](application-proxy-add-on-premises-application.md) die beschikbaar is voor alle andere toepassingen. Het enige verschil is dat u een jokerteken in de URL's en mogelijk de SSO-configuratie opnemen.
+Het maken van een wildcardtoepassing is gebaseerd op dezelfde [publicatiestroom](application-proxy-add-on-premises-application.md) voor toepassingen die beschikbaar is voor alle andere toepassingen. Het enige verschil is dat u een wildcard opneemt in de URL's en mogelijk de SSO-configuratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u aan deze vereisten hebt voldaan om aan de slag te gaan.
+Zorg ervoor dat je aan deze vereisten voldoet om aan de slag te gaan.
 
 ### <a name="custom-domains"></a>Aangepaste domeinen
 
-Hoewel [aangepaste domeinen](application-proxy-configure-custom-domain.md) optioneel zijn voor alle andere toepassingen, zijn ze een vereiste voor Joker teken toepassingen. Het maken van aangepaste domeinen, moet u:
+Hoewel [aangepaste domeinen](application-proxy-configure-custom-domain.md) optioneel zijn voor alle andere toepassingen, zijn ze een voorwaarde voor wildcardtoepassingen. Voor het maken van aangepaste domeinen moet u:
 
-1. Een geverifieerd domein maken in Azure.
-1. Upload een SSL-certificaat in de PFX-indeling naar de toepassingsproxy.
+1. Maak een geverifieerd domein binnen Azure.
+1. Upload een TLS/SSL-certificaat in de PFX-indeling naar uw toepassingsproxy.
 
-U moet een certificaat met jokertekens overwegen zodat deze overeenkomen met de toepassing die u van plan bent om te maken. U kunt ook kunt u ook een certificaat met alleen een lijst met specifieke toepassingen. In dit geval zijn alleen de toepassingen die worden vermeld in het certificaat toegankelijk via deze jokertekentoepassing.
+U moet overwegen een wildcardcertificaat te gebruiken dat overeenkomt met de toepassing die u wilt maken. U ook een certificaat gebruiken waarin alleen specifieke toepassingen worden vermeld. In dit geval zijn alleen de toepassingen in het certificaat toegankelijk via deze wildcardtoepassing.
 
-Uit veiligheidsoverwegingen, dit is een vereiste voor vaste en jokertekens wordt niet ondersteund voor toepassingen die een aangepast domein kunnen worden gebruikt voor de externe URL.
+Om veiligheidsredenen is dit een harde vereiste en we zullen geen wildcards ondersteunen voor toepassingen die geen aangepast domein kunnen gebruiken voor de externe URL.
 
 ### <a name="dns-updates"></a>DNS-updates
 
-Wanneer u aangepaste domeinen gebruikt, moet u een DNS-vermelding maken met een CNAME-record voor de externe URL (bijvoorbeeld `*.adventure-works.com`) die verwijst naar de externe URL van het eind punt van de toepassings proxy. Voor Joker teken toepassingen moet de CNAME-record verwijzen naar de relevante externe Url's:
+Wanneer u aangepaste domeinen gebruikt, moet u een DNS-vermelding maken met `*.adventure-works.com`een CNAME-record voor de externe URL (bijvoorbeeld ) die wijst op de externe URL van het eindpunt van de toepassingsproxy. Voor wildcardtoepassingen moet de CNAME-record wijzen op de relevante externe URL's:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-Om te bevestigen dat u uw CNAME correct hebt geconfigureerd, kunt u [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) op een van de doel eindpunten gebruiken, bijvoorbeeld `expenses.adventure-works.com`.  Uw antwoord moet de reeds vermelde alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) bevatten.
+Om te bevestigen dat u uw CNAME correct hebt geconfigureerd, u [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) `expenses.adventure-works.com`gebruiken op een van de doeleindpunten, bijvoorbeeld.  Uw antwoord moet de reeds`<yourAADTenantId>.tenant.runtime.msappproxy.net`genoemde alias ( ).
 
 ## <a name="considerations"></a>Overwegingen
 
-Hier volgen enkele overwegingen waar u rekening mee moet houden voor Joker teken toepassingen.
+Hier volgen enkele overwegingen die u moet meemaken voor wildcardtoepassingen.
 
 ### <a name="accepted-formats"></a>Geaccepteerde indelingen
 
-Voor Joker teken toepassingen moet de **interne URL** worden opgemaakt als `http(s)://*.<domain>`.
+Voor wildcardtoepassingen moet de **interne** URL `http(s)://*.<domain>`worden opgemaakt als .
 
-![Gebruik voor interne URL de notatie http (s)://*.\<domein >](./media/application-proxy-wildcard/22.png)
+![Voor interne URL gebruikt u de indeling http(s)://*. \<domein>](./media/application-proxy-wildcard/22.png)
 
-Wanneer u een **externe URL**configureert, moet u de volgende indeling gebruiken: `https://*.<custom domain>`
+Wanneer u een **externe URL**configureert, moet u de volgende indeling gebruiken:`https://*.<custom domain>`
 
-![Gebruik voor externe URL de notatie https://*.\<aangepast domein >](./media/application-proxy-wildcard/21.png)
+![Voor externe URL gebruikt u de indeling https://*. \<aangepaste domein>](./media/application-proxy-wildcard/21.png)
 
-Andere functies van het jokerteken, meerdere jokertekens of andere regex-tekenreeksen worden niet ondersteund en fouten veroorzaken.
+Andere posities van de wildcard, meerdere wildcards of andere regex-tekenreeksen worden niet ondersteund en veroorzaken fouten.
 
-### <a name="excluding-applications-from-the-wildcard"></a>Met uitzondering van toepassingen van het jokerteken
+### <a name="excluding-applications-from-the-wildcard"></a>Aanvragen uitsluiten van de wildcard
 
-U kunt een toepassing uitsluiten van de jokertekentoepassing door
+U een toepassing uitsluiten van de wildcardtoepassing door
 
-- De toepassing van de uitzondering als normale toepassing publiceren
-- Het jokerteken alleen voor specifieke toepassingen via de DNS-instellingen inschakelen
+- De uitzonderingstoepassing publiceren als gewone toepassing
+- De wildcard alleen inschakelen voor specifieke toepassingen via uw DNS-instellingen
 
-Publiceren van een toepassing als normale toepassing is de aanbevolen methode om uit te sluiten van een toepassing van een jokerteken. U moet de uitgesloten toepassingen voordat de wildcard-toepassingen om ervoor te zorgen dat uw uitzonderingen worden toegepast vanaf het begin. De meest specifieke toepassing heeft altijd voor rang: een toepassing die is gepubliceerd als `budgets.finance.adventure-works.com` heeft voor rang op de toepassing `*.finance.adventure-works.com`, die op zijn beurt voor rang krijgt op de toepassing `*.adventure-works.com`.
+Het publiceren van een toepassing als reguliere toepassing is de voorkeursmethode om een toepassing uit te sluiten van een wildcard. U moet de uitgesloten toepassingen vóór de wildcardtoepassingen publiceren om ervoor te zorgen dat uw uitzonderingen vanaf het begin worden afgedwongen. De meest specifieke toepassing heeft altijd voorrang `budgets.finance.adventure-works.com` – een toepassing `*.finance.adventure-works.com`die wordt gepubliceerd als voorrang `*.adventure-works.com`op de toepassing , die op zijn beurt voorrang heeft op de toepassing .
 
-U kunt het jokerteken om te werken alleen voor specifieke toepassingen via uw DNS-beheer beperken. Als een best practice, moet u een CNAME-vermelding bestaat uit een jokerteken en komt overeen met de indeling van de externe URL die u hebt geconfigureerd. U kunt echter in plaats daarvan specifieke URL's verwijzen naar de jokertekens. Bijvoorbeeld, in plaats van `*.adventure-works.com`, punt `hr.adventure-works.com`, `expenses.adventure-works.com` en `travel.adventure-works.com individually` naar `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`.
+U de wildcard ook beperken tot alleen werken voor specifieke toepassingen via uw DNS-beheer. Als aanbevolen praktijk moet u een CNAME-vermelding maken die een wildcard bevat en overeenkomt met de indeling van de externe URL die u hebt geconfigureerd. U echter in plaats daarvan specifieke toepassings-URL's naar de jokertekens wijzen. Bijvoorbeeld, in `*.adventure-works.com`plaats `hr.adventure-works.com`van `expenses.adventure-works.com` `travel.adventure-works.com individually` , `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`punt , en naar .
 
-Als u deze optie gebruikt, moet u ook een andere CNAME-vermelding voor de waarde `AppId.domain`, bijvoorbeeld `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, naar dezelfde locatie verwijzen. U kunt de **AppId** vinden op de pagina eigenschappen van toepassing van de toepassing voor joker tekens:
+Als u deze optie gebruikt, hebt u ook `AppId.domain`een andere `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`CNAME-vermelding nodig voor de waarde, bijvoorbeeld, die ook naar dezelfde locatie wijst. U de **AppId** vinden op de pagina met toepassingseigenschappen van de wildcardtoepassing:
 
-![Zoek de toepassings-ID op de eigenschappen pagina van de app](./media/application-proxy-wildcard/01.png)
+![De toepassings-id zoeken op de eigenschappenpagina van de app](./media/application-proxy-wildcard/01.png)
 
-### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>De URL van de startpagina voor de MyApps-deelvenster instellen
+### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>De URL van de startpagina instellen voor het deelvenster MyApps
 
-De Joker toepassing wordt weer gegeven met slechts één tegel in het [deel venster MyApps](https://myapps.microsoft.com). Deze tegel is standaard verborgen. Voor het weergeven van de tegel en hebben gebruikers land op een specifieke pagina:
+De wildcard-toepassing wordt weergegeven met slechts één tegel in het [deelvenster MyApps.](https://myapps.microsoft.com) Standaard is deze tegel verborgen. Ga als lid van het nieuws om de tegel weer te geven en gebruikers op een specifieke pagina te laten landen:
 
-1. Volg de richt lijnen voor het [instellen van een start pagina-URL](application-proxy-configure-custom-home-page.md).
-1. Stel **toepassing weer geven** op **waar** in op de eigenschappen pagina van de toepassing.
+1. Volg de richtlijnen voor [het instellen van een URL van een startpagina](application-proxy-configure-custom-home-page.md).
+1. **Toepassing weergeven** **instellen op true** op de pagina toepassingseigenschappen.
 
-### <a name="kerberos-constrained-delegation"></a>Kerberos-beperkte overdracht
+### <a name="kerberos-constrained-delegation"></a>Kerberos beperkte delegatie
 
-Voor toepassingen die gebruikmaken van [Kerberos-beperkte delegering (KCD) als SSO-methode](application-proxy-configure-single-sign-on-with-kcd.md), kan de SPN die wordt vermeld voor de SSO-methode ook een Joker teken hebben. De SPN kan er bijvoorbeeld als volgt uit`HTTP/*.adventure-works.com`. U moet nog steeds de afzonderlijke Spn's configureren op uw back-endservers (bijvoorbeeld `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Voor toepassingen die [kerberos constrained delegation (KCD) als SSO-methode](application-proxy-configure-single-sign-on-with-kcd.md)gebruiken, kan de SPN die voor de SSO-methode wordt vermeld, ook een wildcard nodig hebben. De SPN zou bijvoorbeeld `HTTP/*.adventure-works.com`kunnen zijn: . U moet nog steeds de afzonderlijke SPN's hebben geconfigureerd `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`op uw backendservers (bijvoorbeeld).
 
-## <a name="scenario-1-general-wildcard-application"></a>Scenario 1: Algemeen jokertekentoepassing
+## <a name="scenario-1-general-wildcard-application"></a>Scenario 1: Algemene wildcardtoepassing
 
 In dit scenario hebt u drie verschillende toepassingen die u wilt publiceren:
 
@@ -128,70 +128,70 @@ In dit scenario hebt u drie verschillende toepassingen die u wilt publiceren:
 
 Alle drie de toepassingen:
 
-- Worden gebruikt door alle gebruikers
-- *Geïntegreerde Windows-verificatie* gebruiken
-- Hebben de dezelfde eigenschappen
+- Worden gebruikt door al uw gebruikers
+- *Geïntegreerde Windows-verificatie gebruiken*
+- Dezelfde eigenschappen hebben
 
-U kunt de toepassing voor joker tekens publiceren met behulp van de stappen die worden beschreven in [toepassingen publiceren met behulp van Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). In dit scenario wordt ervan uitgegaan dat:
+U de wildcardtoepassing publiceren met behulp van de stappen die zijn beschreven in [Publicatietoepassingen met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). In dit scenario wordt ervan uitgegaan:
 
-- Een Tenant met de volgende ID: `000aa000-11b1-2ccc-d333-4444eee4444e`
-- Er is een geverifieerd domein met de naam `adventure-works.com` geconfigureerd.
-- Een **CNAME** -vermelding die verwijst naar `*.adventure-works.com` naar `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` is gemaakt.
+- Een tenant met de volgende id:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Er is een `adventure-works.com` geverifieerd domein geconfigureerd.
+- Er is een `*.adventure-works.com` **CNAME-vermelding** gemaakt waarnaar `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` wordt verwijst.
 
-Als u de [gedocumenteerde stappen](application-proxy-add-on-premises-application.md)volgt, maakt u een nieuwe toepassings proxy toepassing in uw Tenant. In dit voorbeeld is het jokerteken in de volgende velden:
+Na de [gedocumenteerde stappen](application-proxy-add-on-premises-application.md)maakt u een nieuwe toepassingsproxytoepassing in uw tenant. In dit voorbeeld bevindt de joker in de volgende velden:
 
 - Interne URL:
 
-    ![Voor beeld: Joker teken in interne URL](./media/application-proxy-wildcard/42.png)
+    ![Voorbeeld: Jokerteken in interne URL](./media/application-proxy-wildcard/42.png)
 
 - Externe URL:
 
-    ![Voor beeld: Joker teken in externe URL](./media/application-proxy-wildcard/43.png)
+    ![Voorbeeld: Jokerteken in externe URL](./media/application-proxy-wildcard/43.png)
 
-- SPN voor interne toepassing:
+- Interne toepassing SPN:
 
-    ![Voor beeld: Joker teken in SPN-configuratie](./media/application-proxy-wildcard/44.png)
+    ![Voorbeeld: Jokerteken in SPN-configuratie](./media/application-proxy-wildcard/44.png)
 
-Als u de toepassing voor joker tekens publiceert, kunt u toegang krijgen tot uw drie toepassingen door te navigeren naar de Url's die u gebruikt (bijvoorbeeld `travel.adventure-works.com`).
+Door de wildcardtoepassing te publiceren, u nu toegang krijgen tot uw drie `travel.adventure-works.com`toepassingen door te navigeren naar de URL's die u gewend bent (bijvoorbeeld).
 
 De configuratie implementeert de volgende structuur:
 
-![Toont de structuur die door de voorbeeld configuratie is geïmplementeerd](./media/application-proxy-wildcard/05.png)
+![Toont de structuur die is geïmplementeerd door de voorbeeldconfiguratie](./media/application-proxy-wildcard/05.png)
 
 | Kleur | Beschrijving |
 | ---   | ---         |
-| Blauw  | Toepassingen worden expliciet gepubliceerd en zichtbaar in de Azure Portal. |
-| Grijs  | Toepassingen kunt u toegankelijk zijn via de bovenliggende toepassing. |
+| Blauw  | Toepassingen die expliciet zijn gepubliceerd en zichtbaar zijn in de Azure-portal. |
+| Grijs  | Toepassingen die u toegankelijk maken via de bovenliggende toepassing. |
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenario 2: Algemene jokertekentoepassing met uitzondering
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenario 2: Algemene wildcardtoepassing met uitzondering
 
-In dit scenario hebt u naast de drie algemene toepassingen een andere toepassing, `finance.adventure-works.com`, die alleen toegankelijk moet zijn voor de financiële afdeling. Met de huidige toepassingsstructuur toegankelijk uw toepassing Financiën via de toepassingstoewijzingen en door alle werknemers. Om dit te wijzigen, uitsluiten u uw toepassing uit uw jokertekens door het configureren van Financiën als een afzonderlijke toepassing met meer beperkte machtigingen.
+In dit scenario hebt u naast de drie `finance.adventure-works.com`algemene toepassingen een andere toepassing, die alleen toegankelijk zou moeten zijn voor de afdeling Financiën. Met de huidige toepassingsstructuur zou uw financiële aanvraag toegankelijk zijn via de wildcard-toepassing en door alle medewerkers. Als u dit wilt wijzigen, sluit u uw toepassing uit van uw wildcard door Finance te configureren als een afzonderlijke toepassing met meer beperkende machtigingen.
 
-U moet ervoor zorgen dat er een CNAME-records bestaan die `finance.adventure-works.com` naar het toepassings-specifieke eind punt, opgegeven op de pagina Toepassings proxy voor de toepassing. Voor dit scenario `finance.adventure-works.com` verwijst naar `https://finance-awcycles.msappproxy.net/`.
+U moet ervoor zorgen dat er een `finance.adventure-works.com` CNAME-records bestaan die naar het specifieke eindpunt van de toepassing verwijst, opgegeven op de pagina Application Proxy voor de toepassing. Voor dit `finance.adventure-works.com` scenario `https://finance-awcycles.msappproxy.net/`wordt gewezen op .
 
-Aan de hand van de [gedocumenteerde stappen](application-proxy-add-on-premises-application.md)zijn voor dit scenario de volgende instellingen vereist:
+Na de [gedocumenteerde stappen](application-proxy-add-on-premises-application.md)vereist dit scenario de volgende instellingen:
 
-- In de **interne URL**stelt u **Financiën** in in plaats van een Joker teken.
+- In de **interne URL**stelt u **financiën** in in plaats van een wildcard.
 
-    ![Voor beeld: Finance instellen in plaats van een Joker teken in interne URL](./media/application-proxy-wildcard/52.png)
+    ![Voorbeeld: Financiering instellen in plaats van een wildcard in interne URL](./media/application-proxy-wildcard/52.png)
 
-- In de **externe URL**stelt u **Financiën** in in plaats van een Joker teken.
+- In de **externe URL**stelt u **financiering** in in plaats van een wildcard.
 
-    ![Voor beeld: Finance instellen in plaats van een Joker teken in externe URL](./media/application-proxy-wildcard/53.png)
+    ![Voorbeeld: Financiering instellen in plaats van een wildcard in externe URL](./media/application-proxy-wildcard/53.png)
 
-- Interne SPN van de toepassing u stelt **Financiën** in in plaats van een Joker teken.
+- Interne toepassing SPN u **instelt financiën** in plaats van een wildcard.
 
-    ![Voor beeld: Finance instellen in plaats van een Joker teken in SPN-configuratie](./media/application-proxy-wildcard/54.png)
+    ![Voorbeeld: Financiering instellen in plaats van een wildcard in SPN-configuratie](./media/application-proxy-wildcard/54.png)
 
-Deze configuratie worden geïmplementeerd in het volgende scenario:
+Met deze configuratie wordt het volgende scenario geïmplementeerd:
 
-![Toont de configuratie die wordt geïmplementeerd door het voorbeeld scenario](./media/application-proxy-wildcard/09.png)
+![Toont de configuratie die is geïmplementeerd door het voorbeeldscenario](./media/application-proxy-wildcard/09.png)
 
-Omdat `finance.adventure-works.com` een meer specifieke URL is dan `*.adventure-works.com`, heeft dit prioriteit. Gebruikers die naar `finance.adventure-works.com` navigeren, hebben de ervaring die is opgegeven in de toepassing Financiën resources. In dit geval hebben alleen werk nemers met Financiën toegang tot `finance.adventure-works.com`.
+Want `finance.adventure-works.com` is een meer `*.adventure-works.com`specifieke URL dan , het heeft voorrang. Gebruikers die `finance.adventure-works.com` navigeren om de ervaring te hebben opgegeven in de toepassing Financiële resources. In dit geval hebben alleen financiële `finance.adventure-works.com`medewerkers toegang tot .
 
-Als u meerdere toepassingen hebt gepubliceerd voor financiering en u `finance.adventure-works.com` als geverifieerd domein, kunt u een andere toepassing voor joker tekens `*.finance.adventure-works.com`publiceren. Omdat dit specifieker is dan het algemene `*.adventure-works.com`, heeft dit een prioriteit als een gebruiker toegang heeft tot een toepassing in het domein Finance.
+Als u meerdere aanvragen hebt gepubliceerd `finance.adventure-works.com` voor financiën en u als geverifieerd `*.finance.adventure-works.com`domein hebt, u een andere wildcardtoepassing publiceren. Omdat dit specifieker is `*.adventure-works.com`dan het algemene , heeft het voorrang als een gebruiker toegang heeft tot een toepassing in het financiële domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md)voor meer informatie over **aangepaste domeinen**.
-- Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md) voor meer informatie over het **publiceren van toepassingen**
+- Zie Werken met aangepaste [domeinen in Azure AD Application Proxy](application-proxy-configure-custom-domain.md)voor meer informatie over aangepaste **domeinen.**
+- Zie Toepassingen publiceren met [Azure AD-toepassingsproxy voor](application-proxy-add-on-premises-application.md) meer informatie over **publicatietoepassingen**

@@ -1,102 +1,101 @@
 ---
-title: Veelgestelde vragen over verkopers inzichten
-description: Veelgestelde vragen over de functie voor de verkoop inzichten van de Cloud Partner-portal.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Veelgestelde vragen over verkopersinzichten
+description: Veelgestelde vragen over de functie Verkopersinzichten van de Cloud Partner Portal.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 011558baa43ee3db2803e9229d1d15df5158d668
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285381"
 ---
-<a name="seller-insights-faq"></a>Veelgestelde vragen over verkopers inzichten
+<a name="seller-insights-faq"></a>Veelgestelde vragen over verkopersinzichten
 ===================
 
-In dit artikel vindt u richt lijnen voor algemene gebruikers procedures in en vragen over de verkoop inzichten.
+In dit artikel vindt u richtlijnen voor algemene gebruikersprocedures binnen en vragen over verkopersstatistieken.
 
 
-<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Definities voor de waarden in het gedownloade transactie bestand zoeken
+<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Definities zoeken voor de waarden in het gedownloade transactiebestand
 ------------------------------------------------------------------
 
-De definities van de metrische waarden in het transactie bestand vindt u in het artikel [verkoper Insights-definities](./si-insights-definitions-v4.md).
+De definities van de metrische waarden in het transactiebestand zijn te vinden in het artikel [Definities voor verkopersinzichten](./si-insights-definitions-v4.md).
 
 
-<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Bekijk klant gegevens van trans acties waarvoor ik betaald ben
+<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Bekijk klantgegevens van transacties waarvoor ik ben betaald
 -------------------------------------------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status uitbetaling**en past u het filter toe op alleen de waarde ' betaald uit ' weer te geven. De volgende kolommen worden weer gegeven met de klant Details: **Bedrijfs naam**, **klant-e-mail**, **klant land**, **klant status**en **Post code**van de klant.
+Nadat u uw transacties hebt gedownload uit de uitbetalingsmodule, zoekt u de kolom met de **status Uitbetaling**en past u het filter toe om alleen de waarde 'Uitbetaald' weer te geven. De volgende kolommen worden weergegeven met de klantgegevens: **Bedrijfsnaam**, **e-mail van de klant,** **klantland,** **klantstatus**en **klantpostcode**.
 
 
-<a name="calculate-my-open-accounts-receivable"></a>Mijn openstaande debiteuren te berekenen
+<a name="calculate-my-open-accounts-receivable"></a>Mijn openstaande debiteuren berekenen
 -------------------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status uitbetaling**en past u het filter toe zodat alleen de waarde ' aanstaande uitbetaling ' en ' niet gereed voor betaling ' worden weer gegeven. Vervolgens wordt de kolom met het label **uitbetaling (PC)** opgeteld.
+Nadat u uw transacties hebt gedownload van de uitbetalingsmodule, zoekt u de kolom met het label **Uitbetalingsstatus**en past u het filter toe om alleen de waarde 'Aanstaande uitbetaling' en 'Niet klaar voor uitbetaling' weer te geven. Som vervolgens het **kolommetje uitbetalingsbedrag (PC)** op .
 
 
-<a name="calculate-revenue-by-customer-usage-period"></a>Opbrengst berekenen op basis van gebruiks periode van klant
+<a name="calculate-revenue-by-customer-usage-period"></a>Inkomsten berekenen op basis van de gebruiksperiode van de klant
 ------------------------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitbetalings module, zoekt u de kolom met de naam **transactie status**en filtert u de waarde betaald.   Voor elke trans actie die wordt vermeld, vertegenwoordigt de kolom met het label **uitbetaling (PC)** de hoeveelheid die u hebt betaald.  Als u de gebruiks periode wilt schatten die aan de trans actie is gekoppeld, gebruikt u de kolom **kosten datum**, een nauw keurige benadering van de laatste dag van gebruik voor de periode waarop de trans actie van toepassing is.
+Nadat u uw transacties hebt gedownload uit de uitbetalingsmodule, zoekt u de kolom met het label **Transactiestatus**en filtert u de waarde 'Betaald'.   Voor elke vermelde transactie vertegenwoordigt de kolom met het label **Uitbetalingsbedrag (PC)** het bedrag dat u hebt betaald.  Als u de gebruiksperiode wilt schatten die aan de transactie is gekoppeld, gebruikt u de **kolom datum kosten**, een nauwe benadering van de laatste gebruiksdag voor de periode waarop de transactie van toepassing is.
 
 
-<a name="calculate-your-bad-debt"></a>Uw slechte schulden berekenen
+<a name="calculate-your-bad-debt"></a>Bereken uw slechte schuld
 ---------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status definitieve verzameling**en past u het filter toe zodat alleen de waarde ' afschrijven ' wordt weer gegeven. Vervolgens wordt de kolom met het label **uitbetaling (PC)** opgeteld.
+Nadat u uw transacties hebt gedownload uit de uitbetalingsmodule, zoekt u de kolom met de **status Definitieve verzameling**en past u het filter toe om alleen de waarde 'Afschrijven' weer te geven. Som vervolgens het **kolommetje uitbetalingsbedrag (PC)** op .
 
 
-<a name="view-payout-or-customer-contact-information"></a>Contact gegevens van de uitbetaling of klant weer geven
+<a name="view-payout-or-customer-contact-information"></a>Uitbetalings- of klantcontactgegevens weergeven
 -------------------------------------------
 
-Meld u aan als een gebruiker met de rol ' eigenaar ' en niet de rol ' Inzender '. Alleen de rol van eigenaar krijgt de uitbetalings-en klant gegevens te zien. Meer informatie over gebruikers rollen vindt u in het artikel [gebruikers beheren](./cloud-partner-portal-manage-users.md).
+Meld u aan als gebruiker met de rol 'eigenaar' en niet de rol 'bijdrager'. Alleen de rol van de eigenaar ziet uitbetaling en klantgegevens. Meer informatie over gebruikersrollen vindt u in het artikel [Gebruikers beheren.](./cloud-partner-portal-manage-users.md)
 
 
-<a name="calculate-my-advance-payouts"></a>Mijn voor schot uitbetalingen berekenen
+<a name="calculate-my-advance-payouts"></a>Bereken mijn voorschot uitbetalingen
 ----------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met het label **transactie type**en past u het filter toe zodat alleen de waarde ' kosten ' wordt weer gegeven. Zoek vervolgens de kolom met de naam **definitieve verzameling**en pas het filter toe om alleen de waarde ' wordt uitgevoerd ' weer te geven. Ten slotte moet u de kolom **uitbetalings bedrag (PC)** opsommen om alle voor uitbetalingen te berekenen die u vóór het verzamelen van de klant hebt betaald.
+Nadat u uw transacties hebt gedownload uit de uitbetalingsmodule, zoekt u de kolom met het label **Transactietype**en past u het filter toe om alleen de waarde 'Kosten' weer te geven. Zoek vervolgens de kolom met het label **Definitieve verzamelingstatus**en pas het filter toe om alleen de waarde 'In uitvoering' weer te geven. Som ten slotte de kolom **Uitbetalingsbedrag (PC)** om alle voorschotten te berekenen die aan u zijn betaald voordat u van de klant wordt opgehaald.
 
 
-<a name="calculate-customer-refunds"></a>Klant restituties berekenen
+<a name="calculate-customer-refunds"></a>Klantterugbetalingen berekenen
 --------------------------
 
-Nadat u uw trans acties hebt gedownload vanuit de uitzonderings module, zoekt u de kolom met de **status definitieve verzameling**en past u het filter toe om alleen de waarde "restitutie" weer te geven. De kolom **kosten bedrag (PC)** opsommen om alle verwerkte restituties voor uw klanten te berekenen.
+Nadat u uw transacties hebt gedownload uit de uitbetalingsmodule, zoekt u de kolom met de **status Definitieve verzameling**en past u het filter toe om alleen de waarde 'Terugbetaling' weer te geven. Som de kolom **Kostenbedrag (PC)** om alle terugbetalingen te berekenen die voor uw klanten zijn verwerkt.
 
 
-<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Bepalen welke trans acties betrokken zijn bij een micro soft Channel-partner
+<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Bepalen welke transacties een Microsoft Channel Partner betroffen
 ----------------------------------------------------------------
 
-Alle trans acties in de kolom **Azure-licentie type** die worden gefilterd om de waarden ' Enter prise through Reseller ' en ' Cloud solution provider ' te laten zien, zijn een micro soft Channel-partner. Voor meer informatie over de partner kunt u de **naam** en het **e-mail adres** van de wederverkoper vinden in de module uitgaand downloaden en de module klant downloaden.
+Alle transacties in het kolom **Azure-licentietype** die worden gefilterd om de waarden 'Enterprise via Reseller' en 'Cloud Solution Provider' weer te geven, hebben betrekking op een Microsoft Channel-partner. Voor meer informatie over de partner, vindt u hun **reseller naam** en **reseller e-mail** in de uitbetaling module downloaden en de klant module downloaden.
 
 
-<a name="identify-trial-usage-and-trial-conversions"></a>Proef gebruik en evaluatie versies identificeren
+<a name="identify-trial-usage-and-trial-conversions"></a>Proefgebruik en proefconversies identificeren
 ------------------------------------------
 
-Down loads van de module volg orde, gebruik en uitbetalingen bevatten nu de **eind datum van de proef versie** om u te helpen begrijpen wanneer de proef periode voor die specifieke order is beëindigd, indien van toepassing. Als u het gebruik van de proef versie en de orders wilt bekijken, gaat u naar de kolom **SKU-factuur type** in de down loads en past u het filter toe om alleen de waarde ' trial ' weer te geven. Als u proef conversies wilt bekijken, zoekt u de kolom **proef einddatum** op in de down loads en past u het filter toe om alleen orders weer te geven wanneer de **eind datum van de proef periode** van vandaag is en de kolom **annulerings** datum leeg of later is dan de **eind datum van de proef versie**.
+Downloads van de bestel-, gebruiks- en uitbetalingsmodule bevatten nu **de einddatum van de proefperiode** om u te helpen begrijpen wanneer de proefperiode voor die specifieke bestelling is beëindigd, indien van toepassing. Als u proefgebruik en -orders wilt bekijken, zoekt u de kolom **SKU-factureringstype** in de downloads en past u het filter toe om alleen de waarde 'Proefproef' weer te geven. Als u proefconversies wilt bekijken, zoekt u de kolom **Einddatum van de proefversie** in de downloads en past u het filter alleen toe om orders weer te geven wanneer de einddatum van de **proefversie** de datum van vandaag is afgelopen en de kolom **Einddatum annuleren** leeg of later is dan de einddatum van **het proces**.
 
 
-<a name="when-is-my-monthly-payout-calculated"></a>Wanneer is mijn maandelijkse betaling berekend
+<a name="when-is-my-monthly-payout-calculated"></a>Wanneer wordt mijn maandelijkse uitbetaling berekend
 ------------------------------------
 
-Uw uitbetalingen worden aan u verleend door de 15e van elke maand voor alle bedragen die gereed zijn voor betaling op de laatste dag van de vorige maand. Op de derde dag van de maand berekent micro soft de uitbetalings hoeveelheid van de vorige maand en worden alle toepasselijke kosten transacties in uw down load bijgewerkt met ' aanstaande uitbetaling ' in de kolom **uitbetalings status** . Deze trans acties blijven in die staat totdat de betalings aanvraag wordt verzonden naar uw bank rekening, op voor waarde dat de **status** van de betaling wordt bijgewerkt naar ' betaald ', en de ' uitbetalings datum ' wordt bijgewerkt om de datum weer te geven waarop we de betalings aanvraag hebben ingediend Deposit.
+Uw uitbetalingen worden aan u uitgegeven door de 15e van elke maand voor alle bedragen klaar voor uitbetaling door de laatste kalenderdag van de voorafgaande maand. Op de derde dag van de maand berekent Microsoft het uitbetalingsbedrag van de vorige maand en werkt microsoft alle toepasselijke kostentransacties in uw download bij met 'Aanstaande uitbetaling' in de kolom **Uitbetalingsstatus.** Deze transacties blijven in die staat totdat het betalingsverzoek naar uw bankrekening wordt verzonden, op welk moment hun **uitbetalingsstatus** wordt bijgewerkt naar 'Uitbetaald' en de uitbetalingsdatum wordt bijgewerkt om de datum weer te geven waarop we het betalingsverzoek bij uw bank hebben ingediend.
 
 
-<a name="calculate-customer-acquisition-and-loss"></a>Aankoop en verlies van klanten berekenen
+<a name="calculate-customer-acquisition-and-loss"></a>Klantacquisitie en -verlies berekenen
 ---------------------------------------
 
-U kunt de datum weer geven waarop de klant voor het eerst een van uw aanbiedingen heeft gekocht door de kolom **aanschaf datum** te zoeken in het downloaden van de klant. Op dezelfde manier kunt u de datum zien waarna deze geen aanbieding meer heeft gepubliceerd door u door de kolom **date verloren** te vinden in de down load van de klant.
+U de datum zien waarop de klant een van uw aanbiedingen voor het eerst heeft gekocht door de kolom **Datum verworven** in de klantdownload te vinden. Op dezelfde manier u de datum zien waarop ze geen aanbieding meer hebben gepubliceerd door u door de kolom **Verloren datum** in de klantdownload te vinden.
 
 
-<a name="finding-more-help"></a>Meer hulp zoeken
+<a name="finding-more-help"></a>Meer hulp vinden
 -----------------
 
-- [Insights-definities voor verkopers](./si-insights-definitions-v4.md) -Zoek definities voor metrieken en gegevens
+- [Definities van verkopersinzichten](./si-insights-definitions-v4.md) - Definities zoeken voor statistieken en gegevens
 
-- Aan de [slag met de verkoop inzichten](./si-getting-started.md) : Inleiding tot de functie voor de verkoop inzichten.
+- [Aan de slag met verkopersstatistieken](./si-getting-started.md) - Inleiding tot de functie Verkopersstatistieken.
 

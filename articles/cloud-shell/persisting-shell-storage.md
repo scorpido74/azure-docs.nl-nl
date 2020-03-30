@@ -1,6 +1,6 @@
 ---
-title: Bestanden in Azure Cloud Shell persistent maken | Microsoft Docs
-description: Overzicht van de wijze waarop Azure Cloud Shell bestanden persistent wilt maken.
+title: Blijven bestanden in Azure Cloud Shell | Microsoft Documenten
+description: Doorloop hoe Azure Cloud Shell bestanden blijft bestaan.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,95 +14,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297588"
 ---
-# <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
-Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
+# <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell blijven gebruiken
+Cloud Shell maakt gebruik van Azure File-opslag om bestanden voor verschillende sessies te blijven gebruiken. Bij de eerste start vraagt Cloud Shell u om een nieuwe of bestaande bestandsshare te koppelen aan het blijven van bestanden in verschillende sessies.
 
 > [!NOTE]
-> Bash en Power shell delen dezelfde bestands share. Er kan slechts één bestands share worden gekoppeld aan automatische montage in Cloud Shell.
+> Bash en PowerShell delen hetzelfde bestandsaandeel. Slechts één bestandsshare kan worden gekoppeld aan automatische montage in Cloud Shell.
 
 > [!NOTE]
-> Azure Storage-firewall wordt niet ondersteund voor Cloud shell-opslag accounts.
+> Azure storage firewall wordt niet ondersteund voor cloud shell storage accounts.
 
 ## <a name="create-new-storage"></a>Nieuwe opslag maken
 
-Wanneer u basis instellingen gebruikt en alleen een abonnement selecteert, maakt Cloud Shell drie resources namens u in de ondersteunde regio die het dichtst bij u ligt:
+Wanneer u basisinstellingen gebruikt en alleen een abonnement selecteert, maakt Cloud Shell namens u drie bronnen in het ondersteunde gebied dat het dichtst bij u ligt:
 * Resourcegroep: `cloud-shell-storage-<region>`
-* Opslag account: `cs<uniqueGuid>`
-* Bestands share: `cs-<user>-<domain>-com-<uniqueGuid>`
+* Opslagaccount:`cs<uniqueGuid>`
+* Bestandsshare:`cs-<user>-<domain>-com-<uniqueGuid>`
 
-![De abonnements instelling](media/persisting-shell-storage/basic-storage.png)
+![De instelling Abonnement](media/persisting-shell-storage/basic-storage.png)
 
-De bestands share koppelt als `clouddrive` in uw `$Home` map. Dit is een eenmalige actie, waarna de bestands share automatisch wordt gekoppeld in volgende sessies. 
+Het bestandsaandeel wordt `clouddrive` gemonteerd `$Home` zoals in uw directory. Dit is een eenmalige actie en het delen van bestanden wordt automatisch gestart in volgende sessies. 
 
-De bestands share bevat ook een installatie kopie van 5 GB die voor u is gemaakt en die automatisch gegevens persistent maakt in uw `$Home` Directory. Dit geldt voor zowel bash als Power shell.
+Het bestandsaandeel bevat ook een afbeelding van 5 GB die voor `$Home` u is gemaakt en die automatisch gegevens in uw map blijft bestaan. Dit geldt voor zowel Bash als PowerShell.
 
-## <a name="use-existing-resources"></a>Bestaande resources gebruiken
+## <a name="use-existing-resources"></a>Bestaande bronnen gebruiken
 
-U kunt bestaande resources koppelen met behulp van de geavanceerde optie. Wanneer u een Cloud Shell regio selecteert, moet u een opslag account voor back-ups in dezelfde regio selecteren. Als uw toegewezen regio bijvoorbeeld VS-West is, moet u een bestands share koppelen die zich ook in de Verenigde Staten bevindt.
+Door de geavanceerde optie te gebruiken, u bestaande bronnen koppelen. Wanneer u een Cloud Shell-gebied selecteert, moet u een achtergrondopslagaccount selecteren dat zich in dezelfde regio bevindt. Als uw toegewezen regio bijvoorbeeld West US is, moet u een bestandsshare koppelen dat zich ook in West-US bevindt.
 
-Wanneer de prompt voor het instellen van de opslag wordt weer gegeven, selecteert u **Geavanceerde instellingen weer** geven om extra opties weer te geven. Het gevulde opslag opties filter voor lokaal redundante opslag (LRS), geo-redundante opslag (GRS) en ZRS-accounts (zone-redundante opslag). 
+Wanneer de opslaginstellingsprompt wordt weergegeven, selecteert u **Geavanceerde instellingen weergeven** om extra opties weer te geven. Het filter voor de bewoonde opslagopties voor LRS (localredundante opslag), georedundante opslag (GRS) en ZRS-accounts (Zoneredundant storage). 
 
 > [!NOTE]
-> Het gebruik van GRS-of ZRS-opslag accounts wordt aanbevolen voor aanvullende tolerantie voor de back-upbestands share. Welk type redundantie is afhankelijk van uw doel stellingen en prijs voorkeur. Meer [informatie over replicatie opties voor Azure Storage accounts](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+> Het gebruik van GRS- of ZRS-opslagaccounts wordt aanbevolen voor extra tolerantie voor het delen van back-upbestanden. Welk type redundantie is afhankelijk van uw doelen en prijsvoorkeur. [Meer informatie over replicatieopties voor Azure Storage-accounts](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
 
-![De instelling van de resource groep](media/persisting-shell-storage/advanced-storage.png)
+![De instelling resourcegroep](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>Toegang tot opslag beveiligen
-Voor beveiliging moet elke gebruiker hun eigen opslag account inrichten.  Voor op rollen gebaseerd toegangs beheer (RBAC) moeten gebruikers Inzender toegang of hoger hebben op het niveau van het opslag account.
+Voor de beveiliging moet elke gebruiker zijn eigen opslagaccount inrichten.  Voor rbac (role-based access control) moeten gebruikers toegang hebben tot de bijdrager of hoger op het opslagaccountniveau.
 
-Cloud Shell gebruikt een Azure-bestands share in een opslag account binnen een opgegeven abonnement. Als gevolg van overgenomen machtigingen, hebben gebruikers met voldoende toegangs rechten voor het abonnement toegang tot alle opslag accounts en bestands shares in het abonnement.
+Cloud Shell gebruikt een Azure File Share in een opslagaccount, binnen een bepaald abonnement. Vanwege overgenomen machtigingen hebben gebruikers met voldoende toegangsrechten tot het abonnement toegang tot alle opslagaccounts en bestandsshares in het abonnement.
 
-Gebruikers moeten de toegang tot hun bestanden vergren delen door de machtigingen in te stellen op het opslag account of het abonnements niveau.
+Gebruikers moeten de toegang tot hun bestanden vergrendelen door de machtigingen in te stellen op het opslagaccount of op abonnementsniveau.
 
-## <a name="supported-storage-regions"></a>Ondersteunde opslag regio's
-Als u uw huidige regio wilt zoeken, kunt u `env` uitvoeren in bash en de variabele `ACC_LOCATION`vinden, of vanuit Power shell `$env:ACC_LOCATION`uitvoeren. Bestands shares ontvangen een installatie kopie van 5 GB die voor u is gemaakt om uw `$Home` Directory te behouden.
+## <a name="supported-storage-regions"></a>Ondersteunde opslaggebieden
+Als u uw huidige `env` regio wilt vinden, `ACC_LOCATION`u in `$env:ACC_LOCATION`Bash uitvoeren en de variabele of van PowerShell-run lokaliseren. Bestandsshares ontvangen een afbeelding van 5 GB `$Home` die is gemaakt om uw directory te blijven behouden.
 
-Cloud Shell machines bestaan in de volgende regio's:
+Cloud Shell-machines bestaan in de volgende regio's:
 
 |Onderwerp|Regio|
 |---|---|
-|Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
+|Noord- en Zuid-Amerika|Oost-VS, South Central US, West US|
 |Europa|Europa - noord, Europa - west|
-|Azië en Stille Oceaan|India, midden, Zuidoost-Azië|
+|Azië en Stille Oceaan|India Centraal, Zuidoost-Azië|
 
-Klanten moeten een primaire regio kiezen, tenzij ze een vereiste hebben dat hun gegevens in rust worden opgeslagen in een bepaalde regio. Als ze een dergelijke vereiste hebben, moet er een secundaire opslag regio worden gebruikt.
+Klanten moeten een primaire regio kiezen, tenzij ze de eis hebben dat hun gegevens in rust in een bepaalde regio worden opgeslagen. Als zij een dergelijke eis hebben, moet een secundair opslaggebied worden gebruikt.
 
-### <a name="secondary-storage-regions"></a>Secundaire opslag regio's
-Als er een secundaire opslag regio wordt gebruikt, bevindt het gekoppelde Azure Storage-account zich in een andere regio als de Cloud Shell machine waarnaar u ze koppelt. Jeroen kan het opslag account bijvoorbeeld zodanig instellen dat het zich bevindt in Canada-oost, een secundaire regio, maar de machine waaraan deze is gekoppeld, bevindt zich nog in een primaire regio. Haar data-at-rest bevindt zich in Canada, maar wordt verwerkt in de Verenigde Staten.
+### <a name="secondary-storage-regions"></a>Secundaire opslaggebieden
+Als een secundair opslaggebied wordt gebruikt, bevindt het bijbehorende Azure-opslagaccount zich in een andere regio als de Cloud Shell-machine waarop u ze monteert. Jane kan bijvoorbeeld instellen dat haar opslagaccount zich in Canada East bevindt, een secundaire regio, maar de machine waaraan ze is gemonteerd, bevindt zich nog steeds in een primaire regio. Haar gegevens in rust is gevestigd in Canada, maar het wordt verwerkt in de Verenigde Staten.
 
 > [!NOTE]
-> Als er een secundaire regio wordt gebruikt, zijn de toegang tot bestanden en opstart tijd voor Cloud Shell mogelijk langzamer.
+> Als een secundaire regio wordt gebruikt, kan de bestandstoegang en de opstarttijd voor Cloud Shell trager verlopen.
 
-Een gebruiker kan `(Get-CloudDrive | Get-AzStorageAccount).Location` uitvoeren in Power shell om de locatie van de bestands share te zien.
+Een gebruiker `(Get-CloudDrive | Get-AzStorageAccount).Location` kan in PowerShell worden uitgevoerd om de locatie van zijn bestandsshare te zien.
 
-## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
-Opslag accounts die u in Cloud Shell maakt, worden gelabeld met `ms-resource-usage:azure-cloud-shell`. Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
+## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resourcebeleid
+Opslagaccounts die u in Cloud `ms-resource-usage:azure-cloud-shell`Shell maakt, worden getagd met . Als u gebruikers wilt verbieden opslagaccounts te maken in Cloud Shell, maakt u een [Azure-bronbeleid voor tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
 
-## <a name="how-cloud-shell-storage-works"></a>Hoe Cloud Shell Storage werkt 
-Cloud Shell bestanden persistent maken via de volgende methoden: 
-* Er wordt een schijf kopie van uw `$Home` Directory gemaakt om alle inhoud in de map op te slaan. De schijf installatie kopie wordt opgeslagen in de opgegeven bestands share als `acc_<User>.img` op `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`en de wijzigingen worden automatisch gesynchroniseerd. 
-* Het koppelen van uw opgegeven bestands share als `clouddrive` in uw `$Home` Directory voor directe bestands share interactie. `/Home/<User>/clouddrive` is toegewezen aan `fileshare.storage.windows.net/fileshare`.
+## <a name="how-cloud-shell-storage-works"></a>Hoe Cloud Shell-opslag werkt 
+Cloud Shell blijft bestanden via beide volgende methoden gebruiken: 
+* Een schijfafbeelding van `$Home` uw map maken om alle inhoud in de map te blijven bestaan. De schijfafbeelding wordt opgeslagen in `acc_<User>.img` de `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`opgegeven bestandsshare zoals bij , en hiermee worden wijzigingen automatisch gesynchroniseerd. 
+* Het monteren van `clouddrive` uw `$Home` opgegeven bestandsshare zoals in uw directory voor directe interactie met bestandsshare. `/Home/<User>/clouddrive`is toegewezen `fileshare.storage.windows.net/fileshare`aan .
  
 > [!NOTE]
-> Alle bestanden in uw `$Home` Directory, zoals SSH-sleutels, blijven behouden in de schijf installatie kopie van uw gebruiker, die wordt opgeslagen in de gekoppelde bestands share. Pas aanbevolen procedures toe wanneer u gegevens in uw `$Home` Directory en gekoppelde bestands share persistent maken.
+> Alle bestanden `$Home` in uw map, zoals SSH-sleutels, blijven bestaan in de afbeelding van uw gebruikersschijf, die is opgeslagen in uw gemonteerde bestandsshare. Pas aanbevolen procedures toe wanneer `$Home` u informatie in uw map en het gemonteerde bestandsshare blijft gebruiken.
 
 ## <a name="clouddrive-commands"></a>clouddrive-opdrachten
 
 ### <a name="use-the-clouddrive-command"></a>De `clouddrive` opdracht gebruiken
-In Cloud Shell kunt u een opdracht uitvoeren met de naam `clouddrive`, waarmee u de bestands share die is gekoppeld aan Cloud Shell hand matig kan bijwerken.
-![de opdracht ' clouddrive ' uit te voeren](media/persisting-shell-storage/clouddrive-h.png)
+In Cloud Shell u `clouddrive`een opdracht uitvoeren met de naam, waarmee u het bestandsaandeel dat is gemonteerd op Cloud Shell handmatig bijwerken.
 
-### <a name="list-clouddrive"></a>`clouddrive` weer geven
-Als u wilt weten welke bestands share is gekoppeld als `clouddrive`, voert u de `df` opdracht uit. 
+![De opdracht 'clouddrive' uitvoeren](media/persisting-shell-storage/clouddrive-h.png)
 
-Het bestandspad naar clouddrive toont de naam van uw opslag account en de bestands share in de URL. Bijvoorbeeld: `//storageaccountname.file.core.windows.net/filesharename`
+### <a name="list-clouddrive"></a>Lijst`clouddrive`
+Voer de `df` opdracht uit om `clouddrive`te ontdekken welke bestandsshare is gemonteerd als , als uitgevoerd. 
+
+Het bestandspad naar clouddrive toont de naam en bestandsshare van uw opslagaccount in de URL. Bijvoorbeeld: `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -116,57 +117,57 @@ shm                                                    65536       0      65536 
 justin@Azure:~$
 ```
 
-### <a name="mount-a-new-clouddrive"></a>Een nieuwe clouddrive koppelen
+### <a name="mount-a-new-clouddrive"></a>Een nieuwe clouddrive monteren
 
-#### <a name="prerequisites-for-manual-mounting"></a>Vereisten voor hand matig koppelen
-U kunt de bestands share die is gekoppeld aan Cloud Shell bijwerken met behulp van de `clouddrive mount` opdracht.
+#### <a name="prerequisites-for-manual-mounting"></a>Voorwaarden voor handmatige montage
+U de bestandsshare die is gekoppeld aan `clouddrive mount` Cloud Shell bijwerken met behulp van de opdracht.
 
-Als u een bestaande bestands share koppelt, moeten de opslag accounts zich in de geselecteerde Cloud Shell regio bevinden. Haal de locatie op door `env` uit te voeren en de `ACC_LOCATION`te controleren.
+Als u een bestaand bestandsaandeel monteert, moeten de opslagaccounts zich in het geselecteerde Cloud Shell-gebied bevinden. Haal de locatie `env` op `ACC_LOCATION`door de .
 
 #### <a name="the-clouddrive-mount-command"></a>De `clouddrive mount` opdracht
 
 > [!NOTE]
-> Als u een nieuwe bestands share koppelt, wordt er een nieuwe gebruikers installatie kopie gemaakt voor uw `$Home` Directory. Uw vorige `$Home`-installatie kopie wordt opgeslagen in de vorige bestands share.
+> Als u een nieuwe bestandsshare monteert, wordt er `$Home` een nieuwe gebruikersafbeelding gemaakt voor uw directory. Uw `$Home` vorige afbeelding wordt bewaard in uw vorige bestandsshare.
 
-Voer de `clouddrive mount` opdracht uit met de volgende para meters:
+Voer `clouddrive mount` de opdracht uit met de volgende parameters:
 
 ```
 clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareName
 ```
 
-Als u meer informatie wilt weer geven, voert u `clouddrive mount -h`uit, zoals hier wordt weer gegeven:
+Om meer details `clouddrive mount -h`te bekijken, uit te voeren, zoals hier weergegeven:
 
-![De clouddrive-mount'command uitvoeren](media/persisting-shell-storage/mount-h.png)
+![De opdracht 'clouddrive mount' uitvoeren](media/persisting-shell-storage/mount-h.png)
 
-### <a name="unmount-clouddrive"></a>Clouddrive ontkoppelen
-U kunt een bestands share die is gekoppeld aan Cloud Shell, op elk gewenst moment ontkoppelen. Omdat Cloud Shell een gekoppelde bestands share moet worden gebruikt, wordt u gevraagd een andere bestands share te maken en koppelen tijdens de volgende sessie.
+### <a name="unmount-clouddrive"></a>Clouddrive loskoppelen
+U een bestandsshare dat op elk gewenst moment is gemonteerd op Cloud Shell, demonteren. Aangezien Cloud Shell een gemonteerde bestandsshare vereist om te worden gebruikt, wordt u gevraagd om een ander bestandsaandeel te maken en te monteren op de volgende sessie.
 
 1. Voer `clouddrive unmount` uit.
-2. Bevestigings-en bevestigings prompts.
+2. Bevestig en bevestig aanwijzingen.
 
-De bestands share blijft bestaan, tenzij u deze hand matig verwijdert. Cloud Shell kunt niet meer op volgende sessies naar deze bestands share zoeken. Als u meer informatie wilt weer geven, voert u `clouddrive unmount -h`uit, zoals hier wordt weer gegeven:
+Uw bestandsshare blijft bestaan, tenzij u deze handmatig verwijdert. Cloud Shell zal niet langer zoeken naar dit bestandsaandeel bij volgende sessies. Om meer details `clouddrive unmount -h`te bekijken, uit te voeren, zoals hier weergegeven:
 
-![De clouddrive-unmount'command uitvoeren](media/persisting-shell-storage/unmount-h.png)
+![De opdracht 'clouddrive unmount' uitvoeren](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Hoewel met deze opdracht geen resources worden verwijderd, hand matig verwijderen van een resource groep, opslag account of bestands share die is toegewezen aan Cloud Shell, worden uw `$Home` Directory-schijf kopie en alle bestanden in de bestands share gewist. Deze actie kan niet ongedaan worden gemaakt.
-## <a name="powershell-specific-commands"></a>Power shell-specifieke opdrachten
+> Hoewel het uitvoeren van deze opdracht geen resources verwijdert, verwijdert u handmatig een brongroep, opslagaccount of `$Home` bestandsshare die is toegewezen aan Cloud Shell, uw directoryschijfafbeelding en alle bestanden in uw bestandsshare. Deze actie kan niet ongedaan worden gemaakt.
+## <a name="powershell-specific-commands"></a>PowerShell-specifieke opdrachten
 
-### <a name="list-clouddrive-azure-file-shares"></a>`clouddrive` Azure-bestands shares weer geven
-Met de cmdlet `Get-CloudDrive` worden de gegevens van de Azure-bestands share opgehaald die momenteel zijn gekoppeld door de `clouddrive` in de Cloud Shell. <br>
-![met Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
+### <a name="list-clouddrive-azure-file-shares"></a>Azure-bestandsshares `clouddrive` aanbieden
+De `Get-CloudDrive` cmdlet haalt de Azure-gegevens voor `clouddrive` het delen van bestanden op die momenteel zijn gemonteerd door de cloudshell. <br>
+![Get-CloudDrive uitvoeren](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-### <a name="unmount-clouddrive"></a>`clouddrive` ontkoppelen
-U kunt op elk gewenst moment een Azure-bestands share ontkoppelen die aan Cloud Shell is gekoppeld. Als de Azure-bestands share is verwijderd, wordt u gevraagd om een nieuwe Azure-bestands share te maken en te koppelen tijdens de volgende sessie.
+### <a name="unmount-clouddrive"></a>Ontkoppelen`clouddrive`
+U een Azure-bestandsshare dat op elk gewenst moment is gemonteerd op Cloud Shell, ongedaan maken. Als de Azure-bestandsshare is verwijderd, wordt u gevraagd om bij de volgende sessie een nieuwe Azure-bestandsshare te maken en te monteren.
 
-Met de cmdlet `Dismount-CloudDrive` wordt een Azure-bestands share ontkoppeld van het huidige opslag account. Als de `clouddrive` wordt ontkoppeld, wordt de huidige sessie beëindigd. De gebruiker wordt gevraagd een nieuwe Azure-bestands share te maken en koppelen tijdens de volgende sessie.
-![het ontkoppelen-CloudDrive wordt uitgevoerd](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
+De `Dismount-CloudDrive` cmdlet ontkoppelt een Azure-bestandsshare van het huidige opslagaccount. Het demonteren `clouddrive` van de huidige sessie wordt beëindigd. De gebruiker wordt gevraagd om tijdens de volgende sessie een nieuwe Azure-bestandsshare te maken en te monteren.
+![Deismount-CloudDrive uitvoeren](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-Opmerking: als u een functie in een bestand moet definiëren en deze aanroept vanuit de Power shell-cmdlets, moet de punt operator worden opgenomen. Bijvoorbeeld:. .\MyFunctions.ps1
+Opmerking: Als u een functie in een bestand moet definiëren en deze moet aanroepen vanaf de PowerShell-cmdlets, moet de puntoperator worden opgenomen. Bijvoorbeeld: . .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Volgende stappen
-[Snelstartgids Cloud Shell](quickstart.md) <br>
-[Meer informatie over de opslag van Microsoft Azure-bestanden](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
-[Meer informatie over opslag Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[Cloud Shell Snelstart](quickstart.md) <br>
+[Meer informatie over Microsoft Azure Files-opslag](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Meer informatie over opslagtags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

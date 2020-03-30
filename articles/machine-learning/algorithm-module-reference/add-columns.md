@@ -1,7 +1,7 @@
 ---
-title: 'Kolommen toevoegen: module verwijzing'
+title: 'Kolommen toevoegen: moduleverwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module kolommen toevoegen in Azure Machine Learning om twee gegevens sets samen te voegen.
+description: Meer informatie over het gebruik van de module Kolommen toevoegen in Azure Machine Learning om twee gegevenssets samen te voegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,41 +9,41 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 55fe3a2a4fd0f45b0873e47f29b7ea013558be40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456775"
 ---
-# <a name="add-columns-module"></a>Module kolommen toevoegen
+# <a name="add-columns-module"></a>Module Kolommen toevoegen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om twee gegevens sets samen te voegen. U combineert alle kolommen uit de twee gegevens sets die u opgeeft als invoer om één gegevensset te maken. Als u meer dan twee gegevens sets wilt samen voegen, gebruikt u meerdere exemplaren van de **kolom toevoegen**.
+Gebruik deze module om twee gegevenssets te concaten. U combineert alle kolommen uit de twee gegevenssets die u opgeeft als invoer om één gegevensset te maken. Als u meer dan twee gegevenssets moet toevoegen, gebruikt u verschillende exemplaren van **Kolommen toevoegen**.
 
 
 
-## <a name="how-to-configure-add-columns"></a>Het configureren van kolommen toevoegen
-1. Voeg de module **Columns toevoegen** toe aan de pijp lijn.
+## <a name="how-to-configure-add-columns"></a>Kolommen toevoegen configureren
+1. Voeg de module **Kolommen toevoegen** toe aan uw pijplijn.
 
-2. Verbind de twee gegevens sets die u wilt samen voegen. Als u meer dan twee gegevens sets wilt combi neren, kunt u meerdere combi Naties van **toevoegen kolommen samen voegen**.
+2. Sluit de twee gegevenssets die u wilt koppelen. Als u meer dan twee gegevenssets wilt combineren, u verschillende combinaties van Kolommen toevoegen aan elkaar **ketenen.**
 
-    - Het is mogelijk om twee kolommen te combi neren met een verschillend aantal rijen. De uitvoer gegevensset wordt aangevuld met ontbrekende waarden voor elke rij in de kleinere bron kolom.
+    - Het is mogelijk om twee kolommen met een verschillend aantal rijen te combineren. De uitvoergegevensset wordt opgevuld met ontbrekende waarden voor elke rij in de kleinere bronkolom.
 
-    - U kunt geen afzonderlijke kolommen kiezen om toe te voegen. Alle kolommen van elke gegevensset worden samengevoegd wanneer u **kolommen toevoegen**gebruikt. Als u alleen een subset van de kolommen wilt toevoegen, gebruikt u kolommen selecteren in gegevensset om een gegevensset met de gewenste kolommen te maken.
+    - U geen afzonderlijke kolommen kiezen om toe te voegen. Alle kolommen van elke gegevensset worden samengevoegd wanneer u **Kolommen toevoegen**gebruikt. Als u daarom alleen een subset van de kolommen wilt toevoegen, gebruikt u Kolommen selecteren in gegevensset om een gegevensset te maken met de gewenste kolommen.
 
-3. Voer de pijplijn uit.
+3. Verzend de pijplijn.
 
 ### <a name="results"></a>Resultaten
-Nadat de pijp lijn is uitgevoerd:
+Nadat de pijplijn is uitgevoerd:
 
-- Als u de eerste rijen van de nieuwe gegevensset wilt zien, klikt u met de rechter muisknop op de module **kolommen toevoegen** en selecteert u visualiseren. Of selecteer de module en schakel over naar het tabblad **uitvoer** in het rechterdeel venster, klik op het histogram pictogram in de **poort uitvoer** om het resultaat te visualiseren.
+- Als u de eerste rijen van de nieuwe gegevensset wilt bekijken, klikt u met de rechtermuisknop op de module **Kolommen toevoegen** en selecteert u Visualiseren. Of Selecteer de module en ga naar het tabblad **Uitvoer** in het rechterdeelvenster en klik op het histogrampictogram in de **poortuitvoer** om het resultaat te visualiseren.
 
-Het aantal kolommen in de nieuwe gegevensset is gelijk aan de som van de kolommen van beide invoer gegevens sets.
+Het aantal kolommen in de nieuwe gegevensset is gelijk aan de som van de kolommen van beide invoergegevenssets.
 
-Als er twee kolommen met dezelfde naam in de invoer gegevens sets staan, wordt een numeriek achtervoegsel toegevoegd aan de naam van de kolom. Als er bijvoorbeeld twee exemplaren van een kolom met de naam TargetOutcome zijn, wordt de naam van de linkerkolom TargetOutcome_1 gewijzigd en wordt de naam van de rechter kolom gewijzigd TargetOutcome_2.
+Als er twee kolommen met dezelfde naam in de invoergegevenssets staan, wordt een numeriek achtervoegsel toegevoegd aan de naam van de kolom. Als er bijvoorbeeld twee exemplaren van een kolom met de naam TargetOutcome zijn, wordt de linkerkolom TargetOutcome_1 hernoemd en wordt de rechterkolom TargetOutcome_2.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

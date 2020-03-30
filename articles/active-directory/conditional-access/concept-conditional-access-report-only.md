@@ -1,54 +1,54 @@
 ---
-title: Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang? - Azure Active Directory
-description: Hoe kan ik de modus alleen rapport-Help gebruiken met de implementatie van beleid voor voorwaardelijke toegang
+title: Wat is de modus Alleen voor rapportvoorwaardelijke toegang? - Azure Active Directory
+description: Hoe kan de modus Alleen-rapporthelpen bij de implementatie van beleid voor voorwaardelijke toegang
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295290"
 ---
-# <a name="what-is-conditional-access-report-only-mode"></a>Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?
+# <a name="what-is-conditional-access-report-only-mode"></a>Wat is de modus Alleen voor rapportvoorwaardelijke toegang?
 
-Voorwaardelijke toegang wordt veel door onze klanten gebruikt om veilig te blijven door de juiste toegangs controles in de juiste omstandigheden toe te passen. Maar een van de uitdagingen bij het implementeren van beleid voor voorwaardelijke toegang in uw organisatie is het bepalen van de impact op eind gebruikers. Het kan lastig zijn om te anticiperen op het aantal en de namen van gebruikers die van invloed zijn op veelvoorkomende implementatie initiatieven, zoals het blok keren van verouderde verificatie, het vereisen van multi-factor Authentication voor een populatie van gebruikers of het implementeren van beleids regels voor aanmeldings Risico's. 
+Voorwaardelijke toegang wordt veel gebruikt door onze klanten om veilig te blijven door de juiste toegangscontroles toe te passen in de juiste omstandigheden. Een van de uitdagingen bij het implementeren van een beleid voor voorwaardelijke toegang in uw organisatie is echter het bepalen van de impact op eindgebruikers. Het kan moeilijk zijn om te anticiperen op het aantal en de namen van gebruikers die worden beïnvloed door gemeenschappelijke implementatie-initiatieven, zoals het blokkeren van verouderde verificatie, het vereisen van meervoudige verificatie voor een populatie gebruikers of het implementeren van aanmeldingsrisicobeleid. 
 
-De modus alleen rapport is een nieuwe beleids status voor voorwaardelijk toegangs beleid waarmee beheerders de impact van beleids regels voor voorwaardelijke toegang kunnen evalueren voordat ze in hun omgeving worden ingeschakeld.  Met de versie van de modus alleen rapport:
+Rapportmodus is een nieuwe status van het beleid voor voorwaardelijke toegang waarmee beheerders de impact van beleid voor voorwaardelijke toegang kunnen evalueren voordat ze in hun omgeving worden ingeschakeld.  Met de release van rapport-only modus:
 
-- Beleid voor voorwaardelijke toegang kan worden ingeschakeld in de modus alleen rapport.
-- Tijdens het aanmelden worden beleids regels in de modus alleen rapport geëvalueerd, maar niet afgedwongen.
-- De resultaten worden vastgelegd in de tabbladen **voorwaardelijke toegang** en **rapport-enkel (preview)** van de logboek gegevens van de aanmelding.
-- Klanten met een Azure Monitor-abonnement kunnen de impact van hun beleids regels voor voorwaardelijke toegang bewaken met behulp van de Insights-werkmap voor voorwaardelijke toegang.
+- Beleid voor voorwaardelijke toegang kan worden ingeschakeld in de modus Alleen rapporteren.
+- Tijdens het aanmelden wordt beleid in de modus alleen-rapporteren geëvalueerd, maar niet afgedwongen.
+- De resultaten worden geregistreerd in de tabbladen **Voorwaardelijke toegang** en Alleen **rapport (Voorvertoning)** van de aanmeldingslogboekgegevens.
+- Klanten met een Azure Monitor-abonnement kunnen de impact van hun beleid voor voorwaardelijke toegang controleren met behulp van de werkmap Voorwaardelijke toegang-inzichten.
 
 > [!WARNING]
-> Beleids regels in de modus alleen rapport die compatibele apparaten vereisen, kunnen gebruikers op Mac, iOS en Android vragen om een certificaat voor een apparaat te selecteren tijdens de beleids evaluatie, zelfs als de naleving van het apparaat niet wordt afgedwongen. Deze prompts kunnen worden herhaald totdat het apparaat compatibel is. Als u wilt voor komen dat eind gebruikers prompts ontvangen tijdens het aanmelden, sluit u de Mac-, iOS-en Android-apparaten van het apparaat uit met alleen rapport beleid waarmee de nalevings controles voor apparaten worden uitgevoerd.
+> Beleidsregels in de rapportmodus waarvoor compatibele apparaten compatibel zijn, kunnen gebruikers op Mac, iOS en Android vragen om een apparaatcertificaat te selecteren tijdens de beleidsevaluatie, ook al wordt de naleving van het apparaat niet afgedwongen. Deze aanwijzingen kunnen worden herhaald totdat het apparaat compatibel is gemaakt. Om te voorkomen dat eindgebruikers tijdens het aanmelden aanwijzingen ontvangen, sluit u apparaatplatforms Mac, iOS en Android uit van beleid dat alleen rapporteren aan het beleid voor naleving van apparaten.
 
-![Het tabblad alleen rapport in het logboek van Azure AD-aanmelding](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
+![Tabblad Alleen-rapport in azure AD-aanmeldingslogboek](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
-## <a name="policy-results"></a>Beleids resultaten
+## <a name="policy-results"></a>Beleidsresultaten
 
-Wanneer een beleid in de modus alleen rapport wordt geëvalueerd voor een bepaalde aanmelding, zijn er vier nieuwe mogelijke resultaat waarden:
+Wanneer een beleid in de rapportmodus wordt geëvalueerd voor een bepaalde aanmelding, zijn er vier nieuwe mogelijke resultaatwaarden:
 
 | Resultaat | Beschrijving |
 | --- | --- |
-| Alleen rapport: geslaagd | Alle geconfigureerde beleids voorwaarden, vereiste besturings elementen voor niet-interactieve toekenning en er zijn sessie besturings elementen voldaan. Voor een multi-factor Authentication-vereiste wordt bijvoorbeeld voldaan aan een MFA-claim die al aanwezig is in het token of aan een compatibel apparaatbeleid wordt voldaan door een controle van een apparaat op een compatibel apparaat uit te voeren. |
-| Alleen rapport: fout | Aan alle geconfigureerde beleids voorwaarden is voldaan, maar niet aan alle vereiste besturings elementen voor niet-interactieve toekenning of sessie besturings elementen is voldaan. Een beleid is bijvoorbeeld van toepassing op een gebruiker waar een blok besturings element is geconfigureerd of een apparaat voldoet niet aan het beleid voor naleving van het apparaat. |
-| Alleen rapport: gebruikers actie vereist | Aan alle geconfigureerde beleids voorwaarden is voldaan, maar de gebruikers actie is vereist om te voldoen aan de vereiste besturings elementen of sessie besturings elementen. Met de modus alleen rapport wordt de gebruiker niet gevraagd om te voldoen aan de vereiste besturings elementen. Gebruikers worden bijvoorbeeld niet gevraagd om multi-factor Authentication-uitdagingen of gebruiks voorwaarden.   |
-| Alleen rapport: niet toegepast | Niet aan alle geconfigureerde beleids voorwaarden is voldaan. De gebruiker is bijvoorbeeld uitgesloten van het beleid of het beleid is alleen van toepassing op bepaalde vertrouwde benoemde locaties. |
+| Alleen-rapport: Succes | Alle geconfigureerde beleidsvoorwaarden, vereiste niet-interactieve subsidiebesturingselementen en sessiebesturingselementen werden voldaan. Een vereiste voor meervoudige verificatie wordt bijvoorbeeld voldaan door een MFA-claim die al in het token aanwezig is, of een compatibel apparaatbeleid wordt voldaan door een apparaatcontrole uit te voeren op een compatibel apparaat. |
+| Alleen rapport: mislukt | Aan alle geconfigureerde beleidsvoorwaarden was voldaan, maar niet aan alle vereiste niet-interactieve subsidiebesturingselementen of sessiebesturingselementen is voldaan. Een beleid is bijvoorbeeld van toepassing op een gebruiker waarbij een blokbesturingselement is geconfigureerd of een apparaat voldoet aan een compatibel apparaatbeleid. |
+| Alleen rapport: actie van de gebruiker vereist | Aan alle geconfigureerde beleidsvoorwaarden is voldaan, maar er moet actie van de gebruiker worden ondernomen om te voldoen aan de vereiste subsidiecontroles of sessiebesturingselementen. Met de modus Alleen-rapporteren wordt de gebruiker niet gevraagd om aan de vereiste besturingselementen te voldoen. Gebruikers worden bijvoorbeeld niet gevraagd om multi-factor authenticatie uitdagingen of gebruiksvoorwaarden.   |
+| Rapport-only: Niet toegepast | Niet aan alle geconfigureerde beleidsvoorwaarden was voldaan. De gebruiker is bijvoorbeeld uitgesloten van het beleid of het beleid is alleen van toepassing op bepaalde vertrouwde locaties met de naam. |
 
-## <a name="conditional-access-insights-workbook"></a>Insights-werkmap voor voorwaardelijke toegang
+## <a name="conditional-access-insights-workbook"></a>Werkmap voorwaardelijke toegang tot insights
 
-Beheerders kunnen meerdere beleids regels maken in de modus alleen rapport, zodat het nodig is om zowel de individuele gevolgen van elk beleid te begrijpen als de gecombineerde impact van meerdere beleids regels die samen worden geëvalueerd. Met de nieuwe Insights-werkmap voor voorwaardelijke toegang kunnen beheerders voorwaardelijke toegangs query's visualiseren en de impact van een beleid voor een bepaalde periode, set toepassingen en gebruikers bewaken. 
+Beheerders hebben de mogelijkheid om meerdere beleidsregels te maken in de modus Alleen rapporteren, dus het is noodzakelijk om zowel de individuele impact van elk beleid als de gecombineerde impact van meerdere beleidsregels samen te begrijpen. Met de nieuwe werkmap Conditional Access Insights kunnen beheerders voorwaardelijke toegangsquery's visualiseren en de impact van een beleid voor een bepaald tijdsbereik, reeks toepassingen en gebruikers controleren. 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-[Modus alleen rapport configureren voor beleid voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Modus alleen rapport configureren voor een beleid voor voorwaardelijke toegang](howto-conditional-access-report-only.md)

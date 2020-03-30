@@ -1,6 +1,6 @@
 ---
-title: Een Asset coderen met Media Encoder Standard met behulp van .NET | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u .NET kunt gebruiken om een Asset te coderen met behulp van Media Encoder Standard.
+title: Een actief coderen met Media Encoder Standard met .NET | Microsoft Documenten
+description: In dit artikel ziet u hoe u .NET gebruikt om een asset te coderen met Behulp van Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,24 +16,24 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016593"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Een Asset coderen met Media Encoder Standard met behulp van .NET  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Een asset coderen met Media Encoder Standard met .NET  
 
-Encoding-taken behoren tot de vaakst uitgevoerde bewerkingen in Media Services. U creëert coderingstaken om mediabestanden te converteren van de ene naar de andere indeling. Wanneer u codeert, kunt u de ingebouwde Media Encoder van Media Services gebruiken. U kunt ook een coderings programma van een Media Services partner gebruiken. coderings Programma's van derden zijn beschikbaar via de Azure Marketplace. 
+Coderingstaken zijn een van de meest voorkomende verwerkingsbewerkingen in Media Services. U maakt coderingstaken om mediabestanden van de ene codering naar de andere te converteren. Wanneer u codeert, u de ingebouwde Media Encoder van Media Services gebruiken. U ook gebruik maken van een encoder die wordt geleverd door een Media Services-partner; externe encoders zijn beschikbaar via de Azure Marketplace. 
 
-In dit artikel wordt beschreven hoe u .NET kunt gebruiken om uw assets te coderen met Media Encoder Standard (MES). Media Encoder Standard is geconfigureerd met een van de voor instellingen van coderings Programma's die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)worden beschreven.
+In dit artikel ziet u hoe u .NET gebruiken om uw assets te coderen met Media Encoder Standard (MES). Media Encoder Standard is geconfigureerd met behulp van een van de encoders presets [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschreven.
 
-Het is raadzaam om uw bron bestanden altijd te coderen in een adaptieve bitsnelheid MP4 en de set vervolgens te converteren naar de gewenste indeling met behulp van de [dynamische verpakking](media-services-dynamic-packaging-overview.md). 
+Het wordt aanbevolen om uw bronbestanden altijd te coderen in een adaptieve bitrate MP4-set en vervolgens de set om te zetten naar het gewenste formaat met behulp van de [Dynamische verpakking.](media-services-dynamic-packaging-overview.md) 
 
-Als uw uitvoer activum is versleuteld, moet u het beleid voor de levering van assets configureren. Zie voor meer informatie beleid voor het [leveren van assets configureren](media-services-dotnet-configure-asset-delivery-policy.md).
+Als uw uitvoerasset is versleuteld met opslag, moet u het beleid voor het leveren van activa configureren. Zie [Beleid voor het configureren van asset delivery voor](media-services-dotnet-configure-asset-delivery-policy.md)meer informatie .
 
 > [!NOTE]
-> MES produceert een uitvoer bestand met een naam die de eerste 32 tekens van de naam van het invoer bestand bevat. De naam is gebaseerd op wat is opgegeven in het vooraf ingestelde bestand. Bijvoorbeeld "bestands naam": "{basispad} _ {index} {extension}". {Basispad} wordt vervangen door de eerste 32 tekens van de naam van het invoer bestand.
+> MES produceert een uitvoerbestand met een naam die de eerste 32 tekens van de invoerbestandsnaam bevat. De naam is gebaseerd op wat is opgegeven in het voorinstellingsbestand. Bijvoorbeeld 'Bestandsnaam': "{Basename}_{Index}{Extension}". {Basename} wordt vervangen door de eerste 32 tekens van de invoerbestandsnaam.
 > 
 > 
 
@@ -41,36 +41,36 @@ Als uw uitvoer activum is versleuteld, moet u het beleid voor de levering van as
 [Indelingen en codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES-standaardinstellingen
-Media Encoder Standard is geconfigureerd met een van de voor instellingen van coderings Programma's die [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)worden beschreven.
+Media Encoder Standard is geconfigureerd met behulp van een van de encoders presets [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschreven.
 
-### <a name="input-and-output-metadata"></a>Invoer-en uitvoer meta gegevens
-Wanneer u een invoer activum (of activa) codeert met behulp van MES, ontvangt u een uitvoer activum wanneer de versleutelings taak is voltooid. Het uitvoer element bevat video, audio, miniaturen, manifest enz. op basis van de voor instelling voor de code ring die u gebruikt.
+### <a name="input-and-output-metadata"></a>Metagegevens voor invoer en uitvoer
+Wanneer u een invoerelement (of activa) codeert met MES, krijgt u een uitvoerasset bij de succesvolle voltooiing van die codetaak. Het uitvoerelement bevat video, audio, miniaturen, manifest, enz.
 
-Het uitvoer activum bevat ook een bestand met meta gegevens over de invoer Asset. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: < asset_id > _metadata. XML (bijvoorbeeld 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. XML), waarbij < asset_id > de AssetId-waarde is van de invoer Asset. Het schema van deze XML voor invoer van meta gegevens wordt [hier](media-services-input-metadata-schema.md)beschreven.
+Het uitvoerelement bevat ook een bestand met metagegevens over het invoerelement. De naam van het XML-bestand metagegevens heeft de volgende indeling: <asset_id>_metadata.xml (bijvoorbeeld 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), waarbij <asset_id> de AssetId-waarde van het invoeractief is. Het schema van deze invoermetagegevens XML wordt [hier](media-services-input-metadata-schema.md)beschreven.
 
-Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: < source_file_name > _manifest. XML (bijvoorbeeld BigBuckBunny_manifest. XML). Het schema van deze XML voor uitvoer meta gegevens wordt [hier](media-services-output-metadata-schema.md)beschreven.
+Het uitvoerelement bevat ook een bestand met metagegevens over het uitvoerelement. De naam van het XML-bestand met ametjes heeft de volgende indeling: <source_file_name>_manifest.xml (bijvoorbeeld BigBuckBunny_manifest.xml). Het schema van deze uitvoermetagegevens XML wordt [hier](media-services-output-metadata-schema.md)beschreven .
 
-Als u een van de twee meta gegevensbestanden wilt controleren, kunt u een SAS-Locator maken en het bestand downloaden naar uw lokale computer. Hier vindt u een voor beeld van hoe u een SAS-Locator maakt en een bestand downloadt met behulp van de Media Services .NET SDK-extensies.
+Als u een van de twee metagegevensbestanden wilt onderzoeken, u een SAS-locator maken en het bestand downloaden naar uw lokale computer. U een voorbeeld vinden over het maken van een SAS-locator en het downloaden van een bestand met behulp van de Media Services .NET SDK-extensies.
 
 ## <a name="download-sample"></a>Voorbeeld downloaden
-U kunt een voor beeld ophalen en uitvoeren dat laat zien hoe u deze codeert met MES. [](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)
+U een voorbeeld krijgen en uitvoeren dat laat zien hoe u vanaf [hier](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)met MES coderen.
 
-## <a name="net-sample-code"></a>.NET-voorbeeld code
+## <a name="net-sample-code"></a>.NET-voorbeeldcode
 
-In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volgende taken uit te voeren:
+In het volgende codevoorbeeld wordt Media Services .NET SDK gebruikt om de volgende taken uit te voeren:
 
-* Maak een coderings taak.
-* Een verwijzing naar de Media Encoder Standard encoder ophalen.
-* Geef op of u [](media-services-autogen-bitrate-ladder-with-mes.md) de voor instelling adaptief streamen wilt gebruiken. 
-* Voeg één coderings taak aan de taak toe. 
-* Geef op welke invoer-Asset moet worden gecodeerd.
-* Maak een uitvoer activum dat het gecodeerde activum bevat.
-* Voeg een gebeurtenis-handler toe om de voortgang van de taak te controleren.
+* Maak een coderingstaak.
+* Hier krijg je een verwijzing naar de Media Encoder Standard encoder.
+* Geef op om de [voorinstelling Adaptieve streaming](media-services-autogen-bitrate-ladder-with-mes.md) te gebruiken. 
+* Voeg één coderingstaak toe aan de taak. 
+* Geef het invoerelement op dat moet worden gecodeerd.
+* Maak een uitvoerelement dat het gecodeerde element bevat.
+* Voeg een gebeurtenishandler toe om de voortgang van de taak te controleren.
 * Verzend de taak.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld 
 
@@ -196,12 +196,12 @@ namespace MediaEncoderStandardSample
 }
 ```
 
-## <a name="advanced-encoding-features-to-explore"></a>Geavanceerde coderings functies voor verkennen
+## <a name="advanced-encoding-features-to-explore"></a>Geavanceerde coderingsfuncties om te verkennen
 * [Miniaturen genereren](media-services-dotnet-generate-thumbnail-with-mes.md)
 * [Miniaturen genereren tijdens het coderen](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
 * [Video's bijsnijden tijdens het coderen](media-services-crop-video.md)
-* [Coderings definities aanpassen](media-services-custom-mes-presets-with-dotnet.md)
-* [Een video met een afbeelding bedekkend of in een water merk](media-services-advanced-encoding-with-mes.md#overlay)
+* [Coderingsvoorinstellingen aanpassen](media-services-custom-mes-presets-with-dotnet.md)
+* [Een video met een afbeelding bedekken of markeren met een afbeelding](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-[Miniatuur genereren met behulp van Media Encoder Standard met .net](media-services-dotnet-generate-thumbnail-with-mes.md)
-[Media Services encoding-overzicht](media-services-encode-asset.md)
+[Miniatuur genereren met Media Encoder Standard met .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
+[Media Services Encoding Overview](media-services-encode-asset.md)
 

@@ -1,165 +1,152 @@
 ---
-title: Azure Monitor Veelgestelde vragen | Microsoft Docs
+title: Veelgestelde vragen over Azure Monitor | Microsoft Documenten
 description: Antwoorden op veelgestelde vragen over Azure Monitor.
 services: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/23/2020
-ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298251"
 ---
-# <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
+# <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure-monitor
 
-Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor.
+Deze veelgestelde vragen van Microsoft is een lijst met veelgestelde vragen over Azure Monitor.
 
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-is-azure-monitor"></a>Wat is Azure Monitor?
-[Azure monitor](overview.md) is een service in azure die prestatie-en beschikbaarheids bewaking biedt voor toepassingen en services in azure, andere Cloud omgevingen of on-premises. Azure Monitor verzamelt gegevens uit meerdere bronnen in een gemeen schappelijk gegevens platform waar het kan worden geanalyseerd op trends en afwijkingen. Met uitgebreide functies in Azure Monitor kunt u snel kritieke situaties identificeren en erop reageren die van invloed kunnen zijn op uw toepassing.
+[Azure Monitor](overview.md) is een service in Azure die prestatie- en beschikbaarheidsbewaking biedt voor toepassingen en services in Azure, andere cloudomgevingen of on-premises. Azure Monitor verzamelt gegevens uit meerdere bronnen in een gemeenschappelijk gegevensplatform waar deze kunnen worden geanalyseerd op trends en afwijkingen. Uitgebreide functies in Azure Monitor helpen u bij het snel identificeren en reageren op kritieke situaties die van invloed kunnen zijn op uw toepassing.
 
 ### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Wat is het verschil tussen Azure Monitor, Log Analytics en Application Insights?
-In september 2018, micro soft gecombineerd Azure Monitor, Log Analytics en Application Insights in één service om een krachtige end-to-end bewaking te bieden van uw toepassingen en de onderdelen waarop ze zijn gebaseerd. Functies in Log Analytics en Application Insights zijn niet gewijzigd, maar sommige functies zijn opnieuw ingesteld op Azure Monitor om de nieuwe scope beter weer te geven. De logboek gegevens engine en query taal van Log Analytics worden nu Azure Monitor-logboeken genoemd. Zie [Azure monitor terminologie-updates](terminology.md).
+In september 2018 heeft Microsoft Azure Monitor, Log Analytics en Application Insights gecombineerd tot één service om krachtige end-to-end monitoring van uw toepassingen en de onderdelen waarop ze vertrouwen te bieden. Functies in Log Analytics en Application Insights zijn niet gewijzigd, hoewel sommige functies zijn omgedoopt tot Azure Monitor om hun nieuwe scope beter weer te geven. De loggegevensengine en querytaal van Log Analytics worden nu Azure Monitor Logs genoemd. Zie [Azure Monitor-terminologieupdates](terminology.md).
 
-### <a name="what-does-azure-monitor-cost"></a>Wat betekent Azure Monitor kosten?
-Functies van Azure Monitor die automatisch worden ingeschakeld, zoals het verzamelen van metrische gegevens en activiteiten logboeken, zijn gratis. Er zijn kosten verbonden aan andere functies, zoals logboek query's en waarschuwingen. Zie de [pagina met prijzen voor Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) voor gedetailleerde prijs informatie.
+### <a name="what-does-azure-monitor-cost"></a>Wat kost Azure Monitor?
+Functies van Azure Monitor die automatisch zijn ingeschakeld, zoals het verzamelen van statistieken en activiteitslogboeken, worden gratis geleverd. Er zijn kosten verbonden aan andere functies, zoals logboekquery's en waarschuwingen. Zie de [prijspagina azure monitor](https://azure.microsoft.com/pricing/details/monitor/) voor gedetailleerde prijsinformatie.
 
-### <a name="how-do-i-enable-azure-monitor"></a>Azure Monitor Hoe kan ik inschakelen?
-Azure Monitor is ingeschakeld wanneer u een nieuw Azure-abonnement maakt, het [activiteiten logboek](platform/activity-logs-overview.md) en de [metrische gegevens](platform/data-platform-metrics.md) van het platform worden automatisch verzameld. Maak [Diagnostische instellingen](platform/diagnostic-settings.md) voor het verzamelen van meer gedetailleerde informatie over de werking van uw Azure-resources en voeg [bewakings oplossingen](insights/solutions.md) en [inzichten](insights/insights-overview.md) toe om extra analyses te bieden op verzamelde gegevens voor bepaalde services. 
+### <a name="how-do-i-enable-azure-monitor"></a>Hoe schakel ik Azure Monitor in?
+Azure Monitor is ingeschakeld op het moment dat u een nieuw Azure-abonnement maakt en [activiteitslogboek-](platform/activity-logs-overview.md) en [platformstatistieken](platform/data-platform-metrics.md) worden automatisch verzameld. Maak [diagnostische instellingen](platform/diagnostic-settings.md) om meer gedetailleerde informatie over de werking van uw Azure-resources te verzamelen en voeg [bewakingsoplossingen](insights/solutions.md) en [-inzichten](insights/insights-overview.md) toe om aanvullende analyses te bieden over verzamelde gegevens voor bepaalde services. 
 
-### <a name="how-do-i-access-azure-monitor"></a>Hoe kan ik toegang tot Azure Monitor?
-Toegang tot alle Azure Monitor-functies en-gegevens via het menu **monitor** in de Azure Portal. De sectie **bewaking** van het menu voor verschillende Azure-Services biedt toegang tot dezelfde hulpprogram ma's als gegevens die zijn gefilterd op een bepaalde resource. Azure Monitor gegevens zijn ook toegankelijk voor diverse scenario's met behulp van CLI, Power shell en een REST API.
+### <a name="how-do-i-access-azure-monitor"></a>Hoe krijg ik toegang tot Azure Monitor?
+Toegang tot alle Azure Monitor-functies en -gegevens in het menu **Monitor** in de Azure-portal. De sectie **Controle** van het menu voor verschillende Azure-services biedt toegang tot dezelfde hulpprogramma's met gegevens die naar een bepaalde bron zijn gefilterd. Azure Monitor-gegevens zijn ook toegankelijk voor verschillende scenario's met CLI, PowerShell en een REST-API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Is er een on-premises versie van Azure Monitor?
-Nee. Azure Monitor is een schaal bare Cloud service die grote hoeveel heden gegevens verwerkt en opslaat, hoewel Azure Monitor resources kan bewaken die on-premises en in andere Clouds zijn.
+Nee. Azure Monitor is een schaalbare cloudservice die grote hoeveelheden gegevens verwerkt en opslaat, hoewel Azure Monitor resources kan controleren die on-premises en in andere clouds zijn.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Kan Azure Monitor on-premises resources controleren?
-Ja, naast het verzamelen van bewakings gegevens van Azure-resources, kunnen Azure Monitor gegevens verzamelen van virtuele machines en toepassingen in andere Clouds en on-premises. Zie [bronnen van bewakings gegevens voor Azure monitor](platform/data-sources.md).
+Ja, azure monitor kan niet alleen bewakingsgegevens uit Azure-bronnen verzamelen, maar ook gegevens verzamelen van virtuele machines en toepassingen in andere clouds en on-premises. Zie [Bronnen van bewakingsgegevens voor Azure Monitor](platform/data-sources.md).
 
-### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Is Azure Monitor geïntegreerd met System Center Operations Manager?
-U kunt uw bestaande System Center Operations Manager-beheer groep verbinden met Azure Monitor om gegevens van agents te verzamelen in Azure Monitor Logboeken. Zo kunt u logboek query's en oplossingen gebruiken om gegevens te analyseren die zijn verzameld door agents. U kunt ook bestaande System Center Operations Manager agenten zo configureren dat gegevens rechtstreeks naar Azure Monitor worden verzonden. Zie [Operations Manager verbinding maken met Azure monitor](platform/om-agents.md).
+### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Integreert Azure Monitor met System Center Operations Manager?
+U uw bestaande beheergroep System Center Operations Manager verbinden met Azure Monitor om gegevens van agents te verzamelen in Azure Monitor-logboeken. Hiermee u logboekquery's en oplossingen gebruiken om gegevens die van agents zijn verzameld, te analyseren. U ook bestaande System Center Operations Manager-agents configureren om gegevens rechtstreeks naar Azure Monitor te verzenden. Zie [Operations Manager verbinden met Azure Monitor](platform/om-agents.md).
 
-### <a name="what-ip-addresses-does-azure-monitor-use"></a>Welke IP-adressen Azure Monitor gebruiken?
-Zie [IP-adressen die worden gebruikt door Application Insights en log Analytics](app/ip-addresses.md) voor een lijst met de IP-adressen en poorten die vereist zijn voor agents en andere externe bronnen voor toegang tot Azure monitor. 
+### <a name="what-ip-addresses-does-azure-monitor-use"></a>Welke IP-adressen gebruikt Azure Monitor?
+Zie [IP-adressen die worden gebruikt door Application Insights en Log Analytics](app/ip-addresses.md) voor een lijst met de IP-adressen en poorten die nodig zijn voor agents en andere externe bronnen om toegang te krijgen tot Azure Monitor. 
 
 ## <a name="monitoring-data"></a>Bewakingsgegevens
 
-### <a name="where-does-azure-monitor-get-its-data"></a>Waar Azure Monitor de gegevens ophalen?
-Azure Monitor verzamelt gegevens uit verschillende bronnen, waaronder Logboeken en metrieken van Azure-platform en-resources, aangepaste toepassingen en agents die op virtuele machines worden uitgevoerd. Andere services, zoals Azure Security Center, en Network Watcher het verzamelen van gegevens in een Log Analytics-werk ruimte, zodat deze kunnen worden geanalyseerd met Azure Monitor gegevens. U kunt ook aangepaste gegevens naar Azure Monitor verzenden met behulp van de REST API voor Logboeken of metrieken. Zie [bronnen van bewakings gegevens voor Azure monitor](platform/data-sources.md).
+### <a name="where-does-azure-monitor-get-its-data"></a>Waar haalt Azure Monitor zijn gegevens vandaan?
+Azure Monitor verzamelt gegevens uit verschillende bronnen, waaronder logboeken en statistieken van Azure-platform en -bronnen, aangepaste toepassingen en agents die op virtuele machines worden uitgevoerd. Andere services zoals Azure Security Center en Network Watcher verzamelen gegevens in een Log Analytics-werkruimte, zodat deze kunnen worden geanalyseerd met Azure Monitor-gegevens. U ook aangepaste gegevens naar Azure Monitor verzenden met behulp van de REST-API voor logboeken of statistieken. Zie [Bronnen van bewakingsgegevens voor Azure Monitor](platform/data-sources.md).
 
-### <a name="what-data-is-collected-by-azure-monitor"></a>Welke gegevens worden er door Azure Monitor verzameld? 
-Azure Monitor verzamelt gegevens uit een verscheidenheid aan bronnen in [Logboeken](platform/data-platform-logs.md) of [metrieken](platform/data-platform-metrics.md). Elk type gegevens heeft zijn eigen relatieve voor delen, en alle typen bieden ondersteuning voor een bepaalde set functies in Azure Monitor. Er is één metrische Data Base voor elk Azure-abonnement, terwijl u meerdere Log Analytics-werk ruimten kunt maken voor het verzamelen van Logboeken, afhankelijk van uw vereisten. Zie [Azure monitor data platform](platform/data-platform.md).
+### <a name="what-data-is-collected-by-azure-monitor"></a>Welke gegevens worden verzameld door Azure Monitor? 
+Azure Monitor verzamelt gegevens uit verschillende bronnen in [logboeken](platform/data-platform-logs.md) of [statistieken.](platform/data-platform-metrics.md) Elk type gegevens heeft zijn eigen relatieve voordelen en elk ondersteunt een bepaalde set functies in Azure Monitor. Er is één metrische database voor elk Azure-abonnement, terwijl u meerdere Log Analytics-werkruimten maken om logboeken te verzamelen, afhankelijk van uw vereisten. Zie [Azure Monitor-gegevensplatform](platform/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Is er een maximale hoeveelheid gegevens die ik kan verzamelen in Azure Monitor?
-Er is geen limiet voor de hoeveelheid metrische gegevens die u kunt verzamelen, maar deze gegevens worden Maxi maal 93 dagen opgeslagen. Zie het [bewaren van metrische gegevens](platform/data-platform-metrics.md#retention-of-metrics). Er is geen limiet voor het aantal logboek gegevens dat u kunt verzamelen, maar dit kan worden beïnvloed door de prijs categorie die u kiest voor de Log Analytics-werk ruimte. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/monitor/).
+Er is geen limiet aan de hoeveelheid metrische gegevens die u verzamelen, maar deze gegevens worden maximaal 93 dagen opgeslagen. Zie [Behoud van statistieken](platform/data-platform-metrics.md#retention-of-metrics). Er is geen limiet aan de hoeveelheid logboekgegevens die u verzamelen, maar dit kan worden beïnvloed door de prijscategorie die u kiest voor de werkruimte Log Analytics. Zie [prijsdetails](https://azure.microsoft.com/pricing/details/monitor/).
 
-### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hoe kan ik toegang tot gegevens die door Azure Monitor zijn verzameld?
-Inzichten en oplossingen bieden een aangepaste ervaring voor het werken met gegevens die zijn opgeslagen in Azure Monitor. U kunt rechtstreeks met logboek gegevens werken met behulp van een logboek query die is geschreven in Kusto query language (KQL). In de Azure Portal kunt u query's schrijven en uitvoeren en gegevens interactief analyseren met behulp van Log Analytics. Analyseer de metrische gegevens in de Azure Portal met de Metrics Explorer. Zie [logboek gegevens analyseren in azure monitor](log-query/log-query-overview.md) en [aan de slag met Azure Metrics Explorer](platform/metrics-getting-started.md).
-
-
-
-
+### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hoe krijg ik toegang tot gegevens die zijn verzameld door Azure Monitor?
+Inzichten en oplossingen bieden een aangepaste ervaring voor het werken met gegevens die zijn opgeslagen in Azure Monitor. U rechtstreeks met loggegevens werken met behulp van een logboekquery geschreven in Kusto Query Language (KQL). In de Azure-portal u query's schrijven en uitvoeren en gegevens interactief analyseren met Behulp van Log Analytics. Analyseer statistieken in de Azure-portal met de Metrics Explorer. Zie [Logboekgegevens analyseren in Azure Monitor](log-query/log-query-overview.md) en Aan de slag met Azure Metrics [Explorer](platform/metrics-getting-started.md).
 
 ## <a name="solutions-and-insights"></a>Oplossingen en inzichten
 
-### <a name="what-is-an-insight-in-azure-monitor"></a>Wat is een inzicht in Azure Monitor?
-Inzichten bieden een aangepaste bewakings ervaring voor bepaalde Azure-Services. Ze gebruiken dezelfde metrische gegevens en Logboeken als andere functies in Azure Monitor, maar kunnen er ook extra informatie verzamelen en een unieke ervaring bieden in de Azure Portal. Zie [inzichten in azure monitor](insights/insights-overview.md).
+### <a name="what-is-an-insight-in-azure-monitor"></a>Wat is inzicht in Azure Monitor?
+Inzichten bieden een aangepaste monitoringervaring voor bepaalde Azure-services. Ze gebruiken dezelfde statistieken en logboeken als andere functies in Azure Monitor, maar kunnen extra gegevens verzamelen en een unieke ervaring bieden in de Azure-portal. Zie [Insights in Azure Monitor](insights/insights-overview.md).
 
-Als u inzichten wilt weer geven in de Azure Portal, raadpleegt u de sectie **inzichten** in het menu **monitor** of in het gedeelte **bewaking** van het menu van de service.
+Zie het gedeelte **Inzichten** van het menu **Monitor** of **Het gedeelte Controle** van het menu van de service om inzichten in de Azure-portal weer te geven.
 
 ### <a name="what-is-a-solution-in-azure-monitor"></a>Wat is een oplossing in Azure Monitor?
-Bewakings oplossingen zijn verpakte sets van logica voor het bewaken van een bepaalde toepassing of service op basis van Azure Monitor-functies. Ze verzamelen logboek gegevens in Azure Monitor en bieden logboek query's en-weer gaven voor hun analyse met behulp van een algemene ervaring in de Azure Portal. Zie [oplossingen controleren in azure monitor](insights/solutions.md).
+Monitoringoplossingen zijn verpakte sets logica voor het bewaken van een bepaalde toepassing of service op basis van Azure Monitor-functies. Ze verzamelen logboekgegevens in Azure Monitor en bieden logboekquery's en -weergaven voor hun analyse met behulp van een algemene ervaring in de Azure-portal. Zie [Bewakingsoplossingen in Azure Monitor](insights/solutions.md).
 
-Als u oplossingen wilt weer geven in de Azure Portal, klikt u op **meer** in het gedeelte **inzichten** van het menu **monitor** . Klik op **toevoegen** om aanvullende oplossingen aan de werk ruimte toe te voegen.
-
-
-
-
-
+Als u oplossingen in de Azure-portal wilt weergeven, klikt u op **Meer** in het gedeelte **Inzichten** van het menu **Monitor.** Klik **op Toevoegen** om extra oplossingen aan de werkruimte toe te voegen.
 
 ## <a name="logs"></a>Logboeken
 
-### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Wat is het verschil tussen Azure Monitor logboeken en Azure Data Explorer?
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Monitor-Logboeken is gebaseerd op Azure Data Explorer en maakt gebruik van dezelfde Kusto query language (KQL) met enkele kleine verschillen. Zie [Azure monitor taal verschillen in de logboek query](log-query/data-explorer-difference.md).
+### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Wat is het verschil tussen Azure Monitor Logs en Azure Data Explorer?
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Monitor Logs is gebouwd bovenop Azure Data Explorer en gebruikt dezelfde Kusto Query Language (KQL) met enkele kleine verschillen. Zie [taalverschillen in querytaal van Azure Monitor- logboekquery .](log-query/data-explorer-difference.md)
 
-### <a name="how-do-i-retrieve-log-data"></a>Hoe kan ik logboek gegevens ophalen?
-Alle gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van een logboek query die is geschreven met Kusto query language (KQL). U kunt uw eigen query's schrijven of oplossingen en inzichten gebruiken die logboek query's bevatten voor een bepaalde toepassing of service. Zie [overzicht van logboek query's in azure monitor](log-query/log-query-overview.md).
+### <a name="how-do-i-retrieve-log-data"></a>Hoe kan ik loggegevens ophalen?
+Alle gegevens worden opgehaald uit een Log Analytics-werkruimte met behulp van een logboekquery die is geschreven met Kusto Query Language (KQL). U uw eigen query's schrijven of oplossingen en inzichten gebruiken die logboekquery's voor een bepaalde toepassing of service bevatten. Zie [Overzicht van logboekquery's in Azure Monitor](log-query/log-query-overview.md).
 
-### <a name="what-is-a-log-analytics-workspace"></a>Wat is een Log Analytics-werk ruimte?
-Alle door Azure Monitor verzamelde logboek gegevens worden opgeslagen in een Log Analytics-werk ruimte. Een werk ruimte is in feite een container waarin logboek gegevens worden verzameld uit verschillende bronnen. Mogelijk hebt u een enkele Log Analytics-werk ruimte voor al uw bewakings gegevens of hebt u vereisten voor meerdere werk ruimten. Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md).
+### <a name="what-is-a-log-analytics-workspace"></a>Wat is een Log Analytics-werkruimte?
+Alle logboekgegevens die door Azure Monitor worden verzameld, worden opgeslagen in een werkruimte log Analytics. Een werkruimte is in wezen een container waar loggegevens worden verzameld uit verschillende bronnen. U hebt mogelijk één Log Analytics-werkruimte voor al uw bewakingsgegevens of hebt mogelijk vereisten voor meerdere werkruimten. Zie [Het ontwerpen van de implementatie van Azure Monitor Logs](platform/design-logs-deployment.md).
 
-### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kunt u een bestaande Log Analytics-werk ruimte verplaatsen naar een ander Azure-abonnement?
-U kunt een werk ruimte verplaatsen tussen resource groepen of abonnementen, maar niet naar een andere regio. Zie [een log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep](platform/move-workspace.md).
+### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>u een bestaande Log Analytics-werkruimte verplaatsen naar een ander Azure-abonnement?
+U een werkruimte verplaatsen tussen resourcegroepen of abonnementen, maar niet naar een andere regio. Zie [Een werkruimte logboekanalyse verplaatsen naar een ander abonnement of resourcegroep](platform/move-workspace.md).
 
-### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Waarom kan ik query Explorer niet zien en knoppen Opslaan in Log Analytics?
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Waarom kan ik queryverkenneren en opslaanknoppen niet zien in Log Analytics?
 
-De knoppen **query Verkenner**, **Opslaan** en **nieuwe waarschuwings regel** zijn niet beschikbaar wanneer het [query bereik](log-query/scope.md) is ingesteld op een specifieke resource. Als u waarschuwingen wilt maken, een query wilt opslaan of laden, moet Log Analytics bereik zijn van een werk ruimte. Als u Log Analytics in de werkruimte context wilt openen, selecteert u **Logboeken** in het menu **Azure monitor** . De laatst gebruikte werkruimte is geselecteerd, maar u kunt een andere werkruimte selecteren. Zie de [logboek query bereik en het tijds bereik in Azure Monitor Log Analytics](log-query/scope.md)
+**Queryverkenner**, **Opslaan** en **Nieuwe waarschuwingsregelknoppen** zijn niet beschikbaar wanneer het [querybereik](log-query/scope.md) is ingesteld op een specifieke bron. Als u waarschuwingen wilt maken, een query wilt opslaan of laden, moet Log Analytics worden uitgevoerd in een werkruimte. Als u Log Analytics wilt openen in de context van de werkruimte, selecteert u **Logboeken** in het menu **Azure Monitor.** De laatst gebruikte werkruimte is geselecteerd, maar u een andere werkruimte selecteren. Zie [Querybereik en -tijdsbereik van logboeken in Azure Monitor Log Analytics](log-query/scope.md)
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik de fout: ' micro soft. Insights van resource provider registreren voor dit abonnement om deze query in te scha kelen ' bij het openen van Log Analytics van een VM? 
-Veel resource providers worden automatisch geregistreerd, maar u moet mogelijk bepaalde resource providers hand matig registreren. Het bereik voor de registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie.
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik de foutmelding: 'Registreer resourceprovider 'Microsoft.Insights' voor dit abonnement om deze query in te schakelen bij het openen van Log Analytics vanaf een VM? 
+Veel resourceproviders worden automatisch geregistreerd, maar het kan nodig zijn om sommige resourceproviders handmatig te registreren. De ruimte voor registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie.
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen toegangs fout bericht bij het openen van Log Analytics vanaf een virtuele machine? 
-Als u VM-logboeken wilt weer geven, moet u beschikken over de machtiging lezen voor de werk ruimten waarin de VM-logboeken worden opgeslagen. In dergelijke gevallen moet de beheerder u verlenen machtigingen in Azure.
-
-
-
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen foutbericht voor toegang wanneer ik Log Analytics van een vm open? 
+Als u VM-logboeken wilt weergeven, moet u met leestoestemming worden verleend aan de werkruimten die de VM-logboeken opslaan. In deze gevallen moet uw beheerder u toestemming geven voor machtigingen in Azure.
 
 ## <a name="alerts"></a>Waarschuwingen
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Wat is een waarschuwing in Azure Monitor?
-Waarschuwingen geven u proactief op de hoogte wanneer er belang rijke voor waarden worden gevonden in uw bewakings gegevens. Hiermee kunt u problemen identificeren en verhelpen voordat de gebruikers van uw systeem ze merken. Er zijn meerdere soorten waarschuwingen:
+Waarschuwingen stellen u proactief op de hoogte wanneer belangrijke voorwaarden worden gevonden in uw bewakingsgegevens. Hiermee u problemen identificeren en aanpakken voordat de gebruikers van uw systeem deze opmerken. Er zijn meerdere soorten waarschuwingen:
 
-- Metrische waarde voor metriek overschrijdt drempel.
-- Logboek query-resultaten van een logboek query die overeenkomt met gedefinieerde criteria.
-- Activiteiten logboek-activiteiten logboek gebeurtenis komt overeen met gedefinieerde criteria.
-- Webtest: resultaten van de beschikbaarheids test voldoen aan de criteria die zijn gedefinieerd.
-
-
-Zie [overzicht van waarschuwingen in Microsoft Azure](platform/alerts-overview.md).
+- Metrische waarde - Metrische waarde overschrijdt een drempelwaarde.
+- Logboekquery - Resultaten van een logboekquery komen overeen met gedefinieerde criteria.
+- Activiteitenlogboek - Gebeurtenis activiteitenlogboek komt overeen met gedefinieerde criteria.
+- Webtest - Resultaten van beschikbaarheidstest komen overeen met gedefinieerde criteria.
 
 
-### <a name="what-is-an-action-group"></a>Wat is een actie groep?
-Een actie groep is een verzameling van meldingen en acties die kunnen worden geactiveerd door een waarschuwing. Meerdere waarschuwingen kunnen één actie groep gebruiken, zodat u algemene sets van meldingen en acties kunt benutten. Zie [actie groepen maken en beheren in de Azure Portal](platform/action-groups.md).
+Zie [Overzicht van waarschuwingen in Microsoft Azure](platform/alerts-overview.md).
 
 
-### <a name="what-is-an-action-rule"></a>Wat is een actie regel?
-Met een actie regel kunt u het gedrag wijzigen van een set waarschuwingen die overeenkomen met een bepaald criterium. Zo kunt u dergelijke vereisten uitvoeren als waarschuwings acties uitschakelen tijdens een onderhouds venster. U kunt ook een actie groep Toep assen op een set waarschuwingen in plaats van deze rechtstreeks toe te passen op de waarschuwings regels. Zie [actie regels](platform/alerts-action-rules.md).
+### <a name="what-is-an-action-group"></a>Wat is een actiegroep?
+Een actiegroep is een verzameling meldingen en acties die kunnen worden geactiveerd door een waarschuwing. Meerdere waarschuwingen kunnen één actiegroep gebruiken waarmee u gebruik maken van algemene sets meldingen en acties. Zie [Actiegroepen maken en beheren in de Azure-portal](platform/action-groups.md).
 
+
+### <a name="what-is-an-action-rule"></a>Wat is een actieregel?
+Met een actieregel u het gedrag wijzigen van een reeks waarschuwingen die overeenkomen met een bepaalde criteria. Hiermee u dergelijke vereisten uitvoeren, zoals het uitschakelen van waarschuwingsacties tijdens een onderhoudsvenster. U ook een actiegroep toepassen op een reeks waarschuwingen in plaats van deze rechtstreeks toe te passen op de waarschuwingsregels. Zie [Actieregels](platform/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agents
 
-### <a name="does-azure-monitor-require-an-agent"></a>Is Azure Monitor een agent nodig?
-Een agent is alleen vereist voor het verzamelen van gegevens van het besturings systeem en workloads op virtuele machines. De virtuele machines kunnen zich in azure, een andere cloud omgeving of on-premises bevinden. Zie [overzicht van de Azure monitor agents](platform/agents-overview.md).
+### <a name="does-azure-monitor-require-an-agent"></a>Heeft Azure Monitor een agent nodig?
+Een agent is alleen nodig om gegevens van het besturingssysteem en workloads in virtuele machines te verzamelen. De virtuele machines kunnen zich in Azure, een andere cloudomgeving of on-premises bevinden. Zie [Overzicht van de Azure Monitor-agents](platform/agents-overview.md).
 
 
-### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Wat is het verschil tussen de Azure Monitor agents?
-Diagnostische Azure-extensie is voor virtuele machines van Azure en verzamelt gegevens voor Azure Monitor metrieken, Azure Storage en Azure Event Hubs. De Log Analytics-agent is voor virtuele machines in azure, een andere cloud omgeving of on-premises en verzamelt gegevens voor Azure Monitor-Logboeken. De afhankelijkheids agent vereist de Log Analytics agent en de verzamelde proces gegevens en-afhankelijkheden. Zie [overzicht van de Azure monitor agents](platform/agents-overview.md).
+### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Wat is het verschil tussen de Azure Monitor-agents?
+Azure Diagnostic-extensie is voor virtuele Azure-machines en verzamelt gegevens naar Azure Monitor Metrics, Azure Storage en Azure Event Hubs. De log-analyse-agent is bedoeld voor virtuele machines in Azure, een andere cloudomgeving of on-premises en verzamelt gegevens naar Azure Monitor-logboeken. De afhankelijkheidsagent vereist de Log Analytics-agent en verzamelde procesdetails en afhankelijkheden. Zie [Overzicht van de Azure Monitor-agents](platform/agents-overview.md).
 
 
-### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Maakt mijn agent verkeer gebruik van mijn ExpressRoute-verbinding?
-Verkeer naar Azure Monitor maakt gebruik van het micro soft peering ExpressRoute-circuit. Raadpleeg de [ExpressRoute-documentatie](../expressroute/expressroute-faqs.md#supported-services) voor een beschrijving van de verschillende soorten ExpressRoute-verkeer. 
+### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Maakt mijn agentverkeer gebruik van mijn ExpressRoute-verbinding?
+Verkeer naar Azure Monitor maakt gebruik van het ExpressRoute-circuit van Microsoft- peering. Zie [ExpressRoute documentatie](../expressroute/expressroute-faqs.md#supported-services) voor een beschrijving van de verschillende soorten ExpressRoute verkeer. 
 
-### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hoe kan ik controleren of de Log Analytics-agent met Azure Monitor kan communiceren?
-Selecteer in het configuratie scherm op de computer van de agent **beveiliging & instellingen**, **micro soft Monitoring Agent** . Op het tabblad **Azure log Analytics (OMS)** wordt met een groen vinkje bevestigd dat de agent kan communiceren met Azure monitor. Een geel waarschuwings pictogram geeft aan dat de agent problemen ondervindt. Een veelvoorkomende reden is dat de service **micro soft Monitoring Agent** is gestopt. Servicebesturingsbeheer gebruiken de service opnieuw te starten.
+### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Hoe kan ik bevestigen dat de Log Analytics-agent in staat is om te communiceren met Azure Monitor?
+Selecteer in het Configuratiescherm op de agentcomputer de optie **Beveiliging & Instellingen**, Microsoft Monitoring **Agent** . Onder het tabblad **Azure Log Analytics (OMS)** bevestigt een groen vinkje dat de agent in staat is om te communiceren met Azure Monitor. Een geel waarschuwingspictogram betekent dat de agent problemen ondervindt. Een veel voorkomende reden is dat de **Microsoft Monitoring Agent-service** is gestopt. Gebruik servicebeheerbeheer om de service opnieuw te starten.
 
-### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hoe kan ik Log Analytics agent niet meer communiceren met Azure Monitor?
-Voor agents die rechtstreeks met Log Analytics zijn verbonden, opent u het configuratie scherm en selecteert u **instellingen voor beveiliging &** , **micro soft Monitoring Agent**. Verwijder op het tabblad **Azure log Analytics (OMS)** alle weer gegeven werk ruimten. In System Center Operations Manager verwijdert u de computer uit de lijst Log Analytics beheerde computers. Operations Manager werkt u de configuratie van de agent niet langer een rapport naar Log Analytics. 
+### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Hoe voorkom ik dat de Log Analytics-agent communiceert met Azure Monitor?
+Open het Configuratiescherm en selecteer **&-instellingen ,** **Microsoft Monitoring Agent,** voor agents die rechtstreeks met Log Analytics zijn verbonden. Verwijder onder het tabblad **Azure Log Analytics (OMS)** alle aangeboden werkruimten. Verwijder de computer in Systeemcentrum Operations Manager uit de lijst Met beheerde computers van Log Analytics. Operations Manager werkt de configuratie van de agent bij om niet langer te rapporteren aan Log Analytics. 
 
-### <a name="how-much-data-is-sent-per-agent"></a>Hoeveel gegevens worden verzonden per agent?
-Afhankelijk van de hoeveelheid gegevens die per agent worden verzonden:
+### <a name="how-much-data-is-sent-per-agent"></a>Hoeveel gegevens worden er per agent verzonden?
+De hoeveelheid gegevens die per agent wordt verzonden, is afhankelijk van:
 
 * De oplossingen die u hebt ingeschakeld
-* Het aantal logboeken en prestatiemeteritems worden verzameld
-* De hoeveelheid gegevens in de logboeken
+* Het aantal logboeken en prestatietellers dat wordt verzameld
+* Het volume van de gegevens in de logboeken
 
-Zie [gebruik en kosten beheren met Azure monitor logboeken](platform/manage-cost-storage.md) voor meer informatie.
+Zie [Gebruik en kosten beheren met Azure Monitor-logboeken](platform/manage-cost-storage.md) voor meer informatie.
 
-Voor computers die kunnen worden uitgevoerd van de agent WireData, gebruikt u de volgende query uit om te zien hoeveel gegevens er worden verzonden:
+Voor computers die de WireData-agent kunnen uitvoeren, gebruikt u de volgende query om te zien hoeveel gegevens worden verzonden:
 
 ```Kusto
 WireData
@@ -168,288 +155,287 @@ WireData
 | summarize sum(TotalBytes) by Computer 
 ```
 
-### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Hoeveel netwerk bandbreedte wordt gebruikt door de micro soft Management Agent (MMA) bij het verzenden van gegevens naar Azure Monitor?
-Bandbreedte is een functie voor de hoeveelheid gegevens die worden verzonden. Gegevens worden gecomprimeerd wanneer deze worden verzonden via het netwerk.
+### <a name="how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-azure-monitor"></a>Hoeveel netwerkbandbreedte wordt gebruikt door de Microsoft Management Agent (MMA) bij het verzenden van gegevens naar Azure Monitor?
+Bandbreedte is een functie voor de hoeveelheid verzonden gegevens. Gegevens worden gecomprimeerd wanneer deze via het netwerk worden verzonden.
 
 
-### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Hoe kan ik een melding ontvangen wanneer het verzamelen van gegevens van de Log Analytics agent stopt?
+### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Hoe kan ik een melding krijgen wanneer het verzamelen van gegevens van de Log Analytics-agent stopt?
 
-Gebruik de stappen die worden beschreven in [een waarschuwing bij het maken van een nieuw logboek om een](platform/alerts-metric.md) melding te ontvangen wanneer het verzamelen van gegevens wordt gestopt. Gebruik de volgende instellingen voor de waarschuwings regel:
+Gebruik de stappen die zijn beschreven in [het maken van een nieuwe logboekwaarschuwing](platform/alerts-metric.md) om op de hoogte te worden gesteld wanneer de gegevensverzameling stopt. Gebruik de volgende instellingen voor de waarschuwingsregel:
 
-- **Waarschuwings voorwaarde definiëren**: geef uw log Analytics-werk ruimte op als bron doel.
-- **Waarschuwings criteria** 
-   - **Signaal naam**: *aangepaste zoek opdracht in Logboeken*
-   - **Zoek query**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Waarschuwings logica**: **gebaseerd op** het *aantal resultaten*, **waarde** *groter dan*, **drempel waarde** *0*
-   - **Geëvalueerd op basis van**: **periode (in minuten)** *30*, **frequentie (in minuten)** *10*
-- **Waarschuwings Details definiëren** 
-   - **Naam**: *gegevens verzameling gestopt*
-   - **Ernst**: *waarschuwing*
+- **Waarschuwingsvoorwaarde definiëren:** geef uw logboekanalysewerkruimte op als resourcedoel.
+- **Waarschuwingscriteria** 
+   - **Signaalnaam:** *Zoeken naar aangepaste logboeken*
+   - **Zoekopdracht:**`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Waarschuwingslogica**: **Op basis** van het *aantal resultaten,* **voorwaarde** *groter dan* **, drempelwaarde** *0*
+   - **Geëvalueerd op basis van**: **Periode (in minuten)** *30*, **Frequentie (in minuten)** *10*
+- **Waarschuwingsdetails definiëren** 
+   - **Naam**: *Gegevensverzameling gestopt*
+   - **Ernst**: *Waarschuwing*
 
-Geef een bestaande of nieuwe [actie groep](platform/action-groups.md) op, zodat wanneer de logboek waarschuwing overeenkomt met criteria, u een melding ontvangt als er al meer dan 15 minuten een heartbeat ontbreekt.
+Geef een bestaande of nieuwe [actiegroep](platform/action-groups.md) op, zodat wanneer de logboekwaarschuwing overeenkomt met de criteria, u een melding krijgt als u een hartslag langer dan 15 minuten mist.
 
 
-### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Wat zijn de firewall vereisten voor Azure Monitor agents?
-Zie [netwerk firewall vereisten](platform/log-analytics-agent.md#network-firewall-requirements)voor meer informatie over Firewall vereisten.
+### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Wat zijn de firewallvereisten voor Azure Monitor-agents?
+Zie [Netwerkfirewallvereisten](platform/log-analytics-agent.md#network-firewall-requirements)voor details over firewallvereisten.
 
 
 ## <a name="visualizations"></a>Visualisaties
 
-### <a name="why-cant-i-cant-see-view-designer"></a>Waarom kan ik de weer gave Designer niet zien?
+### <a name="why-cant-i-see-view-designer"></a>Waarom kan ik View Designer niet zien?
 
-De weer gave Designer is alleen beschikbaar voor gebruikers die zijn toegewezen met Inzender machtigingen of een hoger in de Log Analytics-werk ruimte.
-
+View Designer is alleen beschikbaar voor gebruikers die zijn toegewezen met inzendermachtigingen of hoger in de werkruimte Log Analytics.
 
 ## <a name="application-insights"></a>Application Insights
 
-### <a name="configuration-problems"></a>Configuratie problemen
-*Ik ondervind problemen bij het instellen van mijn:*
+### <a name="configuration-problems"></a>Configuratieproblemen
+*Ik heb problemen met het opzetten van mijn:*
 
 * [.NET app](app/asp-net-troubleshoot-no-data.md)
-* [Een app die al wordt uitgevoerd bewaken](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Diagnostische gegevens van Azure](platform/diagnostics-extension-to-application-insights.md)
+* [Een reeds lopende app controleren](app/monitor-performance-live-website-now.md#troubleshoot)
+* [Azure-diagnose](platform/diagnostics-extension-to-application-insights.md)
 * [Java-web-app](app/java-troubleshoot.md)
 
 *Ik krijg geen gegevens van mijn server*
 
-* [Firewall-uitzonde ringen instellen](app/ip-addresses.md)
-* [Een ASP.NET-Server instellen](app/monitor-performance-live-website-now.md)
-* [Een Java-Server instellen](app/java-agent.md)
+* [Uitzonderingen op firewall instellen](app/ip-addresses.md)
+* [Een ASP.NET server instellen](app/monitor-performance-live-website-now.md)
+* [Een Java-server instellen](app/java-agent.md)
 
-### <a name="can-i-use-application-insights-with-"></a>Kan ik Application Insights gebruiken met...?
+### <a name="can-i-use-application-insights-with-"></a>Kan ik Application Insights gebruiken met ...?
 
-* [Web-apps op een IIS-server in een Azure VM-of Azure virtual machine-schaalset](app/azure-vm-vmss-apps.md)
-* [Web-apps op een IIS-server, on-premises of in een VM](app/asp-net.md)
-* [Java-Web-apps](app/java-get-started.md)
+* [Web-apps op een IIS-server in Azure VM- of Azure-set voor virtuele machines](app/azure-vm-vmss-apps.md)
+* [Web-apps op een IIS-server - on-premises of in een vm](app/asp-net.md)
+* [Java-web-apps](app/java-get-started.md)
 * [Node.js-apps](app/nodejs.md)
 * [Web-apps op Azure](app/azure-web-apps.md)
-* [Cloud Services op Azure](app/cloudservices.md)
-* [App-servers die worden uitgevoerd in docker](app/docker.md)
+* [Cloudservices op Azure](app/cloudservices.md)
+* [App-servers die worden uitgevoerd in Docker](app/docker.md)
 * [Web-apps met één pagina](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
-* [Windows-bureau blad-app](app/windows-desktop.md)
+* [Windows-bureaublad-app](app/windows-desktop.md)
 * [Andere platforms](app/platforms.md)
 
-### <a name="is-it-free"></a>Is dit gratis?
+### <a name="is-it-free"></a>Is het gratis?
 
-Ja, voor experimenteel gebruik. In het Basic-prijs plan kan uw toepassing elke maand gratis een bepaalde hoeveelheid gegevens verzenden. De gratis limiet is groot genoeg voor ontwikkeling en het publiceren van een app voor een klein aantal gebruikers. U kunt een limiet instellen om te voor komen dat er meer dan een opgegeven hoeveelheid gegevens wordt verwerkt.
+Ja, voor experimenteel gebruik. In het basisprijsplan kan uw aanvraag elke maand gratis een bepaalde hoeveelheid gegevens verzenden. De gratis toelage is groot genoeg om de ontwikkeling te dekken, en het publiceren van een app voor een klein aantal gebruikers. U een limiet instellen om te voorkomen dat meer dan een bepaalde hoeveelheid gegevens wordt verwerkt.
 
-Grotere hoeveel heden telemetrie worden in rekening gebracht op basis van de GB. We bieden enkele tips over het [beperken van uw kosten](app/pricing.md).
+Grotere volumes telemetrie worden in rekening gebracht door de Gb. We geven enkele tips over hoe [u uw kosten beperken.](app/pricing.md)
 
-In het Enter prise-plan worden kosten in rekening gebracht voor elke dag dat elk webserver knooppunt telemetrie verzendt. Het is geschikt als u doorlopend exporteren wilt gebruiken op een grote schaal.
+In het Enterprise-abonnement worden kosten in rekening gebracht voor elke dag waarop elk webserverknooppunt telemetrie verzendt. Het is geschikt als u Continuous Export op grote schaal wilt gebruiken.
 
-[Lees het prijs plan](https://azure.microsoft.com/pricing/details/application-insights/).
+[Lees het prijsplan](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Wat kost het?
+### <a name="how-much-does-it-cost"></a>Hoeveel kost het?
 
-* Open de **pagina gebruik en geschatte kosten** in een Application Insights resource. Er is een grafiek van recent gebruik. Als u wilt, kunt u een limiet voor gegevens volumes instellen.
-* Open de [Blade Azure-facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) om uw rekeningen voor alle resources weer te geven.
+* Open de **pagina Gebruik en geschatte kosten** in een toepassingsstatistiekenbron. Er is een grafiek van recent gebruik. U desgevraagd een limiet voor het gegevensvolume instellen.
+* Open het [Azure Billing-blad](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) om uw facturen in alle bronnen te bekijken.
 
-### <a name="q14"></a>Wat doet Application Insights wijzigen in mijn project?
+### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Wat wijzigt Application Insights in mijn project?
 De details zijn afhankelijk van het type project. Voor een webtoepassing:
 
-* Voegt deze bestanden toe aan uw project:
+* Hiermee voegt u deze bestanden toe aan uw project:
   * ApplicationInsights.config
   * ai.js
 * Installeert deze NuGet-pakketten:
-  * *Application Insights-API* : de core-API
-  * *Application Insights-API voor webtoepassingen* : wordt gebruikt voor het verzenden van telemetrie van de server
-  * *Application Insights-API voor Java script-toepassingen* : wordt gebruikt voor het verzenden van telemetrie van de client
-* De pakketten bevatten de volgende assembly's:
+  * *Application Insights API* - de belangrijkste API
+  * *Application Insights API voor webtoepassingen* - gebruikt om telemetrie vanaf de server te verzenden
+  * *Application Insights API voor JavaScript-toepassingen* - gebruikt om telemetrie van de client te verzenden
+* De pakketten omvatten deze samenstellingen:
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
-* Hiermee worden items ingevoegd in:
+* Hiermee voegt u items in:
   * Web.config
   * packages.config
-* (Alleen nieuwe projecten: als u [Application Insights toevoegt aan een bestaand project][start], moet u dit hand matig doen.) Hiermee worden fragmenten ingevoegd in de client-en server code om ze te initialiseren met de Application Insights Resource-ID. In een MVC-app wordt bijvoorbeeld code ingevoegd in de basis pagina weergaven/gedeelde/\_indeling. cshtml
+* (Alleen nieuwe projecten - als u [Application Insights toevoegt aan een bestaand project,][start]moet u dit handmatig doen.) Hiermee voegt u fragmenten in de client- en servercode in om ze te initialiseren met de bron-id van Application Insights. In een MVC-app wordt code bijvoorbeeld ingevoegd in de\_stramienpagina Weergaven/Gedeeld/Layout.cshtml
 
-### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hoe kan ik upgrade van oudere SDK-versies?
-Zie de [release opmerkingen](app/release-notes.md) voor de SDK die geschikt is voor uw type toepassing.
+### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hoe kan ik upgraden van oudere SDK-versies?
+Zie de [releasenotes](app/release-notes.md) voor de SDK die geschikt zijn voor uw type toepassing.
 
-### <a name="update"></a>Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?
-Klik in Solution Explorer met de rechter muisknop op `ApplicationInsights.config` en kies vervolgens **Update Application Insights**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
+### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hoe kan ik wijzigen naar welke Azure-bron mijn project gegevens verzendt?
+Klik in `ApplicationInsights.config` Solution Explorer met de rechtermuisknop en kies **Toepassingsinzichten bijwerken**. U de gegevens verzenden naar een bestaande of nieuwe bron in Azure. De updatewizard wijzigt de instrumentatiesleutel in ApplicationInsights.config, waarmee wordt bepaald waar de serverSDK uw gegevens verzendt. Tenzij u de selectie 'Alles bijwerken' deselecteert, wordt ook de sleutel gewijzigd waar deze in uw webpagina's wordt weergegeven.
 
 ### <a name="what-is-status-monitor"></a>Wat is Status Monitor?
 
-Een bureau blad-app die u kunt gebruiken op uw IIS-webserver om Application Insights te configureren in web-apps. Er wordt geen telemetrie verzameld: u kunt deze stoppen wanneer u geen app configureert. 
+Een bureaublad-app die u gebruiken in uw IIS-webserver om Application Insights in web-apps te configureren. Het verzamelt geen telemetrie: u het stoppen wanneer u een app niet configureert. 
 
 [Meer informatie](app/monitor-performance-live-website-now.md#questions).
 
-### <a name="what-telemetry-is-collected-by-application-insights"></a>Welke telemetrie wordt door Application Insights verzameld?
+### <a name="what-telemetry-is-collected-by-application-insights"></a>Welke telemetrie wordt verzameld door Application Insights?
 
-Van server web apps:
+Van serverweb-apps:
 
 * HTTP-aanvragen
-* [Afhankelijkheden](app/asp-net-dependencies.md). Aanroepen naar: SQL data bases; HTTP-aanroepen naar externe services; Azure Cosmos DB, tabel, Blob Storage en wachtrij. 
-* [Uitzonde ringen](app/asp-net-exceptions.md) en stack traceringen.
-* [Prestatie meter items](app/performance-counters.md) : als u [status monitor](app/monitor-performance-live-website-now.md)gebruikt, wordt [Azure monitoring voor app Services](app/azure-web-apps.md), [Azure monitoring voor VM of virtual machine Scale set](app/azure-vm-vmss-apps.md)of de [Application Insights verzamelde Writer](app/java-collectd.md).
-* [Aangepaste gebeurtenissen en metrische gegevens](app/api-custom-events-metrics.md) die u codeert.
-* [Traceer logboeken](app/asp-net-trace-logs.md) als u de juiste Collector configureert.
+* [Afhankelijkheden](app/asp-net-dependencies.md). Oproepen naar: SQL-databases; HTTP-oproepen naar externe diensten; Azure Cosmos DB, tabel, blobopslag en wachtrij. 
+* [Uitzonderingen](app/asp-net-exceptions.md) en stapelsporen.
+* [Prestatiemeteritems](app/performance-counters.md) - Als u [Statusmonitor](app/monitor-performance-live-website-now.md), [Azure-bewaking voor App Services,](app/azure-web-apps.md) [Azure-controle voor vm- of virtuele machineschaalset](app/azure-vm-vmss-apps.md)of de [verzamelde schrijver van Application Insights](app/java-collectd.md)gebruikt.
+* [Aangepaste gebeurtenissen en statistieken](app/api-custom-events-metrics.md) die u codeert.
+* [Traceer logboeken](app/asp-net-trace-logs.md) als u de juiste verzamelprogramma configureert.
 
-Van [client webpagina's](app/javascript.md):
+Van [client webpagina's:](app/javascript.md)
 
-* [Aantal pagina weergaven](app/usage-overview.md)
-* [Ajax-aanroepen](app/asp-net-dependencies.md) Aanvragen die afkomstig zijn van een script dat wordt uitgevoerd.
-* Laad gegevens pagina weergave
-* Aantal gebruikers en sessies
-* [Geverifieerde gebruikers-Id's](app/api-custom-events-metrics.md#authenticated-users)
+* [Aantal paginaweergaven](app/usage-overview.md)
+* [AJAX belt](app/asp-net-dependencies.md) Aanvragen vanuit een lopend script.
+* Belastinggegevens voor paginaweergave
+* Aantal gebruikers- en sessies
+* [Geverifieerde gebruikersnamen](app/api-custom-events-metrics.md#authenticated-users)
 
-Van andere bronnen, als u deze configureert:
+Uit andere bronnen, als u ze configureert:
 
-* [Diagnostische gegevens van Azure](platform/diagnostics-extension-to-application-insights.md)
-* [Importeren naar Analytics](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
+* [Azure-diagnose](platform/diagnostics-extension-to-application-insights.md)
+* [Importeren in Analytics](platform/data-collector-api.md)
+* [Logboekanalyse](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
-### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kan ik een telemetrie uitfilteren of wijzigen?
+### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kan ik wat telemetrie filteren of wijzigen?
 
-Ja, op de server kunt u het volgende schrijven:
+Ja, in de server u schrijven:
 
-* Telemetrie-processor om eigenschappen te filteren of toe te voegen aan geselecteerde telemetriegegevens voordat ze vanuit uw app worden verzonden.
-* De initialisatie functie voor telemetrie om eigenschappen toe te voegen aan alle items van telemetrie.
+* Telemetrieprocessor om eigenschappen te filteren of toe te voegen aan geselecteerde telemetrie-items voordat ze vanuit uw app worden verzonden.
+* Telemetrie Initializer om eigenschappen toe te voegen aan alle items van telemetrie.
 
-Meer informatie voor [ASP.net](app/api-filtering-sampling.md) of [Java](app/java-filter-telemetry.md).
+Meer informatie voor [ASP.NET](app/api-filtering-sampling.md) of [Java](app/java-filter-telemetry.md).
 
-### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hoe worden plaats, land/regio en andere geografische locatie gegevens berekend?
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hoe worden gegevens over stad, land/regio en andere geolocatiegegevens berekend?
 
-We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
+We zoeken het IP-adres (IPv4 of IPv6) van de webclient op met Behulp van [GeoLite2.](https://dev.maxmind.com/geoip/geoip2/geolite2/)
 
-* Browser-telemetrie: we verzamelen het IP-adres van de afzender.
-* Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Het wordt niet verzameld als `X-Forwarded-For` is ingesteld.
-* Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
-
-
-U kunt de `ClientIpHeaderTelemetryInitializer` configureren om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP`. [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
-
-U kunt [Power bi gebruiken](app/export-power-bi.md ) om uw aanvraag-telemetrie weer te geven op een kaart.
+* Browser telemetrie: We verzamelen het IP-adres van de afzender.
+* Servertelemetrie: de module Application Insights verzamelt het IP-adres van de client. Het wordt niet `X-Forwarded-For` verzameld als is ingesteld.
+* Voor meer informatie over hoe IP-adres- en geolocatiegegevens worden verzameld in Application Insights verwijzen naar dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-### <a name="data"></a>Hoe lang worden gegevens in de portal bewaard? Is het veilig?
-Bekijk de [gegevens retentie en privacy][data].
+U `ClientIpHeaderTelemetryInitializer` de om het IP-adres te nemen van een andere koptekst configureren. In sommige systemen wordt het bijvoorbeeld verplaatst door een proxy, load `X-Originating-IP`balancer of CDN naar . [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Wat gebeurt er met de telemetrie van Application Insight wanneer een server of apparaat geen verbinding meer met Azure heeft?
-
-Al onze Sdk's, inclusief de Web-SDK, bevatten ' reliable Trans Port ' of ' Robust Trans Port '. Wanneer de server of het apparaat verbinding met Azure verliest, wordt telemetrie [lokaal opgeslagen op het bestands systeem](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server-sdk's) of in HTML5-sessie opslag (Web-SDK). De SDK zal regel matig proberen deze telemetrie te verzenden totdat de opname service de ' verouderde ' (48-uur voor de logboeken, 30 minuten voor metrische gegevens) beschouwt. Verlopen telemetrie wordt verwijderd. In sommige gevallen, bijvoorbeeld wanneer lokale opslag vol is, wordt er geen nieuwe poging gedaan.
+U [Power BI gebruiken](app/export-power-bi.md ) om uw aanvraagtelemetrie weer te geven op een kaart.
 
 
-### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Kunnen persoons gegevens in de telemetrie worden verzonden?
+### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Hoe lang worden gegevens bewaard in de portal? Is het veilig?
+Neem een kijkje op [het bewaren van gegevens en privacy][data].
 
-Dit is mogelijk als uw code dergelijke gegevens verzendt. Dit kan ook gebeuren als variabelen in stack-traceringen persoons gegevens bevatten. Uw ontwikkel team moet risico beoordelingen uitvoeren om ervoor te zorgen dat persoons gegevens op de juiste wijze worden afgehandeld. Meer [informatie over gegevens retentie en privacy](app/data-retention-privacy.md).
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Wat gebeurt er met de telemetrie van Application Insight wanneer een server of apparaat de verbinding met Azure verliest?
 
-**Alle** octetten van het webadres van de client zijn altijd ingesteld op 0 nadat de geografische locatie kenmerken zijn opgezocht.
+Al onze SDK's, inclusief de web SDK, omvatten "betrouwbaar transport" of "robuust transport". Wanneer de server of het apparaat de verbinding met Azure verliest, wordt telemetrie [lokaal opgeslagen op het bestandssysteem](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server SDK's) of in HTML5 Session Storage (Web SDK). De SDK zal periodiek opnieuw proberen om deze telemetrie te verzenden totdat onze inname service beschouwt het "muf" (48-uur voor logs, 30 minuten voor metrische gegevens). Verouderde telemetrie zal worden geschrapt. In sommige gevallen, zoals wanneer de lokale opslag vol is, zal opnieuw proberen niet plaatsvinden.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Mijn instrumentatie sleutel is zichtbaar in de bron van de webpagina. 
 
-* Dit is gebruikelijk bij het controleren van oplossingen.
+### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Kunnen persoonlijke gegevens worden verzonden in de telemetrie?
+
+Dit is mogelijk als uw code dergelijke gegevens verzendt. Het kan ook gebeuren als variabelen in stacksporen persoonlijke gegevens bevatten. Uw ontwikkelingsteam moet risicobeoordelingen uitvoeren om ervoor te zorgen dat persoonsgegevens correct worden verwerkt. [Meer informatie over gegevensbehoud en privacy](app/data-retention-privacy.md).
+
+**Alle** octetten van het webadres van de client worden altijd ingesteld op 0 nadat de geolocatiekenmerken zijn opgezocht.
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Mijn instrumentatiesleutel is zichtbaar in mijn webpaginabron. 
+
+* Dit is gebruikelijk bij het monitoren van oplossingen.
 * Het kan niet worden gebruikt om uw gegevens te stelen.
-* Het kan worden gebruikt om uw gegevens te scheef stellen of waarschuwingen te activeren.
+* Het kan worden gebruikt om uw gegevens scheef te trekken of waarschuwingen te activeren.
 * We hebben niet gehoord dat een klant dergelijke problemen heeft gehad.
 
-U kunt het volgende doen:
+U kunt de volgende stappen uitvoeren:
 
-* Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. of
-* Schrijf een proxy die op uw server wordt uitgevoerd en laat de webclient gegevens verzenden via die proxy.
+* Gebruik twee afzonderlijke instrumentatiesleutels (afzonderlijke toepassingsinzichten), voor client- en servergegevens. of
+* Schrijf een proxy die in uw server wordt uitgevoerd en laat de webclient gegevens verzenden via die proxy.
 
-### <a name="post"></a>Hoe kan ik raadpleegt u POST gegevens in diagnostische Zoek opdrachten?
-Er worden geen POST gegevens automatisch geregistreerd, maar u kunt een TrackTrace-aanroep gebruiken: plaats de gegevens in de bericht parameter. Dit heeft een maximale grootte die groter is dan de limieten voor teken reeks eigenschappen, maar u kunt er niet op filteren.
+### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Hoe zie ik POST-gegevens in Diagnostisch zoeken?
+We loggen postgegevens niet automatisch in, maar u wel een TrackTrace-oproep gebruiken: plaats de gegevens in de berichtparameter. Dit heeft een langere groottelimiet dan de limieten voor tekenreekseigenschappen, hoewel u er niet op filteren.
 
-### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Moet ik een of meerdere Application Insights bronnen gebruiken?
+### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Moet ik één of meerdere Application Insights-bronnen gebruiken?
 
-Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem. Gebruik afzonderlijke resources voor ontwikkelings-, test-en release versies en voor onafhankelijke toepassingen.
+Gebruik één resource voor alle onderdelen of rollen in één bedrijfssysteem. Gebruik afzonderlijke bronnen voor de ontwikkeling, test en release versies, en voor onafhankelijke toepassingen.
 
-* [Bekijk de discussie hier](app/separate-resources.md)
-* [Voor beeld-Cloud service met werk nemers en webrollen](app/cloudservices.md)
+* [Bekijk hier de discussie](app/separate-resources.md)
+* [Voorbeeld - cloudservice met werknemer- en webrollen](app/cloudservices.md)
 
-### <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Hoe kan ik de instrumentatie sleutel dynamisch wijzigen?
+### <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Hoe verander ik dynamisch de instrumentatietoets?
 
 * [Discussie hier](app/separate-resources.md)
-* [Voor beeld-Cloud service met werk nemers en webrollen](app/cloudservices.md)
+* [Voorbeeld - cloudservice met werknemer- en webrollen](app/cloudservices.md)
 
-### <a name="what-are-the-user-and-session-counts"></a>Wat zijn de gebruikers-en sessie aantallen?
+### <a name="what-are-the-user-and-session-counts"></a>Wat zijn de aantal gebruikers en sessies?
 
-* De Java script-SDK stelt een gebruikers cookie op de webclient in om terugkerende gebruikers te identificeren en een sessie cookie om activiteiten te groeperen.
-* Als er geen script aan de client zijde is, kunt u [cookies instellen op de server](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
-* Als een echte gebruiker uw site in verschillende browsers gebruikt of als u in-private/incognito Browse of verschillende computers gebruikt, worden deze meerdere keren geteld.
-* Als u een aangemelde gebruiker op verschillende computers en browsers wilt identificeren, voegt u een aanroep toe aan [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
+* De JavaScript SDK stelt een gebruikerscookie in op de webclient, om terugkerende gebruikers te identificeren en een sessiecookie om activiteiten te groeperen.
+* Als er geen script aan de clientzijde is, u [cookies instellen op de server.](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)
+* Als een echte gebruiker uw site in verschillende browsers gebruikt, of in-private/incognito browsen, of verschillende machines gebruikt, dan worden ze meer dan één keer geteld.
+* Als u een ingelogde gebruiker wilt identificeren in machines en browsers, voegt u een oproep toe aan [de setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users).
 
-### <a name="q17"></a>Heb ik alles in Application Insights ingeschakeld?
-| Wat u moet zien | Hoe kan ik het downloaden? | Waarom u wilt |
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Heb ik alles ingeschakeld in Application Insights?
+| Wat je moet zien | Hoe het te krijgen | Waarom je het wilt |
 | --- | --- | --- |
-| Beschikbaarheids grafieken |[Webtests](app/monitor-web-app-availability.md) |Weet u zeker dat uw web-app actief is |
-| Server app-prestaties: reactie tijden,... |[Application Insights toevoegen aan uw project](app/asp-net.md) of [AI-status monitor op server installeren](app/monitor-performance-live-website-now.md) (of uw eigen code schrijven om [afhankelijkheden bij te houden](app/api-custom-events-metrics.md#trackdependency)) |Prestatie problemen detecteren |
-| Telemetrie van afhankelijkheid |[AI-Status Monitor op server installeren](app/monitor-performance-live-website-now.md) |Problemen met data bases of andere externe onderdelen vaststellen |
-| Stack traceringen ophalen van uitzonde ringen |[TrackException-aanroepen invoegen in uw code](app/asp-net-exceptions.md) (maar sommige worden automatisch gerapporteerd) |Uitzonde ringen detecteren en diagnosticeren |
-| Logboek traceringen zoeken |[Een logboek registratie adapter toevoegen](app/asp-net-trace-logs.md) |Diagnose uitzonde ringen, prestatie problemen |
-| Basis beginselen van client gebruik: pagina weergaven, sessies,... |[Java script-initialisatie functie in webpagina's](app/javascript.md) |Gebruiksanalyse |
-| Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](app/api-custom-events-metrics.md) |Gebruikers ervaring verbeteren |
-| Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](app/api-custom-events-metrics.md) |Business intelligence |
+| Beschikbaarheidsgrafieken |[Webtests](app/monitor-web-app-availability.md) |Weet dat uw web-app is up |
+| Server app perf: responstijden, ... |[Toepassingsinzichten toevoegen aan uw project](app/asp-net.md) of [AI-statusmonitor installeren op de server](app/monitor-performance-live-website-now.md) (of uw eigen code schrijven om afhankelijkheden bij te [houden)](app/api-custom-events-metrics.md#trackdependency) |Perf-problemen detecteren |
+| Telemetrie van afhankelijkheid |[AI-statusmonitor op server installeren](app/monitor-performance-live-website-now.md) |Problemen met databases of andere externe componenten diagnosticeren |
+| Stack-sporen ophalen van uitzonderingen |[TrackException-aanroepen in uw code invoegen](app/asp-net-exceptions.md) (maar sommige worden automatisch gerapporteerd) |Uitzonderingen detecteren en diagnosticeren |
+| Logsporen zoeken |[Een logboekadapter toevoegen](app/asp-net-trace-logs.md) |Uitzonderingen, perf-problemen diagnosticeren |
+| Basisprincipes van klantgebruik: paginaweergaven, sessies, ... |[JavaScript-initialisator in webpagina's](app/javascript.md) |Gebruiksanalyse |
+| Aangepaste statistieken voor client |[Oproepen op webpagina's bijhouden](app/api-custom-events-metrics.md) |Gebruikerservaring verbeteren |
+| Aangepaste serverstatistieken |[Oproepen bijhouden in de server](app/api-custom-events-metrics.md) |Business intelligence |
 
-### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Waarom zijn de aantallen in zoek-en metrische grafieken niet gelijk?
+### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Waarom zijn de tellingen in grafieken met zoekresultaten en statistieken ongelijk?
 
-Door [steek proeven](app/sampling.md) wordt het aantal telemetriegegevens (aanvragen, aangepaste gebeurtenissen, enzovoort) verminderd die daad werkelijk vanuit uw app naar de portal worden verzonden. In de zoek opdracht ziet u het aantal items dat daad werkelijk is ontvangen. In metrische grafieken die een aantal gebeurtenissen weer geven, ziet u het aantal oorspronkelijke gebeurtenissen dat heeft plaatsgevonden. 
+[Sampling](app/sampling.md) vermindert het aantal telemetrie-items (aanvragen, aangepaste gebeurtenissen, enzovoort) die daadwerkelijk vanuit uw app naar de portal worden verzonden. In Zoeken ziet u het aantal objecten dat daadwerkelijk is ontvangen. In metrische grafieken met een aantal gebeurtenissen ziet u het aantal oorspronkelijke gebeurtenissen dat heeft plaatsgevonden. 
 
-Elk item dat wordt verzonden, bevat een `itemCount`-eigenschap die laat zien hoeveel oorspronkelijke gebeurtenissen een item vertegenwoordigt. Als u de bemonsterings bewerking wilt observeren, kunt u deze query uitvoeren in Analytics:
+Elk item dat wordt verzonden, bevat een `itemCount` eigenschap die aangeeft hoeveel oorspronkelijke gebeurtenissen dat item vertegenwoordigt. Als u de bemonstering in werking wilt observeren, u deze query uitvoeren in Analytics:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
 
-### <a name="automation"></a>Automatisering
+### <a name="automation"></a>Automation
 
-#### <a name="configuring-application-insights"></a>Application Insights configureren
+#### <a name="configuring-application-insights"></a>Toepassingsinzichten configureren
 
-U kunt [Power shell-scripts](app/powershell.md) met Azure Broncontrole schrijven om het volgende te doen:
+U [PowerShell-scripts schrijven](app/powershell.md) met Azure Resource Monitor om:
 
-* Application Insights resources maken en bijwerken.
-* Stel het prijs plan in.
-* Haal de instrumentatie sleutel op.
-* Een waarschuwing voor metrische gegevens toevoegen.
-* Voeg een beschikbaarheids test toe.
+* Resources voor Application Insights maken en bijwerken.
+* Stel het prijsplan in.
+* Pak de instrumentatiesleutel.
+* Voeg een metrische waarschuwing toe.
+* Voeg een beschikbaarheidstest toe.
 
-U kunt geen metrisch Explorer-rapport instellen of continue export instellen.
+U geen rapport van Metric Explorer instellen of continue export instellen.
 
-#### <a name="querying-the-telemetry"></a>Query's uitvoeren op de telemetrie
+#### <a name="querying-the-telemetry"></a>De telemetrie opvragen
 
-Gebruik de [rest API](https://dev.applicationinsights.io/) om [Analytics](app/analytics.md) -query's uit te voeren.
+Gebruik de [REST API](https://dev.applicationinsights.io/) om [Analytics-query's](app/analytics.md) uit te voeren.
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Hoe kan ik een waarschuwing instellen voor een gebeurtenis?
 
-Azure-waarschuwingen zijn alleen op metrische gegevens. Maak een aangepaste metriek die een drempel waarde voor waarden kruist wanneer uw gebeurtenis zich voordoet. Stel vervolgens een waarschuwing in voor de metrische gegevens. U ontvangt een melding wanneer de metriek de drempel waarde in een van beide richtingen overschrijdt. u krijgt pas een melding als de eerste doorhaling, ongeacht of de aanvankelijke waarde hoog of laag is. Er is altijd een latentie van een paar minuten.
+Azure-waarschuwingen zijn alleen gebaseerd op metrische gegevens. Maak een aangepaste statistiek die een waardedrempel overschrijdt wanneer uw gebeurtenis plaatsvindt. Stel vervolgens een waarschuwing in op de statistiek. U krijgt een melding wanneer de statistiek de drempel in beide richtingen overschrijdt; u krijgt pas bij de eerste overschrijding een melding, ongeacht of de initiële waarde hoog of laag is; er is altijd een latentie van een paar minuten.
 
-### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Zijn er kosten voor gegevens overdracht tussen een Azure-web-app en Application Insights?
+### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Zijn er kosten voor gegevensoverdracht tussen een Azure-web-app en Application Insights?
 
-* Als uw Azure-web-app wordt gehost in een Data Center waar zich een Application Insights verzamelings eindpunt bevindt, worden er geen kosten in rekening gebracht. 
-* Als er geen eind punt van een verzameling in uw host Data Center is, worden door de telemetrie van uw app [uitgaande Azure-kosten](https://azure.microsoft.com/pricing/details/bandwidth/)in rekening gebracht.
+* Als uw Azure-webapp wordt gehost in een datacenter waar een eindpunt voor de verzameling Application Insights is, worden er geen kosten in rekening gebracht. 
+* Als er geen verzameleindpunt in uw hostdatacenter is, worden in de telemetrie van uw app uitgaande kosten in rekening gebracht voor [Azure.](https://azure.microsoft.com/pricing/details/bandwidth/)
 
-Dit is niet afhankelijk van waar uw Application Insights-bron wordt gehost. Het hangt gewoon af van de distributie van onze eind punten.
+Dit hangt niet af van waar uw Application Insights-bron wordt gehost. Het hangt gewoon af van de verdeling van onze eindpunten.
 
-### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Kan ik telemetrie verzenden naar de Application Insights Portal?
+### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Kan ik telemetrie naar de Application Insights-portal sturen?
 
-We raden u aan om onze Sdk's te gebruiken en de [SDK API](app/api-custom-events-metrics.md)te gebruiken. Er zijn varianten van de SDK voor verschillende [platforms](app/platforms.md). Deze Sdk's behandelen buffering, compressie, beperking, nieuwe pogingen, enzovoort. Het [opname schema](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) en het [eindpunt protocol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) zijn echter openbaar.
+We raden u aan onze SDK's te gebruiken en de [SDK API](app/api-custom-events-metrics.md)te gebruiken. Er zijn varianten van de SDK voor verschillende [platforms.](app/platforms.md) Deze SDK's verwerken buffering, compressie, beperking, nieuwe pogingen, enzovoort. Het [innameschema](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) en [het eindpuntprotocol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) zijn echter openbaar.
 
-### <a name="can-i-monitor-an-intranet-web-server"></a>Kan ik een intranet webserver bewaken?
+### <a name="can-i-monitor-an-intranet-web-server"></a>Kan ik een intranetwebserver controleren?
 
-Ja, maar u moet het verkeer naar onze services toestaan door Firewall-uitzonde ringen of proxy omleidingen.
-- QuickPulse `https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
-- TelemetryChannel `https://dc.services.visualstudio.com:443` 
-
-
-Bekijk [hier](app/ip-addresses.md)onze volledige lijst met Services en IP-adressen.
-
-#### <a name="firewall-exception"></a>Firewall-uitzonde ring
-
-Hiermee staat u toe dat uw webserver telemetrie naar onze eind punten verzendt. 
-
-#### <a name="gateway-redirect"></a>Gateway omleiden
-
-Verkeer van uw server naar een gateway op uw intranet routeren door eind punten in uw configuratie te overschrijven. Als deze eigenschappen van het eind punt niet aanwezig zijn in uw configuratie, gebruiken deze klassen de standaard waarden die hieronder worden weer gegeven in het voor beeld ApplicationInsights. config. 
-
-Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden door `http://<your.gateway.address>/<relative path>`.
+Ja, maar u moet verkeer naar onze services toestaan door firewalluitzonderingen of proxyomleidingen.
+- QuickPulse (QuickPulse)`https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
+- Telemetriekanaal`https://dc.services.visualstudio.com:443` 
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voor beeld van ApplicationInsights. config met standaard eindpunten:
+Bekijk [hier](app/ip-addresses.md)onze volledige lijst met diensten en IP-adressen.
+
+#### <a name="firewall-exception"></a>Uitzondering op firewall
+
+Laat uw webserver telemetrie naar onze eindpunten verzenden. 
+
+#### <a name="gateway-redirect"></a>Gateway omleiding
+
+Stuur verkeer van uw server naar een gateway op uw intranet door endpoints in uw configuratie te overschrijven. Als deze eigenschappen 'Eindpunt' niet aanwezig zijn in uw config, gebruiken deze klassen de onderstaande standaardwaarden in het voorbeeld ApplicationInsights.config. 
+
+Uw gateway moet het verkeer naar het basisadres van ons eindpunt leiden. Vervang in uw configuratie de `http://<your.gateway.address>/<relative path>`standaardwaarden door .
+
+
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voorbeeld ApplicationInsights.config met standaardeindpunten:
 ```xml
 <ApplicationInsights>
   ...
@@ -471,16 +457,16 @@ Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang
 ```
 
 > [!NOTE]
-> ApplicationIdProvider is beschikbaar vanaf v 2.6.0.
+> ApplicationIdProvider is beschikbaar vanaf v2.6.0.
 
 
 
-#### <a name="proxy-passthrough"></a>Passthrough van proxy
+#### <a name="proxy-passthrough"></a>Proxy-doorgeefwerking
 
-Passthrough van de proxy kan worden bereikt door een computer niveau of proxy op toepassings niveau te configureren.
-Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+Proxy passthrough kan worden bereikt door het configureren van een machine niveau of applicatie niveau proxy.
+Zie voor meer informatie het artikel van Dotnet op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
- Voor beeld van web. config:
+ Voorbeeld Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -490,16 +476,16 @@ Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.m
 ```
  
 
-### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kan ik beschik baarheid-webtests op een intranet server uitvoeren?
+### <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Kan ik webtests beschikbaarheid uitvoeren op een intranetserver?
 
-Onze [webtests](app/monitor-web-app-availability.md) worden uitgevoerd op de aanwezigheids punten die over de hele wereld worden gedistribueerd. Er zijn twee oplossingen:
+Onze [webtests](app/monitor-web-app-availability.md) worden uitgevoerd op aanwezigheidspunten die over de hele wereld worden verspreid. Er zijn twee oplossingen:
 
-* Firewall deur: Hiermee worden aanvragen van de server met [de lange en de lijst met webtest agents](app/ip-addresses.md)toegestaan.
-* Schrijf uw eigen code voor het verzenden van periodieke aanvragen naar uw server vanuit uw intranet. U kunt Visual Studio-webtests voor dit doel uitvoeren. De tester kan de resultaten naar Application Insights verzenden met behulp van de API TrackAvailability ().
+* Firewalldeur - Sta aanvragen toe aan uw server vanuit [de lange en veranderlijke lijst van webtestagents.](app/ip-addresses.md)
+* Schrijf uw eigen code om periodieke verzoeken naar uw server te verzenden vanuit uw intranet. U hiervoor webtests van Visual Studio uitvoeren. De tester kan de resultaten naar Application Insights sturen met behulp van de TrackAvailability() API.
 
-### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Hoe lang duurt het voordat telemetrie is verzameld?
+### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Hoe lang duurt het voordat telemetrie wordt verzameld?
 
-De meeste Application Insights gegevens hebben een latentie van minder dan vijf minuten. Sommige gegevens kunnen langer duren. meestal grotere logboek bestanden. Zie de [Application INSIGHTS Sla](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/)voor meer informatie.
+De meeste Application Insights-gegevens hebben een latentie van minder dan 5 minuten. Sommige gegevens kunnen langer duren; doorgaans grotere logbestanden. Zie de SLA [Applicatie-inzichten voor](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/)meer informatie.
 
 
 
@@ -511,22 +497,45 @@ De meeste Application Insights gegevens hebben een latentie van minder dan vijf 
 [windows]: app/app-insights-windows-get-started.md
 
 
-
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
-Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen over Azure Monitor voor containers. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer u een vraag is vaak wordt gevraagd, toevoegen we deze aan dit artikel zodat snel en eenvoudig kunnen worden gevonden.
+Deze veelgestelde vragen van Microsoft is een lijst met veelgestelde vragen over Azure Monitor voor containers. Als u aanvullende vragen over de oplossing, ga naar de [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en post uw vragen. Wanneer een vraag vaak wordt gesteld, voegen we deze toe aan dit artikel, zodat deze snel en gemakkelijk kan worden gevonden.
 
-### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Ik zie geen afbeeldings-en naam eigenschap waarden die worden ingevuld wanneer ik de tabel ContainerLog zoek.
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>Wat vertegenwoordigen *andere processen* onder de weergave Knooppunt?
 
-Voor Agent versie ciprod12042019 en hoger worden deze twee eigenschappen standaard niet ingevuld voor elke logboek regel om de kosten te minimaliseren voor logboek gegevens die worden verzameld. Er zijn twee opties voor het opvragen van de tabel die deze eigenschappen bevat met hun waarden:
+**Andere processen** zijn bedoeld om u te helpen de oorzaak van het hoge resourcegebruik op uw knooppunt duidelijk te begrijpen. Hiermee u onderscheid maken tussen het gebruik tussen gecontaineriseerde processen versus niet-gecontaineriseerde processen.
 
-#### <a name="option-1"></a>optie 1 
+Wat zijn deze **andere processen?** 
 
-Neem deel aan andere tabellen om deze eigenschaps waarden in de resultaten op te nemen.
+Dit zijn niet-gecontaineriseerde processen die op uw knooppunt worden uitgevoerd.  
 
-Wijzig uw query's zodat de eigenschappen van de afbeelding en ImageTag worden toegevoegd aan de tabel ```ContainerInventory``` door lid te worden van de eigenschap ContainerID. U kunt de eigenschap name (zoals deze eerder in de tabel ```ContainerLog```) in het veld ContaineName van KubepodInventory tabel toevoegen door lid te worden van de eigenschap ContainerID. Dit is de aanbevolen optie.
+Hoe berekenen we dit?
 
-In het volgende voor beeld wordt uitgelegd hoe u deze veld waarden ophaalt met samen voegingen.
+**Andere processen** = *Totaal gebruik van CAdvisor-gebruik* - van*containerized proces*
+
+De **andere processen** omvatten:
+
+- Zelfbeheerde of beheerde Kubernetes niet-gecontaineriseerde processen 
+
+- Run-time-processen voor containers  
+
+- Kubelet  
+
+- Systeemprocessen die op uw knooppunt worden uitgevoerd 
+
+- Andere niet-Kubernetes-workloads die worden uitgevoerd op nodehardware of VM 
+
+### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Ik zie geen waarden van de eigenschap Afbeelding en naam ingevuld wanneer ik de containerlog-tabel opvraag.
+
+Voor agentversie ciprod12042019 en later worden deze twee eigenschappen standaard niet ingevuld voor elke logboekregel om de kosten voor verzamelde logboekgegevens te minimaliseren. Er zijn twee opties om de tabel op te vragen die deze eigenschappen met hun waarden bevatten:
+
+#### <a name="option-1"></a>Mogelijkheid 1 
+
+Voeg andere tabellen toe om deze eigenschapswaarden in de resultaten op te nemen.
+
+Wijzig uw query's om eigenschappen van ```ContainerInventory``` ImageTag uit de tabel op te nemen door deel te nemen aan de eigenschap ContainerID. U de eigenschap Name (zoals ```ContainerLog``` deze eerder in de tabel is weergegeven) opnemen in het containeName-veld van de KubepodInventory-tabel door deel te nemen aan de eigenschap ContainerID. Dit is de aanbevolen optie.
+
+Het volgende voorbeeld is een voorbeeld van gedetailleerde query waarmee wordt uitgelegd hoe u deze veldwaarden krijgen met joins.
 
 ```
 //lets say we are querying an hour worth of logs
@@ -550,50 +559,50 @@ ContainerLog
 
 #### <a name="option-2"></a>Optie 2
 
-Schakel de verzameling voor deze eigenschappen voor elke container logboek regel opnieuw in.
+Voor elke containerlogboeklijn opnieuw ophalen voor deze eigenschappen.
 
-Als de eerste optie niet handig is als gevolg van wijzigingen in de query, kunt u het verzamelen van deze velden opnieuw inschakelen door de instellings ```log_collection_settings.enrich_container_logs``` in te scha kelen in de [configuratie-instellingen](insights/container-insights-agent-config.md)van de agent.
+Als de eerste optie niet handig is vanwege querywijzigingen, u het ```log_collection_settings.enrich_container_logs``` verzamelen van deze velden opnieuw inschakelen door de instelling in de agentconfig-kaart in te schakelen zoals beschreven in de [configuratie-instellingen voor gegevensverzameling.](insights/container-insights-agent-config.md)
 
 > [!NOTE]
-> De tweede optie wordt niet aanbevolen voor grote clusters met meer dan 50 knoop punten, omdat hiermee de API-server aanroepen van elk knoop punt in het cluster worden gegenereerd om deze verrijking uit te voeren. Met deze optie wordt ook de gegevens grootte voor elke verzamelde logboek regel verhoogd.
+> De tweede optie wordt niet aanbevolen met grote clusters met meer dan 50 knooppunten omdat het API-serveraanroepen genereert van elk knooppunt in het cluster om deze verrijking uit te voeren. Deze optie verhoogt ook de gegevensgrootte voor elke verzamelde logboekregel.
 
-### <a name="can-i-view-metrics-collected-in-grafana"></a>Kan ik de metrische gegevens weer geven die zijn verzameld in Grafana?
+### <a name="can-i-view-metrics-collected-in-grafana"></a>Kan ik statistieken bekijken die zijn verzameld in Grafana?
 
-Azure Monitor voor containers biedt ondersteuning voor het weer geven van gegevens die zijn opgeslagen in uw Log Analytics-werk ruimte in Grafana-Dash boards. We hebben een sjabloon die u kunt downloaden uit de Grafana van het [dash board](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) van micro soft om aan de slag te gaan en te verwijzen naar informatie over het zoeken naar extra gegevens van uw bewaakte clusters om te visualiseren in aangepaste Grafana-Dash boards. 
+Azure Monitor voor containers ondersteunt weergavestatistieken die zijn opgeslagen in uw Log Analytics-werkruimte in Grafana-dashboards. We hebben een sjabloon beschikbaar gesteld die u downloaden uit de [dashboardopslagplaats](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) van Grafana om u op weg te helpen en te verwijzen om u te helpen leren hoe u aanvullende gegevens uit uw bewaakte clusters opvragen om te visualiseren in aangepaste Grafana-dashboards. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Kan ik mijn AKS-engine-cluster bewaken met Azure Monitor voor containers?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Kan ik mijn AKS-engine cluster met Azure Monitor controleren voor containers?
 
-Azure Monitor voor containers ondersteunt bewakings werkbelastingen die zijn geïmplementeerd op de AKS-Engine (voorheen bekend als ACS-Engine) cluster (s) die worden gehost op Azure. Zie voor meer informatie en een overzicht van de stappen die nodig zijn om bewaking in te scha kelen voor dit scenario Raadpleeg [Azure monitor gebruiken voor containers voor AKS-engine](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+Azure Monitor voor containers ondersteunt monitoring containerworkloads die zijn geïmplementeerd op AKS-engine (voorheen ACS-engine) cluster(s) gehost op Azure. Zie [Azure Monitor gebruiken voor containers voor AKS-engine voor](https://github.com/microsoft/OMS-docker/tree/aks-engine)meer informatie en een overzicht van de stappen die nodig zijn om monitoring voor dit scenario mogelijk te maken.
 
-### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Waarom zie ik geen gegevens in mijn Log Analytics-werk ruimte?
+### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Waarom zie ik geen gegevens in mijn Log Analytics-werkruimte?
 
-Als u op een bepaald moment dagelijks geen gegevens in de Log Analytics-werk ruimte kunt zien, hebt u mogelijk de standaard limiet van 500 MB bereikt of is de daglimiet opgegeven om de hoeveelheid gegevens die dagelijks moet worden verzameld, te bepalen. Wanneer de limiet voor de dag wordt bereikt, stopt het verzamelen van gegevens en wordt deze alleen op de volgende dag hervat. Zie [logboek gegevens gebruiken en kosten](platform/manage-cost-storage.md)voor meer informatie over het controleren van uw gegevens gebruik en het bijwerken van een andere prijs categorie op basis van uw verwachte gebruiks patronen. 
+Als u dagelijks geen gegevens in de werkruimte Log Analytics op een bepaald tijdstip zien, hebt u mogelijk de standaardlimiet van 500 MB of de dagelijkse limiet bereikt om de hoeveelheid gegevens te bepalen die dagelijks moet worden verzameld. Wanneer de limiet voor de dag wordt bereikt, stopt en wordt het verzamelen van gegevens alleen op de volgende dag hervat. Zie [Gegevensgebruik en kosten](platform/manage-cost-storage.md)van logboekgegevens als u uw gegevensgebruik wilt bekijken en bijwerken naar een andere prijscategorie op basis van uw verwachte gebruikspatronen. 
 
-### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Wat zijn de container statussen die zijn opgegeven in de tabel ContainerInventory?
+### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Wat zijn de containerstatussen die zijn opgegeven in de tabel Containervoorraad?
 
-De tabel ContainerInventory bevat informatie over zowel gestopte als actieve containers. De tabel wordt gevuld met een werk stroom in de agent die de docker doorzoekt voor alle containers (actief en gestopt), en stuurt die gegevens door naar de Log Analytics-werk ruimte.
+De tabel ContainerInventory bevat informatie over zowel gestopte als lopende containers. De tabel wordt ingevuld door een werkstroom in de agent die de docker opvraagt voor alle containers (uitgevoerd en gestopt) en doorstuurt die gegevens de werkruimte Log Analytics.
  
-### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hoe kan ik oplossen van *ontbrekende registratie* fout van abonnement?
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hoe los ik *registratiefout bij ontbrekend abonnement op?*
 
-Als u de fout melding **abonnements registratie voor micro soft. OperationsManagement**ontvangt, kunt u deze oplossen door de resource provider **micro soft. OperationsManagement** te registreren in het abonnement waarin de werk ruimte is gedefinieerd. De documentatie voor hoe u dit doet, vindt u [hier](../azure-resource-manager/templates/error-register-resource-provider.md).
+Als u de **registratie voor ontbrekende abonnementen voor Microsoft.OperationsManagement**ontvangt, u deze oplossen door de bronprovider **Microsoft.OperationsManagement** te registreren in het abonnement waarin de werkruimte is gedefinieerd. De documentatie voor hoe dit te doen is [hier](../azure-resource-manager/templates/error-register-resource-provider.md)te vinden.
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Is er ondersteuning voor AKS-clusters met RBAC ingeschakeld?
+### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Is er ondersteuning voor RBAC-enabled AKS-clusters?
 
-De container bewakings oplossing biedt geen ondersteuning voor RBAC, maar wordt wel ondersteund met Azure Monitor voor containers. Op de pagina oplossings Details wordt mogelijk niet de juiste informatie weer gegeven op de Blades waarin de gegevens voor deze clusters worden weer gegeven.
+De Container Monitoring-oplossing biedt geen ondersteuning voor RBAC, maar wordt ondersteund met Azure Monitor for Containers. De pagina met oplossingsdetails bevat mogelijk niet de juiste informatie in de blades die gegevens voor deze clusters weergeven.
 
-### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hoe kan ik logboek verzameling voor containers in de uitvoeren-naam ruimte inschakelen via helm?
+### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hoe schakel ik logboekverzameling in voor containers in de naamruimte van het Kube-systeem via Helm?
 
-De logboek verzameling van containers in de uitvoeren-naam ruimte is standaard uitgeschakeld. Logboek verzameling kan worden ingeschakeld door een omgevings variabele in te stellen op de omsagent. Zie de pagina [Azure monitor voor containers](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) github voor meer informatie. 
+De logboekverzameling uit containers in de naamruimte van het kube-systeem is standaard uitgeschakeld. Logboekverzameling kan worden ingeschakeld door een omgevingsvariabele in te stellen op de omsagent. Zie de [GitHub-pagina Azure Monitor voor containers voor](https://github.com/helm/charts/tree/master/incubator/azuremonitor-containers) meer informatie. 
 
-### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hoe kan ik de omsagent bij naar de meest recente versie?
+### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hoe werk ik de omsagent bij naar de nieuwste versie?
 
-Zie [agent beheer](insights/container-insights-manage-agent.md)voor meer informatie over het bijwerken van de agent.
+Zie [Agentbeheer](insights/container-insights-manage-agent.md)voor meer informatie over het upgraden van de agent.
 
-### <a name="how-do-i-enable-multi-line-logging"></a>Hoe kan ik logboek registratie met meerdere regels inschakelen?
+### <a name="how-do-i-enable-multi-line-logging"></a>Hoe schakel ik multi-line logging in?
 
-Momenteel Azure Monitor voor containers geen ondersteuning voor logboek registratie in meerdere regels, maar er zijn tijdelijke oplossingen beschikbaar. U kunt alle services zo configureren dat ze worden geschreven in JSON-indeling en vervolgens docker/Moby als één regel schrijft.
+Momenteel biedt Azure Monitor voor containers geen ondersteuning voor multiline-logboekregistratie, maar er zijn oplossingen beschikbaar. U alle services configureren om te schrijven in JSON-indeling en vervolgens schrijft Docker/Moby ze als één regel.
 
-U kunt uw logboek bijvoorbeeld als een JSON-object laten teruglopen, zoals wordt weer gegeven in het onderstaande voor beeld voor een node. js-toepassing voor een voor beeld:
+U uw logboek bijvoorbeeld omwikkelen als een JSON-object zoals in het onderstaande voorbeeld voor een voorbeeldnode.js-toepassing:
 
 ```
 console.log(json.stringify({ 
@@ -604,155 +613,112 @@ console.log(json.stringify({
       }));
 ```
 
-Deze gegevens zien eruit als in het volgende voor beeld in Azure Monitor voor Logboeken wanneer u er een query op uitvoert:
+Deze gegevens zien eruit als het volgende voorbeeld in Azure Monitor voor logboeken wanneer u er om vraagt:
 
 ```
-LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
+LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
-Raadpleeg de volgende [github-koppeling](https://github.com/moby/moby/issues/22920)voor een gedetailleerde weer gave van het probleem.
+Voor een gedetailleerde blik op het probleem, bekijk de volgende [GitHub link](https://github.com/moby/moby/issues/22920).
 
-### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hoe kan ik Azure AD-fouten oplossen wanneer ik live-logboeken inschakel? 
+### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hoe los ik Azure AD-fouten op wanneer ik live logboeken inschakel? 
 
-Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: ' <-toepassings-ID\>'** . De oplossing voor het oplossen hiervan vindt u in het artikel [informatie over container gegevens in realtime weer geven met Azure monitor voor containers](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Mogelijk ziet u de volgende fout: **de in de aanvraag opgegeven antwoord-url komt niet\>overeen met de voor de toepassing geconfigureerde antwoordurl's: '<application ID '**. De oplossing om deze op te lossen is te vinden in het artikel [Hoe containergegevens in realtime te bekijken met Azure Monitor voor containers.](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) 
 
-### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Waarom kan ik het cluster niet upgraden na het onboarden?
+### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Waarom kan ik het cluster niet upgraden na het instappen?
 
-Als u Azure Monitor voor containers voor een AKS-cluster hebt ingeschakeld, verwijdert u de Log Analytics werk ruimte waarnaar de gegevens naar het cluster zijn verzonden bij het upgraden van het cluster. U kunt dit probleem omzeilen door de bewaking uit te scha kelen en vervolgens weer in te scha kelen naar een andere geldige werk ruimte in uw abonnement. Wanneer u de cluster upgrade opnieuw probeert uit te voeren, moet het proces worden uitgevoerd en voltooid.  
+Als u Azure Monitor voor containers voor een AKS-cluster hebt ingeschakeld, verwijdert u de Log Analytics-werkruimte waarnaar het cluster zijn gegevens heeft verzonden, wanneer u het cluster probeert te upgraden. Om dit mogelijk te maken, moet u de bewaking uitschakelen en vervolgens opnieuw verwijzen naar een andere geldige werkruimte in uw abonnement. Wanneer u de clusterupgrade opnieuw probeert uit te voeren, moet deze worden verwerkt en voltooid.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Welke poorten en domeinen heb ik nodig om de agent te openen/white list?
+### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Welke poorten en domeinen moet ik openen/whitelisten voor de agent?
 
-Zie de [netwerk firewall vereisten](insights/container-insights-onboard.md#network-firewall-requirements) voor de proxy-en firewall configuratie-informatie die is vereist voor de container agent met Azure, Azure US Government en Azure China 21vianet-Clouds.
+Zie de vereisten voor [netwerkfirewalls](insights/container-insights-onboard.md#network-firewall-requirements) voor de proxy- en firewallconfiguratiegegevens die vereist zijn voor de containeragent met Azure, Azure US Government en Azure China 21Vianet-clouds.
 
-## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor voor VM's (preview-versie)
-Deze veelgestelde vragen over micro soft vindt u een lijst met veel gestelde antwoorden over Azure Monitor voor VM's. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer u een vraag is vaak wordt gevraagd, toevoegen we deze aan dit artikel zodat snel en eenvoudig kunnen worden gevonden.
+## <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines
+Deze veelgestelde vragen van Microsoft is een lijst met veelgestelde vragen over Azure Monitor voor VM's. Als u aanvullende vragen over de oplossing, ga naar de [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en post uw vragen. Wanneer een vraag vaak wordt gesteld, voegen we deze toe aan dit artikel, zodat deze snel en gemakkelijk kan worden gevonden.
 
-### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik onboarding uitvoeren op een bestaande werk ruimte?
-Als uw virtuele machines al zijn verbonden met een Log Analytics-werk ruimte, kunt u deze werk ruimte blijven gebruiken bij onboarding naar Azure Monitor voor VM's, mits deze zich in een van de ondersteunde regio's bevindt die [hier](insights/vminsights-enable-overview.md#prerequisites)worden vermeld.
-
-Als er een onboarding wordt uitgevoerd, worden er prestatie meter items voor de werk ruimte geconfigureerd die ervoor zorgen dat alle Vm's rapport gegevens naar de werk ruimte worden verzameld om deze informatie te verzamelen voor weer gave en analyse in Azure Monitor voor VM's.  Als gevolg hiervan worden er prestatie gegevens weer gegeven van alle Vm's die zijn verbonden met de geselecteerde werk ruimte.  De functies status en kaart worden alleen ingeschakeld voor de virtuele machines die u hebt opgegeven voor onboarding.
-
-Raadpleeg het artikel [overzicht inschakelen](insights/vminsights-enable-overview.md#performance-counters-enabled) voor meer informatie over welke prestatie meter items zijn ingeschakeld.
-
-### <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik onboarding uitvoeren op een nieuwe werk ruimte? 
-Als uw Vm's momenteel niet zijn verbonden met een bestaande Log Analytics-werk ruimte, moet u een nieuwe werk ruimte maken om uw gegevens op te slaan. Het maken van een nieuwe standaardwerk ruimte wordt automatisch uitgevoerd als u een enkele Azure-VM voor Azure Monitor voor VM's configureert via de Azure Portal.
-
-Als u ervoor kiest de op scripts gebaseerde methode te gebruiken, worden deze stappen behandeld in het artikel [enable Azure monitor voor VM's (preview) met Azure PowerShell of Resource Manager-sjabloon](insights/vminsights-enable-at-scale-powershell.md) . 
-
-### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wat moet ik doen als mijn VM al rapporteert aan een bestaande werk ruimte?
-Als u al gegevens van uw virtuele machines verzamelt, is het mogelijk dat u deze al hebt geconfigureerd om gegevens te rapporteren aan een bestaande Log Analytics-werk ruimte.  Als die werk ruimte zich in een van de ondersteunde regio's bevindt, kunt u Azure Monitor voor VM's inschakelen voor die bestaande werk ruimte.  Als de werk ruimte die u al gebruikt, zich niet in een van de ondersteunde regio's bevindt, kunt u op dit moment niet op de Azure Monitor voor VM's.  We werken actief ter ondersteuning van extra regio's.
-
->[!NOTE]
->We configureren prestatie meter items voor de werk ruimte die van invloed zijn op alle Vm's die rapporteren aan de werk ruimte, ongeacht of u hebt gekozen om ze te Azure Monitor voor VM's. Raadpleeg onze [documentatie](platform/data-sources-performance-counters.md)voor meer informatie over de configuratie van prestatie meter items voor de werk ruimte. Raadpleeg het artikel [enable Azure monitor voor VM's](insights/vminsights-enable-overview.md#performance-counters-enabled) voor informatie over de tellers die zijn geconfigureerd voor Azure monitor voor VM's.  
-
-### <a name="why-did-my-vm-fail-to-onboard"></a>Waarom is mijn VM niet op de onboarding uitgevoerd?
-Wanneer een virtuele machine van Azure wordt geboardd vanuit de Azure Portal, gebeurt het volgende:
-
-* Een standaard Log Analytics-werkruimte is gemaakt, als die optie hebt geselecteerd.
-* De prestatie meter items zijn geconfigureerd voor de geselecteerde werk ruimte. Als deze stap mislukt, ziet u dat sommige prestatie grafieken en-tabellen geen gegevens weer geven voor de virtuele machine die u hebt opgevolgd. U kunt dit probleem oplossen door het Power shell-script uit te voeren dat [hier](insights/vminsights-enable-at-scale-powershell.md#enable-performance-counters)wordt beschreven.
-* De Log Analytics-agent wordt op virtuele machines van Azure geïnstalleerd met behulp van een VM-extensie, indien nodig.  
-* De Azure Monitor voor VM's kaart dependency agent wordt geïnstalleerd op virtuele machines van Azure met behulp van een uitbrei ding, indien bepaald dat deze is vereist.  
-* Azure Monitor onderdelen die ondersteuning bieden voor de status functie worden zo nodig geconfigureerd en de virtuele machine is geconfigureerd om status gegevens te rapporteren.
-
-Tijdens het onboarding-proces wordt gecontroleerd op de status van elk van de bovenstaande om een meldings status te retour neren in de portal. Configuratie van de werkruimte en de installatie van de agent duurt doorgaans 5 tot 10 minuten. Het weer geven van bewakings-en status gegevens in de portal duurt 5 tot 10 minuten.  
-
-Als u onboarding hebt gestart en berichten ziet met de melding dat de virtuele machine moet worden uitgevoerd, kunt u Maxi maal 30 minuten voor de virtuele machine het proces volt ooien. 
-
-### <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Ik heb alleen Azure Monitor voor VM's ingeschakeld, waarom kan ik al mijn Vm's zien die worden bewaakt door de status functie?
-De status functie is ingeschakeld voor alle Vm's die zijn verbonden met de Log Analytics-werk ruimte, zelfs wanneer de actie voor één virtuele machine wordt gestart.
-
-### <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Kan ik de planning wijzigen voor wanneer de status criteria een voor waarde evalueren?
-Nee, de tijds periode en frequentie van de status criteria kunnen niet worden gewijzigd in deze release. 
-
-### <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Kan ik status criteria uitschakelen voor een voor waarde die ik niet hoeft te controleren?
-Status criteria kunnen niet worden uitgeschakeld in deze versie.
-
-### <a name="are-the-health-alert-severities-configurable"></a>Zijn de ernst van de status waarschuwing configureerbaar?  
-Ernst van status waarschuwing kan niet worden gewijzigd. deze kunnen alleen worden ingeschakeld of uitgeschakeld. Daarnaast worden enkele waarschuwings Ernst bijgewerkt op basis van de status criteria. 
-
-### <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Als ik de instellingen van een bepaald status criterium opnieuw Configureer, kan de scope worden toegepast op een specifiek exemplaar?  
-Als u een instelling van een status criterium instantie wijzigt, worden alle status criterium exemplaren van hetzelfde type op de Azure-VM gewijzigd. Bijvoorbeeld, als de drempelwaarde van de status van de vrije ruimte criterium schijfexemplaar die overeenkomt met de logische schijf C: wordt gewijzigd, geldt deze drempelwaarde voor alle andere logische schijven die zijn gedetecteerd en bewaakt voor dezelfde virtuele machine.
-
-### <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Bewaakt de status functie logische processors en kernen?
-Nee, de status van een afzonderlijke processor en een logisch processor niveau is niet opgenomen voor een Windows. alleen het totale CPU-gebruik wordt standaard gecontroleerd om de CPU-belasting effectief te beoordelen op basis van het totale aantal logische Cpu's dat beschikbaar is voor de virtuele machine van Azure. 
-
-### <a name="are-all-health-criteria-thresholds-configurable"></a>Zijn alle drempel waarden voor status criteria geconfigureerd?  
-Drempel waarden voor de status criteria die zijn gericht op een Windows-VM, kunnen niet worden gewijzigd, omdat hun status wordt ingesteld op *actief* of *beschikbaar*. Wanneer u een query uitvoert op de status van de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wordt de *ComparisonOperator* -waarde **LessThan** of **GreaterThan** met een *drempel* waarde van **4** voor de service of entiteit weer gegeven als:
-   - DNS-Client-Service Health-Service niet actief is. 
-   - DHCP-client-service health-Service niet actief is. 
-   - RPC-Service Health-Service niet actief is. 
-   - Windows firewall-service health-Service niet actief is.
-   - Windows-gebeurtenislogboek service health-Service niet actief is. 
-   - Server-service health-Service niet actief is. 
-   - Windows remote management-service health-Service wordt niet uitgevoerd. 
-   - Bestandssysteemfout of beschadiging – logische schijf is niet beschikbaar.
-
-Drempel waarden voor de volgende status criteria van Linux kunnen niet worden gewijzigd, omdat hun status al is ingesteld op *waar*. In de status wordt de *comparisonOperator* met de waarde **LessThan** en de *drempel* waarde **1** weer gegeven wanneer er een query wordt uitgevoerd vanuit de API voor het bewaken van workloads voor de entiteit, afhankelijk van de context:
-   - Status van logische schijf – logische schijf is niet online / beschikbaar
-   - De Status van de schijf-schijf is niet online / beschikbaar
-   - Status van Network Adapter - netwerkadapter is uitgeschakeld
-
-### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hoe kan ik wijzigen van waarschuwingen die zijn opgenomen in de status functie?
-Regels voor waarschuwingen die zijn gedefinieerd voor elk criterium status worden niet weergegeven in de Azure-portal. U kunt een waarschuwings regel voor de status alleen in-of uitschakelen in de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). U kunt ook geen [Azure monitor actie groep](platform/action-groups.md) toewijzen voor status waarschuwingen in de Azure Portal. U kunt de API voor meldings instellingen alleen gebruiken om een actie groep te configureren die wordt geactiveerd wanneer een status waarschuwing wordt geactiveerd. Op dit moment kunt u actie groepen toewijzen aan een virtuele machine, zodat alle *status waarschuwingen* voor de virtuele machine dezelfde actie groepen activeren. In tegenstelling tot traditionele Azure-waarschuwingen is er geen concept van een aparte actiegroep voor elke status waarschuwingsregel. Bovendien worden alleen actiegroepen die zijn geconfigureerd voor e-mailadres of SMS-berichten ondersteund wanneer de gezondheid van waarschuwingen worden geactiveerd. 
-
-### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie niet sommige of alle gegevens in de prestatiegrafieken voor mijn virtuele machine
-Onze prestatie grafieken zijn bijgewerkt voor het gebruik van gegevens die zijn opgeslagen in de tabel *InsightsMetrics* .  Als u gegevens in deze grafieken wilt weer geven, moet u een upgrade uitvoeren om de nieuwe VM Insights-oplossing te gebruiken.  Raadpleeg onze Ga naar de [Veelgestelde vragen](insights/vminsights-ga-release-faq.md) voor meer informatie.
-
-Als u geen prestatie gegevens in de tabel schijf of in een aantal prestatie grafieken ziet, zijn de prestatie meter items mogelijk niet geconfigureerd in de werk ruimte. Voer het volgende [Power shell-script](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)uit om het probleem op te lossen.
+### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan ik aan boord gaan naar een bestaande werkruimte?
+Als uw virtuele machines al zijn verbonden met een Log Analytics-werkruimte, u die werkruimte blijven gebruiken bij het instappen naar Azure Monitor voor VM's, op voorwaarde dat deze zich in een van de ondersteunde regio's [bevindt](insights/vminsights-enable-overview.md#prerequisites)die hier worden vermeld.
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hoe verschilt Azure Monitor voor VM's kaart functie van Servicetoewijzing?
-De functie Azure Monitor voor VM's map is gebaseerd op Servicetoewijzing, maar heeft de volgende verschillen:
+### <a name="can-i-onboard-to-a-new-workspace"></a>Kan ik aan boord gaan naar een nieuwe werkruimte? 
+Als uw VM's momenteel niet zijn verbonden met een bestaande Log Analytics-werkruimte, moet u een nieuwe werkruimte maken om uw gegevens op te slaan. Het maken van een nieuwe standaardwerkruimte gebeurt automatisch als u één Azure VM voor Azure Monitor voor VM's configureert via de Azure-portal.
 
-* De kaart weergave is toegankelijk via de VM-Blade en uit Azure Monitor voor VM's onder Azure Monitor.
-* De verbindingen in de kaart kunnen nu worden geklikt en weer geven van de verbindings gegevens in het deel venster voor de geselecteerde verbinding.
-* Er is een nieuwe API die wordt gebruikt om de kaarten te maken voor betere ondersteuning van complexere kaarten.
-* Bewaakte Vm's zijn nu opgenomen in het knoop punt client groep en het ring diagram toont het aandeel van de bewaakte en niet-bewaakte virtuele machines in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep wordt uitgevouwen.
-* Bewaakte virtuele machines zijn nu opgenomen in de server poort groep knoop punten en het ring diagram toont het aandeel van de bewaakte en niet-bewaakte computers in de groep.  Het kan ook worden gebruikt voor het filteren van de lijst met computers wanneer de groep wordt uitgevouwen.
-* De kaart stijl is bijgewerkt zodat deze consistent is met de app-toewijzing van Application Insights.
-* De side panels zijn bijgewerkt en hebben niet de volledige set integraties die worden ondersteund in Servicetoewijzing-Updatebeheer, Wijzigingen bijhouden, beveiliging en Service Desk. 
-* De optie voor het kiezen van groepen en machines die u wilt toewijzen, is bijgewerkt en ondersteunt nu abonnementen, resource groepen, Azure-schaal sets voor virtuele machines en Cloud Services.
-* U kunt geen nieuwe Servicetoewijzing machine groepen maken in de functie Azure Monitor voor VM's kaart.  
+Als u ervoor kiest de op scripts gebaseerde methode te gebruiken, worden deze stappen behandeld in de [Azure Monitor for VM's inschakelen met Azure PowerShell of resourcebeheersjabloonartikel.](insights/vminsights-enable-at-scale-powershell.md) 
 
-### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Waarom kunnen mijn prestatiegrafieken stippellijnen weergeven?
-Dit kan een paar oorzaken hebben.  Als er sprake is van een onderbreking in het verzamelen van gegevens, worden de lijnen weer gegeven als gestippeld.  Als u de gegevens sampling frequentie hebt gewijzigd voor de prestatie meter items ingeschakeld (de standaard instelling is het verzamelen van gegevens elke 60 seconden), kunt u stippel lijnen in de grafiek zien als u een beperkt tijds bereik voor de grafiek kiest en de sampling frequentie kleiner is dan de Bucket grootte die in de grafiek wordt gebruikt (bijvoorbeeld de sampling frequentie is elke 10 minuten en elke Bucket in de grafiek is 5 minuten).  Als u een breder tijds bereik kiest voor weer gave, moeten de grafiek lijnen worden weer gegeven als ononderbroken lijnen in plaats van punten in dit geval.
+### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wat moet ik doen als mijn vm al rapporteert aan een bestaande werkruimte?
+Als u al gegevens van uw virtuele machines verzamelt, hebt u deze mogelijk al geconfigureerd om gegevens te rapporteren aan een bestaande Log Analytics-werkruimte.  Zolang die werkruimte zich in een van onze ondersteunde regio's bevindt, u Azure Monitor voor VM's inschakelen voor die reeds bestaande werkruimte.  Als de werkruimte die u al gebruikt zich niet in een van onze ondersteunde regio's bevindt, u op dit moment niet aan boord gaan van Azure Monitor voor VM's.  We zijn actief bezig om extra regio's te ondersteunen.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Worden groepen ondersteund met Azure Monitor voor virtuele machines?
-Ja, nadat u de afhankelijkheids agent hebt geïnstalleerd, verzamelen we informatie van de virtuele machines om groepen weer te geven op basis van het abonnement, de resource groep, de schaal sets voor virtuele machines en Cloud Services.  Als u Servicetoewijzing hebt gebruikt en computer groepen hebt gemaakt, worden deze ook weer gegeven.  Computer groepen worden ook weer gegeven in het filter groepen als u deze hebt gemaakt voor de werk ruimte die u bekijkt. 
 
-### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hoe kan ik raadpleegt u de details van wat is de 95e percentiel regel in de samengevoegde prestatie grafieken?
-Standaard wordt de lijst gesorteerd om u de virtuele machines weer te geven die de hoogste waarde voor het 95e percentiel hebben voor de geselecteerde metriek, met uitzonde ring van de beschik bare geheugen grafiek, waarin de computers met de laagste waarde van het vijfde percentiel worden weer gegeven.  Als u op de grafiek klikt, wordt de **bovenste N lijst** weergave geopend met de juiste metriek geselecteerd.
+### <a name="why-did-my-vm-fail-to-onboard"></a>Waarom is mijn VM niet aan boord gekomen?
+Bij het inwerken van een Azure VM vanuit de Azure-portal worden de volgende stappen uitgevoerd:
 
-### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hoe verwerken de kaart functie dubbele IP-adressen over verschillende vnets en subnetten?
-Als u IP-bereiken dupliceert met Vm's of virtuele-machine schaal sets van Azure in subnetten en vnets, kan dit ertoe leiden dat Azure Monitor voor VM's kaart onjuiste gegevens weergeeft. Dit is een bekend probleem en we onderzoeken de opties om deze ervaring te verbeteren.
+* Er wordt een standaard werkruimte Log Analytics gemaakt als die optie is geselecteerd.
+* De log-analyse-agent is geïnstalleerd op Azure VM's met behulp van een VM-extensie, indien bepaald dat dit vereist is.  
+* De Azure Monitor for VMs Map Dependency-agent is geïnstalleerd op Azure VM's met behulp van een extensie, indien bepaald. 
 
-### <a name="does-map-feature-support-ipv6"></a>Ondersteunt de functie voor het toewijzen van IPv6?
-De toewijzings functie ondersteunt momenteel alleen IPv4 en we onderzoeken de ondersteuning voor IPv6. We bieden ook ondersteuning voor IPv4 die in IPv6 is getunneld.
+Tijdens het proces aan boord controleren we op status op elk van de bovenstaande om een meldingsstatus aan u terug te geven in de portal. De configuratie van de werkruimte en de installatie van de agent duurt doorgaans 5 tot 10 minuten. Het bekijken van bewakingsgegevens in de portal duurt 5 tot 10 minuten extra.  
 
-### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Wanneer ik een kaart voor een resource groep of een andere grote groep laad, kan de kaart moeilijk worden weer gegeven
-We hebben verbeteringen aangebracht in de toewijzing van het verwerken van grote en complexe configuraties, maar het is ook mogelijk dat een kaart een groot aantal knoop punten, verbindingen en een knoop punt als een cluster kan hebben.  We zijn om verder te verbeteren van ondersteuning voor meer schaalbaarheid.   
+Als u onboarding hebt gestart en berichten ziet die aangeven dat de VM aan boord moet worden genomen, u de VM maximaal 30 minuten de tijd geven om het proces te voltooien. 
 
-### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Waarom ziet de netwerk grafiek op het tabblad prestaties er anders uit dan de netwerk grafiek op de overzichts pagina van de Azure VM?
 
-Op de overzichts pagina voor een Azure-VM worden grafieken weer gegeven op basis van de meting van de activiteit van de host in de gast-VM.  Voor de netwerk grafiek in het overzicht van de Azure-VM wordt alleen het netwerk verkeer weer gegeven dat wordt gefactureerd.  Dit omvat niet het verkeer tussen virtuele netwerken.  De gegevens en grafieken die voor Azure Monitor voor VM's worden weer gegeven, zijn gebaseerd op gegevens van de gast-VM en de netwerk grafiek bevat alle TCP/IP-verkeer dat binnenkomend en uitgaand is voor die VM, inclusief intervirtueel netwerk.
+### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie geen gegevens of gegevens in de prestatiegrafieken voor mijn VM
+Onze prestatiegrafieken zijn bijgewerkt om gegevens te gebruiken die zijn opgeslagen in de tabel *InsightsMetrics.*  Als u gegevens in deze grafieken wilt zien, moet u upgraden om de nieuwe VM Insights-oplossing te gebruiken.  Raadpleeg onze [GA FAQ](insights/vminsights-ga-release-faq.md) voor meer informatie.
 
-### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hoe wordt de reactie tijd gemeten voor gegevens die zijn opgeslagen in VMConnection en worden weer gegeven in het deel venster verbinding en in werkmappen?
+Als u prestatiegegevens niet ziet in de schijftabel of in sommige prestatiegrafieken, worden de prestatiemeteritems mogelijk niet geconfigureerd in de werkruimte. Voer het volgende [PowerShell-script](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)uit om het volgende PowerShell-script uit te voeren.
 
-De reactie tijd is een benadering. Omdat we de code van de toepassing niet instrumenteren, weten we niet echt wanneer een aanvraag begint en wanneer het antwoord wordt ontvangen. In plaats daarvan zien we dat er gegevens worden verzonden via een verbinding en dat de gegevens vervolgens weer worden teruggestuurd op deze verbinding. Onze agent houdt deze verzenden en ontvangen en probeert deze te koppelen: een volg orde van verzen dingen, gevolgd door een reeks ontvangen, wordt geïnterpreteerd als een aanvraag/antwoord-paar. De tijds duur tussen deze bewerkingen is de reactie tijd. Deze bevat de netwerk latentie en de verwerkings tijd van de server.
 
-Deze benadering werkt goed voor protocollen die op aanvraag/antwoord zijn gebaseerd: een enkele aanvraag verloopt op de verbinding en er wordt één antwoord ontvangen. Dit is het geval voor HTTP (S) (zonder pipeline), maar niet aan andere protocollen is voldaan.
+### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Waarin verschilt de functie Azure Monitor for VM's Map van Service Map?
+De functie Kaart van Azure Monitor voor VM's is gebaseerd op servicekaart, maar heeft de volgende verschillen:
 
-### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Zijn er beperkingen als ik aan het gratis prijs plan van Log Analytics?
-Als u Azure Monitor hebt geconfigureerd met een Log Analytics-werk ruimte met behulp van de *gratis* prijs categorie, worden in azure monitor voor VM's kaart-functie alleen vijf verbonden computers ondersteund die zijn verbonden met de werk ruimte. Als u vijf Vm's hebt verbonden met een gratis werk ruimte, verbreekt u de verbinding van een van de virtuele machines en maakt u later een nieuwe virtuele machine, de nieuwe virtuele machine wordt niet bewaakt en wordt niet weer gegeven op de pagina overzicht.  
+* De kaartweergave is toegankelijk vanaf het VM-blad en vanuit Azure Monitor voor VM's onder Azure Monitor.
+* De verbindingen in de kaart zijn nu klikbaar en geven een weergave weer van de verbindingsmetrische gegevens in het zijpaneel voor de geselecteerde verbinding.
+* Er is een nieuwe API die wordt gebruikt om de kaarten te maken om complexere kaarten beter te ondersteunen.
+* Bewaakte VM's zijn nu opgenomen in het clientgroepsknooppunt en de donutgrafiek toont het aandeel bewaakte versus niet-bewaakte virtuele machines in de groep.  Het kan ook worden gebruikt om de lijst met machines te filteren wanneer de groep wordt uitgebreid.
+* Bewaakte virtuele machines zijn nu opgenomen in de knooppunten van de serverpoortgroep en de donutgrafiek toont het aandeel bewaakte versus niet-bewaakte machines in de groep.  Het kan ook worden gebruikt om de lijst met machines te filteren wanneer de groep wordt uitgebreid.
+* De kaartstijl is bijgewerkt om meer in overeenstemming te zijn met app-kaart van toepassingsinzichten.
+* De zijpanelen zijn bijgewerkt en hebben niet de volledige set integratie's die werden ondersteund in Service Map - Update Management, Change Tracking, Security en Service Desk. 
+* De optie voor het kiezen van groepen en machines om in kaart te brengen is bijgewerkt en ondersteunt nu abonnementen, resourcegroepen, azure-eenvoudigmaquettesets voor virtuele machines en Cloudservices.
+* U geen nieuwe machinegroepen voor servicetoewijzingmaken in de functie Azure Monitor for VM's-kaart.  
 
-In dit voor beeld wordt u gevraagd de optie **nu proberen** te kiezen wanneer u de virtuele machine opent en **inzichten (preview)** selecteert in het linkerdeel venster, zelfs nadat het al op de virtuele machine is geïnstalleerd.  U wordt echter niet gevraagd naar opties die normaal gesp roken optreden als deze virtuele machine niet is opvoerd aan Azure Monitor voor VM's. 
+### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Waarom worden in mijn prestatiegrafieken stippellijnen weergegeven?
+Dit kan om een paar redenen gebeuren.  In gevallen waarin er een gat in het verzamelen van gegevens zijn, geven we de lijnen af als gestippeld.  Als u de frequentie van de gegevensbemonstering voor de ingeschakelde prestatiemeteritems hebt gewijzigd (de standaardinstelling is om elke 60 seconden gegevens te verzamelen), u stippellijnen in de grafiek zien als u een smal tijdsbereik voor de grafiek kiest en uw bemonsteringsfrequentie kleiner is dan de emmergrootte die in de grafiek wordt gebruikt (bijvoorbeeld de bemonsteringsfrequentie is elke 10 minuten en elke emmer op de grafiek is 5 minuten).  Als u een breder tijdsbereik kiest om te bekijken, worden de grafieklijnen in dit geval weergegeven als effen lijnen in plaats van puntjes.
+
+### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Worden groepen ondersteund met Azure Monitor voor VM's?
+Ja, zodra u de afhankelijkheidsagent installeert, verzamelen we informatie uit de VM's om groepen weer te geven op basis van abonnement, resourcegroep, virtuele machineschaalsets en cloudservices.  Als u Service Map hebt gebruikt en machinegroepen hebt gemaakt, worden deze ook weergegeven.  Computergroepen worden ook weergegeven in het groepenfilter als u ze hebt gemaakt voor de werkruimte die u bekijkt. 
+
+### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hoe zie ik de details voor wat de 95e percentiellijn in de totale prestatiegrafieken aandrijft?
+Standaard wordt de lijst gesorteerd om u de VM's te laten zien die de hoogste waarde hebben voor het 95e percentiel voor de geselecteerde statistiek, met uitzondering van het diagram Beschikbaar geheugen, waarin de machines met de laagste waarde van het 5e percentiel worden weergegeven.  Als u op de grafiek klikt, opent u de **toplijstweergave** met de juiste statistiek geselecteerd.
+
+### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hoe verwerkt de functie Kaart dubbele IP's over verschillende videonetten en subnetten?
+Als u IP-bereiken dupliceert met VM's of Azure-schaalsets voor virtuele machines voor subnetten en vnets, kan azure-monitor voor VM's-toewijzing onjuiste informatie weergeven. Dit is een bekend probleem en we onderzoeken opties om deze ervaring te verbeteren.
+
+### <a name="does-map-feature-support-ipv6"></a>Ondersteunt kaartfunctie IPv6?
+Kaartfunctie ondersteunt momenteel alleen IPv4 en we onderzoeken ondersteuning voor IPv6. We ondersteunen ook IPv4 dat is getunneld in IPv6.
+
+### <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Wanneer ik een kaart laad voor een resourcegroep of andere grote groep, is de kaart moeilijk te bekijken
+Hoewel we verbeteringen hebben aangebracht in Map om grote en complexe configuraties te verwerken, realiseren we ons dat een kaart veel knooppunten, verbindingen en knooppunt kan hebben die als cluster werken.  We doen er alles aan om de ondersteuning te blijven verbeteren om de schaalbaarheid te vergroten.   
+
+### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Waarom ziet de netwerkgrafiek op het tabblad Prestaties er anders uit dan de netwerkgrafiek op de pagina Azure VM-overzicht?
+
+Op de overzichtspagina voor een Azure VM worden grafieken weergegeven op basis van de meting van de activiteit van de host in de gast-VM.  Voor de netwerkgrafiek in het Azure VM-overzicht wordt alleen netwerkverkeer weergegeven dat wordt gefactureerd.  Dit geldt niet voor intervirtueel netwerkverkeer.  De gegevens en grafieken die voor Azure Monitor voor VM's worden weergegeven, zijn gebaseerd op gegevens van de gast-VM en in het netwerkdiagram worden al het TCP/IP-verkeer weergegeven dat binnen- en uitgaand is naar die VM, inclusief intervirtueel netwerk.
+
+### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hoe wordt de responstijd gemeten voor gegevens die zijn opgeslagen in VMConnection en worden weergegeven in het verbindingspaneel en de werkmappen?
+
+Reactietijd is een benadering. Aangezien we de code van de toepassing niet instrumenteren, weten we niet echt wanneer een aanvraag begint en wanneer het antwoord binnenkomt. In plaats daarvan zien we dat gegevens worden verzonden op een verbinding en vervolgens gegevens die terugkomen op die verbinding. Onze agent houdt deze verzendingen en ontvangt en pogingen bij om ze te koppelen: een reeks verzendingen, gevolgd door een reeks ontvangsten wordt geïnterpreteerd als een verzoek/antwoordpaar. De timing tussen deze bewerkingen is de reactietijd. Het omvat de netwerklatentie en de serververwerkingstijd.
+
+Deze benadering werkt goed voor protocollen die op aanvraag/antwoord zijn gebaseerd: er wordt één verzoek op de verbinding uitgevoerd en er komt één antwoord binnen. Dit is het geval voor HTTP(S) (zonder pipelining), maar niet tevreden voor andere protocollen.
+
+### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Zijn hun beperkingen als ik op de Log Analytics Gratis prijsplan?
+Als u Azure Monitor hebt geconfigureerd met een Log Analytics-werkruimte met de *gratis* prijscategorie, biedt azure monitor voor vms-kaartfunctie slechts ondersteuning voor vijf verbonden machines die zijn aangesloten op de werkruimte. Als u vijf VM's hebt aangesloten op een vrije werkruimte, koppelt u een van de VM's los en sluit u later een nieuwe vm aan, wordt de nieuwe vm niet gecontroleerd en weergegeven op de kaartpagina.  
+
+Onder deze voorwaarde wordt u gevraagd met de optie **Nu proberen** wanneer u de virtuele machine opent en **Inzichten** selecteert in het linkerdeelvenster, zelfs nadat deze al op de vm is geïnstalleerd.  U wordt echter niet gevraagd met opties zoals normaal gesproken zou gebeuren als deze VM niet was aangesloten op Azure Monitor voor VM's. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als uw vraag hier niet wordt beantwoord, kunt u de volgende forums raadplegen voor aanvullende vragen en antwoorden.
+Als uw vraag hier niet wordt beantwoord, u naar de volgende forums verwijzen naar aanvullende vragen en antwoorden.
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Logboekanalyse](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
-Voor algemene feedback over Azure Monitor gaat u naar het [Feedback forum](https://feedback.azure.com/forums/34192--general-feedback).
+Ga voor algemene feedback over Azure Monitor naar het [feedbackforum.](https://feedback.azure.com/forums/34192--general-feedback)

@@ -4,51 +4,26 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7f5c02c6c009e8916ed063454e0ae6049892e95c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280595"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297900"
 ---
-Azure Data Explorer versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren voor het gebruik van gegevens versleuteling. Door de klant beheerde sleutels moeten worden opgeslagen in een [Azure Key Vault](/azure/key-vault/key-vault-overview). U kunt uw eigen sleutels maken en deze opslaan in een sleutel kluis, maar u kunt ook een Azure Key Vault-API gebruiken om sleutels te genereren. Het Azure Data Explorer-cluster en de sleutel kluis moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Voor een gedetailleerde uitleg over door de klant beheerde sleutels, Zie [door de klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption). Dit artikel laat u zien hoe u door de klant beheerde sleutels kunt configureren.
+Azure Data Explorer versleutelt alle gegevens in een opslagaccount in rust. Standaard worden gegevens versleuteld met door Microsoft beheerde sleutels. Voor extra controle over versleutelingssleutels u door de klant beheerde sleutels leveren die u gebruiken voor gegevensversleuteling. 
 
-Als u door de klant beheerde sleutels wilt configureren met Azure Data Explorer, moet u [twee eigenschappen instellen op de sleutel kluis](/azure/key-vault/key-vault-ovw-soft-delete): **voorlopig verwijderen** en **niet wissen**. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u [Power shell](/azure/key-vault/key-vault-soft-delete-powershell) of [Azure cli](/azure/key-vault/key-vault-soft-delete-cli). Alleen RSA-sleutels en sleutel grootte 2048 worden ondersteund.
+Door de klant beheerde sleutels moeten worden opgeslagen in een [Azure Key Vault.](/azure/key-vault/key-vault-overview) U uw eigen sleutels maken en opslaan in een sleutelkluis, of u een Azure Key Vault API gebruiken om sleutels te genereren. Het Azure Data Explorer-cluster en de sleutelkluis moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie door de [klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption)voor een gedetailleerde uitleg over door de klant beheerde sleutels. 
+
+In dit artikel ziet u hoe u door de klant beheerde sleutels configureert.
+
+## <a name="configure-azure-key-vault"></a>Azure Key Vault configureren
+
+Als u door de klant beheerde sleutels wilt configureren met Azure Data Explorer, moet u [twee eigenschappen instellen op de sleutelkluis:](/azure/key-vault/key-vault-ovw-soft-delete)Soft **Delete** en Do **Not Purge**. Deze eigenschappen zijn standaard niet ingeschakeld. Als u deze eigenschappen wilt inschakelen, voert **u Beveiliging voor het verwijderen van soft delete** en **Zuiveringsbeveiliging** inschakelen uit in [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) of [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli) op een nieuwe of bestaande sleutelkluis. Alleen RSA-toetsen van formaat 2048 worden ondersteund. Zie [Key Vault-toetsen voor](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)meer informatie over sleutels.
 
 > [!NOTE]
-> Het versleutelen van gegevens met door de klant beheerde sleutels wordt niet ondersteund voor [leiders en volg clusters](/azure/data-explorer/follower). 
+> Gegevensversleuteling met behulp van door de klant beheerde sleutels wordt niet ondersteund op [leader- en volgerclusters.](/azure/data-explorer/follower) 
 
-## <a name="assign-an-identity-to-the-cluster"></a>Een identiteit aan het cluster toewijzen
+## <a name="assign-an-identity-to-the-cluster"></a>Een identiteit toewijzen aan het cluster
 
-Als u door de klant beheerde sleutels voor uw cluster wilt inschakelen, wijst u eerst een door het systeem toegewezen beheerde identiteit toe aan het cluster. U gebruikt deze beheerde identiteit om de cluster machtigingen te verlenen voor toegang tot de sleutel kluis. Zie [beheerde identiteiten](/azure/data-explorer/managed-identities)om door het systeem toegewezen beheerde identiteiten te configureren.
-
-## <a name="create-a-new-key-vault"></a>Een nieuwe sleutel kluis maken
-
-Als u een nieuwe sleutel kluis wilt maken met behulp van Power shell, roept u [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)aan. De sleutel kluis die u gebruikt voor het opslaan van door de klant beheerde sleutels voor Azure Data Explorer versleuteling, moet twee instellingen voor sleutel beveiliging hebben ingeschakeld, **verwijderen** en **niet wissen**. Vervang de waarden van de tijdelijke aanduidingen tussen vier Kante haken door uw eigen waarden in het onderstaande voor beeld.
-
-```azurepowershell-interactive
-$keyVault = New-AzKeyVault -Name <key-vault> `
-    -ResourceGroupName <resource_group> `
-    -Location <location> `
-    -EnableSoftDelete `
-    -EnablePurgeProtection
-```
-
-## <a name="configure-the-key-vault-access-policy"></a>Het toegangs beleid voor de sleutel kluis configureren
-
-Configureer vervolgens het toegangs beleid voor de sleutel kluis zodat het cluster machtigingen heeft voor toegang. In deze stap gebruikt u de door het systeem toegewezen beheerde identiteit die u eerder aan het cluster hebt toegewezen. Om het toegangs beleid voor de sleutel kluis in te stellen, roept u [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Vervang de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden en gebruik de variabelen die zijn gedefinieerd in de voor gaande voor beelden.
-
-```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy `
-    -VaultName $keyVault.VaultName `
-    -ObjectId $cluster.Identity.PrincipalId `
-    -PermissionsToKeys wrapkey,unwrapkey,get,recover
-```
-
-## <a name="create-a-new-key"></a>Een nieuwe sleutel maken
-
-Maak vervolgens een nieuwe sleutel in de sleutel kluis. Als u een nieuwe sleutel wilt maken, roept u [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)aan. Vervang de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden en gebruik de variabelen die zijn gedefinieerd in de voor gaande voor beelden.
-
-```azurepowershell-interactive
-$key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
-```
+Als u door de klant beheerde sleutels voor uw cluster wilt inschakelen, wijst u eerst een door het systeem toegewezen beheerde identiteit toe aan het cluster. U gebruikt deze beheerde identiteit om de clustermachtigingen te verlenen voor toegang tot de sleutelkluis. Zie Beheerde identiteiten als u beheerde identiteiten met systeemtoegewezen [identiteiten wilt configureren.](/azure/data-explorer/managed-identities)

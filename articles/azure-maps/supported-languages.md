@@ -1,96 +1,96 @@
 ---
-title: Ondersteuning voor lokalisatie | Microsoft Azure kaarten
+title: Lokalisatiesteun | Microsoft Azure Maps
 description: In dit artikel vindt u meer informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334073"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
-Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In dit artikel vindt u de ondersteunde talen en weer gaven om uw Azure Maps-implementatie te begeleiden.
+Azure Maps ondersteunt verschillende talen en weergaven op basis van land/regio. In dit artikel worden de ondersteunde talen en weergaven weergegeven om uw Azure Maps-implementatie te begeleiden.
 
 
-## <a name="azure-maps-supported-languages"></a>Azure Maps ondersteunde talen
+## <a name="azure-maps-supported-languages"></a>Ondersteunde talen van Azure Maps
 
-Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
+Azure Maps is gelokaliseerd in verschillende talen in zijn services. In de volgende tabel worden de ondersteunde taalcodes voor elke service weergegeven.  
   
 
-| Id         | Naam                   |  Kaarten | Zoeken | Routing | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Name                   |  Kaarten | Search | Routering | Weer | Verkeersincidenten | Js-kaartbesturingselement |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| bn-BD      | Bengaals (Bangladesh)    |       |       |         |     ✓    |                   |                |
-| bn-IN      | Bengaals (India)         |       |       |         |     ✓    |                   |                |
+| bn-BD      | Bangla (Bangladesh)    |       |       |         |     ✓    |                   |                |
+| bn-IN      | Bangla (India)         |       |       |         |     ✓    |                   |                |
 | bs-BA      | Bosnisch                 |       |       |         |     ✓    |                   |                |
 | eu-ES      | Baskisch                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | Bulgaars              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
-| CA-ES      | Catalaans                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | Chinees (vereenvoudigd)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| ca-ES      | Catalaans                |       |    ✓   |         |    ✓      |                   |                |
+| zh-HanS    | Chinees (Vereenvoudigd)   |       |  zh-CN |         |     zh-CN   |                   |                |
 | zh-HanT    | Chinees (Hong Kong SAR)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Chinees (Taiwan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Kroatisch               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Tsjechisch                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | Deens                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | nl-BE      | Nederlands (België)        |       |    ✓   |         |      ✓    |                   |                |
-| NL-NL      | Nederlands (Nederland)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-AU      | Engels (Australië)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| NL-NZ      | Engels (Nieuw-Zeeland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-NL      | Nederlands (Nederland)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-AU      | Engels (Australië)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-NZ      | Engels (Nieuw-Zeeland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Engels (Groot-Brittannië) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| nl-NL      | Engels (Verenigde Staten)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| et-EE      | Estisch               |       |    ✓   |         |      ✓    |         ✓         |                |
-| fil-PH     | Filipijns               |       |       |         |     ✓    |                   |                |
+| nl-NL      | Engels (VS)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| et-EE      | Ests               |       |    ✓   |         |      ✓    |         ✓         |                |
+| fil-PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fins                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Frans                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Frans (Canada)      |       |    ✓   |         |     ✓     |                   |                |
 | gl-ES      | Galicisch               |       |    ✓   |         |         |                   |                |
 | de-DE      | Duits                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
-| el GR      | Grieks                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| Gu-IN      | Gujarati                |       |       |         |     ✓    |                   |                |
-| hij IL      | Hebreeuws                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| el-GR      | Grieks                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
+| gu-IN      | Gujarati                |       |       |         |     ✓    |                   |                |
+| he IL      | Hebreeuws                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | Hongaars              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | is-IS      | IJslands              |       |       |         |     ✓    |                   |                |
 | id-ID      | Indonesisch             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
-| IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| it-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japans               |       |        |         |     ✓    |                   |                |
-| KN-IN      | Kanarees                |       |       |         |     ✓    |                   |                |
+| kn-IN      | Kannada                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazachs                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreaans                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |         |                   |                |
+| es-419     | Latijns-Amerikaans Spaans |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lets                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litouws             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| MK-MK      | Macedonisch             |       |       |         |     ✓    |                   |                |
-| ms-MY      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| Mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Noors Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
-| NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
+| mk-MK      | Macedonische             |       |       |         |     ✓    |                   |                |
+| ms-MY      | Maleis (Latijn)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
+| mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
+| nb-NO      | Noors - Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| NGT NGT        | Neutrale Grondwaarheid - Officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
+| NGT-Latn NGT-Latn   | Neutrale Grondwaarheid - Latijnse exonymen. Latijns script zal worden gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Pools                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugees (Brazilië)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portugees (Portugal)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| PA-IN      | Punjabi                 |       |       |         |     ✓    |                   |                |
+| pa-In      | Punjabi                 |       |       |         |     ✓    |                   |                |
 | ro-RO      | Roemeens               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Russisch                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| sr-Cyrl-RS | Servisch (Cyrillisch)     |       |   SR-RS  |         |    SR-RS     |                   |                |
-| sr-Latn-RS | Servisch (Latijns)        |       |       |         |     sr-Latn    |                   |                |
+| sr-Cyrl-RS | Servisch (Cyrillisch)     |       |   sr-RS  |         |    sr-RS     |                   |                |
+| sr-Latn-RS | Servisch (Latijns)        |       |       |         |     sr-latn    |                   |                |
 | sk-SK      | Slowaaks             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | sl-SL      | Sloveens              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Spaans                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | es-MX      | Spaans (Mexico)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| SV-SE      | Zweeds                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| TA-IN      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
+| sv-SE      | Zweeds                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| ta-IN      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
 | te-IN      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
-| e-e      | Thais                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| th-TH      | Thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Turks                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | Oekraïens               |       |    ✓   |         |     ✓    |                   |                |
 | uw-PK      | Urdu                 |       |       |         |     ✓    |                   |                |
@@ -98,7 +98,7 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 | vi-VN      | Vietnamees             |       |    ✓   |         |      ✓    |                  |                |
 
 
-## <a name="azure-maps-supported-views"></a>Ondersteunde weer gaven Azure Maps
+## <a name="azure-maps-supported-views"></a>Ondersteunde weergaven van Azure Maps
 
 > [!Note]
 > Op 1 augustus 2019 is Azure Maps uitgebracht in de volgende landen/regio's:
@@ -107,63 +107,63 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 >  * Marokko
 >  * Pakistan
 >
-> Na 1 augustus 2019 wordt met de **weer gave** -para meter de geretourneerde kaart inhoud voor de hierboven genoemde nieuwe regio's/landen gedefinieerd. Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
+> Na 1 augustus 2019 definieert de parameter **Weergave** de geretourneerde kaartinhoud voor de hierboven genoemde nieuwe regio's/landen. Azure Maps **View-parameter** (ook wel 'parameter gebruikersregio' genoemd) is een ISO-3166-landcode met twee letters die de juiste kaarten voor dat land/regio weergeeft waarin wordt aangegeven welke set geopolitiek betwiste inhoud wordt geretourneerd via Azure Maps-services, inclusief randen en labels die op de kaart worden weergegeven. 
 
-Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor de rest api's en de sdk's, die door uw services worden gebruikt.
+Zorg ervoor dat u de parameter **Weergave** instelt zoals vereist voor de REST-API's en de SDK's, die uw services gebruiken.
 >  
 >
->  **Rest-Api's:**
+>  **Rest API's:**
 >  
->  Zorg ervoor dat u de weer gave-para meter hebt ingesteld zoals vereist. Met de weer gave-para meter geeft u op welke set van geopolitieke, betwiste inhoud wordt geretourneerd via Azure Maps Services. 
+>  Controleer of u de parameter Weergave naar behoefte hebt ingesteld. De parameter Weergave geeft aan welke set geopolitiek betwiste inhoud wordt geretourneerd via Azure Maps-services. 
 >
->  Betrokken Azure Maps REST-services:
+>  Getroffen Azure Maps REST Services:
 >    
->    * Kaart tegel ophalen
->    * Kaart afbeelding ophalen 
->    * Zoek actie ophalen
->    * Zoek POI ophalen
->    * Categorie Zoek POI ophalen
->    * Zoek in de buurt ophalen
->    * Zoek adres ophalen
->    * Gestructureerd Zoek adres ophalen
->    * Zoek adres terugdraaien
->    * Adres omgekeerde cross-straat ophalen
->    * Zoeken in geometrie plaatsen
->    * Batch Preview voor het zoeken naar een adres
->    * Voor beeld van het terugdraaiende batch bericht na zoeken
->    * Zoek opdracht op route plaatsen
->    * Voor beeld van zoeken in fuzzy batch
+>    * Kaarttegel krijgen
+>    * Kaartafbeelding krijgen 
+>    * Get Search Fuzzy
+>    * ZoekPOI zoeken
+>    * Poi-rubriek zoeken
+>    * Zoeken in de buurt krijgen
+>    * Zoekadres opvragen
+>    * Zoekadres gestructureerd krijgen
+>    * Zoekadres omgekeerd opvragen
+>    * Zoekadres Reverse Cross Street opvragen
+>    * Zoeken in de map plaatsen
+>    * Batchvoorbeeld zoekadres plaatsen
+>    * Voorbeeld van het omgekeerde batchvoorbeeld voor zoekadres nastreven
+>    * Zoeken via route plaatsen
+>    * Voorbeeld van zoeken na fuzzy batch
 >
 >    
->  **Sdk's**
+>  **Sdks:**
 >
->  Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en ANDROID-SDK hebt. Betrokken Sdk's:
+>  Zorg ervoor dat u de parameter **Weergave** hebt ingesteld en dat u de nieuwste versie van Web SDK en Android SDK hebt. Getroffen SDK's:
 >
 >    * Azure Maps Web SDK
->    * Azure Maps Android-SDK
+>    * Azure Maps Android SDK
 
-De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers. Stel vervolgens de **weer gave** -para meter op de juiste manier in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
+Standaard is de parameter Weergave ingesteld op **Unified,** zelfs als u deze niet hebt gedefinieerd in de aanvraag. Bepaal de locatie van uw gebruikers. Stel vervolgens de parameter **Weergave** correct in voor die locatie. U ook 'View=Auto' instellen, waarmee de kaartgegevens worden teruggegeven op basis van het IP-adres van de aanvraag.  De parameter **Weergave** in Azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, inclusief de wetten over het in kaart brengen van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden beschikbaar worden gesteld die u via Azure Maps hebt geautoriseerd.
 
 
-De volgende tabel bevat ondersteunde weer gaven.
+De volgende tabel biedt ondersteunde weergaven.
 
-| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
+| Weergave         | Beschrijving                            |  Kaarten | Search | Js-kaartbesturingselement |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
-| AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
-| AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |
-| BH           | Bahrein (Arabische weer gave)                 |   ✓   |        |     ✓          |
-| IN           | India (Indiase weer gave)                    |   ✓   |   ✓     |     ✓          |
-| IQ           | Irak (Arabische weer gave)                    |   ✓   |        |     ✓          |
-| JO           | Jordanië (Arabische weer gave)                  |   ✓   |        |     ✓          |
-| KW           | Koeweit (Arabische weer gave)                  |   ✓   |        |     ✓          |
-| LB           | Libanon (Arabische weer gave)                 |   ✓   |        |     ✓          |
-| MA           | Marokko (Marokko-weer gave)                |   ✓   |   ✓     |     ✓          |
-| OM           | Oman (Arabische weer gave)                    |   ✓   |        |     ✓          |
-| PK           | Pakistan (Pakistaanse-weer gave)              |   ✓   |    ✓    |     ✓          |
-| PS           | Palestijnse autoriteit (Arabische weer gave)    |   ✓   |        |     ✓          |
-| QA           | Qatar (Arabische weer gave)                   |   ✓   |        |     ✓          |
-| SA           | Saudi-Arabië (Arabische weer gave)            |   ✓   |        |     ✓          |
-| SY           | Syrië (Arabische weer gave)                   |   ✓   |        |     ✓          |
-| TEZAM           | Jemen (Arabische weer gave)                   |   ✓   |        |     ✓          |
-| Auto         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
-| Enkele      | Unified View (overige)                  |   ✓   |   ✓     |     ✓          |
+| AE           | Verenigde Arabische Emiraten (Arabische weergave)    |   ✓   |        |     ✓          |
+| AR           | Argentinië (Argentijnse weergave)           |   ✓   |    ✓   |     ✓          |
+| BH           | Bahrein (Arabische weergave)                 |   ✓   |        |     ✓          |
+| IN           | India (Indische Mening)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | Irak (Arabische weergave)                    |   ✓   |        |     ✓          |
+| JO           | Jordanië (Arabische weergave)                  |   ✓   |        |     ✓          |
+| KW           | Koeweit (Arabische weergave)                  |   ✓   |        |     ✓          |
+| LB           | Libanon (Arabische weergave)                 |   ✓   |        |     ✓          |
+| MA           | Marokko (Marokkaanse mening)                |   ✓   |   ✓     |     ✓          |
+| OM           | Oman (Arabische weergave)                    |   ✓   |        |     ✓          |
+| PK           | Pakistan (Pakistaanse mening)              |   ✓   |    ✓    |     ✓          |
+| PS           | Palestijnse Autoriteit (Arabische weergave)    |   ✓   |        |     ✓          |
+| QA           | Qatar (Arabische weergave)                   |   ✓   |        |     ✓          |
+| SA           | Saoedi-Arabië (Arabische weergave)            |   ✓   |        |     ✓          |
+| SY           | Syrië (Arabische weergave)                   |   ✓   |        |     ✓          |
+| Gij           | Jemen (Arabische weergave)                   |   ✓   |        |     ✓          |
+| Automatisch         | Retourneer de kaartgegevens op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
+| Unified      | Unified View (anderen)                  |   ✓   |   ✓     |     ✓          |
