@@ -1,7 +1,7 @@
 ---
-title: Azure VMware-oplossingen (AVS)-onderhoud en updates van AVS
-description: Beschrijft het AVS-service proces voor gepland onderhoud en updates
-titleSuffix: Azure VMware Solutions (AVS)
+title: CloudSimple onderhoud en updates
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschrijft het CloudSimple-serviceproces voor gepland onderhoud en updates
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,101 +9,101 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bf5937183fc20579ecd21aca8543a0a78d4b9ff3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025024"
 ---
-# <a name="avs-maintenance-and-updates"></a>Onderhoud en updates van AVS
+# <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple onderhoud en updates
 
-De cloud omgeving van de AVS is zodanig ontworpen dat deze geen Single Point of Failure heeft.
+De Private Cloud-omgeving is ontworpen om geen enkel storingspunt te hebben.
 
-* ESXi-clusters worden geconfigureerd met vSphere hoge Beschik baarheid (HA). De clusters hebben een grootte van ten minste één reserve knooppunt voor tolerantie.
-* Redundante primaire opslag wordt geleverd door vSAN, waarvoor ten minste drie knoop punten zijn vereist om beveiliging tegen één storing te bieden. vSAN kan worden geconfigureerd om hogere toleranties te bieden voor grotere clusters.
-* de virtuele machines van vCenter, PSC en NSX Manager zijn geconfigureerd met RAID-10-opslag om te beschermen tegen opslag storingen. De virtuele machines worden beschermd tegen knoop punten/netwerk fouten door vSphere HA.
-* ESXi-hosts hebben redundante ventilatoren en Nic's.
-* TOR-en spin-switches worden in HA-paren geconfigureerd om tolerantie te bieden.
+* ESXi-clusters zijn geconfigureerd met vSphere High Availability (HA). De clusters hebben ten minste één reserveknooppunt voor tolerantie.
+* Redundante primaire opslag wordt geleverd door vSAN, waarvoor ten minste drie knooppunten nodig zijn om bescherming te bieden tegen één enkele fout. vSAN kan worden geconfigureerd om een hogere tolerantie te bieden voor grotere clusters.
+* vCenter-, PSC- en NSX Manager VM's zijn geconfigureerd met RAID-10-opslag om te beschermen tegen opslagfouten. De VM's zijn beschermd tegen node/netwerkstoringen door vSphere HA.
+* ESXi-hosts hebben redundante ventilatoren en NIC's.
+* TOR- en wervelkolomschakelaars zijn geconfigureerd in HA-paren om veerkracht te bieden.
 
-AVS bewaakt continu de volgende Vm's voor de uptime en beschik baarheid en biedt Beschik baarheid van service overeenkomsten:
+CloudSimple bewaakt continu de volgende VM's op uptime en beschikbaarheid en biedt beschikbaarheidsSLA's:
 
 * ESXi-hosts
 * vCenter
-* PSC
+* Psc
 * NSX Manager
 
-AVS controleert ook de volgende taken continu op fouten:
+CloudSimple controleert ook continu het volgende op storingen:
 
 * Harde schijven
 * Fysieke NIC-poorten
 * Servers
-* Fans
+* Ventilatoren
 * Power
-* Focus
-* Switch poorten
+* Switches
+* Van poort wisselen
 
-Als een schijf of knoop punt uitvalt, wordt er automatisch een nieuw knoop punt aan het betrokken VMware-cluster toegevoegd om de status onmiddellijk weer te geven.
+Als een schijf of knooppunt uitvalt, wordt er automatisch een nieuw knooppunt toegevoegd aan het getroffen VMware-cluster om het onmiddellijk weer in de status te brengen.
 
-AVS maakt een back-up, onderhoudt en werkt deze VMware-elementen bij in de AVS-persoonlijke Clouds:
+CloudSimple maakt een back-up van deze VMware-elementen in de Private Clouds, onderhoudt en werkt deze bij:
 
-* ESXi
-* vCenter-platform Services
-* Regelaar
+* Esxi
+* vCenter Platform Services
+* Controller
 * vSAN
-* NSX
+* NSX (NSX)
 
-## <a name="back-up-and-restore"></a>Back-ups maken en terugzetten
+## <a name="back-up-and-restore"></a>Back-up en herstel
 
-AVS-back-up omvat:
+CloudSimple back-up omvat:
 
-* Nacht incrementele back-ups van vCenter-, PSC-en DVS-regels.
-* systeem eigen Api's van vCenter voor het maken van back-ups van onderdelen in de toepassingslaag.
-* Automatische back-up vóór een update of upgrade van de VMware-beheer software.
-* vCenter-gegevens versleuteling op de bron voordat gegevens worden overgebracht via een met TLS 1.2 versleuteld kanaal naar Azure. De gegevens worden opgeslagen in een Azure-Blob waar ze worden gerepliceerd tussen regio's.
+* Nachtelijke incrementele back-ups van vCenter-, PSC- en DVS-regels.
+* vCenter native API's om een back-up te maken van onderdelen op de toepassingslaag.
+* Automatische back-up voorafgaand aan het bijwerken of upgraden van de VMware-beheersoftware.
+* vCenter-gegevensversleuteling bij de bron voordat gegevens via een TLS1.2-versleuteld kanaal naar Azure worden overgebracht. De gegevens worden opgeslagen in een Azure-blob waar deze worden gerepliceerd in verschillende regio's.
 
-U kunt een terugzet bewerking aanvragen door een [ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te openen.
+U een herstel aanvragen door een [ondersteuningsverzoek te](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)openen.
 
 ## <a name="maintenance"></a>Onderhoud
 
-AVS voert verschillende soorten gepland onderhoud uit.
+CloudSimple doet verschillende soorten gepland onderhoud.
 
-### <a name="backendinternal-maintenance"></a>Back-end/intern onderhoud
+### <a name="backendinternal-maintenance"></a>Backend/intern onderhoud
 
-Dit onderhoud omvat doorgaans het opnieuw configureren van fysieke assets of het installeren van software patches. Dit heeft geen invloed op het normale verbruik van de activa die worden onderhouden. Met redundante Nic's die aan elk fysiek rack worden gekoppeld, worden normale netwerk verkeer en geposte AVS-bewerkingen voor Privécloud niet beïnvloed. U kunt alleen invloed hebben op de prestaties als uw organisatie verwacht dat de volledige redundante band breedte tijdens het onderhouds interval wordt gebruikt.
+Dit onderhoud omvat meestal het opnieuw configureren van fysieke assets of het installeren van softwarepatches. Het heeft geen invloed op het normale verbruik van de activa die worden onderhouden. Als er redundante NIC's naar elk fysiek rack gaan, worden normaal netwerkverkeer en Private Cloud-bewerkingen niet beïnvloed. Mogelijk merkt u alleen een prestatie-impact als uw organisatie verwacht de volledige redundante bandbreedte te gebruiken tijdens het onderhoudsinterval.
 
-### <a name="avs-portal-maintenance"></a>Onderhoud van de AVS-Portal
+### <a name="cloudsimple-portal-maintenance"></a>CloudSimple-portalonderhoud
 
-Een bepaalde downtime van de service is vereist wanneer het AVS-besturings vlak of de infra structuur wordt bijgewerkt. Op dit moment kunnen onderhouds intervallen even frequent per maand zijn. De frequentie wordt naar verwachting in de loop van de tijd geweigerd. AVS biedt een melding voor portal onderhoud en houdt het interval zo kort mogelijk. Tijdens een portal-onderhouds interval blijven de volgende services werken zonder dat dit van invloed is:
+Er is enige beperkte uitvaltijd van de service vereist wanneer het cloudsimple-besturingsvlak of -infrastructuur wordt bijgewerkt. Momenteel kunnen onderhoudsintervallen zo frequent zijn als één keer per maand. De frequentie zal naar verwachting na verloop van tijd afnemen. CloudSimple biedt meldingen voor portalonderhoud en houdt het interval zo kort mogelijk. Tijdens een onderhoudsinterval van de portal blijven de volgende services zonder enige impact functioneren:
 
-* VMware-beheer vlak en-toepassingen
-* toegang tot vCenter
+* VMware management plane en applicaties
+* vCenter-toegang
 * Alle netwerken en opslag
 * Al het Azure-verkeer
 
-### <a name="vmware-infrastructure-maintenance"></a>VMware-infrastructuur onderhoud
+### <a name="vmware-infrastructure-maintenance"></a>Onderhoud van VMware-infrastructuur
 
-Het is nu af en toe nood zakelijk om wijzigingen aan te brengen in de configuratie van de VMware-infra structuur. Op dit moment kunnen deze intervallen elke 1-2 maanden optreden, maar wordt de frequentie naar verwachting in de loop van de tijd geweigerd. Dit type onderhoud kan meestal worden uitgevoerd zonder het normale gebruik van de AVS-services te onderbreken. Tijdens een VMware-onderhouds interval blijven de volgende services functioneren zonder enige impact:
+Af en toe is het noodzakelijk om wijzigingen aan te brengen in de configuratie van de VMware-infrastructuur.  Momenteel kunnen deze intervallen elke 1-2 maanden optreden, maar de frequentie zal naar verwachting in de loop van de tijd afnemen. Dit type onderhoud kan meestal worden uitgevoerd zonder het normale verbruik van de CloudSimple-services te onderbreken. Tijdens een VMware-onderhoudsinterval blijven de volgende services zonder enige impact functioneren:
 
-* VMware-beheer vlak en-toepassingen
-* toegang tot vCenter
+* VMware management plane en applicaties
+* vCenter-toegang
 * Alle netwerken en opslag
 * Al het Azure-verkeer
 
 ## <a name="updates-and-upgrades"></a>Updates en upgrades
 
-AVS is verantwoordelijk voor het levenscyclus beheer van VMware-software (ESXi, vCenter, PSC en NSX) in de AVS-Privécloud.
+CloudSimple is verantwoordelijk voor lifecycle management van VMware software (ESXi, vCenter, PSC en NSX) in de Private Cloud.
 
 Software-updates zijn onder andere:
 
-* **Patches**. Beveiligings patches of oplossingen voor oplossingen die worden vrijgegeven door VMware.
-* **Updates**. Wijziging van de secundaire versie van een VMware-stack onderdeel.
-* **Upgrades**. Wijziging van de hoofd versie van een VMware-stack onderdeel.
+* **Patches**. Beveiligingspatches of bugfixes die door VMware zijn uitgebracht.
+* **Updates**. Kleine versiewijziging van een VMware-stackcomponent.
+* **Upgrades**. Belangrijke versiewijziging van een VMware-stackcomponent.
 
-Met AVS wordt een kritieke beveiligings patch getest zodra deze beschikbaar is in VMware. Via de SLA implementeert AVS de beveiligings patch om persoonlijke Cloud omgevingen binnen een week te AVS.
+CloudSimple test een kritieke beveiligingspatch zodra deze beschikbaar is bij VMware. Per SLA rolt CloudSimple de beveiligingspatch binnen een week uit naar Private Cloud-omgevingen.
 
-AVS biedt updates voor het driemaandelijkse onderhoud aan VMware-software onderdelen. Wanneer er een nieuwe primaire versie van VMware-software beschikbaar is, werkt AVS samen met klanten om een geschikt onderhouds venster voor de upgrade te coördineren.
+CloudSimple biedt driemaandelijkse onderhoudsupdates voor VMware-softwarecomponenten. Wanneer er een nieuwe grote versie van VMware-software beschikbaar is, werkt CloudSimple samen met klanten om een geschikt onderhoudsvenster voor een upgrade te coördineren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Back-ups van workload Vm's maken met Veeam](backup-workloads-veeam.md)
+[Back-up workload VM's met Veeam](backup-workloads-veeam.md)

@@ -1,95 +1,91 @@
 ---
-title: Resource logboeken verzamelen & analyseren
-description: Registreer en analyseer bron logboek gebeurtenissen voor Azure Container Registry zoals verificatie, installatie kopie push en installatie kopie ophalen.
+title: Bronlogboeken verzamelen & analyseren
+description: Recordeer en analyseer gebeurtenisgebeurtenissen voor het Azure Container Registry, zoals verificatie, afbeeldingspush en afbeeldingsuittrekken.
 ms.topic: article
 ms.date: 01/03/2020
-ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747998"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409640"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logboeken voor diagnostische evaluatie en controle
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-logboeken voor diagnostische evaluatie en controle
 
-In dit artikel wordt uitgelegd hoe u logboek gegevens kunt verzamelen voor een Azure container Registry met behulp van de functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [bron logboeken](../azure-monitor/platform/platform-logs-overview.md) (voorheen *Diagnostische logboeken*genoemd) voor door gebruikers gestuurde gebeurtenissen in het REGI ster. Verzamelen en gebruiken van deze gegevens om te voldoen aan de behoeften, zoals:
+In dit artikel wordt uitgelegd hoe u logboekgegevens verzamelt voor een Azure-containerregister met behulp van functies van [Azure Monitor.](../azure-monitor/overview.md) Azure Monitor verzamelt [bronlogboeken](../azure-monitor/platform/platform-logs-overview.md) (voorheen *diagnostische logboeken*genoemd) voor door gebruikers gestuurde gebeurtenissen in uw register. Verzamel en gebruik deze gegevens om te voldoen aan behoeften zoals:
 
-* Register verificatie gebeurtenissen controleren om te zorgen voor beveiliging en naleving 
+* Verificatiegebeurtenissen voor het auditregister om de beveiliging en naleving te waarborgen 
 
-* Geef een compleet activiteiten spoor op register artefacten, zoals pull-en pull-gebeurtenissen, zodat u operationele problemen met uw REGI ster kunt vaststellen 
+* Geef een volledig activiteitenspoor op registerartefacten zoals pull- en pull-gebeurtenissen, zodat u operationele problemen met uw register diagnosticeren 
 
-Het verzamelen van bron logboek gegevens met behulp van Azure Monitor kan extra kosten in rekening worden gebracht. Zie [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). 
+Het verzamelen van bronlogboekgegevens met Azure Monitor kan extra kosten met zich meebrengen. Zie [Azure Monitor-prijzen](https://azure.microsoft.com/pricing/details/monitor/). 
 
+## <a name="repository-events"></a>Repository-gebeurtenissen
 
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-versie en er zijn enkele [beperkingen](#preview-limitations) van toepassing. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+De volgende gebeurtenissen op archiefniveau voor afbeeldingen en andere artefacten worden momenteel geregistreerd:
 
-## <a name="preview-limitations"></a>Preview-beperkingen
+* **Evenementen pushen**
+* **Gebeurtenissen trekken**
+* **Gebeurtenissen onttaggen**
+* **Gebeurtenissen verwijderen** (inclusief gebeurtenissen voor het verwijderen van opslagplaatsen)
 
-De volgende gebeurtenissen op opslagplaats niveau voor installatie kopieën en andere artefacten worden momenteel geregistreerd:
+Gebeurtenissen op repository-niveau die momenteel niet zijn geregistreerd: gebeurtenissen verwijderen.
 
-* **Push gebeurtenissen**
-* **Pull-gebeurtenissen**
-* **Tag-gebeurtenissen**
-* **Gebeurtenissen verwijderen** (waaronder gebeurtenissen voor het verwijderen van de opslag plaats)
+## <a name="registry-resource-logs"></a>Registerbronlogboeken
 
-Gebeurtenissen op opslagplaats niveau die momenteel niet zijn geregistreerd: gebeurtenissen opschonen.
+Resourcelogboeken bevatten informatie die wordt uitgestoten door Azure-bronnen die hun interne bewerking beschrijven. Voor een Azure-containerregister bevatten de logboeken verificatie- en repository-levelgebeurtenissen die zijn opgeslagen in de volgende tabellen. 
 
-## <a name="registry-resource-logs"></a>Register bron logboeken
+* **ContainerRegistryLoginEvents** - Registerverificatiegebeurtenissen en -status, inclusief de binnenkomende identiteit en het IP-adres
+* **ContainerRegistryRepositoryEvents** - Bewerkingen zoals push en pull voor afbeeldingen en andere artefacten in registerrepositories
+* **AzureMetrics** - [Container register metrics](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) zoals aggregated push and pull counts.
 
-Bron logboeken bevatten gegevens die worden verzonden door Azure-resources die hun interne bewerking beschrijven. Voor een Azure container Registry bevatten de logboeken verificatie en gebeurtenissen op opslagplaats niveau die in de volgende tabellen zijn opgeslagen. 
+Loggegevens bevatten voor bewerkingen:
+  * Status van succes of mislukking
+  * Stempels voor begin- en eindtijd
 
-* **ContainerRegistryLoginEvents** -register verificatie gebeurtenissen en status, met inbegrip van de binnenkomende identiteit en het IP-adres
-* **ContainerRegistryRepositoryEvents** : bewerkingen zoals pushen en pullen voor installatie kopieën en andere artefacten in register opslagplaatsen
-* **AzureMetrics** - [metrische gegevens van container register](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , zoals geaggregeerde push-en pull-aantallen.
+Naast resourcelogboeken biedt Azure een [activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md), één record op abonnementsniveau van Azure-beheergebeurtenissen, zoals het maken of verwijderen van een containerregister.
 
-Voor bewerkingen zijn logboek gegevens inclusief:
-  * Status geslaagd of mislukt
-  * Begin-en eind tijd tempels
+## <a name="enable-collection-of-resource-logs"></a>Verzameling van bronlogboeken inschakelen
 
-Naast resource Logboeken biedt Azure een [activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md), een record met Azure-beheer gebeurtenissen op abonnements niveau, zoals het maken of verwijderen van een container register.
+Verzameling van bronlogboeken voor een containerregister is standaard niet ingeschakeld. Schakel expliciet diagnostische instellingen in voor elk register dat u wilt controleren. Zie Diagnostische instelling maken [om platformlogboeken en -statistieken in Azure te verzamelen](../azure-monitor/platform/diagnostic-settings.md)voor opties om diagnostische instellingen in te schakelen.
 
-## <a name="enable-collection-of-resource-logs"></a>Verzamelen van resource logboeken inschakelen
+Als u bijvoorbeeld logboeken en statistieken voor een containerregister in bijna realtime wilt weergeven in Azure Monitor, verzamelt u de bronlogboeken in een werkruimte Log Analytics. Ga als volgt te werk om deze diagnostische instelling in te schakelen met de Azure-portal:
 
-Het verzamelen van bron logboeken voor een container register is standaard niet ingeschakeld. Schakel de diagnostische instellingen expliciet in voor elk REGI ster dat u wilt bewaken. Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../azure-monitor/platform/diagnostic-settings.md)voor opties voor het inschakelen van diagnostische instellingen.
+1. Als u nog geen werkruimte hebt, maakt u een werkruimte met de [Azure-portal](../azure-monitor/learn/quick-create-workspace.md). Als u de latentie bij het verzamelen van gegevens wilt minimaliseren, moet u ervoor zorgen dat de werkruimte zich in **dezelfde regio** bevindt als uw containerregister.
+1. Selecteer in de portal het register en selecteer **Controle > diagnostische instellingen > Diagnostische instelling toevoegen.**
+1. Voer een naam in voor de instelling en selecteer **Verzenden naar logboekanalyse**.
+1. Selecteer de werkruimte voor de diagnostische logboeken van het register.
+1. Selecteer de logboekgegevens die u wilt verzamelen en klik op **Opslaan**.
 
-Als u bijvoorbeeld Logboeken en metrische gegevens voor een container register in bijna realtime in Azure Monitor wilt weer geven, verzamelt u de bron Logboeken in een Log Analytics-werk ruimte. Als u deze diagnostische instelling wilt inschakelen met behulp van de Azure Portal:
-
-1. Als u nog geen werk ruimte hebt, maakt u een werk ruimte met behulp van de [Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Om latentie bij het verzamelen van gegevens te minimaliseren, moet u ervoor zorgen dat de werk ruimte zich in **dezelfde regio** bevindt als uw container register.
-1. Selecteer in de portal het REGI ster en selecteer **bewaking > Diagnostische instellingen > diagnostische instelling toevoegen**.
-1. Voer een naam in voor de instelling en selecteer **verzenden naar log Analytics**.
-1. Selecteer de werk ruimte voor de diagnostische logboeken van het REGI ster.
-1. Selecteer de logboek gegevens die u wilt verzamelen en klik op **Opslaan**.
-
-De volgende afbeelding toont het maken van een diagnostische instelling voor een REGI ster met behulp van de portal.
+In de volgende afbeelding ziet u de creatie van een diagnostische instelling voor een register met behulp van de portal.
 
 ![Diagnostische instellingen inschakelen](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Verzamel alleen de gegevens die u nodig hebt, berekenings kosten en uw bewakings behoeften. Als u bijvoorbeeld alleen verificatie gebeurtenissen wilt controleren, selecteert u alleen het **ContainerRegistryLoginEvents** -logboek. 
+> Verzamel alleen de gegevens die u nodig hebt, het balanceren van de kosten en uw monitoringbehoeften. Als u bijvoorbeeld alleen verificatiegebeurtenissen hoeft te controleren, selecteert u alleen het loge **ContainerRegistryLoginEvents.** 
 
-## <a name="view-data-in-azure-monitor"></a>Gegevens in Azure Monitor weer geven
+## <a name="view-data-in-azure-monitor"></a>Gegevens weergeven in Azure Monitor
 
-Nadat u het verzamelen van Diagnostische logboeken in Log Analytics hebt ingeschakeld, kan het enkele minuten duren voordat gegevens worden weer gegeven in Azure Monitor. Als u de gegevens in de portal wilt weer geven, selecteert u het REGI ster en selecteert u **> logboeken controleren**. Selecteer een van de tabellen die gegevens voor het REGI ster bevatten. 
+Nadat u het verzamelen van diagnostische logboeken in Log Analytics hebt ingeschakeld, kan het enkele minuten duren voordat gegevens worden weergegeven in Azure Monitor. Als u de gegevens in de portal wilt weergeven, selecteert u het register en selecteert u **> logboeken controleren**. Selecteer een van de tabellen die gegevens voor het register bevat. 
 
-Query's uitvoeren om de gegevens weer te geven. Er worden verschillende voorbeeld query's gegeven of u kunt uw eigen query uitvoeren. Met de volgende query worden bijvoorbeeld de meest recente 24 uur aan gegevens opgehaald uit de **ContainerRegistryRepositoryEvents** -tabel:
+Query's uitvoeren om de gegevens weer te geven. Er worden verschillende voorbeeldquery's verstrekt of uw eigen query's uitgevoerd. In de volgende query worden bijvoorbeeld de meest recente 24-uursgegevens opgehaald uit de tabel **ContainerRegistryRepositoryEvents:**
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | where TimeGenerated > ago(1d) 
 ```
 
-De volgende afbeelding toont voorbeeld uitvoer:
+In de volgende afbeelding ziet u voorbeelduitvoer:
 
 ![Query uitvoeren op logboekgegevens](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Zie [aan de slag met Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)of probeer de log Analytics- [demo omgeving](https://portal.loganalytics.io/demo)voor een zelf studie over het gebruik van log Analytics in het Azure Portal. 
+Zie Aan de slag met Azure Monitor Log Analytics of probeer de [demo-omgeving](https://portal.loganalytics.io/demo)loganalytics van Logboekanalyse voor een zelfstudie over het gebruik van Log Analytics in de [Azure-portal.](../azure-monitor/log-query/get-started-portal.md) 
 
-Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over logboek query's.
+Zie [Overzicht van logboekquery's in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over logboekquery's.
 
-### <a name="additional-query-examples"></a>Aanvullende query voorbeelden
+### <a name="additional-query-examples"></a>Aanvullende queryvoorbeelden
 
-#### <a name="100-most-recent-registry-events"></a>100 meest recente register gebeurtenissen
+#### <a name="100-most-recent-registry-events"></a>100 meest recente registergebeurtenissen
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -98,16 +94,14 @@ ContainerRegistryRepositoryEvents
 | project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
 ```
 
-## <a name="additional-log-destinations"></a>Aanvullende logboek doelen
+## <a name="additional-log-destinations"></a>Aanvullende logboekbestemmingen
 
-Naast het verzenden van de logboeken naar Log Analytics, of als alternatief, is het een gemeen schappelijke scenario om een Azure Storage account te selecteren als een logboek bestemming. Als u Logboeken in Azure Storage wilt archiveren, maakt u een opslag account voordat u archiveren via de diagnostische instellingen inschakelt.
+Naast het verzenden van de logboeken naar Log Analytics, of als alternatief, is een veelvoorkomend scenario het selecteren van een Azure Storage-account als een logboekbestemming. Als u logboeken wilt archiveren in Azure Storage, maakt u een opslagaccount voordat u archivering via de diagnostische instellingen inschakelt.
 
-U kunt ook diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md). Eventhubs kunnen miljoenen gebeurtenissen per seconde, die u kunt vervolgens transformeren en opslaan met elke gewenste realtime analyseprovider opnemen. 
+U diagnostische logboekgebeurtenissen ook streamen naar een [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs kunnen miljoenen gebeurtenissen per seconde opnemen, die u vervolgens transformeren en opslaan met elke realtime analyseprovider. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het gebruik van [log Analytics](../azure-monitor/log-query/get-started-portal.md) en het maken van [logboek query's](../azure-monitor/log-query/get-started-queries.md).
-* Zie [overzicht van Azure platform-logboeken](../azure-monitor/platform/platform-logs-overview.md) voor meer informatie over platform logboeken die beschikbaar zijn op verschillende lagen van Azure.
+* Meer informatie over het gebruik van [Log Analytics](../azure-monitor/log-query/get-started-portal.md) en het maken van [logboekquery's](../azure-monitor/log-query/get-started-queries.md).
+* Zie [Overzicht van Azure-platformlogboeken](../azure-monitor/platform/platform-logs-overview.md) voor meer informatie over platformlogboeken die beschikbaar zijn op verschillende lagen Azure.
 
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

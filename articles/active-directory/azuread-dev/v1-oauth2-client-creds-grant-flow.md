@@ -1,70 +1,66 @@
 ---
-title: Verificatie van Azure AD-service naar service met OAuth 2.0 | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om service te implementeren voor service verificatie met behulp van de OAuth 2.0-client referenties toewijzen stroom.
+title: Azure AD Service to Service Auth met OAuth2.0 | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruiken om serviceverificatie te implementeren met behulp van de subsidiestroom van De OAuth2.0-clientreferenties.
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 24c9c4385f23b68e9a3efb65d2582457219fa10d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2d1eaec80c8925eb7b38af848e29e944f1ebf69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154539"
 ---
-# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Service-to-service aanroepen met behulp van client referenties (gedeeld geheim of certificaat)
+# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Service aan serviceoproepen met behulp van clientreferenties (gedeeld geheim of certificaat)
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Met de OAuth 2,0-client referenties toewijzen stroom kan een webservice (*vertrouwelijke client*) eigen referenties gebruiken in plaats van een gebruiker te imiteren, om te verifiëren wanneer een andere webservice wordt aangeroepen. In dit scenario is de client doorgaans een middelste laag, een daemon-service of website. Voor een hoger niveau van Assurance kan Azure AD ook gebruikmaken van een certificaat (in plaats van een gedeeld geheim) als referentie.
+Met de OAuth 2.0 Client Credentials Grant Flow kan een webservice *(vertrouwelijke client)* zijn eigen referenties gebruiken in plaats van zich voor te doen als een gebruiker, om te verifiëren wanneer u een andere webservice aanroept. In dit scenario is de client meestal een middle-tier webservice, een daemon-service of website. Voor een hoger niveau van zekerheid staat Azure AD de oproepservice ook toe om een certificaat (in plaats van een gedeeld geheim) als referentie te gebruiken.
 
-## <a name="client-credentials-grant-flow-diagram"></a>Stroom diagram van toekenning van client referenties
-In het volgende diagram wordt uitgelegd hoe de toewijzings stroom voor client referenties werkt in Azure Active Directory (Azure AD).
+## <a name="client-credentials-grant-flow-diagram"></a>Stroomdiagram voor clientreferenties
+In het volgende diagram wordt uitgelegd hoe de subsidiestroom voor clientreferenties werkt in Azure Active Directory (Azure AD).
 
-![Toekennings stroom voor OAuth 2.0-client referenties](./media/v1-oauth2-client-creds-grant-flow/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
+![Subsidiestroom clientreferenties van OAuth2.0-client](./media/v1-oauth2-client-creds-grant-flow/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
 
-1. De client toepassing verifieert het Azure AD token uitgifte-eind punt en vraagt een toegangs token aan.
-2. Het Azure AD-token uitgifte-eind punt geeft het toegangs token uit.
-3. Het toegangs token wordt gebruikt om te verifiëren bij de beveiligde bron.
-4. Gegevens van de beveiligde bron worden geretourneerd naar de client toepassing.
+1. De clienttoepassing verifieert naar het eindpunt voor azure AD-tokenuitgifte en vraagt om een toegangstoken.
+2. Het eindpunt voor azure AD-tokenuitgifte geeft het toegangstoken uit.
+3. Het toegangstoken wordt gebruikt om te verifiëren naar de beveiligde bron.
+4. Gegevens uit de beveiligde bron worden teruggestuurd naar de clienttoepassing.
 
-## <a name="register-the-services-in-azure-ad"></a>De services registreren in azure AD
-Registreer zowel de aanroepende service als de ontvangende service in Azure Active Directory (Azure AD). Zie [toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor gedetailleerde instructies.
+## <a name="register-the-services-in-azure-ad"></a>De Services registreren in Azure AD
+Registreer zowel de oproepservice als de ontvangende service in Azure Active Directory (Azure AD). Zie [Toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor gedetailleerde instructies.
 
-## <a name="request-an-access-token"></a>Een toegangs token aanvragen
-Als u een toegangs token wilt aanvragen, gebruikt u een HTTP POST naar het Tenant-specifieke Azure AD-eind punt.
+## <a name="request-an-access-token"></a>Een Access-token aanvragen
+Als u een toegangstoken wilt aanvragen, gebruikt u een HTTP-BERICHT naar het tenantspecifieke Azure AD-eindpunt.
 
 ```
 https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
-## <a name="service-to-service-access-token-request"></a>Aanvraag voor service-naar-service-toegangs token
-Er zijn twee gevallen, afhankelijk van het feit of de client toepassing wordt beveiligd door een gedeeld geheim of een certificaat.
+## <a name="service-to-service-access-token-request"></a>Tokenaanvraag service-to-service-toegang
+Er zijn twee gevallen, afhankelijk van of de clienttoepassing ervoor kiest om te worden beveiligd door een gedeeld geheim, of een certificaat.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
-Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste geval: Toegang tot tokenaanvraag met een gedeeld geheim
+Bij het gebruik van een gedeeld geheim bevat een service-to-service access tokenaanvraag de volgende parameters:
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| grant_type |Vereist |Hiermee geeft u het aangevraagde toekennings type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
-| client_id |Vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
-| client_secret |Vereist |Voer een sleutel in die is geregistreerd voor de aanroepende webservice of daemon-toepassing in azure AD. Als u een sleutel wilt maken, klikt u in de Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de toepassing, klikt u op **instellingen**, klikt u op **sleutels**en voegt u een sleutel toe.  URL: dit geheim coderen wanneer het wordt verstrekt. |
-| resource |Vereist |Voer de App-ID-URI in van de ontvangende webservice. Als u de URI van de App-ID wilt zoeken, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de service toepassing en klikt u vervolgens op **instellingen** en **Eigenschappen**. |
+| grant_type |vereist |Hiermee geeft u het aangevraagde subsidietype op. In een clientreferentiessubsidiestroom moet de waarde worden **client_credentials**. |
+| client_id |vereist |Hiermee geeft u de Azure AD-client-id van de oproepwebservice op. Als u de client-id van de aanroepende toepassing wilt vinden, klikt u in de [Azure-portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **App-registraties**en klikt u op de toepassing. De client_id is de *applicatie-id* |
+| client_secret |vereist |Voer een sleutel in die is geregistreerd voor de oproepwebservice of daemon-toepassing in Azure AD. Als u een sleutel wilt maken, klikt u in de **Azure-portal**op Azure Active Directory , klikt u op **App-registraties,** klikt u op de toepassing, klikt u op **Instellingen,** klikt u op **Sleutels**en voegt u een sleutel toe.  URL-coderen dit geheim bij het verstrekken van het. |
+| resource |vereist |Voer de URI van de app-id van de ontvangende webservice in. Als u de URI voor app-id's wilt vinden, klikt u in de Azure Active Directory op **Azure Active Directory**, klikt u op **App-registraties,** klikt u op de servicetoepassing en klikt u vervolgens op **Instellingen** en **Eigenschappen**. |
 
 #### <a name="example"></a>Voorbeeld
-De volgende HTTP POST vraagt een [toegangs token](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor de https://service.contoso.com/-webservice. Met de `client_id` wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt `https://service.contoso.com/` een [toegangstoken](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) aan voor de webservice. De `client_id` identificeert de webservice die het toegangstoken aanvraagt.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -74,21 +70,21 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
-Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
+### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede aanvraag: Aanvraag voor toegangstoken met een certificaat
+Een service-to-service access tokenaanvraag met een certificaat bevat de volgende parameters:
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| grant_type |Vereist |Hiermee geeft u het aangevraagde antwoord type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
-| client_id |Vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
-| client_assertion_type |Vereist |De waarde moet `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Vereist | Een bevestiging (een JSON Web Token) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
-| resource | Vereist |Voer de App-ID-URI in van de ontvangende webservice. Als u de URI van de App-ID wilt zoeken, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de service toepassing en klikt u vervolgens op **instellingen** en **Eigenschappen**. |
+| grant_type |vereist |Hiermee geeft u het gevraagde antwoordtype op. In een clientreferentiessubsidiestroom moet de waarde worden **client_credentials**. |
+| client_id |vereist |Hiermee geeft u de Azure AD-client-id van de oproepwebservice op. Als u de client-id van de aanroepende toepassing wilt vinden, klikt u in de [Azure-portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **App-registraties**en klikt u op de toepassing. De client_id is de *applicatie-id* |
+| client_assertion_type |vereist |De waarde moet`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |vereist | Een bewering (een JSON-webtoken) dat u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees meer over [certificaatreferenties](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) om te leren hoe u uw certificaat en de notatie van de bewering registreert.|
+| resource | vereist |Voer de URI van de app-id van de ontvangende webservice in. Als u de URI voor app-id's wilt vinden, klikt u in de Azure Active Directory op **Azure Active Directory**, klikt u op **App-registraties,** klikt u op de servicetoepassing en klikt u vervolgens op **Instellingen** en **Eigenschappen**. |
 
-U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
+Merk op dat de parameters zijn bijna hetzelfde als in het geval van het verzoek door gedeeld geheim, behalve dat de client_secret parameter wordt vervangen door twee parameters: een client_assertion_type en client_assertion.
 
 #### <a name="example"></a>Voorbeeld
-De volgende HTTP POST vraagt een toegangs token voor de https://service.contoso.com/-webservice met een certificaat. Met de `client_id` wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt `https://service.contoso.com/` een toegangstoken aan voor de webservice met een certificaat. De `client_id` identificeert de webservice die het toegangstoken aanvraagt.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -98,21 +94,21 @@ Content-Type: application/x-www-form-urlencoded
 resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
 ```
 
-### <a name="service-to-service-access-token-response"></a>Reactie van service-naar-service-toegangs token
+### <a name="service-to-service-access-token-response"></a>Reactie van service-to-servicetoegang- tokenrespons
 
-Een antwoord van het succes bevat een JSON OAuth 2,0-antwoord met de volgende para meters:
+Een succesrespons bevat een JSON OAuth 2.0 respons met de volgende parameters:
 
 | Parameter | Beschrijving |
 | --- | --- |
-| access_token |Het aangevraagde toegangs token. De aanroepende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice. |
-| token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is **Bearer**. Zie voor meer informatie over Bearer-tokens het [OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| expires_in |Hoe lang het toegangs token geldig is (in seconden). |
-| expires_on |Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen. |
-| not_before |Het tijdstip waarop het toegangs token bruikbaar wordt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC totdat de geldigheids duur van het token.|
-| resource |De App-ID-URI van de ontvangende webservice. |
+| access_token |Het gevraagde toegangstoken. De bellende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice. |
+| token_type |Geeft de waarde van het tokentype aan. Het enige type dat Azure AD ondersteunt, is **Drager**. Zie Het [OAuth 2.0 Authorization Framework: Toondertokengebruik (RFC 6750) voor](https://www.rfc-editor.org/rfc/rfc6750.txt)meer informatie over tokens aan toonder. |
+| expires_in |Hoe lang het toegangstoken geldig is (in seconden). |
+| expires_on |Het tijdstip waarop het toegangstoken verloopt. De datum wordt weergegeven als het aantal seconden van 1970-01-01T0:0:0Z UTC tot de vervaldatum. Deze waarde wordt gebruikt om de levensduur van tokens in de cache te bepalen. |
+| not_before |Het tijdstip waarop het toegangstoken bruikbaar wordt. De datum wordt weergegeven als het aantal seconden van 1970-01-01T0:0:0Z UTC tot het tijdstip van geldigheid voor het token.|
+| resource |De App ID URI van de ontvangende webservice. |
 
-#### <a name="example-of-response"></a>Voor beeld van antwoord
-In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs token bij een webservice.
+#### <a name="example-of-response"></a>Voorbeeld van respons
+In het volgende voorbeeld wordt een succesreactie weergegeven op een aanvraag voor een toegangstoken voor een webservice.
 
 ```
 {
@@ -125,5 +121,5 @@ In het volgende voor beeld ziet u een reactie op een aanvraag voor een toegangs 
 ```
 
 ## <a name="see-also"></a>Zie ook
-* [OAuth 2,0 in azure AD](v1-protocols-oauth-code.md)
-* [Voor beeld C# van de service to service-oproep met een gedeeld geheim en een](https://github.com/Azure-Samples/active-directory-dotnet-daemon) voor [beeld C# van de service to service-oproep met een certificaat](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+* [OAuth 2.0 in Azure AD](v1-protocols-oauth-code.md)
+* [Voorbeeld in C# van de serviceserviceoproep met een gedeeld geheim](https://github.com/Azure-Samples/active-directory-dotnet-daemon) en Voorbeeld in [C# van de serviceserviceoproep met een certificaat](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

@@ -1,18 +1,18 @@
 ---
 title: Inleiding
-description: Meer informatie over hoe u met Azure App Service omgevingen uw apps in een volledig geïsoleerde en toegewezen omgeving kunt schalen, beveiligen en optimaliseren.
+description: Ontdek hoe Azure App Service-omgevingen u helpen bij het schalen, beveiligen en optimaliseren van uw apps in een volledig geïsoleerde en toegewijde omgeving.
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768324"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057374"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Inleiding tot Azure App Service Environments #
  
@@ -40,8 +40,8 @@ AS-omgevingen zijn geïsoleerd om de toepassingen van slechts één klant uit te
 * [App Service-omgevingen v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) bieden een ombouw om uw apps te beschermen in een subnet van uw netwerk en bieden uw eigen persoonlijke implementatie van Azure App Service.
 * Er kunnen meerdere AS-omgevingen worden gebruikt om horizontaal te schalen. Zie [how to set up a geo-distributed app footprint](app-service-app-service-environment-geo-distributed-scale.md) (een footprint voor geografisch verspreide apps instellen) voor meer informatie.
 * AS-omgevingen kunnen worden gebruikt voor het configureren van beveiligingsarchitectuur, zoals u kunt zien in AzureCon Deep Dive. Raadpleeg het artikel over[het implementeren van een gelaagde beveiligingsarchitectuur](app-service-app-service-environment-layered-security.md) met App Service-omgevingen om te zien hoe de beveiligingsarchitectuur in AzureCon Deep Dive is geconfigureerd.
-* De toegang tot apps die worden uitgevoerd in AS-omgevingen, kan worden vergrendeld met upstream-apparaten, zoals WAF’s (Web Application Firewall). Zie [Web Application firewall (WAF) (Engelstalig)][AppGW]voor meer informatie.
-* App Service omgevingen kunnen in Beschikbaarheidszones (AZ) worden geïmplementeerd met behulp van zone vastmaken.  Zie [app service Environment ondersteuning voor Beschikbaarheidszones][ASEAZ] voor meer informatie.
+* De toegang tot apps die worden uitgevoerd in AS-omgevingen, kan worden vergrendeld met upstream-apparaten, zoals WAF’s (Web Application Firewall). Zie [Web Application Firewall (WAF)][AppGW] voor meer informatie.
+* App-serviceomgevingen kunnen worden geïmplementeerd in beschikbaarheidszones (AZ) met behulp van zonevastmaken.  Zie [App Service Environment Support for Availability Zones][ASEAZ] voor meer informatie.
 
 ## <a name="dedicated-environment"></a>Toegewezen omgeving ##
 
@@ -57,19 +57,19 @@ Werkrollen zijn rollen die klanten-apps hosten. Werkrollen zijn beschikbaar in d
 
 Klanten hoeven de front-ends en werkrollen niet te beheren. Alle infrastructuur wordt automatisch toegevoegd wanneer klanten hun App Service-plannen uitschalen. Wanneer App Service-plannen worden gemaakt of geschaald in een AS-omgeving, wordt de vereiste infrastructuur toegevoegd of verwijderd, zoals toepasselijk.
 
-AS-omgevingen hebben een vast maandtarief waarmee de infrastructuur wordt betaald. Dit tarief is onafhankelijk van de grootte van de AS-omgeving. Daarnaast zijn er kosten per vCPU voor het App Service-plan. Alle apps die worden gehost in een AS-omgeving, vallen onder de Geïsoleerde prijs-SKU. Voor informatie over de prijzen voor een ASE raadpleegt u de pagina met [prijzen voor app service][Pricing] en bekijkt u de beschik bare opties voor as.
+AS-omgevingen hebben een vast maandtarief waarmee de infrastructuur wordt betaald. Dit tarief is onafhankelijk van de grootte van de AS-omgeving. Daarnaast zijn er kosten per vCPU voor het App Service-plan. Alle apps die worden gehost in een AS-omgeving, vallen onder de Geïsoleerde prijs-SKU. Ga naar de pagina met [prijzen voor App Service][Pricing] en bekijk de beschikbare opties voor AS-omgevingen voor informatie over prijzen voor een AS-omgeving.
 
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken ##
 
-De functie ASE is een implementatie van de Azure App Service rechtstreeks in het Azure Resource Manager virtuele netwerk van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
+De ASE-functie is een implementatie van de Azure App Service rechtstreeks in het virtuele Azure Resource Manager-netwerk van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
 
 Een AS-omgeving kan internetgericht zijn met een openbaar IP-adres of intern met alleen een Azure ILB-adres (Internal Load Balancer).
 
-[Netwerk beveiligings groepen][NSGs] beperken inkomende netwerk communicatie tot het subnet waar een ASE zich bevindt. U kunt NSG’s (netwerkbeveiligingsgroepen) gebruiken om apps achter upstream-apparaten, en services zoals WAF’s en SaaS-netwerkproviders uit te voeren.
+Met [netwerkbeveiligingsgroepen][NSGs] wordt de binnenkomende netwerkcommunicatie beperkt tot het subnet waarin een AS-omgeving zich bevindt. U kunt NSG’s (netwerkbeveiligingsgroepen) gebruiken om apps achter upstream-apparaten, en services zoals WAF’s en SaaS-netwerkproviders uit te voeren.
 
 Apps hebben ook vaak toegang nodig tot bedrijfsresources zoals interne databases en webservices. Als u de AS-omgeving implementeert in een virtueel netwerk met een VPN-verbinding naar het on-premises netwerk, krijgen de apps in de AS-omgeving toegang tot on-premises resources. Dit gebeurt altijd, ongeacht of het VPN van het type [site-naar-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) of [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) is.
 
-Zie [app service environment Network overwegingen][ASENetwork](Engelstalig) voor meer informatie over de werking van as met virtuele netwerken en on-premises netwerken.
+Zie [App Service Environment network considerations][ASENetwork] (Overwegingen voor App Service Environment-netwerken) voor meer informatie over hoe AS-omgevingen werken met virtuele netwerken en on-premises netwerken.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
@@ -79,7 +79,7 @@ App Service Environment heeft twee versies: ASEv1 en ASEv2. De voorgaande inform
 
 In ASEv1 moet u alle resources handmatig beheren. Dit geldt ook voor de front-ends, werkrollen en IP-adressen die worden gebruikt voor op IP gebaseerd SSL. Voordat u uw App Service-plan kunt uitschalen, moet u eerst de groep met werkrollen uitschalen waarin u de service wilt hosten.
 
-ASEv1 maakt gebruik van een ander prijsmodel dan ASEv2. In ASEv1 betaalt u voor elke toegewezen vCPU. Dit is inclusief vCPU’s die worden gebruikt voor front-ends of werkrollen die geen werkbelastingen hosten. In ASEv1 is de maximale schaalgrootte voor een AS-omgeving standaard 55 hosts (in totaal). Dit is inclusief werkrollen en front-ends. Een voordeel van ASEv1 is dat deze versie kan worden geïmplementeerd in een klassiek virtueel netwerk en een virtueel netwerk van Resource Manager. Zie [app service Environment v1 Introduction][ASEv1Intro](Engelstalig) voor meer informatie over ASEv1.
+ASEv1 maakt gebruik van een ander prijsmodel dan ASEv2. In ASEv1 betaalt u voor elke toegewezen vCPU. Dit is inclusief vCPU’s die worden gebruikt voor front-ends of werkrollen die geen werkbelastingen hosten. In ASEv1 is de maximale schaalgrootte voor een AS-omgeving standaard 55 hosts (in totaal). Dit is inclusief werkrollen en front-ends. Een voordeel van ASEv1 is dat deze versie kan worden geïmplementeerd in een klassiek virtueel netwerk en een virtueel netwerk van Resource Manager. Zie [Inleiding tot App Service Environment v1][ASEv1Intro] voor meer informatie over ASEv1.
 
 <!--Links-->
 [App Service Environments v2]: https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment

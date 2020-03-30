@@ -1,6 +1,6 @@
 ---
 title: 'Kopiëren en plakken van en naar een virtuele machine: Azure Bastion'
-description: In dit artikel leest u hoe kopiëren en plakken naar en van een Azure-VM met behulp van Bastion.
+description: Lees in dit artikel hoe kopiëren en plakken van en naar een Azure VM met Bastion.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,52 +8,52 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989532"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiëren en plakken naar een virtuele machine: Azure Bastion
 
-Dit artikel helpt u bij het kopiëren en plakken van tekst naar en van virtuele machines wanneer u Azure Bastion gebruikt. Voordat u met een virtuele machine gaat werken, moet u ervoor zorgen dat u de stappen hebt gevolgd om [een bastion-host te maken](bastion-create-host-portal.md). Maak vervolgens verbinding met de virtuele machine die u wilt gebruiken met [RDP](bastion-connect-vm-rdp.md) of [SSH](bastion-connect-vm-ssh.md).
+Met dit artikel u tekst kopiëren en plakken van en naar virtuele machines wanneer u Azure Bastion gebruikt. Voordat u met een vm werkt, moet u ervoor zorgen dat u de stappen hebt gevolgd om [een Bastion-host](bastion-create-host-portal.md)te maken. Maak vervolgens verbinding met de VM waarmee u wilt werken met [RDP](bastion-connect-vm-rdp.md) of [SSH.](bastion-connect-vm-ssh.md)
 
-Voor browsers die ondersteuning bieden voor de geavanceerde klembord-API-toegang, kunt u tekst kopiëren en plakken tussen uw lokale apparaat en de externe sessie op dezelfde manier als u kopieert en plakt tussen toepassingen op het lokale apparaat. Voor andere browsers kunt u het palet toegang tot het Bastion klem bord gebruiken.
+Voor browsers die de geavanceerde Clipboard API-toegang ondersteunen, u tekst kopiëren en plakken tussen uw lokale apparaat en de externe sessie op dezelfde manier als u kopieert en plakt tussen toepassingen op uw lokale apparaat. Voor andere browsers u het palet van het gereedschap Bastion-klembordtoegangsgebruiken gebruiken.
 
-   ![Klem bord toestaan](./media/bastion-vm-manage/allow.png)
+   ![Klembord toestaan](./media/bastion-vm-manage/allow.png)
 
-Alleen tekst kopiëren/plakken wordt ondersteund. Voor direct kopiëren en plakken kan uw browser vragen om toegang tot het klem bord wanneer de Bastion-sessie wordt geïnitialiseerd. Hiermee **staat u toe dat** de webpagina toegang heeft tot het klem bord.
+Alleen tekstkopiëren/plakken wordt ondersteund. Voor directe kopiëren en plakken kan uw browser u om toegang tot het klembord vragen wanneer de Bastion-sessie wordt geïnitialiseerd. **Geef** de webpagina toegang tot het klembord.
 
-## <a name="to"></a>Kopiëren naar een externe sessie
+## <a name="copy-to-a-remote-session"></a><a name="to"></a>Kopiëren naar een externe sessie
 
-Nadat u verbinding hebt gemaakt met de virtuele machine met behulp van de [Azure Portal ](https://portal.azure.com), voert u de volgende stappen uit:
+Nadat u verbinding hebt gemaakt met de virtuele machine via de [Azure-portal, ](https://portal.azure.com)voert u de volgende stappen uit:
 
-1. Kopieer de tekst/inhoud van het lokale apparaat naar het lokale klem bord.
-1. Start tijdens de externe sessie het palet toegang tot het Bastion klem bord door de twee pijlen te selecteren. De pijlen bevinden zich aan de linkerkant van de sessie.
+1. Kopieer de tekst/inhoud van het lokale apparaat naar het lokale klembord.
+1. Start tijdens de externe sessie het gereedschapspalet Bastion-klembordtoegang door de twee pijlen te selecteren. De pijlen bevinden zich in het midden van de sessie.
 
-   ![palet van het hulp programma](./media/bastion-vm-manage/left.png)
+   ![gereedschapspalet](./media/bastion-vm-manage/left.png)
 
-   ![kopieert](./media/bastion-vm-manage/clipboard.png)
-1. Normaal gesp roken wordt de gekopieerde tekst automatisch weer gegeven in het Bastion kopie plakken. Als uw tekst niet aanwezig is, plakt u de tekst in het tekst gebied in het palet.
-1. Als de tekst zich in het tekst gebied bevindt, kunt u deze in de externe sessie plakken.
+   ![toetsenbord](./media/bastion-vm-manage/clipboard.png)
+1. Meestal wordt de gekopieerde tekst automatisch weergegeven op het palet Bastion copy paste. Als uw tekst er niet is, plakt u de tekst in het tekstgebied op het palet.
+1. Zodra de tekst zich in het tekstgebied bevindt, u deze plakken op de externe sessie.
 
-   ![plakken](./media/bastion-vm-manage/local.png)
+   ![Plakken](./media/bastion-vm-manage/local.png)
 
-## <a name="from"></a>Kopiëren uit een externe sessie
+## <a name="copy-from-a-remote-session"></a><a name="from"></a>Kopiëren vanuit een externe sessie
 
-Nadat u verbinding hebt gemaakt met de virtuele machine met behulp van de [Azure Portal ](https://portal.azure.com), voert u de volgende stappen uit:
+Nadat u verbinding hebt gemaakt met de virtuele machine via de [Azure-portal, ](https://portal.azure.com)voert u de volgende stappen uit:
 
-1. Kopieer de tekst/inhoud van de externe sessie naar het klem bord op afstand (met behulp van CTRL-C).
+1. Kopieer de tekst/inhoud van de externe sessie naar een extern klembord (met Ctrl-C).
 
-   ![palet van het hulp programma](./media/bastion-vm-manage/remote.png)
-1. Start tijdens de externe sessie het palet toegang tot het Bastion klem bord door de twee pijlen te selecteren. De pijlen bevinden zich aan de linkerkant van de sessie.
+   ![gereedschapspalet](./media/bastion-vm-manage/remote.png)
+1. Start tijdens de externe sessie het gereedschapspalet Bastion-klembordtoegang door de twee pijlen te selecteren. De pijlen bevinden zich in het midden van de sessie.
 
-   ![kopieert](./media/bastion-vm-manage/clipboard2.png)
-1. Normaal gesp roken wordt de gekopieerde tekst automatisch weer gegeven in het Bastion kopie plakken. Als uw tekst niet aanwezig is, plakt u de tekst in het tekst gebied in het palet.
-1. Als de tekst zich in het tekst gebied bevindt, kunt u deze op het lokale apparaat plakken.
+   ![toetsenbord](./media/bastion-vm-manage/clipboard2.png)
+1. Meestal wordt de gekopieerde tekst automatisch weergegeven op het palet Bastion copy paste. Als uw tekst er niet is, plakt u de tekst in het tekstgebied op het palet.
+1. Zodra de tekst zich in het tekstgebied bevindt, u deze plakken op het lokale apparaat.
 
-   ![plakken](./media/bastion-vm-manage/local2.png)
+   ![Plakken](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees de [Veelgestelde vragen over Bastion](bastion-faq.md).
+Lees de [Bastion FAQ](bastion-faq.md).

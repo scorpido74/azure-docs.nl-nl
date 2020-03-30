@@ -16,10 +16,10 @@ ms.date: 01/15/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 26691ca6b9d078ef18ac852c67fa2ac88dff2722
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023001"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-resources beheren met PowerShell-cmdlets
@@ -48,7 +48,7 @@ Dit artikel is gebaseerd op cmdlets in Azure Batch-module 1.0.0. Het wordt aange
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch-accounts en -sleutels beheren
 
-### <a name="create-a-batch-account"></a>Een Batch-account maken
+### <a name="create-a-batch-account"></a>Batch-account maken
 
 Met **New-AzBatchAccount** wordt een Batch-account in een opgegeven resourcegroep gemaakt. Als u nog geen resourcegroep hebt, maakt u er een door de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) uit te voeren. Geef een van de Azure-gebieden op in de parameter **locatie**, bijvoorbeeld 'US - centraal'. Bijvoorbeeld:
 
@@ -111,7 +111,7 @@ $context = Get-AzBatchAccountKeys -AccountName <account_name>
 > [!NOTE]
 > Standaard wordt de primaire sleutel van het account gebruikt voor verificatie, maar u kunt expliciet de te gebruiken sleutel selecteren door de eigenschap **KeyInUse** van het object BatchAccountContext te wijzigen: `$context.KeyInUse = "Secondary"`.
 
-### <a name="azure-active-directory-authentication"></a>Azure Active Directory-authenticatie
+### <a name="azure-active-directory-authentication"></a>Verificatie via Azure Active Directory
 
 ```powershell
 $context = Get-AzBatchAccount -AccountName <account_name>
@@ -119,13 +119,13 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ## <a name="create-and-modify-batch-resources"></a>Batch-resources maken en wijzigen
 
-Gebruik cmdlets zoals **New-AzBatchPool**, **New-AzBatchJob** en **New-AzBatchTask** om resources onder een Batch-account te maken. Er zijn overeenkomende **Get-** - en **Set-** -cmdlets voor het bijwerken van de eigenschappen van bestaande resources en **Remove-** -cmdlets om resources onder een Batch-account te verwijderen.
+Gebruik cmdlets zoals **New-AzBatchPool**, **New-AzBatchJob** en **New-AzBatchTask** om resources onder een Batch-account te maken. Er zijn overeenkomende **Get-**- en **Set-**-cmdlets voor het bijwerken van de eigenschappen van bestaande resources en **Remove-**-cmdlets om resources onder een Batch-account te verwijderen.
 
 Wanneer u veel van deze cmdlets gebruikt, moet u niet alleen een BatchContext-object doorgeven, maar ook objecten maken of doorgeven die gedetailleerde resource-instellingen bevatten, zoals weergegeven in het volgende voorbeeld. Raadpleeg de gedetailleerde Help-informatie voor elke cmdlet voor meer voorbeelden.
 
 ### <a name="create-a-batch-pool"></a>Batch-pool maken
 
-Wanneer u een Batch-pool maakt of bijwerkt, selecteert u de cloudserviceconfiguratie of de virtuele-machineconfiguratie voor het besturingssysteem op de rekenknooppunten (zie [Overzicht van Batch-functies](batch-api-basics.md#pool)). Als u de cloudserviceconfiguratie opgeeft, worden uw rekenknooppunten gerepliceerd met één van de [Azure-gastbesturingssysteemversies](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Als u de virtuele-machine configuratie opgeeft, kunt u een van de ondersteunde Linux-of Windows VM-installatie kopieën opgeven die worden vermeld op de [Azure virtual machines Marketplace][vm_marketplace], of een aangepaste installatie kopie bieden die u hebt voor bereid.
+Wanneer u een Batch-pool maakt of bijwerkt, selecteert u de cloudserviceconfiguratie of de virtuele-machineconfiguratie voor het besturingssysteem op de rekenknooppunten (zie [Overzicht van Batch-functies](batch-api-basics.md#pool)). Als u de cloudserviceconfiguratie opgeeft, worden uw rekenknooppunten gerepliceerd met één van de [Azure-gastbesturingssysteemversies](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Als u de VM-configuratie opgeeft, kunt u één van de ondersteunde Linux- of Windows-VM-installatiekopieën opgeven die worden vermeld in de [Azure Virtual Machines Marketplace][vm_marketplace], of u geeft een aangepaste installatiekopie op die u hebt gemaakt.
 
 Bij het uitvoeren van **New-AzBatchPool** geeft u de instellingen van het besturingssysteem door in een PSCloudServiceConfiguration- of PSVirtualMachineConfiguration-object. Met het volgende codefragment wordt bijvoorbeeld een Batch-groep gemaakt met rekenknooppunten met de grootte Standard_a1 in de configuratie van de virtuele machine, gerepliceerd met Ubuntu Server 18.04-LTS. Hier geeft de parameter **VirtualMachineConfiguration** de variabele *$configuration* op als het PSVirtualMachineConfiguration-object. Met de parameter **BatchContext** wordt een eerder gedefinieerde variabele *$context* opgegeven als het BatchAccountContext-object.
 

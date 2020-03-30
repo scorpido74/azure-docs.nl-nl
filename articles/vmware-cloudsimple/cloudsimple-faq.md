@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen-Azure VMware-oplossingen (AVS)
-description: Veelgestelde vragen over Azure VMware-oplossingen (AVS)
+title: Veelgestelde vragen - Azure VMware-oplossing door CloudSimple
+description: Veelgestelde vragen voor Azure VMware Solution van CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,159 +8,159 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c3808491c84f6c76a51c914aac6ee5e5ee370970
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025058"
 ---
-# <a name="frequently-asked-questions-about-vmware-solution-by-avs"></a>Veelgestelde vragen over VMware-oplossing per AVS
+# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Veelgestelde vragen over VMware Solution van CloudSimple
 
-## <a name="avs-service"></a>AVS-service
+## <a name="cloudsimple-service"></a>CloudSimple-service
 
-**Wat is Azure VMware Solutions (AVS)?**
+**Wat is Azure VMware Solution by CloudSimple?**
 
-Met Azure VMware-oplossingen (AVS) worden VMware-workloads in enkele minuten getransformeerd en uitgebreid naar persoonlijke, specifieke Clouds op Azure. AVS zorgt voor de inrichting, het beheer van de infra structuur en het organiseren van werk belastingen tussen on-premises en Azure. Omdat uw apps precies dezelfde on-premises en in Azure worden uitgevoerd, kunt u profiteren van de elasticiteit en de services van de Cloud, zonder de complexiteit van het opnieuw ontwerpen van uw apps. AVS verlaagt uw total cost of ownership met een model voor Cloud verbruik dat op aanvraag voorziet van inrichtingen, betalen per gebruik en capaciteits optimalisatie. Zie [Wat is VMware-oplossing op Azure door AVS](cloudsimple-vmware-solutions-overview.md) voor functies, voor delen en scenario's.
+Azure VMware Solution by CloudSimple transformeert en breidt VMware-workloads binnen enkele minuten uit naar private, dedicated clouds op Azure. CloudSimple zorgt voor het inrichten, beheren van de infrastructuur en het orkestreren van workloads tussen on-premises en Azure. Omdat uw apps exact hetzelfde on-premises en in Azure draaien, profiteert u van de elasticiteit en services van de cloud zonder de complexiteit van het opnieuw ontwerpen van uw apps. CloudSimple verlaagt uw totale eigendomskosten met een cloudverbruiksmodel dat on-demand provisioning, pay-as-you-grow en capaciteitsoptimalisatie biedt.  Zie [Wat is VMware-oplossing op Azure by CloudSimple](cloudsimple-vmware-solutions-overview.md) voor functies, voordelen en scenario's.
 
-**Wat is een Privécloud in de Cloud?**
+**Wat is een CloudSimple Private Cloud?**
 
-Een AVS-privécloud is een persoonlijke, toegewezen Cloud die bestaat uit een hoogwaardige compute-, opslag-en netwerk omgeving die is geïmplementeerd op de Microsoft Azure infrastructuur (hardware-en datacenter ruimte) in azure-locaties. Een AVS-Privécloud biedt een systeem eigen VMware-platform als een service. In VMware-voor waarden bevat elke AVS-Privécloud precies één exemplaar van de vCenter Server. De vCenter Server beheert meerdere ESXi-knoop punten in een of meer vSphere-clusters, samen met de bijbehorende virtuele SAN-opslag (vSAN). Een AVS-service kan meerdere AVS-persoonlijke Clouds in uw Azure-abonnement bevatten. Zie voor meer informatie overzicht van de [persoonlijke cloud van AVS](cloudsimple-private-cloud.md).
+Een CloudSimple Private Cloud is een private, dedicated cloud die bestaat uit een krachtige compute-, opslag- en netwerkomgeving die wordt geïmplementeerd op Microsoft Azure-infrastructuur (hardware- en datacenterruimte) op Azure-locaties.  Een Private Cloud biedt een native VMware 'platform as a service'. In VMware-termen bevat elke Private Cloud precies één exemplaar van de vCenter-server. De vCenter Server beheert meerdere ESXi-knooppunten in een of meer vSphere-clusters, samen met de bijbehorende Virtual SAN-opslag (vSAN). Een CloudSimple-service kan meerdere Private Clouds bevatten in uw Azure-abonnement.  Zie [Overzicht van Private Cloud](cloudsimple-private-cloud.md)voor meer informatie.
 
-**Waar is de AVS-service beschikbaar?**
+**Waar is cloudsimple-service beschikbaar?**
 
-AVS is beschikbaar in VS-Oost, VS-West en Europa-west regio's met extra regio's binnenkort.
+CloudSimple is beschikbaar in oost-AMERIKAANSE, West-Amerikaanse en West-Europese regio's met extra regio's binnenkort.
 
-**Mijn abonnement voor AVS Hoe kan ik inschakelen?**
+**Hoe schakel ik mijn abonnement voor CloudSimple in?**
 
-U kunt contact opnemen met uw Microsoft-account-vertegenwoordiger op [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) om uw abonnement voor de AVS-service in te scha kelen. Geef uw abonnements-ID op in het e-mail adres waarvoor u de AVS-service wilt inschakelen. 
+U contact opnemen [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) met uw Microsoft-accountvertegenwoordiger om uw abonnement voor de CloudSimple-service in te schakelen. Geef uw abonnements-ID op in de e-mail waarvoor u cloudsimple-service wilt inschakelen.  
 
-**Hoe kan ik toegang tot de AVS-Portal?**
+**Hoe krijg ik toegang tot de CloudSimple-portal?**
 
-U opent de AVS-Portal vanuit de Azure Portal. Zie voor meer informatie [toegang tot de AVS-Portal (VMware Solutions) van de Azure Portal](access-cloudsimple-portal.md).
+U hebt toegang tot de CloudSimple-portal vanuit de Azure-portal.  Zie Toegang [tot de VMware-oplossing door CloudSimple-portal vanaf de Azure-portal](access-cloudsimple-portal.md)voor meer informatie.
 
-**Hoe kan ik capaciteit verhogen voor een Privécloud in de Cloud?**
+**Hoe verhoog ik de capaciteit voor een Private Cloud?**
 
-Als u de capaciteit wilt verg Roten, koopt u extra knoop punten van het Azure Portal en gebruikt u vervolgens de knoop punten om uw AVS-privécloud uit de AVS-Portal uit te breiden. U kunt extra knoop punten toevoegen aan een bestaand vSphere-cluster of toevoegen aan een nieuw vSphere-cluster. Zie voor meer informatie [een AVS-privécloud uitvouwen](expand-private-cloud.md).
+Als u de capaciteit wilt vergroten, koopt u extra knooppunten uit de Azure-portal en gebruikt u de knooppunten om uw Private Cloud uit te breiden vanuit de CloudSimple-portal.  U extra knooppunten toevoegen aan een bestaand vSphere-cluster of deze toevoegen aan een nieuw vSphere-cluster.  Zie Een [CloudSimple Private Cloud uitvouwen](expand-private-cloud.md)voor meer informatie.
 
-**Wat gebeurt er met mijn mijn AVS-privécloud tijdens onderhoud?**
+**Wat gebeurt er met mijn Private Cloud tijdens het onderhoud?**
 
-AVS biedt meldingen enkele dagen vóór een gepland onderhouds interval. Onderhoud wordt uitgevoerd op een niet-storende manier om te zorgen voor de beschik baarheid van de Privécloud van uw AVS. Onderhoud kan van de volgende typen zijn:
+CloudSimple biedt een melding enkele dagen voorafgaand aan een gepland onderhoudsinterval.  Onderhoud gebeurt op een niet-storende manier om de beschikbaarheid van uw Private Cloud te garanderen.  Onderhoud kan van de volgende typen zijn:
 
-* **AVS-infra structuur**. De AVS-infra structuur is zo ontworpen dat deze Maxi maal beschikbaar is. Tijdens dit type onderhouds interval worden redundante onderdelen een voor een bijgewerkt om onderbreking van de service te voor komen. U beheert de toegang tot uw AVS-persoonlijke Cloud-vCenter, alle virtuele machines, de Internet verbinding van uw Privécloud en verbindingen met on-premises of Azure.
-* **AVS-Portal**. Tijdens dit type onderhouds interval zijn sommige functies op de AVS-Portal mogelijk uitgeschakeld of niet toegankelijk. De melding vóór het onderhouds interval bevat details over de beperkingen van de functie terwijl er onderhoud wordt uitgevoerd.
+* **CloudSimple-infrastructuur**.  CloudSimple-infrastructuur is ontworpen om zeer beschikbaar te zijn.  Tijdens dit type onderhoudsinterval worden redundante componenten één voor één bijgewerkt om onderbreking van de service te voorkomen. U behoudt toegang tot uw Private Cloud vCenter, alle virtuele machines, de internetverbinding van uw Private Cloud en verbindingen met on-premises of Azure.
+* **CloudSimple portal**. Tijdens dit type onderhoudsinterval kunnen sommige functies op de CloudSimple-portal zijn uitgeschakeld of ontoegankelijk zijn.  De melding voorafgaand aan het onderhoudsinterval bevat details over functiebeperkingen tijdens het onderhoud.
 
 ## <a name="connectivity"></a>Connectiviteit
 
-**Wat zijn mijn connectiviteits opties voor het AVS-regio netwerk?**
+**Wat zijn mijn connectiviteitsopties voor het CloudSimple-regionetwerk?**
 
-AVS biedt de volgende connectiviteits opties om verbinding te maken met uw AVS-regio netwerk. Meerdere opties kunnen tegelijkertijd worden gebruikt.
+CloudSimple biedt de volgende connectiviteitsopties om verbinding te maken met uw CloudSimple-regionetwerk. Meerdere opties kunnen tegelijkertijd worden gebruikt.
 
-* **ExpressRoute-verbinding van uw on-premises Data Center naar het AVS-regio netwerk**. Dit is een beveiligde privé verbinding met hoge snelheid en lage latentie die gebruikmaakt van Global Reach om uw on-premises ExpressRoute-circuit naar uw AVS ExpressRoute-circuit te overbruggen. Zie [verbinding maken tussen on-premises en AVS via ExpressRoute](on-premises-connection.md)voor instructies voor het instellen van de verbinding.
-* **ExpressRoute-verbinding van uw virtuele Azure-netwerk naar uw AVS-regio netwerk**. Dit is een beveiligde persoonlijke particuliere verbinding met hoge snelheid en lage latentie die gebruikmaakt van virtuele netwerk gateways voor het overbruggen van uw virtuele netwerk op Azure naar uw AVS ExpressRoute-circuit. Zie voor instructies voor het instellen van de verbinding [verbinding maken met uw cloud omgeving van uw AVS in het virtuele Azure-netwerk met behulp van ExpressRoute](azure-expressroute-connection.md).
-* **Site-naar-site-VPN-verbinding van uw on-premises Data Center naar uw AVS-regio netwerk**. Dit is een beveiligd virtueel particulier netwerk van uw on-premises VPN-apparaat naar uw Privécloud-regio. Zie [VPN-gateways instellen op het AVS-netwerk](vpn-gateway.md)voor meer informatie.
+* **ExpressRoute-verbinding van uw on-premises datacenter naar cloudeenvoudig regionetwerk.** Dit is een snelle, lage latentie, veilige privéverbinding die gebruikmaakt van Global Reach om uw on-premises ExpressRoute-circuit te overbruggen naar uw CloudSimple ExpressRoute-circuit. Zie [Verbinding maken van on-premises naar CloudSimple met ExpressRoute](on-premises-connection.md)voor instructies over het instellen van de verbinding.
+* **ExpressRoute-verbinding van uw Azure-virtuele netwerk met uw CloudSimple-regionetwerk.** Dit is een snelle, lage latentie, veilige privéverbinding die gebruikmaakt van virtuele netwerkgateways om uw virtuele netwerk op Azure te overbruggen naar uw CloudSimple ExpressRoute-circuit. Zie [Uw CloudSimple Private Cloud-omgeving verbinden met het virtuele Azure-netwerk via ExpressRoute](azure-expressroute-connection.md)voor instructies over het instellen van de verbinding.
+* **Site-to-Site VPN-verbinding van uw on-premises datacenter naar uw CloudSimple regionetwerk.** Dit is een veilig virtueel privénetwerk van uw on-premises VPN-apparaat naar uw CloudSimple Private Cloud-regio.  Zie [VPN-gateways instellen op cloudeenvoudignetwerk](vpn-gateway.md)voor meer informatie.
 
-**Hoe kan ik verbinding maken met een nieuwe AVS-Cloud?**
+**Hoe maak ik verbinding met een Private Cloud?**
 
-U kunt de details van uw AVS-Privécloud in de AVS-Portal bekijken. Als u verbinding wilt maken met de vCenter die overeenkomt met de Privécloud van uw AVS, controleert u eerst of een netwerk verbinding tot stand is gebracht met behulp van site-naar-site VPN, punt-naar-site-VPN of ExpressRoute. Start vervolgens de AVS-Portal vanuit de Azure Portal en klik op de start pagina op **vSphere-client starten** of op de pagina Details van de gegevens van de AVS-privécloud.
+U details van uw Private Cloud bekijken in de CloudSimple-portal. Als u verbinding wilt maken met het vCenter dat overeenkomt met uw Private Cloud, controleert u eerst of er een netwerkverbinding tot stand is gekomen met behulp van Site-to-Site VPN, Point-to-Site VPN of ExpressRoute. Start vervolgens de CloudSimple-portal vanaf de Azure-portal en klik op **VSphere-client starten** op de startpagina of op de pagina Met details van de privécloud.
 
-**Wat is het voor deel van ExpressRoute-circuits?**
+**Wat is het voordeel van ExpressRoute circuits?**
 
-Een Azure ExpressRoute-circuit is een beveiligde verbinding met hoge snelheid en lage latentie. AVS biedt een toegewezen ExpressRoute-circuit per regio per klant. Met dit circuit kunt u een beveiligde verbinding tot stand brengen vanuit een on-premises of uw Azure-abonnement.
+Een Azure ExpressRoute-circuit is een snelle, lage latentie, beveiligde verbinding.  CloudSimple biedt een speciaal ExpressRoute-circuit per regio per klant.  Met dit circuit u een beveiligde verbinding tot stand brengen vanaf on-premises of uw Azure-abonnement.
 
-**Wat zijn de netwerk kosten om verbinding te maken met AVS? Gelden er uitstaande kosten tussen AVS en Azure, of in verschillende regio's?**
+**Wat zijn de netwerkkosten om verbinding te maken met CloudSimple?  Zijn er uitgaande kosten van toepassing tussen CloudSimple en Azure, of tussen regio's?**
 
-Er zijn geen AVS-kosten voor netwerk uitgaand verkeer. De standaard tarieven van Azure gelden voor elk uitgaand verkeer van uw virtuele netwerk of van uw on-premises ExpressRoute-circuit.
+Er zijn geen CloudSimple-kosten voor netwerkuitgangen.  Azure-standaardtarieven zijn van toepassing op elk uitgangsverkeer van uw virtuele netwerk of vanaf uw on-premises ExpressRoute-circuit.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 
-**Welke netwerk functies zijn beschikbaar voor de Privécloud van mijn AVS?**
+**Welke netwerkfuncties zijn beschikbaar voor mijn Private Cloud?**
 
-U kunt VLAN'S (en hun subnetten) en firewall tabellen inrichten en open bare IP-adressen toewijzen die worden toegewezen aan een virtuele machine die wordt uitgevoerd in de Privécloud van uw AVS. Zie voor meer informatie over netwerk functies [vlan's en subnetten Overview](cloudsimple-vlans-subnets.md), overzicht van [firewall tabellen](cloudsimple-firewall-tables.md)en [overzicht van open bare IP-adressen](cloudsimple-public-ip-address.md).
+U VLAN's (en hun subnetten) en firewalltabellen inrichten en openbare IP-adressen toewijzen die worden toegewezen aan een virtuele machine die in uw private cloud wordt uitgevoerd. Zie VOOR meer informatie over netwerkfuncties het [overzicht van VLAN's en subnetten](cloudsimple-vlans-subnets.md), [overzicht van firewalltabellen](cloudsimple-firewall-tables.md)en [overzicht van openbare IP-adressen](cloudsimple-public-ip-address.md).
 
-**Hoe kan ik verschillende subnetten instellen voor mijn toepassingen in mijn AVS-privécloud?**
+**Hoe stel ik verschillende subnetten in voor mijn applicaties in mijn Private Cloud?**
 
-U maakt VLAN'S op uw AVS-Privécloud vanuit de AVS-Portal. Nadat u een VLAN hebt gemaakt, kunt u een gedistribueerde poort groep maken op uw AVS-Privécloud, met behulp van het VLAN en virtuele machines maken die zijn verbonden met de gedistribueerde poort groep. U kunt Firewall tabellen inschakelen voor het VLAN/subnet en firewall regels definiëren om netwerk verkeer te beveiligen.
+U maakt VLAN's op uw Private Cloud via de CloudSimple-portal.  Nadat u een VLAN hebt gemaakt, u een gedistribueerde poortgroep op uw Private Cloud vCenter maken met behulp van de VLAN en virtuele machines maken die zijn verbonden met de gedistribueerde poortgroep.  U firewalltabellen voor het VLAN/subnet inschakelen en firewallregels definiëren om netwerkverkeer te beveiligen.
 
-**Welke firewall instellingen zijn beschikbaar voor mijn AVS-persoonlijke Clouds?**
+**Welke firewall-instellingen zijn beschikbaar voor mijn Private Clouds?**
 
-U kunt regels voor Noord-Zuid-en Oost-West-verkeer configureren. De regels worden gedefinieerd in een firewall tabel. De firewall tabel kan worden gekoppeld aan VLAN'S in de Privécloud van uw AVS. Zie voor meer informatie [firewall tabellen en-regels instellen voor persoonlijke Clouds van AVS](firewall.md).
+U regels configureren voor noord-zuid- en oost-westverkeer.  De regels worden gedefinieerd in een firewalltabel.  De firewalltabel kan worden gekoppeld aan VLAN's op uw private cloud.  Zie [Firewalltabellen en regels voor privéwolken instellen voor](firewall.md)meer informatie.
 
-**Kan ik open bare IP-adressen toewijzen aan virtuele machines in mijn AVS Privécloud?**
+**Kan ik openbare IP-adressen toewijzen aan VM's in mijn Private Cloud-omgeving?**
 
-In de AVS-Portal kunt u een nieuw openbaar IP-adres toewijzen en dit koppelen aan het privé-IP-adres van een virtuele machine of een apparaat. U kunt ook nieuwe firewall regels maken of bestaande firewall regels Toep assen om verkeer toe te staan van specifieke poorten en IP-adressen in de portal. Zie voor meer informatie [open bare IP-adressen toewijzen voor de privécloud-cloud omgeving](public-ips.md).
+In de CloudSimple-portal u een nieuw openbaar IP-adres toewijzen en koppelen aan het privé-IP-adres van een virtuele machine of een toestel.  U ook nieuwe firewallregels maken of bestaande firewallregels toepassen om verkeer van specifieke poorten en IP-adressen in de portal toe te staan. Zie Openbare [IP-adressen toewijzen voor private cloudomgeving voor](public-ips.md)meer informatie .
 
 ## <a name="security"></a>Beveiliging
 
-**Wat zijn mijn beveiligings opties voor AVS?**
+**Wat zijn mijn beveiligingsopties op CloudSimple?**
 
-AVS biedt de volgende beveiligings functies voor het beveiligen van uw cloud omgeving in de Privécloud:
+CloudSimple biedt de volgende beveiligingsfuncties voor het beveiligen van uw Private Cloud-omgeving:
 
-* **Data-at-rest-versleuteling**. U kunt gegevens in rust versleutelen die zich op de vSAN-opslag in de Privécloud van uw AVS bevinden. vSAN ondersteunt externe-sleutel beheerser vers, die kunnen worden geïmplementeerd in uw Azure vNet-of on-premises omgeving. Zie [vSAN-versleuteling configureren voor de privécloud van uw AVS](vsan-encryption.md)voor meer informatie.
-* **Netwerk beveiliging**. Beheer netwerk verkeer met firewall regels die van toepassing zijn tussen uw automatische AVS-Cloud en Internet, uw automatische AVS-Cloud en on-premises omgeving, of binnen subnetten van de Privécloud van uw AVS.
-* **Beveiligde, particuliere verbinding**. Er wordt een beveiligde, persoonlijke verbinding tot stand gebracht tussen uw on-premises netwerk en uw Azure-abonnement.
+* **Gegevens in rustversleuteling**. U gegevens in rust versleutelen die zich bevinden in de vSAN-opslag in uw private cloud. vSAN ondersteunt externe sleutelbeheerservers, die kunnen worden geïmplementeerd in uw Azure vNet- of on-premises omgeving.  Zie [VSAN-versleuteling configureren voor uw CloudSimple Private Cloud voor](vsan-encryption.md)meer informatie.
+* **Netwerkbeveiliging.** Beheer de netwerkverkeersstroom met firewallregels die van toepassing zijn tussen uw Private Cloud en het internet, uw Private Cloud en on-premises omgeving, of binnen subnetten van uw Private Cloud.
+* **Veilige, privéverbinding.** Er wordt een veilige, privéverbinding tot stand gebracht tussen uw on-premises netwerk en uw Azure-abonnement.
 
-## <a name="compute"></a>Computing
+## <a name="compute"></a>Compute
 
-**Wat voor soort hosts zijn er beschikbaar?**
+**Wat voor soort hosts zijn beschikbaar?**
 
-AVS biedt deze typen host:
+CloudSimple biedt deze hosttypen:
 
-* **CS28-knoop punt:** CPU: 2x 2,2 GHz, totaal 28 kern geheugens, 48 HT.  RAM: 256 GB.  Opslag: 1600 GB NVMe-cache, 5760 GB gegevens (alle-Flash). Netwerk: 4x25Gbe NIC
-* **CS36-knoop punt:** CPU 2x 2,3 GHz, totale 36 kern geheugens 72 HT.  RAM: 512 GB.  Opslag: 3200 GB NVMe cache 11520 GB gegevens (alle-Flash).  Netwerk: 4x25Gbe NIC
-* **CS36m-knoop punt:** CPU 2x 2,3 GHz, totale 36 kern geheugens 72 HT.  RAM: 576 GB.  Opslag: 3200 GB NVMe cache 13360 GB gegevens (alle-Flash).  Netwerk: 4x25Gbe NIC
+* **CS28-knooppunt:** CPU:2x 2,2 GHz, totaal 28 cores, 48 HT.  RAM: 256 GB.  Opslag: 1600 GB NVMe-cache, 5760 GB gegevens (All-Flash). Netwerk: 4x25Gbe NIC
+* **CS36-knooppunt:** CPU 2x 2,3 GHz, totaal 36 cores, 72 HT.  RAM: 512 GB.  Opslag: 3200 GB NVMe-cache met 11520 GB (All-Flash).  Netwerk: 4x25Gbe NIC
+* **CS36m-knooppunt:** CPU 2x 2,3 GHz, totaal 36 cores, 72 HT.  RAM: 576 GB.  Opslag: 3200 GB NVMe-cache met 13360 GB (All-Flash).  Netwerk: 4x25Gbe NIC
 
-**Hoe worden hardwarestoringen verwerkt?**
+**Hoe worden hardwarefouten verwerkt?**
 
-De AVS-infra structuur wordt voortdurend bewaakt door het AVS-platform en onze Service Operations-teams. Als er een hardwarefout wordt gedetecteerd, wordt een nieuw knoop punt toegevoegd aan de Privécloud en wordt het knoop punt met de fout verwijderd.
+Alle CloudSimple-infrastructuur wordt continu bewaakt door het CloudSimple-platform en onze serviceoperationsteams.  Als er een hardwarefout wordt gedetecteerd, wordt er een nieuw knooppunt aan uw privécloud toegevoegd en wordt het mislukte knooppunt verwijderd.
 
 ## <a name="storage"></a>Storage
 
-**Welk type opslag wordt ondersteund op een AVS-Privécloud?**
+**Welk type opslag wordt ondersteund op een Private Cloud?**
 
-AVS biedt alle Flash VMware vSAN-opslag voor elke AVS-privécloud. Elke vSphere wordt gemaakt met een eigen vSAN-gegevens opslag. Zie voor meer informatie [AVS Privécloud Private Cloud VMware-onderdelen-vSAN-opslag](vmware-components.md#vsan-storage).
+CloudSimple biedt all-flash VMware vSAN-opslag met elke Private Cloud.  Elke vSphere is gemaakt met een eigen vSAN datastore.  Zie Private [Cloud VMware-componenten - vSAN-opslag voor](vmware-components.md#vsan-storage)meer informatie .
 
 **Wordt versleuteling van gegevens ondersteund?**
-Ja. U kunt de vSAN-opslag op uw AVS-Privécloud instellen voor het gebruik van een KMS (Key Management Server) die on-premises of in Azure is geïmplementeerd om gegevens te versleutelen die zijn opgeslagen op vSAN.
+Ja.  U de vSAN-opslag op uw Private Cloud instellen om een key management server (KMS) te gebruiken die on-premises of op Azure wordt geïmplementeerd om gegevens die zijn opgeslagen op vSAN te versleutelen.
 
-**Hoe worden defecte schijven afgehandeld?**
+**Hoe worden mislukte schijven verwerkt?**
 
-AVS bewaakt voortdurend alle hardwareonderdelen van de automatische AVS-Cloud. Als er een schijf fout wordt gedetecteerd of een schijf wordt geïdentificeerd als mislukt (op basis van heuristiek), wordt er automatisch een nieuw knoop punt toegevoegd aan de nieuwe AVS-Cloud. Het knoop punt met de mislukte of niet-werkende schijf wordt verwijderd uit de Privécloud.
+CloudSimple bewaakt continu alle hardwarecomponenten van de Private Cloud.  Als een schijffout wordt gedetecteerd of als een schijf wordt geïdentificeerd als mislukt (op basis van heuristiek), wordt er automatisch een nieuw knooppunt toegevoegd aan de Private Cloud.  Het knooppunt met de defecte of falende schijf wordt verwijderd uit de Private Cloud.
 
 ## <a name="vmware"></a>VMware
 
-**Hoe kan ik grootschalige upload-of migratie van toepassingen en gegevens van on-premises uitvoeren?**
+**Hoe kan ik op grote schaal toepassingen en gegevens van on-premises uploaden of migreren?**
 
-AVS biedt een systeem eigen VMware vSphere-oplossing. Alle VMware-hulpprogram ma's voor het bulksgewijs migreren van gegevens kunnen worden gebruikt in combi natie met de Privécloud van uw AVS. Een aantal opties:
+CloudSimple biedt een native VMware vSphere-oplossing.  Alle VMware-tools voor bulkgegevensmigratie kunnen worden gebruikt met uw Private Cloud.  Een aantal opties:
 
-* VMware HCX voor het bulksgewijs migreren van gegevens.
-* Koud migreren van gegevens met behulp van Storage vMotion van on-premises naar AVS.
+* VMware HCX voor bulkmigratie van gegevens.
+* Koude migratie van gegevens met Storage vMotion van on-premises naar CloudSimple.
 
-**Kan ik VMware-hulpprogram ma's installeren?**
+**Kan ik VMware-tools installeren?**
 
-AVS biedt een systeem eigen VMware vSphere-oplossing. Alle VMware-hulpprogram ma's die worden gebruikt voor het beheren van uw on-premises vSphere-omgeving, kunnen worden gebruikt op AVS. AVS ondersteunt een model voor het maken van een eigen licentie (BYOL) voor het installeren van VMware-hulpprogram ma's.
+CloudSimple biedt een native VMware vSphere-oplossing.  Alle VMware-tools die worden gebruikt voor het beheren van uw on-premises vSphere-omgeving, kunnen worden gebruikt op CloudSimple.  CloudSimple ondersteunt een byol-model (bring-your-own-license) voor het installeren van VMware-tools.
 
 **Hoe worden updates en upgrades beheerd?**
 
-Met AVS worden alle onderdelen van de infra structuur van uw AVS-Privécloud op een naadloze, niet-storende manier beheerd en bijgewerkt. Alle updates en beveiligings patches die zijn uitgegeven door VMware of infrastructuur leveranciers, worden gepland voor een update zodra ze door AVS worden gekwalificeerd.
+CloudSimple beheert en werkt alle infrastructuuronderdelen van uw Private Cloud op een naadloze niet-storende manier.  Alle updates en beveiligingspatches die zijn uitgebracht door VMware- of infrastructuurleveranciers, worden bijgewerkt zodra ze door CloudSimple zijn gekwalificeerd.
 
-AVS voert geen upgrades of updates van toepassingen uit die zijn geïnstalleerd op de AVS-Privécloud.
+CloudSimple voert geen upgrades of updates uit van toepassingen die zijn geïnstalleerd in de Private Cloud.
 
 ## <a name="azure-integration"></a>Azure-integratie
 
-**Welke Azure-Services worden ondersteund?**
+**Welke Azure-services worden ondersteund?**
 
-AVS biedt een Azure ExpressRoute-verbinding met uw abonnement op Azure. Alle services die in uw abonnement worden uitgevoerd, kunnen verbinding maken met uw Privécloud. Voorbeelden:
+CloudSimple biedt een Azure ExpressRoute-verbinding met uw abonnement op Azure.  Alle services die in uw abonnement worden uitgevoerd, kunnen verbinding maken met uw Private Cloud.  Voorbeelden zijn:
 
-* **Azure Active Directory** als een identiteits bron voor uw AVS vCenter.
-* **Azure Storage** voor het opslaan van back-ups, afbeeldingen en andere gegevens vanuit de privécloud van uw AVS.
-* **Hybride toepassingen** met een toepassings architectuur die persoonlijke Clouds van open bare en AVS omspant. U kunt bijvoorbeeld webservers maken in azure die toegang hebben tot toepassings-en database servers op uw AVS-Privécloud.
-* **Azure monitor** en **Azure Security Center** voor workloads die worden uitgevoerd in de VMware-ondersteunings registratie, metrische gegevens over prestaties en beveiligings beheer.
+* **Azure Active Directory** als identiteitsbron voor uw CloudSimple vCenter.
+* **Azure-opslag** voor het opslaan van back-ups, afbeeldingen en andere gegevens uit uw private cloud.
+* **Hybride toepassingen** met een toepassingsarchitectuur die openbare en private clouds omvat.  U bijvoorbeeld webservers in Azure maken die toegang hebben tot toepassings- en databaseservers in uw Private Cloud.
+* **Azure-monitor** en **Azure-beveiligingscentrum** voor workloads die worden uitgevoerd op VMware-ondersteuningslogboekregistratie, prestatiestatistieken en beveiligingsbeheer.
 
-**Hoe kan ik mijn VMware-tenants aan Azure toe te wijzen?**
+**Hoe stel ik mijn VMware-tenants in kaart met Azure?**
 
-AVS biedt de unieke mogelijkheid om uw VMware-Vm's te beheren in de Privécloud van de Azure Portal. Een vCenter-resource groep die is geconfigureerd met de gewenste resource beperkingen, kan door de globale beheerder aan uw abonnement worden toegewezen. 
+CloudSimple biedt de unieke mogelijkheid om uw VMware VM's op Private Cloud te beheren vanuit de Azure-portal.  Een vCenter-resourcegroep die is geconfigureerd met de gewenste resourcebeperkingen, kan door uw globale beheerder aan uw abonnement worden toegewezen.  
 
-**Welke licentie voordelen krijg ik bij Azure?**
+**Welke licentievoordelen krijg ik met Azure?**
 
-Met AVS kunt u profiteren van het voor deel van Azure Hybrid Usage en bespaart u tot 90% op licenties. Dit voor deel blijft uw investering in micro soft-licenties behouden en verlaagt uw TCO ten opzichte van andere cloud oplossingen. U krijgt ook uitgebreide beveiligings updates voor Windows Server 2008 en Microsoft SQL Server 2008. Met het model van uw eigen licentie (BYOL) kunt u kosten besparen voor algemene apps, zoals Veeam en Zerto. 
+Met CloudSimple u profiteren van het Azure Hybrid Usage Benefit en tot 90% besparen op licenties. Dit voordeel behoudt uw investering in Microsoft-licenties en verlaagt uw TCO ten opzichte van andere cloudoplossingen. U krijgt ook uitgebreide beveiligingsupdates voor Windows Server 2008 en Microsoft SQL Server 2008.  Het BYOL-model (Bring-your-own-license) helpt u de kosten laag te houden voor veelgebruikte apps zoals Veeam en Zerto.  

@@ -1,50 +1,50 @@
 ---
-title: 'Snelstartgids: een Linux python-app maken'
-description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste python-app te implementeren in een Linux-container in App Service.
+title: 'Snelstart: een Linux Python-app maken'
+description: Ga aan de slag met Linux-apps in Azure App Service door uw eerste Python-app te implementeren in een Linux-container in App Service.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.custom: cli-validate
+ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 607cc0e5cd8236badfc1e5e591efda20d4fb669b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368261"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045672"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstart: een Python-app maken in Azure App Service op Linux
 
-In deze Quick Start implementeert u een Python-web-app voor [app service op Linux](app-service-linux-intro.md), de uiterst schaal bare webhostingservice met self-patch functie. U gebruikt de lokale [Azure-opdracht regel interface (CLI)](/cli/azure/install-azure-cli) op een Mac-, Linux-of Windows-computer. De web-app die u configureert, maakt gebruik van een gratis App Service laag, zodat u geen kosten in de loop van dit artikel opdoet.
+In deze quickstart implementeert u een Python-webapp [naar App Service op Linux](app-service-linux-intro.md), de zeer schaalbare, zelfpatchende webhostingservice van Azure. U gebruikt de lokale [Azure command-line interface (CLI)](/cli/azure/install-azure-cli) op een Mac, Linux of Windows-computer. De web-app die u configureert, maakt gebruik van een gratis appservicelaag, zodat u in de loop van dit artikel geen kosten hoeft te maken.
 
-Als u liever apps implementeert via een IDE, raadpleegt u [python-Apps implementeren in app service van Visual Studio code](/azure/python/tutorial-deploy-app-service-on-linux-01).
+Zie [Python-apps implementeren naar app-service implementeren vanuit Visual Studio Code](/azure/python/tutorial-deploy-app-service-on-linux-01)als u apps liever implementeert via een IDE.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (python 3,6 wordt ook ondersteund)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 wordt ook ondersteund)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure-CLI</a>
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Voer in een Terminal venster de volgende opdracht uit om de voorbeeld toepassing te klonen op uw lokale computer. 
+Voer in een terminalvenster de volgende opdracht uit om de voorbeeldtoepassing naar uw lokale computer te klonen. 
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-Ga vervolgens naar die map:
+Ga dan naar die map:
 
 ```terminal
 cd python-docs-hello-world
 ```
 
-De opslag plaats bevat een *Application.py* -bestand dat aangeeft app service dat de code een kolf-app bevat. Zie [Opstartprocessen en aanpassingen van container](how-to-configure-python.md) voor meer informatie.
+De repository bevat een *application.py* bestand, dat App Service vertelt dat de code een Flask-app bevat. Zie [Opstartprocessen en aanpassingen van container](how-to-configure-python.md) voor meer informatie.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-Gebruik in een Terminal venster de onderstaande opdrachten (afhankelijk van uw besturings systeem) om de vereiste afhankelijkheden te installeren en de ingebouwde ontwikkel server te starten. 
+Gebruik in een terminalvenster de onderstaande opdrachten (indien van toepassing voor uw besturingssysteem) om de vereiste afhankelijkheden te installeren en de ingebouwde ontwikkelingsserver te starten. 
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -56,7 +56,7 @@ export FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Powershell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -78,17 +78,17 @@ flask run
 
 ---
 
-Open een webbrowser en ga naar de voor beeld-app op `http://localhost:5000/`. In de app wordt het bericht **Hallo wereld!** weer gegeven.
+Open een webbrowser en ga naar `http://localhost:5000/`de voorbeeld-app op . De app toont het bericht **Hello World!**.
 
-![Een voor beeld van een python-app lokaal uitvoeren](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
+![Een voorbeeld van python-app lokaal uitvoeren](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
-Druk in het Terminal venster op **Ctrl**+**C** om de webserver af te sluiten.
+Druk in het terminalvenster op **Ctrl**+**C** om de webserver te verlaten.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-De Azure CLI biedt u een groot aantal handige opdrachten die u vanaf een lokale terminal kunt gebruiken om Azure-resources in te richten en te beheren vanaf de opdracht regel. U kunt opdrachten gebruiken om dezelfde taken uit te voeren als de Azure Portal in een browser. U kunt ook CLI-opdrachten in scripts gebruiken om beheer processen te automatiseren.
+De Azure CLI biedt u veel handige opdrachten die u gebruikt van een lokale terminal tot het inrichten en beheren van Azure-resources vanaf de opdrachtregel. U opdrachten gebruiken om dezelfde taken uit te voeren die u via de Azure-portal in een browser zou uitvoeren. U cli-opdrachten ook in scripts gebruiken om beheerprocessen te automatiseren.
 
-Als u Azure-opdrachten in de Azure CLI wilt uitvoeren, moet u zich eerst aanmelden met de opdracht `az login`. Met deze opdracht wordt een browser geopend om uw referenties te verzamelen.
+Als u Azure-opdrachten wilt uitvoeren in azure cli, moet u zich eerst aanmelden met de `az login` opdracht. Met deze opdracht wordt een browser geopend om uw referenties te verzamelen.
 
 ```azurecli
 az login
@@ -96,9 +96,9 @@ az login
 
 ## <a name="deploy-the-sample"></a>Het voorbeeld implementeren
 
-Met de [`az webapp up`](/cli/azure/webapp#az-webapp-up) opdracht maakt u de web-app op app service en implementeert u de code.
+Met [`az webapp up`](/cli/azure/webapp#az-webapp-up) de opdracht wordt de web-app op App-service gemaakt en wordt uw code geïmplementeerd.
 
-Voer de volgende opdracht uit in de map *python-docs-Hello-World* met de voorbeeld code `az webapp up`. Vervang `<app-name>` door een wereld wijd unieke app-naam (*geldige tekens zijn `a-z`, `0-9`en `-`* ). Vervang ook `<location-name>` door een Azure-regio zoals **centralus**, **EastAsia**, **Europa West**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. (U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht uit te voeren.)
+Voer in de map *python-docs-hello-world* met de `az webapp up` voorbeeldcode de volgende opdracht uit. Vervangen `<app-name>` door een wereldwijd unieke app-naam *(geldige tekens zijn `a-z`, `0-9`en `-` *). Ook `<location-name>` vervangen door een Azure regio zoals **centralus**, **eastasia**, **West-Europe**, **Koreasouth**, **Brazilsouth**, **centralindia**, en ga zo maar door. (U een lijst met toegestane regio's [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) voor uw Azure-account ophalen door de opdracht uit te voeren.)
 
 
 ```azurecli
@@ -136,17 +136,17 @@ All done.
 
 ## <a name="browse-to-the-app"></a>Bladeren naar de app
 
-Blader naar de geïmplementeerde toepassing in uw webbrowser op de URL `http://<app-name>.azurewebsites.net`.
+Blader naar de geïmplementeerde toepassing in `http://<app-name>.azurewebsites.net`uw webbrowser op de URL.
 
-In de python-voorbeeld code wordt een Linux-container uitgevoerd in App Service met behulp van een ingebouwde installatie kopie.
+De Python-voorbeeldcode wordt uitgevoerd met een Linux-container in App-service met behulp van een ingebouwde afbeelding.
 
-![Een voor beeld van een python-app in azure uitvoeren](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
+![Een voorbeeld van python-app uitvoeren in Azure](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-**Gefeliciteerd!** U hebt uw python-app geïmplementeerd op App Service op Linux.
+**Gefeliciteerd!** U hebt uw Python-app geïmplementeerd in App Service op Linux.
 
 ## <a name="redeploy-updates"></a>Updates opnieuw implementeren
 
-Open *Application.py* in uw favoriete code-editor en wijzig de `return`-instructie op de laatste regel zodat deze overeenkomt met de volgende code. De `print`-instructie is hier opgenomen om logboek registratie-uitvoer te genereren waarmee u in de volgende sectie kunt werken. 
+Open *in* uw favoriete codeeditor `return` application.py en wijzig de instructie op de laatste regel om overeen te komen met de volgende code. De `print` instructie is hier opgenomen om logboeken te genereren waarmee u werkt in de volgende sectie. 
 
 ```python
 print("Handling request to home page.")
@@ -155,67 +155,67 @@ return "Hello Azure!"
 
 Sla uw wijzigingen op en sluit de editor af. 
 
-Implementeer de app opnieuw met behulp van de volgende `az webapp up` opdracht, met dezelfde opdracht die u hebt gebruikt om de app de eerste keer te implementeren, waarbij u `<app-name>` en `<location-name>` vervangt door de namen die u eerder hebt gebruikt. 
+Implementeer de app opnieuw `az webapp up` met de volgende opdracht, met dezelfde opdracht die `<app-name>` u `<location-name>` de app de eerste keer hebt geïmplementeerd, waarbij u de app vervangt en dezelfde namen gebruikt die u eerder hebt gebruikt. 
 
 ```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-Zodra de implementatie is voltooid, gaat u terug naar het browser venster open naar `http://<app-name>.azurewebsites.net` en vernieuwt u de pagina, waarin het gewijzigde bericht moet worden weer gegeven:
+Zodra de implementatie is voltooid, schakelt `http://<app-name>.azurewebsites.net` u terug naar het browservenster dat is geopend naar en vernieuwt u de pagina, die het gewijzigde bericht moet weergeven:
 
-![Een bijgewerkte voor beeld-app voor python uitvoeren in azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
+![Een bijgewerkte voorbeeld python-app uitvoeren in Azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 > [!TIP]
-> Visual Studio code biedt krachtige extensies voor python en Azure App Service, waarmee het proces van het implementeren van Python-web-apps naar App Service wordt vereenvoudigd. Zie voor meer informatie [python-Apps implementeren in app service van Visual Studio code](/azure/python/tutorial-deploy-app-service-on-linux-01).
+> Visual Studio Code biedt krachtige extensies voor Python en Azure App Service, die het proces van het implementeren van Python-web-apps naar App Service vereenvoudigen. Zie [Python-apps implementeren voor App-service implementeren vanuit Visual Studio Code](/azure/python/tutorial-deploy-app-service-on-linux-01)voor meer informatie.
 
 ## <a name="stream-logs"></a>Logboeken streamen
 
-U hebt toegang tot de console logboeken die zijn gegenereerd in de app en de container waarin deze wordt uitgevoerd. Logboeken bevatten een uitvoer die wordt gegenereerd met behulp van `print`-instructies.
+U hebt toegang tot de consolelogboeken die vanuit de app worden gegenereerd en de container waarin deze wordt uitgevoerd. Logboeken bevatten alle `print` uitvoer die wordt gegenereerd met behulp van instructies.
 
-Schakel eerst container logboek registratie in door de volgende opdracht uit te voeren in een Terminal, waarbij u `<app-name>` vervangt door de naam van uw app en `<resource-group-name>` met de naam van de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht die u hebt gebruikt (zoals ' appsvc_rg_Linux_centralus '):
+Schakel eerst containerlogboekregistratie in door de volgende opdracht `<app-name>` in een terminal `<resource-group-name>` uit te voeren, te vervangen door `az webapp up` de naam van uw app en door de naam van de resourcegroep die wordt weergegeven in de uitvoer van de opdracht die u hebt gebruikt (zoals 'appsvc_rg_Linux_centralus'):
 
 ```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
-Zodra de container logboek registratie is ingeschakeld, voert u de volgende opdracht uit om de logboek stroom weer te geven:
+Zodra containerlogboekregistratie is ingeschakeld, voert u de volgende opdracht uit om de logboekstroom weer te geven:
 
 ```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
-Vernieuw de app in de browser om console logboeken te genereren, die regels moeten bevatten die vergelijkbaar zijn met de volgende tekst. Als u de uitvoer niet onmiddellijk ziet, probeert u het over 30 seconden opnieuw.
+Vernieuw de app in de browser om consolelogboeken te genereren, die regels moeten bevatten die vergelijkbaar zijn met de volgende tekst. Als u de uitvoer niet onmiddellijk ziet, probeert u het opnieuw in 30 seconden.
 
 ```output
 2019-10-23T12:40:03.815574424Z Handling request to home page.
 2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
 ```
 
-U kunt de logboek bestanden ook vanuit de browser controleren op `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+U ook de logbestanden `https://<app-name>.scm.azurewebsites.net/api/logs/docker`vanuit de browser bekijken op.
 
-Als u het streamen van Logboeken op elk gewenst moment wilt stoppen, typt u `Ctrl`+`C`.
+Typ op elk gewenst moment `Ctrl` + `C`het streamen van logboeken.
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt. Zoek en selecteer **app Services**.
+Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt. **App-services**zoeken en selecteren .
 
-![Navigeer naar App Services in het Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+![Navigeren naar App Services in de Azure-portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 
 Selecteer de naam van uw Azure-app.
 
-![Navigeer naar uw python-app in App Services in het Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
+![Navigeren naar uw Python-app in App Services in de Azure-portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
 De pagina Overzicht van uw app wordt weergegeven. Hier kunt u algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen.
 
-![Beheer uw python-app op de pagina overzicht in de Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
+![Uw Python-app beheren op de pagina Overzicht in de Azure-portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-Het App Service menu bevat verschillende pagina's voor het configureren van uw app.
+Het menu App-service bevat verschillende pagina's voor het configureren van uw app.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. De resource groep heeft een naam als ' appsvc_rg_Linux_CentralUS ', afhankelijk van uw locatie. Als u een andere App Service SKU gebruikt dan de gratis F1-laag, zullen deze resources lopende kosten oplopen.
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. De resourcegroep heeft een naam als 'appsvc_rg_Linux_CentralUS' afhankelijk van uw locatie. Als u een Andere App Service SKU gebruikt dan de gratis F1-laag, zullen deze resources blijvende kosten met zich meebrengen.
 
-Als u deze resources in de toekomst niet meer nodig hebt, verwijdert u de resource groep door de volgende opdracht uit te voeren, waarbij u `<resource-group-name>` vervangt door de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht, zoals ' appsvc_rg_Linux_centralus '. Het volt ooien van de opdracht kan een minuut duren.
+Als u deze resources in de toekomst niet meer nodig verwacht, verwijdert u `<resource-group-name>` de brongroep door de `az webapp up` volgende opdracht uit te voeren en te vervangen door de resourcegroep die wordt weergegeven in de uitvoer van de opdracht, zoals 'appsvc_rg_Linux_centralus'. Het kan even duren voordat de opdracht is voltooid.
 
 ```azurecli
 az group delete -n <resource-group-name>
@@ -224,10 +224,10 @@ az group delete -n <resource-group-name>
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: python (Django) Web-app met PostgreSQL](tutorial-python-postgresql-app.md)
+> [Zelfstudie: Python (Django) web-app met PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-app configureren](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Zelf studie: python-app uitvoeren in een aangepaste container](tutorial-custom-docker-image.md)
+> [Zelfstudie: Python-app uitvoeren in aangepaste container](tutorial-custom-docker-image.md)

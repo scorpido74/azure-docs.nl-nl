@@ -1,7 +1,7 @@
 ---
-title: 'Aanbeveling van Score SVD: module verwijzing'
+title: 'Score SVD Recommender: Module referentie'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Score SVD recommending in Azure Machine Learning voor voor spellingen van aanbevolen scores voor een gegevensset.
+description: Meer informatie over het gebruik van de module SVD Recommender score in Azure Machine Learning om aanbevelingsvoorspellingen voor een gegevensset te scoren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,118 +9,118 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455975"
 ---
-# <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score
+# <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score 
 
-In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer (preview) gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
+In dit artikel wordt beschreven hoe u de module Score SVD Recommender gebruiken in Azure Machine Learning designer (preview). Gebruik deze module om voorspellingen te maken met behulp van een getraind aanbevelingsmodel op basis van het SVD-algoritme (Single Value Decomposition).
 
-De SVD-aanbevolen functie kan twee verschillende soorten voor spellingen genereren:
+De SVD-recommender kan twee verschillende soorten voorspellingen genereren:
 
-- [Beoordelingen voor een bepaalde gebruiker en een bepaald item voors pellen](#prediction-of-ratings)
-- [Het aanbevelen van items aan een gebruiker](#recommendations-for-users)
+- [Beoordelingen voor een bepaalde gebruiker en item voorspellen](#prediction-of-ratings)
+- [Items aanbevelen aan een gebruiker](#recommendations-for-users)
 
-Wanneer u het tweede type voor spellingen maakt, kunt u in een van de volgende modi worden gebruikt:
+Wanneer u het tweede type voorspellingen maakt, u in een van de volgende modi werken:
 
-- De **productie modus** houdt rekening met alle gebruikers of items. Deze wordt doorgaans gebruikt in een webservice.
+- **De productiemodus** houdt rekening met alle gebruikers of artikelen. Het wordt meestal gebruikt in een webservice.
 
-  U kunt scores maken voor nieuwe gebruikers, niet alleen voor gebruikers die tijdens de training zijn gezien. Raadpleeg de [technische opmerkingen](#technical-notes)voor meer informatie. 
+  U scores maken voor nieuwe gebruikers, niet alleen gebruikers die tijdens de training worden gezien. Zie voor meer informatie de [technische notities](#technical-notes). 
 
-- De **evaluatie modus** werkt met een beperkt aantal gebruikers of items die kunnen worden geëvalueerd. Deze wordt doorgaans gebruikt tijdens pijplijn bewerkingen.
+- **De evaluatiemodus** werkt op een beperkte set gebruikers of items die kunnen worden geëvalueerd. Het wordt meestal gebruikt tijdens pijplijnbewerkingen.
 
-Voor meer informatie over de SVD-aanbevolen algoritme raadpleegt u de Research paper [matrix factorization technieken voor aanbevolen systemen](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
+Voor meer informatie over de SVD recommender algoritme, zie het onderzoek papier [Matrix factorization technieken voor recommender systemen](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
-## <a name="how-to-configure-score-svd-recommender"></a>Advieser voor Score SVD configureren
+## <a name="how-to-configure-score-svd-recommender"></a>Score SVD-recommender configureren
 
-Deze module ondersteunt twee typen voor spellingen, elk met verschillende vereisten. 
+Deze module ondersteunt twee soorten voorspellingen, elk met verschillende vereisten. 
 
-###  <a name="prediction-of-ratings"></a>Voor spelling van classificaties
+###  <a name="prediction-of-ratings"></a>Voorspelling van ratings
 
-Wanneer u de classificaties voor spelt, wordt in het model berekend hoe een gebruiker reageert op een bepaald item, op basis van de trainings gegevens. De invoer gegevens voor de Score moeten zowel een gebruiker als het te beoordelen item bevatten.
+Wanneer u beoordelingen voorspelt, berekent het model hoe een gebruiker op een bepaald item reageert, gezien de trainingsgegevens. De invoergegevens voor het scoren moeten zowel een gebruiker als het te beoordelen item opgeven.
 
-1. Voeg een getraind aanbevelings model aan uw pijp lijn toe en verbind het met de **getrainde SVD-aanbeveling**. U moet het model maken met de module [Train SVD aanbevelen](train-SVD-recommender.md) .
+1. Voeg een getraind aanbevelingsmodel toe aan uw pijplijn en sluit deze aan **op getrainde SVD-aanbeveling**. U moet het model maken met behulp van de [Train SVD Recommender-module.](train-SVD-recommender.md)
 
-2. Voor **Voorspellings type voor aanbevolen**functies selecteert u **beoordelings voorspelling**. Er zijn geen andere para meters vereist.
+2. Selecteer **Voorspelling stegen voor** **recommender-voorspelling**. Er zijn geen andere parameters vereist.
 
-3. Voeg de gegevens toe waarvoor u voor spellingen wilt maken en verbind deze met de **gegevensset om**deze te beoordelen.
+3. Voeg de gegevens waarvoor u voorspellingen wilt doen toe en sluit deze aan **op Gegevensset om te scoren.**
 
-   Voor het model om beoordelingen te voors pellen, moet de invoer gegevensset gebruikers paren bevatten.
+   Om classificaties te voorspellen, moet de invoergegevensset gebruikersitemparen bevatten.
 
-   De gegevensset kan een optionele derde kolom met beoordelingen bevatten voor het combi neren van gebruikers items in de eerste en tweede kolommen. Maar de derde kolom wordt genegeerd tijdens de voor spelling.
+   De gegevensset kan een optionele derde kolom met classificaties voor het gebruikersitempaar in de eerste en tweede kolom bevatten. Maar de derde kolom zal worden genegeerd tijdens de voorspelling.
 
-4. Voer de pijplijn uit.
+4. Verzend de pijplijn.
 
-### <a name="results-for-rating-predictions"></a>Resultaten voor de beoordeling van voor spellingen 
+### <a name="results-for-rating-predictions"></a>Resultaten voor waarderingsvoorspellingen 
 
-De uitvoer gegevensset bevat drie kolommen: gebruikers, items en de voorspelde classificatie voor elke invoer gebruiker en elk item.
+De uitvoergegevensset bevat drie kolommen: gebruikers, items en de voorspelde beoordeling voor elke invoergebruiker en -item.
 
 ###  <a name="recommendations-for-users"></a>Aanbevelingen voor gebruikers 
 
-Als u items wilt aanbevelen voor gebruikers, geeft u een lijst met gebruikers en items op als invoer. Op basis van deze gegevens gebruikt het model de kennis over bestaande items en gebruikers om een lijst met items te genereren met een waarschijnlijk beroep op elke gebruiker. U kunt het aantal geretourneerde aanbevelingen aanpassen. En u kunt een drempel instellen voor het aantal eerdere aanbevelingen dat vereist is voor het genereren van een aanbeveling.
+Als u items voor gebruikers wilt aanbevelen, geeft u een lijst met gebruikers en items als invoer. Uit deze gegevens gebruikt het model zijn kennis over bestaande items en gebruikers om een lijst met items te genereren met een waarschijnlijke aantrekkingskracht op elke gebruiker. U het aantal geretourneerde aanbevelingen aanpassen. En u een drempel instellen voor het aantal eerdere aanbevelingen dat nodig is om een aanbeveling te genereren.
 
-1. Voeg een getraind aanbevelings model aan uw pijp lijn toe en verbind het met de **getrainde SVD-aanbeveling**.  U moet het model maken met de module [Train SVD aanbevelen](train-svd-recommender.md) .
+1. Voeg een getraind aanbevelingsmodel toe aan uw pijplijn en sluit deze aan **op getrainde SVD-aanbeveling**.  U moet het model maken met behulp van de [Train SVD Recommender-module.](train-svd-recommender.md)
 
-2. Als u items wilt aanbevelen voor een lijst met gebruikers, stelt u **Voorspellings typen voor aanbevolen** functies in op **item aanbeveling**.
+2. Als u items voor een lijst met gebruikers wilt aanbevelen, stelt u **de voorspellingstype recommender in** **op Aanbeveling voor objecten**.
 
-3. Geef aan of u de Score module in productie of voor model evaluatie gebruikt voor de **Aanbevolen selectie van items**. Kies een van deze waarden:
+3. Geef **voor aanbevolen artikelselectie**aan of u de scoremodule in productie of voor modelevaluatie gebruikt. Kies een van de volgende waarden:
 
-    - **Van alle items**: Selecteer deze optie als u een pijp lijn hebt ingesteld die u wilt gebruiken in een webservice of in de productie omgeving.  Met deze optie schakelt u de *productie modus*in. De module maakt aanbevelingen van alle items die tijdens de training worden weer gegeven.
+    - **Uit alle items:** selecteer deze optie als u een pijplijn instelt die u wilt gebruiken in een webservice of in productie.  Met deze optie u *de productiemodus inschakelen.* De module doet aanbevelingen van alle items die tijdens de training worden gezien.
 
-    - **Van geclassificeerde items (voor model evaluatie)** : Selecteer deze optie als u een model ontwikkelt of test. Met deze optie wordt de *evaluatie modus*ingeschakeld. In de module worden alleen aanbevelingen gedaan van de items in de ingevoerde gegevensset die zijn geclassificeerd.
+    - **Van Beoordeelde items (voor modelevaluatie):** Selecteer deze optie als u een model ontwikkelt of test. Met deze optie *u de evaluatiemodus inschakelen*. De module doet alleen aanbevelingen van die items in de invoergegevensset die zijn beoordeeld.
     
-    - **Van niet-geclassificeerde items (om nieuwe items voor te stellen voor gebruikers)** : Selecteer deze optie als u wilt dat de module alleen aanbevelingen van de items in de trainings gegevensset bevat die niet zijn geclassificeerd. 
+    - **Van Niet-beoordeelde items (om nieuwe items voor te stellen aan gebruikers)**: Selecteer deze optie als u wilt dat de module alleen aanbevelingen doet van items in de trainingsgegevensset die niet zijn beoordeeld. 
 
-4. Voeg de gegevensset toe waarvoor u voor spellingen wilt maken en verbind deze met de **gegevensset om**deze te beoordelen.
+4. Voeg de gegevensset toe waarvoor u voorspellingen wilt doen en sluit deze aan **op Gegevensset om te scoren.**
 
-    - Voor **van alle items**moet de invoer gegevensset bestaan uit één kolom. Het bevat de id's van gebruikers voor wie aanbevelingen moeten worden gedaan.
+    - Voor **Van alle items**moet de invoergegevensset uit één kolom bestaan. Het bevat de id's van gebruikers waarvoor aanbevelingen te doen.
 
-      De gegevensset kan een extra twee kolommen met item-id's en classificaties bevatten, maar deze twee kolommen worden genegeerd. 
+      De gegevensset kan twee extra kolommen met item-id's en classificaties bevatten, maar deze twee kolommen worden genegeerd. 
 
-    - Voor **van geclassificeerde items (voor model evaluatie)** moet de invoer gegevensset bestaan uit gebruikers paren. De eerste kolom moet de gebruikers-id bevatten. De tweede kolom moet de bijbehorende item-id's bevatten.
+    - Voor **Van beoordeelde items (voor modelevaluatie)** moet de invoergegevensset bestaan uit gebruikersitemparen. De eerste kolom moet de gebruikers-id bevatten. De tweede kolom moet de bijbehorende item-id's bevatten.
 
-      De gegevensset kan een derde kolom van classificaties van gebruikers items bevatten, maar deze kolom wordt genegeerd.
+      De gegevensset kan een derde kolom met gebruikersitemclassificaties bevatten, maar deze kolom wordt genegeerd.
 
-    - Voor **van niet-geclassificeerde items (om nieuwe items voor test Ellen voor gebruikers)** , moet de invoer gegevensset bestaan uit gebruikers paren. De eerste kolom moet de gebruikers-id bevatten. De tweede kolom moet de bijbehorende item-id's bevatten.
+    - Voor **Van niet-beoordeelde items (om nieuwe items voor te stellen aan gebruikers)** moet de invoergegevensset bestaan uit gebruikersitemparen. De eerste kolom moet de gebruikers-id bevatten. De tweede kolom moet de bijbehorende item-id's bevatten.
 
-     De gegevensset kan een derde kolom van classificaties van gebruikers items bevatten, maar deze kolom wordt genegeerd.
+     De gegevensset kan een derde kolom met gebruikersitemclassificaties bevatten, maar deze kolom wordt genegeerd.
 
-5. **Maximum aantal items dat aan een gebruiker kan worden aanbevolen**: Voer het aantal items in dat voor elke gebruiker moet worden geretourneerd. Standaard raadt de module vijf items aan.
+5. **Maximaal aantal items dat een gebruiker moet aanbevelen:** Voer het aantal items in dat voor elke gebruiker moet worden geretourneerd. Standaard raadt de module vijf items aan.
 
-6. **Minimum grootte van de aanbevelings groep per gebruiker**: Voer een waarde in die aangeeft hoeveel eerdere aanbevelingen vereist zijn. Deze para meter is standaard ingesteld op 2, wat betekent dat ten minste twee andere gebruikers het item hebben aanbevolen.
+6. **Minimumgrootte van de aanbevelingsgroep per gebruiker**: Voer een waarde in die aangeeft hoeveel eerdere aanbevelingen vereist zijn. Standaard is deze parameter ingesteld op 2, wat betekent dat ten minste twee andere gebruikers het item hebben aanbevolen.
 
-   Gebruik deze optie alleen als u een score hebt in de evaluatie modus. De optie is niet beschikbaar als u **van alle items** of **van niet-geclassificeerde items (om nieuwe items te suggereren voor gebruikers)** selecteert.
+   Gebruik deze optie alleen als u scoort in de evaluatiemodus. De optie is niet beschikbaar als u **Uit alle items** of van niet-beoordeelde items selecteert **(om nieuwe items voor te stellen aan gebruikers)**.
 
-7.  Voor **van niet-geclassificeerde items (om nieuwe items te suggereren voor gebruikers)** , gebruikt u de derde invoer poort, met de naam **trainings gegevens**, om items te verwijderen die al zijn geclassificeerd op basis van de Voorspellings resultaten.
+7.  Voor **Van niet-beoordeelde items (om nieuwe items voor te stellen aan gebruikers)** gebruikt u de derde invoerpoort, genaamd **Trainingsgegevens,** om items te verwijderen die al zijn beoordeeld uit de voorspellingsresultaten.
 
-    Als u dit filter wilt Toep assen, koppelt u de oorspronkelijke trainings gegevensset aan de invoer poort.
+    Als u dit filter wilt toepassen, verbindt u de oorspronkelijke trainingsgegevensset met de invoerpoort.
 
-8. Voer de pijplijn uit.
+8. Verzend de pijplijn.
 
-### <a name="results-of-item-recommendation"></a>Resultaten van aanbeveling van het item
+### <a name="results-of-item-recommendation"></a>Resultaten van artikelaanbeveling
 
-De gescoorde gegevensset die door Score SVD wordt geretourneerd, vermeldt de aanbevolen items voor elke gebruiker:
+De scoreset die wordt geretourneerd door Score SVD Recommender bevat de aanbevolen items voor elke gebruiker:
 
 - De eerste kolom bevat de gebruikers-id's.
-- Er worden een aantal extra kolommen gegenereerd, afhankelijk van de waarde die u hebt ingesteld voor het **maximum aantal items dat aan een gebruiker**moet worden aanbevolen. Elke kolom bevat een aanbevolen item (per id). De aanbevelingen worden geordend op basis van de gebruikers affiniteit. Het item met de hoogste affiniteit wordt in kolom **item 1**geplaatst.
+- Er worden een aantal extra kolommen gegenereerd, afhankelijk van de waarde die u hebt ingesteld voor **maximaal aantal items dat een gebruiker moet aanbevelen.** Elke kolom bevat een aanbevolen item (per id). De aanbevelingen worden besteld op basis van affiniteit met gebruikersitems. Het item met de hoogste affiniteit wordt in kolom **item 1**geplaatst .
 
 > [!WARNING]
-> U kunt deze gescoorde gegevensset niet evalueren met behulp van de module [Aanbevolen evalueren](evaluate-recommender.md) .
+> U deze gegevensset niet evalueren met behulp van de module [Recommender evalueren.](evaluate-recommender.md)
 
 
-##  <a name="technical-notes"></a>Technische opmerkingen
+##  <a name="technical-notes"></a>Technische notities
 
-Als u een pijp lijn hebt met de SVD-aanbeveling en u het model naar productie verplaatst, moet u er rekening mee houden dat er belang rijke verschillen zijn tussen het gebruik van de aanbevolen functie in de evaluatie modus en het gebruik ervan in de productie modus.
+Als u een pijplijn hebt met de SVD-aanbeveling en u het model naar productie verplaatst, moet u zich ervan bewust zijn dat er belangrijke verschillen zijn tussen het gebruik van de aanbeveling in de evaluatiemodus en het gebruik ervan in de productiemodus.
 
-Voor evaluatie, per definitie, zijn voor spellingen vereist die kunnen worden gecontroleerd tegen de achterliggende *waarheid* in een testset. Wanneer u de aanbevolen functie evalueert, moet deze alleen items voors pellen die zijn geclassificeerd in de testset. Hiermee beperkt u de mogelijke waarden die worden voor speld.
+Evaluatie, per definitie, vereist voorspellingen die kunnen worden geverifieerd tegen de *grond waarheid* in een test set. Wanneer u de aanbevelingstoer evalueert, moet deze alleen items voorspellen die zijn beoordeeld in de testset. Dit beperkt de mogelijke waarden die worden voorspeld.
 
-Wanneer u het model operationeel maken, wijzigt u doorgaans de Voorspellings modus om aanbevelingen te doen op basis van alle mogelijke items, zodat u de beste voor spellingen krijgt. Voor veel van deze voor spellingen is er geen overeenkomende grond waarheid. De nauw keurigheid van de aanbeveling kan dus niet worden gecontroleerd op dezelfde manier als tijdens pijplijn bewerkingen.
+Wanneer u het model operationeel maakt, wijzigt u meestal de voorspellingsmodus om aanbevelingen te doen op basis van alle mogelijke items, om de beste voorspellingen te krijgen. Voor veel van deze voorspellingen, is er geen overeenkomstige grondwaarheid. De nauwkeurigheid van de aanbeveling kan dus niet op dezelfde manier worden geverifieerd als tijdens pijplijnbewerkingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

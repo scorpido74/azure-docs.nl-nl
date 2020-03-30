@@ -1,6 +1,6 @@
 ---
-title: Eenmalige aanmelding met een wacht woord configureren voor Azure AD-apps | Microsoft Docs
-description: Eenmalige aanmelding met een wacht woord configureren voor uw Azure AD-zakelijke toepassingen in micro soft Identity platform (Azure AD)
+title: Eenmalige aanmelding voor Azure AD-apps configureren | Microsoft Documenten
+description: Wachtwoordsingle sign-on (SSO) configureren voor uw Azure AD enterprise-toepassingen in Microsoft-identiteitsplatform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,87 +12,87 @@ ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063523"
 ---
-# <a name="configure-password-single-sign-on"></a>Eenmalige aanmelding met een wacht woord configureren
+# <a name="configure-password-single-sign-on"></a>Eenmalige aanmelding voor wachtwoorden configureren
 
-Wanneer u [een galerie-app](add-gallery-app.md) of een [niet-galerij web-app](add-non-gallery-app.md) toevoegt aan uw Azure AD-toepassingen voor ondernemingen, is een van de opties voor eenmalige aanmelding op basis van een [wacht woord gebaseerd](what-is-single-sign-on.md#password-based-sso)op een eenmalige aanmelding. Deze optie is beschikbaar voor elk web met een HTML-aanmeldings pagina. Met SSO op basis van wacht woorden, ook wel wachtwoord kluizen genoemd, kunt u gebruikers toegang en-wacht woorden beheren voor webtoepassingen die geen identiteits Federatie ondersteunen. Het is ook handig voor scenario's waarbij meerdere gebruikers een enkel account moeten delen, zoals de accounts voor sociale media-apps van uw organisatie. 
+Wanneer u [een galerie-app](add-gallery-app.md) of een [web-app zonder galerie](add-non-gallery-app.md) toevoegt aan uw Azure AD Enterprise-toepassingen, is een van de opties voor één aanmelding die voor u beschikbaar [is, een enkele aanmelding op basis](what-is-single-sign-on.md#password-based-sso)van een wachtwoord. Deze optie is beschikbaar voor elk web met een HTML-aanmeldingspagina. Met sso op basis van wachtwoorden, ook wel wachtwoordkluis genoemd, u gebruikerstoegang en wachtwoorden beheren voor webtoepassingen die identiteitsfederatie niet ondersteunen. Het is ook handig voor scenario's waarin meerdere gebruikers één account moeten delen, zoals de sociale media-app-accounts van uw organisatie. 
 
-SSO op basis van wacht woorden is een uitstekende manier om snel toepassingen te integreren in azure AD en biedt de volgende voor delen:
+SSO op basis van wachtwoorden is een geweldige manier om snel aan de slag te gaan met het integreren van toepassingen in Azure AD en stelt u in staat om:
 
--   **Eenmalige aanmelding inschakelen voor uw gebruikers** door gebruikers namen en wacht woorden veilig op te slaan en opnieuw af te spelen voor de toepassing die u hebt geïntegreerd met Azure AD
+-   **Eén aanmelding voor uw gebruikers** inschakelen door gebruikersnamen en wachtwoorden veilig op te slaan en opnieuw af te spelen voor de toepassing die u hebt geïntegreerd met Azure AD
 
--   **Ondersteunings toepassingen waarvoor meerdere aanmeldings velden zijn vereist** voor toepassingen waarvoor meer dan alleen gebruikers naam en wacht woord zijn vereist om zich aan te melden
+-   **Ondersteuningstoepassingen waarvoor meerdere aanmeldingsvelden nodig zijn** voor toepassingen waarvoor meer nodig is dan alleen gebruikersnamen en wachtwoordvelden om zich aan te melden
 
--   **De labels aanpassen** van de invoer velden gebruikers naam en wacht woord die uw gebruikers zien op het [toegangs paneel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) van de toepassing wanneer ze hun referenties invoeren
+-   **De labels van** de invoervelden gebruikersnaam en wachtwoord aanpassen die uw gebruikers in het [deelvenster Toepassingstoegangs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) zien wanneer ze hun referenties invoeren
 
--   **Gebruikers** in staat stellen hun eigen gebruikers namen en wacht woorden op te geven voor bestaande toepassings accounts die ze hand matig typen in het [toegangs paneel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) van de toepassing
+-   Laat uw **gebruikers** hun eigen gebruikersnamen en wachtwoorden verstrekken voor bestaande toepassingsaccounts die ze handmatig intypen in het [Application Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
--   Een **lid van de bedrijfs groep** toestaan om de gebruikers namen en wacht woorden op te geven die aan een gebruiker zijn toegewezen met behulp van de [self-service toepassings toegangs](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) functie
+-   Een **lid van de bedrijfsgroep** toestaan de gebruikersnamen en wachtwoorden op te geven die aan een gebruiker zijn toegewezen met behulp van de functie [Selfservice-toepassingstoegang](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)
 
--   Een **beheerder** toestaan om een gebruikers naam en wacht woord op te geven die moeten worden gebruikt door individuen of groepen bij het aanmelden bij de toepassing met behulp van de functie voor het bijwerken van referenties 
+-   Een **beheerder** toestaan een gebruikersnaam en wachtwoord op te geven die door personen of groepen moeten worden gebruikt wanneer hij zich aanmeldt bij de toepassing met de functie Referenties bijwerken 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een galerie-app toevoegen](add-gallery-app.md) of [een niet-galerij-app toevoegen](add-non-gallery-app.md).
+Zie [Een galerie-app toevoegen](add-gallery-app.md) of [Een niet-galerie-app toevoegen](add-non-gallery-app.md)als de toepassing niet is toegevoegd aan uw Azure AD-tenant.
 
-## <a name="open-the-app-and-select-password-single-sign-on"></a>Open de app en selecteer eenmalige aanmelding met wacht woord
+## <a name="open-the-app-and-select-password-single-sign-on"></a>De app openen en een enkele aanmelding voor wachtwoorden selecteren
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
-2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
+2. Navigeer naar **Azure Active Directory** > **Enterprise-toepassingen**. Er verschijnt een willekeurig voorbeeld van de toepassingen in uw Azure AD-tenant. 
 
-3. Selecteer in het menu **toepassings type** **alle toepassingen**en selecteer vervolgens **Toep assen**.
+3. Selecteer in het menu **Toepassingstype** **alle toepassingen**en selecteer **Vervolgens Toepassen**.
 
-4. Voer de naam van de toepassing in het zoekvak in en selecteer vervolgens de toepassing in de resultaten.
+4. Voer de naam van de toepassing in het zoekvak in en selecteer de toepassing in de resultaten.
 
-5. Selecteer onder de sectie **beheren** de optie **eenmalige aanmelding**. 
+5. Selecteer onder de sectie **Beheren** de optie **Eén aanmelding**. 
 
-6. Selecteer **op wacht woord gebaseerd**.
+6. Selecteer **Op een wachtwoord gebaseerd**.
 
-7. Voer de URL in van de webgebaseerde aanmeldings pagina van de toepassing. Deze teken reeks moet de pagina zijn die het invoergegevens veld van de gebruikers naam bevat.
+7. Voer de URL in van de op het web gebaseerde aanmeldingspagina van de toepassing. Deze tekenreeks moet de pagina zijn die het invoerveld gebruikersnaam bevat.
 
-   ![Eenmalige aanmelding op basis van wacht woorden](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Single sign-on op basis van wachtwoord](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. Selecteer **Opslaan**. Azure AD probeert de aanmeldings pagina te parseren voor een gebruikersnaam invoer en een wachtwoord invoer. Als de poging slaagt, bent u klaar. 
+8. Selecteer **Opslaan**. Azure AD probeert de aanmeldingspagina te ontzien voor een gebruikersnaaminvoer en een wachtwoordinvoer. Als de poging slaagt, bent u klaar. 
  
 > [!NOTE]
-> De volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing](methods-for-assigning-users-and-groups.md). Nadat u gebruikers en groepen hebt toegewezen, kunt u referenties opgeven die namens een gebruiker moeten worden gebruikt wanneer ze zich aanmelden bij de toepassing. Selecteer **gebruikers en groepen**, schakel het selectie vakje voor de rij van de gebruiker of groep in en klik vervolgens op **referenties bijwerken**. Voer vervolgens de gebruikers naam en het wacht woord in die namens de gebruiker of groep moeten worden gebruikt. Anders wordt gebruikers gevraagd de referenties zelf bij het starten in te voeren.
+> Uw volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing.](methods-for-assigning-users-and-groups.md) Nadat u gebruikers en groepen hebt toegewezen, u referenties verstrekken die namens een gebruiker kunnen worden gebruikt wanneer deze zich aanmeldt bij de toepassing. Schakel **Gebruikers en groepen**in, schakel het selectievakje in voor de rij van de gebruiker of groep en klik op Referenties **bijwerken**. Voer vervolgens de gebruikersnaam en het wachtwoord in die namens de gebruiker of groep moeten worden gebruikt. Anders worden gebruikers gevraagd om de referenties zelf in te voeren bij de lancering.
  
 
 ## <a name="manual-configuration"></a>Handmatige configuratie
 
-Als het parseren van de Azure AD-poging mislukt, kunt u hand matig aanmelden configureren.
+Als de parsing-poging van Azure AD mislukt, u aanmelden handmatig configureren.
 
-1. Selecteer onder **\<toepassings naam > configuratie**de optie **\<toepassings naam > wachtwoord instellingen voor eenmalige aanmelding configureren** om de pagina **aanmelden configureren** weer te geven. 
+1. Selecteer ** \<onder toepassingsnaam> Configuratie**de optie **Toepassingsnaam \<configureren> Instellingen voor één aanmelding wachtwoord** om de **aanmeldingspagina configureren** weer te geven. 
 
-2. Selecteer **aanmeldings velden hand matig detecteren**. Aanvullende instructies voor het beschrijven van de hand matige detectie van aanmeldings velden worden weer gegeven.
+2. Selecteer **Aanmeldingsvelden handmatig detecteren**. Er worden aanvullende instructies weergegeven waarin de handmatige detectie van aanmeldingsvelden wordt beschreven.
 
-   ![Hand matige configuratie van op wacht woord gebaseerde eenmalige aanmelding](./media/configure-password-single-sign-on/password-configure-sign-on.png)
-3. Selecteer **aanmeldings velden voor vastleggen**. De pagina vastleg status wordt geopend op een nieuw tabblad, waarin wordt weer gegeven **dat het vastleggen van meta gegevens op het bericht wordt uitgevoerd**.
+   ![Handmatige configuratie van eenmalige aanmelding op basis van wachtwoorden](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. Selecteer **Aanmeldingsvelden vastleggen**. Er wordt een pagina met de vastleggenvan status geopend op een nieuw tabblad, waarin de **vastleggen van metagegevens van**het bericht wordt weergegeven.
 
-4. Als het vak **uitbrei ding van het toegangs paneel vereist** wordt weer gegeven op een nieuw tabblad, selecteert u **nu installeren** om de extensie browser extensies voor **beveiligde aanmelding van mijn apps** te installeren. (Voor de browser extensie is micro soft Edge, Chrome of Firefox vereist.) Vervolgens installeert, start en activeert u de extensie en vernieuwt u de pagina vastleg status.
+4. Als het vak **Vereiste extensie voor toegangspaneelextensie** wordt weergegeven op een nieuw tabblad, selecteert u **Nu installeren** om de browserextensie Mijn apps **Secure Sign-in Extension** te installeren. (De browserextensie vereist Microsoft Edge, Chrome of Firefox.) Installeer, start en schakel de extensie in en vernieuw de pagina met de opnamestatus.
 
-   De browser uitbreiding opent vervolgens een ander tabblad met de ingevoerde URL.
-5. Ga op het tabblad met de ingevoerde URL naar het aanmeldings proces. Vul de velden gebruikers naam en wacht woord in en probeer u aan te melden. (U hoeft het juiste wacht woord niet op te geven.)
+   De browserextensie opent vervolgens een ander tabblad met de ingevoerde URL.
+5. Ga op het tabblad met de ingevoerde URL door het aanmeldingsproces. Vul de velden gebruikersnaam en wachtwoord in en probeer je aan te melden. (U hoeft niet het juiste wachtwoord op te geven.)
 
-   U wordt gevraagd om de vastgelegde aanmeldings velden op te slaan.
-6. Selecteer **OK**. De browser uitbreiding werkt de pagina vastleg status bij met de **meta gegevens van het bericht voor de toepassing**. Het tabblad browser wordt gesloten.
+   Met een prompt wordt u gevraagd de vastgelegde aanmeldingsvelden op te slaan.
+6. Selecteer **OK**. De browserextensie werkt de capture status pagina bij met het bericht **Metadata is bijgewerkt voor de toepassing.** Het browsertabblad wordt gesloten.
 
-7. Selecteer op de pagina Azure AD **-aanmelding configureren** de optie **OK, ik kan me aanmelden bij de app**.
+7. Selecteer op de **aanmeldingspagina van** Azure AD Configureren de optie **Ok, ik kon me met succes aanmelden bij de app**.
 
 8. Selecteer **OK**.
 
-Nadat u de aanmeldings pagina hebt vastgelegd, kunt u gebruikers en groepen toewijzen en kunt u referentie beleidsregels instellen, net als gewone [wacht woord-SSO-toepassingen](what-is-single-sign-on.md).
+Na het vastleggen van de aanmeldingspagina u gebruikers en groepen toewijzen en u referentiebeleid instellen, net als gewone [SSO-toepassingen voor wachtwoorden.](what-is-single-sign-on.md)
 
 > [!NOTE]
-> U kunt een tegel logo voor de toepassing uploaden met behulp van de knop **logo uploaden** op het tabblad **configureren** voor de toepassing.
+> U een tegellogo voor de toepassing uploaden met de knop **Logo uploaden** op het tabblad **Configureren** voor de toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
-- [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Automatische gebruikersaccountinrichting configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)

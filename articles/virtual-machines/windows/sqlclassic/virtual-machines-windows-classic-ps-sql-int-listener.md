@@ -1,6 +1,6 @@
 ---
-title: Een ILB-listener configureren voor beschikbaarheids groepen (klassiek)
-description: In deze zelf studie wordt gebruikgemaakt van resources die zijn gemaakt met het klassieke implementatie model en wordt er een AlwaysOn-beschikbaarheids groep-listener gemaakt voor een SQL Server-VM in azure die gebruikmaakt van een interne load balancer.
+title: Een ILB-listener configureren voor beschikbaarheidsgroepen (Klassiek)
+description: In deze zelfstudie worden resources gebruikt die zijn gemaakt met het klassieke implementatiemodel en wordt een always on-groeplistener voor beschikbaarheid gemaakt voor een SQL Server VM in Azure die een interne load balancer gebruikt.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,13 +16,13 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978171"
 ---
-# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een ILB-listener configureren voor beschikbaarheids groepen op Azure SQL Server Vm's
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een ILB-listener configureren voor beschikbaarheidsgroepen op Azure SQL Server VM's
 > [!div class="op_single_selector"]
 > * [Interne listener](../classic/ps-sql-int-listener.md)
 > * [Externe listener](../classic/ps-sql-ext-listener.md)
@@ -32,62 +32,62 @@ ms.locfileid: "75978171"
 ## <a name="overview"></a>Overzicht
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het klassieke implementatie model besproken. Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatiemodellen voor het maken en werken met resources: [Azure Resource Manager en classic](../../../azure-resource-manager/management/deployment-models.md). Dit artikel behandelt het gebruik van het klassieke implementatiemodel. We raden u aan dat de meeste nieuwe implementaties het Resource Manager-model gebruiken.
 
-Als u een listener wilt configureren voor een AlwaysOn-beschikbaarheids groep in het Resource Manager-model, raadpleegt u [een Load Balancer configureren voor een always on-beschikbaarheids groep in azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+Zie [Een load balancer configureren voor een groep beschikbaarheid always on in Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)als u een listener wilt configureren voor een groep beschikbaarheid always on in het resourcebeheer.
 
-Uw beschikbaarheids groep kan replica's bevatten die alleen on-premises zijn of alleen voor Azure, of die zowel on-premises als Azure omvatten voor hybride configuraties. Azure-replica's kunnen zich in dezelfde regio bevinden of in meerdere regio's die gebruikmaken van meerdere virtuele netwerken. In de procedures in dit artikel wordt ervan uitgegaan dat u al [een beschikbaarheids groep hebt geconfigureerd](../classic/portal-sql-alwayson-availability-groups.md) , maar nog geen listener hebt geconfigureerd.
+Uw beschikbaarheidsgroep kan replica's bevatten die alleen on-premises of Azure zijn, of die zowel on-premises als Azure voor hybride configuraties omvatten. Azure-replica's kunnen zich binnen dezelfde regio of in meerdere regio's bevinden die meerdere virtuele netwerken gebruiken. De procedures in dit artikel gaan ervan uit dat u [al een beschikbaarheidsgroep](../classic/portal-sql-alwayson-availability-groups.md) hebt geconfigureerd, maar nog geen listener hebt geconfigureerd.
 
-## <a name="guidelines-and-limitations-for-internal-listeners"></a>Richt lijnen en beperkingen voor interne listeners
-Het gebruik van een interne load balancer (ILB) met een listener van een beschikbaarheids groep in Azure is onderhevig aan de volgende richt lijnen:
+## <a name="guidelines-and-limitations-for-internal-listeners"></a>Richtlijnen en beperkingen voor interne luisteraars
+Het gebruik van een iLB (internal load balancer) met een authenticiteitsgroeplistener in Azure is onderworpen aan de volgende richtlijnen:
 
-* De beschikbaarheids groep-listener wordt ondersteund op Windows Server 2008 R2, Windows Server 2012 en Windows Server 2012 R2.
-* Er wordt slechts één interne beschikbaarheids groep-listener ondersteund voor elke Cloud service, omdat de listener is geconfigureerd voor de ILB en er slechts één ILB is voor elke Cloud service. Het is echter mogelijk om meerdere externe listeners te maken. Zie [een externe listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](../classic/ps-sql-ext-listener.md)voor meer informatie.
+* De listener van de beschikbaarheidsgroep wordt ondersteund op Windows Server 2008 R2, Windows Server 2012 en Windows Server 2012 R2.
+* Voor elke cloudservice wordt slechts één interne beschikbaarheidsgroeplistener ondersteund, omdat de listener is geconfigureerd voor de ILB en er slechts één ILB voor elke cloudservice is. Het is echter mogelijk om meerdere externe luisteraars te maken. Zie [Een externe listener configureren voor beschikbaarheidsgroepen altijd in Azure](../classic/ps-sql-ext-listener.md)voor meer informatie.
 
-## <a name="determine-the-accessibility-of-the-listener"></a>De toegankelijkheid van de listener bepalen
+## <a name="determine-the-accessibility-of-the-listener"></a>De toegankelijkheid van de luisteraar bepalen
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-In dit artikel wordt aandacht besteed aan het maken van een listener die gebruikmaakt van een ILB. Als u een open bare of externe listener nodig hebt, raadpleegt u de versie van dit artikel waarin wordt uitgelegd hoe u een [externe listener](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)kunt instellen.
+Dit artikel richt zich op het maken van een luisteraar die een ILB gebruikt. Als u een openbare of externe listener nodig hebt, raadpleegt u de versie van dit artikel waarin wordt gesproken over het instellen van een [externe listener.](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>VM-eind punten met taak verdeling maken met Direct Server Return
-U maakt eerst een ILB door het script verderop in deze sectie uit te voeren.
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Load-balanced VM-eindpunten maken met direct serverrendement
+U maakt eerst een ILB door het script later in deze sectie uit te voeren.
 
-Maak een eind punt met gelijke taak verdeling voor elke virtuele machine die als host fungeert voor een Azure replica. Als u replica's in meerdere regio's hebt, moet elke replica voor die regio zich in hetzelfde virtuele Azure-netwerk bevinden. Voor het maken van replica's van beschikbaarheids groepen die meerdere Azure-regio's omvatten, moet meerdere virtuele netwerken worden geconfigureerd. Voor meer informatie over het configureren van verbinding tussen virtuele netwerken, Zie [virtuele netwerken configureren voor verbinding met virtueel netwerk](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+Maak een eindpunt voor elke vm die een Azure-replica host. Als u replica's in meerdere regio's hebt, moet elke replica voor die regio zich in dezelfde cloudservice in hetzelfde virtuele Azure-netwerk bevinden. Voor het maken van replica's van beschikbaarheidsgroepen die meerdere Azure-regio's omvatten, moeten meerdere virtuele netwerken worden geconfigureerd. Zie Virtueel netwerk configureren voor virtuele netwerkconnectiviteit voor meer informatie over het configureren van virtuele [netwerkconnectiviteit.](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
-1. Ga in het Azure Portal naar elke VM die als host fungeert voor een replica om de details weer te geven.
+1. Ga in de Azure-portal naar elke vm met een replica om de details weer te geven.
 
-2. Klik op het tabblad **eind punten** voor elke virtuele machine.
+2. Klik op het tabblad **Eindpunten** voor elke virtuele machine.
 
-3. Controleer of de **naam** en de **open bare poort** van het listener-eind punt dat u wilt gebruiken niet al in gebruik zijn. In het voor beeld in deze sectie is de naam *MyEndpoint*, en de poort is *1433*.
+3. Controleer of de **naam** en **de openbare poort** van het listenereindpunt dat u wilt gebruiken, nog niet in gebruik zijn. In het voorbeeld in deze sectie is de naam *MyEndpoint*en de poort *1433*.
 
-4. Down load en installeer de meest recente [Power shell-module](https://azure.microsoft.com/downloads/)op de lokale client.
+4. Download en installeer op uw lokale client de nieuwste [PowerShell-module.](https://azure.microsoft.com/downloads/)
 
 5. Start Azure PowerShell.  
-    Er wordt een nieuwe Power shell-sessie geopend, waarbij de Azure-beheer modules zijn geladen.
+    Er wordt een nieuwe PowerShell-sessie geopend, waarbij de Azure-beheermodules zijn geladen.
 
-6. Voer `Get-AzurePublishSettingsFile` uit. Met deze cmdlet wordt u omgeleid naar een browser voor het downloaden van een bestand met publicatie-instellingen naar een lokale map. U wordt mogelijk gevraagd om uw aanmeldings referenties voor uw Azure-abonnement.
+6. Voer `Get-AzurePublishSettingsFile` uit. Deze cmdlet leidt u naar een browser om een bestand met publicatie-instellingen te downloaden naar een lokale map. Mogelijk wordt u gevraagd om uw aanmeldingsreferenties voor uw Azure-abonnement.
 
-7. Voer de volgende `Import-AzurePublishSettingsFile` opdracht uit met het pad van het bestand met de publicatie-instellingen dat u hebt gedownload:
+7. Voer de `Import-AzurePublishSettingsFile` volgende opdracht uit met het pad van het bestand met publicatie-instellingen dat u hebt gedownload:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
-    Nadat u het bestand met de publicatie-instellingen hebt geïmporteerd, kunt u uw Azure-abonnement beheren in de Power shell-sessie.
+    Nadat het publicatie-instellingenbestand is geïmporteerd, u uw Azure-abonnement beheren in de PowerShell-sessie.
 
-8. Wijs voor *ILB*een statisch IP-adres toe. Controleer de huidige configuratie van het virtuele netwerk door de volgende opdracht uit te voeren:
+8. Wijs voor *ILB*een statisch IP-adres toe. Onderzoek de huidige virtuele netwerkconfiguratie door de volgende opdracht uit te voeren:
 
         (Get-AzureVNetConfig).XMLConfiguration
-9. Noteer de *naam van het subnet voor* het subnet dat de virtuele machines bevat die als host voor de replica's fungeren. Deze naam wordt gebruikt in de para meter $SubnetName in het script.
+9. Let op de *subnetnaam* voor het subnet dat de VM's bevat die de replica's hosten. Deze naam wordt gebruikt in de parameter $SubnetName in het script.
 
-10. Noteer de naam van de *VirtualNetworkSite* en de eerste *AddressPrefix* voor het subnet met de virtuele machines die de replica's hosten. Zoek naar een beschikbaar IP-adres door beide waarden door te geven aan de opdracht `Test-AzureStaticVNetIP` en door de *AvailableAddresses*te controleren. Als het virtuele netwerk bijvoorbeeld de naam *MyVNet* heeft en een adres bereik voor het subnet heeft dat begint bij *172.16.0.128*, wordt in de volgende opdracht de lijst met beschik bare adressen vermeld:
+10. Let op de naam *VirtualNetworkSite* en het *beginadresvoorvoegsel* voor het subnet dat de VM's bevat die de replica's hosten. Zoek naar een beschikbaar IP-adres `Test-AzureStaticVNetIP` door beide waarden door te geven aan de opdracht en door de *beschikbare adressen te*onderzoeken. Als het virtuele netwerk bijvoorbeeld *MyVNet* heet en een subnetadresbereik heeft dat begint bij *172.16.0.128,* wordt in de volgende opdracht beschikbare adressen weergegeven:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
-11. Selecteer een van de beschik bare adressen en gebruik deze in de para meter $ILBStaticIP van het script in de volgende stap.
+11. Selecteer een van de beschikbare adressen en gebruik deze in de parameter $ILBStaticIP van het script in de volgende stap.
 
-12. Kopieer het volgende Power shell-script naar een tekst editor en stel de waarden van de variabele in op uw omgeving. Voor sommige para meters zijn standaard waarden opgegeven.  
+12. Kopieer het volgende PowerShell-script naar een teksteditor en stel de variabele waarden in op uw omgeving. Standaardinstellingen zijn voorzien voor sommige parameters.  
 
-    Bestaande implementaties die gebruikmaken van affiniteits groepen, kunnen geen ILB toevoegen. Zie [overzicht van interne Load Balancer](../../../load-balancer/load-balancer-internal-overview.md)voor meer informatie over ILB-vereisten.
+    Bestaande implementaties die affiniteitsgroepen gebruiken, kunnen geen ILB toevoegen. Zie [Overzicht interne load balancer](../../../load-balancer/load-balancer-internal-overview.md)voor meer informatie over iLB-vereisten.
 
-    Als uw beschikbaarheids groep Azure-regio's omvat, moet u ook het script eenmaal uitvoeren in elk Data Center voor de Cloud service en knoop punten die zich in dat Data Center bevinden.
+    Als uw beschikbaarheidsgroep Azure-regio's omvat, moet u het script ook eenmaal in elk datacenter uitvoeren voor de cloudservice en knooppunten die zich in dat datacenter bevinden.
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -105,31 +105,31 @@ Maak een eind punt met gelijke taak verdeling voor elke virtuele machine die als
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Nadat u de variabelen hebt ingesteld, kopieert u het script van de tekst editor naar uw Power shell-sessie om het uit te voeren. Als **>>** nog steeds wordt weer gegeven, drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
+13. Nadat u de variabelen hebt ingesteld, kopieert u het script van de teksteditor naar uw PowerShell-sessie om het uit te voeren. Als de prompt **>>** nog steeds wordt weergegeven, drukt u nogmaals op Enter om te controleren of het script wordt uitgevoerd.
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Controleer of KB2854082 is geïnstalleerd, indien nodig
+## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Controleer indien nodig of KB2854082 is geïnstalleerd
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
-## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Open de firewall poorten in beschikbaarheids groep knoop punten
+## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>De firewallpoorten openen in knooppunten van beschikbaarheidsgroepen
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-open-firewall.md)]
 
-## <a name="create-the-availability-group-listener"></a>De listener voor de beschikbaarheids groep maken
+## <a name="create-the-availability-group-listener"></a>De authenticiteit van de beschikbaarheidsgroep maken
 
-Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster bron voor het client toegangs punt en configureer afhankelijkheden. Ten tweede configureert u de cluster resources in Power shell.
+Maak de listener van de beschikbaarheidsgroep in twee stappen. Maak eerst de clientaccess point clusterbron en configureer afhankelijkheden. Configureer ten tweede de clusterbronnen in PowerShell.
 
-### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Het client toegangs punt maken en de cluster afhankelijkheden configureren
+### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Het toegangspunt van de client maken en de clusterafhankelijkheden configureren
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
-### <a name="configure-the-cluster-resources-in-powershell"></a>De cluster resources configureren in Power shell
-1. Voor ILB moet u het IP-adres van de ILB gebruiken die u eerder hebt gemaakt. Gebruik het volgende script om dit IP-adres in Power shell op te halen:
+### <a name="configure-the-cluster-resources-in-powershell"></a>De clusterbronnen in PowerShell configureren
+1. Voor ILB moet u het IP-adres van de ILB gebruiken dat eerder is gemaakt. Gebruik het volgende script om dit IP-adres in PowerShell te verkrijgen:
 
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
-2. Kopieer op een van de virtuele machines het Power shell-script voor het besturings systeem naar een tekst editor en stel de variabelen in op de waarden die u eerder hebt genoteerd.
+2. Kopieer op een van de VM's het PowerShell-script voor uw besturingssysteem naar een teksteditor en stel de variabelen in op de waarden die u eerder hebt opgemerkt.
 
-    Voor Windows Server 2012 of hoger gebruikt u het volgende script:
+    Gebruik voor Windows Server 2012 of hoger het volgende script:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -140,7 +140,7 @@ Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster b
 
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
 
-    Voor Windows Server 2008 R2 gebruikt u het volgende script:
+    Gebruik voor Windows Server 2008 R2 het volgende script:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -151,18 +151,18 @@ Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster b
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Nadat u de variabelen hebt ingesteld, opent u een Windows Power shell-venster met verhoogde bevoegdheden en plakt u het script uit de tekst editor in uw Power shell-sessie om het uit te voeren. Als de prompt nog **>>** wordt weer gegeven, drukt u nogmaals op ENTER om te controleren of het script wordt uitgevoerd.
+3. Nadat u de variabelen hebt ingesteld, opent u een verhoogd Windows PowerShell-venster en plakt u het script van de teksteditor in uw PowerShell-sessie om het uit te voeren. Als de prompt **>>** nog steeds wordt weergegeven, drukt u nogmaals op Enter om ervoor te zorgen dat het script wordt uitgevoerd.
 
-4. Herhaal de voor gaande stappen voor elke virtuele machine.  
-    Met dit script wordt de IP-adres bron geconfigureerd met het IP-adres van de Cloud service en worden andere para meters ingesteld, zoals de test poort. Wanneer de IP-adres bron online wordt gebracht, kan deze reageren op de polling op de test poort van het eind punt met gelijke taak verdeling die u eerder hebt gemaakt.
+4. Herhaal de voorgaande stappen voor elke virtuele machine.  
+    Dit script configureert de IP-adresbron met het IP-adres van de cloudservice en stelt andere parameters in, zoals de sondepoort. Wanneer de IP-adresbron online wordt gebracht, kan deze reageren op de polling op de sondepoort vanaf het eerder gemaakte eindpunt voor de belasting.
 
-## <a name="bring-the-listener-online"></a>De listener online brengen
+## <a name="bring-the-listener-online"></a>Breng de luisteraar online
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
 
-## <a name="follow-up-items"></a>Opvolgings items
+## <a name="follow-up-items"></a>Vervolgitems
 [!INCLUDE [Follow-up](../../../../includes/virtual-machines-ag-listener-follow-up.md)]
 
-## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>De listener voor de beschikbaarheids groep testen (binnen hetzelfde virtuele netwerk)
+## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>De listener voor beschikbaarheidsgroepen testen (binnen hetzelfde virtuele netwerk)
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="next-steps"></a>Volgende stappen

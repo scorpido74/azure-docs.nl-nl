@@ -1,63 +1,63 @@
 ---
-title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migrate
-description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
+title: Apps, rollen en functies ontdekken op on-premises servers met Azure Migrate
+description: Meer informatie over het ontdekken van apps, rollen en functies op on-premises servers met Azure Migrate Server Assessment.
 ms.topic: article
-ms.date: 11/20/2019
-ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/12/2020
+ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453579"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
+# <a name="discover-machine-apps-roles-and-features"></a>Machine-apps, -rollen en -functies ontdekken
 
-In dit artikel wordt beschreven hoe u toepassingen, functies en onderdelen detecteert op on-premises servers met behulp van Azure Migrate: Server evaluatie.
+In dit artikel wordt beschreven hoe u toepassingen, rollen en functies op on-premises servers detecteren met Azure Migrate: Server Assessment.
 
-Het detecteren van de inventaris van apps en rollen/functies die op uw on-premises machines worden uitgevoerd, helpt u bij het identificeren en plannen van een migratie naar Azure dat is afgestemd op uw workloads.
+Als u de voorraad apps en rollen/functies ontdekt die op uw on-premises machines worden uitgevoerd, u een migratiepad naar Azure identificeren en plannen dat is afgestemd op uw workloads.
 
 > [!NOTE]
-> App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines en is beperkt tot detectie. We bieden nog geen evaluatie op basis van een app. Evaluatie op basis van een machine voor on-premises virtuele VMware-machines, Hyper-V-Vm's en fysieke servers.
+> App-detectie is momenteel alleen in preview voor VMware VM's en is beperkt tot alleen detectie. We bieden nog geen app-gebaseerde beoordeling aan. Machinegebaseerde beoordeling voor on-premises VM's vmware, Hyper-V VM's en fysieke servers.
 
-App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot de VMware-machines met behulp van VMware-Api's.
+App-detectie met Azure Migrate: Serverassessment is agentloos. Niets is geïnstalleerd op machines en VM's. Serverassessment gebruikt het Azure Migrate-toestel om detectie uit te voeren, samen met de referenties van machinegasten. Het toestel heeft op afstand toegang tot de VMware-machines met VMware API's.
 
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-1. Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-2. Zorg ervoor dat u het hulp programma voor de Azure Migrate: Server evaluatie hebt [toegevoegd](how-to-assess.md) aan een project.
-4. Raadpleeg de [VMware-vereisten](migrate-support-matrix-vmware.md#vmware-requirements) voor het detecteren en beoordelen van virtuele VMware-machines met het Azure migrate apparaat.
-5. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
-6. [Controleer de ondersteuning en vereisten](migrate-support-matrix-vmware.md#application-discovery) voor toepassings detectie.
+1. Zorg ervoor dat u een Azure Migrate-project hebt [gemaakt.](how-to-add-tool-first-time.md)
+2. Controleer of u het hulpprogramma Azure Migrate: Server Assessment aan een project hebt [toegevoegd.](how-to-assess.md)
+4. Controleer de [VMware-vereisten](migrate-support-matrix-vmware.md#vmware-requirements) voor het ontdekken en beoordelen van VMware-VM's met het Azure Migrate-toestel.
+5. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure Migrate-toestel.
+6. [Controleer de ondersteuning en vereisten](migrate-support-matrix-vmware.md#application-discovery) voor het ontdekken van toepassingen.
 
-## <a name="prepare-for-app-discovery"></a>App-detectie voorbereiden
+## <a name="prepare-for-app-discovery"></a>Voorbereiden op app-detectie
 
-1. [Bereid u voor op de implementatie van het apparaat](tutorial-prepare-vmware.md). Voor bereiding omvat het controleren van de instellingen van het apparaat en het instellen van een account dat door het apparaat wordt gebruikt voor toegang tot vCenter Server.
-2. Zorg ervoor dat u een gebruikers account (één voor Windows-en Linux-servers) hebt met beheerders machtigingen voor computers waarop u apps, functies en onderdelen wilt detecteren.
-3. [Implementeer het Azure migrate apparaat om de](how-to-set-up-appliance-vmware.md) detectie te starten. Als u het apparaat wilt implementeren, downloadt en importeert u een eicellen-sjabloon in VMware om het apparaat als een virtuele VMware-machine te maken. U configureert het apparaat en registreert het vervolgens met Azure Migrate.
-2. Wanneer u het apparaat implementeert, moet u het volgende opgeven om de continue detectie te starten:
-    - De naam van de vCenter Server waarmee u verbinding wilt maken.
-    - Referenties die u hebt gemaakt voor het apparaat om verbinding te maken met vCenter Server.
-    - De account referenties die u hebt gemaakt voor het apparaat om verbinding te maken met Vm's van Windows/Linux.
+1. [Bereid u voor op de implementatie van apparaten](tutorial-prepare-vmware.md). De voorbereiding omvat het verifiëren van toestelinstellingen en het instellen van een account dat het toestel zal gebruiken om toegang te krijgen tot vCenter Server.
+2. Zorg ervoor dat u een gebruikersaccount hebt (elk voor Windows- en Linux-servers) met beheerdersmachtigingen voor machines waarop u apps, rollen en functies wilt ontdekken.
+3. [Implementeer het Azure Migrate-toestel](how-to-set-up-appliance-vmware.md) om detectie te starten. Als u het toestel wilt implementeren, downloadt en importeert u een OVA-sjabloon in VMware om het toestel als VMware-VM te maken. U configureert het toestel en registreert het vervolgens bij Azure Migrate.
+2. Wanneer u het toestel implementeert, geeft u het volgende op als u continu detectie wilt uitvoeren:
+    - De naam van de vCenterserver waarmee u verbinding wilt maken.
+    - Referenties die u hebt gemaakt om verbinding te maken met vCenter Server.
+    - De accountreferenties die u hebt gemaakt voor het toestel om verbinding te maken met Windows/Linux VM's.
 
-Nadat het apparaat is geïmplementeerd en u referenties hebt gegeven, start het apparaat doorlopende detectie van VM-meta gegevens en prestatie gegevens, samen met en detectie van apps, functies en rollen.  De duur van het detecteren van apps hangt af van het aantal Vm's dat u hebt. Het duurt doorgaans een uur voor app-detectie van 500 Vm's.
+Nadat het toestel is geïmplementeerd en u referenties hebt verstrekt, start het toestel met continue detectie van VM-metagegevens en prestatiegegevens, samen met en ontdekking van apps, functies en rollen.  De duur van app-detectie is afhankelijk van het aantal VM's dat u hebt. Het duurt meestal een uur voor app-detectie van 500 VM's.
 
-## <a name="review-and-export-the-inventory"></a>De inventaris controleren en exporteren
+## <a name="review-and-export-the-inventory"></a>De voorraad controleren en exporteren
 
-Nadat de detectie is voltooid, kunt u de app-inventaris in het Azure Portal bekijken en exporteren als u referenties hebt ingevoerd voor app-detectie.
+Als u na het einde van de detectie referenties voor app-detectie hebt opgegeven, u de app-voorraad in de Azure-portal controleren en exporteren.
 
-1. Klik in **Azure migrate-Servers** > **Azure migrate: Server evaluatie**op de weer gegeven aantal om de pagina **gedetecteerde servers** te openen.
+1. Klik in **Azure Migrate - Servers** > **Azure Migrate: Server Assessment**op het weergegeven aantal om de pagina **Gedetecteerde servers** te openen.
 
     > [!NOTE]
-    > U kunt in deze fase ook optioneel afhankelijkheids toewijzing instellen voor gedetecteerde computers, zodat u afhankelijkheden kunt visualiseren tussen computers die u wilt beoordelen. [Meer informatie](how-to-create-group-machine-dependencies.md).
+    > In dit stadium u ook optioneel afhankelijkheidstoewijzing instellen voor gedetecteerde machines, zodat u afhankelijkheden visualiseren tussen machines die u wilt beoordelen. [Meer informatie](how-to-create-group-machine-dependencies.md).
 
-2. In **gedetecteerde toepassingen**klikt u op het aantal weer gegeven.
-3. In de **toepassings inventaris**kunt u de gedetecteerde apps, rollen en functies bekijken.
-4. Als u de inventaris wilt exporteren, klikt u op **app-inventaris exporteren**in **gedetecteerde servers**.
+2. Klik in **gedetecteerde toepassingen**op het weergegeven aantal.
+3. In **toepassingsinventaris**u de gedetecteerde apps, rollen en functies bekijken.
+4. Als u de voorraad wilt exporteren, klikt u in **Gedetecteerde servers**op **App-inventaris exporteren**.
 
-De app-inventarisatie wordt geëxporteerd en gedownload in Excel-indeling. Op de **inventarisatie** pagina van de toepassing worden alle apps weer gegeven die op alle computers zijn gedetecteerd.
+De app-inventaris wordt geëxporteerd en gedownload in Excel-indeling. Op het overzicht **Toepassingsinventaris** worden alle apps weergegeven die op alle machines zijn ontdekt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een evaluatie maken](how-to-create-assessment.md) voor lift-en Shift-migratie van de gedetecteerde servers.
-- Beoordeling van een SQL Server data bases met behulp van [Azure migrate: data base-evaluatie](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).
+- [Maak een beoordeling](how-to-create-assessment.md) voor lift- en shiftmigratie van de gedetecteerde servers.
+- Een SQL Server-databases beoordelen met [Azure Migrate: Databaseassessment](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).
